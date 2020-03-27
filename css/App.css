@@ -1,0 +1,186 @@
+html{
+    font-size: 16px;
+}
+
+input{
+    font-size: 1rem;
+}
+
+body {
+    --blue: #122246;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 41.1429rem;
+    --breakpoint-md: 54.8571rem;
+    --breakpoint-lg: 70.8571rem;
+    --breakpoint-xl: 85.7143rem;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    --border-color:#253863;
+    --color-body:#eef5f9;
+    --color-input-color:#d6d6d6;
+}
+.app-container{
+    width:100%;
+    height: 100%;
+}
+
+.pizo-app{
+    height: 100%;
+    width: 100%;
+}
+
+.pizo-header{
+    width: calc(100% - 0.1429rem);
+    border:  0.0714rem solid var(--border-color);
+    background-color: var(--blue);
+}
+
+
+.pizo-header-logo{
+    padding-left: 1.4286rem;
+    padding-right: 1.4286rem;
+    height: calc(100% - 1.4286rem);
+    padding-top: 0.7143rem;
+    padding-bottom: 0.7143rem;
+    display: inline-block;
+}
+
+.pizo-header-logo-icon{
+    height: 2.1429rem;
+    width: 2.1429rem;
+    vertical-align: middle;
+}
+
+
+.pizo-header-logo-text{
+    margin-left: 0.3571rem;
+    height: 1.0714rem;
+    vertical-align: middle;
+}
+
+.pizo-header-menu{
+    vertical-align: middle;
+    background-color: transparent;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    border-left: 0.0714rem solid var(--border-color);
+}
+
+.pizo-header-menu .absol-hmenu-button{
+    color: var(--white);
+}
+
+.pizo-body{
+    display: inline-block;
+    width: 100%;
+    height: calc(100% - 4.0714rem);
+    background: var(--color-body);
+}
+
+.pizo-body-title{
+    position: absolute;
+    width: 100%;
+}
+
+.pizo-body-title-left{
+    float: left;
+    color: var(--blue);
+    line-height: 2.1429rem;
+    font-size: 1.5rem;
+    margin-left: 1.4286rem;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: var(--gray);
+    content: "/";
+}
+.pizo-body-title-right-item{
+    color: var(--primary);
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {
+    content: "\e649";
+    font-family: themify;
+    font-size: 0.7857rem;
+}
+
+.pizo-body-title-right{
+    margin-right: 2.1429rem;
+    margin-top: 0.5714rem;
+    font-size: 1rem;
+    float: right;
+}
+
+.absol-single-page-header{
+    z-index: 1000;
+}
+
+.absol-single-page-scroller-viewport{
+    overflow-y: hidden;
+}
+
+.outer-wrapper {
+    width: calc(100% - 20px);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.portal-section {
+    float: right;
+}
+
+.not-login-signin{
+    background: #2f426d;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 2px;
+    display: block;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.portal-section .not-loggedin {
+    width: auto;
+    float: none;
+    background: 0 0;
+    display: block;
+    padding: 0;
+    position: absolute;
+    transform: translate(-110%, -0);
+    margin-top: 0.7143rem;
+}
+
+.material-icons{
+    font-size: 1.5rem;
+}
+
+
+
+

@@ -1,0 +1,48 @@
+th[role=columnheader]:not(.no-sort) {
+	cursor: pointer;
+}
+
+th[role=columnheader]:not(.no-sort):after {
+	content: '';
+	float: right;
+	margin-top: 0.35rem;
+	border-width: 0.2857rem 0.2857rem 0;
+	border-style: solid;
+	border-color: #ffffff transparent;
+	visibility: hidden;
+	opacity: 0;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+th[role=columnheader].downgrade:not(.no-sort):after{
+	border-width: 0 0.2857rem 0.2857rem;
+}
+
+th[aria-sort=ascending]:not(.no-sort):after {
+	border-bottom: none;
+	border-width: 0.2857rem 0.2857rem 0;
+}
+
+th[aria-sort]:not(.no-sort):after {
+	visibility: visible;
+	opacity: 0.4;
+}
+
+th[role=columnheader]:not(.no-sort):hover:after {
+	visibility: visible;
+	opacity: 1;
+}
+
+/* table, th, td {
+	background: #ffffff;
+	padding: 5px;
+  }
+table {
+	background: #999999;
+	border-spacing: 15px;
+} */
+
+

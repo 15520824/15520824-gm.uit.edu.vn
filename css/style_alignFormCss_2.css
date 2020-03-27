@@ -1,0 +1,12 @@
+.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-area-label{
+width: 4.5rem; 
+}
+.pizo-new-realty-dectruct-content-area-size-zone.margin-style .pizo-new-realty-detruct-content-area-label{
+width: 4.5rem; 
+}
+.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .absol-selectmenu.pizo-new-realty-detruct-content-direction{
+width: calc(100% - 4.5rem); 
+}
+.pizo-new-realty-dectruct-content-area-size-zone.margin-style .absol-selectmenu.pizo-new-realty-detruct-content-type{
+width: calc(100% - 4.5rem); 
+}
