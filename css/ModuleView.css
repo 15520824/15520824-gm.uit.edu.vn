@@ -99,12 +99,17 @@
   width: 100%;
 }
 .sortTable,.sortTableClone {
-  border-collapse: collapse;
+    border-collapse: collapse;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
     margin: 0 auto;
     position: relative;
+    /* border-spacing: 10px; */
+}
+
+.sortTableClone{
+  left: 0;
 }
 
 .sortTable  tr{

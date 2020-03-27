@@ -31437,7 +31437,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-project-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-project-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-project-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-project-main{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-project-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button{\r\n    width: calc(30% - 3.375rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    overflow-x: auto;\r\n}\r\n\r\n.pizo-list-project-button-apply.pizo-list-project-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-button-deleteall.pizo-list-project-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control.show{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.show .pizo-list-project-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.show .hide.pizo-list-project-main-search-control-container{\r\n    transform: translateX(0);\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-project-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-project-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-project-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-project-main{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-project-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    overflow-x: auto;\r\n}\r\n\r\n.pizo-list-project-button-apply.pizo-list-project-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-button-deleteall.pizo-list-project-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control.show{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.show .pizo-list-project-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.show .hide.pizo-list-project-main-search-control-container{\r\n    transform: translateX(0);\r\n}", ""]);
 
 
 
@@ -31472,7 +31472,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0rem;\r\n  left: 0rem;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n.sortTable {\r\n  background: #fff;\r\n  max-width: 100%;\r\n  border-spacing: 0;\r\n  width: 100%;\r\n  border: 0.0714rem solid #ddd;\r\n  border-collapse: separate;\r\n  *border-collapse: collapsed;\r\n  -webkit-box-shadow: 0 0 0.2857rem rgba(0, 0, 0, 0.1);\r\n  -moz-box-shadow: 0 0 0.2857rem rgba(0, 0, 0, 0.1);\r\n  box-shadow: 0 0 0.2857rem rgba(0, 0, 0, 0.1);\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-size: 0.9286rem;\r\n  line-height: 1.2857rem;\r\n  color: #303030;\r\n  background-color: #fafafa;\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.sortTable th,\r\n.sortTable td {\r\n  padding: 0.5714rem;\r\n  line-height: 1.2857rem;\r\n  text-align: left;\r\n  border-top: 0.0714rem solid #ddd;\r\n}\r\n.sortTable th {\r\n  background: #eee;\r\n  background: -webkit-gradient(\r\n    linear,\r\n    left top,\r\n    left bottom,\r\n    from(#f6f6f6),\r\n    to(#eee)\r\n  );\r\n  background: -moz-linear-gradient(top, #f6f6f6, #eee);\r\n  text-shadow: 0 0.0714rem 0 #fff;\r\n  font-weight: bold;\r\n  vertical-align: bottom;\r\n}\r\n.sortTable td {\r\n  vertical-align: top;\r\n}\r\n.sortTable thead:first-child tr th,\r\n.sortTable thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\n.sortTable tbody + tbody {\r\n  border-top: 0.1429rem solid #ddd;\r\n}\r\n.sortTable th + th,\r\n.sortTable td + td,\r\n.sortTable th + td,\r\n.sortTable td + th {\r\n  border-left: 0.0714rem solid #ddd;\r\n}\r\n.sortTable thead:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child td {\r\n  border-top: 0;\r\n}\r\n\r\n.sortTableClone {\r\n  background: #fff;\r\n  border-spacing: 0;\r\n  border: 0.0714rem solid #ddd;\r\n  border-collapse: separate;\r\n  *border-collapse: collapsed;\r\n  -webkit-box-shadow: 0 0 0.2857rem rgba(0, 0, 0, 0.1);\r\n  -moz-box-shadow: 0 0 0.2857rem rgba(0, 0, 0, 0.1);\r\n  box-shadow: 0 0 0.2857rem rgba(0, 0, 0, 0.1);\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-size: 0.9286rem;\r\n  line-height: 1.2857rem;\r\n  color: #303030;\r\n  background-color: #fafafa;\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.sortTableClone th,\r\n.sortTableClone td {\r\n  padding: 0.5714rem;\r\n  line-height: 1.2857rem;\r\n  text-align: left;\r\n  border-top: 0.0714rem solid #ddd;\r\n}\r\n.sortTableClone th {\r\n  background: #eee;\r\n  background: -webkit-gradient(\r\n    linear,\r\n    left top,\r\n    left bottom,\r\n    from(#f6f6f6),\r\n    to(#eee)\r\n  );\r\n  background: -moz-linear-gradient(top, #f6f6f6, #eee);\r\n  text-shadow: 0 0.0714rem 0 #fff;\r\n  font-weight: bold;\r\n  vertical-align: bottom;\r\n}\r\n.sortTableClone td {\r\n  vertical-align: top;\r\n}\r\n.sortTableClone thead:first-child tr th,\r\n.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\ntable.sortTableClone tbody + tbody {\r\n  border-top: 0.1429rem solid #ddd;\r\n}\r\n.sortTableClone th + th,\r\n.sortTableClone td + td,\r\n.sortTableClone th + td,\r\n.sortTableClone td + th {\r\n  border-left: 0.0714rem solid #ddd;\r\n}\r\n.sortTableClone thead:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child td {\r\n  border-top: 0;\r\n}\r\n\r\nheader {\r\n  width: 68.5714rem;\r\n  margin: 0 auto;\r\n  padding: 0 1.4286rem;\r\n}\r\n\r\n.limiter {\r\n  width: 37.1429rem;\r\n  margin: 0 auto;\r\n  padding: 0 1.4286rem;\r\n}\r\n\r\n.links {\r\n  width: 34.2857rem;\r\n  margin: 3.5714rem auto 0;\r\n}\r\n.links a {\r\n  width: 50%;\r\n  float: left;\r\n}\r\na.button {\r\n  background: #1f90ff;\r\n  border: 0.0714rem solid #1f4fff;\r\n  height: 2.8571rem;\r\n  line-height: 2.7143rem;\r\n  color: #fff;\r\n  display: inline-block;\r\n  text-align: center;\r\n  padding: 0 0.7143rem;\r\n  -webkit-border-radius: 0.0714rem;\r\n  border-radius: 0.0714rem;\r\n  -webkit-transition: box-shadow 150ms linear;\r\n  -moz-transition: box-shadow 150ms linear;\r\n  -o-transition: box-shadow 150ms linear;\r\n  transition: box-shadow 150ms linear;\r\n}\r\na.button:hover {\r\n  background-color: #0081ff;\r\n  -webkit-box-shadow: 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n  box-shadow: 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n  border: 0.0714rem solid #1f4fff;\r\n}\r\na.button:focus,\r\na.button:active {\r\n  background: #0081ff;\r\n  -webkit-box-shadow: inset 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n  box-shadow: inset 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n}\r\n\r\n.options {\r\n  margin: 0.7143rem 0 2.1429rem 1.0714rem;\r\n}\r\n.options h3 {\r\n  display: block;\r\n  padding-top: 0.7143rem;\r\n  margin-top: 1.4286rem;\r\n}\r\n.options h3:first-child {\r\n  border: none;\r\n  margin-top: 0;\r\n}\r\n\r\npre,\r\ncode {\r\n  font-family: Consolas, Menlo, \"Liberation Mono\", Courier, monospace;\r\n  word-wrap: break-word;\r\n  color: #333;\r\n}\r\npre {\r\n  font-size: 0.9286rem;\r\n  line-height: 1.25em;\r\n  background: #fff;\r\n  padding: 0.7143rem 1.0714rem;\r\n  margin: 0.7143rem 0;\r\n  overflow: auto;\r\n  -webkit-box-shadow: 0 0.0714rem 0.2143rem rgba(0, 0, 0, 0.3);\r\n  box-shadow: 0 0.0714rem 0.2143rem rgba(0, 0, 0, 0.3);\r\n}\r\ncode {\r\n  font-size: 0.8571rem;\r\n  border: 0;\r\n  padding: 0;\r\n  background: #e6e6e6;\r\n  background: rgba(0, 0, 0, 0.08);\r\n  box-shadow: 0 0 0 0.1429rem rgba(0, 0, 0, 0.08);\r\n}\r\npre code {\r\n  font-size: 0.9286rem;\r\n  line-height: 1.25em;\r\n  background: transparent;\r\n  box-shadow: none;\r\n  border: none;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.col12 {\r\n  width: 100%;\r\n}\r\n.col6 {\r\n  width: 50%;\r\n  float: left;\r\n  display: block;\r\n}\r\n\r\n.pill-group {\r\n  margin: 2.8571rem 0 0;\r\n}\r\n.pill-group a:first-child {\r\n  border-radius: 1.4286rem 0 0 1.4286rem;\r\n  border-right-width: 0;\r\n}\r\n.pill-group a:last-child {\r\n  border-radius: 0 1.4286rem 1.4286rem 0;\r\n}\r\n\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n", ""]);
+exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0rem;\r\n  left: 0rem;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n.sortTable{\r\n  width: 100%;\r\n}\r\n.sortTable,.sortTableClone {\r\n  border-collapse: collapse;\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    overflow: hidden;\r\n    margin: 0 auto;\r\n    position: relative;\r\n}\r\n\r\n.sortTable  tr{\r\n  -webkit-transition: 1s ease-in-out;\r\n  -moz-transition: 1s ease-in-out;\r\n  -o-transition: 1s ease-in-out;\r\n  transition: 1s ease-in-out;\r\n}\r\n\r\n.sortTable  tr.hide{\r\n  transform: translateX(100%);\r\n}\r\n\r\n.sortTable tr:nth-child(even) {\r\n  background-color: #f5f5f5;\r\n}\r\n\r\n.sortTable th,.sortTable td,\r\n.sortTableClone th,.sortTableClone td {\r\n  padding: 0.5714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n}\r\n.sortTable th,.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n}\r\n.sortTable td,.sortTableClone td {\r\n  vertical-align: top;\r\n}\r\n.sortTable thead:first-child tr th,\r\n.sortTable thead:first-child tr td,\r\n.sortTableClone thead:first-child tr th,\r\n.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\n.sortTable tbody + tbody,.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\n.sortTable th + th,\r\n.sortTable td + td,\r\n.sortTable th + td,\r\n.sortTable td + th,\r\n.sortTableClone th + th,\r\n.sortTableClone td + td,\r\n.sortTableClone th + td,\r\n.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\n.sortTable thead:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child td,\r\n.sortTableClone thead:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\n.sortTable tbody{\r\n  position: relative;\r\n}\r\n\r\nheader {\r\n  width: 68.5714rem;\r\n  margin: 0 auto;\r\n  padding: 0 1.4286rem;\r\n}\r\n\r\n.limiter {\r\n  width: 37.1429rem;\r\n  margin: 0 auto;\r\n  padding: 0 1.4286rem;\r\n}\r\n\r\n.links {\r\n  width: 34.2857rem;\r\n  margin: 3.5714rem auto 0;\r\n}\r\n.links a {\r\n  width: 50%;\r\n  float: left;\r\n}\r\na.button {\r\n  background: #1f90ff;\r\n  border: 0.0714rem solid #1f4fff;\r\n  height: 2.8571rem;\r\n  line-height: 2.7143rem;\r\n  color: #fff;\r\n  display: inline-block;\r\n  text-align: center;\r\n  padding: 0 0.7143rem;\r\n  -webkit-border-radius: 0.0714rem;\r\n  border-radius: 0.0714rem;\r\n  -webkit-transition: box-shadow 150ms linear;\r\n  -moz-transition: box-shadow 150ms linear;\r\n  -o-transition: box-shadow 150ms linear;\r\n  transition: box-shadow 150ms linear;\r\n}\r\na.button:hover {\r\n  background-color: #0081ff;\r\n  -webkit-box-shadow: 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n  box-shadow: 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n  border: 0.0714rem solid #1f4fff;\r\n}\r\na.button:focus,\r\na.button:active {\r\n  background: #0081ff;\r\n  -webkit-box-shadow: inset 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n  box-shadow: inset 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n}\r\n\r\n.options {\r\n  margin: 0.7143rem 0 2.1429rem 1.0714rem;\r\n}\r\n.options h3 {\r\n  display: block;\r\n  padding-top: 0.7143rem;\r\n  margin-top: 1.4286rem;\r\n}\r\n.options h3:first-child {\r\n  border: none;\r\n  margin-top: 0;\r\n}\r\n\r\npre,\r\ncode {\r\n  font-family: Consolas, Menlo, \"Liberation Mono\", Courier, monospace;\r\n  word-wrap: break-word;\r\n  color: #333;\r\n}\r\npre {\r\n  font-size: 0.9286rem;\r\n  line-height: 1.25em;\r\n  background: #fff;\r\n  padding: 0.7143rem 1.0714rem;\r\n  margin: 0.7143rem 0;\r\n  overflow: auto;\r\n  -webkit-box-shadow: 0 0.0714rem 0.2143rem rgba(0, 0, 0, 0.3);\r\n  box-shadow: 0 0.0714rem 0.2143rem rgba(0, 0, 0, 0.3);\r\n}\r\ncode {\r\n  font-size: 0.8571rem;\r\n  border: 0;\r\n  padding: 0;\r\n  background: #e6e6e6;\r\n  background: rgba(0, 0, 0, 0.08);\r\n  box-shadow: 0 0 0 0.1429rem rgba(0, 0, 0, 0.08);\r\n}\r\npre code {\r\n  font-size: 0.9286rem;\r\n  line-height: 1.25em;\r\n  background: transparent;\r\n  box-shadow: none;\r\n  border: none;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.col12 {\r\n  width: 100%;\r\n}\r\n.col6 {\r\n  width: 50%;\r\n  float: left;\r\n  display: block;\r\n}\r\n\r\n.pill-group {\r\n  margin: 2.8571rem 0 0;\r\n}\r\n.pill-group a:first-child {\r\n  border-radius: 1.4286rem 0 0 1.4286rem;\r\n  border-right-width: 0;\r\n}\r\n.pill-group a:last-child {\r\n  border-radius: 0 1.4286rem 1.4286rem 0;\r\n}\r\n\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n", ""]);
 
 
 
@@ -31507,7 +31507,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, "th[role=columnheader]:not(.no-sort) {\n\tcursor: pointer;\n}\n\nth[role=columnheader]:not(.no-sort):after {\n\tcontent: '';\n\tfloat: right;\n\tmargin-top: 0.5rem;\n\tborder-width: 0 0.2857rem 0.2857rem;\n\tborder-style: solid;\n\tborder-color: #404040 transparent;\n\tvisibility: hidden;\n\topacity: 0;\n\t-ms-user-select: none;\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n\nth[aria-sort=ascending]:not(.no-sort):after {\n\tborder-bottom: none;\n\tborder-width: 0.2857rem 0.2857rem 0;\n}\n\nth[aria-sort]:not(.no-sort):after {\n\tvisibility: visible;\n\topacity: 0.4;\n}\n\nth[role=columnheader]:not(.no-sort):hover:after {\n\tvisibility: visible;\n\topacity: 1;\n}\n\n\n", ""]);
+exports.push([module.i, "th[role=columnheader]:not(.no-sort) {\n\tcursor: pointer;\n}\n\nth[role=columnheader]:not(.no-sort):after {\n\tcontent: '';\n\tfloat: right;\n\tmargin-top: 0.35rem;\n\tborder-width: 0.2857rem 0.2857rem 0;\n\tborder-style: solid;\n\tborder-color: #ffffff transparent;\n\tvisibility: hidden;\n\topacity: 0;\n\t-ms-user-select: none;\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n\nth[role=columnheader].downgrade:not(.no-sort):after{\n\tborder-width: 0 0.2857rem 0.2857rem;\n}\n\nth[aria-sort=ascending]:not(.no-sort):after {\n\tborder-bottom: none;\n\tborder-width: 0.2857rem 0.2857rem 0;\n}\n\nth[aria-sort]:not(.no-sort):after {\n\tvisibility: visible;\n\topacity: 0.4;\n}\n\nth[role=columnheader]:not(.no-sort):hover:after {\n\tvisibility: visible;\n\topacity: 1;\n}\n\n/* table, th, td {\n\tbackground: #ffffff;\n\tpadding: 5px;\n  }\ntable {\n\tbackground: #999999;\n\tborder-spacing: 15px;\n} */\n\n\n", ""]);
 
 
 
@@ -52275,6 +52275,12 @@ dom_Fcore.install('frame-ico', function () {
 dom_Fcore.install('filter-ico', function () {
   return Icons_('<svg class="navbar-search__filter" viewBox="0 0 15 15">' + '    <g>' + '        <polyline fill="none" points="5.5 13.2 5.5 5.8 1.5 1.2 13.5 1.2 9.5 5.8 9.5 10.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polyline>' + '    </g>' + '</svg>');
 });
+dom_Fcore.install('drag-horizontal', function () {
+  return Icons_('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cy="5" cx="9.5" r="1.5"></circle><circle cy="5" cx="14.5" r="1.5"></circle><circle cy="11" cx="9.5" r="1.5"></circle><circle cy="11" cx="14.5" r="1.5"></circle><circle cy="17" cx="9.5" r="1.5"></circle><circle cy="17" cx="14.5" r="1.5"></circle></svg>');
+});
+dom_Fcore.install('drag-vertical', function () {
+  return Icons_('<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="24px" height="24px" viewBox="0 0 24 24" preserveAspectRatio="none"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z" fill="#5F6368"/></g></svg>');
+});
 // CONCATENATED MODULE: ./js/dom/Fcomp.js
 
 
@@ -52458,7 +52464,6 @@ function alignFormCss(element, elementDynamic) {
       }
 
       if (maxWidth > maxColumn[k] || maxColumn[k] === undefined) {
-        console.log(element[i].childNodes[j], k, maxWidth);
         maxColumn[k] = element[i].childNodes[j].offsetWidth;
       }
 
@@ -52467,7 +52472,6 @@ function alignFormCss(element, elementDynamic) {
     }
   }
 
-  console.log(maxColumn);
   var resultcss = '';
   var value;
   var Dynamic = [];
@@ -52496,7 +52500,6 @@ function alignFormCss(element, elementDynamic) {
         var padding = parseFloat(paddingLeft) + parseFloat(paddingRight);
         var border = window.getComputedStyle(el, null).getPropertyValue('border-width');
         border = parseFloat(border);
-        console.log(tempWidth, padding, border);
         value += '{\n';
         value += 'width: ' + (tempWidth - (padding + border + 1) / fontSizeHtml) + 'rem; \n';
         value += '}\n';
@@ -52558,7 +52561,6 @@ function selectElement(nameClass, elementDynamic) {
   var ElementStack = [],
       GroupElement = [];
   window.addEventListener("click", function (event) {
-    console.log(event);
     var elementTarget = event.target;
 
     while (elementTarget.classList !== undefined && !elementTarget.classList.contains(nameClass)) {
@@ -52566,13 +52568,11 @@ function selectElement(nameClass, elementDynamic) {
     }
 
     if (elementTarget !== undefined && elementTarget !== document) {
-      console.log(elementTarget);
       ElementStack.push(elementTarget);
     }
   });
   window.addEventListener("keydown", function (event) {
     if (event.keyCode === 27) {
-      console.log(ElementStack, elementDynamic);
       alignFormCss(ElementStack, elementDynamic, GroupElement);
     }
   });
@@ -52695,6 +52695,29 @@ function onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, b
   moveAt(clone, event.pageX, event.pageY, shiftX, shiftY, trigger, functionCheckZone, bg, parent);
 }
 
+function onMouseMoveFix(clone, event, shiftY, result) {
+  event.preventDefault();
+  moveAtFix(clone, event.pageY, shiftY, result);
+}
+
+function moveAtFix(clone, pageY, shiftY, result) {
+  var y = pageY - result.bodyTable.getBoundingClientRect().top;
+
+  if (y > result.clientHeight - clone.clientHeight) {
+    y = result.clientHeight;
+    return;
+  }
+
+  y -= shiftY;
+
+  if (y < 0) {
+    y = 0;
+    return;
+  }
+
+  clone.style.top = y + 'px';
+}
+
 function moveElement(event, me, result, index) {
   var parent = me;
 
@@ -52759,21 +52782,100 @@ function moveElement(event, me, result, index) {
   };
 }
 
+function moveElementFix(event, me, result, index) {
+  var trigger;
+  console.log(index);
+  var clone = result.cloneRow(index);
+  var bg = result.backGroundFix(index);
+  result.bodyTable.appendChild(bg);
+  result.bodyTable.appendChild(clone);
+
+  var functionCheckZone = function functionCheckZone(event) {
+    var arrZone = bg.getZone();
+
+    for (var i = 0; i < arrZone.length; i++) {
+      var offset = clone.getBoundingClientRect();
+      var centerX = offset.left + offset.width / 2; // [UPDATE] subtract to center
+
+      var centerY = offset.top + offset.height / 2;
+      var checkElement = arrZone[i];
+
+      if (AABBYY(centerX, centerY, checkElement.getBoundingClientRect())) {
+        if (!checkElement.classList.contains("focus-blast")) {
+          checkElement.classList.add("focus-blast");
+          break;
+        }
+      } else {
+        if (checkElement.classList.contains("focus-blast")) checkElement.classList.remove("focus-blast");
+      }
+
+      var removeList = document.getElementsByClassName("focus-blast")[0];
+      if (removeList !== undefined) removeList.classList.remove("focus-blast");
+    }
+  };
+
+  var shiftY = -me.clientHeight / 2;
+  moveAtFix(clone, event.pageY, shiftY, result);
+  window.addEventListener('mousemove', functionCheckZone);
+
+  var trigger = function trigger(event) {
+    onMouseMoveFix(clone, event, shiftY, result);
+  };
+
+  window.addEventListener('mousemove', trigger);
+  window.addEventListener("mouseup", function () {
+    var removeList = document.getElementsByClassName("focus-blast")[0];
+
+    if (removeList !== undefined) {
+      var row1 = removeList.row1;
+      var row2 = removeList.row2;
+      var element = me;
+
+      while (element.tagName !== "TR" && element !== undefined) {
+        element = element.parentNode;
+      }
+
+      result.bodyTable.insertBefore(element, result.bodyTable.childNodes[row2 - 1]);
+      result.data = array_move(result.data, index - 1, row1);
+
+      for (var i = 0; i < element.childNodes.length; i++) {
+        var target = element[i];
+        result.clone.splice();
+      }
+    }
+
+    outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
+  });
+}
+
+function array_move(arr, old_index, new_index) {
+  if (new_index >= arr.length) {
+    var k = new_index - arr.length + 1;
+
+    while (k--) {
+      arr.push(undefined);
+    }
+  }
+
+  arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+  return arr; // for testing
+}
+
+;
+
 function AABBYY(x, y, bound) {
   if (bound.x === 0 && bound.y === 0 && bound.width === 0 && bound.height === 0) return true;
   return x >= bound.x && y >= bound.y && x <= bound.x + bound.width && y <= bound.y + bound.height;
 }
 
 function outFocus(clone, trigger, functionCheckZone, bg, parent) {
-  if (clone.onmouseup !== null) {
-    window.removeEventListener('mousemove', functionCheckZone);
-    window.removeEventListener('mousemove', trigger);
-    clone.onmouseup = null;
-    setTimeout(function () {
-      parent.removeChild(bg);
-    }, 20);
-    clone.selfRemove();
-  }
+  window.removeEventListener('mousemove', functionCheckZone);
+  window.removeEventListener('mousemove', trigger);
+  clone.onmouseup = null;
+  setTimeout(function () {
+    bg.selfRemove();
+  }, 20);
+  clone.selfRemove();
 }
 
 function captureMousePosition(event) {
@@ -52784,11 +52886,15 @@ function captureMousePosition(event) {
 function tableView() {
   var header = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var dragHorizontal = arguments.length > 2 ? arguments[2] : undefined;
+  var dragVertical = arguments.length > 3 ? arguments[3] : undefined;
+  if (window.mobilecheck()) return tableViewMobile();
   var cell,
       row,
       value,
       check = [],
       bonus;
+  var checkSpan = [];
 
   var headerTable = ModuleView_({
     tag: "thead",
@@ -52810,6 +52916,8 @@ function tableView() {
     child: [headerTable, bodyTable]
   });
 
+  result.headerTable = headerTable;
+  result.bodyTable = bodyTable;
   setTimeout(function () {
     if (window.scrollEvent === undefined) {
       window.xMousePos = 0;
@@ -52856,6 +52964,8 @@ function tableView() {
         if (_typeof(header[i]) === "object") value = "";else value = header[i];
       } else value = header[i].value;
 
+      var functionClick = undefined;
+
       switch (header[i].type) {
         case "check":
           check[i] = "check";
@@ -52864,32 +52974,93 @@ function tableView() {
             "class": "pizo-checkbox",
             on: {
               click: function click(event) {
-                for (var j = 1; j < bodyTable.listCheckBox.length; j++) {
-                  bodyTable.listCheckBox[j].checked = this.checked;
+                for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                  result.bodyTable.listCheckBox[j].checked = this.checked;
                 }
               }
             }
           });
-          bodyTable.listCheckBox = [bonus];
+          result.bodyTable.listCheckBox = [bonus];
           break;
 
         case "increase":
           check[i] = "increase";
           break;
+
+        case "dragzone":
+          check[i] = "dragzone";
+          break;
+
+        case "detail":
+          check[i] = "detail";
+          var icon = "more";
+          if (header[i].icon !== undefined) icon = header[i].icon;
+          bonus = ModuleView_({
+            tag: "i",
+            "class": "material-icons",
+            style: {
+              fontSize: "1.4rem",
+              cursor: "pointer"
+            },
+            props: {
+              innerHTML: icon
+            }
+          });
+          break;
       }
 
+      if (header[i].sort === true || header[i].sort === undefined) {
+        functionClick = function functionClick(event, me, index, dataIndex, row, result) {
+          var last_sort = document.getElementsByClassName("downgrade");
+          last_sort = last_sort[0];
+
+          if (last_sort !== me && last_sort !== undefined) {
+            last_sort.classList.remove("downgrade");
+          }
+
+          if (!me.classList.contains("downgrade")) {
+            result.data.sort(function (a, b) {
+              var valueA = a[index].value;
+              var valueB = b[index].value;
+              if (valueA === undefined) valueA = a[index];
+              if (valueB === undefined) valueB = b[index];
+              return valueA - valueB;
+            });
+            me.classList.add("downgrade");
+          } else {
+            result.data.sort(function (a, b) {
+              var valueA = a[index].value;
+              var valueB = b[index].value;
+              if (valueA === undefined) valueA = a[index];
+              if (valueB === undefined) valueB = b[index];
+              return valueB - valueA;
+            });
+            me.classList.remove("downgrade");
+          }
+
+          result.updateTable(header, data, dragHorizontal, dragVertical);
+        };
+      }
+
+      if (header[i].functionClick !== undefined) functionClick = header[i].functionClick;
       cell = ModuleView_({
         tag: "th",
         attr: {
           role: 'columnheader'
         },
         props: {
-          innerHTML: value,
           id: i
         },
         on: {
-          mousedown: function (index) {
+          click: function (index, row, functionClick) {
             return function (event) {
+              event.preventDefault();
+              if (functionClick !== undefined) functionClick(event, this, index, data[index], row, result);
+            };
+          }(i, row, functionClick),
+          mousedown: dragHorizontal ? function (index) {
+            return function (event) {
+              event.preventDefault();
               var finalIndex;
 
               for (var i = 0; i < result.clone.length; i++) {
@@ -52899,19 +53070,60 @@ function tableView() {
                 }
               }
 
-              console.log(index, finalIndex, Object.assign({}, result.clone));
-              moveElement(event, this, result, finalIndex);
+              this.hold = false;
+              var dom = this;
+              this["default"] = event;
+              this.timeoutID = setTimeout(function () {
+                dom.hold = true;
+                moveElement(event, dom, result, finalIndex);
+              }, 200);
             };
-          }(i),
-          dragstart: function dragstart() {
+          }(i) : undefined,
+          dragstart: dragHorizontal ? function () {
             return false;
+          } : undefined,
+          mouseup: function mouseup() {
+            if (this.hold === false) {
+              this.hold = true; // this.click();
+
+              clearTimeout(this.timeoutID);
+            }
           },
-          mouseup: function mouseup() {}
+          mousemove: dragHorizontal ? function (index) {
+            return function (event) {
+              if (this.hold === false) {
+                var finalIndex;
+
+                for (var i = 0; i < result.clone.length; i++) {
+                  if (result.clone[i][0].id == index) {
+                    finalIndex = i;
+                    break;
+                  }
+                }
+
+                this.hold = false;
+                var deltaX = this["default"].clientX - event.clientX,
+                    deltaY = this["default"].clientY - event.clientY;
+
+                if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
+                  this.hold = true;
+                  moveElement(event, this, result, finalIndex);
+                  clearTimeout(this.timeoutID);
+                }
+              }
+            };
+          }(i) : undefined
         }
       });
 
       if (header[i].sort === false) {
         cell.classList.add("no-sort");
+      }
+
+      if (header[i].element === undefined) {
+        cell.textContent = value;
+      } else {
+        cell.appendChild(data[i][j].element);
       }
 
       if (bonus !== undefined) {
@@ -52932,6 +53144,11 @@ function tableView() {
     k = 0;
 
     for (var j = 0; j < data[i].length; j++) {
+      if (checkSpan[i] !== undefined && checkSpan[i][j] == 1) {
+        k++;
+        continue;
+      }
+
       if (data[i].value === undefined) {
         if (_typeof(data[i][j]) === "object") value = "";else value = data[i][j];
       } else value = data[i][j].value;
@@ -52944,43 +53161,182 @@ function tableView() {
           value += i + 1;
           break;
 
+        case "dragzone":
+          if (data[i][j].icon !== undefined) {
+            icon = data[i][j].icon;
+            bonus = ModuleView_({
+              tag: "i",
+              "class": ["material-icons"],
+              style: {
+                fontSize: "20px",
+                cursor: "pointer"
+              },
+              props: {
+                innerHTML: icon
+              }
+            });
+          } else {
+            bonus = ModuleView_({
+              tag: "drag-horizontal",
+              on: {
+                mousedown: dragVertical ? function (index) {
+                  return function (event) {
+                    event.preventDefault();
+                    var finalIndex;
+
+                    for (var i = 1; i < result.clone[0].length; i++) {
+                      if (result.clone[0][i].idRow == index) {
+                        finalIndex = i;
+                        break;
+                      }
+                    }
+
+                    this.hold = false;
+                    var dom = this;
+                    this["default"] = event;
+                    this.timeoutID = setTimeout(function () {
+                      dom.hold = true;
+                      moveElementFix(event, dom, result, finalIndex);
+                    }, 200);
+                  };
+                }(i) : undefined,
+                dragstart: dragVertical ? function () {
+                  return false;
+                } : undefined,
+                mouseup: function mouseup() {
+                  if (this.hold === false) {
+                    this.hold = true; // this.click();
+
+                    clearTimeout(this.timeoutID);
+                  }
+                },
+                mousemove: dragVertical ? function (index) {
+                  return function (event) {
+                    if (this.hold === false) {
+                      var finalIndex;
+
+                      for (var i = 0; i < result.clone[0].length; i++) {
+                        if (result.clone[0][i].idRow == index) {
+                          finalIndex = i;
+                          break;
+                        }
+                      }
+
+                      this.hold = false;
+                      var deltaX = this["default"].clientX - event.clientX,
+                          deltaY = this["default"].clientY - event.clientY;
+
+                      if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
+                        this.hold = true;
+                        moveElementFix(event, this, result, finalIndex);
+                        clearTimeout(this.timeoutID);
+                      }
+                    }
+                  };
+                }(i) : undefined
+              }
+            });
+          }
+
+          break;
+
         case "check":
           bonus = ModuleView_({
             tag: "checkboxbutton",
             "class": "pizo-checkbox",
             on: {
               click: function click(event) {
-                if (bodyTable.listCheckBox !== undefined) {
-                  if (this.checked === false) bodyTable.listCheckBox[0].checked = false;else {
-                    if (bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < bodyTable.listCheckBox.length; j++) {
-                      if (bodyTable.listCheckBox[j].checked === true) {
+                if (result.bodyTable.listCheckBox !== undefined) {
+                  if (this.checked === false) result.bodyTable.listCheckBox[0].checked = false;else {
+                    if (result.bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                      if (result.bodyTable.listCheckBox[j].checked === false) {
                         j--;
                         break;
                       }
                     }
 
-                    if (j === bodyTable.listCheckBox.length) {
-                      bodyTable.listCheckBox[0].checked = true;
+                    if (j === result.bodyTable.listCheckBox.length) {
+                      result.bodyTable.listCheckBox[0].checked = true;
                     }
                   }
                 }
               }
             }
           });
-          if (bodyTable.listCheckBox !== undefined) bodyTable.listCheckBox.push(bonus);
+          if (result.bodyTable.listCheckBox !== undefined) result.bodyTable.listCheckBox.push(bonus);
+          break;
+
+        case "detail":
+          var icon = "more_vert";
+          if (data[i][j].icon !== undefined) icon = data[i][j].icon;
+          bonus = ModuleView_({
+            tag: "i",
+            "class": "material-icons",
+            style: {
+              fontSize: "20px",
+              cursor: "pointer"
+            },
+            props: {
+              innerHTML: icon
+            }
+          });
+          break;
       }
 
+      var functionClick = undefined;
+      if (data[i][j].functionClick !== undefined) functionClick = data[i][j].functionClick;else {
+        if (header[j].functionClickAll !== undefined) functionClick = header[j].functionClickAll;
+      }
       cell = ModuleView_({
         tag: "td",
         props: {
-          innerHTML: value
+          idRow: i
         },
-        on: {}
+        on: {
+          click: function (index, row, functionClick) {
+            return function (event) {
+              event.preventDefault();
+
+              if (functionClick !== undefined) {
+                for (var i = 0; i < result.data.length; i++) {
+                  if (this.data == result.data[i]) {
+                    functionClick(event, this, i, this.data, row);
+                  }
+                }
+              }
+            };
+          }(i, row, functionClick)
+        }
       });
+      cell.data = data[i];
+
+      if (data[i][j].element === undefined) {
+        cell.textContent = value;
+      } else {
+        cell.appendChild(data[i][j].element);
+      }
 
       if (bonus !== undefined) {
         cell.addChild(bonus);
         bonus = undefined;
+      }
+
+      if (data[i][j].rowspan !== undefined) {
+        cell.setAttribute("rowspan", data[i][j].rowspan);
+
+        for (var l = i; l < i + data[i][j].rowspan; l++) {
+          if (checkSpan[l] === undefined) checkSpan[l] = [];
+          checkSpan[l][j] = 1;
+        }
+      }
+
+      if (data[i][j].colspan !== undefined) {
+        cell.setAttribute("colspan", data[i][j].colspan);
+        checkSpan[i] = [];
+
+        for (var l = j; l < j + data[i][j].colspan; l++) {
+          checkSpan[i][l] = 1;
+        }
       }
 
       result.clone[k++].push(cell);
@@ -52988,16 +53344,459 @@ function tableView() {
     }
   }
 
-  console.log(result.clone);
+  result.check = check;
   result.cloneColumn = tableView.prototype.cloneColumn;
   result.cloneRow = tableView.prototype.cloneRow;
   result.deleteColumn = tableView.prototype.deleteColumn;
   result.getBound2Colum = tableView.prototype.getBound2Colum;
+  result.getBound2Row = tableView.prototype.getBound2Row;
   result.backGround = tableView.prototype.backGround;
+  result.backGroundFix = tableView.prototype.backGroundFix;
+  result.updateTable = tableView.prototype.updateTable;
+  result.dropRow = tableView.prototype.dropRow;
   result.header = header;
   result.data = data;
   return result;
 }
+
+tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
+  var temp = ModuleView_({
+    tag: "tbody"
+  });
+
+  var row, value, cell, bonus, k;
+  var checkSpan = [];
+  temp.listCheckBox = [];
+  var result = this;
+  if (this.bodyTable.listCheckBox !== undefined) temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
+  var delta = [];
+
+  for (var i = 0; i < data.length; i++) {
+    row = ModuleView_({
+      tag: "tr"
+    });
+    temp.addChild(row);
+
+    for (var j = 0; j < this.clone.length; j++) {
+      k = parseFloat(this.clone[j][0].id);
+      if (delta[j] === undefined) delta[j] = 0;
+
+      if (checkSpan[i] !== undefined && checkSpan[i][j] == 1) {
+        this.clone[j].splice(i + 1 - delta[j], 1);
+        delta[j] += 1;
+        continue;
+      }
+
+      if (data[i].value === undefined) {
+        if (_typeof(data[i][k]) === "object") value = "";else value = data[i][k];
+      } else value = data[i][k].value;
+
+      switch (this.check[k]) {
+        case "hidden":
+          continue;
+
+        case "increase":
+          value += i + 1;
+          break;
+
+        case "dragzone":
+          if (data[i][k].icon !== undefined) {
+            icon = data[i][k].icon;
+            bonus = ModuleView_({
+              tag: "i",
+              "class": ["material-icons"],
+              style: {
+                fontSize: "20px",
+                cursor: "pointer"
+              },
+              props: {
+                innerHTML: icon
+              }
+            });
+          } else {
+            bonus = ModuleView_({
+              tag: "drag-horizontal",
+              on: {
+                mousedown: dragVertical ? function (index) {
+                  return function (event) {
+                    event.preventDefault();
+                    var finalIndex;
+
+                    for (var i = 1; i < result.clone[0].length; i++) {
+                      if (result.clone[0][i].idRow == index) {
+                        finalIndex = i;
+                        break;
+                      }
+                    }
+
+                    this.hold = false;
+                    var dom = this;
+                    this["default"] = event;
+                    this.timeoutID = setTimeout(function () {
+                      dom.hold = true;
+                      moveElementFix(event, dom, result, finalIndex);
+                    }, 200);
+                  };
+                }(i) : undefined,
+                dragstart: dragVertical ? function () {
+                  return false;
+                } : undefined,
+                mouseup: function mouseup() {
+                  if (this.hold === false) {
+                    this.hold = true; // this.click();
+
+                    clearTimeout(this.timeoutID);
+                  }
+                },
+                mousemove: dragVertical ? function (index) {
+                  return function (event) {
+                    if (this.hold === false) {
+                      var finalIndex;
+
+                      for (var i = 0; i < result.clone[0].length; i++) {
+                        if (result.clone[0][i].idRow == index) {
+                          finalIndex = i;
+                          break;
+                        }
+                      }
+
+                      this.hold = false;
+                      var deltaX = this["default"].clientX - event.clientX,
+                          deltaY = this["default"].clientY - event.clientY;
+
+                      if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
+                        this.hold = true;
+                        moveElementFix(event, this, result, finalIndex);
+                        clearTimeout(this.timeoutID);
+                      }
+                    }
+                  };
+                }(i) : undefined
+              }
+            });
+          }
+
+          break;
+
+        case "check":
+          bonus = ModuleView_({
+            tag: "checkboxbutton",
+            "class": "pizo-checkbox",
+            on: {
+              click: function click(event) {
+                if (temp.listCheckBox !== undefined) {
+                  if (this.checked === false) temp.listCheckBox[0].checked = false;else {
+                    if (temp.listCheckBox[0].checked === false) for (var m = 1; m < temp.listCheckBox.length; m++) {
+                      if (temp.listCheckBox[m].checked === false) {
+                        m--;
+                        break;
+                      }
+                    }
+
+                    if (m === temp.listCheckBox.length) {
+                      temp.listCheckBox[0].checked = true;
+                    }
+                  }
+                }
+              }
+            }
+          });
+          if (temp.listCheckBox[0].checked === true) bonus.checked = true;
+          if (temp.listCheckBox !== undefined) temp.listCheckBox.push(bonus);
+          break;
+
+        case "detail":
+          var icon = "more_vert";
+          if (data[i][k].icon !== undefined) icon = data[i][k].icon;
+          bonus = ModuleView_({
+            tag: "i",
+            "class": "material-icons",
+            style: {
+              fontSize: "20px",
+              cursor: "pointer"
+            },
+            props: {
+              innerHTML: icon
+            }
+          });
+          break;
+      }
+
+      var functionClick;
+      if (data[i][k].functionClick !== undefined) functionClick = data[i][k].functionClick;else {
+        if (header[k].functionClickAll !== undefined) functionClick = header[k].functionClickAll;
+      }
+      cell = ModuleView_({
+        tag: "td",
+        props: {
+          idRow: i,
+          innerHTML: value
+        },
+        on: {
+          click: function (index, row, functionClick) {
+            return function (event) {
+              event.preventDefault();
+              if (functionClick !== undefined) functionClick(event, this, index, data[index], row);
+            };
+          }(i, row, functionClick)
+        }
+      });
+
+      if (bonus !== undefined) {
+        cell.addChild(bonus);
+        bonus = undefined;
+      }
+
+      if (data[i][k].colspan !== undefined) {
+        cell.setAttribute("colspan", data[i][k].colspan);
+        checkSpan[i] = [];
+
+        for (var l = j; l < j + data[i][k].colspan; l++) {
+          checkSpan[i][l] = 1;
+        }
+      }
+
+      this.clone[j][i + 1 - delta[j]] = cell;
+      row.addChild(cell);
+    }
+  }
+
+  this.replaceChild(temp, this.bodyTable);
+  this.data = data;
+  this.bodyTable = temp;
+};
+
+tableView.prototype.updateRow = function (data, index) {
+  var result = this;
+
+  for (var i = 0; i < data.length; i++) {
+    if (data.value === undefined) {
+      if (_typeof(data[k]) === "object") value = "";else value = data[k];
+    } else value = data[k].value;
+
+    switch (this.check[k]) {
+      case "hidden":
+        continue;
+
+      case "increase":
+        value += i + 1;
+        break;
+
+      case "dragzone":
+        if (data[k].icon !== undefined) {
+          icon = data[k].icon;
+          bonus = ModuleView_({
+            tag: "i",
+            "class": ["material-icons"],
+            style: {
+              fontSize: "20px",
+              cursor: "pointer"
+            },
+            props: {
+              innerHTML: icon
+            }
+          });
+        } else {
+          bonus = ModuleView_({
+            tag: "drag-horizontal",
+            on: {
+              mousedown: dragVertical ? function (index) {
+                return function (event) {
+                  event.preventDefault();
+                  var finalIndex;
+
+                  for (var i = 1; i < result.clone[0].length; i++) {
+                    if (result.clone[0][i].idRow == index) {
+                      finalIndex = i;
+                      break;
+                    }
+                  }
+
+                  this.hold = false;
+                  var dom = this;
+                  this["default"] = event;
+                  this.timeoutID = setTimeout(function () {
+                    dom.hold = true;
+                    moveElementFix(event, dom, result, finalIndex);
+                  }, 200);
+                };
+              }(i) : undefined,
+              dragstart: dragVertical ? function () {
+                return false;
+              } : undefined,
+              mouseup: function mouseup() {
+                if (this.hold === false) {
+                  this.hold = true; // this.click();
+
+                  clearTimeout(this.timeoutID);
+                }
+              },
+              mousemove: dragVertical ? function (index) {
+                return function (event) {
+                  if (this.hold === false) {
+                    var finalIndex;
+
+                    for (var i = 0; i < result.clone[0].length; i++) {
+                      if (result.clone[0][i].idRow == index) {
+                        finalIndex = i;
+                        break;
+                      }
+                    }
+
+                    this.hold = false;
+                    var deltaX = this["default"].clientX - event.clientX,
+                        deltaY = this["default"].clientY - event.clientY;
+
+                    if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
+                      this.hold = true;
+                      moveElementFix(event, this, result, finalIndex);
+                      clearTimeout(this.timeoutID);
+                    }
+                  }
+                };
+              }(i) : undefined
+            }
+          });
+        }
+
+        break;
+
+      case "check":
+        bonus = ModuleView_({
+          tag: "checkboxbutton",
+          "class": "pizo-checkbox",
+          on: {
+            click: function click(event) {
+              if (temp.listCheckBox !== undefined) {
+                if (this.checked === false) temp.listCheckBox[0].checked = false;else {
+                  if (temp.listCheckBox[0].checked === false) for (var m = 1; m < temp.listCheckBox.length; m++) {
+                    if (temp.listCheckBox[m].checked === false) {
+                      m--;
+                      break;
+                    }
+                  }
+
+                  if (m === temp.listCheckBox.length) {
+                    temp.listCheckBox[0].checked = true;
+                  }
+                }
+              }
+            }
+          }
+        });
+        if (temp.listCheckBox[0].checked === true) bonus.checked = true;
+        if (temp.listCheckBox !== undefined) temp.listCheckBox.push(bonus);
+        break;
+
+      case "detail":
+        var icon = "more_vert";
+        if (data[i][k].icon !== undefined) icon = data[i][k].icon;
+        bonus = ModuleView_({
+          tag: "i",
+          "class": "material-icons",
+          style: {
+            fontSize: "20px",
+            cursor: "pointer"
+          },
+          props: {
+            innerHTML: icon
+          }
+        });
+        break;
+    }
+
+    var functionClick;
+    if (data[i][k].functionClick !== undefined) functionClick = data[i][k].functionClick;else {
+      if (header[k].functionClickAll !== undefined) functionClick = header[k].functionClickAll;
+    }
+    cell = ModuleView_({
+      tag: "td",
+      props: {
+        idRow: i,
+        innerHTML: value
+      },
+      on: {
+        click: function (index, row, functionClick) {
+          return function (event) {
+            event.preventDefault();
+            if (functionClick !== undefined) functionClick(event, this, index, data[index], row);
+          };
+        }(i, row, functionClick)
+      }
+    });
+
+    if (bonus !== undefined) {
+      cell.addChild(bonus);
+      bonus = undefined;
+    }
+
+    if (data[i][k].colspan !== undefined) {
+      cell.setAttribute("colspan", data[i][k].colspan);
+      checkSpan[i] = [];
+
+      for (var l = j; l < j + data[i][k].colspan; l++) {
+        checkSpan[i][l] = 1;
+      }
+    }
+
+    this.clone[j][i + 1 - delta[j]] = cell;
+    row.addChild(cell);
+  }
+};
+
+tableView.prototype.dropRow = function (element, index) {
+  var self = this;
+  if (!element.classList.contains("hide")) element.classList.add("hide");
+
+  var eventEnd = function eventEnd() {
+    self.data.splice(index, 1);
+    element.selfRemove();
+    var delta = 0;
+
+    for (var i = 0; i < element.childNodes.length; i++) {
+      self.clone[i + delta].splice(index + 1, 1);
+      if (element.childNodes[i].colSpan !== undefined) delta += element.childNodes[i].colSpan - 1;
+    }
+  }; // Code for Safari 3.1 to 6.0
+
+
+  element.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+  element.addEventListener("transitionend", eventEnd);
+};
+
+tableView.prototype.backGroundFix = function (index) {
+  var temp = ModuleView_({
+    tag: "div",
+    "class": "background-opacity",
+    style: {
+      backgroundColor: "#ffffff00"
+    },
+    child: []
+  });
+
+  var arrZone = [];
+  var tempElement = this.getBound2Row(undefined, 0, index);
+  arrZone.push(tempElement);
+  temp.appendChild(tempElement);
+
+  for (var i = 0; i < this.clone[0].length - 1; i++) {
+    tempElement = this.getBound2Row(i, i + 1, index);
+    arrZone.push(tempElement);
+    temp.appendChild(tempElement);
+  }
+
+  tempElement = this.getBound2Row(this.clone[0].length - 1, undefined, index);
+  tempElement.childNodes[0].style.height = parseFloat(tempElement.childNodes[0].style.height) - 2 + "px";
+  arrZone.push(tempElement);
+  temp.appendChild(tempElement);
+
+  temp.getZone = function () {
+    return arrZone;
+  };
+
+  return temp;
+};
 
 tableView.prototype.backGround = function (height, callback, index) {
   var temp = ModuleView_({
@@ -53048,7 +53847,7 @@ tableView.prototype.backGround = function (height, callback, index) {
   }
 
   tempElement = this.getBound2Colum(this.clone.length - 1, undefined, index);
-  tempElement.childNodes[2].style.width = parseFloat(tempElement.childNodes[2].style.width) - 2 + "px";
+  tempElement.childNodes[2].style.width = parseFloat(tempElement.childNodes[2].style.width) - 8 + "px";
   arrZone.push(tempElement);
   temp.appendChild(tempElement);
 
@@ -53082,6 +53881,7 @@ tableView.prototype.cloneColumn = function (index) {
     tag: "thead"
   });
 
+  var cell;
   headerTable.addChild(ModuleView_({
     tag: "tr",
     child: [clone]
@@ -53107,10 +53907,12 @@ tableView.prototype.cloneColumn = function (index) {
     clone = this.clone[index][i].cloneNode(true);
     clone.style.width = this.clone[index][i].offsetWidth - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
     clone.style.height = this.clone[index][i].offsetHeight - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
-    bodyTable.addChild(ModuleView_({
+    cell = ModuleView_({
       tag: "tr",
       child: [clone]
-    }));
+    });
+    if (this.clone[index][i].colSpan !== undefined) clone.setAttribute("rowSpan", "");
+    bodyTable.addChild(cell);
   }
 
   return result;
@@ -53118,6 +53920,7 @@ tableView.prototype.cloneColumn = function (index) {
 
 tableView.prototype.cloneRow = function (index) {
   var clone;
+  console.log(index);
 
   var headerTable = ModuleView_({
     tag: "thead"
@@ -53132,23 +53935,34 @@ tableView.prototype.cloneRow = function (index) {
     style: {
       fontSize: "0.7857rem",
       position: "absolute",
-      zIndex: 1000
+      zIndex: 1000,
+      opacity: 0.7
     },
     "class": "sortTableClone",
     child: [headerTable, bodyTable]
   });
 
+  var row = ModuleView_({
+    tag: "tr"
+  });
+
+  if (index === 0) headerTable.addChild(row);else {
+    bodyTable.addChild(row);
+  }
+  var delta = 0;
+
   for (var i = 0; i < this.clone.length; i++) {
+    if (delta > 0) {
+      delta--;
+      continue;
+    }
+
     clone = this.clone[i][index].cloneNode(true);
-    clone.style.width = this.clone[i][index].offsetWidth - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
+    if (clone.colSpan !== undefined) delta = clone.colSpan - 1;
+    clone.style.width = this.clone[i][index].offsetWidth - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-right-width').replace("px", "") + 1 + 'px';
     clone.style.height = this.clone[i][index].offsetHeight - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
-    if (index === 0) headerTable.addChild(ModuleView_({
-      tag: "tr",
-      child: [clone]
-    }));else bodyTable.addChild(ModuleView_({
-      tag: "tr",
-      child: [clone]
-    }));
+    clone.setAttribute("colSpan", "");
+    row.appendChild(clone);
   }
 
   return result;
@@ -53157,15 +53971,14 @@ tableView.prototype.cloneRow = function (index) {
 tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
   var self = this;
   var left, right;
-  console.log(colum1, colum2, index);
   if (colum1 !== undefined) left = self.clone[colum1][0].offsetWidth / 2;else left = 20;
   if (colum2 !== undefined) right = self.clone[colum2][0].offsetWidth / 2;else right = 20;
   return ModuleView_({
     tag: "div",
     "class": "move-hover-zone",
     style: {
-      height: self.offsetHeight + "px" // backgroundColor : random_bg_color()
-
+      height: self.offsetHeight + "px",
+      backgroundColor: random_bg_color()
     },
     on: {
       mouseover: function mouseover() {
@@ -53175,13 +53988,26 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
           // if(index==colum2)
           //     return;
 
+          var delta = 0,
+              lastDelta;
+
           for (var i = 0; i < self.clone[index].length; i++) {
-            parent = self.clone[index][i].parentNode;
+            parent = self.clone[index][i - delta].parentNode;
 
             if (colum2 !== undefined) {
-              parent.insertBefore(self.clone[index][i], self.clone[colum2][i]);
+              if (lastDelta > 0) {
+                lastDelta--;
+                continue;
+              }
+
+              parent.insertBefore(self.clone[index][i - delta], self.clone[colum2][i]);
             } else {
               parent.appendChild(self.clone[index][i]);
+            }
+
+            if (self.clone[index][i].rowSpan !== undefined) {
+              delta += self.clone[index][i].rowSpan - 1;
+              lastDelta = self.clone[index][i].rowSpan - 1;
             }
           }
 
@@ -53217,6 +54043,47 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
   });
 };
 
+tableView.prototype.getBound2Row = function (row1, row2) {
+  var self = this;
+  var top, bottom;
+  if (row1 !== undefined) top = self.clone[0][row1].offsetHeight / 2;else top = 0;
+  if (row2 !== undefined) bottom = self.clone[0][row2].offsetHeight / 2;else bottom = 0;
+  return ModuleView_({
+    tag: "div",
+    "class": "move-hover-zone-topbot",
+    props: {
+      row1: row1,
+      row2: row2
+    },
+    style: {
+      width: self.offsetWidth + "px"
+    },
+    on: {
+      mouseover: function mouseover() {}
+    },
+    child: [{
+      tag: "div",
+      "class": "move-hover-zone-top",
+      style: {
+        height: top + 'px'
+      }
+    }, {
+      tag: "div",
+      "class": "move-hover-zone-middle"
+    }, {
+      tag: "div",
+      "class": "move-hover-zone-bottom",
+      style: {
+        height: bottom + 'px'
+      }
+    }]
+  });
+};
+
+function tableViewMobile() {
+  var header = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+}
 function getDate() {
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -55024,17 +55891,29 @@ listProject_listProject.prototype.getView = function () {
       }]
     }]
   });
+  var tableViewX;
+
+  var functionClickMore = function functionClickMore(event, me, index, data, row) {
+    console.log(event, me, index, data, row);
+    tableViewX.dropRow(row, index);
+  };
+
+  var test = listProject_({
+    tag: "span",
+    props: {
+      innerHTML: "concac"
+    }
+  });
+
   var header = [{
+    type: "dragzone",
+    sort: false
+  }, {
     type: "increase",
     value: "#",
     sort: false
-  }, {
-    type: "check",
-    sort: false
-  }, {
+  }, 'MS', 'Số nhà', {
     hidden: true,
-    value: 'MS'
-  }, 'Số nhà', {
     value: 'Tên đường',
     sort: false
   }, {
@@ -55070,12 +55949,17 @@ listProject_listProject.prototype.getView = function () {
   }, {
     value: 'Hiện trạng',
     sort: false
-  }, {
-    value: 'Trạng thái',
-    sort: false
-  }, 'Ngày tạo'];
-  var dataTable = [[{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"], [{}, {}, "132709", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "Đã duyệt", "15:48 03/03/2020"]];
-  var tableViewX = tableView(header, dataTable);
+  }, 'Ngày tạo', {
+    type: "detail",
+    sort: false,
+    functionClickAll: functionClickMore,
+    icon: ""
+  }];
+  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "11", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 24", {
+    value: "Q. Bình Thạnh",
+    colspan: 2
+  }, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "12", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "13", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "15", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "16", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "17", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "18", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 23", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "1", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 1", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "2", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "3", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "4", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "5", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "6", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "7", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "8", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "9", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
+  tableViewX = tableView(header, dataTable, true, true);
   this.searchControl = this.searchControlContent();
   this.$view.addChild(listProject_({
     tag: "div",

@@ -266,12 +266,12 @@ function onMouseMoveFix(clone, event,shiftY, result) {
 function moveAtFix(clone,pageY,shiftY,result)
 {
     var y = pageY - result.bodyTable.getBoundingClientRect().top;
-
+    y-= shiftY;
     if(y>result.clientHeight-clone.clientHeight){
         y = result.clientHeight;
         return;
     }
-    y-= shiftY;
+    
     if(y<0){
         y = 0;
         return;
@@ -383,7 +383,8 @@ function moveElementFix(event, me, result, index) {
         }
 
     }
-    let shiftY = -me.clientHeight/2;
+    console.log(me)
+    let shiftY = - me.parentNode.clientHeight/2 - parseFloat(getComputedStyle(me.parentNode).webkitBorderHorizontalSpacing);
     moveAtFix(clone, event.pageY, shiftY ,result);
     window.addEventListener('mousemove',functionCheckZone);
     var trigger = function(event)
@@ -930,9 +931,11 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     result.backGroundFix = tableView.prototype.backGroundFix;
     result.updateTable = tableView.prototype.updateTable;
     result.dropRow = tableView.prototype.dropRow;
+    result.updateRow = tableView.prototype.updateRow;
     result.header = header;
     result.data = data;
-    
+    result.dragHorizontal = dragHorizontal;
+    result.dragVertical = dragVertical;
     return result;
 }
 
@@ -1111,18 +1114,30 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
                 tag: "td",
                 props: {
                     idRow:i,
-                    innerHTML: value
                 },
                 on: {
                     click: function (index, row, functionClick) {
                         return function (event) {
                             event.preventDefault();
-                            if (functionClick !== undefined)
-                                functionClick(event, this, index, data[index], row);
+                            if (functionClick !== undefined){
+                                for(var i=0;i<result.data.length;i++){
+                                    if(this.data==result.data[i]){
+                                        functionClick(event, this, i, this.data, row);
+                                    }
+                                }
+                            }
                         }
                     }(i, row, functionClick),
                 }
             })
+            if(data[i][k].element===undefined)
+            {
+                cell.textContent  = value;
+            }else
+            {
+                cell.appendChild(data[i][k].element);
+            }
+            cell.data = data[i];
             if (bonus !== undefined) {
                 cell.addChild(bonus);
                 bonus = undefined;
@@ -1147,31 +1162,44 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     this.replaceChild(temp, this.bodyTable);
     this.data = data;
     this.bodyTable = temp;
+    this.dragHorizontal = dragHorizontal;
+    this.dragVertical = dragVertical;
 }
 
 tableView.prototype.updateRow = function(data,index)
 {
+    var temp;
+    temp = this.clone[0][index+1].parentNode;
     var result = this;
+    var value,bonus,cell,row,delta = 0,checkSpan=[];
+    var row = _({
+        tag: "tr"
+    });
     for(var i = 0;i<data.length;i++)
     {
+        if(checkSpan[i]==1){
+            delta+=1;
+            continue;
+        }
         if (data.value === undefined) {
-            if (typeof data[k] === "object")
+            if (typeof data[i] === "object")
                 value = "";
             else
-                value = data[k];
+                value = data[i];
         }
         else
-            value = data[k].value;
-        switch (this.check[k]) {
+            value = data[i].value;
+        console.log(value)
+        switch (this.check[i]) {
             case "hidden":
                 continue;
             case "increase":
                 value += (i + 1);
                 break;
             case "dragzone":
-                if (data[k].icon !== undefined)
+                if (data[i].icon !== undefined)
                 {
-                    icon = data[k].icon;
+                    icon = data[i].icon;
                     bonus = _({
                         tag: "i",
                         class: ["material-icons"],
@@ -1188,7 +1216,7 @@ tableView.prototype.updateRow = function(data,index)
                     bonus = _({
                         tag:"drag-horizontal",
                         on:{
-                            mousedown: dragVertical ? function (index) {
+                            mousedown: this.dragVertical ? function (index) {
                                 return function (event) {
                                     event.preventDefault();
                                     var finalIndex;
@@ -1207,7 +1235,7 @@ tableView.prototype.updateRow = function(data,index)
                                     }, 200);
                                 }
                             }(i) : undefined,
-                            dragstart: dragVertical ? function () {
+                            dragstart: this.dragVertical ? function () {
                                 return false;
                             } : undefined,
                             mouseup: function () {
@@ -1217,12 +1245,12 @@ tableView.prototype.updateRow = function(data,index)
                                     clearTimeout(this.timeoutID);
                                 }
                             },
-                            mousemove: dragVertical ? function (index) {
+                            mousemove: this.dragVertical ? function (index) {
                                 return function (event) {
                                     if (this.hold === false) {
                                         var finalIndex;
                                         for (var i = 0; i < result.clone[0].length; i++) {
-                                            if (result.clone[0][i].idRow == index) {
+                                            if (result.clone[0][index].idRow == index) {
                                                 finalIndex = i;
                                                 break;
                                             }
@@ -1274,8 +1302,8 @@ tableView.prototype.updateRow = function(data,index)
                 break;
             case "detail":
                 var icon = "more_vert";
-                if (data[i][k].icon !== undefined)
-                    icon = data[i][k].icon;
+                if (data[i].icon !== undefined)
+                    icon = data[i].icon;
                 bonus = _({
                     tag: "i",
                     class: "material-icons",
@@ -1292,46 +1320,60 @@ tableView.prototype.updateRow = function(data,index)
         }
         
         var functionClick;
-        if (data[i][k].functionClick !== undefined)
-            functionClick = data[i][k].functionClick;
+        if (data[i].functionClick !== undefined)
+            functionClick = data[i].functionClick;
         else {
-            if (header[k].functionClickAll !== undefined)
-                functionClick = header[k].functionClickAll;
+            if (this.header[i].functionClickAll !== undefined)
+                functionClick = this.header[i].functionClickAll;
         }
         cell = _({
             tag: "td",
             props: {
                 idRow:i,
-                innerHTML: value
             },
             on: {
                 click: function (index, row, functionClick) {
                     return function (event) {
                         event.preventDefault();
-                        if (functionClick !== undefined)
-                            functionClick(event, this, index, data[index], row);
+                        if (functionClick !== undefined){
+                            for(var i=0;i<result.data.length;i++){
+                                if(this.data==result.data[i]){
+                                    functionClick(event, this, i, this.data, row);
+                                }
+                            }
+                        }
                     }
                 }(i, row, functionClick),
             }
         })
+        cell.data = data;
+        if(data[i].element===undefined)
+        {
+            cell.textContent  = value;
+        }else
+        {
+            cell.appendChild(data[i].element);
+        }
         if (bonus !== undefined) {
             cell.addChild(bonus);
             bonus = undefined;
         }
 
-        if(data[i][k].colspan!==undefined){
-            cell.setAttribute("colspan",data[i][k].colspan);
+        if(data[i].colspan!==undefined){
+            cell.setAttribute("colspan",data[i].colspan);
             
-            checkSpan[i]=[]
-            for(var l = j;l<j+data[i][k].colspan;l++)
+            checkSpan=[]
+            for(var l = i;l<i+data[i].colspan;l++)
             {
-                checkSpan[i][l]=1;
+                checkSpan[l]=1;
             }
         }
-
-        this.clone[j][i+1 - delta[j]] = cell;
+        console.log(i + delta,index+1)
+        this.clone[i + delta][index+1] = cell;
         row.addChild(cell);
     }
+    console.log(row)
+    temp.parentNode.replaceChild(row,temp);
 }
 
 tableView.prototype.dropRow = function(element,index)
@@ -1656,12 +1698,15 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
 tableView.prototype.getBound2Row = function (row1, row2) {
     var self = this;
     var top, bottom;
+    console.log(this)
+    var borderSpacing =  parseFloat(getComputedStyle(this).webkitBorderHorizontalSpacing);
+    console.log(borderSpacing)
     if (row1 !== undefined)
-        top = (self.clone[0][row1].offsetHeight) / 2;
+        top = (self.clone[0][row1].offsetHeight+borderSpacing) / 2;
     else
         top = 0;
     if (row2 !== undefined)
-        bottom = (self.clone[0][row2].offsetHeight) / 2;
+        bottom = (self.clone[0][row2].offsetHeight+borderSpacing) / 2;
     else
         bottom = 0;
     return _({
