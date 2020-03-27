@@ -395,29 +395,38 @@ function moveElementFix(event, me, result, index) {
         var removeList = document.getElementsByClassName("focus-blast")[0];
         if(removeList!==undefined)
         {
+            var row1 = removeList.row1;
             var row2 = removeList.row2;
             var element = me;
             while(element.tagName !== "TR"&&element!==undefined)
             {
                 element = element.parentNode;
             }
-            this.console.log(element)
             result.bodyTable.insertBefore(element,result.bodyTable.childNodes[row2-1]);
-            for(var i = 0 ;i<result.clone.length;i++)
-            {
-                for(var j = row2 ;j>=0;j--)
+            result.data = array_move(result.data,index-1,row1);
+            
+            for(var i = 0;i<element.childNodes.length;i++)
                 {
-                    if(this.clone[i][j]===result.bodyTable.childNodes[j])
-                    {
-                        
-                    }
+                    var target = element[i];
+
+                    result.clone.splice()
                 }
-            }
         }
         
         outFocus(clone,trigger,functionCheckZone,bg,result.bodyTable)
     })
 }
+
+function array_move(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+};
 
 function AABBYY(x, y, bound) {
     if (bound.x === 0 && bound.y === 0 && bound.width === 0 && bound.height === 0)
@@ -612,7 +621,6 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     role: 'columnheader'
                 },
                 props: {
-                    innerHTML: value,
                     id: i
                 },
                 on: {
@@ -678,6 +686,15 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
             if (header[i].sort === false) {
                 cell.classList.add("no-sort")
             }
+
+            if(header[i].element===undefined)
+            {
+                cell.textContent  = value;
+            }else
+            {
+                cell.appendChild(data[i][j].element);
+            }
+
             if (bonus !== undefined) {
                 cell.addChild(bonus);
                 bonus = undefined;
@@ -836,7 +853,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     break;
 
             }
-            var functionClick;
+            var functionClick=undefined;
             if (data[i][j].functionClick !== undefined)
                 functionClick = data[i][j].functionClick;
             else {
@@ -852,20 +869,27 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     click: function (index, row, functionClick) {
                         return function (event) {
                             event.preventDefault();
-                            if (functionClick !== undefined)
-                                functionClick(event, this, index, data[index], row);
+                            if (functionClick !== undefined){
+                                for(var i=0;i<result.data.length;i++){
+                                    if(this.data==result.data[i]){
+                                        functionClick(event, this, i, this.data, row);
+                                    }
+                                }
+                            }
+                                
                         }
                     }(i, row, functionClick),
                 }
             })
            
-            
+            cell.data = data[i];
+
             if(data[i][j].element===undefined)
             {
                 cell.textContent  = value;
             }else
             {
-
+                cell.appendChild(data[i][j].element);
             }
 
             if (bonus !== undefined) {
@@ -905,6 +929,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     result.backGround = tableView.prototype.backGround;
     result.backGroundFix = tableView.prototype.backGroundFix;
     result.updateTable = tableView.prototype.updateTable;
+    result.dropRow = tableView.prototype.dropRow;
     result.header = header;
     result.data = data;
     
@@ -918,17 +943,24 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     var row, value, cell, bonus,k;
     var checkSpan = [];
     temp.listCheckBox = [];
+    var result = this;
+    if(this.bodyTable.listCheckBox!==undefined)
     temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
     
+    var delta = [];
     for (var i = 0; i < data.length; i++) {
         row = _({
             tag: "tr"
         });
         temp.addChild(row);
+        
         for (var j = 0; j < this.clone.length; j++) {
             k = parseFloat(this.clone[j][0].id);
-
+            if(delta[j]===undefined)
+                delta[j] = 0;
             if(checkSpan[i]!==undefined&&checkSpan[i][j]==1){
+                this.clone[j].splice(i+1 - delta[j],1);
+                delta[j]+=1;
                 continue;
             }
             if (data[i].value === undefined) {
@@ -944,6 +976,80 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
                     continue;
                 case "increase":
                     value += (i + 1);
+                    break;
+                case "dragzone":
+                    if (data[i][k].icon !== undefined)
+                    {
+                        icon = data[i][k].icon;
+                        bonus = _({
+                            tag: "i",
+                            class: ["material-icons"],
+                            style: {
+                                fontSize: "20px",
+                                cursor: "pointer"
+                            },
+                            props: {
+                                innerHTML: icon
+                            }
+                        })
+                    }else
+                    {
+                        bonus = _({
+                            tag:"drag-horizontal",
+                            on:{
+                                mousedown: dragVertical ? function (index) {
+                                    return function (event) {
+                                        event.preventDefault();
+                                        var finalIndex;
+                                        for (var i = 1; i < result.clone[0].length; i++) {
+                                            if (result.clone[0][i].idRow == index) {
+                                                finalIndex = i;
+                                                break;
+                                            }
+                                        }
+                                        this.hold = false;
+                                        var dom = this;
+                                        this.default = event;
+                                        this.timeoutID = setTimeout(function () {
+                                            dom.hold = true;
+                                            moveElementFix(event, dom, result, finalIndex);
+                                        }, 200);
+                                    }
+                                }(i) : undefined,
+                                dragstart: dragVertical ? function () {
+                                    return false;
+                                } : undefined,
+                                mouseup: function () {
+                                    if (this.hold === false) {
+                                        this.hold = true;
+                                        // this.click();
+                                        clearTimeout(this.timeoutID);
+                                    }
+                                },
+                                mousemove: dragVertical ? function (index) {
+                                    return function (event) {
+                                        if (this.hold === false) {
+                                            var finalIndex;
+                                            for (var i = 0; i < result.clone[0].length; i++) {
+                                                if (result.clone[0][i].idRow == index) {
+                                                    finalIndex = i;
+                                                    break;
+                                                }
+                                            }
+                                            this.hold = false;
+                                            var deltaX = this.default.clientX - event.clientX,
+                                                deltaY = this.default.clientY - event.clientY;
+                                            if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
+                                                this.hold = true;
+                                                moveElementFix(event, this, result, finalIndex);
+                                                clearTimeout(this.timeoutID);
+                                            }
+                                        }
+                                    }
+                                }(i) : undefined,
+                            }
+                        })
+                    }
                     break;
                 case "check":
                     bonus = _({
@@ -1004,7 +1110,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
             cell = _({
                 tag: "td",
                 props: {
-                    idRow:i+1,
+                    idRow:i,
                     innerHTML: value
                 },
                 on: {
@@ -1032,7 +1138,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
                 }
             }
 
-            this.clone[j][i+1] = cell;
+            this.clone[j][i+1 - delta[j]] = cell;
             row.addChild(cell);
 
         }
@@ -1041,6 +1147,214 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     this.replaceChild(temp, this.bodyTable);
     this.data = data;
     this.bodyTable = temp;
+}
+
+tableView.prototype.updateRow = function(data,index)
+{
+    var result = this;
+    for(var i = 0;i<data.length;i++)
+    {
+        if (data.value === undefined) {
+            if (typeof data[k] === "object")
+                value = "";
+            else
+                value = data[k];
+        }
+        else
+            value = data[k].value;
+        switch (this.check[k]) {
+            case "hidden":
+                continue;
+            case "increase":
+                value += (i + 1);
+                break;
+            case "dragzone":
+                if (data[k].icon !== undefined)
+                {
+                    icon = data[k].icon;
+                    bonus = _({
+                        tag: "i",
+                        class: ["material-icons"],
+                        style: {
+                            fontSize: "20px",
+                            cursor: "pointer"
+                        },
+                        props: {
+                            innerHTML: icon
+                        }
+                    })
+                }else
+                {
+                    bonus = _({
+                        tag:"drag-horizontal",
+                        on:{
+                            mousedown: dragVertical ? function (index) {
+                                return function (event) {
+                                    event.preventDefault();
+                                    var finalIndex;
+                                    for (var i = 1; i < result.clone[0].length; i++) {
+                                        if (result.clone[0][i].idRow == index) {
+                                            finalIndex = i;
+                                            break;
+                                        }
+                                    }
+                                    this.hold = false;
+                                    var dom = this;
+                                    this.default = event;
+                                    this.timeoutID = setTimeout(function () {
+                                        dom.hold = true;
+                                        moveElementFix(event, dom, result, finalIndex);
+                                    }, 200);
+                                }
+                            }(i) : undefined,
+                            dragstart: dragVertical ? function () {
+                                return false;
+                            } : undefined,
+                            mouseup: function () {
+                                if (this.hold === false) {
+                                    this.hold = true;
+                                    // this.click();
+                                    clearTimeout(this.timeoutID);
+                                }
+                            },
+                            mousemove: dragVertical ? function (index) {
+                                return function (event) {
+                                    if (this.hold === false) {
+                                        var finalIndex;
+                                        for (var i = 0; i < result.clone[0].length; i++) {
+                                            if (result.clone[0][i].idRow == index) {
+                                                finalIndex = i;
+                                                break;
+                                            }
+                                        }
+                                        this.hold = false;
+                                        var deltaX = this.default.clientX - event.clientX,
+                                            deltaY = this.default.clientY - event.clientY;
+                                        if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
+                                            this.hold = true;
+                                            moveElementFix(event, this, result, finalIndex);
+                                            clearTimeout(this.timeoutID);
+                                        }
+                                    }
+                                }
+                            }(i) : undefined,
+                        }
+                    })
+                }
+                break;
+            case "check":
+                bonus = _({
+                    tag: "checkboxbutton",
+                    class: "pizo-checkbox",
+                    on: {
+                        click: function (event) {
+                            if (temp.listCheckBox !== undefined) {
+                                if (this.checked === false)
+                                temp.listCheckBox[0].checked = false;
+                                else {
+                                    if (temp.listCheckBox[0].checked === false)
+                                        for (var m = 1; m < temp.listCheckBox.length; m++) {
+                                            if (temp.listCheckBox[m].checked === false) {
+                                                m--;
+                                                break;
+                                            }
+                                        }
+                                    if (m === temp.listCheckBox.length) {
+                                        temp.listCheckBox[0].checked = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+                if(temp.listCheckBox[0].checked===true)
+                    bonus.checked = true;
+                if (temp.listCheckBox !== undefined)
+                    temp.listCheckBox.push(bonus);
+                break;
+            case "detail":
+                var icon = "more_vert";
+                if (data[i][k].icon !== undefined)
+                    icon = data[i][k].icon;
+                bonus = _({
+                    tag: "i",
+                    class: "material-icons",
+                    style: {
+                        fontSize: "20px",
+                        cursor: "pointer"
+                    },
+                    props: {
+                        innerHTML: icon
+                    }
+                })
+                break;
+
+        }
+        
+        var functionClick;
+        if (data[i][k].functionClick !== undefined)
+            functionClick = data[i][k].functionClick;
+        else {
+            if (header[k].functionClickAll !== undefined)
+                functionClick = header[k].functionClickAll;
+        }
+        cell = _({
+            tag: "td",
+            props: {
+                idRow:i,
+                innerHTML: value
+            },
+            on: {
+                click: function (index, row, functionClick) {
+                    return function (event) {
+                        event.preventDefault();
+                        if (functionClick !== undefined)
+                            functionClick(event, this, index, data[index], row);
+                    }
+                }(i, row, functionClick),
+            }
+        })
+        if (bonus !== undefined) {
+            cell.addChild(bonus);
+            bonus = undefined;
+        }
+
+        if(data[i][k].colspan!==undefined){
+            cell.setAttribute("colspan",data[i][k].colspan);
+            
+            checkSpan[i]=[]
+            for(var l = j;l<j+data[i][k].colspan;l++)
+            {
+                checkSpan[i][l]=1;
+            }
+        }
+
+        this.clone[j][i+1 - delta[j]] = cell;
+        row.addChild(cell);
+    }
+}
+
+tableView.prototype.dropRow = function(element,index)
+{
+    var self=this;
+    if(!element.classList.contains("hide"))
+        element.classList.add("hide");
+    var eventEnd = function(){
+        self.data.splice(index,1);
+        element.selfRemove();
+        var delta = 0;
+        for(var i = 0;i<element.childNodes.length;i++)
+        {
+                self.clone[i+delta].splice(index+1,1);
+                if(element.childNodes[i].colSpan!==undefined)
+                    delta+=element.childNodes[i].colSpan-1;
+        }
+    };
+    // Code for Safari 3.1 to 6.0
+    element.addEventListener("webkitTransitionEnd", eventEnd);
+
+    // Standard syntax
+    element.addEventListener("transitionend", eventEnd);
 }
 
 tableView.prototype.backGroundFix = function (index) {
@@ -1233,9 +1547,16 @@ tableView.prototype.cloneRow = function (index) {
     else{
         bodyTable.addChild(row);
     }
-        
+    var delta = 0;
     for (var i = 0; i < this.clone.length; i++) {
+        if(delta>0){
+            delta--;
+            continue;
+        }
+            
         clone = this.clone[i][index].cloneNode(true);
+        if(clone.colSpan!==undefined)
+        delta = clone.colSpan - 1;
         clone.style.width = this.clone[i][index].offsetWidth - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-right-width').replace("px", "")+1 + 'px';
         clone.style.height = this.clone[i][index].offsetHeight - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
         clone.setAttribute("colSpan","")
