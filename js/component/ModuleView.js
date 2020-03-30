@@ -428,7 +428,7 @@ function array_move(arr, old_index, new_index) {
     return arr; // for testing
 };
 
-tableView.prototype.checkLongRow(index)
+tableView.prototype.checkLongRow = function(index)
 {
     var result = this;
     var delta;
@@ -516,6 +516,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     result.updateRow = tableView.prototype.updateRow;
     result.dropRow = tableView.prototype.dropRow;
     result.getCell = tableView.prototype.getCell;
+    result.checkLongRow = tableView.prototype.checkLongRow;
     result.check = check;
     result.header = header;
     result.data = data;
