@@ -403,7 +403,8 @@ function moveElementFix(event, me, result, index) {
             }
             result.bodyTable.insertBefore(element,result.bodyTable.childNodes[row2-1]);
             result.data = array_move(result.data,index-1,row1);
-            
+           
+
             for(var i = 0;i<element.childNodes.length;i++)
                 {
                     var target = element[i];
@@ -426,6 +427,30 @@ function array_move(arr, old_index, new_index) {
     arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
     return arr; // for testing
 };
+
+tableView.prototype.checkLongRow(index)
+{
+    var result = this;
+    var delta;
+    for(var i = 0;i<result.clone.length;i++)
+    {
+        delta[i] = 0;
+        if(result.checkSpan!==undefined){
+            if(result.checkSpan[index]!==undefined){
+                if(result.checkSpan[index][i]===6){
+                    result.checkSpan[index][i] = undefined;
+                    result.clone[i].splice(index+1,0,{})
+                }
+            }
+            for(var j = 0;j<index;j++)
+            {
+                if(result.checkSpan[j]!==undefined)
+                    if(result.checkSpan[j][i]!==undefined)
+                    delta[i]++;
+            }
+        }
+    }
+}
 
 function AABBYY(x, y, bound) {
     if (bound.x === 0 && bound.y === 0 && bound.width === 0 && bound.height === 0)
@@ -733,7 +758,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
         k = 0;
         for (var j = 0; j < data[i].length; j++) {
             
-            cell = result.getCell(data[i][j],i,j,checkSpan,row);
+            cell = result.getCell(data[i][j],i,j,k,checkSpan,row);
             if(cell === 6){
                 k++;
                 continue;
@@ -754,15 +779,15 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     return result;
 }
 
-tableView.prototype.getCell = function(dataOrigin,i,j,checkSpan,row)
+tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
 {
     var data = dataOrigin;
     var result = this,value,bonus,style,cell;
     // console.log(data)
     if(checkSpan[i]!==undefined){
-        if(checkSpan[i][j]==2)
+        if(checkSpan[i][k]==2)
         return 2;
-        if(checkSpan[i][j]==6)
+        if(checkSpan[i][k]==6)
         return 6;
     }
         
@@ -950,7 +975,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,checkSpan,row)
         cell.addChild(bonus);
         bonus = undefined;
     }
-
+    
     cell.data = result.data[i];
 
     if(data.rowspan!==undefined){
@@ -959,14 +984,14 @@ tableView.prototype.getCell = function(dataOrigin,i,j,checkSpan,row)
         {
             if(checkSpan[l]===undefined)
                 checkSpan[l] = [];
-            checkSpan[l][j]=2;
+            checkSpan[l][k]=2;
         }
     }
     if(data.colspan!==undefined){
         cell.setAttribute("colspan",data.colspan);
         
         checkSpan[i]=[]
-        for(var l = j+1;l<j+data.colspan;l++)
+        for(var l = k+1;l<k+data.colspan;l++)
         {
             checkSpan[i][l]=6;
         }
@@ -975,6 +1000,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,checkSpan,row)
 }
 
 tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
+    console.log(this)
     var temp = _({
         tag: "tbody"
     });
@@ -1001,7 +1027,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
             if(delta[j]===undefined)
                 delta[j] = 0;
 
-            cell = result.getCell(data[i][k],i,k,checkSpan,row);
+            cell = result.getCell(data[i][k],i,k,j,checkSpan,row);
             if(cell === 6  || cell === 2)
             {
                 this.clone[j].splice(i+1 - delta[j],1);
@@ -1031,28 +1057,31 @@ tableView.prototype.updateRow = function(data,index)
     var row = _({
         tag:"tr"
     })
-    if(result.checkSpan[index]!==undefined)
     for(var i = 0;i<result.clone.length;i++)
     {
-        if(result.checkSpan[index][i]!==undefined){
-            if(result.checkSpan[index][i]===6){
-                result.checkSpan[index][i] = undefined;
+        delta[i] = 0;
+        if(result.checkSpan!==undefined){
+            if(result.checkSpan[index]!==undefined){
+                if(result.checkSpan[index][i]===6){
+                    result.checkSpan[index][i] = undefined;
+                    result.clone[i].splice(index+1,0,{})
+                }
+            }
+            for(var j = 0;j<index;j++)
+            {
+                if(result.checkSpan[j]!==undefined)
+                    if(result.checkSpan[j][i]!==undefined)
+                    delta[i]++;
             }
         }
-        for(var j = 0;j<result.checkSpan.length;j++)
-        {
-            delta[i] = 0;
-            if(result.checkSpan[j][i]!==undefined)
-            delta[i]++;
-        }
     }
-
+    console.log(delta)
     for(var i = 0;i<data.length;i++)
     {
-        cell = result.getCell(data[i],index,i,result.checkSpan,row);
+        cell = result.getCell(data[i],index,i,k,result.checkSpan,row);
         if(cell  === 6)
         {
-            this.clone[k++].splice(index,1);
+            result.clone[k++].splice(index,1);
             continue;
         }
         if(cell === 2)
@@ -1064,8 +1093,9 @@ tableView.prototype.updateRow = function(data,index)
         {
             continue;
         }
-        
-        this.clone[k++][index+1-delta[k]] = cell;
+        console.log(k,index+1-delta[k],cell)
+        result.clone[k][index+1-delta[k]] = cell;
+        k++;
         row.addChild(cell);
     }
     result.bodyTable.replaceChild(row,result.bodyTable.childNodes[index]);
@@ -1074,19 +1104,38 @@ tableView.prototype.updateRow = function(data,index)
 
 tableView.prototype.dropRow = function(index)
 {
-    var self=this;
-    var element = self.bodyTable.childNodes[index];
+    var result=this,deltaX=[];
+    var element = result.bodyTable.childNodes[index];
     if(!element.classList.contains("hideTranslate"))
         element.classList.add("hideTranslate");
     var eventEnd = function(){
-        self.data.splice(index,1);
+        result.data.splice(index,1);
         element.selfRemove();
-        var delta = 0;
-        for(var i = 0;i<element.childNodes.length;i++)
+        var deltaY = 0;
+        for(var i = 0;i<result.clone.length;i++)
         {
-                self.clone[i+delta].splice(index+1,1);
+            deltaX[i] = 0;
+            if(result.checkSpan!==undefined){
+                if(result.checkSpan[index]!==undefined){
+                    if(result.checkSpan[index][i]===6){
+                        result.checkSpan[index][i] = undefined;
+                    }
+                }
+                for(var j = 0;j<index;j++)
+                {
+                    if(result.checkSpan[j]!==undefined)
+                        if(result.checkSpan[j][i]!==undefined)
+                        deltaX[i]++;
+                }
+            }
+        }
+        console.log(deltaX)
+        for(var i = 0;i<element.childNodes.length;i++)
+        { 
+                result.clone[i+deltaY].splice(index+1-deltaX[i+deltaY],1); 
+                result.checkSpan.splice(index,1); 
                 if(element.childNodes[i].colSpan!==undefined)
-                    delta+=element.childNodes[i].colSpan-1;
+                    deltaY+=element.childNodes[i].colSpan-1;
         }
     };
     // Code for Safari 3.1 to 6.0

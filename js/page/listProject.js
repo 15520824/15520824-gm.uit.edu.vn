@@ -170,8 +170,10 @@ listProject.prototype.getView = function () {
     });
     var tableViewX;
     var functionClickMore = function(event,me,index,data,row){
-        console.log(event,me,index,data,row)
-        tableViewX.dropRow(index);
+        console.log(event,me,index,data,row);
+        console.log(tableViewX)
+        // tableViewX.dropRow(index)
+        tableViewX.updateRow(tableViewX.data[0],index);
     }
     var test = _({
         tag:"span",
