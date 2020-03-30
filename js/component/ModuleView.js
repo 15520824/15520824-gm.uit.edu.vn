@@ -1027,18 +1027,26 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 tableView.prototype.updateRow = function(data,index)
 {
     var result = this,k=0,cell;
+    var delta = [];
     var row = _({
         tag:"tr"
     })
     if(result.checkSpan[index]!==undefined)
-    for(var i = 0;i<result.checkSpan[index].length;i++)
+    for(var i = 0;i<result.clone.length;i++)
     {
-        if(result.checkSpan[index][i]===6){
-
-            result.checkSpan[index][i] = undefined;
+        if(result.checkSpan[index][i]!==undefined){
+            if(result.checkSpan[index][i]===6){
+                result.checkSpan[index][i] = undefined;
+            }
         }
-        
+        for(var j = 0;j<result.checkSpan.length;j++)
+        {
+            delta[i] = 0;
+            if(result.checkSpan[j][i]!==undefined)
+            delta[i]++;
+        }
     }
+
     for(var i = 0;i<data.length;i++)
     {
         cell = result.getCell(data[i],index,i,result.checkSpan,row);
@@ -1057,7 +1065,7 @@ tableView.prototype.updateRow = function(data,index)
             continue;
         }
         
-        this.clone[k++][index+1] = cell;
+        this.clone[k++][index+1-delta[k]] = cell;
         row.addChild(cell);
     }
     result.bodyTable.replaceChild(row,result.bodyTable.childNodes[index]);
@@ -1068,8 +1076,8 @@ tableView.prototype.dropRow = function(index)
 {
     var self=this;
     var element = self.bodyTable.childNodes[index];
-    if(!element.classList.contains("hide"))
-        element.classList.add("hide");
+    if(!element.classList.contains("hideTranslate"))
+        element.classList.add("hideTranslate");
     var eventEnd = function(){
         self.data.splice(index,1);
         element.selfRemove();

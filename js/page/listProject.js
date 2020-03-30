@@ -598,17 +598,17 @@ listProject.prototype.searchControlContent = function(){
 
     temp.show = function()
     {
-        if(!temp.classList.contains("show"))
-        temp.classList.add("show");
+        if(!temp.classList.contains("showTranslate"))
+        temp.classList.add("showTranslate");
     }
     temp.hide = function()
     {
-        if(!content.classList.contains("hide"))
-            content.classList.add("hide");
+        if(!content.classList.contains("hideTranslate"))
+            content.classList.add("hideTranslate");
         var eventEnd = function(){
-            if(temp.classList.contains("show"))
-            temp.classList.remove("show");
-            content.classList.remove("hide");
+            if(temp.classList.contains("showTranslate"))
+            temp.classList.remove("showTranslate");
+            content.classList.remove("hideTranslate");
             content.removeEventListener("webkitTransitionEnd",eventEnd);
             content.removeEventListener("transitionend",eventEnd);
         };

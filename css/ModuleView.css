@@ -119,7 +119,7 @@
   transition: 1s ease-in-out;
 }
 
-.sortTable  tr.hide{
+.sortTable  tr.hideTranslate{
   transform: translateX(100%);
 }
 

@@ -278,14 +278,14 @@
     margin-bottom: 0.2rem;
 }
 
-.pizo-list-project-main-search-control.show{
+.pizo-list-project-main-search-control.showTranslate{
     transform: translateX(-100%);
 }
 
-.pizo-list-project-main-search-control.show .pizo-list-project-main-search-control-container{
+.pizo-list-project-main-search-control.showTranslate .pizo-list-project-main-search-control-container{
     transform: translateX(-100%);
 }
 
-.pizo-list-project-main-search-control.show .hide.pizo-list-project-main-search-control-container{
+.pizo-list-project-main-search-control.showTranslate .hideTranslate.pizo-list-project-main-search-control-container{
     transform: translateX(0);
 }
