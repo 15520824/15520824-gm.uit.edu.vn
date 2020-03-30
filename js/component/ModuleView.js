@@ -266,12 +266,12 @@ function onMouseMoveFix(clone, event,shiftY, result) {
 function moveAtFix(clone,pageY,shiftY,result)
 {
     var y = pageY - result.bodyTable.getBoundingClientRect().top;
-    y-= shiftY;
+
     if(y>result.clientHeight-clone.clientHeight){
         y = result.clientHeight;
         return;
     }
-    
+    y-= shiftY;
     if(y<0){
         y = 0;
         return;
@@ -383,8 +383,7 @@ function moveElementFix(event, me, result, index) {
         }
 
     }
-    console.log(me)
-    let shiftY = - me.parentNode.clientHeight/2 - parseFloat(getComputedStyle(me.parentNode).webkitBorderHorizontalSpacing);
+    let shiftY = -me.clientHeight/2;
     moveAtFix(clone, event.pageY, shiftY ,result);
     window.addEventListener('mousemove',functionCheckZone);
     var trigger = function(event)
@@ -456,7 +455,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     if (window.mobilecheck())
         return tableViewMobile();
 
-    var cell, row, value, check = [], bonus;
+    var cell, row, value, check = [], bonus, style;
     var checkSpan = [];
     var headerTable = _({
         tag: "thead",
@@ -482,6 +481,22 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
 
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
+    result.cloneColumn = tableView.prototype.cloneColumn;
+    result.cloneRow = tableView.prototype.cloneRow;
+    result.deleteColumn = tableView.prototype.deleteColumn;
+    result.getBound2Colum = tableView.prototype.getBound2Colum;
+    result.getBound2Row = tableView.prototype.getBound2Row;
+    result.backGround = tableView.prototype.backGround;
+    result.backGroundFix = tableView.prototype.backGroundFix;
+    result.updateTable = tableView.prototype.updateTable;
+    result.updateRow = tableView.prototype.updateRow;
+    result.dropRow = tableView.prototype.dropRow;
+    result.getCell = tableView.prototype.getCell;
+    result.check = check;
+    result.header = header;
+    result.data = data;
+    result.dragVertical = dragVertical;
+    result.dragHorizontal = dragHorizontal;
 
     setTimeout(function () {
         if (window.scrollEvent === undefined) {
@@ -616,11 +631,15 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
 
             if (header[i].functionClick !== undefined)
                 functionClick = header[i].functionClick;
+            style = {};
+            if(header[i].style!==undefined)
+                style = header[i].style;
             cell = _({
                 tag: "th",
                 attr: {
                     role: 'columnheader'
                 },
+                style:style,
                 props: {
                     id: i
                 },
@@ -714,239 +733,256 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
         bodyTable.addChild(row);
         k = 0;
         for (var j = 0; j < data[i].length; j++) {
-            if(checkSpan[i]!==undefined&&checkSpan[i][j]==1){
+            
+            cell = result.getCell(data[i][j],i,j,checkSpan,row);
+            if(cell === 6){
                 k++;
                 continue;
             }
-                
-            if (data[i].value === undefined) {
-                if (typeof data[i][j] === "object")
-                    value = "";
-                else
-                    value = data[i][j];
+            if(cell === 2){
+                k++;
+                continue;
             }
-            else
-                value = data[i][j].value;
-
-            switch (check[j]) {
-                case "hidden":
-                    continue;
-                case "increase":
-                    value += (i + 1);
-                    break;
-                case "dragzone":
-                    if (data[i][j].icon !== undefined)
-                    {
-                        icon = data[i][j].icon;
-                        bonus = _({
-                            tag: "i",
-                            class: ["material-icons"],
-                            style: {
-                                fontSize: "20px",
-                                cursor: "pointer"
-                            },
-                            props: {
-                                innerHTML: icon
-                            }
-                        })
-                    }else
-                    {
-                        bonus = _({
-                            tag:"drag-horizontal",
-                            on:{
-                                mousedown: dragVertical ? function (index) {
-                                    return function (event) {
-                                        event.preventDefault();
-                                        var finalIndex;
-                                        for (var i = 1; i < result.clone[0].length; i++) {
-                                            if (result.clone[0][i].idRow == index) {
-                                                finalIndex = i;
-                                                break;
-                                            }
-                                        }
-                                        this.hold = false;
-                                        var dom = this;
-                                        this.default = event;
-                                        this.timeoutID = setTimeout(function () {
-                                            dom.hold = true;
-                                            moveElementFix(event, dom, result, finalIndex);
-                                        }, 200);
-                                    }
-                                }(i) : undefined,
-                                dragstart: dragVertical ? function () {
-                                    return false;
-                                } : undefined,
-                                mouseup: function () {
-                                    if (this.hold === false) {
-                                        this.hold = true;
-                                        // this.click();
-                                        clearTimeout(this.timeoutID);
-                                    }
-                                },
-                                mousemove: dragVertical ? function (index) {
-                                    return function (event) {
-                                        if (this.hold === false) {
-                                            var finalIndex;
-                                            for (var i = 0; i < result.clone[0].length; i++) {
-                                                if (result.clone[0][i].idRow == index) {
-                                                    finalIndex = i;
-                                                    break;
-                                                }
-                                            }
-                                            this.hold = false;
-                                            var deltaX = this.default.clientX - event.clientX,
-                                                deltaY = this.default.clientY - event.clientY;
-                                            if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
-                                                this.hold = true;
-                                                moveElementFix(event, this, result, finalIndex);
-                                                clearTimeout(this.timeoutID);
-                                            }
-                                        }
-                                    }
-                                }(i) : undefined,
-                            }
-                        })
-                    }
-                    break;
-                case "check":
-                    bonus = _({
-                        tag: "checkboxbutton",
-                        class: "pizo-checkbox",
-                        on: {
-                            click: function (event) {
-                                if (result.bodyTable.listCheckBox !== undefined) {
-                                    if (this.checked === false)
-                                    result.bodyTable.listCheckBox[0].checked = false;
-                                    else {
-                                        if (result.bodyTable.listCheckBox[0].checked === false)
-                                            for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                                                if (result.bodyTable.listCheckBox[j].checked === false) {
-                                                    j--;
-                                                    break;
-                                                }
-                                            }
-                                        if (j === result.bodyTable.listCheckBox.length) {
-                                            result.bodyTable.listCheckBox[0].checked = true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    })
-                    if (result.bodyTable.listCheckBox !== undefined)
-                    result.bodyTable.listCheckBox.push(bonus);
-                    break;
-                case "detail":
-                    var icon = "more_vert";
-                    if (data[i][j].icon !== undefined)
-                        icon = data[i][j].icon;
-                    bonus = _({
-                        tag: "i",
-                        class: "material-icons",
-                        style: {
-                            fontSize: "20px",
-                            cursor: "pointer"
-                        },
-                        props: {
-                            innerHTML: icon
-                        }
-                    })
-                    break;
-
+            if(cell === true){
+                continue;
             }
-            var functionClick=undefined;
-            if (data[i][j].functionClick !== undefined)
-                functionClick = data[i][j].functionClick;
-            else {
-                if (header[j].functionClickAll !== undefined)
-                    functionClick = header[j].functionClickAll;
-            }
-            cell = _({
-                tag: "td",
-                props:{
-                    idRow:i
-                },
-                on: {
-                    click: function (index, row, functionClick) {
-                        return function (event) {
-                            event.preventDefault();
-                            if (functionClick !== undefined){
-                                for(var i=0;i<result.data.length;i++){
-                                    if(this.data==result.data[i]){
-                                        functionClick(event, this, i, this.data, row);
-                                    }
-                                }
-                            }
-                                
-                        }
-                    }(i, row, functionClick),
-                }
-            })
-           
-            cell.data = data[i];
-
-            if(data[i][j].element===undefined)
-            {
-                cell.textContent  = value;
-            }else
-            {
-                cell.appendChild(data[i][j].element);
-            }
-
-            if (bonus !== undefined) {
-                cell.addChild(bonus);
-                bonus = undefined;
-            }
-
-            if(data[i][j].rowspan!==undefined){
-                cell.setAttribute("rowspan",data[i][j].rowspan);
-                for(var l = i;l<i+data[i][j].rowspan;l++)
-                {
-                    if(checkSpan[l]===undefined)
-                        checkSpan[l] = [];
-                    checkSpan[l][j]=1;
-                }
-            }
-            if(data[i][j].colspan!==undefined){
-                cell.setAttribute("colspan",data[i][j].colspan);
-                
-                checkSpan[i]=[]
-                for(var l = j;l<j+data[i][j].colspan;l++)
-                {
-                    checkSpan[i][l]=1;
-                }
-            }
-
             result.clone[k++].push(cell);
             row.addChild(cell);
         }
     }
-    result.check = check;
-    result.cloneColumn = tableView.prototype.cloneColumn;
-    result.cloneRow = tableView.prototype.cloneRow;
-    result.deleteColumn = tableView.prototype.deleteColumn;
-    result.getBound2Colum = tableView.prototype.getBound2Colum;
-    result.getBound2Row = tableView.prototype.getBound2Row;
-    result.backGround = tableView.prototype.backGround;
-    result.backGroundFix = tableView.prototype.backGroundFix;
-    result.updateTable = tableView.prototype.updateTable;
-    result.dropRow = tableView.prototype.dropRow;
-    result.updateRow = tableView.prototype.updateRow;
-    result.header = header;
-    result.data = data;
-    result.dragHorizontal = dragHorizontal;
-    result.dragVertical = dragVertical;
+   
+    result.checkSpan  = checkSpan;
     return result;
+}
+
+tableView.prototype.getCell = function(data,i,j,checkSpan,row)
+{
+    var result = this,value,bonus,style,cell;
+    if(checkSpan[i]!==undefined){
+        if(checkSpan[i][j]==2)
+        return 2;
+        if(checkSpan[i][j]==6)
+        return 6;
+    }
+        
+    if (data.value === undefined) {
+        if (typeof data === "object")
+            value = "";
+        else
+            value = data;
+    }
+    else
+        value = data.value;
+
+    switch (this.check[j]) {
+        case "hidden":
+            return true;
+        case "increase":
+            value += (i + 1);
+            break;
+        case "dragzone":
+            if (data.icon !== undefined)
+            {
+                icon = data.icon;
+                bonus = _({
+                    tag: "i",
+                    class: ["material-icons"],
+                    style: {
+                        fontSize: "20px",
+                        cursor: "pointer"
+                    },
+                    props: {
+                        innerHTML: icon
+                    }
+                })
+            }else
+            {
+                bonus = _({
+                    tag:"drag-horizontal",
+                    on:{
+                        mousedown: result.dragVertical ? function (index) {
+                            return function (event) {
+                                event.preventDefault();
+                                var finalIndex;
+                                for (var i = 1; i < result.clone[0].length; i++) {
+                                    if (result.clone[0][i].idRow == index) {
+                                        finalIndex = i;
+                                        break;
+                                    }
+                                }
+                                this.hold = false;
+                                var dom = this;
+                                this.default = event;
+                                this.timeoutID = setTimeout(function () {
+                                    dom.hold = true;
+                                    moveElementFix(event, dom, result, finalIndex);
+                                }, 200);
+                            }
+                        }(i) : undefined,
+                        dragstart: result.dragVertical ? function () {
+                            return false;
+                        } : undefined,
+                        mouseup: function () {
+                            if (this.hold === false) {
+                                this.hold = true;
+                                // this.click();
+                                clearTimeout(this.timeoutID);
+                            }
+                        },
+                        mousemove: result.dragVertical ? function (index) {
+                            return function (event) {
+                                if (this.hold === false) {
+                                    var finalIndex;
+                                    for (var i = 0; i < result.clone[0].length; i++) {
+                                        if (result.clone[0][i].idRow == index) {
+                                            finalIndex = i;
+                                            break;
+                                        }
+                                    }
+                                    this.hold = false;
+                                    var deltaX = this.default.clientX - event.clientX,
+                                        deltaY = this.default.clientY - event.clientY;
+                                    if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
+                                        this.hold = true;
+                                        moveElementFix(event, this, result, finalIndex);
+                                        clearTimeout(this.timeoutID);
+                                    }
+                                }
+                            }
+                        }(i) : undefined,
+                    }
+                })
+            }
+            break;
+        case "check":
+            bonus = _({
+                tag: "checkboxbutton",
+                class: "pizo-checkbox",
+                on: {
+                    click: function (event) {
+                        if (result.bodyTable.listCheckBox !== undefined) {
+                            if (this.checked === false)
+                            result.bodyTable.listCheckBox[0].checked = false;
+                            else {
+                                if (result.bodyTable.listCheckBox[0].checked === false)
+                                    for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                                        if (result.bodyTable.listCheckBox[j].checked === false) {
+                                            j--;
+                                            break;
+                                        }
+                                    }
+                                if (j === result.bodyTable.listCheckBox.length) {
+                                    result.bodyTable.listCheckBox[0].checked = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+            if (result.bodyTable.listCheckBox !== undefined)
+            result.bodyTable.listCheckBox.push(bonus);
+            break;
+        case "detail":
+            var icon = "more_vert";
+            if (data.icon !== undefined)
+                icon = data.icon;
+            bonus = _({
+                tag: "i",
+                class: "material-icons",
+                style: {
+                    fontSize: "20px",
+                    cursor: "pointer"
+                },
+                props: {
+                    innerHTML: icon
+                }
+            })
+            break;
+
+    }
+    var functionClick=undefined;
+    if (data.functionClick !== undefined)
+        functionClick = data[i][j].functionClick;
+    else {
+        if (result.header[j].functionClickAll !== undefined)
+            functionClick = result.header[j].functionClickAll;
+    }
+
+    style = {};
+    if(data.style!==undefined)
+        style = data.style;
+
+    cell = _({
+        tag: "td",
+        style:style,
+        props:{
+            idRow:i
+        },
+        on: {
+            click: function (index, row, functionClick) {
+                return function (event) {
+                    event.preventDefault();
+                    if (functionClick !== undefined){
+                        for(var i=0;i<result.data.length;i++){
+                            if(this.data==result.data[i]){
+                                functionClick(event, this, i, this.data, row);
+                            }
+                        }
+                    }
+                        
+                }
+            }(i, row, functionClick),
+        }
+    })
+   
+    cell.data = data[i];
+
+    if(data.element===undefined)
+    {
+        cell.textContent  = value;
+    }else
+    {
+        cell.appendChild(data.element);
+    }
+
+    if (bonus !== undefined) {
+        cell.addChild(bonus);
+        bonus = undefined;
+    }
+
+    if(data.rowspan!==undefined){
+        cell.setAttribute("rowspan",data.rowspan);
+        for(var l = i+1;l<i+data.rowspan;l++)
+        {
+            if(checkSpan[l]===undefined)
+                checkSpan[l] = [];
+            checkSpan[l][j]=2;
+        }
+    }
+    if(data.colspan!==undefined){
+        cell.setAttribute("colspan",data.colspan);
+        
+        checkSpan[i]=[]
+        for(var l = j+1;l<j+data.colspan;l++)
+        {
+            checkSpan[i][l]=6;
+        }
+    }
+    return cell;
 }
 
 tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
     var temp = _({
         tag: "tbody"
     });
-    var row, value, cell, bonus,k;
+    var row, cell,k;
     var checkSpan = [];
     temp.listCheckBox = [];
     var result = this;
+    if(dragHorizontal!==undefined)
+    result.dragHorizontal = dragHorizontal;
+    if(dragVertical!==undefined)
+    result.dragVertical = dragVertical;
     if(this.bodyTable.listCheckBox!==undefined)
     temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
     
@@ -961,196 +997,17 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
             k = parseFloat(this.clone[j][0].id);
             if(delta[j]===undefined)
                 delta[j] = 0;
-            if(checkSpan[i]!==undefined&&checkSpan[i][j]==1){
+
+            cell = result.getCell(data[i][k],i,k,checkSpan,row);
+            if(cell === 6  || cell === 2)
+            {
                 this.clone[j].splice(i+1 - delta[j],1);
                 delta[j]+=1;
+                continue
+            }
+            if(cell === true)
+            {
                 continue;
-            }
-            if (data[i].value === undefined) {
-                if (typeof data[i][k] === "object")
-                    value = "";
-                else
-                    value = data[i][k];
-            }
-            else
-                value = data[i][k].value;
-            switch (this.check[k]) {
-                case "hidden":
-                    continue;
-                case "increase":
-                    value += (i + 1);
-                    break;
-                case "dragzone":
-                    if (data[i][k].icon !== undefined)
-                    {
-                        icon = data[i][k].icon;
-                        bonus = _({
-                            tag: "i",
-                            class: ["material-icons"],
-                            style: {
-                                fontSize: "20px",
-                                cursor: "pointer"
-                            },
-                            props: {
-                                innerHTML: icon
-                            }
-                        })
-                    }else
-                    {
-                        bonus = _({
-                            tag:"drag-horizontal",
-                            on:{
-                                mousedown: dragVertical ? function (index) {
-                                    return function (event) {
-                                        event.preventDefault();
-                                        var finalIndex;
-                                        for (var i = 1; i < result.clone[0].length; i++) {
-                                            if (result.clone[0][i].idRow == index) {
-                                                finalIndex = i;
-                                                break;
-                                            }
-                                        }
-                                        this.hold = false;
-                                        var dom = this;
-                                        this.default = event;
-                                        this.timeoutID = setTimeout(function () {
-                                            dom.hold = true;
-                                            moveElementFix(event, dom, result, finalIndex);
-                                        }, 200);
-                                    }
-                                }(i) : undefined,
-                                dragstart: dragVertical ? function () {
-                                    return false;
-                                } : undefined,
-                                mouseup: function () {
-                                    if (this.hold === false) {
-                                        this.hold = true;
-                                        // this.click();
-                                        clearTimeout(this.timeoutID);
-                                    }
-                                },
-                                mousemove: dragVertical ? function (index) {
-                                    return function (event) {
-                                        if (this.hold === false) {
-                                            var finalIndex;
-                                            for (var i = 0; i < result.clone[0].length; i++) {
-                                                if (result.clone[0][i].idRow == index) {
-                                                    finalIndex = i;
-                                                    break;
-                                                }
-                                            }
-                                            this.hold = false;
-                                            var deltaX = this.default.clientX - event.clientX,
-                                                deltaY = this.default.clientY - event.clientY;
-                                            if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
-                                                this.hold = true;
-                                                moveElementFix(event, this, result, finalIndex);
-                                                clearTimeout(this.timeoutID);
-                                            }
-                                        }
-                                    }
-                                }(i) : undefined,
-                            }
-                        })
-                    }
-                    break;
-                case "check":
-                    bonus = _({
-                        tag: "checkboxbutton",
-                        class: "pizo-checkbox",
-                        on: {
-                            click: function (event) {
-                                if (temp.listCheckBox !== undefined) {
-                                    if (this.checked === false)
-                                    temp.listCheckBox[0].checked = false;
-                                    else {
-                                        if (temp.listCheckBox[0].checked === false)
-                                            for (var m = 1; m < temp.listCheckBox.length; m++) {
-                                                if (temp.listCheckBox[m].checked === false) {
-                                                    m--;
-                                                    break;
-                                                }
-                                            }
-                                        if (m === temp.listCheckBox.length) {
-                                            temp.listCheckBox[0].checked = true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    })
-                    if(temp.listCheckBox[0].checked===true)
-                        bonus.checked = true;
-                    if (temp.listCheckBox !== undefined)
-                        temp.listCheckBox.push(bonus);
-                    break;
-                case "detail":
-                    var icon = "more_vert";
-                    if (data[i][k].icon !== undefined)
-                        icon = data[i][k].icon;
-                    bonus = _({
-                        tag: "i",
-                        class: "material-icons",
-                        style: {
-                            fontSize: "20px",
-                            cursor: "pointer"
-                        },
-                        props: {
-                            innerHTML: icon
-                        }
-                    })
-                    break;
-
-            }
-            
-            var functionClick;
-            if (data[i][k].functionClick !== undefined)
-                functionClick = data[i][k].functionClick;
-            else {
-                if (header[k].functionClickAll !== undefined)
-                    functionClick = header[k].functionClickAll;
-            }
-            cell = _({
-                tag: "td",
-                props: {
-                    idRow:i,
-                },
-                on: {
-                    click: function (index, row, functionClick) {
-                        return function (event) {
-                            event.preventDefault();
-                            if (functionClick !== undefined){
-                                for(var i=0;i<result.data.length;i++){
-                                    if(this.data==result.data[i]){
-                                        functionClick(event, this, i, this.data, row);
-                                    }
-                                }
-                            }
-                        }
-                    }(i, row, functionClick),
-                }
-            })
-            if(data[i][k].element===undefined)
-            {
-                cell.textContent  = value;
-            }else
-            {
-                cell.appendChild(data[i][k].element);
-            }
-            cell.data = data[i];
-            if (bonus !== undefined) {
-                cell.addChild(bonus);
-                bonus = undefined;
-            }
-
-            if(data[i][k].colspan!==undefined){
-                cell.setAttribute("colspan",data[i][k].colspan);
-                
-                checkSpan[i]=[]
-                for(var l = j;l<j+data[i][k].colspan;l++)
-                {
-                    checkSpan[i][l]=1;
-                }
             }
 
             this.clone[j][i+1 - delta[j]] = cell;
@@ -1158,227 +1015,56 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 
         }
     }
-    
+    this.checkSpan  = checkSpan;
     this.replaceChild(temp, this.bodyTable);
     this.data = data;
     this.bodyTable = temp;
-    this.dragHorizontal = dragHorizontal;
-    this.dragVertical = dragVertical;
 }
 
 tableView.prototype.updateRow = function(data,index)
 {
-    var temp;
-    temp = this.clone[0][index+1].parentNode;
-    var result = this;
-    var value,bonus,cell,row,delta = 0,checkSpan=[];
+    var result = this,k=0,cell;
     var row = _({
-        tag: "tr"
-    });
-    for(var i = 0;i<data.length;i++)
+        tag:"tr"
+    })
+    if(result.checkSpan[index]!==undefined)
+    for(var i = 0;i<result.checkSpan[index].length;i++)
     {
-        if(checkSpan[i]==1){
-            delta+=1;
-            continue;
-        }
-        if (data.value === undefined) {
-            if (typeof data[i] === "object")
-                value = "";
-            else
-                value = data[i];
-        }
-        else
-            value = data[i].value;
-        console.log(value)
-        switch (this.check[i]) {
-            case "hidden":
-                continue;
-            case "increase":
-                value += (i + 1);
-                break;
-            case "dragzone":
-                if (data[i].icon !== undefined)
-                {
-                    icon = data[i].icon;
-                    bonus = _({
-                        tag: "i",
-                        class: ["material-icons"],
-                        style: {
-                            fontSize: "20px",
-                            cursor: "pointer"
-                        },
-                        props: {
-                            innerHTML: icon
-                        }
-                    })
-                }else
-                {
-                    bonus = _({
-                        tag:"drag-horizontal",
-                        on:{
-                            mousedown: this.dragVertical ? function (index) {
-                                return function (event) {
-                                    event.preventDefault();
-                                    var finalIndex;
-                                    for (var i = 1; i < result.clone[0].length; i++) {
-                                        if (result.clone[0][i].idRow == index) {
-                                            finalIndex = i;
-                                            break;
-                                        }
-                                    }
-                                    this.hold = false;
-                                    var dom = this;
-                                    this.default = event;
-                                    this.timeoutID = setTimeout(function () {
-                                        dom.hold = true;
-                                        moveElementFix(event, dom, result, finalIndex);
-                                    }, 200);
-                                }
-                            }(i) : undefined,
-                            dragstart: this.dragVertical ? function () {
-                                return false;
-                            } : undefined,
-                            mouseup: function () {
-                                if (this.hold === false) {
-                                    this.hold = true;
-                                    // this.click();
-                                    clearTimeout(this.timeoutID);
-                                }
-                            },
-                            mousemove: this.dragVertical ? function (index) {
-                                return function (event) {
-                                    if (this.hold === false) {
-                                        var finalIndex;
-                                        for (var i = 0; i < result.clone[0].length; i++) {
-                                            if (result.clone[0][index].idRow == index) {
-                                                finalIndex = i;
-                                                break;
-                                            }
-                                        }
-                                        this.hold = false;
-                                        var deltaX = this.default.clientX - event.clientX,
-                                            deltaY = this.default.clientY - event.clientY;
-                                        if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
-                                            this.hold = true;
-                                            moveElementFix(event, this, result, finalIndex);
-                                            clearTimeout(this.timeoutID);
-                                        }
-                                    }
-                                }
-                            }(i) : undefined,
-                        }
-                    })
-                }
-                break;
-            case "check":
-                bonus = _({
-                    tag: "checkboxbutton",
-                    class: "pizo-checkbox",
-                    on: {
-                        click: function (event) {
-                            if (temp.listCheckBox !== undefined) {
-                                if (this.checked === false)
-                                temp.listCheckBox[0].checked = false;
-                                else {
-                                    if (temp.listCheckBox[0].checked === false)
-                                        for (var m = 1; m < temp.listCheckBox.length; m++) {
-                                            if (temp.listCheckBox[m].checked === false) {
-                                                m--;
-                                                break;
-                                            }
-                                        }
-                                    if (m === temp.listCheckBox.length) {
-                                        temp.listCheckBox[0].checked = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                })
-                if(temp.listCheckBox[0].checked===true)
-                    bonus.checked = true;
-                if (temp.listCheckBox !== undefined)
-                    temp.listCheckBox.push(bonus);
-                break;
-            case "detail":
-                var icon = "more_vert";
-                if (data[i].icon !== undefined)
-                    icon = data[i].icon;
-                bonus = _({
-                    tag: "i",
-                    class: "material-icons",
-                    style: {
-                        fontSize: "20px",
-                        cursor: "pointer"
-                    },
-                    props: {
-                        innerHTML: icon
-                    }
-                })
-                break;
+        if(result.checkSpan[index][i]===6){
 
+            result.checkSpan[index][i] = undefined;
         }
         
-        var functionClick;
-        if (data[i].functionClick !== undefined)
-            functionClick = data[i].functionClick;
-        else {
-            if (this.header[i].functionClickAll !== undefined)
-                functionClick = this.header[i].functionClickAll;
-        }
-        cell = _({
-            tag: "td",
-            props: {
-                idRow:i,
-            },
-            on: {
-                click: function (index, row, functionClick) {
-                    return function (event) {
-                        event.preventDefault();
-                        if (functionClick !== undefined){
-                            for(var i=0;i<result.data.length;i++){
-                                if(this.data==result.data[i]){
-                                    functionClick(event, this, i, this.data, row);
-                                }
-                            }
-                        }
-                    }
-                }(i, row, functionClick),
-            }
-        })
-        cell.data = data;
-        if(data[i].element===undefined)
+    }
+    for(var i = 0;i<data.length;i++)
+    {
+        cell = result.getCell(data[i],index,i,result.checkSpan,row);
+        if(cell  === 6)
         {
-            cell.textContent  = value;
-        }else
+            this.clone[k++].splice(index,1);
+            continue;
+        }
+        if(cell === 2)
         {
-            cell.appendChild(data[i].element);
+            k++;
+            continue;
         }
-        if (bonus !== undefined) {
-            cell.addChild(bonus);
-            bonus = undefined;
+        if(cell === true)
+        {
+            continue;
         }
-
-        if(data[i].colspan!==undefined){
-            cell.setAttribute("colspan",data[i].colspan);
-            
-            checkSpan=[]
-            for(var l = i;l<i+data[i].colspan;l++)
-            {
-                checkSpan[l]=1;
-            }
-        }
-        console.log(i + delta,index+1)
-        this.clone[i + delta][index+1] = cell;
+        
+        this.clone[k++][index+1] = cell;
         row.addChild(cell);
     }
-    console.log(row)
-    temp.parentNode.replaceChild(row,temp);
+    result.bodyTable.replaceChild(row,result.bodyTable.childNodes[index]);
+    result.data[index]=data;
 }
 
-tableView.prototype.dropRow = function(element,index)
+tableView.prototype.dropRow = function(index)
 {
     var self=this;
+    var element = self.bodyTable.childNodes[index]
     if(!element.classList.contains("hide"))
         element.classList.add("hide");
     var eventEnd = function(){
@@ -1698,15 +1384,12 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
 tableView.prototype.getBound2Row = function (row1, row2) {
     var self = this;
     var top, bottom;
-    console.log(this)
-    var borderSpacing =  parseFloat(getComputedStyle(this).webkitBorderHorizontalSpacing);
-    console.log(borderSpacing)
     if (row1 !== undefined)
-        top = (self.clone[0][row1].offsetHeight+borderSpacing) / 2;
+        top = (self.clone[0][row1].offsetHeight) / 2;
     else
         top = 0;
     if (row2 !== undefined)
-        bottom = (self.clone[0][row2].offsetHeight+borderSpacing) / 2;
+        bottom = (self.clone[0][row2].offsetHeight) / 2;
     else
         bottom = 0;
     return _({
