@@ -171,7 +171,7 @@ listProject.prototype.getView = function () {
     var tableViewX;
     var functionClickMore = function(event,me,index,data,row){
         console.log(event,me,index,data,row)
-        tableViewX.dropRow(row,index);
+        tableViewX.dropRow(index);
     }
     var test = _({
         tag:"span",

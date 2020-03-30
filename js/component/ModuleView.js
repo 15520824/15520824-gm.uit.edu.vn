@@ -353,7 +353,6 @@ function moveElement(event, me, result, index) {
 
 function moveElementFix(event, me, result, index) {
     var trigger;
-    console.log(index)
     var clone = result.cloneRow(index);
     var bg = result.backGroundFix(index);
 
@@ -755,9 +754,11 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     return result;
 }
 
-tableView.prototype.getCell = function(data,i,j,checkSpan,row)
+tableView.prototype.getCell = function(dataOrigin,i,j,checkSpan,row)
 {
+    var data = dataOrigin;
     var result = this,value,bonus,style,cell;
+    // console.log(data)
     if(checkSpan[i]!==undefined){
         if(checkSpan[i][j]==2)
         return 2;
@@ -769,7 +770,7 @@ tableView.prototype.getCell = function(data,i,j,checkSpan,row)
         if (typeof data === "object")
             value = "";
         else
-            value = data;
+            value = data.toString();
     }
     else
         value = data.value;
@@ -902,7 +903,7 @@ tableView.prototype.getCell = function(data,i,j,checkSpan,row)
     }
     var functionClick=undefined;
     if (data.functionClick !== undefined)
-        functionClick = data[i][j].functionClick;
+        functionClick = data.functionClick;
     else {
         if (result.header[j].functionClickAll !== undefined)
             functionClick = result.header[j].functionClickAll;
@@ -934,8 +935,8 @@ tableView.prototype.getCell = function(data,i,j,checkSpan,row)
             }(i, row, functionClick),
         }
     })
-   
-    cell.data = data[i];
+    // console.log(data)
+    
 
     if(data.element===undefined)
     {
@@ -949,6 +950,8 @@ tableView.prototype.getCell = function(data,i,j,checkSpan,row)
         cell.addChild(bonus);
         bonus = undefined;
     }
+
+    cell.data = result.data[i];
 
     if(data.rowspan!==undefined){
         cell.setAttribute("rowspan",data.rowspan);
@@ -1064,7 +1067,7 @@ tableView.prototype.updateRow = function(data,index)
 tableView.prototype.dropRow = function(index)
 {
     var self=this;
-    var element = self.bodyTable.childNodes[index]
+    var element = self.bodyTable.childNodes[index];
     if(!element.classList.contains("hide"))
         element.classList.add("hide");
     var eventEnd = function(){
@@ -1245,7 +1248,6 @@ tableView.prototype.cloneColumn = function (index) {
 
 tableView.prototype.cloneRow = function (index) {
     var clone;
-    console.log(index)
     var headerTable = _({
         tag: "thead"
     });
