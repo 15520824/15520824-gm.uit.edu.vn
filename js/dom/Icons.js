@@ -80,3 +80,15 @@ Fcore.install('drag-vertical', function () {
         '<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="24px" height="24px" viewBox="0 0 24 24" preserveAspectRatio="none"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z" fill="#5F6368"/></g></svg>'
     );
 });
+
+Fcore.install('sort-up',function(){
+    return _(
+        '<svg width="8" height="6" x="0" y="0" style="opacity: 1;"><defs></defs><rect x="0" y="0" width="8" height="6" fill="transparent" class="stencil__selection-helper"></rect><path d="M0 6.000000000000002C0 6.000000000000002 4.000000000000001 0 4.000000000000001 0 4.000000000000001 0 8 6.000000000000002 8 6.000000000000002 8 6.000000000000002 0 6.000000000000002 0 6.000000000000002" stroke-width="0" stroke="none" stroke-dasharray="none" fill="rgb(96, 96, 96)" fill-rule="evenOdd"></path></svg>'
+    )
+})
+
+Fcore.install('sort-down',function(){
+    return _(
+        '<svg width="8" height="6" x="0" y="0" style="opacity: 1;"><defs></defs><rect x="0" y="0" width="8" height="6" fill="transparent" class="stencil__selection-helper"></rect><path d="M0 0C0 0 4.000000000000001 6 4.000000000000001 6 4.000000000000001 6 8 0 8 0 8 0 0 0 0 0" stroke-width="0" stroke="none" stroke-dasharray="none" fill="rgb(96, 96, 96)" fill-rule="evenOdd"></path></svg>'
+    )
+})

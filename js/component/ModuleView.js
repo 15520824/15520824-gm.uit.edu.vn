@@ -696,22 +696,6 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     role: 'columnheader'
                 },
                 style:style,
-                child:[
-                    {
-                        tag:"i",
-                        class: "material-icons",
-                        props:{
-                            innerHTML:"arrow_drop_up"
-                        }
-                    },
-                    {
-                        tag:"i",
-                        class: "material-icons",
-                        props:{
-                            innerHTML:"arrow_drop_down"
-                        }
-                    }
-                ],
                 props: {
                     id: i
                 },
@@ -775,13 +759,14 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     }(i) : undefined,
                 }
             })
+            console.log(cell)
             if (header[i].sort === true) {
                 cell.classList.add("has-sort")
             }
 
             if(header[i].element===undefined)
             {
-                cell.textContent  = value;
+                cell.addChild( _({text: value})) ;
             }else
             {
                 cell.appendChild(data[i][j].element);
@@ -791,8 +776,22 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                 cell.addChild(bonus);
                 bonus = undefined;
             }
-
+            cell.addChild(_({
+                tag:"div",
+                class:"sort-container",
+                child:[
+                    {
+                        tag:"sort-up",
+                        class: ["arrow_up"],
+                    },
+                    {
+                        tag:"sort-down",
+                        class: ["arrow_down"],
+                    }
+                ]
+            }));
             result.clone[k++].push(cell);
+            
             row.addChild(cell);
         } else
             check[i] = "hidden";
@@ -1018,7 +1017,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
 
     if(data.element===undefined)
     {
-        cell.textContent  = value;
+        cell.addChild(_({text:value}))
     }else
     {
         cell.appendChild(data.element);

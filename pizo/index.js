@@ -31437,7 +31437,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-project-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-project-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-project-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-project-main{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-project-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    overflow-x: auto;\r\n}\r\n\r\n.pizo-list-project-button-apply.pizo-list-project-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-button-deleteall.pizo-list-project-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control.show{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.show .pizo-list-project-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.show .hide.pizo-list-project-main-search-control-container{\r\n    transform: translateX(0);\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-project-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-project-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-project-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-project-main{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-project-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    overflow-x: auto;\r\n}\r\n\r\n.pizo-list-project-button-apply.pizo-list-project-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-button-deleteall.pizo-list-project-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate .pizo-list-project-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate .hideTranslate.pizo-list-project-main-search-control-container{\r\n    transform: translateX(0);\r\n}", ""]);
 
 
 
@@ -31472,7 +31472,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0rem;\r\n  left: 0rem;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n.sortTable{\r\n  width: 100%;\r\n}\r\n.sortTable,.sortTableClone {\r\n  border-collapse: collapse;\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    overflow: hidden;\r\n    margin: 0 auto;\r\n    position: relative;\r\n}\r\n\r\n.sortTable  tr{\r\n  -webkit-transition: 1s ease-in-out;\r\n  -moz-transition: 1s ease-in-out;\r\n  -o-transition: 1s ease-in-out;\r\n  transition: 1s ease-in-out;\r\n}\r\n\r\n.sortTable  tr.hide{\r\n  transform: translateX(100%);\r\n}\r\n\r\n.sortTable tr:nth-child(even) {\r\n  background-color: #f5f5f5;\r\n}\r\n\r\n.sortTable th,.sortTable td,\r\n.sortTableClone th,.sortTableClone td {\r\n  padding: 0.5714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n}\r\n.sortTable th,.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n}\r\n.sortTable td,.sortTableClone td {\r\n  vertical-align: top;\r\n}\r\n.sortTable thead:first-child tr th,\r\n.sortTable thead:first-child tr td,\r\n.sortTableClone thead:first-child tr th,\r\n.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\n.sortTable tbody + tbody,.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\n.sortTable th + th,\r\n.sortTable td + td,\r\n.sortTable th + td,\r\n.sortTable td + th,\r\n.sortTableClone th + th,\r\n.sortTableClone td + td,\r\n.sortTableClone th + td,\r\n.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\n.sortTable thead:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child td,\r\n.sortTableClone thead:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\n.sortTable tbody{\r\n  position: relative;\r\n}\r\n\r\nheader {\r\n  width: 68.5714rem;\r\n  margin: 0 auto;\r\n  padding: 0 1.4286rem;\r\n}\r\n\r\n.limiter {\r\n  width: 37.1429rem;\r\n  margin: 0 auto;\r\n  padding: 0 1.4286rem;\r\n}\r\n\r\n.links {\r\n  width: 34.2857rem;\r\n  margin: 3.5714rem auto 0;\r\n}\r\n.links a {\r\n  width: 50%;\r\n  float: left;\r\n}\r\na.button {\r\n  background: #1f90ff;\r\n  border: 0.0714rem solid #1f4fff;\r\n  height: 2.8571rem;\r\n  line-height: 2.7143rem;\r\n  color: #fff;\r\n  display: inline-block;\r\n  text-align: center;\r\n  padding: 0 0.7143rem;\r\n  -webkit-border-radius: 0.0714rem;\r\n  border-radius: 0.0714rem;\r\n  -webkit-transition: box-shadow 150ms linear;\r\n  -moz-transition: box-shadow 150ms linear;\r\n  -o-transition: box-shadow 150ms linear;\r\n  transition: box-shadow 150ms linear;\r\n}\r\na.button:hover {\r\n  background-color: #0081ff;\r\n  -webkit-box-shadow: 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n  box-shadow: 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n  border: 0.0714rem solid #1f4fff;\r\n}\r\na.button:focus,\r\na.button:active {\r\n  background: #0081ff;\r\n  -webkit-box-shadow: inset 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n  box-shadow: inset 0 0.0714rem 0.3571rem rgba(0, 0, 0, 0.25);\r\n}\r\n\r\n.options {\r\n  margin: 0.7143rem 0 2.1429rem 1.0714rem;\r\n}\r\n.options h3 {\r\n  display: block;\r\n  padding-top: 0.7143rem;\r\n  margin-top: 1.4286rem;\r\n}\r\n.options h3:first-child {\r\n  border: none;\r\n  margin-top: 0;\r\n}\r\n\r\npre,\r\ncode {\r\n  font-family: Consolas, Menlo, \"Liberation Mono\", Courier, monospace;\r\n  word-wrap: break-word;\r\n  color: #333;\r\n}\r\npre {\r\n  font-size: 0.9286rem;\r\n  line-height: 1.25em;\r\n  background: #fff;\r\n  padding: 0.7143rem 1.0714rem;\r\n  margin: 0.7143rem 0;\r\n  overflow: auto;\r\n  -webkit-box-shadow: 0 0.0714rem 0.2143rem rgba(0, 0, 0, 0.3);\r\n  box-shadow: 0 0.0714rem 0.2143rem rgba(0, 0, 0, 0.3);\r\n}\r\ncode {\r\n  font-size: 0.8571rem;\r\n  border: 0;\r\n  padding: 0;\r\n  background: #e6e6e6;\r\n  background: rgba(0, 0, 0, 0.08);\r\n  box-shadow: 0 0 0 0.1429rem rgba(0, 0, 0, 0.08);\r\n}\r\npre code {\r\n  font-size: 0.9286rem;\r\n  line-height: 1.25em;\r\n  background: transparent;\r\n  box-shadow: none;\r\n  border: none;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.col12 {\r\n  width: 100%;\r\n}\r\n.col6 {\r\n  width: 50%;\r\n  float: left;\r\n  display: block;\r\n}\r\n\r\n.pill-group {\r\n  margin: 2.8571rem 0 0;\r\n}\r\n.pill-group a:first-child {\r\n  border-radius: 1.4286rem 0 0 1.4286rem;\r\n  border-right-width: 0;\r\n}\r\n.pill-group a:last-child {\r\n  border-radius: 0 1.4286rem 1.4286rem 0;\r\n}\r\n\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n", ""]);
+exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0rem;\r\n  left: 0rem;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n.sortTable{\r\n  width: 100%;\r\n}\r\n.sortTable,.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    overflow: hidden;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    padding-bottom: 10px;\r\n    /* border-spacing: 10px; */\r\n}\r\n\r\n.sortTableClone{\r\n  left: 0;\r\n}\r\n\r\n.sortTable  tr{\r\n  -webkit-transition: 1s ease-in-out;\r\n  -moz-transition: 1s ease-in-out;\r\n  -o-transition: 1s ease-in-out;\r\n  transition: 1s ease-in-out;\r\n}\r\n\r\n.sortTable  tr.hideTranslate{\r\n  transform: translateX(100%);\r\n}\r\n\r\n.sortTable tr:nth-child(even) {\r\n  background-color: #f5f5f5;\r\n}\r\n\r\n.sortTable th,.sortTable td,\r\n.sortTableClone th,.sortTableClone td {\r\n  padding: 0.5714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n}\r\n.sortTable th,.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n}\r\n.sortTable td,.sortTableClone td {\r\n  vertical-align: top;\r\n}\r\n.sortTable thead:first-child tr th,\r\n.sortTable thead:first-child tr td,\r\n.sortTableClone thead:first-child tr th,\r\n.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\n.sortTable tbody + tbody,.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\n.sortTable th + th,\r\n.sortTable td + td,\r\n.sortTable th + td,\r\n.sortTable td + th,\r\n.sortTableClone th + th,\r\n.sortTableClone td + td,\r\n.sortTableClone th + td,\r\n.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\n.sortTable thead:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child td,\r\n.sortTableClone thead:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\n.sortTable tbody{\r\n  position: relative;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n", ""]);
 
 
 
@@ -31507,7 +31507,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, "th[role=columnheader]:not(.no-sort) {\n\tcursor: pointer;\n}\n\nth[role=columnheader]:not(.no-sort):after {\n\tcontent: '';\n\tfloat: right;\n\tmargin-top: 0.35rem;\n\tborder-width: 0.2857rem 0.2857rem 0;\n\tborder-style: solid;\n\tborder-color: #ffffff transparent;\n\tvisibility: hidden;\n\topacity: 0;\n\t-ms-user-select: none;\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n\nth[role=columnheader].downgrade:not(.no-sort):after{\n\tborder-width: 0 0.2857rem 0.2857rem;\n}\n\nth[aria-sort=ascending]:not(.no-sort):after {\n\tborder-bottom: none;\n\tborder-width: 0.2857rem 0.2857rem 0;\n}\n\nth[aria-sort]:not(.no-sort):after {\n\tvisibility: visible;\n\topacity: 0.4;\n}\n\nth[role=columnheader]:not(.no-sort):hover:after {\n\tvisibility: visible;\n\topacity: 1;\n}\n\n/* table, th, td {\n\tbackground: #ffffff;\n\tpadding: 5px;\n  }\ntable {\n\tbackground: #999999;\n\tborder-spacing: 15px;\n} */\n\n\n", ""]);
+exports.push([module.i, ".arrow_up{\n\ttransform: scale(1.06);\n\tdisplay: block;\n\tmargin-bottom: 1px;\n}\n\n.arrow_down{\n\ttransform: scale(1.06);\n\tdisplay: block;\n\tmargin-top: 1px;\n}\n\n.sort-container{\n\tdisplay: none;\n}\n\n.has-sort .sort-container{\n\tdisplay: inline-block;\n}", ""]);
 
 
 
@@ -52281,8 +52281,17 @@ dom_Fcore.install('drag-horizontal', function () {
 dom_Fcore.install('drag-vertical', function () {
   return Icons_('<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="24px" height="24px" viewBox="0 0 24 24" preserveAspectRatio="none"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z" fill="#5F6368"/></g></svg>');
 });
+dom_Fcore.install('sort-up', function () {
+  return Icons_('<svg width="8" height="6" x="0" y="0" style="opacity: 1;"><defs></defs><rect x="0" y="0" width="8" height="6" fill="transparent" class="stencil__selection-helper"></rect><path d="M0 6.000000000000002C0 6.000000000000002 4.000000000000001 0 4.000000000000001 0 4.000000000000001 0 8 6.000000000000002 8 6.000000000000002 8 6.000000000000002 0 6.000000000000002 0 6.000000000000002" stroke-width="0" stroke="none" stroke-dasharray="none" fill="rgb(96, 96, 96)" fill-rule="evenOdd"></path></svg>');
+});
+dom_Fcore.install('sort-down', function () {
+  return Icons_('<svg width="8" height="6" x="0" y="0" style="opacity: 1;"><defs></defs><rect x="0" y="0" width="8" height="6" fill="transparent" class="stencil__selection-helper"></rect><path d="M0 0C0 0 4.000000000000001 6 4.000000000000001 6 4.000000000000001 6 8 0 8 0 8 0 0 0 0 0" stroke-width="0" stroke="none" stroke-dasharray="none" fill="rgb(96, 96, 96)" fill-rule="evenOdd"></path></svg>');
+});
 // CONCATENATED MODULE: ./js/dom/Fcomp.js
 
+
+ //install all icon to core
+//todo: import orther Creator
 
 /* harmony default export */ var Fcomp = (dom_Fcore);
 // CONCATENATED MODULE: ./js/R.js
@@ -52701,14 +52710,13 @@ function onMouseMoveFix(clone, event, shiftY, result) {
 }
 
 function moveAtFix(clone, pageY, shiftY, result) {
-  var y = pageY - result.bodyTable.getBoundingClientRect().top;
+  var y = pageY - result.getBoundingClientRect().top;
+  y -= shiftY;
 
   if (y > result.clientHeight - clone.clientHeight) {
     y = result.clientHeight;
     return;
   }
-
-  y -= shiftY;
 
   if (y < 0) {
     y = 0;
@@ -52784,7 +52792,6 @@ function moveElement(event, me, result, index) {
 
 function moveElementFix(event, me, result, index) {
   var trigger;
-  console.log(index);
   var clone = result.cloneRow(index);
   var bg = result.backGroundFix(index);
   result.bodyTable.appendChild(bg);
@@ -52814,7 +52821,7 @@ function moveElementFix(event, me, result, index) {
     }
   };
 
-  var shiftY = -me.clientHeight / 2;
+  var shiftY = clone.clientHeight / 2;
   moveAtFix(clone, event.pageY, shiftY, result);
   window.addEventListener('mousemove', functionCheckZone);
 
@@ -52829,39 +52836,84 @@ function moveElementFix(event, me, result, index) {
     if (removeList !== undefined) {
       var row1 = removeList.row1;
       var row2 = removeList.row2;
+      if (row1 === undefined && row2 === 0) return;
       var element = me;
 
       while (element.tagName !== "TR" && element !== undefined) {
         element = element.parentNode;
       }
 
-      result.bodyTable.insertBefore(element, result.bodyTable.childNodes[row2 - 1]);
-      result.data = array_move(result.data, index - 1, row1);
+      result.bodyTable.insertBefore(element, result.bodyTable.childNodes[row1]);
+      result.data = changeIndex(result.data, index - 1, row1);
+      var k = 0;
 
-      for (var i = 0; i < element.childNodes.length; i++) {
-        var target = element[i];
-        result.clone.splice();
+      for (var i = 0; i < result.clone.length; i++) {
+        var checkValue = array_insertBefore(result.clone[i], element.childNodes[k], row2);
+        if (checkValue === false) continue;
+        result.clone[i] = checkValue;
+        k++;
       }
+
+      result.checkSpan = changeIndex(result.checkSpan, index - 1, row1);
     }
 
     outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
   });
 }
 
-function array_move(arr, old_index, new_index) {
-  if (new_index >= arr.length) {
-    var k = new_index - arr.length + 1;
+function array_insertBefore(arr, data, new_index) {
+  var old_index;
 
-    while (k--) {
-      arr.push(undefined);
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === data) {
+      old_index = i;
+      break;
     }
   }
 
-  arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-  return arr; // for testing
+  if (old_index === undefined) return false; // for testing
+
+  return arr_change(arr, data, old_index, new_index);
 }
 
 ;
+
+function arr_change(arr, data, old_index, new_index) {
+  if (new_index === undefined) new_index = arr.length + 1;
+
+  if (old_index > new_index) {
+    arr.splice(new_index, 0, data);
+    arr.splice(old_index + 1, 1);
+  } else {
+    arr.splice(new_index, 0, data);
+    arr.splice(old_index, 1);
+  }
+
+  return arr;
+}
+
+function changeIndex(arr, old_index, new_index) {
+  var data = arr.splice(old_index, 1)[0];
+  if (old_index < new_index) arr.splice(new_index - 1, 0, data);else arr.splice(new_index, 0, data);
+  return arr;
+}
+
+tableView.prototype.checkLongRow = function (index) {
+  var result = this;
+  var delta;
+
+  for (var i = 0; i < result.clone.length; i++) {
+    delta[i] = 0;
+
+    if (result.checkSpan !== undefined) {
+      for (var j = 0; j < index; j++) {
+        if (result.checkSpan[j] !== undefined) if (result.checkSpan[j][i] !== undefined) delta[i]++;
+      }
+    }
+  }
+
+  return delta;
+};
 
 function AABBYY(x, y, bound) {
   if (bound.x === 0 && bound.y === 0 && bound.width === 0 && bound.height === 0) return true;
@@ -52893,7 +52945,8 @@ function tableView() {
       row,
       value,
       check = [],
-      bonus;
+      bonus,
+      style;
   var checkSpan = [];
 
   var headerTable = ModuleView_({
@@ -52918,6 +52971,24 @@ function tableView() {
 
   result.headerTable = headerTable;
   result.bodyTable = bodyTable;
+  result.cloneColumn = tableView.prototype.cloneColumn;
+  result.cloneRow = tableView.prototype.cloneRow;
+  result.deleteColumn = tableView.prototype.deleteColumn;
+  result.getBound2Colum = tableView.prototype.getBound2Colum;
+  result.getBound2Row = tableView.prototype.getBound2Row;
+  result.backGround = tableView.prototype.backGround;
+  result.backGroundFix = tableView.prototype.backGroundFix;
+  result.updateTable = tableView.prototype.updateTable;
+  result.updateRow = tableView.prototype.updateRow;
+  result.dropRow = tableView.prototype.dropRow;
+  result.getCell = tableView.prototype.getCell;
+  result.checkLongRow = tableView.prototype.checkLongRow;
+  result.insertRow = tableView.prototype.insertRow;
+  result.check = check;
+  result.header = header;
+  result.data = data;
+  result.dragVertical = dragVertical;
+  result.dragHorizontal = dragHorizontal;
   setTimeout(function () {
     if (window.scrollEvent === undefined) {
       window.xMousePos = 0;
@@ -53043,11 +53114,14 @@ function tableView() {
       }
 
       if (header[i].functionClick !== undefined) functionClick = header[i].functionClick;
+      style = {};
+      if (header[i].style !== undefined) style = header[i].style;
       cell = ModuleView_({
         tag: "th",
         attr: {
           role: 'columnheader'
         },
+        style: style,
         props: {
           id: i
         },
@@ -53115,13 +53189,16 @@ function tableView() {
           }(i) : undefined
         }
       });
+      console.log(cell);
 
-      if (header[i].sort === false) {
-        cell.classList.add("no-sort");
+      if (header[i].sort === true) {
+        cell.classList.add("has-sort");
       }
 
       if (header[i].element === undefined) {
-        cell.textContent = value;
+        cell.addChild(ModuleView_({
+          text: value
+        }));
       } else {
         cell.appendChild(data[i][j].element);
       }
@@ -53131,6 +53208,17 @@ function tableView() {
         bonus = undefined;
       }
 
+      cell.addChild(ModuleView_({
+        tag: "div",
+        "class": "sort-container",
+        child: [{
+          tag: "sort-up",
+          "class": ["arrow_up"]
+        }, {
+          tag: "sort-down",
+          "class": ["arrow_down"]
+        }]
+      }));
       result.clone[k++].push(cell);
       row.addChild(cell);
     } else check[i] = "hidden";
@@ -53144,230 +53232,258 @@ function tableView() {
     k = 0;
 
     for (var j = 0; j < data[i].length; j++) {
-      if (checkSpan[i] !== undefined && checkSpan[i][j] == 1) {
+      cell = result.getCell(data[i][j], i, j, k, checkSpan, row);
+
+      if (cell === 6) {
         k++;
         continue;
       }
 
-      if (data[i].value === undefined) {
-        if (_typeof(data[i][j]) === "object") value = "";else value = data[i][j];
-      } else value = data[i][j].value;
-
-      switch (check[j]) {
-        case "hidden":
-          continue;
-
-        case "increase":
-          value += i + 1;
-          break;
-
-        case "dragzone":
-          if (data[i][j].icon !== undefined) {
-            icon = data[i][j].icon;
-            bonus = ModuleView_({
-              tag: "i",
-              "class": ["material-icons"],
-              style: {
-                fontSize: "20px",
-                cursor: "pointer"
-              },
-              props: {
-                innerHTML: icon
-              }
-            });
-          } else {
-            bonus = ModuleView_({
-              tag: "drag-horizontal",
-              on: {
-                mousedown: dragVertical ? function (index) {
-                  return function (event) {
-                    event.preventDefault();
-                    var finalIndex;
-
-                    for (var i = 1; i < result.clone[0].length; i++) {
-                      if (result.clone[0][i].idRow == index) {
-                        finalIndex = i;
-                        break;
-                      }
-                    }
-
-                    this.hold = false;
-                    var dom = this;
-                    this["default"] = event;
-                    this.timeoutID = setTimeout(function () {
-                      dom.hold = true;
-                      moveElementFix(event, dom, result, finalIndex);
-                    }, 200);
-                  };
-                }(i) : undefined,
-                dragstart: dragVertical ? function () {
-                  return false;
-                } : undefined,
-                mouseup: function mouseup() {
-                  if (this.hold === false) {
-                    this.hold = true; // this.click();
-
-                    clearTimeout(this.timeoutID);
-                  }
-                },
-                mousemove: dragVertical ? function (index) {
-                  return function (event) {
-                    if (this.hold === false) {
-                      var finalIndex;
-
-                      for (var i = 0; i < result.clone[0].length; i++) {
-                        if (result.clone[0][i].idRow == index) {
-                          finalIndex = i;
-                          break;
-                        }
-                      }
-
-                      this.hold = false;
-                      var deltaX = this["default"].clientX - event.clientX,
-                          deltaY = this["default"].clientY - event.clientY;
-
-                      if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
-                        this.hold = true;
-                        moveElementFix(event, this, result, finalIndex);
-                        clearTimeout(this.timeoutID);
-                      }
-                    }
-                  };
-                }(i) : undefined
-              }
-            });
-          }
-
-          break;
-
-        case "check":
-          bonus = ModuleView_({
-            tag: "checkboxbutton",
-            "class": "pizo-checkbox",
-            on: {
-              click: function click(event) {
-                if (result.bodyTable.listCheckBox !== undefined) {
-                  if (this.checked === false) result.bodyTable.listCheckBox[0].checked = false;else {
-                    if (result.bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                      if (result.bodyTable.listCheckBox[j].checked === false) {
-                        j--;
-                        break;
-                      }
-                    }
-
-                    if (j === result.bodyTable.listCheckBox.length) {
-                      result.bodyTable.listCheckBox[0].checked = true;
-                    }
-                  }
-                }
-              }
-            }
-          });
-          if (result.bodyTable.listCheckBox !== undefined) result.bodyTable.listCheckBox.push(bonus);
-          break;
-
-        case "detail":
-          var icon = "more_vert";
-          if (data[i][j].icon !== undefined) icon = data[i][j].icon;
-          bonus = ModuleView_({
-            tag: "i",
-            "class": "material-icons",
-            style: {
-              fontSize: "20px",
-              cursor: "pointer"
-            },
-            props: {
-              innerHTML: icon
-            }
-          });
-          break;
+      if (cell === 2) {
+        k++;
+        continue;
       }
 
-      var functionClick = undefined;
-      if (data[i][j].functionClick !== undefined) functionClick = data[i][j].functionClick;else {
-        if (header[j].functionClickAll !== undefined) functionClick = header[j].functionClickAll;
-      }
-      cell = ModuleView_({
-        tag: "td",
-        props: {
-          idRow: i
-        },
-        on: {
-          click: function (index, row, functionClick) {
-            return function (event) {
-              event.preventDefault();
-
-              if (functionClick !== undefined) {
-                for (var i = 0; i < result.data.length; i++) {
-                  if (this.data == result.data[i]) {
-                    functionClick(event, this, i, this.data, row);
-                  }
-                }
-              }
-            };
-          }(i, row, functionClick)
-        }
-      });
-      cell.data = data[i];
-
-      if (data[i][j].element === undefined) {
-        cell.textContent = value;
-      } else {
-        cell.appendChild(data[i][j].element);
-      }
-
-      if (bonus !== undefined) {
-        cell.addChild(bonus);
-        bonus = undefined;
-      }
-
-      if (data[i][j].rowspan !== undefined) {
-        cell.setAttribute("rowspan", data[i][j].rowspan);
-
-        for (var l = i; l < i + data[i][j].rowspan; l++) {
-          if (checkSpan[l] === undefined) checkSpan[l] = [];
-          checkSpan[l][j] = 1;
-        }
-      }
-
-      if (data[i][j].colspan !== undefined) {
-        cell.setAttribute("colspan", data[i][j].colspan);
-        checkSpan[i] = [];
-
-        for (var l = j; l < j + data[i][j].colspan; l++) {
-          checkSpan[i][l] = 1;
-        }
+      if (cell === true) {
+        continue;
       }
 
       result.clone[k++].push(cell);
       row.addChild(cell);
     }
+
+    if (data[i].child !== undefined) {
+      if (data[i].child.index !== undefined) {
+        row.childNodes[data[i].child.index].classList.add("hasChild");
+      }
+    }
   }
 
-  result.check = check;
-  result.cloneColumn = tableView.prototype.cloneColumn;
-  result.cloneRow = tableView.prototype.cloneRow;
-  result.deleteColumn = tableView.prototype.deleteColumn;
-  result.getBound2Colum = tableView.prototype.getBound2Colum;
-  result.getBound2Row = tableView.prototype.getBound2Row;
-  result.backGround = tableView.prototype.backGround;
-  result.backGroundFix = tableView.prototype.backGroundFix;
-  result.updateTable = tableView.prototype.updateTable;
-  result.dropRow = tableView.prototype.dropRow;
-  result.header = header;
-  result.data = data;
+  result.checkSpan = checkSpan;
   return result;
 }
+
+tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
+  var data = dataOrigin;
+  var result = this,
+      value,
+      bonus,
+      style,
+      cell;
+
+  if (checkSpan[i] !== undefined) {
+    if (checkSpan[i][k] == 2) return 2;
+    if (checkSpan[i][k] == 6) return 6;
+  }
+
+  if (data.value === undefined) {
+    if (_typeof(data) === "object") value = "";else value = data.toString();
+  } else value = data.value;
+
+  switch (this.check[j]) {
+    case "hidden":
+      return true;
+
+    case "increase":
+      value += i + 1;
+      break;
+
+    case "dragzone":
+      if (data.icon !== undefined) {
+        icon = data.icon;
+        bonus = ModuleView_({
+          tag: "i",
+          "class": ["material-icons"],
+          style: {
+            fontSize: "20px",
+            cursor: "pointer"
+          },
+          props: {
+            innerHTML: icon
+          }
+        });
+      } else {
+        bonus = ModuleView_({
+          tag: "drag-horizontal",
+          on: {
+            mousedown: result.dragVertical ? function (index) {
+              return function (event) {
+                event.preventDefault();
+                var finalIndex;
+
+                for (var i = 1; i < result.clone[0].length; i++) {
+                  if (result.clone[0][i].idRow == index) {
+                    finalIndex = i;
+                    break;
+                  }
+                }
+
+                this.hold = false;
+                var dom = this;
+                this["default"] = event;
+                this.timeoutID = setTimeout(function () {
+                  dom.hold = true;
+                  moveElementFix(event, dom, result, finalIndex);
+                }, 200);
+              };
+            }(i) : undefined,
+            dragstart: result.dragVertical ? function () {
+              return false;
+            } : undefined,
+            mouseup: function mouseup() {
+              if (this.hold === false) {
+                this.hold = true; // this.click();
+
+                clearTimeout(this.timeoutID);
+              }
+            },
+            mousemove: result.dragVertical ? function (index) {
+              return function (event) {
+                if (this.hold === false) {
+                  var finalIndex;
+
+                  for (var i = 0; i < result.clone[0].length; i++) {
+                    if (result.clone[0][i].idRow == index) {
+                      finalIndex = i;
+                      break;
+                    }
+                  }
+
+                  this.hold = false;
+                  var deltaX = this["default"].clientX - event.clientX,
+                      deltaY = this["default"].clientY - event.clientY;
+
+                  if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
+                    this.hold = true;
+                    moveElementFix(event, this, result, finalIndex);
+                    clearTimeout(this.timeoutID);
+                  }
+                }
+              };
+            }(i) : undefined
+          }
+        });
+      }
+
+      break;
+
+    case "check":
+      bonus = ModuleView_({
+        tag: "checkboxbutton",
+        "class": "pizo-checkbox",
+        on: {
+          click: function click(event) {
+            if (result.bodyTable.listCheckBox !== undefined) {
+              if (this.checked === false) result.bodyTable.listCheckBox[0].checked = false;else {
+                if (result.bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                  if (result.bodyTable.listCheckBox[j].checked === false) {
+                    j--;
+                    break;
+                  }
+                }
+
+                if (j === result.bodyTable.listCheckBox.length) {
+                  result.bodyTable.listCheckBox[0].checked = true;
+                }
+              }
+            }
+          }
+        }
+      });
+      if (result.bodyTable.listCheckBox !== undefined) result.bodyTable.listCheckBox.push(bonus);
+      break;
+
+    case "detail":
+      var icon = "more_vert";
+      if (data.icon !== undefined) icon = data.icon;
+      bonus = ModuleView_({
+        tag: "i",
+        "class": "material-icons",
+        style: {
+          fontSize: "20px",
+          cursor: "pointer"
+        },
+        props: {
+          innerHTML: icon
+        }
+      });
+      break;
+  }
+
+  var functionClick = undefined;
+  if (data.functionClick !== undefined) functionClick = data.functionClick;else {
+    if (result.header[j].functionClickAll !== undefined) functionClick = result.header[j].functionClickAll;
+  }
+  style = {};
+  if (data.style !== undefined) style = data.style;
+  cell = ModuleView_({
+    tag: "td",
+    style: style,
+    props: {
+      idRow: i
+    },
+    on: {
+      click: function (index, row, functionClick) {
+        return function (event) {
+          event.preventDefault();
+
+          if (functionClick !== undefined) {
+            for (var i = 0; i < result.data.length; i++) {
+              if (this.data == result.data[i]) {
+                functionClick(event, this, i, this.data, row);
+              }
+            }
+          }
+        };
+      }(i, row, functionClick)
+    }
+  });
+
+  if (data.element === undefined) {
+    cell.textContent = value;
+  } else {
+    cell.appendChild(data.element);
+  }
+
+  if (bonus !== undefined) {
+    cell.addChild(bonus);
+    bonus = undefined;
+  }
+
+  cell.data = result.data[i];
+
+  if (data.rowspan !== undefined) {
+    cell.setAttribute("rowspan", data.rowspan);
+
+    for (var l = i + 1; l < i + data.rowspan; l++) {
+      if (checkSpan[l] === undefined) checkSpan[l] = [];
+      checkSpan[l][k] = 2;
+    }
+  }
+
+  if (data.colspan !== undefined) {
+    cell.setAttribute("colspan", data.colspan);
+    checkSpan[i] = [];
+
+    for (var l = k + 1; l < k + data.colspan; l++) {
+      checkSpan[i][l] = 6;
+    }
+  }
+
+  return cell;
+};
 
 tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
   var temp = ModuleView_({
     tag: "tbody"
   });
 
-  var row, value, cell, bonus, k;
+  var row, cell, k;
   var checkSpan = [];
   temp.listCheckBox = [];
   var result = this;
+  if (dragHorizontal !== undefined) result.dragHorizontal = dragHorizontal;
+  if (dragVertical !== undefined) result.dragVertical = dragVertical;
   if (this.bodyTable.listCheckBox !== undefined) temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
   var delta = [];
 
@@ -53380,180 +53496,16 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     for (var j = 0; j < this.clone.length; j++) {
       k = parseFloat(this.clone[j][0].id);
       if (delta[j] === undefined) delta[j] = 0;
+      cell = result.getCell(data[i][k], i, k, j, checkSpan, row);
 
-      if (checkSpan[i] !== undefined && checkSpan[i][j] == 1) {
+      if (cell === 6 || cell === 2) {
         this.clone[j].splice(i + 1 - delta[j], 1);
         delta[j] += 1;
         continue;
       }
 
-      if (data[i].value === undefined) {
-        if (_typeof(data[i][k]) === "object") value = "";else value = data[i][k];
-      } else value = data[i][k].value;
-
-      switch (this.check[k]) {
-        case "hidden":
-          continue;
-
-        case "increase":
-          value += i + 1;
-          break;
-
-        case "dragzone":
-          if (data[i][k].icon !== undefined) {
-            icon = data[i][k].icon;
-            bonus = ModuleView_({
-              tag: "i",
-              "class": ["material-icons"],
-              style: {
-                fontSize: "20px",
-                cursor: "pointer"
-              },
-              props: {
-                innerHTML: icon
-              }
-            });
-          } else {
-            bonus = ModuleView_({
-              tag: "drag-horizontal",
-              on: {
-                mousedown: dragVertical ? function (index) {
-                  return function (event) {
-                    event.preventDefault();
-                    var finalIndex;
-
-                    for (var i = 1; i < result.clone[0].length; i++) {
-                      if (result.clone[0][i].idRow == index) {
-                        finalIndex = i;
-                        break;
-                      }
-                    }
-
-                    this.hold = false;
-                    var dom = this;
-                    this["default"] = event;
-                    this.timeoutID = setTimeout(function () {
-                      dom.hold = true;
-                      moveElementFix(event, dom, result, finalIndex);
-                    }, 200);
-                  };
-                }(i) : undefined,
-                dragstart: dragVertical ? function () {
-                  return false;
-                } : undefined,
-                mouseup: function mouseup() {
-                  if (this.hold === false) {
-                    this.hold = true; // this.click();
-
-                    clearTimeout(this.timeoutID);
-                  }
-                },
-                mousemove: dragVertical ? function (index) {
-                  return function (event) {
-                    if (this.hold === false) {
-                      var finalIndex;
-
-                      for (var i = 0; i < result.clone[0].length; i++) {
-                        if (result.clone[0][i].idRow == index) {
-                          finalIndex = i;
-                          break;
-                        }
-                      }
-
-                      this.hold = false;
-                      var deltaX = this["default"].clientX - event.clientX,
-                          deltaY = this["default"].clientY - event.clientY;
-
-                      if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
-                        this.hold = true;
-                        moveElementFix(event, this, result, finalIndex);
-                        clearTimeout(this.timeoutID);
-                      }
-                    }
-                  };
-                }(i) : undefined
-              }
-            });
-          }
-
-          break;
-
-        case "check":
-          bonus = ModuleView_({
-            tag: "checkboxbutton",
-            "class": "pizo-checkbox",
-            on: {
-              click: function click(event) {
-                if (temp.listCheckBox !== undefined) {
-                  if (this.checked === false) temp.listCheckBox[0].checked = false;else {
-                    if (temp.listCheckBox[0].checked === false) for (var m = 1; m < temp.listCheckBox.length; m++) {
-                      if (temp.listCheckBox[m].checked === false) {
-                        m--;
-                        break;
-                      }
-                    }
-
-                    if (m === temp.listCheckBox.length) {
-                      temp.listCheckBox[0].checked = true;
-                    }
-                  }
-                }
-              }
-            }
-          });
-          if (temp.listCheckBox[0].checked === true) bonus.checked = true;
-          if (temp.listCheckBox !== undefined) temp.listCheckBox.push(bonus);
-          break;
-
-        case "detail":
-          var icon = "more_vert";
-          if (data[i][k].icon !== undefined) icon = data[i][k].icon;
-          bonus = ModuleView_({
-            tag: "i",
-            "class": "material-icons",
-            style: {
-              fontSize: "20px",
-              cursor: "pointer"
-            },
-            props: {
-              innerHTML: icon
-            }
-          });
-          break;
-      }
-
-      var functionClick;
-      if (data[i][k].functionClick !== undefined) functionClick = data[i][k].functionClick;else {
-        if (header[k].functionClickAll !== undefined) functionClick = header[k].functionClickAll;
-      }
-      cell = ModuleView_({
-        tag: "td",
-        props: {
-          idRow: i,
-          innerHTML: value
-        },
-        on: {
-          click: function (index, row, functionClick) {
-            return function (event) {
-              event.preventDefault();
-              if (functionClick !== undefined) functionClick(event, this, index, data[index], row);
-            };
-          }(i, row, functionClick)
-        }
-      });
-
-      if (bonus !== undefined) {
-        cell.addChild(bonus);
-        bonus = undefined;
-      }
-
-      if (data[i][k].colspan !== undefined) {
-        cell.setAttribute("colspan", data[i][k].colspan);
-        checkSpan[i] = [];
-
-        for (var l = j; l < j + data[i][k].colspan; l++) {
-          checkSpan[i][l] = 1;
-        }
+      if (cell === true) {
+        continue;
       }
 
       this.clone[j][i + 1 - delta[j]] = cell;
@@ -53561,201 +53513,86 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     }
   }
 
+  this.checkSpan = checkSpan;
   this.replaceChild(temp, this.bodyTable);
   this.data = data;
   this.bodyTable = temp;
 };
 
-tableView.prototype.updateRow = function (data, index) {
-  var result = this;
-
-  for (var i = 0; i < data.length; i++) {
-    if (data.value === undefined) {
-      if (_typeof(data[k]) === "object") value = "";else value = data[k];
-    } else value = data[k].value;
-
-    switch (this.check[k]) {
-      case "hidden":
-        continue;
-
-      case "increase":
-        value += i + 1;
-        break;
-
-      case "dragzone":
-        if (data[k].icon !== undefined) {
-          icon = data[k].icon;
-          bonus = ModuleView_({
-            tag: "i",
-            "class": ["material-icons"],
-            style: {
-              fontSize: "20px",
-              cursor: "pointer"
-            },
-            props: {
-              innerHTML: icon
-            }
-          });
-        } else {
-          bonus = ModuleView_({
-            tag: "drag-horizontal",
-            on: {
-              mousedown: dragVertical ? function (index) {
-                return function (event) {
-                  event.preventDefault();
-                  var finalIndex;
-
-                  for (var i = 1; i < result.clone[0].length; i++) {
-                    if (result.clone[0][i].idRow == index) {
-                      finalIndex = i;
-                      break;
-                    }
-                  }
-
-                  this.hold = false;
-                  var dom = this;
-                  this["default"] = event;
-                  this.timeoutID = setTimeout(function () {
-                    dom.hold = true;
-                    moveElementFix(event, dom, result, finalIndex);
-                  }, 200);
-                };
-              }(i) : undefined,
-              dragstart: dragVertical ? function () {
-                return false;
-              } : undefined,
-              mouseup: function mouseup() {
-                if (this.hold === false) {
-                  this.hold = true; // this.click();
-
-                  clearTimeout(this.timeoutID);
-                }
-              },
-              mousemove: dragVertical ? function (index) {
-                return function (event) {
-                  if (this.hold === false) {
-                    var finalIndex;
-
-                    for (var i = 0; i < result.clone[0].length; i++) {
-                      if (result.clone[0][i].idRow == index) {
-                        finalIndex = i;
-                        break;
-                      }
-                    }
-
-                    this.hold = false;
-                    var deltaX = this["default"].clientX - event.clientX,
-                        deltaY = this["default"].clientY - event.clientY;
-
-                    if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
-                      this.hold = true;
-                      moveElementFix(event, this, result, finalIndex);
-                      clearTimeout(this.timeoutID);
-                    }
-                  }
-                };
-              }(i) : undefined
-            }
-          });
-        }
-
-        break;
-
-      case "check":
-        bonus = ModuleView_({
-          tag: "checkboxbutton",
-          "class": "pizo-checkbox",
-          on: {
-            click: function click(event) {
-              if (temp.listCheckBox !== undefined) {
-                if (this.checked === false) temp.listCheckBox[0].checked = false;else {
-                  if (temp.listCheckBox[0].checked === false) for (var m = 1; m < temp.listCheckBox.length; m++) {
-                    if (temp.listCheckBox[m].checked === false) {
-                      m--;
-                      break;
-                    }
-                  }
-
-                  if (m === temp.listCheckBox.length) {
-                    temp.listCheckBox[0].checked = true;
-                  }
-                }
-              }
-            }
-          }
-        });
-        if (temp.listCheckBox[0].checked === true) bonus.checked = true;
-        if (temp.listCheckBox !== undefined) temp.listCheckBox.push(bonus);
-        break;
-
-      case "detail":
-        var icon = "more_vert";
-        if (data[i][k].icon !== undefined) icon = data[i][k].icon;
-        bonus = ModuleView_({
-          tag: "i",
-          "class": "material-icons",
-          style: {
-            fontSize: "20px",
-            cursor: "pointer"
-          },
-          props: {
-            innerHTML: icon
-          }
-        });
-        break;
-    }
-
-    var functionClick;
-    if (data[i][k].functionClick !== undefined) functionClick = data[i][k].functionClick;else {
-      if (header[k].functionClickAll !== undefined) functionClick = header[k].functionClickAll;
-    }
-    cell = ModuleView_({
-      tag: "td",
-      props: {
-        idRow: i,
-        innerHTML: value
-      },
-      on: {
-        click: function (index, row, functionClick) {
-          return function (event) {
-            event.preventDefault();
-            if (functionClick !== undefined) functionClick(event, this, index, data[index], row);
-          };
-        }(i, row, functionClick)
-      }
-    });
-
-    if (bonus !== undefined) {
-      cell.addChild(bonus);
-      bonus = undefined;
-    }
-
-    if (data[i][k].colspan !== undefined) {
-      cell.setAttribute("colspan", data[i][k].colspan);
-      checkSpan[i] = [];
-
-      for (var l = j; l < j + data[i][k].colspan; l++) {
-        checkSpan[i][l] = 1;
-      }
-    }
-
-    this.clone[j][i + 1 - delta[j]] = cell;
-    row.addChild(cell);
-  }
+tableView.prototype.insertRow = function (data) {
+  this.updateRow(data, this.data.length);
 };
 
-tableView.prototype.dropRow = function (element, index) {
-  var self = this;
-  if (!element.classList.contains("hide")) element.classList.add("hide");
+tableView.prototype.updateRow = function (data, index) {
+  var result = this,
+      k,
+      cell;
+  var delta = [];
+
+  var row = ModuleView_({
+    tag: "tr"
+  });
+
+  for (var i = 0; i < result.clone.length; i++) {
+    delta[i] = 0;
+
+    if (result.checkSpan !== undefined) {
+      if (result.checkSpan[index] !== undefined) {
+        if (result.checkSpan[index][i] === 6) {
+          result.checkSpan[index][i] = undefined;
+          result.clone[i].splice(index + 1, 0, {});
+        }
+      }
+
+      for (var j = 0; j < index; j++) {
+        if (result.checkSpan[j] !== undefined) if (result.checkSpan[j][i] !== undefined) delta[i]++;
+      }
+    }
+  }
+
+  for (var i = 0; i < this.clone.length; i++) {
+    k = parseFloat(this.clone[i][0].id);
+    cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
+
+    if (cell === 6) {
+      result.clone[k++].splice(index, 1);
+      continue;
+    }
+
+    if (cell === 2) {
+      k++;
+      continue;
+    }
+
+    if (cell === true) {
+      continue;
+    }
+
+    result.clone[i][index + 1 - delta[i]] = cell;
+    k++;
+    row.addChild(cell);
+  }
+
+  if (index === result.data.length) result.bodyTable.addChild(row);else result.bodyTable.replaceChild(row, result.bodyTable.childNodes[index]);
+  result.data[index] = data;
+};
+
+tableView.prototype.dropRow = function (index) {
+  var result = this,
+      deltaX = [];
+  var element = result.bodyTable.childNodes[index];
+  if (!element.classList.contains("hideTranslate")) element.classList.add("hideTranslate");
 
   var eventEnd = function eventEnd() {
-    self.data.splice(index, 1);
+    result.data.splice(index, 1);
     element.selfRemove();
-    var delta = 0;
+    var deltaY = 0;
+    deltaX = result.checkLongRow(index);
 
     for (var i = 0; i < element.childNodes.length; i++) {
-      self.clone[i + delta].splice(index + 1, 1);
-      if (element.childNodes[i].colSpan !== undefined) delta += element.childNodes[i].colSpan - 1;
+      result.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
+      result.checkSpan.splice(index, 1);
+      if (element.childNodes[i].colSpan !== undefined) deltaY += element.childNodes[i].colSpan - 1;
     }
   }; // Code for Safari 3.1 to 6.0
 
@@ -53920,7 +53757,6 @@ tableView.prototype.cloneColumn = function (index) {
 
 tableView.prototype.cloneRow = function (index) {
   var clone;
-  console.log(index);
 
   var headerTable = ModuleView_({
     tag: "thead"
@@ -53971,14 +53807,13 @@ tableView.prototype.cloneRow = function (index) {
 tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
   var self = this;
   var left, right;
-  if (colum1 !== undefined) left = self.clone[colum1][0].offsetWidth / 2;else left = 20;
-  if (colum2 !== undefined) right = self.clone[colum2][0].offsetWidth / 2;else right = 20;
+  if (colum1 !== undefined) left = self.clone[colum1][0].offsetWidth / 2 + parseFloat(window.getComputedStyle(self.clone[colum1][0]).webkitBorderHorizontalSpacing) / 2;else left = 20 + parseFloat(window.getComputedStyle(self).paddingLeft);
+  if (colum2 !== undefined) right = self.clone[colum2][0].offsetWidth / 2 + parseFloat(window.getComputedStyle(self.clone[colum2][0]).webkitBorderHorizontalSpacing) / 2;else right = 20 + parseFloat(window.getComputedStyle(self).paddingRight);
   return ModuleView_({
     tag: "div",
     "class": "move-hover-zone",
     style: {
-      height: self.offsetHeight + "px",
-      backgroundColor: random_bg_color()
+      height: self.offsetHeight + "px"
     },
     on: {
       mouseover: function mouseover() {
@@ -54046,8 +53881,10 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
 tableView.prototype.getBound2Row = function (row1, row2) {
   var self = this;
   var top, bottom;
-  if (row1 !== undefined) top = self.clone[0][row1].offsetHeight / 2;else top = 0;
-  if (row2 !== undefined) bottom = self.clone[0][row2].offsetHeight / 2;else bottom = 0;
+  if (self.clone[0][row1] !== undefined) var style1 = window.getComputedStyle(self.clone[0][row1]);
+  if (self.clone[0][row2] !== undefined) var style2 = window.getComputedStyle(self.clone[0][row2]);
+  if (row1 !== undefined) top = self.clone[0][row1].offsetHeight / 2 + parseFloat(style1.webkitBorderVerticalSpacing) / 2;else top = parseFloat(window.getComputedStyle(self).paddingTop);
+  if (row2 !== undefined && self.clone[0][row2].offsetHeight !== 0) bottom = self.clone[0][row2].offsetHeight / 2 + parseFloat(style2.webkitBorderVerticalSpacing) / 2;else bottom = parseFloat(window.getComputedStyle(self).paddingBottom);
   return ModuleView_({
     tag: "div",
     "class": "move-hover-zone-topbot",
@@ -54065,7 +53902,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
       tag: "div",
       "class": "move-hover-zone-top",
       style: {
-        height: top + 'px'
+        height: top - 4 + 'px'
       }
     }, {
       tag: "div",
@@ -54074,7 +53911,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
       tag: "div",
       "class": "move-hover-zone-bottom",
       style: {
-        height: bottom + 'px'
+        height: bottom + 4 + 'px'
       }
     }]
   });
@@ -55895,7 +55732,9 @@ listProject_listProject.prototype.getView = function () {
 
   var functionClickMore = function functionClickMore(event, me, index, data, row) {
     console.log(event, me, index, data, row);
-    tableViewX.dropRow(row, index);
+    console.log(tableViewX); // tableViewX.dropRow(index)
+
+    tableViewX.insertRow(tableViewX.data[0]);
   };
 
   var test = listProject_({
@@ -55905,60 +55744,54 @@ listProject_listProject.prototype.getView = function () {
     }
   });
 
+  var arrChild = [[{}, {}, "11", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 24", {
+    value: "Q. Bình Thạnh",
+    colspan: 2
+  }, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "12", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "13", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
+  arrChild.index = 3;
+  var child = [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""];
+  child.child = arrChild;
   var header = [{
-    type: "dragzone",
-    sort: false
+    type: "dragzone"
   }, {
     type: "increase",
-    value: "#",
-    sort: false
-  }, 'MS', 'Số nhà', {
+    value: "#"
+  }, {
+    value: 'MS',
+    sort: true
+  }, 'Số nhà', {
     hidden: true,
-    value: 'Tên đường',
-    sort: false
+    value: 'Tên đường'
   }, {
-    value: 'Phường/Xã',
-    sort: false
+    value: 'Phường/Xã'
   }, {
-    value: 'Quận/Huyện',
-    sort: false
+    value: 'Quận/Huyện'
   }, {
-    value: 'Tỉnh/TP',
-    sort: false
+    value: 'Tỉnh/TP'
   }, {
     value: 'Ghi chú',
-    sort: false
+    sort: true
   }, {
     value: 'Ngang',
-    sort: false
+    sort: true
   }, {
-    value: 'Dài',
-    sort: false
+    value: 'Dài'
   }, {
-    value: 'DT',
-    sort: false
+    value: 'DT'
   }, {
-    value: 'Kết cấu',
-    sort: false
+    value: 'Kết cấu'
   }, {
-    value: 'Hướng',
-    sort: false
+    value: 'Hướng'
   }, 'Giá', {
-    value: 'Giá m<sup>2</sup',
-    sort: false
+    value: 'Giá m<sup>2</sup>'
   }, {
-    value: 'Hiện trạng',
-    sort: false
+    value: 'Hiện trạng'
   }, 'Ngày tạo', {
     type: "detail",
-    sort: false,
     functionClickAll: functionClickMore,
     icon: ""
   }];
-  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "11", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 24", {
-    value: "Q. Bình Thạnh",
-    colspan: 2
-  }, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "12", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "13", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "15", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "16", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "17", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "18", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 23", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "1", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 1", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "2", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "3", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "4", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "5", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "6", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "7", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "8", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "9", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
+  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], child, [{}, {}, "15", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "16", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "17", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "18", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 23", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "1", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 1", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "2", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "3", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "4", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "5", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "6", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "7", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "8", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "9", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
   tableViewX = tableView(header, dataTable, true, true);
   this.searchControl = this.searchControlContent();
   this.$view.addChild(listProject_({
@@ -56269,15 +56102,15 @@ listProject_listProject.prototype.searchControlContent = function () {
   content.HT = listProject_$('.pizo-list-project-main-search-control-row-HT input', content);
 
   temp.show = function () {
-    if (!temp.classList.contains("show")) temp.classList.add("show");
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
   };
 
   temp.hide = function () {
-    if (!content.classList.contains("hide")) content.classList.add("hide");
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
 
     var eventEnd = function eventEnd() {
-      if (temp.classList.contains("show")) temp.classList.remove("show");
-      content.classList.remove("hide");
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
       content.removeEventListener("webkitTransitionEnd", eventEnd);
       content.removeEventListener("transitionend", eventEnd);
     }; // Code for Safari 3.1 to 6.0
