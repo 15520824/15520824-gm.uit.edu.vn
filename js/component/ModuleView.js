@@ -265,19 +265,19 @@ function onMouseMoveFix(clone, event,shiftY, result) {
 
 function moveAtFix(clone,pageY,shiftY,result)
 {
-    var y = pageY - result.bodyTable.getBoundingClientRect().top;
-
+    var y = pageY - result.getBoundingClientRect().top;
+    y-= shiftY;
     if(y>result.clientHeight-clone.clientHeight){
         y = result.clientHeight;
         return;
     }
-    y-= shiftY;
+    
     if(y<0){
         y = 0;
         return;
     }
     
-    clone.style.top = y + 'px';
+    clone.style.top = y+ 'px';
 }
 
 function moveElement(event, me, result, index) {
@@ -382,7 +382,8 @@ function moveElementFix(event, me, result, index) {
         }
 
     }
-    let shiftY = -me.clientHeight/2;
+    console.log(me)
+    let shiftY = clone.clientHeight/2;
     moveAtFix(clone, event.pageY, shiftY ,result);
     window.addEventListener('mousemove',functionCheckZone);
     var trigger = function(event)
@@ -396,37 +397,74 @@ function moveElementFix(event, me, result, index) {
         {
             var row1 = removeList.row1;
             var row2 = removeList.row2;
+            if(row1===undefined&&row2===0)
+            return;
+            this.console.log(row1,row2,index)
             var element = me;
             while(element.tagName !== "TR"&&element!==undefined)
             {
                 element = element.parentNode;
             }
-            result.bodyTable.insertBefore(element,result.bodyTable.childNodes[row2-1]);
-            result.data = array_move(result.data,index-1,row1);
-           
-
-            for(var i = 0;i<element.childNodes.length;i++)
-                {
-                    var target = element[i];
-
-                    result.clone.splice()
-                }
+            result.bodyTable.insertBefore(element,result.bodyTable.childNodes[row1]);
+            result.data = changeIndex(result.data,index-1,row1);
+            var k = 0;
+            for(var i = 0;i<result.clone.length;i++)
+            {
+                var checkValue = array_insertBefore(result.clone[i],element.childNodes[k],row2);
+                if(checkValue===false)
+                continue;
+                result.clone[i] = checkValue; 
+                k++;
+            }
+            result.checkSpan = changeIndex(result.checkSpan,index-1,row1);
+            this.console.log(result.clone,result.data)
         }
         
         outFocus(clone,trigger,functionCheckZone,bg,result.bodyTable)
     })
 }
 
-function array_move(arr, old_index, new_index) {
-    if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
-        while (k--) {
-            arr.push(undefined);
+function array_insertBefore(arr, data, new_index) {
+    var old_index;
+    for(var i = 0;i<arr.length;i++)
+    {
+        if(arr[i]===data)
+        {
+            old_index = i;
+            break;
         }
     }
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-    return arr; // for testing
+    if(old_index===undefined)
+        return false;
+     // for testing
+     return arr_change(arr,data,old_index,new_index)
 };
+
+function arr_change(arr,data,old_index,new_index)
+{
+    if(new_index === undefined)
+    new_index = arr.length+1;
+    if(old_index>new_index){
+        arr.splice(new_index,0,data);
+        arr.splice(old_index-1,1);
+    }
+    else{
+        arr.splice(new_index,0,data);
+        arr.splice(old_index,1);
+    }
+    
+    return arr;
+}
+
+function changeIndex(arr,old_index,new_index)
+{
+    var data = arr.splice(old_index,1)[0];
+    if(old_index<new_index)
+    arr.splice(new_index-1,0,data);
+    else
+    arr.splice(new_index,0,data);
+    return arr;
+}
 
 tableView.prototype.checkLongRow = function(index)
 {
@@ -436,12 +474,6 @@ tableView.prototype.checkLongRow = function(index)
     {
         delta[i] = 0;
         if(result.checkSpan!==undefined){
-            if(result.checkSpan[index]!==undefined){
-                if(result.checkSpan[index][i]===6){
-                    result.checkSpan[index][i] = undefined;
-                    result.clone[i].splice(index+1,0,{})
-                }
-            }
             for(var j = 0;j<index;j++)
             {
                 if(result.checkSpan[j]!==undefined)
@@ -450,6 +482,7 @@ tableView.prototype.checkLongRow = function(index)
             }
         }
     }
+    return delta;
 }
 
 function AABBYY(x, y, bound) {
@@ -756,6 +789,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
             tag: "tr",
         });
         bodyTable.addChild(row);
+        
         k = 0;
         for (var j = 0; j < data[i].length; j++) {
             
@@ -773,6 +807,13 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
             }
             result.clone[k++].push(cell);
             row.addChild(cell);
+        }
+        if(data[i].child!==undefined)
+        {
+            if(data[i].child.index!==undefined){
+                row.childNodes[data[i].child.index].classList.add("hasChild");
+                console.log(row.childNodes[data[i].child.index])
+            }
         }
     }
    
@@ -1113,23 +1154,8 @@ tableView.prototype.dropRow = function(index)
         result.data.splice(index,1);
         element.selfRemove();
         var deltaY = 0;
-        for(var i = 0;i<result.clone.length;i++)
-        {
-            deltaX[i] = 0;
-            if(result.checkSpan!==undefined){
-                if(result.checkSpan[index]!==undefined){
-                    if(result.checkSpan[index][i]===6){
-                        result.checkSpan[index][i] = undefined;
-                    }
-                }
-                for(var j = 0;j<index;j++)
-                {
-                    if(result.checkSpan[j]!==undefined)
-                        if(result.checkSpan[j][i]!==undefined)
-                        deltaX[i]++;
-                }
-            }
-        }
+
+        deltaX = result.checkLongRow(index);
         console.log(deltaX)
         for(var i = 0;i<element.childNodes.length;i++)
         { 
@@ -1357,19 +1383,18 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
     var self = this;
     var left, right;
     if (colum1 !== undefined)
-        left = (self.clone[colum1][0].offsetWidth) / 2;
+        left = (self.clone[colum1][0].offsetWidth) / 2 + parseFloat(window.getComputedStyle(self.clone[colum1][0]).webkitBorderHorizontalSpacing)/2;
     else
-        left = 20;
+        left = 20 + parseFloat(window.getComputedStyle(self).paddingLeft);
     if (colum2 !== undefined)
-        right = (self.clone[colum2][0].offsetWidth) / 2;
+        right = (self.clone[colum2][0].offsetWidth) / 2 + parseFloat(window.getComputedStyle(self.clone[colum2][0]).webkitBorderHorizontalSpacing)/2;
     else
-        right = 20;
+        right = 20 + parseFloat(window.getComputedStyle(self).paddingRight);
     return _({
         tag: "div",
         class: "move-hover-zone",
         style: {
             height: self.offsetHeight + "px",
-            backgroundColor: random_bg_color()
         },
         on: {
             mouseover: function () {
@@ -1445,13 +1470,14 @@ tableView.prototype.getBound2Row = function (row1, row2) {
     var self = this;
     var top, bottom;
     if (row1 !== undefined)
-        top = (self.clone[0][row1].offsetHeight) / 2;
+        top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(window.getComputedStyle(self.clone[0][row1]).webkitBorderVerticalSpacing)/2;
     else
-        top = 0;
-    if (row2 !== undefined)
-        bottom = (self.clone[0][row2].offsetHeight) / 2;
+        top = parseFloat(window.getComputedStyle(self).paddingTop);
+    if (row2 !== undefined&&self.clone[0][row2].offsetHeight!==0)
+        bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(window.getComputedStyle(self.clone[0][row2]).webkitBorderVerticalSpacing)/2;
     else
-        bottom = 0;
+        bottom = parseFloat(window.getComputedStyle(self).paddingBottom);
+        
     return _({
         tag: "div",
         class: "move-hover-zone-topbot",
@@ -1471,7 +1497,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
                 tag: "div",
                 class: "move-hover-zone-top",
                 style: {
-                    height: top + 'px',
+                    height: top - 4 + 'px',
                 }
             },
             {
@@ -1482,7 +1508,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
                 tag: "div",
                 class: "move-hover-zone-bottom",
                 style: {
-                    height: bottom + 'px',
+                    height: bottom + 4 + 'px',
                 }
             }
         ]

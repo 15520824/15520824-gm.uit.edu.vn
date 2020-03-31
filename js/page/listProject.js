@@ -181,13 +181,16 @@ listProject.prototype.getView = function () {
             innerHTML:"concac"
         }
     })
+    var arrChild = [[{}, {}, "11", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 24",{value:"Q. Bình Thạnh",colspan:2}, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
+    [{}, {}, "12", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26","Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
+    [{}, {}, "13", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]];
+    arrChild.index = 3;
+    var child =  [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""];
+    child.child = arrChild;
     var header = [{ type: "dragzone",sort:false },{ type: "increase", value: "#" ,sort:false}, 'MS', 'Số nhà', {hidden:true, value: 'Tên đường', sort: false }, { value:'Phường/Xã', sort: false }, { value: 'Quận/Huyện', sort: false }, { value: 'Tỉnh/TP', sort: false }, { value: 'Ghi chú', sort: false }, { value: 'Ngang', sort: false }, { value: 'Dài', sort: false }, { value: 'DT', sort: false }, { value: 'Kết cấu', sort: false }, { value: 'Hướng', sort: false }, 'Giá', { value: 'Giá m<sup>2</sup>', sort: false }, { value: 'Hiện trạng', sort: false }, 'Ngày tạo',{type:"detail",sort:false,functionClickAll:functionClickMore,icon:""}];
     var dataTable = [
     [{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25","Q. Bình Thạnh","Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, "11", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 24",{value:"Q. Bình Thạnh",colspan:2}, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, "12", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26","Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, "13", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
+    child,
     [{}, {}, "15", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
     [{}, {}, "16", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
     [{}, {}, "17", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
