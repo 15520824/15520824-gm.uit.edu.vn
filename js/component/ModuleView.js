@@ -382,7 +382,6 @@ function moveElementFix(event, me, result, index) {
         }
 
     }
-    console.log(me)
     let shiftY = clone.clientHeight/2;
     moveAtFix(clone, event.pageY, shiftY ,result);
     window.addEventListener('mousemove',functionCheckZone);
@@ -399,7 +398,6 @@ function moveElementFix(event, me, result, index) {
             var row2 = removeList.row2;
             if(row1===undefined&&row2===0)
             return;
-            this.console.log(row1,row2,index)
             var element = me;
             while(element.tagName !== "TR"&&element!==undefined)
             {
@@ -417,7 +415,6 @@ function moveElementFix(event, me, result, index) {
                 k++;
             }
             result.checkSpan = changeIndex(result.checkSpan,index-1,row1);
-            this.console.log(result.clone,result.data)
         }
         
         outFocus(clone,trigger,functionCheckZone,bg,result.bodyTable)
@@ -699,6 +696,22 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     role: 'columnheader'
                 },
                 style:style,
+                child:[
+                    {
+                        tag:"i",
+                        class: "material-icons",
+                        props:{
+                            innerHTML:"arrow_drop_up"
+                        }
+                    },
+                    {
+                        tag:"i",
+                        class: "material-icons",
+                        props:{
+                            innerHTML:"arrow_drop_down"
+                        }
+                    }
+                ],
                 props: {
                     id: i
                 },
@@ -762,8 +775,8 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     }(i) : undefined,
                 }
             })
-            if (header[i].sort === false) {
-                cell.classList.add("no-sort")
+            if (header[i].sort === true) {
+                cell.classList.add("has-sort")
             }
 
             if(header[i].element===undefined)
@@ -813,7 +826,6 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
         {
             if(data[i].child.index!==undefined){
                 row.childNodes[data[i].child.index].classList.add("hasChild");
-                console.log(row.childNodes[data[i].child.index])
             }
         }
     }
@@ -826,7 +838,6 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
 {
     var data = dataOrigin;
     var result = this,value,bonus,style,cell;
-    // console.log(data)
     if(checkSpan[i]!==undefined){
         if(checkSpan[i][k]==2)
         return 2;
@@ -1003,7 +1014,6 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
             }(i, row, functionClick),
         }
     })
-    // console.log(data)
     
 
     if(data.element===undefined)
@@ -1043,7 +1053,6 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
 }
 
 tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
-    console.log(this)
     var temp = _({
         tag: "tbody"
     });
@@ -1095,7 +1104,6 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 
 tableView.prototype.insertRow = function(data)
 {
-    console.log(this.data.length)
     this.updateRow(data,this.data.length)
 }
 
@@ -1165,7 +1173,6 @@ tableView.prototype.dropRow = function(index)
         var deltaY = 0;
 
         deltaX = result.checkLongRow(index);
-        console.log(deltaX)
         for(var i = 0;i<element.childNodes.length;i++)
         { 
                 result.clone[i+deltaY].splice(index+1-deltaX[i+deltaY],1); 
