@@ -595,6 +595,8 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     headerTable.addChild(row);
 
     var k = 0;
+    var toUpperCase = header.toUpperCase==true?true:false;
+    var toLowerCase = header.toLowerCase==true?true:false;
     for (var i = 0; i < header.length; i++) {
         if (header[i].hidden === false || header[i].hidden === undefined) {
             result.clone[k] = [];
@@ -606,6 +608,10 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
             }
             else
                 value = header[i].value;
+            if(toUpperCase)
+                value = value.toUpperCase();
+            if(toLowerCase)
+                value = value.toLowerCase();
             var functionClick = undefined;
             switch (header[i].type) {
                 case "check":
@@ -655,6 +661,12 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     {
                         last_sort.classList.remove("downgrade");
                     }
+                    var last_sort = document.getElementsByClassName("upgrade");
+                    last_sort = last_sort[0];
+                    if(last_sort!==me&&last_sort!==undefined)
+                    {
+                        last_sort.classList.remove("upgrade");
+                    }
                     if(!me.classList.contains("downgrade"))
                     {
                         result.data.sort(function (a, b) {
@@ -667,6 +679,8 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                             return valueA - valueB;
                         })
                         me.classList.add("downgrade");
+                        if(me.classList.contains("upgrade"))
+                        me.classList.remove("upgrade");
                     }
                     else{
                         result.data.sort(function (a, b) {
@@ -678,6 +692,8 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                                 valueB = b[index];
                             return valueB - valueA;
                         })
+                        me.classList.add("upgrade");
+                        if(me.classList.contains("downgrade"))
                         me.classList.remove("downgrade");
                     }
                         
@@ -877,7 +893,11 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
             }else
             {
                 bonus = _({
-                    tag:"drag-horizontal",
+                    tag:"i",
+                    class: ["material-icons"],
+                    props:{
+                        innerHTML:"drag_indicator"
+                    },
                     on:{
                         mousedown: result.dragVertical ? function (index) {
                             return function (event) {
@@ -1492,8 +1512,13 @@ tableView.prototype.getBound2Row = function (row1, row2) {
         top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(style1.webkitBorderVerticalSpacing)/2;
     else
         top = parseFloat(window.getComputedStyle(self).paddingTop);
-    if (row2 !== undefined&&self.clone[0][row2].offsetHeight!==0)
+    if (row2 !== undefined&&self.clone[0][row2].offsetHeight!==0){
+        if(self.clone[0][row2].parentNode.style.display==="none")
+        return _({
+            tag:"div"
+        })
         bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(style2.webkitBorderVerticalSpacing)/2;
+    }
     else
         bottom = parseFloat(window.getComputedStyle(self).paddingBottom);
         
