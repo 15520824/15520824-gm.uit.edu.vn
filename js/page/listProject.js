@@ -173,7 +173,7 @@ listProject.prototype.getView = function () {
         console.log(event,me,index,data,row);
         console.log(tableViewX)
         // tableViewX.dropRow(index)
-        tableViewX.updateRow(tableViewX.data[0],index);
+        tableViewX.insertRow(tableViewX.data[0]);
     }
     var test = _({
         tag:"span",

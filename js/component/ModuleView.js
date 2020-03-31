@@ -550,6 +550,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     result.dropRow = tableView.prototype.dropRow;
     result.getCell = tableView.prototype.getCell;
     result.checkLongRow = tableView.prototype.checkLongRow;
+    result.insertRow = tableView.prototype.insertRow;
     result.check = check;
     result.header = header;
     result.data = data;
@@ -1092,9 +1093,15 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     this.bodyTable = temp;
 }
 
+tableView.prototype.insertRow = function(data)
+{
+    console.log(this.data.length)
+    this.updateRow(data,this.data.length)
+}
+
 tableView.prototype.updateRow = function(data,index)
 {
-    var result = this,k=0,cell;
+    var result = this,k,cell;
     var delta = [];
     var row = _({
         tag:"tr"
@@ -1117,10 +1124,10 @@ tableView.prototype.updateRow = function(data,index)
             }
         }
     }
-    console.log(delta)
-    for(var i = 0;i<data.length;i++)
+    for(var i = 0;i<this.clone.length;i++)
     {
-        cell = result.getCell(data[i],index,i,k,result.checkSpan,row);
+        k = parseFloat(this.clone[i][0].id);
+        cell = result.getCell(data[k],index,k,i,result.checkSpan,row);
         if(cell  === 6)
         {
             result.clone[k++].splice(index,1);
@@ -1135,11 +1142,13 @@ tableView.prototype.updateRow = function(data,index)
         {
             continue;
         }
-        console.log(k,index+1-delta[k],cell)
-        result.clone[k][index+1-delta[k]] = cell;
+        result.clone[i][index+1-delta[i]] = cell;
         k++;
         row.addChild(cell);
     }
+    if(index===result.data.length)
+    result.bodyTable.addChild(row);
+    else
     result.bodyTable.replaceChild(row,result.bodyTable.childNodes[index]);
     result.data[index]=data;
 }
