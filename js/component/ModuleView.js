@@ -446,7 +446,7 @@ function arr_change(arr,data,old_index,new_index)
     new_index = arr.length+1;
     if(old_index>new_index){
         arr.splice(new_index,0,data);
-        arr.splice(old_index-1,1);
+        arr.splice(old_index+1,1);
     }
     else{
         arr.splice(new_index,0,data);
