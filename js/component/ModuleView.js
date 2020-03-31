@@ -1469,12 +1469,16 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
 tableView.prototype.getBound2Row = function (row1, row2) {
     var self = this;
     var top, bottom;
+    if(self.clone[0][row1]!==undefined)
+    var style1 = window.getComputedStyle(self.clone[0][row1]);
+    if(self.clone[0][row2]!==undefined)
+    var style2 = window.getComputedStyle(self.clone[0][row2]);
     if (row1 !== undefined)
-        top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(window.getComputedStyle(self.clone[0][row1]).webkitBorderVerticalSpacing)/2;
+        top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(style1.webkitBorderVerticalSpacing)/2;
     else
         top = parseFloat(window.getComputedStyle(self).paddingTop);
     if (row2 !== undefined&&self.clone[0][row2].offsetHeight!==0)
-        bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(window.getComputedStyle(self.clone[0][row2]).webkitBorderVerticalSpacing)/2;
+        bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(style2.webkitBorderVerticalSpacing)/2;
     else
         bottom = parseFloat(window.getComputedStyle(self).paddingBottom);
         
