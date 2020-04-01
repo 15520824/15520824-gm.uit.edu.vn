@@ -697,7 +697,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                         me.classList.remove("downgrade");
                     }
                         
-                    result.updateTable(header, data, dragHorizontal, dragVertical);
+                    result.updateTable(header, result.data, dragHorizontal, dragVertical);
                 }
             }
 
