@@ -513,9 +513,6 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     var checkSpan = [];
     var headerTable = _({
         tag: "thead",
-        style: {
-            cursor: "alias"
-        }
     });
     var bodyTable = _({
         tag: "tbody"
