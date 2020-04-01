@@ -676,7 +676,11 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                                 valueA = a[index];
                             if(valueB===undefined)
                                 valueB = b[index];
-                            return valueA - valueB;
+                            if (valueA < valueB)
+                                return -1;
+                            if ( valueA > valueB)
+                                return 1;
+                              return 0;
                         })
                         me.classList.add("downgrade");
                         if(me.classList.contains("upgrade"))
@@ -690,7 +694,11 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                                 valueA = a[index];
                             if(valueB===undefined)
                                 valueB = b[index];
-                            return valueB - valueA;
+                            if (valueA > valueB)
+                                return -1;
+                            if ( valueA < valueB)
+                                return 1;
+                              return 0;
                         })
                         me.classList.add("upgrade");
                         if(me.classList.contains("downgrade"))
