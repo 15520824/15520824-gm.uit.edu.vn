@@ -597,6 +597,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     var k = 0;
     var toUpperCase = header.toUpperCase==true?true:false;
     var toLowerCase = header.toLowerCase==true?true:false;
+    var functionClickSort;
     for (var i = 0; i < header.length; i++) {
         if (header[i].hidden === false || header[i].hidden === undefined) {
             result.clone[k] = [];
@@ -654,9 +655,10 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     break;
             }
             if (header[i].sort === true || header[i].sort === undefined) {
-                functionClick = function (event, me, index, dataIndex, row,result) {
+                functionClickSort = function (event, me, index, dataIndex, row,result) {
                     var last_sort = document.getElementsByClassName("downgrade");
                     last_sort = last_sort[0];
+                    me = me.parentNode;
                     if(last_sort!==me&&last_sort!==undefined)
                     {
                         last_sort.classList.remove("downgrade");
@@ -803,6 +805,15 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
             cell.addChild(_({
                 tag:"div",
                 class:"sort-container",
+                on:{
+                    click: function (index, row, functionClickSort) {
+                        return function (event) {
+                            event.preventDefault();
+                            if (functionClickSort !== undefined)
+                            functionClickSort(event, this, index, data[index], row,result);
+                        }
+                    }(i, row, functionClickSort),
+                },
                 child:[
                     {
                         tag:"sort-up",
