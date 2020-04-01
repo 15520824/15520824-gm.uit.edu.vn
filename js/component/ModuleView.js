@@ -548,6 +548,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     result.getCell = tableView.prototype.getCell;
     result.checkLongRow = tableView.prototype.checkLongRow;
     result.insertRow = tableView.prototype.insertRow;
+    result.addInputSearch = tableView.prototype.addInputSearch;
     result.check = check;
     result.header = header;
     result.data = data;
@@ -868,6 +869,41 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
     return result;
 }
 
+tableView.prototype.addInputSearch = function(input)
+{
+    var self = this;
+    input.addEventListener("input",function(event){
+        for(var i = 0;i<self.data.length;i++)
+        {
+            console.log(checkValueIs(self.data[i],input.value))
+            if(checkValueIs(self.data[i],input.value))
+            {
+                self.bodyTable.childNodes[i].style.display="table-row";
+            }else
+            {
+                self.bodyTable.childNodes[i].style.display="none";
+            }
+        }
+    })
+    self.inputElement = input;
+}
+
+function checkValueIs(data,text)
+{
+    var value;
+    for(var i = 0 ;i<data.length;i++)
+    {
+        value = "";
+        if(data[i].value!==undefined)
+        value = data[i].value;
+        else
+        value = data[i];
+        if(value.toString().indexOf(text)!==-1)
+        return true;
+    }
+    return false;
+}
+
 tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
 {
     var data = dataOrigin;
@@ -1138,6 +1174,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     this.replaceChild(temp, this.bodyTable);
     this.data = data;
     this.bodyTable = temp;
+    this.inputElement.dispatchEvent(new Event("input"))
 }
 
 tableView.prototype.insertRow = function(data)
