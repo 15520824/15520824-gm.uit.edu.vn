@@ -17,6 +17,14 @@
 
 .background-opacity{
   opacity: 0.5;
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  background-color: white;
+}
+
+.background-opacity-1{
+  opacity: 0.5;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -112,20 +120,19 @@
   left: 0;
 }
 
-.sortTable  tr{
+.sortTable tr{
+  
+}
+
+.sortTable  tr.hideTranslate{
   -webkit-transition: 1s ease-in-out;
   -moz-transition: 1s ease-in-out;
   -o-transition: 1s ease-in-out;
   transition: 1s ease-in-out;
-}
-
-.sortTable  tr.hideTranslate{
   transform: translateX(100%);
 }
 
-.sortTable tr:nth-child(even) {
-  background-color: #f5f5f5;
-}
+
 
 .sortTable th,.sortTable td,
 .sortTableClone th,.sortTableClone td {

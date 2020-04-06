@@ -62,6 +62,13 @@ NewRealty.prototype.getView = function () {
                 class: 'absol-single-page-header',
                 child: [
                     {
+                        tag:"span",
+                        class:"pizo-body-title-left",
+                        props:{
+                            innerHTML : "Thêm dự án"
+                        }
+                    },
+                    {
                         tag: "div",
                         class: "pizo-list-project-button",
                         child: [
@@ -133,7 +140,6 @@ NewRealty.prototype.getView = function () {
         ]
     }));
     setTimeout(function(){selectElement("pizo-new-realty-convenient-content-area-size-zone",1)},500)
-    self.parent.parent.titlePage.innerHTML = "Thêm dự án";
     return this.$view;
 }
 
@@ -160,7 +166,7 @@ NewRealty.prototype.descView = function()
                     NewRealty.prototype.detructView(),
                     {
                         tag:"div",
-                        class:"pizo-new-realty-desc-infomation-cell",
+                        class:["pizo-new-realty-desc-infomation-cell","center-child"],
                         child:[
                             NewRealty.prototype.utilityView(),
                             NewRealty.prototype.convenientView(),

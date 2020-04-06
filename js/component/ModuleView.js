@@ -267,7 +267,15 @@ function moveAtFix(clone,pageY,shiftY,result)
 {
     var y = pageY - result.getBoundingClientRect().top;
     y-= shiftY;
-    if(y>result.clientHeight-clone.clientHeight){
+    var height = result.clientHeight;
+    if(result.clone[0]!==undefined&&result.tagName!=="TABLE")
+    {
+        for(var i = 0;i<result.clone[0].length;i++)
+        {
+            height+=result.clone[0][i].clientHeight;
+        }
+    }
+    if(y>height-clone.clientHeight){
         y = result.clientHeight;
         return;
     }
@@ -276,7 +284,7 @@ function moveAtFix(clone,pageY,shiftY,result)
         y = 0;
         return;
     }
-    
+
     clone.style.top = y+ 'px';
 }
 
@@ -355,10 +363,18 @@ function moveElementFix(event, me, result, index) {
     var trigger;
     var clone = result.cloneRow(index);
     var bg = result.backGroundFix(index);
+   
+    var scrollParent = me;
+
+    while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
+        scrollParent = scrollParent.parentNode;
+    }
+    if (scrollParent === undefined)
+        return;
 
 
     result.bodyTable.appendChild(bg);
-    result.bodyTable.appendChild(clone);
+    bg.appendChild(clone);
     var functionCheckZone = function (event) {
         var arrZone = bg.getZone();
         for (var i = 0; i < arrZone.length; i++) {
@@ -384,6 +400,11 @@ function moveElementFix(event, me, result, index) {
     }
     let shiftY = clone.clientHeight/2;
     moveAtFix(clone, event.pageY, shiftY ,result);
+    scrollParent.addEventListener("scroll", function (event) {
+        moveAtFix(clone, event.pageY, shiftY ,result);
+        console.log(parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop))
+        bg.style.top = parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop)+"px";
+    })
     window.addEventListener('mousemove',functionCheckZone);
     var trigger = function(event)
     {
@@ -403,7 +424,18 @@ function moveElementFix(event, me, result, index) {
             {
                 element = element.parentNode;
             }
-            result.bodyTable.insertBefore(element,result.bodyTable.childNodes[row1]);
+            result.bodyTable.insertBefore(element,removeList.elementReal);
+            if(element.clone!==undefined)
+            {
+                for(var i=1;i<element.clone[0].length;i++)
+                {
+                    result.bodyTable.insertBefore(element.clone[0][i].parentNode,removeList.elementReal);
+                }
+            }
+            this.console.log(result)
+            if(result.data.child!==undefined)
+            result.data.child = changeIndex(result.data.child,index-1,row1);
+            else
             result.data = changeIndex(result.data,index-1,row1);
             var k = 0;
             for(var i = 0;i<result.clone.length;i++)
@@ -466,7 +498,7 @@ function changeIndex(arr,old_index,new_index)
 tableView.prototype.checkLongRow = function(index)
 {
     var result = this;
-    var delta;
+    var delta = [];
     for(var i = 0;i<result.clone.length;i++)
     {
         delta[i] = 0;
@@ -507,7 +539,7 @@ function captureMousePosition(event) {
 
 export function tableView(header = [], data = [], dragHorizontal, dragVertical) {
     if (window.mobilecheck())
-        return tableViewMobile();
+        return tableViewMobile(header,data);
 
     var cell, row, value, check = [], bonus, style;
     var checkSpan = [];
@@ -532,20 +564,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
 
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
-    result.cloneColumn = tableView.prototype.cloneColumn;
-    result.cloneRow = tableView.prototype.cloneRow;
-    result.deleteColumn = tableView.prototype.deleteColumn;
-    result.getBound2Colum = tableView.prototype.getBound2Colum;
-    result.getBound2Row = tableView.prototype.getBound2Row;
-    result.backGround = tableView.prototype.backGround;
-    result.backGroundFix = tableView.prototype.backGroundFix;
-    result.updateTable = tableView.prototype.updateTable;
-    result.updateRow = tableView.prototype.updateRow;
-    result.dropRow = tableView.prototype.dropRow;
-    result.getCell = tableView.prototype.getCell;
-    result.checkLongRow = tableView.prototype.checkLongRow;
-    result.insertRow = tableView.prototype.insertRow;
-    result.addInputSearch = tableView.prototype.addInputSearch;
+    Object.assign(result,tableView.prototype);
     result.check = check;
     result.header = header;
     result.data = data;
@@ -585,13 +604,11 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
         }
     }, 10)
 
-    result.clone = [];
-
     row = _({
         tag: "tr"
     });
     headerTable.addChild(row);
-
+    result.clone = [];
     var k = 0;
     var toUpperCase = header.toUpperCase==true?true:false;
     var toLowerCase = header.toLowerCase==true?true:false;
@@ -632,7 +649,12 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     check[i] = "increase";
                     break;
                 case "dragzone":
+                    if(dragVertical)
                     check[i] = "dragzone";
+                    else{
+                        check[i] = "hidden";
+                        continue;
+                    }
                     break;
                 case "detail":
                     check[i] = "detail";
@@ -669,37 +691,13 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     }
                     if(!me.classList.contains("downgrade"))
                     {
-                        result.data.sort(function (a, b) {
-                            var valueA = a[index].value;
-                            var valueB = b[index].value;
-                            if(valueA===undefined)
-                                valueA = a[index];
-                            if(valueB===undefined)
-                                valueB = b[index];
-                            if (valueA < valueB)
-                                return -1;
-                            if ( valueA > valueB)
-                                return 1;
-                              return 0;
-                        })
+                        sortArray(result.data,index);
                         me.classList.add("downgrade");
                         if(me.classList.contains("upgrade"))
                         me.classList.remove("upgrade");
                     }
                     else{
-                        result.data.sort(function (a, b) {
-                            var valueA = a[index].value;
-                            var valueB = b[index].value;
-                            if(valueA===undefined)
-                                valueA = a[index];
-                            if(valueB===undefined)
-                                valueB = b[index];
-                            if (valueA > valueB)
-                                return -1;
-                            if ( valueA < valueB)
-                                return 1;
-                              return 0;
-                        })
+                        sortArray(result.data,index,false);
                         me.classList.add("upgrade");
                         if(me.classList.contains("downgrade"))
                         me.classList.remove("downgrade");
@@ -783,7 +781,6 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     }(i) : undefined,
                 }
             })
-            console.log(cell)
             if (header[i].sort === true) {
                 cell.classList.add("has-sort")
             }
@@ -829,38 +826,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
         } else
             check[i] = "hidden";
     }
-
-    for (var i = 0; i < data.length; i++) {
-        row = _({
-            tag: "tr",
-        });
-        bodyTable.addChild(row);
-        
-        k = 0;
-        for (var j = 0; j < data[i].length; j++) {
-            
-            cell = result.getCell(data[i][j],i,j,k,checkSpan,row);
-            if(cell === 6){
-                k++;
-                continue;
-            }
-            if(cell === 2){
-                k++;
-                continue;
-            }
-            if(cell === true){
-                continue;
-            }
-            result.clone[k++].push(cell);
-            row.addChild(cell);
-        }
-        if(data[i].child!==undefined)
-        {
-            if(data[i].child.index!==undefined){
-                row.childNodes[data[i].child.index].classList.add("hasChild");
-            }
-        }
-    }
+    result.getBodyTable(data);
    
     result.checkSpan  = checkSpan;
     return result;
@@ -870,15 +836,27 @@ tableView.prototype.addInputSearch = function(input)
 {
     var self = this;
     input.addEventListener("input",function(event){
-        for(var i = 0;i<self.data.length;i++)
+        for(var i = 0;i<self.bodyTable.childNodes.length;i++)
         {
-            console.log(checkValueIs(self.data[i],input.value))
-            if(checkValueIs(self.data[i],input.value))
+            if(checkValueIs(self.bodyTable.childNodes[i].data,input.value))
             {
-                self.bodyTable.childNodes[i].style.display="table-row";
+                if(!self.bodyTable.childNodes[i].classList.contains("parent"))
+                self.bodyTable.childNodes[i].classList.add("parent");
+                if(self.bodyTable.childNodes[i].classList.contains("disPLayNone"))
+                self.bodyTable.childNodes[i].classList.remove("disPLayNone");
+                if(self.bodyTable.childNodes[i].childNodes[0].parentTree!==undefined)
+                {
+                    if(!self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.contains("parent"))
+                    self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.add("parent");
+                    if(self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.contains("disPLayNone"))
+                    self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.remove("disPLayNone");
+                }
             }else
             {
-                self.bodyTable.childNodes[i].style.display="none";
+                if(self.bodyTable.childNodes[i].classList.contains("parent"))
+                self.bodyTable.childNodes[i].classList.remove("parent");
+                if(!self.bodyTable.childNodes[i].classList.contains("disPLayNone"))
+                self.bodyTable.childNodes[i].classList.add("disPLayNone");
             }
         }
     })
@@ -899,6 +877,119 @@ function checkValueIs(data,text)
         return true;
     }
     return false;
+}
+
+tableView.prototype.getBodyTable = function(data,parentContent)
+{
+    var temp  = this.bodyTable;
+    var result = this, k, delta = [],row,cell;
+    var parent = this;
+    var arr = [];
+   
+    if(parentContent!==undefined)
+        parent = parentContent;
+    if(parent.checkSpan===undefined)
+        parent.checkSpan = [];
+    for (var i = 0; i < data.length; i++) {
+        row = result.getRow(data[i]);
+        temp.addChild(row);
+        arr.push(row);
+        for (var j = 0; j < result.clone.length; j++) {
+            k = parseFloat(result.clone[j][0].id);
+            if(delta[j]===undefined)
+                delta[j] = 0;
+
+            cell = result.getCell(data[i][k],i,k,j,parent.checkSpan,row);
+            if(cell === 6  || cell === 2)
+            {
+                parent.clone[j].splice(i+1 - delta[j],1);
+                delta[j]+=1;
+                continue
+            }
+            if(cell === true)
+            {
+                continue;
+            }
+            cell.clone = parent.clone;
+            parent.clone[j][i+1 - delta[j]] = cell;
+            cell.parentTree = parent;
+            row.addChild(cell);
+        }
+        row.checkChild();
+    }
+    return arr;
+}
+
+tableView.prototype.getRow = function(data)
+{
+    var temp = _({
+        tag: "tr",
+        class:"parent"
+    });
+    var result = this;
+    temp.data = data;
+    temp.checkChild = function(data)
+    {
+        if(data!==undefined)
+        temp.data =  data;
+        if(temp.data.child!==undefined)
+        {
+            if(temp.data.child.index!==undefined){
+                temp.classList.add("more-child");
+                var buttonClick = _({
+                    tag:"i",
+                    on:{
+                        click:function(event){
+                            if(!temp.classList.contains("more-child"))
+                            {
+                                temp.classList.add("more-child");
+                                var childrenNodes = temp.childrenNodes;
+                                for(var i=0;i<childrenNodes.length;i++)
+                                {
+                                    childrenNodes[i].classList.add("parent");
+                                    childrenNodes[i].classList.remove("disPLayNone");
+                                } 
+                            }
+                            else{
+                                temp.classList.remove("more-child");
+                                var childrenNodes = temp.childrenNodes;
+                                for(var i=0;i<childrenNodes.length;i++)
+                                {
+                                    childrenNodes[i].classList.remove("parent");
+                                    childrenNodes[i].classList.add("disPLayNone");
+                                } 
+                            }   
+                        }
+                    },
+                    class: ["material-icons","more-button"],
+                    props:{
+                        innerHTML:"play_arrow"
+                    },
+                });
+                temp.childNodes[temp.data.child.index].insertBefore(buttonClick, temp.childNodes[temp.data.child.index].firstChild);
+                temp.clone = [];
+                var k = 0;
+                for(var i = 0;i<temp.childNodes.length;i++)
+                {
+                    temp.clone[k++] = [temp.childNodes[i]];
+                    if(temp.childNodes[i].colSpan!==1)
+                    {
+                        k++;
+                    }
+                }
+                temp.childrenNodes = result.getBodyTable(temp.data.child,temp);
+                Object.assign(temp,tableView.prototype);
+                temp.headerTable = result.headerTable;
+                temp.bodyTable = result.bodyTable;
+                temp.check = result.check;
+                temp.header = result.header;
+                temp.dragVertical = result.dragVertical;
+                temp.dragHorizontal = result.dragHorizontal;
+            }
+        }
+    }
+    
+    return temp;
 }
 
 tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
@@ -955,8 +1046,8 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
                             return function (event) {
                                 event.preventDefault();
                                 var finalIndex;
-                                for (var i = 1; i < result.clone[0].length; i++) {
-                                    if (result.clone[0][i].idRow == index) {
+                                for (var i = 1; i < cell.clone[0].length; i++) {
+                                    if (cell.clone[0][i].idRow == index) {
                                         finalIndex = i;
                                         break;
                                     }
@@ -966,7 +1057,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
                                 this.default = event;
                                 this.timeoutID = setTimeout(function () {
                                     dom.hold = true;
-                                    moveElementFix(event, dom, result, finalIndex);
+                                    moveElementFix(event, dom, cell.parentTree, finalIndex);
                                 }, 200);
                             }
                         }(i) : undefined,
@@ -984,8 +1075,8 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
                             return function (event) {
                                 if (this.hold === false) {
                                     var finalIndex;
-                                    for (var i = 0; i < result.clone[0].length; i++) {
-                                        if (result.clone[0][i].idRow == index) {
+                                    for (var i = 0; i < cell.clone[0].length; i++) {
+                                        if (cell.clone[0][i].idRow == index) {
                                             finalIndex = i;
                                             break;
                                         }
@@ -995,7 +1086,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
                                         deltaY = this.default.clientY - event.clientY;
                                     if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
                                         this.hold = true;
-                                        moveElementFix(event, this, result, finalIndex);
+                                        moveElementFix(event, this, cell.parentTree, finalIndex);
                                         clearTimeout(this.timeoutID);
                                     }
                                 }
@@ -1074,9 +1165,15 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
                 return function (event) {
                     event.preventDefault();
                     if (functionClick !== undefined){
-                        for(var i=0;i<result.data.length;i++){
-                            if(this.data==result.data[i]){
-                                functionClick(event, this, i, this.data, row);
+                        for (var i = 1; i < cell.clone[0].length; i++) {
+                            if (cell.clone[0][i].idRow == index) {
+                                var dataIndex;
+                                if(cell.parentTree.data.child!==undefined)
+                                dataIndex = cell.parentTree.data.child[i];
+                                else
+                                dataIndex = cell.parentTree.data[i];
+                                functionClick(event, cell, i-1, cell.parentTree, cell.parentTree.data[i], row);
+                                break;
                             }
                         }
                     }
@@ -1099,8 +1196,6 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
         cell.addChild(bonus);
         bonus = undefined;
     }
-    
-    cell.data = result.data[i];
 
     if(data.rowspan!==undefined){
         cell.setAttribute("rowspan",data.rowspan);
@@ -1137,12 +1232,12 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     result.dragVertical = dragVertical;
     if(this.bodyTable.listCheckBox!==undefined)
     temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
-    
+    this.replaceChild(temp, this.bodyTable);
+    this.bodyTable = temp;
+
     var delta = [];
     for (var i = 0; i < data.length; i++) {
-        row = _({
-            tag: "tr"
-        });
+        row = result.getRow(data[i]);
         temp.addChild(row);
         
         for (var j = 0; j < this.clone.length; j++) {
@@ -1161,16 +1256,14 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
             {
                 continue;
             }
-
+            cell.clone = this.clone;
             this.clone[j][i+1 - delta[j]] = cell;
             row.addChild(cell);
-
         }
+        row.checkChild();
     }
     this.checkSpan  = checkSpan;
-    this.replaceChild(temp, this.bodyTable);
     this.data = data;
-    this.bodyTable = temp;
     this.inputElement.dispatchEvent(new Event("input"))
 }
 
@@ -1183,9 +1276,7 @@ tableView.prototype.updateRow = function(data,index)
 {
     var result = this,k,cell;
     var delta = [];
-    var row = _({
-        tag:"tr"
-    })
+    var row = result.getRow(data);
     for(var i = 0;i<result.clone.length;i++)
     {
         delta[i] = 0;
@@ -1222,33 +1313,50 @@ tableView.prototype.updateRow = function(data,index)
         {
             continue;
         }
+        cell.clone = result.clone;
         result.clone[i][index+1-delta[i]] = cell;
         k++;
         row.addChild(cell);
     }
+    
     if(index===result.data.length)
     result.bodyTable.addChild(row);
-    else
-    result.bodyTable.replaceChild(row,result.bodyTable.childNodes[index]);
+    else{
+        if(result.bodyTable.childNodes[index].childrenNodes!==undefined)
+        result.bodyTable.childNodes[index].childrenNodes.forEach(function(value){
+            value.selfRemove();
+        })
+        result.bodyTable.replaceChild(row,result.bodyTable.childNodes[index]);
+    }
+   
     result.data[index]=data;
+    row.checkChild();
 }
 
 tableView.prototype.dropRow = function(index)
 {
     var result=this,deltaX=[];
-    var element = result.bodyTable.childNodes[index];
+    var element = result.clone[0][index+1].parentNode;
+    
+    var parent = element.childNodes[0].parentTree;
     if(!element.classList.contains("hideTranslate"))
         element.classList.add("hideTranslate");
+
+    console.log(element);
+    
     var eventEnd = function(){
-        result.data.splice(index,1);
+        if(parent.data.child)
+        parent.data.child.splice(parseFloat(element.childNodes[0].idRow),1);
+        else
+        parent.data.splice(parseFloat(element.childNodes[0].idRow),1);
         element.selfRemove();
         var deltaY = 0;
 
-        deltaX = result.checkLongRow(index);
+        deltaX = parent.checkLongRow(index);
         for(var i = 0;i<element.childNodes.length;i++)
         { 
-                result.clone[i+deltaY].splice(index+1-deltaX[i+deltaY],1); 
-                result.checkSpan.splice(index,1); 
+                parent.clone[i+deltaY].splice(index+1-deltaX[i+deltaY],1); 
+                parent.checkSpan.splice(index,1); 
                 if(element.childNodes[i].colSpan!==undefined)
                     deltaY+=element.childNodes[i].colSpan-1;
         }
@@ -1261,11 +1369,23 @@ tableView.prototype.dropRow = function(index)
 }
 
 tableView.prototype.backGroundFix = function (index) {
+    var rect = this.getBoundingClientRect();
+    var scrollParent = this;
+
+    while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
+        scrollParent = scrollParent.parentNode;
+    }
+    if (scrollParent === undefined)
+        return;
+    console.log(rect.y-scrollParent.scrollTop)
     var temp = _({
         tag: "div",
         class: "background-opacity",
         style:{
-            backgroundColor: "#ffffff00"
+            top:rect.y+'px',
+            left:rect.x+'px',
+            backgroundColor: "#ffffff00",
+            realTop:rect.y+scrollParent.scrollTop
         },
         child: [
         ]
@@ -1295,7 +1415,7 @@ tableView.prototype.backGroundFix = function (index) {
 tableView.prototype.backGround = function (height, callback, index) {
     var temp = _({
         tag: "div",
-        class: "background-opacity",
+        class: "background-opacity-1",
         child:[
             {
                 tag: "div",
@@ -1386,7 +1506,7 @@ tableView.prototype.cloneColumn = function (index) {
     var bodyTable = _({
         tag: "tbody"
     });
-
+    tableView.prototype.cloneCellColumn(bodyTable,this.clone,index)
     var result = _({
         tag: "table",
         style: {
@@ -1401,21 +1521,35 @@ tableView.prototype.cloneColumn = function (index) {
             bodyTable
         ]
     });
-    for (var i = 1; i < this.clone[index].length; i++) {
-        clone = this.clone[index][i].cloneNode(true);
-        clone.style.width = this.clone[index][i].offsetWidth - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
-        clone.style.height = this.clone[index][i].offsetHeight - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
+    
+    return result;
+}
+
+tableView.prototype.cloneCellColumn = function(bodyTable,cloneArray,index)
+{
+    var clone,cell;
+    for (var i = 1; i < cloneArray[index].length; i++) {
+        clone = cloneArray[index][i].cloneNode(true);
+        clone.style.width = cloneArray[index][i].offsetWidth - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
+        clone.style.height = cloneArray[index][i].offsetHeight - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
         cell = _({
             tag: "tr",
             child: [
                 clone
             ]
         })
-        if(this.clone[index][i].colSpan!==undefined)
+        console.log(cell)
+        cell.classList = cloneArray[index][i].parentNode.classList;
+        if(cloneArray[index][i].colSpan!==undefined)
         clone.setAttribute("rowSpan","")
         bodyTable.addChild(cell);
+        if(cloneArray[index][i].parentNode.clone!==undefined)
+        {
+            var cloneArrayTemp = cloneArray[index][i].parentNode.clone;
+            tableView.prototype.cloneCellColumn(bodyTable,cloneArrayTemp,index)
+        }
+        
     }
-    return result;
 }
 
 tableView.prototype.cloneRow = function (index) {
@@ -1449,16 +1583,11 @@ tableView.prototype.cloneRow = function (index) {
     else{
         bodyTable.addChild(row);
     }
-    var delta = 0;
+    console.log(this.clone)
     for (var i = 0; i < this.clone.length; i++) {
-        if(delta>0){
-            delta--;
-            continue;
-        }
-            
+        if(this.clone[i][index]===undefined)
+        continue;
         clone = this.clone[i][index].cloneNode(true);
-        if(clone.colSpan!==undefined)
-        delta = clone.colSpan - 1;
         clone.style.width = this.clone[i][index].offsetWidth - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-right-width').replace("px", "")+1 + 'px';
         clone.style.height = this.clone[i][index].offsetHeight - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
         clone.setAttribute("colSpan","")
@@ -1488,46 +1617,7 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
             mouseover: function () {
 
                 if (this.parentNode.isMove === false) {
-                    var parent;
-                    // if(index==colum1)
-                    //     return;
-                    // if(index==colum2)
-                    //     return;
-                    var delta = 0,lastDelta;
-                    for (var i = 0; i < self.clone[index].length; i++) {
-                        parent = self.clone[index][i-delta].parentNode;
-                        if (colum2 !== undefined) {
-                            if(lastDelta>0)
-                            {
-                                lastDelta--;
-                                continue;
-                            }
-                            parent.insertBefore(self.clone[index][i-delta], self.clone[colum2][i]);
-                        }
-                        else {
-                            parent.appendChild(self.clone[index][i]);
-                        }
-                        if(self.clone[index][i].rowSpan!==undefined){
-                            delta+=self.clone[index][i].rowSpan-1;
-                            lastDelta=self.clone[index][i].rowSpan-1;
-                        }
-                    }
-                    if (colum1 > index) {
-                        if (colum2 === undefined)
-                            self.clone.push(self.clone[index]);
-                        else
-                            self.clone.splice(colum2, 0, self.clone[index]);
-                        self.clone.splice(index, 1);
-                    }
-                    if (colum2 < index) {
-                        var tempElement = self.clone[index];
-
-                        self.clone.splice(index, 1);
-                        if (colum2 === undefined)
-                            self.clone.push(tempElement);
-                        else
-                            self.clone.splice(colum2, 0, tempElement);
-                    }
+                    tableView.prototype.moveColumn(self.clone,colum1,colum2,index)
                 }
             }
         },
@@ -1554,15 +1644,67 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
     })
 }
 
+tableView.prototype.moveColumn = function(arrClone,colum1,colum2,index,i=0)
+{
+    var parent;
+    // if(index==colum1)
+    //     return;
+    // if(index==colum2)
+    //     return;
+    var delta = 0,lastDelta;
+    for (i; i < arrClone[index].length; i++) {
+        parent = arrClone[index][i-delta].parentNode;
+        if (colum2 !== undefined) {
+            if(lastDelta>0)
+            {
+                lastDelta--;
+                continue;
+            }
+            parent.insertBefore(arrClone[index][i-delta], arrClone[colum2][i]);
+        }
+        else {
+            parent.appendChild(arrClone[index][i]);
+        }
+        if(arrClone[index][i].rowSpan!==undefined){
+            delta+=arrClone[index][i].rowSpan-1;
+            lastDelta=arrClone[index][i].rowSpan-1;
+        }
+        if(arrClone[index][i-delta].parentNode.clone!==undefined)
+        {
+            tableView.prototype.moveColumn(arrClone[index][i-delta].parentNode.clone,colum1,colum2,index,1);
+        }
+    }
+    if (colum1 > index) {
+        if (colum2 === undefined)
+            arrClone.push(arrClone[index]);
+        else
+            arrClone.splice(colum2, 0, arrClone[index]);
+            arrClone.splice(index, 1);
+    }
+    if (colum2 < index) {
+        var tempElement = arrClone[index];
+
+        arrClone.splice(index, 1);
+        if (colum2 === undefined)
+            arrClone.push(tempElement);
+        else
+            arrClone.splice(colum2, 0, tempElement);
+    }
+}
+
 tableView.prototype.getBound2Row = function (row1, row2) {
     var self = this;
-    var top, bottom;
+    var top, bottom,elementReal;
     if(self.clone[0][row1]!==undefined)
     var style1 = window.getComputedStyle(self.clone[0][row1]);
-    if(self.clone[0][row2]!==undefined)
-    var style2 = window.getComputedStyle(self.clone[0][row2]);
-    if (row1 !== undefined)
+    if(self.clone[0][row2]!==undefined){
+        var style2 = window.getComputedStyle(self.clone[0][row2]);
+        elementReal = self.clone[0][row2].parentNode;
+    }
+    
+    if (row1 !== undefined){
         top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(style1.webkitBorderVerticalSpacing)/2;
+    }
     else
         top = parseFloat(window.getComputedStyle(self).paddingTop);
     if (row2 !== undefined&&self.clone[0][row2].offsetHeight!==0){
@@ -1571,16 +1713,25 @@ tableView.prototype.getBound2Row = function (row1, row2) {
             tag:"div"
         })
         bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(style2.webkitBorderVerticalSpacing)/2;
+        if(row1!==undefined&&self.clone[0][row2].parentNode.clone!==undefined)
+        {
+            var tempClone = self.clone[0][row2].parentNode.clone[0];
+            for(var i=1;i<tempClone.length;i++)
+            {
+                bottom+= tempClone[i].offsetHeight;
+            }
+        }
     }
     else
-        bottom = parseFloat(window.getComputedStyle(self).paddingBottom);
-        
+        bottom = parseFloat(window.getComputedStyle(self).paddingBottom)+(self.clone[0][row1].offsetHeight)/2;
+    console.log(elementReal)
     return _({
         tag: "div",
         class: "move-hover-zone-topbot",
         props:{
             row1:row1,
-            row2:row2
+            row2:row2,
+            elementReal:elementReal
         },
         style: {
             width: self.offsetWidth + "px",
@@ -1613,7 +1764,337 @@ tableView.prototype.getBound2Row = function (row1, row2) {
 }
 
 export function tableViewMobile(header = [], data = []) {
+    var cell, row, value, check = [], bonus, style;
+    var dragVertical = false;
+    var dragHorizontal = false;
+    var checkSpan = [];
+    var headerTable = _({
+        tag: "thead",
+    });
+    var bodyTable = _({
+        tag: "tbody"
+    });
 
+    var result = _({
+        tag: "table",
+        style: {
+            fontSize: "0.7857rem"
+        },
+        class: "sortTable",
+        child: [
+            headerTable,
+            bodyTable
+        ]
+    });
+
+    result.headerTable = headerTable;
+    result.bodyTable = bodyTable;
+    Object.assign(result,tableView.prototype);
+    console.log(result)
+    result.check = check;
+    result.header = header;
+    result.data = data;
+    result.dragVertical = dragVertical;
+    result.dragHorizontal = dragHorizontal;
+
+    setTimeout(function () {
+        if (window.scrollEvent === undefined) {
+            window.xMousePos = 0;
+            window.yMousePos = 0;
+            window.lastScrolledLeft = 0;
+            window.lastScrolledTop = 0;
+
+            document.addEventListener("mousemove", function (event) {
+                window.scrollEvent = captureMousePosition(event);
+            })
+            var scrollParent = result;
+
+            while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
+                scrollParent = scrollParent.parentNode;
+            }
+            if (scrollParent === undefined)
+                return;
+
+            scrollParent.addEventListener("scroll", function (event) {
+                if (window.lastScrolledLeft != scrollParent.scrollLeft) {
+                    window.xMousePos -= window.lastScrolledLeft;
+                    window.lastScrolledLeft = scrollParent.scrollLeft;
+                    window.xMousePos += window.lastScrolledLeft;
+                }
+                if (lastScrolledTop != scrollParent.scrollTop) {
+                    window.yMousePos -= window.lastScrolledTop;
+                    window.lastScrolledTop = scrollParent.scrollTop;
+                    window.yMousePos += window.lastScrolledTop;
+                }
+            })
+        }
+    }, 10)
+
+    row = _({
+        tag: "tr"
+    });
+    headerTable.addChild(row);
+    result.clone = [];
+    var k = 0;
+    var toUpperCase = header.toUpperCase==true?true:false;
+    var toLowerCase = header.toLowerCase==true?true:false;
+    var functionClickSort;
+    for (var i = 0; i < header.length; i++) {
+        if (header[i].hidden === false || header[i].hidden === undefined) {
+            result.clone[k] = [];
+            if (header[i].value === undefined) {
+                if (typeof header[i] === "object")
+                    value = "";
+                else
+                    value = header[i];
+            }
+            else
+                value = header[i].value;
+            if(toUpperCase)
+                value = value.toUpperCase();
+            if(toLowerCase)
+                value = value.toLowerCase();
+            var functionClick = undefined;
+            switch (header[i].type) {
+                case "check":
+                    check[i] = "check";
+                    bonus = _({
+                        tag: "checkboxbutton",
+                        class: "pizo-checkbox",
+                        on: {
+                            click: function (event) {
+                                for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                                    result.bodyTable.listCheckBox[j].checked = this.checked;
+                                }
+                            }
+                        }
+                    })
+                    result.bodyTable.listCheckBox = [bonus];
+                    break;
+                case "increase":
+                    check[i] = "increase";
+                    break;
+                case "dragzone":
+                    if(dragVertical)
+                    check[i] = "dragzone";
+                    else{
+                        check[i] = "hidden";
+                        continue;
+                    }
+                    break;
+                case "detail":
+                    check[i] = "detail";
+                    var icon = "more";
+                    if (header[i].icon !== undefined)
+                        icon = header[i].icon;
+                    bonus = _({
+                        tag: "i",
+                        class: "material-icons",
+                        style: {
+                            fontSize: "1.4rem",
+                            cursor: "pointer"
+                        },
+                        props: {
+                            innerHTML: icon
+                        }
+                    })
+                    break;
+            }
+            if (header[i].sort === true || header[i].sort === undefined) {
+                functionClickSort = function (event, me, index , result, dataIndex, row) {
+                    var last_sort = document.getElementsByClassName("downgrade");
+                    last_sort = last_sort[0];
+                    me = me.parentNode;
+                    if(last_sort!==me&&last_sort!==undefined)
+                    {
+                        last_sort.classList.remove("downgrade");
+                    }
+                    var last_sort = document.getElementsByClassName("upgrade");
+                    last_sort = last_sort[0];
+                    if(last_sort!==me&&last_sort!==undefined)
+                    {
+                        last_sort.classList.remove("upgrade");
+                    }
+                    if(!me.classList.contains("downgrade"))
+                    {
+                        sortArray(result.data,index);
+                        me.classList.add("downgrade");
+                        if(me.classList.contains("upgrade"))
+                        me.classList.remove("upgrade");
+                    }
+                    else{
+                        sortArray(result.data,index,false);
+                        me.classList.add("upgrade");
+                        if(me.classList.contains("downgrade"))
+                        me.classList.remove("downgrade");
+                    }
+                        
+                    result.updateTable(header, result.data, dragHorizontal, dragVertical);
+                }
+            }
+
+            if (header[i].functionClick !== undefined)
+                functionClick = header[i].functionClick;
+            style = {};
+            if(header[i].style!==undefined)
+                style = header[i].style;
+            cell = _({
+                tag: "th",
+                attr: {
+                    role: 'columnheader'
+                },
+                style:style,
+                props: {
+                    id: i
+                },
+                on: {
+                    click: function (index, row, functionClick) {
+                        return function (event) {
+                            event.preventDefault();
+                            if (functionClick !== undefined)
+                                functionClick(event, this, index, result, data[index], row);
+                        }
+                    }(i, row, functionClick),
+                    mousedown: dragHorizontal ? function (index) {
+                        return function (event) {
+                            event.preventDefault();
+                            var finalIndex;
+                            for (var i = 0; i < result.clone.length; i++) {
+                                if (result.clone[i][0].id == index) {
+                                    finalIndex = i;
+                                    break;
+                                }
+                            }
+                            this.hold = false;
+                            var dom = this;
+                            this.default = event;
+                            this.timeoutID = setTimeout(function () {
+                                dom.hold = true;
+                                moveElement(event, dom, result, finalIndex);
+                            }, 200);
+                        }
+                    }(i) : undefined,
+                    dragstart: dragHorizontal ? function () {
+                        return false;
+                    } : undefined,
+                    mouseup: function () {
+                        if (this.hold === false) {
+                            this.hold = true;
+                            // this.click();
+                            clearTimeout(this.timeoutID);
+                        }
+                    },
+                    mousemove: dragHorizontal ? function (index) {
+                        return function (event) {
+                            if (this.hold === false) {
+                                var finalIndex;
+                                for (var i = 0; i < result.clone.length; i++) {
+                                    if (result.clone[i][0].id == index) {
+                                        finalIndex = i;
+                                        break;
+                                    }
+                                }
+                                this.hold = false;
+                                var deltaX = this.default.clientX - event.clientX,
+                                    deltaY = this.default.clientY - event.clientY;
+                                if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
+                                    this.hold = true;
+                                    moveElement(event, this, result, finalIndex);
+                                    clearTimeout(this.timeoutID);
+                                }
+                            }
+                        }
+                    }(i) : undefined,
+                }
+            })
+            if (header[i].sort === true) {
+                cell.classList.add("has-sort")
+            }
+
+            if(header[i].element===undefined)
+            {
+                cell.addChild( _({text: value})) ;
+            }else
+            {
+                cell.appendChild(data[i][j].element);
+            }
+
+            if (bonus !== undefined) {
+                cell.addChild(bonus);
+                bonus = undefined;
+            }
+            cell.addChild(_({
+                tag:"div",
+                class:"sort-container",
+                on:{
+                    click: function (index, row, functionClickSort) {
+                        return function (event) {
+                            event.preventDefault();
+                            if (functionClickSort !== undefined)
+                            functionClickSort(event, this, index, data[index], row,result);
+                        }
+                    }(i, row, functionClickSort),
+                },
+                child:[
+                    {
+                        tag:"sort-up",
+                        class: ["arrow_up"],
+                    },
+                    {
+                        tag:"sort-down",
+                        class: ["arrow_down"],
+                    }
+                ]
+            }));
+            result.clone[k++].push(cell);
+            
+            row.addChild(cell);
+        } else
+            check[i] = "hidden";
+    }
+    result.getBodyTable(data);
+   
+    result.checkSpan  = checkSpan;
+    return result;
+}
+
+function sortArray(arr,index,increase=true)
+{
+    if(increase){
+        arr.sort(function (a, b) {
+            if(a.child!==undefined)
+            sortArray(a.child,index,increase);
+            var valueA = a[index].value;
+            var valueB = b[index].value;
+            if(valueA===undefined)
+                valueA = a[index];
+            if(valueB===undefined)
+                valueB = b[index];
+            if (valueA > valueB)
+                return -1;
+            if ( valueA < valueB)
+                return 1;
+              return 0;
+        })
+    }
+    else{
+        arr.sort(function (a, b) {
+            if(a.child!==undefined)
+            sortArray(a.child,index,increase);
+            var valueA = a[index].value;
+            var valueB = b[index].value;
+            if(valueA===undefined)
+                valueA = a[index];
+            if(valueB===undefined)
+                valueB = b[index];
+            if (valueA < valueB)
+                return -1;
+            if ( valueA > valueB)
+                return 1;
+              return 0;
+        })
+    }
+    
 }
 
 export function getDate() {

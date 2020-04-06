@@ -127,7 +127,6 @@ NewProject.prototype.getView = function () {
         ]
     }));
     setTimeout(function(){selectElement("pizo-new-realty-dectruct-content-area-size-zone",1)},500)
-    self.parent.parent.titlePage.innerHTML = "Thêm dự án";
     return this.$view;
 }
 
@@ -154,7 +153,7 @@ NewProject.prototype.descView = function()
                     NewProject.prototype.detructView(),
                     {
                         tag:"div",
-                        class:"pizo-new-realty-desc-infomation-cell",
+                        class:["pizo-new-realty-desc-infomation-cell","center-child"],
                         child:[
                             NewProject.prototype.utilityView(),
                             NewProject.prototype.convenientView(),

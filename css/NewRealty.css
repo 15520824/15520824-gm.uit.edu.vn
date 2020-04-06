@@ -47,11 +47,12 @@
 
 .pizo-new-realty-desc-detail-row:not(:last-child) {
   margin-bottom: 0.7143rem;
+  margin-top: 1px;
 }
 
 .pizo-new-realty-desc-detail-row-label {
   font-size: 1rem;
-
+  padding-top: 0.4375rem;
 }
 
 .pizo-new-realty-desc-detail-row-cell-input {
@@ -62,10 +63,16 @@
   width: calc(100% - 5.8333rem);
 }
 
-.pizo-new-realty-desc-detail-row-cell-label {
+.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-desc-detail-row-cell-label {
     font-size: 1rem;
     line-height: 2.1429rem;
     vertical-align: top;
+}
+
+.pizo-new-realty-desc-detail-1-row-label{
+  font-size: 1rem;
+  line-height: 2.1429rem;
+  vertical-align: top;
 }
 
 .pizo-new-realty-desc-detail-row-input {
@@ -203,18 +210,23 @@
   display: inline-block;
   vertical-align: top;
   margin-top: 0.7143rem;
-  margin-right: 2.1429rem;
-  min-width: 300px;
+  margin-right: 30px;
+  min-width: 380px;
 }
 
 .pizo-new-realty-desc-infomation-cell {
   display: inline-block;
-  width: calc(35% - 2.1429rem);
+  width: calc(30% - 30px);
   min-width: 350px;
 }
 
 .pizo-new-realty-desc-infomation-cell:not(:last-child) {
-  margin-right: 2.1429rem;
+  margin-right: 30px;
+}
+
+.pizo-new-realty-desc-infomation-cell.center-child{
+  width: calc(40% - 30px);
+  min-width: 477px;
 }
 
 .pizo-new-realty-utility {
@@ -292,7 +304,7 @@
   display: inline-block;
   border: solid 0.0714rem  var(--color-input-color);
   font-size: 1rem;
-  padding: 0.4286rem;
+  padding: 0.4375rem;
   text-align: right;
   vertical-align: top;
 }
@@ -330,6 +342,7 @@
 
 .pizo-new-realty-dectruct-content-area-size-zone > span{
   display: inline-block;
+  vertical-align: -webkit-baseline-middle;
 }
 
 /* 
@@ -485,6 +498,7 @@
 
 .pizo-new-realty-convenient-content-area-size-zone > span{
   display: inline-block;
+  vertical-align: -webkit-baseline-middle;
 }
 
 .pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {

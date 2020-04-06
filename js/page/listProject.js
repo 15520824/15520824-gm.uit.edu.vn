@@ -169,11 +169,11 @@ listProject.prototype.getView = function () {
         ]
     });
     var tableViewX;
-    var functionClickMore = function(event,me,index,data,row){
-        console.log(event,me,index,data,row);
+    var functionClickMore = function(event,me,index,parent,data,row){
+        console.log(event,me,index,parent,data,row);
         console.log(tableViewX)
         // tableViewX.dropRow(index)
-        tableViewX.insertRow(tableViewX.data[0]);
+        parent.updateRow(tableViewX.data[0],index);
     }
     var test = _({
         tag:"span",
@@ -181,9 +181,9 @@ listProject.prototype.getView = function () {
             innerHTML:"concac"
         }
     })
-    var arrChild = [[{}, {}, 1, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 24",{value:"Q. Bình Thạnh",colspan:2}, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, 2, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26","Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, "13", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]];
+    var arrChild = [[{}, {}, "concac1", 3, "Xô Viết Nghệ Tĩnh", "P. 24",{value:"Q. Bình Thạnh",colspan:2}, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
+    [{}, {}, "concac2", 1, "Xô Viết Nghệ Tĩnh", "P. 26","Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
+    [{}, {}, "concac3", 2, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]];
     arrChild.index = 3;
     var child =  [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""];
     child.child = arrChild;
@@ -224,7 +224,6 @@ listProject.prototype.getView = function () {
         })
         );
     console.log(self.parent)
-    self.parent.titlePage.innerHTML = "";
     return this.$view;
 }
 

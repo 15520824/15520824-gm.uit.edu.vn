@@ -104,11 +104,12 @@ body {
 }
 
 .pizo-body-title-left{
+    transform: translateY(-100%) translateY(-0.625rem);
     float: left;
-    color: var(--blue);
+    color: var( --blue);
     line-height: 2.1429rem;
     font-size: 1.5rem;
-    margin-left: 1.4286rem;
+    position: fixed;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {

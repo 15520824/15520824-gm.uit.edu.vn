@@ -35,13 +35,6 @@ App.prototype.getView = function()
                 }
             }
     )
-    self.titlePage =_({
-        tag:"span",
-        class:"pizo-body-title-left",
-        props:{
-            innerHTML : ""
-        }
-    })
     this.$view = _({
         tag:"div",
         class:"pizo-app",
@@ -188,7 +181,6 @@ App.prototype.getView = function()
                         tag:"div",
                         class:"pizo-body-title",
                         child:[
-                            self.titlePage,
                             {
                                 tag:"span",
                                 class:"pizo-body-title-right",
