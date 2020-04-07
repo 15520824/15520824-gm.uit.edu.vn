@@ -1780,14 +1780,14 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
             var val = place.address_components[i][componentForm[addressType]];
             switch (addressType) {
                 case "street_number":
-                    if(!self.number.items.includes({text:val,value:val}))
+                    if(!self.number.items.getContainsChild({text:val,value:val}))
                     {
                         self.number.items=self.number.items.concat([{text:val,value:val}])
                     }
                     self.number.value = val;
                     break;
                 case "route":
-                    if(!self.street.items.includes({text:val,value:val}))
+                    if(!self.street.items.getContainsChild({text:val,value:val}))
                     {
                         self.street.items=self.street.items.concat([{text:val,value:val}])
                     }
@@ -1795,14 +1795,14 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
                     textResult = textResult.replace(textResult.slice(0,textResult.indexOf(val+", ")+val.length+2),"");
                     break;
                 case "administrative_area_level_1":
-                    if(!self.state.items.includes({text:val,value:val}))
+                    if(!self.state.items.getContainsChild({text:val,value:val}))
                     {
                         self.state.items=self.state.items.concat([{text:val,value:val}])
                     }
                     self.state.value = val;
                     break;
                 case "administrative_area_level_2":
-                    if(!self.dictrict.items.includes({text:val,value:val}))
+                    if(!self.dictrict.items.getContainsChild({text:val,value:val}))
                     {
                         self.dictrict.items=self.dictrict.items.concat([{text:val,value:val}])
                     }
@@ -1814,11 +1814,21 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
         }
     }
     var val  = textResult.slice(0,textResult.indexOf(", "));
-    if(!self.ward.items.includes({text:val,value:val}))
+    if(!self.ward.items.getContainsChild({text:val,value:val}))
     {
         self.ward.items=self.ward.items.concat([{text:val,value:val}]);
     }
     self.ward.value = val;
+}
+
+Array.prototype.getContainsChild = function(value)
+{
+    for(var i = 0;i<this.length;i++)
+    {
+        if(this[i].value  == value.value)
+        return true;
+    }
+    return false;
 }
 
 activeAutocomplete.prototype.geolocate = function () {
@@ -1877,9 +1887,9 @@ function mapView() {
     return temp;
 }
 
-mapView.prototype.activeDetail = function(deltailView)
+mapView.prototype.activeDetail = function(detailView)
 {
-    this.deltailView = deltailView;
+    this.detailView = detailView;
     this.map = this.activeMap();
 }
 
@@ -1918,9 +1928,8 @@ mapView.prototype.addMoveMarker = function (position) {
         this.currentMarker = marker;
         self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
         self.smoothZoom(12, self.map.getZoom());
-        console.log(self)
-        self.deltailView.long.value = position[0];
-        self.deltailView.lat.value = position[1];
+        self.detailView.long.value = position[0];
+        self.detailView.lat.value = position[1];
         
         google.maps.event.addListener(self.map, "click", function (event) {
             var result = [event.latLng.lat(), event.latLng.lng()];
@@ -1939,6 +1948,8 @@ mapView.prototype.addMoveMarker = function (position) {
 mapView.prototype.transition = function (result) {
     var self=this;
     var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
+    console.log(self,self.detailView);
+
     self.detailView.long.value = position[0];
     self.detailView.lat.value = position[1];
    
