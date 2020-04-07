@@ -280,8 +280,8 @@ function moveAtFix(clone,pageY,shiftY,result)
         return;
     }
     
-    if(y<0){
-        y = 0;
+    if(y<clone.clientHeight/2){
+        y = clone.clientHeight/2;
         return;
     }
 
@@ -410,8 +410,8 @@ function moveElementFix(event, me, result, index) {
     {
         onMouseMoveFix(clone,event,shiftY,result);
     }
-    window.addEventListener('mousemove',trigger);
-    window.addEventListener("mouseup",function(){
+    var mouseUpFunction = function(){
+        window.removeEventListener("mouseup",mouseUpFunction);
         var removeList = document.getElementsByClassName("focus-blast")[0];
         if(removeList!==undefined)
         {
@@ -424,6 +424,7 @@ function moveElementFix(event, me, result, index) {
             {
                 element = element.parentNode;
             }
+            this.console.log(element,removeList.elementReal)
             result.bodyTable.insertBefore(element,removeList.elementReal);
             if(element.clone!==undefined)
             {
@@ -432,7 +433,7 @@ function moveElementFix(event, me, result, index) {
                     result.bodyTable.insertBefore(element.clone[0][i].parentNode,removeList.elementReal);
                 }
             }
-            this.console.log(result)
+        
             if(result.data.child!==undefined)
             result.data.child = changeIndex(result.data.child,index-1,row1);
             else
@@ -450,7 +451,9 @@ function moveElementFix(event, me, result, index) {
         }
         
         outFocus(clone,trigger,functionCheckZone,bg,result.bodyTable)
-    })
+    }
+    window.addEventListener('mousemove',trigger);
+    window.addEventListener("mouseup",mouseUpFunction)
 }
 
 function array_insertBefore(arr, data, new_index) {
@@ -1295,9 +1298,34 @@ tableView.prototype.updateRow = function(data,index)
             }
         }
     }
-    for(var i = 0;i<this.clone.length;i++)
+
+    if(result.childrenNodes!==undefined&&result.childrenNodes.length===index){
+        result.bodyTable.insertBefore(row, result.childrenNodes[result.childrenNodes.length-1].nextSibling);
+    }else if(index===result.data.length&&result.childrenNodes===undefined)
     {
-        k = parseFloat(this.clone[i][0].id);
+        result.bodyTable.addChild(row);
+    }
+    else{
+        var temp;
+        console.log(result)
+        if(result.childrenNodes!==undefined)
+        {
+            temp = result.childrenNodes[index];
+            
+        }
+        else
+        temp = result.clone[0][index+1].parentNode;
+        console.log(temp)
+        if(temp.childrenNodes!==undefined)
+            temp.childrenNodes.forEach(function(value){
+                value.selfRemove();
+        })
+        result.bodyTable.replaceChild(row,temp);
+    }
+    
+    for(var i = 0;i<this.bodyTable.parentNode.clone.length;i++)
+    {
+        k = parseFloat(this.bodyTable.parentNode.clone[i][0].id);
         cell = result.getCell(data[k],index,k,i,result.checkSpan,row);
         if(cell  === 6)
         {
@@ -1319,16 +1347,10 @@ tableView.prototype.updateRow = function(data,index)
         row.addChild(cell);
     }
     
-    if(index===result.data.length)
-    result.bodyTable.addChild(row);
-    else{
-        if(result.bodyTable.childNodes[index].childrenNodes!==undefined)
-        result.bodyTable.childNodes[index].childrenNodes.forEach(function(value){
-            value.selfRemove();
-        })
-        result.bodyTable.replaceChild(row,result.bodyTable.childNodes[index]);
-    }
-   
+    
+   if(result.data.child!==undefined)
+    result.data.child[index]=data;
+   else
     result.data[index]=data;
     row.checkChild();
 }
@@ -1701,7 +1723,6 @@ tableView.prototype.getBound2Row = function (row1, row2) {
         var style2 = window.getComputedStyle(self.clone[0][row2]);
         elementReal = self.clone[0][row2].parentNode;
     }
-    
     if (row1 !== undefined){
         top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(style1.webkitBorderVerticalSpacing)/2;
     }
@@ -1724,8 +1745,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
     }
     else
         bottom = parseFloat(window.getComputedStyle(self).paddingBottom)+(self.clone[0][row1].offsetHeight)/2;
-    console.log(elementReal)
-    return _({
+    var temp =  _({
         tag: "div",
         class: "move-hover-zone-topbot",
         props:{
@@ -1761,6 +1781,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
             }
         ]
     })
+    return temp;
 }
 
 export function tableViewMobile(header = [], data = []) {
