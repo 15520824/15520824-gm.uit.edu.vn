@@ -877,7 +877,7 @@ function checkValueIs(data,text)
         value = data[i].value;
         else
         value = data[i];
-        if(value.toString().indexOf(text)!==-1)
+        if(value.toString().toLowerCase().indexOf(text.toLowerCase())!==-1)
         return true;
     }
     return false;
