@@ -139,13 +139,12 @@ NewRealty.prototype.getView = function () {
             NewRealty.prototype.descView()
         ]
     }));
-    setTimeout(function(){selectElement("pizo-new-realty-convenient-content-area-size-zone",1)},500)
+    // setTimeout(function(){selectElement("pizo-new-realty-convenient-content-area-size-zone",1)},500)
     return this.$view;
 }
 
 NewRealty.prototype.descView = function()
 {
-    var map = NewRealty.prototype.mapView();
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-desc",
@@ -154,9 +153,9 @@ NewRealty.prototype.descView = function()
                 tag: "div",
                 class: "pizo-new-realty-desc-content",
                 child: [
-                    NewRealty.prototype.descViewdetail(map),
+                    NewRealty.prototype.descViewdetail(),
                     NewRealty.prototype.descViewImageThumnail(),
-                    // NewRealty.prototype.descViewImagePreview()
+                    NewRealty.prototype.descViewImagePreview()
                 ]
             },
             {
@@ -281,9 +280,25 @@ NewRealty.prototype.descViewdetail = function()
                         tag: "input",
                         class: "pizo-new-realty-desc-detail-1-row-input",
                         on:{
-                            click:function()
+                            click:function(event)
                             {
-                                console.log("open locationView")
+                                this.blur();
+                                var self = this;
+                                var childRemove = _({
+                                    tag:"modal",
+                                    on:{
+                                        click:function(event)
+                                        {
+                                        }
+                                    },
+                                    child:[
+                                        NewRealty.prototype.locationView(function(value){
+                                            self.value = value.input.value;
+                                            childRemove.selfRemove();
+                                        })
+                                    ]
+                                })
+                                temp.appendChild(childRemove)
                             }
                         }
                     }
@@ -1441,24 +1456,50 @@ NewRealty.prototype.historyView = function(){
     return temp;
 }
 
-NewRealty.prototype.locationView = function () {
+NewRealty.prototype.locationView = function (functionDone) {
     var map = NewRealty.prototype.mapView();
+    var detailView =NewRealty.prototype.detailView(map);
+    map.activeDetail(detailView)
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-location",
+        on:{
+            click:function(event)
+            {
+                event.preventDefault();
+            }
+        },
         child: [
             {
                 tag: "div",
                 class: "pizo-new-realty-location-tab",
-                props: {
-                    innerHTML: "Vị trí"
-                }
+                child:[
+                    {
+                        tag:"span",
+                        props: {
+                            innerHTML: "Vị trí"
+                        },
+                    },
+                    {
+                        tag: "button",
+                        class: "pizo-new-realty-location-donebutton",
+                        on:{
+                            click:function(event)
+                            {
+                                functionDone(detailView,map);
+                            }
+                        },
+                        props: {
+                            innerHTML: "Xong"
+                        }
+                    }
+                ]
             },
             {
                 tag: "div",
                 class: "pizo-new-realty-location-content",
                 child: [
-                    NewRealty.prototype.detailView(map),
+                    detailView,
                     map
                 ]
             }
@@ -1500,10 +1541,16 @@ NewRealty.prototype.detailView = function (map) {
     var long = _({
         tag:"input",
         class:"pizo-new-realty-location-detail-row-input-long",
+        attr:{
+            disabled:""
+        }
     })
     var lat = _({
         tag:"input",
         class:"pizo-new-realty-location-detail-row-input-lat",
+        attr:{
+            disabled:""
+        }
     })
     var temp = _({
         tag: "div",
@@ -1679,12 +1726,11 @@ function activeAutocomplete(map) {
     var self = this;
     var autocomplete;
     var options = {
-        terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
+        // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
         types: ['geocode'],
         componentRestrictions: { country: 'vn' }
     };
-
-
+    console.log(options)
     autocomplete = new google.maps.places.Autocomplete(
         self.input, options);
 
@@ -1728,16 +1774,32 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
             var val = place.address_components[i][componentForm[addressType]];
             switch (addressType) {
                 case "street_number":
+                    if(!self.number.items.includes({text:val,value:val}))
+                    {
+                        self.number.items=self.number.items.concat([{text:val,value:val}])
+                    }
                     self.number.value = val;
                     break;
                 case "route":
+                    if(!self.street.items.includes({text:val,value:val}))
+                    {
+                        self.street.items=self.street.items.concat([{text:val,value:val}])
+                    }
                     self.street.value = val;
                     textResult = textResult.replace(textResult.slice(0,textResult.indexOf(val+", ")+val.length+2),"");
                     break;
                 case "administrative_area_level_1":
+                    if(!self.state.items.includes({text:val,value:val}))
+                    {
+                        self.state.items=self.state.items.concat([{text:val,value:val}])
+                    }
                     self.state.value = val;
                     break;
                 case "administrative_area_level_2":
+                    if(!self.dictrict.items.includes({text:val,value:val}))
+                    {
+                        self.dictrict.items=self.dictrict.items.concat([{text:val,value:val}])
+                    }
                     self.dictrict.value = val;
                     break;
                 case "country":
@@ -1745,7 +1807,12 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
             }
         }
     }
-    console.log(textResult.slice(0,textResult.indexOf(", ")));
+    var val  = textResult.slice(0,textResult.indexOf(", "));
+    if(!self.ward.items.includes({text:val,value:val}))
+    {
+        self.ward.items=self.ward.items.concat([{text:val,value:val}]);
+    }
+    self.ward.value = val;
 }
 
 activeAutocomplete.prototype.geolocate = function () {
@@ -1799,8 +1866,15 @@ function mapView() {
         ]
     })
     temp.activeMap = mapView.prototype.activeMap;
-    temp.map = temp.activeMap();
+    temp.activeDetail = mapView.prototype.activeDetail;
+    
     return temp;
+}
+
+mapView.prototype.activeDetail = function(deltailView)
+{
+    this.deltailView = deltailView;
+    this.map = this.activeMap();
 }
 
 mapView.prototype.activeMap = function (center = [10.822500, 106.629104], zoom = 16) {
@@ -1838,7 +1912,10 @@ mapView.prototype.addMoveMarker = function (position) {
         this.currentMarker = marker;
         self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
         self.smoothZoom(12, self.map.getZoom());
-
+        console.log(self)
+        self.deltailView.long.value = position[0];
+        self.deltailView.lat.value = position[1];
+        
         google.maps.event.addListener(self.map, "click", function (event) {
             var result = [event.latLng.lat(), event.latLng.lng()];
             self.transition(result).then(function (value) {
@@ -1854,8 +1931,11 @@ mapView.prototype.addMoveMarker = function (position) {
 }
 
 mapView.prototype.transition = function (result) {
+    var self=this;
     var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
-    console.log(position)
+    self.detailView.long.value = position[0];
+    self.detailView.lat.value = position[1];
+   
     var deltaLat = (result[0] - position[0]) / this.numDeltas;
     var deltaLng = (result[1] - position[1]) / this.numDeltas;
     return this.moveMarker(position, deltaLat, deltaLng);

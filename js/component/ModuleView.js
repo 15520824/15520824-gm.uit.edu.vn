@@ -838,7 +838,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
 tableView.prototype.addInputSearch = function(input)
 {
     var self = this;
-    input.addEventListener("input",function(event){
+    input.onchange = function(event){
         for(var i = 0;i<self.bodyTable.childNodes.length;i++)
         {
             if(checkValueIs(self.bodyTable.childNodes[i].data,input.value))
@@ -862,7 +862,8 @@ tableView.prototype.addInputSearch = function(input)
                 self.bodyTable.childNodes[i].classList.add("disPLayNone");
             }
         }
-    })
+    }
+    input.addEventListener("input",input.onchange)
     self.inputElement = input;
 }
 
@@ -1267,7 +1268,8 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     }
     this.checkSpan  = checkSpan;
     this.data = data;
-    this.inputElement.dispatchEvent(new Event("input"))
+    if(this.inputElement!==undefined)
+    this.inputElement.onchange();
 }
 
 tableView.prototype.insertRow = function(data)
@@ -1311,7 +1313,6 @@ tableView.prototype.updateRow = function(data,index)
         if(result.childrenNodes!==undefined)
         {
             temp = result.childrenNodes[index];
-            
         }
         else
         temp = result.clone[0][index+1].parentNode;
@@ -1322,7 +1323,7 @@ tableView.prototype.updateRow = function(data,index)
         })
         result.bodyTable.replaceChild(row,temp);
     }
-    
+
     for(var i = 0;i<this.bodyTable.parentNode.clone.length;i++)
     {
         k = parseFloat(this.bodyTable.parentNode.clone[i][0].id);
@@ -1353,6 +1354,8 @@ tableView.prototype.updateRow = function(data,index)
    else
     result.data[index]=data;
     row.checkChild();
+    if(this.inputElement!==undefined)
+    this.inputElement.onchange();
 }
 
 tableView.prototype.dropRow = function(index)

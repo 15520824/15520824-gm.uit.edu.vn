@@ -91,11 +91,35 @@
     width: calc(100% - 5.8333rem);
   }
 
+  .pizo-new-realty-location{
+    width: 100vw;
+    width: 80vw;
+    background-color: white;
+  }
+
+  
+.absol-modal{
+  background-color: rgba(0,0,0,0.502);
+  overflow-y: auto;
+  z-index: 1002;
+}
+
 .pizo-new-realty-location-tab {
-  padding: 0.7143rem;
   border-bottom: solid 0.0714rem #ccc;
   margin-bottom: 0.7143rem;
   background: #f3f3f3;
+  display: flex;
+}
+
+.pizo-new-realty-location-tab>span{
+  padding: 0.7143rem;
+  width: 100%;
+}
+
+.pizo-new-realty-location-donebutton{
+  display: inline-block;
+    width: 6rem;
+    margin: 5px;
 }
 
 .pizo-new-realty-location-detail {
@@ -338,6 +362,10 @@
   margin-bottom: 0.7143rem;
   width: calc(50% - 1.0714rem);
   vertical-align: top;
+}
+
+.pizo-new-realty-desc-detail-row .pizo-new-realty-dectruct-content-area-size-zone{
+  margin-bottom: 0;
 }
 
 .pizo-new-realty-dectruct-content-area-size-zone > span{

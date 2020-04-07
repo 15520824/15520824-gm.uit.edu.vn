@@ -31402,7 +31402,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, "html{\r\n    font-size: 16px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    float: left;\r\n    color: var(--blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.5714rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.absol-single-page-scroller-viewport{\r\n    overflow-y: hidden;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 20px);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 7px 10px;\r\n    border-radius: 2px;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, "html{\r\n    font-size: 16px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.5714rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.absol-single-page-scroller-viewport{\r\n    overflow-y: hidden;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 20px);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 7px 10px;\r\n    border-radius: 2px;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n\r\n\r\n\r\n", ""]);
 
 
 
@@ -31472,7 +31472,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0rem;\r\n  left: 0rem;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n.sortTable{\r\n  width: 100%;\r\n}\r\n.sortTable,.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    overflow: hidden;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    padding-bottom: 10px;\r\n    /* border-spacing: 10px; */\r\n}\r\n\r\n.sortTableClone{\r\n  left: 0;\r\n}\r\n\r\n.sortTable  tr{\r\n  -webkit-transition: 1s ease-in-out;\r\n  -moz-transition: 1s ease-in-out;\r\n  -o-transition: 1s ease-in-out;\r\n  transition: 1s ease-in-out;\r\n}\r\n\r\n.sortTable  tr.hideTranslate{\r\n  transform: translateX(100%);\r\n}\r\n\r\n.sortTable tr:nth-child(even) {\r\n  background-color: #f5f5f5;\r\n}\r\n\r\n.sortTable th,.sortTable td,\r\n.sortTableClone th,.sortTableClone td {\r\n  padding: 0.5714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n}\r\n.sortTable th,.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n}\r\n.sortTable td,.sortTableClone td {\r\n  vertical-align: top;\r\n}\r\n.sortTable thead:first-child tr th,\r\n.sortTable thead:first-child tr td,\r\n.sortTableClone thead:first-child tr th,\r\n.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\n.sortTable tbody + tbody,.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\n.sortTable th + th,\r\n.sortTable td + td,\r\n.sortTable th + td,\r\n.sortTable td + th,\r\n.sortTableClone th + th,\r\n.sortTableClone td + td,\r\n.sortTableClone th + td,\r\n.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\n.sortTable thead:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child td,\r\n.sortTableClone thead:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\n.sortTable tbody{\r\n  position: relative;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n", ""]);
+exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  pointer-events: none;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.background-opacity-1{\r\n  opacity: 0.5;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0rem;\r\n  left: 0rem;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo{\r\n  z-index: 9999999999;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n.sortTable{\r\n  width: 100%;\r\n}\r\n.sortTable,.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    overflow: hidden;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    padding-bottom: 10px;\r\n    /* border-spacing: 10px; */\r\n}\r\n\r\n.sortTableClone{\r\n  left: 0;\r\n}\r\n\r\n.sortTable tr{\r\n  \r\n}\r\n\r\n.sortTable  tr.hideTranslate{\r\n  -webkit-transition: 1s ease-in-out;\r\n  -moz-transition: 1s ease-in-out;\r\n  -o-transition: 1s ease-in-out;\r\n  transition: 1s ease-in-out;\r\n  transform: translateX(100%);\r\n}\r\n\r\n\r\n\r\n.sortTable th,.sortTable td,\r\n.sortTableClone th,.sortTableClone td {\r\n  padding: 0.5714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n}\r\n.sortTable th,.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n}\r\n.sortTable td,.sortTableClone td {\r\n  vertical-align: top;\r\n}\r\n.sortTable thead:first-child tr th,\r\n.sortTable thead:first-child tr td,\r\n.sortTableClone thead:first-child tr th,\r\n.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\n.sortTable tbody + tbody,.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\n.sortTable th + th,\r\n.sortTable td + td,\r\n.sortTable th + td,\r\n.sortTable td + th,\r\n.sortTableClone th + th,\r\n.sortTableClone td + td,\r\n.sortTableClone th + td,\r\n.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\n.sortTable thead:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child td,\r\n.sortTableClone thead:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\n.sortTable tbody{\r\n  position: relative;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n\r\n", ""]);
 
 
 
@@ -31507,7 +31507,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".arrow_up{\n\ttransform: scale(1.06);\n\tdisplay: block;\n\tmargin-bottom: 1px;\n}\n\n.arrow_down{\n\ttransform: scale(1.06);\n\tdisplay: block;\n\tmargin-top: 1px;\n}\n\n.sort-container{\n\tdisplay: none;\n}\n\n.has-sort .sort-container{\n\tdisplay: inline-block;\n}", ""]);
+exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: block;\r\n\tmargin-bottom: 2px;\r\n\tdisplay: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n\tmargin-top: calc(50% - 1px);\r\n}\r\n\r\n.arrow_down{\r\n\ttransform: scale(1.06);\r\n    display: block;\r\n    margin-top: 2px;\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: auto;\r\n    height: calc(50% - 2px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n\tborder: 1px solid rgb(73,73,73);\r\n}\r\n\r\n.has-sort .sort-container{\r\n\tposition: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n\tdisplay: inline-block;\r\n\theight: 28px;\r\n    width: 18px;\r\n}\r\n\r\n.has-sort.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.has-sort.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n.sortTable td>i,.sortTableClone td>i{\r\n\t-webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n}\r\n\r\n.sortTable tr.more-child> td>i.more-button, .sortTableClone tr.more-child> td>i.more-button{\r\n\ttransform: rotateZ(90deg);\r\n}\r\n\r\n.disPLayNone{\r\n    display: none;\r\n}\r\n\r\n.parent:nth-child(odd) {\r\nbackground-color: #fff;\r\n}\r\n.parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\ntr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color:#f5f5f5 !important;\r\n}\r\ntr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #fff !important;\r\n}\r\n\r\n\r\n/* .sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */", ""]);
 
 
 
@@ -31542,7 +31542,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n    width: calc(100% - 4.8333rem);\r\n    margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n    margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n    margin-left: 2.7586rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-label {\r\n    font-size: 1rem;\r\n    line-height: 2.1429rem;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  margin-left: 2.4483rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    margin-left: 1.8966rem;\r\n    width: calc(100% - 5.8333rem);\r\n  }\r\n\r\n.pizo-new-realty-location-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-location-detail {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-content {\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row {\r\n  margin-bottom: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  margin-right: -1.0714rem;\r\n  margin-left: -1.0714rem;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  max-width: calc(33.333333% - 4.2857rem);\r\n  text-align: right;\r\n  font-size: 1rem;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  padding-left: 2.1429rem;\r\n  padding-right: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 66.666667%;\r\n  flex: 0 0 66.666667%;\r\n  max-width: 66.666667%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 calc(66.666667% - 1rem);\r\n  flex: 0 0 calc(66.666667% - 1rem);\r\n  max-width: calc(66.666667% - 1rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-map-view {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-map-view-content {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-long {\r\n  display: inline-block;\r\n  width: calc(50% - 2.0714rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-lat {\r\n  display: inline-block;\r\n  margin-left: 2.1429rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(50% - 2.0714rem);\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail {\r\n  padding: 0;\r\n  height: 21.7143rem;\r\n  margin-top: 0;\r\n  margin-bottom: 0;\r\n  overflow: hidden;\r\n  position: relative;\r\n  max-width: 100%;\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail img {\r\n  width: 100%;\r\n  height: auto;\r\n  left: 50%;\r\n  top: 50%;\r\n  position: absolute;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 30%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 2.1429rem;\r\n  min-width: 300px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(35% - 2.1429rem);\r\n  min-width: 350px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-utility {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-convenient {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-juridical {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-juridical-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-history {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-history-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  display: inline-block;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  text-align: right;\r\n  vertical-align: top;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n  line-height: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone > span{\r\n  display: inline-block;\r\n}\r\n\r\n/* \r\n\r\n.pizo-new-realty-dectruct-content-area-1 {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2 {\r\n  margin-left: 2.3rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n.pizo-new-realty-dectruct-content-area-width {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height {\r\n  margin-left: 1.1333rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n .pizo-new-realty-dectruct-content-area-bedroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen {\r\n  margin-left: 3.4333rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bathroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage {\r\n  margin-left: 2.1667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-basement {\r\n  margin-left: 1rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony {\r\n    margin-left: 1.2667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-access {\r\n    margin-left: calc(50% - 4.9667rem);\r\n    width: calc(50% - 22.1667rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-year {\r\n  width: calc(100% - 28.2143rem);\r\n  min-width: 7.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-pool {\r\n    margin-left: 2.8718rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-supermarket {\r\n    margin-left: 2.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market {\r\n    margin-left: 3.8462rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-hospital {\r\n    margin-left: 1.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park {\r\n    margin-left: 1.3846rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-preschool {\r\n    margin-left: 1.7rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool {\r\n    margin-left: 1.4667rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n */\r\n\r\n .pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right>span{\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span{\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-button-element{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2em;\r\n  font-size: 1em;\r\n  overflow: hidden;\r\n  line-height: 2em;\r\n  box-sizing: content-box;\r\n  height: 2em;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-project-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button-element >span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2em;\r\n  box-sizing: border-box;\r\n  line-height: 2em;\r\n  text-align: center;\r\n  font-size: 1em;\r\n  text-align: center;\r\n  margin-left: 0.7em;\r\n  margin-right: 0.7em;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n    width: calc(100% - 4.8333rem);\r\n    margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n    margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n    margin-left: 2.7586rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-desc-detail-row-cell-label {\r\n    font-size: 1rem;\r\n    line-height: 2.1429rem;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label{\r\n  font-size: 1rem;\r\n  line-height: 2.1429rem;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  margin-left: 2.4483rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    margin-left: 1.8966rem;\r\n    width: calc(100% - 5.8333rem);\r\n  }\r\n\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r\n    width: 80vw;\r\n    background-color: white;\r\n  }\r\n\r\n  \r\n.absol-modal{\r\n  background-color: rgba(0,0,0,0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-location-tab {\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-tab>span{\r\n  padding: 0.7143rem;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-donebutton{\r\n  display: inline-block;\r\n    width: 6rem;\r\n    margin: 5px;\r\n}\r\n\r\n.pizo-new-realty-location-detail {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-content {\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row {\r\n  margin-bottom: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  margin-right: -1.0714rem;\r\n  margin-left: -1.0714rem;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  max-width: calc(33.333333% - 4.2857rem);\r\n  text-align: right;\r\n  font-size: 1rem;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  padding-left: 2.1429rem;\r\n  padding-right: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 66.666667%;\r\n  flex: 0 0 66.666667%;\r\n  max-width: 66.666667%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 calc(66.666667% - 1rem);\r\n  flex: 0 0 calc(66.666667% - 1rem);\r\n  max-width: calc(66.666667% - 1rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-map-view {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-map-view-content {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-long {\r\n  display: inline-block;\r\n  width: calc(50% - 2.0714rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-lat {\r\n  display: inline-block;\r\n  margin-left: 2.1429rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(50% - 2.0714rem);\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail {\r\n  padding: 0;\r\n  height: 21.7143rem;\r\n  margin-top: 0;\r\n  margin-bottom: 0;\r\n  overflow: hidden;\r\n  position: relative;\r\n  max-width: 100%;\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail img {\r\n  width: 100%;\r\n  height: auto;\r\n  left: 50%;\r\n  top: 50%;\r\n  position: absolute;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 30%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(30% - 30px);\r\n  min-width: 350px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child{\r\n  width: calc(40% - 30px);\r\n  min-width: 477px;\r\n}\r\n\r\n.pizo-new-realty-utility {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-convenient {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-juridical {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-juridical-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-history {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-history-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  display: inline-block;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4375rem;\r\n  text-align: right;\r\n  vertical-align: top;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n  line-height: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row .pizo-new-realty-dectruct-content-area-size-zone{\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n/* \r\n\r\n.pizo-new-realty-dectruct-content-area-1 {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2 {\r\n  margin-left: 2.3rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n.pizo-new-realty-dectruct-content-area-width {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height {\r\n  margin-left: 1.1333rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n .pizo-new-realty-dectruct-content-area-bedroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen {\r\n  margin-left: 3.4333rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bathroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage {\r\n  margin-left: 2.1667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-basement {\r\n  margin-left: 1rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony {\r\n    margin-left: 1.2667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-access {\r\n    margin-left: calc(50% - 4.9667rem);\r\n    width: calc(50% - 22.1667rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-year {\r\n  width: calc(100% - 28.2143rem);\r\n  min-width: 7.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-pool {\r\n    margin-left: 2.8718rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-supermarket {\r\n    margin-left: 2.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market {\r\n    margin-left: 3.8462rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-hospital {\r\n    margin-left: 1.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park {\r\n    margin-left: 1.3846rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-preschool {\r\n    margin-left: 1.7rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool {\r\n    margin-left: 1.4667rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n */\r\n\r\n .pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right>span{\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-button-element{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2em;\r\n  font-size: 1em;\r\n  overflow: hidden;\r\n  line-height: 2em;\r\n  box-sizing: content-box;\r\n  height: 2em;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-project-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button-element >span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2em;\r\n  box-sizing: border-box;\r\n  line-height: 2em;\r\n  text-align: center;\r\n  font-size: 1em;\r\n  text-align: center;\r\n  margin-left: 0.7em;\r\n  margin-right: 0.7em;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}", ""]);
 
 
 
@@ -31615,7 +31615,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-1-label{\nwidth: 3.2857142857142856rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit-size{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-2-label{\nwidth: 3.2857142857142856rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit-size{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-height-label{\nwidth: 3.2857142857142856rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-width-label{\nwidth: 3.2857142857142856rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-1.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 8.141798214285714rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-2.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 8.141798214285714rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-height.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 8.141798214285714rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-width.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 8.141798214285714rem); \n}\n", ""]);
+exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-1-label{\r\nwidth: 3.2857142857142856rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit-size{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-2-label{\r\nwidth: 3.2857142857142856rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit-size{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-height-label{\r\nwidth: 3.2857142857142856rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-width-label{\r\nwidth: 3.2857142857142856rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-1.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 8.141798214285714rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-2.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 8.141798214285714rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-height.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 8.141798214285714rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-width.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 8.141798214285714rem); \r\n}\r\n", ""]);
 
 
 
@@ -31650,7 +31650,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bedroom-label{\nwidth: 4.875rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-kitchen-label{\nwidth: 4.875rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bathroom-label{\nwidth: 4.875rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-garage-label{\nwidth: 4.875rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-balcony-label{\nwidth: 4.875rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-basement-label{\nwidth: 4.875rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bedroom.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.928489375rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-kitchen.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.928489375rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bathroom.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.928489375rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-garage.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.928489375rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-balcony.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.928489375rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-basement.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.928489375rem); \n}\n", ""]);
+exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bedroom-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-kitchen-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bathroom-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-garage-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-balcony-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-basement-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bedroom.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-kitchen.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bathroom.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-garage.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-balcony.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-basement.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n", ""]);
 
 
 
@@ -31685,7 +31685,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-area-label{\nwidth: 4.5rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style .pizo-new-realty-detruct-content-area-label{\nwidth: 4.5rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .absol-selectmenu.pizo-new-realty-detruct-content-direction{\nwidth: calc(100% - 4.5rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style .absol-selectmenu.pizo-new-realty-detruct-content-type{\nwidth: calc(100% - 4.5rem); \n}\n", ""]);
+exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-area-label{\r\nwidth: 4.5rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style .pizo-new-realty-detruct-content-area-label{\r\nwidth: 4.5rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .absol-selectmenu.pizo-new-realty-detruct-content-direction{\r\nwidth: calc(100% - 4.5rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style .absol-selectmenu.pizo-new-realty-detruct-content-type{\r\nwidth: calc(100% - 4.5rem); \r\n}\r\n", ""]);
 
 
 
@@ -31720,7 +31720,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-right .pizo-new-realty-detruct-content-area-label{\nwidth: 10.285714285714286rem; \n}\n.pizo-new-realty-dectruct-content-area-right .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 4.5rem; \n}\n.pizo-new-realty-dectruct-content-area-right .pizo-new-realty-detruct-content-area-label{\nwidth: 10.285714285714286rem; \n}\n.pizo-new-realty-dectruct-content-area-right .pizo-new-realty-dectruct-content-area-access.pizo-new-realty-dectruct-input{\n    width: calc(100% - 15.0714rem);\n}\n.pizo-new-realty-dectruct-content-area-right .pizo-new-realty-dectruct-content-area-year.pizo-new-realty-dectruct-input{\n    width: calc(100% - 11.2857rem);\n}\n", ""]);
+exports.push([module.i, ".pizo-new-realty-dectruct-content-area-right .pizo-new-realty-detruct-content-area-label{\r\nwidth: 10.285714285714286rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-right .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 4.5rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-right .pizo-new-realty-detruct-content-area-label{\r\nwidth: 10.285714285714286rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-right .pizo-new-realty-dectruct-content-area-access.pizo-new-realty-dectruct-input{\r\n    width: calc(100% - 15.1rem);\r\n}\r\n.pizo-new-realty-dectruct-content-area-right .pizo-new-realty-dectruct-content-area-year.pizo-new-realty-dectruct-input{\r\n    width: calc(100% - 11.4rem);\r\n}\r\n", ""]);
 
 
 
@@ -31755,7 +31755,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-tivi-label{\nwidth: 4.1875rem; \n}\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-fridge-label{\nwidth: 4.1875rem; \n}\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-washing-label{\nwidth: 4.1875rem; \n}\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-conditioning-label{\nwidth: 4.1875rem; \n}\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-tivi.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.240989375rem); \n}\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-fridge.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.240989375rem); \n}\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-washing.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.240989375rem); \n}\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-conditioning.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 5.240989375rem); \n}\n", ""]);
+exports.push([module.i, ".pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-tivi-label{\r\nwidth: 4.1875rem; \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-fridge-label{\r\nwidth: 4.1875rem; \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-washing-label{\r\nwidth: 4.1875rem; \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-conditioning-label{\r\nwidth: 4.1875rem; \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-tivi.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.240989375rem); \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-fridge.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.240989375rem); \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-washing.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.240989375rem); \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-conditioning.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.240989375rem); \r\n}\r\n", ""]);
 
 
 
@@ -31790,7 +31790,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-pool-label{\nwidth: 5.428571428571429rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-gym-label{\nwidth: 5.428571428571429rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-market-label{\nwidth: 5.428571428571429rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-supermarket-label{\nwidth: 5.428571428571429rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-hospital-label{\nwidth: 5.428571428571429rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-park-label{\nwidth: 5.428571428571429rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-highschool-label{\nwidth: 5.428571428571429rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-preschool-label{\nwidth: 5.428571428571429rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\nwidth: 3.643973214285714rem; \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-pool.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 10.284655357142857rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-gym.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 10.284655357142857rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-market.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 10.284655357142857rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-supermarket.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 10.284655357142857rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-hospital.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 10.284655357142857rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-park.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 10.284655357142857rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-highschool.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 10.284655357142857rem); \n}\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-preschool.pizo-new-realty-dectruct-input{\nwidth: calc(100% - 10.284655357142857rem); \n}\n", ""]);
+exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-pool-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-gym-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-market-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-supermarket-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-hospital-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-park-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-highschool-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-preschool-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-pool.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-gym.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-market.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-supermarket.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-hospital.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-park.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-highschool.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-preschool.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n", ""]);
 
 
 
@@ -52712,14 +52712,21 @@ function onMouseMoveFix(clone, event, shiftY, result) {
 function moveAtFix(clone, pageY, shiftY, result) {
   var y = pageY - result.getBoundingClientRect().top;
   y -= shiftY;
+  var height = result.clientHeight;
 
-  if (y > result.clientHeight - clone.clientHeight) {
+  if (result.clone[0] !== undefined && result.tagName !== "TABLE") {
+    for (var i = 0; i < result.clone[0].length; i++) {
+      height += result.clone[0][i].clientHeight;
+    }
+  }
+
+  if (y > height - clone.clientHeight) {
     y = result.clientHeight;
     return;
   }
 
-  if (y < 0) {
-    y = 0;
+  if (y < clone.clientHeight / 2) {
+    y = clone.clientHeight / 2;
     return;
   }
 
@@ -52794,8 +52801,15 @@ function moveElementFix(event, me, result, index) {
   var trigger;
   var clone = result.cloneRow(index);
   var bg = result.backGroundFix(index);
+  var scrollParent = me;
+
+  while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
+    scrollParent = scrollParent.parentNode;
+  }
+
+  if (scrollParent === undefined) return;
   result.bodyTable.appendChild(bg);
-  result.bodyTable.appendChild(clone);
+  bg.appendChild(clone);
 
   var functionCheckZone = function functionCheckZone(event) {
     var arrZone = bg.getZone();
@@ -52823,14 +52837,19 @@ function moveElementFix(event, me, result, index) {
 
   var shiftY = clone.clientHeight / 2;
   moveAtFix(clone, event.pageY, shiftY, result);
+  scrollParent.addEventListener("scroll", function (event) {
+    moveAtFix(clone, event.pageY, shiftY, result);
+    console.log(parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop));
+    bg.style.top = parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop) + "px";
+  });
   window.addEventListener('mousemove', functionCheckZone);
 
   var trigger = function trigger(event) {
     onMouseMoveFix(clone, event, shiftY, result);
   };
 
-  window.addEventListener('mousemove', trigger);
-  window.addEventListener("mouseup", function () {
+  var mouseUpFunction = function mouseUpFunction() {
+    window.removeEventListener("mouseup", mouseUpFunction);
     var removeList = document.getElementsByClassName("focus-blast")[0];
 
     if (removeList !== undefined) {
@@ -52843,8 +52862,16 @@ function moveElementFix(event, me, result, index) {
         element = element.parentNode;
       }
 
-      result.bodyTable.insertBefore(element, result.bodyTable.childNodes[row1]);
-      result.data = changeIndex(result.data, index - 1, row1);
+      this.console.log(element, removeList.elementReal);
+      result.bodyTable.insertBefore(element, removeList.elementReal);
+
+      if (element.clone !== undefined) {
+        for (var i = 1; i < element.clone[0].length; i++) {
+          result.bodyTable.insertBefore(element.clone[0][i].parentNode, removeList.elementReal);
+        }
+      }
+
+      if (result.data.child !== undefined) result.data.child = changeIndex(result.data.child, index - 1, row1);else result.data = changeIndex(result.data, index - 1, row1);
       var k = 0;
 
       for (var i = 0; i < result.clone.length; i++) {
@@ -52858,7 +52885,10 @@ function moveElementFix(event, me, result, index) {
     }
 
     outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
-  });
+  };
+
+  window.addEventListener('mousemove', trigger);
+  window.addEventListener("mouseup", mouseUpFunction);
 }
 
 function array_insertBefore(arr, data, new_index) {
@@ -52900,7 +52930,7 @@ function changeIndex(arr, old_index, new_index) {
 
 tableView.prototype.checkLongRow = function (index) {
   var result = this;
-  var delta;
+  var delta = [];
 
   for (var i = 0; i < result.clone.length; i++) {
     delta[i] = 0;
@@ -52940,7 +52970,7 @@ function tableView() {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
   var dragHorizontal = arguments.length > 2 ? arguments[2] : undefined;
   var dragVertical = arguments.length > 3 ? arguments[3] : undefined;
-  if (window.mobilecheck()) return tableViewMobile();
+  if (window.mobilecheck()) return tableViewMobile(header, data);
   var cell,
       row,
       value,
@@ -52950,10 +52980,7 @@ function tableView() {
   var checkSpan = [];
 
   var headerTable = ModuleView_({
-    tag: "thead",
-    style: {
-      cursor: "alias"
-    }
+    tag: "thead"
   });
 
   var bodyTable = ModuleView_({
@@ -52971,19 +52998,7 @@ function tableView() {
 
   result.headerTable = headerTable;
   result.bodyTable = bodyTable;
-  result.cloneColumn = tableView.prototype.cloneColumn;
-  result.cloneRow = tableView.prototype.cloneRow;
-  result.deleteColumn = tableView.prototype.deleteColumn;
-  result.getBound2Colum = tableView.prototype.getBound2Colum;
-  result.getBound2Row = tableView.prototype.getBound2Row;
-  result.backGround = tableView.prototype.backGround;
-  result.backGroundFix = tableView.prototype.backGroundFix;
-  result.updateTable = tableView.prototype.updateTable;
-  result.updateRow = tableView.prototype.updateRow;
-  result.dropRow = tableView.prototype.dropRow;
-  result.getCell = tableView.prototype.getCell;
-  result.checkLongRow = tableView.prototype.checkLongRow;
-  result.insertRow = tableView.prototype.insertRow;
+  Object.assign(result, tableView.prototype);
   result.check = check;
   result.header = header;
   result.data = data;
@@ -53020,12 +53035,15 @@ function tableView() {
       });
     }
   }, 10);
-  result.clone = [];
   row = ModuleView_({
     tag: "tr"
   });
   headerTable.addChild(row);
+  result.clone = [];
   var k = 0;
+  var toUpperCase = header.toUpperCase == true ? true : false;
+  var toLowerCase = header.toLowerCase == true ? true : false;
+  var functionClickSort;
 
   for (var i = 0; i < header.length; i++) {
     if (header[i].hidden === false || header[i].hidden === undefined) {
@@ -53035,6 +53053,8 @@ function tableView() {
         if (_typeof(header[i]) === "object") value = "";else value = header[i];
       } else value = header[i].value;
 
+      if (toUpperCase) value = value.toUpperCase();
+      if (toLowerCase) value = value.toLowerCase();
       var functionClick = undefined;
 
       switch (header[i].type) {
@@ -53059,7 +53079,10 @@ function tableView() {
           break;
 
         case "dragzone":
-          check[i] = "dragzone";
+          if (dragVertical) check[i] = "dragzone";else {
+            check[i] = "hidden";
+            continue;
+          }
           break;
 
         case "detail":
@@ -53081,35 +53104,33 @@ function tableView() {
       }
 
       if (header[i].sort === true || header[i].sort === undefined) {
-        functionClick = function functionClick(event, me, index, dataIndex, row, result) {
+        functionClickSort = function functionClickSort(event, me, index, dataIndex, row, result) {
           var last_sort = document.getElementsByClassName("downgrade");
           last_sort = last_sort[0];
+          me = me.parentNode;
 
           if (last_sort !== me && last_sort !== undefined) {
             last_sort.classList.remove("downgrade");
           }
 
-          if (!me.classList.contains("downgrade")) {
-            result.data.sort(function (a, b) {
-              var valueA = a[index].value;
-              var valueB = b[index].value;
-              if (valueA === undefined) valueA = a[index];
-              if (valueB === undefined) valueB = b[index];
-              return valueA - valueB;
-            });
-            me.classList.add("downgrade");
-          } else {
-            result.data.sort(function (a, b) {
-              var valueA = a[index].value;
-              var valueB = b[index].value;
-              if (valueA === undefined) valueA = a[index];
-              if (valueB === undefined) valueB = b[index];
-              return valueB - valueA;
-            });
-            me.classList.remove("downgrade");
+          var last_sort = document.getElementsByClassName("upgrade");
+          last_sort = last_sort[0];
+
+          if (last_sort !== me && last_sort !== undefined) {
+            last_sort.classList.remove("upgrade");
           }
 
-          result.updateTable(header, data, dragHorizontal, dragVertical);
+          if (!me.classList.contains("downgrade")) {
+            sortArray(result.data, index);
+            me.classList.add("downgrade");
+            if (me.classList.contains("upgrade")) me.classList.remove("upgrade");
+          } else {
+            sortArray(result.data, index, false);
+            me.classList.add("upgrade");
+            if (me.classList.contains("downgrade")) me.classList.remove("downgrade");
+          }
+
+          result.updateTable(header, result.data, dragHorizontal, dragVertical);
         };
       }
 
@@ -53189,7 +53210,6 @@ function tableView() {
           }(i) : undefined
         }
       });
-      console.log(cell);
 
       if (header[i].sort === true) {
         cell.classList.add("has-sort");
@@ -53211,6 +53231,14 @@ function tableView() {
       cell.addChild(ModuleView_({
         tag: "div",
         "class": "sort-container",
+        on: {
+          click: function (index, row, functionClickSort) {
+            return function (event) {
+              event.preventDefault();
+              if (functionClickSort !== undefined) functionClickSort(event, this, index, data[index], row, result);
+            };
+          }(i, row, functionClickSort)
+        },
         child: [{
           tag: "sort-up",
           "class": ["arrow_up"]
@@ -53224,23 +53252,69 @@ function tableView() {
     } else check[i] = "hidden";
   }
 
-  for (var i = 0; i < data.length; i++) {
-    row = ModuleView_({
-      tag: "tr"
-    });
-    bodyTable.addChild(row);
-    k = 0;
+  result.getBodyTable(data);
+  result.checkSpan = checkSpan;
+  return result;
+}
 
-    for (var j = 0; j < data[i].length; j++) {
-      cell = result.getCell(data[i][j], i, j, k, checkSpan, row);
+tableView.prototype.addInputSearch = function (input) {
+  var self = this;
+  input.addEventListener("input", function (event) {
+    for (var i = 0; i < self.bodyTable.childNodes.length; i++) {
+      if (checkValueIs(self.bodyTable.childNodes[i].data, input.value)) {
+        if (!self.bodyTable.childNodes[i].classList.contains("parent")) self.bodyTable.childNodes[i].classList.add("parent");
+        if (self.bodyTable.childNodes[i].classList.contains("disPLayNone")) self.bodyTable.childNodes[i].classList.remove("disPLayNone");
 
-      if (cell === 6) {
-        k++;
-        continue;
+        if (self.bodyTable.childNodes[i].childNodes[0].parentTree !== undefined) {
+          if (!self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.contains("parent")) self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.add("parent");
+          if (self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.contains("disPLayNone")) self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.remove("disPLayNone");
+        }
+      } else {
+        if (self.bodyTable.childNodes[i].classList.contains("parent")) self.bodyTable.childNodes[i].classList.remove("parent");
+        if (!self.bodyTable.childNodes[i].classList.contains("disPLayNone")) self.bodyTable.childNodes[i].classList.add("disPLayNone");
       }
+    }
+  });
+  self.inputElement = input;
+};
 
-      if (cell === 2) {
-        k++;
+function checkValueIs(data, text) {
+  var value;
+
+  for (var i = 0; i < data.length; i++) {
+    value = "";
+    if (data[i].value !== undefined) value = data[i].value;else value = data[i];
+    if (value.toString().indexOf(text) !== -1) return true;
+  }
+
+  return false;
+}
+
+tableView.prototype.getBodyTable = function (data, parentContent) {
+  var temp = this.bodyTable;
+  var result = this,
+      k,
+      delta = [],
+      row,
+      cell;
+  var parent = this;
+  var arr = [];
+  if (parentContent !== undefined) parent = parentContent;
+  if (parent.checkSpan === undefined) parent.checkSpan = [];
+
+  for (var i = 0; i < data.length; i++) {
+    row = result.getRow(data[i]);
+    temp.addChild(row);
+    arr.push(row);
+
+    for (var j = 0; j < result.clone.length; j++) {
+      k = parseFloat(result.clone[j][0].id);
+      if (delta[j] === undefined) delta[j] = 0;
+      cell = result.getCell(data[i][k], i, k, j, parent.checkSpan, row);
+
+      if (cell === 6 || cell === 2) {
+        parent.clone[j].splice(i + 1 - delta[j], 1);
+        delta[j] += 1;
         continue;
       }
 
@@ -53248,20 +53322,89 @@ function tableView() {
         continue;
       }
 
-      result.clone[k++].push(cell);
+      cell.clone = parent.clone;
+      parent.clone[j][i + 1 - delta[j]] = cell;
+      cell.parentTree = parent;
       row.addChild(cell);
     }
 
-    if (data[i].child !== undefined) {
-      if (data[i].child.index !== undefined) {
-        row.childNodes[data[i].child.index].classList.add("hasChild");
-      }
-    }
+    row.checkChild();
   }
 
-  result.checkSpan = checkSpan;
-  return result;
-}
+  return arr;
+};
+
+tableView.prototype.getRow = function (data) {
+  var temp = ModuleView_({
+    tag: "tr",
+    "class": "parent"
+  });
+
+  var result = this;
+  temp.data = data;
+
+  temp.checkChild = function (data) {
+    if (data !== undefined) temp.data = data;
+
+    if (temp.data.child !== undefined) {
+      if (temp.data.child.index !== undefined) {
+        temp.classList.add("more-child");
+
+        var buttonClick = ModuleView_({
+          tag: "i",
+          on: {
+            click: function click(event) {
+              if (!temp.classList.contains("more-child")) {
+                temp.classList.add("more-child");
+                var childrenNodes = temp.childrenNodes;
+
+                for (var i = 0; i < childrenNodes.length; i++) {
+                  childrenNodes[i].classList.add("parent");
+                  childrenNodes[i].classList.remove("disPLayNone");
+                }
+              } else {
+                temp.classList.remove("more-child");
+                var childrenNodes = temp.childrenNodes;
+
+                for (var i = 0; i < childrenNodes.length; i++) {
+                  childrenNodes[i].classList.remove("parent");
+                  childrenNodes[i].classList.add("disPLayNone");
+                }
+              }
+            }
+          },
+          "class": ["material-icons", "more-button"],
+          props: {
+            innerHTML: "play_arrow"
+          }
+        });
+
+        temp.childNodes[temp.data.child.index].insertBefore(buttonClick, temp.childNodes[temp.data.child.index].firstChild);
+        temp.clone = [];
+        var k = 0;
+
+        for (var i = 0; i < temp.childNodes.length; i++) {
+          temp.clone[k++] = [temp.childNodes[i]];
+
+          if (temp.childNodes[i].colSpan !== 1) {
+            k++;
+          }
+        }
+
+        temp.childrenNodes = result.getBodyTable(temp.data.child, temp);
+        Object.assign(temp, tableView.prototype);
+        temp.headerTable = result.headerTable;
+        temp.bodyTable = result.bodyTable;
+        temp.check = result.check;
+        temp.header = result.header;
+        temp.dragVertical = result.dragVertical;
+        temp.dragHorizontal = result.dragHorizontal;
+      }
+    }
+  };
+
+  return temp;
+};
 
 tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
   var data = dataOrigin;
@@ -53304,15 +53447,19 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
         });
       } else {
         bonus = ModuleView_({
-          tag: "drag-horizontal",
+          tag: "i",
+          "class": ["material-icons"],
+          props: {
+            innerHTML: "drag_indicator"
+          },
           on: {
             mousedown: result.dragVertical ? function (index) {
               return function (event) {
                 event.preventDefault();
                 var finalIndex;
 
-                for (var i = 1; i < result.clone[0].length; i++) {
-                  if (result.clone[0][i].idRow == index) {
+                for (var i = 1; i < cell.clone[0].length; i++) {
+                  if (cell.clone[0][i].idRow == index) {
                     finalIndex = i;
                     break;
                   }
@@ -53323,7 +53470,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
                 this["default"] = event;
                 this.timeoutID = setTimeout(function () {
                   dom.hold = true;
-                  moveElementFix(event, dom, result, finalIndex);
+                  moveElementFix(event, dom, cell.parentTree, finalIndex);
                 }, 200);
               };
             }(i) : undefined,
@@ -53342,8 +53489,8 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
                 if (this.hold === false) {
                   var finalIndex;
 
-                  for (var i = 0; i < result.clone[0].length; i++) {
-                    if (result.clone[0][i].idRow == index) {
+                  for (var i = 0; i < cell.clone[0].length; i++) {
+                    if (cell.clone[0][i].idRow == index) {
                       finalIndex = i;
                       break;
                     }
@@ -53355,7 +53502,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
 
                   if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
                     this.hold = true;
-                    moveElementFix(event, this, result, finalIndex);
+                    moveElementFix(event, this, cell.parentTree, finalIndex);
                     clearTimeout(this.timeoutID);
                   }
                 }
@@ -53428,9 +53575,12 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
           event.preventDefault();
 
           if (functionClick !== undefined) {
-            for (var i = 0; i < result.data.length; i++) {
-              if (this.data == result.data[i]) {
-                functionClick(event, this, i, this.data, row);
+            for (var i = 1; i < cell.clone[0].length; i++) {
+              if (cell.clone[0][i].idRow == index) {
+                var dataIndex;
+                if (cell.parentTree.data.child !== undefined) dataIndex = cell.parentTree.data.child[i];else dataIndex = cell.parentTree.data[i];
+                functionClick(event, cell, i - 1, cell.parentTree, cell.parentTree.data[i], row);
+                break;
               }
             }
           }
@@ -53440,7 +53590,9 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
   });
 
   if (data.element === undefined) {
-    cell.textContent = value;
+    cell.addChild(ModuleView_({
+      text: value
+    }));
   } else {
     cell.appendChild(data.element);
   }
@@ -53449,8 +53601,6 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
     cell.addChild(bonus);
     bonus = undefined;
   }
-
-  cell.data = result.data[i];
 
   if (data.rowspan !== undefined) {
     cell.setAttribute("rowspan", data.rowspan);
@@ -53485,12 +53635,12 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
   if (dragHorizontal !== undefined) result.dragHorizontal = dragHorizontal;
   if (dragVertical !== undefined) result.dragVertical = dragVertical;
   if (this.bodyTable.listCheckBox !== undefined) temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
+  this.replaceChild(temp, this.bodyTable);
+  this.bodyTable = temp;
   var delta = [];
 
   for (var i = 0; i < data.length; i++) {
-    row = ModuleView_({
-      tag: "tr"
-    });
+    row = result.getRow(data[i]);
     temp.addChild(row);
 
     for (var j = 0; j < this.clone.length; j++) {
@@ -53508,15 +53658,17 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
         continue;
       }
 
+      cell.clone = this.clone;
       this.clone[j][i + 1 - delta[j]] = cell;
       row.addChild(cell);
     }
+
+    row.checkChild();
   }
 
   this.checkSpan = checkSpan;
-  this.replaceChild(temp, this.bodyTable);
   this.data = data;
-  this.bodyTable = temp;
+  this.inputElement.dispatchEvent(new Event("input"));
 };
 
 tableView.prototype.insertRow = function (data) {
@@ -53528,10 +53680,7 @@ tableView.prototype.updateRow = function (data, index) {
       k,
       cell;
   var delta = [];
-
-  var row = ModuleView_({
-    tag: "tr"
-  });
+  var row = result.getRow(data);
 
   for (var i = 0; i < result.clone.length; i++) {
     delta[i] = 0;
@@ -53550,8 +53699,27 @@ tableView.prototype.updateRow = function (data, index) {
     }
   }
 
-  for (var i = 0; i < this.clone.length; i++) {
-    k = parseFloat(this.clone[i][0].id);
+  if (result.childrenNodes !== undefined && result.childrenNodes.length === index) {
+    result.bodyTable.insertBefore(row, result.childrenNodes[result.childrenNodes.length - 1].nextSibling);
+  } else if (index === result.data.length && result.childrenNodes === undefined) {
+    result.bodyTable.addChild(row);
+  } else {
+    var temp;
+    console.log(result);
+
+    if (result.childrenNodes !== undefined) {
+      temp = result.childrenNodes[index];
+    } else temp = result.clone[0][index + 1].parentNode;
+
+    console.log(temp);
+    if (temp.childrenNodes !== undefined) temp.childrenNodes.forEach(function (value) {
+      value.selfRemove();
+    });
+    result.bodyTable.replaceChild(row, temp);
+  }
+
+  for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
+    k = parseFloat(this.bodyTable.parentNode.clone[i][0].id);
     cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
 
     if (cell === 6) {
@@ -53568,30 +53736,33 @@ tableView.prototype.updateRow = function (data, index) {
       continue;
     }
 
+    cell.clone = result.clone;
     result.clone[i][index + 1 - delta[i]] = cell;
     k++;
     row.addChild(cell);
   }
 
-  if (index === result.data.length) result.bodyTable.addChild(row);else result.bodyTable.replaceChild(row, result.bodyTable.childNodes[index]);
-  result.data[index] = data;
+  if (result.data.child !== undefined) result.data.child[index] = data;else result.data[index] = data;
+  row.checkChild();
 };
 
 tableView.prototype.dropRow = function (index) {
   var result = this,
       deltaX = [];
-  var element = result.bodyTable.childNodes[index];
+  var element = result.clone[0][index + 1].parentNode;
+  var parent = element.childNodes[0].parentTree;
   if (!element.classList.contains("hideTranslate")) element.classList.add("hideTranslate");
+  console.log(element);
 
   var eventEnd = function eventEnd() {
-    result.data.splice(index, 1);
+    if (parent.data.child) parent.data.child.splice(parseFloat(element.childNodes[0].idRow), 1);else parent.data.splice(parseFloat(element.childNodes[0].idRow), 1);
     element.selfRemove();
     var deltaY = 0;
-    deltaX = result.checkLongRow(index);
+    deltaX = parent.checkLongRow(index);
 
     for (var i = 0; i < element.childNodes.length; i++) {
-      result.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
-      result.checkSpan.splice(index, 1);
+      parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
+      parent.checkSpan.splice(index, 1);
       if (element.childNodes[i].colSpan !== undefined) deltaY += element.childNodes[i].colSpan - 1;
     }
   }; // Code for Safari 3.1 to 6.0
@@ -53603,11 +53774,24 @@ tableView.prototype.dropRow = function (index) {
 };
 
 tableView.prototype.backGroundFix = function (index) {
+  var rect = this.getBoundingClientRect();
+  var scrollParent = this;
+
+  while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
+    scrollParent = scrollParent.parentNode;
+  }
+
+  if (scrollParent === undefined) return;
+  console.log(rect.y - scrollParent.scrollTop);
+
   var temp = ModuleView_({
     tag: "div",
     "class": "background-opacity",
     style: {
-      backgroundColor: "#ffffff00"
+      top: rect.y + 'px',
+      left: rect.x + 'px',
+      backgroundColor: "#ffffff00",
+      realTop: rect.y + scrollParent.scrollTop
     },
     child: []
   });
@@ -53638,7 +53822,7 @@ tableView.prototype.backGroundFix = function (index) {
 tableView.prototype.backGround = function (height, callback, index) {
   var temp = ModuleView_({
     tag: "div",
-    "class": "background-opacity",
+    "class": "background-opacity-1",
     child: [{
       tag: "div",
       "class": "delete-zone",
@@ -53728,6 +53912,8 @@ tableView.prototype.cloneColumn = function (index) {
     tag: "tbody"
   });
 
+  tableView.prototype.cloneCellColumn(bodyTable, this.clone, index);
+
   var result = ModuleView_({
     tag: "table",
     style: {
@@ -53740,19 +53926,30 @@ tableView.prototype.cloneColumn = function (index) {
     child: [headerTable, bodyTable]
   });
 
-  for (var i = 1; i < this.clone[index].length; i++) {
-    clone = this.clone[index][i].cloneNode(true);
-    clone.style.width = this.clone[index][i].offsetWidth - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
-    clone.style.height = this.clone[index][i].offsetHeight - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[index][i], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
+  return result;
+};
+
+tableView.prototype.cloneCellColumn = function (bodyTable, cloneArray, index) {
+  var clone, cell;
+
+  for (var i = 1; i < cloneArray[index].length; i++) {
+    clone = cloneArray[index][i].cloneNode(true);
+    clone.style.width = cloneArray[index][i].offsetWidth - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
+    clone.style.height = cloneArray[index][i].offsetHeight - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
     cell = ModuleView_({
       tag: "tr",
       child: [clone]
     });
-    if (this.clone[index][i].colSpan !== undefined) clone.setAttribute("rowSpan", "");
+    console.log(cell);
+    cell.classList = cloneArray[index][i].parentNode.classList;
+    if (cloneArray[index][i].colSpan !== undefined) clone.setAttribute("rowSpan", "");
     bodyTable.addChild(cell);
-  }
 
-  return result;
+    if (cloneArray[index][i].parentNode.clone !== undefined) {
+      var cloneArrayTemp = cloneArray[index][i].parentNode.clone;
+      tableView.prototype.cloneCellColumn(bodyTable, cloneArrayTemp, index);
+    }
+  }
 };
 
 tableView.prototype.cloneRow = function (index) {
@@ -53785,16 +53982,11 @@ tableView.prototype.cloneRow = function (index) {
   if (index === 0) headerTable.addChild(row);else {
     bodyTable.addChild(row);
   }
-  var delta = 0;
+  console.log(this.clone);
 
   for (var i = 0; i < this.clone.length; i++) {
-    if (delta > 0) {
-      delta--;
-      continue;
-    }
-
+    if (this.clone[i][index] === undefined) continue;
     clone = this.clone[i][index].cloneNode(true);
-    if (clone.colSpan !== undefined) delta = clone.colSpan - 1;
     clone.style.width = this.clone[i][index].offsetWidth - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-right-width').replace("px", "") + 1 + 'px';
     clone.style.height = this.clone[i][index].offsetHeight - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
     clone.setAttribute("colSpan", "");
@@ -53818,44 +54010,7 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
     on: {
       mouseover: function mouseover() {
         if (this.parentNode.isMove === false) {
-          var parent; // if(index==colum1)
-          //     return;
-          // if(index==colum2)
-          //     return;
-
-          var delta = 0,
-              lastDelta;
-
-          for (var i = 0; i < self.clone[index].length; i++) {
-            parent = self.clone[index][i - delta].parentNode;
-
-            if (colum2 !== undefined) {
-              if (lastDelta > 0) {
-                lastDelta--;
-                continue;
-              }
-
-              parent.insertBefore(self.clone[index][i - delta], self.clone[colum2][i]);
-            } else {
-              parent.appendChild(self.clone[index][i]);
-            }
-
-            if (self.clone[index][i].rowSpan !== undefined) {
-              delta += self.clone[index][i].rowSpan - 1;
-              lastDelta = self.clone[index][i].rowSpan - 1;
-            }
-          }
-
-          if (colum1 > index) {
-            if (colum2 === undefined) self.clone.push(self.clone[index]);else self.clone.splice(colum2, 0, self.clone[index]);
-            self.clone.splice(index, 1);
-          }
-
-          if (colum2 < index) {
-            var tempElement = self.clone[index];
-            self.clone.splice(index, 1);
-            if (colum2 === undefined) self.clone.push(tempElement);else self.clone.splice(colum2, 0, tempElement);
-          }
+          tableView.prototype.moveColumn(self.clone, colum1, colum2, index);
         }
       }
     },
@@ -53878,19 +54033,88 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
   });
 };
 
+tableView.prototype.moveColumn = function (arrClone, colum1, colum2, index) {
+  var i = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+  var parent; // if(index==colum1)
+  //     return;
+  // if(index==colum2)
+  //     return;
+
+  var delta = 0,
+      lastDelta;
+
+  for (i; i < arrClone[index].length; i++) {
+    parent = arrClone[index][i - delta].parentNode;
+
+    if (colum2 !== undefined) {
+      if (lastDelta > 0) {
+        lastDelta--;
+        continue;
+      }
+
+      parent.insertBefore(arrClone[index][i - delta], arrClone[colum2][i]);
+    } else {
+      parent.appendChild(arrClone[index][i]);
+    }
+
+    if (arrClone[index][i].rowSpan !== undefined) {
+      delta += arrClone[index][i].rowSpan - 1;
+      lastDelta = arrClone[index][i].rowSpan - 1;
+    }
+
+    if (arrClone[index][i - delta].parentNode.clone !== undefined) {
+      tableView.prototype.moveColumn(arrClone[index][i - delta].parentNode.clone, colum1, colum2, index, 1);
+    }
+  }
+
+  if (colum1 > index) {
+    if (colum2 === undefined) arrClone.push(arrClone[index]);else arrClone.splice(colum2, 0, arrClone[index]);
+    arrClone.splice(index, 1);
+  }
+
+  if (colum2 < index) {
+    var tempElement = arrClone[index];
+    arrClone.splice(index, 1);
+    if (colum2 === undefined) arrClone.push(tempElement);else arrClone.splice(colum2, 0, tempElement);
+  }
+};
+
 tableView.prototype.getBound2Row = function (row1, row2) {
   var self = this;
-  var top, bottom;
+  var top, bottom, elementReal;
   if (self.clone[0][row1] !== undefined) var style1 = window.getComputedStyle(self.clone[0][row1]);
-  if (self.clone[0][row2] !== undefined) var style2 = window.getComputedStyle(self.clone[0][row2]);
-  if (row1 !== undefined) top = self.clone[0][row1].offsetHeight / 2 + parseFloat(style1.webkitBorderVerticalSpacing) / 2;else top = parseFloat(window.getComputedStyle(self).paddingTop);
-  if (row2 !== undefined && self.clone[0][row2].offsetHeight !== 0) bottom = self.clone[0][row2].offsetHeight / 2 + parseFloat(style2.webkitBorderVerticalSpacing) / 2;else bottom = parseFloat(window.getComputedStyle(self).paddingBottom);
-  return ModuleView_({
+
+  if (self.clone[0][row2] !== undefined) {
+    var style2 = window.getComputedStyle(self.clone[0][row2]);
+    elementReal = self.clone[0][row2].parentNode;
+  }
+
+  if (row1 !== undefined) {
+    top = self.clone[0][row1].offsetHeight / 2 + parseFloat(style1.webkitBorderVerticalSpacing) / 2;
+  } else top = parseFloat(window.getComputedStyle(self).paddingTop);
+
+  if (row2 !== undefined && self.clone[0][row2].offsetHeight !== 0) {
+    if (self.clone[0][row2].parentNode.style.display === "none") return ModuleView_({
+      tag: "div"
+    });
+    bottom = self.clone[0][row2].offsetHeight / 2 + parseFloat(style2.webkitBorderVerticalSpacing) / 2;
+
+    if (row1 !== undefined && self.clone[0][row2].parentNode.clone !== undefined) {
+      var tempClone = self.clone[0][row2].parentNode.clone[0];
+
+      for (var i = 1; i < tempClone.length; i++) {
+        bottom += tempClone[i].offsetHeight;
+      }
+    }
+  } else bottom = parseFloat(window.getComputedStyle(self).paddingBottom) + self.clone[0][row1].offsetHeight / 2;
+
+  var temp = ModuleView_({
     tag: "div",
     "class": "move-hover-zone-topbot",
     props: {
       row1: row1,
-      row2: row2
+      row2: row2,
+      elementReal: elementReal
     },
     style: {
       width: self.offsetWidth + "px"
@@ -53915,12 +54139,330 @@ tableView.prototype.getBound2Row = function (row1, row2) {
       }
     }]
   });
+
+  return temp;
 };
 
 function tableViewMobile() {
   var header = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var cell,
+      row,
+      value,
+      check = [],
+      bonus,
+      style;
+  var dragVertical = false;
+  var dragHorizontal = false;
+  var checkSpan = [];
+
+  var headerTable = ModuleView_({
+    tag: "thead"
+  });
+
+  var bodyTable = ModuleView_({
+    tag: "tbody"
+  });
+
+  var result = ModuleView_({
+    tag: "table",
+    style: {
+      fontSize: "0.7857rem"
+    },
+    "class": "sortTable",
+    child: [headerTable, bodyTable]
+  });
+
+  result.headerTable = headerTable;
+  result.bodyTable = bodyTable;
+  Object.assign(result, tableView.prototype);
+  console.log(result);
+  result.check = check;
+  result.header = header;
+  result.data = data;
+  result.dragVertical = dragVertical;
+  result.dragHorizontal = dragHorizontal;
+  setTimeout(function () {
+    if (window.scrollEvent === undefined) {
+      window.xMousePos = 0;
+      window.yMousePos = 0;
+      window.lastScrolledLeft = 0;
+      window.lastScrolledTop = 0;
+      document.addEventListener("mousemove", function (event) {
+        window.scrollEvent = captureMousePosition(event);
+      });
+      var scrollParent = result;
+
+      while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
+        scrollParent = scrollParent.parentNode;
+      }
+
+      if (scrollParent === undefined) return;
+      scrollParent.addEventListener("scroll", function (event) {
+        if (window.lastScrolledLeft != scrollParent.scrollLeft) {
+          window.xMousePos -= window.lastScrolledLeft;
+          window.lastScrolledLeft = scrollParent.scrollLeft;
+          window.xMousePos += window.lastScrolledLeft;
+        }
+
+        if (lastScrolledTop != scrollParent.scrollTop) {
+          window.yMousePos -= window.lastScrolledTop;
+          window.lastScrolledTop = scrollParent.scrollTop;
+          window.yMousePos += window.lastScrolledTop;
+        }
+      });
+    }
+  }, 10);
+  row = ModuleView_({
+    tag: "tr"
+  });
+  headerTable.addChild(row);
+  result.clone = [];
+  var k = 0;
+  var toUpperCase = header.toUpperCase == true ? true : false;
+  var toLowerCase = header.toLowerCase == true ? true : false;
+  var functionClickSort;
+
+  for (var i = 0; i < header.length; i++) {
+    if (header[i].hidden === false || header[i].hidden === undefined) {
+      result.clone[k] = [];
+
+      if (header[i].value === undefined) {
+        if (_typeof(header[i]) === "object") value = "";else value = header[i];
+      } else value = header[i].value;
+
+      if (toUpperCase) value = value.toUpperCase();
+      if (toLowerCase) value = value.toLowerCase();
+      var functionClick = undefined;
+
+      switch (header[i].type) {
+        case "check":
+          check[i] = "check";
+          bonus = ModuleView_({
+            tag: "checkboxbutton",
+            "class": "pizo-checkbox",
+            on: {
+              click: function click(event) {
+                for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                  result.bodyTable.listCheckBox[j].checked = this.checked;
+                }
+              }
+            }
+          });
+          result.bodyTable.listCheckBox = [bonus];
+          break;
+
+        case "increase":
+          check[i] = "increase";
+          break;
+
+        case "dragzone":
+          if (dragVertical) check[i] = "dragzone";else {
+            check[i] = "hidden";
+            continue;
+          }
+          break;
+
+        case "detail":
+          check[i] = "detail";
+          var icon = "more";
+          if (header[i].icon !== undefined) icon = header[i].icon;
+          bonus = ModuleView_({
+            tag: "i",
+            "class": "material-icons",
+            style: {
+              fontSize: "1.4rem",
+              cursor: "pointer"
+            },
+            props: {
+              innerHTML: icon
+            }
+          });
+          break;
+      }
+
+      if (header[i].sort === true || header[i].sort === undefined) {
+        functionClickSort = function functionClickSort(event, me, index, result, dataIndex, row) {
+          var last_sort = document.getElementsByClassName("downgrade");
+          last_sort = last_sort[0];
+          me = me.parentNode;
+
+          if (last_sort !== me && last_sort !== undefined) {
+            last_sort.classList.remove("downgrade");
+          }
+
+          var last_sort = document.getElementsByClassName("upgrade");
+          last_sort = last_sort[0];
+
+          if (last_sort !== me && last_sort !== undefined) {
+            last_sort.classList.remove("upgrade");
+          }
+
+          if (!me.classList.contains("downgrade")) {
+            sortArray(result.data, index);
+            me.classList.add("downgrade");
+            if (me.classList.contains("upgrade")) me.classList.remove("upgrade");
+          } else {
+            sortArray(result.data, index, false);
+            me.classList.add("upgrade");
+            if (me.classList.contains("downgrade")) me.classList.remove("downgrade");
+          }
+
+          result.updateTable(header, result.data, dragHorizontal, dragVertical);
+        };
+      }
+
+      if (header[i].functionClick !== undefined) functionClick = header[i].functionClick;
+      style = {};
+      if (header[i].style !== undefined) style = header[i].style;
+      cell = ModuleView_({
+        tag: "th",
+        attr: {
+          role: 'columnheader'
+        },
+        style: style,
+        props: {
+          id: i
+        },
+        on: {
+          click: function (index, row, functionClick) {
+            return function (event) {
+              event.preventDefault();
+              if (functionClick !== undefined) functionClick(event, this, index, result, data[index], row);
+            };
+          }(i, row, functionClick),
+          mousedown: dragHorizontal ? function (index) {
+            return function (event) {
+              event.preventDefault();
+              var finalIndex;
+
+              for (var i = 0; i < result.clone.length; i++) {
+                if (result.clone[i][0].id == index) {
+                  finalIndex = i;
+                  break;
+                }
+              }
+
+              this.hold = false;
+              var dom = this;
+              this["default"] = event;
+              this.timeoutID = setTimeout(function () {
+                dom.hold = true;
+                moveElement(event, dom, result, finalIndex);
+              }, 200);
+            };
+          }(i) : undefined,
+          dragstart: dragHorizontal ? function () {
+            return false;
+          } : undefined,
+          mouseup: function mouseup() {
+            if (this.hold === false) {
+              this.hold = true; // this.click();
+
+              clearTimeout(this.timeoutID);
+            }
+          },
+          mousemove: dragHorizontal ? function (index) {
+            return function (event) {
+              if (this.hold === false) {
+                var finalIndex;
+
+                for (var i = 0; i < result.clone.length; i++) {
+                  if (result.clone[i][0].id == index) {
+                    finalIndex = i;
+                    break;
+                  }
+                }
+
+                this.hold = false;
+                var deltaX = this["default"].clientX - event.clientX,
+                    deltaY = this["default"].clientY - event.clientY;
+
+                if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
+                  this.hold = true;
+                  moveElement(event, this, result, finalIndex);
+                  clearTimeout(this.timeoutID);
+                }
+              }
+            };
+          }(i) : undefined
+        }
+      });
+
+      if (header[i].sort === true) {
+        cell.classList.add("has-sort");
+      }
+
+      if (header[i].element === undefined) {
+        cell.addChild(ModuleView_({
+          text: value
+        }));
+      } else {
+        cell.appendChild(data[i][j].element);
+      }
+
+      if (bonus !== undefined) {
+        cell.addChild(bonus);
+        bonus = undefined;
+      }
+
+      cell.addChild(ModuleView_({
+        tag: "div",
+        "class": "sort-container",
+        on: {
+          click: function (index, row, functionClickSort) {
+            return function (event) {
+              event.preventDefault();
+              if (functionClickSort !== undefined) functionClickSort(event, this, index, data[index], row, result);
+            };
+          }(i, row, functionClickSort)
+        },
+        child: [{
+          tag: "sort-up",
+          "class": ["arrow_up"]
+        }, {
+          tag: "sort-down",
+          "class": ["arrow_down"]
+        }]
+      }));
+      result.clone[k++].push(cell);
+      row.addChild(cell);
+    } else check[i] = "hidden";
+  }
+
+  result.getBodyTable(data);
+  result.checkSpan = checkSpan;
+  return result;
 }
+
+function sortArray(arr, index) {
+  var increase = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  if (increase) {
+    arr.sort(function (a, b) {
+      if (a.child !== undefined) sortArray(a.child, index, increase);
+      var valueA = a[index].value;
+      var valueB = b[index].value;
+      if (valueA === undefined) valueA = a[index];
+      if (valueB === undefined) valueB = b[index];
+      if (valueA > valueB) return -1;
+      if (valueA < valueB) return 1;
+      return 0;
+    });
+  } else {
+    arr.sort(function (a, b) {
+      if (a.child !== undefined) sortArray(a.child, index, increase);
+      var valueA = a[index].value;
+      var valueB = b[index].value;
+      if (valueA === undefined) valueA = a[index];
+      if (valueB === undefined) valueB = b[index];
+      if (valueA < valueB) return -1;
+      if (valueA > valueB) return 1;
+      return 0;
+    });
+  }
+}
+
 function getDate() {
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -54018,6 +54560,12 @@ NewRealty_NewRealty.prototype.getView = function () {
     child: [{
       "class": 'absol-single-page-header',
       child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Thêm dự án"
+        }
+      }, {
         tag: "div",
         "class": "pizo-list-project-button",
         child: [{
@@ -54062,31 +54610,25 @@ NewRealty_NewRealty.prototype.getView = function () {
     "class": ["pizo-list-project-main"],
     child: [// NewRealty.prototype.locationView(),
     NewRealty_NewRealty.prototype.descView()]
-  }));
-  setTimeout(function () {
-    selectElement("pizo-new-realty-convenient-content-area-size-zone", 1);
-  }, 500);
-  self.parent.parent.titlePage.innerHTML = "Thêm dự án";
+  })); // setTimeout(function(){selectElement("pizo-new-realty-convenient-content-area-size-zone",1)},500)
+
   return this.$view;
 };
 
 NewRealty_NewRealty.prototype.descView = function () {
-  var map = NewRealty_NewRealty.prototype.mapView();
-
   var temp = NewRealty_({
     tag: "div",
     "class": "pizo-new-realty-desc",
     child: [{
       tag: "div",
       "class": "pizo-new-realty-desc-content",
-      child: [NewRealty_NewRealty.prototype.descViewdetail(map), NewRealty_NewRealty.prototype.descViewImageThumnail() // NewRealty.prototype.descViewImagePreview()
-      ]
+      child: [NewRealty_NewRealty.prototype.descViewdetail(), NewRealty_NewRealty.prototype.descViewImageThumnail(), NewRealty_NewRealty.prototype.descViewImagePreview()]
     }, {
       tag: "div",
       "class": "pizo-new-realty-desc-infomation",
       child: [NewRealty_NewRealty.prototype.detructView(), {
         tag: "div",
-        "class": "pizo-new-realty-desc-infomation-cell",
+        "class": ["pizo-new-realty-desc-infomation-cell", "center-child"],
         child: [NewRealty_NewRealty.prototype.utilityView(), NewRealty_NewRealty.prototype.convenientView()]
       }, {
         tag: "div",
@@ -54180,8 +54722,22 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
         tag: "input",
         "class": "pizo-new-realty-desc-detail-1-row-input",
         on: {
-          click: function click() {
-            console.log("open locationView");
+          click: function click(event) {
+            this.blur();
+            var self = this;
+
+            var childRemove = NewRealty_({
+              tag: "modal",
+              on: {
+                click: function click(event) {}
+              },
+              child: [NewRealty_NewRealty.prototype.locationView(function (value) {
+                self.value = value.input.value;
+                childRemove.selfRemove();
+              })]
+            });
+
+            temp.appendChild(childRemove);
           }
         }
       }]
@@ -55124,22 +55680,43 @@ NewRealty_NewRealty.prototype.historyView = function () {
   return temp;
 };
 
-NewRealty_NewRealty.prototype.locationView = function () {
+NewRealty_NewRealty.prototype.locationView = function (functionDone) {
   var map = NewRealty_NewRealty.prototype.mapView();
+  var detailView = NewRealty_NewRealty.prototype.detailView(map);
+  map.activeDetail(detailView);
 
   var temp = NewRealty_({
     tag: "div",
     "class": "pizo-new-realty-location",
+    on: {
+      click: function click(event) {
+        event.preventDefault();
+      }
+    },
     child: [{
       tag: "div",
       "class": "pizo-new-realty-location-tab",
-      props: {
-        innerHTML: "Vị trí"
-      }
+      child: [{
+        tag: "span",
+        props: {
+          innerHTML: "Vị trí"
+        }
+      }, {
+        tag: "button",
+        "class": "pizo-new-realty-location-donebutton",
+        on: {
+          click: function click(event) {
+            functionDone(detailView, map);
+          }
+        },
+        props: {
+          innerHTML: "Xong"
+        }
+      }]
     }, {
       tag: "div",
       "class": "pizo-new-realty-location-content",
-      child: [NewRealty_NewRealty.prototype.detailView(map), map]
+      child: [detailView, map]
     }]
   });
 
@@ -55183,12 +55760,18 @@ NewRealty_NewRealty.prototype.detailView = function (map) {
 
   var _long = NewRealty_({
     tag: "input",
-    "class": "pizo-new-realty-location-detail-row-input-long"
+    "class": "pizo-new-realty-location-detail-row-input-long",
+    attr: {
+      disabled: ""
+    }
   });
 
   var lat = NewRealty_({
     tag: "input",
-    "class": "pizo-new-realty-location-detail-row-input-lat"
+    "class": "pizo-new-realty-location-detail-row-input-lat",
+    attr: {
+      disabled: ""
+    }
   });
 
   var temp = NewRealty_({
@@ -55324,12 +55907,13 @@ function activeAutocomplete(map) {
   var self = this;
   var autocomplete;
   var options = {
-    terms: ['street_number', 'route', 'locality', 'administrative_area_level_1', 'administrative_area_level_2', 'administrative_area_level_3'],
+    // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
     types: ['geocode'],
     componentRestrictions: {
       country: 'vn'
     }
   };
+  console.log(options);
   autocomplete = new google.maps.places.Autocomplete(self.input, options); // Avoid paying for data that you don't need by restricting the set of
   // place fields that are returned to just the address components.
 
@@ -55371,19 +55955,59 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
 
       switch (addressType) {
         case "street_number":
+          if (!self.number.items.includes({
+            text: val,
+            value: val
+          })) {
+            self.number.items = self.number.items.concat([{
+              text: val,
+              value: val
+            }]);
+          }
+
           self.number.value = val;
           break;
 
         case "route":
+          if (!self.street.items.includes({
+            text: val,
+            value: val
+          })) {
+            self.street.items = self.street.items.concat([{
+              text: val,
+              value: val
+            }]);
+          }
+
           self.street.value = val;
           textResult = textResult.replace(textResult.slice(0, textResult.indexOf(val + ", ") + val.length + 2), "");
           break;
 
         case "administrative_area_level_1":
+          if (!self.state.items.includes({
+            text: val,
+            value: val
+          })) {
+            self.state.items = self.state.items.concat([{
+              text: val,
+              value: val
+            }]);
+          }
+
           self.state.value = val;
           break;
 
         case "administrative_area_level_2":
+          if (!self.dictrict.items.includes({
+            text: val,
+            value: val
+          })) {
+            self.dictrict.items = self.dictrict.items.concat([{
+              text: val,
+              value: val
+            }]);
+          }
+
           self.dictrict.value = val;
           break;
 
@@ -55393,7 +56017,19 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
     }
   }
 
-  console.log(textResult.slice(0, textResult.indexOf(", ")));
+  var val = textResult.slice(0, textResult.indexOf(", "));
+
+  if (!self.ward.items.includes({
+    text: val,
+    value: val
+  })) {
+    self.ward.items = self.ward.items.concat([{
+      text: val,
+      value: val
+    }]);
+  }
+
+  self.ward.value = val;
 };
 
 activeAutocomplete.prototype.geolocate = function () {
@@ -55447,9 +56083,14 @@ function mapView() {
   });
 
   temp.activeMap = mapView.prototype.activeMap;
-  temp.map = temp.activeMap();
+  temp.activeDetail = mapView.prototype.activeDetail;
   return temp;
 }
+
+mapView.prototype.activeDetail = function (deltailView) {
+  this.deltailView = deltailView;
+  this.map = this.activeMap();
+};
 
 mapView.prototype.activeMap = function () {
   var center = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [10.822500, 106.629104];
@@ -55489,6 +56130,9 @@ mapView.prototype.addMoveMarker = function (position) {
     this.currentMarker = marker;
     self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
     self.smoothZoom(12, self.map.getZoom());
+    console.log(self);
+    self.deltailView["long"].value = position[0];
+    self.deltailView.lat.value = position[1];
     google.maps.event.addListener(self.map, "click", function (event) {
       var result = [event.latLng.lat(), event.latLng.lng()];
       self.transition(result).then(function (value) {
@@ -55502,8 +56146,10 @@ mapView.prototype.addMoveMarker = function (position) {
 };
 
 mapView.prototype.transition = function (result) {
+  var self = this;
   var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
-  console.log(position);
+  self.detailView["long"].value = position[0];
+  self.detailView.lat.value = position[1];
   var deltaLat = (result[0] - position[0]) / this.numDeltas;
   var deltaLng = (result[1] - position[1]) / this.numDeltas;
   return this.moveMarker(position, deltaLat, deltaLng);
@@ -55730,11 +56376,11 @@ listProject_listProject.prototype.getView = function () {
   });
   var tableViewX;
 
-  var functionClickMore = function functionClickMore(event, me, index, data, row) {
-    console.log(event, me, index, data, row);
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    console.log(event, me, index, parent, data, row);
     console.log(tableViewX); // tableViewX.dropRow(index)
 
-    tableViewX.insertRow(tableViewX.data[0]);
+    parent.updateRow(tableViewX.data[0], index);
   };
 
   var test = listProject_({
@@ -55744,10 +56390,10 @@ listProject_listProject.prototype.getView = function () {
     }
   });
 
-  var arrChild = [[{}, {}, "11", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 24", {
+  var arrChild = [[{}, {}, "concac1", 3, "Xô Viết Nghệ Tĩnh", "P. 24", {
     value: "Q. Bình Thạnh",
     colspan: 2
-  }, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "12", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "13", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
+  }, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "concac2", 1, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "concac3", 2, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
   arrChild.index = 3;
   var child = [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""];
   child.child = arrChild;
@@ -55791,8 +56437,9 @@ listProject_listProject.prototype.getView = function () {
     functionClickAll: functionClickMore,
     icon: ""
   }];
-  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], child, [{}, {}, "15", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "16", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "17", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "18", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 23", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "1", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 1", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "2", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "3", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "4", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "5", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "6", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "7", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "8", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "9", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
+  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], child, [{}, {}, 5, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "16", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "17", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "18", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 23", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "1", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 1", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "2", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "3", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "4", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "5", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "6", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "7", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "8", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "9", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
   tableViewX = tableView(header, dataTable, true, true);
+  tableViewX.addInputSearch(listProject_$('.pizo-list-project-page-allinput-container input', this.$view));
   this.searchControl = this.searchControlContent();
   this.$view.addChild(listProject_({
     tag: "div",
@@ -55804,7 +56451,6 @@ listProject_listProject.prototype.getView = function () {
     }]
   }));
   console.log(self.parent);
-  self.parent.titlePage.innerHTML = "";
   return this.$view;
 };
 
@@ -56207,13 +56853,6 @@ App_App.prototype.getView = function () {
       height: '100%'
     }
   });
-  self.titlePage = App_({
-    tag: "span",
-    "class": "pizo-body-title-left",
-    props: {
-      innerHTML: ""
-    }
-  });
   this.$view = App_({
     tag: "div",
     "class": "pizo-app",
@@ -56324,7 +56963,7 @@ App_App.prototype.getView = function () {
       child: [{
         tag: "div",
         "class": "pizo-body-title",
-        child: [self.titlePage, {
+        child: [{
           tag: "span",
           "class": "pizo-body-title-right",
           child: [{

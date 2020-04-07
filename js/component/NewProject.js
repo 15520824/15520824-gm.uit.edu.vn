@@ -270,7 +270,9 @@ NewProject.prototype.descViewdetail = function()
                         on:{
                             click:function()
                             {
-                                console.log("open locationView")
+                               document.body.appendChild(_({
+                                   tag:"modal"
+                               }))
                             }
                         }
                     }
