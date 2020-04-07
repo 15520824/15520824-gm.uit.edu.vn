@@ -31542,7 +31542,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(4)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n    width: calc(100% - 4.8333rem);\r\n    margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n    margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n    margin-left: 2.7586rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-desc-detail-row-cell-label {\r\n    font-size: 1rem;\r\n    line-height: 2.1429rem;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label{\r\n  font-size: 1rem;\r\n  line-height: 2.1429rem;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  margin-left: 2.4483rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    margin-left: 1.8966rem;\r\n    width: calc(100% - 5.8333rem);\r\n  }\r\n\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r\n    width: 80vw;\r\n    background-color: white;\r\n  }\r\n\r\n  \r\n.absol-modal{\r\n  background-color: rgba(0,0,0,0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-location-tab {\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-tab>span{\r\n  padding: 0.7143rem;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-donebutton{\r\n  display: inline-block;\r\n    width: 6rem;\r\n    margin: 5px;\r\n}\r\n\r\n.pizo-new-realty-location-detail {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-content {\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row {\r\n  margin-bottom: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  margin-right: -1.0714rem;\r\n  margin-left: -1.0714rem;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  max-width: calc(33.333333% - 4.2857rem);\r\n  text-align: right;\r\n  font-size: 1rem;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  padding-left: 2.1429rem;\r\n  padding-right: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 66.666667%;\r\n  flex: 0 0 66.666667%;\r\n  max-width: 66.666667%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 calc(66.666667% - 1rem);\r\n  flex: 0 0 calc(66.666667% - 1rem);\r\n  max-width: calc(66.666667% - 1rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-map-view {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-map-view-content {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-long {\r\n  display: inline-block;\r\n  width: calc(50% - 2.0714rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-lat {\r\n  display: inline-block;\r\n  margin-left: 2.1429rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(50% - 2.0714rem);\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail {\r\n  padding: 0;\r\n  height: 21.7143rem;\r\n  margin-top: 0;\r\n  margin-bottom: 0;\r\n  overflow: hidden;\r\n  position: relative;\r\n  max-width: 100%;\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail img {\r\n  width: 100%;\r\n  height: auto;\r\n  left: 50%;\r\n  top: 50%;\r\n  position: absolute;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 30%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(30% - 30px);\r\n  min-width: 350px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child{\r\n  width: calc(40% - 30px);\r\n  min-width: 477px;\r\n}\r\n\r\n.pizo-new-realty-utility {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-convenient {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-juridical {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-juridical-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-history {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-history-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  display: inline-block;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4375rem;\r\n  text-align: right;\r\n  vertical-align: top;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n  line-height: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row .pizo-new-realty-dectruct-content-area-size-zone{\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n/* \r\n\r\n.pizo-new-realty-dectruct-content-area-1 {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2 {\r\n  margin-left: 2.3rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n.pizo-new-realty-dectruct-content-area-width {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height {\r\n  margin-left: 1.1333rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n .pizo-new-realty-dectruct-content-area-bedroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen {\r\n  margin-left: 3.4333rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bathroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage {\r\n  margin-left: 2.1667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-basement {\r\n  margin-left: 1rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony {\r\n    margin-left: 1.2667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-access {\r\n    margin-left: calc(50% - 4.9667rem);\r\n    width: calc(50% - 22.1667rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-year {\r\n  width: calc(100% - 28.2143rem);\r\n  min-width: 7.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-pool {\r\n    margin-left: 2.8718rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-supermarket {\r\n    margin-left: 2.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market {\r\n    margin-left: 3.8462rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-hospital {\r\n    margin-left: 1.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park {\r\n    margin-left: 1.3846rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-preschool {\r\n    margin-left: 1.7rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool {\r\n    margin-left: 1.4667rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n */\r\n\r\n .pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right>span{\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-button-element{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2em;\r\n  font-size: 1em;\r\n  overflow: hidden;\r\n  line-height: 2em;\r\n  box-sizing: content-box;\r\n  height: 2em;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-project-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button-element >span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2em;\r\n  box-sizing: border-box;\r\n  line-height: 2em;\r\n  text-align: center;\r\n  font-size: 1em;\r\n  text-align: center;\r\n  margin-left: 0.7em;\r\n  margin-right: 0.7em;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n    width: calc(100% - 4.8333rem);\r\n    margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n    margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n    margin-left: 2.7586rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-desc-detail-row-cell-label {\r\n    font-size: 1rem;\r\n    line-height: 2.1429rem;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label{\r\n  font-size: 1rem;\r\n  line-height: 2.1429rem;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  margin-left: 2.4483rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    margin-left: 1.8966rem;\r\n    width: calc(100% - 5.8333rem);\r\n  }\r\n\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r\n    width: 80vw;\r\n    background-color: white;\r\n  }\r\n\r\n  \r\n.absol-modal{\r\n  background-color: rgba(0,0,0,0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-location-tab {\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-tab>span{\r\n  padding: 0.7143rem;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-donebutton{\r\n  display: inline-block;\r\n    width: 6rem;\r\n    margin: 5px;\r\n}\r\n\r\n.pizo-new-realty-location-detail {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-content {\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row {\r\n  margin-bottom: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  margin-right: -1.0714rem;\r\n  margin-left: -1.0714rem;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  max-width: calc(33.333333% - 4.2857rem);\r\n  text-align: right;\r\n  font-size: 1rem;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  padding-left: 2.1429rem;\r\n  padding-right: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 66.666667%;\r\n  flex: 0 0 66.666667%;\r\n  max-width: 66.666667%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 calc(66.666667% - 1rem);\r\n  flex: 0 0 calc(66.666667% - 1rem);\r\n  max-width: calc(66.666667% - 1rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-map-view {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-map-view-content {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-long {\r\n  display: inline-block;\r\n  width: calc(50% - 2.0714rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-lat {\r\n  display: inline-block;\r\n  margin-left: 2.1429rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(50% - 2.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 30%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(30% - 30px);\r\n  min-width: 350px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child{\r\n  width: calc(40% - 30px);\r\n  min-width: 477px;\r\n}\r\n\r\n.pizo-new-realty-utility {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-convenient {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-juridical {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-juridical-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-history {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-history-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  display: inline-block;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4375rem;\r\n  text-align: right;\r\n  vertical-align: top;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n  line-height: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row .pizo-new-realty-dectruct-content-area-size-zone{\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n/* \r\n\r\n.pizo-new-realty-dectruct-content-area-1 {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2 {\r\n  margin-left: 2.3rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n.pizo-new-realty-dectruct-content-area-width {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height {\r\n  margin-left: 1.1333rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n .pizo-new-realty-dectruct-content-area-bedroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen {\r\n  margin-left: 3.4333rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bathroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage {\r\n  margin-left: 2.1667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-basement {\r\n  margin-left: 1rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony {\r\n    margin-left: 1.2667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-access {\r\n    margin-left: calc(50% - 4.9667rem);\r\n    width: calc(50% - 22.1667rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-year {\r\n  width: calc(100% - 28.2143rem);\r\n  min-width: 7.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-pool {\r\n    margin-left: 2.8718rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-supermarket {\r\n    margin-left: 2.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market {\r\n    margin-left: 3.8462rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-hospital {\r\n    margin-left: 1.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park {\r\n    margin-left: 1.3846rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-preschool {\r\n    margin-left: 1.7rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool {\r\n    margin-left: 1.4667rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n */\r\n\r\n .pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right>span{\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-button-element{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2em;\r\n  font-size: 1em;\r\n  overflow: hidden;\r\n  line-height: 2em;\r\n  box-sizing: content-box;\r\n  height: 2em;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-project-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button-element >span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2em;\r\n  box-sizing: border-box;\r\n  line-height: 2em;\r\n  text-align: center;\r\n  font-size: 1em;\r\n  text-align: center;\r\n  margin-left: 0.7em;\r\n  margin-right: 0.7em;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}", ""]);
 
 
 
@@ -31580,7 +31580,7 @@ exports = module.exports = __webpack_require__(4)(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Varela+Round);", ""]);
 
 // Module
-exports.push([module.i, "/* html, body { background: #333 url(\"https://codepen.io/images/classy_fabric.png\"); } */\r\n\r\n.slides {\r\n    padding: 0;\r\n    width: 50%;\r\n    height: 29.0714rem;\r\n    display: block;\r\n    margin-left: 2.1429rem;\r\n    margin-top: 0;\r\n    margin-bottom: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.slides * {\r\n    user-select: none;\r\n    -ms-user-select: none;\r\n    -moz-user-select: none;\r\n    -khtml-user-select: none;\r\n    -webkit-user-select: none;\r\n    -webkit-touch-callout: none;\r\n}\r\n\r\n.slides input { display: none; }\r\n\r\n.slide-container { display: block; }\r\n\r\n.slide {\r\n    top: 0;\r\n    opacity: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    display: block;\r\n    position: absolute;\r\n    text-align: center;\r\n    transform: scale(0);\r\n\r\n    transition: all .7s ease-in-out;\r\n}\r\n\r\n.slide img {\r\n    width: auto;\r\n    height: 100%;\r\n    position: absolute;\r\n    transform: translate(-50%,0);\r\n}\r\n\r\n.nav label {\r\n    width: 14.2857rem;\r\n    height: 100%;\r\n    display: none;\r\n    position: absolute;\r\n\r\n\topacity: 0;\r\n    z-index: 9;\r\n    cursor: pointer;\r\n\r\n    transition: opacity .2s;\r\n\r\n    color: #FFF;\r\n    font-size: 156pt;\r\n    text-align: center;\r\n    line-height: 27.1429rem;\r\n    font-family: \"Varela Round\", sans-serif;\r\n    background-color: rgba(255, 255, 255, .3);\r\n    text-shadow: 0rem 0rem 1.0714rem rgb(119, 119, 119);\r\n}\r\n\r\n.slide:hover + .nav label { opacity: 0.5; }\r\n\r\n.nav label:hover { opacity: 1; }\r\n\r\n.nav .next { right: 0; }\r\n\r\ninput:checked + .slide-container  .slide {\r\n    opacity: 1;\r\n\r\n    transform: scale(1);\r\n\r\n    transition: opacity 1s ease-in-out;\r\n}\r\n\r\ninput:checked + .slide-container .nav label { display: block; }\r\n\r\n.nav-dots {\r\n\twidth: 100%;\r\n\tbottom: 0.6429rem;\r\n\theight: 0.7857rem;\r\n\tdisplay: block;\r\n\tposition: absolute;\r\n\ttext-align: center;\r\n}\r\n\r\n.nav-dots .nav-dot {\r\n\ttop: -0.3571rem;\r\n\twidth: 0.7857rem;\r\n\theight: 0.7857rem;\r\n\tmargin: 0 0.2857rem;\r\n\tposition: relative;\r\n\tborder-radius: 100%;\r\n\tdisplay: inline-block;\r\n\tbackground-color: rgba(0, 0, 0, 0.6);\r\n}\r\n\r\n.nav-dots .nav-dot:hover {\r\n\tcursor: pointer;\r\n\tbackground-color: rgba(0, 0, 0, 0.8);\r\n}\r\n\r\ninput#img-1:checked ~ .nav-dots label#img-dot-1,\r\ninput#img-2:checked ~ .nav-dots label#img-dot-2,\r\ninput#img-3:checked ~ .nav-dots label#img-dot-3,\r\ninput#img-4:checked ~ .nav-dots label#img-dot-4,\r\ninput#img-5:checked ~ .nav-dots label#img-dot-5,\r\ninput#img-6:checked ~ .nav-dots label#img-dot-6 {\r\n\tbackground: rgba(0, 0, 0, 0.8);\r\n}", ""]);
+exports.push([module.i, "/* html, body { background: #333 url(\"https://codepen.io/images/classy_fabric.png\"); } */\r\n\r\n.slides {\r\n    padding: 0;\r\n    width: 80vw;\r\n    height: 90vh;\r\n    display: block;\r\n    margin-top: 0;\r\n    margin-bottom: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.slides * {\r\n    user-select: none;\r\n    -ms-user-select: none;\r\n    -moz-user-select: none;\r\n    -khtml-user-select: none;\r\n    -webkit-user-select: none;\r\n    -webkit-touch-callout: none;\r\n}\r\n\r\n.slides input { display: none; }\r\n\r\n.slide-container { display: block; }\r\n\r\n.slide {\r\n    top: 0;\r\n    opacity: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    display: block;\r\n    position: absolute;\r\n    text-align: center;\r\n    transform: scale(0);\r\n\r\n    transition: all .7s ease-in-out;\r\n}\r\n\r\n.slide img {\r\n    width: auto;\r\n    height: 100%;\r\n    position: absolute;\r\n    transform: translate(-50%,0);\r\n}\r\n\r\n.nav label {\r\n    width: 14.2857rem;\r\n    height: 100%;\r\n    display: none;\r\n    position: absolute;\r\n\r\n\topacity: 0;\r\n    z-index: 9;\r\n    cursor: pointer;\r\n\r\n    transition: opacity .2s;\r\n\r\n    color: #FFF;\r\n    font-size: 15rem;\r\n\r\n    justify-content: center;\r\n    align-items: center;\r\n\r\n    font-family: \"Varela Round\", sans-serif;\r\n    background-color: rgba(255, 255, 255, .3);\r\n    text-shadow: 0rem 0rem 1.0714rem rgb(119, 119, 119);\r\n}\r\n\r\n.slide:hover + .nav label { opacity: 0.5; }\r\n\r\n.nav label:hover { opacity: 1; }\r\n\r\n.nav .next { right: 0; }\r\n\r\n.nav .next>span{\r\n    transform: translateY(1.25rem);\r\n}\r\n\r\ninput:checked + .slide-container  .slide {\r\n    opacity: 1;\r\n\r\n    transform: scale(1);\r\n\r\n    transition: opacity 1s ease-in-out;\r\n}\r\n\r\ninput:checked + .slide-container .nav label { display: flex; }\r\n\r\n.nav-dots {\r\n\twidth: 100%;\r\n\tbottom: 0.6429rem;\r\n\theight: 0.7857rem;\r\n\tdisplay: block;\r\n\tposition: absolute;\r\n\ttext-align: center;\r\n}\r\n\r\n.nav-dots .nav-dot {\r\n\ttop: -0.3571rem;\r\n\twidth: 0.7857rem;\r\n\theight: 0.7857rem;\r\n\tmargin: 0 0.2857rem;\r\n\tposition: relative;\r\n\tborder-radius: 100%;\r\n\tdisplay: inline-block;\r\n\tbackground-color: rgba(0, 0, 0, 0.6);\r\n}\r\n\r\n.nav-dots .nav-dot:hover {\r\n\tcursor: pointer;\r\n\tbackground-color: rgba(0, 0, 0, 0.8);\r\n}\r\n\r\ninput#img-1:checked ~ .nav-dots label#img-dot-1,\r\ninput#img-2:checked ~ .nav-dots label#img-dot-2,\r\ninput#img-3:checked ~ .nav-dots label#img-dot-3,\r\ninput#img-4:checked ~ .nav-dots label#img-dot-4,\r\ninput#img-5:checked ~ .nav-dots label#img-dot-5,\r\ninput#img-6:checked ~ .nav-dots label#img-dot-6 {\r\n\tbackground: rgba(0, 0, 0, 0.8);\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail-main{\r\n    width: 50%;\r\n    height: 100%;\r\n    display: inline-block;\r\n    top: 0;\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail-second{\r\n    display: inline-block;\r\n    width: 50%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail img{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail-main img{\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-relty-desc-content-thumnail-second img{\r\n    height: 100%;\r\n}", ""]);
 
 
 
@@ -52799,6 +52799,7 @@ function moveElement(event, me, result, index) {
 
 function moveElementFix(event, me, result, index) {
   var trigger;
+  console.log(result);
   var clone = result.cloneRow(index);
   var bg = result.backGroundFix(index);
   var scrollParent = me;
@@ -53259,7 +53260,8 @@ function tableView() {
 
 tableView.prototype.addInputSearch = function (input) {
   var self = this;
-  input.addEventListener("input", function (event) {
+
+  input.onchange = function (event) {
     for (var i = 0; i < self.bodyTable.childNodes.length; i++) {
       if (checkValueIs(self.bodyTable.childNodes[i].data, input.value)) {
         if (!self.bodyTable.childNodes[i].classList.contains("parent")) self.bodyTable.childNodes[i].classList.add("parent");
@@ -53274,7 +53276,9 @@ tableView.prototype.addInputSearch = function (input) {
         if (!self.bodyTable.childNodes[i].classList.contains("disPLayNone")) self.bodyTable.childNodes[i].classList.add("disPLayNone");
       }
     }
-  });
+  };
+
+  input.addEventListener("input", input.onchange);
   self.inputElement = input;
 };
 
@@ -53284,7 +53288,7 @@ function checkValueIs(data, text) {
   for (var i = 0; i < data.length; i++) {
     value = "";
     if (data[i].value !== undefined) value = data[i].value;else value = data[i];
-    if (value.toString().indexOf(text) !== -1) return true;
+    if (value.toString().toLowerCase().indexOf(text.toLowerCase()) !== -1) return true;
   }
 
   return false;
@@ -53660,6 +53664,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 
       cell.clone = this.clone;
       this.clone[j][i + 1 - delta[j]] = cell;
+      cell.parentTree = this;
       row.addChild(cell);
     }
 
@@ -53668,7 +53673,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 
   this.checkSpan = checkSpan;
   this.data = data;
-  this.inputElement.dispatchEvent(new Event("input"));
+  if (this.inputElement !== undefined) this.inputElement.onchange();
 };
 
 tableView.prototype.insertRow = function (data) {
@@ -53744,6 +53749,7 @@ tableView.prototype.updateRow = function (data, index) {
 
   if (result.data.child !== undefined) result.data.child[index] = data;else result.data[index] = data;
   row.checkChild();
+  if (this.inputElement !== undefined) this.inputElement.onchange();
 };
 
 tableView.prototype.dropRow = function (index) {
@@ -54616,13 +54622,27 @@ NewRealty_NewRealty.prototype.getView = function () {
 };
 
 NewRealty_NewRealty.prototype.descView = function () {
+  var dataImage = [{
+    src: "assets/images/1.jfif"
+  }, {
+    src: "assets/images/2.jfif"
+  }, {
+    src: "assets/images/3.jfif"
+  }, {
+    src: "assets/images/4.jfif"
+  }, {
+    src: "assets/images/5.jfif"
+  }, {
+    src: "assets/images/6.jfif"
+  }];
+
   var temp = NewRealty_({
     tag: "div",
     "class": "pizo-new-realty-desc",
     child: [{
       tag: "div",
       "class": "pizo-new-realty-desc-content",
-      child: [NewRealty_NewRealty.prototype.descViewdetail(), NewRealty_NewRealty.prototype.descViewImageThumnail(), NewRealty_NewRealty.prototype.descViewImagePreview()]
+      child: [NewRealty_NewRealty.prototype.descViewdetail(), NewRealty_NewRealty.prototype.descViewImageThumnail(dataImage)]
     }, {
       tag: "div",
       "class": "pizo-new-realty-desc-infomation",
@@ -54641,16 +54661,41 @@ NewRealty_NewRealty.prototype.descView = function () {
   return temp;
 };
 
-NewRealty_NewRealty.prototype.descViewImageThumnail = function () {
+NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage) {
+  for (var i = 0; i < dataImage.length && i < 5; i++) {}
+
   var temp = NewRealty_({
     tag: "div",
     "class": ["pizo-new-relty-desc-content-thumnail", "pizo-new-realty-dectruct-content-area-size-zone"],
     child: [{
-      tag: "img",
-      props: {
-        src: "assets/images/thumnail.png"
+      tag: "div",
+      "class": "pizo-new-relty-desc-content-thumnail-main",
+      child: [{
+        tag: "img",
+        props: {
+          src: "assets/images/thumnail.png"
+        }
+      }]
+    }, {
+      tag: "div",
+      "class": "pizo-new-relty-desc-content-thumnail-second",
+      child: [{
+        tag: "img",
+        props: {
+          src: "assets/images/thumnail.png"
+        }
+      }, {
+        tag: "img",
+        props: {
+          src: "assets/images/thumnail.png"
+        }
+      }]
+    }],
+    on: {
+      click: function click(event) {
+        document.body.appendChild(NewRealty_NewRealty.prototype.descViewImagePreview(dataImage));
       }
-    }]
+    }
   });
 
   return temp;
@@ -54769,266 +54814,80 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
 };
 
 NewRealty_NewRealty.prototype.descViewImagePreview = function () {
-  var temp = NewRealty_({
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  var sildes = NewRealty_({
     tag: "ul",
     "class": "slides",
-    child: [{
-      tag: "input",
-      attr: {
-        type: "radio",
-        name: "radio-btn",
-        checked: ""
-      },
-      props: {
-        id: "img-1"
-      }
-    }, {
-      tag: "li",
-      "class": "slide-container",
-      child: [{
-        tag: "div",
-        "class": "slide",
-        child: [{
-          tag: "img",
-          props: {
-            src: "assets/images/1.jfif"
-          }
-        }]
-      }, {
-        tag: "div",
-        "class": "nav",
-        child: [{
-          tag: "label",
-          "class": "prev",
-          attr: {
-            "for": "img-6"
-          },
-          props: {
-            innerHTML: "&#x2039;"
-          }
-        }, {
-          tag: "label",
-          "class": "next",
-          attr: {
-            "for": "img-2"
-          },
-          props: {
-            innerHTML: "&#x203a;"
-          }
-        }]
-      }]
-    }, {
-      tag: "input",
-      attr: {
-        type: "radio",
-        name: "radio-btn",
-        id: "img-2"
-      }
-    }, {
-      tag: "li",
-      "class": "slide-container",
-      child: [{
-        tag: "div",
-        "class": "slide",
-        child: [{
-          tag: "img",
-          props: {
-            src: "assets/images/2.jfif"
-          }
-        }]
-      }, {
-        tag: "div",
-        "class": "nav",
-        child: [{
-          tag: "label",
-          "class": "prev",
-          attr: {
-            "for": "img-1"
-          },
-          props: {
-            innerHTML: "&#x2039;"
-          }
-        }, {
-          tag: "label",
-          "class": "next",
-          attr: {
-            "for": "img-3"
-          },
-          props: {
-            innerHTML: "&#x203a;"
-          }
-        }]
-      }]
-    }, {
-      tag: "input",
-      attr: {
-        type: "radio",
-        name: "radio-btn",
-        id: "img-3"
-      }
-    }, {
-      tag: "li",
-      "class": "slide-container",
-      child: [{
-        tag: "div",
-        "class": "slide",
-        child: [{
-          tag: "img",
-          props: {
-            src: "assets/images/3.jfif"
-          }
-        }]
-      }, {
-        tag: "div",
-        "class": "nav",
-        child: [{
-          tag: "label",
-          "class": "prev",
-          attr: {
-            "for": "img-2"
-          },
-          props: {
-            innerHTML: "&#x2039;"
-          }
-        }, {
-          tag: "label",
-          "class": "next",
-          attr: {
-            "for": "img-4"
-          },
-          props: {
-            innerHTML: "&#x203a;"
-          }
-        }]
-      }]
-    }, {
-      tag: "input",
-      attr: {
-        type: "radio",
-        name: "radio-btn",
-        id: "img-4"
-      }
-    }, {
-      tag: "li",
-      "class": "slide-container",
-      child: [{
-        tag: "div",
-        "class": "slide",
-        child: [{
-          tag: "img",
-          props: {
-            src: "assets/images/4.jfif"
-          }
-        }]
-      }, {
-        tag: "div",
-        "class": "nav",
-        child: [{
-          tag: "label",
-          "class": "prev",
-          attr: {
-            "for": "img-3"
-          },
-          props: {
-            innerHTML: "&#x2039;"
-          }
-        }, {
-          tag: "label",
-          "class": "next",
-          attr: {
-            "for": "img-5"
-          },
-          props: {
-            innerHTML: "&#x203a;"
-          }
-        }]
-      }]
-    }, {
-      tag: "input",
-      attr: {
-        type: "radio",
-        name: "radio-btn",
-        id: "img-5"
-      }
-    }, {
-      tag: "li",
-      "class": "slide-container",
-      child: [{
-        tag: "div",
-        "class": "slide",
-        child: [{
-          tag: "img",
-          props: {
-            src: "assets/images/5.jfif"
-          }
-        }]
-      }, {
-        tag: "div",
-        "class": "nav",
-        child: [{
-          tag: "label",
-          "class": "prev",
-          attr: {
-            "for": "img-4"
-          },
-          props: {
-            innerHTML: "&#x2039;"
-          }
-        }, {
-          tag: "label",
-          "class": "next",
-          attr: {
-            "for": "img-6"
-          },
-          props: {
-            innerHTML: "&#x203a;"
-          }
-        }]
-      }]
-    }, {
-      tag: "input",
-      attr: {
-        type: "radio",
-        name: "radio-btn",
-        id: "img-6"
-      }
-    }, {
-      tag: "li",
-      "class": "slide-container",
-      child: [{
-        tag: "div",
-        "class": "slide",
-        child: [{
-          tag: "img",
-          props: {
-            src: "assets/images/6.jfif"
-          }
-        }]
-      }, {
-        tag: "div",
-        "class": "nav",
-        child: [{
-          tag: "label",
-          "class": "prev",
-          attr: {
-            "for": "img-5"
-          },
-          props: {
-            innerHTML: "&#x2039;"
-          }
-        }, {
-          tag: "label",
-          "class": "next",
-          attr: {
-            "for": "img-1"
-          },
-          props: {
-            innerHTML: "&#x203a;"
-          }
-        }]
-      }]
-    }]
+    child: []
   });
+
+  var temp = NewRealty_({
+    tag: "modal",
+    child: [sildes]
+  });
+
+  var prev = data.length - 1,
+      next = 1;
+
+  for (var i = 0; i < data.length; i++) {
+    var elementTemp = NewRealty_({
+      tag: "input",
+      attr: {
+        type: "radio",
+        name: "radio-btn",
+        id: "img-" + i
+      }
+    });
+
+    if (index === i) elementTemp.setAttribute("checked", "");
+    sildes.addChild(elementTemp);
+    sildes.addChild(NewRealty_({
+      tag: "li",
+      "class": "slide-container",
+      child: [{
+        tag: "div",
+        "class": "slide",
+        child: [{
+          tag: "img",
+          props: {
+            src: data[i].src
+          }
+        }]
+      }, {
+        tag: "div",
+        "class": "nav",
+        child: [{
+          tag: "label",
+          "class": "prev",
+          attr: {
+            "for": "img-" + prev++
+          },
+          child: [{
+            tag: "span",
+            props: {
+              innerHTML: "&#x2039;"
+            }
+          }]
+        }, {
+          tag: "label",
+          "class": "next",
+          attr: {
+            "for": "img-" + next++
+          },
+          child: [{
+            tag: "span",
+            props: {
+              innerHTML: "&#x203a;"
+            }
+          }]
+        }]
+      }]
+    }));
+    if (prev === data.length) prev = 0;
+    if (next === data.length) next = 0;
+  }
 
   return temp;
 };
@@ -55944,7 +55803,13 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
     administrative_area_level_2: 'long_name',
     country: 'long_name',
     postal_code: 'short_name'
-  }; // Get each component of the address from the place details,
+  };
+  console.log(place);
+  self.number.value = "";
+  self.street.value = "";
+  self.state.value = "";
+  self.dictrict.value = "";
+  self.ward.value = ""; // Get each component of the address from the place details,
   // and then fill-in the corresponding field on the form.
 
   for (var i = 0; i < place.address_components.length; i++) {
@@ -55955,7 +55820,7 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
 
       switch (addressType) {
         case "street_number":
-          if (!self.number.items.includes({
+          if (!self.number.items.getContainsChild({
             text: val,
             value: val
           })) {
@@ -55969,7 +55834,7 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
           break;
 
         case "route":
-          if (!self.street.items.includes({
+          if (!self.street.items.getContainsChild({
             text: val,
             value: val
           })) {
@@ -55984,7 +55849,7 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
           break;
 
         case "administrative_area_level_1":
-          if (!self.state.items.includes({
+          if (!self.state.items.getContainsChild({
             text: val,
             value: val
           })) {
@@ -55998,7 +55863,7 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
           break;
 
         case "administrative_area_level_2":
-          if (!self.dictrict.items.includes({
+          if (!self.dictrict.items.getContainsChild({
             text: val,
             value: val
           })) {
@@ -56019,7 +55884,7 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
 
   var val = textResult.slice(0, textResult.indexOf(", "));
 
-  if (!self.ward.items.includes({
+  if (!self.ward.items.getContainsChild({
     text: val,
     value: val
   })) {
@@ -56030,6 +55895,14 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
   }
 
   self.ward.value = val;
+};
+
+Array.prototype.getContainsChild = function (value) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i].value == value.value) return true;
+  }
+
+  return false;
 };
 
 activeAutocomplete.prototype.geolocate = function () {
@@ -56087,8 +55960,8 @@ function mapView() {
   return temp;
 }
 
-mapView.prototype.activeDetail = function (deltailView) {
-  this.deltailView = deltailView;
+mapView.prototype.activeDetail = function (detailView) {
+  this.detailView = detailView;
   this.map = this.activeMap();
 };
 
@@ -56130,9 +56003,8 @@ mapView.prototype.addMoveMarker = function (position) {
     this.currentMarker = marker;
     self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
     self.smoothZoom(12, self.map.getZoom());
-    console.log(self);
-    self.deltailView["long"].value = position[0];
-    self.deltailView.lat.value = position[1];
+    self.detailView["long"].value = position[0];
+    self.detailView.lat.value = position[1];
     google.maps.event.addListener(self.map, "click", function (event) {
       var result = [event.latLng.lat(), event.latLng.lng()];
       self.transition(result).then(function (value) {
@@ -56148,6 +56020,7 @@ mapView.prototype.addMoveMarker = function (position) {
 mapView.prototype.transition = function (result) {
   var self = this;
   var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
+  console.log(self, self.detailView);
   self.detailView["long"].value = position[0];
   self.detailView.lat.value = position[1];
   var deltaLat = (result[0] - position[0]) / this.numDeltas;

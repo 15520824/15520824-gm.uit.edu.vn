@@ -4,10 +4,9 @@
 
 .slides {
     padding: 0;
-    width: 50%;
-    height: 29.0714rem;
+    width: 80vw;
+    height: 90vh;
     display: block;
-    margin-left: 2.1429rem;
     margin-top: 0;
     margin-bottom: 0;
     overflow: hidden;
@@ -60,9 +59,11 @@
     transition: opacity .2s;
 
     color: #FFF;
-    font-size: 156pt;
-    text-align: center;
-    line-height: 27.1429rem;
+    font-size: 15rem;
+
+    justify-content: center;
+    align-items: center;
+
     font-family: "Varela Round", sans-serif;
     background-color: rgba(255, 255, 255, .3);
     text-shadow: 0rem 0rem 1.0714rem rgb(119, 119, 119);
@@ -74,6 +75,10 @@
 
 .nav .next { right: 0; }
 
+.nav .next>span{
+    transform: translateY(1.25rem);
+}
+
 input:checked + .slide-container  .slide {
     opacity: 1;
 
@@ -82,7 +87,7 @@ input:checked + .slide-container  .slide {
     transition: opacity 1s ease-in-out;
 }
 
-input:checked + .slide-container .nav label { display: block; }
+input:checked + .slide-container .nav label { display: flex; }
 
 .nav-dots {
 	width: 100%;
@@ -116,4 +121,29 @@ input#img-4:checked ~ .nav-dots label#img-dot-4,
 input#img-5:checked ~ .nav-dots label#img-dot-5,
 input#img-6:checked ~ .nav-dots label#img-dot-6 {
 	background: rgba(0, 0, 0, 0.8);
+}
+
+.pizo-new-relty-desc-content-thumnail-main{
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+    top: 0;
+}
+
+.pizo-new-relty-desc-content-thumnail-second{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+}
+
+.pizo-new-relty-desc-content-thumnail img{
+    width: 100%;
+}
+
+.pizo-new-relty-desc-content-thumnail-main img{
+    height: 100%;
+}
+
+.pizo-new-relty-desc-content-thumnail-second img{
+    height: 100%;
 }

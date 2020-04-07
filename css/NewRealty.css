@@ -204,25 +204,6 @@
   width: calc(50% - 2.0714rem);
 }
 
-.pizo-new-relty-desc-content-thumnail {
-  padding: 0;
-  height: 21.7143rem;
-  margin-top: 0;
-  margin-bottom: 0;
-  overflow: hidden;
-  position: relative;
-  max-width: 100%;
-}
-
-.pizo-new-relty-desc-content-thumnail img {
-  width: 100%;
-  height: auto;
-  left: 50%;
-  top: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-}
-
 .pizo-new-realty-dectruct-tab {
   padding: 0.7143rem;
   border-bottom: solid 0.0714rem #ccc;

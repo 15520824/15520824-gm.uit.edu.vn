@@ -177,14 +177,19 @@ NewProject.prototype.descView = function()
 NewProject.prototype.descViewImageThumnail = function()
 {
     var temp = _({
-        tag:"div",
-        class:["pizo-new-relty-desc-content-thumnail","pizo-new-realty-dectruct-content-area-size-zone"],
+        tag:"modal",
         child:[
             {
-                tag:"img",
-                props:{
-                    src:"assets/images/thumnail.png"
-                }
+                tag:"div",
+                class:["pizo-new-relty-desc-content-thumnail","pizo-new-realty-dectruct-content-area-size-zone"],
+                child:[
+                    {
+                        tag:"img",
+                        props:{
+                            src:"assets/images/thumnail.png"
+                        }
+                    }
+                ]
             }
         ]
     })

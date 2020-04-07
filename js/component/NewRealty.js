@@ -145,6 +145,14 @@ NewRealty.prototype.getView = function () {
 
 NewRealty.prototype.descView = function()
 {
+    var dataImage = [
+        {src:"assets/images/1.jfif"},
+        {src:"assets/images/2.jfif"},
+        {src:"assets/images/3.jfif"},
+        {src:"assets/images/4.jfif"},
+        {src:"assets/images/5.jfif"},
+        {src:"assets/images/6.jfif"},
+    ]
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-desc",
@@ -154,8 +162,8 @@ NewRealty.prototype.descView = function()
                 class: "pizo-new-realty-desc-content",
                 child: [
                     NewRealty.prototype.descViewdetail(),
-                    NewRealty.prototype.descViewImageThumnail(),
-                    NewRealty.prototype.descViewImagePreview()
+                    NewRealty.prototype.descViewImageThumnail(dataImage),
+                    
                 ]
             },
             {
@@ -186,19 +194,61 @@ NewRealty.prototype.descView = function()
     return temp;
 }
 
-NewRealty.prototype.descViewImageThumnail = function()
+NewRealty.prototype.descViewImageThumnail = function(dataImage)
 {
+    switch(dataImage.length)
+    {
+        case 1:
+            //full
+            break;
+        case 2:
+            //chia doi
+        case 3:
+        case 4:
+        case 5:
+    }
     var temp = _({
         tag:"div",
         class:["pizo-new-relty-desc-content-thumnail","pizo-new-realty-dectruct-content-area-size-zone"],
         child:[
             {
-                tag:"img",
-                props:{
-                    src:"assets/images/thumnail.png"
-                }
+                tag:"div",
+                class:"pizo-new-relty-desc-content-thumnail-main",
+                child:[
+                    {
+                        tag:"img",
+                        props:{
+                            src:"assets/images/thumnail.png"
+                        }
+                    }
+                ]
+            },
+            {
+                tag:"div",
+                class:"pizo-new-relty-desc-content-thumnail-second",
+                child:[
+                    {
+                        tag:"img",
+                        props:{
+                            src:"assets/images/thumnail.png"
+                        }
+                    },
+                    {
+                        tag:"img",
+                        props:{
+                            src:"assets/images/thumnail.png"
+                        }
+                    }
+                ]
+            },
+            
+        ],
+        on:{
+            click:function(event)
+            {
+                document.body.appendChild(NewRealty.prototype.descViewImagePreview(dataImage));
             }
-        ]
+        }
     })
     return temp;
 }
@@ -335,328 +385,97 @@ NewRealty.prototype.descViewdetail = function()
     return temp;
 }
 
-NewRealty.prototype.descViewImagePreview = function(){
-    var temp = _({
+NewRealty.prototype.descViewImagePreview = function(data=[],index = 0){
+    var sildes = _({
         tag:"ul",
         class:"slides",
         child:[
-            {
-                tag:"input",
-                attr:{
-                    type:"radio",
-                    name:"radio-btn",
-                    checked:""
-                },
-                props:{
-                    id:"img-1",
-                }
-            },
-            {
-                tag:"li",
-                class:"slide-container",
-                child:[
-                    {
-                        tag:"div",
-                        class:"slide",
-                        child:[
-                            {
-                                tag:"img",
-                                props:{
-                                    src:"assets/images/1.jfif"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        tag:"div",
-                        class:"nav",
-                        child:[
-                            {
-                                tag:"label",
-                                class:"prev",
-                                attr:{
-                                    for:"img-6"
-                                },
-                                props:{
-                                    innerHTML:"&#x2039;"
-                                }
-                            },
-                            {
-                                tag:"label",
-                                class:"next",
-                                attr:{
-                                    for:"img-2"
-                                },
-                                props:{
-                                    innerHTML:"&#x203a;"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                tag:"input",
-                attr:{
-                    type:"radio",
-                    name:"radio-btn",
-                    id:"img-2",
-                },
-            },
-            {
-                tag:"li",
-                class:"slide-container",
-                child:[
-                    {
-                        tag:"div",
-                        class:"slide",
-                        child:[
-                            {
-                                tag:"img",
-                                props:{
-                                    src:"assets/images/2.jfif"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        tag:"div",
-                        class:"nav",
-                        child:[
-                            {
-                                tag:"label",
-                                class:"prev",
-                                attr:{
-                                    for:"img-1"
-                                },
-                                props:{
-                                    innerHTML:"&#x2039;"
-                                }
-                            },
-                            {
-                                tag:"label",
-                                class:"next",
-                                attr:{
-                                    for:"img-3"
-                                },
-                                props:{
-                                    innerHTML:"&#x203a;"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                tag:"input",
-                attr:{
-                    type:"radio",
-                    name:"radio-btn",
-                    id:"img-3",
-                },
-            },
-            {
-                tag:"li",
-                class:"slide-container",
-                child:[
-                    {
-                        tag:"div",
-                        class:"slide",
-                        child:[
-                            {
-                                tag:"img",
-                                props:{
-                                    src:"assets/images/3.jfif"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        tag:"div",
-                        class:"nav",
-                        child:[
-                            {
-                                tag:"label",
-                                class:"prev",
-                                attr:{
-                                    for:"img-2"
-                                },
-                                props:{
-                                    innerHTML:"&#x2039;"
-                                }
-                            },
-                            {
-                                tag:"label",
-                                class:"next",
-                                attr:{
-                                    for:"img-4"
-                                },
-                                props:{
-                                    innerHTML:"&#x203a;"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                tag:"input",
-                attr:{
-                    type:"radio",
-                    name:"radio-btn",
-                    id:"img-4",
-                },
-            },
-            {
-                tag:"li",
-                class:"slide-container",
-                child:[
-                    {
-                        tag:"div",
-                        class:"slide",
-                        child:[
-                            {
-                                tag:"img",
-                                props:{
-                                    src:"assets/images/4.jfif"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        tag:"div",
-                        class:"nav",
-                        child:[
-                            {
-                                tag:"label",
-                                class:"prev",
-                                attr:{
-                                    for:"img-3"
-                                },
-                                props:{
-                                    innerHTML:"&#x2039;"
-                                }
-                            },
-                            {
-                                tag:"label",
-                                class:"next",
-                                attr:{
-                                    for:"img-5"
-                                },
-                                props:{
-                                    innerHTML:"&#x203a;"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                tag:"input",
-                attr:{
-                    type:"radio",
-                    name:"radio-btn",
-                    id:"img-5",
-                },
-            },
-            {
-                tag:"li",
-                class:"slide-container",
-                child:[
-                    {
-                        tag:"div",
-                        class:"slide",
-                        child:[
-                            {
-                                tag:"img",
-                                props:{
-                                    src:"assets/images/5.jfif"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        tag:"div",
-                        class:"nav",
-                        child:[
-                            {
-                                tag:"label",
-                                class:"prev",
-                                attr:{
-                                    for:"img-4"
-                                },
-                                props:{
-                                    innerHTML:"&#x2039;"
-                                }
-                            },
-                            {
-                                tag:"label",
-                                class:"next",
-                                attr:{
-                                    for:"img-6"
-                                },
-                                props:{
-                                    innerHTML:"&#x203a;"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                tag:"input",
-                attr:{
-                    type:"radio",
-                    name:"radio-btn",
-                    id:"img-6",
-                },
-            },
-            {
-                tag:"li",
-                class:"slide-container",
-                child:[
-                    {
-                        tag:"div",
-                        class:"slide",
-                        child:[
-                            {
-                                tag:"img",
-                                props:{
-                                    src:"assets/images/6.jfif"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        tag:"div",
-                        class:"nav",
-                        child:[
-                            {
-                                tag:"label",
-                                class:"prev",
-                                attr:{
-                                    for:"img-5"
-                                },
-                                props:{
-                                    innerHTML:"&#x2039;"
-                                }
-                            },
-                            {
-                                tag:"label",
-                                class:"next",
-                                attr:{
-                                    for:"img-1"
-                                },
-                                props:{
-                                    innerHTML:"&#x203a;"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
+        
         ]
     })
+    var temp = _({
+        tag:"modal",
+        child:[
+            sildes
+        ]
+    })
+    var prev = data.length-1,next=1;
+    for(var i=0;i<data.length;i++)
+    {
+        var elementTemp = _({
+            tag:"input",
+            attr:{
+                type:"radio",
+                name:"radio-btn",
+                id:"img-"+i,
+            },
+        })
+        if(index === i)
+            elementTemp.setAttribute("checked","");
+        sildes.addChild(
+            elementTemp
+        )
+        sildes.addChild(
+            _({
+            tag:"li",
+            class:"slide-container",
+            child:[
+                {
+                    tag:"div",
+                    class:"slide",
+                    child:[
+                        {
+                            tag:"img",
+                            props:{
+                                src:data[i].src
+                            }
+                        }
+                    ]
+                },
+                {
+                    tag:"div",
+                    class:"nav",
+                    child:[
+                        {
+                            tag:"label",
+                            class:"prev",
+                            attr:{
+                                for:"img-"+prev++
+                            },
+                            child:[
+                                {
+                                    tag:"span",
+                                    props:{
+                                        innerHTML:"&#x2039;"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            tag:"label",
+                            class:"next",
+                            attr:{
+                                for:"img-"+next++
+                            },
+                            child:[
+                                {
+                                    tag:"span",
+                                    props:{
+                                        innerHTML:"&#x203a;"
+                                    }
+                                }
+                            ],
+                            
+                        }
+                    ]
+                }
+            ]
+        }))
+        if(prev===data.length)
+        prev = 0;
+        if(next===data.length)
+        next = 0;
+    }
     return temp;
 }
 
@@ -1509,7 +1328,7 @@ NewRealty.prototype.locationView = function (functionDone) {
 }
 
 NewRealty.prototype.detailView = function (map) {
-
+    var temp;
     var input = _({
         tag: "input",
         class: "pizo-new-realty-location-detail-row-input",
@@ -1538,21 +1357,36 @@ NewRealty.prototype.detailView = function (map) {
         tag: "selectmenu",
         class: "pizo-new-realty-location-detail-row-menu"
     })
-    var long = _({
+    var lat,long;
+    long = _({
         tag:"input",
         class:"pizo-new-realty-location-detail-row-input-long",
         attr:{
-            disabled:""
+            type:"number"
+        },
+        on:{
+            change:function(event)
+            {
+                if(temp.changInput)
+                map.addMoveMarker([long.value,lat.value],false)
+            }
         }
     })
-    var lat = _({
+    lat = _({
         tag:"input",
         class:"pizo-new-realty-location-detail-row-input-lat",
         attr:{
-            disabled:""
+            type:"number"
+        },
+        on:{
+            change:function(event)
+            {
+                if(temp.changInput)
+                map.addMoveMarker([long.value,lat.value],false)
+            }
         }
     })
-    var temp = _({
+    temp = _({
         tag: "div",
         class: "pizo-new-realty-location-detail",
         child: [
@@ -1751,7 +1585,6 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
     var place = autocomplete.getPlace();
     console.log(autocomplete)
     NewRealty.prototype.getLongLat(text).then(function (result) {
-        console.log(map)
         map.addMoveMarker(result)
     })
     console.log(place);
@@ -1910,12 +1743,14 @@ mapView.prototype.activeMap = function (center = [10.822500, 106.629104], zoom =
     return map;
 }
 
-mapView.prototype.addMoveMarker = function (position) {
+mapView.prototype.addMoveMarker = function (position,changeInput=true) {
     var self = this;
     var marker;
+    if(changeInput)
+    self.detailView.changInput = false;
     if (this.currentMarker !== undefined) {
         marker = this.currentMarker;
-        self.transition(position).then(function (value) {
+        self.transition(position,changeInput).then(function (value) {
             self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
             self.smoothZoom(12, self.map.getZoom());
         })
@@ -1928,12 +1763,15 @@ mapView.prototype.addMoveMarker = function (position) {
         this.currentMarker = marker;
         self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
         self.smoothZoom(12, self.map.getZoom());
-        self.detailView.long.value = position[0];
-        self.detailView.lat.value = position[1];
+        if(changeInput){
+            self.detailView.long.value = position[0];
+            self.detailView.lat.value = position[1];
+            self.detailView.changInput = true;
+        }
         
         google.maps.event.addListener(self.map, "click", function (event) {
             var result = [event.latLng.lat(), event.latLng.lng()];
-            self.transition(result).then(function (value) {
+            self.transition(result,changeInput).then(function (value) {
                 self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
                 self.smoothZoom(12, self.map.getZoom());
             })
@@ -1945,14 +1783,15 @@ mapView.prototype.addMoveMarker = function (position) {
     return marker;
 }
 
-mapView.prototype.transition = function (result) {
+mapView.prototype.transition = function (result,changeInput) {
     var self=this;
     var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
-    console.log(self,self.detailView);
+    if(changeInput){
+        self.detailView.long.value = result[0];
+        self.detailView.lat.value = result[1];
+        self.detailView.changInput = true;
+    }
 
-    self.detailView.long.value = position[0];
-    self.detailView.lat.value = position[1];
-   
     var deltaLat = (result[0] - position[0]) / this.numDeltas;
     var deltaLng = (result[1] - position[1]) / this.numDeltas;
     return this.moveMarker(position, deltaLat, deltaLng);
