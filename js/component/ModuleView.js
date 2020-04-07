@@ -361,6 +361,7 @@ function moveElement(event, me, result, index) {
 
 function moveElementFix(event, me, result, index) {
     var trigger;
+    console.log(result)
     var clone = result.cloneRow(index);
     var bg = result.backGroundFix(index);
    
@@ -1262,6 +1263,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
             }
             cell.clone = this.clone;
             this.clone[j][i+1 - delta[j]] = cell;
+            cell.parentTree = this;
             row.addChild(cell);
         }
         row.checkChild();

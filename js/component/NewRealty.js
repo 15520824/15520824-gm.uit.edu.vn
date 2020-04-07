@@ -1765,6 +1765,12 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
         country: 'long_name',
         postal_code: 'short_name'
     };
+    console.log(place)
+    self.number.value = "";
+    self.street.value = "";
+    self.state.value = "";
+    self.dictrict.value = "";
+    self.ward.value = "";
 
     // Get each component of the address from the place details,
     // and then fill-in the corresponding field on the form.
