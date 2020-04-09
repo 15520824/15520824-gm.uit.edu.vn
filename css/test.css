@@ -1,0 +1,174 @@
+.modal-upload-image {
+  width: 66vw;
+  height: 85vh;
+  min-width: 520px;
+  min-height: 320px;
+  max-width: 1052px;
+  max-height: 650px;
+  background-color: white;
+}
+
+.modal-upload-image-header {
+  padding: 17px 20px;
+  height: 20px;
+  position: relative;
+}
+
+.modal-upload-image-header-text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  display: inline-block;
+  font-size: 20px;
+  vertical-align: top;
+}
+
+.modal-upload-image-header-icon-close {
+  overflow: hidden;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  height: inherit;
+  margin: 0;
+  width: inherit;
+  user-select: none;
+}
+
+.modal-upload-image-body {
+  position: relative;
+  height: calc(100% - 55px);
+}
+
+.modal-upload-image-body-navigation {
+  height: 50px;
+  border-bottom: 1px solid #e1e1e1;
+  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;
+  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;
+  box-shadow: 0 1px 5px 1px #e1e1e1;
+  z-index: 1;
+}
+
+.modal-upload-image-body-drop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  top: 51px;
+}
+
+.modal-upload-image-body-drop-area-main {
+  height: 100%;
+}
+
+.modal-upload-image-body-drop-area-main-form {
+  border: #ddd 4px dashed;
+  border-radius: 2px;
+  text-align: center;
+  position: relative;
+  display: none;
+  margin: 20px;
+  padding: 10px;
+  height: calc(100% - 54px);
+}
+
+.modal-upload-image-body-drop-area {
+  height: calc(100% - 72px);
+}
+
+.modal-upload-image-body-drop-area-main-form-button {
+  font-size: 16px;
+}
+
+.modal-upload-image-body-drop-area-main-process-bar {
+  width: 50%;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.modal-upload-image-body-drop-area-main-form-tutorial {
+  font-size: 20pt;
+  color: #ccc;
+  padding: 0 10px;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+#drop-area.highlight {
+  border-color: purple;
+}
+
+#gallery {
+  margin-top: 10px;
+  height: calc(100% - 34px);
+  background-color: white;
+}
+
+.image-autoresize {
+  max-height: calc(100% - 20px);
+  vertical-align: middle;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: calc(100% - 20px);
+  max-width: calc(100% - 20px);
+  display: inline-block;
+}
+
+.absol-width-height-resizer-content {
+  width: unset;
+}
+
+#fileElem {
+  display: none;
+}
+
+.modal-upload-image-body-navigation-bar {
+  background: transparent;
+  border: none;
+  float: left;
+  height: 14px;
+  margin: 0 18px;
+  padding: 16px 4px 7px;
+  position: static;
+  user-select: none;
+  border-bottom: 2px solid #4d90fe;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  color: #222;
+  font-weight: bold;
+  padding-bottom: 18px;
+  user-select: none;
+}
+.modal-upload-image-body-navigation-bar-button{
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: middle;
+  user-select: none;
+  font-weight: 600;
+}
+
+.modal-upload-image-body-drop-save{
+  padding-left: 20px;
+  position: absolute;
+  bottom: 10px;
+}
+
+.margin-align{
+  margin-left: 100px;
+  position: relative;
+  width: calc(100% - 100px);
+  margin-bottom: 0;
+}
+
+.full-size{
+  width: calc(100% - 7px);
+  margin: 2px;
+  height: calc(100% - 7px);
+}

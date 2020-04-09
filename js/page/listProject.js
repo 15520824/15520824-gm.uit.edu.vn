@@ -184,9 +184,14 @@ listProject.prototype.getView = function () {
     var arrChild = [[{}, {}, "concac1", 3, "Xô Viết Nghệ Tĩnh", "P. 24",{value:"Q. Bình Thạnh",colspan:2}, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
     [{}, {}, "concac2", 1, "Xô Viết Nghệ Tĩnh", "P. 26","Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
     [{}, {}, "concac3", 2, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]];
+    var arrChildNode = [[{}, {}, "concac1", 3, "Xô Viết Nghệ Tĩnh", "P. 24",{value:"Q. Bình Thạnh",colspan:2}, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
+    [{}, {}, "concac2", 1, "Xô Viết Nghệ Tĩnh", "P. 26","Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
+    [{}, {}, "concac3", 2, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]];
     arrChild.index = 3;
     var child =  [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""];
     child.child = arrChild;
+    arrChild[1].child = arrChildNode;
+    arrChild[1].child.index = 4;
     var header = [{ type: "dragzone" },{ type: "increase", value: "#"}, {value:'MS',sort:true}, 'Số nhà', {hidden:true, value: 'Tên đường' }, { value:'Phường/Xã' }, { value: 'Quận/Huyện' }, { value: 'Tỉnh/TP' }, { value: 'Ghi chú', sort: true }, { value: 'Ngang', sort: true }, { value: 'Dài' }, { value: 'DT' }, { value: 'Kết cấu' }, { value: 'Hướng'}, 'Giá', { value: 'Giá m<sup>2</sup>' }, { value: 'Hiện trạng' }, 'Ngày tạo',{type:"detail",functionClickAll:functionClickMore,icon:""}];
     var dataTable = [
     [{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25","Q. Bình Thạnh","Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
@@ -204,6 +209,7 @@ listProject.prototype.getView = function () {
     [{}, {}, "7", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
     [{}, {}, "8", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
     [{}, {}, "9", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],];
+    console.log(dataTable,"xxxxxxxxxxxxxxxx")
     tableViewX = tableView(header, dataTable,true,true);
     tableViewX.addInputSearch($('.pizo-list-project-page-allinput-container input',this.$view))
     this.searchControl = this.searchControlContent();

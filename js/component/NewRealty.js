@@ -9,6 +9,7 @@ import '../../css/style_alignFormCss_2.css';
 import '../../css/style_alignFormCss_3.css';
 import '../../css/style_alignFormCss_4.css';
 import '../../css/style_alignFormCss_5.css';
+import xmlModalDragImage from './modal_drag_drop_image';
 import {unit_Long,unit_Zone,selectElement} from './ModuleView';
 import R from '../R';
 import Fcore from '../dom/Fcore';
@@ -175,7 +176,7 @@ NewRealty.prototype.descView = function()
                         tag:"div",
                         class:["pizo-new-realty-desc-infomation-cell","center-child"],
                         child:[
-                            NewRealty.prototype.utilityView(),
+                            // NewRealty.prototype.utilityView(),
                             NewRealty.prototype.convenientView(),
                         ]
                     },
@@ -196,10 +197,42 @@ NewRealty.prototype.descView = function()
 
 NewRealty.prototype.descViewImageThumnail = function(dataImage)
 {
+  
+    var temp = _({
+        tag:"div",
+        class:["pizo-new-relty-desc-content-thumnail","pizo-new-realty-dectruct-content-area-size-zone"],
+        child:[
+            {
+                // tag:"div",
+                // class:"mtm",
+                // child:[
+                //     {
+                //         tag:"div",
+                //         style:{
+                //             position:"relative"
+                //         }
+                //     }
+                // ]
+                tag:"img",
+                props:{
+                    src:dataImage[0].src
+                }
+            }
+        ],
+        on:{
+            click:function(event)
+            {
+                document.body.appendChild(NewRealty.prototype.descViewImagePreview(dataImage));
+                // xmlModalDragImage.createModal(document.body,function(){
+                //     console.log(xmlModalDragImage.imgUrl)
+                // });
+            }
+        }
+    })
+
     switch(dataImage.length)
     {
         case 1:
-            //full
             break;
         case 2:
             //chia doi
@@ -207,49 +240,6 @@ NewRealty.prototype.descViewImageThumnail = function(dataImage)
         case 4:
         case 5:
     }
-    var temp = _({
-        tag:"div",
-        class:["pizo-new-relty-desc-content-thumnail","pizo-new-realty-dectruct-content-area-size-zone"],
-        child:[
-            {
-                tag:"div",
-                class:"pizo-new-relty-desc-content-thumnail-main",
-                child:[
-                    {
-                        tag:"img",
-                        props:{
-                            src:"assets/images/thumnail.png"
-                        }
-                    }
-                ]
-            },
-            {
-                tag:"div",
-                class:"pizo-new-relty-desc-content-thumnail-second",
-                child:[
-                    {
-                        tag:"img",
-                        props:{
-                            src:"assets/images/thumnail.png"
-                        }
-                    },
-                    {
-                        tag:"img",
-                        props:{
-                            src:"assets/images/thumnail.png"
-                        }
-                    }
-                ]
-            },
-            
-        ],
-        on:{
-            click:function(event)
-            {
-                document.body.appendChild(NewRealty.prototype.descViewImagePreview(dataImage));
-            }
-        }
-    })
     return temp;
 }
 
@@ -334,18 +324,24 @@ NewRealty.prototype.descViewdetail = function()
                             {
                                 this.blur();
                                 var self = this;
+                                var childNode = NewRealty.prototype.locationView(function(value){
+                                    self.value = value.input.value;
+                                    childRemove.selfRemove();
+                                })
                                 var childRemove = _({
                                     tag:"modal",
                                     on:{
                                         click:function(event)
                                         {
+                                            var target = event.target;
+                                            while(target!==childNode&&target!==childRemove&&target!==document.body)
+                                            target = target.parentNode;
+                                            if(target===childRemove)
+                                            childRemove.selfRemove();
                                         }
                                     },
                                     child:[
-                                        NewRealty.prototype.locationView(function(value){
-                                            self.value = value.input.value;
-                                            childRemove.selfRemove();
-                                        })
+                                        childNode
                                     ]
                                 })
                                 temp.appendChild(childRemove)
@@ -389,12 +385,27 @@ NewRealty.prototype.descViewImagePreview = function(data=[],index = 0){
     var sildes = _({
         tag:"ul",
         class:"slides",
+        on:{
+            click:function(event)
+            {
+            }
+        },
         child:[
         
         ]
     })
     var temp = _({
         tag:"modal",
+        on:{
+            click:function(event)
+            {
+                var target = event.target;
+                while(target!==sildes&&target!==temp&&target!==document.body)
+                target = target.parentNode;
+                if(target===temp)
+                temp.selfRemove();
+            }
+        },
         child:[
             sildes
         ]
@@ -516,6 +527,100 @@ NewRealty.prototype.detructView = function(){
                                         child:[
                                             {
                                                 tag:"span",
+                                                class:"pizo-new-realty-dectruct-content-area-width-label",
+                                                props: {
+                                                    innerHTML: "Dài"
+                                                },
+                                            },
+                                            {
+                                                tag:"input",
+                                                class:["pizo-new-realty-dectruct-content-area-width","pizo-new-realty-dectruct-input"],
+                                                on:{
+                                                    change:function(event){
+                                                        var valueA = 0;
+                                                        var valueB = 0;
+                                                        if(this.value!=="")
+                                                        {
+                                                            valueA = this.value*this.nextSibling.value;
+                                                        }
+                                                        var height = $('input.pizo-new-realty-dectruct-content-area-height',temp);
+                                                        if(height.value!=="")
+                                                        {
+                                                            valueB = height.value*height.nextSibling.value;
+                                                        }
+                                                        var input1 = $('input.pizo-new-realty-dectruct-content-area-1',temp);
+                                                        input1.value = valueA*valueB/input1.nextSibling.value;
+                                                        var input2 = $('input.pizo-new-realty-dectruct-content-area-2',temp);
+                                                        input2.value = valueA*valueB/input2.nextSibling.value;
+                                                    }
+                                                },
+                                                attr:{
+                                                    type:"number",
+                                                    min:0
+                                                }
+                                            },
+                                            unit_Long(function(event){
+                                                var width = $('input.pizo-new-realty-dectruct-content-area-width',temp);
+                                                width.value = width.value*event.lastValue/event.value;
+                                            }),
+                                        ]
+                                    },
+                                    {
+                                        tag:"div",
+                                        class:"pizo-new-realty-dectruct-content-area-size-zone",
+                                        child:[
+                                            {
+                                                tag:"span",
+                                                class:"pizo-new-realty-dectruct-content-area-height-label",
+                                                props: {
+                                                    innerHTML: "Ngang"
+                                                },
+                                            },
+                                            {
+                                                tag:"input",
+                                                class:["pizo-new-realty-dectruct-content-area-height","pizo-new-realty-dectruct-input"],
+                                                on:{
+                                                    change:function(event){
+                                                        var valueA = 0;
+                                                        var valueB = 0;
+                                                        if(this.value!=="")
+                                                        {
+                                                            valueA = this.value*this.nextSibling.value;
+                                                        }
+                                                        var width = $('input.pizo-new-realty-dectruct-content-area-width',temp);
+                                                        if(width.value!=="")
+                                                        {
+                                                            valueB = width.value*width.nextSibling.value;
+                                                        }
+                                                        var input1 = $('input.pizo-new-realty-dectruct-content-area-1',temp);
+                                                        input1.value = valueA*valueB/input1.nextSibling.value;
+                                                        var input2 = $('input.pizo-new-realty-dectruct-content-area-2',temp);
+                                                        input2.value = valueA*valueB/input2.nextSibling.value;
+                                                    }
+                                                },
+                                                attr:{
+                                                    type:"number",
+                                                    min:0
+                                                }
+                                            },
+                                            unit_Long(function(event){
+                                                var height = $('input.pizo-new-realty-dectruct-content-area-height',temp);
+                                                height.value = height.value*event.lastValue/event.value;
+                                            })
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                tag:"div",
+                                class:"pizo-new-realty-dectruct-content-area-size",
+                                child:[
+                                    {
+                                        tag:"div",
+                                        class:"pizo-new-realty-dectruct-content-area-size-zone",
+                                        child:[
+                                            {
+                                                tag:"span",
                                                 class:"pizo-new-realty-dectruct-content-area-1-label",
                                                 props: {
                                                     innerHTML: "Đất"
@@ -525,10 +630,14 @@ NewRealty.prototype.detructView = function(){
                                                 tag:"input",
                                                 class:["pizo-new-realty-dectruct-content-area-1","pizo-new-realty-dectruct-input"],
                                                 attr:{
-                                                    type:"number"
+                                                    type:"number",
+                                                    min:0
                                                 }
                                             },
-                                            unit_Zone(),
+                                            unit_Zone(function(event){
+                                                var area1 = $('input.pizo-new-realty-dectruct-content-area-1',temp);
+                                                area1.value = area1.value*event.lastValue/event.value;
+                                            }),
                                         ]
                                     },
                                     {
@@ -546,62 +655,19 @@ NewRealty.prototype.detructView = function(){
                                                 tag:"input",
                                                 class:["pizo-new-realty-dectruct-content-area-2","pizo-new-realty-dectruct-input"],
                                                 attr:{
-                                                    type:"number"
+                                                    type:"number",
+                                                    min:0
                                                 }
                                             },
-                                            unit_Zone()
+                                            unit_Zone(function(event){
+                                                var area2 = $('input.pizo-new-realty-dectruct-content-area-2',temp);
+                                                area2.value = area2.value*event.lastValue/event.value;
+                                            })
                                         ]
                                     }
                                 ]
                             },
-                            {
-                                tag:"div",
-                                class:"pizo-new-realty-dectruct-content-area-size",
-                                child:[
-                                    {
-                                        tag:"div",
-                                        class:"pizo-new-realty-dectruct-content-area-size-zone",
-                                        child:[
-                                            {
-                                                tag:"span",
-                                                class:"pizo-new-realty-dectruct-content-area-width-label",
-                                                props: {
-                                                    innerHTML: "Dài"
-                                                },
-                                            },
-                                            {
-                                                tag:"input",
-                                                class:["pizo-new-realty-dectruct-content-area-width","pizo-new-realty-dectruct-input"],
-                                                attr:{
-                                                    type:"number"
-                                                }
-                                            },
-                                            unit_Long(),
-                                        ]
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-new-realty-dectruct-content-area-size-zone",
-                                        child:[
-                                            {
-                                                tag:"span",
-                                                class:"pizo-new-realty-dectruct-content-area-height-label",
-                                                props: {
-                                                    innerHTML: "Ngang"
-                                                },
-                                            },
-                                            {
-                                                tag:"input",
-                                                class:["pizo-new-realty-dectruct-content-area-height","pizo-new-realty-dectruct-input"],
-                                                attr:{
-                                                    type:"number"
-                                                }
-                                            },
-                                            unit_Long()
-                                        ]
-                                    }
-                                ]
-                            },
+                           
                         ]
                     },
                     {
@@ -1151,7 +1217,9 @@ NewRealty.prototype.convenientView = function(){
                                         tag:"input",
                                         class:["pizo-new-realty-convenient-content-area-tivi","pizo-new-realty-dectruct-input"],
                                         attr:{
-                                            type:"number"
+                                            type:"number",
+                                            min:0,
+                                            step:1
                                         }
                                     },
                                 ]
@@ -1197,7 +1265,9 @@ NewRealty.prototype.convenientView = function(){
                                         tag:"input",
                                         class:["pizo-new-realty-convenient-content-area-conditioning","pizo-new-realty-dectruct-input"],
                                         attr:{
-                                            type:"number"
+                                            type:"number",
+                                            min:0,
+                                            step:1
                                         }
                                     },
                                 ]
@@ -1217,7 +1287,9 @@ NewRealty.prototype.convenientView = function(){
                                         tag:"input",
                                         class:["pizo-new-realty-convenient-content-area-washing","pizo-new-realty-dectruct-input"],
                                         attr:{
-                                            type:"number"
+                                            type:"number",
+                                            min:0,
+                                            step:1
                                         }
                                     },
                                 ]
@@ -1354,7 +1426,7 @@ NewRealty.prototype.detailView = function (map) {
         class: "pizo-new-realty-location-detail-row-menu"
     })
     var number = _({
-        tag: "selectmenu",
+        tag: "input",
         class: "pizo-new-realty-location-detail-row-menu"
     })
     var lat,long;
@@ -1613,10 +1685,6 @@ activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) 
             var val = place.address_components[i][componentForm[addressType]];
             switch (addressType) {
                 case "street_number":
-                    if(!self.number.items.getContainsChild({text:val,value:val}))
-                    {
-                        self.number.items=self.number.items.concat([{text:val,value:val}])
-                    }
                     self.number.value = val;
                     break;
                 case "route":

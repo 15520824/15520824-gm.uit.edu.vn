@@ -8,6 +8,7 @@
 .pizo-new-realty-desc-detail {
   width: 50%;
   max-width: 100%;
+  min-width: 380px;
   display: inline-block;
 }
 
@@ -165,6 +166,16 @@
   max-width: 66.666667%;
 }
 
+input.pizo-new-realty-location-detail-row-menu{
+  -webkit-box-flex: 0;
+  -ms-flex: 0 calc(66.666667% - 1rem);
+  flex: 0 0 calc(66.666667% - 1rem);
+  max-width: calc(66.666667% - 1rem);
+  border: solid 0.0714rem var(--color-input-color);
+  font-size: 1rem;
+  padding: 0.4286rem;
+}
+
 .pizo-new-realty-location-detail-row-input {
   -webkit-box-flex: 0;
   -ms-flex: 0 calc(66.666667% - 1rem);
@@ -211,7 +222,7 @@
 }
 
 .pizo-new-realty-dectruct {
-  width: 30%;
+  width: 33%;
   display: inline-block;
   vertical-align: top;
   margin-top: 0.7143rem;
@@ -221,8 +232,8 @@
 
 .pizo-new-realty-desc-infomation-cell {
   display: inline-block;
-  width: calc(30% - 30px);
-  min-width: 350px;
+  width: calc(33% - 30px);
+  min-width: 380px;
 }
 
 .pizo-new-realty-desc-infomation-cell:not(:last-child) {
@@ -230,8 +241,8 @@
 }
 
 .pizo-new-realty-desc-infomation-cell.center-child{
-  width: calc(40% - 30px);
-  min-width: 477px;
+  width: calc(33% - 30px);
+  min-width: 380px;
 }
 
 .pizo-new-realty-utility {
@@ -566,4 +577,10 @@
 
 .absol-dropdown-content {
   z-index: 1001;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

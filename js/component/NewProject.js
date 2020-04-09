@@ -155,7 +155,7 @@ NewProject.prototype.descView = function()
                         tag:"div",
                         class:["pizo-new-realty-desc-infomation-cell","center-child"],
                         child:[
-                            NewProject.prototype.utilityView(),
+                            // NewProject.prototype.utilityView(),
                             NewProject.prototype.convenientView(),
                         ]
                     },

@@ -123,13 +123,6 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 	background: rgba(0, 0, 0, 0.8);
 }
 
-.pizo-new-relty-desc-content-thumnail-main{
-    width: 50%;
-    height: 100%;
-    display: inline-block;
-    top: 0;
-}
-
 .pizo-new-relty-desc-content-thumnail-second{
     display: inline-block;
     width: 50%;
@@ -138,12 +131,11 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 
 .pizo-new-relty-desc-content-thumnail img{
     width: 100%;
+    margin-top: -33%;
 }
 
-.pizo-new-relty-desc-content-thumnail-main img{
-    height: 100%;
-}
-
-.pizo-new-relty-desc-content-thumnail-second img{
-    height: 100%;
+.pizo-new-relty-desc-content-thumnail{
+    height: 350px;
+    overflow: hidden;
+    min-width: 380px;
 }

@@ -1,6 +1,7 @@
 import Fcore from '../dom/Fcore';
 import '../../css/ModuleView.css';
 import '../../css/tablesort.css'
+import TabView from 'absol-acomp/js/TabView';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -149,10 +150,13 @@ export function selectElement(nameClass, elementDynamic) {
     })
 }
 
-export function unit_Long() {
+export function unit_Long(functionX= function(){}) {
     return _({
         tag: "selectmenu",
         class: "pizo-new-realty-dectruct-content-area-unit",
+        on:{
+            change:functionX
+        },
         props: {
             items: [
                 { text: "m", value: 1 },
@@ -163,15 +167,18 @@ export function unit_Long() {
     });
 }
 
-export function unit_Zone() {
+export function unit_Zone(functionX= function(){}) {
     return _({
         tag: "selectmenu",
         class: "pizo-new-realty-dectruct-content-area-unit-size",
+        on:{
+            change:functionX
+        },
         props: {
             items: [
                 { text: "m²", value: 1 },
-                { text: "km²", value: 10000 },
-                { text: "hecta", value: 100 }
+                { text: "km²", value: 1000000 },
+                { text: "hecta", value: 10000 }
             ]
         }
     });
@@ -267,14 +274,10 @@ function moveAtFix(clone,pageY,shiftY,result)
 {
     var y = pageY - result.getBoundingClientRect().top;
     y-= shiftY;
+    var tempx = result.getHeightChild();
     var height = result.clientHeight;
-    if(result.clone[0]!==undefined&&result.tagName!=="TABLE")
-    {
-        for(var i = 0;i<result.clone[0].length;i++)
-        {
-            height+=result.clone[0][i].clientHeight;
-        }
-    }
+    if(tempx!==0)
+    height += tempx + result.clientHeight ;
     if(y>height-clone.clientHeight){
         y = result.clientHeight;
         return;
@@ -361,7 +364,6 @@ function moveElement(event, me, result, index) {
 
 function moveElementFix(event, me, result, index) {
     var trigger;
-    console.log(result)
     var clone = result.cloneRow(index);
     var bg = result.backGroundFix(index);
    
@@ -403,7 +405,6 @@ function moveElementFix(event, me, result, index) {
     moveAtFix(clone, event.pageY, shiftY ,result);
     scrollParent.addEventListener("scroll", function (event) {
         moveAtFix(clone, event.pageY, shiftY ,result);
-        console.log(parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop))
         bg.style.top = parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop)+"px";
     })
     window.addEventListener('mousemove',functionCheckZone);
@@ -425,18 +426,23 @@ function moveElementFix(event, me, result, index) {
             {
                 element = element.parentNode;
             }
-            this.console.log(element,removeList.elementReal)
+            console.log(element,removeList.elementReal)
             result.bodyTable.insertBefore(element,removeList.elementReal);
-            if(element.clone!==undefined)
-            {
-                for(var i=1;i<element.clone[0].length;i++)
+            if(element.getElementChild!==undefined){
+                var elementChild = element.getElementChild();
+                if(elementChild.length!==0)
                 {
-                    result.bodyTable.insertBefore(element.clone[0][i].parentNode,removeList.elementReal);
+                    for(var i=0;i<elementChild.length;i++)
+                    {
+                        result.bodyTable.insertBefore(elementChild[i],removeList.elementReal);
+                    }
                 }
             }
-        
-            if(result.data.child!==undefined)
-            result.data.child = changeIndex(result.data.child,index-1,row1);
+            
+            if(result.data.child!==undefined){
+                result.data.child = changeIndex(result.data.child,index-1,row1);
+                result.childrenNodes = changeIndex(result.childrenNodes,index-1,row1);
+            }
             else
             result.data = changeIndex(result.data,index-1,row1);
             var k = 0;
@@ -785,6 +791,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     }(i) : undefined,
                 }
             })
+                
             if (header[i].sort === true) {
                 cell.classList.add("has-sort")
             }
@@ -827,6 +834,8 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
             result.clone[k++].push(cell);
             
             row.addChild(cell);
+            // console.log(cell,window.getComputedStyle(cell,null).getPropertyValue('font-size'),"xxxxxxxx")
+            // cell.style.minWidth = fakeInput(value,parseFloat(window.getComputedStyle(cell).fontSize))+"px";
         } else
             check[i] = "hidden";
     }
@@ -939,31 +948,15 @@ tableView.prototype.getRow = function(data)
         temp.data =  data;
         if(temp.data.child!==undefined)
         {
-            if(temp.data.child.index!==undefined){
+            var indexMore = 0;
+            if(temp.data.child.index!==undefined)
+                indexMore = temp.data.child.index;
                 temp.classList.add("more-child");
                 var buttonClick = _({
                     tag:"i",
                     on:{
                         click:function(event){
-                            if(!temp.classList.contains("more-child"))
-                            {
-                                temp.classList.add("more-child");
-                                var childrenNodes = temp.childrenNodes;
-                                for(var i=0;i<childrenNodes.length;i++)
-                                {
-                                    childrenNodes[i].classList.add("parent");
-                                    childrenNodes[i].classList.remove("disPLayNone");
-                                } 
-                            }
-                            else{
-                                temp.classList.remove("more-child");
-                                var childrenNodes = temp.childrenNodes;
-                                for(var i=0;i<childrenNodes.length;i++)
-                                {
-                                    childrenNodes[i].classList.remove("parent");
-                                    childrenNodes[i].classList.add("disPLayNone");
-                                } 
-                            }   
+                            temp.setDisPlay();
                         }
                     },
                     class: ["material-icons","more-button"],
@@ -971,17 +964,21 @@ tableView.prototype.getRow = function(data)
                         innerHTML:"play_arrow"
                     },
                 });
-                temp.childNodes[temp.data.child.index].insertBefore(buttonClick, temp.childNodes[temp.data.child.index].firstChild);
-                temp.clone = [];
-                var k = 0;
-                for(var i = 0;i<temp.childNodes.length;i++)
-                {
-                    temp.clone[k++] = [temp.childNodes[i]];
-                    if(temp.childNodes[i].colSpan!==1)
+                temp.childNodes[indexMore].insertBefore(buttonClick, temp.childNodes[indexMore].firstChild);
+                if(temp.childrenNodes === undefined){
+                    temp.clone = [];
+                    var k = 0;
+                    for(var i = 0;i<temp.childNodes.length;i++)
                     {
-                        k++;
+                        temp.clone[k++] = [temp.childNodes[i]];
+                        if(temp.childNodes[i].colSpan!==1)
+                        {
+                            k++;
+                        }
                     }
                 }
+                
+                if(temp.childrenNodes === undefined)
                 temp.childrenNodes = result.getBodyTable(temp.data.child,temp);
                 Object.assign(temp,tableView.prototype);
                 temp.headerTable = result.headerTable;
@@ -990,11 +987,42 @@ tableView.prototype.getRow = function(data)
                 temp.header = result.header;
                 temp.dragVertical = result.dragVertical;
                 temp.dragHorizontal = result.dragHorizontal;
-            }
         }
     }
     
     return temp;
+}
+
+tableView.prototype.setDisPlay = function()
+{
+    if(!this.classList.contains("more-child"))
+    {
+        this.classList.add("more-child");
+        var childrenNodes = this.childrenNodes;
+        for(var i=0;i<childrenNodes.length;i++)
+        {
+            childrenNodes[i].classList.add("parent");
+            childrenNodes[i].classList.remove("disPLayNone");
+            if(childrenNodes[i].childrenNodes!==undefined)
+            childrenNodes[i].setDisPlay();
+        } 
+    }
+    else{
+        this.setDisPlayNone();
+    }   
+}
+
+tableView.prototype.setDisPlayNone = function()
+{
+    this.classList.remove("more-child");
+    var childrenNodes = this.childrenNodes;
+    for(var i=0;i<childrenNodes.length;i++)
+    {
+        childrenNodes[i].classList.remove("parent");
+        childrenNodes[i].classList.add("disPLayNone");
+        if(childrenNodes[i].childrenNodes!==undefined)
+            childrenNodes[i].setDisPlayNone();
+    } 
 }
 
 tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan,row)
@@ -1303,6 +1331,8 @@ tableView.prototype.updateRow = function(data,index)
         }
     }
 
+    
+
     if(result.childrenNodes!==undefined&&result.childrenNodes.length===index){
         result.bodyTable.insertBefore(row, result.childrenNodes[result.childrenNodes.length-1].nextSibling);
     }else if(index===result.data.length&&result.childrenNodes===undefined)
@@ -1318,12 +1348,12 @@ tableView.prototype.updateRow = function(data,index)
         }
         else
         temp = result.clone[0][index+1].parentNode;
-        console.log(temp)
-        if(temp.childrenNodes!==undefined)
-            temp.childrenNodes.forEach(function(value){
-                value.selfRemove();
-        })
         result.bodyTable.replaceChild(row,temp);
+        
+        if(temp.childrenNodes!==undefined){
+            row.childrenNodes = temp.childrenNodes;
+            row.clone = temp.clone;
+        }
     }
 
     for(var i = 0;i<this.bodyTable.parentNode.clone.length;i++)
@@ -1351,10 +1381,17 @@ tableView.prototype.updateRow = function(data,index)
     }
     
     
-   if(result.data.child!==undefined)
-    result.data.child[index]=data;
-   else
+   if(result.data.child!==undefined){
+       var child  = result.data.child[index].child;
+        result.data.child[index] = data;
+        result.data.child[index].child = child;
+   }
+   else{
+    var child  = result.data[index].child;
     result.data[index]=data;
+    result.data[index].child=child;
+   }
+    
     row.checkChild();
     if(this.inputElement!==undefined)
     this.inputElement.onchange();
@@ -1372,11 +1409,7 @@ tableView.prototype.dropRow = function(index)
     console.log(element);
     
     var eventEnd = function(){
-        if(parent.data.child)
-        parent.data.child.splice(parseFloat(element.childNodes[0].idRow),1);
-        else
-        parent.data.splice(parseFloat(element.childNodes[0].idRow),1);
-        element.selfRemove();
+        parent.dropRowChild()
         var deltaY = 0;
 
         deltaX = parent.checkLongRow(index);
@@ -1395,6 +1428,29 @@ tableView.prototype.dropRow = function(index)
     element.addEventListener("transitionend", eventEnd);
 }
 
+tableView.prototype.dropRowChild = function()
+{
+    if(this.data.child)
+    this.data.child.splice(parseFloat(element.childNodes[0].idRow),1);
+    else
+    this.data.splice(parseFloat(element.childNodes[0].idRow),1);
+    element.selfRemove();
+    if(element.childrenNodes!==undefined)
+    element.dropRowChildElement()
+}
+
+tableView.prototype.dropRowChildElement = function()
+{
+    for(var i = 0;i<this.element.childNodes.length;i++)
+    {
+        this.element.childrenNodes[i].selfRemove();
+        if(this.element.childrenNodes[i].childrenNodes!==undefined)
+        {
+            this.element.childrenNodes[i].dropRowChildElement();
+        }
+    }
+}
+
 tableView.prototype.backGroundFix = function (index) {
     var rect = this.getBoundingClientRect();
     var scrollParent = this;
@@ -1404,7 +1460,6 @@ tableView.prototype.backGroundFix = function (index) {
     }
     if (scrollParent === undefined)
         return;
-    console.log(rect.y-scrollParent.scrollTop)
     var temp = _({
         tag: "div",
         class: "background-opacity",
@@ -1610,7 +1665,6 @@ tableView.prototype.cloneRow = function (index) {
     else{
         bodyTable.addChild(row);
     }
-    console.log(this.clone)
     for (var i = 0; i < this.clone.length; i++) {
         if(this.clone[i][index]===undefined)
         continue;
@@ -1719,6 +1773,40 @@ tableView.prototype.moveColumn = function(arrClone,colum1,colum2,index,i=0)
     }
 }
 
+tableView.prototype.getHeightChild = function()
+{
+    var result = 0;
+    var self = this;
+    var tempClone = self.childrenNodes;
+    if(tempClone!==undefined)
+    for(var i=0;i<tempClone.length;i++)
+    {
+        result+= tempClone[i].offsetHeight + parseFloat(window.getComputedStyle(tempClone[i]).webkitBorderVerticalSpacing)/2;
+        if(tempClone[i].childrenNodes!==undefined)
+        {
+            result+= tempClone[i].getHeightChild();
+        }
+    }
+    return result;
+}
+
+tableView.prototype.getElementChild = function()
+{
+    var result = [];
+    var self = this;
+    var tempClone = self.childrenNodes;
+    if(tempClone!==undefined)
+    for(var i=0;i<tempClone.length;i++)
+    {
+        result.push(tempClone[i]);
+        if(tempClone[i].childrenNodes!==undefined)
+        {
+            result = result.concat(tempClone[i].getElementChild());
+        }
+    }
+    return result;
+}
+
 tableView.prototype.getBound2Row = function (row1, row2) {
     var self = this;
     var top, bottom,elementReal;
@@ -1727,6 +1815,12 @@ tableView.prototype.getBound2Row = function (row1, row2) {
     if(self.clone[0][row2]!==undefined){
         var style2 = window.getComputedStyle(self.clone[0][row2]);
         elementReal = self.clone[0][row2].parentNode;
+    }else
+    {
+        if(self.tagName!=="TABLE")
+        {
+            elementReal = self.clone[0][row1].parentNode.nextSibling;
+        }
     }
     if (row1 !== undefined){
         top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(style1.webkitBorderVerticalSpacing)/2;
@@ -1739,13 +1833,10 @@ tableView.prototype.getBound2Row = function (row1, row2) {
             tag:"div"
         })
         bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(style2.webkitBorderVerticalSpacing)/2;
-        if(row1!==undefined&&self.clone[0][row2].parentNode.clone!==undefined)
+        if(row1!==undefined&&self.clone[0][row2].parentNode.childrenNodes!==undefined)
         {
-            var tempClone = self.clone[0][row2].parentNode.clone[0];
-            for(var i=1;i<tempClone.length;i++)
-            {
-                bottom+= tempClone[i].offsetHeight;
-            }
+            // console.log(self.clone[0][row2].parentNode.getHeightChild(),'xxxxxxxxxxxx')
+            bottom+=self.clone[0][row2].parentNode.getHeightChild();
         }
     }
     else
@@ -1760,6 +1851,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
         },
         style: {
             width: self.offsetWidth + "px",
+            // backgroundColor:random_bg_color()
         },
         on: {
             mouseover: function () {
@@ -1816,7 +1908,6 @@ export function tableViewMobile(header = [], data = []) {
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
     Object.assign(result,tableView.prototype);
-    console.log(result)
     result.check = check;
     result.header = header;
     result.data = data;
@@ -2092,6 +2183,10 @@ function sortArray(arr,index,increase=true)
             sortArray(a.child,index,increase);
             var valueA = a[index].value;
             var valueB = b[index].value;
+            if(typeof valueA==="string")
+                valueA  = valueA.toLowerCase();
+            if(typeof valueB==="string")
+                valueB  = valueA.toLowerCase();
             if(valueA===undefined)
                 valueA = a[index];
             if(valueB===undefined)
@@ -2109,6 +2204,10 @@ function sortArray(arr,index,increase=true)
             sortArray(a.child,index,increase);
             var valueA = a[index].value;
             var valueB = b[index].value;
+            if(typeof valueA==="string")
+                valueA  = valueA.toLowerCase();
+            if(typeof valueB==="string")
+                valueB  = valueA.toLowerCase();
             if(valueA===undefined)
                 valueA = a[index];
             if(valueB===undefined)
