@@ -86,6 +86,12 @@ tr:not(.parent) ~ .parent:nth-child(even) {
 }
 
 
+.margin-div-cell{
+    width: 24px;
+    height: 100%;
+    display: inline-block;
+}
+
 /* .sortTable tr:nth-child(even) {
     background-color: #f5f5f5;
   } */

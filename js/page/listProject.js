@@ -172,7 +172,7 @@ listProject.prototype.getView = function () {
     var functionClickMore = function(event,me,index,parent,data,row){
         console.log(event,me,index,parent,data,row);
         console.log(tableViewX)
-        // tableViewX.dropRow(index)
+        // parent.dropRow(index);
         parent.updateRow(tableViewX.data[0],index);
     }
     var test = _({
