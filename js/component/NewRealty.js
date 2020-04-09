@@ -222,10 +222,10 @@ NewRealty.prototype.descViewImageThumnail = function(dataImage)
         on:{
             click:function(event)
             {
-                document.body.appendChild(NewRealty.prototype.descViewImagePreview(dataImage));
-                // xmlModalDragImage.createModal(document.body,function(){
-                //     console.log(xmlModalDragImage.imgUrl)
-                // });
+                // document.body.appendChild(NewRealty.prototype.descViewImagePreview(dataImage));
+                xmlModalDragImage.createModal(document.body,function(){
+                    console.log(xmlModalDragImage.imgUrl)
+                });
             }
         }
     })

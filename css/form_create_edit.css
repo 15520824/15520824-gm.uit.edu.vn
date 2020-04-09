@@ -1,81 +1,10 @@
-.absol-single-page-header {
-    padding: 10px 10px 10px 20px;
-    background-color: white;
-}
-
-.absol-single-page-header .absol-icon-button:not(:first-child)  {
-    margin-left: 5px;
-}
-.absol-single-page-header .absol-icon-button:not(:last-child)  {
-    margin-right: 5px;
-}
-
-.absol-single-page-scroller-viewport{
-    height:100%;
-}
-
-.common{
-    height:100%;
-}
-
-.common-container{
-    height: 100%;
-    position: relative;
-    overflow-y: auto;
-    margin-left: 20px;
-    margin-right: 10px;
-}
 
 
 /*////////////////////////////////////////////////////////////*/
 
-
-.absol-static-tabbar{
-    margin: auto;
-    position: relative;
-}
-
-.absol-static-tabbar-hline {
-    border-bottom: solid 3px rgb(103, 58, 183);
-    height: calc(100% - 3px);
-}
-
-
 .freebirdMaterialHeaderbannerLabelTextContainer {
     color: #fff;
     min-width: 0%;
-}
-
-.absol-static-tabbar-active-box {
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    width: 0;
-    transition: left 0.15s, width 0.15s;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    box-sizing: border-box;
-    /* z-index: 1; */
-}
-
-.absol-static-tabbar-button {
-    height: 2em;
-    background-color: transparent;
-    border: none;
-    font-size: 1em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    color: rgb(104, 104, 104);
-    outline: none;
-}
-
-.absol-static-tabbar-button.active {
-    color: rgb(103, 58, 183);
-}
-
-.absol-static-tabbar-button >span{
-    font: 500 18px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
 }
 
 .icon-ceneter{
