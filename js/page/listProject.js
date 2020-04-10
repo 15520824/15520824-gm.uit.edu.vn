@@ -169,12 +169,14 @@ listProject.prototype.getView = function () {
         ]
     });
     var tableViewX;
-    var xyz = 0;
     var functionClickMore = function(event,me,index,parent,data,row){
         console.log(event,me,index,parent,data,row);
         console.log(tableViewX)
         // parent.dropRow(index);
-        row.insertRow(Object.assign({}, tableViewX.data[xyz++]));
+        var kj =[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25","Q. Bình Thạnh","Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]
+        row.insertRow(
+            kj
+        );
     }
     var test = _({
         tag:"span",
