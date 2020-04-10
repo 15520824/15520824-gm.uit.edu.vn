@@ -21,7 +21,6 @@
 
 .sort-container{
 	display: none;
-	border: 1px solid rgb(73,73,73);
 }
 
 .has-sort .sort-container{
@@ -32,6 +31,8 @@
 	display: inline-block;
 	height: 28px;
     width: 18px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .has-sort.downgrade .sort-container .arrow_up>path{
@@ -53,10 +54,10 @@
 }
 
 .sortTable tr.more-child> td>i.more-button, .sortTableClone tr.more-child> td>i.more-button{
-	transform: rotateZ(90deg);
+	transform: translateX(-100%) translateY(-50%) rotateZ(90deg);
 }
 
-.disPLayNone{
+.disPlayNone{
     display: none;
 }
 
@@ -88,9 +89,42 @@ tr:not(.parent) ~ .parent:nth-child(even) {
 
 .margin-div-cell{
     width: 20px;
-    height: 100%;
     display: inline-block;
 }
+
+
+.more-button{
+    font-size: 16px;
+    margin-right: 4px;
+    position: absolute;
+    vertical-align: middle;
+    transform: translateX(-100%) translateY(-50%);
+    cursor: pointer;
+    display: inline-block;
+    top: 50%;
+  }
+  
+  .container-view{
+      display: inline-block;
+  }
+
+  .sortTable .margin-left-has-icon{
+    padding-left: 1.42857142857rem;
+  }
+
+  
+  .sortTable.padding-High-table tbody td:first-child{
+    padding-left: 1.42857142857rem;
+    
+  }
+
+  .sortTable td:first-child{
+    padding-left: 0.71428571428rem;
+  }
+
+  .sortTable td:last-child{
+    padding-right: 0.71428571428rem;
+  }
 
 /* .sortTable tr:nth-child(even) {
     background-color: #f5f5f5;

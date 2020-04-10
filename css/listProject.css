@@ -289,3 +289,7 @@
 .pizo-list-project-main-search-control.showTranslate .hideTranslate.pizo-list-project-main-search-control-container{
     transform: translateX(0);
 }
+
+.pizo-list-project-main-result-control .sortTable{
+    width: 100%;
+}

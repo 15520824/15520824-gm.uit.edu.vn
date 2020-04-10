@@ -489,7 +489,7 @@ input.pizo-new-realty-location-detail-row-menu{
  */
 
  .pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {
-  width: calc(50% - 0.71428571428rem);
+  width: calc(50% - 0.71428571428rem;);
 }
 
 .pizo-new-realty-dectruct-content-area-size-zone.margin-style {

@@ -1,5 +1,5 @@
 html{
-    font-size: 16px;
+    font-size: 14px;
 }
 
 input{
@@ -133,7 +133,7 @@ body {
 
 .pizo-body-title-right{
     margin-right: 2.1429rem;
-    margin-top: 0.5714rem;
+    margin-top: 0.71428571428rem;
     font-size: 1rem;
     float: right;
 }

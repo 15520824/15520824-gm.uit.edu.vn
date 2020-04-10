@@ -108,7 +108,7 @@
   License: none (public domain)
 ---------------------------------------------*/
 .sortTable{
-  width: 100%;
+  max-width: 100%;
 }
 .sortTable,.sortTableClone {
     background: #fff;
@@ -117,15 +117,12 @@
     margin: 0 auto;
     position: relative;
     padding-bottom: 10px;
+    font-size: 1rem;
     /* border-spacing: 10px; */
 }
 
 .sortTableClone{
   left: 0;
-}
-
-.sortTable tr{
-  
 }
 
 .sortTable  tr.hideTranslate{
@@ -140,9 +137,10 @@
 
 .sortTable th,.sortTable td,
 .sortTableClone th,.sortTableClone td {
-  padding: 0.5714rem;
+  padding: 0.35714285714rem;
   text-align: left;
   border-top: 1px solid var(--color-input-color);
+  position: relative;
 }
 .sortTable th,.sortTableClone th {
   background: #36304a;
@@ -150,7 +148,7 @@
   color: #fff;
 }
 .sortTable td,.sortTableClone td {
-  vertical-align: top;
+  vertical-align: middle;
   white-space: nowrap;
 }
 .sortTable thead:first-child tr th,
@@ -396,10 +394,4 @@
 .il {
   color: #099;
 } /* Literal.Number.Integer.Long */
-
-.more-button{
-  font-size: 16px;
-  margin-right: 4px;
-  vertical-align: middle;
-}
 

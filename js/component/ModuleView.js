@@ -426,7 +426,6 @@ function moveElementFix(event, me, result, index) {
             {
                 element = element.parentNode;
             }
-            console.log(element,removeList.elementReal)
             result.bodyTable.insertBefore(element,removeList.elementReal);
             if(element.getElementChild!==undefined){
                 var elementChild = element.getElementChild();
@@ -438,7 +437,6 @@ function moveElementFix(event, me, result, index) {
                     }
                 }
             }
-            console.log(result)
             if(result.data.child!==undefined){
                 result.data.child = changeIndex(result.data.child,index-1,row1);
                 result.childrenNodes = changeIndex(result.childrenNodes,index-1,row1);
@@ -547,7 +545,7 @@ function captureMousePosition(event) {
 }
 
 
-export function tableView(header = [], data = [], dragHorizontal, dragVertical) {
+export function tableView(header = [], data = [], dragHorizontal, dragVertical,childIndex = 1) {
     if (window.mobilecheck())
         return tableViewMobile(header,data);
 
@@ -562,9 +560,6 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
 
     var result = _({
         tag: "table",
-        style: {
-            fontSize: "0.7857rem"
-        },
         class: "sortTable",
         child: [
             headerTable,
@@ -831,20 +826,28 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
                     }
                 ]
             }));
+
+            var tempFunc = function(cellIndex,valueIndex){
+                return function(){
+                    cellIndex.style.minWidth = fakeInput(valueIndex,parseFloat(window.getComputedStyle(cellIndex).fontSize)) +10 + "px";
+                }
+            }(cell,value);
+
+            setTimeout(tempFunc,300);
             result.clone[k++].push(cell);
             
             row.addChild(cell);
-            // console.log(cell,window.getComputedStyle(cell,null).getPropertyValue('font-size'),"xxxxxxxx")
-            // cell.style.minWidth = fakeInput(value,parseFloat(window.getComputedStyle(cell).fontSize))+"px";
         } else
             check[i] = "hidden";
     }
     result.parentMargin = 0;
+    
+    result.childIndex = childIndex;
+
     result.getBodyTable(data);
    
     result.checkSpan  = checkSpan;
 
-   
     return result;
 }
 
@@ -858,21 +861,23 @@ tableView.prototype.addInputSearch = function(input)
             {
                 if(!self.bodyTable.childNodes[i].classList.contains("parent"))
                 self.bodyTable.childNodes[i].classList.add("parent");
-                if(self.bodyTable.childNodes[i].classList.contains("disPLayNone"))
-                self.bodyTable.childNodes[i].classList.remove("disPLayNone");
+                if(self.bodyTable.childNodes[i].classList.contains("disPlayNone"))
+                self.bodyTable.childNodes[i].classList.remove("disPlayNone");
                 if(self.bodyTable.childNodes[i].childNodes[0].getParentNode()!==undefined)
                 {
                     if(!self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("parent"))
                     self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.add("parent");
-                    if(self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("disPLayNone"))
-                    self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.remove("disPLayNone");
+                    if(self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("disPlayNone"))
+                    self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.remove("disPlayNone");
+                    if(!self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("more-child"))
+                    self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.add("more-child");
                 }
             }else
             {
                 if(self.bodyTable.childNodes[i].classList.contains("parent"))
                 self.bodyTable.childNodes[i].classList.remove("parent");
-                if(!self.bodyTable.childNodes[i].classList.contains("disPLayNone"))
-                self.bodyTable.childNodes[i].classList.add("disPLayNone");
+                if(!self.bodyTable.childNodes[i].classList.contains("disPlayNone"))
+                self.bodyTable.childNodes[i].classList.add("disPlayNone");
             }
         }
     }
@@ -898,7 +903,6 @@ function checkValueIs(data,text)
 
 tableView.prototype.getBodyTable = function(data)
 {
-    console.log(data)
     var temp  = this.bodyTable;
     var result = this, k, delta = [],row,cell;
     var arr = [];
@@ -927,8 +931,6 @@ tableView.prototype.getBodyTable = function(data)
             result.clone[j][i+1 - delta[j]] = cell;
             row.addChild(cell);
         }
-        console.log(result.parentMargin)
-        row.parentMargin = result.parentMargin + 1;
         row.checkChild();
     }
     return arr;
@@ -941,58 +943,81 @@ tableView.prototype.getRow = function(data)
         class:"parent"
     });
     var result = this;
+    
+    Object.assign(temp,tableView.prototype);
+    temp.headerTable = result.headerTable;
+    temp.bodyTable = result.bodyTable;
+    temp.check = result.check;
+    temp.header = result.header;
+    temp.dragVertical = result.dragVertical;
+    temp.dragHorizontal = result.dragHorizontal;
     temp.data = data;
+    if(temp.data.child===undefined)
+    temp.data.child = [];
+    temp.childrenNodes = [];
+    temp.clone = [];
+    temp.parentMargin = result.parentMargin + 1;
+    temp.childIndex = result.childIndex;
     temp.checkChild = function(data)
     {
+        if(temp.clone.length === 0){
+            temp.clone = [];
+            var k = 0;
+            for(var i = 0;i<temp.childNodes.length;i++)
+            {
+                temp.clone[k++] = [temp.childNodes[i]];
+                if(temp.childNodes[i].colSpan!==1)
+                {
+                    k++;
+                }
+            }
+        }
         if(data!==undefined)
         temp.data =  data;
-        if(temp.data.child!==undefined)
+        if(temp.data.child.length!==0)
         {
-            var indexMore = 0;
-            if(temp.data.child.index!==undefined)
-                indexMore = temp.data.child.index;
-                temp.classList.add("more-child");
-                var buttonClick = _({
-                    tag:"i",
-                    on:{
-                        click:function(event){
-                            temp.setDisPlay();
-                        }
-                    },
-                    class: ["material-icons","more-button"],
-                    props:{
-                        innerHTML:"play_arrow"
-                    },
-                });
-                var x = temp.childNodes[indexMore].firstChild;
-                while(x.classList!==undefined&&x.classList.contains("margin-div-cell"))
-                x = x.nextSibling;
-                temp.childNodes[indexMore].insertBefore(buttonClick,x);
-                if(temp.childrenNodes === undefined){
-                    temp.clone = [];
-                    var k = 0;
-                    for(var i = 0;i<temp.childNodes.length;i++)
-                    {
-                        temp.clone[k++] = [temp.childNodes[i]];
-                        if(temp.childNodes[i].colSpan!==1)
-                        {
-                            k++;
-                        }
-                    }
-                }
+                temp.checkIcon();
+                temp.childrenNodes = temp.childrenNodes.concat(temp.getBodyTable(temp.data.child));
                 
-                Object.assign(temp,tableView.prototype);
-                temp.headerTable = result.headerTable;
-                temp.bodyTable = result.bodyTable;
-                temp.check = result.check;
-                temp.header = result.header;
-                temp.dragVertical = result.dragVertical;
-                temp.dragHorizontal = result.dragHorizontal;
-                if(temp.childrenNodes === undefined)
-                    temp.childrenNodes = temp.getBodyTable(temp.data.child);
         }
+
+        
     }
-    
+
+    temp.checkIcon  = function()
+    {
+        var indexMore = 0;
+        if(temp.childIndex!==undefined)
+        {
+            if(temp.childIndex === 0){
+                if(!result.classList.contains("padding-High-table"))
+                result.classList.add("padding-High-table")
+            }
+            
+            indexMore = temp.childIndex;
+        }
+            
+            temp.classList.add("more-child");
+            var buttonClick = _({
+                tag:"i",
+                on:{
+                    click:function(event){
+                        temp.setDisPlay();
+                    }
+                },
+                class: ["material-icons","more-button"],
+                props:{
+                    innerHTML:"play_arrow"
+                },
+        });
+        var x = temp.childNodes[indexMore].firstChild;
+        while(x.classList!==undefined&&x.classList.contains("margin-div-cell"))
+        x = x.nextSibling;
+        temp.childNodes[indexMore].insertBefore(buttonClick,x);
+        temp.childNodes[indexMore].classList.add("margin-left-has-icon");    
+        
+    }
+   
     return temp;
 }
 
@@ -1005,24 +1030,39 @@ tableView.prototype.setDisPlay = function()
         for(var i=0;i<childrenNodes.length;i++)
         {
             childrenNodes[i].classList.add("parent");
-            childrenNodes[i].classList.remove("disPLayNone");
+            childrenNodes[i].classList.remove("disPlayNone");
             if(childrenNodes[i].childrenNodes!==undefined)
-            childrenNodes[i].setDisPlay();
+            childrenNodes[i].setDisPlayVisable();
         } 
     }
     else{
+        this.classList.remove("more-child");
         this.setDisPlayNone();
     }   
 }
 
-tableView.prototype.setDisPlayNone = function()
+tableView.prototype.setDisPlayVisable = function()
 {
-    this.classList.remove("more-child");
+    if(this.classList.contains("more-child"))
+    {
+        var childrenNodes = this.childrenNodes;
+        for(var i=0;i<childrenNodes.length;i++)
+        {
+            childrenNodes[i].classList.add("parent");
+            childrenNodes[i].classList.remove("disPlayNone");
+            if(childrenNodes[i].childrenNodes!==undefined)
+                childrenNodes[i].setDisPlayVisable();
+        } 
+    }
+}
+
+tableView.prototype.setDisPlayNone = function()
+{   
     var childrenNodes = this.childrenNodes;
     for(var i=0;i<childrenNodes.length;i++)
     {
         childrenNodes[i].classList.remove("parent");
-        childrenNodes[i].classList.add("disPLayNone");
+        childrenNodes[i].classList.add("disPlayNone");
         if(childrenNodes[i].childrenNodes!==undefined)
             childrenNodes[i].setDisPlayNone();
     } 
@@ -1209,7 +1249,6 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
                 return function (event) {
                     event.preventDefault();
                     if (functionClick !== undefined){
-                        console.log(cell.clone[0])
                         for (var i = 1; i < cell.clone[0].length; i++) {
                             if (cell.clone[0][i].idRow == index) {
                                 var dataIndex;
@@ -1227,26 +1266,41 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
             }(i, row, functionClick),
         }
     })
-    console.log(result.data.child)
+    var widthSize = 0;
+
+    var step = 20;
     if(result.data.child!==undefined)
-        if(k === result.data.child.index){
+        if(k === result.childIndex){
             for(var  i =0;i<result.parentMargin;i++)
             {
                 cell.addChild(result.getDivMargin());
+                widthSize+=step;
             }
         }
     
-    
+    var container = _({
+        tag:"div",
+        class:"container-view",
+        style:{
+            width:"calc(100% - "+widthSize+"px)"
+        }
+    })
+
+    if(widthSize!==0)
+    cell.classList.add("margin-left-has-icon");
+
+    cell.addChild(container);
     if(data.element===undefined)
     {
-        cell.addChild(_({text:value}))
+        container.addChild(_({text:value}))
+        
     }else
     {
-        cell.appendChild(data.element);
+        container.appendChild(data.element);
     }
 
     if (bonus !== undefined) {
-        cell.addChild(bonus);
+        container.addChild(bonus);
         bonus = undefined;
     }
 
@@ -1280,49 +1334,62 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
 }
 
 tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
+   
+    var row, cell,k;
+    var checkSpan = [];
+    
+    var result = this;
     var temp = _({
         tag: "tbody"
     });
-    var row, cell,k;
-    var checkSpan = [];
+
     temp.listCheckBox = [];
-    var result = this;
     if(dragHorizontal!==undefined)
     result.dragHorizontal = dragHorizontal;
     if(dragVertical!==undefined)
     result.dragVertical = dragVertical;
     if(this.bodyTable.listCheckBox!==undefined)
     temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
+
+    for(var i = 0;i<result.clone.length;i++)
+    {
+        result.clone[i] = [result.clone[i].shift()];
+    }
+    
     this.replaceChild(temp, this.bodyTable);
     this.bodyTable = temp;
+    result.getBodyTable(data);
+    
+    
+   
 
-    var delta = [];
-    for (var i = 0; i < data.length; i++) {
-        row = result.getRow(data[i]);
-        temp.addChild(row);
+    // var delta = [];
+    // for (var i = 0; i < data.length; i++) {
+    //     row = result.getRow(data[i]);
+    //     temp.addChild(row);
         
-        for (var j = 0; j < this.clone.length; j++) {
-            k = parseFloat(this.clone[j][0].id);
-            if(delta[j]===undefined)
-                delta[j] = 0;
+    //     for (var j = 0; j < this.clone.length; j++) {
+    //         k = parseFloat(this.clone[j][0].id);
+    //         if(delta[j]===undefined)
+    //             delta[j] = 0;
 
-            cell = result.getCell(data[i][k],i,k,j,checkSpan,row);
-            if(cell === 6  || cell === 2)
-            {
-                this.clone[j].splice(i+1 - delta[j],1);
-                delta[j]+=1;
-                continue
-            }
-            if(cell === true)
-            {
-                continue;
-            }
-            cell.clone = this.clone;
-            this.clone[j][i+1 - delta[j]] = cell;
-            row.addChild(cell);
-        }
-        row.checkChild();
-    }
+    //         cell = result.getCell(data[i][k],i,k,j,checkSpan,row);
+    //         if(cell === 6  || cell === 2)
+    //         {
+    //             this.clone[j].splice(i+1 - delta[j],1);
+    //             delta[j]+=1;
+    //             continue
+    //         }
+    //         if(cell === true)
+    //         {
+    //             continue;
+    //         }
+    //         cell.clone = this.clone;
+    //         this.clone[j][i+1 - delta[j]] = cell;
+    //         row.addChild(cell);
+    //     }
+    //     row.checkChild();
+    // }
     this.checkSpan  = checkSpan;
     this.data = data;
     if(this.inputElement!==undefined)
@@ -1331,9 +1398,10 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 
 tableView.prototype.insertRow = function(data)
 {
-    if(this.data.child!==undefined)
-    return this.updateRow(data,this.data.child.length)
+    if(this.tagName === "TABLE")
     return this.updateRow(data,this.data.length)
+    else
+    return this.updateRow(data,this.data.child.length)
 }
 
 tableView.prototype.updateRow = function(data,index)
@@ -1360,19 +1428,18 @@ tableView.prototype.updateRow = function(data,index)
         }
     }
 
-    
+    var checkChild = false;
     
     if(result.childrenNodes!==undefined&&result.childrenNodes.length===index){
-        result.bodyTable.insertBefore(row, result.childrenNodes[result.childrenNodes.length-1].nextSibling);
+        checkChild = true;
+        result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length-1].parentNode.nextSibling);
     }else if(index===result.data.length&&result.childrenNodes===undefined)
     {
         result.bodyTable.addChild(row);
     }
     else{
         var temp;
-        console.log(result,index)
         temp = result.clone[0][index+1].parentNode;
-        console.log(row,temp);
         result.bodyTable.replaceChild(row,temp);
         
         if(temp.childrenNodes!==undefined){
@@ -1405,11 +1472,17 @@ tableView.prototype.updateRow = function(data,index)
         row.addChild(cell);
     }
     var x;
-   if(result.data.child!==undefined){
-
+   if(result.tagName!=="TABLE"){
        result.childrenNodes[index] = row;
        if(result.data.child[index]===undefined)
-       x = data;
+       {
+        x = data;
+        console.log(data);
+        console.log(result.data==data);
+        result.data.child[index] = data;
+        var a = 1;
+        a +=1;
+       }
        else
         x = Object.assign(result.data.child[index],data);
    }
@@ -1422,6 +1495,7 @@ tableView.prototype.updateRow = function(data,index)
        else
         x = Object.assign(result.data[index],data)
    }
+   console.log(x)
    row.data = x;
    if(temp!==undefined){
         row.childrenNodes = temp.childrenNodes;
@@ -1456,12 +1530,45 @@ tableView.prototype.updateRow = function(data,index)
         }
        
    }
-   
-   
+   if(checkChild = true)
+   {
+       result.checkIcon();
+   }
    row.checkChild();
 
-    if(this.inputElement!==undefined)
-    this.inputElement.onchange();
+   result.checkDataUpdate(row);
+}
+
+tableView.prototype.checkDataUpdate = function(row)
+{
+    var self = this;
+    var input = self.headerTable.parentNode.inputElement;
+    for(var i = 0;i<row.childNodes.length;i++)
+    {
+        if(checkValueIs(row.childNodes,input.value))
+        {
+            if(!row.classList.contains("parent"))
+            row.classList.add("parent");
+            if(row.classList.contains("disPlayNone"))
+            row.classList.remove("disPlayNone");
+            if(row.childNodes[0].getParentNode()!==undefined)
+            {
+                if(!row.childNodes[0].getParentNode().classList.contains("parent"))
+                row.childNodes[0].getParentNode().classList.add("parent");
+                if(row.childNodes[0].getParentNode().classList.contains("disPlayNone"))
+                row.childNodes[0].getParentNode().classList.remove("disPlayNone");
+                if(!row.childNodes[0].getParentNode().classList.contains("more-child"))
+                row.childNodes[0].getParentNode().classList.add("more-child");
+            }
+        }else
+        {
+            if(row.classList.contains("parent"))
+            row.classList.remove("parent");
+            if(!row.classList.contains("disPlayNone"))
+            row.classList.add("disPlayNone");
+        }
+    }
+
 }
 
 tableView.prototype.dropRow = function(index)
@@ -1472,8 +1579,6 @@ tableView.prototype.dropRow = function(index)
     var parent = element.childNodes[0].getParentNode();
     if(!element.classList.contains("hideTranslate"))
         element.classList.add("hideTranslate");
-
-    console.log(element);
     
     var eventEnd = function(){
         parent.dropRowChild(element)
@@ -1525,7 +1630,6 @@ tableView.prototype.dropRowChildElement = function()
 tableView.prototype.backGroundFix = function (index) {
     var rect = this.getBoundingClientRect();
     var scrollParent = this;
-    console.log(this);
     while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
         scrollParent = scrollParent.parentNode;
     }
@@ -1691,7 +1795,6 @@ tableView.prototype.cloneCellColumn = function(bodyTable,cloneArray,index)
                 clone
             ]
         })
-        console.log(cell)
         cell.classList = cloneArray[index][i].parentNode.classList;
         if(cloneArray[index][i].colSpan!==undefined)
         clone.setAttribute("rowSpan","")
@@ -1906,7 +2009,6 @@ tableView.prototype.getBound2Row = function (row1, row2) {
         bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(style2.webkitBorderVerticalSpacing)/2;
         if(row1!==undefined&&self.clone[0][row2].parentNode.childrenNodes!==undefined)
         {
-            // console.log(self.clone[0][row2].parentNode.getHeightChild(),'xxxxxxxxxxxx')
             bottom+=self.clone[0][row2].parentNode.getHeightChild();
         }
     }
@@ -2234,6 +2336,11 @@ export function tableViewMobile(header = [], data = []) {
                     }
                 ]
             }));
+            setTimeout(function(cell,value){
+                console.log(fakeInput(value,window.getComputedStyle(cell).fontSize))
+                cell.style.minWidth = fakeInput(value,window.getComputedStyle(cell).fontSize) + "px";
+            }(cell,value),100);
+
             result.clone[k++].push(cell);
             
             row.addChild(cell);
@@ -2254,20 +2361,24 @@ function sortArray(arr,index,increase=true)
             sortArray(a.child,index,increase);
             var valueA = a[index].value;
             var valueB = b[index].value;
-            if(typeof valueA==="string")
-                valueA  = valueA.toLowerCase();
-            if(typeof valueB==="string")
-                valueB  = valueA.toLowerCase();
             if(valueA===undefined)
                 valueA = a[index];
             if(valueB===undefined)
                 valueB = b[index];
+            if(typeof valueA==="string")
+                valueA  = valueA.toLowerCase();
+            if(typeof valueB==="string")
+                valueB  = valueB.toLowerCase();
             if (valueA > valueB)
                 return -1;
             if ( valueA < valueB)
                 return 1;
               return 0;
         })
+        if(arr[arr.length-1].child!==undefined)
+        {
+            sortArray(arr[arr.length-1].child,index,increase);
+        }
     }
     else{
         arr.sort(function (a, b) {
@@ -2275,22 +2386,25 @@ function sortArray(arr,index,increase=true)
             sortArray(a.child,index,increase);
             var valueA = a[index].value;
             var valueB = b[index].value;
-            if(typeof valueA==="string")
-                valueA  = valueA.toLowerCase();
-            if(typeof valueB==="string")
-                valueB  = valueA.toLowerCase();
             if(valueA===undefined)
                 valueA = a[index];
             if(valueB===undefined)
                 valueB = b[index];
+            if(typeof valueA==="string")
+                valueA  = valueA.toLowerCase();
+            if(typeof valueB==="string")
+                valueB  = valueB.toLowerCase();
             if (valueA < valueB)
                 return -1;
             if ( valueA > valueB)
                 return 1;
               return 0;
         })
+        if(arr[arr.length-1].child!==undefined)
+        {
+            sortArray(arr[arr.length-1].child,index,increase);
+        }
     }
-    
 }
 
 export function getDate() {
