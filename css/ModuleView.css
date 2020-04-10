@@ -151,6 +151,7 @@
 }
 .sortTable td,.sortTableClone td {
   vertical-align: top;
+  white-space: nowrap;
 }
 .sortTable thead:first-child tr th,
 .sortTable thead:first-child tr td,
@@ -395,4 +396,10 @@
 .il {
   color: #099;
 } /* Literal.Number.Integer.Long */
+
+.more-button{
+  font-size: 16px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
 

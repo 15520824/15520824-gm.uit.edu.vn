@@ -839,9 +839,12 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical) 
         } else
             check[i] = "hidden";
     }
+    result.parentMargin = 0;
     result.getBodyTable(data);
    
     result.checkSpan  = checkSpan;
+
+   
     return result;
 }
 
@@ -893,30 +896,26 @@ function checkValueIs(data,text)
     return false;
 }
 
-tableView.prototype.getBodyTable = function(data,parentContent)
+tableView.prototype.getBodyTable = function(data)
 {
+    console.log(data)
     var temp  = this.bodyTable;
     var result = this, k, delta = [],row,cell;
-    var parent = this;
     var arr = [];
-   
-    if(parentContent!==undefined)
-        parent = parentContent;
     if(parent.checkSpan===undefined)
-        parent.checkSpan = [];
+        result.checkSpan = [];
     for (var i = 0; i < data.length; i++) {
         row = result.getRow(data[i]);
         temp.addChild(row);
         arr.push(row);
-        for (var j = 0; j < result.clone.length; j++) {
-            k = parseFloat(result.clone[j][0].id);
+        for (var j = 0; j < temp.parentNode.clone.length; j++) {
+            k = parseFloat(temp.parentNode.clone[j][0].id);
             if(delta[j]===undefined)
                 delta[j] = 0;
-
-            cell = result.getCell(data[i][k],i,k,j,parent.checkSpan,row);
+            cell = result.getCell(data[i][k],i,k,j,result.checkSpan,row);
             if(cell === 6  || cell === 2)
             {
-                parent.clone[j].splice(i+1 - delta[j],1);
+                result.clone[j].splice(i+1 - delta[j],1);
                 delta[j]+=1;
                 continue
             }
@@ -924,10 +923,12 @@ tableView.prototype.getBodyTable = function(data,parentContent)
             {
                 continue;
             }
-            cell.clone = parent.clone;
-            parent.clone[j][i+1 - delta[j]] = cell;
+            cell.clone = result.clone;
+            result.clone[j][i+1 - delta[j]] = cell;
             row.addChild(cell);
         }
+        console.log(result.parentMargin)
+        row.parentMargin = result.parentMargin + 1;
         row.checkChild();
     }
     return arr;
@@ -963,7 +964,10 @@ tableView.prototype.getRow = function(data)
                         innerHTML:"play_arrow"
                     },
                 });
-                temp.childNodes[indexMore].insertBefore(buttonClick, temp.childNodes[indexMore].firstChild);
+                var x = temp.childNodes[indexMore].firstChild;
+                while(x.classList!==undefined&&x.classList.contains("margin-div-cell"))
+                x = x.nextSibling;
+                temp.childNodes[indexMore].insertBefore(buttonClick,x);
                 if(temp.childrenNodes === undefined){
                     temp.clone = [];
                     var k = 0;
@@ -977,8 +981,6 @@ tableView.prototype.getRow = function(data)
                     }
                 }
                 
-                if(temp.childrenNodes === undefined)
-                    temp.childrenNodes = result.getBodyTable(temp.data.child,temp);
                 Object.assign(temp,tableView.prototype);
                 temp.headerTable = result.headerTable;
                 temp.bodyTable = result.bodyTable;
@@ -986,6 +988,8 @@ tableView.prototype.getRow = function(data)
                 temp.header = result.header;
                 temp.dragVertical = result.dragVertical;
                 temp.dragHorizontal = result.dragHorizontal;
+                if(temp.childrenNodes === undefined)
+                    temp.childrenNodes = temp.getBodyTable(temp.data.child);
         }
     }
     
@@ -1223,6 +1227,15 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
             }(i, row, functionClick),
         }
     })
+    console.log(result.data.child)
+    if(result.data.child!==undefined)
+        if(k === result.data.child.index){
+            for(var  i =0;i<result.parentMargin;i++)
+            {
+                cell.addChild(result.getDivMargin());
+            }
+        }
+    
     
     if(data.element===undefined)
     {
@@ -1318,7 +1331,9 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 
 tableView.prototype.insertRow = function(data)
 {
-    this.updateRow(data,this.data.length)
+    if(this.data.child!==undefined)
+    return this.updateRow(data,this.data.child.length)
+    return this.updateRow(data,this.data.length)
 }
 
 tableView.prototype.updateRow = function(data,index)
@@ -1355,6 +1370,7 @@ tableView.prototype.updateRow = function(data,index)
     }
     else{
         var temp;
+        console.log(result,index)
         temp = result.clone[0][index+1].parentNode;
         console.log(row,temp);
         result.bodyTable.replaceChild(row,temp);
@@ -1390,10 +1406,20 @@ tableView.prototype.updateRow = function(data,index)
     }
     var x;
    if(result.data.child!==undefined){
+
        result.childrenNodes[index] = row;
-        x = Object.assign(result.data.child[index],data)
+       if(result.data.child[index]===undefined)
+       x = data;
+       else
+        x = Object.assign(result.data.child[index],data);
    }
    else{
+       if(result.data[index]===undefined)
+        {
+            result.data[index] = data;
+            x = result.data[index]
+        } 
+       else
         x = Object.assign(result.data[index],data)
    }
    row.data = x;

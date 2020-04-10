@@ -87,7 +87,7 @@ tr:not(.parent) ~ .parent:nth-child(even) {
 
 
 .margin-div-cell{
-    width: 24px;
+    width: 20px;
     height: 100%;
     display: inline-block;
 }
