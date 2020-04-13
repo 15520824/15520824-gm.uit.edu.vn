@@ -283,8 +283,8 @@ function moveAtFix(clone,pageY,shiftY,result)
         return;
     }
     
-    if(y<clone.clientHeight/2){
-        y = clone.clientHeight/2;
+    if(y< clone.clientHeight/4){
+        y = clone.clientHeight/4;
         return;
     }
 
@@ -933,6 +933,8 @@ tableView.prototype.getBodyTable = function(data)
         }
         row.checkChild();
     }
+    if(result.checkMargin!==undefined)
+    result.checkMargin();
     return arr;
 }
 
@@ -1014,8 +1016,14 @@ tableView.prototype.getRow = function(data)
         while(x.classList!==undefined&&x.classList.contains("margin-div-cell"))
         x = x.nextSibling;
         temp.childNodes[indexMore].insertBefore(buttonClick,x);
-        temp.childNodes[indexMore].classList.add("margin-left-has-icon");    
-        
+        result.checkMargin = function(){
+            for(var i = 0;i<result.clone[indexMore].length;i++)
+            {
+                if(!result.clone[indexMore][i].classList.contains("margin-left-has-icon"))
+                result.clone[indexMore][i].classList.add("margin-left-has-icon");    
+            }
+        }
+        result.checkMargin();
     }
    
     return temp;
@@ -1535,6 +1543,8 @@ tableView.prototype.updateRow = function(data,index)
        result.checkIcon();
    }
    row.checkChild();
+   if(result.checkMargin!==undefined)
+   result.checkMargin();
 
    result.checkDataUpdate(row);
 }
