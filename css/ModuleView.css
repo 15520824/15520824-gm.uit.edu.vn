@@ -116,13 +116,15 @@
     overflow: hidden;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 10px;
     font-size: 1rem;
     /* border-spacing: 10px; */
 }
 
 .sortTableClone{
   left: 0;
+  font-size: 1rem;
+  position: absolute;
+  z-index: 1000;
 }
 
 .sortTable  tr.hideTranslate{

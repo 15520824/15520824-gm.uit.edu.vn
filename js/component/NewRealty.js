@@ -222,10 +222,10 @@ NewRealty.prototype.descViewImageThumnail = function(dataImage)
         on:{
             click:function(event)
             {
-                // document.body.appendChild(NewRealty.prototype.descViewImagePreview(dataImage));
-                xmlModalDragImage.createModal(document.body,function(){
-                    console.log(xmlModalDragImage.imgUrl)
-                });
+                document.body.appendChild(NewRealty.prototype.descViewImagePreview(dataImage));
+                // xmlModalDragImage.createModal(document.body,function(){
+                //     console.log(xmlModalDragImage.imgUrl)
+                // });
             }
         }
     })
@@ -1782,8 +1782,7 @@ function mapView() {
             }
         ]
     })
-    temp.activeMap = mapView.prototype.activeMap;
-    temp.activeDetail = mapView.prototype.activeDetail;
+    Object.assign(temp,mapView.prototype);
     
     return temp;
 }
@@ -1802,10 +1801,6 @@ mapView.prototype.activeMap = function (center = [10.822500, 106.629104], zoom =
             mapTypeIds: ['roadmap', 'satellite']
         }
     });
-    this.addMoveMarker = mapView.prototype.addMoveMarker;
-    this.transition = mapView.prototype.transition;
-    this.moveMarker = mapView.prototype.moveMarker;
-    this.smoothZoom = mapView.prototype.smoothZoom;
     this.delay = 10;
     this.numDeltas = 50;
     return map;
@@ -1862,7 +1857,27 @@ mapView.prototype.transition = function (result,changeInput) {
 
     var deltaLat = (result[0] - position[0]) / this.numDeltas;
     var deltaLng = (result[1] - position[1]) / this.numDeltas;
+    window.service.nearbySearch({ location: {lat: result[0], lng: result[1]}, rankBy: google.maps.places.RankBy.DISTANCE , type: ['market'] },
+    function(results, status){
+        self.callback(results, status)
+    });
     return this.moveMarker(position, deltaLat, deltaLng);
+}
+
+mapView.prototype.callback = function(results, status) {
+    console.log(this)
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        console.log(results)
+        // for (var i = 0; i < results.length; i++) { 
+        //     this.createMarker(results[i]); 
+        // }
+    }
+}
+
+mapView.prototype.createMarker = function(place) { 
+    var marker = new google.maps.Marker({ map: this.map, position: place.geometry.location }); 
+    google.maps.event.addListener(marker, 'click', function () { infowindow.setContent(place.name); 
+    infowindow.open(map, this); }); 
 }
 
 mapView.prototype.moveMarker = function (position, deltaLat, deltaLng, i = 0) {

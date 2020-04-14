@@ -48,7 +48,7 @@
         function initMap(){
             var service = new google.maps.places.PlacesService(document.body
                          .appendChild(document.createElement('div')));
-                    console.log(service)
+                window.service = service;
                 
                 if(window.mobilecheck()===true)
                 {
