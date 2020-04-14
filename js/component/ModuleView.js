@@ -313,8 +313,8 @@ function moveElement(event, me, result, index) {
         return;
 
     scrollParent.addEventListener("scroll", function (event) {
-        // bg.isMove = false;
-        // outFocus(clone, trigger, functionCheckZone, bg, parent);
+        bg.isMove = false;
+        outFocus(clone, trigger, functionCheckZone, bg, parent);
     })
 
     var trigger;
@@ -362,7 +362,7 @@ function moveElement(event, me, result, index) {
     window.addEventListener('mousemove', trigger = function (event) { onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, parent) });
     clone.onmouseup = function () {
         bg.isMove = false;
-        // outFocus(clone, trigger, functionCheckZone, bg, parent);
+        outFocus(clone, trigger, functionCheckZone, bg, parent);
     };
 }
 
@@ -562,7 +562,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
     if (window.mobilecheck())
         return tableViewMobile(header,data);
 
-    var cell, row, value, check = [], bonus, style;
+    var cell, row, value, check = [], bonus, style, dragElement;
     var checkSpan = [];
     var headerTable = _({
         tag: "thead",
@@ -730,6 +730,9 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
             style = {};
             if(header[i].style!==undefined)
                 style = header[i].style;
+            dragElement = true;
+            if(header[i].dragElement!==undefined&&header[i].dragElement===false)
+            dragElement = false;
             cell = _({
                 tag: "th",
                 attr: {
@@ -747,7 +750,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                                 functionClick(event, this, index, data[index], row,result);
                         }
                     }(i, row, functionClick),
-                    mousedown: dragHorizontal ? function (index) {
+                    mousedown: (dragHorizontal&&dragElement) ? function (index) {
                         return function (event) {
                             event.preventDefault();
                             var finalIndex;
@@ -766,7 +769,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                             }, 200);
                         }
                     }(i) : undefined,
-                    dragstart: dragHorizontal ? function () {
+                    dragstart: (dragHorizontal&&dragElement) ? function () {
                         return false;
                     } : undefined,
                     mouseup: function () {
@@ -776,7 +779,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                             clearTimeout(this.timeoutID);
                         }
                     },
-                    mousemove: dragHorizontal ? function (index) {
+                    mousemove: (dragHorizontal&&dragElement) ? function (index) {
                         return function (event) {
                             if (this.hold === false) {
                                 var finalIndex;
@@ -1815,12 +1818,17 @@ tableView.prototype.backGround = function (height, callback, index) {
 
 
 tableView.prototype.deleteColumn = function (index) {
-    for (var i = 0; this.clone[index].length; i++) {
-        this.clone[index][i].parentNode.removeChild(this.clone[index][i]);
-        this.clone[index].splice(i, 1);
-        i--;
+    for (var i = 0; i<this.clone[index].length; i++) {
+        this.clone[index][i].selfRemove();
     }
     this.clone.splice(index, 1);
+    for(var i = 0;i<this.childrenNodes.length;i++)
+    {
+        if(this.childrenNodes[i].childrenNodes.length!==0)
+        {
+            this.childrenNodes[i].deleteColumn(index);
+        }
+    }
 }
 
 tableView.prototype.cloneColumn = function (index) {
