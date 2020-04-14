@@ -274,12 +274,16 @@ function moveAtFix(clone,pageY,shiftY,result)
 {
     var y = pageY - result.getBoundingClientRect().top;
     y-= shiftY;
-    var tempx = result.getHeightChild();
     var height = result.clientHeight;
-    if(tempx!==0)
-    height += tempx + result.clientHeight ;
-    if(y>height-clone.clientHeight){
-        y = result.clientHeight;
+    var tempx = height-3*clone.clientHeight/4;
+
+    if(result.tagName !== "TABLE"){
+        height += result.getHeightChild();
+        tempx = height;
+    }
+    
+    if(y>tempx){
+        y = tempx;
         return;
     }
     
@@ -1167,7 +1171,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
             {
                 bonus = _({
                     tag:"i",
-                    class: ["material-icons"],
+                    class: ["material-icons","drag-icon-button"],
                     props:{
                         innerHTML:"drag_indicator"
                     },
@@ -1300,7 +1304,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
     })
     var widthSize = 0;
 
-    var step = 20;
+    var step = 1.71428571429;
     if(result.data.child!==undefined)
         if(k === result.childIndex){
             for(var  i =0;i<result.parentMargin;i++)
@@ -1314,7 +1318,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
         tag:"div",
         class:"container-view",
         style:{
-            width:"calc(100% - "+widthSize+"px)"
+            width:"calc(100% - "+widthSize+"rem)"
         }
     })
 
@@ -2022,7 +2026,7 @@ tableView.prototype.getHeightChild = function()
     {
         result+= tempClone[i].offsetHeight; 
         if(tempClone[i].offsetHeight!==0)
-        result+= parseFloat(window.getComputedStyle(tempClone[i]).webkitBorderVerticalSpacing)/2;
+        result+= parseFloat(window.getComputedStyle(tempClone[i]).webkitBorderVerticalSpacing);
         if(tempClone[i].childrenNodes.length!==0)
         {
             result+= tempClone[i].getHeightChild();
@@ -2060,11 +2064,17 @@ tableView.prototype.getBound2Row = function (row1, row2) {
     {
         if(self.tagName!=="TABLE")
         {
+            if(self.clone[0][row1].parentNode.childrenNodes.length!==0)
+            {
+                var x = self.clone[0][row1].parentNode.getElementChild();
+                elementReal =x[x.length - 1].nextSibling;
+            }
+            else
             elementReal = self.clone[0][row1].parentNode.nextSibling;
         }
     }
     if (row1 !== undefined){
-        top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(style1.webkitBorderVerticalSpacing)/2;
+        top = (self.clone[0][row1].offsetHeight) / 2  + parseFloat(style1.webkitBorderVerticalSpacing)/2;
     }
     else
         top = parseFloat(window.getComputedStyle(self).paddingTop);
@@ -2074,6 +2084,10 @@ tableView.prototype.getBound2Row = function (row1, row2) {
             tag:"div"
         })
         bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(style2.webkitBorderVerticalSpacing)/2;
+
+        if(self.clone[0][row2].tagName!=="TH"&&row1===undefined)
+            bottom = (self.clone[0][row2].offsetHeight) / 2
+        
         if(row1!==undefined&&self.clone[0][row2].parentNode.childrenNodes.length!==0)
         {
             bottom+=self.clone[0][row2].parentNode.getHeightChild();
