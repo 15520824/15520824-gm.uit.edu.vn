@@ -148,12 +148,12 @@ NewRealty.prototype.getView = function () {
 NewRealty.prototype.descView = function()
 {
     var dataImage = [
-        {src:"assets/images/1.jfif"},
-        {src:"assets/images/2.jfif"},
-        {src:"assets/images/3.jfif"},
-        {src:"assets/images/4.jfif"},
-        {src:"assets/images/5.jfif"},
-        {src:"assets/images/6.jfif"},
+        {avatar:"assets/avatar/Thi.jpg", userName:"Bùi Phạm Minh Thi", src:"assets/images/1.jfif",date:"2017-06-10T16:08:00", note:"Phòng bếp tầng 1"},
+        {avatar:"assets/avatar/Thi.jpg", userName:"Bùi Phạm Minh Thi", src:"assets/images/2.jfif",date:"2018-06-10T16:08:00", note:"Phòng khách tầng 1"},
+        {avatar:"assets/avatar/Thi.jpg", userName:"Bùi Phạm Minh Thi", src:"assets/images/3.jfif",date:"2019-06-10T16:08:00", note:"Nhà tắm tầng 1"},
+        {avatar:"assets/avatar/Thi.jpg", userName:"Bùi Phạm Minh Thi", src:"assets/images/4.jfif",date:"2019-06-10T16:08:00", note:"Phòng Gym tầng 1"},
+        {avatar:"assets/avatar/Thi.jpg", userName:"Bùi Phạm Minh Thi", src:"assets/images/5.jfif",date:"2019-06-10T16:08:00", note:"Phòng thờ tầng 1"},
+        {avatar:"assets/avatar/Thi.jpg", userName:"Bùi Phạm Minh Thi", src:"assets/images/6.jfif",date:"2020-04-15T16:08:00", note:"Phòng kho tầng 1"},
     ]
     var temp = _({
         tag: "div",
