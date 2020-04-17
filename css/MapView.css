@@ -25,26 +25,29 @@
   }
   
   .pizo-new-realty-location-detail {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
+    max-width: 100%;
+    min-width: 380px;
+    display: inline-block;
+    margin-bottom: 0.7143rem;
+    width: calc(50% - 1.0714rem);
+    vertical-align: top;
   }
   
   .pizo-new-realty-location-content {
-    display: flex;
+    position: relative;
   }
   
   .pizo-new-realty-location-detail-row {
-    margin-bottom: 0.7143rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-right: -1.0714rem;
-    margin-left: -1.0714rem;
     width: 100%;
+  }
+
+  .pizo-new-realty-location-detail-row:not(:last-child) {
+    margin-bottom: 0.7143rem;
   }
   
   .pizo-new-realty-location-detail-row-label {
@@ -88,10 +91,15 @@
   }
   
   .pizo-new-realty-location-map-view {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
+    max-width: 100%;
+    min-width: 380px;
+    display: inline-block;
+    margin-bottom: 0.7143rem;
+    width: calc(50% - 1.0714rem);
+    vertical-align: top;
+    height: calc(100% - 0.7143rem);
+    position: absolute;
+    margin-left: 1.0714rem;
   }
   
   .pizo-new-realty-location-map-view-content {

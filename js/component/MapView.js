@@ -5,9 +5,9 @@ import '../../css/MapView.css';
 var _ = Fcore._;
 var $ = Fcore.$;
  
-export function locationView(functionDone) {
-    var map = MapView();
-    var detailView = DetailView(map);
+export function locationView(functionDone,data) {
+    var map = MapView(data);
+    var detailView = DetailView(map,data);
     map.activeDetail(detailView)
     var temp = _({
         tag: "div",
@@ -54,6 +54,8 @@ export function locationView(functionDone) {
             }
         ]
     })
+    temp.map = map;
+    temp.detailView = detailView;
     return temp;
 }
 
@@ -438,7 +440,7 @@ export function MapView() {
         ]
     })
     Object.assign(temp,MapView.prototype);
-    
+    temp.mapReplace = $('div.pizo-new-realty-location-map-view-content',temp);
     return temp;
 }
 
@@ -449,7 +451,7 @@ MapView.prototype.activeDetail = function(detailView)
 }
 
 MapView.prototype.activeMap = function (center = [10.822500, 106.629104], zoom = 16) {
-    var map = new google.maps.Map(this, {
+    var map = new google.maps.Map(this.mapReplace, {
         zoom: zoom,
         center: new google.maps.LatLng(center[0], center[1]),
         mapTypeControlOptions: {
@@ -477,6 +479,7 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(position[0], position[1]),
             map: self.map,
+            draggable:true,
             title: "Latitude:" + position[0] + " | Longtitude:" + position[1]
         });
         this.currentMarker = marker;
@@ -487,15 +490,16 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
             self.detailView.lat.value = position[1];
             self.detailView.changInput = true;
         }
-        
-        google.maps.event.addListener(self.map, "click", function (event) {
+        marker.addListener("dragend",function(event){
             var result = [event.latLng.lat(), event.latLng.lng()];
-            self.transition(result,changeInput).then(function (value) {
-                self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
-                self.smoothZoom(12, self.map.getZoom());
-            })
-        });
-
+            self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
+            self.smoothZoom(12, self.map.getZoom());
+            if(changeInput){
+                self.detailView.long.value = result[0];
+                self.detailView.lat.value = result[1];
+                self.detailView.changInput = true;
+            }
+        })
     }
 
 
@@ -513,10 +517,10 @@ MapView.prototype.transition = function (result,changeInput) {
 
     var deltaLat = (result[0] - position[0]) / this.numDeltas;
     var deltaLng = (result[1] - position[1]) / this.numDeltas;
-    window.service.nearbySearch({ location: {lat: result[0], lng: result[1]}, rankBy: google.maps.places.RankBy.DISTANCE , type: ['market'] },
-    function(results, status){
-        self.callback(results, status)
-    });
+    // window.service.nearbySearch({ location: {lat: result[0], lng: result[1]}, rankBy: google.maps.places.RankBy.DISTANCE , type: ['market'] },
+    // function(results, status){
+    //     self.callback(results, status)
+    // });
     return this.moveMarker(position, deltaLat, deltaLng);
 }
 

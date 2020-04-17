@@ -292,7 +292,7 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 48px;
-    min-width: 4em;
+    min-width: 4rem;
     outline: none;
     overflow: hidden;
     position: relative;
@@ -367,7 +367,7 @@
     box-flex: 1;
     -webkit-flex-grow: 1;
     flex-grow: 1;
-    min-width: 1em;
+    min-width: 1rem;
     transition: width 0.25s;
 }   
 
@@ -879,7 +879,7 @@
 
 .docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{
     /* margin: auto;
-    margin-left: .75em;
+    margin-left: .75rem;
     padding-top: 5px; */
     display: -webkit-box;
     display: -webkit-flex;
@@ -1187,7 +1187,7 @@
     display: flex;
     font-size: 16px;
     font-weight: 500;
-    min-height: 2em;
+    min-height: 2rem;
     padding-bottom: 24px;
     padding-left: 42px;
     padding-right: 42px;
@@ -1286,15 +1286,9 @@
     display: flex;
 }
 
-.freebirdFormeditorViewAssessmentWidgetsPointsLabel {
-    color: rgb(103, 58, 183);
-    font-size: 14px;
-    font-weight: 500;
-}
-
 .freebirdFormeditorViewAssessmentWidgetsPointsInput {
     max-width: 250px;
-    margin: 0 .5em;
+    margin: 0 .5rem;
 }
 
 .freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {
@@ -1416,7 +1410,7 @@
     border-radius: 2px;
     -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);
     box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);
-    max-width: 24em;
+    max-width: 24rem;
     outline: 1px solid transparent;
     overflow: hidden;
 }
@@ -1534,7 +1528,7 @@
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     justify-content: center;
-    min-height: 3em;
+    min-height: 3rem;
 }
 
 .freebirdMaterialScalecontentRangeLabelContainer{
@@ -1717,7 +1711,7 @@
     display: inline-block;
     font-size: 14px;
     font-weight: 550;
-    min-width: 4em;
+    min-width: 4rem;
     outline: none;
     overflow: hidden;
     position: relative;
@@ -1821,7 +1815,7 @@
     vertical-align: top;
     padding-top: 7px;
     height:30px;
-    padding: 0.5em;
+    padding: 0.5rem;
  }
 
  .properties{
@@ -1829,8 +1823,8 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    font-size: 1em;
-    padding: 0.5em;
+    font-size: 1rem;
+    padding: 0.5rem;
     vertical-align: middle;
     resize: none;
     width:374px;

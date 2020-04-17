@@ -6,7 +6,7 @@ import '../../css/ModuleImage.css';
 var _ = Fcore._;
 var $ = Fcore.$;
 
-export function descViewImagePreview(data=[],index = 0){
+export function descViewImagePreview(data=[],index = 0,promiseLazyLoad){
     var temp = _({
         tag:"div",
         class:"image-show",
@@ -19,7 +19,7 @@ export function descViewImagePreview(data=[],index = 0){
                         tag:"div",
                         class:"fl-l",
                         style:{
-                            margin:"3px 10px 3px 14px"
+                            margin:"0.2143rem 0.7143rem 0.2143rem 1rem"
                         }
                     },
                     {
@@ -34,7 +34,7 @@ export function descViewImagePreview(data=[],index = 0){
                                 tag:"i",
                                 class:["btn", "dark", "btn--m","fa", "fa-close"],
                                 style:{
-                                    margin:"6px 10px"
+                                    margin:"0.4286rem 0.7143rem"
                                 }
                             }
                         ]
@@ -45,27 +45,24 @@ export function descViewImagePreview(data=[],index = 0){
                 tag:"div",
                 style:{
                     display: "flex",
-                    height: "calc(100vh - 90px)",
-                    margin: "5px"
+                    height: "calc(100vh - 6.42857142857rem)",
+                    margin: "0.3571rem"
                 },
                 child:[
                     {
                         tag:"div",
-                        style:{
-                            display:"flex",
-                            padding:"15px 0px 0px 15px"
-                        },
+                        class:"timeLineContainerCheck",
                         child:[
                             {
                                 tag:"div",
                                 class:"image-show__thumb__legend",
                                 style:{
-                                    height:"32px", 
-                                    width: "120px",
+                                    height:"2.2857rem", 
+                                    width: "8.5714rem",
                                     position: "absolute",
                                     zIndex: 10,
-                                    top: "40px",
-                                    left: "5px"
+                                    top: "2.8571rem",
+                                    left: "0.3571rem"
                                 },
                                 child:[
                                     {
@@ -84,6 +81,7 @@ export function descViewImagePreview(data=[],index = 0){
                                 class:"flx",
                                 style:{
                                     height:"100%",
+                                    overflowX: "hidden"
                                 },
                                 child:[
                                     {
@@ -98,7 +96,7 @@ export function descViewImagePreview(data=[],index = 0){
                                 tag:"div",
                                 class:"timeline-slider",
                                 style:{
-                                    margin:"0px 12px 15px"
+                                    margin:"0rem 0.8571rem 1.0714rem"
                                 },
                                 child:[
                                     {
@@ -123,17 +121,17 @@ export function descViewImagePreview(data=[],index = 0){
                                         tag:"div",
                                         class:["timeline-slider__handle"],
                                         style:{
-                                            width: "12px",
-                                            height: "12px",
-                                            left: "6.5px",
-                                            top: "calc(0% - 0px)"
+                                            width: "0.8571rem",
+                                            height: "0.8571rem",
+                                            left: "0.4643rem",
+                                            top: "calc(0% - 0rem)"
                                         },
                                         child:[
                                             {
                                                 tag:"div",
                                                 class:"timeline-slider__tooltip",
                                                 style:{
-                                                    top: "-3px"
+                                                    top: "-0.2143rem"
                                                 }
                                             }
                                         ]
@@ -184,18 +182,25 @@ export function descViewImagePreview(data=[],index = 0){
                                 },
                                 child:[
                                     {
+                                        tag:"div",
+                                        class:"image-show__meta-wrapper",
+                                        props:{
+                                            id:"imageTitle"
+                                        },
+                                        child:[
+                                            {
+                                                tag:"div",
+                                                class:"image-show__caption"
+                                            }
+                                        ]
+                                    },
+                                    {
                                         tag:"img",
                                         class:["image-show__img", "z-fh", "fadeInImageShow"],
                                         attr:{
                                             draggable:"false",
                                             crossorigin:"Anonymous",
 
-                                        },
-                                        style:{
-                                            cursor: "default", 
-                                            transform: "rotate(0deg) translate(0px, 0px) scale(1)", 
-                                            verticalAlign: "middle",
-                                            display: "inline-block"
                                         }
                                     }
                                 ]
@@ -396,40 +401,133 @@ export function descViewImagePreview(data=[],index = 0){
     Object.assign(container,descViewImagePreview.prototype);
     var self = container;
     
+    self.closeButton = $('div#image-show__close.fl-r.image-show__close',temp);
     self.containImage = $('div.flx.flx-al-e.image-show__list',temp);
     self.prevButton = $('i.btn.fa.fa-chevron-left',temp);
     self.nextButton = $('i.btn.fa.fa-chevron-right',temp);
+    self.prevButtonTop = $('div.image-show__btnc.image-show__btnc__left div.flx-fix.image-show__btn',temp);
+    self.nextButtonTop = $('div.image-show__btnc.image-show__btnc__right div.flx-fix.image-show__btn',temp);
     self.forwardButton = $('a#image-show-forward',temp);
     self.downloadButton = $('a#image-show-download',temp);
     self.rotateLeftButton = $('i.btn.fa.fa-rotate-left',temp);
     self.rotateRightButton = $('i.btn.fa.fa-rotate-right',temp);
     self.titleTimeLine = $('span#image-show__thumb__legend_title_content',temp);
-
-    self.prevButton.addEventListener("click",function(event){
-        self.SelectImage(self.itemSelect.nextElement().index);
-    })
-
-    self.nextButton.addEventListener("click",function(event){
-        self.SelectImage(self.itemSelect.prevElement().index);
-    })
-
     self.avatarImage = $('div.avatar-img',temp);
     self.userName = $('div.truncate.user-name',temp);
     self.dateSubmit = $('div.truncate.date-submit',temp);
-    
-    self.mainImage = $('div#mainImage>img',temp);
-    
-    
-    self.renderItems(data,index);
 
-    return self;
-}
+    self.noteImage = $('div#imageTitle.image-show__meta-wrapper  div.image-show__caption',temp);
+    self.mainImage = $('div#mainImage>img.image-show__img.z-fh.fadeInImageShow',temp);
+    self.openCloseTimeLine = $('div.image-show__btnc__fullscreen',temp);
 
-descViewImagePreview.prototype.activeScroller = function()
-{
-    self.containImage.addEventListener("scroll", function(){
-        
+    self.containerTimeLine = $('div.timeLineContainerCheck',temp);
+    self.containerMainImage = $('div.#image-show.image-show__body.content',temp);
+
+    self.timeLineMarker = $('div.timeline-slider__handle',temp);
+
+    var supportsPassive = false;
+    try {
+    window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+        get: function () { supportsPassive = true; } 
+    }));
+    } catch(e) {}
+
+    var wheelOpt = supportsPassive ? { passive: false } : false;
+    var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+    self.prevButton.addEventListener("click",function(event){
+        self.SelectImage(self.itemSelect.nextElement().index);
+    });
+
+    self.nextButton.addEventListener("click",function(event){
+        self.SelectImage(self.itemSelect.prevElement().index);
+    });
+
+    self.prevButtonTop.addEventListener("click",function(event){
+        self.SelectImage(self.itemSelect.nextElement().index);
+    });
+
+    self.nextButtonTop.addEventListener("click",function(event){
+        self.SelectImage(self.itemSelect.prevElement().index);
+    });
+
+    self.rotateLeftButton.addEventListener("click",function(event){
+        self.setRoation(-90);
+    });
+    
+    self.rotateRightButton.addEventListener("click",function(event){
+        self.setRoation(90);
+    });
+
+    self.closeButton.addEventListener("click",function(event){
+        self.selfRemove();
+    });
+
+    self.containImage.addEventListener(wheelEvent,function(event){
+        event.preventDefault();
+    },wheelOpt)
+    var deltaYcontainImage = 0;
+    var deltaYcontainerMainImage = 0;
+    self.containImage.addEventListener("wheel",function(event){
+        if(Math.abs(deltaYcontainImage)<200)
+        {
+            if(deltaYcontainImage*event.deltaY<0)
+                deltaYcontainImage = event.deltaY;
+            else
+                deltaYcontainImage+=event.deltaY;
+        }else
+        {
+            if(deltaYcontainImage<0){
+                var next = self.itemSelect.prevElement();
+                if(next!==null)
+                self.SelectImage(next.index);
+            }      
+            else
+            {
+                var next = self.itemSelect.nextElement();
+                if(next!==null)
+                self.SelectImage(next.index);
+            } 
+            deltaYcontainImage = 0;
+        }   
     })
+
+    self.containerMainImage.addEventListener("wheel",function(event){
+        if(Math.abs(deltaYcontainerMainImage)<50)
+        {
+            if(deltaYcontainerMainImage*event.deltaY<0)
+                deltaYcontainerMainImage = 0;
+            else
+                deltaYcontainerMainImage+=event.deltaY;
+        }else
+        {
+            if(deltaYcontainerMainImage<0){
+                self.setScale(-0.125);
+            }else
+            {
+                self.setScale(0.125);
+            }
+            deltaYcontainerMainImage = 0;
+        }
+    })
+
+    self.openCloseTimeLine.addEventListener("click",function(event){
+        if(self.containerTimeLine.classList.contains("displayNone")){
+            self.containerTimeLine.classList.remove("displayNone");
+        }
+        else{
+            self.containerTimeLine.classList.add("displayNone");
+        }
+    });
+    
+    self.containImage.indexDay = -1;
+    self.containImage.indexElement = -1;
+    self.renderItems(data,index);
+    if(promiseLazyLoad!==undefined)
+    {
+        self.addFunctionLazyLoad(promiseLazyLoad);
+    }
+    return self;
 }
 
 descViewImagePreview.prototype.renderItems = function(data,index)
@@ -497,53 +595,131 @@ descViewImagePreview.prototype.renderItems = function(data,index)
                     return mDate;
                 }
             }(date)
+            
+            self.containImage.indexDay++;
+            dayThumnail.indexDay = self.containImage.indexDay;
+
             self.containImage.appendChild(dayThumnail);
         }
         else
         dataCheck[format] = dataCheck[format].concat([data[i]]);
-
-        var item = self.ItemTimeLine(data[i],i);
+        self.containImage.indexElement++;
+        var item = self.ItemTimeLine(data[i],self.containImage.indexElement);
         item.dayElement = dayThumnail;
         self.containImage.appendChild(item);
     }
-
+    if(index!==undefined)
     self.SelectImage(index);
+}
+
+descViewImagePreview.prototype.resetImage = function(data)
+{
+    var self = this;
+    var newMainImage = _({
+        tag:"img",
+        class:["image-show__img", "z-fh", "fadeInImageShow"],
+        attr:{
+            draggable:"false",
+            crossorigin:"Anonymous",
+            src:data.src
+        }
+    })
+
+    newMainImage.rotateRadius = 0;
+    newMainImage.scaleUnit = 1;
+    newMainImage.style.transform = "rotate("+newMainImage.rotateRadius+"deg) translate(0rem, 0rem) scale("+newMainImage.scaleUnit+")";
+
+    newMainImage.addEventListener("click",function(){
+        if(self.noteImage.parentNode.classList.contains("displayNone"))
+            self.noteImage.parentNode.classList.remove("displayNone");
+        else
+            self.noteImage.parentNode.classList.add("displayNone");
+    });
+
+    this.downloadButton.setAttribute("href",data.src);
+    this.mainImage.parentNode.replaceChild(newMainImage,this.mainImage);
+    this.mainImage = newMainImage;
+
+
+    this.noteImage.innerText = data.note;
+    this.avatarImage.style.backgroundImage = "url("+data.avatar+")";
+    this.userName.innerText = data.userName;
+    this.dateSubmit.innerText = formatDate(data.date,true,true,true,true,true);
+}
+
+descViewImagePreview.prototype.setRoation = function(radius)
+{
+    this.mainImage.rotateRadius += radius;
+    this.mainImage.style.transform = "rotate("+this.mainImage.rotateRadius+"deg) translate(0rem, 0rem) scale("+this.mainImage.scaleUnit+")";
+}
+
+descViewImagePreview.prototype.setScale = function(scale)
+{
+    if(this.mainImage.scaleUnit + scale <1)
+        return;
+    this.mainImage.scaleUnit += scale;
+    this.mainImage.style.transform = "rotate("+this.mainImage.rotateRadius+"deg) translate(0rem, 0rem) scale("+this.mainImage.scaleUnit+")";
 }
 
 descViewImagePreview.prototype.SelectImage = function(index)
 {
     if(this.itemSelect!==undefined)
-    {
         this.itemSelect.classList.remove("selected");
-    }
+
     this.itemSelect = $("div#thumb_"+index,this);
     this.itemSelect.classList.add("selected");
-
+    
+    this.resetImage(this.itemSelect.data)
     this.titleTimeLine.innerText = this.itemSelect.dayElement.getDate();
-    this.avatarImage.style.backgroundImage = "url("+this.itemSelect.data.avatar+")";
-    this.userName.innerText = this.itemSelect.data.userName;
-    this.dateSubmit.innerText = formatDate(this.itemSelect.data.date,true,true,true,true,true);
-    this.mainImage.setAttribute("src",this.itemSelect.data.src);
 
     if(this.itemSelect.nextElement()===null)
     {
         if(!this.prevButton.classList.contains("unclickable"))
             this.prevButton.classList.add("unclickable");
+        if(this.prevButtonTop.classList.contains("clickable"))
+            this.prevButtonTop.classList.remove("clickable");
     }else
     {
         if(this.prevButton.classList.contains("unclickable"))
-        this.prevButton.classList.remove("unclickable");
+            this.prevButton.classList.remove("unclickable");
+        if(!this.prevButtonTop.classList.contains("clickable"))
+            this.prevButtonTop.classList.add("clickable");
     }
     if(this.itemSelect.prevElement()===null)
     {
         if(!this.nextButton.classList.contains("unclickable"))
             this.nextButton.classList.add("unclickable");
+        if(this.nextButtonTop.classList.contains("clickable"))
+            this.nextButtonTop.classList.remove("clickable");
     }else
     {
         if(this.nextButton.classList.contains("unclickable"))
-        this.nextButton.classList.remove("unclickable");
+            this.nextButton.classList.remove("unclickable");
+        if(!this.nextButtonTop.classList.contains("clickable"))
+            this.nextButtonTop.classList.add("clickable");
     }
+
+    this.scrollView()
 } 
+
+descViewImagePreview.prototype.scrollView = function()
+{
+    var self = this;
+    this.containImage.scrollTop = this.itemSelect.offsetTop - this.containImage.offsetHeight/2;
+    this.timeLineMarker.style.top = "calc("+(this.itemSelect.dayElement.indexDay/this.containImage.indexDay)*100+"% - 0rem)";
+    if(this.promiseLazyLoad!==undefined)
+    if(this.itemSelect.dayElement.indexDay === this.containImage.indexDay)
+    this.promiseLazyLoad.then(function(result){
+        self.renderItems(result);
+        self.scrollView();
+        self.promiseLazyLoad = undefined;
+    })
+}
+
+descViewImagePreview.prototype.addFunctionLazyLoad = function(promiseLazyLoad)
+{
+    this.promiseLazyLoad = promiseLazyLoad;
+}
 
 descViewImagePreview.prototype.ItemTimeLine = function(data,i)
 {
@@ -576,6 +752,9 @@ descViewImagePreview.prototype.ItemTimeLine = function(data,i)
     )
     temp.data = data;
     temp.index = i;
+
+    temp.imageElement = $('div.image-show__thumb-container img.image-show__thumb',temp);
+    
     temp.nextElement = function()
     {
         var indexElement = temp;

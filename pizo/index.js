@@ -19598,7 +19598,7 @@ exports.tokTypes = types;
 /* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(239);
+module.exports = __webpack_require__(243);
 
 
 /***/ }),
@@ -29417,7 +29417,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "button.absol-button {\r\n    text-align: left;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    height: 2em;\r\n}\r\n\r\n.absol-icon-button {\r\n    text-align: left;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    line-height: 2em;\r\n    box-sizing: content-box;\r\n    height: 2em;\r\n    white-space: nowrap;  \r\n    \r\n}\r\n\r\n.absol-icon-button,\r\n.absol-icon-button *{\r\n    -webkit-user-select: none;  /* Chrome 49+ */\r\n    -moz-user-select: none;     /* Firefox 43+ */\r\n    -ms-user-select: none;      /* No support yet */\r\n    user-select: none;\r\n}\r\n\r\n\r\n.absol-icon-button:hover {\r\n    background-color: rgb(213, 213, 213);\r\n}\r\n\r\n.absol-icon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n.absol-icon-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-icon-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 2em;\r\n    height: 2em;\r\n    text-align: center;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    line-height: inherit;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-icon-button-icon-container>i {\r\n    font-size: 1em;\r\n    color: rgb(146, 146, 146);\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button-icon-container>svg {\r\n    width: 1em;\r\n    height: 1em;\r\n}\r\n\r\n.absol-icon-button-text-container:empty,\r\n.absol-icon-button-icon-container:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-icon-button-text-container {\r\n    border-left: solid 0.0714rem #c0c0c0;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    line-height: 2em;\r\n    text-align: center;\r\n}\r\n\r\n.absol-icon-button-text-container>span,\r\n.absol-icon-button-text-container>div {\r\n    font-size: 1em;\r\n    text-align: center;\r\n    margin-left: 0.7em;\r\n    margin-right: 0.7em;\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button.primary,\r\n.absol-button.primary {\r\n    border-color: #357ebd;\r\n    background-color: #428bca;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-text-container {\r\n    border-left-color: #357ebd;\r\n}\r\n\r\n.absol-icon-button.success,\r\n.absol-button.success {\r\n    border-color: #398439;\r\n    background-color: #47a447;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-text-container {\r\n    border-left-color: #398439;\r\n}\r\n\r\n.absol-icon-button.warning,\r\n.absol-button.warning {\r\n    background-color: #ed9c28;\r\n    border-color: #d58512;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-text-container {\r\n    border-left-color: #d58512;\r\n}\r\n\r\n.absol-icon-button.danger,\r\n.absol-button.danger {\r\n    background-color: #d2322d;\r\n    border-color: #ac2925;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-text-container {\r\n    border-left-color: #ac2925;\r\n}\r\n\r\n.absol-icon-button.info,\r\n.absol-button.info {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-text-container {\r\n    border-left-color: #46b8da;\r\n}", ""]);
+exports.push([module.i, "button.absol-button {\r\n    text-align: left;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2rem;\r\n    font-size: 1rem;\r\n    overflow: hidden;\r\n    height: 2rem;\r\n}\r\n\r\n.absol-icon-button {\r\n    text-align: left;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2rem;\r\n    font-size: 1rem;\r\n    overflow: hidden;\r\n    line-height: 2rem;\r\n    box-sizing: content-box;\r\n    height: 2rem;\r\n    white-space: nowrap;  \r\n    \r\n}\r\n\r\n.absol-icon-button,\r\n.absol-icon-button *{\r\n    -webkit-user-select: none;  /* Chrome 49+ */\r\n    -moz-user-select: none;     /* Firefox 43+ */\r\n    -ms-user-select: none;      /* No support yet */\r\n    user-select: none;\r\n}\r\n\r\n\r\n.absol-icon-button:hover {\r\n    background-color: rgb(213, 213, 213);\r\n}\r\n\r\n.absol-icon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n.absol-icon-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-icon-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 2rem;\r\n    height: 2rem;\r\n    text-align: center;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    line-height: inherit;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-icon-button-icon-container>i {\r\n    font-size: 1rem;\r\n    color: rgb(146, 146, 146);\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button-icon-container>svg {\r\n    width: 1rem;\r\n    height: 1rem;\r\n}\r\n\r\n.absol-icon-button-text-container:empty,\r\n.absol-icon-button-icon-container:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-icon-button-text-container {\r\n    border-left: solid 0.0714rem #c0c0c0;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    height: 2rem;\r\n    box-sizing: border-box;\r\n    line-height: 2rem;\r\n    text-align: center;\r\n}\r\n\r\n.absol-icon-button-text-container>span,\r\n.absol-icon-button-text-container>div {\r\n    font-size: 1rem;\r\n    text-align: center;\r\n    margin-left: 0.7rem;\r\n    margin-right: 0.7rem;\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button.primary,\r\n.absol-button.primary {\r\n    border-color: #357ebd;\r\n    background-color: #428bca;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-text-container {\r\n    border-left-color: #357ebd;\r\n}\r\n\r\n.absol-icon-button.success,\r\n.absol-button.success {\r\n    border-color: #398439;\r\n    background-color: #47a447;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-text-container {\r\n    border-left-color: #398439;\r\n}\r\n\r\n.absol-icon-button.warning,\r\n.absol-button.warning {\r\n    background-color: #ed9c28;\r\n    border-color: #d58512;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-text-container {\r\n    border-left-color: #d58512;\r\n}\r\n\r\n.absol-icon-button.danger,\r\n.absol-button.danger {\r\n    background-color: #d2322d;\r\n    border-color: #ac2925;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-text-container {\r\n    border-left-color: #ac2925;\r\n}\r\n\r\n.absol-icon-button.info,\r\n.absol-button.info {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-text-container {\r\n    border-left-color: #46b8da;\r\n}", ""]);
 
 
 
@@ -29452,7 +29452,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".as-flexicon-button {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #bfbfbf;\r\n    background-color: #ebebeb;\r\n    border-radius: 0.2em;\r\n    outline: none;\r\n    padding: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.as-icon-button-table-box{\r\n  display: table;\r\n  width:100%;\r\n  height:100%;\r\n}\r\n\r\n.as-flexicon-button:hover .as-flexicon-button-content {\r\n    background-color: rgb(0, 0, 0, 0.1);\r\n}\r\n\r\n.as-flexicon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n\r\n.as-flexicon-button-content {\r\n    display: table-row;\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container,\r\n.as-flexicon-button-text-container {\r\n    display: table-cell;\r\n    box-sizing: content-box;\r\n    vertical-align: middle;\r\n  text-align: center;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty,\r\n.as-flexicon-button-text-container:empty {\r\n    display: none;\r\n}\r\n\r\n.as-flexicon-button-icon-container {\r\n    width: 2em;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    color: rgb(146, 146, 146);\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container>span,\r\n.as-flexicon-button-icon-container>i,\r\n.as-flexicon-button-icon-container>svg,\r\n.as-flexicon-button-icon-container>img {\r\n    font-size: 1em;\r\n}\r\n\r\n.as-flexicon-button-text-container {\r\n    padding-left: 0.357em;\r\n    padding-right: 0.357em;\r\n    min-width: 2em;\r\n}\r\n\r\n\r\n.as-flexicon-button-text-container {\r\n    border-left: solid 0.0714rem #bfbfbf;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty+.as-flexicon-button-text-container {\r\n    border-left: none\r\n}\r\n\r\n/*** theme  ***/\r\n\r\n.as-flexicon-button.primary {\r\n    border-color: #005bbd;\r\n    background-color: #007bff;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-text-container {\r\n    border-color: #005bbd;\r\n}\r\n\r\n\r\n.as-flexicon-button.secondary {\r\n    border-color: #4e555a;\r\n    background-color: #6d767e;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-text-container {\r\n    border-left-color: #4e555a;\r\n}\r\n\r\n\r\n.as-flexicon-button.success {\r\n    border-color: #1e7b34;\r\n    background-color: #29a847;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-text-container {\r\n    border-left-color: #1e7b34;\r\n}\r\n\r\n\r\n.as-flexicon-button.danger {\r\n    border-color: #b21f2e;\r\n    background-color: #dc3848;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-text-container {\r\n    border-left-color: #b21f2e;\r\n}\r\n\r\n.as-flexicon-button.warning {\r\n    border-color: #9e7700;\r\n    background-color: #e0a800;\r\n    color: black;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-text-container {\r\n    border-left-color: #9e7700;\r\n}\r\n\r\n.as-flexicon-button.info {\r\n    border-color: #117888;\r\n    background-color: #17a2b8;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-text-container {\r\n    border-left-color: #117888;\r\n}\r\n\r\n.as-flexicon-button.light {\r\n    border-color: #c9d1d9;\r\n    background-color: #f8f9fa;\r\n    color: #212529;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-text-container {\r\n    border-left-color: #c9d1d9;\r\n}\r\n\r\n.as-flexicon-button.dark {\r\n    border-color: #171a1c;\r\n    background-color: #343a40;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-text-container {\r\n    border-left-color: #171a1c;\r\n}\r\n\r\n.as-flexicon-button.link {\r\n    border-color: transparent;\r\n    background-color: transparent;\r\n    color: #007bff;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-icon-container {\r\n    color: #007bff;\r\n    background: transparent;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-text-container {\r\n    border-left-color: transparent;\r\n}\r\n\r\n.as-flexicon-button.link:hover .as-flexicon-button-text-container{\r\n    text-decoration: underline;\r\n}", ""]);
+exports.push([module.i, ".as-flexicon-button {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #bfbfbf;\r\n    background-color: #ebebeb;\r\n    border-radius: 0.2rem;\r\n    outline: none;\r\n    padding: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.as-icon-button-table-box{\r\n  display: table;\r\n  width:100%;\r\n  height:100%;\r\n}\r\n\r\n.as-flexicon-button:hover .as-flexicon-button-content {\r\n    background-color: rgb(0, 0, 0, 0.1);\r\n}\r\n\r\n.as-flexicon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n\r\n.as-flexicon-button-content {\r\n    display: table-row;\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container,\r\n.as-flexicon-button-text-container {\r\n    display: table-cell;\r\n    box-sizing: content-box;\r\n    vertical-align: middle;\r\n  text-align: center;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty,\r\n.as-flexicon-button-text-container:empty {\r\n    display: none;\r\n}\r\n\r\n.as-flexicon-button-icon-container {\r\n    width: 2rem;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    color: rgb(146, 146, 146);\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container>span,\r\n.as-flexicon-button-icon-container>i,\r\n.as-flexicon-button-icon-container>svg,\r\n.as-flexicon-button-icon-container>img {\r\n    font-size: 1rem;\r\n}\r\n\r\n.as-flexicon-button-text-container {\r\n    padding-left: 0.357rem;\r\n    padding-right: 0.357rem;\r\n    min-width: 2rem;\r\n}\r\n\r\n\r\n.as-flexicon-button-text-container {\r\n    border-left: solid 0.0714rem #bfbfbf;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty+.as-flexicon-button-text-container {\r\n    border-left: none\r\n}\r\n\r\n/*** theme  ***/\r\n\r\n.as-flexicon-button.primary {\r\n    border-color: #005bbd;\r\n    background-color: #007bff;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-text-container {\r\n    border-color: #005bbd;\r\n}\r\n\r\n\r\n.as-flexicon-button.secondary {\r\n    border-color: #4e555a;\r\n    background-color: #6d767e;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-text-container {\r\n    border-left-color: #4e555a;\r\n}\r\n\r\n\r\n.as-flexicon-button.success {\r\n    border-color: #1e7b34;\r\n    background-color: #29a847;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-text-container {\r\n    border-left-color: #1e7b34;\r\n}\r\n\r\n\r\n.as-flexicon-button.danger {\r\n    border-color: #b21f2e;\r\n    background-color: #dc3848;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-text-container {\r\n    border-left-color: #b21f2e;\r\n}\r\n\r\n.as-flexicon-button.warning {\r\n    border-color: #9e7700;\r\n    background-color: #e0a800;\r\n    color: black;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-text-container {\r\n    border-left-color: #9e7700;\r\n}\r\n\r\n.as-flexicon-button.info {\r\n    border-color: #117888;\r\n    background-color: #17a2b8;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-text-container {\r\n    border-left-color: #117888;\r\n}\r\n\r\n.as-flexicon-button.light {\r\n    border-color: #c9d1d9;\r\n    background-color: #f8f9fa;\r\n    color: #212529;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-text-container {\r\n    border-left-color: #c9d1d9;\r\n}\r\n\r\n.as-flexicon-button.dark {\r\n    border-color: #171a1c;\r\n    background-color: #343a40;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-text-container {\r\n    border-left-color: #171a1c;\r\n}\r\n\r\n.as-flexicon-button.link {\r\n    border-color: transparent;\r\n    background-color: transparent;\r\n    color: #007bff;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-icon-container {\r\n    color: #007bff;\r\n    background: transparent;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-text-container {\r\n    border-left-color: transparent;\r\n}\r\n\r\n.as-flexicon-button.link:hover .as-flexicon-button-text-container{\r\n    text-decoration: underline;\r\n}", ""]);
 
 
 
@@ -29522,7 +29522,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-number-input {\r\n    text-align: right;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    position: relative;\r\n    min-width: calc(1em + 0.1429rem);\r\n    height: calc(2em + 0.1429rem);\r\n    border: solid 0.0714rem #d6d6d6;\r\n    font-size: 1rem;\r\n    box-sizing: border-box;\r\n    width: 4em;\r\n}\r\n\r\n.absol-number-input-button-up-container {\r\n    top: 0;\r\n}\r\n\r\n.absol-number-input-button-down-container {\r\n    bottom: 0;\r\n}\r\n\r\n.absol-number-input-button-up-container,\r\n.absol-number-input-button-down-container {\r\n    right: 0;\r\n    position: absolute;\r\n    height: 1em;\r\n    width: 1em;\r\n    max-height: 50%;\r\n}\r\n\r\n.absol-number-input-button-up-container>button,\r\n.absol-number-input-button-down-container>button {\r\n    width: 100%;\r\n    height: 100%;\r\n    line-height: 1;\r\n    padding: 0;\r\n    border: none;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    color: rgb(101, 101, 101);\r\n    background-color: transparent;\r\n    background-color: rgb(101, 101, 101, 0.05);\r\n}\r\n\r\n.absol-number-input-button-up-container>button:active,\r\n.absol-number-input-button-down-container>button:active{\r\n    color: black;\r\n    background-color: rgb(101, 101, 101, 0.3);\r\n}\r\n\r\n.absol-number-input-text-container {\r\n    left: 0em;\r\n    right: 1.2em;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n\r\n.absol-number-input-text-container>input[type=\"text\"] {\r\n    border: none;\r\n    outline: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    text-align: right;\r\n    padding-left:0.2em;\r\n    padding-right: 0.2em;  \r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled .absol-number-input-button-up-container,\r\n.absol-number-input.absol-disabled .absol-number-input-button-down-container\r\n{\r\n    opacity: 0.3;\r\n}", ""]);
+exports.push([module.i, ".absol-number-input {\r\n    text-align: right;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    position: relative;\r\n    min-width: calc(1em + 0.1429rem);\r\n    height: calc(2em + 0.1429rem);\r\n    border: solid 0.0714rem #d6d6d6;\r\n    font-size: 1rem;\r\n    box-sizing: border-box;\r\n    width: 4rem;\r\n}\r\n\r\n.absol-number-input-button-up-container {\r\n    top: 0;\r\n}\r\n\r\n.absol-number-input-button-down-container {\r\n    bottom: 0;\r\n}\r\n\r\n.absol-number-input-button-up-container,\r\n.absol-number-input-button-down-container {\r\n    right: 0;\r\n    position: absolute;\r\n    height: 1rem;\r\n    width: 1rem;\r\n    max-height: 50%;\r\n}\r\n\r\n.absol-number-input-button-up-container>button,\r\n.absol-number-input-button-down-container>button {\r\n    width: 100%;\r\n    height: 100%;\r\n    line-height: 1;\r\n    padding: 0;\r\n    border: none;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    color: rgb(101, 101, 101);\r\n    background-color: transparent;\r\n    background-color: rgb(101, 101, 101, 0.05);\r\n}\r\n\r\n.absol-number-input-button-up-container>button:active,\r\n.absol-number-input-button-down-container>button:active{\r\n    color: black;\r\n    background-color: rgb(101, 101, 101, 0.3);\r\n}\r\n\r\n.absol-number-input-text-container {\r\n    left: 0rem;\r\n    right: 1.2rem;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n\r\n.absol-number-input-text-container>input[type=\"text\"] {\r\n    border: none;\r\n    outline: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    text-align: right;\r\n    padding-left:0.2rem;\r\n    padding-right: 0.2rem;  \r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled .absol-number-input-button-up-container,\r\n.absol-number-input.absol-disabled .absol-number-input-button-down-container\r\n{\r\n    opacity: 0.3;\r\n}", ""]);
 
 
 
@@ -29557,7 +29557,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-search-text-input {\r\n    position: relative;\r\n    height: 2em;\r\n    border-radius: 0.3em;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-search-text-input.focus {\r\n    outline: solid 0.0714rem rgba(30, 30, 255, 0.4);\r\n}\r\n\r\n.absol-search-text-input-container {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 2em;\r\n}\r\n\r\n.absol-search-text-button-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 2em;\r\n    bottom: 0em;\r\n}\r\n\r\n.absol-search-text-button-container button {\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    border: none;\r\n    background: transparent;\r\n    padding: 0;\r\n    font-size: 1em;\r\n}\r\n\r\n.absol-search-text-button-container button>svg {\r\n    height: 1.14285714286em;\r\n    width: 1.14285714286em;\r\n    fill: rgb(132, 132, 132);\r\n}\r\n\r\n.absol-search-text-input-container input {\r\n    width: 100%;\r\n    height: 100%;\r\n    font-size: 1em;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    border: none;\r\n    background-color: transparent;\r\n    padding-left: 0.6em;\r\n}\r\n\r\n.absol-search-text-input:not(.searching) svg.times{\r\n    display: none;\r\n}\r\n\r\n.absol-search-text-input.searching svg.find{\r\n    display: none;\r\n}", ""]);
+exports.push([module.i, ".absol-search-text-input {\r\n    position: relative;\r\n    height: 2rem;\r\n    border-radius: 0.3rem;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-search-text-input.focus {\r\n    outline: solid 0.0714rem rgba(30, 30, 255, 0.4);\r\n}\r\n\r\n.absol-search-text-input-container {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 2rem;\r\n}\r\n\r\n.absol-search-text-button-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 2rem;\r\n    bottom: 0rem;\r\n}\r\n\r\n.absol-search-text-button-container button {\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    border: none;\r\n    background: transparent;\r\n    padding: 0;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-search-text-button-container button>svg {\r\n    height: 1.14285714286rem;\r\n    width: 1.14285714286rem;\r\n    fill: rgb(132, 132, 132);\r\n}\r\n\r\n.absol-search-text-input-container input {\r\n    width: 100%;\r\n    height: 100%;\r\n    font-size: 1rem;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    border: none;\r\n    background-color: transparent;\r\n    padding-left: 0.6rem;\r\n}\r\n\r\n.absol-search-text-input:not(.searching) svg.times{\r\n    display: none;\r\n}\r\n\r\n.absol-search-text-input.searching svg.find{\r\n    display: none;\r\n}", ""]);
 
 
 
@@ -29592,7 +29592,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-select-table-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-select-table {\r\n    border: solid 0.0714rem #a9a9a9;\r\n    min-width: 26em;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-select-table-header {\r\n    display: block;\r\n    position: relative;\r\n    box-sizing: content-box;\r\n    height: 2.2857142857em;\r\n}\r\n\r\n.absol-select-table-searchtextinput-container {\r\n    position: absolute;\r\n    left: 0.14285714285em;\r\n    top: 0.14285714285em;\r\n    height: 2em;\r\n    right: 10em;\r\n    /* background-color: cyan; */\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-buttons-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-searchtextinput-container {\r\n    right: 0.14285714285em !important;\r\n}\r\n\r\n.absol-select-table-buttons-container {\r\n    position: absolute;\r\n    right: 0.14285714285em;\r\n    top: 0.14285714285em;\r\n    width: 10.7142857143em;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-buttons-container>button {\r\n    height: 2em;\r\n    font-size: 1em;\r\n    background-color: transparent;\r\n    border: none;\r\n    padding: 0 0.5em;\r\n    margin: 0;\r\n    text-decoration: underline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:hover {\r\n    color: #a9a9a9;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:active {\r\n    color: #a9a9ff;\r\n}\r\n\r\n.absol-select-table-body {\r\n    margin: 0.14285714285em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-items-scroller {\r\n    width: 50%;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-button {\r\n    background-color: rgba(1, 1, 30, 0.1);\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-bar-v-container {\r\n    width: 0.69em;\r\n}\r\n\r\n.absol-select-table-selected-search-items-container,\r\n.absol-select-table-nonselected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-selected-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-items-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.searching .absol-select-table-selected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-search-items-container {\r\n    display: block;\r\n    padding-right: 0.7em;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container,\r\n.absol-select-table-selected-items-container {\r\n    padding-right: 0.7em;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-items-container>.absol-select-table-item,\r\n.absol-select-table-nonselected-search-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-search-items-container>.absol-select-table-item {\r\n    margin: 0.14285714285em;\r\n}\r\n\r\n.absol-select-table-item {\r\n    display: block;\r\n    line-height: 2em;\r\n    min-height: 2em;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.05);\r\n    border: solid 0.0714rem rgb(235, 235, 235);\r\n    border-radius: 0.2em;\r\n    overflow: hidden;\r\n    -webkit-user-select: none;\r\n    /* Safari 3.1+ */\r\n    -moz-user-select: none;\r\n    /* Firefox 2+ */\r\n    -ms-user-select: none;\r\n    /* IE 10+ */\r\n    user-select: none;\r\n    /* Standard syntax */\r\n    padding-left: 0.69em;\r\n    padding-right: 1.8em;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-select-table-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-select-table-item-right-container {\r\n    right: 0.3em;\r\n    bottom: 0.3em;\r\n    top: 0.3em;\r\n    padding: 0.2em;\r\n    width: 1.4em;\r\n    position: absolute;\r\n    border-radius: 0.2em;\r\n    box-sizing: border-box;\r\n ;\r\n}\r\n\r\n.absol-select-table-item-right-container:hover {\r\n    background-color: rgba(169, 169, 169, 0.3);\r\n}\r\n\r\nspan.absol-select-table-item-text {\r\n    white-space: normal;\r\n    \r\n}\r\n\r\n.absol-select-table-item-right-container-table{\r\n    display: table;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n.absol-select-table-item-right-container-cell{\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-select-table-item-right-container svg {\r\n    width: 1em;\r\n    height: 1em;\r\n    display: none;\r\n}\r\n\r\n/* clearfix\r\n.absol-select-table-none-nonselected-items-container::after,\r\n.absol-select-table-none-selected-items-container::after {\r\n    content: \"\";\r\n    display:table;\r\n    clear: both;\r\n} */\r\n\r\n.absol-select-table-selected-items-container .absol-select-table-item-right-container svg.sub-icon,\r\n.absol-select-table-selected-search-items-container .absol-select-table-item-right-container svg.sub-icon {\r\n    display: block;\r\n    stroke: rgb(243, 61, 61);\r\n    fill: rgb(226, 100, 100);\r\n}\r\n\r\n.absol-select-table-nonselected-items-container .absol-select-table-item-right-container svg.add-icon,\r\n.absol-select-table-nonselected-search-items-container .absol-select-table-item-right-container svg.add-icon {\r\n    display: block;\r\n    fill: rgb(100, 226, 167);\r\n    stroke: rgb(61, 185, 243);\r\n}\r\n\r\n.absol-select-table.portrait {}", ""]);
+exports.push([module.i, ".absol-select-table-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-select-table {\r\n    border: solid 0.0714rem #a9a9a9;\r\n    min-width: 26rem;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-select-table-header {\r\n    display: block;\r\n    position: relative;\r\n    box-sizing: content-box;\r\n    height: 2.2857142857rem;\r\n}\r\n\r\n.absol-select-table-searchtextinput-container {\r\n    position: absolute;\r\n    left: 0.14285714285rem;\r\n    top: 0.14285714285rem;\r\n    height: 2rem;\r\n    right: 10rem;\r\n    /* background-color: cyan; */\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-buttons-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-searchtextinput-container {\r\n    right: 0.14285714285em !important;\r\n}\r\n\r\n.absol-select-table-buttons-container {\r\n    position: absolute;\r\n    right: 0.14285714285rem;\r\n    top: 0.14285714285rem;\r\n    width: 10.7142857143rem;\r\n    height: 2rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-buttons-container>button {\r\n    height: 2rem;\r\n    font-size: 1rem;\r\n    background-color: transparent;\r\n    border: none;\r\n    padding: 0 0.5rem;\r\n    margin: 0;\r\n    text-decoration: underline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:hover {\r\n    color: #a9a9a9;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:active {\r\n    color: #a9a9ff;\r\n}\r\n\r\n.absol-select-table-body {\r\n    margin: 0.14285714285rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-items-scroller {\r\n    width: 50%;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-button {\r\n    background-color: rgba(1, 1, 30, 0.1);\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-bar-v-container {\r\n    width: 0.69rem;\r\n}\r\n\r\n.absol-select-table-selected-search-items-container,\r\n.absol-select-table-nonselected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-selected-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-items-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.searching .absol-select-table-selected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-search-items-container {\r\n    display: block;\r\n    padding-right: 0.7rem;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container,\r\n.absol-select-table-selected-items-container {\r\n    padding-right: 0.7rem;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-items-container>.absol-select-table-item,\r\n.absol-select-table-nonselected-search-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-search-items-container>.absol-select-table-item {\r\n    margin: 0.14285714285rem;\r\n}\r\n\r\n.absol-select-table-item {\r\n    display: block;\r\n    line-height: 2rem;\r\n    min-height: 2rem;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.05);\r\n    border: solid 0.0714rem rgb(235, 235, 235);\r\n    border-radius: 0.2rem;\r\n    overflow: hidden;\r\n    -webkit-user-select: none;\r\n    /* Safari 3.1+ */\r\n    -moz-user-select: none;\r\n    /* Firefox 2+ */\r\n    -ms-user-select: none;\r\n    /* IE 10+ */\r\n    user-select: none;\r\n    /* Standard syntax */\r\n    padding-left: 0.69rem;\r\n    padding-right: 1.8rem;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-select-table-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-select-table-item-right-container {\r\n    right: 0.3rem;\r\n    bottom: 0.3rem;\r\n    top: 0.3rem;\r\n    padding: 0.2rem;\r\n    width: 1.4rem;\r\n    position: absolute;\r\n    border-radius: 0.2rem;\r\n    box-sizing: border-box;\r\n ;\r\n}\r\n\r\n.absol-select-table-item-right-container:hover {\r\n    background-color: rgba(169, 169, 169, 0.3);\r\n}\r\n\r\nspan.absol-select-table-item-text {\r\n    white-space: normal;\r\n    \r\n}\r\n\r\n.absol-select-table-item-right-container-table{\r\n    display: table;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n.absol-select-table-item-right-container-cell{\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-select-table-item-right-container svg {\r\n    width: 1rem;\r\n    height: 1rem;\r\n    display: none;\r\n}\r\n\r\n/* clearfix\r\n.absol-select-table-none-nonselected-items-container::after,\r\n.absol-select-table-none-selected-items-container::after {\r\n    content: \"\";\r\n    display:table;\r\n    clear: both;\r\n} */\r\n\r\n.absol-select-table-selected-items-container .absol-select-table-item-right-container svg.sub-icon,\r\n.absol-select-table-selected-search-items-container .absol-select-table-item-right-container svg.sub-icon {\r\n    display: block;\r\n    stroke: rgb(243, 61, 61);\r\n    fill: rgb(226, 100, 100);\r\n}\r\n\r\n.absol-select-table-nonselected-items-container .absol-select-table-item-right-container svg.add-icon,\r\n.absol-select-table-nonselected-search-items-container .absol-select-table-item-right-container svg.add-icon {\r\n    display: block;\r\n    fill: rgb(100, 226, 167);\r\n    stroke: rgb(61, 185, 243);\r\n}\r\n\r\n.absol-select-table.portrait {}", ""]);
 
 
 
@@ -29627,7 +29627,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-ico {\r\n    width: 1em;\r\n    height: 1em;\r\n}\r\n\r\n.absol-button {\r\n    white-space: normal;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-dropdown {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropdown-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 0;\r\n    top: 100%;\r\n}\r\n\r\n.absol-dropdown.top>.absol-dropdown-content {\r\n    top: auto;\r\n    bottom: 100%;\r\n}\r\n\r\n.absol-dropdown.overlap-left>.absol-dropdown-content {\r\n    left: auto;\r\n    right: 0;\r\n}\r\n\r\n.absol-dropright {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropright-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 100%;\r\n    top: 0;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-drop-hidden>.absol-dropdown-content,\r\n.absol-drop-hidden>.absol-dropright-content {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n\r\n.absol-hmenu {\r\n    display: inline-block;\r\n    background-color: rgb(252, 252, 255);\r\n    /* background-color: rgb(33, 33, 33); */\r\n\r\n}\r\n\r\n.absol-hmenu>.absol-dropdown {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-hmenu-button:hover,\r\n.absol-hmenu .absol-hmenu-button-hover {\r\n\r\n    background-color: rgb(175, 175, 175);\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-hmenu-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button,\r\n.absol-vmenu-button {\r\n    color: rgb(55, 55, 55);\r\n    height: 100%;\r\n    background-color: transparent;\r\n    font-size: 1em;\r\n    border: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-vmenu {}\r\n\r\n.absol-hmenu .absol-dropdown-content,\r\n.absol-hmenu .absol-dropright-content {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-vmenu-button {\r\n    text-align: left;\r\n    padding-left: 0.5em;\r\n    padding-right: 2em;\r\n    height: 1.8em;\r\n    line-height: 1.8em;\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\nimg.absol-vmenu-button-icon {\r\n    opacity: 0;\r\n    display: none;\r\n}\r\n\r\nimg.absol-vmenu-button-icon[src] {\r\n    display: block;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container {\r\n    display: inline-block;\r\n    width: 1.2em;\r\n    height: 1.2em;\r\n    vertical-align: middle;\r\n    margin-right: 0.3em;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container>span,\r\n.absol-vmenu-button-ext-icon-container>i {\r\n    font-size: 1.2em;\r\n    line-height: 1;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-ext-icon-container>svg,\r\n.absol-vmenu-button-ext-icon-container>img {\r\n    height: 1.2em;\r\n    width: 1.2em;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-text,\r\n.absol-vmenu-button-key {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-vmenu-button-key {\r\n    font-style: italic;\r\n    text-align: right;\r\n    margin-left: 1em;\r\n}\r\n\r\n.absol-vmenu-arrow-container {\r\n    position: absolute;\r\n    right: 0.2em;\r\n    top: 0.3em;\r\n    bottom: 0.3em;\r\n}\r\n\r\n.absol-vmenu-arrow {\r\n    display: block;\r\n    font-size: 1em;\r\n    line-height: 1.2em;\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-arrow {\r\n    display: none;\r\n}\r\n\r\n.absol-vmenu-button:hover,\r\n.absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(214, 214, 217);\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-button:hover,\r\n.absol-menu-item-disable .absol-vmenu .absol-vmenu-button-hover,\r\n.absol-menu-item-disable .absol-hmenu-button:hover,\r\n.absol-menu-item-disable .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: transparent;\r\n}\r\n\r\n.absol-vmenu-line {\r\n    text-align: center;\r\n    padding: 0.2em 1em;\r\n}\r\n\r\n.absol-vmenu-line>div {\r\n    height: 0.0714rem;\r\n    background-color: rgb(97, 97, 97);\r\n}\r\n\r\n.absol-menu-item-disable {}\r\n\r\n.absol-menu-item-disable button {\r\n    color: rgb(155, 155, 159);\r\n}\r\n\r\n.dark .absol-menu-item-disable button {\r\n    color: rgb(100, 100, 100);\r\n}\r\n\r\n.dark .absol-vmenu-button:hover,\r\n.dark .absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(9, 71, 113);\r\n}\r\n\r\n\r\n.dark .absol-hmenu .absol-dropdown-content,\r\n.dark .absol-hmenu .absol-dropright-content {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button,\r\n.dark .absol-vmenu-button {\r\n    color: rgb(200, 200, 200);\r\n\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button:hover,\r\n.dark .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: rgb(80, 80, 80);\r\n}\r\n\r\n\r\n.dark .absol-hmenu {\r\n    background-color: rgb(33, 33, 33);\r\n}\r\n\r\n/*standard-alone*/\r\n.absol-vmenu-button.standard-alone {\r\n    height: 2em;\r\n    border-radius: 0.3em;\r\n    border: solid rgb(169, 169, 170) 0.0714rem;\r\n    outline: none;\r\n}", ""]);
+exports.push([module.i, ".absol-ico {\r\n    width: 1rem;\r\n    height: 1rem;\r\n}\r\n\r\n.absol-button {\r\n    white-space: normal;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-dropdown {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropdown-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 0;\r\n    top: 100%;\r\n}\r\n\r\n.absol-dropdown.top>.absol-dropdown-content {\r\n    top: auto;\r\n    bottom: 100%;\r\n}\r\n\r\n.absol-dropdown.overlap-left>.absol-dropdown-content {\r\n    left: auto;\r\n    right: 0;\r\n}\r\n\r\n.absol-dropright {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropright-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 100%;\r\n    top: 0;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-drop-hidden>.absol-dropdown-content,\r\n.absol-drop-hidden>.absol-dropright-content {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n\r\n.absol-hmenu {\r\n    display: inline-block;\r\n    background-color: rgb(252, 252, 255);\r\n    /* background-color: rgb(33, 33, 33); */\r\n\r\n}\r\n\r\n.absol-hmenu>.absol-dropdown {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-hmenu-button:hover,\r\n.absol-hmenu .absol-hmenu-button-hover {\r\n\r\n    background-color: rgb(175, 175, 175);\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1rem;\r\n    padding-right: 1rem;\r\n}\r\n\r\n.absol-hmenu-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button,\r\n.absol-vmenu-button {\r\n    color: rgb(55, 55, 55);\r\n    height: 100%;\r\n    background-color: transparent;\r\n    font-size: 1rem;\r\n    border: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1rem;\r\n    padding-right: 1rem;\r\n}\r\n\r\n.absol-vmenu {}\r\n\r\n.absol-hmenu .absol-dropdown-content,\r\n.absol-hmenu .absol-dropright-content {\r\n    padding-top: 0.4rem;\r\n    padding-bottom: 0.4rem;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-vmenu-button {\r\n    text-align: left;\r\n    padding-left: 0.5rem;\r\n    padding-right: 2rem;\r\n    height: 1.8rem;\r\n    line-height: 1.8rem;\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\nimg.absol-vmenu-button-icon {\r\n    opacity: 0;\r\n    display: none;\r\n}\r\n\r\nimg.absol-vmenu-button-icon[src] {\r\n    display: block;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container {\r\n    display: inline-block;\r\n    width: 1.2rem;\r\n    height: 1.2rem;\r\n    vertical-align: middle;\r\n    margin-right: 0.3rem;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container>span,\r\n.absol-vmenu-button-ext-icon-container>i {\r\n    font-size: 1.2rem;\r\n    line-height: 1;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-ext-icon-container>svg,\r\n.absol-vmenu-button-ext-icon-container>img {\r\n    height: 1.2rem;\r\n    width: 1.2rem;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-text,\r\n.absol-vmenu-button-key {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-vmenu-button-key {\r\n    font-style: italic;\r\n    text-align: right;\r\n    margin-left: 1rem;\r\n}\r\n\r\n.absol-vmenu-arrow-container {\r\n    position: absolute;\r\n    right: 0.2rem;\r\n    top: 0.3rem;\r\n    bottom: 0.3rem;\r\n}\r\n\r\n.absol-vmenu-arrow {\r\n    display: block;\r\n    font-size: 1rem;\r\n    line-height: 1.2rem;\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-arrow {\r\n    display: none;\r\n}\r\n\r\n.absol-vmenu-button:hover,\r\n.absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(214, 214, 217);\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-button:hover,\r\n.absol-menu-item-disable .absol-vmenu .absol-vmenu-button-hover,\r\n.absol-menu-item-disable .absol-hmenu-button:hover,\r\n.absol-menu-item-disable .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: transparent;\r\n}\r\n\r\n.absol-vmenu-line {\r\n    text-align: center;\r\n    padding: 0.2em 1rem;\r\n}\r\n\r\n.absol-vmenu-line>div {\r\n    height: 0.0714rem;\r\n    background-color: rgb(97, 97, 97);\r\n}\r\n\r\n.absol-menu-item-disable {}\r\n\r\n.absol-menu-item-disable button {\r\n    color: rgb(155, 155, 159);\r\n}\r\n\r\n.dark .absol-menu-item-disable button {\r\n    color: rgb(100, 100, 100);\r\n}\r\n\r\n.dark .absol-vmenu-button:hover,\r\n.dark .absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(9, 71, 113);\r\n}\r\n\r\n\r\n.dark .absol-hmenu .absol-dropdown-content,\r\n.dark .absol-hmenu .absol-dropright-content {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button,\r\n.dark .absol-vmenu-button {\r\n    color: rgb(200, 200, 200);\r\n\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button:hover,\r\n.dark .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: rgb(80, 80, 80);\r\n}\r\n\r\n\r\n.dark .absol-hmenu {\r\n    background-color: rgb(33, 33, 33);\r\n}\r\n\r\n/*standard-alone*/\r\n.absol-vmenu-button.standard-alone {\r\n    height: 2rem;\r\n    border-radius: 0.3rem;\r\n    border: solid rgb(169, 169, 170) 0.0714rem;\r\n    outline: none;\r\n}", ""]);
 
 
 
@@ -29662,7 +29662,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r\n    z-index: -100000;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    top: 0;\r\n    opacity: 0;\r\n    resize: none;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-hinge-fixed-container {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.absol-context-hinge {\r\n    position: relative;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-context-hinge>.absol-context-menu {\r\n    position: absolute;\r\n    top: -714.2857rem;\r\n    left: -714.2857rem;\r\n    visibility: hidden;\r\n    z-index: 55;\r\n    display: inline-block;\r\n\r\n}\r\n\r\n.absol-context-hinge .absol-vmenu,\r\n.absol-context-hinge .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    /* background-color: rgb(37, 37, 38);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1); */\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-context-hinge.dark .absol-hmenu,\r\n.absol-context-hinge.dark .absol-vmenu,\r\n.dark .absol-context-hinge .absol-hmenu,\r\n.dark .absol-context-hinge .absol-vmenu {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.absol-context-menu-anchor {\r\n    position: fixed;\r\n    z-index: -1000;\r\n    left: 0;\r\n    top: 0;\r\n    display: block;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    font-size: 0.8571rem;\r\n}\r\n\r\n.absol-context-menu-anchor>textarea {\r\n    width: 1.4286rem;\r\n    height: 1.4286rem;\r\n    margin: 0;\r\n    resize: none;\r\n    border: none;\r\n    opacity: 0;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-menu-anchor.absol-active {\r\n    z-index: 100000000;\r\n    opacity: 1;\r\n    visibility: visible;\r\n}\r\n\r\n\r\n.absol-context-menu-anchor .absol-vmenu,\r\n.absol-context-menu-anchor .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}", ""]);
+exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r\n    z-index: -100000;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    top: 0;\r\n    opacity: 0;\r\n    resize: none;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-hinge-fixed-container {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.absol-context-hinge {\r\n    position: relative;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-context-hinge>.absol-context-menu {\r\n    position: absolute;\r\n    top: -714.2857rem;\r\n    left: -714.2857rem;\r\n    visibility: hidden;\r\n    z-index: 55;\r\n    display: inline-block;\r\n\r\n}\r\n\r\n.absol-context-hinge .absol-vmenu,\r\n.absol-context-hinge .absol-hmenu {\r\n    padding-top: 0.4rem;\r\n    padding-bottom: 0.4rem;\r\n    /* background-color: rgb(37, 37, 38);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1); */\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-context-hinge.dark .absol-hmenu,\r\n.absol-context-hinge.dark .absol-vmenu,\r\n.dark .absol-context-hinge .absol-hmenu,\r\n.dark .absol-context-hinge .absol-vmenu {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.absol-context-menu-anchor {\r\n    position: fixed;\r\n    z-index: -1000;\r\n    left: 0;\r\n    top: 0;\r\n    display: block;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    font-size: 0.8571rem;\r\n}\r\n\r\n.absol-context-menu-anchor>textarea {\r\n    width: 1.4286rem;\r\n    height: 1.4286rem;\r\n    margin: 0;\r\n    resize: none;\r\n    border: none;\r\n    opacity: 0;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-menu-anchor.absol-active {\r\n    z-index: 100000000;\r\n    opacity: 1;\r\n    visibility: visible;\r\n}\r\n\r\n\r\n.absol-context-menu-anchor .absol-vmenu,\r\n.absol-context-menu-anchor .absol-hmenu {\r\n    padding-top: 0.4rem;\r\n    padding-bottom: 0.4rem;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}", ""]);
 
 
 
@@ -29732,7 +29732,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-text-editor {\r\n    position: relative;\r\n    /* for dev*/\r\n    outline: none;\r\n    font-family: Helvetica, Arial, sans-serif;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-text-editor-text-layer {\r\n    cursor: text;\r\n    min-height: 1.5em;\r\n\r\n}\r\n\r\n.absol-text-editor-line {\r\n    height: 1.5em;\r\n    white-space: pre-wrap;\r\n}\r\n\r\n\r\n.absol-text-editor-position {\r\n    pointer-events: none;\r\n    right: 0.5em;\r\n    bottom: 0.2em;\r\n    position: absolute;\r\n    color: rgba(169, 169, 169, 0.7);\r\n}\r\n\r\n.absol-text-editor-forceground {\r\n    position: absolute;\r\n    background: transparent;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    z-index: 80;\r\n}\r\n\r\n.absol-text-editor.absol-focus .absol-text-editor-cursor {\r\n    position: absolute;\r\n    z-index: 100;\r\n    height: 1.5em;\r\n    border-left: solid 0.0714rem black;\r\n}\r\n\r\n/* \r\n.absol-text-editor-cursor {\r\n    animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n    -webkit-animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n} */\r\n\r\n/* @keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n} */\r\n\r\n.absol-text-editor-edittable {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    /* width: 0.7143rem;\r\n    height: 0.7143rem; */\r\n    overflow: hidden;\r\n    z-index: 0;\r\n    opacity: 0.1;\r\n}", ""]);
+exports.push([module.i, ".absol-text-editor {\r\n    position: relative;\r\n    /* for dev*/\r\n    outline: none;\r\n    font-family: Helvetica, Arial, sans-serif;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-text-editor-text-layer {\r\n    cursor: text;\r\n    min-height: 1.5rem;\r\n\r\n}\r\n\r\n.absol-text-editor-line {\r\n    height: 1.5rem;\r\n    white-space: pre-wrap;\r\n}\r\n\r\n\r\n.absol-text-editor-position {\r\n    pointer-events: none;\r\n    right: 0.5rem;\r\n    bottom: 0.2rem;\r\n    position: absolute;\r\n    color: rgba(169, 169, 169, 0.7);\r\n}\r\n\r\n.absol-text-editor-forceground {\r\n    position: absolute;\r\n    background: transparent;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    z-index: 80;\r\n}\r\n\r\n.absol-text-editor.absol-focus .absol-text-editor-cursor {\r\n    position: absolute;\r\n    z-index: 100;\r\n    height: 1.5rem;\r\n    border-left: solid 0.0714rem black;\r\n}\r\n\r\n/* \r\n.absol-text-editor-cursor {\r\n    animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n    -webkit-animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n} */\r\n\r\n/* @keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n} */\r\n\r\n.absol-text-editor-edittable {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    /* width: 0.7143rem;\r\n    height: 0.7143rem; */\r\n    overflow: hidden;\r\n    z-index: 0;\r\n    opacity: 0.1;\r\n}", ""]);
 
 
 
@@ -29767,7 +29767,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".vmedia-no-show {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1;\r\n    height: 1;\r\n    z-index: -100000;\r\n    opacity: 0;\r\n}\r\n\r\n.vmedia-no-select,\r\n.vmedia-no-select * {\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\ncoccocgrammar {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n\r\n.vmedia-media-input-text-container {\r\n    position: relative;\r\n    min-height: 2.5em;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor img {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor * {\r\n    font-family: inherit;\r\n    font-size: inherit;\r\n    font-weight: inherit;\r\n    text-decoration: inherit;\r\n    color: inherit;\r\n    background: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    white-space: pre;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    min-height: 2em;\r\n    padding-left: 0.5em;\r\n    padding-top: 0.25em;\r\n    padding-bottom: 0.25em;\r\n    margin-right: 0.5em;\r\n    box-sizing: border-box;\r\n    max-height: 6.66666666em;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container {\r\n    white-space: normal;\r\n}\r\n\r\n.vmedia-media-input:not(.dragover) .vmedia-media-input-dropover {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-dropover {\r\n    display: inline-block;\r\n    width: 7em;\r\n    height: 7em;\r\n}\r\n\r\n.vmedia-media-input-dropover>svg {\r\n    width: 7em;\r\n    height: 7em;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-imagepreview {\r\n    margin: 0.3em;\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview {\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.vmedia-media-input-imagepreview img {\r\n    height: 2.5em;\r\n    width: auto;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.attachment {\r\n    height: 2em;\r\n    width: 2em;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times,\r\n.vmedia-media-input-imagepreview svg.times {\r\n    position: absolute;\r\n    top: 0.1em;\r\n    right: 0.1em;\r\n    width: 1em;\r\n    height: 1em;\r\n    fill: rgba(69, 69, 69, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:hover,\r\n.vmedia-media-input-imagepreview svg.times:hover {\r\n    fill: rgba(144, 144, 144, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:active,\r\n.vmedia-media-input-imagepreview svg.times:active {\r\n    fill: rgba(220, 220, 240, 0.6);\r\n}\r\n\r\n.vmedia-media-input-plug-button-container {\r\n    position: absolute;\r\n    left: 0.25em;\r\n    bottom: 0.25em;\r\n    top: 0.25em;\r\n}\r\n\r\n.vmedia-media-input-plug-button-container svg {\r\n    height: 1.5em;\r\n    width: 1.5em;\r\n    vertical-align: middle;\r\n    transition: transform .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n\r\n.vmedia-media-input-plug-button-container svg path {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n    transition: fill .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n.vmedia-media-input.show-plugin .vmedia-media-input-plug-button svg path {\r\n    fill: rgba(134, 142, 153, 0.75);\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-plug-button {\r\n    padding: 0;\r\n    height: 100%;\r\n    width: 2em;\r\n    border: none;\r\n    background: transparent;\r\n    outline: none;\r\n\r\n}\r\n\r\n\r\n.vmedia-media-input-plugin-content-container {\r\n    position: absolute;\r\n    bottom: calc(0.0714rem + 100%);\r\n    opacity: 1;\r\n    transition: opacity .22s cubic-bezier(.5, 0, .4, 1);\r\n    background-color: white;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1);\r\n    z-index: 20;\r\n    background: white;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container:empty{\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container {\r\n    position: relative;\r\n    display: block;\r\n    height: 1.5em;\r\n    /* background: red;     */\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container-left {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container-right {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container button {\r\n    width: 2.5em;\r\n    height: 100%;\r\n    font-size: 1em;\r\n    margin-left: 0.1em;\r\n    margin-right: 0.1em;\r\n    border: none;\r\n    background-color: transparent;\r\n    border-radius: 0.4em;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    scrollbar-width: thin;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar {\r\n    width: 0.5rem;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-track {\r\n    background: rgb(240, 240, 240);\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-thumb {\r\n    background: rgb(205, 205, 205);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg {\r\n    height: 1.25em;\r\n    width: 1.25em;\r\n}\r\n\r\n.vmedia-media-input-tool-container button:hover {\r\n    background-color: rgba(91, 192, 222, 0.1);\r\n}\r\n\r\n.vmedia-media-input-tool-container button:active {\r\n    background-color: rgba(91, 192, 222, 0.4);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.send {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.add-file,\r\n.vmedia-media-input-tool-container button svg.add-image {\r\n    fill: rgba(66, 66, 66, 0.5);\r\n}\r\n\r\n.vmedia-media-input-tool-container button .mdi{\r\n    font-size:1.2em; \r\n}\r\n\r\n.vmedia-media-input-tool-container button:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-tool-container button{\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container.blur{\r\n    visibility: hidden;\r\n}", ""]);
+exports.push([module.i, ".vmedia-no-show {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1;\r\n    height: 1;\r\n    z-index: -100000;\r\n    opacity: 0;\r\n}\r\n\r\n.vmedia-no-select,\r\n.vmedia-no-select * {\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\ncoccocgrammar {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n\r\n.vmedia-media-input-text-container {\r\n    position: relative;\r\n    min-height: 2.5rem;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor img {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor * {\r\n    font-family: inherit;\r\n    font-size: inherit;\r\n    font-weight: inherit;\r\n    text-decoration: inherit;\r\n    color: inherit;\r\n    background: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    white-space: pre;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    min-height: 2rem;\r\n    padding-left: 0.5rem;\r\n    padding-top: 0.25rem;\r\n    padding-bottom: 0.25rem;\r\n    margin-right: 0.5rem;\r\n    box-sizing: border-box;\r\n    max-height: 6.66666666rem;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container {\r\n    white-space: normal;\r\n}\r\n\r\n.vmedia-media-input:not(.dragover) .vmedia-media-input-dropover {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-dropover {\r\n    display: inline-block;\r\n    width: 7rem;\r\n    height: 7rem;\r\n}\r\n\r\n.vmedia-media-input-dropover>svg {\r\n    width: 7rem;\r\n    height: 7rem;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-imagepreview {\r\n    margin: 0.3rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview {\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.vmedia-media-input-imagepreview img {\r\n    height: 2.5rem;\r\n    width: auto;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.attachment {\r\n    height: 2rem;\r\n    width: 2rem;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times,\r\n.vmedia-media-input-imagepreview svg.times {\r\n    position: absolute;\r\n    top: 0.1rem;\r\n    right: 0.1rem;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    fill: rgba(69, 69, 69, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:hover,\r\n.vmedia-media-input-imagepreview svg.times:hover {\r\n    fill: rgba(144, 144, 144, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:active,\r\n.vmedia-media-input-imagepreview svg.times:active {\r\n    fill: rgba(220, 220, 240, 0.6);\r\n}\r\n\r\n.vmedia-media-input-plug-button-container {\r\n    position: absolute;\r\n    left: 0.25rem;\r\n    bottom: 0.25rem;\r\n    top: 0.25rem;\r\n}\r\n\r\n.vmedia-media-input-plug-button-container svg {\r\n    height: 1.5rem;\r\n    width: 1.5rem;\r\n    vertical-align: middle;\r\n    transition: transform .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n\r\n.vmedia-media-input-plug-button-container svg path {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n    transition: fill .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n.vmedia-media-input.show-plugin .vmedia-media-input-plug-button svg path {\r\n    fill: rgba(134, 142, 153, 0.75);\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-plug-button {\r\n    padding: 0;\r\n    height: 100%;\r\n    width: 2rem;\r\n    border: none;\r\n    background: transparent;\r\n    outline: none;\r\n\r\n}\r\n\r\n\r\n.vmedia-media-input-plugin-content-container {\r\n    position: absolute;\r\n    bottom: calc(0.0714rem + 100%);\r\n    opacity: 1;\r\n    transition: opacity .22s cubic-bezier(.5, 0, .4, 1);\r\n    background-color: white;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1);\r\n    z-index: 20;\r\n    background: white;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container:empty{\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container {\r\n    position: relative;\r\n    display: block;\r\n    height: 1.5rem;\r\n    /* background: red;     */\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container-left {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container-right {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container button {\r\n    width: 2.5rem;\r\n    height: 100%;\r\n    font-size: 1rem;\r\n    margin-left: 0.1rem;\r\n    margin-right: 0.1rem;\r\n    border: none;\r\n    background-color: transparent;\r\n    border-radius: 0.4rem;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    scrollbar-width: thin;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar {\r\n    width: 0.5rem;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-track {\r\n    background: rgb(240, 240, 240);\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-thumb {\r\n    background: rgb(205, 205, 205);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg {\r\n    height: 1.25rem;\r\n    width: 1.25rem;\r\n}\r\n\r\n.vmedia-media-input-tool-container button:hover {\r\n    background-color: rgba(91, 192, 222, 0.1);\r\n}\r\n\r\n.vmedia-media-input-tool-container button:active {\r\n    background-color: rgba(91, 192, 222, 0.4);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.send {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.add-file,\r\n.vmedia-media-input-tool-container button svg.add-image {\r\n    fill: rgba(66, 66, 66, 0.5);\r\n}\r\n\r\n.vmedia-media-input-tool-container button .mdi{\r\n    font-size:1.2rem; \r\n}\r\n\r\n.vmedia-media-input-tool-container button:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-tool-container button{\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container.blur{\r\n    visibility: hidden;\r\n}", ""]);
 
 
 
@@ -29872,7 +29872,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-selectlist {\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item:hover {\r\n    background-color: #efefef;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item {\r\n    height: 1.4286rem;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-selectlist-item.selected {\r\n    background-color: #dfdfdf;\r\n}\r\n\r\n.absol-selectlist-item>span {\r\n    line-height: 1.4286rem;\r\n    white-space: pre;\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-selectlist-item {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectlist-item-desc-container {\r\n    position: absolute;\r\n    right: 0.3em;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.absol-selectlist-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-selectlist-item-desc:empty {\r\n    display: none;\r\n}", ""]);
+exports.push([module.i, ".absol-selectlist {\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item:hover {\r\n    background-color: #efefef;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item {\r\n    height: 1.4286rem;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-selectlist-item.selected {\r\n    background-color: #dfdfdf;\r\n}\r\n\r\n.absol-selectlist-item>span {\r\n    line-height: 1.4286rem;\r\n    white-space: pre;\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-selectlist-item {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectlist-item-desc-container {\r\n    position: absolute;\r\n    right: 0.3rem;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.absol-selectlist-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-selectlist-item-desc:empty {\r\n    display: none;\r\n}", ""]);
 
 
 
@@ -29907,7 +29907,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position: fixed; */\r\n\r\n    /* top: 0; */\r\n    /* left: 0; */\r\n    width: 0;\r\n    height: 0;\r\n    overflow: visible;\r\n}\r\n\r\n.absol-selectmenu-anchor {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container {\r\n    position: absolute;\r\n    z-index: 1002;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container .absol-bscroller {\r\n    max-height: calc(100vh - 3.5714rem);\r\n}\r\n\r\n\r\n.absol-selectmenu-anchor.absol-disabled .absol-selectmenu-anchor-content-container {\r\n    visibility: hidden;\r\n    top: -7142.8571rem;\r\n    left: -714.2857rem;\r\n    z-index: -1000;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box {\r\n    border: solid 0.0714rem rgb(169, 169, 169);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-selectmenu-dropdown-box .absol-search-text-input {\r\n    margin: 0.2em;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.absol-hidden {\r\n    display: none !important;\r\n}\r\n\r\n.absol-selectmenu-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-selectmenu-render-space>div {\r\n    display: inline-block;\r\n\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    background-color: #ebebe4;\r\n}\r\n\r\n\r\n.absol-selectmenu {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 2.1429rem;\r\n    min-width: 2.1429rem;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.1429rem;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    font-size: 1rem;\r\n    outline: none;\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n/* .absol-selectmenu:hover {\r\n    border: solid 0.0714rem black;\r\n} */\r\n\r\n.absol-selectmenu-btn {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    width: 2.1429rem;\r\n    border: none;\r\n    background: transparent;\r\n    z-index: 2;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-selectmenu-btn svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: #929292;\r\n}\r\n\r\n.absol-selectmenu:hover svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: black;\r\n}\r\n\r\n.absol-selectmenu-holder-item {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0.2857rem;\r\n    bottom: 0.2857rem;\r\n    /*0.0714rem for border*/\r\n}\r\n\r\n\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 2rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button {\r\n    background-color: rgba(0, 0, 0, 0.1);\r\n    border-radius: 0.2143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button:hover {\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.absol-scroll-bar-v-container {\r\n    width: 0.7143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-search-text-input {\r\n    margin: 0.2857rem;\r\n}\r\n\r\n.absol-selectmenu-render-space .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item-desc-container {\r\n    right: 2.8571rem;\r\n}", ""]);
+exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position: fixed; */\r\n\r\n    /* top: 0; */\r\n    /* left: 0; */\r\n    width: 0;\r\n    height: 0;\r\n    overflow: visible;\r\n}\r\n\r\n.absol-selectmenu-anchor {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container {\r\n    position: absolute;\r\n    z-index: 1002;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container .absol-bscroller {\r\n    max-height: calc(100vh - 3.5714rem);\r\n}\r\n\r\n\r\n.absol-selectmenu-anchor.absol-disabled .absol-selectmenu-anchor-content-container {\r\n    visibility: hidden;\r\n    top: -7142.8571rem;\r\n    left: -714.2857rem;\r\n    z-index: -1000;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box {\r\n    border: solid 0.0714rem rgb(169, 169, 169);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-selectmenu-dropdown-box .absol-search-text-input {\r\n    margin: 0.2rem;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.absol-hidden {\r\n    display: none !important;\r\n}\r\n\r\n.absol-selectmenu-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-selectmenu-render-space>div {\r\n    display: inline-block;\r\n\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    background-color: #ebebe4;\r\n}\r\n\r\n\r\n.absol-selectmenu {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 2.1429rem;\r\n    min-width: 2.1429rem;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.1429rem;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    font-size: 1rem;\r\n    outline: none;\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n/* .absol-selectmenu:hover {\r\n    border: solid 0.0714rem black;\r\n} */\r\n\r\n.absol-selectmenu-btn {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    width: 2.1429rem;\r\n    border: none;\r\n    background: transparent;\r\n    z-index: 2;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-selectmenu-btn svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: #929292;\r\n}\r\n\r\n.absol-selectmenu:hover svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: black;\r\n}\r\n\r\n.absol-selectmenu-holder-item {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0.2857rem;\r\n    bottom: 0.2857rem;\r\n    /*0.0714rem for border*/\r\n}\r\n\r\n\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 2rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button {\r\n    background-color: rgba(0, 0, 0, 0.1);\r\n    border-radius: 0.2143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button:hover {\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.absol-scroll-bar-v-container {\r\n    width: 0.7143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-search-text-input {\r\n    margin: 0.2857rem;\r\n}\r\n\r\n.absol-selectmenu-render-space .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item-desc-container {\r\n    right: 2.8571rem;\r\n}", ""]);
 
 
 
@@ -29942,7 +29942,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-tree-list {}\r\n\r\n.absol-tree-list-item {}\r\n\r\n.absol-tree-list-item-parent:hover {\r\n    background: #efefef;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-tree-list-item-parent {\r\n    padding-left: 0.3em;\r\n    padding-right: 0.6em;\r\n    position: relative;\r\n}\r\n\r\n.absol-tree-list-item.active>.absol-tree-list-item-parent {\r\n    background: #dfdfdf;\r\n}\r\n\r\n.absol-tree-list-item-parent>span {\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-tree-list-item-child {}\r\n\r\n.absol-tree-list-item>.absol-tree-list-item-child:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-tree-list-item-desc-container {\r\n    right: 0.3em;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n.absol-tree-list-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    margin-left: 1em;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-tree-list-item-desc:empty {\r\n    display: none;\r\n}", ""]);
+exports.push([module.i, ".absol-tree-list {}\r\n\r\n.absol-tree-list-item {}\r\n\r\n.absol-tree-list-item-parent:hover {\r\n    background: #efefef;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-tree-list-item-parent {\r\n    padding-left: 0.3rem;\r\n    padding-right: 0.6rem;\r\n    position: relative;\r\n}\r\n\r\n.absol-tree-list-item.active>.absol-tree-list-item-parent {\r\n    background: #dfdfdf;\r\n}\r\n\r\n.absol-tree-list-item-parent>span {\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-tree-list-item-child {}\r\n\r\n.absol-tree-list-item>.absol-tree-list-item-child:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-tree-list-item-desc-container {\r\n    right: 0.3rem;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n.absol-tree-list-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    margin-left: 1rem;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-tree-list-item-desc:empty {\r\n    display: none;\r\n}", ""]);
 
 
 
@@ -30082,7 +30082,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-switch {\r\n    position: relative;\r\n    display: inline-block;\r\n    width: 2.2em;\r\n    height: 1.2em;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-switch input {\r\n    opacity: 0;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-switch-slider {\r\n    position: absolute;\r\n    cursor: pointer;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ccc;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.6em;\r\n}\r\n\r\n.absol-switch-slider:before {\r\n    position: absolute;\r\n    content: \"\";\r\n    height: 1em;\r\n    width: 1em;\r\n    left: 0.1em;\r\n    bottom: 0.1em;\r\n    background-color: white;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.5em;\r\n}\r\n\r\ninput:checked+.absol-switch-slider {\r\n    background-color: #2196F3;\r\n}\r\n\r\ninput:focus+.absol-switch-slider {\r\n    box-shadow: 0 0 0.0714rem #2196F3;\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before {\r\n    -webkit-transform: translateX(1em);\r\n    -ms-transform: translateX(1em);\r\n    transform: translateX(1em);\r\n}\r\n\r\n/* Rounded absol-switch-sliders */\r\n.absol-switch.square .absol-switch-slider {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.square .absol-switch-slider:before {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider:before{\r\n    background-color: rgb(234, 234, 234);\r\n}\r\n\r\n.absol-switch.disabled input:checked+.absol-switch-slider {\r\n    background-color: rgb(141, 188, 226);\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider {\r\n    background-color: rgb(171, 171, 171);\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".absol-switch {\r\n    position: relative;\r\n    display: inline-block;\r\n    width: 2.2rem;\r\n    height: 1.2rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-switch input {\r\n    opacity: 0;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-switch-slider {\r\n    position: absolute;\r\n    cursor: pointer;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ccc;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.6rem;\r\n}\r\n\r\n.absol-switch-slider:before {\r\n    position: absolute;\r\n    content: \"\";\r\n    height: 1rem;\r\n    width: 1rem;\r\n    left: 0.1rem;\r\n    bottom: 0.1rem;\r\n    background-color: white;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.5rem;\r\n}\r\n\r\ninput:checked+.absol-switch-slider {\r\n    background-color: #2196F3;\r\n}\r\n\r\ninput:focus+.absol-switch-slider {\r\n    box-shadow: 0 0 0.0714rem #2196F3;\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before {\r\n    -webkit-transform: translateX(1em);\r\n    -ms-transform: translateX(1em);\r\n    transform: translateX(1em);\r\n}\r\n\r\n/* Rounded absol-switch-sliders */\r\n.absol-switch.square .absol-switch-slider {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.square .absol-switch-slider:before {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider:before{\r\n    background-color: rgb(234, 234, 234);\r\n}\r\n\r\n.absol-switch.disabled input:checked+.absol-switch-slider {\r\n    background-color: rgb(141, 188, 226);\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider {\r\n    background-color: rgb(171, 171, 171);\r\n}\r\n\r\n", ""]);
 
 
 
@@ -30187,7 +30187,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "\r\n.absol-editabe-text {\r\n    display: inline;\r\n}\r\n\r\n.absol-editabe-text span {\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n    white-space: pre;\r\n}\r\n\r\n.absol-editabe-text-higne {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 0rem;\r\n    height: 0ox;\r\n}\r\n\r\n.absol-editabe-text-higne input {\r\n    position: absolute;\r\n    display: none;\r\n    border: none;\r\n    top: -2;\r\n    left: -2;\r\n    padding-top: 0rem;\r\n    padding-left: 0.1429rem;\r\n    padding-bottom: 0.2857rem;\r\n    margin: 0;\r\n    background: transparent;\r\n    outline: none;\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n}\r\n\r\n.absol-editabe-text.editing .absol-editabe-text-higne input {\r\n    display: block;\r\n}\r\n\r\n.absol-editabe-text.editing span {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-editabe-text.editing {\r\n    -webkit-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    -moz-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    border-radius: 0.17em;\r\n}\r\n", ""]);
+exports.push([module.i, "\r\n.absol-editabe-text {\r\n    display: inline;\r\n}\r\n\r\n.absol-editabe-text span {\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n    white-space: pre;\r\n}\r\n\r\n.absol-editabe-text-higne {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 0rem;\r\n    height: 0ox;\r\n}\r\n\r\n.absol-editabe-text-higne input {\r\n    position: absolute;\r\n    display: none;\r\n    border: none;\r\n    top: -2;\r\n    left: -2;\r\n    padding-top: 0rem;\r\n    padding-left: 0.1429rem;\r\n    padding-bottom: 0.2857rem;\r\n    margin: 0;\r\n    background: transparent;\r\n    outline: none;\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n}\r\n\r\n.absol-editabe-text.editing .absol-editabe-text-higne input {\r\n    display: block;\r\n}\r\n\r\n.absol-editabe-text.editing span {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-editabe-text.editing {\r\n    -webkit-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    -moz-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    border-radius: 0.17rem;\r\n}\r\n", ""]);
 
 
 
@@ -30397,7 +30397,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-tabbar {\r\n    white-space: normal;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n\r\n.absol-tabbar .absol-hscroller-viewport {\r\n    overflow-y: hidden;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button {\r\n    height: 100%;\r\n}\r\n\r\n/* .absol-tabbar .absol-scrollbar-container {\r\n    height: 0.3571rem;\r\n} */\r\n\r\n.absol-tabbar .absol-scrollbar-container.horizontal {\r\n    bottom: -0.1429rem;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-container {\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n    background: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-tabbar:hover .absol-scrollbar-container,\r\n.absol-tabbar:active .absol-scrollbar-container {\r\n    opacity: 1;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button {\r\n    background-color: rgba(33, 33, 40, 0.1);\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button:hover {\r\n    background-color: rgba(33, 33, 40, 0.3);\r\n}\r\n\r\n\r\n\r\n.absol-tabbar .absol-scrollbar-button:active,\r\n.absol-tabbar .absol-hscrollbar.absol-active .absol-scrollbar-button {\r\n    background-color: rgba(47, 47, 55, 0.4);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-tabbar-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n    background-color: rgb(45, 45, 45);\r\n    color: rgb(200, 200, 200);\r\n    margin-right: 0.0714rem;\r\n    border: none;\r\n    outline: none;\r\n    font-size: 1em;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button-active {\r\n    background-color: rgb(30, 30, 30);\r\n    color: rgb(250, 250, 252);\r\n}\r\n\r\n.absol-tabbar-button-text,\r\n.absol-tabbar-button-close {\r\n    display: inline;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-tabbar-button .absol-tabbar-button-close {\r\n    visibility: hidden;\r\n    color: rgb(190, 190, 190);\r\n    font-size: 1em\r\n}\r\n\r\n.absol-tabbar-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-left: 0.5em;\r\n}\r\n\r\n.absol-tabbar-button-icon-container>span {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-tabbar-button:hover .absol-tabbar-button-close,\r\n.absol-tabbar-button-active .absol-tabbar-button-close {\r\n    visibility: visible;\r\n    color: red;\r\n}\r\n\r\n.absol-tabbar-button-active .absol-tabbar-button-modified-flag {\r\n    color: lightblue;\r\n}\r\n\r\n.absol-tabbar-button-modified-flag {\r\n    color: mediumaquamarine;\r\n}\r\n\r\n.absol-tabbar-button:not(.absol-tabbar-button-modified) .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified:not(.active) .absol-tabbar-button-icon-container:hover .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified .absol-tabbar-button-icon-container:not(:hover) .absol-tabbar-button-close {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-button-range {}\r\n\r\n\r\n.absol-tabview {\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-tabview-container {\r\n    position: absolute;\r\n    top: 2em;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n}\r\n\r\n\r\n\r\n.absol-tabview-container.absol-tabview-container-hidden {\r\n    z-index: -9999;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-tabview-container>div,\r\n.absol-tabview-container>pre {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-tabview-container>pre {\r\n    margin: 0;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button {\r\n    border-radius: 0.7143rem 0.7143rem 0 0;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #ccc;\r\n    background-color: white;\r\n    color: black;\r\n    padding-left: 1em;\r\n    padding-right: 0.357em;\r\n    margin-right: 0.357em;\r\n}\r\n\r\n.absol-tabview .absol-tabbar {\r\n    height: 2em;\r\n    overflow-y: hidden;\r\n    border-bottom: 0.0714rem solid #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button-active {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n/* .absol-tabview .absol-tabbar-button-close {\r\n    color: rgb(170, 170, 170);\r\n    line-height: 1.5em;\r\n    margin-left: 1em;\r\n    font-size: 1.3em;\r\n} */\r\n\r\n.absol-tabview .absol-tabbar-button-close:hover {\r\n    color: red;\r\n}\r\n\r\n\r\n\r\n\r\n/************** Mini version - like window form ***********************/\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar {\r\n    height: 1.5714rem;\r\n    border-bottom: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button {\r\n    height: 1.4286rem;\r\n    padding-left: 0.3571rem;\r\n    padding-right: 0.3571rem;\r\n    border-radius: 0;\r\n    margin: 0;\r\n    vertical-align: bottom;\r\n    margin-top: 0.1429rem;\r\n    background-color: rgb(242, 242, 242);\r\n    color: black;\r\n    position: relative;\r\n}\r\n\r\n.absol-tabview.xp-tiny::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 1.2857rem;\r\n    z-index: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 0.2857rem;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button.absol-tabbar-button-active {\r\n    height: 1.5714rem;\r\n    margin-top: 0;\r\n    background-color: white;\r\n    border-top-color: #ccc;\r\n    border-left-color: #ccc;\r\n    border-right-color: #ccc;\r\n    border-bottom-color: white;\r\n}\r\n\r\n\r\n\r\n.absol-hscroller.absol-tabbar.disabled .absol-scrollbar-container {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-tabview.absol-tabview.xp-tiny .absol-tabbar-button-close {\r\n    line-height: 1.2857rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button-close.mdi.mdi-close {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabview-container {\r\n    top: 1.5714rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tab-absol {\r\n    border-left: solid 0.0714rem #ccc;\r\n    border-right: solid 0.0714rem #ccc;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button .absol-tabbar-button-icon-container {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button {\r\n    padding-right: 1em;\r\n}", ""]);
+exports.push([module.i, ".absol-tabbar {\r\n    white-space: normal;\r\n    height: 2rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n\r\n.absol-tabbar .absol-hscroller-viewport {\r\n    overflow-y: hidden;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button {\r\n    height: 100%;\r\n}\r\n\r\n/* .absol-tabbar .absol-scrollbar-container {\r\n    height: 0.3571rem;\r\n} */\r\n\r\n.absol-tabbar .absol-scrollbar-container.horizontal {\r\n    bottom: -0.1429rem;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-container {\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n    background: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-tabbar:hover .absol-scrollbar-container,\r\n.absol-tabbar:active .absol-scrollbar-container {\r\n    opacity: 1;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button {\r\n    background-color: rgba(33, 33, 40, 0.1);\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button:hover {\r\n    background-color: rgba(33, 33, 40, 0.3);\r\n}\r\n\r\n\r\n\r\n.absol-tabbar .absol-scrollbar-button:active,\r\n.absol-tabbar .absol-hscrollbar.absol-active .absol-scrollbar-button {\r\n    background-color: rgba(47, 47, 55, 0.4);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-tabbar-button {\r\n    padding-left: 1rem;\r\n    padding-right: 1rem;\r\n    background-color: rgb(45, 45, 45);\r\n    color: rgb(200, 200, 200);\r\n    margin-right: 0.0714rem;\r\n    border: none;\r\n    outline: none;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button-active {\r\n    background-color: rgb(30, 30, 30);\r\n    color: rgb(250, 250, 252);\r\n}\r\n\r\n.absol-tabbar-button-text,\r\n.absol-tabbar-button-close {\r\n    display: inline;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-tabbar-button .absol-tabbar-button-close {\r\n    visibility: hidden;\r\n    color: rgb(190, 190, 190);\r\n    font-size: 1em\r\n}\r\n\r\n.absol-tabbar-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-left: 0.5rem;\r\n}\r\n\r\n.absol-tabbar-button-icon-container>span {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-tabbar-button:hover .absol-tabbar-button-close,\r\n.absol-tabbar-button-active .absol-tabbar-button-close {\r\n    visibility: visible;\r\n    color: red;\r\n}\r\n\r\n.absol-tabbar-button-active .absol-tabbar-button-modified-flag {\r\n    color: lightblue;\r\n}\r\n\r\n.absol-tabbar-button-modified-flag {\r\n    color: mediumaquamarine;\r\n}\r\n\r\n.absol-tabbar-button:not(.absol-tabbar-button-modified) .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified:not(.active) .absol-tabbar-button-icon-container:hover .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified .absol-tabbar-button-icon-container:not(:hover) .absol-tabbar-button-close {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-button-range {}\r\n\r\n\r\n.absol-tabview {\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-tabview-container {\r\n    position: absolute;\r\n    top: 2rem;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n}\r\n\r\n\r\n\r\n.absol-tabview-container.absol-tabview-container-hidden {\r\n    z-index: -9999;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-tabview-container>div,\r\n.absol-tabview-container>pre {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-tabview-container>pre {\r\n    margin: 0;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button {\r\n    border-radius: 0.7143rem 0.7143rem 0 0;\r\n    height: 2rem;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #ccc;\r\n    background-color: white;\r\n    color: black;\r\n    padding-left: 1rem;\r\n    padding-right: 0.357rem;\r\n    margin-right: 0.357rem;\r\n}\r\n\r\n.absol-tabview .absol-tabbar {\r\n    height: 2rem;\r\n    overflow-y: hidden;\r\n    border-bottom: 0.0714rem solid #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button-active {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n/* .absol-tabview .absol-tabbar-button-close {\r\n    color: rgb(170, 170, 170);\r\n    line-height: 1.5rem;\r\n    margin-left: 1rem;\r\n    font-size: 1.3rem;\r\n} */\r\n\r\n.absol-tabview .absol-tabbar-button-close:hover {\r\n    color: red;\r\n}\r\n\r\n\r\n\r\n\r\n/************** Mini version - like window form ***********************/\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar {\r\n    height: 1.5714rem;\r\n    border-bottom: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button {\r\n    height: 1.4286rem;\r\n    padding-left: 0.3571rem;\r\n    padding-right: 0.3571rem;\r\n    border-radius: 0;\r\n    margin: 0;\r\n    vertical-align: bottom;\r\n    margin-top: 0.1429rem;\r\n    background-color: rgb(242, 242, 242);\r\n    color: black;\r\n    position: relative;\r\n}\r\n\r\n.absol-tabview.xp-tiny::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 1.2857rem;\r\n    z-index: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 0.2857rem;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button.absol-tabbar-button-active {\r\n    height: 1.5714rem;\r\n    margin-top: 0;\r\n    background-color: white;\r\n    border-top-color: #ccc;\r\n    border-left-color: #ccc;\r\n    border-right-color: #ccc;\r\n    border-bottom-color: white;\r\n}\r\n\r\n\r\n\r\n.absol-hscroller.absol-tabbar.disabled .absol-scrollbar-container {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-tabview.absol-tabview.xp-tiny .absol-tabbar-button-close {\r\n    line-height: 1.2857rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button-close.mdi.mdi-close {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabview-container {\r\n    top: 1.5714rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tab-absol {\r\n    border-left: solid 0.0714rem #ccc;\r\n    border-right: solid 0.0714rem #ccc;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button .absol-tabbar-button-icon-container {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button {\r\n    padding-right: 1rem;\r\n}", ""]);
 
 
 
@@ -30467,7 +30467,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-page-selector{\r\n    white-space: normal;\r\n}\r\n\r\n.absol-page-selector > ul{\r\n    margin-bottom: 0rem;\r\n    margin-top: 0;\r\n}\r\n\r\n.page-number-buttons{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-number-input > label{\r\n    font-weight: 100;\r\n}\r\n\r\n.page-number-buttons > li.page-previous, \r\n.page-number-buttons > li.page-next,\r\n.page-number-buttons > li.page-first,\r\n.page-number-buttons > li.page-last\r\n{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    padding-left: 0.7143rem;\r\n    padding-right: 0.7143rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n.page-number-buttons > li.page-number{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    width: 2.8571rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.page-number-buttons > li.page-number.active{\r\n    box-shadow:  0 0.1429rem 0.3571rem 0 rgba(0,0,0,.16), 0 0.1429rem 0.7143rem 0 rgba(0,0,0,.12);\r\n    background-color: #4285f4;\r\n    border-radius:0.1429rem; \r\n    \r\n}\r\n\r\n.page-number-buttons > li.page-number.active > a{\r\n\tcolor: white;\r\n    \r\n}\r\n\r\n.page-number-buttons > li> a{\r\n    line-height: 2.1429rem;\r\n    text-decoration:none;\r\n}\r\n\r\n.page-number-buttons > li:not(.active):hover{\r\n    background-color: #eee;\r\n\r\n}\r\n\r\n.absol-page-selector .page-number-input{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-page-selector .page-number-input  input[type=\"text\"]{\r\n    width: 3em;\r\n    margin-left: 0.3571rem; \r\n    margin-right: 0.7143rem;\r\n    text-align: center;\r\n    height: 1.8571rem;\r\n    border: none;\r\n    border: solid 0.0714rem #ccc; \r\n    border-radius: 0.1429rem;\r\n\r\n}", ""]);
+exports.push([module.i, ".absol-page-selector{\r\n    white-space: normal;\r\n}\r\n\r\n.absol-page-selector > ul{\r\n    margin-bottom: 0rem;\r\n    margin-top: 0;\r\n}\r\n\r\n.page-number-buttons{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-number-input > label{\r\n    font-weight: 100;\r\n}\r\n\r\n.page-number-buttons > li.page-previous, \r\n.page-number-buttons > li.page-next,\r\n.page-number-buttons > li.page-first,\r\n.page-number-buttons > li.page-last\r\n{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    padding-left: 0.7143rem;\r\n    padding-right: 0.7143rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n.page-number-buttons > li.page-number{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    width: 2.8571rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.page-number-buttons > li.page-number.active{\r\n    box-shadow:  0 0.1429rem 0.3571rem 0 rgba(0,0,0,.16), 0 0.1429rem 0.7143rem 0 rgba(0,0,0,.12);\r\n    background-color: #4285f4;\r\n    border-radius:0.1429rem; \r\n    \r\n}\r\n\r\n.page-number-buttons > li.page-number.active > a{\r\n\tcolor: white;\r\n    \r\n}\r\n\r\n.page-number-buttons > li> a{\r\n    line-height: 2.1429rem;\r\n    text-decoration:none;\r\n}\r\n\r\n.page-number-buttons > li:not(.active):hover{\r\n    background-color: #eee;\r\n\r\n}\r\n\r\n.absol-page-selector .page-number-input{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-page-selector .page-number-input  input[type=\"text\"]{\r\n    width: 3rem;\r\n    margin-left: 0.3571rem; \r\n    margin-right: 0.7143rem;\r\n    text-align: center;\r\n    height: 1.8571rem;\r\n    border: none;\r\n    border: solid 0.0714rem #ccc; \r\n    border-radius: 0.1429rem;\r\n\r\n}", ""]);
 
 
 
@@ -30537,7 +30537,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-search-list {\r\n    padding-top: 2.5em;\r\n    position: relative;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-search-list-search-input-container {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 2.5em;\r\n    border-bottom: solid 0.0714rem #a9a9a9;\r\n\r\n}\r\n\r\n\r\n.absol-search-list-search-input-container input[type=\"text\"] {\r\n    font-size: 1em;\r\n    box-sizing: border-box;\r\n    width: calc(100% - 1em);\r\n    height: 1.5em;\r\n    margin: 0.5em;\r\n}\r\n\r\n.absol-search-list-contents {\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    background: white;\r\n}\r\n\r\n.absol-search-list-item {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-search-list-item.default {\r\n    line-height: 2em;\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-search-list-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-search-list-item.active {\r\n    background-color: rgba(169, 169, 169, 0.4);\r\n}", ""]);
+exports.push([module.i, ".absol-search-list {\r\n    padding-top: 2.5rem;\r\n    position: relative;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-search-list-search-input-container {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 2.5rem;\r\n    border-bottom: solid 0.0714rem #a9a9a9;\r\n\r\n}\r\n\r\n\r\n.absol-search-list-search-input-container input[type=\"text\"] {\r\n    font-size: 1rem;\r\n    box-sizing: border-box;\r\n    width: calc(100% - 1em);\r\n    height: 1.5rem;\r\n    margin: 0.5rem;\r\n}\r\n\r\n.absol-search-list-contents {\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    background: white;\r\n}\r\n\r\n.absol-search-list-item {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-search-list-item.default {\r\n    line-height: 2rem;\r\n    padding-left: 1rem;\r\n    padding-right: 1rem;\r\n}\r\n\r\n.absol-search-list-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-search-list-item.active {\r\n    background-color: rgba(169, 169, 169, 0.4);\r\n}", ""]);
 
 
 
@@ -30572,7 +30572,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-static-tabbar {\r\n    position: relative;\r\n}\r\n\r\n.absol-static-tabbar-button {\r\n    height: 2em;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 1em;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    color: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-static-tabbar-button:hover {\r\n    color: rgb(30, 30, 55);\r\n}\r\n\r\n.absol-static-tabbar-button.active {\r\n    color: black;\r\n}\r\n\r\n.absol-static-tabbar-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-static-tabbar-button>span {\r\n    font-size: 0.7em;\r\n}\r\n\r\n.absol-static-tabbar-hline {\r\n    border-bottom: solid 0.0714rem rgb(127, 127, 128);\r\n    height: 100%;\r\n}\r\n\r\n.absol-static-tabbar-active-box {\r\n    position: absolute;\r\n    bottom: 0;\r\n    top: 0;\r\n    left: 0;\r\n    width: 0;\r\n    transition: left 0.15s, width 0.15s;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    box-sizing: border-box;\r\n    /* z-index: 1; */\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-hline{\r\n    border-bottom-color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button.active{\r\n    color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button {\r\n    color: rgb(204, 204, 204);\r\n}", ""]);
+exports.push([module.i, ".absol-static-tabbar {\r\n    position: relative;\r\n}\r\n\r\n.absol-static-tabbar-button {\r\n    height: 2rem;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 1rem;\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    color: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-static-tabbar-button:hover {\r\n    color: rgb(30, 30, 55);\r\n}\r\n\r\n.absol-static-tabbar-button.active {\r\n    color: black;\r\n}\r\n\r\n.absol-static-tabbar-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-static-tabbar-button>span {\r\n    font-size: 0.7rem;\r\n}\r\n\r\n.absol-static-tabbar-hline {\r\n    border-bottom: solid 0.0714rem rgb(127, 127, 128);\r\n    height: 100%;\r\n}\r\n\r\n.absol-static-tabbar-active-box {\r\n    position: absolute;\r\n    bottom: 0;\r\n    top: 0;\r\n    left: 0;\r\n    width: 0;\r\n    transition: left 0.15s, width 0.15s;\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    box-sizing: border-box;\r\n    /* z-index: 1; */\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-hline{\r\n    border-bottom-color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button.active{\r\n    color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button {\r\n    color: rgb(204, 204, 204);\r\n}", ""]);
 
 
 
@@ -30607,7 +30607,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-exp-node {\r\n    height: 2em;\r\n    text-align: left;\r\n    background-color: transparent;\r\n    border: none;\r\n    outline: none;\r\n    white-space: nowrap;\r\n    font-size: inherit;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    position: relative;\r\n    color: rgb(33, 33, 34);\r\n}\r\n\r\n.absol-exp-node .toggler-ico {\r\n    width: 0.7em;\r\n    height: 0.7em;\r\n    margin-right: 0.35em;\r\n}\r\n\r\n.absol-exp-node .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-exp-node.status-removable .toggler-ico,\r\n.absol-exp-node.status-modified .toggler-ico {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-open) .toggle-open {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-close) .toggle-close {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node:hover .remove-ico {\r\n    visibility: visible;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node.status-removable .remove-ico,\r\n.absol-exp-node.status-modified .remove-ico {\r\n    display: inline-block;\r\n}\r\n\r\n.absol-exp-node.status-removable .remove-ico .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico .close {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .close {\r\n    visibility: visible;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-exp-node .remove-ico {\r\n    width: 0.9em;\r\n    height: 0.9em;\r\n    display: none;\r\n    visibility: hidden;\r\n    margin-left: -0.3em;\r\n    margin-right: 0.45em;\r\n}\r\n\r\n.absol-exp-node .remove-ico .close,\r\n.absol-exp-node .remove-ico .modified {\r\n    fill: rgb(169, 169, 169);\r\n    stroke: none;\r\n}\r\n\r\n\r\n.absol-exp-node.has-status {\r\n    padding-right: 2.5em;\r\n}\r\n\r\n.absol-exp-node>div,\r\n.absol-exp-node>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-exp-node .editing input {\r\n    color: khaki;\r\n    padding-top: 0.1429rem;\r\n    padding-bottom: 0.1429rem;\r\n}\r\n\r\n.absol-exp-node:hover {\r\n    background-color: rgb(169, 169, 172, 0.1);\r\n}\r\n\r\n.absol-exp-node:focus,\r\n.absol-exp-node.active:focus {\r\n    background-color: rgba(20, 185, 235, 0.3);\r\n}\r\n\r\n.absol-exp-node.active {\r\n    background-color: rgb(169, 169, 172, 0.2);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-exp-node-name {\r\n    /* -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none; */\r\n    user-select: none;\r\n    vertical-align: middle;\r\n    color: black;\r\n    margin-left: 0.5em;\r\n}\r\n\r\n.absol-exp-node-desc {\r\n    color: rgb(104, 104, 104);\r\n    margin-left: 0.5em;\r\n    font-size: 0.85em;\r\n}\r\n\r\n.absol-exp-node-desc:empty {\r\n    margin-left: 0;\r\n}\r\n\r\n\r\n.absol-exp-node-expand-icon {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-right: 0.2em;\r\n    height: 0.5em;\r\n    width: 0.5em;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node-ext-icon,\r\n.absol-exp-node-ext-icon>img {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 1.5em;\r\n    height: 1.5em;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon:empty {\r\n    display: none;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon {\r\n    text-align: center;\r\n}\r\n\r\n.absol-exp-node-ext-icon>.mdi,\r\n.absol-exp-node-ext-icon>span .absol-exp-node-ext-icon>svg {\r\n    line-height: 1em;\r\n    font-size: 1.5em;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon[src] {\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.absol-exp-tree>.absol-exp-node {\r\n    width: 100%;\r\n    display: block;\r\n}\r\n\r\n.absol-exp-tree.hide-children>.absol-exp-items {\r\n    display: none;\r\n}\r\n\r\n\r\n.dark .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n.dark .absol-exp-node-name {\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.dark .absol-exp-node-desc {\r\n    color: rgb(169, 169, 170);\r\n}\r\n\r\n.dark .absol-exp-node {\r\n    color: rgb(169, 169, 170);\r\n}", ""]);
+exports.push([module.i, ".absol-exp-node {\r\n    height: 2rem;\r\n    text-align: left;\r\n    background-color: transparent;\r\n    border: none;\r\n    outline: none;\r\n    white-space: nowrap;\r\n    font-size: inherit;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    position: relative;\r\n    color: rgb(33, 33, 34);\r\n}\r\n\r\n.absol-exp-node .toggler-ico {\r\n    width: 0.7rem;\r\n    height: 0.7rem;\r\n    margin-right: 0.35rem;\r\n}\r\n\r\n.absol-exp-node .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-exp-node.status-removable .toggler-ico,\r\n.absol-exp-node.status-modified .toggler-ico {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-open) .toggle-open {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-close) .toggle-close {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node:hover .remove-ico {\r\n    visibility: visible;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node.status-removable .remove-ico,\r\n.absol-exp-node.status-modified .remove-ico {\r\n    display: inline-block;\r\n}\r\n\r\n.absol-exp-node.status-removable .remove-ico .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico .close {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .close {\r\n    visibility: visible;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-exp-node .remove-ico {\r\n    width: 0.9rem;\r\n    height: 0.9rem;\r\n    display: none;\r\n    visibility: hidden;\r\n    margin-left: -0.3rem;\r\n    margin-right: 0.45rem;\r\n}\r\n\r\n.absol-exp-node .remove-ico .close,\r\n.absol-exp-node .remove-ico .modified {\r\n    fill: rgb(169, 169, 169);\r\n    stroke: none;\r\n}\r\n\r\n\r\n.absol-exp-node.has-status {\r\n    padding-right: 2.5rem;\r\n}\r\n\r\n.absol-exp-node>div,\r\n.absol-exp-node>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-exp-node .editing input {\r\n    color: khaki;\r\n    padding-top: 0.1429rem;\r\n    padding-bottom: 0.1429rem;\r\n}\r\n\r\n.absol-exp-node:hover {\r\n    background-color: rgb(169, 169, 172, 0.1);\r\n}\r\n\r\n.absol-exp-node:focus,\r\n.absol-exp-node.active:focus {\r\n    background-color: rgba(20, 185, 235, 0.3);\r\n}\r\n\r\n.absol-exp-node.active {\r\n    background-color: rgb(169, 169, 172, 0.2);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-exp-node-name {\r\n    /* -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none; */\r\n    user-select: none;\r\n    vertical-align: middle;\r\n    color: black;\r\n    margin-left: 0.5rem;\r\n}\r\n\r\n.absol-exp-node-desc {\r\n    color: rgb(104, 104, 104);\r\n    margin-left: 0.5rem;\r\n    font-size: 0.85rem;\r\n}\r\n\r\n.absol-exp-node-desc:empty {\r\n    margin-left: 0;\r\n}\r\n\r\n\r\n.absol-exp-node-expand-icon {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-right: 0.2rem;\r\n    height: 0.5rem;\r\n    width: 0.5rem;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node-ext-icon,\r\n.absol-exp-node-ext-icon>img {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 1.5rem;\r\n    height: 1.5rem;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon:empty {\r\n    display: none;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon {\r\n    text-align: center;\r\n}\r\n\r\n.absol-exp-node-ext-icon>.mdi,\r\n.absol-exp-node-ext-icon>span .absol-exp-node-ext-icon>svg {\r\n    line-height: 1rem;\r\n    font-size: 1.5rem;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon[src] {\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.absol-exp-tree>.absol-exp-node {\r\n    width: 100%;\r\n    display: block;\r\n}\r\n\r\n.absol-exp-tree.hide-children>.absol-exp-items {\r\n    display: none;\r\n}\r\n\r\n\r\n.dark .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n.dark .absol-exp-node-name {\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.dark .absol-exp-node-desc {\r\n    color: rgb(169, 169, 170);\r\n}\r\n\r\n.dark .absol-exp-node {\r\n    color: rgb(169, 169, 170);\r\n}", ""]);
 
 
 
@@ -30677,7 +30677,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-table-scroller {\r\n    position: relative;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-table-scroller-render-space {\r\n    position: fixed;\r\n    overflow: scroll;\r\n    left: 0;\r\n    top: 0;\r\n    max-width: calc(99vw - 2.1429rem);\r\n    max-height: calc(99vh -2.1429rem);\r\n    opacity: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-table-scroller-viewport {\r\n    box-sizing: border-box;\r\n    overflow: scroll;\r\n    width: calc(100% + 1.2143rem);\r\n    height: calc(100% + 1.2143rem);\r\n}\r\n\r\n.absol-table-scroller-fixed-viewport {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 10;\r\n    overflow: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-fixed-viewport>table>thead,\r\n.absol-table-scroller-fixed-viewport>table {\r\n    border-top-color: transparent !important;\r\n}\r\n\r\n.absol-table-scroller-fixed-hidden {\r\n    visibility: hidden !important;\r\n    opacity: 0 !important;\r\n    border-color: transparent !important;\r\n\r\n}\r\n\r\n.absol-table-scroller-header-hscroller {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    z-index: 9;\r\n    overflow: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-header-hscroller-viewport {\r\n    max-width: 100%;\r\n    overflow-x: scroll;\r\n    margin-bottom: -1.2143rem;/*default*/\r\n}\r\n\r\n.absol-table-scroller-header-hscroller-viewport table {\r\n    table-layout: fixed;\r\n}\r\n\r\n\r\n.absol-table-scroller-left-vscroller {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    z-index: 7;\r\n    /* width: 14.2857rem; */\r\n    overflow-x: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-left-vscroller-viewport {\r\n    max-height: 100%;\r\n    overflow-y: scroll;\r\n    min-width: calc(100% + 1.3571rem);\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n.absol-table-scroller-head-line,\r\n.absol-table-scroller-left-line {\r\n    z-index: 30;\r\n    pointer-events: none;\r\n    position: absolute;\r\n}\r\n\r\n.absol-table-scroller-head-line {\r\n    left: 0;\r\n    width: calc(100% - 0.4286rem);\r\n    border-bottom: solid 0.1429rem rgb(169, 169, 170);\r\n    width: 100%;\r\n}\r\n\r\n.absol-table-scroller-left-line {\r\n    top: 0;\r\n    border-right: solid 0.1429rem rgb(169, 169, 170);\r\n    height: calc(100% - 0.4286rem);\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-table-scroller.scroll-v .absol-table-scroller-head-line {\r\n    width: 100%;\r\n}\r\n\r\n.absol-table-scroller.scroll-h .absol-table-scroller-left-line {\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-table-scroller:not(.scroll-v) .absol-table-scroller-head-line {\r\n    display: none;\r\n}\r\n\r\n.absol-table-scroller:not(.scroll-h) .absol-table-scroller-left-line {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-table-scroller-vscrollbar-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 0.71428571428rem;\r\n    bottom: 0;\r\n    z-index: 31;\r\n}\r\n\r\n.absol-table-scroller-vscrollbar-container .absol-scrollbar-button {\r\n    left: 0.0714rem;\r\n    right: 0.0714rem;\r\n}\r\n\r\n\r\n.absol-table-scroller-vscrollbar-container>div,\r\n.absol-table-scroller-hscrollbar-container>div {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-table-scroller-hscrollbar-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    height: 0.8571rem;\r\n    bottom: 0;\r\n    z-index: 31;\r\n}\r\n\r\n\r\n.absol-table-scroller-hscrollbar-container .absol-scrollbar-button {\r\n    top: 0.0714rem;\r\n    bottom: 0.0714rem;\r\n}\r\n\r\n\r\n.absol-table-scroller:not(.scroll-v) .absol-table-scroller-vscrollbar-container {\r\n    display: none;\r\n}\r\n\r\n.absol-table-scroller:not(.scroll-h) .absol-table-scroller-hscrollbar-container {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-table-scroller.scroll-h .absol-table-scroller-vscrollbar-container {\r\n    bottom: 0.8571rem;\r\n}\r\n\r\n.absol-table-scroller.scroll-v .absol-table-scroller-hscrollbar-container {\r\n    right: 0.71428571428rem;\r\n}", ""]);
+exports.push([module.i, ".absol-table-scroller {\r\n    position: relative;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-table-scroller-render-space {\r\n    position: fixed;\r\n    overflow: scroll;\r\n    left: 0;\r\n    top: 0;\r\n    max-width: calc(99vw - 2.1429rem);\r\n    max-height: calc(99vh -2.1429rem);\r\n    opacity: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-table-scroller-viewport {\r\n    box-sizing: border-box;\r\n    overflow: scroll;\r\n    width: calc(100% + 1.2143rem);\r\n    height: calc(100% + 1.2143rem);\r\n}\r\n\r\n.absol-table-scroller-fixed-viewport {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 10;\r\n    overflow: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-fixed-viewport>table>thead,\r\n.absol-table-scroller-fixed-viewport>table {\r\n    border-top-color: transparent !important;\r\n}\r\n\r\n.absol-table-scroller-fixed-hidden {\r\n    visibility: hidden !important;\r\n    opacity: 0 !important;\r\n    border-color: transparent !important;\r\n\r\n}\r\n\r\n.absol-table-scroller-header-hscroller {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    z-index: 9;\r\n    overflow: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-header-hscroller-viewport {\r\n    max-width: 100%;\r\n    overflow-x: scroll;\r\n    margin-bottom: -1.2143rem;/*default*/\r\n}\r\n\r\n.absol-table-scroller-header-hscroller-viewport table {\r\n    table-layout: fixed;\r\n}\r\n\r\n\r\n.absol-table-scroller-left-vscroller {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    z-index: 7;\r\n    /* width: 14.2857rem; */\r\n    overflow-x: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-left-vscroller-viewport {\r\n    max-height: 100%;\r\n    overflow-y: scroll;\r\n    min-width: calc(100% + 1.3571rem);\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n.absol-table-scroller-head-line,\r\n.absol-table-scroller-left-line {\r\n    z-index: 30;\r\n    pointer-events: none;\r\n    position: absolute;\r\n}\r\n\r\n.absol-table-scroller-head-line {\r\n    left: 0;\r\n    width: calc(100% - 0.4286rem);\r\n    border-bottom: solid 0.1429rem rgb(169, 169, 170);\r\n    width: 100%;\r\n}\r\n\r\n.absol-table-scroller-left-line {\r\n    top: 0;\r\n    border-right: solid 0.1429rem rgb(169, 169, 170);\r\n    height: calc(100% - 0.4286rem);\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-table-scroller.scroll-v .absol-table-scroller-head-line {\r\n    width: 100%;\r\n}\r\n\r\n.absol-table-scroller.scroll-h .absol-table-scroller-left-line {\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-table-scroller:not(.scroll-v) .absol-table-scroller-head-line {\r\n    display: none;\r\n}\r\n\r\n.absol-table-scroller:not(.scroll-h) .absol-table-scroller-left-line {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-table-scroller-vscrollbar-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 0.5714rem;\r\n    bottom: 0;\r\n    z-index: 31;\r\n}\r\n\r\n.absol-table-scroller-vscrollbar-container .absol-scrollbar-button {\r\n    left: 0.0714rem;\r\n    right: 0.0714rem;\r\n}\r\n\r\n\r\n.absol-table-scroller-vscrollbar-container>div,\r\n.absol-table-scroller-hscrollbar-container>div {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-table-scroller-hscrollbar-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    height: 0.8571rem;\r\n    bottom: 0;\r\n    z-index: 31;\r\n}\r\n\r\n\r\n.absol-table-scroller-hscrollbar-container .absol-scrollbar-button {\r\n    top: 0.0714rem;\r\n    bottom: 0.0714rem;\r\n}\r\n\r\n\r\n.absol-table-scroller:not(.scroll-v) .absol-table-scroller-vscrollbar-container {\r\n    display: none;\r\n}\r\n\r\n.absol-table-scroller:not(.scroll-h) .absol-table-scroller-hscrollbar-container {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-table-scroller.scroll-h .absol-table-scroller-vscrollbar-container {\r\n    bottom: 0.8571rem;\r\n}\r\n\r\n.absol-table-scroller.scroll-v .absol-table-scroller-hscrollbar-container {\r\n    right: 0.5714rem;\r\n}", ""]);
 
 
 
@@ -30712,7 +30712,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-quick-path {\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    user-select: none;\r\n    -webkit-user-select: none;\r\n    -ms-user-select: none;\r\n    -moz-user-select: none;\r\n    min-height: 1.5em;\r\n}\r\n\r\n.absol-quick-path button {\r\n    outline: none;\r\n    color: rgb(69, 69, 69);\r\n    height: 1.5em;\r\n}\r\n\r\n.absol-quick-path button:hover {\r\n    color: black;\r\n}\r\n\r\n.absol-quick-path .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.dark .absol-quick-path button {\r\n    color: rgb(200, 200, 200);\r\n}\r\n\r\n\r\n.dark .absol-quick-path button:hover {\r\n    color: white;\r\n}\r\n\r\n.dark .absol-quick-path .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n\r\n.absol-quick-path-btn:focus span {\r\n    text-decoration: underline;\r\n}\r\n\r\n/* \r\n.absol-quick-path-btn .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n} */\r\n", ""]);
+exports.push([module.i, ".absol-quick-path {\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    user-select: none;\r\n    -webkit-user-select: none;\r\n    -ms-user-select: none;\r\n    -moz-user-select: none;\r\n    min-height: 1.5rem;\r\n}\r\n\r\n.absol-quick-path button {\r\n    outline: none;\r\n    color: rgb(69, 69, 69);\r\n    height: 1.5rem;\r\n}\r\n\r\n.absol-quick-path button:hover {\r\n    color: black;\r\n}\r\n\r\n.absol-quick-path .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.dark .absol-quick-path button {\r\n    color: rgb(200, 200, 200);\r\n}\r\n\r\n\r\n.dark .absol-quick-path button:hover {\r\n    color: white;\r\n}\r\n\r\n.dark .absol-quick-path .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n\r\n.absol-quick-path-btn:focus span {\r\n    text-decoration: underline;\r\n}\r\n\r\n/* \r\n.absol-quick-path-btn .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n} */\r\n", ""]);
 
 
 
@@ -30747,7 +30747,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-drop-panel-head {\r\n    height: 2.75em;\r\n    line-height: 2.75em;\r\n    -webkit-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    -moz-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    background-color: rgba(240, 240, 242);\r\n    color: black;\r\n}\r\n\r\n.absol-drop-panel-head .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n\r\n.dark .absol-drop-panel-head {\r\n    background-color: rgba(54, 54, 56);\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.absol-drop-panel.show .absol-drop-panel-body {\r\n    height:auto;\r\n}\r\n\r\n.absol-drop-panel-body {\r\n    transition: height 0.2s;\r\n    height: 0;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n\r\n.absol-drop-panel.show>.absol-drop-panel-head  .toggle-close{\r\n    display: none;\r\n}\r\n\r\n.absol-drop-panel:not(.show)>.absol-drop-panel-head  .toggle-open{\r\n    display: none;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".absol-drop-panel-head {\r\n    height: 2.75rem;\r\n    line-height: 2.75rem;\r\n    -webkit-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    -moz-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    background-color: rgba(240, 240, 242);\r\n    color: black;\r\n}\r\n\r\n.absol-drop-panel-head .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n\r\n.dark .absol-drop-panel-head {\r\n    background-color: rgba(54, 54, 56);\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.absol-drop-panel.show .absol-drop-panel-body {\r\n    height:auto;\r\n}\r\n\r\n.absol-drop-panel-body {\r\n    transition: height 0.2s;\r\n    height: 0;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n\r\n.absol-drop-panel.show>.absol-drop-panel-head  .toggle-close{\r\n    display: none;\r\n}\r\n\r\n.absol-drop-panel:not(.show)>.absol-drop-panel-head  .toggle-open{\r\n    display: none;\r\n}\r\n\r\n", ""]);
 
 
 
@@ -30817,7 +30817,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-chrome-calendar {\r\n    display: inline-block;\r\n    font-family: Arial;\r\n    font-size: 1rem;\r\n    padding: 0.6em;\r\n    border: solid 0.0714rem rgb(191, 191, 191);\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem rgb(240, 240, 240);\r\n    z-index: 100;\r\n    touch-action: manipulation;\r\n    user-select: none;\r\n    background-color: rgb(255, 255, 255);\r\n    white-space: initial;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header {\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-title {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button {\r\n    font-size: 1em;\r\n    width: 1.5em;\r\n    height: 1.5em;\r\n    padding: 0;\r\n    border-radius: 0.2em;\r\n    border: solid 0.0714rem rgb(167, 167, 167);\r\n    background: linear-gradient(rgb(240, 240, 240), rgb(233, 233, 233), rgb(223, 223, 223));\r\n    cursor: pointer;\r\n    outline: none;\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem #aaa;\r\n    color: rgb(110, 110, 110);\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button:nth-child(2) {\r\n    margin-left: 0.2em;\r\n    margin-right: 0.2em;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header-buttons>button:active {\r\n    box-shadow: 0rem 0rem 0.1429rem #aaa;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-title {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-title>span {\r\n    line-height: 1.5em;\r\n}\r\n\r\n.absol-chrome-calendar-instance {\r\n    margin-top: 1em;\r\n    border: solid 0.0714rem rgb(190, 190, 190);\r\n    width: 14em;\r\n    position: relative;\r\n    height: calc(8.4em + 0.2143rem);\r\n    overflow: hidden;\r\n    /*border*/\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek {\r\n    background-color: rgb(241, 241, 241);\r\n    height: 1.2em;\r\n    white-space: nowrap;\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 10;\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek>div {\r\n    text-align: center;\r\n    line-height: 1.2;\r\n    display: inline-block;\r\n    width: 14.2857142857%;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container {\r\n    position: absolute;\r\n    transition: top 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.old {\r\n    z-index: 7;\r\n    /* background: red; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.new {\r\n    z-index: 8;\r\n    /* background: blue; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container>.absol-chrome-calendar-month {\r\n    width: 100%;\r\n    height: 100%;\r\n    margin-top: -0.0714rem;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-month {\r\n    display: table;\r\n    width: 100%;\r\n    margin-top: 1.2em;\r\n    background-color: white;\r\n    /*for header*/\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth {\r\n    display: table-row;\r\n    height: 1.2em;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div {\r\n    display: table-cell;\r\n    text-align: right;\r\n    padding-right: 0.4em;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-not-in-month {\r\n    color: rgb(190, 190, 190);\r\n}\r\n\r\n.absol-chrome-calendar-today {\r\n    border: inset 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-selected {\r\n    background-color: rgb(188, 205, 236);\r\n}\r\n\r\n.absol-chrome-calendar-years {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-chrome-calendar:not(.view-year) .absol-chrome-calendar-years {\r\n    /* display: none; */\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: -10000;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-chrome-calendar.view-year .absol-chrome-calendar-instance {\r\n    border-color: rgb(77, 114, 254)\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-month,\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-dayofweek {\r\n    display: none;\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-title {\r\n    color: rgb(191, 191, 191);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year {\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year-head {\r\n    background-color: rgb(241, 241, 241);\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    height: 1.5em;\r\n    text-align: center;\r\n    line-height: 1.5em;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year:last-child .absol-chrome-calendar-year-head {\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year.start-opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: -6em;\r\n    transition: margin-bottom linear 0.1s;\r\n}\r\n\r\n.absol-chrome-calendar-year.opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.start-closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: 0;\r\n    transition: margin-bottom linear 0.1s;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-year-mounths {\r\n    width: 100%;\r\n    display: table;\r\n    height: 6em;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year-row-months {\r\n    display: table-row;\r\n}\r\n\r\n.absol-chrome-calendar-year-month {\r\n    text-align: center;\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-year-month:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n\r\n\r\n.absol-chrome-calendar-years:hover .absol-scrollbar {\r\n    opacity: 1;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-years .absol-scrollbar {\r\n    background-color: rgba(169, 169, 172, 0.2);\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-date-disabled {\r\n    color: rgb(240, 230, 230);\r\n    pointer-events: none;\r\n    cursor: not-allowed;\r\n}\r\n\r\nbutton.absol-chrome-calendar-button-disabled {\r\n    color: rgb(220, 210, 210);\r\n    pointer-events: none;\r\n    box-shadow: none;\r\n    cursor: not-allowed;\r\n}", ""]);
+exports.push([module.i, ".absol-chrome-calendar {\r\n    display: inline-block;\r\n    font-family: Arial;\r\n    font-size: 1rem;\r\n    padding: 0.6rem;\r\n    border: solid 0.0714rem rgb(191, 191, 191);\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem rgb(240, 240, 240);\r\n    z-index: 100;\r\n    touch-action: manipulation;\r\n    user-select: none;\r\n    background-color: rgb(255, 255, 255);\r\n    white-space: initial;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header {\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-title {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button {\r\n    font-size: 1rem;\r\n    width: 1.5rem;\r\n    height: 1.5rem;\r\n    padding: 0;\r\n    border-radius: 0.2rem;\r\n    border: solid 0.0714rem rgb(167, 167, 167);\r\n    background: linear-gradient(rgb(240, 240, 240), rgb(233, 233, 233), rgb(223, 223, 223));\r\n    cursor: pointer;\r\n    outline: none;\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem #aaa;\r\n    color: rgb(110, 110, 110);\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button:nth-child(2) {\r\n    margin-left: 0.2rem;\r\n    margin-right: 0.2rem;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header-buttons>button:active {\r\n    box-shadow: 0rem 0rem 0.1429rem #aaa;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-title {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-title>span {\r\n    line-height: 1.5rem;\r\n}\r\n\r\n.absol-chrome-calendar-instance {\r\n    margin-top: 1rem;\r\n    border: solid 0.0714rem rgb(190, 190, 190);\r\n    width: 14rem;\r\n    position: relative;\r\n    height: calc(8.4em + 0.2143rem);\r\n    overflow: hidden;\r\n    /*border*/\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek {\r\n    background-color: rgb(241, 241, 241);\r\n    height: 1.2rem;\r\n    white-space: nowrap;\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 10;\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek>div {\r\n    text-align: center;\r\n    line-height: 1.2;\r\n    display: inline-block;\r\n    width: 14.2857142857%;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container {\r\n    position: absolute;\r\n    transition: top 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.old {\r\n    z-index: 7;\r\n    /* background: red; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.new {\r\n    z-index: 8;\r\n    /* background: blue; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container>.absol-chrome-calendar-month {\r\n    width: 100%;\r\n    height: 100%;\r\n    margin-top: -0.0714rem;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-month {\r\n    display: table;\r\n    width: 100%;\r\n    margin-top: 1.2rem;\r\n    background-color: white;\r\n    /*for header*/\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth {\r\n    display: table-row;\r\n    height: 1.2rem;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div {\r\n    display: table-cell;\r\n    text-align: right;\r\n    padding-right: 0.4rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-not-in-month {\r\n    color: rgb(190, 190, 190);\r\n}\r\n\r\n.absol-chrome-calendar-today {\r\n    border: inset 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-selected {\r\n    background-color: rgb(188, 205, 236);\r\n}\r\n\r\n.absol-chrome-calendar-years {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-chrome-calendar:not(.view-year) .absol-chrome-calendar-years {\r\n    /* display: none; */\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: -10000;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-chrome-calendar.view-year .absol-chrome-calendar-instance {\r\n    border-color: rgb(77, 114, 254)\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-month,\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-dayofweek {\r\n    display: none;\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-title {\r\n    color: rgb(191, 191, 191);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year {\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year-head {\r\n    background-color: rgb(241, 241, 241);\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    height: 1.5rem;\r\n    text-align: center;\r\n    line-height: 1.5rem;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year:last-child .absol-chrome-calendar-year-head {\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year.start-opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: -6rem;\r\n    transition: margin-bottom linear 0.1s;\r\n}\r\n\r\n.absol-chrome-calendar-year.opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.start-closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: 0;\r\n    transition: margin-bottom linear 0.1s;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-year-mounths {\r\n    width: 100%;\r\n    display: table;\r\n    height: 6rem;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year-row-months {\r\n    display: table-row;\r\n}\r\n\r\n.absol-chrome-calendar-year-month {\r\n    text-align: center;\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-year-month:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n\r\n\r\n.absol-chrome-calendar-years:hover .absol-scrollbar {\r\n    opacity: 1;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-years .absol-scrollbar {\r\n    background-color: rgba(169, 169, 172, 0.2);\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-date-disabled {\r\n    color: rgb(240, 230, 230);\r\n    pointer-events: none;\r\n    cursor: not-allowed;\r\n}\r\n\r\nbutton.absol-chrome-calendar-button-disabled {\r\n    color: rgb(220, 210, 210);\r\n    pointer-events: none;\r\n    box-shadow: none;\r\n    cursor: not-allowed;\r\n}", ""]);
 
 
 
@@ -30852,7 +30852,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-calendar-input {\r\n    font-size: 1rem;\r\n    width: 7em;\r\n    height: 2em;\r\n    box-sizing: content-box;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.2em;\r\n}\r\n\r\n.absol-calendar-input>input {\r\n    text-align: center;\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    cursor: pointer;\r\n    border: none;\r\n    background: transparent;\r\n}\r\n\r\n.absol-calendar-input>input:hover,\r\n.absol-calendar-input>input:focus {\r\n    color: red;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled input {\r\n    color: rgb(169, 169, 171);\r\n}", ""]);
+exports.push([module.i, ".absol-calendar-input {\r\n    font-size: 1rem;\r\n    width: 7rem;\r\n    height: 2rem;\r\n    box-sizing: content-box;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.2rem;\r\n}\r\n\r\n.absol-calendar-input>input {\r\n    text-align: center;\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    cursor: pointer;\r\n    border: none;\r\n    background: transparent;\r\n}\r\n\r\n.absol-calendar-input>input:hover,\r\n.absol-calendar-input>input:focus {\r\n    color: red;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled input {\r\n    color: rgb(169, 169, 171);\r\n}", ""]);
 
 
 
@@ -30887,7 +30887,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-onscreen-window {\r\n    z-index: 1002;\r\n    position: fixed;\r\n    left: 0.7143rem;\r\n    top: 0.7143rem;\r\n    width: 12em;\r\n    height: 5em;\r\n    /*default size*/\r\n    /* min-width: 12em;\r\n    min-height: 1.4em; */\r\n}\r\n\r\n.absol-onscreen-window-content {\r\n    position: relative;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: white;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.absol-onscreen-window-head-bar {\r\n    height: 1.4em;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.15);\r\n    padding: 0.2em;\r\n    box-sizing: border-box;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-icon {\r\n    line-height: 1.2em;\r\n    font-size: 1em;\r\n    margin-right: 0.2em;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-title {\r\n    line-height: 1.2em;\r\n    font-size: 1em;\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons {\r\n    position: absolute;\r\n    right: 0.1em;\r\n    top: 0.1em;\r\n    bottom: 0.1em;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button {\r\n    height: 100%;\r\n    width: 1em;\r\n    font-size: 1em;\r\n    padding: 0;\r\n    margin: 0 0 0 0.1em;\r\n    border: none;\r\n    color: rgba(169, 169, 169);\r\n    outline: none;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover {\r\n    color: rgba(103, 103, 103);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:active {\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover>.mdi-close {\r\n    color: rgb(255, 59, 59);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button>span {\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-onscreen-window-body-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 1.4em;\r\n    bottom: 0;\r\n}\r\n\r\n\r\n.absol-onscreen-window-moving-modal {\r\n    position: fixed;\r\n    left: 0.0714rem;\r\n    right: 0.0714rem;\r\n    top: 0.0714rem;\r\n    bottom: 0.0714rem;\r\n    z-index: 100006;\r\n}\r\n\r\n.absol-onscreen-window-resizer {\r\n    position: absolute;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom {\r\n    bottom: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top {\r\n    top: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-left {\r\n    left: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-right {\r\n    right: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-top,\r\n.absol-onscreen-window-resize-bottom {\r\n    cursor: ns-resize;\r\n\r\n}\r\n\r\n.absol-onscreen-window-resize-left,\r\n.absol-onscreen-window-resize-right {\r\n    cursor: ew-resize;\r\n\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-bottom-right {\r\n    cursor: se-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-bottom-left {\r\n    cursor: sw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-left {\r\n    cursor: nw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-right {\r\n    cursor: ne-resize;\r\n}", ""]);
+exports.push([module.i, ".absol-onscreen-window {\r\n    z-index: 1002;\r\n    position: fixed;\r\n    left: 0.7143rem;\r\n    top: 0.7143rem;\r\n    width: 12rem;\r\n    height: 5rem;\r\n    /*default size*/\r\n    /* min-width: 12rem;\r\n    min-height: 1.4rem; */\r\n}\r\n\r\n.absol-onscreen-window-content {\r\n    position: relative;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: white;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.absol-onscreen-window-head-bar {\r\n    height: 1.4rem;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.15);\r\n    padding: 0.2rem;\r\n    box-sizing: border-box;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-icon {\r\n    line-height: 1.2rem;\r\n    font-size: 1rem;\r\n    margin-right: 0.2rem;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-title {\r\n    line-height: 1.2rem;\r\n    font-size: 1rem;\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons {\r\n    position: absolute;\r\n    right: 0.1rem;\r\n    top: 0.1rem;\r\n    bottom: 0.1rem;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button {\r\n    height: 100%;\r\n    width: 1rem;\r\n    font-size: 1rem;\r\n    padding: 0;\r\n    margin: 0 0 0 0.1rem;\r\n    border: none;\r\n    color: rgba(169, 169, 169);\r\n    outline: none;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover {\r\n    color: rgba(103, 103, 103);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:active {\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover>.mdi-close {\r\n    color: rgb(255, 59, 59);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button>span {\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-onscreen-window-body-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 1.4rem;\r\n    bottom: 0;\r\n}\r\n\r\n\r\n.absol-onscreen-window-moving-modal {\r\n    position: fixed;\r\n    left: 0.0714rem;\r\n    right: 0.0714rem;\r\n    top: 0.0714rem;\r\n    bottom: 0.0714rem;\r\n    z-index: 100006;\r\n}\r\n\r\n.absol-onscreen-window-resizer {\r\n    position: absolute;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom {\r\n    bottom: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top {\r\n    top: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-left {\r\n    left: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-right {\r\n    right: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-top,\r\n.absol-onscreen-window-resize-bottom {\r\n    cursor: ns-resize;\r\n\r\n}\r\n\r\n.absol-onscreen-window-resize-left,\r\n.absol-onscreen-window-resize-right {\r\n    cursor: ew-resize;\r\n\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-bottom-right {\r\n    cursor: se-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-bottom-left {\r\n    cursor: sw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-left {\r\n    cursor: nw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-right {\r\n    cursor: ne-resize;\r\n}", ""]);
 
 
 
@@ -30922,7 +30922,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "/*margin for border size*/\r\n.as-hruler {\r\n    position: relative;\r\n    height: 1.5em;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-hruler-line {\r\n    position: absolute;\r\n    bottom: 0;\r\n    height: 25%;\r\n    border-left: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.as-hruler-line.major {\r\n    height: 50%;\r\n    border-left: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-hruler-major-number{\r\n    position: absolute;\r\n    text-align: center;\r\n    width: 5em;\r\n    pointer-events: none;\r\n    font-size: 0.7em;\r\n    bottom: 50%;\r\n} ", ""]);
+exports.push([module.i, "/*margin for border size*/\r\n.as-hruler {\r\n    position: relative;\r\n    height: 1.5rem;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-hruler-line {\r\n    position: absolute;\r\n    bottom: 0;\r\n    height: 25%;\r\n    border-left: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.as-hruler-line.major {\r\n    height: 50%;\r\n    border-left: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-hruler-major-number{\r\n    position: absolute;\r\n    text-align: center;\r\n    width: 5rem;\r\n    pointer-events: none;\r\n    font-size: 0.7rem;\r\n    bottom: 50%;\r\n} ", ""]);
 
 
 
@@ -30957,7 +30957,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "/*margin for border size*/\r\n.as-vruler {\r\n    position: relative;\r\n    width: 1.5em;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-vruler-line {\r\n    position: absolute;\r\n    right: 0;\r\n    width: 25%;\r\n    border-top: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n\r\n}\r\n\r\n.as-vruler-line.major {\r\n    width: 50%;\r\n    border-top: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-vruler-major-number {\r\n    position: absolute;\r\n    text-align: center;\r\n    width:  5em;\r\n    pointer-events: none;\r\n    font-size: 0.7em;\r\n    right: calc(52% - 2em);\r\n    height: 1em;\r\n    transform-origin: center;\r\n    \r\n    -webkit-transform:rotate(90deg);\r\n    -moz-transform:rotate(90deg);\r\n    -o-transform: rotate(90deg);\r\n    -ms-transform:rotate(90deg);\r\n    transform: rotate(-90deg);\r\n}", ""]);
+exports.push([module.i, "/*margin for border size*/\r\n.as-vruler {\r\n    position: relative;\r\n    width: 1.5rem;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-vruler-line {\r\n    position: absolute;\r\n    right: 0;\r\n    width: 25%;\r\n    border-top: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n\r\n}\r\n\r\n.as-vruler-line.major {\r\n    width: 50%;\r\n    border-top: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-vruler-major-number {\r\n    position: absolute;\r\n    text-align: center;\r\n    width:  5rem;\r\n    pointer-events: none;\r\n    font-size: 0.7rem;\r\n    right: calc(52% - 2em);\r\n    height: 1rem;\r\n    transform-origin: center;\r\n    \r\n    -webkit-transform:rotate(90deg);\r\n    -moz-transform:rotate(90deg);\r\n    -o-transform: rotate(90deg);\r\n    -ms-transform:rotate(90deg);\r\n    transform: rotate(-90deg);\r\n}", ""]);
 
 
 
@@ -30992,7 +30992,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".as-resize-box {\r\n    position: absolute;\r\n    /*or fixed*/\r\n    z-index: 1;\r\n    box-sizing: border-box;\r\n    opacity: 0.5;\r\n    pointer-events: none;\r\n}\r\n\r\n.as-resize-box-body {\r\n    margin: -0.0714rem;\r\n    width: calc(100% + 0.1429rem);\r\n    height: calc(100% + 0.1429rem);\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    border: solid 0.1429rem rgb(32, 150, 218);\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-body {\r\n    cursor: move;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-click .as-resize-box-body {\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-dot,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.bottom,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right-bottom {\r\n    display: unset;\r\n\r\n}\r\n\r\n.as-resize-box-dot {\r\n    position: absolute;\r\n    width: 0.6em;\r\n    height: 0.6em;\r\n    background: rgb(32, 150, 218);\r\n    display: none;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box-dot.left-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: nw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: sw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left {\r\n    top: calc(50% - 0.3em);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: w-resize;\r\n}\r\n\r\n.as-resize-box-dot.top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: n-resize;\r\n}\r\n\r\n.as-resize-box-dot.bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: s-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: ne-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: se-resize;\r\n}\r\n\r\n\r\n.as-resize-box-dot.right {\r\n    top: calc(50% - 0.3em);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: e-resize;\r\n}\r\n\r\n.as-resize-box-overiding .as-resize-box-dot,\r\n.as-resize-box-overiding .as-resize-box-body {\r\n    cursor: unset;\r\n}\r\n\r\n.as-resize-box-overiding.body {\r\n    cursor: move !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.left-top {\r\n    cursor: nw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left-bottom {\r\n    cursor: sw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left {\r\n    cursor: w-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.top {\r\n    cursor: n-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.bottom {\r\n    cursor: s-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-top {\r\n    cursor: ne-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-bottom {\r\n    cursor: se-resize !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.right {\r\n    cursor: e-resize !important;\r\n}", ""]);
+exports.push([module.i, ".as-resize-box {\r\n    position: absolute;\r\n    /*or fixed*/\r\n    z-index: 1;\r\n    box-sizing: border-box;\r\n    opacity: 0.5;\r\n    pointer-events: none;\r\n}\r\n\r\n.as-resize-box-body {\r\n    margin: -0.0714rem;\r\n    width: calc(100% + 0.1429rem);\r\n    height: calc(100% + 0.1429rem);\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    border: solid 0.1429rem rgb(32, 150, 218);\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-body {\r\n    cursor: move;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-click .as-resize-box-body {\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-dot,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.bottom,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right-bottom {\r\n    display: unset;\r\n\r\n}\r\n\r\n.as-resize-box-dot {\r\n    position: absolute;\r\n    width: 0.6rem;\r\n    height: 0.6rem;\r\n    background: rgb(32, 150, 218);\r\n    display: none;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box-dot.left-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: nw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: sw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left {\r\n    top: calc(50% - 0.3em);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: w-resize;\r\n}\r\n\r\n.as-resize-box-dot.top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: n-resize;\r\n}\r\n\r\n.as-resize-box-dot.bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: s-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: ne-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: se-resize;\r\n}\r\n\r\n\r\n.as-resize-box-dot.right {\r\n    top: calc(50% - 0.3em);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: e-resize;\r\n}\r\n\r\n.as-resize-box-overiding .as-resize-box-dot,\r\n.as-resize-box-overiding .as-resize-box-body {\r\n    cursor: unset;\r\n}\r\n\r\n.as-resize-box-overiding.body {\r\n    cursor: move !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.left-top {\r\n    cursor: nw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left-bottom {\r\n    cursor: sw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left {\r\n    cursor: w-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.top {\r\n    cursor: n-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.bottom {\r\n    cursor: s-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-top {\r\n    cursor: ne-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-bottom {\r\n    cursor: se-resize !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.right {\r\n    cursor: e-resize !important;\r\n}", ""]);
 
 
 
@@ -31402,7 +31402,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "html{\r\n    font-size: 16px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 20px);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 7px 10px;\r\n    border-radius: 2px;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0px;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    font-size: 15px;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0px 0 0px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 20px);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 7px 10px;\r\n    border-radius: 2px;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}", ""]);
 
 
 
@@ -31437,7 +31437,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-project-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-project-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-project-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-project-main{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-project-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    overflow-x: auto;\r\n}\r\n\r\n.pizo-list-project-button-apply.pizo-list-project-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-button-deleteall.pizo-list-project-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate .pizo-list-project-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate .hideTranslate.pizo-list-project-main-search-control-container{\r\n    transform: translateX(0);\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-project-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-project-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-project-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-project-main{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-project-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    overflow-x: auto;\r\n}\r\n\r\n.pizo-list-project-button-apply.pizo-list-project-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-button-deleteall.pizo-list-project-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate .pizo-list-project-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate .hideTranslate.pizo-list-project-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-project-main-result-control .sortTable{\r\n    width: 100%;\r\n}", ""]);
 
 
 
@@ -31472,7 +31472,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  pointer-events: none;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.background-opacity-1{\r\n  opacity: 0.5;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0rem;\r\n  left: 0rem;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo{\r\n  z-index: 9999999999;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n.sortTable{\r\n  width: 100%;\r\n}\r\n.sortTable,.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    overflow: hidden;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    padding-bottom: 10px;\r\n    /* border-spacing: 10px; */\r\n}\r\n\r\n.sortTableClone{\r\n  left: 0;\r\n}\r\n\r\n.sortTable tr{\r\n  \r\n}\r\n\r\n.sortTable  tr.hideTranslate{\r\n  -webkit-transition: 1s ease-in-out;\r\n  -moz-transition: 1s ease-in-out;\r\n  -o-transition: 1s ease-in-out;\r\n  transition: 1s ease-in-out;\r\n  transform: translateX(100%);\r\n}\r\n\r\n\r\n\r\n.sortTable th,.sortTable td,\r\n.sortTableClone th,.sortTableClone td {\r\n  padding: 0.71428571428rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n}\r\n.sortTable th,.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n}\r\n.sortTable td,.sortTableClone td {\r\n  vertical-align: top;\r\n}\r\n.sortTable thead:first-child tr th,\r\n.sortTable thead:first-child tr td,\r\n.sortTableClone thead:first-child tr th,\r\n.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\n.sortTable tbody + tbody,.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\n.sortTable th + th,\r\n.sortTable td + td,\r\n.sortTable th + td,\r\n.sortTable td + th,\r\n.sortTableClone th + th,\r\n.sortTableClone td + td,\r\n.sortTableClone th + td,\r\n.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\n.sortTable thead:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child td,\r\n.sortTableClone thead:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\n.sortTable tbody{\r\n  position: relative;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n\r\n", ""]);
+exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  pointer-events: none;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.background-opacity-1{\r\n  opacity: 0.5;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0rem;\r\n  left: 0rem;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo{\r\n  z-index: 9999999999;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n.sortTable{\r\n  max-width: 100%;\r\n}\r\n.sortTable,.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    overflow: hidden;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    /* border-spacing: 10px; */\r\n}\r\n\r\n.sortTableClone{\r\n  left: 0;\r\n  font-size: 1rem;\r\n  position: absolute;\r\n  z-index: 1000;\r\n}\r\n\r\n.sortTable  tr.hideTranslate{\r\n  -webkit-transition: 1s ease-in-out;\r\n  -moz-transition: 1s ease-in-out;\r\n  -o-transition: 1s ease-in-out;\r\n  transition: 1s ease-in-out;\r\n  transform: translateX(100%);\r\n}\r\n\r\n\r\n\r\n.sortTable th,.sortTable td,\r\n.sortTableClone th,.sortTableClone td {\r\n  padding: 0.35714285714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n  position: relative;\r\n}\r\n.sortTable th,.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n}\r\n.sortTable td,.sortTableClone td {\r\n  vertical-align: middle;\r\n  white-space: nowrap;\r\n}\r\n.sortTable thead:first-child tr th,\r\n.sortTable thead:first-child tr td,\r\n.sortTableClone thead:first-child tr th,\r\n.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\n.sortTable tbody + tbody,.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\n.sortTable th + th,\r\n.sortTable td + td,\r\n.sortTable th + td,\r\n.sortTable td + th,\r\n.sortTableClone th + th,\r\n.sortTableClone td + td,\r\n.sortTableClone th + td,\r\n.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\n.sortTable thead:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child td,\r\n.sortTableClone thead:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\n.sortTable tbody{\r\n  position: relative;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n\r\n", ""]);
 
 
 
@@ -31507,7 +31507,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: block;\r\n\tmargin-bottom: 2px;\r\n\tdisplay: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n\tmargin-top: calc(50% - 1px);\r\n}\r\n\r\n.arrow_down{\r\n\ttransform: scale(1.06);\r\n    display: block;\r\n    margin-top: 2px;\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: auto;\r\n    height: calc(50% - 2px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n\tborder: 1px solid rgb(73,73,73);\r\n}\r\n\r\n.has-sort .sort-container{\r\n\tposition: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n\tdisplay: inline-block;\r\n\theight: 28px;\r\n    width: 18px;\r\n}\r\n\r\n.has-sort.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.has-sort.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n.sortTable td>i,.sortTableClone td>i{\r\n\t-webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n}\r\n\r\n.sortTable tr.more-child> td>i.more-button, .sortTableClone tr.more-child> td>i.more-button{\r\n\ttransform: rotateZ(90deg);\r\n}\r\n\r\n.disPlayNone{\r\n    display: none;\r\n}\r\n\r\n.parent:nth-child(odd) {\r\nbackground-color: #fff;\r\n}\r\n.parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\ntr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color:#f5f5f5 !important;\r\n}\r\ntr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #fff !important;\r\n}\r\n\r\n\r\n/* .sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */", ""]);
+exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: block;\r\n\tmargin-bottom: 2px;\r\n\tdisplay: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n\tmargin-top: calc(50% - 1px);\r\n}\r\n\r\n.arrow_down{\r\n\ttransform: scale(1.06);\r\n    display: block;\r\n    margin-top: 2px;\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: auto;\r\n    height: calc(50% - 2px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n}\r\n\r\n.has-sort .sort-container{\r\n\tposition: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n\tdisplay: inline-block;\r\n\theight: 30px;\r\n    width: 20px;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\n.has-sort.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.has-sort.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n\r\n\r\n\r\n.disPlayNone{\r\n    display: none;\r\n}\r\n\r\n.parent:nth-child(odd) {\r\nbackground-color: #fff;\r\n}\r\n.parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color: #fff !important;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\ntr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color:#f5f5f5;\r\n}\r\ntr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #fff ;\r\n}\r\n\r\n\r\n.margin-div-cell{\r\n    width: 1.71428571429rem;\r\n    display: inline-block;\r\n}\r\n\r\n.more-icon-container{\r\n    font-size: 16px;\r\n    position: absolute;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    top: 50%;\r\n    width: 20px;\r\n    height: 30px;\r\n    transform: translateX(-100%) translateX(-0.71428571428rem) translateY(-50%);\r\n}\r\n\r\n.more-button{\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateY(-2px);\r\n    -webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n    font-size: 20px;\r\n}\r\n\r\n.sortTable tr.more-child> td> div>i.more-button, .sortTableClone tr.more-child> td> div>i.more-button{\r\n\ttransform: translateY(-50%) translateY(-2px) rotateZ(90deg);\r\n}\r\n  \r\n  .container-view{\r\n      display: inline-block;\r\n  }\r\n\r\n  .sortTable .margin-left-has-icon{\r\n    padding-left: 2.5rem;\r\n  }\r\n\r\n  \r\n  .sortTable.padding-High-table tbody td:first-child{\r\n    padding-left: 2.85714285714rem;\r\n    \r\n  }\r\n\r\n  .sortTable td:first-child{\r\n    padding-left: 0.71428571428rem;\r\n  }\r\n\r\n  .sortTable td:last-child{\r\n    padding-right: 0.71428571428rem;\r\n  }\r\n\r\n  .drag-icon-button{\r\n    cursor: context-menu;\r\n  }\r\n\r\n/* .sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */", ""]);
 
 
 
@@ -31542,7 +31542,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n    width: calc(100% - 4.8333rem);\r\n    margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n    margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n    margin-left: 2.7586rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-desc-detail-row-cell-label {\r\n    font-size: 1rem;\r\n    line-height: 2.1429rem;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label{\r\n  font-size: 1rem;\r\n  line-height: 2.1429rem;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  margin-left: 2.4483rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    margin-left: 1.8966rem;\r\n    width: calc(100% - 5.8333rem);\r\n  }\r\n\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r\n    width: 80vw;\r\n    background-color: white;\r\n  }\r\n\r\n  \r\n.absol-modal{\r\n  background-color: rgba(0,0,0,0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-location-tab {\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-tab>span{\r\n  padding: 0.7143rem;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-donebutton{\r\n  display: inline-block;\r\n    width: 6rem;\r\n    margin: 5px;\r\n}\r\n\r\n.pizo-new-realty-location-detail {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-content {\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row {\r\n  margin-bottom: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  margin-right: -1.0714rem;\r\n  margin-left: -1.0714rem;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  flex: 0 0 calc(33.333333% - 4.2857rem);\r\n  max-width: calc(33.333333% - 4.2857rem);\r\n  text-align: right;\r\n  font-size: 1rem;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  padding-left: 2.1429rem;\r\n  padding-right: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 66.666667%;\r\n  flex: 0 0 66.666667%;\r\n  max-width: 66.666667%;\r\n}\r\n\r\ninput.pizo-new-realty-location-detail-row-menu{\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 calc(66.666667% - 1rem);\r\n  flex: 0 0 calc(66.666667% - 1rem);\r\n  max-width: calc(66.666667% - 1rem);\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 calc(66.666667% - 1rem);\r\n  flex: 0 0 calc(66.666667% - 1rem);\r\n  max-width: calc(66.666667% - 1rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-map-view {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 50%;\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.pizo-new-realty-location-map-view-content {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-long {\r\n  display: inline-block;\r\n  width: calc(50% - 2.0714rem);\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-lat {\r\n  display: inline-block;\r\n  margin-left: 2.1429rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(50% - 2.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child{\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-utility {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-convenient {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-juridical {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-juridical-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-history {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-history-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  display: inline-block;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4375rem;\r\n  text-align: right;\r\n  vertical-align: top;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n  line-height: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row .pizo-new-realty-dectruct-content-area-size-zone{\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n/* \r\n\r\n.pizo-new-realty-dectruct-content-area-1 {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2 {\r\n  margin-left: 2.3rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n.pizo-new-realty-dectruct-content-area-width {\r\n  margin-left: 2.3667rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height {\r\n  margin-left: 1.1333rem;\r\n  width: calc(100% - 8.6rem);\r\n}\r\n\r\n .pizo-new-realty-dectruct-content-area-bedroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-kitchen {\r\n  margin-left: 3.4333rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bathroom {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-garage {\r\n  margin-left: 2.1667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-basement {\r\n  margin-left: 1rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-balcony {\r\n    margin-left: 1.2667rem;\r\n  width: calc(100% - 6.0714rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-access {\r\n    margin-left: calc(50% - 4.9667rem);\r\n    width: calc(50% - 22.1667rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-year {\r\n  width: calc(100% - 28.2143rem);\r\n  min-width: 7.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-pool {\r\n    margin-left: 2.8718rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-gym {\r\n  margin-left: 0.7143rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-supermarket {\r\n    margin-left: 2.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-market {\r\n    margin-left: 3.8462rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-hospital {\r\n    margin-left: 1.4359rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-park {\r\n    margin-left: 1.3846rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-preschool {\r\n    margin-left: 1.7rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-highschool {\r\n    margin-left: 1.4667rem;\r\n  width: calc(100% - 10.359rem);\r\n}\r\n */\r\n\r\n .pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem;);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right>span{\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-button-element{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2em;\r\n  font-size: 1em;\r\n  overflow: hidden;\r\n  line-height: 2em;\r\n  box-sizing: content-box;\r\n  height: 2em;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-project-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button-element >span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2em;\r\n  box-sizing: border-box;\r\n  line-height: 2em;\r\n  text-align: center;\r\n  font-size: 1em;\r\n  text-align: center;\r\n  margin-left: 0.7em;\r\n  margin-right: 0.7em;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=number]::-webkit-inner-spin-button, \r\ninput[type=number]::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}", ""]);
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n    width: calc(100% - 4.8333rem);\r\n    margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n    margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n    margin-left: 2.7586rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-desc-detail-row-cell-label {\r\n    font-size: 1rem;\r\n    line-height: 2.1429rem;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label{\r\n  font-size: 1rem;\r\n  line-height: 2.1429rem;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  margin-left: 2.4483rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    margin-left: 1.8966rem;\r\n    width: calc(100% - 5.8333rem);\r\n}\r\n  \r\n.absol-modal{\r\n  background-color: rgba(0,0,0,0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child{\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-utility {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-convenient {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-juridical {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-juridical-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-history {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-history-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  display: inline-block;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4375rem;\r\n  text-align: right;\r\n  vertical-align: top;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n  line-height: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row .pizo-new-realty-dectruct-content-area-size-zone{\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n .pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right>span{\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-button-element{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-project-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button-element >span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=number]::-webkit-inner-spin-button, \r\ninput[type=number]::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}", ""]);
 
 
 
@@ -31825,7 +31825,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 10px 10px 10px 20px;\r\n    background-color: white;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 5px;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 5px;\r\n}\r\n\r\n.absol-single-page-scroller-viewport{\r\n    height:100%;\r\n}\r\n\r\n.common{\r\n    height:100%;\r\n}\r\n\r\n.common-container{\r\n    height: 100%;\r\n    position: relative;\r\n    overflow-y: auto;\r\n    margin-left: 20px;\r\n    margin-right: 10px;\r\n}\r\n\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n\r\n.absol-static-tabbar{\r\n    margin: auto;\r\n    position: relative;\r\n}\r\n\r\n.absol-static-tabbar-hline {\r\n    border-bottom: solid 3px rgb(103, 58, 183);\r\n    height: calc(100% - 3px);\r\n}\r\n\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.absol-static-tabbar-active-box {\r\n    position: absolute;\r\n    bottom: 0;\r\n    top: 0;\r\n    left: 0;\r\n    width: 0;\r\n    transition: left 0.15s, width 0.15s;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    box-sizing: border-box;\r\n    /* z-index: 1; */\r\n}\r\n\r\n.absol-static-tabbar-button {\r\n    height: 2em;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 1em;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    color: rgb(104, 104, 104);\r\n    outline: none;\r\n}\r\n\r\n.absol-static-tabbar-button.active {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.absol-static-tabbar-button >span{\r\n    font: 500 18px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4em;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1em;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75em;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2em;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel {\r\n    color: rgb(103, 58, 183);\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5em;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24em;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3em;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4em;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5em;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1em;\r\n    padding: 0.5em;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visiable .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel {\r\n    color: rgb(103, 58, 183);\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visiable .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
 
 
 
@@ -31860,7 +31860,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5em;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 50px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 30px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  padding-left: 20px;\r\n  margin-top: 10px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  margin: 12px 24px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}", ""]);
+exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 50px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 30px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  padding-left: 20px;\r\n  margin-top: 10px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  margin: 12px 24px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}", ""]);
 
 
 
@@ -31901,6 +31901,76 @@ exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85
 
 /***/ }),
 /* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(240);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r\n    width: 80vw;\r\n    background-color: white;\r\n  }\r\n\r\n  .pizo-new-realty-location-tab {\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    margin-bottom: 0.7143rem;\r\n    background: #f3f3f3;\r\n    display: flex;\r\n  }\r\n  \r\n  .pizo-new-realty-location-tab>span{\r\n    padding: 0.7143rem;\r\n    width: 100%;\r\n  }\r\n\r\n  \r\n.pizo-new-realty-location-donebutton{\r\n    display: inline-block;\r\n      width: 6rem;\r\n      margin: 5px;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 50%;\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n  }\r\n  \r\n  .pizo-new-realty-location-content {\r\n    display: flex;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row {\r\n    margin-bottom: 0.7143rem;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    margin-right: -1.0714rem;\r\n    margin-left: -1.0714rem;\r\n    width: 100%;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-label {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    max-width: calc(33.333333% - 4.2857rem);\r\n    text-align: right;\r\n    font-size: 1rem;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    padding-left: 2.1429rem;\r\n    padding-right: 2.1429rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-menu {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 66.666667%;\r\n    flex: 0 0 66.666667%;\r\n    max-width: 66.666667%;\r\n  }\r\n  \r\n  input.pizo-new-realty-location-detail-row-menu{\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-input {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-map-view {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 50%;\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n  }\r\n  \r\n  .pizo-new-realty-location-map-view-content {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-input-long {\r\n    display: inline-block;\r\n    width: calc(50% - 2.0714rem);\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-input-lat {\r\n    display: inline-block;\r\n    margin-left: 2.1429rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    width: calc(50% - 2.0714rem);\r\n  }", ""]);
+
+
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(242);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".image-show {\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: #3e4041;\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-between;\r\n}\r\n\r\n.image-show__title {\r\n    background-color: #545454;\r\n    color: white;\r\n    font-size: 16px;\r\n    padding-left: 14px;\r\n    height: 30px;\r\n    position: relative;\r\n}\r\n\r\n.image-show__close > .fa-close, .image-show__close > .quote-base__close-icon {\r\n    font-size: 12px;\r\n    color: white;\r\n    padding: 0px;\r\n}\r\n\r\n.fa-close:before, .quote-base__close-icon:before {\r\n    content: \"close\";\r\n}\r\n\r\n.fl-r {\r\n    float: right;\r\n}\r\n\r\ni.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{\r\n    pointer-events: none;\r\n    cursor: default;\r\n    color: rgb(152, 152, 152);\r\n}\r\n.clickable, .txt-clickable, .chat-message__actions__btn, .chat-resend, .sticker-selector__menu__item, .slideshow__bottom__dot {\r\n    cursor: pointer;\r\n    -webkit-app-region: no-drag;\r\n}\r\n\r\n.fa, .image-placeholder, .media-store-preview-item__picture, .image-show__thumb, .card--group-photo__row__item img.card--group-photo__row__item__photo, img.chat-message-picture__photo, .chat-message-picture__gif__thumb, .chat-message-picture__photo > img, .quote-banner-thumb, .link-placeholder, .link-thumb, .link-thumb.default, .thumb-img-suggest, .card--link-img, .card--link-img.default, .media-item__file-type.photo, .cb-info-file-item-overlay__check, .quote-base__close-icon, .file-tick__icon-setting {\r\n    display: inline-block;\r\n    font: normal normal normal 14px/1 'zalo-font';\r\n    font-size: inherit;\r\n    text-rendering: auto;\r\n    text-shadow: none;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n}\r\n\r\n.image-show__body {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.image-show__btnc {\r\n    position: absolute;\r\n    top: calc((100% - 81px)/2 - 38px);\r\n    z-index: 10;\r\n    display: flex;\r\n    align-items: center;\r\n    pointer-events: none;\r\n}\r\n\r\n.image-show__btnc__left {\r\n    left: 0px;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__left.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__wrapper__img {\r\n    width: auto;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    object-fit: contain;\r\n}\r\n\r\n.image-show__btnc__right {\r\n    right: 0;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__right.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__btnc__fullscreen{\r\n    position: absolute;\r\n    bottom: 0;\r\n    right: 9px;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 90px;\r\n    height: 120px;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn.clickable {\r\n    opacity: 0.6;\r\n    pointer-events: auto;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn:hover, .image-show__bottom__ctrl > a > .btn:hover {\r\n    color: #0068ff;\r\n}\r\n\r\n.image-show__btn.clickable:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n.image-show__btn__inside {\r\n    background-color: black;\r\n    border-radius: 50%;\r\n    width: 50px;\r\n    height: 50px;\r\n    margin-top: 50%;\r\n    margin-left: 20px;\r\n    line-height: 50px;\r\n    font-size: 23px;\r\n    text-align: center;\r\n}\r\n\r\n.image-show__btn__inside > .fa-chevron-left {\r\n    margin-top: 13px;\r\n    margin-right: 4px;\r\n}\r\n\r\n.fa-chevron-left:before {\r\n    content: \"arrow_back_ios\";\r\n    transform: translateX(5px);\r\n}\r\n\r\n.z-fh {\r\n    max-height: 100%;\r\n}\r\n\r\n.fadeIn, .fadeInShort, .fadeInImageShow {\r\n    -webkit-animation-name: fadeIn;\r\n    animation-name: fadeIn;\r\n}\r\n\r\n.image-show__img {\r\n    object-fit: contain;\r\n    transition: transform 0.1s ease-out;\r\n    max-width: 100%;\r\n    user-select: none;\r\n\r\n    cursor: default;\r\n    vertical-align: middle;\r\n    display: inline-block;\r\n}\r\n\r\n.fadeInImageShow {\r\n    -webkit-animation-duration: .4s;\r\n    animation-duration: .4s;\r\n}\r\n\r\n.flx-fix, header, .chat-info-general__options, .chat-info-general__section__header, .avatar, .thumb-img-suggest, .chat-date > span, .card--link-img, .card--link-img.default, .chat-onboard__icon {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 90px;\r\n    height: 120px;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn__inside > .fa-chevron-right {\r\n    margin-top: 13px;\r\n    margin-left: 2px;\r\n}\r\n\r\n.fa-chevron-right:before {\r\n    content: \"arrow_forward_ios\";\r\n}\r\n\r\n.image-show__icon-fullscreen {\r\n    font-size: 40px;\r\n    color: white;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__icon-fullscreen.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.fa-fullscreen-icon:before {\r\n    content: \"web\";\r\n}\r\n\r\n.image-show__bottom {\r\n    background-color: #545454;\r\n    height: 50px;\r\n    position: relative;\r\n}\r\n\r\n.image-show__bottom__sender {\r\n    width: 30%;\r\n}\r\n\r\n.avatar {\r\n    position: relative;\r\n    color: white;\r\n    contain: layout size style;\r\n}\r\n\r\n.avatar--xs {\r\n    width: 40px;\r\n    height: 40px;\r\n    font-size: 17px;\r\n}\r\n\r\n.dib, .chat-box-member__info, .image-show__bottom__sender > .avatar, .image-show__bottom__sender__info, .chat-input__img-preview__thumb {\r\n    display: inline-block;\r\n}\r\n\r\n.fl-l, .image-show__bottom__sender > .avatar, .image-show__bottom__sender__info, .chat-input__img-preview__thumb {\r\n    float: left;\r\n}\r\n\r\n.image-show__bottom__sender > .avatar {\r\n    margin-top: 5.5px;\r\n    margin-right: 14px;\r\n    margin-left: 14px;\r\n}\r\n\r\n.image-show__bottom__sender__info {\r\n    color: white;\r\n    font-size: 13px;\r\n    width: calc(100% - 90px);\r\n}\r\n\r\n.bg-center, .link-thumb, .link-thumb.default, .avatar-img, .avatar-img.avatar-number-m, #zalo, .thumb-img-suggest, .chat-input__img-preview__thumb, .card--link-img, .card--link-img.default, .message-view__blur, .message-info_num, .sticker-selector__menu__item, .gif__thumb {\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    background-position: 50%;\r\n}\r\n\r\n.avatar-img, .avatar-img.avatar-number-m {\r\n    border-radius: 100%;\r\n}\r\n\r\n.avatar--xs > .avatar-img {\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #c9d4e5;\r\n}\r\n\r\n.truncate, .chat-box-member__info__name, .item-title-name, .item-message, .file-banner-content__sender-name, .file-banner-content__full-name, .cb-info-file-item__send-date, .cb-info-file-item__file-size, .cb-info-file-item__suggest-preview-file, .cb-info-file-item__suggest-preview-folder, .cb-info-file-item__error-msg, .search-result-file__send-date, .search-result-file__file-size, .search-result-file__suggest-preview-file, .search-result-file__suggest-preview-folder, .search-result-file__file-name, .search-result-file__file-name-seg, .file-progress-row__start-text, .file-progress-row__end-text, .quote-file__name, .quote-file__text, .file-suggest-item__name, .file-suggest-item__size, .file-suggest-item__conversation, .file-star-msg-content__title, .file-star-msg-content__size, .file-message__content-title, .file-message__content-error, .fmsg-send-time__error-msg {\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.image-show__bottom__sender__info > div:first-child {\r\n    margin-top: 6px;\r\n    margin-bottom: 2px;\r\n}\r\n\r\n.image-show__bottom__ctrl {\r\n    width: 340px;\r\n    margin: 0px auto;\r\n    padding-top: 14px;\r\n    text-align: center;\r\n}\r\n\r\n.btn {\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    margin: 0px;\r\n    color: #83878d;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn, .image-show__bottom__ctrl > a > .btn {\r\n    color: white;\r\n    font-size: 22px;\r\n    margin: 0;\r\n    padding-right: 20px;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn.fa-chevron-left, .image-show__bottom__ctrl > a > .btn.fa-chevron-left {\r\n    padding-right: 8px;\r\n    font-size: 23px;\r\n}\r\n\r\n\r\n.fa:before, .image-placeholder:before, .media-store-preview-item__picture:before, .image-show__thumb:before, .card--group-photo__row__item img.card--group-photo__row__item__photo:before, img.chat-message-picture__photo:before, .chat-message-picture__gif__thumb:before, .chat-message-picture__photo > img:before, .quote-banner-thumb:before, .link-placeholder:before, .link-thumb:before, .link-thumb.default:before, .thumb-img-suggest:before, .card--link-img:before, .card--link-img.default:before, .media-item__file-type.photo:before, .cb-info-file-item-overlay__check:before, .quote-base__close-icon:before, .file-tick__icon-setting:before {\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 24px;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn.fa-chevron-right, .image-show__bottom__ctrl > a > .btn.fa-chevron-right {\r\n    padding-left: 9px;\r\n    padding-right: 8px;\r\n    font-size: 23px;\r\n}\r\n\r\n#image-show-forward {\r\n    padding-right: 0;\r\n}\r\n\r\n#image-show-forward > i {\r\n    padding: 0 12px;\r\n    font-size: 17px;\r\n    position: relative;\r\n}\r\n\r\n.fa-share-photoview:before {\r\n    content: \"share\";\r\n}\r\n\r\n#image-show-download {\r\n    padding-right: 0;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn.fa-download, .image-show__bottom__ctrl > .btn.fa-rotate-left, .image-show__bottom__ctrl > .btn.fa-rotate-right, .image-show__bottom__ctrl > a > .btn.fa-download, .image-show__bottom__ctrl > a > .btn.fa-rotate-left, .image-show__bottom__ctrl > a > .btn.fa-rotate-right,.image-show__bottom__ctrl > a > .btn.fa-more-option,.image-show__bottom__ctrl > .btn.fa-more-option {\r\n    padding-left: 12px;\r\n    padding-right: 12px;\r\n}\r\n\r\n.fa-download:before {\r\n    content: \"vertical_align_bottom\";\r\n}\r\n\r\n.fa-rotate-left:before {\r\n    content: \"rotate_left\";\r\n}\r\n\r\n.fa-rotate-right:before {\r\n    content: \"rotate_right\";\r\n}\r\n\r\n.fa-more-option:before {\r\n    content: \"more_vert\";\r\n}\r\n\r\n.image-show__thumb__legend {\r\n    bottom: 70px;\r\n    color: white;\r\n    padding-left: 1px;\r\n    margin-bottom: 20px;\r\n    margin-left: 3px;\r\n    font-size: 16px;\r\n    background: #3e4041;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin: 10px 8px;\r\n}\r\n\r\n.image-show__thumb {\r\n    position: relative;\r\n    user-select: none;\r\n    object-fit: cover;\r\n    margin: 4px;\r\n    border-radius: 3px;\r\n    filter: brightness(50%);\r\n    width: 80px;\r\n    height: 80px;\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb, .image-show__thumb.chat-message.first-selected, .image-show__thumb.chat-message.last-selected {\r\n    box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5);\r\n    -moz-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5);\r\n    -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5);\r\n    filter: brightness(100%);\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb{\r\n    width: 100px;\r\n    height: 100px;\r\n}\r\n\r\n.image-show__thumb-container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.flx-al-e {\r\n    align-items: flex-end;\r\n}\r\n\r\n.flx, .snippet, .item-setting-action, header, #groupNameInput--change, .item-setting, .chat-info-general__action__item, .chat-info-general__section__header, .group-setting, .mg-item, .card, .card-content, .modal, .tab-content, .file-banner-content, .file-banner-content__thumb-container, .empty-btn, .rl-msg, .rl-msg .rl-msg-content, .cb-info-file-item__thumb-container, .search-result-file__thumb-container, .search-result-file__file-name, .file-progress-row, .file-actions-row, .file-suggest-item, .file-suggest-item__left-container, .file-suggest-item__right-container, .file-layout, .file-layout__thumb-container, .file-layout__right-container, .file-layout__top-container, .file-layout__bot-container, .file-star-msg-content, .file-star-msg-content__right-block, .fmsg-send-time, .entry-content-v2, .zl-label-add-more, .zl-modal, .pr-status-content, .header-title-container {\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n}\r\n\r\n.flx, .snippet, .item-setting-action, header, #groupNameInput--change, .item-setting, .chat-info-general__action__item, .chat-info-general__section__header, .group-setting, .mg-item, .card, .card-content, .modal, .tab-content, .file-banner-content, .file-banner-content__thumb-container, .empty-btn, .rl-msg, .rl-msg .rl-msg-content, .cb-info-file-item__thumb-container, .search-result-file__thumb-container, .search-result-file__file-name, .file-progress-row, .file-actions-row, .file-suggest-item, .file-suggest-item__left-container, .file-suggest-item__right-container, .file-layout, .file-layout__thumb-container, .file-layout__right-container, .file-layout__top-container, .file-layout__bot-container, .file-star-msg-content, .file-star-msg-content__right-block, .fmsg-send-time, .entry-content-v2, .zl-label-add-more, .zl-modal, .pr-status-content, .header-title-container {\r\n    display: flex;\r\n}\r\n\r\n.image-show__list {\r\n    padding: 0px;\r\n    overflow-x: hidden;\r\n    overflow-y: scroll;\r\n    display: inline;\r\n    -ms-overflow-style: none;\r\n    scrollbar-width: none;\r\n}\r\n\r\n.timeline-slider {\r\n    position: relative;\r\n    cursor: pointer;\r\n    width: 23px;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.timeline-slider__track {\r\n    position: absolute;\r\n    height: 100%;\r\n    top: 2px;\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 12px;\r\n    height: 12px;\r\n    background: #7a787b;\r\n    left: 6.5px;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--left {\r\n    bottom: calc(0% - 12px);\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 12px;\r\n    height: 12px;\r\n    background: #7a787b;\r\n    left: 6.5px;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--right {\r\n    bottom: calc(100% - 12px);\r\n}\r\n\r\n.timeline-slider__handle {\r\n    position: absolute;\r\n    background: white;\r\n    border-radius: 50%;\r\n}\r\n\r\n.timeline-slider__track__progress {\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 2px;\r\n    background: #7a787b;\r\n}\r\n\r\n.timeline-slider__tooltip {\r\n    position: absolute;\r\n    top: -5px;\r\n    right: -90px;\r\n    z-index: 1;\r\n    background: white;\r\n    text-align: center;\r\n    font-size: 12px;\r\n    width: 85px;\r\n}\r\n\r\n\r\n\r\n\r\n", ""]);
+
+
+
+/***/ }),
+/* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36325,7 +36395,7 @@ Rectangle.fromClientRect = function (clientRect) {
  * @param {number} H
  * @returns {number}
  */
-function map(x, l, h, L, H) {
+function int_map(x, l, h, L, H) {
     return (x - l) / (h - l) * (H - L) + L;
 }
 
@@ -36409,13 +36479,13 @@ function numberToString(numb, floatFixed, decimalSeparator, thousandsSeparator, 
         --i;
         while (mem > 0) {
             if (i >= 0) {
-                cValue = realDigits[i] + mem;
+                cValue = realDigits[i] + mrem;
                 realDigits[i] = cValue % 10;
                 mem = Math.floor(cValue / 10);
             }
             else {
                 if (decDigits.length + i < 0) decDigits.unshift(0);
-                cValue = decDigits[decDigits.length + i] + mem;
+                cValue = decDigits[decDigits.length + i] + mrem;
                 decDigits[decDigits.length + i] = cValue % 10;
                 mem = Math.floor(cValue / 10);
             }
@@ -37289,7 +37359,7 @@ VScroller.prototype.scrollBy = function (dy, duration) {
     var start = self.$viewport.scrollTop;
     var end = start + dy;
     function onFrame() {
-        self.$viewport.scrollTop = Math.max(map(i, 0, frameCount, start, end), 0);
+        self.$viewport.scrollTop = Math.max(int_map(i, 0, frameCount, start, end), 0);
         ++i;
         if (i <= frameCount)
             setTimeout(onFrame, timeOut);
@@ -37482,7 +37552,7 @@ function VScrollbar() {
             innerOffset0 = res.innerOffset;
         }
         else {
-            var newInnerOffset = map(top0 - boundButton.height / 2 - boundRes.top, 0, boundRes.height, 0, res.innerHeight);
+            var newInnerOffset = int_map(top0 - boundButton.height / 2 - boundRes.top, 0, boundRes.height, 0, res.innerHeight);
             if (newInnerOffset + res.outerHeight > res.innerHeight)
                 newInnerOffset = res.innerHeight - res.outerHeight;
             if (newInnerOffset < 0) newInnerOffset = 0;
@@ -37597,7 +37667,7 @@ function HScrollbar() {
             innerOffset0 = res.innerOffset;
         }
         else {
-            var newInnerOffset = map(left0 - boundButton.width / 2 - boundRes.left, 0, boundRes.width, 0, res.innerWidth);
+            var newInnerOffset = int_map(left0 - boundButton.width / 2 - boundRes.left, 0, boundRes.width, 0, res.innerWidth);
             if (newInnerOffset + res.outerWidth > res.innerWidth)
                 newInnerOffset = res.innerWidth - res.outerWidth;
             if (newInnerOffset < 0) newInnerOffset = 0;
@@ -38597,7 +38667,7 @@ SelectTable.prototype._filter = function (items, filterText) {
         if (result[0].score == 0) result = [];
     }
     result = result.map(function (e) {
-        return e.item;
+        return e.itrem;
     });
 
     return result;
@@ -38610,7 +38680,7 @@ SelectTable.prototype._stringcmp = function (s0, s1) {
 };
 
 SelectTable.prototype._getString = function (item) {
-    if (typeof item == "string") return item;
+    if (typeof item == "string") return itrem;
     return item.text;
 };
 
@@ -39721,13 +39791,13 @@ HMenu.property.activeTab = {
 
 
 ACore["a" /* default */].creator.hmenu = HMenu;
-ACore["a" /* default */].creator.vmenuitem = VMenuItem;
+ACore["a" /* default */].creator.vmenuitem = VMenuItrem;
 ACore["a" /* default */].creator.vmenu = VMenu;
 ACore["a" /* default */].creator.dropright = Dropright;
 ACore["a" /* default */].creator.vmenuline = VMenuLine;
 
 ACore["a" /* default */].creator.dropdown = Dropdown;
-ACore["a" /* default */].creator.hmenuitem = HMenuItem;
+ACore["a" /* default */].creator.hmenuitem = HMenuItrem;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/menu.css
 var css_menu = __webpack_require__(124);
 
@@ -41300,7 +41370,7 @@ SearchStringArrayAdapter_SearchStringArrayAdapter.prototype.getItemText = functi
 SearchStringArrayAdapter_SearchStringArrayAdapter.prototype.getItemView = function (item, index, _, $, query, reuseItem, refParent, mInput) {
     if (reuseItem) {
         reuseItem.childNodes[0].innerHTML = item.hightlightedText;
-        return reuseItem;
+        return reuseItrem;
     }
     else
         return _({
@@ -41352,7 +41422,7 @@ SearchObjectArrayAdapter_SearchObjectArrayAdapter.prototype.onAttached = functio
     this.parent = parent;
     parent.getSelectedObject = function () {
         if (this._selectedIndex >= 0) {
-            return this.$poolItems[this._selectedIndex]._holderItem;
+            return this.$poolItems[this._selectedIndex]._holderItrem;
         }
         else {
             return null;
@@ -41373,7 +41443,7 @@ SearchObjectArrayAdapter_SearchObjectArrayAdapter.prototype.getItemText = functi
 SearchObjectArrayAdapter_SearchObjectArrayAdapter.prototype.getItemView = function (item, index, _, $, query, reuseItem, refParent, mInput) {
     if (reuseItem) {
         reuseItem.childNodes[0].innerHTML = item.__hightlightedText__;
-        return reuseItem;
+        return reuseItrem;
     }
     else
         return _({
@@ -41666,7 +41736,7 @@ AutoCompleteInput.prototype.pushData = function (data, sessionIndex, query) {
                     }
                     var newView = this.getItemView(item, i, AutoCompleteInput_, AutoCompleteInput_$, query, reuseItem, this);
                     newView.addClass('absol-autocomplete-input-item');
-                    newView._holderItem = item;
+                    newView._holderItem = itrem;
                     newView._holderIndex = i;
                     if (i == this._selectedIndex)
                         newView.addClass('active');
@@ -41698,7 +41768,7 @@ AutoCompleteInput.prototype.getItemText = function (item) {
         return this.adapter.getItemText(item, this);
     }
     else if (typeof item == 'string') {
-        return item;
+        return itrem;
     } else {
         throw Error('You need adapter.getItemText(item, mAutoCompleteInput) to handle your item text!');
     }
@@ -41713,7 +41783,7 @@ AutoCompleteInput.prototype.getItemView = function (item, index, _, $, query, re
         var text = this.getItemText(item);
         if (reuseItem) {
             reuseItem.childNodes[0].innerHTML = text;
-            return reuseItem;
+            return reuseItrem;
         }
 
         return _({
@@ -42269,7 +42339,7 @@ SelectMenu.prepareItem = function (item) {
 
     item.__nvnTextNoneCase__ = item.__nvnText__.toLowerCase();
     item.__nvnWordsNoneCase__ = item.__nvnTextNoneCase__.split(spliter);
-    return item;
+    return itrem;
 };
 
 
@@ -42703,7 +42773,7 @@ SelectMenu.eventHandler.searchModify = function (event) {
                 if (view[0].score == 0) view = [];
             }
             view = view.map(function (e) {
-                return e.item;
+                return e.itrem;
             });
             this._searchCache[filterText] = view;
         }
@@ -42778,7 +42848,7 @@ TreeList.prototype.addItem = function (item) {
     var props = { level: this.level, data: item };
     
     if (typeof item == 'string') {
-        props.text = item;
+        props.text = itrem;
     }
     else {
         props.text = item.text;
@@ -43032,7 +43102,7 @@ TreeListItem.property.extendStyle = {
 };
 
 
-ACore["a" /* default */].creator.treelistitem = TreeListItem;
+ACore["a" /* default */].creator.treelistitem = TreeListItrem;
 
 /* harmony default export */ var js_TreeListItem = (TreeListItem);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selecttreemenu.css
@@ -43114,11 +43184,11 @@ function SelectTreeMenu() {
     return res;
 }
 
-SelectTreeMenu.prototype.updateItem = js_SelectMenu.prototype.updateItem;
+SelectTreeMenu.prototype.updateItem = js_SelectMenu.prototype.updateItrem;
 
 SelectTreeMenu.prototype.init = js_SelectMenu.prototype.init;
 SelectTreeMenu.prototype.updateDropdownPostion = js_SelectMenu.prototype.updateDropdownPostion;
-SelectTreeMenu.prototype.scrollToSelectedItem = js_SelectMenu.prototype.scrollToSelectedItem;
+SelectTreeMenu.prototype.scrollToSelectedItem = js_SelectMenu.prototype.scrollToSelectedItrem;
 SelectTreeMenu.prototype.startTrackScroll = js_SelectMenu.prototype.startTrackScroll;
 SelectTreeMenu.prototype.stopTrackScroll = js_SelectMenu.prototype.stopTrackScroll;
 
@@ -43268,12 +43338,12 @@ SelectTreeMenu.prepareItem = function (item) {
 
     item.__nvnTextNoneCase__ = item.__nvnText__.toLowerCase();
     item.__nvnWordsNoneCase__ = item.__nvnTextNoneCase__.split(spliter);
-    return item;
+    return itrem;
 };
 
 
 SelectTreeMenu.prepareData = function (items) {
-    var item;
+    var itrem;
     for (var i = 0; i < items.length; ++i) {
         if (typeof items[i] == 'string') {
             items[i] = { text: items[i], value: items[i] };
@@ -43354,7 +43424,7 @@ SelectTreeMenu.queryTree = function (query, items) {
         }).map(function (node) {
             var res;
             if (typeof node.item == 'string') {
-                res = node.item;
+                res = node.itrem;
             }
             else {
                 res = Object.assign({}, node.item);
@@ -44949,8 +45019,8 @@ function Draggable(element) {
         event.moveToX = left0 + event.moveDX;
         event.moveToY = top0 + event.moveDY;
 
-        event.moveToXem = left0em + event.moveDXem;
-        event.moveToYem = top0em + event.moveDYem;
+        event.moveToXem = left0em + event.moveDXrem;
+        event.moveToYem = top0em + event.moveDYrem;
         if (firstMove) {
             firstMove = false;
             element.emit('begindrag', event);
@@ -44980,8 +45050,8 @@ function Draggable(element) {
         top0em = top0 / fontSize;
         event.x0 = left0;
         event.y0 = top0;
-        event.y0em = left0em;
-        event.y0em = top0em;
+        event.y0em = left0rem;
+        event.y0em = top0rem;
         element.emit('predrag', event);
     };
 
@@ -47089,7 +47159,7 @@ SearchList.prototype.pushData = function (data, sessionIndex, query) {
                     }
                     var newView = this.adapter.getItemView(item.item, i, SearchList_, SearchList_$, query, reuseItem, this);
                     newView.addClass('absol-search-list-item');
-                    newView.__data__ = item;
+                    newView.__data__ = itrem;
                     newView.__index__ = i;
                     if (i == this._selectedIndex)
                         newView.addClass('active');
@@ -47202,7 +47272,7 @@ SearchList.prototype._findItem = function (elt) {
 SearchList.prototype.updateItems = function () {
     this.removeAllToPool();
     var self = this;
-    var reusedItem;
+    var reusedItrem;
     var query = '';
     this.itemEltsDict = {};
     this.itemEltArr = [];
@@ -47213,7 +47283,7 @@ SearchList.prototype.updateItems = function () {
         self.itemEltsDict[valueKey] = itemView;
         self.itemEltArr.push(itemView);
         SearchList_$(itemView).addClass('absol-search-list-item');
-        itemView.__data__ = item;// item wil hold  the data of itself
+        itemView.__data__ = itrem;// item wil hold  the data of itself
         itemView.__index__ = index;// item wil hold  the data of itself
 
         self.$dropdown.addChild(itemView);
@@ -50321,7 +50391,7 @@ ChromeCalendar.prototype.expandYear = function (year) {
     var fontSize = this.getFontSize();
 
     var self = this;
-    var lastItemElt = this.$lastOpenYearItem;
+    var lastItemElt = this.$lastOpenYearItrem;
 
     var itemElt = this.$yearItems[year - 1890];
     var lastYear = 100000000;
@@ -52826,17 +52896,21 @@ function onMouseMoveFix(clone, event, shiftY, result) {
 function moveAtFix(clone, pageY, shiftY, result) {
   var y = pageY - result.getBoundingClientRect().top;
   y -= shiftY;
-  var tempx = result.getHeightChild();
   var height = result.clientHeight;
-  if (tempx !== 0) height += tempx + result.clientHeight;
+  var tempx = height - 3 * clone.clientHeight / 4;
 
-  if (y > height - clone.clientHeight) {
-    y = result.clientHeight;
+  if (result.tagName !== "TABLE") {
+    height += result.getHeightChild();
+    tempx = height;
+  }
+
+  if (y > tempx) {
+    y = tempx;
     return;
   }
 
-  if (y < clone.clientHeight / 2) {
-    y = clone.clientHeight / 2;
+  if (y < clone.clientHeight / 4) {
+    y = clone.clientHeight / 4;
     return;
   }
 
@@ -52964,14 +53038,23 @@ function moveElementFix(event, me, result, index) {
     if (removeList !== undefined) {
       var row1 = removeList.row1;
       var row2 = removeList.row2;
-      if (row1 === undefined && row2 === 0) return;
+
+      if (row1 === undefined && row2 === 0) {
+        outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
+        return;
+      }
+
       var element = me;
 
       while (element.tagName !== "TR" && element !== undefined) {
         element = element.parentNode;
       }
 
-      console.log(element, removeList.elementReal);
+      if (element === removeList.elementReal) {
+        outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
+        return;
+      }
+
       result.bodyTable.insertBefore(element, removeList.elementReal);
 
       if (element.getElementChild !== undefined) {
@@ -52986,9 +53069,9 @@ function moveElementFix(event, me, result, index) {
 
       if (result.data.child !== undefined) {
         result.data.child = changeIndex(result.data.child, index - 1, row1);
-        result.childrenNodes = changeIndex(result.childrenNodes, index - 1, row1);
       } else result.data = changeIndex(result.data, index - 1, row1);
 
+      result.childrenNodes = changeIndex(result.childrenNodes, index - 1, row1);
       var k = 0;
 
       for (var i = 0; i < result.clone.length; i++) {
@@ -52998,7 +53081,7 @@ function moveElementFix(event, me, result, index) {
         k++;
       }
 
-      result.checkSpan = changeIndex(result.checkSpan, index - 1, row1);
+      if (result.checkSpan !== undefined) result.checkSpan = changeIndex(result.checkSpan, index - 1, row1);
     }
 
     outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
@@ -53087,13 +53170,15 @@ function tableView() {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
   var dragHorizontal = arguments.length > 2 ? arguments[2] : undefined;
   var dragVertical = arguments.length > 3 ? arguments[3] : undefined;
+  var childIndex = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
   if (window.mobilecheck()) return tableViewMobile(header, data);
   var cell,
       row,
       value,
       check = [],
       bonus,
-      style;
+      style,
+      dragElement;
   var checkSpan = [];
 
   var headerTable = ModuleView_({
@@ -53106,9 +53191,6 @@ function tableView() {
 
   var result = ModuleView_({
     tag: "table",
-    style: {
-      fontSize: "0.7857rem"
-    },
     "class": "sortTable",
     child: [headerTable, bodyTable]
   });
@@ -53254,6 +53336,8 @@ function tableView() {
       if (header[i].functionClick !== undefined) functionClick = header[i].functionClick;
       style = {};
       if (header[i].style !== undefined) style = header[i].style;
+      dragElement = true;
+      if (header[i].dragElement !== undefined && header[i].dragElement === false) dragElement = false;
       cell = ModuleView_({
         tag: "th",
         attr: {
@@ -53270,7 +53354,7 @@ function tableView() {
               if (functionClick !== undefined) functionClick(event, this, index, data[index], row, result);
             };
           }(i, row, functionClick),
-          mousedown: dragHorizontal ? function (index) {
+          mousedown: dragHorizontal && dragElement ? function (index) {
             return function (event) {
               event.preventDefault();
               var finalIndex;
@@ -53291,7 +53375,7 @@ function tableView() {
               }, 200);
             };
           }(i) : undefined,
-          dragstart: dragHorizontal ? function () {
+          dragstart: dragHorizontal && dragElement ? function () {
             return false;
           } : undefined,
           mouseup: function mouseup() {
@@ -53301,7 +53385,7 @@ function tableView() {
               clearTimeout(this.timeoutID);
             }
           },
-          mousemove: dragHorizontal ? function (index) {
+          mousemove: dragHorizontal && dragElement ? function (index) {
             return function (event) {
               if (this.hold === false) {
                 var finalIndex;
@@ -53328,24 +53412,7 @@ function tableView() {
         }
       });
 
-      if (header[i].sort === true) {
-        cell.classList.add("has-sort");
-      }
-
-      if (header[i].element === undefined) {
-        cell.addChild(ModuleView_({
-          text: value
-        }));
-      } else {
-        cell.appendChild(data[i][j].element);
-      }
-
-      if (bonus !== undefined) {
-        cell.addChild(bonus);
-        bonus = undefined;
-      }
-
-      cell.addChild(ModuleView_({
+      var childUpDown = ModuleView_({
         tag: "div",
         "class": "sort-container",
         on: {
@@ -53363,14 +53430,43 @@ function tableView() {
           tag: "sort-down",
           "class": ["arrow_down"]
         }]
-      }));
+      });
+
+      if (header[i].sort === true) {
+        cell.classList.add("has-sort");
+
+        var tempFunc = function (cellIndex, childUpDown) {
+          return function () {
+            var style2 = window.getComputedStyle(childUpDown);
+            cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
+          };
+        }(cell, childUpDown);
+
+        setTimeout(tempFunc, 100);
+      }
+
+      if (header[i].element === undefined) {
+        cell.addChild(ModuleView_({
+          text: value
+        }));
+      } else {
+        cell.appendChild(data[i][j].element);
+      }
+
+      if (bonus !== undefined) {
+        cell.addChild(bonus);
+        bonus = undefined;
+      }
+
+      cell.addChild(childUpDown);
       result.clone[k++].push(cell);
-      row.addChild(cell); // console.log(cell,window.getComputedStyle(cell,null).getPropertyValue('font-size'),"xxxxxxxx")
-      // cell.style.minWidth = fakeInput(value,parseFloat(window.getComputedStyle(cell).fontSize))+"px";
+      row.addChild(cell);
     } else check[i] = "hidden";
   }
 
-  result.getBodyTable(data);
+  result.parentMargin = 0;
+  result.childIndex = childIndex;
+  result.childrenNodes = result.getBodyTable(data);
   result.checkSpan = checkSpan;
   return result;
 }
@@ -53384,9 +53480,10 @@ tableView.prototype.addInputSearch = function (input) {
         if (!self.bodyTable.childNodes[i].classList.contains("parent")) self.bodyTable.childNodes[i].classList.add("parent");
         if (self.bodyTable.childNodes[i].classList.contains("disPlayNone")) self.bodyTable.childNodes[i].classList.remove("disPlayNone");
 
-        if (self.bodyTable.childNodes[i].childNodes[0].parentTree !== undefined) {
-          if (!self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.contains("parent")) self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.add("parent");
-          if (self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.contains("disPlayNone")) self.bodyTable.childNodes[i].childNodes[0].parentTree.classList.remove("disPlayNone");
+        if (self.bodyTable.childNodes[i].childNodes[0].getParentNode() !== undefined) {
+          if (!self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("parent")) self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.add("parent");
+          if (self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("disPlayNone")) self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.remove("disPlayNone");
+          if (!self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("more-child")) self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.add("more-child");
         }
       } else {
         if (self.bodyTable.childNodes[i].classList.contains("parent")) self.bodyTable.childNodes[i].classList.remove("parent");
@@ -53411,30 +53508,28 @@ function checkValueIs(data, text) {
   return false;
 }
 
-tableView.prototype.getBodyTable = function (data, parentContent) {
+tableView.prototype.getBodyTable = function (data) {
   var temp = this.bodyTable;
   var result = this,
       k,
       delta = [],
       row,
       cell;
-  var parent = this;
   var arr = [];
-  if (parentContent !== undefined) parent = parentContent;
-  if (parent.checkSpan === undefined) parent.checkSpan = [];
+  if (parent.checkSpan === undefined) result.checkSpan = [];
 
   for (var i = 0; i < data.length; i++) {
     row = result.getRow(data[i]);
     temp.addChild(row);
     arr.push(row);
 
-    for (var j = 0; j < result.clone.length; j++) {
-      k = parseFloat(result.clone[j][0].id);
+    for (var j = 0; j < temp.parentNode.clone.length; j++) {
+      k = parseFloat(temp.parentNode.clone[j][0].id);
       if (delta[j] === undefined) delta[j] = 0;
-      cell = result.getCell(data[i][k], i, k, j, parent.checkSpan, row);
+      cell = result.getCell(data[i][k], i, k, j, result.checkSpan, row);
 
       if (cell === 6 || cell === 2) {
-        parent.clone[j].splice(i + 1 - delta[j], 1);
+        result.clone[j].splice(i + 1 - delta[j], 1);
         delta[j] += 1;
         continue;
       }
@@ -53443,15 +53538,15 @@ tableView.prototype.getBodyTable = function (data, parentContent) {
         continue;
       }
 
-      cell.clone = parent.clone;
-      parent.clone[j][i + 1 - delta[j]] = cell;
-      cell.parentTree = parent;
+      cell.clone = result.clone;
+      result.clone[j][i + 1 - delta[j]] = cell;
       row.addChild(cell);
     }
 
     row.checkChild();
   }
 
+  if (result.checkMargin !== undefined) result.checkMargin();
   return arr;
 };
 
@@ -53462,52 +53557,101 @@ tableView.prototype.getRow = function (data) {
   });
 
   var result = this;
+  Object.assign(temp, tableView.prototype);
+  temp.headerTable = result.headerTable;
+  temp.bodyTable = result.bodyTable;
+  temp.check = result.check;
+  temp.header = result.header;
+  temp.dragVertical = result.dragVertical;
+  temp.dragHorizontal = result.dragHorizontal;
   temp.data = data;
+  if (temp.data.child === undefined) temp.data.child = [];
+  temp.childrenNodes = [];
+  temp.clone = [];
+  temp.parentMargin = result.parentMargin + 1;
+  temp.childIndex = result.childIndex;
 
   temp.checkChild = function (data) {
+    temp.checkClone();
     if (data !== undefined) temp.data = data;
 
-    if (temp.data.child !== undefined) {
-      var indexMore = 0;
-      if (temp.data.child.index !== undefined) indexMore = temp.data.child.index;
-      temp.classList.add("more-child");
+    if (temp.data.child.length !== 0) {
+      temp.checkIcon();
+      temp.childrenNodes = temp.childrenNodes.concat(temp.getBodyTable(temp.data.child));
+    }
+  };
 
-      var buttonClick = ModuleView_({
+  temp.checkClone = function () {
+    if (temp.clone.length === 0) {
+      temp.clone = [];
+      var k = 0;
+
+      for (var i = 0; i < temp.childNodes.length; i++) {
+        temp.clone[k++] = [temp.childNodes[i]];
+
+        if (temp.childNodes[i].colSpan !== 1) {
+          k++;
+        }
+      }
+    }
+  };
+
+  temp.checkIcon = function () {
+    var indexMore = 0;
+
+    if (temp.childIndex !== undefined) {
+      if (temp.childIndex === 0) {
+        if (!result.headerTable.parentNode.classList.contains("padding-High-table")) result.headerTable.parentNode.classList.add("padding-High-table");
+      }
+
+      indexMore = temp.childIndex;
+    }
+
+    temp.classList.add("more-child");
+
+    var buttonClick = ModuleView_({
+      tag: "div",
+      "class": "more-icon-container",
+      on: {
+        click: function click(event) {
+          temp.setDisPlay();
+        }
+      },
+      child: [{
         tag: "i",
-        on: {
-          click: function click(event) {
-            temp.setDisPlay();
-          }
-        },
         "class": ["material-icons", "more-button"],
         props: {
           innerHTML: "play_arrow"
         }
-      });
+      }]
+    });
 
-      temp.childNodes[indexMore].insertBefore(buttonClick, temp.childNodes[indexMore].firstChild);
+    var x = temp.childNodes[indexMore].firstChild;
 
-      if (temp.childrenNodes === undefined) {
-        temp.clone = [];
-        var k = 0;
+    while (x.classList !== undefined && x.classList.contains("margin-div-cell")) {
+      x = x.nextSibling;
+    }
 
-        for (var i = 0; i < temp.childNodes.length; i++) {
-          temp.clone[k++] = [temp.childNodes[i]];
+    temp.childNodes[indexMore].insertBefore(buttonClick, x);
+    this.buttonClick = buttonClick;
 
-          if (temp.childNodes[i].colSpan !== 1) {
-            k++;
-          }
-        }
+    result.checkMargin = function () {
+      for (var i = 0; i < result.clone[indexMore].length; i++) {
+        if (!result.clone[indexMore][i].classList.contains("margin-left-has-icon")) result.clone[indexMore][i].classList.add("margin-left-has-icon");
       }
+    };
 
-      if (temp.childrenNodes === undefined) temp.childrenNodes = result.getBodyTable(temp.data.child, temp);
-      Object.assign(temp, tableView.prototype);
-      temp.headerTable = result.headerTable;
-      temp.bodyTable = result.bodyTable;
-      temp.check = result.check;
-      temp.header = result.header;
-      temp.dragVertical = result.dragVertical;
-      temp.dragHorizontal = result.dragHorizontal;
+    result.checkMargin();
+  };
+
+  temp.checkVisiableChild = function () {
+    this.buttonClick.selfRemove();
+    var parent = this.childNodes[0].getParentNode();
+
+    if (parent.tagName === "TABLE") {
+      for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
+        if (parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.contains("margin-left-has-icon")) parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.remove("margin-left-has-icon");
+      }
     }
   };
 
@@ -53522,55 +53666,174 @@ tableView.prototype.setDisPlay = function () {
     for (var i = 0; i < childrenNodes.length; i++) {
       childrenNodes[i].classList.add("parent");
       childrenNodes[i].classList.remove("disPlayNone");
-      if (childrenNodes[i].childrenNodes !== undefined) childrenNodes[i].setDisPlay();
+      if (childrenNodes[i].childrenNodes.length !== 0) childrenNodes[i].setDisPlayVisable();
     }
   } else {
+    this.classList.remove("more-child");
     this.setDisPlayNone();
   }
 };
 
+tableView.prototype.setDisPlayVisable = function () {
+  if (this.classList.contains("more-child")) {
+    var childrenNodes = this.childrenNodes;
+
+    for (var i = 0; i < childrenNodes.length; i++) {
+      childrenNodes[i].classList.add("parent");
+      childrenNodes[i].classList.remove("disPlayNone");
+      if (childrenNodes[i].childrenNodes.length !== 0) childrenNodes[i].setDisPlayVisable();
+    }
+  }
+};
+
 tableView.prototype.setDisPlayNone = function () {
-  this.classList.remove("more-child");
   var childrenNodes = this.childrenNodes;
 
   for (var i = 0; i < childrenNodes.length; i++) {
     childrenNodes[i].classList.remove("parent");
     childrenNodes[i].classList.add("disPlayNone");
-    if (childrenNodes[i].childrenNodes !== undefined) childrenNodes[i].setDisPlayNone();
+    if (childrenNodes[i].childrenNodes.length !== 0) childrenNodes[i].setDisPlayNone();
   }
 };
 
-tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
-  var data = dataOrigin;
-  var result = this,
-      value,
-      bonus,
-      style,
-      cell;
+tableView.prototype.getDivMargin = function () {
+  return ModuleView_({
+    tag: "div",
+    "class": "margin-div-cell"
+  });
+};
 
-  if (checkSpan[i] !== undefined) {
-    if (checkSpan[i][k] == 2) return 2;
-    if (checkSpan[i][k] == 6) return 6;
-  }
+tableView.prototype.getCell = function (dataOrigin, i, j, k) {
+  var _this = this;
 
-  if (data.value === undefined) {
-    if (_typeof(data) === "object") value = "";else value = data.toString();
-  } else value = data.value;
+  var checkSpan = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : [];
+  var row = arguments.length > 5 ? arguments[5] : undefined;
+  return function (i) {
+    var data = dataOrigin;
+    var result = _this,
+        value,
+        bonus,
+        style,
+        cell;
 
-  switch (this.check[j]) {
-    case "hidden":
-      return true;
+    if (checkSpan[i] !== undefined) {
+      if (checkSpan[i][k] == 2) return 2;
+      if (checkSpan[i][k] == 6) return 6;
+    }
 
-    case "increase":
-      value += i + 1;
-      break;
+    if (data.value === undefined) {
+      if (_typeof(data) === "object") value = "";else value = data.toString();
+    } else value = data.value;
 
-    case "dragzone":
-      if (data.icon !== undefined) {
-        icon = data.icon;
+    switch (_this.check[j]) {
+      case "hidden":
+        return true;
+
+      case "increase":
+        value += i + 1;
+        break;
+
+      case "dragzone":
+        if (data.icon !== undefined) {
+          icon = data.icon;
+          bonus = ModuleView_({
+            tag: "i",
+            "class": ["material-icons"],
+            style: {
+              fontSize: "20px",
+              cursor: "pointer"
+            },
+            props: {
+              innerHTML: icon
+            }
+          });
+        } else {
+          bonus = ModuleView_({
+            tag: "i",
+            "class": ["material-icons", "drag-icon-button"],
+            props: {
+              innerHTML: "drag_indicator"
+            },
+            on: {
+              mousedown: result.dragVertical ? function (event) {
+                var self = this;
+                return function (event, cellIndex, self) {
+                  event.preventDefault();
+                  var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+                  self.hold = false;
+                  var dom = self;
+                  self["default"] = event;
+                  self.timeoutID = setTimeout(function () {
+                    dom.hold = true;
+                    moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
+                  }, 200);
+                }(event, cell, self);
+              } : undefined,
+              dragstart: result.dragVertical ? function () {
+                return false;
+              } : undefined,
+              mouseup: function mouseup() {
+                if (this.hold === false) {
+                  this.hold = true; // this.click();
+
+                  clearTimeout(this.timeoutID);
+                }
+              },
+              mousemove: result.dragVertical ? function (event) {
+                var self = this;
+                return function (event, cellIndex, self) {
+                  if (self.hold === false) {
+                    var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+                    self.hold = false;
+                    var deltaX = self["default"].clientX - event.clientX,
+                        deltaY = self["default"].clientY - event.clientY;
+
+                    if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
+                      self.hold = true;
+                      moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
+                      clearTimeout(self.timeoutID);
+                    }
+                  }
+                }(event, cell, self);
+              } : undefined
+            }
+          });
+        }
+
+        break;
+
+      case "check":
+        bonus = ModuleView_({
+          tag: "checkboxbutton",
+          "class": "pizo-checkbox",
+          on: {
+            click: function click(event) {
+              if (result.bodyTable.listCheckBox !== undefined) {
+                if (this.checked === false) result.bodyTable.listCheckBox[0].checked = false;else {
+                  if (result.bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                    if (result.bodyTable.listCheckBox[j].checked === false) {
+                      j--;
+                      break;
+                    }
+                  }
+
+                  if (j === result.bodyTable.listCheckBox.length) {
+                    result.bodyTable.listCheckBox[0].checked = true;
+                  }
+                }
+              }
+            }
+          }
+        });
+        if (result.bodyTable.listCheckBox !== undefined) result.bodyTable.listCheckBox.push(bonus);
+        break;
+
+      case "detail":
+        var icon = "more_vert";
+        if (data.icon !== undefined) icon = data.icon;
         bonus = ModuleView_({
           tag: "i",
-          "class": ["material-icons"],
+          "class": "material-icons",
           style: {
             fontSize: "20px",
             cursor: "pointer"
@@ -53579,227 +53842,140 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan, row) {
             innerHTML: icon
           }
         });
-      } else {
-        bonus = ModuleView_({
-          tag: "i",
-          "class": ["material-icons"],
-          props: {
-            innerHTML: "drag_indicator"
-          },
-          on: {
-            mousedown: result.dragVertical ? function (index) {
-              return function (event) {
-                event.preventDefault();
-                var finalIndex;
+        break;
+    }
 
-                for (var i = 1; i < cell.clone[0].length; i++) {
-                  if (cell.clone[0][i].idRow == index) {
-                    finalIndex = i;
-                    break;
-                  }
-                }
+    var functionClick = undefined;
+    if (data.functionClick !== undefined) functionClick = data.functionClick;else {
+      if (result.header[j].functionClickAll !== undefined) functionClick = result.header[j].functionClickAll;
+    }
+    style = {};
+    if (data.style !== undefined) style = data.style;
+    cell = ModuleView_({
+      tag: "td",
+      style: style,
+      on: {
+        click: function click(event) {
+          return function (event, row, functionClick) {
+            event.preventDefault();
 
-                this.hold = false;
-                var dom = this;
-                this["default"] = event;
-                this.timeoutID = setTimeout(function () {
-                  dom.hold = true;
-                  moveElementFix(event, dom, cell.parentTree, finalIndex);
-                }, 200);
-              };
-            }(i) : undefined,
-            dragstart: result.dragVertical ? function () {
-              return false;
-            } : undefined,
-            mouseup: function mouseup() {
-              if (this.hold === false) {
-                this.hold = true; // this.click();
-
-                clearTimeout(this.timeoutID);
-              }
-            },
-            mousemove: result.dragVertical ? function (index) {
-              return function (event) {
-                if (this.hold === false) {
-                  var finalIndex;
-
-                  for (var i = 0; i < cell.clone[0].length; i++) {
-                    if (cell.clone[0][i].idRow == index) {
-                      finalIndex = i;
-                      break;
-                    }
-                  }
-
-                  this.hold = false;
-                  var deltaX = this["default"].clientX - event.clientX,
-                      deltaY = this["default"].clientY - event.clientY;
-
-                  if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
-                    this.hold = true;
-                    moveElementFix(event, this, cell.parentTree, finalIndex);
-                    clearTimeout(this.timeoutID);
-                  }
-                }
-              };
-            }(i) : undefined
-          }
-        });
+            if (functionClick !== undefined) {
+              if (cell.getParentNode().childrenNodes.length !== 0) var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);else var finalIndex = 0;
+              var dataIndex;
+              if (cell.getParentNode().data.child !== undefined) dataIndex = cell.getParentNode().data.child[finalIndex];else dataIndex = cell.getParentNode().data[finalIndex];
+              functionClick(event, cell, finalIndex, cell.getParentNode(), dataIndex, row);
+            }
+          }(event, row, functionClick);
+        }
       }
-
-      break;
-
-    case "check":
-      bonus = ModuleView_({
-        tag: "checkboxbutton",
-        "class": "pizo-checkbox",
-        on: {
-          click: function click(event) {
-            if (result.bodyTable.listCheckBox !== undefined) {
-              if (this.checked === false) result.bodyTable.listCheckBox[0].checked = false;else {
-                if (result.bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                  if (result.bodyTable.listCheckBox[j].checked === false) {
-                    j--;
-                    break;
-                  }
-                }
-
-                if (j === result.bodyTable.listCheckBox.length) {
-                  result.bodyTable.listCheckBox[0].checked = true;
-                }
-              }
-            }
-          }
-        }
-      });
-      if (result.bodyTable.listCheckBox !== undefined) result.bodyTable.listCheckBox.push(bonus);
-      break;
-
-    case "detail":
-      var icon = "more_vert";
-      if (data.icon !== undefined) icon = data.icon;
-      bonus = ModuleView_({
-        tag: "i",
-        "class": "material-icons",
-        style: {
-          fontSize: "20px",
-          cursor: "pointer"
-        },
-        props: {
-          innerHTML: icon
-        }
-      });
-      break;
-  }
-
-  var functionClick = undefined;
-  if (data.functionClick !== undefined) functionClick = data.functionClick;else {
-    if (result.header[j].functionClickAll !== undefined) functionClick = result.header[j].functionClickAll;
-  }
-  style = {};
-  if (data.style !== undefined) style = data.style;
-  cell = ModuleView_({
-    tag: "td",
-    style: style,
-    props: {
-      idRow: i
-    },
-    on: {
-      click: function (index, row, functionClick) {
-        return function (event) {
-          event.preventDefault();
-
-          if (functionClick !== undefined) {
-            for (var i = 1; i < cell.clone[0].length; i++) {
-              if (cell.clone[0][i].idRow == index) {
-                var dataIndex;
-                if (cell.parentTree.data.child !== undefined) dataIndex = cell.parentTree.data.child[i];else dataIndex = cell.parentTree.data[i];
-                functionClick(event, cell, i - 1, cell.parentTree, cell.parentTree.data[i], row);
-                break;
-              }
-            }
-          }
-        };
-      }(i, row, functionClick)
+    });
+    var widthSize = 0;
+    var step = 1.71428571429;
+    if (result.data.child !== undefined) if (k === result.childIndex) {
+      for (var i = 0; i < result.parentMargin; i++) {
+        cell.addChild(result.getDivMargin());
+        widthSize += step;
+      }
     }
-  });
 
-  if (data.element === undefined) {
-    cell.addChild(ModuleView_({
-      text: value
-    }));
-  } else {
-    cell.appendChild(data.element);
-  }
+    var container = ModuleView_({
+      tag: "div",
+      "class": "container-view",
+      style: {
+        width: "calc(100% - " + widthSize + "rem)"
+      }
+    });
 
-  if (bonus !== undefined) {
-    cell.addChild(bonus);
-    bonus = undefined;
-  }
+    if (widthSize !== 0) cell.classList.add("margin-left-has-icon");
+    cell.addChild(container);
 
-  if (data.rowspan !== undefined) {
-    cell.setAttribute("rowspan", data.rowspan);
-
-    for (var l = i + 1; l < i + data.rowspan; l++) {
-      if (checkSpan[l] === undefined) checkSpan[l] = [];
-      checkSpan[l][k] = 2;
+    if (data.element === undefined) {
+      container.addChild(ModuleView_({
+        text: value
+      }));
+    } else {
+      container.appendChild(data.element);
     }
-  }
 
-  if (data.colspan !== undefined) {
-    cell.setAttribute("colspan", data.colspan);
-    checkSpan[i] = [];
-
-    for (var l = k + 1; l < k + data.colspan; l++) {
-      checkSpan[i][l] = 6;
+    if (bonus !== undefined) {
+      container.addChild(bonus);
+      bonus = undefined;
     }
-  }
 
-  return cell;
+    if (data.rowspan !== undefined) {
+      cell.setAttribute("rowspan", data.rowspan);
+
+      for (var l = i + 1; l < i + data.rowspan; l++) {
+        if (checkSpan[l] === undefined) checkSpan[l] = [];
+        checkSpan[l][k] = 2;
+      }
+    }
+
+    if (data.colspan !== undefined) {
+      cell.setAttribute("colspan", data.colspan);
+      checkSpan[i] = [];
+
+      for (var l = k + 1; l < k + data.colspan; l++) {
+        checkSpan[i][l] = 6;
+      }
+    }
+
+    cell.getParentNode = function () {
+      var parent = cell.clone[0][0];
+      parent = parent;
+      if (parent.tagName === "TH") return parent.parentNode.parentNode.parentNode;
+      return parent.parentNode;
+    };
+
+    return cell;
+  }(i);
 };
 
 tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
+  var row, cell, k;
+  var checkSpan = [];
+  var result = this;
+
   var temp = ModuleView_({
     tag: "tbody"
   });
 
-  var row, cell, k;
-  var checkSpan = [];
   temp.listCheckBox = [];
-  var result = this;
   if (dragHorizontal !== undefined) result.dragHorizontal = dragHorizontal;
   if (dragVertical !== undefined) result.dragVertical = dragVertical;
   if (this.bodyTable.listCheckBox !== undefined) temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
+
+  for (var i = 0; i < result.clone.length; i++) {
+    result.clone[i] = [result.clone[i].shift()];
+  }
+
   this.replaceChild(temp, this.bodyTable);
   this.bodyTable = temp;
-  var delta = [];
-
-  for (var i = 0; i < data.length; i++) {
-    row = result.getRow(data[i]);
-    temp.addChild(row);
-
-    for (var j = 0; j < this.clone.length; j++) {
-      k = parseFloat(this.clone[j][0].id);
-      if (delta[j] === undefined) delta[j] = 0;
-      cell = result.getCell(data[i][k], i, k, j, checkSpan, row);
-
-      if (cell === 6 || cell === 2) {
-        this.clone[j].splice(i + 1 - delta[j], 1);
-        delta[j] += 1;
-        continue;
-      }
-
-      if (cell === true) {
-        continue;
-      }
-
-      cell.clone = this.clone;
-      this.clone[j][i + 1 - delta[j]] = cell;
-      cell.parentTree = this;
-      row.addChild(cell);
-    }
-
-    row.checkChild();
-  }
+  result.childrenNodes = result.getBodyTable(data); // var delta = [];
+  // for (var i = 0; i < data.length; i++) {
+  //     row = result.getRow(data[i]);
+  //     temp.addChild(row);
+  //     for (var j = 0; j < this.clone.length; j++) {
+  //         k = parseFloat(this.clone[j][0].id);
+  //         if(delta[j]===undefined)
+  //             delta[j] = 0;
+  //         cell = result.getCell(data[i][k],i,k,j,checkSpan,row);
+  //         if(cell === 6  || cell === 2)
+  //         {
+  //             this.clone[j].splice(i+1 - delta[j],1);
+  //             delta[j]+=1;
+  //             continue
+  //         }
+  //         if(cell === true)
+  //         {
+  //             continue;
+  //         }
+  //         cell.clone = this.clone;
+  //         this.clone[j][i+1 - delta[j]] = cell;
+  //         row.addChild(cell);
+  //     }
+  //     row.checkChild();
+  // }
 
   this.checkSpan = checkSpan;
   this.data = data;
@@ -53807,13 +53983,14 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 };
 
 tableView.prototype.insertRow = function (data) {
-  this.updateRow(data, this.data.length);
+  if (this.tagName === "TABLE") return this.updateRow(data, this.data.length);else return this.updateRow(data, this.data.child.length);
 };
 
 tableView.prototype.updateRow = function (data, index) {
   var result = this,
       k,
       cell;
+  if (result.isUpdate === false) return;
   var delta = [];
   var row = result.getRow(data);
 
@@ -53834,18 +54011,17 @@ tableView.prototype.updateRow = function (data, index) {
     }
   }
 
-  if (result.childrenNodes !== undefined && result.childrenNodes.length === index) {
-    result.bodyTable.insertBefore(row, result.childrenNodes[result.childrenNodes.length - 1].nextSibling);
-  } else if (index === result.data.length && result.childrenNodes === undefined) {
+  var checkChild = false;
+
+  if (index === result.data.length && result.tagName === "TABLE") {
     result.bodyTable.addChild(row);
+  } else if (result.childrenNodes !== undefined && result.childrenNodes.length === index) {
+    checkChild = true;
+    if (!result.classList.contains("more-child")) result.setDisPlay();
+    result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length - 1].parentNode.nextSibling);
   } else {
     var temp;
-    console.log(result);
-
-    if (result.childrenNodes !== undefined) {
-      temp = result.childrenNodes[index];
-    } else temp = result.clone[0][index + 1].parentNode;
-
+    temp = result.childrenNodes[index];
     result.bodyTable.replaceChild(row, temp);
 
     if (temp.childrenNodes !== undefined) {
@@ -53873,43 +54049,128 @@ tableView.prototype.updateRow = function (data, index) {
     }
 
     cell.clone = result.clone;
+    if (result.clone[i] === undefined) result.clone[i] = [];
     result.clone[i][index + 1 - delta[i]] = cell;
     k++;
     row.addChild(cell);
   }
 
-  if (result.data.child !== undefined) {
-    var child = result.data.child[index].child;
-    result.data.child[index] = data;
-    result.data.child[index].child = child;
+  var x;
+  result.childrenNodes[index] = row;
+
+  if (result.tagName !== "TABLE") {
+    if (result.data.child[index] === undefined) {
+      x = data;
+      result.data.child[index] = data;
+    } else {
+      if (data.child.length === 0) data.child = result.data.child[index].child;
+      x = Object.assign(result.data.child[index], data);
+    }
   } else {
-    var child = result.data[index].child;
-    result.data[index] = data;
-    result.data[index].child = child;
+    if (result.data[index] === undefined) {
+      result.data[index] = data;
+      x = result.data[index];
+    } else {
+      if (data.child.length === 0) data.child = result.data[index].child;
+      x = Object.assign(result.data[index], data);
+    }
   }
 
-  row.checkChild();
-  if (this.inputElement !== undefined) this.inputElement.onchange();
+  row.data = x;
+
+  if (temp !== undefined) {
+    row.childrenNodes = temp.childrenNodes;
+    row.clone = temp.clone;
+    row.checkSpan = temp.checkSpan;
+
+    if (row.clone !== undefined) {
+      var k = 0,
+          l = 0;
+      var delta = 0;
+
+      for (var i = 0; i < row.clone.length; i++) {
+        if (row.clone[i][0] === temp.childNodes[k]) {
+          row.clone[i].shift();
+          k++;
+        }
+
+        if (delta > 0) {
+          delta--;
+          continue;
+        }
+
+        row.clone[i].unshift(row.childNodes[l]);
+
+        if (row.childNodes[l].colSpan != 1) {
+          delta += row.childNodes[l].colSpan - 1;
+        }
+
+        l++;
+      }
+    }
+  }
+
+  if (checkChild === true) {
+    if (result.checkIcon !== undefined) result.checkIcon();
+  }
+
+  if (row.childrenNodes.length !== 0) row.checkIcon();else row.checkClone();
+  if (result.checkMargin !== undefined) result.checkMargin();
+  result.checkDataUpdate(row);
+};
+
+tableView.prototype.checkDataUpdate = function (row) {
+  var self = this;
+  var input = self.headerTable.parentNode.inputElement;
+  if (input === undefined) return;
+
+  for (var i = 0; i < row.childNodes.length; i++) {
+    if (checkValueIs(row.childNodes, input.value)) {
+      if (!row.classList.contains("parent")) row.classList.add("parent");
+      if (row.classList.contains("disPlayNone")) row.classList.remove("disPlayNone");
+
+      if (row.childNodes[0].getParentNode() !== undefined) {
+        if (!row.childNodes[0].getParentNode().classList.contains("parent")) row.childNodes[0].getParentNode().classList.add("parent");
+        if (row.childNodes[0].getParentNode().classList.contains("disPlayNone")) row.childNodes[0].getParentNode().classList.remove("disPlayNone");
+        if (!row.childNodes[0].getParentNode().classList.contains("more-child")) row.childNodes[0].getParentNode().classList.add("more-child");
+      }
+    } else {
+      if (row.classList.contains("parent")) row.classList.remove("parent");
+      if (!row.classList.contains("disPlayNone")) row.classList.add("disPlayNone");
+    }
+  }
 };
 
 tableView.prototype.dropRow = function (index) {
   var result = this,
       deltaX = [];
   var element = result.clone[0][index + 1].parentNode;
-  var parent = element.childNodes[0].parentTree;
-  if (!element.classList.contains("hideTranslate")) element.classList.add("hideTranslate");
+  if (result.isUpdate === false) return;
   console.log(element);
+  var parent = element.childNodes[0].getParentNode();
+  if (!element.classList.contains("hideTranslate")) element.classList.add("hideTranslate");
+  if (element.childrenNodes.length !== 0) element.addHideAnimationChild();
+  parent.isUpdate = false;
 
   var eventEnd = function eventEnd() {
-    parent.dropRowChild();
+    parent.dropRowChild(element);
     var deltaY = 0;
     deltaX = parent.checkLongRow(index);
 
     for (var i = 0; i < element.childNodes.length; i++) {
       parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
-      parent.checkSpan.splice(index, 1);
+      if (parent.checkSpan !== undefined) parent.checkSpan.splice(index, 1);
       if (element.childNodes[i].colSpan !== undefined) deltaY += element.childNodes[i].colSpan - 1;
     }
+
+    if (parent.childrenNodes.length !== 0) {
+      var indexData = parent.childrenNodes.indexOf(element);
+      if (parent.data.child !== undefined) parent.data.child.splice(indexData, 1);else parent.data.splice(indexData, 1);
+      parent.childrenNodes.splice(indexData, 1);
+    }
+
+    if (result.checkVisiableChild !== undefined && result.childrenNodes.length === 0) result.checkVisiableChild();
+    parent.isUpdate = true;
   }; // Code for Safari 3.1 to 6.0
 
 
@@ -53918,18 +54179,27 @@ tableView.prototype.dropRow = function (index) {
   element.addEventListener("transitionend", eventEnd);
 };
 
-tableView.prototype.dropRowChild = function () {
-  if (this.data.child) this.data.child.splice(parseFloat(element.childNodes[0].idRow), 1);else this.data.splice(parseFloat(element.childNodes[0].idRow), 1);
+tableView.prototype.addHideAnimationChild = function () {
+  for (var i = 0; i < this.childrenNodes.length; i++) {
+    if (!this.childrenNodes[i].classList.contains("hideTranslate")) this.childrenNodes[i].classList.add("hideTranslate");
+
+    if (this.childrenNodes[i].childrenNodes.length !== 0) {
+      this.childrenNodes[i].addHideAnimationChild();
+    }
+  }
+};
+
+tableView.prototype.dropRowChild = function (element) {
   element.selfRemove();
-  if (element.childrenNodes !== undefined) element.dropRowChildElement();
+  if (element.childrenNodes.length !== 0) element.dropRowChildElement();
 };
 
 tableView.prototype.dropRowChildElement = function () {
-  for (var i = 0; i < this.element.childNodes.length; i++) {
-    this.element.childrenNodes[i].selfRemove();
+  for (var i = 0; i < this.childrenNodes.length; i++) {
+    this.childrenNodes[i].selfRemove();
 
-    if (this.element.childrenNodes[i].childrenNodes !== undefined) {
-      this.element.childrenNodes[i].dropRowChildElement();
+    if (this.childrenNodes[i].childrenNodes.length !== 0) {
+      this.childrenNodes[i].dropRowChildElement();
     }
   }
 };
@@ -54044,13 +54314,17 @@ tableView.prototype.backGround = function (height, callback, index) {
 };
 
 tableView.prototype.deleteColumn = function (index) {
-  for (var i = 0; this.clone[index].length; i++) {
-    this.clone[index][i].parentNode.removeChild(this.clone[index][i]);
-    this.clone[index].splice(i, 1);
-    i--;
+  for (var i = 0; i < this.clone[index].length; i++) {
+    this.clone[index][i].selfRemove();
   }
 
   this.clone.splice(index, 1);
+
+  for (var i = 0; i < this.childrenNodes.length; i++) {
+    if (this.childrenNodes[i].childrenNodes.length !== 0) {
+      this.childrenNodes[i].deleteColumn(index);
+    }
+  }
 };
 
 tableView.prototype.cloneColumn = function (index) {
@@ -54072,14 +54346,9 @@ tableView.prototype.cloneColumn = function (index) {
     tag: "tbody"
   });
 
-  tableView.prototype.cloneCellColumn(bodyTable, this.clone, index);
-
   var result = ModuleView_({
     tag: "table",
     style: {
-      fontSize: "0.7857rem",
-      position: "absolute",
-      zIndex: 1000,
       cursor: "move"
     },
     "class": "sortTableClone",
@@ -54100,7 +54369,6 @@ tableView.prototype.cloneCellColumn = function (bodyTable, cloneArray, index) {
       tag: "tr",
       child: [clone]
     });
-    console.log(cell);
     cell.classList = cloneArray[index][i].parentNode.classList;
     if (cloneArray[index][i].colSpan !== undefined) clone.setAttribute("rowSpan", "");
     bodyTable.addChild(cell);
@@ -54126,9 +54394,6 @@ tableView.prototype.cloneRow = function (index) {
   var result = ModuleView_({
     tag: "table",
     style: {
-      fontSize: "0.7857rem",
-      position: "absolute",
-      zIndex: 1000,
       opacity: 0.7
     },
     "class": "sortTableClone",
@@ -54243,9 +54508,10 @@ tableView.prototype.getHeightChild = function () {
   var self = this;
   var tempClone = self.childrenNodes;
   if (tempClone !== undefined) for (var i = 0; i < tempClone.length; i++) {
-    result += tempClone[i].offsetHeight + parseFloat(window.getComputedStyle(tempClone[i]).webkitBorderVerticalSpacing) / 2;
+    result += tempClone[i].offsetHeight;
+    if (tempClone[i].offsetHeight !== 0) result += parseFloat(window.getComputedStyle(tempClone[i]).webkitBorderVerticalSpacing);
 
-    if (tempClone[i].childrenNodes !== undefined) {
+    if (tempClone[i].childrenNodes.length !== 0) {
       result += tempClone[i].getHeightChild();
     }
   }
@@ -54259,7 +54525,7 @@ tableView.prototype.getElementChild = function () {
   if (tempClone !== undefined) for (var i = 0; i < tempClone.length; i++) {
     result.push(tempClone[i]);
 
-    if (tempClone[i].childrenNodes !== undefined) {
+    if (tempClone[i].childrenNodes.length !== 0) {
       result = result.concat(tempClone[i].getElementChild());
     }
   }
@@ -54276,7 +54542,10 @@ tableView.prototype.getBound2Row = function (row1, row2) {
     elementReal = self.clone[0][row2].parentNode;
   } else {
     if (self.tagName !== "TABLE") {
-      elementReal = self.clone[0][row1].parentNode.nextSibling;
+      if (self.clone[0][row1].parentNode.childrenNodes.length !== 0) {
+        var x = self.clone[0][row1].parentNode.getElementChild();
+        elementReal = x[x.length - 1].nextSibling;
+      } else elementReal = self.clone[0][row1].parentNode.nextSibling;
     }
   }
 
@@ -54289,9 +54558,9 @@ tableView.prototype.getBound2Row = function (row1, row2) {
       tag: "div"
     });
     bottom = self.clone[0][row2].offsetHeight / 2 + parseFloat(style2.webkitBorderVerticalSpacing) / 2;
+    if (self.clone[0][row2].tagName !== "TH" && row1 === undefined) bottom = self.clone[0][row2].offsetHeight / 2;
 
-    if (row1 !== undefined && self.clone[0][row2].parentNode.childrenNodes !== undefined) {
-      // console.log(self.clone[0][row2].parentNode.getHeightChild(),'xxxxxxxxxxxx')
+    if (row1 !== undefined && self.clone[0][row2].parentNode.childrenNodes.length !== 0) {
       bottom += self.clone[0][row2].parentNode.getHeightChild();
     }
   } else bottom = parseFloat(window.getComputedStyle(self).paddingBottom) + self.clone[0][row1].offsetHeight / 2;
@@ -54579,6 +54848,9 @@ function tableViewMobile() {
 
       if (header[i].sort === true) {
         cell.classList.add("has-sort");
+        setTimeout(function (cell, value) {
+          cell.style.minWidth = fakeInput(value, window.getComputedStyle(cell).fontSize) + 30 + "px";
+        }(cell, value), 100);
       }
 
       if (header[i].element === undefined) {
@@ -54618,7 +54890,7 @@ function tableViewMobile() {
     } else check[i] = "hidden";
   }
 
-  result.getBodyTable(data);
+  result.childrenNodes = result.getBodyTable(data);
   result.checkSpan = checkSpan;
   return result;
 }
@@ -54631,27 +54903,33 @@ function sortArray(arr, index) {
       if (a.child !== undefined) sortArray(a.child, index, increase);
       var valueA = a[index].value;
       var valueB = b[index].value;
-      if (typeof valueA === "string") valueA = valueA.toLowerCase();
-      if (typeof valueB === "string") valueB = valueA.toLowerCase();
       if (valueA === undefined) valueA = a[index];
       if (valueB === undefined) valueB = b[index];
+      if (typeof valueA === "string") valueA = valueA.toLowerCase();
+      if (typeof valueB === "string") valueB = valueB.toLowerCase();
       if (valueA > valueB) return -1;
       if (valueA < valueB) return 1;
       return 0;
     });
+    if (arr.length !== 0) if (arr[arr.length - 1].child !== undefined) {
+      sortArray(arr[arr.length - 1].child, index, increase);
+    }
   } else {
     arr.sort(function (a, b) {
       if (a.child !== undefined) sortArray(a.child, index, increase);
       var valueA = a[index].value;
       var valueB = b[index].value;
-      if (typeof valueA === "string") valueA = valueA.toLowerCase();
-      if (typeof valueB === "string") valueB = valueA.toLowerCase();
       if (valueA === undefined) valueA = a[index];
       if (valueB === undefined) valueB = b[index];
+      if (typeof valueA === "string") valueA = valueA.toLowerCase();
+      if (typeof valueB === "string") valueB = valueB.toLowerCase();
       if (valueA < valueB) return -1;
       if (valueA > valueB) return 1;
       return 0;
     });
+    if (arr.length !== 0) if (arr[arr.length - 1].child !== undefined) {
+      sortArray(arr[arr.length - 1].child, index, increase);
+    }
   }
 }
 
@@ -55325,8 +55603,1111 @@ var xmlModalDragImage;
     // xhr.send(formData);
   }
 });
+// EXTERNAL MODULE: ./css/MapView.css
+var MapView = __webpack_require__(239);
+
+// CONCATENATED MODULE: ./js/component/MapView.js
+
+
+
+var MapView_ = dom_Fcore._;
+var MapView_$ = dom_Fcore.$;
+function locationView(functionDone) {
+  var map = MapView_MapView();
+  var detailView = DetailView(map);
+  map.activeDetail(detailView);
+
+  var temp = MapView_({
+    tag: "div",
+    "class": "pizo-new-realty-location",
+    on: {
+      click: function click(event) {
+        event.preventDefault();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-location-tab",
+      child: [{
+        tag: "span",
+        props: {
+          innerHTML: "Vị trí"
+        }
+      }, {
+        tag: "button",
+        "class": "pizo-new-realty-location-donebutton",
+        on: {
+          click: function click(event) {
+            functionDone(detailView, map);
+          }
+        },
+        props: {
+          innerHTML: "Xong"
+        }
+      }]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-location-content",
+      child: [detailView, map]
+    }]
+  });
+
+  return temp;
+}
+function DetailView(map) {
+  var temp;
+
+  var input = MapView_({
+    tag: "input",
+    "class": "pizo-new-realty-location-detail-row-input",
+    props: {
+      type: "text",
+      placeholder: ""
+    }
+  });
+
+  var state = MapView_({
+    tag: "selectmenu",
+    "class": "pizo-new-realty-location-detail-row-menu"
+  });
+
+  var dictrict = MapView_({
+    tag: "selectmenu",
+    "class": "pizo-new-realty-location-detail-row-menu"
+  });
+
+  var ward = MapView_({
+    tag: "selectmenu",
+    "class": "pizo-new-realty-location-detail-row-menu"
+  });
+
+  var street = MapView_({
+    tag: "selectmenu",
+    "class": "pizo-new-realty-location-detail-row-menu"
+  });
+
+  var number = MapView_({
+    tag: "input",
+    "class": "pizo-new-realty-location-detail-row-menu"
+  });
+
+  var lat, _long;
+
+  _long = MapView_({
+    tag: "input",
+    "class": "pizo-new-realty-location-detail-row-input-long",
+    attr: {
+      type: "number"
+    },
+    on: {
+      change: function change(event) {
+        if (temp.changInput) map.addMoveMarker([parseFloat(_long.value), parseFloat(lat.value)], false);
+      }
+    }
+  });
+  lat = MapView_({
+    tag: "input",
+    "class": "pizo-new-realty-location-detail-row-input-lat",
+    attr: {
+      type: "number"
+    },
+    on: {
+      change: function change(event) {
+        if (temp.changInput) map.addMoveMarker([parseFloat(_long.value), parseFloat(lat.value)], false);
+      }
+    }
+  });
+  temp = MapView_({
+    tag: "div",
+    "class": "pizo-new-realty-location-detail",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-location-detail-row",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-location-detail-row-label",
+        props: {
+          innerHTML: "Địa chỉ đầy đủ"
+        }
+      }, input]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-location-detail-row",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-location-detail-row-label",
+        props: {
+          innerHTML: "Tỉnh/TP"
+        },
+        child: [{
+          tag: "span",
+          "class": "pizo-new-realty-location-detail-row-label-important",
+          props: {
+            innerHTML: "*"
+          }
+        }]
+      }, state]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-location-detail-row",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-location-detail-row-label",
+        props: {
+          innerHTML: "Quận/Huyện"
+        },
+        child: [{
+          tag: "span",
+          "class": "pizo-new-realty-location-detail-row-label-important",
+          props: {
+            innerHTML: "*"
+          }
+        }]
+      }, dictrict]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-location-detail-row",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-location-detail-row-label",
+        props: {
+          innerHTML: "Phường/Xã"
+        },
+        child: [{
+          tag: "span",
+          "class": "pizo-new-realty-location-detail-row-label-important",
+          props: {
+            innerHTML: "*"
+          }
+        }]
+      }, ward]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-location-detail-row",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-location-detail-row-label",
+        props: {
+          innerHTML: "Đường"
+        },
+        child: [{
+          tag: "span",
+          "class": "pizo-new-realty-location-detail-row-label-important",
+          props: {
+            innerHTML: "*"
+          }
+        }]
+      }, street]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-location-detail-row",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-location-detail-row-label",
+        props: {
+          innerHTML: "Số nhà"
+        },
+        child: [{
+          tag: "span",
+          "class": "pizo-new-realty-location-detail-row-label-important",
+          props: {
+            innerHTML: "*"
+          }
+        }]
+      }, number]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-location-detail-row",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-location-detail-row-label",
+        props: {
+          innerHTML: "GPS"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-new-realty-location-detail-row-menu",
+        child: [_long, lat]
+      }]
+    }]
+  });
+  temp.input = input;
+  temp.number = number;
+  temp.dictrict = dictrict;
+  temp.street = street;
+  temp.ward = ward;
+  temp.state = state;
+  Object.assign(temp, DetailView.prototype);
+  temp["long"] = _long;
+  temp.lat = lat;
+  temp.activeAutocomplete(map);
+  return temp;
+}
+
+DetailView.prototype.activeAutocomplete = function (map) {
+  var self = this;
+  var autocomplete;
+  var options = {
+    // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
+    types: ['geocode'],
+    componentRestrictions: {
+      country: 'vn'
+    }
+  };
+  console.log(options);
+  autocomplete = new google.maps.places.Autocomplete(self.input, options); // Avoid paying for data that you don't need by restricting the set of
+  // place fields that are returned to just the address components.
+
+  autocomplete.setFields(['address_component']); // When the user selects an address from the drop-down, populate the
+  // address fields in the form.
+
+  autocomplete.addListener('place_changed', function () {
+    self.fillInAddress(autocomplete, self.input.value, map);
+  });
+};
+
+DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
+  // Get the place details from the autocomplete object.
+  var self = this;
+  var place = autocomplete.getPlace();
+  console.log(autocomplete);
+  this.getLongLat(text).then(function (result) {
+    map.addMoveMarker(result);
+  });
+  console.log(place);
+  var textResult = text;
+  var componentForm = {
+    street_number: 'short_name',
+    route: 'long_name',
+    locality: 'long_name',
+    administrative_area_level_1: 'long_name',
+    administrative_area_level_2: 'long_name',
+    country: 'long_name',
+    postal_code: 'short_name'
+  };
+  console.log(place);
+  self.number.value = "";
+  self.street.value = "";
+  self.state.value = "";
+  self.dictrict.value = "";
+  self.ward.value = ""; // Get each component of the address from the place details,
+  // and then fill-in the corresponding field on the form.
+
+  for (var i = 0; i < place.address_components.length; i++) {
+    var addressType = place.address_components[i].types[0];
+
+    if (componentForm[addressType]) {
+      var val = place.address_components[i][componentForm[addressType]];
+
+      switch (addressType) {
+        case "street_number":
+          self.number.value = val;
+          break;
+
+        case "route":
+          if (!self.street.items.getContainsChild({
+            text: val,
+            value: val
+          })) {
+            self.street.items = self.street.items.concat([{
+              text: val,
+              value: val
+            }]);
+          }
+
+          self.street.value = val;
+          textResult = textResult.replace(textResult.slice(0, textResult.indexOf(val + ", ") + val.length + 2), "");
+          break;
+
+        case "administrative_area_level_1":
+          if (!self.state.items.getContainsChild({
+            text: val,
+            value: val
+          })) {
+            self.state.items = self.state.items.concat([{
+              text: val,
+              value: val
+            }]);
+          }
+
+          self.state.value = val;
+          break;
+
+        case "administrative_area_level_2":
+          if (!self.dictrict.items.getContainsChild({
+            text: val,
+            value: val
+          })) {
+            self.dictrict.items = self.dictrict.items.concat([{
+              text: val,
+              value: val
+            }]);
+          }
+
+          self.dictrict.value = val;
+          break;
+
+        case "country":
+          break;
+      }
+    }
+  }
+
+  var val = textResult.slice(0, textResult.indexOf(", "));
+
+  if (!self.ward.items.getContainsChild({
+    text: val,
+    value: val
+  })) {
+    self.ward.items = self.ward.items.concat([{
+      text: val,
+      value: val
+    }]);
+  }
+
+  self.ward.value = val;
+};
+
+Array.prototype.getContainsChild = function (value) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i].value == value.value) return true;
+  }
+
+  return false;
+};
+
+DetailView.prototype.geolocate = function () {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+};
+
+DetailView.prototype.getLongLat = function (text) {
+  return new Promise(function (resolve, reject) {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+      'address': text
+    }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        // do something with the geocoded result
+        //
+        console.log([results[0].geometry.location.lat(), results[0].geometry.location.lng()]);
+        resolve([results[0].geometry.location.lat(), results[0].geometry.location.lng()]); // results[0].geometry.location.latitude
+        // results[0].geometry.location.longitude
+      } else {
+        reject();
+      }
+    });
+  });
+};
+
+function MapView_MapView() {
+  var temp = MapView_({
+    tag: "div",
+    "class": "pizo-new-realty-location-map-view",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-location-map-view-content",
+      props: {
+        id: "map-View"
+      }
+    }]
+  });
+
+  Object.assign(temp, MapView_MapView.prototype);
+  return temp;
+}
+
+MapView_MapView.prototype.activeDetail = function (detailView) {
+  this.detailView = detailView;
+  this.map = this.activeMap();
+};
+
+MapView_MapView.prototype.activeMap = function () {
+  var center = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [10.822500, 106.629104];
+  var zoom = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 16;
+  var map = new google.maps.Map(this, {
+    zoom: zoom,
+    center: new google.maps.LatLng(center[0], center[1]),
+    mapTypeControlOptions: {
+      mapTypeIds: ['roadmap', 'satellite']
+    }
+  });
+  this.delay = 10;
+  this.numDeltas = 50;
+  return map;
+};
+
+MapView_MapView.prototype.addMoveMarker = function (position) {
+  var changeInput = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var self = this;
+  var marker;
+  console.log(position);
+  if (changeInput) self.detailView.changInput = false;
+
+  if (this.currentMarker !== undefined) {
+    marker = this.currentMarker;
+    self.transition(position, changeInput).then(function (value) {
+      self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
+      self.smoothZoom(12, self.map.getZoom());
+    });
+  } else {
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(position[0], position[1]),
+      map: self.map,
+      title: "Latitude:" + position[0] + " | Longtitude:" + position[1]
+    });
+    this.currentMarker = marker;
+    self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
+    self.smoothZoom(12, self.map.getZoom());
+
+    if (changeInput) {
+      self.detailView["long"].value = position[0];
+      self.detailView.lat.value = position[1];
+      self.detailView.changInput = true;
+    }
+
+    google.maps.event.addListener(self.map, "click", function (event) {
+      var result = [event.latLng.lat(), event.latLng.lng()];
+      self.transition(result, changeInput).then(function (value) {
+        self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
+        self.smoothZoom(12, self.map.getZoom());
+      });
+    });
+  }
+
+  return marker;
+};
+
+MapView_MapView.prototype.transition = function (result, changeInput) {
+  var self = this;
+  var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
+
+  if (changeInput) {
+    self.detailView["long"].value = result[0];
+    self.detailView.lat.value = result[1];
+    self.detailView.changInput = true;
+  }
+
+  var deltaLat = (result[0] - position[0]) / this.numDeltas;
+  var deltaLng = (result[1] - position[1]) / this.numDeltas;
+  window.service.nearbySearch({
+    location: {
+      lat: result[0],
+      lng: result[1]
+    },
+    rankBy: google.maps.places.RankBy.DISTANCE,
+    type: ['market']
+  }, function (results, status) {
+    self.callback(results, status);
+  });
+  return this.moveMarker(position, deltaLat, deltaLng);
+};
+
+MapView_MapView.prototype.callback = function (results, status) {
+  console.log(this);
+
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    console.log(results); // for (var i = 0; i < results.length; i++) { 
+    //     this.createMarker(results[i]); 
+    // }
+  }
+};
+
+MapView_MapView.prototype.createMarker = function (place) {
+  var marker = new google.maps.Marker({
+    map: this.map,
+    position: place.geometry.location
+  });
+  google.maps.event.addListener(marker, 'click', function () {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+};
+
+MapView_MapView.prototype.moveMarker = function (position, deltaLat, deltaLng) {
+  var i = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+  var self = this;
+  return new Promise(function (resolve, reject) {
+    position[0] += deltaLat;
+    position[1] += deltaLng;
+    var latlng = new google.maps.LatLng(position[0], position[1]);
+    self.currentMarker.setTitle("Latitude:" + position[0] + " | Longtitude:" + position[1]);
+    self.currentMarker.setPosition(latlng);
+
+    if (i != self.numDeltas - 1) {
+      i++;
+      setTimeout(function () {
+        resolve(self.moveMarker(position, deltaLat, deltaLng, i));
+      }, self.delay);
+    } else resolve();
+  });
+};
+
+MapView_MapView.prototype.smoothZoom = function (max, cnt) {
+  var self = this;
+
+  if (cnt >= max) {
+    return;
+  } else {
+    var z = google.maps.event.addListener(this.map, 'zoom_changed', function (event) {
+      google.maps.event.removeListener(z);
+      self.smoothZoom(this.map, max, cnt + 1);
+    });
+    setTimeout(function () {
+      self.map.setZoom(cnt);
+    }, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
+  }
+};
+// EXTERNAL MODULE: ./css/ModuleImage.css
+var ModuleImage = __webpack_require__(241);
+
+// CONCATENATED MODULE: ./js/component/ModuleImage.js
+
+
+
+var ModuleImage_ = dom_Fcore._;
+var ModuleImage_$ = dom_Fcore.$;
+function descViewImagePreview() {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  var temp = ModuleImage_({
+    tag: "div",
+    "class": "image-show",
+    child: [{
+      tag: "div",
+      "class": "image-show__title",
+      child: [{
+        tag: "div",
+        "class": "fl-l",
+        style: {
+          margin: "3px 10px 3px 14px"
+        }
+      }, {
+        tag: "div",
+        "class": ["fl-r", "image-show__close"],
+        props: {
+          id: "image-show__close",
+          title: "Đóng"
+        },
+        child: [{
+          tag: "i",
+          "class": ["btn", "dark", "btn--m", "fa", "fa-close"],
+          style: {
+            margin: "6px 10px"
+          }
+        }]
+      }]
+    }, {
+      tag: "div",
+      style: {
+        display: "flex",
+        height: "calc(100vh - 90px)",
+        margin: "5px"
+      },
+      child: [{
+        tag: "div",
+        style: {
+          display: "flex",
+          padding: "15px 0px 0px 15px"
+        },
+        child: [{
+          tag: "div",
+          "class": "image-show__thumb__legend",
+          style: {
+            height: "32px",
+            width: "120px",
+            position: "absolute",
+            zIndex: 10,
+            top: "40px",
+            left: "5px"
+          },
+          child: [{
+            tag: "span",
+            props: {
+              id: "image-show__thumb__legend_title_content"
+            },
+            attr: {
+              dataTranslateInner: "STR_DATE_TIME"
+            }
+          }]
+        }, {
+          tag: "div",
+          "class": "flx",
+          style: {
+            height: "100%"
+          },
+          child: [{
+            tag: "div",
+            "class": ["flx", "flx-al-e", "image-show__list"],
+            child: []
+          }]
+        }, {
+          tag: "div",
+          "class": "timeline-slider",
+          style: {
+            margin: "0px 12px 15px"
+          },
+          child: [{
+            tag: "div",
+            "class": "timeline-slider__track",
+            child: [{
+              tag: "div",
+              "class": ["timeline-slider__track__progress", "hover-track"]
+            }]
+          }, {
+            tag: "div",
+            "class": ["timeline-slider__pivot", "timeline-slider__pivot--left"]
+          }, {
+            tag: "div",
+            "class": ["timeline-slider__pivot", "timeline-slider__pivot--right"]
+          }, {
+            tag: "div",
+            "class": ["timeline-slider__handle"],
+            style: {
+              width: "12px",
+              height: "12px",
+              left: "6.5px",
+              top: "calc(0% - 0px)"
+            },
+            child: [{
+              tag: "div",
+              "class": "timeline-slider__tooltip",
+              style: {
+                top: "-3px"
+              }
+            }]
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": ["image-show__body", "content"],
+        props: {
+          id: "image-show"
+        },
+        child: [{
+          tag: "div",
+          "class": ["image-show__btnc", "image-show__btnc__left"],
+          child: [{
+            tag: "div",
+            "class": ["flx-fix", "image-show__btn", "clickable"],
+            child: [{
+              tag: "div",
+              "class": "image-show__btn__inside",
+              child: [{
+                tag: "i",
+                "class": ["fa", "fa-chevron-left"],
+                attr: {
+                  dataTranslateTitle: "STR_NAVIGATE_PHOTO_PREV",
+                  title: "Ảnh cũ hơn"
+                }
+              }]
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "image-show__wrapper__img",
+          props: {
+            id: "mainImage"
+          },
+          child: [{
+            tag: "img",
+            "class": ["image-show__img", "z-fh", "fadeInImageShow"],
+            attr: {
+              draggable: "false",
+              crossorigin: "Anonymous"
+            }
+          }]
+        }, {
+          tag: "div",
+          "class": ["image-show__btnc", "image-show__btnc__right"],
+          child: [{
+            tag: "div",
+            "class": ["flx-fix", "image-show__btn", "clickable"],
+            child: [{
+              tag: "div",
+              "class": "image-show__btn__inside",
+              child: [{
+                tag: "i",
+                "class": ["fa", "fa-chevron-right"],
+                attr: {
+                  dataTranslateTitle: "STR_NAVIGATE_PHOTO_NEXT",
+                  title: "Ảnh mới hơn"
+                }
+              }]
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "image-show__btnc__fullscreen",
+          child: [{
+            tag: "i",
+            "class": ["image-show__icon-fullscreen", "fa", "fa-fullscreen-icon"]
+          }]
+        }]
+      }]
+    }, {
+      tag: "div",
+      "class": "image-show__bottom",
+      child: [{
+        tag: "div",
+        "class": "image-show__bottom__sender",
+        child: [{
+          tag: "div",
+          "class": ["avatar", "avatar--xs"],
+          child: [{
+            tag: "div",
+            "class": "avatar-img",
+            style: {}
+          }]
+        }, {
+          tag: "div",
+          "class": "image-show__bottom__sender__info",
+          child: [{
+            tag: "div",
+            "class": ["truncate", "user-name"],
+            style: {
+              fontSize: "1rem",
+              fontWeight: 400
+            }
+          }, {
+            tag: "div",
+            "class": ["truncate", "date-submit"],
+            child: [{
+              tag: "span",
+              attr: {
+                dataTranslateInner: "STR_DATE_TIME"
+              },
+              props: {
+                innerHTML: "10:06  14/02/2020"
+              }
+            }]
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "image-show__bottom__ctrl",
+        child: [{
+          tag: "i",
+          "class": ["btn", "fa", "fa-chevron-left"],
+          attr: {
+            dataTranslateTitle: "STR_NAVIGATE_PHOTO_PREV",
+            title: "Ảnh cũ hơn"
+          }
+        }, {
+          tag: "i",
+          "class": ["btn", "fa", "fa-chevron-right"],
+          attr: {
+            dataTranslateTitle: "STR_NAVIGATE_PHOTO_NEXT",
+            title: "Ảnh mới hơn"
+          }
+        }, {
+          tag: "a",
+          "class": ["btn", "dark"],
+          attr: {
+            download: "",
+            title: "Chia sẻ"
+          },
+          props: {
+            id: "image-show-forward"
+          },
+          child: [{
+            tag: "i",
+            "class": ["fa", "fa-share-photoview", "btn"],
+            attr: {
+              dataTranslateTitle: "STR_FORWARD_MSG",
+              title: "Chia sẻ"
+            }
+          }]
+        }, {
+          tag: "a",
+          "class": ["btn", "dark"],
+          child: [{
+            tag: "i",
+            "class": ["fa", "fa-download", "btn"],
+            attr: {
+              dataTranslateTitle: "STR_SAVE_PHOTO_AS",
+              title: "Lưu về máy"
+            }
+          }],
+          props: {
+            id: "image-show-download"
+          },
+          attr: {
+            href: "#",
+            target: "_blank",
+            rel: "noopener noreferrer",
+            download: "",
+            title: "Lưu về máy"
+          }
+        }, {
+          tag: "i",
+          "class": ["btn", "fa", "fa-rotate-left"],
+          props: {
+            dataTranslateTitle: "STR_ROTATE_LEFT",
+            title: "Xoay trái"
+          }
+        }, {
+          tag: "i",
+          "class": ["btn", "fa", "fa-rotate-right"],
+          props: {
+            dataTranslateTitle: "STR_ROTATE_RIGHT",
+            title: "Xoay phải"
+          }
+        } // {
+        //     tag:"i",
+        //     class:["btn", "fa", "fa-more-option"],
+        //     props:{
+        //         dataTranslateTitle:"STR_MORE_OPTION",
+        //     }
+        // }
+        ]
+      }]
+    }]
+  });
+
+  var container = ModuleImage_({
+    tag: "modal",
+    child: [temp]
+  });
+
+  Object.assign(container, descViewImagePreview.prototype);
+  var self = container;
+  self.containImage = ModuleImage_$('div.flx.flx-al-e.image-show__list', temp);
+  self.prevButton = ModuleImage_$('i.btn.fa.fa-chevron-left', temp);
+  self.nextButton = ModuleImage_$('i.btn.fa.fa-chevron-right', temp);
+  self.prevButtonTop = ModuleImage_$('div.image-show__btnc.image-show__btnc__left div.flx-fix.image-show__btn', temp);
+  self.nextButtonTop = ModuleImage_$('div.image-show__btnc.image-show__btnc__right div.flx-fix.image-show__btn', temp);
+  self.forwardButton = ModuleImage_$('a#image-show-forward', temp);
+  self.downloadButton = ModuleImage_$('a#image-show-download', temp);
+  self.rotateLeftButton = ModuleImage_$('i.btn.fa.fa-rotate-left', temp);
+  self.rotateRightButton = ModuleImage_$('i.btn.fa.fa-rotate-right', temp);
+  self.titleTimeLine = ModuleImage_$('span#image-show__thumb__legend_title_content', temp);
+  self.avatarImage = ModuleImage_$('div.avatar-img', temp);
+  self.userName = ModuleImage_$('div.truncate.user-name', temp);
+  self.dateSubmit = ModuleImage_$('div.truncate.date-submit', temp);
+  self.mainImage = ModuleImage_$('div#mainImage>img.image-show__img.z-fh.fadeInImageShow', temp);
+  self.prevButton.addEventListener("click", function (event) {
+    self.SelectImage(self.itemSelect.nextElement().index);
+  });
+  self.nextButton.addEventListener("click", function (event) {
+    self.SelectImage(self.itemSelect.prevElement().index);
+  });
+  self.prevButtonTop.addEventListener("click", function (event) {
+    self.SelectImage(self.itemSelect.nextElement().index);
+  });
+  self.nextButtonTop.addEventListener("click", function (event) {
+    self.SelectImage(self.itemSelect.prevElement().index);
+  });
+  self.rotateLeftButton.addEventListener("click", function (event) {
+    self.setRoation(-90);
+  });
+  self.rotateRightButton.addEventListener("click", function (event) {
+    self.setRoation(90);
+  });
+  self.renderItems(data, index);
+  return self;
+}
+
+descViewImagePreview.prototype.activeScroller = function () {
+  self.containImage.addEventListener("scroll", function () {});
+};
+
+descViewImagePreview.prototype.renderItems = function (data, index) {
+  var self = this;
+  var dataCheck = [];
+  data.sort(function (a, b) {
+    var dateA = new Date(a.date);
+    var dateB = new Date(b.date);
+    if (dateA < dateB) return 1;
+    if (dateA > dateB) return -1;
+    return 0;
+  });
+  var dayThumnail, day, format, date;
+  var today = new Date();
+
+  for (var i = 0; i < data.length; i++) {
+    date = new Date(data[i].date);
+    if (today.getFullYear() === date.getFullYear()) format = formatDate(date);else format = formatDate(date, undefined, undefined, undefined, undefined, true);
+
+    if (dataCheck[format] === undefined) {
+      dataCheck[format] = [data[i]];
+      day = ModuleImage_({
+        tag: "span",
+        attr: {
+          dataTranslateInner: "STR_DATE_TIME"
+        }
+      });
+      dayThumnail = ModuleImage_({
+        tag: "div",
+        "class": "image-show__thumb__legend",
+        child: [day]
+      });
+
+      if (date.getDay() === today.getDay() && date.getMonth() === today.getMonth()) {
+        format = "Hôm nay";
+      }
+
+      day.addChild(ModuleImage_({
+        text: format
+      }));
+
+      dayThumnail.getDate = function (formatDate) {
+        return function () {
+          return formatDate;
+        };
+      }(format);
+
+      dayThumnail.getValue = function (mDate) {
+        return function () {
+          return mDate;
+        };
+      }(date);
+
+      self.containImage.appendChild(dayThumnail);
+    } else dataCheck[format] = dataCheck[format].concat([data[i]]);
+
+    var item = self.ItemTimeLine(data[i], i);
+    item.dayElement = dayThumnail;
+    self.containImage.appendChild(item);
+  }
+
+  self.SelectImage(index);
+};
+
+descViewImagePreview.prototype.resetImage = function (src) {
+  this.mainImage.rotateRadius = 0;
+  this.mainImage.scaleUnit = 1;
+  this.mainImage.setAttribute("src", src);
+};
+
+descViewImagePreview.prototype.setRoation = function (radius) {
+  this.mainImage.rotateRadius += radius;
+  this.mainImage.style.transform = "rotate(" + this.mainImage.rotateRadius + "deg) translate(0px, 0px) scale(1)";
+};
+
+descViewImagePreview.prototype.SelectImage = function (index) {
+  if (this.itemSelect !== undefined) this.itemSelect.classList.remove("selected");
+  this.itemSelect = ModuleImage_$("div#thumb_" + index, this);
+  this.itemSelect.classList.add("selected");
+  this.resetImage(this.itemSelect.data.src);
+  this.titleTimeLine.innerText = this.itemSelect.dayElement.getDate();
+  this.avatarImage.style.backgroundImage = "url(" + this.itemSelect.data.avatar + ")";
+  this.userName.innerText = this.itemSelect.data.userName;
+  this.dateSubmit.innerText = formatDate(this.itemSelect.data.date, true, true, true, true, true);
+
+  if (this.itemSelect.nextElement() === null) {
+    if (!this.prevButton.classList.contains("unclickable")) this.prevButton.classList.add("unclickable");
+    if (this.prevButtonTop.classList.contains("clickable")) this.prevButtonTop.classList.remove("clickable");
+  } else {
+    if (this.prevButton.classList.contains("unclickable")) this.prevButton.classList.remove("unclickable");
+    if (!this.prevButtonTop.classList.contains("clickable")) this.prevButtonTop.classList.add("clickable");
+  }
+
+  if (this.itemSelect.prevElement() === null) {
+    if (!this.nextButton.classList.contains("unclickable")) this.nextButton.classList.add("unclickable");
+    if (this.nextButtonTop.classList.contains("clickable")) this.nextButtonTop.classList.remove("clickable");
+  } else {
+    if (this.nextButton.classList.contains("unclickable")) this.nextButton.classList.remove("unclickable");
+    if (!this.nextButtonTop.classList.contains("clickable")) this.nextButtonTop.classList.add("clickable");
+  }
+};
+
+descViewImagePreview.prototype.ItemTimeLine = function (data, i) {
+  var self = this;
+
+  var temp = ModuleImage_({
+    tag: "div",
+    "class": "image-show__thumb-container",
+    props: {
+      id: "thumb_" + i
+    },
+    on: {
+      click: function click(event) {
+        self.SelectImage(i);
+      }
+    },
+    child: [{
+      tag: "img",
+      "class": ["image-show__thumb", "clickable"],
+      attr: {
+        crossorigin: "Anonymous"
+      },
+      props: {
+        src: data.src
+      }
+    }]
+  });
+
+  temp.data = data;
+  temp.index = i;
+  temp.imageElement = ModuleImage_$('div.image-show__thumb-container img.image-show__thumb', temp);
+
+  temp.nextElement = function () {
+    var indexElement = temp;
+
+    do {
+      indexElement = indexElement.nextSibling;
+    } while (indexElement !== null && !indexElement.classList.contains("image-show__thumb-container"));
+
+    return indexElement;
+  };
+
+  temp.prevElement = function () {
+    var indexElement = temp;
+
+    do {
+      indexElement = indexElement.previousSibling;
+    } while (indexElement !== null && !indexElement.classList.contains("image-show__thumb-container"));
+
+    return indexElement;
+  };
+
+  return temp;
+};
+
+function formatDate(date) {
+  var isMinutes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var isHours = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var isDay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+  var isMonth = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+  var isYear = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
+  var d = new Date(date);
+  var resultTime = [];
+  var resultDayMonth = [];
+  if (isMinutes) resultTime.push('' + d.getMinutes());
+  if (isHours) resultTime.push('' + d.getHours());
+
+  if (isDay) {
+    var day = '' + d.getDate();
+    if (day.length < 2) day = '0' + day;
+    resultDayMonth.push(day);
+  }
+
+  if (isMonth) {
+    var month = '' + (d.getMonth() + 1);
+    if (month.length < 2) month = '0' + month;
+    resultDayMonth.push(month);
+  }
+
+  if (isYear) resultDayMonth.push('' + d.getFullYear());
+  return resultTime.join(':') + " " + resultDayMonth.join('/');
+}
 // CONCATENATED MODULE: ./js/component/NewRealty.js
 function NewRealty_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { NewRealty_typeof = function _typeof(obj) { return typeof obj; }; } else { NewRealty_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return NewRealty_typeof(obj); }
+
+
 
 
 
@@ -55430,8 +56811,7 @@ NewRealty_NewRealty.prototype.getView = function () {
   this.$view.addChild(NewRealty_({
     tag: "div",
     "class": ["pizo-list-project-main"],
-    child: [// NewRealty.prototype.locationView(),
-    NewRealty_NewRealty.prototype.descView()]
+    child: [NewRealty_NewRealty.prototype.descView()]
   })); // setTimeout(function(){selectElement("pizo-new-realty-convenient-content-area-size-zone",1)},500)
 
   return this.$view;
@@ -55439,17 +56819,41 @@ NewRealty_NewRealty.prototype.getView = function () {
 
 NewRealty_NewRealty.prototype.descView = function () {
   var dataImage = [{
-    src: "assets/images/1.jfif"
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/1.jfif",
+    date: "2017-06-10T16:08:00",
+    note: "Phòng bếp tầng 1"
   }, {
-    src: "assets/images/2.jfif"
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/2.jfif",
+    date: "2018-06-10T16:08:00",
+    note: "Phòng khách tầng 1"
   }, {
-    src: "assets/images/3.jfif"
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/3.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Nhà tắm tầng 1"
   }, {
-    src: "assets/images/4.jfif"
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/4.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Phòng Gym tầng 1"
   }, {
-    src: "assets/images/5.jfif"
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/5.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Phòng thờ tầng 1"
   }, {
-    src: "assets/images/6.jfif"
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/6.jfif",
+    date: "2020-04-15T16:08:00",
+    note: "Phòng kho tầng 1"
   }];
 
   var temp = NewRealty_({
@@ -55500,7 +56904,7 @@ NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage) {
     }],
     on: {
       click: function click(event) {
-        document.body.appendChild(NewRealty_NewRealty.prototype.descViewImagePreview(dataImage)); // xmlModalDragImage.createModal(document.body,function(){
+        document.body.appendChild(descViewImagePreview(dataImage)); // xmlModalDragImage.createModal(document.body,function(){
         //     console.log(xmlModalDragImage.imgUrl)
         // });
       }
@@ -55590,7 +56994,8 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
           click: function click(event) {
             this.blur();
             var self = this;
-            var childNode = NewRealty_NewRealty.prototype.locationView(function (value) {
+            console.log(locationView);
+            var childNode = locationView(function (value) {
               self.value = value.input.value;
               childRemove.selfRemove();
             });
@@ -55638,99 +57043,6 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
       }]
     }]
   });
-
-  return temp;
-};
-
-NewRealty_NewRealty.prototype.descViewImagePreview = function () {
-  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-  var sildes = NewRealty_({
-    tag: "ul",
-    "class": "slides",
-    on: {
-      click: function click(event) {}
-    },
-    child: []
-  });
-
-  var temp = NewRealty_({
-    tag: "modal",
-    on: {
-      click: function click(event) {
-        var target = event.target;
-
-        while (target !== sildes && target !== temp && target !== document.body) {
-          target = target.parentNode;
-        }
-
-        if (target === temp) temp.selfRemove();
-      }
-    },
-    child: [sildes]
-  });
-
-  var prev = data.length - 1,
-      next = 1;
-
-  for (var i = 0; i < data.length; i++) {
-    var elementTemp = NewRealty_({
-      tag: "input",
-      attr: {
-        type: "radio",
-        name: "radio-btn",
-        id: "img-" + i
-      }
-    });
-
-    if (index === i) elementTemp.setAttribute("checked", "");
-    sildes.addChild(elementTemp);
-    sildes.addChild(NewRealty_({
-      tag: "li",
-      "class": "slide-container",
-      child: [{
-        tag: "div",
-        "class": "slide",
-        child: [{
-          tag: "img",
-          props: {
-            src: data[i].src
-          }
-        }]
-      }, {
-        tag: "div",
-        "class": "nav",
-        child: [{
-          tag: "label",
-          "class": "prev",
-          attr: {
-            "for": "img-" + prev++
-          },
-          child: [{
-            tag: "span",
-            props: {
-              innerHTML: "&#x2039;"
-            }
-          }]
-        }, {
-          tag: "label",
-          "class": "next",
-          attr: {
-            "for": "img-" + next++
-          },
-          child: [{
-            tag: "span",
-            props: {
-              innerHTML: "&#x203a;"
-            }
-          }]
-        }]
-      }]
-    }));
-    if (prev === data.length) prev = 0;
-    if (next === data.length) next = 0;
-  }
 
   return temp;
 };
@@ -56446,539 +57758,6 @@ NewRealty_NewRealty.prototype.historyView = function () {
   return temp;
 };
 
-NewRealty_NewRealty.prototype.locationView = function (functionDone) {
-  var map = NewRealty_NewRealty.prototype.mapView();
-  var detailView = NewRealty_NewRealty.prototype.detailView(map);
-  map.activeDetail(detailView);
-
-  var temp = NewRealty_({
-    tag: "div",
-    "class": "pizo-new-realty-location",
-    on: {
-      click: function click(event) {
-        event.preventDefault();
-      }
-    },
-    child: [{
-      tag: "div",
-      "class": "pizo-new-realty-location-tab",
-      child: [{
-        tag: "span",
-        props: {
-          innerHTML: "Vị trí"
-        }
-      }, {
-        tag: "button",
-        "class": "pizo-new-realty-location-donebutton",
-        on: {
-          click: function click(event) {
-            functionDone(detailView, map);
-          }
-        },
-        props: {
-          innerHTML: "Xong"
-        }
-      }]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-location-content",
-      child: [detailView, map]
-    }]
-  });
-
-  return temp;
-};
-
-NewRealty_NewRealty.prototype.detailView = function (map) {
-  var temp;
-
-  var input = NewRealty_({
-    tag: "input",
-    "class": "pizo-new-realty-location-detail-row-input",
-    props: {
-      type: "text",
-      placeholder: ""
-    }
-  });
-
-  var state = NewRealty_({
-    tag: "selectmenu",
-    "class": "pizo-new-realty-location-detail-row-menu"
-  });
-
-  var dictrict = NewRealty_({
-    tag: "selectmenu",
-    "class": "pizo-new-realty-location-detail-row-menu"
-  });
-
-  var ward = NewRealty_({
-    tag: "selectmenu",
-    "class": "pizo-new-realty-location-detail-row-menu"
-  });
-
-  var street = NewRealty_({
-    tag: "selectmenu",
-    "class": "pizo-new-realty-location-detail-row-menu"
-  });
-
-  var number = NewRealty_({
-    tag: "input",
-    "class": "pizo-new-realty-location-detail-row-menu"
-  });
-
-  var lat, _long;
-
-  _long = NewRealty_({
-    tag: "input",
-    "class": "pizo-new-realty-location-detail-row-input-long",
-    attr: {
-      type: "number"
-    },
-    on: {
-      change: function change(event) {
-        if (temp.changInput) map.addMoveMarker([_long.value, lat.value], false);
-      }
-    }
-  });
-  lat = NewRealty_({
-    tag: "input",
-    "class": "pizo-new-realty-location-detail-row-input-lat",
-    attr: {
-      type: "number"
-    },
-    on: {
-      change: function change(event) {
-        if (temp.changInput) map.addMoveMarker([_long.value, lat.value], false);
-      }
-    }
-  });
-  temp = NewRealty_({
-    tag: "div",
-    "class": "pizo-new-realty-location-detail",
-    child: [{
-      tag: "div",
-      "class": "pizo-new-realty-location-detail-row",
-      child: [{
-        tag: "span",
-        "class": "pizo-new-realty-location-detail-row-label",
-        props: {
-          innerHTML: "Địa chỉ đầy đủ"
-        }
-      }, input]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-location-detail-row",
-      child: [{
-        tag: "span",
-        "class": "pizo-new-realty-location-detail-row-label",
-        props: {
-          innerHTML: "Tỉnh/TP"
-        },
-        child: [{
-          tag: "span",
-          "class": "pizo-new-realty-location-detail-row-label-important",
-          props: {
-            innerHTML: "*"
-          }
-        }]
-      }, state]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-location-detail-row",
-      child: [{
-        tag: "span",
-        "class": "pizo-new-realty-location-detail-row-label",
-        props: {
-          innerHTML: "Quận/Huyện"
-        },
-        child: [{
-          tag: "span",
-          "class": "pizo-new-realty-location-detail-row-label-important",
-          props: {
-            innerHTML: "*"
-          }
-        }]
-      }, dictrict]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-location-detail-row",
-      child: [{
-        tag: "span",
-        "class": "pizo-new-realty-location-detail-row-label",
-        props: {
-          innerHTML: "Phường/Xã"
-        },
-        child: [{
-          tag: "span",
-          "class": "pizo-new-realty-location-detail-row-label-important",
-          props: {
-            innerHTML: "*"
-          }
-        }]
-      }, ward]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-location-detail-row",
-      child: [{
-        tag: "span",
-        "class": "pizo-new-realty-location-detail-row-label",
-        props: {
-          innerHTML: "Đường"
-        },
-        child: [{
-          tag: "span",
-          "class": "pizo-new-realty-location-detail-row-label-important",
-          props: {
-            innerHTML: "*"
-          }
-        }]
-      }, street]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-location-detail-row",
-      child: [{
-        tag: "span",
-        "class": "pizo-new-realty-location-detail-row-label",
-        props: {
-          innerHTML: "Số nhà"
-        },
-        child: [{
-          tag: "span",
-          "class": "pizo-new-realty-location-detail-row-label-important",
-          props: {
-            innerHTML: "*"
-          }
-        }]
-      }, number]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-location-detail-row",
-      child: [{
-        tag: "span",
-        "class": "pizo-new-realty-location-detail-row-label",
-        props: {
-          innerHTML: "GPS"
-        }
-      }, {
-        tag: "div",
-        "class": "pizo-new-realty-location-detail-row-menu",
-        child: [_long, lat]
-      }]
-    }]
-  });
-  temp.input = input;
-  temp.number = number;
-  temp.dictrict = dictrict;
-  temp.street = street;
-  temp.ward = ward;
-  temp.state = state;
-  temp.activeAutocomplete = activeAutocomplete;
-  temp.fillInAddress = activeAutocomplete.prototype.fillInAddress;
-  temp["long"] = _long;
-  temp.lat = lat;
-  temp.activeAutocomplete(map);
-  return temp;
-};
-
-function activeAutocomplete(map) {
-  var self = this;
-  var autocomplete;
-  var options = {
-    // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
-    types: ['geocode'],
-    componentRestrictions: {
-      country: 'vn'
-    }
-  };
-  console.log(options);
-  autocomplete = new google.maps.places.Autocomplete(self.input, options); // Avoid paying for data that you don't need by restricting the set of
-  // place fields that are returned to just the address components.
-
-  autocomplete.setFields(['address_component']); // When the user selects an address from the drop-down, populate the
-  // address fields in the form.
-
-  autocomplete.addListener('place_changed', function () {
-    self.fillInAddress(autocomplete, self.input.value, map);
-  });
-}
-
-activeAutocomplete.prototype.fillInAddress = function (autocomplete, text, map) {
-  // Get the place details from the autocomplete object.
-  var self = this;
-  var place = autocomplete.getPlace();
-  console.log(autocomplete);
-  NewRealty_NewRealty.prototype.getLongLat(text).then(function (result) {
-    map.addMoveMarker(result);
-  });
-  console.log(place);
-  var textResult = text;
-  var componentForm = {
-    street_number: 'short_name',
-    route: 'long_name',
-    locality: 'long_name',
-    administrative_area_level_1: 'long_name',
-    administrative_area_level_2: 'long_name',
-    country: 'long_name',
-    postal_code: 'short_name'
-  };
-  console.log(place);
-  self.number.value = "";
-  self.street.value = "";
-  self.state.value = "";
-  self.dictrict.value = "";
-  self.ward.value = ""; // Get each component of the address from the place details,
-  // and then fill-in the corresponding field on the form.
-
-  for (var i = 0; i < place.address_components.length; i++) {
-    var addressType = place.address_components[i].types[0];
-
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-
-      switch (addressType) {
-        case "street_number":
-          self.number.value = val;
-          break;
-
-        case "route":
-          if (!self.street.items.getContainsChild({
-            text: val,
-            value: val
-          })) {
-            self.street.items = self.street.items.concat([{
-              text: val,
-              value: val
-            }]);
-          }
-
-          self.street.value = val;
-          textResult = textResult.replace(textResult.slice(0, textResult.indexOf(val + ", ") + val.length + 2), "");
-          break;
-
-        case "administrative_area_level_1":
-          if (!self.state.items.getContainsChild({
-            text: val,
-            value: val
-          })) {
-            self.state.items = self.state.items.concat([{
-              text: val,
-              value: val
-            }]);
-          }
-
-          self.state.value = val;
-          break;
-
-        case "administrative_area_level_2":
-          if (!self.dictrict.items.getContainsChild({
-            text: val,
-            value: val
-          })) {
-            self.dictrict.items = self.dictrict.items.concat([{
-              text: val,
-              value: val
-            }]);
-          }
-
-          self.dictrict.value = val;
-          break;
-
-        case "country":
-          break;
-      }
-    }
-  }
-
-  var val = textResult.slice(0, textResult.indexOf(", "));
-
-  if (!self.ward.items.getContainsChild({
-    text: val,
-    value: val
-  })) {
-    self.ward.items = self.ward.items.concat([{
-      text: val,
-      value: val
-    }]);
-  }
-
-  self.ward.value = val;
-};
-
-Array.prototype.getContainsChild = function (value) {
-  for (var i = 0; i < this.length; i++) {
-    if (this[i].value == value.value) return true;
-  }
-
-  return false;
-};
-
-activeAutocomplete.prototype.geolocate = function () {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      var geolocation = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      var circle = new google.maps.Circle({
-        center: geolocation,
-        radius: position.coords.accuracy
-      });
-      autocomplete.setBounds(circle.getBounds());
-    });
-  }
-};
-
-NewRealty_NewRealty.prototype.mapView = mapView;
-
-NewRealty_NewRealty.prototype.getLongLat = function (text) {
-  return new Promise(function (resolve, reject) {
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({
-      'address': text
-    }, function (results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        // do something with the geocoded result
-        //
-        console.log([results[0].geometry.location.lat(), results[0].geometry.location.lng()]);
-        resolve([results[0].geometry.location.lat(), results[0].geometry.location.lng()]); // results[0].geometry.location.latitude
-        // results[0].geometry.location.longitude
-      } else {
-        reject();
-      }
-    });
-  });
-};
-
-function mapView() {
-  var temp = NewRealty_({
-    tag: "div",
-    "class": "pizo-new-realty-location-map-view",
-    child: [{
-      tag: "div",
-      "class": "pizo-new-realty-location-map-view-content",
-      props: {
-        id: "map-View"
-      }
-    }]
-  });
-
-  temp.activeMap = mapView.prototype.activeMap;
-  temp.activeDetail = mapView.prototype.activeDetail;
-  return temp;
-}
-
-mapView.prototype.activeDetail = function (detailView) {
-  this.detailView = detailView;
-  this.map = this.activeMap();
-};
-
-mapView.prototype.activeMap = function () {
-  var center = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [10.822500, 106.629104];
-  var zoom = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 16;
-  var map = new google.maps.Map(this, {
-    zoom: zoom,
-    center: new google.maps.LatLng(center[0], center[1]),
-    mapTypeControlOptions: {
-      mapTypeIds: ['roadmap', 'satellite']
-    }
-  });
-  this.addMoveMarker = mapView.prototype.addMoveMarker;
-  this.transition = mapView.prototype.transition;
-  this.moveMarker = mapView.prototype.moveMarker;
-  this.smoothZoom = mapView.prototype.smoothZoom;
-  this.delay = 10;
-  this.numDeltas = 50;
-  return map;
-};
-
-mapView.prototype.addMoveMarker = function (position) {
-  var changeInput = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-  var self = this;
-  var marker;
-  if (changeInput) self.detailView.changInput = false;
-
-  if (this.currentMarker !== undefined) {
-    marker = this.currentMarker;
-    self.transition(position, changeInput).then(function (value) {
-      self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
-      self.smoothZoom(12, self.map.getZoom());
-    });
-  } else {
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(position[0], position[1]),
-      map: self.map,
-      title: "Latitude:" + position[0] + " | Longtitude:" + position[1]
-    });
-    this.currentMarker = marker;
-    self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
-    self.smoothZoom(12, self.map.getZoom());
-
-    if (changeInput) {
-      self.detailView["long"].value = position[0];
-      self.detailView.lat.value = position[1];
-      self.detailView.changInput = true;
-    }
-
-    google.maps.event.addListener(self.map, "click", function (event) {
-      var result = [event.latLng.lat(), event.latLng.lng()];
-      self.transition(result, changeInput).then(function (value) {
-        self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
-        self.smoothZoom(12, self.map.getZoom());
-      });
-    });
-  }
-
-  return marker;
-};
-
-mapView.prototype.transition = function (result, changeInput) {
-  var self = this;
-  var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
-
-  if (changeInput) {
-    self.detailView["long"].value = result[0];
-    self.detailView.lat.value = result[1];
-    self.detailView.changInput = true;
-  }
-
-  var deltaLat = (result[0] - position[0]) / this.numDeltas;
-  var deltaLng = (result[1] - position[1]) / this.numDeltas;
-  return this.moveMarker(position, deltaLat, deltaLng);
-};
-
-mapView.prototype.moveMarker = function (position, deltaLat, deltaLng) {
-  var i = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
-  var self = this;
-  return new Promise(function (resolve, reject) {
-    position[0] += deltaLat;
-    position[1] += deltaLng;
-    var latlng = new google.maps.LatLng(position[0], position[1]);
-    self.currentMarker.setTitle("Latitude:" + position[0] + " | Longtitude:" + position[1]);
-    self.currentMarker.setPosition(latlng);
-
-    if (i != self.numDeltas - 1) {
-      i++;
-      setTimeout(function () {
-        resolve(self.moveMarker(position, deltaLat, deltaLng, i));
-      }, self.delay);
-    } else resolve();
-  });
-};
-
-mapView.prototype.smoothZoom = function (max, cnt) {
-  if (cnt >= max) {
-    return;
-  } else {
-    var z = google.maps.event.addListener(this, 'zoom_changed', function (event) {
-      google.maps.event.removeListener(z);
-      smoothZoom(this.map, max, cnt + 1);
-    });
-    setTimeout(function () {
-      this.setZoom(cnt);
-    }, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
-  }
-};
-
 NewRealty_NewRealty.prototype.refresh = function () {
   var data;
   var editor = this.getContext(R.LAYOUT_EDITOR);
@@ -57169,9 +57948,21 @@ listProject_listProject.prototype.getView = function () {
 
   var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
     console.log(event, me, index, parent, data, row);
-    console.log(tableViewX); // tableViewX.dropRow(index)
+    console.log(tableViewX); // parent.dropRow(index);
 
-    parent.updateRow(tableViewX.data[0], index);
+    var kj = [{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""];
+    parent.insertRow(kj);
+  };
+
+  var functionClickMore1 = function functionClickMore1(event, me, index, parent, data, row) {
+    console.log(event, me, index, parent, data, row);
+    console.log(tableViewX);
+    parent.dropRow(index);
+  };
+
+  var functionClickMore2 = function functionClickMore2(event, me, index, parent, data, row) {
+    var kj = [{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""];
+    parent.updateRow(kj, index);
   };
 
   var test = listProject_({
@@ -57193,9 +57984,10 @@ listProject_listProject.prototype.getView = function () {
   var child = [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""];
   child.child = arrChild;
   arrChild[1].child = arrChildNode;
-  arrChild[1].child.index = 4;
+  arrChild[1].child.index = 3;
   var header = [{
-    type: "dragzone"
+    type: "dragzone",
+    dragElement: false
   }, {
     type: "increase",
     value: "#"
@@ -57203,7 +57995,6 @@ listProject_listProject.prototype.getView = function () {
     value: 'MS',
     sort: true
   }, 'Số nhà', {
-    hidden: true,
     value: 'Tên đường'
   }, {
     value: 'Phường/Xã'
@@ -57218,7 +58009,8 @@ listProject_listProject.prototype.getView = function () {
     value: 'Ngang',
     sort: true
   }, {
-    value: 'Dài'
+    value: 'Dài',
+    sort: true
   }, {
     value: 'DT'
   }, {
@@ -57228,15 +58020,19 @@ listProject_listProject.prototype.getView = function () {
   }, 'Giá', {
     value: 'Giá m<sup>2</sup>'
   }, {
-    value: 'Hiện trạng'
-  }, 'Ngày tạo', {
+    value: 'Hiện trạng',
+    functionClickAll: functionClickMore2
+  }, {
+    value: 'Ngày tạo',
+    functionClickAll: functionClickMore1
+  }, {
     type: "detail",
     functionClickAll: functionClickMore,
-    icon: ""
+    icon: "",
+    dragElement: false
   }];
-  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], child, [{}, {}, 5, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "16", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "17", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "18", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 23", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "1", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 1", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "2", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "3", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "4", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "5", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "6", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "7", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "8", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "9", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
-  console.log(dataTable, "xxxxxxxxxxxxxxxx");
-  tableViewX = tableView(header, dataTable, true, true);
+  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], child, [{}, {}, 5, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
+  tableViewX = tableView(header, dataTable, true, true, 1);
   tableViewX.addInputSearch(listProject_$('.pizo-list-project-page-allinput-container input', this.$view));
   this.searchControl = this.searchControlContent();
   this.$view.addChild(listProject_({
@@ -57699,7 +58495,7 @@ App_App.prototype.getView = function () {
           "class": "pizo-header-menu",
           on: {
             press: function press(event) {
-              var item = event.menuItem;
+              var item = event.menuItrem;
 
               if (typeof item.pageIndex == 'number') {
                 self.openPage(item.pageIndex);

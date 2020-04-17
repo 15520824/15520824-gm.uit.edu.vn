@@ -97,7 +97,7 @@ App.prototype.getView = function()
                                 class:"pizo-header-menu",
                                 on: {
                                     press: function(event) {
-                                        var item = event.menuItem;
+                                        var item = event.menuItrem;
                                         if (typeof item.pageIndex == 'number') {
                                             self.openPage(item.pageIndex);
                                         }

@@ -236,10 +236,6 @@
     width: calc(50% - 0.1429rem);
 }
 
-.pizo-list-project-main-result-control{
-    overflow-x: auto;
-}
-
 .pizo-list-project-button-apply.pizo-list-project-button-element{
     width: calc(50% - 0.6428rem);
 }
