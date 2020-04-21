@@ -29417,7 +29417,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "button.absol-button {\r\n    text-align: left;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2rem;\r\n    font-size: 1rem;\r\n    overflow: hidden;\r\n    height: 2rem;\r\n}\r\n\r\n.absol-icon-button {\r\n    text-align: left;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2rem;\r\n    font-size: 1rem;\r\n    overflow: hidden;\r\n    line-height: 2rem;\r\n    box-sizing: content-box;\r\n    height: 2rem;\r\n    white-space: nowrap;  \r\n    \r\n}\r\n\r\n.absol-icon-button,\r\n.absol-icon-button *{\r\n    -webkit-user-select: none;  /* Chrome 49+ */\r\n    -moz-user-select: none;     /* Firefox 43+ */\r\n    -ms-user-select: none;      /* No support yet */\r\n    user-select: none;\r\n}\r\n\r\n\r\n.absol-icon-button:hover {\r\n    background-color: rgb(213, 213, 213);\r\n}\r\n\r\n.absol-icon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n.absol-icon-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-icon-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 2rem;\r\n    height: 2rem;\r\n    text-align: center;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    line-height: inherit;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-icon-button-icon-container>i {\r\n    font-size: 1rem;\r\n    color: rgb(146, 146, 146);\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button-icon-container>svg {\r\n    width: 1rem;\r\n    height: 1rem;\r\n}\r\n\r\n.absol-icon-button-text-container:empty,\r\n.absol-icon-button-icon-container:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-icon-button-text-container {\r\n    border-left: solid 0.0714rem #c0c0c0;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    height: 2rem;\r\n    box-sizing: border-box;\r\n    line-height: 2rem;\r\n    text-align: center;\r\n}\r\n\r\n.absol-icon-button-text-container>span,\r\n.absol-icon-button-text-container>div {\r\n    font-size: 1rem;\r\n    text-align: center;\r\n    margin-left: 0.7rem;\r\n    margin-right: 0.7rem;\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button.primary,\r\n.absol-button.primary {\r\n    border-color: #357ebd;\r\n    background-color: #428bca;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-text-container {\r\n    border-left-color: #357ebd;\r\n}\r\n\r\n.absol-icon-button.success,\r\n.absol-button.success {\r\n    border-color: #398439;\r\n    background-color: #47a447;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-text-container {\r\n    border-left-color: #398439;\r\n}\r\n\r\n.absol-icon-button.warning,\r\n.absol-button.warning {\r\n    background-color: #ed9c28;\r\n    border-color: #d58512;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-text-container {\r\n    border-left-color: #d58512;\r\n}\r\n\r\n.absol-icon-button.danger,\r\n.absol-button.danger {\r\n    background-color: #d2322d;\r\n    border-color: #ac2925;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-text-container {\r\n    border-left-color: #ac2925;\r\n}\r\n\r\n.absol-icon-button.info,\r\n.absol-button.info {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-text-container {\r\n    border-left-color: #46b8da;\r\n}", ""]);
+exports.push([module.i, "button.absol-button {\r\n    text-align: left;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    height: 2em;\r\n}\r\n\r\n.absol-icon-button {\r\n    text-align: left;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    line-height: 2em;\r\n    box-sizing: content-box;\r\n    height: 2em;\r\n    white-space: nowrap;  \r\n    \r\n}\r\n\r\n.absol-icon-button,\r\n.absol-icon-button *{\r\n    -webkit-user-select: none;  /* Chrome 49+ */\r\n    -moz-user-select: none;     /* Firefox 43+ */\r\n    -ms-user-select: none;      /* No support yet */\r\n    user-select: none;\r\n}\r\n\r\n\r\n.absol-icon-button:hover {\r\n    background-color: rgb(213, 213, 213);\r\n}\r\n\r\n.absol-icon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n.absol-icon-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-icon-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 2em;\r\n    height: 2em;\r\n    text-align: center;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    line-height: inherit;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-icon-button-icon-container>i {\r\n    font-size: 1em;\r\n    color: rgb(146, 146, 146);\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button-icon-container>svg {\r\n    width: 1em;\r\n    height: 1em;\r\n}\r\n\r\n.absol-icon-button-text-container:empty,\r\n.absol-icon-button-icon-container:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-icon-button-text-container {\r\n    border-left: solid 0.0714rem #c0c0c0;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    line-height: 2em;\r\n    text-align: center;\r\n}\r\n\r\n.absol-icon-button-text-container>span,\r\n.absol-icon-button-text-container>div {\r\n    font-size: 1em;\r\n    text-align: center;\r\n    margin-left: 0.7em;\r\n    margin-right: 0.7em;\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button.primary,\r\n.absol-button.primary {\r\n    border-color: #357ebd;\r\n    background-color: #428bca;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-text-container {\r\n    border-left-color: #357ebd;\r\n}\r\n\r\n.absol-icon-button.success,\r\n.absol-button.success {\r\n    border-color: #398439;\r\n    background-color: #47a447;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-text-container {\r\n    border-left-color: #398439;\r\n}\r\n\r\n.absol-icon-button.warning,\r\n.absol-button.warning {\r\n    background-color: #ed9c28;\r\n    border-color: #d58512;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-text-container {\r\n    border-left-color: #d58512;\r\n}\r\n\r\n.absol-icon-button.danger,\r\n.absol-button.danger {\r\n    background-color: #d2322d;\r\n    border-color: #ac2925;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-text-container {\r\n    border-left-color: #ac2925;\r\n}\r\n\r\n.absol-icon-button.info,\r\n.absol-button.info {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-text-container {\r\n    border-left-color: #46b8da;\r\n}", ""]);
 
 
 
@@ -29452,7 +29452,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".as-flexicon-button {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #bfbfbf;\r\n    background-color: #ebebeb;\r\n    border-radius: 0.2rem;\r\n    outline: none;\r\n    padding: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.as-icon-button-table-box{\r\n  display: table;\r\n  width:100%;\r\n  height:100%;\r\n}\r\n\r\n.as-flexicon-button:hover .as-flexicon-button-content {\r\n    background-color: rgb(0, 0, 0, 0.1);\r\n}\r\n\r\n.as-flexicon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n\r\n.as-flexicon-button-content {\r\n    display: table-row;\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container,\r\n.as-flexicon-button-text-container {\r\n    display: table-cell;\r\n    box-sizing: content-box;\r\n    vertical-align: middle;\r\n  text-align: center;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty,\r\n.as-flexicon-button-text-container:empty {\r\n    display: none;\r\n}\r\n\r\n.as-flexicon-button-icon-container {\r\n    width: 2rem;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    color: rgb(146, 146, 146);\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container>span,\r\n.as-flexicon-button-icon-container>i,\r\n.as-flexicon-button-icon-container>svg,\r\n.as-flexicon-button-icon-container>img {\r\n    font-size: 1rem;\r\n}\r\n\r\n.as-flexicon-button-text-container {\r\n    padding-left: 0.357rem;\r\n    padding-right: 0.357rem;\r\n    min-width: 2rem;\r\n}\r\n\r\n\r\n.as-flexicon-button-text-container {\r\n    border-left: solid 0.0714rem #bfbfbf;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty+.as-flexicon-button-text-container {\r\n    border-left: none\r\n}\r\n\r\n/*** theme  ***/\r\n\r\n.as-flexicon-button.primary {\r\n    border-color: #005bbd;\r\n    background-color: #007bff;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-text-container {\r\n    border-color: #005bbd;\r\n}\r\n\r\n\r\n.as-flexicon-button.secondary {\r\n    border-color: #4e555a;\r\n    background-color: #6d767e;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-text-container {\r\n    border-left-color: #4e555a;\r\n}\r\n\r\n\r\n.as-flexicon-button.success {\r\n    border-color: #1e7b34;\r\n    background-color: #29a847;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-text-container {\r\n    border-left-color: #1e7b34;\r\n}\r\n\r\n\r\n.as-flexicon-button.danger {\r\n    border-color: #b21f2e;\r\n    background-color: #dc3848;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-text-container {\r\n    border-left-color: #b21f2e;\r\n}\r\n\r\n.as-flexicon-button.warning {\r\n    border-color: #9e7700;\r\n    background-color: #e0a800;\r\n    color: black;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-text-container {\r\n    border-left-color: #9e7700;\r\n}\r\n\r\n.as-flexicon-button.info {\r\n    border-color: #117888;\r\n    background-color: #17a2b8;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-text-container {\r\n    border-left-color: #117888;\r\n}\r\n\r\n.as-flexicon-button.light {\r\n    border-color: #c9d1d9;\r\n    background-color: #f8f9fa;\r\n    color: #212529;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-text-container {\r\n    border-left-color: #c9d1d9;\r\n}\r\n\r\n.as-flexicon-button.dark {\r\n    border-color: #171a1c;\r\n    background-color: #343a40;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-text-container {\r\n    border-left-color: #171a1c;\r\n}\r\n\r\n.as-flexicon-button.link {\r\n    border-color: transparent;\r\n    background-color: transparent;\r\n    color: #007bff;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-icon-container {\r\n    color: #007bff;\r\n    background: transparent;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-text-container {\r\n    border-left-color: transparent;\r\n}\r\n\r\n.as-flexicon-button.link:hover .as-flexicon-button-text-container{\r\n    text-decoration: underline;\r\n}", ""]);
+exports.push([module.i, ".as-flexicon-button {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #bfbfbf;\r\n    background-color: #ebebeb;\r\n    border-radius: 0.2em;\r\n    outline: none;\r\n    padding: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.as-icon-button-table-box{\r\n  display: table;\r\n  width:100%;\r\n  height:100%;\r\n}\r\n\r\n.as-flexicon-button:hover .as-flexicon-button-content {\r\n    background-color: rgb(0, 0, 0, 0.1);\r\n}\r\n\r\n.as-flexicon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n\r\n.as-flexicon-button-content {\r\n    display: table-row;\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container,\r\n.as-flexicon-button-text-container {\r\n    display: table-cell;\r\n    box-sizing: content-box;\r\n    vertical-align: middle;\r\n  text-align: center;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty,\r\n.as-flexicon-button-text-container:empty {\r\n    display: none;\r\n}\r\n\r\n.as-flexicon-button-icon-container {\r\n    width: 2em;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    color: rgb(146, 146, 146);\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container>span,\r\n.as-flexicon-button-icon-container>i,\r\n.as-flexicon-button-icon-container>svg,\r\n.as-flexicon-button-icon-container>img {\r\n    font-size: 1em;\r\n}\r\n\r\n.as-flexicon-button-text-container {\r\n    padding-left: 0.357em;\r\n    padding-right: 0.357em;\r\n    min-width: 2em;\r\n}\r\n\r\n\r\n.as-flexicon-button-text-container {\r\n    border-left: solid 0.0714rem #bfbfbf;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty+.as-flexicon-button-text-container {\r\n    border-left: none\r\n}\r\n\r\n/*** theme  ***/\r\n\r\n.as-flexicon-button.primary {\r\n    border-color: #005bbd;\r\n    background-color: #007bff;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-text-container {\r\n    border-color: #005bbd;\r\n}\r\n\r\n\r\n.as-flexicon-button.secondary {\r\n    border-color: #4e555a;\r\n    background-color: #6d767e;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-text-container {\r\n    border-left-color: #4e555a;\r\n}\r\n\r\n\r\n.as-flexicon-button.success {\r\n    border-color: #1e7b34;\r\n    background-color: #29a847;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-text-container {\r\n    border-left-color: #1e7b34;\r\n}\r\n\r\n\r\n.as-flexicon-button.danger {\r\n    border-color: #b21f2e;\r\n    background-color: #dc3848;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-text-container {\r\n    border-left-color: #b21f2e;\r\n}\r\n\r\n.as-flexicon-button.warning {\r\n    border-color: #9e7700;\r\n    background-color: #e0a800;\r\n    color: black;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-text-container {\r\n    border-left-color: #9e7700;\r\n}\r\n\r\n.as-flexicon-button.info {\r\n    border-color: #117888;\r\n    background-color: #17a2b8;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-text-container {\r\n    border-left-color: #117888;\r\n}\r\n\r\n.as-flexicon-button.light {\r\n    border-color: #c9d1d9;\r\n    background-color: #f8f9fa;\r\n    color: #212529;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-text-container {\r\n    border-left-color: #c9d1d9;\r\n}\r\n\r\n.as-flexicon-button.dark {\r\n    border-color: #171a1c;\r\n    background-color: #343a40;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-text-container {\r\n    border-left-color: #171a1c;\r\n}\r\n\r\n.as-flexicon-button.link {\r\n    border-color: transparent;\r\n    background-color: transparent;\r\n    color: #007bff;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-icon-container {\r\n    color: #007bff;\r\n    background: transparent;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-text-container {\r\n    border-left-color: transparent;\r\n}\r\n\r\n.as-flexicon-button.link:hover .as-flexicon-button-text-container{\r\n    text-decoration: underline;\r\n}", ""]);
 
 
 
@@ -29522,7 +29522,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-number-input {\r\n    text-align: right;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    position: relative;\r\n    min-width: calc(1em + 0.1429rem);\r\n    height: calc(2em + 0.1429rem);\r\n    border: solid 0.0714rem #d6d6d6;\r\n    font-size: 1rem;\r\n    box-sizing: border-box;\r\n    width: 4rem;\r\n}\r\n\r\n.absol-number-input-button-up-container {\r\n    top: 0;\r\n}\r\n\r\n.absol-number-input-button-down-container {\r\n    bottom: 0;\r\n}\r\n\r\n.absol-number-input-button-up-container,\r\n.absol-number-input-button-down-container {\r\n    right: 0;\r\n    position: absolute;\r\n    height: 1rem;\r\n    width: 1rem;\r\n    max-height: 50%;\r\n}\r\n\r\n.absol-number-input-button-up-container>button,\r\n.absol-number-input-button-down-container>button {\r\n    width: 100%;\r\n    height: 100%;\r\n    line-height: 1;\r\n    padding: 0;\r\n    border: none;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    color: rgb(101, 101, 101);\r\n    background-color: transparent;\r\n    background-color: rgb(101, 101, 101, 0.05);\r\n}\r\n\r\n.absol-number-input-button-up-container>button:active,\r\n.absol-number-input-button-down-container>button:active{\r\n    color: black;\r\n    background-color: rgb(101, 101, 101, 0.3);\r\n}\r\n\r\n.absol-number-input-text-container {\r\n    left: 0rem;\r\n    right: 1.2rem;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n\r\n.absol-number-input-text-container>input[type=\"text\"] {\r\n    border: none;\r\n    outline: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    text-align: right;\r\n    padding-left:0.2rem;\r\n    padding-right: 0.2rem;  \r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled .absol-number-input-button-up-container,\r\n.absol-number-input.absol-disabled .absol-number-input-button-down-container\r\n{\r\n    opacity: 0.3;\r\n}", ""]);
+exports.push([module.i, ".absol-number-input {\r\n    text-align: right;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    position: relative;\r\n    min-width: calc(1em + 0.1429rem);\r\n    height: calc(2em + 0.1429rem);\r\n    border: solid 0.0714rem #d6d6d6;\r\n    font-size: 1rem;\r\n    box-sizing: border-box;\r\n    width: 4em;\r\n}\r\n\r\n.absol-number-input-button-up-container {\r\n    top: 0;\r\n}\r\n\r\n.absol-number-input-button-down-container {\r\n    bottom: 0;\r\n}\r\n\r\n.absol-number-input-button-up-container,\r\n.absol-number-input-button-down-container {\r\n    right: 0;\r\n    position: absolute;\r\n    height: 1em;\r\n    width: 1em;\r\n    max-height: 50%;\r\n}\r\n\r\n.absol-number-input-button-up-container>button,\r\n.absol-number-input-button-down-container>button {\r\n    width: 100%;\r\n    height: 100%;\r\n    line-height: 1;\r\n    padding: 0;\r\n    border: none;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    color: rgb(101, 101, 101);\r\n    background-color: transparent;\r\n    background-color: rgb(101, 101, 101, 0.05);\r\n}\r\n\r\n.absol-number-input-button-up-container>button:active,\r\n.absol-number-input-button-down-container>button:active{\r\n    color: black;\r\n    background-color: rgb(101, 101, 101, 0.3);\r\n}\r\n\r\n.absol-number-input-text-container {\r\n    left: 0em;\r\n    right: 1.2em;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n\r\n.absol-number-input-text-container>input[type=\"text\"] {\r\n    border: none;\r\n    outline: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    text-align: right;\r\n    padding-left:0.2em;\r\n    padding-right: 0.2em;  \r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled .absol-number-input-button-up-container,\r\n.absol-number-input.absol-disabled .absol-number-input-button-down-container\r\n{\r\n    opacity: 0.3;\r\n}", ""]);
 
 
 
@@ -29557,7 +29557,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-search-text-input {\r\n    position: relative;\r\n    height: 2rem;\r\n    border-radius: 0.3rem;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-search-text-input.focus {\r\n    outline: solid 0.0714rem rgba(30, 30, 255, 0.4);\r\n}\r\n\r\n.absol-search-text-input-container {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 2rem;\r\n}\r\n\r\n.absol-search-text-button-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 2rem;\r\n    bottom: 0rem;\r\n}\r\n\r\n.absol-search-text-button-container button {\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    border: none;\r\n    background: transparent;\r\n    padding: 0;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-search-text-button-container button>svg {\r\n    height: 1.14285714286rem;\r\n    width: 1.14285714286rem;\r\n    fill: rgb(132, 132, 132);\r\n}\r\n\r\n.absol-search-text-input-container input {\r\n    width: 100%;\r\n    height: 100%;\r\n    font-size: 1rem;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    border: none;\r\n    background-color: transparent;\r\n    padding-left: 0.6rem;\r\n}\r\n\r\n.absol-search-text-input:not(.searching) svg.times{\r\n    display: none;\r\n}\r\n\r\n.absol-search-text-input.searching svg.find{\r\n    display: none;\r\n}", ""]);
+exports.push([module.i, ".absol-search-text-input {\r\n    position: relative;\r\n    height: 2em;\r\n    border-radius: 0.3em;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-search-text-input.focus {\r\n    outline: solid 0.0714rem rgba(30, 30, 255, 0.4);\r\n}\r\n\r\n.absol-search-text-input-container {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 2em;\r\n}\r\n\r\n.absol-search-text-button-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 2em;\r\n    bottom: 0em;\r\n}\r\n\r\n.absol-search-text-button-container button {\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    border: none;\r\n    background: transparent;\r\n    padding: 0;\r\n    font-size: 1em;\r\n}\r\n\r\n.absol-search-text-button-container button>svg {\r\n    height: 1.14285714286em;\r\n    width: 1.14285714286em;\r\n    fill: rgb(132, 132, 132);\r\n}\r\n\r\n.absol-search-text-input-container input {\r\n    width: 100%;\r\n    height: 100%;\r\n    font-size: 1em;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    border: none;\r\n    background-color: transparent;\r\n    padding-left: 0.6em;\r\n}\r\n\r\n.absol-search-text-input:not(.searching) svg.times{\r\n    display: none;\r\n}\r\n\r\n.absol-search-text-input.searching svg.find{\r\n    display: none;\r\n}", ""]);
 
 
 
@@ -29592,7 +29592,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-select-table-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-select-table {\r\n    border: solid 0.0714rem #a9a9a9;\r\n    min-width: 26rem;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-select-table-header {\r\n    display: block;\r\n    position: relative;\r\n    box-sizing: content-box;\r\n    height: 2.2857142857rem;\r\n}\r\n\r\n.absol-select-table-searchtextinput-container {\r\n    position: absolute;\r\n    left: 0.14285714285rem;\r\n    top: 0.14285714285rem;\r\n    height: 2rem;\r\n    right: 10rem;\r\n    /* background-color: cyan; */\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-buttons-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-searchtextinput-container {\r\n    right: 0.14285714285em !important;\r\n}\r\n\r\n.absol-select-table-buttons-container {\r\n    position: absolute;\r\n    right: 0.14285714285rem;\r\n    top: 0.14285714285rem;\r\n    width: 10.7142857143rem;\r\n    height: 2rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-buttons-container>button {\r\n    height: 2rem;\r\n    font-size: 1rem;\r\n    background-color: transparent;\r\n    border: none;\r\n    padding: 0 0.5rem;\r\n    margin: 0;\r\n    text-decoration: underline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:hover {\r\n    color: #a9a9a9;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:active {\r\n    color: #a9a9ff;\r\n}\r\n\r\n.absol-select-table-body {\r\n    margin: 0.14285714285rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-items-scroller {\r\n    width: 50%;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-button {\r\n    background-color: rgba(1, 1, 30, 0.1);\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-bar-v-container {\r\n    width: 0.69rem;\r\n}\r\n\r\n.absol-select-table-selected-search-items-container,\r\n.absol-select-table-nonselected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-selected-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-items-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.searching .absol-select-table-selected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-search-items-container {\r\n    display: block;\r\n    padding-right: 0.7rem;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container,\r\n.absol-select-table-selected-items-container {\r\n    padding-right: 0.7rem;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-items-container>.absol-select-table-item,\r\n.absol-select-table-nonselected-search-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-search-items-container>.absol-select-table-item {\r\n    margin: 0.14285714285rem;\r\n}\r\n\r\n.absol-select-table-item {\r\n    display: block;\r\n    line-height: 2rem;\r\n    min-height: 2rem;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.05);\r\n    border: solid 0.0714rem rgb(235, 235, 235);\r\n    border-radius: 0.2rem;\r\n    overflow: hidden;\r\n    -webkit-user-select: none;\r\n    /* Safari 3.1+ */\r\n    -moz-user-select: none;\r\n    /* Firefox 2+ */\r\n    -ms-user-select: none;\r\n    /* IE 10+ */\r\n    user-select: none;\r\n    /* Standard syntax */\r\n    padding-left: 0.69rem;\r\n    padding-right: 1.8rem;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-select-table-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-select-table-item-right-container {\r\n    right: 0.3rem;\r\n    bottom: 0.3rem;\r\n    top: 0.3rem;\r\n    padding: 0.2rem;\r\n    width: 1.4rem;\r\n    position: absolute;\r\n    border-radius: 0.2rem;\r\n    box-sizing: border-box;\r\n ;\r\n}\r\n\r\n.absol-select-table-item-right-container:hover {\r\n    background-color: rgba(169, 169, 169, 0.3);\r\n}\r\n\r\nspan.absol-select-table-item-text {\r\n    white-space: normal;\r\n    \r\n}\r\n\r\n.absol-select-table-item-right-container-table{\r\n    display: table;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n.absol-select-table-item-right-container-cell{\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-select-table-item-right-container svg {\r\n    width: 1rem;\r\n    height: 1rem;\r\n    display: none;\r\n}\r\n\r\n/* clearfix\r\n.absol-select-table-none-nonselected-items-container::after,\r\n.absol-select-table-none-selected-items-container::after {\r\n    content: \"\";\r\n    display:table;\r\n    clear: both;\r\n} */\r\n\r\n.absol-select-table-selected-items-container .absol-select-table-item-right-container svg.sub-icon,\r\n.absol-select-table-selected-search-items-container .absol-select-table-item-right-container svg.sub-icon {\r\n    display: block;\r\n    stroke: rgb(243, 61, 61);\r\n    fill: rgb(226, 100, 100);\r\n}\r\n\r\n.absol-select-table-nonselected-items-container .absol-select-table-item-right-container svg.add-icon,\r\n.absol-select-table-nonselected-search-items-container .absol-select-table-item-right-container svg.add-icon {\r\n    display: block;\r\n    fill: rgb(100, 226, 167);\r\n    stroke: rgb(61, 185, 243);\r\n}\r\n\r\n.absol-select-table.portrait {}", ""]);
+exports.push([module.i, ".absol-select-table-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-select-table {\r\n    border: solid 0.0714rem #a9a9a9;\r\n    min-width: 26em;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-select-table-header {\r\n    display: block;\r\n    position: relative;\r\n    box-sizing: content-box;\r\n    height: 2.2857142857em;\r\n}\r\n\r\n.absol-select-table-searchtextinput-container {\r\n    position: absolute;\r\n    left: 0.14285714285em;\r\n    top: 0.14285714285em;\r\n    height: 2em;\r\n    right: 10em;\r\n    /* background-color: cyan; */\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-buttons-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-searchtextinput-container {\r\n    right: 0.14285714285em !important;\r\n}\r\n\r\n.absol-select-table-buttons-container {\r\n    position: absolute;\r\n    right: 0.14285714285em;\r\n    top: 0.14285714285em;\r\n    width: 10.7142857143em;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-buttons-container>button {\r\n    height: 2em;\r\n    font-size: 1em;\r\n    background-color: transparent;\r\n    border: none;\r\n    padding: 0 0.5em;\r\n    margin: 0;\r\n    text-decoration: underline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:hover {\r\n    color: #a9a9a9;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:active {\r\n    color: #a9a9ff;\r\n}\r\n\r\n.absol-select-table-body {\r\n    margin: 0.14285714285em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-items-scroller {\r\n    width: 50%;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-button {\r\n    background-color: rgba(1, 1, 30, 0.1);\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-bar-v-container {\r\n    width: 0.69em;\r\n}\r\n\r\n.absol-select-table-selected-search-items-container,\r\n.absol-select-table-nonselected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-selected-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-items-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.searching .absol-select-table-selected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-search-items-container {\r\n    display: block;\r\n    padding-right: 0.7em;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container,\r\n.absol-select-table-selected-items-container {\r\n    padding-right: 0.7em;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-items-container>.absol-select-table-item,\r\n.absol-select-table-nonselected-search-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-search-items-container>.absol-select-table-item {\r\n    margin: 0.14285714285em;\r\n}\r\n\r\n.absol-select-table-item {\r\n    display: block;\r\n    line-height: 2em;\r\n    min-height: 2em;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.05);\r\n    border: solid 0.0714rem rgb(235, 235, 235);\r\n    border-radius: 0.2em;\r\n    overflow: hidden;\r\n    -webkit-user-select: none;\r\n    /* Safari 3.1+ */\r\n    -moz-user-select: none;\r\n    /* Firefox 2+ */\r\n    -ms-user-select: none;\r\n    /* IE 10+ */\r\n    user-select: none;\r\n    /* Standard syntax */\r\n    padding-left: 0.69em;\r\n    padding-right: 1.8em;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-select-table-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-select-table-item-right-container {\r\n    right: 0.3em;\r\n    bottom: 0.3em;\r\n    top: 0.3em;\r\n    padding: 0.2em;\r\n    width: 1.4em;\r\n    position: absolute;\r\n    border-radius: 0.2em;\r\n    box-sizing: border-box;\r\n ;\r\n}\r\n\r\n.absol-select-table-item-right-container:hover {\r\n    background-color: rgba(169, 169, 169, 0.3);\r\n}\r\n\r\nspan.absol-select-table-item-text {\r\n    white-space: normal;\r\n    \r\n}\r\n\r\n.absol-select-table-item-right-container-table{\r\n    display: table;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n.absol-select-table-item-right-container-cell{\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-select-table-item-right-container svg {\r\n    width: 1em;\r\n    height: 1em;\r\n    display: none;\r\n}\r\n\r\n/* clearfix\r\n.absol-select-table-none-nonselected-items-container::after,\r\n.absol-select-table-none-selected-items-container::after {\r\n    content: \"\";\r\n    display:table;\r\n    clear: both;\r\n} */\r\n\r\n.absol-select-table-selected-items-container .absol-select-table-item-right-container svg.sub-icon,\r\n.absol-select-table-selected-search-items-container .absol-select-table-item-right-container svg.sub-icon {\r\n    display: block;\r\n    stroke: rgb(243, 61, 61);\r\n    fill: rgb(226, 100, 100);\r\n}\r\n\r\n.absol-select-table-nonselected-items-container .absol-select-table-item-right-container svg.add-icon,\r\n.absol-select-table-nonselected-search-items-container .absol-select-table-item-right-container svg.add-icon {\r\n    display: block;\r\n    fill: rgb(100, 226, 167);\r\n    stroke: rgb(61, 185, 243);\r\n}\r\n\r\n.absol-select-table.portrait {}", ""]);
 
 
 
@@ -29627,7 +29627,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-ico {\r\n    width: 1rem;\r\n    height: 1rem;\r\n}\r\n\r\n.absol-button {\r\n    white-space: normal;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-dropdown {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropdown-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 0;\r\n    top: 100%;\r\n}\r\n\r\n.absol-dropdown.top>.absol-dropdown-content {\r\n    top: auto;\r\n    bottom: 100%;\r\n}\r\n\r\n.absol-dropdown.overlap-left>.absol-dropdown-content {\r\n    left: auto;\r\n    right: 0;\r\n}\r\n\r\n.absol-dropright {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropright-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 100%;\r\n    top: 0;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-drop-hidden>.absol-dropdown-content,\r\n.absol-drop-hidden>.absol-dropright-content {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n\r\n.absol-hmenu {\r\n    display: inline-block;\r\n    background-color: rgb(252, 252, 255);\r\n    /* background-color: rgb(33, 33, 33); */\r\n\r\n}\r\n\r\n.absol-hmenu>.absol-dropdown {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-hmenu-button:hover,\r\n.absol-hmenu .absol-hmenu-button-hover {\r\n\r\n    background-color: rgb(175, 175, 175);\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1rem;\r\n    padding-right: 1rem;\r\n}\r\n\r\n.absol-hmenu-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button,\r\n.absol-vmenu-button {\r\n    color: rgb(55, 55, 55);\r\n    height: 100%;\r\n    background-color: transparent;\r\n    font-size: 1rem;\r\n    border: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1rem;\r\n    padding-right: 1rem;\r\n}\r\n\r\n.absol-vmenu {}\r\n\r\n.absol-hmenu .absol-dropdown-content,\r\n.absol-hmenu .absol-dropright-content {\r\n    padding-top: 0.4rem;\r\n    padding-bottom: 0.4rem;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-vmenu-button {\r\n    text-align: left;\r\n    padding-left: 0.5rem;\r\n    padding-right: 2rem;\r\n    height: 1.8rem;\r\n    line-height: 1.8rem;\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\nimg.absol-vmenu-button-icon {\r\n    opacity: 0;\r\n    display: none;\r\n}\r\n\r\nimg.absol-vmenu-button-icon[src] {\r\n    display: block;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container {\r\n    display: inline-block;\r\n    width: 1.2rem;\r\n    height: 1.2rem;\r\n    vertical-align: middle;\r\n    margin-right: 0.3rem;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container>span,\r\n.absol-vmenu-button-ext-icon-container>i {\r\n    font-size: 1.2rem;\r\n    line-height: 1;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-ext-icon-container>svg,\r\n.absol-vmenu-button-ext-icon-container>img {\r\n    height: 1.2rem;\r\n    width: 1.2rem;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-text,\r\n.absol-vmenu-button-key {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-vmenu-button-key {\r\n    font-style: italic;\r\n    text-align: right;\r\n    margin-left: 1rem;\r\n}\r\n\r\n.absol-vmenu-arrow-container {\r\n    position: absolute;\r\n    right: 0.2rem;\r\n    top: 0.3rem;\r\n    bottom: 0.3rem;\r\n}\r\n\r\n.absol-vmenu-arrow {\r\n    display: block;\r\n    font-size: 1rem;\r\n    line-height: 1.2rem;\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-arrow {\r\n    display: none;\r\n}\r\n\r\n.absol-vmenu-button:hover,\r\n.absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(214, 214, 217);\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-button:hover,\r\n.absol-menu-item-disable .absol-vmenu .absol-vmenu-button-hover,\r\n.absol-menu-item-disable .absol-hmenu-button:hover,\r\n.absol-menu-item-disable .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: transparent;\r\n}\r\n\r\n.absol-vmenu-line {\r\n    text-align: center;\r\n    padding: 0.2em 1rem;\r\n}\r\n\r\n.absol-vmenu-line>div {\r\n    height: 0.0714rem;\r\n    background-color: rgb(97, 97, 97);\r\n}\r\n\r\n.absol-menu-item-disable {}\r\n\r\n.absol-menu-item-disable button {\r\n    color: rgb(155, 155, 159);\r\n}\r\n\r\n.dark .absol-menu-item-disable button {\r\n    color: rgb(100, 100, 100);\r\n}\r\n\r\n.dark .absol-vmenu-button:hover,\r\n.dark .absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(9, 71, 113);\r\n}\r\n\r\n\r\n.dark .absol-hmenu .absol-dropdown-content,\r\n.dark .absol-hmenu .absol-dropright-content {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button,\r\n.dark .absol-vmenu-button {\r\n    color: rgb(200, 200, 200);\r\n\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button:hover,\r\n.dark .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: rgb(80, 80, 80);\r\n}\r\n\r\n\r\n.dark .absol-hmenu {\r\n    background-color: rgb(33, 33, 33);\r\n}\r\n\r\n/*standard-alone*/\r\n.absol-vmenu-button.standard-alone {\r\n    height: 2rem;\r\n    border-radius: 0.3rem;\r\n    border: solid rgb(169, 169, 170) 0.0714rem;\r\n    outline: none;\r\n}", ""]);
+exports.push([module.i, ".absol-ico {\r\n    width: 1em;\r\n    height: 1em;\r\n}\r\n\r\n.absol-button {\r\n    white-space: normal;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-dropdown {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropdown-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 0;\r\n    top: 100%;\r\n}\r\n\r\n.absol-dropdown.top>.absol-dropdown-content {\r\n    top: auto;\r\n    bottom: 100%;\r\n}\r\n\r\n.absol-dropdown.overlap-left>.absol-dropdown-content {\r\n    left: auto;\r\n    right: 0;\r\n}\r\n\r\n.absol-dropright {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropright-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 100%;\r\n    top: 0;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-drop-hidden>.absol-dropdown-content,\r\n.absol-drop-hidden>.absol-dropright-content {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n\r\n.absol-hmenu {\r\n    display: inline-block;\r\n    background-color: rgb(252, 252, 255);\r\n    /* background-color: rgb(33, 33, 33); */\r\n\r\n}\r\n\r\n.absol-hmenu>.absol-dropdown {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-hmenu-button:hover,\r\n.absol-hmenu .absol-hmenu-button-hover {\r\n\r\n    background-color: rgb(175, 175, 175);\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-hmenu-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button,\r\n.absol-vmenu-button {\r\n    color: rgb(55, 55, 55);\r\n    height: 100%;\r\n    background-color: transparent;\r\n    font-size: 1em;\r\n    border: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-vmenu {}\r\n\r\n.absol-hmenu .absol-dropdown-content,\r\n.absol-hmenu .absol-dropright-content {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-vmenu-button {\r\n    text-align: left;\r\n    padding-left: 0.5em;\r\n    padding-right: 2em;\r\n    height: 1.8em;\r\n    line-height: 1.8em;\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\nimg.absol-vmenu-button-icon {\r\n    opacity: 0;\r\n    display: none;\r\n}\r\n\r\nimg.absol-vmenu-button-icon[src] {\r\n    display: block;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container {\r\n    display: inline-block;\r\n    width: 1.2em;\r\n    height: 1.2em;\r\n    vertical-align: middle;\r\n    margin-right: 0.3em;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container>span,\r\n.absol-vmenu-button-ext-icon-container>i {\r\n    font-size: 1.2em;\r\n    line-height: 1;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-ext-icon-container>svg,\r\n.absol-vmenu-button-ext-icon-container>img {\r\n    height: 1.2em;\r\n    width: 1.2em;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-text,\r\n.absol-vmenu-button-key {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-vmenu-button-key {\r\n    font-style: italic;\r\n    text-align: right;\r\n    margin-left: 1em;\r\n}\r\n\r\n.absol-vmenu-arrow-container {\r\n    position: absolute;\r\n    right: 0.2em;\r\n    top: 0.3em;\r\n    bottom: 0.3em;\r\n}\r\n\r\n.absol-vmenu-arrow {\r\n    display: block;\r\n    font-size: 1em;\r\n    line-height: 1.2em;\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-arrow {\r\n    display: none;\r\n}\r\n\r\n.absol-vmenu-button:hover,\r\n.absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(214, 214, 217);\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-button:hover,\r\n.absol-menu-item-disable .absol-vmenu .absol-vmenu-button-hover,\r\n.absol-menu-item-disable .absol-hmenu-button:hover,\r\n.absol-menu-item-disable .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: transparent;\r\n}\r\n\r\n.absol-vmenu-line {\r\n    text-align: center;\r\n    padding: 0.2em 1em;\r\n}\r\n\r\n.absol-vmenu-line>div {\r\n    height: 0.0714rem;\r\n    background-color: rgb(97, 97, 97);\r\n}\r\n\r\n.absol-menu-item-disable {}\r\n\r\n.absol-menu-item-disable button {\r\n    color: rgb(155, 155, 159);\r\n}\r\n\r\n.dark .absol-menu-item-disable button {\r\n    color: rgb(100, 100, 100);\r\n}\r\n\r\n.dark .absol-vmenu-button:hover,\r\n.dark .absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(9, 71, 113);\r\n}\r\n\r\n\r\n.dark .absol-hmenu .absol-dropdown-content,\r\n.dark .absol-hmenu .absol-dropright-content {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button,\r\n.dark .absol-vmenu-button {\r\n    color: rgb(200, 200, 200);\r\n\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button:hover,\r\n.dark .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: rgb(80, 80, 80);\r\n}\r\n\r\n\r\n.dark .absol-hmenu {\r\n    background-color: rgb(33, 33, 33);\r\n}\r\n\r\n/*standard-alone*/\r\n.absol-vmenu-button.standard-alone {\r\n    height: 2em;\r\n    border-radius: 0.3em;\r\n    border: solid rgb(169, 169, 170) 0.0714rem;\r\n    outline: none;\r\n}", ""]);
 
 
 
@@ -29662,7 +29662,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r\n    z-index: -100000;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    top: 0;\r\n    opacity: 0;\r\n    resize: none;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-hinge-fixed-container {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.absol-context-hinge {\r\n    position: relative;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-context-hinge>.absol-context-menu {\r\n    position: absolute;\r\n    top: -714.2857rem;\r\n    left: -714.2857rem;\r\n    visibility: hidden;\r\n    z-index: 55;\r\n    display: inline-block;\r\n\r\n}\r\n\r\n.absol-context-hinge .absol-vmenu,\r\n.absol-context-hinge .absol-hmenu {\r\n    padding-top: 0.4rem;\r\n    padding-bottom: 0.4rem;\r\n    /* background-color: rgb(37, 37, 38);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1); */\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-context-hinge.dark .absol-hmenu,\r\n.absol-context-hinge.dark .absol-vmenu,\r\n.dark .absol-context-hinge .absol-hmenu,\r\n.dark .absol-context-hinge .absol-vmenu {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.absol-context-menu-anchor {\r\n    position: fixed;\r\n    z-index: -1000;\r\n    left: 0;\r\n    top: 0;\r\n    display: block;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    font-size: 0.8571rem;\r\n}\r\n\r\n.absol-context-menu-anchor>textarea {\r\n    width: 1.4286rem;\r\n    height: 1.4286rem;\r\n    margin: 0;\r\n    resize: none;\r\n    border: none;\r\n    opacity: 0;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-menu-anchor.absol-active {\r\n    z-index: 100000000;\r\n    opacity: 1;\r\n    visibility: visible;\r\n}\r\n\r\n\r\n.absol-context-menu-anchor .absol-vmenu,\r\n.absol-context-menu-anchor .absol-hmenu {\r\n    padding-top: 0.4rem;\r\n    padding-bottom: 0.4rem;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}", ""]);
+exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r\n    z-index: -100000;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    top: 0;\r\n    opacity: 0;\r\n    resize: none;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-hinge-fixed-container {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.absol-context-hinge {\r\n    position: relative;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-context-hinge>.absol-context-menu {\r\n    position: absolute;\r\n    top: -714.2857rem;\r\n    left: -714.2857rem;\r\n    visibility: hidden;\r\n    z-index: 55;\r\n    display: inline-block;\r\n\r\n}\r\n\r\n.absol-context-hinge .absol-vmenu,\r\n.absol-context-hinge .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    /* background-color: rgb(37, 37, 38);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1); */\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-context-hinge.dark .absol-hmenu,\r\n.absol-context-hinge.dark .absol-vmenu,\r\n.dark .absol-context-hinge .absol-hmenu,\r\n.dark .absol-context-hinge .absol-vmenu {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.absol-context-menu-anchor {\r\n    position: fixed;\r\n    z-index: -1000;\r\n    left: 0;\r\n    top: 0;\r\n    display: block;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    font-size: 0.8571rem;\r\n}\r\n\r\n.absol-context-menu-anchor>textarea {\r\n    width: 1.4286rem;\r\n    height: 1.4286rem;\r\n    margin: 0;\r\n    resize: none;\r\n    border: none;\r\n    opacity: 0;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-menu-anchor.absol-active {\r\n    z-index: 100000000;\r\n    opacity: 1;\r\n    visibility: visible;\r\n}\r\n\r\n\r\n.absol-context-menu-anchor .absol-vmenu,\r\n.absol-context-menu-anchor .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}", ""]);
 
 
 
@@ -29732,7 +29732,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-text-editor {\r\n    position: relative;\r\n    /* for dev*/\r\n    outline: none;\r\n    font-family: Helvetica, Arial, sans-serif;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-text-editor-text-layer {\r\n    cursor: text;\r\n    min-height: 1.5rem;\r\n\r\n}\r\n\r\n.absol-text-editor-line {\r\n    height: 1.5rem;\r\n    white-space: pre-wrap;\r\n}\r\n\r\n\r\n.absol-text-editor-position {\r\n    pointer-events: none;\r\n    right: 0.5rem;\r\n    bottom: 0.2rem;\r\n    position: absolute;\r\n    color: rgba(169, 169, 169, 0.7);\r\n}\r\n\r\n.absol-text-editor-forceground {\r\n    position: absolute;\r\n    background: transparent;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    z-index: 80;\r\n}\r\n\r\n.absol-text-editor.absol-focus .absol-text-editor-cursor {\r\n    position: absolute;\r\n    z-index: 100;\r\n    height: 1.5rem;\r\n    border-left: solid 0.0714rem black;\r\n}\r\n\r\n/* \r\n.absol-text-editor-cursor {\r\n    animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n    -webkit-animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n} */\r\n\r\n/* @keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n} */\r\n\r\n.absol-text-editor-edittable {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    /* width: 0.7143rem;\r\n    height: 0.7143rem; */\r\n    overflow: hidden;\r\n    z-index: 0;\r\n    opacity: 0.1;\r\n}", ""]);
+exports.push([module.i, ".absol-text-editor {\r\n    position: relative;\r\n    /* for dev*/\r\n    outline: none;\r\n    font-family: Helvetica, Arial, sans-serif;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-text-editor-text-layer {\r\n    cursor: text;\r\n    min-height: 1.5em;\r\n\r\n}\r\n\r\n.absol-text-editor-line {\r\n    height: 1.5em;\r\n    white-space: pre-wrap;\r\n}\r\n\r\n\r\n.absol-text-editor-position {\r\n    pointer-events: none;\r\n    right: 0.5em;\r\n    bottom: 0.2em;\r\n    position: absolute;\r\n    color: rgba(169, 169, 169, 0.7);\r\n}\r\n\r\n.absol-text-editor-forceground {\r\n    position: absolute;\r\n    background: transparent;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    z-index: 80;\r\n}\r\n\r\n.absol-text-editor.absol-focus .absol-text-editor-cursor {\r\n    position: absolute;\r\n    z-index: 100;\r\n    height: 1.5em;\r\n    border-left: solid 0.0714rem black;\r\n}\r\n\r\n/* \r\n.absol-text-editor-cursor {\r\n    animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n    -webkit-animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n} */\r\n\r\n/* @keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n} */\r\n\r\n.absol-text-editor-edittable {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    /* width: 0.7143rem;\r\n    height: 0.7143rem; */\r\n    overflow: hidden;\r\n    z-index: 0;\r\n    opacity: 0.1;\r\n}", ""]);
 
 
 
@@ -29767,7 +29767,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".vmedia-no-show {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1;\r\n    height: 1;\r\n    z-index: -100000;\r\n    opacity: 0;\r\n}\r\n\r\n.vmedia-no-select,\r\n.vmedia-no-select * {\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\ncoccocgrammar {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n\r\n.vmedia-media-input-text-container {\r\n    position: relative;\r\n    min-height: 2.5rem;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor img {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor * {\r\n    font-family: inherit;\r\n    font-size: inherit;\r\n    font-weight: inherit;\r\n    text-decoration: inherit;\r\n    color: inherit;\r\n    background: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    white-space: pre;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    min-height: 2rem;\r\n    padding-left: 0.5rem;\r\n    padding-top: 0.25rem;\r\n    padding-bottom: 0.25rem;\r\n    margin-right: 0.5rem;\r\n    box-sizing: border-box;\r\n    max-height: 6.66666666rem;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container {\r\n    white-space: normal;\r\n}\r\n\r\n.vmedia-media-input:not(.dragover) .vmedia-media-input-dropover {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-dropover {\r\n    display: inline-block;\r\n    width: 7rem;\r\n    height: 7rem;\r\n}\r\n\r\n.vmedia-media-input-dropover>svg {\r\n    width: 7rem;\r\n    height: 7rem;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-imagepreview {\r\n    margin: 0.3rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview {\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.vmedia-media-input-imagepreview img {\r\n    height: 2.5rem;\r\n    width: auto;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.attachment {\r\n    height: 2rem;\r\n    width: 2rem;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times,\r\n.vmedia-media-input-imagepreview svg.times {\r\n    position: absolute;\r\n    top: 0.1rem;\r\n    right: 0.1rem;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    fill: rgba(69, 69, 69, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:hover,\r\n.vmedia-media-input-imagepreview svg.times:hover {\r\n    fill: rgba(144, 144, 144, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:active,\r\n.vmedia-media-input-imagepreview svg.times:active {\r\n    fill: rgba(220, 220, 240, 0.6);\r\n}\r\n\r\n.vmedia-media-input-plug-button-container {\r\n    position: absolute;\r\n    left: 0.25rem;\r\n    bottom: 0.25rem;\r\n    top: 0.25rem;\r\n}\r\n\r\n.vmedia-media-input-plug-button-container svg {\r\n    height: 1.5rem;\r\n    width: 1.5rem;\r\n    vertical-align: middle;\r\n    transition: transform .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n\r\n.vmedia-media-input-plug-button-container svg path {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n    transition: fill .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n.vmedia-media-input.show-plugin .vmedia-media-input-plug-button svg path {\r\n    fill: rgba(134, 142, 153, 0.75);\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-plug-button {\r\n    padding: 0;\r\n    height: 100%;\r\n    width: 2rem;\r\n    border: none;\r\n    background: transparent;\r\n    outline: none;\r\n\r\n}\r\n\r\n\r\n.vmedia-media-input-plugin-content-container {\r\n    position: absolute;\r\n    bottom: calc(0.0714rem + 100%);\r\n    opacity: 1;\r\n    transition: opacity .22s cubic-bezier(.5, 0, .4, 1);\r\n    background-color: white;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1);\r\n    z-index: 20;\r\n    background: white;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container:empty{\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container {\r\n    position: relative;\r\n    display: block;\r\n    height: 1.5rem;\r\n    /* background: red;     */\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container-left {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container-right {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container button {\r\n    width: 2.5rem;\r\n    height: 100%;\r\n    font-size: 1rem;\r\n    margin-left: 0.1rem;\r\n    margin-right: 0.1rem;\r\n    border: none;\r\n    background-color: transparent;\r\n    border-radius: 0.4rem;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    scrollbar-width: thin;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar {\r\n    width: 0.5rem;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-track {\r\n    background: rgb(240, 240, 240);\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-thumb {\r\n    background: rgb(205, 205, 205);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg {\r\n    height: 1.25rem;\r\n    width: 1.25rem;\r\n}\r\n\r\n.vmedia-media-input-tool-container button:hover {\r\n    background-color: rgba(91, 192, 222, 0.1);\r\n}\r\n\r\n.vmedia-media-input-tool-container button:active {\r\n    background-color: rgba(91, 192, 222, 0.4);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.send {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.add-file,\r\n.vmedia-media-input-tool-container button svg.add-image {\r\n    fill: rgba(66, 66, 66, 0.5);\r\n}\r\n\r\n.vmedia-media-input-tool-container button .mdi{\r\n    font-size:1.2rem; \r\n}\r\n\r\n.vmedia-media-input-tool-container button:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-tool-container button{\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container.blur{\r\n    visibility: hidden;\r\n}", ""]);
+exports.push([module.i, ".vmedia-no-show {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1;\r\n    height: 1;\r\n    z-index: -100000;\r\n    opacity: 0;\r\n}\r\n\r\n.vmedia-no-select,\r\n.vmedia-no-select * {\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\ncoccocgrammar {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n\r\n.vmedia-media-input-text-container {\r\n    position: relative;\r\n    min-height: 2.5em;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor img {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor * {\r\n    font-family: inherit;\r\n    font-size: inherit;\r\n    font-weight: inherit;\r\n    text-decoration: inherit;\r\n    color: inherit;\r\n    background: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    white-space: pre;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    min-height: 2em;\r\n    padding-left: 0.5em;\r\n    padding-top: 0.25em;\r\n    padding-bottom: 0.25em;\r\n    margin-right: 0.5em;\r\n    box-sizing: border-box;\r\n    max-height: 6.66666666em;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container {\r\n    white-space: normal;\r\n}\r\n\r\n.vmedia-media-input:not(.dragover) .vmedia-media-input-dropover {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-dropover {\r\n    display: inline-block;\r\n    width: 7em;\r\n    height: 7em;\r\n}\r\n\r\n.vmedia-media-input-dropover>svg {\r\n    width: 7em;\r\n    height: 7em;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-imagepreview {\r\n    margin: 0.3em;\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview {\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.vmedia-media-input-imagepreview img {\r\n    height: 2.5em;\r\n    width: auto;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.attachment {\r\n    height: 2em;\r\n    width: 2em;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times,\r\n.vmedia-media-input-imagepreview svg.times {\r\n    position: absolute;\r\n    top: 0.1em;\r\n    right: 0.1em;\r\n    width: 1em;\r\n    height: 1em;\r\n    fill: rgba(69, 69, 69, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:hover,\r\n.vmedia-media-input-imagepreview svg.times:hover {\r\n    fill: rgba(144, 144, 144, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:active,\r\n.vmedia-media-input-imagepreview svg.times:active {\r\n    fill: rgba(220, 220, 240, 0.6);\r\n}\r\n\r\n.vmedia-media-input-plug-button-container {\r\n    position: absolute;\r\n    left: 0.25em;\r\n    bottom: 0.25em;\r\n    top: 0.25em;\r\n}\r\n\r\n.vmedia-media-input-plug-button-container svg {\r\n    height: 1.5em;\r\n    width: 1.5em;\r\n    vertical-align: middle;\r\n    transition: transform .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n\r\n.vmedia-media-input-plug-button-container svg path {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n    transition: fill .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n.vmedia-media-input.show-plugin .vmedia-media-input-plug-button svg path {\r\n    fill: rgba(134, 142, 153, 0.75);\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-plug-button {\r\n    padding: 0;\r\n    height: 100%;\r\n    width: 2em;\r\n    border: none;\r\n    background: transparent;\r\n    outline: none;\r\n\r\n}\r\n\r\n\r\n.vmedia-media-input-plugin-content-container {\r\n    position: absolute;\r\n    bottom: calc(0.0714rem + 100%);\r\n    opacity: 1;\r\n    transition: opacity .22s cubic-bezier(.5, 0, .4, 1);\r\n    background-color: white;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1);\r\n    z-index: 20;\r\n    background: white;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container:empty{\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container {\r\n    position: relative;\r\n    display: block;\r\n    height: 1.5em;\r\n    /* background: red;     */\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container-left {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container-right {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container button {\r\n    width: 2.5em;\r\n    height: 100%;\r\n    font-size: 1em;\r\n    margin-left: 0.1em;\r\n    margin-right: 0.1em;\r\n    border: none;\r\n    background-color: transparent;\r\n    border-radius: 0.4em;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    scrollbar-width: thin;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar {\r\n    width: 0.5rem;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-track {\r\n    background: rgb(240, 240, 240);\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-thumb {\r\n    background: rgb(205, 205, 205);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg {\r\n    height: 1.25em;\r\n    width: 1.25em;\r\n}\r\n\r\n.vmedia-media-input-tool-container button:hover {\r\n    background-color: rgba(91, 192, 222, 0.1);\r\n}\r\n\r\n.vmedia-media-input-tool-container button:active {\r\n    background-color: rgba(91, 192, 222, 0.4);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.send {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.add-file,\r\n.vmedia-media-input-tool-container button svg.add-image {\r\n    fill: rgba(66, 66, 66, 0.5);\r\n}\r\n\r\n.vmedia-media-input-tool-container button .mdi{\r\n    font-size:1.2em; \r\n}\r\n\r\n.vmedia-media-input-tool-container button:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-tool-container button{\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container.blur{\r\n    visibility: hidden;\r\n}", ""]);
 
 
 
@@ -29872,7 +29872,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-selectlist {\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item:hover {\r\n    background-color: #efefef;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item {\r\n    height: 1.4286rem;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-selectlist-item.selected {\r\n    background-color: #dfdfdf;\r\n}\r\n\r\n.absol-selectlist-item>span {\r\n    line-height: 1.4286rem;\r\n    white-space: pre;\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-selectlist-item {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectlist-item-desc-container {\r\n    position: absolute;\r\n    right: 0.3rem;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.absol-selectlist-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-selectlist-item-desc:empty {\r\n    display: none;\r\n}", ""]);
+exports.push([module.i, ".absol-selectlist {\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item:hover {\r\n    background-color: #efefef;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item {\r\n    height: 1.4286rem;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-selectlist-item.selected {\r\n    background-color: #dfdfdf;\r\n}\r\n\r\n.absol-selectlist-item>span {\r\n    line-height: 1.4286rem;\r\n    white-space: pre;\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-selectlist-item {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectlist-item-desc-container {\r\n    position: absolute;\r\n    right: 0.3em;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.absol-selectlist-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-selectlist-item-desc:empty {\r\n    display: none;\r\n}", ""]);
 
 
 
@@ -29907,7 +29907,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position: fixed; */\r\n\r\n    /* top: 0; */\r\n    /* left: 0; */\r\n    width: 0;\r\n    height: 0;\r\n    overflow: visible;\r\n}\r\n\r\n.absol-selectmenu-anchor {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container {\r\n    position: absolute;\r\n    z-index: 1002;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container .absol-bscroller {\r\n    max-height: calc(100vh - 3.5714rem);\r\n}\r\n\r\n\r\n.absol-selectmenu-anchor.absol-disabled .absol-selectmenu-anchor-content-container {\r\n    visibility: hidden;\r\n    top: -7142.8571rem;\r\n    left: -714.2857rem;\r\n    z-index: -1000;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box {\r\n    border: solid 0.0714rem rgb(169, 169, 169);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-selectmenu-dropdown-box .absol-search-text-input {\r\n    margin: 0.2rem;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.absol-hidden {\r\n    display: none !important;\r\n}\r\n\r\n.absol-selectmenu-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-selectmenu-render-space>div {\r\n    display: inline-block;\r\n\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    background-color: #ebebe4;\r\n}\r\n\r\n\r\n.absol-selectmenu {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 2.1429rem;\r\n    min-width: 2.1429rem;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.1429rem;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    font-size: 1rem;\r\n    outline: none;\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n/* .absol-selectmenu:hover {\r\n    border: solid 0.0714rem black;\r\n} */\r\n\r\n.absol-selectmenu-btn {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    width: 2.1429rem;\r\n    border: none;\r\n    background: transparent;\r\n    z-index: 2;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-selectmenu-btn svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: #929292;\r\n}\r\n\r\n.absol-selectmenu:hover svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: black;\r\n}\r\n\r\n.absol-selectmenu-holder-item {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0.2857rem;\r\n    bottom: 0.2857rem;\r\n    /*0.0714rem for border*/\r\n}\r\n\r\n\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 2rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button {\r\n    background-color: rgba(0, 0, 0, 0.1);\r\n    border-radius: 0.2143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button:hover {\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.absol-scroll-bar-v-container {\r\n    width: 0.7143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-search-text-input {\r\n    margin: 0.2857rem;\r\n}\r\n\r\n.absol-selectmenu-render-space .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item-desc-container {\r\n    right: 2.8571rem;\r\n}", ""]);
+exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position: fixed; */\r\n\r\n    /* top: 0; */\r\n    /* left: 0; */\r\n    width: 0;\r\n    height: 0;\r\n    overflow: visible;\r\n}\r\n\r\n.absol-selectmenu-anchor {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container {\r\n    position: absolute;\r\n    z-index: 1002;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container .absol-bscroller {\r\n    max-height: calc(100vh - 3.5714rem);\r\n}\r\n\r\n\r\n.absol-selectmenu-anchor.absol-disabled .absol-selectmenu-anchor-content-container {\r\n    visibility: hidden;\r\n    top: -7142.8571rem;\r\n    left: -714.2857rem;\r\n    z-index: -1000;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box {\r\n    border: solid 0.0714rem rgb(169, 169, 169);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-selectmenu-dropdown-box .absol-search-text-input {\r\n    margin: 0.2em;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.absol-hidden {\r\n    display: none !important;\r\n}\r\n\r\n.absol-selectmenu-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-selectmenu-render-space>div {\r\n    display: inline-block;\r\n\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    background-color: #ebebe4;\r\n}\r\n\r\n\r\n.absol-selectmenu {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 2.1429rem;\r\n    min-width: 2.1429rem;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.1429rem;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    font-size: 1rem;\r\n    outline: none;\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n/* .absol-selectmenu:hover {\r\n    border: solid 0.0714rem black;\r\n} */\r\n\r\n.absol-selectmenu-btn {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    width: 2.1429rem;\r\n    border: none;\r\n    background: transparent;\r\n    z-index: 2;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-selectmenu-btn svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: #929292;\r\n}\r\n\r\n.absol-selectmenu:hover svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: black;\r\n}\r\n\r\n.absol-selectmenu-holder-item {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0.2857rem;\r\n    bottom: 0.2857rem;\r\n    /*0.0714rem for border*/\r\n}\r\n\r\n\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 2rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button {\r\n    background-color: rgba(0, 0, 0, 0.1);\r\n    border-radius: 0.2143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button:hover {\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.absol-scroll-bar-v-container {\r\n    width: 0.7143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-search-text-input {\r\n    margin: 0.2857rem;\r\n}\r\n\r\n.absol-selectmenu-render-space .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item-desc-container {\r\n    right: 2.8571rem;\r\n}", ""]);
 
 
 
@@ -29942,7 +29942,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-tree-list {}\r\n\r\n.absol-tree-list-item {}\r\n\r\n.absol-tree-list-item-parent:hover {\r\n    background: #efefef;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-tree-list-item-parent {\r\n    padding-left: 0.3rem;\r\n    padding-right: 0.6rem;\r\n    position: relative;\r\n}\r\n\r\n.absol-tree-list-item.active>.absol-tree-list-item-parent {\r\n    background: #dfdfdf;\r\n}\r\n\r\n.absol-tree-list-item-parent>span {\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-tree-list-item-child {}\r\n\r\n.absol-tree-list-item>.absol-tree-list-item-child:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-tree-list-item-desc-container {\r\n    right: 0.3rem;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n.absol-tree-list-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    margin-left: 1rem;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-tree-list-item-desc:empty {\r\n    display: none;\r\n}", ""]);
+exports.push([module.i, ".absol-tree-list {}\r\n\r\n.absol-tree-list-item {}\r\n\r\n.absol-tree-list-item-parent:hover {\r\n    background: #efefef;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-tree-list-item-parent {\r\n    padding-left: 0.3em;\r\n    padding-right: 0.6em;\r\n    position: relative;\r\n}\r\n\r\n.absol-tree-list-item.active>.absol-tree-list-item-parent {\r\n    background: #dfdfdf;\r\n}\r\n\r\n.absol-tree-list-item-parent>span {\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-tree-list-item-child {}\r\n\r\n.absol-tree-list-item>.absol-tree-list-item-child:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-tree-list-item-desc-container {\r\n    right: 0.3em;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n.absol-tree-list-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    margin-left: 1em;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-tree-list-item-desc:empty {\r\n    display: none;\r\n}", ""]);
 
 
 
@@ -30082,7 +30082,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-switch {\r\n    position: relative;\r\n    display: inline-block;\r\n    width: 2.2rem;\r\n    height: 1.2rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-switch input {\r\n    opacity: 0;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-switch-slider {\r\n    position: absolute;\r\n    cursor: pointer;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ccc;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.6rem;\r\n}\r\n\r\n.absol-switch-slider:before {\r\n    position: absolute;\r\n    content: \"\";\r\n    height: 1rem;\r\n    width: 1rem;\r\n    left: 0.1rem;\r\n    bottom: 0.1rem;\r\n    background-color: white;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.5rem;\r\n}\r\n\r\ninput:checked+.absol-switch-slider {\r\n    background-color: #2196F3;\r\n}\r\n\r\ninput:focus+.absol-switch-slider {\r\n    box-shadow: 0 0 0.0714rem #2196F3;\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before {\r\n    -webkit-transform: translateX(1em);\r\n    -ms-transform: translateX(1em);\r\n    transform: translateX(1em);\r\n}\r\n\r\n/* Rounded absol-switch-sliders */\r\n.absol-switch.square .absol-switch-slider {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.square .absol-switch-slider:before {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider:before{\r\n    background-color: rgb(234, 234, 234);\r\n}\r\n\r\n.absol-switch.disabled input:checked+.absol-switch-slider {\r\n    background-color: rgb(141, 188, 226);\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider {\r\n    background-color: rgb(171, 171, 171);\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".absol-switch {\r\n    position: relative;\r\n    display: inline-block;\r\n    width: 2.2em;\r\n    height: 1.2em;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-switch input {\r\n    opacity: 0;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-switch-slider {\r\n    position: absolute;\r\n    cursor: pointer;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ccc;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.6em;\r\n}\r\n\r\n.absol-switch-slider:before {\r\n    position: absolute;\r\n    content: \"\";\r\n    height: 1em;\r\n    width: 1em;\r\n    left: 0.1em;\r\n    bottom: 0.1em;\r\n    background-color: white;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.5em;\r\n}\r\n\r\ninput:checked+.absol-switch-slider {\r\n    background-color: #2196F3;\r\n}\r\n\r\ninput:focus+.absol-switch-slider {\r\n    box-shadow: 0 0 0.0714rem #2196F3;\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before {\r\n    -webkit-transform: translateX(1em);\r\n    -ms-transform: translateX(1em);\r\n    transform: translateX(1em);\r\n}\r\n\r\n/* Rounded absol-switch-sliders */\r\n.absol-switch.square .absol-switch-slider {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.square .absol-switch-slider:before {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider:before{\r\n    background-color: rgb(234, 234, 234);\r\n}\r\n\r\n.absol-switch.disabled input:checked+.absol-switch-slider {\r\n    background-color: rgb(141, 188, 226);\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider {\r\n    background-color: rgb(171, 171, 171);\r\n}\r\n\r\n", ""]);
 
 
 
@@ -30187,7 +30187,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "\r\n.absol-editabe-text {\r\n    display: inline;\r\n}\r\n\r\n.absol-editabe-text span {\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n    white-space: pre;\r\n}\r\n\r\n.absol-editabe-text-higne {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 0rem;\r\n    height: 0ox;\r\n}\r\n\r\n.absol-editabe-text-higne input {\r\n    position: absolute;\r\n    display: none;\r\n    border: none;\r\n    top: -2;\r\n    left: -2;\r\n    padding-top: 0rem;\r\n    padding-left: 0.1429rem;\r\n    padding-bottom: 0.2857rem;\r\n    margin: 0;\r\n    background: transparent;\r\n    outline: none;\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n}\r\n\r\n.absol-editabe-text.editing .absol-editabe-text-higne input {\r\n    display: block;\r\n}\r\n\r\n.absol-editabe-text.editing span {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-editabe-text.editing {\r\n    -webkit-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    -moz-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    border-radius: 0.17rem;\r\n}\r\n", ""]);
+exports.push([module.i, "\r\n.absol-editabe-text {\r\n    display: inline;\r\n}\r\n\r\n.absol-editabe-text span {\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n    white-space: pre;\r\n}\r\n\r\n.absol-editabe-text-higne {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 0rem;\r\n    height: 0ox;\r\n}\r\n\r\n.absol-editabe-text-higne input {\r\n    position: absolute;\r\n    display: none;\r\n    border: none;\r\n    top: -2;\r\n    left: -2;\r\n    padding-top: 0rem;\r\n    padding-left: 0.1429rem;\r\n    padding-bottom: 0.2857rem;\r\n    margin: 0;\r\n    background: transparent;\r\n    outline: none;\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n}\r\n\r\n.absol-editabe-text.editing .absol-editabe-text-higne input {\r\n    display: block;\r\n}\r\n\r\n.absol-editabe-text.editing span {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-editabe-text.editing {\r\n    -webkit-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    -moz-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    border-radius: 0.17em;\r\n}\r\n", ""]);
 
 
 
@@ -30397,7 +30397,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-tabbar {\r\n    white-space: normal;\r\n    height: 2rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n\r\n.absol-tabbar .absol-hscroller-viewport {\r\n    overflow-y: hidden;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button {\r\n    height: 100%;\r\n}\r\n\r\n/* .absol-tabbar .absol-scrollbar-container {\r\n    height: 0.3571rem;\r\n} */\r\n\r\n.absol-tabbar .absol-scrollbar-container.horizontal {\r\n    bottom: -0.1429rem;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-container {\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n    background: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-tabbar:hover .absol-scrollbar-container,\r\n.absol-tabbar:active .absol-scrollbar-container {\r\n    opacity: 1;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button {\r\n    background-color: rgba(33, 33, 40, 0.1);\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button:hover {\r\n    background-color: rgba(33, 33, 40, 0.3);\r\n}\r\n\r\n\r\n\r\n.absol-tabbar .absol-scrollbar-button:active,\r\n.absol-tabbar .absol-hscrollbar.absol-active .absol-scrollbar-button {\r\n    background-color: rgba(47, 47, 55, 0.4);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-tabbar-button {\r\n    padding-left: 1rem;\r\n    padding-right: 1rem;\r\n    background-color: rgb(45, 45, 45);\r\n    color: rgb(200, 200, 200);\r\n    margin-right: 0.0714rem;\r\n    border: none;\r\n    outline: none;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button-active {\r\n    background-color: rgb(30, 30, 30);\r\n    color: rgb(250, 250, 252);\r\n}\r\n\r\n.absol-tabbar-button-text,\r\n.absol-tabbar-button-close {\r\n    display: inline;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-tabbar-button .absol-tabbar-button-close {\r\n    visibility: hidden;\r\n    color: rgb(190, 190, 190);\r\n    font-size: 1em\r\n}\r\n\r\n.absol-tabbar-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-left: 0.5rem;\r\n}\r\n\r\n.absol-tabbar-button-icon-container>span {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-tabbar-button:hover .absol-tabbar-button-close,\r\n.absol-tabbar-button-active .absol-tabbar-button-close {\r\n    visibility: visible;\r\n    color: red;\r\n}\r\n\r\n.absol-tabbar-button-active .absol-tabbar-button-modified-flag {\r\n    color: lightblue;\r\n}\r\n\r\n.absol-tabbar-button-modified-flag {\r\n    color: mediumaquamarine;\r\n}\r\n\r\n.absol-tabbar-button:not(.absol-tabbar-button-modified) .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified:not(.active) .absol-tabbar-button-icon-container:hover .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified .absol-tabbar-button-icon-container:not(:hover) .absol-tabbar-button-close {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-button-range {}\r\n\r\n\r\n.absol-tabview {\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-tabview-container {\r\n    position: absolute;\r\n    top: 2rem;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n}\r\n\r\n\r\n\r\n.absol-tabview-container.absol-tabview-container-hidden {\r\n    z-index: -9999;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-tabview-container>div,\r\n.absol-tabview-container>pre {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-tabview-container>pre {\r\n    margin: 0;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button {\r\n    border-radius: 0.7143rem 0.7143rem 0 0;\r\n    height: 2rem;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #ccc;\r\n    background-color: white;\r\n    color: black;\r\n    padding-left: 1rem;\r\n    padding-right: 0.357rem;\r\n    margin-right: 0.357rem;\r\n}\r\n\r\n.absol-tabview .absol-tabbar {\r\n    height: 2rem;\r\n    overflow-y: hidden;\r\n    border-bottom: 0.0714rem solid #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button-active {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n/* .absol-tabview .absol-tabbar-button-close {\r\n    color: rgb(170, 170, 170);\r\n    line-height: 1.5rem;\r\n    margin-left: 1rem;\r\n    font-size: 1.3rem;\r\n} */\r\n\r\n.absol-tabview .absol-tabbar-button-close:hover {\r\n    color: red;\r\n}\r\n\r\n\r\n\r\n\r\n/************** Mini version - like window form ***********************/\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar {\r\n    height: 1.5714rem;\r\n    border-bottom: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button {\r\n    height: 1.4286rem;\r\n    padding-left: 0.3571rem;\r\n    padding-right: 0.3571rem;\r\n    border-radius: 0;\r\n    margin: 0;\r\n    vertical-align: bottom;\r\n    margin-top: 0.1429rem;\r\n    background-color: rgb(242, 242, 242);\r\n    color: black;\r\n    position: relative;\r\n}\r\n\r\n.absol-tabview.xp-tiny::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 1.2857rem;\r\n    z-index: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 0.2857rem;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button.absol-tabbar-button-active {\r\n    height: 1.5714rem;\r\n    margin-top: 0;\r\n    background-color: white;\r\n    border-top-color: #ccc;\r\n    border-left-color: #ccc;\r\n    border-right-color: #ccc;\r\n    border-bottom-color: white;\r\n}\r\n\r\n\r\n\r\n.absol-hscroller.absol-tabbar.disabled .absol-scrollbar-container {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-tabview.absol-tabview.xp-tiny .absol-tabbar-button-close {\r\n    line-height: 1.2857rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button-close.mdi.mdi-close {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabview-container {\r\n    top: 1.5714rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tab-absol {\r\n    border-left: solid 0.0714rem #ccc;\r\n    border-right: solid 0.0714rem #ccc;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button .absol-tabbar-button-icon-container {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button {\r\n    padding-right: 1rem;\r\n}", ""]);
+exports.push([module.i, ".absol-tabbar {\r\n    white-space: normal;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n\r\n.absol-tabbar .absol-hscroller-viewport {\r\n    overflow-y: hidden;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button {\r\n    height: 100%;\r\n}\r\n\r\n/* .absol-tabbar .absol-scrollbar-container {\r\n    height: 0.3571rem;\r\n} */\r\n\r\n.absol-tabbar .absol-scrollbar-container.horizontal {\r\n    bottom: -0.1429rem;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-container {\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n    background: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-tabbar:hover .absol-scrollbar-container,\r\n.absol-tabbar:active .absol-scrollbar-container {\r\n    opacity: 1;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button {\r\n    background-color: rgba(33, 33, 40, 0.1);\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button:hover {\r\n    background-color: rgba(33, 33, 40, 0.3);\r\n}\r\n\r\n\r\n\r\n.absol-tabbar .absol-scrollbar-button:active,\r\n.absol-tabbar .absol-hscrollbar.absol-active .absol-scrollbar-button {\r\n    background-color: rgba(47, 47, 55, 0.4);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-tabbar-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n    background-color: rgb(45, 45, 45);\r\n    color: rgb(200, 200, 200);\r\n    margin-right: 0.0714rem;\r\n    border: none;\r\n    outline: none;\r\n    font-size: 1em;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button-active {\r\n    background-color: rgb(30, 30, 30);\r\n    color: rgb(250, 250, 252);\r\n}\r\n\r\n.absol-tabbar-button-text,\r\n.absol-tabbar-button-close {\r\n    display: inline;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-tabbar-button .absol-tabbar-button-close {\r\n    visibility: hidden;\r\n    color: rgb(190, 190, 190);\r\n    font-size: 1em\r\n}\r\n\r\n.absol-tabbar-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-left: 0.5em;\r\n}\r\n\r\n.absol-tabbar-button-icon-container>span {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-tabbar-button:hover .absol-tabbar-button-close,\r\n.absol-tabbar-button-active .absol-tabbar-button-close {\r\n    visibility: visible;\r\n    color: red;\r\n}\r\n\r\n.absol-tabbar-button-active .absol-tabbar-button-modified-flag {\r\n    color: lightblue;\r\n}\r\n\r\n.absol-tabbar-button-modified-flag {\r\n    color: mediumaquamarine;\r\n}\r\n\r\n.absol-tabbar-button:not(.absol-tabbar-button-modified) .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified:not(.active) .absol-tabbar-button-icon-container:hover .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified .absol-tabbar-button-icon-container:not(:hover) .absol-tabbar-button-close {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-button-range {}\r\n\r\n\r\n.absol-tabview {\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-tabview-container {\r\n    position: absolute;\r\n    top: 2em;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n}\r\n\r\n\r\n\r\n.absol-tabview-container.absol-tabview-container-hidden {\r\n    z-index: -9999;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-tabview-container>div,\r\n.absol-tabview-container>pre {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-tabview-container>pre {\r\n    margin: 0;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button {\r\n    border-radius: 0.7143rem 0.7143rem 0 0;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #ccc;\r\n    background-color: white;\r\n    color: black;\r\n    padding-left: 1em;\r\n    padding-right: 0.357em;\r\n    margin-right: 0.357em;\r\n}\r\n\r\n.absol-tabview .absol-tabbar {\r\n    height: 2em;\r\n    overflow-y: hidden;\r\n    border-bottom: 0.0714rem solid #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button-active {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n/* .absol-tabview .absol-tabbar-button-close {\r\n    color: rgb(170, 170, 170);\r\n    line-height: 1.5em;\r\n    margin-left: 1em;\r\n    font-size: 1.3em;\r\n} */\r\n\r\n.absol-tabview .absol-tabbar-button-close:hover {\r\n    color: red;\r\n}\r\n\r\n\r\n\r\n\r\n/************** Mini version - like window form ***********************/\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar {\r\n    height: 1.5714rem;\r\n    border-bottom: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button {\r\n    height: 1.4286rem;\r\n    padding-left: 0.3571rem;\r\n    padding-right: 0.3571rem;\r\n    border-radius: 0;\r\n    margin: 0;\r\n    vertical-align: bottom;\r\n    margin-top: 0.1429rem;\r\n    background-color: rgb(242, 242, 242);\r\n    color: black;\r\n    position: relative;\r\n}\r\n\r\n.absol-tabview.xp-tiny::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 1.2857rem;\r\n    z-index: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 0.2857rem;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button.absol-tabbar-button-active {\r\n    height: 1.5714rem;\r\n    margin-top: 0;\r\n    background-color: white;\r\n    border-top-color: #ccc;\r\n    border-left-color: #ccc;\r\n    border-right-color: #ccc;\r\n    border-bottom-color: white;\r\n}\r\n\r\n\r\n\r\n.absol-hscroller.absol-tabbar.disabled .absol-scrollbar-container {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-tabview.absol-tabview.xp-tiny .absol-tabbar-button-close {\r\n    line-height: 1.2857rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button-close.mdi.mdi-close {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabview-container {\r\n    top: 1.5714rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tab-absol {\r\n    border-left: solid 0.0714rem #ccc;\r\n    border-right: solid 0.0714rem #ccc;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button .absol-tabbar-button-icon-container {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button {\r\n    padding-right: 1em;\r\n}", ""]);
 
 
 
@@ -30467,7 +30467,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-page-selector{\r\n    white-space: normal;\r\n}\r\n\r\n.absol-page-selector > ul{\r\n    margin-bottom: 0rem;\r\n    margin-top: 0;\r\n}\r\n\r\n.page-number-buttons{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-number-input > label{\r\n    font-weight: 100;\r\n}\r\n\r\n.page-number-buttons > li.page-previous, \r\n.page-number-buttons > li.page-next,\r\n.page-number-buttons > li.page-first,\r\n.page-number-buttons > li.page-last\r\n{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    padding-left: 0.7143rem;\r\n    padding-right: 0.7143rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n.page-number-buttons > li.page-number{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    width: 2.8571rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.page-number-buttons > li.page-number.active{\r\n    box-shadow:  0 0.1429rem 0.3571rem 0 rgba(0,0,0,.16), 0 0.1429rem 0.7143rem 0 rgba(0,0,0,.12);\r\n    background-color: #4285f4;\r\n    border-radius:0.1429rem; \r\n    \r\n}\r\n\r\n.page-number-buttons > li.page-number.active > a{\r\n\tcolor: white;\r\n    \r\n}\r\n\r\n.page-number-buttons > li> a{\r\n    line-height: 2.1429rem;\r\n    text-decoration:none;\r\n}\r\n\r\n.page-number-buttons > li:not(.active):hover{\r\n    background-color: #eee;\r\n\r\n}\r\n\r\n.absol-page-selector .page-number-input{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-page-selector .page-number-input  input[type=\"text\"]{\r\n    width: 3rem;\r\n    margin-left: 0.3571rem; \r\n    margin-right: 0.7143rem;\r\n    text-align: center;\r\n    height: 1.8571rem;\r\n    border: none;\r\n    border: solid 0.0714rem #ccc; \r\n    border-radius: 0.1429rem;\r\n\r\n}", ""]);
+exports.push([module.i, ".absol-page-selector{\r\n    white-space: normal;\r\n}\r\n\r\n.absol-page-selector > ul{\r\n    margin-bottom: 0rem;\r\n    margin-top: 0;\r\n}\r\n\r\n.page-number-buttons{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-number-input > label{\r\n    font-weight: 100;\r\n}\r\n\r\n.page-number-buttons > li.page-previous, \r\n.page-number-buttons > li.page-next,\r\n.page-number-buttons > li.page-first,\r\n.page-number-buttons > li.page-last\r\n{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    padding-left: 0.7143rem;\r\n    padding-right: 0.7143rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n.page-number-buttons > li.page-number{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    width: 2.8571rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.page-number-buttons > li.page-number.active{\r\n    box-shadow:  0 0.1429rem 0.3571rem 0 rgba(0,0,0,.16), 0 0.1429rem 0.7143rem 0 rgba(0,0,0,.12);\r\n    background-color: #4285f4;\r\n    border-radius:0.1429rem; \r\n    \r\n}\r\n\r\n.page-number-buttons > li.page-number.active > a{\r\n\tcolor: white;\r\n    \r\n}\r\n\r\n.page-number-buttons > li> a{\r\n    line-height: 2.1429rem;\r\n    text-decoration:none;\r\n}\r\n\r\n.page-number-buttons > li:not(.active):hover{\r\n    background-color: #eee;\r\n\r\n}\r\n\r\n.absol-page-selector .page-number-input{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-page-selector .page-number-input  input[type=\"text\"]{\r\n    width: 3em;\r\n    margin-left: 0.3571rem; \r\n    margin-right: 0.7143rem;\r\n    text-align: center;\r\n    height: 1.8571rem;\r\n    border: none;\r\n    border: solid 0.0714rem #ccc; \r\n    border-radius: 0.1429rem;\r\n\r\n}", ""]);
 
 
 
@@ -30537,7 +30537,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-search-list {\r\n    padding-top: 2.5rem;\r\n    position: relative;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-search-list-search-input-container {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 2.5rem;\r\n    border-bottom: solid 0.0714rem #a9a9a9;\r\n\r\n}\r\n\r\n\r\n.absol-search-list-search-input-container input[type=\"text\"] {\r\n    font-size: 1rem;\r\n    box-sizing: border-box;\r\n    width: calc(100% - 1em);\r\n    height: 1.5rem;\r\n    margin: 0.5rem;\r\n}\r\n\r\n.absol-search-list-contents {\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    background: white;\r\n}\r\n\r\n.absol-search-list-item {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-search-list-item.default {\r\n    line-height: 2rem;\r\n    padding-left: 1rem;\r\n    padding-right: 1rem;\r\n}\r\n\r\n.absol-search-list-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-search-list-item.active {\r\n    background-color: rgba(169, 169, 169, 0.4);\r\n}", ""]);
+exports.push([module.i, ".absol-search-list {\r\n    padding-top: 2.5em;\r\n    position: relative;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-search-list-search-input-container {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 2.5em;\r\n    border-bottom: solid 0.0714rem #a9a9a9;\r\n\r\n}\r\n\r\n\r\n.absol-search-list-search-input-container input[type=\"text\"] {\r\n    font-size: 1em;\r\n    box-sizing: border-box;\r\n    width: calc(100% - 1em);\r\n    height: 1.5em;\r\n    margin: 0.5em;\r\n}\r\n\r\n.absol-search-list-contents {\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    background: white;\r\n}\r\n\r\n.absol-search-list-item {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-search-list-item.default {\r\n    line-height: 2em;\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-search-list-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-search-list-item.active {\r\n    background-color: rgba(169, 169, 169, 0.4);\r\n}", ""]);
 
 
 
@@ -30572,7 +30572,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-static-tabbar {\r\n    position: relative;\r\n}\r\n\r\n.absol-static-tabbar-button {\r\n    height: 2rem;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 1rem;\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    color: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-static-tabbar-button:hover {\r\n    color: rgb(30, 30, 55);\r\n}\r\n\r\n.absol-static-tabbar-button.active {\r\n    color: black;\r\n}\r\n\r\n.absol-static-tabbar-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-static-tabbar-button>span {\r\n    font-size: 0.7rem;\r\n}\r\n\r\n.absol-static-tabbar-hline {\r\n    border-bottom: solid 0.0714rem rgb(127, 127, 128);\r\n    height: 100%;\r\n}\r\n\r\n.absol-static-tabbar-active-box {\r\n    position: absolute;\r\n    bottom: 0;\r\n    top: 0;\r\n    left: 0;\r\n    width: 0;\r\n    transition: left 0.15s, width 0.15s;\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    box-sizing: border-box;\r\n    /* z-index: 1; */\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-hline{\r\n    border-bottom-color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button.active{\r\n    color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button {\r\n    color: rgb(204, 204, 204);\r\n}", ""]);
+exports.push([module.i, ".absol-static-tabbar {\r\n    position: relative;\r\n}\r\n\r\n.absol-static-tabbar-button {\r\n    height: 2em;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 1em;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    color: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-static-tabbar-button:hover {\r\n    color: rgb(30, 30, 55);\r\n}\r\n\r\n.absol-static-tabbar-button.active {\r\n    color: black;\r\n}\r\n\r\n.absol-static-tabbar-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-static-tabbar-button>span {\r\n    font-size: 0.7em;\r\n}\r\n\r\n.absol-static-tabbar-hline {\r\n    border-bottom: solid 0.0714rem rgb(127, 127, 128);\r\n    height: 100%;\r\n}\r\n\r\n.absol-static-tabbar-active-box {\r\n    position: absolute;\r\n    bottom: 0;\r\n    top: 0;\r\n    left: 0;\r\n    width: 0;\r\n    transition: left 0.15s, width 0.15s;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    box-sizing: border-box;\r\n    /* z-index: 1; */\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-hline{\r\n    border-bottom-color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button.active{\r\n    color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button {\r\n    color: rgb(204, 204, 204);\r\n}", ""]);
 
 
 
@@ -30607,7 +30607,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-exp-node {\r\n    height: 2rem;\r\n    text-align: left;\r\n    background-color: transparent;\r\n    border: none;\r\n    outline: none;\r\n    white-space: nowrap;\r\n    font-size: inherit;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    position: relative;\r\n    color: rgb(33, 33, 34);\r\n}\r\n\r\n.absol-exp-node .toggler-ico {\r\n    width: 0.7rem;\r\n    height: 0.7rem;\r\n    margin-right: 0.35rem;\r\n}\r\n\r\n.absol-exp-node .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-exp-node.status-removable .toggler-ico,\r\n.absol-exp-node.status-modified .toggler-ico {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-open) .toggle-open {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-close) .toggle-close {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node:hover .remove-ico {\r\n    visibility: visible;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node.status-removable .remove-ico,\r\n.absol-exp-node.status-modified .remove-ico {\r\n    display: inline-block;\r\n}\r\n\r\n.absol-exp-node.status-removable .remove-ico .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico .close {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .close {\r\n    visibility: visible;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-exp-node .remove-ico {\r\n    width: 0.9rem;\r\n    height: 0.9rem;\r\n    display: none;\r\n    visibility: hidden;\r\n    margin-left: -0.3rem;\r\n    margin-right: 0.45rem;\r\n}\r\n\r\n.absol-exp-node .remove-ico .close,\r\n.absol-exp-node .remove-ico .modified {\r\n    fill: rgb(169, 169, 169);\r\n    stroke: none;\r\n}\r\n\r\n\r\n.absol-exp-node.has-status {\r\n    padding-right: 2.5rem;\r\n}\r\n\r\n.absol-exp-node>div,\r\n.absol-exp-node>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-exp-node .editing input {\r\n    color: khaki;\r\n    padding-top: 0.1429rem;\r\n    padding-bottom: 0.1429rem;\r\n}\r\n\r\n.absol-exp-node:hover {\r\n    background-color: rgb(169, 169, 172, 0.1);\r\n}\r\n\r\n.absol-exp-node:focus,\r\n.absol-exp-node.active:focus {\r\n    background-color: rgba(20, 185, 235, 0.3);\r\n}\r\n\r\n.absol-exp-node.active {\r\n    background-color: rgb(169, 169, 172, 0.2);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-exp-node-name {\r\n    /* -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none; */\r\n    user-select: none;\r\n    vertical-align: middle;\r\n    color: black;\r\n    margin-left: 0.5rem;\r\n}\r\n\r\n.absol-exp-node-desc {\r\n    color: rgb(104, 104, 104);\r\n    margin-left: 0.5rem;\r\n    font-size: 0.85rem;\r\n}\r\n\r\n.absol-exp-node-desc:empty {\r\n    margin-left: 0;\r\n}\r\n\r\n\r\n.absol-exp-node-expand-icon {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-right: 0.2rem;\r\n    height: 0.5rem;\r\n    width: 0.5rem;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node-ext-icon,\r\n.absol-exp-node-ext-icon>img {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 1.5rem;\r\n    height: 1.5rem;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon:empty {\r\n    display: none;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon {\r\n    text-align: center;\r\n}\r\n\r\n.absol-exp-node-ext-icon>.mdi,\r\n.absol-exp-node-ext-icon>span .absol-exp-node-ext-icon>svg {\r\n    line-height: 1rem;\r\n    font-size: 1.5rem;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon[src] {\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.absol-exp-tree>.absol-exp-node {\r\n    width: 100%;\r\n    display: block;\r\n}\r\n\r\n.absol-exp-tree.hide-children>.absol-exp-items {\r\n    display: none;\r\n}\r\n\r\n\r\n.dark .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n.dark .absol-exp-node-name {\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.dark .absol-exp-node-desc {\r\n    color: rgb(169, 169, 170);\r\n}\r\n\r\n.dark .absol-exp-node {\r\n    color: rgb(169, 169, 170);\r\n}", ""]);
+exports.push([module.i, ".absol-exp-node {\r\n    height: 2em;\r\n    text-align: left;\r\n    background-color: transparent;\r\n    border: none;\r\n    outline: none;\r\n    white-space: nowrap;\r\n    font-size: inherit;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    position: relative;\r\n    color: rgb(33, 33, 34);\r\n}\r\n\r\n.absol-exp-node .toggler-ico {\r\n    width: 0.7em;\r\n    height: 0.7em;\r\n    margin-right: 0.35em;\r\n}\r\n\r\n.absol-exp-node .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-exp-node.status-removable .toggler-ico,\r\n.absol-exp-node.status-modified .toggler-ico {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-open) .toggle-open {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-close) .toggle-close {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node:hover .remove-ico {\r\n    visibility: visible;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node.status-removable .remove-ico,\r\n.absol-exp-node.status-modified .remove-ico {\r\n    display: inline-block;\r\n}\r\n\r\n.absol-exp-node.status-removable .remove-ico .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico .close {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .close {\r\n    visibility: visible;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-exp-node .remove-ico {\r\n    width: 0.9em;\r\n    height: 0.9em;\r\n    display: none;\r\n    visibility: hidden;\r\n    margin-left: -0.3em;\r\n    margin-right: 0.45em;\r\n}\r\n\r\n.absol-exp-node .remove-ico .close,\r\n.absol-exp-node .remove-ico .modified {\r\n    fill: rgb(169, 169, 169);\r\n    stroke: none;\r\n}\r\n\r\n\r\n.absol-exp-node.has-status {\r\n    padding-right: 2.5em;\r\n}\r\n\r\n.absol-exp-node>div,\r\n.absol-exp-node>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-exp-node .editing input {\r\n    color: khaki;\r\n    padding-top: 0.1429rem;\r\n    padding-bottom: 0.1429rem;\r\n}\r\n\r\n.absol-exp-node:hover {\r\n    background-color: rgb(169, 169, 172, 0.1);\r\n}\r\n\r\n.absol-exp-node:focus,\r\n.absol-exp-node.active:focus {\r\n    background-color: rgba(20, 185, 235, 0.3);\r\n}\r\n\r\n.absol-exp-node.active {\r\n    background-color: rgb(169, 169, 172, 0.2);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-exp-node-name {\r\n    /* -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none; */\r\n    user-select: none;\r\n    vertical-align: middle;\r\n    color: black;\r\n    margin-left: 0.5em;\r\n}\r\n\r\n.absol-exp-node-desc {\r\n    color: rgb(104, 104, 104);\r\n    margin-left: 0.5em;\r\n    font-size: 0.85em;\r\n}\r\n\r\n.absol-exp-node-desc:empty {\r\n    margin-left: 0;\r\n}\r\n\r\n\r\n.absol-exp-node-expand-icon {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-right: 0.2em;\r\n    height: 0.5em;\r\n    width: 0.5em;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node-ext-icon,\r\n.absol-exp-node-ext-icon>img {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 1.5em;\r\n    height: 1.5em;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon:empty {\r\n    display: none;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon {\r\n    text-align: center;\r\n}\r\n\r\n.absol-exp-node-ext-icon>.mdi,\r\n.absol-exp-node-ext-icon>span .absol-exp-node-ext-icon>svg {\r\n    line-height: 1em;\r\n    font-size: 1.5em;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon[src] {\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.absol-exp-tree>.absol-exp-node {\r\n    width: 100%;\r\n    display: block;\r\n}\r\n\r\n.absol-exp-tree.hide-children>.absol-exp-items {\r\n    display: none;\r\n}\r\n\r\n\r\n.dark .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n.dark .absol-exp-node-name {\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.dark .absol-exp-node-desc {\r\n    color: rgb(169, 169, 170);\r\n}\r\n\r\n.dark .absol-exp-node {\r\n    color: rgb(169, 169, 170);\r\n}", ""]);
 
 
 
@@ -30712,7 +30712,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-quick-path {\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    user-select: none;\r\n    -webkit-user-select: none;\r\n    -ms-user-select: none;\r\n    -moz-user-select: none;\r\n    min-height: 1.5rem;\r\n}\r\n\r\n.absol-quick-path button {\r\n    outline: none;\r\n    color: rgb(69, 69, 69);\r\n    height: 1.5rem;\r\n}\r\n\r\n.absol-quick-path button:hover {\r\n    color: black;\r\n}\r\n\r\n.absol-quick-path .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.dark .absol-quick-path button {\r\n    color: rgb(200, 200, 200);\r\n}\r\n\r\n\r\n.dark .absol-quick-path button:hover {\r\n    color: white;\r\n}\r\n\r\n.dark .absol-quick-path .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n\r\n.absol-quick-path-btn:focus span {\r\n    text-decoration: underline;\r\n}\r\n\r\n/* \r\n.absol-quick-path-btn .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n} */\r\n", ""]);
+exports.push([module.i, ".absol-quick-path {\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    user-select: none;\r\n    -webkit-user-select: none;\r\n    -ms-user-select: none;\r\n    -moz-user-select: none;\r\n    min-height: 1.5em;\r\n}\r\n\r\n.absol-quick-path button {\r\n    outline: none;\r\n    color: rgb(69, 69, 69);\r\n    height: 1.5em;\r\n}\r\n\r\n.absol-quick-path button:hover {\r\n    color: black;\r\n}\r\n\r\n.absol-quick-path .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.dark .absol-quick-path button {\r\n    color: rgb(200, 200, 200);\r\n}\r\n\r\n\r\n.dark .absol-quick-path button:hover {\r\n    color: white;\r\n}\r\n\r\n.dark .absol-quick-path .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n\r\n.absol-quick-path-btn:focus span {\r\n    text-decoration: underline;\r\n}\r\n\r\n/* \r\n.absol-quick-path-btn .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n} */\r\n", ""]);
 
 
 
@@ -30747,7 +30747,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-drop-panel-head {\r\n    height: 2.75rem;\r\n    line-height: 2.75rem;\r\n    -webkit-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    -moz-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    background-color: rgba(240, 240, 242);\r\n    color: black;\r\n}\r\n\r\n.absol-drop-panel-head .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n\r\n.dark .absol-drop-panel-head {\r\n    background-color: rgba(54, 54, 56);\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.absol-drop-panel.show .absol-drop-panel-body {\r\n    height:auto;\r\n}\r\n\r\n.absol-drop-panel-body {\r\n    transition: height 0.2s;\r\n    height: 0;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n\r\n.absol-drop-panel.show>.absol-drop-panel-head  .toggle-close{\r\n    display: none;\r\n}\r\n\r\n.absol-drop-panel:not(.show)>.absol-drop-panel-head  .toggle-open{\r\n    display: none;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".absol-drop-panel-head {\r\n    height: 2.75em;\r\n    line-height: 2.75em;\r\n    -webkit-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    -moz-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    background-color: rgba(240, 240, 242);\r\n    color: black;\r\n}\r\n\r\n.absol-drop-panel-head .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n\r\n.dark .absol-drop-panel-head {\r\n    background-color: rgba(54, 54, 56);\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.absol-drop-panel.show .absol-drop-panel-body {\r\n    height:auto;\r\n}\r\n\r\n.absol-drop-panel-body {\r\n    transition: height 0.2s;\r\n    height: 0;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n\r\n.absol-drop-panel.show>.absol-drop-panel-head  .toggle-close{\r\n    display: none;\r\n}\r\n\r\n.absol-drop-panel:not(.show)>.absol-drop-panel-head  .toggle-open{\r\n    display: none;\r\n}\r\n\r\n", ""]);
 
 
 
@@ -30817,7 +30817,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-chrome-calendar {\r\n    display: inline-block;\r\n    font-family: Arial;\r\n    font-size: 1rem;\r\n    padding: 0.6rem;\r\n    border: solid 0.0714rem rgb(191, 191, 191);\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem rgb(240, 240, 240);\r\n    z-index: 100;\r\n    touch-action: manipulation;\r\n    user-select: none;\r\n    background-color: rgb(255, 255, 255);\r\n    white-space: initial;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header {\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-title {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button {\r\n    font-size: 1rem;\r\n    width: 1.5rem;\r\n    height: 1.5rem;\r\n    padding: 0;\r\n    border-radius: 0.2rem;\r\n    border: solid 0.0714rem rgb(167, 167, 167);\r\n    background: linear-gradient(rgb(240, 240, 240), rgb(233, 233, 233), rgb(223, 223, 223));\r\n    cursor: pointer;\r\n    outline: none;\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem #aaa;\r\n    color: rgb(110, 110, 110);\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button:nth-child(2) {\r\n    margin-left: 0.2rem;\r\n    margin-right: 0.2rem;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header-buttons>button:active {\r\n    box-shadow: 0rem 0rem 0.1429rem #aaa;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-title {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-title>span {\r\n    line-height: 1.5rem;\r\n}\r\n\r\n.absol-chrome-calendar-instance {\r\n    margin-top: 1rem;\r\n    border: solid 0.0714rem rgb(190, 190, 190);\r\n    width: 14rem;\r\n    position: relative;\r\n    height: calc(8.4em + 0.2143rem);\r\n    overflow: hidden;\r\n    /*border*/\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek {\r\n    background-color: rgb(241, 241, 241);\r\n    height: 1.2rem;\r\n    white-space: nowrap;\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 10;\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek>div {\r\n    text-align: center;\r\n    line-height: 1.2;\r\n    display: inline-block;\r\n    width: 14.2857142857%;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container {\r\n    position: absolute;\r\n    transition: top 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.old {\r\n    z-index: 7;\r\n    /* background: red; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.new {\r\n    z-index: 8;\r\n    /* background: blue; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container>.absol-chrome-calendar-month {\r\n    width: 100%;\r\n    height: 100%;\r\n    margin-top: -0.0714rem;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-month {\r\n    display: table;\r\n    width: 100%;\r\n    margin-top: 1.2rem;\r\n    background-color: white;\r\n    /*for header*/\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth {\r\n    display: table-row;\r\n    height: 1.2rem;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div {\r\n    display: table-cell;\r\n    text-align: right;\r\n    padding-right: 0.4rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-not-in-month {\r\n    color: rgb(190, 190, 190);\r\n}\r\n\r\n.absol-chrome-calendar-today {\r\n    border: inset 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-selected {\r\n    background-color: rgb(188, 205, 236);\r\n}\r\n\r\n.absol-chrome-calendar-years {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-chrome-calendar:not(.view-year) .absol-chrome-calendar-years {\r\n    /* display: none; */\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: -10000;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-chrome-calendar.view-year .absol-chrome-calendar-instance {\r\n    border-color: rgb(77, 114, 254)\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-month,\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-dayofweek {\r\n    display: none;\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-title {\r\n    color: rgb(191, 191, 191);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year {\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year-head {\r\n    background-color: rgb(241, 241, 241);\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    height: 1.5rem;\r\n    text-align: center;\r\n    line-height: 1.5rem;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year:last-child .absol-chrome-calendar-year-head {\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year.start-opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: -6rem;\r\n    transition: margin-bottom linear 0.1s;\r\n}\r\n\r\n.absol-chrome-calendar-year.opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.start-closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: 0;\r\n    transition: margin-bottom linear 0.1s;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-year-mounths {\r\n    width: 100%;\r\n    display: table;\r\n    height: 6rem;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year-row-months {\r\n    display: table-row;\r\n}\r\n\r\n.absol-chrome-calendar-year-month {\r\n    text-align: center;\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-year-month:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n\r\n\r\n.absol-chrome-calendar-years:hover .absol-scrollbar {\r\n    opacity: 1;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-years .absol-scrollbar {\r\n    background-color: rgba(169, 169, 172, 0.2);\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-date-disabled {\r\n    color: rgb(240, 230, 230);\r\n    pointer-events: none;\r\n    cursor: not-allowed;\r\n}\r\n\r\nbutton.absol-chrome-calendar-button-disabled {\r\n    color: rgb(220, 210, 210);\r\n    pointer-events: none;\r\n    box-shadow: none;\r\n    cursor: not-allowed;\r\n}", ""]);
+exports.push([module.i, ".absol-chrome-calendar {\r\n    display: inline-block;\r\n    font-family: Arial;\r\n    font-size: 1rem;\r\n    padding: 0.6em;\r\n    border: solid 0.0714rem rgb(191, 191, 191);\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem rgb(240, 240, 240);\r\n    z-index: 100;\r\n    touch-action: manipulation;\r\n    user-select: none;\r\n    background-color: rgb(255, 255, 255);\r\n    white-space: initial;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header {\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-title {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button {\r\n    font-size: 1em;\r\n    width: 1.5em;\r\n    height: 1.5em;\r\n    padding: 0;\r\n    border-radius: 0.2em;\r\n    border: solid 0.0714rem rgb(167, 167, 167);\r\n    background: linear-gradient(rgb(240, 240, 240), rgb(233, 233, 233), rgb(223, 223, 223));\r\n    cursor: pointer;\r\n    outline: none;\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem #aaa;\r\n    color: rgb(110, 110, 110);\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button:nth-child(2) {\r\n    margin-left: 0.2em;\r\n    margin-right: 0.2em;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header-buttons>button:active {\r\n    box-shadow: 0rem 0rem 0.1429rem #aaa;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-title {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-title>span {\r\n    line-height: 1.5em;\r\n}\r\n\r\n.absol-chrome-calendar-instance {\r\n    margin-top: 1em;\r\n    border: solid 0.0714rem rgb(190, 190, 190);\r\n    width: 14em;\r\n    position: relative;\r\n    height: calc(8.4em + 0.2143rem);\r\n    overflow: hidden;\r\n    /*border*/\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek {\r\n    background-color: rgb(241, 241, 241);\r\n    height: 1.2em;\r\n    white-space: nowrap;\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 10;\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek>div {\r\n    text-align: center;\r\n    line-height: 1.2;\r\n    display: inline-block;\r\n    width: 14.2857142857%;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container {\r\n    position: absolute;\r\n    transition: top 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.old {\r\n    z-index: 7;\r\n    /* background: red; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.new {\r\n    z-index: 8;\r\n    /* background: blue; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container>.absol-chrome-calendar-month {\r\n    width: 100%;\r\n    height: 100%;\r\n    margin-top: -0.0714rem;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-month {\r\n    display: table;\r\n    width: 100%;\r\n    margin-top: 1.2em;\r\n    background-color: white;\r\n    /*for header*/\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth {\r\n    display: table-row;\r\n    height: 1.2em;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div {\r\n    display: table-cell;\r\n    text-align: right;\r\n    padding-right: 0.4em;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-not-in-month {\r\n    color: rgb(190, 190, 190);\r\n}\r\n\r\n.absol-chrome-calendar-today {\r\n    border: inset 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-selected {\r\n    background-color: rgb(188, 205, 236);\r\n}\r\n\r\n.absol-chrome-calendar-years {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-chrome-calendar:not(.view-year) .absol-chrome-calendar-years {\r\n    /* display: none; */\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: -10000;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-chrome-calendar.view-year .absol-chrome-calendar-instance {\r\n    border-color: rgb(77, 114, 254)\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-month,\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-dayofweek {\r\n    display: none;\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-title {\r\n    color: rgb(191, 191, 191);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year {\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year-head {\r\n    background-color: rgb(241, 241, 241);\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    height: 1.5em;\r\n    text-align: center;\r\n    line-height: 1.5em;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year:last-child .absol-chrome-calendar-year-head {\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year.start-opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: -6em;\r\n    transition: margin-bottom linear 0.1s;\r\n}\r\n\r\n.absol-chrome-calendar-year.opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.start-closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: 0;\r\n    transition: margin-bottom linear 0.1s;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-year-mounths {\r\n    width: 100%;\r\n    display: table;\r\n    height: 6em;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year-row-months {\r\n    display: table-row;\r\n}\r\n\r\n.absol-chrome-calendar-year-month {\r\n    text-align: center;\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-year-month:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n\r\n\r\n.absol-chrome-calendar-years:hover .absol-scrollbar {\r\n    opacity: 1;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-years .absol-scrollbar {\r\n    background-color: rgba(169, 169, 172, 0.2);\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-date-disabled {\r\n    color: rgb(240, 230, 230);\r\n    pointer-events: none;\r\n    cursor: not-allowed;\r\n}\r\n\r\nbutton.absol-chrome-calendar-button-disabled {\r\n    color: rgb(220, 210, 210);\r\n    pointer-events: none;\r\n    box-shadow: none;\r\n    cursor: not-allowed;\r\n}", ""]);
 
 
 
@@ -30852,7 +30852,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-calendar-input {\r\n    font-size: 1rem;\r\n    width: 7rem;\r\n    height: 2rem;\r\n    box-sizing: content-box;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.2rem;\r\n}\r\n\r\n.absol-calendar-input>input {\r\n    text-align: center;\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    cursor: pointer;\r\n    border: none;\r\n    background: transparent;\r\n}\r\n\r\n.absol-calendar-input>input:hover,\r\n.absol-calendar-input>input:focus {\r\n    color: red;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled input {\r\n    color: rgb(169, 169, 171);\r\n}", ""]);
+exports.push([module.i, ".absol-calendar-input {\r\n    font-size: 1rem;\r\n    width: 7em;\r\n    height: 2em;\r\n    box-sizing: content-box;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.2em;\r\n}\r\n\r\n.absol-calendar-input>input {\r\n    text-align: center;\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    cursor: pointer;\r\n    border: none;\r\n    background: transparent;\r\n}\r\n\r\n.absol-calendar-input>input:hover,\r\n.absol-calendar-input>input:focus {\r\n    color: red;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled input {\r\n    color: rgb(169, 169, 171);\r\n}", ""]);
 
 
 
@@ -30887,7 +30887,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-onscreen-window {\r\n    z-index: 1002;\r\n    position: fixed;\r\n    left: 0.7143rem;\r\n    top: 0.7143rem;\r\n    width: 12rem;\r\n    height: 5rem;\r\n    /*default size*/\r\n    /* min-width: 12rem;\r\n    min-height: 1.4rem; */\r\n}\r\n\r\n.absol-onscreen-window-content {\r\n    position: relative;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: white;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.absol-onscreen-window-head-bar {\r\n    height: 1.4rem;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.15);\r\n    padding: 0.2rem;\r\n    box-sizing: border-box;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-icon {\r\n    line-height: 1.2rem;\r\n    font-size: 1rem;\r\n    margin-right: 0.2rem;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-title {\r\n    line-height: 1.2rem;\r\n    font-size: 1rem;\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons {\r\n    position: absolute;\r\n    right: 0.1rem;\r\n    top: 0.1rem;\r\n    bottom: 0.1rem;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button {\r\n    height: 100%;\r\n    width: 1rem;\r\n    font-size: 1rem;\r\n    padding: 0;\r\n    margin: 0 0 0 0.1rem;\r\n    border: none;\r\n    color: rgba(169, 169, 169);\r\n    outline: none;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover {\r\n    color: rgba(103, 103, 103);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:active {\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover>.mdi-close {\r\n    color: rgb(255, 59, 59);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button>span {\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-onscreen-window-body-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 1.4rem;\r\n    bottom: 0;\r\n}\r\n\r\n\r\n.absol-onscreen-window-moving-modal {\r\n    position: fixed;\r\n    left: 0.0714rem;\r\n    right: 0.0714rem;\r\n    top: 0.0714rem;\r\n    bottom: 0.0714rem;\r\n    z-index: 100006;\r\n}\r\n\r\n.absol-onscreen-window-resizer {\r\n    position: absolute;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom {\r\n    bottom: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top {\r\n    top: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-left {\r\n    left: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-right {\r\n    right: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-top,\r\n.absol-onscreen-window-resize-bottom {\r\n    cursor: ns-resize;\r\n\r\n}\r\n\r\n.absol-onscreen-window-resize-left,\r\n.absol-onscreen-window-resize-right {\r\n    cursor: ew-resize;\r\n\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-bottom-right {\r\n    cursor: se-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-bottom-left {\r\n    cursor: sw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-left {\r\n    cursor: nw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-right {\r\n    cursor: ne-resize;\r\n}", ""]);
+exports.push([module.i, ".absol-onscreen-window {\r\n    z-index: 1002;\r\n    position: fixed;\r\n    left: 0.7143rem;\r\n    top: 0.7143rem;\r\n    width: 12em;\r\n    height: 5em;\r\n    /*default size*/\r\n    /* min-width: 12em;\r\n    min-height: 1.4em; */\r\n}\r\n\r\n.absol-onscreen-window-content {\r\n    position: relative;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: white;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.absol-onscreen-window-head-bar {\r\n    height: 1.4em;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.15);\r\n    padding: 0.2em;\r\n    box-sizing: border-box;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-icon {\r\n    line-height: 1.2em;\r\n    font-size: 1em;\r\n    margin-right: 0.2em;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-title {\r\n    line-height: 1.2em;\r\n    font-size: 1em;\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons {\r\n    position: absolute;\r\n    right: 0.1em;\r\n    top: 0.1em;\r\n    bottom: 0.1em;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button {\r\n    height: 100%;\r\n    width: 1em;\r\n    font-size: 1em;\r\n    padding: 0;\r\n    margin: 0 0 0 0.1em;\r\n    border: none;\r\n    color: rgba(169, 169, 169);\r\n    outline: none;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover {\r\n    color: rgba(103, 103, 103);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:active {\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover>.mdi-close {\r\n    color: rgb(255, 59, 59);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button>span {\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-onscreen-window-body-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 1.4em;\r\n    bottom: 0;\r\n}\r\n\r\n\r\n.absol-onscreen-window-moving-modal {\r\n    position: fixed;\r\n    left: 0.0714rem;\r\n    right: 0.0714rem;\r\n    top: 0.0714rem;\r\n    bottom: 0.0714rem;\r\n    z-index: 100006;\r\n}\r\n\r\n.absol-onscreen-window-resizer {\r\n    position: absolute;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom {\r\n    bottom: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top {\r\n    top: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-left {\r\n    left: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-right {\r\n    right: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-top,\r\n.absol-onscreen-window-resize-bottom {\r\n    cursor: ns-resize;\r\n\r\n}\r\n\r\n.absol-onscreen-window-resize-left,\r\n.absol-onscreen-window-resize-right {\r\n    cursor: ew-resize;\r\n\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-bottom-right {\r\n    cursor: se-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-bottom-left {\r\n    cursor: sw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-left {\r\n    cursor: nw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-right {\r\n    cursor: ne-resize;\r\n}", ""]);
 
 
 
@@ -30922,7 +30922,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "/*margin for border size*/\r\n.as-hruler {\r\n    position: relative;\r\n    height: 1.5rem;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-hruler-line {\r\n    position: absolute;\r\n    bottom: 0;\r\n    height: 25%;\r\n    border-left: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.as-hruler-line.major {\r\n    height: 50%;\r\n    border-left: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-hruler-major-number{\r\n    position: absolute;\r\n    text-align: center;\r\n    width: 5rem;\r\n    pointer-events: none;\r\n    font-size: 0.7rem;\r\n    bottom: 50%;\r\n} ", ""]);
+exports.push([module.i, "/*margin for border size*/\r\n.as-hruler {\r\n    position: relative;\r\n    height: 1.5em;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-hruler-line {\r\n    position: absolute;\r\n    bottom: 0;\r\n    height: 25%;\r\n    border-left: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.as-hruler-line.major {\r\n    height: 50%;\r\n    border-left: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-hruler-major-number{\r\n    position: absolute;\r\n    text-align: center;\r\n    width: 5em;\r\n    pointer-events: none;\r\n    font-size: 0.7em;\r\n    bottom: 50%;\r\n} ", ""]);
 
 
 
@@ -30957,7 +30957,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "/*margin for border size*/\r\n.as-vruler {\r\n    position: relative;\r\n    width: 1.5rem;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-vruler-line {\r\n    position: absolute;\r\n    right: 0;\r\n    width: 25%;\r\n    border-top: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n\r\n}\r\n\r\n.as-vruler-line.major {\r\n    width: 50%;\r\n    border-top: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-vruler-major-number {\r\n    position: absolute;\r\n    text-align: center;\r\n    width:  5rem;\r\n    pointer-events: none;\r\n    font-size: 0.7rem;\r\n    right: calc(52% - 2em);\r\n    height: 1rem;\r\n    transform-origin: center;\r\n    \r\n    -webkit-transform:rotate(90deg);\r\n    -moz-transform:rotate(90deg);\r\n    -o-transform: rotate(90deg);\r\n    -ms-transform:rotate(90deg);\r\n    transform: rotate(-90deg);\r\n}", ""]);
+exports.push([module.i, "/*margin for border size*/\r\n.as-vruler {\r\n    position: relative;\r\n    width: 1.5em;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-vruler-line {\r\n    position: absolute;\r\n    right: 0;\r\n    width: 25%;\r\n    border-top: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n\r\n}\r\n\r\n.as-vruler-line.major {\r\n    width: 50%;\r\n    border-top: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-vruler-major-number {\r\n    position: absolute;\r\n    text-align: center;\r\n    width:  5em;\r\n    pointer-events: none;\r\n    font-size: 0.7em;\r\n    right: calc(52% - 2em);\r\n    height: 1em;\r\n    transform-origin: center;\r\n    \r\n    -webkit-transform:rotate(90deg);\r\n    -moz-transform:rotate(90deg);\r\n    -o-transform: rotate(90deg);\r\n    -ms-transform:rotate(90deg);\r\n    transform: rotate(-90deg);\r\n}", ""]);
 
 
 
@@ -30992,7 +30992,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".as-resize-box {\r\n    position: absolute;\r\n    /*or fixed*/\r\n    z-index: 1;\r\n    box-sizing: border-box;\r\n    opacity: 0.5;\r\n    pointer-events: none;\r\n}\r\n\r\n.as-resize-box-body {\r\n    margin: -0.0714rem;\r\n    width: calc(100% + 0.1429rem);\r\n    height: calc(100% + 0.1429rem);\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    border: solid 0.1429rem rgb(32, 150, 218);\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-body {\r\n    cursor: move;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-click .as-resize-box-body {\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-dot,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.bottom,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right-bottom {\r\n    display: unset;\r\n\r\n}\r\n\r\n.as-resize-box-dot {\r\n    position: absolute;\r\n    width: 0.6rem;\r\n    height: 0.6rem;\r\n    background: rgb(32, 150, 218);\r\n    display: none;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box-dot.left-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: nw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: sw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left {\r\n    top: calc(50% - 0.3em);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: w-resize;\r\n}\r\n\r\n.as-resize-box-dot.top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: n-resize;\r\n}\r\n\r\n.as-resize-box-dot.bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: s-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: ne-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: se-resize;\r\n}\r\n\r\n\r\n.as-resize-box-dot.right {\r\n    top: calc(50% - 0.3em);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: e-resize;\r\n}\r\n\r\n.as-resize-box-overiding .as-resize-box-dot,\r\n.as-resize-box-overiding .as-resize-box-body {\r\n    cursor: unset;\r\n}\r\n\r\n.as-resize-box-overiding.body {\r\n    cursor: move !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.left-top {\r\n    cursor: nw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left-bottom {\r\n    cursor: sw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left {\r\n    cursor: w-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.top {\r\n    cursor: n-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.bottom {\r\n    cursor: s-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-top {\r\n    cursor: ne-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-bottom {\r\n    cursor: se-resize !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.right {\r\n    cursor: e-resize !important;\r\n}", ""]);
+exports.push([module.i, ".as-resize-box {\r\n    position: absolute;\r\n    /*or fixed*/\r\n    z-index: 1;\r\n    box-sizing: border-box;\r\n    opacity: 0.5;\r\n    pointer-events: none;\r\n}\r\n\r\n.as-resize-box-body {\r\n    margin: -0.0714rem;\r\n    width: calc(100% + 0.1429rem);\r\n    height: calc(100% + 0.1429rem);\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    border: solid 0.1429rem rgb(32, 150, 218);\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-body {\r\n    cursor: move;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-click .as-resize-box-body {\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-dot,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.bottom,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right-bottom {\r\n    display: unset;\r\n\r\n}\r\n\r\n.as-resize-box-dot {\r\n    position: absolute;\r\n    width: 0.6em;\r\n    height: 0.6em;\r\n    background: rgb(32, 150, 218);\r\n    display: none;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box-dot.left-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: nw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: sw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left {\r\n    top: calc(50% - 0.3em);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: w-resize;\r\n}\r\n\r\n.as-resize-box-dot.top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: n-resize;\r\n}\r\n\r\n.as-resize-box-dot.bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: s-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: ne-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: se-resize;\r\n}\r\n\r\n\r\n.as-resize-box-dot.right {\r\n    top: calc(50% - 0.3em);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: e-resize;\r\n}\r\n\r\n.as-resize-box-overiding .as-resize-box-dot,\r\n.as-resize-box-overiding .as-resize-box-body {\r\n    cursor: unset;\r\n}\r\n\r\n.as-resize-box-overiding.body {\r\n    cursor: move !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.left-top {\r\n    cursor: nw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left-bottom {\r\n    cursor: sw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left {\r\n    cursor: w-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.top {\r\n    cursor: n-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.bottom {\r\n    cursor: s-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-top {\r\n    cursor: ne-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-bottom {\r\n    cursor: se-resize !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.right {\r\n    cursor: e-resize !important;\r\n}", ""]);
 
 
 
@@ -31402,7 +31402,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0px;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    font-size: 15px;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0px 0 0px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 20px);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 7px 10px;\r\n    border-radius: 2px;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}", ""]);
+exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}", ""]);
 
 
 
@@ -31437,7 +31437,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-project-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-project-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-project-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-project-main{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-project-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-project-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-project-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-project-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-project-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-project-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-project-main-result-control{\r\n    overflow-x: auto;\r\n}\r\n\r\n.pizo-list-project-button-apply.pizo-list-project-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-button-deleteall.pizo-list-project-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-project-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-project-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate .pizo-list-project-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-project-main-search-control.showTranslate .hideTranslate.pizo-list-project-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-project-main-result-control .sortTable{\r\n    width: 100%;\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}", ""]);
 
 
 
@@ -31507,7 +31507,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: block;\r\n\tmargin-bottom: 2px;\r\n\tdisplay: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n\tmargin-top: calc(50% - 1px);\r\n}\r\n\r\n.arrow_down{\r\n\ttransform: scale(1.06);\r\n    display: block;\r\n    margin-top: 2px;\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: auto;\r\n    height: calc(50% - 2px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n}\r\n\r\n.has-sort .sort-container{\r\n\tposition: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n\tdisplay: inline-block;\r\n\theight: 30px;\r\n    width: 20px;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\n.has-sort.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.has-sort.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n\r\n\r\n\r\n.disPlayNone{\r\n    display: none;\r\n}\r\n\r\n.parent:nth-child(odd) {\r\nbackground-color: #fff;\r\n}\r\n.parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color: #fff !important;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\ntr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color:#f5f5f5;\r\n}\r\ntr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #fff ;\r\n}\r\n\r\n\r\n.margin-div-cell{\r\n    width: 1.71428571429rem;\r\n    display: inline-block;\r\n}\r\n\r\n.more-icon-container{\r\n    font-size: 16px;\r\n    position: absolute;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    top: 50%;\r\n    width: 20px;\r\n    height: 30px;\r\n    transform: translateX(-100%) translateX(-0.71428571428rem) translateY(-50%);\r\n}\r\n\r\n.more-button{\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateY(-2px);\r\n    -webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n    font-size: 20px;\r\n}\r\n\r\n.sortTable tr.more-child> td> div>i.more-button, .sortTableClone tr.more-child> td> div>i.more-button{\r\n\ttransform: translateY(-50%) translateY(-2px) rotateZ(90deg);\r\n}\r\n  \r\n  .container-view{\r\n      display: inline-block;\r\n  }\r\n\r\n  .sortTable .margin-left-has-icon{\r\n    padding-left: 2.5rem;\r\n  }\r\n\r\n  \r\n  .sortTable.padding-High-table tbody td:first-child{\r\n    padding-left: 2.85714285714rem;\r\n    \r\n  }\r\n\r\n  .sortTable td:first-child{\r\n    padding-left: 0.71428571428rem;\r\n  }\r\n\r\n  .sortTable td:last-child{\r\n    padding-right: 0.71428571428rem;\r\n  }\r\n\r\n  .drag-icon-button{\r\n    cursor: context-menu;\r\n  }\r\n\r\n/* .sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */", ""]);
+exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: block;\r\n\tmargin-bottom: 2px;\r\n\tdisplay: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n\tmargin-top: calc(50% - 1px);\r\n}\r\n\r\n.arrow_down{\r\n\ttransform: scale(1.06);\r\n    display: block;\r\n    margin-top: 2px;\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: auto;\r\n    height: calc(50% - 2px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n}\r\n\r\n.has-sort .sort-container{\r\n\tposition: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n\tdisplay: inline-block;\r\n\theight: 30px;\r\n    width: 20px;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\n.has-sort.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.has-sort.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n\r\n\r\n\r\n.disPlayNone{\r\n    display: none;\r\n}\r\n\r\n.parent:nth-child(odd) {\r\n    background-color: #f5f5f5;\r\n}\r\n.parent:nth-child(even) {\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\ntr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color:#f5f5f5;\r\n}\r\ntr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #fff ;\r\n}\r\n\r\n\r\n.margin-div-cell{\r\n    width: 1.71428571429rem;\r\n    display: inline-block;\r\n}\r\n\r\n.more-icon-container{\r\n    font-size: 16px;\r\n    position: absolute;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    top: 50%;\r\n    width: 20px;\r\n    height: 30px;\r\n    transform: translateX(-100%) translateX(-0.71428571428rem) translateY(-50%);\r\n}\r\n\r\n.more-button{\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateY(-2px);\r\n    -webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n    font-size: 20px;\r\n}\r\n\r\n.sortTable tr.more-child> td> div>i.more-button, .sortTableClone tr.more-child> td> div>i.more-button{\r\n\ttransform: translateY(-50%) translateY(-2px) rotateZ(90deg);\r\n}\r\n  \r\n  .container-view{\r\n      display: inline-block;\r\n  }\r\n\r\n  .sortTable .margin-left-has-icon{\r\n    padding-left: 2.5rem;\r\n  }\r\n\r\n  \r\n  .sortTable.padding-High-table tbody td:first-child{\r\n    padding-left: 2.85714285714rem;\r\n    \r\n  }\r\n\r\n  .sortTable td:first-child{\r\n    padding-left: 0.71428571428rem;\r\n  }\r\n\r\n  .sortTable td:last-child{\r\n    padding-right: 0.71428571428rem;\r\n  }\r\n\r\n  .drag-icon-button{\r\n    cursor: context-menu;\r\n  }\r\n\r\n/* .sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */", ""]);
 
 
 
@@ -31542,7 +31542,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n    width: calc(100% - 4.8333rem);\r\n    margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n    margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  width: 100%;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n    margin-left: 2.7586rem;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-desc-detail-row-cell-label {\r\n    font-size: 1rem;\r\n    line-height: 2.1429rem;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label{\r\n  font-size: 1rem;\r\n  line-height: 2.1429rem;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  margin-left: 2.4483rem;\r\n  width: calc(100% - 5.8333rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    margin-left: 1.8966rem;\r\n    width: calc(100% - 5.8333rem);\r\n}\r\n  \r\n.absol-modal{\r\n  background-color: rgba(0,0,0,0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child{\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-utility {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-convenient {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-juridical {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-juridical-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-history {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-history-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-height-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  display: inline-block;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4375rem;\r\n  text-align: right;\r\n  vertical-align: top;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n  line-height: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row .pizo-new-realty-dectruct-content-area-size-zone{\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n .pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right>span{\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span{\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size{\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-project-button-element{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-project-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-project-button-element >span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=number]::-webkit-inner-spin-button, \r\ninput[type=number]::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}", ""]);
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-utility {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-convenient {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-juridical {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-juridical-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-history {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-history-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-bathroom-label,\r\n.pizo-new-realty-dectruct-content-area-garage-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span {\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n", ""]);
 
 
 
@@ -31615,7 +31615,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-1-label{\r\nwidth: 3.2857142857142856rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit-size{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-2-label{\r\nwidth: 3.2857142857142856rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit-size{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-height-label{\r\nwidth: 3.2857142857142856rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-width-label{\r\nwidth: 3.2857142857142856rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-1.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 8.141798214285714rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-2.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 8.141798214285714rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-height.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 8.141798214285714rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-width.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 8.141798214285714rem); \r\n}\r\n", ""]);
+exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visiable .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
 
 
 
@@ -31650,7 +31650,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bedroom-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-kitchen-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bathroom-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-garage-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-balcony-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-basement-label{\r\nwidth: 4.875rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bedroom.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-kitchen.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-bathroom.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-garage.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-balcony.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-basement.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.928489375rem); \r\n}\r\n", ""]);
+exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 50px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 30px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  padding-left: 20px;\r\n  margin-top: 10px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  margin: 12px 24px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}", ""]);
 
 
 
@@ -31685,7 +31685,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-area-label{\r\nwidth: 4.5rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style .pizo-new-realty-detruct-content-area-label{\r\nwidth: 4.5rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .absol-selectmenu.pizo-new-realty-detruct-content-direction{\r\nwidth: calc(100% - 4.5rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style .absol-selectmenu.pizo-new-realty-detruct-content-type{\r\nwidth: calc(100% - 4.5rem); \r\n}\r\n", ""]);
+exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.modal-upload-image-header {\r\n  padding: 17px 20px;\r\n  height: 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-image-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-image-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-image-body {\r\n  position: relative;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-image-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-image-body-drop {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  overflow: hidden;\r\n  top: 51px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form {\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  display: none;\r\n  margin: 20px;\r\n  padding: 10px;\r\n  height: calc(100% - 54px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area {\r\n  height: calc(100% - 72px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#drop-area.highlight {\r\n  border-color: purple;\r\n}\r\n\r\n#gallery {\r\n  margin-top: 10px;\r\n  height: calc(100% - 34px);\r\n  background-color: white;\r\n}\r\n\r\n.image-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElem {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-image-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-bottom: 2px solid #4d90fe;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  color: #222;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n}\r\n.modal-upload-image-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-image-body-drop-save{\r\n  padding-left: 20px;\r\n  position: absolute;\r\n  bottom: 10px;\r\n}\r\n\r\n.margin-align{\r\n  margin-left: 100px;\r\n  position: relative;\r\n  width: calc(100% - 100px);\r\n  margin-bottom: 0;\r\n}\r\n\r\n.full-size{\r\n  width: calc(100% - 7px);\r\n  margin: 2px;\r\n  height: calc(100% - 7px);\r\n}", ""]);
 
 
 
@@ -31720,7 +31720,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-right .pizo-new-realty-detruct-content-area-label{\r\nwidth: 10.285714285714286rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-right .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 4.5rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-right .pizo-new-realty-detruct-content-area-label{\r\nwidth: 10.285714285714286rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-right .pizo-new-realty-dectruct-content-area-access.pizo-new-realty-dectruct-input{\r\n    width: calc(100% - 15.1rem);\r\n}\r\n.pizo-new-realty-dectruct-content-area-right .pizo-new-realty-dectruct-content-area-year.pizo-new-realty-dectruct-input{\r\n    width: calc(100% - 11.4rem);\r\n}\r\n", ""]);
+exports.push([module.i, "\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r\n    width: 80vw;\r\n    background-color: white;\r\n  }\r\n\r\n  .pizo-new-realty-location-tab {\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    margin-bottom: 0.7143rem;\r\n    background: #f3f3f3;\r\n    display: flex;\r\n  }\r\n  \r\n  .pizo-new-realty-location-tab>span{\r\n    padding: 0.7143rem;\r\n    width: 100%;\r\n  }\r\n\r\n  \r\n.pizo-new-realty-location-donebutton{\r\n    display: inline-block;\r\n      width: 6rem;\r\n      margin: 5px;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail {\r\n    max-width: 100%;\r\n    min-width: 380px;\r\n    display: inline-block;\r\n    margin-bottom: 0.7143rem;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n  }\r\n  \r\n  .pizo-new-realty-location-content {\r\n    position: relative;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    width: 100%;\r\n  }\r\n\r\n  .pizo-new-realty-location-detail-row:not(:last-child) {\r\n    margin-bottom: 0.7143rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-label {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    max-width: calc(33.333333% - 4.2857rem);\r\n    text-align: right;\r\n    font-size: 1rem;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    padding-left: 2.1429rem;\r\n    padding-right: 2.1429rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-menu {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 66.666667%;\r\n    flex: 0 0 66.666667%;\r\n    max-width: 66.666667%;\r\n  }\r\n  \r\n  input.pizo-new-realty-location-detail-row-menu{\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-input {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-map-view {\r\n    max-width: 100%;\r\n    min-width: 380px;\r\n    display: inline-block;\r\n    margin-bottom: 0.7143rem;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n    height: calc(100% - 0.7143rem);\r\n    position: absolute;\r\n    margin-left: 1.0714rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-map-view-content {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-input-long {\r\n    display: inline-block;\r\n    width: calc(50% - 2.0714rem);\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-input-lat {\r\n    display: inline-block;\r\n    margin-left: 2.1429rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    width: calc(50% - 2.0714rem);\r\n  }", ""]);
 
 
 
@@ -31755,7 +31755,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-tivi-label{\r\nwidth: 4.1875rem; \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-fridge-label{\r\nwidth: 4.1875rem; \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-washing-label{\r\nwidth: 4.1875rem; \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-conditioning-label{\r\nwidth: 4.1875rem; \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-tivi.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.240989375rem); \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-fridge.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.240989375rem); \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-washing.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.240989375rem); \r\n}\r\n.pizo-new-realty-convenient-content-area-size-zone .pizo-new-realty-convenient-content-area-conditioning.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 5.240989375rem); \r\n}\r\n", ""]);
+exports.push([module.i, ".image-show {\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: #3e4041;\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-between;\r\n}\r\n\r\n.image-show__title {\r\n    background-color: #545454;\r\n    color: white;\r\n    font-size: 1.1429rem;\r\n    padding-left: 1rem;\r\n    height: 2.1429rem;\r\n    position: relative;\r\n}\r\n\r\n.image-show__close > .fa-close, .image-show__close > .quote-base__close-icon {\r\n    font-size: 0.8571rem;\r\n    color: white;\r\n    padding: 0rem;\r\n}\r\n\r\n.fa-close:before, .quote-base__close-icon:before {\r\n    content: \"close\";\r\n}\r\n\r\n.fl-r {\r\n    float: right;\r\n}\r\n\r\ni.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{\r\n    pointer-events: none;\r\n    cursor: default;\r\n    color: rgb(152, 152, 152);\r\n}\r\n.clickable, .txt-clickable, .chat-message__actions__btn, .chat-resend, .sticker-selector__menu__item, .slideshow__bottom__dot {\r\n    cursor: pointer;\r\n    -webkit-app-region: no-drag;\r\n}\r\n\r\n.fa, .image-placeholder, .media-store-preview-item__picture, .image-show__thumb, .card--group-photo__row__item img.card--group-photo__row__item__photo, img.chat-message-picture__photo, .chat-message-picture__gif__thumb, .chat-message-picture__photo > img, .quote-banner-thumb, .link-placeholder, .link-thumb, .link-thumb.default, .thumb-img-suggest, .card--link-img, .card--link-img.default, .media-item__file-type.photo, .cb-info-file-item-overlay__check, .quote-base__close-icon, .file-tick__icon-setting {\r\n    display: inline-block;\r\n    font: normal normal normal 1rem/1 'zalo-font';\r\n    font-size: inherit;\r\n    text-rendering: auto;\r\n    text-shadow: none;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n}\r\n\r\n.image-show__body {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.image-show__btnc {\r\n    position: absolute;\r\n    top: calc((100% - 5.7857rem)/2 - 2.7143rem);\r\n    z-index: 10;\r\n    display: flex;\r\n    align-items: center;\r\n    pointer-events: none;\r\n}\r\n\r\n.image-show__btnc__left {\r\n    left: 0rem;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__left.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__wrapper__img {\r\n    width: auto;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    object-fit: contain;\r\n}\r\n\r\n.image-show__btnc__right {\r\n    right: 0;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__right.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__btnc__fullscreen{\r\n    position: absolute;\r\n    bottom: 0;\r\n    right: 0.6429rem;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 6.4286rem;\r\n    height: 8.5714rem;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn.clickable {\r\n    opacity: 0.6;\r\n    pointer-events: auto;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn:hover, .image-show__bottom__ctrl > a > .btn:hover {\r\n    color: #0068ff;\r\n}\r\n\r\n.image-show__btn.clickable:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n.image-show__btn__inside {\r\n    background-color: black;\r\n    border-radius: 50%;\r\n    width: 3.5714rem;\r\n    height: 3.5714rem;\r\n    margin-top: 50%;\r\n    margin-left: 1.4286rem;\r\n    line-height: 3.5714rem;\r\n    font-size: 1.6429rem;\r\n    text-align: center;\r\n}\r\n\r\n.image-show__btn__inside > .fa-chevron-left {\r\n    margin-top: 0.9286rem;\r\n    margin-right: 0.2857rem;\r\n}\r\n\r\n.fa-chevron-left:before {\r\n    content: \"arrow_back_ios\";\r\n    transform: translateX(0.3571rem);\r\n}\r\n\r\n.z-fh {\r\n    max-height: 100%;\r\n}\r\n\r\n.fadeIn, .fadeInShort, .fadeInImageShow {\r\n    -webkit-animation-name: fadeIn;\r\n    animation-name: fadeIn;\r\n}\r\n\r\n.image-show__img {\r\n    object-fit: contain;\r\n    transition: transform 0.1s ease-out;\r\n    max-width: 100%;\r\n    user-select: none;\r\n\r\n    cursor: default;\r\n    vertical-align: middle;\r\n    display: inline-block;\r\n}\r\n\r\n.fadeInImageShow {\r\n    -webkit-animation-duration: .4s;\r\n    animation-duration: .4s;\r\n}\r\n\r\n.flx-fix, header, .chat-info-general__options, .chat-info-general__section__header, .avatar, .thumb-img-suggest, .chat-date > span, .card--link-img, .card--link-img.default, .chat-onboard__icon {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 6.4286rem;\r\n    height: 8.5714rem;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn__inside > .fa-chevron-right {\r\n    margin-top: 0.9286rem;\r\n    margin-left: 0.1429rem;\r\n}\r\n\r\n.fa-chevron-right:before {\r\n    content: \"arrow_forward_ios\";\r\n}\r\n\r\n.image-show__icon-fullscreen {\r\n    font-size: 2.8571rem;\r\n    color: white;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__icon-fullscreen.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.fa-fullscreen-icon:before {\r\n    content: \"web\";\r\n}\r\n\r\n.image-show__bottom {\r\n    background-color: #545454;\r\n    height: 3.5714rem;\r\n    position: relative;\r\n}\r\n\r\n.image-show__bottom__sender {\r\n    width: 30%;\r\n}\r\n\r\n.avatar {\r\n    position: relative;\r\n    color: white;\r\n    contain: layout size style;\r\n}\r\n\r\n.avatar--xs {\r\n    width: 2.8571rem;\r\n    height: 2.8571rem;\r\n    font-size: 1.2143rem;\r\n}\r\n\r\n.dib, .chat-box-member__info, .image-show__bottom__sender > .avatar, .image-show__bottom__sender__info, .chat-input__img-preview__thumb {\r\n    display: inline-block;\r\n}\r\n\r\n.fl-l, .image-show__bottom__sender > .avatar, .image-show__bottom__sender__info, .chat-input__img-preview__thumb {\r\n    float: left;\r\n}\r\n\r\n.image-show__bottom__sender > .avatar {\r\n    margin-top: 0.3929rem;\r\n    margin-right: 1rem;\r\n    margin-left: 1rem;\r\n}\r\n\r\n.image-show__bottom__sender__info {\r\n    color: white;\r\n    font-size: 0.9286rem;\r\n    width: calc(100% - 6.4286rem);\r\n}\r\n\r\n.bg-center, .link-thumb, .link-thumb.default, .avatar-img, .avatar-img.avatar-number-m, #zalo, .thumb-img-suggest, .chat-input__img-preview__thumb, .card--link-img, .card--link-img.default, .message-view__blur, .message-info_num, .sticker-selector__menu__item, .gif__thumb {\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    background-position: 50%;\r\n}\r\n\r\n.avatar-img, .avatar-img.avatar-number-m {\r\n    border-radius: 100%;\r\n}\r\n\r\n.avatar--xs > .avatar-img {\r\n    width: 2.8571rem;\r\n    height: 2.8571rem;\r\n    background-color: #c9d4e5;\r\n}\r\n\r\n.truncate, .chat-box-member__info__name, .item-title-name, .item-message, .file-banner-content__sender-name, .file-banner-content__full-name, .cb-info-file-item__send-date, .cb-info-file-item__file-size, .cb-info-file-item__suggest-preview-file, .cb-info-file-item__suggest-preview-folder, .cb-info-file-item__error-msg, .search-result-file__send-date, .search-result-file__file-size, .search-result-file__suggest-preview-file, .search-result-file__suggest-preview-folder, .search-result-file__file-name, .search-result-file__file-name-seg, .file-progress-row__start-text, .file-progress-row__end-text, .quote-file__name, .quote-file__text, .file-suggest-item__name, .file-suggest-item__size, .file-suggest-item__conversation, .file-star-msg-content__title, .file-star-msg-content__size, .file-message__content-title, .file-message__content-error, .fmsg-send-time__error-msg {\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.image-show__bottom__sender__info > div:first-child {\r\n    margin-top: 0.4286rem;\r\n    margin-bottom: 0.1429rem;\r\n}\r\n\r\n.image-show__bottom__ctrl {\r\n    width: 24.2857rem;\r\n    margin: 0rem auto;\r\n    padding-top: 1rem;\r\n    text-align: center;\r\n}\r\n\r\n.btn {\r\n    font-size: 1.2857rem;\r\n    cursor: pointer;\r\n    margin: 0rem;\r\n    color: #83878d;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn, .image-show__bottom__ctrl > a > .btn {\r\n    color: white;\r\n    font-size: 1.5714rem;\r\n    margin: 0;\r\n    padding-right: 1.4286rem;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn.fa-chevron-left, .image-show__bottom__ctrl > a > .btn.fa-chevron-left {\r\n    padding-right: 0.5714rem;\r\n    font-size: 1.6429rem;\r\n}\r\n\r\n\r\n.fa:before, .image-placeholder:before, .media-store-preview-item__picture:before, .image-show__thumb:before, .card--group-photo__row__item img.card--group-photo__row__item__photo:before, img.chat-message-picture__photo:before, .chat-message-picture__gif__thumb:before, .chat-message-picture__photo > img:before, .quote-banner-thumb:before, .link-placeholder:before, .link-thumb:before, .link-thumb.default:before, .thumb-img-suggest:before, .card--link-img:before, .card--link-img.default:before, .media-item__file-type.photo:before, .cb-info-file-item-overlay__check:before, .quote-base__close-icon:before, .file-tick__icon-setting:before {\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.7143rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn.fa-chevron-right, .image-show__bottom__ctrl > a > .btn.fa-chevron-right {\r\n    padding-left: 0.6429rem;\r\n    padding-right: 0.5714rem;\r\n    font-size: 1.6429rem;\r\n}\r\n\r\n#image-show-forward {\r\n    padding-right: 0;\r\n}\r\n\r\n#image-show-forward > i {\r\n    padding: 0 0.8571rem;\r\n    font-size: 1.2143rem;\r\n    position: relative;\r\n}\r\n\r\n.fa-share-photoview:before {\r\n    content: \"share\";\r\n}\r\n\r\n#image-show-download {\r\n    padding-right: 0;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn.fa-download, .image-show__bottom__ctrl > .btn.fa-rotate-left, .image-show__bottom__ctrl > .btn.fa-rotate-right, .image-show__bottom__ctrl > a > .btn.fa-download, .image-show__bottom__ctrl > a > .btn.fa-rotate-left, .image-show__bottom__ctrl > a > .btn.fa-rotate-right,.image-show__bottom__ctrl > a > .btn.fa-more-option,.image-show__bottom__ctrl > .btn.fa-more-option {\r\n    padding-left: 0.8571rem;\r\n    padding-right: 0.8571rem;\r\n}\r\n\r\n.fa-download:before {\r\n    content: \"vertical_align_bottom\";\r\n}\r\n\r\n.fa-rotate-left:before {\r\n    content: \"rotate_left\";\r\n}\r\n\r\n.fa-rotate-right:before {\r\n    content: \"rotate_right\";\r\n}\r\n\r\n.fa-more-option:before {\r\n    content: \"more_vert\";\r\n}\r\n\r\n.image-show__thumb__legend {\r\n    bottom: 5rem;\r\n    color: white;\r\n    padding-left: 0.0714rem;\r\n    margin-bottom: 1.4286rem;\r\n    margin-left: 0.2143rem;\r\n    font-size: 1rem;\r\n    background: #3e4041;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin: 0.7143rem 0.5714rem;\r\n}\r\n\r\n.image-show__thumb {\r\n    position: relative;\r\n    user-select: none;\r\n    object-fit: cover;\r\n    margin: 0.2857rem;\r\n    border-radius: 0.2143rem;\r\n    filter: brightness(50%);\r\n    width: 5.7143rem;\r\n    height: 5.7143rem;\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb, .image-show__thumb.chat-message.first-selected, .image-show__thumb.chat-message.last-selected {\r\n    box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);\r\n    -moz-box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);\r\n    -webkit-box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);\r\n    filter: brightness(100%);\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb{\r\n    width: 7.1429rem;\r\n    height: 7.1429rem;\r\n}\r\n\r\n.image-show__thumb-container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.flx-al-e {\r\n    align-items: flex-end;\r\n}\r\n\r\n.flx, .snippet, .item-setting-action, header, #groupNameInput--change, .item-setting, .chat-info-general__action__item, .chat-info-general__section__header, .group-setting, .mg-item, .card, .card-content, .modal, .tab-content, .file-banner-content, .file-banner-content__thumb-container, .empty-btn, .rl-msg, .rl-msg .rl-msg-content, .cb-info-file-item__thumb-container, .search-result-file__thumb-container, .search-result-file__file-name, .file-progress-row, .file-actions-row, .file-suggest-item, .file-suggest-item__left-container, .file-suggest-item__right-container, .file-layout, .file-layout__thumb-container, .file-layout__right-container, .file-layout__top-container, .file-layout__bot-container, .file-star-msg-content, .file-star-msg-content__right-block, .fmsg-send-time, .entry-content-v2, .zl-label-add-more, .zl-modal, .pr-status-content, .header-title-container {\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n}\r\n\r\n.flx, .snippet, .item-setting-action, header, #groupNameInput--change, .item-setting, .chat-info-general__action__item, .chat-info-general__section__header, .group-setting, .mg-item, .card, .card-content, .modal, .tab-content, .file-banner-content, .file-banner-content__thumb-container, .empty-btn, .rl-msg, .rl-msg .rl-msg-content, .cb-info-file-item__thumb-container, .search-result-file__thumb-container, .search-result-file__file-name, .file-progress-row, .file-actions-row, .file-suggest-item, .file-suggest-item__left-container, .file-suggest-item__right-container, .file-layout, .file-layout__thumb-container, .file-layout__right-container, .file-layout__top-container, .file-layout__bot-container, .file-star-msg-content, .file-star-msg-content__right-block, .fmsg-send-time, .entry-content-v2, .zl-label-add-more, .zl-modal, .pr-status-content, .header-title-container {\r\n    display: flex;\r\n}\r\n\r\n.image-show__list {\r\n    padding: 0rem;\r\n    overflow-x: hidden;\r\n    overflow-y: scroll;\r\n    display: inline;\r\n    -ms-overflow-style: none;\r\n    scrollbar-width: none;\r\n    transform: translateX(1.2143rem);\r\n    margin-left: -1.2143rem;\r\n}\r\n\r\n.timeline-slider {\r\n    position: relative;\r\n    cursor: pointer;\r\n    width: 1.6429rem;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.timeline-slider__track {\r\n    position: absolute;\r\n    height: 100%;\r\n    top: 0.1429rem;\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 0.8571rem;\r\n    height: 0.8571rem;\r\n    background: #7a787b;\r\n    left: 0.4643rem;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--left {\r\n    bottom: calc(0% - 0.8571rem);\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 0.8571rem;\r\n    height: 0.8571rem;\r\n    background: #7a787b;\r\n    left: 0.4643rem;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--right {\r\n    bottom: calc(100% - 0.8571rem);\r\n}\r\n\r\n.timeline-slider__handle {\r\n    position: absolute;\r\n    background: white;\r\n    border-radius: 50%;\r\n}\r\n\r\n.timeline-slider__track__progress {\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 0.1429rem;\r\n    background: #7a787b;\r\n}\r\n\r\n.timeline-slider__tooltip {\r\n    position: absolute;\r\n    top: -0.3571rem;\r\n    right: -6.4286rem;\r\n    z-index: 1;\r\n    background: white;\r\n    text-align: center;\r\n    font-size: 0.8571rem;\r\n    width: 6.0714rem;\r\n}\r\n\r\n.fadeInImageShowNoAnimation{\r\n    -webkit-transition: none !important;\r\n    -moz-transition: none !important;\r\n    -o-transition: none !important;\r\n    transition: none !important;\r\n}\r\n\r\n.image-show__meta-wrapper {\r\n    text-align: left;\r\n    position: absolute;\r\n    z-index: 1;\r\n    bottom: 5rem;\r\n    max-width: 60%;\r\n    max-height: 6.7857rem;\r\n    min-height: 1.7143rem;\r\n    cursor: default;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    border-radius: 0.7143rem;\r\n    background: rgba(0, 0, 0, 0.5);\r\n    padding: 0.0714rem 0.7143rem;\r\n    opacity: 1;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__caption {\r\n    color: rgba(255, 255, 255, 0.9);\r\n    margin: 0.5rem 0;\r\n    overflow-y: auto;\r\n    word-break: break-word;\r\n}\r\n\r\n.displayNone {\r\n    display: none !important;\r\n}\r\n\r\n.timeLineContainerCheck{\r\n    display: flex;\r\n    padding: 1.0714rem 0rem 0rem 1.0714rem;\r\n    -webkit-transition: 1s ease-in-out;\r\n    -moz-transition: 1s ease-in-out;\r\n    -o-transition: 1s ease-in-out;\r\n    transition: 1s ease-in-out;\r\n}\r\n\r\n.transformX-100{\r\n    transform: translateX(-100%);\r\n}\r\n", ""]);
 
 
 
@@ -31790,7 +31790,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-pool-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-gym-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-market-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-supermarket-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-hospital-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-park-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-highschool-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-preschool-label{\r\nwidth: 5.428571428571429rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .absol-selectmenu.pizo-new-realty-dectruct-content-area-unit{\r\nwidth: 3.643973214285714rem; \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-pool.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-gym.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-market.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-supermarket.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-hospital.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-park.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-highschool.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n.pizo-new-realty-dectruct-content-area-size-zone .pizo-new-realty-dectruct-content-area-preschool.pizo-new-realty-dectruct-input{\r\nwidth: calc(100% - 10.284655357142857rem); \r\n}\r\n", ""]);
+exports.push([module.i, ".lds-roller {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 80px;\r\n    height: 80px;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%) scale(2);\r\n  }\r\n  .lds-roller div {\r\n    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\r\n    transform-origin: 40px 40px;\r\n  }\r\n  .lds-roller div:after {\r\n    content: \" \";\r\n    display: block;\r\n    position: absolute;\r\n    width: 7px;\r\n    height: 7px;\r\n    border-radius: 50%;\r\n    background: #fff;\r\n    margin: -4px 0 0 -4px;\r\n  }\r\n  .lds-roller div:nth-child(1) {\r\n    animation-delay: -0.036s;\r\n  }\r\n  .lds-roller div:nth-child(1):after {\r\n    top: 63px;\r\n    left: 63px;\r\n  }\r\n  .lds-roller div:nth-child(2) {\r\n    animation-delay: -0.072s;\r\n  }\r\n  .lds-roller div:nth-child(2):after {\r\n    top: 68px;\r\n    left: 56px;\r\n  }\r\n  .lds-roller div:nth-child(3) {\r\n    animation-delay: -0.108s;\r\n  }\r\n  .lds-roller div:nth-child(3):after {\r\n    top: 71px;\r\n    left: 48px;\r\n  }\r\n  .lds-roller div:nth-child(4) {\r\n    animation-delay: -0.144s;\r\n  }\r\n  .lds-roller div:nth-child(4):after {\r\n    top: 72px;\r\n    left: 40px;\r\n  }\r\n  .lds-roller div:nth-child(5) {\r\n    animation-delay: -0.18s;\r\n  }\r\n  .lds-roller div:nth-child(5):after {\r\n    top: 71px;\r\n    left: 32px;\r\n  }\r\n  .lds-roller div:nth-child(6) {\r\n    animation-delay: -0.216s;\r\n  }\r\n  .lds-roller div:nth-child(6):after {\r\n    top: 68px;\r\n    left: 24px;\r\n  }\r\n  .lds-roller div:nth-child(7) {\r\n    animation-delay: -0.252s;\r\n  }\r\n  .lds-roller div:nth-child(7):after {\r\n    top: 63px;\r\n    left: 17px;\r\n  }\r\n  .lds-roller div:nth-child(8) {\r\n    animation-delay: -0.288s;\r\n  }\r\n  .lds-roller div:nth-child(8):after {\r\n    top: 56px;\r\n    left: 12px;\r\n  }\r\n  @keyframes lds-roller {\r\n    0% {\r\n      transform: rotate(0deg);\r\n    }\r\n    100% {\r\n      transform: rotate(360deg);\r\n    }\r\n  }\r\n\r\n  .container-wheel{\r\n    width: 100vw;\r\n    height: 100vh;\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    pointer-events: none;\r\n    z-index: 9999;\r\n    background-color: rgba(0, 0, 0, 0.502);\r\n  }", ""]);
 
 
 
@@ -31825,7 +31825,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel {\r\n    color: rgb(103, 58, 183);\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visiable .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-ditrict-ward-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-ward{\r\n    width: calc(18% - 0.3571rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-ward-input>div{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ward-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ward{\r\n    width: 18%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ward-input>div{\r\n    width: 100%;\r\n}", ""]);
 
 
 
@@ -31860,7 +31860,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 50px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 30px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  padding-left: 20px;\r\n  margin-top: 10px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  margin: 12px 24px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-street-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-street{\r\n    width: calc(24% - 0.3571rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-street-input>div{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-street-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-street{\r\n    width: calc(24% - 0.7143rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-street-input>div{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ward-street>div{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ward-street{\r\n    width: calc(24% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ward-street-input>div{\r\n    width: 100%;\r\n}", ""]);
 
 
 
@@ -31895,7 +31895,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.modal-upload-image-header {\r\n  padding: 17px 20px;\r\n  height: 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-image-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-image-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-image-body {\r\n  position: relative;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-image-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-image-body-drop {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  overflow: hidden;\r\n  top: 51px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form {\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  display: none;\r\n  margin: 20px;\r\n  padding: 10px;\r\n  height: calc(100% - 54px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area {\r\n  height: calc(100% - 72px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#drop-area.highlight {\r\n  border-color: purple;\r\n}\r\n\r\n#gallery {\r\n  margin-top: 10px;\r\n  height: calc(100% - 34px);\r\n  background-color: white;\r\n}\r\n\r\n.image-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElem {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-image-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-bottom: 2px solid #4d90fe;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  color: #222;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n}\r\n.modal-upload-image-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-image-body-drop-save{\r\n  padding-left: 20px;\r\n  position: absolute;\r\n  bottom: 10px;\r\n}\r\n\r\n.margin-align{\r\n  margin-left: 100px;\r\n  position: relative;\r\n  width: calc(100% - 100px);\r\n  margin-bottom: 0;\r\n}\r\n\r\n.full-size{\r\n  width: calc(100% - 7px);\r\n  margin: 2px;\r\n  height: calc(100% - 7px);\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -31930,7 +31930,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r\n    width: 80vw;\r\n    background-color: white;\r\n  }\r\n\r\n  .pizo-new-realty-location-tab {\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    margin-bottom: 0.7143rem;\r\n    background: #f3f3f3;\r\n    display: flex;\r\n  }\r\n  \r\n  .pizo-new-realty-location-tab>span{\r\n    padding: 0.7143rem;\r\n    width: 100%;\r\n  }\r\n\r\n  \r\n.pizo-new-realty-location-donebutton{\r\n    display: inline-block;\r\n      width: 6rem;\r\n      margin: 5px;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 50%;\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n  }\r\n  \r\n  .pizo-new-realty-location-content {\r\n    display: flex;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row {\r\n    margin-bottom: 0.7143rem;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    margin-right: -1.0714rem;\r\n    margin-left: -1.0714rem;\r\n    width: 100%;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-label {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    max-width: calc(33.333333% - 4.2857rem);\r\n    text-align: right;\r\n    font-size: 1rem;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    padding-left: 2.1429rem;\r\n    padding-right: 2.1429rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-menu {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 66.666667%;\r\n    flex: 0 0 66.666667%;\r\n    max-width: 66.666667%;\r\n  }\r\n  \r\n  input.pizo-new-realty-location-detail-row-menu{\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-input {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-map-view {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 50%;\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n  }\r\n  \r\n  .pizo-new-realty-location-map-view-content {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-input-long {\r\n    display: inline-block;\r\n    width: calc(50% - 2.0714rem);\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n  }\r\n  \r\n  .pizo-new-realty-location-detail-row-input-lat {\r\n    display: inline-block;\r\n    margin-left: 2.1429rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    width: calc(50% - 2.0714rem);\r\n  }", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-ditrict-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ditrict{\r\n    width: calc(36% + 1.0714rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ditrict-input>div{\r\n    width: 100%;\r\n}", ""]);
 
 
 
@@ -31965,7 +31965,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".image-show {\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: #3e4041;\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-between;\r\n}\r\n\r\n.image-show__title {\r\n    background-color: #545454;\r\n    color: white;\r\n    font-size: 16px;\r\n    padding-left: 14px;\r\n    height: 30px;\r\n    position: relative;\r\n}\r\n\r\n.image-show__close > .fa-close, .image-show__close > .quote-base__close-icon {\r\n    font-size: 12px;\r\n    color: white;\r\n    padding: 0px;\r\n}\r\n\r\n.fa-close:before, .quote-base__close-icon:before {\r\n    content: \"close\";\r\n}\r\n\r\n.fl-r {\r\n    float: right;\r\n}\r\n\r\ni.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{\r\n    pointer-events: none;\r\n    cursor: default;\r\n    color: rgb(152, 152, 152);\r\n}\r\n.clickable, .txt-clickable, .chat-message__actions__btn, .chat-resend, .sticker-selector__menu__item, .slideshow__bottom__dot {\r\n    cursor: pointer;\r\n    -webkit-app-region: no-drag;\r\n}\r\n\r\n.fa, .image-placeholder, .media-store-preview-item__picture, .image-show__thumb, .card--group-photo__row__item img.card--group-photo__row__item__photo, img.chat-message-picture__photo, .chat-message-picture__gif__thumb, .chat-message-picture__photo > img, .quote-banner-thumb, .link-placeholder, .link-thumb, .link-thumb.default, .thumb-img-suggest, .card--link-img, .card--link-img.default, .media-item__file-type.photo, .cb-info-file-item-overlay__check, .quote-base__close-icon, .file-tick__icon-setting {\r\n    display: inline-block;\r\n    font: normal normal normal 14px/1 'zalo-font';\r\n    font-size: inherit;\r\n    text-rendering: auto;\r\n    text-shadow: none;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n}\r\n\r\n.image-show__body {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.image-show__btnc {\r\n    position: absolute;\r\n    top: calc((100% - 81px)/2 - 38px);\r\n    z-index: 10;\r\n    display: flex;\r\n    align-items: center;\r\n    pointer-events: none;\r\n}\r\n\r\n.image-show__btnc__left {\r\n    left: 0px;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__left.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__wrapper__img {\r\n    width: auto;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    object-fit: contain;\r\n}\r\n\r\n.image-show__btnc__right {\r\n    right: 0;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__right.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__btnc__fullscreen{\r\n    position: absolute;\r\n    bottom: 0;\r\n    right: 9px;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 90px;\r\n    height: 120px;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn.clickable {\r\n    opacity: 0.6;\r\n    pointer-events: auto;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn:hover, .image-show__bottom__ctrl > a > .btn:hover {\r\n    color: #0068ff;\r\n}\r\n\r\n.image-show__btn.clickable:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n.image-show__btn__inside {\r\n    background-color: black;\r\n    border-radius: 50%;\r\n    width: 50px;\r\n    height: 50px;\r\n    margin-top: 50%;\r\n    margin-left: 20px;\r\n    line-height: 50px;\r\n    font-size: 23px;\r\n    text-align: center;\r\n}\r\n\r\n.image-show__btn__inside > .fa-chevron-left {\r\n    margin-top: 13px;\r\n    margin-right: 4px;\r\n}\r\n\r\n.fa-chevron-left:before {\r\n    content: \"arrow_back_ios\";\r\n    transform: translateX(5px);\r\n}\r\n\r\n.z-fh {\r\n    max-height: 100%;\r\n}\r\n\r\n.fadeIn, .fadeInShort, .fadeInImageShow {\r\n    -webkit-animation-name: fadeIn;\r\n    animation-name: fadeIn;\r\n}\r\n\r\n.image-show__img {\r\n    object-fit: contain;\r\n    transition: transform 0.1s ease-out;\r\n    max-width: 100%;\r\n    user-select: none;\r\n\r\n    cursor: default;\r\n    vertical-align: middle;\r\n    display: inline-block;\r\n}\r\n\r\n.fadeInImageShow {\r\n    -webkit-animation-duration: .4s;\r\n    animation-duration: .4s;\r\n}\r\n\r\n.flx-fix, header, .chat-info-general__options, .chat-info-general__section__header, .avatar, .thumb-img-suggest, .chat-date > span, .card--link-img, .card--link-img.default, .chat-onboard__icon {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 90px;\r\n    height: 120px;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn__inside > .fa-chevron-right {\r\n    margin-top: 13px;\r\n    margin-left: 2px;\r\n}\r\n\r\n.fa-chevron-right:before {\r\n    content: \"arrow_forward_ios\";\r\n}\r\n\r\n.image-show__icon-fullscreen {\r\n    font-size: 40px;\r\n    color: white;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__icon-fullscreen.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.fa-fullscreen-icon:before {\r\n    content: \"web\";\r\n}\r\n\r\n.image-show__bottom {\r\n    background-color: #545454;\r\n    height: 50px;\r\n    position: relative;\r\n}\r\n\r\n.image-show__bottom__sender {\r\n    width: 30%;\r\n}\r\n\r\n.avatar {\r\n    position: relative;\r\n    color: white;\r\n    contain: layout size style;\r\n}\r\n\r\n.avatar--xs {\r\n    width: 40px;\r\n    height: 40px;\r\n    font-size: 17px;\r\n}\r\n\r\n.dib, .chat-box-member__info, .image-show__bottom__sender > .avatar, .image-show__bottom__sender__info, .chat-input__img-preview__thumb {\r\n    display: inline-block;\r\n}\r\n\r\n.fl-l, .image-show__bottom__sender > .avatar, .image-show__bottom__sender__info, .chat-input__img-preview__thumb {\r\n    float: left;\r\n}\r\n\r\n.image-show__bottom__sender > .avatar {\r\n    margin-top: 5.5px;\r\n    margin-right: 14px;\r\n    margin-left: 14px;\r\n}\r\n\r\n.image-show__bottom__sender__info {\r\n    color: white;\r\n    font-size: 13px;\r\n    width: calc(100% - 90px);\r\n}\r\n\r\n.bg-center, .link-thumb, .link-thumb.default, .avatar-img, .avatar-img.avatar-number-m, #zalo, .thumb-img-suggest, .chat-input__img-preview__thumb, .card--link-img, .card--link-img.default, .message-view__blur, .message-info_num, .sticker-selector__menu__item, .gif__thumb {\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    background-position: 50%;\r\n}\r\n\r\n.avatar-img, .avatar-img.avatar-number-m {\r\n    border-radius: 100%;\r\n}\r\n\r\n.avatar--xs > .avatar-img {\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #c9d4e5;\r\n}\r\n\r\n.truncate, .chat-box-member__info__name, .item-title-name, .item-message, .file-banner-content__sender-name, .file-banner-content__full-name, .cb-info-file-item__send-date, .cb-info-file-item__file-size, .cb-info-file-item__suggest-preview-file, .cb-info-file-item__suggest-preview-folder, .cb-info-file-item__error-msg, .search-result-file__send-date, .search-result-file__file-size, .search-result-file__suggest-preview-file, .search-result-file__suggest-preview-folder, .search-result-file__file-name, .search-result-file__file-name-seg, .file-progress-row__start-text, .file-progress-row__end-text, .quote-file__name, .quote-file__text, .file-suggest-item__name, .file-suggest-item__size, .file-suggest-item__conversation, .file-star-msg-content__title, .file-star-msg-content__size, .file-message__content-title, .file-message__content-error, .fmsg-send-time__error-msg {\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.image-show__bottom__sender__info > div:first-child {\r\n    margin-top: 6px;\r\n    margin-bottom: 2px;\r\n}\r\n\r\n.image-show__bottom__ctrl {\r\n    width: 340px;\r\n    margin: 0px auto;\r\n    padding-top: 14px;\r\n    text-align: center;\r\n}\r\n\r\n.btn {\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    margin: 0px;\r\n    color: #83878d;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn, .image-show__bottom__ctrl > a > .btn {\r\n    color: white;\r\n    font-size: 22px;\r\n    margin: 0;\r\n    padding-right: 20px;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn.fa-chevron-left, .image-show__bottom__ctrl > a > .btn.fa-chevron-left {\r\n    padding-right: 8px;\r\n    font-size: 23px;\r\n}\r\n\r\n\r\n.fa:before, .image-placeholder:before, .media-store-preview-item__picture:before, .image-show__thumb:before, .card--group-photo__row__item img.card--group-photo__row__item__photo:before, img.chat-message-picture__photo:before, .chat-message-picture__gif__thumb:before, .chat-message-picture__photo > img:before, .quote-banner-thumb:before, .link-placeholder:before, .link-thumb:before, .link-thumb.default:before, .thumb-img-suggest:before, .card--link-img:before, .card--link-img.default:before, .media-item__file-type.photo:before, .cb-info-file-item-overlay__check:before, .quote-base__close-icon:before, .file-tick__icon-setting:before {\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 24px;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn.fa-chevron-right, .image-show__bottom__ctrl > a > .btn.fa-chevron-right {\r\n    padding-left: 9px;\r\n    padding-right: 8px;\r\n    font-size: 23px;\r\n}\r\n\r\n#image-show-forward {\r\n    padding-right: 0;\r\n}\r\n\r\n#image-show-forward > i {\r\n    padding: 0 12px;\r\n    font-size: 17px;\r\n    position: relative;\r\n}\r\n\r\n.fa-share-photoview:before {\r\n    content: \"share\";\r\n}\r\n\r\n#image-show-download {\r\n    padding-right: 0;\r\n}\r\n\r\n.image-show__bottom__ctrl > .btn.fa-download, .image-show__bottom__ctrl > .btn.fa-rotate-left, .image-show__bottom__ctrl > .btn.fa-rotate-right, .image-show__bottom__ctrl > a > .btn.fa-download, .image-show__bottom__ctrl > a > .btn.fa-rotate-left, .image-show__bottom__ctrl > a > .btn.fa-rotate-right,.image-show__bottom__ctrl > a > .btn.fa-more-option,.image-show__bottom__ctrl > .btn.fa-more-option {\r\n    padding-left: 12px;\r\n    padding-right: 12px;\r\n}\r\n\r\n.fa-download:before {\r\n    content: \"vertical_align_bottom\";\r\n}\r\n\r\n.fa-rotate-left:before {\r\n    content: \"rotate_left\";\r\n}\r\n\r\n.fa-rotate-right:before {\r\n    content: \"rotate_right\";\r\n}\r\n\r\n.fa-more-option:before {\r\n    content: \"more_vert\";\r\n}\r\n\r\n.image-show__thumb__legend {\r\n    bottom: 70px;\r\n    color: white;\r\n    padding-left: 1px;\r\n    margin-bottom: 20px;\r\n    margin-left: 3px;\r\n    font-size: 16px;\r\n    background: #3e4041;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin: 10px 8px;\r\n}\r\n\r\n.image-show__thumb {\r\n    position: relative;\r\n    user-select: none;\r\n    object-fit: cover;\r\n    margin: 4px;\r\n    border-radius: 3px;\r\n    filter: brightness(50%);\r\n    width: 80px;\r\n    height: 80px;\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb, .image-show__thumb.chat-message.first-selected, .image-show__thumb.chat-message.last-selected {\r\n    box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5);\r\n    -moz-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5);\r\n    -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5);\r\n    filter: brightness(100%);\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb{\r\n    width: 100px;\r\n    height: 100px;\r\n}\r\n\r\n.image-show__thumb-container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.flx-al-e {\r\n    align-items: flex-end;\r\n}\r\n\r\n.flx, .snippet, .item-setting-action, header, #groupNameInput--change, .item-setting, .chat-info-general__action__item, .chat-info-general__section__header, .group-setting, .mg-item, .card, .card-content, .modal, .tab-content, .file-banner-content, .file-banner-content__thumb-container, .empty-btn, .rl-msg, .rl-msg .rl-msg-content, .cb-info-file-item__thumb-container, .search-result-file__thumb-container, .search-result-file__file-name, .file-progress-row, .file-actions-row, .file-suggest-item, .file-suggest-item__left-container, .file-suggest-item__right-container, .file-layout, .file-layout__thumb-container, .file-layout__right-container, .file-layout__top-container, .file-layout__bot-container, .file-star-msg-content, .file-star-msg-content__right-block, .fmsg-send-time, .entry-content-v2, .zl-label-add-more, .zl-modal, .pr-status-content, .header-title-container {\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n}\r\n\r\n.flx, .snippet, .item-setting-action, header, #groupNameInput--change, .item-setting, .chat-info-general__action__item, .chat-info-general__section__header, .group-setting, .mg-item, .card, .card-content, .modal, .tab-content, .file-banner-content, .file-banner-content__thumb-container, .empty-btn, .rl-msg, .rl-msg .rl-msg-content, .cb-info-file-item__thumb-container, .search-result-file__thumb-container, .search-result-file__file-name, .file-progress-row, .file-actions-row, .file-suggest-item, .file-suggest-item__left-container, .file-suggest-item__right-container, .file-layout, .file-layout__thumb-container, .file-layout__right-container, .file-layout__top-container, .file-layout__bot-container, .file-star-msg-content, .file-star-msg-content__right-block, .fmsg-send-time, .entry-content-v2, .zl-label-add-more, .zl-modal, .pr-status-content, .header-title-container {\r\n    display: flex;\r\n}\r\n\r\n.image-show__list {\r\n    padding: 0px;\r\n    overflow-x: hidden;\r\n    overflow-y: scroll;\r\n    display: inline;\r\n    -ms-overflow-style: none;\r\n    scrollbar-width: none;\r\n}\r\n\r\n.timeline-slider {\r\n    position: relative;\r\n    cursor: pointer;\r\n    width: 23px;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.timeline-slider__track {\r\n    position: absolute;\r\n    height: 100%;\r\n    top: 2px;\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 12px;\r\n    height: 12px;\r\n    background: #7a787b;\r\n    left: 6.5px;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--left {\r\n    bottom: calc(0% - 12px);\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 12px;\r\n    height: 12px;\r\n    background: #7a787b;\r\n    left: 6.5px;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--right {\r\n    bottom: calc(100% - 12px);\r\n}\r\n\r\n.timeline-slider__handle {\r\n    position: absolute;\r\n    background: white;\r\n    border-radius: 50%;\r\n}\r\n\r\n.timeline-slider__track__progress {\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 2px;\r\n    background: #7a787b;\r\n}\r\n\r\n.timeline-slider__tooltip {\r\n    position: absolute;\r\n    top: -5px;\r\n    right: -90px;\r\n    z-index: 1;\r\n    background: white;\r\n    text-align: center;\r\n    font-size: 12px;\r\n    width: 85px;\r\n}\r\n\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realty-location-map-view{\r\n    max-width: 100%;\r\n    min-width: 27.1429rem;\r\n    display: inline-block;\r\n    margin-bottom: unset;\r\n    width: calc(100% - 2.1429rem);\r\n    vertical-align: top;\r\n    height: calc(100vh - 15.8571rem);\r\n    margin-left: unset;\r\n}\r\n\r\n.hiddenUI{\r\n    display: none;\r\n}\r\n", ""]);
 
 
 
@@ -36479,13 +36479,13 @@ function numberToString(numb, floatFixed, decimalSeparator, thousandsSeparator, 
         --i;
         while (mem > 0) {
             if (i >= 0) {
-                cValue = realDigits[i] + mrem;
+                cValue = realDigits[i] + mem;
                 realDigits[i] = cValue % 10;
                 mem = Math.floor(cValue / 10);
             }
             else {
                 if (decDigits.length + i < 0) decDigits.unshift(0);
-                cValue = decDigits[decDigits.length + i] + mrem;
+                cValue = decDigits[decDigits.length + i] + mem;
                 decDigits[decDigits.length + i] = cValue % 10;
                 mem = Math.floor(cValue / 10);
             }
@@ -38667,7 +38667,7 @@ SelectTable.prototype._filter = function (items, filterText) {
         if (result[0].score == 0) result = [];
     }
     result = result.map(function (e) {
-        return e.itrem;
+        return e.item;
     });
 
     return result;
@@ -38680,7 +38680,7 @@ SelectTable.prototype._stringcmp = function (s0, s1) {
 };
 
 SelectTable.prototype._getString = function (item) {
-    if (typeof item == "string") return itrem;
+    if (typeof item == "string") return item;
     return item.text;
 };
 
@@ -39791,13 +39791,13 @@ HMenu.property.activeTab = {
 
 
 ACore["a" /* default */].creator.hmenu = HMenu;
-ACore["a" /* default */].creator.vmenuitem = VMenuItrem;
+ACore["a" /* default */].creator.vmenuitem = VMenuItem;
 ACore["a" /* default */].creator.vmenu = VMenu;
 ACore["a" /* default */].creator.dropright = Dropright;
 ACore["a" /* default */].creator.vmenuline = VMenuLine;
 
 ACore["a" /* default */].creator.dropdown = Dropdown;
-ACore["a" /* default */].creator.hmenuitem = HMenuItrem;
+ACore["a" /* default */].creator.hmenuitem = HMenuItem;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/menu.css
 var css_menu = __webpack_require__(124);
 
@@ -41370,7 +41370,7 @@ SearchStringArrayAdapter_SearchStringArrayAdapter.prototype.getItemText = functi
 SearchStringArrayAdapter_SearchStringArrayAdapter.prototype.getItemView = function (item, index, _, $, query, reuseItem, refParent, mInput) {
     if (reuseItem) {
         reuseItem.childNodes[0].innerHTML = item.hightlightedText;
-        return reuseItrem;
+        return reuseItem;
     }
     else
         return _({
@@ -41422,7 +41422,7 @@ SearchObjectArrayAdapter_SearchObjectArrayAdapter.prototype.onAttached = functio
     this.parent = parent;
     parent.getSelectedObject = function () {
         if (this._selectedIndex >= 0) {
-            return this.$poolItems[this._selectedIndex]._holderItrem;
+            return this.$poolItems[this._selectedIndex]._holderItem;
         }
         else {
             return null;
@@ -41443,7 +41443,7 @@ SearchObjectArrayAdapter_SearchObjectArrayAdapter.prototype.getItemText = functi
 SearchObjectArrayAdapter_SearchObjectArrayAdapter.prototype.getItemView = function (item, index, _, $, query, reuseItem, refParent, mInput) {
     if (reuseItem) {
         reuseItem.childNodes[0].innerHTML = item.__hightlightedText__;
-        return reuseItrem;
+        return reuseItem;
     }
     else
         return _({
@@ -41736,7 +41736,7 @@ AutoCompleteInput.prototype.pushData = function (data, sessionIndex, query) {
                     }
                     var newView = this.getItemView(item, i, AutoCompleteInput_, AutoCompleteInput_$, query, reuseItem, this);
                     newView.addClass('absol-autocomplete-input-item');
-                    newView._holderItem = itrem;
+                    newView._holderItem = item;
                     newView._holderIndex = i;
                     if (i == this._selectedIndex)
                         newView.addClass('active');
@@ -41768,7 +41768,7 @@ AutoCompleteInput.prototype.getItemText = function (item) {
         return this.adapter.getItemText(item, this);
     }
     else if (typeof item == 'string') {
-        return itrem;
+        return item;
     } else {
         throw Error('You need adapter.getItemText(item, mAutoCompleteInput) to handle your item text!');
     }
@@ -41783,7 +41783,7 @@ AutoCompleteInput.prototype.getItemView = function (item, index, _, $, query, re
         var text = this.getItemText(item);
         if (reuseItem) {
             reuseItem.childNodes[0].innerHTML = text;
-            return reuseItrem;
+            return reuseItem;
         }
 
         return _({
@@ -42339,7 +42339,7 @@ SelectMenu.prepareItem = function (item) {
 
     item.__nvnTextNoneCase__ = item.__nvnText__.toLowerCase();
     item.__nvnWordsNoneCase__ = item.__nvnTextNoneCase__.split(spliter);
-    return itrem;
+    return item;
 };
 
 
@@ -42773,7 +42773,7 @@ SelectMenu.eventHandler.searchModify = function (event) {
                 if (view[0].score == 0) view = [];
             }
             view = view.map(function (e) {
-                return e.itrem;
+                return e.item;
             });
             this._searchCache[filterText] = view;
         }
@@ -42848,7 +42848,7 @@ TreeList.prototype.addItem = function (item) {
     var props = { level: this.level, data: item };
     
     if (typeof item == 'string') {
-        props.text = itrem;
+        props.text = item;
     }
     else {
         props.text = item.text;
@@ -43102,7 +43102,7 @@ TreeListItem.property.extendStyle = {
 };
 
 
-ACore["a" /* default */].creator.treelistitem = TreeListItrem;
+ACore["a" /* default */].creator.treelistitem = TreeListItem;
 
 /* harmony default export */ var js_TreeListItem = (TreeListItem);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selecttreemenu.css
@@ -43184,11 +43184,11 @@ function SelectTreeMenu() {
     return res;
 }
 
-SelectTreeMenu.prototype.updateItem = js_SelectMenu.prototype.updateItrem;
+SelectTreeMenu.prototype.updateItem = js_SelectMenu.prototype.updateItem;
 
 SelectTreeMenu.prototype.init = js_SelectMenu.prototype.init;
 SelectTreeMenu.prototype.updateDropdownPostion = js_SelectMenu.prototype.updateDropdownPostion;
-SelectTreeMenu.prototype.scrollToSelectedItem = js_SelectMenu.prototype.scrollToSelectedItrem;
+SelectTreeMenu.prototype.scrollToSelectedItem = js_SelectMenu.prototype.scrollToSelectedItem;
 SelectTreeMenu.prototype.startTrackScroll = js_SelectMenu.prototype.startTrackScroll;
 SelectTreeMenu.prototype.stopTrackScroll = js_SelectMenu.prototype.stopTrackScroll;
 
@@ -43338,12 +43338,12 @@ SelectTreeMenu.prepareItem = function (item) {
 
     item.__nvnTextNoneCase__ = item.__nvnText__.toLowerCase();
     item.__nvnWordsNoneCase__ = item.__nvnTextNoneCase__.split(spliter);
-    return itrem;
+    return item;
 };
 
 
 SelectTreeMenu.prepareData = function (items) {
-    var itrem;
+    var item;
     for (var i = 0; i < items.length; ++i) {
         if (typeof items[i] == 'string') {
             items[i] = { text: items[i], value: items[i] };
@@ -43424,7 +43424,7 @@ SelectTreeMenu.queryTree = function (query, items) {
         }).map(function (node) {
             var res;
             if (typeof node.item == 'string') {
-                res = node.itrem;
+                res = node.item;
             }
             else {
                 res = Object.assign({}, node.item);
@@ -45019,8 +45019,8 @@ function Draggable(element) {
         event.moveToX = left0 + event.moveDX;
         event.moveToY = top0 + event.moveDY;
 
-        event.moveToXem = left0em + event.moveDXrem;
-        event.moveToYem = top0em + event.moveDYrem;
+        event.moveToXem = left0em + event.moveDXem;
+        event.moveToYem = top0em + event.moveDYem;
         if (firstMove) {
             firstMove = false;
             element.emit('begindrag', event);
@@ -45050,8 +45050,8 @@ function Draggable(element) {
         top0em = top0 / fontSize;
         event.x0 = left0;
         event.y0 = top0;
-        event.y0em = left0rem;
-        event.y0em = top0rem;
+        event.y0em = left0em;
+        event.y0em = top0em;
         element.emit('predrag', event);
     };
 
@@ -45552,7 +45552,7 @@ ToolTip.showWhenClick = function (element, content, orientation) {
 var css_frame = __webpack_require__(164);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/frameview.css
-var frameview = __webpack_require__(166);
+var css_frameview = __webpack_require__(166);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Frame.js
 
@@ -47159,7 +47159,7 @@ SearchList.prototype.pushData = function (data, sessionIndex, query) {
                     }
                     var newView = this.adapter.getItemView(item.item, i, SearchList_, SearchList_$, query, reuseItem, this);
                     newView.addClass('absol-search-list-item');
-                    newView.__data__ = itrem;
+                    newView.__data__ = item;
                     newView.__index__ = i;
                     if (i == this._selectedIndex)
                         newView.addClass('active');
@@ -47272,7 +47272,7 @@ SearchList.prototype._findItem = function (elt) {
 SearchList.prototype.updateItems = function () {
     this.removeAllToPool();
     var self = this;
-    var reusedItrem;
+    var reusedItem;
     var query = '';
     this.itemEltsDict = {};
     this.itemEltArr = [];
@@ -47283,7 +47283,7 @@ SearchList.prototype.updateItems = function () {
         self.itemEltsDict[valueKey] = itemView;
         self.itemEltArr.push(itemView);
         SearchList_$(itemView).addClass('absol-search-list-item');
-        itemView.__data__ = itrem;// item wil hold  the data of itself
+        itemView.__data__ = item;// item wil hold  the data of itself
         itemView.__index__ = index;// item wil hold  the data of itself
 
         self.$dropdown.addChild(itemView);
@@ -50391,7 +50391,7 @@ ChromeCalendar.prototype.expandYear = function (year) {
     var fontSize = this.getFontSize();
 
     var self = this;
-    var lastItemElt = this.$lastOpenYearItrem;
+    var lastItemElt = this.$lastOpenYearItem;
 
     var itemElt = this.$yearItems[year - 1890];
     var lastYear = 100000000;
@@ -52595,8 +52595,8 @@ BaseView.prototype.execCmd = function () {
 // EXTERNAL MODULE: ./css/App.css
 var App = __webpack_require__(209);
 
-// EXTERNAL MODULE: ./css/listProject.css
-var listProject = __webpack_require__(211);
+// EXTERNAL MODULE: ./css/ListRealty.css
+var ListRealty = __webpack_require__(211);
 
 // EXTERNAL MODULE: ./css/ModuleView.css
 var ModuleView = __webpack_require__(213);
@@ -54956,32 +54956,14 @@ var NewRealty = __webpack_require__(217);
 // EXTERNAL MODULE: ./css/imagesilder.css
 var imagesilder = __webpack_require__(219);
 
-// EXTERNAL MODULE: ./css/style_alignFormCss.css
-var style_alignFormCss = __webpack_require__(221);
-
-// EXTERNAL MODULE: ./css/style_alignFormCss_1.css
-var style_alignFormCss_1 = __webpack_require__(223);
-
-// EXTERNAL MODULE: ./css/style_alignFormCss_2.css
-var style_alignFormCss_2 = __webpack_require__(225);
-
-// EXTERNAL MODULE: ./css/style_alignFormCss_3.css
-var style_alignFormCss_3 = __webpack_require__(227);
-
-// EXTERNAL MODULE: ./css/style_alignFormCss_4.css
-var style_alignFormCss_4 = __webpack_require__(229);
-
-// EXTERNAL MODULE: ./css/style_alignFormCss_5.css
-var style_alignFormCss_5 = __webpack_require__(231);
-
 // EXTERNAL MODULE: ./css/form_create_edit.css
-var form_create_edit = __webpack_require__(233);
+var form_create_edit = __webpack_require__(221);
 
 // EXTERNAL MODULE: ./css/test_question.css
-var test_question = __webpack_require__(235);
+var test_question = __webpack_require__(223);
 
 // EXTERNAL MODULE: ./css/test.css
-var css_test = __webpack_require__(237);
+var test = __webpack_require__(225);
 
 // CONCATENATED MODULE: ./js/component/modal_drag_drop_image.js
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -55604,7 +55586,7 @@ var xmlModalDragImage;
   }
 });
 // EXTERNAL MODULE: ./css/MapView.css
-var MapView = __webpack_require__(239);
+var MapView = __webpack_require__(227);
 
 // CONCATENATED MODULE: ./js/component/MapView.js
 
@@ -55612,9 +55594,9 @@ var MapView = __webpack_require__(239);
 
 var MapView_ = dom_Fcore._;
 var MapView_$ = dom_Fcore.$;
-function locationView(functionDone) {
-  var map = MapView_MapView();
-  var detailView = DetailView(map);
+function locationView(functionDone, data) {
+  var map = MapView_MapView(data);
+  var detailView = DetailView(map, data);
   map.activeDetail(detailView);
 
   var temp = MapView_({
@@ -55652,6 +55634,8 @@ function locationView(functionDone) {
     }]
   });
 
+  temp.map = map;
+  temp.detailView = detailView;
   return temp;
 }
 function DetailView(map) {
@@ -56025,8 +56009,13 @@ function MapView_MapView() {
   });
 
   Object.assign(temp, MapView_MapView.prototype);
+  temp.mapReplace = MapView_$('div.pizo-new-realty-location-map-view-content', temp);
   return temp;
 }
+
+MapView_MapView.prototype.activePlanningMap = function () {
+  this.map = this.activeMap();
+};
 
 MapView_MapView.prototype.activeDetail = function (detailView) {
   this.detailView = detailView;
@@ -56036,7 +56025,7 @@ MapView_MapView.prototype.activeDetail = function (detailView) {
 MapView_MapView.prototype.activeMap = function () {
   var center = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [10.822500, 106.629104];
   var zoom = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 16;
-  var map = new google.maps.Map(this, {
+  var map = new google.maps.Map(this.mapReplace, {
     zoom: zoom,
     center: new google.maps.LatLng(center[0], center[1]),
     mapTypeControlOptions: {
@@ -56065,6 +56054,7 @@ MapView_MapView.prototype.addMoveMarker = function (position) {
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(position[0], position[1]),
       map: self.map,
+      draggable: true,
       title: "Latitude:" + position[0] + " | Longtitude:" + position[1]
     });
     this.currentMarker = marker;
@@ -56077,12 +56067,16 @@ MapView_MapView.prototype.addMoveMarker = function (position) {
       self.detailView.changInput = true;
     }
 
-    google.maps.event.addListener(self.map, "click", function (event) {
+    marker.addListener("dragend", function (event) {
       var result = [event.latLng.lat(), event.latLng.lng()];
-      self.transition(result, changeInput).then(function (value) {
-        self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
-        self.smoothZoom(12, self.map.getZoom());
-      });
+      self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
+      self.smoothZoom(12, self.map.getZoom());
+
+      if (changeInput) {
+        self.detailView["long"].value = result[0];
+        self.detailView.lat.value = result[1];
+        self.detailView.changInput = true;
+      }
     });
   }
 
@@ -56100,17 +56094,11 @@ MapView_MapView.prototype.transition = function (result, changeInput) {
   }
 
   var deltaLat = (result[0] - position[0]) / this.numDeltas;
-  var deltaLng = (result[1] - position[1]) / this.numDeltas;
-  window.service.nearbySearch({
-    location: {
-      lat: result[0],
-      lng: result[1]
-    },
-    rankBy: google.maps.places.RankBy.DISTANCE,
-    type: ['market']
-  }, function (results, status) {
-    self.callback(results, status);
-  });
+  var deltaLng = (result[1] - position[1]) / this.numDeltas; // window.service.nearbySearch({ location: {lat: result[0], lng: result[1]}, rankBy: google.maps.places.RankBy.DISTANCE , type: ['market'] },
+  // function(results, status){
+  //     self.callback(results, status)
+  // });
+
   return this.moveMarker(position, deltaLat, deltaLng);
 };
 
@@ -56170,9 +56158,128 @@ MapView_MapView.prototype.smoothZoom = function (max, cnt) {
   }
 };
 // EXTERNAL MODULE: ./css/ModuleImage.css
-var ModuleImage = __webpack_require__(241);
+var ModuleImage = __webpack_require__(229);
 
+// EXTERNAL MODULE: ./css/FormatFunction.css
+var FormatFunction = __webpack_require__(231);
+
+// CONCATENATED MODULE: ./js/component/FormatFunction.js
+
+
+
+var FormatFunction_ = dom_Fcore._;
+var FormatFunction_$ = dom_Fcore.$;
+function formatDate(date) {
+  var isMinutes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var isHours = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var isDay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+  var isMonth = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+  var isYear = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
+  var d = new Date(date);
+  var resultTime = [];
+  var resultDayMonth = [];
+  if (isHours) resultTime.push('' + d.getHours());
+  if (isMinutes) resultTime.push('' + d.getMinutes());
+
+  if (isDay) {
+    var day = '' + d.getDate();
+    if (day.length < 2) day = '0' + day;
+    resultDayMonth.push(day);
+  }
+
+  if (isMonth) {
+    var month = '' + (d.getMonth() + 1);
+    if (month.length < 2) month = '0' + month;
+    resultDayMonth.push(month);
+  }
+
+  if (isYear) resultDayMonth.push('' + d.getFullYear());
+  return resultTime.join(':') + " " + resultDayMonth.join('/');
+}
+function consoleArea(areas) {
+  var result = {
+    type: "FeatureCollection",
+    features: []
+  };
+  var k = 0;
+  areas.forEach(function (f) {
+    if (f._area > 1.1368683772161603e-13) {
+      var vertices = f.vertexlist;
+
+      if (vertices !== undefined) {
+        var temp = [];
+        var sum = 0;
+
+        for (var i = 0; i < vertices.length; i++) {
+          temp.push([vertices[i].x, vertices[i].y]);
+        }
+
+        temp.push([vertices[0].x, vertices[0].y]);
+        temp = checkRule(temp);
+        result.features.push({
+          type: "Feature",
+          properties: {},
+          geometry: {
+            type: 'Polygon',
+            coordinates: [temp]
+          }
+        });
+      }
+    }
+  });
+  return result;
+}
+function checkRule(poly) {
+  var sum = 0;
+
+  for (var i = 0; i < poly.length - 1; i++) {
+    var cur = poly[i],
+        next = poly[i + 1];
+    sum += (next[0] - cur[0]) * (next[1] + cur[1]);
+  }
+
+  if (sum > 0) return poly.reverse();
+  return poly;
+}
+function loaddingWheel() {
+  var temp = FormatFunction_({
+    tag: "div",
+    "class": "container-wheel",
+    child: [{
+      tag: "div",
+      "class": "lds-roller",
+      child: [{
+        tag: "div"
+      }, {
+        tag: "div"
+      }, {
+        tag: "div"
+      }, {
+        tag: "div"
+      }, {
+        tag: "div"
+      }, {
+        tag: "div"
+      }, {
+        tag: "div"
+      }, {
+        tag: "div"
+      }]
+    }]
+  });
+
+  Object.assign(temp, loaddingWheel.prototype);
+  document.body.appendChild(temp);
+  document.body.style.pointerEvents = "none";
+  return temp;
+}
+
+loaddingWheel.prototype.disable = function () {
+  document.body.style.pointerEvents = "";
+  this.selfRemove();
+};
 // CONCATENATED MODULE: ./js/component/ModuleImage.js
+
 
 
 
@@ -56181,6 +56288,7 @@ var ModuleImage_$ = dom_Fcore.$;
 function descViewImagePreview() {
   var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var promiseLazyLoad = arguments.length > 2 ? arguments[2] : undefined;
 
   var temp = ModuleImage_({
     tag: "div",
@@ -56192,7 +56300,7 @@ function descViewImagePreview() {
         tag: "div",
         "class": "fl-l",
         style: {
-          margin: "3px 10px 3px 14px"
+          margin: "0.2143rem 0.7143rem 0.2143rem 1rem"
         }
       }, {
         tag: "div",
@@ -56205,7 +56313,7 @@ function descViewImagePreview() {
           tag: "i",
           "class": ["btn", "dark", "btn--m", "fa", "fa-close"],
           style: {
-            margin: "6px 10px"
+            margin: "0.4286rem 0.7143rem"
           }
         }]
       }]
@@ -56213,25 +56321,22 @@ function descViewImagePreview() {
       tag: "div",
       style: {
         display: "flex",
-        height: "calc(100vh - 90px)",
-        margin: "5px"
+        height: "calc(100vh - 6.42857142857rem)",
+        margin: "0.3571rem"
       },
       child: [{
         tag: "div",
-        style: {
-          display: "flex",
-          padding: "15px 0px 0px 15px"
-        },
+        "class": "timeLineContainerCheck",
         child: [{
           tag: "div",
           "class": "image-show__thumb__legend",
           style: {
-            height: "32px",
-            width: "120px",
+            height: "2.2857rem",
+            width: "8.5714rem",
             position: "absolute",
             zIndex: 10,
-            top: "40px",
-            left: "5px"
+            top: "2.8571rem",
+            left: "0.3571rem"
           },
           child: [{
             tag: "span",
@@ -56246,7 +56351,8 @@ function descViewImagePreview() {
           tag: "div",
           "class": "flx",
           style: {
-            height: "100%"
+            height: "100%",
+            overflowX: "hidden"
           },
           child: [{
             tag: "div",
@@ -56257,7 +56363,7 @@ function descViewImagePreview() {
           tag: "div",
           "class": "timeline-slider",
           style: {
-            margin: "0px 12px 15px"
+            margin: "0rem 0.8571rem 1.0714rem"
           },
           child: [{
             tag: "div",
@@ -56276,16 +56382,16 @@ function descViewImagePreview() {
             tag: "div",
             "class": ["timeline-slider__handle"],
             style: {
-              width: "12px",
-              height: "12px",
-              left: "6.5px",
-              top: "calc(0% - 0px)"
+              width: "0.8571rem",
+              height: "0.8571rem",
+              left: "0.4643rem",
+              top: "calc(0% - 0rem)"
             },
             child: [{
               tag: "div",
               "class": "timeline-slider__tooltip",
               style: {
-                top: "-3px"
+                top: "-0.2143rem"
               }
             }]
           }]
@@ -56322,6 +56428,16 @@ function descViewImagePreview() {
             id: "mainImage"
           },
           child: [{
+            tag: "div",
+            "class": "image-show__meta-wrapper",
+            props: {
+              id: "imageTitle"
+            },
+            child: [{
+              tag: "div",
+              "class": "image-show__caption"
+            }]
+          }, {
             tag: "img",
             "class": ["image-show__img", "z-fh", "fadeInImageShow"],
             attr: {
@@ -56484,6 +56600,7 @@ function descViewImagePreview() {
 
   Object.assign(container, descViewImagePreview.prototype);
   var self = container;
+  self.closeButton = ModuleImage_$('div#image-show__close.fl-r.image-show__close', temp);
   self.containImage = ModuleImage_$('div.flx.flx-al-e.image-show__list', temp);
   self.prevButton = ModuleImage_$('i.btn.fa.fa-chevron-left', temp);
   self.nextButton = ModuleImage_$('i.btn.fa.fa-chevron-right', temp);
@@ -56497,7 +56614,26 @@ function descViewImagePreview() {
   self.avatarImage = ModuleImage_$('div.avatar-img', temp);
   self.userName = ModuleImage_$('div.truncate.user-name', temp);
   self.dateSubmit = ModuleImage_$('div.truncate.date-submit', temp);
+  self.noteImage = ModuleImage_$('div#imageTitle.image-show__meta-wrapper  div.image-show__caption', temp);
   self.mainImage = ModuleImage_$('div#mainImage>img.image-show__img.z-fh.fadeInImageShow', temp);
+  self.openCloseTimeLine = ModuleImage_$('div.image-show__btnc__fullscreen', temp);
+  self.containerTimeLine = ModuleImage_$('div.timeLineContainerCheck', temp);
+  self.containerMainImage = ModuleImage_$('div.#image-show.image-show__body.content', temp);
+  self.timeLineMarker = ModuleImage_$('div.timeline-slider__handle', temp);
+  var supportsPassive = false;
+
+  try {
+    window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+      get: function get() {
+        supportsPassive = true;
+      }
+    }));
+  } catch (e) {}
+
+  var wheelOpt = supportsPassive ? {
+    passive: false
+  } : false;
+  var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
   self.prevButton.addEventListener("click", function (event) {
     self.SelectImage(self.itemSelect.nextElement().index);
   });
@@ -56516,13 +56652,59 @@ function descViewImagePreview() {
   self.rotateRightButton.addEventListener("click", function (event) {
     self.setRoation(90);
   });
+  self.closeButton.addEventListener("click", function (event) {
+    self.selfRemove();
+  });
+  self.containImage.addEventListener(wheelEvent, function (event) {
+    event.preventDefault();
+  }, wheelOpt);
+  var deltaYcontainImage = 0;
+  var deltaYcontainerMainImage = 0;
+  self.containImage.addEventListener("wheel", function (event) {
+    if (Math.abs(deltaYcontainImage) < 200) {
+      if (deltaYcontainImage * event.deltaY < 0) deltaYcontainImage = event.deltaY;else deltaYcontainImage += event.deltaY;
+    } else {
+      if (deltaYcontainImage < 0) {
+        var next = self.itemSelect.prevElement();
+        if (next !== null) self.SelectImage(next.index);
+      } else {
+        var next = self.itemSelect.nextElement();
+        if (next !== null) self.SelectImage(next.index);
+      }
+
+      deltaYcontainImage = 0;
+    }
+  });
+  self.containerMainImage.addEventListener("wheel", function (event) {
+    if (Math.abs(deltaYcontainerMainImage) < 50) {
+      if (deltaYcontainerMainImage * event.deltaY < 0) deltaYcontainerMainImage = 0;else deltaYcontainerMainImage += event.deltaY;
+    } else {
+      if (deltaYcontainerMainImage < 0) {
+        self.setScale(-0.125);
+      } else {
+        self.setScale(0.125);
+      }
+
+      deltaYcontainerMainImage = 0;
+    }
+  });
+  self.openCloseTimeLine.addEventListener("click", function (event) {
+    if (self.containerTimeLine.classList.contains("displayNone")) {
+      self.containerTimeLine.classList.remove("displayNone");
+    } else {
+      self.containerTimeLine.classList.add("displayNone");
+    }
+  });
+  self.containImage.indexDay = -1;
+  self.containImage.indexElement = -1;
   self.renderItems(data, index);
+
+  if (promiseLazyLoad !== undefined) {
+    self.addFunctionLazyLoad(promiseLazyLoad);
+  }
+
   return self;
 }
-
-descViewImagePreview.prototype.activeScroller = function () {
-  self.containImage.addEventListener("scroll", function () {});
-};
 
 descViewImagePreview.prototype.renderItems = function (data, index) {
   var self = this;
@@ -56575,37 +56757,65 @@ descViewImagePreview.prototype.renderItems = function (data, index) {
         };
       }(date);
 
+      self.containImage.indexDay++;
+      dayThumnail.indexDay = self.containImage.indexDay;
       self.containImage.appendChild(dayThumnail);
     } else dataCheck[format] = dataCheck[format].concat([data[i]]);
 
-    var item = self.ItemTimeLine(data[i], i);
+    self.containImage.indexElement++;
+    var item = self.ItemTimeLine(data[i], self.containImage.indexElement);
     item.dayElement = dayThumnail;
     self.containImage.appendChild(item);
   }
 
-  self.SelectImage(index);
+  if (index !== undefined) self.SelectImage(index);
 };
 
-descViewImagePreview.prototype.resetImage = function (src) {
-  this.mainImage.rotateRadius = 0;
-  this.mainImage.scaleUnit = 1;
-  this.mainImage.setAttribute("src", src);
+descViewImagePreview.prototype.resetImage = function (data) {
+  var self = this;
+
+  var newMainImage = ModuleImage_({
+    tag: "img",
+    "class": ["image-show__img", "z-fh", "fadeInImageShow"],
+    attr: {
+      draggable: "false",
+      crossorigin: "Anonymous",
+      src: data.src
+    }
+  });
+
+  newMainImage.rotateRadius = 0;
+  newMainImage.scaleUnit = 1;
+  newMainImage.style.transform = "rotate(" + newMainImage.rotateRadius + "deg) translate(0rem, 0rem) scale(" + newMainImage.scaleUnit + ")";
+  newMainImage.addEventListener("click", function () {
+    if (self.noteImage.parentNode.classList.contains("displayNone")) self.noteImage.parentNode.classList.remove("displayNone");else self.noteImage.parentNode.classList.add("displayNone");
+  });
+  this.downloadButton.setAttribute("href", data.src);
+  this.mainImage.parentNode.replaceChild(newMainImage, this.mainImage);
+  this.mainImage = newMainImage;
+  this.noteImage.innerText = data.note;
+  this.avatarImage.style.backgroundImage = "url(" + data.avatar + ")";
+  this.userName.innerText = data.userName;
+  this.dateSubmit.innerText = formatDate(data.date, true, true, true, true, true);
 };
 
 descViewImagePreview.prototype.setRoation = function (radius) {
   this.mainImage.rotateRadius += radius;
-  this.mainImage.style.transform = "rotate(" + this.mainImage.rotateRadius + "deg) translate(0px, 0px) scale(1)";
+  this.mainImage.style.transform = "rotate(" + this.mainImage.rotateRadius + "deg) translate(0rem, 0rem) scale(" + this.mainImage.scaleUnit + ")";
+};
+
+descViewImagePreview.prototype.setScale = function (scale) {
+  if (this.mainImage.scaleUnit + scale < 1) return;
+  this.mainImage.scaleUnit += scale;
+  this.mainImage.style.transform = "rotate(" + this.mainImage.rotateRadius + "deg) translate(0rem, 0rem) scale(" + this.mainImage.scaleUnit + ")";
 };
 
 descViewImagePreview.prototype.SelectImage = function (index) {
   if (this.itemSelect !== undefined) this.itemSelect.classList.remove("selected");
   this.itemSelect = ModuleImage_$("div#thumb_" + index, this);
   this.itemSelect.classList.add("selected");
-  this.resetImage(this.itemSelect.data.src);
+  this.resetImage(this.itemSelect.data);
   this.titleTimeLine.innerText = this.itemSelect.dayElement.getDate();
-  this.avatarImage.style.backgroundImage = "url(" + this.itemSelect.data.avatar + ")";
-  this.userName.innerText = this.itemSelect.data.userName;
-  this.dateSubmit.innerText = formatDate(this.itemSelect.data.date, true, true, true, true, true);
 
   if (this.itemSelect.nextElement() === null) {
     if (!this.prevButton.classList.contains("unclickable")) this.prevButton.classList.add("unclickable");
@@ -56622,6 +56832,23 @@ descViewImagePreview.prototype.SelectImage = function (index) {
     if (this.nextButton.classList.contains("unclickable")) this.nextButton.classList.remove("unclickable");
     if (!this.nextButtonTop.classList.contains("clickable")) this.nextButtonTop.classList.add("clickable");
   }
+
+  this.scrollView();
+};
+
+descViewImagePreview.prototype.scrollView = function () {
+  var self = this;
+  this.containImage.scrollTop = this.itemSelect.offsetTop - this.containImage.offsetHeight / 2;
+  this.timeLineMarker.style.top = "calc(" + this.itemSelect.dayElement.indexDay / this.containImage.indexDay * 100 + "% - 0rem)";
+  if (this.promiseLazyLoad !== undefined) if (this.itemSelect.dayElement.indexDay === this.containImage.indexDay) this.promiseLazyLoad.then(function (result) {
+    self.renderItems(result);
+    self.scrollView();
+    self.promiseLazyLoad = undefined;
+  });
+};
+
+descViewImagePreview.prototype.addFunctionLazyLoad = function (promiseLazyLoad) {
+  this.promiseLazyLoad = promiseLazyLoad;
 };
 
 descViewImagePreview.prototype.ItemTimeLine = function (data, i) {
@@ -56676,42 +56903,8 @@ descViewImagePreview.prototype.ItemTimeLine = function (data, i) {
 
   return temp;
 };
-
-function formatDate(date) {
-  var isMinutes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  var isHours = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-  var isDay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-  var isMonth = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
-  var isYear = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
-  var d = new Date(date);
-  var resultTime = [];
-  var resultDayMonth = [];
-  if (isMinutes) resultTime.push('' + d.getMinutes());
-  if (isHours) resultTime.push('' + d.getHours());
-
-  if (isDay) {
-    var day = '' + d.getDate();
-    if (day.length < 2) day = '0' + day;
-    resultDayMonth.push(day);
-  }
-
-  if (isMonth) {
-    var month = '' + (d.getMonth() + 1);
-    if (month.length < 2) month = '0' + month;
-    resultDayMonth.push(month);
-  }
-
-  if (isYear) resultDayMonth.push('' + d.getFullYear());
-  return resultTime.join(':') + " " + resultDayMonth.join('/');
-}
 // CONCATENATED MODULE: ./js/component/NewRealty.js
 function NewRealty_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { NewRealty_typeof = function _typeof(obj) { return typeof obj; }; } else { NewRealty_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return NewRealty_typeof(obj); }
-
-
-
-
-
-
 
 
 
@@ -56770,10 +56963,10 @@ NewRealty_NewRealty.prototype.getView = function () {
         }
       }, {
         tag: "div",
-        "class": "pizo-list-project-button",
+        "class": "pizo-list-realty-button",
         child: [{
           tag: "button",
-          "class": ["pizo-list-project-button-quit", "pizo-list-project-button-element"],
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
               self.$view.selfRemove();
@@ -56785,33 +56978,19 @@ NewRealty_NewRealty.prototype.getView = function () {
           child: ['<span>' + "Đóng" + '</span>']
         }, {
           tag: "button",
-          "class": ["pizo-list-project-button-add", "pizo-list-project-button-element"],
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {}
           },
           child: ['<span>' + "Lưu" + '</span>']
-        }, {
-          tag: "button",
-          "class": ["pizo-list-project-button-add", "pizo-list-project-button-element"],
-          on: {
-            click: function click(evt) {}
-          },
-          child: ['<span>' + "Lưu & đóng" + '</span>']
-        }, {
-          tag: "button",
-          "class": ["pizo-list-project-button-add", "pizo-list-project-button-element"],
-          on: {
-            click: function click(evt) {}
-          },
-          child: ['<span>' + "Lưu & thêm mới" + '</span>']
         }]
       }]
     }]
   });
   this.$view.addChild(NewRealty_({
     tag: "div",
-    "class": ["pizo-list-project-main"],
-    child: [NewRealty_NewRealty.prototype.descView()]
+    "class": ["pizo-list-realty-main"],
+    child: [this.descView()]
   })); // setTimeout(function(){selectElement("pizo-new-realty-convenient-content-area-size-zone",1)},500)
 
   return this.$view;
@@ -56854,7 +57033,265 @@ NewRealty_NewRealty.prototype.descView = function () {
     src: "assets/images/6.jfif",
     date: "2020-04-15T16:08:00",
     note: "Phòng kho tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/1.jfif",
+    date: "2017-06-10T16:08:00",
+    note: "Phòng bếp tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/2.jfif",
+    date: "2018-06-10T16:08:00",
+    note: "Phòng khách tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/3.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Nhà tắm tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/4.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Phòng Gym tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/5.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Phòng thờ tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/6.jfif",
+    date: "2020-04-15T16:08:00",
+    note: "Phòng kho tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/1.jfif",
+    date: "2017-06-10T16:08:00",
+    note: "Phòng bếp tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/2.jfif",
+    date: "2018-06-10T16:08:00",
+    note: "Phòng khách tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/3.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Nhà tắm tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/4.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Phòng Gym tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/5.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Phòng thờ tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/6.jfif",
+    date: "2020-04-15T16:08:00",
+    note: "Phòng kho tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/1.jfif",
+    date: "2017-06-10T16:08:00",
+    note: "Phòng bếp tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/2.jfif",
+    date: "2018-06-10T16:08:00",
+    note: "Phòng khách tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/3.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Nhà tắm tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/4.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Phòng Gym tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/5.jfif",
+    date: "2019-06-10T16:08:00",
+    note: "Phòng thờ tầng 1"
+  }, {
+    avatar: "assets/avatar/Thi.jpg",
+    userName: "Bùi Phạm Minh Thi",
+    src: "assets/images/6.jfif",
+    date: "2020-04-15T16:08:00",
+    note: "Phòng kho tầng 1"
   }];
+  var x = new Promise(function (resolve, reject) {
+    resolve([{
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/1.jfif",
+      date: "1017-06-10T16:08:00",
+      note: "Phòng bếp tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/2.jfif",
+      date: "1018-06-10T16:08:00",
+      note: "Phòng khách tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/3.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Nhà tắm tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/4.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Phòng Gym tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/5.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Phòng thờ tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/6.jfif",
+      date: "1020-04-15T16:08:00",
+      note: "Phòng kho tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/1.jfif",
+      date: "1017-06-10T16:08:00",
+      note: "Phòng bếp tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/2.jfif",
+      date: "1018-06-10T16:08:00",
+      note: "Phòng khách tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/3.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Nhà tắm tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/4.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Phòng Gym tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/5.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Phòng thờ tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/6.jfif",
+      date: "1020-04-15T16:08:00",
+      note: "Phòng kho tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/1.jfif",
+      date: "1017-06-10T16:08:00",
+      note: "Phòng bếp tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/2.jfif",
+      date: "1018-06-10T16:08:00",
+      note: "Phòng khách tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/3.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Nhà tắm tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/4.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Phòng Gym tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/5.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Phòng thờ tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/6.jfif",
+      date: "1020-04-15T16:08:00",
+      note: "Phòng kho tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/1.jfif",
+      date: "1017-06-10T16:08:00",
+      note: "Phòng bếp tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/2.jfif",
+      date: "1018-06-10T16:08:00",
+      note: "Phòng khách tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/3.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Nhà tắm tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/4.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Phòng Gym tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/5.jfif",
+      date: "1019-06-10T16:08:00",
+      note: "Phòng thờ tầng 1"
+    }, {
+      avatar: "assets/avatar/Thi.jpg",
+      userName: "Bùi Phạm Minh Thi",
+      src: "assets/images/6.jfif",
+      date: "1020-04-15T16:08:00",
+      note: "Phòng kho tầng 1"
+    }]);
+  });
+  this.containerMap = NewRealty_({
+    tag: "div"
+  });
 
   var temp = NewRealty_({
     tag: "div",
@@ -56862,19 +57299,19 @@ NewRealty_NewRealty.prototype.descView = function () {
     child: [{
       tag: "div",
       "class": "pizo-new-realty-desc-content",
-      child: [NewRealty_NewRealty.prototype.descViewdetail(), NewRealty_NewRealty.prototype.descViewImageThumnail(dataImage)]
+      child: [this.descViewdetail(), this.containerMap]
     }, {
       tag: "div",
       "class": "pizo-new-realty-desc-infomation",
-      child: [NewRealty_NewRealty.prototype.detructView(), {
+      child: [this.detructView(), {
         tag: "div",
         "class": ["pizo-new-realty-desc-infomation-cell", "center-child"],
-        child: [// NewRealty.prototype.utilityView(),
-        NewRealty_NewRealty.prototype.convenientView()]
+        child: [// this.utilityView(),
+        this.convenientView()]
       }, {
         tag: "div",
         "class": "pizo-new-realty-desc-infomation-cell",
-        child: [NewRealty_NewRealty.prototype.juridicalView(), NewRealty_NewRealty.prototype.historyView()]
+        child: [this.juridicalView(), this.historyView()]
       }]
     }]
   });
@@ -56882,7 +57319,7 @@ NewRealty_NewRealty.prototype.descView = function () {
   return temp;
 };
 
-NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage) {
+NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage, index, promiseLazyLoad) {
   var temp = NewRealty_({
     tag: "div",
     "class": ["pizo-new-relty-desc-content-thumnail", "pizo-new-realty-dectruct-content-area-size-zone"],
@@ -56904,7 +57341,7 @@ NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage) {
     }],
     on: {
       click: function click(event) {
-        document.body.appendChild(descViewImagePreview(dataImage)); // xmlModalDragImage.createModal(document.body,function(){
+        document.body.appendChild(descViewImagePreview(dataImage, index, promiseLazyLoad)); // xmlModalDragImage.createModal(document.body,function(){
         //     console.log(xmlModalDragImage.imgUrl)
         // });
       }
@@ -56925,100 +57362,245 @@ NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage) {
   return temp;
 };
 
+NewRealty_NewRealty.prototype.itemAdress = function () {
+  var self = this;
+
+  var text = NewRealty_({
+    text: "Địa chỉ"
+  });
+
+  var important = NewRealty_({
+    tag: "span",
+    "class": "pizo-new-realty-location-detail-row-label-important",
+    props: {
+      innerHTML: "*"
+    }
+  });
+
+  var temp = NewRealty_({
+    tag: "div",
+    "class": ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+    child: [{
+      tag: "span",
+      "class": "pizo-new-realty-desc-detail-1-row-label",
+      child: [text, important]
+    }, {
+      tag: "input",
+      "class": ["pizo-new-realty-desc-detail-1-row-input"],
+      on: {
+        click: function click(event) {
+          this.blur();
+          var selfElement = this;
+          var childNode = locationView(function (value) {
+            selfElement.value = value.input.value;
+            temp.selfRemoveChild(value.input.value, childNode);
+            childRemove.selfRemove();
+          });
+
+          var childRemove = NewRealty_({
+            tag: "modal",
+            on: {
+              click: function click(event) {
+                var target = event.target;
+
+                while (target !== childNode && target !== childRemove && target !== document.body) {
+                  target = target.parentNode;
+                }
+
+                if (target === childRemove) childRemove.selfRemove();
+              }
+            },
+            child: [childNode]
+          });
+
+          temp.appendChild(childRemove);
+        }
+      }
+    }]
+  });
+
+  temp.label = text;
+  temp.important = important;
+
+  temp.updateIndex = function (index) {
+    temp.index = index;
+
+    if (index == 0) {
+      index = "";
+    } else temp.important.style.display = "none";
+
+    temp.label.data = "Địa chỉ " + index;
+  };
+
+  temp.parentUpdateIndex = function () {
+    var k = 0;
+
+    for (var i = 0; i < temp.parentNode.childNodes.length; i++) {
+      if (!temp.parentNode.childNodes[i].classList.contains("adressItemCheck")) return;
+      temp.parentNode.childNodes[i].updateIndex(k++);
+    }
+  };
+
+  temp.selfRemoveChild = function (value, childNode) {
+    temp.value = value;
+    var next = temp;
+
+    while (next.nextSibling.classList.contains("adressItemCheck")) {
+      next = next.nextSibling;
+    }
+
+    if (value === "") {
+      switch (temp.index) {
+        case undefined:
+        case 0:
+          if (temp.nextSibling.classList.contains("adressItemCheck") && temp.nextSibling.value === "" || temp.nextSibling.value === undefined) {
+            temp.nextSibling.selfRemove();
+          }
+
+          var containerMap = NewRealty_({
+            tag: "div"
+          });
+
+          self.containerMap.parentNode.replaceChild(containerMap, self.containerMap);
+          self.containerMap = containerMap;
+          break;
+
+        case 1:
+        case 2:
+          if (next !== temp) {
+            if (next.value === "" || next.value === undefined) {
+              var prev = temp.previousSibling;
+              temp.selfRemove();
+              prev.parentUpdateIndex();
+            } else {
+              temp.parentNode.insertBefore(temp, next.nextSibling);
+              temp.parentUpdateIndex();
+            }
+          }
+
+          break;
+
+        case 3:
+          break;
+      }
+
+      return true;
+    } else {
+      switch (temp.index) {
+        case undefined:
+        case 0:
+          if (childNode.map.currentMarker !== undefined) {
+            childNode.map.currentMarker.setDraggable(false);
+            self.containerMap.parentNode.replaceChild(childNode.map, self.containerMap);
+            self.containerMap = childNode.map;
+            temp.containerMap = childNode.map;
+          }
+
+          if (next === temp) {
+            temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+            temp.parentUpdateIndex();
+          }
+
+          break;
+
+        case 1:
+        case 2:
+          if (next === temp) {
+            temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+            temp.parentUpdateIndex();
+          }
+
+          break;
+      }
+
+      return false;
+    }
+  };
+
+  return temp;
+};
+
 NewRealty_NewRealty.prototype.descViewdetail = function () {
+  var self = this;
+
   var temp = NewRealty_({
     tag: "div",
     "class": ["pizo-new-realty-desc-detail", "pizo-new-realty-dectruct-content-area-size-zone"],
-    child: [{
+    child: [self.itemAdress(), {
       tag: "div",
       "class": "pizo-new-realty-desc-detail-row",
       child: [{
         tag: "div",
         "class": "pizo-new-realty-dectruct-content-area-size-zone",
         child: [{
-          tag: "span",
-          "class": "pizo-new-realty-desc-detail-row-cell-label",
-          props: {
-            innerHTML: "Tên"
-          },
+          tag: "div",
+          "class": "pizo-new-realty-desc-detail-row",
           child: [{
             tag: "span",
-            "class": "pizo-new-realty-location-detail-row-label-important",
+            "class": "pizo-new-realty-desc-detail-row-cell-label",
             props: {
-              innerHTML: "*"
+              innerHTML: "Tên"
             }
+          }, {
+            tag: "input",
+            "class": "pizo-new-realty-desc-detail-row-cell-input"
           }]
-        }, {
-          tag: "input",
-          "class": "pizo-new-realty-desc-detail-row-cell-input"
         }]
       }, {
         tag: "div",
         "class": "pizo-new-realty-dectruct-content-area-size-zone",
         child: [{
-          tag: "span",
-          "class": "pizo-new-realty-desc-detail-row-cell-label",
-          props: {
-            innerHTML: "Trạng thái"
-          }
-        }, {
-          tag: "selectmenu",
-          "class": "pizo-new-realty-desc-detail-row-cell-menu",
-          props: {
-            items: [{
-              text: "Còn bán",
-              value: 0
-            }, {
-              text: "Còn cho thuê",
-              value: 1
-            }, {
-              text: "Đóng",
-              value: 2
+          tag: "div",
+          "class": "pizo-new-realty-desc-detail-row",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-realty-desc-detail-row-cell-label",
+            props: {
+              innerHTML: "Hiện trạng"
+            },
+            child: [{
+              tag: "span",
+              "class": "pizo-new-realty-location-detail-row-label-important",
+              props: {
+                innerHTML: "*"
+              }
             }]
-          }
-        }]
-      }]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-desc-detail-row",
-      child: [{
-        tag: "span",
-        "class": "pizo-new-realty-desc-detail-1-row-label",
-        props: {
-          innerHTML: "Địa chỉ"
-        }
-      }, {
-        tag: "input",
-        "class": "pizo-new-realty-desc-detail-1-row-input",
-        on: {
-          click: function click(event) {
-            this.blur();
-            var self = this;
-            console.log(locationView);
-            var childNode = locationView(function (value) {
-              self.value = value.input.value;
-              childRemove.selfRemove();
-            });
-
-            var childRemove = NewRealty_({
-              tag: "modal",
-              on: {
-                click: function click(event) {
-                  var target = event.target;
-
-                  while (target !== childNode && target !== childRemove && target !== document.body) {
-                    target = target.parentNode;
-                  }
-
-                  if (target === childRemove) childRemove.selfRemove();
+          }, {
+            tag: "div",
+            "class": "pizo-new-realty-desc-detail-row-cell-menu-1",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-desc-detail-row-cell-menu-1-span",
+                props: {
+                  innerHTML: "Còn bán"
                 }
-              },
-              child: [childNode]
-            });
-
-            temp.appendChild(childRemove);
-          }
-        }
+              }, {
+                tag: "checkbox",
+                "class": "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-realty-desc-detail-row-cell-menu-2",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-desc-detail-row-cell-menu-2-span",
+                props: {
+                  innerHTML: "Còn cho thuê"
+                }
+              }, {
+                tag: "checkbox",
+                "class": "pizo-new-realty-desc-detail-row-menu-2-checkbox"
+              }]
+            }]
+          }]
+        }]
       }]
     }, {
       tag: "div",
@@ -57076,84 +57658,92 @@ NewRealty_NewRealty.prototype.detructView = function () {
             tag: "div",
             "class": "pizo-new-realty-dectruct-content-area-size-zone",
             child: [{
-              tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-width-label",
-              props: {
-                innerHTML: "Dài"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-width", "pizo-new-realty-dectruct-input"],
-              on: {
-                change: function change(event) {
-                  var valueA = 0;
-                  var valueB = 0;
-
-                  if (this.value !== "") {
-                    valueA = this.value * this.nextSibling.value;
-                  }
-
-                  var height = NewRealty_$('input.pizo-new-realty-dectruct-content-area-height', temp);
-
-                  if (height.value !== "") {
-                    valueB = height.value * height.nextSibling.value;
-                  }
-
-                  var input1 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
-                  input1.value = valueA * valueB / input1.nextSibling.value;
-                  var input2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
-                  input2.value = valueA * valueB / input2.nextSibling.value;
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-height-label",
+                props: {
+                  innerHTML: "Ngang"
                 }
-              },
-              attr: {
-                type: "number",
-                min: 0
-              }
-            }, unit_Long(function (event) {
-              var width = NewRealty_$('input.pizo-new-realty-dectruct-content-area-width', temp);
-              width.value = width.value * event.lastValue / event.value;
-            })]
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-height", "pizo-new-realty-dectruct-input"],
+                on: {
+                  change: function change(event) {
+                    var valueA = 0;
+                    var valueB = 0;
+
+                    if (this.value !== "") {
+                      valueA = this.value * this.nextSibling.value;
+                    }
+
+                    var width = NewRealty_$('input.pizo-new-realty-dectruct-content-area-width', temp);
+
+                    if (width.value !== "") {
+                      valueB = width.value * width.nextSibling.value;
+                    }
+
+                    var input1 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
+                    input1.value = valueA * valueB / input1.nextSibling.value;
+                    var input2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
+                    input2.value = valueA * valueB / input2.nextSibling.value;
+                  }
+                },
+                attr: {
+                  type: "number",
+                  min: 0
+                }
+              }, unit_Long(function (event) {
+                var height = NewRealty_$('input.pizo-new-realty-dectruct-content-area-height', temp);
+                height.value = height.value * event.lastValue / event.value;
+              })]
+            }]
           }, {
             tag: "div",
             "class": "pizo-new-realty-dectruct-content-area-size-zone",
             child: [{
-              tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-height-label",
-              props: {
-                innerHTML: "Ngang"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-height", "pizo-new-realty-dectruct-input"],
-              on: {
-                change: function change(event) {
-                  var valueA = 0;
-                  var valueB = 0;
-
-                  if (this.value !== "") {
-                    valueA = this.value * this.nextSibling.value;
-                  }
-
-                  var width = NewRealty_$('input.pizo-new-realty-dectruct-content-area-width', temp);
-
-                  if (width.value !== "") {
-                    valueB = width.value * width.nextSibling.value;
-                  }
-
-                  var input1 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
-                  input1.value = valueA * valueB / input1.nextSibling.value;
-                  var input2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
-                  input2.value = valueA * valueB / input2.nextSibling.value;
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-width-label",
+                props: {
+                  innerHTML: "Dài"
                 }
-              },
-              attr: {
-                type: "number",
-                min: 0
-              }
-            }, unit_Long(function (event) {
-              var height = NewRealty_$('input.pizo-new-realty-dectruct-content-area-height', temp);
-              height.value = height.value * event.lastValue / event.value;
-            })]
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-width", "pizo-new-realty-dectruct-input"],
+                on: {
+                  change: function change(event) {
+                    var valueA = 0;
+                    var valueB = 0;
+
+                    if (this.value !== "") {
+                      valueA = this.value * this.nextSibling.value;
+                    }
+
+                    var height = NewRealty_$('input.pizo-new-realty-dectruct-content-area-height', temp);
+
+                    if (height.value !== "") {
+                      valueB = height.value * height.nextSibling.value;
+                    }
+
+                    var input1 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
+                    input1.value = valueA * valueB / input1.nextSibling.value;
+                    var input2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
+                    input2.value = valueA * valueB / input2.nextSibling.value;
+                  }
+                },
+                attr: {
+                  type: "number",
+                  min: 0
+                }
+              }, unit_Long(function (event) {
+                var width = NewRealty_$('input.pizo-new-realty-dectruct-content-area-width', temp);
+                width.value = width.value * event.lastValue / event.value;
+              })]
+            }]
           }]
         }, {
           tag: "div",
@@ -57162,42 +57752,50 @@ NewRealty_NewRealty.prototype.detructView = function () {
             tag: "div",
             "class": "pizo-new-realty-dectruct-content-area-size-zone",
             child: [{
-              tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-1-label",
-              props: {
-                innerHTML: "Đất"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-1", "pizo-new-realty-dectruct-input"],
-              attr: {
-                type: "number",
-                min: 0
-              }
-            }, unit_Zone(function (event) {
-              var area1 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
-              area1.value = area1.value * event.lastValue / event.value;
-            })]
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-1-label",
+                props: {
+                  innerHTML: "Đất XD"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-1", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0
+                }
+              }, unit_Zone(function (event) {
+                var area1 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
+                area1.value = area1.value * event.lastValue / event.value;
+              })]
+            }]
           }, {
             tag: "div",
             "class": "pizo-new-realty-dectruct-content-area-size-zone",
             child: [{
-              tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-2-label",
-              props: {
-                innerHTML: "Sàn"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-2", "pizo-new-realty-dectruct-input"],
-              attr: {
-                type: "number",
-                min: 0
-              }
-            }, unit_Zone(function (event) {
-              var area2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
-              area2.value = area2.value * event.lastValue / event.value;
-            })]
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-2-label",
+                props: {
+                  innerHTML: "Sàn XD"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-2", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0
+                }
+              }, unit_Zone(function (event) {
+                var area2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
+                area2.value = area2.value * event.lastValue / event.value;
+              })]
+            }]
           }]
         }]
       }, {
@@ -57207,194 +57805,72 @@ NewRealty_NewRealty.prototype.detructView = function () {
           tag: "div",
           "class": ["pizo-new-realty-dectruct-content-area-size-zone", "no-margin-style"],
           child: [{
-            tag: "span",
-            "class": "pizo-new-realty-detruct-content-area-label",
-            props: {
-              innerHTML: "Hướng"
-            }
-          }, {
-            tag: "selectmenu",
-            "class": "pizo-new-realty-detruct-content-direction",
-            props: {
-              items: [{
-                text: "Đông",
-                value: 6
-              }, {
-                text: "Tây",
-                value: 4
-              }, {
-                text: "Nam",
-                value: 2
-              }, {
-                text: "Bắc",
-                value: 8
-              }, {
-                text: "Đông Bắc",
-                value: 9
-              }, {
-                text: "Đông Nam",
-                value: 3
-              }, {
-                text: "Tây Bắc",
-                value: 7
-              }, {
-                text: "Tây Nam",
-                value: 1
-              }]
-            }
+            tag: "div",
+            "class": "pizo-new-realty-desc-detail-row",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-realty-detruct-content-area-label",
+              props: {
+                innerHTML: "Hướng"
+              }
+            }, {
+              tag: "selectmenu",
+              "class": "pizo-new-realty-detruct-content-direction",
+              props: {
+                items: [{
+                  text: "Đông",
+                  value: 6
+                }, {
+                  text: "Tây",
+                  value: 4
+                }, {
+                  text: "Nam",
+                  value: 2
+                }, {
+                  text: "Bắc",
+                  value: 8
+                }, {
+                  text: "Đông Bắc",
+                  value: 9
+                }, {
+                  text: "Đông Nam",
+                  value: 3
+                }, {
+                  text: "Tây Bắc",
+                  value: 7
+                }, {
+                  text: "Tây Nam",
+                  value: 1
+                }]
+              }
+            }]
           }]
         }, {
           tag: "div",
           "class": ["pizo-new-realty-dectruct-content-area-size-zone", "margin-style"],
           child: [{
-            tag: "span",
-            "class": "pizo-new-realty-detruct-content-area-label",
-            props: {
-              innerHTML: "Loại nhà"
-            }
-          }, {
-            tag: "selectmenu",
-            "class": "pizo-new-realty-detruct-content-type",
-            props: {
-              items: [{
-                text: "Hẻm",
-                value: 0
-              }, {
-                text: "Mặt tiền",
-                value: 1
-              }, {
-                text: "Chung cư",
-                value: 2
-              }]
-            }
-          }]
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-new-realty-dectruct-content-area",
-        child: [{
-          tag: "span",
-          "class": "pizo-new-realty-detruct-content-area-label",
-          props: {
-            innerHTML: "Số lượng phòng"
-          }
-        }, {
-          tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
-          child: [{
             tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            "class": "pizo-new-realty-desc-detail-row",
             child: [{
               tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-bedroom-label",
+              "class": "pizo-new-realty-detruct-content-area-label",
               props: {
-                innerHTML: "Phòng ngủ"
+                innerHTML: "Loại nhà"
               }
             }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-bedroom", "pizo-new-realty-dectruct-input"],
-              attr: {
-                type: "number",
-                min: 0,
-                step: 1
-              }
-            }]
-          }, {
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-kitchen-label",
+              tag: "selectmenu",
+              "class": "pizo-new-realty-detruct-content-type",
               props: {
-                innerHTML: "Bếp"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-kitchen", "pizo-new-realty-dectruct-input"],
-              attr: {
-                type: "number",
-                min: 0,
-                step: 1
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-bathroom-label",
-              props: {
-                innerHTML: "Phòng tắm"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-bathroom", "pizo-new-realty-dectruct-input"],
-              attr: {
-                type: "number",
-                min: 0,
-                step: 1
-              }
-            }]
-          }, {
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-garage-label",
-              props: {
-                innerHTML: "Garage"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-garage", "pizo-new-realty-dectruct-input"],
-              attr: {
-                type: "number",
-                min: 0,
-                step: 1
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-basement-label",
-              props: {
-                innerHTML: "Tầng hầm"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-basement", "pizo-new-realty-dectruct-input"],
-              attr: {
-                type: "number",
-                min: 0,
-                step: 1
-              }
-            }]
-          }, {
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-realty-dectruct-content-area-balcony-label",
-              props: {
-                innerHTML: "Ban công"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-dectruct-content-area-balcony", "pizo-new-realty-dectruct-input"],
-              attr: {
-                type: "number",
-                min: 0,
-                step: 1
+                items: [{
+                  text: "Hẻm",
+                  value: 0
+                }, {
+                  text: "Mặt tiền",
+                  value: 1
+                }, {
+                  text: "Chung cư",
+                  value: 2
+                }]
               }
             }]
           }]
@@ -57419,21 +57895,160 @@ NewRealty_NewRealty.prototype.detructView = function () {
         }, unit_Long()]
       }, {
         tag: "div",
-        "class": "pizo-new-realty-dectruct-content-area-right",
+        "class": "pizo-new-realty-dectruct-content-area",
         child: [{
           tag: "span",
           "class": "pizo-new-realty-detruct-content-area-label",
+          style: {
+            marginBottom: "0.7143rem"
+          },
           props: {
-            innerHTML: "Năm xây dựng"
+            innerHTML: "Số lượng phòng"
           }
         }, {
-          tag: "input",
-          "class": ["pizo-new-realty-dectruct-content-area-year", "pizo-new-realty-dectruct-input"],
-          attr: {
-            type: "number",
-            min: 0,
-            step: 1
-          }
+          tag: "div",
+          "class": "pizo-new-realty-dectruct-content-area-size",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-bedroom-label",
+                props: {
+                  innerHTML: "Phòng ngủ"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-bedroom", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0,
+                  step: 1
+                }
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-kitchen-label",
+                props: {
+                  innerHTML: "Bếp"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-kitchen", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0,
+                  step: 1
+                }
+              }]
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-realty-dectruct-content-area-size",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-bathroom-label",
+                props: {
+                  innerHTML: "Phòng tắm"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-bathroom", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0,
+                  step: 1
+                }
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-garage-label",
+                props: {
+                  innerHTML: "Garage"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-garage", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0,
+                  step: 1
+                }
+              }]
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-realty-dectruct-content-area-size",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-basement-label",
+                props: {
+                  innerHTML: "Tầng hầm"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-basement", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0,
+                  step: 1
+                }
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-balcony-label",
+                props: {
+                  innerHTML: "Ban công"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-balcony", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0,
+                  step: 1
+                }
+              }]
+            }]
+          }]
         }]
       }]
     }]
@@ -57719,6 +58334,37 @@ NewRealty_NewRealty.prototype.convenientView = function () {
   return temp;
 };
 
+NewRealty_NewRealty.prototype.contractView = function () {
+  var temp = NewRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-contract",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-contract-tab",
+      props: {
+        innerHTML: "Thông tin liên hệ"
+      }
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-contract-content",
+      child: []
+    }]
+  });
+
+  return temp;
+};
+
+NewRealty_NewRealty.prototype.contractItem = function () {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var temp = NewRealty_({
+    tag: "div",
+    "class": ""
+  });
+
+  return temp;
+};
+
 NewRealty_NewRealty.prototype.juridicalView = function () {
   var temp = NewRealty_({
     tag: "div",
@@ -57804,7 +58450,7 @@ function removeAccents(str) {
 }
 
 /* harmony default export */ var component_NewRealty = (NewRealty_NewRealty);
-// CONCATENATED MODULE: ./js/page/listProject.js
+// CONCATENATED MODULE: ./js/page/ListRealty.js
 
 
 
@@ -57813,10 +58459,10 @@ function removeAccents(str) {
 
 
 
-var listProject_ = dom_Fcore._;
-var listProject_$ = dom_Fcore.$;
+var ListRealty_ = dom_Fcore._;
+var ListRealty_$ = dom_Fcore.$;
 
-function listProject_listProject() {
+function ListRealty_ListRealty() {
   component_BaseView.call(this);
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
@@ -57826,18 +58472,18 @@ function listProject_listProject() {
   this.NewRealty.attach(this);
 }
 
-listProject_listProject.prototype.setContainer = function (parent) {
+ListRealty_ListRealty.prototype.setContainer = function (parent) {
   this.parent = parent;
 };
 
-Object.defineProperties(listProject_listProject.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
-listProject_listProject.prototype.constructor = listProject_listProject;
+Object.defineProperties(ListRealty_ListRealty.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListRealty_ListRealty.prototype.constructor = ListRealty_ListRealty;
 
-listProject_listProject.prototype.getView = function () {
+ListRealty_ListRealty.prototype.getView = function () {
   if (this.$view) return this.$view;
   var self = this;
 
-  var input = listProject_({
+  var input = ListRealty_({
     tag: "input",
     "class": "quantumWizTextinputPaperinputInput",
     props: {
@@ -57850,9 +58496,9 @@ listProject_listProject.prototype.getView = function () {
     }
   });
 
-  var allinput = listProject_({
+  var allinput = ListRealty_({
     tag: "input",
-    "class": "pizo-list-project-page-allinput-input",
+    "class": "pizo-list-realty-page-allinput-input",
     props: {
       placeholder: "Tìm theo mã, tên, địa chỉ bất động sản"
     }
@@ -57862,33 +58508,31 @@ listProject_listProject.prototype.getView = function () {
     allinput.placeholder = "Tìm bất động sản";
   }
 
-  this.$view = listProject_({
+  this.$view = ListRealty_({
     tag: 'singlepage',
-    "class": "pizo-list-project",
+    "class": "pizo-list-realty",
     child: [{
       "class": 'absol-single-page-header',
       child: [{
         tag: "div",
-        "class": "pizo-list-project-button",
+        "class": "pizo-list-realty-button",
         child: [{
           tag: "button",
-          "class": ["pizo-list-project-button-quit", "pizo-list-project-button-element"],
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
               self.$view.selfRemove();
               var arr = self.parent.body.getAllChild();
               self.parent.body.activeFrame(arr[arr.length - 1]);
-              if (arr.length === 0) self.parent.body.selfRemove();
             }
           },
           child: ['<span>' + "Đóng" + '</span>']
         }, {
           tag: "button",
-          "class": ["pizo-list-project-button-add", "pizo-list-project-button-element"],
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
               var frameAdd = self.NewRealty.getView();
-              console.log(self.parent);
               self.parent.body.addChild(frameAdd);
               self.parent.body.activeFrame(frameAdd);
               self.NewRealty.setContainer(self.parent);
@@ -57898,13 +58542,13 @@ listProject_listProject.prototype.getView = function () {
         }]
       }, {
         tag: "div",
-        "class": "pizo-list-project-page-allinput",
+        "class": "pizo-list-realty-page-allinput",
         child: [{
           tag: "div",
-          "class": "pizo-list-project-page-allinput-container",
+          "class": "pizo-list-realty-page-allinput-container",
           child: [allinput, {
             tag: "button",
-            "class": "pizo-list-project-page-allinput-search",
+            "class": "pizo-list-realty-page-allinput-search",
             child: [{
               tag: 'i',
               "class": 'material-icons',
@@ -57915,7 +58559,7 @@ listProject_listProject.prototype.getView = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-page-allinput-filter",
+          "class": "pizo-list-realty-page-allinput-filter",
           on: {
             click: function click(event) {
               self.searchControl.show();
@@ -57933,7 +58577,7 @@ listProject_listProject.prototype.getView = function () {
         }]
       }, {
         tag: "div",
-        "class": "pizo-list-project-page-number-line",
+        "class": "pizo-list-realty-page-number-line",
         child: [input, {
           tag: "span",
           "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
@@ -57945,46 +58589,6 @@ listProject_listProject.prototype.getView = function () {
     }]
   });
   var tableViewX;
-
-  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
-    console.log(event, me, index, parent, data, row);
-    console.log(tableViewX); // parent.dropRow(index);
-
-    var kj = [{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""];
-    parent.insertRow(kj);
-  };
-
-  var functionClickMore1 = function functionClickMore1(event, me, index, parent, data, row) {
-    console.log(event, me, index, parent, data, row);
-    console.log(tableViewX);
-    parent.dropRow(index);
-  };
-
-  var functionClickMore2 = function functionClickMore2(event, me, index, parent, data, row) {
-    var kj = [{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""];
-    parent.updateRow(kj, index);
-  };
-
-  var test = listProject_({
-    tag: "span",
-    props: {
-      innerHTML: "concac"
-    }
-  });
-
-  var arrChild = [[{}, {}, "concac1", 3, "Xô Viết Nghệ Tĩnh", "P. 24", {
-    value: "Q. Bình Thạnh",
-    colspan: 2
-  }, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "concac2", 1, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "concac3", 2, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
-  var arrChildNode = [[{}, {}, "concac1", 3, "Xô Viết Nghệ Tĩnh", "P. 24", {
-    value: "Q. Bình Thạnh",
-    colspan: 2
-  }, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "concac2", 1, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, "concac3", 2, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
-  arrChild.index = 3;
-  var child = [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""];
-  child.child = arrChild;
-  arrChild[1].child = arrChildNode;
-  arrChild[1].child.index = 3;
   var header = [{
     type: "dragzone",
     dragElement: false
@@ -58020,37 +58624,33 @@ listProject_listProject.prototype.getView = function () {
   }, 'Giá', {
     value: 'Giá m<sup>2</sup>'
   }, {
-    value: 'Hiện trạng',
-    functionClickAll: functionClickMore2
+    value: 'Hiện trạng'
   }, {
-    value: 'Ngày tạo',
-    functionClickAll: functionClickMore1
+    value: 'Ngày tạo'
   }, {
     type: "detail",
-    functionClickAll: functionClickMore,
     icon: "",
     dragElement: false
   }];
-  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], child, [{}, {}, 5, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
-  tableViewX = tableView(header, dataTable, true, true, 1);
-  tableViewX.addInputSearch(listProject_$('.pizo-list-project-page-allinput-container input', this.$view));
+  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, 5, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
+  tableViewX = tableView(header, dataTable, true, true, 2);
+  tableViewX.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', this.$view));
   this.searchControl = this.searchControlContent();
-  this.$view.addChild(listProject_({
+  this.$view.addChild(ListRealty_({
     tag: "div",
-    "class": ["pizo-list-project-main"],
+    "class": ["pizo-list-realty-main"],
     child: [this.searchControl, {
       tag: "div",
-      "class": ["pizo-list-project-main-result-control", "drag-zone-bg"],
+      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
       child: [tableViewX]
     }]
   }));
-  console.log(self.parent);
   return this.$view;
 };
 
-listProject_listProject.prototype.searchControlContent = function () {
+ListRealty_ListRealty.prototype.searchControlContent = function () {
   var startDay, endDay;
-  startDay = listProject_({
+  startDay = ListRealty_({
     tag: 'calendar-input',
     data: {
       anchor: 'top',
@@ -58064,7 +58664,7 @@ listProject_listProject.prototype.searchControlContent = function () {
       }
     }
   });
-  endDay = listProject_({
+  endDay = ListRealty_({
     tag: 'calendar-input',
     data: {
       anchor: 'top',
@@ -58079,9 +58679,9 @@ listProject_listProject.prototype.searchControlContent = function () {
     }
   });
 
-  var content = listProject_({
+  var content = ListRealty_({
     tag: "div",
-    "class": "pizo-list-project-main-search-control-container",
+    "class": "pizo-list-realty-main-search-control-container",
     on: {
       click: function click(event) {
         event.stopPropagation();
@@ -58089,39 +58689,39 @@ listProject_listProject.prototype.searchControlContent = function () {
     },
     child: [{
       tag: "div",
-      "class": "pizo-list-project-main-search-control-container-scroller",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
       child: [{
         tag: "div",
-        "class": "pizo-list-project-main-search-control-row",
+        "class": "pizo-list-realty-main-search-control-row",
         child: [{
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-date",
+          "class": "pizo-list-realty-main-search-control-row-date",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-date-label",
+            "class": "pizo-list-realty-main-search-control-row-date-label",
             props: {
               innerHTML: "Thời gian"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-date-input",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
             child: [startDay, endDay]
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-price",
+          "class": "pizo-list-realty-main-search-control-row-price",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-price-label",
+            "class": "pizo-list-realty-main-search-control-row-price-label",
             props: {
               innerHTML: "Khoảng giá"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-price-input",
+            "class": "pizo-list-realty-main-search-control-row-price-input",
             child: [{
               tag: "input",
-              "class": "pizo-list-project-main-search-control-row-price-input-low",
+              "class": "pizo-list-realty-main-search-control-row-price-input-low",
               props: {
                 type: "number",
                 autocomplete: "off",
@@ -58129,7 +58729,7 @@ listProject_listProject.prototype.searchControlContent = function () {
               }
             }, {
               tag: "input",
-              "class": "pizo-list-project-main-search-control-row-price-input-high",
+              "class": "pizo-list-realty-main-search-control-row-price-input-high",
               props: {
                 type: "number",
                 autocomplete: "off",
@@ -58139,16 +58739,16 @@ listProject_listProject.prototype.searchControlContent = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-phone",
+          "class": "pizo-list-realty-main-search-control-row-phone",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-phone-label",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
             props: {
               innerHTML: "Số điện thoại"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-phone-input",
+            "class": "pizo-list-realty-main-search-control-row-phone-input",
             child: [{
               tag: "input",
               props: {
@@ -58159,17 +58759,17 @@ listProject_listProject.prototype.searchControlContent = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-button",
+          "class": "pizo-list-realty-main-search-control-row-button",
           child: [{
             tag: "button",
-            "class": ["pizo-list-project-button-apply", "pizo-list-project-button-element"],
+            "class": ["pizo-list-realty-button-apply", "pizo-list-realty-button-element"],
             on: {
               click: function click(evt) {}
             },
             child: ['<span>' + "Áp dụng" + '</span>']
           }, {
             tag: "button",
-            "class": ["pizo-list-project-button-deleteall", "pizo-list-project-button-element"],
+            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
             on: {
               click: function click(evt) {
                 temp.reset();
@@ -58180,19 +58780,19 @@ listProject_listProject.prototype.searchControlContent = function () {
         }]
       }, {
         tag: "div",
-        "class": "pizo-list-project-main-search-control-row",
+        "class": "pizo-list-realty-main-search-control-row",
         child: [{
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-MS",
+          "class": "pizo-list-realty-main-search-control-row-MS",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-MS-label",
+            "class": "pizo-list-realty-main-search-control-row-MS-label",
             props: {
               innerHTML: "Mã số"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-MS-input",
+            "class": "pizo-list-realty-main-search-control-row-MS-input",
             child: [{
               tag: "input",
               props: {
@@ -58203,96 +58803,96 @@ listProject_listProject.prototype.searchControlContent = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-SN",
+          "class": "pizo-list-realty-main-search-control-row-SN",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-SN-label",
+            "class": "pizo-list-realty-main-search-control-row-SN-label",
             props: {
               innerHTML: "Số nhà"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-SN-input",
+            "class": "pizo-list-realty-main-search-control-row-SN-input",
             child: [{
               tag: "input"
             }]
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-TD",
+          "class": "pizo-list-realty-main-search-control-row-TD",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-TD-label",
+            "class": "pizo-list-realty-main-search-control-row-TD-label",
             props: {
               innerHTML: "Tên đường"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-TD-input",
+            "class": "pizo-list-realty-main-search-control-row-TD-input",
             child: [{
               tag: "input"
             }]
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-PX",
+          "class": "pizo-list-realty-main-search-control-row-PX",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-PX-label",
+            "class": "pizo-list-realty-main-search-control-row-PX-label",
             props: {
               innerHTML: "Phường/Xã"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-PX-input",
+            "class": "pizo-list-realty-main-search-control-row-PX-input",
             child: [{
               tag: "input"
             }]
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-QH",
+          "class": "pizo-list-realty-main-search-control-row-QH",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-QH-label",
+            "class": "pizo-list-realty-main-search-control-row-QH-label",
             props: {
               innerHTML: "Quận huyện"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-QH-input",
+            "class": "pizo-list-realty-main-search-control-row-QH-input",
             child: [{
               tag: "input"
             }]
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-TT",
+          "class": "pizo-list-realty-main-search-control-row-TT",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-TT-label",
+            "class": "pizo-list-realty-main-search-control-row-TT-label",
             props: {
               innerHTML: "Tỉnh/TP"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-TT-input",
+            "class": "pizo-list-realty-main-search-control-row-TT-input",
             child: [{
               tag: "input"
             }]
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-project-main-search-control-row-HT",
+          "class": "pizo-list-realty-main-search-control-row-HT",
           child: [{
             tag: "span",
-            "class": "pizo-list-project-main-search-control-row-HT-label",
+            "class": "pizo-list-realty-main-search-control-row-HT-label",
             props: {
               innerHTML: "Tình trạng"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-project-main-search-control-row-HT-input",
+            "class": "pizo-list-realty-main-search-control-row-HT-input",
             child: [{
               tag: "selectmenu",
               props: {
@@ -58317,9 +58917,9 @@ listProject_listProject.prototype.searchControlContent = function () {
     }]
   });
 
-  var temp = listProject_({
+  var temp = ListRealty_({
     tag: "div",
-    "class": "pizo-list-project-main-search-control",
+    "class": "pizo-list-realty-main-search-control",
     on: {
       click: function click(event) {
         this.hide();
@@ -58331,15 +58931,15 @@ listProject_listProject.prototype.searchControlContent = function () {
   temp.content = content;
   content.timestart = startDay;
   content.timeend = endDay;
-  content.lowprice = listProject_$('input.pizo-list-project-main-search-control-row-price-input-low', content);
-  content.highprice = listProject_$('input.pizo-list-project-main-search-control-row-price-input-high', content);
-  content.phone = listProject_$('.pizo-list-project-main-search-control-row-phone-input input', content);
-  content.MS = listProject_$('.pizo-list-project-main-search-control-row-MS-input input', content);
-  content.SN = listProject_$('.pizo-list-project-main-search-control-row-SN input', content);
-  content.TD = listProject_$('.pizo-list-project-main-search-control-row-TD input', content);
-  content.PX = listProject_$('.pizo-list-project-main-search-control-row-PX input', content);
-  content.QH = listProject_$('.pizo-list-project-main-search-control-row-QH input', content);
-  content.HT = listProject_$('.pizo-list-project-main-search-control-row-HT input', content);
+  content.lowprice = ListRealty_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
+  content.highprice = ListRealty_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
+  content.phone = ListRealty_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
+  content.MS = ListRealty_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
+  content.SN = ListRealty_$('.pizo-list-realty-main-search-control-row-SN input', content);
+  content.TD = ListRealty_$('.pizo-list-realty-main-search-control-row-TD input', content);
+  content.PX = ListRealty_$('.pizo-list-realty-main-search-control-row-PX input', content);
+  content.QH = ListRealty_$('.pizo-list-realty-main-search-control-row-QH input', content);
+  content.HT = ListRealty_$('.pizo-list-realty-main-search-control-row-HT input', content);
 
   temp.show = function () {
     if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
@@ -58381,21 +58981,21 @@ listProject_listProject.prototype.searchControlContent = function () {
   return temp;
 };
 
-listProject_listProject.prototype.refresh = function () {
+ListRealty_ListRealty.prototype.refresh = function () {
   var data;
   var editor = this.getContext(R.LAYOUT_EDITOR);
   if (editor) data = editor.getData();
   if (data) this.setData(data);
 };
 
-listProject_listProject.prototype.setData = function (data) {
+ListRealty_ListRealty.prototype.setData = function (data) {
   this.data = data;
   this.data.tracking = "OK";
   this.dataFlushed = false;
   if (this.state == "RUNNING") this.flushDataToView();
 };
 
-listProject_listProject.prototype.flushDataToView = function () {
+ListRealty_ListRealty.prototype.flushDataToView = function () {
   if (this.dataFlushed) return;
   this.dataFlushed = true; //TODO: remove older view
 
@@ -58411,10 +59011,1918 @@ listProject_listProject.prototype.flushDataToView = function () {
   }
 };
 
-listProject_listProject.prototype.start = function () {};
+ListRealty_ListRealty.prototype.start = function () {};
 
-/* harmony default export */ var page_listProject = (listProject_listProject);
+/* harmony default export */ var page_ListRealty = (ListRealty_ListRealty);
+// EXTERNAL MODULE: ./css/ListWard.css
+var ListWard = __webpack_require__(233);
+
+// CONCATENATED MODULE: ./js/page/ListWard.js
+
+
+
+
+
+
+
+
+
+var ListWard_ = dom_Fcore._;
+var ListWard_$ = dom_Fcore.$;
+
+function ListWard_ListWard() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.ModuleView = new ModuleView_ModuleView();
+  this.NewRealty = new component_NewRealty();
+  this.NewRealty.attach(this);
+}
+
+ListWard_ListWard.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListWard_ListWard.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListWard_ListWard.prototype.constructor = ListWard_ListWard;
+
+ListWard_ListWard.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListWard_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListWard_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tên Quận Huyện"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tên Quận Huyện";
+  }
+
+  this.$view = ListWard_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              var frameAdd = self.NewRealty.getView();
+              self.parent.body.addChild(frameAdd);
+              self.parent.body.activeFrame(frameAdd);
+              self.NewRealty.setContainer(self.parent);
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+  var tableViewX;
+  var header = [{
+    type: "dragzone",
+    dragElement: false
+  }, {
+    type: "increase",
+    value: "#"
+  }, {
+    value: 'ID',
+    sort: true
+  }, {
+    value: 'Tên',
+    sort: true
+  }, {
+    value: 'Quận/Huyện',
+    sort: true
+  }, {
+    value: 'Tỉnh/TP',
+    sort: true
+  }, {
+    value: 'Ngày tạo',
+    sort: true
+  }, {
+    value: 'Ngày cập nhật',
+    sort: true
+  }, {
+    type: "detail",
+    dragElement: false
+  }];
+  var dataTable = [[{}, {}, '79', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}]];
+  tableViewX = tableView(header, dataTable, true, true, 2);
+  tableViewX.addInputSearch(ListWard_$('.pizo-list-realty-page-allinput-container input', this.$view));
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListWard_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, {
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+      child: [tableViewX]
+    }]
+  }));
+  return this.$view;
+};
+
+ListWard_ListWard.prototype.searchControlContent = function () {
+  var startDay, endDay, startDay1, endDay1;
+  startDay = ListWard_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay);
+        endDay.minDateLimit = date;
+      }
+    }
+  });
+  endDay = ListWard_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay.maxDateLimit = date;
+      }
+    }
+  });
+  startDay1 = ListWard_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay1);
+        endDay1.minDateLimit = date;
+      }
+    }
+  });
+  endDay1 = ListWard_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay1.maxDateLimit = date;
+      }
+    }
+  });
+
+  var content = ListWard_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control-container",
+    on: {
+      click: function click(event) {
+        event.stopPropagation();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-main-search-control-row",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-state-ward",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-state-ward-label",
+            props: {
+              innerHTML: "Tỉnh/TP"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-state-ward-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: 'Thành phố Hồ Chí Minh',
+                  id: 79
+                }, {
+                  text: 'Thủ đô Hà Nội',
+                  id: 80
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-ditrict-ward",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-ditrict-ward-label",
+            props: {
+              innerHTML: "Quận/Huyện"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-ditrict-ward-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: 'Quận 1',
+                  id: 79
+                }, {
+                  text: 'Quận Bình Thạnh',
+                  id: 80
+                }, {
+                  text: 'Quận Tân Bình',
+                  id: 81
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-phone",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            props: {
+              innerHTML: "Ngày tạo"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay, endDay]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-phone",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            props: {
+              innerHTML: "Ngày cập nhật"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay1, endDay1]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-button",
+          child: [{
+            tag: "button",
+            "class": ["pizo-list-realty-button-apply", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {}
+            },
+            child: ['<span>' + "Áp dụng" + '</span>']
+          }, {
+            tag: "button",
+            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {
+                temp.reset();
+              }
+            },
+            child: ['<span>' + "Thiết lập lại" + '</span>']
+          }]
+        }]
+      }]
+    }]
+  });
+
+  var temp = ListWard_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control",
+    on: {
+      click: function click(event) {
+        this.hide();
+      }
+    },
+    child: [content]
+  });
+
+  temp.content = content;
+  content.timestart = startDay;
+  content.timeend = endDay;
+  content.lowprice = ListWard_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
+  content.highprice = ListWard_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
+  content.phone = ListWard_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
+  content.MS = ListWard_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
+  content.SN = ListWard_$('.pizo-list-realty-main-search-control-row-SN input', content);
+  content.TD = ListWard_$('.pizo-list-realty-main-search-control-row-TD input', content);
+  content.PX = ListWard_$('.pizo-list-realty-main-search-control-row-PX input', content);
+  content.QH = ListWard_$('.pizo-list-realty-main-search-control-row-QH input', content);
+  content.HT = ListWard_$('.pizo-list-realty-main-search-control-row-HT input', content);
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
+    content.lowprice.value = "";
+    content.highprice.value = "";
+    content.phone.value = "";
+    content.MS.value = "";
+    content.SN.value = "";
+    content.TD.value = "";
+    content.PX.value = "";
+    content.QH.value = "";
+    content.TT.value = "";
+    content.HT.value = 0;
+  };
+
+  return temp;
+};
+
+ListWard_ListWard.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListWard_ListWard.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListWard_ListWard.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListWard_ListWard.prototype.start = function () {};
+
+/* harmony default export */ var page_ListWard = (ListWard_ListWard);
+// EXTERNAL MODULE: ./css/ListStreet.css
+var ListStreet = __webpack_require__(235);
+
+// CONCATENATED MODULE: ./js/page/ListStreet.js
+
+
+
+
+
+
+
+
+
+var ListStreet_ = dom_Fcore._;
+var ListStreet_$ = dom_Fcore.$;
+
+function ListStreet_ListStreet() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.ModuleView = new ModuleView_ModuleView();
+  this.NewRealty = new component_NewRealty();
+  this.NewRealty.attach(this);
+}
+
+ListStreet_ListStreet.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListStreet_ListStreet.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListStreet_ListStreet.prototype.constructor = ListStreet_ListStreet;
+
+ListStreet_ListStreet.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListStreet_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListStreet_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tên đường"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tên đường";
+  }
+
+  this.$view = ListStreet_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              var frameAdd = self.NewRealty.getView();
+              self.parent.body.addChild(frameAdd);
+              self.parent.body.activeFrame(frameAdd);
+              self.NewRealty.setContainer(self.parent);
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+  var tableViewX;
+  var header = [{
+    type: "dragzone",
+    dragElement: false
+  }, {
+    type: "increase",
+    value: "#"
+  }, {
+    value: 'ID',
+    sort: true
+  }, {
+    value: 'Tên',
+    sort: true
+  }, {
+    value: 'Phường/Xã',
+    sort: true
+  }, {
+    value: 'Quận/Huyện',
+    sort: true
+  }, {
+    value: 'Tỉnh/TP',
+    sort: true
+  }, {
+    value: 'Ngày tạo',
+    sort: true
+  }, {
+    value: 'Ngày cập nhật',
+    sort: true
+  }, {
+    type: "detail",
+    dragElement: false
+  }];
+  var dataTable = [[{}, {}, '1282', 'Lê Sao', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '1283', 'Huỳnh Đình Hai', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '1284', 'Nguyễn Văn Mai', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '1285', '3 Tháng 2', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}]];
+  tableViewX = tableView(header, dataTable, true, true, 2);
+  tableViewX.addInputSearch(ListStreet_$('.pizo-list-realty-page-allinput-container input', this.$view));
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListStreet_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, {
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+      child: [tableViewX]
+    }]
+  }));
+  return this.$view;
+};
+
+ListStreet_ListStreet.prototype.searchControlContent = function () {
+  var content = ListStreet_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control-container",
+    on: {
+      click: function click(event) {
+        event.stopPropagation();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-main-search-control-row",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-state-street",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-state-street-label",
+            props: {
+              innerHTML: "Tỉnh/TP"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-state-street-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: 'Thành phố Hồ Chí Minh',
+                  id: 79
+                }, {
+                  text: 'Thủ đô Hà Nội',
+                  id: 80
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-ditrict-street",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-ditrict-street-label",
+            props: {
+              innerHTML: "Quận/Huyện"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-ditrict-street-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: 'Quận 1',
+                  id: 79
+                }, {
+                  text: 'Quận Bình Thạnh',
+                  id: 80
+                }, {
+                  text: 'Quận Tân Bình',
+                  id: 81
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-ward-street",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-ward-street-label",
+            props: {
+              innerHTML: "Phường/Xã"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-ward-street-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: 'Phường Tân Định',
+                  id: 79
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-button",
+          child: [{
+            tag: "button",
+            "class": ["pizo-list-realty-button-apply", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {}
+            },
+            child: ['<span>' + "Áp dụng" + '</span>']
+          }, {
+            tag: "button",
+            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {
+                temp.reset();
+              }
+            },
+            child: ['<span>' + "Thiết lập lại" + '</span>']
+          }]
+        }]
+      }]
+    }]
+  });
+
+  var temp = ListStreet_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control",
+    on: {
+      click: function click(event) {
+        this.hide();
+      }
+    },
+    child: [content]
+  });
+
+  temp.content = content;
+  content.lowprice = ListStreet_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
+  content.highprice = ListStreet_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
+  content.phone = ListStreet_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
+  content.MS = ListStreet_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
+  content.SN = ListStreet_$('.pizo-list-realty-main-search-control-row-SN input', content);
+  content.TD = ListStreet_$('.pizo-list-realty-main-search-control-row-TD input', content);
+  content.PX = ListStreet_$('.pizo-list-realty-main-search-control-row-PX input', content);
+  content.QH = ListStreet_$('.pizo-list-realty-main-search-control-row-QH input', content);
+  content.HT = ListStreet_$('.pizo-list-realty-main-search-control-row-HT input', content);
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.lowprice.value = "";
+    content.highprice.value = "";
+    content.phone.value = "";
+    content.MS.value = "";
+    content.SN.value = "";
+    content.TD.value = "";
+    content.PX.value = "";
+    content.QH.value = "";
+    content.TT.value = "";
+    content.HT.value = 0;
+  };
+
+  return temp;
+};
+
+ListStreet_ListStreet.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListStreet_ListStreet.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListStreet_ListStreet.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListStreet_ListStreet.prototype.start = function () {};
+
+/* harmony default export */ var page_ListStreet = (ListStreet_ListStreet);
+// EXTERNAL MODULE: ./css/ListState.css
+var ListState = __webpack_require__(237);
+
+// CONCATENATED MODULE: ./js/page/ListState.js
+
+
+
+
+
+
+
+
+
+var ListState_ = dom_Fcore._;
+var ListState_$ = dom_Fcore.$;
+
+function ListState_ListState() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.ModuleView = new ModuleView_ModuleView();
+  this.NewRealty = new component_NewRealty();
+  this.NewRealty.attach(this);
+}
+
+ListState_ListState.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListState_ListState.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListState_ListState.prototype.constructor = ListState_ListState;
+
+ListState_ListState.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListState_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListState_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tên"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tên";
+  }
+
+  this.$view = ListState_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý Tỉnh/TP"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              var frameAdd = self.NewRealty.getView();
+              self.parent.body.addChild(frameAdd);
+              self.parent.body.activeFrame(frameAdd);
+              self.NewRealty.setContainer(self.parent);
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+  var tableViewX;
+  var header = [{
+    type: "dragzone",
+    dragElement: false
+  }, {
+    type: "increase",
+    value: "#"
+  }, {
+    value: 'ID',
+    sort: true
+  }, {
+    value: 'Tên',
+    sort: true
+  }, {
+    value: 'Ngày tạo',
+    sort: true
+  }, {
+    value: 'Ngày cập nhật',
+    sort: true
+  }, {
+    type: "detail",
+    dragElement: false
+  }];
+  var dataTable = [[{}, {}, '79', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '80', 'Thủ đô Hà Nội', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}]];
+  tableViewX = tableView(header, dataTable, true, true, 2);
+  tableViewX.addInputSearch(ListState_$('.pizo-list-realty-page-allinput-container input', this.$view));
+  this.$view.addChild(ListState_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [{
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+      child: [tableViewX]
+    }]
+  }));
+  return this.$view;
+};
+
+ListState_ListState.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListState_ListState.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListState_ListState.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListState_ListState.prototype.start = function () {};
+
+/* harmony default export */ var page_ListState = (ListState_ListState);
+// EXTERNAL MODULE: ./css/ListDitrict.css
+var ListDitrict = __webpack_require__(239);
+
+// CONCATENATED MODULE: ./js/page/ListDitrict.js
+
+
+
+
+
+
+
+
+
+var ListDitrict_ = dom_Fcore._;
+var ListDitrict_$ = dom_Fcore.$;
+
+function ListDitrict_ListDitrict() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.ModuleView = new ModuleView_ModuleView();
+  this.NewRealty = new component_NewRealty();
+  this.NewRealty.attach(this);
+}
+
+ListDitrict_ListDitrict.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListDitrict_ListDitrict.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListDitrict_ListDitrict.prototype.constructor = ListDitrict_ListDitrict;
+
+ListDitrict_ListDitrict.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListDitrict_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListDitrict_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tên"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tên";
+  }
+
+  this.$view = ListDitrict_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              var frameAdd = self.NewRealty.getView();
+              self.parent.body.addChild(frameAdd);
+              self.parent.body.activeFrame(frameAdd);
+              self.NewRealty.setContainer(self.parent);
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+  var tableViewX;
+  var header = [{
+    type: "dragzone",
+    dragElement: false
+  }, {
+    type: "increase",
+    value: "#"
+  }, {
+    value: 'ID',
+    sort: true
+  }, {
+    value: 'Tên',
+    sort: true
+  }, {
+    value: 'Tỉnh/TP',
+    sort: true
+  }, {
+    value: 'Ngày tạo',
+    sort: true
+  }, {
+    value: 'Ngày cập nhật',
+    sort: true
+  }, {
+    type: "detail",
+    dragElement: false
+  }];
+  var dataTable = [[{}, {}, '79', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '80', 'Quận Tân Bình', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '80', 'Quận Bình Thạnh', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}]];
+  tableViewX = tableView(header, dataTable, true, true, 2);
+  tableViewX.addInputSearch(ListDitrict_$('.pizo-list-realty-page-allinput-container input', this.$view));
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListDitrict_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, {
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+      child: [tableViewX]
+    }]
+  }));
+  return this.$view;
+};
+
+ListDitrict_ListDitrict.prototype.searchControlContent = function () {
+  var startDay, endDay, startDay1, endDay1;
+  startDay = ListDitrict_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay);
+        endDay.minDateLimit = date;
+      }
+    }
+  });
+  endDay = ListDitrict_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay.maxDateLimit = date;
+      }
+    }
+  });
+  startDay1 = ListDitrict_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay1);
+        endDay1.minDateLimit = date;
+      }
+    }
+  });
+  endDay1 = ListDitrict_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay1.maxDateLimit = date;
+      }
+    }
+  });
+
+  var content = ListDitrict_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control-container",
+    on: {
+      click: function click(event) {
+        event.stopPropagation();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-main-search-control-row",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-state-ditrict",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-state-ditrict-label",
+            props: {
+              innerHTML: "Tỉnh/TP"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-state-ditrict-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: 'Thành phố Hồ Chí Minh',
+                  id: 79
+                }, {
+                  text: 'Thủ đô Hà Nội',
+                  id: 80
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-phone",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            props: {
+              innerHTML: "Ngày tạo"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay, endDay]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-phone",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            props: {
+              innerHTML: "Ngày cập nhật"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay1, endDay1]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-button",
+          child: [{
+            tag: "button",
+            "class": ["pizo-list-realty-button-apply", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {}
+            },
+            child: ['<span>' + "Áp dụng" + '</span>']
+          }, {
+            tag: "button",
+            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {
+                temp.reset();
+              }
+            },
+            child: ['<span>' + "Thiết lập lại" + '</span>']
+          }]
+        }]
+      }]
+    }]
+  });
+
+  var temp = ListDitrict_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control",
+    on: {
+      click: function click(event) {
+        this.hide();
+      }
+    },
+    child: [content]
+  });
+
+  temp.content = content;
+  content.timestart = startDay;
+  content.timeend = endDay;
+  content.lowprice = ListDitrict_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
+  content.highprice = ListDitrict_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
+  content.phone = ListDitrict_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
+  content.MS = ListDitrict_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
+  content.SN = ListDitrict_$('.pizo-list-realty-main-search-control-row-SN input', content);
+  content.TD = ListDitrict_$('.pizo-list-realty-main-search-control-row-TD input', content);
+  content.PX = ListDitrict_$('.pizo-list-realty-main-search-control-row-PX input', content);
+  content.QH = ListDitrict_$('.pizo-list-realty-main-search-control-row-QH input', content);
+  content.HT = ListDitrict_$('.pizo-list-realty-main-search-control-row-HT input', content);
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
+    content.lowprice.value = "";
+    content.highprice.value = "";
+    content.phone.value = "";
+    content.MS.value = "";
+    content.SN.value = "";
+    content.TD.value = "";
+    content.PX.value = "";
+    content.QH.value = "";
+    content.TT.value = "";
+    content.HT.value = 0;
+  };
+
+  return temp;
+};
+
+ListDitrict_ListDitrict.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListDitrict_ListDitrict.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListDitrict_ListDitrict.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListDitrict_ListDitrict.prototype.start = function () {};
+
+/* harmony default export */ var page_ListDitrict = (ListDitrict_ListDitrict);
+// EXTERNAL MODULE: ./css/PlanningInformation.css
+var PlanningInformation = __webpack_require__(241);
+
+// CONCATENATED MODULE: ./js/page/PlanningInformation.js
+
+
+
+
+
+
+
+
+
+var PlanningInformation_ = dom_Fcore._;
+var PlanningInformation_$ = dom_Fcore.$;
+
+function PlanningInformation_PlanningInformation() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.NewRealty = new component_NewRealty();
+  this.NewRealty.attach(this);
+}
+
+PlanningInformation_PlanningInformation.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(PlanningInformation_PlanningInformation.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+PlanningInformation_PlanningInformation.prototype.constructor = PlanningInformation_PlanningInformation;
+
+PlanningInformation_PlanningInformation.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = PlanningInformation_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = PlanningInformation_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tìm theo địa chỉ"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tìm theo địa chỉ";
+  }
+
+  var mapView = new MapView_MapView();
+  mapView.activePlanningMap();
+  this.searchControl = this.searchControlContent();
+
+  var hiddenInput = PlanningInformation_({
+    tag: "input",
+    "class": "hiddenUI",
+    on: {
+      change: function change(event) {
+        var loadding = new loaddingWheel();
+        var reader = new FileReader();
+        reader.readAsText(this.files[0]);
+
+        reader.onload = function (e) {
+          console.time("dcel cost");
+          var fileText = e.target.result;
+          var parser = new DxfParser();
+          var dxf = null;
+
+          try {
+            dxf = parser.parseSync(fileText);
+          } catch (err) {
+            return console.error(err.stack);
+          }
+
+          console.log('Success!'); // outputElement.innerHTML = JSON.stringify(dxf, null, 4);
+
+          console.log(dxf, JSON.stringify(dxf, null, 4));
+          var geojson = GeoJSON.parse(dxf); // var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
+
+          window.dcel.extractLines();
+          var faces = dcel.internalFaces();
+          geojson = consoleArea(faces);
+          console.log(geojson);
+          mapView.map.data.addGeoJson(geojson, {}); // map.setCenter(center);
+
+          mapView.map.data.setStyle({
+            strokeColor: "#000000",
+            strokeOpacity: 0.8,
+            strokeWeight: 1
+          });
+          console.timeEnd("dcel cost");
+          loadding.disable();
+        };
+      }
+    },
+    props: {
+      id: "file-field",
+      type: "file"
+    }
+  });
+
+  this.$view = PlanningInformation_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, hiddenInput, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              hiddenInput.click();
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+  this.$view.addChild(PlanningInformation_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, {
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [mapView]
+    }]
+  }));
+  return this.$view;
+};
+
+PlanningInformation_PlanningInformation.prototype.searchControlContent = function () {
+  var content = PlanningInformation_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control-container",
+    on: {
+      click: function click(event) {
+        event.stopPropagation();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-main-search-control-row",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-state-street",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-state-street-label",
+            props: {
+              innerHTML: "Tỉnh/TP"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-state-street-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: 'Thành phố Hồ Chí Minh',
+                  id: 79
+                }, {
+                  text: 'Thủ đô Hà Nội',
+                  id: 80
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-ditrict-street",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-ditrict-street-label",
+            props: {
+              innerHTML: "Quận/Huyện"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-ditrict-street-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: 'Quận 1',
+                  id: 79
+                }, {
+                  text: 'Quận Bình Thạnh',
+                  id: 80
+                }, {
+                  text: 'Quận Tân Bình',
+                  id: 81
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-ward-street",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-ward-street-label",
+            props: {
+              innerHTML: "Phường/Xã"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-ward-street-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: 'Phường Tân Định',
+                  id: 79
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-button",
+          child: [{
+            tag: "button",
+            "class": ["pizo-list-realty-button-apply", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {}
+            },
+            child: ['<span>' + "Áp dụng" + '</span>']
+          }, {
+            tag: "button",
+            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {
+                temp.reset();
+              }
+            },
+            child: ['<span>' + "Thiết lập lại" + '</span>']
+          }]
+        }]
+      }]
+    }]
+  });
+
+  var temp = PlanningInformation_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control",
+    on: {
+      click: function click(event) {
+        this.hide();
+      }
+    },
+    child: [content]
+  });
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.lowprice.value = "";
+    content.highprice.value = "";
+    content.phone.value = "";
+    content.MS.value = "";
+    content.SN.value = "";
+    content.TD.value = "";
+    content.PX.value = "";
+    content.QH.value = "";
+    content.TT.value = "";
+    content.HT.value = 0;
+  };
+
+  return temp;
+};
+
+PlanningInformation_PlanningInformation.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+PlanningInformation_PlanningInformation.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+PlanningInformation_PlanningInformation.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+PlanningInformation_PlanningInformation.prototype.start = function () {};
+
+/* harmony default export */ var page_PlanningInformation = (PlanningInformation_PlanningInformation);
 // CONCATENATED MODULE: ./js/App.js
+
+
+
+
+
 
 
 
@@ -58430,8 +60938,6 @@ function App_App() {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.listProject = new page_listProject();
-  this.listProject.attach(this);
 }
 
 Object.defineProperties(App_App.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
@@ -58495,7 +61001,7 @@ App_App.prototype.getView = function () {
           "class": "pizo-header-menu",
           on: {
             press: function press(event) {
-              var item = event.menuItrem;
+              var item = event.menuItem;
 
               if (typeof item.pageIndex == 'number') {
                 self.openPage(item.pageIndex);
@@ -58532,21 +61038,62 @@ App_App.prototype.getView = function () {
                 pageIndex: 18
               }]
             }, {
-              text: "Nhiệm vụ",
-              pageIndex: 2
+              text: "Khu vực",
+              pageIndex: 2,
+              items: [{
+                text: "Tỉnh/TP",
+                pageIndex: 21
+              }, {
+                text: "Quận/Huyện",
+                pageIndex: 22
+              }, {
+                text: "Phường/Xã",
+                pageIndex: 23
+              }, {
+                text: "Tên đường",
+                pageIndex: 24
+              }, {
+                text: "Thông tin quy hoạch",
+                pageIndex: 25
+              }]
             }, {
-              text: "Danh mục",
+              text: "Thông tin",
               pageIndex: 3,
               items: [{
-                text: "Bất động sản",
+                text: "Tiện nghi trong nhà",
                 pageIndex: 31
               }, {
-                text: "Dự án",
+                text: "Tiện nghi xung quanh",
                 pageIndex: 32
               }]
             }, {
-              text: "Hệ thống",
+              text: "Thông báo",
               pageIndex: 4
+            }, {
+              text: "Nhân viên",
+              pageIndex: 5
+            }, {
+              text: "Tài khoản",
+              pageIndex: 6
+            }, {
+              text: "Thống kê",
+              pageIndex: 7,
+              items: [{
+                text: "Tổng quan",
+                pageIndex: 71
+              }, {
+                text: "Cuộc gọi",
+                pageIndex: 72
+              }, {
+                text: "Upload hình",
+                pageIndex: 73
+              }]
+            }, {
+              text: "Thông báo",
+              pageIndex: 8
+            }, {
+              text: "Nhập xuất dữ liệu",
+              pageIndex: 9
             }]
           }
         }]
@@ -58580,7 +61127,9 @@ App_App.prototype.getView = function () {
       }]
     }]
   });
-  var frameview = this.listProject.getView();
+  var mListRealty = new page_ListRealty();
+  mListRealty.attach(this);
+  var frameview = mListRealty.getView();
   this.body.addChild(frameview);
   this.body.activeFrame(frameview);
   this.refresh();
@@ -58596,18 +61145,108 @@ App_App.prototype.refresh = function () {
 
 App_App.prototype.openPage = function (index) {
   switch (index) {
-    case 31:
-      var frameview = this.listRealty.getView();
+    case 11:
+      var mListRealty = new page_ListRealty();
+      mListRealty.attach(this);
+      var frameview = mListRealty.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 12:
+      var mListRealty = new page_ListRealty();
+      mListRealty.attach(this);
+      var frameview = mListRealty.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 13:
+      var mListRealty = new page_ListRealty();
+      mListRealty.attach(this);
+      var frameview = mListRealty.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 14:
+      var mListRealty = new page_ListRealty();
+      mListRealty.attach(this);
+      var frameview = mListRealty.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 15:
+      var mListRealty = new page_ListRealty();
+      mListRealty.attach(this);
+      var frameview = page_ListRealty.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 16:
+      var mListRealty = new page_ListRealty();
+      mListRealty.attach(this);
+      var frameview = mListRealty.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 17:
+      var mListRealty = new page_ListRealty();
+      mListRealty.attach(this);
+      var frameview = mListRealty.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 18:
+      var mListRealty = new page_ListRealty();
+      mListRealty.attach(this);
+      var frameview = mListRealty.getView();
       this.body.addChild(frameview);
       this.body.activeFrame(frameview);
       this.refresh();
       break;
 
-    case 32:
-      var frameview = this.listProject.getView();
+    case 21:
+      var mListState = new page_ListState();
+      mListState.attach(this);
+      var frameview = mListState.getView();
       this.body.addChild(frameview);
       this.body.activeFrame(frameview);
-      this.refresh();
+      break;
+
+    case 22:
+      var mListDitrict = new page_ListDitrict();
+      mListDitrict.attach(this);
+      var frameview = mListDitrict.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 23:
+      var mListWard = new page_ListWard();
+      mListWard.attach(this);
+      var frameview = mListWard.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 24:
+      var mListStreet = new page_ListStreet();
+      mListStreet.attach(this);
+      var frameview = mListStreet.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+
+    case 25:
+      var mPlanningInformation = new page_PlanningInformation();
+      mPlanningInformation.attach(this);
+      var frameview = mPlanningInformation.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
       break;
   }
 };

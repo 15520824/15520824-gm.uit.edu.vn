@@ -1,0 +1,35 @@
+.pizo-list-realty-main-search-control-row-state-street-input{
+    height: 30px;
+}
+
+.pizo-list-realty-main-search-control-row-state-street{
+    width: calc(24% - 0.3571rem);
+}
+
+.pizo-list-realty-main-search-control-row-state-street-input>div{
+    width: 100%;
+}
+
+.pizo-list-realty-main-search-control-row-ditrict-street-input{
+    height: 30px;
+}
+
+.pizo-list-realty-main-search-control-row-ditrict-street{
+    width: calc(24% - 0.7143rem);
+}
+
+.pizo-list-realty-main-search-control-row-ditrict-street-input>div{
+    width: 100%;
+}
+
+.pizo-list-realty-main-search-control-row-ward-street>div{
+    height: 30px;
+}
+
+.pizo-list-realty-main-search-control-row-ward-street{
+    width: calc(24% - 1.4286rem);
+}
+
+.pizo-list-realty-main-search-control-row-ward-street-input>div{
+    width: 100%;
+}

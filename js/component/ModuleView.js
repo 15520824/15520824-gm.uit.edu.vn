@@ -836,7 +836,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                     }
                 }(cell,childUpDown);
     
-                setTimeout(tempFunc,100);
+                setTimeout(tempFunc,50);
             }
 
             if(header[i].element===undefined)
@@ -869,6 +869,10 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
     result.checkSpan  = checkSpan;
 
     return result;
+}
+
+tableView.prototype.setArrayFix = function(num, isLeft){
+    for()
 }
 
 tableView.prototype.addInputSearch = function(input)
@@ -2390,7 +2394,7 @@ export function tableViewMobile(header = [], data = []) {
                 cell.classList.add("has-sort")
                 setTimeout(function(cell,value){
                     cell.style.minWidth = fakeInput(value,window.getComputedStyle(cell).fontSize) + 30 + "px";
-                }(cell,value),100);
+                }(cell,value),50);
             }
 
             if(header[i].element===undefined)

@@ -1,0 +1,14 @@
+.pizo-list-realty-main-result-control > .pizo-new-realty-location-map-view{
+    max-width: 100%;
+    min-width: 27.1429rem;
+    display: inline-block;
+    margin-bottom: unset;
+    width: calc(100% - 2.1429rem);
+    vertical-align: top;
+    height: calc(100vh - 15.8571rem);
+    margin-left: unset;
+}
+
+.hiddenUI{
+    display: none;
+}

@@ -424,7 +424,7 @@
   margin: 0.7143rem;
 }
 
-.pizo-list-project-button-element {
+.pizo-list-realty-button-element {
   text-align: center;
   padding: 0;
   margin: 0;
@@ -439,11 +439,11 @@
   white-space: nowrap;
 }
 
-.absol-single-page-header .pizo-list-project-button-element:not(:first-child) {
+.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {
   margin-left: 0.3571rem;
 }
 
-.pizo-list-project-button-element > span {
+.pizo-list-realty-button-element > span {
   display: inline-block;
   vertical-align: middle;
   height: 2rem;

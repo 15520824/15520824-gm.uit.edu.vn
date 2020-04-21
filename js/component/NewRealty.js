@@ -65,11 +65,11 @@ NewRealty.prototype.getView = function () {
                     },
                     {
                         tag: "div",
-                        class: "pizo-list-project-button",
+                        class: "pizo-list-realty-button",
                         child: [
                             {
                                 tag: "button",
-                                class: ["pizo-list-project-button-quit", "pizo-list-project-button-element"],
+                                class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
                                         self.$view.selfRemove();
@@ -85,7 +85,7 @@ NewRealty.prototype.getView = function () {
                             },
                             {
                                 tag: "button",
-                                class: ["pizo-list-project-button-add", "pizo-list-project-button-element"],
+                                class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
 
@@ -104,7 +104,7 @@ NewRealty.prototype.getView = function () {
 
     this.$view.addChild(_({
         tag: "div",
-        class: ["pizo-list-project-main"],
+        class: ["pizo-list-realty-main"],
         child: [
             this.descView()
         ]
@@ -346,7 +346,7 @@ NewRealty.prototype.itemAdress = function () {
             switch (temp.index) {
                 case undefined:
                 case 0:
-                    if (temp.nextSibling.classList.contains("adressItemCheck")&&temp.nextSibling.value === "" || temp.nextSibling.value === undefined) {
+                    if (temp.nextSibling.classList.contains("adressItemCheck")&&(temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
                         temp.nextSibling.selfRemove();
                     }
                     var containerMap = _({

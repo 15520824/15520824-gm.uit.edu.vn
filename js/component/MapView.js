@@ -444,6 +444,11 @@ export function MapView() {
     return temp;
 }
 
+MapView.prototype.activePlanningMap = function()
+{
+    this.map = this.activeMap();
+}
+
 MapView.prototype.activeDetail = function(detailView)
 {
     this.detailView = detailView;

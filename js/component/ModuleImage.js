@@ -1,7 +1,7 @@
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import '../../css/ModuleImage.css';
-
+import { formatDate } from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -772,34 +772,4 @@ descViewImagePreview.prototype.ItemTimeLine = function(data,i)
         return indexElement;
     }
     return temp;
-}
-
-function formatDate(date,isMinutes = false, isHours = false , isDay = true, isMonth = true, isYear = false) {
-    var d = new Date(date);
-    
-    var resultTime = [];
-    var resultDayMonth =[];
-    if(isMinutes)
-        resultTime.push('' + d.getMinutes());
-    if(isHours)
-        resultTime.push('' + d.getHours());
-
-    if(isDay){
-        var day = '' + d.getDate();
-        if (day.length < 2) 
-            day = '0' + day;
-        resultDayMonth.push(day);
-    }  
-    if(isMonth)
-    {
-        var month = '' + (d.getMonth() + 1);
-        if (month.length < 2) 
-        month = '0' + month;
-        resultDayMonth.push(month);
-    }
-        
-    if(isYear)
-        resultDayMonth.push('' + d.getFullYear());
-    
-    return resultTime.join(':')+" "+resultDayMonth.join('/');
 }

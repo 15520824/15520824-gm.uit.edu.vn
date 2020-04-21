@@ -1,0 +1,23 @@
+.pizo-list-realty-main-search-control-row-ditrict-ward-input{
+    height: 30px;
+}
+
+.pizo-list-realty-main-search-control-row-ditrict-ward{
+    width: calc(18% - 0.3571rem);
+}
+
+.pizo-list-realty-main-search-control-row-ditrict-ward-input>div{
+    width: 100%;
+}
+
+.pizo-list-realty-main-search-control-row-state-ward-input{
+    height: 30px;
+}
+
+.pizo-list-realty-main-search-control-row-state-ward{
+    width: 18%;
+}
+
+.pizo-list-realty-main-search-control-row-state-ward-input>div{
+    width: 100%;
+}

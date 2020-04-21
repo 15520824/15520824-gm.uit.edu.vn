@@ -1,7 +1,7 @@
 import BaseView from '../component/BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/listProject.css"
+import "../../css/ListRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
@@ -11,7 +11,7 @@ import NewRealty from '../component/NewRealty';
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function listProject() {
+function ListRealty() {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
@@ -22,15 +22,15 @@ function listProject() {
     this.NewRealty.attach(this);
 }
 
-listProject.prototype.setContainer = function(parent)
+ListRealty.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(listProject.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-listProject.prototype.constructor = listProject;
+Object.defineProperties(ListRealty.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+ListRealty.prototype.constructor = ListRealty;
 
-listProject.prototype.getView = function () {
+ListRealty.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
@@ -47,7 +47,7 @@ listProject.prototype.getView = function () {
     })
     var allinput = _({
         tag:"input",
-        class:"pizo-list-project-page-allinput-input",
+        class:"pizo-list-realty-page-allinput-input",
         props:{
             placeholder:"Tìm theo mã, tên, địa chỉ bất động sản"
         }
@@ -58,25 +58,23 @@ listProject.prototype.getView = function () {
     }
     this.$view = _({
         tag: 'singlepage',
-        class: "pizo-list-project",
+        class: "pizo-list-realty",
         child: [
             {
                 class: 'absol-single-page-header',
                 child: [
                     {
                         tag: "div",
-                        class: "pizo-list-project-button",
+                        class: "pizo-list-realty-button",
                         child: [
                             {
                                 tag: "button",
-                                class: ["pizo-list-project-button-quit","pizo-list-project-button-element"],
+                                class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
-                                        if(arr.length === 0)
-                                        self.parent.body.selfRemove();
                                     }
                                 },
                                 child: [
@@ -85,14 +83,15 @@ listProject.prototype.getView = function () {
                             },
                             {
                                 tag: "button",
-                                class: ["pizo-list-project-button-add","pizo-list-project-button-element"],
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        var frameAdd = self.NewRealty.getView();
+                                        var mNewRealty = new NewRealty();
+                                        mNewRealty.attach(self.parent);
                                         console.log(self.parent)
-                                        self.parent.body.addChild(frameAdd);
-                                        self.parent.body.activeFrame(frameAdd);
-                                        self.NewRealty.setContainer(self.parent);
+                                        var frameview = mNewRealty.getView();
+                                        self.parent.body.addChild(frameview);
+                                        self.parent.body.activeFrame(frameview);
                                     }
                                 },
                                 child: [
@@ -103,16 +102,16 @@ listProject.prototype.getView = function () {
                     },
                     {
                         tag:"div",
-                        class:"pizo-list-project-page-allinput",
+                        class:"pizo-list-realty-page-allinput",
                         child:[
                             {
                                 tag:"div",
-                                class:"pizo-list-project-page-allinput-container",
+                                class:"pizo-list-realty-page-allinput-container",
                                 child:[
                                     allinput,
                                     {
                                         tag:"button",
-                                        class:"pizo-list-project-page-allinput-search",
+                                        class:"pizo-list-realty-page-allinput-search",
                                         child:[
                                             {
                                                 tag: 'i',
@@ -127,7 +126,7 @@ listProject.prototype.getView = function () {
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-page-allinput-filter",
+                                class:"pizo-list-realty-page-allinput-filter",
                                 on:{
                                     click:function(event)
                                     {
@@ -151,7 +150,7 @@ listProject.prototype.getView = function () {
                     },
                     {
                         tag: "div",
-                        class: "pizo-list-project-page-number-line",
+                        class: "pizo-list-realty-page-number-line",
                         child: [
                             input,
                             {
@@ -169,62 +168,69 @@ listProject.prototype.getView = function () {
         ]
     });
     var tableViewX;
-    var functionClickMore = function(event,me,index,parent,data,row){
-        console.log(event,me,index,parent,data,row);
-        console.log(tableViewX)
-        // parent.dropRow(index);
-        var kj =[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25","Q. Bình Thạnh","Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]
-        parent.insertRow(
-            kj
-        );
-    }
-    var functionClickMore1 = function(event,me,index,parent,data,row){
-        console.log(event,me,index,parent,data,row);
-        console.log(tableViewX)
-        parent.dropRow(index);
-    }
+    var docTypeMemuProps,token,functionX;
+    var functionClickMore = function(event, me, index, parent, data, row)
+    {
+       
+        docTypeMemuProps = {
+            items: [
+                {
+                    text: 'Sửa',
+                    icon: 'span.mdi.mdi-text-short',
+                    value:0,
+                },
+                {
+                    text: 'Xóa',
+                    icon: 'span.mdi.mdi-text',
+                    value:1,
+                },
+            ]
+        };
+        token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
+            switch(menuItem.value)
+            {
+                case 0:
+                    var mNewRealty = new NewRealty();
+                    mNewRealty.attach(self.parent);
+                    console.log(self.parent)
+                    var frameview = mNewRealty.getView();
+                    self.parent.body.addChild(frameview);
+                    self.parent.body.activeFrame(frameview);
+                    break;
+                case 1:
+                    break;
+            }
+        });
 
-    var functionClickMore2 = function(event,me,index,parent,data,row){
-        var kj =[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25","Q. Bình Thạnh","Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]
-        parent.updateRow(
-            kj,index
-        );
+        functionX = function(token){
+            return function(){
+                var x = function(event){
+                    absol.QuickMenu.close(token);
+                    document.body.removeEventListener("click",x);
+                }
+                document.body.addEventListener("click",x)
+            }
+        }(token);
+
+        setTimeout(functionX,10)
     }
-    var test = _({
-        tag:"span",
-        props:{
-            innerHTML:"concac"
-        }
-    })
-    var arrChild = [[{}, {}, "concac1", 3, "Xô Viết Nghệ Tĩnh", "P. 24",{value:"Q. Bình Thạnh",colspan:2}, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, "concac2", 1, "Xô Viết Nghệ Tĩnh", "P. 26","Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, "concac3", 2, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]];
-    var arrChildNode = [[{}, {}, "concac1", 3, "Xô Viết Nghệ Tĩnh", "P. 24",{value:"Q. Bình Thạnh",colspan:2}, "", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, "concac2", 1, "Xô Viết Nghệ Tĩnh", "P. 26","Q. Phú Nhuận", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    [{}, {}, "concac3", 2, "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]];
-    arrChild.index = 3;
-    var child =  [{}, {}, "14", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""];
-    child.child = arrChild;
-    arrChild[1].child = arrChildNode;
-    arrChild[1].child.index = 3;
-    var header = [{ type: "dragzone" , dragElement : false},{ type: "increase", value: "#"}, {value:'MS',sort:true}, 'Số nhà', {value: 'Tên đường' }, { value:'Phường/Xã' }, { value: 'Quận/Huyện' }, { value: 'Tỉnh/TP' }, { value: 'Ghi chú', sort: true }, {value: 'Ngang', sort: true }, {value: 'Dài',sort:true}, {value: 'DT' }, { value: 'Kết cấu' }, { value: 'Hướng'}, 'Giá', { value: 'Giá m<sup>2</sup>' }, { value: 'Hiện trạng' , functionClickAll:functionClickMore2}, {value:'Ngày tạo',functionClickAll:functionClickMore1},{type:"detail",functionClickAll:functionClickMore,icon:"",dragElement : false}];
+    var header = [{ type: "dragzone" , dragElement : false},{ type: "increase", value: "#"}, {value:'MS',sort:true}, 'Số nhà', {value: 'Tên đường' }, { value:'Phường/Xã' }, { value: 'Quận/Huyện' }, { value: 'Tỉnh/TP' }, { value: 'Ghi chú', sort: true }, {value: 'Ngang', sort: true }, {value: 'Dài',sort:true}, {value: 'DT' }, { value: 'Kết cấu' }, { value: 'Hướng'}, 'Giá', { value: 'Giá m<sup>2</sup>' }, { value: 'Hiện trạng'}, {value:'Ngày tạo'},{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false}];
     var dataTable = [
     [{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25","Q. Bình Thạnh","Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
-    child,
     [{}, {}, 5, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""]]
 
     tableViewX = tableView(header, dataTable,true,true,2);
-    tableViewX.addInputSearch($('.pizo-list-project-page-allinput-container input',this.$view))
+    tableViewX.addInputSearch($('.pizo-list-realty-page-allinput-container input',this.$view))
     this.searchControl = this.searchControlContent();
 
     this.$view.addChild(_({
             tag:"div",
-            class:["pizo-list-project-main"],
+            class:["pizo-list-realty-main"],
             child:[
                 this.searchControl,
                 {
                     tag:"div",
-                    class:["pizo-list-project-main-result-control","drag-zone-bg"],
+                    class:["pizo-list-realty-main-result-control","drag-zone-bg"],
                     child:[
                         tableViewX
                     ]
@@ -232,11 +238,10 @@ listProject.prototype.getView = function () {
             ]   
         })
         );
-    console.log(self.parent)
     return this.$view;
 }
 
-listProject.prototype.searchControlContent = function(){
+ListRealty.prototype.searchControlContent = function(){
     var startDay,endDay;
 
     startDay = _(
@@ -274,7 +279,7 @@ listProject.prototype.searchControlContent = function(){
     )
     var content = _({
         tag:"div",
-        class:"pizo-list-project-main-search-control-container",
+        class:"pizo-list-realty-main-search-control-container",
         on:{
             click:function(event)
             {
@@ -284,26 +289,26 @@ listProject.prototype.searchControlContent = function(){
         child:[
             {
                 tag:"div",
-                class:"pizo-list-project-main-search-control-container-scroller",
+                class:"pizo-list-realty-main-search-control-container-scroller",
                 child:[
                     {
                         tag:"div",
-                        class:"pizo-list-project-main-search-control-row",
+                        class:"pizo-list-realty-main-search-control-row",
                         child:[
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-date",
+                                class:"pizo-list-realty-main-search-control-row-date",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-date-label",
+                                        class:"pizo-list-realty-main-search-control-row-date-label",
                                         props:{
                                             innerHTML:"Thời gian"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-date-input",
+                                        class:"pizo-list-realty-main-search-control-row-date-input",
                                         child:[
                                             startDay,
                                             endDay
@@ -313,22 +318,22 @@ listProject.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-price",
+                                class:"pizo-list-realty-main-search-control-row-price",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-price-label",
+                                        class:"pizo-list-realty-main-search-control-row-price-label",
                                         props:{
                                             innerHTML:"Khoảng giá"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-price-input",
+                                        class:"pizo-list-realty-main-search-control-row-price-input",
                                         child:[
                                             {
                                                 tag:"input",
-                                                class:"pizo-list-project-main-search-control-row-price-input-low",
+                                                class:"pizo-list-realty-main-search-control-row-price-input-low",
                                                 props:{
                                                     type:"number",
                                                     autocomplete:"off",
@@ -337,7 +342,7 @@ listProject.prototype.searchControlContent = function(){
                                             },
                                             {
                                                 tag:"input",
-                                                class:"pizo-list-project-main-search-control-row-price-input-high",
+                                                class:"pizo-list-realty-main-search-control-row-price-input-high",
                                                 props:{
                                                     type:"number",
                                                     autocomplete:"off",
@@ -350,18 +355,18 @@ listProject.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-phone",
+                                class:"pizo-list-realty-main-search-control-row-phone",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-phone-label",
+                                        class:"pizo-list-realty-main-search-control-row-phone-label",
                                         props:{
                                             innerHTML:"Số điện thoại"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-phone-input",
+                                        class:"pizo-list-realty-main-search-control-row-phone-input",
                                         child:[
                                             {
                                                 tag:"input",
@@ -376,11 +381,11 @@ listProject.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-button",
+                                class:"pizo-list-realty-main-search-control-row-button",
                                 child:[
                                     {
                                         tag: "button",
-                                        class: ["pizo-list-project-button-apply","pizo-list-project-button-element"],
+                                        class: ["pizo-list-realty-button-apply","pizo-list-realty-button-element"],
                                         on: {
                                             click: function (evt) {
         
@@ -392,7 +397,7 @@ listProject.prototype.searchControlContent = function(){
                                     },
                                     {
                                         tag: "button",
-                                        class: ["pizo-list-project-button-deleteall","pizo-list-project-button-element"],
+                                        class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
                                         on: {
                                             click: function (evt) {
                                                 temp.reset();
@@ -408,22 +413,22 @@ listProject.prototype.searchControlContent = function(){
                     },
                     {
                         tag:"div",
-                        class:"pizo-list-project-main-search-control-row",
+                        class:"pizo-list-realty-main-search-control-row",
                         child:[
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-MS",
+                                class:"pizo-list-realty-main-search-control-row-MS",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-MS-label",
+                                        class:"pizo-list-realty-main-search-control-row-MS-label",
                                         props:{
                                             innerHTML:"Mã số"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-MS-input",
+                                        class:"pizo-list-realty-main-search-control-row-MS-input",
                                         child:[
                                             {
                                                 tag:"input",
@@ -438,18 +443,18 @@ listProject.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-SN",
+                                class:"pizo-list-realty-main-search-control-row-SN",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-SN-label",
+                                        class:"pizo-list-realty-main-search-control-row-SN-label",
                                         props:{
                                             innerHTML:"Số nhà"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-SN-input",
+                                        class:"pizo-list-realty-main-search-control-row-SN-input",
                                         child:[
                                             {
                                                 tag:"input",
@@ -460,18 +465,18 @@ listProject.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-TD",
+                                class:"pizo-list-realty-main-search-control-row-TD",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-TD-label",
+                                        class:"pizo-list-realty-main-search-control-row-TD-label",
                                         props:{
                                             innerHTML:"Tên đường"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-TD-input",
+                                        class:"pizo-list-realty-main-search-control-row-TD-input",
                                         child:[
                                             {
                                                 tag:"input",
@@ -482,18 +487,18 @@ listProject.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-PX",
+                                class:"pizo-list-realty-main-search-control-row-PX",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-PX-label",
+                                        class:"pizo-list-realty-main-search-control-row-PX-label",
                                         props:{
                                             innerHTML:"Phường/Xã"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-PX-input",
+                                        class:"pizo-list-realty-main-search-control-row-PX-input",
                                         child:[
                                             {
                                                 tag:"input",
@@ -504,18 +509,18 @@ listProject.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-QH",
+                                class:"pizo-list-realty-main-search-control-row-QH",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-QH-label",
+                                        class:"pizo-list-realty-main-search-control-row-QH-label",
                                         props:{
                                             innerHTML:"Quận huyện"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-QH-input",
+                                        class:"pizo-list-realty-main-search-control-row-QH-input",
                                         child:[
                                             {
                                                 tag:"input",
@@ -526,18 +531,18 @@ listProject.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-TT",
+                                class:"pizo-list-realty-main-search-control-row-TT",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-TT-label",
+                                        class:"pizo-list-realty-main-search-control-row-TT-label",
                                         props:{
                                             innerHTML:"Tỉnh/TP"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-TT-input",
+                                        class:"pizo-list-realty-main-search-control-row-TT-input",
                                         child:[
                                             {
                                                 tag:"input"
@@ -548,18 +553,18 @@ listProject.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-project-main-search-control-row-HT",
+                                class:"pizo-list-realty-main-search-control-row-HT",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-project-main-search-control-row-HT-label",
+                                        class:"pizo-list-realty-main-search-control-row-HT-label",
                                         props:{
                                             innerHTML:"Tình trạng"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-project-main-search-control-row-HT-input",
+                                        class:"pizo-list-realty-main-search-control-row-HT-input",
                                         child:[
                                             {
                                                 tag:"selectmenu",
@@ -584,7 +589,7 @@ listProject.prototype.searchControlContent = function(){
     });
     var temp = _({
         tag:"div",
-        class:"pizo-list-project-main-search-control",
+        class:"pizo-list-realty-main-search-control",
         on:{
             click:function(event)
             {
@@ -599,15 +604,15 @@ listProject.prototype.searchControlContent = function(){
     temp.content = content;
     content.timestart = startDay;
     content.timeend = endDay;
-    content.lowprice = $('input.pizo-list-project-main-search-control-row-price-input-low',content);
-    content.highprice = $('input.pizo-list-project-main-search-control-row-price-input-high',content);
-    content.phone = $('.pizo-list-project-main-search-control-row-phone-input input',content);
-    content.MS = $('.pizo-list-project-main-search-control-row-MS-input input',content);
-    content.SN = $('.pizo-list-project-main-search-control-row-SN input',content);
-    content.TD = $('.pizo-list-project-main-search-control-row-TD input',content);
-    content.PX = $('.pizo-list-project-main-search-control-row-PX input',content);
-    content.QH = $('.pizo-list-project-main-search-control-row-QH input',content);
-    content.HT = $('.pizo-list-project-main-search-control-row-HT input',content);
+    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low',content);
+    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high',content);
+    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input',content);
+    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input',content);
+    content.SN = $('.pizo-list-realty-main-search-control-row-SN input',content);
+    content.TD = $('.pizo-list-realty-main-search-control-row-TD input',content);
+    content.PX = $('.pizo-list-realty-main-search-control-row-PX input',content);
+    content.QH = $('.pizo-list-realty-main-search-control-row-QH input',content);
+    content.HT = $('.pizo-list-realty-main-search-control-row-HT input',content);
 
     temp.show = function()
     {
@@ -655,7 +660,7 @@ listProject.prototype.searchControlContent = function(){
     return temp;
 }
 
-listProject.prototype.refresh = function () {
+ListRealty.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -663,7 +668,7 @@ listProject.prototype.refresh = function () {
         this.setData(data);
 };
 
-listProject.prototype.setData = function (data) {
+ListRealty.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -671,7 +676,7 @@ listProject.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-listProject.prototype.flushDataToView = function () {
+ListRealty.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -686,8 +691,8 @@ listProject.prototype.flushDataToView = function () {
     }
 };
 
-listProject.prototype.start = function () {
+ListRealty.prototype.start = function () {
 
 }
 
-export default listProject;
+export default ListRealty;

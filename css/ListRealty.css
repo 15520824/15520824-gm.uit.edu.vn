@@ -9,11 +9,11 @@
     margin-right: 0.3571rem;
 }
 
-.pizo-list-project-button{
+.pizo-list-realty-button{
     display: inline-block;
 }
 
-.pizo-list-project-page-allinput-input{
+.pizo-list-realty-page-allinput-input{
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
     width: calc(100% - 1rem);
@@ -21,14 +21,14 @@
     font-size: 1.01rem;
 }
 
-.pizo-list-project-page-allinput{
+.pizo-list-realty-page-allinput{
     display: inline-block;
     margin-left: 1.4286rem;
     width: calc(100% - 23.1429rem);
     position: relative;
 }
 
-.pizo-list-project-page-allinput-search{
+.pizo-list-realty-page-allinput-search{
     position: absolute;
     transform: translate(-105%, 0.2rem);
     height: calc(100% - 0.4rem);
@@ -36,18 +36,18 @@
     border: solid 0.0714rem  var(--color-input-color);
 }
 
-.pizo-list-project-page-number{
+.pizo-list-realty-page-number{
     margin-right: 1.7143rem;
     position: relative;
     display: inline-block;
 }
 
 
-.pizo-list-project-page-number-input{
+.pizo-list-realty-page-number-input{
     width: 2.1429rem;
 }
 
-.pizo-list-project-page-number-line{
+.pizo-list-realty-page-number-line{
     left: calc(100% - 10px);
     position: absolute;
     transform: translate(-100%, 0);
@@ -72,180 +72,180 @@
     background-color: white;
 }
 
-.pizo-list-project-main{
+.pizo-list-realty-main{
     padding-left: 1.4286rem;
     padding-right: 0.7143rem;
     position: relative;
 }
 
-.pizo-list-project-main-search-control{
+.pizo-list-realty-main-search-control{
 
 }
 
-.pizo-list-project-main-result-control{
+.pizo-list-realty-main-result-control{
     
 }
 
-.pizo-list-project-main-search-control-row{
+.pizo-list-realty-main-search-control-row{
     margin-bottom: 0.7143rem;
 }
 
-.pizo-list-project-main-search-control-row>div{
+.pizo-list-realty-main-search-control-row>div{
     min-height: 0.0714rem;
     display: inline-block;
     vertical-align: bottom;
 }
 
-.pizo-list-project-main-search-control-row-date{
+.pizo-list-realty-main-search-control-row-date{
     width: calc(18% + 1.4286rem);
 }
 
-.pizo-list-project-main-search-control-row-price{
+.pizo-list-realty-main-search-control-row-price{
     width: calc(36% - 2.1429rem);
 }
 
-.pizo-list-project-main-search-control-row-phone{
+.pizo-list-realty-main-search-control-row-phone{
     width: calc(18% - 1.7857rem);
 }
 
-.pizo-list-project-main-search-control-row-button{
+.pizo-list-realty-main-search-control-row-button{
     width: calc(28% - 1.8125rem);
 }
 
-.pizo-list-project-main-search-control-row-MS{
+.pizo-list-realty-main-search-control-row-MS{
   width: 9%;
 }
 
 
-.pizo-list-project-main-search-control-row-MS-input>input{
+.pizo-list-realty-main-search-control-row-MS-input>input{
     width: calc(100% - 1rem);
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
 }
 
-.pizo-list-project-main-search-control-row-SN{
+.pizo-list-realty-main-search-control-row-SN{
     width: 9%;
 }
 
 
-.pizo-list-project-main-search-control-row-SN-input>input{
+.pizo-list-realty-main-search-control-row-SN-input>input{
     width: calc(100% - 1rem);
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
 }
 
-.pizo-list-project-main-search-control-row-TD{
+.pizo-list-realty-main-search-control-row-TD{
     width: calc(18% - 1.7857rem);
 }
 
 
-.pizo-list-project-main-search-control-row-TD-input>input{
+.pizo-list-realty-main-search-control-row-TD-input>input{
     width: calc(100% - 1rem);
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
 }
 
-.pizo-list-project-main-search-control-row-PX{
+.pizo-list-realty-main-search-control-row-PX{
     width: calc(18% - 1.7857rem);
 }
 
 
-.pizo-list-project-main-search-control-row-PX-input>input{
+.pizo-list-realty-main-search-control-row-PX-input>input{
     width: calc(100% - 1rem);
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
 }
 
-.pizo-list-project-main-search-control-row-QH{
+.pizo-list-realty-main-search-control-row-QH{
     width: calc(18% - 1.7857rem);
 }
 
 
-.pizo-list-project-main-search-control-row-QH-input>input{
+.pizo-list-realty-main-search-control-row-QH-input>input{
     width: calc(100% - 1rem);
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
 }
 
-.pizo-list-project-main-search-control-row-TT{
+.pizo-list-realty-main-search-control-row-TT{
     width: calc(18% - 1.7857rem);
 }
 
 
-.pizo-list-project-main-search-control-row-TT-input>input{
+.pizo-list-realty-main-search-control-row-TT-input>input{
     width: calc(100% - 1rem);
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
 }
 
-.pizo-list-project-main-search-control-row-HT{
+.pizo-list-realty-main-search-control-row-HT{
     width: calc(10% - 1.4286rem);
 }
 
-.pizo-list-project-main-search-control-row-HT-input{
+.pizo-list-realty-main-search-control-row-HT-input{
     height: 1.9375rem;
 }
 
-.pizo-list-project-main-search-control-row-HT-input>div{
+.pizo-list-realty-main-search-control-row-HT-input>div{
     min-width: 100% !important;
     height: 100%;
 }
 
-.pizo-list-project-main-search-control-row>div:not(:first-child)
+.pizo-list-realty-main-search-control-row>div:not(:first-child)
 {
     margin-left: 1.4286rem;
 }
 
-.pizo-list-project-main-search-control-row-price-input>input{
+.pizo-list-realty-main-search-control-row-price-input>input{
     width: calc(50% - 1rem);
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
     text-align: right;
 }
 
-.pizo-list-project-main-search-control-row-phone-input>input{
+.pizo-list-realty-main-search-control-row-phone-input>input{
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
     width: calc(100% - 1rem);
 }
 
-.pizo-list-project-main-search-control-row-price-input>input::-webkit-inner-spin-button, 
-.pizo-list-project-main-search-control-row-price-input>input::-webkit-outer-spin-button { 
+.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, 
+.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
 
-.pizo-list-project-main-search-control-row-phone-input>input::-webkit-inner-spin-button, 
-.pizo-list-project-main-search-control-row-phone-input>input::-webkit-outer-spin-button { 
+.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, 
+.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
 
-.pizo-list-project-main-search-control-row-MS-input>input::-webkit-inner-spin-button, 
-.pizo-list-project-main-search-control-row-MS-input>input::-webkit-outer-spin-button { 
+.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, 
+.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
 
-.pizo-list-project-main-search-control-row-button-search{
+.pizo-list-realty-main-search-control-row-button-search{
     margin-top: 1rem;
     margin-bottom: auto;
 }
 
-.pizo-list-project-main-search-control-row-date-input .absol-calendar-input{
+.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{
     width: calc(50% - 0.1429rem);
 }
 
-.pizo-list-project-button-apply.pizo-list-project-button-element{
+.pizo-list-realty-button-apply.pizo-list-realty-button-element{
     width: calc(50% - 0.6428rem);
 }
 
-.pizo-list-project-button-deleteall.pizo-list-project-button-element{
+.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{
     margin-left: 1rem;
     width: calc(50% - 0.6428rem);
 }
 
-.pizo-list-project-page-allinput-container{
+.pizo-list-realty-page-allinput-container{
     display: inline-block;
     position: relative;
     width: calc(100% - 4rem);
@@ -265,7 +265,7 @@
     font-size: 0.8rem;
 }
 
-.pizo-list-project-page-allinput-filter{
+.pizo-list-realty-page-allinput-filter{
     display: inline-block;
     position: relative;
     vertical-align: middle;
@@ -274,18 +274,18 @@
     margin-bottom: 0.2rem;
 }
 
-.pizo-list-project-main-search-control.showTranslate{
+.pizo-list-realty-main-search-control.showTranslate{
     transform: translateX(-100%);
 }
 
-.pizo-list-project-main-search-control.showTranslate .pizo-list-project-main-search-control-container{
+.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{
     transform: translateX(-100%);
 }
 
-.pizo-list-project-main-search-control.showTranslate .hideTranslate.pizo-list-project-main-search-control-container{
+.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{
     transform: translateX(0);
 }
 
-.pizo-list-project-main-result-control .sortTable{
+.pizo-list-realty-main-result-control .sortTable{
     width: 100%;
 }

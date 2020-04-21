@@ -5,8 +5,12 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../css/App.css";
 import R from './R';
 import Fcore from './dom/Fcore';
-import listProject from './page/listProject'
-
+import ListRealty from './page/ListRealty';
+import ListWard from './page/ListWard';
+import ListStreet from './page/ListStreet';
+import ListState from './page/ListState';
+import ListDitrict from './page/ListDitrict';
+import PlanningInformation from './page/PlanningInformation';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -15,8 +19,6 @@ function App(){
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    this.listProject = new listProject();
-    this.listProject.attach(this);
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
@@ -97,9 +99,10 @@ App.prototype.getView = function()
                                 class:"pizo-header-menu",
                                 on: {
                                     press: function(event) {
-                                        var item = event.menuItrem;
+                                        var item = event.menuItem;
                                         if (typeof item.pageIndex == 'number') {
                                             self.openPage(item.pageIndex);
+                                            document.body.click();
                                         }
                                     }
                                 },
@@ -144,26 +147,82 @@ App.prototype.getView = function()
                                             ]
                                         },
                                         {
-                                            text: "Nhiệm vụ",
-                                            pageIndex: 2
+                                            text: "Khu vực",
+                                            pageIndex: 2,
+                                            items:[
+                                                {
+                                                    text:"Tỉnh/TP",
+                                                    pageIndex:21
+                                                },
+                                                {
+                                                    text:"Quận/Huyện",
+                                                    pageIndex:22
+                                                },
+                                                {
+                                                    text:"Phường/Xã",
+                                                    pageIndex:23
+                                                },
+                                                {
+                                                    text:"Tên đường",
+                                                    pageIndex:24
+                                                },
+                                                {
+                                                    text:"Thông tin quy hoạch",
+                                                    pageIndex:25
+                                                }
+                                            ]
                                         },
                                         {
-                                            text: "Danh mục",
+                                            text: "Thông tin",
                                             pageIndex: 3,
                                             items:[
                                                 {
-                                                    text:"Bất động sản",
+                                                    text:"Tiện nghi trong nhà",
                                                     pageIndex:31
                                                 },
                                                 {
-                                                    text:"Dự án",
+                                                    text:"Tiện nghi xung quanh",
                                                     pageIndex:32
                                                 }
                                             ]
                                         },
                                         {
-                                            text: "Hệ thống",
+                                            text: "Thông báo",
                                             pageIndex: 4
+                                        },
+                                        {
+                                            text: "Nhân viên",
+                                            pageIndex: 5
+                                        },
+                                        {
+                                            text: "Tài khoản",
+                                            pageIndex: 6
+                                        },
+                                        {
+                                            text: "Thống kê",
+                                            pageIndex: 7,
+                                            items:[
+                                                {
+                                                    text:"Tổng quan",
+                                                    pageIndex:71
+                                                },
+                                                {
+                                                    text:"Cuộc gọi",
+                                                    pageIndex:72
+                                                },
+                                                {
+                                                    text:"Upload hình",
+                                                    pageIndex:73
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            text: "Thông báo",
+                                            pageIndex: 8
+                                        },
+                                        {
+                                            text: "Nhập xuất dữ liệu",
+                                            pageIndex: 9
                                         }
                                     ]
                                 }
@@ -214,7 +273,9 @@ App.prototype.getView = function()
             }
         ]
     });
-    var frameview = this.listProject.getView();
+    var mListRealty = new ListRealty();
+    mListRealty.attach(this);
+    var frameview = mListRealty.getView();
     this.body.addChild(frameview);
     this.body.activeFrame(frameview);
     this.refresh();
@@ -233,18 +294,99 @@ App.prototype.refresh = function () {
 App.prototype.openPage = function(index){
     switch(index)
     {
-        case 31:
-            var frameview = this.listRealty.getView();
+        case 11:
+            var mListRealty = new ListRealty();
+            mListRealty.attach(this);
+            var frameview = mListRealty.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 12:
+            var mListRealty = new ListRealty();
+            mListRealty.attach(this);
+            var frameview = mListRealty.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 13:
+            var mListRealty = new ListRealty();
+            mListRealty.attach(this);
+            var frameview = mListRealty.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 14:
+            var mListRealty = new ListRealty();
+            mListRealty.attach(this);
+            var frameview = mListRealty.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 15:
+            var mListRealty = new ListRealty();
+            mListRealty.attach(this);
+            var frameview = ListRealty.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 16:
+            var mListRealty = new ListRealty();
+            mListRealty.attach(this);
+            var frameview = mListRealty.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 17:
+            var mListRealty = new ListRealty();
+            mListRealty.attach(this);
+            var frameview = mListRealty.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 18:
+            var mListRealty = new ListRealty();
+            mListRealty.attach(this);
+            var frameview = mListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
             this.refresh();
         break;
-        case 32:
-            var frameview = this.listProject.getView();
+        case 21:
+            var mListState = new ListState();
+            mListState.attach(this);
+            var frameview = mListState.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
-            this.refresh();
         break;
+        case 22:
+            var mListDitrict = new ListDitrict();
+            mListDitrict.attach(this);
+            var frameview = mListDitrict.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 23:
+            var mListWard = new ListWard();
+            mListWard.attach(this);
+            var frameview = mListWard.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 24:
+            var mListStreet = new ListStreet();
+            mListStreet.attach(this);
+            var frameview = mListStreet.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 25:
+            var mPlanningInformation = new PlanningInformation();
+            mPlanningInformation.attach(this);
+            var frameview = mPlanningInformation.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        
     }
    
 }
