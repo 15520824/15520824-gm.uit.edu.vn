@@ -1,12 +1,14 @@
 import Fcore from '../dom/Fcore';
 import '../../css/ModuleView.css';
-import '../../css/tablesort.css'
-import TabView from 'absol-acomp/js/TabView';
+import '../../css/tablesort.css';
+// import TabView from 'absol-acomp/js/TabView';
 
 var _ = Fcore._;
 var $ = Fcore.$;
-export function ModuleView() {
+var traceOutBoundingClientRect = Fcore.traceOutBoundingClientRect;
 
+export function ModuleView() {
+    console.log(Fcore)
 }
 
 export function alignFormCss(element, elementDynamic, GroupElement = []) {
@@ -287,8 +289,8 @@ function moveAtFix(clone,pageY,shiftY,result)
         return;
     }
     
-    if(y< clone.clientHeight/4){
-        y = clone.clientHeight/4;
+    if(y< clone.clientHeight/2){
+        y = clone.clientHeight/2;
         return;
     }
 
@@ -381,7 +383,7 @@ function moveElementFix(event, me, result, index) {
 
 
     result.bodyTable.appendChild(bg);
-    bg.appendChild(clone);
+    result.bodyTable.appendChild(clone);
     var functionCheckZone = function (event) {
         var arrZone = bg.getZone();
         for (var i = 0; i < arrZone.length; i++) {
@@ -835,8 +837,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                         cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
                     }
                 }(cell,childUpDown);
-    
-                setTimeout(tempFunc,50);
+                _('attachhook').once('error', tempFunc);
             }
 
             if(header[i].element===undefined)
@@ -872,7 +873,41 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
 }
 
 tableView.prototype.setArrayFix = function(num, isLeft){
-    for()
+    var i;
+    var length;
+    console.log(this)
+    if(isLeft){
+        i = 0;
+        length = num;
+    }
+    else
+    {
+        i = this.clone.length-num;
+        length = this.clone.length;
+    }
+    var isFirst = false;
+    for(;i<length;i++)
+    {
+        for(var j = 0;j<this.clone[i].length;j++)
+        {
+            if(!this.clone[i][j].classList.contains("postionStickyCell"))
+                this.clone[i][j].classList.add("postionStickyCell");
+            this.clone[i][j].style.left = this.clone[i][j].offsetLeft + "px";
+            if(!isFirst&&this.clone[i][j].tagName!=="TH"&&this.clone[i][j].parentNode.childrenNodes.length!==0)
+                this.clone[i][j].parentNode.setArrayFix(num, isLeft);
+        }
+        console.log(this.clone[i][0],this.clone[i][0].offsetWidth)
+        isFirst = true;
+    }
+}
+
+tableView.prototype.setArrayScroll = function(num, isLeft = true){
+    var self = this;
+    _('attachhook').once('error', function(){
+        setTimeout(function(){
+            self.setArrayFix(num, isLeft);
+        },10);
+    })
 }
 
 tableView.prototype.addInputSearch = function(input)
@@ -1726,7 +1761,8 @@ tableView.prototype.backGroundFix = function (index) {
             top:rect.y+'px',
             left:rect.x+'px',
             backgroundColor: "#ffffff00",
-            realTop:rect.y+scrollParent.scrollTop
+            realTop:rect.y+scrollParent.scrollTop,
+            width:traceOutBoundingClientRect(this).width+"px"
         },
         child: [
         ]
@@ -1835,7 +1871,7 @@ tableView.prototype.deleteColumn = function (index) {
     }
 }
 
-tableView.prototype.cloneColumn = function (index) {
+tableView.prototype.cloneColumn = function (index,isFull = false) {
     var clone = this.clone[index][0].cloneNode(true);
     clone.style.width = this.clone[index][0].offsetWidth - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
     clone.style.height = this.clone[index][0].offsetHeight - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
@@ -1852,6 +1888,8 @@ tableView.prototype.cloneColumn = function (index) {
     var bodyTable = _({
         tag: "tbody"
     });
+    if(isFull)
+    this.cloneCellColumn(bodyTable,this.clone,index);
     var result = _({
         tag: "table",
         style: {
@@ -1887,13 +1925,13 @@ tableView.prototype.cloneCellColumn = function(bodyTable,cloneArray,index)
         if(cloneArray[index][i].parentNode.clone!==undefined)
         {
             var cloneArrayTemp = cloneArray[index][i].parentNode.clone;
-            tableView.prototype.cloneCellColumn(bodyTable,cloneArrayTemp,index)
+            this.cloneCellColumn(bodyTable,cloneArrayTemp,index);
         }
         
     }
 }
 
-tableView.prototype.cloneRow = function (index) {
+tableView.prototype.cloneRow = function (index,isFull = false) {
     var clone;
     var headerTable = _({
         tag: "thead"

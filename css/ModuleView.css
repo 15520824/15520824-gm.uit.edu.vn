@@ -20,7 +20,9 @@
   position: fixed;
   pointer-events: none;
   z-index: 100;
+  max-width: 100%;
   background-color: white;
+  overflow: hidden;
 }
 
 .background-opacity-1{
@@ -110,15 +112,21 @@
 .sortTable{
   max-width: 100%;
 }
+
+.absol-single-page-scroller{
+  width: 500px;
+}
+
 .sortTable,.sortTableClone {
     background: #fff;
     border-radius: 10px;
-    overflow: hidden;
     margin: 0 auto;
     position: relative;
     font-size: 1rem;
-    /* border-spacing: 10px; */
+    border-spacing: 0;
 }
+
+
 
 .sortTableClone{
   left: 0;
@@ -148,7 +156,12 @@
   background: #36304a;
   vertical-align: middle;
   color: #fff;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 50px;
+  z-index: 2;
 }
+
 .sortTable td,.sortTableClone td {
   vertical-align: middle;
   white-space: nowrap;
@@ -183,6 +196,17 @@
 
 .sortTable tbody{
   position: relative;
+}
+
+.sortTable td.postionStickyCell,.sortTable th.postionStickyCell{
+  position: sticky;
+  position: -webkit-sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.sortTable th.postionStickyCell{
+  z-index: 3;
 }
 /*-----------------------------------
   Markup free clearing

@@ -53,28 +53,28 @@
     display: none;
 }
 
-.parent:nth-child(odd) {
+.parent:nth-child(odd) td{
     background-color: #f5f5f5;
 }
-.parent:nth-child(even) {
+.parent:nth-child(even) td{
     background-color: #fff;
 }
 
 
 
 /* after the second non-.parent, toggle again */
-tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) {
+tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{
     background-color: #f5f5f5;
 }
-tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) {
+tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{
     background-color: #fff;
 }
 
 /* after the first non-.parent, toggle colors */
-tr:not(.parent) ~ .parent:nth-child(odd) {
+tr:not(.parent) ~ .parent:nth-child(odd) td{
     background-color:#f5f5f5;
 }
-tr:not(.parent) ~ .parent:nth-child(even) {
+tr:not(.parent) ~ .parent:nth-child(even) td{
     background-color: #fff ;
 }
 
