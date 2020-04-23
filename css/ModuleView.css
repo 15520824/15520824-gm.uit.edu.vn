@@ -27,11 +27,7 @@
 
 .background-opacity-1{
   opacity: 0.5;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0rem;
-  left: 0rem;
+  position: fixed;
   z-index: 100;
   background-color: white;
 }
@@ -114,7 +110,7 @@
 }
 
 .absol-single-page-scroller{
-  width: 500px;
+  /* width: 500px; */
 }
 
 .sortTable,.sortTableClone {

@@ -250,16 +250,48 @@ export function fakeInput(text, size) {
     return temp[0].offsetWidth;
 }
 
-function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone, bg, parent) {
-    var left = pageX - shiftX;
-    var top = pageY - shiftY;
-    if (left <= -20 || top <= 0) {
-        bg.noAction = true;
-        outFocus(clone, trigger, functionCheckZone, bg, parent);
-    }
+function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result) {
+    var y = pageY - result.getBoundingClientRect().top;
+    y-= shiftY;
+    var height = result.clientHeight;
+    var tempx = height-3*clone.clientHeight/4;
+    // console.log(y< clone.clientHeight/2)
+    // if(y>tempx){
+    //     y = tempx;
+    //     // bg.noAction = true;
+    //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
+    //     return;
+    // }
+    
+    // if(y< clone.clientHeight/2){
+    //     y = clone.clientHeight/2;
+    //     // bg.noAction = true;
+    //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
+    //     return;
+    // }
 
-    clone.style.left = left + 'px';
-    clone.style.top = top + 'px';
+    clone.style.top = y+ 'px';
+
+    var x = pageX - result.getBoundingClientRect().left;
+    x-= shiftX;
+    var width = result.clientWidth;
+    var tempx = width-3*clone.clientWidth/4;
+    
+    // if(x>tempx){
+    //     x = tempx;
+    //     // bg.noAction = true;
+    //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
+    //     return;
+    // }
+    
+    // if(x< clone.clientWidth/2){
+    //     x = clone.clientWidth/2;
+    //     // bg.noAction = true;
+    //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
+    //     return;
+    // }
+
+    clone.style.left = x+ 'px';
 }
 
 function onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, parent) {
@@ -298,14 +330,6 @@ function moveAtFix(clone,pageY,shiftY,result)
 }
 
 function moveElement(event, me, result, index) {
-    var parent = me;
-
-    while (parent !== undefined && !parent.parentNode.classList.contains("absol-single-page-scroller-viewport")) {
-        parent = parent.parentNode;
-    }
-    if (parent === undefined)
-        return;
-
     var scrollParent = me;
 
     while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
@@ -316,13 +340,15 @@ function moveElement(event, me, result, index) {
 
     scrollParent.addEventListener("scroll", function (event) {
         bg.isMove = false;
-        outFocus(clone, trigger, functionCheckZone, bg, parent);
+        outFocus(clone, trigger, functionCheckZone, bg, result);
     })
 
     var trigger;
-
-    var clone = result.cloneColumn(index);
-    var bg = result.backGround(112, function () {
+    var height = 112;
+    if(result.height!==undefined)
+    height = result.height;
+    var clone = result.cloneColumn(index,height,undefined);
+    var bg = result.backGround(height, function () {
         if (bg.noAction !== true)
             result.deleteColumn(index);
     }, index);
@@ -355,16 +381,18 @@ function moveElement(event, me, result, index) {
     window.addEventListener("mousemove", functionCheckZone)
 
     bg.isMove = true;
-    let shiftX = event.clientX - me.getBoundingClientRect().left + parent.getBoundingClientRect().left;
-    let shiftY = event.clientY - me.getBoundingClientRect().top + parent.getBoundingClientRect().top;
-    parent.appendChild(bg);
-    parent.appendChild(clone);
-    moveAt(clone, event.pageX, event.pageY, shiftX, shiftY, parent);
-
-    window.addEventListener('mousemove', trigger = function (event) { onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, parent) });
-    clone.onmouseup = function () {
+    
+    
+    result.appendChild(bg);
+    result.appendChild(clone);
+    let shiftX = clone.clientWidth/2;
+    let shiftY = clone.clientHeight/2;
+    moveAt(clone,event.pageX, event.pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result);
+    window.addEventListener('mousemove', trigger = function (event) { onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, result) });
+   
+    window.onmouseup = function () {
         bg.isMove = false;
-        outFocus(clone, trigger, functionCheckZone, bg, parent);
+        outFocus(clone, trigger, functionCheckZone, bg, result);
     };
 }
 
@@ -391,7 +419,7 @@ function moveElementFix(event, me, result, index) {
             var centerX = offset.left + offset.width / 2;    // [UPDATE] subtract to center
             var centerY = offset.top + offset.height / 2;
             var checkElement = arrZone[i];
-            if (AABBYY(centerX, centerY, checkElement.getBoundingClientRect())) {
+            if (AAYY(centerX, centerY, checkElement.getBoundingClientRect())) {
                 if (!checkElement.classList.contains("focus-blast")){
                     checkElement.classList.add("focus-blast");
                     break;
@@ -543,10 +571,16 @@ function AABBYY(x, y, bound) {
     return x >= bound.x && y >= bound.y && x <= bound.x + bound.width && y <= bound.y + bound.height;
 }
 
+function AAYY(x, y, bound) {
+    if (bound.x === 0 && bound.y === 0 && bound.width === 0 && bound.height === 0)
+        return true;
+    return y >= bound.y && y <= bound.y + bound.height;
+}
+
 function outFocus(clone, trigger, functionCheckZone, bg, parent) {
         window.removeEventListener('mousemove', functionCheckZone);
         window.removeEventListener('mousemove', trigger);
-        clone.onmouseup = null;
+        window.onmouseup = null;
         setTimeout(function () {
             bg.selfRemove();
         }, 20)
@@ -1754,15 +1788,18 @@ tableView.prototype.backGroundFix = function (index) {
     }
     if (scrollParent === undefined)
         return;
-    var temp = _({
+    var rectDistance = traceOutBoundingClientRect(this);
+    console.log(traceOutBoundingClientRect(this))
+    var temp = _(
+        {
         tag: "div",
         class: "background-opacity",
         style:{
             top:rect.y+'px',
-            left:rect.x+'px',
+            left:rectDistance.left+'px',
             backgroundColor: "#ffffff00",
             realTop:rect.y+scrollParent.scrollTop,
-            width:traceOutBoundingClientRect(this).width+"px"
+            width:rectDistance.width+"px"
         },
         child: [
         ]
@@ -1790,9 +1827,26 @@ tableView.prototype.backGroundFix = function (index) {
 }
 
 tableView.prototype.backGround = function (height, callback, index) {
+    var rect = this.getBoundingClientRect();
+    var scrollParent = this;
+    var rectDistance = traceOutBoundingClientRect(this);
+    while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
+        scrollParent = scrollParent.parentNode;
+    }
+    if (scrollParent === undefined)
+        return;
+    console.log(rectDistance)
     var temp = _({
         tag: "div",
         class: "background-opacity-1",
+        style:{
+            transform:"translateY(-"+height+"px)",
+            top:rect.y+'px',
+            left:rectDistance.left+'px',
+            backgroundColor: "#ffffff00",
+            realTop:rect.y+scrollParent.scrollTop,
+            width:rectDistance.width+"px"
+        },
         child:[
             {
                 tag: "div",
@@ -1871,7 +1925,7 @@ tableView.prototype.deleteColumn = function (index) {
     }
 }
 
-tableView.prototype.cloneColumn = function (index,isFull = false) {
+tableView.prototype.cloneColumn = function (index,height,isFull = false) {
     var clone = this.clone[index][0].cloneNode(true);
     clone.style.width = this.clone[index][0].offsetWidth - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
     clone.style.height = this.clone[index][0].offsetHeight - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
@@ -1974,26 +2028,39 @@ tableView.prototype.cloneRow = function (index,isFull = false) {
 tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
     var self = this;
     var left, right;
+    var isShow = true;
     if (colum1 !== undefined)
         left = (self.clone[colum1][0].offsetWidth) / 2 + parseFloat(window.getComputedStyle(self.clone[colum1][0]).webkitBorderHorizontalSpacing)/2;
     else
         left = 20 + parseFloat(window.getComputedStyle(self).paddingLeft);
-    if (colum2 !== undefined)
+    if (colum2 !== undefined){
         right = (self.clone[colum2][0].offsetWidth) / 2 + parseFloat(window.getComputedStyle(self.clone[colum2][0]).webkitBorderHorizontalSpacing)/2;
+        if(self.clone[colum2][0].classList.contains("postionStickyCell"))
+        isShow = false;
+    }
     else
         right = 20 + parseFloat(window.getComputedStyle(self).paddingRight);
-    return _({
+    var center = _({
+        tag: "div",
+        class: "move-hover-zone-center",
+    });
+    console.log(isShow)
+    if(!isShow)
+    {
+        center.style.display = "none !important";
+    }
+    var temp =  _({
         tag: "div",
         class: "move-hover-zone",
         style: {
             height: self.offsetHeight + "px",
         },
         on: {
-            mouseover: function () {
+            mouseover: isShow?function () {
                 if (this.parentNode.isMove === false) {
-                    tableView.prototype.moveColumn(self.clone,colum1,colum2,index)
+                    self.moveColumn(self.clone,colum1,colum2,index)
                 }
-            }
+            }:undefined
         },
         child: [
             {
@@ -2003,10 +2070,7 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
                     width: left + 'px',
                 }
             },
-            {
-                tag: "div",
-                class: "move-hover-zone-center",
-            },
+            center,
             {
                 tag: "div",
                 class: "move-hover-zone-right",
@@ -2016,6 +2080,7 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
             }
         ]
     })
+    return temp;
 }
 
 tableView.prototype.moveColumn = function(arrClone,colum1,colum2,index,i=0)
@@ -2045,7 +2110,7 @@ tableView.prototype.moveColumn = function(arrClone,colum1,colum2,index,i=0)
         }
         if(arrClone[index][i-delta].parentNode.clone!==undefined)
         {
-            tableView.prototype.moveColumn(arrClone[index][i-delta].parentNode.clone,colum1,colum2,index,1);
+            this.moveColumn(arrClone[index][i-delta].parentNode.clone,colum1,colum2,index,1);
         }
     }
     if (colum1 > index) {
