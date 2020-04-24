@@ -289,3 +289,33 @@
 .pizo-list-realty-main-result-control .sortTable{
     width: 100%;
 }
+
+.pizo-list-realty-main-result-control .sortTable th,.pizo-list-realty-main-result-control .sortTableClone th{
+    top:50px;
+}
+
+
+.pizo-list-realty-main-result-control .parent:nth-child(odd) td{
+    background-color: #f5f5f5;
+}
+.pizo-list-realty-main-result-control .parent:nth-child(even) td{
+    background-color: #fff;
+}
+
+
+
+/* after the second non-.parent, toggle again */
+.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{
+    background-color: #f5f5f5;
+}
+.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{
+    background-color: #fff;
+}
+
+/* after the first non-.parent, toggle colors */
+.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(odd) td{
+    background-color:#f5f5f5;
+}
+.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{
+    background-color: #fff ;
+}

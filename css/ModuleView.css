@@ -39,6 +39,7 @@
 .delete-zone{
   border: 0.1429rem dashed #0087F7;
   text-align: center;
+  position: fixed;
 }
 
 .delete-zone-icon{
@@ -109,9 +110,10 @@
   max-width: 100%;
 }
 
-.absol-single-page-scroller{
-  /* width: 500px; */
-}
+/* .absol-single-page-scroller{
+  width: 500px;
+  margin: auto;
+} */
 
 .sortTable,.sortTableClone {
     background: #fff;
@@ -154,7 +156,7 @@
   color: #fff;
   position: sticky;
   position: -webkit-sticky;
-  top: 50px;
+  top: 0px;
   z-index: 2;
 }
 

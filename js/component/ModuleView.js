@@ -254,7 +254,6 @@ function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone,
     var y = pageY - result.getBoundingClientRect().top;
     y-= shiftY;
     var height = result.clientHeight;
-    var tempx = height-3*clone.clientHeight/4;
     // console.log(y< clone.clientHeight/2)
     // if(y>tempx){
     //     y = tempx;
@@ -275,7 +274,6 @@ function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone,
     var x = pageX - result.getBoundingClientRect().left;
     x-= shiftX;
     var width = result.clientWidth;
-    var tempx = width-3*clone.clientWidth/4;
     
     // if(x>tempx){
     //     x = tempx;
@@ -384,7 +382,7 @@ function moveElement(event, me, result, index) {
     
     
     result.appendChild(bg);
-    result.appendChild(clone);
+    bg.appendChild(clone);
     let shiftX = clone.clientWidth/2;
     let shiftY = clone.clientHeight/2;
     moveAt(clone,event.pageX, event.pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result);
@@ -411,7 +409,7 @@ function moveElementFix(event, me, result, index) {
 
 
     result.bodyTable.appendChild(bg);
-    result.bodyTable.appendChild(clone);
+    bg.appendChild(clone);
     var functionCheckZone = function (event) {
         var arrZone = bg.getZone();
         for (var i = 0; i < arrZone.length; i++) {
@@ -927,11 +925,12 @@ tableView.prototype.setArrayFix = function(num, isLeft){
             if(!this.clone[i][j].classList.contains("postionStickyCell"))
                 this.clone[i][j].classList.add("postionStickyCell");
             this.clone[i][j].style.left = this.clone[i][j].offsetLeft + "px";
-            if(!isFirst&&this.clone[i][j].tagName!=="TH"&&this.clone[i][j].parentNode.childrenNodes.length!==0)
+            if(isFirst&&this.clone[i][j].parentNode.childrenNodes.length!==0)
                 this.clone[i][j].parentNode.setArrayFix(num, isLeft);
+            isFirst = true;
         }
-        console.log(this.clone[i][0],this.clone[i][0].offsetWidth)
-        isFirst = true;
+        isFirst = false;
+        // console.log(this.clone[i][0],this.clone[i][0].offsetWidth)
     }
 }
 
@@ -1796,10 +1795,10 @@ tableView.prototype.backGroundFix = function (index) {
         class: "background-opacity",
         style:{
             top:rect.y+'px',
-            left:rectDistance.left+'px',
+            left:rect.x + scrollParent.scrollLeft +'px',
             backgroundColor: "#ffffff00",
             realTop:rect.y+scrollParent.scrollTop,
-            width:rectDistance.width+"px"
+            width:rectDistance.width-17+"px"
         },
         child: [
         ]
@@ -1840,19 +1839,23 @@ tableView.prototype.backGround = function (height, callback, index) {
         tag: "div",
         class: "background-opacity-1",
         style:{
-            transform:"translateY(-"+height+"px)",
             top:rect.y+'px',
-            left:rectDistance.left+'px',
+            left:rect.x - 17 +'px',
             backgroundColor: "#ffffff00",
             realTop:rect.y+scrollParent.scrollTop,
-            width:rectDistance.width+"px"
+            // width:rectDistance.width-17+"px"
         },
         child:[
             {
                 tag: "div",
                 class: "delete-zone",
                 style: {
+                    transform:"translateY(-"+height+"px)",
+                    top:rect.y+'px',
+                    left:rectDistance.left+'px',
+                    backgroundColor: "#ffffff00",
                     height: height + "px",
+                    width:rectDistance.width+"px"
                 },
                 child: [
                     {
@@ -2040,14 +2043,15 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
     }
     else
         right = 20 + parseFloat(window.getComputedStyle(self).paddingRight);
+
     var center = _({
         tag: "div",
         class: "move-hover-zone-center",
     });
-    console.log(isShow)
+
     if(!isShow)
     {
-        center.style.display = "none !important";
+        center.style.display = "none";
     }
     var temp =  _({
         tag: "div",
