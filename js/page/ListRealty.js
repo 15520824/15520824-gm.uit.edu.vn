@@ -271,7 +271,6 @@ ListRealty.prototype.getView = function () {
     [{}, {}, 5, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020",""],
 
 ]
-
     tableViewX = tableView(header, dataTable,true,true,2);
     tableViewX.addInputSearch($('.pizo-list-realty-page-allinput-container input',this.$view));
     tableViewX.setArrayScroll(2);

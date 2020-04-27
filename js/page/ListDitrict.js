@@ -19,9 +19,6 @@ function ListDitrict() {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     this.ModuleView = new ModuleView();
-    
-    this.NewRealty = new NewRealty();
-    this.NewRealty.attach(this);
 }
 
 ListDitrict.prototype.setContainer = function(parent)

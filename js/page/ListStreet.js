@@ -18,9 +18,6 @@ function ListStreet() {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     this.ModuleView = new ModuleView();
-    
-    this.NewRealty = new NewRealty();
-    this.NewRealty.attach(this);
 }
 
 ListStreet.prototype.setContainer = function(parent)

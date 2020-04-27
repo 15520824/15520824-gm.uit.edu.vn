@@ -202,7 +202,8 @@ NewRealty.prototype.descView = function () {
                         class: "pizo-new-realty-desc-infomation-cell",
                         child: [
                             this.juridicalView(),
-                            this.historyView()
+                            this.historyView(),
+                            this.descViewImageThumnail(dataImage,0,x)
                         ]
                     }
                 ]
@@ -1473,6 +1474,7 @@ NewRealty.prototype.juridicalView = function () {
 }
 
 NewRealty.prototype.historyView = function () {
+    var self = this;
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-history",
@@ -1483,7 +1485,7 @@ NewRealty.prototype.historyView = function () {
                 props: {
                     innerHTML: "Lịch sử sở hữu"
                 }
-            },
+            }
         ]
     })
     return temp;

@@ -11,6 +11,7 @@ import ListStreet from './page/ListStreet';
 import ListState from './page/ListState';
 import ListDitrict from './page/ListDitrict';
 import PlanningInformation from './page/PlanningInformation';
+import ListHelp from './page/ListHelp';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -223,6 +224,10 @@ App.prototype.getView = function()
                                         {
                                             text: "Nhập xuất dữ liệu",
                                             pageIndex: 9
+                                        },
+                                        {
+                                            text: "Trợ giúp",
+                                            pageIndex: 10
                                         }
                                     ]
                                 }
@@ -273,9 +278,9 @@ App.prototype.getView = function()
             }
         ]
     });
-    var mListRealty = new ListRealty();
-    mListRealty.attach(this);
-    var frameview = mListRealty.getView();
+    var mListHelp = new ListHelp();
+    mListHelp.attach(this);
+    var frameview = mListHelp.getView();
     this.body.addChild(frameview);
     this.body.activeFrame(frameview);
     this.refresh();
@@ -292,6 +297,7 @@ App.prototype.refresh = function () {
 };
 
 App.prototype.openPage = function(index){
+
     switch(index)
     {
         case 11:
@@ -383,6 +389,13 @@ App.prototype.openPage = function(index){
             var mPlanningInformation = new PlanningInformation();
             mPlanningInformation.attach(this);
             var frameview = mPlanningInformation.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 10:
+            var mListHelp = new ListHelp();
+            mListHelp.attach(this);
+            var frameview = mListHelp.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;

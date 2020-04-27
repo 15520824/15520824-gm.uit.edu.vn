@@ -106,7 +106,7 @@
   v2.0 | 20110126
   License: none (public domain)
 ---------------------------------------------*/
-.sortTable{
+table.sortTable{
   max-width: 100%;
 }
 
@@ -115,7 +115,7 @@
   margin: auto;
 } */
 
-.sortTable,.sortTableClone {
+table.sortTable,table.sortTableClone {
     background: #fff;
     border-radius: 10px;
     margin: 0 auto;
@@ -126,14 +126,14 @@
 
 
 
-.sortTableClone{
+table.sortTableClone{
   left: 0;
   font-size: 1rem;
   position: absolute;
   z-index: 1000;
 }
 
-.sortTable  tr.hideTranslate{
+table.sortTable  tr.hideTranslate{
   -webkit-transition: 1s ease-in-out;
   -moz-transition: 1s ease-in-out;
   -o-transition: 1s ease-in-out;
@@ -143,14 +143,14 @@
 
 
 
-.sortTable th,.sortTable td,
-.sortTableClone th,.sortTableClone td {
+table.sortTable th,table.sortTable td,
+table.sortTableClone th,table.sortTableClone td {
   padding: 0.35714285714rem;
   text-align: left;
   border-top: 1px solid var(--color-input-color);
   position: relative;
 }
-.sortTable th,.sortTableClone th {
+table.sortTable th,table.sortTableClone th {
   background: #36304a;
   vertical-align: middle;
   color: #fff;
@@ -160,50 +160,50 @@
   z-index: 2;
 }
 
-.sortTable td,.sortTableClone td {
+table.sortTable td,table.sortTableClone td {
   vertical-align: middle;
   white-space: nowrap;
 }
-.sortTable thead:first-child tr th,
-.sortTable thead:first-child tr td,
-.sortTableClone thead:first-child tr th,
-.sortTableClone thead:first-child tr td {
+table.sortTable thead:first-child tr th,
+table.sortTable thead:first-child tr td,
+table.sortTableClone thead:first-child tr th,
+table.sortTableClone thead:first-child tr td {
   border-top: 0;
 }
-.sortTable tbody + tbody,.sortTableClone tbody + tbody {
+table.sortTable tbody + tbody,table.sortTableClone tbody + tbody {
   border-top: 1px solid #ddd;
 }
-.sortTable th + th,
-.sortTable td + td,
-.sortTable th + td,
-.sortTable td + th,
-.sortTableClone th + th,
-.sortTableClone td + td,
-.sortTableClone th + td,
-.sortTableClone td + th {
+table.sortTable th + th,
+table.sortTable td + td,
+table.sortTable th + td,
+table.sortTable td + th,
+table.sortTableClone th + th,
+table.sortTableClone td + td,
+table.sortTableClone th + td,
+table.sortTableClone td + th {
   border-left: 1px solid #ddd;
 }
-.sortTable thead:first-child tr:first-child th,
-.sortTable tbody:first-child tr:first-child th,
-.sortTable tbody:first-child tr:first-child td,
-.sortTableClone thead:first-child tr:first-child th,
-.sortTableClone tbody:first-child tr:first-child th,
-.sortTableClone tbody:first-child tr:first-child td  {
+table.sortTable thead:first-child tr:first-child th,
+table.sortTable tbody:first-child tr:first-child th,
+table.sortTable tbody:first-child tr:first-child td,
+table.sortTableClone thead:first-child tr:first-child th,
+table.sortTableClone tbody:first-child tr:first-child th,
+table.sortTableClone tbody:first-child tr:first-child td  {
   border-top: 0;
 }
 
-.sortTable tbody{
+table.sortTable tbody{
   position: relative;
 }
 
-.sortTable td.postionStickyCell,.sortTable th.postionStickyCell{
+table.sortTable td.postionStickyCell,table.sortTable th.postionStickyCell{
   position: sticky;
   position: -webkit-sticky;
   left: 0;
   z-index: 1;
 }
 
-.sortTable th.postionStickyCell{
+table.sortTable th.postionStickyCell{
   z-index: 3;
 }
 /*-----------------------------------

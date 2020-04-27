@@ -17,9 +17,6 @@ function PlanningInformation() {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    
-    this.NewRealty = new NewRealty();
-    this.NewRealty.attach(this);
 }
 
 PlanningInformation.prototype.setContainer = function(parent)

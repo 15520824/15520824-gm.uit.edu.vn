@@ -1,0 +1,7 @@
+.pizo-list-help-main{
+    margin-left: 1.4286rem;
+    margin-right: 0.7143rem;
+    height: calc(100% - 50px);
+    position: absolute;
+    width: calc(100% - 30px);
+}

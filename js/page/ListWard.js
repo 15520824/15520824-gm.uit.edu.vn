@@ -18,9 +18,6 @@ function ListWard() {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     this.ModuleView = new ModuleView();
-    
-    this.NewRealty = new NewRealty();
-    this.NewRealty.attach(this);
 }
 
 ListWard.prototype.setContainer = function(parent)
