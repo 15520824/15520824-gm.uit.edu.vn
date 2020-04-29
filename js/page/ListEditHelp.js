@@ -5,8 +5,7 @@ import "../../css/ListHelp.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
-import NewRealty from '../component/NewRealty';
-import HelpContainer from '../component/HelpContainer';
+import EditHelpContainer  from '../component/EditHelpContainer';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -29,7 +28,7 @@ ListHelp.prototype.constructor = ListHelp;
 ListHelp.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
-    var containerHelp = new HelpContainer();
+    var containerHelp = new EditHelpContainer();
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
@@ -72,6 +71,18 @@ ListHelp.prototype.getView = function () {
                                 child: [
                                 '<span>' + "Lưu" + '</span>'
                                 ]
+                            },
+                            {
+                                tag: "button",
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                on: {
+                                    click: function (evt) {
+                                        containerHelp.add()
+                                    }
+                                },
+                                child: [
+                                '<span>' + "Thêm" + '</span>'
+                                ]
                             }
                         ]
                     }
@@ -79,7 +90,7 @@ ListHelp.prototype.getView = function () {
             },
         ]
     });
-
+    containerHelp.parent  = this.parent;
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-help-main"],

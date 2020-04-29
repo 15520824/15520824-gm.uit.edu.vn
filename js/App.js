@@ -12,6 +12,7 @@ import ListState from './page/ListState';
 import ListDitrict from './page/ListDitrict';
 import PlanningInformation from './page/PlanningInformation';
 import ListHelp from './page/ListHelp';
+import ListEditHelp from './page/ListEditHelp';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -227,7 +228,13 @@ App.prototype.getView = function()
                                         },
                                         {
                                             text: "Trợ giúp",
-                                            pageIndex: 10
+                                            pageIndex: 10,
+                                            items:[
+                                                {
+                                                    text:"Sửa trợ giúp",
+                                                    pageIndex:101
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
@@ -392,10 +399,10 @@ App.prototype.openPage = function(index){
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;
-        case 10:
-            var mListHelp = new ListHelp();
-            mListHelp.attach(this);
-            var frameview = mListHelp.getView();
+        case 101:
+            var mListEditHelp = new ListEditHelp();
+            mListEditHelp.attach(this);
+            var frameview = mListEditHelp.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;

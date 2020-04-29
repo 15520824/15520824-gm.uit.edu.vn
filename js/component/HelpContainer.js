@@ -17,10 +17,6 @@ function HelpContainer() {
     this.loadConfig();
     if (this.$view) return this.$view;
     var self = this;
-    if(window.mobilecheck())
-    {
-        allinput.placeholder = "Tên"
-    }
     var header = [{}];
     var row1 = ['Giới thiệu'];
     row1.child = [
@@ -91,61 +87,55 @@ function HelpContainer() {
                                         },
                                         child:[
                                             {
-                                                tag:"div",
-                                                class:["b-workZone__content", "m-workZone__content__nav"],
+                                                tag:"tabview",
+                                                class:"absol-tab-frame-small",
+                                                props:{
+                                                    value:0
+                                                },
+                                                style:{
+                                                    width:"fit-content"
+                                                },
                                                 child:[
                                                     {
-                                                        tag:"tabview",
-                                                        class:"absol-tab-frame-small",
-                                                        props:{
-                                                            value:0
+                                                        tag:"tabframe",
+                                                        attr:{
+                                                            name:"Menu",
+                                                            id:"matd",
+                                                            desc:""
                                                         },
-                                                        style:{
-                                                            width:"fit-content"
+                                                        child:[
+                                                            mTable
+                                                        ]
+                                                    },
+                                                    {
+                                                        tag:"tabframe",
+                                                        attr:{
+                                                            name:"Index",
+                                                            id:"matd2",
+                                                            desc:""
                                                         },
                                                         child:[
                                                             {
-                                                                tag:"tabframe",
-                                                                attr:{
-                                                                    name:"Menu",
-                                                                    id:"matd",
-                                                                    desc:""
-                                                                },
-                                                                child:[
-                                                                    mTable
-                                                                ]
-                                                            },
+                                                                tag:"span",
+                                                                props:{
+                                                                    innerHTML:"2"
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        tag:"tabframe",
+                                                        attr:{
+                                                            name:"Search",
+                                                            id:"matd3",
+                                                            desc:""
+                                                        },
+                                                        child:[
                                                             {
-                                                                tag:"tabframe",
-                                                                attr:{
-                                                                    name:"Index",
-                                                                    id:"matd2",
-                                                                    desc:""
-                                                                },
-                                                                child:[
-                                                                    {
-                                                                        tag:"span",
-                                                                        props:{
-                                                                            innerHTML:"2"
-                                                                        }
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                tag:"tabframe",
-                                                                attr:{
-                                                                    name:"Search",
-                                                                    id:"matd3",
-                                                                    desc:""
-                                                                },
-                                                                child:[
-                                                                    {
-                                                                        tag:"span",
-                                                                        props:{
-                                                                            innerHTML:"3"
-                                                                        }
-                                                                    }
-                                                                ]
+                                                                tag:"span",
+                                                                props:{
+                                                                    innerHTML:"3"
+                                                                }
                                                             }
                                                         ]
                                                     }

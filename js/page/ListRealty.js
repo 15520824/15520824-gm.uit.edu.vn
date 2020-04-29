@@ -17,9 +17,6 @@ function ListRealty() {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     this.ModuleView = new ModuleView();
-    
-    this.NewRealty = new NewRealty();
-    this.NewRealty.attach(this);
 }
 
 ListRealty.prototype.setContainer = function(parent)

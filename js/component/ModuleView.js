@@ -253,7 +253,7 @@ export function fakeInput(text, size) {
 function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result) {
     var y = pageY - result.getBoundingClientRect().top;
     y-= shiftY;
-    var height = result.clientHeight;
+    // var height = result.clientHeight;
     // console.log(y< clone.clientHeight/2)
     // if(y>tempx){
     //     y = tempx;
@@ -308,10 +308,17 @@ function moveAtFix(clone,pageY,shiftY,result)
     y-= shiftY;
     var height = result.clientHeight;
     var tempx = height-3*clone.clientHeight/4;
+    var top = clone.clientHeight/2;
 
     if(result.tagName !== "TABLE"){
         height += result.getHeightChild();
         tempx = height;
+    }else
+    {
+        if(result.headerTable.offsetHeight === 0){
+            top = -clone.clientHeight/4;
+        }
+            
     }
     
     if(y>tempx){
@@ -319,8 +326,8 @@ function moveAtFix(clone,pageY,shiftY,result)
         return;
     }
     
-    if(y< clone.clientHeight/2){
-        y = clone.clientHeight/2;
+    if(y< top){
+        y = top;
         return;
     }
 
@@ -836,7 +843,8 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                     }(i) : undefined,
                 }
             })
-
+            if(functionClick!==undefined)
+            cell.style.cursor ="pointer";
             var childUpDown = _({
                 tag:"div",
                 class:"sort-container",
@@ -1377,6 +1385,9 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
             },
         }
     })
+
+    if(functionClick!==undefined)
+        cell.style.cursor ="pointer";
     var widthSize = 0;
 
     var step = 1.71428571429;
@@ -2197,7 +2208,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
     }
     else
         top = parseFloat(window.getComputedStyle(self).paddingTop);
-    if (row2 !== undefined&&self.clone[0][row2].offsetHeight!==0){
+    if (row2 !== undefined){
         if(self.clone[0][row2].parentNode.style.display==="none")
         return _({
             tag:"div"
@@ -2212,8 +2223,18 @@ tableView.prototype.getBound2Row = function (row1, row2) {
             bottom+=self.clone[0][row2].parentNode.getHeightChild();
         }
     }
-    else
-        bottom = parseFloat(window.getComputedStyle(self).paddingBottom)+(self.clone[0][row1].offsetHeight)/2;
+    else{
+        bottom = parseFloat(window.getComputedStyle(self).paddingBottom) + (self.clone[0][row1].offsetHeight)/2;
+    }
+
+    if(row1===undefined)
+    {
+        row1 = row2;
+        row2++;
+        if(self.clone[0][row1+1]!==undefined)
+        elementReal = self.clone[0][row1+1].parentNode;
+    }
+        
     var temp =  _({
         tag: "div",
         class: "move-hover-zone-topbot",
@@ -2497,6 +2518,8 @@ export function tableViewMobile(header = [], data = []) {
                     }(i) : undefined,
                 }
             })
+            if(functionClick!==undefined)
+            cell.style.cursor ="pointer";
             if (header[i].sort === true) {
                 cell.classList.add("has-sort")
                 setTimeout(function(cell,value){

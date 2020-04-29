@@ -1,39 +1,70 @@
-import BaseView from '../component/BaseView';
+import BaseView from './BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/NewState.css"
+import "../../css/NewCategory.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate } from '../component/FormatFunction';
-
-import { input_choicenumber,tableView, ModuleView} from '../component/ModuleView';
-import NewRealty from '../component/NewRealty';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function NewState() {
+function NewCategory(data,parent_id) {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    this.ModuleView = new ModuleView();
-    
-    this.NewRealty = new NewRealty();
-    this.NewRealty.attach(this);
+    this.data = data;
+    this.parent_id = parseFloat(parent_id);
+    if(this.data!==undefined)
+    this.parent_id = parseFloat(data.original.parent_id);
 }
 
-NewState.prototype.setContainer = function(parent)
+NewCategory.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(NewState.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-NewState.prototype.constructor = NewState;
+Object.defineProperties(NewCategory.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+NewCategory.prototype.constructor = NewCategory;
 
-NewState.prototype.getView = function () {
+NewCategory.prototype.createPromise = function()
+{
+    var self = this;
+    if(this.data === undefined)
+    {
+        self.promiseAddDB = new Promise(function(resolve,reject){
+            self.resolveDB = resolve;
+            self.rejectDB = reject;
+        })
+
+    }else
+    {
+        self.promiseEditDB = new Promise(function(resolve,reject){
+            self.resolveDB = resolve;
+            self.rejectDB = reject;
+        })
+        
+    }
+}
+
+NewCategory.prototype.resetPromise = function(value)
+{
+    if(self.promiseAddDB!==undefined)
+    self.promiseAddDB = undefined;
+    if(self.promiseEditDB!==undefined)
+    self.promiseEditDB = undefined;
+}
+
+NewCategory.prototype.getView = function (dataParent) {
     if (this.$view) return this.$view;
     var self = this;
+    self.createPromise();
+    var array = [{text:"Danh mục cao nhất",value:0}]
+    for(var i = 0;i<dataParent.length;i++)
+    {
+        array[i+1] = {text:dataParent[i].title,value:parseFloat(dataParent[i].id)};
+    }
+    console.log(this.parent_id)
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
@@ -60,6 +91,14 @@ NewState.prototype.getView = function () {
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
+
+                                        var result = {
+                                            title:self.name.value,
+                                            alias:self.alias.value,
+                                            parent_id:self.parentElement.value
+                                        }
+                                        self.rejectDB(result);
+                                        self.resetPromise();
                                     }
                                 },
                                 child: [
@@ -71,10 +110,38 @@ NewState.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
+                                        var result = {
+                                            title:self.name.value,
+                                            alias:self.alias.value,
+                                            parent_id:self.parentElement.value
+                                        }
+                                        self.resolveDB(result);
+                                        self.createPromise();
                                     }
                                 },
                                 child: [
                                 '<span>' + "Lưu" + '</span>'
+                                ]
+                            },
+                            {
+                                tag: "button",
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                on: {
+                                    click: function (evt) {
+                                        var result = {
+                                            title:self.name.value,
+                                            alias:self.alias.value,
+                                            parent_id:self.parentElement.value
+                                        }
+                                        self.resolveDB(result);
+                                        self.resetPromise();
+                                        self.$view.selfRemove();
+                                        var arr = self.parent.body.getAllChild();
+                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                    }
+                                },
+                                child: [
+                                '<span>' + "Lưu và đóng" + '</span>'
                                 ]
                             }
                         ]
@@ -83,7 +150,6 @@ NewState.prototype.getView = function () {
             },
         ]
     });
-
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-realty-main"],
@@ -115,49 +181,43 @@ NewState.prototype.getView = function () {
                                 },
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-type-container",
+                                    class:"pizo-new-state-container-alias-container",
                                     child:[
                                         {
                                             tag:"span",
-                                            class:"pizo-new-state-container-type-container-label",
+                                            class:"pizo-new-state-container-alias-container-label",
                                             props:{
-                                                innerHTML:"Loại"
+                                                innerHTML:"Alias"
                                             }
                                         },
                                         {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-state-container-type-container-input",
-                                            props:{
-                                                items:[
-                                                    {text:"Thành phố trực thuộc trung ương",value:79},
-                                                    {text:"Tỉnh",value:80}
-                                                ]
-                                            }
+                                            tag:"input",
+                                            class:["pizo-new-state-container-alias-container-input","pizo-new-realty-dectruct-input"],
                                         }
                                     ]
                                 },
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-nation-container",
+                                    class:"pizo-new-state-container-selectbox-container",
                                     child:[
                                         {
                                             tag:"span",
-                                            class:"pizo-new-state-container-nation-container-label",
+                                            class:"pizo-new-state-container-selectbox-container-label",
                                             props:{
-                                                innerHTML:"Quốc gia"
+                                                innerHTML:"Danh mục cha"
                                             }
                                         },
                                         {
                                             tag:"selectmenu",
-                                            class:"pizo-new-state-container-nation-container-input",
+                                            class:["pizo-new-state-container-selectbox-container-input","pizo-new-realty-dectruct-input"],
                                             props:{
-                                                items:[
-                                                    {text:"Việt Nam",value:79},
-                                                ]
+                                                enableSearch: true,
+                                                items:array,
+                                                value:self.parent_id
                                             }
                                         }
                                     ]
-                                }
+                                },
                             ]
                         }
                     ]
@@ -165,10 +225,19 @@ NewState.prototype.getView = function () {
             ]   
         })
         );
+
+    this.name = $('input.pizo-new-state-container-name-container-input.pizo-new-realty-dectruct-input',this.$view);
+    this.alias = $('input.pizo-new-state-container-alias-container-input.pizo-new-realty-dectruct-input',this.$view);
+    this.parentElement = $('.pizo-new-state-container-selectbox-container-input.pizo-new-realty-dectruct-input',this.$view);
+    if(this.data!==undefined)
+    {
+        this.name.value = this.data.original.title;
+        this.alias.value = this.data.original.alias;
+    }
     return this.$view;
 }
 
-NewState.prototype.refresh = function () {
+NewCategory.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -176,7 +245,7 @@ NewState.prototype.refresh = function () {
         this.setData(data);
 };
 
-NewState.prototype.setData = function (data) {
+NewCategory.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -184,7 +253,7 @@ NewState.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-NewState.prototype.flushDataToView = function () {
+NewCategory.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -199,8 +268,8 @@ NewState.prototype.flushDataToView = function () {
     }
 };
 
-NewState.prototype.start = function () {
+NewCategory.prototype.start = function () {
 
 }
 
-export default NewState;
+export default NewCategory;

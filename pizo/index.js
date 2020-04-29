@@ -54563,7 +54563,12 @@ tableView.prototype.getBound2Row = function (row1, row2) {
     if (row1 !== undefined && self.clone[0][row2].parentNode.childrenNodes.length !== 0) {
       bottom += self.clone[0][row2].parentNode.getHeightChild();
     }
-  } else bottom = parseFloat(window.getComputedStyle(self).paddingBottom) + self.clone[0][row1].offsetHeight / 2;
+  } else 
+  {
+    console.log(self.clone[0][row1])
+    bottom = parseFloat(window.getComputedStyle(self).paddingBottom) + self.clone[0][row1].offsetHeight / 2;
+  }
+  
 
   var temp = ModuleView_({
     tag: "div",

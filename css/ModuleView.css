@@ -162,7 +162,6 @@ table.sortTable th,table.sortTableClone th {
 
 table.sortTable td,table.sortTableClone td {
   vertical-align: middle;
-  white-space: nowrap;
 }
 table.sortTable thead:first-child tr th,
 table.sortTable thead:first-child tr td,

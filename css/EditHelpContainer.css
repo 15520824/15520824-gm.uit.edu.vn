@@ -1,0 +1,58 @@
+
+.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100% !important;
+    align-items: stretch;
+    -webkit-flex-direction: column; /* Safari */
+    flex-direction:         column;
+}
+
+.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {
+    flex-grow: 2;
+    display: flex;
+}
+
+.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {
+    flex-shrink: 0;
+}
+
+.material-icons-add::before{
+    content: "add";
+}
+
+.material-icons-edit::before{
+    content: "edit";
+}
+
+.material-icons-delete::before{
+    content: "delete";
+}
+
+.b-workZone__content.m-workZone__content__nav .header-display-visiable .sortTable>thead {
+    display: table-header-group;
+}
+
+
+.title-label{
+    
+}
+
+.alias-label{
+    color: #3071a9;
+    font-size: 0.8rem;
+}
+
+.b-workZone__content.m-workZone__content__nav .header-display-visiable .sortTable>tbody>tr:hover {
+    background-color: #000000;
+}
+
+.b-workZone__content.m-workZone__content__nav .header-display-visiable .sortTable>tbody>tr.choice-event-category{
+    background-color: #000000;
+}

@@ -91,7 +91,7 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
       display: inline-block;
   }
 
-  table.sortTable .margin-left-has-icon{
+  table.sortTable td.margin-left-has-icon{
     padding-left: 2.5rem;
   }
 
