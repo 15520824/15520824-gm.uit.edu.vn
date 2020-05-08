@@ -13,6 +13,7 @@ import ListDitrict from './page/ListDitrict';
 import PlanningInformation from './page/PlanningInformation';
 import ListHelp from './page/ListHelp';
 import ListEditHelp from './page/ListEditHelp';
+
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -21,6 +22,7 @@ function App(){
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
+    
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));

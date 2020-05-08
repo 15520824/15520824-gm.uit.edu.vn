@@ -133,13 +133,7 @@ table.sortTableClone{
   z-index: 1000;
 }
 
-table.sortTable  tr.hideTranslate{
-  -webkit-transition: 1s ease-in-out;
-  -moz-transition: 1s ease-in-out;
-  -o-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
-  transform: translateX(100%);
-}
+
 
 
 
@@ -417,4 +411,89 @@ table.sortTable th.postionStickyCell{
 .il {
   color: #099;
 } /* Literal.Number.Integer.Long */
+
+.module-delete-container{
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  max-height: 90vh;
+  overflow: auto;
+  background-color: #fefefe;
+  box-shadow: 4px 4px 10px 0px black;
+}
+
+.module-delete-button>button{
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background-color: #ebebeb;
+  border: solid 0.0714rem #c0c0c0;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  overflow: hidden;
+  line-height: 2rem;
+  box-sizing: content-box;
+  height: 2rem;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.module-delete-button>button:hover{
+  background-color: rgb(213, 213, 213);
+  cursor: pointer;
+}
+
+.module-delete-button>button:not(:first-child){
+  margin-left: 30px;
+}
+
+.module-delete-header{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: stretch;
+  font-weight: bold;
+}
+
+.module-delete-header-title{
+  font-size: 1.14285714286rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  flex-grow: 2;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  min-width: 20rem;
+}
+
+.module-delete-header-close-container{
+    font-size: 1rem;
+    display: flex;
+    flex-shrink: 0;
+    margin: auto;
+}
+
+.module-delete-button{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.module-delete-content{
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+.module-delete-header-close.material-icons{
+  font-weight: bold;
+}
+
+.module-delete-header-close.material-icons:hover{
+  color: red;
+  cursor: pointer;
+}
+
 

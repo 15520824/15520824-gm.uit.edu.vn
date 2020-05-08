@@ -187,3 +187,11 @@ body{
 .material-icons{
     font-size: 1.5rem;
 }
+
+.pizo-new-realty-location-detail-row-label-important{
+    color: #d93025;
+}
+
+.hasErrorElement {
+    background-color: #000000;
+}

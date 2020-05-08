@@ -110,22 +110,6 @@ function HelpContainer() {
                                                     {
                                                         tag:"tabframe",
                                                         attr:{
-                                                            name:"Index",
-                                                            id:"matd2",
-                                                            desc:""
-                                                        },
-                                                        child:[
-                                                            {
-                                                                tag:"span",
-                                                                props:{
-                                                                    innerHTML:"2"
-                                                                }
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        tag:"tabframe",
-                                                        attr:{
                                                             name:"Search",
                                                             id:"matd3",
                                                             desc:""

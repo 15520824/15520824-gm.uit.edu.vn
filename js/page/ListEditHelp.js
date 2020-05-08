@@ -66,6 +66,7 @@ ListHelp.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
+                                        containerHelp.editContentAll();
                                     }
                                 },
                                 child: [
@@ -77,7 +78,7 @@ ListHelp.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        containerHelp.add()
+                                        containerHelp.add();
                                     }
                                 },
                                 child: [

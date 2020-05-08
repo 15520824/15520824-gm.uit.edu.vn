@@ -1042,10 +1042,11 @@ tableView.prototype.getRow = function(data)
 {
     var temp = _({
         tag: "tr",
-        class:"parent"
     });
     var result = this;
-    
+    setTimeout(function() {
+        temp.className = temp.className + " parent";
+    }, 10);
     Object.assign(temp,tableView.prototype);
     temp.headerTable = result.headerTable;
     temp.bodyTable = result.bodyTable;
@@ -1060,6 +1061,18 @@ tableView.prototype.getRow = function(data)
     temp.clone = [];
     temp.parentMargin = result.parentMargin + 1;
     temp.childIndex = result.childIndex;
+    temp.moreChild = temp.data.moreChild;
+    temp.data.moreChild = undefined;
+
+    temp.checkLeft = function()
+    {
+        for(var i=0;i<temp.childNodes.length;i++)
+        temp.childNodes[i].checkLeft();
+    }
+    if(temp.data.marker!==undefined)
+    {
+        temp.id = temp.data.marker.toString();
+    }
     temp.checkChild = function(data)
     {
         temp.checkClone();
@@ -1134,6 +1147,13 @@ tableView.prototype.getRow = function(data)
             }
         }
         result.checkMargin();
+        setTimeout(function(){
+            if(temp.moreChild==false)
+            {
+                temp.setDisPlay();
+                temp.moreChild = undefined;
+            }
+        },1)
     }
     
     
@@ -1160,13 +1180,22 @@ tableView.prototype.setDisPlay = function()
     {
         this.classList.add("more-child");
         var childrenNodes = this.childrenNodes;
+        var arrFunction = [];
         for(var i=0;i<childrenNodes.length;i++)
         {
-            childrenNodes[i].classList.add("parent");
             childrenNodes[i].classList.remove("disPlayNone");
+            arrFunction.push(function(childrenNodes,i){
+                return function(){
+                    childrenNodes[i].classList.add("parent");
+                }
+            }(childrenNodes,i));
             if(childrenNodes[i].childrenNodes.length!==0)
             childrenNodes[i].setDisPlayVisable();
         } 
+        setTimeout(function(){
+            for(var i = 0;i<arrFunction.length;i++)
+                arrFunction[i]();
+        },10);
     }
     else{
         this.classList.remove("more-child");
@@ -1178,14 +1207,23 @@ tableView.prototype.setDisPlayVisable = function()
 {
     if(this.classList.contains("more-child"))
     {
+        var arrFunction = [];
         var childrenNodes = this.childrenNodes;
         for(var i=0;i<childrenNodes.length;i++)
         {
-            childrenNodes[i].classList.add("parent");
             childrenNodes[i].classList.remove("disPlayNone");
+            arrFunction.push(function(childrenNodes,i){
+                return function(){
+                    childrenNodes[i].classList.add("parent");
+                }
+            }(childrenNodes,i));
             if(childrenNodes[i].childrenNodes.length!==0)
                 childrenNodes[i].setDisPlayVisable();
         } 
+        setTimeout(function(){
+            for(var i = 0;i<arrFunction.length;i++)
+                arrFunction[i]();
+        },10);
     }
 }
 
@@ -1388,30 +1426,48 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
 
     if(functionClick!==undefined)
         cell.style.cursor ="pointer";
-    var widthSize = 0;
-
-    var step = 1.71428571429;
-    if(result.data.child!==undefined)
-        if(k === result.childIndex){
-            for(var  i =0;i<result.parentMargin;i++)
-            {
-                cell.addChild(result.getDivMargin());
-                widthSize+=step;
-            }
-        }
-    
     var container = _({
         tag:"div",
         class:"container-view",
-        style:{
-            width:"calc(100% - "+widthSize+"rem)"
-        }
     })
 
-    if(widthSize!==0)
-    cell.classList.add("margin-left-has-icon");
+    cell.checkLeft = function(){
+        return function(cell,result,k){
+            
+            var widthSize = 0;
+            var step = 1.71428571429;
+            var arr =  cell.getElementsByClassName("margin-div-cell");
+            for(var i = arr.length-1;i>=0;i--)
+            {
+                arr[i].selfRemove();
+            }
+            if(result.data.child!==undefined)
+            if(k === result.childIndex){
+                for(var  i =0;i<result.parentMargin - 1;i++)
+                {
+                    cell.insertBefore(result.getDivMargin(),cell.firstChild);
+                    widthSize+=step;
+                }
+            }
+            container.style.width = "calc(100% - "+widthSize+"rem)";
+            if(widthSize!==0)
+            cell.classList.add("margin-left-has-icon");
+        }(cell,row,k)
+    }
 
+
+    row.resetParentChild = function()
+    {
+        for(var i = 0;i< row.childrenNodes.length;i++)
+        {
+            row.childrenNodes[i].parentMargin = row.parentMargin+1;
+            row.childrenNodes[i].resetParentChild();
+        }
+    }
     cell.addChild(container);
+    cell.checkLeft();
+
+   
     if(data.element===undefined)
     {
         container.addChild(_({text:value}))
@@ -1526,7 +1582,7 @@ tableView.prototype.insertRow = function(data)
     return this.updateRow(data,this.data.child.length)
 }
 
-tableView.prototype.updateRow = function(data,index)
+tableView.prototype.updateRow = function(data,index,checkMust=false)
 {
     var result = this,k,cell;
     if(result.isUpdate===false)
@@ -1569,7 +1625,11 @@ tableView.prototype.updateRow = function(data,index)
         var temp;
         temp = result.childrenNodes[index];
         result.bodyTable.replaceChild(row,temp);
-        
+        for(var m = 0; m < temp.classList.length; m++)
+        {
+            if(!row.classList.contains(temp.classList[m]))
+            row.classList.add(temp.classList[m]);
+        }
         if(temp.childrenNodes!==undefined){
             row.childrenNodes = temp.childrenNodes;
             row.clone = temp.clone;
@@ -1663,7 +1723,7 @@ tableView.prototype.updateRow = function(data,index)
         }
        
    }
-   if(checkChild === true)
+   if(checkChild === true||checkMust === true)
    {
        if(result.checkIcon!==undefined)
        result.checkIcon();
@@ -1716,46 +1776,90 @@ tableView.prototype.dropRow = function(index)
 {
     var result=this,deltaX=[];
     var element = result.clone[0][index+1].parentNode;
-    if(result.isUpdate===false)
-        return;
-    console.log(element)
+    return new Promise(function(resolve,reject){
+        if(result.isUpdate===false)
+            return;
+        var parent = element.childNodes[0].getParentNode();
+        if(!element.classList.contains("hideTranslate"))
+            element.classList.add("hideTranslate");
+        if(element.childrenNodes.length!==0)
+            element.addHideAnimationChild();
+        parent.isUpdate = false;
+        var eventEnd = function(){
+            parent.dropRowChild(element)
+            var deltaY = 0;
+
+            deltaX = parent.checkLongRow(index);
+            for(var i = 0;i<element.childNodes.length;i++)
+            { 
+                parent.clone[i+deltaY].splice(index+1-deltaX[i+deltaY],1); 
+                if(parent.checkSpan!==undefined)
+                parent.checkSpan.splice(index,1); 
+                if(element.childNodes[i].colSpan!==undefined)
+                    deltaY+=element.childNodes[i].colSpan-1;
+            }
+            if(parent.childrenNodes.length!==0)
+            {
+                var indexData = parent.childrenNodes.indexOf(element);
+                if(parent.data.child!==undefined)
+                parent.data.child.splice(indexData,1);
+                else
+                parent.data.splice(indexData,1);
+                parent.childrenNodes.splice(indexData,1);
+            }
+            if(result.checkVisiableChild!==undefined&&result.childrenNodes.length===0)
+                result.checkVisiableChild();
+            parent.isUpdate = true;
+            resolve();
+        };
+        // Code for Safari 3.1 to 6.0
+        element.addEventListener("webkitTransitionEnd", eventEnd);
+
+        // Standard syntax
+        element.addEventListener("transitionend", eventEnd);
+    })
+}
+
+tableView.prototype.changeParent = function(index,rowParent)
+{
+    var result=this,deltaX=[];
+    var element = result.clone[0][index+1].parentNode;
     var parent = element.childNodes[0].getParentNode();
-    if(!element.classList.contains("hideTranslate"))
-        element.classList.add("hideTranslate");
-    if(element.childrenNodes.length!==0)
-        element.addHideAnimationChild();
-    parent.isUpdate = false;
-    var eventEnd = function(){
-        parent.dropRowChild(element)
-        var deltaY = 0;
+    
+   
+    var deltaY = 0;
 
-        deltaX = parent.checkLongRow(index);
-        for(var i = 0;i<element.childNodes.length;i++)
-        { 
-            parent.clone[i+deltaY].splice(index+1-deltaX[i+deltaY],1); 
-            if(parent.checkSpan!==undefined)
-            parent.checkSpan.splice(index,1); 
-            if(element.childNodes[i].colSpan!==undefined)
-                deltaY+=element.childNodes[i].colSpan-1;
-        }
-        if(parent.childrenNodes.length!==0)
-        {
-            var indexData = parent.childrenNodes.indexOf(element);
-            if(parent.data.child!==undefined)
-            parent.data.child.splice(indexData,1);
-            else
-            parent.data.splice(indexData,1);
-            parent.childrenNodes.splice(indexData,1);
-        }
-        if(result.checkVisiableChild!==undefined&&result.childrenNodes.length===0)
-            result.checkVisiableChild();
-        parent.isUpdate = true;
-    };
-    // Code for Safari 3.1 to 6.0
-    element.addEventListener("webkitTransitionEnd", eventEnd);
+    deltaX = parent.checkLongRow(index);
+    parent.changeRowChild(element,rowParent);
+    for(var i = 0;i<element.childNodes.length;i++)
+    { 
+        rowParent.clone[i+deltaY].push(element.childNodes[i]);
+        parent.clone[i+deltaY].splice(index+1-deltaX[i+deltaY],1); 
+        if(parent.checkSpan!==undefined)
+        parent.checkSpan.splice(index,1); 
+        if(element.childNodes[i].colSpan!==undefined)
+            deltaY+=element.childNodes[i].colSpan-1;
+    }
 
-    // Standard syntax
-    element.addEventListener("transitionend", eventEnd);
+
+
+    if(parent.childrenNodes.length!==0)
+    {
+        var indexData = parent.childrenNodes.indexOf(element);
+
+        rowParent.data.push(parent.data[indexData]);
+        if(parent.data.child!==undefined)
+        parent.data.child.splice(indexData,1);
+        else
+        parent.data.splice(indexData,1);
+
+        rowParent.childrenNodes.push(element);
+        parent.childrenNodes.splice(indexData,1);
+    }
+    
+    if(result.checkVisiableChild!==undefined&&result.childrenNodes.length===0)
+        result.checkVisiableChild();
+    return rowParent.childrenNodes.length-1;
 }
 
 tableView.prototype.addHideAnimationChild = function()
@@ -1767,6 +1871,41 @@ tableView.prototype.addHideAnimationChild = function()
         if(this.childrenNodes[i].childrenNodes.length!==0)
         {
             this.childrenNodes[i].addHideAnimationChild();
+        }
+    }
+}
+
+tableView.prototype.changeRowChild = function(element,parent)
+{
+    var nextSibling;
+    if(parent.tagName==="TABLE"){
+        nextSibling = null;
+        parent.bodyTable.addChild(element);
+    }
+    else
+    {
+        nextSibling = parent.clone[0][parent.clone[0].length-1].parentNode.nextSibling;
+        parent.bodyTable.insertBefore(element,nextSibling);
+    }
+    element.parentMargin = parent.parentMargin+1;
+    element.resetParentChild();
+    element.checkLeft();
+    if(element.childrenNodes.length!==0)
+    element.changeRowChildElement(parent,nextSibling);
+}
+
+tableView.prototype.changeRowChildElement = function(parent,nextSibling)
+{
+    for(var i = 0;i<this.childrenNodes.length;i++)
+    {
+        if(this.tagName==="TABLE")
+        this.bodyTable.addChild(this.childrenNodes[i]);
+        else
+        this.bodyTable.insertBefore(this.childrenNodes[i],nextSibling);
+        this.childrenNodes[i].checkLeft();
+        if(this.childrenNodes[i].childrenNodes.length!==0)
+        {
+            this.childrenNodes[i].changeRowChildElement();
         }
     }
 }
@@ -2648,4 +2787,164 @@ function random_bg_color() {
     var z = Math.floor(Math.random() * 256);
     var bgColor = "rgb(" + x + "," + y + "," + z + ")";
     return bgColor;
+}
+
+export function allowNumbersOnly(e) {
+    var code = (e.which) ? e.which : e.keyCode;
+    console.log(code);
+    if ((code > 122 || code < 97)&&code!=45) {
+        e.preventDefault();
+    }
+}
+
+export function  createAlias(string)
+{
+    var value = ""
+    string = string.toLowerCase();
+    string = removeAccents(string);
+  
+    for(var i = 0;i<string.length;i++)
+    {
+        if(string[i] == " "){
+            value += "-";
+            continue;
+        }
+    
+        if ((string[i] > "z" || string[i] < "a")&&string[i]!="-"){
+            continue;
+        }
+
+        value += string[i];
+    }
+    return value.replace(/^\-+|\-+$/gm,'');;
+}
+
+export function removeAccents(str) {
+    return str.normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+}
+
+export function deleteQuestion(title,content,yes="Có",no="không")
+{
+    var contentElement;
+    if(typeof content !== "object")
+    {
+        contentElement = _(
+            {
+                tag:"span",
+                class:"module-delete-header-content",
+                props:{
+                    innerHTML:content
+                }
+            }
+        )
+    }else 
+    {
+        contentElement = content;
+    }
+    var temp;
+    var promiseComfirm = new Promise(function(resolve,reject){
+        temp = _({
+            tag:"modal",
+            class:"modal-delete-module",
+            child:[
+                {
+                    tag:"div",
+                    class:"module-delete-container",
+                    child:[
+                        {
+                            tag:"div",
+                            class:"module-delete-header",
+                            child:[
+                                {
+                                    tag:"span",
+                                    class:"module-delete-header-title",
+                                    props:{
+                                        innerHTML:title
+                                    }
+                                },
+                                {
+                                    tag:"div",
+                                    class:"module-delete-header-close-container",
+                                    on:{
+                                        click:function(event)
+                                        {   
+                                            temp.selfRemove();
+                                            reject();
+                                        }
+                                    },
+                                    child:[
+                                        {
+                                            tag:"i",
+                                            class:["module-delete-header-close","material-icons"],
+                                            props:{
+                                                innerHTML:"close"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag:"div",
+                            class:"module-delete-content",
+                            child:[
+                                contentElement
+                            ]
+                        },
+                        {
+                            tag:"div",
+                            class:"module-delete-button",
+                            child:[
+                                {
+                                    tag:"button",
+                                    class:"module-delete-button-yes",
+                                    on:{
+                                        click:function(event)
+                                        {
+                                            temp.selfRemove();
+                                            resolve();
+                                        }
+                                    },
+                                    child:[
+                                        {
+                                            tag:"span",
+                                            class:"module-delete-button-yes-label",
+                                            props:{
+                                                innerHTML:yes
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    tag:"button",
+                                    class:"module-delete-button-no",
+                                    on:{
+                                        click:function(event)
+                                        {
+                                            temp.selfRemove();
+                                            reject();
+                                        }
+                                    },
+                                    child:[
+                                        {
+                                            tag:"span",
+                                            class:"module-delete-button-no-label",
+                                            props:{
+                                                innerHTML:no
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
+                }
+            ]
+        })
+    })
+    console.log(temp)
+    temp.promiseComfirm = promiseComfirm;
+    return temp;
 }

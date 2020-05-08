@@ -36,7 +36,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 			and programmatically like:
 		</p>
 <pre class="samples">
-editor.setData( '&lt;p&gt;Hello world!&lt;/p&gt;' );
+editor.setData( '&lt;p&gt;LinkDB world!&lt;/p&gt;' );
 </pre>
 		<p>
 			<abbr title="Advanced Content Filter">ACF</abbr> discards invalid,
@@ -89,11 +89,11 @@ var editor = CKEDITOR.replace( <em>textarea_id</em>, {
 		</p>
 <pre class="samples">
 // Trying to insert disallowed tag and attribute.
-editor.setData( '&lt;p <strong>style="color: red"</strong>&gt;Hello <strong>&lt;em&gt;world&lt;/em&gt;</strong>!&lt;/p&gt;' );
+editor.setData( '&lt;p <strong>style="color: red"</strong>&gt;LinkDB <strong>&lt;em&gt;world&lt;/em&gt;</strong>!&lt;/p&gt;' );
 alert( editor.getData() );
 
 // Filtered data is returned.
-"&lt;p&gt;Hello world!&lt;/p&gt;"
+"&lt;p&gt;LinkDB world!&lt;/p&gt;"
 </pre>
 		<p>
 			What happened? Since <code>config.allowedContent: 'p'</code> is set the editor assumes

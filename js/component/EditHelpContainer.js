@@ -4,9 +4,10 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/EditHelpContainer.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
+import "../../css/NewCategory.css"
 
-import { tableView } from './ModuleView';
-import NewCategory from './NewCategory';
+import { tableView, deleteQuestion } from './ModuleView';
+import {allowNumbersOnly, createAlias} from './ModuleView';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -18,7 +19,6 @@ function EditHelpContainer(phpLoader) {
     this.loadConfig();
     var self = this;
     if (this.$view) return this.$view;
-
     var tabContainer = _({
         tag: "tabframe",
         class:"header-display-visiable",
@@ -37,9 +37,41 @@ function EditHelpContainer(phpLoader) {
     })
     Object.assign(this.$view,EditHelpContainer.prototype);
 
-    console.log(this.$view.itemEdit)
     this.$view.editor = this.$view.itemEdit();
 
+    var listParent = _({
+        tag:"selectmenu",
+        class:["pizo-new-state-selectbox-container-input","pizo-new-realty-dectruct-input"],
+        style:{
+            backGroundColor:""
+        },
+        props:{
+            enableSearch: true
+        }
+    });
+    listParent.updateItemList = function()
+    {
+        listParent.items = self.$view.formatDataRowChoice(self.$view.getDataCurrent());
+    }
+    var active = _( {
+        tag:"switch"
+    })
+
+    var updateTableFunction;
+    self.$view.loadData(phpLoader).then(function(value){
+        console.log(value)
+        var header = [{ type: "dragzone"}, {value:"Title",sort:true, functionClickAll: self.$view.functionClickDetail.bind(self.$view),style:{minWidth:"unset !important"}},"Publish", { type: "detail",style:{maxWidth:"21px"}, functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
+        self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
+        tabContainer.addChild(self.$view.mTable);
+        updateTableFunction = self.$view.mTable.updateTable.bind(self.$view.mTable);
+        self.$view.mTable.updateTable = function()
+        {
+            updateTableFunction.apply(self.$view.mTable,arguments);
+            self.$view.resetChoice(self.$view.mTable.bodyTable);
+        }
+        listParent.updateItemList();
+        self.$view.resetChoice(self.$view.mTable.bodyTable);
+    });
     this.$view.addChild(_({
         tag: "tbody",
         child: [
@@ -60,26 +92,23 @@ function EditHelpContainer(phpLoader) {
                                     {
                                         tag: "tabview",
                                         class: "absol-tab-frame-small",
-                                        props: {
-                                            value: 0
-                                        },
                                         style: {
                                             width: "fit-content"
                                         },
                                         child: [
                                             tabContainer,
                                             {
-                                                tag: "tabframe",
-                                                attr: {
-                                                    name: "Search",
-                                                    id: "matd3",
-                                                    desc: ""
+                                                tag:"tabframe",
+                                                attr:{
+                                                    name:"Search",
+                                                    id:"matd3",
+                                                    desc:""
                                                 },
-                                                child: [
+                                                child:[
                                                     {
-                                                        tag: "span",
-                                                        props: {
-                                                            innerHTML: "3"
+                                                        tag:"span",
+                                                        props:{
+                                                            innerHTML:"3"
                                                         }
                                                     }
                                                 ]
@@ -110,7 +139,7 @@ function EditHelpContainer(phpLoader) {
                                         child: [
                                             {
                                                 tag: "div",
-                                                class: "b-article__headerLayout",
+                                                class: "b-article__headerLayout-edit",
                                                 props: {
                                                     id: "article__header"
                                                 },
@@ -127,23 +156,174 @@ function EditHelpContainer(phpLoader) {
                                                                 class: "b-breadCrumbs__items",
                                                                 child: [
                                                                     {
-                                                                        tag: "li",
-                                                                        class: "b-breadCrumbs__item",
-                                                                        props: {
-                                                                            innerHTML: "Introduction"
-                                                                        }
+                                                                        tag:"div",
+                                                                        class:"pizo-new-catergory-container",
+                                                                        child:[
+                                                                            {
+                                                                                tag:"div",
+                                                                                class:"pizo-new-state-container-name",
+                                                                                child:[
+                                                                                    {
+                                                                                        tag:"div",
+                                                                                        class:"pizo-new-state-container-name-container",
+                                                                                        child:[
+                                                                                            {
+                                                                                                tag:"span",
+                                                                                                class:"pizo-new-state-container-name-container-label",
+                                                                                                props:{
+                                                                                                    innerHTML:"Tên"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                tag:"input",
+                                                                                                class:["pizo-new-state-container-name-container-input","pizo-new-realty-dectruct-input"],
+                                                                                                on:{
+                                                                                                    change:function(event)
+                                                                                                    {
+                                                                                                        if(self.$view.alias.value === ""||self.$view.aliasErorr.classList.contains("hasErrorElement")){
+                                                                                                            self.$view.alias.value = createAlias(this.value);
+                                                                                                            self.$view.alias.dispatchEvent(new Event("input"));
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                tag:"div",
+                                                                                class:"pizo-new-state-container-alias-active",
+                                                                                child:[
+                                                                                    {
+                                                                                        tag:"div",
+                                                                                        class:"pizo-new-state-container-alias",
+                                                                                        child:[
+                                                                                            {
+                                                                                                tag:"div",
+                                                                                                class:"pizo-new-state-container-alias-container",
+                                                                                                child:[
+                                                                                                    {
+                                                                                                        tag:"span",
+                                                                                                        class:"pizo-new-state-container-alias-container-label",
+                                                                                                        props:{
+                                                                                                            innerHTML:"Alias"
+                                                                                                        },
+                                                                                                        child:[
+                                                                                                            {
+                                                                                                                tag:"span",
+                                                                                                                class:"pizo-new-realty-location-detail-row-label-important",
+                                                                                                                props:{
+                                                                                                                    innerHTML:"*"
+                                                                                                                }
+                                                                                                            }
+                                                                                                        ]
+                                                                                                    },
+                                                                                                    {
+                                                                                                        tag:"input",
+                                                                                                        class:["pizo-new-state-container-alias-container-input","pizo-new-realty-dectruct-input"],
+                                                                                                        on:{
+                                                                                                            input:function(event)
+                                                                                                            {
+                                                                                                                var parent = this.parentNode.parentNode;
+                                                                                                                console.log(parent)
+                                                                                                                if(this.value == ""){
+                                                                                                                    if(!parent.classList.contains("hasErrorElement"))
+                                                                                                                    parent.classList.add("hasErrorElement");
+                                                                                                                    if(!parent.classList.contains("invalid-error"))
+                                                                                                                    parent.classList.add("invalid-error");
+                                                                                                                }else
+                                                                                                                {
+                                                                                                                    if(parent.classList.contains("invalid-error"))
+                                                                                                                    parent.classList.remove("invalid-error");
+                                                                                                                }
+                                                    
+                                                                                                                if(listParent.items.check[this.value] !== undefined&&self.$view.rowSelected.data.original.alias!==this.value)
+                                                                                                                {
+                                                                                                                    if(!parent.classList.contains("hasErrorElement"))
+                                                                                                                    parent.classList.add("hasErrorElement");
+                                                                                                                    if(!parent.classList.contains("used-error"))
+                                                                                                                    parent.classList.add("used-error");
+                                                                                                                }else
+                                                                                                                {
+                                                                                                                    if(parent.classList.contains("used-error"))
+                                                                                                                    parent.classList.remove("used-error");
+                                                                                                                }
+                                                                                                                console.log(!parent.classList.contains("used-error"),!parent.classList.contains("invalid-error"),parent.classList.contains("hasErrorElement"))
+                                                                                                                console.log(!parent.classList.contains("used-error"),!parent.classList.contains("invalid-error"),parent.classList.contains("hasErrorElement"))
+                                                                                                                if(!parent.classList.contains("used-error")&&!parent.classList.contains("invalid-error")&&parent.classList.contains("hasErrorElement"))
+                                                                                                                parent.classList.remove("hasErrorElement")
+                                                                                                            },
+                                                                                                            keypress:function(event){
+                                                                                                                allowNumbersOnly(event);
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                    
+                                                                                                ]
+                                                                                            },
+                                                                                            {
+                                                                                                tag:"span",
+                                                                                                class:["pizo-new-realty-location-detail-row-label-important","label-used-error"],
+                                                                                                props:{
+                                                                                                    innerHTML:"Alias không có sẳn để sử dụng"
+                                                                                                }
+                                                                                            },
+                                                                                            {
+                                                                                                tag:"span",
+                                                                                                class:["pizo-new-realty-location-detail-row-label-important","label-invalid-error"],
+                                                                                                props:{
+                                                                                                    innerHTML:"Alias không thể để trống"
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    },
+                                                                                    {
+                                                                                        tag:"div",
+                                                                                        class:"pizo-new-state-publish",
+                                                                                        child:[
+                                                                                            {
+                                                                                                tag:"div",
+                                                                                                class:"pizo-new-state-publish-container",
+                                                                                                child:[
+                                                                                                    {
+                                                                                                        tag:"span",
+                                                                                                        class:"pizo-new-state-container-publish-container-label",
+                                                                                                        props:{
+                                                                                                            innerHTML:"Xuất bản"
+                                                                                                        }
+                                                                                                    },
+                                                                                                    active
+                                                                                                ]
+                                                                                            }
+                                                                                        ]
+                                                                                    },
+                                                                                ]
+                                                                            },
+                                                                            {
+                                                                                tag:"div",
+                                                                                class:"pizo-new-state-selectbox",
+                                                                                child:[
+                                                                                    {
+                                                                                        tag:"div",
+                                                                                        class:"pizo-new-state-selectbox-container",
+                                                                                        child:[
+                                                                                            {
+                                                                                                tag:"span",
+                                                                                                class:"pizo-new-state-selectbox-container-label",
+                                                                                                props:{
+                                                                                                    innerHTML:"Danh mục cha"
+                                                                                                }
+                                                                                            },
+                                                                                            listParent
+                                                                                        ]
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        ]
                                                                     }
                                                                 ]
                                                             }
-                                                        ]
-                                                    },
-                                                    {
-                                                        tag: "div",
-                                                        class: ["b-article__headerSide", "m-article__headerSide__buttons"],
-                                                        props: {
-                                                            id: "headerSide__buttons"
-                                                        },
-                                                        child: [
                                                         ]
                                                     }
                                                 ]
@@ -167,16 +347,17 @@ function EditHelpContainer(phpLoader) {
     }))
     
     var scrollLeftContainer = $('div.b-workZone__content.m-workZone__content__nav#workZone_nav div.absol-tabview.absol-tab-frame-small',this.$view);
-    console.log(scrollLeftContainer)
+    scrollLeftContainer.activeTab("matd");
     for(var i = 0;i<scrollLeftContainer.childNodes.length;i++)
     {
         scrollLeftContainer.childNodes[i].classList.add("absol-single-page-scroller")
     }
-    this.loadData(phpLoader).then(function(value){
-        var header = [{ type: "dragzone"}, {value:"Title",sort:true, functionClickAll: self.$view.functionClickDetail.bind(self.$view),style:{maxWidth:"300px"}}, { type: "detail",style:{maxWidth:"21px"}, functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
-        self.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
-        tabContainer.addChild(self.mTable);
-    });
+
+    this.$view.name = $('input.pizo-new-state-container-name-container-input.pizo-new-realty-dectruct-input',this.$view);
+    this.$view.alias = $('input.pizo-new-state-container-alias-container-input.pizo-new-realty-dectruct-input',this.$view);
+    this.$view.listParent = listParent;
+    this.$view.aliasErorr = $('div.pizo-new-state-container-alias',this.$view);
+    this.$view.active = active;
     return this.$view;
                                         
 }
@@ -195,11 +376,11 @@ EditHelpContainer.prototype.functionClickMore = function (event, me, index, pare
                 icon: 'span.material-icons.material-icons-add',
                 value: 0,
             },
-            {
-                text: 'Sửa',
-                icon: 'i.material-icons.material-icons-edit',
-                value: 1,
-            },
+            // {
+            //     text: 'Sửa',
+            //     icon: 'i.material-icons.material-icons-edit',
+            //     value: 1,
+            // },
             {
                 text: 'Xóa',
                 icon: 'span.material-icons.material-icons-delete',
@@ -210,13 +391,13 @@ EditHelpContainer.prototype.functionClickMore = function (event, me, index, pare
     var token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
         switch (menuItem.value) {
             case 0:
-                self.add(row.data.original.id,row)
+                self.add(row.data.original.id,row);
                 break;
-            case 1:
-                self.edit(data)
-                break;
+            // case 1:
+            //     self.edit(data,parent,index);
+            //     break;
             case 2:
-                self.delete(data)
+                self.delete(row.data.original,parent,index);
                 break;
         }
     });
@@ -236,26 +417,99 @@ EditHelpContainer.prototype.functionClickMore = function (event, me, index, pare
 
 EditHelpContainer.prototype.functionClickDetail = function(event, me, index, parent, data, row)
 {
-    var arr =  document.getElementsByClassName("choice-event-category");
+    if(this.alias.parentNode.parentNode.classList.contains("hasErrorElement"))
+    return;
+    if(this.saveDataCurrent(row)===true)
+    return
 
-    for(var i = 0 ;i<arr.length;i++)
-    {
-        arr[i].classList.remove("choice-event-category");
-    }
-    console.log(row)
+    row.indexDetail = index;
+    row.parentDetail = parent;
+    this.rowSelected = row;
+    
     row.classList.add("choice-event-category");
+    this.setDataTitle(data.original);
     this.editor.setData(data.original.fulltext);
+    this.alias.dispatchEvent(new Event("input"));
+}
+
+EditHelpContainer.prototype.saveDataCurrent = function(row)
+{
+    var arr =  this.getElementsByClassName("choice-event-category");
+    if(arr.length!==0)
+    arr = arr[0];
+    if(arr == row)
+    return true;
+    
+    var value = {
+        title : this.name.value,
+        alias : this.alias.value,
+        fulltext : this.editor.getData(),
+        active : this.active.checked?1:0,
+        parent_id : this.listParent.value
+    }
+    arr.classList.remove("choice-event-category");
+    this.editView(value,arr.data,arr.parentDetail,arr.indexDetail);
+    return false;
+}
+
+EditHelpContainer.prototype.resetChoice = function(bodyTable)
+{
+    var choice = this.getElementsByClassName("choice-event-category");
+    if(choice.length == 0)
+    {   
+        bodyTable.childNodes[0].indexDetail = 0;
+        console.log(this.mTable)
+        bodyTable.childNodes[0].parentDetail = this.mTable;
+        this.rowSelected = bodyTable.childNodes[0];
+        bodyTable.childNodes[0].classList.add("choice-event-category");
+        this.setDataTitle(bodyTable.childNodes[0].data.original);
+        this.editor.setData(bodyTable.childNodes[0].data.original.fulltext);
+        this.alias.dispatchEvent(new Event("input"));
+    }
+}
+
+EditHelpContainer.prototype.functionChoice = function(event, me, index, parent, data, row)
+{
+    var self = this;
+
+    var arr =  this.getElementsByClassName("choice-list-category");
+    if(arr.length!==0)
+    arr = arr[0];
+    var today  = new Date();
+    if(self.modal.clickTime === undefined)
+    self.modal.clickTime = 0;
+    if(arr == row&&today - self.modal.clickTime< 300){
+        self.modal.selfRemove();
+        self.modal.resolve(event, me, index, parent, data, row);
+    }
+    self.modal.clickTime = today;
+    if(arr.length!==0)
+    arr.classList.remove("choice-list-category");
+
+    row.classList.add("choice-list-category");
+}
+
+EditHelpContainer.prototype.syncRow = function(arr)
+{
+   this.saveDataCurrent();
 }
 
 
 EditHelpContainer.prototype.formatDataRow = function(data)
 {
-    var self = this;
-    self.data = data;
     var temp = [];
     var check = [];
+    var k = 0;
+    var checkElement;
     for(var i=0;i<data.length;i++)
     {
+        checkElement = data[i].active? _({
+            tag:"div",
+            class:"tick-element"
+        }):_({
+            tag:"div",
+            class:"corss-element"
+        })
         var result = [{value:"",style:{maxWidth:"21px"}},{
             value:data[i].title,
             element:_({
@@ -277,21 +531,98 @@ EditHelpContainer.prototype.formatDataRow = function(data)
                     }
                 ]
             }),
-            style:{maxWidth:"150px"}
-        },{value:"",style:{maxWidth:"21px"}}];
+        },
+        {value:data[i].active,
+            element:checkElement
+            ,style:{maxWidth:"21px"}},
+        {value:"",style:{maxWidth:"21px"}}
+    ];
         result.original = data[i];
-        console.log(check[data[i].parent_id])
         if(check[data[i].parent_id]!==undefined)
         {
             if(check[data[i].parent_id].child === undefined)
             check[data[i].parent_id].child = [];
-            check[data[i].parent_id].child.push(result)
+            check[data[i].parent_id].child.push(result);
         }
         else
-        temp[i] = result;
+        temp[k++] = result;
         check[data[i].id] = result;
     }
+    console.log(temp)
     return temp;
+}
+
+EditHelpContainer.prototype.formatDataRowList = function(data)
+{
+    var temp = [];
+    var check = [];
+    var k = 0;
+    for(var i=0;i<data.length;i++)
+    {
+        var result = [{
+            value:data[i].title,
+            element:_({
+                tag:"div",
+                child:[
+                    {
+                        tag:"span",
+                        class:"title-label",
+                        props:{
+                            innerHTML:data[i].title
+                        }
+                    }
+                ]
+            })
+        },
+        {value:data[i].created,style:{minWidth:"150px"}},
+        {value:data[i].id}
+        ];
+        result.original = data[i];
+        if(check[data[i].parent_id]!==undefined)
+        {
+            if(check[data[i].parent_id].child === undefined)
+            check[data[i].parent_id].child = [];
+            check[data[i].parent_id].child.push(result);
+        }
+        else
+        temp[k++] = result;
+        check[data[i].id] = result;
+    }
+    console.log(temp)
+    return temp;
+}
+
+EditHelpContainer.prototype.formatDataRowChoice = function(){
+    var self = this;
+    var array = [{text:"Danh mục cao nhất",value:0}];
+    var check = [];
+    var dataParent = self.getDataCurrent();
+    for(var i = 0;i<dataParent.length;i++)
+    {
+        array[i+1] = {text:dataParent[i].title,value:parseFloat(dataParent[i].id)};
+        if(self.data == undefined)
+        check[dataParent[i].alias] = dataParent[i];
+    }
+    array.check = check;
+    return array;
+}
+
+EditHelpContainer.prototype.getDataCurrent = function()
+{
+    return this.getDataChild(this.mTable.data);
+}
+
+EditHelpContainer.prototype.getDataChild = function(arr)
+{
+    var self = this;
+    var result = [];
+    for(var i = 0;i<arr.length;i++)
+    {
+        result.push(arr[i].original);
+        if(arr[i].child.length!==0)
+        result = result.concat(self.getDataChild(arr[i].child));
+    }
+    return result;
 }
 
 EditHelpContainer.prototype.loadData = function(phpLoader)
@@ -304,6 +635,9 @@ EditHelpContainer.prototype.loadData = function(phpLoader)
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
+        }else
+        {
+            console.log(this.responseText,this.status)
         }
         };
         xhttp.open("GET", php, true);
@@ -311,100 +645,327 @@ EditHelpContainer.prototype.loadData = function(phpLoader)
     })
 }
 
-EditHelpContainer.prototype.add = function(parentid,row)
+EditHelpContainer.prototype.updateData = function(phpUpdater,data)
 {
-    var self = this;
-    var mNewCategory = new NewCategory(undefined,parentid);
-    console.log(self.data)
-    mNewCategory.attach(self.parent);
-    var frameview = mNewCategory.getView(self.data);
-    self.parent.body.addChild(frameview);
-    self.parent.body.activeFrame(frameview);
-    self.addDB(mNewCategory,row);
+    var php;
+    if(phpUpdater!==undefined)
+    php = phpUpdater;
+    return new Promise(function(resolve,reject){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
+            }else
+            {
+                console.log(this.responseText,this.status)
+            }
+        };
+        xhttp.open("POST", php, true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var stringSend = "";
+        var connect = "";
+        for(var param in data)
+        {
+            stringSend+=connect+param+"="+encodeURIComponent(data[param]);
+            connect = "&";
+        }
+        xhttp.send(stringSend);
+    })
 }
 
-EditHelpContainer.prototype.addView = function(value,row){
-        var result = [
-            {value:"",style:{maxWidth:"21px"}},
-            {
-                value:value.title,
-                element:_({
-                    tag:"div",
-                    child:[
-                        {
-                            tag:"span",
-                            class:"title-label",
-                            props:{
-                                innerHTML:value.title
-                            }
-                        },
-                        {
-                            tag:"span",
-                            class:"alias-label",
-                            props:{
-                                innerHTML:" (Alias :"+value.alias+")"
-                            }
+EditHelpContainer.prototype.default = function(parent_id=0)
+{
+    return {        
+        active: 0,
+        fulltext: "",
+        ordering: -1,
+        parent_id: parent_id,
+        title: "New Category",
+        alias:""
+    }
+}
+
+EditHelpContainer.prototype.add = function(parentid,row = this.mTable)
+{
+    var self = this;
+    self.addView(undefined,row,parentid)
+}
+
+EditHelpContainer.prototype.addView = function(value,row,parent_id){
+        if(value == undefined)
+        {
+            value = this.default(parent_id)
+        }
+        var checkElement = value.active? _({
+            tag:"div",
+            class:"tick-element"
+        }):_({
+            tag:"div",
+            class:"cross-element"
+        })
+        var result =  [{value:"",style:{maxWidth:"21px"}},{
+            value:value.title,
+            element:_({
+                tag:"div",
+                child:[
+                    {
+                        tag:"span",
+                        class:"title-label",
+                        props:{
+                            innerHTML:value.title
                         }
-                    ]
-                }),
-                style:{maxWidth:"150px"}
-            },
-            {value:"",style:{maxWidth:"21px"}}
+                    },
+                    {
+                        tag:"span",
+                        class:"alias-label",
+                        props:{
+                            innerHTML:" (Alias :"+value.alias+")"
+                        }
+                    }
+                ]
+            }),
+        },
+        {value:value.active,
+            element:checkElement
+            ,style:{maxWidth:"21px"}},
+        {value:"",style:{maxWidth:"21px"}}
         ];
         result.original = value;
-
     row.insertRow(result);
+    this.listParent.updateItemList();
 }
 
-EditHelpContainer.prototype.addDB = function(mNewCategory,row){
+EditHelpContainer.prototype.addDB = function(value){
     var self = this;
-    mNewCategory.promiseAddDB.then(function(value){
-        self.addView(value,row);
-        setTimeout(function(){
-            if(mNewCategory.promiseAddDB!==undefined)
-            self.addDB(mNewCategory);
-        },100);
+    var phpFile = "http://localhost/PIZO/php/add_content.php";
+    if(self.phpUpdateContent)
+    phpFile = self.phpUpdateContent;
+    self.updateData(phpFile,value).then(function(result){
+        value.id = result;
     })
-}
-
-EditHelpContainer.prototype.edit = function(data)
-{
-    var self = this;
-    var mNewCategory = new NewCategory(data);
-    mNewCategory.attach(self.parent);
-    var frameview = mNewCategory.getView(self.data);
-    self.parent.body.addChild(frameview);
-    self.parent.body.activeFrame(frameview);
-    self.editDB(mNewCategory);
-}
-
-EditHelpContainer.prototype.editView = function(mNewCategory){
-
-}
-
-EditHelpContainer.prototype.editDB = function(mNewCategory){
-    var self = this;
-    mNewCategory.promiseEditDB.then(function(value){
-        if(mNewCategory.promiseEditDB!==undefined)
-            self.editDB(mNewCategory);
-    })
-}
-
-
-EditHelpContainer.prototype.delete = function(id)
-{
     
 }
 
-EditHelpContainer.prototype.deleteView = function(mNewCategory){
-
+EditHelpContainer.prototype.edit = function(data,parent,index)
+{
+    console.log(data)
+    var self = this;
 }
 
-EditHelpContainer.prototype.deleteDB = function(mNewCategory){
+EditHelpContainer.prototype.editView = function(value,data,parent,index){
+    var isChangeView=false;
+    if(data.original.id!=undefined)
+    {
+        if(data.original.title !== value.title)
+            data.original.isTitle=true;
+        data.original.title = value.title;
+        
+        if(data.original.alias !== value.alias)
+            data.original.isAlias=true;
+        data.original.alias = value.alias;
+
+        if(data.original.active !== value.active)
+            data.original.isActive=true;
+        data.original.active = value.active?1:0;
+
+        if(value.fulltext!==undefined){
+            if(data.original.fulltext !== value.fulltext)
+                data.original.isFulltext=true;
+            data.original.fulltext = value.fulltext;
+        }
+        if(data.original.parent_id !== value.parent_id)
+            data.original.isParent_id=true;
+    }
+    
+
+    if(data.original.parent_id!=value.parent_id){
+        isChangeView = true;
+    }
+ 
+    data.original.parent_id = value.parent_id;
+    var checkElement = value.active? _({
+        tag:"div",
+        class:"tick-element"
+    }):_({
+        tag:"div",
+        class:"cross-element"
+    })
+    data[1]  = {
+        value:data.title,
+        element:_({
+            tag:"div",
+            child:[
+                {
+                    tag:"span",
+                    class:"title-label",
+                    props:{
+                        innerHTML:data.original.title
+                    }
+                },
+                {
+                    tag:"span",
+                    class:"alias-label",
+                    props:{
+                        innerHTML:" (Alias :"+data.original.alias+")"
+                    }
+                }
+            ]
+        }),
+        style:{maxWidth:"150px"}
+    };
+    data[2]={value:value.active,
+        element:checkElement
+        ,style:{maxWidth:"21px"}};
+    var indexOF = index,element = parent;
+    if(isChangeView===true)
+    {
+        var element;
+        if(value.parent_id == 0)
+        element = parent.bodyTable.parentNode;
+        else
+        for(var i = 0;i<parent.bodyTable.childNodes.length;i++)
+        {
+            if(parent.bodyTable.childNodes[i].data.original.id==value.parent_id){
+                element = parent.bodyTable.childNodes[i];
+                break;
+            }
+        }
+        parent.changeParent(index,element);
+    }
+    element.updateRow(data,indexOF,true);
+    this.listParent.updateItemList();
+}
+
+EditHelpContainer.prototype.editDB = function(mNewCategory,data,parent,index){
     var self = this;
-    mNewCategory.promiseDeleteDB.then(function(value){
-        if(mNewCategory.promiseDeleteDB!==undefined)
-            self.deleteDB(mNewCategory);
+    mNewCategory.promiseEditDB.then(function(value){
+        var phpFile = "http://localhost/PIZO/php/update_content.php";
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        value.id = data.original.id;
+        self.updateData(phpFile,value).then(function(result){
+            self.editView(value,data,parent,index);
+        })
+        mNewCategory.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewCategory.promiseEditDB!==undefined)
+            self.editDB(mNewCategory,data,parent,index);
+        },10);
+    })
+}
+
+EditHelpContainer.prototype.editContentAll = function()
+{
+    var self = this;
+    self.syncRow();
+    var sync = self.mTable.data;
+    self.updateChild(sync);
+}
+
+EditHelpContainer.prototype.updateChild = function(child)
+{
+    var self = this;
+    var dataUpdate = {};
+    var isUpdate;
+    for(var i=0;i<child.length;i++)
+    {
+        if(child[i].original.id==undefined)
+        {
+            self.addDB(child[i].original);
+        }
+        else
+        {
+            isUpdate = false;
+            dataUpdate.id = child[i].original.id;
+            if(child[i].original.isTitle===true)
+            {
+                isUpdate = true;
+                dataUpdate.title = child[i].original.title;
+                child[i].original.isTitle = false;
+            }
+
+            if(child[i].original.alias.update===true)
+            {
+                isUpdate = true;
+                dataUpdate.alias = child[i].original.alias;
+                child[i].original.isAlias = false;
+            }
+
+            if(child[i].original.active.update===true)
+            {
+                isUpdate = true;
+                dataUpdate.active = child[i].original.active;
+                child[i].original.isActive = false;
+            }
+
+            if(child[i].original.parent_id.update===true)
+            {
+                isUpdate = true;
+                dataUpdate.parent_id = child[i].original.parent_id;
+                child[i].original.isParent_id = false;
+            }
+
+            if(child[i].original.fulltext.update===true)
+            {
+                isUpdate = true;
+                dataUpdate.fulltext = child[i].original.fulltext;
+                child[i].original.isFulltext = false;
+            }
+        
+            if(isUpdate||child[i].original.ordering != i)
+            {
+                if(child[i].original.ordering != i)
+                child[i].original.ordering = i;
+                var phpFile = "http://localhost/PIZO/php/update_content_time.php";
+                if(self.phpUpdateTimeContent)
+                phpFile = self.phpUpdateTimeContent;
+                self.updateData(phpFile,dataUpdate);
+            }
+        }
+        
+        if(child[i].child.length!==0)
+            this.updateChild(child[i].child);
+    }
+}
+
+
+EditHelpContainer.prototype.delete = function(data,parent,index)
+{
+    console.log(data)
+    var self = this;
+    var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.title);
+    this.addChild(deleteItem);
+    deleteItem.promiseComfirm.then(function(){
+        self.deleteDB(data,parent,index);
+    })
+}
+
+EditHelpContainer.prototype.deleteView = function(parent,index){
+    var self = this;
+    var bodyTable = parent.bodyTable;
+    parent.dropRow(index).then(function(){
+        self.resetChoice(bodyTable);
+        this.listParent.updateItemList();
+    });
+}
+
+
+
+EditHelpContainer.prototype.setDataTitle = function(data)
+{
+    this.name.value = data.title;
+    this.alias.value = data.alias;
+    this.listParent.value = data.parent_id;
+    this.active.checked = data.active;
+}
+
+EditHelpContainer.prototype.deleteDB = function(data,parent,index){
+    var self = this;
+    var phpFile = "http://localhost/PIZO/php/delete_content.php";
+    if(self.phpDeleteContent)
+    phpFile = self.phpUpdateContent;
+    self.updateData(phpFile,data).then(function(value){
+        self.deleteView(parent,index);
     })
 }
 
@@ -419,23 +980,88 @@ EditHelpContainer.prototype.itemEdit = function () {
         }
     })
 
-
     var ckedit = _({
         tag: 'attachhook',
         on: {
             error: function () {
                 this.selfRemove();
                 self.editor = CKEDITOR.replace(textId);
+                self.editor.addCommand("comand_link_direction", {
+                    exec: function(edt) {
+                        self.appendChild(self.listLink())
+                    }
+                });
             }
         }
     });
+    
     return temp;
+}
+
+EditHelpContainer.prototype.listLink = function(){
+    var self = this;
+   
+    var header = [{value:"Title",sort:true, functionClickAll: self.functionChoice.bind(self)}, {value:"Date",sort:true}, {value:"ID",sort:true}];
+    var mTable = new tableView(header, self.formatDataRowList(self.getDataCurrent()), false, false, 0);
+    mTable.style.width = "calc(100% - 90px)";
+    var input = _({
+        tag:"input",
+        class:"input-search-list",
+        props:{
+            type:"text",
+            placeholder:"Search"
+        }
+    })
+    self.modal = _({
+        tag:"modal",
+        class:"list-linkChoice",
+        on:{
+            click:function(event){
+                var element = event.target;
+                console.log(event.target)
+                while(!(element.classList.contains("list-linkChoice")||element.classList.contains("list-linkChoice-container")))
+                element = element.parentNode;
+                if(element.classList.contains("list-linkChoice")){
+                    this.selfRemove();
+                    self.modal.reject();
+                }
+            }
+        },
+        child:[
+            {
+                tag:"div",
+                class:["list-linkChoice-container","absol-single-page-scroller"],
+                child:[
+                    {
+                        tag:"div",
+                        class:"js-stools-container-bar",
+                        child:[
+                            {
+                                tag:"div",
+                                class:["btn-wrapper", "input-append"],
+                                child:[
+                                    input
+                                ]
+                            }
+                        ]
+                    },
+                    mTable
+                ]
+            }
+        ]
+    })
+    mTable.addInputSearch(input);
+    self.promiseSelectList = new Promise(function(resolve,reject){
+        self.modal.resolve = resolve;
+        self.modal.reject = reject;
+    })
+    return self.modal;
 }
 
 EditHelpContainer.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
-    if (editor) data = editor.getData();
+    if (editor) data = editor.getData().toString();
     if (data)
         this.setData(data);
 };

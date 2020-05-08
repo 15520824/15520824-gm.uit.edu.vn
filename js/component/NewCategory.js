@@ -4,6 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/NewCategory.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
+import {allowNumbersOnly, createAlias} from './ModuleView';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -14,6 +15,7 @@ function NewCategory(data,parent_id) {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     this.data = data;
+    if(parent_id!==undefined)
     this.parent_id = parseFloat(parent_id);
     if(this.data!==undefined)
     this.parent_id = parseFloat(data.original.parent_id);
@@ -59,12 +61,18 @@ NewCategory.prototype.getView = function (dataParent) {
     if (this.$view) return this.$view;
     var self = this;
     self.createPromise();
-    var array = [{text:"Danh mục cao nhất",value:0}]
+    var array = [{text:"Danh mục cao nhất",value:0}];
+    console.log(self.parent_id)
+    if(self.parent_id===undefined)
+    self.parent_id = 0;
+    self.check = [];
     for(var i = 0;i<dataParent.length;i++)
     {
         array[i+1] = {text:dataParent[i].title,value:parseFloat(dataParent[i].id)};
+        if(self.data == undefined)
+        self.check[dataParent[i].alias] = dataParent[i];
     }
-    console.log(this.parent_id)
+
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
@@ -76,7 +84,7 @@ NewCategory.prototype.getView = function (dataParent) {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Thêm Tỉnh/TP"
+                            innerHTML: "Thêm help"
                         }
                     },
                     {
@@ -98,7 +106,6 @@ NewCategory.prototype.getView = function (dataParent) {
                                             parent_id:self.parentElement.value
                                         }
                                         self.rejectDB(result);
-                                        self.resetPromise();
                                     }
                                 },
                                 child: [
@@ -110,6 +117,8 @@ NewCategory.prototype.getView = function (dataParent) {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
+                                        if(self.aliasErorr.classList.contains("hasErrorElement"))
+                                            return;
                                         var result = {
                                             title:self.name.value,
                                             alias:self.alias.value,
@@ -128,13 +137,14 @@ NewCategory.prototype.getView = function (dataParent) {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
+                                        if(self.aliasErorr.classList.contains("hasErrorElement"))
+                                            return;
                                         var result = {
                                             title:self.name.value,
                                             alias:self.alias.value,
                                             parent_id:self.parentElement.value
                                         }
                                         self.resolveDB(result);
-                                        self.resetPromise();
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
@@ -160,64 +170,150 @@ NewCategory.prototype.getView = function (dataParent) {
                     child:[
                         {
                             tag:"div",
-                            class:"pizo-new-state-container",
+                            class:"pizo-new-catergory-container",
                             child:[
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-name-container",
+                                    class:"pizo-new-state-container-name",
                                     child:[
                                         {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-name-container-label",
-                                            props:{
-                                                innerHTML:"Tên"
-                                            }
-                                        },
-                                        {
-                                            tag:"input",
-                                            class:["pizo-new-state-container-name-container-input","pizo-new-realty-dectruct-input"],
+                                            tag:"div",
+                                            class:"pizo-new-state-container-name-container",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    class:"pizo-new-state-container-name-container-label",
+                                                    props:{
+                                                        innerHTML:"Tên"
+                                                    }
+                                                },
+                                                {
+                                                    tag:"input",
+                                                    class:["pizo-new-state-container-name-container-input","pizo-new-realty-dectruct-input"],
+                                                    on:{
+                                                        change:function(event)
+                                                        {
+                                                            if(self.alias.value === ""||self.aliasErorr.classList.contains("hasErrorElement")){
+                                                                self.alias.value = createAlias(this.value);
+                                                                self.alias.dispatchEvent(new Event("input"));
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-alias-container",
+                                    class:"pizo-new-state-container-alias",
                                     child:[
                                         {
+                                            tag:"div",
+                                            class:"pizo-new-state-container-alias-container",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    class:"pizo-new-state-container-alias-container-label",
+                                                    props:{
+                                                        innerHTML:"Alias"
+                                                    },
+                                                    child:[
+                                                        {
+                                                            tag:"span",
+                                                            class:"pizo-new-realty-location-detail-row-label-important",
+                                                            props:{
+                                                                innerHTML:"*"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    tag:"input",
+                                                    class:["pizo-new-state-container-alias-container-input","pizo-new-realty-dectruct-input"],
+                                                    on:{
+                                                        input:function(event)
+                                                        {
+                                                            var parent = this.parentNode.parentNode;
+                                                            console.log(parent)
+                                                            if(this.value == ""){
+                                                                if(!parent.classList.contains("hasErrorElement"))
+                                                                parent.classList.add("hasErrorElement");
+                                                                if(!parent.classList.contains("invalid-error"))
+                                                                parent.classList.add("invalid-error");
+                                                            }else
+                                                            {
+                                                                if(parent.classList.contains("invalid-error"))
+                                                                parent.classList.remove("invalid-error");
+                                                            }
+
+                                                            if(self.check[this.value] !== undefined)
+                                                            {
+                                                                if(!parent.classList.contains("hasErrorElement"))
+                                                                parent.classList.add("hasErrorElement");
+                                                                if(!parent.classList.contains("used-error"))
+                                                                parent.classList.add("used-error");
+                                                            }else
+                                                            {
+                                                                if(parent.classList.contains("used-error"))
+                                                                parent.classList.remove("used-error");
+                                                            }
+                                                            console.log(!parent.classList.contains("used-error"),!parent.classList.contains("invalid-error"),parent.classList.contains("hasErrorElement"))
+                                                            if(!parent.classList.contains("used-error")&&!parent.classList.contains("invalid-error")&&parent.classList.contains("hasErrorElement"))
+                                                            parent.classList.remove("hasErrorElement")
+                                                        },
+                                                        keypress:function(event){
+                                                            allowNumbersOnly(event);
+                                                        }
+                                                    }
+                                                }
+                                                
+                                            ]
+                                        },
+                                        {
                                             tag:"span",
-                                            class:"pizo-new-state-container-alias-container-label",
+                                            class:["pizo-new-realty-location-detail-row-label-important","label-used-error"],
                                             props:{
-                                                innerHTML:"Alias"
+                                                innerHTML:"Alias không có sẳn để sử dụng"
                                             }
                                         },
                                         {
-                                            tag:"input",
-                                            class:["pizo-new-state-container-alias-container-input","pizo-new-realty-dectruct-input"],
+                                            tag:"span",
+                                            class:["pizo-new-realty-location-detail-row-label-important","label-invalid-error"],
+                                            props:{
+                                                innerHTML:"Alias không thể để trống"
+                                            }
                                         }
                                     ]
                                 },
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-selectbox-container",
+                                    class:"pizo-new-state-selectbox",
                                     child:[
                                         {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-selectbox-container-label",
-                                            props:{
-                                                innerHTML:"Danh mục cha"
-                                            }
-                                        },
-                                        {
-                                            tag:"selectmenu",
-                                            class:["pizo-new-state-container-selectbox-container-input","pizo-new-realty-dectruct-input"],
-                                            props:{
-                                                enableSearch: true,
-                                                items:array,
-                                                value:self.parent_id
-                                            }
+                                            tag:"div",
+                                            class:"pizo-new-state-selectbox-container",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    class:"pizo-new-state-selectbox-container-label",
+                                                    props:{
+                                                        innerHTML:"Danh mục cha"
+                                                    }
+                                                },
+                                                {
+                                                    tag:"selectmenu",
+                                                    class:["pizo-new-state-selectbox-container-input","pizo-new-realty-dectruct-input"],
+                                                    props:{
+                                                        enableSearch: true,
+                                                        items:array,
+                                                        value:self.parent_id
+                                                    }
+                                                }
+                                            ]
                                         }
                                     ]
-                                },
+                                }
                             ]
                         }
                     ]
@@ -228,7 +324,8 @@ NewCategory.prototype.getView = function (dataParent) {
 
     this.name = $('input.pizo-new-state-container-name-container-input.pizo-new-realty-dectruct-input',this.$view);
     this.alias = $('input.pizo-new-state-container-alias-container-input.pizo-new-realty-dectruct-input',this.$view);
-    this.parentElement = $('.pizo-new-state-container-selectbox-container-input.pizo-new-realty-dectruct-input',this.$view);
+    this.parentElement = $('.pizo-new-state-selectbox-container-input.pizo-new-realty-dectruct-input',this.$view);
+    this.aliasErorr = $('div.pizo-new-state-container-alias',this.$view);
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.title;

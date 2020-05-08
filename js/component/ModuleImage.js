@@ -603,7 +603,10 @@ descViewImagePreview.prototype.renderItems = function(data,index)
         }
         else
         dataCheck[format] = dataCheck[format].concat([data[i]]);
-        self.containImage.indexElement++;
+        if(data[i].id!==undefined)
+            self.containImage.indexElement = data[i].id;
+        else
+            self.containImage.indexElement++;
         var item = self.ItemTimeLine(data[i],self.containImage.indexElement);
         item.dayElement = dayThumnail;
         self.containImage.appendChild(item);

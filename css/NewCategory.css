@@ -1,4 +1,6 @@
-.pizo-new-state-container-name-container-input,.pizo-new-state-container-alias-container-input,.pizo-new-state-container-selectbox-container-input{
+.pizo-new-state-container-name-container-input,
+.pizo-new-state-container-alias-container-input,
+.pizo-new-state-selectbox-container-input {
     border: solid 0.0714rem var(--color-input-color);
     font-size: 1rem;
     padding: 0.4286rem;
@@ -9,7 +11,9 @@
     position: relative;
 }
 
-.pizo-new-state-container-name-container-label,.pizo-new-state-container-alias-container-label,.pizo-new-state-container-selectbox-container-label{
+.pizo-new-state-container-name-container-label,
+.pizo-new-state-container-alias-container-label,
+.pizo-new-state-selectbox-container-label {
     font-size: 1rem;
     display: flex;
     align-items: center;
@@ -18,12 +22,44 @@
     padding-right: 0.7143rem;
 }
 
-.pizo-new-state-container-name-container,.pizo-new-state-container-alias-container,.pizo-new-state-container-selectbox-container{
+.pizo-new-state-container-name-container,
+.pizo-new-state-container-alias-container,
+.pizo-new-state-selectbox-container {
     display: flex;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 60%;
+    width: 100%;
     height: 100%;
     align-items: stretch;
+}
+
+.pizo-new-state-container-name,
+.pizo-new-state-container-alias,
+.pizo-new-state-selectbox {
+    padding: 5px;
+    padding-right: 0;
+}
+
+.pizo-new-catergory-container>div:first-child {
+    padding-top: 0;
+}
+
+.pizo-new-catergory-container>div:last-child {
+    padding-bottom: 0;
+}
+
+.label-used-error,
+.label-invalid-error {
+    display: none;
+}
+
+.hasErrorElement.used-error .label-used-error,
+.hasErrorElement.invalid-error .label-invalid-error {
+    display: inline;
+    width: 232px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
