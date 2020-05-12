@@ -9,6 +9,8 @@ import "../../css/NewCategory.css"
 import { tableView, deleteQuestion } from './ModuleView';
 import {allowNumbersOnly, createAlias} from './ModuleView';
 
+import {loadData,updateData} from '../component/ModuleDatabase';
+
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -58,7 +60,7 @@ function EditHelpContainer(phpLoader) {
     })
 
     var updateTableFunction;
-    self.$view.loadData(phpLoader).then(function(value){
+    loadData(phpLoader).then(function(value){
         console.log(value)
         var header = [{ type: "dragzone"}, {value:"Title",sort:true, functionClickAll: self.$view.functionClickDetail.bind(self.$view),style:{minWidth:"unset !important"}},"Publish", { type: "detail",style:{maxWidth:"21px"}, functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
         self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
@@ -71,6 +73,15 @@ function EditHelpContainer(phpLoader) {
         }
         listParent.updateItemList();
         self.$view.resetChoice(self.$view.mTable.bodyTable);
+    });
+
+    var input = _({
+        tag:"input",
+        class:"input-search-list",
+        props:{
+            type:"text",
+            placeholder:"Search"
+        }
     });
     this.$view.addChild(_({
         tag: "tbody",
@@ -102,14 +113,28 @@ function EditHelpContainer(phpLoader) {
                                                 attr:{
                                                     name:"Search",
                                                     id:"matd3",
-                                                    desc:""
+                                                    desc:"",
                                                 },
                                                 child:[
                                                     {
-                                                        tag:"span",
-                                                        props:{
-                                                            innerHTML:"3"
-                                                        }
+                                                        tag:"div",
+                                                        class:["absol-single-page-scroller"],
+                                                        child:[
+                                                            {
+                                                                tag:"div",
+                                                                class:"js-stools-container-bar",
+                                                                child:[
+                                                                    {
+                                                                        tag:"div",
+                                                                        class:["btn-wrapper", "input-append"],
+                                                                        child:[
+                                                                            input
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            },
+                                                            
+                                                        ]
                                                     }
                                                 ]
                                             }
@@ -161,22 +186,22 @@ function EditHelpContainer(phpLoader) {
                                                                         child:[
                                                                             {
                                                                                 tag:"div",
-                                                                                class:"pizo-new-state-container-name",
+                                                                                class:"pizo-new-category-container-name",
                                                                                 child:[
                                                                                     {
                                                                                         tag:"div",
-                                                                                        class:"pizo-new-state-container-name-container",
+                                                                                        class:"pizo-new-category-container-name-container",
                                                                                         child:[
                                                                                             {
                                                                                                 tag:"span",
-                                                                                                class:"pizo-new-state-container-name-container-label",
+                                                                                                class:"pizo-new-category-container-name-container-label",
                                                                                                 props:{
                                                                                                     innerHTML:"Tên"
                                                                                                 }
                                                                                             },
                                                                                             {
                                                                                                 tag:"input",
-                                                                                                class:["pizo-new-state-container-name-container-input","pizo-new-realty-dectruct-input"],
+                                                                                                class:["pizo-new-category-container-name-container-input","pizo-new-realty-dectruct-input"],
                                                                                                 on:{
                                                                                                     change:function(event)
                                                                                                     {
@@ -193,19 +218,19 @@ function EditHelpContainer(phpLoader) {
                                                                             },
                                                                             {
                                                                                 tag:"div",
-                                                                                class:"pizo-new-state-container-alias-active",
+                                                                                class:"pizo-new-category-container-alias-active",
                                                                                 child:[
                                                                                     {
                                                                                         tag:"div",
-                                                                                        class:"pizo-new-state-container-alias",
+                                                                                        class:"pizo-new-category-container-alias",
                                                                                         child:[
                                                                                             {
                                                                                                 tag:"div",
-                                                                                                class:"pizo-new-state-container-alias-container",
+                                                                                                class:"pizo-new-category-container-alias-container",
                                                                                                 child:[
                                                                                                     {
                                                                                                         tag:"span",
-                                                                                                        class:"pizo-new-state-container-alias-container-label",
+                                                                                                        class:"pizo-new-category-container-alias-container-label",
                                                                                                         props:{
                                                                                                             innerHTML:"Alias"
                                                                                                         },
@@ -221,7 +246,7 @@ function EditHelpContainer(phpLoader) {
                                                                                                     },
                                                                                                     {
                                                                                                         tag:"input",
-                                                                                                        class:["pizo-new-state-container-alias-container-input","pizo-new-realty-dectruct-input"],
+                                                                                                        class:["pizo-new-category-container-alias-container-input","pizo-new-realty-dectruct-input"],
                                                                                                         on:{
                                                                                                             input:function(event)
                                                                                                             {
@@ -288,7 +313,7 @@ function EditHelpContainer(phpLoader) {
                                                                                                 child:[
                                                                                                     {
                                                                                                         tag:"span",
-                                                                                                        class:"pizo-new-state-container-publish-container-label",
+                                                                                                        class:"pizo-new-category-container-publish-container-label",
                                                                                                         props:{
                                                                                                             innerHTML:"Xuất bản"
                                                                                                         }
@@ -353,10 +378,10 @@ function EditHelpContainer(phpLoader) {
         scrollLeftContainer.childNodes[i].classList.add("absol-single-page-scroller")
     }
 
-    this.$view.name = $('input.pizo-new-state-container-name-container-input.pizo-new-realty-dectruct-input',this.$view);
-    this.$view.alias = $('input.pizo-new-state-container-alias-container-input.pizo-new-realty-dectruct-input',this.$view);
+    this.$view.name = $('input.pizo-new-category-container-name-container-input.pizo-new-realty-dectruct-input',this.$view);
+    this.$view.alias = $('input.pizo-new-category-container-alias-container-input.pizo-new-realty-dectruct-input',this.$view);
     this.$view.listParent = listParent;
-    this.$view.aliasErorr = $('div.pizo-new-state-container-alias',this.$view);
+    this.$view.aliasErorr = $('div.pizo-new-category-container-alias',this.$view);
     this.$view.active = active;
     return this.$view;
                                         
@@ -435,10 +460,13 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
 EditHelpContainer.prototype.saveDataCurrent = function(row)
 {
     var arr =  this.getElementsByClassName("choice-event-category");
+    var isRemove = true;
     if(arr.length!==0)
     arr = arr[0];
     if(arr == row)
     return true;
+    if(row===undefined)
+        isRemove = false
     
     var value = {
         title : this.name.value,
@@ -447,8 +475,18 @@ EditHelpContainer.prototype.saveDataCurrent = function(row)
         active : this.active.checked?1:0,
         parent_id : this.listParent.value
     }
-    arr.classList.remove("choice-event-category");
-    this.editView(value,arr.data,arr.parentDetail,arr.indexDetail);
+
+    if(isRemove){
+        arr.classList.remove("choice-event-category");
+    }
+    
+    var rowSelected = this.editView(value,arr.data,arr.parentDetail,arr.indexDetail);
+
+    if(!isRemove){
+        console.log(arr)
+        rowSelected.parentDetail = arr.parentDetail;
+        rowSelected.indexDetail = arr.indexDetail
+    }
     return false;
 }
 
@@ -503,12 +541,12 @@ EditHelpContainer.prototype.formatDataRow = function(data)
     var checkElement;
     for(var i=0;i<data.length;i++)
     {
-        checkElement = data[i].active? _({
+        checkElement = parseInt(data[i].active)? _({
             tag:"div",
             class:"tick-element"
         }):_({
             tag:"div",
-            class:"corss-element"
+            class:"cross-element"
         })
         var result = [{value:"",style:{maxWidth:"21px"}},{
             value:data[i].title,
@@ -625,67 +663,19 @@ EditHelpContainer.prototype.getDataChild = function(arr)
     return result;
 }
 
-EditHelpContainer.prototype.loadData = function(phpLoader)
-{
-    var php = "http://localhost/PIZO/php/load_content.php";
-    if(phpLoader!==undefined)
-    php = phpLoader;
-    return new Promise(function(resolve,reject){
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
-        }else
-        {
-            console.log(this.responseText,this.status)
-        }
-        };
-        xhttp.open("GET", php, true);
-        xhttp.send();
-    })
-}
-
-EditHelpContainer.prototype.updateData = function(phpUpdater,data)
-{
-    var php;
-    if(phpUpdater!==undefined)
-    php = phpUpdater;
-    return new Promise(function(resolve,reject){
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
-            }else
-            {
-                console.log(this.responseText,this.status)
-            }
-        };
-        xhttp.open("POST", php, true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        var stringSend = "";
-        var connect = "";
-        for(var param in data)
-        {
-            stringSend+=connect+param+"="+encodeURIComponent(data[param]);
-            connect = "&";
-        }
-        xhttp.send(stringSend);
-    })
-}
-
-EditHelpContainer.prototype.default = function(parent_id=0)
+EditHelpContainer.prototype.default = function(parent_id=0,ordering = -1)
 {
     return {        
         active: 0,
         fulltext: "",
-        ordering: -1,
+        ordering: ordering,
         parent_id: parent_id,
         title: "New Category",
-        alias:""
+        alias: ""
     }
 }
 
-EditHelpContainer.prototype.add = function(parentid,row = this.mTable)
+EditHelpContainer.prototype.add = function(parentid = 0,row = this.mTable)
 {
     var self = this;
     self.addView(undefined,row,parentid)
@@ -694,9 +684,9 @@ EditHelpContainer.prototype.add = function(parentid,row = this.mTable)
 EditHelpContainer.prototype.addView = function(value,row,parent_id){
         if(value == undefined)
         {
-            value = this.default(parent_id)
+            value = this.default(parent_id,row.childrenNodes.length);
         }
-        var checkElement = value.active? _({
+        var checkElement = parseInt(value.active)? _({
             tag:"div",
             class:"tick-element"
         }):_({
@@ -725,22 +715,23 @@ EditHelpContainer.prototype.addView = function(value,row,parent_id){
                 ]
             }),
         },
-        {value:value.active,
+        {value:parseInt(value.active),
             element:checkElement
             ,style:{maxWidth:"21px"}},
         {value:"",style:{maxWidth:"21px"}}
         ];
         result.original = value;
-    row.insertRow(result);
+    var temp = row.insertRow(result);
+        temp.scrollIntoView(true);
     this.listParent.updateItemList();
 }
 
 EditHelpContainer.prototype.addDB = function(value){
     var self = this;
-    var phpFile = "http://localhost/PIZO/php/add_content.php";
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_help.php";
     if(self.phpUpdateContent)
     phpFile = self.phpUpdateContent;
-    self.updateData(phpFile,value).then(function(result){
+    updateData(phpFile,value).then(function(result){
         value.id = result;
     })
     
@@ -758,32 +749,35 @@ EditHelpContainer.prototype.editView = function(value,data,parent,index){
     {
         if(data.original.title !== value.title)
             data.original.isTitle=true;
-        data.original.title = value.title;
         
         if(data.original.alias !== value.alias)
             data.original.isAlias=true;
-        data.original.alias = value.alias;
-
         if(data.original.active !== value.active)
             data.original.isActive=true;
-        data.original.active = value.active?1:0;
+ 
 
         if(value.fulltext!==undefined){
             if(data.original.fulltext !== value.fulltext)
                 data.original.isFulltext=true;
-            data.original.fulltext = value.fulltext;
+
         }
         if(data.original.parent_id !== value.parent_id)
             data.original.isParent_id=true;
     }
-    
+
+    data.original.title = value.title;
+    data.original.alias = value.alias;
+    data.original.active = parseInt(value.active);
+
+    if(value.fulltext!==undefined)
+        data.original.fulltext = value.fulltext;
 
     if(data.original.parent_id!=value.parent_id){
         isChangeView = true;
     }
  
     data.original.parent_id = value.parent_id;
-    var checkElement = value.active? _({
+    var checkElement = parseInt(value.active)? _({
         tag:"div",
         class:"tick-element"
     }):_({
@@ -832,18 +826,19 @@ EditHelpContainer.prototype.editView = function(value,data,parent,index){
         }
         parent.changeParent(index,element);
     }
-    element.updateRow(data,indexOF,true);
+    var temp = element.updateRow(data,indexOF,true);
     this.listParent.updateItemList();
+    return temp;
 }
 
 EditHelpContainer.prototype.editDB = function(mNewCategory,data,parent,index){
     var self = this;
     mNewCategory.promiseEditDB.then(function(value){
-        var phpFile = "http://localhost/PIZO/php/update_content.php";
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_help.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        self.updateData(phpFile,value).then(function(result){
+        updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewCategory.promiseEditDB = undefined;
@@ -884,42 +879,42 @@ EditHelpContainer.prototype.updateChild = function(child)
                 child[i].original.isTitle = false;
             }
 
-            if(child[i].original.alias.update===true)
+            if(child[i].original.isAlias===true)
             {
                 isUpdate = true;
                 dataUpdate.alias = child[i].original.alias;
                 child[i].original.isAlias = false;
             }
 
-            if(child[i].original.active.update===true)
+            if(child[i].original.isActive===true)
             {
                 isUpdate = true;
                 dataUpdate.active = child[i].original.active;
                 child[i].original.isActive = false;
             }
 
-            if(child[i].original.parent_id.update===true)
+            if(child[i].original.isParent_id===true)
             {
                 isUpdate = true;
                 dataUpdate.parent_id = child[i].original.parent_id;
                 child[i].original.isParent_id = false;
             }
 
-            if(child[i].original.fulltext.update===true)
+            if(child[i].original.isFulltext===true)
             {
                 isUpdate = true;
                 dataUpdate.fulltext = child[i].original.fulltext;
                 child[i].original.isFulltext = false;
             }
-        
+            
             if(isUpdate||child[i].original.ordering != i)
             {
                 if(child[i].original.ordering != i)
                 child[i].original.ordering = i;
-                var phpFile = "http://localhost/PIZO/php/update_content_time.php";
+                var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_help_time.php";
                 if(self.phpUpdateTimeContent)
                 phpFile = self.phpUpdateTimeContent;
-                self.updateData(phpFile,dataUpdate);
+                updateData(phpFile,dataUpdate);
             }
         }
         
@@ -943,9 +938,11 @@ EditHelpContainer.prototype.delete = function(data,parent,index)
 EditHelpContainer.prototype.deleteView = function(parent,index){
     var self = this;
     var bodyTable = parent.bodyTable;
+    if(this.rowSelected.parentDetail===parent&&this.rowSelected.indexDetail>index)
+    this.rowSelected.indexDetail--;
     parent.dropRow(index).then(function(){
         self.resetChoice(bodyTable);
-        this.listParent.updateItemList();
+        self.listParent.updateItemList();
     });
 }
 
@@ -956,15 +953,15 @@ EditHelpContainer.prototype.setDataTitle = function(data)
     this.name.value = data.title;
     this.alias.value = data.alias;
     this.listParent.value = data.parent_id;
-    this.active.checked = data.active;
+    this.active.checked = parseInt(data.active);
 }
 
 EditHelpContainer.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "http://localhost/PIZO/php/delete_content.php";
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_help.php";
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
-    self.updateData(phpFile,data).then(function(value){
+    updateData(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }

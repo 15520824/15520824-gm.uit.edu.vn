@@ -197,51 +197,16 @@
 .pizo-new-realty-desc-infomation-cell.center-child {
   width: calc(33% - 30px);
   min-width: 380px;
+  vertical-align: top;
 }
 
-.pizo-new-realty-utility {
+.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contract {
   width: 100%;
   vertical-align: top;
   margin-top: 0.7143rem;
 }
 
-.pizo-new-realty-utility-tab {
-  padding: 0.7143rem;
-  border-bottom: solid 0.0714rem #ccc;
-  background: #f3f3f3;
-}
-
-.pizo-new-realty-convenient {
-  width: 100%;
-  vertical-align: top;
-  margin-top: 0.7143rem;
-}
-
-.pizo-new-realty-convenient-tab {
-  padding: 0.7143rem;
-  border-bottom: solid 0.0714rem #ccc;
-  background: #f3f3f3;
-}
-
-.pizo-new-realty-juridical {
-  width: 100%;
-  vertical-align: top;
-  margin-top: 0.7143rem;
-}
-
-.pizo-new-realty-juridical-tab {
-  padding: 0.7143rem;
-  border-bottom: solid 0.0714rem #ccc;
-  background: #f3f3f3;
-}
-
-.pizo-new-realty-history {
-  width: 100%;
-  vertical-align: top;
-  margin-top: 0.7143rem;
-}
-
-.pizo-new-realty-history-tab {
+.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contract-tab {
   padding: 0.7143rem;
   border-bottom: solid 0.0714rem #ccc;
   background: #f3f3f3;

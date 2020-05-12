@@ -13,6 +13,7 @@ import ListDitrict from './page/ListDitrict';
 import PlanningInformation from './page/PlanningInformation';
 import ListHelp from './page/ListHelp';
 import ListEditHelp from './page/ListEditHelp';
+import ListPositions from './page/ListPositions';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -195,7 +196,7 @@ App.prototype.getView = function()
                                             pageIndex: 4
                                         },
                                         {
-                                            text: "Nhân viên",
+                                            text: "Chức vụ",
                                             pageIndex: 5
                                         },
                                         {
@@ -309,6 +310,13 @@ App.prototype.openPage = function(index){
 
     switch(index)
     {
+        case 5:
+            var mListPositions = new ListPositions();
+            mListPositions.attach(this);
+            var frameview = mListPositions.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
         case 11:
             var mListRealty = new ListRealty();
             mListRealty.attach(this);

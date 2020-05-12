@@ -1,7 +1,7 @@
 import BaseView from './BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/NewCategory.css"
+import "../../css/NewPosition.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import {allowNumbersOnly, createAlias} from './ModuleView';
@@ -9,7 +9,7 @@ import {allowNumbersOnly, createAlias} from './ModuleView';
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function NewCategory(data,parent_id) {
+function NewPosition(data,parent_id) {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
@@ -21,15 +21,15 @@ function NewCategory(data,parent_id) {
     this.parent_id = parseFloat(data.original.parent_id);
 }
 
-NewCategory.prototype.setContainer = function(parent)
+NewPosition.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(NewCategory.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-NewCategory.prototype.constructor = NewCategory;
+Object.defineProperties(NewPosition.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+NewPosition.prototype.constructor = NewPosition;
 
-NewCategory.prototype.createPromise = function()
+NewPosition.prototype.createPromise = function()
 {
     var self = this;
     if(this.data === undefined)
@@ -49,7 +49,7 @@ NewCategory.prototype.createPromise = function()
     }
 }
 
-NewCategory.prototype.resetPromise = function(value)
+NewPosition.prototype.resetPromise = function(value)
 {
     if(self.promiseAddDB!==undefined)
     self.promiseAddDB = undefined;
@@ -57,21 +57,21 @@ NewCategory.prototype.resetPromise = function(value)
     self.promiseEditDB = undefined;
 }
 
-NewCategory.prototype.getView = function (dataParent) {
+NewPosition.prototype.getView = function (dataParent) {
     if (this.$view) return this.$view;
     var self = this;
     self.createPromise();
-    var array = [{text:"Danh mục cao nhất",value:0}];
-    console.log(self.parent_id)
+    var array = [{text:"Chức vụ cao nhất",value:0}];
     if(self.parent_id===undefined)
     self.parent_id = 0;
     self.check = [];
     for(var i = 0;i<dataParent.length;i++)
     {
-        array[i+1] = {text:dataParent[i].title,value:parseFloat(dataParent[i].id)};
-        if(self.data == undefined)
-        self.check[dataParent[i].alias] = dataParent[i];
+        if(self.data !== undefined&&self.data.id == dataParent[i].id)
+            continue;
+        array[i+1] = {text:dataParent[i].name,value:parseFloat(dataParent[i].id)};
     }
+    console.log(array)
 
     this.$view = _({
         tag: 'singlepage',
@@ -84,7 +84,7 @@ NewCategory.prototype.getView = function (dataParent) {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Thêm help"
+                            innerHTML: "Thêm chức vụ"
                         }
                     },
                     {
@@ -101,8 +101,7 @@ NewCategory.prototype.getView = function (dataParent) {
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
 
                                         var result = {
-                                            title:self.name.value,
-                                            alias:self.alias.value,
+                                            name:self.name.value,
                                             parent_id:self.parentElement.value
                                         }
                                         self.rejectDB(result);
@@ -117,11 +116,8 @@ NewCategory.prototype.getView = function (dataParent) {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        if(self.aliasErorr.classList.contains("hasErrorElement"))
-                                            return;
                                         var result = {
-                                            title:self.name.value,
-                                            alias:self.alias.value,
+                                            name:self.name.value,
                                             parent_id:self.parentElement.value
                                         }
                                         self.resolveDB(result);
@@ -137,11 +133,8 @@ NewCategory.prototype.getView = function (dataParent) {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        if(self.aliasErorr.classList.contains("hasErrorElement"))
-                                            return;
                                         var result = {
-                                            title:self.name.value,
-                                            alias:self.alias.value,
+                                            name:self.name.value,
                                             parent_id:self.parentElement.value
                                         }
                                         self.resolveDB(result);
@@ -171,6 +164,9 @@ NewCategory.prototype.getView = function (dataParent) {
                         {
                             tag:"div",
                             class:"pizo-new-catergory-container",
+                            style:{
+                                width:"60%"
+                            },
                             child:[
                                 {
                                     tag:"div",
@@ -191,98 +187,9 @@ NewCategory.prototype.getView = function (dataParent) {
                                                     tag:"input",
                                                     class:["pizo-new-category-container-name-container-input","pizo-new-realty-dectruct-input"],
                                                     on:{
-                                                        change:function(event)
-                                                        {
-                                                            if(self.alias.value === ""||self.aliasErorr.classList.contains("hasErrorElement")){
-                                                                self.alias.value = createAlias(this.value);
-                                                                self.alias.dispatchEvent(new Event("input"));
-                                                            }
-                                                        }
                                                     }
                                                 }
                                             ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-category-container-alias",
-                                    child:[
-                                        {
-                                            tag:"div",
-                                            class:"pizo-new-category-container-alias-container",
-                                            child:[
-                                                {
-                                                    tag:"span",
-                                                    class:"pizo-new-category-container-alias-container-label",
-                                                    props:{
-                                                        innerHTML:"Alias"
-                                                    },
-                                                    child:[
-                                                        {
-                                                            tag:"span",
-                                                            class:"pizo-new-realty-location-detail-row-label-important",
-                                                            props:{
-                                                                innerHTML:"*"
-                                                            }
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    tag:"input",
-                                                    class:["pizo-new-category-container-alias-container-input","pizo-new-realty-dectruct-input"],
-                                                    on:{
-                                                        input:function(event)
-                                                        {
-                                                            var parent = this.parentNode.parentNode;
-                                                            console.log(parent)
-                                                            if(this.value == ""){
-                                                                if(!parent.classList.contains("hasErrorElement"))
-                                                                parent.classList.add("hasErrorElement");
-                                                                if(!parent.classList.contains("invalid-error"))
-                                                                parent.classList.add("invalid-error");
-                                                            }else
-                                                            {
-                                                                if(parent.classList.contains("invalid-error"))
-                                                                parent.classList.remove("invalid-error");
-                                                            }
-
-                                                            if(self.check[this.value] !== undefined)
-                                                            {
-                                                                if(!parent.classList.contains("hasErrorElement"))
-                                                                parent.classList.add("hasErrorElement");
-                                                                if(!parent.classList.contains("used-error"))
-                                                                parent.classList.add("used-error");
-                                                            }else
-                                                            {
-                                                                if(parent.classList.contains("used-error"))
-                                                                parent.classList.remove("used-error");
-                                                            }
-                                                            console.log(!parent.classList.contains("used-error"),!parent.classList.contains("invalid-error"),parent.classList.contains("hasErrorElement"))
-                                                            if(!parent.classList.contains("used-error")&&!parent.classList.contains("invalid-error")&&parent.classList.contains("hasErrorElement"))
-                                                            parent.classList.remove("hasErrorElement")
-                                                        },
-                                                        keypress:function(event){
-                                                            allowNumbersOnly(event);
-                                                        }
-                                                    }
-                                                }
-                                                
-                                            ]
-                                        },
-                                        {
-                                            tag:"span",
-                                            class:["pizo-new-realty-location-detail-row-label-important","label-used-error"],
-                                            props:{
-                                                innerHTML:"Alias không có sẳn để sử dụng"
-                                            }
-                                        },
-                                        {
-                                            tag:"span",
-                                            class:["pizo-new-realty-location-detail-row-label-important","label-invalid-error"],
-                                            props:{
-                                                innerHTML:"Alias không thể để trống"
-                                            }
                                         }
                                     ]
                                 },
@@ -298,7 +205,7 @@ NewCategory.prototype.getView = function (dataParent) {
                                                     tag:"span",
                                                     class:"pizo-new-state-selectbox-container-label",
                                                     props:{
-                                                        innerHTML:"Danh mục cha"
+                                                        innerHTML:"Chức vụ cha"
                                                     }
                                                 },
                                                 {
@@ -323,18 +230,16 @@ NewCategory.prototype.getView = function (dataParent) {
         );
 
     this.name = $('input.pizo-new-category-container-name-container-input.pizo-new-realty-dectruct-input',this.$view);
-    this.alias = $('input.pizo-new-category-container-alias-container-input.pizo-new-realty-dectruct-input',this.$view);
     this.parentElement = $('.pizo-new-state-selectbox-container-input.pizo-new-realty-dectruct-input',this.$view);
     this.aliasErorr = $('div.pizo-new-category-container-alias',this.$view);
     if(this.data!==undefined)
     {
-        this.name.value = this.data.original.title;
-        this.alias.value = this.data.original.alias;
+        this.name.value = this.data.original.name;
     }
     return this.$view;
 }
 
-NewCategory.prototype.refresh = function () {
+NewPosition.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -342,7 +247,7 @@ NewCategory.prototype.refresh = function () {
         this.setData(data);
 };
 
-NewCategory.prototype.setData = function (data) {
+NewPosition.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -350,7 +255,7 @@ NewCategory.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-NewCategory.prototype.flushDataToView = function () {
+NewPosition.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -365,8 +270,8 @@ NewCategory.prototype.flushDataToView = function () {
     }
 };
 
-NewCategory.prototype.start = function () {
+NewPosition.prototype.start = function () {
 
 }
 
-export default NewCategory;
+export default NewPosition;

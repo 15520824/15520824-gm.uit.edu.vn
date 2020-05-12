@@ -6,15 +6,34 @@ var _ = Fcore._;
 var $ = Fcore.$;
 
 export function formatDate(date,isMinutes = false, isHours = false , isDay = true, isMonth = true, isYear = false) {
-    var d = new Date(date);
-    
+    var d = new Date(date); //time zone value from database
+    //get the timezone offset from local time in minutes
+    var tzDifference = -d.getTimezoneOffset();
+    //convert the offset to milliseconds, add to targetTime, and make a new Date
+    d = new Date(d.getTime() + tzDifference * 60 * 1000);
+
     var resultTime = [];
     var resultDayMonth =[];
 
     if(isHours)
-        resultTime.push('' + d.getHours());
+    {
+        var hour = '' + d.getHours();
+        if (hour.length < 2) 
+        hour = '0' + hour;
+        resultTime.push(hour);
+    }
     if(isMinutes)
-        resultTime.push('' + d.getMinutes());
+    {
+        var minute = '' + d.getMinutes();
+        if (minute.length < 2) 
+        minute = '0' + minute;
+        resultTime.push(minute);
+
+        var second = '' + d.getSeconds();
+        if (second.length < 2) 
+        second = '0' + second;
+        resultTime.push(second);
+    }
 
     if(isDay){
         var day = '' + d.getDate();
@@ -35,6 +54,51 @@ export function formatDate(date,isMinutes = false, isHours = false , isDay = tru
     
     return resultTime.join(':')+" "+resultDayMonth.join('/');
 }
+
+export function getGMT() {
+    var d = new Date(); //time zone value from database
+
+    var timeZoneFromDB = 0; //time zone value from database
+    //get the timezone offset from local time in minutes
+    var tzDifference = timeZoneFromDB * 60 + d.getTimezoneOffset();
+    //convert the offset to milliseconds, add to targetTime, and make a new Date
+    d = new Date(d.getTime() + tzDifference * 60 * 1000);
+    console.log(d)
+    
+
+    var resultTime = [];
+    var resultDayMonth =[];
+
+    var hour = '' + d.getHours();
+    if (hour.length < 2) 
+    hour = '0' + hour;
+    resultTime.push(hour);
+
+    var minute = '' + d.getMinutes();
+    if (minute.length < 2) 
+    minute = '0' + minute;
+    resultTime.push(minute);
+
+    var second = '' + d.getSeconds();
+    if (second.length < 2) 
+    second = '0' + second;
+    resultTime.push(second);
+
+    resultDayMonth.push('' + d.getFullYear());
+    
+    var month = '' + (d.getMonth() + 1);
+    if (month.length < 2) 
+    month = '0' + month;
+    resultDayMonth.push(month);
+
+    var day = '' + d.getDate();
+    if (day.length < 2) 
+        day = '0' + day;
+    resultDayMonth.push(day);      
+    
+    return resultDayMonth.join('-')+" "+resultTime.join(':');
+}
+
 
 export function consoleArea(areas) {
     var result = {

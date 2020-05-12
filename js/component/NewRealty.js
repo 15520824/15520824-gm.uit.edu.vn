@@ -193,8 +193,8 @@ NewRealty.prototype.descView = function () {
                         tag: "div",
                         class: ["pizo-new-realty-desc-infomation-cell", "center-child"],
                         child: [
-                            // this.utilityView(),
                             this.convenientView(),
+                            this.contractView()
                         ]
                     },
                     {
@@ -1313,98 +1313,36 @@ NewRealty.prototype.convenientView = function () {
                         tag: "div",
                         class: "pizo-new-realty-convenient-content-size",
                         child: [
-                            {
-                                tag: "div",
-                                class: "pizo-new-realty-convenient-content-area-size-zone",
-                                child: [
-                                    {
-                                        tag: "span",
-                                        class: "pizo-new-realty-convenient-content-area-tivi-label",
-                                        props: {
-                                            innerHTML: "Tivi"
-                                        },
-                                    },
-                                    {
-                                        tag: "input",
-                                        class: ["pizo-new-realty-convenient-content-area-tivi", "pizo-new-realty-dectruct-input"],
-                                        attr: {
-                                            type: "number",
-                                            min: 0,
-                                            step: 1
-                                        }
-                                    },
-                                ]
-                            },
-                            {
-                                tag: "div",
-                                class: "pizo-new-realty-convenient-content-area-size-zone",
-                                child: [
-                                    {
-                                        tag: "span",
-                                        class: "pizo-new-realty-convenient-content-area-fridge-label",
-                                        props: {
-                                            innerHTML: "Tủ lạnh"
-                                        },
-                                    },
-                                    {
-                                        tag: "input",
-                                        class: ["pizo-new-realty-convenient-content-area-fridge", "pizo-new-realty-dectruct-input"],
-                                        attr: {
-                                            type: "number"
-                                        }
-                                    },
-                                ]
-                            },
                         ]
-                    },
+                    }
+                ]
+            }
+        ]
+    })
+    return temp;
+}
+
+
+NewRealty.prototype.convenientView = function () {
+    var temp = _({
+        tag: "div",
+        class: "pizo-new-realty-convenient",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-convenient-tab",
+                props: {
+                    innerHTML: "Tiện ích trong nhà"
+                }
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-convenient-content",
+                child: [
                     {
                         tag: "div",
                         class: "pizo-new-realty-convenient-content-size",
                         child: [
-                            {
-                                tag: "div",
-                                class: "pizo-new-realty-convenient-content-area-size-zone",
-                                child: [
-                                    {
-                                        tag: "span",
-                                        class: "pizo-new-realty-convenient-content-area-conditioning-label",
-                                        props: {
-                                            innerHTML: "Điều hòa"
-                                        },
-                                    },
-                                    {
-                                        tag: "input",
-                                        class: ["pizo-new-realty-convenient-content-area-conditioning", "pizo-new-realty-dectruct-input"],
-                                        attr: {
-                                            type: "number",
-                                            min: 0,
-                                            step: 1
-                                        }
-                                    },
-                                ]
-                            },
-                            {
-                                tag: "div",
-                                class: "pizo-new-realty-convenient-content-area-size-zone",
-                                child: [
-                                    {
-                                        tag: "span",
-                                        class: "pizo-new-realty-convenient-content-area-washing-label",
-                                        props: {
-                                            innerHTML: "Máy giặt"
-                                        },
-                                    },
-                                    {
-                                        tag: "input",
-                                        class: ["pizo-new-realty-convenient-content-area-washing", "pizo-new-realty-dectruct-input"],
-                                        attr: {
-                                            type: "number",
-                                            min: 0,
-                                            step: 1
-                                        }
-                                    },
-                                ]
-                            }
                         ]
                     }
                 ]

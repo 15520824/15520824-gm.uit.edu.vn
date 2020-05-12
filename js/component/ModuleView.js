@@ -874,6 +874,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                 var tempFunc = function(cellIndex,childUpDown){
                     return function(){
                         var style2 = window.getComputedStyle(childUpDown);
+                        if(cellIndex.style.minWidth=="")
                         cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
                     }
                 }(cell,childUpDown);
@@ -1625,11 +1626,8 @@ tableView.prototype.updateRow = function(data,index,checkMust=false)
         var temp;
         temp = result.childrenNodes[index];
         result.bodyTable.replaceChild(row,temp);
-        for(var m = 0; m < temp.classList.length; m++)
-        {
-            if(!row.classList.contains(temp.classList[m]))
-            row.classList.add(temp.classList[m]);
-        }
+        row.classList.value = temp.classList.value;
+       
         if(temp.childrenNodes!==undefined){
             row.childrenNodes = temp.childrenNodes;
             row.clone = temp.clone;
@@ -1736,6 +1734,7 @@ tableView.prototype.updateRow = function(data,index,checkMust=false)
    result.checkMargin();
 
    result.checkDataUpdate(row);
+   return row;
 }
 
 tableView.prototype.checkDataUpdate = function(row)

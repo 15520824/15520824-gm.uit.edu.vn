@@ -3,7 +3,6 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 25%;
     height: 100%;
     align-items: stretch;
 }
@@ -30,4 +29,8 @@
 
 .pizo-new-state-container>div:not(:last-child){
     margin-bottom: 0.7143rem;
+}
+
+.pizo-new-state-container{
+    width:50%;
 }

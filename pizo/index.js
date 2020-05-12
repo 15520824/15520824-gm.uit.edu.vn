@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 69);
+/******/ 	return __webpack_require__(__webpack_require__.s = 70);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -92,10 +92,10 @@
 /* harmony import */ var absol_src_HTML5_Dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
 
-var Acore = new absol_src_HTML5_Dom__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]({ creator: Object.assign({}, absol_src_HTML5_Dom__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].ShareInstance.creator) });
+var ACore = new absol_src_HTML5_Dom__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]({ creator: Object.assign({}, absol_src_HTML5_Dom__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].ShareInstance.creator) });
 
 
-/* harmony default export */ __webpack_exports__["a"] = (Acore);
+/* harmony default export */ __webpack_exports__["a"] = (ACore);
 
 /***/ }),
 /* 1 */
@@ -1087,7 +1087,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(111);
+var	fixUrls = __webpack_require__(112);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2418,6 +2418,452 @@ String.prototype.nonAccentVietnamese = function () {
 
 /***/ }),
 /* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/absol/src/HTML5/Dom.js + 1 modules
+var Dom = __webpack_require__(1);
+
+// EXTERNAL MODULE: ./node_modules/absol/src/HTML5/Element.js
+var Element = __webpack_require__(6);
+
+// CONCATENATED MODULE: ./node_modules/absol/src/HTML5/ElementNS.js
+
+function ElementNS() {
+    Element["a" /* default */].call(this);
+}
+
+Object.defineProperties(ElementNS.prototype, Object.getOwnPropertyDescriptors(Element["a" /* default */].prototype));
+
+ElementNS.prototype.attr = function () {      
+    if (arguments.length == 1) {
+        if (typeof (arguments[0]) == 'string') {
+            if (this._azar_extendAttributes[arguments[0]]) {
+                return this._azar_extendAttributes[arguments[0]].get.call(this);
+            }
+            else
+                return this.getAttributeNS(null,arguments[0]);
+        }
+        else {
+            for (var key in arguments[0]) {
+            
+                this.attr(key, arguments[0][key]);
+            }
+        }
+    }
+    else {
+        if (arguments.length == 2) {
+            if (arguments[1] === null || arguments[1] === undefined) {
+                if (this._azar_extendAttributes[arguments[0]]) {
+                    this._azar_extendAttributes[arguments[0]].remove.call(this, arguments[1]);
+                }
+                else
+                    this.removeAttributeNS(null,arguments[0]);
+            }
+            else {
+                if (this._azar_extendAttributes[arguments[0]]) {
+                    this._azar_extendAttributes[arguments[0]].set.call(this, arguments[1]);
+                }
+                else{
+                    this.setAttributeNS(null,arguments[0], arguments[1]);
+                }
+            }
+        }
+    }
+    return this;
+};
+
+/* harmony default export */ var HTML5_ElementNS = (ElementNS);
+// CONCATENATED MODULE: ./node_modules/absol/src/HTML5/Svg.js
+
+
+
+
+var sattachhookCreator = function () {
+    return Svg.ShareInstance._('<image  class="absol-attachhook" style:"display: none"  xlink:href=""/>');
+};
+
+
+function Svg(option) {
+    Dom["a" /* default */].call(this, option);
+    this.defaultTag = 'g';
+    this.svgNS = "http://www.w3.org/2000/svg";
+    Object.defineProperties(this.creator,
+        {
+            sattachhook: {
+                set: function () {
+                    //do nothing
+                },
+                get: function () {
+                    return sattachhookCreator;
+                }
+            }
+        });
+    delete this.buidDom;
+    this.buildSvg = this.create.bind(this);
+}
+
+
+Object.defineProperties(Svg.prototype, Object.getOwnPropertyDescriptors(Dom["a" /* default */].prototype));
+
+Svg.prototype.fromCode = function (code) {
+    code = code.trim();
+    var receptacle = document.createElement('div');
+    var element;
+    var prototypes;
+    if (code.startsWith('<svg')) {
+        receptacle.innerHTML = code;
+        element = receptacle.childNodes[0];
+        prototypes = Object.getOwnPropertyDescriptors(Element["a" /* default */].prototype);
+        Object.defineProperties(element, prototypes);
+        Element["a" /* default */].call(element);
+    }
+    else {
+        var svgfragment = '<svg  version="1.1" xmlns="http://www.w3.org/2000/svg">' + code + '</svg>';
+        receptacle.innerHTML = '' + svgfragment;
+        element = receptacle.childNodes[0].childNodes[0];
+        prototypes = Object.getOwnPropertyDescriptors(HTML5_ElementNS.prototype);
+        Object.defineProperties(element, prototypes);
+        HTML5_ElementNS.call(element);
+    }
+    return element;
+};
+
+
+Svg.prototype.makeNewElement = function (tagName) {
+    return document.createElementNS(this.svgNS, tagName);
+};
+
+/**
+ * 
+ * @param {Element} element 
+ */
+Svg.prototype.attach = function (element) {
+    if (typeof element.attr == 'function') return;
+    var prototypes = Object.getOwnPropertyDescriptors(HTML5_ElementNS.prototype);
+    Object.defineProperties(element, prototypes);
+    HTML5_ElementNS.call(element);
+};
+
+Svg.ShareInstance = new Svg();
+
+Svg.svgToCanvas = function (element) {
+    if (typeof element == 'string') {
+        element = Dom["a" /* default */].ShareInstance.$(element);
+    }
+    if (element && element.tagName == 'svg') {
+        var cssTexts = {};
+        var depthClone = function (originElt) {
+            var newElt = originElt.cloneNode();//no deep
+            if (!originElt.getAttributeNS) return newElt;//is text node
+            var cssRules = Element["a" /* default */].prototype.getCSSRules.call(originElt);
+            var cssKey = cssRules.reduce(function (ac, rule) {
+                for (var i = 0; i < rule.style.length; ++i) {
+                    ac[rule.style[i]] = true;
+                }
+                return ac;
+            }, {});
+            for (var key in cssKey) {
+                newElt.style[key] = Element["a" /* default */].prototype.getComputedStyleValue.call(originElt, key);
+            }
+            var children = Array.prototype.map.call(originElt.childNodes, depthClone);
+            for (var i = 0; i < children.length; ++i) {
+                newElt.appendChild(children[i]);
+            }
+            return newElt;
+        };
+
+        var cloneElement = depthClone(element);
+
+        var renderSpace = Dom["a" /* default */].ShareInstance._({
+            style: {
+                // opacity:0,
+                zIndex: -1000,
+                position: 'fixed',
+                top: 0,
+                bottom: 0
+            }
+        }).addTo(document.body);
+        renderSpace.addChild(cloneElement);
+
+        var svgCode = renderSpace.innerHTML;
+        renderSpace.clearChild();
+
+        var mBlob = new Blob([svgCode], { type: "image/svg+xml;charset=utf-8" });
+        var src = (URL || webkitURL).createObjectURL(mBlob);
+
+        var image = Dom["a" /* default */].ShareInstance._('img');
+        image.attr('src', src)
+            .addTo(renderSpace);
+        var canvas = document.createElement("canvas");
+        renderSpace.addChild(canvas);
+        return Dom["a" /* default */].waitImageLoaded(image).then(function () {
+            canvas.width = image.width;
+            canvas.height = image.height;
+            var context = canvas.getContext("2d");
+            context.drawImage(image, 0, 0);
+            renderSpace.selfRemove();
+            return canvas;
+        });
+    }
+    else {
+        throw new Error('Element must be svg');
+    }
+};
+
+Svg.svgToRasterImageUrl = function (element) {
+    return Svg.svgToCanvas(element).then(function (canvas) {
+        return canvas.toDataURL();
+    });
+}
+
+Svg.svgToExportedString = function (element) {
+    if (typeof element == 'string') {
+        element = Dom["a" /* default */].ShareInstance.$(element);
+    }
+    if (element && element.tagName == 'svg') {
+        var depthClone = function (originElt) {
+            var newElt = originElt.cloneNode();//no deep
+            if (!originElt.getAttributeNS) return newElt;//is text node
+            var cssRules = Element["a" /* default */].prototype.getCSSRules.call(originElt);
+            var cssKey = cssRules.reduce(function (ac, rule) {
+                for (var i = 0; i < rule.style.length; ++i) {
+                    ac[rule.style[i]] = true;
+                }
+                return ac;
+            }, {});
+            for (var key in cssKey) {
+                newElt.style[key] = Element["a" /* default */].prototype.getComputedStyleValue.call(originElt, key);
+            }
+            var children = Array.prototype.map.call(originElt.childNodes, depthClone);
+            for (var i = 0; i < children.length; ++i) {
+                newElt.appendChild(children[i]);
+            }
+            return newElt;
+        };
+
+        var cloneElement = depthClone(element);
+        var renderSpace = Dom["a" /* default */].ShareInstance._({
+            style: {
+                // opacity:0,
+                zIndex: -1000,
+                position: 'fixed',
+                top: 0,
+                bottom: 0
+            }
+        }).addTo(document.body);
+        renderSpace.addChild(cloneElement);
+        var svgCode = renderSpace.innerHTML;
+        renderSpace.selfRemove();
+        return svgCode;
+    }
+    else {
+        throw new Error('Element must be svg');
+    }
+};
+
+
+Svg.svgToSvgUrl = function (element) {
+    var svg = Svg.svgToExportedString(element);
+    svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n' + svg;
+    var blob = new Blob([svg], { type: 'image/svg+xml' });
+    var url = URL.createObjectURL(blob);
+    return url;
+}
+
+
+Dom["a" /* default */].printElement = function (option) {
+    var _ = Dom["a" /* default */].ShareInstance._;
+    var $ = Dom["a" /* default */].ShareInstance.$;
+    option = option || {};
+    if (typeof option == 'string') {
+        option = { elt: Dom["a" /* default */].ShareInstance.$(option) };
+    }
+    else if (typeof option.elt == 'string') {
+        option.elt = $(option.elt);
+    }
+    else if (Dom["a" /* default */].isDomNode(option)) {
+        option = { elt: option };
+    }
+    if (Dom["a" /* default */].isDomNode(option.elt)) {
+        var canvases = [], imageExported = [];
+        var canvas, images, img, src, scripts, i;
+
+
+        if (option.elt.querySelectorAll) {
+            canvases = option.elt.querySelectorAll('canvas');
+        }
+        else {
+            $('canvas', option.elt, function (elt) {
+                canvases.push(elt);
+            });
+        }
+
+
+        for (i = 0; i < canvases.length; ++i) {
+            canvas = canvases[i];
+            src = canvas.toDataURL();
+            img = _({
+                tag: 'img',
+                class: 'absol-export-canvas-image',
+                attr: {
+                    src: src
+                }
+            });
+            imageExported.push(img);
+            Dom["a" /* default */].copyStyleRule(canvas, img);
+            canvas.parentElement.insertBefore(img, canvas);
+        }
+
+
+
+
+        var newElt = option.computeStyle ? Dom["a" /* default */].depthCloneWithStyle(option.elt) : option.elt.cloneNode(true);
+
+        //remove canvas that will be empty when clone
+        canvas = [];
+        if (newElt.querySelectorAll) {
+            canvases = newElt.querySelectorAll('canvas');
+        }
+        else {
+            $('canvas', newElt, function (elt) {
+                canvases.push(elt);
+            });
+        }
+        for (i = 0; i < canvases.length; ++i) {
+            canvases[i].remove();
+        }
+
+
+        scripts = [];
+        if (newElt.querySelectorAll) {
+            scripts = newElt.querySelectorAll('script');
+        }
+        else {
+            $('canvas', newElt, function (elt) {
+                scripts.push(elt);
+            });
+        }
+
+        for (i = 0; i < scripts.length; ++i) {
+            scripts[i].remove();
+        }
+
+
+        images = [];
+        //for performance
+        if (newElt.querySelectorAll) {
+            images = newElt.querySelectorAll('img');
+        }
+        else {
+            $('img', newElt, function (elt) {
+                images.push(elt);
+            });
+        }
+
+        for (i = 0; i < images.length; ++i) {
+            if (images[i].classList.contains('absol-export-canvas-image')) continue;
+            src = images[i].src;
+            images[i].setAttribute('src', src);
+        }
+
+
+
+        var renderSpace = _({
+            style: {
+                position: 'fixed',
+                top: '0',
+                left: '0',
+                right: '0',
+                bottom: '0',
+                overflow: 'auto',
+                zIndex: '10',
+                opacity: '0',
+                visibility: 'hidden'
+            }
+        });
+
+        $('link', document.head, function (elt) {
+            renderSpace.addChild(elt.cloneNode(false));
+        });
+
+        if (!option.computeStyle) {
+            $('style', document.head, function (elt) {
+                if (elt == Dom["a" /* default */].$printStyle) return;
+                renderSpace.addChild(elt.cloneNode(true));
+            });
+        }
+
+        renderSpace.addChild(newElt);
+        var eltCode = renderSpace.innerHTML;
+        renderSpace.clearChild();
+        option.title = option.title || ($('title', document.head) || { innerHTML: 'absol.js' }).innerHTML;
+        var htmlCode = ['<ht' + 'ml>',
+        ' <h' + 'ead><title>' + option.title + '</title><meta charset="UTF-8">',
+            '<style>',
+        option.overideStyle ? 'html, body{width:initial !important; height:initial !important; overflow: initial !important; overflow-x: initial !important;overflow-y: initial !important;  }' : '',
+            '@media print {',//still not work
+            '    body{',
+            '      -webkit-print-color-adjust: exact;',
+            '       color-adjust: exact;',
+            '    } ',
+            '    div, tr, td, table{',
+            '    }',
+            '  }',
+            'div, table, tr, td{',
+            '    page-break-inside: initial;',
+            '    page-break-before: avoid;',
+            '    page-break-after: avoid;',
+            '}',
+        option.extendCss || '',
+            '</style>',
+        '</he' + 'ad>',
+
+        '<bod' + 'y>',
+            eltCode,
+        '<scr' + 'ipt>' + (option.extendScript || '') + '</scri' + 'pt>',//browser parse  script tag fail
+        '<scr' + 'ipt>setTimeout(function(){ window.print();},1000);</scri' + 'pt>',//browser parse  script tag fail
+        '</bod' + 'y>',
+        '</ht' + 'ml>'].join('\n');
+        var blob = new Blob([htmlCode], { type: 'text/html; charset=UTF-8' });
+        renderSpace.addTo(document.body);
+        var iframe = _('iframe').attr('src', URL.createObjectURL(blob)).addStyle({ width: '100%', height: '100%' }).addTo(renderSpace);
+        return new Promise(function (rs, rj) {
+            function waitLoad() {
+                if (iframe.contentWindow && iframe.contentWindow.document && iframe.contentWindow.document.body) {
+                    if (typeof option.onLoad == 'function') option.onLoad();
+                    iframe.contentWindow.focus();
+                    setTimeout(function () {
+                        function waitFocusBack() {
+                            if (!document.hasFocus || document.hasFocus()) {
+                                renderSpace.remove();
+                                if (typeof option.onFinish == 'function') option.onFinish();
+                                rs();
+                            }
+                            else {
+                                setTimeout(waitFocusBack, 300)
+                            }
+                        }
+                        waitFocusBack();
+                    }, 4000);
+                }
+                else setTimeout(waitLoad, 1000)
+            }
+            waitLoad();
+        });
+    }
+    else {
+        throw new Error('Invalid param!');
+    }
+};
+
+
+
+/* harmony default export */ var HTML5_Svg = __webpack_exports__["a"] = (Svg);
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2426,7 +2872,7 @@ String.prototype.nonAccentVietnamese = function () {
 var support = __webpack_require__(14);
 var base64 = __webpack_require__(44);
 var nodejsUtils = __webpack_require__(28);
-var setImmediate = __webpack_require__(85);
+var setImmediate = __webpack_require__(86);
 var external = __webpack_require__(21);
 
 
@@ -2900,452 +3346,6 @@ exports.prepareContent = function(name, inputData, isBinary, isOptimizedBinarySt
 
 
 /***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXTERNAL MODULE: ./node_modules/absol/src/HTML5/Dom.js + 1 modules
-var Dom = __webpack_require__(1);
-
-// EXTERNAL MODULE: ./node_modules/absol/src/HTML5/Element.js
-var Element = __webpack_require__(6);
-
-// CONCATENATED MODULE: ./node_modules/absol/src/HTML5/ElementNS.js
-
-function ElementNS() {
-    Element["a" /* default */].call(this);
-}
-
-Object.defineProperties(ElementNS.prototype, Object.getOwnPropertyDescriptors(Element["a" /* default */].prototype));
-
-ElementNS.prototype.attr = function () {      
-    if (arguments.length == 1) {
-        if (typeof (arguments[0]) == 'string') {
-            if (this._azar_extendAttributes[arguments[0]]) {
-                return this._azar_extendAttributes[arguments[0]].get.call(this);
-            }
-            else
-                return this.getAttributeNS(null,arguments[0]);
-        }
-        else {
-            for (var key in arguments[0]) {
-            
-                this.attr(key, arguments[0][key]);
-            }
-        }
-    }
-    else {
-        if (arguments.length == 2) {
-            if (arguments[1] === null || arguments[1] === undefined) {
-                if (this._azar_extendAttributes[arguments[0]]) {
-                    this._azar_extendAttributes[arguments[0]].remove.call(this, arguments[1]);
-                }
-                else
-                    this.removeAttributeNS(null,arguments[0]);
-            }
-            else {
-                if (this._azar_extendAttributes[arguments[0]]) {
-                    this._azar_extendAttributes[arguments[0]].set.call(this, arguments[1]);
-                }
-                else{
-                    this.setAttributeNS(null,arguments[0], arguments[1]);
-                }
-            }
-        }
-    }
-    return this;
-};
-
-/* harmony default export */ var HTML5_ElementNS = (ElementNS);
-// CONCATENATED MODULE: ./node_modules/absol/src/HTML5/Svg.js
-
-
-
-
-var sattachhookCreator = function () {
-    return Svg.ShareInstance._('<image  class="absol-attachhook" style:"display: none"  xlink:href=""/>');
-};
-
-
-function Svg(option) {
-    Dom["a" /* default */].call(this, option);
-    this.defaultTag = 'g';
-    this.svgNS = "http://www.w3.org/2000/svg";
-    Object.defineProperties(this.creator,
-        {
-            sattachhook: {
-                set: function () {
-                    //do nothing
-                },
-                get: function () {
-                    return sattachhookCreator;
-                }
-            }
-        });
-    delete this.buidDom;
-    this.buildSvg = this.create.bind(this);
-}
-
-
-Object.defineProperties(Svg.prototype, Object.getOwnPropertyDescriptors(Dom["a" /* default */].prototype));
-
-Svg.prototype.fromCode = function (code) {
-    code = code.trim();
-    var receptacle = document.createElement('div');
-    var element;
-    var prototypes;
-    if (code.startsWith('<svg')) {
-        receptacle.innerHTML = code;
-        element = receptacle.childNodes[0];
-        prototypes = Object.getOwnPropertyDescriptors(Element["a" /* default */].prototype);
-        Object.defineProperties(element, prototypes);
-        Element["a" /* default */].call(element);
-    }
-    else {
-        var svgfragment = '<svg  version="1.1" xmlns="http://www.w3.org/2000/svg">' + code + '</svg>';
-        receptacle.innerHTML = '' + svgfragment;
-        element = receptacle.childNodes[0].childNodes[0];
-        prototypes = Object.getOwnPropertyDescriptors(HTML5_ElementNS.prototype);
-        Object.defineProperties(element, prototypes);
-        HTML5_ElementNS.call(element);
-    }
-    return element;
-};
-
-
-Svg.prototype.makeNewElement = function (tagName) {
-    return document.createElementNS(this.svgNS, tagName);
-};
-
-/**
- * 
- * @param {Element} element 
- */
-Svg.prototype.attach = function (element) {
-    if (typeof element.attr == 'function') return;
-    var prototypes = Object.getOwnPropertyDescriptors(HTML5_ElementNS.prototype);
-    Object.defineProperties(element, prototypes);
-    HTML5_ElementNS.call(element);
-};
-
-Svg.ShareInstance = new Svg();
-
-Svg.svgToCanvas = function (element) {
-    if (typeof element == 'string') {
-        element = Dom["a" /* default */].ShareInstance.$(element);
-    }
-    if (element && element.tagName == 'svg') {
-        var cssTexts = {};
-        var depthClone = function (originElt) {
-            var newElt = originElt.cloneNode();//no deep
-            if (!originElt.getAttributeNS) return newElt;//is text node
-            var cssRules = Element["a" /* default */].prototype.getCSSRules.call(originElt);
-            var cssKey = cssRules.reduce(function (ac, rule) {
-                for (var i = 0; i < rule.style.length; ++i) {
-                    ac[rule.style[i]] = true;
-                }
-                return ac;
-            }, {});
-            for (var key in cssKey) {
-                newElt.style[key] = Element["a" /* default */].prototype.getComputedStyleValue.call(originElt, key);
-            }
-            var children = Array.prototype.map.call(originElt.childNodes, depthClone);
-            for (var i = 0; i < children.length; ++i) {
-                newElt.appendChild(children[i]);
-            }
-            return newElt;
-        };
-
-        var cloneElement = depthClone(element);
-
-        var renderSpace = Dom["a" /* default */].ShareInstance._({
-            style: {
-                // opacity:0,
-                zIndex: -1000,
-                position: 'fixed',
-                top: 0,
-                bottom: 0
-            }
-        }).addTo(document.body);
-        renderSpace.addChild(cloneElement);
-
-        var svgCode = renderSpace.innerHTML;
-        renderSpace.clearChild();
-
-        var mBlob = new Blob([svgCode], { type: "image/svg+xml;charset=utf-8" });
-        var src = (URL || webkitURL).createObjectURL(mBlob);
-
-        var image = Dom["a" /* default */].ShareInstance._('img');
-        image.attr('src', src)
-            .addTo(renderSpace);
-        var canvas = document.createElement("canvas");
-        renderSpace.addChild(canvas);
-        return Dom["a" /* default */].waitImageLoaded(image).then(function () {
-            canvas.width = image.width;
-            canvas.height = image.height;
-            var context = canvas.getContext("2d");
-            context.drawImage(image, 0, 0);
-            renderSpace.selfRemove();
-            return canvas;
-        });
-    }
-    else {
-        throw new Error('Element must be svg');
-    }
-};
-
-Svg.svgToRasterImageUrl = function (element) {
-    return Svg.svgToCanvas(element).then(function (canvas) {
-        return canvas.toDataURL();
-    });
-}
-
-Svg.svgToExportedString = function (element) {
-    if (typeof element == 'string') {
-        element = Dom["a" /* default */].ShareInstance.$(element);
-    }
-    if (element && element.tagName == 'svg') {
-        var depthClone = function (originElt) {
-            var newElt = originElt.cloneNode();//no deep
-            if (!originElt.getAttributeNS) return newElt;//is text node
-            var cssRules = Element["a" /* default */].prototype.getCSSRules.call(originElt);
-            var cssKey = cssRules.reduce(function (ac, rule) {
-                for (var i = 0; i < rule.style.length; ++i) {
-                    ac[rule.style[i]] = true;
-                }
-                return ac;
-            }, {});
-            for (var key in cssKey) {
-                newElt.style[key] = Element["a" /* default */].prototype.getComputedStyleValue.call(originElt, key);
-            }
-            var children = Array.prototype.map.call(originElt.childNodes, depthClone);
-            for (var i = 0; i < children.length; ++i) {
-                newElt.appendChild(children[i]);
-            }
-            return newElt;
-        };
-
-        var cloneElement = depthClone(element);
-        var renderSpace = Dom["a" /* default */].ShareInstance._({
-            style: {
-                // opacity:0,
-                zIndex: -1000,
-                position: 'fixed',
-                top: 0,
-                bottom: 0
-            }
-        }).addTo(document.body);
-        renderSpace.addChild(cloneElement);
-        var svgCode = renderSpace.innerHTML;
-        renderSpace.selfRemove();
-        return svgCode;
-    }
-    else {
-        throw new Error('Element must be svg');
-    }
-};
-
-
-Svg.svgToSvgUrl = function (element) {
-    var svg = Svg.svgToExportedString(element);
-    svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n' + svg;
-    var blob = new Blob([svg], { type: 'image/svg+xml' });
-    var url = URL.createObjectURL(blob);
-    return url;
-}
-
-
-Dom["a" /* default */].printElement = function (option) {
-    var _ = Dom["a" /* default */].ShareInstance._;
-    var $ = Dom["a" /* default */].ShareInstance.$;
-    option = option || {};
-    if (typeof option == 'string') {
-        option = { elt: Dom["a" /* default */].ShareInstance.$(option) };
-    }
-    else if (typeof option.elt == 'string') {
-        option.elt = $(option.elt);
-    }
-    else if (Dom["a" /* default */].isDomNode(option)) {
-        option = { elt: option };
-    }
-    if (Dom["a" /* default */].isDomNode(option.elt)) {
-        var canvases = [], imageExported = [];
-        var canvas, images, img, src, scripts, i;
-
-
-        if (option.elt.querySelectorAll) {
-            canvases = option.elt.querySelectorAll('canvas');
-        }
-        else {
-            $('canvas', option.elt, function (elt) {
-                canvases.push(elt);
-            });
-        }
-
-
-        for (i = 0; i < canvases.length; ++i) {
-            canvas = canvases[i];
-            src = canvas.toDataURL();
-            img = _({
-                tag: 'img',
-                class: 'absol-export-canvas-image',
-                attr: {
-                    src: src
-                }
-            });
-            imageExported.push(img);
-            Dom["a" /* default */].copyStyleRule(canvas, img);
-            canvas.parentElement.insertBefore(img, canvas);
-        }
-
-
-
-
-        var newElt = option.computeStyle ? Dom["a" /* default */].depthCloneWithStyle(option.elt) : option.elt.cloneNode(true);
-
-        //remove canvas that will be empty when clone
-        canvas = [];
-        if (newElt.querySelectorAll) {
-            canvases = newElt.querySelectorAll('canvas');
-        }
-        else {
-            $('canvas', newElt, function (elt) {
-                canvases.push(elt);
-            });
-        }
-        for (i = 0; i < canvases.length; ++i) {
-            canvases[i].remove();
-        }
-
-
-        scripts = [];
-        if (newElt.querySelectorAll) {
-            scripts = newElt.querySelectorAll('script');
-        }
-        else {
-            $('canvas', newElt, function (elt) {
-                scripts.push(elt);
-            });
-        }
-
-        for (i = 0; i < scripts.length; ++i) {
-            scripts[i].remove();
-        }
-
-
-        images = [];
-        //for performance
-        if (newElt.querySelectorAll) {
-            images = newElt.querySelectorAll('img');
-        }
-        else {
-            $('img', newElt, function (elt) {
-                images.push(elt);
-            });
-        }
-
-        for (i = 0; i < images.length; ++i) {
-            if (images[i].classList.contains('absol-export-canvas-image')) continue;
-            src = images[i].src;
-            images[i].setAttribute('src', src);
-        }
-
-
-
-        var renderSpace = _({
-            style: {
-                position: 'fixed',
-                top: '0',
-                left: '0',
-                right: '0',
-                bottom: '0',
-                overflow: 'auto',
-                zIndex: '10',
-                opacity: '0',
-                visibility: 'hidden'
-            }
-        });
-
-        $('link', document.head, function (elt) {
-            renderSpace.addChild(elt.cloneNode(false));
-        });
-
-        if (!option.computeStyle) {
-            $('style', document.head, function (elt) {
-                if (elt == Dom["a" /* default */].$printStyle) return;
-                renderSpace.addChild(elt.cloneNode(true));
-            });
-        }
-
-        renderSpace.addChild(newElt);
-        var eltCode = renderSpace.innerHTML;
-        renderSpace.clearChild();
-        option.title = option.title || ($('title', document.head) || { innerHTML: 'absol.js' }).innerHTML;
-        var htmlCode = ['<ht' + 'ml>',
-        ' <h' + 'ead><title>' + option.title + '</title><meta charset="UTF-8">',
-            '<style>',
-        option.overideStyle ? 'html, body{width:initial !important; height:initial !important; overflow: initial !important; overflow-x: initial !important;overflow-y: initial !important;  }' : '',
-            '@media print {',//still not work
-            '    body{',
-            '      -webkit-print-color-adjust: exact;',
-            '       color-adjust: exact;',
-            '    } ',
-            '    div, tr, td, table{',
-            '    }',
-            '  }',
-            'div, table, tr, td{',
-            '    page-break-inside: initial;',
-            '    page-break-before: avoid;',
-            '    page-break-after: avoid;',
-            '}',
-        option.extendCss || '',
-            '</style>',
-        '</he' + 'ad>',
-
-        '<bod' + 'y>',
-            eltCode,
-        '<scr' + 'ipt>' + (option.extendScript || '') + '</scri' + 'pt>',//browser parse  script tag fail
-        '<scr' + 'ipt>setTimeout(function(){ window.print();},1000);</scri' + 'pt>',//browser parse  script tag fail
-        '</bod' + 'y>',
-        '</ht' + 'ml>'].join('\n');
-        var blob = new Blob([htmlCode], { type: 'text/html; charset=UTF-8' });
-        renderSpace.addTo(document.body);
-        var iframe = _('iframe').attr('src', URL.createObjectURL(blob)).addStyle({ width: '100%', height: '100%' }).addTo(renderSpace);
-        return new Promise(function (rs, rj) {
-            function waitLoad() {
-                if (iframe.contentWindow && iframe.contentWindow.document && iframe.contentWindow.document.body) {
-                    if (typeof option.onLoad == 'function') option.onLoad();
-                    iframe.contentWindow.focus();
-                    setTimeout(function () {
-                        function waitFocusBack() {
-                            if (!document.hasFocus || document.hasFocus()) {
-                                renderSpace.remove();
-                                if (typeof option.onFinish == 'function') option.onFinish();
-                                rs();
-                            }
-                            else {
-                                setTimeout(waitFocusBack, 300)
-                            }
-                        }
-                        waitFocusBack();
-                    }, 4000);
-                }
-                else setTimeout(waitLoad, 1000)
-            }
-            waitLoad();
-        });
-    }
-    else {
-        throw new Error('Invalid param!');
-    }
-};
-
-
-
-/* harmony default export */ var HTML5_Svg = __webpack_exports__["a"] = (Svg);
-
-/***/ }),
 /* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3726,8 +3726,8 @@ module.exports = GenericWorker;
 
 
 
-var base64 = __webpack_require__(70)
-var ieee754 = __webpack_require__(71)
+var base64 = __webpack_require__(71)
+var ieee754 = __webpack_require__(72)
 var isArray = __webpack_require__(37)
 
 exports.Buffer = Buffer
@@ -5810,7 +5810,7 @@ Duplex.prototype._destroy = function (err, cb) {
 "use strict";
 
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var support = __webpack_require__(14);
 var nodejsUtils = __webpack_require__(28);
 var GenericWorker = __webpack_require__(12);
@@ -6123,7 +6123,7 @@ if (typeof Object.create === 'function') {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(63);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(64);
 /* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_BrowserRules__WEBPACK_IMPORTED_MODULE_0__);
 
 
@@ -6312,7 +6312,7 @@ var ES6Promise = null;
 if (typeof Promise !== "undefined") {
     ES6Promise = Promise;
 } else {
-    ES6Promise = __webpack_require__(86);
+    ES6Promise = __webpack_require__(87);
 }
 
 /**
@@ -7235,8 +7235,8 @@ function JSZip() {
         return newObj;
     };
 }
-JSZip.prototype = __webpack_require__(73);
-JSZip.prototype.loadAsync = __webpack_require__(104);
+JSZip.prototype = __webpack_require__(74);
+JSZip.prototype.loadAsync = __webpack_require__(105);
 JSZip.support = __webpack_require__(14);
 JSZip.defaults = __webpack_require__(46);
 
@@ -7715,7 +7715,7 @@ exports.Readable = exports;
 exports.Writable = __webpack_require__(32);
 exports.Duplex = __webpack_require__(16);
 exports.Transform = __webpack_require__(43);
-exports.PassThrough = __webpack_require__(80);
+exports.PassThrough = __webpack_require__(81);
 
 
 /***/ }),
@@ -7795,7 +7795,7 @@ util.inherits = __webpack_require__(18);
 
 /*<replacement>*/
 var internalUtil = {
-  deprecate: __webpack_require__(79)
+  deprecate: __webpack_require__(80)
 };
 /*</replacement>*/
 
@@ -8469,7 +8469,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(78);
+__webpack_require__(79);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -8571,7 +8571,7 @@ module.exports = CompressedObject;
 "use strict";
 
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 
 /**
  * The following functions come from pako, from pako/lib/zlib/crc32.js
@@ -8710,7 +8710,7 @@ module.exports = Array.isArray || function (arr) {
  * reduce the final size of the bundle (only one stream implementation, not
  * two).
  */
-module.exports = __webpack_require__(74);
+module.exports = __webpack_require__(75);
 
 
 /***/ }),
@@ -8789,7 +8789,7 @@ util.inherits = __webpack_require__(18);
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(75);
+var debugUtil = __webpack_require__(76);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -8798,7 +8798,7 @@ if (debugUtil && debugUtil.debuglog) {
 }
 /*</replacement>*/
 
-var BufferList = __webpack_require__(76);
+var BufferList = __webpack_require__(77);
 var destroyImpl = __webpack_require__(41);
 var StringDecoder;
 
@@ -10354,7 +10354,7 @@ function done(stream, er, data) {
 
 "use strict";
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var support = __webpack_require__(14);
 // private property
 var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
@@ -10468,8 +10468,8 @@ exports.decode = function(input) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
 
-var utils = __webpack_require__(8);
-var ConvertWorker = __webpack_require__(88);
+var utils = __webpack_require__(9);
+var ConvertWorker = __webpack_require__(89);
 var GenericWorker = __webpack_require__(12);
 var base64 = __webpack_require__(44);
 var support = __webpack_require__(14);
@@ -10478,7 +10478,7 @@ var external = __webpack_require__(21);
 var NodejsStreamOutputAdapter = null;
 if (support.nodestream) {
     try {
-        NodejsStreamOutputAdapter = __webpack_require__(89);
+        NodejsStreamOutputAdapter = __webpack_require__(90);
     } catch(e) {}
 }
 
@@ -10706,7 +10706,7 @@ exports.dosPermissions = null;
 "use strict";
 
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var GenericWorker = __webpack_require__(12);
 
 // the size of the generated chunks
@@ -10829,7 +10829,7 @@ module.exports = DataWorker;
 "use strict";
 
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var GenericWorker = __webpack_require__(12);
 
 /**
@@ -10867,7 +10867,7 @@ module.exports = DataLengthProbe;
 
 var GenericWorker = __webpack_require__(12);
 var crc32 = __webpack_require__(35);
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 
 /**
  * A worker which calculate the crc32 of the data flowing through.
@@ -10907,7 +10907,7 @@ exports.STORE = {
         return new GenericWorker("STORE decompression");
     }
 };
-exports.DEFLATE = __webpack_require__(92);
+exports.DEFLATE = __webpack_require__(93);
 
 
 /***/ }),
@@ -11378,11 +11378,11 @@ exports.DATA_DESCRIPTOR = "PK\x07\x08";
 "use strict";
 
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var support = __webpack_require__(14);
 var ArrayReader = __webpack_require__(58);
-var StringReader = __webpack_require__(106);
-var NodeBufferReader = __webpack_require__(107);
+var StringReader = __webpack_require__(107);
+var NodeBufferReader = __webpack_require__(108);
 var Uint8ArrayReader = __webpack_require__(60);
 
 /**
@@ -11413,7 +11413,7 @@ module.exports = function (data) {
 "use strict";
 
 var DataReader = __webpack_require__(59);
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 
 function ArrayReader(data) {
     DataReader.call(this, data);
@@ -11476,7 +11476,7 @@ module.exports = ArrayReader;
 
 "use strict";
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 
 function DataReader(data) {
     this.data = data; // type : see implementation
@@ -11600,7 +11600,7 @@ module.exports = DataReader;
 "use strict";
 
 var ArrayReader = __webpack_require__(58);
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 
 function Uint8ArrayReader(data) {
     ArrayReader.call(this, data);
@@ -11624,6 +11624,31 @@ module.exports = Uint8ArrayReader;
 
 /***/ }),
 /* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(258);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer, module) {(function (w) {
@@ -11671,10 +11696,10 @@ module.exports = Uint8ArrayReader;
   }
 }(window));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(13).Buffer, __webpack_require__(72)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(13).Buffer, __webpack_require__(73)(module)))
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {(function () {
@@ -11698,7 +11723,7 @@ module.exports = Uint8ArrayReader;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(13).Buffer))
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12005,18 +12030,18 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, Buffer) {/* harmony import */ var _DocxTpl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
-/* harmony import */ var _assets_content_types_xml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(65);
-/* harmony import */ var _assets_rels_xml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(66);
-/* harmony import */ var _assets_document_xml_rels__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(67);
+/* harmony import */ var _assets_content_types_xml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(66);
+/* harmony import */ var _assets_rels_xml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(67);
+/* harmony import */ var _assets_document_xml_rels__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(68);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(29);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jszip__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _HTML5_Dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1);
-/* harmony import */ var _HTML5_Svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9);
+/* harmony import */ var _HTML5_Svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8);
 
 
 
@@ -12249,28 +12274,28 @@ JSDocx.fromHTMLElement = function (element, options, getOuter, isWorkingElement)
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11), __webpack_require__(13).Buffer))
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\">\r\n  <Default Extension=\"rels\" ContentType=\r\n    \"application/vnd.openxmlformats-package.relationships+xml\" />\r\n  <Override PartName=\"/word/document.xml\" ContentType=\r\n    \"application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml\"/>\r\n  <Override PartName=\"/word/afchunk.mht\" ContentType=\"message/rfc822\"/>\r\n</Types>\r\n");
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">\r\n  <Relationship\r\n      Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument\"\r\n      Target=\"/word/document.xml\" Id=\"R09c83fafc067488e\" />\r\n</Relationships>\r\n");
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">\r\n  <Relationship Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/aFChunk\"\r\n    Target=\"/word/afchunk.mht\" Id=\"htmlChunk\" />\r\n</Relationships>\r\n");
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19595,14 +19620,14 @@ exports.tokTypes = types;
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(243);
+module.exports = __webpack_require__(267);
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19761,7 +19786,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -19851,7 +19876,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -19879,21 +19904,21 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var utf8 = __webpack_require__(17);
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var GenericWorker = __webpack_require__(12);
 var StreamHelper = __webpack_require__(45);
 var defaults = __webpack_require__(46);
 var CompressedObject = __webpack_require__(34);
-var ZipObject = __webpack_require__(90);
-var generate = __webpack_require__(91);
+var ZipObject = __webpack_require__(91);
+var generate = __webpack_require__(92);
 var nodejsUtils = __webpack_require__(28);
-var NodejsStreamInputAdapter = __webpack_require__(103);
+var NodejsStreamInputAdapter = __webpack_require__(104);
 
 
 /**
@@ -20275,7 +20300,7 @@ module.exports = out;
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -20306,10 +20331,10 @@ var inherits = __webpack_require__(18);
 
 inherits(Stream, EE);
 Stream.Readable = __webpack_require__(31);
-Stream.Writable = __webpack_require__(81);
-Stream.Duplex = __webpack_require__(82);
-Stream.Transform = __webpack_require__(83);
-Stream.PassThrough = __webpack_require__(84);
+Stream.Writable = __webpack_require__(82);
+Stream.Duplex = __webpack_require__(83);
+Stream.Transform = __webpack_require__(84);
+Stream.PassThrough = __webpack_require__(85);
 
 // Backwards-compat with node 0.4.x
 Stream.Stream = Stream;
@@ -20408,13 +20433,13 @@ Stream.prototype.pipe = function(dest, options) {
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20423,7 +20448,7 @@ Stream.prototype.pipe = function(dest, options) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(27).Buffer;
-var util = __webpack_require__(77);
+var util = __webpack_require__(78);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -20499,13 +20524,13 @@ if (util && util.inspect && util.inspect.custom) {
 }
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -20698,7 +20723,7 @@ if (util && util.inspect && util.inspect.custom) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11), __webpack_require__(25)))
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {
@@ -20772,7 +20797,7 @@ function config (name) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20825,35 +20850,35 @@ PassThrough.prototype._transform = function (chunk, encoding, cb) {
 };
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(32);
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(16);
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(31).Transform
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(31).PassThrough
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20868,12 +20893,12 @@ module.exports = typeof setImmediate === 'function' ? setImmediate :
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(33).setImmediate))
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var immediate = __webpack_require__(87);
+var immediate = __webpack_require__(88);
 
 /* istanbul ignore next */
 function INTERNAL() {}
@@ -21148,7 +21173,7 @@ function race(iterable) {
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21225,14 +21250,14 @@ function immediate(task) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var GenericWorker = __webpack_require__(12);
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 
 /**
  * A worker which convert chunks to a specified type.
@@ -21258,7 +21283,7 @@ module.exports = ConvertWorker;
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21266,7 +21291,7 @@ module.exports = ConvertWorker;
 
 var Readable = __webpack_require__(38).Readable;
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 utils.inherits(NodejsStreamOutputAdapter, Readable);
 
 /**
@@ -21307,7 +21332,7 @@ module.exports = NodejsStreamOutputAdapter;
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21447,14 +21472,14 @@ module.exports = ZipObject;
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var compressions = __webpack_require__(50);
-var ZipFileWorker = __webpack_require__(102);
+var ZipFileWorker = __webpack_require__(103);
 
 /**
  * Find the compression to use.
@@ -21511,15 +21536,15 @@ exports.generateWorker = function (zip, options, comment) {
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var USE_TYPEDARRAY = (typeof Uint8Array !== 'undefined') && (typeof Uint16Array !== 'undefined') && (typeof Uint32Array !== 'undefined');
 
-var pako = __webpack_require__(93);
-var utils = __webpack_require__(8);
+var pako = __webpack_require__(94);
+var utils = __webpack_require__(9);
 var GenericWorker = __webpack_require__(12);
 
 var ARRAY_TYPE = USE_TYPEDARRAY ? "uint8array" : "array";
@@ -21603,7 +21628,7 @@ exports.uncompressWorker = function () {
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21612,8 +21637,8 @@ exports.uncompressWorker = function () {
 
 var assign    = __webpack_require__(15).assign;
 
-var deflate   = __webpack_require__(94);
-var inflate   = __webpack_require__(97);
+var deflate   = __webpack_require__(95);
+var inflate   = __webpack_require__(98);
 var constants = __webpack_require__(55);
 
 var pako = {};
@@ -21624,14 +21649,14 @@ module.exports = pako;
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 
-var zlib_deflate = __webpack_require__(95);
+var zlib_deflate = __webpack_require__(96);
 var utils        = __webpack_require__(15);
 var strings      = __webpack_require__(53);
 var msg          = __webpack_require__(36);
@@ -22031,7 +22056,7 @@ exports.gzip = gzip;
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22057,7 +22082,7 @@ exports.gzip = gzip;
 // 3. This notice may not be removed or altered from any source distribution.
 
 var utils   = __webpack_require__(15);
-var trees   = __webpack_require__(96);
+var trees   = __webpack_require__(97);
 var adler32 = __webpack_require__(51);
 var crc32   = __webpack_require__(52);
 var msg     = __webpack_require__(36);
@@ -23912,7 +23937,7 @@ exports.deflateTune = deflateTune;
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25141,20 +25166,20 @@ exports._tr_align = _tr_align;
 
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 
-var zlib_inflate = __webpack_require__(98);
+var zlib_inflate = __webpack_require__(99);
 var utils        = __webpack_require__(15);
 var strings      = __webpack_require__(53);
 var c            = __webpack_require__(55);
 var msg          = __webpack_require__(36);
 var ZStream      = __webpack_require__(54);
-var GZheader     = __webpack_require__(101);
+var GZheader     = __webpack_require__(102);
 
 var toString = Object.prototype.toString;
 
@@ -25571,7 +25596,7 @@ exports.ungzip  = inflate;
 
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25599,8 +25624,8 @@ exports.ungzip  = inflate;
 var utils         = __webpack_require__(15);
 var adler32       = __webpack_require__(51);
 var crc32         = __webpack_require__(52);
-var inflate_fast  = __webpack_require__(99);
-var inflate_table = __webpack_require__(100);
+var inflate_fast  = __webpack_require__(100);
+var inflate_table = __webpack_require__(101);
 
 var CODES = 0;
 var LENS = 1;
@@ -27134,7 +27159,7 @@ exports.inflateUndermine = inflateUndermine;
 
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27486,7 +27511,7 @@ module.exports = function inflate_fast(strm, start) {
 
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27836,7 +27861,7 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
 
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27901,13 +27926,13 @@ module.exports = GZheader;
 
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var GenericWorker = __webpack_require__(12);
 var utf8 = __webpack_require__(17);
 var crc32 = __webpack_require__(35);
@@ -28448,13 +28473,13 @@ module.exports = ZipFileWorker;
 
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var GenericWorker = __webpack_require__(12);
 
 /**
@@ -28529,16 +28554,16 @@ module.exports = NodejsStreamInputAdapter;
 
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var external = __webpack_require__(21);
 var utf8 = __webpack_require__(17);
-var utils = __webpack_require__(8);
-var ZipEntries = __webpack_require__(105);
+var utils = __webpack_require__(9);
+var ZipEntries = __webpack_require__(106);
 var Crc32Probe = __webpack_require__(49);
 var nodejsUtils = __webpack_require__(28);
 
@@ -28618,15 +28643,15 @@ module.exports = function(data, options) {
 
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var readerFor = __webpack_require__(57);
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var sig = __webpack_require__(56);
-var ZipEntry = __webpack_require__(108);
+var ZipEntry = __webpack_require__(109);
 var utf8 = __webpack_require__(17);
 var support = __webpack_require__(14);
 //  class ZipEntries {{{
@@ -28887,13 +28912,13 @@ module.exports = ZipEntries;
 
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var DataReader = __webpack_require__(59);
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 
 function StringReader(data) {
     DataReader.call(this, data);
@@ -28932,13 +28957,13 @@ module.exports = StringReader;
 
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Uint8ArrayReader = __webpack_require__(60);
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 
 function NodeBufferReader(data) {
     Uint8ArrayReader.call(this, data);
@@ -28958,13 +28983,13 @@ module.exports = NodeBufferReader;
 
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var readerFor = __webpack_require__(57);
-var utils = __webpack_require__(8);
+var utils = __webpack_require__(9);
 var CompressedObject = __webpack_require__(34);
 var crc32fn = __webpack_require__(35);
 var utf8 = __webpack_require__(17);
@@ -29257,11 +29282,11 @@ module.exports = ZipEntry;
 
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(110);
+var content = __webpack_require__(111);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29282,17 +29307,17 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-span-input {\r\n    white-space: pre;\r\n}\r\n\r\n.absol-span-input:focus {\r\n    outline-color: rgba(30, 150, 255, 0.3);\r\n    outline-width: 0.0714rem;\r\n}\r\n\r\n.absol-span-input:empty::before {\r\n    content: \" \";\r\n    display: inline;\r\n    white-space: pre;\r\n}\r\n\r\n.absol-span-input.absol-span-input-empty-minus:empty::before {\r\n    content: \"-\";\r\n}", ""]);
+exports.push([module.i, ".absol-span-input {\r\n    white-space: pre;\r\n}\r\n\r\n.absol-span-input:focus {\r\n    outline-color: rgba(30, 150, 255, 0.3);\r\n    outline-width: 1px;\r\n}\r\n\r\n.absol-span-input:empty::before {\r\n    content: \" \";\r\n    display: inline;\r\n    white-space: pre;\r\n}\r\n\r\n.absol-span-input.absol-span-input-empty-minus:empty::before {\r\n    content: \"-\";\r\n}", ""]);
 
 
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports) {
 
 
@@ -29387,11 +29412,11 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(113);
+var content = __webpack_require__(114);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29410,268 +29435,233 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, "button.absol-button {\r\n    text-align: left;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    height: 2em;\r\n}\r\n\r\n.absol-icon-button {\r\n    text-align: left;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    line-height: 2em;\r\n    box-sizing: content-box;\r\n    height: 2em;\r\n    white-space: nowrap;  \r\n    \r\n}\r\n\r\n.absol-icon-button,\r\n.absol-icon-button *{\r\n    -webkit-user-select: none;  /* Chrome 49+ */\r\n    -moz-user-select: none;     /* Firefox 43+ */\r\n    -ms-user-select: none;      /* No support yet */\r\n    user-select: none;\r\n}\r\n\r\n\r\n.absol-icon-button:hover {\r\n    background-color: rgb(213, 213, 213);\r\n}\r\n\r\n.absol-icon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n.absol-icon-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-icon-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 2em;\r\n    height: 2em;\r\n    text-align: center;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    line-height: inherit;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-icon-button-icon-container>i {\r\n    font-size: 1em;\r\n    color: rgb(146, 146, 146);\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button-icon-container>svg {\r\n    width: 1em;\r\n    height: 1em;\r\n}\r\n\r\n.absol-icon-button-text-container:empty,\r\n.absol-icon-button-icon-container:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-icon-button-text-container {\r\n    border-left: solid 0.0714rem #c0c0c0;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    line-height: 2em;\r\n    text-align: center;\r\n}\r\n\r\n.absol-icon-button-text-container>span,\r\n.absol-icon-button-text-container>div {\r\n    font-size: 1em;\r\n    text-align: center;\r\n    margin-left: 0.7em;\r\n    margin-right: 0.7em;\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button.primary,\r\n.absol-button.primary {\r\n    border-color: #357ebd;\r\n    background-color: #428bca;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-text-container {\r\n    border-left-color: #357ebd;\r\n}\r\n\r\n.absol-icon-button.success,\r\n.absol-button.success {\r\n    border-color: #398439;\r\n    background-color: #47a447;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-text-container {\r\n    border-left-color: #398439;\r\n}\r\n\r\n.absol-icon-button.warning,\r\n.absol-button.warning {\r\n    background-color: #ed9c28;\r\n    border-color: #d58512;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-text-container {\r\n    border-left-color: #d58512;\r\n}\r\n\r\n.absol-icon-button.danger,\r\n.absol-button.danger {\r\n    background-color: #d2322d;\r\n    border-color: #ac2925;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-text-container {\r\n    border-left-color: #ac2925;\r\n}\r\n\r\n.absol-icon-button.info,\r\n.absol-button.info {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-text-container {\r\n    border-left-color: #46b8da;\r\n}", ""]);
-
-
 
 /***/ }),
 /* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(115);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "button.absol-button {\r\n    text-align: left;\r\n    background-color: #ebebeb;\r\n    border: solid 1px #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    height: 2em;\r\n}\r\n\r\n.absol-icon-button {\r\n    text-align: left;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 1px #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    line-height: 2em;\r\n    box-sizing: content-box;\r\n    height: 2em;\r\n    white-space: nowrap;  \r\n    \r\n}\r\n\r\n.absol-icon-button,\r\n.absol-icon-button *{\r\n    -webkit-user-select: none;  /* Chrome 49+ */\r\n    -moz-user-select: none;     /* Firefox 43+ */\r\n    -ms-user-select: none;      /* No support yet */\r\n    user-select: none;\r\n}\r\n\r\n\r\n.absol-icon-button:hover {\r\n    background-color: rgb(213, 213, 213);\r\n}\r\n\r\n.absol-icon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n.absol-icon-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-icon-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 2em;\r\n    height: 2em;\r\n    text-align: center;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    line-height: inherit;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-icon-button-icon-container>i {\r\n    font-size: 1em;\r\n    color: rgb(146, 146, 146);\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button-icon-container>svg {\r\n    width: 1em;\r\n    height: 1em;\r\n}\r\n\r\n.absol-icon-button-text-container:empty,\r\n.absol-icon-button-icon-container:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-icon-button-text-container {\r\n    border-left: solid 1px #c0c0c0;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    line-height: 2em;\r\n    text-align: center;\r\n}\r\n\r\n.absol-icon-button-text-container>span,\r\n.absol-icon-button-text-container>div {\r\n    font-size: 1em;\r\n    text-align: center;\r\n    margin-left: 0.7em;\r\n    margin-right: 0.7em;\r\n    line-height: inherit;\r\n}\r\n\r\n.absol-icon-button.primary,\r\n.absol-button.primary {\r\n    border-color: #357ebd;\r\n    background-color: #428bca;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.primary .absol-icon-button-text-container {\r\n    border-left-color: #357ebd;\r\n}\r\n\r\n.absol-icon-button.success,\r\n.absol-button.success {\r\n    border-color: #398439;\r\n    background-color: #47a447;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.success .absol-icon-button-text-container {\r\n    border-left-color: #398439;\r\n}\r\n\r\n.absol-icon-button.warning,\r\n.absol-button.warning {\r\n    background-color: #ed9c28;\r\n    border-color: #d58512;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.warning .absol-icon-button-text-container {\r\n    border-left-color: #d58512;\r\n}\r\n\r\n.absol-icon-button.danger,\r\n.absol-button.danger {\r\n    background-color: #d2322d;\r\n    border-color: #ac2925;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.danger .absol-icon-button-text-container {\r\n    border-left-color: #ac2925;\r\n}\r\n\r\n.absol-icon-button.info,\r\n.absol-button.info {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-icon-container>i {\r\n    color: white;\r\n}\r\n\r\n.absol-icon-button.info .absol-icon-button-text-container {\r\n    border-left-color: #46b8da;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".as-flexicon-button {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #bfbfbf;\r\n    background-color: #ebebeb;\r\n    border-radius: 0.2em;\r\n    outline: none;\r\n    padding: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.as-icon-button-table-box{\r\n  display: table;\r\n  width:100%;\r\n  height:100%;\r\n}\r\n\r\n.as-flexicon-button:hover .as-flexicon-button-content {\r\n    background-color: rgb(0, 0, 0, 0.1);\r\n}\r\n\r\n.as-flexicon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n\r\n.as-flexicon-button-content {\r\n    display: table-row;\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container,\r\n.as-flexicon-button-text-container {\r\n    display: table-cell;\r\n    box-sizing: content-box;\r\n    vertical-align: middle;\r\n  text-align: center;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty,\r\n.as-flexicon-button-text-container:empty {\r\n    display: none;\r\n}\r\n\r\n.as-flexicon-button-icon-container {\r\n    width: 2em;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    color: rgb(146, 146, 146);\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container>span,\r\n.as-flexicon-button-icon-container>i,\r\n.as-flexicon-button-icon-container>svg,\r\n.as-flexicon-button-icon-container>img {\r\n    font-size: 1em;\r\n}\r\n\r\n.as-flexicon-button-text-container {\r\n    padding-left: 0.357em;\r\n    padding-right: 0.357em;\r\n    min-width: 2em;\r\n}\r\n\r\n\r\n.as-flexicon-button-text-container {\r\n    border-left: solid 0.0714rem #bfbfbf;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty+.as-flexicon-button-text-container {\r\n    border-left: none\r\n}\r\n\r\n/*** theme  ***/\r\n\r\n.as-flexicon-button.primary {\r\n    border-color: #005bbd;\r\n    background-color: #007bff;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-text-container {\r\n    border-color: #005bbd;\r\n}\r\n\r\n\r\n.as-flexicon-button.secondary {\r\n    border-color: #4e555a;\r\n    background-color: #6d767e;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-text-container {\r\n    border-left-color: #4e555a;\r\n}\r\n\r\n\r\n.as-flexicon-button.success {\r\n    border-color: #1e7b34;\r\n    background-color: #29a847;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-text-container {\r\n    border-left-color: #1e7b34;\r\n}\r\n\r\n\r\n.as-flexicon-button.danger {\r\n    border-color: #b21f2e;\r\n    background-color: #dc3848;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-text-container {\r\n    border-left-color: #b21f2e;\r\n}\r\n\r\n.as-flexicon-button.warning {\r\n    border-color: #9e7700;\r\n    background-color: #e0a800;\r\n    color: black;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-text-container {\r\n    border-left-color: #9e7700;\r\n}\r\n\r\n.as-flexicon-button.info {\r\n    border-color: #117888;\r\n    background-color: #17a2b8;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-text-container {\r\n    border-left-color: #117888;\r\n}\r\n\r\n.as-flexicon-button.light {\r\n    border-color: #c9d1d9;\r\n    background-color: #f8f9fa;\r\n    color: #212529;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-text-container {\r\n    border-left-color: #c9d1d9;\r\n}\r\n\r\n.as-flexicon-button.dark {\r\n    border-color: #171a1c;\r\n    background-color: #343a40;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-text-container {\r\n    border-left-color: #171a1c;\r\n}\r\n\r\n.as-flexicon-button.link {\r\n    border-color: transparent;\r\n    background-color: transparent;\r\n    color: #007bff;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-icon-container {\r\n    color: #007bff;\r\n    background: transparent;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-text-container {\r\n    border-left-color: transparent;\r\n}\r\n\r\n.as-flexicon-button.link:hover .as-flexicon-button-text-container{\r\n    text-decoration: underline;\r\n}", ""]);
+
+var content = __webpack_require__(116);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(117);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".as-flexicon-button {\r\n    box-sizing: border-box;\r\n    border: solid 1px #bfbfbf;\r\n    background-color: #ebebeb;\r\n    border-radius: 0.2em;\r\n    outline: none;\r\n    padding: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.as-icon-button-table-box{\r\n  display: table;\r\n  width:100%;\r\n  height:100%;\r\n}\r\n\r\n.as-flexicon-button:hover .as-flexicon-button-content {\r\n    background-color: rgb(0, 0, 0, 0.1);\r\n}\r\n\r\n.as-flexicon-button:active {\r\n    -webkit-box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n    box-shadow: inset 0 0.2em 0.25em rgba(0, 0, 0, 0.125);\r\n}\r\n\r\n\r\n.as-flexicon-button-content {\r\n    display: table-row;\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container,\r\n.as-flexicon-button-text-container {\r\n    display: table-cell;\r\n    box-sizing: content-box;\r\n    vertical-align: middle;\r\n  text-align: center;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty,\r\n.as-flexicon-button-text-container:empty {\r\n    display: none;\r\n}\r\n\r\n.as-flexicon-button-icon-container {\r\n    width: 2em;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n    color: rgb(146, 146, 146);\r\n}\r\n\r\n\r\n.as-flexicon-button-icon-container>span,\r\n.as-flexicon-button-icon-container>i,\r\n.as-flexicon-button-icon-container>svg,\r\n.as-flexicon-button-icon-container>img {\r\n    font-size: 1em;\r\n}\r\n\r\n.as-flexicon-button-text-container {\r\n    padding-left: 0.357em;\r\n    padding-right: 0.357em;\r\n    min-width: 2em;\r\n}\r\n\r\n\r\n.as-flexicon-button-text-container {\r\n    border-left: solid 1px #bfbfbf;\r\n}\r\n\r\n.as-flexicon-button-icon-container:empty+.as-flexicon-button-text-container {\r\n    border-left: none\r\n}\r\n\r\n/*** theme  ***/\r\n\r\n.as-flexicon-button.primary {\r\n    border-color: #005bbd;\r\n    background-color: #007bff;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.primary .as-flexicon-button-text-container {\r\n    border-color: #005bbd;\r\n}\r\n\r\n\r\n.as-flexicon-button.secondary {\r\n    border-color: #4e555a;\r\n    background-color: #6d767e;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.secondary .as-flexicon-button-text-container {\r\n    border-left-color: #4e555a;\r\n}\r\n\r\n\r\n.as-flexicon-button.success {\r\n    border-color: #1e7b34;\r\n    background-color: #29a847;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.success .as-flexicon-button-text-container {\r\n    border-left-color: #1e7b34;\r\n}\r\n\r\n\r\n.as-flexicon-button.danger {\r\n    border-color: #b21f2e;\r\n    background-color: #dc3848;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.danger .as-flexicon-button-text-container {\r\n    border-left-color: #b21f2e;\r\n}\r\n\r\n.as-flexicon-button.warning {\r\n    border-color: #9e7700;\r\n    background-color: #e0a800;\r\n    color: black;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.warning .as-flexicon-button-text-container {\r\n    border-left-color: #9e7700;\r\n}\r\n\r\n.as-flexicon-button.info {\r\n    border-color: #117888;\r\n    background-color: #17a2b8;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.info .as-flexicon-button-text-container {\r\n    border-left-color: #117888;\r\n}\r\n\r\n.as-flexicon-button.light {\r\n    border-color: #c9d1d9;\r\n    background-color: #f8f9fa;\r\n    color: #212529;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.light .as-flexicon-button-text-container {\r\n    border-left-color: #c9d1d9;\r\n}\r\n\r\n.as-flexicon-button.dark {\r\n    border-color: #171a1c;\r\n    background-color: #343a40;\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-icon-container {\r\n    color: white;\r\n}\r\n\r\n.as-flexicon-button.dark .as-flexicon-button-text-container {\r\n    border-left-color: #171a1c;\r\n}\r\n\r\n.as-flexicon-button.link {\r\n    border-color: transparent;\r\n    background-color: transparent;\r\n    color: #007bff;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-icon-container {\r\n    color: #007bff;\r\n    background: transparent;\r\n}\r\n\r\n.as-flexicon-button.link .as-flexicon-button-text-container {\r\n    border-left-color: transparent;\r\n}\r\n\r\n.as-flexicon-button.link:hover .as-flexicon-button-text-container{\r\n    text-decoration: underline;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-vscroller {\r\n    position: relative;\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n.absol-vscroller.disabled>.absol-vscroller-viewport {\r\n    overflow-y: visible;\r\n    margin-right: 0rem;\r\n    min-width: 100%;\r\n}\r\n\r\n.absol-vscroller.disabled {\r\n    overflow: visible;\r\n    overflow-x: visible;\r\n\r\n}\r\n\r\n\r\n.absol-vscroller-viewport {\r\n    overflow-y: scroll;\r\n    box-sizing: content-box;\r\n\r\n}\r\n\r\n.absol-vscroller>.absol-vscroller-viewport {\r\n    max-height: 100%;\r\n}\r\n\r\n.absol-vscroller.limited-height>.absol-vscroller-viewport {\r\n    max-height: inherit;\r\n}\r\n\r\n\r\n/************  hscroller  ***********/\r\n.absol-hscroller {\r\n    position: relative;\r\n    overflow-y: hidden;\r\n}\r\n\r\n.absol-hscroller.disabled {\r\n    overflow: visible;\r\n    overflow-y: visible;\r\n}\r\n\r\n.absol-hscroller-viewport {\r\n    overflow-x: scroll;\r\n    box-sizing: content-box;\r\n    min-height: calc(100% + 1.2143rem);\r\n}\r\n\r\n.absol-hscroller.disabled>.absol-hscroller-viewport {\r\n    overflow-x: visible;\r\n    margin-bottom: 0rem;\r\n}\r\n\r\n\r\n.absol-hscroller>.absol-hscroller-viewport {\r\n    max-width: 100%;\r\n}\r\n\r\n\r\n/********** scroll bar *********************/\r\n.absol-scrollbar-force-modal {\r\n    position: fixed;\r\n    top: 0.3571rem;\r\n    left: 0.3571rem;\r\n    right: 0.3571rem;\r\n    bottom: 0.3571rem;\r\n    z-index: 1000000;\r\n}\r\n\r\n.absol-scrollbar-container {\r\n    position: absolute;\r\n    right: 0;\r\n    bottom: 0;\r\n    z-index: 10;\r\n}\r\n\r\n.absol-scrollbar-container.vertical {\r\n    top: 0;\r\n    width: 0.5rem;\r\n}\r\n\r\n.absol-scrollbar-container.horizontal {\r\n    height: 0.5rem;\r\n    left: 0;\r\n}\r\n\r\n.absol-scrollbar-container>.absol-scrollbar {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n.absol-scrollbar-container.vertical>.absol-scrollbar>.absol-scrollbar-button {\r\n    left: 0.0714rem;\r\n    right: 0.0714rem;\r\n    top: 0;\r\n}\r\n\r\n.absol-scrollbar-container.horizontal>.absol-scrollbar>.absol-scrollbar-button {\r\n    top: 0.0714rem;\r\n    bottom: 0.0714rem;\r\n    left: 0;\r\n}\r\n\r\n.absol-scrollbar {\r\n    position: relative;\r\n    background: transparent;\r\n}\r\n\r\n.absol-scrollbar-button {\r\n    position: absolute;\r\n    background-color: rgba(0, 0, 0, 0.25);\r\n    border-radius: 0.1429rem;\r\n}\r\n\r\n\r\n.absol-scrollbar.absol-hidden {\r\n    visibility: hidden;\r\n}", ""]);
+
+var content = __webpack_require__(118);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(119);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-vscroller {\r\n    position: relative;\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n.absol-vscroller.disabled>.absol-vscroller-viewport {\r\n    overflow-y: visible;\r\n    margin-right: 0px;\r\n    min-width: 100%;\r\n}\r\n\r\n.absol-vscroller.disabled {\r\n    overflow: visible;\r\n    overflow-x: visible;\r\n\r\n}\r\n\r\n\r\n.absol-vscroller-viewport {\r\n    overflow-y: scroll;\r\n    box-sizing: content-box;\r\n\r\n}\r\n\r\n.absol-vscroller>.absol-vscroller-viewport {\r\n    max-height: 100%;\r\n}\r\n\r\n.absol-vscroller.limited-height>.absol-vscroller-viewport {\r\n    max-height: inherit;\r\n}\r\n\r\n\r\n/************  hscroller  ***********/\r\n.absol-hscroller {\r\n    position: relative;\r\n    overflow-y: hidden;\r\n}\r\n\r\n.absol-hscroller.disabled {\r\n    overflow: visible;\r\n    overflow-y: visible;\r\n}\r\n\r\n.absol-hscroller-viewport {\r\n    overflow-x: scroll;\r\n    box-sizing: content-box;\r\n    min-height: calc(100% + 17px);\r\n}\r\n\r\n.absol-hscroller.disabled>.absol-hscroller-viewport {\r\n    overflow-x: visible;\r\n    margin-bottom: 0px;\r\n}\r\n\r\n\r\n.absol-hscroller>.absol-hscroller-viewport {\r\n    max-width: 100%;\r\n}\r\n\r\n\r\n/********** scroll bar *********************/\r\n.absol-scrollbar-force-modal {\r\n    position: fixed;\r\n    top: 5px;\r\n    left: 5px;\r\n    right: 5px;\r\n    bottom: 5px;\r\n    z-index: 1000000;\r\n}\r\n\r\n.absol-scrollbar-container {\r\n    position: absolute;\r\n    right: 0;\r\n    bottom: 0;\r\n    z-index: 10;\r\n}\r\n\r\n.absol-scrollbar-container.vertical {\r\n    top: 0;\r\n    width: 7px;\r\n}\r\n\r\n.absol-scrollbar-container.horizontal {\r\n    height: 7px;\r\n    left: 0;\r\n}\r\n\r\n.absol-scrollbar-container>.absol-scrollbar {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n.absol-scrollbar-container.vertical>.absol-scrollbar>.absol-scrollbar-button {\r\n    left: 1px;\r\n    right: 1px;\r\n    top: 0;\r\n}\r\n\r\n.absol-scrollbar-container.horizontal>.absol-scrollbar>.absol-scrollbar-button {\r\n    top: 1px;\r\n    bottom: 1px;\r\n    left: 0;\r\n}\r\n\r\n.absol-scrollbar {\r\n    position: relative;\r\n    background: transparent;\r\n}\r\n\r\n.absol-scrollbar-button {\r\n    position: absolute;\r\n    background-color: rgba(0, 0, 0, 0.25);\r\n    border-radius: 2px;\r\n}\r\n\r\n\r\n.absol-scrollbar.absol-hidden {\r\n    visibility: hidden;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-number-input {\r\n    text-align: right;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    position: relative;\r\n    min-width: calc(1em + 0.1429rem);\r\n    height: calc(2em + 0.1429rem);\r\n    border: solid 0.0714rem #d6d6d6;\r\n    font-size: 1rem;\r\n    box-sizing: border-box;\r\n    width: 4em;\r\n}\r\n\r\n.absol-number-input-button-up-container {\r\n    top: 0;\r\n}\r\n\r\n.absol-number-input-button-down-container {\r\n    bottom: 0;\r\n}\r\n\r\n.absol-number-input-button-up-container,\r\n.absol-number-input-button-down-container {\r\n    right: 0;\r\n    position: absolute;\r\n    height: 1em;\r\n    width: 1em;\r\n    max-height: 50%;\r\n}\r\n\r\n.absol-number-input-button-up-container>button,\r\n.absol-number-input-button-down-container>button {\r\n    width: 100%;\r\n    height: 100%;\r\n    line-height: 1;\r\n    padding: 0;\r\n    border: none;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    color: rgb(101, 101, 101);\r\n    background-color: transparent;\r\n    background-color: rgb(101, 101, 101, 0.05);\r\n}\r\n\r\n.absol-number-input-button-up-container>button:active,\r\n.absol-number-input-button-down-container>button:active{\r\n    color: black;\r\n    background-color: rgb(101, 101, 101, 0.3);\r\n}\r\n\r\n.absol-number-input-text-container {\r\n    left: 0em;\r\n    right: 1.2em;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n\r\n.absol-number-input-text-container>input[type=\"text\"] {\r\n    border: none;\r\n    outline: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    text-align: right;\r\n    padding-left:0.2em;\r\n    padding-right: 0.2em;  \r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled .absol-number-input-button-up-container,\r\n.absol-number-input.absol-disabled .absol-number-input-button-down-container\r\n{\r\n    opacity: 0.3;\r\n}", ""]);
+
+var content = __webpack_require__(120);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(121);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-number-input {\r\n    text-align: right;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    position: relative;\r\n    min-width: calc(1em + 2px);\r\n    height: calc(2em + 2px);\r\n    border: solid 1px #d6d6d6;\r\n    font-size: 14px;\r\n    box-sizing: border-box;\r\n    width: 4em;\r\n}\r\n\r\n.absol-number-input-button-up-container {\r\n    top: 0;\r\n}\r\n\r\n.absol-number-input-button-down-container {\r\n    bottom: 0;\r\n}\r\n\r\n.absol-number-input-button-up-container,\r\n.absol-number-input-button-down-container {\r\n    right: 0;\r\n    position: absolute;\r\n    height: 1em;\r\n    width: 1em;\r\n    max-height: 50%;\r\n}\r\n\r\n.absol-number-input-button-up-container>button,\r\n.absol-number-input-button-down-container>button {\r\n    width: 100%;\r\n    height: 100%;\r\n    line-height: 1;\r\n    padding: 0;\r\n    border: none;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    color: rgb(101, 101, 101);\r\n    background-color: transparent;\r\n    background-color: rgb(101, 101, 101, 0.05);\r\n}\r\n\r\n.absol-number-input-button-up-container>button:active,\r\n.absol-number-input-button-down-container>button:active{\r\n    color: black;\r\n    background-color: rgb(101, 101, 101, 0.3);\r\n}\r\n\r\n.absol-number-input-text-container {\r\n    left: 0em;\r\n    right: 1.2em;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n\r\n.absol-number-input-text-container>input[type=\"text\"] {\r\n    border: none;\r\n    outline: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    text-align: right;\r\n    padding-left:0.2em;\r\n    padding-right: 0.2em;  \r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled{\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-number-input.absol-disabled .absol-number-input-button-up-container,\r\n.absol-number-input.absol-disabled .absol-number-input-button-down-container\r\n{\r\n    opacity: 0.3;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-search-text-input {\r\n    position: relative;\r\n    height: 2em;\r\n    border-radius: 0.3em;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-search-text-input.focus {\r\n    outline: solid 0.0714rem rgba(30, 30, 255, 0.4);\r\n}\r\n\r\n.absol-search-text-input-container {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 2em;\r\n}\r\n\r\n.absol-search-text-button-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 2em;\r\n    bottom: 0em;\r\n}\r\n\r\n.absol-search-text-button-container button {\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    border: none;\r\n    background: transparent;\r\n    padding: 0;\r\n    font-size: 1em;\r\n}\r\n\r\n.absol-search-text-button-container button>svg {\r\n    height: 1.14285714286em;\r\n    width: 1.14285714286em;\r\n    fill: rgb(132, 132, 132);\r\n}\r\n\r\n.absol-search-text-input-container input {\r\n    width: 100%;\r\n    height: 100%;\r\n    font-size: 1em;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    border: none;\r\n    background-color: transparent;\r\n    padding-left: 0.6em;\r\n}\r\n\r\n.absol-search-text-input:not(.searching) svg.times{\r\n    display: none;\r\n}\r\n\r\n.absol-search-text-input.searching svg.find{\r\n    display: none;\r\n}", ""]);
+
+var content = __webpack_require__(122);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(123);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-search-text-input {\r\n    position: relative;\r\n    height: 2em;\r\n    border-radius: 0.3em;\r\n    border: solid 1px #a9a9a9;\r\n    font-size: 14px;\r\n}\r\n\r\n.absol-search-text-input.focus {\r\n    outline: solid 1px rgba(30, 30, 255, 0.4);\r\n}\r\n\r\n.absol-search-text-input-container {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 2em;\r\n}\r\n\r\n.absol-search-text-button-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 2em;\r\n    bottom: 0em;\r\n}\r\n\r\n.absol-search-text-button-container button {\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    border: none;\r\n    background: transparent;\r\n    padding: 0;\r\n    font-size: 1em;\r\n}\r\n\r\n.absol-search-text-button-container button>svg {\r\n    height: 1.14285714286em;\r\n    width: 1.14285714286em;\r\n    fill: rgb(132, 132, 132);\r\n}\r\n\r\n.absol-search-text-input-container input {\r\n    width: 100%;\r\n    height: 100%;\r\n    font-size: 1em;\r\n    box-sizing: border-box;\r\n    outline: none;\r\n    border: none;\r\n    background-color: transparent;\r\n    padding-left: 0.6em;\r\n}\r\n\r\n.absol-search-text-input:not(.searching) svg.times{\r\n    display: none;\r\n}\r\n\r\n.absol-search-text-input.searching svg.find{\r\n    display: none;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-select-table-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-select-table {\r\n    border: solid 0.0714rem #a9a9a9;\r\n    min-width: 26em;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-select-table-header {\r\n    display: block;\r\n    position: relative;\r\n    box-sizing: content-box;\r\n    height: 2.2857142857em;\r\n}\r\n\r\n.absol-select-table-searchtextinput-container {\r\n    position: absolute;\r\n    left: 0.14285714285em;\r\n    top: 0.14285714285em;\r\n    height: 2em;\r\n    right: 10em;\r\n    /* background-color: cyan; */\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-buttons-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-searchtextinput-container {\r\n    right: 0.14285714285em !important;\r\n}\r\n\r\n.absol-select-table-buttons-container {\r\n    position: absolute;\r\n    right: 0.14285714285em;\r\n    top: 0.14285714285em;\r\n    width: 10.7142857143em;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-buttons-container>button {\r\n    height: 2em;\r\n    font-size: 1em;\r\n    background-color: transparent;\r\n    border: none;\r\n    padding: 0 0.5em;\r\n    margin: 0;\r\n    text-decoration: underline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:hover {\r\n    color: #a9a9a9;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:active {\r\n    color: #a9a9ff;\r\n}\r\n\r\n.absol-select-table-body {\r\n    margin: 0.14285714285em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-items-scroller {\r\n    width: 50%;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-button {\r\n    background-color: rgba(1, 1, 30, 0.1);\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-bar-v-container {\r\n    width: 0.69em;\r\n}\r\n\r\n.absol-select-table-selected-search-items-container,\r\n.absol-select-table-nonselected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-selected-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-items-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.searching .absol-select-table-selected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-search-items-container {\r\n    display: block;\r\n    padding-right: 0.7em;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container,\r\n.absol-select-table-selected-items-container {\r\n    padding-right: 0.7em;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-items-container>.absol-select-table-item,\r\n.absol-select-table-nonselected-search-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-search-items-container>.absol-select-table-item {\r\n    margin: 0.14285714285em;\r\n}\r\n\r\n.absol-select-table-item {\r\n    display: block;\r\n    line-height: 2em;\r\n    min-height: 2em;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.05);\r\n    border: solid 0.0714rem rgb(235, 235, 235);\r\n    border-radius: 0.2em;\r\n    overflow: hidden;\r\n    -webkit-user-select: none;\r\n    /* Safari 3.1+ */\r\n    -moz-user-select: none;\r\n    /* Firefox 2+ */\r\n    -ms-user-select: none;\r\n    /* IE 10+ */\r\n    user-select: none;\r\n    /* Standard syntax */\r\n    padding-left: 0.69em;\r\n    padding-right: 1.8em;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-select-table-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-select-table-item-right-container {\r\n    right: 0.3em;\r\n    bottom: 0.3em;\r\n    top: 0.3em;\r\n    padding: 0.2em;\r\n    width: 1.4em;\r\n    position: absolute;\r\n    border-radius: 0.2em;\r\n    box-sizing: border-box;\r\n ;\r\n}\r\n\r\n.absol-select-table-item-right-container:hover {\r\n    background-color: rgba(169, 169, 169, 0.3);\r\n}\r\n\r\nspan.absol-select-table-item-text {\r\n    white-space: normal;\r\n    \r\n}\r\n\r\n.absol-select-table-item-right-container-table{\r\n    display: table;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n.absol-select-table-item-right-container-cell{\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-select-table-item-right-container svg {\r\n    width: 1em;\r\n    height: 1em;\r\n    display: none;\r\n}\r\n\r\n/* clearfix\r\n.absol-select-table-none-nonselected-items-container::after,\r\n.absol-select-table-none-selected-items-container::after {\r\n    content: \"\";\r\n    display:table;\r\n    clear: both;\r\n} */\r\n\r\n.absol-select-table-selected-items-container .absol-select-table-item-right-container svg.sub-icon,\r\n.absol-select-table-selected-search-items-container .absol-select-table-item-right-container svg.sub-icon {\r\n    display: block;\r\n    stroke: rgb(243, 61, 61);\r\n    fill: rgb(226, 100, 100);\r\n}\r\n\r\n.absol-select-table-nonselected-items-container .absol-select-table-item-right-container svg.add-icon,\r\n.absol-select-table-nonselected-search-items-container .absol-select-table-item-right-container svg.add-icon {\r\n    display: block;\r\n    fill: rgb(100, 226, 167);\r\n    stroke: rgb(61, 185, 243);\r\n}\r\n\r\n.absol-select-table.portrait {}", ""]);
+
+var content = __webpack_require__(124);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(125);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-select-table-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 14px;\r\n}\r\n\r\n.absol-select-table {\r\n    border: solid 1px #a9a9a9;\r\n    min-width: 26em;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-select-table-header {\r\n    display: block;\r\n    position: relative;\r\n    box-sizing: content-box;\r\n    height: 2.2857142857em;\r\n}\r\n\r\n.absol-select-table-searchtextinput-container {\r\n    position: absolute;\r\n    left: 0.14285714285em;\r\n    top: 0.14285714285em;\r\n    height: 2em;\r\n    right: 10em;\r\n    /* background-color: cyan; */\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-buttons-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.disable-move-all .absol-select-table-searchtextinput-container {\r\n    right: 0.14285714285em !important;\r\n}\r\n\r\n.absol-select-table-buttons-container {\r\n    position: absolute;\r\n    right: 0.14285714285em;\r\n    top: 0.14285714285em;\r\n    width: 10.7142857143em;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-buttons-container>button {\r\n    height: 2em;\r\n    font-size: 1em;\r\n    background-color: transparent;\r\n    border: none;\r\n    padding: 0 0.5em;\r\n    margin: 0;\r\n    text-decoration: underline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:hover {\r\n    color: #a9a9a9;\r\n}\r\n\r\n.absol-select-table-buttons-container>button:active {\r\n    color: #a9a9ff;\r\n}\r\n\r\n.absol-select-table-body {\r\n    margin: 0.14285714285em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-select-table-items-scroller {\r\n    width: 50%;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-button {\r\n    background-color: rgba(1, 1, 30, 0.1);\r\n}\r\n\r\n.absol-select-table-items-scroller .absol-scroll-bar-v-container {\r\n    width: 0.69em;\r\n}\r\n\r\n.absol-select-table-selected-search-items-container,\r\n.absol-select-table-nonselected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-selected-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-items-container {\r\n    display: none;\r\n}\r\n\r\n.absol-select-table.searching .absol-select-table-selected-search-items-container,\r\n.absol-select-table.searching .absol-select-table-nonselected-search-items-container {\r\n    display: block;\r\n    padding-right: 0.7em;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container,\r\n.absol-select-table-selected-items-container {\r\n    padding-right: 0.7em;\r\n}\r\n\r\n.absol-select-table-nonselected-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-items-container>.absol-select-table-item,\r\n.absol-select-table-nonselected-search-items-container>.absol-select-table-item,\r\n.absol-select-table-selected-search-items-container>.absol-select-table-item {\r\n    margin: 0.14285714285em;\r\n}\r\n\r\n.absol-select-table-item {\r\n    display: block;\r\n    line-height: 2em;\r\n    min-height: 2em;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.05);\r\n    border: solid 1px rgb(235, 235, 235);\r\n    border-radius: 0.2em;\r\n    overflow: hidden;\r\n    -webkit-user-select: none;\r\n    /* Safari 3.1+ */\r\n    -moz-user-select: none;\r\n    /* Firefox 2+ */\r\n    -ms-user-select: none;\r\n    /* IE 10+ */\r\n    user-select: none;\r\n    /* Standard syntax */\r\n    padding-left: 0.69em;\r\n    padding-right: 1.8em;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-select-table-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-select-table-item-right-container {\r\n    right: 0.3em;\r\n    bottom: 0.3em;\r\n    top: 0.3em;\r\n    padding: 0.2em;\r\n    width: 1.4em;\r\n    position: absolute;\r\n    border-radius: 0.2em;\r\n    box-sizing: border-box;\r\n ;\r\n}\r\n\r\n.absol-select-table-item-right-container:hover {\r\n    background-color: rgba(169, 169, 169, 0.3);\r\n}\r\n\r\nspan.absol-select-table-item-text {\r\n    white-space: normal;\r\n    \r\n}\r\n\r\n.absol-select-table-item-right-container-table{\r\n    display: table;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n.absol-select-table-item-right-container-cell{\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-select-table-item-right-container svg {\r\n    width: 1em;\r\n    height: 1em;\r\n    display: none;\r\n}\r\n\r\n/* clearfix\r\n.absol-select-table-none-nonselected-items-container::after,\r\n.absol-select-table-none-selected-items-container::after {\r\n    content: \"\";\r\n    display:table;\r\n    clear: both;\r\n} */\r\n\r\n.absol-select-table-selected-items-container .absol-select-table-item-right-container svg.sub-icon,\r\n.absol-select-table-selected-search-items-container .absol-select-table-item-right-container svg.sub-icon {\r\n    display: block;\r\n    stroke: rgb(243, 61, 61);\r\n    fill: rgb(226, 100, 100);\r\n}\r\n\r\n.absol-select-table-nonselected-items-container .absol-select-table-item-right-container svg.add-icon,\r\n.absol-select-table-nonselected-search-items-container .absol-select-table-item-right-container svg.add-icon {\r\n    display: block;\r\n    fill: rgb(100, 226, 167);\r\n    stroke: rgb(61, 185, 243);\r\n}\r\n\r\n.absol-select-table.portrait {}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-ico {\r\n    width: 1em;\r\n    height: 1em;\r\n}\r\n\r\n.absol-button {\r\n    white-space: normal;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-dropdown {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropdown-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 0;\r\n    top: 100%;\r\n}\r\n\r\n.absol-dropdown.top>.absol-dropdown-content {\r\n    top: auto;\r\n    bottom: 100%;\r\n}\r\n\r\n.absol-dropdown.overlap-left>.absol-dropdown-content {\r\n    left: auto;\r\n    right: 0;\r\n}\r\n\r\n.absol-dropright {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropright-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 100%;\r\n    top: 0;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-drop-hidden>.absol-dropdown-content,\r\n.absol-drop-hidden>.absol-dropright-content {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n\r\n.absol-hmenu {\r\n    display: inline-block;\r\n    background-color: rgb(252, 252, 255);\r\n    /* background-color: rgb(33, 33, 33); */\r\n\r\n}\r\n\r\n.absol-hmenu>.absol-dropdown {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-hmenu-button:hover,\r\n.absol-hmenu .absol-hmenu-button-hover {\r\n\r\n    background-color: rgb(175, 175, 175);\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-hmenu-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button,\r\n.absol-vmenu-button {\r\n    color: rgb(55, 55, 55);\r\n    height: 100%;\r\n    background-color: transparent;\r\n    font-size: 1em;\r\n    border: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-vmenu {}\r\n\r\n.absol-hmenu .absol-dropdown-content,\r\n.absol-hmenu .absol-dropright-content {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-vmenu-button {\r\n    text-align: left;\r\n    padding-left: 0.5em;\r\n    padding-right: 2em;\r\n    height: 1.8em;\r\n    line-height: 1.8em;\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\nimg.absol-vmenu-button-icon {\r\n    opacity: 0;\r\n    display: none;\r\n}\r\n\r\nimg.absol-vmenu-button-icon[src] {\r\n    display: block;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container {\r\n    display: inline-block;\r\n    width: 1.2em;\r\n    height: 1.2em;\r\n    vertical-align: middle;\r\n    margin-right: 0.3em;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container>span,\r\n.absol-vmenu-button-ext-icon-container>i {\r\n    font-size: 1.2em;\r\n    line-height: 1;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-ext-icon-container>svg,\r\n.absol-vmenu-button-ext-icon-container>img {\r\n    height: 1.2em;\r\n    width: 1.2em;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-text,\r\n.absol-vmenu-button-key {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-vmenu-button-key {\r\n    font-style: italic;\r\n    text-align: right;\r\n    margin-left: 1em;\r\n}\r\n\r\n.absol-vmenu-arrow-container {\r\n    position: absolute;\r\n    right: 0.2em;\r\n    top: 0.3em;\r\n    bottom: 0.3em;\r\n}\r\n\r\n.absol-vmenu-arrow {\r\n    display: block;\r\n    font-size: 1em;\r\n    line-height: 1.2em;\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-arrow {\r\n    display: none;\r\n}\r\n\r\n.absol-vmenu-button:hover,\r\n.absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(214, 214, 217);\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-button:hover,\r\n.absol-menu-item-disable .absol-vmenu .absol-vmenu-button-hover,\r\n.absol-menu-item-disable .absol-hmenu-button:hover,\r\n.absol-menu-item-disable .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: transparent;\r\n}\r\n\r\n.absol-vmenu-line {\r\n    text-align: center;\r\n    padding: 0.2em 1em;\r\n}\r\n\r\n.absol-vmenu-line>div {\r\n    height: 0.0714rem;\r\n    background-color: rgb(97, 97, 97);\r\n}\r\n\r\n.absol-menu-item-disable {}\r\n\r\n.absol-menu-item-disable button {\r\n    color: rgb(155, 155, 159);\r\n}\r\n\r\n.dark .absol-menu-item-disable button {\r\n    color: rgb(100, 100, 100);\r\n}\r\n\r\n.dark .absol-vmenu-button:hover,\r\n.dark .absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(9, 71, 113);\r\n}\r\n\r\n\r\n.dark .absol-hmenu .absol-dropdown-content,\r\n.dark .absol-hmenu .absol-dropright-content {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button,\r\n.dark .absol-vmenu-button {\r\n    color: rgb(200, 200, 200);\r\n\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button:hover,\r\n.dark .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: rgb(80, 80, 80);\r\n}\r\n\r\n\r\n.dark .absol-hmenu {\r\n    background-color: rgb(33, 33, 33);\r\n}\r\n\r\n/*standard-alone*/\r\n.absol-vmenu-button.standard-alone {\r\n    height: 2em;\r\n    border-radius: 0.3em;\r\n    border: solid rgb(169, 169, 170) 0.0714rem;\r\n    outline: none;\r\n}", ""]);
+
+var content = __webpack_require__(126);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(127);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-ico {\r\n    width: 1em;\r\n    height: 1em;\r\n}\r\n\r\n.absol-button {\r\n    white-space: normal;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-dropdown {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropdown-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 0;\r\n    top: 100%;\r\n}\r\n\r\n.absol-dropdown.top>.absol-dropdown-content {\r\n    top: auto;\r\n    bottom: 100%;\r\n}\r\n\r\n.absol-dropdown.overlap-left>.absol-dropdown-content {\r\n    left: auto;\r\n    right: 0;\r\n}\r\n\r\n.absol-dropright {\r\n    position: relative;\r\n}\r\n\r\n.absol-dropright-content {\r\n    z-index: 1;\r\n    position: absolute;\r\n    left: 100%;\r\n    top: 0;\r\n    -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-drop-hidden>.absol-dropdown-content,\r\n.absol-drop-hidden>.absol-dropright-content {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n\r\n.absol-hmenu {\r\n    display: inline-block;\r\n    background-color: rgb(252, 252, 255);\r\n    /* background-color: rgb(33, 33, 33); */\r\n\r\n}\r\n\r\n.absol-hmenu>.absol-dropdown {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-hmenu-button:hover,\r\n.absol-hmenu .absol-hmenu-button-hover {\r\n\r\n    background-color: rgb(175, 175, 175);\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-hmenu-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button,\r\n.absol-vmenu-button {\r\n    color: rgb(55, 55, 55);\r\n    height: 100%;\r\n    background-color: transparent;\r\n    font-size: 1em;\r\n    border: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    outline: none;\r\n}\r\n\r\n.absol-hmenu-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-vmenu {}\r\n\r\n.absol-hmenu .absol-dropdown-content,\r\n.absol-hmenu .absol-dropright-content {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-vmenu-button {\r\n    text-align: left;\r\n    padding-left: 0.5em;\r\n    padding-right: 2em;\r\n    height: 1.8em;\r\n    line-height: 1.8em;\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\nimg.absol-vmenu-button-icon {\r\n    opacity: 0;\r\n    display: none;\r\n}\r\n\r\nimg.absol-vmenu-button-icon[src] {\r\n    display: block;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container {\r\n    display: inline-block;\r\n    width: 1.2em;\r\n    height: 1.2em;\r\n    vertical-align: middle;\r\n    margin-right: 0.3em;\r\n}\r\n\r\n.absol-vmenu-button-ext-icon-container>span,\r\n.absol-vmenu-button-ext-icon-container>i {\r\n    font-size: 1.2em;\r\n    line-height: 1;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-ext-icon-container>svg,\r\n.absol-vmenu-button-ext-icon-container>img {\r\n    height: 1.2em;\r\n    width: 1.2em;\r\n    display: block;\r\n}\r\n\r\n\r\n.absol-vmenu-button-text,\r\n.absol-vmenu-button-key {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-vmenu-button-key {\r\n    font-style: italic;\r\n    text-align: right;\r\n    margin-left: 1em;\r\n}\r\n\r\n.absol-vmenu-arrow-container {\r\n    position: absolute;\r\n    right: 0.2em;\r\n    top: 0.3em;\r\n    bottom: 0.3em;\r\n}\r\n\r\n.absol-vmenu-arrow {\r\n    display: block;\r\n    font-size: 1em;\r\n    line-height: 1.2em;\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-arrow {\r\n    display: none;\r\n}\r\n\r\n.absol-vmenu-button:hover,\r\n.absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(214, 214, 217);\r\n}\r\n\r\n.absol-menu-item-disable .absol-vmenu-button:hover,\r\n.absol-menu-item-disable .absol-vmenu .absol-vmenu-button-hover,\r\n.absol-menu-item-disable .absol-hmenu-button:hover,\r\n.absol-menu-item-disable .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: transparent;\r\n}\r\n\r\n.absol-vmenu-line {\r\n    text-align: center;\r\n    padding: 0.2em 1em;\r\n}\r\n\r\n.absol-vmenu-line>div {\r\n    height: 1px;\r\n    background-color: rgb(97, 97, 97);\r\n}\r\n\r\n.absol-menu-item-disable {}\r\n\r\n.absol-menu-item-disable button {\r\n    color: rgb(155, 155, 159);\r\n}\r\n\r\n.dark .absol-menu-item-disable button {\r\n    color: rgb(100, 100, 100);\r\n}\r\n\r\n.dark .absol-vmenu-button:hover,\r\n.dark .absol-vmenu .absol-vmenu-button-hover {\r\n    background-color: rgb(9, 71, 113);\r\n}\r\n\r\n\r\n.dark .absol-hmenu .absol-dropdown-content,\r\n.dark .absol-hmenu .absol-dropright-content {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button,\r\n.dark .absol-vmenu-button {\r\n    color: rgb(200, 200, 200);\r\n\r\n}\r\n\r\n\r\n.dark .absol-hmenu-button:hover,\r\n.dark .absol-hmenu .absol-hmenu-button-hover {\r\n    background-color: rgb(80, 80, 80);\r\n}\r\n\r\n\r\n.dark .absol-hmenu {\r\n    background-color: rgb(33, 33, 33);\r\n}\r\n\r\n/*standard-alone*/\r\n.absol-vmenu-button.standard-alone {\r\n    height: 2em;\r\n    border-radius: 0.3em;\r\n    border: solid rgb(169, 169, 170) 1px;\r\n    outline: none;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r\n    z-index: -100000;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    top: 0;\r\n    opacity: 0;\r\n    resize: none;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-hinge-fixed-container {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.absol-context-hinge {\r\n    position: relative;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-context-hinge>.absol-context-menu {\r\n    position: absolute;\r\n    top: -714.2857rem;\r\n    left: -714.2857rem;\r\n    visibility: hidden;\r\n    z-index: 55;\r\n    display: inline-block;\r\n\r\n}\r\n\r\n.absol-context-hinge .absol-vmenu,\r\n.absol-context-hinge .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    /* background-color: rgb(37, 37, 38);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1); */\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-context-hinge.dark .absol-hmenu,\r\n.absol-context-hinge.dark .absol-vmenu,\r\n.dark .absol-context-hinge .absol-hmenu,\r\n.dark .absol-context-hinge .absol-vmenu {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.absol-context-menu-anchor {\r\n    position: fixed;\r\n    z-index: -1000;\r\n    left: 0;\r\n    top: 0;\r\n    display: block;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    font-size: 0.8571rem;\r\n}\r\n\r\n.absol-context-menu-anchor>textarea {\r\n    width: 1.4286rem;\r\n    height: 1.4286rem;\r\n    margin: 0;\r\n    resize: none;\r\n    border: none;\r\n    opacity: 0;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-menu-anchor.absol-active {\r\n    z-index: 100000000;\r\n    opacity: 1;\r\n    visibility: visible;\r\n}\r\n\r\n\r\n.absol-context-menu-anchor .absol-vmenu,\r\n.absol-context-menu-anchor .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgb(7, 7, 7, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(7, 7, 7, 1);\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n    box-shadow: 0.1429rem 0.1429rem 0.6429rem 0rem rgba(20, 20, 20, 1);\r\n}", ""]);
 
-
-
-/***/ }),
-/* 128 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(129);
+var content = __webpack_require__(128);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29692,7 +29682,42 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r\n    z-index: -100000;\r\n    width: 14px;\r\n    height: 14px;\r\n    top: 0;\r\n    opacity: 0;\r\n    resize: none;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-hinge-fixed-container {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.absol-context-hinge {\r\n    position: relative;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-context-hinge>.absol-context-menu {\r\n    position: absolute;\r\n    top: -10000px;\r\n    left: -10000px;\r\n    visibility: hidden;\r\n    z-index: 55;\r\n    display: inline-block;\r\n\r\n}\r\n\r\n.absol-context-hinge .absol-vmenu,\r\n.absol-context-hinge .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    /* background-color: rgb(37, 37, 38);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgb(7, 7, 7, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1); */\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-context-hinge.dark .absol-hmenu,\r\n.absol-context-hinge.dark .absol-vmenu,\r\n.dark .absol-context-hinge .absol-hmenu,\r\n.dark .absol-context-hinge .absol-vmenu {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.absol-context-menu-anchor {\r\n    position: fixed;\r\n    z-index: -1000;\r\n    left: 0;\r\n    top: 0;\r\n    display: block;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    font-size: 12px;\r\n}\r\n\r\n.absol-context-menu-anchor>textarea {\r\n    width: 20px;\r\n    height: 20px;\r\n    margin: 0;\r\n    resize: none;\r\n    border: none;\r\n    opacity: 0;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-menu-anchor.absol-active {\r\n    z-index: 100000000;\r\n    opacity: 1;\r\n    visibility: visible;\r\n}\r\n\r\n\r\n.absol-context-menu-anchor .absol-vmenu,\r\n.absol-context-menu-anchor .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgb(7, 7, 7, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1);\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n}", ""]);
+
+
+
+/***/ }),
 /* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(130);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29702,11 +29727,11 @@ exports.push([module.i, ".absol-modal {\r\n    position: fixed;\r\n    top: 0;\r
 
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(131);
+var content = __webpack_require__(132);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29725,58 +29750,23 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-text-editor {\r\n    position: relative;\r\n    /* for dev*/\r\n    outline: none;\r\n    font-family: Helvetica, Arial, sans-serif;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-text-editor-text-layer {\r\n    cursor: text;\r\n    min-height: 1.5em;\r\n\r\n}\r\n\r\n.absol-text-editor-line {\r\n    height: 1.5em;\r\n    white-space: pre-wrap;\r\n}\r\n\r\n\r\n.absol-text-editor-position {\r\n    pointer-events: none;\r\n    right: 0.5em;\r\n    bottom: 0.2em;\r\n    position: absolute;\r\n    color: rgba(169, 169, 169, 0.7);\r\n}\r\n\r\n.absol-text-editor-forceground {\r\n    position: absolute;\r\n    background: transparent;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    z-index: 80;\r\n}\r\n\r\n.absol-text-editor.absol-focus .absol-text-editor-cursor {\r\n    position: absolute;\r\n    z-index: 100;\r\n    height: 1.5em;\r\n    border-left: solid 0.0714rem black;\r\n}\r\n\r\n/* \r\n.absol-text-editor-cursor {\r\n    animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n    -webkit-animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n} */\r\n\r\n/* @keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n} */\r\n\r\n.absol-text-editor-edittable {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    /* width: 0.7143rem;\r\n    height: 0.7143rem; */\r\n    overflow: hidden;\r\n    z-index: 0;\r\n    opacity: 0.1;\r\n}", ""]);
-
-
 
 /***/ }),
 /* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(133);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-text-editor {\r\n    position: relative;\r\n    /* for dev*/\r\n    outline: none;\r\n    font-family: Helvetica, Arial, sans-serif;\r\n    font-size: 14px;\r\n}\r\n\r\n.absol-text-editor-text-layer {\r\n    cursor: text;\r\n    min-height: 1.5em;\r\n\r\n}\r\n\r\n.absol-text-editor-line {\r\n    height: 1.5em;\r\n    white-space: pre-wrap;\r\n}\r\n\r\n\r\n.absol-text-editor-position {\r\n    pointer-events: none;\r\n    right: 0.5em;\r\n    bottom: 0.2em;\r\n    position: absolute;\r\n    color: rgba(169, 169, 169, 0.7);\r\n}\r\n\r\n.absol-text-editor-forceground {\r\n    position: absolute;\r\n    background: transparent;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    z-index: 80;\r\n}\r\n\r\n.absol-text-editor.absol-focus .absol-text-editor-cursor {\r\n    position: absolute;\r\n    z-index: 100;\r\n    height: 1.5em;\r\n    border-left: solid 1px black;\r\n}\r\n\r\n/* \r\n.absol-text-editor-cursor {\r\n    animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n    -webkit-animation: blink-cursor-animation 1s steps(2, start) infinite;\r\n} */\r\n\r\n/* @keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n}\r\n\r\n@-webkit-keyframes blink-cursor-animation {\r\n    to {\r\n        visibility: hidden;\r\n    }\r\n} */\r\n\r\n.absol-text-editor-edittable {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    /* width: 10px;\r\n    height: 10px; */\r\n    overflow: hidden;\r\n    z-index: 0;\r\n    opacity: 0.1;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".vmedia-no-show {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1;\r\n    height: 1;\r\n    z-index: -100000;\r\n    opacity: 0;\r\n}\r\n\r\n.vmedia-no-select,\r\n.vmedia-no-select * {\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\ncoccocgrammar {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input {\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n\r\n.vmedia-media-input-text-container {\r\n    position: relative;\r\n    min-height: 2.5em;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor img {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor * {\r\n    font-family: inherit;\r\n    font-size: inherit;\r\n    font-weight: inherit;\r\n    text-decoration: inherit;\r\n    color: inherit;\r\n    background: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    white-space: pre;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    min-height: 2em;\r\n    padding-left: 0.5em;\r\n    padding-top: 0.25em;\r\n    padding-bottom: 0.25em;\r\n    margin-right: 0.5em;\r\n    box-sizing: border-box;\r\n    max-height: 6.66666666em;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container {\r\n    white-space: normal;\r\n}\r\n\r\n.vmedia-media-input:not(.dragover) .vmedia-media-input-dropover {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-dropover {\r\n    display: inline-block;\r\n    width: 7em;\r\n    height: 7em;\r\n}\r\n\r\n.vmedia-media-input-dropover>svg {\r\n    width: 7em;\r\n    height: 7em;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-imagepreview {\r\n    margin: 0.3em;\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview {\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.vmedia-media-input-imagepreview img {\r\n    height: 2.5em;\r\n    width: auto;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.attachment {\r\n    height: 2em;\r\n    width: 2em;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times,\r\n.vmedia-media-input-imagepreview svg.times {\r\n    position: absolute;\r\n    top: 0.1em;\r\n    right: 0.1em;\r\n    width: 1em;\r\n    height: 1em;\r\n    fill: rgba(69, 69, 69, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:hover,\r\n.vmedia-media-input-imagepreview svg.times:hover {\r\n    fill: rgba(144, 144, 144, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:active,\r\n.vmedia-media-input-imagepreview svg.times:active {\r\n    fill: rgba(220, 220, 240, 0.6);\r\n}\r\n\r\n.vmedia-media-input-plug-button-container {\r\n    position: absolute;\r\n    left: 0.25em;\r\n    bottom: 0.25em;\r\n    top: 0.25em;\r\n}\r\n\r\n.vmedia-media-input-plug-button-container svg {\r\n    height: 1.5em;\r\n    width: 1.5em;\r\n    vertical-align: middle;\r\n    transition: transform .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n\r\n.vmedia-media-input-plug-button-container svg path {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n    transition: fill .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n.vmedia-media-input.show-plugin .vmedia-media-input-plug-button svg path {\r\n    fill: rgba(134, 142, 153, 0.75);\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-plug-button {\r\n    padding: 0;\r\n    height: 100%;\r\n    width: 2em;\r\n    border: none;\r\n    background: transparent;\r\n    outline: none;\r\n\r\n}\r\n\r\n\r\n.vmedia-media-input-plugin-content-container {\r\n    position: absolute;\r\n    bottom: calc(0.0714rem + 100%);\r\n    opacity: 1;\r\n    transition: opacity .22s cubic-bezier(.5, 0, .4, 1);\r\n    background-color: white;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem rgba(0, 0, 0, 0.1);\r\n    z-index: 20;\r\n    background: white;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container:empty{\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container {\r\n    position: relative;\r\n    display: block;\r\n    height: 1.5em;\r\n    /* background: red;     */\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container-left {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container-right {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container button {\r\n    width: 2.5em;\r\n    height: 100%;\r\n    font-size: 1em;\r\n    margin-left: 0.1em;\r\n    margin-right: 0.1em;\r\n    border: none;\r\n    background-color: transparent;\r\n    border-radius: 0.4em;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    scrollbar-width: thin;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar {\r\n    width: 0.5rem;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-track {\r\n    background: rgb(240, 240, 240);\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-thumb {\r\n    background: rgb(205, 205, 205);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg {\r\n    height: 1.25em;\r\n    width: 1.25em;\r\n}\r\n\r\n.vmedia-media-input-tool-container button:hover {\r\n    background-color: rgba(91, 192, 222, 0.1);\r\n}\r\n\r\n.vmedia-media-input-tool-container button:active {\r\n    background-color: rgba(91, 192, 222, 0.4);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.send {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.add-file,\r\n.vmedia-media-input-tool-container button svg.add-image {\r\n    fill: rgba(66, 66, 66, 0.5);\r\n}\r\n\r\n.vmedia-media-input-tool-container button .mdi{\r\n    font-size:1.2em; \r\n}\r\n\r\n.vmedia-media-input-tool-container button:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-tool-container button{\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container.blur{\r\n    visibility: hidden;\r\n}", ""]);
 
-
-
-/***/ }),
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(135);
+var content = __webpack_require__(134);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29797,7 +29787,42 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".vmedia-no-show {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1;\r\n    height: 1;\r\n    z-index: -100000;\r\n    opacity: 0;\r\n}\r\n\r\n.vmedia-no-select,\r\n.vmedia-no-select * {\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\ncoccocgrammar {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input {\r\n    box-sizing: border-box;\r\n    border: solid 1px rgba(0, 0, 0, 0.1)\r\n}\r\n\r\n\r\n.vmedia-media-input-text-container {\r\n    position: relative;\r\n    min-height: 2.5em;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor img {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor * {\r\n    font-family: inherit;\r\n    font-size: inherit;\r\n    font-weight: inherit;\r\n    text-decoration: inherit;\r\n    color: inherit;\r\n    background: none;\r\n    padding: 0;\r\n    margin: 0;\r\n    white-space: pre;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    min-height: 2em;\r\n    padding-left: 0.5em;\r\n    padding-top: 0.25em;\r\n    padding-bottom: 0.25em;\r\n    margin-right: 0.5em;\r\n    box-sizing: border-box;\r\n    max-height: 6.66666666em;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container {\r\n    white-space: normal;\r\n}\r\n\r\n.vmedia-media-input:not(.dragover) .vmedia-media-input-dropover {\r\n    display: none;\r\n}\r\n\r\n.vmedia-media-input-dropover {\r\n    display: inline-block;\r\n    width: 7em;\r\n    height: 7em;\r\n}\r\n\r\n.vmedia-media-input-dropover>svg {\r\n    width: 7em;\r\n    height: 7em;\r\n}\r\n\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview-container .vmedia-media-input-imagepreview {\r\n    margin: 0.3em;\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-filepreview,\r\n.vmedia-media-input-imagepreview {\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.vmedia-media-input-imagepreview img {\r\n    height: 2.5em;\r\n    width: auto;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.attachment {\r\n    height: 2em;\r\n    width: 2em;\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times,\r\n.vmedia-media-input-imagepreview svg.times {\r\n    position: absolute;\r\n    top: 0.1em;\r\n    right: 0.1em;\r\n    width: 1em;\r\n    height: 1em;\r\n    fill: rgba(69, 69, 69, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:hover,\r\n.vmedia-media-input-imagepreview svg.times:hover {\r\n    fill: rgba(144, 144, 144, 0.6);\r\n}\r\n\r\n.vmedia-media-input-filepreview svg.times:active,\r\n.vmedia-media-input-imagepreview svg.times:active {\r\n    fill: rgba(220, 220, 240, 0.6);\r\n}\r\n\r\n.vmedia-media-input-plug-button-container {\r\n    position: absolute;\r\n    left: 0.25em;\r\n    bottom: 0.25em;\r\n    top: 0.25em;\r\n}\r\n\r\n.vmedia-media-input-plug-button-container svg {\r\n    height: 1.5em;\r\n    width: 1.5em;\r\n    vertical-align: middle;\r\n    transition: transform .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n\r\n.vmedia-media-input-plug-button-container svg path {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n    transition: fill .22s cubic-bezier(.5, 0, .4, 1);\r\n}\r\n\r\n.vmedia-media-input.show-plugin .vmedia-media-input-plug-button svg path {\r\n    fill: rgba(134, 142, 153, 0.75);\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-plug-button {\r\n    padding: 0;\r\n    height: 100%;\r\n    width: 2em;\r\n    border: none;\r\n    background: transparent;\r\n    outline: none;\r\n\r\n}\r\n\r\n\r\n.vmedia-media-input-plugin-content-container {\r\n    position: absolute;\r\n    bottom: calc(1px + 100%);\r\n    opacity: 1;\r\n    transition: opacity .22s cubic-bezier(.5, 0, .4, 1);\r\n    background-color: white;\r\n    box-sizing: border-box;\r\n    border: solid 1px rgba(0, 0, 0, 0.1);\r\n    z-index: 20;\r\n    background: white;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container:empty{\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container {\r\n    position: relative;\r\n    display: block;\r\n    height: 1.5em;\r\n    /* background: red;     */\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-tool-container-left {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container-right {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.vmedia-media-input-tool-container button {\r\n    width: 2.5em;\r\n    height: 100%;\r\n    font-size: 1em;\r\n    margin-left: 0.1em;\r\n    margin-right: 0.1em;\r\n    border: none;\r\n    background-color: transparent;\r\n    border-radius: 0.4em;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor {\r\n    scrollbar-width: thin;\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar {\r\n    width: 7px;\r\n}\r\n\r\n\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-track {\r\n    background: rgb(240, 240, 240);\r\n}\r\n\r\n.vmedia-media-input-text-container-editor::-webkit-scrollbar-thumb {\r\n    background: rgb(205, 205, 205);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg {\r\n    height: 1.25em;\r\n    width: 1.25em;\r\n}\r\n\r\n.vmedia-media-input-tool-container button:hover {\r\n    background-color: rgba(91, 192, 222, 0.1);\r\n}\r\n\r\n.vmedia-media-input-tool-container button:active {\r\n    background-color: rgba(91, 192, 222, 0.4);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.send {\r\n    fill: rgba(66, 133, 244, 0.7);\r\n}\r\n\r\n.vmedia-media-input-tool-container button svg.add-file,\r\n.vmedia-media-input-tool-container button svg.add-image {\r\n    fill: rgba(66, 66, 66, 0.5);\r\n}\r\n\r\n.vmedia-media-input-tool-container button .mdi{\r\n    font-size:1.2em; \r\n}\r\n\r\n.vmedia-media-input-tool-container button:focus {\r\n    outline: none;\r\n}\r\n\r\n.vmedia-media-input-tool-container button{\r\n    vertical-align: middle;\r\n}\r\n\r\n.vmedia-media-input-plugin-content-container.blur{\r\n    visibility: hidden;\r\n}", ""]);
+
+
+
+/***/ }),
 /* 135 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(136);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29807,11 +29832,11 @@ exports.push([module.i, ".absol-resizablelayout{\r\n    position: relative;\r\n}
 
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(137);
+var content = __webpack_require__(138);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29830,303 +29855,268 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 137 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-autocomplete-input {\r\n    display: inline-block;\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #d6d6d6;\r\n}\r\n\r\n.absol-autocomplete-input.absol-disabled {\r\n    pointer-events: none;\r\n    color: rgb(84, 84, 84);\r\n    background-color: rgb(235, 235, 228);\r\n}\r\n\r\n.absol-autocomplete-input>input {\r\n    min-width: 100%;\r\n    min-height: 100%;\r\n    box-sizing: border-box;\r\n    background-color: transparent;\r\n    border: none;\r\n}\r\n\r\n\r\n.absol-autocomplete-input-dropdown {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 100%;\r\n    min-width: 100%;\r\n    z-index: 1005;\r\n    border: solid 0.0714rem rgb(169, 169, 169);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n}\r\n\r\n.absol-autocomplete-input-dropdown.top {\r\n    top: auto;\r\n    bottom: 100%;\r\n}\r\n\r\n.absol-autocomplete-input-item {\r\n    height: 2.1429rem;\r\n}\r\n\r\n.absol-autocomplete-input-item:hover {\r\n    background-color: rgb(169, 169, 169, 0.18605);\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-autocomplete-input-item.active,\r\n.absol-autocomplete-input-item.active:hover {\r\n    background-color: rgb(169, 169, 169, 0.37209);\r\n}\r\n\r\n.absol-autocomplete-input-item-text {\r\n    line-height: 2.1429rem;\r\n    margin-left: 0.3571rem;\r\n    margin-right: 0.3571rem;\r\n}", ""]);
-
-
 
 /***/ }),
 /* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(139);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-autocomplete-input {\r\n    display: inline-block;\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    border: solid 1px #d6d6d6;\r\n}\r\n\r\n.absol-autocomplete-input.absol-disabled {\r\n    pointer-events: none;\r\n    color: rgb(84, 84, 84);\r\n    background-color: rgb(235, 235, 228);\r\n}\r\n\r\n.absol-autocomplete-input>input {\r\n    min-width: 100%;\r\n    min-height: 100%;\r\n    box-sizing: border-box;\r\n    background-color: transparent;\r\n    border: none;\r\n}\r\n\r\n\r\n.absol-autocomplete-input-dropdown {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 100%;\r\n    min-width: 100%;\r\n    z-index: 1005;\r\n    border: solid 1px rgb(169, 169, 169);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n}\r\n\r\n.absol-autocomplete-input-dropdown.top {\r\n    top: auto;\r\n    bottom: 100%;\r\n}\r\n\r\n.absol-autocomplete-input-item {\r\n    height: 30px;\r\n}\r\n\r\n.absol-autocomplete-input-item:hover {\r\n    background-color: rgb(169, 169, 169, 0.18605);\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-autocomplete-input-item.active,\r\n.absol-autocomplete-input-item.active:hover {\r\n    background-color: rgb(169, 169, 169, 0.37209);\r\n}\r\n\r\n.absol-autocomplete-input-item-text {\r\n    line-height: 30px;\r\n    margin-left: 5px;\r\n    margin-right: 5px;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-selectlist {\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item:hover {\r\n    background-color: #efefef;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item {\r\n    height: 1.4286rem;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-selectlist-item.selected {\r\n    background-color: #dfdfdf;\r\n}\r\n\r\n.absol-selectlist-item>span {\r\n    line-height: 1.4286rem;\r\n    white-space: pre;\r\n    padding-left: 0.5rem;\r\n    padding-right: 0.5rem;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-selectlist-item {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectlist-item-desc-container {\r\n    position: absolute;\r\n    right: 0.3em;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.absol-selectlist-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-selectlist-item-desc:empty {\r\n    display: none;\r\n}", ""]);
+
+var content = __webpack_require__(140);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(141);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-selectlist {\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item:hover {\r\n    background-color: #efefef;\r\n}\r\n\r\n.absol-selectlist .absol-selectlist-item {\r\n    height: 20px;\r\n    font-size: 14px;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-selectlist-item.selected {\r\n    background-color: #dfdfdf;\r\n}\r\n\r\n.absol-selectlist-item>span {\r\n    line-height: 20px;\r\n    white-space: pre;\r\n    padding-left: 7px;\r\n    padding-right: 7px;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.absol-selectlist-item {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectlist-item-desc-container {\r\n    position: absolute;\r\n    right: 0.3em;\r\n    top: 0;\r\n    bottom: 0;\r\n}\r\n\r\n.absol-selectlist-item-desc {\r\n    font-style: italic;\r\n    line-height: 20px;\r\n    white-space: nowrap;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-selectlist-item-desc:empty {\r\n    display: none;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position: fixed; */\r\n\r\n    /* top: 0; */\r\n    /* left: 0; */\r\n    width: 0;\r\n    height: 0;\r\n    overflow: visible;\r\n}\r\n\r\n.absol-selectmenu-anchor {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container {\r\n    position: absolute;\r\n    z-index: 1002;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container .absol-bscroller {\r\n    max-height: calc(100vh - 3.5714rem);\r\n}\r\n\r\n\r\n.absol-selectmenu-anchor.absol-disabled .absol-selectmenu-anchor-content-container {\r\n    visibility: hidden;\r\n    top: -7142.8571rem;\r\n    left: -714.2857rem;\r\n    z-index: -1000;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box {\r\n    border: solid 0.0714rem rgb(169, 169, 169);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-selectmenu-dropdown-box .absol-search-text-input {\r\n    margin: 0.2em;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.absol-hidden {\r\n    display: none !important;\r\n}\r\n\r\n.absol-selectmenu-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 1rem;\r\n}\r\n\r\n.absol-selectmenu-render-space>div {\r\n    display: inline-block;\r\n\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    background-color: #ebebe4;\r\n}\r\n\r\n\r\n.absol-selectmenu {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 2.1429rem;\r\n    min-width: 2.1429rem;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.1429rem;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    font-size: 1rem;\r\n    outline: none;\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n/* .absol-selectmenu:hover {\r\n    border: solid 0.0714rem black;\r\n} */\r\n\r\n.absol-selectmenu-btn {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    width: 2.1429rem;\r\n    border: none;\r\n    background: transparent;\r\n    z-index: 2;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-selectmenu-btn svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: #929292;\r\n}\r\n\r\n.absol-selectmenu:hover svg.dropdown {\r\n    width: 0.7143rem;\r\n    height: 0.7143rem;\r\n    fill: black;\r\n}\r\n\r\n.absol-selectmenu-holder-item {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0.2857rem;\r\n    bottom: 0.2857rem;\r\n    /*0.0714rem for border*/\r\n}\r\n\r\n\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 2rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button {\r\n    background-color: rgba(0, 0, 0, 0.1);\r\n    border-radius: 0.2143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button:hover {\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.absol-scroll-bar-v-container {\r\n    width: 0.7143rem;\r\n}\r\n\r\n.absol-selectmenu .absol-search-text-input {\r\n    margin: 0.2857rem;\r\n}\r\n\r\n.absol-selectmenu-render-space .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item-desc-container {\r\n    right: 2.8571rem;\r\n}", ""]);
+
+var content = __webpack_require__(142);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(143);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position: fixed; */\r\n\r\n    /* top: 0; */\r\n    /* left: 0; */\r\n    width: 0;\r\n    height: 0;\r\n    overflow: visible;\r\n}\r\n\r\n.absol-selectmenu-anchor {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container {\r\n    position: absolute;\r\n    z-index: 1002;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container .absol-bscroller {\r\n    max-height: calc(100vh - 50px);\r\n}\r\n\r\n\r\n.absol-selectmenu-anchor.absol-disabled .absol-selectmenu-anchor-content-container {\r\n    visibility: hidden;\r\n    top: -100000px;\r\n    left: -10000px;\r\n    z-index: -1000;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box {\r\n    border: solid 1px rgb(169, 169, 169);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-selectmenu-dropdown-box .absol-search-text-input {\r\n    margin: 0.2em;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.absol-hidden {\r\n    display: none !important;\r\n}\r\n\r\n.absol-selectmenu-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 14px;\r\n}\r\n\r\n.absol-selectmenu-render-space>div {\r\n    display: inline-block;\r\n\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    background-color: #ebebe4;\r\n}\r\n\r\n\r\n.absol-selectmenu {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 30px;\r\n    min-width: 30px;\r\n    border: solid 1px #d6d6d6;\r\n    border-radius: 2px;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    outline: none;\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n/* .absol-selectmenu:hover {\r\n    border: solid 1px black;\r\n} */\r\n\r\n.absol-selectmenu-btn {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    width: 30px;\r\n    border: none;\r\n    background: transparent;\r\n    z-index: 2;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-selectmenu-btn svg.dropdown {\r\n    width: 10px;\r\n    height: 10px;\r\n    fill: #929292;\r\n}\r\n\r\n.absol-selectmenu:hover svg.dropdown {\r\n    width: 10px;\r\n    height: 10px;\r\n    fill: black;\r\n}\r\n\r\n.absol-selectmenu-holder-item {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 4px;\r\n    bottom: 4px;\r\n    /*1px for border*/\r\n}\r\n\r\n\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 28px;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button {\r\n    background-color: rgba(0, 0, 0, 0.1);\r\n    border-radius: 3px;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button:hover {\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.absol-scroll-bar-v-container {\r\n    width: 10px;\r\n}\r\n\r\n.absol-selectmenu .absol-search-text-input {\r\n    margin: 4px;\r\n}\r\n\r\n.absol-selectmenu-render-space .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item-desc-container {\r\n    right: 40px;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-tree-list {}\r\n\r\n.absol-tree-list-item {}\r\n\r\n.absol-tree-list-item-parent:hover {\r\n    background: #efefef;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-tree-list-item-parent {\r\n    padding-left: 0.3em;\r\n    padding-right: 0.6em;\r\n    position: relative;\r\n}\r\n\r\n.absol-tree-list-item.active>.absol-tree-list-item-parent {\r\n    background: #dfdfdf;\r\n}\r\n\r\n.absol-tree-list-item-parent>span {\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-tree-list-item-child {}\r\n\r\n.absol-tree-list-item>.absol-tree-list-item-child:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-tree-list-item-desc-container {\r\n    right: 0.3em;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n.absol-tree-list-item-desc {\r\n    font-style: italic;\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n    margin-left: 1em;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-tree-list-item-desc:empty {\r\n    display: none;\r\n}", ""]);
+
+var content = __webpack_require__(144);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(145);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-tree-list {}\r\n\r\n.absol-tree-list-item {}\r\n\r\n.absol-tree-list-item-parent:hover {\r\n    background: #efefef;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-tree-list-item-parent {\r\n    padding-left: 0.3em;\r\n    padding-right: 0.6em;\r\n    position: relative;\r\n}\r\n\r\n.absol-tree-list-item.active>.absol-tree-list-item-parent {\r\n    background: #dfdfdf;\r\n}\r\n\r\n.absol-tree-list-item-parent>span {\r\n    line-height: 20px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-tree-list-item-child {}\r\n\r\n.absol-tree-list-item>.absol-tree-list-item-child:empty {\r\n    display: none;\r\n}\r\n\r\n.absol-tree-list-item-desc-container {\r\n    right: 0.3em;\r\n    top: 0;\r\n    bottom: 0;\r\n    position: absolute;\r\n}\r\n\r\n.absol-tree-list-item-desc {\r\n    font-style: italic;\r\n    line-height: 20px;\r\n    white-space: nowrap;\r\n    margin-left: 1em;\r\n    color: rgb(37, 37, 37);\r\n}\r\n\r\n.absol-tree-list-item-desc:empty {\r\n    display: none;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-selecttreemenu  .absol-tree-list-item-desc-container{\r\n    right: 2.1429rem;\r\n}\r\n\r\n\r\n.absol-selectmenu-holder-item .absol-tree-list-item-parent:hover {\r\n    background-color: transparent;\r\n}", ""]);
+
+var content = __webpack_require__(146);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(147);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-selecttreemenu  .absol-tree-list-item-desc-container{\r\n    right: 30px;\r\n}\r\n\r\n\r\n.absol-selectmenu-holder-item .absol-tree-list-item-parent:hover {\r\n    background-color: transparent;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, "\r\n\r\n.absol-selectbox {\r\n    position: relative;\r\n    min-height: 2.1429rem;\r\n    min-width: 2.8571rem;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.2143rem;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    padding-right: 1.4286rem;\r\n}\r\n\r\n.absol-selectbox {\r\n    white-space: normal;\r\n}\r\n\r\n.absol-selectbox .absol-selectbox-item {\r\n    margin: 0.1429rem;\r\n}\r\n\r\n\r\n.absol-selectbox-item {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 1.4286rem;\r\n    border-radius: 0.1429rem;\r\n    overflow: hidden;\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    font-size: 1rem;\r\n    vertical-align: top;\r\n    white-space: normal;\r\n}\r\n\r\n.absol-selectbox-item-text {\r\n    height: 1.4286rem;\r\n    padding-right: 1.7857rem;\r\n    color: white;\r\n    padding-left: 0.3571rem;\r\n}\r\n\r\n.absol-selectbox-item-text:hover {\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n}\r\n\r\n.absol-selectbox-item-text span {\r\n    line-height: 1.4286rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-selectbox-item-close {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    width: 1.4286rem;\r\n    font-size: 0.7143rem;\r\n    text-align: center;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    cursor: pointer;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n}\r\n\r\n.absol-selectbox-item-close span {\r\n    font-size: 0.7143rem;\r\n    color: white;\r\n    line-height: 1.4286rem;\r\n}\r\n\r\n.absol-selectbox {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-selectbox .absol-search-text-input {\r\n    margin: 0.2857rem;\r\n}\r\n\r\n.absol-selectbox:not(.focus) .absol-selectmenu-dropdown-box {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-selectbox .absol-selectlist-item.selected {\r\n    display: none;\r\n}", ""]);
+
+var content = __webpack_require__(148);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(149);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "\r\n\r\n.absol-selectbox {\r\n    position: relative;\r\n    min-height: 30px;\r\n    min-width: 40px;\r\n    border: solid 1px #d6d6d6;\r\n    border-radius: 3px;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    padding-right: 20px;\r\n}\r\n\r\n.absol-selectbox {\r\n    white-space: normal;\r\n}\r\n\r\n.absol-selectbox .absol-selectbox-item {\r\n    margin: 2px;\r\n}\r\n\r\n\r\n.absol-selectbox-item {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 20px;\r\n    border-radius: 2px;\r\n    overflow: hidden;\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    font-size: 14px;\r\n    vertical-align: top;\r\n    white-space: normal;\r\n}\r\n\r\n.absol-selectbox-item-text {\r\n    height: 20px;\r\n    padding-right: 25px;\r\n    color: white;\r\n    padding-left: 5px;\r\n}\r\n\r\n.absol-selectbox-item-text:hover {\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n}\r\n\r\n.absol-selectbox-item-text span {\r\n    line-height: 20px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-selectbox-item-close {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    width: 20px;\r\n    font-size: 10px;\r\n    text-align: center;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    cursor: pointer;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n}\r\n\r\n.absol-selectbox-item-close span {\r\n    font-size: 10px;\r\n    color: white;\r\n    line-height: 20px;\r\n}\r\n\r\n.absol-selectbox {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-selectbox .absol-search-text-input {\r\n    margin: 4px;\r\n}\r\n\r\n.absol-selectbox:not(.focus) .absol-selectmenu-dropdown-box {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-selectbox .absol-selectlist-item.selected {\r\n    display: none;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-radio {\r\n    display: inline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-radio input {\r\n    display: none;\r\n}\r\n\r\n.absol-radio label {\r\n    white-space: pre;\r\n    cursor: inherit;\r\n    vertical-align: middle;\r\n    margin: 0;\r\n}\r\n\r\n.absol-radio>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 1.2857rem;\r\n    height: 1.2857rem;\r\n}\r\n\r\n.absol-radio>svg .bound {\r\n    stroke: #929292;\r\n    fill: white;\r\n}\r\n\r\n.absol-radio:hover>svg .bound {\r\n    fill: #d6d6d6;\r\n    stroke: black;\r\n}\r\n\r\n/* \r\n.absol-radio>svg .bound {\r\n    fill: none;\r\n} */\r\n\r\n.absol-radio-icon .border {}\r\n\r\n.absol-radio .dot {\r\n    transition: opacity 0.07s;\r\n    opacity: 0;\r\n    fill: #606060;\r\n}\r\n\r\n.absol-radio:hover .dot {\r\n    transition: opacity 0.07s;\r\n    opacity: 0;\r\n    fill: black;\r\n}\r\n\r\n.absol-radio.checked .dot {\r\n    opacity: 1;\r\n    transition: opacity 0.1s;\r\n}\r\n\r\n.absol-radio:not(.right) .absol-radio-icon-right {\r\n    display: none;\r\n}\r\n\r\n.absol-radio:not(.right) label {\r\n    padding-left: 0.3571rem;\r\n}\r\n\r\n.absol-radio.right label {\r\n    padding-right: 0.3571rem;\r\n}\r\n\r\n.absol-radio.right .absol-radio-icon-left {\r\n    display: none;\r\n}\r\n\r\n.absol-radio.disabled {\r\n    cursor: default;\r\n}\r\n\r\n.absol-radio.disabled:hover .dot,\r\n.absol-radio.disabled .dot {\r\n    fill: #929292;\r\n}\r\n\r\n.absol-radio.disabled .bound,\r\n.absol-radio.disabled:hover .bound {\r\n    stroke: #929292;\r\n    fill: #ebebe4;\r\n}\r\n\r\n\r\n.absol-radio .standar-alone {\r\n    display: inline-block;\r\n}", ""]);
+
+var content = __webpack_require__(150);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(151);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-radio {\r\n    display: inline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-radio input {\r\n    display: none;\r\n}\r\n\r\n.absol-radio label {\r\n    white-space: pre;\r\n    cursor: inherit;\r\n    vertical-align: middle;\r\n    margin: 0;\r\n}\r\n\r\n.absol-radio>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 18px;\r\n    height: 18px;\r\n}\r\n\r\n.absol-radio>svg .bound {\r\n    stroke: #929292;\r\n    fill: white;\r\n}\r\n\r\n.absol-radio:hover>svg .bound {\r\n    fill: #d6d6d6;\r\n    stroke: black;\r\n}\r\n\r\n/* \r\n.absol-radio>svg .bound {\r\n    fill: none;\r\n} */\r\n\r\n.absol-radio-icon .border {}\r\n\r\n.absol-radio .dot {\r\n    transition: opacity 0.07s;\r\n    opacity: 0;\r\n    fill: #606060;\r\n}\r\n\r\n.absol-radio:hover .dot {\r\n    transition: opacity 0.07s;\r\n    opacity: 0;\r\n    fill: black;\r\n}\r\n\r\n.absol-radio.checked .dot {\r\n    opacity: 1;\r\n    transition: opacity 0.1s;\r\n}\r\n\r\n.absol-radio:not(.right) .absol-radio-icon-right {\r\n    display: none;\r\n}\r\n\r\n.absol-radio:not(.right) label {\r\n    padding-left: 5px;\r\n}\r\n\r\n.absol-radio.right label {\r\n    padding-right: 5px;\r\n}\r\n\r\n.absol-radio.right .absol-radio-icon-left {\r\n    display: none;\r\n}\r\n\r\n.absol-radio.disabled {\r\n    cursor: default;\r\n}\r\n\r\n.absol-radio.disabled:hover .dot,\r\n.absol-radio.disabled .dot {\r\n    fill: #929292;\r\n}\r\n\r\n.absol-radio.disabled .bound,\r\n.absol-radio.disabled:hover .bound {\r\n    stroke: #929292;\r\n    fill: #ebebe4;\r\n}\r\n\r\n\r\n.absol-radio .standar-alone {\r\n    display: inline-block;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-switch {\r\n    position: relative;\r\n    display: inline-block;\r\n    width: 2.2em;\r\n    height: 1.2em;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-switch input {\r\n    opacity: 0;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-switch-slider {\r\n    position: absolute;\r\n    cursor: pointer;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ccc;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.6em;\r\n}\r\n\r\n.absol-switch-slider:before {\r\n    position: absolute;\r\n    content: \"\";\r\n    height: 1em;\r\n    width: 1em;\r\n    left: 0.1em;\r\n    bottom: 0.1em;\r\n    background-color: white;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.5em;\r\n}\r\n\r\ninput:checked+.absol-switch-slider {\r\n    background-color: #2196F3;\r\n}\r\n\r\ninput:focus+.absol-switch-slider {\r\n    box-shadow: 0 0 0.0714rem #2196F3;\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before {\r\n    -webkit-transform: translateX(1em);\r\n    -ms-transform: translateX(1em);\r\n    transform: translateX(1em);\r\n}\r\n\r\n/* Rounded absol-switch-sliders */\r\n.absol-switch.square .absol-switch-slider {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.square .absol-switch-slider:before {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider:before{\r\n    background-color: rgb(234, 234, 234);\r\n}\r\n\r\n.absol-switch.disabled input:checked+.absol-switch-slider {\r\n    background-color: rgb(141, 188, 226);\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider {\r\n    background-color: rgb(171, 171, 171);\r\n}\r\n\r\n", ""]);
+
+var content = __webpack_require__(152);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(153);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-switch {\r\n    position: relative;\r\n    display: inline-block;\r\n    width: 2.2em;\r\n    height: 1.2em;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-switch input {\r\n    opacity: 0;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-switch-slider {\r\n    position: absolute;\r\n    cursor: pointer;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #ccc;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.6em;\r\n}\r\n\r\n.absol-switch-slider:before {\r\n    position: absolute;\r\n    content: \"\";\r\n    height: 1em;\r\n    width: 1em;\r\n    left: 0.1em;\r\n    bottom: 0.1em;\r\n    background-color: white;\r\n    -webkit-transition: .4s;\r\n    transition: .4s;\r\n    border-radius: 0.5em;\r\n}\r\n\r\ninput:checked+.absol-switch-slider {\r\n    background-color: #2196F3;\r\n}\r\n\r\ninput:focus+.absol-switch-slider {\r\n    box-shadow: 0 0 1px #2196F3;\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before {\r\n    -webkit-transform: translateX(1em);\r\n    -ms-transform: translateX(1em);\r\n    transform: translateX(1em);\r\n}\r\n\r\n/* Rounded absol-switch-sliders */\r\n.absol-switch.square .absol-switch-slider {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.square .absol-switch-slider:before {\r\n    border-radius: 0;\r\n}\r\n\r\n.absol-switch.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider:before{\r\n    background-color: rgb(234, 234, 234);\r\n}\r\n\r\n.absol-switch.disabled input:checked+.absol-switch-slider {\r\n    background-color: rgb(141, 188, 226);\r\n}\r\n\r\n.absol-switch.disabled .absol-switch-slider {\r\n    background-color: rgb(171, 171, 171);\r\n}\r\n\r\n", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, "\r\n.absol-checkbox {\r\n    display: inline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-checkbox input {\r\n    display: none;\r\n}\r\n\r\n.absol-checkbox label {\r\n    white-space: pre;\r\n    cursor: inherit;\r\n    vertical-align: middle;\r\n    margin: 0;\r\n}\r\n\r\n.absol-checkbox>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 1.2857rem;\r\n    height: 1.2857rem;\r\n}\r\n\r\n.absol-checkbox>svg .bound {\r\n    stroke: #929292;\r\n    fill: white;\r\n}\r\n\r\n.absol-checkbox:hover>svg .bound {\r\n    fill: #d6d6d6;\r\n    stroke: black;\r\n}\r\n\r\n/* \r\n.absol-checkbox>svg .bound {\r\n    fill: none;\r\n} */\r\n\r\n.absol-checkbox-icon .border {}\r\n\r\n.absol-checkbox .tick {\r\n    transition: opacity 0.07s;\r\n    opacity: 0;\r\n    fill: #606060;\r\n}\r\n\r\n.absol-checkbox:hover .tick {\r\n    transition: opacity 0.07s;\r\n    opacity: 0;\r\n    fill: black;\r\n}\r\n\r\n.absol-checkbox.checked .tick {\r\n    opacity: 1;\r\n    transition: opacity 0.1s;\r\n}\r\n\r\n.absol-checkbox:not(.right) .absol-checkbox-icon-right {\r\n    display: none;\r\n}\r\n\r\n.absol-checkbox:not(.right) label {\r\n    padding-left: 0.3571rem;\r\n}\r\n\r\n.absol-checkbox.right label {\r\n    padding-right: 0.3571rem;\r\n}\r\n\r\n.absol-checkbox.right .absol-checkbox-icon-left {\r\n    display: none;\r\n}\r\n\r\n.absol-checkbox.disabled {\r\n    cursor: default;\r\n}\r\n\r\n.absol-checkbox.disabled:hover .tick,\r\n.absol-checkbox.disabled .tick {\r\n    fill: #929292;\r\n}\r\n\r\n.absol-checkbox.disabled .bound,\r\n.absol-checkbox.disabled:hover .bound {\r\n    stroke: #929292;\r\n    fill: #ebebe4;\r\n}\r\n", ""]);
 
-
-
-/***/ }),
-/* 154 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(155);
+var content = __webpack_require__(154);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30147,7 +30137,42 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
+/* 154 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "\r\n.absol-checkbox {\r\n    display: inline;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-checkbox input {\r\n    display: none;\r\n}\r\n\r\n.absol-checkbox label {\r\n    white-space: pre;\r\n    cursor: inherit;\r\n    vertical-align: middle;\r\n    margin: 0;\r\n}\r\n\r\n.absol-checkbox>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 18px;\r\n    height: 18px;\r\n}\r\n\r\n.absol-checkbox>svg .bound {\r\n    stroke: #929292;\r\n    fill: white;\r\n}\r\n\r\n.absol-checkbox:hover>svg .bound {\r\n    fill: #d6d6d6;\r\n    stroke: black;\r\n}\r\n\r\n/* \r\n.absol-checkbox>svg .bound {\r\n    fill: none;\r\n} */\r\n\r\n.absol-checkbox-icon .border {}\r\n\r\n.absol-checkbox .tick {\r\n    transition: opacity 0.07s;\r\n    opacity: 0;\r\n    fill: #606060;\r\n}\r\n\r\n.absol-checkbox:hover .tick {\r\n    transition: opacity 0.07s;\r\n    opacity: 0;\r\n    fill: black;\r\n}\r\n\r\n.absol-checkbox.checked .tick {\r\n    opacity: 1;\r\n    transition: opacity 0.1s;\r\n}\r\n\r\n.absol-checkbox:not(.right) .absol-checkbox-icon-right {\r\n    display: none;\r\n}\r\n\r\n.absol-checkbox:not(.right) label {\r\n    padding-left: 5px;\r\n}\r\n\r\n.absol-checkbox.right label {\r\n    padding-right: 5px;\r\n}\r\n\r\n.absol-checkbox.right .absol-checkbox-icon-left {\r\n    display: none;\r\n}\r\n\r\n.absol-checkbox.disabled {\r\n    cursor: default;\r\n}\r\n\r\n.absol-checkbox.disabled:hover .tick,\r\n.absol-checkbox.disabled .tick {\r\n    fill: #929292;\r\n}\r\n\r\n.absol-checkbox.disabled .bound,\r\n.absol-checkbox.disabled:hover .bound {\r\n    stroke: #929292;\r\n    fill: #ebebe4;\r\n}\r\n", ""]);
+
+
+
+/***/ }),
 /* 155 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(156);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30157,11 +30182,11 @@ exports.push([module.i, ".absol-candy-box{\r\n    \r\n}\r\n\r\n.absol-candy-box-
 
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(157);
+var content = __webpack_require__(158);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30180,93 +30205,58 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 157 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, "\r\n.absol-editabe-text {\r\n    display: inline;\r\n}\r\n\r\n.absol-editabe-text span {\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n    white-space: pre;\r\n}\r\n\r\n.absol-editabe-text-higne {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 0rem;\r\n    height: 0ox;\r\n}\r\n\r\n.absol-editabe-text-higne input {\r\n    position: absolute;\r\n    display: none;\r\n    border: none;\r\n    top: -2;\r\n    left: -2;\r\n    padding-top: 0rem;\r\n    padding-left: 0.1429rem;\r\n    padding-bottom: 0.2857rem;\r\n    margin: 0;\r\n    background: transparent;\r\n    outline: none;\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n}\r\n\r\n.absol-editabe-text.editing .absol-editabe-text-higne input {\r\n    display: block;\r\n}\r\n\r\n.absol-editabe-text.editing span {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-editabe-text.editing {\r\n    -webkit-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    -moz-box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    box-shadow: 0rem 0rem 0.1429rem 0rem rgba(33, 77, 255, 1);\r\n    border-radius: 0.17em;\r\n}\r\n", ""]);
-
-
 
 /***/ }),
 /* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(159);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "\r\n.absol-editabe-text {\r\n    display: inline;\r\n}\r\n\r\n.absol-editabe-text span {\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n    white-space: pre;\r\n}\r\n\r\n.absol-editabe-text-higne {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 0px;\r\n    height: 0ox;\r\n}\r\n\r\n.absol-editabe-text-higne input {\r\n    position: absolute;\r\n    display: none;\r\n    border: none;\r\n    top: -2;\r\n    left: -2;\r\n    padding-top: 0px;\r\n    padding-left: 2px;\r\n    padding-bottom: 4px;\r\n    margin: 0;\r\n    background: transparent;\r\n    outline: none;\r\n    font-style: inherit;\r\n    font-size: inherit;\r\n}\r\n\r\n.absol-editabe-text.editing .absol-editabe-text-higne input {\r\n    display: block;\r\n}\r\n\r\n.absol-editabe-text.editing span {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-editabe-text.editing {\r\n    -webkit-box-shadow: 0px 0px 2px 0px rgba(33, 77, 255, 1);\r\n    -moz-box-shadow: 0px 0px 2px 0px rgba(33, 77, 255, 1);\r\n    box-shadow: 0px 0px 2px 0px rgba(33, 77, 255, 1);\r\n    border-radius: 0.17em;\r\n}\r\n", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-width-height-resizer {\r\n    position: relative;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right {\r\n    cursor: nwse-resize;\r\n    position: absolute;\r\n    z-index: 1;\r\n    right: 0;\r\n    bottom: 0;\r\n    height: 0.9286rem;\r\n    width: 0.9286rem;\r\n    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAQUlEQVQoz2NgIBGkpaX9Z2IgA9BWU1pa2n+S/UGSZnRFBDVhU4BXEy4bcGrC5ySsmgj5AUMTMZ4mOehhmhjJ0QkA9TYwPsqIBKMAAAAASUVORK5CYII=');\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-left {\r\n    cursor: nesw-resize;\r\n    position: absolute;\r\n    z-index: 1;\r\n    left: 0;\r\n    bottom: 0;\r\n    height: 0.9286rem;\r\n    width: 0.9286rem;\r\n    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABCSURBVChTY0hLS/vPQCJggtIkAco0keRMZMVEa0RXSJRGbIoIaoQpIMlGZEmiNRJSiFUjNkGCGrGaRAAwkq6JgQEAnaEwPtyU/MEAAAAASUVORK5CYII=');\r\n}\r\n\r\n.absol-width-height-resizer-anchor-top-right {\r\n    cursor: nesw-resize;\r\n    position: absolute;\r\n    z-index: 1;\r\n    right: 0;\r\n    top: 0;\r\n    height: 0.9286rem;\r\n    width: 0.9286rem;\r\n    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABMSURBVChTY0xLS/vPQGsAsoQJygYDdFuJdgUhjTgNwqcQpyYQwKURryYQwKaAoCYQwGUjQYCskGhNIABTTJImGABpQolcYgEZmhgYAEPpMD56IPESAAAAAElFTkSuQmCC')\r\n}\r\n\r\n.absol-width-height-resizer-anchor-top-left {\r\n    cursor: nwse-resize;\r\n    position: absolute;\r\n    z-index: 1;\r\n    top: 0;\r\n    left: 0;\r\n    height: 0.9286rem;\r\n    width: 0.9286rem;\r\n    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABNSURBVChTnZFbCgAgCAStw3r/GxQLClaSj/kJckcFBzMvqtKRprwHd6OncRRwN7GfKQFoIS0Ar/gVQGmCYkMpAWgwLYBSWHCPG9GQiDbsRTA+Srvt5gAAAABJRU5ErkJggg==');\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: auto;\r\n}\r\n\r\n/* .absol-width-height-resizer */", ""]);
+
+var content = __webpack_require__(160);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(161);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-width-height-resizer {\r\n    position: relative;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right {\r\n    cursor: nwse-resize;\r\n    position: absolute;\r\n    z-index: 1;\r\n    right: 0;\r\n    bottom: 0;\r\n    height: 13px;\r\n    width: 13px;\r\n    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAQUlEQVQoz2NgIBGkpaX9Z2IgA9BWU1pa2n+S/UGSZnRFBDVhU4BXEy4bcGrC5ySsmgj5AUMTMZ4mOehhmhjJ0QkA9TYwPsqIBKMAAAAASUVORK5CYII=');\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-left {\r\n    cursor: nesw-resize;\r\n    position: absolute;\r\n    z-index: 1;\r\n    left: 0;\r\n    bottom: 0;\r\n    height: 13px;\r\n    width: 13px;\r\n    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABCSURBVChTY0hLS/vPQCJggtIkAco0keRMZMVEa0RXSJRGbIoIaoQpIMlGZEmiNRJSiFUjNkGCGrGaRAAwkq6JgQEAnaEwPtyU/MEAAAAASUVORK5CYII=');\r\n}\r\n\r\n.absol-width-height-resizer-anchor-top-right {\r\n    cursor: nesw-resize;\r\n    position: absolute;\r\n    z-index: 1;\r\n    right: 0;\r\n    top: 0;\r\n    height: 13px;\r\n    width: 13px;\r\n    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABMSURBVChTY0xLS/vPQGsAsoQJygYDdFuJdgUhjTgNwqcQpyYQwKURryYQwKaAoCYQwGUjQYCskGhNIABTTJImGABpQolcYgEZmhgYAEPpMD56IPESAAAAAElFTkSuQmCC')\r\n}\r\n\r\n.absol-width-height-resizer-anchor-top-left {\r\n    cursor: nwse-resize;\r\n    position: absolute;\r\n    z-index: 1;\r\n    top: 0;\r\n    left: 0;\r\n    height: 13px;\r\n    width: 13px;\r\n    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABNSURBVChTnZFbCgAgCAStw3r/GxQLClaSj/kJckcFBzMvqtKRprwHd6OncRRwN7GfKQFoIS0Ar/gVQGmCYkMpAWgwLYBSWHCPG9GQiDbsRTA+Srvt5gAAAABJRU5ErkJggg==');\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: auto;\r\n}\r\n\r\n/* .absol-width-height-resizer */", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-follower{\r\n    position: relative;\r\n}\r\n\r\n.absol-follower-content-container{\r\n    position: absolute;\r\n    left: -714.2857rem;\r\n    top: -714.2857rem;\r\n    z-index: -1000;\r\n}\r\n\r\n.absol-follower.following .absol-follower-content-container{\r\n    z-index: 100;\r\n}", ""]);
 
-
-
-/***/ }),
-/* 162 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(163);
+var content = __webpack_require__(162);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30287,7 +30277,42 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-follower {\r\n    position: fixed;\r\n    z-index: 100;\r\n}\r\n\r\n.absol-follower-hidden{\r\n    z-index: -1000 !important;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n}", ""]);
+
+
+
+/***/ }),
 /* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(164);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30297,11 +30322,11 @@ exports.push([module.i, ".absol-tooltip {\r\n    margin: 0;\r\n    position: rel
 
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(165);
+var content = __webpack_require__(166);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30322,7 +30347,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30332,11 +30357,11 @@ exports.push([module.i, ".absol-frame{\r\n    \r\n}", ""]);
 
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(167);
+var content = __webpack_require__(168);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30357,7 +30382,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30367,11 +30392,11 @@ exports.push([module.i, ".absol-frame-view{\r\n    position: relative;\r\n}\r\n\
 
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(169);
+var content = __webpack_require__(170);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30390,23 +30415,23 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 169 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-tabbar {\r\n    white-space: normal;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n\r\n.absol-tabbar .absol-hscroller-viewport {\r\n    overflow-y: hidden;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button {\r\n    height: 100%;\r\n}\r\n\r\n/* .absol-tabbar .absol-scrollbar-container {\r\n    height: 0.3571rem;\r\n} */\r\n\r\n.absol-tabbar .absol-scrollbar-container.horizontal {\r\n    bottom: -0.1429rem;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-container {\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n    background: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-tabbar:hover .absol-scrollbar-container,\r\n.absol-tabbar:active .absol-scrollbar-container {\r\n    opacity: 1;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button {\r\n    background-color: rgba(33, 33, 40, 0.1);\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button:hover {\r\n    background-color: rgba(33, 33, 40, 0.3);\r\n}\r\n\r\n\r\n\r\n.absol-tabbar .absol-scrollbar-button:active,\r\n.absol-tabbar .absol-hscrollbar.absol-active .absol-scrollbar-button {\r\n    background-color: rgba(47, 47, 55, 0.4);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-tabbar-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n    background-color: rgb(45, 45, 45);\r\n    color: rgb(200, 200, 200);\r\n    margin-right: 0.0714rem;\r\n    border: none;\r\n    outline: none;\r\n    font-size: 1em;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button-active {\r\n    background-color: rgb(30, 30, 30);\r\n    color: rgb(250, 250, 252);\r\n}\r\n\r\n.absol-tabbar-button-text,\r\n.absol-tabbar-button-close {\r\n    display: inline;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-tabbar-button .absol-tabbar-button-close {\r\n    visibility: hidden;\r\n    color: rgb(190, 190, 190);\r\n    font-size: 1em\r\n}\r\n\r\n.absol-tabbar-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-left: 0.5em;\r\n}\r\n\r\n.absol-tabbar-button-icon-container>span {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-tabbar-button:hover .absol-tabbar-button-close,\r\n.absol-tabbar-button-active .absol-tabbar-button-close {\r\n    visibility: visible;\r\n    color: red;\r\n}\r\n\r\n.absol-tabbar-button-active .absol-tabbar-button-modified-flag {\r\n    color: lightblue;\r\n}\r\n\r\n.absol-tabbar-button-modified-flag {\r\n    color: mediumaquamarine;\r\n}\r\n\r\n.absol-tabbar-button:not(.absol-tabbar-button-modified) .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified:not(.active) .absol-tabbar-button-icon-container:hover .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified .absol-tabbar-button-icon-container:not(:hover) .absol-tabbar-button-close {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-button-range {}\r\n\r\n\r\n.absol-tabview {\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-tabview-container {\r\n    position: absolute;\r\n    top: 2em;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n}\r\n\r\n\r\n\r\n.absol-tabview-container.absol-tabview-container-hidden {\r\n    z-index: -9999;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-tabview-container>div,\r\n.absol-tabview-container>pre {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-tabview-container>pre {\r\n    margin: 0;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button {\r\n    border-radius: 0.7143rem 0.7143rem 0 0;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    border: solid 0.0714rem #ccc;\r\n    background-color: white;\r\n    color: black;\r\n    padding-left: 1em;\r\n    padding-right: 0.357em;\r\n    margin-right: 0.357em;\r\n}\r\n\r\n.absol-tabview .absol-tabbar {\r\n    height: 2em;\r\n    overflow-y: hidden;\r\n    border-bottom: 0.0714rem solid #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button-active {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n/* .absol-tabview .absol-tabbar-button-close {\r\n    color: rgb(170, 170, 170);\r\n    line-height: 1.5em;\r\n    margin-left: 1em;\r\n    font-size: 1.3em;\r\n} */\r\n\r\n.absol-tabview .absol-tabbar-button-close:hover {\r\n    color: red;\r\n}\r\n\r\n\r\n\r\n\r\n/************** Mini version - like window form ***********************/\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar {\r\n    height: 1.5714rem;\r\n    border-bottom: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button {\r\n    height: 1.4286rem;\r\n    padding-left: 0.3571rem;\r\n    padding-right: 0.3571rem;\r\n    border-radius: 0;\r\n    margin: 0;\r\n    vertical-align: bottom;\r\n    margin-top: 0.1429rem;\r\n    background-color: rgb(242, 242, 242);\r\n    color: black;\r\n    position: relative;\r\n}\r\n\r\n.absol-tabview.xp-tiny::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 1.2857rem;\r\n    z-index: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 0.2857rem;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button.absol-tabbar-button-active {\r\n    height: 1.5714rem;\r\n    margin-top: 0;\r\n    background-color: white;\r\n    border-top-color: #ccc;\r\n    border-left-color: #ccc;\r\n    border-right-color: #ccc;\r\n    border-bottom-color: white;\r\n}\r\n\r\n\r\n\r\n.absol-hscroller.absol-tabbar.disabled .absol-scrollbar-container {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-tabview.absol-tabview.xp-tiny .absol-tabbar-button-close {\r\n    line-height: 1.2857rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button-close.mdi.mdi-close {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabview-container {\r\n    top: 1.5714rem;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tab-absol {\r\n    border-left: solid 0.0714rem #ccc;\r\n    border-right: solid 0.0714rem #ccc;\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button .absol-tabbar-button-icon-container {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button {\r\n    padding-right: 1em;\r\n}", ""]);
-
-
 
 /***/ }),
 /* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-tabbar {\r\n    white-space: normal;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n\r\n.absol-tabbar .absol-hscroller-viewport {\r\n    overflow-y: hidden;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button {\r\n    height: 100%;\r\n}\r\n\r\n/* .absol-tabbar .absol-scrollbar-container {\r\n    height: 5px;\r\n} */\r\n\r\n.absol-tabbar .absol-scrollbar-container.horizontal {\r\n    bottom: -2px;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-container {\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n    background: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-tabbar:hover .absol-scrollbar-container,\r\n.absol-tabbar:active .absol-scrollbar-container {\r\n    opacity: 1;\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button {\r\n    background-color: rgba(33, 33, 40, 0.1);\r\n}\r\n\r\n.absol-tabbar .absol-scrollbar-button:hover {\r\n    background-color: rgba(33, 33, 40, 0.3);\r\n}\r\n\r\n\r\n\r\n.absol-tabbar .absol-scrollbar-button:active,\r\n.absol-tabbar .absol-hscrollbar.absol-active .absol-scrollbar-button {\r\n    background-color: rgba(47, 47, 55, 0.4);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-tabbar-button {\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n    background-color: rgb(45, 45, 45);\r\n    color: rgb(200, 200, 200);\r\n    margin-right: 1px;\r\n    border: none;\r\n    outline: none;\r\n    font-size: 1em;\r\n}\r\n\r\n.absol-tabbar .absol-tabbar-button-active {\r\n    background-color: rgb(30, 30, 30);\r\n    color: rgb(250, 250, 252);\r\n}\r\n\r\n.absol-tabbar-button-text,\r\n.absol-tabbar-button-close {\r\n    display: inline;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-tabbar-button .absol-tabbar-button-close {\r\n    visibility: hidden;\r\n    color: rgb(190, 190, 190);\r\n    font-size: 1em\r\n}\r\n\r\n.absol-tabbar-button-icon-container {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-left: 0.5em;\r\n}\r\n\r\n.absol-tabbar-button-icon-container>span {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-tabbar-button:hover .absol-tabbar-button-close,\r\n.absol-tabbar-button-active .absol-tabbar-button-close {\r\n    visibility: visible;\r\n    color: red;\r\n}\r\n\r\n.absol-tabbar-button-active .absol-tabbar-button-modified-flag {\r\n    color: lightblue;\r\n}\r\n\r\n.absol-tabbar-button-modified-flag {\r\n    color: mediumaquamarine;\r\n}\r\n\r\n.absol-tabbar-button:not(.absol-tabbar-button-modified) .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified:not(.active) .absol-tabbar-button-icon-container:hover .absol-tabbar-button-modified-flag,\r\n.absol-tabbar-button.absol-tabbar-button-modified .absol-tabbar-button-icon-container:not(:hover) .absol-tabbar-button-close {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-button-range {}\r\n\r\n\r\n.absol-tabview {\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-tabview-container {\r\n    position: absolute;\r\n    top: 2em;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    overflow: auto;\r\n}\r\n\r\n\r\n\r\n.absol-tabview-container.absol-tabview-container-hidden {\r\n    z-index: -9999;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-tabview-container>div,\r\n.absol-tabview-container>pre {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-tabview-container>pre {\r\n    margin: 0;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button {\r\n    border-radius: 10px 10px 0 0;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    border: solid 1px #ccc;\r\n    background-color: white;\r\n    color: black;\r\n    padding-left: 1em;\r\n    padding-right: 0.357em;\r\n    margin-right: 0.357em;\r\n}\r\n\r\n.absol-tabview .absol-tabbar {\r\n    height: 2em;\r\n    overflow-y: hidden;\r\n    border-bottom: 1px solid #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview .absol-tabbar-button-active {\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    color: white;\r\n}\r\n\r\n/* .absol-tabview .absol-tabbar-button-close {\r\n    color: rgb(170, 170, 170);\r\n    line-height: 1.5em;\r\n    margin-left: 1em;\r\n    font-size: 1.3em;\r\n} */\r\n\r\n.absol-tabview .absol-tabbar-button-close:hover {\r\n    color: red;\r\n}\r\n\r\n\r\n\r\n\r\n/************** Mini version - like window form ***********************/\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar {\r\n    height: 22px;\r\n    border-bottom: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button {\r\n    height: 20px;\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    border-radius: 0;\r\n    margin: 0;\r\n    vertical-align: bottom;\r\n    margin-top: 2px;\r\n    background-color: rgb(242, 242, 242);\r\n    color: black;\r\n    position: relative;\r\n}\r\n\r\n.absol-tabview.xp-tiny::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 18px;\r\n    z-index: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 4px;\r\n    border-bottom: solid 1px #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button.absol-tabbar-button-active {\r\n    height: 22px;\r\n    margin-top: 0;\r\n    background-color: white;\r\n    border-top-color: #ccc;\r\n    border-left-color: #ccc;\r\n    border-right-color: #ccc;\r\n    border-bottom-color: white;\r\n}\r\n\r\n\r\n\r\n.absol-hscroller.absol-tabbar.disabled .absol-scrollbar-container {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-tabview.absol-tabview.xp-tiny .absol-tabbar-button-close {\r\n    line-height: 18px;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabbar-button-close.mdi.mdi-close {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tabview-container {\r\n    top: 22px;\r\n}\r\n\r\n.absol-tabview.xp-tiny .absol-tab-absol {\r\n    border-left: solid 1px #ccc;\r\n    border-right: solid 1px #ccc;\r\n    border-bottom: solid 1px #ccc;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button .absol-tabbar-button-icon-container {\r\n    display: none;\r\n}\r\n\r\n.absol-tabview.as-without-close-button>.absol-tabbar .absol-tabbar-button {\r\n    padding-right: 1em;\r\n}", ""]);
 
-var content = __webpack_require__(171);
+
+
+/***/ }),
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(172);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30427,7 +30452,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30437,11 +30462,11 @@ exports.push([module.i, ".absol-single-page {\r\n    position: relative;\r\n}\r\
 
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(173);
+var content = __webpack_require__(174);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30460,233 +30485,198 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 173 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-page-selector{\r\n    white-space: normal;\r\n}\r\n\r\n.absol-page-selector > ul{\r\n    margin-bottom: 0rem;\r\n    margin-top: 0;\r\n}\r\n\r\n.page-number-buttons{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-number-input > label{\r\n    font-weight: 100;\r\n}\r\n\r\n.page-number-buttons > li.page-previous, \r\n.page-number-buttons > li.page-next,\r\n.page-number-buttons > li.page-first,\r\n.page-number-buttons > li.page-last\r\n{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    padding-left: 0.7143rem;\r\n    padding-right: 0.7143rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n.page-number-buttons > li.page-number{\r\n    display: inline-block;\r\n    height: 2.1429rem;\r\n    width: 2.8571rem;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.page-number-buttons > li.page-number.active{\r\n    box-shadow:  0 0.1429rem 0.3571rem 0 rgba(0,0,0,.16), 0 0.1429rem 0.7143rem 0 rgba(0,0,0,.12);\r\n    background-color: #4285f4;\r\n    border-radius:0.1429rem; \r\n    \r\n}\r\n\r\n.page-number-buttons > li.page-number.active > a{\r\n\tcolor: white;\r\n    \r\n}\r\n\r\n.page-number-buttons > li> a{\r\n    line-height: 2.1429rem;\r\n    text-decoration:none;\r\n}\r\n\r\n.page-number-buttons > li:not(.active):hover{\r\n    background-color: #eee;\r\n\r\n}\r\n\r\n.absol-page-selector .page-number-input{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-page-selector .page-number-input  input[type=\"text\"]{\r\n    width: 3em;\r\n    margin-left: 0.3571rem; \r\n    margin-right: 0.7143rem;\r\n    text-align: center;\r\n    height: 1.8571rem;\r\n    border: none;\r\n    border: solid 0.0714rem #ccc; \r\n    border-radius: 0.1429rem;\r\n\r\n}", ""]);
-
-
 
 /***/ }),
 /* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(175);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-page-selector{\r\n    white-space: normal;\r\n}\r\n\r\n.absol-page-selector > ul{\r\n    margin-bottom: 0px;\r\n    margin-top: 0;\r\n}\r\n\r\n.page-number-buttons{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.page-number-input > label{\r\n    font-weight: 100;\r\n}\r\n\r\n.page-number-buttons > li.page-previous, \r\n.page-number-buttons > li.page-next,\r\n.page-number-buttons > li.page-first,\r\n.page-number-buttons > li.page-last\r\n{\r\n    display: inline-block;\r\n    height: 30px;\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n.page-number-buttons > li.page-number{\r\n    display: inline-block;\r\n    height: 30px;\r\n    width: 40px;\r\n    text-align: center;\r\n    transition: all .3s linear;\r\n    background-color: transparent;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n.page-number-buttons > li.page-number.active{\r\n    box-shadow:  0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);\r\n    background-color: #4285f4;\r\n    border-radius:2px; \r\n    \r\n}\r\n\r\n.page-number-buttons > li.page-number.active > a{\r\n\tcolor: white;\r\n    \r\n}\r\n\r\n.page-number-buttons > li> a{\r\n    line-height: 30px;\r\n    text-decoration:none;\r\n}\r\n\r\n.page-number-buttons > li:not(.active):hover{\r\n    background-color: #eee;\r\n\r\n}\r\n\r\n.absol-page-selector .page-number-input{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-page-selector .page-number-input  input[type=\"text\"]{\r\n    width: 3em;\r\n    margin-left: 5px; \r\n    margin-right: 10px;\r\n    text-align: center;\r\n    height: 26px;\r\n    border: none;\r\n    border: solid 1px #ccc; \r\n    border-radius: 2px;\r\n\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-bscroller {\r\n    overflow: auto;\r\n    scrollbar-width: thin;\r\n    scrollbar-color: rgba(151, 151, 151, 0.4) rgba(220, 220, 220, 0.4);\r\n\r\n}\r\n\r\n\r\n.absol-bscroller::-webkit-scrollbar {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n}\r\n\r\n.absol-bscroller::-webkit-scrollbar-track {\r\n    background: rgb(220, 220, 220, 0.4);\r\n}\r\n\r\n.absol-bscroller::-webkit-scrollbar-thumb {\r\n    background: rgb(182, 182, 182, 0.4);\r\n}\r\n\r\n.absol-bscroller::-webkit-scrollbar-thumb:hover {\r\n    background: rgb(32, 32, 32, 0.4);\r\n}\r\n\r\n.absol-bscroller::-webkit-scrollbar-thumb:active {\r\n    background: rgb(13, 13, 13, 0.6);\r\n}\r\n\r\n.absol-bscroller.dark,\r\n.dark .absol-bscroller {\r\n    scrollbar-color: rgba(104, 104, 104, 0.4) rgba(35, 35, 35, 0.4);\r\n}\r\n\r\n\r\n.absol-bscroller.dark::-webkit-scrollbar-track,\r\n.dark .absol-bscroller::-webkit-scrollbar-track {\r\n    background: rgb(35, 35, 35, 0.4);\r\n}\r\n\r\n.absol-bscroller.dark::-webkit-scrollbar-thumb,\r\n.dark .absol-bscroller::-webkit-scrollbar-thumb {\r\n    background: rgb(73, 73, 73, 0.4);\r\n}\r\n\r\n.absol-bscroller.dark::-webkit-scrollbar-thumb:hover,\r\n.dark .absol-bscroller::-webkit-scrollbar-thumb:hover {\r\n    background: rgb(223, 223, 223, 0.4);\r\n}\r\n\r\n.absol-bscroller.dark::-webkit-scrollbar-thumb:active,\r\n.dark .absol-bscroller::-webkit-scrollbar-thumb:active {\r\n    background: rgb(242, 242, 242, 0.6);\r\n}", ""]);
+
+var content = __webpack_require__(176);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(177);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-bscroller {\r\n    overflow: auto;\r\n    scrollbar-width: thin;\r\n    scrollbar-color: rgba(151, 151, 151, 0.4) rgba(220, 220, 220, 0.4);\r\n\r\n}\r\n\r\n\r\n.absol-bscroller::-webkit-scrollbar {\r\n    width: 6px;\r\n    height: 6px;\r\n}\r\n\r\n.absol-bscroller::-webkit-scrollbar-track {\r\n    background: rgb(220, 220, 220, 0.4);\r\n}\r\n\r\n.absol-bscroller::-webkit-scrollbar-thumb {\r\n    background: rgb(182, 182, 182, 0.4);\r\n}\r\n\r\n.absol-bscroller::-webkit-scrollbar-thumb:hover {\r\n    background: rgb(32, 32, 32, 0.4);\r\n}\r\n\r\n.absol-bscroller::-webkit-scrollbar-thumb:active {\r\n    background: rgb(13, 13, 13, 0.6);\r\n}\r\n\r\n.absol-bscroller.dark,\r\n.dark .absol-bscroller {\r\n    scrollbar-color: rgba(104, 104, 104, 0.4) rgba(35, 35, 35, 0.4);\r\n}\r\n\r\n\r\n.absol-bscroller.dark::-webkit-scrollbar-track,\r\n.dark .absol-bscroller::-webkit-scrollbar-track {\r\n    background: rgb(35, 35, 35, 0.4);\r\n}\r\n\r\n.absol-bscroller.dark::-webkit-scrollbar-thumb,\r\n.dark .absol-bscroller::-webkit-scrollbar-thumb {\r\n    background: rgb(73, 73, 73, 0.4);\r\n}\r\n\r\n.absol-bscroller.dark::-webkit-scrollbar-thumb:hover,\r\n.dark .absol-bscroller::-webkit-scrollbar-thumb:hover {\r\n    background: rgb(223, 223, 223, 0.4);\r\n}\r\n\r\n.absol-bscroller.dark::-webkit-scrollbar-thumb:active,\r\n.dark .absol-bscroller::-webkit-scrollbar-thumb:active {\r\n    background: rgb(242, 242, 242, 0.6);\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-search-list {\r\n    padding-top: 2.5em;\r\n    position: relative;\r\n    border: solid 0.0714rem #a9a9a9;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-search-list-search-input-container {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 2.5em;\r\n    border-bottom: solid 0.0714rem #a9a9a9;\r\n\r\n}\r\n\r\n\r\n.absol-search-list-search-input-container input[type=\"text\"] {\r\n    font-size: 1em;\r\n    box-sizing: border-box;\r\n    width: calc(100% - 1em);\r\n    height: 1.5em;\r\n    margin: 0.5em;\r\n}\r\n\r\n.absol-search-list-contents {\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    background: white;\r\n}\r\n\r\n.absol-search-list-item {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-search-list-item.default {\r\n    line-height: 2em;\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-search-list-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-search-list-item.active {\r\n    background-color: rgba(169, 169, 169, 0.4);\r\n}", ""]);
+
+var content = __webpack_require__(178);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(179);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-search-list {\r\n    padding-top: 2.5em;\r\n    position: relative;\r\n    border: solid 1px #a9a9a9;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-search-list-search-input-container {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 2.5em;\r\n    border-bottom: solid 1px #a9a9a9;\r\n\r\n}\r\n\r\n\r\n.absol-search-list-search-input-container input[type=\"text\"] {\r\n    font-size: 1em;\r\n    box-sizing: border-box;\r\n    width: calc(100% - 1em);\r\n    height: 1.5em;\r\n    margin: 0.5em;\r\n}\r\n\r\n.absol-search-list-contents {\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    background: white;\r\n}\r\n\r\n.absol-search-list-item {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-search-list-item.default {\r\n    line-height: 2em;\r\n    padding-left: 1em;\r\n    padding-right: 1em;\r\n}\r\n\r\n.absol-search-list-item:hover {\r\n    background-color: rgba(169, 169, 169, 0.1);\r\n}\r\n\r\n.absol-search-list-item.active {\r\n    background-color: rgba(169, 169, 169, 0.4);\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-static-tabbar {\r\n    position: relative;\r\n}\r\n\r\n.absol-static-tabbar-button {\r\n    height: 2em;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 1em;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    color: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-static-tabbar-button:hover {\r\n    color: rgb(30, 30, 55);\r\n}\r\n\r\n.absol-static-tabbar-button.active {\r\n    color: black;\r\n}\r\n\r\n.absol-static-tabbar-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-static-tabbar-button>span {\r\n    font-size: 0.7em;\r\n}\r\n\r\n.absol-static-tabbar-hline {\r\n    border-bottom: solid 0.0714rem rgb(127, 127, 128);\r\n    height: 100%;\r\n}\r\n\r\n.absol-static-tabbar-active-box {\r\n    position: absolute;\r\n    bottom: 0;\r\n    top: 0;\r\n    left: 0;\r\n    width: 0;\r\n    transition: left 0.15s, width 0.15s;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    box-sizing: border-box;\r\n    /* z-index: 1; */\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-hline{\r\n    border-bottom-color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button.active{\r\n    color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button {\r\n    color: rgb(204, 204, 204);\r\n}", ""]);
+
+var content = __webpack_require__(180);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(181);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-static-tabbar {\r\n    position: relative;\r\n}\r\n\r\n.absol-static-tabbar-button {\r\n    height: 2em;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 1em;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    color: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-static-tabbar-button:hover {\r\n    color: rgb(30, 30, 55);\r\n}\r\n\r\n.absol-static-tabbar-button.active {\r\n    color: black;\r\n}\r\n\r\n.absol-static-tabbar-button:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-static-tabbar-button>span {\r\n    font-size: 0.7em;\r\n}\r\n\r\n.absol-static-tabbar-hline {\r\n    border-bottom: solid 1px rgb(127, 127, 128);\r\n    height: 100%;\r\n}\r\n\r\n.absol-static-tabbar-active-box {\r\n    position: absolute;\r\n    bottom: 0;\r\n    top: 0;\r\n    left: 0;\r\n    width: 0;\r\n    transition: left 0.15s, width 0.15s;\r\n    padding-left: 0.5em;\r\n    padding-right: 0.5em;\r\n    box-sizing: border-box;\r\n    /* z-index: 1; */\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-hline{\r\n    border-bottom-color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button.active{\r\n    color: white;\r\n}\r\n\r\n.absol-static-tabbar.dark .absol-static-tabbar-button {\r\n    color: rgb(204, 204, 204);\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-exp-node {\r\n    height: 2em;\r\n    text-align: left;\r\n    background-color: transparent;\r\n    border: none;\r\n    outline: none;\r\n    white-space: nowrap;\r\n    font-size: inherit;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    position: relative;\r\n    color: rgb(33, 33, 34);\r\n}\r\n\r\n.absol-exp-node .toggler-ico {\r\n    width: 0.7em;\r\n    height: 0.7em;\r\n    margin-right: 0.35em;\r\n}\r\n\r\n.absol-exp-node .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-exp-node.status-removable .toggler-ico,\r\n.absol-exp-node.status-modified .toggler-ico {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-open) .toggle-open {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-close) .toggle-close {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node:hover .remove-ico {\r\n    visibility: visible;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node.status-removable .remove-ico,\r\n.absol-exp-node.status-modified .remove-ico {\r\n    display: inline-block;\r\n}\r\n\r\n.absol-exp-node.status-removable .remove-ico .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico .close {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .close {\r\n    visibility: visible;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-exp-node .remove-ico {\r\n    width: 0.9em;\r\n    height: 0.9em;\r\n    display: none;\r\n    visibility: hidden;\r\n    margin-left: -0.3em;\r\n    margin-right: 0.45em;\r\n}\r\n\r\n.absol-exp-node .remove-ico .close,\r\n.absol-exp-node .remove-ico .modified {\r\n    fill: rgb(169, 169, 169);\r\n    stroke: none;\r\n}\r\n\r\n\r\n.absol-exp-node.has-status {\r\n    padding-right: 2.5em;\r\n}\r\n\r\n.absol-exp-node>div,\r\n.absol-exp-node>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-exp-node .editing input {\r\n    color: khaki;\r\n    padding-top: 0.1429rem;\r\n    padding-bottom: 0.1429rem;\r\n}\r\n\r\n.absol-exp-node:hover {\r\n    background-color: rgb(169, 169, 172, 0.1);\r\n}\r\n\r\n.absol-exp-node:focus,\r\n.absol-exp-node.active:focus {\r\n    background-color: rgba(20, 185, 235, 0.3);\r\n}\r\n\r\n.absol-exp-node.active {\r\n    background-color: rgb(169, 169, 172, 0.2);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-exp-node-name {\r\n    /* -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none; */\r\n    user-select: none;\r\n    vertical-align: middle;\r\n    color: black;\r\n    margin-left: 0.5em;\r\n}\r\n\r\n.absol-exp-node-desc {\r\n    color: rgb(104, 104, 104);\r\n    margin-left: 0.5em;\r\n    font-size: 0.85em;\r\n}\r\n\r\n.absol-exp-node-desc:empty {\r\n    margin-left: 0;\r\n}\r\n\r\n\r\n.absol-exp-node-expand-icon {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-right: 0.2em;\r\n    height: 0.5em;\r\n    width: 0.5em;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node-ext-icon,\r\n.absol-exp-node-ext-icon>img {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 1.5em;\r\n    height: 1.5em;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon:empty {\r\n    display: none;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon {\r\n    text-align: center;\r\n}\r\n\r\n.absol-exp-node-ext-icon>.mdi,\r\n.absol-exp-node-ext-icon>span .absol-exp-node-ext-icon>svg {\r\n    line-height: 1em;\r\n    font-size: 1.5em;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon[src] {\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.absol-exp-tree>.absol-exp-node {\r\n    width: 100%;\r\n    display: block;\r\n}\r\n\r\n.absol-exp-tree.hide-children>.absol-exp-items {\r\n    display: none;\r\n}\r\n\r\n\r\n.dark .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n.dark .absol-exp-node-name {\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.dark .absol-exp-node-desc {\r\n    color: rgb(169, 169, 170);\r\n}\r\n\r\n.dark .absol-exp-node {\r\n    color: rgb(169, 169, 170);\r\n}", ""]);
+
+var content = __webpack_require__(182);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(183);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-exp-node {\r\n    height: 2em;\r\n    text-align: left;\r\n    background-color: transparent;\r\n    border: none;\r\n    outline: none;\r\n    white-space: nowrap;\r\n    font-size: inherit;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    position: relative;\r\n    color: rgb(33, 33, 34);\r\n}\r\n\r\n.absol-exp-node .toggler-ico {\r\n    width: 0.7em;\r\n    height: 0.7em;\r\n    margin-right: 0.35em;\r\n}\r\n\r\n.absol-exp-node .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n.absol-exp-node.status-removable .toggler-ico,\r\n.absol-exp-node.status-modified .toggler-ico {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-open) .toggle-open {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node:not(.status-close) .toggle-close {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node:hover .remove-ico {\r\n    visibility: visible;\r\n}\r\n\r\n\r\n\r\n.absol-exp-node.status-removable .remove-ico,\r\n.absol-exp-node.status-modified .remove-ico {\r\n    display: inline-block;\r\n}\r\n\r\n.absol-exp-node.status-removable .remove-ico .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico .close {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .close {\r\n    visibility: visible;\r\n}\r\n\r\n.absol-exp-node.status-modified .remove-ico:hover .modified {\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-exp-node .remove-ico {\r\n    width: 0.9em;\r\n    height: 0.9em;\r\n    display: none;\r\n    visibility: hidden;\r\n    margin-left: -0.3em;\r\n    margin-right: 0.45em;\r\n}\r\n\r\n.absol-exp-node .remove-ico .close,\r\n.absol-exp-node .remove-ico .modified {\r\n    fill: rgb(169, 169, 169);\r\n    stroke: none;\r\n}\r\n\r\n\r\n.absol-exp-node.has-status {\r\n    padding-right: 2.5em;\r\n}\r\n\r\n.absol-exp-node>div,\r\n.absol-exp-node>svg {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.absol-exp-node .editing input {\r\n    color: khaki;\r\n    padding-top: 2px;\r\n    padding-bottom: 2px;\r\n}\r\n\r\n.absol-exp-node:hover {\r\n    background-color: rgb(169, 169, 172, 0.1);\r\n}\r\n\r\n.absol-exp-node:focus,\r\n.absol-exp-node.active:focus {\r\n    background-color: rgba(20, 185, 235, 0.3);\r\n}\r\n\r\n.absol-exp-node.active {\r\n    background-color: rgb(169, 169, 172, 0.2);\r\n\r\n}\r\n\r\n\r\n\r\n.absol-exp-node-name {\r\n    /* -webkit-touch-callout: none;\r\n    -webkit-user-select: none;\r\n    -khtml-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none; */\r\n    user-select: none;\r\n    vertical-align: middle;\r\n    color: black;\r\n    margin-left: 0.5em;\r\n}\r\n\r\n.absol-exp-node-desc {\r\n    color: rgb(104, 104, 104);\r\n    margin-left: 0.5em;\r\n    font-size: 0.85em;\r\n}\r\n\r\n.absol-exp-node-desc:empty {\r\n    margin-left: 0;\r\n}\r\n\r\n\r\n.absol-exp-node-expand-icon {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    margin-right: 0.2em;\r\n    height: 0.5em;\r\n    width: 0.5em;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon {\r\n    display: none;\r\n}\r\n\r\n.absol-exp-node-ext-icon,\r\n.absol-exp-node-ext-icon>img {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    width: 1.5em;\r\n    height: 1.5em;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon:empty {\r\n    display: none;\r\n}\r\n\r\ndiv.absol-exp-node-ext-icon {\r\n    text-align: center;\r\n}\r\n\r\n.absol-exp-node-ext-icon>.mdi,\r\n.absol-exp-node-ext-icon>span .absol-exp-node-ext-icon>svg {\r\n    line-height: 1em;\r\n    font-size: 1.5em;\r\n}\r\n\r\nimg.absol-exp-node-ext-icon[src] {\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.absol-exp-tree>.absol-exp-node {\r\n    width: 100%;\r\n    display: block;\r\n}\r\n\r\n.absol-exp-tree.hide-children>.absol-exp-items {\r\n    display: none;\r\n}\r\n\r\n\r\n.dark .toggler-ico path {\r\n    fill: rgb(169, 169, 169);\r\n}\r\n\r\n\r\n.dark .absol-exp-node-name {\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.dark .absol-exp-node-desc {\r\n    color: rgb(169, 169, 170);\r\n}\r\n\r\n.dark .absol-exp-node {\r\n    color: rgb(169, 169, 170);\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-table-vscroller {\r\n    position: relative;\r\n}\r\n\r\n.absol-table-vscroller-head {\r\n    position: absolute;\r\n    z-index: 2;\r\n    width: 21.4286rem;\r\n    height: 1.4286rem;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-table-vscroller-head-line{\r\n    position: absolute;\r\n    left: 0;\r\n    z-index: 3;\r\n    pointer-events: none;\r\n    border-bottom:solid 0.1429rem rgb(169, 169, 170); \r\n    width: 100%;\r\n}\r\n\r\n.absol-table-vscroller.scroll-v .absol-table-vscroller-head-line{\r\n    width: calc(100% - 0.5rem);\r\n}\r\n\r\n.absol-table-vscroller-viewport {\r\n    max-height: 100%;\r\n    padding-bottom: 0.0714rem;\r\n    padding-top: 0.0714rem;\r\n}", ""]);
+
+var content = __webpack_require__(184);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(185);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-table-vscroller {\r\n    position: relative;\r\n}\r\n\r\n.absol-table-vscroller-head {\r\n    position: absolute;\r\n    z-index: 2;\r\n    width: 300px;\r\n    height: 20px;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-table-vscroller-head-line{\r\n    position: absolute;\r\n    left: 0;\r\n    z-index: 3;\r\n    pointer-events: none;\r\n    border-bottom:solid 2px rgb(169, 169, 170); \r\n    width: 100%;\r\n}\r\n\r\n.absol-table-vscroller.scroll-v .absol-table-vscroller-head-line{\r\n    width: calc(100% - 7px);\r\n}\r\n\r\n.absol-table-vscroller-viewport {\r\n    max-height: 100%;\r\n    padding-bottom: 1px;\r\n    padding-top: 1px;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-table-scroller {\r\n    position: relative;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-table-scroller-render-space {\r\n    position: fixed;\r\n    overflow: scroll;\r\n    left: 0;\r\n    top: 0;\r\n    max-width: calc(99vw - 2.1429rem);\r\n    max-height: calc(99vh -2.1429rem);\r\n    opacity: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-table-scroller-viewport {\r\n    box-sizing: border-box;\r\n    overflow: scroll;\r\n    width: calc(100% + 1.2143rem);\r\n    height: calc(100% + 1.2143rem);\r\n}\r\n\r\n.absol-table-scroller-fixed-viewport {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 10;\r\n    overflow: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-fixed-viewport>table>thead,\r\n.absol-table-scroller-fixed-viewport>table {\r\n    border-top-color: transparent !important;\r\n}\r\n\r\n.absol-table-scroller-fixed-hidden {\r\n    visibility: hidden !important;\r\n    opacity: 0 !important;\r\n    border-color: transparent !important;\r\n\r\n}\r\n\r\n.absol-table-scroller-header-hscroller {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    z-index: 9;\r\n    overflow: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-header-hscroller-viewport {\r\n    max-width: 100%;\r\n    overflow-x: scroll;\r\n    margin-bottom: -1.2143rem;/*default*/\r\n}\r\n\r\n.absol-table-scroller-header-hscroller-viewport table {\r\n    table-layout: fixed;\r\n}\r\n\r\n\r\n.absol-table-scroller-left-vscroller {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    z-index: 7;\r\n    /* width: 14.2857rem; */\r\n    overflow-x: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-left-vscroller-viewport {\r\n    max-height: 100%;\r\n    overflow-y: scroll;\r\n    min-width: calc(100% + 1.3571rem);\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n.absol-table-scroller-head-line,\r\n.absol-table-scroller-left-line {\r\n    z-index: 30;\r\n    pointer-events: none;\r\n    position: absolute;\r\n}\r\n\r\n.absol-table-scroller-head-line {\r\n    left: 0;\r\n    width: calc(100% - 0.4286rem);\r\n    border-bottom: solid 0.1429rem rgb(169, 169, 170);\r\n    width: 100%;\r\n}\r\n\r\n.absol-table-scroller-left-line {\r\n    top: 0;\r\n    border-right: solid 0.1429rem rgb(169, 169, 170);\r\n    height: calc(100% - 0.4286rem);\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-table-scroller.scroll-v .absol-table-scroller-head-line {\r\n    width: 100%;\r\n}\r\n\r\n.absol-table-scroller.scroll-h .absol-table-scroller-left-line {\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-table-scroller:not(.scroll-v) .absol-table-scroller-head-line {\r\n    display: none;\r\n}\r\n\r\n.absol-table-scroller:not(.scroll-h) .absol-table-scroller-left-line {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-table-scroller-vscrollbar-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 0.5714rem;\r\n    bottom: 0;\r\n    z-index: 31;\r\n}\r\n\r\n.absol-table-scroller-vscrollbar-container .absol-scrollbar-button {\r\n    left: 0.0714rem;\r\n    right: 0.0714rem;\r\n}\r\n\r\n\r\n.absol-table-scroller-vscrollbar-container>div,\r\n.absol-table-scroller-hscrollbar-container>div {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-table-scroller-hscrollbar-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    height: 0.8571rem;\r\n    bottom: 0;\r\n    z-index: 31;\r\n}\r\n\r\n\r\n.absol-table-scroller-hscrollbar-container .absol-scrollbar-button {\r\n    top: 0.0714rem;\r\n    bottom: 0.0714rem;\r\n}\r\n\r\n\r\n.absol-table-scroller:not(.scroll-v) .absol-table-scroller-vscrollbar-container {\r\n    display: none;\r\n}\r\n\r\n.absol-table-scroller:not(.scroll-h) .absol-table-scroller-hscrollbar-container {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-table-scroller.scroll-h .absol-table-scroller-vscrollbar-container {\r\n    bottom: 0.8571rem;\r\n}\r\n\r\n.absol-table-scroller.scroll-v .absol-table-scroller-hscrollbar-container {\r\n    right: 0.5714rem;\r\n}", ""]);
 
-
-
-/***/ }),
-/* 186 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(187);
+var content = __webpack_require__(186);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30707,7 +30697,42 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-table-scroller {\r\n    position: relative;\r\n    overflow: hidden;\r\n}\r\n\r\n.absol-table-scroller-render-space {\r\n    position: fixed;\r\n    overflow: scroll;\r\n    left: 0;\r\n    top: 0;\r\n    max-width: calc(99vw - 30px);\r\n    max-height: calc(99vh -30px);\r\n    opacity: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n}\r\n\r\n\r\n.absol-table-scroller-viewport {\r\n    box-sizing: border-box;\r\n    overflow: scroll;\r\n    width: calc(100% + 17px);\r\n    height: calc(100% + 17px);\r\n}\r\n\r\n.absol-table-scroller-fixed-viewport {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 10;\r\n    overflow: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-fixed-viewport>table>thead,\r\n.absol-table-scroller-fixed-viewport>table {\r\n    border-top-color: transparent !important;\r\n}\r\n\r\n.absol-table-scroller-fixed-hidden {\r\n    visibility: hidden !important;\r\n    opacity: 0 !important;\r\n    border-color: transparent !important;\r\n\r\n}\r\n\r\n.absol-table-scroller-header-hscroller {\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    z-index: 9;\r\n    overflow: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-header-hscroller-viewport {\r\n    max-width: 100%;\r\n    overflow-x: scroll;\r\n    margin-bottom: -17px;/*default*/\r\n}\r\n\r\n.absol-table-scroller-header-hscroller-viewport table {\r\n    table-layout: fixed;\r\n}\r\n\r\n\r\n.absol-table-scroller-left-vscroller {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    z-index: 7;\r\n    /* width: 200px; */\r\n    overflow-x: hidden;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-table-scroller-left-vscroller-viewport {\r\n    max-height: 100%;\r\n    overflow-y: scroll;\r\n    min-width: calc(100% + 19px);\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n.absol-table-scroller-head-line,\r\n.absol-table-scroller-left-line {\r\n    z-index: 30;\r\n    pointer-events: none;\r\n    position: absolute;\r\n}\r\n\r\n.absol-table-scroller-head-line {\r\n    left: 0;\r\n    width: calc(100% - 6px);\r\n    border-bottom: solid 2px rgb(169, 169, 170);\r\n    width: 100%;\r\n}\r\n\r\n.absol-table-scroller-left-line {\r\n    top: 0;\r\n    border-right: solid 2px rgb(169, 169, 170);\r\n    height: calc(100% - 6px);\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-table-scroller.scroll-v .absol-table-scroller-head-line {\r\n    width: 100%;\r\n}\r\n\r\n.absol-table-scroller.scroll-h .absol-table-scroller-left-line {\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-table-scroller:not(.scroll-v) .absol-table-scroller-head-line {\r\n    display: none;\r\n}\r\n\r\n.absol-table-scroller:not(.scroll-h) .absol-table-scroller-left-line {\r\n    display: none;\r\n}\r\n\r\n\r\n\r\n.absol-table-scroller-vscrollbar-container {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    width: 8px;\r\n    bottom: 0;\r\n    z-index: 31;\r\n}\r\n\r\n.absol-table-scroller-vscrollbar-container .absol-scrollbar-button {\r\n    left: 1px;\r\n    right: 1px;\r\n}\r\n\r\n\r\n.absol-table-scroller-vscrollbar-container>div,\r\n.absol-table-scroller-hscrollbar-container>div {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-table-scroller-hscrollbar-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    height: 12px;\r\n    bottom: 0;\r\n    z-index: 31;\r\n}\r\n\r\n\r\n.absol-table-scroller-hscrollbar-container .absol-scrollbar-button {\r\n    top: 1px;\r\n    bottom: 1px;\r\n}\r\n\r\n\r\n.absol-table-scroller:not(.scroll-v) .absol-table-scroller-vscrollbar-container {\r\n    display: none;\r\n}\r\n\r\n.absol-table-scroller:not(.scroll-h) .absol-table-scroller-hscrollbar-container {\r\n    display: none;\r\n}\r\n\r\n\r\n.absol-table-scroller.scroll-h .absol-table-scroller-vscrollbar-container {\r\n    bottom: 12px;\r\n}\r\n\r\n.absol-table-scroller.scroll-v .absol-table-scroller-hscrollbar-container {\r\n    right: 8px;\r\n}", ""]);
+
+
+
+/***/ }),
 /* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(188);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30717,11 +30742,11 @@ exports.push([module.i, ".absol-quick-path {\r\n    position: relative;\r\n    b
 
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(189);
+var content = __webpack_require__(190);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30740,303 +30765,268 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 189 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-drop-panel-head {\r\n    height: 2.75em;\r\n    line-height: 2.75em;\r\n    -webkit-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    -moz-box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    box-shadow: 0rem 0.2143rem 0.2857rem -0.2143rem rgba(0, 0, 0, 0.75);\r\n    background-color: rgba(240, 240, 242);\r\n    color: black;\r\n}\r\n\r\n.absol-drop-panel-head .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n\r\n.dark .absol-drop-panel-head {\r\n    background-color: rgba(54, 54, 56);\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.absol-drop-panel.show .absol-drop-panel-body {\r\n    height:auto;\r\n}\r\n\r\n.absol-drop-panel-body {\r\n    transition: height 0.2s;\r\n    height: 0;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n\r\n.absol-drop-panel.show>.absol-drop-panel-head  .toggle-close{\r\n    display: none;\r\n}\r\n\r\n.absol-drop-panel:not(.show)>.absol-drop-panel-head  .toggle-open{\r\n    display: none;\r\n}\r\n\r\n", ""]);
-
-
 
 /***/ }),
 /* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(191);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-drop-panel-head {\r\n    height: 2.75em;\r\n    line-height: 2.75em;\r\n    -webkit-box-shadow: 0px 3px 4px -3px rgba(0, 0, 0, 0.75);\r\n    -moz-box-shadow: 0px 3px 4px -3px rgba(0, 0, 0, 0.75);\r\n    box-shadow: 0px 3px 4px -3px rgba(0, 0, 0, 0.75);\r\n    background-color: rgba(240, 240, 242);\r\n    color: black;\r\n}\r\n\r\n.absol-drop-panel-head .toggler-ico path {\r\n    fill: rgb(104, 104, 104);\r\n}\r\n\r\n\r\n.dark .absol-drop-panel-head {\r\n    background-color: rgba(54, 54, 56);\r\n    color: rgb(204, 204, 204);\r\n}\r\n\r\n.absol-drop-panel.show .absol-drop-panel-body {\r\n    height:auto;\r\n}\r\n\r\n.absol-drop-panel-body {\r\n    transition: height 0.2s;\r\n    height: 0;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n}\r\n\r\n\r\n.absol-drop-panel.show>.absol-drop-panel-head  .toggle-close{\r\n    display: none;\r\n}\r\n\r\n.absol-drop-panel:not(.show)>.absol-drop-panel-head  .toggle-open{\r\n    display: none;\r\n}\r\n\r\n", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-draggable-stack {\r\n    position: relative;\r\n}\r\n\r\n.absol-draggable-stack .drag-zone {}\r\n\r\n.absol-draggable-stack>.dragging {\r\n    opacity: 0.2 !important;\r\n}\r\n\r\n.absol-draggable-stack-child-container.dragging {\r\n    opacity: 0.2 !important;\r\n}\r\n\r\n.absol-draggable-stack-clone-container {\r\n    position: absolute;\r\n    user-select: none;\r\n    -moz-user-select: none;\r\n    -webkit-user-select: none;\r\n    -ms-user-select: none;\r\n    z-index: 100;\r\n    pointer-events: all;\r\n    opacity: 0.5;\r\n    background: white;\r\n}\r\n\r\n.absol-draggable-vstack>.absol-draggable-stack-clone-container {\r\n    left: 0;\r\n    right: 0;\r\n\r\n}\r\n\r\n.absol-draggable-stack-clone-container * {\r\n    pointer-events: none !important;\r\n}\r\n\r\n.absol-draggable-stack-clone-container.home-going {\r\n    transition: top 0.2s;\r\n}\r\n\r\n.absol-draggable-stack-dest-line {\r\n    position: absolute;\r\n    z-index: 99;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.absol-draggable-vstack>.absol-draggable-stack-dest-line {\r\n    transition: top 0.1s;\r\n\r\n    left: 0;\r\n    right: 0;\r\n    border-top: solid 0.2143rem rgb(74, 174, 233);\r\n    border-bottom: solid 0.2143rem rgb(74, 174, 233);\r\n}\r\n\r\n.absol-draggable-hstack>.absol-draggable-stack-dest-line {\r\n    transition: left 0.1s;\r\n    top: 0;\r\n    bottom: 0;\r\n    border-left: solid 0.2143rem rgb(74, 174, 233);\r\n    border-right: solid 0.2143rem rgb(74, 174, 233);\r\n}\r\n.absol-draggable-hstack>*{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}", ""]);
+
+var content = __webpack_require__(192);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(193);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-draggable-stack {\r\n    position: relative;\r\n}\r\n\r\n.absol-draggable-stack .drag-zone {}\r\n\r\n.absol-draggable-stack>.dragging {\r\n    opacity: 0.2 !important;\r\n}\r\n\r\n.absol-draggable-stack-child-container.dragging {\r\n    opacity: 0.2 !important;\r\n}\r\n\r\n.absol-draggable-stack-clone-container {\r\n    position: absolute;\r\n    user-select: none;\r\n    -moz-user-select: none;\r\n    -webkit-user-select: none;\r\n    -ms-user-select: none;\r\n    z-index: 100;\r\n    pointer-events: all;\r\n    opacity: 0.5;\r\n    background: white;\r\n}\r\n\r\n.absol-draggable-vstack>.absol-draggable-stack-clone-container {\r\n    left: 0;\r\n    right: 0;\r\n\r\n}\r\n\r\n.absol-draggable-stack-clone-container * {\r\n    pointer-events: none !important;\r\n}\r\n\r\n.absol-draggable-stack-clone-container.home-going {\r\n    transition: top 0.2s;\r\n}\r\n\r\n.absol-draggable-stack-dest-line {\r\n    position: absolute;\r\n    z-index: 99;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.absol-draggable-vstack>.absol-draggable-stack-dest-line {\r\n    transition: top 0.1s;\r\n\r\n    left: 0;\r\n    right: 0;\r\n    border-top: solid 3px rgb(74, 174, 233);\r\n    border-bottom: solid 3px rgb(74, 174, 233);\r\n}\r\n\r\n.absol-draggable-hstack>.absol-draggable-stack-dest-line {\r\n    transition: left 0.1s;\r\n    top: 0;\r\n    bottom: 0;\r\n    border-left: solid 3px rgb(74, 174, 233);\r\n    border-right: solid 3px rgb(74, 174, 233);\r\n}\r\n.absol-draggable-hstack>*{\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-chrome-calendar {\r\n    display: inline-block;\r\n    font-family: Arial;\r\n    font-size: 1rem;\r\n    padding: 0.6em;\r\n    border: solid 0.0714rem rgb(191, 191, 191);\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem rgb(240, 240, 240);\r\n    z-index: 100;\r\n    touch-action: manipulation;\r\n    user-select: none;\r\n    background-color: rgb(255, 255, 255);\r\n    white-space: initial;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header {\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-title {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button {\r\n    font-size: 1em;\r\n    width: 1.5em;\r\n    height: 1.5em;\r\n    padding: 0;\r\n    border-radius: 0.2em;\r\n    border: solid 0.0714rem rgb(167, 167, 167);\r\n    background: linear-gradient(rgb(240, 240, 240), rgb(233, 233, 233), rgb(223, 223, 223));\r\n    cursor: pointer;\r\n    outline: none;\r\n    box-shadow: 0.0714rem 0.0714rem 0.1429rem #aaa;\r\n    color: rgb(110, 110, 110);\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button:nth-child(2) {\r\n    margin-left: 0.2em;\r\n    margin-right: 0.2em;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header-buttons>button:active {\r\n    box-shadow: 0rem 0rem 0.1429rem #aaa;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-title {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-title>span {\r\n    line-height: 1.5em;\r\n}\r\n\r\n.absol-chrome-calendar-instance {\r\n    margin-top: 1em;\r\n    border: solid 0.0714rem rgb(190, 190, 190);\r\n    width: 14em;\r\n    position: relative;\r\n    height: calc(8.4em + 0.2143rem);\r\n    overflow: hidden;\r\n    /*border*/\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek {\r\n    background-color: rgb(241, 241, 241);\r\n    height: 1.2em;\r\n    white-space: nowrap;\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 10;\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek>div {\r\n    text-align: center;\r\n    line-height: 1.2;\r\n    display: inline-block;\r\n    width: 14.2857142857%;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container {\r\n    position: absolute;\r\n    transition: top 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.old {\r\n    z-index: 7;\r\n    /* background: red; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.new {\r\n    z-index: 8;\r\n    /* background: blue; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container>.absol-chrome-calendar-month {\r\n    width: 100%;\r\n    height: 100%;\r\n    margin-top: -0.0714rem;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-month {\r\n    display: table;\r\n    width: 100%;\r\n    margin-top: 1.2em;\r\n    background-color: white;\r\n    /*for header*/\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth {\r\n    display: table-row;\r\n    height: 1.2em;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div {\r\n    display: table-cell;\r\n    text-align: right;\r\n    padding-right: 0.4em;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-not-in-month {\r\n    color: rgb(190, 190, 190);\r\n}\r\n\r\n.absol-chrome-calendar-today {\r\n    border: inset 0.0714rem rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-selected {\r\n    background-color: rgb(188, 205, 236);\r\n}\r\n\r\n.absol-chrome-calendar-years {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-chrome-calendar:not(.view-year) .absol-chrome-calendar-years {\r\n    /* display: none; */\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: -10000;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-chrome-calendar.view-year .absol-chrome-calendar-instance {\r\n    border-color: rgb(77, 114, 254)\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-month,\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-dayofweek {\r\n    display: none;\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-title {\r\n    color: rgb(191, 191, 191);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year {\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year-head {\r\n    background-color: rgb(241, 241, 241);\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n    height: 1.5em;\r\n    text-align: center;\r\n    line-height: 1.5em;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year:last-child .absol-chrome-calendar-year-head {\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year.start-opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: -6em;\r\n    transition: margin-bottom linear 0.1s;\r\n}\r\n\r\n.absol-chrome-calendar-year.opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.start-closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: 0;\r\n    transition: margin-bottom linear 0.1s;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-year-mounths {\r\n    width: 100%;\r\n    display: table;\r\n    height: 6em;\r\n    border-bottom: solid 0.0714rem rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year-row-months {\r\n    display: table-row;\r\n}\r\n\r\n.absol-chrome-calendar-year-month {\r\n    text-align: center;\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-year-month:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n\r\n\r\n.absol-chrome-calendar-years:hover .absol-scrollbar {\r\n    opacity: 1;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-years .absol-scrollbar {\r\n    background-color: rgba(169, 169, 172, 0.2);\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-date-disabled {\r\n    color: rgb(240, 230, 230);\r\n    pointer-events: none;\r\n    cursor: not-allowed;\r\n}\r\n\r\nbutton.absol-chrome-calendar-button-disabled {\r\n    color: rgb(220, 210, 210);\r\n    pointer-events: none;\r\n    box-shadow: none;\r\n    cursor: not-allowed;\r\n}", ""]);
+
+var content = __webpack_require__(194);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(195);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-chrome-calendar {\r\n    display: inline-block;\r\n    font-family: Arial;\r\n    font-size: 14px;\r\n    padding: 0.6em;\r\n    border: solid 1px rgb(191, 191, 191);\r\n    box-shadow: 1px 1px 2px rgb(240, 240, 240);\r\n    z-index: 100;\r\n    touch-action: manipulation;\r\n    user-select: none;\r\n    background-color: rgb(255, 255, 255);\r\n    white-space: initial;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header {\r\n    white-space: nowrap;\r\n    position: relative;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-title {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button {\r\n    font-size: 1em;\r\n    width: 1.5em;\r\n    height: 1.5em;\r\n    padding: 0;\r\n    border-radius: 0.2em;\r\n    border: solid 1px rgb(167, 167, 167);\r\n    background: linear-gradient(rgb(240, 240, 240), rgb(233, 233, 233), rgb(223, 223, 223));\r\n    cursor: pointer;\r\n    outline: none;\r\n    box-shadow: 1px 1px 2px #aaa;\r\n    color: rgb(110, 110, 110);\r\n}\r\n\r\n.absol-chrome-calendar-header-buttons>button:nth-child(2) {\r\n    margin-left: 0.2em;\r\n    margin-right: 0.2em;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-header-buttons>button:active {\r\n    box-shadow: 0px 0px 2px #aaa;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-title {\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-title>span {\r\n    line-height: 1.5em;\r\n}\r\n\r\n.absol-chrome-calendar-instance {\r\n    margin-top: 1em;\r\n    border: solid 1px rgb(190, 190, 190);\r\n    width: 14em;\r\n    position: relative;\r\n    height: calc(8.4em + 3px);\r\n    overflow: hidden;\r\n    /*border*/\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek {\r\n    background-color: rgb(241, 241, 241);\r\n    height: 1.2em;\r\n    white-space: nowrap;\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 10;\r\n}\r\n\r\n.absol-chrome-calendar-dayofweek>div {\r\n    text-align: center;\r\n    line-height: 1.2;\r\n    display: inline-block;\r\n    width: 14.2857142857%;\r\n    border-bottom: solid 1px rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container {\r\n    position: absolute;\r\n    transition: top 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.old {\r\n    z-index: 7;\r\n    /* background: red; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container.new {\r\n    z-index: 8;\r\n    /* background: blue; */\r\n}\r\n\r\n.absol-chrome-calendar-month-animation-container>.absol-chrome-calendar-month {\r\n    width: 100%;\r\n    height: 100%;\r\n    margin-top: -1px;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-month {\r\n    display: table;\r\n    width: 100%;\r\n    margin-top: 1.2em;\r\n    background-color: white;\r\n    /*for header*/\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth {\r\n    display: table-row;\r\n    height: 1.2em;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div {\r\n    display: table-cell;\r\n    text-align: right;\r\n    padding-right: 0.4em;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-chrome-calendar-week-in-mounth>div:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-not-in-month {\r\n    color: rgb(190, 190, 190);\r\n}\r\n\r\n.absol-chrome-calendar-today {\r\n    border: inset 1px rgb(191, 191, 191);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.absol-chrome-calendar-selected {\r\n    background-color: rgb(188, 205, 236);\r\n}\r\n\r\n.absol-chrome-calendar-years {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n\r\n.absol-chrome-calendar:not(.view-year) .absol-chrome-calendar-years {\r\n    /* display: none; */\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: -10000;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-chrome-calendar.view-year .absol-chrome-calendar-instance {\r\n    border-color: rgb(77, 114, 254)\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-month,\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-dayofweek {\r\n    display: none;\r\n}\r\n\r\n.absol-chrome-calendar:not(.view-month) .absol-chrome-calendar-title {\r\n    color: rgb(191, 191, 191);\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year {\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year-head {\r\n    background-color: rgb(241, 241, 241);\r\n    border-bottom: solid 1px rgb(191, 191, 191);\r\n    height: 1.5em;\r\n    text-align: center;\r\n    line-height: 1.5em;\r\n}\r\n\r\n\r\n.absol-chrome-calendar-year:last-child .absol-chrome-calendar-year-head {\r\n    border-bottom: solid 1px rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year.start-opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: -6em;\r\n    transition: margin-bottom linear 0.1s;\r\n}\r\n\r\n.absol-chrome-calendar-year.opening .absol-chrome-calendar-year-mounths,\r\n.absol-chrome-calendar-year.start-closing .absol-chrome-calendar-year-mounths {\r\n    margin-bottom: 0;\r\n    transition: margin-bottom linear 0.1s;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-year-mounths {\r\n    width: 100%;\r\n    display: table;\r\n    height: 6em;\r\n    border-bottom: solid 1px rgb(191, 191, 191);\r\n}\r\n\r\n.absol-chrome-calendar-year-row-months {\r\n    display: table-row;\r\n}\r\n\r\n.absol-chrome-calendar-year-month {\r\n    text-align: center;\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-chrome-calendar-year-month:hover {\r\n    background-color: rgb(224, 245, 256);\r\n}\r\n\r\n\r\n\r\n\r\n.absol-chrome-calendar-years:hover .absol-scrollbar {\r\n    opacity: 1;\r\n\r\n}\r\n\r\n.absol-chrome-calendar-years .absol-scrollbar {\r\n    background-color: rgba(169, 169, 172, 0.2);\r\n    opacity: 0;\r\n    transition: opacity 0.2s;\r\n}\r\n\r\n.absol-chrome-calendar-date-disabled {\r\n    color: rgb(240, 230, 230);\r\n    pointer-events: none;\r\n    cursor: not-allowed;\r\n}\r\n\r\nbutton.absol-chrome-calendar-button-disabled {\r\n    color: rgb(220, 210, 210);\r\n    pointer-events: none;\r\n    box-shadow: none;\r\n    cursor: not-allowed;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-calendar-input {\r\n    font-size: 1rem;\r\n    width: 7em;\r\n    height: 2em;\r\n    box-sizing: content-box;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    border: solid 0.0714rem #d6d6d6;\r\n    border-radius: 0.2em;\r\n}\r\n\r\n.absol-calendar-input>input {\r\n    text-align: center;\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    cursor: pointer;\r\n    border: none;\r\n    background: transparent;\r\n}\r\n\r\n.absol-calendar-input>input:hover,\r\n.absol-calendar-input>input:focus {\r\n    color: red;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled input {\r\n    color: rgb(169, 169, 171);\r\n}", ""]);
+
+var content = __webpack_require__(196);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(197);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".ac-time-picker {\r\n    /*like chrome-calender*/\r\n    display: inline-block;\r\n    font-family: Arial;\r\n    font-size: 14px;\r\n    padding: 0.6em;\r\n    border: solid 1px rgb(191, 191, 191);\r\n    box-shadow: 1px 1px 2px rgb(240, 240, 240);\r\n    z-index: 100;\r\n    touch-action: manipulation;\r\n    user-select: none;\r\n    background-color: rgb(255, 255, 255);\r\n    white-space: initial;\r\n}\r\n\r\n\r\n@media screen and (orientation: portrait) {\r\n    .ac-time-picker.ac-time-picker-touch {\r\n        font-size: 5vw;\r\n    }\r\n}\r\n\r\n@media screen and (orientation: landscape) {\r\n    .ac-time-picker.ac-time-picker-touch {\r\n        font-size: 4vh;\r\n    }\r\n}\r\n\r\n\r\n.ac-time-picker:not(.ac-time-picker-clock-mode) .ac-time-picker-set-clock,\r\n.ac-time-picker:not(.ac-time-picker-clock-mode) .ac-time-picker-keyboard-btn,\r\n.ac-time-picker:not(.ac-time-picker-touch) .ac-time-picker-keyboard-btn,\r\n\r\n.ac-time-picker:not(.ac-time-picker-time-mode) .ac-time-picker-set-time,\r\n.ac-time-picker:not(.ac-time-picker-time-mode) .ac-time-picker-clock-btn {\r\n    display: none;\r\n}\r\n\r\n.ac-time-picker-set-clock-header {\r\n    font-size: 2.8em;\r\n    text-align: center;\r\n    min-width: 4.28571428571em;\r\n    font-weight: bold;\r\n\r\n}\r\n\r\n.ac-time-picker-set-clock-header>span {\r\n    font-size: inherit;\r\n}\r\n\r\n.ac-time-picker-clock {\r\n    width: 12em;\r\n    height: 12em;\r\n}\r\n\r\n.ac-time-picker-clock-hour-pm {\r\n    fill: rgb(20, 20, 20);\r\n    font-size: 0.7em;\r\n}\r\n\r\n\r\n.ac-time-picker-clock-hour-am {\r\n    fill: black;\r\n    font-size: 0.8em;\r\n}\r\n\r\n.ac-time-picker-clock-minute {\r\n    fill: black;\r\n    font-size: 0.8em;\r\n}\r\n\r\n\r\n.ac-time-picker-clock-center,\r\n.ac-time-picker-clock-select-circle {\r\n    fill: rgb(115, 166, 248);\r\n}\r\n\r\n.ac-time-picker-clock-select-center {\r\n    fill: white;\r\n}\r\n\r\n.ac-time-picker-clock-select-line {\r\n    stroke-width: 1;\r\n    stroke: rgb(115, 166, 248);\r\n}\r\n\r\n\r\n.ac-time-picker-hour,\r\n.ac-time-picker-minute {\r\n    outline: none;\r\n}\r\n\r\n.ac-time-picker-edit-hour .ac-time-picker-hour,\r\n.ac-time-picker-edit-minute .ac-time-picker-minute {\r\n    color: rgb(62, 125, 189);\r\n}\r\n\r\n.ac-time-picker:not(.ac-time-picker-edit-hour) .ac-time-picker-clock-hour-ctn,\r\n.ac-time-picker:not(.ac-time-picker-edit-minute) .ac-time-picker-clock-minute-ctn {\r\n    visibility: hidden;\r\n}\r\n\r\n.ac-time-picker:not(.ac-time-picker-edit-hour):not(.ac-time-picker-edit-minute) .ac-time-picker-clock {\r\n    display: none;\r\n}\r\n\r\n.ac-time-picker-hour:empty::before,\r\n.ac-time-picker-minute:empty::before {\r\n    content: \"0\";\r\n    display: inline;\r\n}\r\n\r\n.ac-time-picker-footer {\r\n    display: block;\r\n    position: relative;\r\n    min-height: 1.5em;\r\n    min-width: 12em;\r\n}\r\n\r\n.ac-time-picker-footer-right {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n}\r\n\r\n.ac-time-picker-footer button {\r\n    font-size: 1em;\r\n    height: 1.5em;\r\n    padding-top: 0;\r\n    padding-bottom: 0;\r\n    border: none;\r\n    background-color: transparent;\r\n    outline: none;\r\n    padding-left: 0.3em;\r\n    padding-right: 0.3em;\r\n}\r\n\r\n.ac-time-picker-footer button:hover {\r\n    background-color: rgba(170, 170, 170, 0.3);\r\n}\r\n\r\n.ac-time-picker-footer>button {\r\n    margin-right: 1m;\r\n}\r\n\r\n.ac-time-picker-footer-right>button {\r\n    margin-left: 1em;\r\n}\r\n\r\n\r\n.ac-time-picker-footer button .mdi {\r\n    font-size: 1.3em;\r\n}\r\n\r\n\r\n/* .ac-time-picker:not(.ac-time-picker-touch) .ac-time-picker-keyboard-btn {\r\n    display: none;\r\n} */\r\n\r\n/* keyboard-outline */\r\n\r\n.ac-time-picker-set-time-header {\r\n    font-size: 1.4em;\r\n    font-weight: bold;\r\n    margin-bottom: 1em;\r\n}\r\n\r\n.ac-time-picker-set-time-label {\r\n    font-size: 1em;\r\n    font-weight: bold;\r\n    margin-bottom: 0.3em;\r\n}\r\n\r\n.ac-time-picker-set-time-input-group {\r\n    margin-bottom: 0.3em;\r\n    font-size: 1em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.ac-time-picker-set-time-input-hm>input {\r\n    height: 1.2em;\r\n    line-height: 1.2em;\r\n    width: 2em;\r\n    text-align: center;\r\n    font-size: 1em;\r\n    border-top: none;\r\n    border-left: none;\r\n    border-right: none;\r\n    border-bottom: 1px solid rgb(70, 70, 72);\r\n    outline: none;\r\n}\r\n\r\n.ac-time-picker-set-time-input-label-hm {\r\n    font-size: 1em;\r\n    white-space: nowrap;\r\n\r\n}\r\n\r\n.ac-time-picker-set-time-input-label-hm span {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    font-size: 1em;\r\n\r\n}\r\n\r\n\r\n.ac-time-picker-set-time-input-label-hm>span:first-child {\r\n    width: 2em;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-onscreen-window {\r\n    z-index: 1002;\r\n    position: fixed;\r\n    left: 0.7143rem;\r\n    top: 0.7143rem;\r\n    width: 12em;\r\n    height: 5em;\r\n    /*default size*/\r\n    /* min-width: 12em;\r\n    min-height: 1.4em; */\r\n}\r\n\r\n.absol-onscreen-window-content {\r\n    position: relative;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: white;\r\n    -webkit-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    -moz-box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n    box-shadow: 0.1429rem 0.1429rem 1.2143rem -0.0714rem rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.absol-onscreen-window-head-bar {\r\n    height: 1.4em;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.15);\r\n    padding: 0.2em;\r\n    box-sizing: border-box;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-icon {\r\n    line-height: 1.2em;\r\n    font-size: 1em;\r\n    margin-right: 0.2em;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-title {\r\n    line-height: 1.2em;\r\n    font-size: 1em;\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons {\r\n    position: absolute;\r\n    right: 0.1em;\r\n    top: 0.1em;\r\n    bottom: 0.1em;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button {\r\n    height: 100%;\r\n    width: 1em;\r\n    font-size: 1em;\r\n    padding: 0;\r\n    margin: 0 0 0 0.1em;\r\n    border: none;\r\n    color: rgba(169, 169, 169);\r\n    outline: none;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover {\r\n    color: rgba(103, 103, 103);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:active {\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover>.mdi-close {\r\n    color: rgb(255, 59, 59);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button>span {\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-onscreen-window-body-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 1.4em;\r\n    bottom: 0;\r\n}\r\n\r\n\r\n.absol-onscreen-window-moving-modal {\r\n    position: fixed;\r\n    left: 0.0714rem;\r\n    right: 0.0714rem;\r\n    top: 0.0714rem;\r\n    bottom: 0.0714rem;\r\n    z-index: 100006;\r\n}\r\n\r\n.absol-onscreen-window-resizer {\r\n    position: absolute;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom {\r\n    bottom: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top {\r\n    top: -0.2143rem;\r\n    height: 0.4286rem;\r\n    left: 0.2143rem;\r\n    right: 0.2143rem;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-left {\r\n    left: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-right {\r\n    right: -0.2143rem;\r\n    top: 0.2143rem;\r\n    bottom: 0.2143rem;\r\n    width: 0.4286rem;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    bottom: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-left {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    left: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-right {\r\n    width: 0.4286rem;\r\n    height: 0.4286rem;\r\n    right: -0.2143rem;\r\n    top: -0.2143rem;\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-top,\r\n.absol-onscreen-window-resize-bottom {\r\n    cursor: ns-resize;\r\n\r\n}\r\n\r\n.absol-onscreen-window-resize-left,\r\n.absol-onscreen-window-resize-right {\r\n    cursor: ew-resize;\r\n\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-bottom-right {\r\n    cursor: se-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-bottom-left {\r\n    cursor: sw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-left {\r\n    cursor: nw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-right {\r\n    cursor: ne-resize;\r\n}", ""]);
+
+var content = __webpack_require__(198);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(199);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".ac-time-input {\r\n    box-sizing: border-box;\r\n    height: calc(2em + 2px);\r\n    border: solid 1px #d6d6d6;\r\n    border-radius: 2px;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    outline: none;\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    padding-left: 0.35714285714em;\r\n    padding-right: 0.35714285714em;\r\n}\r\n\r\n.ac-time-input-picker-ctn {\r\n    position: fixed;\r\n}\r\n\r\n.ac-time-input>span {\r\n    font-size: 1em;\r\n    line-height: 2em;\r\n}\r\n\r\n.ac-time-input-picker-ctn-hidden {\r\n    z-index: -1000;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n}\r\n\r\n.ac-time-input-picker-ctn-hidden:not(.absol-follower){\r\n    transition: all 0.1s;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, "/*margin for border size*/\r\n.as-hruler {\r\n    position: relative;\r\n    height: 1.5em;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-hruler-line {\r\n    position: absolute;\r\n    bottom: 0;\r\n    height: 25%;\r\n    border-left: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.as-hruler-line.major {\r\n    height: 50%;\r\n    border-left: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-hruler-major-number{\r\n    position: absolute;\r\n    text-align: center;\r\n    width: 5em;\r\n    pointer-events: none;\r\n    font-size: 0.7em;\r\n    bottom: 50%;\r\n} ", ""]);
+
+var content = __webpack_require__(200);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(201);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-calendar-input {\r\n    font-size: 14px;\r\n    width: 7em;\r\n    height: 2em;\r\n    box-sizing: content-box;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    border: solid 1px #d6d6d6;\r\n    border-radius: 0.2em;\r\n}\r\n\r\n.absol-calendar-input>input {\r\n    text-align: center;\r\n    width: 100%;\r\n    height: 100%;\r\n    outline: none;\r\n    cursor: pointer;\r\n    border: none;\r\n    background: transparent;\r\n}\r\n\r\n.absol-calendar-input>input:hover,\r\n.absol-calendar-input>input:focus {\r\n    color: red;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-calendar-input.absol-disabled input {\r\n    color: rgb(169, 169, 171);\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, "/*margin for border size*/\r\n.as-vruler {\r\n    position: relative;\r\n    width: 1.5em;\r\n    border: solid 0.0714rem black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-vruler-line {\r\n    position: absolute;\r\n    right: 0;\r\n    width: 25%;\r\n    border-top: solid 0.0714rem rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n\r\n}\r\n\r\n.as-vruler-line.major {\r\n    width: 50%;\r\n    border-top: solid 0.0714rem rgb(5, 20, 18);\r\n}\r\n\r\n.as-vruler-major-number {\r\n    position: absolute;\r\n    text-align: center;\r\n    width:  5em;\r\n    pointer-events: none;\r\n    font-size: 0.7em;\r\n    right: calc(52% - 2em);\r\n    height: 1em;\r\n    transform-origin: center;\r\n    \r\n    -webkit-transform:rotate(90deg);\r\n    -moz-transform:rotate(90deg);\r\n    -o-transform: rotate(90deg);\r\n    -ms-transform:rotate(90deg);\r\n    transform: rotate(-90deg);\r\n}", ""]);
+
+var content = __webpack_require__(202);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(203);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-onscreen-window {\r\n    z-index: 1002;\r\n    position: fixed;\r\n    left: 10px;\r\n    top: 10px;\r\n    width: 12em;\r\n    height: 5em;\r\n    /*default size*/\r\n    /* min-width: 12em;\r\n    min-height: 1.4em; */\r\n}\r\n\r\n.absol-onscreen-window-content {\r\n    position: relative;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: white;\r\n    -webkit-box-shadow: 2px 2px 17px -1px rgba(0, 0, 0, 0.54);\r\n    -moz-box-shadow: 2px 2px 17px -1px rgba(0, 0, 0, 0.54);\r\n    box-shadow: 2px 2px 17px -1px rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.absol-onscreen-window-head-bar {\r\n    height: 1.4em;\r\n    position: relative;\r\n    background-color: rgba(169, 169, 169, 0.15);\r\n    padding: 0.2em;\r\n    box-sizing: border-box;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-icon {\r\n    line-height: 1.2em;\r\n    font-size: 1em;\r\n    margin-right: 0.2em;\r\n}\r\n\r\nspan.absol-onscreen-window-head-bar-title {\r\n    line-height: 1.2em;\r\n    font-size: 1em;\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons {\r\n    position: absolute;\r\n    right: 0.1em;\r\n    top: 0.1em;\r\n    bottom: 0.1em;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button {\r\n    height: 100%;\r\n    width: 1em;\r\n    font-size: 1em;\r\n    padding: 0;\r\n    margin: 0 0 0 0.1em;\r\n    border: none;\r\n    color: rgba(169, 169, 169);\r\n    outline: none;\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover {\r\n    color: rgba(103, 103, 103);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:active {\r\n    color: rgba(33, 33, 34);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button:hover>.mdi-close {\r\n    color: rgb(255, 59, 59);\r\n}\r\n\r\n.absol-onscreen-window-head-bar-buttons>button>span {\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-onscreen-window-body-container {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 1.4em;\r\n    bottom: 0;\r\n}\r\n\r\n\r\n.absol-onscreen-window-moving-modal {\r\n    position: fixed;\r\n    left: 1px;\r\n    right: 1px;\r\n    top: 1px;\r\n    bottom: 1px;\r\n    z-index: 100006;\r\n}\r\n\r\n.absol-onscreen-window-resizer {\r\n    position: absolute;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom {\r\n    bottom: -3px;\r\n    height: 6px;\r\n    left: 3px;\r\n    right: 3px;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top {\r\n    top: -3px;\r\n    height: 6px;\r\n    left: 3px;\r\n    right: 3px;\r\n    z-index: 3;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-left {\r\n    left: -3px;\r\n    top: 3px;\r\n    bottom: 3px;\r\n    width: 6px;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-right {\r\n    right: -3px;\r\n    top: 3px;\r\n    bottom: 3px;\r\n    width: 6px;\r\n    cursor: ew-resize;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-right {\r\n    width: 6px;\r\n    height: 6px;\r\n    right: -3px;\r\n    bottom: -3px;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-bottom-left {\r\n    width: 6px;\r\n    height: 6px;\r\n    left: -3px;\r\n    bottom: -3px;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-left {\r\n    width: 6px;\r\n    height: 6px;\r\n    left: -3px;\r\n    top: -3px;\r\n}\r\n\r\n.absol-onscreen-window-resizer.absol-onscreen-window-resize-top-right {\r\n    width: 6px;\r\n    height: 6px;\r\n    right: -3px;\r\n    top: -3px;\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-top,\r\n.absol-onscreen-window-resize-bottom {\r\n    cursor: ns-resize;\r\n\r\n}\r\n\r\n.absol-onscreen-window-resize-left,\r\n.absol-onscreen-window-resize-right {\r\n    cursor: ew-resize;\r\n\r\n}\r\n\r\n\r\n.absol-onscreen-window-resize-bottom-right {\r\n    cursor: se-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-bottom-left {\r\n    cursor: sw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-left {\r\n    cursor: nw-resize;\r\n}\r\n\r\n.absol-onscreen-window-resize-top-right {\r\n    cursor: ne-resize;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".as-resize-box {\r\n    position: absolute;\r\n    /*or fixed*/\r\n    z-index: 1;\r\n    box-sizing: border-box;\r\n    opacity: 0.5;\r\n    pointer-events: none;\r\n}\r\n\r\n.as-resize-box-body {\r\n    margin: -0.0714rem;\r\n    width: calc(100% + 0.1429rem);\r\n    height: calc(100% + 0.1429rem);\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    border: solid 0.1429rem rgb(32, 150, 218);\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-body {\r\n    cursor: move;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-click .as-resize-box-body {\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-dot,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.bottom,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right-bottom {\r\n    display: unset;\r\n\r\n}\r\n\r\n.as-resize-box-dot {\r\n    position: absolute;\r\n    width: 0.6em;\r\n    height: 0.6em;\r\n    background: rgb(32, 150, 218);\r\n    display: none;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box-dot.left-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: nw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: sw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left {\r\n    top: calc(50% - 0.3em);\r\n    left: calc(-0.3em - 0.0714rem);\r\n    cursor: w-resize;\r\n}\r\n\r\n.as-resize-box-dot.top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: n-resize;\r\n}\r\n\r\n.as-resize-box-dot.bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    left: calc(50% - 0.3em);\r\n    cursor: s-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-top {\r\n    top: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: ne-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-bottom {\r\n    bottom: calc(-0.3em - 0.0714rem);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: se-resize;\r\n}\r\n\r\n\r\n.as-resize-box-dot.right {\r\n    top: calc(50% - 0.3em);\r\n    right: calc(-0.3em - 0.0714rem);\r\n    cursor: e-resize;\r\n}\r\n\r\n.as-resize-box-overiding .as-resize-box-dot,\r\n.as-resize-box-overiding .as-resize-box-body {\r\n    cursor: unset;\r\n}\r\n\r\n.as-resize-box-overiding.body {\r\n    cursor: move !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.left-top {\r\n    cursor: nw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left-bottom {\r\n    cursor: sw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left {\r\n    cursor: w-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.top {\r\n    cursor: n-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.bottom {\r\n    cursor: s-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-top {\r\n    cursor: ne-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-bottom {\r\n    cursor: se-resize !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.right {\r\n    cursor: e-resize !important;\r\n}", ""]);
+
+var content = __webpack_require__(204);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
 
 
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 /* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(205);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "/*margin for border size*/\r\n.as-hruler {\r\n    position: relative;\r\n    height: 1.5em;\r\n    border: solid 1px black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-hruler-line {\r\n    position: absolute;\r\n    bottom: 0;\r\n    height: 25%;\r\n    border-left: solid 1px rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n}\r\n\r\n.as-hruler-line.major {\r\n    height: 50%;\r\n    border-left: solid 1px rgb(5, 20, 18);\r\n}\r\n\r\n.as-hruler-major-number{\r\n    position: absolute;\r\n    text-align: center;\r\n    width: 5em;\r\n    pointer-events: none;\r\n    font-size: 0.7em;\r\n    bottom: 50%;\r\n} ", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".as-preinput {\r\n    margin: 0;\r\n    padding: 0;\r\n    white-space: pre;\r\n}", ""]);
 
-
-
-/***/ }),
-/* 206 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(207);
+var content = __webpack_require__(206);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31057,17 +31047,262 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 207 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-debug-task {\r\n    position: fixed;\r\n    right: 0.7143rem;\r\n    bottom: 0.7143rem;\r\n    z-index: 999999;\r\n    border-radius: 0.2857rem;\r\n    background: rgba(169, 169, 171, 0.3);\r\n    border: solid 0.0714rem rgba(21, 21, 214, 0.5);\r\n    min-width: 3.2143rem;\r\n    min-height: 2.1429rem;\r\n    font-size: 0.8571rem;\r\n    padding: 0.3571rem;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-debug-task-name{\r\n    color: darkcyan;\r\n}\r\n\r\n.absol-debug-task-value{\r\n    color: rgb(159, 8, 197);\r\n}", ""]);
+exports.push([module.i, "/*margin for border size*/\r\n.as-vruler {\r\n    position: relative;\r\n    width: 1.5em;\r\n    border: solid 1px black;\r\n    overflow: hidden;\r\n    font-family: courier, \"courier new\", monospace;\r\n    box-sizing: border-box;\r\n}\r\n\r\n\r\n.as-vruler-line {\r\n    position: absolute;\r\n    right: 0;\r\n    width: 25%;\r\n    border-top: solid 1px rgb(17, 48, 43);\r\n    box-sizing: border-box;\r\n\r\n}\r\n\r\n.as-vruler-line.major {\r\n    width: 50%;\r\n    border-top: solid 1px rgb(5, 20, 18);\r\n}\r\n\r\n.as-vruler-major-number {\r\n    position: absolute;\r\n    text-align: center;\r\n    width:  5em;\r\n    pointer-events: none;\r\n    font-size: 0.7em;\r\n    right: calc(52% - 2em);\r\n    height: 1em;\r\n    transform-origin: center;\r\n    \r\n    -webkit-transform:rotate(90deg);\r\n    -moz-transform:rotate(90deg);\r\n    -o-transform: rotate(90deg);\r\n    -ms-transform:rotate(90deg);\r\n    transform: rotate(-90deg);\r\n}", ""]);
 
 
 
 /***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(208);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
 /* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".as-resize-box {\r\n    position: absolute;\r\n    /*or fixed*/\r\n    z-index: 1;\r\n    box-sizing: border-box;\r\n    opacity: 0.5;\r\n    pointer-events: none;\r\n}\r\n\r\n.as-resize-box-body {\r\n    margin: -1px;\r\n    width: calc(100% + 2px);\r\n    height: calc(100% + 2px);\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    border: solid 2px rgb(32, 150, 218);\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-body {\r\n    cursor: move;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-click .as-resize-box-body {\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box.as-can-move .as-resize-box-dot,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.bottom,\r\n.as-resize-box.as-can-resize .as-resize-box-dot.right-bottom {\r\n    display: unset;\r\n\r\n}\r\n\r\n.as-resize-box-dot {\r\n    position: absolute;\r\n    width: 0.6em;\r\n    height: 0.6em;\r\n    background: rgb(32, 150, 218);\r\n    display: none;\r\n    pointer-events: all;\r\n}\r\n\r\n.as-resize-box-dot.left-top {\r\n    top: calc(-0.3em - 1px);\r\n    left: calc(-0.3em - 1px);\r\n    cursor: nw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left-bottom {\r\n    bottom: calc(-0.3em - 1px);\r\n    left: calc(-0.3em - 1px);\r\n    cursor: sw-resize;\r\n}\r\n\r\n.as-resize-box-dot.left {\r\n    top: calc(50% - 0.3em);\r\n    left: calc(-0.3em - 1px);\r\n    cursor: w-resize;\r\n}\r\n\r\n.as-resize-box-dot.top {\r\n    top: calc(-0.3em - 1px);\r\n    left: calc(50% - 0.3em);\r\n    cursor: n-resize;\r\n}\r\n\r\n.as-resize-box-dot.bottom {\r\n    bottom: calc(-0.3em - 1px);\r\n    left: calc(50% - 0.3em);\r\n    cursor: s-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-top {\r\n    top: calc(-0.3em - 1px);\r\n    right: calc(-0.3em - 1px);\r\n    cursor: ne-resize;\r\n}\r\n\r\n.as-resize-box-dot.right-bottom {\r\n    bottom: calc(-0.3em - 1px);\r\n    right: calc(-0.3em - 1px);\r\n    cursor: se-resize;\r\n}\r\n\r\n\r\n.as-resize-box-dot.right {\r\n    top: calc(50% - 0.3em);\r\n    right: calc(-0.3em - 1px);\r\n    cursor: e-resize;\r\n}\r\n\r\n.as-resize-box-overiding .as-resize-box-dot,\r\n.as-resize-box-overiding .as-resize-box-body {\r\n    cursor: unset;\r\n}\r\n\r\n.as-resize-box-overiding.body {\r\n    cursor: move !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.left-top {\r\n    cursor: nw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left-bottom {\r\n    cursor: sw-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.left {\r\n    cursor: w-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.top {\r\n    cursor: n-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.bottom {\r\n    cursor: s-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-top {\r\n    cursor: ne-resize !important;\r\n}\r\n\r\n.as-resize-box-overiding.right-bottom {\r\n    cursor: se-resize !important;\r\n}\r\n\r\n\r\n.as-resize-box-overiding.right {\r\n    cursor: e-resize !important;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(210);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".as-preinput {\r\n    margin: 0;\r\n    padding: 0;\r\n    white-space: pre-wrap;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(212);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".as-hexa-section-label {\r\n    position: relative;\r\n    -webkit-print-color-adjust: exact;\r\n    /*friendly print*/\r\n}\r\n\r\n.as-hexa-section-label-text {\r\n    position: relative;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    font-size: 1em;\r\n    padding-right: 2.5em;\r\n    color: white;\r\n    font-weight: bold;\r\n    z-index: 2;\r\n}\r\n\r\n@media print {\r\n    .as-hexa-section-label-text {\r\n        color: white !important;\r\n    }\r\n\r\n    .as-hexa-section-label-index {\r\n        color: rgb(237, 147, 54) !important;\r\n    }\r\n}\r\n\r\n\r\n.as-hexa-section-label-index {\r\n    position: relative;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    text-align: center;\r\n    color: rgb(237, 147, 54);\r\n    font-weight: 900;\r\n    z-index: 2;\r\n}\r\n\r\n.as-hexa-section-label-background {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    z-index: 1;\r\n}\r\n\r\n.as-hexa-section-label-background>svg {\r\n    display: block;\r\n}\r\n\r\n.as-hexa-section-label-index-box {\r\n    stroke: rgb(251, 186, 130);\r\n    fill: white;\r\n    stroke-width: 2.5;\r\n}\r\n\r\n.as-hexa-section-label-text-box {\r\n    fill: rgb(237, 147, 54);\r\n    stroke: none;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(214);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".as-circle-section-label {\r\n    position: relative;\r\n    -webkit-print-color-adjust: exact;\r\n    /*friendly print*/\r\n}\r\n\r\n.as-circle-section-label-text {\r\n    position: relative;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    font-size: 1em;\r\n    padding-right: 2.5em;\r\n    color: white;\r\n    font-weight: bold;\r\n    z-index: 2;\r\n}\r\n\r\n\r\n.as-circle-section-label-index {\r\n    position: relative;\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    text-align: center;\r\n    color: rgb(30, 162, 245);\r\n    font-weight: 900;\r\n    z-index: 2;\r\n}\r\n\r\n\r\n@media print {\r\n    .as-circle-section-label-text {\r\n        color: white !important;\r\n    }\r\n\r\n    .as-circle-section-label-index {\r\n        color: rgb(30, 162, 245) !important;\r\n    }\r\n}\r\n\r\n\r\n.as-circle-section-label-background {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    z-index: 1;\r\n}\r\n\r\n.as-circle-section-label-background>svg {\r\n    display: block;\r\n}\r\n\r\n.as-circle-section-label-index-box {\r\n    stroke: rgb(129, 211, 246);\r\n    fill: white;\r\n    stroke-width: 2.5;\r\n}\r\n\r\n.as-circle-section-label-arrow {\r\n    stroke: rgb(30, 162, 245);\r\n    fill: none;\r\n    stroke-linecap: round;\r\n}\r\n\r\n.as-circle-section-label-text-box {\r\n    fill: rgb(30, 162, 245);\r\n    stroke: none;\r\n}\r\n\r\n.as-circle-section-label-arrow-marker-path {\r\n    fill: rgb(30, 162, 245);\r\n    stroke: none;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(216);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 216 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".as-linear-color-bar {\r\n    position: relative;\r\n    height: 2em;\r\n}\r\n\r\n.as-linear-color-background {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    display: block;\r\n}\r\n\r\n.as-linear-color-value-text {\r\n    position: absolute;\r\n    top: 0;\r\n    font-weight: 900;\r\n    white-space: nowrap;\r\n}\r\n\r\n.as-linear-color-min-value-text,\r\n.as-linear-color-max-value-text {\r\n    position: absolute;\r\n    bottom: 0;\r\n    white-space: nowrap;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n\r\n.as-linear-color-min-value-text {\r\n    left: 0;\r\n}\r\n\r\n.as-linear-color-rect {\r\n    stroke: none;\r\n}\r\n\r\n\r\n.as-linear-color-value-arrow {\r\n    fill: rgb(244, 124, 32);\r\n    stroke: rgb(244, 124, 32);\r\n}\r\n\r\n.as-linear-color-split-line {\r\n    stroke: white;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(218);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".as-board-table {\r\n    overflow: visible;\r\n    position: relative;\r\n}\r\n\r\n\r\n.as-board {\r\n    white-space: normal;\r\n    box-sizing: border-box;\r\n    position: relative;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.as-board-moving {\r\n    transform-origin: 30% 55%;\r\n    transform: rotate(5deg);\r\n    transition: transform 0.05s;\r\n    user-select: none;\r\n    pointer-events: none;\r\n    position: absolute;\r\n    z-index: 2;\r\n}\r\n\r\n\r\n.as-board-place-holder {\r\n    opacity: 0.3;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(220);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-debug-task {\r\n    position: fixed;\r\n    right: 10px;\r\n    bottom: 10px;\r\n    z-index: 999999;\r\n    border-radius: 4px;\r\n    background: rgba(169, 169, 171, 0.3);\r\n    border: solid 1px rgba(21, 21, 214, 0.5);\r\n    min-width: 45px;\r\n    min-height: 30px;\r\n    font-size: 12px;\r\n    padding: 5px;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-debug-task-name{\r\n    color: darkcyan;\r\n}\r\n\r\n.absol-debug-task-value{\r\n    color: rgb(159, 8, 197);\r\n}", ""]);
+
+
+
+/***/ }),
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, global) {
@@ -31372,11 +31607,11 @@ exports.push([module.i, ".absol-debug-task {\r\n    position: fixed;\r\n    righ
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(33).setImmediate, __webpack_require__(11)))
 
 /***/ }),
-/* 209 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(210);
+var content = __webpack_require__(223);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31397,21 +31632,21 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 210 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}", ""]);
+exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important{\r\n    color: #d93025;\r\n}\r\n\r\n.hasErrorElement {\r\n    background-color: #000000;\r\n}", ""]);
 
 
 
 /***/ }),
-/* 211 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(212);
+var content = __webpack_require__(225);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31432,21 +31667,21 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 212 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable th,.pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:50px;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-result-control .parent:nth-child(odd) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control .parent:nth-child(even) td{\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color:#f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #fff ;\r\n}", ""]);
 
 
 
 /***/ }),
-/* 213 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(214);
+var content = __webpack_require__(227);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31467,21 +31702,21 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 214 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  pointer-events: none;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.background-opacity-1{\r\n  opacity: 0.5;\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  top: 0rem;\r\n  left: 0rem;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo{\r\n  z-index: 9999999999;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n.sortTable{\r\n  max-width: 100%;\r\n}\r\n.sortTable,.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    overflow: hidden;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    /* border-spacing: 10px; */\r\n}\r\n\r\n.sortTableClone{\r\n  left: 0;\r\n  font-size: 1rem;\r\n  position: absolute;\r\n  z-index: 1000;\r\n}\r\n\r\n.sortTable  tr.hideTranslate{\r\n  -webkit-transition: 1s ease-in-out;\r\n  -moz-transition: 1s ease-in-out;\r\n  -o-transition: 1s ease-in-out;\r\n  transition: 1s ease-in-out;\r\n  transform: translateX(100%);\r\n}\r\n\r\n\r\n\r\n.sortTable th,.sortTable td,\r\n.sortTableClone th,.sortTableClone td {\r\n  padding: 0.35714285714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n  position: relative;\r\n}\r\n.sortTable th,.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n}\r\n.sortTable td,.sortTableClone td {\r\n  vertical-align: middle;\r\n  white-space: nowrap;\r\n}\r\n.sortTable thead:first-child tr th,\r\n.sortTable thead:first-child tr td,\r\n.sortTableClone thead:first-child tr th,\r\n.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\n.sortTable tbody + tbody,.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\n.sortTable th + th,\r\n.sortTable td + td,\r\n.sortTable th + td,\r\n.sortTable td + th,\r\n.sortTableClone th + th,\r\n.sortTableClone td + td,\r\n.sortTableClone th + td,\r\n.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\n.sortTable thead:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child th,\r\n.sortTable tbody:first-child tr:first-child td,\r\n.sortTableClone thead:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child th,\r\n.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\n.sortTable tbody{\r\n  position: relative;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n\r\n", ""]);
+exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  pointer-events: none;\r\n  z-index: 100;\r\n  max-width: 100%;\r\n  background-color: white;\r\n  overflow: hidden;\r\n}\r\n\r\n.background-opacity-1{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo{\r\n  z-index: 9999999999;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n  position: fixed;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\ntable.sortTable{\r\n  max-width: 100%;\r\n}\r\n\r\n/* .absol-single-page-scroller{\r\n  width: 500px;\r\n  margin: auto;\r\n} */\r\n\r\ntable.sortTable,table.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    border-spacing: 0;\r\n}\r\n\r\n\r\n\r\ntable.sortTableClone{\r\n  left: 0;\r\n  font-size: 1rem;\r\n  position: absolute;\r\n  z-index: 1000;\r\n}\r\n\r\n\r\n\r\n\r\n\r\ntable.sortTable th,table.sortTable td,\r\ntable.sortTableClone th,table.sortTableClone td {\r\n  padding: 0.35714285714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n  position: relative;\r\n}\r\ntable.sortTable th,table.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  top: 0px;\r\n  z-index: 2;\r\n}\r\n\r\ntable.sortTable td,table.sortTableClone td {\r\n  vertical-align: middle;\r\n}\r\ntable.sortTable thead:first-child tr th,\r\ntable.sortTable thead:first-child tr td,\r\ntable.sortTableClone thead:first-child tr th,\r\ntable.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\ntable.sortTable tbody + tbody,table.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\ntable.sortTable th + th,\r\ntable.sortTable td + td,\r\ntable.sortTable th + td,\r\ntable.sortTable td + th,\r\ntable.sortTableClone th + th,\r\ntable.sortTableClone td + td,\r\ntable.sortTableClone th + td,\r\ntable.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\ntable.sortTable thead:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child td,\r\ntable.sortTableClone thead:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\ntable.sortTable tbody{\r\n  position: relative;\r\n}\r\n\r\ntable.sortTable td.postionStickyCell,table.sortTable th.postionStickyCell{\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  left: 0;\r\n  z-index: 1;\r\n}\r\n\r\ntable.sortTable th.postionStickyCell{\r\n  z-index: 3;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n\r\n.module-delete-container{\r\n  display: inline-block;\r\n  position: relative;\r\n  padding: 10px;\r\n  border: 1px solid #888;\r\n  border-radius: 4px;\r\n  max-height: 90vh;\r\n  overflow: auto;\r\n  background-color: #fefefe;\r\n  box-shadow: 4px 4px 10px 0px black;\r\n}\r\n\r\n.module-delete-button>button{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n  width: 90px;\r\n}\r\n\r\n.module-delete-button>button:hover{\r\n  background-color: rgb(213, 213, 213);\r\n  cursor: pointer;\r\n}\r\n\r\n.module-delete-button>button:not(:first-child){\r\n  margin-left: 30px;\r\n}\r\n\r\n.module-delete-header{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-title{\r\n  font-size: 1.14285714286rem;\r\n  padding-top: 0.5rem;\r\n  padding-bottom: 0.5rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  overflow: hidden;\r\n  position: relative;\r\n  min-width: 20rem;\r\n}\r\n\r\n.module-delete-header-close-container{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n}\r\n\r\n.module-delete-button{\r\n  text-align: center;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-content{\r\n  margin-top: 24px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-header-close.material-icons{\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-close.material-icons:hover{\r\n  color: red;\r\n  cursor: pointer;\r\n}\r\n\r\n\r\n", ""]);
 
 
 
 /***/ }),
-/* 215 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(216);
+var content = __webpack_require__(229);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31502,21 +31737,21 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 216 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: block;\r\n\tmargin-bottom: 2px;\r\n\tdisplay: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n\tmargin-top: calc(50% - 1px);\r\n}\r\n\r\n.arrow_down{\r\n\ttransform: scale(1.06);\r\n    display: block;\r\n    margin-top: 2px;\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: auto;\r\n    height: calc(50% - 2px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n}\r\n\r\n.has-sort .sort-container{\r\n\tposition: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n\tdisplay: inline-block;\r\n\theight: 30px;\r\n    width: 20px;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\n.has-sort.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.has-sort.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n\r\n\r\n\r\n.disPlayNone{\r\n    display: none;\r\n}\r\n\r\n.parent:nth-child(odd) {\r\n    background-color: #f5f5f5;\r\n}\r\n.parent:nth-child(even) {\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n}\r\ntr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\ntr:not(.parent) ~ .parent:nth-child(odd) {\r\n    background-color:#f5f5f5;\r\n}\r\ntr:not(.parent) ~ .parent:nth-child(even) {\r\n    background-color: #fff ;\r\n}\r\n\r\n\r\n.margin-div-cell{\r\n    width: 1.71428571429rem;\r\n    display: inline-block;\r\n}\r\n\r\n.more-icon-container{\r\n    font-size: 16px;\r\n    position: absolute;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    top: 50%;\r\n    width: 20px;\r\n    height: 30px;\r\n    transform: translateX(-100%) translateX(-0.71428571428rem) translateY(-50%);\r\n}\r\n\r\n.more-button{\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateY(-2px);\r\n    -webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n    font-size: 20px;\r\n}\r\n\r\n.sortTable tr.more-child> td> div>i.more-button, .sortTableClone tr.more-child> td> div>i.more-button{\r\n\ttransform: translateY(-50%) translateY(-2px) rotateZ(90deg);\r\n}\r\n  \r\n  .container-view{\r\n      display: inline-block;\r\n  }\r\n\r\n  .sortTable .margin-left-has-icon{\r\n    padding-left: 2.5rem;\r\n  }\r\n\r\n  \r\n  .sortTable.padding-High-table tbody td:first-child{\r\n    padding-left: 2.85714285714rem;\r\n    \r\n  }\r\n\r\n  .sortTable td:first-child{\r\n    padding-left: 0.71428571428rem;\r\n  }\r\n\r\n  .sortTable td:last-child{\r\n    padding-right: 0.71428571428rem;\r\n  }\r\n\r\n  .drag-icon-button{\r\n    cursor: context-menu;\r\n  }\r\n\r\n/* .sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */", ""]);
+exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: block;\r\n\tmargin-bottom: 2px;\r\n\tdisplay: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n\tmargin-top: calc(50% - 1px);\r\n}\r\n\r\n.arrow_down{\r\n\ttransform: scale(1.06);\r\n    display: block;\r\n    margin-top: 2px;\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: auto;\r\n    height: calc(50% - 2px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n}\r\n\r\n.has-sort .sort-container{\r\n\tposition: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n\tdisplay: inline-block;\r\n\theight: 30px;\r\n    width: 20px;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\n.has-sort.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.has-sort.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n.margin-div-cell{\r\n    width: 1.71428571429rem;\r\n    display: inline-block;\r\n}\r\n\r\n.more-icon-container{\r\n    font-size: 16px;\r\n    position: absolute;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    top: 50%;\r\n    width: 20px;\r\n    height: 30px;\r\n    transform: translateX(-100%) translateX(-0.71428571428rem) translateY(-50%);\r\n}\r\n\r\n.more-button{\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateY(-2px);\r\n    -webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n    font-size: 20px;\r\n}\r\n\r\ntable.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.more-child> td> div>i.more-button{\r\n\ttransform: translateY(-50%) translateY(-2px) rotateZ(90deg);\r\n}\r\n  \r\n  .container-view{\r\n      display: inline-block;\r\n  }\r\n\r\n  table.sortTable td.margin-left-has-icon{\r\n    padding-left: 2.5rem;\r\n  }\r\n\r\n  \r\n  table.sortTable.padding-High-table tbody td:first-child{\r\n    padding-left: 2.85714285714rem;\r\n    \r\n  }\r\n\r\n  table.sortTable td:first-child{\r\n    padding-left: 0.71428571428rem;\r\n  }\r\n\r\n  table.sortTable td:last-child{\r\n    padding-right: 0.71428571428rem;\r\n  }\r\n\r\n  .drag-icon-button{\r\n    cursor: context-menu;\r\n  }\r\n\r\n  table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    transform: none;\r\n    transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76);\r\n  }\r\n\r\n  table.sortTable>tbody>tr{\r\n    opacity: 0;\r\n    transform: rotateX(-90deg);\r\n    transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76);\r\n  }\r\n\r\n  table.sortTable>tbody>tr.hideTranslate.parent{\r\n    -webkit-transition: 1s ease-in-out;\r\n    -moz-transition: 1s ease-in-out;\r\n    -o-transition: 1s ease-in-out;\r\n    transition: 1s ease-in-out;\r\n    transform: translateX(100%);\r\n  }\r\n  \r\n  .disPlayNone{\r\n    display: none;\r\n  }\r\n\r\n  .absol-frame-view-frame-container:not(.absol-active){\r\n    visibility: unset;\r\n  }\r\n/* table.sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */", ""]);
 
 
 
 /***/ }),
-/* 217 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(218);
+var content = __webpack_require__(231);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31537,21 +31772,21 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 218 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-utility {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-convenient {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-juridical {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-juridical-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-history {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-history-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-bathroom-label,\r\n.pizo-new-realty-dectruct-content-area-garage-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span {\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n", ""]);
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contract {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contract-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-bathroom-label,\r\n.pizo-new-realty-dectruct-content-area-garage-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span {\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n", ""]);
 
 
 
 /***/ }),
-/* 219 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(220);
+var content = __webpack_require__(233);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31572,7 +31807,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 220 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31585,11 +31820,11 @@ exports.push([module.i, "/* html, body { background: #333 url(\"https://codepen.
 
 
 /***/ }),
-/* 221 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(222);
+var content = __webpack_require__(235);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31610,7 +31845,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 222 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31620,11 +31855,11 @@ exports.push([module.i, "\r\n\r\n/*/////////////////////////////////////////////
 
 
 /***/ }),
-/* 223 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(224);
+var content = __webpack_require__(237);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31645,7 +31880,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 224 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31655,11 +31890,11 @@ exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh
 
 
 /***/ }),
-/* 225 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(226);
+var content = __webpack_require__(239);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31680,7 +31915,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 226 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31690,11 +31925,11 @@ exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85
 
 
 /***/ }),
-/* 227 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(228);
+var content = __webpack_require__(241);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31715,7 +31950,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 228 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31725,11 +31960,11 @@ exports.push([module.i, "\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r
 
 
 /***/ }),
-/* 229 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(230);
+var content = __webpack_require__(243);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31750,7 +31985,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 230 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31760,11 +31995,11 @@ exports.push([module.i, ".image-show {\r\n    width: 100vw;\r\n    height: 100vh
 
 
 /***/ }),
-/* 231 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(232);
+var content = __webpack_require__(245);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31785,7 +32020,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 232 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31795,11 +32030,11 @@ exports.push([module.i, ".lds-roller {\r\n    display: inline-block;\r\n    posi
 
 
 /***/ }),
-/* 233 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(234);
+var content = __webpack_require__(247);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31820,7 +32055,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 234 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31830,11 +32065,11 @@ exports.push([module.i, ".pizo-list-realty-main-search-control-row-ditrict-ward-
 
 
 /***/ }),
-/* 235 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(236);
+var content = __webpack_require__(249);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31855,7 +32090,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 236 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31865,11 +32100,11 @@ exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-street-
 
 
 /***/ }),
-/* 237 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(238);
+var content = __webpack_require__(251);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31890,7 +32125,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 238 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31900,11 +32135,11 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 239 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(240);
+var content = __webpack_require__(253);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31925,7 +32160,42 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 240 */
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-state-container-name-container-label,.pizo-new-state-container-type-container-label,.pizo-new-state-container-nation-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 4rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container-name-container-input,.pizo-new-state-container-type-container-input,.pizo-new-state-container-nation-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-state-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container{\r\n    width:50%;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(255);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31935,11 +32205,11 @@ exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-ditrict
 
 
 /***/ }),
-/* 241 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(242);
+var content = __webpack_require__(257);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31960,7 +32230,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 242 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31970,7 +32240,157 @@ exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realt
 
 
 /***/ }),
-/* 243 */
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".pizo-list-help-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    height: calc(100% - 50px);\r\n    position: absolute;\r\n    width: calc(100% - 30px);\r\n}", ""]);
+
+
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(260);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button{\r\n    border-bottom: 2px #546e7a solid;\r\n    background-color: #263238;\r\n    color: #eeeeee;\r\n    border-radius: 0;\r\n    margin-left: 0;\r\n    margin-right: 0;\r\n    border: none;\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    padding: 8px 24px 8px 32px;\r\n    color: #eeeeee;\r\n    cursor: default;\r\n    white-space: pre;\r\n    margin-top: 5px;\r\n    z-index: 3;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    transform: translate(-100%,-50%) translateX(-5px);\r\n    top: 50%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{\r\n   border-bottom: none;\r\n   height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav{\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-tabview-container{\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ntable.b-workZone__layout{\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,.b-workZone__layout tr{\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview{\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container{\r\n    height: calc(100% - 40px);\r\n    top: unset;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTable td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article{\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content{\r\n    height: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav{\r\n    font-size: 1rem;\r\n    padding: 0.5rem 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons{\r\n    font-size: 1rem;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    padding: 0 0 0 19px;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n}\r\n\r\n.b-article {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: calc(100% - 5px);\r\n    align-items: stretch;\r\n    color: #eeeeee;\r\n    padding: 0;\r\n    position: relative;\r\n    padding-top: 5px;\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span{\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i{\r\n    vertical-align: middle;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only{\r\n    top:0;\r\n}\r\n\r\n.os-host, .os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n", ""]);
+
+
+
+/***/ }),
+/* 261 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(262);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visiable .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visiable .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visiable .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 7px;\r\n    width: 100%;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
+
+
+
+/***/ }),
+/* 263 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(264);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 264 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".pizo-new-category-container-name-container-input,\r\n.pizo-new-category-container-alias-container-input,\r\n.pizo-new-state-selectbox-container-input {\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-category-container-name-container-label,\r\n.pizo-new-category-container-alias-container-label,\r\n.pizo-new-state-selectbox-container-label {\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-category-container-name-container,\r\n.pizo-new-category-container-alias-container,\r\n.pizo-new-state-selectbox-container {\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-name,\r\n.pizo-new-category-container-alias,\r\n.pizo-new-state-selectbox {\r\n    padding: 5px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-category-container{\r\n    width: 60%;\r\n}\r\n\r\n.pizo-new-catergory-container>div:first-child {\r\n    padding-top: 0;\r\n}\r\n\r\n.pizo-new-catergory-container>div:last-child {\r\n    padding-bottom: 0;\r\n}\r\n\r\n.label-used-error,\r\n.label-invalid-error {\r\n    display: none;\r\n}\r\n\r\n.hasErrorElement.used-error .label-used-error,\r\n.hasErrorElement.invalid-error .label-invalid-error {\r\n    display: inline;\r\n    width: 232px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 265 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(266);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 266 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "", ""]);
+
+
+
+/***/ }),
+/* 267 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32030,11 +32450,11 @@ __webpack_require__.d(dom_namespaceObject, "domVisitor", function() { return dom
 __webpack_require__.d(dom_namespaceObject, "parseDom", function() { return parseDom; });
 
 // EXTERNAL MODULE: ./node_modules/atob/browser-atob.js
-var browser_atob = __webpack_require__(61);
+var browser_atob = __webpack_require__(62);
 var browser_atob_default = /*#__PURE__*/__webpack_require__.n(browser_atob);
 
 // EXTERNAL MODULE: ./node_modules/btoa/index.js
-var node_modules_btoa = __webpack_require__(62);
+var node_modules_btoa = __webpack_require__(63);
 var btoa_default = /*#__PURE__*/__webpack_require__.n(node_modules_btoa);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Polyfill/polyfill.js
@@ -33483,7 +33903,7 @@ TemplateXML.parse = function (text) {
 var Dom = __webpack_require__(1);
 
 // EXTERNAL MODULE: ./node_modules/absol/src/HTML5/Svg.js + 1 modules
-var Svg = __webpack_require__(9);
+var Svg = __webpack_require__(8);
 
 // EXTERNAL MODULE: ./node_modules/absol/src/HTML5/OOP.js
 var OOP = __webpack_require__(2);
@@ -35018,7 +35438,7 @@ var lib = __webpack_require__(29);
 var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 
 // EXTERNAL MODULE: ./node_modules/absol/src/JSDocx/JSDocx.js
-var JSDocx = __webpack_require__(64);
+var JSDocx = __webpack_require__(65);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Network/Broadcast.js
 
@@ -35658,7 +36078,7 @@ XHR.request = function (method, url, props, headers, body, successCallback, fail
 var stringFormat = __webpack_require__(7);
 
 // EXTERNAL MODULE: ./node_modules/babylon/lib/index.js
-var babylon_lib = __webpack_require__(68);
+var babylon_lib = __webpack_require__(69);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/JSX/attribute.js
 /**
@@ -36780,6 +37200,8 @@ Object.keys(mapKeys).forEach(function (key) {
 var ACore = __webpack_require__(0);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/utils.js
+
+
 function insertTextAtCursor(text) {
     var sel, range;
     if (window.getSelection) {
@@ -36872,6 +37294,23 @@ function preventNotNumberInput(elt) {
             else event.preventDefault();
         }
     });
+}
+
+
+function buildCss(StyleSheet) {
+    ACore["a" /* default */]._({
+        tag: 'style',
+        props: {
+            innerHTML: Object.keys(StyleSheet).map(function (key) {
+                var style = StyleSheet[key];
+                return key + ' {\n'
+                    + Object.keys(style).map(function (propName) {
+                        return propName + ': ' + style[propName] + ';';
+                    }).join('\n')
+                    + '}';
+            }).join('\n')
+        }
+    }).addTo(document.head);
 }
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SpanInput.js
 
@@ -37040,7 +37479,7 @@ ACore["a" /* default */].install('spaninput', SpanInput);
 
 /* harmony default export */ var js_SpanInput = (SpanInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/spaninput.css
-var spaninput = __webpack_require__(109);
+var spaninput = __webpack_require__(110);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/IconButton.js
 
@@ -37119,7 +37558,7 @@ ACore["a" /* default */].creator.iconbutton = IconButton;
 
 /* harmony default export */ var js_IconButton = (IconButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/iconbutton.css
-var iconbutton = __webpack_require__(112);
+var iconbutton = __webpack_require__(113);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/FlexiconButton.js
 
@@ -37189,7 +37628,7 @@ ACore["a" /* default */].install('flexiconbutton', FlexiconButton);
 
 /* harmony default export */ var js_FlexiconButton = (FlexiconButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/flexiconbutton.css
-var flexiconbutton = __webpack_require__(114);
+var flexiconbutton = __webpack_require__(115);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Scroller.js
 
@@ -37749,7 +38188,7 @@ ACore["a" /* default */].creator.scrollbar = Scrollbar;
 ACore["a" /* default */].creator.vscroller = VScroller;
 ACore["a" /* default */].creator.hscroller = HScroller;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/scroller.css
-var scroller = __webpack_require__(116);
+var scroller = __webpack_require__(117);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/NumberInput.js
 
@@ -38135,7 +38574,7 @@ ACore["a" /* default */].install('NumberInput'.toLowerCase(), NumberInput);
 
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/numberinput.css
-var numberinput = __webpack_require__(118);
+var numberinput = __webpack_require__(119);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Searcher.js
 
@@ -38295,7 +38734,7 @@ ACore["a" /* default */].creator.searchtextinput = SearchTextInput;
 
 /* harmony default export */ var Searcher = (SearchTextInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/searcher.css
-var searcher = __webpack_require__(120);
+var searcher = __webpack_require__(121);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/String/stringMatching.js
 /**
@@ -39142,7 +39581,7 @@ ACore["a" /* default */].creator.selecttable = SelectTable;
 
 /* harmony default export */ var js_SelectTable = (SelectTable);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selecttable.css
-var selecttable = __webpack_require__(122);
+var selecttable = __webpack_require__(123);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Menu.js
 
@@ -39799,7 +40238,7 @@ ACore["a" /* default */].creator.vmenuline = VMenuLine;
 ACore["a" /* default */].creator.dropdown = Dropdown;
 ACore["a" /* default */].creator.hmenuitem = HMenuItem;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/menu.css
-var css_menu = __webpack_require__(124);
+var css_menu = __webpack_require__(125);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ContextMenu.js
 
@@ -39967,7 +40406,7 @@ ContextCaptor.eventHandler.contextmenu = function (event) {
 
 ACore["a" /* default */].install('contextcaptor', ContextCaptor);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/contextmenu.css
-var contextmenu = __webpack_require__(126);
+var contextmenu = __webpack_require__(127);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Modal.js
 
@@ -40018,7 +40457,7 @@ ACore["a" /* default */].creator.modal = Modal;
 
 /* harmony default export */ var js_Modal = (Modal);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/modal.css
-var modal = __webpack_require__(128);
+var modal = __webpack_require__(129);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TextEditor.js
 
@@ -40054,7 +40493,7 @@ function TextEditor() {
     });
 
     res.eventHandler = OOP["a" /* default */].bindFunctions(res, TextEditor.eventHandler);
-    res._textFont = '1rem Helvetica, Arial, sans-serif';
+    res._textFont = '14px Helvetica, Arial, sans-serif';
     res.$textLayter = TextEditor_$('.absol-text-editor-text-layer', res)
         .on('keydown', res.eventHandler.keydown);
 
@@ -40295,7 +40734,7 @@ ACore["a" /* default */].install('texteditor', TextEditor);
 
 // not comleted yet
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/texteditor.css
-var texteditor = __webpack_require__(130);
+var texteditor = __webpack_require__(131);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/MediaInput.js
 
@@ -40308,15 +40747,15 @@ var texteditor = __webpack_require__(130);
 
 
 
-var MediaCore = new Dom["a" /* default */]({ creator: Object.assign({}, ACore["a" /* default */].creator) });
+var MediACore = new Dom["a" /* default */]({ creator: Object.assign({}, ACore["a" /* default */].creator) });
 
-var MediaInput_ = MediaCore._;
-var MediaInput_$ = MediaCore.$;
+var MediaInput_ = MediACore._;
+var MediaInput_$ = MediACore.$;
 
 
 function openFileDialog(props) {
-    if (!MediaCore.$fileInput) {
-        MediaCore.$fileInput = MediaInput_({
+    if (!MediACore.$fileInput) {
+        MediACore.$fileInput = MediaInput_({
             tag: 'input',
             class: 'vmedia-no-show',
             attr: {
@@ -40330,28 +40769,28 @@ function openFileDialog(props) {
 
     if (props.accept) {
         if (props.accept instanceof Array)
-            MediaCore.$fileInput.attr('accept', props.accept.join(','));
+            MediACore.$fileInput.attr('accept', props.accept.join(','));
         else
-            MediaCore.$fileInput.attr('accept', props.accept);
+            MediACore.$fileInput.attr('accept', props.accept);
     }
     else {
-        MediaCore.$fileInput.attr('accept', null);
+        MediACore.$fileInput.attr('accept', null);
     }
 
     if (props.multiple) {
-        MediaCore.$fileInput.attr('multiple', 'true');
+        MediACore.$fileInput.attr('multiple', 'true');
     }
     else {
-        MediaCore.$fileInput.attr('multiple');
+        MediACore.$fileInput.attr('multiple');
     }
-    MediaCore.$fileInput.value = null;
-    MediaCore.$fileInput.click();
+    MediACore.$fileInput.value = null;
+    MediACore.$fileInput.click();
 
 
     return new Promise(function (resolve, reject) {
         var finish = false;
         var body = MediaInput_$('body');
-        MediaCore.$fileInput.once('change', function () {
+        MediACore.$fileInput.once('change', function () {
             finish = true;
             resolve(Array.prototype.map.call(this.files, function (file) {
                 return file;
@@ -41114,11 +41553,11 @@ function FilePreview() {
 
 
 
-MediaCore.creator.mediainput = MediaInput;
-MediaCore.creator.imagepreview = ImagePreview;
-MediaCore.creator.filepreview = FilePreview;
+MediACore.creator.mediainput = MediaInput;
+MediACore.creator.imagepreview = ImagePreview;
+MediACore.creator.filepreview = FilePreview;
 
-MediaCore.creator['send-ico'] = function () {
+MediACore.creator['send-ico'] = function () {
     return MediaInput_(
         [
             '<svg class="send" width="100" height="100" version="1.1" viewBox="0 0 26.458 26.458">',
@@ -41130,7 +41569,7 @@ MediaCore.creator['send-ico'] = function () {
     );
 };
 
-MediaCore.creator['add-file-ico'] = function () {
+MediACore.creator['add-file-ico'] = function () {
     return MediaInput_(
         [
             '<svg class="add-file" width="100" height="100" version="1.1" viewBox="0 0 26.458 26.458" xmlns="http://www.w3.org/2000/svg">',
@@ -41143,7 +41582,7 @@ MediaCore.creator['add-file-ico'] = function () {
         ].join('')
     );
 };
-MediaCore.creator['add-image-ico'] = function () {
+MediACore.creator['add-image-ico'] = function () {
     return MediaInput_(
         [
             '<svg class="add-image" width="100" height="100" version="1.1" viewBox="0 0 26.458 26.458" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="absol/src/HTML5/Elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">',
@@ -41158,7 +41597,7 @@ MediaCore.creator['add-image-ico'] = function () {
     );
 };
 
-MediaCore.creator['attachment-ico'] = function () {
+MediACore.creator['attachment-ico'] = function () {
     return MediaInput_(
         [
             '<svg class="attachment" width="1024" height="1024"  version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" >',
@@ -41173,7 +41612,7 @@ MediaCore.creator['attachment-ico'] = function () {
     );
 };
 
-MediaCore.creator['attachment-ico'].property = {
+MediACore.creator['attachment-ico'].property = {
     ext: {
         set: function (value) {
             value = value || '';
@@ -41190,7 +41629,7 @@ MediaCore.creator['attachment-ico'].property = {
 
 
 
-MediaCore.creator['times-ico'] = function () {
+MediACore.creator['times-ico'] = function () {
     return MediaInput_(
         [
             '<svg class="times" width="100" height="100" version="1.1" viewBox="0 0 26.458 26.458" xmlns="http://www.w3.org/2000/svg">',
@@ -41202,7 +41641,7 @@ MediaCore.creator['times-ico'] = function () {
 };
 
 
-MediaCore.creator['download-ico'] = function () {
+MediACore.creator['download-ico'] = function () {
     return MediaInput_(
         [
             '<svg class="download" width="100mm" height="100mm" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">',
@@ -41215,7 +41654,7 @@ MediaCore.creator['download-ico'] = function () {
     );
 };
 
-MediaCore.creator['plus-ico'] = function () {
+MediACore.creator['plus-ico'] = function () {
     return MediaInput_(
 
         '<svg class="_7oal" height="24" width="24" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><polygon points="-6,30 30,30 30,-6 -6,-6 "></polygon><path d="m18,11l-5,0l0,-5c0,-0.552 -0.448,-1 -1,-1c-0.5525,0 -1,0.448 -1,1l0,5l-5,0c-0.5525,0 -1,0.448 -1,1c0,0.552 0.4475,1 1,1l5,0l0,5c0,0.552 0.4475,1 1,1c0.552,0 1,-0.448 1,-1l0,-5l5,0c0.552,0 1,-0.448 1,-1c0,-0.552 -0.448,-1 -1,-1m-6,13c-6.6275,0 -12,-5.3725 -12,-12c0,-6.6275 5.3725,-12 12,-12c6.627,0 12,5.3725 12,12c0,6.6275 -5.373,12 -12,12" ></path></g></svg>'
@@ -41229,7 +41668,7 @@ ACore["a" /* default */].creator.mediainput = MediaInput;
 
 /* harmony default export */ var js_MediaInput = (MediaInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/mediainput.css
-var mediainput = __webpack_require__(132);
+var mediainput = __webpack_require__(133);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ResizableLayout.js
 
@@ -41325,7 +41764,7 @@ ACore["a" /* default */].creator.resizablelayout = ResizableLayout;
 // not completed yet
 /* harmony default export */ var js_ResizableLayout = (ResizableLayout);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/resizablelayout.css
-var resizablelayout = __webpack_require__(134);
+var resizablelayout = __webpack_require__(135);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/adapter/SearchStringArrayAdapter.js
 /**
@@ -41484,7 +41923,7 @@ function AutoCompleteInput() {
                 child: {
                     tag: 'bscroller',
                     style: {
-                        'max-height': '35.7143rem'
+                        'max-height': '500px'
                     }
                 }
             }
@@ -41886,10 +42325,10 @@ ACore["a" /* default */].install('AutoCompleteInput'.toLowerCase(), AutoComplete
 
 /* harmony default export */ var js_AutoCompleteInput = (AutoCompleteInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/autocompleteinput.css
-var autocompleteinput = __webpack_require__(136);
+var autocompleteinput = __webpack_require__(137);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectlist.css
-var selectlist = __webpack_require__(138);
+var selectlist = __webpack_require__(139);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectListItem.js
 
@@ -42112,7 +42551,7 @@ SelectList.property.items = {
         while (this._itemViewCount > itemCout) {
             this.$items[--this._itemViewCount].remove();
         }
-        utils_measureText('', 'italic 1rem  sans-serif')//cache font style
+        utils_measureText('', 'italic 14px  sans-serif')//cache font style
         var maxDescWidth = 0;
 
         for (i = 0; i < value.length; ++i) {
@@ -42204,7 +42643,7 @@ ACore["a" /* default */].creator.selectlist = SelectList;
 
 /* harmony default export */ var js_SelectList = (SelectList);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectmenu.css
-var selectmenu = __webpack_require__(140);
+var selectmenu = __webpack_require__(141);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectMenu.js
 
@@ -42791,7 +43230,7 @@ ACore["a" /* default */].creator.selectmenu = SelectMenu;
 
 /* harmony default export */ var js_SelectMenu = (SelectMenu);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/treelist.css
-var treelist = __webpack_require__(142);
+var treelist = __webpack_require__(143);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TreeList.js
 
@@ -43106,7 +43545,7 @@ ACore["a" /* default */].creator.treelistitem = TreeListItem;
 
 /* harmony default export */ var js_TreeListItem = (TreeListItem);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selecttreemenu.css
-var selecttreemenu = __webpack_require__(144);
+var selecttreemenu = __webpack_require__(145);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectTreeMenu.js
 
@@ -43467,7 +43906,7 @@ ACore["a" /* default */].creator.selecttreemenu = SelectTreeMenu;
 
 /* harmony default export */ var js_SelectTreeMenu = (SelectTreeMenu);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectbox.css
-var selectbox = __webpack_require__(146);
+var selectbox = __webpack_require__(147);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectBoxItem.js
 
@@ -43713,7 +44152,7 @@ SelectBox.property.items = {
 
         var itemCount = items.length;
 
-        utils_measureText('', 'italic 1rem  sans-serif')//cache font style
+        utils_measureText('', 'italic 14px  sans-serif')//cache font style
         this._descWidth = 0;
         for (i = 0; i < itemCount; ++i) {
             if (items[i].desc) {
@@ -43940,7 +44379,7 @@ ACore["a" /* default */].install('SelectBox'.toLowerCase(), SelectBox);
 
 /* harmony default export */ var js_SelectBox = (SelectBox);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/radio.css
-var css_radio = __webpack_require__(148);
+var css_radio = __webpack_require__(149);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/RadioButton.js
 
@@ -44312,7 +44751,7 @@ ACore["a" /* default */].creator.radio = Radio_Radio;
 
 /* harmony default export */ var js_Radio = (Radio_Radio);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/switch.css
-var css_switch = __webpack_require__(150);
+var css_switch = __webpack_require__(151);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Switch.js
 
@@ -44403,7 +44842,7 @@ ACore["a" /* default */].install('switch', Switch);
 
 /* harmony default export */ var js_Switch = (Switch);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/checkbox.css
-var css_checkbox = __webpack_require__(152);
+var css_checkbox = __webpack_require__(153);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CheckBox.js
 
@@ -44717,7 +45156,7 @@ CheckBoxButton.initAfterLoad = function () {
 ACore["a" /* default */].install('CheckBoxButton'.toLowerCase(), CheckBoxButton);
 /* harmony default export */ var CheckboxButton = (CheckBoxButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/candyboxbutton.css
-var candyboxbutton = __webpack_require__(154);
+var candyboxbutton = __webpack_require__(155);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CandyBoxButton.js
 
@@ -44799,8 +45238,8 @@ function TextClipboard() {
         style: {
             positon: 'fixed',
             opacity: 0,
-            width: '0.0714rem',
-            height: '0.0714rem',
+            width: '1px',
+            height: '1px',
             top: 0,
             left: 0
         }
@@ -44826,7 +45265,7 @@ ACore["a" /* default */].creator.textclipboard = TextClipboard;
 
 /* harmony default export */ var js_TextClipboard = (TextClipboard);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/editabletext.css
-var editabletext = __webpack_require__(156);
+var editabletext = __webpack_require__(157);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/EditableText.js
 
@@ -44975,7 +45414,7 @@ ACore["a" /* default */].creator.editabletext = EditableText;
 /* harmony default export */ var js_EditableText = (EditableText);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/widthheightresizer.css
-var widthheightresizer = __webpack_require__(158);
+var widthheightresizer = __webpack_require__(159);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Draggable.js
 
@@ -45188,40 +45627,36 @@ var Follower_$ = ACore["a" /* default */].$;
 
 
 function Follower() {
-    var res = Follower_({
-        class: 'absol-follower',
-        child: ['.absol-follower-content-container', 'attachhook'],
-    });
-    res.$attachHook = Follower_$('attachhook', res)
+    this.$attachHook = Follower_('attachhook', this)
+        .addTo(this)
         .on('error', function () {
-            res.updatePosition();
-            this.updateSize = this.updateSize || res.updatePosition.bind(this);
-
-            Dom["a" /* default */].addToResizeSystem(res);
+            this.requestUpdateSize();
+            Dom["a" /* default */].addToResizeSystem(this);
         });
-    res.$contentCtn = Follower_$('.absol-follower-content-container', res);
+    this.$attachHook.requestUpdateSize = this.updatePosition.bind(this);
 
-    res.$followTarget = undefined;
-    res.$scrollTrackElts = [];
-    res._scrollTrackEventHandler = undefined;
-    res._anchor = Follower.ANCHOR_PRIORITY;
+    this.$followTarget = undefined;
+    this.$scrollTrackElts = [];
+    this._scrollTrackEventHandler = undefined;
+    this._anchor = Follower.ANCHOR_PRIORITY;
 
-    return res;
 }
 
-['addChild', 'addChildBefore', 'addChildAfter', 'clearChild'].forEach(function (key) {
-    Follower.prototype[key] = function () {
-        this.$contentCtn[key].apply(this.$contentCtn, arguments);
-        return this;
-    }
-});
+Follower.render = function () {
+    return Follower_('.absol-follower');
+};
 
-['findChildBefore', 'findChildAfter'].forEach(function (key) {
-    Follower.prototype[key] = function () {
-        return this.$contentCtn[key].apply(this.$contentCtn, arguments);
-    }
-});
 
+Follower.prototype.clearChild = function () {
+    var children = Array.prototype.slice.call(this.children);
+    var attachhookElt = this.$attachHook;
+    children.forEach(function (elt) {
+        if (elt != attachhookElt)
+            elt.remove();
+    });
+}
+
+//Todo: remove child, find child....
 
 /**
  * X = $target.x + F[anchor_index][0] * $target.width + F[anchor_index][1] * $content.width 
@@ -45253,9 +45688,9 @@ Follower.ANCHOR_PRIORITY = [1, 6, 2, 5, 0, 7, 3, 4, 9, 11, 8, 10, 12, 15, 13, 14
 
 Follower.prototype.updatePosition = function () {
     if (!this.$followTarget) return;
-    var contentCtnBound = this.$contentCtn.getBoundingClientRect();
     var targetBound = this.$followTarget.getBoundingClientRect();
-    var outRect = Math_Rectangle.fromClientRect(Dom["a" /* default */].traceOutBoundingClientRect(this));
+    var screenSize = Dom["a" /* default */].getScreenSize();
+    var outRect = new Math_Rectangle(0, 0, screenSize.width, screenSize.height);
     var bound = this.getBoundingClientRect();
     var x = 0;
     var y = 0;
@@ -45267,9 +45702,9 @@ Follower.prototype.updatePosition = function () {
     var bestAnchor;
     for (var i = 0; i < anchors.length; ++i) {
         factor = Follower.ANCHOR_FACTORS[anchors[i]];
-        x = targetBound.left + factor[0] * targetBound.width + factor[1] * contentCtnBound.width;
-        y = targetBound.top + factor[2] * targetBound.height + factor[3] * contentCtnBound.height;
-        newContentRect = new Math_Rectangle(x, y, contentCtnBound.width, contentCtnBound.height);
+        x = targetBound.left + factor[0] * targetBound.width + factor[1] * bound.width;
+        y = targetBound.top + factor[2] * targetBound.height + factor[3] * bound.height;
+        newContentRect = new Math_Rectangle(x, y, bound.width, bound.height);
         score = newContentRect.collapsedSquare(outRect);
         if (score - 10 > bestScore) {
             bestAnchor = anchors[i];
@@ -45280,9 +45715,8 @@ Follower.prototype.updatePosition = function () {
     }
 
     this._lastAnchor = bestAnchor;
-    bestX -= bound.left;
-    bestY -= bound.top;
-    this.$contentCtn.addStyle({
+  
+    this.addStyle({
         left: bestX + 'px',
         top: bestY + 'px'
     });
@@ -45292,6 +45726,7 @@ Follower.prototype.updatePosition = function () {
 
 Follower.prototype.refollow = function () {
     if (!this.$followTarget) return;
+    this.updatePosition();
     this.addClass('following');
 
     if (this._scrollTrackEventHandler) this.unfollow();
@@ -45341,6 +45776,7 @@ Follower.property.followTarget = {
         if (elt === null || elt === undefined || !elt) {
             this.unfollow();
             this.$followTarget = undefined;
+            return;
         }
         else if (typeof elt == 'string') {
             elt = Follower_$(elt) || document.getElementById(elt);
@@ -45350,7 +45786,6 @@ Follower.property.followTarget = {
             this.$followTarget = elt;
             this._lastAncho = undefined;
             this.refollow();
-            this.updatePosition();
         }
         else throw new Error("Invalid element");
     },
@@ -45386,11 +45821,94 @@ Follower.property.anchor = {
 ACore["a" /* default */].install('follower', Follower);
 
 /* harmony default export */ var js_Follower = (Follower);
+// CONCATENATED MODULE: ./node_modules/absol-acomp/js/FollowerToggler.js
+
+
+var FollowerToggler_ = ACore["a" /* default */]._;
+var FollowerToggler_$ = ACore["a" /* default */].$;
+
+function FollowerToggler() {
+    this.defineEvent(['close', 'open', 'preopen']);
+    this.on('click', this.eventHandler.click);
+    this.addClass('as-follower-trigger');
+    this.$follower = null;
+    this._opened = false;
+}
+
+FollowerToggler.render = function () {
+    return FollowerToggler_('div');
+}
+
+FollowerToggler.prototype.toggle = function () {
+    if (this._opened) this.close();
+    else this.open();
+};
+
+FollowerToggler.prototype.open = function () {
+    if (this._opened) return;
+    this._opened = true;
+    this.addClass('as-follower-trigger-open');
+    if (!this.$follower) return;
+    this.emit('preopen', { name: 'preopen', target: this }, this);
+    var thisTg = this;
+    setTimeout(function () {
+        thisTg.$follower.refollow();
+        thisTg.$follower.removeClass('absol-follower-hidden');
+        document.body.addEventListener('click', thisTg.eventHandler.clickBody);
+        thisTg.emit('open', { name: 'open', target: this }, this);
+    }, 1);
+};
+
+FollowerToggler.prototype.close = function () {
+    if (!this._opened) return;
+    this._opened = false;
+    this.removeClass('as-follower-trigger-open');
+    if (!this.$follower) return;
+    this.$follower.unfollow();
+    this.$follower.addClass('absol-follower-hidden');
+    document.body.removeEventListener('click', this.eventHandler.clickBody);
+    this.emit('close', { name: 'close', target: this }, this);
+};
+
+
+FollowerToggler.prototype.bindFollower = function (elt) {
+    if (this.$follower){
+        this.$follower.followTarget = null;
+    }
+    if (elt && elt.refollow) {
+        if (this._opened)
+            elt.removeClass('absol-follower-hidden');
+        else
+            elt.addClass('absol-follower-hidden');
+        elt.followTarget = this;
+        this.$follower = elt;
+    }
+    else {
+        throw new Error("Must be a follower!");
+    }
+}
+
+FollowerToggler.eventHandler = {};
+
+FollowerToggler.eventHandler.clickBody = function (event) {
+    if (EventEmitter["a" /* default */].hitElement(this, event) || EventEmitter["a" /* default */].hitElement(this.$follower, event))
+        return;
+    this.close();
+};
+
+
+FollowerToggler.eventHandler.click = function () {
+    this.toggle();
+};
+
+ACore["a" /* default */].install('FollowerToggler'.toLowerCase(), FollowerToggler);
+
+/* harmony default export */ var js_FollowerToggler = (FollowerToggler);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/follower.css
-var follower = __webpack_require__(160);
+var follower = __webpack_require__(161);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tooltip.css
-var tooltip = __webpack_require__(162);
+var tooltip = __webpack_require__(163);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Tooltip.js
 
@@ -45549,10 +46067,10 @@ ToolTip.showWhenClick = function (element, content, orientation) {
 
 /* harmony default export */ var Tooltip = (ToolTip);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/frame.css
-var css_frame = __webpack_require__(164);
+var css_frame = __webpack_require__(165);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/frameview.css
-var css_frameview = __webpack_require__(166);
+var css_frameview = __webpack_require__(167);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Frame.js
 
@@ -45836,7 +46354,7 @@ ACore["a" /* default */].install('frameview', FrameView);
 
 /* harmony default export */ var js_FrameView = (FrameView);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tabview.css
-var tabview = __webpack_require__(168);
+var tabview = __webpack_require__(169);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TabBar.js
 
@@ -46582,10 +47100,10 @@ ACore["a" /* default */].install('singlepage', SinglePage);
 /* harmony default export */ var js_SinglePage = (SinglePage);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/singlepage.css
-var singlepage = __webpack_require__(170);
+var singlepage = __webpack_require__(171);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/pageselector.css
-var pageselector = __webpack_require__(172);
+var pageselector = __webpack_require__(173);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/PageSelector.js
 
@@ -46783,10 +47301,10 @@ ACore["a" /* default */].install('pageselector', PageSelector);
 
 /* harmony default export */ var js_PageSelector = (PageSelector);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/bscroller.css
-var bscroller = __webpack_require__(174);
+var bscroller = __webpack_require__(175);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/searchlist.css
-var searchlist = __webpack_require__(176);
+var searchlist = __webpack_require__(177);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/adapter/SearchListAdapter.js
 function SearchListAdapter() {
@@ -46815,7 +47333,7 @@ SearchListAdapter.prototype.getItemView = function (item, index, _, $, query, re
     for (var i in item) {
         marginLeft = ""
         if (isFirst)
-            marginLeft = "0.7143rem"
+            marginLeft = "10px"
         isFirst = true;
         if (i === "icon") {
             list.push({
@@ -46894,7 +47412,7 @@ function SearchList() {
     var res = SearchList_({
         class: 'absol-search-list',
         style: {
-            // height:'21.4286rem',
+            // height:'300px',
         },
         child: [
             {
@@ -47363,7 +47881,7 @@ SearchList.prototype.init = function (props) {
 ACore["a" /* default */].install('SearchList'.toLowerCase(), SearchList);
 /* harmony default export */ var js_SearchList = (SearchList);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/statictabbar.css
-var statictabbar = __webpack_require__(178);
+var statictabbar = __webpack_require__(179);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/StaticTabbar.js
 
@@ -47570,7 +48088,7 @@ ACore["a" /* default */].install('remotesvg', RemoteSvg);
 /* harmony default export */ var js_RemoteSvg = (RemoteSvg);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/exptree.css
-var exptree = __webpack_require__(180);
+var exptree = __webpack_require__(181);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ExpTree.js
 
@@ -47965,7 +48483,7 @@ ACore["a" /* default */].install('exptree', ExpTree);
 
 /* harmony default export */ var js_ExpTree = (ExpTree);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tablevscroller.css
-var tablevscroller = __webpack_require__(182);
+var tablevscroller = __webpack_require__(183);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TableVScroller.js
 
@@ -48099,7 +48617,7 @@ ACore["a" /* default */].install('tablevscroller', TableVScroller);
 /* harmony default export */ var js_TableVScroller = (TableVScroller);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tablescroller.css
-var tablescroller = __webpack_require__(184);
+var tablescroller = __webpack_require__(185);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TableScroller.js
 
@@ -48521,7 +49039,7 @@ ACore["a" /* default */].install('TableScroller'.toLowerCase(), TableScroller);
 
 /* harmony default export */ var js_TableScroller = (TableScroller);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/quickpath.css
-var quickpath = __webpack_require__(186);
+var quickpath = __webpack_require__(187);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/QuickMenu.js
 
@@ -49033,7 +49551,7 @@ ACore["a" /* default */].install('quickpath', QuickPath);
 
 /* harmony default export */ var js_QuickPath = (QuickPath);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/droppanel.css
-var droppanel = __webpack_require__(188);
+var droppanel = __webpack_require__(189);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/DropPanel.js
 
@@ -49235,7 +49753,7 @@ ACore["a" /* default */].install('droppanelstack', DropPannelStack);
 
 /* harmony default export */ var DropPanelStack = (DropPannelStack);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/draggablestack.css
-var draggablestack = __webpack_require__(190);
+var draggablestack = __webpack_require__(191);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/DraggableVStack.js
 
@@ -49711,7 +50229,7 @@ DraggableHStack.prototype._updateDragginPosition = function () {
 ACore["a" /* default */].install('DraggableHStack'.toLowerCase(), DraggableHStack);
 /* harmony default export */ var js_DraggableHStack = (DraggableHStack);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/chromecalendar.css
-var chromecalendar = __webpack_require__(192);
+var chromecalendar = __webpack_require__(193);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Time/datetime.js
 var MILLIS_PER_DAY = 24 * 3600000;
@@ -49986,7 +50504,83 @@ var ChromeCalendar_$ = ACore["a" /* default */].$;
 
 
 function ChromeCalendar() {
-    var res = ChromeCalendar_({
+    var thisCal = this;
+    this.$years = ChromeCalendar_$('.absol-chrome-calendar-years', this);
+    ChromeCalendar_({
+        child: Array(200).fill(0).map(function (u, i) {
+            return {
+                class: 'absol-chrome-calendar-year',
+                child: [
+                    {
+                        class: 'absol-chrome-calendar-year-head',
+                        child: { text: i + 1890 + '' },
+                    }
+                ],
+                props: {
+                    __year__: i + 1890
+                },
+                on: {
+                    click: function () {
+
+                        thisCal.expandYear(this.__year__);
+                    }
+                }
+            };
+        })
+    }).addTo(this.$years);
+    this.$title = ChromeCalendar_$('.absol-chrome-calendar-title', this)
+        .on('click', function () {
+            thisCal.viewYear();
+        });
+    this.$titleTime = ChromeCalendar_$('.absol-chrome-calendar-title > .title-time', this);
+
+    this.$instance = ChromeCalendar_$('.absol-chrome-calendar-instance', this);
+
+    this.$month = ChromeCalendar_$('.absol-chrome-calendar-month', this);
+    this._minLimitDate = new Date(1890, 0, 1, 0, 0, 0, 0, 0);
+    this._maxLimitDate = new Date(2090, 0, 1, 0, 0, 0, 0, 0);
+
+    this._selectedDates = [beginOfDay(new Date())];
+    this._viewDate = new Date();
+
+    this.$prevBtn = ChromeCalendar_$('.absol-chrome-calendar-header-buttons > button.prev-btn', this)
+        .on('click', function () {
+            thisCal.viewPrevMonth();
+        });
+    this.$todayBtn = ChromeCalendar_$('.absol-chrome-calendar-header-buttons > button.today-btn', this)
+        .on('click', function () {
+            thisCal.viewToday();
+            thisCal.pickDate(new Date());
+        });
+    this.$nextBtn = ChromeCalendar_$('.absol-chrome-calendar-header-buttons > button.next-btn', this)
+        .on('click', function () {
+            thisCal.viewNexMounth();
+        });
+
+    this.$yearScroller = ChromeCalendar_$('vscroller.absol-chrome-calendar-years', this);
+    this.$yearItems = [];
+
+    ChromeCalendar_$('.absol-chrome-calendar-year', this.$yearScroller, function (e) {
+        thisCal.$yearItems.push(e);
+    });
+
+    this.$attachHook = ChromeCalendar_('attachhook').addTo(this)
+        .on('error', function () {
+            thisCal.$yearScroller.requestUpdateSize();
+            thisCal.expandYear(thisCal._viewDate.getFullYear());
+        });
+
+    this.sync = new Promise(function (rs) {
+        thisCal.$attachHook.on('error', rs);
+    });
+
+    return this;
+}
+
+
+
+ChromeCalendar.render = function () {
+    return ChromeCalendar_({
         class: 'absol-chrome-calendar',
         extendEvent: 'pick',
         child: [
@@ -50069,26 +50663,7 @@ function ChromeCalendar() {
                         tag: 'vscroller',
                         class: 'absol-chrome-calendar-years',
                         child: {
-                            child: Array(200).fill(0).map(function (u, i) {
-                                return {
-                                    class: 'absol-chrome-calendar-year',
-                                    child: [
-                                        {
-                                            class: 'absol-chrome-calendar-year-head',
-                                            child: { text: i + 1890 + '' },
-                                        }
-                                    ],
-                                    props: {
-                                        __year__: i + 1890
-                                    },
-                                    on: {
-                                        click: function () {
 
-                                            res.expandYear(this.__year__);
-                                        }
-                                    }
-                                };
-                            })
                         }
                     }
                 ]
@@ -50096,55 +50671,8 @@ function ChromeCalendar() {
         ]
     });
 
-
-    res.$title = ChromeCalendar_$('.absol-chrome-calendar-title', res)
-        .on('click', function () {
-            res.viewYear();
-        });
-    res.$titleTime = ChromeCalendar_$('.absol-chrome-calendar-title > .title-time', res);
-
-    res.$instance = ChromeCalendar_$('.absol-chrome-calendar-instance', res);
-
-    res.$month = ChromeCalendar_$('.absol-chrome-calendar-month', res);
-    res._minLimitDate = new Date(1890, 0, 1, 0, 0, 0, 0, 0);
-    res._maxLimitDate = new Date(2090, 0, 1, 0, 0, 0, 0, 0);
-
-    res._selectedDates = [beginOfDay(new Date())];
-    res._viewDate = new Date();
-
-    res.$prevBtn = ChromeCalendar_$('.absol-chrome-calendar-header-buttons > button.prev-btn', res)
-        .on('click', function () {
-            res.viewPrevMonth();
-        });
-    res.$todayBtn = ChromeCalendar_$('.absol-chrome-calendar-header-buttons > button.today-btn', res)
-        .on('click', function () {
-            res.viewToday();
-            res.pickDate(new Date());
-        });
-    res.$nextBtn = ChromeCalendar_$('.absol-chrome-calendar-header-buttons > button.next-btn', res)
-        .on('click', function () {
-            res.viewNexMounth();
-        });
-
-    res.$yearScroller = ChromeCalendar_$('vscroller.absol-chrome-calendar-years', res);
-    res.$yearItems = [];
-
-    ChromeCalendar_$('.absol-chrome-calendar-year', res.$yearScroller, function (e) {
-        res.$yearItems.push(e);
-    })
-
-    res.$attachHook = ChromeCalendar_('attachhook').addTo(res).on('error', function () {
-        // res.updateSize();
-        res.$yearScroller.requestUpdateSize();
-        res.expandYear(res._viewDate.getFullYear());
-    });
-
-    res.sync = new Promise(function (rs) {
-        res.$attachHook.on('error', rs);
-    });
-
-    return res;
 }
+
 
 
 /**
@@ -50624,7 +51152,7 @@ ChromeCalendar._listener = undefined;
 
 ChromeCalendar.showWhenClick = function (element, calendarProps, anchor, calendarPickListener, darkTheme) {
     var res = {
-        calendarProps: calendarProps,
+        calendarProps: Object.assign({ maxDateLimit: null, minDateLimit: null }, calendarProps),
         anchor: anchor,
         currentSession: undefined,
         element: element,
@@ -50684,7 +51212,7 @@ ChromeCalendar.show = function (element, calendarProps, anchor, calendarPickList
                     }
                 }).addTo(ChromeCalendar.$follower);
         }
-        
+
         ChromeCalendar.$ctn.addTo(document.body);
         // only one value need
         if (calendarProps instanceof Date) calendarProps = { selectedDates: [calendarProps] };
@@ -50726,8 +51254,989 @@ ChromeCalendar.close = function (session) {
 
 
 /* harmony default export */ var js_ChromeCalendar = (ChromeCalendar);
+// EXTERNAL MODULE: ./node_modules/absol-acomp/css/timepicker.css
+var timepicker = __webpack_require__(195);
+
+// CONCATENATED MODULE: ./node_modules/absol-acomp/js/TimePicker.js
+
+
+
+
+
+//todo: add this to absol
+var isTouchDevice = 'ontouchstart' in window ||
+    window.DocumentTouch && document instanceof window.DocumentTouch ||
+    navigator.maxTouchPoints > 0 ||
+    window.navigator.msMaxTouchPoints > 0;
+//todo: re select text after click
+var TimePicker_ = ACore["a" /* default */]._;
+var TimePicker_$ = ACore["a" /* default */].$;
+
+var $g = Svg["a" /* default */].ShareInstance.$;
+var _g = Svg["a" /* default */].ShareInstance._;
+
+function TimePicker() {
+    this._hour = 0;
+    this._minute = 0;
+    this._lastDayOffset = 0;
+    this._state = 'none';
+    this._mode = 'CLOCK';
+    this._latBound = { width: 0, height: 0 };
+    var thisPicker = this;
+    if (isTouchDevice)
+        this.addClass('ac-time-picker-touch');
+    this.$attachook = TimePicker_('attachhook').addTo(this).on('error', function () {
+        Dom["a" /* default */].addToResizeSystem(this);
+        this.requestUpdateSize();
+        thisPicker.addStyle('font-size', thisPicker.getComputedStyleValue('font-size'));
+    });
+    this.$attachook.requestUpdateSize = this.updateSize.bind(this);
+    this.$hour = TimePicker_$('.ac-time-picker-hour', this)
+        .on({
+            click: this.eventHandler.clickHour,
+            keydown: this.eventHandler.keydownHour
+        });
+    this.$minute = TimePicker_$('.ac-time-picker-minute', this)
+        .on({
+            click: this.eventHandler.clickMinute,
+            keydown: this.eventHandler.keydownMinute
+        });
+
+    this.$hourInput = TimePicker_$('.ac-time-picker-hour-input', this)
+        .on({
+            click: this.eventHandler.clickHourInput,
+            keydown: this.eventHandler.keydownHourInput
+        });
+
+    this.$minuteInput = TimePicker_$('.ac-time-picker-minute-input', this)
+        .on({
+            click: this.eventHandler.clickMinuteInput,
+            keydown: this.eventHandler.keydownMinuteInput
+        })
+
+    //only support if is none touch device
+    if (!isTouchDevice) {
+        this.$hour.attr('contenteditable', 'true');
+        this.$minute.attr('contenteditable', 'true');
+    }
+
+    this.$clock = $g('.ac-time-picker-clock', this)
+        .on(isTouchDevice ? 'touchstart' : 'mousedown', this.eventHandler.mousedownClock
+        );
+
+    this._clockWidth = 400;
+    this._clockHeight = 400;
+    this._clockRadius = 150;
+    this._clockRadiusInner = 100;
+    this.$clockContent = $g('.ac-time-picker-clock-content', this);
+    this.$clockHourCtn = $g('.ac-time-picker-clock-hour-ctn', this);
+    this.$clockMinuteCtn = $g('.ac-time-picker-clock-minute-ctn', this);
+
+    this.$hourNumbers = Array(24).fill(0).map(function (u, i) {
+        var h = i;
+        if (h == 0)
+            h = 12;
+        else
+            if (h == 12) h = '00';
+        return _g({
+            tag: 'text',
+            attr: {
+                'text-anchor': 'middle'
+            },
+            class: 'ac-time-picker-clock-hour-' + (i < 12 ? 'am' : 'pm'),
+            child: { text: h + '' }
+        }).addTo(thisPicker.$clockHourCtn);
+    });
+    this.$minuteNumbers = Array(12).fill(0).map(function (u, i) {
+
+        return _g({
+            tag: 'text',
+            attr: {
+                'text-anchor': 'middle'
+            },
+            class: 'ac-time-picker-clock-minute',
+            child: { text: i * 5 + '' }
+        }).addTo(thisPicker.$clockMinuteCtn);
+    });
+
+    this.$selectCtn = $g('.ac-time-picker-clock-select-ctn', this);
+    this.$clockCenter = _g({
+        tag: 'circle',
+        class: 'ac-time-picker-clock-center',
+        attr: {
+            cx: "0",
+            cy: '0'
+        }
+    }).addTo(this.$selectCtn);
+    this.$clockSelectLine = _g({
+        tag: 'path',
+        class: 'ac-time-picker-clock-select-line'
+    }).addTo(this.$selectCtn);
+    this.$clockSelectCicle = _g({
+        tag: 'circle',
+        class: 'ac-time-picker-clock-select-circle',
+        attr: {
+            cx: 0,
+            cy: 0
+        }
+    }).addTo(this.$selectCtn);
+
+    this.$clockSelectCenter = _g({
+        tag: 'circle',
+        class: 'ac-time-picker-clock-select-center'
+    }).addTo(this.$selectCtn);
+    this.$finishBtn = TimePicker_$('.ac-time-picker-finish-btn', this)
+        .on('click', this.finishSelect.bind(this));
+    this.$cancelBtn = TimePicker_$('.ac-time-picker-cancel-btn', this)
+        .on('click', this.cancelSelect.bind(this));
+    this.$keyboardBtn = TimePicker_$('.ac-time-picker-keyboard-btn', this)
+        .on('click', this.timeMode.bind(this));
+    this.$clockBtn = TimePicker_$('.ac-time-picker-clock-btn', this)
+        .on('click', this.clockMode.bind(this));
+};
+
+
+TimePicker.prototype.updateSize = function () {
+    // var 
+    this._fontSize = this.getFontSize();
+    var cBound = this.$clock.getBoundingClientRect();
+    this._clockWidth = cBound.width;
+    this._clockHeight = cBound.height;
+    this.$clock.attr({
+        width: this._clockWidth,
+        height: this._clockHeight,
+        viewBox: '0 0 ' + this._clockWidth + ' ' + this._clockHeight
+    });
+
+    this.$clockContent.attr('transform', 'translate(' + (this._clockWidth / 2) + ',' + (this._clockHeight / 2) + ')');
+    var clockRadius = this._clockWidth / 2 - this._fontSize;
+    var clockRadiusInner = clockRadius - this._fontSize * 1.5;
+    this._clockRadius = clockRadius;
+    this._clockRadiusInner = clockRadiusInner;
+    this.$clockCenter.attr('r', this._fontSize / 5);
+    this.$clockSelectCicle.attr({ r: this._fontSize * 0.7, cx: clockRadius });
+    this.$clockSelectCenter.attr({ r: this._fontSize / 10, cx: clockRadius });
+    this.$hourNumbers.forEach(function (elt, i) {
+        var angle = Math.PI * (i - 3) / 6;
+        var r = i < 12 ? clockRadius : clockRadiusInner;
+        var box = elt.getBBox();
+        var x = r * Math.cos(angle);
+        var y = r * Math.sin(angle) + box.height / 2;
+        elt.attr({
+            x: x,
+            y: y
+        });
+    });
+    this.$minuteNumbers.forEach(function (elt, i) {
+        var angle = Math.PI * (i - 3) / 6;
+        var box = elt.getBBox();
+        var x = clockRadius * Math.cos(angle);
+        var y = clockRadius * Math.sin(angle) + box.height / 3;
+        elt.attr({
+            x: x,
+            y: y
+        });
+    });
+    this.updateSelectPosition();
+    this.notifySizeChange();
+};
+
+
+TimePicker.prototype.updateSelectPosition = function () {
+    var angle, radius;
+    if (this._state == "EDIT_MINUTE") {
+        angle = Math.PI * (this._minute - 15) / 30;
+        radius = this._clockRadius
+    }
+    else if (this._state == "EDIT_HOUR") {
+        angle = Math.PI * (this._hour - 3) / 6;
+        if (this._hour > 0 && this._hour <= 12) {
+            radius = this._clockRadius;
+        }
+        else {
+            radius = this._clockRadiusInner;
+        }
+    }
+    else {
+        return;
+    }
+    this._drawSelect(radius, angle);
+};
+
+
+TimePicker.prototype._drawSelect = function (radius, angle) {
+    var x = radius * Math.cos(angle);
+    var y = radius * Math.sin(angle);
+    this.$clockSelectCicle.attr({
+        cx: x, cy: y
+    });
+    this.$clockSelectCenter.attr({
+        cx: x, cy: y
+    });
+    this.$clockSelectLine.attr('d', 'M0,0L' + x + ',' + y);
+};
+
+
+TimePicker.prototype.notifyChange = function (force) {
+    if (this._lastDayOffset != this.dayOffset || force) {
+        this.emit('change', { target: this, hour: this.hour, minute: this.minute, dayOffset: this.dayOffset, name: 'change' }, this);
+    }
+};
+
+
+TimePicker.prototype.notifySizeChange = function () {
+    var bound = this.getBoundingClientRect();
+    if (this._latBound.width != bound.width || this._latBound.height != bound.height) {
+        this._latBound.width = bound.width;
+        this._latBound.height = bound.height;
+        this.emit('sizechange', { name: 'sizechange', bound: bound, target: this }, this);
+    }
+};
+
+
+TimePicker.render = function () {
+    return TimePicker_({
+        extendEvent: ['change', 'finish', 'cancel', 'sizechange'],
+        class: ['ac-time-picker', 'ac-time-picker-clock-mode'],//clock mode is default
+        child: [
+            {
+                class: 'ac-time-picker-set-clock',
+                child: [{
+                    class: 'ac-time-picker-set-clock-header',
+                    child: [
+                        {
+                            tag: 'span',
+                            class: 'ac-time-picker-hour',
+                            child: { text: '00' }
+                        },
+                        {
+                            tag: 'span',
+                            text: ':'
+                        },
+                        {
+                            tag: 'span',
+                            class: 'ac-time-picker-minute',
+                            child: { text: '00' }
+                        }
+                    ]
+                },
+                _g(
+                    {
+                        tag: 'svg',
+                        class: 'ac-time-picker-clock',
+                        child: [
+                            {
+                                class: 'ac-time-picker-clock-content',
+                                child: ['.ac-time-picker-clock-select-ctn', '.ac-time-picker-clock-hour-ctn', '.ac-time-picker-clock-minute-ctn']
+                            }
+                        ]
+                    }
+                )]
+            },
+            {
+                class: 'ac-time-picker-set-time',
+                child: [
+                    {
+                        class: 'ac-time-picker-set-time-header',
+                        child: { text: 'Set time' }
+                    },
+                    {
+                        class: 'ac-time-picker-set-time-label',
+                        child: { text: 'Type in time' }
+                    },
+                    {
+                        class: 'ac-time-picker-set-time-input-group',
+                        child: [
+                            {
+                                class: 'ac-time-picker-set-time-input-hm',
+                                child: [
+                                    {
+                                        tag: 'input',
+                                        class: 'ac-time-picker-hour-input',
+                                        attr: {
+                                            type: 'number',
+                                            placeHolder: '00'
+                                        }
+                                    },
+                                    {
+                                        tag: 'span',
+                                        child: { text: ':' }
+                                    },
+                                    {
+                                        tag: 'input',
+                                        class: 'ac-time-picker-minute-input',
+                                        attr: {
+                                            type: 'number',
+                                            placeHolder: '00'
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                class: 'ac-time-picker-set-time-input-label-hm',
+                                child: [
+                                    { tag: 'span', child: { text: 'hour' } },
+                                    { tag: 'span', style: { visibility: 'hidden' }, child: { text: ':' } },
+                                    { tag: 'span', child: { text: 'minute' } }
+
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                class: 'ac-time-picker-footer',
+                child: [
+                    {
+                        tag: 'button',
+                        class: 'ac-time-picker-keyboard-btn',
+                        child: 'span.mdi.mdi-keyboard-outline'
+                    },
+                    {
+                        tag: 'button',
+                        class: 'ac-time-picker-clock-btn',
+                        child: 'span.mdi.mdi-clock-outline'
+                    },
+                    {
+                        class: 'ac-time-picker-footer-right',
+                        child: [
+                            {
+                                tag: 'button',
+                                class: 'ac-time-picker-cancel-btn',
+                                child: { text: 'CANCEL' }
+                            },
+                            {
+                                tag: 'button',
+                                class: 'ac-time-picker-finish-btn',
+                                child: { text: 'OK' }
+                            }
+
+                        ]
+                    }]
+            }
+        ]
+    });
+};
+
+
+TimePicker.prototype.clockMode = function () {
+    if (this._mode == "CLOCK") return;
+    this._mode = 'CLOCK';
+    this.removeClass('ac-time-picker-time-mode')
+        .addClass('ac-time-picker-clock-mode');
+    this.editHour();
+    this.updateSize();
+
+};
+
+
+TimePicker.prototype.timeMode = function () {
+    if (this._mode == "TIME") return;
+    this._mode = 'TIME';
+    this.addClass('ac-time-picker-time-mode')
+        .removeClass('ac-time-picker-clock-mode');
+    this.editHourInput();
+    this.updateSize();
+};
+
+
+TimePicker.prototype._editContent = function (elt) {
+    var sel, range;
+    elt.focus();
+    if (window.getSelection) {
+        sel = window.getSelection();
+        sel.removeAllRanges();
+        var range = document.createRange();
+        range.selectNode(elt.childNodes[elt.childNodes.length - 1]);
+        sel.addRange(range);
+    } else {
+        console.error("TimePicker: Not support!")
+    }
+};
+
+
+TimePicker.prototype.editHour = function () {
+    this._state = "EDIT_HOUR";
+    this._preHour = this._hour;
+    this.removeClass('ac-time-picker-edit-minute')
+        .addClass('ac-time-picker-edit-hour')
+        .removeClass('ac-time-picker-edit-hour-input')
+        .removeClass('ac-time-picker-edit-minute-input');
+    this.updateSize();
+    if (!isTouchDevice)
+        setTimeout(this._editContent.bind(this, this.$hour), 2);
+};
+
+
+TimePicker.prototype.editMinute = function () {
+    this._state = "EDIT_MINUTE";
+    this._preMinute = this._minute;
+    this.addClass('ac-time-picker-edit-minute')
+        .removeClass('ac-time-picker-edit-hour')
+        .removeClass('ac-time-picker-edit-hour-input')
+        .removeClass('ac-time-picker-edit-minute-input');
+    this.updateSize();
+    if (!isTouchDevice)
+        setTimeout(this._editContent.bind(this, this.$minute), 2);
+};
+
+
+TimePicker.prototype.editHourInput = function () {
+    var thisPicker = this;
+    this._state = "EDIT_HOUR_INPUT";
+    this._preHour = this._hour;
+    this.removeClass('ac-time-picker-edit-minute')
+        .removeClass('ac-time-picker-edit-hour')
+        .addClass('ac-time-picker-edit-hour-input')
+        .removeClass('ac-time-picker-edit-minute-input');
+    this.updateSize();
+    setTimeout(function () {
+        thisPicker.$hourInput.focus();
+        thisPicker.$hourInput.select();
+        console.log(thisPicker.$hourInput);
+
+    }, 1)
+};
+
+
+TimePicker.prototype.editMinuteInput = function () {
+    var thisPicker = this;
+    this._state = "EDIT_MINUTE_INPUT";
+    this._preMinute = this._minute;
+    this.removeClass('ac-time-picker-edit-minute')
+        .removeClass('ac-time-picker-edit-hour')
+        .removeClass('ac-time-picker-edit-hour-input')
+        .addClass('ac-time-picker-edit-minute-input');
+    this.updateSize();
+    setTimeout(function () {
+        thisPicker.$minuteInput.focus();
+        thisPicker.$minuteInput.select();
+    }, 1)
+};
+
+
+TimePicker.prototype.finishSelect = function () {
+    this.emit('finish', { target: this, hour: this.hour, minute: this.minute, dayOffset: this.dayOffset, name: 'finish' }, this);
+};
+
+
+TimePicker.prototype.cancelSelect = function () {
+    console.log('cancel');
+    
+    this.emit('cancel', { target: this, name: 'cancel' }, this);
+};
+
+
+TimePicker.eventHandler = {};
+
+TimePicker.eventHandler.clickHour = function () {
+    if (this._state != 'EDIT_HOUR') this.editHour();
+    else this._editContent(this.$hour)
+};
+
+
+TimePicker.eventHandler.clickMinute = function () {
+    if (this._state != 'EDIT_MINUTE') this.editMinute();
+    else this._editContent(this.$minute)
+};
+
+
+
+TimePicker.eventHandler.clickHourInput = function () {
+    if (this._state != 'EDIT_HOUR') this.editHourInput();
+    else {
+        this.$hourInput.focus();
+        this.$hourInput.select();
+    };
+};
+
+
+
+
+TimePicker.eventHandler.clickMinuteInput = function () {
+    if (this._state != 'EDIT_MINUTE_INPUT') this.editMinuteInput();
+    else {
+        this.$minuteInput.focus();
+        this.$minuteInput.select();
+
+    };
+};
+
+TimePicker.property = {};
+
+
+TimePicker.property.hour = {
+    set: function (value) {
+        value = (value % 24) || 0;
+        this._hour = value;
+        var text = (value < 10 ? '0' : '') + value + '';
+        this.$hour.clearChild().addChild(TimePicker_({ text: text }));
+        this.$hourInput.value = text;
+        this.updateSelectPosition();
+    },
+    get: function () {
+        return this._hour;
+    }
+};
+
+
+TimePicker.property.minute = {
+    set: function (value) {
+        value = (value % 60) || 0;
+        this._minute = value;
+        var text = (value < 10 ? '0' : '') + value + '';
+        this.$minute.clearChild().addChild(TimePicker_({ text: text }));
+        this.$minuteInput.value = text;
+        this.updateSelectPosition();
+    },
+    get: function () {
+        return this._minute;
+    }
+};
+
+
+TimePicker.property.dayOffset = {
+    set: function (value) {
+        value = value || 0;
+        if (value.getTime)
+            value = value.getTime() - beginOfDay(value).getTime();
+        else {
+            value = value % MILLIS_PER_DAY;
+        }
+
+        this.hour = Math.floor(value / MILLIS_PER_HOUR);
+        this.minute = Math.floor((value % MILLIS_PER_HOUR) / MILLIS_PER_MINUTE);
+    },
+    get: function () {
+        return this._hour * MILLIS_PER_HOUR + this._minute * MILLIS_PER_MINUTE;
+    }
+};
+
+
+TimePicker.prototype._showSelectByHourText = function () {
+    var hour = parseFloat(this.$hour.innerHTML) || 0;
+    if (hour < 0 || hour >= 24) return;
+    var radius;
+    var angle = Math.PI * (hour - 3) / 6;
+    if ((hour < 24 && hour > 12) || hour == 0) {
+        radius = this._clockRadiusInner;
+    }
+    else if (hour <= 12) {
+        radius = this._clockRadius;
+    }
+    else {
+        return;
+    }
+    this._drawSelect(radius, angle);
+};
+
+
+TimePicker.prototype._showSelectByMinuteText = function () {
+    var minute = parseFloat(this.$minute.innerHTML) || 0;
+    if (minute < 0 || minute >= 60) return;
+    var angle = Math.PI * (minute - 15) / 30;
+    if (minute >= 0 && minute < 60) {
+        this._drawSelect(this._clockRadius, angle);
+    }
+};
+
+
+TimePicker.eventHandler.keydownHour = function (event) {
+    var thisPicker = this;
+    if (event.key && event.key.length == 1 && !event.ctrlKey && !event.altKey) {
+        if (event.key.match(/[0-9]/)) {
+            setTimeout(this._showSelectByHourText.bind(this), 1);
+            setTimeout(this.notifyChange.bind(this), 2);
+        }
+        else {
+            event.preventDefault();
+        }
+    } else if (event.key == 'Enter') {
+        event.preventDefault();
+        var hour = parseFloat(this.$hour.innerHTML) || 0;
+        if (hour < 0 || hour >= 24)
+            hour = this._preHour;
+        this.hour = hour;
+        this.$hour.blur();
+        this.editMinute();
+        setTimeout(this._showSelectByHourText.bind(this), 1);
+        setTimeout(this.notifyChange.bind(this), 2);
+    }
+    else {
+        var cText = this.$hour.innerHTML;
+        setTimeout(function () {
+            var newText = thisPicker.$hour.innerHTML;
+            if (cText != newText) {
+                var hour = parseFloat(newText) || 0;
+                if (hour < 0 || hour >= 24)
+                    hour = thisPicker._preHour;
+                thisPicker.hour = hour;
+                thisPicker.$hour.blur();
+                thisPicker.editMinute();
+                thisPicker._showSelectByHourText();
+                thisPicker.notifyChange();
+            }
+        }, 1);
+    }
+};
+
+
+TimePicker.eventHandler.keydownMinute = function (event) {
+    var thisPicker = this;
+    if (event.key && event.key.length == 1 && !event.ctrlKey && !event.altKey) {
+        if (event.key.match(/[0-9]/)) {
+            setTimeout(this._showSelectByMinuteText.bind(this), 1);
+            setTimeout(this.notifyChange.bind(this), 2);
+        }
+        else {
+            event.preventDefault();
+        }
+    }
+    else if (event.key == 'Enter') {
+        this.$minute.blur();
+        event.preventDefault();
+        var minute = parseFloat(this.$minute.innerHTML) || 0;
+        if (minute < 0 || minute >= 60)
+            minute = this._preMinute;
+        this.minute = minute;
+        setTimeout(this.finishSelect.bind(this), 1);
+    }
+    else {
+        var cText = this.$minute.innerHTML;
+        setTimeout(function () {
+            var newText = thisPicker.$minute.innerHTML;
+            if (cText != newText) {
+                var minute = parseFloat(newText) || 0;
+                if (minute < 0 || minute >= 60)
+                    minute = thisPicker._preMinute;
+                thisPicker.minute = minute;
+                thisPicker._showSelectByMinuteText();
+                thisPicker.notifyChange();
+            }
+        }, 1);
+    }
+};
+
+
+TimePicker.eventHandler.keydownHourInput = function (event) {
+    var thisPicker = this;
+    if ((isTouchDevice && event.key == "Unidentified") || (event.key && event.key.length == 1 && !event.ctrlKey && !event.altKey)) {
+        if (event.key.match(/[0-9]/)) {
+            setTimeout(this.notifyChange.bind(this), 2);
+
+        }
+        else {
+            event.preventDefault();
+        }
+    } else if (event.key == 'Enter') {
+        event.preventDefault();
+        var hour = parseFloat(this.$hourInput.value) || 0;
+        if (hour < 0 || hour >= 24)
+            hour = this._preHour;
+        this.hour = hour;
+        this.$hourInput.blur();
+        this.editMinuteInput();
+    }
+    else if (!event.key && !event.key.toLowerCase().match(/arrow|back/)){
+        var cText = this.$hourInput.value;
+        setTimeout(function () {
+            var newText = thisPicker.$hourInput.value;
+            if (cText != newText) {
+                var hour = parseFloat(newText) || 0;
+                if (hour < 0 || hour >= 24)
+                    hour = thisPicker._preHour;
+                thisPicker.hour = hour;
+                thisPicker.$hourInput.blur();
+                thisPicker.editMinuteInput();
+                thisPicker.notifyChange();
+            }
+        }, 1);
+    }
+};
+
+
+TimePicker.eventHandler.keydownMinuteInput = function (event) {
+    var thisPicker = this;
+    if ((isTouchDevice && event.key == "Unidentified") || event.key.length == 1 && !event.ctrlKey && !event.altKey) {
+        if ((isTouchDevice && event.key == "Unidentified") || event.key.match(/[0-9]/)) {
+            setTimeout(this.notifyChange.bind(this), 2);
+
+        }
+        else {
+            event.preventDefault();
+        }
+    }
+    else if (event.key == 'Enter') {
+        this.$minute.blur();
+        event.preventDefault();
+        var minute = parseFloat(this.$minuteInput.value) || 0;
+        if (minute < 0 || minute >= 60)
+            minute = this._preMinute;
+        this.minute = minute;
+        setTimeout(this.finishSelect.bind(this), 1);
+    }
+    else if(event.key != 'Enter') {
+        var cText = this.$minuteInput.value;
+        setTimeout(function () {
+            var newText = thisPicker.$minuteInput.value;
+            if (cText != newText) {
+                var minute = parseFloat(newText) || 0;
+                if (minute < 0 || minute >= 60)
+                    minute = thisPicker._preMinute;
+                thisPicker.minute = minute;
+                thisPicker.$minuteInput.focus();
+                thisPicker.$minuteInput.select();
+                thisPicker.notifyChange(this);
+            }
+        }, 1);
+    }
+};
+
+
+
+
+TimePicker.eventHandler.dragOnClock = function (event) {
+    event = (event.changedTouches && event.changedTouches[0]) || event;
+    var cBound = this.$clock.getBoundingClientRect();
+    var cx = (cBound.left + cBound.right) / 2;
+    var cy = (cBound.top + cBound.bottom) / 2;
+    var x = event.clientX - cx;
+    var y = event.clientY - cy;
+    var angle = Math.atan2(y, x);
+    var radius = Math.sqrt(x * x + y * y);
+
+    var index;
+    if (this._state == "EDIT_HOUR") {
+        angle += Math.PI * 2;
+        index = Math.round(angle / (Math.PI / 6));
+        var hour = (index + (12 + 3)) % 12;
+        if (radius < (this._clockRadiusInner + this._clockRadius) / 2) {
+            if (hour != 0) hour += 12;
+        }
+        else {
+            if (hour == 0) hour = 12;
+        }
+
+        this.hour = hour;
+    }
+    else if (this._state == "EDIT_MINUTE") {
+        radius = this._clockRadius;
+        angle += Math.PI * 2;
+        index = Math.round(angle / (Math.PI / 30));
+        angle = index * (Math.PI / 30);
+        var minute = (index + (60 + 15)) % 60;
+        this.minute = minute;
+        this.notifyChange();
+    }
+    else {
+        return;
+    }
+};
+
+
+TimePicker.eventHandler.mousedownClock = function (event) {
+    event.preventDefault();
+    this.eventHandler.dragOnClock(event);
+    document.body.addEventListener(isTouchDevice ? 'touchmove' : 'mousemove', this.eventHandler.mousemoveClock);
+    document.body.addEventListener(isTouchDevice ? 'touchend' : 'mouseup', this.eventHandler.mousefinishClock);
+    if (!isTouchDevice)
+        document.body.addEventListener('mouseleave', this.eventHandler.mousefinishClock);
+};
+
+
+
+TimePicker.eventHandler.mousemoveClock = function (event) {
+    event.preventDefault();
+    this.eventHandler.dragOnClock(event);
+};
+
+
+TimePicker.eventHandler.mousefinishClock = function () {
+    document.body.removeEventListener('mousemove', this.eventHandler.mousemoveClock);
+    document.body.removeEventListener('mouseup', this.eventHandler.mousefinishClock);
+    document.body.removeEventListener('mouseleave', this.eventHandler.mousefinishClock);
+    if (this._state == 'EDIT_HOUR') this.editMinute();
+    else if (this._state == 'EDIT_MINUTE') {
+        this.$minute.click();// refocus
+    }
+};
+
+
+ACore["a" /* default */].install('timepicker', TimePicker);
+// EXTERNAL MODULE: ./node_modules/absol-acomp/css/timeinput.css
+var timeinput = __webpack_require__(197);
+
+// CONCATENATED MODULE: ./node_modules/absol-acomp/js/TimeInput.js
+
+
+
+
+var TimeInput_ = ACore["a" /* default */]._;
+var TimeInput_$ = ACore["a" /* default */].$;
+
+
+function TimeInput() {
+    this._isOpenPicker = false;
+    this._hour = 0;
+    this._minute = 0;
+    this.$hour = TimeInput_$('.ac-time-input-hour', this);
+    this.$minute = TimeInput_$('.ac-time-input-minute', this);
+    this.$timePicker = TimeInput.getTimePicker();
+    this.$timePickerCtn = TimeInput.getTimePickerContainer();
+    this.on('click', this.togglePicker.bind(this));
+}
+
+
+TimeInput.getTimePicker = function () {
+    if (!TimeInput.$timePickerCtn) {
+        TimeInput.$timePickerCtn = TimeInput_((isTouchDevice ? '' : 'follower') + '.ac-time-input-picker-ctn.ac-time-input-picker-ctn-hidden')
+            .addTo(document.body);
+        TimeInput.$timePicker = TimeInput_('timepicker').addTo(TimeInput.$timePickerCtn);
+        TimeInput.$timePicker.on('sizechange', function () {
+            if (isTouchDevice) {
+                var bound = TimeInput.$timePickerCtn.getBoundingClientRect();
+                TimeInput.$timePickerCtn.addStyle({
+                    left: 'calc(50vw - ' + (bound.width / 2) + 'px)',
+                    top: 'calc(50vh - ' + (bound.height / 2) + 'px)'
+                });
+            }
+            else {
+                TimeInput.$timePickerCtn.updatePosition();
+            }
+        });
+    }
+    return TimeInput.$timePicker;
+};
+
+TimeInput.getTimePickerContainer = function () {
+    TimeInput.getTimePicker();
+    return TimeInput.$timePickerCtn;
+}
+
+TimeInput.render = function () {
+    return TimeInput_({
+        class: 'ac-time-input',
+        extendEvent: ['change'],
+        child: [
+            {
+                tag: 'span',
+                class: 'ac-time-input-hour',
+                child: { text: '00' }
+            },
+            {
+                tag: 'span',
+                child: { text: " : " }
+            },
+            {
+                tag: 'span',
+                class: 'ac-time-input-minute',
+                child: {
+                    text: '00'
+                }
+            }
+        ]
+    })
+};
+
+
+TimeInput.prototype.togglePicker = function () {
+    if (this._isOpenPicker) this.closePicker();
+    else this.openPicker();
+};
+
+
+TimeInput.prototype.openPicker = function () {
+    if (this._isOpenPicker) return;
+    this._isOpenPicker = true;
+    if (!isTouchDevice)
+        this.$timePickerCtn.followTarget = this;
+    this._lastDayOfset = this.dayOffset;
+    this.$timePickerCtn.removeClass('ac-time-input-picker-ctn-hidden');
+    this.$timePicker.dayOffset = this._lastDayOfset;
+    this.$timePicker.clockMode();
+    this.$timePicker.editHour();
+    this.$timePicker
+        .on('finish', this.eventHandler.pickerFinish)
+        .on('cancel', this.eventHandler.pickerCancel);
+};
+
+TimeInput.prototype.closePicker = function () {
+    if (!this._isOpenPicker) return;
+    this._isOpenPicker = false;
+    this.$timePickerCtn.addClass('ac-time-input-picker-ctn-hidden');
+    if (!isTouchDevice)
+        this.$timePickerCtn.followTarget = null;
+    this.$timePicker
+        .off('finish', this.eventHandler.pickerFinish)
+        .off('cancel', this.eventHandler.pickerCancel);
+};
+
+TimeInput.property = {};
+
+TimeInput.property.hour = {
+    set: function (value) {
+        value = (value % 24) || 0;
+        this._hour = value;
+        var text = (value < 10 ? '0' : '') + value + '';
+        this.$hour.clearChild().addChild(TimeInput_({ text: text }));
+    },
+    get: function () {
+        return this._hour;
+    }
+};
+
+
+TimeInput.property.minute = {
+    set: function (value) {
+        value = (value % 60) || 0;
+        this._minute = value;
+        var text = (value < 10 ? '0' : '') + value + '';
+        this.$minute.clearChild().addChild(TimeInput_({ text: text }));
+    },
+    get: function () {
+        return this._minute;
+    }
+};
+
+
+TimeInput.property.dayOffset = {
+    set: function (value) {
+        value = value || 0;
+        if (value.getTime)
+            value = value.getTime() - beginOfDay(value).getTime();
+        else {
+            value = value % MILLIS_PER_DAY;
+        }
+
+        this.hour = Math.floor(value / MILLIS_PER_HOUR);
+        this.minute = Math.floor((value % MILLIS_PER_HOUR) / MILLIS_PER_MINUTE);
+    },
+    get: function () {
+        return this._hour * MILLIS_PER_HOUR + this._minute * MILLIS_PER_MINUTE;
+    }
+};
+
+
+TimeInput.eventHandler = {};
+
+
+TimeInput.eventHandler.pickerFinish = function (event) {
+    this.closePicker();
+    if (this._lastDayOfset != event.dayOffset) {
+        this.dayOffset = event.dayOffset;
+        this.emit('change', { name: 'change', target: this }, this);
+    }
+};
+
+
+TimeInput.eventHandler.pickerCancel = function (event) {
+    this.closePicker();
+}
+
+ACore["a" /* default */].install('timeinput', TimeInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/calendarinput.css
-var calendarinput = __webpack_require__(194);
+var calendarinput = __webpack_require__(199);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CalendarInput.js
 
@@ -50871,7 +52380,7 @@ ACore["a" /* default */].install('calendar-input', function (data) {
 /* harmony default export */ var js_CalendarInput = (CalendarInput);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/onscreenwindow.css
-var onscreenwindow = __webpack_require__(196);
+var onscreenwindow = __webpack_require__(201);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/OnsScreenWindow.js
 
@@ -51556,7 +53065,7 @@ ACore["a" /* default */].install('hruler', HRuler);
 
 /* harmony default export */ var js_HRuler = (HRuler);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/hruler.css
-var hruler = __webpack_require__(198);
+var hruler = __webpack_require__(203);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/VRuler.js
 
@@ -51727,7 +53236,7 @@ ACore["a" /* default */].install('vruler', VRuler);
 
 /* harmony default export */ var js_VRuler = (VRuler);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/vruler.css
-var vruler = __webpack_require__(200);
+var vruler = __webpack_require__(205);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ResizeBox.js
 
@@ -51921,7 +53430,7 @@ ACore["a" /* default */].install('resizebox', ResizeBox);
 
 /* harmony default export */ var js_ResizeBox = (ResizeBox);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/resizebox.css
-var resizebox = __webpack_require__(202);
+var resizebox = __webpack_require__(207);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/PreInput.js
 
@@ -52171,13 +53680,1099 @@ ACore["a" /* default */].install('preinput', PreInput);
 
 /* harmony default export */ var js_PreInput = (PreInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/preinput.css
-var preinput = __webpack_require__(204);
+var preinput = __webpack_require__(209);
 
+// EXTERNAL MODULE: ./node_modules/absol-acomp/css/hexasectionlabel.css
+var hexasectionlabel = __webpack_require__(211);
+
+// CONCATENATED MODULE: ./node_modules/absol-acomp/js/HexaSectionLabel.js
+
+
+
+
+var HexaSectionLabel_ = ACore["a" /* default */]._;
+var HexaSectionLabel_$ = ACore["a" /* default */].$;
+
+var HexaSectionLabel_g = Svg["a" /* default */].ShareInstance._;
+var HexaSectionLabel_$g = Svg["a" /* default */].ShareInstance.$;
+
+
+var Design = {
+    hexaHeight: 425,
+    textBoxHeight: 286,
+    textHeight: 96,
+    indextHeight: 110,
+    textBoxPaddingLeft: 127,
+    borderWidth: 38
+};
+
+var HexaSectionLabel_StyleSheet = {
+    '.as-hexa-section-label-text': {
+        height: Design.textBoxHeight / Design.textHeight + 'em',
+        'padding-left': Design.textBoxPaddingLeft / Design.textHeight + 'em',
+        'line-height': Design.textBoxHeight / Design.textHeight + 'em'
+    },
+    '.as-hexa-section-label-index': {
+        'font-size': Design.indextHeight / Design.textHeight + 'em',
+        height: Design.hexaHeight / Design.indextHeight + 'em',
+        'line-height': Design.hexaHeight / Design.indextHeight + 'em',
+        width: ((Design.hexaHeight + Design.borderWidth) / Math.cos(Math.PI / 6)) / Design.indextHeight + 'em'
+    },
+
+};
+
+HexaSectionLabel_({
+    tag: 'style',
+    id: 'hexa-section-label-style',
+    props: {
+        innerHTML: Object.keys(HexaSectionLabel_StyleSheet).map(function (key) {
+            var style = HexaSectionLabel_StyleSheet[key];
+            return key + ' {\n'
+                + Object.keys(style).map(function (propName) {
+                    return propName + ': ' + style[propName] + ';';
+                }).join('\n')
+                + '}';
+        }).join('\n')
+    }
+}).addTo(document.head);
+
+function HexaSectionLabel() {
+    this.$background = HexaSectionLabel_$('.as-hexa-section-label-background', this);
+    this.$index = HexaSectionLabel_$('.as-hexa-section-label-index', this);
+    this.$text = HexaSectionLabel_$('.as-hexa-section-label-text', this);
+    this.$attachhook = HexaSectionLabel_('attachhook').addTo(this).on('error', function () {
+        Dom["a" /* default */].addToResizeSystem(this);
+        this.requestUpdateSize();
+    });
+
+    this.$attachhook.requestUpdateSize = this.redrawBackground.bind(this);
+    this.$svg = HexaSectionLabel_g({
+        tag: 'svg',
+        attr: {
+            width: '0',
+            height: '0'
+        },
+        child: [
+            'path.as-hexa-section-label-text-box',
+            'path.as-hexa-section-label-index-box'
+        ]
+    }).addTo(this.$background);
+    this.$indexBox = HexaSectionLabel_$g('path.as-hexa-section-label-index-box', this.$svg);
+    this.$textBox = HexaSectionLabel_$g('path.as-hexa-section-label-text-box', this.$svg);
+};
+
+HexaSectionLabel.prototype.redrawBackground = function () {
+    var indexBound = this.$index.getBoundingClientRect();
+    var textBound = this.$text.getBoundingClientRect();
+    var cHeight = indexBound.height;
+    var cWidth = textBound.right - indexBound.left;
+    this.$svg.attr({
+        height: cHeight + '',
+        width: cWidth + '',
+        viewBox: [0, 0, cWidth, cHeight].join(' ')
+    });
+
+    var borderWidth = cHeight * Design.borderWidth / Design.hexaHeight;
+    var radius = (cHeight / Math.cos(Math.PI / 6) / 2) - borderWidth / 2;
+    var x0 = indexBound.width / 2;
+    var y0 = cHeight / 2;
+
+
+    this.$indexBox.attr('d', Array(6).fill(0).map(function (u, i) {
+        var angle = Math.PI / 3 + i * Math.PI / 3;
+        var x = radius * Math.cos(angle) + x0;
+        var y = radius * Math.sin(angle) + y0;
+        return (i == 0 ? 'M' : 'L') + x + ' ' + y;
+    }).join(' ') + 'Z')
+        .addStyle({
+            strokeWidth: borderWidth + ''
+        });
+    var skewX = 18 / 45;
+    var textBoxHeight = textBound.height;
+    this.$textBox.attr('d', [
+        [x0, (cHeight - textBoxHeight) / 2],
+        [cWidth - 1, (cHeight - textBoxHeight) / 2],
+        [cWidth - 1 - textBoxHeight * skewX, (cHeight - textBoxHeight) / 2 + textBoxHeight],
+        [x0, (cHeight - textBoxHeight) / 2 + textBoxHeight],
+    ].map(function (point, i) { return (i == 0 ? 'M' : 'L') + point.join(' ') }).join(' ') + 'Z')
+
+
+
+
+};
+
+HexaSectionLabel.render = function () {
+    return HexaSectionLabel_({
+        class: 'as-hexa-section-label',
+        child: [
+            {
+                class: 'as-hexa-section-label-background'
+            },
+            '.as-hexa-section-label-index',
+            '.as-hexa-section-label-text'
+        ]
+    });
+};
+
+HexaSectionLabel.property = {};
+HexaSectionLabel.property.index = {
+    set: function (value) {
+        this._index = value;
+        this.$index.clearChild().addChild(HexaSectionLabel_({ text: value + '' }))
+    },
+    get: function () {
+        return this._index;
+    }
+};
+
+HexaSectionLabel.property.text = {
+    set: function (value) {
+        this._text = value;
+        this.$text.clearChild().addChild(HexaSectionLabel_({ text: value + '' }))
+    },
+    get: function () {
+        return this._text;
+    }
+}
+
+
+ACore["a" /* default */].install('hexasectionlabel', HexaSectionLabel);
+/* harmony default export */ var js_HexaSectionLabel = (HexaSectionLabel);
+// EXTERNAL MODULE: ./node_modules/absol-acomp/css/circlesectionlabel.css
+var circlesectionlabel = __webpack_require__(213);
+
+// CONCATENATED MODULE: ./node_modules/absol-acomp/js/CircleSectionLabel.js
+
+
+
+
+var CircleSectionLabel_ = ACore["a" /* default */]._;
+var CircleSectionLabel_$ = ACore["a" /* default */].$;
+
+var CircleSectionLabel_g = Svg["a" /* default */].ShareInstance._;
+var CircleSectionLabel_$g = Svg["a" /* default */].ShareInstance.$;
+
+
+var CircleSectionLabel_Design = {
+    circleHeight: 218 - 36,
+    borderWidth: 36,
+    textBoxHeight: 146,
+    textHeight: 48,
+    indextHeight: 54,
+    textBoxPaddingLeft: 80,
+    indexArrowRadius: (172 - 18) / 2,
+    indexArrowStrokeWidth: 18,
+    indexArrowStartAngle: - Math.PI / 6,
+    indexArrowEndAngle: - 7 * Math.PI / 12
+};
+
+var CircleSectionLabel_StyleSheet = {
+    '.as-circle-section-label-text': {
+        height: CircleSectionLabel_Design.textBoxHeight / CircleSectionLabel_Design.textHeight + 'em',
+        'padding-left': CircleSectionLabel_Design.textBoxPaddingLeft / CircleSectionLabel_Design.textHeight + 'em',
+        'line-height': CircleSectionLabel_Design.textBoxHeight / CircleSectionLabel_Design.textHeight + 'em'
+    },
+    '.as-circle-section-label-index': {
+        'font-size': CircleSectionLabel_Design.indextHeight / CircleSectionLabel_Design.textHeight + 'em',
+        height: (CircleSectionLabel_Design.circleHeight + CircleSectionLabel_Design.borderWidth) / CircleSectionLabel_Design.indextHeight + 'em',
+        'line-height': (CircleSectionLabel_Design.circleHeight + CircleSectionLabel_Design.borderWidth) / CircleSectionLabel_Design.indextHeight + 'em',
+        width: (CircleSectionLabel_Design.circleHeight + CircleSectionLabel_Design.borderWidth) / CircleSectionLabel_Design.indextHeight + 'em'
+    },
+
+};
+
+CircleSectionLabel_({
+    tag: 'style',
+    id: 'circle-section-label-style',
+    props: {
+        innerHTML: Object.keys(CircleSectionLabel_StyleSheet).map(function (key) {
+            var style = CircleSectionLabel_StyleSheet[key];
+            return key + ' {\n'
+                + Object.keys(style).map(function (propName) {
+                    return propName + ': ' + style[propName] + ';';
+                }).join('\n')
+                + '}';
+        }).join('\n')
+    }
+}).addTo(document.head);
+
+function CircleSectionLabel() {
+    this._ident = (Math.random() + '').replace(/[^0-9]/g, '_');
+    this.$background = CircleSectionLabel_$('.as-circle-section-label-background', this);
+    this.$index = CircleSectionLabel_$('.as-circle-section-label-index', this);
+    this.$text = CircleSectionLabel_$('.as-circle-section-label-text', this);
+    this.$attachhook = CircleSectionLabel_('attachhook').addTo(this).on('error', function () {
+        Dom["a" /* default */].addToResizeSystem(this);
+        this.requestUpdateSize();
+    });
+
+    this.$attachhook.requestUpdateSize = this.redrawBackground.bind(this);
+    this.$svg = CircleSectionLabel_g({
+        tag: 'svg',
+        attr: {
+            width: '0',
+            height: '0'
+        },
+        child: [
+            {
+                tag: 'defs',
+                child: [
+                    {
+                        tag: 'marker',
+                        id: 'marker_' + this._ident,
+                        attr: {
+                            markerWidth: "4",
+                            markerHeight: "4",
+                            refX: "0",
+                            refY: "1",
+                            orient: "auto",
+                            markerUnits: "strokeWidth",
+                            viewBox:"0 0 4 4"
+                        },
+                        child: {
+                            tag: 'path',
+                            class: 'as-circle-section-label-arrow-marker-path',
+                            attr:{
+                                d: 'M0,0 L0,2 L2,1 z'
+                            }
+                        }
+                    }
+                ]
+            },
+            'rect.as-circle-section-label-text-box',
+            'circle.as-circle-section-label-index-box',
+            'path.as-circle-section-label-arrow'
+        ]
+    }).addTo(this.$background);
+    this.$indexBox = CircleSectionLabel_$g('circle.as-circle-section-label-index-box', this.$svg);
+    this.$textBox = CircleSectionLabel_$g('rect.as-circle-section-label-text-box', this.$svg);
+    // this.$marker = $g('defs marker', this.$svg);
+    // this.$markerPath = $g(' path', this.$marker);
+    this.$arrow = CircleSectionLabel_$g('path.as-circle-section-label-arrow', this.$svg)
+        .attr({
+            'marker-end': "url(" + '#marker_' + this._ident + ")"
+        });
+};
+
+CircleSectionLabel.prototype.redrawBackground = function () {
+    var indexBound = this.$index.getBoundingClientRect();
+    var textBound = this.$text.getBoundingClientRect();
+    var cHeight = indexBound.height;
+    var cWidth = textBound.right - indexBound.left;
+    this.$svg.attr({
+        height: cHeight + '',
+        width: cWidth + '',
+        viewBox: [0, 0, cWidth, cHeight].join(' ')
+    });
+
+    var borderWidth = cHeight * CircleSectionLabel_Design.borderWidth / (CircleSectionLabel_Design.circleHeight + CircleSectionLabel_Design.borderWidth);
+    var radius = cHeight * CircleSectionLabel_Design.circleHeight / (CircleSectionLabel_Design.circleHeight + CircleSectionLabel_Design.borderWidth) / 2;
+    var x0 = indexBound.width / 2;
+    var y0 = cHeight / 2;
+
+
+    this.$indexBox.attr({
+        r: radius + '',
+        cx: x0,
+        cy: y0
+    })
+        .addStyle({
+            strokeWidth: borderWidth + ''
+        });
+    var textBoxHeight = textBound.height;
+    this.$textBox.attr(
+        {
+            x: x0 / 2,
+            y: (cHeight - textBoxHeight) / 2,
+            width: cWidth - x0 - 1,
+            height: textBoxHeight,
+            rx: textBoxHeight / 2,
+            ry: textBoxHeight / 2
+        }
+    );
+    var arrowRadius = cHeight * CircleSectionLabel_Design.indexArrowRadius / (CircleSectionLabel_Design.circleHeight + CircleSectionLabel_Design.borderWidth);
+    this.$arrow.attr({
+        d: [
+            'M', x0 + arrowRadius * Math.cos(CircleSectionLabel_Design.indexArrowStartAngle), y0 + arrowRadius * Math.sin(CircleSectionLabel_Design.indexArrowStartAngle),
+            'A', arrowRadius, arrowRadius, 0, 1, 1, x0 + arrowRadius * Math.cos(CircleSectionLabel_Design.indexArrowEndAngle), y0 + arrowRadius * Math.sin(CircleSectionLabel_Design.indexArrowEndAngle)
+        ].join(' ')
+    }).addStyle('stroke-width', cHeight * CircleSectionLabel_Design.indexArrowStrokeWidth / (CircleSectionLabel_Design.circleHeight + CircleSectionLabel_Design.borderWidth))
+};
+
+CircleSectionLabel.render = function () {
+    return CircleSectionLabel_({
+        class: 'as-circle-section-label',
+        child: [
+            {
+                class: 'as-circle-section-label-background'
+            },
+            '.as-circle-section-label-index',
+            '.as-circle-section-label-text'
+        ]
+    });
+};
+
+CircleSectionLabel.property = {};
+CircleSectionLabel.property.index = {
+    set: function (value) {
+        this._index = value;
+        this.$index.clearChild().addChild(CircleSectionLabel_({ text: value + '' }))
+    },
+    get: function () {
+        return this._index;
+    }
+};
+
+CircleSectionLabel.property.text = {
+    set: function (value) {
+        this._text = value;
+        this.$text.clearChild().addChild(CircleSectionLabel_({ text: value + '' }))
+    },
+    get: function () {
+        return this._text;
+    }
+}
+
+
+ACore["a" /* default */].install('circlesectionlabel', CircleSectionLabel);
+/* harmony default export */ var js_CircleSectionLabel = (CircleSectionLabel);
+// EXTERNAL MODULE: ./node_modules/absol-acomp/css/linearcolorbar.css
+var linearcolorbar = __webpack_require__(215);
+
+// CONCATENATED MODULE: ./node_modules/absol-acomp/js/LinearColorBar.js
+
+
+
+
+
+var LinearColorBar_ = ACore["a" /* default */]._;
+var LinearColorBar_$ = ACore["a" /* default */].$;
+
+
+var LinearColorBar_g = Svg["a" /* default */].ShareInstance._;
+var LinearColorBar_$g = Svg["a" /* default */].ShareInstance.$;
+
+var LinearColorBar_Design = {
+    textHeight: 56,
+    barHeight: 97,
+    barBlockWidth: 79,
+    barBlockMargin: 19,
+    valueTextHeight: 70,
+    valueStrokeWidth: 5,
+    valueHeight: 99,
+    valueWidth: 52,
+    valueTripHeight: 32,
+    height: 430,
+    barY: 201
+};
+
+var SyleSheet = {
+    '.as-linear-color-bar': {
+        height: LinearColorBar_Design.height / LinearColorBar_Design.textHeight + 'em'
+    },
+    '.as-linear-color-value-text': {
+        'font-size': LinearColorBar_Design.valueTextHeight / LinearColorBar_Design.textHeight + 'em'
+    }
+};
+
+
+buildCss(SyleSheet);
+
+function LinearColorBar() {
+    this._indent = (Math.random() + '').replace(/[^0-9]/g, '_');
+    this._extendValue = 0;
+    this._value = 0;
+    this._valueText = '';
+    this.$valueText = LinearColorBar_$('.as-linear-color-value-text', this);
+    this.$minValueText = LinearColorBar_$('.as-linear-color-min-value-text', this);
+    this.$maxValueText = LinearColorBar_$('.as-linear-color-max-value-text', this);
+    this.$background = LinearColorBar_$('svg.as-linear-color-background', this);
+    this._attached = false;
+    var thisBar = this;
+    this.$attachhook = LinearColorBar_('attachhook').addTo(this).on('error', function () {
+        thisBar._attached = true;
+        Dom["a" /* default */].addToResizeSystem(this);
+        this.requestUpdateSize();
+    });
+
+    this.$background.attr({
+        height: 0,
+        width: 0,
+    });
+    this.$attachhook.requestUpdateSize = this.redraw.bind(this);
+    this.$defs = LinearColorBar_g('defs').addTo(this.$background);
+
+    this.$gradient = LinearColorBar_g('linearGradient#gradient_' + this._indent)
+        .attr({
+            x1: "0%",
+            y1: "0%",
+            x2: "100%",
+            y2: "0%"
+        }).addTo(this.$defs);
+    this.$rect = LinearColorBar_g('rect.as-linear-color-bar-rect')
+        .attr({
+            fill: 'url(#gradient_' + this._indent + ')'
+        })
+        .addTo(this.$background);
+    this.$splitLine = LinearColorBar_g('path.as-linear-color-split-line').addTo(this.$background)
+    this.$valueArrow = LinearColorBar_g('path.as-linear-color-value-arrow').addTo(this.$background);
+
+    this.colorMapping = 'rainbow';
+}
+
+LinearColorBar.prototype.redraw = function () {
+    var bBound = this.getBoundingClientRect();
+    var cWidth = bBound.width;
+    var cHeight = bBound.height;
+    var maxTextBound = this.$maxValueText.getBoundingClientRect();
+    var minTextBound = this.$minValueText.getBoundingClientRect();
+    var valueTextBound = this.$valueText.getBoundingClientRect();
+
+    var valueWidth = LinearColorBar_Design.valueWidth / LinearColorBar_Design.height * cHeight;
+    var minValueX = valueWidth / 1.5;
+    this.$minValueText.addStyle('left', Math.max((minValueX - minTextBound.width) / 2, 0) + 'px');
+
+    var maxValueX = (cWidth - LinearColorBar_Design.valueWidth) / (1 + this._extendValue);
+    var extendX = cWidth - valueWidth / 1.5;
+    var valueX = minValueX + this._value * (maxValueX - minValueX);
+    this.$valueText.addStyle('left', valueX - valueTextBound.width / 2 + 'px');
+    this.$maxValueText.addStyle('left', maxValueX - maxTextBound.width / 2 + 'px');
+    var barY = LinearColorBar_Design.barY / LinearColorBar_Design.height * cHeight;
+    var barHeight = LinearColorBar_Design.barHeight / LinearColorBar_Design.height * cHeight;
+    this.$rect.attr({
+        x: '' + minValueX,
+        y: '' + barY,
+        width: extendX - minValueX + '',
+        height: barHeight
+    });
+
+    this.$background.attr({
+        height: cHeight + '',
+        width: cWidth + '',
+        viewBox: [0, 0, cWidth, cHeight].join(' ')
+    });
+
+    var valueTripHeight = LinearColorBar_Design.valueTripHeight / LinearColorBar_Design.height * cHeight;
+    var valueHeight = LinearColorBar_Design.valueHeight / LinearColorBar_Design.height * cHeight;
+    this.$valueArrow
+        .addStyle('stroke-width', LinearColorBar_Design.valueStrokeWidth / LinearColorBar_Design.height * cHeight + '')
+        .attr('d', [
+            [
+                [valueX, barY],
+                [valueX - valueWidth / 2, barY - valueTripHeight],
+                [valueX - valueWidth / 2, barY - valueHeight],
+                [valueX + valueWidth / 2, barY - valueHeight],
+                [valueX + valueWidth / 2, barY - valueTripHeight]
+
+            ]
+        ].map(function (point, i) {
+            return (i == 0 ? 'M' : 'L') + point.join(' ')
+        }).join(' ') + 'Z');
+
+    var splitDistMin = (LinearColorBar_Design.barBlockWidth + LinearColorBar_Design.barBlockMargin) / LinearColorBar_Design.height * cHeight;
+    var splitCounts = [100, 50, 20, 10, 5, 2, 1];
+    var splitDist = maxValueX - minValueX;
+    var splitCount = 1;
+    for (var i = 0; i < splitCounts.length; ++i) {
+        splitDist = (maxValueX - minValueX) / splitCounts[i];
+        if (splitDist >= splitDistMin) {
+            splitCount =  splitCounts[i];
+            break;
+        }
+    }
+
+    this.$splitLine.addStyle('stroke-width', LinearColorBar_Design.barBlockMargin / LinearColorBar_Design.height * cHeight + '')
+        .attr({
+            d: Array(splitCount + 1).fill(0).map(function (u, i) {
+                return 'M' + (maxValueX - i * splitDist) + ' ' + (barY - 1) + 'v' + (barHeight + 2);
+            }).join(' ')
+        })
+};
+
+LinearColorBar.prototype._updateGradient = function () {
+    var barMax = 1 + this._extendValue;
+    var gradientElt = this.$gradient.clearChild();
+    this._colorMapping.forEach(function (it) {
+        LinearColorBar_g({
+            tag: 'stop',
+            attr: {
+                offset: (it.value <= 1 ? it.value / barMax * 100 : 100) + '%'
+            },
+            style: {
+                'stop-color': it.color + '',
+                'stop-opacity': '1'
+            }
+        }).addTo(gradientElt);
+    });
+};
+
+
+LinearColorBar.prototype.BUILDIN_COLORS_RANGE = {
+    'rainbow': [
+        { value: 0, color: 'red' },
+        { value: 1 / 6, color: 'orange' },
+        { value: 1 / 3, color: 'yellow' },
+        { value: 1 / 2, color: 'green' },
+        { value: 2 / 3, color: 'blue' },
+        { value: 5 / 6, color: 'indigo' },
+        { value: 1, color: 'violet' },
+        { value: Infinity, color: 'violet' }
+    ],
+    'rainbow-invert': [
+        { value: 0, color: 'violet' },
+        { value: 1 / 6, color: 'indigo' },
+        { value: 1 / 3, color: 'blue' },
+        { value: 1 / 2, color: 'green' },
+        { value: 2 / 3, color: 'yellow' },
+        { value: 5 / 6, color: 'orange' },
+        { value: 1, color: 'red' },
+        { value: Infinity, color: 'violet' }
+    ],
+    'performance': [
+        { value: 0, color: 'red' },
+        { value: 0.5, color: 'orange' },
+        { value: 1, color: 'green' },
+        { value: Infinity, color: 'green' }
+    ],
+    'performance-invert': [
+        { value: 0, color: 'green' },
+        { value: 0.5, color: 'orange' },
+        { value: 1, color: 'red' },
+        { value: Infinity, color: 'red' }
+    ]
+}
+
+
+LinearColorBar.render = function () {
+    return LinearColorBar_({
+        class: 'as-linear-color-bar',
+        child: [
+            'svg.as-linear-color-background',
+            '.as-linear-color-value-text',
+            '.as-linear-color-min-value-text',
+            '.as-linear-color-max-value-text'
+        ]
+    });
+};
+
+LinearColorBar.property = {};
+LinearColorBar.property.valueText = {
+    set: function (value) {
+        value = value + '';
+        this._valueText = value;
+        this.$valueText.clearChild().addChild(LinearColorBar_({ text: value }));
+    },
+    get: function () {
+        return this._valueText;
+    }
+};
+
+
+LinearColorBar.property.minValueText = {
+    set: function (value) {
+        value = value + '';
+        this._minValueText = value;
+        this.$minValueText.clearChild().addChild(LinearColorBar_({ text: value }));
+    },
+    get: function () {
+        return this._valueText;
+    }
+};
+
+LinearColorBar.property.maxValueText = {
+    set: function (value) {
+        value = value + '';
+        this._maxValueText = value;
+        this.$maxValueText.clearChild().addChild(LinearColorBar_({ text: value }));
+    },
+    get: function () {
+        return this._valueText;
+    }
+};
+
+LinearColorBar.property.value = {
+    set: function (value) {
+        this._value = value;
+    },
+    get: function () {
+        return this._value;
+    }
+};
+
+LinearColorBar.property.extendValue = {
+    set: function (value) {
+        this._extendValue = value;
+        this._updateGradient();
+    },
+    get: function () {
+        return this._extendValue;
+    }
+};
+
+
+LinearColorBar.property.colorMapping = {
+    set: function (value) {
+        if (typeof (value) == "string") value = this.BUILDIN_COLORS_RANGE[value];
+        this._colorMapping = value.slice();
+        this._colorMapping.sort(function (a, b) {
+            return a.value - b.value;
+        })
+        this._updateGradient();
+    },
+    get: function () {
+        return this._colorMapping;
+    }
+};
+
+ACore["a" /* default */].install('linearcolorbar', LinearColorBar);
+/* harmony default export */ var js_LinearColorBar = (LinearColorBar);
+// EXTERNAL MODULE: ./node_modules/absol-acomp/css/boardtable.css
+var boardtable = __webpack_require__(217);
+
+// CONCATENATED MODULE: ./node_modules/absol-acomp/js/Board.js
+
+
+
+var Board_ = ACore["a" /* default */]._;
+var Board_$ = ACore["a" /* default */].$;
+
+function Board() {
+    this.$attachhook = Board_('attachhook').addTo(this)
+    .on('error', this.notifySizeChange.bind(this));
+    
+}
+
+
+Board.prototype.notifySizeChange = function () {
+    var bound = this.getBoundingClientRect();
+    if (!this._lastBound || this._lastBound.width != bound.width || this._lastBound.height != this._lastBound.height) {
+        this.emit('sizechange', {name: 'sizechange', target: this, bound: bound});
+    }
+    this._lastBound = { width: bound.width, height: bound.height };
+};
+
+Board.prototype.cancelWaitingSizeChange= function(){
+    var bound = this.getBoundingClientRect();
+    this._lastBound = { width: bound.width, height: bound.height };
+    return bound;
+};
+
+
+Board.render = function () {
+    return Board_({
+        class: 'as-board',
+        extendEvent: ['sizechange', 'changeposition']
+    });
+};
+
+
+Board.prototype.getParent = function () {
+    var parent = this.parentElement;
+    while (parent) {
+        if (parent.classList.contains('ac-board-table')) return parent;
+        parent = parent.parentElement;
+    }
+    return null;
+};
+
+
+ACore["a" /* default */].install('board', Board);
+
+/* harmony default export */ var js_Board = (Board);
+// CONCATENATED MODULE: ./node_modules/absol-acomp/js/BoardTable.js
+
+
+
+
+
+
+
+var BoardTable_ = ACore["a" /* default */]._;
+var BoardTable_$ = ACore["a" /* default */].$;
+
+function BoardTable() {
+    this.on({
+        mousedown: this.eventHandler.mousedown
+    });
+    this._childHolders = [];
+    this._dragEventData = null;
+}
+
+BoardTable.render = function () {
+    return BoardTable_({
+        class: 'as-board-table',
+        extendEvent: ['sizechange', 'change']
+    });
+};
+
+
+BoardTable.prototype.findDomChildBefore = function (elt) {
+    var nodes = this.childNodes;
+    for (var i = 0; i < nodes.length; ++i) {
+        if (nodes[i] == elt) return nodes[i - 1];
+    }
+    return -1;
+};
+
+
+BoardTable.prototype.findDomChildAfter = function (elt) {
+    var nodes = this.childNodes;
+    for (var i = 0; i < nodes.length; ++i) {
+        if (nodes[i] == elt) return nodes[i + 1];
+    }
+    return -1;
+};
+
+
+BoardTable.prototype.addChild = function (elt) {
+    if (elt.classList.contains('as-board')) {
+        elt.selfRemove();
+        var atElt;
+        if (this._childHolders.length > 0) {
+            atElt = this.findDomChildAfter(this._childHolders[this._childHolders.length - 1].elt);
+            if (atElt) {
+                if (atElt != -1)
+                    this.insertBefore(elt, atElt);
+                else
+                    throw new Error("Violation data!");
+            }
+            else {
+                this.appendChild(elt);
+            }
+        }
+        else {
+            this.appendChild(elt);
+        }
+        var holder = {
+            elt: elt,
+            onsizechange: this.eventHandler.cardresize.bind(this, elt),
+        };
+        elt.on('sizechange', holder.onsizechange);
+        this._childHolders.push(holder);
+    }
+    else {
+        this.appendChild(elt);
+    }
+    return this;
+};
+
+
+BoardTable.prototype.removeChild = function (elt) {
+    var holderIndex = this.findChildHolderIndex(elt);
+    if (holderIndex >= 0) {
+        var holder = this._childHolders[holderIndex];
+        holder.elt.off('sizechange', holder.onsizechange);
+        this._childHolders.splice(holderIndex, 1);
+        holder.elt.remove();
+    }
+    else {
+        this.super.removeChild(elt);
+    }
+};
+
+BoardTable.prototype.findChildBefore = function (elt) {
+    var holderIndex = this.findChildHolderIndex(elt);
+    if (holderIndex < 0) return holderIndex;
+    if (holderIndex < 1) return null;
+    return this._childHolders[holderIndex - 1];
+};
+
+
+BoardTable.prototype.findChildAfter = function (elt) {
+    var holderIndex = this.findChildHolderIndex(elt);
+    if (holderIndex < 0) return holderIndex;
+    if (holderIndex <= this._childHolders.length) return null;
+    return this._childHolders[holderIndex + 1];
+};
+
+BoardTable.prototype.addChildBefore = function (elt, at) {
+    elt.selfRemove();
+    var atIndex = this.findChildHolderIndex(at);
+
+    if (elt.classList.contains('as-board')) {
+        if (atIndex < 0) {
+            if (this._childHolders.length > 0) {
+                if (this.findDomChildAfter(this._childHolders[this._childHolders.length - 1].elt) == at) {
+                    atIndex = this._childHolders.length;
+                }
+                else {
+
+                    throw new Error("Invalid position, you must insert board next to other board!");
+                }
+            }
+        }
+
+        this.insertBefore(elt, at);
+        var holder = {
+            elt: elt,
+            onsizechange: this.eventHandler.cardresize.bind(this, elt),
+        };
+        elt.on('sizechange', holder.onsizechange);
+        this._childHolders.splice(atIndex, 0, holder);
+    }
+    else {
+        if (atIndex > 0) {
+            throw new Error("Invalid position, you can not insert othert type between two board!");
+        }
+        else {
+            this.insertBefore(elt, at);
+        }
+    }
+    return this;
+};
+
+BoardTable.prototype.addChildAfter = function (elt, at) {
+    elt.selfRemove();
+    var atIndex = this.findChildHolderIndex(at);
+    var afterAt = this.findDomChildAfter(at);
+    if (elt.classList.contains('as-board')) {
+        if (atIndex < 0) {
+            if (this._childHolders.length > 0) {
+                if (this.findDomChildBefore(this._childHolders[0].elt) == at) {
+                    atIndex = -1;
+                }
+                else
+                    throw new Error("Invalid position,  you must insert board next to other board!");
+            }
+        }
+
+
+        var holder = {
+            elt: elt,
+            onsizechange: this.eventHandler.cardresize.bind(this, elt),
+        };
+        elt.on('sizechange', holder.onsizechange);
+        if (!afterAt) {
+            this.appendChild(elt);
+        }
+        else {
+            this.insertBefore(elt, afterAt);
+        }
+        this._childHolders.splice(atIndex + 1, 0, holder);
+    }
+    else {
+        if (this._childHolders.length > 1 && atIndex >= 0 && atIndex + 1 < this._childHolders.length) {
+            throw new Error("Invalid position, you can not insert othert type between two board!");
+        }
+        else {
+            if (!afterAt) {
+                this.appendChild(elt);
+            }
+            else {
+                this.insertBefore(elt, afterAt);
+            }
+
+        }
+    }
+    return this;
+};
+
+
+
+
+BoardTable.prototype._removeInChildList = function (elt) {
+    var holderIndex = this.findChildHolderIndex();
+    if (holderIndex >= 0) {
+        var holder = this._childHolders[holderIndex];
+        holder.elt.off('sizechange', holder.onsizechange);
+        this._childHolders.splice(holderIndex, 1);
+        //todo: update size from row
+        // holder.row = 
+    }
+};
+
+
+BoardTable.prototype.findChildHolder = function (elt) {
+    return this._childHolders[this.findChildHolderIndex(elt)];
+};
+
+
+BoardTable.prototype.findChildHolderIndex = function (elt) {
+    for (var i = 0; i < this._childHolders.length; ++i) {
+        if (this._childHolders[i].elt == elt) return i;
+    }
+    return -1;
+};
+
+
+BoardTable.prototype._findDragZone = function (elt) {
+    while (elt != this && elt) {
+        if (elt.classList.contains('as-board-table')) return null;//maybe in other
+        if (elt.classList.contains('as-board-drag-zone')) return elt;
+        if (elt.classList.contains('as-board-free-zone')) return null;
+
+        elt = elt.parentElement;
+    }
+    return null;
+};
+
+BoardTable.prototype._findCard = function (elt) {
+    while (elt != this && elt) {
+        if (elt.classList.contains('as-board')) return elt;
+        elt = elt.parentElement;
+    }
+    return null;
+};
+
+
+/**
+ * @type {BoardTable}
+ */
+BoardTable.eventHandler = {};
+
+BoardTable.eventHandler.cardresize = function (cardElt, event) {
+    if (cardElt.getParent() == this) {
+        //todo
+    }
+    else {
+        this._removeInChildList(cardElt);
+    }
+    // this.updateSize();
+};
+
+
+
+
+
+BoardTable.eventHandler.mousedown = function (event) {
+    var dragzone = this._findDragZone(event.target);
+    if (dragzone) {
+        var cardElt = this._findCard(dragzone);
+        var holderIndex = this.findChildHolderIndex(cardElt);
+        var mousePos = new Math_Vec2(event.clientX, event.clientY);
+        var cBound = cardElt.getBoundingClientRect();
+        var mouseCardOffset = mousePos.sub(new Math_Vec2(cBound.left, cBound.top));
+        this._dragEventData = {
+            cardElt: cardElt,
+            state: 'PRE_DRAG',
+            mouseStartPos: mousePos,
+            mouseCardOffset: mouseCardOffset,
+            holderIndex: holderIndex
+        };
+        BoardTable_$(document.body).on({
+            mousemove: this.eventHandler.mousemove,
+            mouseup: this.eventHandler.mousefinish,
+            mouseleave: this.eventHandler.mousefinish
+        })
+    }
+};
+
+BoardTable.eventHandler.mousemove = function (event) {
+    event.preventDefault();
+    var cBound = this._dragEventData.cardElt.getBoundingClientRect();
+    var mousePos = new Math_Vec2(event.clientX, event.clientY);
+    if (this._dragEventData.state == 'PRE_DRAG') {
+        if (mousePos.sub(this._dragEventData.mouseStartPos).abs() > 8) {
+            this._dragEventData.placeHolderElt = BoardTable_$(this._dragEventData.cardElt.cloneNode(false))
+                .addClass('as-board-place-holder')
+                .addStyle({
+                    width: cBound.width + 'px',
+                    height: cBound.height + 'px'
+                });
+            this.insertBefore(this._dragEventData.placeHolderElt, this._dragEventData.cardElt);
+            this._dragEventData.state = "DRAG";
+            this._dragEventData.cardElt.addClass('as-board-moving');
+            this._dragEventData.cartAt = this._dragEventData.holderIndex;
+        }
+    }
+
+
+    if (this._dragEventData.state == 'DRAG') {
+        var fbound;
+        for (var i = 0; i < this._childHolders.length; ++i) {
+            if (i == this._dragEventData.holderIndex) continue;
+            var viewIndex;
+            if ((i < this._dragEventData.holderIndex && i < this._dragEventData.cartAt)
+                || (i > this._dragEventData.holderIndex && i > this._dragEventData.cartAt)
+                || this._dragEventData.holderIndex == this._dragEventData.cartAt) {
+                viewIndex = i;
+            }
+            else {
+                if (this._dragEventData.holderIndex > this._dragEventData.cartAt) {
+                    viewIndex = i + 1;
+                }
+                else {
+                    viewIndex = i - 1;
+                }
+            }
+            if (viewIndex == this._dragEventData.cartAt) continue;
+            fbound = this._childHolders[i].elt.getBoundingClientRect();
+
+            if (mousePos.x > fbound.left && mousePos.x < fbound.right
+                && mousePos.y > fbound.top && mousePos.y < fbound.bottom) {
+                this._dragEventData.cartAt = viewIndex;
+                if (this._dragEventData.holderIndex >= viewIndex) {
+                    this.insertBefore(this._dragEventData.placeHolderElt, this._childHolders[viewIndex].elt);
+                }
+                else {
+                    var bf = Element["a" /* default */].prototype.findChildAfter.call(this, this._childHolders[viewIndex].elt);
+                    if (bf)
+                        this.insertBefore(this._dragEventData.placeHolderElt, bf);
+                    else {
+                        this.appendChild(this._dragEventData.placeHolderElt);
+                    }
+                }
+                break;
+            }
+        }
+
+        var bound = this.getBoundingClientRect();
+        var mouseOffSet = mousePos.sub(new Math_Vec2(bound.left, bound.top));
+        var cardPos = mouseOffSet.sub(this._dragEventData.mouseCardOffset);
+        this._dragEventData.cardElt.addStyle({
+            left: cardPos.x + 'px',
+            top: cardPos.y + 'px'
+        });
+    }
+};
+
+
+
+BoardTable.eventHandler.mousefinish = function (event) {
+    if (this._dragEventData.state == 'DRAG') {
+        this._dragEventData.cardElt.removeClass('as-board-moving')
+            .removeStyle('left')
+            .removeStyle('top');
+        this._dragEventData.placeHolderElt.remove();
+        this._dragEventData.state = "FINISH";
+        if (this._dragEventData.holderIndex != this._dragEventData.cartAt) {
+            if (this._dragEventData.holderIndex > this._dragEventData.cartAt) {
+                this.insertBefore(this._dragEventData.cardElt, this._childHolders[this._dragEventData.cartAt].elt);
+            }
+            else if (this._dragEventData.holderIndex < this._dragEventData.cartAt) {
+                var bf = Element["a" /* default */].prototype.findChildAfter.call(this, this._childHolders[this._dragEventData.cartAt].elt);
+                if (bf)
+                    this.insertBefore(this._dragEventData.cardElt, bf);
+                else {
+                    this.appendChild(this._dragEventData.cardElt);
+                }
+            }
+            var holder = this._childHolders.splice(this._dragEventData.holderIndex, 1)[0];
+            this._childHolders.splice(this._dragEventData.cartAt, 0, holder);
+            this.emit('change', { name: 'change', cardElt: holder.elt, action: 'move', from: this._dragEventData.holderIndex, to: this._dragEventData.cartAt, target: this, }, this);
+        }
+    }
+    BoardTable_$(document.body).off({
+        mousemove: this.eventHandler.mousemove,
+        mouseup: this.eventHandler.mousefinish,
+        mouseleave: this.eventHandler.mousefinish
+    })
+};
+
+BoardTable.prototype.getAllCard = function () {
+    return this._childHolders.map(function (holder) {
+        return holder.elt;
+    });
+};
+
+
+ACore["a" /* default */].install('boardtable', BoardTable);
+/* harmony default export */ var js_BoardTable = (BoardTable);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/js/DebugTask.js
 var DebugTask = __webpack_require__(23);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/debugtask.css
-var debugtask = __webpack_require__(206);
+var debugtask = __webpack_require__(219);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/AComp.js
 
@@ -52205,6 +54800,7 @@ var debugtask = __webpack_require__(206);
 
 // import './js/SelectTable2';
 // import './css/selecttable2.css';
+
 
 
 
@@ -52356,6 +54952,24 @@ var debugtask = __webpack_require__(206);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var AComp = {
     core: ACore["a" /* default */],
     $: ACore["a" /* default */].$,
@@ -52363,7 +54977,7 @@ var AComp = {
     creator: ACore["a" /* default */].creator,
     buildDom: ACore["a" /* default */].buildDom,
     runDebugTask: DebugTask["a" /* default */].start.bind(DebugTask["a" /* default */]),
-    Draggable:js_Draggable
+    Draggable: js_Draggable
 };
 
 window.runDebugTask = DebugTask["a" /* default */].start.bind(DebugTask["a" /* default */]);
@@ -52403,14 +55017,15 @@ setTimeout(function () {
     }
 }, 100);
 // EXTERNAL MODULE: ./node_modules/absol/src/polyfill.js
-var polyfill = __webpack_require__(208);
+var polyfill = __webpack_require__(221);
 
 // CONCATENATED MODULE: ./js/dom/Fcore.js
 
 
-var Fcore = new Dom["a" /* default */]();
-Fcore.install(absol_acomp_AComp.core);
-/* harmony default export */ var dom_Fcore = (Fcore);
+var Fcore_Fcore = new Dom["a" /* default */]();
+Fcore_Fcore.traceOutBoundingClientRect = Dom["a" /* default */].traceOutBoundingClientRect;
+Fcore_Fcore.install(absol_acomp_AComp.core);
+/* harmony default export */ var dom_Fcore = (Fcore_Fcore);
 // CONCATENATED MODULE: ./js/dom/Icons.js
 
 var Icons_ = dom_Fcore._;
@@ -52593,27 +55208,30 @@ BaseView.prototype.execCmd = function () {
 
 /* harmony default export */ var component_BaseView = (BaseView);
 // EXTERNAL MODULE: ./css/App.css
-var App = __webpack_require__(209);
+var App = __webpack_require__(222);
 
 // EXTERNAL MODULE: ./css/ListRealty.css
-var ListRealty = __webpack_require__(211);
+var ListRealty = __webpack_require__(224);
 
 // EXTERNAL MODULE: ./css/ModuleView.css
-var ModuleView = __webpack_require__(213);
+var ModuleView = __webpack_require__(226);
 
 // EXTERNAL MODULE: ./css/tablesort.css
-var tablesort = __webpack_require__(215);
+var tablesort = __webpack_require__(228);
 
 // CONCATENATED MODULE: ./js/component/ModuleView.js
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
 
-
+ // import TabView from 'absol-acomp/js/TabView';
 
 var ModuleView_ = dom_Fcore._;
 var ModuleView_$ = dom_Fcore.$;
-function ModuleView_ModuleView() {}
+var traceOutBoundingClientRect = dom_Fcore.traceOutBoundingClientRect;
+function ModuleView_ModuleView() {
+  console.log(dom_Fcore);
+}
 function alignFormCss(element, elementDynamic) {
   var GroupElement = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   var maxColumn = [],
@@ -52870,17 +55488,40 @@ function fakeInput(text, size) {
   return temp[0].offsetWidth;
 }
 
-function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone, bg, parent) {
-  var left = pageX - shiftX;
-  var top = pageY - shiftY;
+function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result) {
+  var y = pageY - result.getBoundingClientRect().top;
+  y -= shiftY; // var height = result.clientHeight;
+  // console.log(y< clone.clientHeight/2)
+  // if(y>tempx){
+  //     y = tempx;
+  //     // bg.noAction = true;
+  //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
+  //     return;
+  // }
+  // if(y< clone.clientHeight/2){
+  //     y = clone.clientHeight/2;
+  //     // bg.noAction = true;
+  //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
+  //     return;
+  // }
 
-  if (left <= -20 || top <= 0) {
-    bg.noAction = true;
-    outFocus(clone, trigger, functionCheckZone, bg, parent);
-  }
+  clone.style.top = y + 'px';
+  var x = pageX - result.getBoundingClientRect().left;
+  x -= shiftX;
+  var width = result.clientWidth; // if(x>tempx){
+  //     x = tempx;
+  //     // bg.noAction = true;
+  //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
+  //     return;
+  // }
+  // if(x< clone.clientWidth/2){
+  //     x = clone.clientWidth/2;
+  //     // bg.noAction = true;
+  //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
+  //     return;
+  // }
 
-  clone.style.left = left + 'px';
-  clone.style.top = top + 'px';
+  clone.style.left = x + 'px';
 }
 
 function onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, parent) {
@@ -52898,10 +55539,15 @@ function moveAtFix(clone, pageY, shiftY, result) {
   y -= shiftY;
   var height = result.clientHeight;
   var tempx = height - 3 * clone.clientHeight / 4;
+  var top = clone.clientHeight / 2;
 
   if (result.tagName !== "TABLE") {
     height += result.getHeightChild();
     tempx = height;
+  } else {
+    if (result.headerTable.offsetHeight === 0) {
+      top = -clone.clientHeight / 4;
+    }
   }
 
   if (y > tempx) {
@@ -52909,8 +55555,8 @@ function moveAtFix(clone, pageY, shiftY, result) {
     return;
   }
 
-  if (y < clone.clientHeight / 4) {
-    y = clone.clientHeight / 4;
+  if (y < top) {
+    y = top;
     return;
   }
 
@@ -52918,13 +55564,6 @@ function moveAtFix(clone, pageY, shiftY, result) {
 }
 
 function moveElement(event, me, result, index) {
-  var parent = me;
-
-  while (parent !== undefined && !parent.parentNode.classList.contains("absol-single-page-scroller-viewport")) {
-    parent = parent.parentNode;
-  }
-
-  if (parent === undefined) return;
   var scrollParent = me;
 
   while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
@@ -52934,13 +55573,15 @@ function moveElement(event, me, result, index) {
   if (scrollParent === undefined) return;
   scrollParent.addEventListener("scroll", function (event) {
     bg.isMove = false;
-    outFocus(clone, _trigger, functionCheckZone, bg, parent);
+    outFocus(clone, _trigger, functionCheckZone, bg, result);
   });
 
   var _trigger;
 
-  var clone = result.cloneColumn(index);
-  var bg = result.backGround(112, function () {
+  var height = 112;
+  if (result.height !== undefined) height = result.height;
+  var clone = result.cloneColumn(index, height, undefined);
+  var bg = result.backGround(height, function () {
     if (bg.noAction !== true) result.deleteColumn(index);
   }, index);
 
@@ -52966,18 +55607,18 @@ function moveElement(event, me, result, index) {
 
   window.addEventListener("mousemove", functionCheckZone);
   bg.isMove = true;
-  var shiftX = event.clientX - me.getBoundingClientRect().left + parent.getBoundingClientRect().left;
-  var shiftY = event.clientY - me.getBoundingClientRect().top + parent.getBoundingClientRect().top;
-  parent.appendChild(bg);
-  parent.appendChild(clone);
-  moveAt(clone, event.pageX, event.pageY, shiftX, shiftY, parent);
+  result.appendChild(bg);
+  bg.appendChild(clone);
+  var shiftX = clone.clientWidth / 2;
+  var shiftY = clone.clientHeight / 2;
+  moveAt(clone, event.pageX, event.pageY, shiftX, shiftY, _trigger, functionCheckZone, bg, result);
   window.addEventListener('mousemove', _trigger = function trigger(event) {
-    onMouseMove(clone, event, shiftX, shiftY, _trigger, functionCheckZone, bg, parent);
+    onMouseMove(clone, event, shiftX, shiftY, _trigger, functionCheckZone, bg, result);
   });
 
-  clone.onmouseup = function () {
+  window.onmouseup = function () {
     bg.isMove = false;
-    outFocus(clone, _trigger, functionCheckZone, bg, parent);
+    outFocus(clone, _trigger, functionCheckZone, bg, result);
   };
 }
 
@@ -53005,7 +55646,7 @@ function moveElementFix(event, me, result, index) {
       var centerY = offset.top + offset.height / 2;
       var checkElement = arrZone[i];
 
-      if (AABBYY(centerX, centerY, checkElement.getBoundingClientRect())) {
+      if (AAYY(centerX, centerY, checkElement.getBoundingClientRect())) {
         if (!checkElement.classList.contains("focus-blast")) {
           checkElement.classList.add("focus-blast");
           break;
@@ -53150,10 +55791,15 @@ function AABBYY(x, y, bound) {
   return x >= bound.x && y >= bound.y && x <= bound.x + bound.width && y <= bound.y + bound.height;
 }
 
+function AAYY(x, y, bound) {
+  if (bound.x === 0 && bound.y === 0 && bound.width === 0 && bound.height === 0) return true;
+  return y >= bound.y && y <= bound.y + bound.height;
+}
+
 function outFocus(clone, trigger, functionCheckZone, bg, parent) {
   window.removeEventListener('mousemove', functionCheckZone);
   window.removeEventListener('mousemove', trigger);
-  clone.onmouseup = null;
+  window.onmouseup = null;
   setTimeout(function () {
     bg.selfRemove();
   }, 20);
@@ -53411,6 +56057,7 @@ function tableView() {
           }(i) : undefined
         }
       });
+      if (functionClick !== undefined) cell.style.cursor = "pointer";
 
       var childUpDown = ModuleView_({
         tag: "div",
@@ -53438,11 +56085,11 @@ function tableView() {
         var tempFunc = function (cellIndex, childUpDown) {
           return function () {
             var style2 = window.getComputedStyle(childUpDown);
-            cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
+            if (cellIndex.style.minWidth == "") cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
           };
         }(cell, childUpDown);
 
-        setTimeout(tempFunc, 100);
+        ModuleView_('attachhook').once('error', tempFunc);
       }
 
       if (header[i].element === undefined) {
@@ -53470,6 +56117,44 @@ function tableView() {
   result.checkSpan = checkSpan;
   return result;
 }
+
+tableView.prototype.setArrayFix = function (num, isLeft) {
+  var i;
+  var length;
+  console.log(this);
+
+  if (isLeft) {
+    i = 0;
+    length = num;
+  } else {
+    i = this.clone.length - num;
+    length = this.clone.length;
+  }
+
+  var isFirst = false;
+
+  for (; i < length; i++) {
+    for (var j = 0; j < this.clone[i].length; j++) {
+      if (!this.clone[i][j].classList.contains("postionStickyCell")) this.clone[i][j].classList.add("postionStickyCell");
+      this.clone[i][j].style.left = this.clone[i][j].offsetLeft + "px";
+      if (isFirst && this.clone[i][j].parentNode.childrenNodes.length !== 0) this.clone[i][j].parentNode.setArrayFix(num, isLeft);
+      isFirst = true;
+    }
+
+    isFirst = false; // console.log(this.clone[i][0],this.clone[i][0].offsetWidth)
+  }
+};
+
+tableView.prototype.setArrayScroll = function (num) {
+  var isLeft = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var self = this;
+
+  ModuleView_('attachhook').once('error', function () {
+    setTimeout(function () {
+      self.setArrayFix(num, isLeft);
+    }, 10);
+  });
+};
 
 tableView.prototype.addInputSearch = function (input) {
   var self = this;
@@ -53552,11 +56237,13 @@ tableView.prototype.getBodyTable = function (data) {
 
 tableView.prototype.getRow = function (data) {
   var temp = ModuleView_({
-    tag: "tr",
-    "class": "parent"
+    tag: "tr"
   });
 
   var result = this;
+  setTimeout(function () {
+    temp.className = temp.className + " parent";
+  }, 10);
   Object.assign(temp, tableView.prototype);
   temp.headerTable = result.headerTable;
   temp.bodyTable = result.bodyTable;
@@ -53570,6 +56257,18 @@ tableView.prototype.getRow = function (data) {
   temp.clone = [];
   temp.parentMargin = result.parentMargin + 1;
   temp.childIndex = result.childIndex;
+  temp.moreChild = temp.data.moreChild;
+  temp.data.moreChild = undefined;
+
+  temp.checkLeft = function () {
+    for (var i = 0; i < temp.childNodes.length; i++) {
+      temp.childNodes[i].checkLeft();
+    }
+  };
+
+  if (temp.data.marker !== undefined) {
+    temp.id = temp.data.marker.toString();
+  }
 
   temp.checkChild = function (data) {
     temp.checkClone();
@@ -53642,6 +56341,12 @@ tableView.prototype.getRow = function (data) {
     };
 
     result.checkMargin();
+    setTimeout(function () {
+      if (temp.moreChild == false) {
+        temp.setDisPlay();
+        temp.moreChild = undefined;
+      }
+    }, 1);
   };
 
   temp.checkVisiableChild = function () {
@@ -53662,12 +56367,23 @@ tableView.prototype.setDisPlay = function () {
   if (!this.classList.contains("more-child")) {
     this.classList.add("more-child");
     var childrenNodes = this.childrenNodes;
+    var arrFunction = [];
 
     for (var i = 0; i < childrenNodes.length; i++) {
-      childrenNodes[i].classList.add("parent");
       childrenNodes[i].classList.remove("disPlayNone");
+      arrFunction.push(function (childrenNodes, i) {
+        return function () {
+          childrenNodes[i].classList.add("parent");
+        };
+      }(childrenNodes, i));
       if (childrenNodes[i].childrenNodes.length !== 0) childrenNodes[i].setDisPlayVisable();
     }
+
+    setTimeout(function () {
+      for (var i = 0; i < arrFunction.length; i++) {
+        arrFunction[i]();
+      }
+    }, 10);
   } else {
     this.classList.remove("more-child");
     this.setDisPlayNone();
@@ -53676,13 +56392,24 @@ tableView.prototype.setDisPlay = function () {
 
 tableView.prototype.setDisPlayVisable = function () {
   if (this.classList.contains("more-child")) {
+    var arrFunction = [];
     var childrenNodes = this.childrenNodes;
 
     for (var i = 0; i < childrenNodes.length; i++) {
-      childrenNodes[i].classList.add("parent");
       childrenNodes[i].classList.remove("disPlayNone");
+      arrFunction.push(function (childrenNodes, i) {
+        return function () {
+          childrenNodes[i].classList.add("parent");
+        };
+      }(childrenNodes, i));
       if (childrenNodes[i].childrenNodes.length !== 0) childrenNodes[i].setDisPlayVisable();
     }
+
+    setTimeout(function () {
+      for (var i = 0; i < arrFunction.length; i++) {
+        arrFunction[i]();
+      }
+    }, 10);
   }
 };
 
@@ -53704,136 +56431,38 @@ tableView.prototype.getDivMargin = function () {
 };
 
 tableView.prototype.getCell = function (dataOrigin, i, j, k) {
-  var _this = this;
-
   var checkSpan = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : [];
   var row = arguments.length > 5 ? arguments[5] : undefined;
-  return function (i) {
-    var data = dataOrigin;
-    var result = _this,
-        value,
-        bonus,
-        style,
-        cell;
+  var data = dataOrigin;
+  var result = this,
+      value,
+      bonus,
+      style,
+      cell;
 
-    if (checkSpan[i] !== undefined) {
-      if (checkSpan[i][k] == 2) return 2;
-      if (checkSpan[i][k] == 6) return 6;
-    }
+  if (checkSpan[i] !== undefined) {
+    if (checkSpan[i][k] == 2) return 2;
+    if (checkSpan[i][k] == 6) return 6;
+  }
 
-    if (data.value === undefined) {
-      if (_typeof(data) === "object") value = "";else value = data.toString();
-    } else value = data.value;
+  if (data.value === undefined) {
+    if (_typeof(data) === "object") value = "";else value = data.toString();
+  } else value = data.value;
 
-    switch (_this.check[j]) {
-      case "hidden":
-        return true;
+  switch (this.check[j]) {
+    case "hidden":
+      return true;
 
-      case "increase":
-        value += i + 1;
-        break;
+    case "increase":
+      value += i + 1;
+      break;
 
-      case "dragzone":
-        if (data.icon !== undefined) {
-          icon = data.icon;
-          bonus = ModuleView_({
-            tag: "i",
-            "class": ["material-icons"],
-            style: {
-              fontSize: "20px",
-              cursor: "pointer"
-            },
-            props: {
-              innerHTML: icon
-            }
-          });
-        } else {
-          bonus = ModuleView_({
-            tag: "i",
-            "class": ["material-icons", "drag-icon-button"],
-            props: {
-              innerHTML: "drag_indicator"
-            },
-            on: {
-              mousedown: result.dragVertical ? function (event) {
-                var self = this;
-                return function (event, cellIndex, self) {
-                  event.preventDefault();
-                  var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
-                  self.hold = false;
-                  var dom = self;
-                  self["default"] = event;
-                  self.timeoutID = setTimeout(function () {
-                    dom.hold = true;
-                    moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
-                  }, 200);
-                }(event, cell, self);
-              } : undefined,
-              dragstart: result.dragVertical ? function () {
-                return false;
-              } : undefined,
-              mouseup: function mouseup() {
-                if (this.hold === false) {
-                  this.hold = true; // this.click();
-
-                  clearTimeout(this.timeoutID);
-                }
-              },
-              mousemove: result.dragVertical ? function (event) {
-                var self = this;
-                return function (event, cellIndex, self) {
-                  if (self.hold === false) {
-                    var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
-                    self.hold = false;
-                    var deltaX = self["default"].clientX - event.clientX,
-                        deltaY = self["default"].clientY - event.clientY;
-
-                    if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
-                      self.hold = true;
-                      moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
-                      clearTimeout(self.timeoutID);
-                    }
-                  }
-                }(event, cell, self);
-              } : undefined
-            }
-          });
-        }
-
-        break;
-
-      case "check":
-        bonus = ModuleView_({
-          tag: "checkboxbutton",
-          "class": "pizo-checkbox",
-          on: {
-            click: function click(event) {
-              if (result.bodyTable.listCheckBox !== undefined) {
-                if (this.checked === false) result.bodyTable.listCheckBox[0].checked = false;else {
-                  if (result.bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                    if (result.bodyTable.listCheckBox[j].checked === false) {
-                      j--;
-                      break;
-                    }
-                  }
-
-                  if (j === result.bodyTable.listCheckBox.length) {
-                    result.bodyTable.listCheckBox[0].checked = true;
-                  }
-                }
-              }
-            }
-          }
-        });
-        if (result.bodyTable.listCheckBox !== undefined) result.bodyTable.listCheckBox.push(bonus);
-        break;
-
-      case "detail":
-        var icon = "more_vert";
-        if (data.icon !== undefined) icon = data.icon;
+    case "dragzone":
+      if (data.icon !== undefined) {
+        icon = data.icon;
         bonus = ModuleView_({
           tag: "i",
-          "class": "material-icons",
+          "class": ["material-icons"],
           style: {
             fontSize: "20px",
             cursor: "pointer"
@@ -53842,93 +56471,205 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
             innerHTML: icon
           }
         });
-        break;
-    }
+      } else {
+        bonus = ModuleView_({
+          tag: "i",
+          "class": ["material-icons", "drag-icon-button"],
+          props: {
+            innerHTML: "drag_indicator"
+          },
+          on: {
+            mousedown: result.dragVertical ? function (event) {
+              var self = this;
+              return function (event, cellIndex, self) {
+                event.preventDefault();
+                var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+                self.hold = false;
+                var dom = self;
+                self["default"] = event;
+                self.timeoutID = setTimeout(function () {
+                  dom.hold = true;
+                  moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
+                }, 200);
+              }(event, cell, self);
+            } : undefined,
+            dragstart: result.dragVertical ? function () {
+              return false;
+            } : undefined,
+            mouseup: function mouseup() {
+              if (this.hold === false) {
+                this.hold = true; // this.click();
 
-    var functionClick = undefined;
-    if (data.functionClick !== undefined) functionClick = data.functionClick;else {
-      if (result.header[j].functionClickAll !== undefined) functionClick = result.header[j].functionClickAll;
-    }
-    style = {};
-    if (data.style !== undefined) style = data.style;
-    cell = ModuleView_({
-      tag: "td",
-      style: style,
-      on: {
-        click: function click(event) {
-          return function (event, row, functionClick) {
-            event.preventDefault();
+                clearTimeout(this.timeoutID);
+              }
+            },
+            mousemove: result.dragVertical ? function (event) {
+              var self = this;
+              return function (event, cellIndex, self) {
+                if (self.hold === false) {
+                  var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+                  self.hold = false;
+                  var deltaX = self["default"].clientX - event.clientX,
+                      deltaY = self["default"].clientY - event.clientY;
 
-            if (functionClick !== undefined) {
-              if (cell.getParentNode().childrenNodes.length !== 0) var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);else var finalIndex = 0;
-              var dataIndex;
-              if (cell.getParentNode().data.child !== undefined) dataIndex = cell.getParentNode().data.child[finalIndex];else dataIndex = cell.getParentNode().data[finalIndex];
-              functionClick(event, cell, finalIndex, cell.getParentNode(), dataIndex, row);
+                  if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
+                    self.hold = true;
+                    moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
+                    clearTimeout(self.timeoutID);
+                  }
+                }
+              }(event, cell, self);
+            } : undefined
+          }
+        });
+      }
+
+      break;
+
+    case "check":
+      bonus = ModuleView_({
+        tag: "checkboxbutton",
+        "class": "pizo-checkbox",
+        on: {
+          click: function click(event) {
+            if (result.bodyTable.listCheckBox !== undefined) {
+              if (this.checked === false) result.bodyTable.listCheckBox[0].checked = false;else {
+                if (result.bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                  if (result.bodyTable.listCheckBox[j].checked === false) {
+                    j--;
+                    break;
+                  }
+                }
+
+                if (j === result.bodyTable.listCheckBox.length) {
+                  result.bodyTable.listCheckBox[0].checked = true;
+                }
+              }
             }
-          }(event, row, functionClick);
+          }
+        }
+      });
+      if (result.bodyTable.listCheckBox !== undefined) result.bodyTable.listCheckBox.push(bonus);
+      break;
+
+    case "detail":
+      var icon = "more_vert";
+      if (data.icon !== undefined) icon = data.icon;
+      bonus = ModuleView_({
+        tag: "i",
+        "class": "material-icons",
+        style: {
+          fontSize: "20px",
+          cursor: "pointer"
+        },
+        props: {
+          innerHTML: icon
+        }
+      });
+      break;
+  }
+
+  var functionClick = undefined;
+  if (data.functionClick !== undefined) functionClick = data.functionClick;else {
+    if (result.header[j].functionClickAll !== undefined) functionClick = result.header[j].functionClickAll;
+  }
+  style = {};
+  if (data.style !== undefined) style = data.style;
+  cell = ModuleView_({
+    tag: "td",
+    style: style,
+    on: {
+      click: function click(event) {
+        return function (event, row, functionClick) {
+          event.preventDefault();
+
+          if (functionClick !== undefined) {
+            if (cell.getParentNode().childrenNodes.length !== 0) var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);else var finalIndex = 0;
+            var dataIndex;
+            if (cell.getParentNode().data.child !== undefined) dataIndex = cell.getParentNode().data.child[finalIndex];else dataIndex = cell.getParentNode().data[finalIndex];
+            functionClick(event, cell, finalIndex, cell.getParentNode(), dataIndex, row);
+          }
+        }(event, row, functionClick);
+      }
+    }
+  });
+  if (functionClick !== undefined) cell.style.cursor = "pointer";
+
+  var container = ModuleView_({
+    tag: "div",
+    "class": "container-view"
+  });
+
+  cell.checkLeft = function () {
+    return function (cell, result, k) {
+      var widthSize = 0;
+      var step = 1.71428571429;
+      var arr = cell.getElementsByClassName("margin-div-cell");
+
+      for (var i = arr.length - 1; i >= 0; i--) {
+        arr[i].selfRemove();
+      }
+
+      if (result.data.child !== undefined) if (k === result.childIndex) {
+        for (var i = 0; i < result.parentMargin - 1; i++) {
+          cell.insertBefore(result.getDivMargin(), cell.firstChild);
+          widthSize += step;
         }
       }
-    });
-    var widthSize = 0;
-    var step = 1.71428571429;
-    if (result.data.child !== undefined) if (k === result.childIndex) {
-      for (var i = 0; i < result.parentMargin; i++) {
-        cell.addChild(result.getDivMargin());
-        widthSize += step;
-      }
+      container.style.width = "calc(100% - " + widthSize + "rem)";
+      if (widthSize !== 0) cell.classList.add("margin-left-has-icon");
+    }(cell, row, k);
+  };
+
+  row.resetParentChild = function () {
+    for (var i = 0; i < row.childrenNodes.length; i++) {
+      row.childrenNodes[i].parentMargin = row.parentMargin + 1;
+      row.childrenNodes[i].resetParentChild();
     }
+  };
 
-    var container = ModuleView_({
-      tag: "div",
-      "class": "container-view",
-      style: {
-        width: "calc(100% - " + widthSize + "rem)"
-      }
-    });
+  cell.addChild(container);
+  cell.checkLeft();
 
-    if (widthSize !== 0) cell.classList.add("margin-left-has-icon");
-    cell.addChild(container);
+  if (data.element === undefined) {
+    container.addChild(ModuleView_({
+      text: value
+    }));
+  } else {
+    container.appendChild(data.element);
+  }
 
-    if (data.element === undefined) {
-      container.addChild(ModuleView_({
-        text: value
-      }));
-    } else {
-      container.appendChild(data.element);
+  if (bonus !== undefined) {
+    container.addChild(bonus);
+    bonus = undefined;
+  }
+
+  if (data.rowspan !== undefined) {
+    cell.setAttribute("rowspan", data.rowspan);
+
+    for (var l = i + 1; l < i + data.rowspan; l++) {
+      if (checkSpan[l] === undefined) checkSpan[l] = [];
+      checkSpan[l][k] = 2;
     }
+  }
 
-    if (bonus !== undefined) {
-      container.addChild(bonus);
-      bonus = undefined;
+  if (data.colspan !== undefined) {
+    cell.setAttribute("colspan", data.colspan);
+    checkSpan[i] = [];
+
+    for (var l = k + 1; l < k + data.colspan; l++) {
+      checkSpan[i][l] = 6;
     }
+  }
 
-    if (data.rowspan !== undefined) {
-      cell.setAttribute("rowspan", data.rowspan);
+  cell.getParentNode = function () {
+    var parent = cell.clone[0][0];
+    parent = parent;
+    if (parent.tagName === "TH") return parent.parentNode.parentNode.parentNode;
+    return parent.parentNode;
+  };
 
-      for (var l = i + 1; l < i + data.rowspan; l++) {
-        if (checkSpan[l] === undefined) checkSpan[l] = [];
-        checkSpan[l][k] = 2;
-      }
-    }
-
-    if (data.colspan !== undefined) {
-      cell.setAttribute("colspan", data.colspan);
-      checkSpan[i] = [];
-
-      for (var l = k + 1; l < k + data.colspan; l++) {
-        checkSpan[i][l] = 6;
-      }
-    }
-
-    cell.getParentNode = function () {
-      var parent = cell.clone[0][0];
-      parent = parent;
-      if (parent.tagName === "TH") return parent.parentNode.parentNode.parentNode;
-      return parent.parentNode;
-    };
-
-    return cell;
-  }(i);
+  return cell;
 };
 
 tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
@@ -53987,6 +56728,7 @@ tableView.prototype.insertRow = function (data) {
 };
 
 tableView.prototype.updateRow = function (data, index) {
+  var checkMust = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   var result = this,
       k,
       cell;
@@ -54023,6 +56765,7 @@ tableView.prototype.updateRow = function (data, index) {
     var temp;
     temp = result.childrenNodes[index];
     result.bodyTable.replaceChild(row, temp);
+    row.classList.value = temp.classList.value;
 
     if (temp.childrenNodes !== undefined) {
       row.childrenNodes = temp.childrenNodes;
@@ -54110,13 +56853,14 @@ tableView.prototype.updateRow = function (data, index) {
     }
   }
 
-  if (checkChild === true) {
+  if (checkChild === true || checkMust === true) {
     if (result.checkIcon !== undefined) result.checkIcon();
   }
 
   if (row.childrenNodes.length !== 0) row.checkIcon();else row.checkClone();
   if (result.checkMargin !== undefined) result.checkMargin();
   result.checkDataUpdate(row);
+  return row;
 };
 
 tableView.prototype.checkDataUpdate = function (row) {
@@ -54145,38 +56889,68 @@ tableView.prototype.dropRow = function (index) {
   var result = this,
       deltaX = [];
   var element = result.clone[0][index + 1].parentNode;
-  if (result.isUpdate === false) return;
-  console.log(element);
+  return new Promise(function (resolve, reject) {
+    if (result.isUpdate === false) return;
+    var parent = element.childNodes[0].getParentNode();
+    if (!element.classList.contains("hideTranslate")) element.classList.add("hideTranslate");
+    if (element.childrenNodes.length !== 0) element.addHideAnimationChild();
+    parent.isUpdate = false;
+
+    var eventEnd = function eventEnd() {
+      parent.dropRowChild(element);
+      var deltaY = 0;
+      deltaX = parent.checkLongRow(index);
+
+      for (var i = 0; i < element.childNodes.length; i++) {
+        parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
+        if (parent.checkSpan !== undefined) parent.checkSpan.splice(index, 1);
+        if (element.childNodes[i].colSpan !== undefined) deltaY += element.childNodes[i].colSpan - 1;
+      }
+
+      if (parent.childrenNodes.length !== 0) {
+        var indexData = parent.childrenNodes.indexOf(element);
+        if (parent.data.child !== undefined) parent.data.child.splice(indexData, 1);else parent.data.splice(indexData, 1);
+        parent.childrenNodes.splice(indexData, 1);
+      }
+
+      if (result.checkVisiableChild !== undefined && result.childrenNodes.length === 0) result.checkVisiableChild();
+      parent.isUpdate = true;
+      resolve();
+    }; // Code for Safari 3.1 to 6.0
+
+
+    element.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    element.addEventListener("transitionend", eventEnd);
+  });
+};
+
+tableView.prototype.changeParent = function (index, rowParent) {
+  var result = this,
+      deltaX = [];
+  var element = result.clone[0][index + 1].parentNode;
   var parent = element.childNodes[0].getParentNode();
-  if (!element.classList.contains("hideTranslate")) element.classList.add("hideTranslate");
-  if (element.childrenNodes.length !== 0) element.addHideAnimationChild();
-  parent.isUpdate = false;
+  var deltaY = 0;
+  deltaX = parent.checkLongRow(index);
+  parent.changeRowChild(element, rowParent);
 
-  var eventEnd = function eventEnd() {
-    parent.dropRowChild(element);
-    var deltaY = 0;
-    deltaX = parent.checkLongRow(index);
+  for (var i = 0; i < element.childNodes.length; i++) {
+    rowParent.clone[i + deltaY].push(element.childNodes[i]);
+    parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
+    if (parent.checkSpan !== undefined) parent.checkSpan.splice(index, 1);
+    if (element.childNodes[i].colSpan !== undefined) deltaY += element.childNodes[i].colSpan - 1;
+  }
 
-    for (var i = 0; i < element.childNodes.length; i++) {
-      parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
-      if (parent.checkSpan !== undefined) parent.checkSpan.splice(index, 1);
-      if (element.childNodes[i].colSpan !== undefined) deltaY += element.childNodes[i].colSpan - 1;
-    }
+  if (parent.childrenNodes.length !== 0) {
+    var indexData = parent.childrenNodes.indexOf(element);
+    rowParent.data.push(parent.data[indexData]);
+    if (parent.data.child !== undefined) parent.data.child.splice(indexData, 1);else parent.data.splice(indexData, 1);
+    rowParent.childrenNodes.push(element);
+    parent.childrenNodes.splice(indexData, 1);
+  }
 
-    if (parent.childrenNodes.length !== 0) {
-      var indexData = parent.childrenNodes.indexOf(element);
-      if (parent.data.child !== undefined) parent.data.child.splice(indexData, 1);else parent.data.splice(indexData, 1);
-      parent.childrenNodes.splice(indexData, 1);
-    }
-
-    if (result.checkVisiableChild !== undefined && result.childrenNodes.length === 0) result.checkVisiableChild();
-    parent.isUpdate = true;
-  }; // Code for Safari 3.1 to 6.0
-
-
-  element.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
-
-  element.addEventListener("transitionend", eventEnd);
+  if (result.checkVisiableChild !== undefined && result.childrenNodes.length === 0) result.checkVisiableChild();
+  return rowParent.childrenNodes.length - 1;
 };
 
 tableView.prototype.addHideAnimationChild = function () {
@@ -54185,6 +56959,34 @@ tableView.prototype.addHideAnimationChild = function () {
 
     if (this.childrenNodes[i].childrenNodes.length !== 0) {
       this.childrenNodes[i].addHideAnimationChild();
+    }
+  }
+};
+
+tableView.prototype.changeRowChild = function (element, parent) {
+  var nextSibling;
+
+  if (parent.tagName === "TABLE") {
+    nextSibling = null;
+    parent.bodyTable.addChild(element);
+  } else {
+    nextSibling = parent.clone[0][parent.clone[0].length - 1].parentNode.nextSibling;
+    parent.bodyTable.insertBefore(element, nextSibling);
+  }
+
+  element.parentMargin = parent.parentMargin + 1;
+  element.resetParentChild();
+  element.checkLeft();
+  if (element.childrenNodes.length !== 0) element.changeRowChildElement(parent, nextSibling);
+};
+
+tableView.prototype.changeRowChildElement = function (parent, nextSibling) {
+  for (var i = 0; i < this.childrenNodes.length; i++) {
+    if (this.tagName === "TABLE") this.bodyTable.addChild(this.childrenNodes[i]);else this.bodyTable.insertBefore(this.childrenNodes[i], nextSibling);
+    this.childrenNodes[i].checkLeft();
+
+    if (this.childrenNodes[i].childrenNodes.length !== 0) {
+      this.childrenNodes[i].changeRowChildElement();
     }
   }
 };
@@ -54213,15 +57015,18 @@ tableView.prototype.backGroundFix = function (index) {
   }
 
   if (scrollParent === undefined) return;
+  var rectDistance = traceOutBoundingClientRect(this);
+  console.log(traceOutBoundingClientRect(this));
 
   var temp = ModuleView_({
     tag: "div",
     "class": "background-opacity",
     style: {
       top: rect.y + 'px',
-      left: rect.x + 'px',
+      left: rect.x + scrollParent.scrollLeft + 'px',
       backgroundColor: "#ffffff00",
-      realTop: rect.y + scrollParent.scrollTop
+      realTop: rect.y + scrollParent.scrollTop,
+      width: rectDistance.width - 17 + "px"
     },
     child: []
   });
@@ -54250,14 +57055,37 @@ tableView.prototype.backGroundFix = function (index) {
 };
 
 tableView.prototype.backGround = function (height, callback, index) {
+  var rect = this.getBoundingClientRect();
+  var scrollParent = this;
+  var rectDistance = traceOutBoundingClientRect(this);
+
+  while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
+    scrollParent = scrollParent.parentNode;
+  }
+
+  if (scrollParent === undefined) return;
+  console.log(rectDistance);
+
   var temp = ModuleView_({
     tag: "div",
     "class": "background-opacity-1",
+    style: {
+      top: rect.y + 'px',
+      left: rect.x - 17 + 'px',
+      backgroundColor: "#ffffff00",
+      realTop: rect.y + scrollParent.scrollTop // width:rectDistance.width-17+"px"
+
+    },
     child: [{
       tag: "div",
       "class": "delete-zone",
       style: {
-        height: height + "px"
+        transform: "translateY(-" + height + "px)",
+        top: rect.y + 'px',
+        left: rectDistance.left + 'px',
+        backgroundColor: "#ffffff00",
+        height: height + "px",
+        width: rectDistance.width + "px"
       },
       child: [{
         tag: "i",
@@ -54327,7 +57155,8 @@ tableView.prototype.deleteColumn = function (index) {
   }
 };
 
-tableView.prototype.cloneColumn = function (index) {
+tableView.prototype.cloneColumn = function (index, height) {
+  var isFull = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   var clone = this.clone[index][0].cloneNode(true);
   clone.style.width = this.clone[index][0].offsetWidth - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
   clone.style.height = this.clone[index][0].offsetHeight - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
@@ -54345,6 +57174,8 @@ tableView.prototype.cloneColumn = function (index) {
   var bodyTable = ModuleView_({
     tag: "tbody"
   });
+
+  if (isFull) this.cloneCellColumn(bodyTable, this.clone, index);
 
   var result = ModuleView_({
     tag: "table",
@@ -54375,12 +57206,13 @@ tableView.prototype.cloneCellColumn = function (bodyTable, cloneArray, index) {
 
     if (cloneArray[index][i].parentNode.clone !== undefined) {
       var cloneArrayTemp = cloneArray[index][i].parentNode.clone;
-      tableView.prototype.cloneCellColumn(bodyTable, cloneArrayTemp, index);
+      this.cloneCellColumn(bodyTable, cloneArrayTemp, index);
     }
   }
 };
 
 tableView.prototype.cloneRow = function (index) {
+  var isFull = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
   var clone;
 
   var headerTable = ModuleView_({
@@ -54423,20 +57255,35 @@ tableView.prototype.cloneRow = function (index) {
 tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
   var self = this;
   var left, right;
+  var isShow = true;
   if (colum1 !== undefined) left = self.clone[colum1][0].offsetWidth / 2 + parseFloat(window.getComputedStyle(self.clone[colum1][0]).webkitBorderHorizontalSpacing) / 2;else left = 20 + parseFloat(window.getComputedStyle(self).paddingLeft);
-  if (colum2 !== undefined) right = self.clone[colum2][0].offsetWidth / 2 + parseFloat(window.getComputedStyle(self.clone[colum2][0]).webkitBorderHorizontalSpacing) / 2;else right = 20 + parseFloat(window.getComputedStyle(self).paddingRight);
-  return ModuleView_({
+
+  if (colum2 !== undefined) {
+    right = self.clone[colum2][0].offsetWidth / 2 + parseFloat(window.getComputedStyle(self.clone[colum2][0]).webkitBorderHorizontalSpacing) / 2;
+    if (self.clone[colum2][0].classList.contains("postionStickyCell")) isShow = false;
+  } else right = 20 + parseFloat(window.getComputedStyle(self).paddingRight);
+
+  var center = ModuleView_({
+    tag: "div",
+    "class": "move-hover-zone-center"
+  });
+
+  if (!isShow) {
+    center.style.display = "none";
+  }
+
+  var temp = ModuleView_({
     tag: "div",
     "class": "move-hover-zone",
     style: {
       height: self.offsetHeight + "px"
     },
     on: {
-      mouseover: function mouseover() {
+      mouseover: isShow ? function () {
         if (this.parentNode.isMove === false) {
-          tableView.prototype.moveColumn(self.clone, colum1, colum2, index);
+          self.moveColumn(self.clone, colum1, colum2, index);
         }
-      }
+      } : undefined
     },
     child: [{
       tag: "div",
@@ -54444,10 +57291,7 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
       style: {
         width: left + 'px'
       }
-    }, {
-      tag: "div",
-      "class": "move-hover-zone-center"
-    }, {
+    }, center, {
       tag: "div",
       "class": "move-hover-zone-right",
       style: {
@@ -54455,6 +57299,8 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
       }
     }]
   });
+
+  return temp;
 };
 
 tableView.prototype.moveColumn = function (arrClone, colum1, colum2, index) {
@@ -54487,7 +57333,7 @@ tableView.prototype.moveColumn = function (arrClone, colum1, colum2, index) {
     }
 
     if (arrClone[index][i - delta].parentNode.clone !== undefined) {
-      tableView.prototype.moveColumn(arrClone[index][i - delta].parentNode.clone, colum1, colum2, index, 1);
+      this.moveColumn(arrClone[index][i - delta].parentNode.clone, colum1, colum2, index, 1);
     }
   }
 
@@ -54553,7 +57399,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
     top = self.clone[0][row1].offsetHeight / 2 + parseFloat(style1.webkitBorderVerticalSpacing) / 2;
   } else top = parseFloat(window.getComputedStyle(self).paddingTop);
 
-  if (row2 !== undefined && self.clone[0][row2].offsetHeight !== 0) {
+  if (row2 !== undefined) {
     if (self.clone[0][row2].parentNode.style.display === "none") return ModuleView_({
       tag: "div"
     });
@@ -54563,12 +57409,15 @@ tableView.prototype.getBound2Row = function (row1, row2) {
     if (row1 !== undefined && self.clone[0][row2].parentNode.childrenNodes.length !== 0) {
       bottom += self.clone[0][row2].parentNode.getHeightChild();
     }
-  } else 
-  {
-    console.log(self.clone[0][row1])
+  } else {
     bottom = parseFloat(window.getComputedStyle(self).paddingBottom) + self.clone[0][row1].offsetHeight / 2;
   }
-  
+
+  if (row1 === undefined) {
+    row1 = row2;
+    row2++;
+    if (self.clone[0][row1 + 1] !== undefined) elementReal = self.clone[0][row1 + 1].parentNode;
+  }
 
   var temp = ModuleView_({
     tag: "div",
@@ -54850,12 +57699,13 @@ function tableViewMobile() {
           }(i) : undefined
         }
       });
+      if (functionClick !== undefined) cell.style.cursor = "pointer";
 
       if (header[i].sort === true) {
         cell.classList.add("has-sort");
         setTimeout(function (cell, value) {
           cell.style.minWidth = fakeInput(value, window.getComputedStyle(cell).fontSize) + 30 + "px";
-        }(cell, value), 100);
+        }(cell, value), 50);
       }
 
       if (header[i].element === undefined) {
@@ -54955,20 +57805,152 @@ function random_bg_color() {
   var bgColor = "rgb(" + x + "," + y + "," + z + ")";
   return bgColor;
 }
+
+function allowNumbersOnly(e) {
+  var code = e.which ? e.which : e.keyCode;
+  console.log(code);
+
+  if ((code > 122 || code < 97) && code != 45) {
+    e.preventDefault();
+  }
+}
+function createAlias(string) {
+  var value = "";
+  string = string.toLowerCase();
+  string = removeAccents(string);
+
+  for (var i = 0; i < string.length; i++) {
+    if (string[i] == " ") {
+      value += "-";
+      continue;
+    }
+
+    if ((string[i] > "z" || string[i] < "a") && string[i] != "-") {
+      continue;
+    }
+
+    value += string[i];
+  }
+
+  return value.replace(/^\-+|\-+$/gm, '');
+  ;
+}
+function removeAccents(str) {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
+}
+function deleteQuestion(title, content) {
+  var yes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "Có";
+  var no = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "không";
+  var contentElement;
+
+  if (_typeof(content) !== "object") {
+    contentElement = ModuleView_({
+      tag: "span",
+      "class": "module-delete-header-content",
+      props: {
+        innerHTML: content
+      }
+    });
+  } else {
+    contentElement = content;
+  }
+
+  var temp;
+  var promiseComfirm = new Promise(function (resolve, reject) {
+    temp = ModuleView_({
+      tag: "modal",
+      "class": "modal-delete-module",
+      child: [{
+        tag: "div",
+        "class": "module-delete-container",
+        child: [{
+          tag: "div",
+          "class": "module-delete-header",
+          child: [{
+            tag: "span",
+            "class": "module-delete-header-title",
+            props: {
+              innerHTML: title
+            }
+          }, {
+            tag: "div",
+            "class": "module-delete-header-close-container",
+            on: {
+              click: function click(event) {
+                temp.selfRemove();
+                reject();
+              }
+            },
+            child: [{
+              tag: "i",
+              "class": ["module-delete-header-close", "material-icons"],
+              props: {
+                innerHTML: "close"
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "module-delete-content",
+          child: [contentElement]
+        }, {
+          tag: "div",
+          "class": "module-delete-button",
+          child: [{
+            tag: "button",
+            "class": "module-delete-button-yes",
+            on: {
+              click: function click(event) {
+                temp.selfRemove();
+                resolve();
+              }
+            },
+            child: [{
+              tag: "span",
+              "class": "module-delete-button-yes-label",
+              props: {
+                innerHTML: yes
+              }
+            }]
+          }, {
+            tag: "button",
+            "class": "module-delete-button-no",
+            on: {
+              click: function click(event) {
+                temp.selfRemove();
+                reject();
+              }
+            },
+            child: [{
+              tag: "span",
+              "class": "module-delete-button-no-label",
+              props: {
+                innerHTML: no
+              }
+            }]
+          }]
+        }]
+      }]
+    });
+  });
+  console.log(temp);
+  temp.promiseComfirm = promiseComfirm;
+  return temp;
+}
 // EXTERNAL MODULE: ./css/NewRealty.css
-var NewRealty = __webpack_require__(217);
+var css_NewRealty = __webpack_require__(230);
 
 // EXTERNAL MODULE: ./css/imagesilder.css
-var imagesilder = __webpack_require__(219);
+var imagesilder = __webpack_require__(232);
 
 // EXTERNAL MODULE: ./css/form_create_edit.css
-var form_create_edit = __webpack_require__(221);
+var form_create_edit = __webpack_require__(234);
 
 // EXTERNAL MODULE: ./css/test_question.css
-var test_question = __webpack_require__(223);
+var test_question = __webpack_require__(236);
 
 // EXTERNAL MODULE: ./css/test.css
-var test = __webpack_require__(225);
+var test = __webpack_require__(238);
 
 // CONCATENATED MODULE: ./js/component/modal_drag_drop_image.js
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -55591,7 +58573,7 @@ var xmlModalDragImage;
   }
 });
 // EXTERNAL MODULE: ./css/MapView.css
-var MapView = __webpack_require__(227);
+var MapView = __webpack_require__(240);
 
 // CONCATENATED MODULE: ./js/component/MapView.js
 
@@ -56163,10 +59145,10 @@ MapView_MapView.prototype.smoothZoom = function (max, cnt) {
   }
 };
 // EXTERNAL MODULE: ./css/ModuleImage.css
-var ModuleImage = __webpack_require__(229);
+var ModuleImage = __webpack_require__(242);
 
 // EXTERNAL MODULE: ./css/FormatFunction.css
-var FormatFunction = __webpack_require__(231);
+var FormatFunction = __webpack_require__(244);
 
 // CONCATENATED MODULE: ./js/component/FormatFunction.js
 
@@ -56767,7 +59749,7 @@ descViewImagePreview.prototype.renderItems = function (data, index) {
       self.containImage.appendChild(dayThumnail);
     } else dataCheck[format] = dataCheck[format].concat([data[i]]);
 
-    self.containImage.indexElement++;
+    if (data[i].id !== undefined) self.containImage.indexElement = data[i].id;else self.containImage.indexElement++;
     var item = self.ItemTimeLine(data[i], self.containImage.indexElement);
     item.dayElement = dayThumnail;
     self.containImage.appendChild(item);
@@ -57311,12 +60293,11 @@ NewRealty_NewRealty.prototype.descView = function () {
       child: [this.detructView(), {
         tag: "div",
         "class": ["pizo-new-realty-desc-infomation-cell", "center-child"],
-        child: [// this.utilityView(),
-        this.convenientView()]
+        child: [this.convenientView(), this.contractView()]
       }, {
         tag: "div",
         "class": "pizo-new-realty-desc-infomation-cell",
-        child: [this.juridicalView(), this.historyView()]
+        child: [this.juridicalView(), this.historyView(), this.descViewImageThumnail(dataImage, 0, x)]
       }]
     }]
   });
@@ -57458,7 +60439,7 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
       switch (temp.index) {
         case undefined:
         case 0:
-          if (temp.nextSibling.classList.contains("adressItemCheck") && temp.nextSibling.value === "" || temp.nextSibling.value === undefined) {
+          if (temp.nextSibling.classList.contains("adressItemCheck") && (temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
             temp.nextSibling.selfRemove();
           }
 
@@ -58257,81 +61238,31 @@ NewRealty_NewRealty.prototype.convenientView = function () {
       child: [{
         tag: "div",
         "class": "pizo-new-realty-convenient-content-size",
-        child: [{
-          tag: "div",
-          "class": "pizo-new-realty-convenient-content-area-size-zone",
-          child: [{
-            tag: "span",
-            "class": "pizo-new-realty-convenient-content-area-tivi-label",
-            props: {
-              innerHTML: "Tivi"
-            }
-          }, {
-            tag: "input",
-            "class": ["pizo-new-realty-convenient-content-area-tivi", "pizo-new-realty-dectruct-input"],
-            attr: {
-              type: "number",
-              min: 0,
-              step: 1
-            }
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-new-realty-convenient-content-area-size-zone",
-          child: [{
-            tag: "span",
-            "class": "pizo-new-realty-convenient-content-area-fridge-label",
-            props: {
-              innerHTML: "Tủ lạnh"
-            }
-          }, {
-            tag: "input",
-            "class": ["pizo-new-realty-convenient-content-area-fridge", "pizo-new-realty-dectruct-input"],
-            attr: {
-              type: "number"
-            }
-          }]
-        }]
-      }, {
+        child: []
+      }]
+    }]
+  });
+
+  return temp;
+};
+
+NewRealty_NewRealty.prototype.convenientView = function () {
+  var temp = NewRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-convenient",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-convenient-tab",
+      props: {
+        innerHTML: "Tiện ích trong nhà"
+      }
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-convenient-content",
+      child: [{
         tag: "div",
         "class": "pizo-new-realty-convenient-content-size",
-        child: [{
-          tag: "div",
-          "class": "pizo-new-realty-convenient-content-area-size-zone",
-          child: [{
-            tag: "span",
-            "class": "pizo-new-realty-convenient-content-area-conditioning-label",
-            props: {
-              innerHTML: "Điều hòa"
-            }
-          }, {
-            tag: "input",
-            "class": ["pizo-new-realty-convenient-content-area-conditioning", "pizo-new-realty-dectruct-input"],
-            attr: {
-              type: "number",
-              min: 0,
-              step: 1
-            }
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-new-realty-convenient-content-area-size-zone",
-          child: [{
-            tag: "span",
-            "class": "pizo-new-realty-convenient-content-area-washing-label",
-            props: {
-              innerHTML: "Máy giặt"
-            }
-          }, {
-            tag: "input",
-            "class": ["pizo-new-realty-convenient-content-area-washing", "pizo-new-realty-dectruct-input"],
-            attr: {
-              type: "number",
-              min: 0,
-              step: 1
-            }
-          }]
-        }]
+        child: []
       }]
     }]
   });
@@ -58394,6 +61325,8 @@ NewRealty_NewRealty.prototype.juridicalView = function () {
 };
 
 NewRealty_NewRealty.prototype.historyView = function () {
+  var self = this;
+
   var temp = NewRealty_({
     tag: "div",
     "class": "pizo-new-realty-history",
@@ -58441,7 +61374,7 @@ NewRealty_NewRealty.prototype.flushDataToView = function () {
 
 NewRealty_NewRealty.prototype.start = function () {};
 
-function removeAccents(str) {
+function NewRealty_removeAccents(str) {
   var AccentsMap = ["aàảãáạăằẳẵắặâầẩẫấậ", "AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬ", "dđ", "DĐ", "eèẻẽéẹêềểễếệ", "EÈẺẼÉẸÊỀỂỄẾỆ", "iìỉĩíị", "IÌỈĨÍỊ", "oòỏõóọôồổỗốộơờởỡớợ", "OÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢ", "uùủũúụưừửữứự", "UÙỦŨÚỤƯỪỬỮỨỰ", "yỳỷỹýỵ", "YỲỶỸÝỴ"];
 
   for (var i = 0; i < AccentsMap.length; i++) {
@@ -58455,7 +61388,58 @@ function removeAccents(str) {
 }
 
 /* harmony default export */ var component_NewRealty = (NewRealty_NewRealty);
+// CONCATENATED MODULE: ./js/component/ModuleDatabase.js
+function ModuleDatabase() {
+  console.log(Fcore);
+}
+function loadData(phpLoader) {
+  var php = "https://lab.daithangminh.vn/home_co/pizo/php/php/load_help.php";
+  if (phpLoader !== undefined) php = phpLoader;
+  return new Promise(function (resolve, reject) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText.substr(2));
+        resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
+      } else {
+        console.log(this.responseText, this.status);
+      }
+    };
+
+    xhttp.open("GET", php, true);
+    xhttp.send();
+  });
+}
+function updateData(phpUpdater, data) {
+  var php;
+  if (phpUpdater !== undefined) php = phpUpdater;
+  return new Promise(function (resolve, reject) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
+      } else {
+        console.log(this.responseText, this.status);
+      }
+    };
+
+    xhttp.open("POST", php, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var stringSend = "";
+    var connect = "";
+
+    for (var param in data) {
+      stringSend += connect + param + "=" + encodeURIComponent(data[param]);
+      connect = "&";
+    }
+
+    xhttp.send(stringSend);
+  });
+}
 // CONCATENATED MODULE: ./js/page/ListRealty.js
+
 
 
 
@@ -58473,8 +61457,6 @@ function ListRealty_ListRealty() {
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
   this.ModuleView = new ModuleView_ModuleView();
-  this.NewRealty = new component_NewRealty();
-  this.NewRealty.attach(this);
 }
 
 ListRealty_ListRealty.prototype.setContainer = function (parent) {
@@ -58526,7 +61508,7 @@ ListRealty_ListRealty.prototype.getView = function () {
           "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              self.$view.selfRemove();
+              self.selfRemove();
               var arr = self.parent.body.getAllChild();
               self.parent.body.activeFrame(arr[arr.length - 1]);
             }
@@ -58537,10 +61519,12 @@ ListRealty_ListRealty.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              var frameAdd = self.NewRealty.getView();
-              self.parent.body.addChild(frameAdd);
-              self.parent.body.activeFrame(frameAdd);
-              self.NewRealty.setContainer(self.parent);
+              var mNewRealty = new component_NewRealty();
+              mNewRealty.attach(self.parent);
+              console.log(self.parent);
+              var frameview = mNewRealty.getView();
+              self.parent.body.addChild(frameview);
+              self.parent.body.activeFrame(frameview);
             }
           },
           child: ['<span>' + "Thêm" + '</span>']
@@ -58593,64 +61577,176 @@ ListRealty_ListRealty.prototype.getView = function () {
       }]
     }]
   });
-  var tableViewX;
-  var header = [{
-    type: "dragzone",
-    dragElement: false
-  }, {
-    type: "increase",
-    value: "#"
-  }, {
-    value: 'MS',
-    sort: true
-  }, 'Số nhà', {
-    value: 'Tên đường'
-  }, {
-    value: 'Phường/Xã'
-  }, {
-    value: 'Quận/Huyện'
-  }, {
-    value: 'Tỉnh/TP'
-  }, {
-    value: 'Ghi chú',
-    sort: true
-  }, {
-    value: 'Ngang',
-    sort: true
-  }, {
-    value: 'Dài',
-    sort: true
-  }, {
-    value: 'DT'
-  }, {
-    value: 'Kết cấu'
-  }, {
-    value: 'Hướng'
-  }, 'Giá', {
-    value: 'Giá m<sup>2</sup>'
-  }, {
-    value: 'Hiện trạng'
-  }, {
-    value: 'Ngày tạo'
-  }, {
-    type: "detail",
-    icon: "",
-    dragElement: false
-  }];
-  var dataTable = [[{}, {}, "10", "168/6B", "Xô Viết Nghệ Tĩnh", "P. 25", "Q. Bình Thạnh", "Hà nội", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""], [{}, {}, 5, "168/6B", "Xô Viết Nghệ Tĩnh", "P. 26", "Q. Bình Thạnh", "TP. Hồ Chí Minh", "...", 5.5, 13, 53, "2 tầng + sân thượng", "Bắc", "9.1 tỷ", "172,000", "Còn bán", "15:48 03/03/2020", ""]];
-  tableViewX = tableView(header, dataTable, true, true, 2);
-  tableViewX.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', this.$view));
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 1
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          var mNewRealty = new component_NewRealty();
+          mNewRealty.attach(self.parent);
+          console.log(self.parent);
+          var frameview = mNewRealty.getView();
+          self.parent.body.addChild(frameview);
+          self.parent.body.activeFrame(frameview);
+          break;
+
+        case 1:
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  var tabContainer = ListRealty_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+    child: []
+  });
+
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_activehomes.php").then(function (value) {
+    console.log(value);
+    var header = [{
+      type: "dragzone",
+      dragElement: false
+    }, {
+      type: "increase",
+      value: "#"
+    }, {
+      value: 'MS',
+      sort: true
+    }, 'Số nhà', {
+      value: 'Tên đường'
+    }, {
+      value: 'Phường/Xã'
+    }, {
+      value: 'Quận/Huyện'
+    }, {
+      value: 'Tỉnh/TP'
+    }, {
+      value: 'Ghi chú',
+      sort: true
+    }, {
+      value: 'Ngang',
+      sort: true
+    }, {
+      value: 'Dài',
+      sort: true
+    }, {
+      value: 'DT'
+    }, {
+      value: 'Kết cấu'
+    }, {
+      value: 'Hướng'
+    }, 'Giá', {
+      value: 'Giá m<sup>2</sup>'
+    }, {
+      value: 'Hiện trạng'
+    }, {
+      value: 'Ngày tạo'
+    }, {
+      type: "detail",
+      functionClickAll: functionClickMore,
+      icon: "",
+      dragElement: false
+    }];
+    self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
+    tabContainer.addChild(self.mTable);
+    self.mTable.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', self.$view));
+  });
   this.searchControl = this.searchControlContent();
   this.$view.addChild(ListRealty_({
     tag: "div",
     "class": ["pizo-list-realty-main"],
-    child: [this.searchControl, {
-      tag: "div",
-      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
-      child: [tableViewX]
-    }]
+    child: [this.searchControl, tabContainer]
   }));
   return this.$view;
+};
+
+ListRealty_ListRealty.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+  var checkElement;
+
+  for (var i = 0; i < data.length; i++) {
+    checkElement = parseInt(data[i].active) ? ListRealty_({
+      tag: "div",
+      "class": "tick-element"
+    }) : ListRealty_({
+      tag: "div",
+      "class": "cross-element"
+    });
+    var result = [{
+      value: "",
+      style: {
+        maxWidth: "21px"
+      }
+    }, {
+      value: data[i].title,
+      element: ListRealty_({
+        tag: "div",
+        child: [{
+          tag: "span",
+          "class": "title-label",
+          props: {
+            innerHTML: data[i].title
+          }
+        }, {
+          tag: "span",
+          "class": "alias-label",
+          props: {
+            innerHTML: " (Alias :" + data[i].alias + ")"
+          }
+        }]
+      })
+    }, {
+      value: data[i].active,
+      element: checkElement,
+      style: {
+        maxWidth: "21px"
+      }
+    }, {
+      value: "",
+      style: {
+        maxWidth: "21px"
+      }
+    }];
+    result.original = data[i];
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  console.log(temp);
+  return temp;
 };
 
 ListRealty_ListRealty.prototype.searchControlContent = function () {
@@ -59020,7 +62116,7 @@ ListRealty_ListRealty.prototype.start = function () {};
 
 /* harmony default export */ var page_ListRealty = (ListRealty_ListRealty);
 // EXTERNAL MODULE: ./css/ListWard.css
-var ListWard = __webpack_require__(233);
+var ListWard = __webpack_require__(246);
 
 // CONCATENATED MODULE: ./js/page/ListWard.js
 
@@ -59041,8 +62137,6 @@ function ListWard_ListWard() {
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
   this.ModuleView = new ModuleView_ModuleView();
-  this.NewRealty = new component_NewRealty();
-  this.NewRealty.attach(this);
 }
 
 ListWard_ListWard.prototype.setContainer = function (parent) {
@@ -59087,6 +62181,12 @@ ListWard_ListWard.prototype.getView = function () {
     child: [{
       "class": 'absol-single-page-header',
       child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý Phường/Xã"
+        }
+      }, {
         tag: "div",
         "class": "pizo-list-realty-button",
         child: [{
@@ -59485,7 +62585,7 @@ ListWard_ListWard.prototype.start = function () {};
 
 /* harmony default export */ var page_ListWard = (ListWard_ListWard);
 // EXTERNAL MODULE: ./css/ListStreet.css
-var ListStreet = __webpack_require__(235);
+var ListStreet = __webpack_require__(248);
 
 // CONCATENATED MODULE: ./js/page/ListStreet.js
 
@@ -59506,8 +62606,6 @@ function ListStreet_ListStreet() {
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
   this.ModuleView = new ModuleView_ModuleView();
-  this.NewRealty = new component_NewRealty();
-  this.NewRealty.attach(this);
 }
 
 ListStreet_ListStreet.prototype.setContainer = function (parent) {
@@ -59555,6 +62653,12 @@ ListStreet_ListStreet.prototype.getView = function () {
         tag: "div",
         "class": "pizo-list-realty-button",
         child: [{
+          tag: "span",
+          "class": "pizo-body-title-left",
+          props: {
+            innerHTML: "Quản lý Tên đường"
+          }
+        }, {
           tag: "button",
           "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
           on: {
@@ -59886,8 +62990,183 @@ ListStreet_ListStreet.prototype.start = function () {};
 
 /* harmony default export */ var page_ListStreet = (ListStreet_ListStreet);
 // EXTERNAL MODULE: ./css/ListState.css
-var ListState = __webpack_require__(237);
+var ListState = __webpack_require__(250);
 
+// EXTERNAL MODULE: ./css/NewState.css
+var NewState = __webpack_require__(252);
+
+// CONCATENATED MODULE: ./js/component/NewState.js
+
+
+
+
+
+
+
+
+
+var NewState_ = dom_Fcore._;
+var NewState_$ = dom_Fcore.$;
+
+function NewState_NewState() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.ModuleView = new ModuleView_ModuleView();
+  this.NewRealty = new component_NewRealty();
+  this.NewRealty.attach(this);
+}
+
+NewState_NewState.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(NewState_NewState.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewState_NewState.prototype.constructor = NewState_NewState;
+
+NewState_NewState.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+  this.$view = NewState_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Thêm Tỉnh/TP"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {}
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }]
+      }]
+    }]
+  });
+  this.$view.addChild(NewState_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [{
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [{
+        tag: "div",
+        "class": "pizo-new-state-container",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-state-container-name-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-name-container-label",
+            props: {
+              innerHTML: "Tên"
+            }
+          }, {
+            tag: "input",
+            "class": ["pizo-new-state-container-name-container-input", "pizo-new-realty-dectruct-input"]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-container-type-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-type-container-label",
+            props: {
+              innerHTML: "Loại"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-state-container-type-container-input",
+            props: {
+              items: [{
+                text: "Thành phố trực thuộc trung ương",
+                value: 79
+              }, {
+                text: "Tỉnh",
+                value: 80
+              }]
+            }
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-container-nation-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-nation-container-label",
+            props: {
+              innerHTML: "Quốc gia"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-state-container-nation-container-input",
+            props: {
+              items: [{
+                text: "Việt Nam",
+                value: 79
+              }]
+            }
+          }]
+        }]
+      }]
+    }]
+  }));
+  return this.$view;
+};
+
+NewState_NewState.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+NewState_NewState.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+NewState_NewState.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+NewState_NewState.prototype.start = function () {};
+
+/* harmony default export */ var component_NewState = (NewState_NewState);
 // CONCATENATED MODULE: ./js/page/ListState.js
 
 
@@ -59907,8 +63186,6 @@ function ListState_ListState() {
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
   this.ModuleView = new ModuleView_ModuleView();
-  this.NewRealty = new component_NewRealty();
-  this.NewRealty.attach(this);
 }
 
 ListState_ListState.prototype.setContainer = function (parent) {
@@ -60017,6 +63294,50 @@ ListState_ListState.prototype.getView = function () {
     }]
   });
   var tableViewX;
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 1
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          var mNewState = new component_NewState();
+          mNewState.attach(self.parent);
+          console.log(self.parent);
+          var frameview = mNewState.getView();
+          self.parent.body.addChild(frameview);
+          self.parent.body.activeFrame(frameview);
+          break;
+
+        case 1:
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
   var header = [{
     type: "dragzone",
     dragElement: false
@@ -60037,6 +63358,7 @@ ListState_ListState.prototype.getView = function () {
     sort: true
   }, {
     type: "detail",
+    functionClickAll: functionClickMore,
     dragElement: false
   }];
   var dataTable = [[{}, {}, '79', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '80', 'Thủ đô Hà Nội', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}]];
@@ -60088,7 +63410,7 @@ ListState_ListState.prototype.start = function () {};
 
 /* harmony default export */ var page_ListState = (ListState_ListState);
 // EXTERNAL MODULE: ./css/ListDitrict.css
-var ListDitrict = __webpack_require__(239);
+var ListDitrict = __webpack_require__(254);
 
 // CONCATENATED MODULE: ./js/page/ListDitrict.js
 
@@ -60109,8 +63431,6 @@ function ListDitrict_ListDitrict() {
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
   this.ModuleView = new ModuleView_ModuleView();
-  this.NewRealty = new component_NewRealty();
-  this.NewRealty.attach(this);
 }
 
 ListDitrict_ListDitrict.prototype.setContainer = function (parent) {
@@ -60155,6 +63475,12 @@ ListDitrict_ListDitrict.prototype.getView = function () {
     child: [{
       "class": 'absol-single-page-header',
       child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý Quận/Huyện"
+        }
+      }, {
         tag: "div",
         "class": "pizo-list-realty-button",
         child: [{
@@ -60361,11 +63687,14 @@ ListDitrict_ListDitrict.prototype.searchControlContent = function () {
               props: {
                 enableSearch: true,
                 items: [{
+                  text: "Tất cả",
+                  value: -1
+                }, {
                   text: 'Thành phố Hồ Chí Minh',
-                  id: 79
+                  value: 79
                 }, {
                   text: 'Thủ đô Hà Nội',
-                  id: 80
+                  value: 80
                 }]
               }
             }]
@@ -60521,7 +63850,7 @@ ListDitrict_ListDitrict.prototype.start = function () {};
 
 /* harmony default export */ var page_ListDitrict = (ListDitrict_ListDitrict);
 // EXTERNAL MODULE: ./css/PlanningInformation.css
-var PlanningInformation = __webpack_require__(241);
+var PlanningInformation = __webpack_require__(256);
 
 // CONCATENATED MODULE: ./js/page/PlanningInformation.js
 
@@ -60541,8 +63870,6 @@ function PlanningInformation_PlanningInformation() {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.NewRealty = new component_NewRealty();
-  this.NewRealty.attach(this);
 }
 
 PlanningInformation_PlanningInformation.prototype.setContainer = function (parent) {
@@ -60639,6 +63966,12 @@ PlanningInformation_PlanningInformation.prototype.getView = function () {
     child: [{
       "class": 'absol-single-page-header',
       child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Thông tin quy hoạch"
+        }
+      }, {
         tag: "div",
         "class": "pizo-list-realty-button",
         child: [{
@@ -60922,7 +64255,2038 @@ PlanningInformation_PlanningInformation.prototype.flushDataToView = function () 
 PlanningInformation_PlanningInformation.prototype.start = function () {};
 
 /* harmony default export */ var page_PlanningInformation = (PlanningInformation_PlanningInformation);
+// EXTERNAL MODULE: ./css/ListHelp.css
+var ListHelp = __webpack_require__(61);
+
+// EXTERNAL MODULE: ./css/HelpContainer.css
+var HelpContainer = __webpack_require__(259);
+
+// CONCATENATED MODULE: ./js/component/HelpContainer.js
+
+
+
+
+
+
+
+var HelpContainer_ = dom_Fcore._;
+var HelpContainer_$ = dom_Fcore.$;
+
+function HelpContainer_HelpContainer() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  if (this.$view) return this.$view;
+  var self = this;
+  var header = [{}];
+  var row1 = ['Giới thiệu'];
+  row1.child = [['Giới thiệu phần mềm Bsc2Kpi'], ['Quy trình nhập liệu hồ sơ mới']];
+  var row2 = ['Giới thiệu'];
+  row2.child = [['Giới thiệu phần mềm Bsc2Kpi'], ['Quy trình nhập liệu hồ sơ mới']];
+  var row3 = ['Giới thiệu'];
+  row3.child = [['Giới thiệu phần mềm Bsc2Kpi'], ['Quy trình nhập liệu hồ sơ mới']];
+  var data = [row1, ['Menu tổng quan'], ['Menu BSC'], ['Menu đề xuất'], ['Menu duyệt'], ['Menu danh mục'], ['Menu báo cáo'], ['Menu hệ thống'], ['Menu người dùng'], row2, ['Menu tổng quan'], ['Menu BSC'], ['Menu đề xuất'], ['Menu duyệt'], ['Menu danh mục'], ['Menu báo cáo'], ['Menu hệ thống'], ['Menu người dùng'], row3, ['Menu tổng quan'], ['Menu BSC'], ['Menu đề xuất'], ['Menu duyệt'], ['Menu danh mục'], ['Menu báo cáo'], ['Menu hệ thống'], ['Menu người dùng']];
+  var mTable = new tableView(header, data, false, false, 0);
+  this.$view = HelpContainer_({
+    tag: "table",
+    "class": "b-workZone__layout",
+    child: [{
+      tag: "tbody",
+      child: [{
+        tag: "tr",
+        child: [{
+          tag: "td",
+          "class": ["b-workZone__side", "m-workZone__side__nav"],
+          child: [{
+            tag: "div",
+            "class": ["b-workZone__content", "m-workZone__content__nav"],
+            props: {
+              id: "workZone_nav"
+            },
+            child: [{
+              tag: "tabview",
+              "class": "absol-tab-frame-small",
+              props: {
+                value: 0
+              },
+              style: {
+                width: "fit-content"
+              },
+              child: [{
+                tag: "tabframe",
+                attr: {
+                  name: "Menu",
+                  id: "matd",
+                  desc: ""
+                },
+                child: [mTable]
+              }, {
+                tag: "tabframe",
+                attr: {
+                  name: "Search",
+                  id: "matd3",
+                  desc: ""
+                },
+                child: [{
+                  tag: "span",
+                  props: {
+                    innerHTML: "3"
+                  }
+                }]
+              }]
+            }]
+          }]
+        }, {
+          tag: "td",
+          "class": ["b-workZone__side", "m-workZone__side__article"],
+          props: {
+            id: "workZone_article"
+          },
+          child: [{
+            tag: "div",
+            "class": "b-workZone__content",
+            props: {
+              id: "workZone_article__content"
+            },
+            child: [{
+              tag: "div",
+              "class": "b-article",
+              child: [{
+                tag: "div",
+                "class": "b-article__headerLayout",
+                props: {
+                  id: "article__header"
+                },
+                child: [{
+                  tag: "div",
+                  "class": ["b-article__headerSide", "m-article__headerSide__nav"],
+                  props: {
+                    id: "headerSide__nav"
+                  },
+                  child: [{
+                    tag: "ul",
+                    "class": "b-breadCrumbs__items",
+                    child: [{
+                      tag: "li",
+                      "class": "b-breadCrumbs__item",
+                      props: {
+                        innerHTML: "Introduction"
+                      }
+                    }]
+                  }]
+                }, {
+                  tag: "div",
+                  "class": ["b-article__headerSide", "m-article__headerSide__buttons"],
+                  props: {
+                    id: "headerSide__buttons"
+                  },
+                  child: [{
+                    tag: "ul",
+                    "class": "b-controlButtons__items",
+                    child: [{
+                      tag: "li",
+                      "class": ["b-controlButtons__item", "m-controlButtons__item__prev"],
+                      child: [{
+                        tag: "i",
+                        "class": "material-icons",
+                        props: {
+                          innerHTML: "arrow_back"
+                        }
+                      }, {
+                        tag: "span",
+                        "class": "b-controlButtons__link_text",
+                        props: {
+                          innerHTML: " Previous page"
+                        }
+                      }]
+                    }, {
+                      tag: "li",
+                      "class": ["b-controlButtons__item", "m-controlButtons__item__next"],
+                      child: [{
+                        tag: "span",
+                        "class": "b-controlButtons__link_text",
+                        props: {
+                          innerHTML: " Next page"
+                        }
+                      }, {
+                        tag: "i",
+                        "class": "material-icons",
+                        props: {
+                          innerHTML: "arrow_forward"
+                        }
+                      }]
+                    }, {
+                      tag: "li",
+                      "class": ["b-controlButtons__item", "m-controlButtons__item__print"],
+                      child: [{
+                        tag: "i",
+                        "class": "material-icons",
+                        props: {
+                          innerHTML: "print"
+                        }
+                      }, {
+                        tag: "span",
+                        "class": "b-controlButtons__link_text",
+                        props: {
+                          innerHTML: "Print"
+                        }
+                      }]
+                    }]
+                  }]
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  });
+  return this.$view;
+}
+
+Object.defineProperties(HelpContainer_HelpContainer.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+HelpContainer_HelpContainer.prototype.constructor = HelpContainer_HelpContainer;
+
+HelpContainer_HelpContainer.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+HelpContainer_HelpContainer.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+HelpContainer_HelpContainer.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+HelpContainer_HelpContainer.prototype.start = function () {};
+
+/* harmony default export */ var component_HelpContainer = (HelpContainer_HelpContainer);
+// CONCATENATED MODULE: ./js/page/ListHelp.js
+
+
+
+
+
+
+
+var ListHelp_ = dom_Fcore._;
+var ListHelp_$ = dom_Fcore.$;
+
+function ListHelp_ListHelp() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+}
+
+ListHelp_ListHelp.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListHelp_ListHelp.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListHelp_ListHelp.prototype.constructor = ListHelp_ListHelp;
+
+ListHelp_ListHelp.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+  var containerHelp = new component_HelpContainer();
+  this.$view = ListHelp_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Thêm Tỉnh/TP"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {}
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }]
+      }]
+    }]
+  });
+  this.$view.addChild(ListHelp_({
+    tag: "div",
+    "class": ["pizo-list-help-main"],
+    child: [containerHelp]
+  }));
+  return this.$view;
+};
+
+ListHelp_ListHelp.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListHelp_ListHelp.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListHelp_ListHelp.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListHelp_ListHelp.prototype.start = function () {};
+
+/* harmony default export */ var page_ListHelp = (ListHelp_ListHelp);
+// EXTERNAL MODULE: ./css/EditHelpContainer.css
+var EditHelpContainer = __webpack_require__(261);
+
+// EXTERNAL MODULE: ./css/NewCategory.css
+var NewCategory = __webpack_require__(263);
+
+// CONCATENATED MODULE: ./js/component/EditHelpContainer.js
+
+
+
+
+
+
+
+
+
+
+var EditHelpContainer_ = dom_Fcore._;
+var EditHelpContainer_$ = dom_Fcore.$;
+
+function EditHelpContainer_EditHelpContainer(phpLoader) {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  var self = this;
+  if (this.$view) return this.$view;
+
+  var tabContainer = EditHelpContainer_({
+    tag: "tabframe",
+    "class": "header-display-visiable",
+    attr: {
+      name: "Menu",
+      id: "matd",
+      desc: ""
+    },
+    child: []
+  });
+
+  this.$view = EditHelpContainer_({
+    tag: "table",
+    "class": "b-workZone__layout"
+  });
+  Object.assign(this.$view, EditHelpContainer_EditHelpContainer.prototype);
+  this.$view.editor = this.$view.itemEdit();
+
+  var listParent = EditHelpContainer_({
+    tag: "selectmenu",
+    "class": ["pizo-new-state-selectbox-container-input", "pizo-new-realty-dectruct-input"],
+    style: {
+      backGroundColor: ""
+    },
+    props: {
+      enableSearch: true
+    }
+  });
+
+  listParent.updateItemList = function () {
+    listParent.items = self.$view.formatDataRowChoice(self.$view.getDataCurrent());
+  };
+
+  var active = EditHelpContainer_({
+    tag: "switch"
+  });
+
+  var updateTableFunction;
+  loadData(phpLoader).then(function (value) {
+    console.log(value);
+    var header = [{
+      type: "dragzone"
+    }, {
+      value: "Title",
+      sort: true,
+      functionClickAll: self.$view.functionClickDetail.bind(self.$view),
+      style: {
+        minWidth: "unset !important"
+      }
+    }, "Publish", {
+      type: "detail",
+      style: {
+        maxWidth: "21px"
+      },
+      functionClickAll: self.$view.functionClickMore.bind(self.$view),
+      icon: ""
+    }];
+    self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
+    tabContainer.addChild(self.$view.mTable);
+    updateTableFunction = self.$view.mTable.updateTable.bind(self.$view.mTable);
+
+    self.$view.mTable.updateTable = function () {
+      updateTableFunction.apply(self.$view.mTable, arguments);
+      self.$view.resetChoice(self.$view.mTable.bodyTable);
+    };
+
+    listParent.updateItemList();
+    self.$view.resetChoice(self.$view.mTable.bodyTable);
+  });
+
+  var input = EditHelpContainer_({
+    tag: "input",
+    "class": "input-search-list",
+    props: {
+      type: "text",
+      placeholder: "Search"
+    }
+  });
+
+  this.$view.addChild(EditHelpContainer_({
+    tag: "tbody",
+    child: [{
+      tag: "tr",
+      child: [{
+        tag: "td",
+        "class": ["b-workZone__side", "m-workZone__side__nav"],
+        child: [{
+          tag: "div",
+          "class": ["b-workZone__content", "m-workZone__content__nav"],
+          props: {
+            id: "workZone_nav"
+          },
+          child: [{
+            tag: "tabview",
+            "class": "absol-tab-frame-small",
+            style: {
+              width: "fit-content"
+            },
+            child: [tabContainer, {
+              tag: "tabframe",
+              attr: {
+                name: "Search",
+                id: "matd3",
+                desc: ""
+              },
+              child: [{
+                tag: "div",
+                "class": ["absol-single-page-scroller"],
+                child: [{
+                  tag: "div",
+                  "class": "js-stools-container-bar",
+                  child: [{
+                    tag: "div",
+                    "class": ["btn-wrapper", "input-append"],
+                    child: [input]
+                  }]
+                }]
+              }]
+            }]
+          }]
+        }]
+      }, {
+        tag: "td",
+        "class": ["b-workZone__side", "m-workZone__side__article"],
+        props: {
+          id: "workZone_article"
+        },
+        child: [{
+          tag: "div",
+          "class": "b-workZone__content",
+          props: {
+            id: "workZone_article__content"
+          },
+          child: [{
+            tag: "div",
+            "class": "b-article",
+            child: [{
+              tag: "div",
+              "class": "b-article__headerLayout-edit",
+              props: {
+                id: "article__header"
+              },
+              child: [{
+                tag: "div",
+                "class": ["b-article__headerSide", "m-article__headerSide__nav"],
+                props: {
+                  id: "headerSide__nav"
+                },
+                child: [{
+                  tag: "ul",
+                  "class": "b-breadCrumbs__items",
+                  child: [{
+                    tag: "div",
+                    "class": "pizo-new-catergory-container",
+                    child: [{
+                      tag: "div",
+                      "class": "pizo-new-category-container-name",
+                      child: [{
+                        tag: "div",
+                        "class": "pizo-new-category-container-name-container",
+                        child: [{
+                          tag: "span",
+                          "class": "pizo-new-category-container-name-container-label",
+                          props: {
+                            innerHTML: "Tên"
+                          }
+                        }, {
+                          tag: "input",
+                          "class": ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
+                          on: {
+                            change: function change(event) {
+                              if (self.$view.alias.value === "" || self.$view.aliasErorr.classList.contains("hasErrorElement")) {
+                                self.$view.alias.value = createAlias(this.value);
+                                self.$view.alias.dispatchEvent(new Event("input"));
+                              }
+                            }
+                          }
+                        }]
+                      }]
+                    }, {
+                      tag: "div",
+                      "class": "pizo-new-category-container-alias-active",
+                      child: [{
+                        tag: "div",
+                        "class": "pizo-new-category-container-alias",
+                        child: [{
+                          tag: "div",
+                          "class": "pizo-new-category-container-alias-container",
+                          child: [{
+                            tag: "span",
+                            "class": "pizo-new-category-container-alias-container-label",
+                            props: {
+                              innerHTML: "Alias"
+                            },
+                            child: [{
+                              tag: "span",
+                              "class": "pizo-new-realty-location-detail-row-label-important",
+                              props: {
+                                innerHTML: "*"
+                              }
+                            }]
+                          }, {
+                            tag: "input",
+                            "class": ["pizo-new-category-container-alias-container-input", "pizo-new-realty-dectruct-input"],
+                            on: {
+                              input: function input(event) {
+                                var parent = this.parentNode.parentNode;
+                                console.log(parent);
+
+                                if (this.value == "") {
+                                  if (!parent.classList.contains("hasErrorElement")) parent.classList.add("hasErrorElement");
+                                  if (!parent.classList.contains("invalid-error")) parent.classList.add("invalid-error");
+                                } else {
+                                  if (parent.classList.contains("invalid-error")) parent.classList.remove("invalid-error");
+                                }
+
+                                if (listParent.items.check[this.value] !== undefined && self.$view.rowSelected.data.original.alias !== this.value) {
+                                  if (!parent.classList.contains("hasErrorElement")) parent.classList.add("hasErrorElement");
+                                  if (!parent.classList.contains("used-error")) parent.classList.add("used-error");
+                                } else {
+                                  if (parent.classList.contains("used-error")) parent.classList.remove("used-error");
+                                }
+
+                                console.log(!parent.classList.contains("used-error"), !parent.classList.contains("invalid-error"), parent.classList.contains("hasErrorElement"));
+                                console.log(!parent.classList.contains("used-error"), !parent.classList.contains("invalid-error"), parent.classList.contains("hasErrorElement"));
+                                if (!parent.classList.contains("used-error") && !parent.classList.contains("invalid-error") && parent.classList.contains("hasErrorElement")) parent.classList.remove("hasErrorElement");
+                              },
+                              keypress: function keypress(event) {
+                                allowNumbersOnly(event);
+                              }
+                            }
+                          }]
+                        }, {
+                          tag: "span",
+                          "class": ["pizo-new-realty-location-detail-row-label-important", "label-used-error"],
+                          props: {
+                            innerHTML: "Alias không có sẳn để sử dụng"
+                          }
+                        }, {
+                          tag: "span",
+                          "class": ["pizo-new-realty-location-detail-row-label-important", "label-invalid-error"],
+                          props: {
+                            innerHTML: "Alias không thể để trống"
+                          }
+                        }]
+                      }, {
+                        tag: "div",
+                        "class": "pizo-new-state-publish",
+                        child: [{
+                          tag: "div",
+                          "class": "pizo-new-state-publish-container",
+                          child: [{
+                            tag: "span",
+                            "class": "pizo-new-category-container-publish-container-label",
+                            props: {
+                              innerHTML: "Xuất bản"
+                            }
+                          }, active]
+                        }]
+                      }]
+                    }, {
+                      tag: "div",
+                      "class": "pizo-new-state-selectbox",
+                      child: [{
+                        tag: "div",
+                        "class": "pizo-new-state-selectbox-container",
+                        child: [{
+                          tag: "span",
+                          "class": "pizo-new-state-selectbox-container-label",
+                          props: {
+                            innerHTML: "Danh mục cha"
+                          }
+                        }, listParent]
+                      }]
+                    }]
+                  }]
+                }]
+              }]
+            }, {
+              tag: "div",
+              "class": ["b-article__wrapper", "os-host", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
+              child: [self.$view.editor]
+            }]
+          }]
+        }]
+      }]
+    }]
+  }));
+  var scrollLeftContainer = EditHelpContainer_$('div.b-workZone__content.m-workZone__content__nav#workZone_nav div.absol-tabview.absol-tab-frame-small', this.$view);
+  scrollLeftContainer.activeTab("matd");
+
+  for (var i = 0; i < scrollLeftContainer.childNodes.length; i++) {
+    scrollLeftContainer.childNodes[i].classList.add("absol-single-page-scroller");
+  }
+
+  this.$view.name = EditHelpContainer_$('input.pizo-new-category-container-name-container-input.pizo-new-realty-dectruct-input', this.$view);
+  this.$view.alias = EditHelpContainer_$('input.pizo-new-category-container-alias-container-input.pizo-new-realty-dectruct-input', this.$view);
+  this.$view.listParent = listParent;
+  this.$view.aliasErorr = EditHelpContainer_$('div.pizo-new-category-container-alias', this.$view);
+  this.$view.active = active;
+  return this.$view;
+}
+
+Object.defineProperties(EditHelpContainer_EditHelpContainer.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+EditHelpContainer_EditHelpContainer.prototype.constructor = EditHelpContainer_EditHelpContainer;
+
+EditHelpContainer_EditHelpContainer.prototype.functionClickMore = function (event, me, index, parent, data, row) {
+  console.log(this);
+  var self = this;
+  var docTypeMemuProps = {
+    items: [{
+      text: 'Thêm',
+      icon: 'span.material-icons.material-icons-add',
+      value: 0
+    }, // {
+    //     text: 'Sửa',
+    //     icon: 'i.material-icons.material-icons-edit',
+    //     value: 1,
+    // },
+    {
+      text: 'Xóa',
+      icon: 'span.material-icons.material-icons-delete',
+      value: 2
+    }]
+  };
+  var token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+    switch (menuItem.value) {
+      case 0:
+        self.add(row.data.original.id, row);
+        break;
+      // case 1:
+      //     self.edit(data,parent,index);
+      //     break;
+
+      case 2:
+        self["delete"](row.data.original, parent, index);
+        break;
+    }
+  });
+
+  var functionX = function (token) {
+    return function () {
+      var x = function x(event) {
+        absol.QuickMenu.close(token);
+        document.body.removeEventListener("click", x);
+      };
+
+      document.body.addEventListener("click", x);
+    };
+  }(token);
+
+  setTimeout(functionX, 10);
+};
+
+EditHelpContainer_EditHelpContainer.prototype.functionClickDetail = function (event, me, index, parent, data, row) {
+  if (this.alias.parentNode.parentNode.classList.contains("hasErrorElement")) return;
+  if (this.saveDataCurrent(row) === true) return;
+  row.indexDetail = index;
+  row.parentDetail = parent;
+  this.rowSelected = row;
+  row.classList.add("choice-event-category");
+  this.setDataTitle(data.original);
+  this.editor.setData(data.original.fulltext);
+  this.alias.dispatchEvent(new Event("input"));
+};
+
+EditHelpContainer_EditHelpContainer.prototype.saveDataCurrent = function (row) {
+  var arr = this.getElementsByClassName("choice-event-category");
+  var isRemove = true;
+  if (arr.length !== 0) arr = arr[0];
+  if (arr == row) return true;
+  if (row === undefined) isRemove = false;
+  var value = {
+    title: this.name.value,
+    alias: this.alias.value,
+    fulltext: this.editor.getData(),
+    active: this.active.checked ? 1 : 0,
+    parent_id: this.listParent.value
+  };
+
+  if (isRemove) {
+    arr.classList.remove("choice-event-category");
+  }
+
+  var rowSelected = this.editView(value, arr.data, arr.parentDetail, arr.indexDetail);
+
+  if (!isRemove) {
+    console.log(arr);
+    rowSelected.parentDetail = arr.parentDetail;
+    rowSelected.indexDetail = arr.indexDetail;
+  }
+
+  return false;
+};
+
+EditHelpContainer_EditHelpContainer.prototype.resetChoice = function (bodyTable) {
+  var choice = this.getElementsByClassName("choice-event-category");
+
+  if (choice.length == 0) {
+    bodyTable.childNodes[0].indexDetail = 0;
+    console.log(this.mTable);
+    bodyTable.childNodes[0].parentDetail = this.mTable;
+    this.rowSelected = bodyTable.childNodes[0];
+    bodyTable.childNodes[0].classList.add("choice-event-category");
+    this.setDataTitle(bodyTable.childNodes[0].data.original);
+    this.editor.setData(bodyTable.childNodes[0].data.original.fulltext);
+    this.alias.dispatchEvent(new Event("input"));
+  }
+};
+
+EditHelpContainer_EditHelpContainer.prototype.functionChoice = function (event, me, index, parent, data, row) {
+  var self = this;
+  var arr = this.getElementsByClassName("choice-list-category");
+  if (arr.length !== 0) arr = arr[0];
+  var today = new Date();
+  if (self.modal.clickTime === undefined) self.modal.clickTime = 0;
+
+  if (arr == row && today - self.modal.clickTime < 300) {
+    self.modal.selfRemove();
+    self.modal.resolve(event, me, index, parent, data, row);
+  }
+
+  self.modal.clickTime = today;
+  if (arr.length !== 0) arr.classList.remove("choice-list-category");
+  row.classList.add("choice-list-category");
+};
+
+EditHelpContainer_EditHelpContainer.prototype.syncRow = function (arr) {
+  this.saveDataCurrent();
+};
+
+EditHelpContainer_EditHelpContainer.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+  var checkElement;
+
+  for (var i = 0; i < data.length; i++) {
+    checkElement = parseInt(data[i].active) ? EditHelpContainer_({
+      tag: "div",
+      "class": "tick-element"
+    }) : EditHelpContainer_({
+      tag: "div",
+      "class": "cross-element"
+    });
+    var result = [{
+      value: "",
+      style: {
+        maxWidth: "21px"
+      }
+    }, {
+      value: data[i].title,
+      element: EditHelpContainer_({
+        tag: "div",
+        child: [{
+          tag: "span",
+          "class": "title-label",
+          props: {
+            innerHTML: data[i].title
+          }
+        }, {
+          tag: "span",
+          "class": "alias-label",
+          props: {
+            innerHTML: " (Alias :" + data[i].alias + ")"
+          }
+        }]
+      })
+    }, {
+      value: data[i].active,
+      element: checkElement,
+      style: {
+        maxWidth: "21px"
+      }
+    }, {
+      value: "",
+      style: {
+        maxWidth: "21px"
+      }
+    }];
+    result.original = data[i];
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  console.log(temp);
+  return temp;
+};
+
+EditHelpContainer_EditHelpContainer.prototype.formatDataRowList = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = [{
+      value: data[i].title,
+      element: EditHelpContainer_({
+        tag: "div",
+        child: [{
+          tag: "span",
+          "class": "title-label",
+          props: {
+            innerHTML: data[i].title
+          }
+        }]
+      })
+    }, {
+      value: data[i].created,
+      style: {
+        minWidth: "150px"
+      }
+    }, {
+      value: data[i].id
+    }];
+    result.original = data[i];
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  console.log(temp);
+  return temp;
+};
+
+EditHelpContainer_EditHelpContainer.prototype.formatDataRowChoice = function () {
+  var self = this;
+  var array = [{
+    text: "Danh mục cao nhất",
+    value: 0
+  }];
+  var check = [];
+  var dataParent = self.getDataCurrent();
+
+  for (var i = 0; i < dataParent.length; i++) {
+    array[i + 1] = {
+      text: dataParent[i].title,
+      value: parseFloat(dataParent[i].id)
+    };
+    if (self.data == undefined) check[dataParent[i].alias] = dataParent[i];
+  }
+
+  array.check = check;
+  return array;
+};
+
+EditHelpContainer_EditHelpContainer.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+EditHelpContainer_EditHelpContainer.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+EditHelpContainer_EditHelpContainer.prototype["default"] = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var ordering = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+  return {
+    active: 0,
+    fulltext: "",
+    ordering: ordering,
+    parent_id: parent_id,
+    title: "New Category",
+    alias: ""
+  };
+};
+
+EditHelpContainer_EditHelpContainer.prototype.add = function () {
+  var parentid = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.mTable;
+  var self = this;
+  self.addView(undefined, row, parentid);
+};
+
+EditHelpContainer_EditHelpContainer.prototype.addView = function (value, row, parent_id) {
+  if (value == undefined) {
+    value = this["default"](parent_id, row.childrenNodes.length);
+  }
+
+  var checkElement = parseInt(value.active) ? EditHelpContainer_({
+    tag: "div",
+    "class": "tick-element"
+  }) : EditHelpContainer_({
+    tag: "div",
+    "class": "cross-element"
+  });
+  var result = [{
+    value: "",
+    style: {
+      maxWidth: "21px"
+    }
+  }, {
+    value: value.title,
+    element: EditHelpContainer_({
+      tag: "div",
+      child: [{
+        tag: "span",
+        "class": "title-label",
+        props: {
+          innerHTML: value.title
+        }
+      }, {
+        tag: "span",
+        "class": "alias-label",
+        props: {
+          innerHTML: " (Alias :" + value.alias + ")"
+        }
+      }]
+    })
+  }, {
+    value: parseInt(value.active),
+    element: checkElement,
+    style: {
+      maxWidth: "21px"
+    }
+  }, {
+    value: "",
+    style: {
+      maxWidth: "21px"
+    }
+  }];
+  result.original = value;
+  var temp = row.insertRow(result);
+  temp.scrollIntoView(true);
+  this.listParent.updateItemList();
+};
+
+EditHelpContainer_EditHelpContainer.prototype.addDB = function (value) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_help.php";
+  if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, value).then(function (result) {
+    value.id = result;
+  });
+};
+
+EditHelpContainer_EditHelpContainer.prototype.edit = function (data, parent, index) {
+  console.log(data);
+  var self = this;
+};
+
+EditHelpContainer_EditHelpContainer.prototype.editView = function (value, data, parent, index) {
+  var isChangeView = false;
+
+  if (data.original.id != undefined) {
+    if (data.original.title !== value.title) data.original.isTitle = true;
+    if (data.original.alias !== value.alias) data.original.isAlias = true;
+    if (data.original.active !== value.active) data.original.isActive = true;
+
+    if (value.fulltext !== undefined) {
+      if (data.original.fulltext !== value.fulltext) data.original.isFulltext = true;
+    }
+
+    if (data.original.parent_id !== value.parent_id) data.original.isParent_id = true;
+  }
+
+  data.original.title = value.title;
+  data.original.alias = value.alias;
+  data.original.active = parseInt(value.active);
+  if (value.fulltext !== undefined) data.original.fulltext = value.fulltext;
+
+  if (data.original.parent_id != value.parent_id) {
+    isChangeView = true;
+  }
+
+  data.original.parent_id = value.parent_id;
+  var checkElement = parseInt(value.active) ? EditHelpContainer_({
+    tag: "div",
+    "class": "tick-element"
+  }) : EditHelpContainer_({
+    tag: "div",
+    "class": "cross-element"
+  });
+  data[1] = {
+    value: data.title,
+    element: EditHelpContainer_({
+      tag: "div",
+      child: [{
+        tag: "span",
+        "class": "title-label",
+        props: {
+          innerHTML: data.original.title
+        }
+      }, {
+        tag: "span",
+        "class": "alias-label",
+        props: {
+          innerHTML: " (Alias :" + data.original.alias + ")"
+        }
+      }]
+    }),
+    style: {
+      maxWidth: "150px"
+    }
+  };
+  data[2] = {
+    value: value.active,
+    element: checkElement,
+    style: {
+      maxWidth: "21px"
+    }
+  };
+  var indexOF = index,
+      element = parent;
+
+  if (isChangeView === true) {
+    var element;
+    if (value.parent_id == 0) element = parent.bodyTable.parentNode;else for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
+      if (parent.bodyTable.childNodes[i].data.original.id == value.parent_id) {
+        element = parent.bodyTable.childNodes[i];
+        break;
+      }
+    }
+    parent.changeParent(index, element);
+  }
+
+  var temp = element.updateRow(data, indexOF, true);
+  this.listParent.updateItemList();
+  return temp;
+};
+
+EditHelpContainer_EditHelpContainer.prototype.editDB = function (mNewCategory, data, parent, index) {
+  var self = this;
+  mNewCategory.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_help.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewCategory.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewCategory.promiseEditDB !== undefined) self.editDB(mNewCategory, data, parent, index);
+    }, 10);
+  });
+};
+
+EditHelpContainer_EditHelpContainer.prototype.editContentAll = function () {
+  var self = this;
+  self.syncRow();
+  var sync = self.mTable.data;
+  self.updateChild(sync);
+};
+
+EditHelpContainer_EditHelpContainer.prototype.updateChild = function (child) {
+  var self = this;
+  var dataUpdate = {};
+  var isUpdate;
+
+  for (var i = 0; i < child.length; i++) {
+    if (child[i].original.id == undefined) {
+      self.addDB(child[i].original);
+    } else {
+      isUpdate = false;
+      dataUpdate.id = child[i].original.id;
+
+      if (child[i].original.isTitle === true) {
+        isUpdate = true;
+        dataUpdate.title = child[i].original.title;
+        child[i].original.isTitle = false;
+      }
+
+      if (child[i].original.isAlias === true) {
+        isUpdate = true;
+        dataUpdate.alias = child[i].original.alias;
+        child[i].original.isAlias = false;
+      }
+
+      if (child[i].original.isActive === true) {
+        isUpdate = true;
+        dataUpdate.active = child[i].original.active;
+        child[i].original.isActive = false;
+      }
+
+      if (child[i].original.isParent_id === true) {
+        isUpdate = true;
+        dataUpdate.parent_id = child[i].original.parent_id;
+        child[i].original.isParent_id = false;
+      }
+
+      if (child[i].original.isFulltext === true) {
+        isUpdate = true;
+        dataUpdate.fulltext = child[i].original.fulltext;
+        child[i].original.isFulltext = false;
+      }
+
+      if (isUpdate || child[i].original.ordering != i) {
+        if (child[i].original.ordering != i) child[i].original.ordering = i;
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_help_time.php";
+        if (self.phpUpdateTimeContent) phpFile = self.phpUpdateTimeContent;
+        updateData(phpFile, dataUpdate);
+      }
+    }
+
+    if (child[i].child.length !== 0) this.updateChild(child[i].child);
+  }
+};
+
+EditHelpContainer_EditHelpContainer.prototype["delete"] = function (data, parent, index) {
+  console.log(data);
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.title);
+  this.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+EditHelpContainer_EditHelpContainer.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  if (this.rowSelected.parentDetail === parent && this.rowSelected.indexDetail > index) this.rowSelected.indexDetail--;
+  parent.dropRow(index).then(function () {
+    self.resetChoice(bodyTable);
+    self.listParent.updateItemList();
+  });
+};
+
+EditHelpContainer_EditHelpContainer.prototype.setDataTitle = function (data) {
+  this.name.value = data.title;
+  this.alias.value = data.alias;
+  this.listParent.value = data.parent_id;
+  this.active.checked = parseInt(data.active);
+};
+
+EditHelpContainer_EditHelpContainer.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_help.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
+EditHelpContainer_EditHelpContainer.prototype.itemEdit = function () {
+  var self = this;
+  var textId = ("text_" + Math.random() + Math.random()).replace(/\./g, '');
+
+  var temp = EditHelpContainer_({
+    tag: 'div',
+    "class": "container-bot",
+    props: {
+      id: textId
+    }
+  });
+
+  var ckedit = EditHelpContainer_({
+    tag: 'attachhook',
+    on: {
+      error: function error() {
+        this.selfRemove();
+        self.editor = CKEDITOR.replace(textId);
+        self.editor.addCommand("comand_link_direction", {
+          exec: function exec(edt) {
+            self.appendChild(self.listLink());
+          }
+        });
+      }
+    }
+  });
+
+  return temp;
+};
+
+EditHelpContainer_EditHelpContainer.prototype.listLink = function () {
+  var self = this;
+  var header = [{
+    value: "Title",
+    sort: true,
+    functionClickAll: self.functionChoice.bind(self)
+  }, {
+    value: "Date",
+    sort: true
+  }, {
+    value: "ID",
+    sort: true
+  }];
+  var mTable = new tableView(header, self.formatDataRowList(self.getDataCurrent()), false, false, 0);
+  mTable.style.width = "calc(100% - 90px)";
+
+  var input = EditHelpContainer_({
+    tag: "input",
+    "class": "input-search-list",
+    props: {
+      type: "text",
+      placeholder: "Search"
+    }
+  });
+
+  self.modal = EditHelpContainer_({
+    tag: "modal",
+    "class": "list-linkChoice",
+    on: {
+      click: function click(event) {
+        var element = event.target;
+        console.log(event.target);
+
+        while (!(element.classList.contains("list-linkChoice") || element.classList.contains("list-linkChoice-container"))) {
+          element = element.parentNode;
+        }
+
+        if (element.classList.contains("list-linkChoice")) {
+          this.selfRemove();
+          self.modal.reject();
+        }
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": ["list-linkChoice-container", "absol-single-page-scroller"],
+      child: [{
+        tag: "div",
+        "class": "js-stools-container-bar",
+        child: [{
+          tag: "div",
+          "class": ["btn-wrapper", "input-append"],
+          child: [input]
+        }]
+      }, mTable]
+    }]
+  });
+  mTable.addInputSearch(input);
+  self.promiseSelectList = new Promise(function (resolve, reject) {
+    self.modal.resolve = resolve;
+    self.modal.reject = reject;
+  });
+  return self.modal;
+};
+
+EditHelpContainer_EditHelpContainer.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData().toString();
+  if (data) this.setData(data);
+};
+
+EditHelpContainer_EditHelpContainer.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+EditHelpContainer_EditHelpContainer.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+EditHelpContainer_EditHelpContainer.prototype.start = function () {};
+
+/* harmony default export */ var component_EditHelpContainer = (EditHelpContainer_EditHelpContainer);
+// CONCATENATED MODULE: ./js/page/ListEditHelp.js
+
+
+
+
+
+
+
+var ListEditHelp_ = dom_Fcore._;
+var ListEditHelp_$ = dom_Fcore.$;
+
+function ListEditHelp_ListHelp() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+}
+
+ListEditHelp_ListHelp.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListEditHelp_ListHelp.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListEditHelp_ListHelp.prototype.constructor = ListEditHelp_ListHelp;
+
+ListEditHelp_ListHelp.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+  var containerHelp = new component_EditHelpContainer();
+  this.$view = ListEditHelp_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Thêm Tỉnh/TP"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              containerHelp.editContentAll();
+            }
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              containerHelp.add();
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }]
+    }]
+  });
+  containerHelp.parent = this.parent;
+  this.$view.addChild(ListEditHelp_({
+    tag: "div",
+    "class": ["pizo-list-help-main"],
+    child: [containerHelp]
+  }));
+  return this.$view;
+};
+
+ListEditHelp_ListHelp.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListEditHelp_ListHelp.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListEditHelp_ListHelp.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListEditHelp_ListHelp.prototype.start = function () {};
+
+/* harmony default export */ var ListEditHelp = (ListEditHelp_ListHelp);
+// EXTERNAL MODULE: ./css/ListPositions.css
+var ListPositions = __webpack_require__(265);
+
+// CONCATENATED MODULE: ./js/page/ListPositions.js
+
+
+
+
+
+
+
+
+
+var ListPositions_ = dom_Fcore._;
+var ListPositions_$ = dom_Fcore.$;
+
+function ListPositions_ListPositions() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.ModuleView = new ModuleView_ModuleView();
+}
+
+ListPositions_ListPositions.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListPositions_ListPositions.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListPositions_ListPositions.prototype.constructor = ListPositions_ListPositions;
+
+ListPositions_ListPositions.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListPositions_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListPositions_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tên"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tên";
+  }
+
+  this.$view = ListPositions_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý Quận/Huyện"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              var frameAdd = self.NewRealty.getView();
+              self.parent.body.addChild(frameAdd);
+              self.parent.body.activeFrame(frameAdd);
+              self.NewRealty.setContainer(self.parent);
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+
+  var tabContainer = ListPositions_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 1
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          var mNewRealty = new NewRealty();
+          mNewRealty.attach(self.parent);
+          console.log(self.parent);
+          var frameview = mNewRealty.getView();
+          self.parent.body.addChild(frameview);
+          self.parent.body.activeFrame(frameview);
+          break;
+
+        case 1:
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function (value) {
+    console.log(value);
+    var header = [{
+      type: "increase",
+      value: "#",
+      style: {
+        minWidth: "50px",
+        width: "50px"
+      }
+    }, {
+      value: 'MS',
+      sort: true,
+      style: {
+        minWidth: "150px",
+        width: "150px"
+      }
+    }, {
+      value: 'Tên',
+      sort: true,
+      style: {
+        minWidth: "unset"
+      }
+    }, {
+      value: 'Ngày tạo',
+      sort: true,
+      style: {
+        minWidth: "250px",
+        width: "250px"
+      }
+    }, {
+      value: 'Ngày cập nhật',
+      sort: true,
+      style: {
+        minWidth: "250px",
+        width: "250px"
+      }
+    }, {
+      type: "detail",
+      functionClickAll: functionClickMore,
+      icon: "",
+      dragElement: false,
+      style: {
+        width: "30px"
+      }
+    }];
+    console.log(header);
+    self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
+    tabContainer.addChild(self.mTable);
+    self.mTable.addInputSearch(ListPositions_$('.pizo-list-realty-page-allinput-container input', self.$view));
+  });
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListPositions_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, tabContainer]
+  }));
+  return this.$view;
+};
+
+ListPositions_ListPositions.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+  var checkElement;
+
+  for (var i = 0; i < data.length; i++) {
+    checkElement = parseInt(data[i].active) ? ListPositions_({
+      tag: "div",
+      "class": "tick-element"
+    }) : ListPositions_({
+      tag: "div",
+      "class": "cross-element"
+    });
+    var result = [{
+      value: "",
+      style: {
+        maxWidth: "21px"
+      }
+    }, {
+      value: data[i].title,
+      element: ListPositions_({
+        tag: "div",
+        child: [{
+          tag: "span",
+          "class": "title-label",
+          props: {
+            innerHTML: data[i].title
+          }
+        }, {
+          tag: "span",
+          "class": "alias-label",
+          props: {
+            innerHTML: " (Alias :" + data[i].alias + ")"
+          }
+        }]
+      })
+    }, {
+      value: data[i].active,
+      element: checkElement,
+      style: {
+        maxWidth: "21px"
+      }
+    }, {
+      value: "",
+      style: {
+        maxWidth: "21px"
+      }
+    }];
+    result.original = data[i];
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  console.log(temp);
+  return temp;
+};
+
+ListPositions_ListPositions.prototype.searchControlContent = function () {
+  var startDay, endDay, startDay1, endDay1;
+  startDay = ListPositions_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay);
+        endDay.minDateLimit = date;
+      }
+    }
+  });
+  endDay = ListPositions_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay.maxDateLimit = date;
+      }
+    }
+  });
+  startDay1 = ListPositions_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay1);
+        endDay1.minDateLimit = date;
+      }
+    }
+  });
+  endDay1 = ListPositions_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay1.maxDateLimit = date;
+      }
+    }
+  });
+
+  var content = ListPositions_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control-container",
+    on: {
+      click: function click(event) {
+        event.stopPropagation();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-main-search-control-row",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-state-ditrict",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-state-ditrict-label",
+            props: {
+              innerHTML: "Tỉnh/TP"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-state-ditrict-input",
+            child: [{
+              tag: "selectmenu",
+              props: {
+                enableSearch: true,
+                items: [{
+                  text: "Tất cả",
+                  value: -1
+                }, {
+                  text: 'Thành phố Hồ Chí Minh',
+                  value: 79
+                }, {
+                  text: 'Thủ đô Hà Nội',
+                  value: 80
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-phone",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            props: {
+              innerHTML: "Ngày tạo"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay, endDay]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-phone",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            props: {
+              innerHTML: "Ngày cập nhật"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay1, endDay1]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-button",
+          child: [{
+            tag: "button",
+            "class": ["pizo-list-realty-button-apply", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {}
+            },
+            child: ['<span>' + "Áp dụng" + '</span>']
+          }, {
+            tag: "button",
+            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {
+                temp.reset();
+              }
+            },
+            child: ['<span>' + "Thiết lập lại" + '</span>']
+          }]
+        }]
+      }]
+    }]
+  });
+
+  var temp = ListPositions_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control",
+    on: {
+      click: function click(event) {
+        this.hide();
+      }
+    },
+    child: [content]
+  });
+
+  temp.content = content;
+  content.timestart = startDay;
+  content.timeend = endDay;
+  content.lowprice = ListPositions_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
+  content.highprice = ListPositions_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
+  content.phone = ListPositions_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
+  content.MS = ListPositions_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
+  content.SN = ListPositions_$('.pizo-list-realty-main-search-control-row-SN input', content);
+  content.TD = ListPositions_$('.pizo-list-realty-main-search-control-row-TD input', content);
+  content.PX = ListPositions_$('.pizo-list-realty-main-search-control-row-PX input', content);
+  content.QH = ListPositions_$('.pizo-list-realty-main-search-control-row-QH input', content);
+  content.HT = ListPositions_$('.pizo-list-realty-main-search-control-row-HT input', content);
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
+    content.lowprice.value = "";
+    content.highprice.value = "";
+    content.phone.value = "";
+    content.MS.value = "";
+    content.SN.value = "";
+    content.TD.value = "";
+    content.PX.value = "";
+    content.QH.value = "";
+    content.TT.value = "";
+    content.HT.value = 0;
+  };
+
+  return temp;
+};
+
+ListPositions_ListPositions.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListPositions_ListPositions.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListPositions_ListPositions.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListPositions_ListPositions.prototype.start = function () {};
+
+/* harmony default export */ var page_ListPositions = (ListPositions_ListPositions);
 // CONCATENATED MODULE: ./js/App.js
+
+
+
 
 
 
@@ -61010,6 +66374,7 @@ App_App.prototype.getView = function () {
 
               if (typeof item.pageIndex == 'number') {
                 self.openPage(item.pageIndex);
+                document.body.click();
               }
             }
           },
@@ -61075,7 +66440,7 @@ App_App.prototype.getView = function () {
               text: "Thông báo",
               pageIndex: 4
             }, {
-              text: "Nhân viên",
+              text: "Chức vụ",
               pageIndex: 5
             }, {
               text: "Tài khoản",
@@ -61099,6 +66464,13 @@ App_App.prototype.getView = function () {
             }, {
               text: "Nhập xuất dữ liệu",
               pageIndex: 9
+            }, {
+              text: "Trợ giúp",
+              pageIndex: 10,
+              items: [{
+                text: "Sửa trợ giúp",
+                pageIndex: 101
+              }]
             }]
           }
         }]
@@ -61132,9 +66504,9 @@ App_App.prototype.getView = function () {
       }]
     }]
   });
-  var mListRealty = new page_ListRealty();
-  mListRealty.attach(this);
-  var frameview = mListRealty.getView();
+  var mListHelp = new page_ListHelp();
+  mListHelp.attach(this);
+  var frameview = mListHelp.getView();
   this.body.addChild(frameview);
   this.body.activeFrame(frameview);
   this.refresh();
@@ -61150,6 +66522,14 @@ App_App.prototype.refresh = function () {
 
 App_App.prototype.openPage = function (index) {
   switch (index) {
+    case 5:
+      var mListPositions = new page_ListPositions();
+      mListPositions.attach(this);
+      var frameview = mListPositions.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
     case 11:
       var mListRealty = new page_ListRealty();
       mListRealty.attach(this);
@@ -61245,11 +66625,20 @@ App_App.prototype.openPage = function (index) {
       var frameview = mListStreet.getView();
       this.body.addChild(frameview);
       this.body.activeFrame(frameview);
+      break;
 
     case 25:
       var mPlanningInformation = new page_PlanningInformation();
       mPlanningInformation.attach(this);
       var frameview = mPlanningInformation.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 101:
+      var mListEditHelp = new ListEditHelp();
+      mListEditHelp.attach(this);
+      var frameview = mListEditHelp.getView();
       this.body.addChild(frameview);
       this.body.activeFrame(frameview);
       break;

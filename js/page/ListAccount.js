@@ -1,7 +1,7 @@
 import BaseView from '../component/BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/ListRealty.css"
+import "../../css/ListAccount.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
@@ -13,7 +13,7 @@ import {loadData,updateData} from '../component/ModuleDatabase';
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function ListRealty() {
+function ListAccount() {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
@@ -21,15 +21,15 @@ function ListRealty() {
     this.ModuleView = new ModuleView();
 }
 
-ListRealty.prototype.setContainer = function(parent)
+ListAccount.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(ListRealty.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-ListRealty.prototype.constructor = ListRealty;
+Object.defineProperties(ListAccount.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+ListAccount.prototype.constructor = ListAccount;
 
-ListRealty.prototype.getView = function () {
+ListAccount.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
@@ -48,12 +48,12 @@ ListRealty.prototype.getView = function () {
         tag:"input",
         class:"pizo-list-realty-page-allinput-input",
         props:{
-            placeholder:"Tìm theo mã, tên, địa chỉ bất động sản"
+            placeholder:"Tìm kiếm"
         }
     });
     if(window.mobilecheck())
     {
-        allinput.placeholder = "Tìm bất động sản"
+        allinput.placeholder = "Tìm kiếm"
     }
     this.$view = _({
         tag: 'singlepage',
@@ -85,12 +85,7 @@ ListRealty.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        var mNewRealty = new NewRealty();
-                                        mNewRealty.attach(self.parent);
-                                        console.log(self.parent)
-                                        var frameview = mNewRealty.getView();
-                                        self.parent.body.addChild(frameview);
-                                        self.parent.body.activeFrame(frameview);
+                                   
                                     }
                                 },
                                 child: [
@@ -166,6 +161,13 @@ ListRealty.prototype.getView = function () {
             },
         ]
     });
+    var tabContainer = _({
+        tag:"div",
+        class:["pizo-list-realty-main-result-control","drag-zone-bg"],
+        child:[
+        ]
+    })
+
     var docTypeMemuProps,token,functionX;
     var functionClickMore = function(event, me, index, parent, data, row)
     {
@@ -173,14 +175,19 @@ ListRealty.prototype.getView = function () {
         docTypeMemuProps = {
             items: [
                 {
-                    text: 'Sửa',
+                    text: 'Thêm',
                     icon: 'span.mdi.mdi-text-short',
                     value:0,
                 },
                 {
+                    text: 'Sửa',
+                    icon: 'span.mdi.mdi-text-short',
+                    value:1,
+                },
+                {
                     text: 'Xóa',
                     icon: 'span.mdi.mdi-text',
-                    value:1,
+                    value:2,
                 },
             ]
         };
@@ -188,14 +195,13 @@ ListRealty.prototype.getView = function () {
             switch(menuItem.value)
             {
                 case 0:
-                    var mNewRealty = new NewRealty();
-                    mNewRealty.attach(self.parent);
-                    console.log(self.parent)
-                    var frameview = mNewRealty.getView();
-                    self.parent.body.addChild(frameview);
-                    self.parent.body.activeFrame(frameview);
+                    self.add(data.original.id,row);
                     break;
                 case 1:
+                    self.edit(data,parent,index);
+                    break;
+                case 2:
+                    self.delete(data.original,parent,index);
                     break;
             }
         });
@@ -213,21 +219,17 @@ ListRealty.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
-    var tabContainer = _({
-        tag:"div",
-        class:["pizo-list-realty-main-result-control","drag-zone-bg"],
-        child:[
-            
-        ]
-    })
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_activehomes.php").then(function(value){
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php").then(function(value){
         console.log(value)
-        var header = [{ type: "dragzone" , dragElement : false},{ type: "increase", value: "#"}, {value:'MS',sort:true}, 'Số nhà', {value: 'Tên đường' }, { value:'Phường/Xã' }, { value: 'Quận/Huyện' }, { value: 'Tỉnh/TP' }, { value: 'Ghi chú', sort: true }, {value: 'Ngang', sort: true }, {value: 'Dài',sort:true}, {value: 'DT' }, { value: 'Kết cấu' }, { value: 'Hướng'}, 'Giá', { value: 'Giá m<sup>2</sup>' }, { value: 'Hiện trạng'}, {value:'Ngày tạo'},{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false}];
-        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
+        var header = [{ type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, {value:'MS',sort:true,style:{minWidth:"150px",width:"150px"}}, {value:'Tên',sort:true,style:{minWidth:"unset"}},{value: 'Ngày tạo',sort:true,style:{minWidth:"250px",width:"250px"}}, { value:'Ngày cập nhật', sort:true,style:{minWidth:"250px",width:"250px"} },{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+        console.log(header)
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
+        self.listParent.updateItemList();
     });
+
 
   
     this.searchControl = this.searchControlContent();
@@ -244,7 +246,7 @@ ListRealty.prototype.getView = function () {
     return this.$view;
 }
 
-ListRealty.prototype.formatDataRow = function(data)
+ListAccount.prototype.formatDataRow = function(data)
 {
     var temp = [];
     var check = [];
@@ -301,8 +303,7 @@ ListRealty.prototype.formatDataRow = function(data)
     return temp;
 }
 
-
-ListRealty.prototype.searchControlContent = function(){
+ListAccount.prototype.searchControlContent = function(){
     var startDay,endDay;
 
     startDay = _(
@@ -721,7 +722,7 @@ ListRealty.prototype.searchControlContent = function(){
     return temp;
 }
 
-ListRealty.prototype.refresh = function () {
+ListAccount.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -729,7 +730,7 @@ ListRealty.prototype.refresh = function () {
         this.setData(data);
 };
 
-ListRealty.prototype.setData = function (data) {
+ListAccount.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -737,7 +738,7 @@ ListRealty.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-ListRealty.prototype.flushDataToView = function () {
+ListAccount.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -752,8 +753,8 @@ ListRealty.prototype.flushDataToView = function () {
     }
 };
 
-ListRealty.prototype.start = function () {
+ListAccount.prototype.start = function () {
 
 }
 
-export default ListRealty;
+export default ListAccount;

@@ -4,8 +4,6 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/ListHelp.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-
-import NewRealty from '../component/NewRealty';
 import HelpContainer from '../component/HelpContainer';
 
 var _ = Fcore._;
