@@ -271,10 +271,10 @@ var EncodingClass = {
             var sx, st;
             eval("sx = EncodingClass.string.fromVariable(" + varname + ");");
             st = "Length = " + sx.length;
-            console.log(st);
-            console.log(sx);
+            
+            
             st = EncodingClass.string.toVariable(sx);
-            console.log(st);
+            
         },
         exportVariable: function (obj, level) {
             var i, k, n, x, z, st, sx, keys;

@@ -7,7 +7,7 @@ function BaseView()
     EventEmitter.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
-    console.log(this)
+    
     this.loadConfig();
 }
 

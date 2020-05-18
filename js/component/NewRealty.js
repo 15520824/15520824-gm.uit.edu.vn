@@ -29,6 +29,35 @@ NewRealty.prototype.setContainer = function (parent) {
 Object.defineProperties(NewRealty.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 NewRealty.prototype.constructor = NewRealty;
 
+NewRealty.prototype.createPromise = function()
+{
+    var self = this;
+    if(this.data === undefined)
+    {
+        self.promiseAddDB = new Promise(function(resolve,reject){
+            self.resolveDB = resolve;
+            self.rejectDB = reject;
+        })
+
+    }else
+    {
+        self.promiseEditDB = new Promise(function(resolve,reject){
+            self.resolveDB = resolve;
+            self.rejectDB = reject;
+        })
+        
+    }
+}
+
+NewRealty.prototype.resetPromise = function(value)
+{
+    var self = this;
+    if(self.promiseAddDB!==undefined)
+    self.promiseAddDB = undefined;
+    if(self.promiseEditDB!==undefined)
+    self.promiseEditDB = undefined;
+}
+
 NewRealty.prototype.generalData = function () {
     for (var i = 0; i < this.header.length; i++) {
         if (this.header[i].value === undefined) {
@@ -42,6 +71,11 @@ NewRealty.prototype.generalData = function () {
         switch (value) {
 
         }
+    }
+}
+
+NewRealty.prototype.getDataSave = function(){
+    var temp = {
     }
 }
 
@@ -69,30 +103,47 @@ NewRealty.prototype.getView = function () {
                         child: [
                             {
                                 tag: "button",
-                                class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+                                class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
-                                        if (arr.length === 0)
-                                            self.parent.body.selfRemove();
+
+                                        self.rejectDB(self.getDataSave());
                                     }
                                 },
                                 child: [
-                                    '<span>' + "Đóng" + '</span>'
+                                '<span>' + "Đóng" + '</span>'
                                 ]
                             },
                             {
                                 tag: "button",
-                                class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-
+                                        self.resolveDB(self.getDataSave());
+                                        self.createPromise();
                                     }
                                 },
                                 child: [
-                                    '<span>' + "Lưu" + '</span>'
+                                '<span>' + "Lưu" + '</span>'
+                                ]
+                            },
+                            {
+                                tag: "button",
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                on: {
+                                    click: function (evt) {
+
+                                        self.resolveDB(self.getDataSave());
+                                        self.$view.selfRemove();
+                                        var arr = self.parent.body.getAllChild();
+                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                    }
+                                },
+                                child: [
+                                '<span>' + "Lưu và đóng" + '</span>'
                                 ]
                             }
                         ]
@@ -240,7 +291,7 @@ NewRealty.prototype.descViewImageThumnail = function (dataImage, index, promiseL
             click: function (event) {
                 document.body.appendChild(descViewImagePreview(dataImage, index, promiseLazyLoad));
                 // xmlModalDragImage.createModal(document.body,function(){
-                //     console.log(xmlModalDragImage.imgUrl)
+                //     
                 // });
             }
         }
@@ -406,6 +457,7 @@ NewRealty.prototype.itemAdress = function () {
         }
         
     }
+    this.inputAdress = $('input.pizo-new-realty-desc-detail-1-row-input',temp);
     return temp;
 }
 
@@ -539,18 +591,41 @@ NewRealty.prototype.descViewdetail = function () {
                         class: "pizo-new-realty-desc-detail-row-input",
                         on: {
                             click: function () {
-                                console.log("open locationView")
                             }
                         }
                     }
                 ]
             }]
     });
+    this.inputName = $('input.pizo-new-realty-desc-detail-row-cell-input',temp);
+    this.inputLease = $('input.pizo-new-realty-desc-detail-row-menu-2-checkbox',temp);
+    this.inputSell = $('input.pizo-new-realty-desc-detail-row-menu-1-checkbox',temp);
+    this.inputContent = $('input.pizo-new-realty-desc-detail-row-input',temp);
     return temp;
 }
 
 
 NewRealty.prototype.detructView = function () {
+    var unitHeight = unit_Long(function (event) {
+        var height = $('input.pizo-new-realty-dectruct-content-area-height', temp);
+        height.value = height.value * event.lastValue / event.value;
+    });
+    var unitWidth =  unit_Long(function (event) {
+        var width = $('input.pizo-new-realty-dectruct-content-area-width', temp);
+        width.value = width.value * event.lastValue / event.value;
+    })
+    var unit_Zone_1 =  unit_Zone(function (event) {
+        var area1 = $('input.pizo-new-realty-dectruct-content-area-1', temp);
+        area1.value = area1.value * event.lastValue / event.value;
+    });
+    var unit_Zone_2 = unit_Zone(function (event) {
+        var area2 = $('input.pizo-new-realty-dectruct-content-area-2', temp);
+        area2.value = area2.value * event.lastValue / event.value;
+    });
+    var unitWidthRoad =  unit_Long(function (event) {
+        var width = $('input.pizo-new-realty-dectruct-content-area-access', temp);
+        width.value = width.value * event.lastValue / event.value;
+    })
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-dectruct",
@@ -621,10 +696,7 @@ NewRealty.prototype.detructView = function () {
                                                             min: 0
                                                         }
                                                     },
-                                                    unit_Long(function (event) {
-                                                        var height = $('input.pizo-new-realty-dectruct-content-area-height', temp);
-                                                        height.value = height.value * event.lastValue / event.value;
-                                                    })
+                                                    unitHeight
                                                 ]
                                             }
                                         ]
@@ -669,10 +741,7 @@ NewRealty.prototype.detructView = function () {
                                                             min: 0
                                                         }
                                                     },
-                                                    unit_Long(function (event) {
-                                                        var width = $('input.pizo-new-realty-dectruct-content-area-width', temp);
-                                                        width.value = width.value * event.lastValue / event.value;
-                                                    })
+                                                    unitWidth
                                                 ]
                                             }
                                         ]
@@ -707,10 +776,7 @@ NewRealty.prototype.detructView = function () {
                                                             min: 0
                                                         }
                                                     },
-                                                    unit_Zone(function (event) {
-                                                        var area1 = $('input.pizo-new-realty-dectruct-content-area-1', temp);
-                                                        area1.value = area1.value * event.lastValue / event.value;
-                                                    })
+                                                    unit_Zone_1
                                                 ]
                                             }
                                         ]
@@ -738,10 +804,7 @@ NewRealty.prototype.detructView = function () {
                                                             min: 0
                                                         }
                                                     },
-                                                    unit_Zone(function (event) {
-                                                        var area2 = $('input.pizo-new-realty-dectruct-content-area-2', temp);
-                                                        area2.value = area2.value * event.lastValue / event.value;
-                                                    })
+                                                    unit_Zone_2
                                                 ]
                                             }
                                         ]
@@ -842,7 +905,7 @@ NewRealty.prototype.detructView = function () {
                                     step: 1
                                 }
                             },
-                            unit_Long()
+                            unitWidthRoad
                         ]
                     },
                     {
@@ -1052,6 +1115,24 @@ NewRealty.prototype.detructView = function () {
             }
         ]
     })
+    this.inputHeight = $('input.pizo-new-realty-dectruct-content-area-height.pizo-new-realty-dectruct-input',temp);
+    this.inputWidth = $('input.pizo-new-realty-dectruct-content-area-width.pizo-new-realty-dectruct-input',temp);
+    this.inputUnitHeight = unitHeight;
+    this.inputUnitWidth = unitWidth;
+    this.inputZone1 = $('input.pizo-new-realty-dectruct-content-area-1.pizo-new-realty-dectruct-input',temp);
+    this.inputZone2 = $('input.pizo-new-realty-dectruct-content-area-2.pizo-new-realty-dectruct-input',temp);
+    this.inputUnitZone1 = unit_Zone_1;
+    this.inputUnitZone2 = unit_Zone_2;
+    this.direction = $('div.pizo-new-realty-detruct-content-direction',temp);
+    this.type = $('div.pizo-new-realty-detruct-content-type',temp);
+    this.inputWidthRoad = $('input.pizo-new-realty-dectruct-content-area-access', temp);
+    this.inputUnitWidthRoad = unitWidthRoad;
+    this.inputBedroom = $('input.pizo-new-realty-dectruct-content-area-bedroom', temp);
+    this.inputKitchen = $('input.pizo-new-realty-dectruct-content-area-kitchen', temp);
+    this.inputBathroom = $('input.pizo-new-realty-dectruct-content-area-bathroom',temp);
+    this.inputGarage = $('input.pizo-new-realty-dectruct-content-area-garage',temp);
+    this.inputBasement = $('input.pizo-new-realty-dectruct-content-area-basement',temp);
+    this.inputBalcony = $('input.pizo-new-realty-dectruct-content-area-balcony',temp);
     return temp;
 }
 

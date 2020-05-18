@@ -10,15 +10,15 @@
     width: 100%;
 }
 
-.pizo-list-realty-main-search-control-row-ditrict-street-input{
+.pizo-list-realty-main-search-control-row-district-street-input{
     height: 30px;
 }
 
-.pizo-list-realty-main-search-control-row-ditrict-street{
+.pizo-list-realty-main-search-control-row-district-street{
     width: calc(24% - 0.7143rem);
 }
 
-.pizo-list-realty-main-search-control-row-ditrict-street-input>div{
+.pizo-list-realty-main-search-control-row-district-street-input>div{
     width: 100%;
 }
 

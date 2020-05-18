@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 70);
+/******/ 	return __webpack_require__(__webpack_require__.s = 71);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1087,7 +1087,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(112);
+var	fixUrls = __webpack_require__(113);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2872,7 +2872,7 @@ Dom["a" /* default */].printElement = function (option) {
 var support = __webpack_require__(14);
 var base64 = __webpack_require__(44);
 var nodejsUtils = __webpack_require__(28);
-var setImmediate = __webpack_require__(86);
+var setImmediate = __webpack_require__(87);
 var external = __webpack_require__(21);
 
 
@@ -3726,8 +3726,8 @@ module.exports = GenericWorker;
 
 
 
-var base64 = __webpack_require__(71)
-var ieee754 = __webpack_require__(72)
+var base64 = __webpack_require__(72)
+var ieee754 = __webpack_require__(73)
 var isArray = __webpack_require__(37)
 
 exports.Buffer = Buffer
@@ -6123,7 +6123,7 @@ if (typeof Object.create === 'function') {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(64);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(65);
 /* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_BrowserRules__WEBPACK_IMPORTED_MODULE_0__);
 
 
@@ -6312,7 +6312,7 @@ var ES6Promise = null;
 if (typeof Promise !== "undefined") {
     ES6Promise = Promise;
 } else {
-    ES6Promise = __webpack_require__(87);
+    ES6Promise = __webpack_require__(88);
 }
 
 /**
@@ -7235,8 +7235,8 @@ function JSZip() {
         return newObj;
     };
 }
-JSZip.prototype = __webpack_require__(74);
-JSZip.prototype.loadAsync = __webpack_require__(105);
+JSZip.prototype = __webpack_require__(75);
+JSZip.prototype.loadAsync = __webpack_require__(106);
 JSZip.support = __webpack_require__(14);
 JSZip.defaults = __webpack_require__(46);
 
@@ -7715,7 +7715,7 @@ exports.Readable = exports;
 exports.Writable = __webpack_require__(32);
 exports.Duplex = __webpack_require__(16);
 exports.Transform = __webpack_require__(43);
-exports.PassThrough = __webpack_require__(81);
+exports.PassThrough = __webpack_require__(82);
 
 
 /***/ }),
@@ -7795,7 +7795,7 @@ util.inherits = __webpack_require__(18);
 
 /*<replacement>*/
 var internalUtil = {
-  deprecate: __webpack_require__(80)
+  deprecate: __webpack_require__(81)
 };
 /*</replacement>*/
 
@@ -8469,7 +8469,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(79);
+__webpack_require__(80);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -8710,7 +8710,7 @@ module.exports = Array.isArray || function (arr) {
  * reduce the final size of the bundle (only one stream implementation, not
  * two).
  */
-module.exports = __webpack_require__(75);
+module.exports = __webpack_require__(76);
 
 
 /***/ }),
@@ -8789,7 +8789,7 @@ util.inherits = __webpack_require__(18);
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(76);
+var debugUtil = __webpack_require__(77);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -8798,7 +8798,7 @@ if (debugUtil && debugUtil.debuglog) {
 }
 /*</replacement>*/
 
-var BufferList = __webpack_require__(77);
+var BufferList = __webpack_require__(78);
 var destroyImpl = __webpack_require__(41);
 var StringDecoder;
 
@@ -10469,7 +10469,7 @@ exports.decode = function(input) {
 /* WEBPACK VAR INJECTION */(function(Buffer) {
 
 var utils = __webpack_require__(9);
-var ConvertWorker = __webpack_require__(89);
+var ConvertWorker = __webpack_require__(90);
 var GenericWorker = __webpack_require__(12);
 var base64 = __webpack_require__(44);
 var support = __webpack_require__(14);
@@ -10478,7 +10478,7 @@ var external = __webpack_require__(21);
 var NodejsStreamOutputAdapter = null;
 if (support.nodestream) {
     try {
-        NodejsStreamOutputAdapter = __webpack_require__(90);
+        NodejsStreamOutputAdapter = __webpack_require__(91);
     } catch(e) {}
 }
 
@@ -10907,7 +10907,7 @@ exports.STORE = {
         return new GenericWorker("STORE decompression");
     }
 };
-exports.DEFLATE = __webpack_require__(93);
+exports.DEFLATE = __webpack_require__(94);
 
 
 /***/ }),
@@ -11381,8 +11381,8 @@ exports.DATA_DESCRIPTOR = "PK\x07\x08";
 var utils = __webpack_require__(9);
 var support = __webpack_require__(14);
 var ArrayReader = __webpack_require__(58);
-var StringReader = __webpack_require__(107);
-var NodeBufferReader = __webpack_require__(108);
+var StringReader = __webpack_require__(108);
+var NodeBufferReader = __webpack_require__(109);
 var Uint8ArrayReader = __webpack_require__(60);
 
 /**
@@ -11627,7 +11627,7 @@ module.exports = Uint8ArrayReader;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(258);
+var content = __webpack_require__(249);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -11649,6 +11649,31 @@ if(false) {}
 
 /***/ }),
 /* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(258);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer, module) {(function (w) {
@@ -11696,10 +11721,10 @@ if(false) {}
   }
 }(window));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(13).Buffer, __webpack_require__(73)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(13).Buffer, __webpack_require__(74)(module)))
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {(function () {
@@ -11723,7 +11748,7 @@ if(false) {}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(13).Buffer))
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12030,14 +12055,14 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, Buffer) {/* harmony import */ var _DocxTpl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
-/* harmony import */ var _assets_content_types_xml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(66);
-/* harmony import */ var _assets_rels_xml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(67);
-/* harmony import */ var _assets_document_xml_rels__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(68);
+/* harmony import */ var _assets_content_types_xml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67);
+/* harmony import */ var _assets_rels_xml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(68);
+/* harmony import */ var _assets_document_xml_rels__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(69);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(29);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jszip__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _HTML5_Dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1);
@@ -12274,28 +12299,28 @@ JSDocx.fromHTMLElement = function (element, options, getOuter, isWorkingElement)
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11), __webpack_require__(13).Buffer))
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\">\r\n  <Default Extension=\"rels\" ContentType=\r\n    \"application/vnd.openxmlformats-package.relationships+xml\" />\r\n  <Override PartName=\"/word/document.xml\" ContentType=\r\n    \"application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml\"/>\r\n  <Override PartName=\"/word/afchunk.mht\" ContentType=\"message/rfc822\"/>\r\n</Types>\r\n");
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">\r\n  <Relationship\r\n      Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument\"\r\n      Target=\"/word/document.xml\" Id=\"R09c83fafc067488e\" />\r\n</Relationships>\r\n");
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">\r\n  <Relationship Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/aFChunk\"\r\n    Target=\"/word/afchunk.mht\" Id=\"htmlChunk\" />\r\n</Relationships>\r\n");
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19620,14 +19645,14 @@ exports.tokTypes = types;
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(267);
+module.exports = __webpack_require__(275);
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19786,7 +19811,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -19876,7 +19901,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -19904,7 +19929,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19915,10 +19940,10 @@ var GenericWorker = __webpack_require__(12);
 var StreamHelper = __webpack_require__(45);
 var defaults = __webpack_require__(46);
 var CompressedObject = __webpack_require__(34);
-var ZipObject = __webpack_require__(91);
-var generate = __webpack_require__(92);
+var ZipObject = __webpack_require__(92);
+var generate = __webpack_require__(93);
 var nodejsUtils = __webpack_require__(28);
-var NodejsStreamInputAdapter = __webpack_require__(104);
+var NodejsStreamInputAdapter = __webpack_require__(105);
 
 
 /**
@@ -20300,7 +20325,7 @@ module.exports = out;
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -20331,10 +20356,10 @@ var inherits = __webpack_require__(18);
 
 inherits(Stream, EE);
 Stream.Readable = __webpack_require__(31);
-Stream.Writable = __webpack_require__(82);
-Stream.Duplex = __webpack_require__(83);
-Stream.Transform = __webpack_require__(84);
-Stream.PassThrough = __webpack_require__(85);
+Stream.Writable = __webpack_require__(83);
+Stream.Duplex = __webpack_require__(84);
+Stream.Transform = __webpack_require__(85);
+Stream.PassThrough = __webpack_require__(86);
 
 // Backwards-compat with node 0.4.x
 Stream.Stream = Stream;
@@ -20433,13 +20458,13 @@ Stream.prototype.pipe = function(dest, options) {
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20448,7 +20473,7 @@ Stream.prototype.pipe = function(dest, options) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(27).Buffer;
-var util = __webpack_require__(78);
+var util = __webpack_require__(79);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -20524,13 +20549,13 @@ if (util && util.inspect && util.inspect.custom) {
 }
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -20723,7 +20748,7 @@ if (util && util.inspect && util.inspect.custom) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11), __webpack_require__(25)))
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {
@@ -20797,7 +20822,7 @@ function config (name) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20850,35 +20875,35 @@ PassThrough.prototype._transform = function (chunk, encoding, cb) {
 };
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(32);
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(16);
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(31).Transform
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(31).PassThrough
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20893,12 +20918,12 @@ module.exports = typeof setImmediate === 'function' ? setImmediate :
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(33).setImmediate))
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var immediate = __webpack_require__(88);
+var immediate = __webpack_require__(89);
 
 /* istanbul ignore next */
 function INTERNAL() {}
@@ -21173,7 +21198,7 @@ function race(iterable) {
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21250,7 +21275,7 @@ function immediate(task) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21283,7 +21308,7 @@ module.exports = ConvertWorker;
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21332,7 +21357,7 @@ module.exports = NodejsStreamOutputAdapter;
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21472,14 +21497,14 @@ module.exports = ZipObject;
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var compressions = __webpack_require__(50);
-var ZipFileWorker = __webpack_require__(103);
+var ZipFileWorker = __webpack_require__(104);
 
 /**
  * Find the compression to use.
@@ -21536,14 +21561,14 @@ exports.generateWorker = function (zip, options, comment) {
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var USE_TYPEDARRAY = (typeof Uint8Array !== 'undefined') && (typeof Uint16Array !== 'undefined') && (typeof Uint32Array !== 'undefined');
 
-var pako = __webpack_require__(94);
+var pako = __webpack_require__(95);
 var utils = __webpack_require__(9);
 var GenericWorker = __webpack_require__(12);
 
@@ -21628,7 +21653,7 @@ exports.uncompressWorker = function () {
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21637,8 +21662,8 @@ exports.uncompressWorker = function () {
 
 var assign    = __webpack_require__(15).assign;
 
-var deflate   = __webpack_require__(95);
-var inflate   = __webpack_require__(98);
+var deflate   = __webpack_require__(96);
+var inflate   = __webpack_require__(99);
 var constants = __webpack_require__(55);
 
 var pako = {};
@@ -21649,14 +21674,14 @@ module.exports = pako;
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 
-var zlib_deflate = __webpack_require__(96);
+var zlib_deflate = __webpack_require__(97);
 var utils        = __webpack_require__(15);
 var strings      = __webpack_require__(53);
 var msg          = __webpack_require__(36);
@@ -22056,7 +22081,7 @@ exports.gzip = gzip;
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22082,7 +22107,7 @@ exports.gzip = gzip;
 // 3. This notice may not be removed or altered from any source distribution.
 
 var utils   = __webpack_require__(15);
-var trees   = __webpack_require__(97);
+var trees   = __webpack_require__(98);
 var adler32 = __webpack_require__(51);
 var crc32   = __webpack_require__(52);
 var msg     = __webpack_require__(36);
@@ -23937,7 +23962,7 @@ exports.deflateTune = deflateTune;
 
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25166,20 +25191,20 @@ exports._tr_align = _tr_align;
 
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 
-var zlib_inflate = __webpack_require__(99);
+var zlib_inflate = __webpack_require__(100);
 var utils        = __webpack_require__(15);
 var strings      = __webpack_require__(53);
 var c            = __webpack_require__(55);
 var msg          = __webpack_require__(36);
 var ZStream      = __webpack_require__(54);
-var GZheader     = __webpack_require__(102);
+var GZheader     = __webpack_require__(103);
 
 var toString = Object.prototype.toString;
 
@@ -25596,7 +25621,7 @@ exports.ungzip  = inflate;
 
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25624,8 +25649,8 @@ exports.ungzip  = inflate;
 var utils         = __webpack_require__(15);
 var adler32       = __webpack_require__(51);
 var crc32         = __webpack_require__(52);
-var inflate_fast  = __webpack_require__(100);
-var inflate_table = __webpack_require__(101);
+var inflate_fast  = __webpack_require__(101);
+var inflate_table = __webpack_require__(102);
 
 var CODES = 0;
 var LENS = 1;
@@ -27159,7 +27184,7 @@ exports.inflateUndermine = inflateUndermine;
 
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27511,7 +27536,7 @@ module.exports = function inflate_fast(strm, start) {
 
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27861,7 +27886,7 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
 
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27926,7 +27951,7 @@ module.exports = GZheader;
 
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28473,7 +28498,7 @@ module.exports = ZipFileWorker;
 
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28554,7 +28579,7 @@ module.exports = NodejsStreamInputAdapter;
 
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28563,7 +28588,7 @@ var utils = __webpack_require__(9);
 var external = __webpack_require__(21);
 var utf8 = __webpack_require__(17);
 var utils = __webpack_require__(9);
-var ZipEntries = __webpack_require__(106);
+var ZipEntries = __webpack_require__(107);
 var Crc32Probe = __webpack_require__(49);
 var nodejsUtils = __webpack_require__(28);
 
@@ -28643,7 +28668,7 @@ module.exports = function(data, options) {
 
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28651,7 +28676,7 @@ module.exports = function(data, options) {
 var readerFor = __webpack_require__(57);
 var utils = __webpack_require__(9);
 var sig = __webpack_require__(56);
-var ZipEntry = __webpack_require__(109);
+var ZipEntry = __webpack_require__(110);
 var utf8 = __webpack_require__(17);
 var support = __webpack_require__(14);
 //  class ZipEntries {{{
@@ -28912,7 +28937,7 @@ module.exports = ZipEntries;
 
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28957,7 +28982,7 @@ module.exports = StringReader;
 
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28983,7 +29008,7 @@ module.exports = NodeBufferReader;
 
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29282,11 +29307,11 @@ module.exports = ZipEntry;
 
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(111);
+var content = __webpack_require__(112);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29307,7 +29332,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29317,7 +29342,7 @@ exports.push([module.i, ".absol-span-input {\r\n    white-space: pre;\r\n}\r\n\r
 
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports) {
 
 
@@ -29412,11 +29437,11 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(114);
+var content = __webpack_require__(115);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29437,7 +29462,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29447,11 +29472,11 @@ exports.push([module.i, "button.absol-button {\r\n    text-align: left;\r\n    b
 
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(116);
+var content = __webpack_require__(117);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29472,7 +29497,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29482,11 +29507,11 @@ exports.push([module.i, ".as-flexicon-button {\r\n    box-sizing: border-box;\r\
 
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(118);
+var content = __webpack_require__(119);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29507,7 +29532,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29517,11 +29542,11 @@ exports.push([module.i, ".absol-vscroller {\r\n    position: relative;\r\n    ov
 
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(120);
+var content = __webpack_require__(121);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29542,7 +29567,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29552,11 +29577,11 @@ exports.push([module.i, ".absol-number-input {\r\n    text-align: right;\r\n    
 
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(122);
+var content = __webpack_require__(123);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29577,7 +29602,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29587,11 +29612,11 @@ exports.push([module.i, ".absol-search-text-input {\r\n    position: relative;\r
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(124);
+var content = __webpack_require__(125);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29612,7 +29637,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29622,11 +29647,11 @@ exports.push([module.i, ".absol-select-table-render-space {\r\n    position: fix
 
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(126);
+var content = __webpack_require__(127);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29647,7 +29672,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29657,11 +29682,11 @@ exports.push([module.i, ".absol-ico {\r\n    width: 1em;\r\n    height: 1em;\r\n
 
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(128);
+var content = __webpack_require__(129);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29682,7 +29707,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29692,11 +29717,11 @@ exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r
 
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(130);
+var content = __webpack_require__(131);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29717,7 +29742,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29727,11 +29752,11 @@ exports.push([module.i, ".absol-modal {\r\n    position: fixed;\r\n    top: 0;\r
 
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(132);
+var content = __webpack_require__(133);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29752,7 +29777,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29762,11 +29787,11 @@ exports.push([module.i, ".absol-text-editor {\r\n    position: relative;\r\n    
 
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(134);
+var content = __webpack_require__(135);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29787,7 +29812,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29797,11 +29822,11 @@ exports.push([module.i, ".vmedia-no-show {\r\n    position: fixed;\r\n    top: 0
 
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(136);
+var content = __webpack_require__(137);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29822,7 +29847,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29832,11 +29857,11 @@ exports.push([module.i, ".absol-resizablelayout{\r\n    position: relative;\r\n}
 
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(138);
+var content = __webpack_require__(139);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29857,7 +29882,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29867,11 +29892,11 @@ exports.push([module.i, ".absol-autocomplete-input {\r\n    display: inline-bloc
 
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(140);
+var content = __webpack_require__(141);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29892,7 +29917,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29902,11 +29927,11 @@ exports.push([module.i, ".absol-selectlist {\r\n    font-family: \"Helvetica Neu
 
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(142);
+var content = __webpack_require__(143);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29927,7 +29952,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29937,11 +29962,11 @@ exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position
 
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(144);
+var content = __webpack_require__(145);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29962,7 +29987,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -29972,11 +29997,11 @@ exports.push([module.i, ".absol-tree-list {}\r\n\r\n.absol-tree-list-item {}\r\n
 
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(146);
+var content = __webpack_require__(147);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29997,7 +30022,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30007,11 +30032,11 @@ exports.push([module.i, ".absol-selecttreemenu  .absol-tree-list-item-desc-conta
 
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(148);
+var content = __webpack_require__(149);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30032,7 +30057,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30042,11 +30067,11 @@ exports.push([module.i, "\r\n\r\n.absol-selectbox {\r\n    position: relative;\r
 
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(150);
+var content = __webpack_require__(151);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30067,7 +30092,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30077,11 +30102,11 @@ exports.push([module.i, ".absol-radio {\r\n    display: inline;\r\n    cursor: p
 
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(152);
+var content = __webpack_require__(153);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30102,7 +30127,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30112,11 +30137,11 @@ exports.push([module.i, ".absol-switch {\r\n    position: relative;\r\n    displ
 
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(154);
+var content = __webpack_require__(155);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30137,7 +30162,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30147,11 +30172,11 @@ exports.push([module.i, "\r\n.absol-checkbox {\r\n    display: inline;\r\n    cu
 
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(156);
+var content = __webpack_require__(157);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30172,7 +30197,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30182,11 +30207,11 @@ exports.push([module.i, ".absol-candy-box{\r\n    \r\n}\r\n\r\n.absol-candy-box-
 
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(158);
+var content = __webpack_require__(159);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30207,7 +30232,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30217,11 +30242,11 @@ exports.push([module.i, "\r\n.absol-editabe-text {\r\n    display: inline;\r\n}\
 
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(160);
+var content = __webpack_require__(161);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30242,7 +30267,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30252,11 +30277,11 @@ exports.push([module.i, ".absol-width-height-resizer {\r\n    position: relative
 
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(162);
+var content = __webpack_require__(163);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30277,7 +30302,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30287,11 +30312,11 @@ exports.push([module.i, ".absol-follower {\r\n    position: fixed;\r\n    z-inde
 
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(164);
+var content = __webpack_require__(165);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30312,7 +30337,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30322,11 +30347,11 @@ exports.push([module.i, ".absol-tooltip {\r\n    margin: 0;\r\n    position: rel
 
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(166);
+var content = __webpack_require__(167);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30347,7 +30372,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30357,11 +30382,11 @@ exports.push([module.i, ".absol-frame{\r\n    \r\n}", ""]);
 
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(168);
+var content = __webpack_require__(169);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30382,7 +30407,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30392,11 +30417,11 @@ exports.push([module.i, ".absol-frame-view{\r\n    position: relative;\r\n}\r\n\
 
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(170);
+var content = __webpack_require__(171);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30417,7 +30442,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30427,11 +30452,11 @@ exports.push([module.i, ".absol-tabbar {\r\n    white-space: normal;\r\n    heig
 
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(172);
+var content = __webpack_require__(173);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30452,7 +30477,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30462,11 +30487,11 @@ exports.push([module.i, ".absol-single-page {\r\n    position: relative;\r\n}\r\
 
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(174);
+var content = __webpack_require__(175);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30487,7 +30512,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30497,11 +30522,11 @@ exports.push([module.i, ".absol-page-selector{\r\n    white-space: normal;\r\n}\
 
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(176);
+var content = __webpack_require__(177);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30522,7 +30547,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30532,11 +30557,11 @@ exports.push([module.i, ".absol-bscroller {\r\n    overflow: auto;\r\n    scroll
 
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(178);
+var content = __webpack_require__(179);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30557,7 +30582,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30567,11 +30592,11 @@ exports.push([module.i, ".absol-search-list {\r\n    padding-top: 2.5em;\r\n    
 
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(180);
+var content = __webpack_require__(181);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30592,7 +30617,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30602,11 +30627,11 @@ exports.push([module.i, ".absol-static-tabbar {\r\n    position: relative;\r\n}\
 
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(182);
+var content = __webpack_require__(183);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30627,7 +30652,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30637,11 +30662,11 @@ exports.push([module.i, ".absol-exp-node {\r\n    height: 2em;\r\n    text-align
 
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(184);
+var content = __webpack_require__(185);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30662,7 +30687,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30672,11 +30697,11 @@ exports.push([module.i, ".absol-table-vscroller {\r\n    position: relative;\r\n
 
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(186);
+var content = __webpack_require__(187);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30697,7 +30722,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30707,11 +30732,11 @@ exports.push([module.i, ".absol-table-scroller {\r\n    position: relative;\r\n 
 
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(188);
+var content = __webpack_require__(189);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30732,7 +30757,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30742,11 +30767,11 @@ exports.push([module.i, ".absol-quick-path {\r\n    position: relative;\r\n    b
 
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(190);
+var content = __webpack_require__(191);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30767,7 +30792,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30777,11 +30802,11 @@ exports.push([module.i, ".absol-drop-panel-head {\r\n    height: 2.75em;\r\n    
 
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(192);
+var content = __webpack_require__(193);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30802,7 +30827,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30812,11 +30837,11 @@ exports.push([module.i, ".absol-draggable-stack {\r\n    position: relative;\r\n
 
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(194);
+var content = __webpack_require__(195);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30837,7 +30862,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30847,11 +30872,11 @@ exports.push([module.i, ".absol-chrome-calendar {\r\n    display: inline-block;\
 
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(196);
+var content = __webpack_require__(197);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30872,7 +30897,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30882,11 +30907,11 @@ exports.push([module.i, ".ac-time-picker {\r\n    /*like chrome-calender*/\r\n  
 
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(198);
+var content = __webpack_require__(199);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30907,7 +30932,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30917,11 +30942,11 @@ exports.push([module.i, ".ac-time-input {\r\n    box-sizing: border-box;\r\n    
 
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(200);
+var content = __webpack_require__(201);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30942,7 +30967,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30952,11 +30977,11 @@ exports.push([module.i, ".absol-calendar-input {\r\n    font-size: 14px;\r\n    
 
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(202);
+var content = __webpack_require__(203);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -30977,7 +31002,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -30987,11 +31012,11 @@ exports.push([module.i, ".absol-onscreen-window {\r\n    z-index: 1002;\r\n    p
 
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(204);
+var content = __webpack_require__(205);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31012,7 +31037,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31022,11 +31047,11 @@ exports.push([module.i, "/*margin for border size*/\r\n.as-hruler {\r\n    posit
 
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(206);
+var content = __webpack_require__(207);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31047,7 +31072,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31057,11 +31082,11 @@ exports.push([module.i, "/*margin for border size*/\r\n.as-vruler {\r\n    posit
 
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(208);
+var content = __webpack_require__(209);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31082,7 +31107,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31092,11 +31117,11 @@ exports.push([module.i, ".as-resize-box {\r\n    position: absolute;\r\n    /*or
 
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(210);
+var content = __webpack_require__(211);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31117,7 +31142,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31127,11 +31152,11 @@ exports.push([module.i, ".as-preinput {\r\n    margin: 0;\r\n    padding: 0;\r\n
 
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(212);
+var content = __webpack_require__(213);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31152,7 +31177,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31162,11 +31187,11 @@ exports.push([module.i, ".as-hexa-section-label {\r\n    position: relative;\r\n
 
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(214);
+var content = __webpack_require__(215);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31187,7 +31212,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31197,11 +31222,11 @@ exports.push([module.i, ".as-circle-section-label {\r\n    position: relative;\r
 
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(216);
+var content = __webpack_require__(217);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31222,7 +31247,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31232,11 +31257,11 @@ exports.push([module.i, ".as-linear-color-bar {\r\n    position: relative;\r\n  
 
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(218);
+var content = __webpack_require__(219);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31257,7 +31282,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31267,11 +31292,11 @@ exports.push([module.i, ".as-board-table {\r\n    overflow: visible;\r\n    posi
 
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(220);
+var content = __webpack_require__(221);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31292,7 +31317,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31302,7 +31327,7 @@ exports.push([module.i, ".absol-debug-task {\r\n    position: fixed;\r\n    righ
 
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, global) {
@@ -31607,11 +31632,11 @@ exports.push([module.i, ".absol-debug-task {\r\n    position: fixed;\r\n    righ
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(33).setImmediate, __webpack_require__(11)))
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(223);
+var content = __webpack_require__(224);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31630,23 +31655,23 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 223 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important{\r\n    color: #d93025;\r\n}\r\n\r\n.hasErrorElement {\r\n    background-color: #000000;\r\n}", ""]);
-
-
 
 /***/ }),
 /* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\n.no-animation table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    transform: none;\r\n    transition: none;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important{\r\n    color: #d93025;\r\n}\r\n\r\n.hasErrorElement {\r\n    background-color: #000000;\r\n}", ""]);
 
-var content = __webpack_require__(225);
+
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(226);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31667,7 +31692,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31677,11 +31702,11 @@ exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0
 
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(227);
+var content = __webpack_require__(228);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31702,7 +31727,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31712,11 +31737,11 @@ exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inl
 
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(229);
+var content = __webpack_require__(230);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31737,7 +31762,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31747,11 +31772,11 @@ exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: b
 
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(231);
+var content = __webpack_require__(232);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31770,23 +31795,23 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 231 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contract {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contract-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-bathroom-label,\r\n.pizo-new-realty-dectruct-content-area-garage-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span {\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n", ""]);
-
-
 
 /***/ }),
 /* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contract {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contract-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{\r\n  text-align: right;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-bathroom-label,\r\n.pizo-new-realty-dectruct-content-area-garage-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span {\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n", ""]);
 
-var content = __webpack_require__(233);
+
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(234);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31807,7 +31832,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31820,11 +31845,11 @@ exports.push([module.i, "/* html, body { background: #333 url(\"https://codepen.
 
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(235);
+var content = __webpack_require__(236);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31843,23 +31868,23 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 235 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visiable .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
-
-
 
 /***/ }),
 /* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visible .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
 
-var content = __webpack_require__(237);
+
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(238);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31880,7 +31905,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31890,11 +31915,11 @@ exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh
 
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(239);
+var content = __webpack_require__(240);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31915,7 +31940,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31925,11 +31950,11 @@ exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85
 
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(241);
+var content = __webpack_require__(242);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31950,7 +31975,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31960,11 +31985,11 @@ exports.push([module.i, "\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r
 
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(243);
+var content = __webpack_require__(244);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -31985,7 +32010,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -31995,11 +32020,11 @@ exports.push([module.i, ".image-show {\r\n    width: 100vw;\r\n    height: 100vh
 
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(245);
+var content = __webpack_require__(246);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -32020,7 +32045,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -32030,11 +32055,11 @@ exports.push([module.i, ".lds-roller {\r\n    display: inline-block;\r\n    posi
 
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(247);
+var content = __webpack_require__(248);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -32053,41 +32078,16 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 247 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".pizo-list-realty-main-search-control-row-ditrict-ward-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-ward{\r\n    width: calc(18% - 0.3571rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-ward-input>div{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ward-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ward{\r\n    width: 18%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ward-input>div{\r\n    width: 100%;\r\n}", ""]);
-
-
 
 /***/ }),
 /* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(249);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-district-ward-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-district-ward{\r\n    width: calc(18% - 0.3571rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-district-ward-input>div{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ward-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ward{\r\n    width: 18%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ward-input>div{\r\n    width: 100%;\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 249 */
@@ -32095,7 +32095,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-street-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-street{\r\n    width: calc(24% - 0.3571rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-street-input>div{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-street-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-street{\r\n    width: calc(24% - 0.7143rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ditrict-street-input>div{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ward-street>div{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ward-street{\r\n    width: calc(24% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ward-street-input>div{\r\n    width: 100%;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-state-container-name-container-label,.pizo-new-state-container-type-container-label,.pizo-new-state-container-nation-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 4rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container-name-container-input,.pizo-new-state-container-type-container-input,.pizo-new-state-container-nation-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-state-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container{\r\n    width:50%;\r\n}", ""]);
 
 
 
@@ -32130,7 +32130,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-street-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-street{\r\n    width: calc(24% - 0.3571rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-street-input>div{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-district-street-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-district-street{\r\n    width: calc(24% - 0.7143rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-district-street-input>div{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ward-street>div{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ward-street{\r\n    width: calc(24% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-ward-street-input>div{\r\n    width: 100%;\r\n}", ""]);
 
 
 
@@ -32165,7 +32165,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-state-container-name-container-label,.pizo-new-state-container-type-container-label,.pizo-new-state-container-nation-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 4rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container-name-container-input,.pizo-new-state-container-type-container-input,.pizo-new-state-container-nation-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-state-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container{\r\n    width:50%;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -32200,7 +32200,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-ditrict-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ditrict{\r\n    width: calc(36% + 1.0714rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-ditrict-input>div{\r\n    width: 100%;\r\n}", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-district-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district{\r\n    width: calc(36% + 1.0714rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district-input>div{\r\n    width: 100%;\r\n}", ""]);
 
 
 
@@ -32315,7 +32315,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visiable .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visiable .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visiable .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 7px;\r\n    width: 100%;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
+exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 7px;\r\n    width: 100%;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
 
 
 
@@ -32391,6 +32391,146 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 /* 267 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(268);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 268 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "", ""]);
+
+
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(270);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 270 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: calc(18% - 3px);\r\n}\r\n\r\n", ""]);
+
+
+
+/***/ }),
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(272);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".pizo-new-account-container {\r\n    width: 50%;\r\n    min-width: 700px;\r\n}\r\n\r\n.pizo-new-account-container-username-container,\r\n.pizo-new-account-container-password-container,\r\n.pizo-new-account-container-name-container,\r\n.pizo-new-account-container-email-container,\r\n.pizo-new-account-container-avatar-container,\r\n.pizo-new-account-container-address-container,\r\n.pizo-new-account-container-phone-container,\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-status-position,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-phone-birthday-gender,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container,\r\n.pizo-new-account-container-phone-container{\r\n    margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-account-container-username-container-label,\r\n.pizo-new-account-container-password-container-label,\r\n.pizo-new-account-container-name-container-label,\r\n.pizo-new-account-container-email-container-label,\r\n.pizo-new-account-container-avatar-container-label,\r\n.pizo-new-account-container-address-container-label,\r\n.pizo-new-account-container-phone-container-label,\r\n.pizo-new-account-container-position-container-label,\r\n.pizo-new-account-container-status,\r\n.pizo-new-account-container-permission,\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday,\r\n.pizo-new-account-container-birthday-container-label,\r\n.pizo-new-account-container-gender-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 5.71428571429rem;\r\n    padding-right: 0.7143rem;\r\n    width: 140px;\r\n    margin: auto;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label,.pizo-new-account-container-permission-container-label,.pizo-new-account-container-birthday-container-label{\r\n    padding-right: 0.7143rem;\r\n    width: auto;\r\n    font-size: 1rem;\r\n    line-height: 30px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday{\r\n    width: auto;\r\n    padding-left: 30px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-status{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-status-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-permission-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-permission{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-permission-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-birthday-container>div{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-gender-container-label{\r\n    width: auto;\r\n    padding-right: 10px;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-account-container-username-container-input,\r\n.pizo-new-account-container-password-container-input,\r\n.pizo-new-account-container-name-container-input,\r\n.pizo-new-account-container-email-container-input,\r\n.pizo-new-account-container-avatar-container-input,\r\n.pizo-new-account-container-gender-container-input,\r\n.pizo-new-account-container-address-container-input,\r\n.pizo-new-account-container-phone-container-input,\r\n.pizo-new-account-container-position-container-input,\r\n.pizo-new-account-container-position,\r\n.pizo-new-account-container-phone{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-position-container-input,.pizo-new-account-container-position,.pizo-new-account-container-phone{\r\n    padding: unset;\r\n    border: none;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new,.pizo-new-account-container-password-container-new-confirm{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 50%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new{\r\n    padding-right: 15px;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new-confirm{\r\n    padding-left: 15px;\r\n}\r\n\r\n.pizo-new-account-container-change-password-show{\r\n    display: unset\r\n}\r\n\r\n.pizo-new-account-container-change-password-hide{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-show{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-hide{\r\n    display: unset;\r\n}\r\n\r\n.pizo-new-account-container-change-password{\r\n    cursor: pointer;\r\n    padding-left: 150px;\r\n    margin-bottom: 10px;\r\n    color: var(--primary);\r\n}\r\n\r\n.pizo-new-account-container-password{\r\n    display: none;\r\n}\r\n\r\n.absol-switch-slider:before{\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before{\r\n    -webkit-transform: translateX(1em) translateY(-50%);\r\n    -ms-transform: translateX(1em) translateY(-50%);\r\n    transform: translateX(1em) translateY(-50%);\r\n}", ""]);
+
+
+
+/***/ }),
+/* 273 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(274);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 274 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "", ""]);
+
+
+
+/***/ }),
+/* 275 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32450,11 +32590,11 @@ __webpack_require__.d(dom_namespaceObject, "domVisitor", function() { return dom
 __webpack_require__.d(dom_namespaceObject, "parseDom", function() { return parseDom; });
 
 // EXTERNAL MODULE: ./node_modules/atob/browser-atob.js
-var browser_atob = __webpack_require__(62);
+var browser_atob = __webpack_require__(63);
 var browser_atob_default = /*#__PURE__*/__webpack_require__.n(browser_atob);
 
 // EXTERNAL MODULE: ./node_modules/btoa/index.js
-var node_modules_btoa = __webpack_require__(63);
+var node_modules_btoa = __webpack_require__(64);
 var btoa_default = /*#__PURE__*/__webpack_require__.n(node_modules_btoa);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Polyfill/polyfill.js
@@ -35438,7 +35578,7 @@ var lib = __webpack_require__(29);
 var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 
 // EXTERNAL MODULE: ./node_modules/absol/src/JSDocx/JSDocx.js
-var JSDocx = __webpack_require__(65);
+var JSDocx = __webpack_require__(66);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Network/Broadcast.js
 
@@ -36078,7 +36218,7 @@ XHR.request = function (method, url, props, headers, body, successCallback, fail
 var stringFormat = __webpack_require__(7);
 
 // EXTERNAL MODULE: ./node_modules/babylon/lib/index.js
-var babylon_lib = __webpack_require__(69);
+var babylon_lib = __webpack_require__(70);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/JSX/attribute.js
 /**
@@ -37479,7 +37619,7 @@ ACore["a" /* default */].install('spaninput', SpanInput);
 
 /* harmony default export */ var js_SpanInput = (SpanInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/spaninput.css
-var spaninput = __webpack_require__(110);
+var spaninput = __webpack_require__(111);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/IconButton.js
 
@@ -37558,7 +37698,7 @@ ACore["a" /* default */].creator.iconbutton = IconButton;
 
 /* harmony default export */ var js_IconButton = (IconButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/iconbutton.css
-var iconbutton = __webpack_require__(113);
+var iconbutton = __webpack_require__(114);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/FlexiconButton.js
 
@@ -37628,7 +37768,7 @@ ACore["a" /* default */].install('flexiconbutton', FlexiconButton);
 
 /* harmony default export */ var js_FlexiconButton = (FlexiconButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/flexiconbutton.css
-var flexiconbutton = __webpack_require__(115);
+var flexiconbutton = __webpack_require__(116);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Scroller.js
 
@@ -38188,7 +38328,7 @@ ACore["a" /* default */].creator.scrollbar = Scrollbar;
 ACore["a" /* default */].creator.vscroller = VScroller;
 ACore["a" /* default */].creator.hscroller = HScroller;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/scroller.css
-var scroller = __webpack_require__(117);
+var scroller = __webpack_require__(118);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/NumberInput.js
 
@@ -38574,7 +38714,7 @@ ACore["a" /* default */].install('NumberInput'.toLowerCase(), NumberInput);
 
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/numberinput.css
-var numberinput = __webpack_require__(119);
+var numberinput = __webpack_require__(120);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Searcher.js
 
@@ -38734,7 +38874,7 @@ ACore["a" /* default */].creator.searchtextinput = SearchTextInput;
 
 /* harmony default export */ var Searcher = (SearchTextInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/searcher.css
-var searcher = __webpack_require__(121);
+var searcher = __webpack_require__(122);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/String/stringMatching.js
 /**
@@ -39581,7 +39721,7 @@ ACore["a" /* default */].creator.selecttable = SelectTable;
 
 /* harmony default export */ var js_SelectTable = (SelectTable);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selecttable.css
-var selecttable = __webpack_require__(123);
+var selecttable = __webpack_require__(124);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Menu.js
 
@@ -40238,7 +40378,7 @@ ACore["a" /* default */].creator.vmenuline = VMenuLine;
 ACore["a" /* default */].creator.dropdown = Dropdown;
 ACore["a" /* default */].creator.hmenuitem = HMenuItem;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/menu.css
-var css_menu = __webpack_require__(125);
+var css_menu = __webpack_require__(126);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ContextMenu.js
 
@@ -40406,7 +40546,7 @@ ContextCaptor.eventHandler.contextmenu = function (event) {
 
 ACore["a" /* default */].install('contextcaptor', ContextCaptor);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/contextmenu.css
-var contextmenu = __webpack_require__(127);
+var contextmenu = __webpack_require__(128);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Modal.js
 
@@ -40457,7 +40597,7 @@ ACore["a" /* default */].creator.modal = Modal;
 
 /* harmony default export */ var js_Modal = (Modal);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/modal.css
-var modal = __webpack_require__(129);
+var modal = __webpack_require__(130);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TextEditor.js
 
@@ -40734,7 +40874,7 @@ ACore["a" /* default */].install('texteditor', TextEditor);
 
 // not comleted yet
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/texteditor.css
-var texteditor = __webpack_require__(131);
+var texteditor = __webpack_require__(132);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/MediaInput.js
 
@@ -41668,7 +41808,7 @@ ACore["a" /* default */].creator.mediainput = MediaInput;
 
 /* harmony default export */ var js_MediaInput = (MediaInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/mediainput.css
-var mediainput = __webpack_require__(133);
+var mediainput = __webpack_require__(134);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ResizableLayout.js
 
@@ -41764,7 +41904,7 @@ ACore["a" /* default */].creator.resizablelayout = ResizableLayout;
 // not completed yet
 /* harmony default export */ var js_ResizableLayout = (ResizableLayout);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/resizablelayout.css
-var resizablelayout = __webpack_require__(135);
+var resizablelayout = __webpack_require__(136);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/adapter/SearchStringArrayAdapter.js
 /**
@@ -42325,10 +42465,10 @@ ACore["a" /* default */].install('AutoCompleteInput'.toLowerCase(), AutoComplete
 
 /* harmony default export */ var js_AutoCompleteInput = (AutoCompleteInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/autocompleteinput.css
-var autocompleteinput = __webpack_require__(137);
+var autocompleteinput = __webpack_require__(138);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectlist.css
-var selectlist = __webpack_require__(139);
+var selectlist = __webpack_require__(140);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectListItem.js
 
@@ -42643,7 +42783,7 @@ ACore["a" /* default */].creator.selectlist = SelectList;
 
 /* harmony default export */ var js_SelectList = (SelectList);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectmenu.css
-var selectmenu = __webpack_require__(141);
+var selectmenu = __webpack_require__(142);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectMenu.js
 
@@ -43230,7 +43370,7 @@ ACore["a" /* default */].creator.selectmenu = SelectMenu;
 
 /* harmony default export */ var js_SelectMenu = (SelectMenu);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/treelist.css
-var treelist = __webpack_require__(143);
+var treelist = __webpack_require__(144);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TreeList.js
 
@@ -43545,7 +43685,7 @@ ACore["a" /* default */].creator.treelistitem = TreeListItem;
 
 /* harmony default export */ var js_TreeListItem = (TreeListItem);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selecttreemenu.css
-var selecttreemenu = __webpack_require__(145);
+var selecttreemenu = __webpack_require__(146);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectTreeMenu.js
 
@@ -43906,7 +44046,7 @@ ACore["a" /* default */].creator.selecttreemenu = SelectTreeMenu;
 
 /* harmony default export */ var js_SelectTreeMenu = (SelectTreeMenu);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectbox.css
-var selectbox = __webpack_require__(147);
+var selectbox = __webpack_require__(148);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectBoxItem.js
 
@@ -44379,7 +44519,7 @@ ACore["a" /* default */].install('SelectBox'.toLowerCase(), SelectBox);
 
 /* harmony default export */ var js_SelectBox = (SelectBox);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/radio.css
-var css_radio = __webpack_require__(149);
+var css_radio = __webpack_require__(150);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/RadioButton.js
 
@@ -44751,7 +44891,7 @@ ACore["a" /* default */].creator.radio = Radio_Radio;
 
 /* harmony default export */ var js_Radio = (Radio_Radio);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/switch.css
-var css_switch = __webpack_require__(151);
+var css_switch = __webpack_require__(152);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Switch.js
 
@@ -44842,7 +44982,7 @@ ACore["a" /* default */].install('switch', Switch);
 
 /* harmony default export */ var js_Switch = (Switch);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/checkbox.css
-var css_checkbox = __webpack_require__(153);
+var css_checkbox = __webpack_require__(154);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CheckBox.js
 
@@ -45156,7 +45296,7 @@ CheckBoxButton.initAfterLoad = function () {
 ACore["a" /* default */].install('CheckBoxButton'.toLowerCase(), CheckBoxButton);
 /* harmony default export */ var CheckboxButton = (CheckBoxButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/candyboxbutton.css
-var candyboxbutton = __webpack_require__(155);
+var candyboxbutton = __webpack_require__(156);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CandyBoxButton.js
 
@@ -45265,7 +45405,7 @@ ACore["a" /* default */].creator.textclipboard = TextClipboard;
 
 /* harmony default export */ var js_TextClipboard = (TextClipboard);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/editabletext.css
-var editabletext = __webpack_require__(157);
+var editabletext = __webpack_require__(158);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/EditableText.js
 
@@ -45414,7 +45554,7 @@ ACore["a" /* default */].creator.editabletext = EditableText;
 /* harmony default export */ var js_EditableText = (EditableText);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/widthheightresizer.css
-var widthheightresizer = __webpack_require__(159);
+var widthheightresizer = __webpack_require__(160);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Draggable.js
 
@@ -45905,10 +46045,10 @@ ACore["a" /* default */].install('FollowerToggler'.toLowerCase(), FollowerToggle
 
 /* harmony default export */ var js_FollowerToggler = (FollowerToggler);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/follower.css
-var follower = __webpack_require__(161);
+var follower = __webpack_require__(162);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tooltip.css
-var tooltip = __webpack_require__(163);
+var tooltip = __webpack_require__(164);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Tooltip.js
 
@@ -46067,10 +46207,10 @@ ToolTip.showWhenClick = function (element, content, orientation) {
 
 /* harmony default export */ var Tooltip = (ToolTip);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/frame.css
-var css_frame = __webpack_require__(165);
+var css_frame = __webpack_require__(166);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/frameview.css
-var css_frameview = __webpack_require__(167);
+var css_frameview = __webpack_require__(168);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Frame.js
 
@@ -46354,7 +46494,7 @@ ACore["a" /* default */].install('frameview', FrameView);
 
 /* harmony default export */ var js_FrameView = (FrameView);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tabview.css
-var tabview = __webpack_require__(169);
+var tabview = __webpack_require__(170);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TabBar.js
 
@@ -47100,10 +47240,10 @@ ACore["a" /* default */].install('singlepage', SinglePage);
 /* harmony default export */ var js_SinglePage = (SinglePage);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/singlepage.css
-var singlepage = __webpack_require__(171);
+var singlepage = __webpack_require__(172);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/pageselector.css
-var pageselector = __webpack_require__(173);
+var pageselector = __webpack_require__(174);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/PageSelector.js
 
@@ -47301,10 +47441,10 @@ ACore["a" /* default */].install('pageselector', PageSelector);
 
 /* harmony default export */ var js_PageSelector = (PageSelector);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/bscroller.css
-var bscroller = __webpack_require__(175);
+var bscroller = __webpack_require__(176);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/searchlist.css
-var searchlist = __webpack_require__(177);
+var searchlist = __webpack_require__(178);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/adapter/SearchListAdapter.js
 function SearchListAdapter() {
@@ -47881,7 +48021,7 @@ SearchList.prototype.init = function (props) {
 ACore["a" /* default */].install('SearchList'.toLowerCase(), SearchList);
 /* harmony default export */ var js_SearchList = (SearchList);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/statictabbar.css
-var statictabbar = __webpack_require__(179);
+var statictabbar = __webpack_require__(180);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/StaticTabbar.js
 
@@ -48088,7 +48228,7 @@ ACore["a" /* default */].install('remotesvg', RemoteSvg);
 /* harmony default export */ var js_RemoteSvg = (RemoteSvg);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/exptree.css
-var exptree = __webpack_require__(181);
+var exptree = __webpack_require__(182);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ExpTree.js
 
@@ -48483,7 +48623,7 @@ ACore["a" /* default */].install('exptree', ExpTree);
 
 /* harmony default export */ var js_ExpTree = (ExpTree);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tablevscroller.css
-var tablevscroller = __webpack_require__(183);
+var tablevscroller = __webpack_require__(184);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TableVScroller.js
 
@@ -48617,7 +48757,7 @@ ACore["a" /* default */].install('tablevscroller', TableVScroller);
 /* harmony default export */ var js_TableVScroller = (TableVScroller);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tablescroller.css
-var tablescroller = __webpack_require__(185);
+var tablescroller = __webpack_require__(186);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TableScroller.js
 
@@ -49039,7 +49179,7 @@ ACore["a" /* default */].install('TableScroller'.toLowerCase(), TableScroller);
 
 /* harmony default export */ var js_TableScroller = (TableScroller);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/quickpath.css
-var quickpath = __webpack_require__(187);
+var quickpath = __webpack_require__(188);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/QuickMenu.js
 
@@ -49551,7 +49691,7 @@ ACore["a" /* default */].install('quickpath', QuickPath);
 
 /* harmony default export */ var js_QuickPath = (QuickPath);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/droppanel.css
-var droppanel = __webpack_require__(189);
+var droppanel = __webpack_require__(190);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/DropPanel.js
 
@@ -49753,7 +49893,7 @@ ACore["a" /* default */].install('droppanelstack', DropPannelStack);
 
 /* harmony default export */ var DropPanelStack = (DropPannelStack);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/draggablestack.css
-var draggablestack = __webpack_require__(191);
+var draggablestack = __webpack_require__(192);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/DraggableVStack.js
 
@@ -50229,7 +50369,7 @@ DraggableHStack.prototype._updateDragginPosition = function () {
 ACore["a" /* default */].install('DraggableHStack'.toLowerCase(), DraggableHStack);
 /* harmony default export */ var js_DraggableHStack = (DraggableHStack);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/chromecalendar.css
-var chromecalendar = __webpack_require__(193);
+var chromecalendar = __webpack_require__(194);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Time/datetime.js
 var MILLIS_PER_DAY = 24 * 3600000;
@@ -51255,7 +51395,7 @@ ChromeCalendar.close = function (session) {
 
 /* harmony default export */ var js_ChromeCalendar = (ChromeCalendar);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/timepicker.css
-var timepicker = __webpack_require__(195);
+var timepicker = __webpack_require__(196);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TimePicker.js
 
@@ -52065,7 +52205,7 @@ TimePicker.eventHandler.mousefinishClock = function () {
 
 ACore["a" /* default */].install('timepicker', TimePicker);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/timeinput.css
-var timeinput = __webpack_require__(197);
+var timeinput = __webpack_require__(198);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TimeInput.js
 
@@ -52236,7 +52376,7 @@ TimeInput.eventHandler.pickerCancel = function (event) {
 
 ACore["a" /* default */].install('timeinput', TimeInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/calendarinput.css
-var calendarinput = __webpack_require__(199);
+var calendarinput = __webpack_require__(200);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CalendarInput.js
 
@@ -52380,7 +52520,7 @@ ACore["a" /* default */].install('calendar-input', function (data) {
 /* harmony default export */ var js_CalendarInput = (CalendarInput);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/onscreenwindow.css
-var onscreenwindow = __webpack_require__(201);
+var onscreenwindow = __webpack_require__(202);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/OnsScreenWindow.js
 
@@ -53065,7 +53205,7 @@ ACore["a" /* default */].install('hruler', HRuler);
 
 /* harmony default export */ var js_HRuler = (HRuler);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/hruler.css
-var hruler = __webpack_require__(203);
+var hruler = __webpack_require__(204);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/VRuler.js
 
@@ -53236,7 +53376,7 @@ ACore["a" /* default */].install('vruler', VRuler);
 
 /* harmony default export */ var js_VRuler = (VRuler);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/vruler.css
-var vruler = __webpack_require__(205);
+var vruler = __webpack_require__(206);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ResizeBox.js
 
@@ -53430,7 +53570,7 @@ ACore["a" /* default */].install('resizebox', ResizeBox);
 
 /* harmony default export */ var js_ResizeBox = (ResizeBox);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/resizebox.css
-var resizebox = __webpack_require__(207);
+var resizebox = __webpack_require__(208);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/PreInput.js
 
@@ -53680,10 +53820,10 @@ ACore["a" /* default */].install('preinput', PreInput);
 
 /* harmony default export */ var js_PreInput = (PreInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/preinput.css
-var preinput = __webpack_require__(209);
+var preinput = __webpack_require__(210);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/hexasectionlabel.css
-var hexasectionlabel = __webpack_require__(211);
+var hexasectionlabel = __webpack_require__(212);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/HexaSectionLabel.js
 
@@ -53839,7 +53979,7 @@ HexaSectionLabel.property.text = {
 ACore["a" /* default */].install('hexasectionlabel', HexaSectionLabel);
 /* harmony default export */ var js_HexaSectionLabel = (HexaSectionLabel);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/circlesectionlabel.css
-var circlesectionlabel = __webpack_require__(213);
+var circlesectionlabel = __webpack_require__(214);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CircleSectionLabel.js
 
@@ -54037,7 +54177,7 @@ CircleSectionLabel.property.text = {
 ACore["a" /* default */].install('circlesectionlabel', CircleSectionLabel);
 /* harmony default export */ var js_CircleSectionLabel = (CircleSectionLabel);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/linearcolorbar.css
-var linearcolorbar = __webpack_require__(215);
+var linearcolorbar = __webpack_require__(216);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/LinearColorBar.js
 
@@ -54327,7 +54467,7 @@ LinearColorBar.property.colorMapping = {
 ACore["a" /* default */].install('linearcolorbar', LinearColorBar);
 /* harmony default export */ var js_LinearColorBar = (LinearColorBar);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/boardtable.css
-var boardtable = __webpack_require__(217);
+var boardtable = __webpack_require__(218);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Board.js
 
@@ -54772,7 +54912,7 @@ ACore["a" /* default */].install('boardtable', BoardTable);
 var DebugTask = __webpack_require__(23);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/debugtask.css
-var debugtask = __webpack_require__(219);
+var debugtask = __webpack_require__(220);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/AComp.js
 
@@ -55017,7 +55157,7 @@ setTimeout(function () {
     }
 }, 100);
 // EXTERNAL MODULE: ./node_modules/absol/src/polyfill.js
-var polyfill = __webpack_require__(221);
+var polyfill = __webpack_require__(222);
 
 // CONCATENATED MODULE: ./js/dom/Fcore.js
 
@@ -55208,16 +55348,16 @@ BaseView.prototype.execCmd = function () {
 
 /* harmony default export */ var component_BaseView = (BaseView);
 // EXTERNAL MODULE: ./css/App.css
-var App = __webpack_require__(222);
+var App = __webpack_require__(223);
 
 // EXTERNAL MODULE: ./css/ListRealty.css
-var ListRealty = __webpack_require__(224);
+var ListRealty = __webpack_require__(225);
 
 // EXTERNAL MODULE: ./css/ModuleView.css
-var ModuleView = __webpack_require__(226);
+var ModuleView = __webpack_require__(227);
 
 // EXTERNAL MODULE: ./css/tablesort.css
-var tablesort = __webpack_require__(228);
+var tablesort = __webpack_require__(229);
 
 // CONCATENATED MODULE: ./js/component/ModuleView.js
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -55817,6 +55957,7 @@ function tableView() {
   var dragHorizontal = arguments.length > 2 ? arguments[2] : undefined;
   var dragVertical = arguments.length > 3 ? arguments[3] : undefined;
   var childIndex = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var indexRow = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 50;
   if (window.mobilecheck()) return tableViewMobile(header, data);
   var cell,
       row,
@@ -55841,6 +55982,7 @@ function tableView() {
     child: [headerTable, bodyTable]
   });
 
+  result.indexRow = indexRow;
   result.headerTable = headerTable;
   result.bodyTable = bodyTable;
   Object.assign(result, tableView.prototype);
@@ -56160,8 +56302,8 @@ tableView.prototype.addInputSearch = function (input) {
   var self = this;
 
   input.onchange = function (event) {
-    for (var i = 0; i < self.bodyTable.childNodes.length; i++) {
-      if (checkValueIs(self.bodyTable.childNodes[i].data, input.value)) {
+    for (var i = 0; i < self.data.length; i++) {
+      if (checkValueIs(self.data[i], input.value)) {
         if (!self.bodyTable.childNodes[i].classList.contains("parent")) self.bodyTable.childNodes[i].classList.add("parent");
         if (self.bodyTable.childNodes[i].classList.contains("disPlayNone")) self.bodyTable.childNodes[i].classList.remove("disPlayNone");
 
@@ -56203,7 +56345,7 @@ tableView.prototype.getBodyTable = function (data) {
   var arr = [];
   if (parent.checkSpan === undefined) result.checkSpan = [];
 
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < data.length && i < this.indexRow; i++) {
     row = result.getRow(data[i]);
     temp.addChild(row);
     arr.push(row);
@@ -56259,6 +56401,7 @@ tableView.prototype.getRow = function (data) {
   temp.childIndex = result.childIndex;
   temp.moreChild = temp.data.moreChild;
   temp.data.moreChild = undefined;
+  temp.indexRow = result.indexRow;
 
   temp.checkLeft = function () {
     for (var i = 0; i < temp.childNodes.length; i++) {
@@ -56349,7 +56492,7 @@ tableView.prototype.getRow = function (data) {
     }, 1);
   };
 
-  temp.checkVisiableChild = function () {
+  temp.checkVisibleChild = function () {
     this.buttonClick.selfRemove();
     var parent = this.childNodes[0].getParentNode();
 
@@ -56913,7 +57056,7 @@ tableView.prototype.dropRow = function (index) {
         parent.childrenNodes.splice(indexData, 1);
       }
 
-      if (result.checkVisiableChild !== undefined && result.childrenNodes.length === 0) result.checkVisiableChild();
+      if (result.checkVisibleChild !== undefined && result.childrenNodes.length === 0) result.checkVisibleChild();
       parent.isUpdate = true;
       resolve();
     }; // Code for Safari 3.1 to 6.0
@@ -56949,7 +57092,7 @@ tableView.prototype.changeParent = function (index, rowParent) {
     parent.childrenNodes.splice(indexData, 1);
   }
 
-  if (result.checkVisiableChild !== undefined && result.childrenNodes.length === 0) result.checkVisiableChild();
+  if (result.checkVisibleChild !== undefined && result.childrenNodes.length === 0) result.checkVisibleChild();
   return rowParent.childrenNodes.length - 1;
 };
 
@@ -57938,19 +58081,19 @@ function deleteQuestion(title, content) {
   return temp;
 }
 // EXTERNAL MODULE: ./css/NewRealty.css
-var css_NewRealty = __webpack_require__(230);
+var NewRealty = __webpack_require__(231);
 
 // EXTERNAL MODULE: ./css/imagesilder.css
-var imagesilder = __webpack_require__(232);
+var imagesilder = __webpack_require__(233);
 
 // EXTERNAL MODULE: ./css/form_create_edit.css
-var form_create_edit = __webpack_require__(234);
+var form_create_edit = __webpack_require__(235);
 
 // EXTERNAL MODULE: ./css/test_question.css
-var test_question = __webpack_require__(236);
+var test_question = __webpack_require__(237);
 
 // EXTERNAL MODULE: ./css/test.css
-var test = __webpack_require__(238);
+var test = __webpack_require__(239);
 
 // CONCATENATED MODULE: ./js/component/modal_drag_drop_image.js
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -58079,7 +58222,7 @@ var xmlModalDragImage;
           "class": "modal-upload-XML-body-drop-area-main",
           child: [{
             tag: "div",
-            "class": ["modal-upload-XML-body-drop-area-main-form", "displayVisiable"],
+            "class": ["modal-upload-XML-body-drop-area-main-form", "displayVisible"],
             props: {
               id: "drop-area"
             },
@@ -58542,7 +58685,7 @@ var xmlModalDragImage;
   uploadFile: function uploadFile(file, i, self) {
     self.updateProgress(i, 100, self);
     self.select.classList.remove("disable");
-    if (!self.modal.classList.contains("visiable")) self.modal.classList.add("visiable"); // var url = "./php/upload/handle_file_upload.php";
+    if (!self.modal.classList.contains("visible")) self.modal.classList.add("visible"); // var url = "./php/upload/handle_file_upload.php";
     // var name =
     //   ("img_" + Math.random() + Math.random()).replace(/\./g, "") +
     //   file.name.slice(file.name.lastIndexOf("."));
@@ -58558,8 +58701,8 @@ var xmlModalDragImage;
     //   if (xhr.readyState == 4 && xhr.status == 200) {
     //     self.updateProgress(i, 100, self); // <- Add this
     //     // self.select.classList.remove("disable");
-    //     if (!self.modal.classList.contains("visiable"))
-    //       self.modal.classList.add("visiable");
+    //     if (!self.modal.classList.contains("visible"))
+    //       self.modal.classList.add("visible");
     //     self.imgUrl.src = "./img/delete/" + name;
     //     self.imgAll.push("./img/delete/" + name);
     //     document.getElementById("gallery").style.position = "relative";
@@ -58573,7 +58716,7 @@ var xmlModalDragImage;
   }
 });
 // EXTERNAL MODULE: ./css/MapView.css
-var MapView = __webpack_require__(240);
+var MapView = __webpack_require__(241);
 
 // CONCATENATED MODULE: ./js/component/MapView.js
 
@@ -59145,10 +59288,10 @@ MapView_MapView.prototype.smoothZoom = function (max, cnt) {
   }
 };
 // EXTERNAL MODULE: ./css/ModuleImage.css
-var ModuleImage = __webpack_require__(242);
+var ModuleImage = __webpack_require__(243);
 
 // EXTERNAL MODULE: ./css/FormatFunction.css
-var FormatFunction = __webpack_require__(244);
+var FormatFunction = __webpack_require__(245);
 
 // CONCATENATED MODULE: ./js/component/FormatFunction.js
 
@@ -59162,11 +59305,29 @@ function formatDate(date) {
   var isDay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
   var isMonth = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
   var isYear = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
-  var d = new Date(date);
+  var d = new Date(date); //time zone value from database
+  //get the timezone offset from local time in minutes
+
+  var tzDifference = -d.getTimezoneOffset(); //convert the offset to milliseconds, add to targetTime, and make a new Date
+
+  d = new Date(d.getTime() + tzDifference * 60 * 1000);
   var resultTime = [];
   var resultDayMonth = [];
-  if (isHours) resultTime.push('' + d.getHours());
-  if (isMinutes) resultTime.push('' + d.getMinutes());
+
+  if (isHours) {
+    var hour = '' + d.getHours();
+    if (hour.length < 2) hour = '0' + hour;
+    resultTime.push(hour);
+  }
+
+  if (isMinutes) {
+    var minute = '' + d.getMinutes();
+    if (minute.length < 2) minute = '0' + minute;
+    resultTime.push(minute);
+    var second = '' + d.getSeconds();
+    if (second.length < 2) second = '0' + second;
+    resultTime.push(second);
+  }
 
   if (isDay) {
     var day = '' + d.getDate();
@@ -59182,6 +59343,42 @@ function formatDate(date) {
 
   if (isYear) resultDayMonth.push('' + d.getFullYear());
   return resultTime.join(':') + " " + resultDayMonth.join('/');
+}
+function getGMT(date) {
+  var timezone = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var onlyDay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  if (date == undefined) var d = new Date();else var d = new Date(date); //time zone value from database
+
+  var timeZoneFromDB = timezone; //time zone value from database
+  //get the timezone offset from local time in minutes
+
+  var tzDifference = timeZoneFromDB * 60 + d.getTimezoneOffset(); //convert the offset to milliseconds, add to targetTime, and make a new Date
+
+  d = new Date(d.getTime() + tzDifference * 60 * 1000);
+  console.log(d);
+  var resultTime = [];
+  var resultDayMonth = [];
+
+  if (onlyDay == false) {
+    var hour = '' + d.getHours();
+    if (hour.length < 2) hour = '0' + hour;
+    resultTime.push(hour);
+    var minute = '' + d.getMinutes();
+    if (minute.length < 2) minute = '0' + minute;
+    resultTime.push(minute);
+    var second = '' + d.getSeconds();
+    if (second.length < 2) second = '0' + second;
+    resultTime.push(second);
+  }
+
+  resultDayMonth.push('' + d.getFullYear());
+  var month = '' + (d.getMonth() + 1);
+  if (month.length < 2) month = '0' + month;
+  resultDayMonth.push(month);
+  var day = '' + d.getDate();
+  if (day.length < 2) day = '0' + day;
+  resultDayMonth.push(day);
+  if (onlyDay === false) return resultDayMonth.join('-') + " " + resultTime.join(':');else return resultDayMonth.join('-');
 }
 function consoleArea(areas) {
   var result = {
@@ -59923,6 +60120,28 @@ NewRealty_NewRealty.prototype.setContainer = function (parent) {
 Object.defineProperties(NewRealty_NewRealty.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
 NewRealty_NewRealty.prototype.constructor = NewRealty_NewRealty;
 
+NewRealty_NewRealty.prototype.createPromise = function () {
+  var self = this;
+
+  if (this.data === undefined) {
+    self.promiseAddDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  } else {
+    self.promiseEditDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  }
+};
+
+NewRealty_NewRealty.prototype.resetPromise = function (value) {
+  var self = this;
+  if (self.promiseAddDB !== undefined) self.promiseAddDB = undefined;
+  if (self.promiseEditDB !== undefined) self.promiseEditDB = undefined;
+};
+
 NewRealty_NewRealty.prototype.generalData = function () {
   for (var i = 0; i < this.header.length; i++) {
     if (this.header[i].value === undefined) {
@@ -59931,6 +60150,10 @@ NewRealty_NewRealty.prototype.generalData = function () {
 
     switch (value) {}
   }
+};
+
+NewRealty_NewRealty.prototype.getDataSave = function () {
+  var temp = {};
 };
 
 NewRealty_NewRealty.prototype.getView = function () {
@@ -59959,7 +60182,7 @@ NewRealty_NewRealty.prototype.getView = function () {
               self.$view.selfRemove();
               var arr = self.parent.body.getAllChild();
               self.parent.body.activeFrame(arr[arr.length - 1]);
-              if (arr.length === 0) self.parent.body.selfRemove();
+              self.rejectDB(self.getDataSave());
             }
           },
           child: ['<span>' + "Đóng" + '</span>']
@@ -59967,9 +60190,24 @@ NewRealty_NewRealty.prototype.getView = function () {
           tag: "button",
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
-            click: function click(evt) {}
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.createPromise();
+            }
           },
           child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Lưu và đóng" + '</span>']
         }]
       }]
     }]
@@ -60503,6 +60741,7 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
     }
   };
 
+  this.inputAdress = NewRealty_$('input.pizo-new-realty-desc-detail-1-row-input', temp);
   return temp;
 };
 
@@ -60604,18 +60843,41 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
         },
         "class": "pizo-new-realty-desc-detail-row-input",
         on: {
-          click: function click() {
-            console.log("open locationView");
-          }
+          click: function click() {}
         }
       }]
     }]
   });
 
+  this.inputName = NewRealty_$('input.pizo-new-realty-desc-detail-row-cell-input', temp);
+  this.inputLease = NewRealty_$('input.pizo-new-realty-desc-detail-row-menu-2-checkbox', temp);
+  this.inputSell = NewRealty_$('input.pizo-new-realty-desc-detail-row-menu-1-checkbox', temp);
+  this.inputContent = NewRealty_$('input.pizo-new-realty-desc-detail-row-input', temp);
   return temp;
 };
 
 NewRealty_NewRealty.prototype.detructView = function () {
+  var unitHeight = unit_Long(function (event) {
+    var height = NewRealty_$('input.pizo-new-realty-dectruct-content-area-height', temp);
+    height.value = height.value * event.lastValue / event.value;
+  });
+  var unitWidth = unit_Long(function (event) {
+    var width = NewRealty_$('input.pizo-new-realty-dectruct-content-area-width', temp);
+    width.value = width.value * event.lastValue / event.value;
+  });
+  var unit_Zone_1 = unit_Zone(function (event) {
+    var area1 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
+    area1.value = area1.value * event.lastValue / event.value;
+  });
+  var unit_Zone_2 = unit_Zone(function (event) {
+    var area2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
+    area2.value = area2.value * event.lastValue / event.value;
+  });
+  var unitWidthRoad = unit_Long(function (event) {
+    var width = NewRealty_$('input.pizo-new-realty-dectruct-content-area-access', temp);
+    width.value = width.value * event.lastValue / event.value;
+  });
+
   var temp = NewRealty_({
     tag: "div",
     "class": "pizo-new-realty-dectruct",
@@ -60680,10 +60942,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
                   type: "number",
                   min: 0
                 }
-              }, unit_Long(function (event) {
-                var height = NewRealty_$('input.pizo-new-realty-dectruct-content-area-height', temp);
-                height.value = height.value * event.lastValue / event.value;
-              })]
+              }, unitHeight]
             }]
           }, {
             tag: "div",
@@ -60725,10 +60984,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
                   type: "number",
                   min: 0
                 }
-              }, unit_Long(function (event) {
-                var width = NewRealty_$('input.pizo-new-realty-dectruct-content-area-width', temp);
-                width.value = width.value * event.lastValue / event.value;
-              })]
+              }, unitWidth]
             }]
           }]
         }, {
@@ -60753,10 +61009,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
                   type: "number",
                   min: 0
                 }
-              }, unit_Zone(function (event) {
-                var area1 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
-                area1.value = area1.value * event.lastValue / event.value;
-              })]
+              }, unit_Zone_1]
             }]
           }, {
             tag: "div",
@@ -60777,10 +61030,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
                   type: "number",
                   min: 0
                 }
-              }, unit_Zone(function (event) {
-                var area2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
-                area2.value = area2.value * event.lastValue / event.value;
-              })]
+              }, unit_Zone_2]
             }]
           }]
         }]
@@ -60878,7 +61128,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
             min: 0,
             step: 1
           }
-        }, unit_Long()]
+        }, unitWidthRoad]
       }, {
         tag: "div",
         "class": "pizo-new-realty-dectruct-content-area",
@@ -61040,6 +61290,24 @@ NewRealty_NewRealty.prototype.detructView = function () {
     }]
   });
 
+  this.inputHeight = NewRealty_$('input.pizo-new-realty-dectruct-content-area-height.pizo-new-realty-dectruct-input', temp);
+  this.inputWidth = NewRealty_$('input.pizo-new-realty-dectruct-content-area-width.pizo-new-realty-dectruct-input', temp);
+  this.inputUnitHeight = unitHeight;
+  this.inputUnitWidth = unitWidth;
+  this.inputZone1 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-1.pizo-new-realty-dectruct-input', temp);
+  this.inputZone2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2.pizo-new-realty-dectruct-input', temp);
+  this.inputUnitZone1 = unit_Zone_1;
+  this.inputUnitZone2 = unit_Zone_2;
+  this.direction = NewRealty_$('div.pizo-new-realty-detruct-content-direction', temp);
+  this.type = NewRealty_$('div.pizo-new-realty-detruct-content-type', temp);
+  this.inputWidthRoad = NewRealty_$('input.pizo-new-realty-dectruct-content-area-access', temp);
+  this.inputUnitWidthRoad = unitWidthRoad;
+  this.inputBedroom = NewRealty_$('input.pizo-new-realty-dectruct-content-area-bedroom', temp);
+  this.inputKitchen = NewRealty_$('input.pizo-new-realty-dectruct-content-area-kitchen', temp);
+  this.inputBathroom = NewRealty_$('input.pizo-new-realty-dectruct-content-area-bathroom', temp);
+  this.inputGarage = NewRealty_$('input.pizo-new-realty-dectruct-content-area-garage', temp);
+  this.inputBasement = NewRealty_$('input.pizo-new-realty-dectruct-content-area-basement', temp);
+  this.inputBalcony = NewRealty_$('input.pizo-new-realty-dectruct-content-area-balcony', temp);
   return temp;
 };
 
@@ -61662,7 +61930,7 @@ ListRealty_ListRealty.prototype.getView = function () {
     }, {
       value: 'Hướng'
     }, 'Giá', {
-      value: 'Giá m<sup>2</sup>'
+      value: 'Giá m²'
     }, {
       value: 'Hiện trạng'
     }, {
@@ -61755,7 +62023,7 @@ ListRealty_ListRealty.prototype.searchControlContent = function () {
     tag: 'calendar-input',
     data: {
       anchor: 'top',
-      value: new Date(),
+      value: new Date(new Date().getFullYear(), 0, 1),
       maxDateLimit: new Date()
     },
     on: {
@@ -62116,9 +62384,185 @@ ListRealty_ListRealty.prototype.start = function () {};
 
 /* harmony default export */ var page_ListRealty = (ListRealty_ListRealty);
 // EXTERNAL MODULE: ./css/ListWard.css
-var ListWard = __webpack_require__(246);
+var ListWard = __webpack_require__(247);
 
+// EXTERNAL MODULE: ./css/NewState.css
+var NewState = __webpack_require__(61);
+
+// CONCATENATED MODULE: ./js/component/NewDistrict.js
+
+
+
+
+
+
+
+
+
+var NewDistrict_ = dom_Fcore._;
+var NewDistrict_$ = dom_Fcore.$;
+
+function NewDistrict_NewState() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.ModuleView = new ModuleView_ModuleView();
+  this.NewRealty = new component_NewRealty();
+  this.NewRealty.attach(this);
+}
+
+NewDistrict_NewState.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(NewDistrict_NewState.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewDistrict_NewState.prototype.constructor = NewDistrict_NewState;
+
+NewDistrict_NewState.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+  this.$view = NewDistrict_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Thêm Tỉnh/TP"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {}
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }]
+      }]
+    }]
+  });
+  this.$view.addChild(NewDistrict_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [{
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [{
+        tag: "div",
+        "class": "pizo-new-state-container",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-state-container-name-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-name-container-label",
+            props: {
+              innerHTML: "Tên"
+            }
+          }, {
+            tag: "input",
+            "class": ["pizo-new-state-container-name-container-input", "pizo-new-realty-dectruct-input"]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-container-type-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-type-container-label",
+            props: {
+              innerHTML: "Loại"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-state-container-type-container-input",
+            props: {
+              items: [{
+                text: "Thành phố trực thuộc trung ương",
+                value: 79
+              }, {
+                text: "Tỉnh",
+                value: 80
+              }]
+            }
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-container-nation-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-nation-container-label",
+            props: {
+              innerHTML: "Quốc gia"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-state-container-nation-container-input",
+            props: {
+              items: [{
+                text: "Việt Nam",
+                value: 79
+              }]
+            }
+          }]
+        }]
+      }]
+    }]
+  }));
+  return this.$view;
+};
+
+NewDistrict_NewState.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+NewDistrict_NewState.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+NewDistrict_NewState.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+NewDistrict_NewState.prototype.start = function () {};
+
+/* harmony default export */ var NewDistrict = (NewDistrict_NewState);
 // CONCATENATED MODULE: ./js/page/ListWard.js
+
 
 
 
@@ -62136,7 +62580,6 @@ function ListWard_ListWard() {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.ModuleView = new ModuleView_ModuleView();
 }
 
 ListWard_ListWard.prototype.setContainer = function (parent) {
@@ -62167,12 +62610,12 @@ ListWard_ListWard.prototype.getView = function () {
     tag: "input",
     "class": "pizo-list-realty-page-allinput-input",
     props: {
-      placeholder: "Tên Quận Huyện"
+      placeholder: "Tìm kiếm"
     }
   });
 
   if (window.mobilecheck()) {
-    allinput.placeholder = "Tên Quận Huyện";
+    allinput.placeholder = "Tìm kiếm";
   }
 
   this.$view = ListWard_({
@@ -62184,7 +62627,7 @@ ListWard_ListWard.prototype.getView = function () {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: "Quản lý Phường/Xã"
+          innerHTML: "Quản lý Tỉnh/TP"
         }
       }, {
         tag: "div",
@@ -62205,10 +62648,7 @@ ListWard_ListWard.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              var frameAdd = self.NewRealty.getView();
-              self.parent.body.addChild(frameAdd);
-              self.parent.body.activeFrame(frameAdd);
-              self.NewRealty.setContainer(self.parent);
+              self.add();
             }
           },
           child: ['<span>' + "Thêm" + '</span>']
@@ -62261,49 +62701,204 @@ ListWard_ListWard.prototype.getView = function () {
       }]
     }]
   });
-  var tableViewX;
-  var header = [{
-    type: "dragzone",
-    dragElement: false
-  }, {
-    type: "increase",
-    value: "#"
-  }, {
-    value: 'ID',
-    sort: true
-  }, {
-    value: 'Tên',
-    sort: true
-  }, {
-    value: 'Quận/Huyện',
-    sort: true
-  }, {
-    value: 'Tỉnh/TP',
-    sort: true
-  }, {
-    value: 'Ngày tạo',
-    sort: true
-  }, {
-    value: 'Ngày cập nhật',
-    sort: true
-  }, {
-    type: "detail",
-    dragElement: false
-  }];
-  var dataTable = [[{}, {}, '79', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}]];
-  tableViewX = tableView(header, dataTable, true, true, 2);
-  tableViewX.addInputSearch(ListWard_$('.pizo-list-realty-page-allinput-container input', this.$view));
+
+  var tabContainer = ListWard_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg", "no-animation"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Thêm',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 2
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          self.add(data.original.id, row);
+          break;
+
+        case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_wards.php").then(function (value) {
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function (listState) {
+      loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (listParam) {
+        self.setListParam(listState);
+        self.setListParamState(listParam);
+        var header = [{
+          type: "increase",
+          value: "#",
+          style: {
+            minWidth: "50px",
+            width: "50px"
+          }
+        }, {
+          value: 'MS',
+          sort: true,
+          style: {
+            minWidth: "50px",
+            width: "50px"
+          }
+        }, {
+          value: 'Tên',
+          sort: true,
+          style: {
+            minWidth: "unset"
+          }
+        }, {
+          value: 'Loại',
+          sort: true,
+          style: {
+            minWidth: "200px",
+            width: "200px"
+          }
+        }, {
+          value: 'Quận/Huyện',
+          sort: true,
+          style: {
+            minWidth: "200px",
+            width: "200px"
+          }
+        }, {
+          value: 'Tỉnh/Thành phố',
+          sort: true,
+          style: {
+            minWidth: "200px",
+            width: "200px"
+          }
+        }, {
+          type: "detail",
+          functionClickAll: functionClickMore,
+          icon: "",
+          dragElement: false,
+          style: {
+            width: "30px"
+          }
+        }];
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+        tabContainer.addChild(self.mTable);
+        self.mTable.addInputSearch(ListWard_$('.pizo-list-realty-page-allinput-container input', self.$view)); // self.listParent.updateItemList(listParam);
+      });
+    });
+  });
   this.searchControl = this.searchControlContent();
   this.$view.addChild(ListWard_({
     tag: "div",
     "class": ["pizo-list-realty-main"],
-    child: [this.searchControl, {
-      tag: "div",
-      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
-      child: [tableViewX]
-    }]
+    child: [this.searchControl, tabContainer]
   }));
   return this.$view;
+};
+
+ListWard_ListWard.prototype.setListParam = function (value) {
+  this.checkDistrict = [];
+  this.listDistrict = [];
+
+  for (var i = 0; i < value.length; i++) {
+    this.checkDistrict[value[i].id] = value[i];
+    this.listDistrict[i] = {
+      text: value[i].name,
+      value: value[i].id
+    };
+  }
+
+  console.log(this.checkDistrict);
+};
+
+ListWard_ListWard.prototype.setListParamState = function (value) {
+  this.checkState = [];
+  this.listState = [];
+
+  for (var i = 0; i < value.length; i++) {
+    this.checkState[value[i].id] = value[i];
+    this.listState[i] = {
+      text: value[i].name,
+      value: value[i].id
+    };
+  }
+
+  this.isLoaded = true;
+};
+
+ListWard_ListWard.prototype.getDataParam = function () {
+  return this.listParam;
+};
+
+ListWard_ListWard.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = this.getDataRow(data[i]);
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  return temp;
+};
+
+ListWard_ListWard.prototype.getDataRow = function (data) {
+  var result = [{}, data.id, data.name, data.type, this.checkDistrict[parseInt(data.districtid)].name, this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name, {}];
+  result.original = data;
+  return result;
+};
+
+ListWard_ListWard.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Tất cả",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
 };
 
 ListWard_ListWard.prototype.searchControlContent = function () {
@@ -62312,7 +62907,7 @@ ListWard_ListWard.prototype.searchControlContent = function () {
     tag: 'calendar-input',
     data: {
       anchor: 'top',
-      value: new Date(),
+      value: new Date(new Date().getFullYear(), 0, 1),
       maxDateLimit: new Date()
     },
     on: {
@@ -62331,7 +62926,6 @@ ListWard_ListWard.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay.maxDateLimit = date;
       }
     }
@@ -62340,7 +62934,7 @@ ListWard_ListWard.prototype.searchControlContent = function () {
     tag: 'calendar-input',
     data: {
       anchor: 'top',
-      value: new Date(),
+      value: new Date(new Date().getFullYear(), 0, 1),
       maxDateLimit: new Date()
     },
     on: {
@@ -62407,16 +63001,16 @@ ListWard_ListWard.prototype.searchControlContent = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-ditrict-ward",
+          "class": "pizo-list-realty-main-search-control-row-district-ward",
           child: [{
             tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-ditrict-ward-label",
+            "class": "pizo-list-realty-main-search-control-row-district-ward-label",
             props: {
               innerHTML: "Quận/Huyện"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-ditrict-ward-input",
+            "class": "pizo-list-realty-main-search-control-row-district-ward-input",
             child: [{
               tag: "selectmenu",
               props: {
@@ -62551,6 +63145,123 @@ ListWard_ListWard.prototype.searchControlContent = function () {
   return temp;
 };
 
+ListWard_ListWard.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListWard_ListWard.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListWard_ListWard.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewDistrict = new NewDistrict(undefined, parent_id);
+  mNewDistrict.attach(self.parent);
+  var frameview = mNewDistrict.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewDistrict, row);
+};
+
+ListWard_ListWard.prototype.addDB = function (mNewDistrict, row) {
+  var self = this;
+  mNewDistrict.promiseAddDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    updateData(phpFile, value).then(function (result) {
+      console.log(result);
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewDistrict.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewDistrict.promiseAddDB !== undefined) self.addDB(mNewDistrict);
+    }, 10);
+  });
+};
+
+ListWard_ListWard.prototype.addView = function (value, parent) {
+  value.created = getGMT();
+  value.modified = getGMT();
+  var result = this.getDataRow(value);
+  console.log(result);
+  var element = this.mTable;
+  element.insertRow(result);
+};
+
+ListWard_ListWard.prototype.edit = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewDistrict = new NewDistrict(data);
+  mNewDistrict.attach(self.parent);
+  var frameview = mNewDistrict.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewDistrict, data, parent, index);
+};
+
+ListWard_ListWard.prototype.editDB = function (mNewDistrict, data, parent, index) {
+  var self = this;
+  mNewDistrict.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewDistrict.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewDistrict.promiseEditDB !== undefined) self.editDB(mNewDistrict, data, parent, index);
+    }, 10);
+  });
+};
+
+ListWard_ListWard.prototype.editView = function (value, data, parent, index) {
+  value.created = data.original.created;
+  value.modified = getGMT();
+  var data = this.getDataRow(value);
+  var indexOF = index,
+      element = parent;
+  element.updateRow(data, indexOF, true);
+};
+
+ListWard_ListWard.prototype["delete"] = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  console.log(data);
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListWard_ListWard.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {});
+};
+
+ListWard_ListWard.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
 ListWard_ListWard.prototype.refresh = function () {
   var data;
   var editor = this.getContext(R.LAYOUT_EDITOR);
@@ -62585,9 +63296,10 @@ ListWard_ListWard.prototype.start = function () {};
 
 /* harmony default export */ var page_ListWard = (ListWard_ListWard);
 // EXTERNAL MODULE: ./css/ListStreet.css
-var ListStreet = __webpack_require__(248);
+var ListStreet = __webpack_require__(250);
 
 // CONCATENATED MODULE: ./js/page/ListStreet.js
+
 
 
 
@@ -62605,7 +63317,6 @@ function ListStreet_ListStreet() {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.ModuleView = new ModuleView_ModuleView();
 }
 
 ListStreet_ListStreet.prototype.setContainer = function (parent) {
@@ -62636,12 +63347,12 @@ ListStreet_ListStreet.prototype.getView = function () {
     tag: "input",
     "class": "pizo-list-realty-page-allinput-input",
     props: {
-      placeholder: "Tên đường"
+      placeholder: "Tìm kiếm"
     }
   });
 
   if (window.mobilecheck()) {
-    allinput.placeholder = "Tên đường";
+    allinput.placeholder = "Tìm kiếm";
   }
 
   this.$view = ListStreet_({
@@ -62650,15 +63361,15 @@ ListStreet_ListStreet.prototype.getView = function () {
     child: [{
       "class": 'absol-single-page-header',
       child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý Tỉnh/TP"
+        }
+      }, {
         tag: "div",
         "class": "pizo-list-realty-button",
         child: [{
-          tag: "span",
-          "class": "pizo-body-title-left",
-          props: {
-            innerHTML: "Quản lý Tên đường"
-          }
-        }, {
           tag: "button",
           "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
           on: {
@@ -62674,10 +63385,7 @@ ListStreet_ListStreet.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              var frameAdd = self.NewRealty.getView();
-              self.parent.body.addChild(frameAdd);
-              self.parent.body.activeFrame(frameAdd);
-              self.NewRealty.setContainer(self.parent);
+              self.add();
             }
           },
           child: ['<span>' + "Thêm" + '</span>']
@@ -62730,55 +63438,280 @@ ListStreet_ListStreet.prototype.getView = function () {
       }]
     }]
   });
-  var tableViewX;
-  var header = [{
-    type: "dragzone",
-    dragElement: false
-  }, {
-    type: "increase",
-    value: "#"
-  }, {
-    value: 'ID',
-    sort: true
-  }, {
-    value: 'Tên',
-    sort: true
-  }, {
-    value: 'Phường/Xã',
-    sort: true
-  }, {
-    value: 'Quận/Huyện',
-    sort: true
-  }, {
-    value: 'Tỉnh/TP',
-    sort: true
-  }, {
-    value: 'Ngày tạo',
-    sort: true
-  }, {
-    value: 'Ngày cập nhật',
-    sort: true
-  }, {
-    type: "detail",
-    dragElement: false
-  }];
-  var dataTable = [[{}, {}, '1282', 'Lê Sao', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '1283', 'Huỳnh Đình Hai', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '1284', 'Nguyễn Văn Mai', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '1285', '3 Tháng 2', 'Phường Tân Định', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}]];
-  tableViewX = tableView(header, dataTable, true, true, 2);
-  tableViewX.addInputSearch(ListStreet_$('.pizo-list-realty-page-allinput-container input', this.$view));
+
+  var tabContainer = ListStreet_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg", "no-animation"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Thêm',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 2
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          self.add(data.original.id, row);
+          break;
+
+        case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_streets.php").then(function (value) {
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_wards.php").then(function (listWard) {
+      loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function (listDistrict) {
+        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (listState) {
+          self.setListParamWard(listWard);
+          self.setListParamDitrict(listDistrict);
+          self.setListParamState(listState);
+          var header = [{
+            type: "increase",
+            value: "#",
+            style: {
+              minWidth: "50px",
+              width: "50px"
+            }
+          }, {
+            value: 'MS',
+            sort: true,
+            style: {
+              minWidth: "50px",
+              width: "50px"
+            }
+          }, {
+            value: 'Tên',
+            sort: true,
+            style: {
+              minWidth: "unset"
+            }
+          }, {
+            value: 'Phường/Xã',
+            sort: true,
+            style: {
+              minWidth: "200px",
+              width: "200px"
+            }
+          }, {
+            value: 'Quận/Huyện',
+            sort: true,
+            style: {
+              minWidth: "200px",
+              width: "200px"
+            }
+          }, {
+            value: 'Tỉnh/Thành phố',
+            sort: true,
+            style: {
+              minWidth: "200px",
+              width: "200px"
+            }
+          }, {
+            type: "detail",
+            functionClickAll: functionClickMore,
+            icon: "",
+            dragElement: false,
+            style: {
+              width: "30px"
+            }
+          }];
+          self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+          tabContainer.addChild(self.mTable);
+          self.mTable.addInputSearch(ListStreet_$('.pizo-list-realty-page-allinput-container input', self.$view)); // self.listParent.updateItemList(listParam);
+        });
+      });
+    });
+  });
   this.searchControl = this.searchControlContent();
   this.$view.addChild(ListStreet_({
     tag: "div",
     "class": ["pizo-list-realty-main"],
-    child: [this.searchControl, {
-      tag: "div",
-      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
-      child: [tableViewX]
-    }]
+    child: [this.searchControl, tabContainer]
   }));
   return this.$view;
 };
 
+ListStreet_ListStreet.prototype.setListParamWard = function (value) {
+  this.checkWard = [];
+  this.listWard = [];
+
+  for (var i = 0; i < value.length; i++) {
+    this.checkWard[value[i].id] = value[i];
+    this.listWard[i] = {
+      text: value[i].name,
+      value: value[i].id
+    };
+  }
+};
+
+ListStreet_ListStreet.prototype.setListParamDitrict = function (value) {
+  this.checkDistrict = [];
+  this.listDistrict = [];
+
+  for (var i = 0; i < value.length; i++) {
+    this.checkDistrict[value[i].id] = value[i];
+    this.listDistrict[i] = {
+      text: value[i].name,
+      value: value[i].id
+    };
+  }
+};
+
+ListStreet_ListStreet.prototype.setListParamState = function (value) {
+  this.checkState = [];
+  this.listState = [];
+
+  for (var i = 0; i < value.length; i++) {
+    this.checkState[value[i].id] = value[i];
+    this.listState[i] = {
+      text: value[i].name,
+      value: value[i].id
+    };
+  }
+
+  this.isLoaded = true;
+};
+
+ListStreet_ListStreet.prototype.getDataParam = function () {
+  return this.listParam;
+};
+
+ListStreet_ListStreet.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = this.getDataRow(data[i]);
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  return temp;
+};
+
+ListStreet_ListStreet.prototype.getDataRow = function (data) {
+  console.log(this.checkWard);
+  var result = [{}, data.id, data.name, this.checkWard[parseInt(data.wardid)].name, this.checkDistrict[parseInt(this.checkWard[parseInt(data.wardid)].districtid)].name, this.checkState[parseInt(this.checkDistrict[parseInt(this.checkWard[parseInt(data.wardid)].districtid)].stateid)].name, {}];
+  result.original = data;
+  console.log(result);
+  return result;
+};
+
+ListStreet_ListStreet.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Tất cả",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
+};
+
 ListStreet_ListStreet.prototype.searchControlContent = function () {
+  var startDay, endDay, startDay1, endDay1;
+  startDay = ListStreet_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(new Date().getFullYear(), 0, 1),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay);
+        endDay.minDateLimit = date;
+      }
+    }
+  });
+  endDay = ListStreet_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        startDay.maxDateLimit = date;
+      }
+    }
+  });
+  startDay1 = ListStreet_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(new Date().getFullYear(), 0, 1),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay1);
+        endDay1.minDateLimit = date;
+      }
+    }
+  });
+  endDay1 = ListStreet_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay1.maxDateLimit = date;
+      }
+    }
+  });
+
   var content = ListStreet_({
     tag: "div",
     "class": "pizo-list-realty-main-search-control-container",
@@ -62795,16 +63728,16 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
         "class": "pizo-list-realty-main-search-control-row",
         child: [{
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-state-street",
+          "class": "pizo-list-realty-main-search-control-row-state-ward",
           child: [{
             tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-state-street-label",
+            "class": "pizo-list-realty-main-search-control-row-state-ward-label",
             props: {
               innerHTML: "Tỉnh/TP"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-state-street-input",
+            "class": "pizo-list-realty-main-search-control-row-state-ward-input",
             child: [{
               tag: "selectmenu",
               props: {
@@ -62821,16 +63754,16 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-ditrict-street",
+          "class": "pizo-list-realty-main-search-control-row-district-ward",
           child: [{
             tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-ditrict-street-label",
+            "class": "pizo-list-realty-main-search-control-row-district-ward-label",
             props: {
               innerHTML: "Quận/Huyện"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-ditrict-street-input",
+            "class": "pizo-list-realty-main-search-control-row-district-ward-input",
             child: [{
               tag: "selectmenu",
               props: {
@@ -62850,26 +63783,31 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-ward-street",
+          "class": "pizo-list-realty-main-search-control-row-phone",
           child: [{
             tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-ward-street-label",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
             props: {
-              innerHTML: "Phường/Xã"
+              innerHTML: "Ngày tạo"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-ward-street-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Phường Tân Định',
-                  id: 79
-                }]
-              }
-            }]
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay, endDay]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-phone",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            props: {
+              innerHTML: "Ngày cập nhật"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay1, endDay1]
           }]
         }, {
           tag: "div",
@@ -62908,6 +63846,8 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
   });
 
   temp.content = content;
+  content.timestart = startDay;
+  content.timeend = endDay;
   content.lowprice = ListStreet_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
   content.highprice = ListStreet_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
   content.phone = ListStreet_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
@@ -62941,6 +63881,8 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
   temp.apply = function () {};
 
   temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
     content.lowprice.value = "";
     content.highprice.value = "";
     content.phone.value = "";
@@ -62954,6 +63896,123 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
   };
 
   return temp;
+};
+
+ListStreet_ListStreet.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListStreet_ListStreet.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListStreet_ListStreet.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewDistrict = new NewDistrict(undefined, parent_id);
+  mNewDistrict.attach(self.parent);
+  var frameview = mNewDistrict.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewDistrict, row);
+};
+
+ListStreet_ListStreet.prototype.addDB = function (mNewDistrict, row) {
+  var self = this;
+  mNewDistrict.promiseAddDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    updateData(phpFile, value).then(function (result) {
+      console.log(result);
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewDistrict.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewDistrict.promiseAddDB !== undefined) self.addDB(mNewDistrict);
+    }, 10);
+  });
+};
+
+ListStreet_ListStreet.prototype.addView = function (value, parent) {
+  value.created = getGMT();
+  value.modified = getGMT();
+  var result = this.getDataRow(value);
+  console.log(result);
+  var element = this.mTable;
+  element.insertRow(result);
+};
+
+ListStreet_ListStreet.prototype.edit = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewDistrict = new NewDistrict(data);
+  mNewDistrict.attach(self.parent);
+  var frameview = mNewDistrict.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewDistrict, data, parent, index);
+};
+
+ListStreet_ListStreet.prototype.editDB = function (mNewDistrict, data, parent, index) {
+  var self = this;
+  mNewDistrict.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewDistrict.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewDistrict.promiseEditDB !== undefined) self.editDB(mNewDistrict, data, parent, index);
+    }, 10);
+  });
+};
+
+ListStreet_ListStreet.prototype.editView = function (value, data, parent, index) {
+  value.created = data.original.created;
+  value.modified = getGMT();
+  var data = this.getDataRow(value);
+  var indexOF = index,
+      element = parent;
+  element.updateRow(data, indexOF, true);
+};
+
+ListStreet_ListStreet.prototype["delete"] = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  console.log(data);
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListStreet_ListStreet.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {});
+};
+
+ListStreet_ListStreet.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
 };
 
 ListStreet_ListStreet.prototype.refresh = function () {
@@ -62990,10 +64049,7 @@ ListStreet_ListStreet.prototype.start = function () {};
 
 /* harmony default export */ var page_ListStreet = (ListStreet_ListStreet);
 // EXTERNAL MODULE: ./css/ListState.css
-var ListState = __webpack_require__(250);
-
-// EXTERNAL MODULE: ./css/NewState.css
-var NewState = __webpack_require__(252);
+var ListState = __webpack_require__(252);
 
 // CONCATENATED MODULE: ./js/component/NewState.js
 
@@ -63177,6 +64233,7 @@ NewState_NewState.prototype.start = function () {};
 
 
 
+
 var ListState_ = dom_Fcore._;
 var ListState_$ = dom_Fcore.$;
 
@@ -63185,7 +64242,6 @@ function ListState_ListState() {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.ModuleView = new ModuleView_ModuleView();
 }
 
 ListState_ListState.prototype.setContainer = function (parent) {
@@ -63216,12 +64272,12 @@ ListState_ListState.prototype.getView = function () {
     tag: "input",
     "class": "pizo-list-realty-page-allinput-input",
     props: {
-      placeholder: "Tên"
+      placeholder: "Tìm kiếm"
     }
   });
 
   if (window.mobilecheck()) {
-    allinput.placeholder = "Tên";
+    allinput.placeholder = "Tìm kiếm";
   }
 
   this.$view = ListState_({
@@ -63254,255 +64310,7 @@ ListState_ListState.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              var frameAdd = self.NewRealty.getView();
-              self.parent.body.addChild(frameAdd);
-              self.parent.body.activeFrame(frameAdd);
-              self.NewRealty.setContainer(self.parent);
-            }
-          },
-          child: ['<span>' + "Thêm" + '</span>']
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-page-allinput",
-        child: [{
-          tag: "div",
-          "class": "pizo-list-realty-page-allinput-container",
-          child: [allinput, {
-            tag: "button",
-            "class": "pizo-list-realty-page-allinput-search",
-            child: [{
-              tag: 'i',
-              "class": 'material-icons',
-              props: {
-                innerHTML: 'search'
-              }
-            }]
-          }]
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-page-number-line",
-        child: [input, {
-          tag: "span",
-          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
-          props: {
-            innerHTML: "Số dòng"
-          }
-        }]
-      }]
-    }]
-  });
-  var tableViewX;
-  var docTypeMemuProps, token, functionX;
-
-  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
-    docTypeMemuProps = {
-      items: [{
-        text: 'Sửa',
-        icon: 'span.mdi.mdi-text-short',
-        value: 0
-      }, {
-        text: 'Xóa',
-        icon: 'span.mdi.mdi-text',
-        value: 1
-      }]
-    };
-    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
-      switch (menuItem.value) {
-        case 0:
-          var mNewState = new component_NewState();
-          mNewState.attach(self.parent);
-          console.log(self.parent);
-          var frameview = mNewState.getView();
-          self.parent.body.addChild(frameview);
-          self.parent.body.activeFrame(frameview);
-          break;
-
-        case 1:
-          break;
-      }
-    });
-
-    functionX = function (token) {
-      return function () {
-        var x = function x(event) {
-          absol.QuickMenu.close(token);
-          document.body.removeEventListener("click", x);
-        };
-
-        document.body.addEventListener("click", x);
-      };
-    }(token);
-
-    setTimeout(functionX, 10);
-  };
-
-  var header = [{
-    type: "dragzone",
-    dragElement: false
-  }, {
-    type: "increase",
-    value: "#"
-  }, {
-    value: 'ID',
-    sort: true
-  }, {
-    value: 'Tên',
-    sort: true
-  }, {
-    value: 'Ngày tạo',
-    sort: true
-  }, {
-    value: 'Ngày cập nhật',
-    sort: true
-  }, {
-    type: "detail",
-    functionClickAll: functionClickMore,
-    dragElement: false
-  }];
-  var dataTable = [[{}, {}, '79', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '80', 'Thủ đô Hà Nội', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}]];
-  tableViewX = tableView(header, dataTable, true, true, 2);
-  tableViewX.addInputSearch(ListState_$('.pizo-list-realty-page-allinput-container input', this.$view));
-  this.$view.addChild(ListState_({
-    tag: "div",
-    "class": ["pizo-list-realty-main"],
-    child: [{
-      tag: "div",
-      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
-      child: [tableViewX]
-    }]
-  }));
-  return this.$view;
-};
-
-ListState_ListState.prototype.refresh = function () {
-  var data;
-  var editor = this.getContext(R.LAYOUT_EDITOR);
-  if (editor) data = editor.getData();
-  if (data) this.setData(data);
-};
-
-ListState_ListState.prototype.setData = function (data) {
-  this.data = data;
-  this.data.tracking = "OK";
-  this.dataFlushed = false;
-  if (this.state == "RUNNING") this.flushDataToView();
-};
-
-ListState_ListState.prototype.flushDataToView = function () {
-  if (this.dataFlushed) return;
-  this.dataFlushed = true; //TODO: remove older view
-
-  if (!this.data) return;
-  this.$content.clearChild();
-
-  if (this.data && this.$view) {
-    this.rootComponent = this.build(this.data);
-    this.$content.addChild(this.rootComponent.view);
-    this.rootComponent.onAttach();
-    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
-    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
-  }
-};
-
-ListState_ListState.prototype.start = function () {};
-
-/* harmony default export */ var page_ListState = (ListState_ListState);
-// EXTERNAL MODULE: ./css/ListDitrict.css
-var ListDitrict = __webpack_require__(254);
-
-// CONCATENATED MODULE: ./js/page/ListDitrict.js
-
-
-
-
-
-
-
-
-
-var ListDitrict_ = dom_Fcore._;
-var ListDitrict_$ = dom_Fcore.$;
-
-function ListDitrict_ListDitrict() {
-  component_BaseView.call(this);
-  AppPattern_Fragment.call(this);
-  this.cmdRunner = new AppPattern_CMDRunner(this);
-  this.loadConfig();
-  this.ModuleView = new ModuleView_ModuleView();
-}
-
-ListDitrict_ListDitrict.prototype.setContainer = function (parent) {
-  this.parent = parent;
-};
-
-Object.defineProperties(ListDitrict_ListDitrict.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
-ListDitrict_ListDitrict.prototype.constructor = ListDitrict_ListDitrict;
-
-ListDitrict_ListDitrict.prototype.getView = function () {
-  if (this.$view) return this.$view;
-  var self = this;
-
-  var input = ListDitrict_({
-    tag: "input",
-    "class": "quantumWizTextinputPaperinputInput",
-    props: {
-      type: "number",
-      autocomplete: "off",
-      min: 1,
-      max: 200,
-      step: 1,
-      value: 50
-    }
-  });
-
-  var allinput = ListDitrict_({
-    tag: "input",
-    "class": "pizo-list-realty-page-allinput-input",
-    props: {
-      placeholder: "Tên"
-    }
-  });
-
-  if (window.mobilecheck()) {
-    allinput.placeholder = "Tên";
-  }
-
-  this.$view = ListDitrict_({
-    tag: 'singlepage',
-    "class": "pizo-list-realty",
-    child: [{
-      "class": 'absol-single-page-header',
-      child: [{
-        tag: "span",
-        "class": "pizo-body-title-left",
-        props: {
-          innerHTML: "Quản lý Quận/Huyện"
-        }
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-button",
-        child: [{
-          tag: "button",
-          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
-          on: {
-            click: function click(evt) {
-              self.$view.selfRemove();
-              var arr = self.parent.body.getAllChild();
-              self.parent.body.activeFrame(arr[arr.length - 1]);
-            }
-          },
-          child: ['<span>' + "Đóng" + '</span>']
-        }, {
-          tag: "button",
-          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
-          on: {
-            click: function click(evt) {
-              var frameAdd = self.NewRealty.getView();
-              self.parent.body.addChild(frameAdd);
-              self.parent.body.activeFrame(frameAdd);
-              self.NewRealty.setContainer(self.parent);
+              self.add();
             }
           },
           child: ['<span>' + "Thêm" + '</span>']
@@ -63555,55 +64363,705 @@ ListDitrict_ListDitrict.prototype.getView = function () {
       }]
     }]
   });
-  var tableViewX;
-  var header = [{
-    type: "dragzone",
-    dragElement: false
-  }, {
-    type: "increase",
-    value: "#"
-  }, {
-    value: 'ID',
-    sort: true
-  }, {
-    value: 'Tên',
-    sort: true
-  }, {
-    value: 'Tỉnh/TP',
-    sort: true
-  }, {
-    value: 'Ngày tạo',
-    sort: true
-  }, {
-    value: 'Ngày cập nhật',
-    sort: true
-  }, {
-    type: "detail",
-    dragElement: false
-  }];
-  var dataTable = [[{}, {}, '79', 'Quận 1', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '80', 'Quận Tân Bình', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}], [{}, {}, '80', 'Quận Bình Thạnh', 'Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), formatDate("2020-04-21T04:25:21.769Z", true, true, true, true, true), {}]];
-  tableViewX = tableView(header, dataTable, true, true, 2);
-  tableViewX.addInputSearch(ListDitrict_$('.pizo-list-realty-page-allinput-container input', this.$view));
+
+  var tabContainer = ListState_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Thêm',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 2
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          self.add(data.original.id, row);
+          break;
+
+        case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (value) {
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_nations.php").then(function (listParam) {
+      self.setListParam(listParam);
+      var header = [{
+        type: "increase",
+        value: "#",
+        style: {
+          minWidth: "50px",
+          width: "50px"
+        }
+      }, {
+        value: 'MS',
+        sort: true,
+        style: {
+          minWidth: "50px",
+          width: "50px"
+        }
+      }, {
+        value: 'Tên',
+        sort: true,
+        style: {
+          minWidth: "unset"
+        }
+      }, {
+        value: 'Loại',
+        sort: true,
+        style: {
+          minWidth: "200px",
+          width: "200px"
+        }
+      }, {
+        value: 'Quốc gia',
+        sort: true,
+        style: {
+          minWidth: "200px",
+          width: "200px"
+        }
+      }, {
+        type: "detail",
+        functionClickAll: functionClickMore,
+        icon: "",
+        dragElement: false,
+        style: {
+          width: "30px"
+        }
+      }];
+      self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+      tabContainer.addChild(self.mTable);
+      self.mTable.addInputSearch(ListState_$('.pizo-list-realty-page-allinput-container input', self.$view));
+      self.listParent.updateItemList(listParam);
+    });
+  });
   this.searchControl = this.searchControlContent();
-  this.$view.addChild(ListDitrict_({
+  this.$view.addChild(ListState_({
     tag: "div",
     "class": ["pizo-list-realty-main"],
-    child: [this.searchControl, {
-      tag: "div",
-      "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
-      child: [tableViewX]
-    }]
+    child: [this.searchControl, tabContainer]
   }));
   return this.$view;
 };
 
-ListDitrict_ListDitrict.prototype.searchControlContent = function () {
+ListState_ListState.prototype.setListParam = function (value) {
+  this.checkNation = [];
+  this.listParam = [];
+
+  for (var i = 0; i < value.length; i++) {
+    this.checkNation[value[i].id] = value[i];
+    this.listParam[i] = {
+      text: value[i].name,
+      value: value[i].id
+    };
+  }
+
+  this.isLoaded = true;
+  console.log(this.checkNation);
+};
+
+ListState_ListState.prototype.getDataParam = function () {
+  return this.listParam;
+};
+
+ListState_ListState.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = this.getDataRow(data[i]);
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  return temp;
+};
+
+ListState_ListState.prototype.getDataRow = function (data) {
+  var result = [{}, data.id, data.name, data.type, this.checkNation[parseInt(data.nationid)].longname, {}];
+  result.original = data;
+  return result;
+};
+
+ListState_ListState.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Tất cả",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
+};
+
+ListState_ListState.prototype.searchControlContent = function () {
+  var content = ListState_({
+    tag: "div"
+  });
+
+  var temp = ListState_({
+    tag: "div",
+    style: {
+      display: "none"
+    },
+    child: [content]
+  });
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
+  };
+
+  return temp;
+};
+
+ListState_ListState.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListState_ListState.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListState_ListState.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewState = new component_NewState(undefined, parent_id);
+  mNewState.attach(self.parent);
+  var frameview = mNewState.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewState, row);
+};
+
+ListState_ListState.prototype.addDB = function (mNewState, row) {
+  var self = this;
+  mNewState.promiseAddDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    updateData(phpFile, value).then(function (result) {
+      console.log(result);
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewState.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewState.promiseAddDB !== undefined) self.addDB(mNewState);
+    }, 10);
+  });
+};
+
+ListState_ListState.prototype.addView = function (value, parent) {
+  value.created = getGMT();
+  value.modified = getGMT();
+  var result = this.getDataRow(value);
+  console.log(result);
+  var element = this.mTable;
+  element.insertRow(result);
+};
+
+ListState_ListState.prototype.edit = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewState = new component_NewState(data);
+  mNewState.attach(self.parent);
+  var frameview = mNewState.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewState, data, parent, index);
+};
+
+ListState_ListState.prototype.editDB = function (mNewState, data, parent, index) {
+  var self = this;
+  mNewState.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewState.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewState.promiseEditDB !== undefined) self.editDB(mNewState, data, parent, index);
+    }, 10);
+  });
+};
+
+ListState_ListState.prototype.editView = function (value, data, parent, index) {
+  value.created = data.original.created;
+  value.modified = getGMT();
+  var data = this.getDataRow(value);
+  var indexOF = index,
+      element = parent;
+  element.updateRow(data, indexOF, true);
+};
+
+ListState_ListState.prototype["delete"] = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  console.log(data);
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListState_ListState.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {});
+};
+
+ListState_ListState.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
+ListState_ListState.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListState_ListState.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListState_ListState.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListState_ListState.prototype.start = function () {};
+
+/* harmony default export */ var page_ListState = (ListState_ListState);
+// EXTERNAL MODULE: ./css/ListDistrict.css
+var ListDistrict = __webpack_require__(254);
+
+// CONCATENATED MODULE: ./js/page/ListDistrict.js
+
+
+
+
+
+
+
+
+
+
+var ListDistrict_ = dom_Fcore._;
+var ListDistrict_$ = dom_Fcore.$;
+
+function ListDistrict_ListDistrict() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+}
+
+ListDistrict_ListDistrict.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListDistrict_ListDistrict.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListDistrict_ListDistrict.prototype.constructor = ListDistrict_ListDistrict;
+
+ListDistrict_ListDistrict.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListDistrict_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListDistrict_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tìm kiếm"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tìm kiếm";
+  }
+
+  this.$view = ListDistrict_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý Tỉnh/TP"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.add();
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+
+  var tabContainer = ListDistrict_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Thêm',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 2
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          self.add(data.original.id, row);
+          break;
+
+        case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function (value) {
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (listParam) {
+      self.setListParam(listParam);
+      var header = [{
+        type: "increase",
+        value: "#",
+        style: {
+          minWidth: "50px",
+          width: "50px"
+        }
+      }, {
+        value: 'MS',
+        sort: true,
+        style: {
+          minWidth: "50px",
+          width: "50px"
+        }
+      }, {
+        value: 'Tên',
+        sort: true,
+        style: {
+          minWidth: "unset"
+        }
+      }, {
+        value: 'Loại',
+        sort: true,
+        style: {
+          minWidth: "200px",
+          width: "200px"
+        }
+      }, {
+        value: 'Tỉnh/Thành phố',
+        sort: true,
+        style: {
+          minWidth: "200px",
+          width: "200px"
+        }
+      }, {
+        type: "detail",
+        functionClickAll: functionClickMore,
+        icon: "",
+        dragElement: false,
+        style: {
+          width: "30px"
+        }
+      }];
+      self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+      tabContainer.addChild(self.mTable);
+      self.mTable.addInputSearch(ListDistrict_$('.pizo-list-realty-page-allinput-container input', self.$view));
+      self.listParent.updateItemList(listParam);
+    });
+  });
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListDistrict_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, tabContainer]
+  }));
+  return this.$view;
+};
+
+ListDistrict_ListDistrict.prototype.setListParam = function (value) {
+  this.checkState = [];
+  this.listParam = [];
+
+  for (var i = 0; i < value.length; i++) {
+    this.checkState[value[i].id] = value[i];
+    this.listParam[i] = {
+      text: value[i].name,
+      value: value[i].id
+    };
+  }
+
+  this.isLoaded = true;
+  console.log(this.checkState);
+};
+
+ListDistrict_ListDistrict.prototype.getDataParam = function () {
+  return this.listParam;
+};
+
+ListDistrict_ListDistrict.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = this.getDataRow(data[i]);
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  console.log(temp);
+  return temp;
+};
+
+ListDistrict_ListDistrict.prototype.getDataRow = function (data) {
+  var result = [{}, data.id, data.name, data.type, this.checkState[parseInt(data.stateid)].name, {}];
+  result.original = data;
+  return result;
+};
+
+ListDistrict_ListDistrict.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Tất cả",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
+};
+
+ListDistrict_ListDistrict.prototype.searchControlContent = function () {
   var startDay, endDay, startDay1, endDay1;
-  startDay = ListDitrict_({
+  var self = this;
+  startDay = ListDistrict_({
     tag: 'calendar-input',
     data: {
       anchor: 'top',
-      value: new Date(),
+      value: new Date(new Date().getFullYear(), 0, 1),
       maxDateLimit: new Date()
     },
     on: {
@@ -63613,7 +65071,7 @@ ListDitrict_ListDitrict.prototype.searchControlContent = function () {
       }
     }
   });
-  endDay = ListDitrict_({
+  endDay = ListDistrict_({
     tag: 'calendar-input',
     data: {
       anchor: 'top',
@@ -63627,11 +65085,11 @@ ListDitrict_ListDitrict.prototype.searchControlContent = function () {
       }
     }
   });
-  startDay1 = ListDitrict_({
+  startDay1 = ListDistrict_({
     tag: 'calendar-input',
     data: {
       anchor: 'top',
-      value: new Date(),
+      value: new Date(new Date().getFullYear(), 0, 1),
       maxDateLimit: new Date()
     },
     on: {
@@ -63641,7 +65099,7 @@ ListDitrict_ListDitrict.prototype.searchControlContent = function () {
       }
     }
   });
-  endDay1 = ListDitrict_({
+  endDay1 = ListDistrict_({
     tag: 'calendar-input',
     data: {
       anchor: 'top',
@@ -63655,8 +65113,22 @@ ListDitrict_ListDitrict.prototype.searchControlContent = function () {
       }
     }
   });
+  self.listParent = ListDistrict_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        value: 0
+      }]
+    }
+  });
 
-  var content = ListDitrict_({
+  self.listParent.updateItemList = function (value) {
+    self.listParent.items = self.formatDataList(value);
+  };
+
+  var content = ListDistrict_({
     tag: "div",
     "class": "pizo-list-realty-main-search-control-container",
     on: {
@@ -63672,32 +65144,17 @@ ListDitrict_ListDitrict.prototype.searchControlContent = function () {
         "class": "pizo-list-realty-main-search-control-row",
         child: [{
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-state-ditrict",
+          "class": "pizo-list-realty-main-search-control-row-state-district",
           child: [{
             tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-state-ditrict-label",
+            "class": "pizo-list-realty-main-search-control-row-state-district-label",
             props: {
               innerHTML: "Tỉnh/TP"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-state-ditrict-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: "Tất cả",
-                  value: -1
-                }, {
-                  text: 'Thành phố Hồ Chí Minh',
-                  value: 79
-                }, {
-                  text: 'Thủ đô Hà Nội',
-                  value: 80
-                }]
-              }
-            }]
+            "class": "pizo-list-realty-main-search-control-row-state-district-input",
+            child: [self.listParent]
           }]
         }, {
           tag: "div",
@@ -63752,7 +65209,7 @@ ListDitrict_ListDitrict.prototype.searchControlContent = function () {
     }]
   });
 
-  var temp = ListDitrict_({
+  var temp = ListDistrict_({
     tag: "div",
     "class": "pizo-list-realty-main-search-control",
     on: {
@@ -63766,15 +65223,15 @@ ListDitrict_ListDitrict.prototype.searchControlContent = function () {
   temp.content = content;
   content.timestart = startDay;
   content.timeend = endDay;
-  content.lowprice = ListDitrict_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
-  content.highprice = ListDitrict_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
-  content.phone = ListDitrict_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
-  content.MS = ListDitrict_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
-  content.SN = ListDitrict_$('.pizo-list-realty-main-search-control-row-SN input', content);
-  content.TD = ListDitrict_$('.pizo-list-realty-main-search-control-row-TD input', content);
-  content.PX = ListDitrict_$('.pizo-list-realty-main-search-control-row-PX input', content);
-  content.QH = ListDitrict_$('.pizo-list-realty-main-search-control-row-QH input', content);
-  content.HT = ListDitrict_$('.pizo-list-realty-main-search-control-row-HT input', content);
+  content.lowprice = ListDistrict_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
+  content.highprice = ListDistrict_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
+  content.phone = ListDistrict_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
+  content.MS = ListDistrict_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
+  content.SN = ListDistrict_$('.pizo-list-realty-main-search-control-row-SN input', content);
+  content.TD = ListDistrict_$('.pizo-list-realty-main-search-control-row-TD input', content);
+  content.PX = ListDistrict_$('.pizo-list-realty-main-search-control-row-PX input', content);
+  content.QH = ListDistrict_$('.pizo-list-realty-main-search-control-row-QH input', content);
+  content.HT = ListDistrict_$('.pizo-list-realty-main-search-control-row-HT input', content);
 
   temp.show = function () {
     if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
@@ -63816,21 +65273,138 @@ ListDitrict_ListDitrict.prototype.searchControlContent = function () {
   return temp;
 };
 
-ListDitrict_ListDitrict.prototype.refresh = function () {
+ListDistrict_ListDistrict.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListDistrict_ListDistrict.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListDistrict_ListDistrict.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewDistrict = new NewDistrict(undefined, parent_id);
+  mNewDistrict.attach(self.parent);
+  var frameview = mNewDistrict.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewDistrict, row);
+};
+
+ListDistrict_ListDistrict.prototype.addDB = function (mNewDistrict, row) {
+  var self = this;
+  mNewDistrict.promiseAddDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    updateData(phpFile, value).then(function (result) {
+      console.log(result);
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewDistrict.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewDistrict.promiseAddDB !== undefined) self.addDB(mNewDistrict);
+    }, 10);
+  });
+};
+
+ListDistrict_ListDistrict.prototype.addView = function (value, parent) {
+  value.created = getGMT();
+  value.modified = getGMT();
+  var result = this.getDataRow(value);
+  console.log(result);
+  var element = this.mTable;
+  element.insertRow(result);
+};
+
+ListDistrict_ListDistrict.prototype.edit = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewDistrict = new NewDistrict(data);
+  mNewDistrict.attach(self.parent);
+  var frameview = mNewDistrict.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewDistrict, data, parent, index);
+};
+
+ListDistrict_ListDistrict.prototype.editDB = function (mNewDistrict, data, parent, index) {
+  var self = this;
+  mNewDistrict.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewDistrict.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewDistrict.promiseEditDB !== undefined) self.editDB(mNewDistrict, data, parent, index);
+    }, 10);
+  });
+};
+
+ListDistrict_ListDistrict.prototype.editView = function (value, data, parent, index) {
+  value.created = data.original.created;
+  value.modified = getGMT();
+  var data = this.getDataRow(value);
+  var indexOF = index,
+      element = parent;
+  element.updateRow(data, indexOF, true);
+};
+
+ListDistrict_ListDistrict.prototype["delete"] = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  console.log(data);
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListDistrict_ListDistrict.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {});
+};
+
+ListDistrict_ListDistrict.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
+ListDistrict_ListDistrict.prototype.refresh = function () {
   var data;
   var editor = this.getContext(R.LAYOUT_EDITOR);
   if (editor) data = editor.getData();
   if (data) this.setData(data);
 };
 
-ListDitrict_ListDitrict.prototype.setData = function (data) {
+ListDistrict_ListDistrict.prototype.setData = function (data) {
   this.data = data;
   this.data.tracking = "OK";
   this.dataFlushed = false;
   if (this.state == "RUNNING") this.flushDataToView();
 };
 
-ListDitrict_ListDitrict.prototype.flushDataToView = function () {
+ListDistrict_ListDistrict.prototype.flushDataToView = function () {
   if (this.dataFlushed) return;
   this.dataFlushed = true; //TODO: remove older view
 
@@ -63846,9 +65420,9 @@ ListDitrict_ListDitrict.prototype.flushDataToView = function () {
   }
 };
 
-ListDitrict_ListDitrict.prototype.start = function () {};
+ListDistrict_ListDistrict.prototype.start = function () {};
 
-/* harmony default export */ var page_ListDitrict = (ListDitrict_ListDitrict);
+/* harmony default export */ var page_ListDistrict = (ListDistrict_ListDistrict);
 // EXTERNAL MODULE: ./css/PlanningInformation.css
 var PlanningInformation = __webpack_require__(256);
 
@@ -64098,16 +65672,16 @@ PlanningInformation_PlanningInformation.prototype.searchControlContent = functio
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-ditrict-street",
+          "class": "pizo-list-realty-main-search-control-row-district-street",
           child: [{
             tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-ditrict-street-label",
+            "class": "pizo-list-realty-main-search-control-row-district-street-label",
             props: {
               innerHTML: "Quận/Huyện"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-ditrict-street-input",
+            "class": "pizo-list-realty-main-search-control-row-district-street-input",
             child: [{
               tag: "selectmenu",
               props: {
@@ -64256,7 +65830,7 @@ PlanningInformation_PlanningInformation.prototype.start = function () {};
 
 /* harmony default export */ var page_PlanningInformation = (PlanningInformation_PlanningInformation);
 // EXTERNAL MODULE: ./css/ListHelp.css
-var ListHelp = __webpack_require__(61);
+var ListHelp = __webpack_require__(62);
 
 // EXTERNAL MODULE: ./css/HelpContainer.css
 var HelpContainer = __webpack_require__(259);
@@ -64617,7 +66191,7 @@ function EditHelpContainer_EditHelpContainer(phpLoader) {
 
   var tabContainer = EditHelpContainer_({
     tag: "tabframe",
-    "class": "header-display-visiable",
+    "class": "header-display-visible",
     attr: {
       name: "Menu",
       id: "matd",
@@ -65715,7 +67289,243 @@ ListEditHelp_ListHelp.prototype.start = function () {};
 // EXTERNAL MODULE: ./css/ListPositions.css
 var ListPositions = __webpack_require__(265);
 
+// EXTERNAL MODULE: ./css/NewPosition.css
+var NewPosition = __webpack_require__(267);
+
+// CONCATENATED MODULE: ./js/component/NewPosition.js
+
+
+
+
+
+
+
+var NewPosition_ = dom_Fcore._;
+var NewPosition_$ = dom_Fcore.$;
+
+function NewPosition_NewPosition(data, parent_id) {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.data = data;
+  if (parent_id !== undefined) this.parent_id = parseFloat(parent_id);
+  if (this.data !== undefined) this.parent_id = parseFloat(data.original.parent_id);
+}
+
+NewPosition_NewPosition.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(NewPosition_NewPosition.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewPosition_NewPosition.prototype.constructor = NewPosition_NewPosition;
+
+NewPosition_NewPosition.prototype.createPromise = function () {
+  var self = this;
+
+  if (this.data === undefined) {
+    self.promiseAddDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  } else {
+    self.promiseEditDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  }
+};
+
+NewPosition_NewPosition.prototype.resetPromise = function (value) {
+  if (self.promiseAddDB !== undefined) self.promiseAddDB = undefined;
+  if (self.promiseEditDB !== undefined) self.promiseEditDB = undefined;
+};
+
+NewPosition_NewPosition.prototype.getView = function (dataParent) {
+  if (this.$view) return this.$view;
+  var self = this;
+  self.createPromise();
+  var array = [{
+    text: "Chức vụ cao nhất",
+    value: 0
+  }];
+  if (self.parent_id === undefined) self.parent_id = 0;
+  self.check = [];
+
+  for (var i = 0; i < dataParent.length; i++) {
+    if (self.data !== undefined && self.data.id == dataParent[i].id) continue;
+    array[i + 1] = {
+      text: dataParent[i].name,
+      value: parseFloat(dataParent[i].id)
+    };
+  }
+
+  console.log(array);
+  this.$view = NewPosition_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Thêm chức vụ"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+              var result = {
+                name: self.name.value,
+                parent_id: self.parentElement.value
+              };
+              self.rejectDB(result);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              var result = {
+                name: self.name.value,
+                parent_id: self.parentElement.value
+              };
+              self.resolveDB(result);
+              self.createPromise();
+            }
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              var result = {
+                name: self.name.value,
+                parent_id: self.parentElement.value
+              };
+              self.resolveDB(result);
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Lưu và đóng" + '</span>']
+        }]
+      }]
+    }]
+  });
+  this.$view.addChild(NewPosition_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [{
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [{
+        tag: "div",
+        "class": "pizo-new-catergory-container",
+        style: {
+          width: "50%"
+        },
+        child: [{
+          tag: "div",
+          "class": "pizo-new-category-container-name",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-category-container-name-container",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-category-container-name-container-label",
+              props: {
+                innerHTML: "Tên"
+              }
+            }, {
+              tag: "input",
+              "class": ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
+              on: {}
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-selectbox",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-state-selectbox-container",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-state-selectbox-container-label",
+              props: {
+                innerHTML: "Chức vụ cha"
+              }
+            }, {
+              tag: "selectmenu",
+              "class": ["pizo-new-state-selectbox-container-input", "pizo-new-realty-dectruct-input"],
+              props: {
+                enableSearch: true,
+                items: array,
+                value: self.parent_id
+              }
+            }]
+          }]
+        }]
+      }]
+    }]
+  }));
+  this.name = NewPosition_$('input.pizo-new-category-container-name-container-input.pizo-new-realty-dectruct-input', this.$view);
+  this.parentElement = NewPosition_$('.pizo-new-state-selectbox-container-input.pizo-new-realty-dectruct-input', this.$view);
+
+  if (this.data !== undefined) {
+    this.name.value = this.data.original.name;
+  }
+
+  return this.$view;
+};
+
+NewPosition_NewPosition.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+NewPosition_NewPosition.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+NewPosition_NewPosition.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+NewPosition_NewPosition.prototype.start = function () {};
+
+/* harmony default export */ var component_NewPosition = (NewPosition_NewPosition);
 // CONCATENATED MODULE: ./js/page/ListPositions.js
+
 
 
 
@@ -65733,7 +67543,6 @@ function ListPositions_ListPositions() {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.ModuleView = new ModuleView_ModuleView();
 }
 
 ListPositions_ListPositions.prototype.setContainer = function (parent) {
@@ -65764,12 +67573,12 @@ ListPositions_ListPositions.prototype.getView = function () {
     tag: "input",
     "class": "pizo-list-realty-page-allinput-input",
     props: {
-      placeholder: "Tên"
+      placeholder: "Tìm kiếm"
     }
   });
 
   if (window.mobilecheck()) {
-    allinput.placeholder = "Tên";
+    allinput.placeholder = "Tìm kiếm";
   }
 
   this.$view = ListPositions_({
@@ -65781,7 +67590,7 @@ ListPositions_ListPositions.prototype.getView = function () {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: "Quản lý Quận/Huyện"
+          innerHTML: "Quản lý chức vụ"
         }
       }, {
         tag: "div",
@@ -65802,10 +67611,7 @@ ListPositions_ListPositions.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              var frameAdd = self.NewRealty.getView();
-              self.parent.body.addChild(frameAdd);
-              self.parent.body.activeFrame(frameAdd);
-              self.NewRealty.setContainer(self.parent);
+              self.add();
             }
           },
           child: ['<span>' + "Thêm" + '</span>']
@@ -65870,27 +67676,31 @@ ListPositions_ListPositions.prototype.getView = function () {
   var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
     docTypeMemuProps = {
       items: [{
-        text: 'Sửa',
+        text: 'Thêm',
         icon: 'span.mdi.mdi-text-short',
         value: 0
       }, {
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
         text: 'Xóa',
         icon: 'span.mdi.mdi-text',
-        value: 1
+        value: 2
       }]
     };
     token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
       switch (menuItem.value) {
         case 0:
-          var mNewRealty = new NewRealty();
-          mNewRealty.attach(self.parent);
-          console.log(self.parent);
-          var frameview = mNewRealty.getView();
-          self.parent.body.addChild(frameview);
-          self.parent.body.activeFrame(frameview);
+          self.add(data.original.id, row);
           break;
 
         case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
           break;
       }
     });
@@ -65955,9 +67765,10 @@ ListPositions_ListPositions.prototype.getView = function () {
       }
     }];
     console.log(header);
-    self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
+    self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListPositions_$('.pizo-list-realty-page-allinput-container input', self.$view));
+    self.listParent.updateItemList();
   });
   this.searchControl = this.searchControlContent();
   this.$view.addChild(ListPositions_({
@@ -65975,48 +67786,7 @@ ListPositions_ListPositions.prototype.formatDataRow = function (data) {
   var checkElement;
 
   for (var i = 0; i < data.length; i++) {
-    checkElement = parseInt(data[i].active) ? ListPositions_({
-      tag: "div",
-      "class": "tick-element"
-    }) : ListPositions_({
-      tag: "div",
-      "class": "cross-element"
-    });
-    var result = [{
-      value: "",
-      style: {
-        maxWidth: "21px"
-      }
-    }, {
-      value: data[i].title,
-      element: ListPositions_({
-        tag: "div",
-        child: [{
-          tag: "span",
-          "class": "title-label",
-          props: {
-            innerHTML: data[i].title
-          }
-        }, {
-          tag: "span",
-          "class": "alias-label",
-          props: {
-            innerHTML: " (Alias :" + data[i].alias + ")"
-          }
-        }]
-      })
-    }, {
-      value: data[i].active,
-      element: checkElement,
-      style: {
-        maxWidth: "21px"
-      }
-    }, {
-      value: "",
-      style: {
-        maxWidth: "21px"
-      }
-    }];
+    var result = [{}, data[i].id, data[i].name, formatDate(data[i].created, true, true, true, true, true), formatDate(data[i].modified, true, true, true, true, true), {}];
     result.original = data[i];
 
     if (check[data[i].parent_id] !== undefined) {
@@ -66031,13 +67801,30 @@ ListPositions_ListPositions.prototype.formatDataRow = function (data) {
   return temp;
 };
 
+ListPositions_ListPositions.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Chức vụ cao nhất",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
+};
+
 ListPositions_ListPositions.prototype.searchControlContent = function () {
   var startDay, endDay, startDay1, endDay1;
+  var self = this;
   startDay = ListPositions_({
     tag: 'calendar-input',
     data: {
       anchor: 'top',
-      value: new Date(),
+      value: new Date(new Date().getFullYear(), 0, 1),
       maxDateLimit: new Date()
     },
     on: {
@@ -66065,7 +67852,7 @@ ListPositions_ListPositions.prototype.searchControlContent = function () {
     tag: 'calendar-input',
     data: {
       anchor: 'top',
-      value: new Date(),
+      value: new Date(new Date().getFullYear(), 0, 1),
       maxDateLimit: new Date()
     },
     on: {
@@ -66089,6 +67876,20 @@ ListPositions_ListPositions.prototype.searchControlContent = function () {
       }
     }
   });
+  self.listParent = ListPositions_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Chức vụ cao nhất",
+        value: 0
+      }]
+    }
+  });
+
+  self.listParent.updateItemList = function () {
+    self.listParent.items = self.formatDataList(self.getDataCurrent());
+  };
 
   var content = ListPositions_({
     tag: "div",
@@ -66106,32 +67907,17 @@ ListPositions_ListPositions.prototype.searchControlContent = function () {
         "class": "pizo-list-realty-main-search-control-row",
         child: [{
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-state-ditrict",
+          "class": "pizo-list-realty-main-search-control-row-state-district",
           child: [{
             tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-state-ditrict-label",
+            "class": "pizo-list-realty-main-search-control-row-state-district-label",
             props: {
-              innerHTML: "Tỉnh/TP"
+              innerHTML: "Chức vụ cha"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-state-ditrict-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: "Tất cả",
-                  value: -1
-                }, {
-                  text: 'Thành phố Hồ Chí Minh',
-                  value: 79
-                }, {
-                  text: 'Thủ đô Hà Nội',
-                  value: 80
-                }]
-              }
-            }]
+            "class": "pizo-list-realty-main-search-control-row-state-district-input",
+            child: [self.listParent]
           }]
         }, {
           tag: "div",
@@ -66200,15 +67986,6 @@ ListPositions_ListPositions.prototype.searchControlContent = function () {
   temp.content = content;
   content.timestart = startDay;
   content.timeend = endDay;
-  content.lowprice = ListPositions_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
-  content.highprice = ListPositions_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
-  content.phone = ListPositions_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
-  content.MS = ListPositions_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
-  content.SN = ListPositions_$('.pizo-list-realty-main-search-control-row-SN input', content);
-  content.TD = ListPositions_$('.pizo-list-realty-main-search-control-row-TD input', content);
-  content.PX = ListPositions_$('.pizo-list-realty-main-search-control-row-PX input', content);
-  content.QH = ListPositions_$('.pizo-list-realty-main-search-control-row-QH input', content);
-  content.HT = ListPositions_$('.pizo-list-realty-main-search-control-row-HT input', content);
 
   temp.show = function () {
     if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
@@ -66235,19 +68012,152 @@ ListPositions_ListPositions.prototype.searchControlContent = function () {
   temp.reset = function () {
     content.timestart = new Date();
     content.timeend = new Date();
-    content.lowprice.value = "";
-    content.highprice.value = "";
-    content.phone.value = "";
-    content.MS.value = "";
-    content.SN.value = "";
-    content.TD.value = "";
-    content.PX.value = "";
-    content.QH.value = "";
-    content.TT.value = "";
-    content.HT.value = 0;
   };
 
   return temp;
+};
+
+ListPositions_ListPositions.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListPositions_ListPositions.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListPositions_ListPositions.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  var self = this;
+  var mNewPosition = new component_NewPosition(undefined, parent_id);
+  mNewPosition.attach(self.parent);
+  var frameview = mNewPosition.getView(self.getDataCurrent());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewPosition, row);
+};
+
+ListPositions_ListPositions.prototype.addDB = function (mNewPosition, row) {
+  var self = this;
+  mNewPosition.promiseAddDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_position.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    updateData(phpFile, value).then(function (result) {
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewPosition.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewPosition.promiseAddDB !== undefined) self.addDB(mNewPosition);
+    }, 10);
+  });
+};
+
+ListPositions_ListPositions.prototype.addView = function (value, parent) {
+  value.created = getGMT();
+  value.modified = getGMT();
+  var result = [{}, value.id, value.name, formatDate(value.created, true, true, true, true, true), formatDate(value.modified, true, true, true, true, true), {}];
+  result.original = value;
+  var element = parent;
+  if (value.parent_id == 0) element = this.mTable;else for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
+    if (parent.bodyTable.childNodes[i].data.original.id == value.parent_id) {
+      element = parent.bodyTable.childNodes[i];
+      break;
+    }
+  }
+  element.insertRow(result);
+};
+
+ListPositions_ListPositions.prototype.edit = function (data, parent, index) {
+  var self = this;
+  var mNewPosition = new component_NewPosition(data);
+  mNewPosition.attach(self.parent);
+  var frameview = mNewPosition.getView(self.getDataCurrent());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewPosition, data, parent, index);
+};
+
+ListPositions_ListPositions.prototype.editDB = function (mNewPosition, data, parent, index) {
+  var self = this;
+  mNewPosition.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_position.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewPosition.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewPosition.promiseEditDB !== undefined) self.editDB(mNewPosition, data, parent, index);
+    }, 10);
+  });
+};
+
+ListPositions_ListPositions.prototype.editView = function (value, data, parent, index) {
+  var isChangeView = false;
+  value.modified = getGMT();
+  data.original.name = value.name;
+  data.original.modified = formatDate(value.modified);
+
+  if (data.original.parent_id != value.parent_id) {
+    isChangeView = true;
+  }
+
+  data.original.parent_id = value.parent_id;
+  data[2] = value.name;
+  data[4] = value.modified;
+  var indexOF = index,
+      element = parent;
+
+  if (isChangeView === true) {
+    var element;
+    if (value.parent_id == 0) element = parent.bodyTable.parentNode;else for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
+      if (parent.bodyTable.childNodes[i].data.original.id == value.parent_id) {
+        element = parent.bodyTable.childNodes[i];
+        break;
+      }
+    }
+    parent.changeParent(index, element);
+  }
+
+  element.updateRow(data, indexOF, true);
+  this.listParent.updateItemList();
+};
+
+ListPositions_ListPositions.prototype["delete"] = function (data, parent, index) {
+  console.log(data);
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListPositions_ListPositions.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {
+    self.listParent.updateItemList();
+  });
+};
+
+ListPositions_ListPositions.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_position.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
 };
 
 ListPositions_ListPositions.prototype.refresh = function () {
@@ -66283,7 +68193,1956 @@ ListPositions_ListPositions.prototype.flushDataToView = function () {
 ListPositions_ListPositions.prototype.start = function () {};
 
 /* harmony default export */ var page_ListPositions = (ListPositions_ListPositions);
+// EXTERNAL MODULE: ./css/ListAccount.css
+var ListAccount = __webpack_require__(269);
+
+// EXTERNAL MODULE: ./css/NewAccount.css
+var NewAccount = __webpack_require__(271);
+
+// CONCATENATED MODULE: ./js/component/NewAccount.js
+
+
+
+
+
+
+
+
+var NewAccount_ = dom_Fcore._;
+var NewAccount_$ = dom_Fcore.$;
+
+function NewAccount_NewAccount(data) {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.data = data;
+}
+
+NewAccount_NewAccount.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(NewAccount_NewAccount.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewAccount_NewAccount.prototype.constructor = NewAccount_NewAccount;
+
+NewAccount_NewAccount.prototype.createPromise = function () {
+  var self = this;
+
+  if (this.data === undefined) {
+    self.promiseAddDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  } else {
+    self.promiseEditDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  }
+};
+
+NewAccount_NewAccount.prototype.resetPromise = function (value) {
+  if (self.promiseAddDB !== undefined) self.promiseAddDB = undefined;
+  if (self.promiseEditDB !== undefined) self.promiseEditDB = undefined;
+};
+
+NewAccount_NewAccount.prototype.getView = function (dataParent) {
+  if (this.$view) return this.$view;
+  var self = this;
+  self.createPromise();
+  this.$view = NewAccount_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Thêm tài khoản"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+              self.rejectDB(self.getDataSave());
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.createPromise();
+            }
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Lưu và đóng" + '</span>']
+        }]
+      }]
+    }]
+  });
+
+  var active = NewAccount_({
+    tag: "switch"
+  });
+
+  var activePemission = NewAccount_({
+    tag: "switch"
+  });
+
+  this.$view.addChild(NewAccount_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [{
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [{
+        tag: "div",
+        "class": "pizo-new-account-container",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-account-container-username",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-account-container-username-container",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-account-container-username-container-label",
+              props: {
+                innerHTML: "Tài khoản đăng nhập"
+              }
+            }, {
+              tag: "input",
+              "class": ["pizo-new-account-container-username-container-input", "pizo-new-realty-dectruct-input"],
+              on: {}
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-account-container-change-password",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-account-container-change-password-show",
+            props: {
+              innerHTML: "Đổi mật khẩu"
+            }
+          }, {
+            tag: "span",
+            "class": "pizo-new-account-container-change-password-hide",
+            props: {
+              innerHTML: "Ẩn đổi mật khẩu"
+            }
+          }],
+          on: {
+            click: function click(event) {
+              var container = NewAccount_$("div.pizo-new-account-container-password", self.$view);
+
+              if (this.classList.contains("show-password-change")) {
+                this.classList.remove("show-password-change");
+                container.style.display = "none";
+              } else {
+                this.classList.add("show-password-change");
+                container.style.display = "unset";
+              }
+            }
+          }
+        }, {
+          tag: "div",
+          "class": "pizo-new-account-container-password",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-account-container-password-container",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-account-container-password-container-new",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-account-container-password-container-label",
+                props: {
+                  innerHTML: "Mật khẩu mới"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-account-container-password-container-input-new", "pizo-new-realty-dectruct-input"],
+                on: {}
+              }]
+            }, {
+              tag: "div",
+              "class": "pizo-new-account-container-password-container-new-confirm",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-account-container-password-container-label",
+                props: {
+                  innerHTML: "Xác nhận mật khẩu"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-account-container-password-container-input-new-confirm", "pizo-new-realty-dectruct-input"],
+                on: {}
+              }]
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-account-container-name",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-account-container-name-container",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-account-container-name-container-label",
+              props: {
+                innerHTML: "Họ và tên"
+              }
+            }, {
+              tag: "input",
+              "class": ["pizo-new-account-container-name-container-input", "pizo-new-realty-dectruct-input"],
+              on: {}
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-account-container-email",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-account-container-email-container",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-account-container-email-container-label",
+              props: {
+                innerHTML: "Email"
+              }
+            }, {
+              tag: "input",
+              "class": ["pizo-new-account-container-email-container-input", "pizo-new-realty-dectruct-input"],
+              on: {}
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-account-container-phone-birthday-gender",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-account-container-phone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-account-container-phone-container",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-account-container-phone-container-label",
+                props: {
+                  innerHTML: "Số điện thoại"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-account-container-phone-container-input", "pizo-new-realty-dectruct-input"],
+                on: {}
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-account-container-birthday",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-account-container-birthday-container",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-account-container-birthday-container-label",
+                props: {
+                  innerHTML: "Ngày sinh"
+                }
+              }, {
+                tag: 'calendar-input',
+                data: {
+                  anchor: 'top',
+                  value: new Date(new Date().getFullYear(), 0, 1),
+                  maxDateLimit: new Date()
+                },
+                on: {}
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-account-container-gender",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-account-container-gender-container",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-account-container-gender-container-label",
+                props: {
+                  innerHTML: "Giới tính"
+                }
+              }, {
+                tag: "selectmenu",
+                props: {
+                  items: [{
+                    text: "Nam",
+                    value: "Nam"
+                  }, {
+                    text: "Nữ",
+                    value: "Nữ"
+                  }]
+                }
+              }]
+            }]
+          }]
+        }, // {
+        //     tag:"div",
+        //     class:"pizo-new-account-container-avatar",
+        //     child:[
+        //         {
+        //             tag:"div",
+        //             class:"pizo-new-account-container-avatar-container",
+        //             child:[
+        //                 {
+        //                     tag:"span",
+        //                     class:"pizo-new-account-container-avatar-container-label",
+        //                     props:{
+        //                         innerHTML:"Avatar"
+        //                     }
+        //                 },
+        //                 {
+        //                     tag:"div",
+        //                     class:"pizo-new-account-container-avatar-container-image",
+        //                     child:[
+        //                         {
+        //                             tag:"img",
+        //                             class:"pizo-new-account-container-avatar-container-image-content",
+        //                         }
+        //                     ]
+        //                 }
+        //             ]
+        //         }
+        //     ]
+        // },
+        {
+          tag: "div",
+          "class": "pizo-new-account-container-address",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-account-container-address-container",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-account-container-address-container-label",
+              props: {
+                innerHTML: "Địa chỉ"
+              }
+            }, {
+              tag: "input",
+              "class": ["pizo-new-account-container-address-container-input"],
+              on: {
+                click: function click(event) {
+                  this.blur();
+                  var selfElement = this;
+                  var childNode = locationView(function (value) {
+                    selfElement.value = value.input.value;
+                    childRemove.selfRemove();
+                  });
+
+                  var childRemove = NewAccount_({
+                    tag: "modal",
+                    on: {
+                      click: function click(event) {
+                        var target = event.target;
+
+                        while (target !== childNode && target !== childRemove && target !== document.body) {
+                          target = target.parentNode;
+                        }
+
+                        if (target === childRemove) childRemove.selfRemove();
+                      }
+                    },
+                    child: [childNode]
+                  });
+
+                  self.$view.addChild(childRemove);
+                }
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-account-container-status-position",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-account-container-position",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-account-container-position-container",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-account-container-position-container-label",
+                props: {
+                  innerHTML: "Chức vụ"
+                }
+              }, {
+                tag: "div",
+                "class": "pizo-new-account-container-position-container-input",
+                child: [{
+                  tag: "selectmenu",
+                  "class": ["pizo-new-account-selectbox-container-input", "pizo-new-realty-dectruct-input"],
+                  props: {
+                    enableSearch: true,
+                    items: dataParent
+                  }
+                }]
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-account-container-status",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-account-container-status-container",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-account-container-status-container-label",
+                props: {
+                  innerHTML: "Hoạt động"
+                }
+              }, active]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-account-container-permission",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-account-container-permission-container",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-account-container-permission-container-label",
+                props: {
+                  innerHTML: "Quyền hệ thống"
+                }
+              }, activePemission]
+            }]
+          }]
+        }]
+      }]
+    }]
+  }));
+  this.name = NewAccount_$('input.pizo-new-account-container-name-container-input', this.$view);
+  this.username = NewAccount_$('input.pizo-new-account-container-username-container-input', this.$view);
+  this.email = NewAccount_$('input.pizo-new-account-container-email-container-input', this.$view);
+  this.phone = NewAccount_$('input.pizo-new-account-container-phone-container-input', this.$view);
+  this.birthday = NewAccount_$('div.pizo-new-account-container-birthday-container div', this.$view);
+  this.gender = NewAccount_$('div.pizo-new-account-container-gender-container div', this.$view);
+  this.address = NewAccount_$('input.pizo-new-account-container-address-container-input', this.$view);
+  this.position = NewAccount_$('div.pizo-new-account-selectbox-container-input', this.$view);
+  this.status = NewAccount_$('div.pizo-new-account-container-status-container label.absol-switch', this.$view);
+  this.permission = NewAccount_$('div.pizo-new-account-container-permission-container label.absol-switch', this.$view);
+
+  if (this.data !== undefined) {
+    this.name.value = this.data.original.name;
+    this.username.value = this.data.original.username;
+    this.username.setAttribute("disabled", "");
+    this.email.value = this.data.original.email;
+    this.phone.value = this.data.original.phone;
+    this.birthday.value = new Date(this.data.original.birthday);
+    this.gender.value = this.data.original.gender;
+    this.address.value = this.data.original.address;
+    this.position.value = parseInt(this.data.original.positionid);
+    this.status.checked = parseInt(this.data.original.status) ? true : false;
+    this.permission.checked = parseInt(this.data.original.permission) ? true : false;
+  }
+
+  return this.$view;
+};
+
+NewAccount_NewAccount.prototype.getDataSave = function () {
+  console.log(this.position.value);
+  return {
+    id: this.data === undefined ? undefined : this.data.original.id,
+    name: this.name.value,
+    username: this.username.value,
+    email: this.email.value,
+    phone: this.phone.value,
+    birthday: getGMT(this.birthday.value, new Date().getTimezoneOffset() / -60, true),
+    gender: this.gender.value,
+    address: this.address.value,
+    positionid: this.position.value,
+    status: this.status.checked ? 1 : 0,
+    permission: this.permission.checked ? 1 : 0
+  };
+};
+
+NewAccount_NewAccount.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+NewAccount_NewAccount.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+NewAccount_NewAccount.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+NewAccount_NewAccount.prototype.start = function () {};
+
+/* harmony default export */ var component_NewAccount = (NewAccount_NewAccount);
+// CONCATENATED MODULE: ./js/page/ListAccount.js
+
+
+
+
+
+
+
+
+
+
+var ListAccount_ = dom_Fcore._;
+var ListAccount_$ = dom_Fcore.$;
+
+function ListAccount_ListAccount() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+}
+
+ListAccount_ListAccount.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListAccount_ListAccount.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListAccount_ListAccount.prototype.constructor = ListAccount_ListAccount;
+
+ListAccount_ListAccount.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListAccount_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListAccount_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tìm kiếm"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tìm kiếm";
+  }
+
+  this.$view = ListAccount_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý tài khoản"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.add();
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+
+  var tabContainer = ListAccount_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Thêm',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 2
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          self.add(data.original.id, row);
+          break;
+
+        case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php").then(function (value) {
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function (listParam) {
+      self.setListParam(listParam);
+      var header = [{
+        type: "increase",
+        value: "#",
+        style: {
+          minWidth: "50px",
+          width: "50px"
+        }
+      }, {
+        value: 'MS',
+        sort: true,
+        style: {
+          minWidth: "50px",
+          width: "50px"
+        }
+      }, {
+        value: 'Tài khoản',
+        sort: true,
+        style: {
+          minWidth: "unset"
+        }
+      }, {
+        value: 'Họ và tên',
+        sort: true,
+        style: {
+          minWidth: "unset"
+        }
+      }, {
+        value: 'Số điện thoại',
+        style: {
+          minWidth: "90px",
+          width: "90px"
+        }
+      }, {
+        value: 'Email',
+        sort: true,
+        style: {
+          minWidth: "unset"
+        }
+      }, {
+        value: 'Chức danh',
+        sort: true,
+        style: {
+          minWidth: "100px",
+          width: "100px"
+        }
+      }, {
+        value: 'Truy cập lần cuối',
+        sort: true,
+        style: {
+          minWidth: "140px",
+          width: "140px"
+        }
+      }, {
+        value: 'Hệ thống',
+        sort: true,
+        style: {
+          minWidth: "105px",
+          width: "105px"
+        }
+      }, {
+        value: 'Hoạt đông',
+        sort: true,
+        style: {
+          minWidth: "105px",
+          width: "105px"
+        }
+      }, {
+        type: "detail",
+        functionClickAll: functionClickMore,
+        icon: "",
+        dragElement: false,
+        style: {
+          width: "30px"
+        }
+      }];
+      self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+      tabContainer.addChild(self.mTable);
+      self.mTable.addInputSearch(ListAccount_$('.pizo-list-realty-page-allinput-container input', self.$view));
+      self.listParent.updateItemList(listParam);
+    });
+  });
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListAccount_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, tabContainer]
+  }));
+  return this.$view;
+};
+
+ListAccount_ListAccount.prototype.setListParam = function (value) {
+  this.checkPosition = [];
+  this.listParam = [];
+
+  for (var i = 0; i < value.length; i++) {
+    this.checkPosition[value[i].id] = value[i];
+    this.listParam[i] = {
+      text: value[i].name,
+      value: value[i].id
+    };
+  }
+
+  this.isLoaded = true;
+};
+
+ListAccount_ListAccount.prototype.getDataParam = function () {
+  return this.listParam;
+};
+
+ListAccount_ListAccount.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = this.getDataRow(data[i]);
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  return temp;
+};
+
+ListAccount_ListAccount.prototype.getDataRow = function (data) {
+  var result = [{}, data.id, data.username, {
+    value: data.name,
+    style: {
+      whiteSpace: "nowrap"
+    }
+  }, data.phone, data.email, this.checkPosition[parseInt(data.positionid)].name, {}, parseInt(data.permission) ? "Có" : "Không", parseInt(data.status) ? "Có" : "Không", {}];
+  result.original = data;
+  return result;
+};
+
+ListAccount_ListAccount.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Tất cả",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
+};
+
+ListAccount_ListAccount.prototype.searchControlContent = function () {
+  var startDay, endDay, startDay1, endDay1;
+  var self = this;
+  startDay = ListAccount_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(new Date().getFullYear(), 0, 1),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay);
+        endDay.minDateLimit = date;
+      }
+    }
+  });
+  endDay = ListAccount_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay.maxDateLimit = date;
+      }
+    }
+  });
+  startDay1 = ListAccount_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(new Date().getFullYear(), 0, 1),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay1);
+        endDay1.minDateLimit = date;
+      }
+    }
+  });
+  endDay1 = ListAccount_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay1.maxDateLimit = date;
+      }
+    }
+  });
+  self.listParent = ListAccount_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        value: 0
+      }]
+    }
+  });
+  self.listStatus = ListAccount_({
+    tag: "selectmenu",
+    props: {
+      items: [{
+        text: "Tất cả",
+        value: 0
+      }, {
+        text: "Đang hoạt động",
+        value: 1
+      }, {
+        text: "Đã bị cấm",
+        value: 2
+      }]
+    }
+  });
+
+  self.listParent.updateItemList = function (value) {
+    self.listParent.items = self.formatDataList(value);
+  };
+
+  var content = ListAccount_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control-container",
+    on: {
+      click: function click(event) {
+        event.stopPropagation();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-main-search-control-row",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-positions",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-state-district-label",
+            props: {
+              innerHTML: "Chức vụ"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-state-district-input",
+            child: [self.listParent]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-status",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-state-district-label",
+            props: {
+              innerHTML: "Trạng thái"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-state-district-input",
+            child: [self.listStatus]
+          }]
+        }, // {
+        //     tag:"div",
+        //     class:"pizo-list-realty-main-search-control-row-phone",
+        //     child:[
+        //         {
+        //             tag:"span",
+        //             class:"pizo-list-realty-main-search-control-row-phone-label",
+        //             props:{
+        //                 innerHTML:"Ngày tạo"
+        //             }
+        //         },
+        //         {
+        //             tag:"div",
+        //             class:"pizo-list-realty-main-search-control-row-date-input",
+        //             child:[
+        //                 startDay,
+        //                 endDay
+        //             ]
+        //         }
+        //     ]
+        // },
+        // {
+        //     tag:"div",
+        //     class:"pizo-list-realty-main-search-control-row-phone",
+        //     child:[
+        //         {
+        //             tag:"span",
+        //             class:"pizo-list-realty-main-search-control-row-phone-label",
+        //             props:{
+        //                 innerHTML:"Ngày cập nhật"
+        //             }
+        //         },
+        //         {
+        //             tag:"div",
+        //             class:"pizo-list-realty-main-search-control-row-date-input",
+        //             child:[
+        //                 startDay1,
+        //                 endDay1
+        //             ]
+        //         }
+        //     ]
+        // },
+        {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-button",
+          child: [{
+            tag: "button",
+            "class": ["pizo-list-realty-button-apply", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {}
+            },
+            child: ['<span>' + "Áp dụng" + '</span>']
+          }, {
+            tag: "button",
+            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {
+                temp.reset();
+              }
+            },
+            child: ['<span>' + "Thiết lập lại" + '</span>']
+          }]
+        }]
+      }]
+    }]
+  });
+
+  var temp = ListAccount_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control",
+    on: {
+      click: function click(event) {
+        this.hide();
+      }
+    },
+    child: [content]
+  });
+
+  temp.content = content;
+  content.timestart = startDay;
+  content.timeend = endDay;
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
+  };
+
+  return temp;
+};
+
+ListAccount_ListAccount.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListAccount_ListAccount.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListAccount_ListAccount.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewAccount = new component_NewAccount(undefined, parent_id);
+  mNewAccount.attach(self.parent);
+  var frameview = mNewAccount.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewAccount, row);
+};
+
+ListAccount_ListAccount.prototype.addDB = function (mNewAccount, row) {
+  var self = this;
+  mNewAccount.promiseAddDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_account.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    updateData(phpFile, value).then(function (result) {
+      console.log(result);
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewAccount.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewAccount.promiseAddDB !== undefined) self.addDB(mNewAccount);
+    }, 10);
+  });
+};
+
+ListAccount_ListAccount.prototype.addView = function (value, parent) {
+  value.created = getGMT();
+  value.modified = getGMT();
+  var result = this.getDataRow(value);
+  console.log(result);
+  var element = this.mTable;
+  element.insertRow(result);
+};
+
+ListAccount_ListAccount.prototype.edit = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewAccount = new component_NewAccount(data);
+  mNewAccount.attach(self.parent);
+  var frameview = mNewAccount.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewAccount, data, parent, index);
+};
+
+ListAccount_ListAccount.prototype.editDB = function (mNewAccount, data, parent, index) {
+  var self = this;
+  mNewAccount.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_account.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewAccount.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewAccount.promiseEditDB !== undefined) self.editDB(mNewAccount, data, parent, index);
+    }, 10);
+  });
+};
+
+ListAccount_ListAccount.prototype.editView = function (value, data, parent, index) {
+  value.created = data.original.created;
+  value.modified = getGMT();
+  var data = this.getDataRow(value);
+  var indexOF = index,
+      element = parent;
+  element.updateRow(data, indexOF, true);
+};
+
+ListAccount_ListAccount.prototype["delete"] = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  console.log(data);
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListAccount_ListAccount.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {});
+};
+
+ListAccount_ListAccount.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_account.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
+ListAccount_ListAccount.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListAccount_ListAccount.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListAccount_ListAccount.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListAccount_ListAccount.prototype.start = function () {};
+
+/* harmony default export */ var page_ListAccount = (ListAccount_ListAccount);
+// EXTERNAL MODULE: ./css/ListAddress.css
+var ListAddress = __webpack_require__(273);
+
+// CONCATENATED MODULE: ./js/page/ListAddress.js
+
+
+
+
+
+
+
+
+
+
+var ListAddress_ = dom_Fcore._;
+var ListAddress_$ = dom_Fcore.$;
+
+function ListAddress_ListAddress() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+}
+
+ListAddress_ListAddress.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListAddress_ListAddress.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListAddress_ListAddress.prototype.constructor = ListAddress_ListAddress;
+
+ListAddress_ListAddress.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListAddress_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListAddress_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tìm kiếm"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tìm kiếm";
+  }
+
+  this.$view = ListAddress_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý chức vụ"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.add();
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+
+  var tabContainer = ListAddress_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Thêm',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 2
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          self.add(data.original.id, row);
+          break;
+
+        case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function (value) {
+    console.log(value);
+    var header = [{
+      type: "increase",
+      value: "#",
+      style: {
+        minWidth: "50px",
+        width: "50px"
+      }
+    }, {
+      value: 'MS',
+      sort: true,
+      style: {
+        minWidth: "150px",
+        width: "150px"
+      }
+    }, {
+      value: 'Tên',
+      sort: true,
+      style: {
+        minWidth: "unset"
+      }
+    }, {
+      value: 'Ngày tạo',
+      sort: true,
+      style: {
+        minWidth: "250px",
+        width: "250px"
+      }
+    }, {
+      value: 'Ngày cập nhật',
+      sort: true,
+      style: {
+        minWidth: "250px",
+        width: "250px"
+      }
+    }, {
+      type: "detail",
+      functionClickAll: functionClickMore,
+      icon: "",
+      dragElement: false,
+      style: {
+        width: "30px"
+      }
+    }];
+    console.log(header);
+    self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+    tabContainer.addChild(self.mTable);
+    self.mTable.addInputSearch(ListAddress_$('.pizo-list-realty-page-allinput-container input', self.$view));
+    self.listParent.updateItemList();
+  });
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListAddress_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, tabContainer]
+  }));
+  return this.$view;
+};
+
+ListAddress_ListAddress.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+  var checkElement;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = [{}, data[i].id, data[i].name, formatDate(data[i].created, true, true, true, true, true), formatDate(data[i].modified, true, true, true, true, true), {}];
+    result.original = data[i];
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  console.log(temp);
+  return temp;
+};
+
+ListAddress_ListAddress.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Chức vụ cao nhất",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
+};
+
+ListAddress_ListAddress.prototype.searchControlContent = function () {
+  var startDay, endDay, startDay1, endDay1;
+  var self = this;
+  startDay = ListAddress_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(new Date().getFullYear(), 0, 1),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay);
+        endDay.minDateLimit = date;
+      }
+    }
+  });
+  endDay = ListAddress_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay.maxDateLimit = date;
+      }
+    }
+  });
+  startDay1 = ListAddress_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(new Date().getFullYear(), 0, 1),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(endDay1);
+        endDay1.minDateLimit = date;
+      }
+    }
+  });
+  endDay1 = ListAddress_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        console.log(date);
+        startDay1.maxDateLimit = date;
+      }
+    }
+  });
+  self.listParent = ListAddress_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Chức vụ cao nhất",
+        value: 0
+      }]
+    }
+  });
+
+  self.listParent.updateItemList = function () {
+    self.listParent.items = self.formatDataList(self.getDataCurrent());
+  };
+
+  var content = ListAddress_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control-container",
+    on: {
+      click: function click(event) {
+        event.stopPropagation();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-main-search-control-row",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-state-district",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-state-district-label",
+            props: {
+              innerHTML: "Chức vụ cha"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-state-district-input",
+            child: [self.listParent]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-phone",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            props: {
+              innerHTML: "Ngày tạo"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay, endDay]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-phone",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            props: {
+              innerHTML: "Ngày cập nhật"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-date-input",
+            child: [startDay1, endDay1]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-button",
+          child: [{
+            tag: "button",
+            "class": ["pizo-list-realty-button-apply", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {}
+            },
+            child: ['<span>' + "Áp dụng" + '</span>']
+          }, {
+            tag: "button",
+            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {
+                temp.reset();
+              }
+            },
+            child: ['<span>' + "Thiết lập lại" + '</span>']
+          }]
+        }]
+      }]
+    }]
+  });
+
+  var temp = ListAddress_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control",
+    on: {
+      click: function click(event) {
+        this.hide();
+      }
+    },
+    child: [content]
+  });
+
+  temp.content = content;
+  content.timestart = startDay;
+  content.timeend = endDay;
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
+  };
+
+  return temp;
+};
+
+ListAddress_ListAddress.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListAddress_ListAddress.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListAddress_ListAddress.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  var self = this;
+  var mNewPosition = new component_NewPosition(undefined, parent_id);
+  mNewPosition.attach(self.parent);
+  var frameview = mNewPosition.getView(self.getDataCurrent());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewPosition, row);
+};
+
+ListAddress_ListAddress.prototype.addDB = function (mNewPosition, row) {
+  var self = this;
+  mNewPosition.promiseAddDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_position.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    updateData(phpFile, value).then(function (result) {
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewPosition.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewPosition.promiseAddDB !== undefined) self.addDB(mNewPosition);
+    }, 10);
+  });
+};
+
+ListAddress_ListAddress.prototype.addView = function (value, parent) {
+  value.created = getGMT();
+  value.modified = getGMT();
+  var result = [{}, value.id, value.name, formatDate(value.created, true, true, true, true, true), formatDate(value.modified, true, true, true, true, true), {}];
+  result.original = value;
+  var element = parent;
+  if (value.parent_id == 0) element = this.mTable;else for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
+    if (parent.bodyTable.childNodes[i].data.original.id == value.parent_id) {
+      element = parent.bodyTable.childNodes[i];
+      break;
+    }
+  }
+  element.insertRow(result);
+};
+
+ListAddress_ListAddress.prototype.edit = function (data, parent, index) {
+  var self = this;
+  var mNewPosition = new component_NewPosition(data);
+  mNewPosition.attach(self.parent);
+  var frameview = mNewPosition.getView(self.getDataCurrent());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewPosition, data, parent, index);
+};
+
+ListAddress_ListAddress.prototype.editDB = function (mNewPosition, data, parent, index) {
+  var self = this;
+  mNewPosition.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_position.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewPosition.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewPosition.promiseEditDB !== undefined) self.editDB(mNewPosition, data, parent, index);
+    }, 10);
+  });
+};
+
+ListAddress_ListAddress.prototype.editView = function (value, data, parent, index) {
+  var isChangeView = false;
+  value.modified = getGMT();
+  data.original.name = value.name;
+  data.original.modified = formatDate(value.modified);
+
+  if (data.original.parent_id != value.parent_id) {
+    isChangeView = true;
+  }
+
+  data.original.parent_id = value.parent_id;
+  data[2] = value.name;
+  data[4] = value.modified;
+  var indexOF = index,
+      element = parent;
+
+  if (isChangeView === true) {
+    var element;
+    if (value.parent_id == 0) element = parent.bodyTable.parentNode;else for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
+      if (parent.bodyTable.childNodes[i].data.original.id == value.parent_id) {
+        element = parent.bodyTable.childNodes[i];
+        break;
+      }
+    }
+    parent.changeParent(index, element);
+  }
+
+  element.updateRow(data, indexOF, true);
+  this.listParent.updateItemList();
+};
+
+ListAddress_ListAddress.prototype["delete"] = function (data, parent, index) {
+  console.log(data);
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListAddress_ListAddress.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {
+    self.listParent.updateItemList();
+  });
+};
+
+ListAddress_ListAddress.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_position.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
+ListAddress_ListAddress.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListAddress_ListAddress.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListAddress_ListAddress.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListAddress_ListAddress.prototype.start = function () {};
+
+/* harmony default export */ var page_ListAddress = (ListAddress_ListAddress);
 // CONCATENATED MODULE: ./js/App.js
+
+
 
 
 
@@ -66423,8 +70282,11 @@ App_App.prototype.getView = function () {
                 text: "Tên đường",
                 pageIndex: 24
               }, {
-                text: "Thông tin quy hoạch",
+                text: "Địa chỉ",
                 pageIndex: 25
+              }, {
+                text: "Thông tin quy hoạch",
+                pageIndex: 26
               }]
             }, {
               text: "Thông tin",
@@ -66503,12 +70365,12 @@ App_App.prototype.getView = function () {
         child: [this.body]
       }]
     }]
-  });
-  var mListHelp = new page_ListHelp();
-  mListHelp.attach(this);
-  var frameview = mListHelp.getView();
-  this.body.addChild(frameview);
-  this.body.activeFrame(frameview);
+  }); // var mListHelp = new ListHelp();
+  // mListHelp.attach(this);
+  // var frameview = mListHelp.getView();
+  // this.body.addChild(frameview);
+  // this.body.activeFrame(frameview);
+
   this.refresh();
   return this.$view;
 };
@@ -66526,6 +70388,14 @@ App_App.prototype.openPage = function (index) {
       var mListPositions = new page_ListPositions();
       mListPositions.attach(this);
       var frameview = mListPositions.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 6:
+      var mListAccount = new page_ListAccount();
+      mListAccount.attach(this);
+      var frameview = mListAccount.getView();
       this.body.addChild(frameview);
       this.body.activeFrame(frameview);
       break;
@@ -66604,9 +70474,9 @@ App_App.prototype.openPage = function (index) {
       break;
 
     case 22:
-      var mListDitrict = new page_ListDitrict();
-      mListDitrict.attach(this);
-      var frameview = mListDitrict.getView();
+      var mListDistrict = new page_ListDistrict();
+      mListDistrict.attach(this);
+      var frameview = mListDistrict.getView();
       this.body.addChild(frameview);
       this.body.activeFrame(frameview);
       break;
@@ -66628,6 +70498,14 @@ App_App.prototype.openPage = function (index) {
       break;
 
     case 25:
+      var mListAddress = new page_ListAddress();
+      mListAddress.attach(this);
+      var frameview = mListAddress.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 26:
       var mPlanningInformation = new page_PlanningInformation();
       mPlanningInformation.attach(this);
       var frameview = mPlanningInformation.getView();

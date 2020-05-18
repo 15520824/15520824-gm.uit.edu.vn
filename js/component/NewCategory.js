@@ -62,7 +62,7 @@ NewCategory.prototype.getView = function (dataParent) {
     var self = this;
     self.createPromise();
     var array = [{text:"Danh mục cao nhất",value:0}];
-    console.log(self.parent_id)
+    
     if(self.parent_id===undefined)
     self.parent_id = 0;
     self.check = [];
@@ -235,7 +235,7 @@ NewCategory.prototype.getView = function (dataParent) {
                                                         input:function(event)
                                                         {
                                                             var parent = this.parentNode.parentNode;
-                                                            console.log(parent)
+                                                            
                                                             if(this.value == ""){
                                                                 if(!parent.classList.contains("hasErrorElement"))
                                                                 parent.classList.add("hasErrorElement");
@@ -258,7 +258,7 @@ NewCategory.prototype.getView = function (dataParent) {
                                                                 if(parent.classList.contains("used-error"))
                                                                 parent.classList.remove("used-error");
                                                             }
-                                                            console.log(!parent.classList.contains("used-error"),!parent.classList.contains("invalid-error"),parent.classList.contains("hasErrorElement"))
+                                                            
                                                             if(!parent.classList.contains("used-error")&&!parent.classList.contains("invalid-error")&&parent.classList.contains("hasErrorElement"))
                                                             parent.classList.remove("hasErrorElement")
                                                         },

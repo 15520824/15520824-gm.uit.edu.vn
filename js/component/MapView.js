@@ -295,7 +295,7 @@ DetailView.prototype.activeAutocomplete = function(map) {
         types: ['geocode'],
         componentRestrictions: { country: 'vn' }
     };
-    console.log(options)
+    
     autocomplete = new google.maps.places.Autocomplete(
         self.input, options);
 
@@ -314,11 +314,11 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
     // Get the place details from the autocomplete object.
     var self = this;
     var place = autocomplete.getPlace();
-    console.log(autocomplete)
+    
     this.getLongLat(text).then(function (result) {
         map.addMoveMarker(result)
     })
-    console.log(place);
+    
     var textResult = text;
     var componentForm = {
         street_number: 'short_name',
@@ -329,7 +329,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
         country: 'long_name',
         postal_code: 'short_name'
     };
-    console.log(place)
+    
     self.number.value = "";
     self.street.value = "";
     self.state.value = "";
@@ -413,7 +413,7 @@ DetailView.prototype.getLongLat = function (text) {
             if (status == google.maps.GeocoderStatus.OK) {
                 // do something with the geocoded result
                 //
-                console.log([results[0].geometry.location.lat(), results[0].geometry.location.lng()])
+                
                 resolve([results[0].geometry.location.lat(), results[0].geometry.location.lng()])
                 // results[0].geometry.location.latitude
                 // results[0].geometry.location.longitude
@@ -471,7 +471,7 @@ MapView.prototype.activeMap = function (center = [10.822500, 106.629104], zoom =
 MapView.prototype.addMoveMarker = function (position,changeInput=true) {
     var self = this;
     var marker;
-    console.log(position)
+    
     if(changeInput)
     self.detailView.changInput = false;
     if (this.currentMarker !== undefined) {
@@ -530,9 +530,9 @@ MapView.prototype.transition = function (result,changeInput) {
 }
 
 MapView.prototype.callback = function(results, status) {
-    console.log(this)
+    
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log(results)
+        
         // for (var i = 0; i < results.length; i++) { 
         //     this.createMarker(results[i]); 
         // }

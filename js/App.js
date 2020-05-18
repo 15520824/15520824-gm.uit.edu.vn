@@ -9,11 +9,13 @@ import ListRealty from './page/ListRealty';
 import ListWard from './page/ListWard';
 import ListStreet from './page/ListStreet';
 import ListState from './page/ListState';
-import ListDitrict from './page/ListDitrict';
+import ListDistrict from './page/ListDistrict';
 import PlanningInformation from './page/PlanningInformation';
 import ListHelp from './page/ListHelp';
 import ListEditHelp from './page/ListEditHelp';
 import ListPositions from './page/ListPositions';
+import ListAccount from './page/ListAccount';
+import ListAddress from './page/ListAddress';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -172,8 +174,12 @@ App.prototype.getView = function()
                                                     pageIndex:24
                                                 },
                                                 {
-                                                    text:"Thông tin quy hoạch",
+                                                    text:"Địa chỉ",
                                                     pageIndex:25
+                                                },
+                                                {
+                                                    text:"Thông tin quy hoạch",
+                                                    pageIndex:26
                                                 }
                                             ]
                                         },
@@ -288,11 +294,11 @@ App.prototype.getView = function()
             }
         ]
     });
-    var mListHelp = new ListHelp();
-    mListHelp.attach(this);
-    var frameview = mListHelp.getView();
-    this.body.addChild(frameview);
-    this.body.activeFrame(frameview);
+    // var mListHelp = new ListHelp();
+    // mListHelp.attach(this);
+    // var frameview = mListHelp.getView();
+    // this.body.addChild(frameview);
+    // this.body.activeFrame(frameview);
     this.refresh();
     
     return this.$view;
@@ -314,6 +320,13 @@ App.prototype.openPage = function(index){
             var mListPositions = new ListPositions();
             mListPositions.attach(this);
             var frameview = mListPositions.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 6:
+            var mListAccount = new ListAccount();
+            mListAccount.attach(this);
+            var frameview = mListAccount.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;
@@ -382,9 +395,9 @@ App.prototype.openPage = function(index){
             this.body.activeFrame(frameview);
         break;
         case 22:
-            var mListDitrict = new ListDitrict();
-            mListDitrict.attach(this);
-            var frameview = mListDitrict.getView();
+            var mListDistrict = new ListDistrict();
+            mListDistrict.attach(this);
+            var frameview = mListDistrict.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;
@@ -403,6 +416,13 @@ App.prototype.openPage = function(index){
             this.body.activeFrame(frameview);
         break;
         case 25:
+            var mListAddress = new ListAddress();
+            mListAddress.attach(this);
+            var frameview = mListAddress.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 26:
             var mPlanningInformation = new PlanningInformation();
             mPlanningInformation.attach(this);
             var frameview = mPlanningInformation.getView();

@@ -1,40 +1,46 @@
 import BaseView from '../component/BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/ListDitrict.css"
+import "../../css/ListAddress.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate } from '../component/FormatFunction';
+import { formatDate, getGMT } from '../component/FormatFunction';
 
+import {loadData,updateData} from '../component/ModuleDatabase';
 
-import { input_choicenumber,tableView, ModuleView} from '../component/ModuleView';
-import NewRealty from '../component/NewRealty';
+import { tableView, deleteQuestion } from '../component/ModuleView';
+
+import NewPosition from '../component/NewPosition';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function ListDitrict() {
+function ListAddress() {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    this.ModuleView = new ModuleView();
 }
 
-ListDitrict.prototype.setContainer = function(parent)
+ListAddress.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(ListDitrict.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-ListDitrict.prototype.constructor = ListDitrict;
+Object.defineProperties(ListAddress.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+ListAddress.prototype.constructor = ListAddress;
 
-ListDitrict.prototype.getView = function () {
+ListAddress.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
         tag:"input",
         class:"quantumWizTextinputPaperinputInput",
+        on:{
+            change:function(){
+                self.mTable.updatePagination(this.value);
+            }
+        },
         props:{
             type:"number",
             autocomplete:"off",
@@ -48,12 +54,12 @@ ListDitrict.prototype.getView = function () {
         tag:"input",
         class:"pizo-list-realty-page-allinput-input",
         props:{
-            placeholder:"Tên"
+            placeholder:"Tìm kiếm"
         }
     });
     if(window.mobilecheck())
     {
-        allinput.placeholder = "Tên"
+        allinput.placeholder = "Tìm kiếm"
     }
     this.$view = _({
         tag: 'singlepage',
@@ -66,7 +72,7 @@ ListDitrict.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Quản lý Quận/Huyện"
+                            innerHTML: "Quản lý chức vụ"
                         }
                     },
                     {
@@ -92,10 +98,7 @@ ListDitrict.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        var frameAdd = self.NewRealty.getView();
-                                        self.parent.body.addChild(frameAdd);
-                                        self.parent.body.activeFrame(frameAdd);
-                                        self.NewRealty.setContainer(self.parent);
+                                        self.add();
                                     }
                                 },
                                 child: [
@@ -171,15 +174,75 @@ ListDitrict.prototype.getView = function () {
             },
         ]
     });
-    var tableViewX;
-    var header = [{ type: "dragzone" , dragElement : false},{ type: "increase", value: "#"}, {value:'ID',sort:true}, {value:'Tên',sort:true},{value:'Tỉnh/TP', sort:true}, {value: 'Ngày tạo',sort:true }, { value:'Ngày cập nhật', sort:true }, {type:"detail",dragElement : false}];
-    var dataTable = [
-        [{},{},'79','Quận 1','Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),{}],
-        [{},{},'80','Quận Tân Bình','Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),{}],
-        [{},{},'80','Quận Bình Thạnh','Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),{}]
-    ];
-    tableViewX = tableView(header, dataTable,true,true,2);
-    tableViewX.addInputSearch($('.pizo-list-realty-page-allinput-container input',this.$view))
+    var tabContainer = _({
+        tag:"div",
+        class:["pizo-list-realty-main-result-control","drag-zone-bg"],
+        child:[
+        ]
+    })
+
+    var docTypeMemuProps,token,functionX;
+    var functionClickMore = function(event, me, index, parent, data, row)
+    {
+       
+        docTypeMemuProps = {
+            items: [
+                {
+                    text: 'Thêm',
+                    icon: 'span.mdi.mdi-text-short',
+                    value:0,
+                },
+                {
+                    text: 'Sửa',
+                    icon: 'span.mdi.mdi-text-short',
+                    value:1,
+                },
+                {
+                    text: 'Xóa',
+                    icon: 'span.mdi.mdi-text',
+                    value:2,
+                },
+            ]
+        };
+        token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
+            switch(menuItem.value)
+            {
+                case 0:
+                    self.add(data.original.id,row);
+                    break;
+                case 1:
+                    self.edit(data,parent,index);
+                    break;
+                case 2:
+                    self.delete(data.original,parent,index);
+                    break;
+            }
+        });
+
+        functionX = function(token){
+            return function(){
+                var x = function(event){
+                    absol.QuickMenu.close(token);
+                    document.body.removeEventListener("click",x);
+                }
+                document.body.addEventListener("click",x)
+            }
+        }(token);
+
+        setTimeout(functionX,10)
+    }
+
+
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function(value){
+        
+        var header = [{ type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, {value:'MS',sort:true,style:{minWidth:"150px",width:"150px"}}, {value:'Tên',sort:true,style:{minWidth:"unset"}},{value: 'Ngày tạo',sort:true,style:{minWidth:"250px",width:"250px"}}, { value:'Ngày cập nhật', sort:true,style:{minWidth:"250px",width:"250px"} },{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+        
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+        tabContainer.addChild(self.mTable);
+        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
+        self.listParent.updateItemList();
+    });
+
     this.searchControl = this.searchControlContent();
 
     this.$view.addChild(_({
@@ -187,33 +250,67 @@ ListDitrict.prototype.getView = function () {
             class:["pizo-list-realty-main"],
             child:[
                 this.searchControl,
-                {
-                    tag:"div",
-                    class:["pizo-list-realty-main-result-control","drag-zone-bg"],
-                    child:[
-                        tableViewX
-                    ]
-                }
+                tabContainer
             ]   
         })
         );
     return this.$view;
 }
 
-ListDitrict.prototype.searchControlContent = function(){
-    var startDay,endDay,startDay1,endDay1;
+ListAddress.prototype.formatDataRow = function(data)
+{
+    var temp = [];
+    var check = [];
+    var k = 0;
+    var checkElement;
+    for(var i=0;i<data.length;i++)
+    {
+        var result = [
+        {},
+        data[i].id,
+        data[i].name,
+        formatDate(data[i].created,true,true,true,true,true),
+        formatDate(data[i].modified,true,true,true,true,true),
+        {}
+        ]
+        result.original = data[i];
+        if(check[data[i].parent_id]!==undefined)
+        {
+            if(check[data[i].parent_id].child === undefined)
+            check[data[i].parent_id].child = [];
+            check[data[i].parent_id].child.push(result);
+        }
+        else
+        temp[k++] = result;
+        check[data[i].id] = result;
+    }
+    
+    return temp;
+}
 
+ListAddress.prototype.formatDataList = function(data){
+    var temp = [{text:"Chức vụ cao nhất",value:0}];
+    for(var i = 0;i<data.length;i++)
+    {
+        temp[i+1] = {text:data[i].name,value:data[i].id};
+    }
+    return temp;
+}
+
+ListAddress.prototype.searchControlContent = function(){
+    var startDay,endDay,startDay1,endDay1;
+    var self = this;
     startDay = _(
         {
             tag: 'calendar-input',
             data: {
                 anchor: 'top',
-                value: new Date(),
+                value: new Date(new Date().getFullYear(), 0, 1),
                 maxDateLimit: new Date()
             },
             on: {
                 changed: function (date) {
-                    console.log(endDay)
+                    
                     endDay.minDateLimit = date;
                 }
             }
@@ -230,7 +327,7 @@ ListDitrict.prototype.searchControlContent = function(){
             },
             on: {
                 changed: function (date) {
-                    console.log(date)
+                    
                     startDay.maxDateLimit = date;
                 }
             }
@@ -242,12 +339,12 @@ ListDitrict.prototype.searchControlContent = function(){
             tag: 'calendar-input',
             data: {
                 anchor: 'top',
-                value: new Date(),
+                value: new Date(new Date().getFullYear(), 0, 1),
                 maxDateLimit: new Date()
             },
             on: {
                 changed: function (date) {
-                    console.log(endDay1)
+                    
                     endDay1.minDateLimit = date;
                 }
             }
@@ -264,12 +361,28 @@ ListDitrict.prototype.searchControlContent = function(){
             },
             on: {
                 changed: function (date) {
-                    console.log(date)
+                    
                     startDay1.maxDateLimit = date;
                 }
             }
         }
     )
+
+    self.listParent = _( {
+        tag:"selectmenu",
+        props:{
+            enableSearch:true,
+            items:[
+                {text:"Chức vụ cao nhất",value:0}
+            ]
+        }
+    });
+
+    self.listParent.updateItemList = function()
+    {
+        self.listParent.items = self.formatDataList(self.getDataCurrent());
+    }
+
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -290,30 +403,20 @@ ListDitrict.prototype.searchControlContent = function(){
                         child:[
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-ditrict",
+                                class:"pizo-list-realty-main-search-control-row-state-district",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-ditrict-label",
+                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
                                         props:{
-                                            innerHTML:"Tỉnh/TP"
+                                            innerHTML:"Chức vụ cha"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-ditrict-input",
+                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
                                         child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    enableSearch:true,
-                                                    items:[
-                                                        {text:"Tất cả",value:-1},
-                                                        {text:'Thành phố Hồ Chí Minh',value:79},
-                                                        {text:'Thủ đô Hà Nội',value:80}
-                                                    ]
-                                                }
-                                            }
+                                            self.listParent
                                         ]
                                     }
                                 ]
@@ -414,15 +517,6 @@ ListDitrict.prototype.searchControlContent = function(){
     temp.content = content;
     content.timestart = startDay;
     content.timeend = endDay;
-    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low',content);
-    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high',content);
-    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input',content);
-    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input',content);
-    content.SN = $('.pizo-list-realty-main-search-control-row-SN input',content);
-    content.TD = $('.pizo-list-realty-main-search-control-row-TD input',content);
-    content.PX = $('.pizo-list-realty-main-search-control-row-PX input',content);
-    content.QH = $('.pizo-list-realty-main-search-control-row-QH input',content);
-    content.HT = $('.pizo-list-realty-main-search-control-row-HT input',content);
 
     temp.show = function()
     {
@@ -454,23 +548,184 @@ ListDitrict.prototype.searchControlContent = function(){
     {
         content.timestart = new Date();
         content.timeend = new Date();
-        content.lowprice.value = "";
-        content.highprice.value = "";
-        content.phone.value = "";
-        content.MS.value = "";
-        content.SN.value = "";
-        content.TD.value = "";
-        content.PX.value = "";
-        content.QH.value = "";
-        content.TT.value = "";
-        content.HT.value = 0;
+       
     }
 
   
     return temp;
 }
 
-ListDitrict.prototype.refresh = function () {
+ListAddress.prototype.getDataCurrent = function()
+{
+    return this.getDataChild(this.mTable.data);
+}
+
+
+
+ListAddress.prototype.getDataChild = function(arr)
+{
+    var self = this;
+    var result = [];
+    for(var i = 0;i<arr.length;i++)
+    {
+        result.push(arr[i].original);
+        if(arr[i].child.length!==0)
+        result = result.concat(self.getDataChild(arr[i].child));
+    }
+    return result;
+}
+
+ListAddress.prototype.add = function(parent_id = 0,row)
+{
+    var self = this;
+    var mNewPosition = new NewPosition(undefined,parent_id);
+    mNewPosition.attach(self.parent);
+    var frameview = mNewPosition.getView(self.getDataCurrent());
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.addDB(mNewPosition,row);
+}
+
+ListAddress.prototype.addDB = function(mNewPosition,row ){
+    var self = this;
+    mNewPosition.promiseAddDB.then(function(value){
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_position.php";
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        updateData(phpFile,value).then(function(result){
+            value.id = result;
+            self.addView(value,row);
+        })
+        mNewPosition.promiseAddDB = undefined;
+        setTimeout(function(){
+            if(mNewPosition.promiseAddDB!==undefined)
+            self.addDB(mNewPosition);
+        },10);
+    })
+}
+
+ListAddress.prototype.addView = function(value,parent){
+    value.created = getGMT();
+    value.modified = getGMT();
+    var result = [
+        {},
+        value.id,
+        value.name,
+        formatDate(value.created,true,true,true,true,true),
+        formatDate(value.modified,true,true,true,true,true),
+        {}
+    ]
+    result.original = value;
+
+    var element = parent;
+        if(value.parent_id == 0)
+        element = this.mTable;
+        else
+        for(var i = 0;i<parent.bodyTable.childNodes.length;i++)
+        {
+            if(parent.bodyTable.childNodes[i].data.original.id==value.parent_id){
+                element = parent.bodyTable.childNodes[i];
+                break;
+            }
+         }
+    element.insertRow(result);
+}
+
+ListAddress.prototype.edit = function(data,parent,index)
+{
+    var self = this;
+    var mNewPosition = new NewPosition(data);
+    mNewPosition.attach(self.parent);
+    var frameview = mNewPosition.getView(self.getDataCurrent());
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.editDB(mNewPosition,data,parent,index);
+}
+
+ListAddress.prototype.editDB = function(mNewPosition,data,parent,index){
+    var self = this;
+    mNewPosition.promiseEditDB.then(function(value){
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_position.php";
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        value.id = data.original.id;
+        updateData(phpFile,value).then(function(result){
+            self.editView(value,data,parent,index);
+        })
+        mNewPosition.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewPosition.promiseEditDB!==undefined)
+            self.editDB(mNewPosition,data,parent,index);
+        },10);
+    })
+}
+
+ListAddress.prototype.editView = function(value,data,parent,index){
+    var isChangeView=false;
+    value.modified = getGMT();
+    data.original.name = value.name;
+    data.original.modified = formatDate(value.modified);
+    if(data.original.parent_id!=value.parent_id){
+        isChangeView = true;
+    }
+    data.original.parent_id = value.parent_id;
+
+
+    data[2] = value.name;
+    data[4] = value.modified;
+
+
+    var indexOF = index,element = parent;
+    
+    if(isChangeView===true)
+    {
+        var element;
+        if(value.parent_id == 0)
+        element = parent.bodyTable.parentNode;
+        else
+        for(var i = 0;i<parent.bodyTable.childNodes.length;i++)
+        {
+            if(parent.bodyTable.childNodes[i].data.original.id==value.parent_id){
+                element = parent.bodyTable.childNodes[i];
+                break;
+            }
+        }
+        parent.changeParent(index,element);
+    }
+    element.updateRow(data,indexOF,true);
+    this.listParent.updateItemList();
+}
+
+ListAddress.prototype.delete = function(data,parent,index)
+{
+    
+    var self = this;
+    var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
+    this.$view.addChild(deleteItem);
+    deleteItem.promiseComfirm.then(function(){
+        self.deleteDB(data,parent,index);
+    })
+}
+
+ListAddress.prototype.deleteView = function(parent,index){
+    var self = this;
+    var bodyTable = parent.bodyTable;
+    parent.dropRow(index).then(function(){
+        self.listParent.updateItemList();
+    });
+}
+
+ListAddress.prototype.deleteDB = function(data,parent,index){
+    var self = this;
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_position.php";
+    if(self.phpDeleteContent)
+    phpFile = self.phpUpdateContent;
+    updateData(phpFile,data).then(function(value){
+        self.deleteView(parent,index);
+    })
+}
+
+ListAddress.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -478,7 +733,7 @@ ListDitrict.prototype.refresh = function () {
         this.setData(data);
 };
 
-ListDitrict.prototype.setData = function (data) {
+ListAddress.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -486,7 +741,7 @@ ListDitrict.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-ListDitrict.prototype.flushDataToView = function () {
+ListAddress.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -501,8 +756,8 @@ ListDitrict.prototype.flushDataToView = function () {
     }
 };
 
-ListDitrict.prototype.start = function () {
+ListAddress.prototype.start = function () {
 
 }
 
-export default ListDitrict;
+export default ListAddress;

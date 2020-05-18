@@ -135,7 +135,7 @@ export default xmlModalDragImage = {
                   tag: "div",
                   class: [
                     "modal-upload-XML-body-drop-area-main-form",
-                    "displayVisiable"
+                    "displayVisible"
                   ],
                   props: {
                     id: "drop-area"
@@ -691,8 +691,8 @@ export default xmlModalDragImage = {
   uploadFile: function(file, i, self) {
     self.updateProgress(i, 100, self);
       self.select.classList.remove("disable");
-    if (!self.modal.classList.contains("visiable"))
-      self.modal.classList.add("visiable");
+    if (!self.modal.classList.contains("visible"))
+      self.modal.classList.add("visible");
     // var url = "./php/upload/handle_file_upload.php";
     // var name =
     //   ("img_" + Math.random() + Math.random()).replace(/\./g, "") +
@@ -712,8 +712,8 @@ export default xmlModalDragImage = {
     //   if (xhr.readyState == 4 && xhr.status == 200) {
     //     self.updateProgress(i, 100, self); // <- Add this
     //     // self.select.classList.remove("disable");
-    //     if (!self.modal.classList.contains("visiable"))
-    //       self.modal.classList.add("visiable");
+    //     if (!self.modal.classList.contains("visible"))
+    //       self.modal.classList.add("visible");
     //     self.imgUrl.src = "./img/delete/" + name;
     //     self.imgAll.push("./img/delete/" + name);
     //     document.getElementById("gallery").style.position = "relative";

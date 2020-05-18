@@ -2,13 +2,15 @@ import Fcore from '../dom/Fcore';
 import '../../css/ModuleView.css';
 import '../../css/tablesort.css';
 // import TabView from 'absol-acomp/js/TabView';
+import {HashTable} from '../component/HashTable';
+import {HashTableFilter} from '../component/HashTableFilter';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 var traceOutBoundingClientRect = Fcore.traceOutBoundingClientRect;
 
 export function ModuleView() {
-    console.log(Fcore)
+    
 }
 
 export function alignFormCss(element, elementDynamic, GroupElement = []) {
@@ -254,7 +256,7 @@ function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone,
     var y = pageY - result.getBoundingClientRect().top;
     y-= shiftY;
     // var height = result.clientHeight;
-    // console.log(y< clone.clientHeight/2)
+    // 
     // if(y>tempx){
     //     y = tempx;
     //     // bg.noAction = true;
@@ -599,7 +601,7 @@ function captureMousePosition(event) {
 }
 
 
-export function tableView(header = [], data = [], dragHorizontal, dragVertical,childIndex = 1) {
+export function tableView(header = [], data = [], dragHorizontal, dragVertical,childIndex = 1,indexRow = 50) {
     if (window.mobilecheck())
         return tableViewMobile(header,data);
 
@@ -620,7 +622,6 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
             bodyTable
         ]
     });
-
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
     Object.assign(result,tableView.prototype);
@@ -629,6 +630,23 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
     result.data = data;
     result.dragVertical = dragVertical;
     result.dragHorizontal = dragHorizontal;
+
+    result.updatePagination = function(number = result.tempIndexRow){
+        result.tempIndexRow = number;
+        result.indexRow = number;
+        if(result.paginationElement!==undefined)
+        {
+            result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+            var pagination = result.pagination(result.tempIndexRow);
+            result.paginationElement.parentNode.replaceChild(pagination,result.paginationElement);
+        }else{
+            var pagination = result.pagination(result.tempIndexRow);
+            result.appendChild(pagination);
+        }
+        
+        result.paginationElement = pagination;
+    }
+    result.updatePagination(indexRow);
 
     setTimeout(function () {
         if (window.scrollEvent === undefined) {
@@ -647,7 +665,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
             }
             if (scrollParent === undefined)
                 return;
-
+            result.scrollParent = scrollParent;
             scrollParent.addEventListener("scroll", function (event) {
                 if (window.lastScrolledLeft != scrollParent.scrollLeft) {
                     window.xMousePos -= window.lastScrolledLeft;
@@ -762,7 +780,11 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                         me.classList.remove("downgrade");
                     }
                         
-                    result.updateTable(header, result.data, dragHorizontal, dragVertical);
+                    if(result.paginationElement!==undefined)
+                    result.paginationElement.reActive();
+                    else
+                    result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
+                    
                 }
             }
 
@@ -788,7 +810,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                         return function (event) {
                             event.preventDefault();
                             if (functionClick !== undefined)
-                                functionClick(event, this, index, data[index], row,result);
+                                functionClick(event, this, index, row.data, row ,result);
                         }
                     }(i, row, functionClick),
                     mousedown: (dragHorizontal&&dragElement) ? function (index) {
@@ -853,7 +875,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                         return function (event) {
                             event.preventDefault();
                             if (functionClickSort !== undefined)
-                            functionClickSort(event, this, index, data[index], row,result);
+                            functionClickSort(event, this, index, row.data, row,result);
                         }
                     }(i, row, functionClickSort),
                 },
@@ -906,17 +928,18 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
     
     result.childIndex = childIndex;
 
-    result.childrenNodes = result.getBodyTable(data);
+    result.childrenNodes = [];
+    result.getBodyTable(data);
    
     result.checkSpan  = checkSpan;
-
+   
     return result;
 }
 
 tableView.prototype.setArrayFix = function(num, isLeft){
     var i;
     var length;
-    console.log(this)
+    
     if(isLeft){
         i = 0;
         length = num;
@@ -939,7 +962,7 @@ tableView.prototype.setArrayFix = function(num, isLeft){
             isFirst = true;
         }
         isFirst = false;
-        // console.log(this.clone[i][0],this.clone[i][0].offsetWidth)
+        // 
     }
 }
 
@@ -955,61 +978,89 @@ tableView.prototype.setArrayScroll = function(num, isLeft = true){
 tableView.prototype.addInputSearch = function(input)
 {
     var self = this;
-    input.onchange = function(event){
-        for(var i = 0;i<self.bodyTable.childNodes.length;i++)
-        {
-            if(checkValueIs(self.bodyTable.childNodes[i].data,input.value))
-            {
-                if(!self.bodyTable.childNodes[i].classList.contains("parent"))
-                self.bodyTable.childNodes[i].classList.add("parent");
-                if(self.bodyTable.childNodes[i].classList.contains("disPlayNone"))
-                self.bodyTable.childNodes[i].classList.remove("disPlayNone");
-                if(self.bodyTable.childNodes[i].childNodes[0].getParentNode()!==undefined)
-                {
-                    if(!self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("parent"))
-                    self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.add("parent");
-                    if(self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("disPlayNone"))
-                    self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.remove("disPlayNone");
-                    if(!self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("more-child"))
-                    self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.add("more-child");
-                }
-            }else
-            {
-                if(self.bodyTable.childNodes[i].classList.contains("parent"))
-                self.bodyTable.childNodes[i].classList.remove("parent");
-                if(!self.bodyTable.childNodes[i].classList.contains("disPlayNone"))
-                self.bodyTable.childNodes[i].classList.add("disPlayNone");
-            }
-        }
+    self.hashTable =  new HashTable(self.data);
+    input.onchange = function(event,needUpdate=false){
+        if(input.value!==input.lastInputSearch||needUpdate==true){
+            self.checkTableView(self.data,input.value);
+            input.lastInputSearch = input.value;
+            self.updatePagination();
+        }   
+    }
+    input.addEventListener("input",input.onchannge);
+    if(self.inputElement===undefined)
+        self.inputElement = [];
+    self.inputElement.push(input);
+    self.inputElement.onchange = function(){
+        for(var i = 0;i<self.inputElement.length;i++)
+            self.inputElement[i].onchange();
+    }
+}
+
+tableView.prototype.addFilter = function(input)
+{
+    var self = this;
+    self.hashTable =  new HashTableFilter(self.data);
+    input.onchange = function(event,needUpdate=false){
+        if(input.value!==input.lastInputSearch||needUpdate==true){
+            self.checkTableView(self.data,input.value);
+            input.lastInputSearch = input.value;
+            self.updatePagination();
+        }   
     }
     input.addEventListener("input",input.onchange)
     self.inputElement = input;
 }
 
-function checkValueIs(data,text)
+tableView.prototype.checkTableView = function(arr,value)
 {
-    var value;
-    for(var i = 0 ;i<data.length;i++)
-    {
-        value = "";
-        if(data[i].value!==undefined)
-        value = data[i].value;
-        else
-        value = data[i];
-        if(value.toString().toLowerCase().indexOf(text.toLowerCase())!==-1)
-        return true;
-    }
-    return false;
+    var self = this;
+    self.hashTable.getKey(value);
 }
 
-tableView.prototype.getBodyTable = function(data)
+tableView.prototype.setVisiableAll = function(arr)
+{
+    for(var i = 0;i<arr.length;i++)
+    {
+        arr[i].confirm = true;
+        if(arr[i].child!==undefined)
+        this.setVisiableAll(arr[i].child);
+    }
+}
+
+tableView.prototype.getBodyTable = function(data,i = 0)
 {
     var temp  = this.bodyTable;
     var result = this, k, delta = [],row,cell;
     var arr = [];
     if(parent.checkSpan===undefined)
         result.checkSpan = [];
-    for (var i = 0; i < data.length; i++) {
+    result.indexRow = 0;
+    for (i; i < data.length&&this.indexRow<this.tempIndexRow; i++) {
+        if(data[i].child!==undefined)
+            data[i].child.updateVisible = data.updateVisible;
+        if(data.updateVisible===true){
+            var tempCheck = data[i].confirm;
+            data[i].confirm = undefined;
+            if(tempCheck!==true){
+                data[i].visiable = false;
+                if(data[i].child!==undefined)
+                result.getBodyTable(data[i].child);
+                continue;
+            }else
+            {
+                data[i].visiable = undefined;
+                if(data[i].child!==undefined)
+                result.setVisiableAll(data[i].child)
+            }
+        }else
+        {
+            if(data[i].visiable===false)
+            {
+                if(data[i].child!==undefined)
+                result.getBodyTable(data[i].child);
+                continue;
+            }
+        }
         row = result.getRow(data[i]);
         temp.addChild(row);
         arr.push(row);
@@ -1017,10 +1068,10 @@ tableView.prototype.getBodyTable = function(data)
             k = parseFloat(temp.parentNode.clone[j][0].id);
             if(delta[j]===undefined)
                 delta[j] = 0;
-            cell = result.getCell(data[i][k],i,k,j,result.checkSpan,row);
+            cell = result.getCell(data[i][k],this.indexRow,k,j,result.checkSpan,row);
             if(cell === 6  || cell === 2)
             {
-                result.clone[j].splice(i+1 - delta[j],1);
+                result.clone[j].splice(indexRow+1 - delta[j],1);
                 delta[j]+=1;
                 continue
             }
@@ -1029,14 +1080,237 @@ tableView.prototype.getBodyTable = function(data)
                 continue;
             }
             cell.clone = result.clone;
-            result.clone[j][i+1 - delta[j]] = cell;
+            result.clone[j][this.indexRow + 1 - delta[j]] = cell;
             row.addChild(cell);
         }
         row.checkChild();
+        this.indexRow++;
     }
+    
     if(result.checkMargin!==undefined)
     result.checkMargin();
+
+    data.updateVisible = undefined;
+    result.childrenNodes = result.childrenNodes.concat(arr);
     return arr;
+}
+
+tableView.prototype.countRow = function()
+{
+    var countRowVisiable = this.countRowChild(this.data);
+    
+    return countRowVisiable;
+}
+
+tableView.prototype.countRowChild = function(arr)
+{
+    var countRowVisiable = 0
+    for(var i = 0;i<arr.length;i++)
+    {
+        if(arr[i].visiable!==false)
+        countRowVisiable++;
+        if(arr[i].child!==undefined)
+        countRowVisiable += this.countRowChild(arr[i].child);
+    }
+    return countRowVisiable;
+}
+
+tableView.prototype.pagination = function(number,functionClick){
+    var countPrecent = Math.ceil(this.countRow()/number);
+    if(countPrecent === 1)
+    return _({
+        tag:"div",
+        style:{
+            display:"none"
+        }
+    })
+    var self = this;
+    var paginationLeftPos = "20px";
+    var paginationOpacity = 0;
+    var checkPaginationClick = 0;
+    var arr = [];
+    var overlay = _({
+        tag:"div",
+        class:"pagination-hover-overlay"
+    })
+    var container = _({
+        tag:"div",
+        class:"pagination-wrapper",
+    })
+    var temp = _({
+        tag:"div",
+        class:"pagination",
+        child:[
+            {
+                tag:"div",
+                class:"pagination-container",
+                child:[
+                    overlay,
+                    {
+                        tag:"div",
+                        class:"pagination-prev",
+                        on:{
+                            click:function(event){
+                                var temp = $("a.active",container);
+                
+                                if(temp!==undefined)
+                                    if(temp.previousSibling!==null){
+                                        temp.previousSibling.click();
+                                        temp.style.color="";
+                                    }
+                                        
+                                
+                            }
+                        },
+                        props:{
+                        },
+                        child:[
+                            {
+                                tag:"span",
+                                class:["icon-pagination", "icon-pagination-prev"],
+                                child:[
+                                    {
+                                        tag:"i",
+                                        class:["icon", "material-icons"],
+                                        props:{
+                                            innerHTML:"keyboard_arrow_left"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    container,
+                    {
+                        tag:"div",
+                        class:"pagination-next",
+                        on:{
+                            click:function(event){
+                                var temp = $("a.active",container);
+                                
+                                if(temp!==undefined)
+                                    if(temp.nextSibling!==null){
+                                        temp.nextSibling.click();
+                                        temp.style.color="";
+                                    }   
+                            }
+                        },
+                        child:[
+                            {
+                                tag:"span",
+                                class:["icon-pagination", "icon-pagination-next"],
+                                child:[
+                                    {
+                                        tag:"i",
+                                        class:["icon", "material-icons"],
+                                        props:{
+                                            innerHTML:"keyboard_arrow_left"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    })
+    
+    for(var i = 0;i<countPrecent;i++){
+       
+        var choiceSelect = _({
+            tag:"a",
+            class:"pagination-page-number",
+            on:{
+                click:function(i){
+                    return function(event){
+                        var temp = $("a.active",container);
+                        if(temp!==undefined)
+                        temp.classList.remove("active");
+                        this.classList.add("active");
+                        paginationLeftPos = this.offsetLeft + "px";
+                        paginationOpacity = 1;
+                        checkPaginationClick = 1;
+                        overlay.style.left = paginationLeftPos;
+                        overlay.style.backgroundColor = "#00178a";
+                        overlay.style.opacity = paginationOpacity;
+                        this.style.color = "#fff";
+                        if(functionClick!==undefined)
+                        functionClick(event,i);
+                        self.updateTable(undefined,self.data,self.dragHorizontal,self.dragVertical,i*number);
+                        if(self.scrollParent!==undefined)
+                        self.scrollParent.scrollTop = 0;
+                    }
+                }(i),
+                mouseover:function(event){
+                    paginationOpacity = 1;
+                    overlay.style.backgroundColor = "#00c1dd";
+                    overlay.style.left = this.offsetLeft + "px";
+                    overlay.style.opacity = paginationOpacity;
+                    var temp = $("a.active",container);
+
+                    if(temp!==undefined)
+                        temp.style.color = "#333d45";
+                    this.style.color = "#fff";
+                },
+                mouseout:function(event){
+                    if (checkPaginationClick) {
+                        paginationOpacity = 1;
+                      } else {
+                        paginationOpacity = 0;
+                      }
+                    overlay.style.backgroundColor = "#00178a";
+                    overlay.style.opacity = paginationOpacity;
+                    overlay.style.left = paginationLeftPos;
+
+                    this.style.color = "#333d45";
+                    var temp = $("a.active",container);
+                    if(temp!==undefined)
+                        temp.style.color = "#fff";
+                }
+            },
+            props:{
+                innerHTML:i+1            
+            }
+        })
+    
+        arr.push(choiceSelect);
+        container.appendChild(choiceSelect);
+    }
+
+    temp.resetChoice = function(){
+        setTimeout(function(){
+            arr[0].click();
+        },10)
+    }
+
+    temp.resetOnlyView = function(){
+        setTimeout(function(){
+        if(arr.length==0)
+        return;
+        var temp = $("a.active",container);
+        if(temp!==undefined){
+            temp.classList.remove("active");
+            temp.style.color = "";
+        }
+       
+        arr[0].classList.add("active");
+        paginationLeftPos = arr[0].offsetLeft + "px";
+        paginationOpacity = 1;
+        checkPaginationClick = 1;
+        overlay.style.left = paginationLeftPos;
+        overlay.style.backgroundColor = "#00178a";
+        overlay.style.opacity = paginationOpacity;
+        arr[0].style.color = "#fff";
+        },10);
+    }
+    temp.reActive = function(){
+        var temp = $("a.active",container);
+        if(temp!==undefined)
+            temp.click();
+    }
+    temp.resetOnlyView();
+    return temp;
 }
 
 tableView.prototype.getRow = function(data)
@@ -1056,6 +1330,7 @@ tableView.prototype.getRow = function(data)
     temp.dragVertical = result.dragVertical;
     temp.dragHorizontal = result.dragHorizontal;
     temp.data = data;
+
     if(temp.data.child===undefined)
     temp.data.child = [];
     temp.childrenNodes = [];
@@ -1064,6 +1339,7 @@ tableView.prototype.getRow = function(data)
     temp.childIndex = result.childIndex;
     temp.moreChild = temp.data.moreChild;
     temp.data.moreChild = undefined;
+    temp.tempIndexRow = result.tempIndexRow;
 
     temp.checkLeft = function()
     {
@@ -1082,7 +1358,7 @@ tableView.prototype.getRow = function(data)
         if(temp.data.child.length!==0)
         {
             temp.checkIcon();
-            temp.childrenNodes = temp.childrenNodes.concat(temp.getBodyTable(temp.data.child));
+            temp.getBodyTable(temp.data.child);
                 
         }
     }
@@ -1158,7 +1434,7 @@ tableView.prototype.getRow = function(data)
     }
     
     
-    temp.checkVisiableChild = function()
+    temp.checkVisibleChild = function()
     {
         this.buttonClick.selfRemove();
         var parent = this.childNodes[0].getParentNode();
@@ -1413,11 +1689,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
                         else
                         var finalIndex =  0;
                         var dataIndex;
-                        if(cell.getParentNode().data.child!==undefined)
-                        dataIndex = cell.getParentNode().data.child[finalIndex];
-                        else
-                        dataIndex = cell.getParentNode().data[finalIndex];
-                        functionClick(event, cell, finalIndex, cell.getParentNode(), dataIndex, row);
+                        functionClick(event, cell, finalIndex, cell.getParentNode(), row.data, row);
                     }
                         
                 }(event, row, functionClick)
@@ -1512,16 +1784,12 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
     return cell;
 }
 
-tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
-   
-    var row, cell,k;
+tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical,index = 0) {
     var checkSpan = [];
-    
     var result = this;
     var temp = _({
         tag: "tbody"
     });
-
     temp.listCheckBox = [];
     if(dragHorizontal!==undefined)
     result.dragHorizontal = dragHorizontal;
@@ -1537,42 +1805,11 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     
     this.replaceChild(temp, this.bodyTable);
     this.bodyTable = temp;
-    result.childrenNodes = result.getBodyTable(data);
-    
-    
-   
+    result.childrenNodes = [];
+    result.getBodyTable(data,index);
 
-    // var delta = [];
-    // for (var i = 0; i < data.length; i++) {
-    //     row = result.getRow(data[i]);
-    //     temp.addChild(row);
-        
-    //     for (var j = 0; j < this.clone.length; j++) {
-    //         k = parseFloat(this.clone[j][0].id);
-    //         if(delta[j]===undefined)
-    //             delta[j] = 0;
-
-    //         cell = result.getCell(data[i][k],i,k,j,checkSpan,row);
-    //         if(cell === 6  || cell === 2)
-    //         {
-    //             this.clone[j].splice(i+1 - delta[j],1);
-    //             delta[j]+=1;
-    //             continue
-    //         }
-    //         if(cell === true)
-    //         {
-    //             continue;
-    //         }
-    //         cell.clone = this.clone;
-    //         this.clone[j][i+1 - delta[j]] = cell;
-    //         row.addChild(cell);
-    //     }
-    //     row.checkChild();
-    // }
     this.checkSpan  = checkSpan;
     this.data = data;
-    if(this.inputElement!==undefined)
-    this.inputElement.onchange();
 }
 
 tableView.prototype.insertRow = function(data)
@@ -1612,15 +1849,17 @@ tableView.prototype.updateRow = function(data,index,checkMust=false)
 
     var checkChild = false;
     
-    if(index===result.data.length&&result.tagName==="TABLE")
+    if(index===result.childrenNodes.length)
     {
+        if(result.tagName==="TABLE")
         result.bodyTable.addChild(row);
-    }
-    else if(result.childrenNodes!==undefined&&result.childrenNodes.length===index){
-        checkChild = true;
-        if(!result.classList.contains("more-child"))
-        result.setDisPlay();
-        result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length-1].parentNode.nextSibling);
+        else
+        {
+            checkChild = true;
+            if(!result.classList.contains("more-child"))
+            result.setDisPlay();
+            result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length-1].parentNode.nextSibling);
+        }
     }
     else{
         var temp;
@@ -1659,33 +1898,30 @@ tableView.prototype.updateRow = function(data,index,checkMust=false)
         k++;
         row.addChild(cell);
     }
-    var x;
+    var x,indexData = result.childrenNodes[index].data;
     result.childrenNodes[index] = row;
    if(result.tagName!=="TABLE"){
-       if(result.data.child[index]===undefined)
-       {
-        x = data;
-        result.data.child[index] = data;
-       }
-       else{
-        if(data.child.length === 0)
-        data.child = result.data.child[index].child;
-        x = Object.assign(result.data.child[index],data);
-       }
+        indexData = result.data.child.indexOf(indexData);
         
+        if(indexData===-1){
+            result.data.child.push(data);
+            x =data;
+        }              
+        else{
+            x = Object.assign(result.data.child[indexData],data);
+            result.data.child[indexData]=x;
+        }
    }
    else{
-       if(result.data[index]===undefined)
-        {
-            result.data[index] = data;
-            x = result.data[index]
-        } 
-       else{
-        if(data.child.length === 0)
-        data.child = result.data[index].child;
-        x = Object.assign(result.data[index],data)
-       }
-        
+        indexData = result.data.indexOf(indexData);
+        if(indexData===-1){
+            result.data.push(data);
+            x =data;
+        }              
+        else{
+            x = Object.assign(result.data[indexData],data);
+            result.data[indexData]=x;
+        }
    }
    row.data = x;
    if(temp!==undefined){
@@ -1733,42 +1969,10 @@ tableView.prototype.updateRow = function(data,index,checkMust=false)
    if(result.checkMargin!==undefined)
    result.checkMargin();
 
-   result.checkDataUpdate(row);
+//    result.checkDataUpdate(row);
+   result.bodyTable.parentNode.hashTable =  new HashTable(result.bodyTable.parentNode.data);
+   result.bodyTable.parentNode.inputElement.onchange(undefined,true);
    return row;
-}
-
-tableView.prototype.checkDataUpdate = function(row)
-{
-    var self = this;
-    var input = self.headerTable.parentNode.inputElement;
-    if(input === undefined)
-    return;
-    for(var i = 0;i<row.childNodes.length;i++)
-    {
-        if(checkValueIs(row.childNodes,input.value))
-        {
-            if(!row.classList.contains("parent"))
-            row.classList.add("parent");
-            if(row.classList.contains("disPlayNone"))
-            row.classList.remove("disPlayNone");
-            if(row.childNodes[0].getParentNode()!==undefined)
-            {
-                if(!row.childNodes[0].getParentNode().classList.contains("parent"))
-                row.childNodes[0].getParentNode().classList.add("parent");
-                if(row.childNodes[0].getParentNode().classList.contains("disPlayNone"))
-                row.childNodes[0].getParentNode().classList.remove("disPlayNone");
-                if(!row.childNodes[0].getParentNode().classList.contains("more-child"))
-                row.childNodes[0].getParentNode().classList.add("more-child");
-            }
-        }else
-        {
-            if(row.classList.contains("parent"))
-            row.classList.remove("parent");
-            if(!row.classList.contains("disPlayNone"))
-            row.classList.add("disPlayNone");
-        }
-    }
-
 }
 
 tableView.prototype.dropRow = function(index)
@@ -1799,16 +2003,18 @@ tableView.prototype.dropRow = function(index)
             }
             if(parent.childrenNodes.length!==0)
             {
-                var indexData = parent.childrenNodes.indexOf(element);
-                if(parent.data.child!==undefined)
-                parent.data.child.splice(indexData,1);
-                else
-                parent.data.splice(indexData,1);
-                parent.childrenNodes.splice(indexData,1);
+                if(parent.data.child!==undefined){
+                    parent.data.child.splice(parent.data.child.indexOf(element.data),1);
+                }
+                else{
+                    parent.data.splice(parent.data.indexOf(element.data),1);
+                }
+                parent.childrenNodes.splice(parent.childrenNodes.indexOf(element),1);
             }
-            if(result.checkVisiableChild!==undefined&&result.childrenNodes.length===0)
-                result.checkVisiableChild();
+            if(result.checkVisibleChild!==undefined&&result.childrenNodes.length===0)
+                result.checkVisibleChild();
             parent.isUpdate = true;
+            result.bodyTable.parentNode.hashTable =  new HashTable(result.bodyTable.parentNode.data);
             resolve();
         };
         // Code for Safari 3.1 to 6.0
@@ -1856,8 +2062,8 @@ tableView.prototype.changeParent = function(index,rowParent)
         parent.childrenNodes.splice(indexData,1);
     }
     
-    if(result.checkVisiableChild!==undefined&&result.childrenNodes.length===0)
-        result.checkVisiableChild();
+    if(result.checkVisibleChild!==undefined&&result.childrenNodes.length===0)
+        result.checkVisibleChild();
     return rowParent.childrenNodes.length-1;
 }
 
@@ -1937,7 +2143,7 @@ tableView.prototype.backGroundFix = function (index) {
     if (scrollParent === undefined)
         return;
     var rectDistance = traceOutBoundingClientRect(this);
-    console.log(traceOutBoundingClientRect(this))
+    
     var temp = _(
         {
         tag: "div",
@@ -1971,6 +2177,7 @@ tableView.prototype.backGroundFix = function (index) {
     temp.getZone = function () {
         return arrZone;
     }
+
     return temp;
 }
 
@@ -1983,7 +2190,7 @@ tableView.prototype.backGround = function (height, callback, index) {
     }
     if (scrollParent === undefined)
         return;
-    console.log(rectDistance)
+    
     var temp = _({
         tag: "div",
         class: "background-opacity-1",
@@ -2577,8 +2784,12 @@ export function tableViewMobile(header = [], data = []) {
                         if(me.classList.contains("downgrade"))
                         me.classList.remove("downgrade");
                     }
-                        
-                    result.updateTable(header, result.data, dragHorizontal, dragVertical);
+                    
+                    
+                    if(result.paginationElement!==undefined)
+                    result.paginationElement.reActive();
+                    else
+                    result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
                 }
             }
 
@@ -2601,7 +2812,7 @@ export function tableViewMobile(header = [], data = []) {
                         return function (event) {
                             event.preventDefault();
                             if (functionClick !== undefined)
-                                functionClick(event, this, index, result, data[index], row);
+                                functionClick(event, this, index, result, row.data, row);
                         }
                     }(i, row, functionClick),
                     mousedown: dragHorizontal ? function (index) {
@@ -2685,7 +2896,7 @@ export function tableViewMobile(header = [], data = []) {
                         return function (event) {
                             event.preventDefault();
                             if (functionClickSort !== undefined)
-                            functionClickSort(event, this, index, data[index], row,result);
+                            functionClickSort(event, this, index, row.data, row,result);
                         }
                     }(i, row, functionClickSort),
                 },
@@ -2708,7 +2919,8 @@ export function tableViewMobile(header = [], data = []) {
         } else
             check[i] = "hidden";
     }
-    result.childrenNodes = result.getBodyTable(data);
+    result.childrenNodes = [];
+    result.getBodyTable(data);
    
     result.checkSpan  = checkSpan;
     return result;
@@ -2790,7 +3002,7 @@ function random_bg_color() {
 
 export function allowNumbersOnly(e) {
     var code = (e.which) ? e.which : e.keyCode;
-    console.log(code);
+    
     if ((code > 122 || code < 97)&&code!=45) {
         e.preventDefault();
     }
@@ -2943,7 +3155,7 @@ export function deleteQuestion(title,content,yes="Có",no="không")
             ]
         })
     })
-    console.log(temp)
+    
     temp.promiseComfirm = promiseComfirm;
     return temp;
 }

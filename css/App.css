@@ -6,6 +6,12 @@ input{
     font-size: 1rem;
 }
 
+.no-animation table.sortTable>tbody>tr.parent{
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
 body {
     --blue: #122246;
     --indigo: #6610f2;
@@ -150,6 +156,7 @@ body{
 
 .absol-single-page-header{
     z-index: 1000;
+    width: calc(100% - 17px) !important;
 }
 
 .outer-wrapper {

@@ -1,7 +1,7 @@
 import BaseView from '../component/BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/ListAccount.css"
+import "../../css/ListDistrict.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import { formatDate, getGMT } from '../component/FormatFunction';
@@ -10,27 +10,27 @@ import {loadData,updateData} from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
-import NewAccount from '../component/NewAccount';
+import NewDistrict from '../component/NewDistrict';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function ListAccount() {
+function ListDistrict() {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
 }
 
-ListAccount.prototype.setContainer = function(parent)
+ListDistrict.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(ListAccount.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-ListAccount.prototype.constructor = ListAccount;
+Object.defineProperties(ListDistrict.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+ListDistrict.prototype.constructor = ListDistrict;
 
-ListAccount.prototype.getView = function () {
+ListDistrict.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
@@ -72,7 +72,7 @@ ListAccount.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Quản lý tài khoản"
+                            innerHTML: "Quản lý Quận/Huyện"
                         }
                     },
                     {
@@ -233,20 +233,15 @@ ListAccount.prototype.getView = function () {
     }
 
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php").then(function(value){
-        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function(listParam){
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function(value){
+        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function(listParam){
             self.setListParam(listParam);
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
-            {value:'Tài khoản',sort:true,style:{minWidth:"unset"}},
-            {value:'Họ và tên',sort:true,style:{minWidth:"unset"}},
-            {value:'Số điện thoại',style:{minWidth:"90px",width:"90px"}} , 
-            {value:'Email',sort:true,style:{minWidth:"unset"}},
-            {value:'Chức danh',sort:true,style:{minWidth:"100px",width:"100px"}},
-            {value:'Truy cập lần cuối',sort:true,style:{minWidth:"140px",width:"140px"}},
-            { value:'Hệ thống', sort:true,style:{minWidth:"105px",width:"105px"} },
-            { value:'Hoạt đông', sort:true,style:{minWidth:"105px",width:"105px"} },
+            {value:'Tên',sort:true,style:{minWidth:"unset"}},
+            {value:'Loại',sort:true,style:{minWidth:"200px",width:"200px"}},
+            {value:'Tỉnh/Thành phố',sort:true,style:{minWidth:"200px",width:"200px"}},
             {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
             self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
             tabContainer.addChild(self.mTable);
@@ -269,24 +264,25 @@ ListAccount.prototype.getView = function () {
     return this.$view;
 }
 
-ListAccount.prototype.setListParam = function(value)
+ListDistrict.prototype.setListParam = function(value)
 {
-    this.checkPosition = [];
+    this.checkState = [];
     this.listParam = [];
     for(var i  = 0;i<value.length;i++)
     {
-        this.checkPosition[value[i].id] = value[i];
+        this.checkState[value[i].id] = value[i];
         this.listParam[i] = {text:value[i].name,value:value[i].id};
     }
     this.isLoaded = true;
+    
 }
 
-ListAccount.prototype.getDataParam = function()
+ListDistrict.prototype.getDataParam = function()
 {
     return this.listParam;
 }
 
-ListAccount.prototype.formatDataRow = function(data)
+ListDistrict.prototype.formatDataRow = function(data)
 {
     var temp = [];
     var check = [];
@@ -305,29 +301,25 @@ ListAccount.prototype.formatDataRow = function(data)
         temp[k++] = result;
         check[data[i].id] = result;
     }
+    
     return temp;
 }
 
-ListAccount.prototype.getDataRow = function(data)
+ListDistrict.prototype.getDataRow = function(data)
 {
     var result = [
         {},
         data.id,
-        data.username,
-        {value:data.name,style:{whiteSpace:"nowrap"}},
-        data.phone,
-        data.email,
-        this.checkPosition[parseInt(data.positionid)].name,
-        {},
-        parseInt(data.permission)?"Có":"Không",
-        parseInt(data.status)?"Có":"Không",
+        data.name,
+        data.type,
+        this.checkState[parseInt(data.stateid)].name,
         {}
         ]
         result.original = data;
     return result;
 }
 
-ListAccount.prototype.formatDataList = function(data){
+ListDistrict.prototype.formatDataList = function(data){
     var temp = [{text:"Tất cả",value:0}];
     for(var i = 0;i<data.length;i++)
     {
@@ -335,8 +327,7 @@ ListAccount.prototype.formatDataList = function(data){
     }
     return temp;
 }
-
-ListAccount.prototype.searchControlContent = function(){
+ListDistrict.prototype.searchControlContent = function(){
     var startDay,endDay,startDay1,endDay1;
     var self = this;
     startDay = _(
@@ -406,33 +397,19 @@ ListAccount.prototype.searchControlContent = function(){
             }
         }
     )
-
-    self.listParent = _( {
+    self.listParent = _({
         tag:"selectmenu",
         props:{
             enableSearch:true,
             items:[
-                {text:"Tất cả",value:0}
-            ]
-        }
-    });
-
-    self.listStatus = _( {
-        tag:"selectmenu",
-        props:{
-            items:[
                 {text:"Tất cả",value:0},
-                {text:"Đang hoạt động",value:1},
-                {text:"Đã bị cấm",value:2},
             ]
         }
     });
-
     self.listParent.updateItemList = function(value)
     {
         self.listParent.items = self.formatDataList(value);
     }
-
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -453,13 +430,13 @@ ListAccount.prototype.searchControlContent = function(){
                         child:[
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-positions",
+                                class:"pizo-list-realty-main-search-control-row-state-district",
                                 child:[
                                     {
                                         tag:"span",
                                         class:"pizo-list-realty-main-search-control-row-state-district-label",
                                         props:{
-                                            innerHTML:"Chức vụ"
+                                            innerHTML:"Tỉnh/TP"
                                         }
                                     },
                                     {
@@ -474,67 +451,46 @@ ListAccount.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-status",
+                                class:"pizo-list-realty-main-search-control-row-phone",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
+                                        class:"pizo-list-realty-main-search-control-row-phone-label",
                                         props:{
-                                            innerHTML:"Trạng thái"
+                                            innerHTML:"Ngày tạo"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
+                                        class:"pizo-list-realty-main-search-control-row-date-input",
                                         child:[
-                                            self.listStatus
+                                            startDay,
+                                            endDay
                                         ]
                                     }
                                 ]
-
                             },
-                            // {
-                            //     tag:"div",
-                            //     class:"pizo-list-realty-main-search-control-row-phone",
-                            //     child:[
-                            //         {
-                            //             tag:"span",
-                            //             class:"pizo-list-realty-main-search-control-row-phone-label",
-                            //             props:{
-                            //                 innerHTML:"Ngày tạo"
-                            //             }
-                            //         },
-                            //         {
-                            //             tag:"div",
-                            //             class:"pizo-list-realty-main-search-control-row-date-input",
-                            //             child:[
-                            //                 startDay,
-                            //                 endDay
-                            //             ]
-                            //         }
-                            //     ]
-                            // },
-                            // {
-                            //     tag:"div",
-                            //     class:"pizo-list-realty-main-search-control-row-phone",
-                            //     child:[
-                            //         {
-                            //             tag:"span",
-                            //             class:"pizo-list-realty-main-search-control-row-phone-label",
-                            //             props:{
-                            //                 innerHTML:"Ngày cập nhật"
-                            //             }
-                            //         },
-                            //         {
-                            //             tag:"div",
-                            //             class:"pizo-list-realty-main-search-control-row-date-input",
-                            //             child:[
-                            //                 startDay1,
-                            //                 endDay1
-                            //             ]
-                            //         }
-                            //     ]
-                            // },
+                            {
+                                tag:"div",
+                                class:"pizo-list-realty-main-search-control-row-phone",
+                                child:[
+                                    {
+                                        tag:"span",
+                                        class:"pizo-list-realty-main-search-control-row-phone-label",
+                                        props:{
+                                            innerHTML:"Ngày cập nhật"
+                                        }
+                                    },
+                                    {
+                                        tag:"div",
+                                        class:"pizo-list-realty-main-search-control-row-date-input",
+                                        child:[
+                                            startDay1,
+                                            endDay1
+                                        ]
+                                    }
+                                ]
+                            },
                             {
                                 tag:"div",
                                 class:"pizo-list-realty-main-search-control-row-button",
@@ -588,6 +544,15 @@ ListAccount.prototype.searchControlContent = function(){
     temp.content = content;
     content.timestart = startDay;
     content.timeend = endDay;
+    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low',content);
+    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high',content);
+    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input',content);
+    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input',content);
+    content.SN = $('.pizo-list-realty-main-search-control-row-SN input',content);
+    content.TD = $('.pizo-list-realty-main-search-control-row-TD input',content);
+    content.PX = $('.pizo-list-realty-main-search-control-row-PX input',content);
+    content.QH = $('.pizo-list-realty-main-search-control-row-QH input',content);
+    content.HT = $('.pizo-list-realty-main-search-control-row-HT input',content);
 
     temp.show = function()
     {
@@ -619,21 +584,30 @@ ListAccount.prototype.searchControlContent = function(){
     {
         content.timestart = new Date();
         content.timeend = new Date();
-       
+        content.lowprice.value = "";
+        content.highprice.value = "";
+        content.phone.value = "";
+        content.MS.value = "";
+        content.SN.value = "";
+        content.TD.value = "";
+        content.PX.value = "";
+        content.QH.value = "";
+        content.TT.value = "";
+        content.HT.value = 0;
     }
 
   
     return temp;
 }
 
-ListAccount.prototype.getDataCurrent = function()
+ListDistrict.prototype.getDataCurrent = function()
 {
     return this.getDataChild(this.mTable.data);
 }
 
 
 
-ListAccount.prototype.getDataChild = function(arr)
+ListDistrict.prototype.getDataChild = function(arr)
 {
     var self = this;
     var result = [];
@@ -646,24 +620,24 @@ ListAccount.prototype.getDataChild = function(arr)
     return result;
 }
 
-ListAccount.prototype.add = function(parent_id = 0,row)
+ListDistrict.prototype.add = function(parent_id = 0,row)
 {
 
     if(!this.isLoaded)
         return;
     var self = this;
-    var mNewAccount = new NewAccount(undefined,parent_id);
-    mNewAccount.attach(self.parent);
-    var frameview = mNewAccount.getView(self.getDataParam());
+    var mNewDistrict = new NewDistrict(undefined,parent_id);
+    mNewDistrict.attach(self.parent);
+    var frameview = mNewDistrict.getView(self.getDataParam());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.addDB(mNewAccount,row);
+    self.addDB(mNewDistrict,row);
 }
 
-ListAccount.prototype.addDB = function(mNewAccount,row ){
+ListDistrict.prototype.addDB = function(mNewDistrict,row ){
     var self = this;
-    mNewAccount.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_account.php";
+    mNewDistrict.promiseAddDB.then(function(value){
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         updateData(phpFile,value).then(function(result){
@@ -671,15 +645,15 @@ ListAccount.prototype.addDB = function(mNewAccount,row ){
             value.id = result;
             self.addView(value,row);
         })
-        mNewAccount.promiseAddDB = undefined;
+        mNewDistrict.promiseAddDB = undefined;
         setTimeout(function(){
-            if(mNewAccount.promiseAddDB!==undefined)
-            self.addDB(mNewAccount);
+            if(mNewDistrict.promiseAddDB!==undefined)
+            self.addDB(mNewDistrict);
         },10);
     })
 }
 
-ListAccount.prototype.addView = function(value,parent){
+ListDistrict.prototype.addView = function(value,parent){
     value.created = getGMT();
     value.modified = getGMT();
     var result = this.getDataRow(value);
@@ -688,38 +662,38 @@ ListAccount.prototype.addView = function(value,parent){
     element.insertRow(result);
 }
 
-ListAccount.prototype.edit = function(data,parent,index)
+ListDistrict.prototype.edit = function(data,parent,index)
 {
     if(!this.isLoaded)
         return;
     var self = this;
-    var mNewAccount = new NewAccount(data);
-    mNewAccount.attach(self.parent);
-    var frameview = mNewAccount.getView(self.getDataParam());
+    var mNewDistrict = new NewDistrict(data);
+    mNewDistrict.attach(self.parent);
+    var frameview = mNewDistrict.getView(self.getDataParam());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mNewAccount,data,parent,index);
+    self.editDB(mNewDistrict,data,parent,index);
 }
 
-ListAccount.prototype.editDB = function(mNewAccount,data,parent,index){
+ListDistrict.prototype.editDB = function(mNewDistrict,data,parent,index){
     var self = this;
-    mNewAccount.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_account.php";
+    mNewDistrict.promiseEditDB.then(function(value){
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
         updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
-        mNewAccount.promiseEditDB = undefined;
+        mNewDistrict.promiseEditDB = undefined;
         setTimeout(function(){
-        if(mNewAccount.promiseEditDB!==undefined)
-            self.editDB(mNewAccount,data,parent,index);
+        if(mNewDistrict.promiseEditDB!==undefined)
+            self.editDB(mNewDistrict,data,parent,index);
         },10);
     })
 }
 
-ListAccount.prototype.editView = function(value,data,parent,index){
+ListDistrict.prototype.editView = function(value,data,parent,index){
     value.created = data.original.created;
     value.modified = getGMT();
     var data = this.getDataRow(value);
@@ -729,7 +703,7 @@ ListAccount.prototype.editView = function(value,data,parent,index){
     element.updateRow(data,indexOF,true);
 }
 
-ListAccount.prototype.delete = function(data,parent,index)
+ListDistrict.prototype.delete = function(data,parent,index)
 {
     if(!this.isLoaded)
         return;
@@ -742,16 +716,16 @@ ListAccount.prototype.delete = function(data,parent,index)
     })
 }
 
-ListAccount.prototype.deleteView = function(parent,index){
+ListDistrict.prototype.deleteView = function(parent,index){
     var self = this;
     var bodyTable = parent.bodyTable;
     parent.dropRow(index).then(function(){
     });
 }
 
-ListAccount.prototype.deleteDB = function(data,parent,index){
+ListDistrict.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_account.php";
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
     updateData(phpFile,data).then(function(value){
@@ -759,7 +733,7 @@ ListAccount.prototype.deleteDB = function(data,parent,index){
     })
 }
 
-ListAccount.prototype.refresh = function () {
+ListDistrict.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -767,7 +741,7 @@ ListAccount.prototype.refresh = function () {
         this.setData(data);
 };
 
-ListAccount.prototype.setData = function (data) {
+ListDistrict.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -775,7 +749,7 @@ ListAccount.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-ListAccount.prototype.flushDataToView = function () {
+ListDistrict.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -790,8 +764,8 @@ ListAccount.prototype.flushDataToView = function () {
     }
 };
 
-ListAccount.prototype.start = function () {
+ListDistrict.prototype.start = function () {
 
 }
 
-export default ListAccount;
+export default ListDistrict;

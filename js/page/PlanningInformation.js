@@ -78,16 +78,16 @@ PlanningInformation.prototype.getView = function () {
                     } catch (err) {
                         return console.error(err.stack);
                     }
-                    console.log('Success!');
+                    
                     // outputElement.innerHTML = JSON.stringify(dxf, null, 4);
-                    console.log(dxf, JSON.stringify(dxf, null, 4));
+                    
                     
                     var geojson = GeoJSON.parse(dxf)
                     // var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
                     window.dcel.extractLines();
                     var faces = dcel.internalFaces();
                     geojson = consoleArea(faces);
-                    console.log(geojson)
+                    
                     mapView.map.data.addGeoJson(geojson, {});
                     // map.setCenter(center);
                     mapView.map.data.setStyle({
@@ -290,18 +290,18 @@ PlanningInformation.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-ditrict-street",
+                                class:"pizo-list-realty-main-search-control-row-district-street",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-ditrict-street-label",
+                                        class:"pizo-list-realty-main-search-control-row-district-street-label",
                                         props:{
                                             innerHTML:"Quận/Huyện"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-ditrict-street-input",
+                                        class:"pizo-list-realty-main-search-control-row-district-street-input",
                                         child:[
                                             {
                                                 tag:"selectmenu",

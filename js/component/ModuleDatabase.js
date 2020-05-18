@@ -1,5 +1,5 @@
 export function ModuleDatabase() {
-    console.log(Fcore)
+    
 }
 
 export function loadData(phpLoader)
@@ -11,11 +11,11 @@ export function loadData(phpLoader)
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText.substr(2))
+            
             resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
         }else
         {
-            console.log(this.responseText,this.status)
+            
         }
         };
         xhttp.open("GET", php, true);
@@ -35,7 +35,7 @@ export function updateData(phpUpdater,data)
                 resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
             }else
             {
-                console.log(this.responseText,this.status)
+                
             }
         };
         xhttp.open("POST", php, true);

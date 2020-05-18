@@ -55,35 +55,40 @@ export function formatDate(date,isMinutes = false, isHours = false , isDay = tru
     return resultTime.join(':')+" "+resultDayMonth.join('/');
 }
 
-export function getGMT() {
-    var d = new Date(); //time zone value from database
+export function getGMT(date,timezone = 0,onlyDay = false) {
+    if(date==undefined)
+    var d = new Date();
+    else
+    var d = new Date(date);
+    //time zone value from database
 
-    var timeZoneFromDB = 0; //time zone value from database
+    var timeZoneFromDB = timezone; //time zone value from database
     //get the timezone offset from local time in minutes
     var tzDifference = timeZoneFromDB * 60 + d.getTimezoneOffset();
     //convert the offset to milliseconds, add to targetTime, and make a new Date
     d = new Date(d.getTime() + tzDifference * 60 * 1000);
-    console.log(d)
+    
     
 
     var resultTime = [];
     var resultDayMonth =[];
-
-    var hour = '' + d.getHours();
-    if (hour.length < 2) 
-    hour = '0' + hour;
-    resultTime.push(hour);
-
-    var minute = '' + d.getMinutes();
-    if (minute.length < 2) 
-    minute = '0' + minute;
-    resultTime.push(minute);
-
-    var second = '' + d.getSeconds();
-    if (second.length < 2) 
-    second = '0' + second;
-    resultTime.push(second);
-
+    if(onlyDay==false){
+        var hour = '' + d.getHours();
+        if (hour.length < 2) 
+        hour = '0' + hour;
+        resultTime.push(hour);
+    
+        var minute = '' + d.getMinutes();
+        if (minute.length < 2) 
+        minute = '0' + minute;
+        resultTime.push(minute);
+    
+        var second = '' + d.getSeconds();
+        if (second.length < 2) 
+        second = '0' + second;
+        resultTime.push(second);
+    }
+   
     resultDayMonth.push('' + d.getFullYear());
     
     var month = '' + (d.getMonth() + 1);
@@ -95,8 +100,10 @@ export function getGMT() {
     if (day.length < 2) 
         day = '0' + day;
     resultDayMonth.push(day);      
-    
+    if(onlyDay===false)
     return resultDayMonth.join('-')+" "+resultTime.join(':');
+    else
+    return resultDayMonth.join('-');
 }
 
 

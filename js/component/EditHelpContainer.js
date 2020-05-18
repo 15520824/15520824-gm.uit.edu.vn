@@ -23,7 +23,7 @@ function EditHelpContainer(phpLoader) {
     if (this.$view) return this.$view;
     var tabContainer = _({
         tag: "tabframe",
-        class:"header-display-visiable",
+        class:"header-display-visible",
         attr: {
             name: "Menu",
             id: "matd",
@@ -61,7 +61,7 @@ function EditHelpContainer(phpLoader) {
 
     var updateTableFunction;
     loadData(phpLoader).then(function(value){
-        console.log(value)
+        
         var header = [{ type: "dragzone"}, {value:"Title",sort:true, functionClickAll: self.$view.functionClickDetail.bind(self.$view),style:{minWidth:"unset !important"}},"Publish", { type: "detail",style:{maxWidth:"21px"}, functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
         self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
         tabContainer.addChild(self.$view.mTable);
@@ -251,7 +251,7 @@ function EditHelpContainer(phpLoader) {
                                                                                                             input:function(event)
                                                                                                             {
                                                                                                                 var parent = this.parentNode.parentNode;
-                                                                                                                console.log(parent)
+                                                                                                                
                                                                                                                 if(this.value == ""){
                                                                                                                     if(!parent.classList.contains("hasErrorElement"))
                                                                                                                     parent.classList.add("hasErrorElement");
@@ -274,8 +274,8 @@ function EditHelpContainer(phpLoader) {
                                                                                                                     if(parent.classList.contains("used-error"))
                                                                                                                     parent.classList.remove("used-error");
                                                                                                                 }
-                                                                                                                console.log(!parent.classList.contains("used-error"),!parent.classList.contains("invalid-error"),parent.classList.contains("hasErrorElement"))
-                                                                                                                console.log(!parent.classList.contains("used-error"),!parent.classList.contains("invalid-error"),parent.classList.contains("hasErrorElement"))
+                                                                                                                
+                                                                                                                
                                                                                                                 if(!parent.classList.contains("used-error")&&!parent.classList.contains("invalid-error")&&parent.classList.contains("hasErrorElement"))
                                                                                                                 parent.classList.remove("hasErrorElement")
                                                                                                             },
@@ -391,7 +391,7 @@ Object.defineProperties(EditHelpContainer.prototype, Object.getOwnPropertyDescri
 EditHelpContainer.prototype.constructor = EditHelpContainer;
 
 EditHelpContainer.prototype.functionClickMore = function (event, me, index, parent, data, row) {
-    console.log(this)
+    
     var self = this;
     
     var docTypeMemuProps = {
@@ -483,7 +483,7 @@ EditHelpContainer.prototype.saveDataCurrent = function(row)
     var rowSelected = this.editView(value,arr.data,arr.parentDetail,arr.indexDetail);
 
     if(!isRemove){
-        console.log(arr)
+        
         rowSelected.parentDetail = arr.parentDetail;
         rowSelected.indexDetail = arr.indexDetail
     }
@@ -496,7 +496,7 @@ EditHelpContainer.prototype.resetChoice = function(bodyTable)
     if(choice.length == 0)
     {   
         bodyTable.childNodes[0].indexDetail = 0;
-        console.log(this.mTable)
+        
         bodyTable.childNodes[0].parentDetail = this.mTable;
         this.rowSelected = bodyTable.childNodes[0];
         bodyTable.childNodes[0].classList.add("choice-event-category");
@@ -586,7 +586,7 @@ EditHelpContainer.prototype.formatDataRow = function(data)
         temp[k++] = result;
         check[data[i].id] = result;
     }
-    console.log(temp)
+    
     return temp;
 }
 
@@ -626,7 +626,7 @@ EditHelpContainer.prototype.formatDataRowList = function(data)
         temp[k++] = result;
         check[data[i].id] = result;
     }
-    console.log(temp)
+    
     return temp;
 }
 
@@ -739,7 +739,7 @@ EditHelpContainer.prototype.addDB = function(value){
 
 EditHelpContainer.prototype.edit = function(data,parent,index)
 {
-    console.log(data)
+    
     var self = this;
 }
 
@@ -926,7 +926,7 @@ EditHelpContainer.prototype.updateChild = function(child)
 
 EditHelpContainer.prototype.delete = function(data,parent,index)
 {
-    console.log(data)
+    
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.title);
     this.addChild(deleteItem);
@@ -1015,7 +1015,7 @@ EditHelpContainer.prototype.listLink = function(){
         on:{
             click:function(event){
                 var element = event.target;
-                console.log(event.target)
+                
                 while(!(element.classList.contains("list-linkChoice")||element.classList.contains("list-linkChoice-container")))
                 element = element.parentNode;
                 if(element.classList.contains("list-linkChoice")){

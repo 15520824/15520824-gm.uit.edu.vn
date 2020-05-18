@@ -71,7 +71,7 @@ NewPosition.prototype.getView = function (dataParent) {
             continue;
         array[i+1] = {text:dataParent[i].name,value:parseFloat(dataParent[i].id)};
     }
-    console.log(array)
+    
 
     this.$view = _({
         tag: 'singlepage',
@@ -165,7 +165,7 @@ NewPosition.prototype.getView = function (dataParent) {
                             tag:"div",
                             class:"pizo-new-catergory-container",
                             style:{
-                                width:"60%"
+                                width:"50%"
                             },
                             child:[
                                 {
@@ -231,7 +231,6 @@ NewPosition.prototype.getView = function (dataParent) {
 
     this.name = $('input.pizo-new-category-container-name-container-input.pizo-new-realty-dectruct-input',this.$view);
     this.parentElement = $('.pizo-new-state-selectbox-container-input.pizo-new-realty-dectruct-input',this.$view);
-    this.aliasErorr = $('div.pizo-new-category-container-alias',this.$view);
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;

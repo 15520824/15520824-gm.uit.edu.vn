@@ -4,10 +4,13 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/ListStreet.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate } from '../component/FormatFunction';
+import { formatDate, getGMT } from '../component/FormatFunction';
 
-import { input_choicenumber,tableView, ModuleView} from '../component/ModuleView';
-import NewRealty from '../component/NewRealty';
+import {loadData,updateData} from '../component/ModuleDatabase';
+
+import { tableView, deleteQuestion } from '../component/ModuleView';
+
+import NewDistrict from '../component/NewDistrict';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -17,7 +20,6 @@ function ListStreet() {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    this.ModuleView = new ModuleView();
 }
 
 ListStreet.prototype.setContainer = function(parent)
@@ -34,6 +36,11 @@ ListStreet.prototype.getView = function () {
     var input = _({
         tag:"input",
         class:"quantumWizTextinputPaperinputInput",
+        on:{
+            change:function(){
+                self.mTable.updatePagination(this.value);
+            }
+        },
         props:{
             type:"number",
             autocomplete:"off",
@@ -47,12 +54,12 @@ ListStreet.prototype.getView = function () {
         tag:"input",
         class:"pizo-list-realty-page-allinput-input",
         props:{
-            placeholder:"Tên đường"
+            placeholder:"Tìm kiếm"
         }
     });
     if(window.mobilecheck())
     {
-        allinput.placeholder = "Tên đường"
+        allinput.placeholder = "Tìm kiếm"
     }
     this.$view = _({
         tag: 'singlepage',
@@ -62,16 +69,16 @@ ListStreet.prototype.getView = function () {
                 class: 'absol-single-page-header',
                 child: [
                     {
+                        tag: "span",
+                        class: "pizo-body-title-left",
+                        props: {
+                            innerHTML: "Quản lý Tên đường"
+                        }
+                    },
+                    {
                         tag: "div",
                         class: "pizo-list-realty-button",
                         child: [
-                            {
-                                tag: "span",
-                                class: "pizo-body-title-left",
-                                props: {
-                                    innerHTML: "Quản lý Tên đường"
-                                }
-                            },
                             {
                                 tag: "button",
                                 class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
@@ -91,10 +98,7 @@ ListStreet.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        var frameAdd = self.NewRealty.getView();
-                                        self.parent.body.addChild(frameAdd);
-                                        self.parent.body.activeFrame(frameAdd);
-                                        self.NewRealty.setContainer(self.parent);
+                                        self.add();
                                     }
                                 },
                                 child: [
@@ -170,17 +174,89 @@ ListStreet.prototype.getView = function () {
             },
         ]
     });
-    var tableViewX;
-    var header = [{ type: "dragzone" , dragElement : false},{ type: "increase", value: "#"}, {value:'ID',sort:true}, {value:'Tên',sort:true}, {value:'Phường/Xã', sort:true},{value:'Quận/Huyện', sort:true},{value:'Tỉnh/TP', sort:true}, {value: 'Ngày tạo',sort:true }, { value:'Ngày cập nhật', sort:true }, {type:"detail",dragElement : false}];
-    var dataTable = [
-        [{},{},'1282','Lê Sao','Phường Tân Định','Quận 1','Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),{}],
-        [{},{},'1283','Huỳnh Đình Hai','Phường Tân Định','Quận 1','Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),{}],
-        [{},{},'1284','Nguyễn Văn Mai','Phường Tân Định','Quận 1','Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),{}],
-        [{},{},'1285','3 Tháng 2','Phường Tân Định','Quận 1','Thành phố Hồ Chí Minh', formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),formatDate("2020-04-21T04:25:21.769Z",true,true,true,true,true),{}]
-    ];
+    var tabContainer = _({
+        tag:"div",
+        class:["pizo-list-realty-main-result-control","drag-zone-bg","no-animation"],
+        child:[
+        ]
+    })
 
-    tableViewX = tableView(header, dataTable,true,true,2);
-    tableViewX.addInputSearch($('.pizo-list-realty-page-allinput-container input',this.$view))
+    var docTypeMemuProps,token,functionX;
+    var functionClickMore = function(event, me, index, parent, data, row)
+    {
+       
+        docTypeMemuProps = {
+            items: [
+                {
+                    text: 'Thêm',
+                    icon: 'span.mdi.mdi-text-short',
+                    value:0,
+                },
+                {
+                    text: 'Sửa',
+                    icon: 'span.mdi.mdi-text-short',
+                    value:1,
+                },
+                {
+                    text: 'Xóa',
+                    icon: 'span.mdi.mdi-text',
+                    value:2,
+                },
+            ]
+        };
+        token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
+            switch(menuItem.value)
+            {
+                case 0:
+                    self.add(data.original.id,row);
+                    break;
+                case 1:
+                    self.edit(data,parent,index);
+                    break;
+                case 2:
+                    self.delete(data.original,parent,index);
+                    break;
+            }
+        });
+
+        functionX = function(token){
+            return function(){
+                var x = function(event){
+                    absol.QuickMenu.close(token);
+                    document.body.removeEventListener("click",x);
+                }
+                document.body.addEventListener("click",x)
+            }
+        }(token);
+
+        setTimeout(functionX,10)
+    }
+
+
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_streets.php").then(function(value){
+        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_wards.php").then(function(listWard){
+            loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function(listDistrict){
+                loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function(listState){
+                self.setListParamWard(listWard);
+                self.setListParamDitrict(listDistrict);
+                self.setListParamState(listState);
+                var header = [
+                { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
+                {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
+                {value:'Tên',sort:true,style:{minWidth:"unset"}},
+                {value:'Phường/Xã',sort:true,style:{minWidth:"200px",width:"200px"}},
+                {value:'Quận/Huyện',sort:true,style:{minWidth:"200px",width:"200px"}},
+                {value:'Tỉnh/Thành phố',sort:true,style:{minWidth:"200px",width:"200px"}},
+                {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+                self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+                tabContainer.addChild(self.mTable);
+                self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
+                // self.listParent.updateItemList(listParam);
+            });
+            });
+        });
+    });
+
     this.searchControl = this.searchControlContent();
 
     this.$view.addChild(_({
@@ -188,20 +264,169 @@ ListStreet.prototype.getView = function () {
             class:["pizo-list-realty-main"],
             child:[
                 this.searchControl,
-                {
-                    tag:"div",
-                    class:["pizo-list-realty-main-result-control","drag-zone-bg"],
-                    child:[
-                        tableViewX
-                    ]
-                }
+                tabContainer
             ]   
         })
         );
     return this.$view;
 }
 
+ListStreet.prototype.setListParamWard = function(value)
+{
+    this.checkWard = [];
+    this.listWard = [];
+    for(var i  = 0;i<value.length;i++)
+    {
+        this.checkWard[value[i].id] = value[i];
+        this.listWard[i] = {text:value[i].name,value:value[i].id};
+    }
+}
+
+
+ListStreet.prototype.setListParamDitrict = function(value)
+{
+    this.checkDistrict = [];
+    this.listDistrict = [];
+    for(var i  = 0;i<value.length;i++)
+    {
+        this.checkDistrict[value[i].id] = value[i];
+        this.listDistrict[i] = {text:value[i].name,value:value[i].id};
+    }
+}
+
+ListStreet.prototype.setListParamState = function(value)
+{
+    this.checkState = [];
+    this.listState = [];
+    for(var i  = 0;i<value.length;i++)
+    {
+        this.checkState[value[i].id] = value[i];
+        this.listState[i] = {text:value[i].name,value:value[i].id};
+    }
+    this.isLoaded = true;
+}
+
+ListStreet.prototype.getDataParam = function()
+{
+    return this.listParam;
+}
+
+ListStreet.prototype.formatDataRow = function(data)
+{
+    var temp = [];
+    var check = [];
+    var k = 0;
+    for(var i=0;i<data.length;i++)
+    {
+
+        var result = this.getDataRow(data[i]);
+        if(check[data[i].parent_id]!==undefined)
+        {
+            if(check[data[i].parent_id].child === undefined)
+            check[data[i].parent_id].child = [];
+            check[data[i].parent_id].child.push(result);
+        }
+        else
+        temp[k++] = result;
+        check[data[i].id] = result;
+    }
+    return temp;
+}
+
+ListStreet.prototype.getDataRow = function(data)
+{
+    
+    var result = [
+        {},
+        data.id,
+        data.name,
+        this.checkWard[parseInt(data.wardid)].name,
+        this.checkDistrict[parseInt(this.checkWard[parseInt(data.wardid)].districtid)].name,
+        this.checkState[parseInt(this.checkDistrict[parseInt(this.checkWard[parseInt(data.wardid)].districtid)].stateid)].name,
+        {}
+        ]
+        result.original = data;
+    
+    return result;
+}
+
+ListStreet.prototype.formatDataList = function(data){
+    var temp = [{text:"Tất cả",value:0}];
+    for(var i = 0;i<data.length;i++)
+    {
+        temp[i+1] = {text:data[i].name,value:data[i].id};
+    }
+    return temp;
+}
 ListStreet.prototype.searchControlContent = function(){
+    var startDay,endDay,startDay1,endDay1;
+
+    startDay = _(
+        {
+            tag: 'calendar-input',
+            data: {
+                anchor: 'top',
+                value: new Date(new Date().getFullYear(), 0, 1),
+                maxDateLimit: new Date()
+            },
+            on: {
+                changed: function (date) {
+                    
+                    endDay.minDateLimit = date;
+                }
+            }
+        }
+    );
+
+    endDay = _(
+        {
+            tag: 'calendar-input',
+            data: {
+                anchor: 'top',
+                value: new Date(),
+                minDateLimit: new Date()
+            },
+            on: {
+                changed: function (date) {
+                    startDay.maxDateLimit = date;
+                }
+            }
+        }
+    );
+
+    startDay1 = _(
+        {
+            tag: 'calendar-input',
+            data: {
+                anchor: 'top',
+                value: new Date(new Date().getFullYear(), 0, 1),
+                maxDateLimit: new Date()
+            },
+            on: {
+                changed: function (date) {
+                    
+                    endDay1.minDateLimit = date;
+                }
+            }
+        }
+    )
+
+    endDay1 = _(
+        {
+            tag: 'calendar-input',
+            data: {
+                anchor: 'top',
+                value: new Date(),
+                minDateLimit: new Date()
+            },
+            on: {
+                changed: function (date) {
+                    
+                    startDay1.maxDateLimit = date;
+                }
+            }
+        }
+    )
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -222,18 +447,18 @@ ListStreet.prototype.searchControlContent = function(){
                         child:[
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-street",
+                                class:"pizo-list-realty-main-search-control-row-state-ward",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-street-label",
+                                        class:"pizo-list-realty-main-search-control-row-state-ward-label",
                                         props:{
                                             innerHTML:"Tỉnh/TP"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-street-input",
+                                        class:"pizo-list-realty-main-search-control-row-state-ward-input",
                                         child:[
                                             {
                                                 tag:"selectmenu",
@@ -252,18 +477,18 @@ ListStreet.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-ditrict-street",
+                                class:"pizo-list-realty-main-search-control-row-district-ward",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-ditrict-street-label",
+                                        class:"pizo-list-realty-main-search-control-row-district-ward-label",
                                         props:{
                                             innerHTML:"Quận/Huyện"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-ditrict-street-input",
+                                        class:"pizo-list-realty-main-search-control-row-district-ward-input",
                                         child:[
                                             {
                                                 tag:"selectmenu",
@@ -283,32 +508,45 @@ ListStreet.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-ward-street",
+                                class:"pizo-list-realty-main-search-control-row-phone",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-ward-street-label",
+                                        class:"pizo-list-realty-main-search-control-row-phone-label",
                                         props:{
-                                            innerHTML:"Phường/Xã"
+                                            innerHTML:"Ngày tạo"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-ward-street-input",
+                                        class:"pizo-list-realty-main-search-control-row-date-input",
                                         child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    enableSearch:true,
-                                                    items:[
-                                                        {text:'Phường Tân Định',id:79},
-                                                    ]
-                                                }
-                                            }
+                                            startDay,
+                                            endDay
                                         ]
                                     }
                                 ]
-
+                            },
+                            {
+                                tag:"div",
+                                class:"pizo-list-realty-main-search-control-row-phone",
+                                child:[
+                                    {
+                                        tag:"span",
+                                        class:"pizo-list-realty-main-search-control-row-phone-label",
+                                        props:{
+                                            innerHTML:"Ngày cập nhật"
+                                        }
+                                    },
+                                    {
+                                        tag:"div",
+                                        class:"pizo-list-realty-main-search-control-row-date-input",
+                                        child:[
+                                            startDay1,
+                                            endDay1
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 tag:"div",
@@ -361,6 +599,8 @@ ListStreet.prototype.searchControlContent = function(){
     })
 
     temp.content = content;
+    content.timestart = startDay;
+    content.timeend = endDay;
     content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low',content);
     content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high',content);
     content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input',content);
@@ -399,6 +639,8 @@ ListStreet.prototype.searchControlContent = function(){
     }
     temp.reset = function()
     {
+        content.timestart = new Date();
+        content.timeend = new Date();
         content.lowprice.value = "";
         content.highprice.value = "";
         content.phone.value = "";
@@ -413,6 +655,140 @@ ListStreet.prototype.searchControlContent = function(){
 
   
     return temp;
+}
+
+
+ListStreet.prototype.getDataCurrent = function()
+{
+    return this.getDataChild(this.mTable.data);
+}
+
+
+
+ListStreet.prototype.getDataChild = function(arr)
+{
+    var self = this;
+    var result = [];
+    for(var i = 0;i<arr.length;i++)
+    {
+        result.push(arr[i].original);
+        if(arr[i].child.length!==0)
+        result = result.concat(self.getDataChild(arr[i].child));
+    }
+    return result;
+}
+
+ListStreet.prototype.add = function(parent_id = 0,row)
+{
+
+    if(!this.isLoaded)
+        return;
+    var self = this;
+    var mNewDistrict = new NewDistrict(undefined,parent_id);
+    mNewDistrict.attach(self.parent);
+    var frameview = mNewDistrict.getView(self.getDataParam());
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.addDB(mNewDistrict,row);
+}
+
+ListStreet.prototype.addDB = function(mNewDistrict,row ){
+    var self = this;
+    mNewDistrict.promiseAddDB.then(function(value){
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        updateData(phpFile,value).then(function(result){
+            
+            value.id = result;
+            self.addView(value,row);
+        })
+        mNewDistrict.promiseAddDB = undefined;
+        setTimeout(function(){
+            if(mNewDistrict.promiseAddDB!==undefined)
+            self.addDB(mNewDistrict);
+        },10);
+    })
+}
+
+ListStreet.prototype.addView = function(value,parent){
+    value.created = getGMT();
+    value.modified = getGMT();
+    var result = this.getDataRow(value);
+    
+    var element = this.mTable;
+    element.insertRow(result);
+}
+
+ListStreet.prototype.edit = function(data,parent,index)
+{
+    if(!this.isLoaded)
+        return;
+    var self = this;
+    var mNewDistrict = new NewDistrict(data);
+    mNewDistrict.attach(self.parent);
+    var frameview = mNewDistrict.getView(self.getDataParam());
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.editDB(mNewDistrict,data,parent,index);
+}
+
+ListStreet.prototype.editDB = function(mNewDistrict,data,parent,index){
+    var self = this;
+    mNewDistrict.promiseEditDB.then(function(value){
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        value.id = data.original.id;
+        updateData(phpFile,value).then(function(result){
+            self.editView(value,data,parent,index);
+        })
+        mNewDistrict.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewDistrict.promiseEditDB!==undefined)
+            self.editDB(mNewDistrict,data,parent,index);
+        },10);
+    })
+}
+
+ListStreet.prototype.editView = function(value,data,parent,index){
+    value.created = data.original.created;
+    value.modified = getGMT();
+    var data = this.getDataRow(value);
+
+    var indexOF = index,element = parent;
+    
+    element.updateRow(data,indexOF,true);
+}
+
+ListStreet.prototype.delete = function(data,parent,index)
+{
+    if(!this.isLoaded)
+        return;
+    
+    var self = this;
+    var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
+    this.$view.addChild(deleteItem);
+    deleteItem.promiseComfirm.then(function(){
+        self.deleteDB(data,parent,index);
+    })
+}
+
+ListStreet.prototype.deleteView = function(parent,index){
+    var self = this;
+    var bodyTable = parent.bodyTable;
+    parent.dropRow(index).then(function(){
+    });
+}
+
+ListStreet.prototype.deleteDB = function(data,parent,index){
+    var self = this;
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+    if(self.phpDeleteContent)
+    phpFile = self.phpUpdateContent;
+    updateData(phpFile,data).then(function(value){
+        self.deleteView(parent,index);
+    })
 }
 
 ListStreet.prototype.refresh = function () {

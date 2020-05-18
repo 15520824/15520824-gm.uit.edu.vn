@@ -281,6 +281,10 @@
   position: relative;
 }
 
+.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{
+  text-align: right;
+}
+
 .pizo-new-realty-detruct-content-direction {
   min-width: unset !important;
   width: calc(100% - 4.53333333333rem);

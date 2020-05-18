@@ -36,6 +36,11 @@ ListPositions.prototype.getView = function () {
     var input = _({
         tag:"input",
         class:"quantumWizTextinputPaperinputInput",
+        on:{
+            change:function(){
+                self.mTable.updatePagination(this.value);
+            }
+        },
         props:{
             type:"number",
             autocomplete:"off",
@@ -229,9 +234,9 @@ ListPositions.prototype.getView = function () {
 
 
     loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function(value){
-        console.log(value)
+        
         var header = [{ type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, {value:'MS',sort:true,style:{minWidth:"150px",width:"150px"}}, {value:'Tên',sort:true,style:{minWidth:"unset"}},{value: 'Ngày tạo',sort:true,style:{minWidth:"250px",width:"250px"}}, { value:'Ngày cập nhật', sort:true,style:{minWidth:"250px",width:"250px"} },{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-        console.log(header)
+        
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
@@ -279,15 +284,15 @@ ListPositions.prototype.formatDataRow = function(data)
         temp[k++] = result;
         check[data[i].id] = result;
     }
-    console.log(temp)
+    
     return temp;
 }
 
 ListPositions.prototype.formatDataList = function(data){
-    var temp = [];
+    var temp = [{text:"Chức vụ cao nhất",value:0}];
     for(var i = 0;i<data.length;i++)
     {
-        temp[i] = {text:data[i].name,value:data[i].id};
+        temp[i+1] = {text:data[i].name,value:data[i].id};
     }
     return temp;
 }
@@ -300,12 +305,12 @@ ListPositions.prototype.searchControlContent = function(){
             tag: 'calendar-input',
             data: {
                 anchor: 'top',
-                value: new Date(),
+                value: new Date(new Date().getFullYear(), 0, 1),
                 maxDateLimit: new Date()
             },
             on: {
                 changed: function (date) {
-                    console.log(endDay)
+                    
                     endDay.minDateLimit = date;
                 }
             }
@@ -322,7 +327,7 @@ ListPositions.prototype.searchControlContent = function(){
             },
             on: {
                 changed: function (date) {
-                    console.log(date)
+                    
                     startDay.maxDateLimit = date;
                 }
             }
@@ -334,12 +339,12 @@ ListPositions.prototype.searchControlContent = function(){
             tag: 'calendar-input',
             data: {
                 anchor: 'top',
-                value: new Date(),
+                value: new Date(new Date().getFullYear(), 0, 1),
                 maxDateLimit: new Date()
             },
             on: {
                 changed: function (date) {
-                    console.log(endDay1)
+                    
                     endDay1.minDateLimit = date;
                 }
             }
@@ -356,7 +361,7 @@ ListPositions.prototype.searchControlContent = function(){
             },
             on: {
                 changed: function (date) {
-                    console.log(date)
+                    
                     startDay1.maxDateLimit = date;
                 }
             }
@@ -398,18 +403,18 @@ ListPositions.prototype.searchControlContent = function(){
                         child:[
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-ditrict",
+                                class:"pizo-list-realty-main-search-control-row-state-district",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-ditrict-label",
+                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
                                         props:{
                                             innerHTML:"Chức vụ cha"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-ditrict-input",
+                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
                                         child:[
                                             self.listParent
                                         ]
@@ -564,7 +569,7 @@ ListPositions.prototype.getDataChild = function(arr)
     for(var i = 0;i<arr.length;i++)
     {
         result.push(arr[i].original);
-        if(arr[i].child.length!==0)
+        if(arr[i].child!==undefined)
         result = result.concat(self.getDataChild(arr[i].child));
     }
     return result;
@@ -693,7 +698,7 @@ ListPositions.prototype.editView = function(value,data,parent,index){
 
 ListPositions.prototype.delete = function(data,parent,index)
 {
-    console.log(data)
+    
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
     this.$view.addChild(deleteItem);

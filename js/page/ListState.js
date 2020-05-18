@@ -36,6 +36,11 @@ ListState.prototype.getView = function () {
     var input = _({
         tag:"input",
         class:"quantumWizTextinputPaperinputInput",
+        on:{
+            change:function(){
+                self.mTable.updatePagination(this.value);
+            }
+        },
         props:{
             type:"number",
             autocomplete:"off",
@@ -235,8 +240,8 @@ ListState.prototype.getView = function () {
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
             {value:'Tên',sort:true,style:{minWidth:"unset"}},
-            {value:'Loại',sort:true,style:{minWidth:"unset"}},
-            {value:'Quốc gia',sort:true,style:{minWidth:"unset"}},
+            {value:'Loại',sort:true,style:{minWidth:"200px",width:"200px"}},
+            {value:'Quốc gia',sort:true,style:{minWidth:"200px",width:"200px"}},
             {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
             self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
             tabContainer.addChild(self.mTable);
@@ -261,14 +266,15 @@ ListState.prototype.getView = function () {
 
 ListState.prototype.setListParam = function(value)
 {
-    this.checkPosition = [];
+    this.checkNation = [];
     this.listParam = [];
     for(var i  = 0;i<value.length;i++)
     {
-        this.checkPosition[value[i].id] = value[i];
+        this.checkNation[value[i].id] = value[i];
         this.listParam[i] = {text:value[i].name,value:value[i].id};
     }
     this.isLoaded = true;
+    
 }
 
 ListState.prototype.getDataParam = function()
@@ -305,7 +311,7 @@ ListState.prototype.getDataRow = function(data)
         data.id,
         data.name,
         data.type,
-        this.checkPosition[parseInt(data.nationid)].name,
+        this.checkNation[parseInt(data.nationid)].longname,
         {}
         ]
         result.original = data;
@@ -321,259 +327,19 @@ ListState.prototype.formatDataList = function(data){
     return temp;
 }
 
-ListState.prototype.searchControlContent = function(){
-    var startDay,endDay,startDay1,endDay1;
-    var self = this;
-    startDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    console.log(endDay)
-                    endDay.minDateLimit = date;
-                }
-            }
-        }
-    );
-
-    endDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    console.log(date)
-                    startDay.maxDateLimit = date;
-                }
-            }
-        }
-    );
-
-    startDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    console.log(endDay1)
-                    endDay1.minDateLimit = date;
-                }
-            }
-        }
-    )
-
-    endDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    console.log(date)
-                    startDay1.maxDateLimit = date;
-                }
-            }
-        }
-    )
-
-    self.listParent = _( {
-        tag:"selectmenu",
-        props:{
-            enableSearch:true,
-            items:[
-                {text:"Tất cả",value:0}
-            ]
-        }
-    });
-
-    self.listStatus = _( {
-        tag:"selectmenu",
-        props:{
-            items:[
-                {text:"Tất cả",value:0},
-                {text:"Đang hoạt động",value:1},
-                {text:"Đã bị cấm",value:2},
-            ]
-        }
-    });
-
-    self.listParent.updateItemList = function(value)
-    {
-        self.listParent.items = self.formatDataList(value);
-    }
-
+ListState.prototype.searchControlContent = function(){  
     var content = _({
-        tag:"div",
-        class:"pizo-list-realty-main-search-control-container",
-        on:{
-            click:function(event)
-            {
-                event.stopPropagation();
-            }
-        },
-        child:[
-            {
-                tag:"div",
-                class:"pizo-list-realty-main-search-control-container-scroller",
-                child:[
-                    {
-                        tag:"div",
-                        class:"pizo-list-realty-main-search-control-row",
-                        child:[
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-positions",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-ditrict-label",
-                                        props:{
-                                            innerHTML:"Chức vụ"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-ditrict-input",
-                                        child:[
-                                            self.listParent
-                                        ]
-                                    }
-                                ]
-
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-status",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-ditrict-label",
-                                        props:{
-                                            innerHTML:"Trạng thái"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-ditrict-input",
-                                        child:[
-                                            self.listStatus
-                                        ]
-                                    }
-                                ]
-
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Ngày tạo"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay,
-                                            endDay
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Ngày cập nhật"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay1,
-                                            endDay1
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-button",
-                                child:[
-                                    {
-                                        tag: "button",
-                                        class: ["pizo-list-realty-button-apply","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-        
-                                            }
-                                        },
-                                        child: [
-                                        '<span>' + "Áp dụng" + '</span>'
-                                        ]
-                                    },
-                                    {
-                                        tag: "button",
-                                        class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-                                                temp.reset();
-                                            }
-                                        },
-                                        child: [
-                                        '<span>' + "Thiết lập lại" + '</span>'
-                                        ]
-                                    }
-                                ]
-                            },
-                        ]
-                    }
-                ]
-            }
-        ]
-    });
+        tag:"div"
+    })
     var temp = _({
         tag:"div",
-        class:"pizo-list-realty-main-search-control",
-        on:{
-            click:function(event)
-            {
-                this.hide();
-            }
+        style:{
+            display:"none"
         },
         child:[
             content
         ]
     })
-
-    temp.content = content;
-    content.timestart = startDay;
-    content.timeend = endDay;
-
     temp.show = function()
     {
         if(!temp.classList.contains("showTranslate"))
@@ -648,11 +414,11 @@ ListState.prototype.add = function(parent_id = 0,row)
 ListState.prototype.addDB = function(mNewState,row ){
     var self = this;
     mNewState.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_account.php";
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         updateData(phpFile,value).then(function(result){
-            console.log(result)
+            
             value.id = result;
             self.addView(value,row);
         })
@@ -668,7 +434,7 @@ ListState.prototype.addView = function(value,parent){
     value.created = getGMT();
     value.modified = getGMT();
     var result = this.getDataRow(value);
-    console.log(result)
+    
     var element = this.mTable;
     element.insertRow(result);
 }
@@ -689,7 +455,7 @@ ListState.prototype.edit = function(data,parent,index)
 ListState.prototype.editDB = function(mNewState,data,parent,index){
     var self = this;
     mNewState.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_account.php";
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
@@ -718,7 +484,7 @@ ListState.prototype.delete = function(data,parent,index)
 {
     if(!this.isLoaded)
         return;
-    console.log(data)
+    
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
     this.$view.addChild(deleteItem);
@@ -736,7 +502,7 @@ ListState.prototype.deleteView = function(parent,index){
 
 ListState.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_account.php";
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
     updateData(phpFile,data).then(function(value){

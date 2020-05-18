@@ -87,7 +87,7 @@ ListRealty.prototype.getView = function () {
                                     click: function (evt) {
                                         var mNewRealty = new NewRealty();
                                         mNewRealty.attach(self.parent);
-                                        console.log(self.parent)
+                                        
                                         var frameview = mNewRealty.getView();
                                         self.parent.body.addChild(frameview);
                                         self.parent.body.activeFrame(frameview);
@@ -190,7 +190,7 @@ ListRealty.prototype.getView = function () {
                 case 0:
                     var mNewRealty = new NewRealty();
                     mNewRealty.attach(self.parent);
-                    console.log(self.parent)
+                    
                     var frameview = mNewRealty.getView();
                     self.parent.body.addChild(frameview);
                     self.parent.body.activeFrame(frameview);
@@ -222,8 +222,8 @@ ListRealty.prototype.getView = function () {
     })
 
     loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_activehomes.php").then(function(value){
-        console.log(value)
-        var header = [{ type: "dragzone" , dragElement : false},{ type: "increase", value: "#"}, {value:'MS',sort:true}, 'Số nhà', {value: 'Tên đường' }, { value:'Phường/Xã' }, { value: 'Quận/Huyện' }, { value: 'Tỉnh/TP' }, { value: 'Ghi chú', sort: true }, {value: 'Ngang', sort: true }, {value: 'Dài',sort:true}, {value: 'DT' }, { value: 'Kết cấu' }, { value: 'Hướng'}, 'Giá', { value: 'Giá m<sup>2</sup>' }, { value: 'Hiện trạng'}, {value:'Ngày tạo'},{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false}];
+        
+        var header = [{ type: "dragzone" , dragElement : false},{ type: "increase", value: "#"}, {value:'MS',sort:true}, 'Số nhà', {value: 'Tên đường' }, { value:'Phường/Xã' }, { value: 'Quận/Huyện' }, { value: 'Tỉnh/TP' }, { value: 'Ghi chú', sort: true }, {value: 'Ngang', sort: true }, {value: 'Dài',sort:true}, {value: 'DT' }, { value: 'Kết cấu' }, { value: 'Hướng'}, 'Giá', { value: 'Giá m²' }, { value: 'Hiện trạng'}, {value:'Ngày tạo'},{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false}];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
@@ -297,7 +297,7 @@ ListRealty.prototype.formatDataRow = function(data)
         temp[k++] = result;
         check[data[i].id] = result;
     }
-    console.log(temp)
+    
     return temp;
 }
 
@@ -310,12 +310,12 @@ ListRealty.prototype.searchControlContent = function(){
             tag: 'calendar-input',
             data: {
                 anchor: 'top',
-                value: new Date(),
+                value: new Date(new Date().getFullYear(), 0, 1),
                 maxDateLimit: new Date()
             },
             on: {
                 changed: function (date) {
-                    console.log(endDay)
+                    
                     endDay.minDateLimit = date;
                 }
             }
@@ -332,7 +332,7 @@ ListRealty.prototype.searchControlContent = function(){
             },
             on: {
                 changed: function (date) {
-                    console.log(date)
+                    
                     startDay.maxDateLimit = date;
                 }
             }

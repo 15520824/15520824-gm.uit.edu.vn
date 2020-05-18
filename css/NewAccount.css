@@ -1,0 +1,206 @@
+.pizo-new-account-container {
+    width: 50%;
+    min-width: 700px;
+}
+
+.pizo-new-account-container-username-container,
+.pizo-new-account-container-password-container,
+.pizo-new-account-container-name-container,
+.pizo-new-account-container-email-container,
+.pizo-new-account-container-avatar-container,
+.pizo-new-account-container-address-container,
+.pizo-new-account-container-phone-container,
+.pizo-new-account-container-status-container,
+.pizo-new-account-container-position-container,
+.pizo-new-account-container-status-position,
+.pizo-new-account-container-permission-container,
+.pizo-new-account-container-phone-birthday-gender,
+.pizo-new-account-container-birthday-container,
+.pizo-new-account-container-gender-container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+    margin-bottom: 10px;
+}
+
+.pizo-new-account-container-status-container,
+.pizo-new-account-container-permission-container,
+.pizo-new-account-container-position-container,
+.pizo-new-account-container-birthday-container,
+.pizo-new-account-container-gender-container,
+.pizo-new-account-container-phone-container{
+    margin-bottom: 0;
+}
+
+.pizo-new-account-container-username-container-label,
+.pizo-new-account-container-password-container-label,
+.pizo-new-account-container-name-container-label,
+.pizo-new-account-container-email-container-label,
+.pizo-new-account-container-avatar-container-label,
+.pizo-new-account-container-address-container-label,
+.pizo-new-account-container-phone-container-label,
+.pizo-new-account-container-position-container-label,
+.pizo-new-account-container-status,
+.pizo-new-account-container-permission,
+.pizo-new-account-container-gender,
+.pizo-new-account-container-birthday,
+.pizo-new-account-container-birthday-container-label,
+.pizo-new-account-container-gender-container-label{
+    font-size: 1rem;
+    display: flex;
+    flex-shrink: 0;
+    width: 5.71428571429rem;
+    padding-right: 0.7143rem;
+    width: 140px;
+    margin: auto;
+}
+
+.pizo-new-account-container-status-container-label,.pizo-new-account-container-permission-container-label,.pizo-new-account-container-birthday-container-label{
+    padding-right: 0.7143rem;
+    width: auto;
+    font-size: 1rem;
+    line-height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.pizo-new-account-container-gender,
+.pizo-new-account-container-birthday{
+    width: auto;
+    padding-left: 30px;
+    padding-right: 0;
+}
+
+.pizo-new-account-container-status-container-label{
+    width: auto;
+}
+
+.pizo-new-account-container-status{
+    width: auto;
+    padding-right: 0;
+    padding-left: 30px;
+}
+
+.pizo-new-account-container-status-container>label{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100%;
+}
+
+.pizo-new-account-container-permission-container-label{
+    width: auto;
+}
+
+.pizo-new-account-container-permission{
+    width: auto;
+    padding-right: 0;
+    padding-left: 30px;
+}
+
+.pizo-new-account-container-permission-container>label{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100%;
+}
+
+.pizo-new-account-container-birthday-container>div{
+    margin-top: auto;
+    margin-bottom: auto;
+    border: solid 0.0714rem var(--color-input-color);
+    font-size: 1rem;
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.pizo-new-account-container-gender-container-label{
+    width: auto;
+    padding-right: 10px;
+    vertical-align: top;
+}
+
+.pizo-new-account-container-username-container-input,
+.pizo-new-account-container-password-container-input,
+.pizo-new-account-container-name-container-input,
+.pizo-new-account-container-email-container-input,
+.pizo-new-account-container-avatar-container-input,
+.pizo-new-account-container-gender-container-input,
+.pizo-new-account-container-address-container-input,
+.pizo-new-account-container-phone-container-input,
+.pizo-new-account-container-position-container-input,
+.pizo-new-account-container-position,
+.pizo-new-account-container-phone{
+    border: solid 0.0714rem var(--color-input-color);
+    font-size: 1rem;
+    padding: 0.4286rem;
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.pizo-new-account-container-position-container-input,.pizo-new-account-container-position,.pizo-new-account-container-phone{
+    padding: unset;
+    border: none;
+}
+
+.pizo-new-account-container-password-container-new,.pizo-new-account-container-password-container-new-confirm{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 50%;
+    height: 100%;
+    align-items: stretch;
+}
+
+.pizo-new-account-container-password-container-new{
+    padding-right: 15px;
+}
+
+.pizo-new-account-container-password-container-new-confirm{
+    padding-left: 15px;
+}
+
+.pizo-new-account-container-change-password-show{
+    display: unset
+}
+
+.pizo-new-account-container-change-password-hide{
+    display: none;
+}
+
+.show-password-change .pizo-new-account-container-change-password-show{
+    display: none;
+}
+
+.show-password-change .pizo-new-account-container-change-password-hide{
+    display: unset;
+}
+
+.pizo-new-account-container-change-password{
+    cursor: pointer;
+    padding-left: 150px;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.pizo-new-account-container-password{
+    display: none;
+}
+
+.absol-switch-slider:before{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+input:checked+.absol-switch-slider:before{
+    -webkit-transform: translateX(1em) translateY(-50%);
+    -ms-transform: translateX(1em) translateY(-50%);
+    transform: translateX(1em) translateY(-50%);
+}

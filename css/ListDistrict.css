@@ -1,0 +1,11 @@
+.pizo-list-realty-main-search-control-row-state-district-input{
+    height: 30px;
+}
+
+.pizo-list-realty-main-search-control-row-state-district{
+    width: calc(36% + 1.0714rem);
+}
+
+.pizo-list-realty-main-search-control-row-state-district-input>div{
+    width: 100%;
+}
