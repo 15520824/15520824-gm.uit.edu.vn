@@ -558,11 +558,11 @@ table.sortTable th.postionStickyCell{
   transform: rotate(180deg);
 }
 .pagination-page-number {
+  display: none;
   border-radius: 5px;
   color: #333d45;
   width: 50px;
   height: 50px;
-  display: flex;
   align-items: center;
   justify-content: center;
   transition-duration: 0.5s;
@@ -571,6 +571,9 @@ table.sortTable th.postionStickyCell{
   font-weight: 700;
   font-size: 18px;
   cursor: pointer;
+}
+.pagination-wrapper .pagination-page-number.active{
+  display: flex;
 }
 .pagination-page-number:hover {
   color: #fff;

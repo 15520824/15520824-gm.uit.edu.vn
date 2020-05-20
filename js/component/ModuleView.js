@@ -2,15 +2,16 @@ import Fcore from '../dom/Fcore';
 import '../../css/ModuleView.css';
 import '../../css/tablesort.css';
 // import TabView from 'absol-acomp/js/TabView';
-import {HashTable} from '../component/HashTable';
-import {HashTableFilter} from '../component/HashTableFilter';
+import { HashTable } from '../component/HashTable';
+import { HashTableFilter } from '../component/HashTableFilter';
+import Follower from 'absol-acomp/js/Follower';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 var traceOutBoundingClientRect = Fcore.traceOutBoundingClientRect;
 
 export function ModuleView() {
-    
+
 }
 
 export function alignFormCss(element, elementDynamic, GroupElement = []) {
@@ -154,12 +155,12 @@ export function selectElement(nameClass, elementDynamic) {
     })
 }
 
-export function unit_Long(functionX= function(){}) {
+export function unit_Long(functionX = function () { }) {
     return _({
         tag: "selectmenu",
         class: "pizo-new-realty-dectruct-content-area-unit",
-        on:{
-            change:functionX
+        on: {
+            change: functionX
         },
         props: {
             items: [
@@ -171,12 +172,12 @@ export function unit_Long(functionX= function(){}) {
     });
 }
 
-export function unit_Zone(functionX= function(){}) {
+export function unit_Zone(functionX = function () { }) {
     return _({
         tag: "selectmenu",
         class: "pizo-new-realty-dectruct-content-area-unit-size",
-        on:{
-            change:functionX
+        on: {
+            change: functionX
         },
         props: {
             items: [
@@ -254,7 +255,7 @@ export function fakeInput(text, size) {
 
 function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result) {
     var y = pageY - result.getBoundingClientRect().top;
-    y-= shiftY;
+    y -= shiftY;
     // var height = result.clientHeight;
     // 
     // if(y>tempx){
@@ -263,7 +264,7 @@ function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone,
     //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
     //     return;
     // }
-    
+
     // if(y< clone.clientHeight/2){
     //     y = clone.clientHeight/2;
     //     // bg.noAction = true;
@@ -271,19 +272,19 @@ function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone,
     //     return;
     // }
 
-    clone.style.top = y+ 'px';
+    clone.style.top = y + 'px';
 
     var x = pageX - result.getBoundingClientRect().left;
-    x-= shiftX;
+    x -= shiftX;
     var width = result.clientWidth;
-    
+
     // if(x>tempx){
     //     x = tempx;
     //     // bg.noAction = true;
     //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
     //     return;
     // }
-    
+
     // if(x< clone.clientWidth/2){
     //     x = clone.clientWidth/2;
     //     // bg.noAction = true;
@@ -291,7 +292,7 @@ function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone,
     //     return;
     // }
 
-    clone.style.left = x+ 'px';
+    clone.style.left = x + 'px';
 }
 
 function onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, parent) {
@@ -299,41 +300,39 @@ function onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, b
     moveAt(clone, event.pageX, event.pageY, shiftX, shiftY, trigger, functionCheckZone, bg, parent);
 }
 
-function onMouseMoveFix(clone, event,shiftY, result) {
+function onMouseMoveFix(clone, event, shiftY, result) {
     event.preventDefault();
-    moveAtFix(clone,event.pageY,shiftY,result);
+    moveAtFix(clone, event.pageY, shiftY, result);
 }
 
-function moveAtFix(clone,pageY,shiftY,result)
-{
+function moveAtFix(clone, pageY, shiftY, result) {
     var y = pageY - result.getBoundingClientRect().top;
-    y-= shiftY;
+    y -= shiftY;
     var height = result.clientHeight;
-    var tempx = height-3*clone.clientHeight/4;
-    var top = clone.clientHeight/2;
+    var tempx = height - 3 * clone.clientHeight / 4;
+    var top = clone.clientHeight / 2;
 
-    if(result.tagName !== "TABLE"){
+    if (result.tagName !== "TABLE") {
         height += result.getHeightChild();
         tempx = height;
-    }else
-    {
-        if(result.headerTable.offsetHeight === 0){
-            top = -clone.clientHeight/4;
+    } else {
+        if (result.headerTable.offsetHeight === 0) {
+            top = -clone.clientHeight / 4;
         }
-            
+
     }
-    
-    if(y>tempx){
+
+    if (y > tempx) {
         y = tempx;
         return;
     }
-    
-    if(y< top){
+
+    if (y < top) {
         y = top;
         return;
     }
 
-    clone.style.top = y+ 'px';
+    clone.style.top = y + 'px';
 }
 
 function moveElement(event, me, result, index) {
@@ -352,9 +351,9 @@ function moveElement(event, me, result, index) {
 
     var trigger;
     var height = 112;
-    if(result.height!==undefined)
-    height = result.height;
-    var clone = result.cloneColumn(index,height,undefined);
+    if (result.height !== undefined)
+        height = result.height;
+    var clone = result.cloneColumn(index, height, undefined);
     var bg = result.backGround(height, function () {
         if (bg.noAction !== true)
             result.deleteColumn(index);
@@ -388,15 +387,15 @@ function moveElement(event, me, result, index) {
     window.addEventListener("mousemove", functionCheckZone)
 
     bg.isMove = true;
-    
-    
+
+
     result.appendChild(bg);
     bg.appendChild(clone);
-    let shiftX = clone.clientWidth/2;
-    let shiftY = clone.clientHeight/2;
-    moveAt(clone,event.pageX, event.pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result);
+    let shiftX = clone.clientWidth / 2;
+    let shiftY = clone.clientHeight / 2;
+    moveAt(clone, event.pageX, event.pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result);
     window.addEventListener('mousemove', trigger = function (event) { onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, result) });
-   
+
     window.onmouseup = function () {
         bg.isMove = false;
         outFocus(clone, trigger, functionCheckZone, bg, result);
@@ -407,7 +406,7 @@ function moveElementFix(event, me, result, index) {
     var trigger;
     var clone = result.cloneRow(index);
     var bg = result.backGroundFix(index);
-   
+
     var scrollParent = me;
 
     while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
@@ -427,145 +426,130 @@ function moveElementFix(event, me, result, index) {
             var centerY = offset.top + offset.height / 2;
             var checkElement = arrZone[i];
             if (AAYY(centerX, centerY, checkElement.getBoundingClientRect())) {
-                if (!checkElement.classList.contains("focus-blast")){
+                if (!checkElement.classList.contains("focus-blast")) {
                     checkElement.classList.add("focus-blast");
                     break;
                 }
-                    
+
             } else {
                 if (checkElement.classList.contains("focus-blast"))
                     checkElement.classList.remove("focus-blast");
             }
             var removeList = document.getElementsByClassName("focus-blast")[0];
-            if(removeList!==undefined)
-            removeList.classList.remove("focus-blast");
+            if (removeList !== undefined)
+                removeList.classList.remove("focus-blast");
         }
 
     }
-    let shiftY = clone.clientHeight/2;
-    moveAtFix(clone, event.pageY, shiftY ,result);
+    let shiftY = clone.clientHeight / 2;
+    moveAtFix(clone, event.pageY, shiftY, result);
     scrollParent.addEventListener("scroll", function (event) {
-        moveAtFix(clone, event.pageY, shiftY ,result);
-        bg.style.top = parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop)+"px";
+        moveAtFix(clone, event.pageY, shiftY, result);
+        bg.style.top = parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop) + "px";
     })
-    window.addEventListener('mousemove',functionCheckZone);
-    var trigger = function(event)
-    {
-        onMouseMoveFix(clone,event,shiftY,result);
+    window.addEventListener('mousemove', functionCheckZone);
+    var trigger = function (event) {
+        onMouseMoveFix(clone, event, shiftY, result);
     }
-    var mouseUpFunction = function(){
-        window.removeEventListener("mouseup",mouseUpFunction);
+    var mouseUpFunction = function () {
+        window.removeEventListener("mouseup", mouseUpFunction);
         var removeList = document.getElementsByClassName("focus-blast")[0];
-        if(removeList!==undefined)
-        {
+        if (removeList !== undefined) {
             var row1 = removeList.row1;
             var row2 = removeList.row2;
-            if(row1===undefined&&row2===0)
-            {
-                outFocus(clone,trigger,functionCheckZone,bg,result.bodyTable)
+            if (row1 === undefined && row2 === 0) {
+                outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable)
                 return;
             }
             var element = me;
-            while(element.tagName !== "TR"&&element!==undefined)
-            {
+            while (element.tagName !== "TR" && element !== undefined) {
                 element = element.parentNode;
             }
-            if(element === removeList.elementReal)
-            {
-                outFocus(clone,trigger,functionCheckZone,bg,result.bodyTable)
+            if (element === removeList.elementReal) {
+                outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable)
                 return;
             }
-            result.bodyTable.insertBefore(element,removeList.elementReal);
-            if(element.getElementChild!==undefined){
+            result.bodyTable.insertBefore(element, removeList.elementReal);
+            if (element.getElementChild !== undefined) {
                 var elementChild = element.getElementChild();
-                if(elementChild.length!==0)
-                {
-                    for(var i=0;i<elementChild.length;i++)
-                    {
-                        result.bodyTable.insertBefore(elementChild[i],removeList.elementReal);
+                if (elementChild.length !== 0) {
+                    for (var i = 0; i < elementChild.length; i++) {
+                        result.bodyTable.insertBefore(elementChild[i], removeList.elementReal);
                     }
                 }
             }
-            if(result.data.child!==undefined){
-                result.data.child = changeIndex(result.data.child,index-1,row1);
+            if (result.data.child !== undefined) {
+                result.data.child = changeIndex(result.data.child, index - 1, row1);
             }
             else
-            result.data = changeIndex(result.data,index-1,row1);
-            result.childrenNodes = changeIndex(result.childrenNodes,index-1,row1);
+                result.data = changeIndex(result.data, index - 1, row1);
+            result.childrenNodes = changeIndex(result.childrenNodes, index - 1, row1);
             var k = 0;
-            for(var i = 0;i<result.clone.length;i++)
-            {
-                var checkValue = array_insertBefore(result.clone[i],element.childNodes[k],row2);
-                if(checkValue===false)
-                continue;
-                result.clone[i] = checkValue; 
+            for (var i = 0; i < result.clone.length; i++) {
+                var checkValue = array_insertBefore(result.clone[i], element.childNodes[k], row2);
+                if (checkValue === false)
+                    continue;
+                result.clone[i] = checkValue;
                 k++;
             }
-            if(result.checkSpan!==undefined)
-            result.checkSpan = changeIndex(result.checkSpan,index-1,row1);
+            if (result.checkSpan !== undefined)
+                result.checkSpan = changeIndex(result.checkSpan, index - 1, row1);
         }
-        
-        outFocus(clone,trigger,functionCheckZone,bg,result.bodyTable);
+
+        outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
     }
-    window.addEventListener('mousemove',trigger);
-    window.addEventListener("mouseup",mouseUpFunction)
+    window.addEventListener('mousemove', trigger);
+    window.addEventListener("mouseup", mouseUpFunction)
 }
 
 function array_insertBefore(arr, data, new_index) {
     var old_index;
-    for(var i = 0;i<arr.length;i++)
-    {
-        if(arr[i]===data)
-        {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === data) {
             old_index = i;
             break;
         }
     }
-    if(old_index===undefined)
+    if (old_index === undefined)
         return false;
-     // for testing
-     return arr_change(arr,data,old_index,new_index)
+    // for testing
+    return arr_change(arr, data, old_index, new_index)
 };
 
-function arr_change(arr,data,old_index,new_index)
-{
-    if(new_index === undefined)
-    new_index = arr.length+1;
-    if(old_index>new_index){
-        arr.splice(new_index,0,data);
-        arr.splice(old_index+1,1);
+function arr_change(arr, data, old_index, new_index) {
+    if (new_index === undefined)
+        new_index = arr.length + 1;
+    if (old_index > new_index) {
+        arr.splice(new_index, 0, data);
+        arr.splice(old_index + 1, 1);
     }
-    else{
-        arr.splice(new_index,0,data);
-        arr.splice(old_index,1);
+    else {
+        arr.splice(new_index, 0, data);
+        arr.splice(old_index, 1);
     }
-    
+
     return arr;
 }
 
-function changeIndex(arr,old_index,new_index)
-{
-    var data = arr.splice(old_index,1)[0];
-    if(old_index<new_index)
-    arr.splice(new_index-1,0,data);
+function changeIndex(arr, old_index, new_index) {
+    var data = arr.splice(old_index, 1)[0];
+    if (old_index < new_index)
+        arr.splice(new_index - 1, 0, data);
     else
-    arr.splice(new_index,0,data);
+        arr.splice(new_index, 0, data);
     return arr;
 }
 
-tableView.prototype.checkLongRow = function(index)
-{
+tableView.prototype.checkLongRow = function (index) {
     var result = this;
     var delta = [];
-    for(var i = 0;i<result.clone.length;i++)
-    {
+    for (var i = 0; i < result.clone.length; i++) {
         delta[i] = 0;
-        if(result.checkSpan!==undefined){
-            for(var j = 0;j<index;j++)
-            {
-                if(result.checkSpan[j]!==undefined)
-                    if(result.checkSpan[j][i]!==undefined)
-                    delta[i]++;
+        if (result.checkSpan !== undefined) {
+            for (var j = 0; j < index; j++) {
+                if (result.checkSpan[j] !== undefined)
+                    if (result.checkSpan[j][i] !== undefined)
+                        delta[i]++;
             }
         }
     }
@@ -585,13 +569,13 @@ function AAYY(x, y, bound) {
 }
 
 function outFocus(clone, trigger, functionCheckZone, bg, parent) {
-        window.removeEventListener('mousemove', functionCheckZone);
-        window.removeEventListener('mousemove', trigger);
-        window.onmouseup = null;
-        setTimeout(function () {
-            bg.selfRemove();
-        }, 20)
-        clone.selfRemove();
+    window.removeEventListener('mousemove', functionCheckZone);
+    window.removeEventListener('mousemove', trigger);
+    window.onmouseup = null;
+    setTimeout(function () {
+        bg.selfRemove();
+    }, 20)
+    clone.selfRemove();
 }
 
 
@@ -601,9 +585,9 @@ function captureMousePosition(event) {
 }
 
 
-export function tableView(header = [], data = [], dragHorizontal, dragVertical,childIndex = 1,indexRow = 50) {
+export function tableView(header = [], data = [], dragHorizontal, dragVertical, childIndex = 1, indexRow = 50) {
     if (window.mobilecheck())
-        return tableViewMobile(header,data);
+        return tableViewMobile(header, data);
 
     var cell, row, value, check = [], bonus, style, dragElement;
     var checkSpan = [];
@@ -624,26 +608,25 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
     });
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
-    Object.assign(result,tableView.prototype);
+    Object.assign(result, tableView.prototype);
     result.check = check;
     result.header = header;
     result.data = data;
     result.dragVertical = dragVertical;
     result.dragHorizontal = dragHorizontal;
 
-    result.updatePagination = function(number = result.tempIndexRow){
+    result.updatePagination = function (number = result.tempIndexRow) {
         result.tempIndexRow = number;
         result.indexRow = number;
-        if(result.paginationElement!==undefined)
-        {
+        if (result.paginationElement !== undefined) {
             result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
             var pagination = result.pagination(result.tempIndexRow);
-            result.paginationElement.parentNode.replaceChild(pagination,result.paginationElement);
-        }else{
+            result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
+        } else {
             var pagination = result.pagination(result.tempIndexRow);
             result.appendChild(pagination);
         }
-        
+
         result.paginationElement = pagination;
     }
     result.updatePagination(indexRow);
@@ -687,8 +670,8 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
     headerTable.addChild(row);
     result.clone = [];
     var k = 0;
-    var toUpperCase = header.toUpperCase==true?true:false;
-    var toLowerCase = header.toLowerCase==true?true:false;
+    var toUpperCase = header.toUpperCase == true ? true : false;
+    var toLowerCase = header.toLowerCase == true ? true : false;
     var functionClickSort;
     for (var i = 0; i < header.length; i++) {
         if (header[i].hidden === false || header[i].hidden === undefined) {
@@ -701,9 +684,9 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
             }
             else
                 value = header[i].value;
-            if(toUpperCase)
+            if (toUpperCase)
                 value = value.toUpperCase();
-            if(toLowerCase)
+            if (toLowerCase)
                 value = value.toLowerCase();
             var functionClick = undefined;
             switch (header[i].type) {
@@ -726,9 +709,9 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                     check[i] = "increase";
                     break;
                 case "dragzone":
-                    if(dragVertical)
-                    check[i] = "dragzone";
-                    else{
+                    if (dragVertical)
+                        check[i] = "dragzone";
+                    else {
                         check[i] = "hidden";
                         continue;
                     }
@@ -752,56 +735,53 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                     break;
             }
             if (header[i].sort === true || header[i].sort === undefined) {
-                functionClickSort = function (event, me, index, dataIndex, row,result) {
+                functionClickSort = function (event, me, index, dataIndex, row, result) {
                     var last_sort = document.getElementsByClassName("downgrade");
                     last_sort = last_sort[0];
                     me = me.parentNode;
-                    if(last_sort!==me&&last_sort!==undefined)
-                    {
+                    if (last_sort !== me && last_sort !== undefined) {
                         last_sort.classList.remove("downgrade");
                     }
                     var last_sort = document.getElementsByClassName("upgrade");
                     last_sort = last_sort[0];
-                    if(last_sort!==me&&last_sort!==undefined)
-                    {
+                    if (last_sort !== me && last_sort !== undefined) {
                         last_sort.classList.remove("upgrade");
                     }
-                    if(!me.classList.contains("downgrade"))
-                    {
-                        sortArray(result.data,index);
+                    if (!me.classList.contains("downgrade")) {
+                        sortArray(result.data, index);
                         me.classList.add("downgrade");
-                        if(me.classList.contains("upgrade"))
-                        me.classList.remove("upgrade");
+                        if (me.classList.contains("upgrade"))
+                            me.classList.remove("upgrade");
                     }
-                    else{
-                        sortArray(result.data,index,false);
+                    else {
+                        sortArray(result.data, index, false);
                         me.classList.add("upgrade");
-                        if(me.classList.contains("downgrade"))
-                        me.classList.remove("downgrade");
+                        if (me.classList.contains("downgrade"))
+                            me.classList.remove("downgrade");
                     }
-                        
-                    if(result.paginationElement!==undefined)
-                    result.paginationElement.reActive();
+
+                    if (result.paginationElement.noneValue !== true)
+                        result.paginationElement.reActive();
                     else
-                    result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
-                    
+                        result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
+
                 }
             }
 
             if (header[i].functionClick !== undefined)
                 functionClick = header[i].functionClick;
             style = {};
-            if(header[i].style!==undefined)
+            if (header[i].style !== undefined)
                 style = header[i].style;
             dragElement = true;
-            if(header[i].dragElement!==undefined&&header[i].dragElement===false)
-            dragElement = false;
+            if (header[i].dragElement !== undefined && header[i].dragElement === false)
+                dragElement = false;
             cell = _({
                 tag: "th",
                 attr: {
                     role: 'columnheader'
                 },
-                style:style,
+                style: style,
                 props: {
                     id: i
                 },
@@ -810,10 +790,10 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                         return function (event) {
                             event.preventDefault();
                             if (functionClick !== undefined)
-                                functionClick(event, this, index, row.data, row ,result);
+                                functionClick(event, this, index, row.data, row, result);
                         }
                     }(i, row, functionClick),
-                    mousedown: (dragHorizontal&&dragElement) ? function (index) {
+                    mousedown: (dragHorizontal && dragElement) ? function (index) {
                         return function (event) {
                             event.preventDefault();
                             var finalIndex;
@@ -832,7 +812,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                             }, 200);
                         }
                     }(i) : undefined,
-                    dragstart: (dragHorizontal&&dragElement) ? function () {
+                    dragstart: (dragHorizontal && dragElement) ? function () {
                         return false;
                     } : undefined,
                     mouseup: function () {
@@ -842,7 +822,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                             clearTimeout(this.timeoutID);
                         }
                     },
-                    mousemove: (dragHorizontal&&dragElement) ? function (index) {
+                    mousemove: (dragHorizontal && dragElement) ? function (index) {
                         return function (event) {
                             if (this.hold === false) {
                                 var finalIndex;
@@ -865,49 +845,47 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
                     }(i) : undefined,
                 }
             })
-            if(functionClick!==undefined)
-            cell.style.cursor ="pointer";
+            if (functionClick !== undefined)
+                cell.style.cursor = "pointer";
             var childUpDown = _({
-                tag:"div",
-                class:"sort-container",
-                on:{
+                tag: "div",
+                class: "sort-container",
+                on: {
                     click: function (index, row, functionClickSort) {
                         return function (event) {
                             event.preventDefault();
                             if (functionClickSort !== undefined)
-                            functionClickSort(event, this, index, row.data, row,result);
+                                functionClickSort(event, this, index, row.data, row, result);
                         }
                     }(i, row, functionClickSort),
                 },
-                child:[
+                child: [
                     {
-                        tag:"sort-up",
+                        tag: "sort-up",
                         class: ["arrow_up"],
                     },
                     {
-                        tag:"sort-down",
+                        tag: "sort-down",
                         class: ["arrow_down"],
                     }
                 ]
             })
-                
+
             if (header[i].sort === true) {
                 cell.classList.add("has-sort")
-                var tempFunc = function(cellIndex,childUpDown){
-                    return function(){
+                var tempFunc = function (cellIndex, childUpDown) {
+                    return function () {
                         var style2 = window.getComputedStyle(childUpDown);
-                        if(cellIndex.style.minWidth=="")
-                        cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
+                        if (cellIndex.style.minWidth == "")
+                            cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
                     }
-                }(cell,childUpDown);
+                }(cell, childUpDown);
                 _('attachhook').once('error', tempFunc);
             }
 
-            if(header[i].element===undefined)
-            {
-                cell.addChild( _({text: value})) ;
-            }else
-            {
+            if (header[i].element === undefined) {
+                cell.addChild(_({ text: value }));
+            } else {
                 cell.appendChild(data[i][j].element);
             }
 
@@ -917,47 +895,44 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical,c
             }
             cell.addChild(childUpDown);
 
-           
+
             result.clone[k++].push(cell);
-            
+
             row.addChild(cell);
         } else
             check[i] = "hidden";
     }
     result.parentMargin = 0;
-    
+
     result.childIndex = childIndex;
 
     result.childrenNodes = [];
     result.getBodyTable(data);
-   
-    result.checkSpan  = checkSpan;
-   
+
+    result.checkSpan = checkSpan;
+
     return result;
 }
 
-tableView.prototype.setArrayFix = function(num, isLeft){
+tableView.prototype.setArrayFix = function (num, isLeft) {
     var i;
     var length;
-    
-    if(isLeft){
+
+    if (isLeft) {
         i = 0;
         length = num;
     }
-    else
-    {
-        i = this.clone.length-num;
+    else {
+        i = this.clone.length - num;
         length = this.clone.length;
     }
     var isFirst = false;
-    for(;i<length;i++)
-    {
-        for(var j = 0;j<this.clone[i].length;j++)
-        {
-            if(!this.clone[i][j].classList.contains("postionStickyCell"))
+    for (; i < length; i++) {
+        for (var j = 0; j < this.clone[i].length; j++) {
+            if (!this.clone[i][j].classList.contains("postionStickyCell"))
                 this.clone[i][j].classList.add("postionStickyCell");
             this.clone[i][j].style.left = this.clone[i][j].offsetLeft + "px";
-            if(isFirst&&this.clone[i][j].parentNode.childrenNodes.length!==0)
+            if (isFirst && this.clone[i][j].parentNode.childrenNodes.length !== 0)
                 this.clone[i][j].parentNode.setArrayFix(num, isLeft);
             isFirst = true;
         }
@@ -966,98 +941,114 @@ tableView.prototype.setArrayFix = function(num, isLeft){
     }
 }
 
-tableView.prototype.setArrayScroll = function(num, isLeft = true){
+tableView.prototype.setArrayScroll = function (num, isLeft = true) {
     var self = this;
-    _('attachhook').once('error', function(){
-        setTimeout(function(){
+    _('attachhook').once('error', function () {
+        setTimeout(function () {
             self.setArrayFix(num, isLeft);
-        },10);
+        }, 10);
     })
 }
 
-tableView.prototype.addInputSearch = function(input)
-{
+tableView.prototype.addInputSearch = function (input) {
     var self = this;
-    self.hashTable =  new HashTable(self.data);
-    input.onchange = function(event,needUpdate=false){
-        if(input.value!==input.lastInputSearch||needUpdate==true){
-            self.checkTableView(self.data,input.value);
+    self.hashTable = new HashTable(self.data);
+    input.onchange = function (event, needUpdate = false) {
+        if (input.value !== input.lastInputSearch || needUpdate == true) {
+            self.checkTableView(input.value);
             input.lastInputSearch = input.value;
             self.updatePagination();
-        }   
+        }
     }
-    input.addEventListener("input",input.onchannge);
-    if(self.inputElement===undefined)
+    input.addEventListener("input", input.onchange);
+    if (self.inputElement === undefined)
         self.inputElement = [];
     self.inputElement.push(input);
-    self.inputElement.onchange = function(){
-        for(var i = 0;i<self.inputElement.length;i++)
+    self.inputElement.onchange = function () {
+        for (var i = 0; i < self.inputElement.length; i++)
             self.inputElement[i].onchange();
     }
 }
 
-tableView.prototype.addFilter = function(input)
-{
+tableView.prototype.addFilter = function (input, index) {
+    console.log(input)
     var self = this;
-    self.hashTable =  new HashTableFilter(self.data);
-    input.onchange = function(event,needUpdate=false){
-        if(input.value!==input.lastInputSearch||needUpdate==true){
-            self.checkTableView(self.data,input.value);
-            input.lastInputSearch = input.value;
-            self.updatePagination();
-        }   
+    self.hashTableFilter = new HashTableFilter(self.data);
+
+    input.on("change", function (event, needUpdate = false) {
+        self.checkTableViewFilter(input.value, index);
+        self.updatePagination();
+    })
+    if (self.inputFilter === undefined)
+        self.inputFilter = [];
+    self.inputFilter.push(input);
+    self.inputFilter.onchange = function () {
+        for (var i = 0; i < self.inputFilter.length; i++)
+            self.inputFilter[i].emit("change");
     }
-    input.addEventListener("input",input.onchange)
-    self.inputElement = input;
 }
 
-tableView.prototype.checkTableView = function(arr,value)
-{
+tableView.prototype.checkTableView = function (value) {
     var self = this;
     self.hashTable.getKey(value);
 }
 
-tableView.prototype.setVisiableAll = function(arr)
-{
-    for(var i = 0;i<arr.length;i++)
-    {
+tableView.prototype.checkTableViewFilter = function (value, index) {
+    var self = this;
+    self.hashTableFilter.getKey(value, index);
+}
+
+tableView.prototype.updateHash = function () {
+    if (this.inputElement != undefined)
+        this.inputElement.onchange(undefined, true);
+    if (this.inputFilter !== undefined)
+        this.inputFilter.onchange(undefined, true);
+}
+
+tableView.prototype.resetHash = function () {
+    var self = this;
+    if (self.hashTable !== undefined)
+        self.hashTable = new HashTable(self.data);
+    if (self.hashTableFilter !== undefined)
+        self.hashTableFilter = new HashTableFilter(self.data);
+}
+
+tableView.prototype.setVisiableAll = function (arr) {
+    for (var i = 0; i < arr.length; i++) {
         arr[i].confirm = true;
-        if(arr[i].child!==undefined)
-        this.setVisiableAll(arr[i].child);
+        if (arr[i].child !== undefined)
+            this.setVisiableAll(arr[i].child);
     }
 }
 
-tableView.prototype.getBodyTable = function(data,i = 0)
-{
-    var temp  = this.bodyTable;
-    var result = this, k, delta = [],row,cell;
+tableView.prototype.getBodyTable = function (data, i = 0) {
+    var temp = this.bodyTable;
+    var result = this, k, delta = [], row, cell;
     var arr = [];
-    if(parent.checkSpan===undefined)
+    if (parent.checkSpan === undefined)
         result.checkSpan = [];
     result.indexRow = 0;
-    for (i; i < data.length&&this.indexRow<this.tempIndexRow; i++) {
-        if(data[i].child!==undefined)
+    for (i; i < data.length && this.indexRow < this.tempIndexRow; i++) {
+        if (data[i].child !== undefined)
             data[i].child.updateVisible = data.updateVisible;
-        if(data.updateVisible===true){
+
+        if (data.updateVisible === true) {
             var tempCheck = data[i].confirm;
             data[i].confirm = undefined;
-            if(tempCheck!==true){
+            if (tempCheck !== true) {
                 data[i].visiable = false;
-                if(data[i].child!==undefined)
-                result.getBodyTable(data[i].child);
+                if (data[i].child !== undefined)
+                    result.getBodyTable(data[i].child);
                 continue;
-            }else
-            {
+            } else {
                 data[i].visiable = undefined;
-                if(data[i].child!==undefined)
-                result.setVisiableAll(data[i].child)
+                if (data[i].child !== undefined)
+                    result.setVisiableAll(data[i].child)
             }
-        }else
-        {
-            if(data[i].visiable===false)
-            {
-                if(data[i].child!==undefined)
-                result.getBodyTable(data[i].child);
+        } else {
+            if (data[i].visiable === false) {
+                if (data[i].child !== undefined)
+                    result.getBodyTable(data[i].child);
                 continue;
             }
         }
@@ -1066,17 +1057,15 @@ tableView.prototype.getBodyTable = function(data,i = 0)
         arr.push(row);
         for (var j = 0; j < temp.parentNode.clone.length; j++) {
             k = parseFloat(temp.parentNode.clone[j][0].id);
-            if(delta[j]===undefined)
+            if (delta[j] === undefined)
                 delta[j] = 0;
-            cell = result.getCell(data[i][k],this.indexRow,k,j,result.checkSpan,row);
-            if(cell === 6  || cell === 2)
-            {
-                result.clone[j].splice(indexRow+1 - delta[j],1);
-                delta[j]+=1;
+            cell = result.getCell(data[i][k], this.indexRow, k, j, result.checkSpan, row);
+            if (cell === 6 || cell === 2) {
+                result.clone[j].splice(indexRow + 1 - delta[j], 1);
+                delta[j] += 1;
                 continue
             }
-            if(cell === true)
-            {
+            if (cell === true) {
                 continue;
             }
             cell.clone = result.clone;
@@ -1086,94 +1075,110 @@ tableView.prototype.getBodyTable = function(data,i = 0)
         row.checkChild();
         this.indexRow++;
     }
-    
-    if(result.checkMargin!==undefined)
-    result.checkMargin();
+
+
+    result.setConfirm(data, i);
+    if (result.checkMargin !== undefined)
+        result.checkMargin();
 
     data.updateVisible = undefined;
     result.childrenNodes = result.childrenNodes.concat(arr);
     return arr;
 }
 
-tableView.prototype.countRow = function()
-{
+tableView.prototype.setConfirm = function (arr, i = 0) {
+    for (i; i < arr.length; i++) {
+        arr[i].confirm = undefined;
+        if (arr[i].child !== undefined) {
+            this.setConfirm(arr[i].child);
+        }
+    }
+}
+
+tableView.prototype.countRow = function () {
     var countRowVisiable = this.countRowChild(this.data);
-    
+
     return countRowVisiable;
 }
 
-tableView.prototype.countRowChild = function(arr)
-{
+tableView.prototype.countRowChild = function (arr) {
     var countRowVisiable = 0
-    for(var i = 0;i<arr.length;i++)
-    {
-        if(arr[i].visiable!==false)
-        countRowVisiable++;
-        if(arr[i].child!==undefined)
-        countRowVisiable += this.countRowChild(arr[i].child);
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].visiable !== false)
+            countRowVisiable++;
+        if (arr[i].child !== undefined)
+            countRowVisiable += this.countRowChild(arr[i].child);
     }
     return countRowVisiable;
 }
 
-tableView.prototype.pagination = function(number,functionClick){
-    var countPrecent = Math.ceil(this.countRow()/number);
-    if(countPrecent === 1)
-    return _({
-        tag:"div",
-        style:{
-            display:"none"
-        }
-    })
+tableView.prototype.pagination = function (number, functionClick) {
+    var countPrecent = Math.ceil(this.countRow() / number);
+
+    if (countPrecent <= 1) {
+        var temp = _({
+            tag: "div",
+            style: {
+                display: "none"
+            }
+        })
+        temp.noneValue = true;
+        return temp;
+    }
+
     var self = this;
     var paginationLeftPos = "20px";
     var paginationOpacity = 0;
     var checkPaginationClick = 0;
     var arr = [];
     var overlay = _({
-        tag:"div",
-        class:"pagination-hover-overlay"
+        tag: "div",
+        class: "pagination-hover-overlay"
     })
     var container = _({
-        tag:"div",
-        class:"pagination-wrapper",
+        tag: "div",
+        class: "pagination-wrapper",
     })
     var temp = _({
-        tag:"div",
-        class:"pagination",
-        child:[
+        tag: "div",
+        class: "pagination",
+        child: [
             {
-                tag:"div",
-                class:"pagination-container",
-                child:[
+                tag: "div",
+                class: "pagination-container",
+                child: [
                     overlay,
                     {
-                        tag:"div",
-                        class:"pagination-prev",
-                        on:{
-                            click:function(event){
-                                var temp = $("a.active",container);
-                
-                                if(temp!==undefined)
-                                    if(temp.previousSibling!==null){
-                                        temp.previousSibling.click();
-                                        temp.style.color="";
-                                    }
-                                        
-                                
+                        tag: "div",
+                        class: "pagination-prev",
+                        on: {
+                            click: function (event) {
+                                var temp = $("a.active", container);
+
+                                if (temp !== undefined)
+                                    var prev = temp.previousSibling;
+                                while (prev != null && prev.classList.contains("detail"))
+                                    prev = prev.previousSibling;
+                                if (prev !== null) {
+                                    prev.click();
+                                    temp.style.color = "";
+                                }
+
+
                             }
                         },
-                        props:{
+                        props: {
                         },
-                        child:[
+                        child: [
                             {
-                                tag:"span",
-                                class:["icon-pagination", "icon-pagination-prev"],
-                                child:[
+                                tag: "span",
+                                class: ["icon-pagination", "icon-pagination-prev"],
+                                child: [
                                     {
-                                        tag:"i",
-                                        class:["icon", "material-icons"],
-                                        props:{
-                                            innerHTML:"keyboard_arrow_left"
+                                        tag: "i",
+                                        class: ["icon", "material-icons"],
+                                        props: {
+                                            innerHTML: "keyboard_arrow_left"
                                         }
                                     }
                                 ]
@@ -1182,29 +1187,33 @@ tableView.prototype.pagination = function(number,functionClick){
                     },
                     container,
                     {
-                        tag:"div",
-                        class:"pagination-next",
-                        on:{
-                            click:function(event){
-                                var temp = $("a.active",container);
-                                
-                                if(temp!==undefined)
-                                    if(temp.nextSibling!==null){
-                                        temp.nextSibling.click();
-                                        temp.style.color="";
-                                    }   
+                        tag: "div",
+                        class: "pagination-next",
+                        on: {
+                            click: function (event) {
+                                var temp = $("a.active", container);
+
+                                if (temp !== undefined)
+                                    var next = temp.nextSibling;
+                                while (next != null && next.classList.contains("detail"))
+                                    next = next.nextSibling;
+                                console.log(next)
+                                if (next !== null) {
+                                    next.click();
+                                    temp.style.color = "";
+                                }
                             }
                         },
-                        child:[
+                        child: [
                             {
-                                tag:"span",
-                                class:["icon-pagination", "icon-pagination-next"],
-                                child:[
+                                tag: "span",
+                                class: ["icon-pagination", "icon-pagination-next"],
+                                child: [
                                     {
-                                        tag:"i",
-                                        class:["icon", "material-icons"],
-                                        props:{
-                                            innerHTML:"keyboard_arrow_left"
+                                        tag: "i",
+                                        class: ["icon", "material-icons"],
+                                        props: {
+                                            innerHTML: "keyboard_arrow_left"
                                         }
                                     }
                                 ]
@@ -1215,19 +1224,40 @@ tableView.prototype.pagination = function(number,functionClick){
             }
         ]
     })
-    
-    for(var i = 0;i<countPrecent;i++){
-       
+
+    for (var i = 0; i < countPrecent; i++) {
+        if (i == 1) {
+            temp.detailLeft = _({
+                tag: "a",
+                class: ["pagination-page-number", "detail"],
+                props: {
+                    innerHTML: "..."
+                }
+            });
+            container.appendChild(temp.detailLeft);
+        }
+
+        if (i == countPrecent - 1) {
+            temp.detailRight = _({
+                tag: "a",
+                class: ["pagination-page-number", "detail"],
+                props: {
+                    innerHTML: "..."
+                }
+            });
+            container.appendChild(temp.detailRight);
+        }
         var choiceSelect = _({
-            tag:"a",
-            class:"pagination-page-number",
-            on:{
-                click:function(i){
-                    return function(event){
-                        var temp = $("a.active",container);
-                        if(temp!==undefined)
-                        temp.classList.remove("active");
+            tag: "a",
+            class: "pagination-page-number",
+            on: {
+                click: function (i) {
+                    return function (event) {
+                        var active = $("a.active", container);
+                        if (active !== undefined)
+                            active.classList.remove("active");
                         this.classList.add("active");
+                        temp.updateSize();
                         paginationLeftPos = this.offsetLeft + "px";
                         paginationOpacity = 1;
                         checkPaginationClick = 1;
@@ -1235,94 +1265,207 @@ tableView.prototype.pagination = function(number,functionClick){
                         overlay.style.backgroundColor = "#00178a";
                         overlay.style.opacity = paginationOpacity;
                         this.style.color = "#fff";
-                        if(functionClick!==undefined)
-                        functionClick(event,i);
-                        self.updateTable(undefined,self.data,self.dragHorizontal,self.dragVertical,i*number);
-                        if(self.scrollParent!==undefined)
-                        self.scrollParent.scrollTop = 0;
+
+                        if (functionClick !== undefined)
+                            functionClick(event, i);
+                        self.updateTable(undefined, self.data, self.dragHorizontal, self.dragVertical, i * number);
+                        if (self.scrollParent !== undefined)
+                            self.scrollParent.scrollTop = 0;
                     }
                 }(i),
-                mouseover:function(event){
+                mouseover: function (event) {
                     paginationOpacity = 1;
                     overlay.style.backgroundColor = "#00c1dd";
                     overlay.style.left = this.offsetLeft + "px";
                     overlay.style.opacity = paginationOpacity;
-                    var temp = $("a.active",container);
+                    var active = $("a.active", container);
 
-                    if(temp!==undefined)
-                        temp.style.color = "#333d45";
+                    if (active !== undefined)
+                        active.style.color = "#333d45";
                     this.style.color = "#fff";
                 },
-                mouseout:function(event){
+                mouseout: function (event) {
                     if (checkPaginationClick) {
                         paginationOpacity = 1;
-                      } else {
+                    } else {
                         paginationOpacity = 0;
-                      }
+                    }
                     overlay.style.backgroundColor = "#00178a";
                     overlay.style.opacity = paginationOpacity;
                     overlay.style.left = paginationLeftPos;
 
                     this.style.color = "#333d45";
-                    var temp = $("a.active",container);
-                    if(temp!==undefined)
-                        temp.style.color = "#fff";
+                    var active = $("a.active", container);
+                    if (active !== undefined)
+                        active.style.color = "#fff";
                 }
             },
-            props:{
-                innerHTML:i+1            
+            props: {
+                innerHTML: i + 1
             }
         })
-    
+
         arr.push(choiceSelect);
         container.appendChild(choiceSelect);
     }
 
-    temp.resetChoice = function(){
-        setTimeout(function(){
+    temp.resetChoice = function () {
+        setTimeout(function () {
             arr[0].click();
-        },10)
+        }, 10)
     }
 
-    temp.resetOnlyView = function(){
-        setTimeout(function(){
-        if(arr.length==0)
-        return;
-        var temp = $("a.active",container);
-        if(temp!==undefined){
-            temp.classList.remove("active");
-            temp.style.color = "";
-        }
-       
-        arr[0].classList.add("active");
-        paginationLeftPos = arr[0].offsetLeft + "px";
-        paginationOpacity = 1;
-        checkPaginationClick = 1;
-        overlay.style.left = paginationLeftPos;
-        overlay.style.backgroundColor = "#00178a";
-        overlay.style.opacity = paginationOpacity;
-        arr[0].style.color = "#fff";
-        },10);
+    temp.resetOnlyView = function () {
+        setTimeout(function () {
+            if (arr.length == 0)
+                return;
+            var temp = $("a.active", container);
+            if (temp !== undefined) {
+                temp.classList.remove("active");
+                temp.style.color = "";
+            }
+
+            arr[0].classList.add("active");
+            paginationLeftPos = arr[0].offsetLeft + "px";
+            paginationOpacity = 1;
+            checkPaginationClick = 1;
+            overlay.style.left = paginationLeftPos;
+            overlay.style.backgroundColor = "#00178a";
+            overlay.style.opacity = paginationOpacity;
+            arr[0].style.color = "#fff";
+        }, 10);
     }
-    temp.reActive = function(){
-        var temp = $("a.active",container);
-        if(temp!==undefined)
+    temp.reActive = function () {
+        var temp = $("a.active", container);
+        if (temp !== undefined)
             temp.click();
     }
     temp.resetOnlyView();
+    var displayNone = [];
+    temp.updateSize = function () {
+        for (var i = 0; i < displayNone.length; i++) {
+            displayNone[i].style.display = "";
+        }
+        displayNone = [];
+        temp.detailLeft.style.display = "";
+        temp.detailRight.style.display = "";
+        var count = parseInt(self.offsetWidth / 50) - 2;
+        var i = 0;
+        var active = $("a.active", container);
+        var countTime = -99;
+        if (count < arr.length) {
+            var countTime = count;
+        }
+        var lastIndexPrev;
+        var lastIndexNext;
+        var isLeft = false, isRight = false;
+        if (active !== undefined) {
+            var prev = active.previousSibling, next = active.nextSibling;
+
+            while (i < count && !(isLeft == true && isRight == true)) {
+
+                
+                if (isRight == false && next != null) {
+                    console.log(countTime)
+                    if (i == countTime - 4) {
+                        if(next !== temp.detailRight && next !== temp.detailLeft){
+                            isRight = true;
+                            countTime++;
+                            i++;
+                            lastIndexNext.style.display = "";
+                            temp.detailRight.style.display = "flex";
+                            container.lastChild.style.display = "flex";
+                        }else
+                        {
+                            isRight = true;
+                            while (next == temp.detailRight || next == temp.detailLeft)
+                                next = next.nextSibling;
+                            next.style.display = "flex";
+                            lastIndexNext = next;
+                            displayNone.push(next);
+                            countTime++;
+                            i++;
+                        }
+                        
+                 
+                    } else {
+                        while (next == temp.detailRight || next == temp.detailLeft)
+                            next = next.nextSibling;
+                        next.style.display = "flex";
+                        lastIndexNext = next;
+                        displayNone.push(next);
+                        next = next.nextSibling;
+                        i++;
+                        if(next==null)
+                        {
+                            count++;
+                            countTime++;
+                        }
+                    }
+                } else {
+                    isRight = true;
+                }
+
+                if (i >= count)
+                    break;
+                
+                if (isLeft == false && prev != null) {
+                    if (i == countTime - 4) {
+                        if(prev !== temp.detailRight && prev !== temp.detailLeft)
+                        {
+                            isLeft = true;
+                            countTime++;
+                            i++;
+                            lastIndexPrev.style.display = "";
+                            temp.detailLeft.style.display = "flex";
+                            container.firstChild.style.display = "flex";
+                        }else
+                        {
+                            isLeft = true;
+                            while (prev == temp.detailLeft || prev == temp.detailRight)
+                                prev = prev.previousSibling;
+                            prev.style.display = "flex";
+                            lastIndexPrev = prev;
+                            displayNone.push(prev);
+                            i++;
+                            countTime++;
+                        }
+                        
+                    } else {
+                        while (prev == temp.detailLeft || prev == temp.detailRight)
+                            prev = prev.previousSibling;
+                        prev.style.display = "flex";
+                        lastIndexPrev = prev;
+                        displayNone.push(prev);
+                        prev = prev.previousSibling;
+                        i++;
+                        if(prev==null)
+                        {
+                            count++;
+                            countTime++;
+                        }
+                    }
+                } else {
+                    isLeft = true;
+                }
+            }
+        }
+    }
+    setTimeout(function () {
+        temp.updateSize();
+    }, 10);
     return temp;
 }
 
-tableView.prototype.getRow = function(data)
-{
+tableView.prototype.getRow = function (data) {
     var temp = _({
         tag: "tr",
     });
     var result = this;
-    setTimeout(function() {
+    setTimeout(function () {
         temp.className = temp.className + " parent";
     }, 10);
-    Object.assign(temp,tableView.prototype);
+    Object.assign(temp, tableView.prototype);
     temp.headerTable = result.headerTable;
     temp.bodyTable = result.bodyTable;
     temp.check = result.check;
@@ -1331,8 +1474,8 @@ tableView.prototype.getRow = function(data)
     temp.dragHorizontal = result.dragHorizontal;
     temp.data = data;
 
-    if(temp.data.child===undefined)
-    temp.data.child = [];
+    if (temp.data.child === undefined)
+        temp.data.child = [];
     temp.childrenNodes = [];
     temp.clone = [];
     temp.parentMargin = result.parentMargin + 1;
@@ -1341,200 +1484,176 @@ tableView.prototype.getRow = function(data)
     temp.data.moreChild = undefined;
     temp.tempIndexRow = result.tempIndexRow;
 
-    temp.checkLeft = function()
-    {
-        for(var i=0;i<temp.childNodes.length;i++)
-        temp.childNodes[i].checkLeft();
+    temp.checkLeft = function () {
+        for (var i = 0; i < temp.childNodes.length; i++)
+            temp.childNodes[i].checkLeft();
     }
-    if(temp.data.marker!==undefined)
-    {
+    if (temp.data.marker !== undefined) {
         temp.id = temp.data.marker.toString();
     }
-    temp.checkChild = function(data)
-    {
+    temp.checkChild = function (data) {
         temp.checkClone();
-        if(data!==undefined)
-        temp.data =  data;
-        if(temp.data.child.length!==0)
-        {
+        if (data !== undefined)
+            temp.data = data;
+        if (temp.data.child.length !== 0) {
             temp.checkIcon();
             temp.getBodyTable(temp.data.child);
-                
+
         }
     }
 
-    temp.checkClone = function()
-    {
-        if(temp.clone.length === 0){
+    temp.checkClone = function () {
+        if (temp.clone.length === 0) {
             temp.clone = [];
             var k = 0;
-            for(var i = 0;i<temp.childNodes.length;i++)
-            {
+            for (var i = 0; i < temp.childNodes.length; i++) {
                 temp.clone[k++] = [temp.childNodes[i]];
-                if(temp.childNodes[i].colSpan!==1)
-                {
+                if (temp.childNodes[i].colSpan !== 1) {
                     k++;
                 }
             }
         }
     }
 
-    temp.checkIcon  = function()
-    {
+    temp.checkIcon = function () {
         var indexMore = 0;
-        if(temp.childIndex!==undefined)
-        {
-            if(temp.childIndex === 0){
-                if(!result.headerTable.parentNode.classList.contains("padding-High-table"))
-                result.headerTable.parentNode.classList.add("padding-High-table");
+        if (temp.childIndex !== undefined) {
+            if (temp.childIndex === 0) {
+                if (!result.headerTable.parentNode.classList.contains("padding-High-table"))
+                    result.headerTable.parentNode.classList.add("padding-High-table");
             }
-            
+
             indexMore = temp.childIndex;
         }
-            
-            temp.classList.add("more-child");
-            var buttonClick = _({
-                tag:"div",
-                class:"more-icon-container",
-                on:{
-                    click:function(event){
-                        temp.setDisPlay();
-                    }
-                },
-                child:[
-                    {
-                        tag:"i",
-                        class: ["material-icons","more-button"],
-                        props:{
-                            innerHTML:"play_arrow"
-                        },
-                    }
-                ]
-            });
+
+        temp.classList.add("more-child");
+        var buttonClick = _({
+            tag: "div",
+            class: "more-icon-container",
+            on: {
+                click: function (event) {
+                    temp.setDisPlay();
+                }
+            },
+            child: [
+                {
+                    tag: "i",
+                    class: ["material-icons", "more-button"],
+                    props: {
+                        innerHTML: "play_arrow"
+                    },
+                }
+            ]
+        });
         var x = temp.childNodes[indexMore].firstChild;
-        while(x.classList!==undefined&&x.classList.contains("margin-div-cell"))
-        x = x.nextSibling;
-        temp.childNodes[indexMore].insertBefore(buttonClick,x);
+        while (x.classList !== undefined && x.classList.contains("margin-div-cell"))
+            x = x.nextSibling;
+        temp.childNodes[indexMore].insertBefore(buttonClick, x);
         this.buttonClick = buttonClick;
-        result.checkMargin = function(){
-            for(var i = 0;i<result.clone[indexMore].length;i++)
-            {
-                if(!result.clone[indexMore][i].classList.contains("margin-left-has-icon"))
-                result.clone[indexMore][i].classList.add("margin-left-has-icon");    
+        result.checkMargin = function () {
+            for (var i = 0; i < result.clone[indexMore].length; i++) {
+                if (!result.clone[indexMore][i].classList.contains("margin-left-has-icon"))
+                    result.clone[indexMore][i].classList.add("margin-left-has-icon");
             }
         }
         result.checkMargin();
-        setTimeout(function(){
-            if(temp.moreChild==false)
-            {
+        setTimeout(function () {
+            if (temp.moreChild == false) {
                 temp.setDisPlay();
                 temp.moreChild = undefined;
             }
-        },1)
+        }, 1)
     }
-    
-    
-    temp.checkVisibleChild = function()
-    {
+
+
+    temp.checkVisibleChild = function () {
         this.buttonClick.selfRemove();
         var parent = this.childNodes[0].getParentNode();
-        if(parent.tagName==="TABLE")
-        {   
-            for(var i = 0;i< parent.bodyTable.childNodes.length; i++)
-            {
-                if(parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.contains("margin-left-has-icon"))
-                parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.remove("margin-left-has-icon")
+        if (parent.tagName === "TABLE") {
+            for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
+                if (parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.contains("margin-left-has-icon"))
+                    parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.remove("margin-left-has-icon")
             }
         }
     }
-   
+
     return temp;
 }
 
-tableView.prototype.setDisPlay = function()
-{
-    if(!this.classList.contains("more-child"))
-    {
+tableView.prototype.setDisPlay = function () {
+    if (!this.classList.contains("more-child")) {
         this.classList.add("more-child");
         var childrenNodes = this.childrenNodes;
         var arrFunction = [];
-        for(var i=0;i<childrenNodes.length;i++)
-        {
+        for (var i = 0; i < childrenNodes.length; i++) {
             childrenNodes[i].classList.remove("disPlayNone");
-            arrFunction.push(function(childrenNodes,i){
-                return function(){
+            arrFunction.push(function (childrenNodes, i) {
+                return function () {
                     childrenNodes[i].classList.add("parent");
                 }
-            }(childrenNodes,i));
-            if(childrenNodes[i].childrenNodes.length!==0)
-            childrenNodes[i].setDisPlayVisable();
-        } 
-        setTimeout(function(){
-            for(var i = 0;i<arrFunction.length;i++)
+            }(childrenNodes, i));
+            if (childrenNodes[i].childrenNodes.length !== 0)
+                childrenNodes[i].setDisPlayVisable();
+        }
+        setTimeout(function () {
+            for (var i = 0; i < arrFunction.length; i++)
                 arrFunction[i]();
-        },10);
+        }, 10);
     }
-    else{
+    else {
         this.classList.remove("more-child");
         this.setDisPlayNone();
-    }   
-}
-
-tableView.prototype.setDisPlayVisable = function()
-{
-    if(this.classList.contains("more-child"))
-    {
-        var arrFunction = [];
-        var childrenNodes = this.childrenNodes;
-        for(var i=0;i<childrenNodes.length;i++)
-        {
-            childrenNodes[i].classList.remove("disPlayNone");
-            arrFunction.push(function(childrenNodes,i){
-                return function(){
-                    childrenNodes[i].classList.add("parent");
-                }
-            }(childrenNodes,i));
-            if(childrenNodes[i].childrenNodes.length!==0)
-                childrenNodes[i].setDisPlayVisable();
-        } 
-        setTimeout(function(){
-            for(var i = 0;i<arrFunction.length;i++)
-                arrFunction[i]();
-        },10);
     }
 }
 
-tableView.prototype.setDisPlayNone = function()
-{   
-    var childrenNodes = this.childrenNodes;
-    for(var i=0;i<childrenNodes.length;i++)
-    {
-        childrenNodes[i].classList.remove("parent");
-        childrenNodes[i].classList.add("disPlayNone");
-        if(childrenNodes[i].childrenNodes.length!==0)
-            childrenNodes[i].setDisPlayNone();
-    } 
+tableView.prototype.setDisPlayVisable = function () {
+    if (this.classList.contains("more-child")) {
+        var arrFunction = [];
+        var childrenNodes = this.childrenNodes;
+        for (var i = 0; i < childrenNodes.length; i++) {
+            childrenNodes[i].classList.remove("disPlayNone");
+            arrFunction.push(function (childrenNodes, i) {
+                return function () {
+                    childrenNodes[i].classList.add("parent");
+                }
+            }(childrenNodes, i));
+            if (childrenNodes[i].childrenNodes.length !== 0)
+                childrenNodes[i].setDisPlayVisable();
+        }
+        setTimeout(function () {
+            for (var i = 0; i < arrFunction.length; i++)
+                arrFunction[i]();
+        }, 10);
+    }
 }
 
-tableView.prototype.getDivMargin = function()
-{
+tableView.prototype.setDisPlayNone = function () {
+    var childrenNodes = this.childrenNodes;
+    for (var i = 0; i < childrenNodes.length; i++) {
+        childrenNodes[i].classList.remove("parent");
+        childrenNodes[i].classList.add("disPlayNone");
+        if (childrenNodes[i].childrenNodes.length !== 0)
+            childrenNodes[i].setDisPlayNone();
+    }
+}
+
+tableView.prototype.getDivMargin = function () {
     return _({
-        tag:"div",
-        class:"margin-div-cell"
+        tag: "div",
+        class: "margin-div-cell"
     })
 }
 
-tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
-{
+tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row) {
     var data = dataOrigin;
-    var result = this,value,bonus,style,cell;
-    if(checkSpan[i]!==undefined){
-        if(checkSpan[i][k]==2)
-        return 2;
-        if(checkSpan[i][k]==6)
-        return 6;
+    var result = this, value, bonus, style, cell;
+    if (checkSpan[i] !== undefined) {
+        if (checkSpan[i][k] == 2)
+            return 2;
+        if (checkSpan[i][k] == 6)
+            return 6;
     }
-        
+
     if (data.value === undefined) {
         if (typeof data === "object")
             value = "";
@@ -1551,8 +1670,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
             value += (i + 1);
             break;
         case "dragzone":
-            if (data.icon !== undefined)
-            {
+            if (data.icon !== undefined) {
                 icon = data.icon;
                 bonus = _({
                     tag: "i",
@@ -1565,29 +1683,28 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
                         innerHTML: icon
                     }
                 })
-            }else
-            {
+            } else {
                 bonus = _({
-                    tag:"i",
-                    class: ["material-icons","drag-icon-button"],
-                    props:{
-                        innerHTML:"drag_indicator"
+                    tag: "i",
+                    class: ["material-icons", "drag-icon-button"],
+                    props: {
+                        innerHTML: "drag_indicator"
                     },
-                    on:{
+                    on: {
                         mousedown: result.dragVertical ? function (event) {
                             var self = this;
-                            return function (event,cellIndex,self) {
+                            return function (event, cellIndex, self) {
                                 event.preventDefault();
-                                var finalIndex =  cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+                                var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
                                 self.hold = false;
                                 var dom = self;
                                 self.default = event;
                                 self.timeoutID = setTimeout(function () {
                                     dom.hold = true;
-                                    moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex+1);
+                                    moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
                                 }, 200);
-                            }(event,cell,self)
-                        }: undefined,
+                            }(event, cell, self)
+                        } : undefined,
                         dragstart: result.dragVertical ? function () {
                             return false;
                         } : undefined,
@@ -1600,19 +1717,19 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
                         },
                         mousemove: result.dragVertical ? function (event) {
                             var self = this;
-                            return function (event,cellIndex,self) {
+                            return function (event, cellIndex, self) {
                                 if (self.hold === false) {
-                                    var finalIndex =  cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+                                    var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
                                     self.hold = false;
                                     var deltaX = self.default.clientX - event.clientX,
                                         deltaY = self.default.clientY - event.clientY;
                                     if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
                                         self.hold = true;
-                                        moveElementFix(event, self, cellIndex.getParentNode(), finalIndex+1);
+                                        moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
                                         clearTimeout(self.timeoutID);
                                     }
                                 }
-                            }(event,cell,self)
+                            }(event, cell, self)
                         } : undefined,
                     }
                 })
@@ -1626,7 +1743,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
                     click: function (event) {
                         if (result.bodyTable.listCheckBox !== undefined) {
                             if (this.checked === false)
-                            result.bodyTable.listCheckBox[0].checked = false;
+                                result.bodyTable.listCheckBox[0].checked = false;
                             else {
                                 if (result.bodyTable.listCheckBox[0].checked === false)
                                     for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
@@ -1644,7 +1761,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
                 }
             })
             if (result.bodyTable.listCheckBox !== undefined)
-            result.bodyTable.listCheckBox.push(bonus);
+                result.bodyTable.listCheckBox.push(bonus);
             break;
         case "detail":
             var icon = "more_vert";
@@ -1664,7 +1781,7 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
             break;
 
     }
-    var functionClick=undefined;
+    var functionClick = undefined;
     if (data.functionClick !== undefined)
         functionClick = data.functionClick;
     else {
@@ -1673,80 +1790,74 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
     }
 
     style = {};
-    if(data.style!==undefined)
+    if (data.style !== undefined)
         style = data.style;
 
     cell = _({
         tag: "td",
-        style:style,
+        style: style,
         on: {
             click: function (event) {
                 return function (event, row, functionClick) {
                     event.preventDefault();
-                    if (functionClick !== undefined){
-                        if(cell.getParentNode().childrenNodes.length!==0)
-                        var finalIndex =  cell.getParentNode().childrenNodes.indexOf(cell.parentNode);
+                    if (functionClick !== undefined) {
+                        if (cell.getParentNode().childrenNodes.length !== 0)
+                            var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);
                         else
-                        var finalIndex =  0;
+                            var finalIndex = 0;
                         var dataIndex;
                         functionClick(event, cell, finalIndex, cell.getParentNode(), row.data, row);
                     }
-                        
+
                 }(event, row, functionClick)
             },
         }
     })
 
-    if(functionClick!==undefined)
-        cell.style.cursor ="pointer";
+    if (functionClick !== undefined)
+        cell.style.cursor = "pointer";
     var container = _({
-        tag:"div",
-        class:"container-view",
+        tag: "div",
+        class: "container-view",
     })
 
-    cell.checkLeft = function(){
-        return function(cell,result,k){
-            
+    cell.checkLeft = function () {
+        return function (cell, result, k) {
+
             var widthSize = 0;
             var step = 1.71428571429;
-            var arr =  cell.getElementsByClassName("margin-div-cell");
-            for(var i = arr.length-1;i>=0;i--)
-            {
+            var arr = cell.getElementsByClassName("margin-div-cell");
+            for (var i = arr.length - 1; i >= 0; i--) {
                 arr[i].selfRemove();
             }
-            if(result.data.child!==undefined)
-            if(k === result.childIndex){
-                for(var  i =0;i<result.parentMargin - 1;i++)
-                {
-                    cell.insertBefore(result.getDivMargin(),cell.firstChild);
-                    widthSize+=step;
+            if (result.data.child !== undefined)
+                if (k === result.childIndex) {
+                    for (var i = 0; i < result.parentMargin - 1; i++) {
+                        cell.insertBefore(result.getDivMargin(), cell.firstChild);
+                        widthSize += step;
+                    }
                 }
-            }
-            container.style.width = "calc(100% - "+widthSize+"rem)";
-            if(widthSize!==0)
-            cell.classList.add("margin-left-has-icon");
-        }(cell,row,k)
+            container.style.width = "calc(100% - " + widthSize + "rem)";
+            if (widthSize !== 0)
+                cell.classList.add("margin-left-has-icon");
+        }(cell, row, k)
     }
 
 
-    row.resetParentChild = function()
-    {
-        for(var i = 0;i< row.childrenNodes.length;i++)
-        {
-            row.childrenNodes[i].parentMargin = row.parentMargin+1;
+    row.resetParentChild = function () {
+        for (var i = 0; i < row.childrenNodes.length; i++) {
+            row.childrenNodes[i].parentMargin = row.parentMargin + 1;
             row.childrenNodes[i].resetParentChild();
         }
     }
     cell.addChild(container);
     cell.checkLeft();
 
-   
-    if(data.element===undefined)
-    {
-        container.addChild(_({text:value}))
-        
-    }else
-    {
+
+    if (data.element === undefined) {
+        container.addChild(_({ text: value }))
+
+    } else {
         container.appendChild(data.element);
     }
 
@@ -1755,266 +1866,244 @@ tableView.prototype.getCell = function(dataOrigin,i,j,k,checkSpan = [],row)
         bonus = undefined;
     }
 
-    if(data.rowspan!==undefined){
-        cell.setAttribute("rowspan",data.rowspan);
-        for(var l = i+1;l<i+data.rowspan;l++)
-        {
-            if(checkSpan[l]===undefined)
+    if (data.rowspan !== undefined) {
+        cell.setAttribute("rowspan", data.rowspan);
+        for (var l = i + 1; l < i + data.rowspan; l++) {
+            if (checkSpan[l] === undefined)
                 checkSpan[l] = [];
-            checkSpan[l][k]=2;
+            checkSpan[l][k] = 2;
         }
     }
-    if(data.colspan!==undefined){
-        cell.setAttribute("colspan",data.colspan);
-        
-        checkSpan[i]=[]
-        for(var l = k+1;l<k+data.colspan;l++)
-        {
-            checkSpan[i][l]=6;
+    if (data.colspan !== undefined) {
+        cell.setAttribute("colspan", data.colspan);
+
+        checkSpan[i] = []
+        for (var l = k + 1; l < k + data.colspan; l++) {
+            checkSpan[i][l] = 6;
         }
     }
-    cell.getParentNode = function()
-    {
-     var parent = cell.clone[0][0];
-     parent = parent;
-     if(parent.tagName==="TH")
-        return parent.parentNode.parentNode.parentNode;
+    cell.getParentNode = function () {
+        var parent = cell.clone[0][0];
+        parent = parent;
+        if (parent.tagName === "TH")
+            return parent.parentNode.parentNode.parentNode;
         return parent.parentNode;
     }
     return cell;
 }
 
-tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical,index = 0) {
+tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical, index = 0) {
     var checkSpan = [];
     var result = this;
     var temp = _({
         tag: "tbody"
     });
     temp.listCheckBox = [];
-    if(dragHorizontal!==undefined)
-    result.dragHorizontal = dragHorizontal;
-    if(dragVertical!==undefined)
-    result.dragVertical = dragVertical;
-    if(this.bodyTable.listCheckBox!==undefined)
-    temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
+    if (dragHorizontal !== undefined)
+        result.dragHorizontal = dragHorizontal;
+    if (dragVertical !== undefined)
+        result.dragVertical = dragVertical;
+    if (this.bodyTable.listCheckBox !== undefined)
+        temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
 
-    for(var i = 0;i<result.clone.length;i++)
-    {
+    for (var i = 0; i < result.clone.length; i++) {
         result.clone[i] = [result.clone[i].shift()];
     }
-    
+
     this.replaceChild(temp, this.bodyTable);
     this.bodyTable = temp;
     result.childrenNodes = [];
-    result.getBodyTable(data,index);
+    result.getBodyTable(data, index);
 
-    this.checkSpan  = checkSpan;
+    this.checkSpan = checkSpan;
     this.data = data;
 }
 
-tableView.prototype.insertRow = function(data)
-{
-    if(this.tagName === "TABLE")
-    return this.updateRow(data,this.data.length)
+tableView.prototype.insertRow = function (data) {
+    if (this.tagName === "TABLE")
+        return this.updateRow(data, this.data.length)
     else
-    return this.updateRow(data,this.data.child.length)
+        return this.updateRow(data, this.data.child.length)
 }
 
-tableView.prototype.updateRow = function(data,index,checkMust=false)
-{
-    var result = this,k,cell;
-    if(result.isUpdate===false)
+tableView.prototype.updateRow = function (data, index, checkMust = false) {
+    var result = this, k, cell;
+    if (result.isUpdate === false)
         return;
     var delta = [];
     var row = result.getRow(data);
-    
-    for(var i = 0;i<result.clone.length;i++)
-    {
+
+    for (var i = 0; i < result.clone.length; i++) {
         delta[i] = 0;
-        if(result.checkSpan!==undefined){
-            if(result.checkSpan[index]!==undefined){
-                if(result.checkSpan[index][i]===6){
+        if (result.checkSpan !== undefined) {
+            if (result.checkSpan[index] !== undefined) {
+                if (result.checkSpan[index][i] === 6) {
                     result.checkSpan[index][i] = undefined;
-                    result.clone[i].splice(index+1,0,{})
+                    result.clone[i].splice(index + 1, 0, {})
                 }
             }
-            for(var j = 0;j<index;j++)
-            {
-                if(result.checkSpan[j]!==undefined)
-                    if(result.checkSpan[j][i]!==undefined)
-                    delta[i]++;
+            for (var j = 0; j < index; j++) {
+                if (result.checkSpan[j] !== undefined)
+                    if (result.checkSpan[j][i] !== undefined)
+                        delta[i]++;
             }
         }
     }
 
     var checkChild = false;
-    
-    if(index===result.childrenNodes.length)
-    {
-        if(result.tagName==="TABLE")
-        result.bodyTable.addChild(row);
-        else
-        {
+
+    if (index === result.childrenNodes.length) {
+        if (result.tagName === "TABLE")
+            result.bodyTable.addChild(row);
+        else {
             checkChild = true;
-            if(!result.classList.contains("more-child"))
-            result.setDisPlay();
-            result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length-1].parentNode.nextSibling);
+            if (!result.classList.contains("more-child"))
+                result.setDisPlay();
+            result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length - 1].parentNode.nextSibling);
         }
     }
-    else{
+    else {
         var temp;
         temp = result.childrenNodes[index];
-        result.bodyTable.replaceChild(row,temp);
+        result.bodyTable.replaceChild(row, temp);
         row.classList.value = temp.classList.value;
-       
-        if(temp.childrenNodes!==undefined){
+
+        if (temp.childrenNodes !== undefined) {
             row.childrenNodes = temp.childrenNodes;
             row.clone = temp.clone;
         }
     }
 
-    for(var i = 0;i<this.bodyTable.parentNode.clone.length;i++)
-    {
+    for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
         k = parseFloat(this.bodyTable.parentNode.clone[i][0].id);
-        cell = result.getCell(data[k],index,k,i,result.checkSpan,row);
-        if(cell  === 6)
-        {
-            result.clone[k++].splice(index,1);
+        cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
+        if (cell === 6) {
+            result.clone[k++].splice(index, 1);
             continue;
         }
-        if(cell === 2)
-        {
+        if (cell === 2) {
             k++;
             continue;
         }
-        if(cell === true)
-        {
+        if (cell === true) {
             continue;
         }
         cell.clone = result.clone;
-        if(result.clone[i]===undefined)
-        result.clone[i] = [];
-        result.clone[i][index+1-delta[i]] = cell;
+        if (result.clone[i] === undefined)
+            result.clone[i] = [];
+        result.clone[i][index + 1 - delta[i]] = cell;
         k++;
         row.addChild(cell);
     }
-    var x,indexData = result.childrenNodes[index].data;
+    var x, indexData = result.childrenNodes[index].data;
     result.childrenNodes[index] = row;
-   if(result.tagName!=="TABLE"){
+    if (result.tagName !== "TABLE") {
         indexData = result.data.child.indexOf(indexData);
-        
-        if(indexData===-1){
+
+        if (indexData === -1) {
             result.data.child.push(data);
-            x =data;
-        }              
-        else{
-            x = Object.assign(result.data.child[indexData],data);
-            result.data.child[indexData]=x;
+            x = data;
         }
-   }
-   else{
+        else {
+            x = Object.assign(result.data.child[indexData], data);
+            result.data.child[indexData] = x;
+        }
+    }
+    else {
         indexData = result.data.indexOf(indexData);
-        if(indexData===-1){
+        if (indexData === -1) {
             result.data.push(data);
-            x =data;
-        }              
-        else{
-            x = Object.assign(result.data[indexData],data);
-            result.data[indexData]=x;
+            x = data;
         }
-   }
-   row.data = x;
-   if(temp!==undefined){
+        else {
+            x = Object.assign(result.data[indexData], data);
+            result.data[indexData] = x;
+        }
+    }
+    row.data = x;
+    if (temp !== undefined) {
         row.childrenNodes = temp.childrenNodes;
         row.clone = temp.clone;
         row.checkSpan = temp.checkSpan;
-        if(row.clone!==undefined)
-        {
-            var k = 0,l = 0;
+        if (row.clone !== undefined) {
+            var k = 0, l = 0;
             var delta = 0;
-            for(var i = 0;i < row.clone.length; i++)
-            {
-                if(row.clone[i][0]===temp.childNodes[k])
-                {
-    
+            for (var i = 0; i < row.clone.length; i++) {
+                if (row.clone[i][0] === temp.childNodes[k]) {
+
                     row.clone[i].shift();
                     k++;
                 }
-    
-                if(delta>0){
+
+                if (delta > 0) {
                     delta--;
                     continue;
                 }
-                
+
                 row.clone[i].unshift(row.childNodes[l]);
-                if(row.childNodes[l].colSpan!=1)
-                {
-                    delta +=  row.childNodes[l].colSpan - 1;
+                if (row.childNodes[l].colSpan != 1) {
+                    delta += row.childNodes[l].colSpan - 1;
                 }
-    
+
                 l++;
             }
         }
-       
-   }
-   if(checkChild === true||checkMust === true)
-   {
-       if(result.checkIcon!==undefined)
-       result.checkIcon();
-   }
-   if(row.childrenNodes.length!==0)
-   row.checkIcon();
-   else
-   row.checkClone();
-   if(result.checkMargin!==undefined)
-   result.checkMargin();
 
-//    result.checkDataUpdate(row);
-   result.bodyTable.parentNode.hashTable =  new HashTable(result.bodyTable.parentNode.data);
-   result.bodyTable.parentNode.inputElement.onchange(undefined,true);
-   return row;
+    }
+    if (checkChild === true || checkMust === true) {
+        if (result.checkIcon !== undefined)
+            result.checkIcon();
+    }
+    if (row.childrenNodes.length !== 0)
+        row.checkIcon();
+    else
+        row.checkClone();
+    if (result.checkMargin !== undefined)
+        result.checkMargin();
+
+    //    result.checkDataUpdate(row);
+    result.bodyTable.parentNode.resetHash();
+    result.bodyTable.parentNode.updateHash();
+    return row;
 }
 
-tableView.prototype.dropRow = function(index)
-{
-    var result=this,deltaX=[];
-    var element = result.clone[0][index+1].parentNode;
-    return new Promise(function(resolve,reject){
-        if(result.isUpdate===false)
+tableView.prototype.dropRow = function (index) {
+    var result = this, deltaX = [];
+    var element = result.clone[0][index + 1].parentNode;
+    return new Promise(function (resolve, reject) {
+        if (result.isUpdate === false)
             return;
         var parent = element.childNodes[0].getParentNode();
-        if(!element.classList.contains("hideTranslate"))
+        if (!element.classList.contains("hideTranslate"))
             element.classList.add("hideTranslate");
-        if(element.childrenNodes.length!==0)
+        if (element.childrenNodes.length !== 0)
             element.addHideAnimationChild();
         parent.isUpdate = false;
-        var eventEnd = function(){
+        var eventEnd = function () {
             parent.dropRowChild(element)
             var deltaY = 0;
 
             deltaX = parent.checkLongRow(index);
-            for(var i = 0;i<element.childNodes.length;i++)
-            { 
-                parent.clone[i+deltaY].splice(index+1-deltaX[i+deltaY],1); 
-                if(parent.checkSpan!==undefined)
-                parent.checkSpan.splice(index,1); 
-                if(element.childNodes[i].colSpan!==undefined)
-                    deltaY+=element.childNodes[i].colSpan-1;
+            for (var i = 0; i < element.childNodes.length; i++) {
+                parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
+                if (parent.checkSpan !== undefined)
+                    parent.checkSpan.splice(index, 1);
+                if (element.childNodes[i].colSpan !== undefined)
+                    deltaY += element.childNodes[i].colSpan - 1;
             }
-            if(parent.childrenNodes.length!==0)
-            {
-                if(parent.data.child!==undefined){
-                    parent.data.child.splice(parent.data.child.indexOf(element.data),1);
+            if (parent.childrenNodes.length !== 0) {
+                if (parent.data.child !== undefined) {
+                    parent.data.child.splice(parent.data.child.indexOf(element.data), 1);
                 }
-                else{
-                    parent.data.splice(parent.data.indexOf(element.data),1);
+                else {
+                    parent.data.splice(parent.data.indexOf(element.data), 1);
                 }
-                parent.childrenNodes.splice(parent.childrenNodes.indexOf(element),1);
+                parent.childrenNodes.splice(parent.childrenNodes.indexOf(element), 1);
             }
-            if(result.checkVisibleChild!==undefined&&result.childrenNodes.length===0)
+            if (result.checkVisibleChild !== undefined && result.childrenNodes.length === 0)
                 result.checkVisibleChild();
             parent.isUpdate = true;
-            result.bodyTable.parentNode.hashTable =  new HashTable(result.bodyTable.parentNode.data);
+            result.bodyTable.parentNode.resetHash();
             resolve();
         };
         // Code for Safari 3.1 to 6.0
@@ -2025,110 +2114,95 @@ tableView.prototype.dropRow = function(index)
     })
 }
 
-tableView.prototype.changeParent = function(index,rowParent)
-{
-    var result=this,deltaX=[];
-    var element = result.clone[0][index+1].parentNode;
+tableView.prototype.changeParent = function (index, rowParent) {
+    var result = this, deltaX = [];
+    var element = result.clone[0][index + 1].parentNode;
     var parent = element.childNodes[0].getParentNode();
-    
-   
+
+
     var deltaY = 0;
 
     deltaX = parent.checkLongRow(index);
-    parent.changeRowChild(element,rowParent);
-    for(var i = 0;i<element.childNodes.length;i++)
-    { 
-        rowParent.clone[i+deltaY].push(element.childNodes[i]);
-        parent.clone[i+deltaY].splice(index+1-deltaX[i+deltaY],1); 
-        if(parent.checkSpan!==undefined)
-        parent.checkSpan.splice(index,1); 
-        if(element.childNodes[i].colSpan!==undefined)
-            deltaY+=element.childNodes[i].colSpan-1;
+    parent.changeRowChild(element, rowParent);
+    for (var i = 0; i < element.childNodes.length; i++) {
+        rowParent.clone[i + deltaY].push(element.childNodes[i]);
+        parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
+        if (parent.checkSpan !== undefined)
+            parent.checkSpan.splice(index, 1);
+        if (element.childNodes[i].colSpan !== undefined)
+            deltaY += element.childNodes[i].colSpan - 1;
     }
 
 
 
-    if(parent.childrenNodes.length!==0)
-    {
+    if (parent.childrenNodes.length !== 0) {
         var indexData = parent.childrenNodes.indexOf(element);
 
         rowParent.data.push(parent.data[indexData]);
-        if(parent.data.child!==undefined)
-        parent.data.child.splice(indexData,1);
+        if (parent.data.child !== undefined)
+            parent.data.child.splice(indexData, 1);
         else
-        parent.data.splice(indexData,1);
+            parent.data.splice(indexData, 1);
 
         rowParent.childrenNodes.push(element);
-        parent.childrenNodes.splice(indexData,1);
+        parent.childrenNodes.splice(indexData, 1);
     }
-    
-    if(result.checkVisibleChild!==undefined&&result.childrenNodes.length===0)
+
+    if (result.checkVisibleChild !== undefined && result.childrenNodes.length === 0)
         result.checkVisibleChild();
-    return rowParent.childrenNodes.length-1;
+    return rowParent.childrenNodes.length - 1;
 }
 
-tableView.prototype.addHideAnimationChild = function()
-{
-    for(var i = 0;i<this.childrenNodes.length;i++)
-    {
-        if(!this.childrenNodes[i].classList.contains("hideTranslate"))
+tableView.prototype.addHideAnimationChild = function () {
+    for (var i = 0; i < this.childrenNodes.length; i++) {
+        if (!this.childrenNodes[i].classList.contains("hideTranslate"))
             this.childrenNodes[i].classList.add("hideTranslate");
-        if(this.childrenNodes[i].childrenNodes.length!==0)
-        {
+        if (this.childrenNodes[i].childrenNodes.length !== 0) {
             this.childrenNodes[i].addHideAnimationChild();
         }
     }
 }
 
-tableView.prototype.changeRowChild = function(element,parent)
-{
+tableView.prototype.changeRowChild = function (element, parent) {
     var nextSibling;
-    if(parent.tagName==="TABLE"){
+    if (parent.tagName === "TABLE") {
         nextSibling = null;
         parent.bodyTable.addChild(element);
     }
-    else
-    {
-        nextSibling = parent.clone[0][parent.clone[0].length-1].parentNode.nextSibling;
-        parent.bodyTable.insertBefore(element,nextSibling);
+    else {
+        nextSibling = parent.clone[0][parent.clone[0].length - 1].parentNode.nextSibling;
+        parent.bodyTable.insertBefore(element, nextSibling);
     }
-    element.parentMargin = parent.parentMargin+1;
+    element.parentMargin = parent.parentMargin + 1;
     element.resetParentChild();
     element.checkLeft();
-    if(element.childrenNodes.length!==0)
-    element.changeRowChildElement(parent,nextSibling);
+    if (element.childrenNodes.length !== 0)
+        element.changeRowChildElement(parent, nextSibling);
 }
 
-tableView.prototype.changeRowChildElement = function(parent,nextSibling)
-{
-    for(var i = 0;i<this.childrenNodes.length;i++)
-    {
-        if(this.tagName==="TABLE")
-        this.bodyTable.addChild(this.childrenNodes[i]);
+tableView.prototype.changeRowChildElement = function (parent, nextSibling) {
+    for (var i = 0; i < this.childrenNodes.length; i++) {
+        if (this.tagName === "TABLE")
+            this.bodyTable.addChild(this.childrenNodes[i]);
         else
-        this.bodyTable.insertBefore(this.childrenNodes[i],nextSibling);
+            this.bodyTable.insertBefore(this.childrenNodes[i], nextSibling);
         this.childrenNodes[i].checkLeft();
-        if(this.childrenNodes[i].childrenNodes.length!==0)
-        {
+        if (this.childrenNodes[i].childrenNodes.length !== 0) {
             this.childrenNodes[i].changeRowChildElement();
         }
     }
 }
 
-tableView.prototype.dropRowChild = function(element)
-{
+tableView.prototype.dropRowChild = function (element) {
     element.selfRemove();
-    if(element.childrenNodes.length!==0)
-    element.dropRowChildElement()
+    if (element.childrenNodes.length !== 0)
+        element.dropRowChildElement()
 }
 
-tableView.prototype.dropRowChildElement = function()
-{
-    for(var i = 0;i<this.childrenNodes.length;i++)
-    {
+tableView.prototype.dropRowChildElement = function () {
+    for (var i = 0; i < this.childrenNodes.length; i++) {
         this.childrenNodes[i].selfRemove();
-        if(this.childrenNodes[i].childrenNodes.length!==0)
-        {
+        if (this.childrenNodes[i].childrenNodes.length !== 0) {
             this.childrenNodes[i].dropRowChildElement();
         }
     }
@@ -2143,21 +2217,21 @@ tableView.prototype.backGroundFix = function (index) {
     if (scrollParent === undefined)
         return;
     var rectDistance = traceOutBoundingClientRect(this);
-    
+
     var temp = _(
         {
-        tag: "div",
-        class: "background-opacity",
-        style:{
-            top:rect.y+'px',
-            left:rect.x + scrollParent.scrollLeft +'px',
-            backgroundColor: "#ffffff00",
-            realTop:rect.y+scrollParent.scrollTop,
-            width:rectDistance.width-17+"px"
-        },
-        child: [
-        ]
-    })
+            tag: "div",
+            class: "background-opacity",
+            style: {
+                top: rect.y + 'px',
+                left: rect.x + scrollParent.scrollLeft + 'px',
+                backgroundColor: "#ffffff00",
+                realTop: rect.y + scrollParent.scrollTop,
+                width: rectDistance.width - 17 + "px"
+            },
+            child: [
+            ]
+        })
     var arrZone = [];
     var tempElement = this.getBound2Row(undefined, 0, index);
     arrZone.push(tempElement);
@@ -2190,28 +2264,28 @@ tableView.prototype.backGround = function (height, callback, index) {
     }
     if (scrollParent === undefined)
         return;
-    
+
     var temp = _({
         tag: "div",
         class: "background-opacity-1",
-        style:{
-            top:rect.y+'px',
-            left:rect.x - 17 +'px',
+        style: {
+            top: rect.y + 'px',
+            left: rect.x - 17 + 'px',
             backgroundColor: "#ffffff00",
-            realTop:rect.y+scrollParent.scrollTop,
+            realTop: rect.y + scrollParent.scrollTop,
             // width:rectDistance.width-17+"px"
         },
-        child:[
+        child: [
             {
                 tag: "div",
                 class: "delete-zone",
                 style: {
-                    transform:"translateY(-"+height+"px)",
-                    top:rect.y+'px',
-                    left:rectDistance.left+'px',
+                    transform: "translateY(-" + height + "px)",
+                    top: rect.y + 'px',
+                    left: rectDistance.left + 'px',
                     backgroundColor: "#ffffff00",
                     height: height + "px",
-                    width:rectDistance.width+"px"
+                    width: rectDistance.width + "px"
                 },
                 child: [
                     {
@@ -2271,20 +2345,18 @@ tableView.prototype.backGround = function (height, callback, index) {
 
 
 tableView.prototype.deleteColumn = function (index) {
-    for (var i = 0; i<this.clone[index].length; i++) {
+    for (var i = 0; i < this.clone[index].length; i++) {
         this.clone[index][i].selfRemove();
     }
     this.clone.splice(index, 1);
-    for(var i = 0;i<this.childrenNodes.length;i++)
-    {
-        if(this.childrenNodes[i].childrenNodes.length!==0)
-        {
+    for (var i = 0; i < this.childrenNodes.length; i++) {
+        if (this.childrenNodes[i].childrenNodes.length !== 0) {
             this.childrenNodes[i].deleteColumn(index);
         }
     }
 }
 
-tableView.prototype.cloneColumn = function (index,height,isFull = false) {
+tableView.prototype.cloneColumn = function (index, height, isFull = false) {
     var clone = this.clone[index][0].cloneNode(true);
     clone.style.width = this.clone[index][0].offsetWidth - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
     clone.style.height = this.clone[index][0].offsetHeight - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
@@ -2301,8 +2373,8 @@ tableView.prototype.cloneColumn = function (index,height,isFull = false) {
     var bodyTable = _({
         tag: "tbody"
     });
-    if(isFull)
-    this.cloneCellColumn(bodyTable,this.clone,index);
+    if (isFull)
+        this.cloneCellColumn(bodyTable, this.clone, index);
     var result = _({
         tag: "table",
         style: {
@@ -2314,13 +2386,12 @@ tableView.prototype.cloneColumn = function (index,height,isFull = false) {
             bodyTable
         ]
     });
-    
+
     return result;
 }
 
-tableView.prototype.cloneCellColumn = function(bodyTable,cloneArray,index)
-{
-    var clone,cell;
+tableView.prototype.cloneCellColumn = function (bodyTable, cloneArray, index) {
+    var clone, cell;
     for (var i = 1; i < cloneArray[index].length; i++) {
         clone = cloneArray[index][i].cloneNode(true);
         clone.style.width = cloneArray[index][i].offsetWidth - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(cloneArray[index][i], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
@@ -2332,19 +2403,18 @@ tableView.prototype.cloneCellColumn = function(bodyTable,cloneArray,index)
             ]
         })
         cell.classList = cloneArray[index][i].parentNode.classList;
-        if(cloneArray[index][i].colSpan!==undefined)
-        clone.setAttribute("rowSpan","")
+        if (cloneArray[index][i].colSpan !== undefined)
+            clone.setAttribute("rowSpan", "")
         bodyTable.addChild(cell);
-        if(cloneArray[index][i].parentNode.clone!==undefined)
-        {
+        if (cloneArray[index][i].parentNode.clone !== undefined) {
             var cloneArrayTemp = cloneArray[index][i].parentNode.clone;
-            this.cloneCellColumn(bodyTable,cloneArrayTemp,index);
+            this.cloneCellColumn(bodyTable, cloneArrayTemp, index);
         }
-        
+
     }
 }
 
-tableView.prototype.cloneRow = function (index,isFull = false) {
+tableView.prototype.cloneRow = function (index, isFull = false) {
     var clone;
     var headerTable = _({
         tag: "thead"
@@ -2356,7 +2426,7 @@ tableView.prototype.cloneRow = function (index,isFull = false) {
     var result = _({
         tag: "table",
         style: {
-            opacity:0.7
+            opacity: 0.7
         },
         class: "sortTableClone",
         child: [
@@ -2364,21 +2434,21 @@ tableView.prototype.cloneRow = function (index,isFull = false) {
             bodyTable
         ]
     });
-    var row =_({
+    var row = _({
         tag: "tr",
     });
     if (index === 0)
         headerTable.addChild(row)
-    else{
+    else {
         bodyTable.addChild(row);
     }
     for (var i = 0; i < this.clone.length; i++) {
-        if(this.clone[i][index]===undefined)
-        continue;
+        if (this.clone[i][index] === undefined)
+            continue;
         clone = this.clone[i][index].cloneNode(true);
-        clone.style.width = this.clone[i][index].offsetWidth - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-right-width').replace("px", "")+1 + 'px';
+        clone.style.width = this.clone[i][index].offsetWidth - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-right-width').replace("px", "") + 1 + 'px';
         clone.style.height = this.clone[i][index].offsetHeight - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
-        clone.setAttribute("colSpan","")
+        clone.setAttribute("colSpan", "")
         row.appendChild(clone);
     }
     return result;
@@ -2389,13 +2459,13 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
     var left, right;
     var isShow = true;
     if (colum1 !== undefined)
-        left = (self.clone[colum1][0].offsetWidth) / 2 + parseFloat(window.getComputedStyle(self.clone[colum1][0]).webkitBorderHorizontalSpacing)/2;
+        left = (self.clone[colum1][0].offsetWidth) / 2 + parseFloat(window.getComputedStyle(self.clone[colum1][0]).webkitBorderHorizontalSpacing) / 2;
     else
         left = 20 + parseFloat(window.getComputedStyle(self).paddingLeft);
-    if (colum2 !== undefined){
-        right = (self.clone[colum2][0].offsetWidth) / 2 + parseFloat(window.getComputedStyle(self.clone[colum2][0]).webkitBorderHorizontalSpacing)/2;
-        if(self.clone[colum2][0].classList.contains("postionStickyCell"))
-        isShow = false;
+    if (colum2 !== undefined) {
+        right = (self.clone[colum2][0].offsetWidth) / 2 + parseFloat(window.getComputedStyle(self.clone[colum2][0]).webkitBorderHorizontalSpacing) / 2;
+        if (self.clone[colum2][0].classList.contains("postionStickyCell"))
+            isShow = false;
     }
     else
         right = 20 + parseFloat(window.getComputedStyle(self).paddingRight);
@@ -2405,22 +2475,21 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
         class: "move-hover-zone-center",
     });
 
-    if(!isShow)
-    {
+    if (!isShow) {
         center.style.display = "none";
     }
-    var temp =  _({
+    var temp = _({
         tag: "div",
         class: "move-hover-zone",
         style: {
             height: self.offsetHeight + "px",
         },
         on: {
-            mouseover: isShow?function () {
+            mouseover: isShow ? function () {
                 if (this.parentNode.isMove === false) {
-                    self.moveColumn(self.clone,colum1,colum2,index)
+                    self.moveColumn(self.clone, colum1, colum2, index)
                 }
-            }:undefined
+            } : undefined
         },
         child: [
             {
@@ -2443,34 +2512,31 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
     return temp;
 }
 
-tableView.prototype.moveColumn = function(arrClone,colum1,colum2,index,i=0)
-{
+tableView.prototype.moveColumn = function (arrClone, colum1, colum2, index, i = 0) {
     var parent;
     // if(index==colum1)
     //     return;
     // if(index==colum2)
     //     return;
-    var delta = 0,lastDelta;
+    var delta = 0, lastDelta;
     for (i; i < arrClone[index].length; i++) {
-        parent = arrClone[index][i-delta].parentNode;
+        parent = arrClone[index][i - delta].parentNode;
         if (colum2 !== undefined) {
-            if(lastDelta>0)
-            {
+            if (lastDelta > 0) {
                 lastDelta--;
                 continue;
             }
-            parent.insertBefore(arrClone[index][i-delta], arrClone[colum2][i]);
+            parent.insertBefore(arrClone[index][i - delta], arrClone[colum2][i]);
         }
         else {
             parent.appendChild(arrClone[index][i]);
         }
-        if(arrClone[index][i].rowSpan!==undefined){
-            delta+=arrClone[index][i].rowSpan-1;
-            lastDelta=arrClone[index][i].rowSpan-1;
+        if (arrClone[index][i].rowSpan !== undefined) {
+            delta += arrClone[index][i].rowSpan - 1;
+            lastDelta = arrClone[index][i].rowSpan - 1;
         }
-        if(arrClone[index][i-delta].parentNode.clone!==undefined)
-        {
-            this.moveColumn(arrClone[index][i-delta].parentNode.clone,colum1,colum2,index,1);
+        if (arrClone[index][i - delta].parentNode.clone !== undefined) {
+            this.moveColumn(arrClone[index][i - delta].parentNode.clone, colum1, colum2, index, 1);
         }
     }
     if (colum1 > index) {
@@ -2478,7 +2544,7 @@ tableView.prototype.moveColumn = function(arrClone,colum1,colum2,index,i=0)
             arrClone.push(arrClone[index]);
         else
             arrClone.splice(colum2, 0, arrClone[index]);
-            arrClone.splice(index, 1);
+        arrClone.splice(index, 1);
     }
     if (colum2 < index) {
         var tempElement = arrClone[index];
@@ -2491,102 +2557,91 @@ tableView.prototype.moveColumn = function(arrClone,colum1,colum2,index,i=0)
     }
 }
 
-tableView.prototype.getHeightChild = function()
-{
+tableView.prototype.getHeightChild = function () {
     var result = 0;
     var self = this;
     var tempClone = self.childrenNodes;
-    if(tempClone!==undefined)
-    for(var i=0;i<tempClone.length;i++)
-    {
-        result+= tempClone[i].offsetHeight; 
-        if(tempClone[i].offsetHeight!==0)
-        result+= parseFloat(window.getComputedStyle(tempClone[i]).webkitBorderVerticalSpacing);
-        if(tempClone[i].childrenNodes.length!==0)
-        {
-            result+= tempClone[i].getHeightChild();
+    if (tempClone !== undefined)
+        for (var i = 0; i < tempClone.length; i++) {
+            result += tempClone[i].offsetHeight;
+            if (tempClone[i].offsetHeight !== 0)
+                result += parseFloat(window.getComputedStyle(tempClone[i]).webkitBorderVerticalSpacing);
+            if (tempClone[i].childrenNodes.length !== 0) {
+                result += tempClone[i].getHeightChild();
+            }
         }
-    }
     return result;
 }
 
-tableView.prototype.getElementChild = function()
-{
+tableView.prototype.getElementChild = function () {
     var result = [];
     var self = this;
     var tempClone = self.childrenNodes;
-    if(tempClone!==undefined)
-    for(var i=0;i<tempClone.length;i++)
-    {
-        result.push(tempClone[i]);
-        if(tempClone[i].childrenNodes.length!==0)
-        {
-            result = result.concat(tempClone[i].getElementChild());
+    if (tempClone !== undefined)
+        for (var i = 0; i < tempClone.length; i++) {
+            result.push(tempClone[i]);
+            if (tempClone[i].childrenNodes.length !== 0) {
+                result = result.concat(tempClone[i].getElementChild());
+            }
         }
-    }
     return result;
 }
 
 tableView.prototype.getBound2Row = function (row1, row2) {
     var self = this;
-    var top, bottom,elementReal;
-    if(self.clone[0][row1]!==undefined)
-    var style1 = window.getComputedStyle(self.clone[0][row1]);
-    if(self.clone[0][row2]!==undefined){
+    var top, bottom, elementReal;
+    if (self.clone[0][row1] !== undefined)
+        var style1 = window.getComputedStyle(self.clone[0][row1]);
+    if (self.clone[0][row2] !== undefined) {
         var style2 = window.getComputedStyle(self.clone[0][row2]);
         elementReal = self.clone[0][row2].parentNode;
-    }else
-    {
-        if(self.tagName!=="TABLE")
-        {
-            if(self.clone[0][row1].parentNode.childrenNodes.length!==0)
-            {
+    } else {
+        if (self.tagName !== "TABLE") {
+            if (self.clone[0][row1].parentNode.childrenNodes.length !== 0) {
                 var x = self.clone[0][row1].parentNode.getElementChild();
-                elementReal =x[x.length - 1].nextSibling;
+                elementReal = x[x.length - 1].nextSibling;
             }
             else
-            elementReal = self.clone[0][row1].parentNode.nextSibling;
+                elementReal = self.clone[0][row1].parentNode.nextSibling;
         }
     }
-    if (row1 !== undefined){
-        top = (self.clone[0][row1].offsetHeight) / 2  + parseFloat(style1.webkitBorderVerticalSpacing)/2;
+    if (row1 !== undefined) {
+        top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(style1.webkitBorderVerticalSpacing) / 2;
     }
     else
         top = parseFloat(window.getComputedStyle(self).paddingTop);
-    if (row2 !== undefined){
-        if(self.clone[0][row2].parentNode.style.display==="none")
-        return _({
-            tag:"div"
-        })
-        bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(style2.webkitBorderVerticalSpacing)/2;
+    if (row2 !== undefined) {
+        if (self.clone[0][row2].parentNode.style.display === "none")
+            return _({
+                tag: "div"
+            })
+        bottom = (self.clone[0][row2].offsetHeight) / 2 + parseFloat(style2.webkitBorderVerticalSpacing) / 2;
 
-        if(self.clone[0][row2].tagName!=="TH"&&row1===undefined)
+        if (self.clone[0][row2].tagName !== "TH" && row1 === undefined)
             bottom = (self.clone[0][row2].offsetHeight) / 2
-        
-        if(row1!==undefined&&self.clone[0][row2].parentNode.childrenNodes.length!==0)
-        {
-            bottom+=self.clone[0][row2].parentNode.getHeightChild();
+
+        if (row1 !== undefined && self.clone[0][row2].parentNode.childrenNodes.length !== 0) {
+            bottom += self.clone[0][row2].parentNode.getHeightChild();
         }
     }
-    else{
-        bottom = parseFloat(window.getComputedStyle(self).paddingBottom) + (self.clone[0][row1].offsetHeight)/2;
+    else {
+        bottom = parseFloat(window.getComputedStyle(self).paddingBottom) + (self.clone[0][row1].offsetHeight) / 2;
     }
 
-    if(row1===undefined)
-    {
+    if (row1 === undefined) {
         row1 = row2;
         row2++;
-        if(self.clone[0][row1+1]!==undefined)
-        elementReal = self.clone[0][row1+1].parentNode;
+        if (self.clone[0][row1 + 1] !== undefined)
+            elementReal = self.clone[0][row1 + 1].parentNode;
     }
-        
-    var temp =  _({
+
+    var temp = _({
         tag: "div",
         class: "move-hover-zone-topbot",
-        props:{
-            row1:row1,
-            row2:row2,
-            elementReal:elementReal
+        props: {
+            row1: row1,
+            row2: row2,
+            elementReal: elementReal
         },
         style: {
             width: self.offsetWidth + "px",
@@ -2646,7 +2701,7 @@ export function tableViewMobile(header = [], data = []) {
 
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
-    Object.assign(result,tableView.prototype);
+    Object.assign(result, tableView.prototype);
     result.check = check;
     result.header = header;
     result.data = data;
@@ -2692,8 +2747,8 @@ export function tableViewMobile(header = [], data = []) {
     headerTable.addChild(row);
     result.clone = [];
     var k = 0;
-    var toUpperCase = header.toUpperCase==true?true:false;
-    var toLowerCase = header.toLowerCase==true?true:false;
+    var toUpperCase = header.toUpperCase == true ? true : false;
+    var toLowerCase = header.toLowerCase == true ? true : false;
     var functionClickSort;
     for (var i = 0; i < header.length; i++) {
         if (header[i].hidden === false || header[i].hidden === undefined) {
@@ -2706,9 +2761,9 @@ export function tableViewMobile(header = [], data = []) {
             }
             else
                 value = header[i].value;
-            if(toUpperCase)
+            if (toUpperCase)
                 value = value.toUpperCase();
-            if(toLowerCase)
+            if (toLowerCase)
                 value = value.toLowerCase();
             var functionClick = undefined;
             switch (header[i].type) {
@@ -2731,9 +2786,9 @@ export function tableViewMobile(header = [], data = []) {
                     check[i] = "increase";
                     break;
                 case "dragzone":
-                    if(dragVertical)
-                    check[i] = "dragzone";
-                    else{
+                    if (dragVertical)
+                        check[i] = "dragzone";
+                    else {
                         check[i] = "hidden";
                         continue;
                     }
@@ -2757,53 +2812,50 @@ export function tableViewMobile(header = [], data = []) {
                     break;
             }
             if (header[i].sort === true || header[i].sort === undefined) {
-                functionClickSort = function (event, me, index , result, dataIndex, row) {
+                functionClickSort = function (event, me, index, result, dataIndex, row) {
                     var last_sort = document.getElementsByClassName("downgrade");
                     last_sort = last_sort[0];
                     me = me.parentNode;
-                    if(last_sort!==me&&last_sort!==undefined)
-                    {
+                    if (last_sort !== me && last_sort !== undefined) {
                         last_sort.classList.remove("downgrade");
                     }
                     var last_sort = document.getElementsByClassName("upgrade");
                     last_sort = last_sort[0];
-                    if(last_sort!==me&&last_sort!==undefined)
-                    {
+                    if (last_sort !== me && last_sort !== undefined) {
                         last_sort.classList.remove("upgrade");
                     }
-                    if(!me.classList.contains("downgrade"))
-                    {
-                        sortArray(result.data,index);
+                    if (!me.classList.contains("downgrade")) {
+                        sortArray(result.data, index);
                         me.classList.add("downgrade");
-                        if(me.classList.contains("upgrade"))
-                        me.classList.remove("upgrade");
+                        if (me.classList.contains("upgrade"))
+                            me.classList.remove("upgrade");
                     }
-                    else{
-                        sortArray(result.data,index,false);
+                    else {
+                        sortArray(result.data, index, false);
                         me.classList.add("upgrade");
-                        if(me.classList.contains("downgrade"))
-                        me.classList.remove("downgrade");
+                        if (me.classList.contains("downgrade"))
+                            me.classList.remove("downgrade");
                     }
-                    
-                    
-                    if(result.paginationElement!==undefined)
-                    result.paginationElement.reActive();
+
+
+                    if (result.paginationElement.noneValue !== true)
+                        result.paginationElement.reActive();
                     else
-                    result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
+                        result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
                 }
             }
 
             if (header[i].functionClick !== undefined)
                 functionClick = header[i].functionClick;
             style = {};
-            if(header[i].style!==undefined)
+            if (header[i].style !== undefined)
                 style = header[i].style;
             cell = _({
                 tag: "th",
                 attr: {
                     role: 'columnheader'
                 },
-                style:style,
+                style: style,
                 props: {
                     id: i
                 },
@@ -2867,20 +2919,18 @@ export function tableViewMobile(header = [], data = []) {
                     }(i) : undefined,
                 }
             })
-            if(functionClick!==undefined)
-            cell.style.cursor ="pointer";
+            if (functionClick !== undefined)
+                cell.style.cursor = "pointer";
             if (header[i].sort === true) {
                 cell.classList.add("has-sort")
-                setTimeout(function(cell,value){
-                    cell.style.minWidth = fakeInput(value,window.getComputedStyle(cell).fontSize) + 30 + "px";
-                }(cell,value),50);
+                setTimeout(function (cell, value) {
+                    cell.style.minWidth = fakeInput(value, window.getComputedStyle(cell).fontSize) + 30 + "px";
+                }(cell, value), 50);
             }
 
-            if(header[i].element===undefined)
-            {
-                cell.addChild( _({text: value})) ;
-            }else
-            {
+            if (header[i].element === undefined) {
+                cell.addChild(_({ text: value }));
+            } else {
                 cell.appendChild(data[i][j].element);
             }
 
@@ -2889,96 +2939,93 @@ export function tableViewMobile(header = [], data = []) {
                 bonus = undefined;
             }
             cell.addChild(_({
-                tag:"div",
-                class:"sort-container",
-                on:{
+                tag: "div",
+                class: "sort-container",
+                on: {
                     click: function (index, row, functionClickSort) {
                         return function (event) {
                             event.preventDefault();
                             if (functionClickSort !== undefined)
-                            functionClickSort(event, this, index, row.data, row,result);
+                                functionClickSort(event, this, index, row.data, row, result);
                         }
                     }(i, row, functionClickSort),
                 },
-                child:[
+                child: [
                     {
-                        tag:"sort-up",
+                        tag: "sort-up",
                         class: ["arrow_up"],
                     },
                     {
-                        tag:"sort-down",
+                        tag: "sort-down",
                         class: ["arrow_down"],
                     }
                 ]
             }));
-           
+
 
             result.clone[k++].push(cell);
-            
+
             row.addChild(cell);
         } else
             check[i] = "hidden";
     }
     result.childrenNodes = [];
     result.getBodyTable(data);
-   
-    result.checkSpan  = checkSpan;
+
+    result.checkSpan = checkSpan;
     return result;
 }
 
-function sortArray(arr,index,increase=true)
-{
-    if(increase){
+function sortArray(arr, index, increase = true) {
+    if (increase) {
         arr.sort(function (a, b) {
-            if(a.child!==undefined)
-            sortArray(a.child,index,increase);
+            if (a.child !== undefined)
+                sortArray(a.child, index, increase);
             var valueA = a[index].value;
             var valueB = b[index].value;
-            if(valueA===undefined)
+            if (valueA === undefined)
                 valueA = a[index];
-            if(valueB===undefined)
+            if (valueB === undefined)
                 valueB = b[index];
-            if(typeof valueA==="string")
-                valueA  = valueA.toLowerCase();
-            if(typeof valueB==="string")
-                valueB  = valueB.toLowerCase();
+            if (typeof valueA === "string")
+                valueA = valueA.toLowerCase();
+            if (typeof valueB === "string")
+                valueB = valueB.toLowerCase();
             if (valueA > valueB)
                 return -1;
-            if ( valueA < valueB)
+            if (valueA < valueB)
                 return 1;
-              return 0;
+            return 0;
         })
-        if(arr.length!==0)
-        if(arr[arr.length-1].child!==undefined)
-        {
-            sortArray(arr[arr.length-1].child,index,increase);
-        }
+        if (arr.length !== 0)
+            if (arr[arr.length - 1].child !== undefined) {
+                sortArray(arr[arr.length - 1].child, index, increase);
+            }
     }
-    else{
+    else {
         arr.sort(function (a, b) {
-            if(a.child!==undefined)
-            sortArray(a.child,index,increase);
+            if (a.child !== undefined)
+                sortArray(a.child, index, increase);
             var valueA = a[index].value;
             var valueB = b[index].value;
-            if(valueA===undefined)
+            if (valueA === undefined)
                 valueA = a[index];
-            if(valueB===undefined)
+            if (valueB === undefined)
                 valueB = b[index];
-            if(typeof valueA==="string")
-                valueA  = valueA.toLowerCase();
-            if(typeof valueB==="string")
-                valueB  = valueB.toLowerCase();
+            if (typeof valueA === "string")
+                valueA = valueA.toLowerCase();
+            if (typeof valueB === "string")
+                valueB = valueB.toLowerCase();
             if (valueA < valueB)
                 return -1;
-            if ( valueA > valueB)
+            if (valueA > valueB)
                 return 1;
-              return 0;
+            return 0;
         })
-        if(arr.length!==0)
-        if(arr[arr.length-1].child!==undefined)
-        {
-            sortArray(arr[arr.length-1].child,index,increase);
-        }
+        if (arr.length !== 0)
+            if (arr[arr.length - 1].child !== undefined) {
+                sortArray(arr[arr.length - 1].child, index, increase);
+            }
     }
 }
 
@@ -3002,95 +3049,89 @@ function random_bg_color() {
 
 export function allowNumbersOnly(e) {
     var code = (e.which) ? e.which : e.keyCode;
-    
-    if ((code > 122 || code < 97)&&code!=45) {
+
+    if ((code > 122 || code < 97) && code != 45) {
         e.preventDefault();
     }
 }
 
-export function  createAlias(string)
-{
+export function createAlias(string) {
     var value = ""
     string = string.toLowerCase();
     string = removeAccents(string);
-  
-    for(var i = 0;i<string.length;i++)
-    {
-        if(string[i] == " "){
+
+    for (var i = 0; i < string.length; i++) {
+        if (string[i] == " ") {
             value += "-";
             continue;
         }
-    
-        if ((string[i] > "z" || string[i] < "a")&&string[i]!="-"){
+
+        if ((string[i] > "z" || string[i] < "a") && string[i] != "-") {
             continue;
         }
 
         value += string[i];
     }
-    return value.replace(/^\-+|\-+$/gm,'');;
+    return value.replace(/^\-+|\-+$/gm, '');;
 }
 
 export function removeAccents(str) {
     return str.normalize('NFD')
-              .replace(/[\u0300-\u036f]/g, '')
-              .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd').replace(/Đ/g, 'D');
 }
 
-export function deleteQuestion(title,content,yes="Có",no="không")
-{
+export function deleteQuestion(title, content, yes = "Có", no = "không") {
     var contentElement;
-    if(typeof content !== "object")
-    {
+    if (typeof content !== "object") {
         contentElement = _(
             {
-                tag:"span",
-                class:"module-delete-header-content",
-                props:{
-                    innerHTML:content
+                tag: "span",
+                class: "module-delete-header-content",
+                props: {
+                    innerHTML: content
                 }
             }
         )
-    }else 
-    {
+    } else {
         contentElement = content;
     }
     var temp;
-    var promiseComfirm = new Promise(function(resolve,reject){
+    var promiseComfirm = new Promise(function (resolve, reject) {
         temp = _({
-            tag:"modal",
-            class:"modal-delete-module",
-            child:[
+            tag: "modal",
+            class: "modal-delete-module",
+            child: [
                 {
-                    tag:"div",
-                    class:"module-delete-container",
-                    child:[
+                    tag: "div",
+                    class: "module-delete-container",
+                    child: [
                         {
-                            tag:"div",
-                            class:"module-delete-header",
-                            child:[
+                            tag: "div",
+                            class: "module-delete-header",
+                            child: [
                                 {
-                                    tag:"span",
-                                    class:"module-delete-header-title",
-                                    props:{
-                                        innerHTML:title
+                                    tag: "span",
+                                    class: "module-delete-header-title",
+                                    props: {
+                                        innerHTML: title
                                     }
                                 },
                                 {
-                                    tag:"div",
-                                    class:"module-delete-header-close-container",
-                                    on:{
-                                        click:function(event)
-                                        {   
+                                    tag: "div",
+                                    class: "module-delete-header-close-container",
+                                    on: {
+                                        click: function (event) {
                                             temp.selfRemove();
                                             reject();
                                         }
                                     },
-                                    child:[
+                                    child: [
                                         {
-                                            tag:"i",
-                                            class:["module-delete-header-close","material-icons"],
-                                            props:{
-                                                innerHTML:"close"
+                                            tag: "i",
+                                            class: ["module-delete-header-close", "material-icons"],
+                                            props: {
+                                                innerHTML: "close"
                                             }
                                         }
                                     ]
@@ -3098,52 +3139,50 @@ export function deleteQuestion(title,content,yes="Có",no="không")
                             ]
                         },
                         {
-                            tag:"div",
-                            class:"module-delete-content",
-                            child:[
+                            tag: "div",
+                            class: "module-delete-content",
+                            child: [
                                 contentElement
                             ]
                         },
                         {
-                            tag:"div",
-                            class:"module-delete-button",
-                            child:[
+                            tag: "div",
+                            class: "module-delete-button",
+                            child: [
                                 {
-                                    tag:"button",
-                                    class:"module-delete-button-yes",
-                                    on:{
-                                        click:function(event)
-                                        {
+                                    tag: "button",
+                                    class: "module-delete-button-yes",
+                                    on: {
+                                        click: function (event) {
                                             temp.selfRemove();
                                             resolve();
                                         }
                                     },
-                                    child:[
+                                    child: [
                                         {
-                                            tag:"span",
-                                            class:"module-delete-button-yes-label",
-                                            props:{
-                                                innerHTML:yes
+                                            tag: "span",
+                                            class: "module-delete-button-yes-label",
+                                            props: {
+                                                innerHTML: yes
                                             }
                                         }
                                     ]
                                 },
                                 {
-                                    tag:"button",
-                                    class:"module-delete-button-no",
-                                    on:{
-                                        click:function(event)
-                                        {
+                                    tag: "button",
+                                    class: "module-delete-button-no",
+                                    on: {
+                                        click: function (event) {
                                             temp.selfRemove();
                                             reject();
                                         }
                                     },
-                                    child:[
+                                    child: [
                                         {
-                                            tag:"span",
-                                            class:"module-delete-button-no-label",
-                                            props:{
-                                                innerHTML:no
+                                            tag: "span",
+                                            class: "module-delete-button-no-label",
+                                            props: {
+                                                innerHTML: no
                                             }
                                         }
                                     ]
@@ -3155,7 +3194,7 @@ export function deleteQuestion(title,content,yes="Có",no="không")
             ]
         })
     })
-    
+
     temp.promiseComfirm = promiseComfirm;
     return temp;
 }

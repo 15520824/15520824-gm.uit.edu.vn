@@ -52,13 +52,25 @@ HashTable.prototype.getKey = function(key){
     if(key === "")
     {
         for(var i = 0;i<this.data.length;i++)
-            this.data[i].visiable = undefined;
+            {
+                if(this.data.isFilter){
+                    if(this.data[i].isFilter === true)
+                        this.data[i].visiable = true;
+                    else
+                        this.data[i].visiable = false;
+                }else
+                    if(this.data[i].isFilter === undefined)
+                        this.data[i].visiable = true;
+                    else
+                        this.data[i].visiable = false;
+            }
+            this.data.isSearch = undefined;
         return;
     }
     var check = []; 
     this.data.updateVisible = true;
     var rowElement,objectElement;
-
+    this.data.isSearch = true;
     for(var i = 0;i<key.length;i++){
         var arrCharacter = this.hash[key[i].toLocaleLowerCase()];
         Loop1: for(var row in arrCharacter)
@@ -90,7 +102,18 @@ HashTable.prototype.getKey = function(key){
                             while(k<arrParent.length)
                             {
                                 for(var param in check[stringCheck]){
-                                    check[stringCheck][param][1].confirm = true;
+                                    if(this.data.isFilter){
+                                        if(check[stringCheck][param][1].isFilter === true)
+                                            check[stringCheck][param][1].confirm = true;
+                                        else
+                                            check[stringCheck][param][1].confirm = undefined;
+                                    }else
+                                        if(check[stringCheck][param][1].isFilter === undefined)
+                                            check[stringCheck][param][1].confirm = true;
+                                        else
+                                            check[stringCheck][param][1].confirm = undefined;
+
+                                    check[stringCheck][param][1].isSearch = true;
                                     break;
                                 }
                                 stringCheck+="_"+arrParent[k++];
@@ -100,8 +123,9 @@ HashTable.prototype.getKey = function(key){
                         continue Loop2;
                     }
                     else{
-                        objectElement[j][1].confirm = false;
-                        continue ;
+                        objectElement[j][1].isSearch = undefined;
+                        objectElement[j][1].confirm = undefined;
+                        continue;
                     }
                 }
             }

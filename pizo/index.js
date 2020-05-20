@@ -31662,7 +31662,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\n.no-animation table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    transform: none;\r\n    transition: none;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important{\r\n    color: #d93025;\r\n}\r\n\r\n.hasErrorElement {\r\n    background-color: #000000;\r\n}", ""]);
+exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\n.no-animation table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    transform: none;\r\n    transition: none;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n    width: calc(100% - 17px) !important;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important{\r\n    color: #d93025;\r\n}\r\n\r\n.hasErrorElement {\r\n    background-color: #000000;\r\n}", ""]);
 
 
 
@@ -31732,7 +31732,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  pointer-events: none;\r\n  z-index: 100;\r\n  max-width: 100%;\r\n  background-color: white;\r\n  overflow: hidden;\r\n}\r\n\r\n.background-opacity-1{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo{\r\n  z-index: 9999999999;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n  position: fixed;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\ntable.sortTable{\r\n  max-width: 100%;\r\n}\r\n\r\n/* .absol-single-page-scroller{\r\n  width: 500px;\r\n  margin: auto;\r\n} */\r\n\r\ntable.sortTable,table.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    border-spacing: 0;\r\n}\r\n\r\n\r\n\r\ntable.sortTableClone{\r\n  left: 0;\r\n  font-size: 1rem;\r\n  position: absolute;\r\n  z-index: 1000;\r\n}\r\n\r\n\r\n\r\n\r\n\r\ntable.sortTable th,table.sortTable td,\r\ntable.sortTableClone th,table.sortTableClone td {\r\n  padding: 0.35714285714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n  position: relative;\r\n}\r\ntable.sortTable th,table.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  top: 0px;\r\n  z-index: 2;\r\n}\r\n\r\ntable.sortTable td,table.sortTableClone td {\r\n  vertical-align: middle;\r\n}\r\ntable.sortTable thead:first-child tr th,\r\ntable.sortTable thead:first-child tr td,\r\ntable.sortTableClone thead:first-child tr th,\r\ntable.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\ntable.sortTable tbody + tbody,table.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\ntable.sortTable th + th,\r\ntable.sortTable td + td,\r\ntable.sortTable th + td,\r\ntable.sortTable td + th,\r\ntable.sortTableClone th + th,\r\ntable.sortTableClone td + td,\r\ntable.sortTableClone th + td,\r\ntable.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\ntable.sortTable thead:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child td,\r\ntable.sortTableClone thead:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\ntable.sortTable tbody{\r\n  position: relative;\r\n}\r\n\r\ntable.sortTable td.postionStickyCell,table.sortTable th.postionStickyCell{\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  left: 0;\r\n  z-index: 1;\r\n}\r\n\r\ntable.sortTable th.postionStickyCell{\r\n  z-index: 3;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n\r\n.module-delete-container{\r\n  display: inline-block;\r\n  position: relative;\r\n  padding: 10px;\r\n  border: 1px solid #888;\r\n  border-radius: 4px;\r\n  max-height: 90vh;\r\n  overflow: auto;\r\n  background-color: #fefefe;\r\n  box-shadow: 4px 4px 10px 0px black;\r\n}\r\n\r\n.module-delete-button>button{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n  width: 90px;\r\n}\r\n\r\n.module-delete-button>button:hover{\r\n  background-color: rgb(213, 213, 213);\r\n  cursor: pointer;\r\n}\r\n\r\n.module-delete-button>button:not(:first-child){\r\n  margin-left: 30px;\r\n}\r\n\r\n.module-delete-header{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-title{\r\n  font-size: 1.14285714286rem;\r\n  padding-top: 0.5rem;\r\n  padding-bottom: 0.5rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  overflow: hidden;\r\n  position: relative;\r\n  min-width: 20rem;\r\n}\r\n\r\n.module-delete-header-close-container{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n}\r\n\r\n.module-delete-button{\r\n  text-align: center;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-content{\r\n  margin-top: 24px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-header-close.material-icons{\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-close.material-icons:hover{\r\n  color: red;\r\n  cursor: pointer;\r\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  pointer-events: none;\r\n  z-index: 100;\r\n  max-width: 100%;\r\n  background-color: white;\r\n  overflow: hidden;\r\n}\r\n\r\n.background-opacity-1{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo{\r\n  z-index: 9999999999;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n  position: fixed;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\ntable.sortTable{\r\n  max-width: 100%;\r\n}\r\n\r\n/* .absol-single-page-scroller{\r\n  width: 500px;\r\n  margin: auto;\r\n} */\r\n\r\ntable.sortTable,table.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 10px;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    border-spacing: 0;\r\n}\r\n\r\n\r\n\r\ntable.sortTableClone{\r\n  left: 0;\r\n  font-size: 1rem;\r\n  position: absolute;\r\n  z-index: 1000;\r\n}\r\n\r\n\r\n\r\n\r\n\r\ntable.sortTable th,table.sortTable td,\r\ntable.sortTableClone th,table.sortTableClone td {\r\n  padding: 0.35714285714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n  position: relative;\r\n}\r\ntable.sortTable th,table.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  top: 0px;\r\n  z-index: 2;\r\n}\r\n\r\ntable.sortTable td,table.sortTableClone td {\r\n  vertical-align: middle;\r\n}\r\ntable.sortTable thead:first-child tr th,\r\ntable.sortTable thead:first-child tr td,\r\ntable.sortTableClone thead:first-child tr th,\r\ntable.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\ntable.sortTable tbody + tbody,table.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\ntable.sortTable th + th,\r\ntable.sortTable td + td,\r\ntable.sortTable th + td,\r\ntable.sortTable td + th,\r\ntable.sortTableClone th + th,\r\ntable.sortTableClone td + td,\r\ntable.sortTableClone th + td,\r\ntable.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\ntable.sortTable thead:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child td,\r\ntable.sortTableClone thead:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\ntable.sortTable tbody{\r\n  position: relative;\r\n}\r\n\r\ntable.sortTable td.postionStickyCell,table.sortTable th.postionStickyCell{\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  left: 0;\r\n  z-index: 1;\r\n}\r\n\r\ntable.sortTable th.postionStickyCell{\r\n  z-index: 3;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n\r\n.module-delete-container{\r\n  display: inline-block;\r\n  position: relative;\r\n  padding: 10px;\r\n  border: 1px solid #888;\r\n  border-radius: 4px;\r\n  max-height: 90vh;\r\n  overflow: auto;\r\n  background-color: #fefefe;\r\n  box-shadow: 4px 4px 10px 0px black;\r\n}\r\n\r\n.module-delete-button>button{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n  width: 90px;\r\n}\r\n\r\n.module-delete-button>button:hover{\r\n  background-color: rgb(213, 213, 213);\r\n  cursor: pointer;\r\n}\r\n\r\n.module-delete-button>button:not(:first-child){\r\n  margin-left: 30px;\r\n}\r\n\r\n.module-delete-header{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-title{\r\n  font-size: 1.14285714286rem;\r\n  padding-top: 0.5rem;\r\n  padding-bottom: 0.5rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  overflow: hidden;\r\n  position: relative;\r\n  min-width: 20rem;\r\n}\r\n\r\n.module-delete-header-close-container{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n}\r\n\r\n.module-delete-button{\r\n  text-align: center;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-content{\r\n  margin-top: 24px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-header-close.material-icons{\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-close.material-icons:hover{\r\n  color: red;\r\n  cursor: pointer;\r\n}\r\n\r\n.pagination {\r\n  display: flex;\r\n  justify-content: center;\r\n  position: absolute;\r\n  transform: translateX(-50%);\r\n  left: 50%;\r\n}\r\n.pagination-container {\r\n  padding: 10px 0;\r\n  border-radius: 8px;\r\n  border: 1px solid rgba(0, 0, 0, 0.1);\r\n  background-color: #fff;\r\n  display: inline-flex;\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.pagination-hover-overlay {\r\n  background-color: #00c1dd;\r\n  width: 50px;\r\n  height: 50px;\r\n  border-radius: 5px;\r\n  position: absolute;\r\n  top: 50%;\r\n  transform: translateY(-50%);\r\n  transition-duration: 0.5s;\r\n  left: 60px;\r\n  opacity: 0;\r\n}\r\n.pagination .icon-pagination {\r\n  color: rgba(51, 61, 69, 0.5);\r\n  font-size: 11px;\r\n  width: 50px;\r\n  height: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  position: relative;\r\n  z-index: 3;\r\n  background-color: #fff;\r\n}\r\n.pagination-prev {\r\n  margin-right: 15px;\r\n  margin-left: 10px;\r\n  cursor: pointer;\r\n}\r\n.pagination-prev .icon-pagination-prev {\r\n  transform: rotate(0deg);\r\n}\r\n\r\n.pagination-prev .icon-pagination-prev>i,.pagination-next .icon-pagination-next>i {\r\n  font-size: 2rem;\r\n}\r\n\r\n.pagination-next {\r\n  margin-left: 15px;\r\n  margin-right: 10px;\r\n  cursor: pointer;\r\n}\r\n.pagination-next .icon-pagination-next {\r\n  transform: rotate(180deg);\r\n}\r\n.pagination-page-number {\r\n  border-radius: 5px;\r\n  color: #333d45;\r\n  width: 50px;\r\n  height: 50px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  transition-duration: 0.5s;\r\n  position: relative;\r\n  z-index: 2;\r\n  font-weight: 700;\r\n  font-size: 18px;\r\n  cursor: pointer;\r\n}\r\n.pagination-page-number:hover {\r\n  color: #fff;\r\n}\r\n.pagination-page-number.active {\r\n  color: #fff;\r\n}\r\n\r\n.pagination-wrapper{\r\n  display: flex;\r\n}\r\n\r\n", ""]);
 
 
 
@@ -55162,10 +55162,10 @@ var polyfill = __webpack_require__(222);
 // CONCATENATED MODULE: ./js/dom/Fcore.js
 
 
-var Fcore_Fcore = new Dom["a" /* default */]();
-Fcore_Fcore.traceOutBoundingClientRect = Dom["a" /* default */].traceOutBoundingClientRect;
-Fcore_Fcore.install(absol_acomp_AComp.core);
-/* harmony default export */ var dom_Fcore = (Fcore_Fcore);
+var Fcore = new Dom["a" /* default */]();
+Fcore.traceOutBoundingClientRect = Dom["a" /* default */].traceOutBoundingClientRect;
+Fcore.install(absol_acomp_AComp.core);
+/* harmony default export */ var dom_Fcore = (Fcore);
 // CONCATENATED MODULE: ./js/dom/Icons.js
 
 var Icons_ = dom_Fcore._;
@@ -55284,7 +55284,6 @@ function BaseView() {
   EventEmitter["a" /* default */].call(this);
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
-  console.log(this);
   this.loadConfig();
 }
 
@@ -55359,6 +55358,230 @@ var ModuleView = __webpack_require__(227);
 // EXTERNAL MODULE: ./css/tablesort.css
 var tablesort = __webpack_require__(229);
 
+// CONCATENATED MODULE: ./js/component/HashTable.js
+function HashTable(data) {
+  this.hash = [];
+  this.functionSetHash(data);
+  this.data = data;
+  return this;
+}
+
+HashTable.prototype.functionSetHash = function (data) {
+  var dataParent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  var hash = this.hash;
+  var value;
+  var object;
+  var k;
+  var tempCharater = [];
+
+  for (var m = 0; m < data.length; m++) {
+    object = data[m];
+
+    data[m].updateSearch = function () {};
+
+    for (var i = 0; i < object.length; i++) {
+      if (object[i].value !== undefined) value = object[i].value;else if (typeof object[i] === "string") value = object[i];else value = "";
+
+      for (var j = 0; j < value.length; j++) {
+        tempCharater = value[j].toLocaleLowerCase();
+
+        if (hash[tempCharater] === undefined) {
+          hash[tempCharater] = [];
+        }
+
+        var stringCheck = m + dataParent;
+        if (hash[tempCharater][stringCheck] == undefined) hash[tempCharater][stringCheck] = [];
+        if (hash[tempCharater][stringCheck][i] === undefined) hash[tempCharater][stringCheck][i] = [];
+        hash[tempCharater][stringCheck][i].push([j, data[m]]);
+      }
+    }
+
+    if (data[m].child !== undefined) {
+      this.functionSetHash(data[m].child, "_" + m + dataParent);
+    }
+  }
+};
+
+HashTable.prototype.getKey = function (key) {
+  if (key === "") {
+    for (var i = 0; i < this.data.length; i++) {
+      if (this.data.isFilter) {
+        if (this.data[i].isFilter === true) this.data[i].visiable = true;
+      } else if (this.data[i].isFilter === undefined) this.data[i].visiable = true;
+    }
+
+    this.data.isSearch = undefined;
+    return;
+  }
+
+  var check = [];
+  this.data.updateVisible = true;
+  var rowElement, objectElement;
+  this.data.isSearch = true;
+
+  for (var i = 0; i < key.length; i++) {
+    var arrCharacter = this.hash[key[i].toLocaleLowerCase()];
+
+    Loop1: for (var row in arrCharacter) {
+      rowElement = arrCharacter[row];
+      if (check[row] === undefined) check[row] = [];
+
+      Loop2: for (var column in rowElement) {
+        objectElement = rowElement[column];
+        if (Array.isArray(objectElement)) for (var j = 0; j < objectElement.length; j++) {
+          if (check[row][column] === undefined || objectElement[j][0] > check[row][column][0]) {
+            if (check[row][column] === undefined) {
+              check[row][column] = objectElement[j];
+              check[row][column].indexCharacter = key.length - 1;
+            } else {
+              var tempIndex = check[row][column].indexCharacter;
+              check[row][column] = objectElement[j];
+              check[row][column].indexCharacter = tempIndex - 1;
+            }
+
+            if (check[row][column].indexCharacter == 0) {
+              objectElement[j][1].confirm = true;
+              var arrParent = row.split("_");
+              var k = 0;
+              var stringCheck = arrParent[k];
+
+              while (k < arrParent.length) {
+                for (var param in check[stringCheck]) {
+                  if (this.data.isFilter) {
+                    if (check[stringCheck][param][1].isFilter === true) check[stringCheck][param][1].confirm = true;else check[stringCheck][param][1].confirm = undefined;
+                  } else if (check[stringCheck][param][1].isFilter === undefined) check[stringCheck][param][1].confirm = true;else check[stringCheck][param][1].confirm = undefined;
+
+                  check[stringCheck][param][1].isSearch = true;
+                  break;
+                }
+
+                stringCheck += "_" + arrParent[k++];
+              }
+
+              continue Loop1;
+            }
+
+            continue Loop2;
+          } else {
+            objectElement[j][1].isSearch = undefined;
+            objectElement[j][1].confirm = undefined;
+            continue;
+          }
+        }
+      }
+    }
+  }
+};
+// CONCATENATED MODULE: ./js/component/HashTableFilter.js
+function HashTableFilter(data) {
+  this.hash = [];
+  this.data = data;
+  this.check = [];
+  this.functionSetHash(data);
+  this.indexCount = [];
+  this.lastIndex = [];
+  this.lastKey = [];
+  return this;
+}
+
+HashTableFilter.prototype.functionSetHash = function (data) {
+  var dataParent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  var hash = this.hash;
+  var value;
+  var object;
+
+  for (var m = 0; m < data.length; m++) {
+    object = data[m];
+
+    data[m].updateSearch = function () {};
+
+    var stringCheck = m + dataParent;
+
+    if (this.check[stringCheck] == undefined) {
+      this.check[stringCheck] = [];
+      this.check[stringCheck].data = data[m];
+    }
+
+    for (var i = 0; i < object.length; i++) {
+      if (object[i].value !== undefined) value = object[i].value;else if (typeof object[i] === "string") value = object[i];else value = "";
+      if (hash[i] === undefined) hash[i] = [];
+      if (hash[i][value] === undefined) hash[i][value] = [];
+      hash[i][value].push(stringCheck);
+
+      if (data[m].child !== undefined) {
+        this.functionSetHash(data[m].child, "_" + m + dataParent);
+      }
+    }
+  }
+};
+
+HashTableFilter.prototype.getKey = function (key, index) {
+  var hash = this.hash;
+  this.lastKey[index] = key;
+
+  if (key == 0) {
+    if (this.lastIndex[index] !== undefined) for (var i = 0; i < this.lastIndex[index].length; i++) {
+      this.lastIndex[index][i][index] = undefined;
+    }
+    delete this.indexCount[index];
+    var countAll = this.indexCount.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+
+    if (countAll > 0) {
+      for (var tempx in this.indexCount) {
+        index = parseInt(tempx);
+        key = this.lastKey[index];
+        break;
+      }
+    } else {
+      for (var i = 0; i < this.data.length; i++) {
+        if (this.data.isSearch) {
+          if (this.data[i].isSearch === true) this.data[i].visiable = true;
+        } else if (this.data[i].isSearch === undefined) this.data[i].visiable = true;
+
+        this.data[i].isFilter = undefined;
+      }
+
+      this.data.isFilter = undefined;
+      return;
+    }
+  }
+
+  this.data.updateVisible = true;
+  this.indexCount[index] = 1;
+  this.data.isFilter = true;
+  var countAll = this.indexCount.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+  if (this.lastIndex[index] !== undefined) for (var i = 0; i < this.lastIndex[index].length; i++) {
+    this.lastIndex[index][i][index] = undefined;
+  }
+  this.lastIndex[index] = [];
+  if (hash[index][key] !== undefined) for (var i = 0; i < hash[index][key].length; i++) {
+    var checkRow = this.check[hash[index][key][i]];
+    checkRow[index] = true;
+    this.lastIndex[index].push(checkRow);
+    var countIn = 0;
+
+    for (var param in checkRow) {
+      if (checkRow[param] === true) {
+        countIn++;
+      }
+    }
+
+    if (countIn == countAll) {
+      if (this.data.isSearch) {
+        if (checkRow.data.isSearch === true) checkRow.data.confirm = true;
+      } else if (checkRow.data.isSearch === undefined) checkRow.data.confirm = true;
+
+      checkRow.data.isFilter = true;
+    } else {
+      checkRow.data.isFilter = undefined;
+      checkRow.data.confirm = undefined;
+    }
+  }
+};
 // CONCATENATED MODULE: ./js/component/ModuleView.js
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -55366,12 +55589,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
  // import TabView from 'absol-acomp/js/TabView';
 
+
+
 var ModuleView_ = dom_Fcore._;
 var ModuleView_$ = dom_Fcore.$;
 var traceOutBoundingClientRect = dom_Fcore.traceOutBoundingClientRect;
-function ModuleView_ModuleView() {
-  console.log(dom_Fcore);
-}
+function ModuleView_ModuleView() {}
 function alignFormCss(element, elementDynamic) {
   var GroupElement = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   var maxColumn = [],
@@ -55631,7 +55854,7 @@ function fakeInput(text, size) {
 function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result) {
   var y = pageY - result.getBoundingClientRect().top;
   y -= shiftY; // var height = result.clientHeight;
-  // console.log(y< clone.clientHeight/2)
+  // 
   // if(y>tempx){
   //     y = tempx;
   //     // bg.noAction = true;
@@ -55982,7 +56205,6 @@ function tableView() {
     child: [headerTable, bodyTable]
   });
 
-  result.indexRow = indexRow;
   result.headerTable = headerTable;
   result.bodyTable = bodyTable;
   Object.assign(result, tableView.prototype);
@@ -55991,6 +56213,25 @@ function tableView() {
   result.data = data;
   result.dragVertical = dragVertical;
   result.dragHorizontal = dragHorizontal;
+
+  result.updatePagination = function () {
+    var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : result.tempIndexRow;
+    result.tempIndexRow = number;
+    result.indexRow = number;
+
+    if (result.paginationElement !== undefined) {
+      result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+      var pagination = result.pagination(result.tempIndexRow);
+      result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
+    } else {
+      var pagination = result.pagination(result.tempIndexRow);
+      result.appendChild(pagination);
+    }
+
+    result.paginationElement = pagination;
+  };
+
+  result.updatePagination(indexRow);
   setTimeout(function () {
     if (window.scrollEvent === undefined) {
       window.xMousePos = 0;
@@ -56007,6 +56248,7 @@ function tableView() {
       }
 
       if (scrollParent === undefined) return;
+      result.scrollParent = scrollParent;
       scrollParent.addEventListener("scroll", function (event) {
         if (window.lastScrolledLeft != scrollParent.scrollLeft) {
           window.xMousePos -= window.lastScrolledLeft;
@@ -56117,7 +56359,7 @@ function tableView() {
             if (me.classList.contains("downgrade")) me.classList.remove("downgrade");
           }
 
-          result.updateTable(header, result.data, dragHorizontal, dragVertical);
+          if (result.paginationElement.noneValue !== true) result.paginationElement.reActive();else result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
         };
       }
 
@@ -56139,7 +56381,7 @@ function tableView() {
           click: function (index, row, functionClick) {
             return function (event) {
               event.preventDefault();
-              if (functionClick !== undefined) functionClick(event, this, index, data[index], row, result);
+              if (functionClick !== undefined) functionClick(event, this, index, row.data, row, result);
             };
           }(i, row, functionClick),
           mousedown: dragHorizontal && dragElement ? function (index) {
@@ -56208,7 +56450,7 @@ function tableView() {
           click: function (index, row, functionClickSort) {
             return function (event) {
               event.preventDefault();
-              if (functionClickSort !== undefined) functionClickSort(event, this, index, data[index], row, result);
+              if (functionClickSort !== undefined) functionClickSort(event, this, index, row.data, row, result);
             };
           }(i, row, functionClickSort)
         },
@@ -56255,7 +56497,8 @@ function tableView() {
 
   result.parentMargin = 0;
   result.childIndex = childIndex;
-  result.childrenNodes = result.getBodyTable(data);
+  result.childrenNodes = [];
+  result.getBodyTable(data);
   result.checkSpan = checkSpan;
   return result;
 }
@@ -56263,7 +56506,6 @@ function tableView() {
 tableView.prototype.setArrayFix = function (num, isLeft) {
   var i;
   var length;
-  console.log(this);
 
   if (isLeft) {
     i = 0;
@@ -56283,7 +56525,7 @@ tableView.prototype.setArrayFix = function (num, isLeft) {
       isFirst = true;
     }
 
-    isFirst = false; // console.log(this.clone[i][0],this.clone[i][0].offsetWidth)
+    isFirst = false; // 
   }
 };
 
@@ -56300,42 +56542,77 @@ tableView.prototype.setArrayScroll = function (num) {
 
 tableView.prototype.addInputSearch = function (input) {
   var self = this;
+  self.hashTable = new HashTable(self.data);
 
   input.onchange = function (event) {
-    for (var i = 0; i < self.data.length; i++) {
-      if (checkValueIs(self.data[i], input.value)) {
-        if (!self.bodyTable.childNodes[i].classList.contains("parent")) self.bodyTable.childNodes[i].classList.add("parent");
-        if (self.bodyTable.childNodes[i].classList.contains("disPlayNone")) self.bodyTable.childNodes[i].classList.remove("disPlayNone");
+    var needUpdate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-        if (self.bodyTable.childNodes[i].childNodes[0].getParentNode() !== undefined) {
-          if (!self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("parent")) self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.add("parent");
-          if (self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("disPlayNone")) self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.remove("disPlayNone");
-          if (!self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.contains("more-child")) self.bodyTable.childNodes[i].childNodes[0].getParentNode().classList.add("more-child");
-        }
-      } else {
-        if (self.bodyTable.childNodes[i].classList.contains("parent")) self.bodyTable.childNodes[i].classList.remove("parent");
-        if (!self.bodyTable.childNodes[i].classList.contains("disPlayNone")) self.bodyTable.childNodes[i].classList.add("disPlayNone");
-      }
+    if (input.value !== input.lastInputSearch || needUpdate == true) {
+      self.checkTableView(input.value);
+      input.lastInputSearch = input.value;
+      self.updatePagination();
     }
   };
 
   input.addEventListener("input", input.onchange);
-  self.inputElement = input;
+  if (self.inputElement === undefined) self.inputElement = [];
+  self.inputElement.push(input);
+
+  self.inputElement.onchange = function () {
+    for (var i = 0; i < self.inputElement.length; i++) {
+      self.inputElement[i].onchange();
+    }
+  };
 };
 
-function checkValueIs(data, text) {
-  var value;
+tableView.prototype.addFilter = function (input, index) {
+  var self = this;
+  self.hashTableFilter = new HashTableFilter(self.data);
+  input.on("change", function (event) {
+    var needUpdate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    self.checkTableViewFilter(input.value, index);
+    self.updatePagination();
+  });
+  if (self.inputFilter === undefined) self.inputFilter = [];
+  self.inputFilter.push(input);
 
-  for (var i = 0; i < data.length; i++) {
-    value = "";
-    if (data[i].value !== undefined) value = data[i].value;else value = data[i];
-    if (value.toString().toLowerCase().indexOf(text.toLowerCase()) !== -1) return true;
+  self.inputFilter.onchange = function () {
+    for (var i = 0; i < self.inputFilter.length; i++) {
+      self.inputFilter[i].emit("change");
+    }
+  };
+};
+
+tableView.prototype.checkTableView = function (value) {
+  var self = this;
+  self.hashTable.getKey(value);
+};
+
+tableView.prototype.checkTableViewFilter = function (value, index) {
+  var self = this;
+  self.hashTableFilter.getKey(value, index);
+};
+
+tableView.prototype.updateHash = function () {
+  if (this.inputElement != undefined) this.inputElement.onchange(undefined, true);
+  if (this.inputFilter !== undefined) this.inputFilter.onchange(undefined, true);
+};
+
+tableView.prototype.resetHash = function () {
+  var self = this;
+  if (self.hashTable !== undefined) self.hashTable = new HashTable(self.data);
+  if (self.hashTableFilter !== undefined) self.hashTableFilter = new HashTableFilter(self.data);
+};
+
+tableView.prototype.setVisiableAll = function (arr) {
+  for (var i = 0; i < arr.length; i++) {
+    arr[i].confirm = true;
+    if (arr[i].child !== undefined) this.setVisiableAll(arr[i].child);
   }
-
-  return false;
-}
+};
 
 tableView.prototype.getBodyTable = function (data) {
+  var i = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var temp = this.bodyTable;
   var result = this,
       k,
@@ -56344,8 +56621,30 @@ tableView.prototype.getBodyTable = function (data) {
       cell;
   var arr = [];
   if (parent.checkSpan === undefined) result.checkSpan = [];
+  result.indexRow = 0;
 
-  for (var i = 0; i < data.length && i < this.indexRow; i++) {
+  for (i; i < data.length && this.indexRow < this.tempIndexRow; i++) {
+    if (data[i].child !== undefined) data[i].child.updateVisible = data.updateVisible;
+
+    if (data.updateVisible === true) {
+      var tempCheck = data[i].confirm;
+      data[i].confirm = undefined;
+
+      if (tempCheck !== true) {
+        data[i].visiable = false;
+        if (data[i].child !== undefined) result.getBodyTable(data[i].child);
+        continue;
+      } else {
+        data[i].visiable = undefined;
+        if (data[i].child !== undefined) result.setVisiableAll(data[i].child);
+      }
+    } else {
+      if (data[i].visiable === false) {
+        if (data[i].child !== undefined) result.getBodyTable(data[i].child);
+        continue;
+      }
+    }
+
     row = result.getRow(data[i]);
     temp.addChild(row);
     arr.push(row);
@@ -56353,10 +56652,10 @@ tableView.prototype.getBodyTable = function (data) {
     for (var j = 0; j < temp.parentNode.clone.length; j++) {
       k = parseFloat(temp.parentNode.clone[j][0].id);
       if (delta[j] === undefined) delta[j] = 0;
-      cell = result.getCell(data[i][k], i, k, j, result.checkSpan, row);
+      cell = result.getCell(data[i][k], this.indexRow, k, j, result.checkSpan, row);
 
       if (cell === 6 || cell === 2) {
-        result.clone[j].splice(i + 1 - delta[j], 1);
+        result.clone[j].splice(indexRow + 1 - delta[j], 1);
         delta[j] += 1;
         continue;
       }
@@ -56366,15 +56665,227 @@ tableView.prototype.getBodyTable = function (data) {
       }
 
       cell.clone = result.clone;
-      result.clone[j][i + 1 - delta[j]] = cell;
+      result.clone[j][this.indexRow + 1 - delta[j]] = cell;
       row.addChild(cell);
     }
 
     row.checkChild();
+    this.indexRow++;
   }
 
+  result.setConfirm(data, i);
   if (result.checkMargin !== undefined) result.checkMargin();
+  data.updateVisible = undefined;
+  result.childrenNodes = result.childrenNodes.concat(arr);
   return arr;
+};
+
+tableView.prototype.setConfirm = function (arr) {
+  var i = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+  for (i; i < arr.length; i++) {
+    arr[i].confirm = undefined;
+
+    if (arr[i].child !== undefined) {
+      this.setConfirm(arr[i].child);
+    }
+  }
+};
+
+tableView.prototype.countRow = function () {
+  var countRowVisiable = this.countRowChild(this.data);
+  return countRowVisiable;
+};
+
+tableView.prototype.countRowChild = function (arr) {
+  var countRowVisiable = 0;
+
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].visiable !== false) countRowVisiable++;
+    if (arr[i].child !== undefined) countRowVisiable += this.countRowChild(arr[i].child);
+  }
+
+  return countRowVisiable;
+};
+
+tableView.prototype.pagination = function (number, functionClick) {
+  var countPrecent = Math.ceil(this.countRow() / number);
+  console.log(countPrecent);
+
+  if (countPrecent <= 1) {
+    var temp = ModuleView_({
+      tag: "div",
+      style: {
+        display: "none"
+      }
+    });
+
+    temp.noneValue = true;
+    return temp;
+  }
+
+  var self = this;
+  var paginationLeftPos = "20px";
+  var paginationOpacity = 0;
+  var checkPaginationClick = 0;
+  var arr = [];
+
+  var overlay = ModuleView_({
+    tag: "div",
+    "class": "pagination-hover-overlay"
+  });
+
+  var container = ModuleView_({
+    tag: "div",
+    "class": "pagination-wrapper"
+  });
+
+  var temp = ModuleView_({
+    tag: "div",
+    "class": "pagination",
+    child: [{
+      tag: "div",
+      "class": "pagination-container",
+      child: [overlay, {
+        tag: "div",
+        "class": "pagination-prev",
+        on: {
+          click: function click(event) {
+            var temp = ModuleView_$("a.active", container);
+            if (temp !== undefined) if (temp.previousSibling !== null) {
+              temp.previousSibling.click();
+              temp.style.color = "";
+            }
+          }
+        },
+        props: {},
+        child: [{
+          tag: "span",
+          "class": ["icon-pagination", "icon-pagination-prev"],
+          child: [{
+            tag: "i",
+            "class": ["icon", "material-icons"],
+            props: {
+              innerHTML: "keyboard_arrow_left"
+            }
+          }]
+        }]
+      }, container, {
+        tag: "div",
+        "class": "pagination-next",
+        on: {
+          click: function click(event) {
+            var temp = ModuleView_$("a.active", container);
+            if (temp !== undefined) if (temp.nextSibling !== null) {
+              temp.nextSibling.click();
+              temp.style.color = "";
+            }
+          }
+        },
+        child: [{
+          tag: "span",
+          "class": ["icon-pagination", "icon-pagination-next"],
+          child: [{
+            tag: "i",
+            "class": ["icon", "material-icons"],
+            props: {
+              innerHTML: "keyboard_arrow_left"
+            }
+          }]
+        }]
+      }]
+    }]
+  });
+
+  for (var i = 0; i < countPrecent; i++) {
+    var choiceSelect = ModuleView_({
+      tag: "a",
+      "class": "pagination-page-number",
+      on: {
+        click: function (i) {
+          return function (event) {
+            var temp = ModuleView_$("a.active", container);
+            if (temp !== undefined) temp.classList.remove("active");
+            this.classList.add("active");
+            paginationLeftPos = this.offsetLeft + "px";
+            paginationOpacity = 1;
+            checkPaginationClick = 1;
+            overlay.style.left = paginationLeftPos;
+            overlay.style.backgroundColor = "#00178a";
+            overlay.style.opacity = paginationOpacity;
+            this.style.color = "#fff";
+            if (functionClick !== undefined) functionClick(event, i);
+            self.updateTable(undefined, self.data, self.dragHorizontal, self.dragVertical, i * number);
+            if (self.scrollParent !== undefined) self.scrollParent.scrollTop = 0;
+          };
+        }(i),
+        mouseover: function mouseover(event) {
+          paginationOpacity = 1;
+          overlay.style.backgroundColor = "#00c1dd";
+          overlay.style.left = this.offsetLeft + "px";
+          overlay.style.opacity = paginationOpacity;
+          var temp = ModuleView_$("a.active", container);
+          if (temp !== undefined) temp.style.color = "#333d45";
+          this.style.color = "#fff";
+        },
+        mouseout: function mouseout(event) {
+          if (checkPaginationClick) {
+            paginationOpacity = 1;
+          } else {
+            paginationOpacity = 0;
+          }
+
+          overlay.style.backgroundColor = "#00178a";
+          overlay.style.opacity = paginationOpacity;
+          overlay.style.left = paginationLeftPos;
+          this.style.color = "#333d45";
+          var temp = ModuleView_$("a.active", container);
+          if (temp !== undefined) temp.style.color = "#fff";
+        }
+      },
+      props: {
+        innerHTML: i + 1
+      }
+    });
+
+    arr.push(choiceSelect);
+    container.appendChild(choiceSelect);
+  }
+
+  temp.resetChoice = function () {
+    setTimeout(function () {
+      arr[0].click();
+    }, 10);
+  };
+
+  temp.resetOnlyView = function () {
+    setTimeout(function () {
+      if (arr.length == 0) return;
+      var temp = ModuleView_$("a.active", container);
+
+      if (temp !== undefined) {
+        temp.classList.remove("active");
+        temp.style.color = "";
+      }
+
+      arr[0].classList.add("active");
+      paginationLeftPos = arr[0].offsetLeft + "px";
+      paginationOpacity = 1;
+      checkPaginationClick = 1;
+      overlay.style.left = paginationLeftPos;
+      overlay.style.backgroundColor = "#00178a";
+      overlay.style.opacity = paginationOpacity;
+      arr[0].style.color = "#fff";
+    }, 10);
+  };
+
+  temp.reActive = function () {
+    var temp = ModuleView_$("a.active", container);
+    if (temp !== undefined) temp.click();
+  };
+
+  temp.resetOnlyView();
+  return temp;
 };
 
 tableView.prototype.getRow = function (data) {
@@ -56401,7 +56912,7 @@ tableView.prototype.getRow = function (data) {
   temp.childIndex = result.childIndex;
   temp.moreChild = temp.data.moreChild;
   temp.data.moreChild = undefined;
-  temp.indexRow = result.indexRow;
+  temp.tempIndexRow = result.tempIndexRow;
 
   temp.checkLeft = function () {
     for (var i = 0; i < temp.childNodes.length; i++) {
@@ -56419,7 +56930,7 @@ tableView.prototype.getRow = function (data) {
 
     if (temp.data.child.length !== 0) {
       temp.checkIcon();
-      temp.childrenNodes = temp.childrenNodes.concat(temp.getBodyTable(temp.data.child));
+      temp.getBodyTable(temp.data.child);
     }
   };
 
@@ -56729,8 +57240,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
           if (functionClick !== undefined) {
             if (cell.getParentNode().childrenNodes.length !== 0) var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);else var finalIndex = 0;
             var dataIndex;
-            if (cell.getParentNode().data.child !== undefined) dataIndex = cell.getParentNode().data.child[finalIndex];else dataIndex = cell.getParentNode().data[finalIndex];
-            functionClick(event, cell, finalIndex, cell.getParentNode(), dataIndex, row);
+            functionClick(event, cell, finalIndex, cell.getParentNode(), row.data, row);
           }
         }(event, row, functionClick);
       }
@@ -56816,7 +57326,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
 };
 
 tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
-  var row, cell, k;
+  var index = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
   var checkSpan = [];
   var result = this;
 
@@ -56835,35 +57345,10 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 
   this.replaceChild(temp, this.bodyTable);
   this.bodyTable = temp;
-  result.childrenNodes = result.getBodyTable(data); // var delta = [];
-  // for (var i = 0; i < data.length; i++) {
-  //     row = result.getRow(data[i]);
-  //     temp.addChild(row);
-  //     for (var j = 0; j < this.clone.length; j++) {
-  //         k = parseFloat(this.clone[j][0].id);
-  //         if(delta[j]===undefined)
-  //             delta[j] = 0;
-  //         cell = result.getCell(data[i][k],i,k,j,checkSpan,row);
-  //         if(cell === 6  || cell === 2)
-  //         {
-  //             this.clone[j].splice(i+1 - delta[j],1);
-  //             delta[j]+=1;
-  //             continue
-  //         }
-  //         if(cell === true)
-  //         {
-  //             continue;
-  //         }
-  //         cell.clone = this.clone;
-  //         this.clone[j][i+1 - delta[j]] = cell;
-  //         row.addChild(cell);
-  //     }
-  //     row.checkChild();
-  // }
-
+  result.childrenNodes = [];
+  result.getBodyTable(data, index);
   this.checkSpan = checkSpan;
   this.data = data;
-  if (this.inputElement !== undefined) this.inputElement.onchange();
 };
 
 tableView.prototype.insertRow = function (data) {
@@ -56898,12 +57383,12 @@ tableView.prototype.updateRow = function (data, index) {
 
   var checkChild = false;
 
-  if (index === result.data.length && result.tagName === "TABLE") {
-    result.bodyTable.addChild(row);
-  } else if (result.childrenNodes !== undefined && result.childrenNodes.length === index) {
-    checkChild = true;
-    if (!result.classList.contains("more-child")) result.setDisPlay();
-    result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length - 1].parentNode.nextSibling);
+  if (index === result.childrenNodes.length) {
+    if (result.tagName === "TABLE") result.bodyTable.addChild(row);else {
+      checkChild = true;
+      if (!result.classList.contains("more-child")) result.setDisPlay();
+      result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length - 1].parentNode.nextSibling);
+    }
   } else {
     var temp;
     temp = result.childrenNodes[index];
@@ -56941,24 +57426,29 @@ tableView.prototype.updateRow = function (data, index) {
     row.addChild(cell);
   }
 
-  var x;
+  var x,
+      indexData = result.childrenNodes[index].data;
   result.childrenNodes[index] = row;
 
   if (result.tagName !== "TABLE") {
-    if (result.data.child[index] === undefined) {
+    indexData = result.data.child.indexOf(indexData);
+
+    if (indexData === -1) {
+      result.data.child.push(data);
       x = data;
-      result.data.child[index] = data;
     } else {
-      if (data.child.length === 0) data.child = result.data.child[index].child;
-      x = Object.assign(result.data.child[index], data);
+      x = Object.assign(result.data.child[indexData], data);
+      result.data.child[indexData] = x;
     }
   } else {
-    if (result.data[index] === undefined) {
-      result.data[index] = data;
-      x = result.data[index];
+    indexData = result.data.indexOf(indexData);
+
+    if (indexData === -1) {
+      result.data.push(data);
+      x = data;
     } else {
-      if (data.child.length === 0) data.child = result.data[index].child;
-      x = Object.assign(result.data[index], data);
+      x = Object.assign(result.data[indexData], data);
+      result.data[indexData] = x;
     }
   }
 
@@ -57001,31 +57491,11 @@ tableView.prototype.updateRow = function (data, index) {
   }
 
   if (row.childrenNodes.length !== 0) row.checkIcon();else row.checkClone();
-  if (result.checkMargin !== undefined) result.checkMargin();
-  result.checkDataUpdate(row);
+  if (result.checkMargin !== undefined) result.checkMargin(); //    result.checkDataUpdate(row);
+
+  result.bodyTable.parentNode.resetHash();
+  result.bodyTable.parentNode.updateHash();
   return row;
-};
-
-tableView.prototype.checkDataUpdate = function (row) {
-  var self = this;
-  var input = self.headerTable.parentNode.inputElement;
-  if (input === undefined) return;
-
-  for (var i = 0; i < row.childNodes.length; i++) {
-    if (checkValueIs(row.childNodes, input.value)) {
-      if (!row.classList.contains("parent")) row.classList.add("parent");
-      if (row.classList.contains("disPlayNone")) row.classList.remove("disPlayNone");
-
-      if (row.childNodes[0].getParentNode() !== undefined) {
-        if (!row.childNodes[0].getParentNode().classList.contains("parent")) row.childNodes[0].getParentNode().classList.add("parent");
-        if (row.childNodes[0].getParentNode().classList.contains("disPlayNone")) row.childNodes[0].getParentNode().classList.remove("disPlayNone");
-        if (!row.childNodes[0].getParentNode().classList.contains("more-child")) row.childNodes[0].getParentNode().classList.add("more-child");
-      }
-    } else {
-      if (row.classList.contains("parent")) row.classList.remove("parent");
-      if (!row.classList.contains("disPlayNone")) row.classList.add("disPlayNone");
-    }
-  }
 };
 
 tableView.prototype.dropRow = function (index) {
@@ -57051,13 +57521,18 @@ tableView.prototype.dropRow = function (index) {
       }
 
       if (parent.childrenNodes.length !== 0) {
-        var indexData = parent.childrenNodes.indexOf(element);
-        if (parent.data.child !== undefined) parent.data.child.splice(indexData, 1);else parent.data.splice(indexData, 1);
-        parent.childrenNodes.splice(indexData, 1);
+        if (parent.data.child !== undefined) {
+          parent.data.child.splice(parent.data.child.indexOf(element.data), 1);
+        } else {
+          parent.data.splice(parent.data.indexOf(element.data), 1);
+        }
+
+        parent.childrenNodes.splice(parent.childrenNodes.indexOf(element), 1);
       }
 
       if (result.checkVisibleChild !== undefined && result.childrenNodes.length === 0) result.checkVisibleChild();
       parent.isUpdate = true;
+      result.bodyTable.parentNode.resetHash();
       resolve();
     }; // Code for Safari 3.1 to 6.0
 
@@ -57159,7 +57634,6 @@ tableView.prototype.backGroundFix = function (index) {
 
   if (scrollParent === undefined) return;
   var rectDistance = traceOutBoundingClientRect(this);
-  console.log(traceOutBoundingClientRect(this));
 
   var temp = ModuleView_({
     tag: "div",
@@ -57207,7 +57681,6 @@ tableView.prototype.backGround = function (height, callback, index) {
   }
 
   if (scrollParent === undefined) return;
-  console.log(rectDistance);
 
   var temp = ModuleView_({
     tag: "div",
@@ -57762,7 +58235,7 @@ function tableViewMobile() {
             if (me.classList.contains("downgrade")) me.classList.remove("downgrade");
           }
 
-          result.updateTable(header, result.data, dragHorizontal, dragVertical);
+          if (result.paginationElement.noneValue !== true) result.paginationElement.reActive();else result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
         };
       }
 
@@ -57782,7 +58255,7 @@ function tableViewMobile() {
           click: function (index, row, functionClick) {
             return function (event) {
               event.preventDefault();
-              if (functionClick !== undefined) functionClick(event, this, index, result, data[index], row);
+              if (functionClick !== undefined) functionClick(event, this, index, result, row.data, row);
             };
           }(i, row, functionClick),
           mousedown: dragHorizontal ? function (index) {
@@ -57871,7 +58344,7 @@ function tableViewMobile() {
           click: function (index, row, functionClickSort) {
             return function (event) {
               event.preventDefault();
-              if (functionClickSort !== undefined) functionClickSort(event, this, index, data[index], row, result);
+              if (functionClickSort !== undefined) functionClickSort(event, this, index, row.data, row, result);
             };
           }(i, row, functionClickSort)
         },
@@ -57888,7 +58361,8 @@ function tableViewMobile() {
     } else check[i] = "hidden";
   }
 
-  result.childrenNodes = result.getBodyTable(data);
+  result.childrenNodes = [];
+  result.getBodyTable(data);
   result.checkSpan = checkSpan;
   return result;
 }
@@ -57951,7 +58425,6 @@ function random_bg_color() {
 
 function allowNumbersOnly(e) {
   var code = e.which ? e.which : e.keyCode;
-  console.log(code);
 
   if ((code > 122 || code < 97) && code != 45) {
     e.preventDefault();
@@ -58076,7 +58549,6 @@ function deleteQuestion(title, content) {
       }]
     });
   });
-  console.log(temp);
   temp.promiseComfirm = promiseComfirm;
   return temp;
 }
@@ -58968,7 +59440,6 @@ DetailView.prototype.activeAutocomplete = function (map) {
       country: 'vn'
     }
   };
-  console.log(options);
   autocomplete = new google.maps.places.Autocomplete(self.input, options); // Avoid paying for data that you don't need by restricting the set of
   // place fields that are returned to just the address components.
 
@@ -58984,11 +59455,9 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
   // Get the place details from the autocomplete object.
   var self = this;
   var place = autocomplete.getPlace();
-  console.log(autocomplete);
   this.getLongLat(text).then(function (result) {
     map.addMoveMarker(result);
   });
-  console.log(place);
   var textResult = text;
   var componentForm = {
     street_number: 'short_name',
@@ -58999,7 +59468,6 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
     country: 'long_name',
     postal_code: 'short_name'
   };
-  console.log(place);
   self.number.value = "";
   self.street.value = "";
   self.state.value = "";
@@ -59115,7 +59583,6 @@ DetailView.prototype.getLongLat = function (text) {
       if (status == google.maps.GeocoderStatus.OK) {
         // do something with the geocoded result
         //
-        console.log([results[0].geometry.location.lat(), results[0].geometry.location.lng()]);
         resolve([results[0].geometry.location.lat(), results[0].geometry.location.lng()]); // results[0].geometry.location.latitude
         // results[0].geometry.location.longitude
       } else {
@@ -59171,7 +59638,6 @@ MapView_MapView.prototype.addMoveMarker = function (position) {
   var changeInput = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   var self = this;
   var marker;
-  console.log(position);
   if (changeInput) self.detailView.changInput = false;
 
   if (this.currentMarker !== undefined) {
@@ -59233,10 +59699,7 @@ MapView_MapView.prototype.transition = function (result, changeInput) {
 };
 
 MapView_MapView.prototype.callback = function (results, status) {
-  console.log(this);
-
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
-    console.log(results); // for (var i = 0; i < results.length; i++) { 
+  if (status === google.maps.places.PlacesServiceStatus.OK) {// for (var i = 0; i < results.length; i++) { 
     //     this.createMarker(results[i]); 
     // }
   }
@@ -59355,7 +59818,6 @@ function getGMT(date) {
   var tzDifference = timeZoneFromDB * 60 + d.getTimezoneOffset(); //convert the offset to milliseconds, add to targetTime, and make a new Date
 
   d = new Date(d.getTime() + tzDifference * 60 * 1000);
-  console.log(d);
   var resultTime = [];
   var resultDayMonth = [];
 
@@ -60566,7 +61028,7 @@ NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage, index
     on: {
       click: function click(event) {
         document.body.appendChild(descViewImagePreview(dataImage, index, promiseLazyLoad)); // xmlModalDragImage.createModal(document.body,function(){
-        //     console.log(xmlModalDragImage.imgUrl)
+        //     
         // });
       }
     }
@@ -61657,9 +62119,7 @@ function NewRealty_removeAccents(str) {
 
 /* harmony default export */ var component_NewRealty = (NewRealty_NewRealty);
 // CONCATENATED MODULE: ./js/component/ModuleDatabase.js
-function ModuleDatabase() {
-  console.log(Fcore);
-}
+function ModuleDatabase() {}
 function loadData(phpLoader) {
   var php = "https://lab.daithangminh.vn/home_co/pizo/php/php/load_help.php";
   if (phpLoader !== undefined) php = phpLoader;
@@ -61668,11 +62128,8 @@ function loadData(phpLoader) {
 
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText.substr(2));
         resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
-      } else {
-        console.log(this.responseText, this.status);
-      }
+      } else {}
     };
 
     xhttp.open("GET", php, true);
@@ -61688,9 +62145,7 @@ function updateData(phpUpdater, data) {
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
-      } else {
-        console.log(this.responseText, this.status);
-      }
+      } else {}
     };
 
     xhttp.open("POST", php, true);
@@ -61789,7 +62244,6 @@ ListRealty_ListRealty.prototype.getView = function () {
             click: function click(evt) {
               var mNewRealty = new component_NewRealty();
               mNewRealty.attach(self.parent);
-              console.log(self.parent);
               var frameview = mNewRealty.getView();
               self.parent.body.addChild(frameview);
               self.parent.body.activeFrame(frameview);
@@ -61864,7 +62318,6 @@ ListRealty_ListRealty.prototype.getView = function () {
         case 0:
           var mNewRealty = new component_NewRealty();
           mNewRealty.attach(self.parent);
-          console.log(self.parent);
           var frameview = mNewRealty.getView();
           self.parent.body.addChild(frameview);
           self.parent.body.activeFrame(frameview);
@@ -61896,7 +62349,6 @@ ListRealty_ListRealty.prototype.getView = function () {
   });
 
   loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_activehomes.php").then(function (value) {
-    console.log(value);
     var header = [{
       type: "dragzone",
       dragElement: false
@@ -62013,7 +62465,6 @@ ListRealty_ListRealty.prototype.formatDataRow = function (data) {
     check[data[i].id] = result;
   }
 
-  console.log(temp);
   return temp;
 };
 
@@ -62028,7 +62479,6 @@ ListRealty_ListRealty.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay);
         endDay.minDateLimit = date;
       }
     }
@@ -62042,7 +62492,6 @@ ListRealty_ListRealty.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay.maxDateLimit = date;
       }
     }
@@ -62596,6 +63045,11 @@ ListWard_ListWard.prototype.getView = function () {
   var input = ListWard_({
     tag: "input",
     "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
     props: {
       type: "number",
       autocomplete: "off",
@@ -62627,7 +63081,7 @@ ListWard_ListWard.prototype.getView = function () {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: "Quản lý Tỉnh/TP"
+          innerHTML: "Quản lý Phường/Xã"
         }
       }, {
         tag: "div",
@@ -62757,10 +63211,12 @@ ListWard_ListWard.prototype.getView = function () {
   };
 
   loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_wards.php").then(function (value) {
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function (listState) {
-      loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (listParam) {
-        self.setListParam(listState);
-        self.setListParamState(listParam);
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function (listDistrict) {
+      self.setListParamDistrict(listDistrict);
+      self.listDistrictElement.updateItemList(listDistrict);
+      loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (listState) {
+        self.setListParamState(listState);
+        self.listStateElement.updateItemList(listState);
         var header = [{
           type: "increase",
           value: "#",
@@ -62813,7 +63269,9 @@ ListWard_ListWard.prototype.getView = function () {
         }];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
         tabContainer.addChild(self.mTable);
-        self.mTable.addInputSearch(ListWard_$('.pizo-list-realty-page-allinput-container input', self.$view)); // self.listParent.updateItemList(listParam);
+        self.mTable.addInputSearch(ListWard_$('.pizo-list-realty-page-allinput-container input', self.$view));
+        self.mTable.addFilter(self.listDistrictElement, 4);
+        self.mTable.addFilter(self.listStateElement, 5);
       });
     });
   });
@@ -62826,7 +63284,7 @@ ListWard_ListWard.prototype.getView = function () {
   return this.$view;
 };
 
-ListWard_ListWard.prototype.setListParam = function (value) {
+ListWard_ListWard.prototype.setListParamDistrict = function (value) {
   this.checkDistrict = [];
   this.listDistrict = [];
 
@@ -62837,8 +63295,6 @@ ListWard_ListWard.prototype.setListParam = function (value) {
       value: value[i].id
     };
   }
-
-  console.log(this.checkDistrict);
 };
 
 ListWard_ListWard.prototype.setListParamState = function (value) {
@@ -62880,7 +63336,17 @@ ListWard_ListWard.prototype.formatDataRow = function (data) {
 };
 
 ListWard_ListWard.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, data.type, this.checkDistrict[parseInt(data.districtid)].name, this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name, {}];
+  var result = [{}, data.id, data.name, data.type, {
+    value: data.districtid,
+    element: ListWard_({
+      text: this.checkDistrict[parseInt(data.districtid)].name
+    })
+  }, {
+    value: this.checkDistrict[parseInt(data.districtid)].stateid,
+    element: ListWard_({
+      text: this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name
+    })
+  }, {}];
   result.original = data;
   return result;
 };
@@ -62903,6 +63369,7 @@ ListWard_ListWard.prototype.formatDataList = function (data) {
 
 ListWard_ListWard.prototype.searchControlContent = function () {
   var startDay, endDay, startDay1, endDay1;
+  var self = this;
   startDay = ListWard_({
     tag: 'calendar-input',
     data: {
@@ -62912,7 +63379,6 @@ ListWard_ListWard.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay);
         endDay.minDateLimit = date;
       }
     }
@@ -62939,7 +63405,6 @@ ListWard_ListWard.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay1);
         endDay1.minDateLimit = date;
       }
     }
@@ -62953,11 +63418,39 @@ ListWard_ListWard.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay1.maxDateLimit = date;
       }
     }
   });
+  self.listStateElement = ListWard_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        id: 0
+      }]
+    }
+  });
+
+  self.listStateElement.updateItemList = function (value) {
+    self.listStateElement.items = self.formatDataList(value);
+  };
+
+  self.listDistrictElement = ListWard_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        id: 0
+      }]
+    }
+  });
+
+  self.listDistrictElement.updateItemList = function (value) {
+    self.listDistrictElement.items = self.formatDataList(value);
+  };
 
   var content = ListWard_({
     tag: "div",
@@ -62985,19 +63478,7 @@ ListWard_ListWard.prototype.searchControlContent = function () {
           }, {
             tag: "div",
             "class": "pizo-list-realty-main-search-control-row-state-ward-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Thành phố Hồ Chí Minh',
-                  id: 79
-                }, {
-                  text: 'Thủ đô Hà Nội',
-                  id: 80
-                }]
-              }
-            }]
+            child: [self.listStateElement]
           }]
         }, {
           tag: "div",
@@ -63011,50 +63492,7 @@ ListWard_ListWard.prototype.searchControlContent = function () {
           }, {
             tag: "div",
             "class": "pizo-list-realty-main-search-control-row-district-ward-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Quận 1',
-                  id: 79
-                }, {
-                  text: 'Quận Bình Thạnh',
-                  id: 80
-                }, {
-                  text: 'Quận Tân Bình',
-                  id: 81
-                }]
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-phone",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-phone-label",
-            props: {
-              innerHTML: "Ngày tạo"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-date-input",
-            child: [startDay, endDay]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-phone",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-phone-label",
-            props: {
-              innerHTML: "Ngày cập nhật"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-date-input",
-            child: [startDay1, endDay1]
+            child: [self.listDistrictElement]
           }]
         }, {
           tag: "div",
@@ -63180,7 +63618,6 @@ ListWard_ListWard.prototype.addDB = function (mNewDistrict, row) {
     var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     updateData(phpFile, value).then(function (result) {
-      console.log(result);
       value.id = result;
       self.addView(value, row);
     });
@@ -63195,7 +63632,6 @@ ListWard_ListWard.prototype.addView = function (value, parent) {
   value.created = getGMT();
   value.modified = getGMT();
   var result = this.getDataRow(value);
-  console.log(result);
   var element = this.mTable;
   element.insertRow(result);
 };
@@ -63238,7 +63674,6 @@ ListWard_ListWard.prototype.editView = function (value, data, parent, index) {
 
 ListWard_ListWard.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
-  console.log(data);
   var self = this;
   var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
@@ -63333,6 +63768,11 @@ ListStreet_ListStreet.prototype.getView = function () {
   var input = ListStreet_({
     tag: "input",
     "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
     props: {
       type: "number",
       autocomplete: "off",
@@ -63364,7 +63804,7 @@ ListStreet_ListStreet.prototype.getView = function () {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: "Quản lý Tỉnh/TP"
+          innerHTML: "Quản lý Tên đường"
         }
       }, {
         tag: "div",
@@ -63631,10 +64071,8 @@ ListStreet_ListStreet.prototype.formatDataRow = function (data) {
 };
 
 ListStreet_ListStreet.prototype.getDataRow = function (data) {
-  console.log(this.checkWard);
   var result = [{}, data.id, data.name, this.checkWard[parseInt(data.wardid)].name, this.checkDistrict[parseInt(this.checkWard[parseInt(data.wardid)].districtid)].name, this.checkState[parseInt(this.checkDistrict[parseInt(this.checkWard[parseInt(data.wardid)].districtid)].stateid)].name, {}];
   result.original = data;
-  console.log(result);
   return result;
 };
 
@@ -63665,7 +64103,6 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay);
         endDay.minDateLimit = date;
       }
     }
@@ -63692,7 +64129,6 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay1);
         endDay1.minDateLimit = date;
       }
     }
@@ -63706,7 +64142,6 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay1.maxDateLimit = date;
       }
     }
@@ -63933,7 +64368,6 @@ ListStreet_ListStreet.prototype.addDB = function (mNewDistrict, row) {
     var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     updateData(phpFile, value).then(function (result) {
-      console.log(result);
       value.id = result;
       self.addView(value, row);
     });
@@ -63948,7 +64382,6 @@ ListStreet_ListStreet.prototype.addView = function (value, parent) {
   value.created = getGMT();
   value.modified = getGMT();
   var result = this.getDataRow(value);
-  console.log(result);
   var element = this.mTable;
   element.insertRow(result);
 };
@@ -63991,7 +64424,6 @@ ListStreet_ListStreet.prototype.editView = function (value, data, parent, index)
 
 ListStreet_ListStreet.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
-  console.log(data);
   var self = this;
   var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
@@ -64258,6 +64690,11 @@ ListState_ListState.prototype.getView = function () {
   var input = ListState_({
     tag: "input",
     "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
     props: {
       type: "number",
       autocomplete: "off",
@@ -64492,7 +64929,6 @@ ListState_ListState.prototype.setListParam = function (value) {
   }
 
   this.isLoaded = true;
-  console.log(this.checkNation);
 };
 
 ListState_ListState.prototype.getDataParam = function () {
@@ -64618,7 +65054,6 @@ ListState_ListState.prototype.addDB = function (mNewState, row) {
     var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     updateData(phpFile, value).then(function (result) {
-      console.log(result);
       value.id = result;
       self.addView(value, row);
     });
@@ -64633,7 +65068,6 @@ ListState_ListState.prototype.addView = function (value, parent) {
   value.created = getGMT();
   value.modified = getGMT();
   var result = this.getDataRow(value);
-  console.log(result);
   var element = this.mTable;
   element.insertRow(result);
 };
@@ -64676,7 +65110,6 @@ ListState_ListState.prototype.editView = function (value, data, parent, index) {
 
 ListState_ListState.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
-  console.log(data);
   var self = this;
   var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
@@ -64771,6 +65204,11 @@ ListDistrict_ListDistrict.prototype.getView = function () {
   var input = ListDistrict_({
     tag: "input",
     "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
     props: {
       type: "number",
       autocomplete: "off",
@@ -64802,7 +65240,7 @@ ListDistrict_ListDistrict.prototype.getView = function () {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: "Quản lý Tỉnh/TP"
+          innerHTML: "Quản lý Quận/Huyện"
         }
       }, {
         tag: "div",
@@ -64981,6 +65419,7 @@ ListDistrict_ListDistrict.prototype.getView = function () {
       tabContainer.addChild(self.mTable);
       self.mTable.addInputSearch(ListDistrict_$('.pizo-list-realty-page-allinput-container input', self.$view));
       self.listParent.updateItemList(listParam);
+      self.mTable.addFilter(self.listParent, 4);
     });
   });
   this.searchControl = this.searchControlContent();
@@ -65005,7 +65444,6 @@ ListDistrict_ListDistrict.prototype.setListParam = function (value) {
   }
 
   this.isLoaded = true;
-  console.log(this.checkState);
 };
 
 ListDistrict_ListDistrict.prototype.getDataParam = function () {
@@ -65028,12 +65466,16 @@ ListDistrict_ListDistrict.prototype.formatDataRow = function (data) {
     check[data[i].id] = result;
   }
 
-  console.log(temp);
   return temp;
 };
 
 ListDistrict_ListDistrict.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, data.type, this.checkState[parseInt(data.stateid)].name, {}];
+  var result = [{}, data.id, data.name, data.type, {
+    value: this.checkState[parseInt(data.stateid)].id,
+    element: ListDistrict_({
+      text: this.checkState[parseInt(data.stateid)].name
+    })
+  }, {}];
   result.original = data;
   return result;
 };
@@ -65066,7 +65508,6 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay);
         endDay.minDateLimit = date;
       }
     }
@@ -65080,7 +65521,6 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay.maxDateLimit = date;
       }
     }
@@ -65094,7 +65534,6 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay1);
         endDay1.minDateLimit = date;
       }
     }
@@ -65108,7 +65547,6 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay1.maxDateLimit = date;
       }
     }
@@ -65308,7 +65746,6 @@ ListDistrict_ListDistrict.prototype.addDB = function (mNewDistrict, row) {
     var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     updateData(phpFile, value).then(function (result) {
-      console.log(result);
       value.id = result;
       self.addView(value, row);
     });
@@ -65323,7 +65760,6 @@ ListDistrict_ListDistrict.prototype.addView = function (value, parent) {
   value.created = getGMT();
   value.modified = getGMT();
   var result = this.getDataRow(value);
-  console.log(result);
   var element = this.mTable;
   element.insertRow(result);
 };
@@ -65366,7 +65802,6 @@ ListDistrict_ListDistrict.prototype.editView = function (value, data, parent, in
 
 ListDistrict_ListDistrict.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
-  console.log(data);
   var self = this;
   var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
@@ -65505,17 +65940,14 @@ PlanningInformation_PlanningInformation.prototype.getView = function () {
             dxf = parser.parseSync(fileText);
           } catch (err) {
             return console.error(err.stack);
-          }
+          } // outputElement.innerHTML = JSON.stringify(dxf, null, 4);
 
-          console.log('Success!'); // outputElement.innerHTML = JSON.stringify(dxf, null, 4);
 
-          console.log(dxf, JSON.stringify(dxf, null, 4));
           var geojson = GeoJSON.parse(dxf); // var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
 
           window.dcel.extractLines();
           var faces = dcel.internalFaces();
           geojson = consoleArea(faces);
-          console.log(geojson);
           mapView.map.data.addGeoJson(geojson, {}); // map.setCenter(center);
 
           mapView.map.data.setStyle({
@@ -66228,7 +66660,6 @@ function EditHelpContainer_EditHelpContainer(phpLoader) {
 
   var updateTableFunction;
   loadData(phpLoader).then(function (value) {
-    console.log(value);
     var header = [{
       type: "dragzone"
     }, {
@@ -66396,7 +66827,6 @@ function EditHelpContainer_EditHelpContainer(phpLoader) {
                             on: {
                               input: function input(event) {
                                 var parent = this.parentNode.parentNode;
-                                console.log(parent);
 
                                 if (this.value == "") {
                                   if (!parent.classList.contains("hasErrorElement")) parent.classList.add("hasErrorElement");
@@ -66412,8 +66842,6 @@ function EditHelpContainer_EditHelpContainer(phpLoader) {
                                   if (parent.classList.contains("used-error")) parent.classList.remove("used-error");
                                 }
 
-                                console.log(!parent.classList.contains("used-error"), !parent.classList.contains("invalid-error"), parent.classList.contains("hasErrorElement"));
-                                console.log(!parent.classList.contains("used-error"), !parent.classList.contains("invalid-error"), parent.classList.contains("hasErrorElement"));
                                 if (!parent.classList.contains("used-error") && !parent.classList.contains("invalid-error") && parent.classList.contains("hasErrorElement")) parent.classList.remove("hasErrorElement");
                               },
                               keypress: function keypress(event) {
@@ -66496,7 +66924,6 @@ Object.defineProperties(EditHelpContainer_EditHelpContainer.prototype, Object.ge
 EditHelpContainer_EditHelpContainer.prototype.constructor = EditHelpContainer_EditHelpContainer;
 
 EditHelpContainer_EditHelpContainer.prototype.functionClickMore = function (event, me, index, parent, data, row) {
-  console.log(this);
   var self = this;
   var docTypeMemuProps = {
     items: [{
@@ -66576,7 +67003,6 @@ EditHelpContainer_EditHelpContainer.prototype.saveDataCurrent = function (row) {
   var rowSelected = this.editView(value, arr.data, arr.parentDetail, arr.indexDetail);
 
   if (!isRemove) {
-    console.log(arr);
     rowSelected.parentDetail = arr.parentDetail;
     rowSelected.indexDetail = arr.indexDetail;
   }
@@ -66589,7 +67015,6 @@ EditHelpContainer_EditHelpContainer.prototype.resetChoice = function (bodyTable)
 
   if (choice.length == 0) {
     bodyTable.childNodes[0].indexDetail = 0;
-    console.log(this.mTable);
     bodyTable.childNodes[0].parentDetail = this.mTable;
     this.rowSelected = bodyTable.childNodes[0];
     bodyTable.childNodes[0].classList.add("choice-event-category");
@@ -66679,7 +67104,6 @@ EditHelpContainer_EditHelpContainer.prototype.formatDataRow = function (data) {
     check[data[i].id] = result;
   }
 
-  console.log(temp);
   return temp;
 };
 
@@ -66719,7 +67143,6 @@ EditHelpContainer_EditHelpContainer.prototype.formatDataRowList = function (data
     check[data[i].id] = result;
   }
 
-  console.log(temp);
   return temp;
 };
 
@@ -66843,7 +67266,6 @@ EditHelpContainer_EditHelpContainer.prototype.addDB = function (value) {
 };
 
 EditHelpContainer_EditHelpContainer.prototype.edit = function (data, parent, index) {
-  console.log(data);
   var self = this;
 };
 
@@ -67005,7 +67427,6 @@ EditHelpContainer_EditHelpContainer.prototype.updateChild = function (child) {
 };
 
 EditHelpContainer_EditHelpContainer.prototype["delete"] = function (data, parent, index) {
-  console.log(data);
   var self = this;
   var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.title);
   this.addChild(deleteItem);
@@ -67101,7 +67522,6 @@ EditHelpContainer_EditHelpContainer.prototype.listLink = function () {
     on: {
       click: function click(event) {
         var element = event.target;
-        console.log(event.target);
 
         while (!(element.classList.contains("list-linkChoice") || element.classList.contains("list-linkChoice-container"))) {
           element = element.parentNode;
@@ -67360,7 +67780,6 @@ NewPosition_NewPosition.prototype.getView = function (dataParent) {
     };
   }
 
-  console.log(array);
   this.$view = NewPosition_({
     tag: 'singlepage',
     "class": "pizo-list-realty",
@@ -67559,6 +67978,11 @@ ListPositions_ListPositions.prototype.getView = function () {
   var input = ListPositions_({
     tag: "input",
     "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
     props: {
       type: "number",
       autocomplete: "off",
@@ -67720,7 +68144,6 @@ ListPositions_ListPositions.prototype.getView = function () {
   };
 
   loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function (value) {
-    console.log(value);
     var header = [{
       type: "increase",
       value: "#",
@@ -67764,7 +68187,6 @@ ListPositions_ListPositions.prototype.getView = function () {
         width: "30px"
       }
     }];
-    console.log(header);
     self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListPositions_$('.pizo-list-realty-page-allinput-container input', self.$view));
@@ -67797,7 +68219,6 @@ ListPositions_ListPositions.prototype.formatDataRow = function (data) {
     check[data[i].id] = result;
   }
 
-  console.log(temp);
   return temp;
 };
 
@@ -67829,7 +68250,6 @@ ListPositions_ListPositions.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay);
         endDay.minDateLimit = date;
       }
     }
@@ -67843,7 +68263,6 @@ ListPositions_ListPositions.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay.maxDateLimit = date;
       }
     }
@@ -67857,7 +68276,6 @@ ListPositions_ListPositions.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay1);
         endDay1.minDateLimit = date;
       }
     }
@@ -67871,7 +68289,6 @@ ListPositions_ListPositions.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay1.maxDateLimit = date;
       }
     }
@@ -68027,7 +68444,7 @@ ListPositions_ListPositions.prototype.getDataChild = function (arr) {
 
   for (var i = 0; i < arr.length; i++) {
     result.push(arr[i].original);
-    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+    if (arr[i].child !== undefined) result = result.concat(self.getDataChild(arr[i].child));
   }
 
   return result;
@@ -68134,7 +68551,6 @@ ListPositions_ListPositions.prototype.editView = function (value, data, parent, 
 };
 
 ListPositions_ListPositions.prototype["delete"] = function (data, parent, index) {
-  console.log(data);
   var self = this;
   var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
@@ -68673,7 +69089,6 @@ NewAccount_NewAccount.prototype.getView = function (dataParent) {
 };
 
 NewAccount_NewAccount.prototype.getDataSave = function () {
-  console.log(this.position.value);
   return {
     id: this.data === undefined ? undefined : this.data.original.id,
     name: this.name.value,
@@ -68757,6 +69172,11 @@ ListAccount_ListAccount.prototype.getView = function () {
   var input = ListAccount_({
     tag: "input",
     "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
     props: {
       type: "number",
       autocomplete: "off",
@@ -69087,7 +69507,6 @@ ListAccount_ListAccount.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay);
         endDay.minDateLimit = date;
       }
     }
@@ -69101,7 +69520,6 @@ ListAccount_ListAccount.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay.maxDateLimit = date;
       }
     }
@@ -69115,7 +69533,6 @@ ListAccount_ListAccount.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay1);
         endDay1.minDateLimit = date;
       }
     }
@@ -69129,7 +69546,6 @@ ListAccount_ListAccount.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay1.maxDateLimit = date;
       }
     }
@@ -69353,7 +69769,6 @@ ListAccount_ListAccount.prototype.addDB = function (mNewAccount, row) {
     var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_account.php";
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     updateData(phpFile, value).then(function (result) {
-      console.log(result);
       value.id = result;
       self.addView(value, row);
     });
@@ -69368,7 +69783,6 @@ ListAccount_ListAccount.prototype.addView = function (value, parent) {
   value.created = getGMT();
   value.modified = getGMT();
   var result = this.getDataRow(value);
-  console.log(result);
   var element = this.mTable;
   element.insertRow(result);
 };
@@ -69411,7 +69825,6 @@ ListAccount_ListAccount.prototype.editView = function (value, data, parent, inde
 
 ListAccount_ListAccount.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
-  console.log(data);
   var self = this;
   var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
@@ -69506,6 +69919,11 @@ ListAddress_ListAddress.prototype.getView = function () {
   var input = ListAddress_({
     tag: "input",
     "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
     props: {
       type: "number",
       autocomplete: "off",
@@ -69667,7 +70085,6 @@ ListAddress_ListAddress.prototype.getView = function () {
   };
 
   loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function (value) {
-    console.log(value);
     var header = [{
       type: "increase",
       value: "#",
@@ -69711,7 +70128,6 @@ ListAddress_ListAddress.prototype.getView = function () {
         width: "30px"
       }
     }];
-    console.log(header);
     self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListAddress_$('.pizo-list-realty-page-allinput-container input', self.$view));
@@ -69744,7 +70160,6 @@ ListAddress_ListAddress.prototype.formatDataRow = function (data) {
     check[data[i].id] = result;
   }
 
-  console.log(temp);
   return temp;
 };
 
@@ -69776,7 +70191,6 @@ ListAddress_ListAddress.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay);
         endDay.minDateLimit = date;
       }
     }
@@ -69790,7 +70204,6 @@ ListAddress_ListAddress.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay.maxDateLimit = date;
       }
     }
@@ -69804,7 +70217,6 @@ ListAddress_ListAddress.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(endDay1);
         endDay1.minDateLimit = date;
       }
     }
@@ -69818,7 +70230,6 @@ ListAddress_ListAddress.prototype.searchControlContent = function () {
     },
     on: {
       changed: function changed(date) {
-        console.log(date);
         startDay1.maxDateLimit = date;
       }
     }
@@ -70081,7 +70492,6 @@ ListAddress_ListAddress.prototype.editView = function (value, data, parent, inde
 };
 
 ListAddress_ListAddress.prototype["delete"] = function (data, parent, index) {
-  console.log(data);
   var self = this;
   var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);

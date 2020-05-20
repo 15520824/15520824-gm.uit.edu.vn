@@ -247,6 +247,7 @@ ListDistrict.prototype.getView = function () {
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
             self.listParent.updateItemList(listParam);
+            self.mTable.addFilter(self.listParent,4);
         });
     });
 
@@ -312,7 +313,7 @@ ListDistrict.prototype.getDataRow = function(data)
         data.id,
         data.name,
         data.type,
-        this.checkState[parseInt(data.stateid)].name,
+        {value:this.checkState[parseInt(data.stateid)].id,element:_({text:this.checkState[parseInt(data.stateid)].name})},
         {}
         ]
         result.original = data;
@@ -340,7 +341,6 @@ ListDistrict.prototype.searchControlContent = function(){
             },
             on: {
                 changed: function (date) {
-                    
                     endDay.minDateLimit = date;
                 }
             }

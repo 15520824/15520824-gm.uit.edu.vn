@@ -234,11 +234,13 @@ ListWard.prototype.getView = function () {
 
 
     loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_wards.php").then(function(value){
-        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function(listState){
-            loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function(listParam){
-            
-            self.setListParam(listState);
-            self.setListParamState(listParam);
+        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function(listDistrict){
+            loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function(listState){
+            self.setListParamState(listState);
+            self.listStateElement.items = self.listState;
+            self.setListParamDistrict(listDistrict);
+            self.listDistrictElement.items = self.listDistrict;
+
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
@@ -250,7 +252,8 @@ ListWard.prototype.getView = function () {
             self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-            // self.listParent.updateItemList(listParam);
+            self.mTable.addFilter(self.listDistrictElement,4);
+            self.mTable.addFilter(self.listStateElement,5);
             });
         });
     });
@@ -269,14 +272,19 @@ ListWard.prototype.getView = function () {
     return this.$view;
 }
 
-ListWard.prototype.setListParam = function(value)
+ListWard.prototype.setListParamDistrict = function(value)
 {
     this.checkDistrict = [];
-    this.listDistrict = [];
+    this.checkStateDistrict = [];
+    this.listDistrict = [{text:"Tất cả",value:0}];
     for(var i  = 0;i<value.length;i++)
     {
         this.checkDistrict[value[i].id] = value[i];
-        this.listDistrict[i] = {text:value[i].name,value:value[i].id};
+        if(this.checkStateDistrict[value[i].stateid] === undefined)
+        this.checkStateDistrict[value[i].stateid] = [{text:"Tất cả",value:0}];
+        
+        this.listDistrict.push({text:value[i].name,value:value[i].id});
+        this.checkStateDistrict[value[i].stateid].push(this.listDistrict[i]);
     }
     
 }
@@ -284,11 +292,11 @@ ListWard.prototype.setListParam = function(value)
 ListWard.prototype.setListParamState = function(value)
 {
     this.checkState = [];
-    this.listState = [];
+    this.listState = [{text:"Tất cả",value:0}];
     for(var i  = 0;i<value.length;i++)
     {
         this.checkState[value[i].id] = value[i];
-        this.listState[i] = {text:value[i].name,value:value[i].id};
+        this.listState.push({text:value[i].name,value:value[i].id});
     }
     this.isLoaded = true;
 }
@@ -327,8 +335,8 @@ ListWard.prototype.getDataRow = function(data)
         data.id,
         data.name,
         data.type,
-        this.checkDistrict[parseInt(data.districtid)].name,
-        this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name,
+        {value:data.districtid,element:_({text:this.checkDistrict[parseInt(data.districtid)].name})},
+        {value:this.checkDistrict[parseInt(data.districtid)].stateid,element:_({text:this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name})},
         {}
         ]
         result.original = data;
@@ -345,7 +353,7 @@ ListWard.prototype.formatDataList = function(data){
 }
 ListWard.prototype.searchControlContent = function(){
     var startDay,endDay,startDay1,endDay1;
-
+    var self = this;
     startDay = _(
         {
             tag: 'calendar-input',
@@ -412,6 +420,49 @@ ListWard.prototype.searchControlContent = function(){
             }
         }
     )
+
+    self.listStateElement = _({
+        tag:"selectmenu",
+        props:{
+            enableSearch:true,
+            items:[{text:"Tất cả",value:0}]
+        },
+        on:{
+            change:function(event){
+                if(this.value == 0){
+                    self.listDistrictElement.items = self.listDistrict;
+                }
+                else{
+                    self.listDistrictElement.items = self.checkStateDistrict[this.value];
+                    self.listDistrictElement.value = 0;
+                    self.listDistrictElement.emit('change');
+                }
+            }
+        }
+    });
+    self.listStateElement.updateItemList = function(value){
+        self.listStateElement.items = self.formatDataList(value);
+    }
+    self.listDistrictElement = _({
+        tag:"selectmenu",
+        props:{
+            enableSearch:true,
+            items:[{text:"Tất cả",value:0}]
+        },
+        on:{
+            change:function(event){
+                if(this.value  !== 0){
+                    var checkid = parseInt(self.checkState[self.checkDistrict[this.value].stateid].id);
+                    if(self.listStateElement.value!=checkid)
+                        self.listStateElement.value = checkid;
+                }
+               
+            }
+        }
+    });
+    self.listDistrictElement.updateItemList = function(value){
+        self.listDistrictElement.items = self.formatDataList(value);
+    }
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -445,16 +496,7 @@ ListWard.prototype.searchControlContent = function(){
                                         tag:"div",
                                         class:"pizo-list-realty-main-search-control-row-state-ward-input",
                                         child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    enableSearch:true,
-                                                    items:[
-                                                        {text:'Thành phố Hồ Chí Minh',id:79},
-                                                        {text:'Thủ đô Hà Nội',id:80}
-                                                    ]
-                                                }
-                                            }
+                                            self.listStateElement
                                         ]
                                     }
                                 ]
@@ -475,63 +517,11 @@ ListWard.prototype.searchControlContent = function(){
                                         tag:"div",
                                         class:"pizo-list-realty-main-search-control-row-district-ward-input",
                                         child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    enableSearch:true,
-                                                    items:[
-                                                        {text:'Quận 1',id:79},
-                                                        {text:'Quận Bình Thạnh',id:80},
-                                                        {text:'Quận Tân Bình',id:81}
-                                                    ]
-                                                }
-                                            }
+                                            self.listDistrictElement
                                         ]
                                     }
                                 ]
 
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Ngày tạo"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay,
-                                            endDay
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Ngày cập nhật"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay1,
-                                            endDay1
-                                        ]
-                                    }
-                                ]
                             },
                             {
                                 tag:"div",
