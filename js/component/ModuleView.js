@@ -1995,7 +1995,12 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
         k++;
         row.addChild(cell);
     }
-    var x, indexData = result.childrenNodes[index].data;
+    var x, indexData;
+    
+    if(result.childrenNodes[index]===undefined)
+    indexData = undefined;
+    else
+    indexData = result.childrenNodes[index].data;
     result.childrenNodes[index] = row;
     if (result.tagName !== "TABLE") {
         indexData = result.data.child.indexOf(indexData);
