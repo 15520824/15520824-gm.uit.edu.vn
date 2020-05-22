@@ -617,7 +617,6 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical, 
 
     result.updatePagination = function (number = result.tempIndexRow) {
         result.tempIndexRow = number;
-        result.indexRow = number;
         if (result.paginationElement !== undefined) {
             result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
             var pagination = result.pagination(result.tempIndexRow);
@@ -1027,8 +1026,10 @@ tableView.prototype.getBodyTable = function (data, i = 0) {
     var arr = [];
     if (parent.checkSpan === undefined)
         result.checkSpan = [];
-    result.indexRow = 0;
-    for (i; i < data.length && this.indexRow < this.tempIndexRow; i++) {
+    if(result.indexRow == undefined||result.indexRow == this.tempIndexRow)
+        result.indexRow = 0;
+    for (i; (i < data.length && this.indexRow < this.tempIndexRow); i++) {
+        
         if (data[i].child !== undefined)
             data[i].child.updateVisible = data.updateVisible;
 
@@ -1061,7 +1062,7 @@ tableView.prototype.getBodyTable = function (data, i = 0) {
                 delta[j] = 0;
             cell = result.getCell(data[i][k], this.indexRow, k, j, result.checkSpan, row);
             if (cell === 6 || cell === 2) {
-                result.clone[j].splice(indexRow + 1 - delta[j], 1);
+                result.clone[j].splice(this.indexRow + 1 - delta[j], 1);
                 delta[j] += 1;
                 continue
             }
@@ -1346,109 +1347,85 @@ tableView.prototype.pagination = function (number, functionClick) {
         for (var i = 0; i < displayNone.length; i++) {
             displayNone[i].style.display = "";
         }
-        displayNone = [];
+        
         temp.detailLeft.style.display = "";
         temp.detailRight.style.display = "";
-        var count = parseInt(self.offsetWidth / 50) - 2;
+        var count = parseInt(self.offsetWidth / 50) - 4;
         var i = 0;
         var active = $("a.active", container);
+        displayNone = [active];
         var countTime = -99;
         if (count < arr.length) {
             var countTime = count;
         }
-        var lastIndexPrev;
-        var lastIndexNext;
+        var lastIndexPrev,lastIndexPrevBefore;
+        var lastIndexNext,lastIndexNextBefore;
         var isLeft = false, isRight = false;
         if (active !== undefined) {
             var prev = active.previousSibling, next = active.nextSibling;
 
-            while (i < count && !(isLeft == true && isRight == true)) {
-
-                
+            while (i <= count && !(isLeft == true && isRight == true)) {
+                console.log(i)
                 if (isRight == false && next != null) {
-                    console.log(countTime)
-                    if (i == countTime - 4) {
-                        if(next !== temp.detailRight && next !== temp.detailLeft){
+                    if (i == countTime) {
+                        while (next == temp.detailRight || next == temp.detailLeft)
+                            next = next.nextSibling;
+
                             isRight = true;
-                            countTime++;
-                            i++;
                             lastIndexNext.style.display = "";
+                            lastIndexNextBefore.style.display = "";
+
                             temp.detailRight.style.display = "flex";
-                            container.lastChild.style.display = "flex";
-                        }else
-                        {
-                            isRight = true;
-                            while (next == temp.detailRight || next == temp.detailLeft)
-                                next = next.nextSibling;
-                            next.style.display = "flex";
-                            lastIndexNext = next;
-                            displayNone.push(next);
-                            countTime++;
-                            i++;
-                        }
-                        
-                 
+                            displayNone.push(container.lastChild);
+                            container.lastChild.style.display = "flex";                        
                     } else {
                         while (next == temp.detailRight || next == temp.detailLeft)
                             next = next.nextSibling;
                         next.style.display = "flex";
+
+                        lastIndexNextBefore = lastIndexNext;
                         lastIndexNext = next;
+
                         displayNone.push(next);
                         next = next.nextSibling;
                         i++;
-                        if(next==null)
-                        {
-                            count--;
-                            countTime--;
-                        }
                     }
                 } else {
                     isRight = true;
                 }
 
-                if (i >= count)
+                if (i > count)
                     break;
                 
                 if (isLeft == false && prev != null) {
-                    if (i == countTime - 4) {
-                        if(prev !== temp.detailRight && prev !== temp.detailLeft)
-                        {
-                            isLeft = true;
-                            countTime++;
-                            i++;
-                            lastIndexPrev.style.display = "";
-                            temp.detailLeft.style.display = "flex";
-                            container.firstChild.style.display = "flex";
-                        }else
-                        {
-                            isLeft = true;
-                            while (prev == temp.detailLeft || prev == temp.detailRight)
-                                prev = prev.previousSibling;
-                            prev.style.display = "flex";
-                            lastIndexPrev = prev;
-                            displayNone.push(prev);
-                            i++;
-                            countTime++;
-                        }
-                        
+                    console.log(i,countTime -1)
+                    if (i == countTime) {
+                        while (prev == temp.detailLeft || prev == temp.detailRight)
+                        prev = prev.previousSibling;
+
+                        isLeft = true;
+                        lastIndexPrev.style.display = "";
+                        lastIndexPrevBefore.style.display = "";
+                        temp.detailLeft.style.display = "flex";
+                        displayNone.push(container.firstChild);
+                        container.firstChild.style.display = "flex";
                     } else {
                         while (prev == temp.detailLeft || prev == temp.detailRight)
                             prev = prev.previousSibling;
                         prev.style.display = "flex";
+
+                        lastIndexPrevBefore = lastIndexPrev;
                         lastIndexPrev = prev;
+
                         displayNone.push(prev);
                         prev = prev.previousSibling;
                         i++;
-                        if(prev==null)
-                        {
-                            count--;
-                            countTime--;
-                        }
                     }
                 } else {
                     isLeft = true;
                 }
             }
+            console.log(displayNone)
         }
     }
     setTimeout(function () {

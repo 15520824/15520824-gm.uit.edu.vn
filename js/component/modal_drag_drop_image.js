@@ -115,6 +115,7 @@ export default xmlModalDragImage = {
       on: {
         click: function() {
           self.functionClickDone();
+          if(self.modal!==undefined)
           self.modal.parentNode.removeChild(self.modal);
         }
       }
@@ -227,6 +228,7 @@ export default xmlModalDragImage = {
                           on: {
                             click: function() {
                               self.functionClickCancel();
+                              if(self.modal!==undefined)
                               self.modal.parentNode.removeChild(self.modal);
                             }
                           }
@@ -241,11 +243,13 @@ export default xmlModalDragImage = {
         }
       ]
     });
+    self.xnen = temp;
     return temp;
   },
   createModal: function(DOMElement,functionClickDone=function(){},functionClickCancel=function(){}) {
     var self = this;
     var xnen = self.containGetImage();
+
     var pointControl = _({
       tag: "div",
       class: ["modal-upload-XML-body-navigation-bar", "selected-modal"],
@@ -691,8 +695,8 @@ export default xmlModalDragImage = {
   uploadFile: function(file, i, self) {
     self.updateProgress(i, 100, self);
       self.select.classList.remove("disable");
-    if (!self.modal.classList.contains("visible"))
-      self.modal.classList.add("visible");
+    if (!self.xnen.classList.contains("visible"))
+      self.xnen.classList.add("visible");
     // var url = "./php/upload/handle_file_upload.php";
     // var name =
     //   ("img_" + Math.random() + Math.random()).replace(/\./g, "") +

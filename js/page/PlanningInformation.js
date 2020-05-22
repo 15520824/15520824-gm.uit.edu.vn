@@ -354,18 +354,6 @@ PlanningInformation.prototype.searchControlContent = function(){
                                 child:[
                                     {
                                         tag: "button",
-                                        class: ["pizo-list-realty-button-apply","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-        
-                                            }
-                                        },
-                                        child: [
-                                        '<span>' + "Áp dụng" + '</span>'
-                                        ]
-                                    },
-                                    {
-                                        tag: "button",
                                         class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
                                         on: {
                                             click: function (evt) {
