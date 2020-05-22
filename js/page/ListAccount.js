@@ -317,7 +317,7 @@ ListAccount.prototype.getDataRow = function(data)
         {value:data.name,style:{whiteSpace:"nowrap"}},
         data.phone,
         data.email,
-        this.checkPosition[parseInt(data.positionid)].name,
+        "this.checkPosition[parseInt(data.positionid)].name",
         {},
         parseInt(data.permission)?"Có":"Không",
         parseInt(data.status)?"Có":"Không",
@@ -673,6 +673,7 @@ ListAccount.prototype.addView = function(value,parent){
     var result = this.getDataRow(value);
     
     var element = this.mTable;
+    console.log(result)
     element.insertRow(result);
 }
 

@@ -202,7 +202,7 @@ App.prototype.getView = function()
                                             pageIndex: 4
                                         },
                                         {
-                                            text: "Chức vụ",
+                                            text: "Sơ đồ tổ chức",
                                             pageIndex: 5
                                         },
                                         {

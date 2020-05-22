@@ -98,11 +98,35 @@ ListPositions.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        self.add();
+                                       
                                     }
                                 },
                                 child: [
-                                '<span>' + "Thêm" + '</span>'
+                                '<span>' + "Thêm bộ phận" + '</span>'
+                                ]
+                            },
+                            {
+                                tag: "button",
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                on: {
+                                    click: function (evt) {
+                                       
+                                    }
+                                },
+                                child: [
+                                '<span>' + "Thêm chức vụ" + '</span>'
+                                ]
+                            },
+                            {
+                                tag: "button",
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                on: {
+                                    click: function (evt) {
+                                        
+                                    }
+                                },
+                                child: [
+                                '<span>' + "Tìm nhân viên" + '</span>'
                                 ]
                             }
                         ]

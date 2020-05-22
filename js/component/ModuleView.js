@@ -1084,6 +1084,7 @@ tableView.prototype.getBodyTable = function (data, i = 0) {
 
     data.updateVisible = undefined;
     result.childrenNodes = result.childrenNodes.concat(arr);
+    this.indexRow = 0;
     return arr;
 }
 
@@ -1350,7 +1351,7 @@ tableView.prototype.pagination = function (number, functionClick) {
         
         temp.detailLeft.style.display = "";
         temp.detailRight.style.display = "";
-        var count = parseInt(self.offsetWidth / 50) - 4;
+        var count = parseInt((self.offsetWidth-20) / 50) - 4;
         var i = 0;
         var active = $("a.active", container);
         displayNone = [active];
@@ -1365,7 +1366,6 @@ tableView.prototype.pagination = function (number, functionClick) {
             var prev = active.previousSibling, next = active.nextSibling;
 
             while (i <= count && !(isLeft == true && isRight == true)) {
-                console.log(i)
                 if (isRight == false && next != null) {
                     if (i == countTime) {
                         while (next == temp.detailRight || next == temp.detailLeft)
@@ -1396,9 +1396,8 @@ tableView.prototype.pagination = function (number, functionClick) {
 
                 if (i > count)
                     break;
-                
+
                 if (isLeft == false && prev != null) {
-                    console.log(i,countTime -1)
                     if (i == countTime) {
                         while (prev == temp.detailLeft || prev == temp.detailRight)
                         prev = prev.previousSibling;
@@ -1425,7 +1424,6 @@ tableView.prototype.pagination = function (number, functionClick) {
                     isLeft = true;
                 }
             }
-            console.log(displayNone)
         }
     }
     setTimeout(function () {
@@ -1897,10 +1895,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 }
 
 tableView.prototype.insertRow = function (data) {
-    if (this.tagName === "TABLE")
-        return this.updateRow(data, this.data.length)
-    else
-        return this.updateRow(data, this.data.child.length)
+    return this.updateRow(data, this.childrenNodes.length)
 }
 
 tableView.prototype.updateRow = function (data, index, checkMust = false) {
