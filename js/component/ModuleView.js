@@ -2015,6 +2015,8 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     }
     var x, indexData;
     if(result.childrenNodes[index] === undefined)
+    
+    if(result.childrenNodes[index]===undefined)
     indexData = undefined;
     else
     indexData = result.childrenNodes[index].data;
