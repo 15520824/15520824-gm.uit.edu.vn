@@ -61,11 +61,11 @@
 .modal-upload-XML-body-drop {
   position: relative;
   overflow: hidden;
-  height: calc(100% - 50px);
+  height: calc(100% - 55px);
 }
 
 .modal-upload-XML-body-drop-area-main {
-  height: calc(100% - 30px);
+  height: calc(100% - 20px);
 }
 
 .modal-upload-XML-body-drop-area-main-form {
@@ -165,6 +165,7 @@
 
 .modal-upload-XML-body-drop-area-main-form-button {
   font-size: 16px;
+  vertical-align: top;
 }
 
 .modal-upload-XML-body-drop-area-main-process-bar {
@@ -326,11 +327,10 @@
 }
 
 .modal-upload-XML-body-drop-save{
-  padding-left: 20px;
-  margin-top: 10px;
+  margin-left: 20px;
+  margin-top: 3px;
   position: relative;
   padding: 8px 0;
-  margin: 12px 24px 0;
   display: inline-block;
 }
 
@@ -558,4 +558,17 @@
   margin-top: 10px;
   background: #4285f4;
   color: #fff;
+}
+
+.grid{
+  height: 385px;
+  width: auto;
+  display: inline-block;
+  position: relative;
+}
+
+.grid-item{
+  height: 50%;
+  display: inline-block;
+  position: relative;
 }

@@ -15,7 +15,7 @@ export function loadData(phpLoader)
             resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
         }else
         {
-            
+            console.log(this.responseText)
         }
         };
         xhttp.open("GET", php, true);
@@ -35,7 +35,7 @@ export function updateData(phpUpdater,data)
                 resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
             }else
             {
-                
+                console.log(this.responseText)
             }
         };
         xhttp.open("POST", php, true);

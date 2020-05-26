@@ -3,7 +3,6 @@ import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import '../../css/NewRealty.css';
 import '../../css/imagesilder.css';
-import xmlModalDragImage from './modal_drag_drop_image';
 import { locationView } from "./MapView";
 import { descViewImagePreview } from './ModuleImage'
 import { unit_Long, unit_Zone, selectElement } from './ModuleView';
@@ -160,6 +159,7 @@ NewRealty.prototype.getView = function () {
             this.descView()
         ]
     }));
+    self.createPromise();
     // setTimeout(function(){selectElement("pizo-new-realty-convenient-content-area-size-zone",1)},500)
     return this.$view;
 }
@@ -1441,9 +1441,31 @@ NewRealty.prototype.contractView = function () {
             {
                 tag: "div",
                 class: "pizo-new-realty-contract-tab",
-                props: {
-                    innerHTML: "Thông tin liên hệ"
-                }
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contract-tab-label",
+                        props:{
+                            innerHTML:"Thông tin liên hệ"
+                        }
+                    },
+                    {
+                        tag:"button",
+                        class:"pizo-new-realty-contract-tab-button",
+                        child:[
+                            {
+                                tag:"i",
+                                class:"material-icons",
+                                style:{
+                                    fontSize:"1rem"
+                                },
+                                props:{
+                                    innerHTML:"add"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 tag: "div",

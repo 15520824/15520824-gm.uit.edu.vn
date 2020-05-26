@@ -202,3 +202,7 @@ loaddingWheel.prototype.disable = function()
     document.body.style.pointerEvents = "";
     this.selfRemove();
 }
+
+export function insertAfter(newNode, existingNode) {
+    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+}

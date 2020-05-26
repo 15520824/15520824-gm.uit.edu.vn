@@ -1,0 +1,11 @@
+span.pizo-list-realty-page-allinput-input:empty:before {
+    content: "\200b";
+}
+
+.pizo-list-position-list .sortTable tbody tr:hover td{
+    background-color: #BFBFBF;
+}
+
+.pizo-list-position-list .sortTable tbody tr.choice td{
+    background-color: #BFBFBF;
+}

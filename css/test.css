@@ -106,8 +106,10 @@
 
 #gallery {
   margin-top: 10px;
-  height: calc(100% - 34px);
-  background-color: white;
+  height: calc(100% - 45px);
+  width: 100%;
+  position: relative;
+  overflow: auto;
 }
 
 .image-autoresize {
@@ -168,7 +170,7 @@
 }
 
 .full-size{
-  width: calc(100% - 7px);
+  width: auto;
   margin: 2px;
   height: calc(100% - 7px);
 }

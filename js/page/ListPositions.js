@@ -10,8 +10,8 @@ import {loadData,updateData} from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
+import NewDepartment from '../component/NewDepartment';
 import NewPosition from '../component/NewPosition';
-
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -50,20 +50,9 @@ ListPositions.prototype.getView = function () {
             value:50
         }
     })
-    var allinput = _({
-        tag:"input",
-        class:"pizo-list-realty-page-allinput-input",
-        props:{
-            placeholder:"Tìm kiếm"
-        }
-    });
-    if(window.mobilecheck())
-    {
-        allinput.placeholder = "Tìm kiếm"
-    }
     this.$view = _({
         tag: 'singlepage',
-        class: "pizo-list-realty",
+        class: "pizo-list-position-list",
         child: [
             {
                 class: 'absol-single-page-header',
@@ -72,7 +61,7 @@ ListPositions.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Quản lý chức vụ"
+                            innerHTML: "Sơ đồ tổ chức"
                         }
                     },
                     {
@@ -98,7 +87,7 @@ ListPositions.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                       
+                                        self.addDepartment();
                                     }
                                 },
                                 child: [
@@ -110,7 +99,12 @@ ListPositions.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                       
+                                       var arr  = self.mTable.getElementsByClassName("choice");
+                                       if(arr.length == 1)
+                                            arr = arr[0];
+                                        else
+                                            return;
+                                        self.addPosition(arr.data.original.id,arr);
                                     }
                                 },
                                 child: [
@@ -132,54 +126,6 @@ ListPositions.prototype.getView = function () {
                         ]
                     },
                     {
-                        tag:"div",
-                        class:"pizo-list-realty-page-allinput",
-                        child:[
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-page-allinput-container",
-                                child:[
-                                    allinput,
-                                    {
-                                        tag:"button",
-                                        class:"pizo-list-realty-page-allinput-search",
-                                        child:[
-                                            {
-                                                tag: 'i',
-                                                class: 'material-icons',
-                                                props: {
-                                                    innerHTML: 'search'
-                                                },
-                                            },
-                                        ]
-                                    },
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-page-allinput-filter",
-                                on:{
-                                    click:function(event)
-                                    {
-                                        self.searchControl.show();
-                                    }
-                                },
-                                child:[
-                                    {
-                                        tag: 'filter-ico',
-                                    },
-                                    {
-                                        tag:"span",
-                                        class:"navbar-search__filter-text",
-                                        props:{
-                                            innerHTML:"Lọc"
-                                        }
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                    {
                         tag: "div",
                         class: "pizo-list-realty-page-number-line",
                         child: [
@@ -198,10 +144,51 @@ ListPositions.prototype.getView = function () {
             },
         ]
     });
+    var tabInput = _({
+        tag:"input",
+        class:"pizo-list-realty-page-allinput-input",
+        style:{
+            marginBottom:"0.71428571428rem"
+        },
+        props:{
+            placeholder:"Tìm kiếm"
+        }
+    });
+    var titleInput = _({
+        tag:"input",
+        class:"pizo-list-realty-page-allinput-input",
+        style:{
+            marginBottom:"0.71428571428rem",
+            fontWeight:"bold",
+            pointerEvents:"none"
+        },
+        props:{
+            innerHTML:""
+        }
+    });
+    self.titleInput = titleInput;
     var tabContainer = _({
         tag:"div",
         class:["pizo-list-realty-main-result-control","drag-zone-bg"],
+        style:{
+            width:"40%",
+            display: "inline-block"
+        },
         child:[
+            tabInput
+        ]
+    })
+
+    var contentContainer = _({
+        tag:"div",
+        class:["pizo-list-realty-main-result-control","drag-zone-bg"],
+        style:{
+            width:"calc(60% - 30px)",
+            display: "inline-block",
+            marginLeft: "30px"
+        },
+        child:[
+            titleInput
         ]
     })
 
@@ -226,19 +213,79 @@ ListPositions.prototype.getView = function () {
                     icon: 'span.mdi.mdi-text',
                     value:2,
                 },
+                {
+                    text: 'Thêm chức vụ',
+                    icon: 'span.mdi.mdi-text-short',
+                    value:3,
+                },
             ]
         };
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
                 case 0:
-                    self.add(data.original.id,row);
+                    self.addDepartment(data.original.id,row);
                     break;
                 case 1:
-                    self.edit(data,parent,index);
+                    self.editDepartment(data,parent,index);
                     break;
                 case 2:
-                    self.delete(data.original,parent,index);
+                    self.deleteDepartment(data.original,parent,index);
+                    break;
+                case 3:
+                    self.addPosition(data.original.id,row);
+                    break;
+            }
+        });
+
+        functionX = function(token){
+            return function(){
+                var x = function(event){
+                    absol.QuickMenu.close(token);
+                    document.body.removeEventListener("click",x);
+                }
+                document.body.addEventListener("click",x)
+            }
+        }(token);
+
+        setTimeout(functionX,10)
+    }
+    var functionClickRow = function(event, me, index, parent, data, row){
+        self.mTablePosition.updateTable(undefined,self.checkDepartment[data.original.id]);
+
+        var arr = self.mTable.getElementsByClassName("choice");
+        for(var i = 0;i<arr.length;i++)
+            arr[i].classList.remove("choice");
+        row.classList.add("choice");
+        self.titleInput.value = data.original.name;
+        self.titleInput.data = data.original.id;
+    }
+
+    var functionClickMoreSencond = function(event, me, index, parent, data, row)
+    {
+       
+        docTypeMemuProps = {
+            items: [
+                {
+                    text: 'Sửa',
+                    icon: 'span.mdi.mdi-text-short',
+                    value:0,
+                },
+                {
+                    text: 'Xóa',
+                    icon: 'span.mdi.mdi-text',
+                    value:1,
+                }
+            ]
+        };
+        token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
+            switch(menuItem.value)
+            {
+                case 0:
+                    self.editPosition(data,parent,index);
+                    break;
+                case 1:
+                    self.deletePosition(data.original,parent,index);
                     break;
             }
         });
@@ -256,29 +303,81 @@ ListPositions.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
-
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function(value){
-        
-        var header = [{ type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, {value:'MS',sort:true,style:{minWidth:"150px",width:"150px"}}, {value:'Tên',sort:true,style:{minWidth:"unset"}},{value: 'Ngày tạo',sort:true,style:{minWidth:"250px",width:"250px"}}, { value:'Ngày cập nhật', sort:true,style:{minWidth:"250px",width:"250px"} },{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-        
-        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_departments.php").then(function(value){
+        var header = [{value:'Bộ phận',sort:true,style:{minWidth:"unset"},functionClickAll:functionClickRow},{value: 'Mã',sort:true,style:{minWidth:"100px",width:"100px"},functionClickAll:functionClickRow},{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+        console.log(value)
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 0);
         tabContainer.addChild(self.mTable);
-        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-        self.listParent.updateItemList();
+        self.mTable.addInputSearch(tabInput);
+
+        var header = [{value: 'STT',type:"increase",sort:true,style:{minWidth:"50px",width:"50px"}},{value: 'Mã',sort:true,style:{minWidth:"100px",width:"100px"}},{value:'Họ và tên',sort:true,style:{minWidth:"unset"}},{value:'Chức vụ',sort:true,style:{minWidth:"unset"}},{value:'Ghi chú',style:{minWidth:"unset"}},{type:"detail", functionClickAll:functionClickMoreSencond,icon:"",dragElement : false,style:{width:"30px"}}];
+        self.mTablePosition = new tableView(header, [], false, true);
+        contentContainer.addChild(self.mTablePosition);
+
+        var promiseAll = [];
+        promiseAll.push(loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php"));
+        promiseAll.push(loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php"));
+        Promise.all(promiseAll).then(function(values){
+            self.formatDataRowAccount(values[1]);
+            self.formatDataRowPosition(values[0]);
+        });
     });
 
-    this.searchControl = this.searchControlContent();
-
+   
+    
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-realty-main"],
             child:[
-                this.searchControl,
-                tabContainer
+                tabContainer,
+                contentContainer
             ]   
         })
         );
     return this.$view;
+}
+
+ListPositions.prototype.formatDataRowPosition = function(data){
+    var checkDepartment = [];
+    for(var i = 0;i<data.length;i++)
+    {
+        if(checkDepartment[data[i].department_id]==undefined)
+        checkDepartment[data[i].department_id] = [];
+
+        checkDepartment[data[i].department_id].push(this.getDataRowPosition(data[i]));
+    }
+    this.checkDepartment = checkDepartment;
+}
+
+ListPositions.prototype.getDataRowPosition = function(data)
+{
+    var name;
+    if(this.checkAccount[data.id]==undefined)
+        name = "";
+    else{
+        name = this.checkAccount[data.id].name
+    }
+        
+    var temp = [
+        {},
+        data.code,
+        name,
+        data.name,
+        data.note,
+        {}
+    ]
+    temp.original = data;
+    return temp;
+}
+
+ListPositions.prototype.formatDataRowAccount = function(data){
+    var checkAccount = [];
+    this.listAccoutData = data;
+    for(var i = 0;i<data.length;i++)
+    {
+        checkAccount[data[i].positionid]= data[i];
+    }
+    this.checkAccount = checkAccount;
 }
 
 ListPositions.prototype.formatDataRow = function(data)
@@ -286,15 +385,13 @@ ListPositions.prototype.formatDataRow = function(data)
     var temp = [];
     var check = [];
     var k = 0;
-    var checkElement;
+  
+    console.log(data)
     for(var i=0;i<data.length;i++)
     {
         var result = [
-        {},
-        data[i].id,
         data[i].name,
-        formatDate(data[i].created,true,true,true,true,true),
-        formatDate(data[i].modified,true,true,true,true,true),
+        data[i].code,
         {}
         ]
         result.original = data[i];
@@ -309,261 +406,6 @@ ListPositions.prototype.formatDataRow = function(data)
         check[data[i].id] = result;
     }
     
-    return temp;
-}
-
-ListPositions.prototype.formatDataList = function(data){
-    var temp = [{text:"Chức vụ cao nhất",value:0}];
-    for(var i = 0;i<data.length;i++)
-    {
-        temp[i+1] = {text:data[i].name,value:data[i].id};
-    }
-    return temp;
-}
-
-ListPositions.prototype.searchControlContent = function(){
-    var startDay,endDay,startDay1,endDay1;
-    var self = this;
-    startDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    endDay.minDateLimit = date;
-                }
-            }
-        }
-    );
-
-    endDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    startDay.maxDateLimit = date;
-                }
-            }
-        }
-    );
-
-    startDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    endDay1.minDateLimit = date;
-                }
-            }
-        }
-    )
-
-    endDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    startDay1.maxDateLimit = date;
-                }
-            }
-        }
-    )
-
-    self.listParent = _( {
-        tag:"selectmenu",
-        props:{
-            enableSearch:true,
-            items:[
-                {text:"Chức vụ cao nhất",value:0}
-            ]
-        }
-    });
-
-    self.listParent.updateItemList = function()
-    {
-        self.listParent.items = self.formatDataList(self.getDataCurrent());
-    }
-
-    var content = _({
-        tag:"div",
-        class:"pizo-list-realty-main-search-control-container",
-        on:{
-            click:function(event)
-            {
-                event.stopPropagation();
-            }
-        },
-        child:[
-            {
-                tag:"div",
-                class:"pizo-list-realty-main-search-control-container-scroller",
-                child:[
-                    {
-                        tag:"div",
-                        class:"pizo-list-realty-main-search-control-row",
-                        child:[
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-district",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
-                                        props:{
-                                            innerHTML:"Chức vụ cha"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
-                                        child:[
-                                            self.listParent
-                                        ]
-                                    }
-                                ]
-
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Ngày tạo"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay,
-                                            endDay
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Ngày cập nhật"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay1,
-                                            endDay1
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-button",
-                                child:[
-                                    {
-                                        tag: "button",
-                                        class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-                                                temp.reset();
-                                            }
-                                        },
-                                        child: [
-                                        '<span>' + "Thiết lập lại" + '</span>'
-                                        ]
-                                    }
-                                ]
-                            },
-                        ]
-                    }
-                ]
-            }
-        ]
-    });
-    var temp = _({
-        tag:"div",
-        class:"pizo-list-realty-main-search-control",
-        on:{
-            click:function(event)
-            {
-                this.hide();
-            }
-        },
-        child:[
-            content
-        ]
-    })
-
-    temp.content = content;
-    content.timestart = startDay;
-    content.timeend = endDay;
-
-    temp.show = function()
-    {
-        if(!temp.classList.contains("showTranslate"))
-        temp.classList.add("showTranslate");
-    }
-    temp.hide = function()
-    {
-        if(!content.classList.contains("hideTranslate"))
-            content.classList.add("hideTranslate");
-        var eventEnd = function(){
-            if(temp.classList.contains("showTranslate"))
-            temp.classList.remove("showTranslate");
-            content.classList.remove("hideTranslate");
-            content.removeEventListener("webkitTransitionEnd",eventEnd);
-            content.removeEventListener("transitionend",eventEnd);
-        };
-        // Code for Safari 3.1 to 6.0
-        content.addEventListener("webkitTransitionEnd", eventEnd);
-
-        // Standard syntax
-        content.addEventListener("transitionend", eventEnd);
-    }
-    temp.apply = function()
-    {
-
-    }
-    temp.reset = function()
-    {
-        content.timestart = new Date();
-        content.timeend = new Date();
-       
-    }
-
-  
     return temp;
 }
 
@@ -587,44 +429,40 @@ ListPositions.prototype.getDataChild = function(arr)
     return result;
 }
 
-ListPositions.prototype.add = function(parent_id = 0,row)
+ListPositions.prototype.addDepartment = function(parent_id = 0,row)
 {
     var self = this;
-    var mNewPosition = new NewPosition(undefined,parent_id);
-    mNewPosition.attach(self.parent);
-    var frameview = mNewPosition.getView(self.getDataCurrent());
+    var mNewDepartment = new NewDepartment(undefined,parent_id);
+    mNewDepartment.attach(self.parent);
+    var frameview = mNewDepartment.getView(self.getDataCurrent());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.addDB(mNewPosition,row);
+    self.addDBDepartment(mNewDepartment,row);
 }
 
-ListPositions.prototype.addDB = function(mNewPosition,row ){
+ListPositions.prototype.addDBDepartment = function(mNewDepartment,row ){
     var self = this;
-    mNewPosition.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_position.php";
+    mNewDepartment.promiseAddDB.then(function(value){
+        console.log(value)
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_department.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         updateData(phpFile,value).then(function(result){
             value.id = result;
-            self.addView(value,row);
+            self.addViewDepartment(value,row);
         })
-        mNewPosition.promiseAddDB = undefined;
+        mNewDepartment.promiseAddDB = undefined;
         setTimeout(function(){
-            if(mNewPosition.promiseAddDB!==undefined)
-            self.addDB(mNewPosition);
+            if(mNewDepartment.promiseAddDB!==undefined)
+            self.addDBDepartment(mNewDepartment);
         },10);
     })
 }
 
-ListPositions.prototype.addView = function(value,parent){
-    value.created = getGMT();
-    value.modified = getGMT();
+ListPositions.prototype.addViewDepartment = function(value,parent){
     var result = [
-        {},
-        value.id,
         value.name,
-        formatDate(value.created,true,true,true,true,true),
-        formatDate(value.modified,true,true,true,true,true),
+        value.code,
         {}
     ]
     result.original = value;
@@ -643,48 +481,49 @@ ListPositions.prototype.addView = function(value,parent){
     element.insertRow(result);
 }
 
-ListPositions.prototype.edit = function(data,parent,index)
+ListPositions.prototype.editDepartment = function(data,parent,index)
 {
     var self = this;
-    var mNewPosition = new NewPosition(data);
-    mNewPosition.attach(self.parent);
-    var frameview = mNewPosition.getView(self.getDataCurrent());
+    var mNewDepartment = new NewDepartment(data);
+    mNewDepartment.attach(self.parent);
+    var frameview = mNewDepartment.getView(self.getDataCurrent());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mNewPosition,data,parent,index);
+    self.editDBDepartment(mNewDepartment,data,parent,index);
 }
 
-ListPositions.prototype.editDB = function(mNewPosition,data,parent,index){
+ListPositions.prototype.editDBDepartment = function(mNewDepartment,data,parent,index){
     var self = this;
-    mNewPosition.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_position.php";
+    mNewDepartment.promiseEditDB.then(function(value){
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_department.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
         updateData(phpFile,value).then(function(result){
-            self.editView(value,data,parent,index);
+            self.editViewDepartment(value,data,parent,index);
         })
-        mNewPosition.promiseEditDB = undefined;
+        mNewDepartment.promiseEditDB = undefined;
         setTimeout(function(){
-        if(mNewPosition.promiseEditDB!==undefined)
-            self.editDB(mNewPosition,data,parent,index);
+        if(mNewDepartment.promiseEditDB!==undefined)
+            self.editDBDepartment(mNewDepartment,data,parent,index);
         },10);
     })
 }
 
-ListPositions.prototype.editView = function(value,data,parent,index){
+ListPositions.prototype.editViewDepartment = function(value,data,parent,index){
     var isChangeView=false;
-    value.modified = getGMT();
+
     data.original.name = value.name;
-    data.original.modified = formatDate(value.modified);
+    data.original.code = value.code;
+
     if(data.original.parent_id!=value.parent_id){
         isChangeView = true;
     }
     data.original.parent_id = value.parent_id;
 
 
-    data[2] = value.name;
-    data[4] = value.modified;
+    data[0] = value.name;
+    data[1] = value.code;
 
 
     var indexOF = index,element = parent;
@@ -702,40 +541,228 @@ ListPositions.prototype.editView = function(value,data,parent,index){
                 break;
             }
         }
-        parent.changeParent(index,element);
+        indexOF = parent.changeParent(index,element);
     }
     element.updateRow(data,indexOF,true);
-    this.listParent.updateItemList();
+    if(this.titleInput.data == value.id)
+    {
+        this.titleInput.value = value.name;
+    }
 }
 
-ListPositions.prototype.delete = function(data,parent,index)
+ListPositions.prototype.deleteDepartment = function(data,parent,index)
 {
     
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
     this.$view.addChild(deleteItem);
     deleteItem.promiseComfirm.then(function(){
-        self.deleteDB(data,parent,index);
+        self.deleteDBDepartment(data,parent,index);
     })
 }
 
-ListPositions.prototype.deleteView = function(parent,index){
-    var self = this;
-    var bodyTable = parent.bodyTable;
+ListPositions.prototype.deleteViewDepartment = function(parent,index){
     parent.dropRow(index).then(function(){
-        self.listParent.updateItemList();
+        
     });
 }
 
-ListPositions.prototype.deleteDB = function(data,parent,index){
+ListPositions.prototype.deleteDBDepartment = function(data,parent,index){
+    var self = this;
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_department.php";
+    if(self.phpDeleteContent)
+    phpFile = self.phpUpdateContent;
+    updateData(phpFile,data).then(function(value){
+        self.deleteViewDepartment(parent,index);
+    })
+}
+
+ListPositions.prototype.addPosition = function(parent_id = 0,row)
+{
+    var self = this;
+    var mNewPosition = new NewPosition(undefined,parent_id);
+    mNewPosition.attach(self.parent);
+    mNewPosition.setDataListAccount(self.listAccoutData)
+    var frameview = mNewPosition.getView(self.getDataCurrent());
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.addDBPosition(mNewPosition,row);
+}
+
+ListPositions.prototype.addDBPosition = function(mNewPosition,row ){
+    var self = this;
+    mNewPosition.promiseAddDB.then(function(value){
+        console.log(value)
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_position.php";
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        updateData(phpFile,value).then(function(result){
+            
+            value.id = result;
+            console.log(result)
+            
+
+            if(value.username!==undefined)
+            {
+                console.log(value.id)
+                var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_account.php";
+                if(self.phpUpdateAccount)
+                phpFile = self.phpUpdateAccount;
+                var x = {
+                    id:value.username.id,
+                    positionid:value.id
+                }
+                for(var i = 0;i<self.listAccoutData.length;i++)
+                {
+                    if(self.listAccoutData[i].id == value.username.id )
+                     self.listAccoutData[i].positionid = value.id;
+                }
+                updateData(phpFile,x).then(function(){
+                    delete self.checkAccount[value.username.positionid];
+                    value.username.positionid = value.id
+
+                    self.checkAccount[value.id] = value.username;
+                    value.username = undefined;
+                    self.addViewPosition(value,row);
+                })
+              
+            }else
+            self.addViewPosition(value,row);
+        })
+
+        
+        mNewPosition.promiseAddDB = undefined;
+        setTimeout(function(){
+            if(mNewPosition.promiseAddDB!==undefined)
+            self.addDBPosition(mNewPosition);
+        },10);
+    })
+}
+
+ListPositions.prototype.addViewPosition = function(value,parent){
+    var arr = this.mTable.getElementsByClassName("choice");
+    if(arr.length!=1)
+    return;
+    else
+    arr = arr[0];
+    if(value.department_id != arr.data.original.id)
+    return;
+    var result = this.getDataRowPosition(value);
+    
+    var element = this.mTablePosition;
+    element.insertRow(result);
+}
+
+ListPositions.prototype.editPosition = function(data,parent,index)
+{
+    var self = this;
+    var mNewPosition = new NewPosition(data);
+    mNewPosition.attach(self.parent);
+    var frameview = mNewPosition.getView(self.getDataCurrent());
+    mNewPosition.setDataListAccount(self.listAccoutData);
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.editDBPosition(mNewPosition,data,parent,index);
+}
+
+ListPositions.prototype.editDBPosition = function(mNewPosition,data,parent,index){
+    var self = this;
+    mNewPosition.promiseEditDB.then(function(value){
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_position.php";
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        value.id = data.original.id;
+        console.log(value)
+
+        updateData(phpFile,value).then(function(result){
+            if(value.username!==undefined&&value.username.positionid != value.id)
+            {
+                var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_account.php";
+                if(self.phpUpdateAccount)
+                phpFile = self.phpUpdateAccount;
+                var x = {
+                    id:value.username.id,
+                    positionid:value.id
+                }
+                var promiseAll = [];
+                promiseAll.push(updateData(phpFile,x));
+                if(self.checkAccount[value.id]!==undefined){
+                    var y = {
+                        id:self.checkAccount[value.id].id,
+                        positionid:0
+                    }
+                    var promiseAll = [];
+                    promiseAll.push(updateData(phpFile,y));
+                   
+                }
+
+                for(var i = 0;i<self.listAccoutData.length;i++)
+                {
+                    if(self.listAccoutData[i]!==undefined&&self.checkAccount[value.id]!==undefined&&self.listAccoutData[i].id == self.checkAccount[value.id].id)
+                    {
+                        self.mTablePosition.updateTable(undefined,self.mTablePosition.data);
+                        self.listAccoutData[i].positionid = 0;
+                    }
+                    if(self.listAccoutData[i].id == value.username.id )
+                    self.listAccoutData[i].positionid = value.id;
+                }
+
+                Promise.all(promiseAll).then(function(){
+                    delete self.checkAccount[value.username.positionid];
+                    value.username.positionid = value.id;
+                   
+                    self.checkAccount[value.id] = value.username;
+                    value.username = undefined;
+                    self.editViewPosition(value,data,parent,index);
+                })
+              
+            }else
+            self.editViewPosition(value,data,parent,index);
+        })
+        
+        mNewPosition.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewPosition.promiseEditDB!==undefined)
+            self.editDBPosition(mNewPosition,data,parent,index);
+        },10);
+    })
+}
+
+ListPositions.prototype.editViewPosition = function(value,data,parent,index){
+    var data = this.getDataRowPosition(value);
+
+    var indexOF = index,element = parent;
+    
+    element.updateRow(data,indexOF,true);
+}
+
+ListPositions.prototype.deletePosition = function(data,parent,index)
+{
+    
+    var self = this;
+    var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
+    this.$view.addChild(deleteItem);
+    deleteItem.promiseComfirm.then(function(){
+        self.deleteDBPosition(data,parent,index);
+    })
+}
+
+ListPositions.prototype.deleteViewPosition = function(parent,index){
+    parent.dropRow(index).then(function(){
+        
+    });
+}
+
+ListPositions.prototype.deleteDBPosition = function(data,parent,index){
     var self = this;
     var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_position.php";
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
     updateData(phpFile,data).then(function(value){
-        self.deleteView(parent,index);
+        self.deleteViewPosition(parent,index);
     })
 }
+
 
 ListPositions.prototype.refresh = function () {
     var data;

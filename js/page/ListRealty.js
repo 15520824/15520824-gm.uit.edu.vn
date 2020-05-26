@@ -71,7 +71,7 @@ ListRealty.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        self.selfRemove();
+                                        self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
                                     }

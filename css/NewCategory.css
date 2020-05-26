@@ -1,5 +1,8 @@
 .pizo-new-category-container-name-container-input,
 .pizo-new-category-container-alias-container-input,
+.pizo-new-category-container-code-container-input,
+.pizo-new-category-container-note-container-input,
+.pizo-new-category-container-username-container-input,
 .pizo-new-state-selectbox-container-input {
     border: solid 0.0714rem var(--color-input-color);
     font-size: 1rem;
@@ -13,6 +16,9 @@
 
 .pizo-new-category-container-name-container-label,
 .pizo-new-category-container-alias-container-label,
+.pizo-new-category-container-code-container-label,
+.pizo-new-category-container-username-container-label,
+.pizo-new-category-container-note-container-label,
 .pizo-new-state-selectbox-container-label {
     font-size: 1rem;
     display: flex;
@@ -24,6 +30,9 @@
 
 .pizo-new-category-container-name-container,
 .pizo-new-category-container-alias-container,
+.pizo-new-category-container-code-container,
+.pizo-new-category-container-username-container,
+.pizo-new-category-container-note-container,
 .pizo-new-state-selectbox-container {
     display: flex;
     display: -webkit-box;
@@ -36,6 +45,9 @@
 
 .pizo-new-category-container-name,
 .pizo-new-category-container-alias,
+.pizo-new-category-container-code,
+.pizo-new-category-container-username,
+.pizo-new-category-container-note,
 .pizo-new-state-selectbox {
     padding: 5px;
     padding-right: 0;

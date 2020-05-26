@@ -125,7 +125,7 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
   }
   
   .disPlayNone{
-    display: none;
+    display: none !important;
   }
 
   .absol-frame-view-frame-container:not(.absol-active){

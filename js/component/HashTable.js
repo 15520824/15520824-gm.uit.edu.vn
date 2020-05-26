@@ -15,9 +15,6 @@ HashTable.prototype.functionSetHash = function(data,dataParent="")
     var tempCharater = [];
     for(var m = 0;m<data.length;m++){
         object = data[m];
-        data[m].updateSearch = function(){
-
-        }
         for (var i = 0; i < object.length; i++) {
             if (object[i].value !== undefined)
                 value = object[i].value;

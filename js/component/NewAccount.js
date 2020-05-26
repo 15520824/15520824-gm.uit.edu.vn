@@ -58,7 +58,11 @@ NewAccount.prototype.getView = function (dataParent) {
     if (this.$view) return this.$view;
     var self = this;
     self.createPromise();
-
+    var x = [{text:"Không có chức danh", value:0}];
+    for(var i = 0;i<dataParent.length;i++)
+    {
+        x.push(dataParent[i])
+    }
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
@@ -501,7 +505,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                                     class:["pizo-new-account-selectbox-container-input","pizo-new-realty-dectruct-input"],
                                                                     props:{
                                                                         enableSearch: true,
-                                                                        items:dataParent
+                                                                        items:x
                                                                     }
                                                                 }
                                                             ]

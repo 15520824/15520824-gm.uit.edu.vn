@@ -16,6 +16,7 @@ import ListEditHelp from './page/ListEditHelp';
 import ListPositions from './page/ListPositions';
 import ListAccount from './page/ListAccount';
 import ListAddress from './page/ListAddress';
+import xmlModalDragManyFiles from './component/modal_drag_drop_manyfiles';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -316,6 +317,11 @@ App.prototype.openPage = function(index){
 
     switch(index)
     {
+        case 4:
+            xmlModalDragManyFiles.createModal(document.body,function(value){
+                console.log(value);
+            })
+            break;
         case 5:
             var mListPositions = new ListPositions();
             mListPositions.attach(this);

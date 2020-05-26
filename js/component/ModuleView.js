@@ -5,6 +5,7 @@ import '../../css/tablesort.css';
 import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
 import Follower from 'absol-acomp/js/Follower';
+import {insertAfter} from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -963,10 +964,6 @@ tableView.prototype.addInputSearch = function (input) {
     if (self.inputElement === undefined)
         self.inputElement = [];
     self.inputElement.push(input);
-    self.inputElement.onchange = function () {
-        for (var i = 0; i < self.inputElement.length; i++)
-            self.inputElement[i].onchange();
-    }
 }
 
 tableView.prototype.addFilter = function (input, index) {
@@ -980,11 +977,7 @@ tableView.prototype.addFilter = function (input, index) {
     })
     if (self.inputFilter === undefined)
         self.inputFilter = [];
-    self.inputFilter.push(input);
-    self.inputFilter.onchange = function () {
-        for (var i = 0; i < self.inputFilter.length; i++)
-            self.inputFilter[i].emit("change");
-    }
+    self.inputFilter.push([input,index]);
 }
 
 tableView.prototype.checkTableView = function (value) {
@@ -997,11 +990,64 @@ tableView.prototype.checkTableViewFilter = function (value, index) {
     self.hashTableFilter.getKey(value, index);
 }
 
-tableView.prototype.updateHash = function () {
-    if (this.inputElement != undefined)
-        this.inputElement.onchange(undefined, true);
-    if (this.inputFilter !== undefined)
-        this.inputFilter.onchange(undefined, true);
+tableView.prototype.updateHash = function (row) {
+    var object = row.data;
+    var value;
+    if(this.inputElement!==undefined||this.inputFilter!==undefined){
+        if(this.inputFilter!==undefined)
+            for(var k = 0;k<this.inputFilter.length;k++)
+                {
+                    if(this.inputFilter[k][0].value==0)
+                        continue;
+                    if (object[this.inputFilter[k][1]].value !== undefined)
+                        value = object[this.inputFilter[k][1]].value;
+                    else if (typeof object[this.inputFilter[k][1]] === "string")
+                        value = object[this.inputFilter[k][1]];
+                    else
+                        value = "";
+                    if(this.inputFilter[k][0].value != data[this.inputFilter[k][1]])
+                    {
+                        row.classList.add("disPlayNone");
+                        setTimeout(function(){
+                            row.classList.remove("parent");
+                        },10)
+                            return false;
+                    }
+                }
+        for(var i = 0;i<object.length;i++)
+        {
+            if (object[i].value !== undefined)
+                value = object[i].value;
+            else if (typeof object[i] === "string")
+                value = object[i];
+            else
+                value = "";
+            
+            if(this.inputElement!==undefined)
+                for(var k = 0;k<this.inputElement.length;k++)
+                {
+                    if(this.inputElement[k].value === "")
+                        continue;
+                    for(var j = 0;j<value.length;j++)
+                    {
+                        var checkCharacter = -1;
+                        var current = this.inputElement[k].value.indexOf[value[j]];
+                        if(current == -1||current<checkCharacter)
+                        {
+                            row.classList.add("disPlayNone");
+                            setTimeout(function(){
+                                row.classList.remove("parent");
+                            },10)
+                                return false;
+                            
+                        }else
+                        checkCharacter = current;
+                    }   
+                }
+        }
+        
+    }
+    return true;
 }
 
 tableView.prototype.resetHash = function () {
@@ -1780,7 +1826,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
                             var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);
                         else
                             var finalIndex = 0;
-                        var dataIndex;
+                        console.log(row,"asdasd")
                         functionClick(event, cell, finalIndex, cell.getParentNode(), row.data, row);
                     }
 
@@ -1867,7 +1913,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     return cell;
 }
 
-tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical, index = 0) {
+tableView.prototype.updateTable = function (header, data = [], dragHorizontal, dragVertical, index = 0) {
     var checkSpan = [];
     var result = this;
     var temp = _({
@@ -2039,7 +2085,7 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
 
     //    result.checkDataUpdate(row);
     result.bodyTable.parentNode.resetHash();
-    result.bodyTable.parentNode.updateHash();
+    result.bodyTable.parentNode.updateHash(row);
     return row;
 }
 
@@ -2113,8 +2159,15 @@ tableView.prototype.changeParent = function (index, rowParent) {
 
     if (parent.childrenNodes.length !== 0) {
         var indexData = parent.childrenNodes.indexOf(element);
-
-        rowParent.data.push(parent.data[indexData]);
+        var dataTemp;
+        if(parent.tagName == "TABLE")
+            dataTemp = parent.data[indexData];
+        else
+            dataTemp = parent.data.child[indexData];
+        if(rowParent.tagName == "TABLE")
+        rowParent.data.push(dataTemp);
+        else
+        rowParent.data.child.push(dataTemp);
         if (parent.data.child !== undefined)
             parent.data.child.splice(indexData, 1);
         else
@@ -2140,31 +2193,32 @@ tableView.prototype.addHideAnimationChild = function () {
 }
 
 tableView.prototype.changeRowChild = function (element, parent) {
-    var nextSibling;
+    var current;
     if (parent.tagName === "TABLE") {
-        nextSibling = null;
+        current = null;
         parent.bodyTable.addChild(element);
     }
     else {
-        nextSibling = parent.clone[0][parent.clone[0].length - 1].parentNode.nextSibling;
-        parent.bodyTable.insertBefore(element, nextSibling);
+        current = parent.clone[0][parent.clone[0].length - 1].parentNode;
+        insertAfter(element, current);
     }
     element.parentMargin = parent.parentMargin + 1;
     element.resetParentChild();
     element.checkLeft();
     if (element.childrenNodes.length !== 0)
-        element.changeRowChildElement(parent, nextSibling);
+        element.changeRowChildElement(element);
 }
 
-tableView.prototype.changeRowChildElement = function (parent, nextSibling) {
+tableView.prototype.changeRowChildElement = function (current) {
     for (var i = 0; i < this.childrenNodes.length; i++) {
-        if (this.tagName === "TABLE")
+        if (this.tagName === "TABLE"||current == null)
             this.bodyTable.addChild(this.childrenNodes[i]);
-        else
-            this.bodyTable.insertBefore(this.childrenNodes[i], nextSibling);
+        else{
+            insertAfter(this.childrenNodes[i], current);
+        }
         this.childrenNodes[i].checkLeft();
         if (this.childrenNodes[i].childrenNodes.length !== 0) {
-            this.childrenNodes[i].changeRowChildElement();
+            this.childrenNodes[i].changeRowChildElement(this.childrenNodes[i]);
         }
     }
 }

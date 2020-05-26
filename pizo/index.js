@@ -55377,8 +55377,6 @@ HashTable.prototype.functionSetHash = function (data) {
   for (var m = 0; m < data.length; m++) {
     object = data[m];
 
-    data[m].updateSearch = function () {};
-
     for (var i = 0; i < object.length; i++) {
       if (object[i].value !== undefined) value = object[i].value;else if (typeof object[i] === "string") value = object[i];else value = "";
 
@@ -55492,8 +55490,6 @@ HashTableFilter.prototype.functionSetHash = function (data) {
 
   for (var m = 0; m < data.length; m++) {
     object = data[m];
-
-    data[m].updateSearch = function () {};
 
     var stringCheck = m + dataParent;
 
