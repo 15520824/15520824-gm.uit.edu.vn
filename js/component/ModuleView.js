@@ -1475,6 +1475,9 @@ tableView.prototype.pagination = function (number, functionClick) {
     setTimeout(function () {
         temp.updateSize();
     }, 10);
+    this.goto = function(index){
+        arr[index-1].click();
+    }
     return temp;
 }
 
