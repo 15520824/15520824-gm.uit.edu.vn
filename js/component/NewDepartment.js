@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/NewDepartment.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import {allowNumbersOnly, createAlias} from './ModuleView';
+
 
 var _ = Fcore._;
 var $ = Fcore.$;

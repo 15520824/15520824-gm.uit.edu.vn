@@ -675,8 +675,6 @@ ListWard.prototype.addDB = function(mNewDistrict,row ){
 }
 
 ListWard.prototype.addView = function(value,parent){
-    value.created = getGMT();
-    value.modified = getGMT();
     var result = this.getDataRow(value);
     
     var element = this.mTable;
@@ -715,8 +713,6 @@ ListWard.prototype.editDB = function(mNewDistrict,data,parent,index){
 }
 
 ListWard.prototype.editView = function(value,data,parent,index){
-    value.created = data.original.created;
-    value.modified = getGMT();
     var data = this.getDataRow(value);
 
     var indexOF = index,element = parent;

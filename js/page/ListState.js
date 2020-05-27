@@ -4,7 +4,6 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/ListState.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate, getGMT } from '../component/FormatFunction';
 
 import {loadData,updateData} from '../component/ModuleDatabase';
 
@@ -431,8 +430,6 @@ ListState.prototype.addDB = function(mNewState,row ){
 }
 
 ListState.prototype.addView = function(value,parent){
-    value.created = getGMT();
-    value.modified = getGMT();
     var result = this.getDataRow(value);
     
     var element = this.mTable;
@@ -471,8 +468,6 @@ ListState.prototype.editDB = function(mNewState,data,parent,index){
 }
 
 ListState.prototype.editView = function(value,data,parent,index){
-    value.created = data.original.created;
-    value.modified = getGMT();
     var data = this.getDataRow(value);
 
     var indexOF = index,element = parent;

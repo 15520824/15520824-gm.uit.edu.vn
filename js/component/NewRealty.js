@@ -5,7 +5,7 @@ import '../../css/NewRealty.css';
 import '../../css/imagesilder.css';
 import { locationView } from "./MapView";
 import { descViewImagePreview } from './ModuleImage'
-import { unit_Long, unit_Zone, selectElement } from './ModuleView';
+import { unit_Long, unit_Zone, tableView } from './ModuleView';
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
@@ -245,7 +245,7 @@ NewRealty.prototype.descView = function () {
                         class: ["pizo-new-realty-desc-infomation-cell", "center-child"],
                         child: [
                             this.convenientView(),
-                            this.contractView()
+                            this.contactView()
                         ]
                     },
                     {
@@ -1433,25 +1433,384 @@ NewRealty.prototype.convenientView = function () {
     return temp;
 }
 
-NewRealty.prototype.contractView = function () {
+NewRealty.prototype.contactItem = function(data){
     var temp = _({
-        tag: "div",
-        class: "pizo-new-realty-contract",
-        child: [
+        tag:"div",
+        class:"pizo-new-realty-contact-item",
+        child:[
             {
-                tag: "div",
-                class: "pizo-new-realty-contract-tab",
+                tag:"div",
+                class:"pizo-new-realty-contact-item-name",
                 child:[
                     {
                         tag:"span",
-                        class:"pizo-new-realty-contract-tab-label",
+                        class:"pizo-new-realty-contact-item-name-label",
+                        props:{
+                            innerHTML:"Tên"
+                        }
+                    },
+                    {
+                        tag:"input",
+                        class:"pizo-new-realty-contact-item-name-input",
+                        props:{
+                            value:data.original.name
+                        }
+                    },
+                    {
+                        tag:"selectmenu",
+                        class:"pizo-new-realty-contact-item-name-selectbox",
+                        props:{
+                            items:[
+                                {text:"Chưa xác định",value:0},
+                                {text:"Môi giới", value:1},
+                                {text:"Chủ nhà",value:2},
+                                {text:"Họ hàng",value:3}
+                            ]
+                        }
+                    },
+                    {
+                        tag:"button",
+                        class:"pizo-new-realty-contact-item-close",
+                        on:{
+                            click:function(event){
+                                temp.selfRemove();
+                            }
+                        },
+                        child:[
+                            {
+                                tag:"i",
+                                class:"material-icons",
+                                style:{
+                                    fontSize:"1rem"
+                                },
+                                props:{
+                                    innerHTML:"close"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                tag:"div",
+                class:"pizo-new-realty-contact-item-phone",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-item-phone-label",
+                        props:{
+                            innerHTML:"Số điện thoại"
+                        }
+                    },
+                    {
+                        tag:"input",
+                        class:"pizo-new-realty-contact-item-phone-input",
+                        props:{
+                            value:data.original.phone
+                        }
+                    },
+                    {
+                        tag:"selectmenu",
+                        class:"pizo-new-realty-contact-item-phone-selectbox",
+                        props:{
+                            items:[
+                                {text:"Còn hoạt động",value:1},
+                                {text:"Sai số", value:0},
+                                {text:"Gọi lại sau",value:2},
+                                {text:"Bỏ qua",value:3},
+                                {text:"Khóa máy",value:4}
+                            ]
+                        }
+                    },
+                    {
+                        
+                    }
+                ]
+            },
+            {
+                tag:"div",
+                class:"pizo-new-realty-contact-item-note",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-item-note-label",
+                        props:{
+                            innerHTML:"Ghi chú"
+                        }
+                    },
+                    {
+                        tag:"textarea",
+                        class:"pizo-new-realty-contact-item-note-input"
+                    }
+                ]
+            },
+        ]
+    })
+    temp.data = data;
+    return temp;
+}
+
+
+NewRealty.prototype.setDataListAccount = function(data){
+    this.dataAccount = this.formatDataRowListAccount(data);
+}
+
+NewRealty.prototype.formatDataRowListAccount = function(data)
+{
+    var temp = [];
+    for(var i = 0;i<data.length;i++){
+        temp.push(this.getDataRowListAccount(data[i]));
+    }
+    return temp;
+}
+
+NewRealty.prototype.getDataRowListAccount = function(data){
+    var temp = [
+        data.username,
+        data.name,
+        data.phone,
+        data.email,
+        data.id
+    ]
+    temp.original = data;
+    return temp;
+}
+
+NewRealty.prototype.functionChoice = function(event, me, index, parent, data, row)
+{
+    var self = this;
+    console.log(self);
+    var arr =  self.getElementsByClassName("choice-list-category");
+    if(arr.length!==0)
+    arr = arr[0];
+    var today  = new Date();
+    if(self.clickTime === undefined)
+    self.clickTime = 0;
+    if(arr == row&&today - self.clickTime< 300){
+        self.selfRemove();
+        self.resolve({event:event, me:me, index:index, parent:parent, data:data, row:row});
+    }
+    self.clickTime = today;
+    if(arr.length!==0)
+    arr.classList.remove("choice-list-category");
+
+    row.classList.add("choice-list-category");
+}
+
+NewRealty.prototype.listLink = function(data){
+    var self = this;
+   
+  
+    var input = _({
+        tag:"input",
+        class:"input-search-list",
+        props:{
+            type:"text",
+            placeholder:"Search"
+        }
+    })
+    var container = _({
+        tag:"div",
+        class:["list-linkChoice-container","absol-single-page-scroller"],
+        child:[
+            {
+                tag:"div",
+                class:"js-stools-container-bar",
+                child:[
+                    {
+                        tag:"div",
+                        class:["btn-wrapper", "input-append"],
+                        child:[
+                            input
+                        ]
+                    }
+                ]
+            }
+        ]
+    })
+    self.modal = _({
+        tag:"modal",
+        class:"list-linkChoice",
+        on:{
+            click:function(event){
+                var element = event.target;
+                
+                while(!(element.classList.contains("list-linkChoice")||element.classList.contains("list-linkChoice-container")))
+                element = element.parentNode;
+                if(element.classList.contains("list-linkChoice")){
+                    this.selfRemove();
+                    self.modal.reject();
+                }
+            }
+        },
+        child:[
+            container
+        ]
+    })
+
+    var header = [
+        {value:'Tài khoản',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
+        {value:'Họ và tên',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
+        {value:'Số điện thoại',style:{minWidth:"90px",width:"90px"} , functionClickAll: self.functionChoice.bind(self.modal)} , 
+        {value:'Email',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
+        {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"} , functionClickAll: self.functionChoice.bind(self.modal)}, 
+    ];
+    var mTable = new tableView(header, data, false, false, 0);
+    mTable.style.width = "100%";
+    container.appendChild(mTable);
+    mTable.addInputSearch(input);
+    self.modal.promiseSelectList = new Promise(function(resolve,reject){
+        self.modal.resolve = resolve;
+        self.modal.reject = reject;
+    })
+    return self.modal;
+}
+
+// NewRealty.prototype.setDataListAccount = function(data){
+//     this.dataAccount = this.formatDataRowListAccount(data);
+// }
+
+// NewRealty.prototype.formatDataRowListAccount = function(data)
+// {
+//     var temp = []
+// ;    for(var i = 0;i<data.length;i++){
+//         temp.push(this.getDataRowListAccount(data[i]));
+//     }
+//     return temp;
+// }
+
+// NewRealty.prototype.getDataRowListAccount = function(data){
+//     var temp = [
+//         data.username,
+//         data.name,
+//         data.phone,
+//         data.email,
+//         data.id
+//     ]
+//     temp.original = data;
+//     return temp;
+// }
+
+// NewRealty.prototype.functionChoice = function(event, me, index, parent, data, row)
+// {
+//     var self = this;
+//     console.log(self);
+//     var arr =  self.getElementsByClassName("choice-list-category");
+//     if(arr.length!==0)
+//     arr = arr[0];
+//     var today  = new Date();
+//     if(self.clickTime === undefined)
+//     self.clickTime = 0;
+//     if(arr == row&&today - self.clickTime< 300){
+//         self.selfRemove();
+//         self.resolve({event:event, me:me, index:index, parent:parent, data:data, row:row});
+//     }
+//     self.clickTime = today;
+//     if(arr.length!==0)
+//     arr.classList.remove("choice-list-category");
+
+//     row.classList.add("choice-list-category");
+// }
+
+// NewRealty.prototype.listLink = function(data){
+//     var self = this;
+   
+  
+//     var input = _({
+//         tag:"input",
+//         class:"input-search-list",
+//         props:{
+//             type:"text",
+//             placeholder:"Search"
+//         }
+//     })
+//     var container = _({
+//         tag:"div",
+//         class:["list-linkChoice-container","absol-single-page-scroller"],
+//         child:[
+//             {
+//                 tag:"div",
+//                 class:"js-stools-container-bar",
+//                 child:[
+//                     {
+//                         tag:"div",
+//                         class:["btn-wrapper", "input-append"],
+//                         child:[
+//                             input
+//                         ]
+//                     }
+//                 ]
+//             }
+//         ]
+//     })
+//     self.modal = _({
+//         tag:"modal",
+//         class:"list-linkChoice",
+//         on:{
+//             click:function(event){
+//                 var element = event.target;
+                
+//                 while(!(element.classList.contains("list-linkChoice")||element.classList.contains("list-linkChoice-container")))
+//                 element = element.parentNode;
+//                 if(element.classList.contains("list-linkChoice")){
+//                     this.selfRemove();
+//                     self.modal.reject();
+//                 }
+//             }
+//         },
+//         child:[
+//             container
+//         ]
+//     })
+
+//     var header = [
+//         {value:'Tài khoản',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
+//         {value:'Họ và tên',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
+//         {value:'Số điện thoại',style:{minWidth:"90px",width:"90px"} , functionClickAll: self.functionChoice.bind(self.modal)} , 
+//         {value:'Email',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
+//         {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"} , functionClickAll: self.functionChoice.bind(self.modal)}, 
+//     ];
+//     var mTable = new tableView(header, data, false, false, 0);
+//     mTable.style.width = "100%";
+//     container.appendChild(mTable);
+//     mTable.addInputSearch(input);
+//     self.modal.promiseSelectList = new Promise(function(resolve,reject){
+//         self.modal.resolve = resolve;
+//         self.modal.reject = reject;
+//     })
+//     return self.modal;
+// }
+
+NewRealty.prototype.contactView = function () {
+    var self = this;
+    var temp = _({
+        tag: "div",
+        class: "pizo-new-realty-contact",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-contact-tab",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-tab-label",
                         props:{
                             innerHTML:"Thông tin liên hệ"
                         }
                     },
                     {
                         tag:"button",
-                        class:"pizo-new-realty-contract-tab-button",
+                        class:"pizo-new-realty-contact-tab-button",
+                        on:{
+                            click:function(event){
+                                var x = self.listLink(self.dataAccount);
+                                temp.appendChild(x);
+                                x.promiseSelectList.then(function(value){
+                                    temp.appendChild(self.contactItem(value.data));
+                                })
+                                
+                            }
+                        },
                         child:[
                             {
                                 tag:"i",
@@ -1469,21 +1828,13 @@ NewRealty.prototype.contractView = function () {
             },
             {
                 tag: "div",
-                class: "pizo-new-realty-contract-content",
+                class: "pizo-new-realty-contact-content",
                 child: [
                 ]
             }
         ]
     })
 
-    return temp;
-}
-
-NewRealty.prototype.contractItem = function (data = {}) {
-    var temp = _({
-        tag: "div",
-        class: ""
-    })
     return temp;
 }
 

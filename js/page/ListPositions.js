@@ -694,7 +694,7 @@ ListPositions.prototype.editDBPosition = function(mNewPosition,data,parent,index
                     var promiseAll = [];
                     promiseAll.push(updateData(phpFile,y));
                    
-                }
+                }   
 
                 for(var i = 0;i<self.listAccoutData.length;i++)
                 {

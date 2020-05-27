@@ -200,13 +200,13 @@
   vertical-align: top;
 }
 
-.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contract {
+.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact {
   width: 100%;
   vertical-align: top;
   margin-top: 0.7143rem;
 }
 
-.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contract-tab {
+.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab {
   padding: 0.7143rem;
   border-bottom: solid 0.0714rem #ccc;
   background: #f3f3f3;
@@ -439,21 +439,20 @@ input[type="number"]::-webkit-outer-spin-button {
 .pizo-new-realty-dectruct-content-area-1-label {
 }
 
-.pizo-new-realty-contract-tab{
+.pizo-new-realty-contact-tab{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
   height: 100%;
   align-items: stretch;
 }
 
-.pizo-new-realty-contract-tab-label{
+.pizo-new-realty-contact-tab-label{
   flex-grow: 2;
   display: flex;
 }
 
-.pizo-new-realty-contract-tab-button{
+.pizo-new-realty-contact-tab-button{
   display: flex;
   flex-shrink: 0;
   width: fit-content;
@@ -462,4 +461,43 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid #122246;
   padding: 1px;
   border-radius: 4px;
+}
+
+.pizo-new-realty-contact-item-name,.pizo-new-realty-contact-item-phone,.pizo-new-realty-contact-item-note{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+    margin-top: 0.7143rem;
+}
+
+.pizo-new-realty-contact-item-name-label,.pizo-new-realty-contact-item-phone-label,.pizo-new-realty-contact-item-note-label{
+    font-size: 1rem;
+    padding-top: 0.4375rem;
+    display: flex;
+    flex-shrink: 0;
+    width: 6.5714rem;
+    padding-right: 0.7143rem;
+}
+
+.pizo-new-realty-contact-item-name-input,.pizo-new-realty-contact-item-phone-input,.pizo-new-realty-contact-item-note-input{
+    border: solid 0.0714rem var(--color-input-color);
+    font-size: 1rem;
+    padding: 0.4286rem;
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.pizo-new-realty-contact-item-name-selectbox{
+  min-width: 130px !important;
+}
+
+.pizo-new-realty-contact-item-close{
+  background-color: red;
+  color: white;
 }

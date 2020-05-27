@@ -527,6 +527,13 @@ export function descViewImagePreview(data=[],index = 0,promiseLazyLoad){
     {
         self.addFunctionLazyLoad(promiseLazyLoad);
     }
+    var functionESC = function(event){
+        if(event.keyCode == 27){
+            self.selfRemove();
+            window.removeEventListener("keydown",functionESC);
+        }
+    }
+    window.addEventListener("keydown",functionESC)
     return self;
 }
 
@@ -580,7 +587,7 @@ descViewImagePreview.prototype.renderItems = function(data,index)
             }
 
             day.addChild(_({text:format}));
-
+        
             dayThumnail.getDate = function(formatDate)
             {
                 return function()
@@ -613,6 +620,7 @@ descViewImagePreview.prototype.renderItems = function(data,index)
     }
     if(index!==undefined)
     self.SelectImage(index);
+
 }
 
 descViewImagePreview.prototype.resetImage = function(data)
@@ -672,8 +680,9 @@ descViewImagePreview.prototype.SelectImage = function(index)
     this.itemSelect = $("div#thumb_"+index,this);
     this.itemSelect.classList.add("selected");
     
-    this.resetImage(this.itemSelect.data)
-    this.titleTimeLine.innerText = this.itemSelect.dayElement.getDate();
+    
+    this.resetImage(this.itemSelect.data);
+   
 
     if(this.itemSelect.nextElement()===null)
     {
@@ -702,7 +711,26 @@ descViewImagePreview.prototype.SelectImage = function(index)
             this.nextButtonTop.classList.add("clickable");
     }
 
-    this.scrollView()
+    this.scrollView();
+    var self = this;
+    setTimeout(function(){
+        var arr = self.containImage.getElementsByClassName("image-show__thumb__legend");
+        var last,current;
+        for(var i = 0;i<arr.length;i++)
+        {
+            last = current;
+            current = arr[i];
+            
+            if(self.titleTimeLine.getBoundingClientRect().y<=current.getBoundingClientRect().y-16)
+            {
+                if(last!==undefined)
+                self.titleTimeLine.innerText = last.getDate();
+                else
+                self.titleTimeLine.innerText = current.getDate();
+                break;
+            }
+        }
+    },10)
 } 
 
 descViewImagePreview.prototype.scrollView = function()

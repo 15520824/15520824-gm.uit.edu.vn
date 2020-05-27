@@ -508,48 +508,6 @@ ListStreet.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Ngày tạo"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay,
-                                            endDay
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Ngày cập nhật"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay1,
-                                            endDay1
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
                                 class:"pizo-list-realty-main-search-control-row-button",
                                 child:[
                                     {

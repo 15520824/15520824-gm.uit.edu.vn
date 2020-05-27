@@ -310,6 +310,11 @@ ListAccount.prototype.formatDataRow = function(data)
 
 ListAccount.prototype.getDataRow = function(data)
 {
+    var name;
+    if(this.checkPosition[parseInt(data.positionid)] == undefined)
+    name = "";
+    else
+    name = this.checkPosition[parseInt(data.positionid)].name
     var result = [
         {},
         data.id,
@@ -317,7 +322,7 @@ ListAccount.prototype.getDataRow = function(data)
         {value:data.name,style:{whiteSpace:"nowrap"}},
         data.phone,
         data.email,
-        "this.checkPosition[parseInt(data.positionid)].name",
+        name,
         {},
         parseInt(data.permission)?"Có":"Không",
         parseInt(data.status)?"Có":"Không",

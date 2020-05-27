@@ -1,37 +1,37 @@
 import BaseView from './BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/NewState.css"
+import "../../css/NewDistrict.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate } from './FormatFunction';
 
-import { input_choicenumber,tableView, ModuleView} from './ModuleView';
-import NewRealty from './NewRealty';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function NewState() {
+function NewDistrict(data) {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    this.ModuleView = new ModuleView();
     
-    this.NewRealty = new NewRealty();
-    this.NewRealty.attach(this);
+    this.textHeader = "Sửa";
+    this.data = data;
+
+    if(this.data ==undefined)
+    this.textHeader = "Thêm ";
+    
 }
 
-NewState.prototype.setContainer = function(parent)
+NewDistrict.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(NewState.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-NewState.prototype.constructor = NewState;
+Object.defineProperties(NewDistrict.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+NewDistrict.prototype.constructor = NewDistrict;
 
-NewState.prototype.getView = function () {
+NewDistrict.prototype.getView = function (data) {
     if (this.$view) return this.$view;
     var self = this;
     this.$view = _({
@@ -45,7 +45,7 @@ NewState.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Thêm Tỉnh/TP"
+                            innerHTML:  self.textHeader+"Quận/Huyện"
                         }
                     },
                     {
@@ -60,6 +60,8 @@ NewState.prototype.getView = function () {
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
+
+                                        self.rejectDB(self.getDataSave());
                                     }
                                 },
                                 child: [
@@ -71,10 +73,27 @@ NewState.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
+                                        self.resolveDB(self.getDataSave());
+                                        self.createPromise();
                                     }
                                 },
                                 child: [
                                 '<span>' + "Lưu" + '</span>'
+                                ]
+                            },
+                            {
+                                tag: "button",
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                on: {
+                                    click: function (evt) {
+                                        self.resolveDB(self.getDataSave());
+                                        self.$view.selfRemove();
+                                        var arr = self.parent.body.getAllChild();
+                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                    }
+                                },
+                                child: [
+                                '<span>' + "Lưu và đóng" + '</span>'
                                 ]
                             }
                         ]
@@ -129,8 +148,10 @@ NewState.prototype.getView = function () {
                                             class:"pizo-new-state-container-type-container-input",
                                             props:{
                                                 items:[
-                                                    {text:"Thành phố trực thuộc trung ương",value:79},
-                                                    {text:"Tỉnh",value:80}
+                                                    {text:"Thị xã",value:"Thị xã"},
+                                                    {text:"Huyện",value:"Huyện"},
+                                                    {text:"Quận",value:"Quận"},
+                                                    {text:"Thành phố",value:"Thành phố"},
                                                 ]
                                             }
                                         }
@@ -144,16 +165,15 @@ NewState.prototype.getView = function () {
                                             tag:"span",
                                             class:"pizo-new-state-container-nation-container-label",
                                             props:{
-                                                innerHTML:"Quốc gia"
+                                                innerHTML:"Tỉnh/Thành phố"
                                             }
                                         },
                                         {
                                             tag:"selectmenu",
                                             class:"pizo-new-state-container-nation-container-input",
                                             props:{
-                                                items:[
-                                                    {text:"Việt Nam",value:79},
-                                                ]
+                                                enableSearch:true,
+                                                items:data
                                             }
                                         }
                                     ]
@@ -165,10 +185,59 @@ NewState.prototype.getView = function () {
             ]   
         })
         );
+    this.createPromise();
+    this.name = $('input.pizo-new-state-container-name-container-input',this.$view);
+    this.type = $('div.pizo-new-state-container-type-container-input',this.$view);
+    this.state = $('div.pizo-new-state-container-nation-container-input',this.$view);
+    
+    if(this.data!==undefined)
+    {
+        this.name.value = this.data.original.name;
+        this.type.value = this.data.original.type;
+        this.state.value = this.data.original.stateid;
+    }
     return this.$view;
 }
 
-NewState.prototype.refresh = function () {
+NewDistrict.prototype.getDataSave = function() {
+    
+    return {
+        id:this.data===undefined?undefined:this.data.original.id,
+        name:this.name.value,
+        type:this.type.value,
+        state:this.state.value
+    }
+}
+
+NewDistrict.prototype.createPromise = function()
+{
+    var self = this;
+    if(this.data === undefined)
+    {
+        self.promiseAddDB = new Promise(function(resolve,reject){
+            self.resolveDB = resolve;
+            self.rejectDB = reject;
+        })
+
+    }else
+    {
+        self.promiseEditDB = new Promise(function(resolve,reject){
+            self.resolveDB = resolve;
+            self.rejectDB = reject;
+        })
+        
+    }
+}
+
+NewDistrict.prototype.resetPromise = function(value)
+{
+    if(self.promiseAddDB!==undefined)
+    self.promiseAddDB = undefined;
+    if(self.promiseEditDB!==undefined)
+    self.promiseEditDB = undefined;
+}
+
+NewDistrict.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -176,7 +245,7 @@ NewState.prototype.refresh = function () {
         this.setData(data);
 };
 
-NewState.prototype.setData = function (data) {
+NewDistrict.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -184,7 +253,7 @@ NewState.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-NewState.prototype.flushDataToView = function () {
+NewDistrict.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -199,8 +268,8 @@ NewState.prototype.flushDataToView = function () {
     }
 };
 
-NewState.prototype.start = function () {
+NewDistrict.prototype.start = function () {
 
 }
 
-export default NewState;
+export default NewDistrict;

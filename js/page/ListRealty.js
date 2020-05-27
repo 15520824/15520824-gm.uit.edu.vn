@@ -5,7 +5,7 @@ import "../../css/ListRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
-import { input_choicenumber,tableView, ModuleView} from '../component/ModuleView';
+import { tableView, ModuleView} from '../component/ModuleView';
 import NewRealty from '../component/NewRealty';
 
 import {loadData,updateData} from '../component/ModuleDatabase';
@@ -87,7 +87,7 @@ ListRealty.prototype.getView = function () {
                                     click: function (evt) {
                                         var mNewRealty = new NewRealty();
                                         mNewRealty.attach(self.parent);
-                                        
+                                        mNewRealty.setDataListAccount(self.listAccoutData);
                                         var frameview = mNewRealty.getView();
                                         self.parent.body.addChild(frameview);
                                         self.parent.body.activeFrame(frameview);
@@ -229,6 +229,10 @@ ListRealty.prototype.getView = function () {
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
     });
 
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php").then(function(value){
+        self.formatDataRowAccount(value);
+    })
+
   
     this.searchControl = this.searchControlContent();
 
@@ -242,6 +246,12 @@ ListRealty.prototype.getView = function () {
         })
         );
     return this.$view;
+}
+
+
+ListRealty.prototype.formatDataRowAccount = function(data){
+    var checkAccount = [];
+    this.listAccoutData = data;
 }
 
 ListRealty.prototype.formatDataRow = function(data)

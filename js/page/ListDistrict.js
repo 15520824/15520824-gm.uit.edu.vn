@@ -4,7 +4,6 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/ListDistrict.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate, getGMT } from '../component/FormatFunction';
 
 import {loadData,updateData} from '../component/ModuleDatabase';
 
@@ -247,6 +246,7 @@ ListDistrict.prototype.getView = function () {
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
             self.listParent.updateItemList(listParam);
+            self.mTable.addFilter(self.listDistrictElement,3);
             self.mTable.addFilter(self.listParent,4);
         });
     });
@@ -329,74 +329,7 @@ ListDistrict.prototype.formatDataList = function(data){
     return temp;
 }
 ListDistrict.prototype.searchControlContent = function(){
-    var startDay,endDay,startDay1,endDay1;
     var self = this;
-    startDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    endDay.minDateLimit = date;
-                }
-            }
-        }
-    );
-
-    endDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    startDay.maxDateLimit = date;
-                }
-            }
-        }
-    );
-
-    startDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    endDay1.minDateLimit = date;
-                }
-            }
-        }
-    )
-
-    endDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    startDay1.maxDateLimit = date;
-                }
-            }
-        }
-    )
     self.listParent = _({
         tag:"selectmenu",
         props:{
@@ -410,6 +343,20 @@ ListDistrict.prototype.searchControlContent = function(){
     {
         self.listParent.items = self.formatDataList(value);
     }
+
+    self.listDistrictElement = _({
+        tag:"selectmenu",
+        props:{
+            enableSearch:true,
+            items:[
+                {text:"Tất cả",value:0},
+                {text:"Thị xã",value:"Thị xã"},
+                {text:"Huyện",value:"Huyện"},
+                {text:"Quận",value:"Quận"},
+                {text:"Thành phố",value:"Thành phố"},
+            ]
+        }
+    });
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -451,63 +398,24 @@ ListDistrict.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
+                                class:"pizo-list-realty-main-search-control-row-state-district",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
+                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
                                         props:{
-                                            innerHTML:"Ngày tạo"
+                                            innerHTML:"Loại"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
+                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
                                         child:[
-                                            startDay,
-                                            endDay
+                                            self.listDistrictElement
                                         ]
                                     }
                                 ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Ngày cập nhật"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay1,
-                                            endDay1
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-button",
-                                child:[
-                                    {
-                                        tag: "button",
-                                        class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-                                                temp.reset();
-                                            }
-                                        },
-                                        child: [
-                                        '<span>' + "Thiết lập lại" + '</span>'
-                                        ]
-                                    }
-                                ]
+
                             },
                         ]
                     }
@@ -530,17 +438,6 @@ ListDistrict.prototype.searchControlContent = function(){
     })
 
     temp.content = content;
-    content.timestart = startDay;
-    content.timeend = endDay;
-    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low',content);
-    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high',content);
-    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input',content);
-    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input',content);
-    content.SN = $('.pizo-list-realty-main-search-control-row-SN input',content);
-    content.TD = $('.pizo-list-realty-main-search-control-row-TD input',content);
-    content.PX = $('.pizo-list-realty-main-search-control-row-PX input',content);
-    content.QH = $('.pizo-list-realty-main-search-control-row-QH input',content);
-    content.HT = $('.pizo-list-realty-main-search-control-row-HT input',content);
 
     temp.show = function()
     {
@@ -563,25 +460,6 @@ ListDistrict.prototype.searchControlContent = function(){
 
         // Standard syntax
         content.addEventListener("transitionend", eventEnd);
-    }
-    temp.apply = function()
-    {
-
-    }
-    temp.reset = function()
-    {
-        content.timestart = new Date();
-        content.timeend = new Date();
-        content.lowprice.value = "";
-        content.highprice.value = "";
-        content.phone.value = "";
-        content.MS.value = "";
-        content.SN.value = "";
-        content.TD.value = "";
-        content.PX.value = "";
-        content.QH.value = "";
-        content.TT.value = "";
-        content.HT.value = 0;
     }
 
   
@@ -616,7 +494,7 @@ ListDistrict.prototype.add = function(parent_id = 0,row)
     var self = this;
     var mNewDistrict = new NewDistrict(undefined,parent_id);
     mNewDistrict.attach(self.parent);
-    var frameview = mNewDistrict.getView(self.getDataParam());
+    var frameview = mNewDistrict.getView(self.listParam);
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
     self.addDB(mNewDistrict,row);
@@ -625,7 +503,7 @@ ListDistrict.prototype.add = function(parent_id = 0,row)
 ListDistrict.prototype.addDB = function(mNewDistrict,row ){
     var self = this;
     mNewDistrict.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_district.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         updateData(phpFile,value).then(function(result){
@@ -642,8 +520,6 @@ ListDistrict.prototype.addDB = function(mNewDistrict,row ){
 }
 
 ListDistrict.prototype.addView = function(value,parent){
-    value.created = getGMT();
-    value.modified = getGMT();
     var result = this.getDataRow(value);
     
     var element = this.mTable;
@@ -657,7 +533,7 @@ ListDistrict.prototype.edit = function(data,parent,index)
     var self = this;
     var mNewDistrict = new NewDistrict(data);
     mNewDistrict.attach(self.parent);
-    var frameview = mNewDistrict.getView(self.getDataParam());
+    var frameview = mNewDistrict.getView(self.listParam);
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
     self.editDB(mNewDistrict,data,parent,index);
@@ -666,7 +542,7 @@ ListDistrict.prototype.edit = function(data,parent,index)
 ListDistrict.prototype.editDB = function(mNewDistrict,data,parent,index){
     var self = this;
     mNewDistrict.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_district.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
@@ -682,8 +558,6 @@ ListDistrict.prototype.editDB = function(mNewDistrict,data,parent,index){
 }
 
 ListDistrict.prototype.editView = function(value,data,parent,index){
-    value.created = data.original.created;
-    value.modified = getGMT();
     var data = this.getDataRow(value);
 
     var indexOF = index,element = parent;
@@ -713,7 +587,7 @@ ListDistrict.prototype.deleteView = function(parent,index){
 
 ListDistrict.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_district.php";
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
     updateData(phpFile,data).then(function(value){
