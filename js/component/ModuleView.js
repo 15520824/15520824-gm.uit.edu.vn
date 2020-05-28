@@ -1319,6 +1319,8 @@ tableView.prototype.pagination = function (number, functionClick) {
                         self.updateTable(undefined, self.data, self.dragHorizontal, self.dragVertical, i * number);
                         if (self.scrollParent !== undefined)
                             self.scrollParent.scrollTop = 0;
+                        if(self.changePageIndex!==undefined)
+                            self.changePageIndex(i);
                     }
                 }(i),
                 mouseover: function (event) {
@@ -1391,90 +1393,90 @@ tableView.prototype.pagination = function (number, functionClick) {
     temp.resetOnlyView();
     var displayNone = [];
     temp.updateSize = function () {
-        for (var i = 0; i < displayNone.length; i++) {
-            displayNone[i].style.display = "";
-        }
-        
-        temp.detailLeft.style.display = "";
-        temp.detailRight.style.display = "";
-        var count = parseInt((self.offsetWidth-20) / 50) - 4;
-        var i = 0;
-        var active = $("a.active", container);
-        displayNone = [active];
-        var countTime = -99;
-        if (count < arr.length) {
-            var countTime = count;
-        }
-        var lastIndexPrev,lastIndexPrevBefore;
-        var lastIndexNext,lastIndexNextBefore;
-        var isLeft = false, isRight = false;
-        if (active !== undefined) {
-            var prev = active.previousSibling, next = active.nextSibling;
-
-            while (i <= count && !(isLeft == true && isRight == true)) {
-                if (isRight == false && next != null) {
-                    if (i == countTime) {
-                        while (next == temp.detailRight || next == temp.detailLeft)
+        setTimeout(function(){
+            for (var i = 0; i < displayNone.length; i++) {
+                displayNone[i].style.display = "";
+            }
+            
+            temp.detailLeft.style.display = "";
+            temp.detailRight.style.display = "";
+            var count = parseInt((self.offsetWidth-20) / 50) - 4;
+            var i = 0;
+            var active = $("a.active", container);
+            displayNone = [active];
+            var countTime = -99;
+            if (count < arr.length) {
+                var countTime = count;
+            }
+            var lastIndexPrev,lastIndexPrevBefore;
+            var lastIndexNext,lastIndexNextBefore;
+            var isLeft = false, isRight = false;
+            if (active !== undefined) {
+                var prev = active.previousSibling, next = active.nextSibling;
+    
+                while (i <= count && !(isLeft == true && isRight == true)) {
+                    if (isRight == false && next != null) {
+                        if (i == countTime) {
+                            while (next == temp.detailRight || next == temp.detailLeft)
+                                next = next.nextSibling;
+    
+                                isRight = true;
+                                lastIndexNext.style.display = "";
+                                lastIndexNextBefore.style.display = "";
+    
+                                temp.detailRight.style.display = "flex";
+                                displayNone.push(container.lastChild);
+                                container.lastChild.style.display = "flex";                        
+                        } else {
+                            while (next == temp.detailRight || next == temp.detailLeft)
+                                next = next.nextSibling;
+                            next.style.display = "flex";
+    
+                            lastIndexNextBefore = lastIndexNext;
+                            lastIndexNext = next;
+    
+                            displayNone.push(next);
                             next = next.nextSibling;
-
-                            isRight = true;
-                            lastIndexNext.style.display = "";
-                            lastIndexNextBefore.style.display = "";
-
-                            temp.detailRight.style.display = "flex";
-                            displayNone.push(container.lastChild);
-                            container.lastChild.style.display = "flex";                        
+                            i++;
+                        }
                     } else {
-                        while (next == temp.detailRight || next == temp.detailLeft)
-                            next = next.nextSibling;
-                        next.style.display = "flex";
-
-                        lastIndexNextBefore = lastIndexNext;
-                        lastIndexNext = next;
-
-                        displayNone.push(next);
-                        next = next.nextSibling;
-                        i++;
+                        isRight = true;
                     }
-                } else {
-                    isRight = true;
-                }
-
-                if (i > count)
-                    break;
-
-                if (isLeft == false && prev != null) {
-                    if (i == countTime) {
-                        while (prev == temp.detailLeft || prev == temp.detailRight)
-                        prev = prev.previousSibling;
-
-                        isLeft = true;
-                        lastIndexPrev.style.display = "";
-                        lastIndexPrevBefore.style.display = "";
-                        temp.detailLeft.style.display = "flex";
-                        displayNone.push(container.firstChild);
-                        container.firstChild.style.display = "flex";
-                    } else {
-                        while (prev == temp.detailLeft || prev == temp.detailRight)
+    
+                    if (i > count)
+                        break;
+    
+                    if (isLeft == false && prev != null) {
+                        if (i == countTime) {
+                            while (prev == temp.detailLeft || prev == temp.detailRight)
                             prev = prev.previousSibling;
-                        prev.style.display = "flex";
-
-                        lastIndexPrevBefore = lastIndexPrev;
-                        lastIndexPrev = prev;
-
-                        displayNone.push(prev);
-                        prev = prev.previousSibling;
-                        i++;
+    
+                            isLeft = true;
+                            lastIndexPrev.style.display = "";
+                            lastIndexPrevBefore.style.display = "";
+                            temp.detailLeft.style.display = "flex";
+                            displayNone.push(container.firstChild);
+                            container.firstChild.style.display = "flex";
+                        } else {
+                            while (prev == temp.detailLeft || prev == temp.detailRight)
+                                prev = prev.previousSibling;
+                            prev.style.display = "flex";
+    
+                            lastIndexPrevBefore = lastIndexPrev;
+                            lastIndexPrev = prev;
+    
+                            displayNone.push(prev);
+                            prev = prev.previousSibling;
+                            i++;
+                        }
+                    } else {
+                        isLeft = true;
                     }
-                } else {
-                    isLeft = true;
                 }
             }
-        }
+        },10);
     }
-    setTimeout(function () {
         temp.updateSize();
-    }, 10);
     this.goto = function(index){
         arr[index-1].click();
     }

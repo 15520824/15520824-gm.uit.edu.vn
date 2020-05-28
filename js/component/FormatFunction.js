@@ -55,6 +55,16 @@ export function formatDate(date,isMinutes = false, isHours = false , isDay = tru
     return resultTime.join(':')+" "+resultDayMonth.join('/');
 }
 
+export function formatNumber(n) {
+    // format number 1000000 to 1,234,567
+    return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
+
+export function reFormatNumber(n)
+{
+    return parseFloat(n.split(",").join(""));
+}
+
 export function getGMT(date,timezone = 0,onlyDay = false) {
     if(date==undefined)
     var d = new Date();

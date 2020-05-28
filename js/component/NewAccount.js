@@ -331,6 +331,9 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         {
                                                             tag:"input",
                                                             class:["pizo-new-account-container-phone-container-input","pizo-new-realty-dectruct-input"],
+                                                            props:{
+                                                                type:"number"
+                                                            },
                                                             on:{
                                                             }
                                                         }

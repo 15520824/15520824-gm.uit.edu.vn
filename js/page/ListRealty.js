@@ -85,12 +85,7 @@ ListRealty.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        var mNewRealty = new NewRealty();
-                                        mNewRealty.attach(self.parent);
-                                        mNewRealty.setDataListAccount(self.listAccoutData);
-                                        var frameview = mNewRealty.getView();
-                                        self.parent.body.addChild(frameview);
-                                        self.parent.body.activeFrame(frameview);
+                                        self.add();
                                     }
                                 },
                                 child: [
@@ -233,6 +228,10 @@ ListRealty.prototype.getView = function () {
         self.formatDataRowAccount(value);
     })
 
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_contacts.php").then(function(value){
+        self.formatDataRowRealty(value);
+    })
+
   
     this.searchControl = this.searchControlContent();
 
@@ -250,8 +249,11 @@ ListRealty.prototype.getView = function () {
 
 
 ListRealty.prototype.formatDataRowAccount = function(data){
-    var checkAccount = [];
     this.listAccoutData = data;
+}
+
+ListRealty.prototype.formatDataRowRealty = function(data){
+    this.listContactData = data;
 }
 
 ListRealty.prototype.formatDataRow = function(data)
@@ -259,43 +261,10 @@ ListRealty.prototype.formatDataRow = function(data)
     var temp = [];
     var check = [];
     var k = 0;
-    var checkElement;
     for(var i=0;i<data.length;i++)
     {
-        checkElement = parseInt(data[i].active)? _({
-            tag:"div",
-            class:"tick-element"
-        }):_({
-            tag:"div",
-            class:"cross-element"
-        })
-        var result = [{value:"",style:{maxWidth:"21px"}},{
-            value:data[i].title,
-            element:_({
-                tag:"div",
-                child:[
-                    {
-                        tag:"span",
-                        class:"title-label",
-                        props:{
-                            innerHTML:data[i].title
-                        }
-                    },
-                    {
-                        tag:"span",
-                        class:"alias-label",
-                        props:{
-                            innerHTML:" (Alias :"+data[i].alias+")"
-                        }
-                    }
-                ]
-            }),
-        },
-        {value:data[i].active,
-            element:checkElement
-            ,style:{maxWidth:"21px"}},
-        {value:"",style:{maxWidth:"21px"}}
-    ];
+
+        var result = this.getDataRow(data[i]);
         result.original = data[i];
         if(check[data[i].parent_id]!==undefined)
         {
@@ -309,6 +278,32 @@ ListRealty.prototype.formatDataRow = function(data)
     }
     
     return temp;
+}
+
+ListRealty.prototype.getDataRow = function(data)
+{
+    // var {text:"Chưa xác định",value:0},
+    // {text:"Đất trống",value:1},
+    // {text:"Kết cấu",value:2},
+    // {text:"Cấp 4",value:3},
+    // {text:"Sẳn *",value:4},
+    var result = [
+        // {},
+        // {},
+        // data.id,
+        // "",
+        // "",
+        // "",
+        // "",
+        // "",
+        // data.content,
+        // data.height,
+        // data.width,
+        // data.acreage,
+        // data.
+    ];
+    result.original = data;
+    return result;
 }
 
 
@@ -717,6 +712,113 @@ ListRealty.prototype.searchControlContent = function(){
 
   
     return temp;
+}
+
+
+ListRealty.prototype.add = function(parent_id = 0,row)
+{
+    var self = this;
+    var mNewRealty = new NewRealty(undefined,parent_id);
+    mNewRealty.attach(self.parent);
+    mNewRealty.setDataListAccount(self.listAccoutData);
+    mNewRealty.setDataListContact(self.listContactData);
+    var frameview = mNewRealty.getView();
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.addDB(mNewRealty,row);
+}
+
+ListRealty.prototype.addDB = function(mNewRealty,row ){
+    var self = this;
+    mNewRealty.promiseAddDB.then(function(value){
+        console.log(value)
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_activehomes.php";
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        updateData(phpFile,value).then(function(result){
+            
+            value.id = result;
+            self.addView(value,row);
+        })
+        mNewRealty.promiseAddDB = undefined;
+        setTimeout(function(){
+            if(mNewRealty.promiseAddDB!==undefined)
+            self.addDB(mNewRealty);
+        },10);
+    })
+}
+
+ListRealty.prototype.addView = function(value,parent){
+    var result = this.getDataRow(value);
+    
+    var element = this.mTable;
+    element.insertRow(result);
+}
+
+ListRealty.prototype.edit = function(data,parent,index)
+{
+    var self = this;
+    var mNewRealty = new NewRealty(data);
+    mNewRealty.attach(self.parent);
+    mNewRealty.setDataListAccount(self.listAccoutData);
+    mNewRealty.setDataListContact(self.listContactData);
+    var frameview = mNewRealty.getView();
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.editDB(mNewRealty,data,parent,index);
+}
+
+ListRealty.prototype.editDB = function(mNewRealty,data,parent,index){
+    var self = this;
+    mNewRealty.promiseEditDB.then(function(value){
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_activehomes.php";
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        value.id = data.original.id;
+        updateData(phpFile,value).then(function(result){
+            self.editView(value,data,parent,index);
+        })
+        mNewRealty.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewRealty.promiseEditDB!==undefined)
+            self.editDB(mNewRealty,data,parent,index);
+        },10);
+    })
+}
+
+ListRealty.prototype.editView = function(value,data,parent,index){
+    var data = this.getDataRow(value);
+
+    var indexOF = index,element = parent;
+    
+    element.updateRow(data,indexOF,true);
+}
+
+ListRealty.prototype.delete = function(data,parent,index)
+{
+    var self = this;
+    var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
+    this.$view.addChild(deleteItem);
+    deleteItem.promiseComfirm.then(function(){
+        self.deleteDB(data,parent,index);
+    })
+}
+
+ListRealty.prototype.deleteView = function(parent,index){
+    var self = this;
+    var bodyTable = parent.bodyTable;
+    parent.dropRow(index).then(function(){
+    });
+}
+
+ListRealty.prototype.deleteDB = function(data,parent,index){
+    var self = this;
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_activehomes.php";
+    if(self.phpDeleteContent)
+    phpFile = self.phpUpdateContent;
+    updateData(phpFile,data).then(function(value){
+        self.deleteView(parent,index);
+    })
 }
 
 ListRealty.prototype.refresh = function () {

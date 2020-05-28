@@ -6,6 +6,7 @@ import '../../css/imagesilder.css';
 import { locationView } from "./MapView";
 import { descViewImagePreview } from './ModuleImage'
 import { unit_Long, unit_Zone, tableView } from './ModuleView';
+import {formatNumber,reFormatNumber} from './FormatFunction'
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
@@ -70,11 +71,6 @@ NewRealty.prototype.generalData = function () {
         switch (value) {
 
         }
-    }
-}
-
-NewRealty.prototype.getDataSave = function(){
-    var temp = {
     }
 }
 
@@ -160,7 +156,6 @@ NewRealty.prototype.getView = function () {
         ]
     }));
     self.createPromise();
-    // setTimeout(function(){selectElement("pizo-new-realty-convenient-content-area-size-zone",1)},500)
     return this.$view;
 }
 
@@ -598,9 +593,9 @@ NewRealty.prototype.descViewdetail = function () {
             }]
     });
     this.inputName = $('input.pizo-new-realty-desc-detail-row-cell-input',temp);
-    this.inputLease = $('input.pizo-new-realty-desc-detail-row-menu-2-checkbox',temp);
-    this.inputSell = $('input.pizo-new-realty-desc-detail-row-menu-1-checkbox',temp);
-    this.inputContent = $('input.pizo-new-realty-desc-detail-row-input',temp);
+    this.inputLease = $('div.pizo-new-realty-desc-detail-row-menu-2-checkbox',temp);
+    this.inputSell = $('div.pizo-new-realty-desc-detail-row-menu-1-checkbox',temp);
+    this.inputContent = $('textarea.pizo-new-realty-desc-detail-row-input',temp);
     return temp;
 }
 
@@ -620,6 +615,10 @@ NewRealty.prototype.detructView = function () {
     });
     var unit_Zone_2 = unit_Zone(function (event) {
         var area2 = $('input.pizo-new-realty-dectruct-content-area-2', temp);
+        area2.value = area2.value * event.lastValue / event.value;
+    });
+    var unit_Zone_all = unit_Zone(function (event) {
+        var area2 = $('pizo-new-realty-dectruct-content-area-all', temp);
         area2.value = area2.value * event.lastValue / event.value;
     });
     var unitWidthRoad =  unit_Long(function (event) {
@@ -689,6 +688,9 @@ NewRealty.prototype.detructView = function () {
                                                                 input1.value = valueA * valueB / input1.nextSibling.value;
                                                                 var input2 = $('input.pizo-new-realty-dectruct-content-area-2', temp);
                                                                 input2.value = valueA * valueB / input2.nextSibling.value;
+                                                                var inputall = $('input.pizo-new-realty-dectruct-content-area-all', temp);
+                                                                inputall.value = valueA * valueB / input2.nextSibling.value;
+                                                                inputall.emit("change");
                                                             }
                                                         },
                                                         attr: {
@@ -734,6 +736,9 @@ NewRealty.prototype.detructView = function () {
                                                                 input1.value = valueA * valueB / input1.nextSibling.value;
                                                                 var input2 = $('input.pizo-new-realty-dectruct-content-area-2', temp);
                                                                 input2.value = valueA * valueB / input2.nextSibling.value;
+                                                                var inputall = $('input.pizo-new-realty-dectruct-content-area-all', temp);
+                                                                inputall.value = valueA * valueB / input2.nextSibling.value;
+                                                                inputall.emit("change");
                                                             }
                                                         },
                                                         attr: {
@@ -747,6 +752,83 @@ NewRealty.prototype.detructView = function () {
                                         ]
                                     },
 
+                                ]
+                            },
+                            {
+                                tag: "div",
+                                class: "pizo-new-realty-dectruct-content-area-size",
+                                child: [
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-dectruct-content-area-size-zone",
+                                        child: [
+                                            {
+                                                tag: "div",
+                                                class: "pizo-new-realty-desc-detail-row",
+                                                child: [
+                                                    {
+                                                        tag: "span",
+                                                        class: "pizo-new-realty-dectruct-content-area-1-label",
+                                                        props: {
+                                                            innerHTML: "Diện tích"
+                                                        },
+                                                    },
+                                                    {
+                                                        tag: "input",
+                                                        class: ["pizo-new-realty-dectruct-content-area-all", "pizo-new-realty-dectruct-input"],
+                                                        on:{
+                                                            change:function(event){
+                                                                var inputValue = $("input.pizo-new-realty-detruct-content-price-per",temp);
+                                                                var price = $('input.pizo-new-realty-detruct-content-price', temp);
+                                                                var priceUnit = $('div.pizo-new-realty-detruct-content-price-unit', temp);
+                                                                
+                                                                var areaValue = $('input.pizo-new-realty-dectruct-content-area-all', temp);
+                                                                var areaValueUnit = unit_Zone_all;
+                                                                inputValue.value = price.value*priceUnit.value/(areaValue.value*areaValueUnit.value);
+                                                            }
+                                                        },
+                                                        attr: {
+                                                            type: "number",
+                                                            min: 0
+                                                        }
+                                                    },
+                                                    unit_Zone_all
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-dectruct-content-area-size-zone",
+                                        child: [
+                                            {
+                                                tag: "div",
+                                                class: "pizo-new-realty-desc-detail-row",
+                                                child: [
+                                                    {
+                                                        tag: "span",
+                                                        class: "pizo-new-realty-dectruct-content-area-2-label",
+                                                        props: {
+                                                            innerHTML: "Kết cấu"
+                                                        },
+                                                    },
+                                                    {
+                                                        tag: "selectmenu",
+                                                        class: "pizo-new-realty-detruct-content-structure",
+                                                        props: {
+                                                            items: [
+                                                               {text:"Chưa xác định",value:0},
+                                                               {text:"Đất trống",value:1},
+                                                               {text:"Kết cấu",value:2},
+                                                               {text:"Cấp 4",value:3},
+                                                               {text:"Sẳn *",value:4},
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
                                 ]
                             },
                             {
@@ -814,6 +896,171 @@ NewRealty.prototype.detructView = function () {
 
                         ]
                     },
+                     {
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-content-area",
+                        child: [
+                            {
+                                tag: "div",
+                                class: ["pizo-new-realty-dectruct-content-area-size-zone", "no-margin-style"],
+                                child: [
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-desc-detail-row",
+                                        child: [
+                                            {
+                                                tag: "span",
+                                                class: "pizo-new-realty-detruct-content-area-label",
+                                                props: {
+                                                    innerHTML: "Giá"
+                                                },
+                                            },
+                                            {
+                                                tag: "input",
+                                                class: ["pizo-new-realty-detruct-content-price","pizo-new-realty-dectruct-input"],
+                                                props:{
+                                                    value:0
+                                                },
+                                                on:{
+                                                    change:function(event)
+                                                    {
+                                                        var inputValue = $("input.pizo-new-realty-detruct-content-price-per",temp);
+                                                        var price = $('input.pizo-new-realty-detruct-content-price', temp);
+                                                        var priceUnit = $('div.pizo-new-realty-detruct-content-price-unit', temp)
+                                                         
+                                                        var areaValue = $('input.pizo-new-realty-dectruct-content-area-all', temp);
+                                                        var areaValueUnit = unit_Zone_all;
+                                                        inputValue.value = price.value*priceUnit.value/(areaValue.value*areaValueUnit.value)
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                tag:"selectmenu",
+                                                class:  "pizo-new-realty-detruct-content-price-unit",
+                                                on:{
+                                                    change:function(event){
+                                                        var price = $('input.pizo-new-realty-detruct-content-price', temp);
+                                                        price.value = price.value * event.lastValue / event.value;
+                                                    }
+                                                },
+                                                props:{
+                                                    items:[
+                                                        {text:"tỉ",value:1000},
+                                                        {text:"triệu",value:1}
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                tag: "div",
+                                class: ["pizo-new-realty-dectruct-content-area-size-zone", "margin-style"],
+                                child: [
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-desc-detail-row",
+                                        child: [
+                                            {
+                                                tag: "span",
+                                                class: "pizo-new-realty-detruct-content-area-label",
+                                                props: {
+                                                    innerHTML: "Giá m²"
+                                                },
+                                            },
+                                            {
+                                                tag: "input",
+                                                class: ["pizo-new-realty-detruct-content-price-per","pizo-new-realty-dectruct-input"],
+                                                attr:{
+                                                    disabled:""
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-content-area",
+                        child: [
+                            {
+                                tag: "div",
+                                class: ["pizo-new-realty-dectruct-content-area-size-zone", "no-margin-style"],
+                                child: [
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-desc-detail-row",
+                                        child: [
+                                            {
+                                                tag: "span",
+                                                class: ["pizo-new-realty-detruct-content-price-rent-label","pizo-new-realty-detruct-content-area-label"],
+                                                props: {
+                                                    innerHTML: "Giá thuê tháng"
+                                                },
+                                            },
+                                            {
+                                                tag: "input",
+                                                class: ["pizo-new-realty-detruct-content-price-rent","pizo-new-realty-dectruct-input"],
+                                                on:{
+                                                    input:function(event)
+                                                    {
+                                                        this.value = formatNumber(this.value);
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                tag:"selectmenu",
+                                                class:  "pizo-new-realty-detruct-content-price-rent-unit",
+                                                on:{
+                                                    change:function(event){
+                                                        var price = $('input.pizo-new-realty-detruct-content-price-rent', temp);
+                                                        price.value = (reFormatNumber(price.value) * event.lastValue / event.value);
+                                                    }
+                                                },
+                                                props:{
+                                                    items:[
+                                                        {text:"VND",value:1},
+                                                        {text:"USD",value:23180}
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                tag: "div",
+                                class: ["pizo-new-realty-dectruct-content-area-size-zone", "margin-style"],
+                                child: [
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-desc-detail-row",
+                                        child: [
+                                            {
+                                                tag: "span",
+                                                class: "pizo-new-realty-detruct-content-area-label",
+                                                style:{
+                                                    width: "fit-content",
+                                                    alignItems: "center",
+                                                    height: "30px"
+                                                },
+                                                props: {
+                                                    innerHTML: "Kiểm duyệt"
+                                                },
+                                            },
+                                            {
+                                                tag: "checkbox",
+                                                class: ["pizo-new-realty-detruct-content-censorship"]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
                     {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area",
@@ -838,7 +1085,8 @@ NewRealty.prototype.detructView = function () {
                                                 class: "pizo-new-realty-detruct-content-direction",
                                                 props: {
                                                     items: [
-                                                        { text: "Đông", value: 6 },
+                                                        { text:"Chưa xác định", value:0},
+                                                        { text: "Đông", value: 6},
                                                         { text: "Tây", value: 4 },
                                                         { text: "Nam", value: 2 },
                                                         { text: "Bắc", value: 8 },
@@ -873,15 +1121,41 @@ NewRealty.prototype.detructView = function () {
                                                 class: "pizo-new-realty-detruct-content-type",
                                                 props: {
                                                     items: [
-                                                        { text: "Hẻm", value: 0 },
-                                                        { text: "Mặt tiền", value: 1 },
-                                                        { text: "Chung cư", value: 2 },
+                                                        { text: "Chưa xác định", value:0},
+                                                        { text: "Hẻm", value: 1 },
+                                                        { text: "Mặt tiền", value: 2 },
+                                                        { text: "Chung cư", value: 3 },
                                                     ]
                                                 }
                                             },
                                         ]
                                     }
                                 ]
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-content-area-right",
+                        child: [
+                            {
+                                tag: "span",
+                                class: "pizo-new-realty-detruct-content-area-label",
+                                props: {
+                                    innerHTML: "Phù hợp khai thác"
+                                },
+                            },
+                            {
+                                tag: "selectbox",
+                                class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
+                                props: {
+                                    items:[
+                                        {text:"Để ở",value:1},
+                                        {text:"Cho thuê",value:10},
+                                        {text:"Kinh doanh",value:100},
+                                        {text:"Làm văn phòng",value:1000},
+                                    ]
+                                }
                             }
                         ]
                     },
@@ -903,6 +1177,9 @@ NewRealty.prototype.detructView = function () {
                                     type: "number",
                                     min: 0,
                                     step: 1
+                                },
+                                props:{
+                                    value:0
                                 }
                             },
                             unitWidthRoad
@@ -919,8 +1196,77 @@ NewRealty.prototype.detructView = function () {
                                     marginBottom: "0.7143rem"
                                 },
                                 props: {
-                                    innerHTML: "Số lượng phòng"
+                                    innerHTML: "Quy mô kết cấu"
                                 },
+                            },
+                            {
+                                tag: "div",
+                                class: "pizo-new-realty-dectruct-content-area-size",
+                                child: [
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-dectruct-content-area-size-zone",
+                                        child: [
+                                            {
+                                                tag: "div",
+                                                class: "pizo-new-realty-desc-detail-row",
+                                                child: [
+                                                    {
+                                                        tag: "span",
+                                                        class: "pizo-new-realty-dectruct-content-area-floor-label",
+                                                        props: {
+                                                            innerHTML: "Tầng"
+                                                        },
+                                                    },
+                                                    {
+                                                        tag: "input",
+                                                        class: ["pizo-new-realty-dectruct-content-area-floor", "pizo-new-realty-dectruct-input"],
+                                                        attr: {
+                                                            type: "number",
+                                                            min: 0,
+                                                            step: 1
+                                                        },
+                                                        props:{
+                                                            value:0
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-dectruct-content-area-size-zone",
+                                        child: [
+                                            {
+                                                tag: "div",
+                                                class: "pizo-new-realty-desc-detail-row",
+                                                child: [
+                                                    {
+                                                        tag: "span",
+                                                        class: "pizo-new-realty-dectruct-content-area-basement-label",
+                                                        props: {
+                                                            innerHTML: "Hầm"
+                                                        },
+                                                    },
+                                                    {
+                                                        tag: "input",
+                                                        class: ["pizo-new-realty-dectruct-content-area-basement", "pizo-new-realty-dectruct-input"],
+                                                        attr: {
+                                                            type: "number",
+                                                            min: 0,
+                                                            step: 1
+                                                        },
+                                                        props:{
+                                                            value:0
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    
+                                ]
                             },
                             {
                                 tag: "div",
@@ -948,12 +1294,52 @@ NewRealty.prototype.detructView = function () {
                                                             type: "number",
                                                             min: 0,
                                                             step: 1
+                                                        },
+                                                        props:{
+                                                            value:0
                                                         }
                                                     }
                                                 ]
                                             }
                                         ]
                                     },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-dectruct-content-area-size-zone",
+                                        child: [
+                                            {
+                                                tag: "div",
+                                                class: "pizo-new-realty-desc-detail-row",
+                                                child: [
+                                                    {
+                                                        tag: "span",
+                                                        class: "pizo-new-realty-dectruct-content-area-living-label",
+                                                        props: {
+                                                            innerHTML: "Phòng khách"
+                                                        },
+                                                    },
+                                                    {
+                                                        tag: "input",
+                                                        class: ["pizo-new-realty-dectruct-content-area-living", "pizo-new-realty-dectruct-input"],
+                                                        attr: {
+                                                            type: "number",
+                                                            min: 0,
+                                                            step: 1
+                                                        },
+                                                        props:{
+                                                            value:0
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                tag: "div",
+                                class: "pizo-new-realty-dectruct-content-area-size",
+                                child: [
                                     {
                                         tag: "div",
                                         class: "pizo-new-realty-dectruct-content-area-size-zone",
@@ -976,40 +1362,9 @@ NewRealty.prototype.detructView = function () {
                                                             type: "number",
                                                             min: 0,
                                                             step: 1
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag: "div",
-                                class: "pizo-new-realty-dectruct-content-area-size",
-                                child: [
-                                    {
-                                        tag: "div",
-                                        class: "pizo-new-realty-dectruct-content-area-size-zone",
-                                        child: [
-                                            {
-                                                tag: "div",
-                                                class: "pizo-new-realty-desc-detail-row",
-                                                child: [
-                                                    {
-                                                        tag: "span",
-                                                        class: "pizo-new-realty-dectruct-content-area-bathroom-label",
-                                                        props: {
-                                                            innerHTML: "Phòng tắm"
                                                         },
-                                                    },
-                                                    {
-                                                        tag: "input",
-                                                        class: ["pizo-new-realty-dectruct-content-area-bathroom", "pizo-new-realty-dectruct-input"],
-                                                        attr: {
-                                                            type: "number",
-                                                            min: 0,
-                                                            step: 1
+                                                        props:{
+                                                            value:0
                                                         }
                                                     }
                                                 ]
@@ -1026,18 +1381,21 @@ NewRealty.prototype.detructView = function () {
                                                 child: [
                                                     {
                                                         tag: "span",
-                                                        class: "pizo-new-realty-dectruct-content-area-garage-label",
+                                                        class: "pizo-new-realty-dectruct-content-area-toilet-label",
                                                         props: {
-                                                            innerHTML: "Garage"
+                                                            innerHTML: "Toilet"
                                                         },
                                                     },
                                                     {
                                                         tag: "input",
-                                                        class: ["pizo-new-realty-dectruct-content-area-garage", "pizo-new-realty-dectruct-input"],
+                                                        class: ["pizo-new-realty-dectruct-content-area-toilet", "pizo-new-realty-dectruct-input"],
                                                         attr: {
                                                             type: "number",
                                                             min: 0,
                                                             step: 1
+                                                        },
+                                                        props:{
+                                                            value:0
                                                         }
                                                     }
                                                 ]
@@ -1046,68 +1404,7 @@ NewRealty.prototype.detructView = function () {
                                     }
                                 ]
                             },
-                            {
-                                tag: "div",
-                                class: "pizo-new-realty-dectruct-content-area-size",
-                                child: [
-                                    {
-                                        tag: "div",
-                                        class: "pizo-new-realty-dectruct-content-area-size-zone",
-                                        child: [
-                                            {
-                                                tag: "div",
-                                                class: "pizo-new-realty-desc-detail-row",
-                                                child: [
-                                                    {
-                                                        tag: "span",
-                                                        class: "pizo-new-realty-dectruct-content-area-basement-label",
-                                                        props: {
-                                                            innerHTML: "Tầng hầm"
-                                                        },
-                                                    },
-                                                    {
-                                                        tag: "input",
-                                                        class: ["pizo-new-realty-dectruct-content-area-basement", "pizo-new-realty-dectruct-input"],
-                                                        attr: {
-                                                            type: "number",
-                                                            min: 0,
-                                                            step: 1
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        tag: "div",
-                                        class: "pizo-new-realty-dectruct-content-area-size-zone",
-                                        child: [
-                                            {
-                                                tag: "div",
-                                                class: "pizo-new-realty-desc-detail-row",
-                                                child: [
-                                                    {
-                                                        tag: "span",
-                                                        class: "pizo-new-realty-dectruct-content-area-balcony-label",
-                                                        props: {
-                                                            innerHTML: "Ban công"
-                                                        },
-                                                    },
-                                                    {
-                                                        tag: "input",
-                                                        class: ["pizo-new-realty-dectruct-content-area-balcony", "pizo-new-realty-dectruct-input"],
-                                                        attr: {
-                                                            type: "number",
-                                                            min: 0,
-                                                            step: 1
-                                                        }
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
+
                         ]
                     },
 
@@ -1123,17 +1420,80 @@ NewRealty.prototype.detructView = function () {
     this.inputZone2 = $('input.pizo-new-realty-dectruct-content-area-2.pizo-new-realty-dectruct-input',temp);
     this.inputUnitZone1 = unit_Zone_1;
     this.inputUnitZone2 = unit_Zone_2;
+    this.inputZoneAll = $('input.pizo-new-realty-dectruct-content-area-all',temp);
+    this.inputUnitZoneAll = unit_Zone_all;
+    this.inputPrice = $('input.pizo-new-realty-detruct-content-price',temp);
+    this.inputUnitPrice = $('div.pizo-new-realty-detruct-content-price-unit',temp);
+    this.inputPriceRent = $('input.pizo-new-realty-detruct-content-price-rent',temp);
+    this.inputPriceRentUnit = $('div.pizo-new-realty-detruct-content-price-rent-unit',temp);
+    this.inputCensorship = $('div.pizo-new-realty-detruct-content-censorship',temp);
+    this.inputFit = $('div.pizo-new-realty-dectruct-content-area-fit',temp);
     this.direction = $('div.pizo-new-realty-detruct-content-direction',temp);
+    this.structure = $('div.pizo-new-realty-detruct-content-structure',temp);
     this.type = $('div.pizo-new-realty-detruct-content-type',temp);
     this.inputWidthRoad = $('input.pizo-new-realty-dectruct-content-area-access', temp);
     this.inputUnitWidthRoad = unitWidthRoad;
     this.inputBedroom = $('input.pizo-new-realty-dectruct-content-area-bedroom', temp);
     this.inputKitchen = $('input.pizo-new-realty-dectruct-content-area-kitchen', temp);
-    this.inputBathroom = $('input.pizo-new-realty-dectruct-content-area-bathroom',temp);
-    this.inputGarage = $('input.pizo-new-realty-dectruct-content-area-garage',temp);
+    this.inputToilet = $('input.pizo-new-realty-dectruct-content-area-toilet',temp);
+    this.inputLiving = $('input.pizo-new-realty-dectruct-content-area-living',temp);
     this.inputBasement = $('input.pizo-new-realty-dectruct-content-area-basement',temp);
-    this.inputBalcony = $('input.pizo-new-realty-dectruct-content-area-balcony',temp);
+    this.inputFloor = $('input.pizo-new-realty-dectruct-content-area-floor',temp);
+
+    if(this.data!==undefined)
+    {
+        var original = this.data.original;
+        this.inputHeight.value = original.height;
+        this.inputWidth.value = original.width;
+        this.inputZone1.value = original.landarea;
+        this.inputZone2.value = original.floorarea;
+        this.inputZoneAll.value = original.acreage;
+        this.direction.value = original.direction;
+        this.type.value = original.type;
+        this.inputFit.value = original.fit;
+        this.inputWidthRoad.value = original.roadwidth;
+        this.inputFloor.value = original.floor;
+        this.inputBasement.value = original.basement;
+        this.inputBedroom.value = original.bedroom;
+        this.inputLiving.value = original.living;
+        this.inputToilet.value = original.toilet;
+        this.inputKitchen.value = original.kitchen;
+        this.inputPrice.value = original.price;
+        this.inputPriceRent.value = original.pricerent;
+        this.structure.value = original.structure;
+        this.inputName.value = original.name;
+        var checkStatus = parseInt(original.salestatus);
+        this.inputLease.checked = parseInt(checkStatus/10)==1?true:false;
+        this.inputSell.checked = parseInt(checkStatus%10)==1?true:false;
+        this.inputContent.value = original.content;
+    }
     return temp;
+}
+
+NewRealty.prototype.getDataSave = function(){
+    return {
+        height:this.inputHeight.value*this.inputUnitHeight.value,
+        width:this.inputWidth.value*this.inputUnitWidth.value,
+        landarea:this.inputZone1.value*this.inputUnitZone1.value,
+        floorarea:this.inputZone2.value*this.inputUnitZone2.value,
+        acreage:this.inputZoneAll.value*this.inputUnitZoneAll.value,
+        direction:this.direction.value,
+        type:this.type.value,
+        fit:this.inputFit.value,
+        roadwidth:this.inputWidthRoad.value*this.inputUnitWidthRoad.value,
+        floor:this.inputFloor.value,
+        basement:this.inputBasement.value,
+        bedroom:this.inputBedroom.value,
+        living:this.inputLiving.value,
+        toilet:this.inputToilet.value,
+        kitchen:this.inputKitchen.value,
+        price:this.inputPrice.value,
+        name:this.inputName.value,
+        content:this.inputContent.value,
+        salestatus:(this.inputLease.checked==true?1:0)*10+(this.inputSell.checked==true?1:0),
+        structure:this.structure.value,
+        pricerent:this.inputPriceRent.value*this.inputPriceRentUnit.value
+    }
 }
 
 NewRealty.prototype.utilityView = function () {
@@ -1434,6 +1794,11 @@ NewRealty.prototype.convenientView = function () {
 }
 
 NewRealty.prototype.contactItem = function(data){
+    var relate = 1;
+    if(data.original.statusphone !== undefined)
+    {
+        relate = data.original.statusphone;
+    }
     var temp = _({
         tag:"div",
         class:"pizo-new-realty-contact-item",
@@ -1506,6 +1871,7 @@ NewRealty.prototype.contactItem = function(data){
                         tag:"input",
                         class:"pizo-new-realty-contact-item-phone-input",
                         props:{
+                            type:"number",
                             value:data.original.phone
                         }
                     },
@@ -1519,7 +1885,8 @@ NewRealty.prototype.contactItem = function(data){
                                 {text:"Gọi lại sau",value:2},
                                 {text:"Bỏ qua",value:3},
                                 {text:"Khóa máy",value:4}
-                            ]
+                            ],
+                            value:relate
                         }
                     },
                     {
@@ -1546,13 +1913,48 @@ NewRealty.prototype.contactItem = function(data){
             },
         ]
     })
-    temp.data = data;
+    var name = $('input.pizo-new-realty-contact-item-name-input',temp);
+    var type_contact = $('div.pizo-new-realty-contact-item-name-selectbox',temp);
+    var phone = $('input.pizo-new-realty-contact-item-phone-input',temp);
+    var statusphone = $('div.pizo-new-realty-contact-item-phone-selectbox',temp);
+    var note = $('textarea.pizo-new-realty-contact-item-note-input',temp);
+
+    temp.getItemData = function()
+    {
+        return {
+            id:data.original.id===""?undefined:data.original.id,
+            name:name.value,
+            type_contact:type_contact.value,
+            phone:phone.value,
+            statusphone:statusphone.value,
+            note:note.value
+        }
+    }
     return temp;
 }
 
 
 NewRealty.prototype.setDataListAccount = function(data){
+    if(this.dataAccount ==  undefined)
     this.dataAccount = this.formatDataRowListAccount(data);
+    else
+    this.dataAccount = this.dataAccount.concat(this.formatDataRowListAccount(data));
+    if(this.isLoaded == undefined)
+    this.isLoaded = false;
+    else
+    this.isLoaded = true;
+}
+
+NewRealty.prototype.setDataListContact = function(data)
+{
+    if(this.dataAccount == undefined)
+    this.dataAccount  = this.formatDataRowListContact(data);
+    else
+    this.dataAccount = this.dataAccount.concat(this.formatDataRowListContact(data));
+    if(this.isLoaded == undefined)
+    this.isLoaded = false;
+    else
+    this.isLoaded = true;
 }
 
 NewRealty.prototype.formatDataRowListAccount = function(data)
@@ -1567,6 +1969,27 @@ NewRealty.prototype.formatDataRowListAccount = function(data)
 NewRealty.prototype.getDataRowListAccount = function(data){
     var temp = [
         data.username,
+        data.name,
+        data.phone,
+        data.email,
+        data.id
+    ]
+    temp.original = data;
+    return temp;
+}
+
+NewRealty.prototype.formatDataRowListContact = function(data)
+{
+    var temp = [];
+    for(var i = 0;i<data.length;i++){
+        temp.push(this.getDataRowListContact(data[i]));
+    }
+    return temp;
+}
+
+NewRealty.prototype.getDataRowListContact = function(data){
+    var temp = [
+        "",
         data.name,
         data.phone,
         data.email,
@@ -1621,7 +2044,36 @@ NewRealty.prototype.listLink = function(data){
                         tag:"div",
                         class:["btn-wrapper", "input-append"],
                         child:[
-                            input
+                            input,
+                            {
+                                tag:"button",
+                                class:"pizo-new-realty-contact-tab-button",
+                                on:{
+                                    click:function(event){
+                                        self.modal.selfRemove();
+                                        var data = {};
+                                        data.original = {
+                                            id:"",
+                                            name:"",
+                                            phone:""
+                                        }
+                                        self.modal.resolve({event:event, data:data});
+                                    }
+                                },
+                                child:[
+                                    {
+                                        tag:"i",
+                                        class:"material-icons",
+                                        style:{
+                                            fontSize:"2rem",
+                                            margin:"auto"
+                                        },
+                                        props:{
+                                            innerHTML:"add"
+                                        }
+                                    }
+                                ]
+                            }
                         ]
                     }
                 ]
@@ -1666,121 +2118,6 @@ NewRealty.prototype.listLink = function(data){
     return self.modal;
 }
 
-// NewRealty.prototype.setDataListAccount = function(data){
-//     this.dataAccount = this.formatDataRowListAccount(data);
-// }
-
-// NewRealty.prototype.formatDataRowListAccount = function(data)
-// {
-//     var temp = []
-// ;    for(var i = 0;i<data.length;i++){
-//         temp.push(this.getDataRowListAccount(data[i]));
-//     }
-//     return temp;
-// }
-
-// NewRealty.prototype.getDataRowListAccount = function(data){
-//     var temp = [
-//         data.username,
-//         data.name,
-//         data.phone,
-//         data.email,
-//         data.id
-//     ]
-//     temp.original = data;
-//     return temp;
-// }
-
-// NewRealty.prototype.functionChoice = function(event, me, index, parent, data, row)
-// {
-//     var self = this;
-//     console.log(self);
-//     var arr =  self.getElementsByClassName("choice-list-category");
-//     if(arr.length!==0)
-//     arr = arr[0];
-//     var today  = new Date();
-//     if(self.clickTime === undefined)
-//     self.clickTime = 0;
-//     if(arr == row&&today - self.clickTime< 300){
-//         self.selfRemove();
-//         self.resolve({event:event, me:me, index:index, parent:parent, data:data, row:row});
-//     }
-//     self.clickTime = today;
-//     if(arr.length!==0)
-//     arr.classList.remove("choice-list-category");
-
-//     row.classList.add("choice-list-category");
-// }
-
-// NewRealty.prototype.listLink = function(data){
-//     var self = this;
-   
-  
-//     var input = _({
-//         tag:"input",
-//         class:"input-search-list",
-//         props:{
-//             type:"text",
-//             placeholder:"Search"
-//         }
-//     })
-//     var container = _({
-//         tag:"div",
-//         class:["list-linkChoice-container","absol-single-page-scroller"],
-//         child:[
-//             {
-//                 tag:"div",
-//                 class:"js-stools-container-bar",
-//                 child:[
-//                     {
-//                         tag:"div",
-//                         class:["btn-wrapper", "input-append"],
-//                         child:[
-//                             input
-//                         ]
-//                     }
-//                 ]
-//             }
-//         ]
-//     })
-//     self.modal = _({
-//         tag:"modal",
-//         class:"list-linkChoice",
-//         on:{
-//             click:function(event){
-//                 var element = event.target;
-                
-//                 while(!(element.classList.contains("list-linkChoice")||element.classList.contains("list-linkChoice-container")))
-//                 element = element.parentNode;
-//                 if(element.classList.contains("list-linkChoice")){
-//                     this.selfRemove();
-//                     self.modal.reject();
-//                 }
-//             }
-//         },
-//         child:[
-//             container
-//         ]
-//     })
-
-//     var header = [
-//         {value:'Tài khoản',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
-//         {value:'Họ và tên',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
-//         {value:'Số điện thoại',style:{minWidth:"90px",width:"90px"} , functionClickAll: self.functionChoice.bind(self.modal)} , 
-//         {value:'Email',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
-//         {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"} , functionClickAll: self.functionChoice.bind(self.modal)}, 
-//     ];
-//     var mTable = new tableView(header, data, false, false, 0);
-//     mTable.style.width = "100%";
-//     container.appendChild(mTable);
-//     mTable.addInputSearch(input);
-//     self.modal.promiseSelectList = new Promise(function(resolve,reject){
-//         self.modal.resolve = resolve;
-//         self.modal.reject = reject;
-//     })
-//     return self.modal;
-// }
-
 NewRealty.prototype.contactView = function () {
     var self = this;
     var temp = _({
@@ -1803,6 +2140,8 @@ NewRealty.prototype.contactView = function () {
                         class:"pizo-new-realty-contact-tab-button",
                         on:{
                             click:function(event){
+                                if(self.isLoaded !== true)
+                                    return;
                                 var x = self.listLink(self.dataAccount);
                                 temp.appendChild(x);
                                 x.promiseSelectList.then(function(value){

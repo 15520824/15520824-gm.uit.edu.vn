@@ -562,17 +562,6 @@ ListWard.prototype.searchControlContent = function(){
     })
 
     temp.content = content;
-    content.timestart = startDay;
-    content.timeend = endDay;
-    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low',content);
-    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high',content);
-    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input',content);
-    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input',content);
-    content.SN = $('.pizo-list-realty-main-search-control-row-SN input',content);
-    content.TD = $('.pizo-list-realty-main-search-control-row-TD input',content);
-    content.PX = $('.pizo-list-realty-main-search-control-row-PX input',content);
-    content.QH = $('.pizo-list-realty-main-search-control-row-QH input',content);
-    content.HT = $('.pizo-list-realty-main-search-control-row-HT input',content);
 
     temp.show = function()
     {

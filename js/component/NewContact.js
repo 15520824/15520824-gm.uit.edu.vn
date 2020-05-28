@@ -1,7 +1,7 @@
 import BaseView from './BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/NewDistrict.css"
+import "../../css/NewContact.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
@@ -9,7 +9,7 @@ import Fcore from '../dom/Fcore';
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function NewDistrict(data) {
+function NewContact(data) {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
@@ -23,15 +23,15 @@ function NewDistrict(data) {
     
 }
 
-NewDistrict.prototype.setContainer = function(parent)
+NewContact.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(NewDistrict.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-NewDistrict.prototype.constructor = NewDistrict;
+Object.defineProperties(NewContact.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+NewContact.prototype.constructor = NewContact;
 
-NewDistrict.prototype.getView = function (data) {
+NewContact.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     this.$view = _({
@@ -113,67 +113,84 @@ NewDistrict.prototype.getView = function (data) {
                     child:[
                         {
                             tag:"div",
-                            class:"pizo-new-state-container",
+                            class:"pizo-new-contact-container",
                             child:[
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-name-container",
+                                    class:"pizo-new-contact-container-name-container",
                                     child:[
                                         {
                                             tag:"span",
-                                            class:"pizo-new-state-container-name-container-label",
+                                            class:"pizo-new-contact-container-name-container-label",
                                             props:{
                                                 innerHTML:"Tên"
                                             }
                                         },
                                         {
                                             tag:"input",
-                                            class:["pizo-new-state-container-name-container-input","pizo-new-realty-dectruct-input"],
+                                            class:["pizo-new-contact-container-name-container-input","pizo-new-realty-dectruct-input"],
                                         }
                                     ]
                                 },
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-type-container",
+                                    class:"pizo-new-contact-container-email-container",
                                     child:[
                                         {
                                             tag:"span",
-                                            class:"pizo-new-state-container-type-container-label",
+                                            class:"pizo-new-contact-container-email-container-label",
                                             props:{
-                                                innerHTML:"Loại"
+                                                innerHTML:"Email"
+                                            }
+                                        },
+                                        {
+                                            tag:"input",
+                                            class:"pizo-new-contact-container-email-container-input",
+                                        }
+                                    ]
+                                },
+                                {
+                                    tag:"div",
+                                    class:"pizo-new-contact-container-phone-container",
+                                    child:[
+                                        {
+                                            tag:"span",
+                                            class:"pizo-new-contact-container-phone-container-label",
+                                            props:{
+                                                innerHTML:"Số điện thoại"
+                                            }
+                                        },
+                                        {
+                                            tag:"input",
+                                            class:"pizo-new-contact-container-phone-container-input",
+                                            props:{
+                                                type:"number"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    tag:"div",
+                                    class:"pizo-new-contact-container-type-container",
+                                    child:[
+                                        {
+                                            tag:"span",
+                                            class:"pizo-new-contact-container-type-container-label",
+                                            props:{
+                                                innerHTML:"Tình trạng cuộc gọi"
                                             }
                                         },
                                         {
                                             tag:"selectmenu",
-                                            class:"pizo-new-state-container-type-container-input",
+                                            class:"pizo-new-contact-container-type-container-input",
                                             props:{
                                                 items:[
-                                                    {text:"Thị xã",value:"Thị xã"},
-                                                    {text:"Huyện",value:"Huyện"},
-                                                    {text:"Quận",value:"Quận"},
-                                                    {text:"Thành phố",value:"Thành phố"},
+                                                    {text:"Còn hoạt động",value:1},
+                                                    {text:"Sai số", value:0},
+                                                    {text:"Gọi lại sau",value:2},
+                                                    {text:"Bỏ qua",value:3},
+                                                    {text:"Khóa máy",value:4}
                                                 ]
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-state-container-nation-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-nation-container-label",
-                                            props:{
-                                                innerHTML:"Tỉnh/Thành phố"
-                                            }
-                                        },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-state-container-nation-container-input",
-                                            props:{
-                                                enableSearch:true,
-                                                items:data
                                             }
                                         }
                                     ]
@@ -186,30 +203,33 @@ NewDistrict.prototype.getView = function (data) {
         })
         );
     this.createPromise();
-    this.name = $('input.pizo-new-state-container-name-container-input',this.$view);
-    this.type = $('div.pizo-new-state-container-type-container-input',this.$view);
-    this.state = $('div.pizo-new-state-container-nation-container-input',this.$view);
+    this.name = $('input.pizo-new-contact-container-name-container-input',this.$view);
+    this.phone = $('input.pizo-new-contact-container-phone-container-input',this.$view);
+    this.type = $('div.pizo-new-contact-container-type-container-input',this.$view);
+    this.email = $('input.pizo-new-contact-container-email-container-input',this.$view);
     
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;
-        this.type.value = this.data.original.type;
-        this.state.value = this.data.original.stateid;
+        this.phone.value = this.data.original.phone;
+        this.type.value = this.data.original.statusphone;
+        this.email.value = this.data.original.email;
     }
     return this.$view;
 }
 
-NewDistrict.prototype.getDataSave = function() {
+NewContact.prototype.getDataSave = function() {
     
     return {
         id:this.data===undefined?undefined:this.data.original.id,
         name:this.name.value,
-        type:this.type.value,
-        stateid:this.state.value
+        phone:this.phone.value,
+        statusphone:this.type.value,
+        email:this.email.value
     }
 }
 
-NewDistrict.prototype.createPromise = function()
+NewContact.prototype.createPromise = function()
 {
     var self = this;
     if(this.data === undefined)
@@ -229,7 +249,7 @@ NewDistrict.prototype.createPromise = function()
     }
 }
 
-NewDistrict.prototype.resetPromise = function(value)
+NewContact.prototype.resetPromise = function(value)
 {
     if(self.promiseAddDB!==undefined)
     self.promiseAddDB = undefined;
@@ -237,7 +257,7 @@ NewDistrict.prototype.resetPromise = function(value)
     self.promiseEditDB = undefined;
 }
 
-NewDistrict.prototype.refresh = function () {
+NewContact.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -245,15 +265,15 @@ NewDistrict.prototype.refresh = function () {
         this.setData(data);
 };
 
-NewDistrict.prototype.setData = function (data) {
+NewContact.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
-    if (this.state == "RUNNING")
+    if (this.contact == "RUNNING")
         this.flushDataToView();
 };
 
-NewDistrict.prototype.flushDataToView = function () {
+NewContact.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -268,8 +288,8 @@ NewDistrict.prototype.flushDataToView = function () {
     }
 };
 
-NewDistrict.prototype.start = function () {
+NewContact.prototype.start = function () {
 
 }
 
-export default NewDistrict;
+export default NewContact;

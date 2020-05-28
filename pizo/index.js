@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 29);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -964,7 +964,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(38);
+var	fixUrls = __webpack_require__(37);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2980,7 +2980,7 @@ module.exports = g;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(22);
 /* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_BrowserRules__WEBPACK_IMPORTED_MODULE_0__);
 
 
@@ -3565,9 +3565,9 @@ var TemplateString = __webpack_require__(9);
 
 
 
-var base64 = __webpack_require__(30)
-var ieee754 = __webpack_require__(31)
-var isArray = __webpack_require__(32)
+var base64 = __webpack_require__(29)
+var ieee754 = __webpack_require__(30)
+var isArray = __webpack_require__(31)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -5423,7 +5423,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(34);
+__webpack_require__(33);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -5750,7 +5750,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(175);
+var content = __webpack_require__(186);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5772,31 +5772,6 @@ if(false) {}
 
 /***/ }),
 /* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(184);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(3)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer, module) {(function (w) {
@@ -5844,10 +5819,10 @@ if(false) {}
   }
 }(window));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(15).Buffer, __webpack_require__(33)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(15).Buffer, __webpack_require__(32)(module)))
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {(function () {
@@ -5871,7 +5846,7 @@ if(false) {}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(15).Buffer))
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6178,14 +6153,14 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(10)))
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, Buffer) {/* harmony import */ var _DocxTpl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
-/* harmony import */ var _assets_content_types_xml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(25);
-/* harmony import */ var _assets_rels_xml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(26);
-/* harmony import */ var _assets_document_xml_rels__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(27);
+/* harmony import */ var _assets_content_types_xml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(24);
+/* harmony import */ var _assets_rels_xml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(25);
+/* harmony import */ var _assets_document_xml_rels__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(26);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jszip__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _HTML5_Dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1);
@@ -6422,28 +6397,28 @@ JSDocx.fromHTMLElement = function (element, options, getOuter, isWorkingElement)
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(10), __webpack_require__(15).Buffer))
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\">\r\n  <Default Extension=\"rels\" ContentType=\r\n    \"application/vnd.openxmlformats-package.relationships+xml\" />\r\n  <Override PartName=\"/word/document.xml\" ContentType=\r\n    \"application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml\"/>\r\n  <Override PartName=\"/word/afchunk.mht\" ContentType=\"message/rfc822\"/>\r\n</Types>\r\n");
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">\r\n  <Relationship\r\n      Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument\"\r\n      Target=\"/word/document.xml\" Id=\"R09c83fafc067488e\" />\r\n</Relationships>\r\n");
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">\r\n  <Relationship Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/aFChunk\"\r\n    Target=\"/word/afchunk.mht\" Id=\"htmlChunk\" />\r\n</Relationships>\r\n");
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13768,14 +13743,14 @@ exports.tokTypes = types;
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(209);
+module.exports = __webpack_require__(215);
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13934,7 +13909,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -14024,7 +13999,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -14035,7 +14010,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -14063,7 +14038,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -14253,10 +14228,10 @@ module.exports = function(module) {
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(10), __webpack_require__(35)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(10), __webpack_require__(34)))
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -14446,11 +14421,11 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(37);
+var content = __webpack_require__(36);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14471,7 +14446,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14481,7 +14456,7 @@ exports.push([module.i, ".absol-span-input {\r\n    white-space: pre;\r\n}\r\n\r
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports) {
 
 
@@ -14576,11 +14551,11 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(40);
+var content = __webpack_require__(39);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14601,7 +14576,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14611,11 +14586,11 @@ exports.push([module.i, "button.absol-button {\r\n    text-align: left;\r\n    b
 
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(42);
+var content = __webpack_require__(41);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14636,7 +14611,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14646,11 +14621,11 @@ exports.push([module.i, ".as-flexicon-button {\r\n    box-sizing: border-box;\r\
 
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(44);
+var content = __webpack_require__(43);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14671,7 +14646,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14681,11 +14656,11 @@ exports.push([module.i, ".absol-vscroller {\r\n    position: relative;\r\n    ov
 
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(46);
+var content = __webpack_require__(45);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14706,7 +14681,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14716,11 +14691,11 @@ exports.push([module.i, ".absol-number-input {\r\n    text-align: right;\r\n    
 
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(48);
+var content = __webpack_require__(47);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14741,7 +14716,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14751,11 +14726,11 @@ exports.push([module.i, ".absol-search-text-input {\r\n    position: relative;\r
 
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(50);
+var content = __webpack_require__(49);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14776,7 +14751,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14786,11 +14761,11 @@ exports.push([module.i, ".absol-select-table-render-space {\r\n    position: fix
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(52);
+var content = __webpack_require__(51);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14811,7 +14786,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14821,11 +14796,11 @@ exports.push([module.i, ".absol-ico {\r\n    width: 1em;\r\n    height: 1em;\r\n
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(54);
+var content = __webpack_require__(53);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14846,7 +14821,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14856,11 +14831,11 @@ exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r
 
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(56);
+var content = __webpack_require__(55);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14881,7 +14856,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14891,11 +14866,11 @@ exports.push([module.i, ".absol-modal {\r\n    position: fixed;\r\n    top: 0;\r
 
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(58);
+var content = __webpack_require__(57);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14916,7 +14891,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14926,11 +14901,11 @@ exports.push([module.i, ".absol-text-editor {\r\n    position: relative;\r\n    
 
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(60);
+var content = __webpack_require__(59);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14951,7 +14926,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14961,11 +14936,11 @@ exports.push([module.i, ".vmedia-no-show {\r\n    position: fixed;\r\n    top: 0
 
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(62);
+var content = __webpack_require__(61);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -14986,7 +14961,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -14996,11 +14971,11 @@ exports.push([module.i, ".absol-resizablelayout{\r\n    position: relative;\r\n}
 
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(64);
+var content = __webpack_require__(63);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15021,7 +14996,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15031,11 +15006,11 @@ exports.push([module.i, ".absol-autocomplete-input {\r\n    display: inline-bloc
 
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(66);
+var content = __webpack_require__(65);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15056,7 +15031,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15066,11 +15041,11 @@ exports.push([module.i, ".absol-selectlist {\r\n    font-family: \"Helvetica Neu
 
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(68);
+var content = __webpack_require__(67);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15091,7 +15066,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15101,11 +15076,11 @@ exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(70);
+var content = __webpack_require__(69);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15126,7 +15101,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15136,11 +15111,11 @@ exports.push([module.i, ".absol-tree-list {}\r\n\r\n.absol-tree-list-item {}\r\n
 
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(72);
+var content = __webpack_require__(71);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15161,7 +15136,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15171,11 +15146,11 @@ exports.push([module.i, ".absol-selecttreemenu  .absol-tree-list-item-desc-conta
 
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(74);
+var content = __webpack_require__(73);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15196,7 +15171,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15206,11 +15181,11 @@ exports.push([module.i, ".absol-selectbox {\r\n    position: relative;\r\n    mi
 
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(76);
+var content = __webpack_require__(75);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15231,7 +15206,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15241,11 +15216,11 @@ exports.push([module.i, ".absol-radio {\r\n    display: inline;\r\n    cursor: p
 
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(78);
+var content = __webpack_require__(77);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15266,7 +15241,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15276,11 +15251,11 @@ exports.push([module.i, ".absol-switch {\r\n    position: relative;\r\n    displ
 
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(80);
+var content = __webpack_require__(79);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15301,7 +15276,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15311,11 +15286,11 @@ exports.push([module.i, "\r\n.absol-checkbox {\r\n    display: inline;\r\n    cu
 
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(82);
+var content = __webpack_require__(81);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15336,7 +15311,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15346,11 +15321,11 @@ exports.push([module.i, ".absol-candy-box{\r\n    \r\n}\r\n\r\n.absol-candy-box-
 
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(84);
+var content = __webpack_require__(83);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15371,7 +15346,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15381,11 +15356,11 @@ exports.push([module.i, "\r\n.absol-editabe-text {\r\n    display: inline;\r\n}\
 
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(86);
+var content = __webpack_require__(85);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15406,7 +15381,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15416,11 +15391,11 @@ exports.push([module.i, ".absol-width-height-resizer {\r\n    position: relative
 
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(88);
+var content = __webpack_require__(87);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15441,7 +15416,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15451,11 +15426,11 @@ exports.push([module.i, ".absol-follower {\r\n    position: fixed;\r\n    z-inde
 
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(90);
+var content = __webpack_require__(89);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15476,7 +15451,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15486,11 +15461,11 @@ exports.push([module.i, ".absol-tooltip {\r\n    margin: 0;\r\n    position: rel
 
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(92);
+var content = __webpack_require__(91);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15511,7 +15486,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15521,11 +15496,11 @@ exports.push([module.i, ".as-quick-list-button {\r\n    box-sizing: border-box;\
 
 
 /***/ }),
-/* 93 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(94);
+var content = __webpack_require__(93);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15546,7 +15521,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 94 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15556,11 +15531,11 @@ exports.push([module.i, ".absol-frame{\r\n    \r\n}", ""]);
 
 
 /***/ }),
-/* 95 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(96);
+var content = __webpack_require__(95);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15581,7 +15556,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15591,11 +15566,11 @@ exports.push([module.i, ".absol-frame-view{\r\n    position: relative;\r\n}\r\n\
 
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(98);
+var content = __webpack_require__(97);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15616,7 +15591,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 98 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15626,11 +15601,11 @@ exports.push([module.i, ".absol-tabbar {\r\n    white-space: normal;\r\n    heig
 
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(100);
+var content = __webpack_require__(99);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15651,7 +15626,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15661,11 +15636,11 @@ exports.push([module.i, ".absol-single-page {\r\n    position: relative;\r\n}\r\
 
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(102);
+var content = __webpack_require__(101);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15686,7 +15661,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15696,11 +15671,11 @@ exports.push([module.i, ".absol-page-selector{\r\n    white-space: normal;\r\n}\
 
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(104);
+var content = __webpack_require__(103);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15721,7 +15696,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15731,11 +15706,11 @@ exports.push([module.i, ".absol-bscroller {\r\n    scrollbar-width: thin;\r\n   
 
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(106);
+var content = __webpack_require__(105);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15756,7 +15731,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 106 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15766,11 +15741,11 @@ exports.push([module.i, ".absol-search-list {\r\n    padding-top: 2.5em;\r\n    
 
 
 /***/ }),
-/* 107 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(108);
+var content = __webpack_require__(107);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15791,7 +15766,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 108 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15801,11 +15776,11 @@ exports.push([module.i, ".absol-static-tabbar {\r\n    position: relative;\r\n}\
 
 
 /***/ }),
-/* 109 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(110);
+var content = __webpack_require__(109);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15826,7 +15801,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 110 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15836,11 +15811,11 @@ exports.push([module.i, ".absol-exp-node {\r\n    height: 2em;\r\n    text-align
 
 
 /***/ }),
-/* 111 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(112);
+var content = __webpack_require__(111);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15861,7 +15836,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 112 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15871,11 +15846,11 @@ exports.push([module.i, ".absol-table-vscroller {\r\n    position: relative;\r\n
 
 
 /***/ }),
-/* 113 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(114);
+var content = __webpack_require__(113);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15896,7 +15871,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 114 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15906,11 +15881,11 @@ exports.push([module.i, ".absol-table-scroller {\r\n    position: relative;\r\n 
 
 
 /***/ }),
-/* 115 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(116);
+var content = __webpack_require__(115);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15931,7 +15906,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 116 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15941,11 +15916,11 @@ exports.push([module.i, ".absol-quick-path {\r\n    position: relative;\r\n    b
 
 
 /***/ }),
-/* 117 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(118);
+var content = __webpack_require__(117);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15966,7 +15941,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 118 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -15976,11 +15951,11 @@ exports.push([module.i, ".absol-drop-panel-head {\r\n    height: 2.75em;\r\n    
 
 
 /***/ }),
-/* 119 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(120);
+var content = __webpack_require__(119);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16001,7 +15976,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 120 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16011,11 +15986,11 @@ exports.push([module.i, ".absol-draggable-stack {\r\n    position: relative;\r\n
 
 
 /***/ }),
-/* 121 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(122);
+var content = __webpack_require__(121);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16036,7 +16011,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 122 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16046,11 +16021,11 @@ exports.push([module.i, ".absol-chrome-calendar {\r\n    display: inline-block;\
 
 
 /***/ }),
-/* 123 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(124);
+var content = __webpack_require__(123);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16071,7 +16046,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 124 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16081,11 +16056,11 @@ exports.push([module.i, ".ac-time-picker {\r\n    /*like chrome-calender*/\r\n  
 
 
 /***/ }),
-/* 125 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(126);
+var content = __webpack_require__(125);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16106,7 +16081,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 126 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16116,11 +16091,11 @@ exports.push([module.i, ".ac-time-input {\r\n    box-sizing: border-box;\r\n    
 
 
 /***/ }),
-/* 127 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(128);
+var content = __webpack_require__(127);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16141,7 +16116,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 128 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16151,11 +16126,11 @@ exports.push([module.i, ".absol-calendar-input {\r\n    font-size: 14px;\r\n    
 
 
 /***/ }),
-/* 129 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(130);
+var content = __webpack_require__(129);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16176,7 +16151,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 130 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16186,11 +16161,11 @@ exports.push([module.i, ".absol-onscreen-window {\r\n    z-index: 1002;\r\n    p
 
 
 /***/ }),
-/* 131 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(132);
+var content = __webpack_require__(131);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16211,7 +16186,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 132 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16221,11 +16196,11 @@ exports.push([module.i, "/*margin for border size*/\r\n.as-hruler {\r\n    posit
 
 
 /***/ }),
-/* 133 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(134);
+var content = __webpack_require__(133);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16246,7 +16221,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 134 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16256,11 +16231,11 @@ exports.push([module.i, "/*margin for border size*/\r\n.as-vruler {\r\n    posit
 
 
 /***/ }),
-/* 135 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(136);
+var content = __webpack_require__(135);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16281,7 +16256,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 136 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16291,11 +16266,11 @@ exports.push([module.i, ".as-resize-box {\r\n    position: absolute;\r\n    /*or
 
 
 /***/ }),
-/* 137 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(138);
+var content = __webpack_require__(137);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16316,7 +16291,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 138 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16326,11 +16301,11 @@ exports.push([module.i, ".as-preinput {\r\n    margin: 0;\r\n    padding: 0;\r\n
 
 
 /***/ }),
-/* 139 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(140);
+var content = __webpack_require__(139);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16351,7 +16326,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 140 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16361,11 +16336,11 @@ exports.push([module.i, ".as-hexa-section-label {\r\n    position: relative;\r\n
 
 
 /***/ }),
-/* 141 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(142);
+var content = __webpack_require__(141);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16386,7 +16361,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 142 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16396,11 +16371,11 @@ exports.push([module.i, ".as-circle-section-label {\r\n    position: relative;\r
 
 
 /***/ }),
-/* 143 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(144);
+var content = __webpack_require__(143);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16421,7 +16396,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 144 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16431,11 +16406,11 @@ exports.push([module.i, ".as-linear-color-bar {\r\n    position: relative;\r\n  
 
 
 /***/ }),
-/* 145 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(146);
+var content = __webpack_require__(145);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16456,7 +16431,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 146 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16466,11 +16441,11 @@ exports.push([module.i, ".as-has-board-table-drag,\r\n.as-has-board-table-drag *
 
 
 /***/ }),
-/* 147 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(148);
+var content = __webpack_require__(147);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16491,7 +16466,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 148 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16501,11 +16476,11 @@ exports.push([module.i, ".as-emoji-picker {\r\n    font-size: 12px;\r\n    borde
 
 
 /***/ }),
-/* 149 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(150);
+var content = __webpack_require__(149);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16526,7 +16501,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 150 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16536,11 +16511,11 @@ exports.push([module.i, ".as-date-input {\r\n    border: 1px solid #ddd;\r\n    
 
 
 /***/ }),
-/* 151 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(152);
+var content = __webpack_require__(151);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16561,7 +16536,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 152 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16571,11 +16546,11 @@ exports.push([module.i, ".as-message-input-text-input {\r\n    min-height: 2em;\
 
 
 /***/ }),
-/* 153 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(154);
+var content = __webpack_require__(153);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16596,7 +16571,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 154 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16606,11 +16581,11 @@ exports.push([module.i, ".absol-debug-task {\r\n    position: fixed;\r\n    righ
 
 
 /***/ }),
-/* 155 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(156);
+var content = __webpack_require__(155);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16631,7 +16606,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 156 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16641,11 +16616,11 @@ exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n   
 
 
 /***/ }),
-/* 157 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(158);
+var content = __webpack_require__(157);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16666,7 +16641,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 158 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16676,11 +16651,11 @@ exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0
 
 
 /***/ }),
-/* 159 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(160);
+var content = __webpack_require__(159);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16701,7 +16676,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 160 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16711,11 +16686,11 @@ exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inl
 
 
 /***/ }),
-/* 161 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(162);
+var content = __webpack_require__(161);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16736,7 +16711,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 162 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16746,11 +16721,11 @@ exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: b
 
 
 /***/ }),
-/* 163 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(164);
+var content = __webpack_require__(163);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16771,7 +16746,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 164 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16781,11 +16756,11 @@ exports.push([module.i, ".lds-roller {\r\n    display: inline-block;\r\n    posi
 
 
 /***/ }),
-/* 165 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(166);
+var content = __webpack_require__(165);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16804,23 +16779,23 @@ var update = __webpack_require__(3)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// Module
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{\r\n  text-align: right;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-structure{\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-toilet-label,\r\n.pizo-new-realty-dectruct-content-area-living-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-floor-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 6.5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span {\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n\r\n.pizo-new-realty-contact-tab{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-label{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-button{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  color: #fff;\r\n  background: #122246;\r\n  border: 1px solid #122246;\r\n  padding: 1px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name,.pizo-new-realty-contact-item-phone,.pizo-new-realty-contact-item-note{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-label,.pizo-new-realty-contact-item-phone-label,.pizo-new-realty-contact-item-note-label{\r\n    font-size: 1rem;\r\n    padding-top: 0.4375rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 6.5714rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-input,.pizo-new-realty-contact-item-phone-input,.pizo-new-realty-contact-item-note-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-selectbox{\r\n  min-width: 130px !important;\r\n}\r\n\r\n.pizo-new-realty-contact-item-close{\r\n  background-color: red;\r\n  color: white;\r\n}\r\n\r\n.pizo-new-realty-contact-item{\r\n  margin: 0.7143rem;\r\n  margin-bottom: 2.1429rem;\r\n}\r\n\r\n.btn-wrapper.input-append .pizo-new-realty-contact-tab-button{\r\n  width: 34px;\r\n  margin-left: 7px;\r\n  background: #ac000d;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input{\r\n  padding: 0;\r\n  justify-content: start;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close{\r\n  width: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.absol-selectmenu.pizo-new-realty-detruct-content-price-unit{\r\n    width: 4.5rem !important;\r\n    min-width: 4.5rem !important;\r\n    flex-shrink: 0;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-price-rent-label.pizo-new-realty-detruct-content-area-label{\r\n  width: fit-content;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price-rent-unit{\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-censorship{\r\n    align-items: center;\r\n    display: flex;\r\n}\r\n\r\n", ""]);
+
+
 
 /***/ }),
 /* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
-// Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact {\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 3.78rem !important;\r\n  min-width: 3.78rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{\r\n  text-align: right;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  width: calc(100% - 4.53333333333rem);\r\n  vertical-align: bottom;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-bathroom-label,\r\n.pizo-new-realty-dectruct-content-area-garage-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-balcony-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span {\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n  height: 100%;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n\r\n.pizo-new-realty-contact-tab{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-label{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-button{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  color: #fff;\r\n  background: #122246;\r\n  border: 1px solid #122246;\r\n  padding: 1px;\r\n  border-radius: 4px;\r\n}\r\n", ""]);
 
-
-
-/***/ }),
-/* 167 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(168);
+var content = __webpack_require__(167);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16841,7 +16816,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 168 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16854,11 +16829,11 @@ exports.push([module.i, "/* html, body { background: #333 url(\"https://codepen.
 
 
 /***/ }),
-/* 169 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(170);
+var content = __webpack_require__(169);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16879,7 +16854,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 170 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16889,11 +16864,11 @@ exports.push([module.i, "\r\n  .pizo-new-realty-location{\r\n    width: 100vw;\r
 
 
 /***/ }),
-/* 171 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(172);
+var content = __webpack_require__(171);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16914,7 +16889,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 172 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16924,11 +16899,11 @@ exports.push([module.i, ".image-show {\r\n    width: 100vw;\r\n    height: 100vh
 
 
 /***/ }),
-/* 173 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(174);
+var content = __webpack_require__(173);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -16949,7 +16924,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 174 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -16959,12 +16934,37 @@ exports.push([module.i, ".pizo-list-realty-main-search-control-row-district-ward
 
 
 /***/ }),
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(175);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
 /* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-state-container-name-container-label,.pizo-new-state-container-type-container-label,.pizo-new-state-container-nation-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 4rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container-name-container-input,.pizo-new-state-container-type-container-input,.pizo-new-state-container-nation-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-state-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container{\r\n    width:50%;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -17069,7 +17069,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-district-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district{\r\n    width: calc(36% + 1.0714rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district-input>div{\r\n    width: 100%;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-state-container-name-container-label,.pizo-new-state-container-type-container-label,.pizo-new-state-container-nation-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7.7857rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container-name-container-input,.pizo-new-state-container-type-container-input,.pizo-new-state-container-nation-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-state-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container{\r\n    width:50%;\r\n}", ""]);
 
 
 
@@ -17104,7 +17104,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realty-location-map-view{\r\n    max-width: 100%;\r\n    min-width: 27.1429rem;\r\n    display: inline-block;\r\n    margin-bottom: unset;\r\n    width: calc(100% - 2.1429rem);\r\n    vertical-align: top;\r\n    height: calc(100vh - 15.8571rem);\r\n    margin-left: unset;\r\n}\r\n\r\n.hiddenUI{\r\n    display: none;\r\n}\r\n", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-district-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district{\r\n    width: calc(36% + 1.0714rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district-input>div{\r\n    width: 100%;\r\n}", ""]);
 
 
 
@@ -17112,18 +17112,8 @@ exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realt
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
-// Module
-exports.push([module.i, ".pizo-list-help-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    height: calc(100% - 50px);\r\n    position: absolute;\r\n    width: calc(100% - 30px);\r\n}", ""]);
 
-
-
-/***/ }),
-/* 185 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(186);
+var content = __webpack_require__(185);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -17144,12 +17134,22 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// Module
+exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realty-location-map-view{\r\n    max-width: 100%;\r\n    min-width: 27.1429rem;\r\n    display: inline-block;\r\n    margin-bottom: unset;\r\n    width: calc(100% - 2.1429rem);\r\n    vertical-align: top;\r\n    height: calc(100vh - 15.8571rem);\r\n    margin-left: unset;\r\n}\r\n\r\n.hiddenUI{\r\n    display: none;\r\n}\r\n", ""]);
+
+
+
+/***/ }),
 /* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button{\r\n    border-bottom: 2px #546e7a solid;\r\n    background-color: #263238;\r\n    color: #eeeeee;\r\n    border-radius: 0;\r\n    margin-left: 0;\r\n    margin-right: 0;\r\n    border: none;\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    padding: 8px 24px 8px 32px;\r\n    color: #eeeeee;\r\n    cursor: default;\r\n    white-space: pre;\r\n    margin-top: 5px;\r\n    z-index: 3;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    transform: translate(-100%,-50%) translateX(-5px);\r\n    top: 50%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{\r\n   border-bottom: none;\r\n   height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav{\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-tabview-container{\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ntable.b-workZone__layout{\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,.b-workZone__layout tr{\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview{\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container{\r\n    height: calc(100% - 40px);\r\n    top: unset;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTable td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article{\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content{\r\n    height: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav{\r\n    font-size: 1rem;\r\n    padding: 0.5rem 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons{\r\n    font-size: 1rem;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    padding: 0 0 0 19px;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n}\r\n\r\n.b-article {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: calc(100% - 5px);\r\n    align-items: stretch;\r\n    color: #eeeeee;\r\n    padding: 0;\r\n    position: relative;\r\n    padding-top: 5px;\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span{\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i{\r\n    vertical-align: middle;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only{\r\n    top:0;\r\n}\r\n\r\n.os-host, .os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n", ""]);
+exports.push([module.i, ".pizo-list-help-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    height: calc(100% - 50px);\r\n    position: absolute;\r\n    width: calc(100% - 30px);\r\n}", ""]);
 
 
 
@@ -17184,7 +17184,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 7px;\r\n    width: 100%;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
+exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button{\r\n    border-bottom: 2px #546e7a solid;\r\n    background-color: #263238;\r\n    color: #eeeeee;\r\n    border-radius: 0;\r\n    margin-left: 0;\r\n    margin-right: 0;\r\n    border: none;\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    padding: 8px 24px 8px 32px;\r\n    color: #eeeeee;\r\n    cursor: default;\r\n    white-space: pre;\r\n    margin-top: 5px;\r\n    z-index: 3;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    transform: translate(-100%,-50%) translateX(-5px);\r\n    top: 50%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{\r\n   border-bottom: none;\r\n   height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav{\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-tabview-container{\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ntable.b-workZone__layout{\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,.b-workZone__layout tr{\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview{\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container{\r\n    height: calc(100% - 40px);\r\n    top: unset;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTable td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article{\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content{\r\n    height: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav{\r\n    font-size: 1rem;\r\n    padding: 0.5rem 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons{\r\n    font-size: 1rem;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    padding: 0 0 0 19px;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n}\r\n\r\n.b-article {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: calc(100% - 5px);\r\n    align-items: stretch;\r\n    color: #eeeeee;\r\n    padding: 0;\r\n    position: relative;\r\n    padding-top: 5px;\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span{\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i{\r\n    vertical-align: middle;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only{\r\n    top:0;\r\n}\r\n\r\n.os-host, .os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n", ""]);
 
 
 
@@ -17219,7 +17219,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-category-container-name-container-input,\r\n.pizo-new-category-container-alias-container-input,\r\n.pizo-new-category-container-code-container-input,\r\n.pizo-new-category-container-note-container-input,\r\n.pizo-new-category-container-username-container-input,\r\n.pizo-new-state-selectbox-container-input {\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-category-container-name-container-label,\r\n.pizo-new-category-container-alias-container-label,\r\n.pizo-new-category-container-code-container-label,\r\n.pizo-new-category-container-username-container-label,\r\n.pizo-new-category-container-note-container-label,\r\n.pizo-new-state-selectbox-container-label {\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-category-container-name-container,\r\n.pizo-new-category-container-alias-container,\r\n.pizo-new-category-container-code-container,\r\n.pizo-new-category-container-username-container,\r\n.pizo-new-category-container-note-container,\r\n.pizo-new-state-selectbox-container {\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-name,\r\n.pizo-new-category-container-alias,\r\n.pizo-new-category-container-code,\r\n.pizo-new-category-container-username,\r\n.pizo-new-category-container-note,\r\n.pizo-new-state-selectbox {\r\n    padding: 5px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-category-container{\r\n    width: 60%;\r\n}\r\n\r\n.pizo-new-catergory-container>div:first-child {\r\n    padding-top: 0;\r\n}\r\n\r\n.pizo-new-catergory-container>div:last-child {\r\n    padding-bottom: 0;\r\n}\r\n\r\n.label-used-error,\r\n.label-invalid-error {\r\n    display: none;\r\n}\r\n\r\n.hasErrorElement.used-error .label-used-error,\r\n.hasErrorElement.invalid-error .label-invalid-error {\r\n    display: inline;\r\n    width: 232px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}", ""]);
+exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 0.5rem;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
 
 
 
@@ -17254,7 +17254,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "span.pizo-list-realty-page-allinput-input:empty:before {\r\n    content: \"\\200b\";\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr:hover td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr.choice td{\r\n    background-color: #BFBFBF;\r\n}\r\n", ""]);
+exports.push([module.i, ".pizo-new-category-container-name-container-input,\r\n.pizo-new-category-container-alias-container-input,\r\n.pizo-new-category-container-code-container-input,\r\n.pizo-new-category-container-note-container-input,\r\n.pizo-new-category-container-username-container-input,\r\n.pizo-new-state-selectbox-container-input {\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-category-container-name-container-label,\r\n.pizo-new-category-container-alias-container-label,\r\n.pizo-new-category-container-code-container-label,\r\n.pizo-new-category-container-username-container-label,\r\n.pizo-new-category-container-note-container-label,\r\n.pizo-new-state-selectbox-container-label {\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-category-container-name-container,\r\n.pizo-new-category-container-alias-container,\r\n.pizo-new-category-container-code-container,\r\n.pizo-new-category-container-username-container,\r\n.pizo-new-category-container-note-container,\r\n.pizo-new-state-selectbox-container {\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-name,\r\n.pizo-new-category-container-alias,\r\n.pizo-new-category-container-code,\r\n.pizo-new-category-container-username,\r\n.pizo-new-category-container-note,\r\n.pizo-new-state-selectbox {\r\n    padding: 5px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-category-container{\r\n    width: 60%;\r\n}\r\n\r\n.pizo-new-catergory-container>div:first-child {\r\n    padding-top: 0;\r\n}\r\n\r\n.pizo-new-catergory-container>div:last-child {\r\n    padding-bottom: 0;\r\n}\r\n\r\n.label-used-error,\r\n.label-invalid-error {\r\n    display: none;\r\n}\r\n\r\n.hasErrorElement.used-error .label-used-error,\r\n.hasErrorElement.invalid-error .label-invalid-error {\r\n    display: inline;\r\n    width: 232px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}", ""]);
 
 
 
@@ -17289,7 +17289,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "span.pizo-list-realty-page-allinput-input:empty:before {\r\n    content: \"\\200b\";\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr:hover td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr.choice td{\r\n    background-color: #BFBFBF;\r\n}\r\n", ""]);
 
 
 
@@ -17324,7 +17324,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-category-container-note-container-input{\r\n    height: 10rem;\r\n}\r\n\r\n.pizo-new-category-container-note-container-label{\r\n    align-items: start;\r\n    margin-top: 0.5rem;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -17359,7 +17359,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: calc(18% - 3px);\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".pizo-new-category-container-note-container-input{\r\n    height: 10rem;\r\n}\r\n\r\n.pizo-new-category-container-note-container-label{\r\n    align-items: start;\r\n    margin-top: 0.5rem;\r\n}", ""]);
 
 
 
@@ -17394,7 +17394,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-account-container {\r\n    width: 50%;\r\n    min-width: 700px;\r\n}\r\n\r\n.pizo-new-account-container-username-container,\r\n.pizo-new-account-container-password-container,\r\n.pizo-new-account-container-name-container,\r\n.pizo-new-account-container-email-container,\r\n.pizo-new-account-container-avatar-container,\r\n.pizo-new-account-container-address-container,\r\n.pizo-new-account-container-phone-container,\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-status-position,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-phone-birthday-gender,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container,\r\n.pizo-new-account-container-phone-container{\r\n    margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-account-container-username-container-label,\r\n.pizo-new-account-container-password-container-label,\r\n.pizo-new-account-container-name-container-label,\r\n.pizo-new-account-container-email-container-label,\r\n.pizo-new-account-container-avatar-container-label,\r\n.pizo-new-account-container-address-container-label,\r\n.pizo-new-account-container-phone-container-label,\r\n.pizo-new-account-container-position-container-label,\r\n.pizo-new-account-container-status,\r\n.pizo-new-account-container-permission,\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday,\r\n.pizo-new-account-container-birthday-container-label,\r\n.pizo-new-account-container-gender-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 5.71428571429rem;\r\n    padding-right: 0.7143rem;\r\n    width: 140px;\r\n    margin: auto;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label,.pizo-new-account-container-permission-container-label,.pizo-new-account-container-birthday-container-label{\r\n    padding-right: 0.7143rem;\r\n    width: auto;\r\n    font-size: 1rem;\r\n    line-height: 30px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday{\r\n    width: auto;\r\n    padding-left: 30px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-status{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-status-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-permission-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-permission{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-permission-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-birthday-container>div{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-gender-container-label{\r\n    width: auto;\r\n    padding-right: 10px;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-account-container-username-container-input,\r\n.pizo-new-account-container-password-container-input,\r\n.pizo-new-account-container-name-container-input,\r\n.pizo-new-account-container-email-container-input,\r\n.pizo-new-account-container-avatar-container-input,\r\n.pizo-new-account-container-gender-container-input,\r\n.pizo-new-account-container-address-container-input,\r\n.pizo-new-account-container-phone-container-input,\r\n.pizo-new-account-container-position-container-input,\r\n.pizo-new-account-container-position,\r\n.pizo-new-account-container-phone{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-position-container-input,.pizo-new-account-container-position,.pizo-new-account-container-phone{\r\n    padding: unset;\r\n    border: none;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new,.pizo-new-account-container-password-container-new-confirm{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 50%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new{\r\n    padding-right: 15px;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new-confirm{\r\n    padding-left: 15px;\r\n}\r\n\r\n.pizo-new-account-container-change-password-show{\r\n    display: unset\r\n}\r\n\r\n.pizo-new-account-container-change-password-hide{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-show{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-hide{\r\n    display: unset;\r\n}\r\n\r\n.pizo-new-account-container-change-password{\r\n    cursor: pointer;\r\n    padding-left: 150px;\r\n    margin-bottom: 10px;\r\n    color: var(--primary);\r\n}\r\n\r\n.pizo-new-account-container-password{\r\n    display: none;\r\n}\r\n\r\n.absol-switch-slider:before{\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before{\r\n    -webkit-transform: translateX(1em) translateY(-50%);\r\n    -ms-transform: translateX(1em) translateY(-50%);\r\n    transform: translateX(1em) translateY(-50%);\r\n}", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: calc(18% - 3px);\r\n}\r\n\r\n", ""]);
 
 
 
@@ -17429,7 +17429,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".pizo-new-account-container {\r\n    width: 50%;\r\n    min-width: 700px;\r\n}\r\n\r\n.pizo-new-account-container-username-container,\r\n.pizo-new-account-container-password-container,\r\n.pizo-new-account-container-name-container,\r\n.pizo-new-account-container-email-container,\r\n.pizo-new-account-container-avatar-container,\r\n.pizo-new-account-container-address-container,\r\n.pizo-new-account-container-phone-container,\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-status-position,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-phone-birthday-gender,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container,\r\n.pizo-new-account-container-phone-container{\r\n    margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-account-container-username-container-label,\r\n.pizo-new-account-container-password-container-label,\r\n.pizo-new-account-container-name-container-label,\r\n.pizo-new-account-container-email-container-label,\r\n.pizo-new-account-container-avatar-container-label,\r\n.pizo-new-account-container-address-container-label,\r\n.pizo-new-account-container-phone-container-label,\r\n.pizo-new-account-container-position-container-label,\r\n.pizo-new-account-container-status,\r\n.pizo-new-account-container-permission,\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday,\r\n.pizo-new-account-container-birthday-container-label,\r\n.pizo-new-account-container-gender-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 5.71428571429rem;\r\n    padding-right: 0.7143rem;\r\n    width: 140px;\r\n    margin: auto;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label,.pizo-new-account-container-permission-container-label,.pizo-new-account-container-birthday-container-label{\r\n    padding-right: 0.7143rem;\r\n    width: auto;\r\n    font-size: 1rem;\r\n    line-height: 30px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday{\r\n    width: auto;\r\n    padding-left: 30px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-status{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-status-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-permission-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-permission{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-permission-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-birthday-container>div{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-gender-container-label{\r\n    width: auto;\r\n    padding-right: 10px;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-account-container-username-container-input,\r\n.pizo-new-account-container-password-container-input,\r\n.pizo-new-account-container-name-container-input,\r\n.pizo-new-account-container-email-container-input,\r\n.pizo-new-account-container-avatar-container-input,\r\n.pizo-new-account-container-gender-container-input,\r\n.pizo-new-account-container-address-container-input,\r\n.pizo-new-account-container-phone-container-input,\r\n.pizo-new-account-container-position-container-input,\r\n.pizo-new-account-container-position,\r\n.pizo-new-account-container-phone{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-position-container-input,.pizo-new-account-container-position,.pizo-new-account-container-phone{\r\n    padding: unset;\r\n    border: none;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new,.pizo-new-account-container-password-container-new-confirm{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 50%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new{\r\n    padding-right: 15px;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new-confirm{\r\n    padding-left: 15px;\r\n}\r\n\r\n.pizo-new-account-container-change-password-show{\r\n    display: unset\r\n}\r\n\r\n.pizo-new-account-container-change-password-hide{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-show{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-hide{\r\n    display: unset;\r\n}\r\n\r\n.pizo-new-account-container-change-password{\r\n    cursor: pointer;\r\n    padding-left: 150px;\r\n    margin-bottom: 10px;\r\n    color: var(--primary);\r\n}\r\n\r\n.pizo-new-account-container-password{\r\n    display: none;\r\n}\r\n\r\n.absol-switch-slider:before{\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before{\r\n    -webkit-transform: translateX(1em) translateY(-50%);\r\n    -ms-transform: translateX(1em) translateY(-50%);\r\n    transform: translateX(1em) translateY(-50%);\r\n}", ""]);
 
 
 
@@ -17464,7 +17464,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visible .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -17499,7 +17499,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 20px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  margin-left: 20px;\r\n  margin-top: 3px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}\r\n\r\n.grid{\r\n  height: 385px;\r\n  width: auto;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.grid-item{\r\n  height: 50%;\r\n  display: inline-block;\r\n  position: relative;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -17534,12 +17534,117 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.modal-upload-image-header {\r\n  padding: 17px 20px;\r\n  height: 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-image-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-image-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-image-body {\r\n  position: relative;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-image-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-image-body-drop {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  overflow: hidden;\r\n  top: 51px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form {\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  display: none;\r\n  margin: 20px;\r\n  padding: 10px;\r\n  height: calc(100% - 54px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area {\r\n  height: calc(100% - 72px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#drop-area.highlight {\r\n  border-color: purple;\r\n}\r\n\r\n#gallery {\r\n  margin-top: 10px;\r\n  height: calc(100% - 45px);\r\n  width: 100%;\r\n  position: relative;\r\n  overflow: auto;\r\n}\r\n\r\n.image-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElem {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-image-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-bottom: 2px solid #4d90fe;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  color: #222;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n}\r\n.modal-upload-image-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-image-body-drop-save{\r\n  padding-left: 20px;\r\n  position: absolute;\r\n  bottom: 10px;\r\n}\r\n\r\n.margin-align{\r\n  margin-left: 100px;\r\n  position: relative;\r\n  width: calc(100% - 100px);\r\n  margin-bottom: 0;\r\n}\r\n\r\n.full-size{\r\n  width: auto;\r\n  margin: 2px;\r\n  height: calc(100% - 7px);\r\n}", ""]);
+exports.push([module.i, ".pizo-new-contact-container-name-container,.pizo-new-contact-container-email-container,.pizo-new-contact-container-type-container,.pizo-new-contact-container-phone-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-contact-container-name-container-label,.pizo-new-contact-container-email-container-label,.pizo-new-contact-container-type-container-label,.pizo-new-contact-container-phone-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 9.3571rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-contact-container-name-container-input,.pizo-new-contact-container-email-container-input,.pizo-new-contact-container-type-container-input,.pizo-new-contact-container-phone-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-contact-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-contact-container{\r\n    width:50%;\r\n}", ""]);
 
 
 
 /***/ }),
 /* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(210);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// Module
+exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visible .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
+
+
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(212);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// Module
+exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 20px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  margin-left: 20px;\r\n  margin-top: 3px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}\r\n\r\n.grid{\r\n  height: 385px;\r\n  width: auto;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.grid-item{\r\n  height: 50%;\r\n  display: inline-block;\r\n  position: relative;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(214);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// Module
+exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.modal-upload-image-header {\r\n  padding: 17px 20px;\r\n  height: 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-image-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-image-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-image-body {\r\n  position: relative;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-image-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-image-body-drop {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  overflow: hidden;\r\n  top: 51px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form {\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  display: none;\r\n  margin: 20px;\r\n  padding: 10px;\r\n  height: calc(100% - 54px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area {\r\n  height: calc(100% - 72px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#drop-area.highlight {\r\n  border-color: purple;\r\n}\r\n\r\n#gallery {\r\n  margin-top: 10px;\r\n  height: calc(100% - 45px);\r\n  width: 100%;\r\n  position: relative;\r\n  overflow: auto;\r\n}\r\n\r\n.image-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElem {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-image-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-bottom: 2px solid #4d90fe;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  color: #222;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n}\r\n.modal-upload-image-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-image-body-drop-save{\r\n  padding-left: 20px;\r\n  position: absolute;\r\n  bottom: 10px;\r\n}\r\n\r\n.margin-align{\r\n  margin-left: 100px;\r\n  position: relative;\r\n  width: calc(100% - 100px);\r\n  margin-bottom: 0;\r\n}\r\n\r\n.full-size{\r\n  width: auto;\r\n  margin: 2px;\r\n  height: calc(100% - 7px);\r\n}", ""]);
+
+
+
+/***/ }),
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17612,11 +17717,11 @@ __webpack_require__.d(stringMatching_namespaceObject, "phraseMatch", function() 
 __webpack_require__.d(stringMatching_namespaceObject, "phraseLike", function() { return phraseLike; });
 
 // EXTERNAL MODULE: ./node_modules/atob/browser-atob.js
-var browser_atob = __webpack_require__(21);
+var browser_atob = __webpack_require__(20);
 var browser_atob_default = /*#__PURE__*/__webpack_require__.n(browser_atob);
 
 // EXTERNAL MODULE: ./node_modules/btoa/index.js
-var node_modules_btoa = __webpack_require__(22);
+var node_modules_btoa = __webpack_require__(21);
 var btoa_default = /*#__PURE__*/__webpack_require__.n(node_modules_btoa);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Polyfill/polyfill.js
@@ -20601,7 +20706,7 @@ var jszip_min = __webpack_require__(16);
 var jszip_min_default = /*#__PURE__*/__webpack_require__.n(jszip_min);
 
 // EXTERNAL MODULE: ./node_modules/absol/src/JSDocx/JSDocx.js
-var JSDocx = __webpack_require__(24);
+var JSDocx = __webpack_require__(23);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Network/Broadcast.js
 
@@ -21241,7 +21346,7 @@ XHR.request = function (method, url, props, headers, body, successCallback, fail
 var stringFormat = __webpack_require__(7);
 
 // EXTERNAL MODULE: ./node_modules/babylon/lib/index.js
-var lib = __webpack_require__(28);
+var lib = __webpack_require__(27);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/JSX/attribute.js
 /**
@@ -22756,7 +22861,7 @@ ACore["a" /* default */].install('spaninput', SpanInput);
 
 /* harmony default export */ var js_SpanInput = (SpanInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/spaninput.css
-var spaninput = __webpack_require__(36);
+var spaninput = __webpack_require__(35);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/IconButton.js
 
@@ -22835,7 +22940,7 @@ ACore["a" /* default */].creator.iconbutton = IconButton;
 
 /* harmony default export */ var js_IconButton = (IconButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/iconbutton.css
-var iconbutton = __webpack_require__(39);
+var iconbutton = __webpack_require__(38);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/FlexiconButton.js
 
@@ -22905,7 +23010,7 @@ ACore["a" /* default */].install('flexiconbutton', FlexiconButton);
 
 /* harmony default export */ var js_FlexiconButton = (FlexiconButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/flexiconbutton.css
-var flexiconbutton = __webpack_require__(41);
+var flexiconbutton = __webpack_require__(40);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Scroller.js
 
@@ -23465,7 +23570,7 @@ ACore["a" /* default */].creator.scrollbar = Scrollbar;
 ACore["a" /* default */].creator.vscroller = VScroller;
 ACore["a" /* default */].creator.hscroller = HScroller;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/scroller.css
-var css_scroller = __webpack_require__(43);
+var css_scroller = __webpack_require__(42);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/NumberInput.js
 
@@ -23851,7 +23956,7 @@ ACore["a" /* default */].install('NumberInput'.toLowerCase(), NumberInput);
 
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/numberinput.css
-var numberinput = __webpack_require__(45);
+var numberinput = __webpack_require__(44);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Searcher.js
 
@@ -24011,7 +24116,7 @@ ACore["a" /* default */].creator.searchtextinput = SearchTextInput;
 
 /* harmony default export */ var Searcher = (SearchTextInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/searcher.css
-var searcher = __webpack_require__(47);
+var searcher = __webpack_require__(46);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/String/stringMatching.js
 /**
@@ -24858,7 +24963,7 @@ ACore["a" /* default */].creator.selecttable = SelectTable;
 
 /* harmony default export */ var js_SelectTable = (SelectTable);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selecttable.css
-var selecttable = __webpack_require__(49);
+var selecttable = __webpack_require__(48);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Menu.js
 
@@ -25515,7 +25620,7 @@ ACore["a" /* default */].creator.vmenuline = VMenuLine;
 ACore["a" /* default */].creator.dropdown = Dropdown;
 ACore["a" /* default */].creator.hmenuitem = HMenuItem;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/menu.css
-var css_menu = __webpack_require__(51);
+var css_menu = __webpack_require__(50);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ContextMenu.js
 
@@ -25695,7 +25800,7 @@ ACore["a" /* default */].install('contextcaptor', ContextCaptor);
 
 /* harmony default export */ var ContextMenu = (ContextCaptor);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/contextmenu.css
-var contextmenu = __webpack_require__(53);
+var contextmenu = __webpack_require__(52);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Modal.js
 
@@ -25746,7 +25851,7 @@ ACore["a" /* default */].creator.modal = Modal;
 
 /* harmony default export */ var js_Modal = (Modal);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/modal.css
-var modal = __webpack_require__(55);
+var modal = __webpack_require__(54);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TextEditor.js
 
@@ -26023,7 +26128,7 @@ ACore["a" /* default */].install('texteditor', TextEditor);
 
 // not comleted yet
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/texteditor.css
-var texteditor = __webpack_require__(57);
+var texteditor = __webpack_require__(56);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/MediaInput.js
 
@@ -26957,7 +27062,7 @@ ACore["a" /* default */].creator.mediainput = MediaInput;
 
 /* harmony default export */ var js_MediaInput = (MediaInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/mediainput.css
-var mediainput = __webpack_require__(59);
+var mediainput = __webpack_require__(58);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ResizableLayout.js
 
@@ -27053,7 +27158,7 @@ ACore["a" /* default */].creator.resizablelayout = ResizableLayout;
 // not completed yet
 /* harmony default export */ var js_ResizableLayout = (ResizableLayout);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/resizablelayout.css
-var resizablelayout = __webpack_require__(61);
+var resizablelayout = __webpack_require__(60);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/adapter/SearchStringArrayAdapter.js
 /**
@@ -27614,10 +27719,10 @@ ACore["a" /* default */].install('AutoCompleteInput'.toLowerCase(), AutoComplete
 
 /* harmony default export */ var js_AutoCompleteInput = (AutoCompleteInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/autocompleteinput.css
-var autocompleteinput = __webpack_require__(63);
+var autocompleteinput = __webpack_require__(62);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectlist.css
-var selectlist = __webpack_require__(65);
+var selectlist = __webpack_require__(64);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectListItem.js
 
@@ -27932,7 +28037,7 @@ ACore["a" /* default */].creator.selectlist = SelectList;
 
 /* harmony default export */ var js_SelectList = (SelectList);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectmenu.css
-var selectmenu = __webpack_require__(67);
+var selectmenu = __webpack_require__(66);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectMenu.js
 
@@ -28519,7 +28624,7 @@ ACore["a" /* default */].creator.selectmenu = SelectMenu;
 
 /* harmony default export */ var js_SelectMenu = (SelectMenu);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/treelist.css
-var treelist = __webpack_require__(69);
+var treelist = __webpack_require__(68);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TreeList.js
 
@@ -28834,7 +28939,7 @@ ACore["a" /* default */].creator.treelistitem = TreeListItem;
 
 /* harmony default export */ var js_TreeListItem = (TreeListItem);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selecttreemenu.css
-var selecttreemenu = __webpack_require__(71);
+var selecttreemenu = __webpack_require__(70);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectTreeMenu.js
 
@@ -29195,7 +29300,7 @@ ACore["a" /* default */].creator.selecttreemenu = SelectTreeMenu;
 
 /* harmony default export */ var js_SelectTreeMenu = (SelectTreeMenu);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectbox.css
-var selectbox = __webpack_require__(73);
+var selectbox = __webpack_require__(72);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectBoxItem.js
 
@@ -29682,7 +29787,7 @@ ACore["a" /* default */].install('SelectBox'.toLowerCase(), SelectBox);
 
 /* harmony default export */ var js_SelectBox = (SelectBox);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/radio.css
-var css_radio = __webpack_require__(75);
+var css_radio = __webpack_require__(74);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/RadioButton.js
 
@@ -30054,7 +30159,7 @@ ACore["a" /* default */].creator.radio = Radio_Radio;
 
 /* harmony default export */ var js_Radio = (Radio_Radio);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/switch.css
-var css_switch = __webpack_require__(77);
+var css_switch = __webpack_require__(76);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Switch.js
 
@@ -30145,7 +30250,7 @@ ACore["a" /* default */].install('switch', Switch);
 
 /* harmony default export */ var js_Switch = (Switch);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/checkbox.css
-var css_checkbox = __webpack_require__(79);
+var css_checkbox = __webpack_require__(78);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CheckBox.js
 
@@ -30459,7 +30564,7 @@ CheckBoxButton.initAfterLoad = function () {
 ACore["a" /* default */].install('CheckBoxButton'.toLowerCase(), CheckBoxButton);
 /* harmony default export */ var CheckboxButton = (CheckBoxButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/candyboxbutton.css
-var candyboxbutton = __webpack_require__(81);
+var candyboxbutton = __webpack_require__(80);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CandyBoxButton.js
 
@@ -30568,7 +30673,7 @@ ACore["a" /* default */].creator.textclipboard = TextClipboard;
 
 /* harmony default export */ var js_TextClipboard = (TextClipboard);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/editabletext.css
-var editabletext = __webpack_require__(83);
+var editabletext = __webpack_require__(82);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/EditableText.js
 
@@ -30717,7 +30822,7 @@ ACore["a" /* default */].creator.editabletext = EditableText;
 /* harmony default export */ var js_EditableText = (EditableText);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/widthheightresizer.css
-var widthheightresizer = __webpack_require__(85);
+var widthheightresizer = __webpack_require__(84);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Draggable.js
 
@@ -31210,10 +31315,10 @@ ACore["a" /* default */].install('FollowerToggler'.toLowerCase(), FollowerToggle
 
 /* harmony default export */ var js_FollowerToggler = (FollowerToggler);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/follower.css
-var follower = __webpack_require__(87);
+var follower = __webpack_require__(86);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tooltip.css
-var tooltip = __webpack_require__(89);
+var tooltip = __webpack_require__(88);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Tooltip.js
 
@@ -31372,7 +31477,7 @@ ToolTip.showWhenClick = function (element, content, orientation) {
 
 /* harmony default export */ var Tooltip = (ToolTip);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/quicklistbutton.css
-var quicklistbutton = __webpack_require__(91);
+var quicklistbutton = __webpack_require__(90);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/QuickListButton.js
 
@@ -31484,10 +31589,10 @@ ACore["a" /* default */].install('QuickListButton'.toLowerCase(), QuickListButto
 
 /* harmony default export */ var js_QuickListButton = (QuickListButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/frame.css
-var css_frame = __webpack_require__(93);
+var css_frame = __webpack_require__(92);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/frameview.css
-var css_frameview = __webpack_require__(95);
+var css_frameview = __webpack_require__(94);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Frame.js
 
@@ -31771,7 +31876,7 @@ ACore["a" /* default */].install('frameview', FrameView);
 
 /* harmony default export */ var js_FrameView = (FrameView);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tabview.css
-var tabview = __webpack_require__(97);
+var tabview = __webpack_require__(96);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TabBar.js
 
@@ -32517,10 +32622,10 @@ ACore["a" /* default */].install('singlepage', SinglePage);
 /* harmony default export */ var js_SinglePage = (SinglePage);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/singlepage.css
-var singlepage = __webpack_require__(99);
+var singlepage = __webpack_require__(98);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/pageselector.css
-var pageselector = __webpack_require__(101);
+var pageselector = __webpack_require__(100);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/PageSelector.js
 
@@ -32718,10 +32823,10 @@ ACore["a" /* default */].install('pageselector', PageSelector);
 
 /* harmony default export */ var js_PageSelector = (PageSelector);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/bscroller.css
-var bscroller = __webpack_require__(103);
+var bscroller = __webpack_require__(102);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/searchlist.css
-var searchlist = __webpack_require__(105);
+var searchlist = __webpack_require__(104);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/adapter/SearchListAdapter.js
 function SearchListAdapter() {
@@ -33298,7 +33403,7 @@ SearchList.prototype.init = function (props) {
 ACore["a" /* default */].install('SearchList'.toLowerCase(), SearchList);
 /* harmony default export */ var js_SearchList = (SearchList);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/statictabbar.css
-var statictabbar = __webpack_require__(107);
+var statictabbar = __webpack_require__(106);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/StaticTabbar.js
 
@@ -33505,7 +33610,7 @@ ACore["a" /* default */].install('remotesvg', RemoteSvg);
 /* harmony default export */ var js_RemoteSvg = (RemoteSvg);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/exptree.css
-var exptree = __webpack_require__(109);
+var exptree = __webpack_require__(108);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ExpTree.js
 
@@ -33900,7 +34005,7 @@ ACore["a" /* default */].install('exptree', ExpTree);
 
 /* harmony default export */ var js_ExpTree = (ExpTree);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tablevscroller.css
-var tablevscroller = __webpack_require__(111);
+var tablevscroller = __webpack_require__(110);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TableVScroller.js
 
@@ -34034,7 +34139,7 @@ ACore["a" /* default */].install('tablevscroller', TableVScroller);
 /* harmony default export */ var js_TableVScroller = (TableVScroller);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/tablescroller.css
-var tablescroller = __webpack_require__(113);
+var tablescroller = __webpack_require__(112);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TableScroller.js
 
@@ -34456,7 +34561,7 @@ ACore["a" /* default */].install('TableScroller'.toLowerCase(), TableScroller);
 
 /* harmony default export */ var js_TableScroller = (TableScroller);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/quickpath.css
-var quickpath = __webpack_require__(115);
+var quickpath = __webpack_require__(114);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/QuickMenu.js
 
@@ -34968,7 +35073,7 @@ ACore["a" /* default */].install('quickpath', QuickPath);
 
 /* harmony default export */ var js_QuickPath = (QuickPath);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/droppanel.css
-var droppanel = __webpack_require__(117);
+var droppanel = __webpack_require__(116);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/DropPanel.js
 
@@ -35170,7 +35275,7 @@ ACore["a" /* default */].install('droppanelstack', DropPannelStack);
 
 /* harmony default export */ var DropPanelStack = (DropPannelStack);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/draggablestack.css
-var draggablestack = __webpack_require__(119);
+var draggablestack = __webpack_require__(118);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/DraggableVStack.js
 
@@ -35646,7 +35751,7 @@ DraggableHStack.prototype._updateDragginPosition = function () {
 ACore["a" /* default */].install('DraggableHStack'.toLowerCase(), DraggableHStack);
 /* harmony default export */ var js_DraggableHStack = (DraggableHStack);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/chromecalendar.css
-var chromecalendar = __webpack_require__(121);
+var chromecalendar = __webpack_require__(120);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Time/datetime.js
 
@@ -36740,7 +36845,7 @@ ChromeCalendar.close = function (session) {
 
 /* harmony default export */ var js_ChromeCalendar = (ChromeCalendar);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/timepicker.css
-var timepicker = __webpack_require__(123);
+var timepicker = __webpack_require__(122);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TimePicker.js
 
@@ -37548,7 +37653,7 @@ TimePicker.eventHandler.mousefinishClock = function () {
 
 ACore["a" /* default */].install('timepicker', TimePicker);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/timeinput.css
-var timeinput = __webpack_require__(125);
+var timeinput = __webpack_require__(124);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TimeInput.js
 
@@ -37719,7 +37824,7 @@ TimeInput.eventHandler.pickerCancel = function (event) {
 
 ACore["a" /* default */].install('timeinput', TimeInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/calendarinput.css
-var calendarinput = __webpack_require__(127);
+var calendarinput = __webpack_require__(126);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CalendarInput.js
 
@@ -37863,7 +37968,7 @@ ACore["a" /* default */].install('calendar-input', function (data) {
 /* harmony default export */ var js_CalendarInput = (CalendarInput);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/onscreenwindow.css
-var onscreenwindow = __webpack_require__(129);
+var onscreenwindow = __webpack_require__(128);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/OnsScreenWindow.js
 
@@ -38548,7 +38653,7 @@ ACore["a" /* default */].install('hruler', HRuler);
 
 /* harmony default export */ var js_HRuler = (HRuler);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/hruler.css
-var hruler = __webpack_require__(131);
+var hruler = __webpack_require__(130);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/VRuler.js
 
@@ -38719,7 +38824,7 @@ ACore["a" /* default */].install('vruler', VRuler);
 
 /* harmony default export */ var js_VRuler = (VRuler);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/vruler.css
-var vruler = __webpack_require__(133);
+var vruler = __webpack_require__(132);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ResizeBox.js
 
@@ -38913,7 +39018,7 @@ ACore["a" /* default */].install('resizebox', ResizeBox);
 
 /* harmony default export */ var js_ResizeBox = (ResizeBox);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/resizebox.css
-var resizebox = __webpack_require__(135);
+var resizebox = __webpack_require__(134);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/PreInput.js
 
@@ -39256,10 +39361,10 @@ ACore["a" /* default */].install('preinput', PreInput);
 
 /* harmony default export */ var js_PreInput = (PreInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/preinput.css
-var preinput = __webpack_require__(137);
+var preinput = __webpack_require__(136);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/hexasectionlabel.css
-var hexasectionlabel = __webpack_require__(139);
+var hexasectionlabel = __webpack_require__(138);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/HexaSectionLabel.js
 
@@ -39415,7 +39520,7 @@ HexaSectionLabel.property.text = {
 ACore["a" /* default */].install('hexasectionlabel', HexaSectionLabel);
 /* harmony default export */ var js_HexaSectionLabel = (HexaSectionLabel);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/circlesectionlabel.css
-var circlesectionlabel = __webpack_require__(141);
+var circlesectionlabel = __webpack_require__(140);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/CircleSectionLabel.js
 
@@ -39613,7 +39718,7 @@ CircleSectionLabel.property.text = {
 ACore["a" /* default */].install('circlesectionlabel', CircleSectionLabel);
 /* harmony default export */ var js_CircleSectionLabel = (CircleSectionLabel);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/linearcolorbar.css
-var linearcolorbar = __webpack_require__(143);
+var linearcolorbar = __webpack_require__(142);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/LinearColorBar.js
 
@@ -39903,7 +40008,7 @@ LinearColorBar.property.colorMapping = {
 ACore["a" /* default */].install('linearcolorbar', LinearColorBar);
 /* harmony default export */ var js_LinearColorBar = (LinearColorBar);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/boardtable.css
-var boardtable = __webpack_require__(145);
+var boardtable = __webpack_require__(144);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Board.js
 
@@ -41802,7 +41907,7 @@ ACore["a" /* default */].install('emojipicker', EmojiPicker);
 /* harmony default export */ var js_EmojiPicker = (EmojiPicker);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/emojipicker.css
-var emojipicker = __webpack_require__(147);
+var emojipicker = __webpack_require__(146);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/DateInput.js
 
@@ -42229,7 +42334,7 @@ ACore["a" /* default */].install('dateinput', DateInput);
 
 /* harmony default export */ var js_DateInput = (DateInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/dateinput.css
-var dateinput = __webpack_require__(149);
+var dateinput = __webpack_require__(148);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/MessageInput.js
 
@@ -42617,13 +42722,13 @@ ACore["a" /* default */].install('messageinput', MessageInput);
 
 /* harmony default export */ var js_MessageInput = (MessageInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/messageinput.css
-var messageinput = __webpack_require__(151);
+var messageinput = __webpack_require__(150);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/js/DebugTask.js
 var DebugTask = __webpack_require__(13);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/debugtask.css
-var debugtask = __webpack_require__(153);
+var debugtask = __webpack_require__(152);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/EmojiChars.js
 var EmojiChars = [["Smileys & Emotion", [["face-smiling", [[["U+1F600"], "😀", "grinning face"], [["U+1F603"], "😃", "grinning face with big eyes"], [["U+1F604"], "😄", "grinning face with smiling eyes"], [["U+1F601"], "😁", "beaming face with smiling eyes"], [["U+1F606"], "😆", "grinning squinting face"], [["U+1F605"], "😅", "grinning face with sweat"], [["U+1F923"], "🤣", "rolling on the floor laughing"], [["U+1F602"], "😂", "face with tears of joy"], [["U+1F642"], "🙂", "slightly smiling face"], [["U+1F643"], "🙃", "upside-down face"], [["U+1F609"], "😉", "winking face"], [["U+1F60A"], "😊", "smiling face with smiling eyes"], [["U+1F607"], "😇", "smiling face with halo"]]], ["face-affection", [[["U+1F970"], "🥰", "smiling face with hearts"], [["U+1F60D"], "😍", "smiling face with heart-eyes"], [["U+1F929"], "🤩", "star-struck"], [["U+1F618"], "😘", "face blowing a kiss"], [["U+1F617"], "😗", "kissing face"], [["U+263A"], "☺", "smiling face"], [["U+1F61A"], "😚", "kissing face with closed eyes"], [["U+1F619"], "😙", "kissing face with smiling eyes"], [["U+1F972"], "🥲", "⊛ smiling face with tear"]]], ["face-tongue", [[["U+1F60B"], "😋", "face savoring food"], [["U+1F61B"], "😛", "face with tongue"], [["U+1F61C"], "😜", "winking face with tongue"], [["U+1F92A"], "🤪", "zany face"], [["U+1F61D"], "😝", "squinting face with tongue"], [["U+1F911"], "🤑", "money-mouth face"]]], ["face-hand", [[["U+1F917"], "🤗", "hugging face"], [["U+1F92D"], "🤭", "face with hand over mouth"], [["U+1F92B"], "🤫", "shushing face"], [["U+1F914"], "🤔", "thinking face"]]], ["face-neutral-skeptical", [[["U+1F910"], "🤐", "zipper-mouth face"], [["U+1F928"], "🤨", "face with raised eyebrow"], [["U+1F610"], "😐", "neutral face"], [["U+1F611"], "😑", "expressionless face"], [["U+1F636"], "😶", "face without mouth"], [["U+1F60F"], "😏", "smirking face"], [["U+1F612"], "😒", "unamused face"], [["U+1F644"], "🙄", "face with rolling eyes"], [["U+1F62C"], "😬", "grimacing face"], [["U+1F925"], "🤥", "lying face"]]], ["face-sleepy", [[["U+1F60C"], "😌", "relieved face"], [["U+1F614"], "😔", "pensive face"], [["U+1F62A"], "😪", "sleepy face"], [["U+1F924"], "🤤", "drooling face"], [["U+1F634"], "😴", "sleeping face"]]], ["face-unwell", [[["U+1F637"], "😷", "face with medical mask"], [["U+1F912"], "🤒", "face with thermometer"], [["U+1F915"], "🤕", "face with head-bandage"], [["U+1F922"], "🤢", "nauseated face"], [["U+1F92E"], "🤮", "face vomiting"], [["U+1F927"], "🤧", "sneezing face"], [["U+1F975"], "🥵", "hot face"], [["U+1F976"], "🥶", "cold face"], [["U+1F974"], "🥴", "woozy face"], [["U+1F635"], "😵", "dizzy face"], [["U+1F92F"], "🤯", "exploding head"]]], ["face-hat", [[["U+1F920"], "🤠", "cowboy hat face"], [["U+1F973"], "🥳", "partying face"], [["U+1F978"], "🥸", "⊛ disguised face"]]], ["face-glasses", [[["U+1F60E"], "😎", "smiling face with sunglasses"], [["U+1F913"], "🤓", "nerd face"], [["U+1F9D0"], "🧐", "face with monocle"]]], ["face-concerned", [[["U+1F615"], "😕", "confused face"], [["U+1F61F"], "😟", "worried face"], [["U+1F641"], "🙁", "slightly frowning face"], [["U+2639"], "☹", "frowning face"], [["U+1F62E"], "😮", "face with open mouth"], [["U+1F62F"], "😯", "hushed face"], [["U+1F632"], "😲", "astonished face"], [["U+1F633"], "😳", "flushed face"], [["U+1F97A"], "🥺", "pleading face"], [["U+1F626"], "😦", "frowning face with open mouth"], [["U+1F627"], "😧", "anguished face"], [["U+1F628"], "😨", "fearful face"], [["U+1F630"], "😰", "anxious face with sweat"], [["U+1F625"], "😥", "sad but relieved face"], [["U+1F622"], "😢", "crying face"], [["U+1F62D"], "😭", "loudly crying face"], [["U+1F631"], "😱", "face screaming in fear"], [["U+1F616"], "😖", "confounded face"], [["U+1F623"], "😣", "persevering face"], [["U+1F61E"], "😞", "disappointed face"], [["U+1F613"], "😓", "downcast face with sweat"], [["U+1F629"], "😩", "weary face"], [["U+1F62B"], "😫", "tired face"], [["U+1F971"], "🥱", "yawning face"]]], ["face-negative", [[["U+1F624"], "😤", "face with steam from nose"], [["U+1F621"], "😡", "pouting face"], [["U+1F620"], "😠", "angry face"], [["U+1F92C"], "🤬", "face with symbols on mouth"], [["U+1F608"], "😈", "smiling face with horns"], [["U+1F47F"], "👿", "angry face with horns"], [["U+1F480"], "💀", "skull"], [["U+2620"], "☠", "skull and crossbones"]]], ["face-costume", [[["U+1F4A9"], "💩", "pile of poo"], [["U+1F921"], "🤡", "clown face"], [["U+1F479"], "👹", "ogre"], [["U+1F47A"], "👺", "goblin"], [["U+1F47B"], "👻", "ghost"], [["U+1F47D"], "👽", "alien"], [["U+1F47E"], "👾", "alien monster"], [["U+1F916"], "🤖", "robot"]]], ["cat-face", [[["U+1F63A"], "😺", "grinning cat"], [["U+1F638"], "😸", "grinning cat with smiling eyes"], [["U+1F639"], "😹", "cat with tears of joy"], [["U+1F63B"], "😻", "smiling cat with heart-eyes"], [["U+1F63C"], "😼", "cat with wry smile"], [["U+1F63D"], "😽", "kissing cat"], [["U+1F640"], "🙀", "weary cat"], [["U+1F63F"], "😿", "crying cat"], [["U+1F63E"], "😾", "pouting cat"]]], ["monkey-face", [[["U+1F648"], "🙈", "see-no-evil monkey"], [["U+1F649"], "🙉", "hear-no-evil monkey"], [["U+1F64A"], "🙊", "speak-no-evil monkey"]]], ["emotion", [[["U+1F48B"], "💋", "kiss mark"], [["U+1F48C"], "💌", "love letter"], [["U+1F498"], "💘", "heart with arrow"], [["U+1F49D"], "💝", "heart with ribbon"], [["U+1F496"], "💖", "sparkling heart"], [["U+1F497"], "💗", "growing heart"], [["U+1F493"], "💓", "beating heart"], [["U+1F49E"], "💞", "revolving hearts"], [["U+1F495"], "💕", "two hearts"], [["U+1F49F"], "💟", "heart decoration"], [["U+2763"], "❣", "heart exclamation"], [["U+1F494"], "💔", "broken heart"], [["U+2764"], "❤", "red heart"], [["U+1F9E1"], "🧡", "orange heart"], [["U+1F49B"], "💛", "yellow heart"], [["U+1F49A"], "💚", "green heart"], [["U+1F499"], "💙", "blue heart"], [["U+1F49C"], "💜", "purple heart"], [["U+1F90E"], "🤎", "brown heart"], [["U+1F5A4"], "🖤", "black heart"], [["U+1F90D"], "🤍", "white heart"], [["U+1F4AF"], "💯", "hundred points"], [["U+1F4A2"], "💢", "anger symbol"], [["U+1F4A5"], "💥", "collision"], [["U+1F4AB"], "💫", "dizzy"], [["U+1F4A6"], "💦", "sweat droplets"], [["U+1F4A8"], "💨", "dashing away"], [["U+1F573"], "🕳", "hole"], [["U+1F4A3"], "💣", "bomb"], [["U+1F4AC"], "💬", "speech balloon"], [["U+1F441", "U+FE0F", "U+200D", "U+1F5E8", "U+FE0F"], "👁️‍🗨️", "eye in speech bubble"], [["U+1F5E8"], "🗨", "left speech bubble"], [["U+1F5EF"], "🗯", "right anger bubble"], [["U+1F4AD"], "💭", "thought balloon"], [["U+1F4A4"], "💤", "zzz"]]]]], ["People & Body", [["hand-fingers-open", [[["U+1F44B"], "👋", "waving hand"], [["U+1F91A"], "🤚", "raised back of hand"], [["U+1F590"], "🖐", "hand with fingers splayed"], [["U+270B"], "✋", "raised hand"], [["U+1F596"], "🖖", "vulcan salute"]]], ["hand-fingers-partial", [[["U+1F44C"], "👌", "OK hand"], [["U+1F90C"], "🤌", "⊛ pinched fingers"], [["U+1F90F"], "🤏", "pinching hand"], [["U+270C"], "✌", "victory hand"], [["U+1F91E"], "🤞", "crossed fingers"], [["U+1F91F"], "🤟", "love-you gesture"], [["U+1F918"], "🤘", "sign of the horns"], [["U+1F919"], "🤙", "call me hand"]]], ["hand-single-finger", [[["U+1F448"], "👈", "backhand index pointing left"], [["U+1F449"], "👉", "backhand index pointing right"], [["U+1F446"], "👆", "backhand index pointing up"], [["U+1F595"], "🖕", "middle finger"], [["U+1F447"], "👇", "backhand index pointing down"], [["U+261D"], "☝", "index pointing up"]]], ["hand-fingers-closed", [[["U+1F44D"], "👍", "thumbs up"], [["U+1F44E"], "👎", "thumbs down"], [["U+270A"], "✊", "raised fist"], [["U+1F44A"], "👊", "oncoming fist"], [["U+1F91B"], "🤛", "left-facing fist"], [["U+1F91C"], "🤜", "right-facing fist"]]], ["hands", [[["U+1F44F"], "👏", "clapping hands"], [["U+1F64C"], "🙌", "raising hands"], [["U+1F450"], "👐", "open hands"], [["U+1F932"], "🤲", "palms up together"], [["U+1F91D"], "🤝", "handshake"], [["U+1F64F"], "🙏", "folded hands"]]], ["hand-prop", [[["U+270D"], "✍", "writing hand"], [["U+1F485"], "💅", "nail polish"], [["U+1F933"], "🤳", "selfie"]]], ["body-parts", [[["U+1F4AA"], "💪", "flexed biceps"], [["U+1F9BE"], "🦾", "mechanical arm"], [["U+1F9BF"], "🦿", "mechanical leg"], [["U+1F9B5"], "🦵", "leg"], [["U+1F9B6"], "🦶", "foot"], [["U+1F442"], "👂", "ear"], [["U+1F9BB"], "🦻", "ear with hearing aid"], [["U+1F443"], "👃", "nose"], [["U+1F9E0"], "🧠", "brain"], [["U+1F9B7"], "🦷", "tooth"], [["U+1F9B4"], "🦴", "bone"], [["U+1F440"], "👀", "eyes"], [["U+1F441"], "👁", "eye"], [["U+1F445"], "👅", "tongue"], [["U+1F444"], "👄", "mouth"]]], ["person", [[["U+1F476"], "👶", "baby"], [["U+1F9D2"], "🧒", "child"], [["U+1F466"], "👦", "boy"], [["U+1F467"], "👧", "girl"], [["U+1F9D1"], "🧑", "person"], [["U+1F471"], "👱", "person: blond hair"], [["U+1F468"], "👨", "man"], [["U+1F9D4"], "🧔", "man: beard"], [["U+1F468", "U+200D", "U+1F9B0"], "👨‍🦰", "man: red hair"], [["U+1F468", "U+200D", "U+1F9B1"], "👨‍🦱", "man: curly hair"], [["U+1F468", "U+200D", "U+1F9B3"], "👨‍🦳", "man: white hair"], [["U+1F468", "U+200D", "U+1F9B2"], "👨‍🦲", "man: bald"], [["U+1F469"], "👩", "woman"], [["U+1F469", "U+200D", "U+1F9B0"], "👩‍🦰", "woman: red hair"], [["U+1F9D1", "U+200D", "U+1F9B0"], "🧑‍🦰", "person: red hair"], [["U+1F469", "U+200D", "U+1F9B1"], "👩‍🦱", "woman: curly hair"], [["U+1F9D1", "U+200D", "U+1F9B1"], "🧑‍🦱", "person: curly hair"], [["U+1F469", "U+200D", "U+1F9B3"], "👩‍🦳", "woman: white hair"], [["U+1F9D1", "U+200D", "U+1F9B3"], "🧑‍🦳", "person: white hair"], [["U+1F469", "U+200D", "U+1F9B2"], "👩‍🦲", "woman: bald"], [["U+1F9D1", "U+200D", "U+1F9B2"], "🧑‍🦲", "person: bald"], [["U+1F471", "U+200D", "U+2640", "U+FE0F"], "👱‍♀️", "woman: blond hair"], [["U+1F471", "U+200D", "U+2642", "U+FE0F"], "👱‍♂️", "man: blond hair"], [["U+1F9D3"], "🧓", "older person"], [["U+1F474"], "👴", "old man"], [["U+1F475"], "👵", "old woman"]]], ["person-gesture", [[["U+1F64D"], "🙍", "person frowning"], [["U+1F64D", "U+200D", "U+2642", "U+FE0F"], "🙍‍♂️", "man frowning"], [["U+1F64D", "U+200D", "U+2640", "U+FE0F"], "🙍‍♀️", "woman frowning"], [["U+1F64E"], "🙎", "person pouting"], [["U+1F64E", "U+200D", "U+2642", "U+FE0F"], "🙎‍♂️", "man pouting"], [["U+1F64E", "U+200D", "U+2640", "U+FE0F"], "🙎‍♀️", "woman pouting"], [["U+1F645"], "🙅", "person gesturing NO"], [["U+1F645", "U+200D", "U+2642", "U+FE0F"], "🙅‍♂️", "man gesturing NO"], [["U+1F645", "U+200D", "U+2640", "U+FE0F"], "🙅‍♀️", "woman gesturing NO"], [["U+1F646"], "🙆", "person gesturing OK"], [["U+1F646", "U+200D", "U+2642", "U+FE0F"], "🙆‍♂️", "man gesturing OK"], [["U+1F646", "U+200D", "U+2640", "U+FE0F"], "🙆‍♀️", "woman gesturing OK"], [["U+1F481"], "💁", "person tipping hand"], [["U+1F481", "U+200D", "U+2642", "U+FE0F"], "💁‍♂️", "man tipping hand"], [["U+1F481", "U+200D", "U+2640", "U+FE0F"], "💁‍♀️", "woman tipping hand"], [["U+1F64B"], "🙋", "person raising hand"], [["U+1F64B", "U+200D", "U+2642", "U+FE0F"], "🙋‍♂️", "man raising hand"], [["U+1F64B", "U+200D", "U+2640", "U+FE0F"], "🙋‍♀️", "woman raising hand"], [["U+1F9CF"], "🧏", "deaf person"], [["U+1F9CF", "U+200D", "U+2642", "U+FE0F"], "🧏‍♂️", "deaf man"], [["U+1F9CF", "U+200D", "U+2640", "U+FE0F"], "🧏‍♀️", "deaf woman"], [["U+1F647"], "🙇", "person bowing"], [["U+1F647", "U+200D", "U+2642", "U+FE0F"], "🙇‍♂️", "man bowing"], [["U+1F647", "U+200D", "U+2640", "U+FE0F"], "🙇‍♀️", "woman bowing"], [["U+1F926"], "🤦", "person facepalming"], [["U+1F926", "U+200D", "U+2642", "U+FE0F"], "🤦‍♂️", "man facepalming"], [["U+1F926", "U+200D", "U+2640", "U+FE0F"], "🤦‍♀️", "woman facepalming"], [["U+1F937"], "🤷", "person shrugging"], [["U+1F937", "U+200D", "U+2642", "U+FE0F"], "🤷‍♂️", "man shrugging"], [["U+1F937", "U+200D", "U+2640", "U+FE0F"], "🤷‍♀️", "woman shrugging"]]], ["person-role", [[["U+1F9D1", "U+200D", "U+2695", "U+FE0F"], "🧑‍⚕️", "health worker"], [["U+1F468", "U+200D", "U+2695", "U+FE0F"], "👨‍⚕️", "man health worker"], [["U+1F469", "U+200D", "U+2695", "U+FE0F"], "👩‍⚕️", "woman health worker"], [["U+1F9D1", "U+200D", "U+1F393"], "🧑‍🎓", "student"], [["U+1F468", "U+200D", "U+1F393"], "👨‍🎓", "man student"], [["U+1F469", "U+200D", "U+1F393"], "👩‍🎓", "woman student"], [["U+1F9D1", "U+200D", "U+1F3EB"], "🧑‍🏫", "teacher"], [["U+1F468", "U+200D", "U+1F3EB"], "👨‍🏫", "man teacher"], [["U+1F469", "U+200D", "U+1F3EB"], "👩‍🏫", "woman teacher"], [["U+1F9D1", "U+200D", "U+2696", "U+FE0F"], "🧑‍⚖️", "judge"], [["U+1F468", "U+200D", "U+2696", "U+FE0F"], "👨‍⚖️", "man judge"], [["U+1F469", "U+200D", "U+2696", "U+FE0F"], "👩‍⚖️", "woman judge"], [["U+1F9D1", "U+200D", "U+1F33E"], "🧑‍🌾", "farmer"], [["U+1F468", "U+200D", "U+1F33E"], "👨‍🌾", "man farmer"], [["U+1F469", "U+200D", "U+1F33E"], "👩‍🌾", "woman farmer"], [["U+1F9D1", "U+200D", "U+1F373"], "🧑‍🍳", "cook"], [["U+1F468", "U+200D", "U+1F373"], "👨‍🍳", "man cook"], [["U+1F469", "U+200D", "U+1F373"], "👩‍🍳", "woman cook"], [["U+1F9D1", "U+200D", "U+1F527"], "🧑‍🔧", "mechanic"], [["U+1F468", "U+200D", "U+1F527"], "👨‍🔧", "man mechanic"], [["U+1F469", "U+200D", "U+1F527"], "👩‍🔧", "woman mechanic"], [["U+1F9D1", "U+200D", "U+1F3ED"], "🧑‍🏭", "factory worker"], [["U+1F468", "U+200D", "U+1F3ED"], "👨‍🏭", "man factory worker"], [["U+1F469", "U+200D", "U+1F3ED"], "👩‍🏭", "woman factory worker"], [["U+1F9D1", "U+200D", "U+1F4BC"], "🧑‍💼", "office worker"], [["U+1F468", "U+200D", "U+1F4BC"], "👨‍💼", "man office worker"], [["U+1F469", "U+200D", "U+1F4BC"], "👩‍💼", "woman office worker"], [["U+1F9D1", "U+200D", "U+1F52C"], "🧑‍🔬", "scientist"], [["U+1F468", "U+200D", "U+1F52C"], "👨‍🔬", "man scientist"], [["U+1F469", "U+200D", "U+1F52C"], "👩‍🔬", "woman scientist"], [["U+1F9D1", "U+200D", "U+1F4BB"], "🧑‍💻", "technologist"], [["U+1F468", "U+200D", "U+1F4BB"], "👨‍💻", "man technologist"], [["U+1F469", "U+200D", "U+1F4BB"], "👩‍💻", "woman technologist"], [["U+1F9D1", "U+200D", "U+1F3A4"], "🧑‍🎤", "singer"], [["U+1F468", "U+200D", "U+1F3A4"], "👨‍🎤", "man singer"], [["U+1F469", "U+200D", "U+1F3A4"], "👩‍🎤", "woman singer"], [["U+1F9D1", "U+200D", "U+1F3A8"], "🧑‍🎨", "artist"], [["U+1F468", "U+200D", "U+1F3A8"], "👨‍🎨", "man artist"], [["U+1F469", "U+200D", "U+1F3A8"], "👩‍🎨", "woman artist"], [["U+1F9D1", "U+200D", "U+2708", "U+FE0F"], "🧑‍✈️", "pilot"], [["U+1F468", "U+200D", "U+2708", "U+FE0F"], "👨‍✈️", "man pilot"], [["U+1F469", "U+200D", "U+2708", "U+FE0F"], "👩‍✈️", "woman pilot"], [["U+1F9D1", "U+200D", "U+1F680"], "🧑‍🚀", "astronaut"], [["U+1F468", "U+200D", "U+1F680"], "👨‍🚀", "man astronaut"], [["U+1F469", "U+200D", "U+1F680"], "👩‍🚀", "woman astronaut"], [["U+1F9D1", "U+200D", "U+1F692"], "🧑‍🚒", "firefighter"], [["U+1F468", "U+200D", "U+1F692"], "👨‍🚒", "man firefighter"], [["U+1F469", "U+200D", "U+1F692"], "👩‍🚒", "woman firefighter"], [["U+1F46E"], "👮", "police officer"], [["U+1F46E", "U+200D", "U+2642", "U+FE0F"], "👮‍♂️", "man police officer"], [["U+1F46E", "U+200D", "U+2640", "U+FE0F"], "👮‍♀️", "woman police officer"], [["U+1F575"], "🕵", "detective"], [["U+1F575", "U+FE0F", "U+200D", "U+2642", "U+FE0F"], "🕵️‍♂️", "man detective"], [["U+1F575", "U+FE0F", "U+200D", "U+2640", "U+FE0F"], "🕵️‍♀️", "woman detective"], [["U+1F482"], "💂", "guard"], [["U+1F482", "U+200D", "U+2642", "U+FE0F"], "💂‍♂️", "man guard"], [["U+1F482", "U+200D", "U+2640", "U+FE0F"], "💂‍♀️", "woman guard"], [["U+1F977"], "🥷", "⊛ ninja"], [["U+1F477"], "👷", "construction worker"], [["U+1F477", "U+200D", "U+2642", "U+FE0F"], "👷‍♂️", "man construction worker"], [["U+1F477", "U+200D", "U+2640", "U+FE0F"], "👷‍♀️", "woman construction worker"], [["U+1F934"], "🤴", "prince"], [["U+1F478"], "👸", "princess"], [["U+1F473"], "👳", "person wearing turban"], [["U+1F473", "U+200D", "U+2642", "U+FE0F"], "👳‍♂️", "man wearing turban"], [["U+1F473", "U+200D", "U+2640", "U+FE0F"], "👳‍♀️", "woman wearing turban"], [["U+1F472"], "👲", "person with skullcap"], [["U+1F9D5"], "🧕", "woman with headscarf"], [["U+1F935"], "🤵", "person in tuxedo"], [["U+1F935", "U+200D", "U+2642", "U+FE0F"], "🤵‍♂️", "⊛ man in tuxedo"], [["U+1F935", "U+200D", "U+2640", "U+FE0F"], "🤵‍♀️", "⊛ woman in tuxedo"], [["U+1F470"], "👰", "person with veil"], [["U+1F930"], "🤰", "pregnant woman"], [["U+1F931"], "🤱", "breast-feeding"]]], ["person-fantasy", [[["U+1F47C"], "👼", "baby angel"], [["U+1F385"], "🎅", "Santa Claus"], [["U+1F936"], "🤶", "Mrs. Claus"], [["U+1F9B8"], "🦸", "superhero"], [["U+1F9B8", "U+200D", "U+2642", "U+FE0F"], "🦸‍♂️", "man superhero"], [["U+1F9B8", "U+200D", "U+2640", "U+FE0F"], "🦸‍♀️", "woman superhero"], [["U+1F9B9"], "🦹", "supervillain"], [["U+1F9B9", "U+200D", "U+2642", "U+FE0F"], "🦹‍♂️", "man supervillain"], [["U+1F9B9", "U+200D", "U+2640", "U+FE0F"], "🦹‍♀️", "woman supervillain"], [["U+1F9D9"], "🧙", "mage"], [["U+1F9D9", "U+200D", "U+2642", "U+FE0F"], "🧙‍♂️", "man mage"], [["U+1F9D9", "U+200D", "U+2640", "U+FE0F"], "🧙‍♀️", "woman mage"], [["U+1F9DA"], "🧚", "fairy"], [["U+1F9DA", "U+200D", "U+2642", "U+FE0F"], "🧚‍♂️", "man fairy"], [["U+1F9DA", "U+200D", "U+2640", "U+FE0F"], "🧚‍♀️", "woman fairy"], [["U+1F9DB"], "🧛", "vampire"], [["U+1F9DB", "U+200D", "U+2642", "U+FE0F"], "🧛‍♂️", "man vampire"], [["U+1F9DB", "U+200D", "U+2640", "U+FE0F"], "🧛‍♀️", "woman vampire"], [["U+1F9DC"], "🧜", "merperson"], [["U+1F9DC", "U+200D", "U+2642", "U+FE0F"], "🧜‍♂️", "merman"], [["U+1F9DC", "U+200D", "U+2640", "U+FE0F"], "🧜‍♀️", "mermaid"], [["U+1F9DD"], "🧝", "elf"], [["U+1F9DD", "U+200D", "U+2642", "U+FE0F"], "🧝‍♂️", "man elf"], [["U+1F9DD", "U+200D", "U+2640", "U+FE0F"], "🧝‍♀️", "woman elf"], [["U+1F9DE"], "🧞", "genie"], [["U+1F9DE", "U+200D", "U+2642", "U+FE0F"], "🧞‍♂️", "man genie"], [["U+1F9DE", "U+200D", "U+2640", "U+FE0F"], "🧞‍♀️", "woman genie"], [["U+1F9DF"], "🧟", "zombie"], [["U+1F9DF", "U+200D", "U+2642", "U+FE0F"], "🧟‍♂️", "man zombie"], [["U+1F9DF", "U+200D", "U+2640", "U+FE0F"], "🧟‍♀️", "woman zombie"]]], ["person-activity", [[["U+1F486"], "💆", "person getting massage"], [["U+1F486", "U+200D", "U+2642", "U+FE0F"], "💆‍♂️", "man getting massage"], [["U+1F486", "U+200D", "U+2640", "U+FE0F"], "💆‍♀️", "woman getting massage"], [["U+1F487"], "💇", "person getting haircut"], [["U+1F487", "U+200D", "U+2642", "U+FE0F"], "💇‍♂️", "man getting haircut"], [["U+1F487", "U+200D", "U+2640", "U+FE0F"], "💇‍♀️", "woman getting haircut"], [["U+1F6B6"], "🚶", "person walking"], [["U+1F6B6", "U+200D", "U+2642", "U+FE0F"], "🚶‍♂️", "man walking"], [["U+1F6B6", "U+200D", "U+2640", "U+FE0F"], "🚶‍♀️", "woman walking"], [["U+1F9CD"], "🧍", "person standing"], [["U+1F9CD", "U+200D", "U+2642", "U+FE0F"], "🧍‍♂️", "man standing"], [["U+1F9CD", "U+200D", "U+2640", "U+FE0F"], "🧍‍♀️", "woman standing"], [["U+1F9CE"], "🧎", "person kneeling"], [["U+1F9CE", "U+200D", "U+2642", "U+FE0F"], "🧎‍♂️", "man kneeling"], [["U+1F9CE", "U+200D", "U+2640", "U+FE0F"], "🧎‍♀️", "woman kneeling"], [["U+1F9D1", "U+200D", "U+1F9AF"], "🧑‍🦯", "person with white cane"], [["U+1F468", "U+200D", "U+1F9AF"], "👨‍🦯", "man with white cane"], [["U+1F469", "U+200D", "U+1F9AF"], "👩‍🦯", "woman with white cane"], [["U+1F9D1", "U+200D", "U+1F9BC"], "🧑‍🦼", "person in motorized wheelchair"], [["U+1F468", "U+200D", "U+1F9BC"], "👨‍🦼", "man in motorized wheelchair"], [["U+1F469", "U+200D", "U+1F9BC"], "👩‍🦼", "woman in motorized wheelchair"], [["U+1F9D1", "U+200D", "U+1F9BD"], "🧑‍🦽", "person in manual wheelchair"], [["U+1F468", "U+200D", "U+1F9BD"], "👨‍🦽", "man in manual wheelchair"], [["U+1F469", "U+200D", "U+1F9BD"], "👩‍🦽", "woman in manual wheelchair"], [["U+1F3C3"], "🏃", "person running"], [["U+1F3C3", "U+200D", "U+2642", "U+FE0F"], "🏃‍♂️", "man running"], [["U+1F3C3", "U+200D", "U+2640", "U+FE0F"], "🏃‍♀️", "woman running"], [["U+1F483"], "💃", "woman dancing"], [["U+1F57A"], "🕺", "man dancing"], [["U+1F574"], "🕴", "person in suit levitating"], [["U+1F46F"], "👯", "people with bunny ears"], [["U+1F46F", "U+200D", "U+2642", "U+FE0F"], "👯‍♂️", "men with bunny ears"], [["U+1F46F", "U+200D", "U+2640", "U+FE0F"], "👯‍♀️", "women with bunny ears"], [["U+1F9D6"], "🧖", "person in steamy room"], [["U+1F9D6", "U+200D", "U+2642", "U+FE0F"], "🧖‍♂️", "man in steamy room"], [["U+1F9D6", "U+200D", "U+2640", "U+FE0F"], "🧖‍♀️", "woman in steamy room"], [["U+1F9D7"], "🧗", "person climbing"], [["U+1F9D7", "U+200D", "U+2642", "U+FE0F"], "🧗‍♂️", "man climbing"], [["U+1F9D7", "U+200D", "U+2640", "U+FE0F"], "🧗‍♀️", "woman climbing"]]], ["person-sport", [[["U+1F93A"], "🤺", "person fencing"], [["U+1F3C7"], "🏇", "horse racing"], [["U+26F7"], "⛷", "skier"], [["U+1F3C2"], "🏂", "snowboarder"], [["U+1F3CC"], "🏌", "person golfing"], [["U+1F3CC", "U+FE0F", "U+200D", "U+2642", "U+FE0F"], "🏌️‍♂️", "man golfing"], [["U+1F3CC", "U+FE0F", "U+200D", "U+2640", "U+FE0F"], "🏌️‍♀️", "woman golfing"], [["U+1F3C4"], "🏄", "person surfing"], [["U+1F3C4", "U+200D", "U+2642", "U+FE0F"], "🏄‍♂️", "man surfing"], [["U+1F3C4", "U+200D", "U+2640", "U+FE0F"], "🏄‍♀️", "woman surfing"], [["U+1F6A3"], "🚣", "person rowing boat"], [["U+1F6A3", "U+200D", "U+2642", "U+FE0F"], "🚣‍♂️", "man rowing boat"], [["U+1F6A3", "U+200D", "U+2640", "U+FE0F"], "🚣‍♀️", "woman rowing boat"], [["U+1F3CA"], "🏊", "person swimming"], [["U+1F3CA", "U+200D", "U+2642", "U+FE0F"], "🏊‍♂️", "man swimming"], [["U+1F3CA", "U+200D", "U+2640", "U+FE0F"], "🏊‍♀️", "woman swimming"], [["U+26F9"], "⛹", "person bouncing ball"], [["U+26F9", "U+FE0F", "U+200D", "U+2642", "U+FE0F"], "⛹️‍♂️", "man bouncing ball"], [["U+26F9", "U+FE0F", "U+200D", "U+2640", "U+FE0F"], "⛹️‍♀️", "woman bouncing ball"], [["U+1F3CB"], "🏋", "person lifting weights"], [["U+1F3CB", "U+FE0F", "U+200D", "U+2642", "U+FE0F"], "🏋️‍♂️", "man lifting weights"], [["U+1F3CB", "U+FE0F", "U+200D", "U+2640", "U+FE0F"], "🏋️‍♀️", "woman lifting weights"], [["U+1F6B4"], "🚴", "person biking"], [["U+1F6B4", "U+200D", "U+2642", "U+FE0F"], "🚴‍♂️", "man biking"], [["U+1F6B4", "U+200D", "U+2640", "U+FE0F"], "🚴‍♀️", "woman biking"], [["U+1F6B5"], "🚵", "person mountain biking"], [["U+1F6B5", "U+200D", "U+2642", "U+FE0F"], "🚵‍♂️", "man mountain biking"], [["U+1F6B5", "U+200D", "U+2640", "U+FE0F"], "🚵‍♀️", "woman mountain biking"], [["U+1F938"], "🤸", "person cartwheeling"], [["U+1F938", "U+200D", "U+2642", "U+FE0F"], "🤸‍♂️", "man cartwheeling"], [["U+1F938", "U+200D", "U+2640", "U+FE0F"], "🤸‍♀️", "woman cartwheeling"], [["U+1F93C"], "🤼", "people wrestling"], [["U+1F93C", "U+200D", "U+2642", "U+FE0F"], "🤼‍♂️", "men wrestling"], [["U+1F93C", "U+200D", "U+2640", "U+FE0F"], "🤼‍♀️", "women wrestling"], [["U+1F93D"], "🤽", "person playing water polo"], [["U+1F93D", "U+200D", "U+2642", "U+FE0F"], "🤽‍♂️", "man playing water polo"], [["U+1F93D", "U+200D", "U+2640", "U+FE0F"], "🤽‍♀️", "woman playing water polo"], [["U+1F93E"], "🤾", "person playing handball"], [["U+1F93E", "U+200D", "U+2642", "U+FE0F"], "🤾‍♂️", "man playing handball"], [["U+1F93E", "U+200D", "U+2640", "U+FE0F"], "🤾‍♀️", "woman playing handball"], [["U+1F939"], "🤹", "person juggling"], [["U+1F939", "U+200D", "U+2642", "U+FE0F"], "🤹‍♂️", "man juggling"], [["U+1F939", "U+200D", "U+2640", "U+FE0F"], "🤹‍♀️", "woman juggling"]]], ["person-resting", [[["U+1F9D8"], "🧘", "person in lotus position"], [["U+1F9D8", "U+200D", "U+2642", "U+FE0F"], "🧘‍♂️", "man in lotus position"], [["U+1F9D8", "U+200D", "U+2640", "U+FE0F"], "🧘‍♀️", "woman in lotus position"], [["U+1F6C0"], "🛀", "person taking bath"], [["U+1F6CC"], "🛌", "person in bed"]]], ["family", [[["U+1F9D1", "U+200D", "U+1F91D", "U+200D", "U+1F9D1"], "🧑‍🤝‍🧑", "people holding hands"], [["U+1F46D"], "👭", "women holding hands"], [["U+1F46B"], "👫", "woman and man holding hands"], [["U+1F46C"], "👬", "men holding hands"], [["U+1F48F"], "💏", "kiss"], [["U+1F469", "U+200D", "U+2764", "U+FE0F", "U+200D", "U+1F48B", "U+200D", "U+1F468"], "👩‍❤️‍💋‍👨", "kiss: woman, man"], [["U+1F468", "U+200D", "U+2764", "U+FE0F", "U+200D", "U+1F48B", "U+200D", "U+1F468"], "👨‍❤️‍💋‍👨", "kiss: man, man"], [["U+1F469", "U+200D", "U+2764", "U+FE0F", "U+200D", "U+1F48B", "U+200D", "U+1F469"], "👩‍❤️‍💋‍👩", "kiss: woman, woman"], [["U+1F491"], "💑", "couple with heart"], [["U+1F469", "U+200D", "U+2764", "U+FE0F", "U+200D", "U+1F468"], "👩‍❤️‍👨", "couple with heart: woman, man"], [["U+1F468", "U+200D", "U+2764", "U+FE0F", "U+200D", "U+1F468"], "👨‍❤️‍👨", "couple with heart: man, man"], [["U+1F469", "U+200D", "U+2764", "U+FE0F", "U+200D", "U+1F469"], "👩‍❤️‍👩", "couple with heart: woman, woman"], [["U+1F46A"], "👪", "family"], [["U+1F468", "U+200D", "U+1F469", "U+200D", "U+1F466"], "👨‍👩‍👦", "family: man, woman, boy"], [["U+1F468", "U+200D", "U+1F469", "U+200D", "U+1F467"], "👨‍👩‍👧", "family: man, woman, girl"], [["U+1F468", "U+200D", "U+1F469", "U+200D", "U+1F467", "U+200D", "U+1F466"], "👨‍👩‍👧‍👦", "family: man, woman, girl, boy"], [["U+1F468", "U+200D", "U+1F469", "U+200D", "U+1F466", "U+200D", "U+1F466"], "👨‍👩‍👦‍👦", "family: man, woman, boy, boy"], [["U+1F468", "U+200D", "U+1F469", "U+200D", "U+1F467", "U+200D", "U+1F467"], "👨‍👩‍👧‍👧", "family: man, woman, girl, girl"], [["U+1F468", "U+200D", "U+1F468", "U+200D", "U+1F466"], "👨‍👨‍👦", "family: man, man, boy"], [["U+1F468", "U+200D", "U+1F468", "U+200D", "U+1F467"], "👨‍👨‍👧", "family: man, man, girl"], [["U+1F468", "U+200D", "U+1F468", "U+200D", "U+1F467", "U+200D", "U+1F466"], "👨‍👨‍👧‍👦", "family: man, man, girl, boy"], [["U+1F468", "U+200D", "U+1F468", "U+200D", "U+1F466", "U+200D", "U+1F466"], "👨‍👨‍👦‍👦", "family: man, man, boy, boy"], [["U+1F468", "U+200D", "U+1F468", "U+200D", "U+1F467", "U+200D", "U+1F467"], "👨‍👨‍👧‍👧", "family: man, man, girl, girl"], [["U+1F469", "U+200D", "U+1F469", "U+200D", "U+1F466"], "👩‍👩‍👦", "family: woman, woman, boy"], [["U+1F469", "U+200D", "U+1F469", "U+200D", "U+1F467"], "👩‍👩‍👧", "family: woman, woman, girl"], [["U+1F469", "U+200D", "U+1F469", "U+200D", "U+1F467", "U+200D", "U+1F466"], "👩‍👩‍👧‍👦", "family: woman, woman, girl, boy"], [["U+1F469", "U+200D", "U+1F469", "U+200D", "U+1F466", "U+200D", "U+1F466"], "👩‍👩‍👦‍👦", "family: woman, woman, boy, boy"], [["U+1F469", "U+200D", "U+1F469", "U+200D", "U+1F467", "U+200D", "U+1F467"], "👩‍👩‍👧‍👧", "family: woman, woman, girl, girl"], [["U+1F468", "U+200D", "U+1F466"], "👨‍👦", "family: man, boy"], [["U+1F468", "U+200D", "U+1F466", "U+200D", "U+1F466"], "👨‍👦‍👦", "family: man, boy, boy"], [["U+1F468", "U+200D", "U+1F467"], "👨‍👧", "family: man, girl"], [["U+1F468", "U+200D", "U+1F467", "U+200D", "U+1F466"], "👨‍👧‍👦", "family: man, girl, boy"], [["U+1F468", "U+200D", "U+1F467", "U+200D", "U+1F467"], "👨‍👧‍👧", "family: man, girl, girl"], [["U+1F469", "U+200D", "U+1F466"], "👩‍👦", "family: woman, boy"], [["U+1F469", "U+200D", "U+1F466", "U+200D", "U+1F466"], "👩‍👦‍👦", "family: woman, boy, boy"], [["U+1F469", "U+200D", "U+1F467"], "👩‍👧", "family: woman, girl"], [["U+1F469", "U+200D", "U+1F467", "U+200D", "U+1F466"], "👩‍👧‍👦", "family: woman, girl, boy"], [["U+1F469", "U+200D", "U+1F467", "U+200D", "U+1F467"], "👩‍👧‍👧", "family: woman, girl, girl"]]], ["person-symbol", [[["U+1F5E3"], "🗣", "speaking head"], [["U+1F464"], "👤", "bust in silhouette"], [["U+1F465"], "👥", "busts in silhouette"], [["U+1FAC2"], "🫂", "⊛ people hugging"], [["U+1F463"], "👣", "footprints"]]]]], ["Component", [["hair-style", [[["U+1F9B0"], "🦰", "red hair"], [["U+1F9B1"], "🦱", "curly hair"], [["U+1F9B3"], "🦳", "white hair"], [["U+1F9B2"], "🦲", "bald"]]]]], ["Animals & Nature", [["animal-mammal", [[["U+1F435"], "🐵", "monkey face"], [["U+1F412"], "🐒", "monkey"], [["U+1F98D"], "🦍", "gorilla"], [["U+1F9A7"], "🦧", "orangutan"], [["U+1F436"], "🐶", "dog face"], [["U+1F415"], "🐕", "dog"], [["U+1F9AE"], "🦮", "guide dog"], [["U+1F415", "U+200D", "U+1F9BA"], "🐕‍🦺", "service dog"], [["U+1F429"], "🐩", "poodle"], [["U+1F43A"], "🐺", "wolf"], [["U+1F98A"], "🦊", "fox"], [["U+1F99D"], "🦝", "raccoon"], [["U+1F431"], "🐱", "cat face"], [["U+1F408"], "🐈", "cat"], [["U+1F981"], "🦁", "lion"], [["U+1F42F"], "🐯", "tiger face"], [["U+1F405"], "🐅", "tiger"], [["U+1F406"], "🐆", "leopard"], [["U+1F434"], "🐴", "horse face"], [["U+1F40E"], "🐎", "horse"], [["U+1F984"], "🦄", "unicorn"], [["U+1F993"], "🦓", "zebra"], [["U+1F98C"], "🦌", "deer"], [["U+1F42E"], "🐮", "cow face"], [["U+1F402"], "🐂", "ox"], [["U+1F403"], "🐃", "water buffalo"], [["U+1F404"], "🐄", "cow"], [["U+1F437"], "🐷", "pig face"], [["U+1F416"], "🐖", "pig"], [["U+1F417"], "🐗", "boar"], [["U+1F43D"], "🐽", "pig nose"], [["U+1F40F"], "🐏", "ram"], [["U+1F411"], "🐑", "ewe"], [["U+1F410"], "🐐", "goat"], [["U+1F42A"], "🐪", "camel"], [["U+1F42B"], "🐫", "two-hump camel"], [["U+1F999"], "🦙", "llama"], [["U+1F992"], "🦒", "giraffe"], [["U+1F418"], "🐘", "elephant"], [["U+1F98F"], "🦏", "rhinoceros"], [["U+1F99B"], "🦛", "hippopotamus"], [["U+1F42D"], "🐭", "mouse face"], [["U+1F401"], "🐁", "mouse"], [["U+1F400"], "🐀", "rat"], [["U+1F439"], "🐹", "hamster"], [["U+1F430"], "🐰", "rabbit face"], [["U+1F407"], "🐇", "rabbit"], [["U+1F43F"], "🐿", "chipmunk"], [["U+1F994"], "🦔", "hedgehog"], [["U+1F987"], "🦇", "bat"], [["U+1F43B"], "🐻", "bear"], [["U+1F43B", "U+200D", "U+2744", "U+FE0F"], "🐻‍❄️", "⊛ polar bear"], [["U+1F428"], "🐨", "koala"], [["U+1F43C"], "🐼", "panda"], [["U+1F9A5"], "🦥", "sloth"], [["U+1F9A6"], "🦦", "otter"], [["U+1F9A8"], "🦨", "skunk"], [["U+1F998"], "🦘", "kangaroo"], [["U+1F9A1"], "🦡", "badger"], [["U+1F43E"], "🐾", "paw prints"]]], ["animal-bird", [[["U+1F983"], "🦃", "turkey"], [["U+1F414"], "🐔", "chicken"], [["U+1F413"], "🐓", "rooster"], [["U+1F423"], "🐣", "hatching chick"], [["U+1F424"], "🐤", "baby chick"], [["U+1F425"], "🐥", "front-facing baby chick"], [["U+1F426"], "🐦", "bird"], [["U+1F427"], "🐧", "penguin"], [["U+1F54A"], "🕊", "dove"], [["U+1F985"], "🦅", "eagle"], [["U+1F986"], "🦆", "duck"], [["U+1F9A2"], "🦢", "swan"], [["U+1F989"], "🦉", "owl"], [["U+1FAB6"], "🪶", "⊛ feather"], [["U+1F9A9"], "🦩", "flamingo"], [["U+1F99A"], "🦚", "peacock"], [["U+1F99C"], "🦜", "parrot"]]], ["animal-amphibian", [[["U+1F438"], "🐸", "frog"]]], ["animal-reptile", [[["U+1F40A"], "🐊", "crocodile"], [["U+1F422"], "🐢", "turtle"], [["U+1F98E"], "🦎", "lizard"], [["U+1F40D"], "🐍", "snake"], [["U+1F432"], "🐲", "dragon face"], [["U+1F409"], "🐉", "dragon"], [["U+1F995"], "🦕", "sauropod"], [["U+1F996"], "🦖", "T-Rex"]]], ["animal-marine", [[["U+1F433"], "🐳", "spouting whale"], [["U+1F40B"], "🐋", "whale"], [["U+1F42C"], "🐬", "dolphin"], [["U+1F41F"], "🐟", "fish"], [["U+1F420"], "🐠", "tropical fish"], [["U+1F421"], "🐡", "blowfish"], [["U+1F988"], "🦈", "shark"], [["U+1F419"], "🐙", "octopus"], [["U+1F41A"], "🐚", "spiral shell"]]], ["animal-bug", [[["U+1F40C"], "🐌", "snail"], [["U+1F98B"], "🦋", "butterfly"], [["U+1F41B"], "🐛", "bug"], [["U+1F41C"], "🐜", "ant"], [["U+1F41D"], "🐝", "honeybee"], [["U+1F41E"], "🐞", "lady beetle"], [["U+1F997"], "🦗", "cricket"], [["U+1F577"], "🕷", "spider"], [["U+1F578"], "🕸", "spider web"], [["U+1F982"], "🦂", "scorpion"], [["U+1F99F"], "🦟", "mosquito"], [["U+1F9A0"], "🦠", "microbe"]]], ["plant-flower", [[["U+1F490"], "💐", "bouquet"], [["U+1F338"], "🌸", "cherry blossom"], [["U+1F4AE"], "💮", "white flower"], [["U+1F3F5"], "🏵", "rosette"], [["U+1F339"], "🌹", "rose"], [["U+1F940"], "🥀", "wilted flower"], [["U+1F33A"], "🌺", "hibiscus"], [["U+1F33B"], "🌻", "sunflower"], [["U+1F33C"], "🌼", "blossom"], [["U+1F337"], "🌷", "tulip"]]], ["plant-other", [[["U+1F331"], "🌱", "seedling"], [["U+1FAB4"], "🪴", "⊛ potted plant"], [["U+1F332"], "🌲", "evergreen tree"], [["U+1F333"], "🌳", "deciduous tree"], [["U+1F334"], "🌴", "palm tree"], [["U+1F335"], "🌵", "cactus"], [["U+1F33E"], "🌾", "sheaf of rice"], [["U+1F33F"], "🌿", "herb"], [["U+2618"], "☘", "shamrock"], [["U+1F340"], "🍀", "four leaf clover"], [["U+1F341"], "🍁", "maple leaf"], [["U+1F342"], "🍂", "fallen leaf"], [["U+1F343"], "🍃", "leaf fluttering in wind"]]]]], ["Food & Drink", [["food-fruit", [[["U+1F347"], "🍇", "grapes"], [["U+1F348"], "🍈", "melon"], [["U+1F349"], "🍉", "watermelon"], [["U+1F34A"], "🍊", "tangerine"], [["U+1F34B"], "🍋", "lemon"], [["U+1F34C"], "🍌", "banana"], [["U+1F34D"], "🍍", "pineapple"], [["U+1F96D"], "🥭", "mango"], [["U+1F34E"], "🍎", "red apple"], [["U+1F34F"], "🍏", "green apple"], [["U+1F350"], "🍐", "pear"], [["U+1F351"], "🍑", "peach"], [["U+1F352"], "🍒", "cherries"], [["U+1F353"], "🍓", "strawberry"], [["U+1FAD0"], "🫐", "⊛ blueberries"], [["U+1F95D"], "🥝", "kiwi fruit"], [["U+1F345"], "🍅", "tomato"], [["U+1FAD2"], "🫒", "⊛ olive"], [["U+1F965"], "🥥", "coconut"]]], ["food-vegetable", [[["U+1F951"], "🥑", "avocado"], [["U+1F346"], "🍆", "eggplant"], [["U+1F954"], "🥔", "potato"], [["U+1F955"], "🥕", "carrot"], [["U+1F33D"], "🌽", "ear of corn"], [["U+1F336"], "🌶", "hot pepper"], [["U+1F952"], "🥒", "cucumber"], [["U+1F96C"], "🥬", "leafy green"], [["U+1F966"], "🥦", "broccoli"], [["U+1F9C4"], "🧄", "garlic"], [["U+1F9C5"], "🧅", "onion"], [["U+1F344"], "🍄", "mushroom"], [["U+1F95C"], "🥜", "peanuts"], [["U+1F330"], "🌰", "chestnut"]]], ["food-prepared", [[["U+1F35E"], "🍞", "bread"], [["U+1F950"], "🥐", "croissant"], [["U+1F956"], "🥖", "baguette bread"], [["U+1FAD3"], "🫓", "⊛ flatbread"], [["U+1F968"], "🥨", "pretzel"], [["U+1F96F"], "🥯", "bagel"], [["U+1F95E"], "🥞", "pancakes"], [["U+1F9C7"], "🧇", "waffle"], [["U+1F9C0"], "🧀", "cheese wedge"], [["U+1F356"], "🍖", "meat on bone"], [["U+1F357"], "🍗", "poultry leg"], [["U+1F969"], "🥩", "cut of meat"], [["U+1F953"], "🥓", "bacon"], [["U+1F354"], "🍔", "hamburger"], [["U+1F35F"], "🍟", "french fries"], [["U+1F355"], "🍕", "pizza"], [["U+1F32D"], "🌭", "hot dog"], [["U+1F96A"], "🥪", "sandwich"], [["U+1F32E"], "🌮", "taco"], [["U+1F32F"], "🌯", "burrito"], [["U+1FAD4"], "🫔", "⊛ tamale"], [["U+1F959"], "🥙", "stuffed flatbread"], [["U+1F9C6"], "🧆", "falafel"], [["U+1F95A"], "🥚", "egg"], [["U+1F373"], "🍳", "cooking"], [["U+1F958"], "🥘", "shallow pan of food"], [["U+1F372"], "🍲", "pot of food"], [["U+1FAD5"], "🫕", "⊛ fondue"], [["U+1F963"], "🥣", "bowl with spoon"], [["U+1F957"], "🥗", "green salad"], [["U+1F37F"], "🍿", "popcorn"], [["U+1F9C8"], "🧈", "butter"], [["U+1F9C2"], "🧂", "salt"], [["U+1F96B"], "🥫", "canned food"]]], ["food-asian", [[["U+1F371"], "🍱", "bento box"], [["U+1F358"], "🍘", "rice cracker"], [["U+1F359"], "🍙", "rice ball"], [["U+1F35A"], "🍚", "cooked rice"], [["U+1F35B"], "🍛", "curry rice"], [["U+1F35C"], "🍜", "steaming bowl"], [["U+1F35D"], "🍝", "spaghetti"], [["U+1F360"], "🍠", "roasted sweet potato"], [["U+1F362"], "🍢", "oden"], [["U+1F363"], "🍣", "sushi"], [["U+1F364"], "🍤", "fried shrimp"], [["U+1F365"], "🍥", "fish cake with swirl"], [["U+1F96E"], "🥮", "moon cake"], [["U+1F361"], "🍡", "dango"], [["U+1F95F"], "🥟", "dumpling"], [["U+1F960"], "🥠", "fortune cookie"], [["U+1F961"], "🥡", "takeout box"]]], ["food-marine", [[["U+1F980"], "🦀", "crab"], [["U+1F99E"], "🦞", "lobster"], [["U+1F990"], "🦐", "shrimp"], [["U+1F991"], "🦑", "squid"], [["U+1F9AA"], "🦪", "oyster"]]], ["food-sweet", [[["U+1F366"], "🍦", "soft ice cream"], [["U+1F367"], "🍧", "shaved ice"], [["U+1F368"], "🍨", "ice cream"], [["U+1F369"], "🍩", "doughnut"], [["U+1F36A"], "🍪", "cookie"], [["U+1F382"], "🎂", "birthday cake"], [["U+1F370"], "🍰", "shortcake"], [["U+1F9C1"], "🧁", "cupcake"], [["U+1F967"], "🥧", "pie"], [["U+1F36B"], "🍫", "chocolate bar"], [["U+1F36C"], "🍬", "candy"], [["U+1F36D"], "🍭", "lollipop"], [["U+1F36E"], "🍮", "custard"], [["U+1F36F"], "🍯", "honey pot"]]], ["drink", [[["U+1F37C"], "🍼", "baby bottle"], [["U+1F95B"], "🥛", "glass of milk"], [["U+2615"], "☕", "hot beverage"], [["U+1F375"], "🍵", "teacup without handle"], [["U+1F376"], "🍶", "sake"], [["U+1F37E"], "🍾", "bottle with popping cork"], [["U+1F377"], "🍷", "wine glass"], [["U+1F378"], "🍸", "cocktail glass"], [["U+1F379"], "🍹", "tropical drink"], [["U+1F37A"], "🍺", "beer mug"], [["U+1F37B"], "🍻", "clinking beer mugs"], [["U+1F942"], "🥂", "clinking glasses"], [["U+1F943"], "🥃", "tumbler glass"], [["U+1F964"], "🥤", "cup with straw"], [["U+1F9CB"], "🧋", "⊛ bubble tea"], [["U+1F9C3"], "🧃", "beverage box"], [["U+1F9C9"], "🧉", "mate"], [["U+1F9CA"], "🧊", "ice"]]], ["dishware", [[["U+1F962"], "🥢", "chopsticks"], [["U+1F37D"], "🍽", "fork and knife with plate"], [["U+1F374"], "🍴", "fork and knife"], [["U+1F944"], "🥄", "spoon"], [["U+1F52A"], "🔪", "kitchen knife"], [["U+1F3FA"], "🏺", "amphora"]]]]], ["Travel & Places", [["place-map", [[["U+1F30D"], "🌍", "globe showing Europe-Africa"], [["U+1F30E"], "🌎", "globe showing Americas"], [["U+1F30F"], "🌏", "globe showing Asia-Australia"], [["U+1F310"], "🌐", "globe with meridians"], [["U+1F5FA"], "🗺", "world map"], [["U+1F5FE"], "🗾", "map of Japan"], [["U+1F9ED"], "🧭", "compass"]]], ["place-geographic", [[["U+1F3D4"], "🏔", "snow-capped mountain"], [["U+26F0"], "⛰", "mountain"], [["U+1F30B"], "🌋", "volcano"], [["U+1F5FB"], "🗻", "mount fuji"], [["U+1F3D5"], "🏕", "camping"], [["U+1F3D6"], "🏖", "beach with umbrella"], [["U+1F3DC"], "🏜", "desert"], [["U+1F3DD"], "🏝", "desert island"], [["U+1F3DE"], "🏞", "national park"]]], ["place-building", [[["U+1F3DF"], "🏟", "stadium"], [["U+1F3DB"], "🏛", "classical building"], [["U+1F3D7"], "🏗", "building construction"], [["U+1F9F1"], "🧱", "brick"], [["U+1FAA8"], "🪨", "⊛ rock"], [["U+1FAB5"], "🪵", "⊛ wood"], [["U+1F3D8"], "🏘", "houses"], [["U+1F3DA"], "🏚", "derelict house"], [["U+1F3E0"], "🏠", "house"], [["U+1F3E1"], "🏡", "house with garden"], [["U+1F3E2"], "🏢", "office building"], [["U+1F3E3"], "🏣", "Japanese post office"], [["U+1F3E4"], "🏤", "post office"], [["U+1F3E5"], "🏥", "hospital"], [["U+1F3E6"], "🏦", "bank"], [["U+1F3E8"], "🏨", "hotel"], [["U+1F3E9"], "🏩", "love hotel"], [["U+1F3EA"], "🏪", "convenience store"], [["U+1F3EB"], "🏫", "school"], [["U+1F3EC"], "🏬", "department store"], [["U+1F3ED"], "🏭", "factory"], [["U+1F3EF"], "🏯", "Japanese castle"], [["U+1F3F0"], "🏰", "castle"], [["U+1F492"], "💒", "wedding"], [["U+1F5FC"], "🗼", "Tokyo tower"], [["U+1F5FD"], "🗽", "Statue of Liberty"]]], ["place-religious", [[["U+26EA"], "⛪", "church"], [["U+1F54C"], "🕌", "mosque"], [["U+1F6D5"], "🛕", "hindu temple"], [["U+1F54D"], "🕍", "synagogue"], [["U+26E9"], "⛩", "shinto shrine"], [["U+1F54B"], "🕋", "kaaba"]]], ["place-other", [[["U+26F2"], "⛲", "fountain"], [["U+26FA"], "⛺", "tent"], [["U+1F301"], "🌁", "foggy"], [["U+1F303"], "🌃", "night with stars"], [["U+1F3D9"], "🏙", "cityscape"], [["U+1F304"], "🌄", "sunrise over mountains"], [["U+1F305"], "🌅", "sunrise"], [["U+1F306"], "🌆", "cityscape at dusk"], [["U+1F307"], "🌇", "sunset"], [["U+1F309"], "🌉", "bridge at night"], [["U+2668"], "♨", "hot springs"], [["U+1F3A0"], "🎠", "carousel horse"], [["U+1F3A1"], "🎡", "ferris wheel"], [["U+1F3A2"], "🎢", "roller coaster"], [["U+1F488"], "💈", "barber pole"], [["U+1F3AA"], "🎪", "circus tent"]]], ["transport-ground", [[["U+1F682"], "🚂", "locomotive"], [["U+1F683"], "🚃", "railway car"], [["U+1F684"], "🚄", "high-speed train"], [["U+1F685"], "🚅", "bullet train"], [["U+1F686"], "🚆", "train"], [["U+1F687"], "🚇", "metro"], [["U+1F688"], "🚈", "light rail"], [["U+1F689"], "🚉", "station"], [["U+1F68A"], "🚊", "tram"], [["U+1F69D"], "🚝", "monorail"], [["U+1F69E"], "🚞", "mountain railway"], [["U+1F68B"], "🚋", "tram car"], [["U+1F68C"], "🚌", "bus"], [["U+1F68D"], "🚍", "oncoming bus"], [["U+1F68E"], "🚎", "trolleybus"], [["U+1F690"], "🚐", "minibus"], [["U+1F691"], "🚑", "ambulance"], [["U+1F692"], "🚒", "fire engine"], [["U+1F693"], "🚓", "police car"], [["U+1F694"], "🚔", "oncoming police car"], [["U+1F695"], "🚕", "taxi"], [["U+1F696"], "🚖", "oncoming taxi"], [["U+1F697"], "🚗", "automobile"], [["U+1F698"], "🚘", "oncoming automobile"], [["U+1F699"], "🚙", "sport utility vehicle"], [["U+1F69A"], "🚚", "delivery truck"], [["U+1F69B"], "🚛", "articulated lorry"], [["U+1F69C"], "🚜", "tractor"], [["U+1F3CE"], "🏎", "racing car"], [["U+1F3CD"], "🏍", "motorcycle"], [["U+1F6F5"], "🛵", "motor scooter"], [["U+1F9BD"], "🦽", "manual wheelchair"], [["U+1F9BC"], "🦼", "motorized wheelchair"], [["U+1F6FA"], "🛺", "auto rickshaw"], [["U+1F6B2"], "🚲", "bicycle"], [["U+1F6F4"], "🛴", "kick scooter"], [["U+1F6F9"], "🛹", "skateboard"], [["U+1F6FC"], "🛼", "⊛ roller skate"], [["U+1F68F"], "🚏", "bus stop"], [["U+1F6E3"], "🛣", "motorway"], [["U+1F6E4"], "🛤", "railway track"], [["U+1F6E2"], "🛢", "oil drum"], [["U+26FD"], "⛽", "fuel pump"], [["U+1F6A8"], "🚨", "police car light"], [["U+1F6A5"], "🚥", "horizontal traffic light"], [["U+1F6A6"], "🚦", "vertical traffic light"], [["U+1F6D1"], "🛑", "stop sign"], [["U+1F6A7"], "🚧", "construction"]]], ["transport-water", [[["U+2693"], "⚓", "anchor"], [["U+26F5"], "⛵", "sailboat"], [["U+1F6F6"], "🛶", "canoe"], [["U+1F6A4"], "🚤", "speedboat"], [["U+1F6F3"], "🛳", "passenger ship"], [["U+26F4"], "⛴", "ferry"], [["U+1F6E5"], "🛥", "motor boat"], [["U+1F6A2"], "🚢", "ship"]]], ["transport-air", [[["U+2708"], "✈", "airplane"], [["U+1F6E9"], "🛩", "small airplane"], [["U+1F6EB"], "🛫", "airplane departure"], [["U+1F6EC"], "🛬", "airplane arrival"], [["U+1FA82"], "🪂", "parachute"], [["U+1F4BA"], "💺", "seat"], [["U+1F681"], "🚁", "helicopter"], [["U+1F69F"], "🚟", "suspension railway"], [["U+1F6A0"], "🚠", "mountain cableway"], [["U+1F6A1"], "🚡", "aerial tramway"], [["U+1F6F0"], "🛰", "satellite"], [["U+1F680"], "🚀", "rocket"], [["U+1F6F8"], "🛸", "flying saucer"]]], ["hotel", [[["U+1F6CE"], "🛎", "bellhop bell"], [["U+1F9F3"], "🧳", "luggage"]]], ["time", [[["U+231B"], "⌛", "hourglass done"], [["U+23F3"], "⏳", "hourglass not done"], [["U+231A"], "⌚", "watch"], [["U+23F0"], "⏰", "alarm clock"], [["U+23F1"], "⏱", "stopwatch"], [["U+23F2"], "⏲", "timer clock"], [["U+1F570"], "🕰", "mantelpiece clock"], [["U+1F55B"], "🕛", "twelve o’clock"], [["U+1F567"], "🕧", "twelve-thirty"], [["U+1F550"], "🕐", "one o’clock"], [["U+1F55C"], "🕜", "one-thirty"], [["U+1F551"], "🕑", "two o’clock"], [["U+1F55D"], "🕝", "two-thirty"], [["U+1F552"], "🕒", "three o’clock"], [["U+1F55E"], "🕞", "three-thirty"], [["U+1F553"], "🕓", "four o’clock"], [["U+1F55F"], "🕟", "four-thirty"], [["U+1F554"], "🕔", "five o’clock"], [["U+1F560"], "🕠", "five-thirty"], [["U+1F555"], "🕕", "six o’clock"], [["U+1F561"], "🕡", "six-thirty"], [["U+1F556"], "🕖", "seven o’clock"], [["U+1F562"], "🕢", "seven-thirty"], [["U+1F557"], "🕗", "eight o’clock"], [["U+1F563"], "🕣", "eight-thirty"], [["U+1F558"], "🕘", "nine o’clock"], [["U+1F564"], "🕤", "nine-thirty"], [["U+1F559"], "🕙", "ten o’clock"], [["U+1F565"], "🕥", "ten-thirty"], [["U+1F55A"], "🕚", "eleven o’clock"], [["U+1F566"], "🕦", "eleven-thirty"]]], ["sky & weather", [[["U+1F311"], "🌑", "new moon"], [["U+1F312"], "🌒", "waxing crescent moon"], [["U+1F313"], "🌓", "first quarter moon"], [["U+1F314"], "🌔", "waxing gibbous moon"], [["U+1F315"], "🌕", "full moon"], [["U+1F316"], "🌖", "waning gibbous moon"], [["U+1F317"], "🌗", "last quarter moon"], [["U+1F318"], "🌘", "waning crescent moon"], [["U+1F319"], "🌙", "crescent moon"], [["U+1F31A"], "🌚", "new moon face"], [["U+1F31B"], "🌛", "first quarter moon face"], [["U+1F31C"], "🌜", "last quarter moon face"], [["U+1F321"], "🌡", "thermometer"], [["U+2600"], "☀", "sun"], [["U+1F31D"], "🌝", "full moon face"], [["U+1F31E"], "🌞", "sun with face"], [["U+1FA90"], "🪐", "ringed planet"], [["U+2B50"], "⭐", "star"], [["U+1F31F"], "🌟", "glowing star"], [["U+1F320"], "🌠", "shooting star"], [["U+1F30C"], "🌌", "milky way"], [["U+2601"], "☁", "cloud"], [["U+26C5"], "⛅", "sun behind cloud"], [["U+26C8"], "⛈", "cloud with lightning and rain"], [["U+1F324"], "🌤", "sun behind small cloud"], [["U+1F325"], "🌥", "sun behind large cloud"], [["U+1F326"], "🌦", "sun behind rain cloud"], [["U+1F327"], "🌧", "cloud with rain"], [["U+1F328"], "🌨", "cloud with snow"], [["U+1F329"], "🌩", "cloud with lightning"], [["U+1F32A"], "🌪", "tornado"], [["U+1F32B"], "🌫", "fog"], [["U+1F32C"], "🌬", "wind face"], [["U+1F300"], "🌀", "cyclone"], [["U+1F308"], "🌈", "rainbow"], [["U+1F302"], "🌂", "closed umbrella"], [["U+2602"], "☂", "umbrella"], [["U+2614"], "☔", "umbrella with rain drops"], [["U+26F1"], "⛱", "umbrella on ground"], [["U+26A1"], "⚡", "high voltage"], [["U+2744"], "❄", "snowflake"], [["U+2603"], "☃", "snowman"], [["U+26C4"], "⛄", "snowman without snow"], [["U+2604"], "☄", "comet"], [["U+1F525"], "🔥", "fire"], [["U+1F4A7"], "💧", "droplet"], [["U+1F30A"], "🌊", "water wave"]]]]], ["Activities", [["event", [[["U+1F383"], "🎃", "jack-o-lantern"], [["U+1F384"], "🎄", "Christmas tree"], [["U+1F386"], "🎆", "fireworks"], [["U+1F387"], "🎇", "sparkler"], [["U+1F9E8"], "🧨", "firecracker"], [["U+2728"], "✨", "sparkles"], [["U+1F388"], "🎈", "balloon"], [["U+1F389"], "🎉", "party popper"], [["U+1F38A"], "🎊", "confetti ball"], [["U+1F38B"], "🎋", "tanabata tree"], [["U+1F38D"], "🎍", "pine decoration"], [["U+1F38E"], "🎎", "Japanese dolls"], [["U+1F38F"], "🎏", "carp streamer"], [["U+1F390"], "🎐", "wind chime"], [["U+1F391"], "🎑", "moon viewing ceremony"], [["U+1F9E7"], "🧧", "red envelope"], [["U+1F380"], "🎀", "ribbon"], [["U+1F381"], "🎁", "wrapped gift"], [["U+1F397"], "🎗", "reminder ribbon"], [["U+1F39F"], "🎟", "admission tickets"], [["U+1F3AB"], "🎫", "ticket"]]], ["award-medal", [[["U+1F396"], "🎖", "military medal"], [["U+1F3C6"], "🏆", "trophy"], [["U+1F3C5"], "🏅", "sports medal"], [["U+1F947"], "🥇", "1st place medal"], [["U+1F948"], "🥈", "2nd place medal"], [["U+1F949"], "🥉", "3rd place medal"]]], ["sport", [[["U+26BD"], "⚽", "soccer ball"], [["U+26BE"], "⚾", "baseball"], [["U+1F94E"], "🥎", "softball"], [["U+1F3C0"], "🏀", "basketball"], [["U+1F3D0"], "🏐", "volleyball"], [["U+1F3C8"], "🏈", "american football"], [["U+1F3C9"], "🏉", "rugby football"], [["U+1F3BE"], "🎾", "tennis"], [["U+1F94F"], "🥏", "flying disc"], [["U+1F3B3"], "🎳", "bowling"], [["U+1F3CF"], "🏏", "cricket game"], [["U+1F3D1"], "🏑", "field hockey"], [["U+1F3D2"], "🏒", "ice hockey"], [["U+1F94D"], "🥍", "lacrosse"], [["U+1F3D3"], "🏓", "ping pong"], [["U+1F3F8"], "🏸", "badminton"], [["U+1F94A"], "🥊", "boxing glove"], [["U+1F94B"], "🥋", "martial arts uniform"], [["U+1F945"], "🥅", "goal net"], [["U+26F3"], "⛳", "flag in hole"], [["U+26F8"], "⛸", "ice skate"], [["U+1F3A3"], "🎣", "fishing pole"], [["U+1F93F"], "🤿", "diving mask"], [["U+1F3BD"], "🎽", "running shirt"], [["U+1F3BF"], "🎿", "skis"], [["U+1F6F7"], "🛷", "sled"], [["U+1F94C"], "🥌", "curling stone"]]], ["game", [[["U+1F3AF"], "🎯", "direct hit"], [["U+1FA80"], "🪀", "yo-yo"], [["U+1FA81"], "🪁", "kite"], [["U+1F3B1"], "🎱", "pool 8 ball"], [["U+1F52E"], "🔮", "crystal ball"], [["U+1FA84"], "🪄", "⊛ magic wand"], [["U+1F9FF"], "🧿", "nazar amulet"], [["U+1F3AE"], "🎮", "video game"], [["U+1F579"], "🕹", "joystick"], [["U+1F3B0"], "🎰", "slot machine"], [["U+1F3B2"], "🎲", "game die"], [["U+1F9E9"], "🧩", "puzzle piece"], [["U+1F9F8"], "🧸", "teddy bear"], [["U+1FA85"], "🪅", "⊛ piñata"], [["U+1FA86"], "🪆", "⊛ nesting dolls"], [["U+2660"], "♠", "spade suit"], [["U+2665"], "♥", "heart suit"], [["U+2666"], "♦", "diamond suit"], [["U+2663"], "♣", "club suit"], [["U+265F"], "♟", "chess pawn"], [["U+1F0CF"], "🃏", "joker"], [["U+1F004"], "🀄", "mahjong red dragon"], [["U+1F3B4"], "🎴", "flower playing cards"]]], ["arts & crafts", [[["U+1F3AD"], "🎭", "performing arts"], [["U+1F5BC"], "🖼", "framed picture"], [["U+1F3A8"], "🎨", "artist palette"], [["U+1F9F5"], "🧵", "thread"], [["U+1FAA1"], "🪡", "⊛ sewing needle"], [["U+1F9F6"], "🧶", "yarn"], [["U+1FAA2"], "🪢", "⊛ knot"]]]]], ["Objects", [["clothing", [[["U+1F453"], "👓", "glasses"], [["U+1F576"], "🕶", "sunglasses"], [["U+1F97D"], "🥽", "goggles"], [["U+1F97C"], "🥼", "lab coat"], [["U+1F9BA"], "🦺", "safety vest"], [["U+1F454"], "👔", "necktie"], [["U+1F455"], "👕", "t-shirt"], [["U+1F456"], "👖", "jeans"], [["U+1F9E3"], "🧣", "scarf"], [["U+1F9E4"], "🧤", "gloves"], [["U+1F9E5"], "🧥", "coat"], [["U+1F9E6"], "🧦", "socks"], [["U+1F457"], "👗", "dress"], [["U+1F458"], "👘", "kimono"], [["U+1F97B"], "🥻", "sari"], [["U+1FA71"], "🩱", "one-piece swimsuit"], [["U+1FA72"], "🩲", "briefs"], [["U+1FA73"], "🩳", "shorts"], [["U+1F459"], "👙", "bikini"], [["U+1F45A"], "👚", "woman’s clothes"], [["U+1F45B"], "👛", "purse"], [["U+1F45C"], "👜", "handbag"], [["U+1F45D"], "👝", "clutch bag"], [["U+1F6CD"], "🛍", "shopping bags"], [["U+1F392"], "🎒", "backpack"], [["U+1FA74"], "🩴", "⊛ thong sandal"], [["U+1F45E"], "👞", "man’s shoe"], [["U+1F45F"], "👟", "running shoe"], [["U+1F97E"], "🥾", "hiking boot"], [["U+1F97F"], "🥿", "flat shoe"], [["U+1F460"], "👠", "high-heeled shoe"], [["U+1F461"], "👡", "woman’s sandal"], [["U+1FA70"], "🩰", "ballet shoes"], [["U+1F462"], "👢", "woman’s boot"], [["U+1F451"], "👑", "crown"], [["U+1F452"], "👒", "woman’s hat"], [["U+1F3A9"], "🎩", "top hat"], [["U+1F393"], "🎓", "graduation cap"], [["U+1F9E2"], "🧢", "billed cap"], [["U+1FA96"], "🪖", "⊛ military helmet"], [["U+26D1"], "⛑", "rescue worker’s helmet"], [["U+1F4FF"], "📿", "prayer beads"], [["U+1F484"], "💄", "lipstick"], [["U+1F48D"], "💍", "ring"], [["U+1F48E"], "💎", "gem stone"]]], ["sound", [[["U+1F507"], "🔇", "muted speaker"], [["U+1F508"], "🔈", "speaker low volume"], [["U+1F509"], "🔉", "speaker medium volume"], [["U+1F50A"], "🔊", "speaker high volume"], [["U+1F4E2"], "📢", "loudspeaker"], [["U+1F4E3"], "📣", "megaphone"], [["U+1F4EF"], "📯", "postal horn"], [["U+1F514"], "🔔", "bell"], [["U+1F515"], "🔕", "bell with slash"]]], ["music", [[["U+1F3BC"], "🎼", "musical score"], [["U+1F3B5"], "🎵", "musical note"], [["U+1F3B6"], "🎶", "musical notes"], [["U+1F399"], "🎙", "studio microphone"], [["U+1F39A"], "🎚", "level slider"], [["U+1F39B"], "🎛", "control knobs"], [["U+1F3A4"], "🎤", "microphone"], [["U+1F3A7"], "🎧", "headphone"], [["U+1F4FB"], "📻", "radio"]]], ["musical-instrument", [[["U+1F3B7"], "🎷", "saxophone"], [["U+1FA97"], "🪗", "⊛ accordion"], [["U+1F3B8"], "🎸", "guitar"], [["U+1F3B9"], "🎹", "musical keyboard"], [["U+1F3BA"], "🎺", "trumpet"], [["U+1F3BB"], "🎻", "violin"], [["U+1FA95"], "🪕", "banjo"], [["U+1F941"], "🥁", "drum"], [["U+1FA98"], "🪘", "⊛ long drum"]]], ["phone", [[["U+1F4F1"], "📱", "mobile phone"], [["U+1F4F2"], "📲", "mobile phone with arrow"], [["U+260E"], "☎", "telephone"], [["U+1F4DE"], "📞", "telephone receiver"], [["U+1F4DF"], "📟", "pager"], [["U+1F4E0"], "📠", "fax machine"]]], ["computer", [[["U+1F50B"], "🔋", "battery"], [["U+1F50C"], "🔌", "electric plug"], [["U+1F4BB"], "💻", "laptop"], [["U+1F5A5"], "🖥", "desktop computer"], [["U+1F5A8"], "🖨", "printer"], [["U+2328"], "⌨", "keyboard"], [["U+1F5B1"], "🖱", "computer mouse"], [["U+1F5B2"], "🖲", "trackball"], [["U+1F4BD"], "💽", "computer disk"], [["U+1F4BE"], "💾", "floppy disk"], [["U+1F4BF"], "💿", "optical disk"], [["U+1F4C0"], "📀", "dvd"], [["U+1F9EE"], "🧮", "abacus"]]], ["light & video", [[["U+1F3A5"], "🎥", "movie camera"], [["U+1F39E"], "🎞", "film frames"], [["U+1F4FD"], "📽", "film projector"], [["U+1F3AC"], "🎬", "clapper board"], [["U+1F4FA"], "📺", "television"], [["U+1F4F7"], "📷", "camera"], [["U+1F4F8"], "📸", "camera with flash"], [["U+1F4F9"], "📹", "video camera"], [["U+1F4FC"], "📼", "videocassette"], [["U+1F50D"], "🔍", "magnifying glass tilted left"], [["U+1F50E"], "🔎", "magnifying glass tilted right"], [["U+1F56F"], "🕯", "candle"], [["U+1F4A1"], "💡", "light bulb"], [["U+1F526"], "🔦", "flashlight"], [["U+1F3EE"], "🏮", "red paper lantern"], [["U+1FA94"], "🪔", "diya lamp"]]], ["book-paper", [[["U+1F4D4"], "📔", "notebook with decorative cover"], [["U+1F4D5"], "📕", "closed book"], [["U+1F4D6"], "📖", "open book"], [["U+1F4D7"], "📗", "green book"], [["U+1F4D8"], "📘", "blue book"], [["U+1F4D9"], "📙", "orange book"], [["U+1F4DA"], "📚", "books"], [["U+1F4D3"], "📓", "notebook"], [["U+1F4D2"], "📒", "ledger"], [["U+1F4C3"], "📃", "page with curl"], [["U+1F4DC"], "📜", "scroll"], [["U+1F4C4"], "📄", "page facing up"], [["U+1F4F0"], "📰", "newspaper"], [["U+1F5DE"], "🗞", "rolled-up newspaper"], [["U+1F4D1"], "📑", "bookmark tabs"], [["U+1F516"], "🔖", "bookmark"], [["U+1F3F7"], "🏷", "label"]]], ["money", [[["U+1F4B0"], "💰", "money bag"], [["U+1FA99"], "🪙", "⊛ coin"], [["U+1F4B4"], "💴", "yen banknote"], [["U+1F4B5"], "💵", "dollar banknote"], [["U+1F4B6"], "💶", "euro banknote"], [["U+1F4B7"], "💷", "pound banknote"], [["U+1F4B8"], "💸", "money with wings"], [["U+1F4B3"], "💳", "credit card"], [["U+1F9FE"], "🧾", "receipt"], [["U+1F4B9"], "💹", "chart increasing with yen"]]], ["mail", [[["U+2709"], "✉", "envelope"], [["U+1F4E7"], "📧", "e-mail"], [["U+1F4E8"], "📨", "incoming envelope"], [["U+1F4E9"], "📩", "envelope with arrow"], [["U+1F4E4"], "📤", "outbox tray"], [["U+1F4E5"], "📥", "inbox tray"], [["U+1F4E6"], "📦", "package"], [["U+1F4EB"], "📫", "closed mailbox with raised flag"], [["U+1F4EA"], "📪", "closed mailbox with lowered flag"], [["U+1F4EC"], "📬", "open mailbox with raised flag"], [["U+1F4ED"], "📭", "open mailbox with lowered flag"], [["U+1F4EE"], "📮", "postbox"], [["U+1F5F3"], "🗳", "ballot box with ballot"]]], ["writing", [[["U+270F"], "✏", "pencil"], [["U+2712"], "✒", "black nib"], [["U+1F58B"], "🖋", "fountain pen"], [["U+1F58A"], "🖊", "pen"], [["U+1F58C"], "🖌", "paintbrush"], [["U+1F58D"], "🖍", "crayon"], [["U+1F4DD"], "📝", "memo"]]], ["office", [[["U+1F4BC"], "💼", "briefcase"], [["U+1F4C1"], "📁", "file folder"], [["U+1F4C2"], "📂", "open file folder"], [["U+1F5C2"], "🗂", "card index dividers"], [["U+1F4C5"], "📅", "calendar"], [["U+1F4C6"], "📆", "tear-off calendar"], [["U+1F5D2"], "🗒", "spiral notepad"], [["U+1F5D3"], "🗓", "spiral calendar"], [["U+1F4C7"], "📇", "card index"], [["U+1F4C8"], "📈", "chart increasing"], [["U+1F4C9"], "📉", "chart decreasing"], [["U+1F4CA"], "📊", "bar chart"], [["U+1F4CB"], "📋", "clipboard"], [["U+1F4CC"], "📌", "pushpin"], [["U+1F4CD"], "📍", "round pushpin"], [["U+1F4CE"], "📎", "paperclip"], [["U+1F587"], "🖇", "linked paperclips"], [["U+1F4CF"], "📏", "straight ruler"], [["U+1F4D0"], "📐", "triangular ruler"], [["U+2702"], "✂", "scissors"], [["U+1F5C3"], "🗃", "card file box"], [["U+1F5C4"], "🗄", "file cabinet"], [["U+1F5D1"], "🗑", "wastebasket"]]], ["lock", [[["U+1F512"], "🔒", "locked"], [["U+1F513"], "🔓", "unlocked"], [["U+1F50F"], "🔏", "locked with pen"], [["U+1F510"], "🔐", "locked with key"], [["U+1F511"], "🔑", "key"], [["U+1F5DD"], "🗝", "old key"]]], ["tool", [[["U+1F528"], "🔨", "hammer"], [["U+1FA93"], "🪓", "axe"], [["U+26CF"], "⛏", "pick"], [["U+2692"], "⚒", "hammer and pick"], [["U+1F6E0"], "🛠", "hammer and wrench"], [["U+1F5E1"], "🗡", "dagger"], [["U+2694"], "⚔", "crossed swords"], [["U+1F52B"], "🔫", "pistol"], [["U+1FA83"], "🪃", "⊛ boomerang"], [["U+1F3F9"], "🏹", "bow and arrow"], [["U+1F6E1"], "🛡", "shield"], [["U+1F527"], "🔧", "wrench"], [["U+1FA9B"], "🪛", "⊛ screwdriver"], [["U+1F529"], "🔩", "nut and bolt"], [["U+2699"], "⚙", "gear"], [["U+1F5DC"], "🗜", "clamp"], [["U+2696"], "⚖", "balance scale"], [["U+1F9AF"], "🦯", "white cane"], [["U+1F517"], "🔗", "link"], [["U+26D3"], "⛓", "chains"], [["U+1FA9D"], "🪝", "⊛ hook"], [["U+1F9F0"], "🧰", "toolbox"], [["U+1F9F2"], "🧲", "magnet"], [["U+1FA9C"], "🪜", "⊛ ladder"]]], ["science", [[["U+2697"], "⚗", "alembic"], [["U+1F9EA"], "🧪", "test tube"], [["U+1F9EB"], "🧫", "petri dish"], [["U+1F9EC"], "🧬", "dna"], [["U+1F52C"], "🔬", "microscope"], [["U+1F52D"], "🔭", "telescope"], [["U+1F4E1"], "📡", "satellite antenna"]]], ["medical", [[["U+1F489"], "💉", "syringe"], [["U+1FA78"], "🩸", "drop of blood"], [["U+1F48A"], "💊", "pill"], [["U+1FA79"], "🩹", "adhesive bandage"], [["U+1FA7A"], "🩺", "stethoscope"]]], ["household", [[["U+1F6AA"], "🚪", "door"], [["U+1F6D7"], "🛗", "⊛ elevator"], [["U+1F6CF"], "🛏", "bed"], [["U+1F6CB"], "🛋", "couch and lamp"], [["U+1FA91"], "🪑", "chair"], [["U+1F6BD"], "🚽", "toilet"], [["U+1FAA0"], "🪠", "⊛ plunger"], [["U+1F6BF"], "🚿", "shower"], [["U+1F6C1"], "🛁", "bathtub"], [["U+1FA92"], "🪒", "razor"], [["U+1F9F4"], "🧴", "lotion bottle"], [["U+1F9F7"], "🧷", "safety pin"], [["U+1F9F9"], "🧹", "broom"], [["U+1F9FA"], "🧺", "basket"], [["U+1F9FB"], "🧻", "roll of paper"], [["U+1FAA3"], "🪣", "⊛ bucket"], [["U+1F9FC"], "🧼", "soap"], [["U+1FAA5"], "🪥", "⊛ toothbrush"], [["U+1F9FD"], "🧽", "sponge"], [["U+1F9EF"], "🧯", "fire extinguisher"], [["U+1F6D2"], "🛒", "shopping cart"]]], ["other-object", [[["U+1F6AC"], "🚬", "cigarette"], [["U+26B0"], "⚰", "coffin"], [["U+26B1"], "⚱", "funeral urn"], [["U+1F5FF"], "🗿", "moai"], [["U+1FAA7"], "🪧", "⊛ placard"]]]]], ["Symbols", [["transport-sign", [[["U+1F3E7"], "🏧", "ATM sign"], [["U+1F6AE"], "🚮", "litter in bin sign"], [["U+1F6B0"], "🚰", "potable water"], [["U+267F"], "♿", "wheelchair symbol"], [["U+1F6B9"], "🚹", "men’s room"], [["U+1F6BA"], "🚺", "women’s room"], [["U+1F6BB"], "🚻", "restroom"], [["U+1F6BC"], "🚼", "baby symbol"], [["U+1F6BE"], "🚾", "water closet"], [["U+1F6C2"], "🛂", "passport control"], [["U+1F6C3"], "🛃", "customs"], [["U+1F6C4"], "🛄", "baggage claim"], [["U+1F6C5"], "🛅", "left luggage"]]], ["warning", [[["U+26A0"], "⚠", "warning"], [["U+1F6B8"], "🚸", "children crossing"], [["U+26D4"], "⛔", "no entry"], [["U+1F6AB"], "🚫", "prohibited"], [["U+1F6B3"], "🚳", "no bicycles"], [["U+1F6AD"], "🚭", "no smoking"], [["U+1F6AF"], "🚯", "no littering"], [["U+1F6B1"], "🚱", "non-potable water"], [["U+1F6B7"], "🚷", "no pedestrians"], [["U+1F4F5"], "📵", "no mobile phones"], [["U+1F51E"], "🔞", "no one under eighteen"], [["U+2622"], "☢", "radioactive"], [["U+2623"], "☣", "biohazard"]]], ["arrow", [[["U+2B06"], "⬆", "up arrow"], [["U+2197"], "↗", "up-right arrow"], [["U+27A1"], "➡", "right arrow"], [["U+2198"], "↘", "down-right arrow"], [["U+2B07"], "⬇", "down arrow"], [["U+2199"], "↙", "down-left arrow"], [["U+2B05"], "⬅", "left arrow"], [["U+2196"], "↖", "up-left arrow"], [["U+2195"], "↕", "up-down arrow"], [["U+2194"], "↔", "left-right arrow"], [["U+21A9"], "↩", "right arrow curving left"], [["U+21AA"], "↪", "left arrow curving right"], [["U+2934"], "⤴", "right arrow curving up"], [["U+2935"], "⤵", "right arrow curving down"], [["U+1F503"], "🔃", "clockwise vertical arrows"], [["U+1F504"], "🔄", "counterclockwise arrows button"], [["U+1F519"], "🔙", "BACK arrow"], [["U+1F51A"], "🔚", "END arrow"], [["U+1F51B"], "🔛", "ON! arrow"], [["U+1F51C"], "🔜", "SOON arrow"], [["U+1F51D"], "🔝", "TOP arrow"]]], ["religion", [[["U+1F6D0"], "🛐", "place of worship"], [["U+269B"], "⚛", "atom symbol"], [["U+1F549"], "🕉", "om"], [["U+2721"], "✡", "star of David"], [["U+2638"], "☸", "wheel of dharma"], [["U+262F"], "☯", "yin yang"], [["U+271D"], "✝", "latin cross"], [["U+2626"], "☦", "orthodox cross"], [["U+262A"], "☪", "star and crescent"], [["U+262E"], "☮", "peace symbol"], [["U+1F54E"], "🕎", "menorah"], [["U+1F52F"], "🔯", "dotted six-pointed star"]]], ["zodiac", [[["U+2648"], "♈", "Aries"], [["U+2649"], "♉", "Taurus"], [["U+264A"], "♊", "Gemini"], [["U+264B"], "♋", "Cancer"], [["U+264C"], "♌", "Leo"], [["U+264D"], "♍", "Virgo"], [["U+264E"], "♎", "Libra"], [["U+264F"], "♏", "Scorpio"], [["U+2650"], "♐", "Sagittarius"], [["U+2651"], "♑", "Capricorn"], [["U+2652"], "♒", "Aquarius"], [["U+2653"], "♓", "Pisces"], [["U+26CE"], "⛎", "Ophiuchus"]]], ["av-symbol", [[["U+1F500"], "🔀", "shuffle tracks button"], [["U+1F501"], "🔁", "repeat button"], [["U+1F502"], "🔂", "repeat single button"], [["U+25B6"], "▶", "play button"], [["U+23E9"], "⏩", "fast-forward button"], [["U+23ED"], "⏭", "next track button"], [["U+23EF"], "⏯", "play or pause button"], [["U+25C0"], "◀", "reverse button"], [["U+23EA"], "⏪", "fast reverse button"], [["U+23EE"], "⏮", "last track button"], [["U+1F53C"], "🔼", "upwards button"], [["U+23EB"], "⏫", "fast up button"], [["U+1F53D"], "🔽", "downwards button"], [["U+23EC"], "⏬", "fast down button"], [["U+23F8"], "⏸", "pause button"], [["U+23F9"], "⏹", "stop button"], [["U+23FA"], "⏺", "record button"], [["U+23CF"], "⏏", "eject button"], [["U+1F3A6"], "🎦", "cinema"], [["U+1F505"], "🔅", "dim button"], [["U+1F506"], "🔆", "bright button"], [["U+1F4F6"], "📶", "antenna bars"], [["U+1F4F3"], "📳", "vibration mode"], [["U+1F4F4"], "📴", "mobile phone off"]]], ["gender", [[["U+2640"], "♀", "female sign"], [["U+2642"], "♂", "male sign"], [["U+26A7"], "⚧", "⊛ transgender symbol"]]], ["math", [[["U+2716"], "✖", "multiply"], [["U+2795"], "➕", "plus"], [["U+2796"], "➖", "minus"], [["U+2797"], "➗", "divide"], [["U+267E"], "♾", "infinity"]]], ["punctuation", [[["U+203C"], "‼", "double exclamation mark"], [["U+2049"], "⁉", "exclamation question mark"], [["U+2753"], "❓", "question mark"], [["U+2754"], "❔", "white question mark"], [["U+2755"], "❕", "white exclamation mark"], [["U+2757"], "❗", "exclamation mark"], [["U+3030"], "〰", "wavy dash"]]], ["currency", [[["U+1F4B1"], "💱", "currency exchange"], [["U+1F4B2"], "💲", "heavy dollar sign"]]], ["other-symbol", [[["U+2695"], "⚕", "medical symbol"], [["U+267B"], "♻", "recycling symbol"], [["U+269C"], "⚜", "fleur-de-lis"], [["U+1F531"], "🔱", "trident emblem"], [["U+1F4DB"], "📛", "name badge"], [["U+1F530"], "🔰", "Japanese symbol for beginner"], [["U+2B55"], "⭕", "hollow red circle"], [["U+2705"], "✅", "check mark button"], [["U+2611"], "☑", "check box with check"], [["U+2714"], "✔", "check mark"], [["U+274C"], "❌", "cross mark"], [["U+274E"], "❎", "cross mark button"], [["U+27B0"], "➰", "curly loop"], [["U+27BF"], "➿", "double curly loop"], [["U+303D"], "〽", "part alternation mark"], [["U+2733"], "✳", "eight-spoked asterisk"], [["U+2734"], "✴", "eight-pointed star"], [["U+2747"], "❇", "sparkle"], [["U+00A9"], "©", "copyright"], [["U+00AE"], "®", "registered"], [["U+2122"], "™", "trade mark"]]], ["keycap", [[["U+0023", "U+FE0F", "U+20E3"], "#️⃣", "keycap: #"], [["U+002A", "U+FE0F", "U+20E3"], "*️⃣", "keycap: *"], [["U+0030", "U+FE0F", "U+20E3"], "0️⃣", "keycap: 0"], [["U+0031", "U+FE0F", "U+20E3"], "1️⃣", "keycap: 1"], [["U+0032", "U+FE0F", "U+20E3"], "2️⃣", "keycap: 2"], [["U+0033", "U+FE0F", "U+20E3"], "3️⃣", "keycap: 3"], [["U+0034", "U+FE0F", "U+20E3"], "4️⃣", "keycap: 4"], [["U+0035", "U+FE0F", "U+20E3"], "5️⃣", "keycap: 5"], [["U+0036", "U+FE0F", "U+20E3"], "6️⃣", "keycap: 6"], [["U+0037", "U+FE0F", "U+20E3"], "7️⃣", "keycap: 7"], [["U+0038", "U+FE0F", "U+20E3"], "8️⃣", "keycap: 8"], [["U+0039", "U+FE0F", "U+20E3"], "9️⃣", "keycap: 9"], [["U+1F51F"], "🔟", "keycap: 10"]]], ["alphanum", [[["U+1F520"], "🔠", "input latin uppercase"], [["U+1F521"], "🔡", "input latin lowercase"], [["U+1F522"], "🔢", "input numbers"], [["U+1F523"], "🔣", "input symbols"], [["U+1F524"], "🔤", "input latin letters"], [["U+1F170"], "🅰", "A button (blood type)"], [["U+1F18E"], "🆎", "AB button (blood type)"], [["U+1F171"], "🅱", "B button (blood type)"], [["U+1F191"], "🆑", "CL button"], [["U+1F192"], "🆒", "COOL button"], [["U+1F193"], "🆓", "FREE button"], [["U+2139"], "ℹ", "information"], [["U+1F194"], "🆔", "ID button"], [["U+24C2"], "Ⓜ", "circled M"], [["U+1F195"], "🆕", "NEW button"], [["U+1F196"], "🆖", "NG button"], [["U+1F17E"], "🅾", "O button (blood type)"], [["U+1F197"], "🆗", "OK button"], [["U+1F17F"], "🅿", "P button"], [["U+1F198"], "🆘", "SOS button"], [["U+1F199"], "🆙", "UP! button"], [["U+1F19A"], "🆚", "VS button"], [["U+1F201"], "🈁", "Japanese “here” button"], [["U+1F202"], "🈂", "Japanese “service charge” button"], [["U+1F237"], "🈷", "Japanese “monthly amount” button"], [["U+1F236"], "🈶", "Japanese “not free of charge” button"], [["U+1F22F"], "🈯", "Japanese “reserved” button"], [["U+1F250"], "🉐", "Japanese “bargain” button"], [["U+1F239"], "🈹", "Japanese “discount” button"], [["U+1F21A"], "🈚", "Japanese “free of charge” button"], [["U+1F232"], "🈲", "Japanese “prohibited” button"], [["U+1F251"], "🉑", "Japanese “acceptable” button"], [["U+1F238"], "🈸", "Japanese “application” button"], [["U+1F234"], "🈴", "Japanese “passing grade” button"], [["U+1F233"], "🈳", "Japanese “vacancy” button"], [["U+3297"], "㊗", "Japanese “congratulations” button"], [["U+3299"], "㊙", "Japanese “secret” button"], [["U+1F23A"], "🈺", "Japanese “open for business” button"], [["U+1F235"], "🈵", "Japanese “no vacancy” button"]]], ["geometric", [[["U+1F534"], "🔴", "red circle"], [["U+1F7E0"], "🟠", "orange circle"], [["U+1F7E1"], "🟡", "yellow circle"], [["U+1F7E2"], "🟢", "green circle"], [["U+1F535"], "🔵", "blue circle"], [["U+1F7E3"], "🟣", "purple circle"], [["U+1F7E4"], "🟤", "brown circle"], [["U+26AB"], "⚫", "black circle"], [["U+26AA"], "⚪", "white circle"], [["U+1F7E5"], "🟥", "red square"], [["U+1F7E7"], "🟧", "orange square"], [["U+1F7E8"], "🟨", "yellow square"], [["U+1F7E9"], "🟩", "green square"], [["U+1F7E6"], "🟦", "blue square"], [["U+1F7EA"], "🟪", "purple square"], [["U+1F7EB"], "🟫", "brown square"], [["U+2B1B"], "⬛", "black large square"], [["U+2B1C"], "⬜", "white large square"], [["U+25FC"], "◼", "black medium square"], [["U+25FB"], "◻", "white medium square"], [["U+25FE"], "◾", "black medium-small square"], [["U+25FD"], "◽", "white medium-small square"], [["U+25AA"], "▪", "black small square"], [["U+25AB"], "▫", "white small square"], [["U+1F536"], "🔶", "large orange diamond"], [["U+1F537"], "🔷", "large blue diamond"], [["U+1F538"], "🔸", "small orange diamond"], [["U+1F539"], "🔹", "small blue diamond"], [["U+1F53A"], "🔺", "red triangle pointed up"], [["U+1F53B"], "🔻", "red triangle pointed down"], [["U+1F4A0"], "💠", "diamond with a dot"], [["U+1F518"], "🔘", "radio button"], [["U+1F533"], "🔳", "white square button"], [["U+1F532"], "🔲", "black square button"]]]]], ["Flags", [["flag", [[["U+1F3C1"], "🏁", "chequered flag"], [["U+1F6A9"], "🚩", "triangular flag"], [["U+1F38C"], "🎌", "crossed flags"], [["U+1F3F4"], "🏴", "black flag"], [["U+1F3F3"], "🏳", "white flag"], [["U+1F3F3", "U+FE0F", "U+200D", "U+1F308"], "🏳️‍🌈", "rainbow flag"], [["U+1F3F3", "U+FE0F", "U+200D", "U+26A7", "U+FE0F"], "🏳️‍⚧️", "⊛ transgender flag"], [["U+1F3F4", "U+200D", "U+2620", "U+FE0F"], "🏴‍☠️", "pirate flag"]]], ["country-flag", [[["U+1F1E6", "U+1F1E8"], "🇦🇨", "flag: Ascension Island"], [["U+1F1E6", "U+1F1E9"], "🇦🇩", "flag: Andorra"], [["U+1F1E6", "U+1F1EA"], "🇦🇪", "flag: United Arab Emirates"], [["U+1F1E6", "U+1F1EB"], "🇦🇫", "flag: Afghanistan"], [["U+1F1E6", "U+1F1EC"], "🇦🇬", "flag: Antigua & Barbuda"], [["U+1F1E6", "U+1F1EE"], "🇦🇮", "flag: Anguilla"], [["U+1F1E6", "U+1F1F1"], "🇦🇱", "flag: Albania"], [["U+1F1E6", "U+1F1F2"], "🇦🇲", "flag: Armenia"], [["U+1F1E6", "U+1F1F4"], "🇦🇴", "flag: Angola"], [["U+1F1E6", "U+1F1F6"], "🇦🇶", "flag: Antarctica"], [["U+1F1E6", "U+1F1F7"], "🇦🇷", "flag: Argentina"], [["U+1F1E6", "U+1F1F8"], "🇦🇸", "flag: American Samoa"], [["U+1F1E6", "U+1F1F9"], "🇦🇹", "flag: Austria"], [["U+1F1E6", "U+1F1FA"], "🇦🇺", "flag: Australia"], [["U+1F1E6", "U+1F1FC"], "🇦🇼", "flag: Aruba"], [["U+1F1E6", "U+1F1FD"], "🇦🇽", "flag: Åland Islands"], [["U+1F1E6", "U+1F1FF"], "🇦🇿", "flag: Azerbaijan"], [["U+1F1E7", "U+1F1E6"], "🇧🇦", "flag: Bosnia & Herzegovina"], [["U+1F1E7", "U+1F1E7"], "🇧🇧", "flag: Barbados"], [["U+1F1E7", "U+1F1E9"], "🇧🇩", "flag: Bangladesh"], [["U+1F1E7", "U+1F1EA"], "🇧🇪", "flag: Belgium"], [["U+1F1E7", "U+1F1EB"], "🇧🇫", "flag: Burkina Faso"], [["U+1F1E7", "U+1F1EC"], "🇧🇬", "flag: Bulgaria"], [["U+1F1E7", "U+1F1ED"], "🇧🇭", "flag: Bahrain"], [["U+1F1E7", "U+1F1EE"], "🇧🇮", "flag: Burundi"], [["U+1F1E7", "U+1F1EF"], "🇧🇯", "flag: Benin"], [["U+1F1E7", "U+1F1F1"], "🇧🇱", "flag: St. Barthélemy"], [["U+1F1E7", "U+1F1F2"], "🇧🇲", "flag: Bermuda"], [["U+1F1E7", "U+1F1F3"], "🇧🇳", "flag: Brunei"], [["U+1F1E7", "U+1F1F4"], "🇧🇴", "flag: Bolivia"], [["U+1F1E7", "U+1F1F6"], "🇧🇶", "flag: Caribbean Netherlands"], [["U+1F1E7", "U+1F1F7"], "🇧🇷", "flag: Brazil"], [["U+1F1E7", "U+1F1F8"], "🇧🇸", "flag: Bahamas"], [["U+1F1E7", "U+1F1F9"], "🇧🇹", "flag: Bhutan"], [["U+1F1E7", "U+1F1FB"], "🇧🇻", "flag: Bouvet Island"], [["U+1F1E7", "U+1F1FC"], "🇧🇼", "flag: Botswana"], [["U+1F1E7", "U+1F1FE"], "🇧🇾", "flag: Belarus"], [["U+1F1E7", "U+1F1FF"], "🇧🇿", "flag: Belize"], [["U+1F1E8", "U+1F1E6"], "🇨🇦", "flag: Canada"], [["U+1F1E8", "U+1F1E8"], "🇨🇨", "flag: Cocos (Keeling) Islands"], [["U+1F1E8", "U+1F1E9"], "🇨🇩", "flag: Congo - Kinshasa"], [["U+1F1E8", "U+1F1EB"], "🇨🇫", "flag: Central African Republic"], [["U+1F1E8", "U+1F1EC"], "🇨🇬", "flag: Congo - Brazzaville"], [["U+1F1E8", "U+1F1ED"], "🇨🇭", "flag: Switzerland"], [["U+1F1E8", "U+1F1EE"], "🇨🇮", "flag: Côte d’Ivoire"], [["U+1F1E8", "U+1F1F0"], "🇨🇰", "flag: Cook Islands"], [["U+1F1E8", "U+1F1F1"], "🇨🇱", "flag: Chile"], [["U+1F1E8", "U+1F1F2"], "🇨🇲", "flag: Cameroon"], [["U+1F1E8", "U+1F1F3"], "🇨🇳", "flag: China"], [["U+1F1E8", "U+1F1F4"], "🇨🇴", "flag: Colombia"], [["U+1F1E8", "U+1F1F5"], "🇨🇵", "flag: Clipperton Island"], [["U+1F1E8", "U+1F1F7"], "🇨🇷", "flag: Costa Rica"], [["U+1F1E8", "U+1F1FA"], "🇨🇺", "flag: Cuba"], [["U+1F1E8", "U+1F1FB"], "🇨🇻", "flag: Cape Verde"], [["U+1F1E8", "U+1F1FC"], "🇨🇼", "flag: Curaçao"], [["U+1F1E8", "U+1F1FD"], "🇨🇽", "flag: Christmas Island"], [["U+1F1E8", "U+1F1FE"], "🇨🇾", "flag: Cyprus"], [["U+1F1E8", "U+1F1FF"], "🇨🇿", "flag: Czechia"], [["U+1F1E9", "U+1F1EA"], "🇩🇪", "flag: Germany"], [["U+1F1E9", "U+1F1EC"], "🇩🇬", "flag: Diego Garcia"], [["U+1F1E9", "U+1F1EF"], "🇩🇯", "flag: Djibouti"], [["U+1F1E9", "U+1F1F0"], "🇩🇰", "flag: Denmark"], [["U+1F1E9", "U+1F1F2"], "🇩🇲", "flag: Dominica"], [["U+1F1E9", "U+1F1F4"], "🇩🇴", "flag: Dominican Republic"], [["U+1F1E9", "U+1F1FF"], "🇩🇿", "flag: Algeria"], [["U+1F1EA", "U+1F1E6"], "🇪🇦", "flag: Ceuta & Melilla"], [["U+1F1EA", "U+1F1E8"], "🇪🇨", "flag: Ecuador"], [["U+1F1EA", "U+1F1EA"], "🇪🇪", "flag: Estonia"], [["U+1F1EA", "U+1F1EC"], "🇪🇬", "flag: Egypt"], [["U+1F1EA", "U+1F1ED"], "🇪🇭", "flag: Western Sahara"], [["U+1F1EA", "U+1F1F7"], "🇪🇷", "flag: Eritrea"], [["U+1F1EA", "U+1F1F8"], "🇪🇸", "flag: Spain"], [["U+1F1EA", "U+1F1F9"], "🇪🇹", "flag: Ethiopia"], [["U+1F1EA", "U+1F1FA"], "🇪🇺", "flag: European Union"], [["U+1F1EB", "U+1F1EE"], "🇫🇮", "flag: Finland"], [["U+1F1EB", "U+1F1EF"], "🇫🇯", "flag: Fiji"], [["U+1F1EB", "U+1F1F0"], "🇫🇰", "flag: Falkland Islands"], [["U+1F1EB", "U+1F1F2"], "🇫🇲", "flag: Micronesia"], [["U+1F1EB", "U+1F1F4"], "🇫🇴", "flag: Faroe Islands"], [["U+1F1EB", "U+1F1F7"], "🇫🇷", "flag: France"], [["U+1F1EC", "U+1F1E6"], "🇬🇦", "flag: Gabon"], [["U+1F1EC", "U+1F1E7"], "🇬🇧", "flag: United Kingdom"], [["U+1F1EC", "U+1F1E9"], "🇬🇩", "flag: Grenada"], [["U+1F1EC", "U+1F1EA"], "🇬🇪", "flag: Georgia"], [["U+1F1EC", "U+1F1EB"], "🇬🇫", "flag: French Guiana"], [["U+1F1EC", "U+1F1EC"], "🇬🇬", "flag: Guernsey"], [["U+1F1EC", "U+1F1ED"], "🇬🇭", "flag: Ghana"], [["U+1F1EC", "U+1F1EE"], "🇬🇮", "flag: Gibraltar"], [["U+1F1EC", "U+1F1F1"], "🇬🇱", "flag: Greenland"], [["U+1F1EC", "U+1F1F2"], "🇬🇲", "flag: Gambia"], [["U+1F1EC", "U+1F1F3"], "🇬🇳", "flag: Guinea"], [["U+1F1EC", "U+1F1F5"], "🇬🇵", "flag: Guadeloupe"], [["U+1F1EC", "U+1F1F6"], "🇬🇶", "flag: Equatorial Guinea"], [["U+1F1EC", "U+1F1F7"], "🇬🇷", "flag: Greece"], [["U+1F1EC", "U+1F1F8"], "🇬🇸", "flag: South Georgia & South Sandwich Islands"], [["U+1F1EC", "U+1F1F9"], "🇬🇹", "flag: Guatemala"], [["U+1F1EC", "U+1F1FA"], "🇬🇺", "flag: Guam"], [["U+1F1EC", "U+1F1FC"], "🇬🇼", "flag: Guinea-Bissau"], [["U+1F1EC", "U+1F1FE"], "🇬🇾", "flag: Guyana"], [["U+1F1ED", "U+1F1F0"], "🇭🇰", "flag: Hong Kong SAR China"], [["U+1F1ED", "U+1F1F2"], "🇭🇲", "flag: Heard & McDonald Islands"], [["U+1F1ED", "U+1F1F3"], "🇭🇳", "flag: Honduras"], [["U+1F1ED", "U+1F1F7"], "🇭🇷", "flag: Croatia"], [["U+1F1ED", "U+1F1F9"], "🇭🇹", "flag: Haiti"], [["U+1F1ED", "U+1F1FA"], "🇭🇺", "flag: Hungary"], [["U+1F1EE", "U+1F1E8"], "🇮🇨", "flag: Canary Islands"], [["U+1F1EE", "U+1F1E9"], "🇮🇩", "flag: Indonesia"], [["U+1F1EE", "U+1F1EA"], "🇮🇪", "flag: Ireland"], [["U+1F1EE", "U+1F1F1"], "🇮🇱", "flag: Israel"], [["U+1F1EE", "U+1F1F2"], "🇮🇲", "flag: Isle of Man"], [["U+1F1EE", "U+1F1F3"], "🇮🇳", "flag: India"], [["U+1F1EE", "U+1F1F4"], "🇮🇴", "flag: British Indian Ocean Territory"], [["U+1F1EE", "U+1F1F6"], "🇮🇶", "flag: Iraq"], [["U+1F1EE", "U+1F1F7"], "🇮🇷", "flag: Iran"], [["U+1F1EE", "U+1F1F8"], "🇮🇸", "flag: Iceland"], [["U+1F1EE", "U+1F1F9"], "🇮🇹", "flag: Italy"], [["U+1F1EF", "U+1F1EA"], "🇯🇪", "flag: Jersey"], [["U+1F1EF", "U+1F1F2"], "🇯🇲", "flag: Jamaica"], [["U+1F1EF", "U+1F1F4"], "🇯🇴", "flag: Jordan"], [["U+1F1EF", "U+1F1F5"], "🇯🇵", "flag: Japan"], [["U+1F1F0", "U+1F1EA"], "🇰🇪", "flag: Kenya"], [["U+1F1F0", "U+1F1EC"], "🇰🇬", "flag: Kyrgyzstan"], [["U+1F1F0", "U+1F1ED"], "🇰🇭", "flag: Cambodia"], [["U+1F1F0", "U+1F1EE"], "🇰🇮", "flag: Kiribati"], [["U+1F1F0", "U+1F1F2"], "🇰🇲", "flag: Comoros"], [["U+1F1F0", "U+1F1F3"], "🇰🇳", "flag: St. Kitts & Nevis"], [["U+1F1F0", "U+1F1F5"], "🇰🇵", "flag: North Korea"], [["U+1F1F0", "U+1F1F7"], "🇰🇷", "flag: South Korea"], [["U+1F1F0", "U+1F1FC"], "🇰🇼", "flag: Kuwait"], [["U+1F1F0", "U+1F1FE"], "🇰🇾", "flag: Cayman Islands"], [["U+1F1F0", "U+1F1FF"], "🇰🇿", "flag: Kazakhstan"], [["U+1F1F1", "U+1F1E6"], "🇱🇦", "flag: Laos"], [["U+1F1F1", "U+1F1E7"], "🇱🇧", "flag: Lebanon"], [["U+1F1F1", "U+1F1E8"], "🇱🇨", "flag: St. Lucia"], [["U+1F1F1", "U+1F1EE"], "🇱🇮", "flag: Liechtenstein"], [["U+1F1F1", "U+1F1F0"], "🇱🇰", "flag: Sri Lanka"], [["U+1F1F1", "U+1F1F7"], "🇱🇷", "flag: Liberia"], [["U+1F1F1", "U+1F1F8"], "🇱🇸", "flag: Lesotho"], [["U+1F1F1", "U+1F1F9"], "🇱🇹", "flag: Lithuania"], [["U+1F1F1", "U+1F1FA"], "🇱🇺", "flag: Luxembourg"], [["U+1F1F1", "U+1F1FB"], "🇱🇻", "flag: Latvia"], [["U+1F1F1", "U+1F1FE"], "🇱🇾", "flag: Libya"], [["U+1F1F2", "U+1F1E6"], "🇲🇦", "flag: Morocco"], [["U+1F1F2", "U+1F1E8"], "🇲🇨", "flag: Monaco"], [["U+1F1F2", "U+1F1E9"], "🇲🇩", "flag: Moldova"], [["U+1F1F2", "U+1F1EA"], "🇲🇪", "flag: Montenegro"], [["U+1F1F2", "U+1F1EB"], "🇲🇫", "flag: St. Martin"], [["U+1F1F2", "U+1F1EC"], "🇲🇬", "flag: Madagascar"], [["U+1F1F2", "U+1F1ED"], "🇲🇭", "flag: Marshall Islands"], [["U+1F1F2", "U+1F1F0"], "🇲🇰", "flag: North Macedonia"], [["U+1F1F2", "U+1F1F1"], "🇲🇱", "flag: Mali"], [["U+1F1F2", "U+1F1F2"], "🇲🇲", "flag: Myanmar (Burma)"], [["U+1F1F2", "U+1F1F3"], "🇲🇳", "flag: Mongolia"], [["U+1F1F2", "U+1F1F4"], "🇲🇴", "flag: Macao SAR China"], [["U+1F1F2", "U+1F1F5"], "🇲🇵", "flag: Northern Mariana Islands"], [["U+1F1F2", "U+1F1F6"], "🇲🇶", "flag: Martinique"], [["U+1F1F2", "U+1F1F7"], "🇲🇷", "flag: Mauritania"], [["U+1F1F2", "U+1F1F8"], "🇲🇸", "flag: Montserrat"], [["U+1F1F2", "U+1F1F9"], "🇲🇹", "flag: Malta"], [["U+1F1F2", "U+1F1FA"], "🇲🇺", "flag: Mauritius"], [["U+1F1F2", "U+1F1FB"], "🇲🇻", "flag: Maldives"], [["U+1F1F2", "U+1F1FC"], "🇲🇼", "flag: Malawi"], [["U+1F1F2", "U+1F1FD"], "🇲🇽", "flag: Mexico"], [["U+1F1F2", "U+1F1FE"], "🇲🇾", "flag: Malaysia"], [["U+1F1F2", "U+1F1FF"], "🇲🇿", "flag: Mozambique"], [["U+1F1F3", "U+1F1E6"], "🇳🇦", "flag: Namibia"], [["U+1F1F3", "U+1F1E8"], "🇳🇨", "flag: New Caledonia"], [["U+1F1F3", "U+1F1EA"], "🇳🇪", "flag: Niger"], [["U+1F1F3", "U+1F1EB"], "🇳🇫", "flag: Norfolk Island"], [["U+1F1F3", "U+1F1EC"], "🇳🇬", "flag: Nigeria"], [["U+1F1F3", "U+1F1EE"], "🇳🇮", "flag: Nicaragua"], [["U+1F1F3", "U+1F1F1"], "🇳🇱", "flag: Netherlands"], [["U+1F1F3", "U+1F1F4"], "🇳🇴", "flag: Norway"], [["U+1F1F3", "U+1F1F5"], "🇳🇵", "flag: Nepal"], [["U+1F1F3", "U+1F1F7"], "🇳🇷", "flag: Nauru"], [["U+1F1F3", "U+1F1FA"], "🇳🇺", "flag: Niue"], [["U+1F1F3", "U+1F1FF"], "🇳🇿", "flag: New Zealand"], [["U+1F1F4", "U+1F1F2"], "🇴🇲", "flag: Oman"], [["U+1F1F5", "U+1F1E6"], "🇵🇦", "flag: Panama"], [["U+1F1F5", "U+1F1EA"], "🇵🇪", "flag: Peru"], [["U+1F1F5", "U+1F1EB"], "🇵🇫", "flag: French Polynesia"], [["U+1F1F5", "U+1F1EC"], "🇵🇬", "flag: Papua New Guinea"], [["U+1F1F5", "U+1F1ED"], "🇵🇭", "flag: Philippines"], [["U+1F1F5", "U+1F1F0"], "🇵🇰", "flag: Pakistan"], [["U+1F1F5", "U+1F1F1"], "🇵🇱", "flag: Poland"], [["U+1F1F5", "U+1F1F2"], "🇵🇲", "flag: St. Pierre & Miquelon"], [["U+1F1F5", "U+1F1F3"], "🇵🇳", "flag: Pitcairn Islands"], [["U+1F1F5", "U+1F1F7"], "🇵🇷", "flag: Puerto Rico"], [["U+1F1F5", "U+1F1F8"], "🇵🇸", "flag: Palestinian Territories"], [["U+1F1F5", "U+1F1F9"], "🇵🇹", "flag: Portugal"], [["U+1F1F5", "U+1F1FC"], "🇵🇼", "flag: Palau"], [["U+1F1F5", "U+1F1FE"], "🇵🇾", "flag: Paraguay"], [["U+1F1F6", "U+1F1E6"], "🇶🇦", "flag: Qatar"], [["U+1F1F7", "U+1F1EA"], "🇷🇪", "flag: Réunion"], [["U+1F1F7", "U+1F1F4"], "🇷🇴", "flag: Romania"], [["U+1F1F7", "U+1F1F8"], "🇷🇸", "flag: Serbia"], [["U+1F1F7", "U+1F1FA"], "🇷🇺", "flag: Russia"], [["U+1F1F7", "U+1F1FC"], "🇷🇼", "flag: Rwanda"], [["U+1F1F8", "U+1F1E6"], "🇸🇦", "flag: Saudi Arabia"], [["U+1F1F8", "U+1F1E7"], "🇸🇧", "flag: Solomon Islands"], [["U+1F1F8", "U+1F1E8"], "🇸🇨", "flag: Seychelles"], [["U+1F1F8", "U+1F1E9"], "🇸🇩", "flag: Sudan"], [["U+1F1F8", "U+1F1EA"], "🇸🇪", "flag: Sweden"], [["U+1F1F8", "U+1F1EC"], "🇸🇬", "flag: Singapore"], [["U+1F1F8", "U+1F1ED"], "🇸🇭", "flag: St. Helena"], [["U+1F1F8", "U+1F1EE"], "🇸🇮", "flag: Slovenia"], [["U+1F1F8", "U+1F1EF"], "🇸🇯", "flag: Svalbard & Jan Mayen"], [["U+1F1F8", "U+1F1F0"], "🇸🇰", "flag: Slovakia"], [["U+1F1F8", "U+1F1F1"], "🇸🇱", "flag: Sierra Leone"], [["U+1F1F8", "U+1F1F2"], "🇸🇲", "flag: San Marino"], [["U+1F1F8", "U+1F1F3"], "🇸🇳", "flag: Senegal"], [["U+1F1F8", "U+1F1F4"], "🇸🇴", "flag: Somalia"], [["U+1F1F8", "U+1F1F7"], "🇸🇷", "flag: Suriname"], [["U+1F1F8", "U+1F1F8"], "🇸🇸", "flag: South Sudan"], [["U+1F1F8", "U+1F1F9"], "🇸🇹", "flag: São Tomé & Príncipe"], [["U+1F1F8", "U+1F1FB"], "🇸🇻", "flag: El Salvador"], [["U+1F1F8", "U+1F1FD"], "🇸🇽", "flag: Sint Maarten"], [["U+1F1F8", "U+1F1FE"], "🇸🇾", "flag: Syria"], [["U+1F1F8", "U+1F1FF"], "🇸🇿", "flag: Eswatini"], [["U+1F1F9", "U+1F1E6"], "🇹🇦", "flag: Tristan da Cunha"], [["U+1F1F9", "U+1F1E8"], "🇹🇨", "flag: Turks & Caicos Islands"], [["U+1F1F9", "U+1F1E9"], "🇹🇩", "flag: Chad"], [["U+1F1F9", "U+1F1EB"], "🇹🇫", "flag: French Southern Territories"], [["U+1F1F9", "U+1F1EC"], "🇹🇬", "flag: Togo"], [["U+1F1F9", "U+1F1ED"], "🇹🇭", "flag: Thailand"], [["U+1F1F9", "U+1F1EF"], "🇹🇯", "flag: Tajikistan"], [["U+1F1F9", "U+1F1F0"], "🇹🇰", "flag: Tokelau"], [["U+1F1F9", "U+1F1F1"], "🇹🇱", "flag: Timor-Leste"], [["U+1F1F9", "U+1F1F2"], "🇹🇲", "flag: Turkmenistan"], [["U+1F1F9", "U+1F1F3"], "🇹🇳", "flag: Tunisia"], [["U+1F1F9", "U+1F1F4"], "🇹🇴", "flag: Tonga"], [["U+1F1F9", "U+1F1F7"], "🇹🇷", "flag: Turkey"], [["U+1F1F9", "U+1F1F9"], "🇹🇹", "flag: Trinidad & Tobago"], [["U+1F1F9", "U+1F1FB"], "🇹🇻", "flag: Tuvalu"], [["U+1F1F9", "U+1F1FC"], "🇹🇼", "flag: Taiwan"], [["U+1F1F9", "U+1F1FF"], "🇹🇿", "flag: Tanzania"], [["U+1F1FA", "U+1F1E6"], "🇺🇦", "flag: Ukraine"], [["U+1F1FA", "U+1F1EC"], "🇺🇬", "flag: Uganda"], [["U+1F1FA", "U+1F1F2"], "🇺🇲", "flag: U.S. Outlying Islands"], [["U+1F1FA", "U+1F1F3"], "🇺🇳", "flag: United Nations"], [["U+1F1FA", "U+1F1F8"], "🇺🇸", "flag: United States"], [["U+1F1FA", "U+1F1FE"], "🇺🇾", "flag: Uruguay"], [["U+1F1FA", "U+1F1FF"], "🇺🇿", "flag: Uzbekistan"], [["U+1F1FB", "U+1F1E6"], "🇻🇦", "flag: Vatican City"], [["U+1F1FB", "U+1F1E8"], "🇻🇨", "flag: St. Vincent & Grenadines"], [["U+1F1FB", "U+1F1EA"], "🇻🇪", "flag: Venezuela"], [["U+1F1FB", "U+1F1EC"], "🇻🇬", "flag: British Virgin Islands"], [["U+1F1FB", "U+1F1EE"], "🇻🇮", "flag: U.S. Virgin Islands"], [["U+1F1FB", "U+1F1F3"], "🇻🇳", "flag: Vietnam"], [["U+1F1FB", "U+1F1FA"], "🇻🇺", "flag: Vanuatu"], [["U+1F1FC", "U+1F1EB"], "🇼🇫", "flag: Wallis & Futuna"], [["U+1F1FC", "U+1F1F8"], "🇼🇸", "flag: Samoa"], [["U+1F1FD", "U+1F1F0"], "🇽🇰", "flag: Kosovo"], [["U+1F1FE", "U+1F1EA"], "🇾🇪", "flag: Yemen"], [["U+1F1FE", "U+1F1F9"], "🇾🇹", "flag: Mayotte"], [["U+1F1FF", "U+1F1E6"], "🇿🇦", "flag: South Africa"], [["U+1F1FF", "U+1F1F2"], "🇿🇲", "flag: Zambia"], [["U+1F1FF", "U+1F1FC"], "🇿🇼", "flag: Zimbabwe"]]], ["subdivision-flag", [[["U+1F3F4", "U+E0067", "U+E0062", "U+E0065", "U+E006E", "U+E0067", "U+E007F"], "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "flag: England"], [["U+1F3F4", "U+E0067", "U+E0062", "U+E0073", "U+E0063", "U+E0074", "U+E007F"], "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "flag: Scotland"], [["U+1F3F4", "U+E0067", "U+E0062", "U+E0077", "U+E006C", "U+E0073", "U+E007F"], "🏴󠁧󠁢󠁷󠁬󠁳󠁿", "flag: Wales"]]]]]];
@@ -43086,16 +43191,16 @@ BaseView.prototype.execCmd = function () {
 
 /* harmony default export */ var component_BaseView = (BaseView);
 // EXTERNAL MODULE: ./css/App.css
-var App = __webpack_require__(155);
+var App = __webpack_require__(154);
 
 // EXTERNAL MODULE: ./css/ListRealty.css
-var ListRealty = __webpack_require__(157);
+var ListRealty = __webpack_require__(156);
 
 // EXTERNAL MODULE: ./css/ModuleView.css
-var ModuleView = __webpack_require__(159);
+var ModuleView = __webpack_require__(158);
 
 // EXTERNAL MODULE: ./css/tablesort.css
-var tablesort = __webpack_require__(161);
+var tablesort = __webpack_require__(160);
 
 // CONCATENATED MODULE: ./js/component/HashTable.js
 function HashTable(data) {
@@ -43328,7 +43433,7 @@ HashTableFilter.prototype.getKey = function (key, index) {
   }
 };
 // EXTERNAL MODULE: ./css/FormatFunction.css
-var FormatFunction = __webpack_require__(163);
+var FormatFunction = __webpack_require__(162);
 
 // CONCATENATED MODULE: ./js/component/FormatFunction.js
 
@@ -43380,6 +43485,13 @@ function formatDate(date) {
 
   if (isYear) resultDayMonth.push('' + d.getFullYear());
   return resultTime.join(':') + " " + resultDayMonth.join('/');
+}
+function formatNumber(n) {
+  // format number 1000000 to 1,234,567
+  return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+function reFormatNumber(n) {
+  return parseFloat(n.split(",").join(""));
 }
 function getGMT(date) {
   var timezone = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -44801,6 +44913,7 @@ tableView.prototype.pagination = function (number, functionClick) {
             if (functionClick !== undefined) functionClick(event, i);
             self.updateTable(undefined, self.data, self.dragHorizontal, self.dragVertical, i * number);
             if (self.scrollParent !== undefined) self.scrollParent.scrollTop = 0;
+            if (self.changePageIndex !== undefined) self.changePageIndex(i);
           };
         }(i),
         mouseover: function mouseover(event) {
@@ -44872,96 +44985,101 @@ tableView.prototype.pagination = function (number, functionClick) {
   var displayNone = [];
 
   temp.updateSize = function () {
-    for (var i = 0; i < displayNone.length; i++) {
-      displayNone[i].style.display = "";
-    }
+    setTimeout(function () {
+      for (var i = 0; i < displayNone.length; i++) {
+        displayNone[i].style.display = "";
+      }
 
-    temp.detailLeft.style.display = "";
-    temp.detailRight.style.display = "";
-    var count = parseInt((self.offsetWidth - 20) / 50) - 4;
-    var i = 0;
-    var active = ModuleView_$("a.active", container);
-    displayNone = [active];
-    var countTime = -99;
+      temp.detailLeft.style.display = "";
+      temp.detailRight.style.display = "";
+      var count = parseInt((self.offsetWidth - 20) / 50) - 4;
+      var i = 0;
+      var active = ModuleView_$("a.active", container);
+      displayNone = [active];
+      var countTime = -99;
 
-    if (count < arr.length) {
-      var countTime = count;
-    }
+      if (count < arr.length) {
+        var countTime = count;
+      }
 
-    var lastIndexPrev, lastIndexPrevBefore;
-    var lastIndexNext, lastIndexNextBefore;
-    var isLeft = false,
-        isRight = false;
+      var lastIndexPrev, lastIndexPrevBefore;
+      var lastIndexNext, lastIndexNextBefore;
+      var isLeft = false,
+          isRight = false;
 
-    if (active !== undefined) {
-      var prev = active.previousSibling,
-          next = active.nextSibling;
+      if (active !== undefined) {
+        var prev = active.previousSibling,
+            next = active.nextSibling;
 
-      while (i <= count && !(isLeft == true && isRight == true)) {
-        if (isRight == false && next != null) {
-          if (i == countTime) {
-            while (next == temp.detailRight || next == temp.detailLeft) {
+        while (i <= count && !(isLeft == true && isRight == true)) {
+          if (isRight == false && next != null) {
+            if (i == countTime) {
+              while (next == temp.detailRight || next == temp.detailLeft) {
+                next = next.nextSibling;
+              }
+
+              isRight = true;
+              lastIndexNext.style.display = "";
+              lastIndexNextBefore.style.display = "";
+              temp.detailRight.style.display = "flex";
+              displayNone.push(container.lastChild);
+              container.lastChild.style.display = "flex";
+            } else {
+              while (next == temp.detailRight || next == temp.detailLeft) {
+                next = next.nextSibling;
+              }
+
+              next.style.display = "flex";
+              lastIndexNextBefore = lastIndexNext;
+              lastIndexNext = next;
+              displayNone.push(next);
               next = next.nextSibling;
+              i++;
             }
-
+          } else {
             isRight = true;
-            lastIndexNext.style.display = "";
-            lastIndexNextBefore.style.display = "";
-            temp.detailRight.style.display = "flex";
-            displayNone.push(container.lastChild);
-            container.lastChild.style.display = "flex";
-          } else {
-            while (next == temp.detailRight || next == temp.detailLeft) {
-              next = next.nextSibling;
-            }
-
-            next.style.display = "flex";
-            lastIndexNextBefore = lastIndexNext;
-            lastIndexNext = next;
-            displayNone.push(next);
-            next = next.nextSibling;
-            i++;
           }
-        } else {
-          isRight = true;
-        }
 
-        if (i > count) break;
+          if (i > count) break;
 
-        if (isLeft == false && prev != null) {
-          if (i == countTime) {
-            while (prev == temp.detailLeft || prev == temp.detailRight) {
+          if (isLeft == false && prev != null) {
+            if (i == countTime) {
+              while (prev == temp.detailLeft || prev == temp.detailRight) {
+                prev = prev.previousSibling;
+              }
+
+              isLeft = true;
+              lastIndexPrev.style.display = "";
+              lastIndexPrevBefore.style.display = "";
+              temp.detailLeft.style.display = "flex";
+              displayNone.push(container.firstChild);
+              container.firstChild.style.display = "flex";
+            } else {
+              while (prev == temp.detailLeft || prev == temp.detailRight) {
+                prev = prev.previousSibling;
+              }
+
+              prev.style.display = "flex";
+              lastIndexPrevBefore = lastIndexPrev;
+              lastIndexPrev = prev;
+              displayNone.push(prev);
               prev = prev.previousSibling;
+              i++;
             }
-
+          } else {
             isLeft = true;
-            lastIndexPrev.style.display = "";
-            lastIndexPrevBefore.style.display = "";
-            temp.detailLeft.style.display = "flex";
-            displayNone.push(container.firstChild);
-            container.firstChild.style.display = "flex";
-          } else {
-            while (prev == temp.detailLeft || prev == temp.detailRight) {
-              prev = prev.previousSibling;
-            }
-
-            prev.style.display = "flex";
-            lastIndexPrevBefore = lastIndexPrev;
-            lastIndexPrev = prev;
-            displayNone.push(prev);
-            prev = prev.previousSibling;
-            i++;
           }
-        } else {
-          isLeft = true;
         }
       }
-    }
+    }, 10);
   };
 
-  setTimeout(function () {
-    temp.updateSize();
-  }, 10);
+  temp.updateSize();
+
+  this["goto"] = function (index) {
+    arr[index - 1].click();
+  };
+
   return temp;
 };
 
@@ -46538,7 +46656,7 @@ function createAlias(string) {
 function removeAccents(str) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
 }
-function deleteQuestion(title, content) {
+function ModuleView_deleteQuestion(title, content) {
   var yes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "Có";
   var no = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "không";
   var contentElement;
@@ -46637,13 +46755,13 @@ function deleteQuestion(title, content) {
   return temp;
 }
 // EXTERNAL MODULE: ./css/NewRealty.css
-var NewRealty = __webpack_require__(165);
+var NewRealty = __webpack_require__(164);
 
 // EXTERNAL MODULE: ./css/imagesilder.css
-var imagesilder = __webpack_require__(167);
+var imagesilder = __webpack_require__(166);
 
 // EXTERNAL MODULE: ./css/MapView.css
-var MapView = __webpack_require__(169);
+var MapView = __webpack_require__(168);
 
 // CONCATENATED MODULE: ./js/component/MapView.js
 
@@ -47206,7 +47324,7 @@ MapView_MapView.prototype.smoothZoom = function (max, cnt) {
   }
 };
 // EXTERNAL MODULE: ./css/ModuleImage.css
-var ModuleImage = __webpack_require__(171);
+var ModuleImage = __webpack_require__(170);
 
 // CONCATENATED MODULE: ./js/component/ModuleImage.js
 
@@ -47633,6 +47751,14 @@ function descViewImagePreview() {
     self.addFunctionLazyLoad(promiseLazyLoad);
   }
 
+  var functionESC = function functionESC(event) {
+    if (event.keyCode == 27) {
+      self.selfRemove();
+      window.removeEventListener("keydown", functionESC);
+    }
+  };
+
+  window.addEventListener("keydown", functionESC);
   return self;
 }
 
@@ -47745,7 +47871,6 @@ descViewImagePreview.prototype.SelectImage = function (index) {
   this.itemSelect = ModuleImage_$("div#thumb_" + index, this);
   this.itemSelect.classList.add("selected");
   this.resetImage(this.itemSelect.data);
-  this.titleTimeLine.innerText = this.itemSelect.dayElement.getDate();
 
   if (this.itemSelect.nextElement() === null) {
     if (!this.prevButton.classList.contains("unclickable")) this.prevButton.classList.add("unclickable");
@@ -47764,6 +47889,21 @@ descViewImagePreview.prototype.SelectImage = function (index) {
   }
 
   this.scrollView();
+  var self = this;
+  setTimeout(function () {
+    var arr = self.containImage.getElementsByClassName("image-show__thumb__legend");
+    var last, current;
+
+    for (var i = 0; i < arr.length; i++) {
+      last = current;
+      current = arr[i];
+
+      if (self.titleTimeLine.getBoundingClientRect().y <= current.getBoundingClientRect().y - 16) {
+        if (last !== undefined) self.titleTimeLine.innerText = last.getDate();else self.titleTimeLine.innerText = current.getDate();
+        break;
+      }
+    }
+  }, 10);
 };
 
 descViewImagePreview.prototype.scrollView = function () {
@@ -47846,6 +47986,7 @@ function NewRealty_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol ==
 
 
 
+
 var NewRealty_ = dom_Fcore._;
 var NewRealty_$ = dom_Fcore.$;
 
@@ -47895,10 +48036,6 @@ NewRealty_NewRealty.prototype.generalData = function () {
 
     switch (value) {}
   }
-};
-
-NewRealty_NewRealty.prototype.getDataSave = function () {
-  var temp = {};
 };
 
 NewRealty_NewRealty.prototype.getView = function () {
@@ -47962,8 +48099,7 @@ NewRealty_NewRealty.prototype.getView = function () {
     "class": ["pizo-list-realty-main"],
     child: [this.descView()]
   }));
-  self.createPromise(); // setTimeout(function(){selectElement("pizo-new-realty-convenient-content-area-size-zone",1)},500)
-
+  self.createPromise();
   return this.$view;
 };
 
@@ -48596,9 +48732,9 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
   });
 
   this.inputName = NewRealty_$('input.pizo-new-realty-desc-detail-row-cell-input', temp);
-  this.inputLease = NewRealty_$('input.pizo-new-realty-desc-detail-row-menu-2-checkbox', temp);
-  this.inputSell = NewRealty_$('input.pizo-new-realty-desc-detail-row-menu-1-checkbox', temp);
-  this.inputContent = NewRealty_$('input.pizo-new-realty-desc-detail-row-input', temp);
+  this.inputLease = NewRealty_$('div.pizo-new-realty-desc-detail-row-menu-2-checkbox', temp);
+  this.inputSell = NewRealty_$('div.pizo-new-realty-desc-detail-row-menu-1-checkbox', temp);
+  this.inputContent = NewRealty_$('textarea.pizo-new-realty-desc-detail-row-input', temp);
   return temp;
 };
 
@@ -48617,6 +48753,10 @@ NewRealty_NewRealty.prototype.detructView = function () {
   });
   var unit_Zone_2 = unit_Zone(function (event) {
     var area2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
+    area2.value = area2.value * event.lastValue / event.value;
+  });
+  var unit_Zone_all = unit_Zone(function (event) {
+    var area2 = NewRealty_$('pizo-new-realty-dectruct-content-area-all', temp);
     area2.value = area2.value * event.lastValue / event.value;
   });
   var unitWidthRoad = unit_Long(function (event) {
@@ -48682,6 +48822,9 @@ NewRealty_NewRealty.prototype.detructView = function () {
                     input1.value = valueA * valueB / input1.nextSibling.value;
                     var input2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
                     input2.value = valueA * valueB / input2.nextSibling.value;
+                    var inputall = NewRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
+                    inputall.value = valueA * valueB / input2.nextSibling.value;
+                    inputall.emit("change");
                   }
                 },
                 attr: {
@@ -48724,6 +48867,9 @@ NewRealty_NewRealty.prototype.detructView = function () {
                     input1.value = valueA * valueB / input1.nextSibling.value;
                     var input2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
                     input2.value = valueA * valueB / input2.nextSibling.value;
+                    var inputall = NewRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
+                    inputall.value = valueA * valueB / input2.nextSibling.value;
+                    inputall.emit("change");
                   }
                 },
                 attr: {
@@ -48731,6 +48877,76 @@ NewRealty_NewRealty.prototype.detructView = function () {
                   min: 0
                 }
               }, unitWidth]
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-realty-dectruct-content-area-size",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-1-label",
+                props: {
+                  innerHTML: "Diện tích"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-all", "pizo-new-realty-dectruct-input"],
+                on: {
+                  change: function change(event) {
+                    var inputValue = NewRealty_$("input.pizo-new-realty-detruct-content-price-per", temp);
+                    var price = NewRealty_$('input.pizo-new-realty-detruct-content-price', temp);
+                    var priceUnit = NewRealty_$('div.pizo-new-realty-detruct-content-price-unit', temp);
+                    var areaValue = NewRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
+                    var areaValueUnit = unit_Zone_all;
+                    inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value);
+                  }
+                },
+                attr: {
+                  type: "number",
+                  min: 0
+                }
+              }, unit_Zone_all]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-2-label",
+                props: {
+                  innerHTML: "Kết cấu"
+                }
+              }, {
+                tag: "selectmenu",
+                "class": "pizo-new-realty-detruct-content-structure",
+                props: {
+                  items: [{
+                    text: "Chưa xác định",
+                    value: 0
+                  }, {
+                    text: "Đất trống",
+                    value: 1
+                  }, {
+                    text: "Kết cấu",
+                    value: 2
+                  }, {
+                    text: "Cấp 4",
+                    value: 3
+                  }, {
+                    text: "Sẳn *",
+                    value: 4
+                  }]
+                }
+              }]
             }]
           }]
         }, {
@@ -48793,6 +49009,144 @@ NewRealty_NewRealty.prototype.detructView = function () {
               tag: "span",
               "class": "pizo-new-realty-detruct-content-area-label",
               props: {
+                innerHTML: "Giá"
+              }
+            }, {
+              tag: "input",
+              "class": ["pizo-new-realty-detruct-content-price", "pizo-new-realty-dectruct-input"],
+              props: {
+                value: 0
+              },
+              on: {
+                change: function change(event) {
+                  var inputValue = NewRealty_$("input.pizo-new-realty-detruct-content-price-per", temp);
+                  var price = NewRealty_$('input.pizo-new-realty-detruct-content-price', temp);
+                  var priceUnit = NewRealty_$('div.pizo-new-realty-detruct-content-price-unit', temp);
+                  var areaValue = NewRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
+                  var areaValueUnit = unit_Zone_all;
+                  inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value);
+                }
+              }
+            }, {
+              tag: "selectmenu",
+              "class": "pizo-new-realty-detruct-content-price-unit",
+              on: {
+                change: function change(event) {
+                  var price = NewRealty_$('input.pizo-new-realty-detruct-content-price', temp);
+                  price.value = price.value * event.lastValue / event.value;
+                }
+              },
+              props: {
+                items: [{
+                  text: "tỉ",
+                  value: 1000
+                }, {
+                  text: "triệu",
+                  value: 1
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": ["pizo-new-realty-dectruct-content-area-size-zone", "margin-style"],
+          child: [{
+            tag: "div",
+            "class": "pizo-new-realty-desc-detail-row",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-realty-detruct-content-area-label",
+              props: {
+                innerHTML: "Giá m²"
+              }
+            }, {
+              tag: "input",
+              "class": ["pizo-new-realty-detruct-content-price-per", "pizo-new-realty-dectruct-input"],
+              attr: {
+                disabled: ""
+              }
+            }]
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-content-area",
+        child: [{
+          tag: "div",
+          "class": ["pizo-new-realty-dectruct-content-area-size-zone", "no-margin-style"],
+          child: [{
+            tag: "div",
+            "class": "pizo-new-realty-desc-detail-row",
+            child: [{
+              tag: "span",
+              "class": ["pizo-new-realty-detruct-content-price-rent-label", "pizo-new-realty-detruct-content-area-label"],
+              props: {
+                innerHTML: "Giá thuê tháng"
+              }
+            }, {
+              tag: "input",
+              "class": ["pizo-new-realty-detruct-content-price-rent", "pizo-new-realty-dectruct-input"],
+              on: {
+                input: function input(event) {
+                  this.value = formatNumber(this.value);
+                }
+              }
+            }, {
+              tag: "selectmenu",
+              "class": "pizo-new-realty-detruct-content-price-rent-unit",
+              on: {
+                change: function change(event) {
+                  var price = NewRealty_$('input.pizo-new-realty-detruct-content-price-rent', temp);
+                  price.value = reFormatNumber(price.value) * event.lastValue / event.value;
+                }
+              },
+              props: {
+                items: [{
+                  text: "VND",
+                  value: 1
+                }, {
+                  text: "USD",
+                  value: 23180
+                }]
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": ["pizo-new-realty-dectruct-content-area-size-zone", "margin-style"],
+          child: [{
+            tag: "div",
+            "class": "pizo-new-realty-desc-detail-row",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-realty-detruct-content-area-label",
+              style: {
+                width: "fit-content",
+                alignItems: "center",
+                height: "30px"
+              },
+              props: {
+                innerHTML: "Kiểm duyệt"
+              }
+            }, {
+              tag: "checkbox",
+              "class": ["pizo-new-realty-detruct-content-censorship"]
+            }]
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-content-area",
+        child: [{
+          tag: "div",
+          "class": ["pizo-new-realty-dectruct-content-area-size-zone", "no-margin-style"],
+          child: [{
+            tag: "div",
+            "class": "pizo-new-realty-desc-detail-row",
+            child: [{
+              tag: "span",
+              "class": "pizo-new-realty-detruct-content-area-label",
+              props: {
                 innerHTML: "Hướng"
               }
             }, {
@@ -48800,6 +49154,9 @@ NewRealty_NewRealty.prototype.detructView = function () {
               "class": "pizo-new-realty-detruct-content-direction",
               props: {
                 items: [{
+                  text: "Chưa xác định",
+                  value: 0
+                }, {
                   text: "Đông",
                   value: 6
                 }, {
@@ -48844,18 +49201,49 @@ NewRealty_NewRealty.prototype.detructView = function () {
               "class": "pizo-new-realty-detruct-content-type",
               props: {
                 items: [{
-                  text: "Hẻm",
+                  text: "Chưa xác định",
                   value: 0
                 }, {
-                  text: "Mặt tiền",
+                  text: "Hẻm",
                   value: 1
                 }, {
-                  text: "Chung cư",
+                  text: "Mặt tiền",
                   value: 2
+                }, {
+                  text: "Chung cư",
+                  value: 3
                 }]
               }
             }]
           }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-content-area-right",
+        child: [{
+          tag: "span",
+          "class": "pizo-new-realty-detruct-content-area-label",
+          props: {
+            innerHTML: "Phù hợp khai thác"
+          }
+        }, {
+          tag: "selectbox",
+          "class": ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
+          props: {
+            items: [{
+              text: "Để ở",
+              value: 1
+            }, {
+              text: "Cho thuê",
+              value: 10
+            }, {
+              text: "Kinh doanh",
+              value: 100
+            }, {
+              text: "Làm văn phòng",
+              value: 1000
+            }]
+          }
         }]
       }, {
         tag: "div",
@@ -48873,6 +49261,9 @@ NewRealty_NewRealty.prototype.detructView = function () {
             type: "number",
             min: 0,
             step: 1
+          },
+          props: {
+            value: 0
           }
         }, unitWidthRoad]
       }, {
@@ -48885,8 +49276,62 @@ NewRealty_NewRealty.prototype.detructView = function () {
             marginBottom: "0.7143rem"
           },
           props: {
-            innerHTML: "Số lượng phòng"
+            innerHTML: "Quy mô kết cấu"
           }
+        }, {
+          tag: "div",
+          "class": "pizo-new-realty-dectruct-content-area-size",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-floor-label",
+                props: {
+                  innerHTML: "Tầng"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-floor", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0,
+                  step: 1
+                },
+                props: {
+                  value: 0
+                }
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-basement-label",
+                props: {
+                  innerHTML: "Hầm"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-basement", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0,
+                  step: 1
+                },
+                props: {
+                  value: 0
+                }
+              }]
+            }]
+          }]
         }, {
           tag: "div",
           "class": "pizo-new-realty-dectruct-content-area-size",
@@ -48909,10 +49354,42 @@ NewRealty_NewRealty.prototype.detructView = function () {
                   type: "number",
                   min: 0,
                   step: 1
+                },
+                props: {
+                  value: 0
                 }
               }]
             }]
           }, {
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-dectruct-content-area-living-label",
+                props: {
+                  innerHTML: "Phòng khách"
+                }
+              }, {
+                tag: "input",
+                "class": ["pizo-new-realty-dectruct-content-area-living", "pizo-new-realty-dectruct-input"],
+                attr: {
+                  type: "number",
+                  min: 0,
+                  step: 1
+                },
+                props: {
+                  value: 0
+                }
+              }]
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-realty-dectruct-content-area-size",
+          child: [{
             tag: "div",
             "class": "pizo-new-realty-dectruct-content-area-size-zone",
             child: [{
@@ -48931,32 +49408,9 @@ NewRealty_NewRealty.prototype.detructView = function () {
                   type: "number",
                   min: 0,
                   step: 1
-                }
-              }]
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
-              child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-bathroom-label",
+                },
                 props: {
-                  innerHTML: "Phòng tắm"
-                }
-              }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-bathroom", "pizo-new-realty-dectruct-input"],
-                attr: {
-                  type: "number",
-                  min: 0,
-                  step: 1
+                  value: 0
                 }
               }]
             }]
@@ -48968,65 +49422,20 @@ NewRealty_NewRealty.prototype.detructView = function () {
               "class": "pizo-new-realty-desc-detail-row",
               child: [{
                 tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-garage-label",
+                "class": "pizo-new-realty-dectruct-content-area-toilet-label",
                 props: {
-                  innerHTML: "Garage"
+                  innerHTML: "Toilet"
                 }
               }, {
                 tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-garage", "pizo-new-realty-dectruct-input"],
+                "class": ["pizo-new-realty-dectruct-content-area-toilet", "pizo-new-realty-dectruct-input"],
                 attr: {
                   type: "number",
                   min: 0,
                   step: 1
-                }
-              }]
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
-              child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-basement-label",
+                },
                 props: {
-                  innerHTML: "Tầng hầm"
-                }
-              }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-basement", "pizo-new-realty-dectruct-input"],
-                attr: {
-                  type: "number",
-                  min: 0,
-                  step: 1
-                }
-              }]
-            }]
-          }, {
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
-              child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-balcony-label",
-                props: {
-                  innerHTML: "Ban công"
-                }
-              }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-balcony", "pizo-new-realty-dectruct-input"],
-                attr: {
-                  type: "number",
-                  min: 0,
-                  step: 1
+                  value: 0
                 }
               }]
             }]
@@ -49044,17 +49453,80 @@ NewRealty_NewRealty.prototype.detructView = function () {
   this.inputZone2 = NewRealty_$('input.pizo-new-realty-dectruct-content-area-2.pizo-new-realty-dectruct-input', temp);
   this.inputUnitZone1 = unit_Zone_1;
   this.inputUnitZone2 = unit_Zone_2;
+  this.inputZoneAll = NewRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
+  this.inputUnitZoneAll = unit_Zone_all;
+  this.inputPrice = NewRealty_$('input.pizo-new-realty-detruct-content-price', temp);
+  this.inputUnitPrice = NewRealty_$('div.pizo-new-realty-detruct-content-price-unit', temp);
+  this.inputPriceRent = NewRealty_$('input.pizo-new-realty-detruct-content-price-rent', temp);
+  this.inputPriceRentUnit = NewRealty_$('div.pizo-new-realty-detruct-content-price-rent-unit', temp);
+  this.inputCensorship = NewRealty_$('div.pizo-new-realty-detruct-content-censorship', temp);
+  this.inputFit = NewRealty_$('div.pizo-new-realty-dectruct-content-area-fit', temp);
   this.direction = NewRealty_$('div.pizo-new-realty-detruct-content-direction', temp);
+  this.structure = NewRealty_$('div.pizo-new-realty-detruct-content-structure', temp);
   this.type = NewRealty_$('div.pizo-new-realty-detruct-content-type', temp);
   this.inputWidthRoad = NewRealty_$('input.pizo-new-realty-dectruct-content-area-access', temp);
   this.inputUnitWidthRoad = unitWidthRoad;
   this.inputBedroom = NewRealty_$('input.pizo-new-realty-dectruct-content-area-bedroom', temp);
   this.inputKitchen = NewRealty_$('input.pizo-new-realty-dectruct-content-area-kitchen', temp);
-  this.inputBathroom = NewRealty_$('input.pizo-new-realty-dectruct-content-area-bathroom', temp);
-  this.inputGarage = NewRealty_$('input.pizo-new-realty-dectruct-content-area-garage', temp);
+  this.inputToilet = NewRealty_$('input.pizo-new-realty-dectruct-content-area-toilet', temp);
+  this.inputLiving = NewRealty_$('input.pizo-new-realty-dectruct-content-area-living', temp);
   this.inputBasement = NewRealty_$('input.pizo-new-realty-dectruct-content-area-basement', temp);
-  this.inputBalcony = NewRealty_$('input.pizo-new-realty-dectruct-content-area-balcony', temp);
+  this.inputFloor = NewRealty_$('input.pizo-new-realty-dectruct-content-area-floor', temp);
+
+  if (this.data !== undefined) {
+    var original = this.data.original;
+    this.inputHeight.value = original.height;
+    this.inputWidth.value = original.width;
+    this.inputZone1.value = original.landarea;
+    this.inputZone2.value = original.floorarea;
+    this.inputZoneAll.value = original.acreage;
+    this.direction.value = original.direction;
+    this.type.value = original.type;
+    this.inputFit.value = original.fit;
+    this.inputWidthRoad.value = original.roadwidth;
+    this.inputFloor.value = original.floor;
+    this.inputBasement.value = original.basement;
+    this.inputBedroom.value = original.bedroom;
+    this.inputLiving.value = original.living;
+    this.inputToilet.value = original.toilet;
+    this.inputKitchen.value = original.kitchen;
+    this.inputPrice.value = original.price;
+    this.inputPriceRent.value = original.pricerent;
+    this.structure.value = original.structure;
+    this.inputName.value = original.name;
+    var checkStatus = parseInt(original.salestatus);
+    this.inputLease.checked = parseInt(checkStatus / 10) == 1 ? true : false;
+    this.inputSell.checked = parseInt(checkStatus % 10) == 1 ? true : false;
+    this.inputContent.value = original.content;
+  }
+
   return temp;
+};
+
+NewRealty_NewRealty.prototype.getDataSave = function () {
+  return {
+    height: this.inputHeight.value * this.inputUnitHeight.value,
+    width: this.inputWidth.value * this.inputUnitWidth.value,
+    landarea: this.inputZone1.value * this.inputUnitZone1.value,
+    floorarea: this.inputZone2.value * this.inputUnitZone2.value,
+    acreage: this.inputZoneAll.value * this.inputUnitZoneAll.value,
+    direction: this.direction.value,
+    type: this.type.value,
+    fit: this.inputFit.value,
+    roadwidth: this.inputWidthRoad.value * this.inputUnitWidthRoad.value,
+    floor: this.inputFloor.value,
+    basement: this.inputBasement.value,
+    bedroom: this.inputBedroom.value,
+    living: this.inputLiving.value,
+    toilet: this.inputToilet.value,
+    kitchen: this.inputKitchen.value,
+    price: this.inputPrice.value,
+    name: this.inputName.value,
+    content: this.inputContent.value,
+    salestatus: (this.inputLease.checked == true ? 1 : 0) * 10 + (this.inputSell.checked == true ? 1 : 0),
+    structure: this.structure.value,
+    pricerent: this.inputPriceRent.value * this.inputPriceRentUnit.value
+  };
 };
 
 NewRealty_NewRealty.prototype.utilityView = function () {
@@ -49284,7 +49756,335 @@ NewRealty_NewRealty.prototype.convenientView = function () {
   return temp;
 };
 
+NewRealty_NewRealty.prototype.contactItem = function (data) {
+  var relate = 1;
+
+  if (data.original.statusphone !== undefined) {
+    relate = data.original.statusphone;
+  }
+
+  var temp = NewRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-contact-item",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-contact-item-name",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-contact-item-name-label",
+        props: {
+          innerHTML: "Tên"
+        }
+      }, {
+        tag: "input",
+        "class": "pizo-new-realty-contact-item-name-input",
+        props: {
+          value: data.original.name
+        }
+      }, {
+        tag: "selectmenu",
+        "class": "pizo-new-realty-contact-item-name-selectbox",
+        props: {
+          items: [{
+            text: "Chưa xác định",
+            value: 0
+          }, {
+            text: "Môi giới",
+            value: 1
+          }, {
+            text: "Chủ nhà",
+            value: 2
+          }, {
+            text: "Họ hàng",
+            value: 3
+          }]
+        }
+      }, {
+        tag: "button",
+        "class": "pizo-new-realty-contact-item-close",
+        on: {
+          click: function click(event) {
+            temp.selfRemove();
+          }
+        },
+        child: [{
+          tag: "i",
+          "class": "material-icons",
+          style: {
+            fontSize: "1rem"
+          },
+          props: {
+            innerHTML: "close"
+          }
+        }]
+      }]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-contact-item-phone",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-contact-item-phone-label",
+        props: {
+          innerHTML: "Số điện thoại"
+        }
+      }, {
+        tag: "input",
+        "class": "pizo-new-realty-contact-item-phone-input",
+        props: {
+          type: "number",
+          value: data.original.phone
+        }
+      }, {
+        tag: "selectmenu",
+        "class": "pizo-new-realty-contact-item-phone-selectbox",
+        props: {
+          items: [{
+            text: "Còn hoạt động",
+            value: 1
+          }, {
+            text: "Sai số",
+            value: 0
+          }, {
+            text: "Gọi lại sau",
+            value: 2
+          }, {
+            text: "Bỏ qua",
+            value: 3
+          }, {
+            text: "Khóa máy",
+            value: 4
+          }],
+          value: relate
+        }
+      }, {}]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-contact-item-note",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-contact-item-note-label",
+        props: {
+          innerHTML: "Ghi chú"
+        }
+      }, {
+        tag: "textarea",
+        "class": "pizo-new-realty-contact-item-note-input"
+      }]
+    }]
+  });
+
+  var name = NewRealty_$('input.pizo-new-realty-contact-item-name-input', temp);
+  var type_contact = NewRealty_$('div.pizo-new-realty-contact-item-name-selectbox', temp);
+  var phone = NewRealty_$('input.pizo-new-realty-contact-item-phone-input', temp);
+  var statusphone = NewRealty_$('div.pizo-new-realty-contact-item-phone-selectbox', temp);
+  var note = NewRealty_$('textarea.pizo-new-realty-contact-item-note-input', temp);
+
+  temp.getItemData = function () {
+    return {
+      id: data.original.id === "" ? undefined : data.original.id,
+      name: name.value,
+      type_contact: type_contact.value,
+      phone: phone.value,
+      statusphone: statusphone.value,
+      note: note.value
+    };
+  };
+
+  return temp;
+};
+
+NewRealty_NewRealty.prototype.setDataListAccount = function (data) {
+  if (this.dataAccount == undefined) this.dataAccount = this.formatDataRowListAccount(data);else this.dataAccount = this.dataAccount.concat(this.formatDataRowListAccount(data));
+  if (this.isLoaded == undefined) this.isLoaded = false;else this.isLoaded = true;
+};
+
+NewRealty_NewRealty.prototype.setDataListContact = function (data) {
+  if (this.dataAccount == undefined) this.dataAccount = this.formatDataRowListContact(data);else this.dataAccount = this.dataAccount.concat(this.formatDataRowListContact(data));
+  if (this.isLoaded == undefined) this.isLoaded = false;else this.isLoaded = true;
+};
+
+NewRealty_NewRealty.prototype.formatDataRowListAccount = function (data) {
+  var temp = [];
+
+  for (var i = 0; i < data.length; i++) {
+    temp.push(this.getDataRowListAccount(data[i]));
+  }
+
+  return temp;
+};
+
+NewRealty_NewRealty.prototype.getDataRowListAccount = function (data) {
+  var temp = [data.username, data.name, data.phone, data.email, data.id];
+  temp.original = data;
+  return temp;
+};
+
+NewRealty_NewRealty.prototype.formatDataRowListContact = function (data) {
+  var temp = [];
+
+  for (var i = 0; i < data.length; i++) {
+    temp.push(this.getDataRowListContact(data[i]));
+  }
+
+  return temp;
+};
+
+NewRealty_NewRealty.prototype.getDataRowListContact = function (data) {
+  var temp = ["", data.name, data.phone, data.email, data.id];
+  temp.original = data;
+  return temp;
+};
+
+NewRealty_NewRealty.prototype.functionChoice = function (event, me, index, parent, data, row) {
+  var self = this;
+  console.log(self);
+  var arr = self.getElementsByClassName("choice-list-category");
+  if (arr.length !== 0) arr = arr[0];
+  var today = new Date();
+  if (self.clickTime === undefined) self.clickTime = 0;
+
+  if (arr == row && today - self.clickTime < 300) {
+    self.selfRemove();
+    self.resolve({
+      event: event,
+      me: me,
+      index: index,
+      parent: parent,
+      data: data,
+      row: row
+    });
+  }
+
+  self.clickTime = today;
+  if (arr.length !== 0) arr.classList.remove("choice-list-category");
+  row.classList.add("choice-list-category");
+};
+
+NewRealty_NewRealty.prototype.listLink = function (data) {
+  var self = this;
+
+  var input = NewRealty_({
+    tag: "input",
+    "class": "input-search-list",
+    props: {
+      type: "text",
+      placeholder: "Search"
+    }
+  });
+
+  var container = NewRealty_({
+    tag: "div",
+    "class": ["list-linkChoice-container", "absol-single-page-scroller"],
+    child: [{
+      tag: "div",
+      "class": "js-stools-container-bar",
+      child: [{
+        tag: "div",
+        "class": ["btn-wrapper", "input-append"],
+        child: [input, {
+          tag: "button",
+          "class": "pizo-new-realty-contact-tab-button",
+          on: {
+            click: function click(event) {
+              self.modal.selfRemove();
+              var data = {};
+              data.original = {
+                id: "",
+                name: "",
+                phone: ""
+              };
+              self.modal.resolve({
+                event: event,
+                data: data
+              });
+            }
+          },
+          child: [{
+            tag: "i",
+            "class": "material-icons",
+            style: {
+              fontSize: "2rem",
+              margin: "auto"
+            },
+            props: {
+              innerHTML: "add"
+            }
+          }]
+        }]
+      }]
+    }]
+  });
+
+  self.modal = NewRealty_({
+    tag: "modal",
+    "class": "list-linkChoice",
+    on: {
+      click: function click(event) {
+        var element = event.target;
+
+        while (!(element.classList.contains("list-linkChoice") || element.classList.contains("list-linkChoice-container"))) {
+          element = element.parentNode;
+        }
+
+        if (element.classList.contains("list-linkChoice")) {
+          this.selfRemove();
+          self.modal.reject();
+        }
+      }
+    },
+    child: [container]
+  });
+  var header = [{
+    value: 'Tài khoản',
+    sort: true,
+    style: {
+      minWidth: "unset"
+    },
+    functionClickAll: self.functionChoice.bind(self.modal)
+  }, {
+    value: 'Họ và tên',
+    sort: true,
+    style: {
+      minWidth: "unset"
+    },
+    functionClickAll: self.functionChoice.bind(self.modal)
+  }, {
+    value: 'Số điện thoại',
+    style: {
+      minWidth: "90px",
+      width: "90px"
+    },
+    functionClickAll: self.functionChoice.bind(self.modal)
+  }, {
+    value: 'Email',
+    sort: true,
+    style: {
+      minWidth: "unset"
+    },
+    functionClickAll: self.functionChoice.bind(self.modal)
+  }, {
+    value: 'MS',
+    sort: true,
+    style: {
+      minWidth: "50px",
+      width: "50px"
+    },
+    functionClickAll: self.functionChoice.bind(self.modal)
+  }];
+  var mTable = new tableView(header, data, false, false, 0);
+  mTable.style.width = "100%";
+  container.appendChild(mTable);
+  mTable.addInputSearch(input);
+  self.modal.promiseSelectList = new Promise(function (resolve, reject) {
+    self.modal.resolve = resolve;
+    self.modal.reject = reject;
+  });
+  return self.modal;
+};
+
 NewRealty_NewRealty.prototype.contactView = function () {
+  var self = this;
+
   var temp = NewRealty_({
     tag: "div",
     "class": "pizo-new-realty-contact",
@@ -49300,6 +50100,16 @@ NewRealty_NewRealty.prototype.contactView = function () {
       }, {
         tag: "button",
         "class": "pizo-new-realty-contact-tab-button",
+        on: {
+          click: function click(event) {
+            if (self.isLoaded !== true) return;
+            var x = self.listLink(self.dataAccount);
+            temp.appendChild(x);
+            x.promiseSelectList.then(function (value) {
+              temp.appendChild(self.contactItem(value.data));
+            });
+          }
+        },
         child: [{
           tag: "i",
           "class": "material-icons",
@@ -49316,17 +50126,6 @@ NewRealty_NewRealty.prototype.contactView = function () {
       "class": "pizo-new-realty-contact-content",
       child: []
     }]
-  });
-
-  return temp;
-};
-
-NewRealty_NewRealty.prototype.contactItem = function () {
-  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  var temp = NewRealty_({
-    tag: "div",
-    "class": ""
   });
 
   return temp;
@@ -49547,11 +50346,7 @@ ListRealty_ListRealty.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              var mNewRealty = new component_NewRealty();
-              mNewRealty.attach(self.parent);
-              var frameview = mNewRealty.getView();
-              self.parent.body.addChild(frameview);
-              self.parent.body.activeFrame(frameview);
+              self.add();
             }
           },
           child: ['<span>' + "Thêm" + '</span>']
@@ -49702,6 +50497,12 @@ ListRealty_ListRealty.prototype.getView = function () {
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', self.$view));
   });
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php").then(function (value) {
+    self.formatDataRowAccount(value);
+  });
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_contacts.php").then(function (value) {
+    self.formatDataRowRealty(value);
+  });
   this.searchControl = this.searchControlContent();
   this.$view.addChild(ListRealty_({
     tag: "div",
@@ -49711,55 +50512,21 @@ ListRealty_ListRealty.prototype.getView = function () {
   return this.$view;
 };
 
+ListRealty_ListRealty.prototype.formatDataRowAccount = function (data) {
+  this.listAccoutData = data;
+};
+
+ListRealty_ListRealty.prototype.formatDataRowRealty = function (data) {
+  this.listContactData = data;
+};
+
 ListRealty_ListRealty.prototype.formatDataRow = function (data) {
   var temp = [];
   var check = [];
   var k = 0;
-  var checkElement;
 
   for (var i = 0; i < data.length; i++) {
-    checkElement = parseInt(data[i].active) ? ListRealty_({
-      tag: "div",
-      "class": "tick-element"
-    }) : ListRealty_({
-      tag: "div",
-      "class": "cross-element"
-    });
-    var result = [{
-      value: "",
-      style: {
-        maxWidth: "21px"
-      }
-    }, {
-      value: data[i].title,
-      element: ListRealty_({
-        tag: "div",
-        child: [{
-          tag: "span",
-          "class": "title-label",
-          props: {
-            innerHTML: data[i].title
-          }
-        }, {
-          tag: "span",
-          "class": "alias-label",
-          props: {
-            innerHTML: " (Alias :" + data[i].alias + ")"
-          }
-        }]
-      })
-    }, {
-      value: data[i].active,
-      element: checkElement,
-      style: {
-        maxWidth: "21px"
-      }
-    }, {
-      value: "",
-      style: {
-        maxWidth: "21px"
-      }
-    }];
+    var result = this.getDataRow(data[i]);
     result.original = data[i];
 
     if (check[data[i].parent_id] !== undefined) {
@@ -49771,6 +50538,30 @@ ListRealty_ListRealty.prototype.formatDataRow = function (data) {
   }
 
   return temp;
+};
+
+ListRealty_ListRealty.prototype.getDataRow = function (data) {
+  // var {text:"Chưa xác định",value:0},
+  // {text:"Đất trống",value:1},
+  // {text:"Kết cấu",value:2},
+  // {text:"Cấp 4",value:3},
+  // {text:"Sẳn *",value:4},
+  var result = [// {},
+    // {},
+    // data.id,
+    // "",
+    // "",
+    // "",
+    // "",
+    // "",
+    // data.content,
+    // data.height,
+    // data.width,
+    // data.acreage,
+    // data.
+  ];
+  result.original = data;
+  return result;
 };
 
 ListRealty_ListRealty.prototype.searchControlContent = function () {
@@ -50097,6 +50888,102 @@ ListRealty_ListRealty.prototype.searchControlContent = function () {
   return temp;
 };
 
+ListRealty_ListRealty.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  var self = this;
+  var mNewRealty = new component_NewRealty(undefined, parent_id);
+  mNewRealty.attach(self.parent);
+  mNewRealty.setDataListAccount(self.listAccoutData);
+  mNewRealty.setDataListContact(self.listContactData);
+  var frameview = mNewRealty.getView();
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewRealty, row);
+};
+
+ListRealty_ListRealty.prototype.addDB = function (mNewRealty, row) {
+  var self = this;
+  mNewRealty.promiseAddDB.then(function (value) {
+    console.log(value);
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_activehomes.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    updateData(phpFile, value).then(function (result) {
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewRealty.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewRealty.promiseAddDB !== undefined) self.addDB(mNewRealty);
+    }, 10);
+  });
+};
+
+ListRealty_ListRealty.prototype.addView = function (value, parent) {
+  var result = this.getDataRow(value);
+  var element = this.mTable;
+  element.insertRow(result);
+};
+
+ListRealty_ListRealty.prototype.edit = function (data, parent, index) {
+  var self = this;
+  var mNewRealty = new component_NewRealty(data);
+  mNewRealty.attach(self.parent);
+  mNewRealty.setDataListAccount(self.listAccoutData);
+  mNewRealty.setDataListContact(self.listContactData);
+  var frameview = mNewRealty.getView();
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewRealty, data, parent, index);
+};
+
+ListRealty_ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
+  var self = this;
+  mNewRealty.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_activehomes.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewRealty.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewRealty.promiseEditDB !== undefined) self.editDB(mNewRealty, data, parent, index);
+    }, 10);
+  });
+};
+
+ListRealty_ListRealty.prototype.editView = function (value, data, parent, index) {
+  var data = this.getDataRow(value);
+  var indexOF = index,
+      element = parent;
+  element.updateRow(data, indexOF, true);
+};
+
+ListRealty_ListRealty.prototype["delete"] = function (data, parent, index) {
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListRealty_ListRealty.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {});
+};
+
+ListRealty_ListRealty.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_activehomes.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
 ListRealty_ListRealty.prototype.refresh = function () {
   var data;
   var editor = this.getContext(R.LAYOUT_EDITOR);
@@ -50131,15 +51018,12 @@ ListRealty_ListRealty.prototype.start = function () {};
 
 /* harmony default export */ var page_ListRealty = (ListRealty_ListRealty);
 // EXTERNAL MODULE: ./css/ListWard.css
-var ListWard = __webpack_require__(173);
+var ListWard = __webpack_require__(172);
 
-// EXTERNAL MODULE: ./css/NewState.css
-var NewState = __webpack_require__(19);
+// EXTERNAL MODULE: ./css/NewDistrict.css
+var NewDistrict = __webpack_require__(174);
 
 // CONCATENATED MODULE: ./js/component/NewDistrict.js
-
-
-
 
 
 
@@ -50149,24 +51033,24 @@ var NewState = __webpack_require__(19);
 var NewDistrict_ = dom_Fcore._;
 var NewDistrict_$ = dom_Fcore.$;
 
-function NewDistrict_NewState() {
+function NewDistrict_NewDistrict(data) {
   component_BaseView.call(this);
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.ModuleView = new ModuleView_ModuleView();
-  this.NewRealty = new component_NewRealty();
-  this.NewRealty.attach(this);
+  this.textHeader = "Sửa";
+  this.data = data;
+  if (this.data == undefined) this.textHeader = "Thêm ";
 }
 
-NewDistrict_NewState.prototype.setContainer = function (parent) {
+NewDistrict_NewDistrict.prototype.setContainer = function (parent) {
   this.parent = parent;
 };
 
-Object.defineProperties(NewDistrict_NewState.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
-NewDistrict_NewState.prototype.constructor = NewDistrict_NewState;
+Object.defineProperties(NewDistrict_NewDistrict.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewDistrict_NewDistrict.prototype.constructor = NewDistrict_NewDistrict;
 
-NewDistrict_NewState.prototype.getView = function () {
+NewDistrict_NewDistrict.prototype.getView = function (data) {
   if (this.$view) return this.$view;
   var self = this;
   this.$view = NewDistrict_({
@@ -50178,7 +51062,7 @@ NewDistrict_NewState.prototype.getView = function () {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: "Thêm Tỉnh/TP"
+          innerHTML: self.textHeader + "Quận/Huyện"
         }
       }, {
         tag: "div",
@@ -50191,6 +51075,7 @@ NewDistrict_NewState.prototype.getView = function () {
               self.$view.selfRemove();
               var arr = self.parent.body.getAllChild();
               self.parent.body.activeFrame(arr[arr.length - 1]);
+              self.rejectDB(self.getDataSave());
             }
           },
           child: ['<span>' + "Đóng" + '</span>']
@@ -50198,9 +51083,24 @@ NewDistrict_NewState.prototype.getView = function () {
           tag: "button",
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
-            click: function click(evt) {}
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.createPromise();
+            }
           },
           child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Lưu và đóng" + '</span>']
         }]
       }]
     }]
@@ -50241,11 +51141,17 @@ NewDistrict_NewState.prototype.getView = function () {
             "class": "pizo-new-state-container-type-container-input",
             props: {
               items: [{
-                text: "Thành phố trực thuộc trung ương",
-                value: 79
+                text: "Thị xã",
+                value: "Thị xã"
               }, {
-                text: "Tỉnh",
-                value: 80
+                text: "Huyện",
+                value: "Huyện"
+              }, {
+                text: "Quận",
+                value: "Quận"
+              }, {
+                text: "Thành phố",
+                value: "Thành phố"
               }]
             }
           }]
@@ -50256,40 +51162,79 @@ NewDistrict_NewState.prototype.getView = function () {
             tag: "span",
             "class": "pizo-new-state-container-nation-container-label",
             props: {
-              innerHTML: "Quốc gia"
+              innerHTML: "Tỉnh/Thành phố"
             }
           }, {
             tag: "selectmenu",
             "class": "pizo-new-state-container-nation-container-input",
             props: {
-              items: [{
-                text: "Việt Nam",
-                value: 79
-              }]
+              enableSearch: true,
+              items: data
             }
           }]
         }]
       }]
     }]
   }));
+  this.createPromise();
+  this.name = NewDistrict_$('input.pizo-new-state-container-name-container-input', this.$view);
+  this.type = NewDistrict_$('div.pizo-new-state-container-type-container-input', this.$view);
+  this.state = NewDistrict_$('div.pizo-new-state-container-nation-container-input', this.$view);
+
+  if (this.data !== undefined) {
+    this.name.value = this.data.original.name;
+    this.type.value = this.data.original.type;
+    this.state.value = this.data.original.stateid;
+  }
+
   return this.$view;
 };
 
-NewDistrict_NewState.prototype.refresh = function () {
+NewDistrict_NewDistrict.prototype.getDataSave = function () {
+  return {
+    id: this.data === undefined ? undefined : this.data.original.id,
+    name: this.name.value,
+    type: this.type.value,
+    stateid: this.state.value
+  };
+};
+
+NewDistrict_NewDistrict.prototype.createPromise = function () {
+  var self = this;
+
+  if (this.data === undefined) {
+    self.promiseAddDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  } else {
+    self.promiseEditDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  }
+};
+
+NewDistrict_NewDistrict.prototype.resetPromise = function (value) {
+  if (self.promiseAddDB !== undefined) self.promiseAddDB = undefined;
+  if (self.promiseEditDB !== undefined) self.promiseEditDB = undefined;
+};
+
+NewDistrict_NewDistrict.prototype.refresh = function () {
   var data;
   var editor = this.getContext(R.LAYOUT_EDITOR);
   if (editor) data = editor.getData();
   if (data) this.setData(data);
 };
 
-NewDistrict_NewState.prototype.setData = function (data) {
+NewDistrict_NewDistrict.prototype.setData = function (data) {
   this.data = data;
   this.data.tracking = "OK";
   this.dataFlushed = false;
   if (this.state == "RUNNING") this.flushDataToView();
 };
 
-NewDistrict_NewState.prototype.flushDataToView = function () {
+NewDistrict_NewDistrict.prototype.flushDataToView = function () {
   if (this.dataFlushed) return;
   this.dataFlushed = true; //TODO: remove older view
 
@@ -50305,9 +51250,9 @@ NewDistrict_NewState.prototype.flushDataToView = function () {
   }
 };
 
-NewDistrict_NewState.prototype.start = function () {};
+NewDistrict_NewDistrict.prototype.start = function () {};
 
-/* harmony default export */ var NewDistrict = (NewDistrict_NewState);
+/* harmony default export */ var component_NewDistrict = (NewDistrict_NewDistrict);
 // CONCATENATED MODULE: ./js/page/ListWard.js
 
 
@@ -50853,17 +51798,6 @@ ListWard_ListWard.prototype.searchControlContent = function () {
   });
 
   temp.content = content;
-  content.timestart = startDay;
-  content.timeend = endDay;
-  content.lowprice = ListWard_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
-  content.highprice = ListWard_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
-  content.phone = ListWard_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
-  content.MS = ListWard_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
-  content.SN = ListWard_$('.pizo-list-realty-main-search-control-row-SN input', content);
-  content.TD = ListWard_$('.pizo-list-realty-main-search-control-row-TD input', content);
-  content.PX = ListWard_$('.pizo-list-realty-main-search-control-row-PX input', content);
-  content.QH = ListWard_$('.pizo-list-realty-main-search-control-row-QH input', content);
-  content.HT = ListWard_$('.pizo-list-realty-main-search-control-row-HT input', content);
 
   temp.show = function () {
     if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
@@ -50926,7 +51860,7 @@ ListWard_ListWard.prototype.add = function () {
   var row = arguments.length > 1 ? arguments[1] : undefined;
   if (!this.isLoaded) return;
   var self = this;
-  var mNewDistrict = new NewDistrict(undefined, parent_id);
+  var mNewDistrict = new component_NewDistrict(undefined, parent_id);
   mNewDistrict.attach(self.parent);
   var frameview = mNewDistrict.getView(self.getDataParam());
   self.parent.body.addChild(frameview);
@@ -50951,8 +51885,6 @@ ListWard_ListWard.prototype.addDB = function (mNewDistrict, row) {
 };
 
 ListWard_ListWard.prototype.addView = function (value, parent) {
-  value.created = getGMT();
-  value.modified = getGMT();
   var result = this.getDataRow(value);
   var element = this.mTable;
   element.insertRow(result);
@@ -50961,7 +51893,7 @@ ListWard_ListWard.prototype.addView = function (value, parent) {
 ListWard_ListWard.prototype.edit = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var mNewDistrict = new NewDistrict(data);
+  var mNewDistrict = new component_NewDistrict(data);
   mNewDistrict.attach(self.parent);
   var frameview = mNewDistrict.getView(self.getDataParam());
   self.parent.body.addChild(frameview);
@@ -50986,8 +51918,6 @@ ListWard_ListWard.prototype.editDB = function (mNewDistrict, data, parent, index
 };
 
 ListWard_ListWard.prototype.editView = function (value, data, parent, index) {
-  value.created = data.original.created;
-  value.modified = getGMT();
   var data = this.getDataRow(value);
   var indexOF = index,
       element = parent;
@@ -50997,7 +51927,7 @@ ListWard_ListWard.prototype.editView = function (value, data, parent, index) {
 ListWard_ListWard.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -51540,34 +52470,6 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-phone",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-phone-label",
-            props: {
-              innerHTML: "Ngày tạo"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-date-input",
-            child: [startDay, endDay]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-phone",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-phone-label",
-            props: {
-              innerHTML: "Ngày cập nhật"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-date-input",
-            child: [startDay1, endDay1]
-          }]
-        }, {
-          tag: "div",
           "class": "pizo-list-realty-main-search-control-row-button",
           child: [{
             tag: "button",
@@ -51669,7 +52571,7 @@ ListStreet_ListStreet.prototype.add = function () {
   var row = arguments.length > 1 ? arguments[1] : undefined;
   if (!this.isLoaded) return;
   var self = this;
-  var mNewDistrict = new NewDistrict(undefined, parent_id);
+  var mNewDistrict = new component_NewDistrict(undefined, parent_id);
   mNewDistrict.attach(self.parent);
   var frameview = mNewDistrict.getView(self.getDataParam());
   self.parent.body.addChild(frameview);
@@ -51704,7 +52606,7 @@ ListStreet_ListStreet.prototype.addView = function (value, parent) {
 ListStreet_ListStreet.prototype.edit = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var mNewDistrict = new NewDistrict(data);
+  var mNewDistrict = new component_NewDistrict(data);
   mNewDistrict.attach(self.parent);
   var frameview = mNewDistrict.getView(self.getDataParam());
   self.parent.body.addChild(frameview);
@@ -51740,7 +52642,7 @@ ListStreet_ListStreet.prototype.editView = function (value, data, parent, index)
 ListStreet_ListStreet.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -51797,6 +52699,9 @@ ListStreet_ListStreet.prototype.start = function () {};
 /* harmony default export */ var page_ListStreet = (ListStreet_ListStreet);
 // EXTERNAL MODULE: ./css/ListState.css
 var ListState = __webpack_require__(178);
+
+// EXTERNAL MODULE: ./css/NewState.css
+var NewState = __webpack_require__(180);
 
 // CONCATENATED MODULE: ./js/component/NewState.js
 
@@ -51971,7 +52876,6 @@ NewState_NewState.prototype.start = function () {};
 
 /* harmony default export */ var component_NewState = (NewState_NewState);
 // CONCATENATED MODULE: ./js/page/ListState.js
-
 
 
 
@@ -52380,8 +53284,6 @@ ListState_ListState.prototype.addDB = function (mNewState, row) {
 };
 
 ListState_ListState.prototype.addView = function (value, parent) {
-  value.created = getGMT();
-  value.modified = getGMT();
   var result = this.getDataRow(value);
   var element = this.mTable;
   element.insertRow(result);
@@ -52415,8 +53317,6 @@ ListState_ListState.prototype.editDB = function (mNewState, data, parent, index)
 };
 
 ListState_ListState.prototype.editView = function (value, data, parent, index) {
-  value.created = data.original.created;
-  value.modified = getGMT();
   var data = this.getDataRow(value);
   var indexOF = index,
       element = parent;
@@ -52426,7 +53326,7 @@ ListState_ListState.prototype.editView = function (value, data, parent, index) {
 ListState_ListState.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -52482,10 +53382,9 @@ ListState_ListState.prototype.start = function () {};
 
 /* harmony default export */ var page_ListState = (ListState_ListState);
 // EXTERNAL MODULE: ./css/ListDistrict.css
-var ListDistrict = __webpack_require__(180);
+var ListDistrict = __webpack_require__(182);
 
 // CONCATENATED MODULE: ./js/page/ListDistrict.js
-
 
 
 
@@ -52734,6 +53633,7 @@ ListDistrict_ListDistrict.prototype.getView = function () {
       tabContainer.addChild(self.mTable);
       self.mTable.addInputSearch(ListDistrict_$('.pizo-list-realty-page-allinput-container input', self.$view));
       self.listParent.updateItemList(listParam);
+      self.mTable.addFilter(self.listDistrictElement, 3);
       self.mTable.addFilter(self.listParent, 4);
     });
   });
@@ -52812,60 +53712,7 @@ ListDistrict_ListDistrict.prototype.formatDataList = function (data) {
 };
 
 ListDistrict_ListDistrict.prototype.searchControlContent = function () {
-  var startDay, endDay, startDay1, endDay1;
   var self = this;
-  startDay = ListDistrict_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        endDay.minDateLimit = date;
-      }
-    }
-  });
-  endDay = ListDistrict_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        startDay.maxDateLimit = date;
-      }
-    }
-  });
-  startDay1 = ListDistrict_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        endDay1.minDateLimit = date;
-      }
-    }
-  });
-  endDay1 = ListDistrict_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        startDay1.maxDateLimit = date;
-      }
-    }
-  });
   self.listParent = ListDistrict_({
     tag: "selectmenu",
     props: {
@@ -52880,6 +53727,29 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
   self.listParent.updateItemList = function (value) {
     self.listParent.items = self.formatDataList(value);
   };
+
+  self.listDistrictElement = ListDistrict_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        value: 0
+      }, {
+        text: "Thị xã",
+        value: "Thị xã"
+      }, {
+        text: "Huyện",
+        value: "Huyện"
+      }, {
+        text: "Quận",
+        value: "Quận"
+      }, {
+        text: "Thành phố",
+        value: "Thành phố"
+      }]
+    }
+  });
 
   var content = ListDistrict_({
     tag: "div",
@@ -52911,44 +53781,17 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-phone",
+          "class": "pizo-list-realty-main-search-control-row-state-district",
           child: [{
             tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-phone-label",
+            "class": "pizo-list-realty-main-search-control-row-state-district-label",
             props: {
-              innerHTML: "Ngày tạo"
+              innerHTML: "Loại"
             }
           }, {
             tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-date-input",
-            child: [startDay, endDay]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-phone",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-phone-label",
-            props: {
-              innerHTML: "Ngày cập nhật"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-date-input",
-            child: [startDay1, endDay1]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-button",
-          child: [{
-            tag: "button",
-            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
-            on: {
-              click: function click(evt) {
-                temp.reset();
-              }
-            },
-            child: ['<span>' + "Thiết lập lại" + '</span>']
+            "class": "pizo-list-realty-main-search-control-row-state-district-input",
+            child: [self.listDistrictElement]
           }]
         }]
       }]
@@ -52967,17 +53810,6 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
   });
 
   temp.content = content;
-  content.timestart = startDay;
-  content.timeend = endDay;
-  content.lowprice = ListDistrict_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
-  content.highprice = ListDistrict_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
-  content.phone = ListDistrict_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
-  content.MS = ListDistrict_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
-  content.SN = ListDistrict_$('.pizo-list-realty-main-search-control-row-SN input', content);
-  content.TD = ListDistrict_$('.pizo-list-realty-main-search-control-row-TD input', content);
-  content.PX = ListDistrict_$('.pizo-list-realty-main-search-control-row-PX input', content);
-  content.QH = ListDistrict_$('.pizo-list-realty-main-search-control-row-QH input', content);
-  content.HT = ListDistrict_$('.pizo-list-realty-main-search-control-row-HT input', content);
 
   temp.show = function () {
     if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
@@ -52997,23 +53829,6 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
     content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
 
     content.addEventListener("transitionend", eventEnd);
-  };
-
-  temp.apply = function () {};
-
-  temp.reset = function () {
-    content.timestart = new Date();
-    content.timeend = new Date();
-    content.lowprice.value = "";
-    content.highprice.value = "";
-    content.phone.value = "";
-    content.MS.value = "";
-    content.SN.value = "";
-    content.TD.value = "";
-    content.PX.value = "";
-    content.QH.value = "";
-    content.TT.value = "";
-    content.HT.value = 0;
   };
 
   return temp;
@@ -53040,9 +53855,9 @@ ListDistrict_ListDistrict.prototype.add = function () {
   var row = arguments.length > 1 ? arguments[1] : undefined;
   if (!this.isLoaded) return;
   var self = this;
-  var mNewDistrict = new NewDistrict(undefined, parent_id);
+  var mNewDistrict = new component_NewDistrict(undefined, parent_id);
   mNewDistrict.attach(self.parent);
-  var frameview = mNewDistrict.getView(self.getDataParam());
+  var frameview = mNewDistrict.getView(self.listParam);
   self.parent.body.addChild(frameview);
   self.parent.body.activeFrame(frameview);
   self.addDB(mNewDistrict, row);
@@ -53051,7 +53866,7 @@ ListDistrict_ListDistrict.prototype.add = function () {
 ListDistrict_ListDistrict.prototype.addDB = function (mNewDistrict, row) {
   var self = this;
   mNewDistrict.promiseAddDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_district.php";
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     updateData(phpFile, value).then(function (result) {
       value.id = result;
@@ -53065,8 +53880,6 @@ ListDistrict_ListDistrict.prototype.addDB = function (mNewDistrict, row) {
 };
 
 ListDistrict_ListDistrict.prototype.addView = function (value, parent) {
-  value.created = getGMT();
-  value.modified = getGMT();
   var result = this.getDataRow(value);
   var element = this.mTable;
   element.insertRow(result);
@@ -53075,9 +53888,9 @@ ListDistrict_ListDistrict.prototype.addView = function (value, parent) {
 ListDistrict_ListDistrict.prototype.edit = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var mNewDistrict = new NewDistrict(data);
+  var mNewDistrict = new component_NewDistrict(data);
   mNewDistrict.attach(self.parent);
-  var frameview = mNewDistrict.getView(self.getDataParam());
+  var frameview = mNewDistrict.getView(self.listParam);
   self.parent.body.addChild(frameview);
   self.parent.body.activeFrame(frameview);
   self.editDB(mNewDistrict, data, parent, index);
@@ -53086,7 +53899,7 @@ ListDistrict_ListDistrict.prototype.edit = function (data, parent, index) {
 ListDistrict_ListDistrict.prototype.editDB = function (mNewDistrict, data, parent, index) {
   var self = this;
   mNewDistrict.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_district.php";
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
     updateData(phpFile, value).then(function (result) {
@@ -53100,8 +53913,6 @@ ListDistrict_ListDistrict.prototype.editDB = function (mNewDistrict, data, paren
 };
 
 ListDistrict_ListDistrict.prototype.editView = function (value, data, parent, index) {
-  value.created = data.original.created;
-  value.modified = getGMT();
   var data = this.getDataRow(value);
   var indexOF = index,
       element = parent;
@@ -53111,7 +53922,7 @@ ListDistrict_ListDistrict.prototype.editView = function (value, data, parent, in
 ListDistrict_ListDistrict.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -53126,7 +53937,7 @@ ListDistrict_ListDistrict.prototype.deleteView = function (parent, index) {
 
 ListDistrict_ListDistrict.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_district.php";
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
   updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
@@ -53167,7 +53978,7 @@ ListDistrict_ListDistrict.prototype.start = function () {};
 
 /* harmony default export */ var page_ListDistrict = (ListDistrict_ListDistrict);
 // EXTERNAL MODULE: ./css/PlanningInformation.css
-var PlanningInformation = __webpack_require__(182);
+var PlanningInformation = __webpack_require__(184);
 
 // CONCATENATED MODULE: ./js/page/PlanningInformation.js
 
@@ -53563,10 +54374,10 @@ PlanningInformation_PlanningInformation.prototype.start = function () {};
 
 /* harmony default export */ var page_PlanningInformation = (PlanningInformation_PlanningInformation);
 // EXTERNAL MODULE: ./css/ListHelp.css
-var ListHelp = __webpack_require__(20);
+var ListHelp = __webpack_require__(19);
 
 // EXTERNAL MODULE: ./css/HelpContainer.css
-var HelpContainer = __webpack_require__(185);
+var HelpContainer = __webpack_require__(187);
 
 // CONCATENATED MODULE: ./js/component/HelpContainer.js
 
@@ -53895,10 +54706,10 @@ ListHelp_ListHelp.prototype.start = function () {};
 
 /* harmony default export */ var page_ListHelp = (ListHelp_ListHelp);
 // EXTERNAL MODULE: ./css/EditHelpContainer.css
-var EditHelpContainer = __webpack_require__(187);
+var EditHelpContainer = __webpack_require__(189);
 
 // EXTERNAL MODULE: ./css/NewCategory.css
-var NewCategory = __webpack_require__(189);
+var NewCategory = __webpack_require__(191);
 
 // CONCATENATED MODULE: ./js/component/EditHelpContainer.js
 
@@ -54729,7 +55540,7 @@ EditHelpContainer_EditHelpContainer.prototype.updateChild = function (child) {
 
 EditHelpContainer_EditHelpContainer.prototype["delete"] = function (data, parent, index) {
   var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.title);
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.title);
   this.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -55008,13 +55819,12 @@ ListEditHelp_ListHelp.prototype.start = function () {};
 
 /* harmony default export */ var ListEditHelp = (ListEditHelp_ListHelp);
 // EXTERNAL MODULE: ./css/ListPositions.css
-var ListPositions = __webpack_require__(191);
+var ListPositions = __webpack_require__(193);
 
 // EXTERNAL MODULE: ./css/NewDepartment.css
-var NewDepartment = __webpack_require__(193);
+var NewDepartment = __webpack_require__(195);
 
 // CONCATENATED MODULE: ./js/component/NewDepartment.js
-
 
 
 
@@ -55262,7 +56072,7 @@ NewDepartment_NewDepartment.prototype.start = function () {};
 
 /* harmony default export */ var component_NewDepartment = (NewDepartment_NewDepartment);
 // EXTERNAL MODULE: ./css/NewPosition.css
-var NewPosition = __webpack_require__(195);
+var NewPosition = __webpack_require__(197);
 
 // CONCATENATED MODULE: ./js/component/NewPosition.js
 
@@ -56244,7 +57054,7 @@ ListPositions_ListPositions.prototype.editViewDepartment = function (value, data
 
 ListPositions_ListPositions.prototype.deleteDepartment = function (data, parent, index) {
   var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDBDepartment(data, parent, index);
@@ -56397,7 +57207,7 @@ ListPositions_ListPositions.prototype.editViewPosition = function (value, data, 
 
 ListPositions_ListPositions.prototype.deletePosition = function (data, parent, index) {
   var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDBPosition(data, parent, index);
@@ -56451,10 +57261,10 @@ ListPositions_ListPositions.prototype.start = function () {};
 
 /* harmony default export */ var page_ListPositions = (ListPositions_ListPositions);
 // EXTERNAL MODULE: ./css/ListAccount.css
-var ListAccount = __webpack_require__(197);
+var ListAccount = __webpack_require__(199);
 
 // EXTERNAL MODULE: ./css/NewAccount.css
-var NewAccount = __webpack_require__(199);
+var NewAccount = __webpack_require__(201);
 
 // CONCATENATED MODULE: ./js/component/NewAccount.js
 
@@ -56724,6 +57534,9 @@ NewAccount_NewAccount.prototype.getView = function (dataParent) {
               }, {
                 tag: "input",
                 "class": ["pizo-new-account-container-phone-container-input", "pizo-new-realty-dectruct-input"],
+                props: {
+                  type: "number"
+                },
                 on: {}
               }]
             }]
@@ -57319,12 +58132,14 @@ ListAccount_ListAccount.prototype.formatDataRow = function (data) {
 };
 
 ListAccount_ListAccount.prototype.getDataRow = function (data) {
+  var name;
+  if (this.checkPosition[parseInt(data.positionid)] == undefined) name = "";else name = this.checkPosition[parseInt(data.positionid)].name;
   var result = [{}, data.id, data.username, {
     value: data.name,
     style: {
       whiteSpace: "nowrap"
     }
-  }, data.phone, data.email, "this.checkPosition[parseInt(data.positionid)].name", {}, parseInt(data.permission) ? "Có" : "Không", parseInt(data.status) ? "Có" : "Không", {}];
+  }, data.phone, data.email, name, {}, parseInt(data.permission) ? "Có" : "Không", parseInt(data.status) ? "Có" : "Không", {}];
   result.original = data;
   return result;
 };
@@ -57670,7 +58485,7 @@ ListAccount_ListAccount.prototype.editView = function (value, data, parent, inde
 ListAccount_ListAccount.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -57726,7 +58541,7 @@ ListAccount_ListAccount.prototype.start = function () {};
 
 /* harmony default export */ var page_ListAccount = (ListAccount_ListAccount);
 // EXTERNAL MODULE: ./css/ListAddress.css
-var ListAddress = __webpack_require__(201);
+var ListAddress = __webpack_require__(203);
 
 // CONCATENATED MODULE: ./js/page/ListAddress.js
 
@@ -58123,34 +58938,6 @@ ListAddress_ListAddress.prototype.searchControlContent = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-phone",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-phone-label",
-            props: {
-              innerHTML: "Ngày tạo"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-date-input",
-            child: [startDay, endDay]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-phone",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-phone-label",
-            props: {
-              innerHTML: "Ngày cập nhật"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-date-input",
-            child: [startDay1, endDay1]
-          }]
-        }, {
-          tag: "div",
           "class": "pizo-list-realty-main-search-control-row-button",
           child: [{
             tag: "button",
@@ -58330,7 +59117,7 @@ ListAddress_ListAddress.prototype.editView = function (value, data, parent, inde
 
 ListAddress_ListAddress.prototype["delete"] = function (data, parent, index) {
   var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -58387,14 +59174,790 @@ ListAddress_ListAddress.prototype.flushDataToView = function () {
 ListAddress_ListAddress.prototype.start = function () {};
 
 /* harmony default export */ var page_ListAddress = (ListAddress_ListAddress);
+// EXTERNAL MODULE: ./css/ListContact.css
+var ListContact = __webpack_require__(205);
+
+// EXTERNAL MODULE: ./css/NewContact.css
+var NewContact = __webpack_require__(207);
+
+// CONCATENATED MODULE: ./js/component/NewContact.js
+
+
+
+
+
+
+var NewContact_ = dom_Fcore._;
+var NewContact_$ = dom_Fcore.$;
+
+function NewContact_NewContact(data) {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.textHeader = "Sửa";
+  this.data = data;
+  if (this.data == undefined) this.textHeader = "Thêm ";
+}
+
+NewContact_NewContact.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(NewContact_NewContact.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewContact_NewContact.prototype.constructor = NewContact_NewContact;
+
+NewContact_NewContact.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+  this.$view = NewContact_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: self.textHeader + "Quận/Huyện"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+              self.rejectDB(self.getDataSave());
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.createPromise();
+            }
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Lưu và đóng" + '</span>']
+        }]
+      }]
+    }]
+  });
+  this.$view.addChild(NewContact_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [{
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [{
+        tag: "div",
+        "class": "pizo-new-contact-container",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-contact-container-name-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-contact-container-name-container-label",
+            props: {
+              innerHTML: "Tên"
+            }
+          }, {
+            tag: "input",
+            "class": ["pizo-new-contact-container-name-container-input", "pizo-new-realty-dectruct-input"]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-contact-container-email-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-contact-container-email-container-label",
+            props: {
+              innerHTML: "Email"
+            }
+          }, {
+            tag: "input",
+            "class": "pizo-new-contact-container-email-container-input"
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-contact-container-phone-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-contact-container-phone-container-label",
+            props: {
+              innerHTML: "Số điện thoại"
+            }
+          }, {
+            tag: "input",
+            "class": "pizo-new-contact-container-phone-container-input",
+            props: {
+              type: "number"
+            }
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-contact-container-type-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-contact-container-type-container-label",
+            props: {
+              innerHTML: "Tình trạng cuộc gọi"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-contact-container-type-container-input",
+            props: {
+              items: [{
+                text: "Còn hoạt động",
+                value: 1
+              }, {
+                text: "Sai số",
+                value: 0
+              }, {
+                text: "Gọi lại sau",
+                value: 2
+              }, {
+                text: "Bỏ qua",
+                value: 3
+              }, {
+                text: "Khóa máy",
+                value: 4
+              }]
+            }
+          }]
+        }]
+      }]
+    }]
+  }));
+  this.createPromise();
+  this.name = NewContact_$('input.pizo-new-contact-container-name-container-input', this.$view);
+  this.phone = NewContact_$('input.pizo-new-contact-container-phone-container-input', this.$view);
+  this.type = NewContact_$('div.pizo-new-contact-container-type-container-input', this.$view);
+  this.email = NewContact_$('input.pizo-new-contact-container-email-container-input', this.$view);
+
+  if (this.data !== undefined) {
+    this.name.value = this.data.original.name;
+    this.phone.value = this.data.original.phone;
+    this.type.value = this.data.original.statusphone;
+    this.email.value = this.data.original.email;
+  }
+
+  return this.$view;
+};
+
+NewContact_NewContact.prototype.getDataSave = function () {
+  return {
+    id: this.data === undefined ? undefined : this.data.original.id,
+    name: this.name.value,
+    phone: this.phone.value,
+    statusphone: this.type.value,
+    email: this.email.value
+  };
+};
+
+NewContact_NewContact.prototype.createPromise = function () {
+  var self = this;
+
+  if (this.data === undefined) {
+    self.promiseAddDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  } else {
+    self.promiseEditDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  }
+};
+
+NewContact_NewContact.prototype.resetPromise = function (value) {
+  if (self.promiseAddDB !== undefined) self.promiseAddDB = undefined;
+  if (self.promiseEditDB !== undefined) self.promiseEditDB = undefined;
+};
+
+NewContact_NewContact.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+NewContact_NewContact.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.contact == "RUNNING") this.flushDataToView();
+};
+
+NewContact_NewContact.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+NewContact_NewContact.prototype.start = function () {};
+
+/* harmony default export */ var component_NewContact = (NewContact_NewContact);
+// CONCATENATED MODULE: ./js/page/ListContact.js
+
+
+
+
+
+
+
+
+
+var ListContact_ = dom_Fcore._;
+var ListContact_$ = dom_Fcore.$;
+
+function ListContact_ListContact() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+}
+
+ListContact_ListContact.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListContact_ListContact.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListContact_ListContact.prototype.constructor = ListContact_ListContact;
+
+ListContact_ListContact.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListContact_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListContact_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tìm kiếm"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tìm kiếm";
+  }
+
+  this.$view = ListContact_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý Tỉnh/TP"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.add();
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+
+  var tabContainer = ListContact_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 2
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_contacts.php").then(function (value) {
+    var header = [{
+      type: "increase",
+      value: "#",
+      style: {
+        minWidth: "50px",
+        width: "50px"
+      }
+    }, {
+      value: 'MS',
+      sort: true,
+      style: {
+        minWidth: "50px",
+        width: "50px"
+      }
+    }, {
+      value: 'Tên',
+      sort: true,
+      style: {
+        minWidth: "unset"
+      }
+    }, {
+      value: 'Email',
+      sort: true,
+      style: {
+        minWidth: "unset"
+      }
+    }, {
+      value: 'Số điện thoại',
+      sort: true,
+      style: {
+        minWidth: "200px",
+        width: "200px"
+      }
+    }, {
+      value: 'Tình trạng cuộc gọi',
+      sort: true,
+      style: {
+        minWidth: "200px",
+        width: "200px"
+      }
+    }, {
+      type: "detail",
+      functionClickAll: functionClickMore,
+      icon: "",
+      dragElement: false,
+      style: {
+        width: "30px"
+      }
+    }];
+    self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+    tabContainer.addChild(self.mTable);
+    self.mTable.addInputSearch(ListContact_$('.pizo-list-realty-page-allinput-container input', self.$view));
+  });
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListContact_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, tabContainer]
+  }));
+  return this.$view;
+};
+
+ListContact_ListContact.prototype.setListParam = function (value) {
+  this.checkNation = [];
+  this.listParam = [];
+
+  for (var i = 0; i < value.length; i++) {
+    this.checkNation[value[i].id] = value[i];
+    this.listParam[i] = {
+      text: value[i].name,
+      value: value[i].id
+    };
+  }
+
+  this.isLoaded = true;
+};
+
+ListContact_ListContact.prototype.getDataParam = function () {
+  return this.listParam;
+};
+
+ListContact_ListContact.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = this.getDataRow(data[i]);
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  return temp;
+};
+
+ListContact_ListContact.prototype.getDataRow = function (data) {
+  var status;
+
+  switch (parseInt(data.statusphone)) {
+    case 0:
+      status = "Sai số";
+      break;
+
+    case 1:
+      status = "Còn hoạt động";
+      break;
+
+    case 2:
+      status = "Gọi lại sau";
+      break;
+
+    case 3:
+      status = "Bỏ qua";
+      break;
+
+    case 4:
+      status = "Khóa máy";
+      break;
+  }
+
+  var result = [{}, data.id, data.name, data.email, data.phone, status, {}];
+  result.original = data;
+  console.log(result);
+  return result;
+};
+
+ListContact_ListContact.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Tất cả",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
+};
+
+ListContact_ListContact.prototype.searchControlContent = function () {
+  var content = ListContact_({
+    tag: "div"
+  });
+
+  var temp = ListContact_({
+    tag: "div",
+    style: {
+      display: "none"
+    },
+    child: [content]
+  });
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
+  };
+
+  return temp;
+};
+
+ListContact_ListContact.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListContact_ListContact.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListContact_ListContact.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  var self = this;
+  var mNewContact = new component_NewContact(undefined, parent_id);
+  mNewContact.attach(self.parent);
+  var frameview = mNewContact.getView();
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewContact, row);
+};
+
+ListContact_ListContact.prototype.addDB = function (mNewContact, row) {
+  var self = this;
+  mNewContact.promiseAddDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_contact.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    updateData(phpFile, value).then(function (result) {
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewContact.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewContact.promiseAddDB !== undefined) self.addDB(mNewContact);
+    }, 10);
+  });
+};
+
+ListContact_ListContact.prototype.addView = function (value, parent) {
+  var result = this.getDataRow(value);
+  var element = this.mTable;
+  element.insertRow(result);
+};
+
+ListContact_ListContact.prototype.edit = function (data, parent, index) {
+  var self = this;
+  var mNewContact = new component_NewContact(data);
+  mNewContact.attach(self.parent);
+  var frameview = mNewContact.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewContact, data, parent, index);
+};
+
+ListContact_ListContact.prototype.editDB = function (mNewContact, data, parent, index) {
+  var self = this;
+  mNewContact.promiseEditDB.then(function (value) {
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_contact.php";
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewContact.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewContact.promiseEditDB !== undefined) self.editDB(mNewContact, data, parent, index);
+    }, 10);
+  });
+};
+
+ListContact_ListContact.prototype.editView = function (value, data, parent, index) {
+  var data = this.getDataRow(value);
+  var indexOF = index,
+      element = parent;
+  element.updateRow(data, indexOF, true);
+};
+
+ListContact_ListContact.prototype["delete"] = function (data, parent, index) {
+  var self = this;
+  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListContact_ListContact.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {});
+};
+
+ListContact_ListContact.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_contact.php";
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
+ListContact_ListContact.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListContact_ListContact.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.contact == "RUNNING") this.flushDataToView();
+};
+
+ListContact_ListContact.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListContact_ListContact.prototype.start = function () {};
+
+/* harmony default export */ var page_ListContact = (ListContact_ListContact);
 // EXTERNAL MODULE: ./css/form_create_edit.css
-var form_create_edit = __webpack_require__(203);
+var form_create_edit = __webpack_require__(209);
 
 // EXTERNAL MODULE: ./css/test_question.css
-var test_question = __webpack_require__(205);
+var test_question = __webpack_require__(211);
 
 // EXTERNAL MODULE: ./css/test.css
-var test = __webpack_require__(207);
+var test = __webpack_require__(213);
 
 // CONCATENATED MODULE: ./js/component/modal_drag_drop_manyfiles.js
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -58858,6 +60421,7 @@ var xmlModalDragManyFiles;
 
 
 
+
 var App_ = dom_Fcore._;
 var App_$ = dom_Fcore.$;
 
@@ -58997,6 +60561,9 @@ App_App.prototype.getView = function () {
               }, {
                 text: "Tiện nghi xung quanh",
                 pageIndex: 32
+              }, {
+                text: "Thông tin liên hệ",
+                pageIndex: 33
               }]
             }, {
               text: "Thông báo",
@@ -59021,7 +60588,7 @@ App_App.prototype.getView = function () {
                 pageIndex: 73
               }]
             }, {
-              text: "Thông báo",
+              text: "Thống kê",
               pageIndex: 8
             }, {
               text: "Nhập xuất dữ liệu",
@@ -59215,6 +60782,14 @@ App_App.prototype.openPage = function (index) {
       var mPlanningInformation = new page_PlanningInformation();
       mPlanningInformation.attach(this);
       var frameview = mPlanningInformation.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 33:
+      var mListContact = new page_ListContact();
+      mListContact.attach(this);
+      var frameview = mListContact.getView();
       this.body.addChild(frameview);
       this.body.activeFrame(frameview);
       break;

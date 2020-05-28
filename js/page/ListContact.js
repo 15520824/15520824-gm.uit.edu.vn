@@ -187,11 +187,6 @@ ListContact.prototype.getView = function () {
         docTypeMemuProps = {
             items: [
                 {
-                    text: 'Thêm',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:0,
-                },
-                {
                     text: 'Sửa',
                     icon: 'span.mdi.mdi-text-short',
                     value:1,
@@ -206,9 +201,6 @@ ListContact.prototype.getView = function () {
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
-                case 0:
-                    self.add(data.original.id,row);
-                    break;
                 case 1:
                     self.edit(data,parent,index);
                     break;
@@ -232,21 +224,18 @@ ListContact.prototype.getView = function () {
     }
 
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function(value){
-        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_nations.php").then(function(listParam){
-            self.setListParam(listParam);
+    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_contacts.php").then(function(value){
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
             {value:'Tên',sort:true,style:{minWidth:"unset"}},
-            {value:'Loại',sort:true,style:{minWidth:"200px",width:"200px"}},
-            {value:'Quốc gia',sort:true,style:{minWidth:"200px",width:"200px"}},
+            {value:'Email',sort:true,style:{minWidth:"unset"}},
+            {value:'Số điện thoại',sort:true,style:{minWidth:"200px",width:"200px"}},
+            {value:'Tình trạng cuộc gọi',sort:true,style:{minWidth:"200px",width:"200px"}},
             {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
             self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-            self.listParent.updateItemList(listParam);
-        });
     });
 
     this.searchControl = this.searchControlContent();
@@ -305,15 +294,35 @@ ListContact.prototype.formatDataRow = function(data)
 
 ListContact.prototype.getDataRow = function(data)
 {
+    var status;
+    switch(parseInt(data.statusphone)){
+        case 0:
+            status = "Sai số";
+            break;
+        case 1:
+            status = "Còn hoạt động";
+            break;
+        case 2:
+            status = "Gọi lại sau";
+            break;
+        case 3:
+            status = "Bỏ qua";
+            break;
+        case 4:
+            status = "Khóa máy";
+            break;
+    }
     var result = [
         {},
         data.id,
         data.name,
-        data.type,
-        this.checkNation[parseInt(data.nationid)].longname,
+        data.email,
+        data.phone,
+        status,
         {}
         ]
         result.original = data;
+    console.log(result)
     return result;
 }
 
@@ -398,13 +407,10 @@ ListContact.prototype.getDataChild = function(arr)
 
 ListContact.prototype.add = function(parent_id = 0,row)
 {
-
-    if(!this.isLoaded)
-        return;
     var self = this;
     var mNewContact = new NewContact(undefined,parent_id);
     mNewContact.attach(self.parent);
-    var frameview = mNewContact.getView(self.getDataParam());
+    var frameview = mNewContact.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
     self.addDB(mNewContact,row);
@@ -413,7 +419,7 @@ ListContact.prototype.add = function(parent_id = 0,row)
 ListContact.prototype.addDB = function(mNewContact,row ){
     var self = this;
     mNewContact.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_contact.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         updateData(phpFile,value).then(function(result){
@@ -438,8 +444,6 @@ ListContact.prototype.addView = function(value,parent){
 
 ListContact.prototype.edit = function(data,parent,index)
 {
-    if(!this.isLoaded)
-        return;
     var self = this;
     var mNewContact = new NewContact(data);
     mNewContact.attach(self.parent);
@@ -452,7 +456,7 @@ ListContact.prototype.edit = function(data,parent,index)
 ListContact.prototype.editDB = function(mNewContact,data,parent,index){
     var self = this;
     mNewContact.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_contact.php";
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
@@ -477,9 +481,6 @@ ListContact.prototype.editView = function(value,data,parent,index){
 
 ListContact.prototype.delete = function(data,parent,index)
 {
-    if(!this.isLoaded)
-        return;
-    
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
     this.$view.addChild(deleteItem);
@@ -497,7 +498,7 @@ ListContact.prototype.deleteView = function(parent,index){
 
 ListContact.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_contact.php";
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
     updateData(phpFile,data).then(function(value){
@@ -517,7 +518,7 @@ ListContact.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
-    if (this.state == "RUNNING")
+    if (this.contact == "RUNNING")
         this.flushDataToView();
 };
 
