@@ -65,6 +65,21 @@ export function reFormatNumber(n)
     return parseFloat(n.split(",").join(""));
 }
 
+export function formatFit(n)
+{
+    var arr = [];
+    var per = 10;
+    var check;
+    while(n!=0)
+    {
+        check = n%per;
+        arr.push(check);
+        n = n - check;
+        per*=10;
+    }
+    return arr;
+}
+
 export function getGMT(date,timezone = 0,onlyDay = false) {
     if(date==undefined)
     var d = new Date();

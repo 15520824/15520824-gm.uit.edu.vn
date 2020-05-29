@@ -9,7 +9,7 @@ import "../../css/NewCategory.css"
 import { tableView, deleteQuestion } from './ModuleView';
 import {allowNumbersOnly, createAlias} from './ModuleView';
 
-import {loadData,updateData} from '../component/ModuleDatabase';
+import moduleDatabase from '../component/ModuleDatabase';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -60,7 +60,7 @@ function EditHelpContainer(phpLoader) {
     })
 
     var updateTableFunction;
-    loadData(phpLoader).then(function(value){
+    moduleDatabase.loadData(phpLoader).then(function(value){
         
         var header = [{ type: "dragzone"}, {value:"Title",sort:true, functionClickAll: self.$view.functionClickDetail.bind(self.$view),style:{minWidth:"unset !important"}},"Publish", { type: "detail",style:{maxWidth:"21px"}, functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
         self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
@@ -728,10 +728,10 @@ EditHelpContainer.prototype.addView = function(value,row,parent_id){
 
 EditHelpContainer.prototype.addDB = function(value){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_help.php";
+    var phpFile = moduleDatabase.addHelpPHP;
     if(self.phpUpdateContent)
     phpFile = self.phpUpdateContent;
-    updateData(phpFile,value).then(function(result){
+    moduleDatabase.updateData(phpFile,value).then(function(result){
         value.id = result;
     })
     
@@ -834,11 +834,11 @@ EditHelpContainer.prototype.editView = function(value,data,parent,index){
 EditHelpContainer.prototype.editDB = function(mNewCategory,data,parent,index){
     var self = this;
     mNewCategory.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_help.php";
+        var phpFile = moduleDatabase.updateHelpPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewCategory.promiseEditDB = undefined;
@@ -914,7 +914,7 @@ EditHelpContainer.prototype.updateChild = function(child)
                 var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_help_time.php";
                 if(self.phpUpdateTimeContent)
                 phpFile = self.phpUpdateTimeContent;
-                updateData(phpFile,dataUpdate);
+                moduleDatabase.updateData(phpFile,dataUpdate);
             }
         }
         
@@ -958,10 +958,10 @@ EditHelpContainer.prototype.setDataTitle = function(data)
 
 EditHelpContainer.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_help.php";
+    var phpFile = moduleDatabase.deleteHelpPHP;
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
-    updateData(phpFile,data).then(function(value){
+    moduleDatabase.updateData(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }

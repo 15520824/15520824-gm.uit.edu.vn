@@ -6,7 +6,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import { formatDate, getGMT } from '../component/FormatFunction';
 
-import {loadData,updateData} from '../component/ModuleDatabase';
+import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
@@ -233,7 +233,7 @@ ListAddress.prototype.getView = function () {
     }
 
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function(value){
+    moduleDatabase.loadData(moduleDatabase.loadPositionsPHP).then(function(value){
         
         var header = [{ type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, {value:'MS',sort:true,style:{minWidth:"150px",width:"150px"}}, {value:'Tên',sort:true,style:{minWidth:"unset"}},{value: 'Ngày tạo',sort:true,style:{minWidth:"250px",width:"250px"}}, { value:'Ngày cập nhật', sort:true,style:{minWidth:"250px",width:"250px"} },{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
         
@@ -535,10 +535,10 @@ ListAddress.prototype.add = function(parent_id = 0,row)
 ListAddress.prototype.addDB = function(mNewPosition,row ){
     var self = this;
     mNewPosition.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_position.php";
+        var phpFile = moduleDatabase.addPositionsPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             value.id = result;
             self.addView(value,row);
         })
@@ -591,11 +591,11 @@ ListAddress.prototype.edit = function(data,parent,index)
 ListAddress.prototype.editDB = function(mNewPosition,data,parent,index){
     var self = this;
     mNewPosition.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_position.php";
+        var phpFile = moduleDatabase.updatePositionsPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewPosition.promiseEditDB = undefined;
@@ -663,10 +663,10 @@ ListAddress.prototype.deleteView = function(parent,index){
 
 ListAddress.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_position.php";
+    var phpFile = moduleDatabase.deletePositionsPHP;
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
-    updateData(phpFile,data).then(function(value){
+    moduleDatabase.updateData(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }

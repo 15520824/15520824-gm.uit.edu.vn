@@ -5,7 +5,7 @@ import "../../css/ListState.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
-import {loadData,updateData} from '../component/ModuleDatabase';
+import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
@@ -232,8 +232,8 @@ ListState.prototype.getView = function () {
     }
 
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function(value){
-        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_nations.php").then(function(listParam){
+    moduleDatabase.loadData(moduleDatabase.loadStatesPHP).then(function(value){
+        moduleDatabase.loadData(moduleDatabase.loadNationsPHP).then(function(listParam){
             self.setListParam(listParam);
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
@@ -413,10 +413,10 @@ ListState.prototype.add = function(parent_id = 0,row)
 ListState.prototype.addDB = function(mNewState,row ){
     var self = this;
     mNewState.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+        var phpFile = moduleDatabase.addStatesPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -452,11 +452,11 @@ ListState.prototype.edit = function(data,parent,index)
 ListState.prototype.editDB = function(mNewState,data,parent,index){
     var self = this;
     mNewState.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+        var phpFile = moduleDatabase.updateStatesPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewState.promiseEditDB = undefined;
@@ -497,10 +497,10 @@ ListState.prototype.deleteView = function(parent,index){
 
 ListState.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+    var phpFile = moduleDatabase.deleteStatesPHP;
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
-    updateData(phpFile,data).then(function(value){
+    moduleDatabase.updateData(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }

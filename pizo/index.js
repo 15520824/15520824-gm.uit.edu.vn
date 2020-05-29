@@ -43493,6 +43493,20 @@ function formatNumber(n) {
 function reFormatNumber(n) {
   return parseFloat(n.split(",").join(""));
 }
+function formatFit(n) {
+  var arr = [];
+  var per = 10;
+  var check;
+
+  while (n != 0) {
+    check = n % per;
+    arr.push(check);
+    n = n - check;
+    per *= 10;
+  }
+
+  return arr;
+}
 function getGMT(date) {
   var timezone = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var onlyDay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -46656,7 +46670,7 @@ function createAlias(string) {
 function removeAccents(str) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
 }
-function ModuleView_deleteQuestion(title, content) {
+function deleteQuestion(title, content) {
   var yes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "Có";
   var no = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "không";
   var contentElement;
@@ -47990,13 +48004,15 @@ function NewRealty_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol ==
 var NewRealty_ = dom_Fcore._;
 var NewRealty_$ = dom_Fcore.$;
 
-function NewRealty_NewRealty(header, dataTable) {
+function NewRealty_NewRealty(data) {
   component_BaseView.call(this);
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.header = header;
-  this.dataTable = dataTable;
+  console.log(data);
+  this.textHeader = "Sửa ";
+  this.data = data;
+  if (this.data == undefined) this.textHeader = "Thêm ";
 }
 
 NewRealty_NewRealty.prototype.setContainer = function (parent) {
@@ -48051,7 +48067,7 @@ NewRealty_NewRealty.prototype.getView = function () {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: "Thêm dự án"
+          innerHTML: self.textHeader + "dự án"
         }
       }, {
         tag: "div",
@@ -49039,10 +49055,10 @@ NewRealty_NewRealty.prototype.detructView = function () {
               props: {
                 items: [{
                   text: "tỉ",
-                  value: 1000
+                  value: 1
                 }, {
                   text: "triệu",
-                  value: 1
+                  value: 1 / 1000
                 }]
               }
             }]
@@ -49472,6 +49488,8 @@ NewRealty_NewRealty.prototype.detructView = function () {
   this.inputLiving = NewRealty_$('input.pizo-new-realty-dectruct-content-area-living', temp);
   this.inputBasement = NewRealty_$('input.pizo-new-realty-dectruct-content-area-basement', temp);
   this.inputFloor = NewRealty_$('input.pizo-new-realty-dectruct-content-area-floor', temp);
+  this.censorship = NewRealty_$('div.pizo-new-realty-detruct-content-censorship', temp);
+  console.log(this.data);
 
   if (this.data !== undefined) {
     var original = this.data.original;
@@ -49498,6 +49516,9 @@ NewRealty_NewRealty.prototype.detructView = function () {
     this.inputLease.checked = parseInt(checkStatus / 10) == 1 ? true : false;
     this.inputSell.checked = parseInt(checkStatus % 10) == 1 ? true : false;
     this.inputContent.value = original.content;
+    this.censorship.checked = original.censorship == 1 ? true : false;
+    this.inputFit.values = formatFit(parseInt(original.fit));
+    this.inputPrice.emit("change");
   }
 
   return temp;
@@ -49512,7 +49533,9 @@ NewRealty_NewRealty.prototype.getDataSave = function () {
     acreage: this.inputZoneAll.value * this.inputUnitZoneAll.value,
     direction: this.direction.value,
     type: this.type.value,
-    fit: this.inputFit.value,
+    fit: this.inputFit.values.reduce(function (a, b) {
+      return a + b;
+    }),
     roadwidth: this.inputWidthRoad.value * this.inputUnitWidthRoad.value,
     floor: this.inputFloor.value,
     basement: this.inputBasement.value,
@@ -49520,12 +49543,13 @@ NewRealty_NewRealty.prototype.getDataSave = function () {
     living: this.inputLiving.value,
     toilet: this.inputToilet.value,
     kitchen: this.inputKitchen.value,
-    price: this.inputPrice.value,
+    price: this.inputPrice.value * this.inputUnitPrice.value,
     name: this.inputName.value,
     content: this.inputContent.value,
     salestatus: (this.inputLease.checked == true ? 1 : 0) * 10 + (this.inputSell.checked == true ? 1 : 0),
     structure: this.structure.value,
-    pricerent: this.inputPriceRent.value * this.inputPriceRentUnit.value
+    pricerent: reFormatNumber(this.inputPriceRent.value) * this.inputPriceRentUnit.value,
+    censorship: this.censorship.checked == true ? 1 : 0
   };
 };
 
@@ -50219,10 +50243,61 @@ function NewRealty_removeAccents(str) {
 
 /* harmony default export */ var component_NewRealty = (NewRealty_NewRealty);
 // CONCATENATED MODULE: ./js/component/ModuleDatabase.js
-function ModuleDatabase() {}
-function loadData(phpLoader) {
-  var php = "https://lab.daithangminh.vn/home_co/pizo/php/php/load_help.php";
-  if (phpLoader !== undefined) php = phpLoader;
+var moduleDatabase = new ModuleDatabase();
+
+function ModuleDatabase() {
+  this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/php/";
+  this.loadAccountsPHP = this.hostDatabase + "load_accounts.php";
+  this.loadActiveHomesPHP = this.hostDatabase + "load_activehomes.php";
+  this.loadContactsPHP = this.hostDatabase + "load_contacts.php";
+  this.loadDepartmentsPHP = this.hostDatabase + "load_departments.php";
+  this.loadDistrictsPHP = this.hostDatabase + "load_districts.php";
+  this.loadHelpPHP = this.hostDatabase + "load_help.php";
+  this.loadNationsPHP = this.hostDatabase + "load_nations.php";
+  this.loadPositionsPHP = this.hostDatabase + "load_positions.php";
+  this.loadStatesPHP = this.hostDatabase + "load_states.php";
+  this.loadStreetsPHP = this.hostDatabase + "load_streets.php";
+  this.loadWardsPHP = this.hostDatabase + "load_wards.php";
+  this.addAccountsPHP = this.hostDatabase + "add_account.php";
+  this.addActiveHomesPHP = this.hostDatabase + "add_activehome.php";
+  this.addContactsPHP = this.hostDatabase + "add_contact.php";
+  this.addDepartmentsPHP = this.hostDatabase + "add_department.php";
+  this.addDistrictsPHP = this.hostDatabase + "add_district.php";
+  this.addHelpPHP = this.hostDatabase + "add_help.php";
+  this.addNationsPHP = this.hostDatabase + "add_nation.php";
+  this.addPositionsPHP = this.hostDatabase + "add_position.php";
+  this.addStatesPHP = this.hostDatabase + "add_state.php";
+  this.addStreetsPHP = this.hostDatabase + "add_street.php";
+  this.addWardsPHP = this.hostDatabase + "add_ward.php";
+  this.updateAccountsPHP = this.hostDatabase + "update_account.php";
+  this.updateActiveHomesPHP = this.hostDatabase + "update_activehome.php";
+  this.updateContactsPHP = this.hostDatabase + "update_contact.php";
+  this.updateDepartmentsPHP = this.hostDatabase + "update_department.php";
+  this.updateDistrictsPHP = this.hostDatabase + "update_district.php";
+  this.updateHelpPHP = this.hostDatabase + "update_help.php";
+  this.updateNationsPHP = this.hostDatabase + "update_nation.php";
+  this.updatePositionsPHP = this.hostDatabase + "update_position.php";
+  this.updateStatesPHP = this.hostDatabase + "update_state.php";
+  this.updateStreetsPHP = this.hostDatabase + "update_street.php";
+  this.updateWardsPHP = this.hostDatabase + "update_ward.php";
+  this.deleteAccountsPHP = this.hostDatabase + "delete_account.php";
+  this.deleteActiveHomesPHP = this.hostDatabase + "delete_activehome.php";
+  this.deleteContactsPHP = this.hostDatabase + "delete_contact.php";
+  this.deleteDepartmentsPHP = this.hostDatabase + "delete_department.php";
+  this.deleteDistrictsPHP = this.hostDatabase + "delete_district.php";
+  this.deleteHelpPHP = this.hostDatabase + "delete_help.php";
+  this.deleteNationsPHP = this.hostDatabase + "delete_nation.php";
+  this.deletePositionsPHP = this.hostDatabase + "delete_position.php";
+  this.deleteStatesPHP = this.hostDatabase + "delete_state.php";
+  this.deleteStreetsPHP = this.hostDatabase + "delete_street.php";
+  this.deleteWardsPHP = this.hostDatabase + "delete_ward.php";
+}
+
+/* harmony default export */ var component_ModuleDatabase = (moduleDatabase);
+
+ModuleDatabase.prototype.loadData = function (phpLoader) {
+  var php;
+  if (phpLoader !== undefined) php = phpLoader;else return Promise.reject();
   return new Promise(function (resolve, reject) {
     var xhttp = new XMLHttpRequest();
 
@@ -50237,10 +50312,11 @@ function loadData(phpLoader) {
     xhttp.open("GET", php, true);
     xhttp.send();
   });
-}
-function updateData(phpUpdater, data) {
+};
+
+ModuleDatabase.prototype.updateData = function (phpUpdater, data) {
   var php;
-  if (phpUpdater !== undefined) php = phpUpdater;
+  if (phpUpdater !== undefined) php = phpUpdater;else return Promise.reject();
   return new Promise(function (resolve, reject) {
     var xhttp = new XMLHttpRequest();
 
@@ -50264,8 +50340,9 @@ function updateData(phpUpdater, data) {
 
     xhttp.send(stringSend);
   });
-}
+};
 // CONCATENATED MODULE: ./js/page/ListRealty.js
+
 
 
 
@@ -50283,7 +50360,6 @@ function ListRealty_ListRealty() {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.ModuleView = new ModuleView_ModuleView();
 }
 
 ListRealty_ListRealty.prototype.setContainer = function (parent) {
@@ -50416,14 +50492,11 @@ ListRealty_ListRealty.prototype.getView = function () {
     token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
       switch (menuItem.value) {
         case 0:
-          var mNewRealty = new component_NewRealty();
-          mNewRealty.attach(self.parent);
-          var frameview = mNewRealty.getView();
-          self.parent.body.addChild(frameview);
-          self.parent.body.activeFrame(frameview);
+          self.edit(data, parent, index);
           break;
 
         case 1:
+          self["delete"](data.original, parent, index);
           break;
       }
     });
@@ -50448,7 +50521,7 @@ ListRealty_ListRealty.prototype.getView = function () {
     child: []
   });
 
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_activehomes.php").then(function (value) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadActiveHomesPHP).then(function (value) {
     var header = [{
       type: "dragzone",
       dragElement: false
@@ -50457,7 +50530,10 @@ ListRealty_ListRealty.prototype.getView = function () {
       value: "#"
     }, {
       value: 'MS',
-      sort: true
+      sort: true,
+      style: {
+        minWidth: "30px"
+      }
     }, 'Số nhà', {
       value: 'Tên đường'
     }, {
@@ -50467,24 +50543,46 @@ ListRealty_ListRealty.prototype.getView = function () {
     }, {
       value: 'Tỉnh/TP'
     }, {
-      value: 'Ghi chú',
-      sort: true
+      value: 'Ghi chú'
     }, {
       value: 'Ngang',
-      sort: true
+      sort: true,
+      style: {
+        minWidth: "50px"
+      }
     }, {
       value: 'Dài',
-      sort: true
+      sort: true,
+      style: {
+        minWidth: "50px"
+      }
     }, {
-      value: 'DT'
+      value: 'DT',
+      sort: true,
+      style: {
+        minWidth: "50px"
+      }
     }, {
       value: 'Kết cấu'
     }, {
       value: 'Hướng'
-    }, 'Giá', {
-      value: 'Giá m²'
     }, {
-      value: 'Hiện trạng'
+      value: 'Giá',
+      sort: true,
+      style: {
+        minWidth: "50px"
+      }
+    }, {
+      value: 'Giá m²',
+      sort: true,
+      style: {
+        minWidth: "50px"
+      }
+    }, {
+      value: 'Hiện trạng',
+      style: {
+        minWidth: "85px"
+      }
     }, {
       value: 'Ngày tạo'
     }, {
@@ -50497,10 +50595,10 @@ ListRealty_ListRealty.prototype.getView = function () {
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', self.$view));
   });
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php").then(function (value) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadAccountsPHP).then(function (value) {
     self.formatDataRowAccount(value);
   });
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_contacts.php").then(function (value) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadContactsPHP).then(function (value) {
     self.formatDataRowRealty(value);
   });
   this.searchControl = this.searchControlContent();
@@ -50541,26 +50639,101 @@ ListRealty_ListRealty.prototype.formatDataRow = function (data) {
 };
 
 ListRealty_ListRealty.prototype.getDataRow = function (data) {
-  // var {text:"Chưa xác định",value:0},
-  // {text:"Đất trống",value:1},
-  // {text:"Kết cấu",value:2},
-  // {text:"Cấp 4",value:3},
-  // {text:"Sẳn *",value:4},
-  var result = [// {},
-    // {},
-    // data.id,
-    // "",
-    // "",
-    // "",
-    // "",
-    // "",
-    // data.content,
-    // data.height,
-    // data.width,
-    // data.acreage,
-    // data.
-  ];
+  var structure;
+
+  switch (parseInt(data.structure)) {
+    case 0:
+      structure = "Chưa xác định";
+      break;
+
+    case 1:
+      structure = "Đất trống";
+      break;
+
+    case 2:
+      structure = "Kết cấu";
+      break;
+
+    case 3:
+      structure = "Cấp 4";
+      break;
+
+    case 4:
+      structure = "Sẳn *";
+      break;
+  }
+
+  var direction;
+  console.log(parseInt(data.direction));
+
+  switch (parseInt(data.direction)) {
+    case 0:
+      direction = "Chưa xác định";
+      break;
+
+    case 6:
+      direction = "Đông";
+      break;
+
+    case 4:
+      direction = "Tây";
+      break;
+
+    case 2:
+      direction = "Nam";
+      break;
+
+    case 8:
+      direction = "Bắc";
+      break;
+
+    case 7:
+      direction = "Tây Bắc";
+      break;
+
+    case 9:
+      direction = "Đông Bắc";
+      break;
+
+    case 1:
+      direction = "Tây Nam";
+      break;
+
+    case 3:
+      direction = "Đông Nam";
+      break;
+  }
+
+  var staus = "";
+  if (parseInt(data.salestatus) % 10 == 1) staus += "Còn bán";
+
+  if (parseInt(parseInt(data.salestatus) / 10) == 1) {
+    if (staus == "") staus += "Còn cho thuê";else staus += " và còn cho thuê";
+  }
+
+  var result = [{}, {}, {
+    value: data.id,
+    style: {
+      whiteSpace: "nowrap"
+    }
+  }, "", "", "", "", "", data.content, {
+    value: data.height,
+    style: {
+      whiteSpace: "nowrap"
+    }
+  }, {
+    value: data.width,
+    style: {
+      whiteSpace: "nowrap"
+    }
+  }, {
+    value: data.acreage,
+    style: {
+      whiteSpace: "nowrap"
+    }
+  }, structure, direction, data.price + " tỉ", data.price * 1000 / data.acreage + " triệu", staus, formatDate(data.created, true, true, true, true, true), {}];
   result.original = data;
+  console.log(result);
   return result;
 };
 
@@ -50906,9 +51079,9 @@ ListRealty_ListRealty.prototype.addDB = function (mNewRealty, row) {
   var self = this;
   mNewRealty.promiseAddDB.then(function (value) {
     console.log(value);
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_activehomes.php";
+    var phpFile = component_ModuleDatabase.addActiveHomesPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -50920,14 +51093,17 @@ ListRealty_ListRealty.prototype.addDB = function (mNewRealty, row) {
 };
 
 ListRealty_ListRealty.prototype.addView = function (value, parent) {
+  value.created = getGMT();
   var result = this.getDataRow(value);
   var element = this.mTable;
   element.insertRow(result);
 };
 
 ListRealty_ListRealty.prototype.edit = function (data, parent, index) {
+  console.log(data);
   var self = this;
   var mNewRealty = new component_NewRealty(data);
+  console.log(mNewRealty);
   mNewRealty.attach(self.parent);
   mNewRealty.setDataListAccount(self.listAccoutData);
   mNewRealty.setDataListContact(self.listContactData);
@@ -50940,10 +51116,10 @@ ListRealty_ListRealty.prototype.edit = function (data, parent, index) {
 ListRealty_ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
   var self = this;
   mNewRealty.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_activehomes.php";
+    var phpFile = component_ModuleDatabase.updateActiveHomesPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewRealty.promiseEditDB = undefined;
@@ -50954,6 +51130,7 @@ ListRealty_ListRealty.prototype.editDB = function (mNewRealty, data, parent, ind
 };
 
 ListRealty_ListRealty.prototype.editView = function (value, data, parent, index) {
+  value.created = data.original.created;
   var data = this.getDataRow(value);
   var indexOF = index,
       element = parent;
@@ -50977,9 +51154,9 @@ ListRealty_ListRealty.prototype.deleteView = function (parent, index) {
 
 ListRealty_ListRealty.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_activehomes.php";
+  var phpFile = component_ModuleDatabase.deleteActiveHomesPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -51453,9 +51630,9 @@ ListWard_ListWard.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_wards.php").then(function (value) {
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function (listDistrict) {
-      loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (listState) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadWardsPHP).then(function (value) {
+    component_ModuleDatabase.loadData(component_ModuleDatabase.loadDistrictsPHP).then(function (listDistrict) {
+      component_ModuleDatabase.loadData(component_ModuleDatabase.loadStatesPHP).then(function (listState) {
         self.setListParamState(listState);
         self.listStateElement.items = self.listState;
         self.setListParamDistrict(listDistrict);
@@ -51594,12 +51771,12 @@ ListWard_ListWard.prototype.getDataRow = function (data) {
   var result = [{}, data.id, data.name, data.type, {
     value: data.districtid,
     element: ListWard_({
-      text: this.checkDistrict[parseInt(data.districtid)].name
+      text: this.checkDistrict[parseInt(data.districtid)].type + " " + this.checkDistrict[parseInt(data.districtid)].name
     })
   }, {
     value: this.checkDistrict[parseInt(data.districtid)].stateid,
     element: ListWard_({
-      text: this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name
+      text: this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].type + " " + this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name
     })
   }, {}];
   result.original = data;
@@ -51871,9 +52048,9 @@ ListWard_ListWard.prototype.add = function () {
 ListWard_ListWard.prototype.addDB = function (mNewDistrict, row) {
   var self = this;
   mNewDistrict.promiseAddDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+    var phpFile = component_ModuleDatabase.addStatesPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -51904,10 +52081,10 @@ ListWard_ListWard.prototype.edit = function (data, parent, index) {
 ListWard_ListWard.prototype.editDB = function (mNewDistrict, data, parent, index) {
   var self = this;
   mNewDistrict.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+    var phpFile = component_ModuleDatabase.updateStatesPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewDistrict.promiseEditDB = undefined;
@@ -51927,7 +52104,7 @@ ListWard_ListWard.prototype.editView = function (value, data, parent, index) {
 ListWard_ListWard.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -51942,9 +52119,9 @@ ListWard_ListWard.prototype.deleteView = function (parent, index) {
 
 ListWard_ListWard.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+  var phpFile = component_ModuleDatabase.deleteStatesPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -52185,10 +52362,10 @@ ListStreet_ListStreet.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_streets.php").then(function (value) {
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_wards.php").then(function (listWard) {
-      loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function (listDistrict) {
-        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (listState) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadStreetsPHP).then(function (value) {
+    component_ModuleDatabase.loadData(component_ModuleDatabase.loadWardsPHP).then(function (listWard) {
+      component_ModuleDatabase.loadData(component_ModuleDatabase.loadDistrictsPHP).then(function (listDistrict) {
+        component_ModuleDatabase.loadData(component_ModuleDatabase.loadStatesPHP).then(function (listState) {
           self.setListParamWard(listWard);
           self.setListParamDitrict(listDistrict);
           self.setListParamState(listState);
@@ -52582,9 +52759,9 @@ ListStreet_ListStreet.prototype.add = function () {
 ListStreet_ListStreet.prototype.addDB = function (mNewDistrict, row) {
   var self = this;
   mNewDistrict.promiseAddDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+    var phpFile = component_ModuleDatabase.addStatesPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -52617,10 +52794,10 @@ ListStreet_ListStreet.prototype.edit = function (data, parent, index) {
 ListStreet_ListStreet.prototype.editDB = function (mNewDistrict, data, parent, index) {
   var self = this;
   mNewDistrict.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+    var phpFile = component_ModuleDatabase.updateStatesPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewDistrict.promiseEditDB = undefined;
@@ -52642,7 +52819,7 @@ ListStreet_ListStreet.prototype.editView = function (value, data, parent, index)
 ListStreet_ListStreet.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -52657,9 +52834,9 @@ ListStreet_ListStreet.prototype.deleteView = function (parent, index) {
 
 ListStreet_ListStreet.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+  var phpFile = component_ModuleDatabase.deleteStatesPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -53074,8 +53251,8 @@ ListState_ListState.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (value) {
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_nations.php").then(function (listParam) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadStatesPHP).then(function (value) {
+    component_ModuleDatabase.loadData(component_ModuleDatabase.loadNationsPHP).then(function (listParam) {
       self.setListParam(listParam);
       var header = [{
         type: "increase",
@@ -53270,9 +53447,9 @@ ListState_ListState.prototype.add = function () {
 ListState_ListState.prototype.addDB = function (mNewState, row) {
   var self = this;
   mNewState.promiseAddDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+    var phpFile = component_ModuleDatabase.addStatesPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -53303,10 +53480,10 @@ ListState_ListState.prototype.edit = function (data, parent, index) {
 ListState_ListState.prototype.editDB = function (mNewState, data, parent, index) {
   var self = this;
   mNewState.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+    var phpFile = component_ModuleDatabase.updateStatesPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewState.promiseEditDB = undefined;
@@ -53326,7 +53503,7 @@ ListState_ListState.prototype.editView = function (value, data, parent, index) {
 ListState_ListState.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -53341,9 +53518,9 @@ ListState_ListState.prototype.deleteView = function (parent, index) {
 
 ListState_ListState.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+  var phpFile = component_ModuleDatabase.deleteStatesPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -53583,8 +53760,8 @@ ListDistrict_ListDistrict.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function (value) {
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function (listParam) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadDistrictsPHP).then(function (value) {
+    component_ModuleDatabase.loadData(component_ModuleDatabase.loadStatesPHP).then(function (listParam) {
       self.setListParam(listParam);
       var header = [{
         type: "increase",
@@ -53685,10 +53862,11 @@ ListDistrict_ListDistrict.prototype.formatDataRow = function (data) {
 };
 
 ListDistrict_ListDistrict.prototype.getDataRow = function (data) {
+  console.log(data.stateid);
   var result = [{}, data.id, data.name, data.type, {
     value: this.checkState[parseInt(data.stateid)].id,
     element: ListDistrict_({
-      text: this.checkState[parseInt(data.stateid)].name
+      text: this.checkState[parseInt(data.stateid)].type + " " + this.checkState[parseInt(data.stateid)].name
     })
   }, {}];
   result.original = data;
@@ -53866,9 +54044,9 @@ ListDistrict_ListDistrict.prototype.add = function () {
 ListDistrict_ListDistrict.prototype.addDB = function (mNewDistrict, row) {
   var self = this;
   mNewDistrict.promiseAddDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_district.php";
+    var phpFile = component_ModuleDatabase.addDistrictsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -53899,10 +54077,10 @@ ListDistrict_ListDistrict.prototype.edit = function (data, parent, index) {
 ListDistrict_ListDistrict.prototype.editDB = function (mNewDistrict, data, parent, index) {
   var self = this;
   mNewDistrict.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_district.php";
+    var phpFile = component_ModuleDatabase.updateDistrictsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewDistrict.promiseEditDB = undefined;
@@ -53922,7 +54100,7 @@ ListDistrict_ListDistrict.prototype.editView = function (value, data, parent, in
 ListDistrict_ListDistrict.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -53937,9 +54115,9 @@ ListDistrict_ListDistrict.prototype.deleteView = function (parent, index) {
 
 ListDistrict_ListDistrict.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_district.php";
+  var phpFile = component_ModuleDatabase.deleteDistrictsPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -54771,7 +54949,7 @@ function EditHelpContainer_EditHelpContainer(phpLoader) {
   });
 
   var updateTableFunction;
-  loadData(phpLoader).then(function (value) {
+  component_ModuleDatabase.loadData(phpLoader).then(function (value) {
     var header = [{
       type: "dragzone"
     }, {
@@ -55370,9 +55548,9 @@ EditHelpContainer_EditHelpContainer.prototype.addView = function (value, row, pa
 
 EditHelpContainer_EditHelpContainer.prototype.addDB = function (value) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_help.php";
+  var phpFile = component_ModuleDatabase.addHelpPHP;
   if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, value).then(function (result) {
+  component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
     value.id = result;
   });
 };
@@ -55464,10 +55642,10 @@ EditHelpContainer_EditHelpContainer.prototype.editView = function (value, data, 
 EditHelpContainer_EditHelpContainer.prototype.editDB = function (mNewCategory, data, parent, index) {
   var self = this;
   mNewCategory.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_help.php";
+    var phpFile = component_ModuleDatabase.updateHelpPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewCategory.promiseEditDB = undefined;
@@ -55530,7 +55708,7 @@ EditHelpContainer_EditHelpContainer.prototype.updateChild = function (child) {
         if (child[i].original.ordering != i) child[i].original.ordering = i;
         var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_help_time.php";
         if (self.phpUpdateTimeContent) phpFile = self.phpUpdateTimeContent;
-        updateData(phpFile, dataUpdate);
+        component_ModuleDatabase.updateData(phpFile, dataUpdate);
       }
     }
 
@@ -55540,7 +55718,7 @@ EditHelpContainer_EditHelpContainer.prototype.updateChild = function (child) {
 
 EditHelpContainer_EditHelpContainer.prototype["delete"] = function (data, parent, index) {
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.title);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.title);
   this.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -55566,9 +55744,9 @@ EditHelpContainer_EditHelpContainer.prototype.setDataTitle = function (data) {
 
 EditHelpContainer_EditHelpContainer.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_help.php";
+  var phpFile = component_ModuleDatabase.deleteHelpPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -56794,7 +56972,7 @@ ListPositions_ListPositions.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_departments.php").then(function (value) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadDepartmentsPHP).then(function (value) {
     var header = [{
       value: 'Bộ phận',
       sort: true,
@@ -56867,8 +57045,8 @@ ListPositions_ListPositions.prototype.getView = function () {
     self.mTablePosition = new tableView(header, [], false, true);
     contentContainer.addChild(self.mTablePosition);
     var promiseAll = [];
-    promiseAll.push(loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php"));
-    promiseAll.push(loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php"));
+    promiseAll.push(component_ModuleDatabase.loadData(component_ModuleDatabase.loadPositionsPHP));
+    promiseAll.push(component_ModuleDatabase.loadData(component_ModuleDatabase.loadAccountsPHP));
     Promise.all(promiseAll).then(function (values) {
       self.formatDataRowAccount(values[1]);
       self.formatDataRowPosition(values[0]);
@@ -56967,9 +57145,9 @@ ListPositions_ListPositions.prototype.addDBDepartment = function (mNewDepartment
   var self = this;
   mNewDepartment.promiseAddDB.then(function (value) {
     console.log(value);
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_department.php";
+    var phpFile = component_ModuleDatabase.addDepartmentsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       self.addViewDepartment(value, row);
     });
@@ -57006,10 +57184,10 @@ ListPositions_ListPositions.prototype.editDepartment = function (data, parent, i
 ListPositions_ListPositions.prototype.editDBDepartment = function (mNewDepartment, data, parent, index) {
   var self = this;
   mNewDepartment.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_department.php";
+    var phpFile = component_ModuleDatabase.updateDepartmentsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editViewDepartment(value, data, parent, index);
     });
     mNewDepartment.promiseEditDB = undefined;
@@ -57054,7 +57232,7 @@ ListPositions_ListPositions.prototype.editViewDepartment = function (value, data
 
 ListPositions_ListPositions.prototype.deleteDepartment = function (data, parent, index) {
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDBDepartment(data, parent, index);
@@ -57067,9 +57245,9 @@ ListPositions_ListPositions.prototype.deleteViewDepartment = function (parent, i
 
 ListPositions_ListPositions.prototype.deleteDBDepartment = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_department.php";
+  var phpFile = component_ModuleDatabase.deleteDepartmentsPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteViewDepartment(parent, index);
   });
 };
@@ -57091,15 +57269,15 @@ ListPositions_ListPositions.prototype.addDBPosition = function (mNewPosition, ro
   var self = this;
   mNewPosition.promiseAddDB.then(function (value) {
     console.log(value);
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_position.php";
+    var phpFile = component_ModuleDatabase.addPositionsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       console.log(result);
 
       if (value.username !== undefined) {
         console.log(value.id);
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_account.php";
+        var phpFile = component_ModuleDatabase.updateAccountsPHP;
         if (self.phpUpdateAccount) phpFile = self.phpUpdateAccount;
         var x = {
           id: value.username.id,
@@ -57110,7 +57288,7 @@ ListPositions_ListPositions.prototype.addDBPosition = function (mNewPosition, ro
           if (self.listAccoutData[i].id == value.username.id) self.listAccoutData[i].positionid = value.id;
         }
 
-        updateData(phpFile, x).then(function () {
+        component_ModuleDatabase.updateData(phpFile, x).then(function () {
           delete self.checkAccount[value.username.positionid];
           value.username.positionid = value.id;
           self.checkAccount[value.id] = value.username;
@@ -57149,20 +57327,20 @@ ListPositions_ListPositions.prototype.editPosition = function (data, parent, ind
 ListPositions_ListPositions.prototype.editDBPosition = function (mNewPosition, data, parent, index) {
   var self = this;
   mNewPosition.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_position.php";
+    var phpFile = component_ModuleDatabase.updatePositionsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
     console.log(value);
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       if (value.username !== undefined && value.username.positionid != value.id) {
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_account.php";
+        var phpFile = component_ModuleDatabase.updateAccountsPHP;
         if (self.phpUpdateAccount) phpFile = self.phpUpdateAccount;
         var x = {
           id: value.username.id,
           positionid: value.id
         };
         var promiseAll = [];
-        promiseAll.push(updateData(phpFile, x));
+        promiseAll.push(component_ModuleDatabase.updateData(phpFile, x));
 
         if (self.checkAccount[value.id] !== undefined) {
           var y = {
@@ -57170,7 +57348,7 @@ ListPositions_ListPositions.prototype.editDBPosition = function (mNewPosition, d
             positionid: 0
           };
           var promiseAll = [];
-          promiseAll.push(updateData(phpFile, y));
+          promiseAll.push(component_ModuleDatabase.updateData(phpFile, y));
         }
 
         for (var i = 0; i < self.listAccoutData.length; i++) {
@@ -57207,7 +57385,7 @@ ListPositions_ListPositions.prototype.editViewPosition = function (value, data, 
 
 ListPositions_ListPositions.prototype.deletePosition = function (data, parent, index) {
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDBPosition(data, parent, index);
@@ -57220,9 +57398,9 @@ ListPositions_ListPositions.prototype.deleteViewPosition = function (parent, ind
 
 ListPositions_ListPositions.prototype.deleteDBPosition = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_position.php";
+  var phpFile = component_ModuleDatabase.deletePositionsPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteViewPosition(parent, index);
   });
 };
@@ -58000,8 +58178,8 @@ ListAccount_ListAccount.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php").then(function (value) {
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function (listParam) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadAccountsPHP).then(function (value) {
+    component_ModuleDatabase.loadData(component_ModuleDatabase.loadPositionsPHP).then(function (listParam) {
       self.setListParam(listParam);
       var header = [{
         type: "increase",
@@ -58424,9 +58602,9 @@ ListAccount_ListAccount.prototype.add = function () {
 ListAccount_ListAccount.prototype.addDB = function (mNewAccount, row) {
   var self = this;
   mNewAccount.promiseAddDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_account.php";
+    var phpFile = component_ModuleDatabase.addAccountsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -58460,10 +58638,10 @@ ListAccount_ListAccount.prototype.edit = function (data, parent, index) {
 ListAccount_ListAccount.prototype.editDB = function (mNewAccount, data, parent, index) {
   var self = this;
   mNewAccount.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_account.php";
+    var phpFile = component_ModuleDatabase.updateAccountsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewAccount.promiseEditDB = undefined;
@@ -58485,7 +58663,7 @@ ListAccount_ListAccount.prototype.editView = function (value, data, parent, inde
 ListAccount_ListAccount.prototype["delete"] = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -58500,9 +58678,9 @@ ListAccount_ListAccount.prototype.deleteView = function (parent, index) {
 
 ListAccount_ListAccount.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_account.php";
+  var phpFile = component_ModuleDatabase.deleteAccountsPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -58743,7 +58921,7 @@ ListAddress_ListAddress.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function (value) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadPositionsPHP).then(function (value) {
     var header = [{
       type: "increase",
       value: "#",
@@ -59030,9 +59208,9 @@ ListAddress_ListAddress.prototype.add = function () {
 ListAddress_ListAddress.prototype.addDB = function (mNewPosition, row) {
   var self = this;
   mNewPosition.promiseAddDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_position.php";
+    var phpFile = component_ModuleDatabase.addPositionsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -59071,10 +59249,10 @@ ListAddress_ListAddress.prototype.edit = function (data, parent, index) {
 ListAddress_ListAddress.prototype.editDB = function (mNewPosition, data, parent, index) {
   var self = this;
   mNewPosition.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_position.php";
+    var phpFile = component_ModuleDatabase.updatePositionsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewPosition.promiseEditDB = undefined;
@@ -59117,7 +59295,7 @@ ListAddress_ListAddress.prototype.editView = function (value, data, parent, inde
 
 ListAddress_ListAddress.prototype["delete"] = function (data, parent, index) {
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -59134,9 +59312,9 @@ ListAddress_ListAddress.prototype.deleteView = function (parent, index) {
 
 ListAddress_ListAddress.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_position.php";
+  var phpFile = component_ModuleDatabase.deletePositionsPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -59619,7 +59797,7 @@ ListContact_ListContact.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_contacts.php").then(function (value) {
+  component_ModuleDatabase.loadData(component_ModuleDatabase.loadContactsPHP).then(function (value) {
     var header = [{
       type: "increase",
       value: "#",
@@ -59841,9 +60019,9 @@ ListContact_ListContact.prototype.add = function () {
 ListContact_ListContact.prototype.addDB = function (mNewContact, row) {
   var self = this;
   mNewContact.promiseAddDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_contact.php";
+    var phpFile = component_ModuleDatabase.addContactsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -59873,10 +60051,10 @@ ListContact_ListContact.prototype.edit = function (data, parent, index) {
 ListContact_ListContact.prototype.editDB = function (mNewContact, data, parent, index) {
   var self = this;
   mNewContact.promiseEditDB.then(function (value) {
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_contact.php";
+    var phpFile = component_ModuleDatabase.updateContactsPHP;
     if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewContact.promiseEditDB = undefined;
@@ -59895,7 +60073,7 @@ ListContact_ListContact.prototype.editView = function (value, data, parent, inde
 
 ListContact_ListContact.prototype["delete"] = function (data, parent, index) {
   var self = this;
-  var deleteItem = ModuleView_deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
   this.$view.addChild(deleteItem);
   deleteItem.promiseComfirm.then(function () {
     self.deleteDB(data, parent, index);
@@ -59910,9 +60088,9 @@ ListContact_ListContact.prototype.deleteView = function (parent, index) {
 
 ListContact_ListContact.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_contact.php";
+  var phpFile = component_ModuleDatabase.deleteContactsPHP;
   if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };

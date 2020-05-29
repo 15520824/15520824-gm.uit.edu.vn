@@ -5,10 +5,16 @@ import "../../css/ListRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
-import { tableView, ModuleView} from '../component/ModuleView';
+import {
+    tableView,
+    deleteQuestion
+} from '../component/ModuleView';
 import NewRealty from '../component/NewRealty';
-
-import {loadData,updateData} from '../component/ModuleDatabase';
+import {
+    formatDate,
+    getGMT
+} from '../component/FormatFunction';
+import moduleDatabase from '../component/ModuleDatabase';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -18,11 +24,9 @@ function ListRealty() {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    this.ModuleView = new ModuleView();
 }
 
-ListRealty.prototype.setContainer = function(parent)
-{
+ListRealty.prototype.setContainer = function (parent) {
     this.parent = parent;
 }
 
@@ -33,624 +37,718 @@ ListRealty.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
-        tag:"input",
-        class:"quantumWizTextinputPaperinputInput",
-        props:{
-            type:"number",
-            autocomplete:"off",
-            min:1,
-            max:200,
-            step:1,
-            value:50
+        tag: "input",
+        class: "quantumWizTextinputPaperinputInput",
+        props: {
+            type: "number",
+            autocomplete: "off",
+            min: 1,
+            max: 200,
+            step: 1,
+            value: 50
         }
     })
     var allinput = _({
-        tag:"input",
-        class:"pizo-list-realty-page-allinput-input",
-        props:{
-            placeholder:"Tìm theo mã, tên, địa chỉ bất động sản"
+        tag: "input",
+        class: "pizo-list-realty-page-allinput-input",
+        props: {
+            placeholder: "Tìm theo mã, tên, địa chỉ bất động sản"
         }
     });
-    if(window.mobilecheck())
-    {
+    if (window.mobilecheck()) {
         allinput.placeholder = "Tìm bất động sản"
     }
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
-        child: [
-            {
-                class: 'absol-single-page-header',
-                child: [
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-button",
-                        child: [
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Đóng" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.add();
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Thêm" + '</span>'
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        tag:"div",
-                        class:"pizo-list-realty-page-allinput",
-                        child:[
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-page-allinput-container",
-                                child:[
-                                    allinput,
-                                    {
-                                        tag:"button",
-                                        class:"pizo-list-realty-page-allinput-search",
-                                        child:[
-                                            {
-                                                tag: 'i',
-                                                class: 'material-icons',
-                                                props: {
-                                                    innerHTML: 'search'
-                                                },
-                                            },
-                                        ]
-                                    },
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-page-allinput-filter",
-                                on:{
-                                    click:function(event)
-                                    {
-                                        self.searchControl.show();
-                                    }
-                                },
-                                child:[
-                                    {
-                                        tag: 'filter-ico',
-                                    },
-                                    {
-                                        tag:"span",
-                                        class:"navbar-search__filter-text",
-                                        props:{
-                                            innerHTML:"Lọc"
-                                        }
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-page-number-line",
-                        child: [
-                            input,
-                            {
-                                tag: "span",
-                                class:
-                                    "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
-                                props: {
-                                    innerHTML: "Số dòng"
+        child: [{
+            class: 'absol-single-page-header',
+            child: [{
+                    tag: "div",
+                    class: "pizo-list-realty-button",
+                    child: [{
+                            tag: "button",
+                            class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function (evt) {
+                                    self.$view.selfRemove();
+                                    var arr = self.parent.body.getAllChild();
+                                    self.parent.body.activeFrame(arr[arr.length - 1]);
                                 }
-                            }
-                        ]
-                    }
-                ]
-            },
-        ]
-    });
-    var docTypeMemuProps,token,functionX;
-    var functionClickMore = function(event, me, index, parent, data, row)
-    {
-       
-        docTypeMemuProps = {
-            items: [
+                            },
+                            child: [
+                                '<span>' + "Đóng" + '</span>'
+                            ]
+                        },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function (evt) {
+                                    self.add();
+                                }
+                            },
+                            child: [
+                                '<span>' + "Thêm" + '</span>'
+                            ]
+                        }
+                    ]
+                },
                 {
+                    tag: "div",
+                    class: "pizo-list-realty-page-allinput",
+                    child: [{
+                            tag: "div",
+                            class: "pizo-list-realty-page-allinput-container",
+                            child: [
+                                allinput,
+                                {
+                                    tag: "button",
+                                    class: "pizo-list-realty-page-allinput-search",
+                                    child: [{
+                                        tag: 'i',
+                                        class: 'material-icons',
+                                        props: {
+                                            innerHTML: 'search'
+                                        },
+                                    }, ]
+                                },
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-page-allinput-filter",
+                            on: {
+                                click: function (event) {
+                                    self.searchControl.show();
+                                }
+                            },
+                            child: [{
+                                    tag: 'filter-ico',
+                                },
+                                {
+                                    tag: "span",
+                                    class: "navbar-search__filter-text",
+                                    props: {
+                                        innerHTML: "Lọc"
+                                    }
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    tag: "div",
+                    class: "pizo-list-realty-page-number-line",
+                    child: [
+                        input,
+                        {
+                            tag: "span",
+                            class: "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+                            props: {
+                                innerHTML: "Số dòng"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }, ]
+    });
+    var docTypeMemuProps, token, functionX;
+    var functionClickMore = function (event, me, index, parent, data, row) {
+
+        docTypeMemuProps = {
+            items: [{
                     text: 'Sửa',
                     icon: 'span.mdi.mdi-text-short',
-                    value:0,
+                    value: 0,
                 },
                 {
                     text: 'Xóa',
                     icon: 'span.mdi.mdi-text',
-                    value:1,
+                    value: 1,
                 },
             ]
         };
-        token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
-            switch(menuItem.value)
-            {
+        token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+            switch (menuItem.value) {
                 case 0:
-                    var mNewRealty = new NewRealty();
-                    mNewRealty.attach(self.parent);
-                    
-                    var frameview = mNewRealty.getView();
-                    self.parent.body.addChild(frameview);
-                    self.parent.body.activeFrame(frameview);
+                    self.edit(data, parent, index);
                     break;
                 case 1:
+                    self.delete(data.original, parent, index);
                     break;
             }
         });
 
-        functionX = function(token){
-            return function(){
-                var x = function(event){
+        functionX = function (token) {
+            return function () {
+                var x = function (event) {
                     absol.QuickMenu.close(token);
-                    document.body.removeEventListener("click",x);
+                    document.body.removeEventListener("click", x);
                 }
-                document.body.addEventListener("click",x)
+                document.body.addEventListener("click", x)
             }
         }(token);
 
-        setTimeout(functionX,10)
+        setTimeout(functionX, 10)
     }
 
     var tabContainer = _({
-        tag:"div",
-        class:["pizo-list-realty-main-result-control","drag-zone-bg"],
-        child:[
-            
+        tag: "div",
+        class: ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+        child: [
+
         ]
     })
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_activehomes.php").then(function(value){
-        
-        var header = [{ type: "dragzone" , dragElement : false},{ type: "increase", value: "#"}, {value:'MS',sort:true}, 'Số nhà', {value: 'Tên đường' }, { value:'Phường/Xã' }, { value: 'Quận/Huyện' }, { value: 'Tỉnh/TP' }, { value: 'Ghi chú', sort: true }, {value: 'Ngang', sort: true }, {value: 'Dài',sort:true}, {value: 'DT' }, { value: 'Kết cấu' }, { value: 'Hướng'}, 'Giá', { value: 'Giá m²' }, { value: 'Hiện trạng'}, {value:'Ngày tạo'},{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false}];
+    moduleDatabase.loadData(moduleDatabase.loadActiveHomesPHP).then(function (value) {
+
+        var header = [{
+            type: "dragzone",
+            dragElement: false
+        }, {
+            type: "increase",
+            value: "#"
+        }, {
+            value: 'MS',
+            sort: true,
+            style: {
+                minWidth: "30px"
+            }
+        }, 'Số nhà', {
+            value: 'Tên đường'
+        }, {
+            value: 'Phường/Xã'
+        }, {
+            value: 'Quận/Huyện'
+        }, {
+            value: 'Tỉnh/TP'
+        }, {
+            value: 'Ghi chú',
+        }, {
+            value: 'Ngang',
+            sort: true,
+            style:{
+                minWidth: "50px"
+            }
+        }, {
+            value: 'Dài',
+            sort: true,
+            style:{
+                minWidth: "50px"
+            }
+        }, {
+            value: 'DT',
+            sort: true,
+            style:{
+                minWidth: "50px"
+            }
+        }, {
+            value: 'Kết cấu'
+        }, {
+            value: 'Hướng'
+        }, {
+            value:  'Giá',
+            sort: true,
+            style:{
+                minWidth: "50px"
+            }
+        }, {
+            value: 'Giá m²',
+            sort: true,
+            style:{
+                minWidth: "50px"
+            }
+        }, {
+            value: 'Hiện trạng',
+            style:{
+                minWidth:"85px"
+            }
+        }, {
+            value: 'Ngày tạo'
+        }, {
+            type: "detail",
+            functionClickAll: functionClickMore,
+            icon: "",
+            dragElement: false
+        }];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
         tabContainer.addChild(self.mTable);
-        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
+        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
     });
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php").then(function(value){
+    moduleDatabase.loadData(moduleDatabase.loadAccountsPHP).then(function (value) {
         self.formatDataRowAccount(value);
     })
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_contacts.php").then(function(value){
+    moduleDatabase.loadData(moduleDatabase.loadContactsPHP).then(function (value) {
         self.formatDataRowRealty(value);
     })
 
-  
+
     this.searchControl = this.searchControlContent();
 
     this.$view.addChild(_({
-            tag:"div",
-            class:["pizo-list-realty-main"],
-            child:[
-                this.searchControl,
-                tabContainer
-            ]   
-        })
-        );
+        tag: "div",
+        class: ["pizo-list-realty-main"],
+        child: [
+            this.searchControl,
+            tabContainer
+        ]
+    }));
     return this.$view;
 }
 
 
-ListRealty.prototype.formatDataRowAccount = function(data){
+ListRealty.prototype.formatDataRowAccount = function (data) {
     this.listAccoutData = data;
 }
 
-ListRealty.prototype.formatDataRowRealty = function(data){
+ListRealty.prototype.formatDataRowRealty = function (data) {
     this.listContactData = data;
 }
 
-ListRealty.prototype.formatDataRow = function(data)
-{
+ListRealty.prototype.formatDataRow = function (data) {
     var temp = [];
     var check = [];
     var k = 0;
-    for(var i=0;i<data.length;i++)
-    {
+    for (var i = 0; i < data.length; i++) {
 
         var result = this.getDataRow(data[i]);
         result.original = data[i];
-        if(check[data[i].parent_id]!==undefined)
-        {
-            if(check[data[i].parent_id].child === undefined)
-            check[data[i].parent_id].child = [];
+        if (check[data[i].parent_id] !== undefined) {
+            if (check[data[i].parent_id].child === undefined)
+                check[data[i].parent_id].child = [];
             check[data[i].parent_id].child.push(result);
-        }
-        else
-        temp[k++] = result;
+        } else
+            temp[k++] = result;
         check[data[i].id] = result;
     }
-    
+
     return temp;
 }
 
-ListRealty.prototype.getDataRow = function(data)
-{
-    // var {text:"Chưa xác định",value:0},
-    // {text:"Đất trống",value:1},
-    // {text:"Kết cấu",value:2},
-    // {text:"Cấp 4",value:3},
-    // {text:"Sẳn *",value:4},
-    var result = [
-        // {},
-        // {},
-        // data.id,
-        // "",
-        // "",
-        // "",
-        // "",
-        // "",
-        // data.content,
-        // data.height,
-        // data.width,
-        // data.acreage,
-        // data.
+ListRealty.prototype.getDataRow = function (data) {
+    var structure;
+    switch (parseInt(data.structure)) {
+        case 0:
+            structure = "Chưa xác định";
+            break;
+        case 1:
+            structure = "Đất trống";
+            break;
+        case 2:
+            structure = "Kết cấu";
+            break;
+        case 3:
+            structure = "Cấp 4";
+            break;
+        case 4:
+            structure = "Sẳn *";
+            break;
+    }
+    var direction;
+    console.log(parseInt(data.direction))
+    switch (parseInt(data.direction)) {
+        case 0:
+            direction = "Chưa xác định";
+            break;
+        case 6:
+            direction = "Đông";
+            break;
+        case 4:
+            direction = "Tây";
+            break;
+        case 2:
+            direction = "Nam";
+            break;
+        case 8:
+            direction = "Bắc";
+            break;
+        case 7:
+            direction = "Tây Bắc";
+            break;
+        case 9:
+            direction = "Đông Bắc";
+            break;
+        case 1:
+            direction = "Tây Nam";
+            break;
+        case 3:
+            direction = "Đông Nam";
+            break;
+    }
+    var staus = "";
+    if (parseInt(data.salestatus) % 10 == 1)
+        staus += "Còn bán";
+    if (parseInt(parseInt(data.salestatus) / 10) == 1) {
+        if (staus == "")
+            staus += "Còn cho thuê";
+        else
+            staus += " và còn cho thuê";
+    }
+    var result = [{},
+        {},
+        {
+            value: data.id,
+            style: {
+                whiteSpace: "nowrap"
+            }
+        },
+        "",
+        "",
+        "",
+        "",
+        "",
+        data.content,
+        {
+            value: data.height,
+            style: {
+                whiteSpace: "nowrap"
+            }
+        },
+        {
+            value: data.width,
+            style: {
+                whiteSpace: "nowrap"
+            }
+        },
+        {
+            value: data.acreage,
+            style: {
+                whiteSpace: "nowrap"
+            }
+        },
+        structure,
+        direction,
+        data.price + " tỉ",
+        data.price * 1000 / data.acreage + " triệu",
+        staus,
+        formatDate(data.created, true, true, true, true, true),
+        {}
     ];
     result.original = data;
+    console.log(result)
     return result;
 }
 
 
-ListRealty.prototype.searchControlContent = function(){
-    var startDay,endDay;
+ListRealty.prototype.searchControlContent = function () {
+    var startDay, endDay;
 
-    startDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    endDay.minDateLimit = date;
-                }
+    startDay = _({
+        tag: 'calendar-input',
+        data: {
+            anchor: 'top',
+            value: new Date(new Date().getFullYear(), 0, 1),
+            maxDateLimit: new Date()
+        },
+        on: {
+            changed: function (date) {
+
+                endDay.minDateLimit = date;
             }
         }
-    )
+    })
 
-    endDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    startDay.maxDateLimit = date;
-                }
+    endDay = _({
+        tag: 'calendar-input',
+        data: {
+            anchor: 'top',
+            value: new Date(),
+            minDateLimit: new Date()
+        },
+        on: {
+            changed: function (date) {
+
+                startDay.maxDateLimit = date;
             }
         }
-    )
+    })
     var content = _({
-        tag:"div",
-        class:"pizo-list-realty-main-search-control-container",
-        on:{
-            click:function(event)
-            {
+        tag: "div",
+        class: "pizo-list-realty-main-search-control-container",
+        on: {
+            click: function (event) {
                 event.stopPropagation();
             }
         },
-        child:[
-            {
-                tag:"div",
-                class:"pizo-list-realty-main-search-control-container-scroller",
-                child:[
-                    {
-                        tag:"div",
-                        class:"pizo-list-realty-main-search-control-row",
-                        child:[
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-date",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-date-label",
-                                        props:{
-                                            innerHTML:"Thời gian"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-date-input",
-                                        child:[
-                                            startDay,
-                                            endDay
-                                        ]
+        child: [{
+            tag: "div",
+            class: "pizo-list-realty-main-search-control-container-scroller",
+            child: [{
+                    tag: "div",
+                    class: "pizo-list-realty-main-search-control-row",
+                    child: [{
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-date",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-date-label",
+                                    props: {
+                                        innerHTML: "Thời gian"
                                     }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-price",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-price-label",
-                                        props:{
-                                            innerHTML:"Khoảng giá"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-price-input",
-                                        child:[
-                                            {
-                                                tag:"input",
-                                                class:"pizo-list-realty-main-search-control-row-price-input-low",
-                                                props:{
-                                                    type:"number",
-                                                    autocomplete:"off",
-                                                    placeholder:"đ Từ",
-                                                }
-                                            },
-                                            {
-                                                tag:"input",
-                                                class:"pizo-list-realty-main-search-control-row-price-input-high",
-                                                props:{
-                                                    type:"number",
-                                                    autocomplete:"off",
-                                                    placeholder:"đ Đến",
-                                                }
-                                            },
-                                        ]
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-date-input",
+                                    child: [
+                                        startDay,
+                                        endDay
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-price",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-price-label",
+                                    props: {
+                                        innerHTML: "Khoảng giá"
                                     }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-phone",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-phone-label",
-                                        props:{
-                                            innerHTML:"Số điện thoại"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-phone-input",
-                                        child:[
-                                            {
-                                                tag:"input",
-                                                props:{
-                                                    type:"number",
-                                                    autocomplete:"off"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-button",
-                                child:[
-                                    {
-                                        tag: "button",
-                                        class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-                                                temp.reset();
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-price-input",
+                                    child: [{
+                                            tag: "input",
+                                            class: "pizo-list-realty-main-search-control-row-price-input-low",
+                                            props: {
+                                                type: "number",
+                                                autocomplete: "off",
+                                                placeholder: "đ Từ",
                                             }
                                         },
-                                        child: [
-                                        '<span>' + "Thiết lập lại" + '</span>'
-                                        ]
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                    {
-                        tag:"div",
-                        class:"pizo-list-realty-main-search-control-row",
-                        child:[
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-MS",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-MS-label",
-                                        props:{
-                                            innerHTML:"Mã số"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-MS-input",
-                                        child:[
-                                            {
-                                                tag:"input",
-                                                props:{
-                                                    type:"number",
-                                                    autocomplete:"off"
-                                                }
+                                        {
+                                            tag: "input",
+                                            class: "pizo-list-realty-main-search-control-row-price-input-high",
+                                            props: {
+                                                type: "number",
+                                                autocomplete: "off",
+                                                placeholder: "đ Đến",
                                             }
-                                        ]
+                                        },
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-phone",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-phone-label",
+                                    props: {
+                                        innerHTML: "Số điện thoại"
                                     }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-SN",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-SN-label",
-                                        props:{
-                                            innerHTML:"Số nhà"
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-phone-input",
+                                    child: [{
+                                        tag: "input",
+                                        props: {
+                                            type: "number",
+                                            autocomplete: "off"
                                         }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-SN-input",
-                                        child:[
-                                            {
-                                                tag:"input",
-                                            }
-                                        ]
+                                    }]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-button",
+                            child: [{
+                                tag: "button",
+                                class: ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+                                on: {
+                                    click: function (evt) {
+                                        temp.reset();
                                     }
+                                },
+                                child: [
+                                    '<span>' + "Thiết lập lại" + '</span>'
                                 ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-TD",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-TD-label",
-                                        props:{
-                                            innerHTML:"Tên đường"
+                            }]
+                        },
+                    ]
+                },
+                {
+                    tag: "div",
+                    class: "pizo-list-realty-main-search-control-row",
+                    child: [{
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-MS",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-MS-label",
+                                    props: {
+                                        innerHTML: "Mã số"
+                                    }
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-MS-input",
+                                    child: [{
+                                        tag: "input",
+                                        props: {
+                                            type: "number",
+                                            autocomplete: "off"
                                         }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-TD-input",
-                                        child:[
-                                            {
-                                                tag:"input",
-                                            }
-                                        ]
+                                    }]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-SN",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-SN-label",
+                                    props: {
+                                        innerHTML: "Số nhà"
                                     }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-PX",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-PX-label",
-                                        props:{
-                                            innerHTML:"Phường/Xã"
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-SN-input",
+                                    child: [{
+                                        tag: "input",
+                                    }]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-TD",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-TD-label",
+                                    props: {
+                                        innerHTML: "Tên đường"
+                                    }
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-TD-input",
+                                    child: [{
+                                        tag: "input",
+                                    }]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-PX",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-PX-label",
+                                    props: {
+                                        innerHTML: "Phường/Xã"
+                                    }
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-PX-input",
+                                    child: [{
+                                        tag: "input",
+                                    }]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-QH",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-QH-label",
+                                    props: {
+                                        innerHTML: "Quận huyện"
+                                    }
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-QH-input",
+                                    child: [{
+                                        tag: "input",
+                                    }]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-TT",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-TT-label",
+                                    props: {
+                                        innerHTML: "Tỉnh/TP"
+                                    }
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-TT-input",
+                                    child: [{
+                                        tag: "input"
+                                    }]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-HT",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-HT-label",
+                                    props: {
+                                        innerHTML: "Tình trạng"
+                                    }
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-HT-input",
+                                    child: [{
+                                        tag: "selectmenu",
+                                        props: {
+                                            items: [{
+                                                    text: "Tất cả",
+                                                    value: 0
+                                                },
+                                                {
+                                                    text: "Còn bán",
+                                                    value: 1
+                                                },
+                                                {
+                                                    text: "Đã bán",
+                                                    value: 2
+                                                },
+                                                {
+                                                    text: "Ngưng bán",
+                                                    value: 3
+                                                },
+                                            ]
                                         }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-PX-input",
-                                        child:[
-                                            {
-                                                tag:"input",
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-QH",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-QH-label",
-                                        props:{
-                                            innerHTML:"Quận huyện"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-QH-input",
-                                        child:[
-                                            {
-                                                tag:"input",
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-TT",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-TT-label",
-                                        props:{
-                                            innerHTML:"Tỉnh/TP"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-TT-input",
-                                        child:[
-                                            {
-                                                tag:"input"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-HT",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-HT-label",
-                                        props:{
-                                            innerHTML:"Tình trạng"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-HT-input",
-                                        child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    items:[
-                                                        {text:"Tất cả",value:0},
-                                                        {text:"Còn bán",value:1},
-                                                        {text:"Đã bán",value:2},
-                                                        {text:"Ngưng bán",value:3},
-                                                    ]
-                                                }
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+                                    }]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }]
     });
     var temp = _({
-        tag:"div",
-        class:"pizo-list-realty-main-search-control",
-        on:{
-            click:function(event)
-            {
+        tag: "div",
+        class: "pizo-list-realty-main-search-control",
+        on: {
+            click: function (event) {
                 this.hide();
             }
         },
-        child:[
+        child: [
             content
         ]
     })
@@ -658,31 +756,29 @@ ListRealty.prototype.searchControlContent = function(){
     temp.content = content;
     content.timestart = startDay;
     content.timeend = endDay;
-    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low',content);
-    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high',content);
-    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input',content);
-    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input',content);
-    content.SN = $('.pizo-list-realty-main-search-control-row-SN input',content);
-    content.TD = $('.pizo-list-realty-main-search-control-row-TD input',content);
-    content.PX = $('.pizo-list-realty-main-search-control-row-PX input',content);
-    content.QH = $('.pizo-list-realty-main-search-control-row-QH input',content);
-    content.HT = $('.pizo-list-realty-main-search-control-row-HT input',content);
+    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low', content);
+    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high', content);
+    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input', content);
+    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input', content);
+    content.SN = $('.pizo-list-realty-main-search-control-row-SN input', content);
+    content.TD = $('.pizo-list-realty-main-search-control-row-TD input', content);
+    content.PX = $('.pizo-list-realty-main-search-control-row-PX input', content);
+    content.QH = $('.pizo-list-realty-main-search-control-row-QH input', content);
+    content.HT = $('.pizo-list-realty-main-search-control-row-HT input', content);
 
-    temp.show = function()
-    {
-        if(!temp.classList.contains("showTranslate"))
-        temp.classList.add("showTranslate");
+    temp.show = function () {
+        if (!temp.classList.contains("showTranslate"))
+            temp.classList.add("showTranslate");
     }
-    temp.hide = function()
-    {
-        if(!content.classList.contains("hideTranslate"))
+    temp.hide = function () {
+        if (!content.classList.contains("hideTranslate"))
             content.classList.add("hideTranslate");
-        var eventEnd = function(){
-            if(temp.classList.contains("showTranslate"))
-            temp.classList.remove("showTranslate");
+        var eventEnd = function () {
+            if (temp.classList.contains("showTranslate"))
+                temp.classList.remove("showTranslate");
             content.classList.remove("hideTranslate");
-            content.removeEventListener("webkitTransitionEnd",eventEnd);
-            content.removeEventListener("transitionend",eventEnd);
+            content.removeEventListener("webkitTransitionEnd", eventEnd);
+            content.removeEventListener("transitionend", eventEnd);
         };
         // Code for Safari 3.1 to 6.0
         content.addEventListener("webkitTransitionEnd", eventEnd);
@@ -690,12 +786,10 @@ ListRealty.prototype.searchControlContent = function(){
         // Standard syntax
         content.addEventListener("transitionend", eventEnd);
     }
-    temp.apply = function()
-    {
+    temp.apply = function () {
 
     }
-    temp.reset = function()
-    {
+    temp.reset = function () {
         content.timestart = new Date();
         content.timeend = new Date();
         content.lowprice.value = "";
@@ -710,114 +804,115 @@ ListRealty.prototype.searchControlContent = function(){
         content.HT.value = 0;
     }
 
-  
+
     return temp;
 }
 
 
-ListRealty.prototype.add = function(parent_id = 0,row)
-{
+ListRealty.prototype.add = function (parent_id = 0, row) {
     var self = this;
-    var mNewRealty = new NewRealty(undefined,parent_id);
+    var mNewRealty = new NewRealty(undefined, parent_id);
     mNewRealty.attach(self.parent);
     mNewRealty.setDataListAccount(self.listAccoutData);
     mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.addDB(mNewRealty,row);
+    self.addDB(mNewRealty, row);
 }
 
-ListRealty.prototype.addDB = function(mNewRealty,row ){
+ListRealty.prototype.addDB = function (mNewRealty, row) {
     var self = this;
-    mNewRealty.promiseAddDB.then(function(value){
+    mNewRealty.promiseAddDB.then(function (value) {
         console.log(value)
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_activehomes.php";
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        updateData(phpFile,value).then(function(result){
-            
+        var phpFile = moduleDatabase.addActiveHomesPHP;
+        if (self.phpUpdateContent)
+            phpFile = self.phpUpdateContent;
+        moduleDatabase.updateData(phpFile, value).then(function (result) {
+
             value.id = result;
-            self.addView(value,row);
+            self.addView(value, row);
         })
         mNewRealty.promiseAddDB = undefined;
-        setTimeout(function(){
-            if(mNewRealty.promiseAddDB!==undefined)
-            self.addDB(mNewRealty);
-        },10);
+        setTimeout(function () {
+            if (mNewRealty.promiseAddDB !== undefined)
+                self.addDB(mNewRealty);
+        }, 10);
     })
 }
 
-ListRealty.prototype.addView = function(value,parent){
+ListRealty.prototype.addView = function (value, parent) {
+    value.created = getGMT();
     var result = this.getDataRow(value);
-    
+
     var element = this.mTable;
     element.insertRow(result);
 }
 
-ListRealty.prototype.edit = function(data,parent,index)
-{
+ListRealty.prototype.edit = function (data, parent, index) {
+    console.log(data)
     var self = this;
     var mNewRealty = new NewRealty(data);
+    console.log(mNewRealty)
     mNewRealty.attach(self.parent);
     mNewRealty.setDataListAccount(self.listAccoutData);
     mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mNewRealty,data,parent,index);
+    self.editDB(mNewRealty, data, parent, index);
 }
 
-ListRealty.prototype.editDB = function(mNewRealty,data,parent,index){
+ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
     var self = this;
-    mNewRealty.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_activehomes.php";
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
+    mNewRealty.promiseEditDB.then(function (value) {
+        var phpFile = moduleDatabase.updateActiveHomesPHP;
+        if (self.phpUpdateContent)
+            phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        updateData(phpFile,value).then(function(result){
-            self.editView(value,data,parent,index);
+        moduleDatabase.updateData(phpFile, value).then(function (result) {
+            self.editView(value, data, parent, index);
         })
         mNewRealty.promiseEditDB = undefined;
-        setTimeout(function(){
-        if(mNewRealty.promiseEditDB!==undefined)
-            self.editDB(mNewRealty,data,parent,index);
-        },10);
+        setTimeout(function () {
+            if (mNewRealty.promiseEditDB !== undefined)
+                self.editDB(mNewRealty, data, parent, index);
+        }, 10);
     })
 }
 
-ListRealty.prototype.editView = function(value,data,parent,index){
+ListRealty.prototype.editView = function (value, data, parent, index) {
+    value.created = data.original.created;
     var data = this.getDataRow(value);
 
-    var indexOF = index,element = parent;
-    
-    element.updateRow(data,indexOF,true);
+    var indexOF = index,
+        element = parent;
+
+    element.updateRow(data, indexOF, true);
 }
 
-ListRealty.prototype.delete = function(data,parent,index)
-{
+ListRealty.prototype.delete = function (data, parent, index) {
     var self = this;
-    var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
+    var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
     this.$view.addChild(deleteItem);
-    deleteItem.promiseComfirm.then(function(){
-        self.deleteDB(data,parent,index);
+    deleteItem.promiseComfirm.then(function () {
+        self.deleteDB(data, parent, index);
     })
 }
 
-ListRealty.prototype.deleteView = function(parent,index){
+ListRealty.prototype.deleteView = function (parent, index) {
     var self = this;
     var bodyTable = parent.bodyTable;
-    parent.dropRow(index).then(function(){
-    });
+    parent.dropRow(index).then(function () {});
 }
 
-ListRealty.prototype.deleteDB = function(data,parent,index){
+ListRealty.prototype.deleteDB = function (data, parent, index) {
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_activehomes.php";
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    updateData(phpFile,data).then(function(value){
-        self.deleteView(parent,index);
+    var phpFile = moduleDatabase.deleteActiveHomesPHP;
+    if (self.phpDeleteContent)
+        phpFile = self.phpUpdateContent;
+    moduleDatabase.updateData(phpFile, data).then(function (value) {
+        self.deleteView(parent, index);
     })
 }
 

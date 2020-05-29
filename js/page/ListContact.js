@@ -5,7 +5,7 @@ import "../../css/ListContact.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
-import {loadData,updateData} from '../component/ModuleDatabase';
+import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
@@ -224,7 +224,7 @@ ListContact.prototype.getView = function () {
     }
 
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_contacts.php").then(function(value){
+    moduleDatabase.loadData(moduleDatabase.loadContactsPHP).then(function(value){
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
@@ -419,10 +419,10 @@ ListContact.prototype.add = function(parent_id = 0,row)
 ListContact.prototype.addDB = function(mNewContact,row ){
     var self = this;
     mNewContact.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_contact.php";
+        var phpFile = moduleDatabase.addContactsPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -456,11 +456,11 @@ ListContact.prototype.edit = function(data,parent,index)
 ListContact.prototype.editDB = function(mNewContact,data,parent,index){
     var self = this;
     mNewContact.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_contact.php";
+        var phpFile = moduleDatabase.updateContactsPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewContact.promiseEditDB = undefined;
@@ -498,10 +498,10 @@ ListContact.prototype.deleteView = function(parent,index){
 
 ListContact.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_contact.php";
+    var phpFile = moduleDatabase.deleteContactsPHP;
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
-    updateData(phpFile,data).then(function(value){
+    moduleDatabase.updateData(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }

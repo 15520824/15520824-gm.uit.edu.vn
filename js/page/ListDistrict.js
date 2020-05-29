@@ -5,7 +5,7 @@ import "../../css/ListDistrict.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
-import {loadData,updateData} from '../component/ModuleDatabase';
+import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
@@ -232,8 +232,8 @@ ListDistrict.prototype.getView = function () {
     }
 
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function(value){
-        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function(listParam){
+    moduleDatabase.loadData(moduleDatabase.loadDistrictsPHP).then(function(value){
+        moduleDatabase.loadData(moduleDatabase.loadStatesPHP).then(function(listParam){
             self.setListParam(listParam);
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
@@ -308,12 +308,13 @@ ListDistrict.prototype.formatDataRow = function(data)
 
 ListDistrict.prototype.getDataRow = function(data)
 {
+    console.log(data.stateid)
     var result = [
         {},
         data.id,
         data.name,
         data.type,
-        {value:this.checkState[parseInt(data.stateid)].id,element:_({text:this.checkState[parseInt(data.stateid)].name})},
+        {value:this.checkState[parseInt(data.stateid)].id,element:_({text:this.checkState[parseInt(data.stateid)].type+" "+this.checkState[parseInt(data.stateid)].name})},
         {}
         ]
         result.original = data;
@@ -503,10 +504,10 @@ ListDistrict.prototype.add = function(parent_id = 0,row)
 ListDistrict.prototype.addDB = function(mNewDistrict,row ){
     var self = this;
     mNewDistrict.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_district.php";
+        var phpFile = moduleDatabase.addDistrictsPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -542,11 +543,11 @@ ListDistrict.prototype.edit = function(data,parent,index)
 ListDistrict.prototype.editDB = function(mNewDistrict,data,parent,index){
     var self = this;
     mNewDistrict.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_district.php";
+        var phpFile = moduleDatabase.updateDistrictsPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewDistrict.promiseEditDB = undefined;
@@ -587,10 +588,10 @@ ListDistrict.prototype.deleteView = function(parent,index){
 
 ListDistrict.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_district.php";
+    var phpFile = moduleDatabase.deleteDistrictsPHP;
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
-    updateData(phpFile,data).then(function(value){
+    moduleDatabase.updateData(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }

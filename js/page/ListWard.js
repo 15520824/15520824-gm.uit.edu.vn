@@ -6,7 +6,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import { formatDate, getGMT } from '../component/FormatFunction';
 
-import {loadData,updateData} from '../component/ModuleDatabase';
+import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
@@ -233,9 +233,9 @@ ListWard.prototype.getView = function () {
     }
 
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_wards.php").then(function(value){
-        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_districts.php").then(function(listDistrict){
-            loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_states.php").then(function(listState){
+    moduleDatabase.loadData(moduleDatabase.loadWardsPHP).then(function(value){
+        moduleDatabase.loadData(moduleDatabase.loadDistrictsPHP).then(function(listDistrict){
+            moduleDatabase.loadData(moduleDatabase.loadStatesPHP).then(function(listState){
             self.setListParamState(listState);
             self.listStateElement.items = self.listState;
             self.setListParamDistrict(listDistrict);
@@ -335,8 +335,8 @@ ListWard.prototype.getDataRow = function(data)
         data.id,
         data.name,
         data.type,
-        {value:data.districtid,element:_({text:this.checkDistrict[parseInt(data.districtid)].name})},
-        {value:this.checkDistrict[parseInt(data.districtid)].stateid,element:_({text:this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name})},
+        {value:data.districtid,element:_({text:this.checkDistrict[parseInt(data.districtid)].type+" "+this.checkDistrict[parseInt(data.districtid)].name})},
+        {value:this.checkDistrict[parseInt(data.districtid)].stateid,element:_({text:this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].type+" "+this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name})},
         {}
         ]
         result.original = data;
@@ -647,10 +647,10 @@ ListWard.prototype.add = function(parent_id = 0,row)
 ListWard.prototype.addDB = function(mNewDistrict,row ){
     var self = this;
     mNewDistrict.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_state.php";
+        var phpFile = moduleDatabase.addStatesPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -686,11 +686,11 @@ ListWard.prototype.edit = function(data,parent,index)
 ListWard.prototype.editDB = function(mNewDistrict,data,parent,index){
     var self = this;
     mNewDistrict.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_state.php";
+        var phpFile = moduleDatabase.updateStatesPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewDistrict.promiseEditDB = undefined;
@@ -731,10 +731,10 @@ ListWard.prototype.deleteView = function(parent,index){
 
 ListWard.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_state.php";
+    var phpFile = moduleDatabase.deleteStatesPHP;
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
-    updateData(phpFile,data).then(function(value){
+    moduleDatabase.updateData(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }

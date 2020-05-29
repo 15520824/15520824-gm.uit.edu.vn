@@ -6,7 +6,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import { formatDate, getGMT } from '../component/FormatFunction';
 
-import {loadData,updateData} from '../component/ModuleDatabase';
+import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
@@ -233,8 +233,8 @@ ListAccount.prototype.getView = function () {
     }
 
 
-    loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_accounts.php").then(function(value){
-        loadData("https://lab.daithangminh.vn/home_co/pizo/php/php/load_positions.php").then(function(listParam){
+    moduleDatabase.loadData(moduleDatabase.loadAccountsPHP).then(function(value){
+        moduleDatabase.loadData(moduleDatabase.loadPositionsPHP).then(function(listParam){
             self.setListParam(listParam);
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
@@ -656,10 +656,10 @@ ListAccount.prototype.add = function(parent_id = 0,row)
 ListAccount.prototype.addDB = function(mNewAccount,row ){
     var self = this;
     mNewAccount.promiseAddDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/add_account.php";
+        var phpFile = moduleDatabase.addAccountsPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -698,11 +698,11 @@ ListAccount.prototype.edit = function(data,parent,index)
 ListAccount.prototype.editDB = function(mNewAccount,data,parent,index){
     var self = this;
     mNewAccount.promiseEditDB.then(function(value){
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_account.php";
+        var phpFile = moduleDatabase.updateAccountsPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        updateData(phpFile,value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewAccount.promiseEditDB = undefined;
@@ -745,10 +745,10 @@ ListAccount.prototype.deleteView = function(parent,index){
 
 ListAccount.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/delete_account.php";
+    var phpFile = moduleDatabase.deleteAccountsPHP;
     if(self.phpDeleteContent)
     phpFile = self.phpUpdateContent;
-    updateData(phpFile,data).then(function(value){
+    moduleDatabase.updateData(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }

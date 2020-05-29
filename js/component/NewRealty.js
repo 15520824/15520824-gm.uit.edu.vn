@@ -6,20 +6,24 @@ import '../../css/imagesilder.css';
 import { locationView } from "./MapView";
 import { descViewImagePreview } from './ModuleImage'
 import { unit_Long, unit_Zone, tableView } from './ModuleView';
-import {formatNumber,reFormatNumber} from './FormatFunction'
+import {formatNumber,reFormatNumber,formatFit} from './FormatFunction'
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function NewRealty(header, dataTable) {
+function NewRealty(data) {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    this.header = header;
-    this.dataTable = dataTable;
+    console.log(data)
+    this.textHeader = "Sửa ";
+    this.data = data;
+
+    if(this.data ==undefined)
+    this.textHeader = "Thêm ";
 }
 
 NewRealty.prototype.setContainer = function (parent) {
@@ -89,7 +93,7 @@ NewRealty.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Thêm dự án"
+                            innerHTML: self.textHeader+"dự án"
                         }
                     },
                     {
@@ -945,8 +949,8 @@ NewRealty.prototype.detructView = function () {
                                                 },
                                                 props:{
                                                     items:[
-                                                        {text:"tỉ",value:1000},
-                                                        {text:"triệu",value:1}
+                                                        {text:"tỉ",value:1},
+                                                        {text:"triệu",value:1/1000}
                                                     ]
                                                 }
                                             }
@@ -1439,7 +1443,9 @@ NewRealty.prototype.detructView = function () {
     this.inputLiving = $('input.pizo-new-realty-dectruct-content-area-living',temp);
     this.inputBasement = $('input.pizo-new-realty-dectruct-content-area-basement',temp);
     this.inputFloor = $('input.pizo-new-realty-dectruct-content-area-floor',temp);
-
+    this.censorship = $('div.pizo-new-realty-detruct-content-censorship',temp);
+    
+    console.log(this.data)
     if(this.data!==undefined)
     {
         var original = this.data.original;
@@ -1466,6 +1472,9 @@ NewRealty.prototype.detructView = function () {
         this.inputLease.checked = parseInt(checkStatus/10)==1?true:false;
         this.inputSell.checked = parseInt(checkStatus%10)==1?true:false;
         this.inputContent.value = original.content;
+        this.censorship.checked = original.censorship==1?true:false;
+        this.inputFit.values = formatFit(parseInt(original.fit));
+        this.inputPrice.emit("change");
     }
     return temp;
 }
@@ -1479,7 +1488,7 @@ NewRealty.prototype.getDataSave = function(){
         acreage:this.inputZoneAll.value*this.inputUnitZoneAll.value,
         direction:this.direction.value,
         type:this.type.value,
-        fit:this.inputFit.value,
+        fit:this.inputFit.values.reduce(function(a, b) { return a + b; }),
         roadwidth:this.inputWidthRoad.value*this.inputUnitWidthRoad.value,
         floor:this.inputFloor.value,
         basement:this.inputBasement.value,
@@ -1487,12 +1496,13 @@ NewRealty.prototype.getDataSave = function(){
         living:this.inputLiving.value,
         toilet:this.inputToilet.value,
         kitchen:this.inputKitchen.value,
-        price:this.inputPrice.value,
+        price:this.inputPrice.value*this.inputUnitPrice.value,
         name:this.inputName.value,
         content:this.inputContent.value,
         salestatus:(this.inputLease.checked==true?1:0)*10+(this.inputSell.checked==true?1:0),
         structure:this.structure.value,
-        pricerent:this.inputPriceRent.value*this.inputPriceRentUnit.value
+        pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
+        censorship:this.censorship.checked==true?1:0
     }
 }
 
