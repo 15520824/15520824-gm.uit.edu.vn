@@ -2,53 +2,126 @@ var moduleDatabase = new ModuleDatabase();
 
 function ModuleDatabase() {
     this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/php/";
-    this.loadAccountsPHP = this.hostDatabase+"load_accounts.php";
-    this.loadActiveHomesPHP = this.hostDatabase+"load_activehomes.php";
-    this.loadContactsPHP = this.hostDatabase+"load_contacts.php";
-    this.loadDepartmentsPHP = this.hostDatabase+"load_departments.php";
-    this.loadDistrictsPHP = this.hostDatabase+"load_districts.php";
-    this.loadHelpPHP = this.hostDatabase+"load_help.php";
-    this.loadNationsPHP = this.hostDatabase+"load_nations.php";
-    this.loadPositionsPHP = this.hostDatabase+"load_positions.php";
-    this.loadStatesPHP = this.hostDatabase+"load_states.php";
-    this.loadStreetsPHP = this.hostDatabase+"load_streets.php";
-    this.loadWardsPHP = this.hostDatabase+"load_wards.php";
 
-    this.addAccountsPHP = this.hostDatabase+"add_account.php";
-    this.addActiveHomesPHP = this.hostDatabase+"add_activehome.php";
-    this.addContactsPHP = this.hostDatabase+"add_contact.php";
-    this.addDepartmentsPHP = this.hostDatabase+"add_department.php";
-    this.addDistrictsPHP = this.hostDatabase+"add_district.php";
-    this.addHelpPHP = this.hostDatabase+"add_help.php";
-    this.addNationsPHP = this.hostDatabase+"add_nation.php";
-    this.addPositionsPHP = this.hostDatabase+"add_position.php";
-    this.addStatesPHP = this.hostDatabase+"add_state.php";
-    this.addStreetsPHP = this.hostDatabase+"add_street.php";
-    this.addWardsPHP = this.hostDatabase+"add_ward.php";
+    this.data = [];
+    this.data["accounts"] = new DataStructure(  this.hostDatabase+"load_accounts.php",
+                                                this.hostDatabase+"add_account.php",
+                                                this.hostDatabase+"update_account.php",
+                                                this.hostDatabase+"delete_account.php");
+    this.data["activehouses"] = new DataStructure(  this.hostDatabase+"load_activehomes.php",
+                                                    this.hostDatabase+"add_activehome.php",
+                                                    this.hostDatabase+"update_activehome.php",
+                                                    this.hostDatabase+"delete_activehome.php");
+    this.data["contacts"]= new DataStructure(   this.hostDatabase+"load_contacts.php",
+                                                this.hostDatabase+"add_contact.php",
+                                                this.hostDatabase+"update_contact.php",
+                                                this.hostDatabase+"delete_contact.php");
+    this.data["departments"] = new DataStructure(   this.hostDatabase+"load_departments.php",
+                                                    this.hostDatabase+"add_department.php",
+                                                    this.hostDatabase+"update_department.php",
+                                                    this.hostDatabase+"delete_department.php");
+    this.data["districts"] = new DataStructure( this.hostDatabase+"load_districts.php",
+                                                this.hostDatabase+"add_district.php",
+                                                this.hostDatabase+"update_district.php",
+                                                this.hostDatabase+"delete_district.php");
+    this.data["helps"] = new DataStructure( this.hostDatabase+"load_accounts.php",
+                                            this.hostDatabase+"add_account.php",
+                                            this.hostDatabase+"update_account.php",
+                                            this.hostDatabase+"delete_account.php");
+    this.data["nations"] = new DataStructure(   this.hostDatabase+"load_accounts.php",
+                                                this.hostDatabase+"add_account.php",
+                                                this.hostDatabase+"update_account.php",
+                                                this.hostDatabase+"delete_account.php");
+    this.data["positions"] = new DataStructure( this.hostDatabase+"load_accounts.php",
+                                                this.hostDatabase+"add_account.php",
+                                                this.hostDatabase+"update_account.php",
+                                                this.hostDatabase+"delete_account.php");
+    this.data["states"]  = new DataStructure(   this.hostDatabase+"load_accounts.php",
+                                                this.hostDatabase+"add_account.php",
+                                                this.hostDatabase+"update_account.php",
+                                                this.hostDatabase+"delete_account.php");
+    this.data["streets"] = new DataStructure(   this.hostDatabase+"load_accounts.php",
+                                                this.hostDatabase+"add_account.php",
+                                                this.hostDatabase+"update_account.php",
+                                                this.hostDatabase+"delete_account.php");
+    this.data["wards"] = new DataStructure( this.hostDatabase+"load_accounts.php",
+                                            this.hostDatabase+"add_account.php",
+                                            this.hostDatabase+"update_account.php",
+                                            this.hostDatabase+"delete_account.php");
+}
 
-    this.updateAccountsPHP = this.hostDatabase+"update_account.php";
-    this.updateActiveHomesPHP = this.hostDatabase+"update_activehome.php";
-    this.updateContactsPHP = this.hostDatabase+"update_contact.php";
-    this.updateDepartmentsPHP = this.hostDatabase+"update_department.php";
-    this.updateDistrictsPHP = this.hostDatabase+"update_district.php";
-    this.updateHelpPHP = this.hostDatabase+"update_help.php";
-    this.updateNationsPHP = this.hostDatabase+"update_nation.php";
-    this.updatePositionsPHP = this.hostDatabase+"update_position.php";
-    this.updateStatesPHP = this.hostDatabase+"update_state.php";
-    this.updateStreetsPHP = this.hostDatabase+"update_street.php";
-    this.updateWardsPHP = this.hostDatabase+"update_ward.php";
 
-    this.deleteAccountsPHP = this.hostDatabase+"delete_account.php";
-    this.deleteActiveHomesPHP = this.hostDatabase+"delete_activehome.php";
-    this.deleteContactsPHP = this.hostDatabase+"delete_contact.php";
-    this.deleteDepartmentsPHP = this.hostDatabase+"delete_department.php";
-    this.deleteDistrictsPHP = this.hostDatabase+"delete_district.php";
-    this.deleteHelpPHP = this.hostDatabase+"delete_help.php";
-    this.deleteNationsPHP = this.hostDatabase+"delete_nation.php";
-    this.deletePositionsPHP = this.hostDatabase+"delete_position.php";
-    this.deleteStatesPHP = this.hostDatabase+"delete_state.php";
-    this.deleteStreetsPHP = this.hostDatabase+"delete_street.php";
-    this.deleteWardsPHP = this.hostDatabase+"delete_ward.php";
+
+function DataStructure(phpLoader,phpAdder,phpUpdater,phpDeleter){
+   this.phpLoader = phpLoader;
+   this.phpAdder = phpAdder;
+   this.phpUpdater = phpUpdater;
+   this.phpDeleter = phpDeleter;
+   Object.assign(this,ModuleDatabase.prototype);
+   this.Libary = [];
+}
+
+DataStructure.prototype.load = function(data){
+    self = this;
+    this.loadData(self.phpLoader,data).then(function(value){
+        self.data = value;
+   }) 
+}
+
+DataStructure.prototype.checkLibary = function(param){
+    if(Array.isArray(param)===false)
+    {
+        param = [param];
+    }
+    for(var i = 0;i<this.data.length;i++)
+    {
+        for(var j = 0;j<param.length;j++)
+        {
+            if(this.Libary[param[j]]===undefined)
+            this.Libary[param[j]] = [];
+            this.Libary[param[j]][this.data[param[j]]] = this.data[i];
+        }
+    }
+    if(param.length == 1)
+    return this.Libary[param[0]];
+    return this.Libary;
+}
+
+DataStructure.prototype.delete = function(id){
+    var self = this;
+    return new Promise(function(resolve,reject){
+        this.updateData(self.phpDeleter,data).then(function(id){
+            for(var param in self.Libary.length)
+            {
+                
+            }
+            resolve();
+        }).catch(function(err){
+            console.error(err)
+        })
+    })
+}
+
+DataStructure.prototype.add = function(data){
+    var self = this;
+    return new Promise(function(resolve,reject){
+        this.updateData(self.phpDeleter,data).then(function(value){
+            resolve(value);
+        })
+    }).catch(function(err){
+        console.error(err)
+    })
+}
+
+DataStructure.prototype.update = function(data){
+    var self = this;
+    return new Promise(function(resolve,reject){
+        this.updateData(self.phpUpdater,data).then(function(value){
+            resolve(value);
+        })
+    }).catch(function(err){
+        console.error(err)
+    })
 }
 
 export default moduleDatabase;
