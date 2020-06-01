@@ -71,8 +71,9 @@ DataStructure.prototype.load = function(data){
 DataStructure.prototype.checkLibary = function(param){
     if(Array.isArray(param)===false)
     {
-        param = [param];
-    }
+        param = ["id"].concat([param]);
+    }else
+        param = ["id"].concat(param);
     for(var i = 0;i<this.data.length;i++)
     {
         for(var j = 0;j<param.length;j++)
@@ -90,10 +91,11 @@ DataStructure.prototype.checkLibary = function(param){
 DataStructure.prototype.delete = function(id){
     var self = this;
     return new Promise(function(resolve,reject){
-        this.updateData(self.phpDeleter,data).then(function(id){
-            for(var param in self.Libary.length)
+        this.updateData(self.phpDeleter,id).then(function(id){
+            for(var param in self.Libary)
             {
-                
+                var temp = self.Libary["id"][id];
+                delete self.Libary[param][temp.param];
             }
             resolve();
         }).catch(function(err){
@@ -106,6 +108,10 @@ DataStructure.prototype.add = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         this.updateData(self.phpDeleter,data).then(function(value){
+            for(var param in self.Libary)
+            {
+                self.Libary[param][value[param]] = value;
+            }
             resolve(value);
         })
     }).catch(function(err){
@@ -117,6 +123,12 @@ DataStructure.prototype.update = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         this.updateData(self.phpUpdater,data).then(function(value){
+            for(var param in self.Libary)
+            {
+                var temp = self.Libary["id"][id];
+                delete self.Libary[param][temp[param]]
+                self.Libary[param][value[param]] = value;
+            }
             resolve(value);
         })
     }).catch(function(err){
