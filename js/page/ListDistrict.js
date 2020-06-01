@@ -232,9 +232,9 @@ ListDistrict.prototype.getView = function () {
     }
 
 
-    moduleDatabase.loadData(moduleDatabase.loadDistrictsPHP).then(function(value){
-        moduleDatabase.loadData(moduleDatabase.loadStatesPHP).then(function(listParam){
-            self.setListParam(listParam);
+    moduleDatabase.getModule("districts").load().then(function(value){
+        moduleDatabase.getModule("states").load().then(function(listParam){
+            self.setListParam();
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
@@ -265,17 +265,12 @@ ListDistrict.prototype.getView = function () {
     return this.$view;
 }
 
-ListDistrict.prototype.setListParam = function(value)
+ListDistrict.prototype.setListParam = function()
 {
-    this.checkState = [];
-    this.listParam = [];
-    for(var i  = 0;i<value.length;i++)
-    {
-        this.checkState[value[i].id] = value[i];
-        this.listParam[i] = {text:value[i].name,value:value[i].id};
-    }
+    this.checkState = moduleDatabase.getModule("states").getLibary("id");
+
+    this.listParam = moduleDatabase.getModule("states").getList("name","id");
     this.isLoaded = true;
-    
 }
 
 ListDistrict.prototype.getDataParam = function()
@@ -308,13 +303,12 @@ ListDistrict.prototype.formatDataRow = function(data)
 
 ListDistrict.prototype.getDataRow = function(data)
 {
-    console.log(data.stateid)
     var result = [
         {},
         data.id,
         data.name,
         data.type,
-        {value:this.checkState[parseInt(data.stateid)].id,element:_({text:this.checkState[parseInt(data.stateid)].type+" "+this.checkState[parseInt(data.stateid)].name})},
+        {value:this.checkState[data.stateid].id,element:_({text:this.checkState[data.stateid].type+" "+this.checkState[data.stateid].name})},
         {}
         ]
         result.original = data;
@@ -504,10 +498,7 @@ ListDistrict.prototype.add = function(parent_id = 0,row)
 ListDistrict.prototype.addDB = function(mNewDistrict,row ){
     var self = this;
     mNewDistrict.promiseAddDB.then(function(value){
-        var phpFile = moduleDatabase.addDistrictsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("districts").add(value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -543,11 +534,8 @@ ListDistrict.prototype.edit = function(data,parent,index)
 ListDistrict.prototype.editDB = function(mNewDistrict,data,parent,index){
     var self = this;
     mNewDistrict.promiseEditDB.then(function(value){
-        var phpFile = moduleDatabase.updateDistrictsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("districts").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewDistrict.promiseEditDB = undefined;
@@ -588,10 +576,7 @@ ListDistrict.prototype.deleteView = function(parent,index){
 
 ListDistrict.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = moduleDatabase.deleteDistrictsPHP;
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile,data).then(function(value){
+    moduleDatabase.getModule("districts").delete(data).then(function(value){
         self.deleteView(parent,index);
     })
 }

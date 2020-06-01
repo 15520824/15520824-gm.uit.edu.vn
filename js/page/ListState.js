@@ -231,9 +231,10 @@ ListState.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
-
-    moduleDatabase.loadData(moduleDatabase.loadStatesPHP).then(function(value){
-        moduleDatabase.loadData(moduleDatabase.loadNationsPHP).then(function(listParam){
+    var stateModule = moduleDatabase.getModule("states");
+    var nationModule = moduleDatabase.getModule("nations");
+        stateModule.load().then(function(value){
+            nationModule.load().then(function(listParam){
             self.setListParam(listParam);
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
@@ -413,10 +414,7 @@ ListState.prototype.add = function(parent_id = 0,row)
 ListState.prototype.addDB = function(mNewState,row ){
     var self = this;
     mNewState.promiseAddDB.then(function(value){
-        var phpFile = moduleDatabase.addStatesPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("states").add(value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -452,11 +450,8 @@ ListState.prototype.edit = function(data,parent,index)
 ListState.prototype.editDB = function(mNewState,data,parent,index){
     var self = this;
     mNewState.promiseEditDB.then(function(value){
-        var phpFile = moduleDatabase.updateStatesPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("states").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewState.promiseEditDB = undefined;
@@ -497,10 +492,7 @@ ListState.prototype.deleteView = function(parent,index){
 
 ListState.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = moduleDatabase.deleteStatesPHP;
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile,data).then(function(value){
+    moduleDatabase.getModule("states").delete(data).then(function(value){
         self.deleteView(parent,index);
     })
 }

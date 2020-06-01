@@ -1,97 +1,179 @@
+import FormClass from './jsform';
+
 var moduleDatabase = new ModuleDatabase();
 
 function ModuleDatabase() {
-    this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/php/";
-
+    this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/template/";
     this.data = [];
-    this.data["accounts"] = new DataStructure(  this.hostDatabase+"load_accounts.php",
-                                                this.hostDatabase+"add_account.php",
-                                                this.hostDatabase+"update_account.php",
-                                                this.hostDatabase+"delete_account.php");
-    this.data["activehouses"] = new DataStructure(  this.hostDatabase+"load_activehomes.php",
-                                                    this.hostDatabase+"add_activehome.php",
-                                                    this.hostDatabase+"update_activehome.php",
-                                                    this.hostDatabase+"delete_activehome.php");
-    this.data["contacts"]= new DataStructure(   this.hostDatabase+"load_contacts.php",
-                                                this.hostDatabase+"add_contact.php",
-                                                this.hostDatabase+"update_contact.php",
-                                                this.hostDatabase+"delete_contact.php");
-    this.data["departments"] = new DataStructure(   this.hostDatabase+"load_departments.php",
-                                                    this.hostDatabase+"add_department.php",
-                                                    this.hostDatabase+"update_department.php",
-                                                    this.hostDatabase+"delete_department.php");
-    this.data["districts"] = new DataStructure( this.hostDatabase+"load_districts.php",
-                                                this.hostDatabase+"add_district.php",
-                                                this.hostDatabase+"update_district.php",
-                                                this.hostDatabase+"delete_district.php");
-    this.data["helps"] = new DataStructure( this.hostDatabase+"load_accounts.php",
-                                            this.hostDatabase+"add_account.php",
-                                            this.hostDatabase+"update_account.php",
-                                            this.hostDatabase+"delete_account.php");
-    this.data["nations"] = new DataStructure(   this.hostDatabase+"load_accounts.php",
-                                                this.hostDatabase+"add_account.php",
-                                                this.hostDatabase+"update_account.php",
-                                                this.hostDatabase+"delete_account.php");
-    this.data["positions"] = new DataStructure( this.hostDatabase+"load_accounts.php",
-                                                this.hostDatabase+"add_account.php",
-                                                this.hostDatabase+"update_account.php",
-                                                this.hostDatabase+"delete_account.php");
-    this.data["states"]  = new DataStructure(   this.hostDatabase+"load_accounts.php",
-                                                this.hostDatabase+"add_account.php",
-                                                this.hostDatabase+"update_account.php",
-                                                this.hostDatabase+"delete_account.php");
-    this.data["streets"] = new DataStructure(   this.hostDatabase+"load_accounts.php",
-                                                this.hostDatabase+"add_account.php",
-                                                this.hostDatabase+"update_account.php",
-                                                this.hostDatabase+"delete_account.php");
-    this.data["wards"] = new DataStructure( this.hostDatabase+"load_accounts.php",
-                                            this.hostDatabase+"add_account.php",
-                                            this.hostDatabase+"update_account.php",
-                                            this.hostDatabase+"delete_account.php");
 }
 
+ModuleDatabase.prototype.getModule = function(name,listFilePHP,isCreated = false){
+    if(isCreated==true||this.data[name]==undefined){
+        this.data[name] = new DataStructure(this.hostDatabase,name,listFilePHP);
+        return this.data[name];
+    }else
+    return this.data[name];
+}
 
-
-function DataStructure(phpLoader,phpAdder,phpUpdater,phpDeleter){
-   this.phpLoader = phpLoader;
-   this.phpAdder = phpAdder;
-   this.phpUpdater = phpUpdater;
-   this.phpDeleter = phpDeleter;
-   Object.assign(this,ModuleDatabase.prototype);
+function DataStructure(hostDatabase ,name ,listFilePHP = ["load.php","add.php","update.php","delete.php"]){
+   this.phpLoader = hostDatabase+listFilePHP[0];
+   this.phpAdder = hostDatabase+listFilePHP[1];
+   this.phpUpdater = hostDatabase+listFilePHP[2];
+   this.phpDeleter = hostDatabase+listFilePHP[3];
+   this.name = name;
    this.Libary = [];
 }
 
-DataStructure.prototype.load = function(data){
-    self = this;
-    this.loadData(self.phpLoader,data).then(function(value){
-        self.data = value;
-   }) 
+
+DataStructure.prototype.load = function(data = [],isLoaded = false){
+    var self = this;
+    if(isLoaded == false&&self.data!==undefined)
+        return Promise.resolve(self.data);
+
+    return new Promise(function(resolve,reject){
+        self.queryData(self.phpLoader,data).then(function(value){
+            self.data = value;
+            self.getLibary();
+            resolve(value);
+       })
+       .catch(function(error){
+           reject(error);
+           console.error(error);
+       })
+    }) 
 }
 
-DataStructure.prototype.checkLibary = function(param){
-    if(Array.isArray(param)===false)
-    {
-        param = ["id"].concat([param]);
-    }else
-        param = ["id"].concat(param);
-    for(var i = 0;i<this.data.length;i++)
-    {
+DataStructure.prototype.getLibary = function(param,isLoaded = false){
+    if(param!==undefined){
+        if(Array.isArray(param)===false)
+        {
+            
+            param = [param];
+        }else
+            param = param;
+    
         for(var j = 0;j<param.length;j++)
         {
-            if(this.Libary[param[j]]===undefined)
-            this.Libary[param[j]] = [];
-            this.Libary[param[j]][this.data[param[j]]] = this.data[i];
+            if(isLoaded = true||this.Libary[param] == undefined)
+            {
+                for(var i = 0;i<this.data.length;i++)
+                {
+                    this.setLibaryRow(this.data[i],param[j]);
+                }
+            }
+        }
+        if(param.length == 1)
+            return this.Libary[param[0]];
+    }else
+    {
+        var isID = false;
+        for(var param in this.Libary)
+        {
+            if(param = "id")
+                isID = true;
+            for(var i = 0;i<this.data.length;i++)
+            {
+                this.setLibaryRow(this.data[i],param);
+            }
+        }
+        if(isID == false)
+        {
+            for(var i = 0;i<this.data.length;i++)
+            {
+                this.setLibaryRow(this.data[i],"id");
+            }
         }
     }
-    if(param.length == 1)
-    return this.Libary[param[0]];
+
     return this.Libary;
 }
+
+DataStructure.prototype.setLibaryRow = function(data,param){
+    if(this.Libary[param]===undefined)
+    this.Libary[param] = [];
+    this.Libary[param][data[param]] = data;
+    data.getList = function(name,value){
+        var text = "";
+        for(var i = 0;i<name.length;i++){
+            if(data[name]===undefined)
+            text+=name[i];
+            else
+            text+= data[name[i]];
+        }
+
+        var checkvalue = "";
+        for(var i = 0;i<value.length;i++){
+            if(data[value]===undefined)
+            checkvalue+=value[i];
+            else
+            checkvalue+= data[value[i]];
+        }
+        return {text:text,value:checkvalue}
+    }
+}
+
+DataStructure.prototype.getList = function(param,value,skip){
+    var result = [];
+    if(skip==undefined)
+    skip = function(){};
+    if(Array.isArray(param)!=true){
+        param = [param];
+    }
+    if(Array.isArray(value)!=true){
+        value = [value];
+    }
+    for(var i = 0;i<this.data.length;i++)
+    {
+        if(skip(this.data[i]))
+            continue;
+        result.push(this.data[i].getList(param,value));
+    }
+    return result;
+}
+
+DataStructure.prototype.add = function(data){
+    var self = this;
+    return new Promise(function(resolve,reject){
+        self.queryData(self.phpDeleter,data).then(function(value){
+            for(var param in self.Libary)
+            {
+                self.Libary[param][value[param]] = value;
+            }
+            resolve(value);
+        }).catch(function(err){
+            reject(err);
+            console.error(err)
+        })
+    })
+}
+
+DataStructure.prototype.update = function(data){
+    var self = this;
+    return new Promise(function(resolve,reject){
+        self.queryData(self.phpUpdater,data).then(function(value){
+            var temp = self.Libary["id"][id];
+            for(var param in data)
+            {
+                var old = data[param];
+                temp[param] = data[param];
+                if(self.Libary[param]!==undefined){
+                    delete self.Libary[param][old];
+                    self.Libary[param][temp[param]] = temp;
+                } 
+            }
+            resolve(value);
+        }).catch(function(err){
+            reject(err);
+            console.error(err)
+        })
+    })
+}
+
 
 DataStructure.prototype.delete = function(id){
     var self = this;
     return new Promise(function(resolve,reject){
-        this.updateData(self.phpDeleter,id).then(function(id){
+        self.queryData(self.phpDeleter,id).then(function(id){
             for(var param in self.Libary)
             {
                 var temp = self.Libary["id"][id];
@@ -99,88 +181,33 @@ DataStructure.prototype.delete = function(id){
             }
             resolve();
         }).catch(function(err){
+            reject(err);
             console.error(err)
         })
     })
 }
 
-DataStructure.prototype.add = function(data){
-    var self = this;
-    return new Promise(function(resolve,reject){
-        this.updateData(self.phpDeleter,data).then(function(value){
-            for(var param in self.Libary)
-            {
-                self.Libary[param][value[param]] = value;
-            }
-            resolve(value);
-        })
-    }).catch(function(err){
-        console.error(err)
-    })
-}
-
-DataStructure.prototype.update = function(data){
-    var self = this;
-    return new Promise(function(resolve,reject){
-        this.updateData(self.phpUpdater,data).then(function(value){
-            for(var param in self.Libary)
-            {
-                var temp = self.Libary["id"][id];
-                delete self.Libary[param][temp[param]]
-                self.Libary[param][value[param]] = value;
-            }
-            resolve(value);
-        })
-    }).catch(function(err){
-        console.error(err)
-    })
-}
-
 export default moduleDatabase;
 
-ModuleDatabase.prototype.loadData = function (phpLoader) {
-    var php;
-    if (phpLoader !== undefined)
-        php = phpLoader;
-    else
-        return Promise.reject();
-    return new Promise(function (resolve, reject) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
-            } else {
-                console.log(this.responseText);
+DataStructure.prototype.queryData = function (phpFile,data) {
+    var self = this;
+    return new Promise(function(resolve,reject){
+        FormClass.api_call({
+            url: phpFile,
+            params: [{name:"name",value:self.name},
+                    {name:"data",value:data}],
+            func: function(success, message) {
+                if (success){
+                    if (message.substr(0, 2) == "ok") {
+                        var st = EncodingClass.string.toVariable(message.substr(2));
+                        resolve(st);
+                    }
+                    else {
+                        reject(message);
+                    }
+                }
             }
-        };
-        xhttp.open("GET", php, true);
-        xhttp.send();
-    });
+        });
+    })
 };
 
-ModuleDatabase.prototype.updateData = function (phpUpdater, data) {
-    var php;
-    if (phpUpdater !== undefined)
-        php = phpUpdater;
-    else
-        return Promise.reject();
-    return new Promise(function (resolve, reject) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
-            } else {
-                console.log(this.responseText);
-            }
-        };
-        xhttp.open("POST", php, true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        var stringSend = "";
-        var connect = "";
-        for (var param in data) {
-            stringSend += connect + param + "=" + encodeURIComponent(data[param]);
-            connect = "&";
-        }
-        xhttp.send(stringSend);
-    });
-};
