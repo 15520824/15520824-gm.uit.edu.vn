@@ -233,9 +233,9 @@ ListWard.prototype.getView = function () {
     }
 
 
-    moduleDatabase.loadData(moduleDatabase.loadWardsPHP).then(function(value){
-        moduleDatabase.loadData(moduleDatabase.loadDistrictsPHP).then(function(listDistrict){
-            moduleDatabase.loadData(moduleDatabase.loadStatesPHP).then(function(listState){
+    moduleDatabase.getModule("wards").load().then(function(value){
+        moduleDatabase.getModule("districts").load().then(function(listDistrict){
+            moduleDatabase.getModule("states").load().then(function(listState){
             self.setListParamState(listState);
             self.listStateElement.items = self.listState;
             self.setListParamDistrict(listDistrict);
@@ -289,15 +289,10 @@ ListWard.prototype.setListParamDistrict = function(value)
     
 }
 
-ListWard.prototype.setListParamState = function(value)
+ListWard.prototype.setListParamState = function()
 {
-    this.checkState = [];
-    this.listState = [{text:"Tất cả",value:0}];
-    for(var i  = 0;i<value.length;i++)
-    {
-        this.checkState[value[i].id] = value[i];
-        this.listState.push({text:value[i].name,value:value[i].id});
-    }
+    this.checkState = moduleDatabase.getModule("states").getLibary("id");
+    this.listState = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("states").getList("name","id"));
     this.isLoaded = true;
 }
 

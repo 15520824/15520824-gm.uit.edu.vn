@@ -576,7 +576,7 @@ ListDistrict.prototype.deleteView = function(parent,index){
 
 ListDistrict.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    moduleDatabase.getModule("districts").delete(data).then(function(value){
+    moduleDatabase.getModule("districts").delete({id:data.id}).then(function(value){
         self.deleteView(parent,index);
     })
 }

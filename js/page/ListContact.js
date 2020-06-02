@@ -224,7 +224,7 @@ ListContact.prototype.getView = function () {
     }
 
 
-    moduleDatabase.loadData(moduleDatabase.loadContactsPHP).then(function(value){
+    moduleDatabase.getModule("contacts").load().then(function(value){
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
@@ -419,10 +419,7 @@ ListContact.prototype.add = function(parent_id = 0,row)
 ListContact.prototype.addDB = function(mNewContact,row ){
     var self = this;
     mNewContact.promiseAddDB.then(function(value){
-        var phpFile = moduleDatabase.addContactsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("contacts").add(value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -456,11 +453,8 @@ ListContact.prototype.edit = function(data,parent,index)
 ListContact.prototype.editDB = function(mNewContact,data,parent,index){
     var self = this;
     mNewContact.promiseEditDB.then(function(value){
-        var phpFile = moduleDatabase.updateContactsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("contacts").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewContact.promiseEditDB = undefined;
@@ -498,10 +492,7 @@ ListContact.prototype.deleteView = function(parent,index){
 
 ListContact.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = moduleDatabase.deleteContactsPHP;
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile,data).then(function(value){
+    moduleDatabase.getModule("contacts")(data).then(function(value){
         self.deleteView(parent,index);
     })
 }

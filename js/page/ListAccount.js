@@ -233,8 +233,8 @@ ListAccount.prototype.getView = function () {
     }
 
 
-    moduleDatabase.loadData(moduleDatabase.loadAccountsPHP).then(function(value){
-        moduleDatabase.loadData(moduleDatabase.loadPositionsPHP).then(function(listParam){
+    moduleDatabase.getModule("users").load().then(function(value){
+        moduleDatabase.getModule("positions").load().then(function(listParam){
             self.setListParam(listParam);
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
@@ -653,13 +653,10 @@ ListAccount.prototype.add = function(parent_id = 0,row)
     self.addDB(mNewAccount,row);
 }
 
-ListAccount.prototype.addDB = function(mNewAccount,row ){
+ListAccount.prototype.addDB = function(mNewAccount,row){
     var self = this;
     mNewAccount.promiseAddDB.then(function(value){
-        var phpFile = moduleDatabase.addAccountsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("users").add(value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -698,11 +695,8 @@ ListAccount.prototype.edit = function(data,parent,index)
 ListAccount.prototype.editDB = function(mNewAccount,data,parent,index){
     var self = this;
     mNewAccount.promiseEditDB.then(function(value){
-        var phpFile = moduleDatabase.updateAccountsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("users").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewAccount.promiseEditDB = undefined;
@@ -737,18 +731,13 @@ ListAccount.prototype.delete = function(data,parent,index)
 }
 
 ListAccount.prototype.deleteView = function(parent,index){
-    var self = this;
-    var bodyTable = parent.bodyTable;
     parent.dropRow(index).then(function(){
     });
 }
 
 ListAccount.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = moduleDatabase.deleteAccountsPHP;
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile,data).then(function(value){
+    moduleDatabase.getModule("users").delete({id:data.id}).then(function(value){
         self.deleteView(parent,index);
     })
 }

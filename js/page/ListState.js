@@ -492,7 +492,7 @@ ListState.prototype.deleteView = function(parent,index){
 
 ListState.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    moduleDatabase.getModule("states").delete(data).then(function(value){
+    moduleDatabase.getModule("states").delete({id:data.id}).then(function(value){
         self.deleteView(parent,index);
     })
 }

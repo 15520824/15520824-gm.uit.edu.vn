@@ -202,7 +202,7 @@ ListRealty.prototype.getView = function () {
         ]
     })
 
-    moduleDatabase.loadData(moduleDatabase.loadActiveHomesPHP).then(function (value) {
+    moduleDatabase.getModule("activehouses").load().then(function (value) {
 
         var header = [{
             type: "dragzone",
@@ -278,12 +278,12 @@ ListRealty.prototype.getView = function () {
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
     });
 
-    moduleDatabase.loadData(moduleDatabase.loadAccountsPHP).then(function (value) {
+    moduleDatabase.getModule("users").load().then(function (value) {
         self.formatDataRowAccount(value);
     })
 
-    moduleDatabase.loadData(moduleDatabase.loadContactsPHP).then(function (value) {
-        self.formatDataRowRealty(value);
+    moduleDatabase.getModule("contacts").load().then(function (value) {
+        self.formatDataRowContact(value);
     })
 
 
@@ -305,7 +305,7 @@ ListRealty.prototype.formatDataRowAccount = function (data) {
     this.listAccoutData = data;
 }
 
-ListRealty.prototype.formatDataRowRealty = function (data) {
+ListRealty.prototype.formatDataRowContact = function (data) {
     this.listContactData = data;
 }
 

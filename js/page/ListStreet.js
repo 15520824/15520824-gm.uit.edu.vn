@@ -233,10 +233,10 @@ ListStreet.prototype.getView = function () {
     }
 
 
-    moduleDatabase.loadData(moduleDatabase.loadStreetsPHP).then(function(value){
-        moduleDatabase.loadData(moduleDatabase.loadWardsPHP).then(function(listWard){
-            moduleDatabase.loadData(moduleDatabase.loadDistrictsPHP).then(function(listDistrict){
-                moduleDatabase.loadData(moduleDatabase.loadStatesPHP).then(function(listState){
+    moduleDatabase.getModule("streets").load().then(function(value){
+        moduleDatabase.getModule("wards").load().then(function(listWard){
+            moduleDatabase.getModule("districts").load().then(function(listDistrict){
+                moduleDatabase.getModule("states").load().then(function(listState){
                 self.setListParamWard(listWard);
                 self.setListParamDitrict(listDistrict);
                 self.setListParamState(listState);
@@ -271,38 +271,23 @@ ListStreet.prototype.getView = function () {
     return this.$view;
 }
 
-ListStreet.prototype.setListParamWard = function(value)
+ListStreet.prototype.setListParamWard = function()
 {
-    this.checkWard = [];
-    this.listWard = [];
-    for(var i  = 0;i<value.length;i++)
-    {
-        this.checkWard[value[i].id] = value[i];
-        this.listWard[i] = {text:value[i].name,value:value[i].id};
-    }
+    this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+    this.listWard = moduleDatabase.getModule("wards").getList("name","id");
 }
 
 
 ListStreet.prototype.setListParamDitrict = function(value)
 {
-    this.checkDistrict = [];
-    this.listDistrict = [];
-    for(var i  = 0;i<value.length;i++)
-    {
-        this.checkDistrict[value[i].id] = value[i];
-        this.listDistrict[i] = {text:value[i].name,value:value[i].id};
-    }
+    this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+    this.listDistrict = moduleDatabase.getModule("districts").getList("name","id");
 }
 
 ListStreet.prototype.setListParamState = function(value)
 {
-    this.checkState = [];
-    this.listState = [];
-    for(var i  = 0;i<value.length;i++)
-    {
-        this.checkState[value[i].id] = value[i];
-        this.listState[i] = {text:value[i].name,value:value[i].id};
-    }
+    this.checkState = moduleDatabase.getModule("states").getLibary("id");
+    this.listState = moduleDatabase.getModule("states").getList("name","id");
     this.isLoaded = true;
 }
 

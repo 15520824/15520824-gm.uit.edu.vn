@@ -233,7 +233,7 @@ ListAddress.prototype.getView = function () {
     }
 
 
-    moduleDatabase.loadData(moduleDatabase.loadPositionsPHP).then(function(value){
+    moduleDatabase.getModule("positions").load().then(function(value){
         
         var header = [{ type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, {value:'MS',sort:true,style:{minWidth:"150px",width:"150px"}}, {value:'Tên',sort:true,style:{minWidth:"unset"}},{value: 'Ngày tạo',sort:true,style:{minWidth:"250px",width:"250px"}}, { value:'Ngày cập nhật', sort:true,style:{minWidth:"250px",width:"250px"} },{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
         
@@ -262,7 +262,6 @@ ListAddress.prototype.formatDataRow = function(data)
     var temp = [];
     var check = [];
     var k = 0;
-    var checkElement;
     for(var i=0;i<data.length;i++)
     {
         var result = [
@@ -535,10 +534,7 @@ ListAddress.prototype.add = function(parent_id = 0,row)
 ListAddress.prototype.addDB = function(mNewPosition,row ){
     var self = this;
     mNewPosition.promiseAddDB.then(function(value){
-        var phpFile = moduleDatabase.addPositionsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("positions").add(value).then(function(result){
             value.id = result;
             self.addView(value,row);
         })
@@ -591,11 +587,8 @@ ListAddress.prototype.edit = function(data,parent,index)
 ListAddress.prototype.editDB = function(mNewPosition,data,parent,index){
     var self = this;
     mNewPosition.promiseEditDB.then(function(value){
-        var phpFile = moduleDatabase.updatePositionsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("positions").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewPosition.promiseEditDB = undefined;
@@ -655,7 +648,6 @@ ListAddress.prototype.delete = function(data,parent,index)
 
 ListAddress.prototype.deleteView = function(parent,index){
     var self = this;
-    var bodyTable = parent.bodyTable;
     parent.dropRow(index).then(function(){
         self.listParent.updateItemList();
     });
@@ -663,10 +655,7 @@ ListAddress.prototype.deleteView = function(parent,index){
 
 ListAddress.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = moduleDatabase.deletePositionsPHP;
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile,data).then(function(value){
+    moduleDatabase.getModule("positions").delete(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }

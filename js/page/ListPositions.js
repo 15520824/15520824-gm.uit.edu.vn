@@ -303,7 +303,7 @@ ListPositions.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
-    moduleDatabase.loadData(moduleDatabase.loadDepartmentsPHP).then(function(value){
+    moduleDatabase.getModule("departments").load().then(function(value){
         var header = [{value:'Bộ phận',sort:true,style:{minWidth:"unset"},functionClickAll:functionClickRow},{value: 'Mã',sort:true,style:{minWidth:"100px",width:"100px"},functionClickAll:functionClickRow},{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
         console.log(value)
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 0);
@@ -315,8 +315,8 @@ ListPositions.prototype.getView = function () {
         contentContainer.addChild(self.mTablePosition);
 
         var promiseAll = [];
-        promiseAll.push(moduleDatabase.loadData(moduleDatabase.loadPositionsPHP));
-        promiseAll.push(moduleDatabase.loadData(moduleDatabase.loadAccountsPHP));
+        promiseAll.push(moduleDatabase.getModule("positions").load());
+        promiseAll.push(moduleDatabase.getModule("users").load());
         Promise.all(promiseAll).then(function(values){
             self.formatDataRowAccount(values[1]);
             self.formatDataRowPosition(values[0]);
@@ -338,15 +338,9 @@ ListPositions.prototype.getView = function () {
 }
 
 ListPositions.prototype.formatDataRowPosition = function(data){
-    var checkDepartment = [];
-    for(var i = 0;i<data.length;i++)
-    {
-        if(checkDepartment[data[i].department_id]==undefined)
-        checkDepartment[data[i].department_id] = [];
-
-        checkDepartment[data[i].department_id].push(this.getDataRowPosition(data[i]));
-    }
-    this.checkDepartment = checkDepartment;
+    console.log(data)
+    this.checkDepartment = moduleDatabase.getModule("positions").getLibary("department_id",this.getDataRowPosition.bind(this),true);
+    console.log(moduleDatabase)
 }
 
 ListPositions.prototype.getDataRowPosition = function(data)
@@ -355,7 +349,7 @@ ListPositions.prototype.getDataRowPosition = function(data)
     if(this.checkAccount[data.id]==undefined)
         name = "";
     else{
-        name = this.checkAccount[data.id].name
+        name = this.checkAccount[data.id].name;
     }
         
     var temp = [
@@ -371,13 +365,8 @@ ListPositions.prototype.getDataRowPosition = function(data)
 }
 
 ListPositions.prototype.formatDataRowAccount = function(data){
-    var checkAccount = [];
     this.listAccoutData = data;
-    for(var i = 0;i<data.length;i++)
-    {
-        checkAccount[data[i].positionid]= data[i];
-    }
-    this.checkAccount = checkAccount;
+    this.checkAccount = moduleDatabase.getModule("users").getLibary("positionid");
 }
 
 ListPositions.prototype.formatDataRow = function(data)
@@ -386,7 +375,6 @@ ListPositions.prototype.formatDataRow = function(data)
     var check = [];
     var k = 0;
   
-    console.log(data)
     for(var i=0;i<data.length;i++)
     {
         var result = [
@@ -444,10 +432,7 @@ ListPositions.prototype.addDBDepartment = function(mNewDepartment,row ){
     var self = this;
     mNewDepartment.promiseAddDB.then(function(value){
         console.log(value)
-        var phpFile = moduleDatabase.addDepartmentsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("departments").add(value).then(function(result){
             value.id = result;
             self.addViewDepartment(value,row);
         })
@@ -495,11 +480,8 @@ ListPositions.prototype.editDepartment = function(data,parent,index)
 ListPositions.prototype.editDBDepartment = function(mNewDepartment,data,parent,index){
     var self = this;
     mNewDepartment.promiseEditDB.then(function(value){
-        var phpFile = moduleDatabase.updateDepartmentsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("departments").update(value).then(function(result){
             self.editViewDepartment(value,data,parent,index);
         })
         mNewDepartment.promiseEditDB = undefined;
@@ -569,10 +551,7 @@ ListPositions.prototype.deleteViewDepartment = function(parent,index){
 
 ListPositions.prototype.deleteDBDepartment = function(data,parent,index){
     var self = this;
-    var phpFile = moduleDatabase.deleteDepartmentsPHP;
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile,data).then(function(value){
+    moduleDatabase.getModule("departments").delete({id:data.id}).then(function(value){
         self.deleteViewDepartment(parent,index);
     })
 }
@@ -592,37 +571,18 @@ ListPositions.prototype.addPosition = function(parent_id = 0,row)
 ListPositions.prototype.addDBPosition = function(mNewPosition,row ){
     var self = this;
     mNewPosition.promiseAddDB.then(function(value){
-        console.log(value)
-        var phpFile = moduleDatabase.addPositionsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
-            
+        var username = value.username;
+        delete value.username;
+        moduleDatabase.getModule("positions").add(value).then(function(result){
             value.id = result;
-            console.log(result)
-            
 
             if(value.username!==undefined)
             {
-                console.log(value.id)
-                var phpFile = moduleDatabase.updateAccountsPHP;
-                if(self.phpUpdateAccount)
-                phpFile = self.phpUpdateAccount;
                 var x = {
-                    id:value.username.id,
+                    id:username.id,
                     positionid:value.id
                 }
-                for(var i = 0;i<self.listAccoutData.length;i++)
-                {
-                    if(self.listAccoutData[i].id == value.username.id )
-                     self.listAccoutData[i].positionid = value.id;
-                }
-                moduleDatabase.updateData(phpFile,x).then(function(){
-                    delete self.checkAccount[value.username.positionid];
-                    value.username.positionid = value.id
-
-                    self.checkAccount[value.id] = value.username;
-                    value.username = undefined;
+                moduleDatabase.getModule("users").update(x).then(function(){
                     self.addViewPosition(value,row);
                 })
               
@@ -668,31 +628,24 @@ ListPositions.prototype.editPosition = function(data,parent,index)
 ListPositions.prototype.editDBPosition = function(mNewPosition,data,parent,index){
     var self = this;
     mNewPosition.promiseEditDB.then(function(value){
-        var phpFile = moduleDatabase.updatePositionsPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        console.log(value)
 
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("positions").update(value).then(function(result){
             if(value.username!==undefined&&value.username.positionid != value.id)
             {
-                var phpFile = moduleDatabase.updateAccountsPHP;
-                if(self.phpUpdateAccount)
-                phpFile = self.phpUpdateAccount;
                 var x = {
                     id:value.username.id,
                     positionid:value.id
                 }
                 var promiseAll = [];
-                promiseAll.push(moduleDatabase.updateData(phpFile,x));
+                promiseAll.push(moduleDatabase.getModule("users").update(x));
                 if(self.checkAccount[value.id]!==undefined){
                     var y = {
                         id:self.checkAccount[value.id].id,
                         positionid:0
                     }
                     var promiseAll = [];
-                    promiseAll.push(moduleDatabase.updateData(phpFile,y));
+                    promiseAll.push(moduleDatabase.getModule("users").update(y));
                    
                 }   
 
@@ -755,10 +708,7 @@ ListPositions.prototype.deleteViewPosition = function(parent,index){
 
 ListPositions.prototype.deleteDBPosition = function(data,parent,index){
     var self = this;
-    var phpFile = moduleDatabase.deletePositionsPHP;
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile,data).then(function(value){
+    moduleDatabase.getModule("positions").delete({id:data.id}).then(function(value){
         self.deleteViewPosition(parent,index);
     })
 }
