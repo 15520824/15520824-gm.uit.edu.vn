@@ -10,7 +10,7 @@ import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
-import NewDistrict from '../component/NewDistrict';
+import NewWard from '../component/NewWard';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -234,12 +234,12 @@ ListWard.prototype.getView = function () {
 
 
     moduleDatabase.getModule("wards").load().then(function(value){
-        moduleDatabase.getModule("districts").load().then(function(listDistrict){
+        moduleDatabase.getModule("districts").load().then(function(listWard){
             moduleDatabase.getModule("states").load().then(function(listState){
             self.setListParamState(listState);
             self.listStateElement.items = self.listState;
-            self.setListParamDistrict(listDistrict);
-            self.listDistrictElement.items = self.listDistrict;
+            self.setListParamWard(listWard);
+            self.listWardElement.items = self.listWard;
 
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
@@ -252,7 +252,7 @@ ListWard.prototype.getView = function () {
             self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-            self.mTable.addFilter(self.listDistrictElement,4);
+            self.mTable.addFilter(self.listWardElement,4);
             self.mTable.addFilter(self.listStateElement,5);
             });
         });
@@ -272,21 +272,14 @@ ListWard.prototype.getView = function () {
     return this.$view;
 }
 
-ListWard.prototype.setListParamDistrict = function(value)
+ListWard.prototype.setListParamWard = function(value)
 {
-    this.checkDistrict = [];
-    this.checkStateDistrict = [];
-    this.listDistrict = [{text:"Tất cả",value:0}];
-    for(var i  = 0;i<value.length;i++)
-    {
-        this.checkDistrict[value[i].id] = value[i];
-        if(this.checkStateDistrict[value[i].stateid] === undefined)
-        this.checkStateDistrict[value[i].stateid] = [{text:"Tất cả",value:0}];
-        
-        this.listDistrict.push({text:value[i].name,value:value[i].id});
-        this.checkStateDistrict[value[i].stateid].push(this.listDistrict[i]);
-    }
-    
+    this.checkWard = moduleDatabase.getModule("districts").getLibary("id");
+
+    this.checkStateWard = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
+        return {text:data.name,value:data.id}
+    },true);
+    this.listWard = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("districts").getList("name","id"));
 }
 
 ListWard.prototype.setListParamState = function()
@@ -330,8 +323,8 @@ ListWard.prototype.getDataRow = function(data)
         data.id,
         data.name,
         data.type,
-        {value:data.districtid,element:_({text:this.checkDistrict[parseInt(data.districtid)].type+" "+this.checkDistrict[parseInt(data.districtid)].name})},
-        {value:this.checkDistrict[parseInt(data.districtid)].stateid,element:_({text:this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].type+" "+this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name})},
+        {value:data.districtid,element:_({text:this.checkWard[parseInt(data.districtid)].type+" "+this.checkWard[parseInt(data.districtid)].name})},
+        {value:this.checkWard[parseInt(data.districtid)].stateid,element:_({text:this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].type+" "+this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name})},
         {}
         ]
         result.original = data;
@@ -425,12 +418,12 @@ ListWard.prototype.searchControlContent = function(){
         on:{
             change:function(event){
                 if(this.value == 0){
-                    self.listDistrictElement.items = self.listDistrict;
+                    self.listWardElement.items = self.listWard;
                 }
                 else{
-                    self.listDistrictElement.items = self.checkStateDistrict[this.value];
-                    self.listDistrictElement.value = 0;
-                    self.listDistrictElement.emit('change');
+                    self.listWardElement.items = [{text:"Tất cả",value:0}].concat(self.checkStateWard[this.value]);
+                    self.listWardElement.value = 0;
+                    self.listWardElement.emit('change');
                 }
             }
         }
@@ -438,7 +431,7 @@ ListWard.prototype.searchControlContent = function(){
     self.listStateElement.updateItemList = function(value){
         self.listStateElement.items = self.formatDataList(value);
     }
-    self.listDistrictElement = _({
+    self.listWardElement = _({
         tag:"selectmenu",
         props:{
             enableSearch:true,
@@ -447,7 +440,7 @@ ListWard.prototype.searchControlContent = function(){
         on:{
             change:function(event){
                 if(this.value  !== 0){
-                    var checkid = parseInt(self.checkState[self.checkDistrict[this.value].stateid].id);
+                    var checkid = parseInt(self.checkState[self.checkWard[this.value].stateid].id);
                     if(self.listStateElement.value!=checkid)
                         self.listStateElement.value = checkid;
                 }
@@ -455,8 +448,8 @@ ListWard.prototype.searchControlContent = function(){
             }
         }
     });
-    self.listDistrictElement.updateItemList = function(value){
-        self.listDistrictElement.items = self.formatDataList(value);
+    self.listWardElement.updateItemList = function(value){
+        self.listWardElement.items = self.formatDataList(value);
     }
     var content = _({
         tag:"div",
@@ -512,7 +505,7 @@ ListWard.prototype.searchControlContent = function(){
                                         tag:"div",
                                         class:"pizo-list-realty-main-search-control-row-district-ward-input",
                                         child:[
-                                            self.listDistrictElement
+                                            self.listWardElement
                                         ]
                                     }
                                 ]
@@ -631,17 +624,17 @@ ListWard.prototype.add = function(parent_id = 0,row)
     if(!this.isLoaded)
         return;
     var self = this;
-    var mNewDistrict = new NewDistrict(undefined,parent_id);
-    mNewDistrict.attach(self.parent);
-    var frameview = mNewDistrict.getView(self.getDataParam());
+    var mNewWard = new NewWard(undefined,parent_id);
+    mNewWard.attach(self.parent);
+    var frameview = mNewWard.getView(self.getDataParam());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.addDB(mNewDistrict,row);
+    self.addDB(mNewWard,row);
 }
 
-ListWard.prototype.addDB = function(mNewDistrict,row ){
+ListWard.prototype.addDB = function(mNewWard,row ){
     var self = this;
-    mNewDistrict.promiseAddDB.then(function(value){
+    mNewWard.promiseAddDB.then(function(value){
         var phpFile = moduleDatabase.addStatesPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
@@ -650,10 +643,10 @@ ListWard.prototype.addDB = function(mNewDistrict,row ){
             value.id = result;
             self.addView(value,row);
         })
-        mNewDistrict.promiseAddDB = undefined;
+        mNewWard.promiseAddDB = undefined;
         setTimeout(function(){
-            if(mNewDistrict.promiseAddDB!==undefined)
-            self.addDB(mNewDistrict);
+            if(mNewWard.promiseAddDB!==undefined)
+            self.addDB(mNewWard);
         },10);
     })
 }
@@ -670,17 +663,17 @@ ListWard.prototype.edit = function(data,parent,index)
     if(!this.isLoaded)
         return;
     var self = this;
-    var mNewDistrict = new NewDistrict(data);
-    mNewDistrict.attach(self.parent);
-    var frameview = mNewDistrict.getView(self.getDataParam());
+    var mNewWard = new NewWard(data);
+    mNewWard.attach(self.parent);
+    var frameview = mNewWard.getView(self.getDataParam());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mNewDistrict,data,parent,index);
+    self.editDB(mNewWard,data,parent,index);
 }
 
-ListWard.prototype.editDB = function(mNewDistrict,data,parent,index){
+ListWard.prototype.editDB = function(mNewWard,data,parent,index){
     var self = this;
-    mNewDistrict.promiseEditDB.then(function(value){
+    mNewWard.promiseEditDB.then(function(value){
         var phpFile = moduleDatabase.updateStatesPHP;
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
@@ -688,10 +681,10 @@ ListWard.prototype.editDB = function(mNewDistrict,data,parent,index){
         moduleDatabase.updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
-        mNewDistrict.promiseEditDB = undefined;
+        mNewWard.promiseEditDB = undefined;
         setTimeout(function(){
-        if(mNewDistrict.promiseEditDB!==undefined)
-            self.editDB(mNewDistrict,data,parent,index);
+        if(mNewWard.promiseEditDB!==undefined)
+            self.editDB(mNewWard,data,parent,index);
         },10);
     })
 }

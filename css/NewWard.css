@@ -1,0 +1,28 @@
+.pizo-new-ward-container-district-container{
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+}
+
+.pizo-new-ward-container-district-container-label{
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 7.7857rem;
+    padding-right: 0.7143rem;
+}
+
+.pizo-new-ward-container-district-container-input{
+    border: solid 0.0714rem var(--color-input-color);
+    font-size: 1rem;
+    padding: 0.4286rem;
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}

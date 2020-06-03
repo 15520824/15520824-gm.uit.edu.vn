@@ -4,7 +4,6 @@ import '../../css/tablesort.css';
 // import TabView from 'absol-acomp/js/TabView';
 import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
-import Follower from 'absol-acomp/js/Follower';
 import {insertAfter} from './FormatFunction';
 
 var _ = Fcore._;
@@ -257,41 +256,11 @@ export function fakeInput(text, size) {
 function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result) {
     var y = pageY - result.getBoundingClientRect().top;
     y -= shiftY;
-    // var height = result.clientHeight;
-    // 
-    // if(y>tempx){
-    //     y = tempx;
-    //     // bg.noAction = true;
-    //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
-    //     return;
-    // }
-
-    // if(y< clone.clientHeight/2){
-    //     y = clone.clientHeight/2;
-    //     // bg.noAction = true;
-    //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
-    //     return;
-    // }
 
     clone.style.top = y + 'px';
 
     var x = pageX - result.getBoundingClientRect().left;
     x -= shiftX;
-    var width = result.clientWidth;
-
-    // if(x>tempx){
-    //     x = tempx;
-    //     // bg.noAction = true;
-    //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
-    //     return;
-    // }
-
-    // if(x< clone.clientWidth/2){
-    //     x = clone.clientWidth/2;
-    //     // bg.noAction = true;
-    //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
-    //     return;
-    // }
 
     clone.style.left = x + 'px';
 }
@@ -459,7 +428,7 @@ function moveElementFix(event, me, result, index) {
             var row1 = removeList.row1;
             var row2 = removeList.row2;
             if (row1 === undefined && row2 === 0) {
-                outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable)
+                outFocus(clone, trigger, functionCheckZone, bg, result)
                 return;
             }
             var element = me;
@@ -467,7 +436,7 @@ function moveElementFix(event, me, result, index) {
                 element = element.parentNode;
             }
             if (element === removeList.elementReal) {
-                outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable)
+                outFocus(clone, trigger, functionCheckZone, bg, result)
                 return;
             }
             result.bodyTable.insertBefore(element, removeList.elementReal);
@@ -497,7 +466,7 @@ function moveElementFix(event, me, result, index) {
                 result.checkSpan = changeIndex(result.checkSpan, index - 1, row1);
         }
 
-        outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
+        outFocus(clone, trigger, functionCheckZone, bg, result);
     }
     window.addEventListener('mousemove', trigger);
     window.addEventListener("mouseup", mouseUpFunction)
@@ -541,22 +510,6 @@ function changeIndex(arr, old_index, new_index) {
     return arr;
 }
 
-tableView.prototype.checkLongRow = function (index) {
-    var result = this;
-    var delta = [];
-    for (var i = 0; i < result.clone.length; i++) {
-        delta[i] = 0;
-        if (result.checkSpan !== undefined) {
-            for (var j = 0; j < index; j++) {
-                if (result.checkSpan[j] !== undefined)
-                    if (result.checkSpan[j][i] !== undefined)
-                        delta[i]++;
-            }
-        }
-    }
-    return delta;
-}
-
 function AABBYY(x, y, bound) {
     if (bound.x === 0 && bound.y === 0 && bound.width === 0 && bound.height === 0)
         return true;
@@ -577,6 +530,8 @@ function outFocus(clone, trigger, functionCheckZone, bg, parent) {
         bg.selfRemove();
     }, 20)
     clone.selfRemove();
+    var event = new CustomEvent('dragdrop');
+    parent.bodyTable.parentNode.dispatchEvent(event);
 }
 
 
@@ -759,7 +714,8 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical, 
                         if (me.classList.contains("downgrade"))
                             me.classList.remove("downgrade");
                     }
-
+                    var event = new CustomEvent('sort',{bubbles:true,detail:{event:event,me: me,index: index,dataIndex: dataIndex,row: row,result:result}});
+                    result.dispatchEvent(event);
                     if (result.paginationElement.noneValue !== true)
                         result.paginationElement.reActive();
                     else
@@ -914,6 +870,22 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical, 
     return result;
 }
 
+tableView.prototype.checkLongRow = function (index) {
+    var result = this;
+    var delta = [];
+    for (var i = 0; i < result.clone.length; i++) {
+        delta[i] = 0;
+        if (result.checkSpan !== undefined) {
+            for (var j = 0; j < index; j++) {
+                if (result.checkSpan[j] !== undefined)
+                    if (result.checkSpan[j][i] !== undefined)
+                        delta[i]++;
+            }
+        }
+    }
+    return delta;
+}
+
 tableView.prototype.setArrayFix = function (num, isLeft) {
     var i;
     var length;
@@ -1066,7 +1038,7 @@ tableView.prototype.setVisiableAll = function (arr) {
     }
 }
 
-tableView.prototype.getBodyTable = function (data, i = 0) {
+tableView.prototype.getBodyTable = function (data, index = 0) {
     var temp = this.bodyTable;
     var result = this, k, delta = [], row, cell;
     var arr = [];
@@ -1074,8 +1046,7 @@ tableView.prototype.getBodyTable = function (data, i = 0) {
         result.checkSpan = [];
     if(result.indexRow == undefined||result.indexRow == this.tempIndexRow)
         result.indexRow = 0;
-    for (i; (i < data.length && this.indexRow < this.tempIndexRow); i++) {
-        
+    for (var i = 0; (i < data.length && this.indexRow < this.tempIndexRow); i++) {
         if (data[i].child !== undefined)
             data[i].child.updateVisible = data.updateVisible;
 
@@ -1098,6 +1069,11 @@ tableView.prototype.getBodyTable = function (data, i = 0) {
                     result.getBodyTable(data[i].child);
                 continue;
             }
+        }
+        if(index !== 0)
+        {
+            index--;
+            continue;
         }
         row = result.getRow(data[i]);
         temp.addChild(row);
@@ -1123,8 +1099,8 @@ tableView.prototype.getBodyTable = function (data, i = 0) {
         this.indexRow++;
     }
 
-
-    result.setConfirm(data, i);
+    if(data.updateVisible)
+        result.setConfirm(data, i);
     if (result.checkMargin !== undefined)
         result.checkMargin();
 
@@ -1136,6 +1112,10 @@ tableView.prototype.getBodyTable = function (data, i = 0) {
 
 tableView.prototype.setConfirm = function (arr, i = 0) {
     for (i; i < arr.length; i++) {
+        if(arr[i].confirm !== undefined)
+        arr[i].visiable = arr[i].confirm;
+        else
+        arr[i].visiable = false;
         arr[i].confirm = undefined;
         if (arr[i].child !== undefined) {
             this.setConfirm(arr[i].child);
@@ -1152,7 +1132,7 @@ tableView.prototype.countRow = function () {
 tableView.prototype.countRowChild = function (arr) {
     var countRowVisiable = 0
     for (var i = 0; i < arr.length; i++) {
-        if (arr[i].visiable !== false)
+        if (arr[i].visiable != false)
             countRowVisiable++;
         if (arr[i].child !== undefined)
             countRowVisiable += this.countRowChild(arr[i].child);
@@ -1306,12 +1286,18 @@ tableView.prototype.pagination = function (number, functionClick) {
                             active.classList.remove("active");
                         this.classList.add("active");
                         temp.updateSize();
-                        paginationLeftPos = this.offsetLeft + "px";
+            
                         paginationOpacity = 1;
                         checkPaginationClick = 1;
-                        overlay.style.left = paginationLeftPos;
                         overlay.style.backgroundColor = "#00178a";
                         overlay.style.opacity = paginationOpacity;
+                        var x = this;
+                        setTimeout(function(){
+                            paginationLeftPos = x.offsetLeft + "px";
+                            overlay.style.left = paginationLeftPos;
+                  
+                        },10)
+                      
                         this.style.color = "#fff";
 
                         if (functionClick !== undefined)
@@ -1394,12 +1380,11 @@ tableView.prototype.pagination = function (number, functionClick) {
     var displayNone = [];
     temp.updateSize = function () {
         setTimeout(function(){
+            temp.detailLeft.style.display = "";
+            temp.detailRight.style.display = "";
             for (var i = 0; i < displayNone.length; i++) {
                 displayNone[i].style.display = "";
             }
-            
-            temp.detailLeft.style.display = "";
-            temp.detailRight.style.display = "";
             var count = parseInt((self.offsetWidth-20) / 50) - 4;
             var i = 0;
             var active = $("a.active", container);

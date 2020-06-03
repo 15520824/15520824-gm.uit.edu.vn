@@ -22,6 +22,7 @@ function DataStructure(hostDatabase ,name ,listFilePHP = ["load.php","add.php","
    this.phpDeleter = hostDatabase+listFilePHP[3];
    this.name = name;
    this.Libary = [];
+   this.sync = [];
 }
 
 
@@ -89,6 +90,10 @@ DataStructure.prototype.getLibary = function(param,formatFunction,isArray = fals
     }
 
     return this.Libary;
+}
+
+DataStructure.prototype.sync = function(element,functionSync){
+    this.sync.push(element,functionSync);
 }
 
 DataStructure.prototype.setLibaryRow = function(data,param,formatFunction,isArray){

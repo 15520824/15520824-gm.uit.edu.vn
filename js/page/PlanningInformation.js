@@ -240,6 +240,48 @@ PlanningInformation.prototype.getView = function () {
 }
 
 PlanningInformation.prototype.searchControlContent = function(){
+    var filterDistrict = _({
+        tag:"div",
+        class:"pizo-list-realty-main-search-control-row-district-street-input",
+        child:[
+            {
+                tag:"selectmenu",
+                props:{
+                    enableSearch:true,
+                    items: [{text:"Tất cả", value: 0}]
+                }
+            }
+        ]
+    })
+
+    var filterState = _({
+        tag:"div",
+        class:"pizo-list-realty-main-search-control-row-state-street-input",
+        child:[
+            {
+                tag:"selectmenu",
+                props:{
+                    enableSearch:true,
+                    items: [{text:"Tất cả", value: 0}]
+                }
+            }
+        ]
+    })
+
+    var filterWard = _({
+        tag:"div",
+        class:"pizo-list-realty-main-search-control-row-ward-street-input",
+        child:[
+            {
+                tag:"selectmenu",
+                props:{
+                    enableSearch:true,
+                    items:[{text:"Tất cả", value: 0}]
+                }
+            }
+        ]
+    });
+    
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -269,22 +311,7 @@ PlanningInformation.prototype.searchControlContent = function(){
                                             innerHTML:"Tỉnh/TP"
                                         }
                                     },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-street-input",
-                                        child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    enableSearch:true,
-                                                    items:[
-                                                        {text:'Thành phố Hồ Chí Minh',id:79},
-                                                        {text:'Thủ đô Hà Nội',id:80}
-                                                    ]
-                                                }
-                                            }
-                                        ]
-                                    }
+                                    filterState
                                 ]
 
                             },
@@ -299,23 +326,7 @@ PlanningInformation.prototype.searchControlContent = function(){
                                             innerHTML:"Quận/Huyện"
                                         }
                                     },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-district-street-input",
-                                        child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    enableSearch:true,
-                                                    items:[
-                                                        {text:'Quận 1',id:79},
-                                                        {text:'Quận Bình Thạnh',id:80},
-                                                        {text:'Quận Tân Bình',id:81}
-                                                    ]
-                                                }
-                                            }
-                                        ]
-                                    }
+                                    filterDistrict
                                 ]
 
                             },
@@ -330,21 +341,7 @@ PlanningInformation.prototype.searchControlContent = function(){
                                             innerHTML:"Phường/Xã"
                                         }
                                     },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-ward-street-input",
-                                        child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    enableSearch:true,
-                                                    items:[
-                                                        {text:'Phường Tân Định',id:79},
-                                                    ]
-                                                }
-                                            }
-                                        ]
-                                    }
+                                    filterWard
                                 ]
 
                             },
