@@ -7,7 +7,8 @@ import Fcore from '../dom/Fcore';
 import { formatDate,checkRule,consoleArea,loaddingWheel } from '../component/FormatFunction';
 
 import { MapView } from "../component/MapView";
-import NewRealty from '../component/NewRealty';
+import moduleDatabase from '../component/ModuleDatabase';
+
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -64,40 +65,53 @@ PlanningInformation.prototype.getView = function () {
         on:{
             change: function(event)
             {
-                var loadding = new loaddingWheel();
-                var reader = new FileReader();
-                reader.readAsText(this.files[0]);
-                reader.onload = function(e) {
-                    console.time("dcel cost");
-                    var fileText = e.target.result;
-
-                    var parser = new DxfParser();
-                    var dxf = null;
-                    try {
-                        dxf = parser.parseSync(fileText);
-                    } catch (err) {
-                        return console.error(err.stack);
-                    }
-                    
-                    // outputElement.innerHTML = JSON.stringify(dxf, null, 4);
-                    
-                    
-                    var geojson = GeoJSON.parse(dxf)
-                    // var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
-                    window.dcel.extractLines();
-                    var faces = dcel.internalFaces();
-                    geojson = consoleArea(faces);
-                    
-                    mapView.map.data.addGeoJson(geojson, {});
-                    // map.setCenter(center);
-                    mapView.map.data.setStyle({
-                        strokeColor: "#000000",
-                        strokeOpacity: 0.8,
-                        strokeWeight: 1,
+                var fr=new FileReader(); 
+                fr.onload=function(){
+                    console.log(fr.result)
+                    moduleDatabase.getModule("geometry",["load.php","test.php","update.php","delete.php"]).add({geojson:fr.result}).then(function(value){
+                        console.log(value)
                     });
-                    console.timeEnd("dcel cost");
-                    loadding.disable();
                 }
+                fr.readAsText(this.files[0]); 
+               
+                // var loadding = new loaddingWheel();
+                // var reader = new FileReader();
+                // reader.readAsText(this.files[0]);
+                // reader.onload = function(e) {
+                //     console.time("dcel cost");
+                //     var fileText = e.target.result;
+
+                //     var parser = new DxfParser();
+                //     var dxf = null;
+                //     try {
+                //         dxf = parser.parseSync(fileText);
+                //     } catch (err) {
+                //         return console.error(err.stack);
+                //     }
+                    
+                //     // outputElement.innerHTML = JSON.stringify(dxf, null, 4);
+                    
+                    
+                //     var geojson = GeoJSON.parse(dxf)
+                //     var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
+                //     window.dcel.extractLines();
+                //     var faces = dcel.internalFaces();
+                //     console.log(faces)
+                //     geojson = consoleArea(faces);
+                //     console.log(geojson)
+                //     moduleDatabase.getModule("geometry",["load.php","test.php","update.php","delete.php"]).add(JSON.stringify(geojson)).then(function(value){
+                //         console.log(value)
+                //     });
+                //     mapView.map.data.addGeoJson(geojson, {});
+                //     mapView.map.setCenter(center);
+                //     mapView.map.data.setStyle({
+                //         strokeColor: "#000000",
+                //         strokeOpacity: 0.8,
+                //         strokeWeight: 1,
+                //     });
+                //     console.timeEnd("dcel cost");
+                //     loadding.disable();
+                // }
             }
         },
         props:{
@@ -281,7 +295,7 @@ PlanningInformation.prototype.searchControlContent = function(){
             }
         ]
     });
-    
+
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",

@@ -8,6 +8,7 @@ var xmlModalDragManyFiles;
 export default xmlModalDragManyFiles = {
   imgUrl:[],
   files:[],
+  iconSrc:"https://lab.daithangminh.vn/vivid_exticons/",
   deleteAllTrash: function() {
   },
   Image: function(srcImg) {
@@ -39,7 +40,8 @@ export default xmlModalDragManyFiles = {
             margin: 0,
             width: "fit-content",
             userSelect: "none",
-            backgroundColor: "white"
+            backgroundColor: "white",
+            fontSize : "21px"
           },
           on:{
             click:function(event){
@@ -460,7 +462,7 @@ export default xmlModalDragManyFiles = {
       };
     }else
     {
-      var img =  self.Image("https://lab.daithangminh.vn/vivid_exticons/"+file.name.substr((file.name.lastIndexOf('.') + 1))+".svg");
+      var img =  self.Image(this.iconSrc+file.name.substr((file.name.lastIndexOf('.') + 1))+".svg");
       img.value = file;
       var parent = self.gallery;
       parent.style.position = "relative";

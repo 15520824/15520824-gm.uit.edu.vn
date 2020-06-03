@@ -338,7 +338,6 @@ ListPositions.prototype.getView = function () {
 }
 
 ListPositions.prototype.formatDataRowPosition = function(data){
-    console.log(data)
     this.checkDepartment = moduleDatabase.getModule("positions").getLibary("department_id",this.getDataRowPosition.bind(this),true);
     console.log(moduleDatabase)
 }

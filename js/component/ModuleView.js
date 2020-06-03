@@ -1935,6 +1935,7 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
     if (result.isUpdate === false)
         return;
     var delta = [];
+    var index = result.childrenNodes.length;
     var row = result.getRow(data);
 
     for (var i = 0; i < result.clone.length; i++) {
@@ -1987,34 +1988,33 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
         k++;
         row.addChild(cell);
     }
-    var x, indexData;
-    
-    result.childrenNodes[index] = row;
+    var x;
 
-    indexData = result.childrenNodes.length;
+    result.childrenNodes[index] = row;
     
     if (result.tagName !== "TABLE") {
-        if (indexData === result.data.child.length) {
+        if (index === result.data.child.length) {
             result.data.child.push(data);
             x = data;
         }
         else {
-            x = Object.assign(result.data.child[indexData], data);
-            result.data.child[indexData] = x;
+            x = Object.assign(result.data.child[index], data);
+            result.data.child[index] = x;
         }
     }
     else {
-        if (indexData === result.data.length) {
+        if (index === result.data.length) {
             result.data.push(data);
             x = data;
         }
         else {
-            x = Object.assign(result.data[indexData], data);
-            result.data[indexData] = x;
+            x = Object.assign(result.data[index], data);
+            result.data[index] = x;
         }
     }
 
     row.data = x;
+    var temp;
     if (temp !== undefined) {
         row.childrenNodes = temp.childrenNodes;
         row.clone = temp.clone;

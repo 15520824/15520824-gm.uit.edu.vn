@@ -787,7 +787,6 @@
             // Step 3: Identification of next and prev hedges
             var hedges = this.hedges;
             var vertices = this.vertices;
-            console.log(hedges,vertices)
             for (var j = 0, ll = vertices.length; j < ll; j++) {
                 var v = vertices[j];
                 v.sortincident();

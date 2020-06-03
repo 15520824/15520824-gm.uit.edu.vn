@@ -850,7 +850,6 @@ ListRealty.prototype.addView = function (value, parent) {
 }
 
 ListRealty.prototype.edit = function (data, parent, index) {
-    console.log(data)
     var self = this;
     var mNewRealty = new NewRealty(data);
     console.log(mNewRealty)

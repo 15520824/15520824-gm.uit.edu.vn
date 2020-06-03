@@ -18,7 +18,6 @@ function NewRealty(data) {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    console.log(data)
     this.textHeader = "Sửa ";
     this.data = data;
 

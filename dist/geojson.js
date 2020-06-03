@@ -318,7 +318,6 @@ function rotation_point(cx,cy,angle,x,y)
     if (settings.bbox) {
       geojson.bbox = settings.bbox;
     }
-    console.log(settings.extraGlobal)
     if (settings.extraGlobal) {
       geojson.properties = {};
       for (var key in settings.extraGlobal) {

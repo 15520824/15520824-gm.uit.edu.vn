@@ -13,9 +13,7 @@ delete package.main;
 
 module.exports = {
     mode: (process.env.MODE && false) || "development",
-    // mode: 'production',
     entry: ["./dev.js"],
-    // entry: ["./src/cookie.js"],
     output: {
         path: path.join(__dirname, "."),
         filename: "./pizo/index.js"
