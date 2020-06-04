@@ -64,54 +64,52 @@ PlanningInformation.prototype.getView = function () {
         class:"hiddenUI",
         on:{
             change: function(event)
-            {
-                var fr=new FileReader(); 
-                fr.onload=function(){
-                    console.log(fr.result)
-                    moduleDatabase.getModule("geometry",["load.php","test.php","update.php","delete.php"]).add({geojson:fr.result}).then(function(value){
-                        console.log(value)
-                    });
-                }
-                fr.readAsText(this.files[0]); 
-               
-                // var loadding = new loaddingWheel();
-                // var reader = new FileReader();
-                // reader.readAsText(this.files[0]);
-                // reader.onload = function(e) {
-                //     console.time("dcel cost");
-                //     var fileText = e.target.result;
-
-                //     var parser = new DxfParser();
-                //     var dxf = null;
-                //     try {
-                //         dxf = parser.parseSync(fileText);
-                //     } catch (err) {
-                //         return console.error(err.stack);
-                //     }
+            {  
+                var file = this.files[0];
+                var loadding = new loaddingWheel();
+                var reader = new FileReader();
+                reader.readAsText(this.files[0]);
+                reader.onload = function(e) {
+                    console.time("dcel cost");
+                    console.log(file)
+                    var extension = file.name.slice((Math.max(0, file.name.lastIndexOf(".")) || Infinity) + 1);
+                    var fileText = e.target.result;
+                    if(extension === "json"){
+                        moduleDatabase.getModule("geometry").add({map:fileText}).then(function(value){
+                            loadding.disable();
+                        });
+                    }
+                    else if(extension === "dxf")
+                    {
+                        var parser = new DxfParser();
+                        var dxf = null;
+                        try {
+                            dxf = parser.parseSync(fileText);
+                        } catch (err) {
+                            return console.error(err.stack);
+                        }
                     
-                //     // outputElement.innerHTML = JSON.stringify(dxf, null, 4);
-                    
-                    
-                //     var geojson = GeoJSON.parse(dxf)
-                //     var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
-                //     window.dcel.extractLines();
-                //     var faces = dcel.internalFaces();
-                //     console.log(faces)
-                //     geojson = consoleArea(faces);
-                //     console.log(geojson)
-                //     moduleDatabase.getModule("geometry",["load.php","test.php","update.php","delete.php"]).add(JSON.stringify(geojson)).then(function(value){
-                //         console.log(value)
-                //     });
-                //     mapView.map.data.addGeoJson(geojson, {});
-                //     mapView.map.setCenter(center);
-                //     mapView.map.data.setStyle({
-                //         strokeColor: "#000000",
-                //         strokeOpacity: 0.8,
-                //         strokeWeight: 1,
-                //     });
-                //     console.timeEnd("dcel cost");
-                //     loadding.disable();
-                // }
+                        var geojson = GeoJSON.parse(dxf)
+                        var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
+                        window.dcel.extractLines();
+                        var faces = dcel.internalFaces();
+                        console.log(faces)
+                        geojson = consoleArea(faces);
+                        console.log(geojson)
+                        // moduleDatabase.getModule("geometry").add({map:JSON.stringify(geojson)}).then(function(value){
+                        //     console.log(value)
+                        // });
+                        mapView.map.data.addGeoJson(geojson, {});
+                        mapView.map.setCenter(center);
+                        mapView.map.data.setStyle({
+                            strokeColor: "#000000",
+                            strokeOpacity: 0.8,
+                            strokeWeight: 1,
+                        });
+                        console.timeEnd("dcel cost");
+                        loadding.disable();
+                    }
+                }   
             }
         },
         props:{
@@ -250,7 +248,50 @@ PlanningInformation.prototype.getView = function () {
             ]   
         })
         );
+    this.mapView = mapView;
+    this.mapView.map.enableKeyDragZoom(this.selectPolygon.bind(this));
+    this.polygon = [];
+    this.selectPolygon = [];
+    window.addEventListener("keydown",function(e){
+        if(e.keyCode==46)
+        {
+            for(var i = 0;i<self.selectPolygon.length;i++)
+            {
+                self.selectPolygon[i].setMap(null);
+                var index = self.polygon.indexOf(self.selectPolygon[i]);
+                self.polygon.splice(index,1);
+            }
+            self.selectPolygon = [];
+        }else if(e.keyCode == 27)
+        {
+            for(var i = 0;i<self.selectPolygon.length;i++)
+            {
+                self.selectPolygon[i].setOptions({strokeColor:"#000000",fillColor:"#adaeaf"});
+            }
+            self.selectPolygon = [];
+        }
+
+    })
+    
+    moduleDatabase.getModule("geometry",["loadMap.php","addMap.php","updateMap.php","deleteMap.php"]).load().then(function(value){
+        for(var i = 0;i<value.length;i++){
+            self.polygon =  self.polygon.concat(self.addWKT(value[i]["AsText(`map`)"]));
+        }
+    })
     return this.$view;
+}
+
+PlanningInformation.prototype.selectPolygon = function(bns){
+    for(var i=0;i<this.polygon.length;i++)
+    {
+        if(bns.Ya.i<this.polygon[i].boundary.min.lat&&this.polygon[i].boundary.max.lat<bns.Ya.j
+            &&bns.Ua.i<this.polygon[i].boundary.min.lng&&this.polygon[i].boundary.max.lng<bns.Ua.j)
+        {
+            this.polygon[i].setOptions({strokeColor:"#eb4034",fillColor:"#c18986"});
+            this.selectPolygon.push(this.polygon[i]);
+        }
+            
+    }
 }
 
 PlanningInformation.prototype.searchControlContent = function(){
@@ -440,6 +481,57 @@ PlanningInformation.prototype.searchControlContent = function(){
 
   
     return temp;
+}
+
+PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
+    var self = this;
+        var wkt = new Wkt.Wkt();
+        wkt.read(multipolygonWKT);
+        var toReturn = [];
+        var components = wkt.components;
+        for(var k=0;k<components.length;k++){
+            var line = components[k];
+            var polygon = new google.maps.Polygon({
+                paths: line,
+                strokeColor: "#000000",
+                fillColor:"#adaeaf",
+                strokeOpacity: 0.8,
+                strokeWeight: 1,
+                })
+            polygon.setMap(this.mapView.map);
+            google.maps.event.addListener(polygon, 'click', function (event) {
+                var index = self.selectPolygon.indexOf(this);
+                if(index!==-1)
+                {
+                    self.selectPolygon.splice(index,1);
+                    this.setOptions({strokeColor:"#000000",fillColor:"#adaeaf"});
+
+                }else
+                {
+                    self.selectPolygon.push(this);
+                    this.setOptions({strokeColor:"#eb4034",fillColor:"#c18986"});
+                }
+              });
+            var max = {lat:-90,lng:-200},min = {lat:90,lng:200};
+            line = line[0];
+            for(var i = 0;i<line.length;i++)
+            {
+                if(max.lat<line[i].lat)
+                    max.lat=line[i].lat;
+                if(min.lat>line[i].lat)
+                    min.lat=line[i].lat;
+                if(max.lng<line[i].lng)
+                    max.lng=line[i].lng;
+                if(min.lng>line[i].lng)
+                    min.lng=line[i].lng;
+               
+            }
+            var boundary = {max:max,min:min}
+            polygon.boundary = boundary;
+            toReturn.push(polygon);
+        }
+        
+    return toReturn;  
 }
 
 PlanningInformation.prototype.refresh = function () {

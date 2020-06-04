@@ -44,8 +44,7 @@
             </scr`+ `ipt>
             `);
             </script>
-    <script>
-        
+     <script>
         function initMap(){
             var service = new google.maps.places.PlacesService(document.body
                          .appendChild(document.createElement('div')));
@@ -68,7 +67,6 @@
                     document.getElementsByTagName('HEAD')[0].appendChild(link);  
                 }
         }
-       
     </script>
     <script src="./dist/dcel.js"></script>
     <script src="./dist/quadtree.js"></script>
@@ -77,10 +75,13 @@
     <script src="./dist/dxf-parser.js"></script>
     <script src="./dist/geojson.js"></script>
     <script src="./dist/LatLngVn2000.js"></script>
+    <script src="./dist/wicket.js"></script>
+    
     <script src="./js/ckeditor/ckeditor.js"></script>
     <script src="./js/encode.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?sensor=set_to_true_or_false&libraries=drawing,places&key=AIzaSyBBgUUCM0d67G5IP69q_onHy0A7kTnq8qw&callback=initMap">
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=set_to_true_or_false&libraries=drawing,places&key=AIzaSyBBgUUCM0d67G5IP69q_onHy0A7kTnq8qw&callback=initMap"></script>
+    <script src="./dist/keydragzoom.js"></script>
+   
 </body>
 
 </html>

@@ -133,25 +133,27 @@ export function getGMT(date,timezone = 0,onlyDay = false) {
 
 
 export function consoleArea(areas) {
-    var result = {
+    var result = []
+    var multipolygon = {
         type: "FeatureCollection",
         features:[]
     }
-    var k=0;
+    var check = [];
+    var max = {lat:-90,lng:-200},min = {lat:90,lng:200};
     areas.forEach(function(f) {
+            console.log(f)
             if(f._area>(1.1368683772161603e-13)){
                 var vertices = f.vertexlist;
                 if(vertices!==undefined)
                 {
                     var temp = [];
-                    var sum = 0;
                     for(var i=0;i<vertices.length;i++)
                     {
                         temp.push([vertices[i].x,vertices[i].y]);
                     }
                     temp.push([vertices[0].x,vertices[0].y]);
                     temp = checkRule(temp);
-                    result.features.push({
+                    multipolygon.features.push({
                         type: "Feature",
                         properties:{},
                         geometry: {

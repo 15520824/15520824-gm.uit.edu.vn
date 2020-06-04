@@ -258,7 +258,6 @@ DataStructure.prototype.queryData = function (phpFile,data) {
             func: function(success, message) {
                 if (success){
                     if (message.substr(0, 2) == "ok") {
-                        console.log(message);
                         var st = EncodingClass.string.toVariable(message.substr(2));
                         resolve(st);
                     }
