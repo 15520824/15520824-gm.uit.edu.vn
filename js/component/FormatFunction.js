@@ -166,6 +166,41 @@ export function consoleArea(areas) {
     });
     return result;
 }
+
+function consoleWKT(areas){
+    var result = []
+    var multipolygon = {
+        type: "FeatureCollection",
+        features:[]
+    }
+    var check = [];
+    var max = {lat:-90,lng:-200},min = {lat:90,lng:200};
+    areas.forEach(function(f) {
+            console.log(f)
+            if(f._area>(1.1368683772161603e-13)){
+                var vertices = f.vertexlist;
+                if(vertices!==undefined)
+                {
+                    var temp = [];
+                    for(var i=0;i<vertices.length;i++)
+                    {
+                        temp.push([vertices[i].x,vertices[i].y]);
+                    }
+                    temp.push([vertices[0].x,vertices[0].y]);
+                    temp = checkRule(temp);
+                    multipolygon.features.push({
+                        type: "Feature",
+                        properties:{},
+                        geometry: {
+                            type: 'Polygon',
+                            coordinates: [temp],
+                        }
+                    })
+                }
+            } 
+    });
+    return result;
+}
 export function checkRule(poly)
 {
     var sum = 0

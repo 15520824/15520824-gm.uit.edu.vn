@@ -249,26 +249,79 @@ PlanningInformation.prototype.getView = function () {
         })
         );
     this.mapView = mapView;
-    this.mapView.map.enableKeyDragZoom(this.selectPolygon.bind(this));
+    this.mapView.map.enableKeyDragZoom(this.selectPolygonFunction.bind(this));
+    this.mapView.map.setTilt(45);
+    var polyOptions = {
+        strokeColor: "#eb4034",
+        fillColor:"#c18986",
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+        editable: true,
+        draggable: true
+      };
+    var drawingManager = new google.maps.drawing.DrawingManager({
+        drawingMode: google.maps.drawing.OverlayType.POLYGON,
+        drawingControlOptions: {
+          drawingModes: [
+            google.maps.drawing.OverlayType.POLYGON
+          ]
+        },
+        markerOptions: {
+          draggable: true
+        },
+        polylineOptions: {
+        },
+        rectangleOptions: polyOptions,
+        circleOptions: polyOptions,
+        polygonOptions: polyOptions,
+        map: this.mapView.map
+    });
+    google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
+        var polygon = e.overlay;
+        self.polygon.push(polygon);
+        self.selectPolygon.push(polygon);
+        if(self.selectPolygon.length == 0)
+        {
+            self.addEventPolygon(polygon);
+        }else
+        {
+            self.selectPolygon.merge(polygon);
+        }
+       
+    })
+    this.mapView.map.setOptions({ maxZoom: 30 });
+    this.drawingManager = drawingManager;
     this.polygon = [];
     this.selectPolygon = [];
     window.addEventListener("keydown",function(e){
         if(e.keyCode==46)
         {
+            if(self.editPolygon!==undefined)
+            {
+                self.editPolygon.setMap(null);
+                var index = self.polygon.indexOf(self.editPolygon);
+                self.polygon.splice(index,1);
+            }
             for(var i = 0;i<self.selectPolygon.length;i++)
             {
                 self.selectPolygon[i].setMap(null);
+                google.maps.event.clearListeners(self.selectPolygon[i], 'click');
                 var index = self.polygon.indexOf(self.selectPolygon[i]);
                 self.polygon.splice(index,1);
+            }
+            if(self.allPolygon!==undefined)
+            {
+                self.allPolygon.setMap(null);
+                self.allPolygon = undefined;
             }
             self.selectPolygon = [];
         }else if(e.keyCode == 27)
         {
-            for(var i = 0;i<self.selectPolygon.length;i++)
+            self.removeAllSelect();
+            if(self.editPolygon!==undefined)
             {
-                self.selectPolygon[i].setOptions({strokeColor:"#000000",fillColor:"#adaeaf"});
+                self.editPolygon.toInActive(self);
             }
-            self.selectPolygon = [];
         }
 
     })
@@ -281,17 +334,110 @@ PlanningInformation.prototype.getView = function () {
     return this.$view;
 }
 
-PlanningInformation.prototype.selectPolygon = function(bns){
+PlanningInformation.prototype.removeAllSelect = function()
+{
+    var self =this;
+    if(self.allPolygon!==undefined)
+    {
+        console.log(self.allPolygon)
+        for(var i = 0;i<self.selectPolygon.length;i++)
+        {
+            self.selectPolygon[i].setMap(self.mapView.map);
+            if(self.allPolygon!==undefined&&self.allPolygon.deltaDrag!==undefined&&(self.allPolygon.deltaDrag.lat!==0||self.allPolygon.deltaDrag.lng!==0))
+            {
+                var center = self.selectPolygon[i].getBounds().getCenter().toJSON();
+                center.lat += self.allPolygon.deltaDrag.lat;
+                center.lng += self.allPolygon.deltaDrag.lng;
+                self.selectPolygon[i].moveTo(new google.maps.LatLng(center.lat, center.lng)); 
+            }
+        }
+    
+        self.allPolygon.setMap(null);
+        self.allPolygon = undefined;
+        self.selectPolygon = [];
+    }
+}
+
+PlanningInformation.prototype.addEventPolygon = function(polygon)
+{
+    var self = this;
+    google.maps.event.addListener(polygon, 'click', function (event) {
+        console.log(self.editPolygon,this)
+        if(self.editPolygon===this)
+        {
+            this.toInActive(self);
+        }else
+        {
+            if(self.editPolygon !== undefined)
+            {
+                self.editPolygon.toInActive(self);
+                this.toActive(self);
+                this.setOptions({editable:true,draggable:true});
+            }else
+            {
+                if(self.allPolygon!==undefined)
+                {
+                    if(self.selectPolygon.indexOf(this)!==-1)
+                    {
+                        this.toActive(self);
+                        this.setOptions({editable:true,draggable:true});
+                        self.removeAllSelect();
+                    }else
+                    {
+    
+                    }
+                }else
+                {
+                    this.toActive(self);
+                    this.setOptions({editable:true,draggable:true});
+                }
+               
+            }
+        }
+      });
+}
+
+PlanningInformation.prototype.selectPolygonFunction = function(bns){
+    this.removeAllSelect();
+    if(this.editPolygon!==undefined)
+    this.editPolygon.toInActive(this);
+    var path = [];
+    var tempPath;
     for(var i=0;i<this.polygon.length;i++)
     {
-        if(bns.Ya.i<this.polygon[i].boundary.min.lat&&this.polygon[i].boundary.max.lat<bns.Ya.j
-            &&bns.Ua.i<this.polygon[i].boundary.min.lng&&this.polygon[i].boundary.max.lng<bns.Ua.j)
+        tempPath = [];
+        var boundary = this.polygon[i].boundary();
+        if(bns.Ya.i<boundary.min.lat&&boundary.max.lat<bns.Ya.j
+            &&bns.Ua.i<boundary.min.lng&&boundary.max.lng<bns.Ua.j)
         {
-            this.polygon[i].setOptions({strokeColor:"#eb4034",fillColor:"#c18986"});
+            for(var j = 0;j<this.polygon[i].getPath().getLength();j++)
+            {
+                tempPath.push(this.polygon[i].getPath().getAt(j).toJSON())
+            }
+            this.polygon[i].setMap(null);
             this.selectPolygon.push(this.polygon[i]);
-        }
-            
+        } 
+        path.push(tempPath)     
     }
+    var polygon = new google.maps.Polygon({
+        paths: path,
+        strokeColor: "#eb4034",
+        fillColor:"#c18986",
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+        draggable:true,
+        geodesic: true
+    })
+    google.maps.event.addListener(polygon, 'dragstart', function(e) {
+        if(this.dragStart == undefined)
+        this.dragStart = e.latLng.toJSON();
+    });
+    google.maps.event.addListener(polygon, 'dragend', function(e) {
+        var endDrag = e.latLng.toJSON();
+        this.deltaDrag = {lat:endDrag.lat-this.dragStart.lat,lng:endDrag.lng-this.dragStart.lng}
+    });
+    polygon.setMap(this.mapView.map);
+    this.allPolygon = polygon;
 }
 
 PlanningInformation.prototype.searchControlContent = function(){
@@ -484,52 +630,24 @@ PlanningInformation.prototype.searchControlContent = function(){
 }
 
 PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
-    var self = this;
-        var wkt = new Wkt.Wkt();
-        wkt.read(multipolygonWKT);
-        var toReturn = [];
-        var components = wkt.components;
-        for(var k=0;k<components.length;k++){
-            var line = components[k];
-            var polygon = new google.maps.Polygon({
-                paths: line,
-                strokeColor: "#000000",
-                fillColor:"#adaeaf",
-                strokeOpacity: 0.8,
-                strokeWeight: 1,
-                })
-            polygon.setMap(this.mapView.map);
-            google.maps.event.addListener(polygon, 'click', function (event) {
-                var index = self.selectPolygon.indexOf(this);
-                if(index!==-1)
-                {
-                    self.selectPolygon.splice(index,1);
-                    this.setOptions({strokeColor:"#000000",fillColor:"#adaeaf"});
-
-                }else
-                {
-                    self.selectPolygon.push(this);
-                    this.setOptions({strokeColor:"#eb4034",fillColor:"#c18986"});
-                }
-              });
-            var max = {lat:-90,lng:-200},min = {lat:90,lng:200};
-            line = line[0];
-            for(var i = 0;i<line.length;i++)
-            {
-                if(max.lat<line[i].lat)
-                    max.lat=line[i].lat;
-                if(min.lat>line[i].lat)
-                    min.lat=line[i].lat;
-                if(max.lng<line[i].lng)
-                    max.lng=line[i].lng;
-                if(min.lng>line[i].lng)
-                    min.lng=line[i].lng;
-               
-            }
-            var boundary = {max:max,min:min}
-            polygon.boundary = boundary;
-            toReturn.push(polygon);
-        }
+    var wkt = new Wkt.Wkt();
+    wkt.read(multipolygonWKT);
+    var toReturn = [];
+    var components = wkt.components;
+    console.log(wkt,this.mapView.map)
+    for(var k=0;k<components.length;k++){
+        var line = components[k];
+        var polygon = new google.maps.Polygon({
+            paths: line,
+            strokeColor: "#000000",
+            fillColor:"#adaeaf",
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            map:this.mapView.map
+        })
+        this.addEventPolygon(polygon);
+        toReturn.push(polygon);
+    }
         
     return toReturn;  
 }
