@@ -138,8 +138,7 @@ export function consoleArea(areas) {
         type: "FeatureCollection",
         features:[]
     }
-    var check = [];
-    var max = {lat:-90,lng:-200},min = {lat:90,lng:200};
+
     areas.forEach(function(f) {
             console.log(f)
             if(f._area>(1.1368683772161603e-13)){
@@ -169,12 +168,8 @@ export function consoleArea(areas) {
 
 function consoleWKT(areas){
     var result = []
-    var multipolygon = {
-        type: "FeatureCollection",
-        features:[]
-    }
-    var check = [];
-    var max = {lat:-90,lng:-200},min = {lat:90,lng:200};
+    var multipolygon = "MULTIPOLYGON("
+    var polygon,isFirst,coordinates;
     areas.forEach(function(f) {
             console.log(f)
             if(f._area>(1.1368683772161603e-13)){
@@ -182,23 +177,21 @@ function consoleWKT(areas){
                 if(vertices!==undefined)
                 {
                     var temp = [];
+                    coordinates = ""
+                    isFirst = "";
                     for(var i=0;i<vertices.length;i++)
                     {
-                        temp.push([vertices[i].x,vertices[i].y]);
+                        coordinates +=isFirst+vertices[i].x+" "+vertices[i].y;
+                        isFirst = ","
                     }
-                    temp.push([vertices[0].x,vertices[0].y]);
-                    temp = checkRule(temp);
-                    multipolygon.features.push({
-                        type: "Feature",
-                        properties:{},
-                        geometry: {
-                            type: 'Polygon',
-                            coordinates: [temp],
-                        }
-                    })
+                    coordinates +=isFirst+vertices[0].x+" "+vertices[0].y;
+                    temp = checkRuleWKT(temp);
+                    polygon += "(("+coordinates+"))";
                 }
+                multipolygon+=polygon;
             } 
     });
+    multipolygon+=")"
     return result;
 }
 export function checkRule(poly)
@@ -211,6 +204,20 @@ export function checkRule(poly)
     }
     if(sum>0)
     return poly.reverse();
+    return poly;
+}
+
+export function checkRuleWKT(poly)
+{
+    var sum = 0;
+    var polygon = poly.split(",");
+    for (var i=0; i<polygon.length-1; i++) {
+        var cur = polygon[i].split(" "),
+            next = polygon[i+1].split(" ");
+        sum += (next[0] - cur[0]) * (parseFloat(next[1]) + parseFloat(cur[1]));
+    }
+    if(sum>0)
+    return polygon.reverse().join();
     return poly;
 }
 

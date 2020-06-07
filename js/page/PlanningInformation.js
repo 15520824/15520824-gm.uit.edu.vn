@@ -377,14 +377,39 @@ PlanningInformation.prototype.addEventPolygon = function(polygon)
             {
                 if(self.allPolygon!==undefined)
                 {
-                    if(self.selectPolygon.indexOf(this)!==-1)
+                    if(self.selectPolygon.indexOf(this) ===-1)
                     {
-                        this.toActive(self);
-                        this.setOptions({editable:true,draggable:true});
-                        self.removeAllSelect();
-                    }else
-                    {
-    
+                        self.allPolygon.setMap(null);
+                        var path =[];
+                        var tempPath;
+                        for(var i=0;i<self.selectPolygon.length;i++)
+                        {
+                            if(self.allPolygon!==undefined&&self.allPolygon.deltaDrag!==undefined&&(self.allPolygon.deltaDrag.lat!==0||self.allPolygon.deltaDrag.lng!==0))
+                            {
+                                var center = self.selectPolygon[i].getBounds().getCenter().toJSON();
+                                center.lat += self.allPolygon.deltaDrag.lat;
+                                center.lng += self.allPolygon.deltaDrag.lng;
+                                self.selectPolygon[i].moveTo(new google.maps.LatLng(center.lat, center.lng)); 
+                            }
+                            tempPath = [];
+                            for(var j = 0;j<self.selectPolygon[i].getPath().getLength();j++)
+                            {
+                                tempPath.push(self.selectPolygon[i].getPath().getAt(j).toJSON())
+                            }
+                            self.selectPolygon[i].setMap(null);
+                            path.push(tempPath)     
+                        }
+                        tempPath = [];
+                        for(var j = 0;j<this.getPath().getLength();j++)
+                        {
+                            tempPath.push(this.getPath().getAt(j).toJSON())
+                        }
+                        path.push(tempPath) 
+                        this.setMap(null);
+                        self.selectPolygon.push(this);
+
+                        self.createAllPolygon(path);
+                        
                     }
                 }else
                 {
@@ -419,6 +444,11 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns){
         } 
         path.push(tempPath)     
     }
+   this.createAllPolygon(path)
+}
+
+PlanningInformation.prototype.createAllPolygon = function(path)
+{
     var polygon = new google.maps.Polygon({
         paths: path,
         strokeColor: "#eb4034",
@@ -438,6 +468,7 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns){
     });
     polygon.setMap(this.mapView.map);
     this.allPolygon = polygon;
+    return polygon;
 }
 
 PlanningInformation.prototype.searchControlContent = function(){
