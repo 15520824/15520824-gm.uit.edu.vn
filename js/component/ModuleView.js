@@ -932,7 +932,7 @@ tableView.prototype.addInputSearch = function (input) {
             self.updatePagination();
         }
     }
-    input.addEventListener("input", input.onchange);
+    input.oninput = input.onchange;
     if (self.inputElement === undefined)
         self.inputElement = [];
     self.inputElement.push(input);
@@ -2087,20 +2087,13 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
 
     var checkChild = false;
 
-    if (result.tagName !== "TABLE") {
-    if(result.childrenNodes.length!=result.data.child.length)
+    if (data.isCheckUpdate===true)
     {
         var table = result.bodyTable.parentNode;
         table.updateTable(undefined,table.data);
         return;
     }
-    }else
-    if(result.childrenNodes.length!=result.data.length)
-    {
-        var table = result.bodyTable.parentNode;
-        table.updateTable(undefined,table.data);
-        return;
-    }
+
 
     var temp;
     temp = result.childrenNodes[index];

@@ -166,17 +166,15 @@ export function consoleArea(areas) {
     return result;
 }
 
-function consoleWKT(areas){
-    var result = []
+export function consoleWKT(areas){
     var multipolygon = "MULTIPOLYGON("
-    var polygon,isFirst,coordinates;
+    var polygon,isFirst,coordinates,isFirstPolygon="";
     areas.forEach(function(f) {
-            console.log(f)
             if(f._area>(1.1368683772161603e-13)){
                 var vertices = f.vertexlist;
                 if(vertices!==undefined)
                 {
-                    var temp = [];
+                    polygon = "";
                     coordinates = ""
                     isFirst = "";
                     for(var i=0;i<vertices.length;i++)
@@ -185,14 +183,15 @@ function consoleWKT(areas){
                         isFirst = ","
                     }
                     coordinates +=isFirst+vertices[0].x+" "+vertices[0].y;
-                    temp = checkRuleWKT(temp);
+                    coordinates = checkRuleWKT(coordinates);
                     polygon += "(("+coordinates+"))";
                 }
-                multipolygon+=polygon;
+                multipolygon+=isFirstPolygon+polygon;
+                isFirstPolygon = ",";
             } 
     });
-    multipolygon+=")"
-    return result;
+    multipolygon+=")";
+    return multipolygon;
 }
 export function checkRule(poly)
 {

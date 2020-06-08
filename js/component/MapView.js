@@ -1,6 +1,7 @@
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import '../../css/MapView.css';
+import moduleDatabase from '../component/ModuleDatabase';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -69,25 +70,45 @@ export function DetailView(map) {
             placeholder: ""
         }
     });
+    var arr = [];
+    
+    arr.push(moduleDatabase.getModule("states").load());
+    arr.push(moduleDatabase.getModule("districts").load());
+    arr.push(moduleDatabase.getModule("wards").load());
+
     var state = _({
         tag: "selectmenu",
-        class: "pizo-new-realty-location-detail-row-menu"
+        class: "pizo-new-realty-location-detail-row-menu",
+        props:{
+            enableSearch: true
+        }
     });
-    var dictrict = _({
+    var district = _({
         tag: "selectmenu",
-        class: "pizo-new-realty-location-detail-row-menu"
-    })
+        class: "pizo-new-realty-location-detail-row-menu",
+        props:{
+            enableSearch: true
+        }
+    });
     var ward = _({
         tag: "selectmenu",
-        class: "pizo-new-realty-location-detail-row-menu"
-    })
+        class: "pizo-new-realty-location-detail-row-menu",
+        props:{
+            enableSearch: true
+        }
+    });
     var street = _({
         tag: "selectmenu",
         class: "pizo-new-realty-location-detail-row-menu"
-    })
+    });
     var number = _({
         tag: "input",
         class: "pizo-new-realty-location-detail-row-menu"
+    });
+    Promise.all(arr).then(function(){
+        state.items = moduleDatabase.getModule("states").getList("name","name");
+        district.items = moduleDatabase.getModule("districts").getList("name","name");
+        ward.items = moduleDatabase.getModule("wards").getList("name","name");
     })
     var lat,long;
     long = _({
@@ -179,7 +200,7 @@ export function DetailView(map) {
                             }
                         ]
                     },
-                    dictrict
+                    district
                 ]
             },
             {
@@ -276,7 +297,7 @@ export function DetailView(map) {
     })
     temp.input = input;
     temp.number = number;
-    temp.dictrict = dictrict;
+    temp.district = district;
     temp.street = street;
     temp.ward = ward;
     temp.state = state;
@@ -333,7 +354,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
     self.number.value = "";
     self.street.value = "";
     self.state.value = "";
-    self.dictrict.value = "";
+    self.district.value = "";
     self.ward.value = "";
 
     // Get each component of the address from the place details,
@@ -362,11 +383,11 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
                     self.state.value = val;
                     break;
                 case "administrative_area_level_2":
-                    if(!self.dictrict.items.getContainsChild({text:val,value:val}))
+                    if(!self.district.items.getContainsChild({text:val,value:val}))
                     {
-                        self.dictrict.items=self.dictrict.items.concat([{text:val,value:val}])
+                        self.district.items=self.district.items.concat([{text:val,value:val}])
                     }
-                    self.dictrict.value = val;
+                    self.district.value = val;
                     break;
                 case "country":
                     break;

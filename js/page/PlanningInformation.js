@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/PlanningInformation.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate,checkRule,consoleArea,loaddingWheel } from '../component/FormatFunction';
+import { formatDate,checkRule,consoleWKT,loaddingWheel } from '../component/FormatFunction';
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
@@ -89,17 +89,15 @@ PlanningInformation.prototype.getView = function () {
                             return console.error(err.stack);
                         }
                     
-                        var geojson = GeoJSON.parse(dxf)
+                        var wkt = GeoJSON.parse(dxf)
                         var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
                         window.dcel.extractLines();
                         var faces = dcel.internalFaces();
-                        console.log(faces)
-                        geojson = consoleArea(faces);
-                        console.log(geojson)
+                        wkt = consoleWKT(faces);
                         // moduleDatabase.getModule("geometry").add({map:JSON.stringify(geojson)}).then(function(value){
                         //     console.log(value)
                         // });
-                        mapView.map.data.addGeoJson(geojson, {});
+                        self.addWKT(wkt);
                         mapView.map.setCenter(center);
                         mapView.map.data.setStyle({
                             strokeColor: "#000000",
@@ -150,6 +148,18 @@ PlanningInformation.prototype.getView = function () {
                                 ]
                             },
                             hiddenInput,
+                            {
+                                tag: "button",
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                on: {
+                                    click: function (evt) {
+                                        
+                                    }
+                                },
+                                child: [
+                                '<span>' + "Lưu" + '</span>'
+                                ]
+                            },
                             {
                                 tag: "button",
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
@@ -277,16 +287,17 @@ PlanningInformation.prototype.getView = function () {
         map: this.mapView.map
     });
     google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
+        self.removeAllSelect();
         var polygon = e.overlay;
         self.polygon.push(polygon);
-        self.selectPolygon.push(polygon);
-        if(self.selectPolygon.length == 0)
+        self.addEventPolygon(polygon);
+        if(self.editPolygon !== undefined)
         {
-            self.addEventPolygon(polygon);
-        }else
-        {
-            self.selectPolygon.merge(polygon);
+            self.editPolygon.toInActive(self);
         }
+        polygon.toActive(self);
+        polygon.setOptions({editable:true,draggable:true});
+        self.editPolygon = polygon;
        
     })
     this.mapView.map.setOptions({ maxZoom: 30 });
@@ -339,7 +350,6 @@ PlanningInformation.prototype.removeAllSelect = function()
     var self =this;
     if(self.allPolygon!==undefined)
     {
-        console.log(self.allPolygon)
         for(var i = 0;i<self.selectPolygon.length;i++)
         {
             self.selectPolygon[i].setMap(self.mapView.map);
@@ -358,11 +368,15 @@ PlanningInformation.prototype.removeAllSelect = function()
     }
 }
 
+PlanningInformation.prototype.saveCurrentDataMap = function()
+{
+    
+}
+
 PlanningInformation.prototype.addEventPolygon = function(polygon)
 {
     var self = this;
     google.maps.event.addListener(polygon, 'click', function (event) {
-        console.log(self.editPolygon,this)
         if(self.editPolygon===this)
         {
             this.toInActive(self);
@@ -460,11 +474,11 @@ PlanningInformation.prototype.createAllPolygon = function(path)
     })
     google.maps.event.addListener(polygon, 'dragstart', function(e) {
         if(this.dragStart == undefined)
-        this.dragStart = e.latLng.toJSON();
+        this.dragStart = polygon.getBounds().getCenter().toJSON();
     });
     google.maps.event.addListener(polygon, 'dragend', function(e) {
-        var endDrag = e.latLng.toJSON();
-        this.deltaDrag = {lat:endDrag.lat-this.dragStart.lat,lng:endDrag.lng-this.dragStart.lng}
+        var center = polygon.getBounds().getCenter().toJSON();
+        this.deltaDrag = {lat:center.lat-this.dragStart.lat,lng:center.lng-this.dragStart.lng}
     });
     polygon.setMap(this.mapView.map);
     this.allPolygon = polygon;
@@ -665,7 +679,6 @@ PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
     wkt.read(multipolygonWKT);
     var toReturn = [];
     var components = wkt.components;
-    console.log(wkt,this.mapView.map)
     for(var k=0;k<components.length;k++){
         var line = components[k];
         var polygon = new google.maps.Polygon({
@@ -674,7 +687,8 @@ PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
             fillColor:"#adaeaf",
             strokeOpacity: 0.8,
             strokeWeight: 1,
-            map:this.mapView.map
+            map:this.mapView.map,
+            geodesic: true
         })
         this.addEventPolygon(polygon);
         toReturn.push(polygon);
