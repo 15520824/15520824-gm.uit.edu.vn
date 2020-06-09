@@ -11,12 +11,12 @@
   "author": "Pham Quoc Du Thien",
   "license": "ISC",
   "dependencies": {
-    "absol": "^1.13.0",
+    "absol": "^1.13.1",
     "absol-acomp": "^0.8.20"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
     "babel-loader": "^8.0.6",
     "babel-minify-webpack-plugin": "^0.3.1",
     "css-loader": "^2.1.1",

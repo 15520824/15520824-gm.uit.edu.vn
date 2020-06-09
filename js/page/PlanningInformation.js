@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/PlanningInformation.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate,checkRule,consoleWKT,loaddingWheel } from '../component/FormatFunction';
+import { consoleWKT,loaddingWheel ,getGMT,formatDate } from '../component/FormatFunction';
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
@@ -94,11 +94,10 @@ PlanningInformation.prototype.getView = function () {
                         window.dcel.extractLines();
                         var faces = dcel.internalFaces();
                         wkt = consoleWKT(faces);
-                        // moduleDatabase.getModule("geometry").add({map:JSON.stringify(geojson)}).then(function(value){
-                        //     console.log(value)
-                        // });
-                        self.addWKT(wkt);
+                        
+                        self.polygon =  self.polygon.concat(self.addWKT(wkt));
                         mapView.map.setCenter(center);
+                        mapView.map.setZoom(17);
                         mapView.map.data.setStyle({
                             strokeColor: "#000000",
                             strokeOpacity: 0.8,
@@ -121,6 +120,9 @@ PlanningInformation.prototype.getView = function () {
         child: [
             {
                 class: 'absol-single-page-header',
+                style:{
+                    paddingRight:0
+                },
                 child: [
                     {
                         tag: "span",
@@ -153,7 +155,7 @@ PlanningInformation.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        
+                                        self.saveCurrentDataMap();
                                     }
                                 },
                                 child: [
@@ -177,10 +179,16 @@ PlanningInformation.prototype.getView = function () {
                     {
                         tag:"div",
                         class:"pizo-list-realty-page-allinput",
+                        style:{                        
+                            width: "calc(100% - 190px)"
+                        },
                         child:[
                             {
                                 tag:"div",
                                 class:"pizo-list-realty-page-allinput-container",
+                                style:{
+                                    width:"100%"
+                                },
                                 child:[
                                     allinput,
                                     {
@@ -198,43 +206,6 @@ PlanningInformation.prototype.getView = function () {
                                     },
                                 ]
                             },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-page-allinput-filter",
-                                on:{
-                                    click:function(event)
-                                    {
-                                        self.searchControl.show();
-                                    }
-                                },
-                                child:[
-                                    {
-                                        tag: 'filter-ico',
-                                    },
-                                    {
-                                        tag:"span",
-                                        class:"navbar-search__filter-text",
-                                        props:{
-                                            innerHTML:"Lọc"
-                                        }
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-page-number-line",
-                        child: [
-                            input,
-                            {
-                                tag: "span",
-                                class:
-                                    "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
-                                props: {
-                                    innerHTML: "Số dòng"
-                                }
-                            }
                         ]
                     }
                 ]
@@ -245,7 +216,7 @@ PlanningInformation.prototype.getView = function () {
 
     this.$view.addChild(_({
             tag:"div",
-            class:["pizo-list-realty-main"],
+            class:["pizo-list-plan-main"],
             child:[
                 this.searchControl,
                 {
@@ -270,7 +241,6 @@ PlanningInformation.prototype.getView = function () {
         draggable: true
       };
     var drawingManager = new google.maps.drawing.DrawingManager({
-        drawingMode: google.maps.drawing.OverlayType.POLYGON,
         drawingControlOptions: {
           drawingModes: [
             google.maps.drawing.OverlayType.POLYGON
@@ -281,6 +251,7 @@ PlanningInformation.prototype.getView = function () {
         },
         polylineOptions: {
         },
+        draggableCursor:'crosshair',
         rectangleOptions: polyOptions,
         circleOptions: polyOptions,
         polygonOptions: polyOptions,
@@ -336,11 +307,31 @@ PlanningInformation.prototype.getView = function () {
         }
 
     })
+    this.allinput = allinput;
+    var searchBox = new google.maps.places.SearchBox(allinput,{
+        // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
+        types: ['geocode'],
+        componentRestrictions: { country: 'vn' }
+    });
+    google.maps.event.addListener(this.mapView.map, 'bounds_changed', function() {
+        var bounds = self.mapView.map.getBounds();
+        searchBox.setBounds(bounds);
+    });
+    this.searchBox = searchBox;
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+        var places = searchBox.getPlaces();
     
-    moduleDatabase.getModule("geometry",["loadMap.php","addMap.php","updateMap.php","deleteMap.php"]).load().then(function(value){
-        for(var i = 0;i<value.length;i++){
-            self.polygon =  self.polygon.concat(self.addWKT(value[i]["AsText(`map`)"]));
+        // For each place, get the icon, place name, and location.
+        var bounds = new google.maps.LatLngBounds();
+        var place = null;
+        for (var i = 0; place = places[i]; i++) {
+          bounds.extend(place.geometry.location);
         }
+        self.mapView.map.setCenter(bounds.getCenter());
+      });
+    moduleDatabase.getModule("geometry",["loadMap.php","addMap.php","updateMap.php","deleteMap.php"]);
+    moduleDatabase.getModule("geometry_created",["loadCreatedMap.php"]).load().then(function(value){
+        self.filterTime.updateItem(value);
     })
     return this.$view;
 }
@@ -368,9 +359,92 @@ PlanningInformation.prototype.removeAllSelect = function()
     }
 }
 
+PlanningInformation.prototype.createHash = function(arr)
+{
+    var data = [];
+    for(var i = 0;i<arr.length;i++)
+    {
+        this.createHashRow(arr[i],data);
+    }
+    return arr;
+}
+
+PlanningInformation.prototype.createHashRow = function(data,hash)
+{
+    var intLat,intLng,cellLat,cellLng,created;
+    var center = data.getBounds().getCenter().toJSON();
+        intLng = parseInt(center.lng/1);
+        cellLng = Math.ceil(center.lng%1/0.0009009009009009009)-1;
+        intLat = parseInt(center.lat/1);
+        cellLat = Math.ceil(center.lat%1/0.0009009009009009009)-1;
+        cellLng = intLng*10000+cellLng;
+        cellLat = intLat*10000+cellLat;
+        if(data.created!==undefined)
+        {
+            created = data.created;
+            if(hash[created]===undefined)
+            hash[created] = [];
+            if(hash[created][cellLat] == undefined)
+            hash[created][cellLat] = [];
+            if(hash[created][cellLat][cellLng] == undefined)
+            hash[created][cellLat][cellLng] = [];
+            hash[created][cellLat][cellLng].push(data.ToWKT());
+        }else
+        {
+            if(hash[cellLat] == undefined)
+            hash[cellLat] = [];
+            if(hash[cellLat][cellLng] == undefined)
+            hash[cellLat][cellLng] = [];
+            hash[cellLat][cellLng].push(data.ToWKT());
+        }
+    
+}
+
 PlanningInformation.prototype.saveCurrentDataMap = function()
 {
-    
+    var data = [];
+   console.log(this.hash)
+    data = this.createHash(this.polygon);
+    var gmt = getGMT();
+    for(var param in data)
+    {
+        if(isNaN(param/1))
+        {
+            
+        }
+        else
+        {
+            for(var child in data[param])
+            {
+                var arr = data[param][child];
+                var wkt = new Wkt.Wkt();
+                for(var i = 0;i<arr.length;i++)
+                {
+                    if(i===0)
+                    wkt.read(arr[i]);
+                    else
+                    wkt.merge(new Wkt.Wkt(arr[i]));
+                }
+                
+                moduleDatabase.getModule("geometry").add({
+                    cellLat:param,
+                    cellLng:child,
+                    created:gmt,
+                    map:wkt.toString()
+                }).then(function(value){
+
+                });
+
+            }
+            var x = data[param];
+            delete data[param];
+            if(data[gmt]===undefined)
+            data[gmt] = [];
+            data[gmt][param] = x;
+        }
+        
+    }
+
 }
 
 PlanningInformation.prototype.addEventPolygon = function(polygon)
@@ -486,47 +560,48 @@ PlanningInformation.prototype.createAllPolygon = function(path)
 }
 
 PlanningInformation.prototype.searchControlContent = function(){
-    var filterDistrict = _({
-        tag:"div",
-        class:"pizo-list-realty-main-search-control-row-district-street-input",
-        child:[
+    var self =this;
+    var filterTime = _({
+        tag:"selectbox",
+        props:{
+            enableSearch:true
+        },
+        on:{
+            add:function(event)
             {
-                tag:"selectmenu",
-                props:{
-                    enableSearch:true,
-                    items: [{text:"Tất cả", value: 0}]
+                moduleDatabase.getModule("geometry").load({WHERE:"created='"+event.value+"'"}).then(function(value){
+                    for(var i = 0;i<value.length;i++)
+                    {
+                        self.polygon = self.polygon.concat(self.addWKT(value[i])); 
+                    }
+                    var center = value[value.length-1];
+                    self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat/10000)+(center.cellLat%10000-1)*0.0009009009009009009,parseInt(center.cellLng/10000)+(center.cellLng%10000-1)*0.0009009009009009009));
+                    self.mapView.map.setZoom(17);
+                })
+            },
+            remove:function(event)
+            {
+                self.removeAllSelect();
+                for(var i = self.polygon.length-1;i>=0;i--)
+                {
+                    if(self.polygon[i].created === event.value)
+                    {
+                        self.polygon[i].setMap(null);
+                        self.polygon.splice(i,1);
+                    }
                 }
             }
-        ]
-    })
-
-    var filterState = _({
-        tag:"div",
-        class:"pizo-list-realty-main-search-control-row-state-street-input",
-        child:[
-            {
-                tag:"selectmenu",
-                props:{
-                    enableSearch:true,
-                    items: [{text:"Tất cả", value: 0}]
-                }
-            }
-        ]
-    })
-
-    var filterWard = _({
-        tag:"div",
-        class:"pizo-list-realty-main-search-control-row-ward-street-input",
-        child:[
-            {
-                tag:"selectmenu",
-                props:{
-                    enableSearch:true,
-                    items:[{text:"Tất cả", value: 0}]
-                }
-            }
-        ]
+        }
     });
+
+    filterTime.updateItem = function(value){
+        var list = [];
+        for(var i = 0;i<value.length;i++)
+        {
+            list.push({text:formatDate(value[i].created,true,true,true,true,true,true),value:value[i].created});
+        }
+        this.items = list;
+    }
 
     var content = _({
         tag:"div",
@@ -544,71 +619,29 @@ PlanningInformation.prototype.searchControlContent = function(){
                 child:[
                     {
                         tag:"div",
-                        class:"pizo-list-realty-main-search-control-row",
+                        class:"pizo-list-plan-main-search-control-row",
                         child:[
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-street",
+                                class:"pizo-list-plan-main-search-control-row-selectbox-plan",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-street-label",
+                                        class:"pizo-list-plan-main-search-control-row-selectbox-plan-label",
                                         props:{
-                                            innerHTML:"Tỉnh/TP"
+                                            innerHTML:"Lần commit"
                                         }
-                                    },
-                                    filterState
-                                ]
-
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-district-street",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-district-street-label",
-                                        props:{
-                                            innerHTML:"Quận/Huyện"
-                                        }
-                                    },
-                                    filterDistrict
-                                ]
-
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-ward-street",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-ward-street-label",
-                                        props:{
-                                            innerHTML:"Phường/Xã"
-                                        }
-                                    },
-                                    filterWard
-                                ]
-
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-button",
-                                child:[
-                                    {
-                                        tag: "button",
-                                        class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-                                                temp.reset();
-                                            }
-                                        },
-                                        child: [
-                                        '<span>' + "Thiết lập lại" + '</span>'
-                                        ]
                                     }
                                 ]
+                                
                             },
+                            {
+                                tag:"div",
+                                class:"pizo-list-realty-main-search-control-row-selectbox-plan-input",
+                                child:[
+                                    filterTime
+                                ]
+                            }
                         ]
                     }
                 ]
@@ -628,6 +661,8 @@ PlanningInformation.prototype.searchControlContent = function(){
             content
         ]
     })
+
+    this.filterTime = filterTime;
 
 
     temp.show = function()
@@ -675,6 +710,14 @@ PlanningInformation.prototype.searchControlContent = function(){
 }
 
 PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
+    if(this.hash === undefined)
+    this.hash = [];
+    var created;
+    if(typeof multipolygonWKT == "object")
+    {
+        created = multipolygonWKT["created"];
+        multipolygonWKT = multipolygonWKT["AsText(`map`)"];
+    }
     var wkt = new Wkt.Wkt();
     wkt.read(multipolygonWKT);
     var toReturn = [];
@@ -691,7 +734,10 @@ PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
             geodesic: true
         })
         this.addEventPolygon(polygon);
+        if(created!==undefined)
+        polygon.created = created;
         toReturn.push(polygon);
+        this.createHashRow(polygon,this.hash);
     }
         
     return toReturn;  

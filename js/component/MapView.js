@@ -368,7 +368,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
                     self.number.value = val;
                     break;
                 case "route":
-                    if(!self.street.items.getContainsChild({text:val,value:val}))
+                    if(!getContainsChild(self.street.items,{text:val,value:val}))
                     {
                         self.street.items=self.street.items.concat([{text:val,value:val}])
                     }
@@ -376,14 +376,14 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
                     textResult = textResult.replace(textResult.slice(0,textResult.indexOf(val+", ")+val.length+2),"");
                     break;
                 case "administrative_area_level_1":
-                    if(!self.state.items.getContainsChild({text:val,value:val}))
+                    if(!getContainsChild(self.state.items,{text:val,value:val}))
                     {
                         self.state.items=self.state.items.concat([{text:val,value:val}])
                     }
                     self.state.value = val;
                     break;
                 case "administrative_area_level_2":
-                    if(!self.district.items.getContainsChild({text:val,value:val}))
+                    if(!getContainsChild(self.district.items,{text:val,value:val}))
                     {
                         self.district.items=self.district.items.concat([{text:val,value:val}])
                     }
@@ -395,18 +395,18 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
         }
     }
     var val  = textResult.slice(0,textResult.indexOf(", "));
-    if(!self.ward.items.getContainsChild({text:val,value:val}))
+    if(!getContainsChild(self.ward.items,{text:val,value:val}))
     {
         self.ward.items=self.ward.items.concat([{text:val,value:val}]);
     }
     self.ward.value = val;
 }
 
-Array.prototype.getContainsChild = function(value)
+function getContainsChild(arr, value)
 {
-    for(var i = 0;i<this.length;i++)
+    for(var i = 0;i<arr.length;i++)
     {
-        if(this[i].value  == value.value)
+        if(arr[i].value  == value.value)
         return true;
     }
     return false;

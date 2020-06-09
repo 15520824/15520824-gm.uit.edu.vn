@@ -28,20 +28,41 @@ function DataStructure(hostDatabase ,name ,listFilePHP = ["load.php","add.php","
 
 DataStructure.prototype.load = function(data = [],isLoaded = false){
     var self = this;
-    if(isLoaded == false&&self.data!==undefined)
+    if(data.WHERE!==undefined&&self.data!==undefined)
+    {
+        if(isLoaded == false&&self.data[data.WHERE]!==undefined)
+        return Promise.resolve(self.data[data.WHERE]);
+
+        return new Promise(function(resolve,reject){
+            self.queryData(self.phpLoader,data).then(function(value){
+                if(self.data[data.WHERE==undefined])
+                self.data[data.WHERE] = [];
+                self.data[data.WHERE] = value;
+                resolve(value);
+           })
+           .catch(function(error){
+               reject(error);
+               console.error(error);
+           })
+        }) 
+    }else
+    {
+        if(isLoaded == false&&self.data!==undefined)
         return Promise.resolve(self.data);
 
-    return new Promise(function(resolve,reject){
-        self.queryData(self.phpLoader,data).then(function(value){
-            self.data = value;
-            self.getLibary();
-            resolve(value);
-       })
-       .catch(function(error){
-           reject(error);
-           console.error(error);
-       })
-    }) 
+        return new Promise(function(resolve,reject){
+            self.queryData(self.phpLoader,data).then(function(value){
+                self.data = value;
+                self.getLibary();
+                resolve(value);
+        })
+        .catch(function(error){
+            reject(error);
+            console.error(error);
+        })
+        }) 
+    }
+   
 }
 
 DataStructure.prototype.getLibary = function(param,formatFunction,isArray = false,isLoaded = false){
