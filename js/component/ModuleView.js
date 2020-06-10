@@ -926,11 +926,17 @@ tableView.prototype.addInputSearch = function (input) {
     var self = this;
     self.hashTable = new HashTable(self.data);
     input.onchange = function (event, needUpdate = false) {
-        if (input.value !== input.lastInputSearch || needUpdate == true) {
-            self.checkTableView(input.value);
-            input.lastInputSearch = input.value;
-            self.updatePagination();
+        if (this._updateTimeOut !== undefined) {
+            clearTimeout(this._updateTimeOut);
+            this._updateTimeOut = undefined;
         }
+        this._updateTimeOut = setTimeout(function () {
+            if (input.value !== input.lastInputSearch || needUpdate == true) {
+                self.checkTableView(input.value);
+                input.lastInputSearch = input.value;
+                self.updatePagination();
+            }
+        }.bind(this), 500);
     }
     input.oninput = input.onchange;
     if (self.inputElement === undefined)

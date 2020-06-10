@@ -402,18 +402,45 @@ PlanningInformation.prototype.createHashRow = function(data,hash)
 
 PlanningInformation.prototype.saveCurrentDataMap = function()
 {
-    var data = [];
-   console.log(this.hash)
-    data = this.createHash(this.polygon);
+     var data = this.createHash(this.polygon);
     var gmt = getGMT();
     for(var param in data)
     {
         if(isNaN(param/1))
         {
-            
+         for(var cellLat in data[param])
+         {
+             var dataLat = data[param][cellLat];
+             for(var cellLng in  dataLat)
+             {
+                if(this.hash[param]===undefined||this.hash[param][cellLat]===undefined||this.hash[param][cellLat][cellLng]===undefined)
+                {
+                    var arr = dataLat[cellLng];
+                    var wkt = new Wkt.Wkt();
+                    for(var i = 0;i<arr.length;i++)
+                    {
+                        if(i===0)
+                        wkt.read(arr[i]);
+                        else
+                        wkt.merge(new Wkt.Wkt(arr[i]));
+                    }
+                    
+                    moduleDatabase.getModule("geometry").add({
+                        cellLat:param,
+                        cellLng:child,
+                        created:gmt,
+                        map:wkt.toString()
+                    })
+                }else
+                {
+                    
+                }
+             }
+         }   
         }
         else
         {
+            var promiseAll = [];
             for(var child in data[param])
             {
                 var arr = data[param][child];
@@ -425,26 +452,28 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
                     else
                     wkt.merge(new Wkt.Wkt(arr[i]));
                 }
-                
-                moduleDatabase.getModule("geometry").add({
+                promiseAll.push(moduleDatabase.getModule("geometry").add({
                     cellLat:param,
                     cellLng:child,
                     created:gmt,
                     map:wkt.toString()
-                }).then(function(value){
-
-                });
-
+                }))
             }
-            var x = data[param];
-            delete data[param];
-            if(data[gmt]===undefined)
-            data[gmt] = [];
-            data[gmt][param] = x;
+            Promise.all(promiseAll).then(function(values,param){
+                return function()
+                {
+                    var x = data[param];
+                    delete data[param];
+                    if(data[gmt]===undefined)
+                    data[gmt] = [];
+                    data[gmt][param] = x;
+                }
+                
+            }(param))
         }
         
     }
-
+    this.hash = data;
 }
 
 PlanningInformation.prototype.addEventPolygon = function(polygon)
