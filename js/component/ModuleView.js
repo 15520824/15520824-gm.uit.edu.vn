@@ -961,6 +961,25 @@ tableView.prototype.addFilter = function (input, index) {
 tableView.prototype.checkTableView = function (value) {
     var self = this;
     self.hashTable.getKey(value);
+    self.data.sort(function(a,b){
+        if(a.exactly === undefined)
+        {
+            return -1;
+        }
+        if(b.exactly === undefined)
+        {
+            return 1;
+        }
+        if(a.exactly < b.exactly)
+        {
+            return -1;
+        }
+        if(a.exactly > b.exactly)
+        {
+            return 1;
+        }
+        return 0;
+    })
 }
 
 tableView.prototype.checkTableViewFilter = function (value, index) {

@@ -77,37 +77,41 @@ HashTable.prototype.getKey = function(key){
                 check[row] = [];
             Loop2: for(var column in rowElement)
             {
+                if(check[row][column]===undefined&&i!==0)
+                {
+                    continue;
+                }
+                    
                 objectElement = rowElement[column];
                 if(Array.isArray(objectElement))
                 for(var j = 0;j<objectElement.length;j++)
                 {
                         if(check[row][column]===undefined){
-                            if(i==0)
-                            {
                                 check[row][column] =  objectElement[j];
                                 check[row][column].indexCharacter = key.length-1;
+                                check[row][column].exactly = parseFloat("0."+objectElement[j][0]);
+                        }
+                        else {
+                            if(objectElement[j][0]>check[row][column][0])
+                            {
+                                if(check[row][column].indexCharacter!==key.length-i)
+                                {
+                                    delete check[row][column];
+                                    continue Loop2;
+                                }else
+                                {
+                                    var tempIndex = check[row][column].indexCharacter;
+                                    var exactly = check[row][column].exactly +objectElement[j][0]-check[row][column][0];
+                                    check[row][column] =  objectElement[j];
+                                    check[row][column].indexCharacter = tempIndex-1;
+                                    check[row][column].exactly = exactly;
+                                }
                             }else
                             {
-                                objectElement[j][1].isSearch = undefined;
-                                objectElement[j][1].confirm = undefined;
-                                continue Loop1;
+                                continue;
                             }
                             
                         }
-                        else if(objectElement[j][0]>check[row][column][0]){
-                            if(check[row][column].indexCharacter!==key.length-i)
-                            {
-                                delete check[row][column];
-                                objectElement[j][1].isSearch = undefined;
-                                objectElement[j][1].confirm = undefined;
-                                continue Loop1;
-                            }else
-                            {
-                                var tempIndex = check[row][column].indexCharacter;
-                                check[row][column] =  objectElement[j];
-                                check[row][column].indexCharacter = tempIndex-1;
-                            }
-                           
                         if(check[row][column].indexCharacter==0){
                             objectElement[j][1].confirm = true;
                             var arrParent = row.split("_");
@@ -118,12 +122,18 @@ HashTable.prototype.getKey = function(key){
                                 for(var param in check[stringCheck]){
                                     if(this.data.isFilter){
                                         if(check[stringCheck][param][1].isFilter === true)
+                                        {
                                             check[stringCheck][param][1].confirm = true;
+                                            check[stringCheck][param][1].exactly = check[stringCheck][param].exactly;
+                                        }
                                         else
                                             check[stringCheck][param][1].confirm = undefined;
                                     }else
                                         if(check[stringCheck][param][1].isFilter === undefined)
+                                        {
                                             check[stringCheck][param][1].confirm = true;
+                                            check[stringCheck][param][1].exactly = check[stringCheck][param].exactly;
+                                        }
                                         else
                                             check[stringCheck][param][1].confirm = undefined;
 
@@ -133,14 +143,10 @@ HashTable.prototype.getKey = function(key){
                                 stringCheck+="_"+arrParent[k++];
                             }
                             continue Loop1;
+                        }else
+                        {
+                            continue Loop2;
                         }
-                        continue Loop2;
-                    }
-                    else{
-                        objectElement[j][1].isSearch = undefined;
-                        objectElement[j][1].confirm = undefined;
-                        continue;
-                    }
                 }
             }
         }
