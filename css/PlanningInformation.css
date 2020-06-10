@@ -29,6 +29,7 @@
 
 .pizo-list-realty-main-search-control-row-selectbox-plan-input>div{
     width: 100%;
+    min-width: unset !important;
 }
 
 .pizo-list-plan-main-search-control-row{

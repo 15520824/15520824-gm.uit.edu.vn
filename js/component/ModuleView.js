@@ -571,9 +571,10 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical, 
     result.dragVertical = dragVertical;
     result.dragHorizontal = dragHorizontal;
 
-    result.updatePagination = function (number = result.tempIndexRow) {
+    result.updatePagination = function (number = result.tempIndexRow,isRedraw = true) {
         result.tempIndexRow = number;
         if (result.paginationElement !== undefined) {
+            if(isRedraw)
             result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
             var pagination = result.pagination(result.tempIndexRow);
             result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);

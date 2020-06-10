@@ -202,13 +202,19 @@ DataStructure.prototype.add = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpAdder,data).then(function(value){
-            data.id = value;
-            for(var param in self.Libary)
+            if(self.data.length==0&&self.data)
             {
-                if(typeof self.Libary[param]!= "function")
-                self.Libary[param].formatFunction(data,param);
+
+            }else
+            {
+                data.id = value;
+                for(var param in self.Libary)
+                {
+                    if(typeof self.Libary[param]!= "function")
+                    self.Libary[param].formatFunction(data,param);
+                }
+                self.data.push(data);  
             }
-            self.data.push(data);
             resolve(value);
         }).catch(function(err){
             reject(err);
@@ -221,17 +227,20 @@ DataStructure.prototype.update = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpUpdater,data).then(function(value){
-            var temp = self.Libary["id"][data.id];
-            for(var param in data)
+            if(data.id!==undefined)
             {
-                if(self.Libary[param]!==undefined&&typeof self.Libary[param]!= "function"){
-                    if(temp[param] == data[param])
-                        continue;
-                    self.Libary[param].deleteFunction(temp,param);
+                var temp = self.Libary["id"][data.id];
+                for(var param in data)
+                {
+                    if(self.Libary[param]!==undefined&&typeof self.Libary[param]!= "function"){
+                        if(temp[param] == data[param])
+                            continue;
+                        self.Libary[param].deleteFunction(temp,param);
+                        temp[param] = data[param];
+                        self.Libary[param].formatFunction(temp,param);
+                    }else
                     temp[param] = data[param];
-                    self.Libary[param].formatFunction(temp,param);
-                }else
-                temp[param] = data[param];
+                }
             }
             resolve(temp);
         }).catch(function(err){
@@ -246,13 +255,16 @@ DataStructure.prototype.delete = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpDeleter,data).then(function(value){
-            var temp = self.Libary["id"][data.id];
-            for(var param in self.Libary)
+            if(data.id!==undefined)
             {
-                if(typeof self.Libary[param]!= "function")
-                self.Libary[param].deleteFunction(temp,param);
+                var temp = self.Libary["id"][data.id];
+                for(var param in self.Libary)
+                {
+                    if(typeof self.Libary[param]!= "function")
+                    self.Libary[param].deleteFunction(temp,param);
+                }
+                self.data.splice(self.data.indexOf(temp),1);
             }
-            self.data.splice(self.data.indexOf(temp),1);
             resolve();
         }).catch(function(err){
             reject(err);

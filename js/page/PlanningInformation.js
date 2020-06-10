@@ -18,6 +18,7 @@ function PlanningInformation() {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
+    this.hash = [];
 }
 
 PlanningInformation.prototype.setContainer = function(parent)
@@ -65,6 +66,8 @@ PlanningInformation.prototype.getView = function () {
         on:{
             change: function(event)
             {  
+                if(this.files.length==0)
+                    return;
                 var file = this.files[0];
                 var loadding = new loaddingWheel();
                 var reader = new FileReader();
@@ -366,7 +369,7 @@ PlanningInformation.prototype.createHash = function(arr)
     {
         this.createHashRow(arr[i],data);
     }
-    return arr;
+    return data;
 }
 
 PlanningInformation.prototype.createHashRow = function(data,hash)
@@ -395,7 +398,7 @@ PlanningInformation.prototype.createHashRow = function(data,hash)
             hash[cellLat] = [];
             if(hash[cellLat][cellLng] == undefined)
             hash[cellLat][cellLng] = [];
-            hash[cellLat][cellLng].push(data.ToWKT());
+            hash[cellLat][cellLng].push(data);
         }
     
 }
@@ -406,7 +409,7 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
     var gmt = getGMT();
     for(var param in data)
     {
-        if(isNaN(param/1))
+        if(isNaN(param/1)===true)
         {
          for(var cellLat in data[param])
          {
@@ -426,14 +429,43 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
                     }
                     
                     moduleDatabase.getModule("geometry").add({
-                        cellLat:param,
-                        cellLng:child,
-                        created:gmt,
+                        cellLat:cellLat,
+                        cellLng:cellLng,
+                        created:param,
                         map:wkt.toString()
                     })
                 }else
                 {
-                    
+                    var arr = dataLat[cellLng];
+                    var wkt = new Wkt.Wkt();
+                    for(var i = 0;i<arr.length;i++)
+                    {
+                        if(i===0)
+                        wkt.read(arr[i]);
+                        else
+                        wkt.merge(new Wkt.Wkt(arr[i]));
+                    }
+
+                    var arr = this.hash[param][cellLat][cellLng];
+                    var wkt2 = new Wkt.Wkt();
+                    for(var i = 0;i<arr.length;i++)
+                    {
+                        if(i===0)
+                        wkt2.read(arr[i]);
+                        else
+                        wkt2.merge(new Wkt.Wkt(arr[i]));
+                    }
+
+                    if(wkt.toString()!==wkt2.toString())
+                    {
+                        moduleDatabase.getModule("geometry").update({
+                            cellLat:cellLat,
+                            cellLng:cellLng,
+                            created:param,
+                            map:wkt.toString()
+                        });
+                    }
+                    delete this.hash[param][cellLat];
                 }
              }
          }   
@@ -447,10 +479,13 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
                 var wkt = new Wkt.Wkt();
                 for(var i = 0;i<arr.length;i++)
                 {
+                    var stringWKT = arr[i].ToWKT();
                     if(i===0)
-                    wkt.read(arr[i]);
+                    wkt.read(stringWKT)
                     else
-                    wkt.merge(new Wkt.Wkt(arr[i]));
+                    wkt.merge(new Wkt.Wkt(stringWKT));
+                    arr[i].created = gmt;
+                    arr[i] = stringWKT;
                 }
                 promiseAll.push(moduleDatabase.getModule("geometry").add({
                     cellLat:param,
@@ -459,20 +494,63 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
                     map:wkt.toString()
                 }))
             }
-            Promise.all(promiseAll).then(function(values,param){
-                return function()
-                {
-                    var x = data[param];
-                    delete data[param];
-                    if(data[gmt]===undefined)
-                    data[gmt] = [];
-                    data[gmt][param] = x;
-                }
-                
-            }(param))
+            var x = data[param];
+            delete data[param];
+            if(data[gmt]===undefined)
+            data[gmt] = [];
+            data[gmt][param] = x;
+            var date = formatDate(gmt,true,true,true,true,true);
+            if(this.filterTime.values.indexOf(gmt)==-1)
+            {
+                this.filterTime.items.push({text:date,value:gmt});
+                this.filterTime.items = this.filterTime.items;
+                this.filterTime.values.push(gmt);
+                this.filterTime.values = this.filterTime.values;
+            }
+           
         }
         
     }
+    var promiseAllDelete = [];
+    for(var param in this.hash)
+    {
+        if(isNaN(param/1))
+        {
+            for(var ortherLat in  this.hash[param])
+            {
+                for(var ortherLng in this.hash[param][ortherLat])
+                promiseAllDelete.push(moduleDatabase.getModule("geometry").delete({
+                    cellLat:ortherLat,
+                    cellLng:ortherLng,
+                    created:param
+                }))
+            }
+        }
+        if(data[param]===undefined)
+        {
+            for(var i = 0;i<this.filterTime.values.length;i++)
+            {
+                if(this.filterTime.values[i] == param)
+                {
+                    this.filterTime.values.splice(i,1);
+                    this.filterTime.values = this.filterTime.values;
+                    break;
+                }
+            }
+            for(var i = 0;i<this.filterTime.items.length;i++)
+            {
+                if(this.filterTime.items[i].value == param)
+                {
+                    this.filterTime.items.splice(i,1);
+                    this.filterTime.items = this.filterTime.items;
+                    break;
+                }
+            }
+        }
+    }
+    Promise.all(promiseAllDelete).then(function(values){
+
+    })
     this.hash = data;
 }
 
@@ -598,15 +676,21 @@ PlanningInformation.prototype.searchControlContent = function(){
         on:{
             add:function(event)
             {
-                moduleDatabase.getModule("geometry").load({WHERE:"created='"+event.value+"'"}).then(function(value){
-                    for(var i = 0;i<value.length;i++)
-                    {
-                        self.polygon = self.polygon.concat(self.addWKT(value[i])); 
-                    }
-                    var center = value[value.length-1];
-                    self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat/10000)+(center.cellLat%10000-1)*0.0009009009009009009,parseInt(center.cellLng/10000)+(center.cellLng%10000-1)*0.0009009009009009009));
-                    self.mapView.map.setZoom(17);
-                })
+                if(self.hash[event.value]===undefined){
+                    moduleDatabase.getModule("geometry").load({WHERE:"created='"+event.value+"'"}).then(function(value){
+                        for(var i = 0;i<value.length;i++)
+                        {
+                            self.polygon = self.polygon.concat(self.addWKT(value[i])); 
+                        }
+                        var center = value[value.length-1];
+                        self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat/10000)+(center.cellLat%10000-1)*0.0009009009009009009,parseInt(center.cellLng/10000)+(center.cellLng%10000-1)*0.0009009009009009009));
+                        self.mapView.map.setZoom(17);
+                    })
+                }else
+                {
+                    self.polygon = self.polygon.concat(self.addCurrentWKT(event.value)); 
+                }
+               
             },
             remove:function(event)
             {
@@ -769,6 +853,40 @@ PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
         this.createHashRow(polygon,this.hash);
     }
         
+    return toReturn;  
+}
+
+PlanningInformation.prototype.addCurrentWKT = function(created) {
+    var toReturn = [];
+    for(var cellLat in this.hash[created])
+    {
+        for(var cellLng in this.hash[created][cellLat])
+        {
+            var arr = this.hash[created][cellLat][cellLng];
+            for(var i = 0;i<arr.length;i++)
+            {
+                var wkt = new Wkt.Wkt();
+                wkt.read(arr[i]);
+                var components = wkt.components;
+                var polygon = new google.maps.Polygon({
+                    paths: components,
+                    strokeColor: "#000000",
+                    fillColor:"#adaeaf",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 1,
+                    map:this.mapView.map,
+                    geodesic: true
+                })
+                this.addEventPolygon(polygon);
+                if(created!==undefined)
+                polygon.created = created;
+                toReturn.push(polygon);
+            }
+        }
+    }
+
+    this.mapView.map.setCenter(new google.maps.LatLng(parseInt(cellLat/10000)+(cellLat%10000-1)*0.0009009009009009009,parseInt(cellLng/10000)+(cellLng%10000-1)*0.0009009009009009009));
+    this.mapView.map.setZoom(17);   
     return toReturn;  
 }
 
