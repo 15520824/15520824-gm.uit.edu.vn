@@ -124,36 +124,34 @@ HashTable.prototype.getKey = function(key,index){
                             var stringCheck = arrParent[k];
                             while(k<arrParent.length)
                             {
-                                for(var param in check[stringCheck]){
-                                    if(this.data.isFilter){
-                                        if(check[stringCheck][param][1].isFilter === true)
-                                        {
-                                            check[stringCheck][param][1].confirm = true;
-                                            if(check[stringCheck][param][1].exactly===undefined)
-                                            check[stringCheck][param][1].exactly = check[stringCheck][param].tempExactly;
-                                            else if(check[stringCheck][param][1].exactly>check[stringCheck][param].tempExactly)
-                                            check[stringCheck][param][1].exactly = check[stringCheck][param].tempExactly;
-                                        }
-                                        else
-                                            check[stringCheck][param][1].confirm = undefined;
-                                    }else
-                                        if(check[stringCheck][param][1].isFilter === undefined)
-                                        {
-                                            check[stringCheck][param][1].confirm = true;
-                                            if(check[stringCheck][param][1].exactly===undefined)
-                                            check[stringCheck][param][1].exactly = check[stringCheck][param].tempExactly;
-                                            else if(check[stringCheck][param][1].exactly>check[stringCheck][param].tempExactly)
-                                            check[stringCheck][param][1].exactly = check[stringCheck][param].tempExactly;
-                                        }
-                                        else
-                                            check[stringCheck][param][1].confirm = undefined;
+                                if(this.data.isFilter){
+                                    if(check[stringCheck][column][1].isFilter === true)
+                                    {
+                                        check[stringCheck][column][1].confirm = true;
+                                        if(check[stringCheck][column][1].exactly===undefined)
+                                        check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
+                                        else if(check[stringCheck][column][1].exactly>check[stringCheck][column].tempExactly)
+                                        check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
+                                    }
+                                    else
+                                        check[stringCheck][column][1].confirm = undefined;
+                                }else
+                                    if(check[stringCheck][column][1].isFilter === undefined)
+                                    {
+                                        check[stringCheck][column][1].confirm = true;
+                                        if(check[stringCheck][column][1].exactly===undefined)
+                                        check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
+                                        else if(check[stringCheck][column][1].exactly>check[stringCheck][column].tempExactly)
+                                        check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
+                                    }
+                                    else
+                                        check[stringCheck][column][1].confirm = undefined;
 
-                                    check[stringCheck][param][1].isSearch = true;
-                                    break;
-                                }
+                                check[stringCheck][column][1].isSearch = true;
                                 stringCheck+="_"+arrParent[k++];
                             }
                             continue Loop1;
+
                         }else
                         {
                             objectElement[j][1].isSearch = undefined;

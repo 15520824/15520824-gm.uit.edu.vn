@@ -333,7 +333,7 @@ PlanningInformation.prototype.getView = function () {
         self.mapView.map.setCenter(bounds.getCenter());
       });
     moduleDatabase.getModule("geometry",["loadMap.php","addMap.php","updateMap.php","deleteMap.php"]);
-    moduleDatabase.getModule("geometry_created",["loadCreatedMap.php"]).load().then(function(value){
+    moduleDatabase.getModule("geometry_created",["loadCreatedMap.php"]).load(undefined,true).then(function(value){
         self.filterTime.updateItem(value);
     })
     return this.$view;
