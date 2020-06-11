@@ -187,11 +187,6 @@ ListDistrict.prototype.getView = function () {
         docTypeMemuProps = {
             items: [
                 {
-                    text: 'Thêm',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:0,
-                },
-                {
                     text: 'Sửa',
                     icon: 'span.mdi.mdi-text-short',
                     value:1,
@@ -206,9 +201,6 @@ ListDistrict.prototype.getView = function () {
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
-                case 0:
-                    self.add(data.original.id,row);
-                    break;
                 case 1:
                     self.edit(data,parent,index);
                     break;
@@ -342,13 +334,12 @@ ListDistrict.prototype.searchControlContent = function(){
     self.listDistrictElement = _({
         tag:"selectmenu",
         props:{
-            enableSearch:true,
             items:[
                 {text:"Tất cả",value:0},
                 {text:"Thị xã",value:"Thị xã"},
                 {text:"Huyện",value:"Huyện"},
                 {text:"Quận",value:"Quận"},
-                {text:"Thành phố",value:"Thành phố"},
+                {text:"Thành phố",value:"Thành phố"}
             ]
         }
     });

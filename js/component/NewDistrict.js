@@ -201,12 +201,17 @@ NewDistrict.prototype.getView = function (data) {
 
 NewDistrict.prototype.getDataSave = function() {
     
-    return {
+    var temp = {
         id:this.data===undefined?undefined:this.data.original.id,
         name:this.name.value,
         type:this.type.value,
         stateid:this.state.value
     }
+    if(this.data!==undefined)
+    {
+        temp.id = this.data.original.id;
+    }
+    return temp;
 }
 
 NewDistrict.prototype.createPromise = function()

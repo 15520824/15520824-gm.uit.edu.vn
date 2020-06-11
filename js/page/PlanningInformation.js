@@ -465,7 +465,7 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
                             map:wkt.toString()
                         });
                     }
-                    delete this.hash[param][cellLat];
+                    delete this.hash[param][cellLat][cellLng];
                 }
              }
          }   

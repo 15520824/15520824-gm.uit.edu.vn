@@ -1444,7 +1444,6 @@ NewRealty.prototype.detructView = function () {
     this.inputFloor = $('input.pizo-new-realty-dectruct-content-area-floor',temp);
     this.censorship = $('div.pizo-new-realty-detruct-content-censorship',temp);
     
-    console.log(this.data)
     if(this.data!==undefined)
     {
         var original = this.data.original;
@@ -1479,7 +1478,7 @@ NewRealty.prototype.detructView = function () {
 }
 
 NewRealty.prototype.getDataSave = function(){
-    return {
+    var temp = {
         height:this.inputHeight.value*this.inputUnitHeight.value,
         width:this.inputWidth.value*this.inputUnitWidth.value,
         landarea:this.inputZone1.value*this.inputUnitZone1.value,
@@ -1503,6 +1502,9 @@ NewRealty.prototype.getDataSave = function(){
         pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
         censorship:this.censorship.checked==true?1:0
     }
+    if(this.data!==undefined)
+    temp.id == this.data.original.id;
+    return temp;
 }
 
 NewRealty.prototype.utilityView = function () {

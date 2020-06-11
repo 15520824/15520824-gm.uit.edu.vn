@@ -937,7 +937,7 @@ tableView.prototype.addInputSearch = function (input,index) {
                 input.lastInputSearch = input.value;
                 self.updatePagination();
             }
-        }.bind(this), 200);
+        }.bind(this), 500);
     }
     input.oninput = input.onchange;
     if (self.inputElement === undefined)
@@ -945,15 +945,21 @@ tableView.prototype.addInputSearch = function (input,index) {
     self.inputElement.push(input);
 }
 
-tableView.prototype.addFilter = function (input, index) {
-    console.log(input)
+tableView.prototype.addFilter = function (input, index, functionChange) {
     var self = this;
     self.hashTableFilter = new HashTableFilter(self.data);
-
-    input.on("change", function (event, needUpdate = false) {
-        self.checkTableViewFilter(input.value, index);
-        self.updatePagination();
-    })
+    var functionFilter;
+    if(functionChange===undefined)
+    {
+        functionFilter = function (event, needUpdate = false) {
+            self.checkTableViewFilter(input.value, index);
+            self.updatePagination();
+        }
+    }else
+    {
+        functionFilter = functionChange
+    }
+    input.on("change", functionFilter)
     if (self.inputFilter === undefined)
         self.inputFilter = [];
     self.inputFilter.push([input,index]);
@@ -965,12 +971,14 @@ tableView.prototype.checkTableView = function (value,index) {
     self.data.sort(function(a,b){
         if(a.exactly === undefined)
         {
+            if(b.exactly === undefined)
+                return 0;
             return -1;
         }
+
         if(b.exactly === undefined)
-        {
             return 1;
-        }
+        
         if(a.exactly < b.exactly)
         {
             return -1;

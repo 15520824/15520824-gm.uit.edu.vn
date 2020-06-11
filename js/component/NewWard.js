@@ -103,6 +103,41 @@ NewWard.prototype.getView = function (data) {
         ]
     });
 
+    self.listStateElement = _({
+        tag:"selectmenu",
+        class:"pizo-new-state-container-nation-container-input",
+        props:{
+            enableSearch:true
+        },
+        on:{
+            change:function(event){
+                self.listWardElement.items = self.checkStateWard[this.value];
+            }
+        }
+    });
+    self.listWardElement = _({
+        tag:"selectmenu",
+        class:"pizo-new-ward-container-district-container-input",
+        props:{
+            enableSearch:true
+        }
+    });
+    moduleDatabase.getModule("districts").load().then(function(listWard){
+        moduleDatabase.getModule("states").load().then(function(listState){
+            self.setListParamState(listState);
+            self.listStateElement.items = self.listState;
+            self.setListParamWard(listWard);
+            self.listWardElement.items = self.listWard;
+            if(self.data!==undefined)
+            {
+                self.listWardElement.value = self.data.original.districtid;
+                self.listWardElement.emit("change");
+                var checkid = parseInt(self.checkState[self.checkWard[self.listWardElement.value].stateid].id);
+                    self.listStateElement.value = checkid;
+            }
+        })
+    })
+
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-realty-main"],
@@ -167,16 +202,7 @@ NewWard.prototype.getView = function (data) {
                                                 innerHTML:"Quận/Huyện"
                                             }
                                         },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-ward-container-district-container-input",
-                                            on:{
-                                                
-                                            },
-                                            props:{
-                                                enableSearch:true
-                                            }
-                                        }
+                                        self.listWardElement
                                     ]
                                 },
                                 {
@@ -190,13 +216,7 @@ NewWard.prototype.getView = function (data) {
                                                 innerHTML:"Tỉnh/Thành phố"
                                             }
                                         },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-state-container-nation-container-input",
-                                            props:{
-                                                enableSearch:true
-                                            }
-                                        }
+                                        self.listStateElement
                                     ]
                                 }
                             ]
@@ -209,25 +229,44 @@ NewWard.prototype.getView = function (data) {
     this.createPromise();
     this.name = $('input.pizo-new-state-container-name-container-input',this.$view);
     this.type = $('div.pizo-new-state-container-type-container-input',this.$view);
-    this.state = $('div.pizo-new-state-container-nation-container-input',this.$view);
+    this.district = self.listWardElement;
     
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;
         this.type.value = this.data.original.type;
-        this.state.value = this.data.original.stateid;
     }
     return this.$view;
 }
 
+NewWard.prototype.setListParamWard = function(value)
+{
+    this.checkWard = moduleDatabase.getModule("districts").getLibary("id");
+
+    this.checkStateWard = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
+        return {text:data.name,value:data.name+"_"+data.id}
+    },true);
+    this.listWard = moduleDatabase.getModule("districts").getList("name","id");
+}
+
+NewWard.prototype.setListParamState = function()
+{
+    this.checkState = moduleDatabase.getModule("states").getLibary("id");
+    this.listState = moduleDatabase.getModule("states").getList("name","id");
+    this.isLoaded = true;
+}
+
 NewWard.prototype.getDataSave = function() {
     
-    return {
+    var temp = {
         id:this.data===undefined?undefined:this.data.original.id,
         name:this.name.value,
         type:this.type.value,
-        stateid:this.state.value
+        districtid:this.district.value
     }
+    if(this.data!==undefined)
+    temp.id = this.data.original.id;
+    return temp;
 }
 
 NewWard.prototype.createPromise = function()

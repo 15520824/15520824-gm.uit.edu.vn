@@ -188,11 +188,6 @@ ListWard.prototype.getView = function () {
         docTypeMemuProps = {
             items: [
                 {
-                    text: 'Thêm',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:0,
-                },
-                {
                     text: 'Sửa',
                     icon: 'span.mdi.mdi-text-short',
                     value:1,
@@ -207,9 +202,6 @@ ListWard.prototype.getView = function () {
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
-                case 0:
-                    self.add(data.original.id,row);
-                    break;
                 case 1:
                     self.edit(data,parent,index);
                     break;
@@ -254,6 +246,7 @@ ListWard.prototype.getView = function () {
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view),2);
             self.mTable.addFilter(self.listWardElement,4);
             self.mTable.addFilter(self.listStateElement,5);
+            self.mTable.addFilter(self.listDistrictElement,3);
             });
         });
     });
@@ -428,9 +421,7 @@ ListWard.prototype.searchControlContent = function(){
             }
         }
     });
-    self.listStateElement.updateItemList = function(value){
-        self.listStateElement.items = self.formatDataList(value);
-    }
+
     self.listWardElement = _({
         tag:"selectmenu",
         props:{
@@ -448,9 +439,18 @@ ListWard.prototype.searchControlContent = function(){
             }
         }
     });
-    self.listWardElement.updateItemList = function(value){
-        self.listWardElement.items = self.formatDataList(value);
-    }
+
+    self.listDistrictElement = _({
+        tag:"selectmenu",
+        props:{
+            items:[
+                {text:"Tất cả",value:0},
+                {text:"Phường",value:"Phường"},
+                {text:"Xã",value:"Xã"},
+                {text:"Thị trấn",value:"Thị trấn"}
+            ]
+        }
+    });
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -513,21 +513,24 @@ ListWard.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-button",
+                                class:"pizo-list-realty-main-search-control-row-state-district",
                                 child:[
                                     {
-                                        tag: "button",
-                                        class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-                                                temp.reset();
-                                            }
-                                        },
-                                        child: [
-                                        '<span>' + "Thiết lập lại" + '</span>'
+                                        tag:"span",
+                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
+                                        props:{
+                                            innerHTML:"Loại"
+                                        }
+                                    },
+                                    {
+                                        tag:"div",
+                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
+                                        child:[
+                                            self.listDistrictElement
                                         ]
                                     }
                                 ]
+
                             },
                         ]
                     }
@@ -550,49 +553,6 @@ ListWard.prototype.searchControlContent = function(){
     })
 
     temp.content = content;
-
-    temp.show = function()
-    {
-        if(!temp.classList.contains("showTranslate"))
-        temp.classList.add("showTranslate");
-    }
-    temp.hide = function()
-    {
-        if(!content.classList.contains("hideTranslate"))
-            content.classList.add("hideTranslate");
-        var eventEnd = function(){
-            if(temp.classList.contains("showTranslate"))
-            temp.classList.remove("showTranslate");
-            content.classList.remove("hideTranslate");
-            content.removeEventListener("webkitTransitionEnd",eventEnd);
-            content.removeEventListener("transitionend",eventEnd);
-        };
-        // Code for Safari 3.1 to 6.0
-        content.addEventListener("webkitTransitionEnd", eventEnd);
-
-        // Standard syntax
-        content.addEventListener("transitionend", eventEnd);
-    }
-    temp.apply = function()
-    {
-
-    }
-    temp.reset = function()
-    {
-        content.timestart = new Date();
-        content.timeend = new Date();
-        content.lowprice.value = "";
-        content.highprice.value = "";
-        content.phone.value = "";
-        content.MS.value = "";
-        content.SN.value = "";
-        content.TD.value = "";
-        content.PX.value = "";
-        content.QH.value = "";
-        content.TT.value = "";
-        content.HT.value = 0;
-    }
-
   
     return temp;
 }
@@ -626,7 +586,7 @@ ListWard.prototype.add = function(parent_id = 0,row)
     var self = this;
     var mNewWard = new NewWard(undefined,parent_id);
     mNewWard.attach(self.parent);
-    var frameview = mNewWard.getView(self.getDataParam());
+    var frameview = mNewWard.getView(self.listParam);
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
     self.addDB(mNewWard,row);
@@ -635,10 +595,7 @@ ListWard.prototype.add = function(parent_id = 0,row)
 ListWard.prototype.addDB = function(mNewWard,row ){
     var self = this;
     mNewWard.promiseAddDB.then(function(value){
-        var phpFile = moduleDatabase.addStatesPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("wards").add(value).then(function(result){
             
             value.id = result;
             self.addView(value,row);
@@ -665,7 +622,7 @@ ListWard.prototype.edit = function(data,parent,index)
     var self = this;
     var mNewWard = new NewWard(data);
     mNewWard.attach(self.parent);
-    var frameview = mNewWard.getView(self.getDataParam());
+    var frameview = mNewWard.getView(self.listParam);
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
     self.editDB(mNewWard,data,parent,index);
@@ -674,11 +631,8 @@ ListWard.prototype.edit = function(data,parent,index)
 ListWard.prototype.editDB = function(mNewWard,data,parent,index){
     var self = this;
     mNewWard.promiseEditDB.then(function(value){
-        var phpFile = moduleDatabase.updateStatesPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("wards").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewWard.promiseEditDB = undefined;
@@ -719,13 +673,11 @@ ListWard.prototype.deleteView = function(parent,index){
 
 ListWard.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = moduleDatabase.deleteStatesPHP;
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile,data).then(function(value){
+    moduleDatabase.getModule("wards").delete({id:data.id}).then(function(value){
         self.deleteView(parent,index);
     })
 }
+
 
 ListWard.prototype.refresh = function () {
     var data;

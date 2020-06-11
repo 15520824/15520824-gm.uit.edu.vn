@@ -8,6 +8,7 @@ export function HashTableFilter(data) {
     this.lastIndex = [];
     this.lastKey = [];
     this.lastIndexFilter = [];
+    console.log(this.hash)
     return this;
 }
 
@@ -18,9 +19,6 @@ HashTableFilter.prototype.functionSetHash = function(data,dataParent = "")
     var object;
     for(var m = 0;m<data.length;m++){
         object = data[m];
-        data[m].updateSearch = function(){
-
-        }
         var stringCheck = m+dataParent;
         if(this.check[stringCheck] == undefined){
             this.check[stringCheck] = [];
@@ -34,12 +32,25 @@ HashTableFilter.prototype.functionSetHash = function(data,dataParent = "")
                 value = object[i];
             else
                 value = "";
-
-            if(hash[i]===undefined)
-                hash[i] = [];
-            if( hash[i][value]===undefined)
-                hash[i][value] = [];
-            hash[i][value].push(stringCheck);
+            if(Array.isArray(value))
+            {
+                for(var j=0;j<value.length;j++)
+                {
+                    if(hash[i]===undefined)
+                        hash[i] = [];
+                    if( hash[i][value[j]]===undefined)
+                        hash[i][value[j]] = [];
+                    hash[i][value[j]].push(stringCheck);
+                }
+            }else
+            {
+                if(hash[i]===undefined)
+                    hash[i] = [];
+                if( hash[i][value]===undefined)
+                    hash[i][value] = [];
+                hash[i][value].push(stringCheck);
+            }
+           
 
             if(data[m].child!==undefined)
             {

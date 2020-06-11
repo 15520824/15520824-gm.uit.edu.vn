@@ -219,14 +219,15 @@ NewContact.prototype.getView = function () {
 }
 
 NewContact.prototype.getDataSave = function() {
-    
-    return {
-        id:this.data===undefined?undefined:this.data.original.id,
+    var temp = {
         name:this.name.value,
         phone:this.phone.value,
         statusphone:this.type.value,
         email:this.email.value
     }
+    if(this.data!==undefined)
+    temp.id = this.data.original.id;
+    return temp;
 }
 
 NewContact.prototype.createPromise = function()

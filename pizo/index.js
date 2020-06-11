@@ -798,6 +798,24 @@ Dom.updateResizeSystem = function () {
     }
 };
 
+Dom.updateSizeUp = function(fromElt){
+    while (fromElt){
+        if (typeof fromElt.requestUpdateSize == 'function') {
+            fromElt.requestUpdateSize();
+            return true;
+        }
+        else if (typeof fromElt.updateSize == 'function') {
+            fromElt.updateSize();
+            return true;
+        }
+        else if (typeof fromElt.onresize == 'function') {
+            fromElt.onresize();
+            return true;
+        }
+        fromElt = fromElt.parentElement;
+    }
+};
+
 window.addEventListener('resize', Dom.updateResizeSystem);
 
 
@@ -5750,7 +5768,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(186);
+var content = __webpack_require__(188);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -13746,7 +13764,7 @@ exports.tokTypes = types;
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(215);
+module.exports = __webpack_require__(217);
 
 
 /***/ }),
@@ -16964,7 +16982,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".pizo-new-ward-container-district-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-ward-container-district-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7.7857rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-ward-container-district-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}", ""]);
 
 
 
@@ -17069,7 +17087,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-state-container-name-container-label,.pizo-new-state-container-type-container-label,.pizo-new-state-container-nation-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7.7857rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container-name-container-input,.pizo-new-state-container-type-container-input,.pizo-new-state-container-nation-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-state-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container{\r\n    width:50%;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -17104,7 +17122,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-district-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district{\r\n    width: calc(36% + 1.0714rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district-input>div{\r\n    width: 100%;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-state-container-name-container-label,.pizo-new-state-container-type-container-label,.pizo-new-state-container-nation-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7.7857rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container-name-container-input,.pizo-new-state-container-type-container-input,.pizo-new-state-container-nation-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-state-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container{\r\n    width:50%;\r\n}", ""]);
 
 
 
@@ -17139,7 +17157,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realty-location-map-view{\r\n    max-width: 100%;\r\n    min-width: 27.1429rem;\r\n    display: inline-block;\r\n    margin-bottom: unset;\r\n    width: calc(100% - 2.1429rem);\r\n    vertical-align: top;\r\n    height: calc(100vh - 15.8571rem);\r\n    margin-left: unset;\r\n}\r\n\r\n.hiddenUI{\r\n    display: none;\r\n}\r\n", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-state-district-input{\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district{\r\n    width: calc(36% + 1.0714rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-state-district-input>div{\r\n    width: 100%;\r\n}", ""]);
 
 
 
@@ -17147,18 +17165,8 @@ exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realt
 /* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
-// Module
-exports.push([module.i, ".pizo-list-help-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    height: calc(100% - 50px);\r\n    position: absolute;\r\n    width: calc(100% - 30px);\r\n}", ""]);
 
-
-
-/***/ }),
-/* 187 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(188);
+var content = __webpack_require__(187);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -17179,12 +17187,22 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// Module
+exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realty-location-map-view{\r\n    max-width: 100%;\r\n    min-width: 27.1429rem;\r\n    display: inline-block;\r\n    margin-bottom: unset;\r\n    width: calc(100% - 36px);\r\n    vertical-align: top;\r\n    height: calc(100% - 105px);\r\n    margin-left: unset;\r\n}\r\n\r\n.hiddenUI{\r\n    display: none;\r\n}\r\n\r\n.pizo-list-plan-main-search-control-row-selectbox-plan{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n    align-items: center;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input{\r\n    padding-left: 10px;\r\n    flex-grow: 2;\r\n    display: flex;    \r\n    padding-right: 5px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input>div{\r\n    width: 100%;\r\n    min-width: unset !important;\r\n}\r\n\r\n.pizo-list-plan-main-search-control-row{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.pizo-list-plan-main{\r\n    padding: 20px;\r\n    padding-top: 0;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item{\r\n    height: 24px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-text{\r\n    height: 24px;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-close span{\r\n    line-height: 24px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-text span  {\r\n    line-height: 24px;\r\n}", ""]);
+
+
+
+/***/ }),
 /* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button{\r\n    border-bottom: 2px #546e7a solid;\r\n    background-color: #263238;\r\n    color: #eeeeee;\r\n    border-radius: 0;\r\n    margin-left: 0;\r\n    margin-right: 0;\r\n    border: none;\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    padding: 8px 24px 8px 32px;\r\n    color: #eeeeee;\r\n    cursor: default;\r\n    white-space: pre;\r\n    margin-top: 5px;\r\n    z-index: 3;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    transform: translate(-100%,-50%) translateX(-5px);\r\n    top: 50%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{\r\n   border-bottom: none;\r\n   height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav{\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-tabview-container{\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ntable.b-workZone__layout{\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,.b-workZone__layout tr{\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview{\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container{\r\n    height: calc(100% - 40px);\r\n    top: unset;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTable td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article{\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content{\r\n    height: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav{\r\n    font-size: 1rem;\r\n    padding: 0.5rem 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons{\r\n    font-size: 1rem;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    padding: 0 0 0 19px;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n}\r\n\r\n.b-article {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: calc(100% - 5px);\r\n    align-items: stretch;\r\n    color: #eeeeee;\r\n    padding: 0;\r\n    position: relative;\r\n    padding-top: 5px;\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span{\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i{\r\n    vertical-align: middle;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only{\r\n    top:0;\r\n}\r\n\r\n.os-host, .os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n", ""]);
+exports.push([module.i, ".pizo-list-help-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    height: calc(100% - 50px);\r\n    position: absolute;\r\n    width: calc(100% - 30px);\r\n}", ""]);
 
 
 
@@ -17219,7 +17237,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 0.5rem;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
+exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button{\r\n    border-bottom: 2px #546e7a solid;\r\n    background-color: #263238;\r\n    color: #eeeeee;\r\n    border-radius: 0;\r\n    margin-left: 0;\r\n    margin-right: 0;\r\n    border: none;\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    padding: 8px 24px 8px 32px;\r\n    color: #eeeeee;\r\n    cursor: default;\r\n    white-space: pre;\r\n    margin-top: 5px;\r\n    z-index: 3;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    transform: translate(-100%,-50%) translateX(-5px);\r\n    top: 50%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{\r\n   border-bottom: none;\r\n   height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav{\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-tabview-container{\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ntable.b-workZone__layout{\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,.b-workZone__layout tr{\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview{\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container{\r\n    height: calc(100% - 40px);\r\n    top: unset;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTable td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article{\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content{\r\n    height: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav{\r\n    font-size: 1rem;\r\n    padding: 0.5rem 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons{\r\n    font-size: 1rem;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    padding: 0 0 0 19px;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n}\r\n\r\n.b-article {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: calc(100% - 5px);\r\n    align-items: stretch;\r\n    color: #eeeeee;\r\n    padding: 0;\r\n    position: relative;\r\n    padding-top: 5px;\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span{\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i{\r\n    vertical-align: middle;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only{\r\n    top:0;\r\n}\r\n\r\n.os-host, .os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n", ""]);
 
 
 
@@ -17254,7 +17272,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-category-container-name-container-input,\r\n.pizo-new-category-container-alias-container-input,\r\n.pizo-new-category-container-code-container-input,\r\n.pizo-new-category-container-note-container-input,\r\n.pizo-new-category-container-username-container-input,\r\n.pizo-new-state-selectbox-container-input {\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-category-container-name-container-label,\r\n.pizo-new-category-container-alias-container-label,\r\n.pizo-new-category-container-code-container-label,\r\n.pizo-new-category-container-username-container-label,\r\n.pizo-new-category-container-note-container-label,\r\n.pizo-new-state-selectbox-container-label {\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-category-container-name-container,\r\n.pizo-new-category-container-alias-container,\r\n.pizo-new-category-container-code-container,\r\n.pizo-new-category-container-username-container,\r\n.pizo-new-category-container-note-container,\r\n.pizo-new-state-selectbox-container {\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-name,\r\n.pizo-new-category-container-alias,\r\n.pizo-new-category-container-code,\r\n.pizo-new-category-container-username,\r\n.pizo-new-category-container-note,\r\n.pizo-new-state-selectbox {\r\n    padding: 5px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-category-container{\r\n    width: 60%;\r\n}\r\n\r\n.pizo-new-catergory-container>div:first-child {\r\n    padding-top: 0;\r\n}\r\n\r\n.pizo-new-catergory-container>div:last-child {\r\n    padding-bottom: 0;\r\n}\r\n\r\n.label-used-error,\r\n.label-invalid-error {\r\n    display: none;\r\n}\r\n\r\n.hasErrorElement.used-error .label-used-error,\r\n.hasErrorElement.invalid-error .label-invalid-error {\r\n    display: inline;\r\n    width: 232px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}", ""]);
+exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 0.5rem;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
 
 
 
@@ -17289,7 +17307,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "span.pizo-list-realty-page-allinput-input:empty:before {\r\n    content: \"\\200b\";\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr:hover td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr.choice td{\r\n    background-color: #BFBFBF;\r\n}\r\n", ""]);
+exports.push([module.i, ".pizo-new-category-container-name-container-input,\r\n.pizo-new-category-container-alias-container-input,\r\n.pizo-new-category-container-code-container-input,\r\n.pizo-new-category-container-note-container-input,\r\n.pizo-new-category-container-username-container-input,\r\n.pizo-new-state-selectbox-container-input {\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-category-container-name-container-label,\r\n.pizo-new-category-container-alias-container-label,\r\n.pizo-new-category-container-code-container-label,\r\n.pizo-new-category-container-username-container-label,\r\n.pizo-new-category-container-note-container-label,\r\n.pizo-new-state-selectbox-container-label {\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-category-container-name-container,\r\n.pizo-new-category-container-alias-container,\r\n.pizo-new-category-container-code-container,\r\n.pizo-new-category-container-username-container,\r\n.pizo-new-category-container-note-container,\r\n.pizo-new-state-selectbox-container {\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-name,\r\n.pizo-new-category-container-alias,\r\n.pizo-new-category-container-code,\r\n.pizo-new-category-container-username,\r\n.pizo-new-category-container-note,\r\n.pizo-new-state-selectbox {\r\n    padding: 5px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-category-container{\r\n    width: 60%;\r\n}\r\n\r\n.pizo-new-catergory-container>div:first-child {\r\n    padding-top: 0;\r\n}\r\n\r\n.pizo-new-catergory-container>div:last-child {\r\n    padding-bottom: 0;\r\n}\r\n\r\n.label-used-error,\r\n.label-invalid-error {\r\n    display: none;\r\n}\r\n\r\n.hasErrorElement.used-error .label-used-error,\r\n.hasErrorElement.invalid-error .label-invalid-error {\r\n    display: inline;\r\n    width: 232px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}", ""]);
 
 
 
@@ -17324,7 +17342,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "span.pizo-list-realty-page-allinput-input:empty:before {\r\n    content: \"\\200b\";\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr:hover td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr.choice td{\r\n    background-color: #BFBFBF;\r\n}\r\n", ""]);
 
 
 
@@ -17359,7 +17377,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-category-container-note-container-input{\r\n    height: 10rem;\r\n}\r\n\r\n.pizo-new-category-container-note-container-label{\r\n    align-items: start;\r\n    margin-top: 0.5rem;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -17394,7 +17412,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: calc(18% - 3px);\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".pizo-new-category-container-note-container-input{\r\n    height: 10rem;\r\n}\r\n\r\n.pizo-new-category-container-note-container-label{\r\n    align-items: start;\r\n    margin-top: 0.5rem;\r\n}", ""]);
 
 
 
@@ -17429,7 +17447,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-account-container {\r\n    width: 50%;\r\n    min-width: 700px;\r\n}\r\n\r\n.pizo-new-account-container-username-container,\r\n.pizo-new-account-container-password-container,\r\n.pizo-new-account-container-name-container,\r\n.pizo-new-account-container-email-container,\r\n.pizo-new-account-container-avatar-container,\r\n.pizo-new-account-container-address-container,\r\n.pizo-new-account-container-phone-container,\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-status-position,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-phone-birthday-gender,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container,\r\n.pizo-new-account-container-phone-container{\r\n    margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-account-container-username-container-label,\r\n.pizo-new-account-container-password-container-label,\r\n.pizo-new-account-container-name-container-label,\r\n.pizo-new-account-container-email-container-label,\r\n.pizo-new-account-container-avatar-container-label,\r\n.pizo-new-account-container-address-container-label,\r\n.pizo-new-account-container-phone-container-label,\r\n.pizo-new-account-container-position-container-label,\r\n.pizo-new-account-container-status,\r\n.pizo-new-account-container-permission,\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday,\r\n.pizo-new-account-container-birthday-container-label,\r\n.pizo-new-account-container-gender-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 5.71428571429rem;\r\n    padding-right: 0.7143rem;\r\n    width: 140px;\r\n    margin: auto;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label,.pizo-new-account-container-permission-container-label,.pizo-new-account-container-birthday-container-label{\r\n    padding-right: 0.7143rem;\r\n    width: auto;\r\n    font-size: 1rem;\r\n    line-height: 30px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday{\r\n    width: auto;\r\n    padding-left: 30px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-status{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-status-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-permission-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-permission{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-permission-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-birthday-container>div{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-gender-container-label{\r\n    width: auto;\r\n    padding-right: 10px;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-account-container-username-container-input,\r\n.pizo-new-account-container-password-container-input,\r\n.pizo-new-account-container-name-container-input,\r\n.pizo-new-account-container-email-container-input,\r\n.pizo-new-account-container-avatar-container-input,\r\n.pizo-new-account-container-gender-container-input,\r\n.pizo-new-account-container-address-container-input,\r\n.pizo-new-account-container-phone-container-input,\r\n.pizo-new-account-container-position-container-input,\r\n.pizo-new-account-container-position,\r\n.pizo-new-account-container-phone{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-position-container-input,.pizo-new-account-container-position,.pizo-new-account-container-phone{\r\n    padding: unset;\r\n    border: none;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new,.pizo-new-account-container-password-container-new-confirm{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 50%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new{\r\n    padding-right: 15px;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new-confirm{\r\n    padding-left: 15px;\r\n}\r\n\r\n.pizo-new-account-container-change-password-show{\r\n    display: unset\r\n}\r\n\r\n.pizo-new-account-container-change-password-hide{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-show{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-hide{\r\n    display: unset;\r\n}\r\n\r\n.pizo-new-account-container-change-password{\r\n    cursor: pointer;\r\n    padding-left: 150px;\r\n    margin-bottom: 10px;\r\n    color: var(--primary);\r\n}\r\n\r\n.pizo-new-account-container-password{\r\n    display: none;\r\n}\r\n\r\n.absol-switch-slider:before{\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before{\r\n    -webkit-transform: translateX(1em) translateY(-50%);\r\n    -ms-transform: translateX(1em) translateY(-50%);\r\n    transform: translateX(1em) translateY(-50%);\r\n}", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: calc(18% - 3px);\r\n}\r\n\r\n", ""]);
 
 
 
@@ -17464,7 +17482,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".pizo-new-account-container {\r\n    width: 50%;\r\n    min-width: 700px;\r\n}\r\n\r\n.pizo-new-account-container-username-container,\r\n.pizo-new-account-container-password-container,\r\n.pizo-new-account-container-name-container,\r\n.pizo-new-account-container-email-container,\r\n.pizo-new-account-container-avatar-container,\r\n.pizo-new-account-container-address-container,\r\n.pizo-new-account-container-phone-container,\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-status-position,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-phone-birthday-gender,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.pizo-new-account-container-status-container,\r\n.pizo-new-account-container-permission-container,\r\n.pizo-new-account-container-position-container,\r\n.pizo-new-account-container-birthday-container,\r\n.pizo-new-account-container-gender-container,\r\n.pizo-new-account-container-phone-container{\r\n    margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-account-container-username-container-label,\r\n.pizo-new-account-container-password-container-label,\r\n.pizo-new-account-container-name-container-label,\r\n.pizo-new-account-container-email-container-label,\r\n.pizo-new-account-container-avatar-container-label,\r\n.pizo-new-account-container-address-container-label,\r\n.pizo-new-account-container-phone-container-label,\r\n.pizo-new-account-container-position-container-label,\r\n.pizo-new-account-container-status,\r\n.pizo-new-account-container-permission,\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday,\r\n.pizo-new-account-container-birthday-container-label,\r\n.pizo-new-account-container-gender-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 5.71428571429rem;\r\n    padding-right: 0.7143rem;\r\n    width: 140px;\r\n    margin: auto;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label,.pizo-new-account-container-permission-container-label,.pizo-new-account-container-birthday-container-label{\r\n    padding-right: 0.7143rem;\r\n    width: auto;\r\n    font-size: 1rem;\r\n    line-height: 30px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-new-account-container-gender,\r\n.pizo-new-account-container-birthday{\r\n    width: auto;\r\n    padding-left: 30px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-account-container-status-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-status{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-status-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-permission-container-label{\r\n    width: auto;\r\n}\r\n\r\n.pizo-new-account-container-permission{\r\n    width: auto;\r\n    padding-right: 0;\r\n    padding-left: 30px;\r\n}\r\n\r\n.pizo-new-account-container-permission-container>label{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-account-container-birthday-container>div{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-gender-container-label{\r\n    width: auto;\r\n    padding-right: 10px;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-account-container-username-container-input,\r\n.pizo-new-account-container-password-container-input,\r\n.pizo-new-account-container-name-container-input,\r\n.pizo-new-account-container-email-container-input,\r\n.pizo-new-account-container-avatar-container-input,\r\n.pizo-new-account-container-gender-container-input,\r\n.pizo-new-account-container-address-container-input,\r\n.pizo-new-account-container-phone-container-input,\r\n.pizo-new-account-container-position-container-input,\r\n.pizo-new-account-container-position,\r\n.pizo-new-account-container-phone{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-account-container-position-container-input,.pizo-new-account-container-position,.pizo-new-account-container-phone{\r\n    padding: unset;\r\n    border: none;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new,.pizo-new-account-container-password-container-new-confirm{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 50%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new{\r\n    padding-right: 15px;\r\n}\r\n\r\n.pizo-new-account-container-password-container-new-confirm{\r\n    padding-left: 15px;\r\n}\r\n\r\n.pizo-new-account-container-change-password-show{\r\n    display: unset\r\n}\r\n\r\n.pizo-new-account-container-change-password-hide{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-show{\r\n    display: none;\r\n}\r\n\r\n.show-password-change .pizo-new-account-container-change-password-hide{\r\n    display: unset;\r\n}\r\n\r\n.pizo-new-account-container-change-password{\r\n    cursor: pointer;\r\n    padding-left: 150px;\r\n    margin-bottom: 10px;\r\n    color: var(--primary);\r\n}\r\n\r\n.pizo-new-account-container-password{\r\n    display: none;\r\n}\r\n\r\n.absol-switch-slider:before{\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\ninput:checked+.absol-switch-slider:before{\r\n    -webkit-transform: translateX(1em) translateY(-50%);\r\n    -ms-transform: translateX(1em) translateY(-50%);\r\n    transform: translateX(1em) translateY(-50%);\r\n}", ""]);
 
 
 
@@ -17534,7 +17552,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-contact-container-name-container,.pizo-new-contact-container-email-container,.pizo-new-contact-container-type-container,.pizo-new-contact-container-phone-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-contact-container-name-container-label,.pizo-new-contact-container-email-container-label,.pizo-new-contact-container-type-container-label,.pizo-new-contact-container-phone-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 9.3571rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-contact-container-name-container-input,.pizo-new-contact-container-email-container-input,.pizo-new-contact-container-type-container-input,.pizo-new-contact-container-phone-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-contact-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-contact-container{\r\n    width:50%;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -17569,7 +17587,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visible .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".pizo-new-contact-container-name-container,.pizo-new-contact-container-email-container,.pizo-new-contact-container-type-container,.pizo-new-contact-container-phone-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-contact-container-name-container-label,.pizo-new-contact-container-email-container-label,.pizo-new-contact-container-type-container-label,.pizo-new-contact-container-phone-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 9.3571rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-contact-container-name-container-input,.pizo-new-contact-container-email-container-input,.pizo-new-contact-container-type-container-input,.pizo-new-contact-container-phone-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-contact-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-contact-container{\r\n    width:50%;\r\n}", ""]);
 
 
 
@@ -17604,7 +17622,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 20px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  margin-left: 20px;\r\n  margin-top: 3px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}\r\n\r\n.grid{\r\n  height: 385px;\r\n  width: auto;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.grid-item{\r\n  height: 50%;\r\n  display: inline-block;\r\n  position: relative;\r\n}", ""]);
+exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visible .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
 
 
 
@@ -17639,12 +17657,47 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.modal-upload-image-header {\r\n  padding: 17px 20px;\r\n  height: 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-image-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-image-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-image-body {\r\n  position: relative;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-image-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-image-body-drop {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  overflow: hidden;\r\n  top: 51px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form {\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  display: none;\r\n  margin: 20px;\r\n  padding: 10px;\r\n  height: calc(100% - 54px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area {\r\n  height: calc(100% - 72px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#drop-area.highlight {\r\n  border-color: purple;\r\n}\r\n\r\n#gallery {\r\n  margin-top: 10px;\r\n  height: calc(100% - 45px);\r\n  width: 100%;\r\n  position: relative;\r\n  overflow: auto;\r\n}\r\n\r\n.image-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElem {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-image-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-bottom: 2px solid #4d90fe;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  color: #222;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n}\r\n.modal-upload-image-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-image-body-drop-save{\r\n  padding-left: 20px;\r\n  position: absolute;\r\n  bottom: 10px;\r\n}\r\n\r\n.margin-align{\r\n  margin-left: 100px;\r\n  position: relative;\r\n  width: calc(100% - 100px);\r\n  margin-bottom: 0;\r\n}\r\n\r\n.full-size{\r\n  width: auto;\r\n  margin: 2px;\r\n  height: calc(100% - 7px);\r\n}", ""]);
+exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 20px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  margin-left: 20px;\r\n  margin-top: 3px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}\r\n\r\n.grid{\r\n  height: 385px;\r\n  width: auto;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.grid-item{\r\n  height: 50%;\r\n  display: inline-block;\r\n  position: relative;\r\n}", ""]);
 
 
 
 /***/ }),
 /* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(216);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 216 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// Module
+exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.modal-upload-image-header {\r\n  padding: 17px 20px;\r\n  height: 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-image-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-image-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-image-body {\r\n  position: relative;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-image-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-image-body-drop {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  overflow: hidden;\r\n  top: 51px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form {\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  display: none;\r\n  margin: 20px;\r\n  padding: 10px;\r\n  height: calc(100% - 54px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area {\r\n  height: calc(100% - 72px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#drop-area.highlight {\r\n  border-color: purple;\r\n}\r\n\r\n#gallery {\r\n  margin-top: 10px;\r\n  height: calc(100% - 45px);\r\n  width: 100%;\r\n  position: relative;\r\n  overflow: auto;\r\n}\r\n\r\n.image-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElem {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-image-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-bottom: 2px solid #4d90fe;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  color: #222;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n}\r\n.modal-upload-image-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-image-body-drop-save{\r\n  padding-left: 20px;\r\n  position: absolute;\r\n  bottom: 10px;\r\n}\r\n\r\n.margin-align{\r\n  margin-left: 100px;\r\n  position: relative;\r\n  width: calc(100% - 100px);\r\n  margin-bottom: 0;\r\n}\r\n\r\n.full-size{\r\n  width: auto;\r\n  margin: 2px;\r\n  height: calc(100% - 7px);\r\n}", ""]);
+
+
+
+/***/ }),
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17707,6 +17760,35 @@ __webpack_require__.d(dom_namespaceObject, "parseDom", function() { return parse
 var Clipboard_namespaceObject = {};
 __webpack_require__.r(Clipboard_namespaceObject);
 __webpack_require__.d(Clipboard_namespaceObject, "copyImage", function() { return copyImage; });
+
+// NAMESPACE OBJECT: ./node_modules/absol/src/Time/datetime.js
+var datetime_namespaceObject = {};
+__webpack_require__.r(datetime_namespaceObject);
+__webpack_require__.d(datetime_namespaceObject, "MILLIS_PER_DAY", function() { return MILLIS_PER_DAY; });
+__webpack_require__.d(datetime_namespaceObject, "MILLIS_PER_HOUR", function() { return MILLIS_PER_HOUR; });
+__webpack_require__.d(datetime_namespaceObject, "MILLIS_PER_MINUTE", function() { return MILLIS_PER_MINUTE; });
+__webpack_require__.d(datetime_namespaceObject, "ddmmyyyy", function() { return ddmmyyyy; });
+__webpack_require__.d(datetime_namespaceObject, "yyymmdd", function() { return yyymmdd; });
+__webpack_require__.d(datetime_namespaceObject, "dayNames", function() { return dayNames; });
+__webpack_require__.d(datetime_namespaceObject, "shortDayNames", function() { return shortDayNames; });
+__webpack_require__.d(datetime_namespaceObject, "monthNames", function() { return monthNames; });
+__webpack_require__.d(datetime_namespaceObject, "shortMonthNames", function() { return shortMonthNames; });
+__webpack_require__.d(datetime_namespaceObject, "formatTokenRegex", function() { return formatTokenRegex; });
+__webpack_require__.d(datetime_namespaceObject, "formartDateString", function() { return formartDateString; });
+__webpack_require__.d(datetime_namespaceObject, "parseDateString", function() { return parseDateString; });
+__webpack_require__.d(datetime_namespaceObject, "prevDate", function() { return prevDate; });
+__webpack_require__.d(datetime_namespaceObject, "nextDate", function() { return nextDate; });
+__webpack_require__.d(datetime_namespaceObject, "beginOfHour", function() { return beginOfHour; });
+__webpack_require__.d(datetime_namespaceObject, "beginOfDay", function() { return beginOfDay; });
+__webpack_require__.d(datetime_namespaceObject, "beginOfWeek", function() { return beginOfWeek; });
+__webpack_require__.d(datetime_namespaceObject, "beginOfMonth", function() { return datetime_beginOfMonth; });
+__webpack_require__.d(datetime_namespaceObject, "beginOfYear", function() { return beginOfYear; });
+__webpack_require__.d(datetime_namespaceObject, "compareDate", function() { return compareDate; });
+__webpack_require__.d(datetime_namespaceObject, "compareMonth", function() { return compareMonth; });
+__webpack_require__.d(datetime_namespaceObject, "compareYear", function() { return compareYear; });
+__webpack_require__.d(datetime_namespaceObject, "nextMonth", function() { return nextMonth; });
+__webpack_require__.d(datetime_namespaceObject, "prevMonth", function() { return prevMonth; });
+__webpack_require__.d(datetime_namespaceObject, "daysInMonth", function() { return daysInMonth; });
 
 // NAMESPACE OBJECT: ./node_modules/absol/src/String/stringMatching.js
 var stringMatching_namespaceObject = {};
@@ -22380,7 +22462,573 @@ function copyImage(src) {
 
 
 
+// CONCATENATED MODULE: ./node_modules/absol/src/DataStructure/Heap.js
+function defaultCmp(x, y) {
+    if (x < y) {
+        return -1;
+    }
+    if (x > y) {
+        return 1;
+    }
+    return 0;
+};
+
+
+/**
+ * 
+ * @param {Array} arr 
+ * @param {Number} pos 
+ * @param {Function} cmp 
+ */
+function heapDown(arr, pos, cmp) {
+    if (!cmp) cmp = defaultCmp;
+    var item = arr[pos];
+    var endPos = arr.length;
+    var childPos = (pos << 1) | 1;
+    var childRightPos;
+    while (childPos < endPos) {
+        childRightPos = childPos + 1;
+        if (childPos + 1 < endPos && cmp(arr[childPos], arr[childRightPos]) > 0) {
+            childPos = childRightPos;
+        }
+        if (cmp(arr[childPos], item) < 0) {
+            arr[pos] = arr[childPos];
+            arr[childPos] = item;
+            pos = childPos;
+            childPos = (pos << 1) | 1;
+        }
+        else break;
+    }
+}
+
+
+/**
+ * 
+ * @param {Array} arr 
+ * @param {Number} pos 
+ * @param {Function} cmp 
+ */
+function heapUp(arr, pos, cmp) {
+    if (!cmp) cmp = defaultCmp;
+    var item = arr[pos];
+    var parPos;
+    while (pos > 0) {
+        parPos = (pos - 1) >> 1;
+        if (cmp(arr[parPos], item) > 0) {
+            arr[pos] = arr[parPos];
+            arr[parPos] = item;
+            pos = parPos;
+        }
+        else break;
+    }
+}
+
+
+/**
+ *
+ * @param {Array} arr
+ * @param {Function} cmp
+ */
+function heapify(arr, cmp) {
+    if (!cmp) cmp = defaultCmp;
+    var endPos = arr.length;
+    for (var i = 0; i < endPos; ++i)
+        heapUp(arr, i, cmp);
+}
+
+
+
+/**
+ * 
+ * @param {Array} arr 
+ * @param {Function} cmp 
+ */
+function heapPop(arr, cmp) {
+    if (!cmp) cmp = defaultCmp;
+    var item = arr[0];
+    var lastItem = arr.pop();
+    if (arr.length > 0) {
+        arr[0] = lastItem;
+        heapDown(arr, 0, cmp);
+    }
+    return item;
+}
+
+
+/**
+ * 
+ * @param {Array} arr 
+ * @param {*} item
+ * @param {Function} cmp 
+ */
+function heapPush(arr, item, cmp) {
+    if (!cmp) cmp = defaultCmp;
+    arr.push(item);
+    heapUp(arr, arr.length - 1, cmp);
+}
+
+
+
+
+function Heap(cmd) {
+    this.cmp = cmd || defaultCmp;
+    this.arr = [];
+}
+
+/**
+ * @param {Array} arr
+ * @param {Function} cmp
+ * @returns {Heap}
+ */
+Heap.fromArray = function (arr, cmp) {
+    var heap = new Heap(cmp);
+    heapify(arr);
+    heap.arr = arr;
+    return heap;
+};
+
+
+
+Heap.prototype.push = function (x) {
+    heapPush(this.arr, x, this.cmp);
+    return this;
+};
+
+Heap.prototype.pop = function () {
+    return heapPop(this.arr, this.cmp);
+};
+
+Heap.prototype.peek = function () {
+    return this.arr[0];
+};
+
+Heap.prototype.contains = function (x) {
+    return this.arr.indexOf(x) !== -1;
+};
+
+
+Heap.prototype.clear = function () {
+    this.arr.splice(0, this.arr.length);
+    return this;
+};
+
+Heap.prototype.empty = function () {
+    return this.arr.length === 0;
+};
+
+Heap.prototype.size = function () {
+    return this.arr.length;
+};
+
+Heap.prototype.clone = function () {
+    var heap;
+    heap = new Heap(this.cmp);
+    heap.arr = this.arr.slice(0);
+    return heap;
+};
+
+Heap.prototype.toArray = function () {
+    return this.arr.slice(0);
+};
+
+Heap.prototype.toSortedArray = function () {
+    var res = [];
+    var heap = this.clone();
+    while (!heap.empty())
+        res.push(heap.pop());
+    return res;
+};
+
+
+Heap.prototype.insert = Heap.prototype.push;
+
+Heap.prototype.top = Heap.prototype.peek;
+
+Heap.prototype.front = Heap.prototype.peek;
+
+Heap.prototype.has = Heap.prototype.contains;
+
+Heap.prototype.copy = Heap.prototype.clone;
+
+/* harmony default export */ var DataStructure_Heap = (Heap);
+
+// CONCATENATED MODULE: ./node_modules/absol/src/Time/datetime.js
+
+
+var MILLIS_PER_DAY = 24 * 3600000;
+var MILLIS_PER_HOUR = 3600000;
+var MILLIS_PER_MINUTE = 60000;
+
+/**
+ * 
+ * @param {Date} date 
+ * @returns {String}
+ */
+function ddmmyyyy(date) {
+    var mm = date.getMonth() + 1; // getMonth() is zero-based
+    var dd = date.getDate();
+
+    return [(dd > 9 ? '' : '0') + dd,
+    (mm > 9 ? '' : '0') + mm,
+    date.getFullYear()
+    ].join('/');
+};
+
+
+
+/**
+ * 
+ * @param {Date} date
+ * @returns {String} 
+ */
+function yyymmdd(date) {
+    var mm = date.getMonth() + 1; // getMonth() is zero-based
+    var dd = date.getDate();
+
+    return [
+        date.getFullYear(),
+        (mm > 9 ? '' : '0') + mm,
+        (dd > 9 ? '' : '0') + dd
+    ].join('/');
+};
+
+
+
+
+
+var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+var shortDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
+
+var shortMonthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
+
+//more https://www.myonlinetraininghub.com/excel-date-and-time-formatting
+// export var formatTokenRegex = /([a-zA-Z]|[^\s\-$-/:-?{-~!"^_`\[\]])+/g;//more
+var formatTokenRegex = /([,\.\-\/])|([a-zA-Z0-9]+)/g;//more
+
+/**
+ * 
+ * @param {Date} date 
+ * @param {String} format 
+ * @returns {String}
+ */
+function formartDateString(date, format) {
+    format = format || 'dd/mm/yyyy';
+    var dt = date.getDate();
+    var day = date.getDay();
+    var month = date.getMonth();
+    var year = date.getFullYear()
+    return format.replace(formatTokenRegex, function (x) {
+        switch (x) {
+            case "dddd": return dayNames[day];
+            case "ddd": return shortDayNames[day];
+            case "dd": return dt < 10 ? '0' + dt : '' + dt;
+            case "d": return '' + dt;
+            case "mmmm": return monthNames[month];
+            case "mmm": return shortMonthNames[month];
+            case "mm": return (month + 1) < 10 ? '0' + (month + 1) : '' + (month + 1);
+            case "m": return '' + (month + 1);
+            case 'yy': return (year + '').match(/..$/)[0];
+            case 'yyyy': return year + '';
+            default:
+                return x;
+        }
+    });
+};
+
+/**
+ *
+ * @param {String} text
+ * @param {String} format
+ * @returns {String}
+ */
+function parseDateString(text, format) {
+    text = Object(stringFormat["nonAccentVietnamese"])(text).toLowerCase();
+    format = Object(stringFormat["nonAccentVietnamese"])(format).toLowerCase();
+    var textTokens = text.match(formatTokenRegex) || [];
+    var formatTokens = format.match(formatTokenRegex) || [];
+    var year = NaN;
+    var month = NaN;
+    var day = NaN;
+    var n = Math.min(textTokens.length, formatTokens.length);
+    var textToken;
+    var formatToken;
+    for (var i = 0; i < n; ++i) {
+        textToken = textTokens[i];
+        formatToken = formatTokens[i];
+        switch (formatToken) {
+            case "dd": day = parseInt(textToken); break;
+            case "d": day = parseInt(textToken); break;
+            case "mmmm": month = monthNames.indexOf(textToken.substr(0, 1).toUpperCase() + textToken.substr(1).toLowerCase()); break;
+            case "mmm": month = shortMonthNames.indexOf(textToken.substr(0, 1).toUpperCase() + textToken.substr(1).toLowerCase()); break;
+            case "mm": month = parseInt(textToken) - 1; break;
+            case "m": month = parseInt(textToken) - 1; break;
+            case 'yy': year = Math.floor((new Date().getFullYear()) / 100) * 100 + parseInt(textToken); break;
+            case 'yyyy': year = parseInt(textToken); break;
+            default:
+                if (textToken != formatToken)
+                    throw new Error('Unexpected token ' + textToken);
+        }
+    }
+
+    if (isNaN(year)) throw new Error('Invalid year');
+    if (isNaN(month) && month != -1) {
+        throw new Error('Invalid month');
+    }
+    else {
+        month = Math.max(0, Math.min(11, month));
+    }
+    if (!isNaN(day)) {
+        day = Math.max(1, Math.min(31, day));
+        if (!isNaN(month)) {
+            day = Math.min(daysInMonth(2000, month), day);
+            if (!isNaN(year)) day = Math.min(daysInMonth(year, month), day);
+        }
+    }
+    else {
+        throw new Error('Invalid day');
+    }
+    return new Date(year, month, day, 0, 0, 0, 0);
+}
+
+
+/**
+ * @param {Date} date
+ * @return {Date}  
+ */
+function prevDate(date) {
+    return new Date(date.getTime() - 86400000);
+};
+
+/**
+ * @param {Date} date
+ * @return {Date}  
+ */
+function nextDate(date) {
+    return new Date(date.getTime() + 86400000);
+};
+
+
+
+/**
+ * @param {Date} date
+ * @return {Date} date at 00:00 
+ */
+function beginOfHour(date) {
+    var res = new Date(date.getTime());
+    res.setMilliseconds(0);
+    res.setSeconds(0);
+    res.setMinutes(0);
+    return res;
+};
+
+
+/**
+ * @param {Date} date
+ * @param {Boolean} gmt default:false
+ * @return {Date} date at 00:00 
+ */
+function beginOfDay(date, gmt) {
+    var res = new Date(date.getTime());
+    res.setMilliseconds(0);
+    res.setSeconds(0);
+    res.setMinutes(0);
+    if (gmt)
+        res.setUTCHours(0);
+    else res.setHours(0);
+    return res;
+};
+
+
+/**
+ * @param {Date} date
+ * @param {Boolean} gmt default:false
+ * @return {Date} date at 00:00 
+ */
+function beginOfWeek(date, gmt, begin) {
+    begin = begin || 0;
+    var res = beginOfDay(date, gmt);
+    while ((gmt ? res.getUTCDay() : res.getDay()) != begin) {
+        res = prevDate(res);
+    }
+    return res;
+};
+
+/**
+ * @param {Date} date
+ * @param {Boolean} gmt default:false
+ * @return {Date} date at 00:00 AM 
+ */
+function datetime_beginOfMonth(date, gmt) {
+    gmt = !!gmt;
+    var d = gmt ? date.getUTCDate() : date.getDate();
+    var m = gmt ? date.getUTCMonth() : date.getMonth();
+    var y = gmt ? date.getUTCFullYear() : date.getFullYear();
+    var res = new Date();
+    if (gmt)
+        res.setUTCFullYear(y, m, 1);
+    else
+        res.setFullYear(y, m, 1);
+    return beginOfDay(res, gmt);
+};
+
+/**
+ * @param {Date} date
+ * @param {Boolean} gmt default:false
+ * @return {Date} date at 00:00 AM 
+ */
+function beginOfYear(date, gmt) {
+    gmt = !!gmt;
+    var d = gmt ? date.getUTCDate() : date.getDate();
+    var m = gmt ? date.getUTCMonth() : date.getMonth();
+    var y = gmt ? date.getUTCFullYear() : date.getFullYear();
+    var res = new Date();
+    if (gmt)
+        res.setUTCFullYear(y, 0, 1);
+    else
+        res.setFullYear(y, 0, 1);
+    return beginOfDay(res, gmt);
+};
+
+
+/**
+ * @param {Date} date0
+ * @param {Date} date1
+ * @param {Boolean} gmt default:false
+ * @return {number} 
+ */
+function compareDate(date0, date1, gmt) {
+    var date0 = beginOfDay(date0, !!gmt);
+    var date1 = beginOfDay(date1, !!gmt);
+    return (date0.getTime() - date1.getTime()) / (86400000);
+};
+
+
+
+/**
+ * @param {Date} date0
+ * @param {Date} date1
+ * @param {Boolean} gmt default:false
+ * @return {number} 
+ */
+
+function compareMonth(date0, date1, gmt) {
+    gmt = !!gmt;
+    var m0 = gmt ? date0.getUTCMonth() : date0.getMonth();
+    var y0 = gmt ? date0.getUTCFullYear() : date0.getFullYear();
+
+    var m1 = gmt ? date1.getUTCMonth() : date1.getMonth();
+    var y1 = gmt ? date1.getUTCFullYear() : date1.getFullYear();
+
+    return (y0 - y1) * 12 + (m0 - m1);
+};
+
+function compareYear(date0, date1, gmt) {
+    gmt = !!gmt;
+    var y0 = gmt ? date0.getUTCFullYear() : date0.getFullYear();
+    var y1 = gmt ? date1.getUTCFullYear() : date1.getFullYear();
+    return y0 - y1;
+};
+
+
+
+/**
+ * 
+ * @param {Date} date
+ * @returns {Date} 
+ */
+function nextMonth(date) {
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    if (m == 11) {
+        return new Date(y + 1, 0, 1, 0, 0, 0, 0);
+    }
+    else {
+        return new Date(y, m + 1, 1, 0, 0, 0, 0);
+    }
+}
+
+/**
+ * 
+ * @param {Date} date
+ * @returns {Date} 
+ */
+function prevMonth(date) {
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    if (m == 0) {
+        return new Date(y - 1, 11, 1, 0, 0, 0, 0);
+    }
+    else {
+        return new Date(y, m - 1, 1, 0, 0, 0, 0);
+    }
+}
+
+/**
+ * 
+ * @param {Number} year
+ * @param {Number} month
+ * @returns {Number}
+ */
+function daysInMonth(year, month) {
+    var start = new Date(year, month, 1);
+    var end = nextMonth(start);
+    return compareDate(end, start);
+}
+// CONCATENATED MODULE: ./node_modules/absol/src/AppPattern/CMDRunner.js
+function CMDRunner(_this, commands) {
+    this._this = _this;
+    this.commands = {};
+    this.assign(commands);
+}
+
+
+
+CMDRunner.prototype.has = function (cmdName) {
+    return !!this.commands[cmdName];
+};
+
+
+CMDRunner.prototype.add = function (cmdName, handler) {
+    this.commands[cmdName] = handler;
+    return this;
+};
+
+
+CMDRunner.prototype.remove = function (cmdName) {
+    delete this.commands[cmdName];
+    return this;
+};
+
+CMDRunner.prototype.assign = function (obj) {
+    for (var cmdName in obj) {
+        if (typeof obj[cmdName] == 'function') {
+            this.add(cmdName, obj[cmdName]);
+        }
+    }
+};
+
+CMDRunner.prototype.invoke = function () {
+    if (this.commands[arguments[0]]) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        return this.commands[arguments[0]].apply(this._this, args);
+    }
+    else {
+        throw new Error('No command: ' + arguments[0]);
+    }
+};
+
+/* harmony default export */ var AppPattern_CMDRunner = (CMDRunner);
+
+
 // CONCATENATED MODULE: ./node_modules/absol/src/index.js
+
+
 
 
 
@@ -22430,6 +23078,7 @@ var src_absol = {
     Arc: Math_Arc,
     NumRange: Math_NumRange,
 
+    CMDRunner: AppPattern_CMDRunner,
     ContextManager: AppPattern_ContextManager,
     Application: AppPattern_Application,
     Fragment: AppPattern_Fragment,
@@ -22471,7 +23120,9 @@ var src_absol = {
         attribute: attribute_namespaceObject
     },
 
-    clipboard: Clipboard_namespaceObject
+    clipboard: Clipboard_namespaceObject,
+    dataStructure: { Heap: DataStructure_Heap },
+    datetime: datetime_namespaceObject
 };
 
 
@@ -35753,334 +36404,6 @@ ACore["a" /* default */].install('DraggableHStack'.toLowerCase(), DraggableHStac
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/chromecalendar.css
 var chromecalendar = __webpack_require__(120);
 
-// CONCATENATED MODULE: ./node_modules/absol/src/Time/datetime.js
-
-
-var MILLIS_PER_DAY = 24 * 3600000;
-var MILLIS_PER_HOUR = 3600000;
-var MILLIS_PER_MINUTE = 60000;
-
-/**
- * 
- * @param {Date} date 
- * @returns {String}
- */
-function ddmmyyyy(date) {
-    var mm = date.getMonth() + 1; // getMonth() is zero-based
-    var dd = date.getDate();
-
-    return [(dd > 9 ? '' : '0') + dd,
-    (mm > 9 ? '' : '0') + mm,
-    date.getFullYear()
-    ].join('/');
-};
-
-
-
-/**
- * 
- * @param {Date} date
- * @returns {String} 
- */
-function yyymmdd(date) {
-    var mm = date.getMonth() + 1; // getMonth() is zero-based
-    var dd = date.getDate();
-
-    return [
-        date.getFullYear(),
-        (mm > 9 ? '' : '0') + mm,
-        (dd > 9 ? '' : '0') + dd
-    ].join('/');
-};
-
-
-
-
-
-var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-var shortDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-var monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-];
-
-var shortMonthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-
-
-//more https://www.myonlinetraininghub.com/excel-date-and-time-formatting
-// export var formatTokenRegex = /([a-zA-Z]|[^\s\-$-/:-?{-~!"^_`\[\]])+/g;//more
-var formatTokenRegex = /([,\.\-\/])|([a-zA-Z0-9]+)/g;//more
-
-/**
- * 
- * @param {Date} date 
- * @param {String} format 
- * @returns {String}
- */
-function formartDateString(date, format) {
-    format = format || 'dd/mm/yyyy';
-    var dt = date.getDate();
-    var day = date.getDay();
-    var month = date.getMonth();
-    var year = date.getFullYear()
-    return format.replace(formatTokenRegex, function (x) {
-        switch (x) {
-            case "dddd": return dayNames[day];
-            case "ddd": return shortDayNames[day];
-            case "dd": return dt < 10 ? '0' + dt : '' + dt;
-            case "d": return '' + dt;
-            case "mmmm": return monthNames[month];
-            case "mmm": return shortMonthNames[month];
-            case "mm": return (month + 1) < 10 ? '0' + (month + 1) : '' + (month + 1);
-            case "m": return '' + (month + 1);
-            case 'yy': return (year + '').match(/..$/)[0];
-            case 'yyyy': return year + '';
-            default:
-                return x;
-        }
-    });
-};
-
-/**
- *
- * @param {String} text
- * @param {String} format
- * @returns {String}
- */
-function parseDateString(text, format) {
-    text = Object(stringFormat["nonAccentVietnamese"])(text).toLowerCase();
-    format = Object(stringFormat["nonAccentVietnamese"])(format).toLowerCase();
-    var textTokens = text.match(formatTokenRegex) || [];
-    var formatTokens = format.match(formatTokenRegex) || [];
-    var year = NaN;
-    var month = NaN;
-    var day = NaN;
-    var n = Math.min(textTokens.length, formatTokens.length);
-    var textToken;
-    var formatToken;
-    for (var i = 0; i < n; ++i) {
-        textToken = textTokens[i];
-        formatToken = formatTokens[i];
-        switch (formatToken) {
-            case "dd": day = parseInt(textToken); break;
-            case "d": day = parseInt(textToken); break;
-            case "mmmm": month = monthNames.indexOf(textToken.substr(0, 1).toUpperCase() + textToken.substr(1).toLowerCase()); break;
-            case "mmm": month = shortMonthNames.indexOf(textToken.substr(0, 1).toUpperCase() + textToken.substr(1).toLowerCase()); break;
-            case "mm": month = parseInt(textToken) - 1; break;
-            case "m": month = parseInt(textToken) - 1; break;
-            case 'yy': year = Math.floor((new Date().getFullYear()) / 100) * 100 + parseInt(textToken); break;
-            case 'yyyy': year = parseInt(textToken); break;
-            default:
-                if (textToken != formatToken)
-                    throw new Error('Unexpected token ' + textToken);
-        }
-    }
-
-    if (isNaN(year)) throw new Error('Invalid year');
-    if (isNaN(month) && month != -1) {
-        throw new Error('Invalid month');
-    }
-    else {
-        month = Math.max(0, Math.min(11, month));
-    }
-    if (!isNaN(day)) {
-        day = Math.max(1, Math.min(31, day));
-        if (!isNaN(month)) {
-            day = Math.min(daysInMonth(2000, month), day);
-            if (!isNaN(year)) day = Math.min(daysInMonth(year, month), day);
-        }
-    }
-    else {
-        throw new Error('Invalid day');
-    }
-    return new Date(year, month, day, 0, 0, 0, 0);
-}
-
-
-/**
- * @param {Date} date
- * @return {Date}  
- */
-function prevDate(date) {
-    return new Date(date.getTime() - 86400000);
-};
-
-/**
- * @param {Date} date
- * @return {Date}  
- */
-function nextDate(date) {
-    return new Date(date.getTime() + 86400000);
-};
-
-
-
-/**
- * @param {Date} date
- * @return {Date} date at 00:00 
- */
-function beginOfHour(date) {
-    var res = new Date(date.getTime());
-    res.setMilliseconds(0);
-    res.setSeconds(0);
-    res.setMinutes(0);
-    return res;
-};
-
-
-/**
- * @param {Date} date
- * @param {Boolean} gmt default:false
- * @return {Date} date at 00:00 
- */
-function beginOfDay(date, gmt) {
-    var res = new Date(date.getTime());
-    res.setMilliseconds(0);
-    res.setSeconds(0);
-    res.setMinutes(0);
-    if (gmt)
-        res.setUTCHours(0);
-    else res.setHours(0);
-    return res;
-};
-
-
-/**
- * @param {Date} date
- * @param {Boolean} gmt default:false
- * @return {Date} date at 00:00 
- */
-function beginOfWeek(date, gmt, begin) {
-    begin = begin || 0;
-    var res = beginOfDay(date, gmt);
-    while ((gmt ? res.getUTCDay() : res.getDay()) != begin) {
-        res = prevDate(res);
-    }
-    return res;
-};
-
-/**
- * @param {Date} date
- * @param {Boolean} gmt default:false
- * @return {Date} date at 00:00 AM 
- */
-function datetime_beginOfMonth(date, gmt) {
-    gmt = !!gmt;
-    var d = gmt ? date.getUTCDate() : date.getDate();
-    var m = gmt ? date.getUTCMonth() : date.getMonth();
-    var y = gmt ? date.getUTCFullYear() : date.getFullYear();
-    var res = new Date();
-    if (gmt)
-        res.setUTCFullYear(y, m, 1);
-    else
-        res.setFullYear(y, m, 1);
-    return beginOfDay(res, gmt);
-};
-
-/**
- * @param {Date} date
- * @param {Boolean} gmt default:false
- * @return {Date} date at 00:00 AM 
- */
-function beginOfYear(date, gmt) {
-    gmt = !!gmt;
-    var d = gmt ? date.getUTCDate() : date.getDate();
-    var m = gmt ? date.getUTCMonth() : date.getMonth();
-    var y = gmt ? date.getUTCFullYear() : date.getFullYear();
-    var res = new Date();
-    if (gmt)
-        res.setUTCFullYear(y, 0, 1);
-    else
-        res.setFullYear(y, 0, 1);
-    return beginOfDay(res, gmt);
-};
-
-
-/**
- * @param {Date} date0
- * @param {Date} date1
- * @param {Boolean} gmt default:false
- * @return {number} 
- */
-function compareDate(date0, date1, gmt) {
-    var date0 = beginOfDay(date0, !!gmt);
-    var date1 = beginOfDay(date1, !!gmt);
-    return (date0.getTime() - date1.getTime()) / (86400000);
-};
-
-
-
-/**
- * @param {Date} date0
- * @param {Date} date1
- * @param {Boolean} gmt default:false
- * @return {number} 
- */
-
-function compareMonth(date0, date1, gmt) {
-    gmt = !!gmt;
-    var m0 = gmt ? date0.getUTCMonth() : date0.getMonth();
-    var y0 = gmt ? date0.getUTCFullYear() : date0.getFullYear();
-
-    var m1 = gmt ? date1.getUTCMonth() : date1.getMonth();
-    var y1 = gmt ? date1.getUTCFullYear() : date1.getFullYear();
-
-    return (y0 - y1) * 12 + (m0 - m1);
-};
-
-function compareYear(date0, date1, gmt) {
-    gmt = !!gmt;
-    var y0 = gmt ? date0.getUTCFullYear() : date0.getFullYear();
-    var y1 = gmt ? date1.getUTCFullYear() : date1.getFullYear();
-    return y0 - y1;
-};
-
-
-
-/**
- * 
- * @param {Date} date
- * @returns {Date} 
- */
-function nextMonth(date) {
-    var m = date.getMonth();
-    var y = date.getFullYear();
-    if (m == 11) {
-        return new Date(y + 1, 0, 1, 0, 0, 0, 0);
-    }
-    else {
-        return new Date(y, m + 1, 1, 0, 0, 0, 0);
-    }
-}
-
-/**
- * 
- * @param {Date} date
- * @returns {Date} 
- */
-function prevMonth(date) {
-    var m = date.getMonth();
-    var y = date.getFullYear();
-    if (m == 0) {
-        return new Date(y - 1, 11, 1, 0, 0, 0, 0);
-    }
-    else {
-        return new Date(y, m - 1, 1, 0, 0, 0, 0);
-    }
-}
-
-/**
- * 
- * @param {Number} year
- * @param {Number} month
- * @returns {Number}
- */
-function daysInMonth(year, month) {
-    var start = new Date(year, month, 1);
-    var end = nextMonth(start);
-    return compareDate(end, start);
-}
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ChromeCalendar.js
 
 
@@ -43073,52 +43396,6 @@ dom_Fcore.install('sort-down', function () {
   APP: 'pizo',
   VERSION: '0.0.1'
 });
-// CONCATENATED MODULE: ./node_modules/absol/src/AppPattern/CMDRunner.js
-function CMDRunner(_this, commands) {
-    this._this = _this;
-    this.commands = {};
-    this.assign(commands);
-}
-
-
-
-CMDRunner.prototype.has = function (cmdName) {
-    return !!this.commands[cmdName];
-};
-
-
-CMDRunner.prototype.add = function (cmdName, handler) {
-    this.commands[cmdName] = handler;
-    return this;
-};
-
-
-CMDRunner.prototype.remove = function (cmdName) {
-    delete this.commands[cmdName];
-    return this;
-};
-
-CMDRunner.prototype.assign = function (obj) {
-    for (var cmdName in obj) {
-        if (typeof obj[cmdName] == 'function') {
-            this.add(cmdName, obj[cmdName]);
-        }
-    }
-};
-
-CMDRunner.prototype.invoke = function () {
-    if (this.commands[arguments[0]]) {
-        var args = Array.prototype.slice.call(arguments, 1);
-        return this.commands[arguments[0]].apply(this._this, args);
-    }
-    else {
-        throw new Error('No command: ' + arguments[0]);
-    }
-};
-
-/* harmony default export */ var AppPattern_CMDRunner = (CMDRunner);
-
-
 // CONCATENATED MODULE: ./js/component/BaseView.js
 
 
@@ -43244,12 +43521,14 @@ HashTable.prototype.functionSetHash = function (data) {
   }
 };
 
-HashTable.prototype.getKey = function (key) {
+HashTable.prototype.getKey = function (key, index) {
   if (key === "") {
     for (var i = 0; i < this.data.length; i++) {
       if (this.data.isFilter) {
         if (this.data[i].isFilter === true) this.data[i].visiable = true;else this.data[i].visiable = false;
       } else if (this.data[i].isFilter === undefined) this.data[i].visiable = true;else this.data[i].visiable = false;
+
+      this.data[i].isSearch = undefined;
     }
 
     this.data.isSearch = undefined;
@@ -43265,49 +43544,62 @@ HashTable.prototype.getKey = function (key) {
     var arrCharacter = this.hash[key[i].toLocaleLowerCase()];
 
     Loop1: for (var row in arrCharacter) {
-      rowElement = arrCharacter[row];
+      if (index === undefined) rowElement = arrCharacter[row];else if (arrCharacter[row][index] !== undefined) rowElement = [arrCharacter[row][index]];else continue;
       if (check[row] === undefined) check[row] = [];
 
       Loop2: for (var column in rowElement) {
+        if (check[row][column] === undefined && i !== 0) {
+          continue;
+        }
+
         objectElement = rowElement[column];
         if (Array.isArray(objectElement)) for (var j = 0; j < objectElement.length; j++) {
-          if (check[row][column] === undefined || objectElement[j][0] > check[row][column][0]) {
-            if (check[row][column] === undefined) {
-              check[row][column] = objectElement[j];
-              check[row][column].indexCharacter = key.length - 1;
-            } else {
-              var tempIndex = check[row][column].indexCharacter;
-              check[row][column] = objectElement[j];
-              check[row][column].indexCharacter = tempIndex - 1;
-            }
-
-            if (check[row][column].indexCharacter == 0) {
-              objectElement[j][1].confirm = true;
-              var arrParent = row.split("_");
-              var k = 0;
-              var stringCheck = arrParent[k];
-
-              while (k < arrParent.length) {
-                for (var param in check[stringCheck]) {
-                  if (this.data.isFilter) {
-                    if (check[stringCheck][param][1].isFilter === true) check[stringCheck][param][1].confirm = true;else check[stringCheck][param][1].confirm = undefined;
-                  } else if (check[stringCheck][param][1].isFilter === undefined) check[stringCheck][param][1].confirm = true;else check[stringCheck][param][1].confirm = undefined;
-
-                  check[stringCheck][param][1].isSearch = true;
-                  break;
-                }
-
-                stringCheck += "_" + arrParent[k++];
+          if (check[row][column] === undefined) {
+            check[row][column] = objectElement[j];
+            check[row][column].indexCharacter = key.length - 1;
+            check[row][column].tempExactly = parseFloat("0." + objectElement[j][0]);
+          } else {
+            if (objectElement[j][0] > check[row][column][0]) {
+              if (check[row][column].indexCharacter !== key.length - i) {
+                delete check[row][column];
+                continue Loop2;
+              } else {
+                var tempIndex = check[row][column].indexCharacter;
+                var tempExactly = check[row][column].tempExactly + (objectElement[j][0] - check[row][column][0]);
+                check[row][column] = objectElement[j];
+                check[row][column].indexCharacter = tempIndex - 1;
+                check[row][column].tempExactly = tempExactly;
               }
+            } else {
+              continue;
+            }
+          }
 
-              continue Loop1;
+          if (check[row][column].indexCharacter == 0) {
+            var arrParent = row.split("_");
+            var k = 0;
+            var stringCheck = arrParent[k];
+
+            while (k < arrParent.length) {
+              if (this.data.isFilter) {
+                if (check[stringCheck][column][1].isFilter === true) {
+                  check[stringCheck][column][1].confirm = true;
+                  if (check[stringCheck][column][1].exactly === undefined) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;else if (check[stringCheck][column][1].exactly > check[stringCheck][column].tempExactly) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
+                } else check[stringCheck][column][1].confirm = undefined;
+              } else if (check[stringCheck][column][1].isFilter === undefined) {
+                check[stringCheck][column][1].confirm = true;
+                if (check[stringCheck][column][1].exactly === undefined) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;else if (check[stringCheck][column][1].exactly > check[stringCheck][column].tempExactly) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
+              } else check[stringCheck][column][1].confirm = undefined;
+
+              check[stringCheck][column][1].isSearch = true;
+              stringCheck += "_" + arrParent[k++];
             }
 
-            continue Loop2;
+            continue Loop1;
           } else {
             objectElement[j][1].isSearch = undefined;
             objectElement[j][1].confirm = undefined;
-            continue;
+            continue Loop2;
           }
         }
       }
@@ -43543,18 +43835,19 @@ function getGMT(date) {
   if (onlyDay === false) return resultDayMonth.join('-') + " " + resultTime.join(':');else return resultDayMonth.join('-');
 }
 function consoleArea(areas) {
-  var result = {
+  var result = [];
+  var multipolygon = {
     type: "FeatureCollection",
     features: []
   };
-  var k = 0;
   areas.forEach(function (f) {
+    console.log(f);
+
     if (f._area > 1.1368683772161603e-13) {
       var vertices = f.vertexlist;
 
       if (vertices !== undefined) {
         var temp = [];
-        var sum = 0;
 
         for (var i = 0; i < vertices.length; i++) {
           temp.push([vertices[i].x, vertices[i].y]);
@@ -43562,7 +43855,7 @@ function consoleArea(areas) {
 
         temp.push([vertices[0].x, vertices[0].y]);
         temp = checkRule(temp);
-        result.features.push({
+        multipolygon.features.push({
           type: "Feature",
           properties: {},
           geometry: {
@@ -43575,6 +43868,38 @@ function consoleArea(areas) {
   });
   return result;
 }
+function consoleWKT(areas) {
+  var multipolygon = "MULTIPOLYGON(";
+  var polygon,
+      isFirst,
+      coordinates,
+      isFirstPolygon = "";
+  areas.forEach(function (f) {
+    if (f._area > 1.1368683772161603e-13) {
+      var vertices = f.vertexlist;
+
+      if (vertices !== undefined) {
+        polygon = "";
+        coordinates = "";
+        isFirst = "";
+
+        for (var i = 0; i < vertices.length; i++) {
+          coordinates += isFirst + vertices[i].x + " " + vertices[i].y;
+          isFirst = ",";
+        }
+
+        coordinates += isFirst + vertices[0].x + " " + vertices[0].y;
+        coordinates = checkRuleWKT(coordinates);
+        polygon += "((" + coordinates + "))";
+      }
+
+      multipolygon += isFirstPolygon + polygon;
+      isFirstPolygon = ",";
+    }
+  });
+  multipolygon += ")";
+  return multipolygon;
+}
 function checkRule(poly) {
   var sum = 0;
 
@@ -43585,6 +43910,19 @@ function checkRule(poly) {
   }
 
   if (sum > 0) return poly.reverse();
+  return poly;
+}
+function checkRuleWKT(poly) {
+  var sum = 0;
+  var polygon = poly.split(",");
+
+  for (var i = 0; i < polygon.length - 1; i++) {
+    var cur = polygon[i].split(" "),
+        next = polygon[i + 1].split(" ");
+    sum += (next[0] - cur[0]) * (parseFloat(next[1]) + parseFloat(cur[1]));
+  }
+
+  if (sum > 0) return polygon.reverse().join();
   return poly;
 }
 function loaddingWheel() {
@@ -43634,7 +43972,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
  // import TabView from 'absol-acomp/js/TabView';
-
 
 
 
@@ -43901,37 +44238,10 @@ function fakeInput(text, size) {
 
 function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result) {
   var y = pageY - result.getBoundingClientRect().top;
-  y -= shiftY; // var height = result.clientHeight;
-  // 
-  // if(y>tempx){
-  //     y = tempx;
-  //     // bg.noAction = true;
-  //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
-  //     return;
-  // }
-  // if(y< clone.clientHeight/2){
-  //     y = clone.clientHeight/2;
-  //     // bg.noAction = true;
-  //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
-  //     return;
-  // }
-
+  y -= shiftY;
   clone.style.top = y + 'px';
   var x = pageX - result.getBoundingClientRect().left;
   x -= shiftX;
-  var width = result.clientWidth; // if(x>tempx){
-  //     x = tempx;
-  //     // bg.noAction = true;
-  //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
-  //     return;
-  // }
-  // if(x< clone.clientWidth/2){
-  //     x = clone.clientWidth/2;
-  //     // bg.noAction = true;
-  //     // outFocus(clone, trigger, functionCheckZone, bg, parent);
-  //     return;
-  // }
-
   clone.style.left = x + 'px';
 }
 
@@ -44092,7 +44402,7 @@ function moveElementFix(event, me, result, index) {
       var row2 = removeList.row2;
 
       if (row1 === undefined && row2 === 0) {
-        outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
+        outFocus(clone, trigger, functionCheckZone, bg, result);
         return;
       }
 
@@ -44103,7 +44413,7 @@ function moveElementFix(event, me, result, index) {
       }
 
       if (element === removeList.elementReal) {
-        outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
+        outFocus(clone, trigger, functionCheckZone, bg, result);
         return;
       }
 
@@ -44136,7 +44446,7 @@ function moveElementFix(event, me, result, index) {
       if (result.checkSpan !== undefined) result.checkSpan = changeIndex(result.checkSpan, index - 1, row1);
     }
 
-    outFocus(clone, trigger, functionCheckZone, bg, result.bodyTable);
+    outFocus(clone, trigger, functionCheckZone, bg, result);
   };
 
   window.addEventListener('mousemove', trigger);
@@ -44180,23 +44490,6 @@ function changeIndex(arr, old_index, new_index) {
   return arr;
 }
 
-tableView.prototype.checkLongRow = function (index) {
-  var result = this;
-  var delta = [];
-
-  for (var i = 0; i < result.clone.length; i++) {
-    delta[i] = 0;
-
-    if (result.checkSpan !== undefined) {
-      for (var j = 0; j < index; j++) {
-        if (result.checkSpan[j] !== undefined) if (result.checkSpan[j][i] !== undefined) delta[i]++;
-      }
-    }
-  }
-
-  return delta;
-};
-
 function AABBYY(x, y, bound) {
   if (bound.x === 0 && bound.y === 0 && bound.width === 0 && bound.height === 0) return true;
   return x >= bound.x && y >= bound.y && x <= bound.x + bound.width && y <= bound.y + bound.height;
@@ -44215,6 +44508,8 @@ function outFocus(clone, trigger, functionCheckZone, bg, parent) {
     bg.selfRemove();
   }, 20);
   clone.selfRemove();
+  var event = new CustomEvent('dragdrop');
+  parent.bodyTable.parentNode.dispatchEvent(event);
 }
 
 function captureMousePosition(event) {
@@ -44264,10 +44559,11 @@ function tableView() {
 
   result.updatePagination = function () {
     var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : result.tempIndexRow;
+    var isRedraw = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
     result.tempIndexRow = number;
 
     if (result.paginationElement !== undefined) {
-      result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+      if (isRedraw) result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
       var pagination = result.pagination(result.tempIndexRow);
       result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
     } else {
@@ -44278,7 +44574,7 @@ function tableView() {
     result.paginationElement = pagination;
   };
 
-  result.updatePagination(indexRow);
+  result.updatePagination(indexRow, false);
   setTimeout(function () {
     if (window.scrollEvent === undefined) {
       window.xMousePos = 0;
@@ -44406,6 +44702,18 @@ function tableView() {
             if (me.classList.contains("downgrade")) me.classList.remove("downgrade");
           }
 
+          var event = new CustomEvent('sort', {
+            bubbles: true,
+            detail: {
+              event: event,
+              me: me,
+              index: index,
+              dataIndex: dataIndex,
+              row: row,
+              result: result
+            }
+          });
+          result.dispatchEvent(event);
           if (result.paginationElement.noneValue !== true) result.paginationElement.reActive();else result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
         };
       }
@@ -44550,6 +44858,23 @@ function tableView() {
   return result;
 }
 
+tableView.prototype.checkLongRow = function (index) {
+  var result = this;
+  var delta = [];
+
+  for (var i = 0; i < result.clone.length; i++) {
+    delta[i] = 0;
+
+    if (result.checkSpan !== undefined) {
+      for (var j = 0; j < index; j++) {
+        if (result.checkSpan[j] !== undefined) if (result.checkSpan[j][i] !== undefined) delta[i]++;
+      }
+    }
+  }
+
+  return delta;
+};
+
 tableView.prototype.setArrayFix = function (num, isLeft) {
   var i;
   var length;
@@ -44587,21 +44912,28 @@ tableView.prototype.setArrayScroll = function (num) {
   });
 };
 
-tableView.prototype.addInputSearch = function (input) {
+tableView.prototype.addInputSearch = function (input, index) {
   var self = this;
   self.hashTable = new HashTable(self.data);
 
   input.onchange = function (event) {
     var needUpdate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-    if (input.value !== input.lastInputSearch || needUpdate == true) {
-      self.checkTableView(input.value);
-      input.lastInputSearch = input.value;
-      self.updatePagination();
+    if (this.updateTimeOut !== undefined) {
+      clearTimeout(this._updateTimeOut);
+      this.updateTimeOut = undefined;
     }
+
+    this.updateTimeOut = setTimeout(function () {
+      if (input.value !== input.lastInputSearch || needUpdate == true) {
+        self.checkTableView(input.value, index);
+        input.lastInputSearch = input.value;
+        self.updatePagination();
+      }
+    }.bind(this), 200);
   };
 
-  input.addEventListener("input", input.onchange);
+  input.oninput = input.onchange;
   if (self.inputElement === undefined) self.inputElement = [];
   self.inputElement.push(input);
 };
@@ -44619,9 +44951,28 @@ tableView.prototype.addFilter = function (input, index) {
   self.inputFilter.push([input, index]);
 };
 
-tableView.prototype.checkTableView = function (value) {
+tableView.prototype.checkTableView = function (value, index) {
   var self = this;
-  self.hashTable.getKey(value);
+  self.hashTable.getKey(value, index);
+  self.data.sort(function (a, b) {
+    if (a.exactly === undefined) {
+      return -1;
+    }
+
+    if (b.exactly === undefined) {
+      return 1;
+    }
+
+    if (a.exactly < b.exactly) {
+      return -1;
+    }
+
+    if (a.exactly > b.exactly) {
+      return 1;
+    }
+
+    return 0;
+  });
 };
 
 tableView.prototype.checkTableViewFilter = function (value, index) {
@@ -44685,7 +45036,7 @@ tableView.prototype.setVisiableAll = function (arr) {
 };
 
 tableView.prototype.getBodyTable = function (data) {
-  var i = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var temp = this.bodyTable;
   var result = this,
       k,
@@ -44696,12 +45047,13 @@ tableView.prototype.getBodyTable = function (data) {
   if (parent.checkSpan === undefined) result.checkSpan = [];
   if (result.indexRow == undefined || result.indexRow == this.tempIndexRow) result.indexRow = 0;
 
-  for (i; i < data.length && this.indexRow < this.tempIndexRow; i++) {
+  for (var i = 0; i < data.length && this.indexRow < this.tempIndexRow; i++) {
     if (data[i].child !== undefined) data[i].child.updateVisible = data.updateVisible;
 
     if (data.updateVisible === true) {
       var tempCheck = data[i].confirm;
       data[i].confirm = undefined;
+      data[i].exactly = undefined;
 
       if (tempCheck !== true) {
         data[i].visiable = false;
@@ -44716,6 +45068,11 @@ tableView.prototype.getBodyTable = function (data) {
         if (data[i].child !== undefined) result.getBodyTable(data[i].child);
         continue;
       }
+    }
+
+    if (index !== 0) {
+      index--;
+      continue;
     }
 
     row = result.getRow(data[i]);
@@ -44746,7 +45103,7 @@ tableView.prototype.getBodyTable = function (data) {
     this.indexRow++;
   }
 
-  result.setConfirm(data, i);
+  if (data.updateVisible) result.setConfirm(data, i);
   if (result.checkMargin !== undefined) result.checkMargin();
   data.updateVisible = undefined;
   result.childrenNodes = result.childrenNodes.concat(arr);
@@ -44758,7 +45115,9 @@ tableView.prototype.setConfirm = function (arr) {
   var i = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
   for (i; i < arr.length; i++) {
+    if (arr[i].confirm !== undefined) arr[i].visiable = arr[i].confirm;else arr[i].visiable = false;
     arr[i].confirm = undefined;
+    arr[i].exactly = undefined;
 
     if (arr[i].child !== undefined) {
       this.setConfirm(arr[i].child);
@@ -44775,7 +45134,7 @@ tableView.prototype.countRowChild = function (arr) {
   var countRowVisiable = 0;
 
   for (var i = 0; i < arr.length; i++) {
-    if (arr[i].visiable !== false) countRowVisiable++;
+    if (arr[i].visiable != false) countRowVisiable++;
     if (arr[i].child !== undefined) countRowVisiable += this.countRowChild(arr[i].child);
   }
 
@@ -44917,12 +45276,15 @@ tableView.prototype.pagination = function (number, functionClick) {
             if (active !== undefined) active.classList.remove("active");
             this.classList.add("active");
             temp.updateSize();
-            paginationLeftPos = this.offsetLeft + "px";
             paginationOpacity = 1;
             checkPaginationClick = 1;
-            overlay.style.left = paginationLeftPos;
             overlay.style.backgroundColor = "#00178a";
             overlay.style.opacity = paginationOpacity;
+            var x = this;
+            setTimeout(function () {
+              paginationLeftPos = x.offsetLeft + "px";
+              overlay.style.left = paginationLeftPos;
+            }, 10);
             this.style.color = "#fff";
             if (functionClick !== undefined) functionClick(event, i);
             self.updateTable(undefined, self.data, self.dragHorizontal, self.dragVertical, i * number);
@@ -45000,12 +45362,13 @@ tableView.prototype.pagination = function (number, functionClick) {
 
   temp.updateSize = function () {
     setTimeout(function () {
+      temp.detailLeft.style.display = "";
+      temp.detailRight.style.display = "";
+
       for (var i = 0; i < displayNone.length; i++) {
         displayNone[i].style.display = "";
       }
 
-      temp.detailLeft.style.display = "";
-      temp.detailRight.style.display = "";
       var count = parseInt((self.offsetWidth - 20) / 50) - 4;
       var i = 0;
       var active = ModuleView_$("a.active", container);
@@ -45564,7 +45927,130 @@ tableView.prototype.updateTable = function (header) {
 };
 
 tableView.prototype.insertRow = function (data) {
-  return this.updateRow(data, this.childrenNodes.length);
+  var checkMust = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var result = this,
+      k,
+      cell;
+  if (result.isUpdate === false) return;
+  var delta = [];
+  var index = result.childrenNodes.length;
+  var row = result.getRow(data);
+
+  for (var i = 0; i < result.clone.length; i++) {
+    delta[i] = 0;
+
+    if (result.checkSpan !== undefined) {
+      if (result.checkSpan[index] !== undefined) {
+        if (result.checkSpan[index][i] === 6) {
+          result.checkSpan[index][i] = undefined;
+          result.clone[i].splice(index + 1, 0, {});
+        }
+      }
+
+      for (var j = 0; j < index; j++) {
+        if (result.checkSpan[j] !== undefined) if (result.checkSpan[j][i] !== undefined) delta[i]++;
+      }
+    }
+  }
+
+  var checkChild = false;
+  if (result.tagName === "TABLE") result.bodyTable.addChild(row);else {
+    checkChild = true;
+    if (!result.classList.contains("more-child")) result.setDisPlay();
+    result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length - 1].parentNode.nextSibling);
+  }
+
+  for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
+    k = parseFloat(this.bodyTable.parentNode.clone[i][0].id);
+    cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
+
+    if (cell === 6) {
+      result.clone[k++].splice(index, 1);
+      continue;
+    }
+
+    if (cell === 2) {
+      k++;
+      continue;
+    }
+
+    if (cell === true) {
+      continue;
+    }
+
+    cell.clone = result.clone;
+    if (result.clone[i] === undefined) result.clone[i] = [];
+    result.clone[i][index + 1 - delta[i]] = cell;
+    k++;
+    row.addChild(cell);
+  }
+
+  var x;
+  result.childrenNodes[index] = row;
+
+  if (result.tagName !== "TABLE") {
+    if (index === result.data.child.length) {
+      result.data.child.push(data);
+      x = data;
+    } else {
+      x = Object.assign(result.data.child[index], data);
+      result.data.child[index] = x;
+    }
+  } else {
+    if (index === result.data.length) {
+      result.data.push(data);
+      x = data;
+    } else {
+      x = Object.assign(result.data[index], data);
+      result.data[index] = x;
+    }
+  }
+
+  row.data = x;
+  var temp;
+
+  if (temp !== undefined) {
+    row.childrenNodes = temp.childrenNodes;
+    row.clone = temp.clone;
+    row.checkSpan = temp.checkSpan;
+
+    if (row.clone !== undefined) {
+      var k = 0,
+          l = 0;
+      var delta = 0;
+
+      for (var i = 0; i < row.clone.length; i++) {
+        if (row.clone[i][0] === temp.childNodes[k]) {
+          row.clone[i].shift();
+          k++;
+        }
+
+        if (delta > 0) {
+          delta--;
+          continue;
+        }
+
+        row.clone[i].unshift(row.childNodes[l]);
+
+        if (row.childNodes[l].colSpan != 1) {
+          delta += row.childNodes[l].colSpan - 1;
+        }
+
+        l++;
+      }
+    }
+  }
+
+  if (checkChild === true || checkMust === true) {
+    if (result.checkIcon !== undefined) result.checkIcon();
+  }
+
+  if (row.childrenNodes.length !== 0) row.checkIcon();else row.checkClone();
+  if (result.checkMargin !== undefined) result.checkMargin(); //    result.checkDataUpdate(row);
+
+  result.bodyTable.parentNode.resetHash();
+  result.bodyTable.parentNode.updateHash(row);
+  return row;
 };
 
 tableView.prototype.updateRow = function (data, index) {
@@ -45595,22 +46081,20 @@ tableView.prototype.updateRow = function (data, index) {
 
   var checkChild = false;
 
-  if (index === result.childrenNodes.length) {
-    if (result.tagName === "TABLE") result.bodyTable.addChild(row);else {
-      checkChild = true;
-      if (!result.classList.contains("more-child")) result.setDisPlay();
-      result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length - 1].parentNode.nextSibling);
-    }
-  } else {
-    var temp;
-    temp = result.childrenNodes[index];
-    result.bodyTable.replaceChild(row, temp);
-    row.classList.value = temp.classList.value;
+  if (data.isCheckUpdate === true) {
+    var table = result.bodyTable.parentNode;
+    table.updateTable(undefined, table.data);
+    return;
+  }
 
-    if (temp.childrenNodes !== undefined) {
-      row.childrenNodes = temp.childrenNodes;
-      row.clone = temp.clone;
-    }
+  var temp;
+  temp = result.childrenNodes[index];
+  result.bodyTable.replaceChild(row, temp);
+  row.classList.value = temp.classList.value;
+
+  if (temp.childrenNodes !== undefined) {
+    row.childrenNodes = temp.childrenNodes;
+    row.clone = temp.clone;
   }
 
   for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
@@ -45639,29 +46123,15 @@ tableView.prototype.updateRow = function (data, index) {
   }
 
   var x, indexData;
-  if (result.childrenNodes[index] === undefined) indexData = undefined;else indexData = result.childrenNodes[index].data;
+  if (result.childrenNodes[index] === undefined) indexData = result.childrenNodes.length;else indexData = index;
   result.childrenNodes[index] = row;
 
   if (result.tagName !== "TABLE") {
-    indexData = result.data.child.indexOf(indexData);
-
-    if (indexData === -1) {
-      result.data.child.push(data);
-      x = data;
-    } else {
-      x = Object.assign(result.data.child[indexData], data);
-      result.data.child[indexData] = x;
-    }
+    x = Object.assign(result.data.child[indexData], data);
+    result.data.child[indexData] = x;
   } else {
-    indexData = result.data.indexOf(indexData);
-
-    if (indexData === -1) {
-      result.data.push(data);
-      x = data;
-    } else {
-      x = Object.assign(result.data[indexData], data);
-      result.data[indexData] = x;
-    }
+    x = Object.assign(result.data[indexData], data);
+    result.data[indexData] = x;
   }
 
   row.data = x;
@@ -45734,9 +46204,11 @@ tableView.prototype.dropRow = function (index) {
 
       if (parent.childrenNodes.length !== 0) {
         if (parent.data.child !== undefined) {
-          parent.data.child.splice(parent.data.child.indexOf(element.data), 1);
+          var indexData = parent.data.child.indexOf(element.data);
+          if (indexData !== -1) parent.data.child.splice(indexData, 1);
         } else {
-          parent.data.splice(parent.data.indexOf(element.data), 1);
+          var indexData = parent.data.indexOf(element.data);
+          if (indexData !== -1) parent.data.splice(indexData, 1);
         }
 
         parent.childrenNodes.splice(parent.childrenNodes.indexOf(element), 1);
@@ -46777,7 +47249,771 @@ var imagesilder = __webpack_require__(166);
 // EXTERNAL MODULE: ./css/MapView.css
 var MapView = __webpack_require__(168);
 
+// CONCATENATED MODULE: ./js/component/jsform.js
+var FormClass = {
+  openUrlInNewTab: function openUrlInNewTab(url) {
+    // must exec in "onclick" event
+    window.open(url, "_blank");
+  },
+  form_post_newtab: function form_post_newtab(url, params) {
+    form_post(url, params, "_blank");
+  },
+  form_post: function form_post(url, params, target) {
+    var form = document.createElement("form");
+
+    if (params === undefined) {
+      params = [];
+      target = null;
+    } else if (target === undefined) {
+      target = null;
+    }
+
+    var hiddenField;
+    var i;
+    form.setAttribute("method", "post");
+    form.setAttribute("action", url);
+    if (target != null) form.setAttribute("target", target);
+
+    for (i = 0; i < params.length; i++) {
+      hiddenField = document.createElement("input");
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("name", params[i][0]);
+      hiddenField.setAttribute("value", params[i][1]);
+      form.appendChild(hiddenField);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+  },
+  unpackString: function unpackString(params) {
+    var xlen, hlen, data;
+    if (params.offset === undefined) params.offset = 0;
+    xlen = parseInt(param.text.substr(params.offset, 1), 16);
+    params.offset += 1;
+    hlen = parseInt(param.text.substr(params.offset, xlen), 16);
+    params.offset += xlen;
+    data = param.text.substr(params.offset, hlen);
+    params.offset += hlen;
+    return data;
+  },
+  parseArray_o: function parseArray_o(params) {
+    var i, len, code, data;
+    code = params.text.substr(params.offset, 1);
+    params.offset += 1;
+
+    if (code == "v") {
+      return EncodingClass.utf8.decode(FormClass.unpackString(params));
+    }
+
+    if (code == "a") {
+      len = parseInt(FormClass.unpackString(params), 10);
+      data = [];
+
+      for (i = 0; i < len; i++) {
+        data.push(FormClass.parseArray_o(params));
+      }
+
+      return data;
+    }
+
+    return null;
+  },
+  parseArray: function parseArray(str) {
+    return parseArray_o({
+      text: str,
+      offset: 0
+    });
+  },
+  urlencode: function urlencode(str) {
+    str = str + '';
+    return encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A').replace(/%20/g, '+');
+  },
+  queue: function queue(n) {
+    var r,
+        i,
+        x = [];
+
+    for (i = 0; i < n; i++) {
+      x.push(null);
+    }
+
+    r = {
+      list: [],
+      buffer: x
+    };
+
+    r.call = function (r) {
+      return function (tparams) {
+        r.list.push(tparams);
+      };
+    }(r);
+
+    r.release = function (r) {
+      return function () {
+        r.list = null;
+        r.buffer = null;
+      };
+    }(r);
+
+    r.thread = function (r) {
+      return function () {
+        var i, j, c, x, t;
+
+        if (r.buffer != null && r.list != null) {
+          if (r.list.length > 0) {
+            c = 0;
+
+            for (i = 0; i < r.buffer.length; i++) {
+              if (r.buffer[i] == null) {
+                c = 1;
+                break;
+              }
+            }
+
+            if (c > 0) {
+              for (i = 0; i < r.buffer.length; i++) {
+                if (r.buffer[i] == null) {
+                  r.buffer[i] = r.list[0].func;
+
+                  r.list[0].func = function (i) {
+                    return function (success, message) {
+                      var t;
+
+                      if (r.buffer != null) {
+                        t = r.buffer[i];
+                        r.buffer[i] = null;
+                        if (t != null) t(success, message);
+                      }
+                    };
+                  }(i);
+
+                  t = r.list.shift();
+                  FormClass.api_call(t);
+                  if (r.list.length == 0) break;
+                }
+              }
+            }
+          }
+
+          setTimeout(function () {
+            r.thread();
+          }, 10);
+        }
+      };
+    }(r);
+
+    setTimeout(function () {
+      r.thread();
+    }, 10);
+    return r;
+  },
+  api_call: function api_call(calldata) {
+    var st;
+    var i, k;
+    var boundary;
+    var index, url, params, fileuploads, func;
+    var x = {
+      req: null,
+      func: calldata.func
+    };
+    url = calldata.url;
+    params = calldata.params;
+
+    if (calldata.fileuploads !== undefined) {
+      fileuploads = calldata.fileuploads;
+    } else {
+      fileuploads = [];
+    }
+
+    try {
+      x.req = new XMLHttpRequest();
+    } catch (e) {
+      try {
+        x.req = new ActiveXObject("Msxml2.XMLHTTP");
+      } catch (e) {
+        try {
+          x.req = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (oc) {
+          alert("No AJAX Support");
+          return;
+        }
+      }
+    }
+
+    x.req.onreadystatechange = function (x) {
+      return function () {
+        if (x.req.readyState == 4) {
+          if (x.req.status == 200) {
+            x.func(true, x.req.responseText);
+          } else if (x.req.statusText != "") {
+            x.func(false, "Response Code: " + x.req.status + " / " + x.req.statusText);
+          } else {
+            x.func(false, "Response Code: " + x.req.status);
+          }
+        }
+      };
+    }(x);
+
+    if (params.length > 0 || fileuploads.length > 0) {
+      x.req.open("POST", url, true);
+      i = new Date().getTime();
+      boundary = i + EncodingClass.md5.encode(i);
+      x.req.setRequestHeader("Content-type", "multipart/form-data; boundary=" + boundary);
+      st = "";
+
+      for (i = 0; i < params.length; i++) {
+        st += "--" + boundary + "\r\n";
+        st += "Content-Disposition: form-data; ";
+        st += "name=\"" + EncodingClass.utf8.encode(params[i].name) + "\"\r\n\r\n";
+        st += EncodingClass.utf8.encode(params[i].value) + "\r\n";
+      }
+
+      for (i = 0; i < fileuploads.length; i++) {
+        st += "--" + boundary + "\r\n";
+        st += "Content-Disposition: form-data; ";
+        st += "name=\"" + EncodingClass.utf8.encode(fileuploads[i].name) + "\"; filename=\"" + EncodingClass.utf8.encode(fileuploads[i].filename) + "\"\r\n\r\n";
+        st += fileuploads[i].content + "\r\n";
+      }
+
+      st += "--" + boundary + "--\r\n";
+      var nBytes = st.length,
+          ui8Data = new Uint8Array(nBytes);
+
+      for (var nIdx = 0; nIdx < nBytes; nIdx++) {
+        ui8Data[nIdx] = st.charCodeAt(nIdx) & 0xff;
+      }
+
+      x.req.send(ui8Data);
+    } else {
+      x.req.open("GET", url, true);
+      x.req.send(null);
+    }
+  },
+  convertFileToFunctionString: function convertFileToFunctionString() {
+    var x = DOMElement.input({
+      attrs: {
+        type: "file",
+        multiple: true
+      }
+    });
+
+    var convertfunc = function convertfunc(flist, tf) {
+      var i, n;
+      if (flist.length == 0) return;
+      var f = new FileReader();
+      var filehandle = flist.shift();
+
+      f.onload = function (flist, tf, filehandle) {
+        return function (e) {
+          var st;
+          var i, k, n;
+          n = e.target.result.length;
+          st = "function () {\r\n";
+          st += "var s = \"\";\r\n";
+
+          for (i = 0; i < n; i = k) {
+            k = i + 96;
+            if (k > n) k = n;
+            st += "s += \"" + EncodingClass.base64.encode(e.target.result.substr(i, k - i)) + "\";\r\n";
+          }
+
+          st += "return EncodingClass.base64.decode(s);\r\n";
+          st += "}();";
+          FormClass.saveAsText(filehandle.name + ".txt", st);
+          setTimeout(function (flist, tf) {
+            return function () {
+              tf(flist, tf);
+            };
+          }(flist, tf), 100);
+        };
+      }(flist, tf, filehandle);
+
+      f.readAsBinaryString(filehandle);
+    };
+
+    var submitbutton = DOMElement.input({
+      attrs: {
+        type: "submit",
+        value: "Convert",
+        onclick: function (inputElement, func) {
+          return function (event, me) {
+            var i,
+                n = inputElement.files.length;
+            var flist = [];
+            if (n == 0) return;
+
+            for (i = 0; i < n; i++) {
+              flist.push(inputElement.files[i]);
+            }
+
+            setTimeout(function (func, flist) {
+              return function () {
+                func(flist, func);
+              };
+            }(func, flist), 100);
+            ModalElement.close();
+          };
+        }(x, convertfunc)
+      }
+    });
+    ModalElement.showWindow({
+      title: "convert file",
+      bodycontent: DOMElement.table({
+        data: [[x, {
+          style: {
+            width: "20px",
+            height: "28px"
+          }
+        }, submitbutton]]
+      })
+    });
+  },
+  saveAsText: function saveAsText(filename, textcontent) {
+    var st = EncodingClass.utf8.encode(textcontent);
+    var nBytes = st.length;
+    var x = new ArrayBuffer(nBytes);
+    var ui8Data = new Uint8Array(x);
+
+    for (var nIdx = 0; nIdx < nBytes; nIdx++) {
+      ui8Data[nIdx] = st.charCodeAt(nIdx) & 0xff;
+    }
+
+    return FormClass.saveAsRaw(filename, [new DataView(x)]);
+  },
+  saveAs: function saveAs(filename, content) {
+    var nBytes = content.length;
+    var x = new ArrayBuffer(nBytes);
+    var ui8Data = new Uint8Array(x);
+
+    for (var nIdx = 0; nIdx < nBytes; nIdx++) {
+      ui8Data[nIdx] = content[nIdx] & 0xff;
+    }
+
+    return FormClass.saveAsRaw(filename, [new DataView(x)]);
+  },
+  saveAsRaw: function saveAsRaw(filename, content) {
+    var xurl = window.URL || window.webkitURL;
+    if (xurl == null) return false;
+    var blob = new Blob(content, {
+      type: 'application/octet-binary'
+    });
+    if (blob == null) return false;
+    var element = document.createElement('a');
+    if (element == null) return false;
+    element.setAttribute('href', xurl.createObjectURL(blob));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    return true;
+  },
+  readFile: function readFile(filehandle, callbackFunc) {
+    var f = new FileReader();
+
+    f.onload = function (callbackFunc, filehandle) {
+      return function (e) {
+        callbackFunc([{
+          name: filehandle.name,
+          type: filehandle.type,
+          size: filehandle.size,
+          lastModified: new Date(filehandle.lastModified),
+          content: e.target.result
+        }]);
+      };
+    }(callbackFunc, filehandle);
+
+    f.readAsBinaryString(filehandle);
+  },
+  readFileFromInput: function readFileFromInput(inputElement, callbackFunc) {
+    var rv, i, f;
+
+    if (inputElement.files.length == 0) {
+      callbackFunc([]);
+      return;
+    }
+
+    if (inputElement.files.length == 1) {
+      FormClass.readFile(inputElement.files[0], callbackFunc);
+    } else {
+      rv = [];
+
+      for (i = 0; i < inputElement.files.length; i++) {
+        rv.push(undefined);
+      }
+
+      for (i = 0; i < inputElement.files.length; i++) {
+        FormClass.readFile(inputElement.files[i], function (rv, index, callbackFunc) {
+          return function (retval) {
+            var i;
+            rv[index] = retval[0];
+
+            for (i = 0; i < rv.length; i++) {
+              if (rv[i] === undefined) return;
+            }
+
+            callbackFunc(rv);
+          };
+        }(rv, i, callbackFunc));
+      }
+    }
+  },
+  readSingleFile: function readSingleFile(callbackFunc, accept) {
+    if (accept === undefined) accept = null;
+    var fi = DOMElement.input({
+      attrs: {
+        type: "file",
+        style: {
+          display: "none"
+        },
+        accept: accept
+      }
+    });
+
+    var x = function (element, callbackFunc) {
+      return function (retval) {
+        DOMElement.bodyElement.removeChild(element);
+        return callbackFunc(retval);
+      };
+    }(fi, callbackFunc);
+
+    fi.onchange = function (callbackFunc) {
+      return function (event) {
+        FormClass.readFileFromInput(this, callbackFunc);
+      };
+    }(x);
+
+    DOMElement.bodyElement.appendChild(fi);
+    fi.click();
+  },
+  readMultipleFiles: function readMultipleFiles(callbackFunc, accept) {
+    if (accept === undefined) accept = null;
+    var fi = DOMElement.input({
+      attrs: {
+        type: "file",
+        style: {
+          display: "none"
+        },
+        accept: accept,
+        multiple: true
+      }
+    });
+
+    var x = function (element, callbackFunc) {
+      return function (retval) {
+        DOMElement.bodyElement.removeChild(element);
+        return callbackFunc(retval);
+      };
+    }(fi, callbackFunc);
+
+    fi.onchange = function (callbackFunc) {
+      return function (event) {
+        FormClass.readFileFromInput(this, callbackFunc);
+      };
+    }(x);
+
+    DOMElement.bodyElement.appendChild(fi);
+    fi.click();
+  }
+};
+/* harmony default export */ var jsform = (FormClass);
+// CONCATENATED MODULE: ./js/component/ModuleDatabase.js
+
+var moduleDatabase = new ModuleDatabase();
+
+function ModuleDatabase() {
+  this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/template/";
+  this.data = [];
+}
+
+ModuleDatabase.prototype.getModule = function (name, listFilePHP) {
+  var isCreated = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+  if (isCreated == true || this.data[name] == undefined) {
+    this.data[name] = new DataStructure(this.hostDatabase, name, listFilePHP);
+    return this.data[name];
+  } else return this.data[name];
+};
+
+function DataStructure(hostDatabase, name) {
+  var listFilePHP = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ["load.php", "add.php", "update.php", "delete.php"];
+  this.phpLoader = hostDatabase + listFilePHP[0];
+  this.phpAdder = hostDatabase + listFilePHP[1];
+  this.phpUpdater = hostDatabase + listFilePHP[2];
+  this.phpDeleter = hostDatabase + listFilePHP[3];
+  this.name = name;
+  this.Libary = [];
+  this.sync = [];
+}
+
+DataStructure.prototype.load = function () {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var isLoaded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var self = this;
+
+  if (data.WHERE !== undefined && self.data !== undefined) {
+    if (isLoaded == false && self.data[data.WHERE] !== undefined) return Promise.resolve(self.data[data.WHERE]);
+    return new Promise(function (resolve, reject) {
+      self.queryData(self.phpLoader, data).then(function (value) {
+        if (self.data[data.WHERE == undefined]) self.data[data.WHERE] = [];
+        self.data[data.WHERE] = value;
+        resolve(value);
+      })["catch"](function (error) {
+        reject(error);
+        console.error(error);
+      });
+    });
+  } else {
+    if (isLoaded == false && self.data !== undefined) return Promise.resolve(self.data);
+    return new Promise(function (resolve, reject) {
+      self.queryData(self.phpLoader, data).then(function (value) {
+        self.data = value;
+        self.getLibary();
+        resolve(value);
+      })["catch"](function (error) {
+        reject(error);
+        console.error(error);
+      });
+    });
+  }
+};
+
+DataStructure.prototype.getLibary = function (param, formatFunction) {
+  var _this = this;
+
+  var isArray = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var isLoaded = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  return function (param) {
+    if (formatFunction === undefined) formatFunction = function formatFunction(data) {
+      return data;
+    };
+
+    if (param !== undefined) {
+      if (Array.isArray(param) === false) {
+        param = [param];
+      } else param = param;
+
+      for (var j = 0; j < param.length; j++) {
+        if (isLoaded === true || _this.Libary[param] == undefined) {
+          for (var i = 0; i < _this.data.length; i++) {
+            _this.setLibaryRow(_this.data[i], param[j], formatFunction, isArray);
+          }
+        }
+      }
+
+      if (param.length == 1) return _this.Libary[param[0]];
+    } else {
+      var isID = false;
+
+      for (var param in _this.Libary) {
+        if (param = "id") isID = true;
+
+        for (var i = 0; i < _this.data.length; i++) {
+          _this.setLibaryRow(_this.data[i], param, formatFunction, isArray);
+        }
+      }
+
+      if (isID == false) {
+        for (var i = 0; i < _this.data.length; i++) {
+          _this.setLibaryRow(_this.data[i], "id", formatFunction, isArray);
+        }
+      }
+    }
+
+    return _this.Libary;
+  }(param);
+};
+
+DataStructure.prototype.sync = function (element, functionSync) {
+  this.sync.push(element, functionSync);
+};
+
+DataStructure.prototype.setLibaryRow = function (data, param, formatFunction, isArray) {
+  if (this.Libary[param] === undefined) {
+    this.Libary[param] = [];
+    this.Libary[param].isArray = isArray;
+
+    this.Libary[param].formatFunction = function (data, param) {
+      var result = formatFunction(data);
+
+      result.getData = function () {
+        return data;
+      };
+
+      if (this[data[param]] == undefined || this[data[param]].index == 0) {
+        if (this.isArray == true) this[data[param]] = [result];else this[data[param]] = result;
+        this[data[param]].index = 0;
+      } else {
+        if (this[data[param]].index == 1 && this.isArray !== true) this[data[param]] = [this[data[param]]];
+        this[data[param]].push(result);
+      }
+
+      this[data[param]].index++;
+    };
+
+    this.Libary[param].deleteFunction = function (data, param) {
+      if (this[data[param]].index == 1 && this.isArray !== true) delete this[data[param]];else for (var i = 0; i < this[data[param]].length; i++) {
+        if (this[data[param]][i].getData() === data) {
+          this[data[param]].splice(i, 1);
+        }
+      }
+
+      if (this[data[param]] !== undefined) {
+        this[data[param]].index--;
+        if (this[data[param]].index == 1 && this.isArray !== true) this[data[param]] = this[data[param]][0];
+      }
+    };
+  }
+
+  this.Libary[param].formatFunction(data, param);
+
+  data.getList = function (name, value) {
+    var text = "";
+
+    for (var i = 0; i < name.length; i++) {
+      if (data[name] === undefined) text += name[i];else text += data[name[i]];
+    }
+
+    var checkvalue = "";
+    var isFirst = "";
+
+    for (var i = 0; i < value.length; i++) {
+      if (data[value[i]] === undefined) checkvalue += value[i];else checkvalue += isFirst + data[value[i]];
+      isFirst = "_";
+    }
+
+    return {
+      text: text,
+      value: checkvalue
+    };
+  };
+};
+
+DataStructure.prototype.getList = function (param, value, skip) {
+  var result = [];
+  if (skip == undefined) skip = function skip() {};
+
+  if (Array.isArray(param) != true) {
+    param = [param];
+  }
+
+  if (Array.isArray(value) != true) {
+    value = [value];
+  }
+
+  for (var i = 0; i < this.data.length; i++) {
+    if (skip(this.data[i])) continue;
+    result.push(this.data[i].getList(param, value));
+  }
+
+  return result;
+};
+
+DataStructure.prototype.add = function (data) {
+  var self = this;
+  return new Promise(function (resolve, reject) {
+    self.queryData(self.phpAdder, data).then(function (value) {
+      if (self.data.length == 0 && self.data) {} else {
+        data.id = value;
+
+        for (var param in self.Libary) {
+          if (typeof self.Libary[param] != "function") self.Libary[param].formatFunction(data, param);
+        }
+
+        self.data.push(data);
+      }
+
+      resolve(value);
+    })["catch"](function (err) {
+      reject(err);
+      console.error(err);
+    });
+  });
+};
+
+DataStructure.prototype.update = function (data) {
+  var self = this;
+  return new Promise(function (resolve, reject) {
+    self.queryData(self.phpUpdater, data).then(function (value) {
+      if (data.id !== undefined) {
+        var temp = self.Libary["id"][data.id];
+
+        for (var param in data) {
+          if (self.Libary[param] !== undefined && typeof self.Libary[param] != "function") {
+            if (temp[param] == data[param]) continue;
+            self.Libary[param].deleteFunction(temp, param);
+            temp[param] = data[param];
+            self.Libary[param].formatFunction(temp, param);
+          } else temp[param] = data[param];
+        }
+      }
+
+      resolve(temp);
+    })["catch"](function (err) {
+      reject(err);
+      console.error(err);
+    });
+  });
+};
+
+DataStructure.prototype["delete"] = function (data) {
+  var self = this;
+  return new Promise(function (resolve, reject) {
+    self.queryData(self.phpDeleter, data).then(function (value) {
+      if (data.id !== undefined) {
+        var temp = self.Libary["id"][data.id];
+
+        for (var param in self.Libary) {
+          if (typeof self.Libary[param] != "function") self.Libary[param].deleteFunction(temp, param);
+        }
+
+        self.data.splice(self.data.indexOf(temp), 1);
+      }
+
+      resolve();
+    })["catch"](function (err) {
+      reject(err);
+      console.error(err);
+    });
+  });
+};
+
+/* harmony default export */ var component_ModuleDatabase = (moduleDatabase);
+
+DataStructure.prototype.queryData = function (phpFile, data) {
+  var self = this;
+  var result = {};
+
+  for (var param in data) {
+    if (typeof data[param] == "function") continue;
+    result[param] = data[param];
+  }
+
+  return new Promise(function (resolve, reject) {
+    jsform.api_call({
+      url: phpFile,
+      params: [{
+        name: "name",
+        value: self.name
+      }, {
+        name: "data",
+        value: EncodingClass.string.fromVariable(result)
+      }],
+      func: function func(success, message) {
+        if (success) {
+          if (message.substr(0, 2) == "ok") {
+            var st = EncodingClass.string.toVariable(message.substr(2));
+            resolve(st);
+          } else {
+            reject(message);
+          }
+        }
+      }
+    });
+  });
+};
 // CONCATENATED MODULE: ./js/component/MapView.js
+
 
 
 
@@ -46839,19 +48075,33 @@ function DetailView(map) {
     }
   });
 
+  var arr = [];
+  arr.push(component_ModuleDatabase.getModule("states").load());
+  arr.push(component_ModuleDatabase.getModule("districts").load());
+  arr.push(component_ModuleDatabase.getModule("wards").load());
+
   var state = MapView_({
     tag: "selectmenu",
-    "class": "pizo-new-realty-location-detail-row-menu"
+    "class": "pizo-new-realty-location-detail-row-menu",
+    props: {
+      enableSearch: true
+    }
   });
 
-  var dictrict = MapView_({
+  var district = MapView_({
     tag: "selectmenu",
-    "class": "pizo-new-realty-location-detail-row-menu"
+    "class": "pizo-new-realty-location-detail-row-menu",
+    props: {
+      enableSearch: true
+    }
   });
 
   var ward = MapView_({
     tag: "selectmenu",
-    "class": "pizo-new-realty-location-detail-row-menu"
+    "class": "pizo-new-realty-location-detail-row-menu",
+    props: {
+      enableSearch: true
+    }
   });
 
   var street = MapView_({
@@ -46862,6 +48112,12 @@ function DetailView(map) {
   var number = MapView_({
     tag: "input",
     "class": "pizo-new-realty-location-detail-row-menu"
+  });
+
+  Promise.all(arr).then(function () {
+    state.items = component_ModuleDatabase.getModule("states").getList("name", "name");
+    district.items = component_ModuleDatabase.getModule("districts").getList("name", "name");
+    ward.items = component_ModuleDatabase.getModule("wards").getList("name", "name");
   });
 
   var lat, _long;
@@ -46936,7 +48192,7 @@ function DetailView(map) {
             innerHTML: "*"
           }
         }]
-      }, dictrict]
+      }, district]
     }, {
       tag: "div",
       "class": "pizo-new-realty-location-detail-row",
@@ -47006,7 +48262,7 @@ function DetailView(map) {
   });
   temp.input = input;
   temp.number = number;
-  temp.dictrict = dictrict;
+  temp.district = district;
   temp.street = street;
   temp.ward = ward;
   temp.state = state;
@@ -47058,7 +48314,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
   self.number.value = "";
   self.street.value = "";
   self.state.value = "";
-  self.dictrict.value = "";
+  self.district.value = "";
   self.ward.value = ""; // Get each component of the address from the place details,
   // and then fill-in the corresponding field on the form.
 
@@ -47074,7 +48330,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
           break;
 
         case "route":
-          if (!self.street.items.getContainsChild({
+          if (!getContainsChild(self.street.items, {
             text: val,
             value: val
           })) {
@@ -47089,7 +48345,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
           break;
 
         case "administrative_area_level_1":
-          if (!self.state.items.getContainsChild({
+          if (!getContainsChild(self.state.items, {
             text: val,
             value: val
           })) {
@@ -47103,17 +48359,17 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
           break;
 
         case "administrative_area_level_2":
-          if (!self.dictrict.items.getContainsChild({
+          if (!getContainsChild(self.district.items, {
             text: val,
             value: val
           })) {
-            self.dictrict.items = self.dictrict.items.concat([{
+            self.district.items = self.district.items.concat([{
               text: val,
               value: val
             }]);
           }
 
-          self.dictrict.value = val;
+          self.district.value = val;
           break;
 
         case "country":
@@ -47124,7 +48380,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
 
   var val = textResult.slice(0, textResult.indexOf(", "));
 
-  if (!self.ward.items.getContainsChild({
+  if (!getContainsChild(self.ward.items, {
     text: val,
     value: val
   })) {
@@ -47137,13 +48393,13 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
   self.ward.value = val;
 };
 
-Array.prototype.getContainsChild = function (value) {
-  for (var i = 0; i < this.length; i++) {
-    if (this[i].value == value.value) return true;
+function getContainsChild(arr, value) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].value == value.value) return true;
   }
 
   return false;
-};
+}
 
 DetailView.prototype.geolocate = function () {
   if (navigator.geolocation) {
@@ -48009,7 +49265,6 @@ function NewRealty_NewRealty(data) {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  console.log(data);
   this.textHeader = "Sửa ";
   this.data = data;
   if (this.data == undefined) this.textHeader = "Thêm ";
@@ -50242,105 +51497,6 @@ function NewRealty_removeAccents(str) {
 }
 
 /* harmony default export */ var component_NewRealty = (NewRealty_NewRealty);
-// CONCATENATED MODULE: ./js/component/ModuleDatabase.js
-var moduleDatabase = new ModuleDatabase();
-
-function ModuleDatabase() {
-  this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/php/";
-  this.loadAccountsPHP = this.hostDatabase + "load_accounts.php";
-  this.loadActiveHomesPHP = this.hostDatabase + "load_activehomes.php";
-  this.loadContactsPHP = this.hostDatabase + "load_contacts.php";
-  this.loadDepartmentsPHP = this.hostDatabase + "load_departments.php";
-  this.loadDistrictsPHP = this.hostDatabase + "load_districts.php";
-  this.loadHelpPHP = this.hostDatabase + "load_help.php";
-  this.loadNationsPHP = this.hostDatabase + "load_nations.php";
-  this.loadPositionsPHP = this.hostDatabase + "load_positions.php";
-  this.loadStatesPHP = this.hostDatabase + "load_states.php";
-  this.loadStreetsPHP = this.hostDatabase + "load_streets.php";
-  this.loadWardsPHP = this.hostDatabase + "load_wards.php";
-  this.addAccountsPHP = this.hostDatabase + "add_account.php";
-  this.addActiveHomesPHP = this.hostDatabase + "add_activehome.php";
-  this.addContactsPHP = this.hostDatabase + "add_contact.php";
-  this.addDepartmentsPHP = this.hostDatabase + "add_department.php";
-  this.addDistrictsPHP = this.hostDatabase + "add_district.php";
-  this.addHelpPHP = this.hostDatabase + "add_help.php";
-  this.addNationsPHP = this.hostDatabase + "add_nation.php";
-  this.addPositionsPHP = this.hostDatabase + "add_position.php";
-  this.addStatesPHP = this.hostDatabase + "add_state.php";
-  this.addStreetsPHP = this.hostDatabase + "add_street.php";
-  this.addWardsPHP = this.hostDatabase + "add_ward.php";
-  this.updateAccountsPHP = this.hostDatabase + "update_account.php";
-  this.updateActiveHomesPHP = this.hostDatabase + "update_activehome.php";
-  this.updateContactsPHP = this.hostDatabase + "update_contact.php";
-  this.updateDepartmentsPHP = this.hostDatabase + "update_department.php";
-  this.updateDistrictsPHP = this.hostDatabase + "update_district.php";
-  this.updateHelpPHP = this.hostDatabase + "update_help.php";
-  this.updateNationsPHP = this.hostDatabase + "update_nation.php";
-  this.updatePositionsPHP = this.hostDatabase + "update_position.php";
-  this.updateStatesPHP = this.hostDatabase + "update_state.php";
-  this.updateStreetsPHP = this.hostDatabase + "update_street.php";
-  this.updateWardsPHP = this.hostDatabase + "update_ward.php";
-  this.deleteAccountsPHP = this.hostDatabase + "delete_account.php";
-  this.deleteActiveHomesPHP = this.hostDatabase + "delete_activehome.php";
-  this.deleteContactsPHP = this.hostDatabase + "delete_contact.php";
-  this.deleteDepartmentsPHP = this.hostDatabase + "delete_department.php";
-  this.deleteDistrictsPHP = this.hostDatabase + "delete_district.php";
-  this.deleteHelpPHP = this.hostDatabase + "delete_help.php";
-  this.deleteNationsPHP = this.hostDatabase + "delete_nation.php";
-  this.deletePositionsPHP = this.hostDatabase + "delete_position.php";
-  this.deleteStatesPHP = this.hostDatabase + "delete_state.php";
-  this.deleteStreetsPHP = this.hostDatabase + "delete_street.php";
-  this.deleteWardsPHP = this.hostDatabase + "delete_ward.php";
-}
-
-/* harmony default export */ var component_ModuleDatabase = (moduleDatabase);
-
-ModuleDatabase.prototype.loadData = function (phpLoader) {
-  var php;
-  if (phpLoader !== undefined) php = phpLoader;else return Promise.reject();
-  return new Promise(function (resolve, reject) {
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
-      } else {
-        console.log(this.responseText);
-      }
-    };
-
-    xhttp.open("GET", php, true);
-    xhttp.send();
-  });
-};
-
-ModuleDatabase.prototype.updateData = function (phpUpdater, data) {
-  var php;
-  if (phpUpdater !== undefined) php = phpUpdater;else return Promise.reject();
-  return new Promise(function (resolve, reject) {
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        resolve(EncodingClass.string.toVariable(this.responseText.substr(2)));
-      } else {
-        console.log(this.responseText);
-      }
-    };
-
-    xhttp.open("POST", php, true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var stringSend = "";
-    var connect = "";
-
-    for (var param in data) {
-      stringSend += connect + param + "=" + encodeURIComponent(data[param]);
-      connect = "&";
-    }
-
-    xhttp.send(stringSend);
-  });
-};
 // CONCATENATED MODULE: ./js/page/ListRealty.js
 
 
@@ -50521,7 +51677,7 @@ ListRealty_ListRealty.prototype.getView = function () {
     child: []
   });
 
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadActiveHomesPHP).then(function (value) {
+  component_ModuleDatabase.getModule("activehouses").load().then(function (value) {
     var header = [{
       type: "dragzone",
       dragElement: false
@@ -50595,11 +51751,11 @@ ListRealty_ListRealty.prototype.getView = function () {
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', self.$view));
   });
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadAccountsPHP).then(function (value) {
+  component_ModuleDatabase.getModule("users").load().then(function (value) {
     self.formatDataRowAccount(value);
   });
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadContactsPHP).then(function (value) {
-    self.formatDataRowRealty(value);
+  component_ModuleDatabase.getModule("contacts").load().then(function (value) {
+    self.formatDataRowContact(value);
   });
   this.searchControl = this.searchControlContent();
   this.$view.addChild(ListRealty_({
@@ -50614,7 +51770,7 @@ ListRealty_ListRealty.prototype.formatDataRowAccount = function (data) {
   this.listAccoutData = data;
 };
 
-ListRealty_ListRealty.prototype.formatDataRowRealty = function (data) {
+ListRealty_ListRealty.prototype.formatDataRowContact = function (data) {
   this.listContactData = data;
 };
 
@@ -51100,7 +52256,6 @@ ListRealty_ListRealty.prototype.addView = function (value, parent) {
 };
 
 ListRealty_ListRealty.prototype.edit = function (data, parent, index) {
-  console.log(data);
   var self = this;
   var mNewRealty = new component_NewRealty(data);
   console.log(mNewRealty);
@@ -51197,8 +52352,973 @@ ListRealty_ListRealty.prototype.start = function () {};
 // EXTERNAL MODULE: ./css/ListWard.css
 var ListWard = __webpack_require__(172);
 
+// EXTERNAL MODULE: ./css/NewWard.css
+var NewWard = __webpack_require__(174);
+
+// CONCATENATED MODULE: ./js/component/NewWard.js
+
+
+
+
+
+
+
+var NewWard_ = dom_Fcore._;
+var NewWard_$ = dom_Fcore.$;
+
+function NewWard_NewWard(data) {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.textHeader = "Sửa";
+  this.data = data;
+  if (this.data == undefined) this.textHeader = "Thêm ";
+}
+
+NewWard_NewWard.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(NewWard_NewWard.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewWard_NewWard.prototype.constructor = NewWard_NewWard;
+
+NewWard_NewWard.prototype.getView = function (data) {
+  if (this.$view) return this.$view;
+  var self = this;
+  this.$view = NewWard_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: self.textHeader + "Phường xã"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+              self.rejectDB(self.getDataSave());
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.createPromise();
+            }
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Lưu và đóng" + '</span>']
+        }]
+      }]
+    }]
+  });
+  this.$view.addChild(NewWard_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [{
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [{
+        tag: "div",
+        "class": "pizo-new-state-container",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-state-container-name-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-name-container-label",
+            props: {
+              innerHTML: "Tên"
+            }
+          }, {
+            tag: "input",
+            "class": ["pizo-new-state-container-name-container-input", "pizo-new-realty-dectruct-input"]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-container-type-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-type-container-label",
+            props: {
+              innerHTML: "Loại"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-state-container-type-container-input",
+            props: {
+              items: [{
+                text: "Phường",
+                value: "Phường"
+              }, {
+                text: "Xã",
+                value: "Xã"
+              }, {
+                text: "Thị trấn",
+                value: "Thị trấn"
+              }]
+            }
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-ward-container-district-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-ward-container-district-container-label",
+            props: {
+              innerHTML: "Quận/Huyện"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-ward-container-district-container-input",
+            on: {},
+            props: {
+              enableSearch: true
+            }
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-container-nation-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-nation-container-label",
+            props: {
+              innerHTML: "Tỉnh/Thành phố"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-state-container-nation-container-input",
+            props: {
+              enableSearch: true
+            }
+          }]
+        }]
+      }]
+    }]
+  }));
+  this.createPromise();
+  this.name = NewWard_$('input.pizo-new-state-container-name-container-input', this.$view);
+  this.type = NewWard_$('div.pizo-new-state-container-type-container-input', this.$view);
+  this.state = NewWard_$('div.pizo-new-state-container-nation-container-input', this.$view);
+
+  if (this.data !== undefined) {
+    this.name.value = this.data.original.name;
+    this.type.value = this.data.original.type;
+    this.state.value = this.data.original.stateid;
+  }
+
+  return this.$view;
+};
+
+NewWard_NewWard.prototype.getDataSave = function () {
+  return {
+    id: this.data === undefined ? undefined : this.data.original.id,
+    name: this.name.value,
+    type: this.type.value,
+    stateid: this.state.value
+  };
+};
+
+NewWard_NewWard.prototype.createPromise = function () {
+  var self = this;
+
+  if (this.data === undefined) {
+    self.promiseAddDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  } else {
+    self.promiseEditDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  }
+};
+
+NewWard_NewWard.prototype.resetPromise = function (value) {
+  if (self.promiseAddDB !== undefined) self.promiseAddDB = undefined;
+  if (self.promiseEditDB !== undefined) self.promiseEditDB = undefined;
+};
+
+NewWard_NewWard.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+NewWard_NewWard.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+NewWard_NewWard.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+NewWard_NewWard.prototype.start = function () {};
+
+/* harmony default export */ var component_NewWard = (NewWard_NewWard);
+// CONCATENATED MODULE: ./js/page/ListWard.js
+
+
+
+
+
+
+
+
+
+
+var ListWard_ = dom_Fcore._;
+var ListWard_$ = dom_Fcore.$;
+
+function ListWard_ListWard() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+}
+
+ListWard_ListWard.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListWard_ListWard.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListWard_ListWard.prototype.constructor = ListWard_ListWard;
+
+ListWard_ListWard.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListWard_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListWard_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tìm kiếm"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tìm kiếm";
+  }
+
+  this.$view = ListWard_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý Phường/Xã"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.add();
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+
+  var tabContainer = ListWard_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg", "no-animation"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Thêm',
+        icon: 'span.mdi.mdi-text-short',
+        value: 0
+      }, {
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 2
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 0:
+          self.add(data.original.id, row);
+          break;
+
+        case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  component_ModuleDatabase.getModule("wards").load().then(function (value) {
+    component_ModuleDatabase.getModule("districts").load().then(function (listWard) {
+      component_ModuleDatabase.getModule("states").load().then(function (listState) {
+        self.setListParamState(listState);
+        self.listStateElement.items = self.listState;
+        self.setListParamWard(listWard);
+        self.listWardElement.items = self.listWard;
+        var header = [{
+          type: "increase",
+          value: "#",
+          style: {
+            minWidth: "50px",
+            width: "50px"
+          }
+        }, {
+          value: 'MS',
+          sort: true,
+          style: {
+            minWidth: "50px",
+            width: "50px"
+          }
+        }, {
+          value: 'Tên',
+          sort: true,
+          style: {
+            minWidth: "unset"
+          }
+        }, {
+          value: 'Loại',
+          sort: true,
+          style: {
+            minWidth: "200px",
+            width: "200px"
+          }
+        }, {
+          value: 'Quận/Huyện',
+          sort: true,
+          style: {
+            minWidth: "200px",
+            width: "200px"
+          }
+        }, {
+          value: 'Tỉnh/Thành phố',
+          sort: true,
+          style: {
+            minWidth: "200px",
+            width: "200px"
+          }
+        }, {
+          type: "detail",
+          functionClickAll: functionClickMore,
+          icon: "",
+          dragElement: false,
+          style: {
+            width: "30px"
+          }
+        }];
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+        tabContainer.addChild(self.mTable);
+        self.mTable.addInputSearch(ListWard_$('.pizo-list-realty-page-allinput-container input', self.$view), 2);
+        self.mTable.addFilter(self.listWardElement, 4);
+        self.mTable.addFilter(self.listStateElement, 5);
+      });
+    });
+  });
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListWard_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, tabContainer]
+  }));
+  return this.$view;
+};
+
+ListWard_ListWard.prototype.setListParamWard = function (value) {
+  this.checkWard = component_ModuleDatabase.getModule("districts").getLibary("id");
+  this.checkStateWard = component_ModuleDatabase.getModule("districts").getLibary("stateid", function (data) {
+    return {
+      text: data.name,
+      value: data.name + "_" + data.id
+    };
+  }, true);
+  this.listWard = [{
+    text: "Tất cả",
+    value: 0
+  }].concat(component_ModuleDatabase.getModule("districts").getList("name", ["name", "id"]));
+};
+
+ListWard_ListWard.prototype.setListParamState = function () {
+  this.checkState = component_ModuleDatabase.getModule("states").getLibary("id");
+  this.listState = [{
+    text: "Tất cả",
+    value: 0
+  }].concat(component_ModuleDatabase.getModule("states").getList("name", ["name", "id"]));
+  this.isLoaded = true;
+};
+
+ListWard_ListWard.prototype.getDataParam = function () {
+  return this.listParam;
+};
+
+ListWard_ListWard.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = this.getDataRow(data[i]);
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  return temp;
+};
+
+ListWard_ListWard.prototype.getDataRow = function (data) {
+  var result = [{}, data.id, data.name, data.type, {
+    value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid,
+    element: ListWard_({
+      text: this.checkWard[parseInt(data.districtid)].type + " " + this.checkWard[parseInt(data.districtid)].name
+    })
+  }, {
+    value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid,
+    element: ListWard_({
+      text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].type + " " + this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name
+    })
+  }, {}];
+  result.original = data;
+  return result;
+};
+
+ListWard_ListWard.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Tất cả",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
+};
+
+ListWard_ListWard.prototype.searchControlContent = function () {
+  var startDay, endDay, startDay1, endDay1;
+  var self = this;
+  startDay = ListWard_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(new Date().getFullYear(), 0, 1),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        endDay.minDateLimit = date;
+      }
+    }
+  });
+  endDay = ListWard_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        startDay.maxDateLimit = date;
+      }
+    }
+  });
+  startDay1 = ListWard_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(new Date().getFullYear(), 0, 1),
+      maxDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        endDay1.minDateLimit = date;
+      }
+    }
+  });
+  endDay1 = ListWard_({
+    tag: 'calendar-input',
+    data: {
+      anchor: 'top',
+      value: new Date(),
+      minDateLimit: new Date()
+    },
+    on: {
+      changed: function changed(date) {
+        startDay1.maxDateLimit = date;
+      }
+    }
+  });
+  self.listStateElement = ListWard_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        value: 0
+      }]
+    },
+    on: {
+      change: function change(event) {
+        if (this.value == 0) {
+          self.listWardElement.items = self.listWard;
+        } else {
+          self.listWardElement.items = [{
+            text: "Tất cả",
+            value: 0
+          }].concat(self.checkStateWard[this.value.slice(this.value.lastIndexOf("_") + 1)]);
+          self.listWardElement.value = 0;
+          self.listWardElement.emit('change');
+        }
+      }
+    }
+  });
+
+  self.listStateElement.updateItemList = function (value) {
+    self.listStateElement.items = self.formatDataList(value);
+  };
+
+  self.listWardElement = ListWard_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        value: 0
+      }]
+    },
+    on: {
+      change: function change(event) {
+        if (this.value !== 0) {
+          var checkid = parseInt(self.checkState[self.checkWard[this.value.slice(this.value.lastIndexOf("_") + 1)].stateid].id);
+          if (self.listStateElement.value != checkid) self.listStateElement.value = checkid;
+        }
+      }
+    }
+  });
+
+  self.listWardElement.updateItemList = function (value) {
+    self.listWardElement.items = self.formatDataList(value);
+  };
+
+  var content = ListWard_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control-container",
+    on: {
+      click: function click(event) {
+        event.stopPropagation();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
+      child: [{
+        tag: "div",
+        "class": "pizo-list-realty-main-search-control-row",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-state-ward",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-state-ward-label",
+            props: {
+              innerHTML: "Tỉnh/TP"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-state-ward-input",
+            child: [self.listStateElement]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-district-ward",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-district-ward-label",
+            props: {
+              innerHTML: "Quận/Huyện"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-district-ward-input",
+            child: [self.listWardElement]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-button",
+          child: [{
+            tag: "button",
+            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+            on: {
+              click: function click(evt) {
+                temp.reset();
+              }
+            },
+            child: ['<span>' + "Thiết lập lại" + '</span>']
+          }]
+        }]
+      }]
+    }]
+  });
+
+  var temp = ListWard_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control",
+    on: {
+      click: function click(event) {
+        this.hide();
+      }
+    },
+    child: [content]
+  });
+
+  temp.content = content;
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
+    content.lowprice.value = "";
+    content.highprice.value = "";
+    content.phone.value = "";
+    content.MS.value = "";
+    content.SN.value = "";
+    content.TD.value = "";
+    content.PX.value = "";
+    content.QH.value = "";
+    content.TT.value = "";
+    content.HT.value = 0;
+  };
+
+  return temp;
+};
+
+ListWard_ListWard.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListWard_ListWard.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListWard_ListWard.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewWard = new component_NewWard(undefined, parent_id);
+  mNewWard.attach(self.parent);
+  var frameview = mNewWard.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewWard, row);
+};
+
+ListWard_ListWard.prototype.addDB = function (mNewWard, row) {
+  var self = this;
+  mNewWard.promiseAddDB.then(function (value) {
+    var phpFile = component_ModuleDatabase.addStatesPHP;
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewWard.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewWard.promiseAddDB !== undefined) self.addDB(mNewWard);
+    }, 10);
+  });
+};
+
+ListWard_ListWard.prototype.addView = function (value, parent) {
+  var result = this.getDataRow(value);
+  var element = this.mTable;
+  element.insertRow(result);
+};
+
+ListWard_ListWard.prototype.edit = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  var self = this;
+  var mNewWard = new component_NewWard(data);
+  mNewWard.attach(self.parent);
+  var frameview = mNewWard.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewWard, data, parent, index);
+};
+
+ListWard_ListWard.prototype.editDB = function (mNewWard, data, parent, index) {
+  var self = this;
+  mNewWard.promiseEditDB.then(function (value) {
+    var phpFile = component_ModuleDatabase.updateStatesPHP;
+    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+    value.id = data.original.id;
+    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewWard.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewWard.promiseEditDB !== undefined) self.editDB(mNewWard, data, parent, index);
+    }, 10);
+  });
+};
+
+ListWard_ListWard.prototype.editView = function (value, data, parent, index) {
+  var data = this.getDataRow(value);
+  var indexOF = index,
+      element = parent;
+  element.updateRow(data, indexOF, true);
+};
+
+ListWard_ListWard.prototype["delete"] = function (data, parent, index) {
+  if (!this.isLoaded) return;
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListWard_ListWard.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {});
+};
+
+ListWard_ListWard.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  var phpFile = component_ModuleDatabase.deleteStatesPHP;
+  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
+  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
+ListWard_ListWard.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListWard_ListWard.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListWard_ListWard.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListWard_ListWard.prototype.start = function () {};
+
+/* harmony default export */ var page_ListWard = (ListWard_ListWard);
+// EXTERNAL MODULE: ./css/ListStreet.css
+var ListStreet = __webpack_require__(176);
+
 // EXTERNAL MODULE: ./css/NewDistrict.css
-var NewDistrict = __webpack_require__(174);
+var NewDistrict = __webpack_require__(178);
 
 // CONCATENATED MODULE: ./js/component/NewDistrict.js
 
@@ -51430,738 +53550,6 @@ NewDistrict_NewDistrict.prototype.flushDataToView = function () {
 NewDistrict_NewDistrict.prototype.start = function () {};
 
 /* harmony default export */ var component_NewDistrict = (NewDistrict_NewDistrict);
-// CONCATENATED MODULE: ./js/page/ListWard.js
-
-
-
-
-
-
-
-
-
-
-var ListWard_ = dom_Fcore._;
-var ListWard_$ = dom_Fcore.$;
-
-function ListWard_ListWard() {
-  component_BaseView.call(this);
-  AppPattern_Fragment.call(this);
-  this.cmdRunner = new AppPattern_CMDRunner(this);
-  this.loadConfig();
-}
-
-ListWard_ListWard.prototype.setContainer = function (parent) {
-  this.parent = parent;
-};
-
-Object.defineProperties(ListWard_ListWard.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
-ListWard_ListWard.prototype.constructor = ListWard_ListWard;
-
-ListWard_ListWard.prototype.getView = function () {
-  if (this.$view) return this.$view;
-  var self = this;
-
-  var input = ListWard_({
-    tag: "input",
-    "class": "quantumWizTextinputPaperinputInput",
-    on: {
-      change: function change() {
-        self.mTable.updatePagination(this.value);
-      }
-    },
-    props: {
-      type: "number",
-      autocomplete: "off",
-      min: 1,
-      max: 200,
-      step: 1,
-      value: 50
-    }
-  });
-
-  var allinput = ListWard_({
-    tag: "input",
-    "class": "pizo-list-realty-page-allinput-input",
-    props: {
-      placeholder: "Tìm kiếm"
-    }
-  });
-
-  if (window.mobilecheck()) {
-    allinput.placeholder = "Tìm kiếm";
-  }
-
-  this.$view = ListWard_({
-    tag: 'singlepage',
-    "class": "pizo-list-realty",
-    child: [{
-      "class": 'absol-single-page-header',
-      child: [{
-        tag: "span",
-        "class": "pizo-body-title-left",
-        props: {
-          innerHTML: "Quản lý Phường/Xã"
-        }
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-button",
-        child: [{
-          tag: "button",
-          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
-          on: {
-            click: function click(evt) {
-              self.$view.selfRemove();
-              var arr = self.parent.body.getAllChild();
-              self.parent.body.activeFrame(arr[arr.length - 1]);
-            }
-          },
-          child: ['<span>' + "Đóng" + '</span>']
-        }, {
-          tag: "button",
-          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
-          on: {
-            click: function click(evt) {
-              self.add();
-            }
-          },
-          child: ['<span>' + "Thêm" + '</span>']
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-page-allinput",
-        child: [{
-          tag: "div",
-          "class": "pizo-list-realty-page-allinput-container",
-          child: [allinput, {
-            tag: "button",
-            "class": "pizo-list-realty-page-allinput-search",
-            child: [{
-              tag: 'i',
-              "class": 'material-icons',
-              props: {
-                innerHTML: 'search'
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-page-allinput-filter",
-          on: {
-            click: function click(event) {
-              self.searchControl.show();
-            }
-          },
-          child: [{
-            tag: 'filter-ico'
-          }, {
-            tag: "span",
-            "class": "navbar-search__filter-text",
-            props: {
-              innerHTML: "Lọc"
-            }
-          }]
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-page-number-line",
-        child: [input, {
-          tag: "span",
-          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
-          props: {
-            innerHTML: "Số dòng"
-          }
-        }]
-      }]
-    }]
-  });
-
-  var tabContainer = ListWard_({
-    tag: "div",
-    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg", "no-animation"],
-    child: []
-  });
-
-  var docTypeMemuProps, token, functionX;
-
-  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
-    docTypeMemuProps = {
-      items: [{
-        text: 'Thêm',
-        icon: 'span.mdi.mdi-text-short',
-        value: 0
-      }, {
-        text: 'Sửa',
-        icon: 'span.mdi.mdi-text-short',
-        value: 1
-      }, {
-        text: 'Xóa',
-        icon: 'span.mdi.mdi-text',
-        value: 2
-      }]
-    };
-    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
-      switch (menuItem.value) {
-        case 0:
-          self.add(data.original.id, row);
-          break;
-
-        case 1:
-          self.edit(data, parent, index);
-          break;
-
-        case 2:
-          self["delete"](data.original, parent, index);
-          break;
-      }
-    });
-
-    functionX = function (token) {
-      return function () {
-        var x = function x(event) {
-          absol.QuickMenu.close(token);
-          document.body.removeEventListener("click", x);
-        };
-
-        document.body.addEventListener("click", x);
-      };
-    }(token);
-
-    setTimeout(functionX, 10);
-  };
-
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadWardsPHP).then(function (value) {
-    component_ModuleDatabase.loadData(component_ModuleDatabase.loadDistrictsPHP).then(function (listDistrict) {
-      component_ModuleDatabase.loadData(component_ModuleDatabase.loadStatesPHP).then(function (listState) {
-        self.setListParamState(listState);
-        self.listStateElement.items = self.listState;
-        self.setListParamDistrict(listDistrict);
-        self.listDistrictElement.items = self.listDistrict;
-        var header = [{
-          type: "increase",
-          value: "#",
-          style: {
-            minWidth: "50px",
-            width: "50px"
-          }
-        }, {
-          value: 'MS',
-          sort: true,
-          style: {
-            minWidth: "50px",
-            width: "50px"
-          }
-        }, {
-          value: 'Tên',
-          sort: true,
-          style: {
-            minWidth: "unset"
-          }
-        }, {
-          value: 'Loại',
-          sort: true,
-          style: {
-            minWidth: "200px",
-            width: "200px"
-          }
-        }, {
-          value: 'Quận/Huyện',
-          sort: true,
-          style: {
-            minWidth: "200px",
-            width: "200px"
-          }
-        }, {
-          value: 'Tỉnh/Thành phố',
-          sort: true,
-          style: {
-            minWidth: "200px",
-            width: "200px"
-          }
-        }, {
-          type: "detail",
-          functionClickAll: functionClickMore,
-          icon: "",
-          dragElement: false,
-          style: {
-            width: "30px"
-          }
-        }];
-        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-        tabContainer.addChild(self.mTable);
-        self.mTable.addInputSearch(ListWard_$('.pizo-list-realty-page-allinput-container input', self.$view));
-        self.mTable.addFilter(self.listDistrictElement, 4);
-        self.mTable.addFilter(self.listStateElement, 5);
-      });
-    });
-  });
-  this.searchControl = this.searchControlContent();
-  this.$view.addChild(ListWard_({
-    tag: "div",
-    "class": ["pizo-list-realty-main"],
-    child: [this.searchControl, tabContainer]
-  }));
-  return this.$view;
-};
-
-ListWard_ListWard.prototype.setListParamDistrict = function (value) {
-  this.checkDistrict = [];
-  this.checkStateDistrict = [];
-  this.listDistrict = [{
-    text: "Tất cả",
-    value: 0
-  }];
-
-  for (var i = 0; i < value.length; i++) {
-    this.checkDistrict[value[i].id] = value[i];
-    if (this.checkStateDistrict[value[i].stateid] === undefined) this.checkStateDistrict[value[i].stateid] = [{
-      text: "Tất cả",
-      value: 0
-    }];
-    this.listDistrict.push({
-      text: value[i].name,
-      value: value[i].id
-    });
-    this.checkStateDistrict[value[i].stateid].push(this.listDistrict[i]);
-  }
-};
-
-ListWard_ListWard.prototype.setListParamState = function (value) {
-  this.checkState = [];
-  this.listState = [{
-    text: "Tất cả",
-    value: 0
-  }];
-
-  for (var i = 0; i < value.length; i++) {
-    this.checkState[value[i].id] = value[i];
-    this.listState.push({
-      text: value[i].name,
-      value: value[i].id
-    });
-  }
-
-  this.isLoaded = true;
-};
-
-ListWard_ListWard.prototype.getDataParam = function () {
-  return this.listParam;
-};
-
-ListWard_ListWard.prototype.formatDataRow = function (data) {
-  var temp = [];
-  var check = [];
-  var k = 0;
-
-  for (var i = 0; i < data.length; i++) {
-    var result = this.getDataRow(data[i]);
-
-    if (check[data[i].parent_id] !== undefined) {
-      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
-      check[data[i].parent_id].child.push(result);
-    } else temp[k++] = result;
-
-    check[data[i].id] = result;
-  }
-
-  return temp;
-};
-
-ListWard_ListWard.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, data.type, {
-    value: data.districtid,
-    element: ListWard_({
-      text: this.checkDistrict[parseInt(data.districtid)].type + " " + this.checkDistrict[parseInt(data.districtid)].name
-    })
-  }, {
-    value: this.checkDistrict[parseInt(data.districtid)].stateid,
-    element: ListWard_({
-      text: this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].type + " " + this.checkState[parseInt(this.checkDistrict[parseInt(data.districtid)].stateid)].name
-    })
-  }, {}];
-  result.original = data;
-  return result;
-};
-
-ListWard_ListWard.prototype.formatDataList = function (data) {
-  var temp = [{
-    text: "Tất cả",
-    value: 0
-  }];
-
-  for (var i = 0; i < data.length; i++) {
-    temp[i + 1] = {
-      text: data[i].name,
-      value: data[i].id
-    };
-  }
-
-  return temp;
-};
-
-ListWard_ListWard.prototype.searchControlContent = function () {
-  var startDay, endDay, startDay1, endDay1;
-  var self = this;
-  startDay = ListWard_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        endDay.minDateLimit = date;
-      }
-    }
-  });
-  endDay = ListWard_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        startDay.maxDateLimit = date;
-      }
-    }
-  });
-  startDay1 = ListWard_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        endDay1.minDateLimit = date;
-      }
-    }
-  });
-  endDay1 = ListWard_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        startDay1.maxDateLimit = date;
-      }
-    }
-  });
-  self.listStateElement = ListWard_({
-    tag: "selectmenu",
-    props: {
-      enableSearch: true,
-      items: [{
-        text: "Tất cả",
-        value: 0
-      }]
-    },
-    on: {
-      change: function change(event) {
-        if (this.value == 0) {
-          self.listDistrictElement.items = self.listDistrict;
-        } else {
-          self.listDistrictElement.items = self.checkStateDistrict[this.value];
-          self.listDistrictElement.value = 0;
-          self.listDistrictElement.emit('change');
-        }
-      }
-    }
-  });
-
-  self.listStateElement.updateItemList = function (value) {
-    self.listStateElement.items = self.formatDataList(value);
-  };
-
-  self.listDistrictElement = ListWard_({
-    tag: "selectmenu",
-    props: {
-      enableSearch: true,
-      items: [{
-        text: "Tất cả",
-        value: 0
-      }]
-    },
-    on: {
-      change: function change(event) {
-        if (this.value !== 0) {
-          var checkid = parseInt(self.checkState[self.checkDistrict[this.value].stateid].id);
-          if (self.listStateElement.value != checkid) self.listStateElement.value = checkid;
-        }
-      }
-    }
-  });
-
-  self.listDistrictElement.updateItemList = function (value) {
-    self.listDistrictElement.items = self.formatDataList(value);
-  };
-
-  var content = ListWard_({
-    tag: "div",
-    "class": "pizo-list-realty-main-search-control-container",
-    on: {
-      click: function click(event) {
-        event.stopPropagation();
-      }
-    },
-    child: [{
-      tag: "div",
-      "class": "pizo-list-realty-main-search-control-container-scroller",
-      child: [{
-        tag: "div",
-        "class": "pizo-list-realty-main-search-control-row",
-        child: [{
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-state-ward",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-state-ward-label",
-            props: {
-              innerHTML: "Tỉnh/TP"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-state-ward-input",
-            child: [self.listStateElement]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-district-ward",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-district-ward-label",
-            props: {
-              innerHTML: "Quận/Huyện"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-district-ward-input",
-            child: [self.listDistrictElement]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-button",
-          child: [{
-            tag: "button",
-            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
-            on: {
-              click: function click(evt) {
-                temp.reset();
-              }
-            },
-            child: ['<span>' + "Thiết lập lại" + '</span>']
-          }]
-        }]
-      }]
-    }]
-  });
-
-  var temp = ListWard_({
-    tag: "div",
-    "class": "pizo-list-realty-main-search-control",
-    on: {
-      click: function click(event) {
-        this.hide();
-      }
-    },
-    child: [content]
-  });
-
-  temp.content = content;
-
-  temp.show = function () {
-    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
-  };
-
-  temp.hide = function () {
-    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
-
-    var eventEnd = function eventEnd() {
-      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
-      content.classList.remove("hideTranslate");
-      content.removeEventListener("webkitTransitionEnd", eventEnd);
-      content.removeEventListener("transitionend", eventEnd);
-    }; // Code for Safari 3.1 to 6.0
-
-
-    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
-
-    content.addEventListener("transitionend", eventEnd);
-  };
-
-  temp.apply = function () {};
-
-  temp.reset = function () {
-    content.timestart = new Date();
-    content.timeend = new Date();
-    content.lowprice.value = "";
-    content.highprice.value = "";
-    content.phone.value = "";
-    content.MS.value = "";
-    content.SN.value = "";
-    content.TD.value = "";
-    content.PX.value = "";
-    content.QH.value = "";
-    content.TT.value = "";
-    content.HT.value = 0;
-  };
-
-  return temp;
-};
-
-ListWard_ListWard.prototype.getDataCurrent = function () {
-  return this.getDataChild(this.mTable.data);
-};
-
-ListWard_ListWard.prototype.getDataChild = function (arr) {
-  var self = this;
-  var result = [];
-
-  for (var i = 0; i < arr.length; i++) {
-    result.push(arr[i].original);
-    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
-  }
-
-  return result;
-};
-
-ListWard_ListWard.prototype.add = function () {
-  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-  var row = arguments.length > 1 ? arguments[1] : undefined;
-  if (!this.isLoaded) return;
-  var self = this;
-  var mNewDistrict = new component_NewDistrict(undefined, parent_id);
-  mNewDistrict.attach(self.parent);
-  var frameview = mNewDistrict.getView(self.getDataParam());
-  self.parent.body.addChild(frameview);
-  self.parent.body.activeFrame(frameview);
-  self.addDB(mNewDistrict, row);
-};
-
-ListWard_ListWard.prototype.addDB = function (mNewDistrict, row) {
-  var self = this;
-  mNewDistrict.promiseAddDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.addStatesPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
-      value.id = result;
-      self.addView(value, row);
-    });
-    mNewDistrict.promiseAddDB = undefined;
-    setTimeout(function () {
-      if (mNewDistrict.promiseAddDB !== undefined) self.addDB(mNewDistrict);
-    }, 10);
-  });
-};
-
-ListWard_ListWard.prototype.addView = function (value, parent) {
-  var result = this.getDataRow(value);
-  var element = this.mTable;
-  element.insertRow(result);
-};
-
-ListWard_ListWard.prototype.edit = function (data, parent, index) {
-  if (!this.isLoaded) return;
-  var self = this;
-  var mNewDistrict = new component_NewDistrict(data);
-  mNewDistrict.attach(self.parent);
-  var frameview = mNewDistrict.getView(self.getDataParam());
-  self.parent.body.addChild(frameview);
-  self.parent.body.activeFrame(frameview);
-  self.editDB(mNewDistrict, data, parent, index);
-};
-
-ListWard_ListWard.prototype.editDB = function (mNewDistrict, data, parent, index) {
-  var self = this;
-  mNewDistrict.promiseEditDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.updateStatesPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    value.id = data.original.id;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
-      self.editView(value, data, parent, index);
-    });
-    mNewDistrict.promiseEditDB = undefined;
-    setTimeout(function () {
-      if (mNewDistrict.promiseEditDB !== undefined) self.editDB(mNewDistrict, data, parent, index);
-    }, 10);
-  });
-};
-
-ListWard_ListWard.prototype.editView = function (value, data, parent, index) {
-  var data = this.getDataRow(value);
-  var indexOF = index,
-      element = parent;
-  element.updateRow(data, indexOF, true);
-};
-
-ListWard_ListWard.prototype["delete"] = function (data, parent, index) {
-  if (!this.isLoaded) return;
-  var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
-  this.$view.addChild(deleteItem);
-  deleteItem.promiseComfirm.then(function () {
-    self.deleteDB(data, parent, index);
-  });
-};
-
-ListWard_ListWard.prototype.deleteView = function (parent, index) {
-  var self = this;
-  var bodyTable = parent.bodyTable;
-  parent.dropRow(index).then(function () {});
-};
-
-ListWard_ListWard.prototype.deleteDB = function (data, parent, index) {
-  var self = this;
-  var phpFile = component_ModuleDatabase.deleteStatesPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
-    self.deleteView(parent, index);
-  });
-};
-
-ListWard_ListWard.prototype.refresh = function () {
-  var data;
-  var editor = this.getContext(R.LAYOUT_EDITOR);
-  if (editor) data = editor.getData();
-  if (data) this.setData(data);
-};
-
-ListWard_ListWard.prototype.setData = function (data) {
-  this.data = data;
-  this.data.tracking = "OK";
-  this.dataFlushed = false;
-  if (this.state == "RUNNING") this.flushDataToView();
-};
-
-ListWard_ListWard.prototype.flushDataToView = function () {
-  if (this.dataFlushed) return;
-  this.dataFlushed = true; //TODO: remove older view
-
-  if (!this.data) return;
-  this.$content.clearChild();
-
-  if (this.data && this.$view) {
-    this.rootComponent = this.build(this.data);
-    this.$content.addChild(this.rootComponent.view);
-    this.rootComponent.onAttach();
-    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
-    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
-  }
-};
-
-ListWard_ListWard.prototype.start = function () {};
-
-/* harmony default export */ var page_ListWard = (ListWard_ListWard);
-// EXTERNAL MODULE: ./css/ListStreet.css
-var ListStreet = __webpack_require__(176);
-
 // CONCATENATED MODULE: ./js/page/ListStreet.js
 
 
@@ -52362,10 +53750,10 @@ ListStreet_ListStreet.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadStreetsPHP).then(function (value) {
-    component_ModuleDatabase.loadData(component_ModuleDatabase.loadWardsPHP).then(function (listWard) {
-      component_ModuleDatabase.loadData(component_ModuleDatabase.loadDistrictsPHP).then(function (listDistrict) {
-        component_ModuleDatabase.loadData(component_ModuleDatabase.loadStatesPHP).then(function (listState) {
+  component_ModuleDatabase.getModule("streets").load().then(function (value) {
+    component_ModuleDatabase.getModule("wards").load().then(function (listWard) {
+      component_ModuleDatabase.getModule("districts").load().then(function (listDistrict) {
+        component_ModuleDatabase.getModule("states").load().then(function (listState) {
           self.setListParamWard(listWard);
           self.setListParamDitrict(listDistrict);
           self.setListParamState(listState);
@@ -52435,44 +53823,19 @@ ListStreet_ListStreet.prototype.getView = function () {
   return this.$view;
 };
 
-ListStreet_ListStreet.prototype.setListParamWard = function (value) {
-  this.checkWard = [];
-  this.listWard = [];
-
-  for (var i = 0; i < value.length; i++) {
-    this.checkWard[value[i].id] = value[i];
-    this.listWard[i] = {
-      text: value[i].name,
-      value: value[i].id
-    };
-  }
+ListStreet_ListStreet.prototype.setListParamWard = function () {
+  this.checkWard = component_ModuleDatabase.getModule("wards").getLibary("id");
+  this.listWard = component_ModuleDatabase.getModule("wards").getList("name", "id");
 };
 
 ListStreet_ListStreet.prototype.setListParamDitrict = function (value) {
-  this.checkDistrict = [];
-  this.listDistrict = [];
-
-  for (var i = 0; i < value.length; i++) {
-    this.checkDistrict[value[i].id] = value[i];
-    this.listDistrict[i] = {
-      text: value[i].name,
-      value: value[i].id
-    };
-  }
+  this.checkDistrict = component_ModuleDatabase.getModule("districts").getLibary("id");
+  this.listDistrict = component_ModuleDatabase.getModule("districts").getList("name", "id");
 };
 
 ListStreet_ListStreet.prototype.setListParamState = function (value) {
-  this.checkState = [];
-  this.listState = [];
-
-  for (var i = 0; i < value.length; i++) {
-    this.checkState[value[i].id] = value[i];
-    this.listState[i] = {
-      text: value[i].name,
-      value: value[i].id
-    };
-  }
-
+  this.checkState = component_ModuleDatabase.getModule("states").getLibary("id");
+  this.listState = component_ModuleDatabase.getModule("states").getList("name", "id");
   this.isLoaded = true;
 };
 
@@ -52875,10 +54238,10 @@ ListStreet_ListStreet.prototype.start = function () {};
 
 /* harmony default export */ var page_ListStreet = (ListStreet_ListStreet);
 // EXTERNAL MODULE: ./css/ListState.css
-var ListState = __webpack_require__(178);
+var ListState = __webpack_require__(180);
 
 // EXTERNAL MODULE: ./css/NewState.css
-var NewState = __webpack_require__(180);
+var NewState = __webpack_require__(182);
 
 // CONCATENATED MODULE: ./js/component/NewState.js
 
@@ -53251,8 +54614,10 @@ ListState_ListState.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadStatesPHP).then(function (value) {
-    component_ModuleDatabase.loadData(component_ModuleDatabase.loadNationsPHP).then(function (listParam) {
+  var stateModule = component_ModuleDatabase.getModule("states");
+  var nationModule = component_ModuleDatabase.getModule("nations");
+  stateModule.load().then(function (value) {
+    nationModule.load().then(function (listParam) {
       self.setListParam(listParam);
       var header = [{
         type: "increase",
@@ -53300,7 +54665,6 @@ ListState_ListState.prototype.getView = function () {
       self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
       tabContainer.addChild(self.mTable);
       self.mTable.addInputSearch(ListState_$('.pizo-list-realty-page-allinput-container input', self.$view));
-      self.listParent.updateItemList(listParam);
     });
   });
   this.searchControl = this.searchControlContent();
@@ -53447,9 +54811,7 @@ ListState_ListState.prototype.add = function () {
 ListState_ListState.prototype.addDB = function (mNewState, row) {
   var self = this;
   mNewState.promiseAddDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.addStatesPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("states").add(value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -53480,10 +54842,8 @@ ListState_ListState.prototype.edit = function (data, parent, index) {
 ListState_ListState.prototype.editDB = function (mNewState, data, parent, index) {
   var self = this;
   mNewState.promiseEditDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.updateStatesPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("states").update(value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewState.promiseEditDB = undefined;
@@ -53518,9 +54878,9 @@ ListState_ListState.prototype.deleteView = function (parent, index) {
 
 ListState_ListState.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = component_ModuleDatabase.deleteStatesPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.getModule("states")["delete"]({
+    id: data.id
+  }).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -53559,7 +54919,7 @@ ListState_ListState.prototype.start = function () {};
 
 /* harmony default export */ var page_ListState = (ListState_ListState);
 // EXTERNAL MODULE: ./css/ListDistrict.css
-var ListDistrict = __webpack_require__(182);
+var ListDistrict = __webpack_require__(184);
 
 // CONCATENATED MODULE: ./js/page/ListDistrict.js
 
@@ -53760,9 +55120,9 @@ ListDistrict_ListDistrict.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadDistrictsPHP).then(function (value) {
-    component_ModuleDatabase.loadData(component_ModuleDatabase.loadStatesPHP).then(function (listParam) {
-      self.setListParam(listParam);
+  component_ModuleDatabase.getModule("districts").load().then(function (value) {
+    component_ModuleDatabase.getModule("states").load().then(function (listParam) {
+      self.setListParam();
       var header = [{
         type: "increase",
         value: "#",
@@ -53823,18 +55183,9 @@ ListDistrict_ListDistrict.prototype.getView = function () {
   return this.$view;
 };
 
-ListDistrict_ListDistrict.prototype.setListParam = function (value) {
-  this.checkState = [];
-  this.listParam = [];
-
-  for (var i = 0; i < value.length; i++) {
-    this.checkState[value[i].id] = value[i];
-    this.listParam[i] = {
-      text: value[i].name,
-      value: value[i].id
-    };
-  }
-
+ListDistrict_ListDistrict.prototype.setListParam = function () {
+  this.checkState = component_ModuleDatabase.getModule("states").getLibary("id");
+  this.listParam = component_ModuleDatabase.getModule("states").getList("name", "id");
   this.isLoaded = true;
 };
 
@@ -53862,11 +55213,10 @@ ListDistrict_ListDistrict.prototype.formatDataRow = function (data) {
 };
 
 ListDistrict_ListDistrict.prototype.getDataRow = function (data) {
-  console.log(data.stateid);
   var result = [{}, data.id, data.name, data.type, {
-    value: this.checkState[parseInt(data.stateid)].id,
+    value: this.checkState[data.stateid].id,
     element: ListDistrict_({
-      text: this.checkState[parseInt(data.stateid)].type + " " + this.checkState[parseInt(data.stateid)].name
+      text: this.checkState[data.stateid].type + " " + this.checkState[data.stateid].name
     })
   }, {}];
   result.original = data;
@@ -54044,9 +55394,7 @@ ListDistrict_ListDistrict.prototype.add = function () {
 ListDistrict_ListDistrict.prototype.addDB = function (mNewDistrict, row) {
   var self = this;
   mNewDistrict.promiseAddDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.addDistrictsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("districts").add(value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -54077,10 +55425,8 @@ ListDistrict_ListDistrict.prototype.edit = function (data, parent, index) {
 ListDistrict_ListDistrict.prototype.editDB = function (mNewDistrict, data, parent, index) {
   var self = this;
   mNewDistrict.promiseEditDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.updateDistrictsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("districts").update(value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewDistrict.promiseEditDB = undefined;
@@ -54115,9 +55461,9 @@ ListDistrict_ListDistrict.prototype.deleteView = function (parent, index) {
 
 ListDistrict_ListDistrict.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = component_ModuleDatabase.deleteDistrictsPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.getModule("districts")["delete"]({
+    id: data.id
+  }).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -54156,9 +55502,11 @@ ListDistrict_ListDistrict.prototype.start = function () {};
 
 /* harmony default export */ var page_ListDistrict = (ListDistrict_ListDistrict);
 // EXTERNAL MODULE: ./css/PlanningInformation.css
-var PlanningInformation = __webpack_require__(184);
+var PlanningInformation = __webpack_require__(186);
 
 // CONCATENATED MODULE: ./js/page/PlanningInformation.js
+function PlanningInformation_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { PlanningInformation_typeof = function _typeof(obj) { return typeof obj; }; } else { PlanningInformation_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return PlanningInformation_typeof(obj); }
+
 
 
 
@@ -54176,6 +55524,7 @@ function PlanningInformation_PlanningInformation() {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
+  this.hash = [];
 }
 
 PlanningInformation_PlanningInformation.prototype.setContainer = function (parent) {
@@ -54223,37 +55572,50 @@ PlanningInformation_PlanningInformation.prototype.getView = function () {
     "class": "hiddenUI",
     on: {
       change: function change(event) {
+        if (this.files.length == 0) return;
+        var file = this.files[0];
         var loadding = new loaddingWheel();
         var reader = new FileReader();
         reader.readAsText(this.files[0]);
 
         reader.onload = function (e) {
           console.time("dcel cost");
+          console.log(file);
+          var extension = file.name.slice((Math.max(0, file.name.lastIndexOf(".")) || Infinity) + 1);
           var fileText = e.target.result;
-          var parser = new DxfParser();
-          var dxf = null;
 
-          try {
-            dxf = parser.parseSync(fileText);
-          } catch (err) {
-            return console.error(err.stack);
-          } // outputElement.innerHTML = JSON.stringify(dxf, null, 4);
+          if (extension === "json") {
+            component_ModuleDatabase.getModule("geometry").add({
+              map: fileText
+            }).then(function (value) {
+              loadding.disable();
+            });
+          } else if (extension === "dxf") {
+            var parser = new DxfParser();
+            var dxf = null;
 
+            try {
+              dxf = parser.parseSync(fileText);
+            } catch (err) {
+              return console.error(err.stack);
+            }
 
-          var geojson = GeoJSON.parse(dxf); // var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
-
-          window.dcel.extractLines();
-          var faces = dcel.internalFaces();
-          geojson = consoleArea(faces);
-          mapView.map.data.addGeoJson(geojson, {}); // map.setCenter(center);
-
-          mapView.map.data.setStyle({
-            strokeColor: "#000000",
-            strokeOpacity: 0.8,
-            strokeWeight: 1
-          });
-          console.timeEnd("dcel cost");
-          loadding.disable();
+            var wkt = GeoJSON.parse(dxf);
+            var center = new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
+            window.dcel.extractLines();
+            var faces = dcel.internalFaces();
+            wkt = consoleWKT(faces);
+            self.polygon = self.polygon.concat(self.addWKT(wkt));
+            mapView.map.setCenter(center);
+            mapView.map.setZoom(17);
+            mapView.map.data.setStyle({
+              strokeColor: "#000000",
+              strokeOpacity: 0.8,
+              strokeWeight: 1
+            });
+            console.timeEnd("dcel cost");
+            loadding.disable();
+          }
         };
       }
     },
@@ -54268,6 +55630,9 @@ PlanningInformation_PlanningInformation.prototype.getView = function () {
     "class": "pizo-list-realty",
     child: [{
       "class": 'absol-single-page-header',
+      style: {
+        paddingRight: 0
+      },
       child: [{
         tag: "span",
         "class": "pizo-body-title-left",
@@ -54293,6 +55658,15 @@ PlanningInformation_PlanningInformation.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
+              self.saveCurrentDataMap();
+            }
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
               hiddenInput.click();
             }
           },
@@ -54301,9 +55675,15 @@ PlanningInformation_PlanningInformation.prototype.getView = function () {
       }, {
         tag: "div",
         "class": "pizo-list-realty-page-allinput",
+        style: {
+          width: "calc(100% - 190px)"
+        },
         child: [{
           tag: "div",
           "class": "pizo-list-realty-page-allinput-container",
+          style: {
+            width: "100%"
+          },
           child: [allinput, {
             tag: "button",
             "class": "pizo-list-realty-page-allinput-search",
@@ -54315,50 +55695,475 @@ PlanningInformation_PlanningInformation.prototype.getView = function () {
               }
             }]
           }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-page-allinput-filter",
-          on: {
-            click: function click(event) {
-              self.searchControl.show();
-            }
-          },
-          child: [{
-            tag: 'filter-ico'
-          }, {
-            tag: "span",
-            "class": "navbar-search__filter-text",
-            props: {
-              innerHTML: "Lọc"
-            }
-          }]
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-page-number-line",
-        child: [input, {
-          tag: "span",
-          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
-          props: {
-            innerHTML: "Số dòng"
-          }
         }]
       }]
     }]
   });
   this.$view.addChild(PlanningInformation_({
     tag: "div",
-    "class": ["pizo-list-realty-main"],
+    "class": ["pizo-list-plan-main"],
     child: [this.searchControl, {
       tag: "div",
       "class": ["pizo-list-realty-main-result-control"],
       child: [mapView]
     }]
   }));
+  this.mapView = mapView;
+  this.mapView.map.enableKeyDragZoom(this.selectPolygonFunction.bind(this));
+  this.mapView.map.setTilt(45);
+  var polyOptions = {
+    strokeColor: "#eb4034",
+    fillColor: "#c18986",
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    editable: true,
+    draggable: true
+  };
+  var drawingManager = new google.maps.drawing.DrawingManager({
+    drawingControlOptions: {
+      drawingModes: [google.maps.drawing.OverlayType.POLYGON]
+    },
+    markerOptions: {
+      draggable: true
+    },
+    polylineOptions: {},
+    draggableCursor: 'crosshair',
+    rectangleOptions: polyOptions,
+    circleOptions: polyOptions,
+    polygonOptions: polyOptions,
+    map: this.mapView.map
+  });
+  google.maps.event.addListener(drawingManager, 'overlaycomplete', function (e) {
+    self.removeAllSelect();
+    var polygon = e.overlay;
+    self.polygon.push(polygon);
+    self.addEventPolygon(polygon);
+
+    if (self.editPolygon !== undefined) {
+      self.editPolygon.toInActive(self);
+    }
+
+    polygon.toActive(self);
+    polygon.setOptions({
+      editable: true,
+      draggable: true
+    });
+    self.editPolygon = polygon;
+  });
+  this.mapView.map.setOptions({
+    maxZoom: 30
+  });
+  this.drawingManager = drawingManager;
+  this.polygon = [];
+  this.selectPolygon = [];
+  window.addEventListener("keydown", function (e) {
+    if (e.keyCode == 46) {
+      if (self.editPolygon !== undefined) {
+        self.editPolygon.setMap(null);
+        var index = self.polygon.indexOf(self.editPolygon);
+        self.polygon.splice(index, 1);
+      }
+
+      for (var i = 0; i < self.selectPolygon.length; i++) {
+        self.selectPolygon[i].setMap(null);
+        google.maps.event.clearListeners(self.selectPolygon[i], 'click');
+        var index = self.polygon.indexOf(self.selectPolygon[i]);
+        self.polygon.splice(index, 1);
+      }
+
+      if (self.allPolygon !== undefined) {
+        self.allPolygon.setMap(null);
+        self.allPolygon = undefined;
+      }
+
+      self.selectPolygon = [];
+    } else if (e.keyCode == 27) {
+      self.removeAllSelect();
+
+      if (self.editPolygon !== undefined) {
+        self.editPolygon.toInActive(self);
+      }
+    }
+  });
+  this.allinput = allinput;
+  var searchBox = new google.maps.places.SearchBox(allinput, {
+    // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
+    types: ['geocode'],
+    componentRestrictions: {
+      country: 'vn'
+    }
+  });
+  google.maps.event.addListener(this.mapView.map, 'bounds_changed', function () {
+    var bounds = self.mapView.map.getBounds();
+    searchBox.setBounds(bounds);
+  });
+  this.searchBox = searchBox;
+  google.maps.event.addListener(searchBox, 'places_changed', function () {
+    var places = searchBox.getPlaces(); // For each place, get the icon, place name, and location.
+
+    var bounds = new google.maps.LatLngBounds();
+    var place = null;
+
+    for (var i = 0; place = places[i]; i++) {
+      bounds.extend(place.geometry.location);
+    }
+
+    self.mapView.map.setCenter(bounds.getCenter());
+  });
+  component_ModuleDatabase.getModule("geometry", ["loadMap.php", "addMap.php", "updateMap.php", "deleteMap.php"]);
+  component_ModuleDatabase.getModule("geometry_created", ["loadCreatedMap.php"]).load(undefined, true).then(function (value) {
+    self.filterTime.updateItem(value);
+  });
   return this.$view;
 };
 
+PlanningInformation_PlanningInformation.prototype.removeAllSelect = function () {
+  var self = this;
+
+  if (self.allPolygon !== undefined) {
+    for (var i = 0; i < self.selectPolygon.length; i++) {
+      self.selectPolygon[i].setMap(self.mapView.map);
+
+      if (self.allPolygon !== undefined && self.allPolygon.deltaDrag !== undefined && (self.allPolygon.deltaDrag.lat !== 0 || self.allPolygon.deltaDrag.lng !== 0)) {
+        var center = self.selectPolygon[i].getBounds().getCenter().toJSON();
+        center.lat += self.allPolygon.deltaDrag.lat;
+        center.lng += self.allPolygon.deltaDrag.lng;
+        self.selectPolygon[i].moveTo(new google.maps.LatLng(center.lat, center.lng));
+      }
+    }
+
+    self.allPolygon.setMap(null);
+    self.allPolygon = undefined;
+    self.selectPolygon = [];
+  }
+};
+
+PlanningInformation_PlanningInformation.prototype.createHash = function (arr) {
+  var data = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    this.createHashRow(arr[i], data);
+  }
+
+  return data;
+};
+
+PlanningInformation_PlanningInformation.prototype.createHashRow = function (data, hash) {
+  var intLat, intLng, cellLat, cellLng, created;
+  var center = data.getBounds().getCenter().toJSON();
+  intLng = parseInt(center.lng / 1);
+  cellLng = Math.ceil(center.lng % 1 / 0.0009009009009009009) - 1;
+  intLat = parseInt(center.lat / 1);
+  cellLat = Math.ceil(center.lat % 1 / 0.0009009009009009009) - 1;
+  cellLng = intLng * 10000 + cellLng;
+  cellLat = intLat * 10000 + cellLat;
+
+  if (data.created !== undefined) {
+    created = data.created;
+    if (hash[created] === undefined) hash[created] = [];
+    if (hash[created][cellLat] == undefined) hash[created][cellLat] = [];
+    if (hash[created][cellLat][cellLng] == undefined) hash[created][cellLat][cellLng] = [];
+    hash[created][cellLat][cellLng].push(data.ToWKT());
+  } else {
+    if (hash[cellLat] == undefined) hash[cellLat] = [];
+    if (hash[cellLat][cellLng] == undefined) hash[cellLat][cellLng] = [];
+    hash[cellLat][cellLng].push(data);
+  }
+};
+
+PlanningInformation_PlanningInformation.prototype.saveCurrentDataMap = function () {
+  var data = this.createHash(this.polygon);
+  var gmt = getGMT();
+
+  for (var param in data) {
+    if (isNaN(param / 1) === true) {
+      for (var cellLat in data[param]) {
+        var dataLat = data[param][cellLat];
+
+        for (var cellLng in dataLat) {
+          if (this.hash[param] === undefined || this.hash[param][cellLat] === undefined || this.hash[param][cellLat][cellLng] === undefined) {
+            var arr = dataLat[cellLng];
+            var wkt = new Wkt.Wkt();
+
+            for (var i = 0; i < arr.length; i++) {
+              if (i === 0) wkt.read(arr[i]);else wkt.merge(new Wkt.Wkt(arr[i]));
+            }
+
+            component_ModuleDatabase.getModule("geometry").add({
+              cellLat: cellLat,
+              cellLng: cellLng,
+              created: param,
+              map: wkt.toString()
+            });
+          } else {
+            var arr = dataLat[cellLng];
+            var wkt = new Wkt.Wkt();
+
+            for (var i = 0; i < arr.length; i++) {
+              if (i === 0) wkt.read(arr[i]);else wkt.merge(new Wkt.Wkt(arr[i]));
+            }
+
+            var arr = this.hash[param][cellLat][cellLng];
+            var wkt2 = new Wkt.Wkt();
+
+            for (var i = 0; i < arr.length; i++) {
+              if (i === 0) wkt2.read(arr[i]);else wkt2.merge(new Wkt.Wkt(arr[i]));
+            }
+
+            if (wkt.toString() !== wkt2.toString()) {
+              component_ModuleDatabase.getModule("geometry").update({
+                cellLat: cellLat,
+                cellLng: cellLng,
+                created: param,
+                map: wkt.toString()
+              });
+            }
+
+            delete this.hash[param][cellLat];
+          }
+        }
+      }
+    } else {
+      var promiseAll = [];
+
+      for (var child in data[param]) {
+        var arr = data[param][child];
+        var wkt = new Wkt.Wkt();
+
+        for (var i = 0; i < arr.length; i++) {
+          var stringWKT = arr[i].ToWKT();
+          if (i === 0) wkt.read(stringWKT);else wkt.merge(new Wkt.Wkt(stringWKT));
+          arr[i].created = gmt;
+          arr[i] = stringWKT;
+        }
+
+        promiseAll.push(component_ModuleDatabase.getModule("geometry").add({
+          cellLat: param,
+          cellLng: child,
+          created: gmt,
+          map: wkt.toString()
+        }));
+      }
+
+      var x = data[param];
+      delete data[param];
+      if (data[gmt] === undefined) data[gmt] = [];
+      data[gmt][param] = x;
+      var date = formatDate(gmt, true, true, true, true, true);
+
+      if (this.filterTime.values.indexOf(gmt) == -1) {
+        this.filterTime.items.push({
+          text: date,
+          value: gmt
+        });
+        this.filterTime.items = this.filterTime.items;
+        this.filterTime.values.push(gmt);
+        this.filterTime.values = this.filterTime.values;
+      }
+    }
+  }
+
+  var promiseAllDelete = [];
+
+  for (var param in this.hash) {
+    if (isNaN(param / 1)) {
+      for (var ortherLat in this.hash[param]) {
+        for (var ortherLng in this.hash[param][ortherLat]) {
+          promiseAllDelete.push(component_ModuleDatabase.getModule("geometry")["delete"]({
+            cellLat: ortherLat,
+            cellLng: ortherLng,
+            created: param
+          }));
+        }
+      }
+    }
+
+    if (data[param] === undefined) {
+      for (var i = 0; i < this.filterTime.values.length; i++) {
+        if (this.filterTime.values[i] == param) {
+          this.filterTime.values.splice(i, 1);
+          this.filterTime.values = this.filterTime.values;
+          break;
+        }
+      }
+
+      for (var i = 0; i < this.filterTime.items.length; i++) {
+        if (this.filterTime.items[i].value == param) {
+          this.filterTime.items.splice(i, 1);
+          this.filterTime.items = this.filterTime.items;
+          break;
+        }
+      }
+    }
+  }
+
+  Promise.all(promiseAllDelete).then(function (values) {});
+  this.hash = data;
+};
+
+PlanningInformation_PlanningInformation.prototype.addEventPolygon = function (polygon) {
+  var self = this;
+  google.maps.event.addListener(polygon, 'click', function (event) {
+    if (self.editPolygon === this) {
+      this.toInActive(self);
+    } else {
+      if (self.editPolygon !== undefined) {
+        self.editPolygon.toInActive(self);
+        this.toActive(self);
+        this.setOptions({
+          editable: true,
+          draggable: true
+        });
+      } else {
+        if (self.allPolygon !== undefined) {
+          if (self.selectPolygon.indexOf(this) === -1) {
+            self.allPolygon.setMap(null);
+            var path = [];
+            var tempPath;
+
+            for (var i = 0; i < self.selectPolygon.length; i++) {
+              if (self.allPolygon !== undefined && self.allPolygon.deltaDrag !== undefined && (self.allPolygon.deltaDrag.lat !== 0 || self.allPolygon.deltaDrag.lng !== 0)) {
+                var center = self.selectPolygon[i].getBounds().getCenter().toJSON();
+                center.lat += self.allPolygon.deltaDrag.lat;
+                center.lng += self.allPolygon.deltaDrag.lng;
+                self.selectPolygon[i].moveTo(new google.maps.LatLng(center.lat, center.lng));
+              }
+
+              tempPath = [];
+
+              for (var j = 0; j < self.selectPolygon[i].getPath().getLength(); j++) {
+                tempPath.push(self.selectPolygon[i].getPath().getAt(j).toJSON());
+              }
+
+              self.selectPolygon[i].setMap(null);
+              path.push(tempPath);
+            }
+
+            tempPath = [];
+
+            for (var j = 0; j < this.getPath().getLength(); j++) {
+              tempPath.push(this.getPath().getAt(j).toJSON());
+            }
+
+            path.push(tempPath);
+            this.setMap(null);
+            self.selectPolygon.push(this);
+            self.createAllPolygon(path);
+          }
+        } else {
+          this.toActive(self);
+          this.setOptions({
+            editable: true,
+            draggable: true
+          });
+        }
+      }
+    }
+  });
+};
+
+PlanningInformation_PlanningInformation.prototype.selectPolygonFunction = function (bns) {
+  this.removeAllSelect();
+  if (this.editPolygon !== undefined) this.editPolygon.toInActive(this);
+  var path = [];
+  var tempPath;
+
+  for (var i = 0; i < this.polygon.length; i++) {
+    tempPath = [];
+    var boundary = this.polygon[i].boundary();
+
+    if (bns.Ya.i < boundary.min.lat && boundary.max.lat < bns.Ya.j && bns.Ua.i < boundary.min.lng && boundary.max.lng < bns.Ua.j) {
+      for (var j = 0; j < this.polygon[i].getPath().getLength(); j++) {
+        tempPath.push(this.polygon[i].getPath().getAt(j).toJSON());
+      }
+
+      this.polygon[i].setMap(null);
+      this.selectPolygon.push(this.polygon[i]);
+    }
+
+    path.push(tempPath);
+  }
+
+  this.createAllPolygon(path);
+};
+
+PlanningInformation_PlanningInformation.prototype.createAllPolygon = function (path) {
+  var polygon = new google.maps.Polygon({
+    paths: path,
+    strokeColor: "#eb4034",
+    fillColor: "#c18986",
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    draggable: true,
+    geodesic: true
+  });
+  google.maps.event.addListener(polygon, 'dragstart', function (e) {
+    if (this.dragStart == undefined) this.dragStart = polygon.getBounds().getCenter().toJSON();
+  });
+  google.maps.event.addListener(polygon, 'dragend', function (e) {
+    var center = polygon.getBounds().getCenter().toJSON();
+    this.deltaDrag = {
+      lat: center.lat - this.dragStart.lat,
+      lng: center.lng - this.dragStart.lng
+    };
+  });
+  polygon.setMap(this.mapView.map);
+  this.allPolygon = polygon;
+  return polygon;
+};
+
 PlanningInformation_PlanningInformation.prototype.searchControlContent = function () {
+  var self = this;
+
+  var filterTime = PlanningInformation_({
+    tag: "selectbox",
+    props: {
+      enableSearch: true
+    },
+    on: {
+      add: function add(event) {
+        if (self.hash[event.value] === undefined) {
+          component_ModuleDatabase.getModule("geometry").load({
+            WHERE: "created='" + event.value + "'"
+          }).then(function (value) {
+            for (var i = 0; i < value.length; i++) {
+              self.polygon = self.polygon.concat(self.addWKT(value[i]));
+            }
+
+            var center = value[value.length - 1];
+            self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat / 10000) + (center.cellLat % 10000 - 1) * 0.0009009009009009009, parseInt(center.cellLng / 10000) + (center.cellLng % 10000 - 1) * 0.0009009009009009009));
+            self.mapView.map.setZoom(17);
+          });
+        } else {
+          self.polygon = self.polygon.concat(self.addCurrentWKT(event.value));
+        }
+      },
+      remove: function remove(event) {
+        self.removeAllSelect();
+
+        for (var i = self.polygon.length - 1; i >= 0; i--) {
+          if (self.polygon[i].created === event.value) {
+            self.polygon[i].setMap(null);
+            self.polygon.splice(i, 1);
+          }
+        }
+      }
+    }
+  });
+
+  filterTime.updateItem = function (value) {
+    var list = [];
+
+    for (var i = 0; i < value.length; i++) {
+      list.push({
+        text: formatDate(value[i].created, true, true, true, true, true, true),
+        value: value[i].created
+      });
+    }
+
+    this.items = list;
+  };
+
   var content = PlanningInformation_({
     tag: "div",
     "class": "pizo-list-realty-main-search-control-container",
@@ -54372,98 +56177,21 @@ PlanningInformation_PlanningInformation.prototype.searchControlContent = functio
       "class": "pizo-list-realty-main-search-control-container-scroller",
       child: [{
         tag: "div",
-        "class": "pizo-list-realty-main-search-control-row",
+        "class": "pizo-list-plan-main-search-control-row",
         child: [{
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-state-street",
+          "class": "pizo-list-plan-main-search-control-row-selectbox-plan",
           child: [{
             tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-state-street-label",
+            "class": "pizo-list-plan-main-search-control-row-selectbox-plan-label",
             props: {
-              innerHTML: "Tỉnh/TP"
+              innerHTML: "Lần commit"
             }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-state-street-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Thành phố Hồ Chí Minh',
-                  id: 79
-                }, {
-                  text: 'Thủ đô Hà Nội',
-                  id: 80
-                }]
-              }
-            }]
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-district-street",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-district-street-label",
-            props: {
-              innerHTML: "Quận/Huyện"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-district-street-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Quận 1',
-                  id: 79
-                }, {
-                  text: 'Quận Bình Thạnh',
-                  id: 80
-                }, {
-                  text: 'Quận Tân Bình',
-                  id: 81
-                }]
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-ward-street",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-ward-street-label",
-            props: {
-              innerHTML: "Phường/Xã"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-ward-street-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Phường Tân Định',
-                  id: 79
-                }]
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-button",
-          child: [{
-            tag: "button",
-            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
-            on: {
-              click: function click(evt) {
-                temp.reset();
-              }
-            },
-            child: ['<span>' + "Thiết lập lại" + '</span>']
-          }]
+          "class": "pizo-list-realty-main-search-control-row-selectbox-plan-input",
+          child: [filterTime]
         }]
       }]
     }]
@@ -54479,6 +56207,8 @@ PlanningInformation_PlanningInformation.prototype.searchControlContent = functio
     },
     child: [content]
   });
+
+  this.filterTime = filterTime;
 
   temp.show = function () {
     if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
@@ -54518,6 +56248,72 @@ PlanningInformation_PlanningInformation.prototype.searchControlContent = functio
   return temp;
 };
 
+PlanningInformation_PlanningInformation.prototype.addWKT = function (multipolygonWKT) {
+  if (this.hash === undefined) this.hash = [];
+  var created;
+
+  if (PlanningInformation_typeof(multipolygonWKT) == "object") {
+    created = multipolygonWKT["created"];
+    multipolygonWKT = multipolygonWKT["AsText(`map`)"];
+  }
+
+  var wkt = new Wkt.Wkt();
+  wkt.read(multipolygonWKT);
+  var toReturn = [];
+  var components = wkt.components;
+
+  for (var k = 0; k < components.length; k++) {
+    var line = components[k];
+    var polygon = new google.maps.Polygon({
+      paths: line,
+      strokeColor: "#000000",
+      fillColor: "#adaeaf",
+      strokeOpacity: 0.8,
+      strokeWeight: 1,
+      map: this.mapView.map,
+      geodesic: true
+    });
+    this.addEventPolygon(polygon);
+    if (created !== undefined) polygon.created = created;
+    toReturn.push(polygon);
+    this.createHashRow(polygon, this.hash);
+  }
+
+  return toReturn;
+};
+
+PlanningInformation_PlanningInformation.prototype.addCurrentWKT = function (created) {
+  var toReturn = [];
+
+  for (var cellLat in this.hash[created]) {
+    for (var cellLng in this.hash[created][cellLat]) {
+      var arr = this.hash[created][cellLat][cellLng];
+
+      for (var i = 0; i < arr.length; i++) {
+        var wkt = new Wkt.Wkt();
+        wkt.read(arr[i]);
+        var components = wkt.components;
+        var polygon = new google.maps.Polygon({
+          paths: components,
+          strokeColor: "#000000",
+          fillColor: "#adaeaf",
+          strokeOpacity: 0.8,
+          strokeWeight: 1,
+          map: this.mapView.map,
+          geodesic: true
+        });
+        this.addEventPolygon(polygon);
+        if (created !== undefined) polygon.created = created;
+        toReturn.push(polygon);
+      }
+    }
+  }
+
+  this.mapView.map.setCenter(new google.maps.LatLng(parseInt(cellLat / 10000) + (cellLat % 10000 - 1) * 0.0009009009009009009, parseInt(cellLng / 10000) + (cellLng % 10000 - 1) * 0.0009009009009009009));
+  this.mapView.map.setZoom(17);
+  return toReturn;
+};
+
 PlanningInformation_PlanningInformation.prototype.refresh = function () {
   var data;
   var editor = this.getContext(R.LAYOUT_EDITOR);
@@ -54555,7 +56351,7 @@ PlanningInformation_PlanningInformation.prototype.start = function () {};
 var ListHelp = __webpack_require__(19);
 
 // EXTERNAL MODULE: ./css/HelpContainer.css
-var HelpContainer = __webpack_require__(187);
+var HelpContainer = __webpack_require__(189);
 
 // CONCATENATED MODULE: ./js/component/HelpContainer.js
 
@@ -54884,10 +56680,10 @@ ListHelp_ListHelp.prototype.start = function () {};
 
 /* harmony default export */ var page_ListHelp = (ListHelp_ListHelp);
 // EXTERNAL MODULE: ./css/EditHelpContainer.css
-var EditHelpContainer = __webpack_require__(189);
+var EditHelpContainer = __webpack_require__(191);
 
 // EXTERNAL MODULE: ./css/NewCategory.css
-var NewCategory = __webpack_require__(191);
+var NewCategory = __webpack_require__(193);
 
 // CONCATENATED MODULE: ./js/component/EditHelpContainer.js
 
@@ -54949,7 +56745,7 @@ function EditHelpContainer_EditHelpContainer(phpLoader) {
   });
 
   var updateTableFunction;
-  component_ModuleDatabase.loadData(phpLoader).then(function (value) {
+  component_ModuleDatabase.getModule("helps").load().then(function (value) {
     var header = [{
       type: "dragzone"
     }, {
@@ -55548,9 +57344,7 @@ EditHelpContainer_EditHelpContainer.prototype.addView = function (value, row, pa
 
 EditHelpContainer_EditHelpContainer.prototype.addDB = function (value) {
   var self = this;
-  var phpFile = component_ModuleDatabase.addHelpPHP;
-  if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+  component_ModuleDatabase.getModule("helps").add(value).then(function (result) {
     value.id = result;
   });
 };
@@ -55642,10 +57436,8 @@ EditHelpContainer_EditHelpContainer.prototype.editView = function (value, data, 
 EditHelpContainer_EditHelpContainer.prototype.editDB = function (mNewCategory, data, parent, index) {
   var self = this;
   mNewCategory.promiseEditDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.updateHelpPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("helps").update(value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewCategory.promiseEditDB = undefined;
@@ -55706,9 +57498,7 @@ EditHelpContainer_EditHelpContainer.prototype.updateChild = function (child) {
 
       if (isUpdate || child[i].original.ordering != i) {
         if (child[i].original.ordering != i) child[i].original.ordering = i;
-        var phpFile = "https://lab.daithangminh.vn/home_co/pizo/php/php/update_help_time.php";
-        if (self.phpUpdateTimeContent) phpFile = self.phpUpdateTimeContent;
-        component_ModuleDatabase.updateData(phpFile, dataUpdate);
+        component_ModuleDatabase.getModule("helps").load(dataUpdate);
       }
     }
 
@@ -55744,9 +57534,7 @@ EditHelpContainer_EditHelpContainer.prototype.setDataTitle = function (data) {
 
 EditHelpContainer_EditHelpContainer.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = component_ModuleDatabase.deleteHelpPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.getModule("helps").load(data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -55997,10 +57785,10 @@ ListEditHelp_ListHelp.prototype.start = function () {};
 
 /* harmony default export */ var ListEditHelp = (ListEditHelp_ListHelp);
 // EXTERNAL MODULE: ./css/ListPositions.css
-var ListPositions = __webpack_require__(193);
+var ListPositions = __webpack_require__(195);
 
 // EXTERNAL MODULE: ./css/NewDepartment.css
-var NewDepartment = __webpack_require__(195);
+var NewDepartment = __webpack_require__(197);
 
 // CONCATENATED MODULE: ./js/component/NewDepartment.js
 
@@ -56250,7 +58038,7 @@ NewDepartment_NewDepartment.prototype.start = function () {};
 
 /* harmony default export */ var component_NewDepartment = (NewDepartment_NewDepartment);
 // EXTERNAL MODULE: ./css/NewPosition.css
-var NewPosition = __webpack_require__(197);
+var NewPosition = __webpack_require__(199);
 
 // CONCATENATED MODULE: ./js/component/NewPosition.js
 
@@ -56972,7 +58760,7 @@ ListPositions_ListPositions.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadDepartmentsPHP).then(function (value) {
+  component_ModuleDatabase.getModule("departments").load().then(function (value) {
     var header = [{
       value: 'Bộ phận',
       sort: true,
@@ -57045,8 +58833,8 @@ ListPositions_ListPositions.prototype.getView = function () {
     self.mTablePosition = new tableView(header, [], false, true);
     contentContainer.addChild(self.mTablePosition);
     var promiseAll = [];
-    promiseAll.push(component_ModuleDatabase.loadData(component_ModuleDatabase.loadPositionsPHP));
-    promiseAll.push(component_ModuleDatabase.loadData(component_ModuleDatabase.loadAccountsPHP));
+    promiseAll.push(component_ModuleDatabase.getModule("positions").load());
+    promiseAll.push(component_ModuleDatabase.getModule("users").load());
     Promise.all(promiseAll).then(function (values) {
       self.formatDataRowAccount(values[1]);
       self.formatDataRowPosition(values[0]);
@@ -57061,14 +58849,8 @@ ListPositions_ListPositions.prototype.getView = function () {
 };
 
 ListPositions_ListPositions.prototype.formatDataRowPosition = function (data) {
-  var checkDepartment = [];
-
-  for (var i = 0; i < data.length; i++) {
-    if (checkDepartment[data[i].department_id] == undefined) checkDepartment[data[i].department_id] = [];
-    checkDepartment[data[i].department_id].push(this.getDataRowPosition(data[i]));
-  }
-
-  this.checkDepartment = checkDepartment;
+  this.checkDepartment = component_ModuleDatabase.getModule("positions").getLibary("department_id", this.getDataRowPosition.bind(this), true);
+  console.log(component_ModuleDatabase);
 };
 
 ListPositions_ListPositions.prototype.getDataRowPosition = function (data) {
@@ -57082,21 +58864,14 @@ ListPositions_ListPositions.prototype.getDataRowPosition = function (data) {
 };
 
 ListPositions_ListPositions.prototype.formatDataRowAccount = function (data) {
-  var checkAccount = [];
   this.listAccoutData = data;
-
-  for (var i = 0; i < data.length; i++) {
-    checkAccount[data[i].positionid] = data[i];
-  }
-
-  this.checkAccount = checkAccount;
+  this.checkAccount = component_ModuleDatabase.getModule("users").getLibary("positionid");
 };
 
 ListPositions_ListPositions.prototype.formatDataRow = function (data) {
   var temp = [];
   var check = [];
   var k = 0;
-  console.log(data);
 
   for (var i = 0; i < data.length; i++) {
     var result = [data[i].name, data[i].code, {}];
@@ -57145,9 +58920,7 @@ ListPositions_ListPositions.prototype.addDBDepartment = function (mNewDepartment
   var self = this;
   mNewDepartment.promiseAddDB.then(function (value) {
     console.log(value);
-    var phpFile = component_ModuleDatabase.addDepartmentsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("departments").add(value).then(function (result) {
       value.id = result;
       self.addViewDepartment(value, row);
     });
@@ -57184,10 +58957,8 @@ ListPositions_ListPositions.prototype.editDepartment = function (data, parent, i
 ListPositions_ListPositions.prototype.editDBDepartment = function (mNewDepartment, data, parent, index) {
   var self = this;
   mNewDepartment.promiseEditDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.updateDepartmentsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("departments").update(value).then(function (result) {
       self.editViewDepartment(value, data, parent, index);
     });
     mNewDepartment.promiseEditDB = undefined;
@@ -57245,9 +59016,9 @@ ListPositions_ListPositions.prototype.deleteViewDepartment = function (parent, i
 
 ListPositions_ListPositions.prototype.deleteDBDepartment = function (data, parent, index) {
   var self = this;
-  var phpFile = component_ModuleDatabase.deleteDepartmentsPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.getModule("departments")["delete"]({
+    id: data.id
+  }).then(function (value) {
     self.deleteViewDepartment(parent, index);
   });
 };
@@ -57268,31 +59039,17 @@ ListPositions_ListPositions.prototype.addPosition = function () {
 ListPositions_ListPositions.prototype.addDBPosition = function (mNewPosition, row) {
   var self = this;
   mNewPosition.promiseAddDB.then(function (value) {
-    console.log(value);
-    var phpFile = component_ModuleDatabase.addPositionsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    var username = value.username;
+    delete value.username;
+    component_ModuleDatabase.getModule("positions").add(value).then(function (result) {
       value.id = result;
-      console.log(result);
 
       if (value.username !== undefined) {
-        console.log(value.id);
-        var phpFile = component_ModuleDatabase.updateAccountsPHP;
-        if (self.phpUpdateAccount) phpFile = self.phpUpdateAccount;
         var x = {
-          id: value.username.id,
+          id: username.id,
           positionid: value.id
         };
-
-        for (var i = 0; i < self.listAccoutData.length; i++) {
-          if (self.listAccoutData[i].id == value.username.id) self.listAccoutData[i].positionid = value.id;
-        }
-
-        component_ModuleDatabase.updateData(phpFile, x).then(function () {
-          delete self.checkAccount[value.username.positionid];
-          value.username.positionid = value.id;
-          self.checkAccount[value.id] = value.username;
-          value.username = undefined;
+        component_ModuleDatabase.getModule("users").update(x).then(function () {
           self.addViewPosition(value, row);
         });
       } else self.addViewPosition(value, row);
@@ -57327,20 +59084,15 @@ ListPositions_ListPositions.prototype.editPosition = function (data, parent, ind
 ListPositions_ListPositions.prototype.editDBPosition = function (mNewPosition, data, parent, index) {
   var self = this;
   mNewPosition.promiseEditDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.updatePositionsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    console.log(value);
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("positions").update(value).then(function (result) {
       if (value.username !== undefined && value.username.positionid != value.id) {
-        var phpFile = component_ModuleDatabase.updateAccountsPHP;
-        if (self.phpUpdateAccount) phpFile = self.phpUpdateAccount;
         var x = {
           id: value.username.id,
           positionid: value.id
         };
         var promiseAll = [];
-        promiseAll.push(component_ModuleDatabase.updateData(phpFile, x));
+        promiseAll.push(component_ModuleDatabase.getModule("users").update(x));
 
         if (self.checkAccount[value.id] !== undefined) {
           var y = {
@@ -57348,7 +59100,7 @@ ListPositions_ListPositions.prototype.editDBPosition = function (mNewPosition, d
             positionid: 0
           };
           var promiseAll = [];
-          promiseAll.push(component_ModuleDatabase.updateData(phpFile, y));
+          promiseAll.push(component_ModuleDatabase.getModule("users").update(y));
         }
 
         for (var i = 0; i < self.listAccoutData.length; i++) {
@@ -57398,9 +59150,9 @@ ListPositions_ListPositions.prototype.deleteViewPosition = function (parent, ind
 
 ListPositions_ListPositions.prototype.deleteDBPosition = function (data, parent, index) {
   var self = this;
-  var phpFile = component_ModuleDatabase.deletePositionsPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.getModule("positions")["delete"]({
+    id: data.id
+  }).then(function (value) {
     self.deleteViewPosition(parent, index);
   });
 };
@@ -57439,10 +59191,10 @@ ListPositions_ListPositions.prototype.start = function () {};
 
 /* harmony default export */ var page_ListPositions = (ListPositions_ListPositions);
 // EXTERNAL MODULE: ./css/ListAccount.css
-var ListAccount = __webpack_require__(199);
+var ListAccount = __webpack_require__(201);
 
 // EXTERNAL MODULE: ./css/NewAccount.css
-var NewAccount = __webpack_require__(201);
+var NewAccount = __webpack_require__(203);
 
 // CONCATENATED MODULE: ./js/component/NewAccount.js
 
@@ -58178,8 +59930,8 @@ ListAccount_ListAccount.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadAccountsPHP).then(function (value) {
-    component_ModuleDatabase.loadData(component_ModuleDatabase.loadPositionsPHP).then(function (listParam) {
+  component_ModuleDatabase.getModule("users").load().then(function (value) {
+    component_ModuleDatabase.getModule("positions").load().then(function (listParam) {
       self.setListParam(listParam);
       var header = [{
         type: "increase",
@@ -58602,9 +60354,7 @@ ListAccount_ListAccount.prototype.add = function () {
 ListAccount_ListAccount.prototype.addDB = function (mNewAccount, row) {
   var self = this;
   mNewAccount.promiseAddDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.addAccountsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("users").add(value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -58638,10 +60388,8 @@ ListAccount_ListAccount.prototype.edit = function (data, parent, index) {
 ListAccount_ListAccount.prototype.editDB = function (mNewAccount, data, parent, index) {
   var self = this;
   mNewAccount.promiseEditDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.updateAccountsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("users").update(value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewAccount.promiseEditDB = undefined;
@@ -58671,16 +60419,14 @@ ListAccount_ListAccount.prototype["delete"] = function (data, parent, index) {
 };
 
 ListAccount_ListAccount.prototype.deleteView = function (parent, index) {
-  var self = this;
-  var bodyTable = parent.bodyTable;
   parent.dropRow(index).then(function () {});
 };
 
 ListAccount_ListAccount.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = component_ModuleDatabase.deleteAccountsPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.getModule("users")["delete"]({
+    id: data.id
+  }).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -58719,7 +60465,7 @@ ListAccount_ListAccount.prototype.start = function () {};
 
 /* harmony default export */ var page_ListAccount = (ListAccount_ListAccount);
 // EXTERNAL MODULE: ./css/ListAddress.css
-var ListAddress = __webpack_require__(203);
+var ListAddress = __webpack_require__(205);
 
 // CONCATENATED MODULE: ./js/page/ListAddress.js
 
@@ -58921,7 +60667,7 @@ ListAddress_ListAddress.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadPositionsPHP).then(function (value) {
+  component_ModuleDatabase.getModule("positions").load().then(function (value) {
     var header = [{
       type: "increase",
       value: "#",
@@ -58983,7 +60729,6 @@ ListAddress_ListAddress.prototype.formatDataRow = function (data) {
   var temp = [];
   var check = [];
   var k = 0;
-  var checkElement;
 
   for (var i = 0; i < data.length; i++) {
     var result = [{}, data[i].id, data[i].name, formatDate(data[i].created, true, true, true, true, true), formatDate(data[i].modified, true, true, true, true, true), {}];
@@ -59208,9 +60953,7 @@ ListAddress_ListAddress.prototype.add = function () {
 ListAddress_ListAddress.prototype.addDB = function (mNewPosition, row) {
   var self = this;
   mNewPosition.promiseAddDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.addPositionsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("positions").add(value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -59249,10 +60992,8 @@ ListAddress_ListAddress.prototype.edit = function (data, parent, index) {
 ListAddress_ListAddress.prototype.editDB = function (mNewPosition, data, parent, index) {
   var self = this;
   mNewPosition.promiseEditDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.updatePositionsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("positions").update(value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewPosition.promiseEditDB = undefined;
@@ -59304,7 +61045,6 @@ ListAddress_ListAddress.prototype["delete"] = function (data, parent, index) {
 
 ListAddress_ListAddress.prototype.deleteView = function (parent, index) {
   var self = this;
-  var bodyTable = parent.bodyTable;
   parent.dropRow(index).then(function () {
     self.listParent.updateItemList();
   });
@@ -59312,9 +61052,7 @@ ListAddress_ListAddress.prototype.deleteView = function (parent, index) {
 
 ListAddress_ListAddress.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = component_ModuleDatabase.deletePositionsPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.getModule("positions")["delete"](phpFile, data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -59353,10 +61091,10 @@ ListAddress_ListAddress.prototype.start = function () {};
 
 /* harmony default export */ var page_ListAddress = (ListAddress_ListAddress);
 // EXTERNAL MODULE: ./css/ListContact.css
-var ListContact = __webpack_require__(205);
+var ListContact = __webpack_require__(207);
 
 // EXTERNAL MODULE: ./css/NewContact.css
-var NewContact = __webpack_require__(207);
+var NewContact = __webpack_require__(209);
 
 // CONCATENATED MODULE: ./js/component/NewContact.js
 
@@ -59797,7 +61535,7 @@ ListContact_ListContact.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  component_ModuleDatabase.loadData(component_ModuleDatabase.loadContactsPHP).then(function (value) {
+  component_ModuleDatabase.getModule("contacts").load().then(function (value) {
     var header = [{
       type: "increase",
       value: "#",
@@ -60019,9 +61757,7 @@ ListContact_ListContact.prototype.add = function () {
 ListContact_ListContact.prototype.addDB = function (mNewContact, row) {
   var self = this;
   mNewContact.promiseAddDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.addContactsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("contacts").add(value).then(function (result) {
       value.id = result;
       self.addView(value, row);
     });
@@ -60051,10 +61787,8 @@ ListContact_ListContact.prototype.edit = function (data, parent, index) {
 ListContact_ListContact.prototype.editDB = function (mNewContact, data, parent, index) {
   var self = this;
   mNewContact.promiseEditDB.then(function (value) {
-    var phpFile = component_ModuleDatabase.updateContactsPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
     value.id = data.original.id;
-    component_ModuleDatabase.updateData(phpFile, value).then(function (result) {
+    component_ModuleDatabase.getModule("contacts").update(value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewContact.promiseEditDB = undefined;
@@ -60088,9 +61822,7 @@ ListContact_ListContact.prototype.deleteView = function (parent, index) {
 
 ListContact_ListContact.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = component_ModuleDatabase.deleteContactsPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  component_ModuleDatabase.updateData(phpFile, data).then(function (value) {
+  component_ModuleDatabase.getModule("contacts")(data).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -60129,13 +61861,13 @@ ListContact_ListContact.prototype.start = function () {};
 
 /* harmony default export */ var page_ListContact = (ListContact_ListContact);
 // EXTERNAL MODULE: ./css/form_create_edit.css
-var form_create_edit = __webpack_require__(209);
+var form_create_edit = __webpack_require__(211);
 
 // EXTERNAL MODULE: ./css/test_question.css
-var test_question = __webpack_require__(211);
+var test_question = __webpack_require__(213);
 
 // EXTERNAL MODULE: ./css/test.css
-var test = __webpack_require__(213);
+var test = __webpack_require__(215);
 
 // CONCATENATED MODULE: ./js/component/modal_drag_drop_manyfiles.js
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -60160,6 +61892,7 @@ var xmlModalDragManyFiles;
 /* harmony default export */ var modal_drag_drop_manyfiles = (xmlModalDragManyFiles = {
   imgUrl: [],
   files: [],
+  iconSrc: "https://lab.daithangminh.vn/vivid_exticons/",
   deleteAllTrash: function deleteAllTrash() {},
   Image: function Image(srcImg) {
     var temp = modal_drag_drop_manyfiles_({
@@ -60187,7 +61920,8 @@ var xmlModalDragManyFiles;
           margin: 0,
           width: "fit-content",
           userSelect: "none",
-          backgroundColor: "white"
+          backgroundColor: "white",
+          fontSize: "21px"
         },
         on: {
           click: function click(event) {
@@ -60525,7 +62259,7 @@ var xmlModalDragManyFiles;
         };
       };
     } else {
-      var img = self.Image("https://lab.daithangminh.vn/vivid_exticons/" + file.name.substr(file.name.lastIndexOf('.') + 1) + ".svg");
+      var img = self.Image(this.iconSrc + file.name.substr(file.name.lastIndexOf('.') + 1) + ".svg");
       img.value = file;
       var parent = self.gallery;
       parent.style.position = "relative";

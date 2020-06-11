@@ -4,23 +4,21 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/NewState.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate } from '../component/FormatFunction';
-
-import { input_choicenumber,tableView, ModuleView} from '../component/ModuleView';
-import NewRealty from '../component/NewRealty';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function NewState() {
+function NewState(data) {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    this.ModuleView = new ModuleView();
-    
-    this.NewRealty = new NewRealty();
-    this.NewRealty.attach(this);
+        
+    this.textHeader = "Sửa";
+    this.data = data;
+
+    if(this.data ==undefined)
+    this.textHeader = "Thêm ";
 }
 
 NewState.prototype.setContainer = function(parent)
@@ -30,6 +28,36 @@ NewState.prototype.setContainer = function(parent)
 
 Object.defineProperties(NewState.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 NewState.prototype.constructor = NewState;
+
+NewState.prototype.getDataSave = function() {
+    
+    return {
+        id:this.data===undefined?undefined:this.data.original.id,
+        name:this.name.value,
+        type:this.type.value,
+        districtid:this.district.value
+    }
+}
+
+NewState.prototype.createPromise = function()
+{
+    var self = this;
+    if(this.data === undefined)
+    {
+        self.promiseAddDB = new Promise(function(resolve,reject){
+            self.resolveDB = resolve;
+            self.rejectDB = reject;
+        })
+
+    }else
+    {
+        self.promiseEditDB = new Promise(function(resolve,reject){
+            self.resolveDB = resolve;
+            self.rejectDB = reject;
+        })
+        
+    }
+}
 
 NewState.prototype.getView = function () {
     if (this.$view) return this.$view;
@@ -45,7 +73,7 @@ NewState.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Thêm Tỉnh/TP"
+                            innerHTML:  self.textHeader+"Tỉnh/TP"
                         }
                     },
                     {
@@ -60,6 +88,8 @@ NewState.prototype.getView = function () {
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
+
+                                        self.rejectDB(self.getDataSave());
                                     }
                                 },
                                 child: [
@@ -71,10 +101,27 @@ NewState.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
+                                        self.resolveDB(self.getDataSave());
+                                        self.createPromise();
                                     }
                                 },
                                 child: [
                                 '<span>' + "Lưu" + '</span>'
+                                ]
+                            },
+                            {
+                                tag: "button",
+                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                on: {
+                                    click: function (evt) {
+                                        self.resolveDB(self.getDataSave());
+                                        self.$view.selfRemove();
+                                        var arr = self.parent.body.getAllChild();
+                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                    }
+                                },
+                                child: [
+                                '<span>' + "Lưu và đóng" + '</span>'
                                 ]
                             }
                         ]
@@ -129,8 +176,8 @@ NewState.prototype.getView = function () {
                                             class:"pizo-new-state-container-type-container-input",
                                             props:{
                                                 items:[
-                                                    {text:"Thành phố trực thuộc trung ương",value:79},
-                                                    {text:"Tỉnh",value:80}
+                                                    {text:"Thành phố",value:"Thành phố"},
+                                                    {text:"Tỉnh",value:"Tỉnh"}
                                                 ]
                                             }
                                         }
@@ -152,7 +199,7 @@ NewState.prototype.getView = function () {
                                             class:"pizo-new-state-container-nation-container-input",
                                             props:{
                                                 items:[
-                                                    {text:"Việt Nam",value:79},
+                                                    {text:"Việt Nam",value:1},
                                                 ]
                                             }
                                         }
@@ -165,7 +212,29 @@ NewState.prototype.getView = function () {
             ]   
         })
         );
+    this.createPromise();
+    this.name = $('input.pizo-new-state-container-name-container-input"',this.$view);
+    this.type = $('div.pizo-new-state-container-type-container-input',this.$view);
+    this.nation = $('div.pizo-new-state-container-nation-container-input',this.$view);
+    if(this.data!==undefined)
+    {
+        this.name.value = this.data.original.name;
+        this.type.value = this.data.original.type;
+        this.nation.value = this.data.original.nationid;
+    }
+   
     return this.$view;
+}
+
+NewState.prototype.getDataSave = function() {
+    var temp = {
+        name:this.name.value,
+        type:this.type.value,
+        nationid:this.nation.value
+    }
+    if(this.data!==undefined)
+    temp.id = this.data.original.id;
+    return temp;
 }
 
 NewState.prototype.refresh = function () {

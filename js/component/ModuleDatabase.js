@@ -204,7 +204,7 @@ DataStructure.prototype.add = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpAdder,data).then(function(value){
-            if(self.data.length==0&&self.data)
+            if(self.data.length==0)
             {
 
             }else

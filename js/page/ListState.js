@@ -187,11 +187,6 @@ ListState.prototype.getView = function () {
         docTypeMemuProps = {
             items: [
                 {
-                    text: 'Thêm',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:0,
-                },
-                {
                     text: 'Sửa',
                     icon: 'span.mdi.mdi-text-short',
                     value:1,
@@ -206,9 +201,6 @@ ListState.prototype.getView = function () {
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
-                case 0:
-                    self.add(data.original.id,row);
-                    break;
                 case 1:
                     self.edit(data,parent,index);
                     break;
@@ -414,7 +406,6 @@ ListState.prototype.addDB = function(mNewState,row ){
     var self = this;
     mNewState.promiseAddDB.then(function(value){
         moduleDatabase.getModule("states").add(value).then(function(result){
-            
             value.id = result;
             self.addView(value,row);
         })

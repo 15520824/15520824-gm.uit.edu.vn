@@ -598,8 +598,7 @@ NewAccount.prototype.getView = function (dataParent) {
 
 NewAccount.prototype.getDataSave = function() {
     
-    return {
-        id:this.data===undefined?undefined:this.data.original.id,
+    var temp = {
         name:this.name.value,
         username:this.username.value,
         email:this.email.value,
@@ -611,6 +610,9 @@ NewAccount.prototype.getDataSave = function() {
         status:this.status.checked?1:0,
         permission:this.permission.checked?1:0
     }
+    if(this.data!==undefined)
+    temp.id = this.data.original.id;
+    return temp;
 }
 
 NewAccount.prototype.refresh = function () {
