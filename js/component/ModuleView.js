@@ -585,7 +585,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical, 
 
         result.paginationElement = pagination;
     }
-    result.updatePagination(indexRow);
+    result.updatePagination(indexRow,false);
 
     setTimeout(function () {
         if (window.scrollEvent === undefined) {
@@ -923,21 +923,21 @@ tableView.prototype.setArrayScroll = function (num, isLeft = true) {
     })
 }
 
-tableView.prototype.addInputSearch = function (input) {
+tableView.prototype.addInputSearch = function (input,index) {
     var self = this;
     self.hashTable = new HashTable(self.data);
     input.onchange = function (event, needUpdate = false) {
-        if (this._updateTimeOut !== undefined) {
+        if (this.updateTimeOut !== undefined) {
             clearTimeout(this._updateTimeOut);
-            this._updateTimeOut = undefined;
+            this.updateTimeOut = undefined;
         }
-        this._updateTimeOut = setTimeout(function () {
+        this.updateTimeOut = setTimeout(function () {
             if (input.value !== input.lastInputSearch || needUpdate == true) {
-                self.checkTableView(input.value);
+                self.checkTableView(input.value,index);
                 input.lastInputSearch = input.value;
                 self.updatePagination();
             }
-        }.bind(this), 500);
+        }.bind(this), 200);
     }
     input.oninput = input.onchange;
     if (self.inputElement === undefined)
@@ -959,9 +959,9 @@ tableView.prototype.addFilter = function (input, index) {
     self.inputFilter.push([input,index]);
 }
 
-tableView.prototype.checkTableView = function (value) {
+tableView.prototype.checkTableView = function (value,index) {
     var self = this;
-    self.hashTable.getKey(value);
+    self.hashTable.getKey(value,index);
     self.data.sort(function(a,b){
         if(a.exactly === undefined)
         {
@@ -1079,6 +1079,7 @@ tableView.prototype.getBodyTable = function (data, index = 0) {
         if (data.updateVisible === true) {
             var tempCheck = data[i].confirm;
             data[i].confirm = undefined;
+            data[i].exactly = undefined;
             if (tempCheck !== true) {
                 data[i].visiable = false;
                 if (data[i].child !== undefined)
@@ -1143,6 +1144,7 @@ tableView.prototype.setConfirm = function (arr, i = 0) {
         else
         arr[i].visiable = false;
         arr[i].confirm = undefined;
+        arr[i].exactly = undefined;
         if (arr[i].child !== undefined) {
             this.setConfirm(arr[i].child);
         }

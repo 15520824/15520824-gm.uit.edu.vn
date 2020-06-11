@@ -169,13 +169,15 @@ DataStructure.prototype.setLibaryRow = function(data,param,formatFunction,isArra
         }
 
         var checkvalue = "";
+        var isFirst = "";
         for(var i = 0;i<value.length;i++){
-            if(data[value]===undefined)
+            if(data[value[i]]===undefined)
             checkvalue+=value[i];
             else
-            checkvalue+= data[value[i]];
+            checkvalue+= isFirst+data[value[i]];
+            isFirst = "_";
         }
-        return {text:text,value:checkvalue}
+        return {text:text,value:checkvalue};
     }
 }
 

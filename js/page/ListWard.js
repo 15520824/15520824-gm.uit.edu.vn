@@ -251,7 +251,7 @@ ListWard.prototype.getView = function () {
             {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
             self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
             tabContainer.addChild(self.mTable);
-            self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
+            self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view),2);
             self.mTable.addFilter(self.listWardElement,4);
             self.mTable.addFilter(self.listStateElement,5);
             });
@@ -277,15 +277,15 @@ ListWard.prototype.setListParamWard = function(value)
     this.checkWard = moduleDatabase.getModule("districts").getLibary("id");
 
     this.checkStateWard = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
-        return {text:data.name,value:data.id}
+        return {text:data.name,value:data.name+"_"+data.id}
     },true);
-    this.listWard = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("districts").getList("name","id"));
+    this.listWard = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("districts").getList("name",["name","id"]));
 }
 
 ListWard.prototype.setListParamState = function()
 {
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
-    this.listState = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("states").getList("name","id"));
+    this.listState = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("states").getList("name",["name","id"]));
     this.isLoaded = true;
 }
 
@@ -323,8 +323,8 @@ ListWard.prototype.getDataRow = function(data)
         data.id,
         data.name,
         data.type,
-        {value:data.districtid,element:_({text:this.checkWard[parseInt(data.districtid)].type+" "+this.checkWard[parseInt(data.districtid)].name})},
-        {value:this.checkWard[parseInt(data.districtid)].stateid,element:_({text:this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].type+" "+this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name})},
+        {value:this.checkWard[parseInt(data.districtid)].name+"_"+data.districtid,element:_({text:this.checkWard[parseInt(data.districtid)].type+" "+this.checkWard[parseInt(data.districtid)].name})},
+        {value:this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name+"_"+this.checkWard[parseInt(data.districtid)].stateid,element:_({text:this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].type+" "+this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name})},
         {}
         ]
         result.original = data;
@@ -421,7 +421,7 @@ ListWard.prototype.searchControlContent = function(){
                     self.listWardElement.items = self.listWard;
                 }
                 else{
-                    self.listWardElement.items = [{text:"Tất cả",value:0}].concat(self.checkStateWard[this.value]);
+                    self.listWardElement.items = [{text:"Tất cả",value:0}].concat(self.checkStateWard[this.value.slice(this.value.lastIndexOf("_")+1)]);
                     self.listWardElement.value = 0;
                     self.listWardElement.emit('change');
                 }
@@ -440,7 +440,7 @@ ListWard.prototype.searchControlContent = function(){
         on:{
             change:function(event){
                 if(this.value  !== 0){
-                    var checkid = parseInt(self.checkState[self.checkWard[this.value].stateid].id);
+                    var checkid = parseInt(self.checkState[self.checkWard[this.value.slice(this.value.lastIndexOf("_")+1)].stateid].id);
                     if(self.listStateElement.value!=checkid)
                         self.listStateElement.value = checkid;
                 }
