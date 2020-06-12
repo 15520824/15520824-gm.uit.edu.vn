@@ -286,6 +286,8 @@ ListRealty.prototype.getView = function () {
         self.formatDataRowContact(value);
     })
 
+    moduleDatabase.getModule("contacts_link").load();
+    moduleDatabase.getModule("address").load();
 
     this.searchControl = this.searchControlContent();
 
@@ -824,6 +826,7 @@ ListRealty.prototype.add = function (parent_id = 0, row) {
 ListRealty.prototype.addDB = function (mNewRealty, row) {
     var self = this;
     mNewRealty.promiseAddDB.then(function (value) {
+        
         moduleDatabase.getModule("activehouses").add(value).then(function (result) {
             value.id = result;
             self.addView(value, row);

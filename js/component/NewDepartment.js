@@ -14,7 +14,7 @@ function NewDepartment(data,parent_id) {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    this.textHeader = "Sửa";
+    this.textHeader = "Sửa ";
     this.data = data;
     if(parent_id!==undefined)
     this.parent_id = parseFloat(parent_id);

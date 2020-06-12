@@ -15,7 +15,7 @@ function NewDistrict(data) {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     
-    this.textHeader = "Sửa";
+    this.textHeader = "Sửa ";
     this.data = data;
 
     if(this.data ==undefined)

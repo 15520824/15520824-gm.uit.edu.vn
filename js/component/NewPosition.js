@@ -360,7 +360,6 @@ NewPosition.prototype.formatDataRowListAccount = function(data)
         temp.push(this.getDataRowListAccount(data[i]));
         if(isCheck==false&&this.data!=undefined)
         {
-            console.log(this.data.original.id,data[i].positionid)
             if(this.data.original.id == data[i].positionid){
                 this.username.value = data[i].name;
                 this.username.data = data[i];
@@ -375,7 +374,6 @@ NewPosition.prototype.formatDataRowListAccount = function(data)
 NewPosition.prototype.functionChoice = function(event, me, index, parent, data, row)
 {
     var self = this;
-    console.log(self);
     var arr =  self.getElementsByClassName("choice-list-category");
     if(arr.length!==0)
     arr = arr[0];

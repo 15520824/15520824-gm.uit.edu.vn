@@ -5,6 +5,7 @@ import "../../css/NewWard.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import moduleDatabase from '../component/ModuleDatabase';
+import {getIDCompair} from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -15,7 +16,7 @@ function NewWard(data) {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     
-    this.textHeader = "Sửa";
+    this.textHeader = "Sửa ";
     this.data = data;
 
     if(this.data ==undefined)
@@ -111,7 +112,14 @@ NewWard.prototype.getView = function (data) {
         },
         on:{
             change:function(event){
-                self.listWardElement.items = self.checkStateWard[this.value];
+                var x = getIDCompair(this.value);
+                for(var i = 0;i<self.checkStateWard[x].length;i++)
+                {
+                    if(self.checkStateWard[x][i] == self.listWardElement.value)
+                    return;
+                }
+                if(self.checkStateWard[x][0]!==undefined)
+                self.listWardElement.value = self.checkStateWard[x][0].value;
             }
         }
     });
@@ -120,6 +128,13 @@ NewWard.prototype.getView = function (data) {
         class:"pizo-new-ward-container-district-container-input",
         props:{
             enableSearch:true
+        },
+        on:{
+            change:function(event){
+                var x = getIDCompair(this.value);
+                var checkid = self.checkState[self.checkWard[x].stateid].name+"_"+self.checkWard[x].stateid;
+                    self.listStateElement.value = checkid;
+            }
         }
     });
     moduleDatabase.getModule("districts").load().then(function(listWard){
@@ -130,9 +145,10 @@ NewWard.prototype.getView = function (data) {
             self.listWardElement.items = self.listWard;
             if(self.data!==undefined)
             {
-                self.listWardElement.value = self.data.original.districtid;
+                self.listWardElement.value = self.checkWard[self.data.original.districtid].name+"_"+self.data.original.districtid;
                 self.listWardElement.emit("change");
-                var checkid = parseInt(self.checkState[self.checkWard[self.listWardElement.value].stateid].id);
+                var x = getIDCompair(self.listWardElement.value);
+                var checkid = self.checkState[self.checkWard[x].stateid].name+"_"+self.checkWard[x].stateid;
                     self.listStateElement.value = checkid;
             }
         })
@@ -246,13 +262,13 @@ NewWard.prototype.setListParamWard = function(value)
     this.checkStateWard = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
         return {text:data.name,value:data.name+"_"+data.id}
     },true);
-    this.listWard = moduleDatabase.getModule("districts").getList("name","id");
+    this.listWard = moduleDatabase.getModule("districts").getList("name",["name","id"]);
 }
 
 NewWard.prototype.setListParamState = function()
 {
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
-    this.listState = moduleDatabase.getModule("states").getList("name","id");
+    this.listState = moduleDatabase.getModule("states").getList("name",["name","id"]);
     this.isLoaded = true;
 }
 
@@ -262,7 +278,7 @@ NewWard.prototype.getDataSave = function() {
         id:this.data===undefined?undefined:this.data.original.id,
         name:this.name.value,
         type:this.type.value,
-        districtid:this.district.value
+        districtid:getIDCompair(this.district.value)
     }
     if(this.data!==undefined)
     temp.id = this.data.original.id;

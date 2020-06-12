@@ -52371,7 +52371,7 @@ function NewWard_NewWard(data) {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.textHeader = "Sửa";
+  this.textHeader = "Sửa ";
   this.data = data;
   if (this.data == undefined) this.textHeader = "Thêm ";
 }
@@ -53335,7 +53335,7 @@ function NewDistrict_NewDistrict(data) {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.textHeader = "Sửa";
+  this.textHeader = "Sửa ";
   this.data = data;
   if (this.data == undefined) this.textHeader = "Thêm ";
 }
@@ -57805,7 +57805,7 @@ function NewDepartment_NewDepartment(data, parent_id) {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.textHeader = "Sửa";
+  this.textHeader = "Sửa ";
   this.data = data;
   if (parent_id !== undefined) this.parent_id = parseFloat(parent_id);
   if (this.data !== undefined) this.parent_id = parseFloat(data.original.parent_id);else this.textHeader = "Thêm ";
@@ -61111,7 +61111,7 @@ function NewContact_NewContact(data) {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  this.textHeader = "Sửa";
+  this.textHeader = "Sửa ";
   this.data = data;
   if (this.data == undefined) this.textHeader = "Thêm ";
 }

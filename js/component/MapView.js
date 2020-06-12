@@ -2,6 +2,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import '../../css/MapView.css';
 import moduleDatabase from '../component/ModuleDatabase';
+import {getIDCompair,removeAccents} from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -76,46 +77,87 @@ export function DetailView(map) {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("wards").load());
-
-    var state = _({
+    var state,district,ward,street,number;
+    state = _({
         tag: "selectmenu",
         class: "pizo-new-realty-location-detail-row-menu",
         props:{
             enableSearch: true
+        },
+        on:{
+            change:function(event)
+            {
+                var x = parseInt(getIDCompair(this.value));
+                for(var i = 0;i<temp.checkStateDistrict[x].length;i++)
+                {
+                    if(temp.checkStateDistrict[x][i] == district.value)
+                    return;
+                }
+                if(temp.checkStateDistrict[x][0]!==undefined)
+                district.value = temp.checkStateDistrict[x][0].value;
+                district.emit("change");
+            }
         }
     });
-    var district = _({
+    district = _({
         tag: "selectmenu",
         class: "pizo-new-realty-location-detail-row-menu",
         props:{
             enableSearch: true
+        },
+        on:{
+            change:function(event){
+                var x = parseInt(getIDCompair(this.value));
+                var checkid = temp.checkState[temp.checkDistrict[x].stateid].name+"_"+temp.checkDistrict[x].stateid;
+                    state.value = checkid;
+                for(var i = 0;i<temp.checkDistrictWard[x].length;i++)
+                {
+                    if(temp.checkDistrictWard[x][i] == ward.value)
+                    return;
+                }
+                if(temp.checkDistrictWard[x][0]!==undefined)
+                ward.value = temp.checkDistrictWard[x][0].value;
+            }
         }
     });
-    var ward = _({
+    ward = _({
         tag: "selectmenu",
         class: "pizo-new-realty-location-detail-row-menu",
         props:{
             enableSearch: true
+        },
+        on:{
+            change:function(event)
+            {
+                var x = parseInt(getIDCompair(this.value));
+                var checkid = temp.checkDistrict[temp.checkWard[x].districtid].name+"_"+temp.checkWard[x].districtid;
+                district.value = checkid;
+            }
         }
     });
-    var street = _({
+    street = _({
         tag: "selectmenu",
         class: "pizo-new-realty-location-detail-row-menu"
     });
-    var number = _({
+    number = _({
         tag: "input",
         class: "pizo-new-realty-location-detail-row-menu"
     });
     Promise.all(arr).then(function(){
-        state.items = moduleDatabase.getModule("states").getList("name","id");
-        district.items = moduleDatabase.getModule("districts").getList("name","id");
-        ward.items = moduleDatabase.getModule("wards").getList("name","id");
-        temp.checkState = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
-            return {text:data.name,value:data.id}
+        state.items = moduleDatabase.getModule("states").getList("name",["name","id"]);
+        district.items = moduleDatabase.getModule("districts").getList("name",["name","id"]);
+        ward.items = moduleDatabase.getModule("wards").getList("name",["name","id"]);
+
+        temp.checkStateDistrict = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
+            return {text:data.name,value:data.name+"_"+data.id}
+        },true);
+        temp.checkDistrictWard = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
+            return {text:data.name,value:data.name+"_"+data.id}
         });
-        temp.checkDistrict = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
-            return {text:data.name,value:data.id}
-        });
+        console.log(temp.checkDistrictWard)
+        temp.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+        temp.checkState = moduleDatabase.getModule("states").getLibary("id");
+        temp.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
     })
     var lat,long;
     long = _({
@@ -376,10 +418,10 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
     self.state.value = "";
     self.district.value = "";
     self.ward.value = "";
-    console.log(self.checkDistrict,self.checkState)
 
     // Get each component of the address from the place details,
     // and then fill-in the corresponding field on the form.
+    
     for (var i = place.address_components.length-1; i >= 0 ; i--) {
         var addressType = place.address_components[i].types[0];
         if (componentForm[addressType]) {
@@ -393,10 +435,11 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
                     var valueRoute = getContainsChild(self.street.items,{text:val,value:val})
                     if(valueRoute === false)
                     {
-                        self.street.items=self.street.items.concat([{text:val,value:val}])
+                        self.street.items= self.street.items.concat([{text:val,value:val}])
                         self.street.value = val;
+                        valueRoute = {text:val,value:val};
                     }else
-                    self.street.value = getValueID(valueRoute);
+                    self.street.value = valueRoute.value;
 
                     textResult = textResult.replace(textResult.slice(0,textResult.indexOf(val+", ")+val.length+2),"");
                     break;
@@ -406,67 +449,70 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
                     {
                         self.state.items=self.state.items.concat([{text:val,value:val}]);
                         self.state.value = val;
+                        valueState = {text:val,value:val};
                     }else
-                    self.state.value = getValueID(valueState);
+                    self.state.value = valueState.value;
                     break;
                 case "administrative_area_level_2":
-                    console.log(valueState)
                     if(typeof valueState === "string")
                     var valueDistrict = getContainsChild(self.district.items,{text:val,value:val});
                     else
-                    var valueDistrict = getContainsChild(self.checkState[parseInt(valueState.id)],{text:val,value:val});
+                    var valueDistrict = getContainsChild(self.checkStateDistrict[getIDCompair(valueState.value)],{text:val,value:val});
                     if(valueDistrict === false)
                     {
                         self.district.items=self.district.items.concat([{text:val,value:val}]);
                         self.district.value = val;
+                        valueDistrict = {text:val,value:val};
                     }else
-                    self.district.value = getValueID(valueDistrict);
+                    self.district.value = valueDistrict.value;
                     break;
                 case "country":
                     break;
             }
         }
     }
-    var val  = textResult.slice(0,textResult.indexOf(", "));
+    var val  = textResult.slice(0,textResult.indexOf(","));
     val = val.replace("Ward Number","Phường");
-    console.log(valueDistrict,valueState,valueRoute)
     if(typeof valueDistrict === "string")
     var valueWard = getContainsChild(self.ward.items,{text:val,value:val});
     else
-    var valueWard = getContainsChild(self.checkDistrict[parseInt(valueDistrict.id)],{text:val,value:val});
+    var valueWard = getContainsChild(self.checkDistrictWard[getIDCompair(valueDistrict.value)],{text:val,value:val});
     if(valueWard===false)
     {
         self.ward.items=self.ward.items.concat([{text:val,value:val}]);
         self.ward.value = val;
     }
-    self.ward.value = getValueID(valueWard);
+    self.ward.value = valueWard.value;
+    var stringInput = "";
+
+    if(valueNumber!==false)
+    stringInput+=valueNumber;
+
+    if(valueRoute!==false)
+    stringInput+=" "+valueRoute.text;
+
+    if(valueWard!==false)
+    stringInput+=", "+valueWard.text;
+
+    if(valueDistrict!==false)
+    stringInput+=", "+valueDistrict.text;
+
+    if(valueState!==false)
+    stringInput+=", "+valueState.text;
+
+    self.input.value = stringInput;
 }
 
-function getValueID(value)
-{
-    if(typeof value === "string")
-        return value;
-    else
-        return value.id;
-}
 
 function getContainsChild(arr, value)
 {
-    var check,result;
+    var check;
     for(var i = 0;i<arr.length;i++)
     {
-        if(arr[i].text !== undefined)
-        {
-            check = arr[i].text;
-            result = arr[i].value;
-        }
-        else{
-            check = arr[i].name;
-            result = arr[i];
-        }
+        check = arr[i].text;
             
-        if(check.toLowerCase().indexOf(value.value.toLowerCase())!==-1)
-            return result;
+        if(removeAccents(check.toLowerCase()).indexOf(removeAccents(value.value.toLowerCase()))!==-1)
+            return arr[i];
     }
     return false;
 }

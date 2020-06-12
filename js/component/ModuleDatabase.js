@@ -1,4 +1,5 @@
 import FormClass from './jsform';
+import {promiseState} from './FormatFunction';
 
 var moduleDatabase = new ModuleDatabase();
 
@@ -47,20 +48,32 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
         }) 
     }else
     {
-        if(isLoaded == false&&self.data!==undefined)
-        return Promise.resolve(self.data);
-
-        return new Promise(function(resolve,reject){
+        if(isLoaded == false&&self.promiseLoad!==undefined)
+        {
+            if(self.promiseLoad.status==="pending")
+            return self.promiseLoad;
+            else
+            return Promise.resolve(self.data);
+        }
+  
+        var promiseLoad;
+        promiseLoad = new Promise(function(resolve,reject){
             self.queryData(self.phpLoader,data).then(function(value){
                 self.data = value;
                 self.getLibary();
+                promiseLoad.status = "done";
                 resolve(value);
         })
         .catch(function(error){
+            promiseLoad.status = "reject";
             reject(error);
             console.error(error);
         })
-        }) 
+        })
+        promiseLoad.status = "pending";
+        self.promiseLoad = promiseLoad;
+        console.log(promiseLoad)
+        return self.promiseLoad;
     }
    
 }

@@ -1261,7 +1261,6 @@ tableView.prototype.pagination = function (number, functionClick) {
                                     var next = temp.nextSibling;
                                 while (next != null && next.classList.contains("detail"))
                                     next = next.nextSibling;
-                                console.log(next)
                                 if (next !== null) {
                                     next.click();
                                     temp.style.color = "";
@@ -1852,7 +1851,6 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
                             var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);
                         else
                             var finalIndex = 0;
-                        console.log(row,"asdasd")
                         functionClick(event, cell, finalIndex, cell.getParentNode(), row.data, row);
                     }
 
@@ -2092,7 +2090,6 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
         result.checkMargin();
 
     //    result.checkDataUpdate(row);
-    result.bodyTable.parentNode.resetHash();
     result.bodyTable.parentNode.updateHash(row);
     return row;
 }

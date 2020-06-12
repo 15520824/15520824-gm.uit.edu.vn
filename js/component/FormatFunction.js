@@ -131,6 +131,36 @@ export function getGMT(date,timezone = 0,onlyDay = false) {
     return resultDayMonth.join('-');
 }
 
+export function getIDCompair(string)
+{
+    return string.slice(string.lastIndexOf("_")+1);
+}
+
+export function removeAccents(str) {
+    return str.normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+  }
+
+export function promiseState(promise, callback) {
+    // Symbols and RegExps are never content-equal
+    var uniqueValue = window['Symbol'] ? Symbol('unique') : /unique/
+  
+    function notifyPendingOrResolved(value) {
+      if (value === uniqueValue) {
+        return callback('pending')
+      } else {
+        return callback('fulfilled')
+      }
+    }
+  
+    function notifyRejected(reason) {
+      return callback('rejected')
+    }
+    
+    var race = [promise, Promise.resolve(uniqueValue)]
+    Promise.race(race).then(notifyPendingOrResolved, notifyRejected)
+}
 
 export function consoleArea(areas) {
     var result = []

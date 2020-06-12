@@ -339,7 +339,7 @@ NewRealty.prototype.itemAdress = function () {
                         var selfElement = this;
                         var childNode = locationView(function (value) {
                             selfElement.value = value.input.value;
-                            console.log(childNode.getDataCurrent());
+                            temp.data = childNode.getDataCurrent();
                             temp.selfRemoveChild(value.input.value, childNode);
                             childRemove.selfRemove();
 
@@ -389,7 +389,7 @@ NewRealty.prototype.itemAdress = function () {
         temp.value = value;
     
         var next = temp;
-        while (next.nextSibling.classList.contains("adressItemCheck"))
+        while (next.nextSibling!==null)
             next = next.nextSibling;
         if (value === "") {
             
@@ -461,11 +461,20 @@ NewRealty.prototype.itemAdress = function () {
 
 NewRealty.prototype.descViewdetail = function () {
     var self = this;
+    var containerAdress = _({
+        tag:"div",
+        style:{
+            marginBottom:"10px"
+        },
+        child:[
+            self.itemAdress()
+        ]
+    })
     var temp = _({
         tag: "div",
         class: ["pizo-new-realty-desc-detail", "pizo-new-realty-dectruct-content-area-size-zone"],
-        child: [
-            self.itemAdress(),
+        child: [ 
+            containerAdress,
             {
                 tag: "div",
                 class: "pizo-new-realty-desc-detail-row",
@@ -599,6 +608,7 @@ NewRealty.prototype.descViewdetail = function () {
     this.inputLease = $('div.pizo-new-realty-desc-detail-row-menu-2-checkbox',temp);
     this.inputSell = $('div.pizo-new-realty-desc-detail-row-menu-1-checkbox',temp);
     this.inputContent = $('textarea.pizo-new-realty-desc-detail-row-input',temp);
+    this.containerAdress = containerAdress;
     return temp;
 }
 
