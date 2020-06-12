@@ -322,7 +322,6 @@ ListContact.prototype.getDataRow = function(data)
         {}
         ]
         result.original = data;
-    console.log(result)
     return result;
 }
 

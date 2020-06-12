@@ -272,6 +272,7 @@ ListWard.prototype.setListParamWard = function(value)
     this.checkStateWard = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
         return {text:data.name,value:data.name+"_"+data.id}
     },true);
+    console.log(this.checkStateWard)
     this.listWard = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("districts").getList("name",["name","id"]));
 }
 
@@ -431,7 +432,8 @@ ListWard.prototype.searchControlContent = function(){
         on:{
             change:function(event){
                 if(this.value  !== 0){
-                    var checkid = parseInt(self.checkState[self.checkWard[this.value.slice(this.value.lastIndexOf("_")+1)].stateid].id);
+                    var checkResult =self.checkState[self.checkWard[this.value.slice(this.value.lastIndexOf("_")+1)].stateid];
+                    var checkid = checkResult.name+"_"+checkResult.id;
                     if(self.listStateElement.value!=checkid)
                         self.listStateElement.value = checkid;
                 }

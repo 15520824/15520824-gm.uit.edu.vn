@@ -8,7 +8,6 @@ export function HashTableFilter(data) {
     this.lastIndex = [];
     this.lastKey = [];
     this.lastIndexFilter = [];
-    console.log(this.hash)
     return this;
 }
 

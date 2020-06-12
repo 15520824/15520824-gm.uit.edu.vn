@@ -57,6 +57,7 @@ export function locationView(functionDone,data) {
     })
     temp.map = map;
     temp.detailView = detailView;
+    temp.getDataCurrent = detailView.getDataCurrent.bind(detailView);
     return temp;
 }
 
@@ -106,9 +107,15 @@ export function DetailView(map) {
         class: "pizo-new-realty-location-detail-row-menu"
     });
     Promise.all(arr).then(function(){
-        state.items = moduleDatabase.getModule("states").getList("name","name");
-        district.items = moduleDatabase.getModule("districts").getList("name","name");
-        ward.items = moduleDatabase.getModule("wards").getList("name","name");
+        state.items = moduleDatabase.getModule("states").getList("name","id");
+        district.items = moduleDatabase.getModule("districts").getList("name","id");
+        ward.items = moduleDatabase.getModule("wards").getList("name","id");
+        temp.checkState = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
+            return {text:data.name,value:data.id}
+        });
+        temp.checkDistrict = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
+            return {text:data.name,value:data.id}
+        });
     })
     var lat,long;
     long = _({
@@ -308,6 +315,19 @@ export function DetailView(map) {
     return temp;
 }
 
+DetailView.prototype.getDataCurrent = function()
+{
+    return {
+        number:this.number.value,
+        street:this.street.value,
+        ward:this.ward.value,
+        district:this.district.value,
+        state:this.state.value,
+        long:this.long.value,
+        lat:this.lat.value
+    }
+}
+
 DetailView.prototype.activeAutocomplete = function(map) {
     var self = this;
     var autocomplete;
@@ -356,38 +376,51 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
     self.state.value = "";
     self.district.value = "";
     self.ward.value = "";
+    console.log(self.checkDistrict,self.checkState)
 
     // Get each component of the address from the place details,
     // and then fill-in the corresponding field on the form.
-    for (var i = 0; i < place.address_components.length; i++) {
+    for (var i = place.address_components.length-1; i >= 0 ; i--) {
         var addressType = place.address_components[i].types[0];
         if (componentForm[addressType]) {
             var val = place.address_components[i][componentForm[addressType]];
             switch (addressType) {
                 case "street_number":
-                    self.number.value = val;
+                    var valueNumber = val;
+                    self.number.value = valueNumber;
                     break;
                 case "route":
-                    if(!getContainsChild(self.street.items,{text:val,value:val}))
+                    var valueRoute = getContainsChild(self.street.items,{text:val,value:val})
+                    if(valueRoute === false)
                     {
                         self.street.items=self.street.items.concat([{text:val,value:val}])
-                    }
-                    self.street.value = val;
+                        self.street.value = val;
+                    }else
+                    self.street.value = getValueID(valueRoute);
+
                     textResult = textResult.replace(textResult.slice(0,textResult.indexOf(val+", ")+val.length+2),"");
                     break;
                 case "administrative_area_level_1":
-                    if(!getContainsChild(self.state.items,{text:val,value:val}))
+                    var valueState = getContainsChild(self.state.items,{text:val,value:val});
+                    if(valueState === false)
                     {
-                        self.state.items=self.state.items.concat([{text:val,value:val}])
-                    }
-                    self.state.value = val;
+                        self.state.items=self.state.items.concat([{text:val,value:val}]);
+                        self.state.value = val;
+                    }else
+                    self.state.value = getValueID(valueState);
                     break;
                 case "administrative_area_level_2":
-                    if(!getContainsChild(self.district.items,{text:val,value:val}))
+                    console.log(valueState)
+                    if(typeof valueState === "string")
+                    var valueDistrict = getContainsChild(self.district.items,{text:val,value:val});
+                    else
+                    var valueDistrict = getContainsChild(self.checkState[parseInt(valueState.id)],{text:val,value:val});
+                    if(valueDistrict === false)
                     {
-                        self.district.items=self.district.items.concat([{text:val,value:val}])
-                    }
-                    self.district.value = val;
+                        self.district.items=self.district.items.concat([{text:val,value:val}]);
+                        self.district.value = val;
+                    }else
+                    self.district.value = getValueID(valueDistrict);
                     break;
                 case "country":
                     break;
@@ -395,19 +428,45 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
         }
     }
     var val  = textResult.slice(0,textResult.indexOf(", "));
-    if(!getContainsChild(self.ward.items,{text:val,value:val}))
+    val = val.replace("Ward Number","Phường");
+    console.log(valueDistrict,valueState,valueRoute)
+    if(typeof valueDistrict === "string")
+    var valueWard = getContainsChild(self.ward.items,{text:val,value:val});
+    else
+    var valueWard = getContainsChild(self.checkDistrict[parseInt(valueDistrict.id)],{text:val,value:val});
+    if(valueWard===false)
     {
         self.ward.items=self.ward.items.concat([{text:val,value:val}]);
+        self.ward.value = val;
     }
-    self.ward.value = val;
+    self.ward.value = getValueID(valueWard);
+}
+
+function getValueID(value)
+{
+    if(typeof value === "string")
+        return value;
+    else
+        return value.id;
 }
 
 function getContainsChild(arr, value)
 {
+    var check,result;
     for(var i = 0;i<arr.length;i++)
     {
-        if(arr[i].value  == value.value)
-        return true;
+        if(arr[i].text !== undefined)
+        {
+            check = arr[i].text;
+            result = arr[i].value;
+        }
+        else{
+            check = arr[i].name;
+            result = arr[i];
+        }
+            
+        if(check.toLowerCase().indexOf(value.value.toLowerCase())!==-1)
+            return result;
     }
     return false;
 }

@@ -824,12 +824,7 @@ ListRealty.prototype.add = function (parent_id = 0, row) {
 ListRealty.prototype.addDB = function (mNewRealty, row) {
     var self = this;
     mNewRealty.promiseAddDB.then(function (value) {
-        console.log(value)
-        var phpFile = moduleDatabase.addActiveHomesPHP;
-        if (self.phpUpdateContent)
-            phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile, value).then(function (result) {
-
+        moduleDatabase.getModule("activehouses").add(value).then(function (result) {
             value.id = result;
             self.addView(value, row);
         })
@@ -865,11 +860,7 @@ ListRealty.prototype.edit = function (data, parent, index) {
 ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
     var self = this;
     mNewRealty.promiseEditDB.then(function (value) {
-        var phpFile = moduleDatabase.updateActiveHomesPHP;
-        if (self.phpUpdateContent)
-            phpFile = self.phpUpdateContent;
-        value.id = data.original.id;
-        moduleDatabase.updateData(phpFile, value).then(function (result) {
+        moduleDatabase.getModule("activehouses").update(value).then(function (result) {
             self.editView(value, data, parent, index);
         })
         mNewRealty.promiseEditDB = undefined;
@@ -910,7 +901,7 @@ ListRealty.prototype.deleteDB = function (data, parent, index) {
     var phpFile = moduleDatabase.deleteActiveHomesPHP;
     if (self.phpDeleteContent)
         phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile, data).then(function (value) {
+    moduleDatabase.getModule("activehouses").delete(data).then(function (value) {
         self.deleteView(parent, index);
     })
 }

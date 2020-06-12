@@ -140,7 +140,6 @@ export function consoleArea(areas) {
     }
 
     areas.forEach(function(f) {
-            console.log(f)
             if(f._area>(1.1368683772161603e-13)){
                 var vertices = f.vertexlist;
                 if(vertices!==undefined)

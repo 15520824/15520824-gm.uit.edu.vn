@@ -339,7 +339,7 @@ NewRealty.prototype.itemAdress = function () {
                         var selfElement = this;
                         var childNode = locationView(function (value) {
                             selfElement.value = value.input.value;
-
+                            console.log(childNode.getDataCurrent());
                             temp.selfRemoveChild(value.input.value, childNode);
                             childRemove.selfRemove();
 
