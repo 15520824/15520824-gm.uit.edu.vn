@@ -202,6 +202,8 @@ ListRealty.prototype.getView = function () {
         ]
     })
 
+    moduleDatabase.getModule("activehouses",["load.php","addActiveHouse.php","updateActiveHouse.php","deleteActiveHouse.php"]);
+
     moduleDatabase.getModule("activehouses").load().then(function (value) {
 
         var header = [{
@@ -351,7 +353,7 @@ ListRealty.prototype.getDataRow = function (data) {
             break;
     }
     var direction;
-    console.log(parseInt(data.direction))
+
     switch (parseInt(data.direction)) {
         case 0:
             direction = "Chưa xác định";

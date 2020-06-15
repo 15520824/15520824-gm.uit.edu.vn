@@ -1512,8 +1512,61 @@ NewRealty.prototype.getDataSave = function(){
         pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
         censorship:this.censorship.checked==true?1:0
     }
+    var index;
+
+    for(var i=0;i<this.containerAdress.childNodes.length;i++)
+    {
+        if(i==0)
+        {
+            temp.lng = this.containerAdress.childNodes[i].data.lng;
+            temp.lat = this.containerAdress.childNodes[i].data.lat;
+            index = "";
+        }else
+            index = i;
+        if(this.containerAdress.childNodes[i].data!==undefined)
+        {
+            var indexString = "addressid"+index;
+            var address = {};
+            var data = this.containerAdress.childNodes[i].data;
+
+            var lastIndex = data.ward.lastIndexOf("_");
+            if(lastIndex === -1)
+            {
+                address.ward = data.ward;
+                lastIndex = data.district.lastIndexOf("_");
+                if(lastIndex == -1)
+                {
+                    address.district = data.district;
+                    lastIndex = data.state.lastIndexOf("_");
+                    if(lastIndex == -1)
+                    {
+                        address.state = data.state;
+                    }else
+                    {
+                        address.stateid = data.state.slice(lastIndex+1);
+                    }
+                }
+                else
+                    address.districtid = data.district.slice(lastIndex+1);
+            }
+            else
+            address.wardid = data.ward.slice(lastIndex+1);
+            
+            var lastIndex = data.street.lastIndexOf("_");
+            if(lastIndex === -1)
+            address.street = data.street;
+            else
+            address.streetid = data.street.slice(lastIndex+1);
+
+            address.number = data.number;
+
+            temp[indexString] = address;
+        }
+    }
+
     if(this.data!==undefined)
-    temp.id == this.data.original.id;
+    temp.id = this.data.original.id;
+    console.log(temp);
     return temp;
 }
 

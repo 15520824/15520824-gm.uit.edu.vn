@@ -75,8 +75,12 @@ export function DetailView(map) {
     var arr = [];
     
     arr.push(moduleDatabase.getModule("states").load());
-    arr.push(moduleDatabase.getModule("districts").load());
-    arr.push(moduleDatabase.getModule("wards").load());
+    arr.push(moduleDatabase.getModule("districts").load({ORDERING:"stateid"}));
+    arr.push(moduleDatabase.getModule("wards").load({ORDERING:"districtid"}));
+    arr.push(moduleDatabase.getModule("streets").load({ORDERING:"wardid"}));
+    moduleDatabase.getModule("ward_street_link").load({ORDERING:"wardid"}).then(function(value){
+        temp.checkLinkAdress = moduleDatabase.getModule("ward_street_link").getLibary("wardid");
+    })
     var state,district,ward,street,number;
     state = _({
         tag: "selectmenu",
@@ -147,6 +151,7 @@ export function DetailView(map) {
         state.items = moduleDatabase.getModule("states").getList("name",["name","id"]);
         district.items = moduleDatabase.getModule("districts").getList("name",["name","id"]);
         ward.items = moduleDatabase.getModule("wards").getList("name",["name","id"]);
+        street.items = moduleDatabase.getModule("streets").getList("name",["name","id"]);
 
         temp.checkStateDistrict = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
             return {text:data.name,value:data.name+"_"+data.id}
@@ -154,7 +159,6 @@ export function DetailView(map) {
         temp.checkDistrictWard = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
             return {text:data.name,value:data.name+"_"+data.id}
         });
-        console.log(temp.checkDistrictWard)
         temp.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         temp.checkState = moduleDatabase.getModule("states").getLibary("id");
         temp.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
@@ -359,13 +363,18 @@ export function DetailView(map) {
 
 DetailView.prototype.getDataCurrent = function()
 {
+    if(temp.number.value==undefined||temp.street.value==undefined||temp.ward.value==undefined||temp.district.value==undefined||temp.state.value==undefined)
+    {
+        alert("Vui lòng điền đầy đủ địa chỉ");
+        return;
+    }
     return {
         number:this.number.value,
         street:this.street.value,
         ward:this.ward.value,
         district:this.district.value,
         state:this.state.value,
-        long:this.long.value,
+        lng:this.long.value,
         lat:this.lat.value
     }
 }
@@ -421,7 +430,6 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
 
     // Get each component of the address from the place details,
     // and then fill-in the corresponding field on the form.
-    
     for (var i = place.address_components.length-1; i >= 0 ; i--) {
         var addressType = place.address_components[i].types[0];
         if (componentForm[addressType]) {
@@ -473,6 +481,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
     }
     var val  = textResult.slice(0,textResult.indexOf(","));
     val = val.replace("Ward Number","Phường");
+
     if(typeof valueDistrict === "string")
     var valueWard = getContainsChild(self.ward.items,{text:val,value:val});
     else
@@ -483,6 +492,8 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
         self.ward.value = val;
     }
     self.ward.value = valueWard.value;
+
+    
     var stringInput = "";
 
     if(valueNumber!==false)
