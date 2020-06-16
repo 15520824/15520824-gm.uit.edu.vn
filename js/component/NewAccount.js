@@ -4,7 +4,6 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/NewAccount.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { locationView } from "./MapView";
 import { formatDate, getGMT } from '../component/FormatFunction';
 
 var _ = Fcore._;
@@ -431,55 +430,55 @@ NewAccount.prototype.getView = function (dataParent) {
                                 //     ]
                                 // },
                                 
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-account-container-address",
-                                    child:[
-                                        {
-                                            tag:"div",
-                                            class:"pizo-new-account-container-address-container",
-                                            child:[
-                                                {
-                                                    tag:"span",
-                                                    class:"pizo-new-account-container-address-container-label",
-                                                    props:{
-                                                        innerHTML:"Địa chỉ"
-                                                    }
-                                                },
-                                                {
-                                                    tag: "input",
-                                                    class: ["pizo-new-account-container-address-container-input"],
-                                                    on: {
-                                                        click: function (event) {
-                                                            this.blur();
-                                                            var selfElement = this;
-                                                            var childNode = locationView(function (value) {
-                                                                selfElement.value = value.input.value;
-                                                                childRemove.selfRemove();
-                                                            })
-                                                            var childRemove = _({
-                                                                tag: "modal",
-                                                                on: {
-                                                                    click: function (event) {
-                                                                        var target = event.target;
-                                                                        while (target !== childNode && target !== childRemove && target !== document.body)
-                                                                            target = target.parentNode;
-                                                                        if (target === childRemove)
-                                                                            childRemove.selfRemove();
-                                                                    }
-                                                                },
-                                                                child: [
-                                                                    childNode
-                                                                ]
-                                                            })
-                                                            self.$view.addChild(childRemove)
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
+                                // {
+                                //     tag:"div",
+                                //     class:"pizo-new-account-container-address",
+                                //     child:[
+                                //         {
+                                //             tag:"div",
+                                //             class:"pizo-new-account-container-address-container",
+                                //             child:[
+                                //                 {
+                                //                     tag:"span",
+                                //                     class:"pizo-new-account-container-address-container-label",
+                                //                     props:{
+                                //                         innerHTML:"Địa chỉ"
+                                //                     }
+                                //                 },
+                                //                 {
+                                //                     tag: "input",
+                                //                     class: ["pizo-new-account-container-address-container-input"],
+                                //                     on: {
+                                //                         click: function (event) {
+                                //                             this.blur();
+                                //                             var selfElement = this;
+                                //                             var childNode = locationView(function (value) {
+                                //                                 selfElement.value = value.input.value;
+                                //                                 childRemove.selfRemove();
+                                //                             })
+                                //                             var childRemove = _({
+                                //                                 tag: "modal",
+                                //                                 on: {
+                                //                                     click: function (event) {
+                                //                                         var target = event.target;
+                                //                                         while (target !== childNode && target !== childRemove && target !== document.body)
+                                //                                             target = target.parentNode;
+                                //                                         if (target === childRemove)
+                                //                                             childRemove.selfRemove();
+                                //                                     }
+                                //                                 },
+                                //                                 child: [
+                                //                                     childNode
+                                //                                 ]
+                                //                             })
+                                //                             self.$view.addChild(childRemove)
+                                //                         }
+                                //                     }
+                                //                 }
+                                //             ]
+                                //         }
+                                //     ]
+                                // },
                                 {
                                     tag:"div",
                                     class:"pizo-new-account-container-status-position",
@@ -575,7 +574,7 @@ NewAccount.prototype.getView = function (dataParent) {
     this.phone = $('input.pizo-new-account-container-phone-container-input',this.$view);
     this.birthday = $('div.pizo-new-account-container-birthday-container div',this.$view);
     this.gender = $('div.pizo-new-account-container-gender-container div',this.$view);
-    this.address = $('input.pizo-new-account-container-address-container-input',this.$view);
+    // this.address = $('input.pizo-new-account-container-address-container-input',this.$view);
     this.position = $('div.pizo-new-account-selectbox-container-input',this.$view);
     this.status = $('div.pizo-new-account-container-status-container label.absol-switch',this.$view);
     this.permission = $('div.pizo-new-account-container-permission-container label.absol-switch',this.$view);
@@ -588,7 +587,7 @@ NewAccount.prototype.getView = function (dataParent) {
         this.phone.value = this.data.original.phone;
         this.birthday.value = new Date(this.data.original.birthday);
         this.gender.value = this.data.original.gender;
-        this.address.value = this.data.original.address;
+        // this.address.value = this.data.original.address;
         this.position.value = parseInt(this.data.original.positionid);
         this.status.checked = parseInt(this.data.original.status)?true:false;
         this.permission.checked = parseInt(this.data.original.permission)?true:false;
@@ -605,7 +604,7 @@ NewAccount.prototype.getDataSave = function() {
         phone:this.phone.value,
         birthday: getGMT(this.birthday.value,new Date().getTimezoneOffset()/-60,true),
         gender:this.gender.value,
-        address:this.address.value,
+        // address:this.address.value,
         positionid:this.position.value,
         status:this.status.checked?1:0,
         permission:this.permission.checked?1:0

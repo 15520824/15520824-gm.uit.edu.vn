@@ -49944,7 +49944,7 @@ DataStructure.prototype.queryData = function (phpFile, data) {
 var MapView_ = dom_Fcore._;
 var MapView_$ = dom_Fcore.$;
 function locationView(functionDone, data) {
-  var map = MapView_MapView(data);
+  var map = MapView_MapView();
   var detailView = DetailView(map, data);
   map.activeDetail(detailView);
 
@@ -49969,6 +49969,11 @@ function locationView(functionDone, data) {
         "class": "pizo-new-realty-location-donebutton",
         on: {
           click: function click(event) {
+            if (temp.detailView.number.value == undefined || temp.detailView.street.value == undefined || temp.detailView.ward.value == undefined || temp.detailView.district.value == undefined || temp.detailView.state.value == undefined) {
+              alert("Vui lòng điền đầy đủ địa chỉ");
+              return;
+            }
+
             functionDone(detailView, map);
           }
         },
@@ -49986,9 +49991,10 @@ function locationView(functionDone, data) {
   temp.map = map;
   temp.detailView = detailView;
   temp.getDataCurrent = detailView.getDataCurrent.bind(detailView);
+  temp.data = data;
   return temp;
 }
-function DetailView(map) {
+function DetailView(map, data) {
   var temp;
 
   var input = MapView_({
@@ -50002,8 +50008,13 @@ function DetailView(map) {
 
   var arr = [];
   arr.push(component_ModuleDatabase.getModule("states").load());
-  arr.push(component_ModuleDatabase.getModule("districts").load());
-  arr.push(component_ModuleDatabase.getModule("wards").load());
+  arr.push(component_ModuleDatabase.getModule("districts").load({
+    ORDERING: "stateid"
+  }));
+  arr.push(component_ModuleDatabase.getModule("wards").load({
+    ORDERING: "districtid"
+  }));
+  arr.push(component_ModuleDatabase.getModule("streets").load());
   var state, district, ward, street, number;
   state = MapView_({
     tag: "selectmenu",
@@ -50021,6 +50032,7 @@ function DetailView(map) {
 
         if (temp.checkStateDistrict[x][0] !== undefined) district.value = temp.checkStateDistrict[x][0].value;
         district.emit("change");
+        temp.setInput();
       }
     }
   });
@@ -50041,6 +50053,7 @@ function DetailView(map) {
         }
 
         if (temp.checkDistrictWard[x][0] !== undefined) ward.value = temp.checkDistrictWard[x][0].value;
+        temp.setInput();
       }
     }
   });
@@ -50055,21 +50068,33 @@ function DetailView(map) {
         var x = parseInt(getIDCompair(this.value));
         var checkid = temp.checkDistrict[temp.checkWard[x].districtid].name + "_" + temp.checkWard[x].districtid;
         district.value = checkid;
+        temp.setInput();
       }
     }
   });
   street = MapView_({
     tag: "selectmenu",
-    "class": "pizo-new-realty-location-detail-row-menu"
+    "class": "pizo-new-realty-location-detail-row-menu",
+    on: {
+      change: function change(event) {
+        temp.setInput();
+      }
+    }
   });
   number = MapView_({
     tag: "input",
-    "class": "pizo-new-realty-location-detail-row-menu"
+    "class": "pizo-new-realty-location-detail-row-menu",
+    on: {
+      change: function change(event) {
+        temp.setInput();
+      }
+    }
   });
   Promise.all(arr).then(function () {
     state.items = component_ModuleDatabase.getModule("states").getList("name", ["name", "id"]);
     district.items = component_ModuleDatabase.getModule("districts").getList("name", ["name", "id"]);
     ward.items = component_ModuleDatabase.getModule("wards").getList("name", ["name", "id"]);
+    street.items = component_ModuleDatabase.getModule("streets").getList("name", ["name", "id"]);
     temp.checkStateDistrict = component_ModuleDatabase.getModule("districts").getLibary("stateid", function (data) {
       return {
         text: data.name,
@@ -50082,10 +50107,64 @@ function DetailView(map) {
         value: data.name + "_" + data.id
       };
     });
-    console.log(temp.checkDistrictWard);
     temp.checkWard = component_ModuleDatabase.getModule("wards").getLibary("id");
     temp.checkState = component_ModuleDatabase.getModule("states").getLibary("id");
     temp.checkDistrict = component_ModuleDatabase.getModule("districts").getLibary("id");
+    temp.checkStreet = component_ModuleDatabase.getModule("streets").getLibary("id");
+    var index;
+
+    if (data !== undefined) {
+      temp.number.value = data.number;
+      index = data.street.lastIndexOf("_");
+      console.log(data.street);
+
+      if (index === -1) {
+        temp.street.items.push({
+          text: data.street,
+          value: data.street
+        });
+        temp.street.items = temp.street.items;
+      }
+
+      temp.street.value = data.street;
+      index = data.ward.lastIndexOf("_");
+
+      if (index === -1) {
+        temp.ward.items.push({
+          text: data.ward,
+          value: data.ward
+        });
+        temp.ward.items = temp.ward.items;
+      }
+
+      temp.ward.value = data.ward;
+      index = data.district.lastIndexOf("_");
+
+      if (index === -1) {
+        temp.district.items.push({
+          text: data.district,
+          value: data.district
+        });
+        temp.district.items = temp.district.items;
+      }
+
+      temp.district.value = data.district;
+      index = data.state.lastIndexOf("_");
+
+      if (index === -1) {
+        temp.state.items.push({
+          text: data.state,
+          value: data.state
+        });
+        temp.state.items = temp.state.items;
+      }
+
+      temp.state.value = data.state;
+      if (data.lat !== undefined) temp.lat.value = data.lat;
+      if (data.lng !== undefined) temp["long"].value = data.lng;
+      temp.setInput();
+      map.addMoveMarker([data.lng, data.lat]);
+    }
   });
 
   var lat, _long;
@@ -50248,7 +50327,7 @@ DetailView.prototype.getDataCurrent = function () {
     ward: this.ward.value,
     district: this.district.value,
     state: this.state.value,
-    "long": this["long"].value,
+    lng: this["long"].value,
     lat: this.lat.value
   };
 };
@@ -50258,7 +50337,7 @@ DetailView.prototype.activeAutocomplete = function (map) {
   var autocomplete;
   var options = {
     // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
-    types: ['geocode'],
+    types: ['address'],
     componentRestrictions: {
       country: 'vn'
     }
@@ -50272,6 +50351,48 @@ DetailView.prototype.activeAutocomplete = function (map) {
   autocomplete.addListener('place_changed', function () {
     self.fillInAddress(autocomplete, self.input.value, map);
   });
+};
+
+DetailView.prototype.setInput = function () {
+  var stringInput = "";
+  var index;
+  var valueNumber = this.number.value;
+  var valueRoute = this.street.value;
+  var valueWard = this.ward.value;
+  var valueDistrict = this.district.value;
+  var valueState = this.state.value;
+  var isFirst = "";
+
+  if (valueNumber !== undefined) {
+    stringInput += isFirst + valueNumber;
+    isFirst = " ";
+  }
+
+  if (valueRoute !== undefined) {
+    index = valueRoute.lastIndexOf("_");
+    if (index == -1) stringInput += isFirst + valueRoute;else stringInput += isFirst + valueRoute.slice(0, index);
+    isFirst = ", ";
+  }
+
+  if (valueWard !== undefined) {
+    index = valueWard.lastIndexOf("_");
+    if (index == -1) stringInput += isFirst + valueWard;else stringInput += isFirst + valueWard.slice(0, index);
+    isFirst = ", ";
+  }
+
+  if (valueDistrict !== undefined) {
+    index = valueDistrict.lastIndexOf("_");
+    if (index == -1) stringInput += isFirst + valueDistrict;else stringInput += isFirst + valueDistrict.slice(0, index);
+    isFirst = ", ";
+  }
+
+  if (valueState !== undefined) {
+    index = valueState.lastIndexOf("_");
+    if (index == -1) stringInput += isFirst + valueState;else stringInput += isFirst + valueState.slice(0, index);
+    isFirst = ", ";
+  }
+
+  this.input.value = stringInput;
 };
 
 DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
@@ -50298,6 +50419,8 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
   self.ward.value = ""; // Get each component of the address from the place details,
   // and then fill-in the corresponding field on the form.
 
+  console.log(place);
+
   for (var i = place.address_components.length - 1; i >= 0; i--) {
     var addressType = place.address_components[i].types[0];
 
@@ -50307,6 +50430,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
       switch (addressType) {
         case "street_number":
           var valueNumber = val;
+          console.log(val);
           self.number.value = valueNumber;
           break;
 
@@ -50399,13 +50523,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
   }
 
   self.ward.value = valueWard.value;
-  var stringInput = "";
-  if (valueNumber !== false) stringInput += valueNumber;
-  if (valueRoute !== false) stringInput += " " + valueRoute.text;
-  if (valueWard !== false) stringInput += ", " + valueWard.text;
-  if (valueDistrict !== false) stringInput += ", " + valueDistrict.text;
-  if (valueState !== false) stringInput += ", " + valueState.text;
-  self.input.value = stringInput;
+  this.setInput();
 };
 
 function getContainsChild(arr, value) {
@@ -51275,6 +51393,7 @@ function NewRealty_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol ==
 
 
 
+
 var NewRealty_ = dom_Fcore._;
 var NewRealty_$ = dom_Fcore.$;
 
@@ -51372,10 +51491,10 @@ NewRealty_NewRealty.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              self.resolveDB(self.getDataSave());
-              self.$view.selfRemove();
-              var arr = self.parent.body.getAllChild();
-              self.parent.body.activeFrame(arr[arr.length - 1]);
+              self.getDataSave(); // self.resolveDB(self.getDataSave());
+              // self.$view.selfRemove();
+              // var arr = self.parent.body.getAllChild();
+              // self.parent.body.activeFrame(arr[arr.length - 1]);
             }
           },
           child: ['<span>' + "Lưu và đóng" + '</span>']
@@ -51393,301 +51512,15 @@ NewRealty_NewRealty.prototype.getView = function () {
 };
 
 NewRealty_NewRealty.prototype.descView = function () {
-  var dataImage = [{
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/1.jfif",
-    date: "2017-06-10T16:08:00",
-    note: "Phòng bếp tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/2.jfif",
-    date: "2018-06-10T16:08:00",
-    note: "Phòng khách tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/3.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Nhà tắm tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/4.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Phòng Gym tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/5.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Phòng thờ tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/6.jfif",
-    date: "2020-04-15T16:08:00",
-    note: "Phòng kho tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/1.jfif",
-    date: "2017-06-10T16:08:00",
-    note: "Phòng bếp tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/2.jfif",
-    date: "2018-06-10T16:08:00",
-    note: "Phòng khách tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/3.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Nhà tắm tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/4.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Phòng Gym tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/5.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Phòng thờ tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/6.jfif",
-    date: "2020-04-15T16:08:00",
-    note: "Phòng kho tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/1.jfif",
-    date: "2017-06-10T16:08:00",
-    note: "Phòng bếp tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/2.jfif",
-    date: "2018-06-10T16:08:00",
-    note: "Phòng khách tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/3.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Nhà tắm tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/4.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Phòng Gym tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/5.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Phòng thờ tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/6.jfif",
-    date: "2020-04-15T16:08:00",
-    note: "Phòng kho tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/1.jfif",
-    date: "2017-06-10T16:08:00",
-    note: "Phòng bếp tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/2.jfif",
-    date: "2018-06-10T16:08:00",
-    note: "Phòng khách tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/3.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Nhà tắm tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/4.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Phòng Gym tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/5.jfif",
-    date: "2019-06-10T16:08:00",
-    note: "Phòng thờ tầng 1"
-  }, {
-    avatar: "assets/avatar/Thi.jpg",
-    userName: "Bùi Phạm Minh Thi",
-    src: "assets/images/6.jfif",
-    date: "2020-04-15T16:08:00",
-    note: "Phòng kho tầng 1"
-  }];
-  var x = new Promise(function (resolve, reject) {
-    resolve([{
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/1.jfif",
-      date: "1017-06-10T16:08:00",
-      note: "Phòng bếp tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/2.jfif",
-      date: "1018-06-10T16:08:00",
-      note: "Phòng khách tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/3.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Nhà tắm tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/4.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Phòng Gym tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/5.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Phòng thờ tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/6.jfif",
-      date: "1020-04-15T16:08:00",
-      note: "Phòng kho tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/1.jfif",
-      date: "1017-06-10T16:08:00",
-      note: "Phòng bếp tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/2.jfif",
-      date: "1018-06-10T16:08:00",
-      note: "Phòng khách tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/3.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Nhà tắm tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/4.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Phòng Gym tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/5.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Phòng thờ tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/6.jfif",
-      date: "1020-04-15T16:08:00",
-      note: "Phòng kho tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/1.jfif",
-      date: "1017-06-10T16:08:00",
-      note: "Phòng bếp tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/2.jfif",
-      date: "1018-06-10T16:08:00",
-      note: "Phòng khách tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/3.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Nhà tắm tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/4.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Phòng Gym tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/5.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Phòng thờ tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/6.jfif",
-      date: "1020-04-15T16:08:00",
-      note: "Phòng kho tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/1.jfif",
-      date: "1017-06-10T16:08:00",
-      note: "Phòng bếp tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/2.jfif",
-      date: "1018-06-10T16:08:00",
-      note: "Phòng khách tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/3.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Nhà tắm tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/4.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Phòng Gym tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/5.jfif",
-      date: "1019-06-10T16:08:00",
-      note: "Phòng thờ tầng 1"
-    }, {
-      avatar: "assets/avatar/Thi.jpg",
-      userName: "Bùi Phạm Minh Thi",
-      src: "assets/images/6.jfif",
-      date: "1020-04-15T16:08:00",
-      note: "Phòng kho tầng 1"
-    }]);
-  });
+  this.checkAddress = component_ModuleDatabase.getModule("addresses").getLibary("id");
+  this.checkStreet = component_ModuleDatabase.getModule("streets").getLibary("id");
+  this.checkWard = component_ModuleDatabase.getModule("wards").getLibary("id");
+  this.checkDistrict = component_ModuleDatabase.getModule("districts").getLibary("id");
+  this.checkState = component_ModuleDatabase.getModule("states").getLibary("id");
   this.containerMap = NewRealty_({
     tag: "div"
   });
+  this.contactView = this.contactView();
 
   var temp = NewRealty_({
     tag: "div",
@@ -51695,22 +51528,27 @@ NewRealty_NewRealty.prototype.descView = function () {
     child: [{
       tag: "div",
       "class": "pizo-new-realty-desc-content",
-      child: [this.descViewdetail(), this.containerMap]
+      child: [this.containerMap]
     }, {
       tag: "div",
       "class": "pizo-new-realty-desc-infomation",
-      child: [this.detructView(), {
+      child: [{
         tag: "div",
         "class": ["pizo-new-realty-desc-infomation-cell", "center-child"],
-        child: [this.convenientView(), this.contactView()]
+        child: [this.convenientView(), this.contactView]
       }, {
         tag: "div",
         "class": "pizo-new-realty-desc-infomation-cell",
-        child: [this.juridicalView(), this.historyView(), this.descViewImageThumnail(dataImage, 0, x)]
+        child: [this.juridicalView(), this.historyView() // this.descViewImageThumnail(dataImage,0,x)
+        ]
       }]
     }]
   });
 
+  var container = NewRealty_$("div.pizo-new-realty-desc-content", temp);
+  container.insertBefore(this.descViewdetail(), container.firstChild);
+  var container = NewRealty_$("div.pizo-new-realty-desc-infomation", temp);
+  container.insertBefore(this.detructView(), container.firstChild);
   return temp;
 };
 
@@ -51758,6 +51596,7 @@ NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage, index
 };
 
 NewRealty_NewRealty.prototype.itemAdress = function () {
+  var addressid = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
   var self = this;
 
   var text = NewRealty_({
@@ -51791,7 +51630,7 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
             temp.data = childNode.getDataCurrent();
             temp.selfRemoveChild(value.input.value, childNode);
             childRemove.selfRemove();
-          });
+          }, temp.data);
 
           var childRemove = NewRealty_({
             tag: "modal",
@@ -51889,7 +51728,6 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
             childNode.map.currentMarker.setDraggable(false);
             self.containerMap.parentNode.replaceChild(childNode.map, self.containerMap);
             self.containerMap = childNode.map;
-            temp.containerMap = childNode.map;
           }
 
           if (next === temp) {
@@ -51914,6 +51752,26 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
   };
 
   this.inputAdress = NewRealty_$('input.pizo-new-realty-desc-detail-1-row-input', temp);
+
+  if (addressid !== 0) {
+    var number = this.checkAddress[addressid].addressnumber;
+    var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
+    var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
+    var district = this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name;
+    var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
+    NewRealty_$("input.pizo-new-realty-desc-detail-1-row-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
+    temp.data = {
+      id: addressid,
+      number: this.checkAddress[addressid].addressnumber,
+      street: this.checkStreet[this.checkAddress[addressid].streetid].name + "_" + this.checkAddress[addressid].streetid,
+      ward: this.checkWard[this.checkAddress[addressid].wardid].name + "_" + this.checkAddress[addressid].wardid,
+      district: this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name + "_" + this.checkWard[this.checkAddress[addressid].wardid].districtid,
+      state: this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name + "_" + this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid,
+      lng: this.checkAddress[addressid].lng,
+      lat: this.checkAddress[addressid].lat
+    };
+  }
+
   return temp;
 };
 
@@ -51924,9 +51782,38 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
     tag: "div",
     style: {
       marginBottom: "10px"
-    },
-    child: [self.itemAdress()]
+    }
   });
+
+  var index = "";
+  var last;
+
+  if (this.data !== undefined) {
+    for (var i = 0; i < 4; i++) {
+      if (this.data.original["addressid" + index] == 0) break;
+      last = this.itemAdress(this.data.original["addressid" + index]);
+      containerAdress.appendChild(last);
+
+      if (i === 0) {
+        var map = MapView_MapView();
+        map.activePlanningMap();
+        var address = this.checkAddress[this.data.original["addressid" + index]];
+        map.addMoveMarker([address.lng, address.lat], false);
+        map.currentMarker.setDraggable(false);
+        this.containerMap.parentNode.replaceChild(map, this.containerMap);
+        this.containerMap = map;
+      }
+
+      index = i + 2;
+    }
+  }
+
+  if (i == undefined || i < 3) {
+    last = this.itemAdress();
+    containerAdress.appendChild(last);
+  }
+
+  last.parentUpdateIndex();
 
   var temp = NewRealty_({
     tag: "div",
@@ -52833,7 +52720,47 @@ NewRealty_NewRealty.prototype.getDataSave = function () {
     pricerent: reFormatNumber(this.inputPriceRent.value) * this.inputPriceRentUnit.value,
     censorship: this.censorship.checked == true ? 1 : 0
   };
-  if (this.data !== undefined) temp.id == this.data.original.id;
+  var index = "";
+
+  for (var i = 0; i < this.containerAdress.childNodes.length; i++) {
+    if (this.containerAdress.childNodes[i].data !== undefined) {
+      var indexString = "addressid" + index;
+      var address = {};
+      var data = this.containerAdress.childNodes[i].data;
+      var lastIndex = data.ward.lastIndexOf("_");
+
+      if (lastIndex === -1) {
+        address.ward = data.ward;
+        lastIndex = data.district.lastIndexOf("_");
+
+        if (lastIndex == -1) {
+          address.district = data.district;
+          lastIndex = data.state.lastIndexOf("_");
+
+          if (lastIndex == -1) {
+            address.state = data.state;
+          } else {
+            address.stateid = data.state.slice(lastIndex + 1);
+          }
+        } else address.districtid = data.district.slice(lastIndex + 1);
+      } else address.wardid = data.ward.slice(lastIndex + 1);
+
+      var lastIndex = data.street.lastIndexOf("_");
+      if (lastIndex === -1) address.street = data.street;else address.streetid = data.street.slice(lastIndex + 1);
+      address.number = data.number;
+      address.lat = data.lat;
+      address.lng = data.lng;
+      temp[indexString] = address;
+      index = i + 2;
+    }
+  }
+
+  for (var i = 0; i < this.contactView.childNodes.length; i++) {
+    console.log(this.contactView.childNodes[i]);
+  }
+
+  if (this.data !== undefined) temp.id = this.data.original.id;
+  console.log(temp);
   return temp;
 };
 
@@ -53706,7 +53633,20 @@ ListRealty_ListRealty.prototype.getView = function () {
     child: []
   });
 
-  component_ModuleDatabase.getModule("activehouses").load().then(function (value) {
+  component_ModuleDatabase.getModule("activehouses", ["load.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActiveHouse.php"]);
+  var arr = [];
+  arr.push(component_ModuleDatabase.getModule("activehouses").load());
+  arr.push(component_ModuleDatabase.getModule("addresses").load());
+  arr.push(component_ModuleDatabase.getModule("streets").load());
+  arr.push(component_ModuleDatabase.getModule("wards").load());
+  arr.push(component_ModuleDatabase.getModule("districts").load());
+  arr.push(component_ModuleDatabase.getModule("states").load());
+  Promise.all(arr).then(function (value) {
+    self.checkAddress = component_ModuleDatabase.getModule("addresses").getLibary("id");
+    self.checkStreet = component_ModuleDatabase.getModule("streets").getLibary("id");
+    self.checkWard = component_ModuleDatabase.getModule("wards").getLibary("id");
+    self.checkDistrict = component_ModuleDatabase.getModule("districts").getLibary("id");
+    self.checkState = component_ModuleDatabase.getModule("states").getLibary("id");
     var header = [{
       type: "dragzone",
       dragElement: false
@@ -53776,7 +53716,7 @@ ListRealty_ListRealty.prototype.getView = function () {
       icon: "",
       dragElement: false
     }];
-    self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
+    self.mTable = new tableView(header, self.formatDataRow(value[0]), false, true, 1);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', self.$view));
   });
@@ -53786,8 +53726,6 @@ ListRealty_ListRealty.prototype.getView = function () {
   component_ModuleDatabase.getModule("contacts").load().then(function (value) {
     self.formatDataRowContact(value);
   });
-  component_ModuleDatabase.getModule("contacts_link").load();
-  component_ModuleDatabase.getModule("address").load();
   this.searchControl = this.searchControlContent();
   this.$view.addChild(ListRealty_({
     tag: "div",
@@ -53851,7 +53789,6 @@ ListRealty_ListRealty.prototype.getDataRow = function (data) {
   }
 
   var direction;
-  console.log(parseInt(data.direction));
 
   switch (parseInt(data.direction)) {
     case 0:
@@ -53898,12 +53835,22 @@ ListRealty_ListRealty.prototype.getDataRow = function (data) {
     if (staus == "") staus += "Còn cho thuê";else staus += " và còn cho thuê";
   }
 
+  if (data.addressid !== 0) {
+    var number = this.checkAddress[data.addressid].addressnumber;
+    var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
+    var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
+    var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
+    var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
+  } else {
+    var number = street = ward = district = state = "";
+  }
+
   var result = [{}, {}, {
     value: data.id,
     style: {
       whiteSpace: "nowrap"
     }
-  }, "", "", "", "", "", data.content, {
+  }, number, street, ward, district, state, data.content, {
     value: data.height,
     style: {
       whiteSpace: "nowrap"

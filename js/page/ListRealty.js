@@ -204,8 +204,19 @@ ListRealty.prototype.getView = function () {
 
     moduleDatabase.getModule("activehouses",["load.php","addActiveHouse.php","updateActiveHouse.php","deleteActiveHouse.php"]);
 
-    moduleDatabase.getModule("activehouses").load().then(function (value) {
-
+    var arr = [];
+    arr.push(moduleDatabase.getModule("activehouses").load());
+    arr.push(moduleDatabase.getModule("addresses").load());
+    arr.push(moduleDatabase.getModule("streets").load());
+    arr.push(moduleDatabase.getModule("wards").load());
+    arr.push(moduleDatabase.getModule("districts").load());
+    arr.push(moduleDatabase.getModule("states").load());
+    Promise.all(arr).then(function (value) {
+        self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
+        self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+        self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+        self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+        self.checkState = moduleDatabase.getModule("states").getLibary("id");
         var header = [{
             type: "dragzone",
             dragElement: false
@@ -275,7 +286,7 @@ ListRealty.prototype.getView = function () {
             icon: "",
             dragElement: false
         }];
-        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
+        self.mTable = new tableView(header, self.formatDataRow(value[0]), false, true, 1);
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
     });
@@ -288,8 +299,7 @@ ListRealty.prototype.getView = function () {
         self.formatDataRowContact(value);
     })
 
-    moduleDatabase.getModule("contacts_link").load();
-    moduleDatabase.getModule("address").load();
+  
 
     this.searchControl = this.searchControlContent();
 
@@ -392,6 +402,18 @@ ListRealty.prototype.getDataRow = function (data) {
         else
             staus += " và còn cho thuê";
     }
+    if(data.addressid!==0)
+    {
+        var number = this.checkAddress[data.addressid].addressnumber;
+        var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
+        var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
+        var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
+        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
+    }else
+    {
+        var number = street = ward = district = state = "";
+    }
+   
     var result = [{},
         {},
         {
@@ -400,11 +422,11 @@ ListRealty.prototype.getDataRow = function (data) {
                 whiteSpace: "nowrap"
             }
         },
-        "",
-        "",
-        "",
-        "",
-        "",
+        number,
+        street,
+        ward,
+        district,
+        state,
         data.content,
         {
             value: data.height,

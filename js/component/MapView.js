@@ -8,7 +8,7 @@ var _ = Fcore._;
 var $ = Fcore.$;
  
 export function locationView(functionDone,data) {
-    var map = MapView(data);
+    var map = MapView();
     var detailView = DetailView(map,data);
     map.activeDetail(detailView)
     var temp = _({
@@ -37,6 +37,13 @@ export function locationView(functionDone,data) {
                         on:{
                             click:function(event)
                             {
+                                if(temp.detailView.number.value==undefined||temp.detailView.street.value==undefined
+                                    ||temp.detailView.ward.value==undefined||temp.detailView.district.value==undefined
+                                    ||temp.detailView.state.value==undefined)
+                                {
+                                    alert("Vui lòng điền đầy đủ địa chỉ");
+                                    return;
+                                }
                                 functionDone(detailView,map);
                             }
                         },
@@ -59,10 +66,12 @@ export function locationView(functionDone,data) {
     temp.map = map;
     temp.detailView = detailView;
     temp.getDataCurrent = detailView.getDataCurrent.bind(detailView);
+    temp.data = data;
+    
     return temp;
 }
 
-export function DetailView(map) {
+export function DetailView(map,data) {
     var temp;
     var input = _({
         tag: "input",
@@ -77,10 +86,7 @@ export function DetailView(map) {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("districts").load({ORDERING:"stateid"}));
     arr.push(moduleDatabase.getModule("wards").load({ORDERING:"districtid"}));
-    arr.push(moduleDatabase.getModule("streets").load({ORDERING:"wardid"}));
-    moduleDatabase.getModule("ward_street_link").load({ORDERING:"wardid"}).then(function(value){
-        temp.checkLinkAdress = moduleDatabase.getModule("ward_street_link").getLibary("wardid");
-    })
+    arr.push(moduleDatabase.getModule("streets").load());
     var state,district,ward,street,number;
     state = _({
         tag: "selectmenu",
@@ -100,6 +106,7 @@ export function DetailView(map) {
                 if(temp.checkStateDistrict[x][0]!==undefined)
                 district.value = temp.checkStateDistrict[x][0].value;
                 district.emit("change");
+                temp.setInput();
             }
         }
     });
@@ -121,6 +128,7 @@ export function DetailView(map) {
                 }
                 if(temp.checkDistrictWard[x][0]!==undefined)
                 ward.value = temp.checkDistrictWard[x][0].value;
+                temp.setInput();
             }
         }
     });
@@ -136,21 +144,35 @@ export function DetailView(map) {
                 var x = parseInt(getIDCompair(this.value));
                 var checkid = temp.checkDistrict[temp.checkWard[x].districtid].name+"_"+temp.checkWard[x].districtid;
                 district.value = checkid;
+                temp.setInput();
             }
         }
     });
     street = _({
         tag: "selectmenu",
-        class: "pizo-new-realty-location-detail-row-menu"
+        class: "pizo-new-realty-location-detail-row-menu",
+        on:{
+            change:function(event)
+            {
+                temp.setInput();
+            }
+        }
     });
     number = _({
         tag: "input",
-        class: "pizo-new-realty-location-detail-row-menu"
+        class: "pizo-new-realty-location-detail-row-menu",
+        on:{
+            change:function(event)
+            {
+                temp.setInput();
+            }
+        }
     });
     Promise.all(arr).then(function(){
         state.items = moduleDatabase.getModule("states").getList("name",["name","id"]);
         district.items = moduleDatabase.getModule("districts").getList("name",["name","id"]);
         ward.items = moduleDatabase.getModule("wards").getList("name",["name","id"]);
+
         street.items = moduleDatabase.getModule("streets").getList("name",["name","id"]);
 
         temp.checkStateDistrict = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
@@ -162,6 +184,54 @@ export function DetailView(map) {
         temp.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         temp.checkState = moduleDatabase.getModule("states").getLibary("id");
         temp.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+        temp.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+
+        var index;
+        if(data!==undefined)
+        {
+            temp.number.value = data.number;
+
+            index = data.street.lastIndexOf("_");
+            console.log(data.street)
+            if(index===-1)
+            {
+                temp.street.items.push({text:data.street,value:data.street});
+                temp.street.items = temp.street.items;
+            }
+            temp.street.value = data.street;
+
+            index = data.ward.lastIndexOf("_");
+            if(index===-1)
+            {
+                temp.ward.items.push({text:data.ward,value:data.ward});
+                temp.ward.items= temp.ward.items;
+            }
+            temp.ward.value = data.ward;
+
+            index = data.district.lastIndexOf("_");
+            if(index===-1)
+            {
+                temp.district.items.push({text:data.district,value:data.district});
+                temp.district.items= temp.district.items;
+            }
+            temp.district.value = data.district;
+
+            index = data.state.lastIndexOf("_");
+            if(index===-1)
+            {
+                temp.state.items.push({text:data.state,value:data.state});
+                temp.state.items =temp.state.items;
+            }
+            temp.state.value = data.state;
+
+            if(data.lat!==undefined)
+            temp.lat.value = data.lat;
+
+            if(data.lng!==undefined)
+            temp.long.value = data.lng;
+            temp.setInput();
+            map.addMoveMarker([data.lng,data.lat]);
+        }
     })
     var lat,long;
     long = _({
@@ -363,11 +433,6 @@ export function DetailView(map) {
 
 DetailView.prototype.getDataCurrent = function()
 {
-    if(temp.number.value==undefined||temp.street.value==undefined||temp.ward.value==undefined||temp.district.value==undefined||temp.state.value==undefined)
-    {
-        alert("Vui lòng điền đầy đủ địa chỉ");
-        return;
-    }
     return {
         number:this.number.value,
         street:this.street.value,
@@ -384,7 +449,7 @@ DetailView.prototype.activeAutocomplete = function(map) {
     var autocomplete;
     var options = {
         // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
-        types: ['geocode'],
+        types: ['address'],
         componentRestrictions: { country: 'vn' }
     };
     
@@ -400,6 +465,66 @@ DetailView.prototype.activeAutocomplete = function(map) {
     autocomplete.addListener('place_changed', function () {
         self.fillInAddress(autocomplete, self.input.value, map)
     });
+}
+
+DetailView.prototype.setInput = function()
+{
+    var stringInput = "";
+    var index;
+    var valueNumber = this.number.value;
+    var valueRoute = this.street.value;
+    var valueWard = this.ward.value;
+    var valueDistrict = this.district.value;
+    var valueState = this.state.value;
+    var isFirst = "";
+
+    if(valueNumber!==undefined)
+    {
+        stringInput+=isFirst+valueNumber;
+        isFirst = " ";
+    }
+
+    if(valueRoute!==undefined)
+    {
+        index = valueRoute.lastIndexOf("_");
+        if(index == -1)
+        stringInput+=isFirst+valueRoute;
+        else
+        stringInput+=isFirst+valueRoute.slice(0,index);
+        isFirst = ", "
+    }
+ 
+
+    if(valueWard!==undefined)
+    {
+        index = valueWard.lastIndexOf("_");
+        if(index == -1)
+        stringInput+=isFirst+valueWard;
+        else
+        stringInput+=isFirst+valueWard.slice(0,index);
+        isFirst = ", "
+    }
+
+    if(valueDistrict!==undefined)
+    {
+        index = valueDistrict.lastIndexOf("_");
+        if(index == -1)
+        stringInput+=isFirst+valueDistrict;
+        else
+        stringInput+=isFirst+valueDistrict.slice(0,index);
+        isFirst = ", "
+    }
+
+    if(valueState!==undefined)
+    {
+        index = valueState.lastIndexOf("_");
+        if(index == -1)
+        stringInput+=isFirst+valueState;
+        else
+        stringInput+=isFirst+valueState.slice(0,index);
+        isFirst = ", "
+    }
+    this.input.value = stringInput;
 }
 
 DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
@@ -430,6 +555,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
 
     // Get each component of the address from the place details,
     // and then fill-in the corresponding field on the form.
+    console.log(place)
     for (var i = place.address_components.length-1; i >= 0 ; i--) {
         var addressType = place.address_components[i].types[0];
         if (componentForm[addressType]) {
@@ -437,6 +563,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
             switch (addressType) {
                 case "street_number":
                     var valueNumber = val;
+                    console.log(val)
                     self.number.value = valueNumber;
                     break;
                 case "route":
@@ -494,24 +621,7 @@ DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
     self.ward.value = valueWard.value;
 
     
-    var stringInput = "";
-
-    if(valueNumber!==false)
-    stringInput+=valueNumber;
-
-    if(valueRoute!==false)
-    stringInput+=" "+valueRoute.text;
-
-    if(valueWard!==false)
-    stringInput+=", "+valueWard.text;
-
-    if(valueDistrict!==false)
-    stringInput+=", "+valueDistrict.text;
-
-    if(valueState!==false)
-    stringInput+=", "+valueState.text;
-
-    self.input.value = stringInput;
+    this.setInput();
 }
 
 
@@ -584,6 +694,27 @@ export function MapView() {
 MapView.prototype.activePlanningMap = function()
 {
     this.map = this.activeMap();
+}
+
+MapView.prototype.addMapPolygon = function()
+{
+    var self = this;
+    google.maps.event.addListener(self.map, 'zoom_changed', function() {
+        var zoomLevel = self.map.getZoom();
+        if(zoomLevel>18)
+        {
+            self.enablePolygon = true;
+        }else
+        {
+            self.enablePolygon = false;
+        }
+    });
+    google.maps.event.addListener(self.map, "center_changed", function() {
+        var center = this.getCenter();
+        var latitude = center.lat();
+        var longitude = center.lng();
+        
+    });
 }
 
 MapView.prototype.activeDetail = function(detailView)

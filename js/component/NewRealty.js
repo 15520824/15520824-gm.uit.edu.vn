@@ -3,12 +3,13 @@ import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import '../../css/NewRealty.css';
 import '../../css/imagesilder.css';
-import { locationView } from "./MapView";
+import { locationView,MapView } from "./MapView";
 import { descViewImagePreview } from './ModuleImage'
 import { unit_Long, unit_Zone, tableView } from './ModuleView';
 import {formatNumber,reFormatNumber,formatFit} from './FormatFunction'
 import R from '../R';
 import Fcore from '../dom/Fcore';
+import moduleDatabase from '../component/ModuleDatabase';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -133,11 +134,11 @@ NewRealty.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-
-                                        self.resolveDB(self.getDataSave());
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                        self.getDataSave();
+                                        // self.resolveDB(self.getDataSave());
+                                        // self.$view.selfRemove();
+                                        // var arr = self.parent.body.getAllChild();
+                                        // self.parent.body.activeFrame(arr[arr.length - 1]);
                                     }
                                 },
                                 child: [
@@ -163,64 +164,16 @@ NewRealty.prototype.getView = function () {
 }
 
 NewRealty.prototype.descView = function () {
-    var dataImage = [
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/1.jfif", date: "2017-06-10T16:08:00", note: "Phòng bếp tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/2.jfif", date: "2018-06-10T16:08:00", note: "Phòng khách tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/3.jfif", date: "2019-06-10T16:08:00", note: "Nhà tắm tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/4.jfif", date: "2019-06-10T16:08:00", note: "Phòng Gym tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/5.jfif", date: "2019-06-10T16:08:00", note: "Phòng thờ tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/6.jfif", date: "2020-04-15T16:08:00", note: "Phòng kho tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/1.jfif", date: "2017-06-10T16:08:00", note: "Phòng bếp tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/2.jfif", date: "2018-06-10T16:08:00", note: "Phòng khách tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/3.jfif", date: "2019-06-10T16:08:00", note: "Nhà tắm tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/4.jfif", date: "2019-06-10T16:08:00", note: "Phòng Gym tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/5.jfif", date: "2019-06-10T16:08:00", note: "Phòng thờ tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/6.jfif", date: "2020-04-15T16:08:00", note: "Phòng kho tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/1.jfif", date: "2017-06-10T16:08:00", note: "Phòng bếp tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/2.jfif", date: "2018-06-10T16:08:00", note: "Phòng khách tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/3.jfif", date: "2019-06-10T16:08:00", note: "Nhà tắm tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/4.jfif", date: "2019-06-10T16:08:00", note: "Phòng Gym tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/5.jfif", date: "2019-06-10T16:08:00", note: "Phòng thờ tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/6.jfif", date: "2020-04-15T16:08:00", note: "Phòng kho tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/1.jfif", date: "2017-06-10T16:08:00", note: "Phòng bếp tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/2.jfif", date: "2018-06-10T16:08:00", note: "Phòng khách tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/3.jfif", date: "2019-06-10T16:08:00", note: "Nhà tắm tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/4.jfif", date: "2019-06-10T16:08:00", note: "Phòng Gym tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/5.jfif", date: "2019-06-10T16:08:00", note: "Phòng thờ tầng 1" },
-        { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/6.jfif", date: "2020-04-15T16:08:00", note: "Phòng kho tầng 1" },
-    ]
+    this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
+    this.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+    this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+    this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+    this.checkState = moduleDatabase.getModule("states").getLibary("id");
 
-    var x = new Promise(function (resolve, reject) {
-        resolve([
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/1.jfif", date: "1017-06-10T16:08:00", note: "Phòng bếp tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/2.jfif", date: "1018-06-10T16:08:00", note: "Phòng khách tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/3.jfif", date: "1019-06-10T16:08:00", note: "Nhà tắm tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/4.jfif", date: "1019-06-10T16:08:00", note: "Phòng Gym tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/5.jfif", date: "1019-06-10T16:08:00", note: "Phòng thờ tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/6.jfif", date: "1020-04-15T16:08:00", note: "Phòng kho tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/1.jfif", date: "1017-06-10T16:08:00", note: "Phòng bếp tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/2.jfif", date: "1018-06-10T16:08:00", note: "Phòng khách tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/3.jfif", date: "1019-06-10T16:08:00", note: "Nhà tắm tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/4.jfif", date: "1019-06-10T16:08:00", note: "Phòng Gym tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/5.jfif", date: "1019-06-10T16:08:00", note: "Phòng thờ tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/6.jfif", date: "1020-04-15T16:08:00", note: "Phòng kho tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/1.jfif", date: "1017-06-10T16:08:00", note: "Phòng bếp tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/2.jfif", date: "1018-06-10T16:08:00", note: "Phòng khách tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/3.jfif", date: "1019-06-10T16:08:00", note: "Nhà tắm tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/4.jfif", date: "1019-06-10T16:08:00", note: "Phòng Gym tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/5.jfif", date: "1019-06-10T16:08:00", note: "Phòng thờ tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/6.jfif", date: "1020-04-15T16:08:00", note: "Phòng kho tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/1.jfif", date: "1017-06-10T16:08:00", note: "Phòng bếp tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/2.jfif", date: "1018-06-10T16:08:00", note: "Phòng khách tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/3.jfif", date: "1019-06-10T16:08:00", note: "Nhà tắm tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/4.jfif", date: "1019-06-10T16:08:00", note: "Phòng Gym tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/5.jfif", date: "1019-06-10T16:08:00", note: "Phòng thờ tầng 1" },
-            { avatar: "assets/avatar/Thi.jpg", userName: "Bùi Phạm Minh Thi", src: "assets/images/6.jfif", date: "1020-04-15T16:08:00", note: "Phòng kho tầng 1" },
-        ])
-    })
     this.containerMap = _({
         tag: "div"
     })
+    this.contactView = this.contactView();
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-desc",
@@ -229,7 +182,6 @@ NewRealty.prototype.descView = function () {
                 tag: "div",
                 class: "pizo-new-realty-desc-content",
                 child: [
-                    this.descViewdetail(),
                     this.containerMap
                 ]
             },
@@ -237,13 +189,13 @@ NewRealty.prototype.descView = function () {
                 tag: "div",
                 class: "pizo-new-realty-desc-infomation",
                 child: [
-                    this.detructView(),
+                   
                     {
                         tag: "div",
                         class: ["pizo-new-realty-desc-infomation-cell", "center-child"],
                         child: [
                             this.convenientView(),
-                            this.contactView()
+                            this.contactView
                         ]
                     },
                     {
@@ -252,13 +204,17 @@ NewRealty.prototype.descView = function () {
                         child: [
                             this.juridicalView(),
                             this.historyView(),
-                            this.descViewImageThumnail(dataImage,0,x)
+                            // this.descViewImageThumnail(dataImage,0,x)
                         ]
                     }
                 ]
             }
         ]
-    })
+    });
+    var container = $("div.pizo-new-realty-desc-content",temp);
+    container.insertBefore(this.descViewdetail(),container.firstChild);
+    var container = $("div.pizo-new-realty-desc-infomation",temp);
+    container.insertBefore(this.detructView(),container.firstChild);
     return temp;
 }
 
@@ -307,7 +263,9 @@ NewRealty.prototype.descViewImageThumnail = function (dataImage, index, promiseL
     return temp;
 }
 
-NewRealty.prototype.itemAdress = function () {
+NewRealty.prototype.itemAdress = function (addressid = 0) {
+
+
     var self = this;
     var text = _({ text: "Địa chỉ" });
     var important = _({
@@ -343,7 +301,7 @@ NewRealty.prototype.itemAdress = function () {
                             temp.selfRemoveChild(value.input.value, childNode);
                             childRemove.selfRemove();
 
-                        })
+                        },temp.data)
                         var childRemove = _({
                             tag: "modal",
                             on: {
@@ -433,7 +391,6 @@ NewRealty.prototype.itemAdress = function () {
                         childNode.map.currentMarker.setDraggable(false);
                         self.containerMap.parentNode.replaceChild(childNode.map, self.containerMap);
                         self.containerMap = childNode.map;
-                        temp.containerMap = childNode.map;
                     }
                     if(next === temp)
                     {
@@ -456,6 +413,25 @@ NewRealty.prototype.itemAdress = function () {
         
     }
     this.inputAdress = $('input.pizo-new-realty-desc-detail-1-row-input',temp);
+    if(addressid!==0)
+    {
+        var number = this.checkAddress[addressid].addressnumber;
+        var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
+        var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
+        var district = this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name;
+        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
+        $("input.pizo-new-realty-desc-detail-1-row-input",temp).value = number+" "+street+", "+ward+", "+district+", "+state;
+        temp.data = {
+            id:addressid,
+            number:this.checkAddress[addressid].addressnumber,
+            street:this.checkStreet[this.checkAddress[addressid].streetid].name+"_"+this.checkAddress[addressid].streetid,
+            ward:this.checkWard[this.checkAddress[addressid].wardid].name+"_"+this.checkAddress[addressid].wardid,
+            district:this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name+"_"+this.checkWard[this.checkAddress[addressid].wardid].districtid,
+            state:this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name+"_"+this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid,
+            lng:this.checkAddress[addressid].lng,
+            lat:this.checkAddress[addressid].lat,
+        }
+    }
     return temp;
 }
 
@@ -465,11 +441,38 @@ NewRealty.prototype.descViewdetail = function () {
         tag:"div",
         style:{
             marginBottom:"10px"
-        },
-        child:[
-            self.itemAdress()
-        ]
-    })
+        }
+    });
+    var index = "";
+    var last;
+    if(this.data!==undefined)
+    {
+        for(var i = 0;i<4;i++)
+        {      
+            if(this.data.original["addressid"+index]==0)
+            break;
+            last = this.itemAdress(this.data.original["addressid"+index])
+            containerAdress.appendChild(last);
+            if(i===0)
+            {
+                var map = MapView();
+                map.activePlanningMap();
+                var address = this.checkAddress[this.data.original["addressid"+index]];
+                map.addMoveMarker([address.lng,address.lat],false);
+                map.currentMarker.setDraggable(false);
+                this.containerMap.parentNode.replaceChild(map, this.containerMap);
+                this.containerMap = map;
+            }
+            index = i+2;
+        }
+    }
+    if(i == undefined||i<3)
+    {
+        last = this.itemAdress();
+        containerAdress.appendChild(last);
+    }
+    
+    last.parentUpdateIndex();
     var temp = _({
         tag: "div",
         class: ["pizo-new-realty-desc-detail", "pizo-new-realty-dectruct-content-area-size-zone"],
@@ -638,6 +641,7 @@ NewRealty.prototype.detructView = function () {
         var width = $('input.pizo-new-realty-dectruct-content-area-access', temp);
         width.value = width.value * event.lastValue / event.value;
     })
+
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-dectruct",
@@ -1453,7 +1457,9 @@ NewRealty.prototype.detructView = function () {
     this.inputBasement = $('input.pizo-new-realty-dectruct-content-area-basement',temp);
     this.inputFloor = $('input.pizo-new-realty-dectruct-content-area-floor',temp);
     this.censorship = $('div.pizo-new-realty-detruct-content-censorship',temp);
-    
+
+
+
     if(this.data!==undefined)
     {
         var original = this.data.original;
@@ -1512,17 +1518,11 @@ NewRealty.prototype.getDataSave = function(){
         pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
         censorship:this.censorship.checked==true?1:0
     }
-    var index;
+    var index = "";
 
     for(var i=0;i<this.containerAdress.childNodes.length;i++)
     {
-        if(i==0)
-        {
-            temp.lng = this.containerAdress.childNodes[i].data.lng;
-            temp.lat = this.containerAdress.childNodes[i].data.lat;
-            index = "";
-        }else
-            index = i;
+       
         if(this.containerAdress.childNodes[i].data!==undefined)
         {
             var indexString = "addressid"+index;
@@ -1560,8 +1560,18 @@ NewRealty.prototype.getDataSave = function(){
 
             address.number = data.number;
 
+            address.lat = data.lat;
+
+            address.lng = data.lng;
+
             temp[indexString] = address;
+            index = i+2;
         }
+    }
+
+    for(var i = 0;i<this.contactView.childNodes.length;i++)
+    {
+        console.log(this.contactView.childNodes[i]);
     }
 
     if(this.data!==undefined)
@@ -2004,6 +2014,7 @@ NewRealty.prototype.contactItem = function(data){
             note:note.value
         }
     }
+
     return temp;
 }
 
