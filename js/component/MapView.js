@@ -3,6 +3,7 @@ import Fcore from '../dom/Fcore';
 import '../../css/MapView.css';
 import moduleDatabase from '../component/ModuleDatabase';
 import {getIDCompair,removeAccents} from './FormatFunction';
+import { ModuleView } from './ModuleView';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -698,6 +699,7 @@ MapView.prototype.activePlanningMap = function()
 
 MapView.prototype.addMapPolygon = function()
 {
+    moduleDatabase.getModule("polygon",["loadPolygon.php","addPolygon.php","updatePOlygon.php","deletePolygon.php"])
     var self = this;
     google.maps.event.addListener(self.map, 'zoom_changed', function() {
         var zoomLevel = self.map.getZoom();
@@ -709,18 +711,58 @@ MapView.prototype.addMapPolygon = function()
             self.enablePolygon = false;
         }
     });
+    var intLng,cellLng,intLat,cellLat;
     google.maps.event.addListener(self.map, "center_changed", function() {
-        var center = this.getCenter();
-        var latitude = center.lat();
-        var longitude = center.lng();
+        if(self.enablePolygon == true)
+        {
+            var center = this.getCenter();
+            var latitude = center.lat();
+            var longitude = center.lng();
+            intLng = parseInt(longitude/1);
+            cellLng = Math.ceil(longitude%1/0.0009009009009009009)-1;
+            intLat = parseInt(latitude/1);
+            cellLat = Math.ceil(latitude%1/0.0009009009009009009)-1;
+            cellLng = intLng*10000+cellLng;
+            cellLat = intLat*10000+cellLat;
+            moduleDatabase.getModule("polygon").load({cellLng:cellLng,cellLat:cellLat},true,true).then(function(value){
+                for(var i=0;i<value.length;i++)
+                {
+                    self.addWKT(value[i]["AsText(`map`)"])
+                }
+                
+            })
+        }
         
     });
+}
+
+MapView.prototype.addWKT = function(multipolygonWKT) {
+    var wkt = new Wkt.Wkt();
+    wkt.read(multipolygonWKT);
+    var toReturn = [];
+    var components = wkt.components;
+    for(var k=0;k<components.length;k++){
+        var line = components[k];
+        var polygon = new google.maps.Polygon({
+            paths: line,
+            strokeColor: "#000000",
+            fillColor:"#adaeaf",
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            map:this.map,
+            geodesic: true
+        })
+        toReturn.push(polygon);
+    }
+        
+    return toReturn;  
 }
 
 MapView.prototype.activeDetail = function(detailView)
 {
     this.detailView = detailView;
     this.map = this.activeMap();
+    this.addMapPolygon();
 }
 
 MapView.prototype.activeMap = function (center = [10.822500, 106.629104], zoom = 16) {

@@ -2,7 +2,7 @@ import FormClass from './jsform';
 import {promiseState} from './FormatFunction';
 
 var moduleDatabase = new ModuleDatabase();
-
+console.log(moduleDatabase)
 function ModuleDatabase() {
     this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/template/";
     this.data = [];
@@ -27,7 +27,7 @@ function DataStructure(hostDatabase ,name ,listFilePHP = ["load.php","add.php","
 }
 
 
-DataStructure.prototype.load = function(data = [],isLoaded = false){
+DataStructure.prototype.load = function(data = [],isLoaded = false,pushArray = false){
     var self = this;
     if(data.WHERE!==undefined&&self.data!==undefined)
     {
@@ -59,7 +59,15 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
         var promiseLoad;
         promiseLoad = new Promise(function(resolve,reject){
             self.queryData(self.phpLoader,data).then(function(value){
+                if(pushArray==false)
                 self.data = value;
+                else
+                {
+                    if(self.data===undefined)
+                    self.data =[];
+                    self.data.concat(value);
+                }
+              
                 self.getLibary();
                 promiseLoad.status = "done";
                 resolve(value);
@@ -222,13 +230,35 @@ DataStructure.prototype.add = function(data){
 
             }else
             {
-                data.id = value;
-                for(var param in self.Libary)
+                Object.assign(data,value.data);
+                self.setFormatAdd(data);
+                console.log(value.insert,value.update,value);
+                if(value.insert!==undefined)
                 {
-                    if(typeof self.Libary[param]!= "function")
-                    self.Libary[param].formatFunction(data,param);
+                    for(var i = 0;i<value.insert.length;i++)
+                    {
+                        for(var param in value.insert[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatAdd(value.insert[i][param]);
+                            }
+                        }
+                    }
                 }
-                self.data.push(data);  
+                if(value.update!==undefined)
+                {
+                    for(var i = 0;i<value.update.length;i++)
+                    {
+                        for(var param in value.update[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatUpdate(value.update[i][param]);
+                            }
+                        }
+                    }
+                }
             }
             resolve(value);
         }).catch(function(err){
@@ -238,26 +268,53 @@ DataStructure.prototype.add = function(data){
     })
 }
 
+DataStructure.prototype.setFormatAdd = function(data)
+{
+    var self = this;
+    for(var param in self.Libary)
+    {
+        if(typeof self.Libary[param]!= "function")
+        self.Libary[param].formatFunction(data,param);
+    }
+    self.data.push(data);  
+}
+
 DataStructure.prototype.update = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpUpdater,data).then(function(value){
             if(data.id!==undefined)
             {
-                var temp = self.Libary["id"][data.id];
-                for(var param in data)
+                Object.assign(data,value.data);
+                self.setFormatUpdate(data);
+                if(value.add!==undefined)
                 {
-                    if(self.Libary[param]!==undefined&&typeof self.Libary[param]!= "function"){
-                        if(temp[param] == data[param])
-                            continue;
-                        self.Libary[param].deleteFunction(temp,param);
-                        temp[param] = data[param];
-                        self.Libary[param].formatFunction(temp,param);
-                    }else
-                    temp[param] = data[param];
+                    for(var i = 0;i<value.add.length;i++)
+                    {
+                        for(var param in value.add[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatAdd(value.add[i][param]);
+                            }
+                        }
+                    }
+                }
+                if(value.update!==undefined)
+                {
+                    for(var i = 0;i<value.update.length;i++)
+                    {
+                        for(var param in value.update[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatUpdate(value.update[i][param]);
+                            }
+                        }
+                    }
                 }
             }
-            resolve(temp);
+            resolve(data);
         }).catch(function(err){
             reject(err);
             console.error(err)
@@ -265,6 +322,22 @@ DataStructure.prototype.update = function(data){
     })
 }
 
+DataStructure.prototype.setFormatUpdate = function(data)
+{
+    var self = this;
+    var temp = self.Libary["id"][data.id];
+    for(var param in data)
+    {
+        if(self.Libary[param]!==undefined&&typeof self.Libary[param]!= "function"){
+            if(temp[param] == data[param])
+                continue;
+            self.Libary[param].deleteFunction(temp,param);
+            temp[param] = data[param];
+            self.Libary[param].formatFunction(temp,param);
+        }else
+        temp[param] = data[param];
+    }
+}
 
 DataStructure.prototype.delete = function(data){
     var self = this;

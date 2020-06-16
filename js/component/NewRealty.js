@@ -134,11 +134,10 @@ NewRealty.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        self.getDataSave();
-                                        // self.resolveDB(self.getDataSave());
-                                        // self.$view.selfRemove();
-                                        // var arr = self.parent.body.getAllChild();
-                                        // self.parent.body.activeFrame(arr[arr.length - 1]);
+                                        self.resolveDB(self.getDataSave());
+                                        self.$view.selfRemove();
+                                        var arr = self.parent.body.getAllChild();
+                                        self.parent.body.activeFrame(arr[arr.length - 1]);
                                     }
                                 },
                                 child: [
@@ -449,7 +448,7 @@ NewRealty.prototype.descViewdetail = function () {
     {
         for(var i = 0;i<4;i++)
         {      
-            if(this.data.original["addressid"+index]==0)
+            if(this.data.original["addressid"+index]==0||this.data.original["addressid"+index]==undefined)
             break;
             last = this.itemAdress(this.data.original["addressid"+index])
             containerAdress.appendChild(last);
@@ -457,6 +456,7 @@ NewRealty.prototype.descViewdetail = function () {
             {
                 var map = MapView();
                 map.activePlanningMap();
+                map.addMapPolygon();
                 var address = this.checkAddress[this.data.original["addressid"+index]];
                 map.addMoveMarker([address.lng,address.lat],false);
                 map.currentMarker.setDraggable(false);
@@ -801,7 +801,7 @@ NewRealty.prototype.detructView = function () {
                                                                 
                                                                 var areaValue = $('input.pizo-new-realty-dectruct-content-area-all', temp);
                                                                 var areaValueUnit = unit_Zone_all;
-                                                                inputValue.value = price.value*priceUnit.value/(areaValue.value*areaValueUnit.value);
+                                                                inputValue.value = price.value*priceUnit.value/(areaValue.value*areaValueUnit.value)*1000;
                                                             }
                                                         },
                                                         attr: {
@@ -947,7 +947,7 @@ NewRealty.prototype.detructView = function () {
                                                          
                                                         var areaValue = $('input.pizo-new-realty-dectruct-content-area-all', temp);
                                                         var areaValueUnit = unit_Zone_all;
-                                                        inputValue.value = price.value*priceUnit.value/(areaValue.value*areaValueUnit.value)
+                                                        inputValue.value = price.value*priceUnit.value/(areaValue.value*areaValueUnit.value)*1000;
                                                     }
                                                 }
                                             },
@@ -1025,6 +1025,10 @@ NewRealty.prototype.detructView = function () {
                                                     input:function(event)
                                                     {
                                                         this.value = formatNumber(this.value);
+                                                    },
+                                                    blur:function(event)
+                                                    {
+                                                        this.value = reFormatNumber(this.value);
                                                     }
                                                 }
                                             },
@@ -1034,7 +1038,7 @@ NewRealty.prototype.detructView = function () {
                                                 on:{
                                                     change:function(event){
                                                         var price = $('input.pizo-new-realty-detruct-content-price-rent', temp);
-                                                        price.value = (reFormatNumber(price.value) * event.lastValue / event.value);
+                                                        price.value = (price.value * event.lastValue / event.value);
                                                     }
                                                 },
                                                 props:{
@@ -1494,6 +1498,9 @@ NewRealty.prototype.detructView = function () {
 }
 
 NewRealty.prototype.getDataSave = function(){
+    var fitUpdate = 0;
+    if(this.inputFit.values.length!==0)
+    fitUpdate = this.inputFit.values.reduce(function(a, b) { return a + b; })
     var temp = {
         height:this.inputHeight.value*this.inputUnitHeight.value,
         width:this.inputWidth.value*this.inputUnitWidth.value,
@@ -1502,7 +1509,7 @@ NewRealty.prototype.getDataSave = function(){
         acreage:this.inputZoneAll.value*this.inputUnitZoneAll.value,
         direction:this.direction.value,
         type:this.type.value,
-        fit:this.inputFit.values.reduce(function(a, b) { return a + b; }),
+        fit:fitUpdate,
         roadwidth:this.inputWidthRoad.value*this.inputUnitWidthRoad.value,
         floor:this.inputFloor.value,
         basement:this.inputBasement.value,

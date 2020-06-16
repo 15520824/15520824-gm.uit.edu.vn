@@ -404,6 +404,7 @@ ListRealty.prototype.getDataRow = function (data) {
     }
     if(data.addressid!==0)
     {
+        console.log(this.checkAddress,data.addressid)
         var number = this.checkAddress[data.addressid].addressnumber;
         var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
         var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
