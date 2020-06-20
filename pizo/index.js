@@ -48139,6 +48139,8 @@ tableView.prototype.dropRow = function (index) {
   });
 };
 
+tableView.prototype.insertColumn = function (index) {};
+
 tableView.prototype.changeParent = function (index, rowParent) {
   var result = this,
       deltaX = [];
@@ -49633,6 +49635,7 @@ var FormClass = {
 
 
 var moduleDatabase = new ModuleDatabase();
+console.log(moduleDatabase);
 
 function ModuleDatabase() {
   this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/template/";
@@ -49662,6 +49665,7 @@ function DataStructure(hostDatabase, name) {
 DataStructure.prototype.load = function () {
   var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var isLoaded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var pushArray = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   var self = this;
 
   if (data.WHERE !== undefined && self.data !== undefined) {
@@ -49684,7 +49688,10 @@ DataStructure.prototype.load = function () {
     var promiseLoad;
     promiseLoad = new Promise(function (resolve, reject) {
       self.queryData(self.phpLoader, data).then(function (value) {
-        self.data = value;
+        if (pushArray == false) self.data = value;else {
+          if (self.data === undefined) self.data = [];
+          self.data.concat(value);
+        }
         self.getLibary();
         promiseLoad.status = "done";
         resolve(value);
@@ -49837,13 +49844,29 @@ DataStructure.prototype.add = function (data) {
   return new Promise(function (resolve, reject) {
     self.queryData(self.phpAdder, data).then(function (value) {
       if (self.data.length == 0) {} else {
-        data.id = value;
+        Object.assign(data, value.data);
+        self.setFormatAdd(data);
+        console.log(value.insert, value.update, value);
 
-        for (var param in self.Libary) {
-          if (typeof self.Libary[param] != "function") self.Libary[param].formatFunction(data, param);
+        if (value.insert !== undefined) {
+          for (var i = 0; i < value.insert.length; i++) {
+            for (var param in value.insert[i]) {
+              if (moduleDatabase.data[param] !== undefined) {
+                moduleDatabase.data[param].setFormatAdd(value.insert[i][param]);
+              }
+            }
+          }
         }
 
-        self.data.push(data);
+        if (value.update !== undefined) {
+          for (var i = 0; i < value.update.length; i++) {
+            for (var param in value.update[i]) {
+              if (moduleDatabase.data[param] !== undefined) {
+                moduleDatabase.data[param].setFormatUpdate(value.update[i][param]);
+              }
+            }
+          }
+        }
       }
 
       resolve(value);
@@ -49854,29 +49877,65 @@ DataStructure.prototype.add = function (data) {
   });
 };
 
+DataStructure.prototype.setFormatAdd = function (data) {
+  var self = this;
+
+  for (var param in self.Libary) {
+    if (typeof self.Libary[param] != "function") self.Libary[param].formatFunction(data, param);
+  }
+
+  self.data.push(data);
+};
+
 DataStructure.prototype.update = function (data) {
   var self = this;
   return new Promise(function (resolve, reject) {
     self.queryData(self.phpUpdater, data).then(function (value) {
       if (data.id !== undefined) {
-        var temp = self.Libary["id"][data.id];
+        Object.assign(data, value.data);
+        self.setFormatUpdate(data);
 
-        for (var param in data) {
-          if (self.Libary[param] !== undefined && typeof self.Libary[param] != "function") {
-            if (temp[param] == data[param]) continue;
-            self.Libary[param].deleteFunction(temp, param);
-            temp[param] = data[param];
-            self.Libary[param].formatFunction(temp, param);
-          } else temp[param] = data[param];
+        if (value.add !== undefined) {
+          for (var i = 0; i < value.add.length; i++) {
+            for (var param in value.add[i]) {
+              if (moduleDatabase.data[param] !== undefined) {
+                moduleDatabase.data[param].setFormatAdd(value.add[i][param]);
+              }
+            }
+          }
+        }
+
+        if (value.update !== undefined) {
+          for (var i = 0; i < value.update.length; i++) {
+            for (var param in value.update[i]) {
+              if (moduleDatabase.data[param] !== undefined) {
+                moduleDatabase.data[param].setFormatUpdate(value.update[i][param]);
+              }
+            }
+          }
         }
       }
 
-      resolve(temp);
+      resolve(data);
     })["catch"](function (err) {
       reject(err);
       console.error(err);
     });
   });
+};
+
+DataStructure.prototype.setFormatUpdate = function (data) {
+  var self = this;
+  var temp = self.Libary["id"][data.id];
+
+  for (var param in data) {
+    if (self.Libary[param] !== undefined && typeof self.Libary[param] != "function") {
+      if (temp[param] == data[param]) continue;
+      self.Libary[param].deleteFunction(temp, param);
+      temp[param] = data[param];
+      self.Libary[param].formatFunction(temp, param);
+    } else temp[param] = data[param];
+  }
 };
 
 DataStructure.prototype["delete"] = function (data) {
@@ -49936,6 +49995,7 @@ DataStructure.prototype.queryData = function (phpFile, data) {
   });
 };
 // CONCATENATED MODULE: ./js/component/MapView.js
+
 
 
 
@@ -50593,9 +50653,136 @@ MapView_MapView.prototype.activePlanningMap = function () {
   this.map = this.activeMap();
 };
 
+MapView_MapView.prototype.addMapPolygon = function () {
+  component_ModuleDatabase.getModule("polygon", ["loadPolygon.php", "addPolygon.php", "updatePOlygon.php", "deletePolygon.php"]);
+  var self = this;
+  if (this.checkMap === undefined) this.checkMap = [];
+  if (this.currentPolygon === undefined) this.currentPolygon = [];
+  if (this.checkLibary === undefined) this.checkLibary = [];
+  google.maps.event.addListener(self.map, 'zoom_changed', function () {
+    var zoomLevel = self.map.getZoom();
+
+    if (zoomLevel > 19) {
+      self.enablePolygon = true;
+      new google.maps.event.trigger(self.map, 'center_changed');
+    } else {
+      self.enablePolygon = false;
+      self.removeMapPolygon();
+    }
+  });
+  var intLng, cellLng, intLat, cellLat, cellDeltaLat, cellDeltaLng;
+  google.maps.event.addListener(self.map, "center_changed", function () {
+    if (self.enablePolygon == true) {
+      var center = this.getCenter();
+      var latitude = center.lat();
+      var longitude = center.lng();
+      intLng = parseInt(longitude / 1);
+      cellLng = Math.ceil(longitude % 1 / 0.0009009009009009009);
+      intLat = parseInt(latitude / 1);
+      cellLat = Math.ceil(latitude % 1 / 0.0009009009009009009);
+      cellLng = intLng * 10000 + cellLng;
+      cellLat = intLat * 10000 + cellLat;
+      self.removeMapPolygonAround(cellLat, cellLng);
+
+      for (var m = -2; m <= 1; m++) {
+        for (var k = -2; k <= 1; k++) {
+          cellDeltaLat = cellLat + m;
+          cellDeltaLng = cellLng + k;
+
+          if (self.checkMap[cellDeltaLat] === undefined || self.checkMap[cellDeltaLat][cellDeltaLng] === undefined) {
+            if (self.checkMap[cellDeltaLat] === undefined) self.checkMap[cellDeltaLat] = [];
+            if (self.checkMap[cellDeltaLat][cellDeltaLng] === undefined) self.checkMap[cellDeltaLat][cellDeltaLng] = [];
+            component_ModuleDatabase.getModule("polygon").load({
+              cellLng: cellDeltaLng,
+              cellLat: cellDeltaLat
+            }, true, true).then(function (value) {
+              for (var i = 0; i < value.length; i++) {
+                self.addWKT(value[i]["AsText(`map`)"], cellLat, cellDeltaLng);
+              }
+            });
+          } else {
+            self.setMapPolygon(cellDeltaLat, cellDeltaLng);
+          }
+        }
+      }
+    }
+  });
+};
+
+MapView_MapView.prototype.addWKT = function (multipolygonWKT, cellLat, cellLng) {
+  var wkt = new Wkt.Wkt();
+  wkt.read(multipolygonWKT);
+  var components = wkt.components;
+
+  for (var k = 0; k < components.length; k++) {
+    var line = components[k];
+    var polygon = new google.maps.Polygon({
+      paths: line,
+      strokeColor: "#000000",
+      fillColor: "#adaeaf",
+      strokeOpacity: 0.8,
+      strokeWeight: 1,
+      map: this.map,
+      geodesic: true
+    });
+    this.checkMap[cellLat][cellLng].push(polygon);
+  }
+
+  if (this.checkLibary[cellLat] === undefined) this.checkLibary[cellLat] = [];
+  if (this.checkLibary[cellLat][cellLng] !== 1) this.currentPolygon.push([cellLat, cellLng]);
+  this.checkLibary[cellLat][cellLng] = 1;
+  return this.checkMap[cellLat][cellLng];
+};
+
+MapView_MapView.prototype.setMapPolygon = function (cellLat, cellLng) {
+  var arr = this.checkMap[cellLat][cellLng];
+
+  for (var i = 0; i < arr.length; i++) {
+    arr[i].setMap(this.map);
+  }
+
+  if (this.checkLibary[cellLat] === undefined) this.checkLibary[cellLat] = [];
+  if (this.checkLibary[cellLat][cellLng] !== 1) this.currentPolygon.push([cellLat, cellLng]);
+  this.checkLibary[cellLat][cellLng] = 1;
+};
+
+MapView_MapView.prototype.removeMapPolygon = function (arr) {
+  for (var i = this.currentPolygon.length - 1; i >= 0; i--) {
+    var arr = this.checkMap[this.currentPolygon[i][0]][this.currentPolygon[i][1]];
+
+    for (var j = 0; j < arr.length; j++) {
+      arr[j].setMap(null);
+    }
+
+    this.checkLibary[this.currentPolygon[i][0]][this.currentPolygon[i][1]] = undefined;
+    this.currentPolygon.splice(i, 1);
+  }
+};
+
+MapView_MapView.prototype.removeMapPolygonAround = function (cellLat, cellLng) {
+  var currentLat, currentLng;
+
+  for (var i = this.currentPolygon.length - 1; i >= 0; i--) {
+    currentLat = this.currentPolygon[i][0];
+    currentLng = this.currentPolygon[i][1];
+
+    if (Math.abs(currentLat - cellLat) > 3 || Math.abs(currentLng - cellLng) > 3) {
+      var arr = this.checkMap[currentLat][currentLng];
+
+      for (var j = 0; j < arr.length; j++) {
+        arr[j].setMap(null);
+      }
+
+      this.currentPolygon.splice(i, 1);
+      this.checkLibary[currentLat][currentLng] = undefined;
+    }
+  }
+};
+
 MapView_MapView.prototype.activeDetail = function (detailView) {
   this.detailView = detailView;
   this.map = this.activeMap();
+  this.addMapPolygon();
 };
 
 MapView_MapView.prototype.activeMap = function () {
@@ -51491,10 +51678,10 @@ NewRealty_NewRealty.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              self.getDataSave(); // self.resolveDB(self.getDataSave());
-              // self.$view.selfRemove();
-              // var arr = self.parent.body.getAllChild();
-              // self.parent.body.activeFrame(arr[arr.length - 1]);
+              self.resolveDB(self.getDataSave());
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
             }
           },
           child: ['<span>' + "Lưu và đóng" + '</span>']
@@ -51726,6 +51913,8 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
         case 0:
           if (childNode.map.currentMarker !== undefined) {
             childNode.map.currentMarker.setDraggable(false);
+            var latLng = childNode.map.currentMarker.getPosition();
+            childNode.map.map.setCenter(latLng);
             self.containerMap.parentNode.replaceChild(childNode.map, self.containerMap);
             self.containerMap = childNode.map;
           }
@@ -51790,13 +51979,14 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
 
   if (this.data !== undefined) {
     for (var i = 0; i < 4; i++) {
-      if (this.data.original["addressid" + index] == 0) break;
+      if (this.data.original["addressid" + index] == 0 || this.data.original["addressid" + index] == undefined) break;
       last = this.itemAdress(this.data.original["addressid" + index]);
       containerAdress.appendChild(last);
 
       if (i === 0) {
         var map = MapView_MapView();
         map.activePlanningMap();
+        map.addMapPolygon();
         var address = this.checkAddress[this.data.original["addressid" + index]];
         map.addMoveMarker([address.lng, address.lat], false);
         map.currentMarker.setDraggable(false);
@@ -52090,7 +52280,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
                     var priceUnit = NewRealty_$('div.pizo-new-realty-detruct-content-price-unit', temp);
                     var areaValue = NewRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
                     var areaValueUnit = unit_Zone_all;
-                    inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value);
+                    inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) * 1000;
                   }
                 },
                 attr: {
@@ -52210,7 +52400,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
                   var priceUnit = NewRealty_$('div.pizo-new-realty-detruct-content-price-unit', temp);
                   var areaValue = NewRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
                   var areaValueUnit = unit_Zone_all;
-                  inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value);
+                  inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) * 1000;
                 }
               }
             }, {
@@ -52275,6 +52465,9 @@ NewRealty_NewRealty.prototype.detructView = function () {
               on: {
                 input: function input(event) {
                   this.value = formatNumber(this.value);
+                },
+                blur: function blur(event) {
+                  this.value = reFormatNumber(this.value);
                 }
               }
             }, {
@@ -52283,7 +52476,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
               on: {
                 change: function change(event) {
                   var price = NewRealty_$('input.pizo-new-realty-detruct-content-price-rent', temp);
-                  price.value = reFormatNumber(price.value) * event.lastValue / event.value;
+                  price.value = price.value * event.lastValue / event.value;
                 }
               },
               props: {
@@ -52694,6 +52887,10 @@ NewRealty_NewRealty.prototype.detructView = function () {
 };
 
 NewRealty_NewRealty.prototype.getDataSave = function () {
+  var fitUpdate = 0;
+  if (this.inputFit.values.length !== 0) fitUpdate = this.inputFit.values.reduce(function (a, b) {
+    return a + b;
+  });
   var temp = {
     height: this.inputHeight.value * this.inputUnitHeight.value,
     width: this.inputWidth.value * this.inputUnitWidth.value,
@@ -52702,9 +52899,7 @@ NewRealty_NewRealty.prototype.getDataSave = function () {
     acreage: this.inputZoneAll.value * this.inputUnitZoneAll.value,
     direction: this.direction.value,
     type: this.type.value,
-    fit: this.inputFit.values.reduce(function (a, b) {
-      return a + b;
-    }),
+    fit: fitUpdate,
     roadwidth: this.inputWidthRoad.value * this.inputUnitWidthRoad.value,
     floor: this.inputFloor.value,
     basement: this.inputBasement.value,
@@ -53538,6 +53733,15 @@ ListRealty_ListRealty.prototype.getView = function () {
             }
           },
           child: ['<span>' + "Thêm" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.add();
+            }
+          },
+          child: ['<span>' + "Gộp" + '</span>']
         }]
       }, {
         tag: "div",
@@ -53713,10 +53917,9 @@ ListRealty_ListRealty.prototype.getView = function () {
     }, {
       type: "detail",
       functionClickAll: functionClickMore,
-      icon: "",
       dragElement: false
     }];
-    self.mTable = new tableView(header, self.formatDataRow(value[0]), false, true, 1);
+    self.mTable = new tableView(header, self.formatDataRow(value[0]), true, true, 1);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', self.$view));
   });
@@ -53836,6 +54039,7 @@ ListRealty_ListRealty.prototype.getDataRow = function (data) {
   }
 
   if (data.addressid !== 0) {
+    console.log(this.checkAddress, data.addressid);
     var number = this.checkAddress[data.addressid].addressnumber;
     var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
     var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
@@ -61238,7 +61442,6 @@ var NewAccount = __webpack_require__(211);
 
 
 
-
 var NewAccount_ = dom_Fcore._;
 var NewAccount_$ = dom_Fcore.$;
 
@@ -61581,52 +61784,56 @@ NewAccount_NewAccount.prototype.getView = function (dataParent) {
         //         }
         //     ]
         // },
+        // {
+        //     tag:"div",
+        //     class:"pizo-new-account-container-address",
+        //     child:[
+        //         {
+        //             tag:"div",
+        //             class:"pizo-new-account-container-address-container",
+        //             child:[
+        //                 {
+        //                     tag:"span",
+        //                     class:"pizo-new-account-container-address-container-label",
+        //                     props:{
+        //                         innerHTML:"Địa chỉ"
+        //                     }
+        //                 },
+        //                 {
+        //                     tag: "input",
+        //                     class: ["pizo-new-account-container-address-container-input"],
+        //                     on: {
+        //                         click: function (event) {
+        //                             this.blur();
+        //                             var selfElement = this;
+        //                             var childNode = locationView(function (value) {
+        //                                 selfElement.value = value.input.value;
+        //                                 childRemove.selfRemove();
+        //                             })
+        //                             var childRemove = _({
+        //                                 tag: "modal",
+        //                                 on: {
+        //                                     click: function (event) {
+        //                                         var target = event.target;
+        //                                         while (target !== childNode && target !== childRemove && target !== document.body)
+        //                                             target = target.parentNode;
+        //                                         if (target === childRemove)
+        //                                             childRemove.selfRemove();
+        //                                     }
+        //                                 },
+        //                                 child: [
+        //                                     childNode
+        //                                 ]
+        //                             })
+        //                             self.$view.addChild(childRemove)
+        //                         }
+        //                     }
+        //                 }
+        //             ]
+        //         }
+        //     ]
+        // },
         {
-          tag: "div",
-          "class": "pizo-new-account-container-address",
-          child: [{
-            tag: "div",
-            "class": "pizo-new-account-container-address-container",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-account-container-address-container-label",
-              props: {
-                innerHTML: "Địa chỉ"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-account-container-address-container-input"],
-              on: {
-                click: function click(event) {
-                  this.blur();
-                  var selfElement = this;
-                  var childNode = locationView(function (value) {
-                    selfElement.value = value.input.value;
-                    childRemove.selfRemove();
-                  });
-
-                  var childRemove = NewAccount_({
-                    tag: "modal",
-                    on: {
-                      click: function click(event) {
-                        var target = event.target;
-
-                        while (target !== childNode && target !== childRemove && target !== document.body) {
-                          target = target.parentNode;
-                        }
-
-                        if (target === childRemove) childRemove.selfRemove();
-                      }
-                    },
-                    child: [childNode]
-                  });
-
-                  self.$view.addChild(childRemove);
-                }
-              }
-            }]
-          }]
-        }, {
           tag: "div",
           "class": "pizo-new-account-container-status-position",
           child: [{
@@ -61692,8 +61899,8 @@ NewAccount_NewAccount.prototype.getView = function (dataParent) {
   this.email = NewAccount_$('input.pizo-new-account-container-email-container-input', this.$view);
   this.phone = NewAccount_$('input.pizo-new-account-container-phone-container-input', this.$view);
   this.birthday = NewAccount_$('div.pizo-new-account-container-birthday-container div', this.$view);
-  this.gender = NewAccount_$('div.pizo-new-account-container-gender-container div', this.$view);
-  this.address = NewAccount_$('input.pizo-new-account-container-address-container-input', this.$view);
+  this.gender = NewAccount_$('div.pizo-new-account-container-gender-container div', this.$view); // this.address = $('input.pizo-new-account-container-address-container-input',this.$view);
+
   this.position = NewAccount_$('div.pizo-new-account-selectbox-container-input', this.$view);
   this.status = NewAccount_$('div.pizo-new-account-container-status-container label.absol-switch', this.$view);
   this.permission = NewAccount_$('div.pizo-new-account-container-permission-container label.absol-switch', this.$view);
@@ -61705,8 +61912,8 @@ NewAccount_NewAccount.prototype.getView = function (dataParent) {
     this.email.value = this.data.original.email;
     this.phone.value = this.data.original.phone;
     this.birthday.value = new Date(this.data.original.birthday);
-    this.gender.value = this.data.original.gender;
-    this.address.value = this.data.original.address;
+    this.gender.value = this.data.original.gender; // this.address.value = this.data.original.address;
+
     this.position.value = parseInt(this.data.original.positionid);
     this.status.checked = parseInt(this.data.original.status) ? true : false;
     this.permission.checked = parseInt(this.data.original.permission) ? true : false;
@@ -61723,7 +61930,7 @@ NewAccount_NewAccount.prototype.getDataSave = function () {
     phone: this.phone.value,
     birthday: getGMT(this.birthday.value, new Date().getTimezoneOffset() / -60, true),
     gender: this.gender.value,
-    address: this.address.value,
+    // address:this.address.value,
     positionid: this.position.value,
     status: this.status.checked ? 1 : 0,
     permission: this.permission.checked ? 1 : 0

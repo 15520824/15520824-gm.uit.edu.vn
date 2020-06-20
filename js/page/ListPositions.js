@@ -33,23 +33,6 @@ ListPositions.prototype.constructor = ListPositions;
 ListPositions.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
-    var input = _({
-        tag:"input",
-        class:"quantumWizTextinputPaperinputInput",
-        on:{
-            change:function(){
-                self.mTable.updatePagination(this.value);
-            }
-        },
-        props:{
-            type:"number",
-            autocomplete:"off",
-            min:1,
-            max:200,
-            step:1,
-            value:50
-        }
-    })
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-position-list",
@@ -125,21 +108,6 @@ ListPositions.prototype.getView = function () {
                             }
                         ]
                     },
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-page-number-line",
-                        child: [
-                            input,
-                            {
-                                tag: "span",
-                                class:
-                                    "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
-                                props: {
-                                    innerHTML: "Số dòng"
-                                }
-                            }
-                        ]
-                    }
                 ]
             },
         ]
@@ -148,7 +116,9 @@ ListPositions.prototype.getView = function () {
         tag:"input",
         class:"pizo-list-realty-page-allinput-input",
         style:{
-            marginBottom:"0.71428571428rem"
+            marginBottom:"0.71428571428rem",
+            display: "flex",
+            flexShrink: 0
         },
         props:{
             placeholder:"Tìm kiếm"
@@ -169,27 +139,12 @@ ListPositions.prototype.getView = function () {
     self.titleInput = titleInput;
     var tabContainer = _({
         tag:"div",
-        class:["pizo-list-realty-main-result-control","drag-zone-bg"],
-        style:{
-            width:"40%",
-            display: "inline-block"
-        },
-        child:[
-            tabInput
-        ]
+        class:["pizo-list-realty-main-result-control-child","drag-zone-bg"],
     })
 
     var contentContainer = _({
         tag:"div",
-        class:["pizo-list-realty-main-result-control","drag-zone-bg"],
-        style:{
-            width:"calc(60% - 30px)",
-            display: "inline-block",
-            marginLeft: "30px"
-        },
-        child:[
-            titleInput
-        ]
+        class:["pizo-list-realty-main-result-control-child","drag-zone-bg"],
     })
 
     var docTypeMemuProps,token,functionX;
@@ -329,8 +284,31 @@ ListPositions.prototype.getView = function () {
             tag:"div",
             class:["pizo-list-realty-main"],
             child:[
-                tabContainer,
-                contentContainer
+                {
+                    tag:"div",
+                    class:["pizo-list-realty-main-result-control","drag-zone-bg"],
+                    style:{
+                        flexGrow:0,
+                        flexShrink: 0,
+                        width:"40%"
+                    },
+                    child:[
+                        tabInput,
+                        tabContainer
+                    ]
+                },
+                {
+                    tag:"div",
+                    class:["pizo-list-realty-main-result-control","drag-zone-bg"],
+                    style:{
+                        paddingLeft: "30px"
+                    },
+                    child:[
+                        titleInput,
+                        contentContainer
+                    ]
+                },
+              
             ]   
         })
         );

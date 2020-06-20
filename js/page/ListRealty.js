@@ -91,6 +91,18 @@ ListRealty.prototype.getView = function () {
                             child: [
                                 '<span>' + "Thêm" + '</span>'
                             ]
+                        },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function (evt) {
+                                    self.add();
+                                }
+                            },
+                            child: [
+                                '<span>' + "Gộp" + '</span>'
+                            ]
                         }
                     ]
                 },
@@ -283,10 +295,9 @@ ListRealty.prototype.getView = function () {
         }, {
             type: "detail",
             functionClickAll: functionClickMore,
-            icon: "",
             dragElement: false
         }];
-        self.mTable = new tableView(header, self.formatDataRow(value[0]), false, true, 1);
+        self.mTable = new tableView(header, self.formatDataRow(value[0]), true, true, 1);
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
     });
@@ -306,6 +317,9 @@ ListRealty.prototype.getView = function () {
     this.$view.addChild(_({
         tag: "div",
         class: ["pizo-list-realty-main"],
+        style:{
+            flexDirection: "column"
+        },
         child: [
             this.searchControl,
             tabContainer
@@ -353,12 +367,9 @@ ListRealty.prototype.getDataRow = function (data) {
             structure = "Đất trống";
             break;
         case 2:
-            structure = "Kết cấu";
-            break;
-        case 3:
             structure = "Cấp 4";
             break;
-        case 4:
+        case 3:
             structure = "Sẳn *";
             break;
     }

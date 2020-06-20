@@ -3,9 +3,8 @@
     min-width: 27.1429rem;
     display: inline-block;
     margin-bottom: unset;
-    width: calc(100% - 36px);
+    width: calc(100% - 5px);
     vertical-align: top;
-    height: calc(100% - 105px);
     margin-left: unset;
 }
 
@@ -43,7 +42,6 @@
 }
 
 .pizo-list-plan-main{
-    padding: 20px;
     padding-top: 0;
     padding-right: 10px;
 }

@@ -9,3 +9,15 @@ span.pizo-list-realty-page-allinput-input:empty:before {
 .pizo-list-position-list .sortTable tbody tr.choice td{
     background-color: #BFBFBF;
 }
+
+.pizo-list-realty-main-result-control-child,.pizo-list-realty-main-result-control-child{
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    position: relative;
+}
+
+.pizo-list-realty-main-result-control .pizo-list-realty-main-result-control-child .sortTable th, .pizo-list-realty-main-result-control .sortTableClone th{
+    top:0px;
+}

@@ -910,7 +910,6 @@ tableView.prototype.setArrayFix = function (num, isLeft) {
             isFirst = true;
         }
         isFirst = false;
-        // 
     }
 }
 
@@ -1072,6 +1071,14 @@ tableView.prototype.setVisiableAll = function (arr) {
     }
 }
 
+tableView.prototype.setVisiableAllNoneUpdate = function (arr) {
+    for (var i = 0; i < arr.length; i++) {
+        arr[i].visiable = true;
+        if (arr[i].child !== undefined)
+            this.setVisiableAllNoneUpdate(arr[i].child);
+    }
+}
+
 tableView.prototype.getBodyTable = function (data, index = 0) {
     var temp = this.bodyTable;
     var result = this, k, delta = [], row, cell;
@@ -1091,7 +1098,9 @@ tableView.prototype.getBodyTable = function (data, index = 0) {
             if (tempCheck !== true) {
                 data[i].visiable = false;
                 if (data[i].child !== undefined)
+                {
                     result.getBodyTable(data[i].child);
+                }
                 continue;
             } else {
                 data[i].visiable = undefined;
@@ -1103,6 +1112,11 @@ tableView.prototype.getBodyTable = function (data, index = 0) {
                 if (data[i].child !== undefined)
                     result.getBodyTable(data[i].child);
                 continue;
+            }else if (data[i].visiable === true)
+            {
+                data[i].visiable = undefined;
+                if (data[i].child !== undefined)
+                    result.setVisiableAllNoneUpdate(data[i].child)
             }
         }
         if(index !== 0)
@@ -2271,6 +2285,10 @@ tableView.prototype.dropRow = function (index) {
         // Standard syntax
         element.addEventListener("transitionend", eventEnd);
     })
+}
+
+tableView.prototype.insertColumn = function (index) {
+    
 }
 
 tableView.prototype.changeParent = function (index, rowParent) {

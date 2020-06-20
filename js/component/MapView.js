@@ -2,7 +2,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import '../../css/MapView.css';
 import moduleDatabase from '../component/ModuleDatabase';
-import {getIDCompair,removeAccents} from './FormatFunction';
+import {getIDCompair,removeAccents, formatDate} from './FormatFunction';
 import { ModuleView } from './ModuleView';
 
 var _ = Fcore._;
@@ -701,17 +701,27 @@ MapView.prototype.addMapPolygon = function()
 {
     moduleDatabase.getModule("polygon",["loadPolygon.php","addPolygon.php","updatePOlygon.php","deletePolygon.php"])
     var self = this;
+    if(this.checkMap === undefined)
+    this.checkMap = [];
+    if(this.currentPolygon === undefined)
+    this.currentPolygon = [];
+    if(this.checkLibary === undefined)
+    this.checkLibary = [];
     google.maps.event.addListener(self.map, 'zoom_changed', function() {
         var zoomLevel = self.map.getZoom();
-        if(zoomLevel>18)
+        if(zoomLevel>=20)
         {
             self.enablePolygon = true;
+            new google.maps.event.trigger( self.map, 'center_changed' );
         }else
         {
             self.enablePolygon = false;
+            self.removeMapPolygon();
         }
     });
-    var intLng,cellLng,intLat,cellLat;
+    self.map.setZoom(20);
+    console.log(self.map)
+    var intLng,cellLng,intLat,cellLat,cellDeltaLat,cellDeltaLng;
     google.maps.event.addListener(self.map, "center_changed", function() {
         if(self.enablePolygon == true)
         {
@@ -719,28 +729,48 @@ MapView.prototype.addMapPolygon = function()
             var latitude = center.lat();
             var longitude = center.lng();
             intLng = parseInt(longitude/1);
-            cellLng = Math.ceil(longitude%1/0.0009009009009009009)-1;
+            cellLng = Math.ceil(longitude%1/0.0009009009009009009);
             intLat = parseInt(latitude/1);
-            cellLat = Math.ceil(latitude%1/0.0009009009009009009)-1;
+            cellLat = Math.ceil(latitude%1/0.0009009009009009009);
             cellLng = intLng*10000+cellLng;
             cellLat = intLat*10000+cellLat;
-            moduleDatabase.getModule("polygon").load({cellLng:cellLng,cellLat:cellLat},true,true).then(function(value){
-                for(var i=0;i<value.length;i++)
+            self.removeMapPolygonAround(cellLat,cellLng);
+            for(var m=-2;m<=1;m++)
+            {
+                for(var k=-2;k<=1;k++)
                 {
-                    self.addWKT(value[i]["AsText(`map`)"])
+                    cellDeltaLat = cellLat + m;
+                    cellDeltaLng = cellLng + k;
+                    if(self.checkMap[cellDeltaLat]===undefined||self.checkMap[cellDeltaLat][cellDeltaLng]===undefined)
+                    {
+                        if(self.checkMap[cellDeltaLat]===undefined)
+                            self.checkMap[cellDeltaLat] = [];
+                        if(self.checkMap[cellDeltaLat][cellDeltaLng]===undefined)
+                            self.checkMap[cellDeltaLat][cellDeltaLng] = [];
+                        moduleDatabase.getModule("polygon").load({cellLng:cellDeltaLng,cellLat:cellDeltaLat},true,true).then(function(value){
+                            for(var i=0;i<value.length;i++)
+                            {
+                                self.addWKT(value[i]["AsText(`map`)"],cellLat,cellDeltaLng)
+                            }
+                        })
+                    }else
+                    {
+                        self.setMapPolygon(cellDeltaLat,cellDeltaLng);
+                    }
                 }
-                
-            })
+            }
+            
         }
         
     });
 }
 
-MapView.prototype.addWKT = function(multipolygonWKT) {
+MapView.prototype.addWKT = function(multipolygonWKT,cellLat,cellLng) {
     var wkt = new Wkt.Wkt();
     wkt.read(multipolygonWKT);
-    var toReturn = [];
     var components = wkt.components;
+
+   
     for(var k=0;k<components.length;k++){
         var line = components[k];
         var polygon = new google.maps.Polygon({
@@ -752,10 +782,64 @@ MapView.prototype.addWKT = function(multipolygonWKT) {
             map:this.map,
             geodesic: true
         })
-        toReturn.push(polygon);
+        this.checkMap[cellLat][cellLng].push(polygon);
     }
-        
-    return toReturn;  
+    if(this.checkLibary[cellLat]===undefined)
+    this.checkLibary[cellLat] = [];
+
+    if(this.checkLibary[cellLat][cellLng]!==1)
+    this.currentPolygon.push([cellLat,cellLng]);
+
+    this.checkLibary[cellLat][cellLng] = 1;
+    return this.checkMap[cellLat][cellLng];  
+}
+
+MapView.prototype.setMapPolygon = function(cellLat,cellLng){
+    var arr = this.checkMap[cellLat][cellLng];
+    for(var i =0;i<arr.length;i++)
+    {
+        arr[i].setMap(this.map);
+    }
+    if(this.checkLibary[cellLat]===undefined)
+    this.checkLibary[cellLat] = [];
+    
+    if(this.checkLibary[cellLat][cellLng]!==1)
+    this.currentPolygon.push([cellLat,cellLng]);
+
+    this.checkLibary[cellLat][cellLng] = 1;
+}
+
+MapView.prototype.removeMapPolygon = function(arr){
+    for(var i = this.currentPolygon.length-1;i>=0;i--)
+    {
+        var arr = this.checkMap[this.currentPolygon[i][0]][this.currentPolygon[i][1]];
+        for(var j = 0;j<arr.length;j++)
+        {
+            arr[j].setMap(null);
+        }
+        this.checkLibary[this.currentPolygon[i][0]][this.currentPolygon[i][1]] = undefined;
+        this.currentPolygon.splice(i,1);
+    }
+}
+
+MapView.prototype.removeMapPolygonAround = function(cellLat,cellLng){
+    var currentLat,currentLng;
+    for(var i = this.currentPolygon.length-1;i>=0;i--)
+    {
+        currentLat = this.currentPolygon[i][0];
+        currentLng = this.currentPolygon[i][1];
+        if(Math.abs(currentLat-cellLat)>3||Math.abs(currentLng-cellLng)>3)
+        {
+            var arr = this.checkMap[currentLat][currentLng];
+
+            for(var j = 0;j<arr.length;j++)
+            {
+                arr[j].setMap(null);
+            }
+            this.currentPolygon.splice(i,1);
+            this.checkLibary[currentLat][currentLng] = undefined;
+        }
+    } 
 }
 
 MapView.prototype.activeDetail = function(detailView)
@@ -788,18 +872,29 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
         marker = this.currentMarker;
         self.transition(position,changeInput).then(function (value) {
             self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
-            self.smoothZoom(12, self.map.getZoom());
+            self.smoothZoom(20, self.map.getZoom());
         })
     } else {
+        var image = {
+            url: "../../assets/images/marker-red.png",
+            // This marker is 20 pixels wide by 32 pixels high.
+            scaledSize: new google.maps.Size(24, 24), 
+            // The origin for this image is (0, 0).
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at (0, 32).
+            anchor: new google.maps.Point(12, 12)
+          };
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(position[0], position[1]),
             map: self.map,
             draggable:true,
-            title: "Latitude:" + position[0] + " | Longtitude:" + position[1]
+            icon:image,
+            title: "Latitude:" + position[0] + " | Longtitude:" + position[1],
+            zIndex:2
         });
         this.currentMarker = marker;
         self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
-        self.smoothZoom(12, self.map.getZoom());
+        self.smoothZoom(20, self.map.getZoom());
         if(changeInput){
             self.detailView.long.value = position[0];
             self.detailView.lat.value = position[1];
@@ -808,7 +903,7 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
         marker.addListener("dragend",function(event){
             var result = [event.latLng.lat(), event.latLng.lng()];
             self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
-            self.smoothZoom(12, self.map.getZoom());
+            self.smoothZoom(20, self.map.getZoom());
             if(changeInput){
                 self.detailView.long.value = result[0];
                 self.detailView.lat.value = result[1];

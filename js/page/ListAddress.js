@@ -1,7 +1,7 @@
 import BaseView from '../component/BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/ListAddress.css"
+import "../../css/ListAdress.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import { formatDate, getGMT } from '../component/FormatFunction';
@@ -10,27 +10,27 @@ import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
-import NewPosition from '../component/NewPosition';
+import NewDistrict from '../component/NewDistrict';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function ListAddress() {
+function ListAdress() {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
 }
 
-ListAddress.prototype.setContainer = function(parent)
+ListAdress.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(ListAddress.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-ListAddress.prototype.constructor = ListAddress;
+Object.defineProperties(ListAdress.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+ListAdress.prototype.constructor = ListAdress;
 
-ListAddress.prototype.getView = function () {
+ListAdress.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
@@ -72,7 +72,7 @@ ListAddress.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Quản lý chức vụ"
+                            innerHTML: "Quản lý Tên đường"
                         }
                     },
                     {
@@ -176,7 +176,7 @@ ListAddress.prototype.getView = function () {
     });
     var tabContainer = _({
         tag:"div",
-        class:["pizo-list-realty-main-result-control","drag-zone-bg"],
+        class:["pizo-list-realty-main-result-control","drag-zone-bg","no-animation"],
         child:[
         ]
     })
@@ -233,14 +233,24 @@ ListAddress.prototype.getView = function () {
     }
 
 
-    moduleDatabase.getModule("positions").load().then(function(value){
-        
-        var header = [{ type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, {value:'MS',sort:true,style:{minWidth:"150px",width:"150px"}}, {value:'Tên',sort:true,style:{minWidth:"unset"}},{value: 'Ngày tạo',sort:true,style:{minWidth:"250px",width:"250px"}}, { value:'Ngày cập nhật', sort:true,style:{minWidth:"250px",width:"250px"} },{type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-        
-        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-        tabContainer.addChild(self.mTable);
-        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-        self.listParent.updateItemList();
+    moduleDatabase.getModule("streets").load().then(function(value){
+        moduleDatabase.getModule("wards").load().then(function(listWard){
+            moduleDatabase.getModule("districts").load().then(function(listDistrict){
+                moduleDatabase.getModule("states").load().then(function(listState){
+                self.setListParamDitrict(listDistrict);
+                self.setListParamState(listState);
+                var header = [
+                { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
+                {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
+                {value:'Tên',sort:true,style:{minWidth:"unset"}},
+                {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+                self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+                tabContainer.addChild(self.mTable);
+                self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
+                // self.listParent.updateItemList(listParam);
+            });
+            });
+        });
     });
 
     this.searchControl = this.searchControlContent();
@@ -257,22 +267,40 @@ ListAddress.prototype.getView = function () {
     return this.$view;
 }
 
-ListAddress.prototype.formatDataRow = function(data)
+ListAdress.prototype.setListParamWard = function()
+{
+    this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+    this.listWard = moduleDatabase.getModule("wards").getList("name","id");
+}
+
+
+ListAdress.prototype.setListParamDitrict = function(value)
+{
+    this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+    this.listDistrict = moduleDatabase.getModule("districts").getList("name","id");
+}
+
+ListAdress.prototype.setListParamState = function(value)
+{
+    this.checkState = moduleDatabase.getModule("states").getLibary("id");
+    this.listState = moduleDatabase.getModule("states").getList("name","id");
+    this.isLoaded = true;
+}
+
+ListAdress.prototype.getDataParam = function()
+{
+    return this.listParam;
+}
+
+ListAdress.prototype.formatDataRow = function(data)
 {
     var temp = [];
     var check = [];
     var k = 0;
     for(var i=0;i<data.length;i++)
     {
-        var result = [
-        {},
-        data[i].id,
-        data[i].name,
-        formatDate(data[i].created,true,true,true,true,true),
-        formatDate(data[i].modified,true,true,true,true,true),
-        {}
-        ]
-        result.original = data[i];
+
+        var result = this.getDataRow(data[i]);
         if(check[data[i].parent_id]!==undefined)
         {
             if(check[data[i].parent_id].child === undefined)
@@ -283,22 +311,34 @@ ListAddress.prototype.formatDataRow = function(data)
         temp[k++] = result;
         check[data[i].id] = result;
     }
-    
     return temp;
 }
 
-ListAddress.prototype.formatDataList = function(data){
-    var temp = [{text:"Chức vụ cao nhất",value:0}];
+ListAdress.prototype.getDataRow = function(data)
+{
+    
+    var result = [
+        {},
+        data.id,
+        data.name,
+        {}
+        ]
+        result.original = data;
+    
+    return result;
+}
+
+ListAdress.prototype.formatDataList = function(data){
+    var temp = [{text:"Tất cả",value:0}];
     for(var i = 0;i<data.length;i++)
     {
         temp[i+1] = {text:data[i].name,value:data[i].id};
     }
     return temp;
 }
-
-ListAddress.prototype.searchControlContent = function(){
+ListAdress.prototype.searchControlContent = function(){
     var startDay,endDay,startDay1,endDay1;
-    var self = this;
+
     startDay = _(
         {
             tag: 'calendar-input',
@@ -326,7 +366,6 @@ ListAddress.prototype.searchControlContent = function(){
             },
             on: {
                 changed: function (date) {
-                    
                     startDay.maxDateLimit = date;
                 }
             }
@@ -366,22 +405,6 @@ ListAddress.prototype.searchControlContent = function(){
             }
         }
     )
-
-    self.listParent = _( {
-        tag:"selectmenu",
-        props:{
-            enableSearch:true,
-            items:[
-                {text:"Chức vụ cao nhất",value:0}
-            ]
-        }
-    });
-
-    self.listParent.updateItemList = function()
-    {
-        self.listParent.items = self.formatDataList(self.getDataCurrent());
-    }
-
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -402,20 +425,60 @@ ListAddress.prototype.searchControlContent = function(){
                         child:[
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-district",
+                                class:"pizo-list-realty-main-search-control-row-state-ward",
                                 child:[
                                     {
                                         tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
+                                        class:"pizo-list-realty-main-search-control-row-state-ward-label",
                                         props:{
-                                            innerHTML:"Chức vụ cha"
+                                            innerHTML:"Tỉnh/TP"
                                         }
                                     },
                                     {
                                         tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
+                                        class:"pizo-list-realty-main-search-control-row-state-ward-input",
                                         child:[
-                                            self.listParent
+                                            {
+                                                tag:"selectmenu",
+                                                props:{
+                                                    enableSearch:true,
+                                                    items:[
+                                                        {text:'Thành phố Hồ Chí Minh',id:79},
+                                                        {text:'Thủ đô Hà Nội',id:80}
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+
+                            },
+                            {
+                                tag:"div",
+                                class:"pizo-list-realty-main-search-control-row-district-ward",
+                                child:[
+                                    {
+                                        tag:"span",
+                                        class:"pizo-list-realty-main-search-control-row-district-ward-label",
+                                        props:{
+                                            innerHTML:"Quận/Huyện"
+                                        }
+                                    },
+                                    {
+                                        tag:"div",
+                                        class:"pizo-list-realty-main-search-control-row-district-ward-input",
+                                        child:[
+                                            {
+                                                tag:"selectmenu",
+                                                props:{
+                                                    enableSearch:true,
+                                                    items:[
+                                                        {text:'Quận 1',id:79},
+                                                        {text:'Quận Bình Thạnh',id:80},
+                                                        {text:'Quận Tân Bình',id:81}
+                                                    ]
+                                                }
+                                            }
                                         ]
                                     }
                                 ]
@@ -462,6 +525,15 @@ ListAddress.prototype.searchControlContent = function(){
     temp.content = content;
     content.timestart = startDay;
     content.timeend = endDay;
+    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low',content);
+    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high',content);
+    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input',content);
+    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input',content);
+    content.SN = $('.pizo-list-realty-main-search-control-row-SN input',content);
+    content.TD = $('.pizo-list-realty-main-search-control-row-TD input',content);
+    content.PX = $('.pizo-list-realty-main-search-control-row-PX input',content);
+    content.QH = $('.pizo-list-realty-main-search-control-row-QH input',content);
+    content.HT = $('.pizo-list-realty-main-search-control-row-HT input',content);
 
     temp.show = function()
     {
@@ -493,21 +565,31 @@ ListAddress.prototype.searchControlContent = function(){
     {
         content.timestart = new Date();
         content.timeend = new Date();
-       
+        content.lowprice.value = "";
+        content.highprice.value = "";
+        content.phone.value = "";
+        content.MS.value = "";
+        content.SN.value = "";
+        content.TD.value = "";
+        content.PX.value = "";
+        content.QH.value = "";
+        content.TT.value = "";
+        content.HT.value = 0;
     }
 
   
     return temp;
 }
 
-ListAddress.prototype.getDataCurrent = function()
+
+ListAdress.prototype.getDataCurrent = function()
 {
     return this.getDataChild(this.mTable.data);
 }
 
 
 
-ListAddress.prototype.getDataChild = function(arr)
+ListAdress.prototype.getDataChild = function(arr)
 {
     var self = this;
     var result = [];
@@ -520,123 +602,93 @@ ListAddress.prototype.getDataChild = function(arr)
     return result;
 }
 
-ListAddress.prototype.add = function(parent_id = 0,row)
+ListAdress.prototype.add = function(parent_id = 0,row)
 {
+
+    if(!this.isLoaded)
+        return;
     var self = this;
-    var mNewPosition = new NewPosition(undefined,parent_id);
-    mNewPosition.attach(self.parent);
-    var frameview = mNewPosition.getView(self.getDataCurrent());
+    var mNewDistrict = new NewDistrict(undefined,parent_id);
+    mNewDistrict.attach(self.parent);
+    var frameview = mNewDistrict.getView(self.getDataParam());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.addDB(mNewPosition,row);
+    self.addDB(mNewDistrict,row);
 }
 
-ListAddress.prototype.addDB = function(mNewPosition,row ){
+ListAdress.prototype.addDB = function(mNewDistrict,row ){
     var self = this;
-    mNewPosition.promiseAddDB.then(function(value){
-        moduleDatabase.getModule("positions").add(value).then(function(result){
+    mNewDistrict.promiseAddDB.then(function(value){
+        var phpFile = moduleDatabase.addStatesPHP;
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
+        moduleDatabase.updateData(phpFile,value).then(function(result){
+            
             value.id = result;
             self.addView(value,row);
         })
-        mNewPosition.promiseAddDB = undefined;
+        mNewDistrict.promiseAddDB = undefined;
         setTimeout(function(){
-            if(mNewPosition.promiseAddDB!==undefined)
-            self.addDB(mNewPosition);
+            if(mNewDistrict.promiseAddDB!==undefined)
+            self.addDB(mNewDistrict);
         },10);
     })
 }
 
-ListAddress.prototype.addView = function(value,parent){
+ListAdress.prototype.addView = function(value,parent){
     value.created = getGMT();
     value.modified = getGMT();
-    var result = [
-        {},
-        value.id,
-        value.name,
-        formatDate(value.created,true,true,true,true,true),
-        formatDate(value.modified,true,true,true,true,true),
-        {}
-    ]
-    result.original = value;
-
-    var element = parent;
-        if(value.parent_id == 0)
-        element = this.mTable;
-        else
-        for(var i = 0;i<parent.bodyTable.childNodes.length;i++)
-        {
-            if(parent.bodyTable.childNodes[i].data.original.id==value.parent_id){
-                element = parent.bodyTable.childNodes[i];
-                break;
-            }
-         }
+    var result = this.getDataRow(value);
+    
+    var element = this.mTable;
     element.insertRow(result);
 }
 
-ListAddress.prototype.edit = function(data,parent,index)
+ListAdress.prototype.edit = function(data,parent,index)
 {
+    if(!this.isLoaded)
+        return;
     var self = this;
-    var mNewPosition = new NewPosition(data);
-    mNewPosition.attach(self.parent);
-    var frameview = mNewPosition.getView(self.getDataCurrent());
+    var mNewDistrict = new NewDistrict(data);
+    mNewDistrict.attach(self.parent);
+    var frameview = mNewDistrict.getView(self.getDataParam());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mNewPosition,data,parent,index);
+    self.editDB(mNewDistrict,data,parent,index);
 }
 
-ListAddress.prototype.editDB = function(mNewPosition,data,parent,index){
+ListAdress.prototype.editDB = function(mNewDistrict,data,parent,index){
     var self = this;
-    mNewPosition.promiseEditDB.then(function(value){
+    mNewDistrict.promiseEditDB.then(function(value){
+        var phpFile = moduleDatabase.updateStatesPHP;
+        if(self.phpUpdateContent)
+        phpFile = self.phpUpdateContent;
         value.id = data.original.id;
-        moduleDatabase.getModule("positions").update(value).then(function(result){
+        moduleDatabase.updateData(phpFile,value).then(function(result){
             self.editView(value,data,parent,index);
         })
-        mNewPosition.promiseEditDB = undefined;
+        mNewDistrict.promiseEditDB = undefined;
         setTimeout(function(){
-        if(mNewPosition.promiseEditDB!==undefined)
-            self.editDB(mNewPosition,data,parent,index);
+        if(mNewDistrict.promiseEditDB!==undefined)
+            self.editDB(mNewDistrict,data,parent,index);
         },10);
     })
 }
 
-ListAddress.prototype.editView = function(value,data,parent,index){
-    var isChangeView=false;
+ListAdress.prototype.editView = function(value,data,parent,index){
+    value.created = data.original.created;
     value.modified = getGMT();
-    data.original.name = value.name;
-    data.original.modified = formatDate(value.modified);
-    if(data.original.parent_id!=value.parent_id){
-        isChangeView = true;
-    }
-    data.original.parent_id = value.parent_id;
-
-
-    data[2] = value.name;
-    data[4] = value.modified;
-
+    var data = this.getDataRow(value);
 
     var indexOF = index,element = parent;
     
-    if(isChangeView===true)
-    {
-        var element;
-        if(value.parent_id == 0)
-        element = parent.bodyTable.parentNode;
-        else
-        for(var i = 0;i<parent.bodyTable.childNodes.length;i++)
-        {
-            if(parent.bodyTable.childNodes[i].data.original.id==value.parent_id){
-                element = parent.bodyTable.childNodes[i];
-                break;
-            }
-        }
-        parent.changeParent(index,element);
-    }
     element.updateRow(data,indexOF,true);
-    this.listParent.updateItemList();
 }
 
-ListAddress.prototype.delete = function(data,parent,index)
+ListAdress.prototype.delete = function(data,parent,index)
 {
+    if(!this.isLoaded)
+        return;
     
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
@@ -646,21 +698,24 @@ ListAddress.prototype.delete = function(data,parent,index)
     })
 }
 
-ListAddress.prototype.deleteView = function(parent,index){
+ListAdress.prototype.deleteView = function(parent,index){
     var self = this;
+    var bodyTable = parent.bodyTable;
     parent.dropRow(index).then(function(){
-        self.listParent.updateItemList();
     });
 }
 
-ListAddress.prototype.deleteDB = function(data,parent,index){
+ListAdress.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    moduleDatabase.getModule("positions").delete(phpFile,data).then(function(value){
+    var phpFile = moduleDatabase.deleteStatesPHP;
+    if(self.phpDeleteContent)
+    phpFile = self.phpUpdateContent;
+    moduleDatabase.updateData(phpFile,data).then(function(value){
         self.deleteView(parent,index);
     })
 }
 
-ListAddress.prototype.refresh = function () {
+ListAdress.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -668,7 +723,7 @@ ListAddress.prototype.refresh = function () {
         this.setData(data);
 };
 
-ListAddress.prototype.setData = function (data) {
+ListAdress.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -676,7 +731,7 @@ ListAddress.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-ListAddress.prototype.flushDataToView = function () {
+ListAdress.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -691,8 +746,8 @@ ListAddress.prototype.flushDataToView = function () {
     }
 };
 
-ListAddress.prototype.start = function () {
+ListAdress.prototype.start = function () {
 
 }
 
-export default ListAddress;
+export default ListAdress;

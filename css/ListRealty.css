@@ -72,18 +72,39 @@
     background-color: white;
 }
 
-.pizo-list-realty-main{
+.pizo-list-realty-main,.pizo-list-plan-main{
     margin-left: 1.4286rem;
     margin-right: 0.7143rem;
-    position: relative;
+    position: absolute;
+    height: calc(100% - 50px);
+    width: calc(100% - 30px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: stretch;
+}
+
+.pizo-new-realty-desc{
+    width: 100%;
 }
 
 .pizo-list-realty-main-search-control{
-
+    display: flex;
+    flex-shrink: 0;
 }
 
 .pizo-list-realty-main-result-control{
-    
+    flex-grow: 2;
+    position: relative;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+}
+
+.pizo-list-realty-main-search-control-container{
+    width: 100%;
 }
 
 .pizo-list-realty-main-search-control-row{

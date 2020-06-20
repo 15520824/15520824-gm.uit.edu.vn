@@ -237,16 +237,12 @@ ListStreet.prototype.getView = function () {
         moduleDatabase.getModule("wards").load().then(function(listWard){
             moduleDatabase.getModule("districts").load().then(function(listDistrict){
                 moduleDatabase.getModule("states").load().then(function(listState){
-                self.setListParamWard(listWard);
                 self.setListParamDitrict(listDistrict);
                 self.setListParamState(listState);
                 var header = [
                 { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
                 {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
                 {value:'Tên',sort:true,style:{minWidth:"unset"}},
-                {value:'Phường/Xã',sort:true,style:{minWidth:"200px",width:"200px"}},
-                {value:'Quận/Huyện',sort:true,style:{minWidth:"200px",width:"200px"}},
-                {value:'Tỉnh/Thành phố',sort:true,style:{minWidth:"200px",width:"200px"}},
                 {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
                 self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
                 tabContainer.addChild(self.mTable);
@@ -325,9 +321,6 @@ ListStreet.prototype.getDataRow = function(data)
         {},
         data.id,
         data.name,
-        this.checkWard[parseInt(data.wardid)].name,
-        this.checkDistrict[parseInt(this.checkWard[parseInt(data.wardid)].districtid)].name,
-        this.checkState[parseInt(this.checkDistrict[parseInt(this.checkWard[parseInt(data.wardid)].districtid)].stateid)].name,
         {}
         ]
         result.original = data;

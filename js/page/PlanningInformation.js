@@ -220,6 +220,9 @@ PlanningInformation.prototype.getView = function () {
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-plan-main"],
+            style:{
+                flexDirection: "column"
+            },
             child:[
                 this.searchControl,
                 {
