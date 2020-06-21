@@ -4,6 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/ListRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
+import MergeRealty from '../component/MergeRealty';
 
 import {
     tableView,
@@ -943,6 +944,27 @@ ListRealty.prototype.deleteDB = function (data, parent, index) {
     moduleDatabase.getModule("activehouses").delete(data).then(function (value) {
         self.deleteView(parent, index);
     })
+}
+
+ListRealty.prototype.merge = function(data,parent,index)
+{
+    var self = this;
+    var mMergeRealty = new MergeRealty(data);
+    mMergeRealty.attach(self.parent);
+    var frameview = mMergeRealty.getView();
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.editDB(mMergeRealty, data, parent, index);
+}
+
+ListRealty.prototype.mergeDB = function(mMergeRealty,data,parent,index)
+{
+
+}
+
+ListRealty.prototype.mergeView = function(value, data, parent, index)
+{
+
 }
 
 ListRealty.prototype.refresh = function () {

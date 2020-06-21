@@ -1992,11 +1992,15 @@ NewRealty.prototype.convenientView = function () {
     return temp;
 }
 
-NewRealty.prototype.contactItem = function(data){
+NewRealty.prototype.contactItem = function(data = {
+    name:"",
+    phone:"",
+    note:""
+}){
     var relate = 1;
-    if(data.original.statusphone !== undefined)
+    if(data.statusphone !== undefined)
     {
-        relate = data.original.statusphone;
+        relate = data.statusphone;
     }
     var temp = _({
         tag:"div",
@@ -2017,7 +2021,7 @@ NewRealty.prototype.contactItem = function(data){
                         tag:"input",
                         class:"pizo-new-realty-contact-item-name-input",
                         props:{
-                            value:data.original.name
+                            value:data.name
                         }
                     },
                     {
@@ -2045,7 +2049,8 @@ NewRealty.prototype.contactItem = function(data){
                                 tag:"i",
                                 class:"material-icons",
                                 style:{
-                                    fontSize:"1rem"
+                                    fontSize:"1rem",
+                                    verticalAlign: "middle"
                                 },
                                 props:{
                                     innerHTML:"close"
@@ -2071,7 +2076,7 @@ NewRealty.prototype.contactItem = function(data){
                         class:"pizo-new-realty-contact-item-phone-input",
                         props:{
                             type:"number",
-                            value:data.original.phone
+                            value:data.phone
                         }
                     },
                     {
@@ -2199,125 +2204,6 @@ NewRealty.prototype.getDataRowListContact = function(data){
     return temp;
 }
 
-NewRealty.prototype.functionChoice = function(event, me, index, parent, data, row)
-{
-    var self = this;
-    console.log(self);
-    var arr =  self.getElementsByClassName("choice-list-category");
-    if(arr.length!==0)
-    arr = arr[0];
-    var today  = new Date();
-    if(self.clickTime === undefined)
-    self.clickTime = 0;
-    if(arr == row&&today - self.clickTime< 300){
-        self.selfRemove();
-        self.resolve({event:event, me:me, index:index, parent:parent, data:data, row:row});
-    }
-    self.clickTime = today;
-    if(arr.length!==0)
-    arr.classList.remove("choice-list-category");
-
-    row.classList.add("choice-list-category");
-}
-
-NewRealty.prototype.listLink = function(data){
-    var self = this;
-   
-  
-    var input = _({
-        tag:"input",
-        class:"input-search-list",
-        props:{
-            type:"text",
-            placeholder:"Search"
-        }
-    })
-    var container = _({
-        tag:"div",
-        class:["list-linkChoice-container","absol-single-page-scroller"],
-        child:[
-            {
-                tag:"div",
-                class:"js-stools-container-bar",
-                child:[
-                    {
-                        tag:"div",
-                        class:["btn-wrapper", "input-append"],
-                        child:[
-                            input,
-                            {
-                                tag:"button",
-                                class:"pizo-new-realty-contact-tab-button",
-                                on:{
-                                    click:function(event){
-                                        self.modal.selfRemove();
-                                        var data = {};
-                                        data.original = {
-                                            id:"",
-                                            name:"",
-                                            phone:""
-                                        }
-                                        self.modal.resolve({event:event, data:data});
-                                    }
-                                },
-                                child:[
-                                    {
-                                        tag:"i",
-                                        class:"material-icons",
-                                        style:{
-                                            fontSize:"2rem",
-                                            margin:"auto"
-                                        },
-                                        props:{
-                                            innerHTML:"add"
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    })
-    self.modal = _({
-        tag:"modal",
-        class:"list-linkChoice",
-        on:{
-            click:function(event){
-                var element = event.target;
-                
-                while(!(element.classList.contains("list-linkChoice")||element.classList.contains("list-linkChoice-container")))
-                element = element.parentNode;
-                if(element.classList.contains("list-linkChoice")){
-                    this.selfRemove();
-                    self.modal.reject();
-                }
-            }
-        },
-        child:[
-            container
-        ]
-    })
-
-    var header = [
-        {value:'Tài khoản',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
-        {value:'Họ và tên',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
-        {value:'Số điện thoại',style:{minWidth:"90px",width:"90px"} , functionClickAll: self.functionChoice.bind(self.modal)} , 
-        {value:'Email',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
-        {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"} , functionClickAll: self.functionChoice.bind(self.modal)}, 
-    ];
-    var mTable = new tableView(header, data, false, false, 0);
-    mTable.style.width = "100%";
-    container.appendChild(mTable);
-    mTable.addInputSearch(input);
-    self.modal.promiseSelectList = new Promise(function(resolve,reject){
-        self.modal.resolve = resolve;
-        self.modal.reject = reject;
-    })
-    return self.modal;
-}
-
 NewRealty.prototype.contactView = function () {
     var self = this;
     var temp = _({
@@ -2340,13 +2226,7 @@ NewRealty.prototype.contactView = function () {
                         class:"pizo-new-realty-contact-tab-button",
                         on:{
                             click:function(event){
-                                if(self.isLoaded !== true)
-                                    return;
-                                var x = self.listLink(self.dataAccount);
-                                temp.appendChild(x);
-                                x.promiseSelectList.then(function(value){
-                                    temp.appendChild(self.contactItem(value.data));
-                                })
+                                temp.appendChild(self.contactItem());
                                 
                             }
                         },

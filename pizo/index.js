@@ -28527,7 +28527,7 @@ var resizablelayout = __webpack_require__(64);
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/adapter/SearchStringArrayAdapter.js
 /**
  * @typedef {Object} SearchArrayAdapterOption
- * @property {function} searchFuntion
+ * @property {function} searchfunction
  * 
  * 
  * 
