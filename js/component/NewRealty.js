@@ -1556,7 +1556,6 @@ NewRealty.prototype.detructView = function () {
     this.advanceDetruct2 = $("div.pizo-new-realty-dectruct-content-area-selectbox-child-2",temp);
     this.advanceDetruct3 = $("div.pizo-new-realty-dectruct-content-area-selectbox-child-3",temp);
     this.advanceDetruct4 = $("div.pizo-new-realty-dectruct-content-area-selectbox-child-4",temp);
-    console.log(this.advanceDetruct1,"xxxxxxxxxxxxxxxx")
 
     if(this.data!==undefined)
     {

@@ -258,7 +258,6 @@ function moveAt(clone, pageX, pageY, shiftX, shiftY, trigger, functionCheckZone,
     y -= shiftY;
 
     clone.style.top = y + 'px';
-
     var x = pageX - result.getBoundingClientRect().left;
     x -= shiftX;
 
@@ -323,7 +322,7 @@ function moveElement(event, me, result, index) {
     var height = 112;
     if (result.height !== undefined)
         height = result.height;
-    var clone = result.cloneColumn(index, height, undefined);
+    var clone = result.cloneColumn(index);
     var bg = result.backGround(height, function () {
         if (bg.noAction !== true)
             result.deleteColumn(index);
@@ -364,7 +363,7 @@ function moveElement(event, me, result, index) {
     let shiftX = clone.clientWidth / 2;
     let shiftY = clone.clientHeight / 2;
     moveAt(clone, event.pageX, event.pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result);
-    window.addEventListener('mousemove', trigger = function (event) { onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, result) });
+    window.addEventListener('mousemove', trigger = function (event) { onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, result)});
 
     window.onmouseup = function () {
         bg.isMove = false;
@@ -545,7 +544,7 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical, 
     if (window.mobilecheck())
         return tableViewMobile(header, data);
 
-    var cell, row, value, check = [], bonus, style, dragElement;
+    var cell, row, check = [];
     var checkSpan = [];
     var headerTable = _({
         tag: "thead",
@@ -626,232 +625,13 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical, 
     headerTable.addChild(row);
     result.clone = [];
     var k = 0;
-    var toUpperCase = header.toUpperCase == true ? true : false;
-    var toLowerCase = header.toLowerCase == true ? true : false;
-    var functionClickSort;
+    result.toUpperCase = header.toUpperCase == true ? true : false;
+    result.toLowerCase = header.toLowerCase == true ? true : false;
     for (var i = 0; i < header.length; i++) {
         if (header[i].hidden === false || header[i].hidden === undefined) {
             result.clone[k] = [];
-            if (header[i].value === undefined) {
-                if (typeof header[i] === "object")
-                    value = "";
-                else
-                    value = header[i];
-            }
-            else
-                value = header[i].value;
-            if (toUpperCase)
-                value = value.toUpperCase();
-            if (toLowerCase)
-                value = value.toLowerCase();
-            var functionClick = undefined;
-            switch (header[i].type) {
-                case "check":
-                    check[i] = "check";
-                    bonus = _({
-                        tag: "checkboxbutton",
-                        class: "pizo-checkbox",
-                        on: {
-                            click: function (event) {
-                                for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                                    result.bodyTable.listCheckBox[j].checked = this.checked;
-                                }
-                            }
-                        }
-                    })
-                    result.bodyTable.listCheckBox = [bonus];
-                    break;
-                case "increase":
-                    check[i] = "increase";
-                    break;
-                case "dragzone":
-                    if (dragVertical)
-                        check[i] = "dragzone";
-                    else {
-                        check[i] = "hidden";
-                        continue;
-                    }
-                    break;
-                case "detail":
-                    check[i] = "detail";
-                    var icon = "more";
-                    if (header[i].icon !== undefined)
-                        icon = header[i].icon;
-                    bonus = _({
-                        tag: "i",
-                        class: "material-icons",
-                        style: {
-                            fontSize: "1.4rem",
-                            cursor: "pointer"
-                        },
-                        props: {
-                            innerHTML: icon
-                        }
-                    })
-                    break;
-            }
-            if (header[i].sort === true || header[i].sort === undefined) {
-                functionClickSort = function (event, me, index, dataIndex, row, result) {
-                    var last_sort = document.getElementsByClassName("downgrade");
-                    last_sort = last_sort[0];
-                    me = me.parentNode;
-                    if (last_sort !== me && last_sort !== undefined) {
-                        last_sort.classList.remove("downgrade");
-                    }
-                    var last_sort = document.getElementsByClassName("upgrade");
-                    last_sort = last_sort[0];
-                    if (last_sort !== me && last_sort !== undefined) {
-                        last_sort.classList.remove("upgrade");
-                    }
-                    if (!me.classList.contains("downgrade")) {
-                        sortArray(result.data, index);
-                        me.classList.add("downgrade");
-                        if (me.classList.contains("upgrade"))
-                            me.classList.remove("upgrade");
-                    }
-                    else {
-                        sortArray(result.data, index, false);
-                        me.classList.add("upgrade");
-                        if (me.classList.contains("downgrade"))
-                            me.classList.remove("downgrade");
-                    }
-                    var event = new CustomEvent('sort',{bubbles:true,detail:{event:event,me: me,index: index,dataIndex: dataIndex,row: row,result:result}});
-                    result.dispatchEvent(event);
-                    if (result.paginationElement.noneValue !== true)
-                        result.paginationElement.reActive();
-                    else
-                        result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
-
-                }
-            }
-
-            if (header[i].functionClick !== undefined)
-                functionClick = header[i].functionClick;
-            style = {};
-            if (header[i].style !== undefined)
-                style = header[i].style;
-            dragElement = true;
-            if (header[i].dragElement !== undefined && header[i].dragElement === false)
-                dragElement = false;
-            cell = _({
-                tag: "th",
-                attr: {
-                    role: 'columnheader'
-                },
-                style: style,
-                props: {
-                    id: i
-                },
-                on: {
-                    click: function (index, row, functionClick) {
-                        return function (event) {
-                            event.preventDefault();
-                            if (functionClick !== undefined)
-                                functionClick(event, this, index, row.data, row, result);
-                        }
-                    }(i, row, functionClick),
-                    mousedown: (dragHorizontal && dragElement) ? function (index) {
-                        return function (event) {
-                            event.preventDefault();
-                            var finalIndex;
-                            for (var i = 0; i < result.clone.length; i++) {
-                                if (result.clone[i][0].id == index) {
-                                    finalIndex = i;
-                                    break;
-                                }
-                            }
-                            this.hold = false;
-                            var dom = this;
-                            this.default = event;
-                            this.timeoutID = setTimeout(function () {
-                                dom.hold = true;
-                                moveElement(event, dom, result, finalIndex);
-                            }, 200);
-                        }
-                    }(i) : undefined,
-                    dragstart: (dragHorizontal && dragElement) ? function () {
-                        return false;
-                    } : undefined,
-                    mouseup: function () {
-                        if (this.hold === false) {
-                            this.hold = true;
-                            // this.click();
-                            clearTimeout(this.timeoutID);
-                        }
-                    },
-                    mousemove: (dragHorizontal && dragElement) ? function (index) {
-                        return function (event) {
-                            if (this.hold === false) {
-                                var finalIndex;
-                                for (var i = 0; i < result.clone.length; i++) {
-                                    if (result.clone[i][0].id == index) {
-                                        finalIndex = i;
-                                        break;
-                                    }
-                                }
-                                this.hold = false;
-                                var deltaX = this.default.clientX - event.clientX,
-                                    deltaY = this.default.clientY - event.clientY;
-                                if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
-                                    this.hold = true;
-                                    moveElement(event, this, result, finalIndex);
-                                    clearTimeout(this.timeoutID);
-                                }
-                            }
-                        }
-                    }(i) : undefined,
-                }
-            })
-            if (functionClick !== undefined)
-                cell.style.cursor = "pointer";
-            var childUpDown = _({
-                tag: "div",
-                class: "sort-container",
-                on: {
-                    click: function (index, row, functionClickSort) {
-                        return function (event) {
-                            event.preventDefault();
-                            if (functionClickSort !== undefined)
-                                functionClickSort(event, this, index, row.data, row, result);
-                        }
-                    }(i, row, functionClickSort),
-                },
-                child: [
-                    {
-                        tag: "sort-up",
-                        class: ["arrow_up"],
-                    },
-                    {
-                        tag: "sort-down",
-                        class: ["arrow_down"],
-                    }
-                ]
-            })
-
-            if (header[i].sort === true) {
-                cell.classList.add("has-sort")
-                var tempFunc = function (cellIndex, childUpDown) {
-                    return function () {
-                        var style2 = window.getComputedStyle(childUpDown);
-                        if (cellIndex.style.minWidth == "")
-                            cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
-                    }
-                }(cell, childUpDown);
-                _('attachhook').once('error', tempFunc);
-            }
-
-            if (header[i].element === undefined) {
-                cell.addChild(_({ text: value }));
-            } else {
-                cell.appendChild(data[i][j].element);
-            }
-
-            if (bonus !== undefined) {
-                cell.addChild(bonus);
-                bonus = undefined;
-            }
-            cell.addChild(childUpDown);
-
+            
+            cell = result.getCellHeader(header[i],i)
 
             result.clone[k++].push(cell);
 
@@ -869,6 +649,257 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical, 
     result.checkSpan = checkSpan;
 
     return result;
+}
+
+tableView.prototype.getCellHeader = function(header,i)
+{
+    var value,style,dragElement,cell,bonus;
+    var result = this;
+    var dragHorizontal = result.dragHorizontal;
+    var dragVertical = result.dragVertical;
+    var check = result.check;
+    var toUpperCase = result.toUpperCase;
+    var toLowerCase = result.toLowerCase;
+    var functionClickSort;
+    if (header.value === undefined) {
+        if (typeof header === "object")
+            value = "";
+        else
+            value = header;
+    }
+    else
+        value = header.value;
+    if (toUpperCase)
+        value = value.toUpperCase();
+    if (toLowerCase)
+        value = value.toLowerCase();
+    var functionClick = undefined;
+    switch (header.type) {
+        case "check":
+            check[i] = "check";
+            bonus = _({
+                tag: "checkboxbutton",
+                class: "pizo-checkbox",
+                on: {
+                    click: function (event) {
+                        for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                            result.bodyTable.listCheckBox[j].update(this.checked);
+                        }
+                    }
+                }
+            })
+            bonus.update = function()
+            {
+                for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                    if(result.bodyTable.listCheckBox[j].checked === false)
+                    {
+                        result.bodyTable.listCheckBox[0].checked = false;
+                        return;
+                    }
+                }
+                result.bodyTable.listCheckBox[0].checked = true;
+            }
+            result.bodyTable.listCheckBox = [bonus];
+            break;
+        case "increase":
+            check[i] = "increase";
+            break;
+        case "dragzone":
+            if (dragVertical)
+                check[i] = "dragzone";
+            else {
+                check[i] = "hidden";
+                return;
+            }
+            break;
+        case "detail":
+            check[i] = "detail";
+            var icon = "more";
+            if (header.icon !== undefined)
+                icon = header.icon;
+            bonus = _({
+                tag: "i",
+                class: "material-icons",
+                style: {
+                    fontSize: "1.4rem",
+                    cursor: "pointer",
+                    verticalAlign: "bottom"
+                },
+                props: {
+                    innerHTML: icon
+                }
+            })
+            break;
+    }
+    if (header.sort === true || header.sort === undefined) {
+        functionClickSort = function (event, me, index, dataIndex, row, result) {
+            var last_sort = document.getElementsByClassName("downgrade");
+            last_sort = last_sort[0];
+            me = me.parentNode;
+            if (last_sort !== me && last_sort !== undefined) {
+                last_sort.classList.remove("downgrade");
+            }
+            var last_sort = document.getElementsByClassName("upgrade");
+            last_sort = last_sort[0];
+            if (last_sort !== me && last_sort !== undefined) {
+                last_sort.classList.remove("upgrade");
+            }
+            if (!me.classList.contains("downgrade")) {
+                sortArray(result.data, index);
+                me.classList.add("downgrade");
+                if (me.classList.contains("upgrade"))
+                    me.classList.remove("upgrade");
+            }
+            else {
+                sortArray(result.data, index, false);
+                me.classList.add("upgrade");
+                if (me.classList.contains("downgrade"))
+                    me.classList.remove("downgrade");
+            }
+            var event = new CustomEvent('sort',{bubbles:true,detail:{event:event,me: me,index: index,dataIndex: dataIndex,row: row,result:result}});
+            result.dispatchEvent(event);
+            if (result.paginationElement.noneValue !== true)
+                result.paginationElement.reActive();
+            else
+                result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
+
+        }
+    }
+
+    if (header.functionClick !== undefined)
+        functionClick = header.functionClick;
+    style = {};
+    if (header.style !== undefined)
+        style = header.style;
+    dragElement = true;
+    if (header.dragElement !== undefined && header.dragElement === false)
+        dragElement = false;
+    cell = _({
+        tag: "th",
+        attr: {
+            role: 'columnheader'
+        },
+        style: style,
+        props: {
+            id: i
+        },
+        on: {
+            click: function (index, functionClick) {
+                return function (event) {
+                    event.preventDefault();
+                    if (functionClick !== undefined)
+                    {
+                        var row = cell.parentNode;
+                        functionClick(event, this, index, row.data, row, result);
+                    }
+                       
+                }
+            }(i, functionClick),
+            mousedown: (dragHorizontal && dragElement) ? function (index) {
+                return function (event) {
+                    event.preventDefault();
+                    var finalIndex;
+                    for (var i = 0; i < result.clone.length; i++) {
+                        if (result.clone[i][0].id == index) {
+                            finalIndex = i;
+                            break;
+                        }
+                    }
+                    this.hold = false;
+                    var dom = this;
+                    this.default = event;
+                    this.timeoutID = setTimeout(function () {
+                        dom.hold = true;
+                        moveElement(event, dom, result, finalIndex);
+                    }, 200);
+                }
+            }(i) : undefined,
+            dragstart: (dragHorizontal && dragElement) ? function () {
+                return false;
+            } : undefined,
+            mouseup: function () {
+                if (this.hold === false) {
+                    this.hold = true;
+                    // this.click();
+                    clearTimeout(this.timeoutID);
+                }
+            },
+            mousemove: (dragHorizontal && dragElement) ? function (index) {
+                return function (event) {
+                    if (this.hold === false) {
+                        var finalIndex;
+                        for (var i = 0; i < result.clone.length; i++) {
+                            if (result.clone[i][0].id == index) {
+                                finalIndex = i;
+                                break;
+                            }
+                        }
+                        this.hold = false;
+                        var deltaX = this.default.clientX - event.clientX,
+                            deltaY = this.default.clientY - event.clientY;
+                        if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
+                            this.hold = true;
+                            moveElement(event, this, result, finalIndex);
+                            clearTimeout(this.timeoutID);
+                        }
+                    }
+                }
+            }(i) : undefined,
+        }
+    })
+    if (functionClick !== undefined)
+        cell.style.cursor = "pointer";
+    var childUpDown = _({
+        tag: "div",
+        class: "sort-container",
+        on: {
+            click: function (index, functionClickSort) {
+                return function (event) {
+                    event.preventDefault();
+                    if (functionClickSort !== undefined)
+                    {
+                        var row = cell.parentNode;
+                        functionClickSort(event, this, index, row.data, row, result);
+                    }
+                }
+            }(i, functionClickSort),
+        },
+        child: [
+            {
+                tag: "sort-up",
+                class: ["arrow_up"],
+            },
+            {
+                tag: "sort-down",
+                class: ["arrow_down"],
+            }
+        ]
+    })
+
+    if (header.sort === true) {
+        cell.classList.add("has-sort")
+        var tempFunc = function (cellIndex, childUpDown) {
+            return function () {
+                var style2 = window.getComputedStyle(childUpDown);
+                if (cellIndex.style.minWidth == "")
+                    cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
+            }
+        }(cell, childUpDown);
+        _('attachhook').once('error', tempFunc);
+    }
+
+    if (header.element === undefined) {
+        cell.addChild(_({ text: value }));
+    } else {
+        cell.appendChild(data[i][j].element);
+    }
+
+    if (bonus !== undefined) {
+        cell.addChild(bonus);
+        bonus = undefined;
+    }
+    cell.addChild(childUpDown);
+    return cell;
 }
 
 tableView.prototype.checkLongRow = function (index) {
@@ -1801,25 +1832,37 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
                 class: "pizo-checkbox",
                 on: {
                     click: function (event) {
-                        if (result.bodyTable.listCheckBox !== undefined) {
-                            if (this.checked === false)
-                                result.bodyTable.listCheckBox[0].checked = false;
-                            else {
-                                if (result.bodyTable.listCheckBox[0].checked === false)
-                                    for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                                        if (result.bodyTable.listCheckBox[j].checked === false) {
-                                            j--;
-                                            break;
+                            if (result.bodyTable.listCheckBox !== undefined) {
+                                if (this.checked === false)
+                                    result.bodyTable.listCheckBox[0].checked = false;
+                                else {
+                                    if (result.bodyTable.listCheckBox[0].checked === false)
+                                        for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                                            if (result.bodyTable.listCheckBox[j].checked === false) {
+                                                j--;
+                                                break;
+                                            }
                                         }
+                                    if (j === result.bodyTable.listCheckBox.length) {
+                                        result.bodyTable.listCheckBox[0].checked = true;
                                     }
-                                if (j === result.bodyTable.listCheckBox.length) {
-                                    result.bodyTable.listCheckBox[0].checked = true;
                                 }
-                            }
+                            this.update();
                         }
-                    }
+                    } 
                 }
-            })
+            });
+            bonus.update = function(checked)
+            {
+                if(checked==undefined)
+                dataOrigin.value = this.checked;
+                else{
+                    dataOrigin.value = checked;
+                    this.checked = checked;
+                }
+            }
+            if(dataOrigin.value===true)
+            bonus.checked = dataOrigin.value;
             if (result.bodyTable.listCheckBox !== undefined)
                 result.bodyTable.listCheckBox.push(bonus);
             break;
@@ -1912,8 +1955,8 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     cell.addChild(container);
     cell.checkLeft();
 
-
     if (data.element === undefined) {
+        if(this.check[j]!=="dragzone"&&this.check[j]!=="check"&&this.check[j]!=="deltail")
         container.addChild(_({ text: value }))
 
     } else {
@@ -1973,7 +2016,10 @@ tableView.prototype.updateTable = function (header, data = [], dragHorizontal, d
     this.bodyTable = temp;
     result.childrenNodes = [];
     result.getBodyTable(data, index);
-
+    if(temp.listCheckBox[0]!==undefined)
+    {
+        temp.listCheckBox[0].update();
+    }
     this.checkSpan = checkSpan;
     this.data = data;
 }
@@ -2287,8 +2333,50 @@ tableView.prototype.dropRow = function (index) {
     })
 }
 
-tableView.prototype.insertColumn = function (index) {
+tableView.prototype.insertColumn = function (index, insertBefore = -1) {
+    var current=[];
+    var cell,cellHeader;
+    delete this.header[index].hidden;
+    this.check[index] = this.header[index].type;
+    cellHeader = this.getCellHeader(this.header[index],index);
     
+    var currentClone;
+    if(insertBefore===-1)
+    {
+        this.headerTable.childNodes[0].appendChild(cellHeader);
+        current.push(cellHeader);
+        this.clone.push(current);
+    }
+    else
+    {
+        if(this.clone.length<insertBefore)
+        {
+            console.log("index insert > current index");
+            return;
+        }else
+        currentClone = this.clone[insertBefore];
+        this.headerTable.childNodes[0].insertBefore(cellHeader,this.clone[insertBefore][0]);
+        this.clone.splice(insertBefore-1,0,current);
+    }
+    var k = 0;
+    for(var i = 0;i<this.childrenNodes.length;i++)
+    {
+        cell = this.getCell(this.childrenNodes[i].data[index],i,index,this.clone[this.clone.length-1][0].id+1,this.checkSpan,this.childrenNodes[i]);
+        current.push(cell);
+        if(insertBefore===-1)
+        this.childrenNodes[i].appendChild(cell);
+        else
+        {
+            if(this.childNodes[i]===currentClone[k])
+            {
+                
+            }
+        }
+        if (this.childrenNodes[i].childrenNodes.length !== 0) {
+            this.childrenNodes[i].insertColumn(index,insertBefore);
+        }
+        k++;
+    }
 }
 
 tableView.prototype.changeParent = function (index, rowParent) {
@@ -2530,6 +2618,7 @@ tableView.prototype.backGround = function (height, callback, index) {
 
 
 tableView.prototype.deleteColumn = function (index) {
+    this.header[index].hidden = true;
     for (var i = 0; i < this.clone[index].length; i++) {
         this.clone[index][i].selfRemove();
     }
@@ -2541,14 +2630,13 @@ tableView.prototype.deleteColumn = function (index) {
     }
 }
 
-tableView.prototype.cloneColumn = function (index, height, isFull = false) {
+tableView.prototype.cloneColumn = function (index, isFull = false) {
     var clone = this.clone[index][0].cloneNode(true);
     clone.style.width = this.clone[index][0].offsetWidth - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
     clone.style.height = this.clone[index][0].offsetHeight - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
     var headerTable = _({
         tag: "thead"
     });
-    var cell;
     headerTable.addChild(_({
         tag: "tr",
         child: [
@@ -2671,6 +2759,7 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
         },
         on: {
             mouseover: isShow ? function () {
+                console.log(this.parentNode.isMove)
                 if (this.parentNode.isMove === false) {
                     self.moveColumn(self.clone, colum1, colum2, index)
                 }
@@ -2960,11 +3049,22 @@ export function tableViewMobile(header = [], data = []) {
                         on: {
                             click: function (event) {
                                 for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                                    result.bodyTable.listCheckBox[j].checked = this.checked;
+                                    result.bodyTable.listCheckBox[j].update(this.checked);
                                 }
                             }
                         }
                     })
+                    bonus.update = function()
+                    {
+                        for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                            if(result.bodyTable.listCheckBox[j].checked === false)
+                            {
+                                result.bodyTable.listCheckBox[0].checked = false;
+                                return;
+                            }
+                        }
+                        result.bodyTable.listCheckBox[0].checked = true;
+                    }
                     result.bodyTable.listCheckBox = [bonus];
                     break;
                 case "increase":
@@ -2988,7 +3088,8 @@ export function tableViewMobile(header = [], data = []) {
                         class: "material-icons",
                         style: {
                             fontSize: "1.4rem",
-                            cursor: "pointer"
+                            cursor: "pointer",
+                            verticalAlign: "bottom"
                         },
                         props: {
                             innerHTML: icon
@@ -3049,9 +3150,12 @@ export function tableViewMobile(header = [], data = []) {
                         return function (event) {
                             event.preventDefault();
                             if (functionClick !== undefined)
+                            {
+                                row = this.parentNode;
                                 functionClick(event, this, index, result, row.data, row);
+                            }
                         }
-                    }(i, row, functionClick),
+                    }(i, functionClick),
                     mousedown: dragHorizontal ? function (index) {
                         return function (event) {
                             event.preventDefault();

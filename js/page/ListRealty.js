@@ -59,6 +59,43 @@ ListRealty.prototype.getView = function () {
     if (window.mobilecheck()) {
         allinput.placeholder = "Tìm bất động sản"
     }
+    var saveButton = _({
+        tag: "button",
+        class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+        on: {
+            click: function (evt) {
+                self.add();
+            }
+        },
+        child: [
+            '<span>' + "Thêm" + '</span>'
+        ]
+    });
+    var mergeButton = _({
+        tag: "button",
+        class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+        on: {
+            click: function (evt) {
+               
+                if(this.currentMerge === true)
+                {
+                    self.merge();
+                    this.currentMerge = undefined;
+                }else
+                {
+                    saveButton.style.display = "none";
+                    this.childNodes[0].innerHTML = "Xong";
+                    self.mTable.deleteColumn(0);
+                    self.mTable.insertColumn(1);
+                    this.currentMerge = true;
+                }
+            }
+        },
+        child: [
+            '<span>' + "Gộp" + '</span>'
+        ]
+    })
+    
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
@@ -81,30 +118,8 @@ ListRealty.prototype.getView = function () {
                                 '<span>' + "Đóng" + '</span>'
                             ]
                         },
-                        {
-                            tag: "button",
-                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
-                            on: {
-                                click: function (evt) {
-                                    self.add();
-                                }
-                            },
-                            child: [
-                                '<span>' + "Thêm" + '</span>'
-                            ]
-                        },
-                        {
-                            tag: "button",
-                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
-                            on: {
-                                click: function (evt) {
-                                    self.add();
-                                }
-                            },
-                            child: [
-                                '<span>' + "Gộp" + '</span>'
-                            ]
-                        }
+                        saveButton,
+                        mergeButton
                     ]
                 },
                 {
@@ -233,7 +248,13 @@ ListRealty.prototype.getView = function () {
         var header = [{
             type: "dragzone",
             dragElement: false
-        }, {
+        }, 
+        {
+            type: "check",
+            dragElement: false,
+            hidden:true
+        }, 
+        {
             type: "increase",
             value: "#"
         }, {
@@ -251,7 +272,7 @@ ListRealty.prototype.getView = function () {
         }, {
             value: 'Tỉnh/TP'
         }, {
-            value: 'Ghi chú',
+            value: 'Ghi chú'
         }, {
             value: 'Ngang',
             sort: true,
@@ -416,7 +437,6 @@ ListRealty.prototype.getDataRow = function (data) {
     }
     if(data.addressid!==0)
     {
-        console.log(this.checkAddress,data.addressid)
         var number = this.checkAddress[data.addressid].addressnumber;
         var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
         var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
@@ -427,7 +447,9 @@ ListRealty.prototype.getDataRow = function (data) {
         var number = street = ward = district = state = "";
     }
    
-    var result = [{},
+    var result = [
+        {},
+        {},
         {},
         {
             value: data.id,
