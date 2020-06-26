@@ -262,9 +262,8 @@ NewRealty.prototype.descViewImageThumnail = function (dataImage, index, promiseL
     return temp;
 }
 
-NewRealty.prototype.itemAdress = function (addressid = 0) {
-
-
+NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
+{
     var self = this;
     var text = _({ text: "Địa chỉ" });
     var important = _({
@@ -297,7 +296,89 @@ NewRealty.prototype.itemAdress = function (addressid = 0) {
                         var childNode = locationView(function (value) {
                             selfElement.value = value.input.value;
                             temp.data = childNode.getDataCurrent();
-                            temp.selfRemoveChild(value.input.value, childNode);
+                            childRemove.selfRemove();
+
+                        },temp.data)
+                        childNode.addLatLng();
+                        var childRemove = _({
+                            tag: "modal",
+                            on: {
+                                click: function (event) {
+                                    var target = event.target;
+                                    while (target !== childNode && target !== childRemove && target !== document.body)
+                                        target = target.parentNode;
+                                    if (target === childRemove)
+                                        childRemove.selfRemove();
+                                }
+                            },
+                            child: [
+                                childNode
+                            ]
+                        })
+                        temp.appendChild(childRemove)
+                    }
+                }
+            }
+        ]
+    })
+
+    if(addressid!==0)
+    {
+        var number = this.checkAddress[addressid].addressnumber;
+        var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
+        var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
+        var district = this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name;
+        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
+        $("input.pizo-new-realty-desc-detail-1-row-input",temp).value = number+" "+street+", "+ward+", "+district+", "+state;
+        temp.data = {
+            id:addressid,
+            number:this.checkAddress[addressid].addressnumber,
+            street:this.checkStreet[this.checkAddress[addressid].streetid].name+"_"+this.checkAddress[addressid].streetid,
+            ward:this.checkWard[this.checkAddress[addressid].wardid].name+"_"+this.checkAddress[addressid].wardid,
+            district:this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name+"_"+this.checkWard[this.checkAddress[addressid].wardid].districtid,
+            state:this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name+"_"+this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid,
+            lng:lng,
+            lat:lat,
+        }
+    }
+    return temp;
+}
+
+NewRealty.prototype.itemAdressOld = function(addressid = 0)
+{
+    var self = this;
+    var text = _({ text: "Địa chỉ cũ" });
+    var important = _({
+        tag: "span",
+        class: "pizo-new-realty-location-detail-row-label-important",
+        props: {
+            innerHTML: "*"
+        }
+    });
+    var temp = _({
+        tag: "div",
+        class: ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+        child: [
+            {
+                tag: "span",
+                class: "pizo-new-realty-desc-detail-1-row-label",
+                child: [
+                    text,
+                    important
+                ]
+
+            },
+            {
+                tag: "input",
+                class: ["pizo-new-realty-desc-detail-1-row-input"],
+                on: {
+                    click: function (event) {
+                        console.log("xxxxxxxxxxxxxxx");
+                        this.blur();
+                        var selfElement = this;
+                        var childNode = locationView(function (value) {
+                            selfElement.value = value.input.value;
+                            temp.data = childNode.getDataCurrent();
                             childRemove.selfRemove();
 
                         },temp.data)
@@ -322,98 +403,6 @@ NewRealty.prototype.itemAdress = function (addressid = 0) {
             }
         ]
     })
-    temp.label = text;
-    temp.important = important;
-    temp.updateIndex = function (index) {
-        temp.index = index;
-        if (index == 0)
-        {
-            index = "";
-        }else
-        temp.important.style.display = "none";
-            
-        temp.label.data = "Địa chỉ " + index;
-    }
-    temp.parentUpdateIndex = function () {
-        var k = 0;
-        for (var i = 0; i < temp.parentNode.childNodes.length; i++) {
-            if (!temp.parentNode.childNodes[i].classList.contains("adressItemCheck"))
-                return;
-            temp.parentNode.childNodes[i].updateIndex(k++);
-        }
-    }
-    temp.selfRemoveChild = function (value,childNode) {
-        temp.value = value;
-    
-        var next = temp;
-        while (next.nextSibling!==null)
-            next = next.nextSibling;
-        if (value === "") {
-            
-            switch (temp.index) {
-                case undefined:
-                case 0:
-                    if (temp.nextSibling.classList.contains("adressItemCheck")&&(temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
-                        temp.nextSibling.selfRemove();
-                    }
-                    var containerMap = _({
-                        tag: "div"
-                    })
-                    self.containerMap.parentNode.replaceChild(containerMap, self.containerMap);
-                    self.containerMap = containerMap;
-                    break;
-                case 1:
-                case 2:
-                    if (next !== temp){
-                        if (next.value === "" || next.value === undefined) {
-                            var prev = temp.previousSibling;
-                            temp.selfRemove();
-                            prev.parentUpdateIndex();
-    
-                        } else {
-                            temp.parentNode.insertBefore(temp, next.nextSibling);
-                            temp.parentUpdateIndex();
-                        }
-                    }
-                    break;
-                case 3:
-                    break;
-
-            }
-            return true;
-        } else {
-            switch(temp.index)
-            {
-                case undefined:
-                case 0:
-                    if (childNode.map.currentMarker !== undefined) {
-                        childNode.map.currentMarker.setDraggable(false);
-                        var latLng = childNode.map.currentMarker.getPosition();
-                        childNode.map.map.setCenter(latLng);
-                        self.containerMap.parentNode.replaceChild(childNode.map, self.containerMap);
-                        self.containerMap = childNode.map;
-                    }
-                    if(next === temp)
-                    {
-                        temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
-                        temp.parentUpdateIndex();
-                    }
-                    break;
-                case 1:
-                case 2:
-                    if(next === temp)
-                    {
-                        temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
-                        temp.parentUpdateIndex();
-                    }
-                    break;
-            }
-            
-            return false;
-        }
-        
-    }
-    this.inputAdress = $('input.pizo-new-realty-desc-detail-1-row-input',temp);
     if(addressid!==0)
     {
         var number = this.checkAddress[addressid].addressnumber;
@@ -428,13 +417,185 @@ NewRealty.prototype.itemAdress = function (addressid = 0) {
             street:this.checkStreet[this.checkAddress[addressid].streetid].name+"_"+this.checkAddress[addressid].streetid,
             ward:this.checkWard[this.checkAddress[addressid].wardid].name+"_"+this.checkAddress[addressid].wardid,
             district:this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name+"_"+this.checkWard[this.checkAddress[addressid].wardid].districtid,
-            state:this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name+"_"+this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid,
-            lng:this.checkAddress[addressid].lng,
-            lat:this.checkAddress[addressid].lat,
+            state:this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name+"_"+this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid
         }
     }
     return temp;
 }
+
+// NewRealty.prototype.itemAdress = function (addressid = 0) {
+
+
+//     var self = this;
+//     var text = _({ text: "Địa chỉ" });
+//     var important = _({
+//         tag: "span",
+//         class: "pizo-new-realty-location-detail-row-label-important",
+//         props: {
+//             innerHTML: "*"
+//         }
+//     });
+//     var temp = _({
+//         tag: "div",
+//         class: ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+//         child: [
+//             {
+//                 tag: "span",
+//                 class: "pizo-new-realty-desc-detail-1-row-label",
+//                 child: [
+//                     text,
+//                     important
+//                 ]
+
+//             },
+//             {
+//                 tag: "input",
+//                 class: ["pizo-new-realty-desc-detail-1-row-input"],
+//                 on: {
+//                     click: function (event) {
+//                         this.blur();
+//                         var selfElement = this;
+//                         var childNode = locationView(function (value) {
+//                             selfElement.value = value.input.value;
+//                             temp.data = childNode.getDataCurrent();
+//                             temp.selfRemoveChild(value.input.value, childNode);
+//                             childRemove.selfRemove();
+
+//                         },temp.data)
+//                         var childRemove = _({
+//                             tag: "modal",
+//                             on: {
+//                                 click: function (event) {
+//                                     var target = event.target;
+//                                     while (target !== childNode && target !== childRemove && target !== document.body)
+//                                         target = target.parentNode;
+//                                     if (target === childRemove)
+//                                         childRemove.selfRemove();
+//                                 }
+//                             },
+//                             child: [
+//                                 childNode
+//                             ]
+//                         })
+//                         temp.appendChild(childRemove)
+//                     }
+//                 }
+//             }
+//         ]
+//     })
+//     temp.label = text;
+//     temp.important = important;
+//     temp.updateIndex = function (index) {
+//         temp.index = index;
+//         if (index == 0)
+//         {
+//             index = "";
+//         }else
+//         temp.important.style.display = "none";
+            
+//         temp.label.data = "Địa chỉ " + index;
+//     }
+//     temp.parentUpdateIndex = function () {
+//         var k = 0;
+//         for (var i = 0; i < temp.parentNode.childNodes.length; i++) {
+//             if (!temp.parentNode.childNodes[i].classList.contains("adressItemCheck"))
+//                 return;
+//             temp.parentNode.childNodes[i].updateIndex(k++);
+//         }
+//     }
+//     temp.selfRemoveChild = function (value,childNode) {
+//         temp.value = value;
+    
+//         var next = temp;
+//         while (next.nextSibling!==null)
+//             next = next.nextSibling;
+//         if (value === "") {
+            
+//             switch (temp.index) {
+//                 case undefined:
+//                 case 0:
+//                     if (temp.nextSibling.classList.contains("adressItemCheck")&&(temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
+//                         temp.nextSibling.selfRemove();
+//                     }
+//                     var containerMap = _({
+//                         tag: "div"
+//                     })
+//                     self.containerMap.parentNode.replaceChild(containerMap, self.containerMap);
+//                     self.containerMap = containerMap;
+//                     break;
+//                 case 1:
+//                 case 2:
+//                     if (next !== temp){
+//                         if (next.value === "" || next.value === undefined) {
+//                             var prev = temp.previousSibling;
+//                             temp.selfRemove();
+//                             prev.parentUpdateIndex();
+    
+//                         } else {
+//                             temp.parentNode.insertBefore(temp, next.nextSibling);
+//                             temp.parentUpdateIndex();
+//                         }
+//                     }
+//                     break;
+//                 case 3:
+//                     break;
+
+//             }
+//             return true;
+//         } else {
+//             switch(temp.index)
+//             {
+//                 case undefined:
+//                 case 0:
+//                     if (childNode.map.currentMarker !== undefined) {
+//                         childNode.map.currentMarker.setDraggable(false);
+//                         var latLng = childNode.map.currentMarker.getPosition();
+//                         childNode.map.map.setCenter(latLng);
+//                         self.containerMap.parentNode.replaceChild(childNode.map, self.containerMap);
+//                         self.containerMap = childNode.map;
+//                     }
+//                     if(next === temp)
+//                     {
+//                         temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+//                         temp.parentUpdateIndex();
+//                     }
+//                     break;
+//                 case 1:
+//                 case 2:
+//                     if(next === temp)
+//                     {
+//                         temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+//                         temp.parentUpdateIndex();
+//                     }
+//                     break;
+//             }
+            
+//             return false;
+//         }
+        
+//     }
+//     this.inputAdress = $('input.pizo-new-realty-desc-detail-1-row-input',temp);
+//     if(addressid!==0)
+//     {
+//         var number = this.checkAddress[addressid].addressnumber;
+//         var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
+//         var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
+//         var district = this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name;
+//         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
+//         $("input.pizo-new-realty-desc-detail-1-row-input",temp).value = number+" "+street+", "+ward+", "+district+", "+state;
+//         temp.data = {
+//             id:addressid,
+//             number:this.checkAddress[addressid].addressnumber,
+//             street:this.checkStreet[this.checkAddress[addressid].streetid].name+"_"+this.checkAddress[addressid].streetid,
+//             ward:this.checkWard[this.checkAddress[addressid].wardid].name+"_"+this.checkAddress[addressid].wardid,
+//             district:this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name+"_"+this.checkWard[this.checkAddress[addressid].wardid].districtid,
+//             state:this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name+"_"+this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid,
+//             lng:this.checkAddress[addressid].lng,
+//             lat:this.checkAddress[addressid].lat,
+//         }
+//     }
+//     return temp;
+// }
 
 NewRealty.prototype.descViewdetail = function () {
     var self = this;
@@ -444,44 +605,32 @@ NewRealty.prototype.descViewdetail = function () {
             marginBottom:"10px"
         }
     });
-    var index = "";
-    var last;
     if(this.data!==undefined)
     {
-        for(var i = 0;i<4;i++)
-        {      
-            if(this.data.original["addressid"+index]==0||this.data.original["addressid"+index]==undefined)
-            break;
-            last = this.itemAdress(this.data.original["addressid"+index])
-            containerAdress.appendChild(last);
-            if(i===0)
-            {
-                var map = MapView();
-                map.activePlanningMap();
-                map.addMapPolygon();
-                var address = this.checkAddress[this.data.original["addressid"+index]];
-                map.addMoveMarker([address.lng,address.lat],false);
-                map.currentMarker.setDraggable(false);
-                this.containerMap.parentNode.replaceChild(map, this.containerMap);
-                this.containerMap = map;
-            }
-            index = i+2;
-        }
-    }
-    if(i == undefined||i<3)
+        var addressCurrent = this.itemAdress(this.data.original.addressid,this.data.original.lat,this.data.original.lng)
+        containerAdress.appendChild(addressCurrent);
+        var map = MapView();
+        map.activePlanningMap();
+        map.addMoveMarker([this.data.original.lng,this.data.original.lat],false);
+        map.currentMarker.setDraggable(false);
+        this.containerMap.parentNode.replaceChild(map, this.containerMap);
+        this.containerMap = map;
+        var addressOld = this.itemAdressOld(this.data.original.addressid_old)
+        containerAdress.appendChild(addressOld);
+    }else
     {
-        last = this.itemAdress();
-        containerAdress.appendChild(last);
-        if(i===undefined)
-        {
-            var map = MapView();
-            map.activePlanningMap();
-            this.containerMap.parentNode.replaceChild(map, this.containerMap);
-            this.containerMap = map;
-        }
+        
+        var addressCurrent = this.itemAdress();
+        containerAdress.appendChild(addressCurrent);
+        var map = MapView();
+        map.activePlanningMap();
+        this.containerMap.parentNode.replaceChild(map, this.containerMap);
+        this.containerMap = map;
+        var addressOld = this.itemAdressOld();
+        containerAdress.appendChild(addressOld);
     }
-    
-    last.parentUpdateIndex();
+
+   
     var temp = _({
         tag: "div",
         class: ["pizo-new-realty-desc-detail", "pizo-new-realty-dectruct-content-area-size-zone"],
@@ -620,6 +769,10 @@ NewRealty.prototype.descViewdetail = function () {
     this.inputLease = $('div.pizo-new-realty-desc-detail-row-menu-2-checkbox',temp);
     this.inputSell = $('div.pizo-new-realty-desc-detail-row-menu-1-checkbox',temp);
     this.inputContent = $('textarea.pizo-new-realty-desc-detail-row-input',temp);
+    
+    this.addressCurrent = addressCurrent;
+    this.addressOld = addressOld;
+
     this.containerAdress = containerAdress;
     return temp;
 }
@@ -1632,60 +1785,84 @@ NewRealty.prototype.getDataSave = function(){
         pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
         advancedetruct:advanceDetruct
     }
-    var index = "";
+    
+    if(this.addressCurrent.data!==undefined){
+        var address = {};
+        var data = this.addressCurrent.data;
 
-    for(var i=0;i<this.containerAdress.childNodes.length;i++)
-    {
-       
-        if(this.containerAdress.childNodes[i].data!==undefined)
+        var lastIndex = data.ward.lastIndexOf("_");
+        if(lastIndex === -1)
         {
-            var indexString = "addressid"+index;
-            var address = {};
-            var data = this.containerAdress.childNodes[i].data;
-
-            var lastIndex = data.ward.lastIndexOf("_");
-            if(lastIndex === -1)
+            address.ward = data.ward;
+            lastIndex = data.district.lastIndexOf("_");
+            if(lastIndex == -1)
             {
-                address.ward = data.ward;
-                lastIndex = data.district.lastIndexOf("_");
+                address.district = data.district;
+                lastIndex = data.state.lastIndexOf("_");
                 if(lastIndex == -1)
                 {
-                    address.district = data.district;
-                    lastIndex = data.state.lastIndexOf("_");
-                    if(lastIndex == -1)
-                    {
-                        address.state = data.state;
-                    }else
-                    {
-                        address.stateid = data.state.slice(lastIndex+1);
-                    }
+                    address.state = data.state;
+                }else
+                {
+                    address.stateid = data.state.slice(lastIndex+1);
                 }
-                else
-                    address.districtid = data.district.slice(lastIndex+1);
             }
             else
-            address.wardid = data.ward.slice(lastIndex+1);
-            
-            var lastIndex = data.street.lastIndexOf("_");
-            if(lastIndex === -1)
-            address.street = data.street;
-            else
-            address.streetid = data.street.slice(lastIndex+1);
-
-            address.number = data.number;
-
-            address.lat = data.lat;
-
-            address.lng = data.lng;
-
-            temp[indexString] = address;
-            index = i+2;
+                address.districtid = data.district.slice(lastIndex+1);
         }
+        else
+        address.wardid = data.ward.slice(lastIndex+1);
+        
+        var lastIndex = data.street.lastIndexOf("_");
+        if(lastIndex === -1)
+        address.street = data.street;
+        else
+        address.streetid = data.street.slice(lastIndex+1);
+
+        address.number = data.number;
+
+        temp.lat = data.lat;
+        temp.lng = data.lng;
+
+        temp.addressid = address;
     }
 
-    for(var i = 0;i<this.contactView.childNodes.length;i++)
-    {
-        console.log(this.contactView.childNodes[i]);
+    if(this.addressOld.data!==undefined){
+        var address = {};
+        var data = this.addressOld.data;
+
+        var lastIndex = data.ward.lastIndexOf("_");
+        if(lastIndex === -1)
+        {
+            address.ward = data.ward;
+            lastIndex = data.district.lastIndexOf("_");
+            if(lastIndex == -1)
+            {
+                address.district = data.district;
+                lastIndex = data.state.lastIndexOf("_");
+                if(lastIndex == -1)
+                {
+                    address.state = data.state;
+                }else
+                {
+                    address.stateid = data.state.slice(lastIndex+1);
+                }
+            }
+            else
+                address.districtid = data.district.slice(lastIndex+1);
+        }
+        else
+        address.wardid = data.ward.slice(lastIndex+1);
+        
+        var lastIndex = data.street.lastIndexOf("_");
+        if(lastIndex === -1)
+        address.street = data.street;
+        else
+        address.streetid = data.street.slice(lastIndex+1);
+
+        address.number = data.number;
+        
+        temp.addressid_old = address;
     }
 
     if(this.data!==undefined)

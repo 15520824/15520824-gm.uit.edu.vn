@@ -272,7 +272,6 @@ ListWard.prototype.setListParamWard = function(value)
     this.checkStateWard = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
         return {text:data.name,value:data.name+"_"+data.id}
     },true);
-    console.log(this.checkStateWard)
     this.listWard = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("districts").getList("name",["name","id"]));
 }
 
@@ -334,74 +333,7 @@ ListWard.prototype.formatDataList = function(data){
     return temp;
 }
 ListWard.prototype.searchControlContent = function(){
-    var startDay,endDay,startDay1,endDay1;
     var self = this;
-    startDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    endDay.minDateLimit = date;
-                }
-            }
-        }
-    );
-
-    endDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    startDay.maxDateLimit = date;
-                }
-            }
-        }
-    );
-
-    startDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    endDay1.minDateLimit = date;
-                }
-            }
-        }
-    )
-
-    endDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    startDay1.maxDateLimit = date;
-                }
-            }
-        }
-    )
 
     self.listStateElement = _({
         tag:"selectmenu",

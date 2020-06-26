@@ -918,6 +918,20 @@ tableView.prototype.checkLongRow = function (index) {
     return delta;
 }
 
+tableView.prototype.checkLongColumn = function (row,column) {
+    var result = this;
+    var delta = 0;
+
+    if (result.checkSpan !== undefined) {
+        for (var j = 0; j < column; j++) {
+            if (result.checkSpan[row] !== undefined)
+                if (result.checkSpan[row][j] !== undefined)
+                    delta++;
+        }
+    }
+    return delta;
+}
+
 tableView.prototype.setArrayFix = function (num, isLeft) {
     var i;
     var length;
@@ -2024,6 +2038,15 @@ tableView.prototype.updateTable = function (header, data = [], dragHorizontal, d
     this.data = data;
 }
 
+tableView.prototype.getLastElement = function(element)
+{
+    if(element.childrenNodes!==undefined&&element.childrenNodes.length!==0)
+    {
+        return this.getLastElement(element.childrenNodes[element.childrenNodes.length-1]);
+    }
+    return element;
+}
+
 tableView.prototype.insertRow = function (data, checkMust = false) {
     var result = this, k, cell;
     if (result.isUpdate === false)
@@ -2058,7 +2081,9 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
         checkChild = true;
         if (!result.classList.contains("more-child"))
             result.setDisPlay();
-        result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length - 1].parentNode.nextSibling);
+        var tempElement = result.getLastElement(result.clone[0][result.clone[0].length - 1].parentNode);
+
+        result.bodyTable.insertBefore(row, tempElement.nextSibling);
     }
 
     for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
@@ -2355,10 +2380,12 @@ tableView.prototype.insertColumn = function (index, insertBefore = -1) {
             return;
         }else
         currentClone = this.clone[insertBefore];
+
         this.headerTable.childNodes[0].insertBefore(cellHeader,this.clone[insertBefore][0]);
-        this.clone.splice(insertBefore-1,0,current);
+        current.push(cellHeader);
+        this.clone.splice(insertBefore,0,current);
     }
-    var k = 0;
+    var k = 1;
     for(var i = 0;i<this.childrenNodes.length;i++)
     {
         cell = this.getCell(this.childrenNodes[i].data[index],i,index,this.clone[this.clone.length-1][0].id+1,this.checkSpan,this.childrenNodes[i]);
@@ -2367,9 +2394,17 @@ tableView.prototype.insertColumn = function (index, insertBefore = -1) {
         this.childrenNodes[i].appendChild(cell);
         else
         {
-            if(this.childNodes[i]===currentClone[k])
+            if(this.childrenNodes[i]===currentClone[k].parentNode)
             {
-                
+                this.childrenNodes[i].insertBefore(cell,currentClone[k]);
+            }else
+            {
+                var tempIndexRow = insertBefore - this.checkLongColumn(i,insertBefore);
+                if(this.childrenNodes[i].childNodes[tempIndexRow]!==undefined)
+                this.childrenNodes[i].insertBefore(cell,this.childrenNodes[i].childNodes[tempIndexRow]);
+                else
+                this.childrenNodes[i].appendChild(cell);
+                k--;
             }
         }
         if (this.childrenNodes[i].childrenNodes.length !== 0) {

@@ -72,7 +72,7 @@ ListAdress.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Quản lý Tên đường"
+                            innerHTML: "Quản lý địa chỉ"
                         }
                     },
                     {
@@ -232,25 +232,37 @@ ListAdress.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
-
-    moduleDatabase.getModule("streets").load().then(function(value){
+    moduleDatabase.getModule("addresses").load().then(function(value){
+    moduleDatabase.getModule("streets").load().then(function(listStreet){
         moduleDatabase.getModule("wards").load().then(function(listWard){
             moduleDatabase.getModule("districts").load().then(function(listDistrict){
                 moduleDatabase.getModule("states").load().then(function(listState){
-                self.setListParamDitrict(listDistrict);
-                self.setListParamState(listState);
+                self.setListParamStreet();
+                self.setListParamDitrict();
+                self.setListParamState();
+                self.setListParamWard();
+                self.listStateElement.items = self.listState;
+                self.listDistrictElement.items = self.listDistrict;
+                self.listWardElement.items = self.listWard;
                 var header = [
                 { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
                 {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
-                {value:'Tên',sort:true,style:{minWidth:"unset"}},
+                {value:'Số nhà',sort:true,style:{minWidth:"unset"}},
+                {value:'Đường',sort:true,style:{minWidth:"unset"}},
+                {value:'Phường/Xã',sort:true,style:{minWidth:"unset"}},
+                {value:'Quận/Huyện',sort:true,style:{minWidth:"unset"}},
+                {value:'Tỉnh/TP',sort:true,style:{minWidth:"unset"}},
                 {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
                 self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
                 tabContainer.addChild(self.mTable);
                 self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-                // self.listParent.updateItemList(listParam);
+                self.mTable.addFilter(self.listWardElement,4);
+                self.mTable.addFilter(self.listDistrictElement,5);
+                self.mTable.addFilter(self.listStateElement,6);
             });
             });
         });
+    });
     });
 
     this.searchControl = this.searchControlContent();
@@ -267,23 +279,35 @@ ListAdress.prototype.getView = function () {
     return this.$view;
 }
 
+ListAdress.prototype.setListParamStreet = function()
+{
+    this.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+    this.listStreet = moduleDatabase.getModule("streets").getList("name",["name","id"]);
+}
+
 ListAdress.prototype.setListParamWard = function()
 {
     this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
-    this.listWard = moduleDatabase.getModule("wards").getList("name","id");
+    this.listWard = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("wards").getList("name",["name","id"]));
+    this.checkWardDistrict = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
+        return {text:data.name,value:data.name+"_"+data.id}
+    },true);
 }
 
 
-ListAdress.prototype.setListParamDitrict = function(value)
+ListAdress.prototype.setListParamDitrict = function()
 {
     this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
-    this.listDistrict = moduleDatabase.getModule("districts").getList("name","id");
+    this.listDistrict = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("districts").getList("name",["name","id"]));
+    this.checkDistrictState = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
+        return {text:data.name,value:data.name+"_"+data.id}
+    },true);
 }
 
-ListAdress.prototype.setListParamState = function(value)
+ListAdress.prototype.setListParamState = function()
 {
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
-    this.listState = moduleDatabase.getModule("states").getList("name","id");
+    this.listState = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("states").getList("name",["name","id"]));
     this.isLoaded = true;
 }
 
@@ -320,7 +344,11 @@ ListAdress.prototype.getDataRow = function(data)
     var result = [
         {},
         data.id,
-        data.name,
+        data.addressnumber,
+        {element:_({text:this.checkStreet[data.streetid].name}),value:this.checkStreet[data.streetid].name+"_"+this.checkStreet[data.streetid].id},
+        {element:_({text:this.checkWard[data.wardid].name}),value:this.checkWard[data.wardid].name+"_"+this.checkWard[data.wardid].id},
+        {element:_({text:this.checkDistrict[this.checkWard[data.wardid].districtid].name}),value:this.checkDistrict[this.checkWard[data.wardid].districtid].name+"_"+this.checkDistrict[this.checkWard[data.wardid].districtid].id},
+        {element:_({text:this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name}),value:this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name+"_"+this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].id},
         {}
         ]
         result.original = data;
@@ -337,74 +365,84 @@ ListAdress.prototype.formatDataList = function(data){
     return temp;
 }
 ListAdress.prototype.searchControlContent = function(){
-    var startDay,endDay,startDay1,endDay1;
-
-    startDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    endDay.minDateLimit = date;
+    var self =this;
+    self.listStateElement = _({
+        tag:"selectmenu",
+        props:{
+            enableSearch:true,
+            items:[{text:"Tất cả",value:0}]
+        },
+        on:{
+            change:function(event){
+                if(this.value == 0){
+                    self.listDistrictElement.items = self.listDistrict;
+                }
+                else{
+                    if(event!==undefined)
+                    {
+                        self.listDistrictElement.value = 0;
+                    }
+                    self.listDistrictElement.items = [{text:"Tất cả",value:0}].concat(self.checkDistrictState[this.value.slice(this.value.lastIndexOf("_")+1)]);
+                    self.listDistrictElement.emit('change');
                 }
             }
         }
-    );
+    });
 
-    endDay = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    startDay.maxDateLimit = date;
+    self.listDistrictElement = _({
+        tag:"selectmenu",
+        props:{
+            enableSearch:true,
+            items:[{text:"Tất cả",value:0}]
+        },
+        on:{
+            change:function(event){
+                if(this.value == 0){
+                    self.listWardElement.items = self.listWard;
                 }
+                else{
+                    var checkResult =self.checkState[self.checkDistrict[this.value.slice(this.value.lastIndexOf("_")+1)].stateid];
+                    var checkid = checkResult.name+"_"+checkResult.id;
+                    if(self.listStateElement.value!=checkid)
+                    {
+                        self.listStateElement.value = checkid;
+                        self.listStateElement.emit('change');
+                    }
+
+                    if(event!==undefined)
+                    {
+                        self.listWardElement.value = 0;
+                    }
+                    self.listWardElement.items = [{text:"Tất cả",value:0}].concat(self.checkWardDistrict[this.value.slice(this.value.lastIndexOf("_")+1)]);
+                    self.listWardElement.emit('change');
+                }
+               
             }
         }
-    );
+    });
 
-    startDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(new Date().getFullYear(), 0, 1),
-                maxDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    endDay1.minDateLimit = date;
+    self.listWardElement = _({
+        tag:"selectmenu",
+        props:{
+            enableSearch:true,
+            items:[{text:"Tất cả",value:0}]
+        },
+        on:{
+            change:function(event){
+                if(this.value !== 0){
+                    var checkResult = self.checkDistrict[self.checkWard[this.value.slice(this.value.lastIndexOf("_")+1)].districtid];
+                    var checkid = checkResult.name+"_"+checkResult.id;
+                    if(self.listDistrictElement.value!=checkid)
+                    {
+                        self.listDistrictElement.value = checkid;
+                        self.listDistrictElement.emit('change');
+                    }
                 }
+               
             }
         }
-    )
+    });
 
-    endDay1 = _(
-        {
-            tag: 'calendar-input',
-            data: {
-                anchor: 'top',
-                value: new Date(),
-                minDateLimit: new Date()
-            },
-            on: {
-                changed: function (date) {
-                    
-                    startDay1.maxDateLimit = date;
-                }
-            }
-        }
-    )
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -438,16 +476,7 @@ ListAdress.prototype.searchControlContent = function(){
                                         tag:"div",
                                         class:"pizo-list-realty-main-search-control-row-state-ward-input",
                                         child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    enableSearch:true,
-                                                    items:[
-                                                        {text:'Thành phố Hồ Chí Minh',id:79},
-                                                        {text:'Thủ đô Hà Nội',id:80}
-                                                    ]
-                                                }
-                                            }
+                                            self.listStateElement
                                         ]
                                     }
                                 ]
@@ -468,17 +497,7 @@ ListAdress.prototype.searchControlContent = function(){
                                         tag:"div",
                                         class:"pizo-list-realty-main-search-control-row-district-ward-input",
                                         child:[
-                                            {
-                                                tag:"selectmenu",
-                                                props:{
-                                                    enableSearch:true,
-                                                    items:[
-                                                        {text:'Quận 1',id:79},
-                                                        {text:'Quận Bình Thạnh',id:80},
-                                                        {text:'Quận Tân Bình',id:81}
-                                                    ]
-                                                }
-                                            }
+                                            self.listDistrictElement
                                         ]
                                     }
                                 ]
@@ -486,22 +505,25 @@ ListAdress.prototype.searchControlContent = function(){
                             },
                             {
                                 tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-button",
+                                class:"pizo-list-realty-main-search-control-row-district-ward",
                                 child:[
                                     {
-                                        tag: "button",
-                                        class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-                                                temp.reset();
-                                            }
-                                        },
-                                        child: [
-                                        '<span>' + "Thiết lập lại" + '</span>'
+                                        tag:"span",
+                                        class:"pizo-list-realty-main-search-control-row-district-ward-label",
+                                        props:{
+                                            innerHTML:"Phường/Xã"
+                                        }
+                                    },
+                                    {
+                                        tag:"div",
+                                        class:"pizo-list-realty-main-search-control-row-district-ward-input",
+                                        child:[
+                                            self.listWardElement
                                         ]
                                     }
                                 ]
-                            },
+
+                            }
                         ]
                     }
                 ]
@@ -523,59 +545,6 @@ ListAdress.prototype.searchControlContent = function(){
     })
 
     temp.content = content;
-    content.timestart = startDay;
-    content.timeend = endDay;
-    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low',content);
-    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high',content);
-    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input',content);
-    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input',content);
-    content.SN = $('.pizo-list-realty-main-search-control-row-SN input',content);
-    content.TD = $('.pizo-list-realty-main-search-control-row-TD input',content);
-    content.PX = $('.pizo-list-realty-main-search-control-row-PX input',content);
-    content.QH = $('.pizo-list-realty-main-search-control-row-QH input',content);
-    content.HT = $('.pizo-list-realty-main-search-control-row-HT input',content);
-
-    temp.show = function()
-    {
-        if(!temp.classList.contains("showTranslate"))
-        temp.classList.add("showTranslate");
-    }
-    temp.hide = function()
-    {
-        if(!content.classList.contains("hideTranslate"))
-            content.classList.add("hideTranslate");
-        var eventEnd = function(){
-            if(temp.classList.contains("showTranslate"))
-            temp.classList.remove("showTranslate");
-            content.classList.remove("hideTranslate");
-            content.removeEventListener("webkitTransitionEnd",eventEnd);
-            content.removeEventListener("transitionend",eventEnd);
-        };
-        // Code for Safari 3.1 to 6.0
-        content.addEventListener("webkitTransitionEnd", eventEnd);
-
-        // Standard syntax
-        content.addEventListener("transitionend", eventEnd);
-    }
-    temp.apply = function()
-    {
-
-    }
-    temp.reset = function()
-    {
-        content.timestart = new Date();
-        content.timeend = new Date();
-        content.lowprice.value = "";
-        content.highprice.value = "";
-        content.phone.value = "";
-        content.MS.value = "";
-        content.SN.value = "";
-        content.TD.value = "";
-        content.PX.value = "";
-        content.QH.value = "";
-        content.TT.value = "";
-        content.HT.value = 0;
-    }
 
   
     return temp;

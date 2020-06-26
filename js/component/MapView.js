@@ -2,8 +2,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import '../../css/MapView.css';
 import moduleDatabase from '../component/ModuleDatabase';
-import {getIDCompair,removeAccents, formatDate} from './FormatFunction';
-import { ModuleView } from './ModuleView';
+import {getIDCompair,removeAccents} from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -67,6 +66,11 @@ export function locationView(functionDone,data) {
     temp.map = map;
     temp.detailView = detailView;
     temp.getDataCurrent = detailView.getDataCurrent.bind(detailView);
+    temp.addLatLng = function()
+    {
+        temp.detailView.addLatLng();
+        temp.map.addLatLng();
+    }
     temp.data = data;
     
     return temp;
@@ -263,6 +267,30 @@ export function DetailView(map,data) {
             }
         }
     })
+    var containerGPS = _({
+        tag: "div",
+        class: "pizo-new-realty-location-detail-row",
+        style:{
+            display:"none"
+        },
+        child: [
+            {
+                tag: "span",
+                class: "pizo-new-realty-location-detail-row-label",
+                props: {
+                    innerHTML: "GPS"
+                },
+            },
+            {
+                tag:"div",
+                class:"pizo-new-realty-location-detail-row-menu",
+                child:[
+                    long,
+                    lat
+                ]
+            }
+        ]
+    })
     temp = _({
         tag: "div",
         class: "pizo-new-realty-location-detail",
@@ -396,27 +424,7 @@ export function DetailView(map,data) {
                     number
                 ]
             },
-            {
-                tag: "div",
-                class: "pizo-new-realty-location-detail-row",
-                child: [
-                    {
-                        tag: "span",
-                        class: "pizo-new-realty-location-detail-row-label",
-                        props: {
-                            innerHTML: "GPS"
-                        },
-                    },
-                    {
-                        tag:"div",
-                        class:"pizo-new-realty-location-detail-row-menu",
-                        child:[
-                            long,
-                            lat
-                        ]
-                    }
-                ]
-            }
+            containerGPS
         ]
     })
     temp.input = input;
@@ -428,21 +436,32 @@ export function DetailView(map,data) {
     Object.assign(temp,DetailView.prototype);
     temp.long = long;
     temp.lat = lat;
+    temp.containerGPS = containerGPS;
     temp.activeAutocomplete(map);
     return temp;
 }
 
+DetailView.prototype.addLatLng = function()
+{
+    this.containerGPS.style.display = "";
+}
+
 DetailView.prototype.getDataCurrent = function()
 {
-    return {
+    var temp = {
         number:this.number.value,
         street:this.street.value,
         ward:this.ward.value,
         district:this.district.value,
-        state:this.state.value,
-        lng:this.long.value,
-        lat:this.lat.value
+        state:this.state.value
     }
+
+    if(this.containerGPS.style.display === "none")
+    {
+        temp.lng=this.long.value;
+        temp.lat=this.lat.value;
+    }
+    return temp;
 }
 
 DetailView.prototype.activeAutocomplete = function(map) {
@@ -695,6 +714,17 @@ export function MapView() {
 MapView.prototype.activePlanningMap = function()
 {
     this.map = this.activeMap();
+    this.addMapPolygon();
+    this.addMapHouse();
+}
+
+MapView.prototype.addLatLng = function()
+{
+    if(this.currentMarker!==undefined)
+    {
+        this.currentMarker.setOption({draggable:true});
+    }
+    this.draggable = true;
 }
 
 MapView.prototype.addMapPolygon = function()
@@ -747,12 +777,15 @@ MapView.prototype.addMapPolygon = function()
                             self.checkMap[cellDeltaLat] = [];
                         if(self.checkMap[cellDeltaLat][cellDeltaLng]===undefined)
                             self.checkMap[cellDeltaLat][cellDeltaLng] = [];
-                        moduleDatabase.getModule("polygon").load({cellLng:cellDeltaLng,cellLat:cellDeltaLat},true,true).then(function(value){
+                            if(self.checkLibary[cellDeltaLat]===undefined)
+                            self.checkLibary[cellDeltaLat] = [];
+                        moduleDatabase.getModule("polygon").load({cellLng:cellDeltaLng,cellLat:cellDeltaLat},true,true).then(function(cellDeltaLat,cellDeltaLng,value){
                             for(var i=0;i<value.length;i++)
                             {
-                                self.addWKT(value[i]["AsText(`map`)"],cellLat,cellDeltaLng)
+                                self.addWKT(value[i]["AsText(`map`)"],cellDeltaLat,cellDeltaLng)
                             }
-                        })
+                            self.checkLibary[cellDeltaLat][cellDeltaLng] = 1;
+                        }.bind(null,cellDeltaLat,cellDeltaLng))
                     }else
                     {
                         self.setMapPolygon(cellDeltaLat,cellDeltaLng);
@@ -763,6 +796,151 @@ MapView.prototype.addMapPolygon = function()
         }
         
     });
+}
+
+MapView.prototype.addMapHouse = function()
+{
+    moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActiveHouse.php"])
+    var self = this;
+    if(this.checkHouse === undefined)
+    this.checkHouse = [];
+    if(this.currentHouse === undefined)
+    this.currentHouse = [];
+    if(this.checkLibaryHouse === undefined)
+    this.checkLibaryHouse = [];
+    google.maps.event.addListener(self.map, 'zoom_changed', function() {
+        var zoomLevel = self.map.getZoom();
+        if(zoomLevel>=20)
+        {
+            self.enableHouse = true;
+            new google.maps.event.trigger( self.map, 'center_changed' );
+        }else
+        {
+            self.enableHouse = false;
+            self.removeMapHouse();
+        }
+    });
+    self.map.setZoom(20);
+    console.log(self.map)
+    var intLng,cellLng,intLat,cellLat,cellDeltaLat,cellDeltaLng;
+    google.maps.event.addListener(self.map, "center_changed", function() {
+        if(self.enableHouse == true)
+        {
+            var center = this.getCenter();
+            var latitude = center.lat();
+            var longitude = center.lng();
+            intLng = parseInt(longitude/1);
+            cellLng = Math.ceil(longitude%1/0.0009009009009009009);
+            intLat = parseInt(latitude/1);
+            cellLat = Math.ceil(latitude%1/0.0009009009009009009);
+            cellLng = intLng*10000+cellLng;
+            cellLat = intLat*10000+cellLat;
+            self.removeMapHouseAround(cellLat,cellLng);
+            for(var m=-2;m<=1;m++)
+            {
+                for(var k=-2;k<=1;k++)
+                {
+                    cellDeltaLat = cellLat + m;
+                    cellDeltaLng = cellLng + k;
+                    if(self.checkHouse[cellDeltaLat]===undefined||self.checkHouse[cellDeltaLat][cellDeltaLng]===undefined)
+                    {
+                        if(self.checkHouse[cellDeltaLat]===undefined)
+                            self.checkHouse[cellDeltaLat] = [];
+                        if(self.checkHouse[cellDeltaLat][cellDeltaLng]===undefined)
+                            self.checkHouse[cellDeltaLat][cellDeltaLng] = [];
+                        if(self.checkLibaryHouse[cellDeltaLat]===undefined)
+                            self.checkLibaryHouse[cellDeltaLat] = [];
+                            
+                        moduleDatabase.getModule("activehouses").load({cellLng:cellDeltaLng,cellLat:cellDeltaLat},true,true).then(function(cellDeltaLat,cellDeltaLng,value){
+                            for(var i=0;i<value.length;i++)
+                            {
+                                self.addOrtherMarker(value[i],cellDeltaLat,cellDeltaLng);
+                                self.checkLibaryHouse[cellDeltaLat][cellDeltaLng] = 1;
+                            }
+                        }.bind(null,cellDeltaLat,cellDeltaLng))
+                    }else
+                    {
+                        self.setMapHouse(cellDeltaLat,cellDeltaLng);
+                    }
+                }
+            }
+            
+        }
+        
+    });
+}
+
+MapView.prototype.addOrtherMarker = function(data,cellLat,cellLng)
+{
+    var self = this;
+    var image = {
+        url: "../../assets/images/marker-blue.png",
+        // This marker is 20 pixels wide by 32 pixels high.
+        scaledSize: new google.maps.Size(24, 24), 
+        // The origin for this image is (0, 0).
+        origin: new google.maps.Point(0, 0),
+        // The anchor for this image is the base of the flagpole at (0, 32).
+        anchor: new google.maps.Point(12, 12)
+      };
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(position[0], position[1]),
+        map: self.map,
+        draggable:false,
+        icon:image,
+        title: "Latitude:" + position[0] + " | Longtitude:" + position[1],
+        zIndex:2
+    });
+    this.checkHouse[cellLat][cellLng].push(marker);
+    this.currentHouse.push([cellLat,cellLng]);
+
+    return this.checkHouse[cellLat][cellLng]; 
+}
+
+MapView.prototype.setMapHouse = function(cellLat,cellLng){
+    if(this.checkLibaryHouse[cellLat]===undefined||this.checkLibaryHouse[cellLat][cellLng]===1)
+    return;
+    var arr = this.checkHouse[cellLat][cellLng];
+    for(var i =0;i<arr.length;i++)
+    {
+        arr[i].setMap(this.map);
+    }
+    
+    if(this.checkLibaryHouse[cellLat][cellLng]!==1)
+    this.currentHouse.push([cellLat,cellLng]);
+
+}
+
+MapView.prototype.removeMapHouse = function(arr){
+    for(var i = this.currentHouse.length-1;i>=0;i--)
+    {
+        var arr = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
+        for(var j = 0;j<arr.length;j++)
+        {
+            arr[j].setMap(null);
+        }
+        this.checkLibaryHouse[this.currentHouse[i][0]][this.currentHouse[i][1]] = undefined;
+        this.currentHouse.splice(i,1);
+    }
+}
+
+MapView.prototype.removeMapHouseAround = function(cellLat,cellLng){
+    var currentLat,currentLng;
+    for(var i = this.currentHouse.length-1;i>=0;i--)
+    {
+        currentLat = this.currentHouse[i][0];
+        currentLng = this.currentHouse[i][1];
+        if(Math.abs(currentLat-cellLat)>3||Math.abs(currentLng-cellLng)>3)
+        {
+            var arr = this.checkHouse[currentLat][currentLng];
+
+            for(var j = 0;j<arr.length;j++)
+            {
+                arr[j].setMap(null);
+            }
+            this.currentHouse.splice(i,1);
+            this.checkLibaryHouse[currentLat][currentLng] = undefined;
+        }
+    } 
 }
 
 MapView.prototype.addWKT = function(multipolygonWKT,cellLat,cellLng) {
@@ -786,15 +964,14 @@ MapView.prototype.addWKT = function(multipolygonWKT,cellLat,cellLng) {
     }
     if(this.checkLibary[cellLat]===undefined)
     this.checkLibary[cellLat] = [];
-
-    if(this.checkLibary[cellLat][cellLng]!==1)
     this.currentPolygon.push([cellLat,cellLng]);
 
-    this.checkLibary[cellLat][cellLng] = 1;
     return this.checkMap[cellLat][cellLng];  
 }
 
 MapView.prototype.setMapPolygon = function(cellLat,cellLng){
+    if(this.checkLibary[cellLat]===undefined||this.checkLibary[cellLat][cellLng]===1)
+    return;
     var arr = this.checkMap[cellLat][cellLng];
     for(var i =0;i<arr.length;i++)
     {
@@ -844,9 +1021,11 @@ MapView.prototype.removeMapPolygonAround = function(cellLat,cellLng){
 
 MapView.prototype.activeDetail = function(detailView)
 {
+    
     this.detailView = detailView;
     this.map = this.activeMap();
     this.addMapPolygon();
+    this.addMapHouse();
 }
 
 MapView.prototype.activeMap = function (center = [10.822500, 106.629104], zoom = 16) {
@@ -859,6 +1038,7 @@ MapView.prototype.activeMap = function (center = [10.822500, 106.629104], zoom =
     });
     this.delay = 10;
     this.numDeltas = 50;
+    this.draggable = false;
     return map;
 }
 
@@ -887,7 +1067,7 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(position[0], position[1]),
             map: self.map,
-            draggable:true,
+            draggable:self.draggable,
             icon:image,
             title: "Latitude:" + position[0] + " | Longtitude:" + position[1],
             zIndex:2

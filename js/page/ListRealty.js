@@ -79,14 +79,19 @@ ListRealty.prototype.getView = function () {
                
                 if(this.currentMerge === true)
                 {
-                    self.merge();
+                    // self.merge();
+                    // this.currentMerge = undefined;
+                    saveButton.style.display = "";
+                    this.childNodes[0].innerHTML = "Gộp";
+                    self.mTable.deleteColumn(0);
+                    self.mTable.insertColumn(0,0);
                     this.currentMerge = undefined;
                 }else
                 {
                     saveButton.style.display = "none";
                     this.childNodes[0].innerHTML = "Xong";
                     self.mTable.deleteColumn(0);
-                    self.mTable.insertColumn(1);
+                    self.mTable.insertColumn(1,0);
                     this.currentMerge = true;
                 }
             }
@@ -230,7 +235,7 @@ ListRealty.prototype.getView = function () {
         ]
     })
 
-    moduleDatabase.getModule("activehouses",["load.php","addActiveHouse.php","updateActiveHouse.php","deleteActiveHouse.php"]);
+    moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActiveHouse.php"]);
 
     var arr = [];
     arr.push(moduleDatabase.getModule("activehouses").load());

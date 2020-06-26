@@ -27,63 +27,50 @@ function DataStructure(hostDatabase ,name ,listFilePHP = ["load.php","add.php","
 }
 
 
-DataStructure.prototype.load = function(data = [],isLoaded = false,pushArray = false){
-    var self = this;
-    if(data.WHERE!==undefined&&self.data!==undefined)
+DataStructure.prototype.load = function(data = [],isLoaded = false){
+    var self = this;    
+    if(isLoaded == false&&self.promiseLoad!==undefined&&data.WHERE==undefined)
     {
-        if(isLoaded == false&&self.data[data.WHERE]!==undefined)
-        return Promise.resolve(self.data[data.WHERE]);
-
-        return new Promise(function(resolve,reject){
-            self.queryData(self.phpLoader,data).then(function(value){
-                if(self.data[data.WHERE==undefined])
-                self.data[data.WHERE] = [];
-                self.data[data.WHERE] = value;
-                resolve(value);
-           })
-           .catch(function(error){
-               reject(error);
-               console.error(error);
-           })
-        }) 
-    }else
-    {
-        if(isLoaded == false&&self.promiseLoad!==undefined)
-        {
-            if(self.promiseLoad.status==="pending")
-            return self.promiseLoad;
-            else
-            return Promise.resolve(self.data);
-        }
-  
-        var promiseLoad;
-        promiseLoad = new Promise(function(resolve,reject){
-            self.queryData(self.phpLoader,data).then(function(value){
-                if(pushArray==false)
-                self.data = value;
-                else
-                {
-                    if(self.data===undefined)
-                    self.data =[];
-                    self.data.concat(value);
-                }
-              
-                self.getLibary();
-                promiseLoad.status = "done";
-                resolve(value);
-        })
-        .catch(function(error){
-            promiseLoad.status = "reject";
-            reject(error);
-            console.error(error);
-        })
-        })
-        promiseLoad.status = "pending";
-        self.promiseLoad = promiseLoad;
-        console.log(promiseLoad)
+        if(self.promiseLoad.status==="pending")
         return self.promiseLoad;
+        else
+        return Promise.resolve(self.data);
     }
-   
+
+    var promiseLoad;
+    promiseLoad = new Promise(function(resolve,reject){
+        self.queryData(self.phpLoader,data).then(function(value){
+            if(self.data === undefined)
+            self.data = [];
+                for(var i = 0;i<value.length;i++)
+                {
+                    var libary = self.Libary["id"];
+                    if(libary === undefined)
+                    {
+                        self.data = value;
+                    }
+                    else
+                    if(libary[value[i].id]===undefined)
+                    {
+                        self.data.push(value[i]);
+                        self.setFormatAdd(value[i]);
+                    }
+                }
+            
+            self.getLibary();
+            promiseLoad.status = "done";
+            resolve(value);
+    })
+    .catch(function(error){
+        promiseLoad.status = "reject";
+        reject(error);
+        console.error(error);
+    })
+    })
+    promiseLoad.status = "pending";
+    self.promiseLoad = promiseLoad;
+
+    return self.promiseLoad;
 }
 
 DataStructure.prototype.getLibary = function(param,formatFunction,isArray = false,isLoaded = false){
@@ -115,14 +102,14 @@ DataStructure.prototype.getLibary = function(param,formatFunction,isArray = fals
         var isID = false;
         for(var param in this.Libary)
         {
-            if(param = "id")
+            if(param === "id")
                 isID = true;
             for(var i = 0;i<this.data.length;i++)
             {
                 this.setLibaryRow(this.data[i],param,formatFunction,isArray);
             }
         }
-        if(isID == false)
+        if(isID === false)
         {
             for(var i = 0;i<this.data.length;i++)
             {
@@ -232,7 +219,6 @@ DataStructure.prototype.add = function(data){
             {
                 Object.assign(data,value.data);
                 self.setFormatAdd(data);
-                console.log(value.insert,value.update,value);
                 if(value.insert!==undefined)
                 {
                     for(var i = 0;i<value.insert.length;i++)
