@@ -244,7 +244,9 @@ ListRealty.prototype.getView = function () {
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
-    Promise.all(arr).then(function (value) {
+    arr.push(moduleDatabase.getModule("equipments").load());
+    Promise.all(arr).then(function (values) {
+        var value = values[0];
         self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
         self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
         self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
@@ -324,18 +326,19 @@ ListRealty.prototype.getView = function () {
             functionClickAll: functionClickMore,
             dragElement: false
         }];
-        self.mTable = new tableView(header, self.formatDataRow(value[0]), true, true, 1);
+        self.mTable = new tableView(header, self.formatDataRow(value), true, true, 1);
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
+        
+        moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load().then(function (value) {
+            self.formatDataRowAccount(value);
+        })
+
+        moduleDatabase.getModule("contacts").load().then(function (value) {
+            self.formatDataRowContact(value);
+        })
     });
 
-    moduleDatabase.getModule("users").load().then(function (value) {
-        self.formatDataRowAccount(value);
-    })
-
-    moduleDatabase.getModule("contacts").load().then(function (value) {
-        self.formatDataRowContact(value);
-    })
 
   
 
@@ -892,8 +895,7 @@ ListRealty.prototype.addDB = function (mNewRealty, row) {
     mNewRealty.promiseAddDB.then(function (value) {
         
         moduleDatabase.getModule("activehouses").add(value).then(function (result) {
-            value.id = result;
-            self.addView(value, row);
+            self.addView(result.data, row);
         })
         mNewRealty.promiseAddDB = undefined;
         setTimeout(function () {

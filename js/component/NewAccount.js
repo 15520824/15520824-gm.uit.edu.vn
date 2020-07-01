@@ -137,6 +137,7 @@ NewAccount.prototype.getView = function (dataParent) {
     var activePemission = _( {
         tag:"switch",
     })
+    var container;
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-realty-main"],
@@ -195,7 +196,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                     ],
                                     on:{
                                         click:function(event){
-                                            var container = $("div.pizo-new-account-container-password",self.$view);
                                             if(this.classList.contains("show-password-change"))
                                             {
                                                 this.classList.remove("show-password-change");
@@ -230,6 +230,9 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         {
                                                             tag:"input",
                                                             class:["pizo-new-account-container-password-container-input-new","pizo-new-realty-dectruct-input"],
+                                                            attr:{
+                                                                type:"password"
+                                                            },
                                                             on:{
                                                             }
                                                         }
@@ -249,7 +252,14 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         {
                                                             tag:"input",
                                                             class:["pizo-new-account-container-password-container-input-new-confirm","pizo-new-realty-dectruct-input"],
+                                                            attr:{
+                                                                type:"password"
+                                                            },
                                                             on:{
+                                                                change:function()
+                                                                {
+
+                                                                }
                                                             }
                                                         }
                                                     ]
@@ -578,6 +588,7 @@ NewAccount.prototype.getView = function (dataParent) {
     this.position = $('div.pizo-new-account-selectbox-container-input',this.$view);
     this.status = $('div.pizo-new-account-container-status-container label.absol-switch',this.$view);
     this.permission = $('div.pizo-new-account-container-permission-container label.absol-switch',this.$view);
+    container = $("div.pizo-new-account-container-password",self.$view);
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;
@@ -591,6 +602,10 @@ NewAccount.prototype.getView = function (dataParent) {
         this.position.value = parseInt(this.data.original.positionid);
         this.status.checked = parseInt(this.data.original.status)?true:false;
         this.permission.checked = parseInt(this.data.original.permission)?true:false;
+    }else
+    {
+        $("div.pizo-new-account-container-change-password",this.$view).style.display = "none";
+        container.style.display = "unset";
     }
     return this.$view;
 }
@@ -604,7 +619,6 @@ NewAccount.prototype.getDataSave = function() {
         phone:this.phone.value,
         birthday: getGMT(this.birthday.value,new Date().getTimezoneOffset()/-60,true),
         gender:this.gender.value,
-        // address:this.address.value,
         positionid:this.position.value,
         status:this.status.checked?1:0,
         permission:this.permission.checked?1:0

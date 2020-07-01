@@ -9,7 +9,9 @@ import { unit_Long, unit_Zone, tableView } from './ModuleView';
 import {formatNumber,reFormatNumber,formatFit} from './FormatFunction'
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import moduleDatabase from '../component/ModuleDatabase';
+import moduleDatabase from './ModuleDatabase';
+
+import xmlModalDragManyFiles from './modal_drag_drop_manyfiles';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -169,6 +171,16 @@ NewRealty.prototype.descView = function () {
     this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
 
+    var self = this;
+    moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load().then(function(value)
+    {
+        self.checkUser = moduleDatabase.getModule("users").getLibary("phone");
+    })
+
+    moduleDatabase.getModule("contacts").load().then(function(value)
+    {
+        self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+    })
     this.containerMap = _({
         tag: "div"
     })
@@ -193,17 +205,18 @@ NewRealty.prototype.descView = function () {
                         tag: "div",
                         class: ["pizo-new-realty-desc-infomation-cell", "center-child"],
                         child: [
-                            this.convenientView(),
-                            this.contactView
+                            self.convenientView(),
+                            self.contactView,
+                            self.imageCurrentStaus()
                         ]
                     },
                     {
                         tag: "div",
                         class: "pizo-new-realty-desc-infomation-cell",
                         child: [
-                            this.juridicalView(),
-                            this.historyView(),
-                            // this.descViewImageThumnail(dataImage,0,x)
+                            self.juridicalView(),
+                            self.historyView(),
+                            self.imageJuridical(),
                         ]
                     }
                 ]
@@ -214,6 +227,64 @@ NewRealty.prototype.descView = function () {
     container.insertBefore(this.descViewdetail(),container.firstChild);
     var container = $("div.pizo-new-realty-desc-infomation",temp);
     container.insertBefore(this.detructView(),container.firstChild);
+    return temp;
+}
+
+NewRealty.prototype.imageJuridical = function()
+{
+    var result = Object.assign({}, xmlModalDragManyFiles);
+    var container = result.containGetImage();
+    result.createEvent();
+
+    var temp = _({
+        tag: "div",
+        class: "pizo-new-realty-image",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-image-tab",
+                props: {
+                    innerHTML: "Hình ảnh pháp lý"
+                }
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-image-content",
+                child: [
+                    container
+                ]
+            }
+        ]
+    })
+    return temp;
+}
+
+NewRealty.prototype.imageCurrentStaus = function()
+{
+    var result = Object.assign({}, xmlModalDragManyFiles);
+    var container = result.containGetImage();
+    result.createEvent();
+
+    var temp = _({
+        tag: "div",
+        class: "pizo-new-realty-image",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-image-tab",
+                props: {
+                    innerHTML: "Hình ảnh hiện trạng"
+                }
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-image-content",
+                child: [
+                    container
+                ]
+            }
+        ]
+    })
     return temp;
 }
 
@@ -1785,6 +1856,20 @@ NewRealty.prototype.getDataSave = function(){
         pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
         advancedetruct:advanceDetruct
     }
+    var arr = [];
+
+    for(var i = 0;i<this.containerEquipment.childNodes.length;i++)
+    {
+        arr.push(this.containerEquipment.childNodes[i].getData());
+    }
+    temp.equipment = arr;
+
+    var contact=[];
+    for(var i = 0;i<this.containerContact.childNodes.length;i++)
+    {
+        contact.push(this.containerContact.childNodes[i].getData());
+    }
+    temp.contact = contact;
     
     if(this.addressCurrent.data!==undefined){
         var address = {};
@@ -2109,7 +2194,82 @@ NewRealty.prototype.utilityView = function () {
     return temp;
 }
 
+
 NewRealty.prototype.convenientView = function () {
+    var self = this;
+    var data = moduleDatabase.getModule("equipments").data;
+    var arr = [];
+    for(var i = 0;i<data.length;i++)
+    {
+        if(data[i].available===0)
+        continue;
+        arr.push({text:data[i].name,value:data[i].id,data:data[i]})
+    }
+    var container = _({
+        tag:"div",
+        class:"pizo-new-realty-dectruct-content-area-size"
+    })
+    var equipment = _({
+        tag:"selectbox",
+        style:{
+            width:"100%"
+        },
+        props:{
+            items:arr,
+            enableSearch: true
+        },
+        on:{
+            add:function(event)
+            {
+                switch(event.itemData.data.type)
+                {
+                    case 0:
+                        container.appendChild(self.itemCount(event.itemData.data));
+                        break;
+                    case 1:
+                        container.appendChild(self.itemDisplayNone(event.itemData.data));
+                        break;
+                }
+            },
+            remove:function(event)
+            {
+                for(var i = 0;i<container.childNodes.length;i++)
+                {
+                    if(container.childNodes[i].equipmentid == event.itemData.data.id)
+                    {
+                        container.childNodes[i].selfRemove();
+                        break;
+                    }
+                }
+            }
+        }
+    });
+
+    if(this.data!==undefined)
+    {
+        var value = [];
+        var temp;
+        var libary = moduleDatabase.getModule("equipments").getLibary("id");
+        for(var i = 0;i<this.data.original.equipment.length;i++)
+        {
+            temp = libary[this.data.original.equipment[i].equipmentid];
+            temp.content = this.data.original.equipment[i].content;
+            value.push(temp);
+            switch(temp.type)
+            {
+                case 0:
+                    if(temp.available===0)
+                    container.appendChild(self.itemCount(temp));
+                    else
+                    container.appendChild(self.itemDisplayNone(temp));
+                    break;
+                case 1:
+                    container.appendChild(self.itemDisplayNone(temp));
+                    break;
+            }
+        } 
+    }
+    
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-convenient",
@@ -2129,42 +2289,85 @@ NewRealty.prototype.convenientView = function () {
                         tag: "div",
                         class: "pizo-new-realty-convenient-content-size",
                         child: [
+                            equipment
                         ]
-                    }
+                    },
+                    container
                 ]
             }
         ]
     })
+    this.containerEquipment = container;
     return temp;
 }
 
-
-NewRealty.prototype.convenientView = function () {
+NewRealty.prototype.itemCount = function(data)
+{
+    var input = _({
+        tag: "input",
+        class: ["pizo-new-realty-dectruct-content-area-floor", "pizo-new-realty-dectruct-input"],
+        attr: {
+            type: "number",
+            min: 0,
+            step: 1
+        },
+        props:{
+            value:1
+        }
+    });
+    if(data.content!==undefined)
+    {
+        input.value = data.content;
+    }
     var temp = _({
         tag: "div",
-        class: "pizo-new-realty-convenient",
+        class: ["pizo-new-realty-dectruct-content-area-size-zone-all"],
         child: [
             {
                 tag: "div",
-                class: "pizo-new-realty-convenient-tab",
-                props: {
-                    innerHTML: "Tiện ích trong nhà"
-                }
-            },
-            {
-                tag: "div",
-                class: "pizo-new-realty-convenient-content",
+                class: "pizo-new-realty-desc-detail-row",
                 child: [
                     {
-                        tag: "div",
-                        class: "pizo-new-realty-convenient-content-size",
-                        child: [
-                        ]
-                    }
+                        tag: "span",
+                        class: "pizo-new-realty-dectruct-content-area-floor-label",
+                        props: {
+                            innerHTML: data.name,
+                        },
+                    },
+                    input
                 ]
             }
         ]
+    });
+    temp.equipmentid = data.id;
+    temp.getData = function()
+    {
+        var result = {
+            equipmentid:data.id,
+            content:input.value
+        }
+        return result;
+    }
+    return temp;
+}
+
+NewRealty.prototype.itemDisplayNone = function(data)
+{
+    var temp = _({
+        tag:"div",
+        style:{
+            display:"none"
+        }
     })
+    temp.equipmentid = data.id;
+    temp.getData = function()
+    {
+        var result = {
+            equipmentid:data.id,
+            content:data.content
+        }
+        return result;
+    }
     return temp;
 }
 
@@ -2178,6 +2381,8 @@ NewRealty.prototype.contactItem = function(data = {
     {
         relate = data.statusphone;
     }
+    var name,typecontact,phone,statusphone,note;
+    var self = this;
     var temp = _({
         tag:"div",
         class:"pizo-new-realty-contact-item",
@@ -2253,6 +2458,47 @@ NewRealty.prototype.contactItem = function(data = {
                         props:{
                             type:"number",
                             value:data.phone
+                        },
+                        on:{
+                            change:function(event)
+                            {
+                                if(self.checkUser===undefined)
+                                {
+                                    var element = this;
+                                    moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load().then(function(){
+                                        setTimeout(function(){
+                                            element.emit("change");
+                                        },10)
+                                      
+                                    })
+                                }
+                                if(self.checkContact===undefined)
+                                {
+                                    var element = this;
+                                    moduleDatabase.getModule("contacts").load().then(function(){
+                                        setTimeout(function(){
+                                            element.emit("change");
+                                        },10)
+                                    })
+                                }
+                                if(self.checkUser[this.value]!==undefined||self.checkContact[this.value]!==undefined)
+                                {
+                                    if(self.checkUser[this.value]!==undefined){
+                                        var tempValue = self.checkUser[this.value];
+                                        tempValue.type = 0;
+                                        temp.setInformation(tempValue);
+                                    }
+                                    else
+                                    {
+                                        var tempValue = self.checkContact[this.value];
+                                        tempValue.type = 1;
+                                        temp.setInformation(tempValue);
+                                    }
+                                }else
+                                {
+                                    temp.setOpenForm();
+                                }
+                            }
                         }
                     },
                     {
@@ -2268,9 +2514,6 @@ NewRealty.prototype.contactItem = function(data = {
                             ],
                             value:relate
                         }
-                    },
-                    {
-                        
                     }
                 ]
             },
@@ -2294,20 +2537,54 @@ NewRealty.prototype.contactItem = function(data = {
         ]
     })
     var name = $('input.pizo-new-realty-contact-item-name-input',temp);
-    var type_contact = $('div.pizo-new-realty-contact-item-name-selectbox',temp);
+    var typecontact = $('div.pizo-new-realty-contact-item-name-selectbox',temp);
     var phone = $('input.pizo-new-realty-contact-item-phone-input',temp);
     var statusphone = $('div.pizo-new-realty-contact-item-phone-selectbox',temp);
     var note = $('textarea.pizo-new-realty-contact-item-note-input',temp);
-
-    temp.getItemData = function()
+    temp.setInformation = function(data)
     {
-        return {
-            id:data.original.id===""?undefined:data.original.id,
-            name:name.value,
-            type_contact:type_contact.value,
-            phone:phone.value,
-            statusphone:statusphone.value,
-            note:note.value
+        temp.data = data;
+        switch(data.type)
+        {
+            case 0:
+                statusphone.value = 1
+                break;
+            case 1:
+                statusphone.value = data.statusphone;
+                break;
+
+        }
+        name.value = data.name;
+        name.setAttribute("disabled","");
+        statusphone.style.pointerEvents = "none";
+        statusphone.style.backgroundColor = "#f3f3f3";
+    }
+    temp.setOpenForm = function(data)
+    {
+        temp.data = data;
+        name.value = "";
+        statusphone.value = 1;
+        name.removeAttribute("disabled");
+        statusphone.style.pointerEvents = "unset";
+        statusphone.style.backgroundColor = "unset";
+    }
+    temp.getData = function()
+    {
+        if(temp.data!==undefined)
+        {
+            temp.data.typecontact = typecontact.value;
+            temp.note = note.value;
+            return temp.data;
+        }else
+        {
+            return {
+                type:1,
+                name:name.value = "",
+                statusphone:statusphone.value,
+                phone:phone.value,
+                typecontact : typecontact.value,
+                note:note.value
+            }
         }
     }
 
@@ -2382,6 +2659,12 @@ NewRealty.prototype.getDataRowListContact = function(data){
 
 NewRealty.prototype.contactView = function () {
     var self = this;
+    var containerContact = _({
+        tag: "div",
+        class: "pizo-new-realty-contact-content",
+        child: [
+        ]
+    });
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-contact",
@@ -2402,7 +2685,7 @@ NewRealty.prototype.contactView = function () {
                         class:"pizo-new-realty-contact-tab-button",
                         on:{
                             click:function(event){
-                                temp.appendChild(self.contactItem());
+                                containerContact.appendChild(self.contactItem());
                                 
                             }
                         },
@@ -2421,14 +2704,11 @@ NewRealty.prototype.contactView = function () {
                     }
                 ]
             },
-            {
-                tag: "div",
-                class: "pizo-new-realty-contact-content",
-                child: [
-                ]
-            }
+            containerContact
         ]
     })
+
+    this.containerContact = containerContact;
 
     return temp;
 }
@@ -2451,8 +2731,32 @@ NewRealty.prototype.juridicalView = function () {
                 child: [
                     {
                         tag: "div",
-                        class: ""
-                    }
+                        class: "pizo-new-realty-dectruct-content-area-right",
+                        child: [
+                            {
+                                tag: "span",
+                                class: "pizo-new-realty-detruct-content-area-label",
+                                props: {
+                                    innerHTML: "Tình trạng"
+                                },
+                            },
+                            {
+                                tag: "selectmenu",
+                                style:{
+                                    textAlign: "left"
+                                },
+                                class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
+                                props: {
+                                    items:[
+                                        {text:"Chưa xác định",value:0},
+                                        {text:"Sổ hồng",value:1},
+                                        {text:"Giấy viết tay",value:2},
+                                        {text:"Khác",value:3},
+                                    ]
+                                }
+                            }
+                        ]
+                    },
                 ]
             }
         ]
@@ -2461,7 +2765,6 @@ NewRealty.prototype.juridicalView = function () {
 }
 
 NewRealty.prototype.historyView = function () {
-    var self = this;
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-history",

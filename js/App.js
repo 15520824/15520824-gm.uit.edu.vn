@@ -16,7 +16,9 @@ import ListEditHelp from './page/ListEditHelp';
 import ListPositions from './page/ListPositions';
 import ListAccount from './page/ListAccount';
 import ListAddress from './page/ListAddress';
-import ListContact from './page/ListContact'
+import ListContact from './page/ListContact';
+import ListEquipment from './page/ListEquipment';
+
 import xmlModalDragManyFiles from './component/modal_drag_drop_manyfiles';
 
 var _ = Fcore._;
@@ -193,10 +195,6 @@ App.prototype.getView = function()
                                                     pageIndex:31
                                                 },
                                                 {
-                                                    text:"Tiện nghi xung quanh",
-                                                    pageIndex:32
-                                                },
-                                                {
                                                     text:"Thông tin liên hệ",
                                                     pageIndex:33
                                                 }
@@ -231,10 +229,6 @@ App.prototype.getView = function()
                                                     pageIndex:73
                                                 }
                                             ]
-                                        },
-                                        {
-                                            text: "Thống kê",
-                                            pageIndex: 8
                                         },
                                         {
                                             text: "Nhập xuất dữ liệu",
@@ -436,6 +430,13 @@ App.prototype.openPage = function(index){
             var mPlanningInformation = new PlanningInformation();
             mPlanningInformation.attach(this);
             var frameview = mPlanningInformation.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 31:
+            var mListEquipment = new ListEquipment();
+            mListEquipment.attach(this);
+            var frameview = mListEquipment.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;

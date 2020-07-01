@@ -57,7 +57,6 @@ PlanningInformation.prototype.getView = function () {
     }
 
     var mapView = new MapView(); 
-    mapView.activePlanningMap();
     this.searchControl = this.searchControlContent();
 
     var hiddenInput = _({

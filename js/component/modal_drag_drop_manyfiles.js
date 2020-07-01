@@ -150,11 +150,9 @@ export default xmlModalDragManyFiles = {
                   tag: "div",
                   class: [
                     "modal-upload-XML-body-drop-area-main-form",
-                    "displayVisible"
+                    "displayVisible",
+                    "drop-area_c0ek499ts0"
                   ],
-                  props: {
-                    id: "drop-area"
-                  },
                   child: [
                     {
                       tag: "div",
@@ -187,17 +185,15 @@ export default xmlModalDragManyFiles = {
                         {
                           tag: "div",
                           class:
-                            ["modal-upload-XML-body-drop-area-main-gallery","grid"],
-                          props: {
-                            id: "gallery"
-                          }
+                            ["modal-upload-XML-body-drop-area-main-gallery","grid","gallery_c0ek499ts0"],
                         },
                         {
                           tag: "progress",
-                          class:
+                          class:[
                             "modal-upload-XML-body-drop-area-main-process-bar",
+                            "progress-bar_c0ek499ts0"
+                          ],
                           props: {
-                            id: "progress-bar",
                             max: "100",
                             value: "0"
                           }
@@ -259,16 +255,13 @@ export default xmlModalDragManyFiles = {
       ]
     });
     self.xnen = temp;
-    self.dropArea = $('#drop-area',temp);
-    self.progressBar =  $('#progress-bar',temp);
-    self.gallery = $('#gallery',temp);
-     
+
+    self.containGetImage = temp;
     return temp;
   },
   createModal: function(DOMElement,functionClickDone=function(){},functionClickCancel=function(){}) {
     var self = this;
     var xnen = self.containGetImage();
-
     var pointControl = _({
       tag: "div",
       class: ["modal-upload-XML-body-navigation-bar", "selected-modal"],
@@ -353,6 +346,11 @@ export default xmlModalDragManyFiles = {
   },
   createEvent: function() {
     var self = this;
+    if(self.dropArea===undefined)
+    {
+      self.dropArea = $('.drop-area_c0ek499ts0',self.containGetImage);
+      console.log("xxxxxx",self.containGetImage)
+    }
     // self.dropArea = document.getElementById("drop-area");
     // Prevent default drag behaviors
     ["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
@@ -404,6 +402,8 @@ export default xmlModalDragManyFiles = {
   },
   initializeProgress: function(numFiles) {
     var self = this;
+    if(self.progressBar===undefined)
+    self.progressBar =  $('.progress-bar_c0ek499ts0',self.containGetImage);
     self.progressBar.value = 0;
     self.uploadProgress = [];
 
@@ -442,6 +442,10 @@ export default xmlModalDragManyFiles = {
     return temp;
   },
   previewFile: function(file, self) {
+    if(self.gallery===undefined)
+    {
+      self.gallery = $(".gallery_c0ek499ts0",self.containGetImage);
+    }
     if(file.type.match("image.*"))
     {
       var reader = new FileReader();
@@ -450,7 +454,6 @@ export default xmlModalDragManyFiles = {
         var img =  self.Image(reader.result);
         img.value = reader.result;
         var parent = self.gallery;
-        parent.style.position = "relative";
         parent.appendChild(img);
   
         img.onload = function() {
@@ -465,7 +468,6 @@ export default xmlModalDragManyFiles = {
       var img =  self.Image(this.iconSrc+file.name.substr((file.name.lastIndexOf('.') + 1))+".svg");
       img.value = file;
       var parent = self.gallery;
-      parent.style.position = "relative";
       parent.appendChild(img);
 
       img.onload = function() {
@@ -474,6 +476,10 @@ export default xmlModalDragManyFiles = {
   },
   resetFile:function(){
     var self = this;
+    if(self.gallery===undefined)
+    {
+      self.gallery = $(".gallery_c0ek499ts0",self.containGetImage);
+    }
     self.gallery.clearChild();
   },
   getFile:function(){

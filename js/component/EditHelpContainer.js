@@ -729,7 +729,7 @@ EditHelpContainer.prototype.addView = function(value,row,parent_id){
 EditHelpContainer.prototype.addDB = function(value){
     var self = this;
     moduleDatabase.getModule("helps").add(value).then(function(result){
-        value.id = result;
+        value.id = result.data.id;
     })
     
 }

@@ -13764,7 +13764,7 @@ exports.tokTypes = types;
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(227);
+module.exports = __webpack_require__(231);
 
 
 /***/ }),
@@ -16769,7 +16769,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\n.no-animation table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    transform: none;\r\n    transition: none;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n    width: calc(100% - 17px) !important;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important{\r\n    color: #d93025;\r\n}\r\n\r\n.hasErrorElement {\r\n    background-color: #000000;\r\n}", ""]);
+exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\n.no-animation table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    transform: none;\r\n    transition: none;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n    width: calc(100% - 17px) !important;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important{\r\n    color: #d93025;\r\n}\r\n\r\n.hasErrorElement {\r\n    background-color: #000000;\r\n}\r\n\r\n.pizo-app .absol-checkbox.pizo-checkbox .absol-checkbox-icon{\r\n    display: block; \r\n}", ""]);
 
 
 
@@ -16804,7 +16804,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,.pizo-list-plan-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: calc(100% - 50px);\r\n    width: calc(100% - 30px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable th,.pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:50px;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-result-control .parent:nth-child(odd) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control .parent:nth-child(even) td{\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color:#f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #fff ;\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,.pizo-list-plan-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: calc(100% - 50px);\r\n    width: calc(100% - 30px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main{\r\n    flex-direction:column;\r\n}\r\n\r\n.pizo-new-realty-desc{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable th,.pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:50px;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-result-control .parent:nth-child(odd) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control .parent:nth-child(even) td{\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color:#f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #fff ;\r\n}", ""]);
 
 
 
@@ -17157,7 +17157,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-ward-container-district-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-ward-container-district-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7.7857rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-ward-container-district-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-ward-container-district-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-ward-container-district-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7.7857rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-ward-container-district-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}", ""]);
 
 
 
@@ -17297,7 +17297,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-state-container-name-container-label,.pizo-new-state-container-type-container-label,.pizo-new-state-container-nation-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7.7857rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container-name-container-input,.pizo-new-state-container-type-container-input,.pizo-new-state-container-nation-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-state-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container{\r\n    width:50%;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-state-container-name-container-label,.pizo-new-state-container-type-container-label,.pizo-new-state-container-nation-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7.7857rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container-name-container-input,.pizo-new-state-container-type-container-input,.pizo-new-state-container-nation-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-state-container>div:not(:last-child){\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-state-container{\r\n    width:50%;\r\n}", ""]);
 
 
 
@@ -17797,7 +17797,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visible .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -17832,7 +17832,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 20px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  margin-left: 20px;\r\n  margin-top: 3px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}\r\n\r\n.grid{\r\n  height: 385px;\r\n  width: auto;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.grid-item{\r\n  height: 50%;\r\n  display: inline-block;\r\n  position: relative;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -17867,12 +17867,82 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.modal-upload-image-header {\r\n  padding: 17px 20px;\r\n  height: 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-image-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-image-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-image-body {\r\n  position: relative;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-image-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-image-body-drop {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  overflow: hidden;\r\n  top: 51px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form {\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  display: none;\r\n  margin: 20px;\r\n  padding: 10px;\r\n  height: calc(100% - 54px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area {\r\n  height: calc(100% - 72px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#drop-area.highlight {\r\n  border-color: purple;\r\n}\r\n\r\n#gallery {\r\n  margin-top: 10px;\r\n  height: calc(100% - 45px);\r\n  width: 100%;\r\n  position: relative;\r\n  overflow: auto;\r\n}\r\n\r\n.image-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElem {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-image-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-bottom: 2px solid #4d90fe;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  color: #222;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n}\r\n.modal-upload-image-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-image-body-drop-save{\r\n  padding-left: 20px;\r\n  position: absolute;\r\n  bottom: 10px;\r\n}\r\n\r\n.margin-align{\r\n  margin-left: 100px;\r\n  position: relative;\r\n  width: calc(100% - 100px);\r\n  margin-bottom: 0;\r\n}\r\n\r\n.full-size{\r\n  width: auto;\r\n  margin: 2px;\r\n  height: calc(100% - 7px);\r\n}", ""]);
+exports.push([module.i, "\r\n\r\n/*////////////////////////////////////////////////////////////*/\r\n\r\n.freebirdMaterialHeaderbannerLabelTextContainer {\r\n    color: #fff;\r\n    min-width: 0%;\r\n}\r\n\r\n.icon-ceneter{\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.PageView{\r\n    width: 100%;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(255, 255, 255, 0.38);\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    top: 6px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{\r\n    color: #333;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{\r\n    color: rgba(0, 0, 0, 0.38);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{\r\n    height: unset;\r\n    top: -5px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{\r\n    padding-bottom: unset;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{\r\n    background-color: rgba(0, 0, 0, 0);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMast {\r\n    z-index: 1001;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay {\r\n    padding: 10px;\r\n    background-color: rgb(247, 246, 246);\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderTopRow {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabTabWrapper {\r\n    bottom: 0;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    left: 0;\r\n    position: absolute;\r\n    right: 0;\r\n}\r\n\r\n.freebirdFormeditorViewTabMargin {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    height: 0;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    width: 0;\r\n}\r\n\r\n.freebirdSolidBackground {\r\n    background-color: rgb(103, 58, 183);\r\n    color: rgba(255, 255, 255, 1);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabContainer {\r\n    margin: auto;\r\n    position: relative;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: calc(60% + 2px);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabs {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewTabLightTabList {\r\n    background-color: #fff;\r\n    border: solid 1px rgb(30, 30, 32);\r\n}\r\n\r\n.absol-static-tabbar .absol-static-tabbar-button{\r\n    height:48px;\r\n    width:150px;\r\n}\r\n\r\n.freebirdFormeditorViewTabInlineTabContent {\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceEl {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceCentered {\r\n    margin: auto;\r\n    padding-bottom: 10px;\r\n    max-width: 90vw;\r\n    min-width: 770px;\r\n    width: 60%;\r\n\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfacePanel {\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewEditingsurfaceisSelected {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {\r\n    top: 44px;\r\n    right: -69px;\r\n    position: absolute;\r\n    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);\r\n}\r\n\r\n.freebirdFormeditorViewFatPositioner{\r\n    width:52px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {\r\n    margin-top: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem {\r\n    height: 36px;\r\n    padding: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewFatMenuItem {\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewFatCard {\r\n    background-color: #fff;\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointsBadge {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointLabel {\r\n    color: #757575;\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel {\r\n    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    margin-right: 10px;\r\n    margin-top:auto;\r\n    margin-bottom:auto;\r\n}\r\n\r\n.freebirdFormeditorViewTabTitleLabel:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n.freebirdFormeditorViewTabPointValue {\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    font-weight: 700;\r\n    padding: 3px 6px;\r\n}\r\n\r\n.freebirdThemedText {\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabMobilePointLabel {\r\n    display: none;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabList {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n    position: relative;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 0;\r\n    box-flex: 0;\r\n    -webkit-flex-grow: 0;\r\n    flex-grow: 0;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: color .1s;\r\n    transition: color .1s;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    border: 0;\r\n    color: rgba(0,0,0,0.54);\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n    line-height: 48px;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isSelected {\r\n    color: #4285f4;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n}\r\n\r\n.isSelected .quantumWizTabsPapertabsTabContent{\r\n    color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsTabContent {\r\n    -webkit-align-self: center;\r\n    align-self: center;\r\n    padding: 0 24px;\r\n}\r\n\r\n.quantumWizTabsPapertabsTab.isStatic .quantumWizTabsPapertabsStaticTabIndicator {\r\n    display: block;\r\n}\r\n\r\n.freebirdThemedTab  {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.quantumWizTabsPapertabsStaticTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    display: none;\r\n    height: 2px;\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizTabsPapertabsTabIndicator {\r\n    background-color: #4285f4;\r\n    bottom: 0;\r\n    height: 2px;\r\n    position: absolute;\r\n    will-change: left,width;\r\n    left: 269px;\r\n    width: 102px;\r\n}\r\n\r\n.freebirdThemedTab .exportIndicator {\r\n    background-color: rgb(103, 58, 183);\r\n}\r\n\r\n.freebirdFormeditorViewTabTabList.exportTabList {\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderDocTitle {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    min-width: 1rem;\r\n    transition: width 0.25s;\r\n}   \r\n\r\n.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{\r\n    top:5px;\r\n}\r\n\r\n.freebirdHeaderMastWithOverlay .freebirdMutedText {\r\n    color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSaveIndicator {\r\n    cursor: default;\r\n    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    font-style: italic;\r\n    margin: 0 16px;\r\n    min-width: 80px;\r\n    -webkit-user-select: none;\r\n    width: 180px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderBottomRow {\r\n    padding: 8px 20px 0 48px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {\r\n    display: block;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{\r\n    color: #000;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu {\r\n    background: #fff;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderHeaderMenu {\r\n    margin: 0 10px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonFocusOverlay {\r\n    position: absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: transparent;\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonDark {\r\n    color: rgba(255,255,255,0.749);\r\n    fill: rgba(255,255,255,0.749);\r\n}\r\n\r\n.quantumWizButtonPapericonbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 0;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageCard {\r\n    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);\r\n    min-width: 250px;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageHeader {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 40px;\r\n    overflow-y: visible;\r\n    padding-right: 2px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerLabelContainer {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionText {\r\n    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 8px 8px 8px 42px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangleContainer {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    overflow: hidden;\r\n    position: relative;\r\n    width: 18px;\r\n}\r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle {\r\n    height: 100%;\r\n    overflow: visible;\r\n    position: absolute;\r\n    width: 90%;\r\n}\r\n\r\n.freebirdSolidFill {\r\n    fill: rgb(103, 58, 183);\r\n    stroke: rgb(103, 58, 183);\r\n}   \r\n\r\n.freebirdMaterialHeaderbannerSectionTriangle>polygon {\r\n    stroke-width: 1;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{\r\n    font-size: 20px;\r\n    line-height: 135%;\r\n    width: 100%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColor {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    \r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{\r\n    background-color: #4d90fe;  \r\n    width: 3px;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormviewerViewItemList{\r\n    counter-reset: number;\r\n}\r\n\r\n.freebirdFormeditorViewItemcardRoot{\r\n    counter-increment: number;\r\n    margin-top: 1px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRowContain::before{\r\n    content: counter(number);\r\n    font-size: 4rem;\r\n    font-weight: bold;\r\n    color: #000;\r\n    opacity: 0.5;\r\n    transition: 0.25s;\r\n    position: relative;\r\n    top: 7px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewPagePageFields:hover{\r\n    -webkit-box-shadow: 0px 0px 0px 1px green;\r\n    -moz-box-shadow: 0px 0px 0px 1px green;\r\n    box-shadow: 0px 0px 0px 1px green;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{\r\n    border: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{\r\n    border: unset;\r\n}\r\n\r\n.point-dame .absol-icon-button-icon-container{\r\n    margin-top: 4px;\r\n}\r\n\r\n.OrtherInput{\r\n    width: 50%;\r\n    display: inline-block;\r\n}\r\n\r\n.OrtherInput .quantumWizTextinputPapertextareaInput{\r\n    color: rgba(0,0,0,0.54);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{\r\n    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewCursorColorContainer {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n}\r\n\r\n.freebirdFormeditorViewCursorRoot {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 100%;\r\n    left: 0;\r\n    padding-right: 13px;\r\n    position: absolute;\r\n    width: 3px;\r\n    z-index: 1;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageFields {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleAndDescription {\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    outline: none;\r\n    padding-top: 16px;\r\n    padding-bottom: 24px;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInputWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot {\r\n    background-color: #fff;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    outline: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot:last-child {\r\n    border-bottom: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemContentWrapper {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: horizontal;\r\n    box-orient: horizontal;\r\n    -webkit-flex-direction: row;\r\n    flex-direction: row;\r\n    position: relative;\r\n    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);\r\n}\r\n\r\n.item-dlg-dragHandle {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    height: 24px;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewItemContent {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow {\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    position: relative;\r\n    transition: 0.25s;\r\n    margin-right: 42px;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {\r\n    font-size: 16px;\r\n    line-height: 135%;\r\n    font-weight: bold;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {\r\n    margin-right: 0;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot.freebirdFormeditorViewOmnilistItemRoot {\r\n    padding-right: 42px;\r\n}\r\n\r\n.freebirdMaterialIconIconEl {\r\n    direction: ltr;\r\n    text-align: left;\r\n    height: 24px;\r\n    overflow: hidden;\r\n    width: 24px;\r\n    display: inline-block;\r\n    position: relative;\r\n    cursor: move;\r\n    opacity: .3;\r\n}\r\n\r\n.freebirdMaterialIcon{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselAddImageButton {\r\n    height: 48px;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    height: 30px;\r\n    width: 30px;\r\n}\r\n\r\n.docssharedWizOmnilistItemPrimaryContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistItemRoot .omnilist-draghandle-container {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin: auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    position: relative;\r\n    width: min-content;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .omnilist-draghandle {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    cursor: move;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    font-weight: bold;\r\n    opacity: .3; \r\n    width: 42px;\r\n    visibility: hidden;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    margin-left: 10px;\r\n}\r\n\r\n.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{\r\n    /* margin: auto;\r\n    margin-left: .75rem;\r\n    padding-top: 5px; */\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    margin-left: 10px;\r\n    min-width: 0%;\r\n    min-height: 30px;\r\n}\r\n\r\n.freebirdFormeditorViewItemMinimized {\r\n    padding: 0 24px 20px 42px;\r\n    font-size: 16px;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyQuestionBody {\r\n    margin-bottom: 20px;\r\n    margin-top: 10px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {\r\n    margin-left: 42px;\r\n}\r\n\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyRoot {\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {\r\n    width: unset;\r\n}\r\n\r\n.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{\r\n    width: 100%;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodyShorttextbodyShortTextInput {\r\n    width: 50%;\r\n}\r\n\r\n.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    opacity: .54;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterLeft {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 44px;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterAssessmentIcons {\r\n    -webkit-align-self: baseline;\r\n    align-self: baseline;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterPointsText {\r\n    color: #444;\r\n    cursor: default;\r\n    font-size: 14px;\r\n    padding-left: 2px;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterRight {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterFooterSeparator {\r\n    border-left: 1px solid #e0e0e0;\r\n    height: 32px;\r\n    margin: 0 16px;\r\n    width: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterToggleLabel {\r\n    color: #444;\r\n    cursor: default;\r\n    font-weight: 600;\r\n    margin-right: 8px;\r\n    -webkit-user-select: none;\r\n    vertical-align: bottom; \r\n}\r\n\r\n.quantumWizTogglePapertoggleEl {\r\n    -webkit-user-select: none;\r\n    -webkit-tap-highlight-color: transparent;\r\n    -webkit-box-sizing: content-box;\r\n    box-sizing: content-box;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    outline: none;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    z-index: 0;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{\r\n    margin-bottom: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPagePageBreakGap {\r\n    -webkit-box-align: start;\r\n    box-align: start;\r\n    -webkit-align-items: flex-start;\r\n    align-items: flex-start;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 96px;\r\n}\r\n\r\n.freebirdFormeditorViewPageGoToPageSelectLabel {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    color: rgba(0,0,0,0.54);\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.freebirdFormeditorViewItemTypechooserTypeChooser {\r\n    display: -webkit-inline-block;\r\n    display: none;\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{\r\n    margin-right: 16px;\r\n}\r\n\r\n.absol-switch-slider{\r\n    -webkit-transition: unset;\r\n    transition: unset;\r\n}\r\n\r\n.blueBackground{\r\n    background-color: white;\r\n    border-color: #46b8da;\r\n    color: #5bc0de;\r\n}\r\n\r\n.whiteBackground{\r\n    background-color: #673ab7;\r\n    border-color: #ffffff;\r\n    color: #ffffff;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-icon-container>i{\r\n    color: #ffffff;;\r\n}\r\n\r\n.whiteBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n    margin: auto;\r\n    vertical-align: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container{\r\n    background-color: unset;\r\n}\r\n\r\n.blueBackground .absol-icon-button-icon-container>i{\r\n    color: #5bc0de;\r\n}\r\n\r\n.blueBackground .absol-icon-button-text-container{\r\n    border-left:unset;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: hidden;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{\r\n    visibility: visible;\r\n}\r\n\r\n.docssharedWizOmnilistGhostitemRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    height: 30px;\r\n    margin-left: 52px;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOtherSection {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistGhostitemAddOther {\r\n    color: #1a73e8;\r\n    font-size: 13px;\r\n    font-weight: 500;\r\n    line-height: normal;\r\n    margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeader {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    min-height: 2rem;\r\n    padding-bottom: 24px;\r\n    padding-left: 42px;\r\n    padding-right: 42px;\r\n    padding-top: 0;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentHeaderWrapper {\r\n    padding-bottom: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentFooterFooterRow {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    border-top: 1px solid #e0e0e0;\r\n    height: 64px;\r\n    box-pack: justify;\r\n    -webkit-box-pack: justify;\r\n    -webkit-justify-content: space-between;\r\n    justify-content: space-between;\r\n    margin-left: 42px;\r\n    padding-right: 2px;\r\n}\r\n\r\n.feedBack{\r\n    border: none;\r\n    height: 44px;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.feedBack .absol-icon-button-icon-container{\r\n    margin-top: 1px;\r\n}\r\n\r\n.feedBack .material-icons{\r\n    font-size: 21px;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl{\r\n    text-transform: none;\r\n}\r\n\r\n.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{\r\n    margin: 0px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleInput {\r\n    font-size: 16px;\r\n    margin: auto;\r\n    margin-right: 48px;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    position: relative;\r\n    margin-left: 5px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentTitleRowContent {\r\n    margin-right: 24px;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsContainer {\r\n    margin-bottom: 0px;\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput {\r\n    max-width: 250px;\r\n    margin: 0 .5rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {\r\n    font-size: 14px;\r\n    text-align: right;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-bottom: 8px;\r\n}\r\n\r\n.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{\r\n    padding-right: 24px;\r\n    padding-left: 42px;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {\r\n    display: block;\r\n    width: 100%;\r\n    margin-top: 16px;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{\r\n    font-size: 34px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAssessmentBodyContent {\r\n    margin-top: 10px;\r\n    margin-left: 44px;\r\n    margin-right: 24px;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    min-height: 30px;\r\n    overflow: hidden;\r\n    padding: 0 10px;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItem {\r\n    cursor: pointer;\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin: 1px 0;\r\n}\r\n\r\n.freebirdFormeditorViewOmnilistMorselTypeIndicator {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    margin-right: 10px;\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentAnswersListIsCorrect .freebirdFormeditorViewAssessmentAnswersListCorrectnessLabel {\r\n    display: inline-block;\r\n}\r\n\r\n.isChecked {\r\n    background-color: #f1f8e9;\r\n}\r\n.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{\r\n    border-left: 2px solid rgba(0,0,0,0.26);\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    padding-left: 8px;\r\n    border-color: green;\r\n }\r\n\r\n .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{\r\n    display: none;\r\n }\r\n\r\n .isChecked .quantumWizButtonEl{\r\n     display: inline-block;\r\n }\r\n\r\n .quantumWizMenuPapermenuiconbuttonEl{\r\n    width: 40px;\r\n    height: 40px;\r\n }\r\n\r\n.quantumWizDialogEl {\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    max-height: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogEl {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);\r\n    position: relative;\r\n    background-color: #fff;\r\n    -webkit-border-radius: 2px;\r\n    border-radius: 2px;\r\n    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);\r\n    max-width: 24rem;\r\n    outline: 1px solid transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog {\r\n    height: auto;\r\n    max-width: 100%;\r\n    width: 440px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {\r\n    font-weight: 400;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainer {\r\n    justify-content: center;\r\n    padding-left: 42px;\r\n    padding-right: 24px;\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    max-width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerMain{\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{\r\n    max-width: 120px;\r\n    text-align: center;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabel {\r\n    line-height: 135%;\r\n    min-width: 0%;\r\n    word-wrap: break-word;\r\n    width: 120px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn {\r\n    -webkit-box-align: stretch;\r\n    box-align: stretch;\r\n    -webkit-align-items: stretch;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-box-orient: vertical;\r\n    box-orient: vertical;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n    text-align: center;\r\n    margin-top:auto;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    box-pack: center;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n    justify-content: center;\r\n    min-height: 3rem;\r\n}\r\n\r\n.freebirdMaterialScalecontentRangeLabelContainer{\r\n    margin-top: auto;\r\n    margin-bottom: 7px;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel{\r\n    padding-left: 5px;\r\n    padding-right: 5px;\r\n    min-height: 24px;\r\n}\r\n\r\n.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{\r\n    padding-left: 0px;\r\n}\r\n.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{\r\n    padding-right: 0px;\r\n}\r\n\r\n.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {\r\n    background-color: #fafafa;\r\n}\r\n\r\n.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{\r\n    text-align: center;\r\n    width: 100%;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleBar {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    \r\n    padding: 24px 24px 20px 24px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogTitleText {\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    -webkit-flex-shrink: 1;\r\n    flex-shrink: 1;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n}\r\n\r\n.quantumWizDialogPaperdialogContent {\r\n    -webkit-box-flex: 2;\r\n    box-flex: 2;\r\n    -webkit-flex-grow: 2;\r\n    flex-grow: 2;\r\n    -webkit-flex-shrink: 2;\r\n    flex-shrink: 2;\r\n    display: block;\r\n    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    padding: 0 24px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent {\r\n    padding: 0;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderDialogContent{\r\n    border-bottom: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.quantumWizCommonPositioningScrollableHost {\r\n    position: relative;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderText {\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n}\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {\r\n    font-size: 16px;\r\n    font-weight: 550;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {\r\n    color: rgba(0,0,0,0.54);\r\n    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n    line-height: 18px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSectionBody {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-flex: 1;\r\n    -webkit-flex: 1;\r\n    flex: 1;\r\n    height: 64px;\r\n}\r\n\r\n.docssharedWizOmnilistMorselRoot {\r\n    -webkit-box-align: center;\r\n    box-align: center;\r\n    -webkit-align-items: center;\r\n    align-items: center;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child {\r\n    border-top: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection {\r\n    border-top: 1px solid rgba(0,0,0,0.12);\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{\r\n    visibility: visible;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection .omnilist-draghandle {\r\n    padding: 0 4px;\r\n    visibility: inherit;\r\n    width: 60px;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{\r\n    border-left:4px solid #4285f4;\r\n    -webkit-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{\r\n   padding-left: 0px;\r\n}\r\n\r\n.absol-tooltip-root{\r\n    z-index: 9999;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:first-child .leftControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.freebirdFormeditorDialogReorderSection:last-child .rightControl{\r\n    color: rgba(0,0,0,0.54);\r\n    pointer-events: none;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons {\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    box-pack: end;\r\n    -webkit-box-pack: end;\r\n    -webkit-justify-content: flex-end;\r\n    justify-content: flex-end;\r\n    padding: 24px 24px 16px 24px;\r\n}\r\n\r\n.quantumWizButtonPaperbuttonEl {\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .2s .1s;\r\n    transition: background .2s .1s;\r\n    border: 0;\r\n    -webkit-border-radius: 3px;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 14px;\r\n    font-weight: 550;\r\n    min-width: 4rem;\r\n    outline: none;\r\n    overflow: hidden;\r\n    position: relative;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    -webkit-tap-highlight-color: transparent;\r\n    z-index: 0;\r\n}\r\n\r\n.quantumWizDialogPaperdialogBottomButtons{\r\n    padding: 16px;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 {\r\n    line-height: 20px;\r\n    min-width: 88px;\r\n}\r\n\r\n.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {\r\n    min-width: 64px;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton {\r\n    position: absolute;\r\n    top: -12px;\r\n    left: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 48px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 48px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButtonClose {\r\n    position: absolute;\r\n    top: -7px;\r\n    right: -12px;\r\n    -webkit-user-select: none;\r\n    -webkit-transition: background .3s;\r\n    transition: background .3s;\r\n    border: 0;\r\n    -webkit-border-radius: 50%;\r\n    border-radius: 50%;\r\n    color: #444;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    fill: #444;\r\n    -webkit-flex-shrink: 0;\r\n    flex-shrink: 0;\r\n    height: 36px;\r\n    outline: none;\r\n    overflow: hidden;\r\n    -webkit-tap-highlight-color: transparent;\r\n    width: 36px;\r\n    z-index: 1;\r\n    background-color: #f5f5f5;\r\n    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n    display: none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{\r\n    display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: none;\r\n}\r\n.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left\r\n{\r\n    display: unset;\r\n}\r\n\r\n.freebirdFormeditorViewMediaEditMenuButton{\r\n    display:none;\r\n}\r\n\r\n.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{\r\n    display: inline-block;\r\n}\r\n\r\n.infotext{\r\n    display:table-cell;\r\n    vertical-align: top;\r\n    padding-top: 7px;\r\n    height:30px;\r\n    padding: 0.5rem;\r\n }\r\n\r\n .properties{\r\n    display:table-cell;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    font-size: 1rem;\r\n    padding: 0.5rem;\r\n    vertical-align: middle;\r\n    resize: none;\r\n    width:374px;\r\n    height:30px;\r\n    margin-left: 10px;\r\n}\r\n\r\n.container-form{\r\n    display: table-row;\r\n    min-width: 374px;\r\n}\r\n\r\n.point-dame .freebirdMaterialIcon{\r\n    background-color: #673ab7;\r\n}\r\n\r\n.point-dame .freebirdFormeditorViewItemTitleRowContain::before {\r\n    top: 0px;\r\n}\r\n\r\n.absol-context-hinge-fixed-container{\r\n    z-index: 1002;\r\n}\r\n\r\n.vertical-center{\r\n    left: 50%;\r\n    transform: translate(50%, 0);\r\n}\r\n\r\n.disable{\r\n    opacity: .5;\r\n    pointer-events: none;\r\n}\r\n\r\n.visible .disable{\r\n    opacity: 1;\r\n    pointer-events: unset;\r\n}\r\n\r\n.selected .freebirdFormeditorViewItemPictureButton{\r\n    visibility: visible !important;\r\n}\r\n\r\n", ""]);
 
 
 
 /***/ }),
 /* 227 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(228);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// Module
+exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 57px);\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: calc(100% - 20px);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin: 20px;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  height: calc(100% - 89px);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: inline-block;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  margin-left: 20px;\r\n  margin-top: 3px;\r\n  position: relative;\r\n  padding: 8px 0;\r\n  display: inline-block;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}\r\n\r\n.grid{\r\n  height: 385px;\r\n  width: auto;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.grid-item{\r\n  height: 50%;\r\n  display: inline-block;\r\n  position: relative;\r\n}", ""]);
+
+
+
+/***/ }),
+/* 229 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(230);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(3)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 230 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// Module
+exports.push([module.i, ".modal-upload-image {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.modal-upload-image-header {\r\n  padding: 17px 20px;\r\n  height: 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-image-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-image-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-image-body {\r\n  position: relative;\r\n  height: calc(100% - 55px);\r\n}\r\n\r\n.modal-upload-image-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-image-body-drop {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  overflow: hidden;\r\n  top: 51px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form {\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  display: none;\r\n  margin: 20px;\r\n  padding: 10px;\r\n  height: calc(100% - 54px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area {\r\n  height: calc(100% - 72px);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-image-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#drop-area.highlight {\r\n  border-color: purple;\r\n}\r\n\r\n#gallery {\r\n  margin-top: 10px;\r\n  height: calc(100% - 45px);\r\n  width: 100%;\r\n  position: relative;\r\n  overflow: auto;\r\n}\r\n\r\n.image-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElem {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-image-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-bottom: 2px solid #4d90fe;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  color: #222;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n}\r\n.modal-upload-image-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-image-body-drop-save{\r\n  padding-left: 20px;\r\n  position: absolute;\r\n  bottom: 10px;\r\n}\r\n\r\n.margin-align{\r\n  margin-left: 100px;\r\n  position: relative;\r\n  width: calc(100% - 100px);\r\n  margin-bottom: 0;\r\n}\r\n\r\n.full-size{\r\n  width: auto;\r\n  margin: 2px;\r\n  height: calc(100% - 7px);\r\n}", ""]);
+
+
+
+/***/ }),
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46879,7 +46949,8 @@ tableView.prototype.getCellHeader = function (header, i) {
         "class": "material-icons",
         style: {
           fontSize: "1.4rem",
-          cursor: "pointer"
+          cursor: "pointer",
+          verticalAlign: "bottom"
         },
         props: {
           innerHTML: icon
@@ -47080,6 +47151,19 @@ tableView.prototype.checkLongRow = function (index) {
       for (var j = 0; j < index; j++) {
         if (result.checkSpan[j] !== undefined) if (result.checkSpan[j][i] !== undefined) delta[i]++;
       }
+    }
+  }
+
+  return delta;
+};
+
+tableView.prototype.checkLongColumn = function (row, column) {
+  var result = this;
+  var delta = 0;
+
+  if (result.checkSpan !== undefined) {
+    for (var j = 0; j < column; j++) {
+      if (result.checkSpan[row] !== undefined) if (result.checkSpan[row][j] !== undefined) delta++;
     }
   }
 
@@ -48169,6 +48253,14 @@ tableView.prototype.updateTable = function (header) {
   this.data = data;
 };
 
+tableView.prototype.getLastElement = function (element) {
+  if (element.childrenNodes !== undefined && element.childrenNodes.length !== 0) {
+    return this.getLastElement(element.childrenNodes[element.childrenNodes.length - 1]);
+  }
+
+  return element;
+};
+
 tableView.prototype.insertRow = function (data) {
   var checkMust = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
   var result = this,
@@ -48200,7 +48292,8 @@ tableView.prototype.insertRow = function (data) {
   if (result.tagName === "TABLE") result.bodyTable.addChild(row);else {
     checkChild = true;
     if (!result.classList.contains("more-child")) result.setDisPlay();
-    result.bodyTable.insertBefore(row, result.clone[0][result.clone[0].length - 1].parentNode.nextSibling);
+    var tempElement = result.getLastElement(result.clone[0][result.clone[0].length - 1].parentNode);
+    result.bodyTable.insertBefore(row, tempElement.nextSibling);
   }
 
   for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
@@ -48471,23 +48564,48 @@ tableView.prototype.dropRow = function (index) {
 
 tableView.prototype.insertColumn = function (index) {
   var insertBefore = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
-  var indexClone = this.clone.length;
-  if (this.clone[indexClone] === undefined) this.clone[indexClone] = [];
+  var current = [];
   var cell, cellHeader;
   delete this.header[index].hidden;
   this.check[index] = this.header[index].type;
   cellHeader = this.getCellHeader(this.header[index], index);
-  this.clone[indexClone].push(cellHeader);
-  this.headerTable.childNodes[0].appendChild(cellHeader);
+  var currentClone;
+
+  if (insertBefore === -1) {
+    this.headerTable.childNodes[0].appendChild(cellHeader);
+    current.push(cellHeader);
+    this.clone.push(current);
+  } else {
+    if (this.clone.length < insertBefore) {
+      console.log("index insert > current index");
+      return;
+    } else currentClone = this.clone[insertBefore];
+
+    this.headerTable.childNodes[0].insertBefore(cellHeader, this.clone[insertBefore][0]);
+    current.push(cellHeader);
+    this.clone.splice(insertBefore, 0, current);
+  }
+
+  var k = 1;
 
   for (var i = 0; i < this.childrenNodes.length; i++) {
     cell = this.getCell(this.childrenNodes[i].data[index], i, index, this.clone[this.clone.length - 1][0].id + 1, this.checkSpan, this.childrenNodes[i]);
-    this.clone[indexClone].push(cell);
-    this.childrenNodes[i].appendChild(cell);
+    current.push(cell);
+    if (insertBefore === -1) this.childrenNodes[i].appendChild(cell);else {
+      if (this.childrenNodes[i] === currentClone[k].parentNode) {
+        this.childrenNodes[i].insertBefore(cell, currentClone[k]);
+      } else {
+        var tempIndexRow = insertBefore - this.checkLongColumn(i, insertBefore);
+        if (this.childrenNodes[i].childNodes[tempIndexRow] !== undefined) this.childrenNodes[i].insertBefore(cell, this.childrenNodes[i].childNodes[tempIndexRow]);else this.childrenNodes[i].appendChild(cell);
+        k--;
+      }
+    }
 
     if (this.childrenNodes[i].childrenNodes.length !== 0) {
       this.childrenNodes[i].insertColumn(index, insertBefore);
     }
+
+    k++;
   }
 };
 
@@ -49166,7 +49284,8 @@ function tableViewMobile() {
             "class": "material-icons",
             style: {
               fontSize: "1.4rem",
-              cursor: "pointer"
+              cursor: "pointer",
+              verticalAlign: "bottom"
             },
             props: {
               innerHTML: icon
@@ -50034,47 +50153,40 @@ function DataStructure(hostDatabase, name) {
 DataStructure.prototype.load = function () {
   var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var isLoaded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  var pushArray = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   var self = this;
 
-  if (data.WHERE !== undefined && self.data !== undefined) {
-    if (isLoaded == false && self.data[data.WHERE] !== undefined) return Promise.resolve(self.data[data.WHERE]);
-    return new Promise(function (resolve, reject) {
-      self.queryData(self.phpLoader, data).then(function (value) {
-        if (self.data[data.WHERE == undefined]) self.data[data.WHERE] = [];
-        self.data[data.WHERE] = value;
-        resolve(value);
-      })["catch"](function (error) {
-        reject(error);
-        console.error(error);
-      });
-    });
-  } else {
-    if (isLoaded == false && self.promiseLoad !== undefined) {
-      if (self.promiseLoad.status === "pending") return self.promiseLoad;else return Promise.resolve(self.data);
-    }
-
-    var promiseLoad;
-    promiseLoad = new Promise(function (resolve, reject) {
-      self.queryData(self.phpLoader, data).then(function (value) {
-        if (pushArray == false) self.data = value;else {
-          if (self.data === undefined) self.data = [];
-          self.data.concat(value);
-        }
-        self.getLibary();
-        promiseLoad.status = "done";
-        resolve(value);
-      })["catch"](function (error) {
-        promiseLoad.status = "reject";
-        reject(error);
-        console.error(error);
-      });
-    });
-    promiseLoad.status = "pending";
-    self.promiseLoad = promiseLoad;
-    console.log(promiseLoad);
-    return self.promiseLoad;
+  if (isLoaded == false && self.promiseLoad !== undefined && data.WHERE == undefined) {
+    if (self.promiseLoad.status === "pending") return self.promiseLoad;else return Promise.resolve(self.data);
   }
+
+  var promiseLoad;
+  promiseLoad = new Promise(function (resolve, reject) {
+    self.queryData(self.phpLoader, data).then(function (value) {
+      if (self.data === undefined) self.data = [];
+
+      for (var i = 0; i < value.length; i++) {
+        var libary = self.Libary["id"];
+
+        if (libary === undefined) {
+          self.data = value;
+        } else if (libary[value[i].id] === undefined) {
+          self.data.push(value[i]);
+          self.setFormatAdd(value[i]);
+        }
+      }
+
+      self.getLibary();
+      promiseLoad.status = "done";
+      resolve(value);
+    })["catch"](function (error) {
+      promiseLoad.status = "reject";
+      reject(error);
+      console.error(error);
+    });
+  });
+  promiseLoad.status = "pending";
+  self.promiseLoad = promiseLoad;
+  return self.promiseLoad;
 };
 
 DataStructure.prototype.getLibary = function (param, formatFunction) {
@@ -50105,14 +50217,14 @@ DataStructure.prototype.getLibary = function (param, formatFunction) {
       var isID = false;
 
       for (var param in _this.Libary) {
-        if (param = "id") isID = true;
+        if (param === "id") isID = true;
 
         for (var i = 0; i < _this.data.length; i++) {
           _this.setLibaryRow(_this.data[i], param, formatFunction, isArray);
         }
       }
 
-      if (isID == false) {
+      if (isID === false) {
         for (var i = 0; i < _this.data.length; i++) {
           _this.setLibaryRow(_this.data[i], "id", formatFunction, isArray);
         }
@@ -50215,7 +50327,6 @@ DataStructure.prototype.add = function (data) {
       if (self.data.length == 0) {} else {
         Object.assign(data, value.data);
         self.setFormatAdd(data);
-        console.log(value.insert, value.update, value);
 
         if (value.insert !== undefined) {
           for (var i = 0; i < value.insert.length; i++) {
@@ -50369,7 +50480,6 @@ DataStructure.prototype.queryData = function (phpFile, data) {
 
 
 
-
 var MapView_ = dom_Fcore._;
 var MapView_$ = dom_Fcore.$;
 function locationView(functionDone, data) {
@@ -50420,6 +50530,12 @@ function locationView(functionDone, data) {
   temp.map = map;
   temp.detailView = detailView;
   temp.getDataCurrent = detailView.getDataCurrent.bind(detailView);
+
+  temp.addLatLng = function () {
+    temp.detailView.addLatLng();
+    temp.map.addLatLng();
+  };
+
   temp.data = data;
   return temp;
 }
@@ -50622,6 +50738,26 @@ function DetailView(map, data) {
       }
     }
   });
+
+  var containerGPS = MapView_({
+    tag: "div",
+    "class": "pizo-new-realty-location-detail-row",
+    style: {
+      display: "none"
+    },
+    child: [{
+      tag: "span",
+      "class": "pizo-new-realty-location-detail-row-label",
+      props: {
+        innerHTML: "GPS"
+      }
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-location-detail-row-menu",
+      child: [_long, lat]
+    }]
+  });
+
   temp = MapView_({
     tag: "div",
     "class": "pizo-new-realty-location-detail",
@@ -50720,21 +50856,7 @@ function DetailView(map, data) {
           }
         }]
       }, number]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-location-detail-row",
-      child: [{
-        tag: "span",
-        "class": "pizo-new-realty-location-detail-row-label",
-        props: {
-          innerHTML: "GPS"
-        }
-      }, {
-        tag: "div",
-        "class": "pizo-new-realty-location-detail-row-menu",
-        child: [_long, lat]
-      }]
-    }]
+    }, containerGPS]
   });
   temp.input = input;
   temp.number = number;
@@ -50745,20 +50867,30 @@ function DetailView(map, data) {
   Object.assign(temp, DetailView.prototype);
   temp["long"] = _long;
   temp.lat = lat;
+  temp.containerGPS = containerGPS;
   temp.activeAutocomplete(map);
   return temp;
 }
 
+DetailView.prototype.addLatLng = function () {
+  this.containerGPS.style.display = "";
+};
+
 DetailView.prototype.getDataCurrent = function () {
-  return {
+  var temp = {
     number: this.number.value,
     street: this.street.value,
     ward: this.ward.value,
     district: this.district.value,
-    state: this.state.value,
-    lng: this["long"].value,
-    lat: this.lat.value
+    state: this.state.value
   };
+
+  if (this.containerGPS.style.display === "none") {
+    temp.lng = this["long"].value;
+    temp.lat = this.lat.value;
+  }
+
+  return temp;
 };
 
 DetailView.prototype.activeAutocomplete = function (map) {
@@ -51020,6 +51152,18 @@ function MapView_MapView() {
 
 MapView_MapView.prototype.activePlanningMap = function () {
   this.map = this.activeMap();
+  this.addMapPolygon();
+  this.addMapHouse();
+};
+
+MapView_MapView.prototype.addLatLng = function () {
+  if (this.currentMarker !== undefined) {
+    this.currentMarker.setOption({
+      draggable: true
+    });
+  }
+
+  this.draggable = true;
 };
 
 MapView_MapView.prototype.addMapPolygon = function () {
@@ -51063,14 +51207,17 @@ MapView_MapView.prototype.addMapPolygon = function () {
           if (self.checkMap[cellDeltaLat] === undefined || self.checkMap[cellDeltaLat][cellDeltaLng] === undefined) {
             if (self.checkMap[cellDeltaLat] === undefined) self.checkMap[cellDeltaLat] = [];
             if (self.checkMap[cellDeltaLat][cellDeltaLng] === undefined) self.checkMap[cellDeltaLat][cellDeltaLng] = [];
+            if (self.checkLibary[cellDeltaLat] === undefined) self.checkLibary[cellDeltaLat] = [];
             component_ModuleDatabase.getModule("polygon").load({
               cellLng: cellDeltaLng,
               cellLat: cellDeltaLat
-            }, true, true).then(function (value) {
+            }, true, true).then(function (cellDeltaLat, cellDeltaLng, value) {
               for (var i = 0; i < value.length; i++) {
-                self.addWKT(value[i]["AsText(`map`)"], cellLat, cellDeltaLng);
+                self.addWKT(value[i]["AsText(`map`)"], cellDeltaLat, cellDeltaLng);
               }
-            });
+
+              self.checkLibary[cellDeltaLat][cellDeltaLng] = 1;
+            }.bind(null, cellDeltaLat, cellDeltaLng));
           } else {
             self.setMapPolygon(cellDeltaLat, cellDeltaLng);
           }
@@ -51078,6 +51225,134 @@ MapView_MapView.prototype.addMapPolygon = function () {
       }
     }
   });
+};
+
+MapView_MapView.prototype.addMapHouse = function () {
+  component_ModuleDatabase.getModule("activehouses", ["loadActiveHouses.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActiveHouse.php"]);
+  var self = this;
+  if (this.checkHouse === undefined) this.checkHouse = [];
+  if (this.currentHouse === undefined) this.currentHouse = [];
+  if (this.checkLibaryHouse === undefined) this.checkLibaryHouse = [];
+  google.maps.event.addListener(self.map, 'zoom_changed', function () {
+    var zoomLevel = self.map.getZoom();
+
+    if (zoomLevel >= 20) {
+      self.enableHouse = true;
+      new google.maps.event.trigger(self.map, 'center_changed');
+    } else {
+      self.enableHouse = false;
+      self.removeMapHouse();
+    }
+  });
+  self.map.setZoom(20);
+  console.log(self.map);
+  var intLng, cellLng, intLat, cellLat, cellDeltaLat, cellDeltaLng;
+  google.maps.event.addListener(self.map, "center_changed", function () {
+    if (self.enableHouse == true) {
+      var center = this.getCenter();
+      var latitude = center.lat();
+      var longitude = center.lng();
+      intLng = parseInt(longitude / 1);
+      cellLng = Math.ceil(longitude % 1 / 0.0009009009009009009);
+      intLat = parseInt(latitude / 1);
+      cellLat = Math.ceil(latitude % 1 / 0.0009009009009009009);
+      cellLng = intLng * 10000 + cellLng;
+      cellLat = intLat * 10000 + cellLat;
+      self.removeMapHouseAround(cellLat, cellLng);
+
+      for (var m = -2; m <= 1; m++) {
+        for (var k = -2; k <= 1; k++) {
+          cellDeltaLat = cellLat + m;
+          cellDeltaLng = cellLng + k;
+
+          if (self.checkHouse[cellDeltaLat] === undefined || self.checkHouse[cellDeltaLat][cellDeltaLng] === undefined) {
+            if (self.checkHouse[cellDeltaLat] === undefined) self.checkHouse[cellDeltaLat] = [];
+            if (self.checkHouse[cellDeltaLat][cellDeltaLng] === undefined) self.checkHouse[cellDeltaLat][cellDeltaLng] = [];
+            if (self.checkLibaryHouse[cellDeltaLat] === undefined) self.checkLibaryHouse[cellDeltaLat] = [];
+            component_ModuleDatabase.getModule("activehouses").load({
+              cellLng: cellDeltaLng,
+              cellLat: cellDeltaLat
+            }, true, true).then(function (cellDeltaLat, cellDeltaLng, value) {
+              for (var i = 0; i < value.length; i++) {
+                self.addOrtherMarker(value[i], cellDeltaLat, cellDeltaLng);
+                self.checkLibaryHouse[cellDeltaLat][cellDeltaLng] = 1;
+              }
+            }.bind(null, cellDeltaLat, cellDeltaLng));
+          } else {
+            self.setMapHouse(cellDeltaLat, cellDeltaLng);
+          }
+        }
+      }
+    }
+  });
+};
+
+MapView_MapView.prototype.addOrtherMarker = function (data, cellLat, cellLng) {
+  var self = this;
+  var image = {
+    url: "../../assets/images/marker-blue.png",
+    // This marker is 20 pixels wide by 32 pixels high.
+    scaledSize: new google.maps.Size(24, 24),
+    // The origin for this image is (0, 0).
+    origin: new google.maps.Point(0, 0),
+    // The anchor for this image is the base of the flagpole at (0, 32).
+    anchor: new google.maps.Point(12, 12)
+  };
+  var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(position[0], position[1]),
+    map: self.map,
+    draggable: false,
+    icon: image,
+    title: "Latitude:" + position[0] + " | Longtitude:" + position[1],
+    zIndex: 2
+  });
+  this.checkHouse[cellLat][cellLng].push(marker);
+  this.currentHouse.push([cellLat, cellLng]);
+  return this.checkHouse[cellLat][cellLng];
+};
+
+MapView_MapView.prototype.setMapHouse = function (cellLat, cellLng) {
+  if (this.checkLibaryHouse[cellLat] === undefined || this.checkLibaryHouse[cellLat][cellLng] === 1) return;
+  var arr = this.checkHouse[cellLat][cellLng];
+
+  for (var i = 0; i < arr.length; i++) {
+    arr[i].setMap(this.map);
+  }
+
+  if (this.checkLibaryHouse[cellLat][cellLng] !== 1) this.currentHouse.push([cellLat, cellLng]);
+};
+
+MapView_MapView.prototype.removeMapHouse = function (arr) {
+  for (var i = this.currentHouse.length - 1; i >= 0; i--) {
+    var arr = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
+
+    for (var j = 0; j < arr.length; j++) {
+      arr[j].setMap(null);
+    }
+
+    this.checkLibaryHouse[this.currentHouse[i][0]][this.currentHouse[i][1]] = undefined;
+    this.currentHouse.splice(i, 1);
+  }
+};
+
+MapView_MapView.prototype.removeMapHouseAround = function (cellLat, cellLng) {
+  var currentLat, currentLng;
+
+  for (var i = this.currentHouse.length - 1; i >= 0; i--) {
+    currentLat = this.currentHouse[i][0];
+    currentLng = this.currentHouse[i][1];
+
+    if (Math.abs(currentLat - cellLat) > 3 || Math.abs(currentLng - cellLng) > 3) {
+      var arr = this.checkHouse[currentLat][currentLng];
+
+      for (var j = 0; j < arr.length; j++) {
+        arr[j].setMap(null);
+      }
+
+      this.currentHouse.splice(i, 1);
+      this.checkLibaryHouse[currentLat][currentLng] = undefined;
+    }
+  }
 };
 
 MapView_MapView.prototype.addWKT = function (multipolygonWKT, cellLat, cellLng) {
@@ -51100,12 +51375,12 @@ MapView_MapView.prototype.addWKT = function (multipolygonWKT, cellLat, cellLng) 
   }
 
   if (this.checkLibary[cellLat] === undefined) this.checkLibary[cellLat] = [];
-  if (this.checkLibary[cellLat][cellLng] !== 1) this.currentPolygon.push([cellLat, cellLng]);
-  this.checkLibary[cellLat][cellLng] = 1;
+  this.currentPolygon.push([cellLat, cellLng]);
   return this.checkMap[cellLat][cellLng];
 };
 
 MapView_MapView.prototype.setMapPolygon = function (cellLat, cellLng) {
+  if (this.checkLibary[cellLat] === undefined || this.checkLibary[cellLat][cellLng] === 1) return;
   var arr = this.checkMap[cellLat][cellLng];
 
   for (var i = 0; i < arr.length; i++) {
@@ -51154,6 +51429,7 @@ MapView_MapView.prototype.activeDetail = function (detailView) {
   this.detailView = detailView;
   this.map = this.activeMap();
   this.addMapPolygon();
+  this.addMapHouse();
 };
 
 MapView_MapView.prototype.activeMap = function () {
@@ -51168,6 +51444,7 @@ MapView_MapView.prototype.activeMap = function () {
   });
   this.delay = 10;
   this.numDeltas = 50;
+  this.draggable = false;
   return map;
 };
 
@@ -51196,7 +51473,7 @@ MapView_MapView.prototype.addMoveMarker = function (position) {
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(position[0], position[1]),
       map: self.map,
-      draggable: true,
+      draggable: self.draggable,
       icon: image,
       title: "Latitude:" + position[0] + " | Longtitude:" + position[1],
       zIndex: 2
@@ -52166,6 +52443,8 @@ NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage, index
 
 NewRealty_NewRealty.prototype.itemAdress = function () {
   var addressid = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var lat = arguments.length > 1 ? arguments[1] : undefined;
+  var lng = arguments.length > 2 ? arguments[2] : undefined;
   var self = this;
 
   var text = NewRealty_({
@@ -52197,7 +52476,88 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
           var childNode = locationView(function (value) {
             selfElement.value = value.input.value;
             temp.data = childNode.getDataCurrent();
-            temp.selfRemoveChild(value.input.value, childNode);
+            childRemove.selfRemove();
+          }, temp.data);
+          childNode.addLatLng();
+
+          var childRemove = NewRealty_({
+            tag: "modal",
+            on: {
+              click: function click(event) {
+                var target = event.target;
+
+                while (target !== childNode && target !== childRemove && target !== document.body) {
+                  target = target.parentNode;
+                }
+
+                if (target === childRemove) childRemove.selfRemove();
+              }
+            },
+            child: [childNode]
+          });
+
+          temp.appendChild(childRemove);
+        }
+      }
+    }]
+  });
+
+  if (addressid !== 0) {
+    var number = this.checkAddress[addressid].addressnumber;
+    var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
+    var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
+    var district = this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name;
+    var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
+    NewRealty_$("input.pizo-new-realty-desc-detail-1-row-input", temp).value = number + " " + street + ", " + ward + ", " + district + ", " + state;
+    temp.data = {
+      id: addressid,
+      number: this.checkAddress[addressid].addressnumber,
+      street: this.checkStreet[this.checkAddress[addressid].streetid].name + "_" + this.checkAddress[addressid].streetid,
+      ward: this.checkWard[this.checkAddress[addressid].wardid].name + "_" + this.checkAddress[addressid].wardid,
+      district: this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name + "_" + this.checkWard[this.checkAddress[addressid].wardid].districtid,
+      state: this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name + "_" + this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid,
+      lng: lng,
+      lat: lat
+    };
+  }
+
+  return temp;
+};
+
+NewRealty_NewRealty.prototype.itemAdressOld = function () {
+  var addressid = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var self = this;
+
+  var text = NewRealty_({
+    text: "Địa chỉ cũ"
+  });
+
+  var important = NewRealty_({
+    tag: "span",
+    "class": "pizo-new-realty-location-detail-row-label-important",
+    props: {
+      innerHTML: "*"
+    }
+  });
+
+  var temp = NewRealty_({
+    tag: "div",
+    "class": ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+    child: [{
+      tag: "span",
+      "class": "pizo-new-realty-desc-detail-1-row-label",
+      child: [text, important]
+    }, {
+      tag: "input",
+      "class": ["pizo-new-realty-desc-detail-1-row-input"],
+      on: {
+        click: function click(event) {
+          console.log("xxxxxxxxxxxxxxx");
+          this.blur();
+          var selfElement = this;
+          var childNode = locationView(function (value) {
+            selfElement.value = value.input.value;
+            temp.data = childNode.getDataCurrent();
             childRemove.selfRemove();
           }, temp.data);
 
@@ -52223,107 +52583,6 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
     }]
   });
 
-  temp.label = text;
-  temp.important = important;
-
-  temp.updateIndex = function (index) {
-    temp.index = index;
-
-    if (index == 0) {
-      index = "";
-    } else temp.important.style.display = "none";
-
-    temp.label.data = "Địa chỉ " + index;
-  };
-
-  temp.parentUpdateIndex = function () {
-    var k = 0;
-
-    for (var i = 0; i < temp.parentNode.childNodes.length; i++) {
-      if (!temp.parentNode.childNodes[i].classList.contains("adressItemCheck")) return;
-      temp.parentNode.childNodes[i].updateIndex(k++);
-    }
-  };
-
-  temp.selfRemoveChild = function (value, childNode) {
-    temp.value = value;
-    var next = temp;
-
-    while (next.nextSibling !== null) {
-      next = next.nextSibling;
-    }
-
-    if (value === "") {
-      switch (temp.index) {
-        case undefined:
-        case 0:
-          if (temp.nextSibling.classList.contains("adressItemCheck") && (temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
-            temp.nextSibling.selfRemove();
-          }
-
-          var containerMap = NewRealty_({
-            tag: "div"
-          });
-
-          self.containerMap.parentNode.replaceChild(containerMap, self.containerMap);
-          self.containerMap = containerMap;
-          break;
-
-        case 1:
-        case 2:
-          if (next !== temp) {
-            if (next.value === "" || next.value === undefined) {
-              var prev = temp.previousSibling;
-              temp.selfRemove();
-              prev.parentUpdateIndex();
-            } else {
-              temp.parentNode.insertBefore(temp, next.nextSibling);
-              temp.parentUpdateIndex();
-            }
-          }
-
-          break;
-
-        case 3:
-          break;
-      }
-
-      return true;
-    } else {
-      switch (temp.index) {
-        case undefined:
-        case 0:
-          if (childNode.map.currentMarker !== undefined) {
-            childNode.map.currentMarker.setDraggable(false);
-            var latLng = childNode.map.currentMarker.getPosition();
-            childNode.map.map.setCenter(latLng);
-            self.containerMap.parentNode.replaceChild(childNode.map, self.containerMap);
-            self.containerMap = childNode.map;
-          }
-
-          if (next === temp) {
-            temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
-            temp.parentUpdateIndex();
-          }
-
-          break;
-
-        case 1:
-        case 2:
-          if (next === temp) {
-            temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
-            temp.parentUpdateIndex();
-          }
-
-          break;
-      }
-
-      return false;
-    }
-  };
-
-  this.inputAdress = NewRealty_$('input.pizo-new-realty-desc-detail-1-row-input', temp);
-
   if (addressid !== 0) {
     var number = this.checkAddress[addressid].addressnumber;
     var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
@@ -52337,14 +52596,174 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
       street: this.checkStreet[this.checkAddress[addressid].streetid].name + "_" + this.checkAddress[addressid].streetid,
       ward: this.checkWard[this.checkAddress[addressid].wardid].name + "_" + this.checkAddress[addressid].wardid,
       district: this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name + "_" + this.checkWard[this.checkAddress[addressid].wardid].districtid,
-      state: this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name + "_" + this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid,
-      lng: this.checkAddress[addressid].lng,
-      lat: this.checkAddress[addressid].lat
+      state: this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name + "_" + this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid
     };
   }
 
   return temp;
-};
+}; // NewRealty.prototype.itemAdress = function (addressid = 0) {
+//     var self = this;
+//     var text = _({ text: "Địa chỉ" });
+//     var important = _({
+//         tag: "span",
+//         class: "pizo-new-realty-location-detail-row-label-important",
+//         props: {
+//             innerHTML: "*"
+//         }
+//     });
+//     var temp = _({
+//         tag: "div",
+//         class: ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+//         child: [
+//             {
+//                 tag: "span",
+//                 class: "pizo-new-realty-desc-detail-1-row-label",
+//                 child: [
+//                     text,
+//                     important
+//                 ]
+//             },
+//             {
+//                 tag: "input",
+//                 class: ["pizo-new-realty-desc-detail-1-row-input"],
+//                 on: {
+//                     click: function (event) {
+//                         this.blur();
+//                         var selfElement = this;
+//                         var childNode = locationView(function (value) {
+//                             selfElement.value = value.input.value;
+//                             temp.data = childNode.getDataCurrent();
+//                             temp.selfRemoveChild(value.input.value, childNode);
+//                             childRemove.selfRemove();
+//                         },temp.data)
+//                         var childRemove = _({
+//                             tag: "modal",
+//                             on: {
+//                                 click: function (event) {
+//                                     var target = event.target;
+//                                     while (target !== childNode && target !== childRemove && target !== document.body)
+//                                         target = target.parentNode;
+//                                     if (target === childRemove)
+//                                         childRemove.selfRemove();
+//                                 }
+//                             },
+//                             child: [
+//                                 childNode
+//                             ]
+//                         })
+//                         temp.appendChild(childRemove)
+//                     }
+//                 }
+//             }
+//         ]
+//     })
+//     temp.label = text;
+//     temp.important = important;
+//     temp.updateIndex = function (index) {
+//         temp.index = index;
+//         if (index == 0)
+//         {
+//             index = "";
+//         }else
+//         temp.important.style.display = "none";
+//         temp.label.data = "Địa chỉ " + index;
+//     }
+//     temp.parentUpdateIndex = function () {
+//         var k = 0;
+//         for (var i = 0; i < temp.parentNode.childNodes.length; i++) {
+//             if (!temp.parentNode.childNodes[i].classList.contains("adressItemCheck"))
+//                 return;
+//             temp.parentNode.childNodes[i].updateIndex(k++);
+//         }
+//     }
+//     temp.selfRemoveChild = function (value,childNode) {
+//         temp.value = value;
+//         var next = temp;
+//         while (next.nextSibling!==null)
+//             next = next.nextSibling;
+//         if (value === "") {
+//             switch (temp.index) {
+//                 case undefined:
+//                 case 0:
+//                     if (temp.nextSibling.classList.contains("adressItemCheck")&&(temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
+//                         temp.nextSibling.selfRemove();
+//                     }
+//                     var containerMap = _({
+//                         tag: "div"
+//                     })
+//                     self.containerMap.parentNode.replaceChild(containerMap, self.containerMap);
+//                     self.containerMap = containerMap;
+//                     break;
+//                 case 1:
+//                 case 2:
+//                     if (next !== temp){
+//                         if (next.value === "" || next.value === undefined) {
+//                             var prev = temp.previousSibling;
+//                             temp.selfRemove();
+//                             prev.parentUpdateIndex();
+//                         } else {
+//                             temp.parentNode.insertBefore(temp, next.nextSibling);
+//                             temp.parentUpdateIndex();
+//                         }
+//                     }
+//                     break;
+//                 case 3:
+//                     break;
+//             }
+//             return true;
+//         } else {
+//             switch(temp.index)
+//             {
+//                 case undefined:
+//                 case 0:
+//                     if (childNode.map.currentMarker !== undefined) {
+//                         childNode.map.currentMarker.setDraggable(false);
+//                         var latLng = childNode.map.currentMarker.getPosition();
+//                         childNode.map.map.setCenter(latLng);
+//                         self.containerMap.parentNode.replaceChild(childNode.map, self.containerMap);
+//                         self.containerMap = childNode.map;
+//                     }
+//                     if(next === temp)
+//                     {
+//                         temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+//                         temp.parentUpdateIndex();
+//                     }
+//                     break;
+//                 case 1:
+//                 case 2:
+//                     if(next === temp)
+//                     {
+//                         temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+//                         temp.parentUpdateIndex();
+//                     }
+//                     break;
+//             }
+//             return false;
+//         }
+//     }
+//     this.inputAdress = $('input.pizo-new-realty-desc-detail-1-row-input',temp);
+//     if(addressid!==0)
+//     {
+//         var number = this.checkAddress[addressid].addressnumber;
+//         var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
+//         var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
+//         var district = this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name;
+//         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
+//         $("input.pizo-new-realty-desc-detail-1-row-input",temp).value = number+" "+street+", "+ward+", "+district+", "+state;
+//         temp.data = {
+//             id:addressid,
+//             number:this.checkAddress[addressid].addressnumber,
+//             street:this.checkStreet[this.checkAddress[addressid].streetid].name+"_"+this.checkAddress[addressid].streetid,
+//             ward:this.checkWard[this.checkAddress[addressid].wardid].name+"_"+this.checkAddress[addressid].wardid,
+//             district:this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].name+"_"+this.checkWard[this.checkAddress[addressid].wardid].districtid,
+//             state:this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name+"_"+this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid,
+//             lng:this.checkAddress[addressid].lng,
+//             lat:this.checkAddress[addressid].lat,
+//         }
+//     }
+//     return temp;
+// }
+
 
 NewRealty_NewRealty.prototype.descViewdetail = function () {
   var self = this;
@@ -52356,43 +52775,27 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
     }
   });
 
-  var index = "";
-  var last;
-
   if (this.data !== undefined) {
-    for (var i = 0; i < 4; i++) {
-      if (this.data.original["addressid" + index] == 0 || this.data.original["addressid" + index] == undefined) break;
-      last = this.itemAdress(this.data.original["addressid" + index]);
-      containerAdress.appendChild(last);
-
-      if (i === 0) {
-        var map = MapView_MapView();
-        map.activePlanningMap();
-        map.addMapPolygon();
-        var address = this.checkAddress[this.data.original["addressid" + index]];
-        map.addMoveMarker([address.lng, address.lat], false);
-        map.currentMarker.setDraggable(false);
-        this.containerMap.parentNode.replaceChild(map, this.containerMap);
-        this.containerMap = map;
-      }
-
-      index = i + 2;
-    }
+    var addressCurrent = this.itemAdress(this.data.original.addressid, this.data.original.lat, this.data.original.lng);
+    containerAdress.appendChild(addressCurrent);
+    var map = MapView_MapView();
+    map.activePlanningMap();
+    map.addMoveMarker([this.data.original.lng, this.data.original.lat], false);
+    map.currentMarker.setDraggable(false);
+    this.containerMap.parentNode.replaceChild(map, this.containerMap);
+    this.containerMap = map;
+    var addressOld = this.itemAdressOld(this.data.original.addressid_old);
+    containerAdress.appendChild(addressOld);
+  } else {
+    var addressCurrent = this.itemAdress();
+    containerAdress.appendChild(addressCurrent);
+    var map = MapView_MapView();
+    map.activePlanningMap();
+    this.containerMap.parentNode.replaceChild(map, this.containerMap);
+    this.containerMap = map;
+    var addressOld = this.itemAdressOld();
+    containerAdress.appendChild(addressOld);
   }
-
-  if (i == undefined || i < 3) {
-    last = this.itemAdress();
-    containerAdress.appendChild(last);
-
-    if (i === undefined) {
-      var map = MapView_MapView();
-      map.activePlanningMap();
-      this.containerMap.parentNode.replaceChild(map, this.containerMap);
-      this.containerMap = map;
-    }
-  }
-
-  last.parentUpdateIndex();
 
   var temp = NewRealty_({
     tag: "div",
@@ -52499,6 +52902,8 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
   this.inputLease = NewRealty_$('div.pizo-new-realty-desc-detail-row-menu-2-checkbox', temp);
   this.inputSell = NewRealty_$('div.pizo-new-realty-desc-detail-row-menu-1-checkbox', temp);
   this.inputContent = NewRealty_$('textarea.pizo-new-realty-desc-detail-row-input', temp);
+  this.addressCurrent = addressCurrent;
+  this.addressOld = addressOld;
   this.containerAdress = containerAdress;
   return temp;
 };
@@ -53372,43 +53777,61 @@ NewRealty_NewRealty.prototype.getDataSave = function () {
     pricerent: reFormatNumber(this.inputPriceRent.value) * this.inputPriceRentUnit.value,
     advancedetruct: advanceDetruct
   };
-  var index = "";
 
-  for (var i = 0; i < this.containerAdress.childNodes.length; i++) {
-    if (this.containerAdress.childNodes[i].data !== undefined) {
-      var indexString = "addressid" + index;
-      var address = {};
-      var data = this.containerAdress.childNodes[i].data;
-      var lastIndex = data.ward.lastIndexOf("_");
+  if (this.addressCurrent.data !== undefined) {
+    var address = {};
+    var data = this.addressCurrent.data;
+    var lastIndex = data.ward.lastIndexOf("_");
 
-      if (lastIndex === -1) {
-        address.ward = data.ward;
-        lastIndex = data.district.lastIndexOf("_");
+    if (lastIndex === -1) {
+      address.ward = data.ward;
+      lastIndex = data.district.lastIndexOf("_");
+
+      if (lastIndex == -1) {
+        address.district = data.district;
+        lastIndex = data.state.lastIndexOf("_");
 
         if (lastIndex == -1) {
-          address.district = data.district;
-          lastIndex = data.state.lastIndexOf("_");
+          address.state = data.state;
+        } else {
+          address.stateid = data.state.slice(lastIndex + 1);
+        }
+      } else address.districtid = data.district.slice(lastIndex + 1);
+    } else address.wardid = data.ward.slice(lastIndex + 1);
 
-          if (lastIndex == -1) {
-            address.state = data.state;
-          } else {
-            address.stateid = data.state.slice(lastIndex + 1);
-          }
-        } else address.districtid = data.district.slice(lastIndex + 1);
-      } else address.wardid = data.ward.slice(lastIndex + 1);
-
-      var lastIndex = data.street.lastIndexOf("_");
-      if (lastIndex === -1) address.street = data.street;else address.streetid = data.street.slice(lastIndex + 1);
-      address.number = data.number;
-      address.lat = data.lat;
-      address.lng = data.lng;
-      temp[indexString] = address;
-      index = i + 2;
-    }
+    var lastIndex = data.street.lastIndexOf("_");
+    if (lastIndex === -1) address.street = data.street;else address.streetid = data.street.slice(lastIndex + 1);
+    address.number = data.number;
+    temp.lat = data.lat;
+    temp.lng = data.lng;
+    temp.addressid = address;
   }
 
-  for (var i = 0; i < this.contactView.childNodes.length; i++) {
-    console.log(this.contactView.childNodes[i]);
+  if (this.addressOld.data !== undefined) {
+    var address = {};
+    var data = this.addressOld.data;
+    var lastIndex = data.ward.lastIndexOf("_");
+
+    if (lastIndex === -1) {
+      address.ward = data.ward;
+      lastIndex = data.district.lastIndexOf("_");
+
+      if (lastIndex == -1) {
+        address.district = data.district;
+        lastIndex = data.state.lastIndexOf("_");
+
+        if (lastIndex == -1) {
+          address.state = data.state;
+        } else {
+          address.stateid = data.state.slice(lastIndex + 1);
+        }
+      } else address.districtid = data.district.slice(lastIndex + 1);
+    } else address.wardid = data.ward.slice(lastIndex + 1);
+
+    var lastIndex = data.street.lastIndexOf("_");
+    if (lastIndex === -1) address.street = data.street;else address.streetid = data.street.slice(lastIndex + 1);
+    address.number = data.number;
+    temp.addressid_old = address;
   }
 
   if (this.data !== undefined) temp.id = this.data.original.id;
@@ -54034,13 +54457,18 @@ ListRealty_ListRealty.prototype.getView = function () {
     on: {
       click: function click(evt) {
         if (this.currentMerge === true) {
-          self.merge();
+          // self.merge();
+          // this.currentMerge = undefined;
+          saveButton.style.display = "";
+          this.childNodes[0].innerHTML = "Gộp";
+          self.mTable.deleteColumn(0);
+          self.mTable.insertColumn(0, 0);
           this.currentMerge = undefined;
         } else {
           saveButton.style.display = "none";
           this.childNodes[0].innerHTML = "Xong";
           self.mTable.deleteColumn(0);
-          self.mTable.insertColumn(1);
+          self.mTable.insertColumn(1, 0);
           this.currentMerge = true;
         }
       }
@@ -54162,7 +54590,7 @@ ListRealty_ListRealty.prototype.getView = function () {
     child: []
   });
 
-  component_ModuleDatabase.getModule("activehouses", ["load.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActiveHouse.php"]);
+  component_ModuleDatabase.getModule("activehouses", ["loadActiveHouses.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActiveHouse.php"]);
   var arr = [];
   arr.push(component_ModuleDatabase.getModule("activehouses").load());
   arr.push(component_ModuleDatabase.getModule("addresses").load());
@@ -54252,7 +54680,7 @@ ListRealty_ListRealty.prototype.getView = function () {
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', self.$view));
   });
-  component_ModuleDatabase.getModule("users").load().then(function (value) {
+  component_moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load().then(function (value) {
     self.formatDataRowAccount(value);
   });
   component_ModuleDatabase.getModule("contacts").load().then(function (value) {
@@ -55445,7 +55873,6 @@ ListWard_ListWard.prototype.setListParamWard = function (value) {
       value: data.name + "_" + data.id
     };
   }, true);
-  console.log(this.checkStateWard);
   this.listWard = [{
     text: "Tất cả",
     value: 0
@@ -55517,60 +55944,7 @@ ListWard_ListWard.prototype.formatDataList = function (data) {
 };
 
 ListWard_ListWard.prototype.searchControlContent = function () {
-  var startDay, endDay, startDay1, endDay1;
   var self = this;
-  startDay = ListWard_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        endDay.minDateLimit = date;
-      }
-    }
-  });
-  endDay = ListWard_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        startDay.maxDateLimit = date;
-      }
-    }
-  });
-  startDay1 = ListWard_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        endDay1.minDateLimit = date;
-      }
-    }
-  });
-  endDay1 = ListWard_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        startDay1.maxDateLimit = date;
-      }
-    }
-  });
   self.listStateElement = ListWard_({
     tag: "selectmenu",
     props: {
@@ -61356,7 +61730,7 @@ ListPositions_ListPositions.prototype.getView = function () {
     contentContainer.addChild(self.mTablePosition);
     var promiseAll = [];
     promiseAll.push(component_ModuleDatabase.getModule("positions").load());
-    promiseAll.push(component_ModuleDatabase.getModule("users").load());
+    promiseAll.push(component_moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load());
     Promise.all(promiseAll).then(function (values) {
       self.formatDataRowAccount(values[1]);
       self.formatDataRowPosition(values[0]);
@@ -62472,7 +62846,7 @@ ListAccount_ListAccount.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  component_ModuleDatabase.getModule("users").load().then(function (value) {
+  component_moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load().then(function (value) {
     component_ModuleDatabase.getModule("positions").load().then(function (listParam) {
       self.setListParam(listParam);
       var header = [{
@@ -63080,7 +63454,7 @@ ListAddress_ListAdress.prototype.getView = function () {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: "Quản lý Tên đường"
+          innerHTML: "Quản lý địa chỉ"
         }
       }, {
         tag: "div",
@@ -63209,44 +63583,78 @@ ListAddress_ListAdress.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  component_ModuleDatabase.getModule("streets").load().then(function (value) {
-    component_ModuleDatabase.getModule("wards").load().then(function (listWard) {
-      component_ModuleDatabase.getModule("districts").load().then(function (listDistrict) {
-        component_ModuleDatabase.getModule("states").load().then(function (listState) {
-          self.setListParamDitrict(listDistrict);
-          self.setListParamState(listState);
-          var header = [{
-            type: "increase",
-            value: "#",
-            style: {
-              minWidth: "50px",
-              width: "50px"
-            }
-          }, {
-            value: 'MS',
-            sort: true,
-            style: {
-              minWidth: "50px",
-              width: "50px"
-            }
-          }, {
-            value: 'Tên',
-            sort: true,
-            style: {
-              minWidth: "unset"
-            }
-          }, {
-            type: "detail",
-            functionClickAll: functionClickMore,
-            icon: "",
-            dragElement: false,
-            style: {
-              width: "30px"
-            }
-          }];
-          self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-          tabContainer.addChild(self.mTable);
-          self.mTable.addInputSearch(ListAddress_$('.pizo-list-realty-page-allinput-container input', self.$view)); // self.listParent.updateItemList(listParam);
+  component_ModuleDatabase.getModule("addresses").load().then(function (value) {
+    component_ModuleDatabase.getModule("streets").load().then(function (listStreet) {
+      component_ModuleDatabase.getModule("wards").load().then(function (listWard) {
+        component_ModuleDatabase.getModule("districts").load().then(function (listDistrict) {
+          component_ModuleDatabase.getModule("states").load().then(function (listState) {
+            self.setListParamStreet();
+            self.setListParamDitrict();
+            self.setListParamState();
+            self.setListParamWard();
+            self.listStateElement.items = self.listState;
+            self.listDistrictElement.items = self.listDistrict;
+            self.listWardElement.items = self.listWard;
+            var header = [{
+              type: "increase",
+              value: "#",
+              style: {
+                minWidth: "50px",
+                width: "50px"
+              }
+            }, {
+              value: 'MS',
+              sort: true,
+              style: {
+                minWidth: "50px",
+                width: "50px"
+              }
+            }, {
+              value: 'Số nhà',
+              sort: true,
+              style: {
+                minWidth: "unset"
+              }
+            }, {
+              value: 'Đường',
+              sort: true,
+              style: {
+                minWidth: "unset"
+              }
+            }, {
+              value: 'Phường/Xã',
+              sort: true,
+              style: {
+                minWidth: "unset"
+              }
+            }, {
+              value: 'Quận/Huyện',
+              sort: true,
+              style: {
+                minWidth: "unset"
+              }
+            }, {
+              value: 'Tỉnh/TP',
+              sort: true,
+              style: {
+                minWidth: "unset"
+              }
+            }, {
+              type: "detail",
+              functionClickAll: functionClickMore,
+              icon: "",
+              dragElement: false,
+              style: {
+                width: "30px"
+              }
+            }];
+            self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+            tabContainer.addChild(self.mTable);
+            self.mTable.addInputSearch(ListAddress_$('.pizo-list-realty-page-allinput-container input', self.$view));
+            self.mTable.addFilter(self.listWardElement, 4);
+            self.mTable.addFilter(self.listDistrictElement, 5);
+            self.mTable.addFilter(self.listStateElement, 6);
+          });
         });
       });
     });
@@ -63260,19 +63668,45 @@ ListAddress_ListAdress.prototype.getView = function () {
   return this.$view;
 };
 
+ListAddress_ListAdress.prototype.setListParamStreet = function () {
+  this.checkStreet = component_ModuleDatabase.getModule("streets").getLibary("id");
+  this.listStreet = component_ModuleDatabase.getModule("streets").getList("name", ["name", "id"]);
+};
+
 ListAddress_ListAdress.prototype.setListParamWard = function () {
   this.checkWard = component_ModuleDatabase.getModule("wards").getLibary("id");
-  this.listWard = component_ModuleDatabase.getModule("wards").getList("name", "id");
+  this.listWard = [{
+    text: "Tất cả",
+    value: 0
+  }].concat(component_ModuleDatabase.getModule("wards").getList("name", ["name", "id"]));
+  this.checkWardDistrict = component_ModuleDatabase.getModule("wards").getLibary("districtid", function (data) {
+    return {
+      text: data.name,
+      value: data.name + "_" + data.id
+    };
+  }, true);
 };
 
-ListAddress_ListAdress.prototype.setListParamDitrict = function (value) {
+ListAddress_ListAdress.prototype.setListParamDitrict = function () {
   this.checkDistrict = component_ModuleDatabase.getModule("districts").getLibary("id");
-  this.listDistrict = component_ModuleDatabase.getModule("districts").getList("name", "id");
+  this.listDistrict = [{
+    text: "Tất cả",
+    value: 0
+  }].concat(component_ModuleDatabase.getModule("districts").getList("name", ["name", "id"]));
+  this.checkDistrictState = component_ModuleDatabase.getModule("districts").getLibary("stateid", function (data) {
+    return {
+      text: data.name,
+      value: data.name + "_" + data.id
+    };
+  }, true);
 };
 
-ListAddress_ListAdress.prototype.setListParamState = function (value) {
+ListAddress_ListAdress.prototype.setListParamState = function () {
   this.checkState = component_ModuleDatabase.getModule("states").getLibary("id");
-  this.listState = component_ModuleDatabase.getModule("states").getList("name", "id");
+  this.listState = [{
+    text: "Tất cả",
+    value: 0
+  }].concat(component_ModuleDatabase.getModule("states").getList("name", ["name", "id"]));
   this.isLoaded = true;
 };
 
@@ -63300,7 +63734,27 @@ ListAddress_ListAdress.prototype.formatDataRow = function (data) {
 };
 
 ListAddress_ListAdress.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, {}];
+  var result = [{}, data.id, data.addressnumber, {
+    element: ListAddress_({
+      text: this.checkStreet[data.streetid].name
+    }),
+    value: this.checkStreet[data.streetid].name + "_" + this.checkStreet[data.streetid].id
+  }, {
+    element: ListAddress_({
+      text: this.checkWard[data.wardid].name
+    }),
+    value: this.checkWard[data.wardid].name + "_" + this.checkWard[data.wardid].id
+  }, {
+    element: ListAddress_({
+      text: this.checkDistrict[this.checkWard[data.wardid].districtid].name
+    }),
+    value: this.checkDistrict[this.checkWard[data.wardid].districtid].name + "_" + this.checkDistrict[this.checkWard[data.wardid].districtid].id
+  }, {
+    element: ListAddress_({
+      text: this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name
+    }),
+    value: this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name + "_" + this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].id
+  }, {}];
   result.original = data;
   return result;
 };
@@ -63322,56 +63776,89 @@ ListAddress_ListAdress.prototype.formatDataList = function (data) {
 };
 
 ListAddress_ListAdress.prototype.searchControlContent = function () {
-  var startDay, endDay, startDay1, endDay1;
-  startDay = ListAddress_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
+  var self = this;
+  self.listStateElement = ListAddress_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        value: 0
+      }]
     },
     on: {
-      changed: function changed(date) {
-        endDay.minDateLimit = date;
+      change: function change(event) {
+        if (this.value == 0) {
+          self.listDistrictElement.items = self.listDistrict;
+        } else {
+          if (event !== undefined) {
+            self.listDistrictElement.value = 0;
+          }
+
+          self.listDistrictElement.items = [{
+            text: "Tất cả",
+            value: 0
+          }].concat(self.checkDistrictState[this.value.slice(this.value.lastIndexOf("_") + 1)]);
+          self.listDistrictElement.emit('change');
+        }
       }
     }
   });
-  endDay = ListAddress_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
+  self.listDistrictElement = ListAddress_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        value: 0
+      }]
     },
     on: {
-      changed: function changed(date) {
-        startDay.maxDateLimit = date;
+      change: function change(event) {
+        if (this.value == 0) {
+          self.listWardElement.items = self.listWard;
+        } else {
+          var checkResult = self.checkState[self.checkDistrict[this.value.slice(this.value.lastIndexOf("_") + 1)].stateid];
+          var checkid = checkResult.name + "_" + checkResult.id;
+
+          if (self.listStateElement.value != checkid) {
+            self.listStateElement.value = checkid;
+            self.listStateElement.emit('change');
+          }
+
+          if (event !== undefined) {
+            self.listWardElement.value = 0;
+          }
+
+          self.listWardElement.items = [{
+            text: "Tất cả",
+            value: 0
+          }].concat(self.checkWardDistrict[this.value.slice(this.value.lastIndexOf("_") + 1)]);
+          self.listWardElement.emit('change');
+        }
       }
     }
   });
-  startDay1 = ListAddress_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
+  self.listWardElement = ListAddress_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true,
+      items: [{
+        text: "Tất cả",
+        value: 0
+      }]
     },
     on: {
-      changed: function changed(date) {
-        endDay1.minDateLimit = date;
-      }
-    }
-  });
-  endDay1 = ListAddress_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        startDay1.maxDateLimit = date;
+      change: function change(event) {
+        if (this.value !== 0) {
+          var checkResult = self.checkDistrict[self.checkWard[this.value.slice(this.value.lastIndexOf("_") + 1)].districtid];
+          var checkid = checkResult.name + "_" + checkResult.id;
+
+          if (self.listDistrictElement.value != checkid) {
+            self.listDistrictElement.value = checkid;
+            self.listDistrictElement.emit('change');
+          }
+        }
       }
     }
   });
@@ -63402,19 +63889,7 @@ ListAddress_ListAdress.prototype.searchControlContent = function () {
           }, {
             tag: "div",
             "class": "pizo-list-realty-main-search-control-row-state-ward-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Thành phố Hồ Chí Minh',
-                  id: 79
-                }, {
-                  text: 'Thủ đô Hà Nội',
-                  id: 80
-                }]
-              }
-            }]
+            child: [self.listStateElement]
           }]
         }, {
           tag: "div",
@@ -63428,35 +63903,21 @@ ListAddress_ListAdress.prototype.searchControlContent = function () {
           }, {
             tag: "div",
             "class": "pizo-list-realty-main-search-control-row-district-ward-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Quận 1',
-                  id: 79
-                }, {
-                  text: 'Quận Bình Thạnh',
-                  id: 80
-                }, {
-                  text: 'Quận Tân Bình',
-                  id: 81
-                }]
-              }
-            }]
+            child: [self.listDistrictElement]
           }]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-button",
+          "class": "pizo-list-realty-main-search-control-row-district-ward",
           child: [{
-            tag: "button",
-            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
-            on: {
-              click: function click(evt) {
-                temp.reset();
-              }
-            },
-            child: ['<span>' + "Thiết lập lại" + '</span>']
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-district-ward-label",
+            props: {
+              innerHTML: "Phường/Xã"
+            }
+          }, {
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-district-ward-input",
+            child: [self.listWardElement]
           }]
         }]
       }]
@@ -63475,55 +63936,6 @@ ListAddress_ListAdress.prototype.searchControlContent = function () {
   });
 
   temp.content = content;
-  content.timestart = startDay;
-  content.timeend = endDay;
-  content.lowprice = ListAddress_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
-  content.highprice = ListAddress_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
-  content.phone = ListAddress_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
-  content.MS = ListAddress_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
-  content.SN = ListAddress_$('.pizo-list-realty-main-search-control-row-SN input', content);
-  content.TD = ListAddress_$('.pizo-list-realty-main-search-control-row-TD input', content);
-  content.PX = ListAddress_$('.pizo-list-realty-main-search-control-row-PX input', content);
-  content.QH = ListAddress_$('.pizo-list-realty-main-search-control-row-QH input', content);
-  content.HT = ListAddress_$('.pizo-list-realty-main-search-control-row-HT input', content);
-
-  temp.show = function () {
-    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
-  };
-
-  temp.hide = function () {
-    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
-
-    var eventEnd = function eventEnd() {
-      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
-      content.classList.remove("hideTranslate");
-      content.removeEventListener("webkitTransitionEnd", eventEnd);
-      content.removeEventListener("transitionend", eventEnd);
-    }; // Code for Safari 3.1 to 6.0
-
-
-    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
-
-    content.addEventListener("transitionend", eventEnd);
-  };
-
-  temp.apply = function () {};
-
-  temp.reset = function () {
-    content.timestart = new Date();
-    content.timeend = new Date();
-    content.lowprice.value = "";
-    content.highprice.value = "";
-    content.phone.value = "";
-    content.MS.value = "";
-    content.SN.value = "";
-    content.TD.value = "";
-    content.PX.value = "";
-    content.QH.value = "";
-    content.TT.value = "";
-    content.HT.value = 0;
-  };
-
   return temp;
 };
 
@@ -64444,14 +64856,750 @@ ListContact_ListContact.prototype.flushDataToView = function () {
 ListContact_ListContact.prototype.start = function () {};
 
 /* harmony default export */ var page_ListContact = (ListContact_ListContact);
+// EXTERNAL MODULE: ./css/ListEquipment.css
+var ListEquipment = __webpack_require__(221);
+
+// EXTERNAL MODULE: ./css/NewEquipment.css
+var NewEquipment = __webpack_require__(223);
+
+// CONCATENATED MODULE: ./js/component/NewEquipment.js
+
+
+
+
+
+
+
+var NewEquipment_ = dom_Fcore._;
+var NewEquipment_$ = dom_Fcore.$;
+
+function NewEquipment_NewEquipment(data) {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.textHeader = "Sửa ";
+  this.data = data;
+  if (this.data == undefined) this.textHeader = "Thêm ";
+}
+
+NewEquipment_NewEquipment.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(NewEquipment_NewEquipment.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewEquipment_NewEquipment.prototype.constructor = NewEquipment_NewEquipment;
+
+NewEquipment_NewEquipment.prototype.getDataSave = function () {
+  return {
+    id: this.data === undefined ? undefined : this.data.original.id,
+    name: this.name.value,
+    type: this.type.value,
+    districtid: this.district.value
+  };
+};
+
+NewEquipment_NewEquipment.prototype.createPromise = function () {
+  var self = this;
+
+  if (this.data === undefined) {
+    self.promiseAddDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  } else {
+    self.promiseEditDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  }
+};
+
+NewEquipment_NewEquipment.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+  this.$view = NewEquipment_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: self.textHeader + "Tỉnh/TP"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+              self.rejectDB(self.getDataSave());
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.createPromise();
+            }
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Lưu và đóng" + '</span>']
+        }]
+      }]
+    }]
+  });
+  var data = component_ModuleDatabase.getModule("equipments").data;
+  var libary = [];
+  var items = [];
+
+  for (var i = 0; i < data.length; i++) {
+    if (libary[data[i].type] === undefined) {
+      libary[data[i].type] = 1;
+      items.push({
+        text: data[i].type,
+        value: data[i].type
+      });
+    }
+  }
+
+  items.sort();
+  console.log(items);
+  this.$view.addChild(NewEquipment_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [{
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [{
+        tag: "div",
+        "class": "pizo-new-state-container",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-state-container-name-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-name-container-label",
+            props: {
+              innerHTML: "Tên"
+            }
+          }, {
+            tag: "input",
+            "class": ["pizo-new-state-container-name-container-input", "pizo-new-realty-dectruct-input"]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-container-type-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-type-container-label",
+            props: {
+              innerHTML: "Loại"
+            }
+          }, {
+            tag: "autocompleteinput",
+            "class": "pizo-new-state-container-type-container-input",
+            props: {
+              adapter: [//adapter type
+              'SearchObjectArray', //first param
+              items]
+            }
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-container-nation-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-nation-container-label",
+            props: {
+              innerHTML: "Có sẳn"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-state-container-nation-container-input",
+            props: {
+              items: [{
+                text: "Có",
+                value: 1
+              }, {
+                text: "Không",
+                value: 0
+              }]
+            }
+          }]
+        }]
+      }]
+    }]
+  }));
+  this.createPromise();
+  this.name = NewEquipment_$('input.pizo-new-state-container-name-container-input"', this.$view);
+  this.type = NewEquipment_$('div.pizo-new-state-container-type-container-input', this.$view);
+  this.available = NewEquipment_$('div.pizo-new-state-container-nation-container-input', this.$view);
+
+  if (this.data !== undefined) {
+    this.name.value = this.data.original.name;
+    this.type.value = this.data.original.type;
+    this.available.value = this.data.original.available;
+  }
+
+  return this.$view;
+};
+
+NewEquipment_NewEquipment.prototype.getDataSave = function () {
+  var temp = {
+    name: this.name.value,
+    type: this.type.value,
+    available: this.available.value
+  };
+  if (this.data !== undefined) temp.id = this.data.original.id;
+  return temp;
+};
+
+NewEquipment_NewEquipment.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+NewEquipment_NewEquipment.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+NewEquipment_NewEquipment.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+NewEquipment_NewEquipment.prototype.start = function () {};
+
+/* harmony default export */ var component_NewEquipment = (NewEquipment_NewEquipment);
+// CONCATENATED MODULE: ./js/page/ListEquipment.js
+
+
+
+
+
+
+
+
+
+
+var ListEquipment_ = dom_Fcore._;
+var ListEquipment_$ = dom_Fcore.$;
+
+function ListEquipment_ListEquipment() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+}
+
+ListEquipment_ListEquipment.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(ListEquipment_ListEquipment.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+ListEquipment_ListEquipment.prototype.constructor = ListEquipment_ListEquipment;
+
+ListEquipment_ListEquipment.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var input = ListEquipment_({
+    tag: "input",
+    "class": "quantumWizTextinputPaperinputInput",
+    on: {
+      change: function change() {
+        self.mTable.updatePagination(this.value);
+      }
+    },
+    props: {
+      type: "number",
+      autocomplete: "off",
+      min: 1,
+      max: 200,
+      step: 1,
+      value: 50
+    }
+  });
+
+  var allinput = ListEquipment_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tìm kiếm"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tìm kiếm";
+  }
+
+  this.$view = ListEquipment_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Quản lý tiện ích trong nhà"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.add();
+            }
+          },
+          child: ['<span>' + "Thêm" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-filter",
+          on: {
+            click: function click(event) {
+              self.searchControl.show();
+            }
+          },
+          child: [{
+            tag: 'filter-ico'
+          }, {
+            tag: "span",
+            "class": "navbar-search__filter-text",
+            props: {
+              innerHTML: "Lọc"
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-number-line",
+        child: [input, {
+          tag: "span",
+          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+          props: {
+            innerHTML: "Số dòng"
+          }
+        }]
+      }]
+    }]
+  });
+
+  var tabContainer = ListEquipment_({
+    tag: "div",
+    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+    child: []
+  });
+
+  var docTypeMemuProps, token, functionX;
+
+  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
+    docTypeMemuProps = {
+      items: [{
+        text: 'Sửa',
+        icon: 'span.mdi.mdi-text-short',
+        value: 1
+      }, {
+        text: 'Xóa',
+        icon: 'span.mdi.mdi-text',
+        value: 2
+      }]
+    };
+    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+      switch (menuItem.value) {
+        case 1:
+          self.edit(data, parent, index);
+          break;
+
+        case 2:
+          self["delete"](data.original, parent, index);
+          break;
+      }
+    });
+
+    functionX = function (token) {
+      return function () {
+        var x = function x(event) {
+          absol.QuickMenu.close(token);
+          document.body.removeEventListener("click", x);
+        };
+
+        document.body.addEventListener("click", x);
+      };
+    }(token);
+
+    setTimeout(functionX, 10);
+  };
+
+  var equipmentModule = component_ModuleDatabase.getModule("equipments");
+  equipmentModule.load().then(function (value) {
+    var header = [{
+      type: "increase",
+      value: "#",
+      style: {
+        minWidth: "50px",
+        width: "50px"
+      }
+    }, {
+      value: 'MS',
+      sort: true,
+      style: {
+        minWidth: "50px",
+        width: "50px"
+      }
+    }, {
+      value: 'Tên',
+      sort: true,
+      style: {
+        minWidth: "unset"
+      }
+    }, {
+      value: 'Loại',
+      sort: true,
+      style: {
+        minWidth: "200px",
+        width: "200px"
+      }
+    }, {
+      value: 'Có sẳn',
+      sort: true,
+      style: {
+        minWidth: "200px",
+        width: "200px"
+      }
+    }, {
+      value: 'Ngày tạo',
+      sort: true,
+      style: {
+        minWidth: "200px",
+        width: "200px"
+      }
+    }, {
+      type: "detail",
+      functionClickAll: functionClickMore,
+      icon: "",
+      dragElement: false,
+      style: {
+        width: "30px"
+      }
+    }];
+    self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+    tabContainer.addChild(self.mTable);
+    self.mTable.addInputSearch(ListEquipment_$('.pizo-list-realty-page-allinput-container input', self.$view));
+  });
+  this.searchControl = this.searchControlContent();
+  this.$view.addChild(ListEquipment_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [this.searchControl, tabContainer]
+  }));
+  return this.$view;
+};
+
+ListEquipment_ListEquipment.prototype.getDataParam = function () {
+  return this.listParam;
+};
+
+ListEquipment_ListEquipment.prototype.formatDataRow = function (data) {
+  var temp = [];
+  var check = [];
+  var k = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var result = this.getDataRow(data[i]);
+
+    if (check[data[i].parent_id] !== undefined) {
+      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
+      check[data[i].parent_id].child.push(result);
+    } else temp[k++] = result;
+
+    check[data[i].id] = result;
+  }
+
+  return temp;
+};
+
+ListEquipment_ListEquipment.prototype.getDataRow = function (data) {
+  var result = [{}, data.id, data.name, data.type, data.available == 1 ? "Có" : "Không", formatDate(data.created, true, true, true, true, true), {}];
+  result.original = data;
+  return result;
+};
+
+ListEquipment_ListEquipment.prototype.formatDataList = function (data) {
+  var temp = [{
+    text: "Tất cả",
+    value: 0
+  }];
+
+  for (var i = 0; i < data.length; i++) {
+    temp[i + 1] = {
+      text: data[i].name,
+      value: data[i].id
+    };
+  }
+
+  return temp;
+};
+
+ListEquipment_ListEquipment.prototype.searchControlContent = function () {
+  var content = ListEquipment_({
+    tag: "div"
+  });
+
+  var temp = ListEquipment_({
+    tag: "div",
+    style: {
+      display: "none"
+    },
+    child: [content]
+  });
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.timestart = new Date();
+    content.timeend = new Date();
+  };
+
+  return temp;
+};
+
+ListEquipment_ListEquipment.prototype.getDataCurrent = function () {
+  return this.getDataChild(this.mTable.data);
+};
+
+ListEquipment_ListEquipment.prototype.getDataChild = function (arr) {
+  var self = this;
+  var result = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    result.push(arr[i].original);
+    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
+  }
+
+  return result;
+};
+
+ListEquipment_ListEquipment.prototype.add = function () {
+  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var row = arguments.length > 1 ? arguments[1] : undefined;
+  var self = this;
+  var mNewEquipment = new component_NewEquipment(undefined, parent_id);
+  mNewEquipment.attach(self.parent);
+  var frameview = mNewEquipment.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.addDB(mNewEquipment, row);
+};
+
+ListEquipment_ListEquipment.prototype.addDB = function (mNewEquipment, row) {
+  var self = this;
+  mNewEquipment.promiseAddDB.then(function (value) {
+    component_ModuleDatabase.getModule("equipments").add(value).then(function (result) {
+      value.id = result;
+      self.addView(value, row);
+    });
+    mNewEquipment.promiseAddDB = undefined;
+    setTimeout(function () {
+      if (mNewEquipment.promiseAddDB !== undefined) self.addDB(mNewEquipment);
+    }, 10);
+  });
+};
+
+ListEquipment_ListEquipment.prototype.addView = function (value, parent) {
+  value.created = getGMT();
+  var result = this.getDataRow(value);
+  var element = this.mTable;
+  element.insertRow(result);
+};
+
+ListEquipment_ListEquipment.prototype.edit = function (data, parent, index) {
+  var self = this;
+  var mNewEquipment = new component_NewEquipment(data);
+  mNewEquipment.attach(self.parent);
+  var frameview = mNewEquipment.getView(self.getDataParam());
+  self.parent.body.addChild(frameview);
+  self.parent.body.activeFrame(frameview);
+  self.editDB(mNewEquipment, data, parent, index);
+};
+
+ListEquipment_ListEquipment.prototype.editDB = function (mNewEquipment, data, parent, index) {
+  var self = this;
+  mNewEquipment.promiseEditDB.then(function (value) {
+    value.id = data.original.id;
+    component_ModuleDatabase.getModule("equipments").update(value).then(function (result) {
+      self.editView(value, data, parent, index);
+    });
+    mNewEquipment.promiseEditDB = undefined;
+    setTimeout(function () {
+      if (mNewEquipment.promiseEditDB !== undefined) self.editDB(mNewEquipment, data, parent, index);
+    }, 10);
+  });
+};
+
+ListEquipment_ListEquipment.prototype.editView = function (value, data, parent, index) {
+  value.created = data.original.created;
+  var data = this.getDataRow(value);
+  var indexOF = index,
+      element = parent;
+  element.updateRow(data, indexOF, true);
+};
+
+ListEquipment_ListEquipment.prototype["delete"] = function (data, parent, index) {
+  var self = this;
+  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
+  this.$view.addChild(deleteItem);
+  deleteItem.promiseComfirm.then(function () {
+    self.deleteDB(data, parent, index);
+  });
+};
+
+ListEquipment_ListEquipment.prototype.deleteView = function (parent, index) {
+  var self = this;
+  var bodyTable = parent.bodyTable;
+  parent.dropRow(index).then(function () {});
+};
+
+ListEquipment_ListEquipment.prototype.deleteDB = function (data, parent, index) {
+  var self = this;
+  component_ModuleDatabase.getModule("equipments")["delete"]({
+    id: data.id
+  }).then(function (value) {
+    self.deleteView(parent, index);
+  });
+};
+
+ListEquipment_ListEquipment.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+ListEquipment_ListEquipment.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+ListEquipment_ListEquipment.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+ListEquipment_ListEquipment.prototype.start = function () {};
+
+/* harmony default export */ var page_ListEquipment = (ListEquipment_ListEquipment);
 // EXTERNAL MODULE: ./css/form_create_edit.css
-var form_create_edit = __webpack_require__(221);
+var form_create_edit = __webpack_require__(225);
 
 // EXTERNAL MODULE: ./css/test_question.css
-var test_question = __webpack_require__(223);
+var test_question = __webpack_require__(227);
 
 // EXTERNAL MODULE: ./css/test.css
-var test = __webpack_require__(225);
+var test = __webpack_require__(229);
 
 // CONCATENATED MODULE: ./js/component/modal_drag_drop_manyfiles.js
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -64918,6 +66066,7 @@ var xmlModalDragManyFiles;
 
 
 
+
 var App_ = dom_Fcore._;
 var App_$ = dom_Fcore.$;
 
@@ -65055,9 +66204,6 @@ App_App.prototype.getView = function () {
                 text: "Tiện nghi trong nhà",
                 pageIndex: 31
               }, {
-                text: "Tiện nghi xung quanh",
-                pageIndex: 32
-              }, {
                 text: "Thông tin liên hệ",
                 pageIndex: 33
               }]
@@ -65083,9 +66229,6 @@ App_App.prototype.getView = function () {
                 text: "Upload hình",
                 pageIndex: 73
               }]
-            }, {
-              text: "Thống kê",
-              pageIndex: 8
             }, {
               text: "Nhập xuất dữ liệu",
               pageIndex: 9
@@ -65278,6 +66421,14 @@ App_App.prototype.openPage = function (index) {
       var mPlanningInformation = new page_PlanningInformation();
       mPlanningInformation.attach(this);
       var frameview = mPlanningInformation.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      break;
+
+    case 31:
+      var mListEquipment = new page_ListEquipment();
+      mListEquipment.attach(this);
+      var frameview = mListEquipment.getView();
       this.body.addChild(frameview);
       this.body.activeFrame(frameview);
       break;

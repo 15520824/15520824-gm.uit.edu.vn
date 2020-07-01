@@ -232,37 +232,35 @@ ListAdress.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
-    moduleDatabase.getModule("addresses").load().then(function(value){
-    moduleDatabase.getModule("streets").load().then(function(listStreet){
-        moduleDatabase.getModule("wards").load().then(function(listWard){
-            moduleDatabase.getModule("districts").load().then(function(listDistrict){
-                moduleDatabase.getModule("states").load().then(function(listState){
-                self.setListParamStreet();
-                self.setListParamDitrict();
-                self.setListParamState();
-                self.setListParamWard();
-                self.listStateElement.items = self.listState;
-                self.listDistrictElement.items = self.listDistrict;
-                self.listWardElement.items = self.listWard;
-                var header = [
-                { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
-                {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
-                {value:'Số nhà',sort:true,style:{minWidth:"unset"}},
-                {value:'Đường',sort:true,style:{minWidth:"unset"}},
-                {value:'Phường/Xã',sort:true,style:{minWidth:"unset"}},
-                {value:'Quận/Huyện',sort:true,style:{minWidth:"unset"}},
-                {value:'Tỉnh/TP',sort:true,style:{minWidth:"unset"}},
-                {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-                self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-                tabContainer.addChild(self.mTable);
-                self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-                self.mTable.addFilter(self.listWardElement,4);
-                self.mTable.addFilter(self.listDistrictElement,5);
-                self.mTable.addFilter(self.listStateElement,6);
-            });
-            });
-        });
-    });
+    var arr = [];
+    arr.push(moduleDatabase.getModule("addresses").load());
+    arr.push(moduleDatabase.getModule("streets").load());
+    arr.push(moduleDatabase.getModule("wards").load());
+    arr.push(moduleDatabase.getModule("districts").load());
+    arr.push(moduleDatabase.getModule("states").load());
+    Promise.all(arr).then(function(){
+        self.setListParamStreet();
+        self.setListParamDitrict();
+        self.setListParamState();
+        self.setListParamWard();
+        self.listStateElement.items = self.listState;
+        self.listDistrictElement.items = self.listDistrict;
+        self.listWardElement.items = self.listWard;
+        var header = [
+        { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
+        {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
+        {value:'Số nhà',sort:true,style:{minWidth:"unset"}},
+        {value:'Đường',sort:true,style:{minWidth:"unset"}},
+        {value:'Phường/Xã',sort:true,style:{minWidth:"unset"}},
+        {value:'Quận/Huyện',sort:true,style:{minWidth:"unset"}},
+        {value:'Tỉnh/TP',sort:true,style:{minWidth:"unset"}},
+        {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+        tabContainer.addChild(self.mTable);
+        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
+        self.mTable.addFilter(self.listWardElement,4);
+        self.mTable.addFilter(self.listDistrictElement,5);
+        self.mTable.addFilter(self.listStateElement,6);
     });
 
     this.searchControl = this.searchControlContent();
@@ -592,9 +590,7 @@ ListAdress.prototype.addDB = function(mNewDistrict,row ){
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         moduleDatabase.updateData(phpFile,value).then(function(result){
-            
-            value.id = result;
-            self.addView(value,row);
+            self.addView(result.data,row);
         })
         mNewDistrict.promiseAddDB = undefined;
         setTimeout(function(){

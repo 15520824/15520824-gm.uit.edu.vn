@@ -22,40 +22,18 @@ if (isset($_POST["name"])) {
     exit();
 }
 
-$WHERE = "";
-$ORDERING = "";
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
-    
-    if (isset($data["WHERE"])) {
-        if(isset($data["isFirst"]))
-        {
-            $isFirst = $data["isFirst"];
-        }
-        $WHERE=$data["WHERE"];
-    }
-    
-    if (isset($data["ORDERING"])) {
-        $ORDERING=$data["ORDERING"];
-    }
+    $data["birthday"] = new DateTime($data["birthday"]);
 }else
 {
     echo "BAD_REQUEST (400)";
     exit();
 }
-
-$result = $connector-> load($prefix.$tableName, $WHERE, $ORDERING);
-
-if(isset($isFirst))
-{
-    $count = $connector-> query("SELECT COUNT(*) FROM ".$prefix.$tableName);
-    if($count)
-    if ($count->num_rows == 1) {
-        array_push($result,$count->fetch_assoc());
-    }
-}
-
-echo "ok".EncodingClass::fromVariable($result);
+$result = $connector-> update($prefix."users", $data);
+echo "ok".EncodingClass::fromVariable(array(
+    'data'=>$data
+));
 
 exit(0);
 ?>

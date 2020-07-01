@@ -188,11 +188,6 @@ ListAccount.prototype.getView = function () {
         docTypeMemuProps = {
             items: [
                 {
-                    text: 'Thêm',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:0,
-                },
-                {
                     text: 'Sửa',
                     icon: 'span.mdi.mdi-text-short',
                     value:1,
@@ -232,29 +227,32 @@ ListAccount.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
-
-    moduleDatabase.getModule("users").load().then(function(value){
-        moduleDatabase.getModule("positions").load().then(function(listParam){
-            self.setListParam(listParam);
-            var header = [
-            { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
-            {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
-            {value:'Tài khoản',sort:true,style:{minWidth:"unset"}},
-            {value:'Họ và tên',sort:true,style:{minWidth:"unset"}},
-            {value:'Số điện thoại',style:{minWidth:"90px",width:"90px"}} , 
-            {value:'Email',sort:true,style:{minWidth:"unset"}},
-            {value:'Chức danh',sort:true,style:{minWidth:"100px",width:"100px"}},
-            {value:'Truy cập lần cuối',sort:true,style:{minWidth:"140px",width:"140px"}},
-            { value:'Hệ thống', sort:true,style:{minWidth:"105px",width:"105px"} },
-            { value:'Hoạt đông', sort:true,style:{minWidth:"105px",width:"105px"} },
-            {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-            self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-            tabContainer.addChild(self.mTable);
-            self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-            self.listParent.updateItemList(listParam);
-        });
+    var arr = [];
+    arr.push(moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load());
+    arr.push(moduleDatabase.getModule("positions").load());
+    Promise.all(arr).then(function(values)
+    {
+        var value = values[0];
+        var listParam = values[1];
+        self.setListParam(listParam);
+        var header = [
+        { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
+        {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
+        {value:'Tài khoản',sort:true,style:{minWidth:"unset"}},
+        {value:'Họ và tên',sort:true,style:{minWidth:"unset"}},
+        {value:'Số điện thoại',style:{minWidth:"90px",width:"90px"}} , 
+        {value:'Email',sort:true,style:{minWidth:"unset"}},
+        {value:'Chức danh',sort:true,style:{minWidth:"100px",width:"100px"}},
+        {value:'Truy cập lần cuối',sort:true,style:{minWidth:"140px",width:"140px"}},
+        { value:'Hệ thống', sort:true,style:{minWidth:"105px",width:"105px"} },
+        { value:'Hoạt đông', sort:true,style:{minWidth:"105px",width:"105px"} },
+        {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+        tabContainer.addChild(self.mTable);
+        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
+        self.listParent.updateItemList(listParam);
     });
-
+    
     this.searchControl = this.searchControlContent();
 
     this.$view.addChild(_({
@@ -657,9 +655,7 @@ ListAccount.prototype.addDB = function(mNewAccount,row){
     var self = this;
     mNewAccount.promiseAddDB.then(function(value){
         moduleDatabase.getModule("users").add(value).then(function(result){
-            
-            value.id = result;
-            self.addView(value,row);
+            self.addView(result.data,row);
         })
         mNewAccount.promiseAddDB = undefined;
         setTimeout(function(){
@@ -670,12 +666,10 @@ ListAccount.prototype.addDB = function(mNewAccount,row){
 }
 
 ListAccount.prototype.addView = function(value,parent){
-    value.created = getGMT();
-    value.modified = getGMT();
+    console.log(value);
     var result = this.getDataRow(value);
     
     var element = this.mTable;
-    console.log(result)
     element.insertRow(result);
 }
 
@@ -696,6 +690,7 @@ ListAccount.prototype.editDB = function(mNewAccount,data,parent,index){
     var self = this;
     mNewAccount.promiseEditDB.then(function(value){
         value.id = data.original.id;
+        console.log(value);
         moduleDatabase.getModule("users").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })

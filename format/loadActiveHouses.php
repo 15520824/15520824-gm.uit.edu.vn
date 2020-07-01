@@ -26,20 +26,29 @@ $WHERE = "";
 $ORDERING = "";
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
-    if (isset($data["cellLng"])) {
-        $cellLng=$data["cellLng"];
-        $minLng = $cellLng%10000*0.0009009009009009009+ceil($cellLng/10000);
-        $maxLng = $minLng+1;
-        $WHERE = "lat<=".$maxLng." AND lat>=".$minLng;
-    }
     
-    if (isset($data["cellLat"])) {
-        $cellLat=$data["cellLat"];
-        $minLat = $cellLat%10000*0.0009009009009009009+ceil($cellLat/10000);
-        $maxLat = $minLat+1;
-        if($WHERE!="")
-        $WHERE.=" AND ";
-        $WHERE = "lng<=".$maxLng." AND lng>=".$minLng;
+    if(isset($data["WHERE"]))
+    {
+        if(isset($data["isFirst"]))
+        {
+            $isFirst = $data["isFirst"];
+        }
+        $data = $data["WHERE"];
+        if (isset($data["cellLng"])) {
+            $cellLng=$data["cellLng"];
+            $minLng = $cellLng%10000*0.0009009009009009009+ceil($cellLng/10000);
+            $maxLng = $minLng+1;
+            $WHERE = "lat<=".$maxLng." AND lat>=".$minLng;
+        }
+        
+        if (isset($data["cellLat"])) {
+            $cellLat=$data["cellLat"];
+            $minLat = $cellLat%10000*0.0009009009009009009+ceil($cellLat/10000);
+            $maxLat = $minLat+1;
+            if($WHERE!="")
+            $WHERE.=" AND ";
+            $WHERE = "lng<=".$maxLng." AND lng>=".$minLng;
+        }
     }
 }else
 {
@@ -48,9 +57,36 @@ if (isset($_POST["data"])) {
 }
 
 
-$result = $connector-> load($prefix.$tableName, $WHERE, $ORDERING);
+$result = $connector-> query("SELECT * FROM ".$prefix."activehouses".$WHERE.$ORDERING);
+$data = array();
+$i = 0; 
+if($result)
+{
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            $data[$i] = $row;
+            $equipment = $connector->load($prefix."house_equipments","houseid = ".$row["id"]);
+            $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
+            $data[$i]["contact"]=$equipment;
+            $data[$i]["equipment"]=$equipment;
+            $i++;
+        }
+    } else {
+    }
+}
 
-echo "ok".EncodingClass::fromVariable($result);
+
+if(isset($isFirst))
+{
+    $count = $connector-> query("SELECT COUNT(*) FROM ".$prefix."activehouses");
+    if($count)
+    if ($count->num_rows == 1) {
+        array_push($data,$count->fetch_assoc());
+    }
+}
+
+echo "ok".EncodingClass::fromVariable($data);
 
 exit(0);
 ?>

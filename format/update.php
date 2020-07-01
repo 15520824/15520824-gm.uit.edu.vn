@@ -29,7 +29,6 @@ if (isset($_POST["data"])) {
     echo "BAD_REQUEST (400)";
     exit();
 }
-
 $result = $connector-> update($prefix.$tableName, $data);
 echo "ok".EncodingClass::fromVariable(array(
     'data'=>$data

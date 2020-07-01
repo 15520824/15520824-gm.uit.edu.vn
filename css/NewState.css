@@ -22,7 +22,6 @@
     flex-grow: 2;
     display: flex;
     justify-content: center;
-    overflow: hidden;
     position: relative;
 }
 

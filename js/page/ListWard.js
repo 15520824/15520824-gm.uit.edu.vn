@@ -224,32 +224,35 @@ ListWard.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
+    var arr = [];
+    arr.push(moduleDatabase.getModule("wards").load());
+    arr.push(moduleDatabase.getModule("districts").load());
+    arr.push(moduleDatabase.getModule("states").load());
+    
+    Promise.all(arr).then(function(values){
+        var value = values[0];
+        var listWard = values[1];
+        var listState = values[2];
+        self.setListParamState(listState);
+        self.listStateElement.items = self.listState;
+        self.setListParamWard(listWard);
+        self.listWardElement.items = self.listWard;
 
-    moduleDatabase.getModule("wards").load().then(function(value){
-        moduleDatabase.getModule("districts").load().then(function(listWard){
-            moduleDatabase.getModule("states").load().then(function(listState){
-            self.setListParamState(listState);
-            self.listStateElement.items = self.listState;
-            self.setListParamWard(listWard);
-            self.listWardElement.items = self.listWard;
-
-            var header = [
-            { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
-            {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
-            {value:'Tên',sort:true,style:{minWidth:"unset"}},
-            {value:'Loại',sort:true,style:{minWidth:"200px",width:"200px"}},
-            {value:'Quận/Huyện',sort:true,style:{minWidth:"200px",width:"200px"}},
-            {value:'Tỉnh/Thành phố',sort:true,style:{minWidth:"200px",width:"200px"}},
-            {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-            self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-            tabContainer.addChild(self.mTable);
-            self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view),2);
-            self.mTable.addFilter(self.listWardElement,4);
-            self.mTable.addFilter(self.listStateElement,5);
-            self.mTable.addFilter(self.listDistrictElement,3);
-            });
-        });
-    });
+        var header = [
+        { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
+        {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
+        {value:'Tên',sort:true,style:{minWidth:"unset"}},
+        {value:'Loại',sort:true,style:{minWidth:"200px",width:"200px"}},
+        {value:'Quận/Huyện',sort:true,style:{minWidth:"200px",width:"200px"}},
+        {value:'Tỉnh/Thành phố',sort:true,style:{minWidth:"200px",width:"200px"}},
+        {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+        tabContainer.addChild(self.mTable);
+        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view),2);
+        self.mTable.addFilter(self.listWardElement,4);
+        self.mTable.addFilter(self.listStateElement,5);
+        self.mTable.addFilter(self.listDistrictElement,3);
+    })
 
     this.searchControl = this.searchControlContent();
 
@@ -530,9 +533,7 @@ ListWard.prototype.addDB = function(mNewWard,row ){
     var self = this;
     mNewWard.promiseAddDB.then(function(value){
         moduleDatabase.getModule("wards").add(value).then(function(result){
-            
-            value.id = result;
-            self.addView(value,row);
+            self.addView(result.data,row);
         })
         mNewWard.promiseAddDB = undefined;
         setTimeout(function(){

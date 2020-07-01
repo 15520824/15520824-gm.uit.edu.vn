@@ -708,12 +708,12 @@ export function MapView() {
     })
     Object.assign(temp,MapView.prototype);
     temp.mapReplace = $('div.pizo-new-realty-location-map-view-content',temp);
+    temp.map = temp.activeMap();
     return temp;
 }
 
 MapView.prototype.activePlanningMap = function()
 {
-    this.map = this.activeMap();
     this.addMapPolygon();
     this.addMapHouse();
 }
@@ -779,7 +779,7 @@ MapView.prototype.addMapPolygon = function()
                             self.checkMap[cellDeltaLat][cellDeltaLng] = [];
                             if(self.checkLibary[cellDeltaLat]===undefined)
                             self.checkLibary[cellDeltaLat] = [];
-                        moduleDatabase.getModule("polygon").load({cellLng:cellDeltaLng,cellLat:cellDeltaLat},true,true).then(function(cellDeltaLat,cellDeltaLng,value){
+                        moduleDatabase.getModule("polygon").load({WHERE:{cellLng:cellDeltaLng,cellLat:cellDeltaLat}}).then(function(cellDeltaLat,cellDeltaLng,value){
                             for(var i=0;i<value.length;i++)
                             {
                                 self.addWKT(value[i]["AsText(`map`)"],cellDeltaLat,cellDeltaLng)
@@ -850,8 +850,8 @@ MapView.prototype.addMapHouse = function()
                             self.checkHouse[cellDeltaLat][cellDeltaLng] = [];
                         if(self.checkLibaryHouse[cellDeltaLat]===undefined)
                             self.checkLibaryHouse[cellDeltaLat] = [];
-                            
-                        moduleDatabase.getModule("activehouses").load({cellLng:cellDeltaLng,cellLat:cellDeltaLat},true,true).then(function(cellDeltaLat,cellDeltaLng,value){
+
+                        moduleDatabase.getModule("activehouses").load({WHERE:{cellLng:cellDeltaLng,cellLat:cellDeltaLat}}).then(function(cellDeltaLat,cellDeltaLng,value){
                             for(var i=0;i<value.length;i++)
                             {
                                 self.addOrtherMarker(value[i],cellDeltaLat,cellDeltaLng);
@@ -874,7 +874,7 @@ MapView.prototype.addOrtherMarker = function(data,cellLat,cellLng)
 {
     var self = this;
     var image = {
-        url: "../../assets/images/marker-blue.png",
+        url: "../../assets/images/marker-red.png",
         // This marker is 20 pixels wide by 32 pixels high.
         scaledSize: new google.maps.Size(24, 24), 
         // The origin for this image is (0, 0).
@@ -1023,7 +1023,6 @@ MapView.prototype.activeDetail = function(detailView)
 {
     
     this.detailView = detailView;
-    this.map = this.activeMap();
     this.addMapPolygon();
     this.addMapHouse();
 }
@@ -1056,7 +1055,7 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
         })
     } else {
         var image = {
-            url: "../../assets/images/marker-red.png",
+            url: "../../assets/images/marker-blue.png",
             // This marker is 20 pixels wide by 32 pixels high.
             scaledSize: new google.maps.Size(24, 24), 
             // The origin for this image is (0, 0).

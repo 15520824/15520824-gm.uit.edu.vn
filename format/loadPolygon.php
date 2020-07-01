@@ -24,13 +24,31 @@ if (isset($_POST["name"])) {
 
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
-    if (isset($data["cellLng"])) {
-        $cellLng=$data["cellLng"];
+
+    if(isset($data["WHERE"]))
+    {
+        if(isset($data["isFirst"]))
+        {
+            $isFirst = $data["isFirst"];
+        }
+        $data = $data["WHERE"];
+        if (isset($data["cellLng"])) {
+            $cellLng=$data["cellLng"];
+            $minLng = $cellLng%10000*0.0009009009009009009+ceil($cellLng/10000);
+            $maxLng = $minLng+1;
+            $WHERE = "lat<=".$maxLng." AND lat>=".$minLng;
+        }
+        
+        if (isset($data["cellLat"])) {
+            $cellLat=$data["cellLat"];
+            $minLat = $cellLat%10000*0.0009009009009009009+ceil($cellLat/10000);
+            $maxLat = $minLat+1;
+            if($WHERE!="")
+            $WHERE.=" AND ";
+            $WHERE = "lng<=".$maxLng." AND lng>=".$minLng;
+        }
     }
     
-    if (isset($data["cellLat"])) {
-        $cellLat=$data["cellLat"];
-    }
 }else
 {
     echo "BAD_REQUEST (400)";
@@ -39,13 +57,22 @@ if (isset($_POST["data"])) {
 
 $result = $connector->query("SELECT `id`, `cellLat`, `cellLng`, `created`, AsText(`map`) FROM ".$prefix."geometry "."WHERE cellLat = ".$cellLat." AND "."cellLng = ".$cellLng);
 $data = array();
-$i = 0; 
+$i = 0;
+if($result)
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         $data[$i++] = $row;
     }
 } else {
+}
+if(isset($isFirst))
+{
+    $count = $connector-> query("SELECT COUNT(*) FROM ".$prefix."geometry");
+    if($count)
+    if ($count->num_rows == 1) {
+        array_push($data,$count->fetch_assoc());
+    }
 }
 echo "ok".EncodingClass::fromVariable($data);
 

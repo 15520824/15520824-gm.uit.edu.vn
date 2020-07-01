@@ -15,8 +15,12 @@ if ($connector == null) {
 $WHERE = "";
 $ORDERING = "";
 if (isset($_POST["data"])) {
-    $data=EncodingClass::toVariable($_POST["data"]);
+    $data=EncodingClass::toVariable($_POST["data"]);  
     if (isset($data["WHERE"])) {
+        if(isset($data["isFirst"]))
+        {
+            $isFirst = $data["isFirst"];
+        }
         $WHERE=$data["WHERE"];
     }
     
@@ -36,12 +40,23 @@ $result = $connector->query("SELECT `id`, `cellLat`, `cellLng`, `created`, AsTex
 
 $data = array();
 $i = 0; 
+if($result)
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         $data[$i++] = $row;
     }
 } else {
+}
+
+if(isset($isFirst))
+{
+    $count = $connector-> query("SELECT COUNT(*) as count FROM ".$prefix."geometry");
+    
+    if($count)
+    if ($count->num_rows == 1) {
+        array_push($data,$count->fetch_assoc());
+    }
 }
 echo "ok".EncodingClass::fromVariable($data);
 exit(0);

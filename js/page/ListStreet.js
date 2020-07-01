@@ -623,9 +623,7 @@ ListStreet.prototype.addDB = function(mNewDistrict,row ){
         if(self.phpUpdateContent)
         phpFile = self.phpUpdateContent;
         moduleDatabase.updateData(phpFile,value).then(function(result){
-            
-            value.id = result;
-            self.addView(value,row);
+            self.addView(result.data,row);
         })
         mNewDistrict.promiseAddDB = undefined;
         setTimeout(function(){

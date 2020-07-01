@@ -419,9 +419,7 @@ ListContact.prototype.addDB = function(mNewContact,row ){
     var self = this;
     mNewContact.promiseAddDB.then(function(value){
         moduleDatabase.getModule("contacts").add(value).then(function(result){
-            
-            value.id = result;
-            self.addView(value,row);
+            self.addView(result.data,row);
         })
         mNewContact.promiseAddDB = undefined;
         setTimeout(function(){

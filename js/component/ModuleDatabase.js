@@ -1,5 +1,5 @@
 import FormClass from './jsform';
-import {promiseState} from './FormatFunction';
+
 
 var moduleDatabase = new ModuleDatabase();
 console.log(moduleDatabase)
@@ -24,41 +24,84 @@ function DataStructure(hostDatabase ,name ,listFilePHP = ["load.php","add.php","
    this.name = name;
    this.Libary = [];
    this.sync = [];
+   this.checkLoaded = [];
+   this.promisePart = [];
+   this.isFirst = true;
 }
 
 
 DataStructure.prototype.load = function(data = [],isLoaded = false){
-    var self = this;    
-    if(isLoaded == false&&self.promiseLoad!==undefined&&data.WHERE==undefined)
+    var self = this;
+    if(data.WHERE == undefined)
     {
-        if(self.promiseLoad.status==="pending")
-        return self.promiseLoad;
-        else
-        return Promise.resolve(self.data);
+        if(isLoaded == false&&self.promiseLoad!==undefined)
+        {
+            console.log(self.promiseLoad.status)
+            if(self.promiseLoad.status==="pending")
+            return self.promiseLoad;
+            else
+            return Promise.resolve(self.data);
+        }
+           
+    }else
+    {
+        if(isLoaded == false&&self.promisePart[data.WHERE]!==undefined)
+        {
+            if(self.promisePart[data.WHERE].status==="pending")
+            return self.promisePart[data.WHERE];
+            else
+            return Promise.resolve(self.promisePart[data.WHERE].data);
+        }
     }
 
     var promiseLoad;
+    
+    if(this.isFirst == true)
+    {
+        data.isFirst = true;
+    }
+    var isFirst = this.isFirst;
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(value){
+            console.log(value);
             if(self.data === undefined)
             self.data = [];
-                for(var i = 0;i<value.length;i++)
+            if(data.WHERE===undefined)
+            {
+                self.countRow = value.length;
+            }else
+            {
+                self.checkLoaded[data.WHERE] = value;
+                if(isFirst===true)
                 {
-                    var libary = self.Libary["id"];
-                    if(libary === undefined)
-                    {
-                        self.data = value;
-                    }
-                    else
-                    if(libary[value[i].id]===undefined)
-                    {
-                        self.data.push(value[i]);
-                        self.setFormatAdd(value[i]);
-                    }
+                    self.countRow = parseInt(value[value.length-1].count);
+                    value.splice(value.length-1,1);
+                    self.isFirst = false;
                 }
+            }
+            var libary = self.Libary["id"];
+            if(libary === undefined)
+            {
+                self.data = value;
+            }else
+            for(var i = 0;i<value.length;i++)
+            {
+                if(self.data.length === self.countRow)
+                {
+                    if(self.promiseLoad === undefined)
+                    self.promiseLoad = Promise.resolve(self.data);
+                    break;
+                }
+                if(libary[value[i].id]===undefined)
+                {
+                    self.data.push(value[i]);
+                    self.setFormatAdd(value[i]);
+                }
+            }
             
             self.getLibary();
             promiseLoad.status = "done";
+            promiseLoad.data = value;
             resolve(value);
     })
     .catch(function(error){
@@ -68,9 +111,12 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     })
     })
     promiseLoad.status = "pending";
+    if(data.WHERE === undefined)
     self.promiseLoad = promiseLoad;
+    else
+    self.promisePart[data.WHERE] = promiseLoad;
 
-    return self.promiseLoad;
+    return promiseLoad;
 }
 
 DataStructure.prototype.getLibary = function(param,formatFunction,isArray = false,isLoaded = false){
@@ -144,7 +190,11 @@ DataStructure.prototype.setLibaryRow = function(data,param,formatFunction,isArra
             else 
             {
                 if(this[data[param]].index == 1&&this.isArray!==true)
-                this[data[param]] = [this[data[param]]];
+                {
+                    if(this[data[param]].id == result.id)
+                    return;
+                    this[data[param]] = [this[data[param]]];
+                }
                 this[data[param]].push(result);
             }
             this[data[param]].index++;
@@ -212,11 +262,6 @@ DataStructure.prototype.add = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpAdder,data).then(function(value){
-            if(self.data.length==0)
-            {
-
-            }else
-            {
                 Object.assign(data,value.data);
                 self.setFormatAdd(data);
                 if(value.insert!==undefined)
@@ -245,7 +290,7 @@ DataStructure.prototype.add = function(data){
                         }
                     }
                 }
-            }
+
             resolve(value);
         }).catch(function(err){
             reject(err);
@@ -263,6 +308,7 @@ DataStructure.prototype.setFormatAdd = function(data)
         self.Libary[param].formatFunction(data,param);
     }
     self.data.push(data);  
+    self.countRow++;
 }
 
 DataStructure.prototype.update = function(data){
@@ -320,6 +366,8 @@ DataStructure.prototype.setFormatUpdate = function(data)
             self.Libary[param].deleteFunction(temp,param);
             temp[param] = data[param];
             self.Libary[param].formatFunction(temp,param);
+            if(self.Libary[param]===true)
+            data.isCheckUpdate = true;
         }else
         temp[param] = data[param];
     }
@@ -338,6 +386,7 @@ DataStructure.prototype.delete = function(data){
                     self.Libary[param].deleteFunction(temp,param);
                 }
                 self.data.splice(self.data.indexOf(temp),1);
+                self.countRow--;
             }
             resolve();
         }).catch(function(err){

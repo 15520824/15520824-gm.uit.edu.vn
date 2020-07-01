@@ -2204,11 +2204,11 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     }
 
     var checkChild = false;
-
-    if (data.isCheckUpdate===true)
+    if (data.original!==undefined&&data.original.isCheckUpdate===true)
     {
         var table = result.bodyTable.parentNode;
         table.updateTable(undefined,table.data);
+        delete data.isCheckUpdate;
         return;
     }
 

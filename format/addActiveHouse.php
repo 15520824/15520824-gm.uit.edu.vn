@@ -134,8 +134,6 @@ while (isset($data["addressid".$index]))
                 'addressnumber' => $number,
                 'wardid' => $wardid,
                 'streetid' => $streetid,
-                'lng' => $address["lng"],
-                'lat' => $address["lat"]
             );
             $addressid = $connector-> insert($prefix."addresses", $dataInsertAddress);
             $dataInsertAddress["id"] = $addressid;
@@ -147,21 +145,13 @@ while (isset($data["addressid".$index]))
         }else
         {
             $addressid = $dataAddress[0]["id"];
-            $dataInsertAddress = array(
-                'id' => $addressid,
-                'lng' => $address["lng"],
-                'lat' => $address["lat"]
-            );
-           $connector-> update($prefix."addresses", $dataInsertAddress);
-
-           array_push($update,array(
-                'addresses'=>$dataInsertAddress
-            ));
         }
     }
     
     $data["addressid".$index] = $addressid;
-    $index = ++$i;
+    if($index == "_old")
+    break;
+    $index = "_old";
 }
 
 $result = $connector-> insert($prefix."activehouses", $data);

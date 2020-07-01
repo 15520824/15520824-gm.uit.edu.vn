@@ -200,13 +200,13 @@
   vertical-align: top;
 }
 
-.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact {
+.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact, .pizo-new-realty-image{
   width: 100%;
   vertical-align: top;
   margin-top: 0.7143rem;
 }
 
-.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab {
+.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab,.pizo-new-realty-image-tab {
   padding: 0.7143rem;
   border-bottom: solid 0.0714rem #ccc;
   background: #f3f3f3;
@@ -594,4 +594,42 @@ input[type="number"]::-webkit-outer-spin-button {
 {
   flex-grow: 2;
   display: flex;
+}
+
+
+.pizo-new-realty-dectruct-content-area-size-zone-all{
+    display: inline-block;
+    margin-bottom: 0.7143rem;
+    width: calc(50% - 1.0714rem);
+    vertical-align: top;
+    margin-left: 1.0714rem;
+}
+
+.pizo-new-realty-image{
+  height: 400px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+.pizo-new-realty .modal-upload-XML-body-drop-save{
+  display: none;
+}
+
+.pizo-new-realty-image-tab{
+  display: flex;
+  flex-shrink: 0;
+}
+
+.pizo-new-realty-image-content{
+  flex-grow: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.pizo-new-realty .full-size{
+  height: 100px;
 }

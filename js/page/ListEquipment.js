@@ -1,7 +1,7 @@
 import BaseView from '../component/BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/ListDistrict.css"
+import "../../css/ListEquipment.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
@@ -9,27 +9,29 @@ import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
-import NewDistrict from '../component/NewDistrict';
+import NewEquipment from '../component/NewEquipment';
+
+import {getGMT,formatDate} from '../component/FormatFunction'; 
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function ListDistrict() {
+function ListEquipment() {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
 }
 
-ListDistrict.prototype.setContainer = function(parent)
+ListEquipment.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(ListDistrict.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-ListDistrict.prototype.constructor = ListDistrict;
+Object.defineProperties(ListEquipment.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+ListEquipment.prototype.constructor = ListEquipment;
 
-ListDistrict.prototype.getView = function () {
+ListEquipment.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
@@ -71,7 +73,7 @@ ListDistrict.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Quản lý Quận/Huyện"
+                            innerHTML: "Quản lý tiện ích trong nhà"
                         }
                     },
                     {
@@ -223,26 +225,19 @@ ListDistrict.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
-    var arr = [];
-    arr.push(moduleDatabase.getModule("districts").load());
-    arr.push(moduleDatabase.getModule("states").load());
-    Promise.all(arr).then(function(values){
-        var value = values[0];
-        var listParam = values[1];
-        self.setListParam();
-        var header = [
-        { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
-        {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
-        {value:'Tên',sort:true,style:{minWidth:"unset"}},
-        {value:'Loại',sort:true,style:{minWidth:"200px",width:"200px"}},
-        {value:'Tỉnh/Thành phố',sort:true,style:{minWidth:"200px",width:"200px"}},
-        {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-        tabContainer.addChild(self.mTable);
-        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-        self.listParent.updateItemList(listParam);
-        self.mTable.addFilter(self.listDistrictElement,3);
-        self.mTable.addFilter(self.listParent,4);
+    var equipmentModule = moduleDatabase.getModule("equipments");
+        equipmentModule.load().then(function(value){
+            var header = [
+            { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
+            {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
+            {value:'Tên',sort:true,style:{minWidth:"unset"}},
+            {value:'Loại',sort:true,style:{minWidth:"200px",width:"200px"}},
+            {value:'Có sẳn',sort:true,style:{minWidth:"200px",width:"200px"}},
+            {value:'Ngày tạo',sort:true,style:{minWidth:"200px",width:"200px"}},
+            {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+            self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+            tabContainer.addChild(self.mTable);
+            self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
     });
 
     this.searchControl = this.searchControlContent();
@@ -259,20 +254,12 @@ ListDistrict.prototype.getView = function () {
     return this.$view;
 }
 
-ListDistrict.prototype.setListParam = function()
-{
-    this.checkState = moduleDatabase.getModule("states").getLibary("id");
-
-    this.listParam = moduleDatabase.getModule("states").getList("name","id");
-    this.isLoaded = true;
-}
-
-ListDistrict.prototype.getDataParam = function()
+ListEquipment.prototype.getDataParam = function()
 {
     return this.listParam;
 }
 
-ListDistrict.prototype.formatDataRow = function(data)
+ListEquipment.prototype.formatDataRow = function(data)
 {
     var temp = [];
     var check = [];
@@ -291,25 +278,38 @@ ListDistrict.prototype.formatDataRow = function(data)
         temp[k++] = result;
         check[data[i].id] = result;
     }
-    
     return temp;
 }
 
-ListDistrict.prototype.getDataRow = function(data)
+ListEquipment.prototype.getDataRow = function(data)
 {
+    var type;
+    switch(data.type)
+    {
+        case 0:
+            type = "Số lượng";
+            break;
+        case 1:
+            type = "Có không";
+            break;
+        case 2:
+            type = "Chú thích";
+            break;
+    }
     var result = [
         {},
         data.id,
         data.name,
-        data.type,
-        {value:this.checkState[data.stateid].id,element:_({text:this.checkState[data.stateid].type+" "+this.checkState[data.stateid].name})},
+        type,
+        data.available==1?"Có":"Không",
+        formatDate(data.created, true, true, true, true, true),
         {}
         ]
         result.original = data;
     return result;
 }
 
-ListDistrict.prototype.formatDataList = function(data){
+ListEquipment.prototype.formatDataList = function(data){
     var temp = [{text:"Tất cả",value:0}];
     for(var i = 0;i<data.length;i++)
     {
@@ -317,116 +317,20 @@ ListDistrict.prototype.formatDataList = function(data){
     }
     return temp;
 }
-ListDistrict.prototype.searchControlContent = function(){
-    var self = this;
-    self.listParent = _({
-        tag:"selectmenu",
-        props:{
-            enableSearch:true,
-            items:[
-                {text:"Tất cả",value:0},
-            ]
-        }
-    });
-    self.listParent.updateItemList = function(value)
-    {
-        self.listParent.items = self.formatDataList(value);
-    }
 
-    self.listDistrictElement = _({
-        tag:"selectmenu",
-        props:{
-            items:[
-                {text:"Tất cả",value:0},
-                {text:"Thị xã",value:"Thị xã"},
-                {text:"Huyện",value:"Huyện"},
-                {text:"Quận",value:"Quận"},
-                {text:"Thành phố",value:"Thành phố"}
-            ]
-        }
-    });
+ListEquipment.prototype.searchControlContent = function(){  
     var content = _({
-        tag:"div",
-        class:"pizo-list-realty-main-search-control-container",
-        on:{
-            click:function(event)
-            {
-                event.stopPropagation();
-            }
-        },
-        child:[
-            {
-                tag:"div",
-                class:"pizo-list-realty-main-search-control-container-scroller",
-                child:[
-                    {
-                        tag:"div",
-                        class:"pizo-list-realty-main-search-control-row",
-                        child:[
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-district",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
-                                        props:{
-                                            innerHTML:"Tỉnh/TP"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
-                                        child:[
-                                            self.listParent
-                                        ]
-                                    }
-                                ]
-
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-district",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
-                                        props:{
-                                            innerHTML:"Loại"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
-                                        child:[
-                                            self.listDistrictElement
-                                        ]
-                                    }
-                                ]
-
-                            },
-                        ]
-                    }
-                ]
-            }
-        ]
-    });
+        tag:"div"
+    })
     var temp = _({
         tag:"div",
-        class:"pizo-list-realty-main-search-control",
-        on:{
-            click:function(event)
-            {
-                this.hide();
-            }
+        style:{
+            display:"none"
         },
         child:[
             content
         ]
     })
-
-    temp.content = content;
-
     temp.show = function()
     {
         if(!temp.classList.contains("showTranslate"))
@@ -449,19 +353,29 @@ ListDistrict.prototype.searchControlContent = function(){
         // Standard syntax
         content.addEventListener("transitionend", eventEnd);
     }
+    temp.apply = function()
+    {
+
+    }
+    temp.reset = function()
+    {
+        content.timestart = new Date();
+        content.timeend = new Date();
+       
+    }
 
   
     return temp;
 }
 
-ListDistrict.prototype.getDataCurrent = function()
+ListEquipment.prototype.getDataCurrent = function()
 {
     return this.getDataChild(this.mTable.data);
 }
 
 
 
-ListDistrict.prototype.getDataChild = function(arr)
+ListEquipment.prototype.getDataChild = function(arr)
 {
     var self = this;
     var result = [];
@@ -474,70 +388,67 @@ ListDistrict.prototype.getDataChild = function(arr)
     return result;
 }
 
-ListDistrict.prototype.add = function(parent_id = 0,row)
+ListEquipment.prototype.add = function(parent_id = 0,row)
 {
-
-    if(!this.isLoaded)
-        return;
     var self = this;
-    var mNewDistrict = new NewDistrict(undefined,parent_id);
-    mNewDistrict.attach(self.parent);
-    var frameview = mNewDistrict.getView(self.listParam);
+    var mNewEquipment = new NewEquipment(undefined,parent_id);
+    mNewEquipment.attach(self.parent);
+    var frameview = mNewEquipment.getView(self.getDataParam());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.addDB(mNewDistrict,row);
+    self.addDB(mNewEquipment,row);
 }
 
-ListDistrict.prototype.addDB = function(mNewDistrict,row ){
+ListEquipment.prototype.addDB = function(mNewEquipment,row ){
     var self = this;
-    mNewDistrict.promiseAddDB.then(function(value){
-        moduleDatabase.getModule("districts").add(value).then(function(result){
+    mNewEquipment.promiseAddDB.then(function(value){
+        moduleDatabase.getModule("equipments").add(value).then(function(result){
             self.addView(result.data,row);
         })
-        mNewDistrict.promiseAddDB = undefined;
+        mNewEquipment.promiseAddDB = undefined;
         setTimeout(function(){
-            if(mNewDistrict.promiseAddDB!==undefined)
-            self.addDB(mNewDistrict);
+            if(mNewEquipment.promiseAddDB!==undefined)
+            self.addDB(mNewEquipment);
         },10);
     })
 }
 
-ListDistrict.prototype.addView = function(value,parent){
+ListEquipment.prototype.addView = function(value,parent){
+    value.created = getGMT();
     var result = this.getDataRow(value);
     
     var element = this.mTable;
     element.insertRow(result);
 }
 
-ListDistrict.prototype.edit = function(data,parent,index)
+ListEquipment.prototype.edit = function(data,parent,index)
 {
-    if(!this.isLoaded)
-        return;
     var self = this;
-    var mNewDistrict = new NewDistrict(data);
-    mNewDistrict.attach(self.parent);
-    var frameview = mNewDistrict.getView(self.listParam);
+    var mNewEquipment = new NewEquipment(data);
+    mNewEquipment.attach(self.parent);
+    var frameview = mNewEquipment.getView(self.getDataParam());
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mNewDistrict,data,parent,index);
+    self.editDB(mNewEquipment,data,parent,index);
 }
 
-ListDistrict.prototype.editDB = function(mNewDistrict,data,parent,index){
+ListEquipment.prototype.editDB = function(mNewEquipment,data,parent,index){
     var self = this;
-    mNewDistrict.promiseEditDB.then(function(value){
+    mNewEquipment.promiseEditDB.then(function(value){
         value.id = data.original.id;
-        moduleDatabase.getModule("districts").update(value).then(function(result){
+        moduleDatabase.getModule("equipments").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
-        mNewDistrict.promiseEditDB = undefined;
+        mNewEquipment.promiseEditDB = undefined;
         setTimeout(function(){
-        if(mNewDistrict.promiseEditDB!==undefined)
-            self.editDB(mNewDistrict,data,parent,index);
+        if(mNewEquipment.promiseEditDB!==undefined)
+            self.editDB(mNewEquipment,data,parent,index);
         },10);
     })
 }
 
-ListDistrict.prototype.editView = function(value,data,parent,index){
+ListEquipment.prototype.editView = function(value,data,parent,index){
+    value.created = data.original.created;
     var data = this.getDataRow(value);
 
     var indexOF = index,element = parent;
@@ -545,11 +456,8 @@ ListDistrict.prototype.editView = function(value,data,parent,index){
     element.updateRow(data,indexOF,true);
 }
 
-ListDistrict.prototype.delete = function(data,parent,index)
+ListEquipment.prototype.delete = function(data,parent,index)
 {
-    if(!this.isLoaded)
-        return;
-    
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
     this.$view.addChild(deleteItem);
@@ -558,21 +466,21 @@ ListDistrict.prototype.delete = function(data,parent,index)
     })
 }
 
-ListDistrict.prototype.deleteView = function(parent,index){
+ListEquipment.prototype.deleteView = function(parent,index){
     var self = this;
     var bodyTable = parent.bodyTable;
     parent.dropRow(index).then(function(){
     });
 }
 
-ListDistrict.prototype.deleteDB = function(data,parent,index){
+ListEquipment.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    moduleDatabase.getModule("districts").delete({id:data.id}).then(function(value){
+    moduleDatabase.getModule("equipments").delete({id:data.id}).then(function(value){
         self.deleteView(parent,index);
     })
 }
 
-ListDistrict.prototype.refresh = function () {
+ListEquipment.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -580,7 +488,7 @@ ListDistrict.prototype.refresh = function () {
         this.setData(data);
 };
 
-ListDistrict.prototype.setData = function (data) {
+ListEquipment.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -588,7 +496,7 @@ ListDistrict.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-ListDistrict.prototype.flushDataToView = function () {
+ListEquipment.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -603,8 +511,8 @@ ListDistrict.prototype.flushDataToView = function () {
     }
 };
 
-ListDistrict.prototype.start = function () {
+ListEquipment.prototype.start = function () {
 
 }
 
-export default ListDistrict;
+export default ListEquipment;

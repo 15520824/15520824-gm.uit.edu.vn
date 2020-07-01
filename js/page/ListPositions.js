@@ -271,7 +271,7 @@ ListPositions.prototype.getView = function () {
 
         var promiseAll = [];
         promiseAll.push(moduleDatabase.getModule("positions").load());
-        promiseAll.push(moduleDatabase.getModule("users").load());
+        promiseAll.push(moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load());
         Promise.all(promiseAll).then(function(values){
             self.formatDataRowAccount(values[1]);
             self.formatDataRowPosition(values[0]);
@@ -283,6 +283,9 @@ ListPositions.prototype.getView = function () {
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-realty-main"],
+            style:{
+                flexDirection: "row"
+            },
             child:[
                 {
                     tag:"div",
@@ -410,8 +413,7 @@ ListPositions.prototype.addDBDepartment = function(mNewDepartment,row ){
     mNewDepartment.promiseAddDB.then(function(value){
         console.log(value)
         moduleDatabase.getModule("departments").add(value).then(function(result){
-            value.id = result;
-            self.addViewDepartment(value,row);
+            self.addViewDepartment(result.data,row);
         })
         mNewDepartment.promiseAddDB = undefined;
         setTimeout(function(){
@@ -551,7 +553,7 @@ ListPositions.prototype.addDBPosition = function(mNewPosition,row ){
         var username = value.username;
         delete value.username;
         moduleDatabase.getModule("positions").add(value).then(function(result){
-            value.id = result;
+            value.id = result.data.id;
 
             if(value.username!==undefined)
             {
