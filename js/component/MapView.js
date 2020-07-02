@@ -729,7 +729,6 @@ MapView.prototype.addLatLng = function()
 
 MapView.prototype.addMapPolygon = function()
 {
-    moduleDatabase.getModule("polygon",["loadPolygon.php","addPolygon.php","updatePOlygon.php","deletePolygon.php"])
     var self = this;
     if(this.checkMap === undefined)
     this.checkMap = [];
@@ -800,7 +799,6 @@ MapView.prototype.addMapPolygon = function()
 
 MapView.prototype.addMapHouse = function()
 {
-    moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActiveHouse.php"])
     var self = this;
     if(this.checkHouse === undefined)
     this.checkHouse = [];

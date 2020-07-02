@@ -172,14 +172,16 @@ NewRealty.prototype.descView = function () {
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
 
     var self = this;
-    moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load().then(function(value)
+    moduleDatabase.getModule("users").load().then(function(value)
     {
         self.checkUser = moduleDatabase.getModule("users").getLibary("phone");
+        self.checkUserID = moduleDatabase.getModule("users").getLibary("id");
     })
 
     moduleDatabase.getModule("contacts").load().then(function(value)
     {
         self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+        self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
     })
     this.containerMap = _({
         tag: "div"
@@ -474,7 +476,7 @@ NewRealty.prototype.itemAdressOld = function(addressid = 0)
             }
         ]
     })
-    if(addressid!==0)
+    if(addressid!=0)
     {
         var number = this.checkAddress[addressid].addressnumber;
         var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
@@ -1854,7 +1856,8 @@ NewRealty.prototype.getDataSave = function(){
         salestatus:(this.inputLease.checked==true?1:0)*10+(this.inputSell.checked==true?1:0),
         structure:this.structure.value,
         pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
-        advancedetruct:advanceDetruct
+        advancedetruct:advanceDetruct,
+        juridical:this.juridical.value
     }
     var arr = [];
 
@@ -2254,11 +2257,11 @@ NewRealty.prototype.convenientView = function () {
         {
             temp = libary[this.data.original.equipment[i].equipmentid];
             temp.content = this.data.original.equipment[i].content;
-            value.push(temp);
+            value.push(this.data.original.equipment[i].equipmentid);
             switch(temp.type)
             {
                 case 0:
-                    if(temp.available===0)
+                    if(temp.available===1)
                     container.appendChild(self.itemCount(temp));
                     else
                     container.appendChild(self.itemDisplayNone(temp));
@@ -2267,7 +2270,8 @@ NewRealty.prototype.convenientView = function () {
                     container.appendChild(self.itemDisplayNone(temp));
                     break;
             }
-        } 
+        }
+        equipment.values = value;
     }
     
     var temp = _({
@@ -2371,16 +2375,8 @@ NewRealty.prototype.itemDisplayNone = function(data)
     return temp;
 }
 
-NewRealty.prototype.contactItem = function(data = {
-    name:"",
-    phone:"",
-    note:""
-}){
-    var relate = 1;
-    if(data.statusphone !== undefined)
-    {
-        relate = data.statusphone;
-    }
+NewRealty.prototype.contactItem = function(data){
+  
     var name,typecontact,phone,statusphone,note;
     var self = this;
     var temp = _({
@@ -2402,7 +2398,6 @@ NewRealty.prototype.contactItem = function(data = {
                         tag:"input",
                         class:"pizo-new-realty-contact-item-name-input",
                         props:{
-                            value:data.name
                         }
                     },
                     {
@@ -2456,8 +2451,7 @@ NewRealty.prototype.contactItem = function(data = {
                         tag:"input",
                         class:"pizo-new-realty-contact-item-phone-input",
                         props:{
-                            type:"number",
-                            value:data.phone
+                            type:"number"
                         },
                         on:{
                             change:function(event)
@@ -2465,12 +2459,13 @@ NewRealty.prototype.contactItem = function(data = {
                                 if(self.checkUser===undefined)
                                 {
                                     var element = this;
-                                    moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load().then(function(){
+                                    moduleDatabase.getModule("users").load().then(function(){
                                         setTimeout(function(){
                                             element.emit("change");
                                         },10)
                                       
                                     })
+                                    return;
                                 }
                                 if(self.checkContact===undefined)
                                 {
@@ -2480,18 +2475,17 @@ NewRealty.prototype.contactItem = function(data = {
                                             element.emit("change");
                                         },10)
                                     })
+                                    return;
                                 }
                                 if(self.checkUser[this.value]!==undefined||self.checkContact[this.value]!==undefined)
                                 {
                                     if(self.checkUser[this.value]!==undefined){
                                         var tempValue = self.checkUser[this.value];
-                                        tempValue.type = 0;
                                         temp.setInformation(tempValue);
                                     }
                                     else
                                     {
                                         var tempValue = self.checkContact[this.value];
-                                        tempValue.type = 1;
                                         temp.setInformation(tempValue);
                                     }
                                 }else
@@ -2511,8 +2505,7 @@ NewRealty.prototype.contactItem = function(data = {
                                 {text:"Gọi lại sau",value:2},
                                 {text:"Bỏ qua",value:3},
                                 {text:"Khóa máy",value:4}
-                            ],
-                            value:relate
+                            ]
                         }
                     }
                 ]
@@ -2541,19 +2534,53 @@ NewRealty.prototype.contactItem = function(data = {
     var phone = $('input.pizo-new-realty-contact-item-phone-input',temp);
     var statusphone = $('div.pizo-new-realty-contact-item-phone-selectbox',temp);
     var note = $('textarea.pizo-new-realty-contact-item-note-input',temp);
+    phone.checkContact = function(data)
+    {
+        if(self.checkUserID===undefined)
+        {
+            var element = this;
+            moduleDatabase.getModule("users").load().then(function(){
+                setTimeout(function(){
+                    element.checkContact(data);
+                },10)
+            })
+            return;
+        }
+        if(self.checkContactID===undefined)
+        {
+            var element = this;
+            moduleDatabase.getModule("contacts").load().then(function(){
+                setTimeout(function(){
+                    element.checkContact(data);
+                },10)
+            })
+            return;
+        }
+        if(data.contactid!==undefined&&data.contactid!==0)
+        {
+            temp.setInformation(self.checkContactID[data.contactid]);
+        }else
+        if(data.userid!==undefined&&data.userid!==0)
+        {
+            temp.setInformation(self.checkUserID[data.userid]);
+        }else
+        {
+            temp.setInformation(data);
+        }
+    }
     temp.setInformation = function(data)
     {
-        temp.data = data;
-        switch(data.type)
+        if(data === undefined)
         {
-            case 0:
-                statusphone.value = 1
-                break;
-            case 1:
-                statusphone.value = data.statusphone;
-                break;
-
+            temp.selfRemove();
+            return;
         }
+        temp.data = data;
+        if(data.statusphone === undefined)
+            statusphone.value = 1
+        else
+            statusphone.value = data.statusphone;
+        phone.value = data.phone;
         name.value = data.name;
         name.setAttribute("disabled","");
         statusphone.style.pointerEvents = "none";
@@ -2562,7 +2589,6 @@ NewRealty.prototype.contactItem = function(data = {
     temp.setOpenForm = function(data)
     {
         temp.data = data;
-        name.value = "";
         statusphone.value = 1;
         name.removeAttribute("disabled");
         statusphone.style.pointerEvents = "unset";
@@ -2573,19 +2599,25 @@ NewRealty.prototype.contactItem = function(data = {
         if(temp.data!==undefined)
         {
             temp.data.typecontact = typecontact.value;
-            temp.note = note.value;
+            temp.data.note = note.value;
             return temp.data;
         }else
         {
             return {
-                type:1,
-                name:name.value = "",
+                name:name.value,
                 statusphone:statusphone.value,
                 phone:phone.value,
                 typecontact : typecontact.value,
                 note:note.value
             }
         }
+    }
+
+    if(data!==undefined)
+    {
+        phone.checkContact(data);
+        typecontact.value = data.typecontact;
+        note.value = data.note;
     }
 
     return temp;
@@ -2707,13 +2739,20 @@ NewRealty.prototype.contactView = function () {
             containerContact
         ]
     })
-
+    if(this.data!==undefined)
+    {
+        for(var i = 0 ;i<this.data.original.contact.length;i++)
+        {
+            containerContact.appendChild(this.contactItem(this.data.original.contact[i]));
+        }
+    }
     this.containerContact = containerContact;
 
     return temp;
 }
 
 NewRealty.prototype.juridicalView = function () {
+    var arr = moduleDatabase.getModule("juridicals").getList("name","id");
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-juridical",
@@ -2747,12 +2786,7 @@ NewRealty.prototype.juridicalView = function () {
                                 },
                                 class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
                                 props: {
-                                    items:[
-                                        {text:"Chưa xác định",value:0},
-                                        {text:"Sổ hồng",value:1},
-                                        {text:"Giấy viết tay",value:2},
-                                        {text:"Khác",value:3},
-                                    ]
+                                    items:arr
                                 }
                             }
                         ]
@@ -2761,6 +2795,11 @@ NewRealty.prototype.juridicalView = function () {
             }
         ]
     })
+    this.juridical = $('div.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input',temp);
+    if(this.data!==undefined)
+    {
+        this.juridical.value = this.data.original.juridical;
+    }
     return temp;
 }
 

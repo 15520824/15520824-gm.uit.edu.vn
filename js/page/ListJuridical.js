@@ -1,7 +1,7 @@
 import BaseView from '../component/BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/ListContact.css"
+import "../../css/ListJuridical.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
@@ -9,27 +9,27 @@ import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
-import NewContact from '../component/NewContact';
+import NewJuridical from '../component/NewJuridical';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function ListContact() {
+function ListJuridical() {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
 }
 
-ListContact.prototype.setContainer = function(parent)
+ListJuridical.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(ListContact.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-ListContact.prototype.constructor = ListContact;
+Object.defineProperties(ListJuridical.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+ListJuridical.prototype.constructor = ListJuridical;
 
-ListContact.prototype.getView = function () {
+ListJuridical.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
@@ -71,7 +71,7 @@ ListContact.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Quản lý Tỉnh/TP"
+                            innerHTML: "Quản lý pháp lý"
                         }
                     },
                     {
@@ -223,19 +223,15 @@ ListContact.prototype.getView = function () {
         setTimeout(functionX,10)
     }
 
-
-    moduleDatabase.getModule("contacts").load().then(function(value){
+    var juridicalModule = moduleDatabase.getModule("juridicals");
+        juridicalModule.load().then(function(value){
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
             {value:'Tên',sort:true,style:{minWidth:"unset"}},
-            {value:'Email',sort:true,style:{minWidth:"unset"}},
-            {value:'Số điện thoại',sort:true,style:{minWidth:"200px",width:"200px"}},
-            {value:'Tình trạng cuộc gọi',sort:true,style:{minWidth:"200px",width:"200px"}},
             {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
             self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
             tabContainer.addChild(self.mTable);
-            self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
     });
 
     this.searchControl = this.searchControlContent();
@@ -252,25 +248,7 @@ ListContact.prototype.getView = function () {
     return this.$view;
 }
 
-ListContact.prototype.setListParam = function(value)
-{
-    this.checkNation = [];
-    this.listParam = [];
-    for(var i  = 0;i<value.length;i++)
-    {
-        this.checkNation[value[i].id] = value[i];
-        this.listParam[i] = {text:value[i].name,value:value[i].id};
-    }
-    this.isLoaded = true;
-    
-}
-
-ListContact.prototype.getDataParam = function()
-{
-    return this.listParam;
-}
-
-ListContact.prototype.formatDataRow = function(data)
+ListJuridical.prototype.formatDataRow = function(data)
 {
     var temp = [];
     var check = [];
@@ -292,40 +270,19 @@ ListContact.prototype.formatDataRow = function(data)
     return temp;
 }
 
-ListContact.prototype.getDataRow = function(data)
+ListJuridical.prototype.getDataRow = function(data)
 {
-    var status;
-    switch(parseInt(data.statusphone)){
-        case 0:
-            status = "Sai số";
-            break;
-        case 1:
-            status = "Còn hoạt động";
-            break;
-        case 2:
-            status = "Gọi lại sau";
-            break;
-        case 3:
-            status = "Bỏ qua";
-            break;
-        case 4:
-            status = "Khóa máy";
-            break;
-    }
     var result = [
         {},
         data.id,
         data.name,
-        data.email,
-        data.phone,
-        status,
         {}
         ]
         result.original = data;
     return result;
 }
 
-ListContact.prototype.formatDataList = function(data){
+ListJuridical.prototype.formatDataList = function(data){
     var temp = [{text:"Tất cả",value:0}];
     for(var i = 0;i<data.length;i++)
     {
@@ -334,7 +291,7 @@ ListContact.prototype.formatDataList = function(data){
     return temp;
 }
 
-ListContact.prototype.searchControlContent = function(){  
+ListJuridical.prototype.searchControlContent = function(){  
     var content = _({
         tag:"div"
     })
@@ -384,14 +341,14 @@ ListContact.prototype.searchControlContent = function(){
     return temp;
 }
 
-ListContact.prototype.getDataCurrent = function()
+ListJuridical.prototype.getDataCurrent = function()
 {
     return this.getDataChild(this.mTable.data);
 }
 
 
 
-ListContact.prototype.getDataChild = function(arr)
+ListJuridical.prototype.getDataChild = function(arr)
 {
     var self = this;
     var result = [];
@@ -404,65 +361,65 @@ ListContact.prototype.getDataChild = function(arr)
     return result;
 }
 
-ListContact.prototype.add = function(parent_id = 0,row)
+ListJuridical.prototype.add = function(parent_id = 0,row)
 {
     var self = this;
-    var mNewContact = new NewContact(undefined,parent_id);
-    mNewContact.attach(self.parent);
-    var frameview = mNewContact.getView();
+    var mNewJuridical = new NewJuridical(undefined,parent_id);
+    mNewJuridical.attach(self.parent);
+    var frameview = mNewJuridical.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.addDB(mNewContact,row);
+    self.addDB(mNewJuridical,row);
 }
 
-ListContact.prototype.addDB = function(mNewContact,row ){
+ListJuridical.prototype.addDB = function(mNewJuridical,row ){
     var self = this;
-    mNewContact.promiseAddDB.then(function(value){
-        moduleDatabase.getModule("contacts").add(value).then(function(result){
+    mNewJuridical.promiseAddDB.then(function(value){
+        moduleDatabase.getModule("juridicals").add(value).then(function(result){
             self.addView(result.data,row);
         })
-        mNewContact.promiseAddDB = undefined;
+        mNewJuridical.promiseAddDB = undefined;
         setTimeout(function(){
-            if(mNewContact.promiseAddDB!==undefined)
-            self.addDB(mNewContact);
+            if(mNewJuridical.promiseAddDB!==undefined)
+            self.addDB(mNewJuridical);
         },10);
     })
 }
 
-ListContact.prototype.addView = function(value,parent){
+ListJuridical.prototype.addView = function(value,parent){
     var result = this.getDataRow(value);
     
     var element = this.mTable;
     element.insertRow(result);
 }
 
-ListContact.prototype.edit = function(data,parent,index)
+ListJuridical.prototype.edit = function(data,parent,index)
 {
     var self = this;
-    var mNewContact = new NewContact(data);
-    mNewContact.attach(self.parent);
-    var frameview = mNewContact.getView(self.getDataParam());
+    var mNewJuridical = new NewJuridical(data);
+    mNewJuridical.attach(self.parent);
+    var frameview = mNewJuridical.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mNewContact,data,parent,index);
+    self.editDB(mNewJuridical,data,parent,index);
 }
 
-ListContact.prototype.editDB = function(mNewContact,data,parent,index){
+ListJuridical.prototype.editDB = function(mNewJuridical,data,parent,index){
     var self = this;
-    mNewContact.promiseEditDB.then(function(value){
+    mNewJuridical.promiseEditDB.then(function(value){
         value.id = data.original.id;
-        moduleDatabase.getModule("contacts").update(value).then(function(result){
+        moduleDatabase.getModule("juridicals").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
-        mNewContact.promiseEditDB = undefined;
+        mNewJuridical.promiseEditDB = undefined;
         setTimeout(function(){
-        if(mNewContact.promiseEditDB!==undefined)
-            self.editDB(mNewContact,data,parent,index);
+        if(mNewJuridical.promiseEditDB!==undefined)
+            self.editDB(mNewJuridical,data,parent,index);
         },10);
     })
 }
 
-ListContact.prototype.editView = function(value,data,parent,index){
+ListJuridical.prototype.editView = function(value,data,parent,index){
     var data = this.getDataRow(value);
 
     var indexOF = index,element = parent;
@@ -470,8 +427,8 @@ ListContact.prototype.editView = function(value,data,parent,index){
     element.updateRow(data,indexOF,true);
 }
 
-ListContact.prototype.delete = function(data,parent,index)
-{
+ListJuridical.prototype.delete = function(data,parent,index)
+{   
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
     this.$view.addChild(deleteItem);
@@ -480,22 +437,21 @@ ListContact.prototype.delete = function(data,parent,index)
     })
 }
 
-ListContact.prototype.deleteView = function(parent,index){
+ListJuridical.prototype.deleteView = function(parent,index){
     var self = this;
     var bodyTable = parent.bodyTable;
     parent.dropRow(index).then(function(){
     });
 }
 
-ListContact.prototype.deleteDB = function(data,parent,index){
+ListJuridical.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    console.log(data)
-    moduleDatabase.getModule("contacts").delete({id:data.id}).then(function(value){
+    moduleDatabase.getModule("juridicals").delete({id:data.id}).then(function(value){
         self.deleteView(parent,index);
     })
 }
 
-ListContact.prototype.refresh = function () {
+ListJuridical.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -503,15 +459,15 @@ ListContact.prototype.refresh = function () {
         this.setData(data);
 };
 
-ListContact.prototype.setData = function (data) {
+ListJuridical.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
-    if (this.contact == "RUNNING")
+    if (this.juridical == "RUNNING")
         this.flushDataToView();
 };
 
-ListContact.prototype.flushDataToView = function () {
+ListJuridical.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -526,8 +482,8 @@ ListContact.prototype.flushDataToView = function () {
     }
 };
 
-ListContact.prototype.start = function () {
+ListJuridical.prototype.start = function () {
 
 }
 
-export default ListContact;
+export default ListJuridical;

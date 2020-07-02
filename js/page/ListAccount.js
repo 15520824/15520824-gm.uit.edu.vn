@@ -228,7 +228,7 @@ ListAccount.prototype.getView = function () {
     }
 
     var arr = [];
-    arr.push(moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load());
+    arr.push(moduleDatabase.getModule("users").load());
     arr.push(moduleDatabase.getModule("positions").load());
     Promise.all(arr).then(function(values)
     {

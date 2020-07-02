@@ -18,8 +18,10 @@ import ListAccount from './page/ListAccount';
 import ListAddress from './page/ListAddress';
 import ListContact from './page/ListContact';
 import ListEquipment from './page/ListEquipment';
+import ListJuridical from './page/ListJuridical';
 
 import xmlModalDragManyFiles from './component/modal_drag_drop_manyfiles';
+import moduleDatabase from './component/ModuleDatabase';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -29,6 +31,12 @@ function App(){
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
+    moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActiveHouse.php"]);
+    moduleDatabase.getModule("contacts",["load.php","add.php","update.php","deleteContact.php"]);
+    moduleDatabase.getModule("users",["load.php","add.php","update.php","deleteUser.php"]);
+    moduleDatabase.getModule("polygon", ["loadPolygon.php", "addPolygon.php", "updatePolygon.php", "deletePolygon.php"]);
+    moduleDatabase.getModule("geometry",["loadMap.php","addMap.php","updateMap.php","deleteMap.php"]);
+    moduleDatabase.getModule("geometry_created",["loadCreatedMap.php"]);
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
@@ -193,6 +201,10 @@ App.prototype.getView = function()
                                                 {
                                                     text:"Tiện nghi trong nhà",
                                                     pageIndex:31
+                                                },
+                                                {
+                                                    text:"Pháp lý",
+                                                    pageIndex:32
                                                 },
                                                 {
                                                     text:"Thông tin liên hệ",
@@ -437,6 +449,13 @@ App.prototype.openPage = function(index){
             var mListEquipment = new ListEquipment();
             mListEquipment.attach(this);
             var frameview = mListEquipment.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 32:
+            var mListJuridical = new ListJuridical();
+            mListJuridical.attach(this);
+            var frameview = mListJuridical.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;

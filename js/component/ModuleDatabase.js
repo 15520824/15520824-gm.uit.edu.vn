@@ -307,17 +307,43 @@ DataStructure.prototype.setFormatAdd = function(data)
         if(typeof self.Libary[param]!= "function")
         self.Libary[param].formatFunction(data,param);
     }
+    data.getList = function(name,value){
+        var text = "";
+        for(var i = 0;i<name.length;i++){
+            if(data[name]===undefined)
+            text+=name[i];
+            else
+            text+= data[name[i]];
+        }
+
+        var checkvalue = "";
+        var isFirst = "";
+        for(var i = 0;i<value.length;i++){
+            if(data[value[i]]===undefined)
+            checkvalue+=value[i];
+            else
+            checkvalue+= isFirst+data[value[i]];
+            isFirst = "_";
+        }
+        return {text:text,value:checkvalue};
+    }
     self.data.push(data);  
     self.countRow++;
 }
 
-DataStructure.prototype.update = function(data){
+DataStructure.prototype.update = function(data,needChange = false){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpUpdater,data).then(function(value){
             if(data.id!==undefined)
             {
                 Object.assign(data,value.data);
+                if(needChange === true)
+                {
+                    data.add = Object.assign({}, value.add);
+                    data.update = Object.assign({}, value.update);
+                    data.delete = Object.assign({}, value.delete);
+                }  
                 self.setFormatUpdate(data);
                 if(value.add!==undefined)
                 {

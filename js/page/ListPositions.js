@@ -271,7 +271,7 @@ ListPositions.prototype.getView = function () {
 
         var promiseAll = [];
         promiseAll.push(moduleDatabase.getModule("positions").load());
-        promiseAll.push(moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load());
+        promiseAll.push(moduleDatabase.getModule("users").load());
         Promise.all(promiseAll).then(function(values){
             self.formatDataRowAccount(values[1]);
             self.formatDataRowPosition(values[0]);

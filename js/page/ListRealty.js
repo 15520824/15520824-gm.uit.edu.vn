@@ -235,8 +235,6 @@ ListRealty.prototype.getView = function () {
         ]
     })
 
-    moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActiveHouse.php"]);
-
     var arr = [];
     arr.push(moduleDatabase.getModule("activehouses").load());
     arr.push(moduleDatabase.getModule("addresses").load());
@@ -245,6 +243,7 @@ ListRealty.prototype.getView = function () {
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());
+    arr.push(moduleDatabase.getModule("juridicals").load());
     Promise.all(arr).then(function (values) {
         var value = values[0];
         self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
@@ -330,7 +329,7 @@ ListRealty.prototype.getView = function () {
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
         
-        moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","delete.php"]).load().then(function (value) {
+        moduleDatabase.getModule("users").load().then(function (value) {
             self.formatDataRowAccount(value);
         })
 
@@ -929,7 +928,26 @@ ListRealty.prototype.edit = function (data, parent, index) {
 ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
     var self = this;
     mNewRealty.promiseEditDB.then(function (value) {
-        moduleDatabase.getModule("activehouses").update(value).then(function (result) {
+        moduleDatabase.getModule("activehouses").update(value,true).then(function (result) {
+            if(result.add.length!==0)
+            {
+                for(var i=0;i<value.contact.length;i++)
+                {
+                    if(value.contact[i].id===undefined)
+                    {
+                        value.contact.splice(i,1);
+                        i--;
+                    }
+                }
+                for(var i=0;i<result.add.length;i++)
+                {
+                    if(result.add[i]["contacts"]!==undefined)
+                    value.contact.push(result.add[i]["contacts"]);
+                }
+            }
+            delete result.add;
+            delete result.update;
+            delete result.delete;
             self.editView(value, data, parent, index);
         })
         mNewRealty.promiseEditDB = undefined;
@@ -970,7 +988,7 @@ ListRealty.prototype.deleteDB = function (data, parent, index) {
     var phpFile = moduleDatabase.deleteActiveHomesPHP;
     if (self.phpDeleteContent)
         phpFile = self.phpUpdateContent;
-    moduleDatabase.getModule("activehouses").delete(data).then(function (value) {
+    moduleDatabase.getModule("activehouses").delete({id:data.id}).then(function (value) {
         self.deleteView(parent, index);
     })
 }
