@@ -260,6 +260,8 @@ if(isset($data["contact"]))
     }
 }
 
+
+
 for($i = 0 ;$i<$count_old;$i++)
 {
     $connector->query("DELETE FROM ".$prefix."contact_link WHERE( id = ".$contact_old[$i]["id"].")");
