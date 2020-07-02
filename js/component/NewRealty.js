@@ -258,6 +258,7 @@ NewRealty.prototype.imageJuridical = function()
             }
         ]
     })
+    this.viewJuridical = result;
     return temp;
 }
 
@@ -287,6 +288,7 @@ NewRealty.prototype.imageCurrentStaus = function()
             }
         ]
     })
+    this.viewCurrentStaus = result;
     return temp;
 }
 
@@ -1857,7 +1859,9 @@ NewRealty.prototype.getDataSave = function(){
         structure:this.structure.value,
         pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
         advancedetruct:advanceDetruct,
-        juridical:this.juridical.value
+        juridical:this.juridical.value,
+        imageJuridical:this.viewJuridical.getFile(),
+        imageCurrentStaus:this.viewCurrentStaus.getFile()
     }
     var arr = [];
 

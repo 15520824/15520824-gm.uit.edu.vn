@@ -484,6 +484,10 @@ export default xmlModalDragManyFiles = {
   },
   getFile:function(){
     var arr = [];
+    if(this.gallery===undefined)
+    {
+      this.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
+    }
     for(var i=0;i<this.gallery.childNodes.length;i++)
     {
       arr.push(this.gallery.childNodes[i].value);
