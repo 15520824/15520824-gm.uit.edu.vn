@@ -156,6 +156,118 @@ while (isset($data["addressid".$index]))
 
 $result = $connector-> insert($prefix."activehouses", $data);
 $data["id"] = $result;
+
+if(isset($data["equipment"]))
+{
+    $equipment = $data["equipment"];
+    $equipment_old = $connector->load($prefix."house_equipments","houseid = ".$data["id"]);
+    $count = count($equipment);
+    $count_old = count($equipment_old);
+    $continue = false;
+    for($i = 0;$i<$count;$i++)
+    {
+        for($j = 0;$j<$count_old;$j++)
+        {
+            if($equipment[$i]["equipmentid"]==$equipment_old[$j]["equipmentid"])
+            {
+                if($equipment[$i]["content"]!==$equipment_old[$j]["content"])
+                {
+                    $equipment_old[$j]["content"] = $equipment[$i]["content"];
+                    $connector->update($prefix."house_equipments",$equipment_old[$j]);
+                }
+                array_splice($equipment_old,$j,1);
+                $j--;
+                $count_old--;
+                $continue = true;
+                break;
+            }
+        }
+        if($continue === true)
+        {
+            $continue = false;
+            continue;
+        }
+        $connector->insert($prefix."house_equipments",array(
+            "equipmentid" => $equipment[$i]["equipmentid"],
+            "houseid" => $data["id"],
+            "content" => $equipment[$i]["content"],
+        ));
+    }
+}
+for($i = 0 ;$i<$count_old;$i++)
+{
+    $connector->query( "DELETE FROM ".$prefix."house_equipments  WHERE (id = ".$equipment_old[$i]["id"].")");
+}
+
+if(isset($data["contact"]))
+{
+    $contact = $data["contact"];
+    $contact_old = $connector->load($prefix."contact_link","houseid = ".$data["id"]);
+    $count = count($contact);
+    $count_old = count($contact_old);
+    $continue = false;
+    for($i = 0;$i<$count;$i++)
+    {
+        if(isset($contact[$i]["id"]))
+        for($j = 0;$j<$count_old;$j++)
+        {
+            if((isset($contact[$i]["statusphone"])&&$contact[$i]["id"]==$contact_old[$j]["contactid"])||!isset($contact[$i]["statusphone"])&&$contact[$i]["id"]==$contact_old[$j]["userid"])
+            {
+                if($contact[$i]["note"]!==$contact_old[$j]["note"]||$contact[$i]["typecontact"]!==$contact_old[$j]["typecontact"])
+                {
+                    $contact_old[$j]["note"] = $contact[$i]["note"];
+                    $contact_old[$j]["typecontact"] = $contact[$i]["typecontact"];
+                    $connector->update($prefix."contact_link",$contact_old[$j]);
+                }
+                array_splice($contact_old,$j,1);
+                $j--;
+                $count_old--;
+                $continue = true;
+                break;
+            }
+        }
+        if($continue === true)
+        {
+            $continue = false;
+            continue;
+        }
+        if(!isset($contact[$i]["statusphone"]))
+        $connector->insert($prefix."contact_link",array(
+            "userid" => $contact[$i]["id"],
+            "houseid" => $data["id"],
+            "note" => $contact[$i]["note"],
+            "typecontact" => $contact[$i]["typecontact"],
+        ));
+        else
+        {
+            if(!isset($contact[$i]["id"]))
+            {
+                $dataInsertContact = array(
+                    "name"=>$contact[$i]["name"],
+                    "phone"=>$contact[$i]["phone"],
+                    "statusphone"=>$contact[$i]["statusphone"],
+                );
+                $contact[$i]["id"] = $connector->insert($prefix."contacts",$dataInsertContact);
+                $dataInsertContact["id"] = $contact[$i]["id"];
+                array_push($insert,array(
+                    'contacts'=>$dataInsertContact
+                ));
+            }
+            $connector->insert($prefix."contact_link",array(
+                "contactid" => $contact[$i]["id"],
+                "houseid" => $data["id"],
+                "note" => $contact[$i]["note"],
+                "typecontact" => $contact[$i]["typecontact"],
+            ));
+        }
+    }
+}
+
+for($i = 0 ;$i<$count_old;$i++)
+{
+    $connector->query("DELETE FROM ".$prefix."contact_link WHERE( id = ".$contact_old[$i]["id"].")");
+}
+
 $result = array(
     'data'=>$data,
     'add'=>$insert,

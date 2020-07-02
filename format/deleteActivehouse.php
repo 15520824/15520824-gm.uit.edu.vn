@@ -41,6 +41,12 @@ foreach(array_keys($data) as $param)
 }
 if($WHERE!="")
 {
+    $dataDelete = $connector->load($prefix.$tableName,$WHERE);
+    for($i=0;$i<count($dataDelete);$i++)
+    {
+        $connector->query("DELETE FROM ".$prefix."contact_link"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
+        $connector->query("DELETE FROM ".$prefix."house_equipments"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
+    }
     $WHERE = " WHERE (".$WHERE.")";
     $result = $connector->query("DELETE FROM ".$prefix.$tableName.$WHERE);
     echo "ok".EncodingClass::fromVariable($result); 

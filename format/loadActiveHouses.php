@@ -67,9 +67,11 @@ if($result)
         while($row = $result->fetch_assoc()) {
             $data[$i] = $row;
             $equipment = $connector->load($prefix."house_equipments","houseid = ".$row["id"]);
-            $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
-            $data[$i]["contact"]=$equipment;
             $data[$i]["equipment"]=$equipment;
+            $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
+            $data[$i]["contact"]=$contact;
+            $contact = $connector->load($prefix."image","houseid = ".$row["id"]);
+            $data[$i]["image"]=$contact;
             $i++;
         }
     } else {
