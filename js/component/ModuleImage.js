@@ -502,10 +502,10 @@ export function descViewImagePreview(data=[],index = 0,promiseLazyLoad){
         }else
         {
             if(deltaYcontainerMainImage<0){
-                self.setScale(-0.125);
+                self.setScale(0.125);
             }else
             {
-                self.setScale(0.125);
+                self.setScale(-0.125);
             }
             deltaYcontainerMainImage = 0;
         }

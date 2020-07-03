@@ -594,3 +594,8 @@
   top: 45px;
   overflow: auto;
 }
+
+.back-white-convert .full-size{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}

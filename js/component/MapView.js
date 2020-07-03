@@ -84,6 +84,9 @@ export function DetailView(map,data) {
         props: {
             type: "text",
             placeholder: ""
+        },
+        attr:{
+            disabled:""
         }
     });
     var arr = [];
@@ -108,8 +111,8 @@ export function DetailView(map,data) {
                     if(temp.checkStateDistrict[x][i] == district.value)
                     return;
                 }
-                if(temp.checkStateDistrict[x][0]!==undefined)
-                district.value = temp.checkStateDistrict[x][0].value;
+                if(temp.checkStateDistrict[x]!==undefined)
+                district.items = temp.checkStateDistrict[x];
                 district.emit("change");
                 temp.setInput();
             }
@@ -121,18 +124,15 @@ export function DetailView(map,data) {
         props:{
             enableSearch: true
         },
+        style:{
+            poiterEvent:"none",
+            backGroundColor:"#fafafa"
+        },
         on:{
             change:function(event){
                 var x = parseInt(getIDCompair(this.value));
-                var checkid = temp.checkState[temp.checkDistrict[x].stateid].name+"_"+temp.checkDistrict[x].stateid;
-                    state.value = checkid;
-                for(var i = 0;i<temp.checkDistrictWard[x].length;i++)
-                {
-                    if(temp.checkDistrictWard[x][i] == ward.value)
-                    return;
-                }
-                if(temp.checkDistrictWard[x][0]!==undefined)
-                ward.value = temp.checkDistrictWard[x][0].value;
+                if(temp.checkDistrictWard[x]!==undefined)
+                ward.items = temp.checkDistrictWard[x];
                 temp.setInput();
             }
         }
@@ -142,6 +142,10 @@ export function DetailView(map,data) {
         class: "pizo-new-realty-location-detail-row-menu",
         props:{
             enableSearch: true
+        },
+        style:{
+            poiterEvent:"none",
+            backGroundColor:"#fafafa"
         },
         on:{
             change:function(event)
@@ -156,6 +160,10 @@ export function DetailView(map,data) {
     street = _({
         tag: "selectmenu",
         class: "pizo-new-realty-location-detail-row-menu",
+        style:{
+            poiterEvent:"none",
+            backGroundColor:"#fafafa"
+        },
         on:{
             change:function(event)
             {
@@ -175,8 +183,6 @@ export function DetailView(map,data) {
     });
     Promise.all(arr).then(function(){
         state.items = moduleDatabase.getModule("states").getList("name",["name","id"]);
-        district.items = moduleDatabase.getModule("districts").getList("name",["name","id"]);
-        ward.items = moduleDatabase.getModule("wards").getList("name",["name","id"]);
 
         street.items = moduleDatabase.getModule("streets").getList("name",["name","id"]);
 
@@ -185,7 +191,7 @@ export function DetailView(map,data) {
         },true);
         temp.checkDistrictWard = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
             return {text:data.name,value:data.name+"_"+data.id}
-        });
+        },true);
         temp.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         temp.checkState = moduleDatabase.getModule("states").getLibary("id");
         temp.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
@@ -195,23 +201,15 @@ export function DetailView(map,data) {
         if(data!==undefined)
         {
             temp.number.value = data.number;
-
-            index = data.street.lastIndexOf("_");
-            console.log(data.street)
+            index = data.state.lastIndexOf("_");
             if(index===-1)
             {
-                temp.street.items.push({text:data.street,value:data.street});
-                temp.street.items = temp.street.items;
+                temp.state.items.push({text:data.state,value:data.state});
+                temp.state.items =temp.state.items;
+          
             }
-            temp.street.value = data.street;
-
-            index = data.ward.lastIndexOf("_");
-            if(index===-1)
-            {
-                temp.ward.items.push({text:data.ward,value:data.ward});
-                temp.ward.items= temp.ward.items;
-            }
-            temp.ward.value = data.ward;
+            temp.state.value = data.state;
+            temp.state.emit("change");
 
             index = data.district.lastIndexOf("_");
             if(index===-1)
@@ -220,20 +218,31 @@ export function DetailView(map,data) {
                 temp.district.items= temp.district.items;
             }
             temp.district.value = data.district;
+            temp.district.emit("change");
 
-            index = data.state.lastIndexOf("_");
+            index = data.ward.lastIndexOf("_");
             if(index===-1)
             {
-                temp.state.items.push({text:data.state,value:data.state});
-                temp.state.items =temp.state.items;
+                temp.ward.items.push({text:data.ward,value:data.ward});
+                temp.ward.items= temp.ward.items;
             }
-            temp.state.value = data.state;
-
+            temp.ward.emit("change");
+            temp.ward.value = data.ward;
+            
+            index = data.street.lastIndexOf("_");
+            if(index===-1)
+            {
+                temp.street.items.push({text:data.street,value:data.street});
+                temp.street.items = temp.street.items;
+            }
+            temp.street.value = data.street;
+           
             if(data.lat!==undefined)
             temp.lat.value = data.lat;
 
             if(data.lng!==undefined)
             temp.long.value = data.lng;
+
             temp.setInput();
             map.addMoveMarker([data.lng,data.lat]);
         }
@@ -872,7 +881,7 @@ MapView.prototype.addOrtherMarker = function(data,cellLat,cellLng)
 {
     var self = this;
     var image = {
-        url: "../../assets/images/marker-red.png",
+        url: "./assets/images/marker-red.png",
         // This marker is 20 pixels wide by 32 pixels high.
         scaledSize: new google.maps.Size(24, 24), 
         // The origin for this image is (0, 0).
@@ -1053,7 +1062,7 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
         })
     } else {
         var image = {
-            url: "../../assets/images/marker-blue.png",
+            url: "./assets/images/marker-blue.png",
             // This marker is 20 pixels wide by 32 pixels high.
             scaledSize: new google.maps.Size(24, 24), 
             // The origin for this image is (0, 0).

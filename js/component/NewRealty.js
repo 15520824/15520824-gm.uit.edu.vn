@@ -236,6 +236,7 @@ NewRealty.prototype.imageJuridical = function()
 {
     var result = Object.assign({}, xmlModalDragManyFiles);
     var container = result.containGetImage();
+    result.setBackWhite();
     result.createEvent();
 
     var temp = _({
@@ -259,6 +260,13 @@ NewRealty.prototype.imageJuridical = function()
         ]
     })
     this.viewJuridical = result;
+    if(this.data!==undefined)
+    {
+        for(var i = 0;i<this.data.original.imageJuridical.length;i++)
+        {
+            result.addFile(this.data.original.imageJuridical[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+        }
+    }
     return temp;
 }
 
@@ -289,6 +297,13 @@ NewRealty.prototype.imageCurrentStaus = function()
         ]
     })
     this.viewCurrentStaus = result;
+    if(this.data!==undefined)
+    {
+        for(var i = 0;i<this.data.original.imageCurrentStaus.length;i++)
+        {
+            result.addFile(this.data.original.imageCurrentStaus[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+        }
+    }
     return temp;
 }
 

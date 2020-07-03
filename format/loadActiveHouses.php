@@ -70,8 +70,28 @@ if($result)
             $data[$i]["equipment"]=$equipment;
             $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
             $data[$i]["contact"]=$contact;
-            $contact = $connector->load($prefix."image","houseid = ".$row["id"]);
-            $data[$i]["image"]=$contact;
+            $image = $connector->load($prefix."image","houseid = ".$row["id"]);
+
+            $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( houseid = ".$row["id"]." )");
+            $imageJuridical = array();
+            $imageCurrentStaus = array();
+            if($imageresource)
+                if ($imageresource->num_rows > 0) {
+                    while($rowResource = $imageresource->fetch_assoc())
+                    {
+                        switch($rowResource["type"])
+                        {
+                            case 0:
+                                array_push($imageJuridical,$rowResource);  
+                            break;
+                            case 1:
+                                array_push($imageCurrentStaus,$rowResource);  
+                            break;
+                        }
+                    }
+                }
+            $data[$i]["imageJuridical"]=$imageJuridical;
+            $data[$i]["imageCurrentStaus"]=$imageCurrentStaus;
             $i++;
         }
     } else {

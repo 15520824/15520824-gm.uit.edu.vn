@@ -195,6 +195,55 @@ export function consoleArea(areas) {
     return result;
 }
 
+export function grayscale(src)
+{
+    return new Promise(function(resolve,reject){
+    var image = new Image();
+    image.src = src;
+    image.style.visibility = "hidden";
+    image.style.position = "absolute";
+    image.style.top = 0;
+    image.onload = function()
+    {
+        document.body.appendChild(image);
+        var myCanvas=document.createElement("canvas");
+        var myCanvasContext=myCanvas.getContext("2d");
+
+        var imgWidth=image.width;
+        var imgHeight=image.height;
+        // You'll get some string error if you fail to specify the dimensions
+        myCanvas.width = imgWidth;
+        myCanvas.height = imgHeight;
+        //  alert(imgWidth);
+        myCanvasContext.drawImage(image,0,0);
+
+        // This function cannot be called if the image is not rom the same domain.
+        // You'll get security error if you do.
+        var imgPixels=myCanvasContext.getImageData(0,0, imgWidth, imgHeight);
+        document.body.removeChild(image);
+        // This loop gets every pixels on the image and
+        for(var y = 0; y < imgPixels.height; y++){
+            for(var x = 0; x < imgPixels.width; x++){
+                var i = (y * 4) * imgPixels.width + x * 4;
+                var avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;
+                imgPixels.data[i] = avg;
+                imgPixels.data[i + 1] = avg;
+                imgPixels.data[i + 2] = avg;
+            }
+        }
+        myCanvasContext.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);
+        resolve(myCanvas.toDataURL());
+    }
+    })
+  }
+
+function toBase64(arr) {
+    //arr = new Uint8Array(arr) if it's an ArrayBuffer
+    return btoa(
+       arr.reduce((data, byte) => data + String.fromCharCode(byte), '')
+    );
+ }
+
 export function consoleWKT(areas){
     var multipolygon = "MULTIPOLYGON("
     var polygon,isFirst,coordinates,isFirstPolygon="";

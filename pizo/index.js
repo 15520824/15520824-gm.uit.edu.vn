@@ -52158,7 +52158,7 @@ MapView_MapView.prototype.addMapHouse = function () {
 MapView_MapView.prototype.addOrtherMarker = function (data, cellLat, cellLng) {
   var self = this;
   var image = {
-    url: "../../assets/images/marker-red.png",
+    url: "./assets/images/marker-red.png",
     // This marker is 20 pixels wide by 32 pixels high.
     scaledSize: new google.maps.Size(24, 24),
     // The origin for this image is (0, 0).
@@ -52329,7 +52329,7 @@ MapView_MapView.prototype.addMoveMarker = function (position) {
     });
   } else {
     var image = {
-      url: "../../assets/images/marker-blue.png",
+      url: "./assets/images/marker-blue.png",
       // This marker is 20 pixels wide by 32 pixels high.
       scaledSize: new google.maps.Size(24, 24),
       // The origin for this image is (0, 0).
@@ -53512,6 +53512,10 @@ var xmlModalDragManyFiles;
   getFile: function getFile() {
     var arr = [];
 
+    if (this.gallery === undefined) {
+      this.gallery = modal_drag_drop_manyfiles_$(".gallery_c0ek499ts0", this.containGetImage);
+    }
+
     for (var i = 0; i < this.gallery.childNodes.length; i++) {
       arr.push(this.gallery.childNodes[i].value);
     }
@@ -53754,6 +53758,7 @@ NewRealty_NewRealty.prototype.imageJuridical = function () {
     }]
   });
 
+  this.viewJuridical = result;
   return temp;
 };
 
@@ -53778,6 +53783,7 @@ NewRealty_NewRealty.prototype.imageCurrentStaus = function () {
     }]
   });
 
+  this.viewCurrentStaus = result;
   return temp;
 };
 
@@ -55159,7 +55165,9 @@ NewRealty_NewRealty.prototype.getDataSave = function () {
     structure: this.structure.value,
     pricerent: reFormatNumber(this.inputPriceRent.value) * this.inputPriceRentUnit.value,
     advancedetruct: advanceDetruct,
-    juridical: this.juridical.value
+    juridical: this.juridical.value,
+    imageJuridical: this.viewJuridical.getFile(),
+    imageCurrentStaus: this.viewCurrentStaus.getFile()
   };
   var arr = [];
 

@@ -2,6 +2,8 @@ import Fcore from '../dom/Fcore';
 import '../../css/form_create_edit.css';
 import '../../css/test_question.css';
 import '../../css/test.css';
+import {grayscale} from './FormatFunction';
+import {descViewImagePreview} from './ModuleImage';
 var _ = Fcore._;
 var $ = Fcore.$;
 var xmlModalDragManyFiles;
@@ -12,21 +14,23 @@ export default xmlModalDragManyFiles = {
   deleteAllTrash: function() {
   },
   Image: function(srcImg) {
+    var img = _({
+      tag: "img",
+      class: ["full-size"],
+      props: {
+        src: srcImg
+      },
+      on: {
+        click: function() {
+          document.body.appendChild(descViewImagePreview([{avatar:"", userName:"", src:srcImg,date:"", note:""}]));
+        }
+      }
+    });
     var temp = _({
       tag:"div",
       class:"grid-item",
       child:[
-        {
-          tag: "img",
-          class: ["full-size"],
-          props: {
-            src: srcImg
-          },
-          on: {
-            click: function() {
-            }
-          }
-        },
+        img,
         {
           tag:"i",
           class:"material-icons",
@@ -71,6 +75,10 @@ export default xmlModalDragManyFiles = {
             el.classList.remove("hasFocus");
       }
     });
+    img.addEventListener("load",function()
+    {
+      temp.onload.bind(this)();
+    })
     return temp;
   },
   containGetImage: function() {
@@ -419,12 +427,13 @@ export default xmlModalDragManyFiles = {
     console.debug("update", fileNumber, percent, total);
     self.progressBar.value = total;
   },
-  handleFiles: function(files, self) {
+  handleFiles: function(files) {
+    var self = this;
     files = [...files];
     self.initializeProgress(files.length);
     for (var i = 0; i < files.length; i++) {
-      self.uploadFile(files[i], i, self);
-      self.previewFile(files[i], self);
+      self.uploadFile(files[i], i);
+      self.previewFile(files[i]);
     }
   },
   marginAlign: function() {
@@ -441,7 +450,8 @@ export default xmlModalDragManyFiles = {
     };
     return temp;
   },
-  previewFile: function(file, self) {
+  previewFile: function(file) {
+    var self = this;
     if(self.gallery===undefined)
     {
       self.gallery = $(".gallery_c0ek499ts0",self.containGetImage);
@@ -451,17 +461,29 @@ export default xmlModalDragManyFiles = {
       var reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = function() {
-        var img =  self.Image(reader.result);
-        img.value = reader.result;
-        var parent = self.gallery;
-        parent.appendChild(img);
-  
-        img.onload = function() {
-          image.style.width =
-            img.naturalWidth *
-              (img.clientHeight / self.imgUrl.naturalHeight) +
-            "px";
-        };
+        if(self.blackWhite===true)
+        {
+            grayscale(reader.result,true).then(function(value){
+              var img =  self.Image(value);
+              img.value = value;
+              var parent = self.gallery;
+              parent.appendChild(img);
+              img.onload = function() {
+                
+              };
+            })
+        }else
+        {
+          var src = reader.result;
+          var img =  self.Image(value);
+          img.value = value;
+          var parent = self.gallery;
+          parent.appendChild(img);
+          img.onload = function() {
+            
+          };
+        }
+        
       };
     }else
     {
@@ -473,6 +495,24 @@ export default xmlModalDragManyFiles = {
       img.onload = function() {
       };
     }
+  },
+  setBackWhite: function()
+  {
+    this.blackWhite = true;
+  },
+  addFile: function(data,ref = "") {
+    if(this.gallery===undefined)
+    {
+      this.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
+    }
+
+    var img =  this.Image(ref+data.src);
+    img.value = data;
+    var parent = this.gallery;
+    parent.appendChild(img);
+
+    img.onload = function() {
+    };
   },
   resetFile:function(){
     var self = this;
@@ -495,6 +535,7 @@ export default xmlModalDragManyFiles = {
     return arr;
   },
   uploadFile: function(file, i, self) {
+    var self = this;
     self.updateProgress(i, 100, self);
       self.select.classList.remove("disable");
     if (!self.xnen.classList.contains("visible"))

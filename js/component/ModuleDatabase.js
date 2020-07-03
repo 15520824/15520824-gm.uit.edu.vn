@@ -45,12 +45,12 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
            
     }else
     {
-        if(isLoaded == false&&self.promisePart[data.WHERE]!==undefined)
+        if(isLoaded == false&&self.promisePart[JSON.stringify(data.WHERE)]!==undefined)
         {
-            if(self.promisePart[data.WHERE].status==="pending")
-            return self.promisePart[data.WHERE];
+            if(self.promisePart[JSON.stringify(data.WHERE)].status==="pending")
+            return self.promisePart[JSON.stringify(data.WHERE)];
             else
-            return Promise.resolve(self.promisePart[data.WHERE].data);
+            return Promise.resolve(self.promisePart[JSON.stringify(data.WHERE)].data);
         }
     }
 
@@ -63,7 +63,6 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     var isFirst = this.isFirst;
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(value){
-            console.log(value);
             if(self.data === undefined)
             self.data = [];
             if(data.WHERE===undefined)
@@ -71,7 +70,7 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
                 self.countRow = value.length;
             }else
             {
-                self.checkLoaded[data.WHERE] = value;
+                self.checkLoaded[JSON.stringify(data.WHERE)] = value;
                 if(isFirst===true)
                 {
                     self.countRow = parseInt(value[value.length-1].count);
@@ -114,7 +113,7 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     if(data.WHERE === undefined)
     self.promiseLoad = promiseLoad;
     else
-    self.promisePart[data.WHERE] = promiseLoad;
+    self.promisePart[JSON.stringify(data.WHERE)] = promiseLoad;
 
     return promiseLoad;
 }

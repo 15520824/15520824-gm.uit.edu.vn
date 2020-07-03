@@ -928,26 +928,7 @@ ListRealty.prototype.edit = function (data, parent, index) {
 ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
     var self = this;
     mNewRealty.promiseEditDB.then(function (value) {
-        moduleDatabase.getModule("activehouses").update(value,true).then(function (result) {
-            if(result.add.length!==0)
-            {
-                for(var i=0;i<value.contact.length;i++)
-                {
-                    if(value.contact[i].id===undefined)
-                    {
-                        value.contact.splice(i,1);
-                        i--;
-                    }
-                }
-                for(var i=0;i<result.add.length;i++)
-                {
-                    if(result.add[i]["contacts"]!==undefined)
-                    value.contact.push(result.add[i]["contacts"]);
-                }
-            }
-            delete result.add;
-            delete result.update;
-            delete result.delete;
+        moduleDatabase.getModule("activehouses").update(value).then(function (result) {
             self.editView(value, data, parent, index);
         })
         mNewRealty.promiseEditDB = undefined;
