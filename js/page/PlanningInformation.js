@@ -629,7 +629,7 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns){
     {
         tempPath = [];
         var boundary = this.polygon[i].boundary();
-        if(bns.Ya.i<boundary.min.lat&&boundary.max.lat<bns.Ya.j
+        if(bns.Za.i<boundary.min.lat&&boundary.max.lat<bns.Za.j
             &&bns.Ua.i<boundary.min.lng&&boundary.max.lng<bns.Ua.j)
         {
             for(var j = 0;j<this.polygon[i].getPath().getLength();j++)

@@ -5,6 +5,11 @@ import { formatDate } from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
+var img_ele = null,
+  x_cursor = 0,
+  y_cursor = 0,
+  x_img_ele = 0,
+  y_img_ele = 0;
 
 export function descViewImagePreview(data=[],index = 0,promiseLazyLoad){
     var temp = _({
@@ -636,16 +641,25 @@ descViewImagePreview.prototype.resetImage = function(data)
         }
     })
 
+    newMainImage.addEventListener('mousedown', start_drag);
+    newMainImage.addEventListener('mousemove', while_drag);
+    newMainImage.addEventListener('mouseup', stop_drag);
     newMainImage.rotateRadius = 0;
     newMainImage.scaleUnit = 1;
     newMainImage.style.transform = "rotate("+newMainImage.rotateRadius+"deg) translate(0rem, 0rem) scale("+newMainImage.scaleUnit+")";
 
     newMainImage.addEventListener("click",function(){
-        if(self.noteImage.parentNode.classList.contains("displayNone"))
-            self.noteImage.parentNode.classList.remove("displayNone");
-        else
-            self.noteImage.parentNode.classList.add("displayNone");
-    });
+        var element = this;
+        setTimeout(function(){
+            if(element.moved!==true&&data.note!="")
+            {
+                if(self.noteImage.parentNode.classList.contains("displayNone"))
+                self.noteImage.parentNode.classList.remove("displayNone");
+                else
+                    self.noteImage.parentNode.classList.add("displayNone");
+            }
+            })
+    },100);
 
     this.downloadButton.setAttribute("href",data.src);
     this.mainImage.parentNode.replaceChild(newMainImage,this.mainImage);
@@ -653,6 +667,8 @@ descViewImagePreview.prototype.resetImage = function(data)
 
 
     this.noteImage.innerText = data.note;
+    if(data.note == "")
+    self.noteImage.parentNode.classList.add("displayNone");
     this.avatarImage.style.backgroundImage = "url("+data.avatar+")";
     this.userName.innerText = data.userName;
     this.dateSubmit.innerText = formatDate(data.date,true,true,true,true,true);
@@ -667,7 +683,17 @@ descViewImagePreview.prototype.setRoation = function(radius)
 descViewImagePreview.prototype.setScale = function(scale)
 {
     if(this.mainImage.scaleUnit + scale <1)
+    {
+        this.mainImage.style.position = "";
+        this.mainImage.style.top = "";
+        this.mainImage.style.left = "";
         return;
+    }
+    if(this.mainImage.style.position === "")
+    {
+        this.mainImage.style.position = "absolute";
+    }
+
     this.mainImage.scaleUnit += scale;
     this.mainImage.style.transform = "rotate("+this.mainImage.rotateRadius+"deg) translate(0rem, 0rem) scale("+this.mainImage.scaleUnit+")";
 }
@@ -804,3 +830,28 @@ descViewImagePreview.prototype.ItemTimeLine = function(data,i)
     }
     return temp;
 }
+
+
+function start_drag() {
+    img_ele = this;
+    x_img_ele = window.event.clientX - img_ele.offsetLeft;
+    y_img_ele = window.event.clientY - img_ele.offsetTop;
+    this.moved = false;
+  }
+  
+  function stop_drag() {
+    img_ele = null;
+  }
+  
+  function while_drag() {
+    if(this.moved===false)
+    {
+        this.moved = true;
+    }
+    x_cursor = window.event.clientX;
+    y_cursor = window.event.clientY;
+    if (img_ele !== null) {
+      img_ele.style.left = (x_cursor - x_img_ele) + 'px';
+      img_ele.style.top = ( window.event.clientY - y_img_ele) + 'px';
+    }
+  }

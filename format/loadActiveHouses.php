@@ -36,18 +36,18 @@ if (isset($_POST["data"])) {
         $data = $data["WHERE"];
         if (isset($data["cellLng"])) {
             $cellLng=$data["cellLng"];
-            $minLng = $cellLng%10000*0.0009009009009009009+ceil($cellLng/10000);
-            $maxLng = $minLng+1;
-            $WHERE = "lat<=".$maxLng." AND lat>=".$minLng;
+            $minLng = $cellLng%10000*0.0009009009009009009+ceil($cellLng/10000)-1;
+            $maxLng = ($cellLng+1)%10000*0.0009009009009009009+ceil(($cellLng+1)/10000)-1;
+            $WHERE.= "lng<=".$maxLng." AND lng>=".$minLng;
         }
         
         if (isset($data["cellLat"])) {
             $cellLat=$data["cellLat"];
-            $minLat = $cellLat%10000*0.0009009009009009009+ceil($cellLat/10000);
-            $maxLat = $minLat+1;
+            $minLat = $cellLat%10000*0.0009009009009009009+ceil($cellLat/10000)-1;
+            $maxLat = ($cellLat+1)%10000*0.0009009009009009009+ceil(($cellLat+1)/10000)-1;
             if($WHERE!="")
             $WHERE.=" AND ";
-            $WHERE = "lng<=".$maxLng." AND lng>=".$minLng;
+            $WHERE.= "lat<=".$minLat." AND lat>=".$maxLat;
         }
     }
 }else
@@ -56,7 +56,11 @@ if (isset($_POST["data"])) {
     exit();
 }
 
-
+if($WHERE!=="")
+{
+    $WHERE = " WHERE ".$WHERE;
+}
+echo "SELECT * FROM ".$prefix."activehouses".$WHERE.$ORDERING;
 $result = $connector-> query("SELECT * FROM ".$prefix."activehouses".$WHERE.$ORDERING);
 $data = array();
 $i = 0; 

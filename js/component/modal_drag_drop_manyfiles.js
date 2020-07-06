@@ -10,10 +10,33 @@ var xmlModalDragManyFiles;
 export default xmlModalDragManyFiles = {
   imgUrl:[],
   files:[],
+  avatar:"",
+  note:"",
+  userName:"",
+  enableClick:false,
   iconSrc:"https://lab.daithangminh.vn/vivid_exticons/",
   deleteAllTrash: function() {
   },
+  functionFormat:function(data)
+  {
+    return data;
+  },
+  setProfile:function(profile = {})
+  {
+    if(profile.userName!==undefined)
+    this.userName = profile.userName;
+    if(profile.avatar!==undefined)
+    this.avatar = profile.avatar;
+    if(profile.note!==undefined)
+    this.note = profile.note;
+  },
+  setFormatData:function(functionFormat)
+  {
+    this.functionFormat = functionFormat;
+  },
   Image: function(srcImg) {
+    var self = this;
+    var temp;
     var img = _({
       tag: "img",
       class: ["full-size"],
@@ -22,11 +45,25 @@ export default xmlModalDragManyFiles = {
       },
       on: {
         click: function() {
-          document.body.appendChild(descViewImagePreview([{avatar:"", userName:"", src:srcImg,date:"", note:""}]));
+          if(self.enableClick===false)
+          return;
+          var manyfiles = self.getFile();
+          var arr = [];
+          var index;
+          for(var i = 0;i<manyfiles.length;i++)
+          {
+            if(typeof manyfiles[i]=="object")
+            arr.push(self.functionFormat(manyfiles[i]));
+            else
+            arr.push({avatar:self.avatar, userName:self.userName, src:manyfiles[i],date:(new Date()).toISOString(), note:self.note});
+            if(manyfiles[i]==temp.value)
+            index = i;
+          }
+          document.body.appendChild(descViewImagePreview(arr,index));
         }
       }
     });
-    var temp = _({
+    temp = _({
       tag:"div",
       class:"grid-item",
       child:[

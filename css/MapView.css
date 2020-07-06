@@ -109,6 +109,7 @@
   
   .pizo-new-realty-location-detail-row-input-long {
     display: inline-block;
+    margin-left: 2.1429rem;
     width: calc(50% - 2.0714rem);
     border: solid 0.0714rem  var(--color-input-color);
     font-size: 1rem;
@@ -117,7 +118,6 @@
   
   .pizo-new-realty-location-detail-row-input-lat {
     display: inline-block;
-    margin-left: 2.1429rem;
     border: solid 0.0714rem  var(--color-input-color);
     font-size: 1rem;
     padding: 0.4286rem;

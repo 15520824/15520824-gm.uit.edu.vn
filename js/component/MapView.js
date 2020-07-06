@@ -241,14 +241,14 @@ export function DetailView(map,data) {
             temp.lat.value = data.lat;
 
             if(data.lng!==undefined)
-            temp.long.value = data.lng;
+            temp.lng.value = data.lng;
 
             temp.setInput();
-            map.addMoveMarker([data.lng,data.lat]);
+            map.addMoveMarker([data.lat,data.lng]);
         }
     })
-    var lat,long;
-    long = _({
+    var lat,lng;
+    lng = _({
         tag:"input",
         class:"pizo-new-realty-location-detail-row-input-long",
         attr:{
@@ -258,7 +258,7 @@ export function DetailView(map,data) {
             change:function(event)
             {
                 if(temp.changInput)
-                map.addMoveMarker([parseFloat(long.value),parseFloat(lat.value)],false)
+                map.addMoveMarker([parseFloat(lat.value),parseFloat(lng.value)],false)
             }
         }
     })
@@ -272,7 +272,7 @@ export function DetailView(map,data) {
             change:function(event)
             {
                 if(temp.changInput)
-                map.addMoveMarker([parseFloat(long.value),parseFloat(lat.value)],false)
+                map.addMoveMarker([parseFloat(lat.value),parseFloat(lng.value)],false)
             }
         }
     })
@@ -294,8 +294,8 @@ export function DetailView(map,data) {
                 tag:"div",
                 class:"pizo-new-realty-location-detail-row-menu",
                 child:[
-                    long,
-                    lat
+                    lat,
+                    lng
                 ]
             }
         ]
@@ -443,7 +443,7 @@ export function DetailView(map,data) {
     temp.ward = ward;
     temp.state = state;
     Object.assign(temp,DetailView.prototype);
-    temp.long = long;
+    temp.lng = lng;
     temp.lat = lat;
     temp.containerGPS = containerGPS;
     temp.activeAutocomplete(map);
@@ -467,7 +467,7 @@ DetailView.prototype.getDataCurrent = function()
 
     if(this.containerGPS.style.display === "none")
     {
-        temp.lng=this.long.value;
+        temp.lng=this.lng.value;
         temp.lat=this.lat.value;
     }
     return temp;
@@ -1082,7 +1082,7 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
         self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
         self.smoothZoom(20, self.map.getZoom());
         if(changeInput){
-            self.detailView.long.value = position[0];
+            self.detailView.lng.value = position[0];
             self.detailView.lat.value = position[1];
             self.detailView.changInput = true;
         }
@@ -1091,7 +1091,7 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
             self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
             self.smoothZoom(20, self.map.getZoom());
             if(changeInput){
-                self.detailView.long.value = result[0];
+                self.detailView.lng.value = result[0];
                 self.detailView.lat.value = result[1];
                 self.detailView.changInput = true;
             }
@@ -1106,7 +1106,7 @@ MapView.prototype.transition = function (result,changeInput) {
     var self=this;
     var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
     if(changeInput){
-        self.detailView.long.value = result[0];
+        self.detailView.lng.value = result[0];
         self.detailView.lat.value = result[1];
         self.detailView.changInput = true;
     }

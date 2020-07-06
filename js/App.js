@@ -19,6 +19,7 @@ import ListAddress from './page/ListAddress';
 import ListContact from './page/ListContact';
 import ListEquipment from './page/ListEquipment';
 import ListJuridical from './page/ListJuridical';
+import MapRealty from './page/MapRealty';
 
 import xmlModalDragManyFiles from './component/modal_drag_drop_manyfiles';
 import moduleDatabase from './component/ModuleDatabase';
@@ -159,7 +160,7 @@ App.prototype.getView = function()
                                                     pageIndex:17
                                                 },
                                                 {
-                                                    text:"Thêm mới",
+                                                    text:"Bản đồ",
                                                     pageIndex:18
                                                 }
                                             ]
@@ -396,12 +397,11 @@ App.prototype.openPage = function(index){
             this.body.activeFrame(frameview);
         break;
         case 18:
-            var mListRealty = new ListRealty();
-            mListRealty.attach(this);
-            var frameview = mListRealty.getView();
+            var mMapRealty = new MapRealty();
+            mMapRealty.attach(this);
+            var frameview = mMapRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
-            this.refresh();
         break;
         case 21:
             var mListState = new ListState();

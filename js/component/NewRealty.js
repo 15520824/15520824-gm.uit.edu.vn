@@ -235,6 +235,17 @@ NewRealty.prototype.descView = function () {
 NewRealty.prototype.imageJuridical = function()
 {
     var result = Object.assign({}, xmlModalDragManyFiles);
+    result.enableClick = true;
+    
+    result.setFormatData(function(data){
+        return {
+            avatar:"https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
+            userName:"Bùi Phạm Minh Thi",
+            src:data.src,
+            date:data.created,
+            note:""
+    }
+    })
     var container = result.containGetImage();
     result.setBackWhite();
     result.createEvent();
@@ -699,9 +710,9 @@ NewRealty.prototype.descViewdetail = function () {
     {
         var addressCurrent = this.itemAdress(this.data.original.addressid,this.data.original.lat,this.data.original.lng)
         containerAdress.appendChild(addressCurrent);
-        var map = MapView();
+        var map = new MapView();
         map.activePlanningMap();
-        map.addMoveMarker([this.data.original.lng,this.data.original.lat],false);
+        map.addMoveMarker([this.data.original.lat,this.data.original.lng],false);
         map.currentMarker.setDraggable(false);
         this.containerMap.parentNode.replaceChild(map, this.containerMap);
         this.containerMap = map;
@@ -712,7 +723,7 @@ NewRealty.prototype.descViewdetail = function () {
         
         var addressCurrent = this.itemAdress();
         containerAdress.appendChild(addressCurrent);
-        var map = MapView();
+        var map = new MapView();
         map.activePlanningMap();
         this.containerMap.parentNode.replaceChild(map, this.containerMap);
         this.containerMap = map;

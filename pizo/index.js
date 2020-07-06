@@ -17084,7 +17084,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact, .pizo-new-realty-image{\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab,.pizo-new-realty-image-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{\r\n  text-align: right;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-structure{\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-toilet-label,\r\n.pizo-new-realty-dectruct-content-area-living-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-floor-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 6.5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span, .pizo-new-realty-detruct-content-price-rent-label,.pizo-new-realty-detruct-content-area-label{\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 158px;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n\r\n.pizo-new-realty-contact-tab{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-label{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-button{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  color: #fff;\r\n  background: #122246;\r\n  border: 1px solid #122246;\r\n  padding: 1px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name,.pizo-new-realty-contact-item-phone,.pizo-new-realty-contact-item-note{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-label,.pizo-new-realty-contact-item-phone-label,.pizo-new-realty-contact-item-note-label{\r\n    font-size: 1rem;\r\n    padding-top: 0.4375rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 6.5714rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-input,.pizo-new-realty-contact-item-phone-input,.pizo-new-realty-contact-item-note-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-selectbox{\r\n  min-width: 130px !important;\r\n}\r\n\r\n.pizo-new-realty-contact-item-close{\r\n  background-color: red;\r\n  color: white;\r\n}\r\n\r\n.pizo-new-realty-contact-item{\r\n  margin: 0.7143rem;\r\n  margin-bottom: 2.1429rem;\r\n}\r\n\r\n.btn-wrapper.input-append .pizo-new-realty-contact-tab-button{\r\n  width: 34px;\r\n  margin-left: 7px;\r\n  background: #ac000d;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input{\r\n  padding: 0;\r\n  justify-content: start;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close{\r\n  width: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.absol-selectmenu.pizo-new-realty-detruct-content-price-unit{\r\n    width: 4.5rem !important;\r\n    min-width: 4.5rem !important;\r\n    flex-shrink: 0;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-price-rent-label.pizo-new-realty-detruct-content-area-label{\r\n  width: fit-content;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price-rent-unit{\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-censorship{\r\n    align-items: center;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox{\r\n    margin-left: 0.7143rem;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 35px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child)\r\n{\r\n  margin-left: 70px;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child>span\r\n{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone-all{\r\n    display: inline-block;\r\n    margin-bottom: 0.7143rem;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n    margin-left: 1.0714rem;\r\n}\r\n\r\n.pizo-new-realty-image{\r\n  height: 400px;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty .modal-upload-XML-body-drop-save{\r\n  display: none;\r\n}\r\n\r\n.pizo-new-realty-image-tab{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.pizo-new-realty-image-content{\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n.pizo-new-realty .full-size{\r\n  height: 100px;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact, .pizo-new-realty-image{\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab,.pizo-new-realty-image-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{\r\n  text-align: right;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-structure{\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-toilet-label,\r\n.pizo-new-realty-dectruct-content-area-living-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-floor-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 6.5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span, .pizo-new-realty-detruct-content-price-rent-label,.pizo-new-realty-detruct-content-area-label{\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 158px;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n\r\n.pizo-new-realty-contact-tab{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-label{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-button{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  color: #fff;\r\n  background: #122246;\r\n  border: 1px solid #122246;\r\n  padding: 1px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name,.pizo-new-realty-contact-item-phone,.pizo-new-realty-contact-item-note{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-label,.pizo-new-realty-contact-item-phone-label,.pizo-new-realty-contact-item-note-label{\r\n    font-size: 1rem;\r\n    padding-top: 0.4375rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 6.5714rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-input,.pizo-new-realty-contact-item-phone-input,.pizo-new-realty-contact-item-note-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-selectbox{\r\n  min-width: 130px !important;\r\n}\r\n\r\n.pizo-new-realty-contact-item-close{\r\n  background-color: red;\r\n  color: white;\r\n}\r\n\r\n.pizo-new-realty-contact-item{\r\n  margin: 0.7143rem;\r\n  margin-bottom: 2.1429rem;\r\n}\r\n\r\n.btn-wrapper.input-append .pizo-new-realty-contact-tab-button{\r\n  width: 34px;\r\n  margin-left: 7px;\r\n  background: #ac000d;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input{\r\n  padding: 0;\r\n  justify-content: start;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close{\r\n  width: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.absol-selectmenu.pizo-new-realty-detruct-content-price-unit{\r\n    width: 4.5rem !important;\r\n    min-width: 4.5rem !important;\r\n    flex-shrink: 0;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-price-rent-label.pizo-new-realty-detruct-content-area-label{\r\n  width: fit-content;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price-rent-unit{\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-censorship{\r\n    align-items: center;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox{\r\n    margin-left: 0.7143rem;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 35px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child)\r\n{\r\n  margin-left: 70px;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child>span\r\n{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone-all{\r\n    display: inline-block;\r\n    margin-bottom: 0.7143rem;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n    margin-left: 1.0714rem;\r\n}\r\n\r\n.pizo-new-realty-image{\r\n  height: 400px;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty .modal-upload-XML-body-drop-save{\r\n  display: none;\r\n}\r\n\r\n.pizo-new-realty-image-tab{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.pizo-new-realty-image-content{\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n.pizo-new-realty .full-size{\r\n  height: 150px;\r\n}", ""]);
 
 
 
@@ -17262,7 +17262,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(2)(false);
 // Module
-exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 61px);\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  align-items: stretch;\r\n  flex-direction: column;\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n  flex-direction: column;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: calc(100% - 40px);\r\n  height: calc(100% - 20px);\r\n  display: inline-block;\r\n  padding: 20px;\r\n  padding-bottom: 0;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  position: relative;\r\n  padding: 10px 0;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}\r\n\r\n.grid{\r\n  width: 100%;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.grid-item{\r\n  height: 50%;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-gallery{\r\n  width: 100%;\r\n  height: calc(100% - 70px);\r\n  position: absolute;\r\n  top: 45px;\r\n  overflow: auto;\r\n}", ""]);
+exports.push([module.i, ".modal-upload-XML {\r\n  width: 66vw;\r\n  height: 85vh;\r\n  min-width: 520px;\r\n  min-height: 320px;\r\n  max-width: 1052px;\r\n  max-height: 650px;\r\n  background-color: white;\r\n}\r\n\r\n.quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {\r\n  margin: 8px;\r\n}\r\n\r\n\r\n.quantumWizButtonPaperbuttonLabel {\r\n  display: inline-block;\r\n  margin: .5rem;\r\n}\r\n\r\n.modal-upload-XML-header {\r\n  padding: 17px 20px;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-header-text {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-header-icon-close {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  right: 15px;\r\n  top: 15px;\r\n  cursor: pointer;\r\n  height: inherit;\r\n  margin: 0;\r\n  width: inherit;\r\n  user-select: none;\r\n}\r\n\r\n.modal-upload-XML-body {\r\n  position: relative;\r\n  height: calc(100% - 61px);\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  align-items: stretch;\r\n  flex-direction: column;\r\n}\r\n\r\n.modal-upload-XML-body-navigation {\r\n  height: 50px;\r\n  border-bottom: 1px solid #e1e1e1;\r\n  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  box-shadow: 0 1px 5px 1px #e1e1e1;\r\n  z-index: 1;\r\n}\r\n\r\n.modal-upload-XML-body-drop {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main {\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n  flex-direction: column;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-content{\r\n  border: #ddd 4px dashed;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  position: relative;\r\n  margin-bottom: 0px;\r\n  padding: 10px;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form {\r\n  display: none;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin: 15px 0 4px 20px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-input{\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  padding: 1px 8px;\r\n  width: 410px;   \r\n  padding-left: 50px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter{\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-search-filter-text{   \r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files{\r\n    bottom: 0;\r\n    border-top: 1px solid #e1e1e1;\r\n    font-size: 13px;\r\n    left: 0;\r\n    overflow-y: auto;\r\n    right: 0;\r\n    height: calc(100% - 122px);\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #eee;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area {\r\n  width: calc(100% - 40px);\r\n  height: calc(100% - 20px);\r\n  display: inline-block;\r\n  padding: 20px;\r\n  padding-bottom: 0;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-input{\r\n    display: none;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-button {\r\n  font-size: 16px;\r\n  vertical-align: top;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-process-bar {\r\n  width: 50%;\r\n  position: absolute;\r\n  bottom: 10px;\r\n  left: 50%;\r\n  transform: translate(-50%, 0);\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-form-tutorial {\r\n  font-size: 20pt;\r\n  color: #ccc;\r\n  padding: 0 10px;\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 40%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list{\r\n    padding: 16px 8px 8px 20px;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-title{\r\n    padding-bottom: 8px;\r\n    padding-top: 8px;\r\n\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-content{\r\n    display: inline-block;\r\n    margin-bottom: 8px;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-item{\r\n    display: inline-block;\r\n    position: relative;\r\n    touch-action: pan-x pan-y;\r\n    vertical-align: top;\r\n    margin-top: 16px;\r\n    margin-right: 20px;\r\n    width: calc(25% - 20px);\r\n}\r\n\r\n\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-img{\r\n    height: auto;\r\n    width: 100%;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-label{\r\n    border-bottom-left-radius: 1px;\r\n    border-bottom-right-radius: 1px;\r\n    height: 30px;\r\n    width: 100%;\r\n    position: relative;\r\n    white-space: nowrap;\r\n    -webkit-box-align: end;\r\n    box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    align-items: flex-end;\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    border-top: 1px solid #e1e1e1;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-icon{    \r\n  margin: 8px;\r\n  margin-top: auto;\r\n  margin-bottom: auto;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 16px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-smoothing: antialiased;\r\n  vertical-align: middle;\r\n  display: inline-block;\r\n  background-color: #6846b6;\r\n  color: white;\r\n}\r\n\r\n.modal-upload-XML-body-db-area-main-form-files-list-labelText{\r\n    margin: auto;\r\n    min-width: 60%;\r\n    -webkit-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex-grow: 1;\r\n    flex-grow: 1;\r\n    width: min-content;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    width: calc(100% - 54px);\r\n}\r\n\r\n.XML-autoresize {\r\n  max-height: calc(100% - 20px);\r\n  vertical-align: middle;\r\n  margin-left: 10px;\r\n  margin-right: 10px;\r\n  height: calc(100% - 20px);\r\n  max-width: calc(100% - 20px);\r\n  display: inline-block;\r\n}\r\n\r\n.absol-width-height-resizer-content {\r\n  width: unset;\r\n}\r\n\r\n#fileElemXML {\r\n  display: none;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar {\r\n  background: transparent;\r\n  border: none;\r\n  float: left;\r\n  height: 14px;\r\n  margin: 0 18px;\r\n  padding: 16px 4px 7px;\r\n  position: static;\r\n  user-select: none;\r\n  border-left: 0;\r\n  border-right: 0;\r\n  border-top: 0;\r\n  font-weight: bold;\r\n  padding-bottom: 18px;\r\n  user-select: none;\r\n  color:#2222229e;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar:hover{\r\n  border-bottom: 2px solid #4d90fe;\r\n}\r\n\r\n.modal-upload-XML-body-navigation-bar-button{\r\n  display: inline-block;\r\n  font-size: 14px;\r\n  vertical-align: middle;\r\n  user-select: none;\r\n  font-weight: 600;\r\n}\r\n\r\n.modal-upload-XML-body-drop-save{\r\n  position: relative;\r\n  padding: 10px 0;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.fit-content-XML{\r\n  width: auto;\r\n}\r\n\r\n.selected-modal{\r\n  border-bottom: 2px solid #4d90fe;\r\n  color: #222;\r\n}\r\n\r\n.on-hold{\r\n  box-shadow: 2px 2px 10px;\r\n  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  background-color: #4285f4;\r\n}\r\n\r\n.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{\r\n  color: white;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {\r\n  -webkit-transform: translateX(0);\r\n  transform: translateX(0);\r\n  z-index: 1002;\r\n}\r\n\r\n.freebirdCommonSidebarSidebar {\r\n  background-color: #fff;\r\n  bottom: 0;\r\n  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  overflow: hidden;\r\n  position: fixed;\r\n  right: 0;\r\n  -webkit-transition: -webkit-transform 300ms ease-out;\r\n  transition: transform 300ms ease-out;\r\n  -webkit-transform: translateX(100%);\r\n  transform: translateX(100%);\r\n  width: 26%;\r\n  min-width: 300px;\r\n  z-index: 3;\r\n}\r\n\r\n.freebirdCommonSidebarHeader {\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  /* padding: 0 0 0 20px; */\r\n  text-transform: uppercase;\r\n}\r\n\r\n.freebirdCommonSidebarContent {\r\n  overflow-x: hidden;\r\n  overflow-y: auto;\r\n  -webkit-transition: width 300ms ease-out;\r\n  transition: width 300ms ease-out;\r\n  word-break: break-word;\r\n  white-space: pre;\r\n  -webkit-box-align: center;\r\n  box-align: center;\r\n  -webkit-align-items: center;\r\n  align-items: center;\r\n  -webkit-flex-shrink: 0;\r\n  flex-shrink: 0;\r\n  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-size: 15px;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHelpText {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  font-weight: 300;\r\n  margin-top: 12px;\r\n}\r\n\r\n.freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {\r\n  width: 100%;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportHeader {\r\n  -webkit-box-align: start;\r\n  box-align: start;\r\n  -webkit-align-items: flex-start;\r\n  align-items: flex-start;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  box-orient: vertical;\r\n  -webkit-flex-direction: column;\r\n  flex-direction: column;\r\n  box-pack: justify;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n  justify-content: space-between;\r\n  padding: 20px;\r\n  white-space: normal;\r\n  width:100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportTitle {\r\n  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  width: 100%;\r\n  word-wrap: break-word;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportImportedQuestions {\r\n  -webkit-box-flex: 0 1 auto;\r\n  -webkit-flex: 0 1 auto;\r\n  flex: 0 1 auto;\r\n  overflow-y: auto;\r\n  white-space: normal;\r\n  height: calc(100% - 113px);\r\n}\r\n\r\n.freebirdFormeditorQuestionimportCheckbox {\r\n  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\r\n  margin: 12px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSection {\r\n  margin-top: 32px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportChangeFormButton {\r\n  color: #1a73e8;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  line-height: normal;\r\n  margin: 8px 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearch {\r\n  font-size: 13px;\r\n  text-align: left;\r\n  position: relative;\r\n  margin-top: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchInput {\r\n  -webkit-transition: all .218s;\r\n  -moz-transition: all .218s;\r\n  -o-transition: all .218s;\r\n  transition: all .218s;\r\n  margin: 4px 15px 5px 0;\r\n  vertical-align: middle;\r\n  -webkit-border-radius: 1px;\r\n  -moz-border-radius: 1px;\r\n  border-radius: 1px;\r\n  border: 1px solid #d9d9d9;\r\n  border-top: 1px solid #c0c0c0;\r\n  font-size: 13px;\r\n  height: 25px;\r\n  width: 410px;\r\n  padding-left: 50px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilter {\r\n  border: 1px solid #dae4f6;\r\n  -webkit-border-radius: 2px;\r\n  -moz-border-radius: 2px;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 23px;\r\n  left: 22px;\r\n  outline: medium none;\r\n  position: absolute;\r\n  top: 6px;\r\n  background-color: #c6dafc;\r\n  border-color: #c6dafc;\r\n  left: 2px;\r\n}\r\n\r\n.freebirdFormeditorQuestionimportSearchFilterText {\r\n  display: inline-block;\r\n  font-size: 12px;\r\n  line-height: 23px;\r\n  padding: 0 3px;\r\n  vertical-align: top;\r\n}\r\n\r\n.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {\r\n  -webkit-box-flex: 0 0 auto;\r\n  -webkit-flex: 0 0 auto;\r\n  flex: 0 0 auto;\r\n  margin-bottom: 10px;\r\n  margin-left: 20px;\r\n  margin-right: 20px;\r\n  margin-top: 10px;\r\n  background: #4285f4;\r\n  color: #fff;\r\n}\r\n\r\n.grid{\r\n  width: 100%;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.grid-item{\r\n  height: 50%;\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n\r\n.modal-upload-XML-body-drop-area-main-gallery{\r\n  width: 100%;\r\n  height: calc(100% - 70px);\r\n  position: absolute;\r\n  top: 45px;\r\n  overflow: auto;\r\n}\r\n\r\n.back-white-convert .full-size{\r\n  -webkit-filter: grayscale(100%);\r\n  filter: grayscale(100%);\r\n}", ""]);
 
 
 
@@ -23546,22 +23546,22 @@ var src_absol = {
 };
 
 
-/* harmony default export */ var src = (src_absol);
+/* harmony default export */ var absol_src = (src_absol);
 // CONCATENATED MODULE: ./node_modules/absol/src/absol.js
 
 
 
 //for old plugin
-src.HTMLElement = src.Element;
-src.dom = src.Dom;
-src.event = src.EventEmitter;
-src.Event = src.EventEmitter;
-src.color = src.Color;
-src.documentReady = src.Dom.documentReady;
-window.AComp = src.AComp;
-window.PhotoSwipeViewer = src.PhotoSwipeViewer;
-window.IFrameBridge = src.IFrameBridge;
-window.absol = src;
+absol_src.HTMLElement = absol_src.Element;
+absol_src.dom = absol_src.Dom;
+absol_src.event = absol_src.EventEmitter;
+absol_src.Event = absol_src.EventEmitter;
+absol_src.color = absol_src.Color;
+absol_src.documentReady = absol_src.Dom.documentReady;
+window.AComp = absol_src.AComp;
+window.PhotoSwipeViewer = absol_src.PhotoSwipeViewer;
+window.IFrameBridge = absol_src.IFrameBridge;
+window.absol = absol_src;
 
 var mapKeys = {
     ShareDom: 'coreDom',
@@ -23571,18 +23571,18 @@ var mapKeys = {
     ShareCreator: 'domCreator'
 };
 
-src.logData = [];
-src.log = function () {
-    src.logData.push([new Error('TraceError')].concat(Array.prototype.slice.call(arguments)))
+absol_src.logData = [];
+absol_src.log = function () {
+    absol_src.logData.push([new Error('TraceError')].concat(Array.prototype.slice.call(arguments)))
 }
 
 Object.keys(mapKeys).forEach(function (key) {
     var valueKey = mapKeys[key];
-    Object.defineProperty(src, key, {
+    Object.defineProperty(absol_src, key, {
         get: function () {
             if (!this['__warn' + key + '__']) {
                 this['__warn' + key + '__'] = true;
-                src.log("use " + valueKey + ' instead of ' + key);
+                absol_src.log("use " + valueKey + ' instead of ' + key);
             }
             return this[valueKey];
         }
@@ -46918,6 +46918,53 @@ function consoleArea(areas) {
   });
   return result;
 }
+function grayscale(src) {
+  return new Promise(function (resolve, reject) {
+    var image = new Image();
+    image.src = src;
+    image.style.visibility = "hidden";
+    image.style.position = "absolute";
+    image.style.top = 0;
+
+    image.onload = function () {
+      document.body.appendChild(image);
+      var myCanvas = document.createElement("canvas");
+      var myCanvasContext = myCanvas.getContext("2d");
+      var imgWidth = image.width;
+      var imgHeight = image.height; // You'll get some string error if you fail to specify the dimensions
+
+      myCanvas.width = imgWidth;
+      myCanvas.height = imgHeight; //  alert(imgWidth);
+
+      myCanvasContext.drawImage(image, 0, 0); // This function cannot be called if the image is not rom the same domain.
+      // You'll get security error if you do.
+
+      var imgPixels = myCanvasContext.getImageData(0, 0, imgWidth, imgHeight);
+      document.body.removeChild(image); // This loop gets every pixels on the image and
+
+      for (var y = 0; y < imgPixels.height; y++) {
+        for (var x = 0; x < imgPixels.width; x++) {
+          var i = y * 4 * imgPixels.width + x * 4;
+          var avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;
+          imgPixels.data[i] = avg;
+          imgPixels.data[i + 1] = avg;
+          imgPixels.data[i + 2] = avg;
+        }
+      }
+
+      myCanvasContext.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);
+      resolve(myCanvas.toDataURL());
+    };
+  });
+}
+
+function toBase64(arr) {
+  //arr = new Uint8Array(arr) if it's an ArrayBuffer
+  return btoa(arr.reduce(function (data, _byte) {
+    return data + String.fromCharCode(_byte);
+  }, ''));
+}
+
 function consoleWKT(areas) {
   var multipolygon = "MULTIPOLYGON(";
   var polygon,
@@ -50961,8 +51008,8 @@ DataStructure.prototype.load = function () {
       if (self.promiseLoad.status === "pending") return self.promiseLoad;else return Promise.resolve(self.data);
     }
   } else {
-    if (isLoaded == false && self.promisePart[data.WHERE] !== undefined) {
-      if (self.promisePart[data.WHERE].status === "pending") return self.promisePart[data.WHERE];else return Promise.resolve(self.promisePart[data.WHERE].data);
+    if (isLoaded == false && self.promisePart[JSON.stringify(data.WHERE)] !== undefined) {
+      if (self.promisePart[JSON.stringify(data.WHERE)].status === "pending") return self.promisePart[JSON.stringify(data.WHERE)];else return Promise.resolve(self.promisePart[JSON.stringify(data.WHERE)].data);
     }
   }
 
@@ -50975,13 +51022,12 @@ DataStructure.prototype.load = function () {
   var isFirst = this.isFirst;
   promiseLoad = new Promise(function (resolve, reject) {
     self.queryData(self.phpLoader, data).then(function (value) {
-      console.log(value);
       if (self.data === undefined) self.data = [];
 
       if (data.WHERE === undefined) {
         self.countRow = value.length;
       } else {
-        self.checkLoaded[data.WHERE] = value;
+        self.checkLoaded[JSON.stringify(data.WHERE)] = value;
 
         if (isFirst === true) {
           self.countRow = parseInt(value[value.length - 1].count);
@@ -51017,7 +51063,7 @@ DataStructure.prototype.load = function () {
     });
   });
   promiseLoad.status = "pending";
-  if (data.WHERE === undefined) self.promiseLoad = promiseLoad;else self.promisePart[data.WHERE] = promiseLoad;
+  if (data.WHERE === undefined) self.promiseLoad = promiseLoad;else self.promisePart[JSON.stringify(data.WHERE)] = promiseLoad;
   return promiseLoad;
 };
 
@@ -51414,6 +51460,9 @@ function DetailView(map, data) {
     props: {
       type: "text",
       placeholder: ""
+    },
+    attr: {
+      disabled: ""
     }
   });
 
@@ -51441,7 +51490,7 @@ function DetailView(map, data) {
           if (temp.checkStateDistrict[x][i] == district.value) return;
         }
 
-        if (temp.checkStateDistrict[x][0] !== undefined) district.value = temp.checkStateDistrict[x][0].value;
+        if (temp.checkStateDistrict[x] !== undefined) district.items = temp.checkStateDistrict[x];
         district.emit("change");
         temp.setInput();
       }
@@ -51453,17 +51502,14 @@ function DetailView(map, data) {
     props: {
       enableSearch: true
     },
+    style: {
+      poiterEvent: "none",
+      backGroundColor: "#fafafa"
+    },
     on: {
       change: function change(event) {
         var x = parseInt(getIDCompair(this.value));
-        var checkid = temp.checkState[temp.checkDistrict[x].stateid].name + "_" + temp.checkDistrict[x].stateid;
-        state.value = checkid;
-
-        for (var i = 0; i < temp.checkDistrictWard[x].length; i++) {
-          if (temp.checkDistrictWard[x][i] == ward.value) return;
-        }
-
-        if (temp.checkDistrictWard[x][0] !== undefined) ward.value = temp.checkDistrictWard[x][0].value;
+        if (temp.checkDistrictWard[x] !== undefined) ward.items = temp.checkDistrictWard[x];
         temp.setInput();
       }
     }
@@ -51473,6 +51519,10 @@ function DetailView(map, data) {
     "class": "pizo-new-realty-location-detail-row-menu",
     props: {
       enableSearch: true
+    },
+    style: {
+      poiterEvent: "none",
+      backGroundColor: "#fafafa"
     },
     on: {
       change: function change(event) {
@@ -51486,6 +51536,10 @@ function DetailView(map, data) {
   street = MapView_({
     tag: "selectmenu",
     "class": "pizo-new-realty-location-detail-row-menu",
+    style: {
+      poiterEvent: "none",
+      backGroundColor: "#fafafa"
+    },
     on: {
       change: function change(event) {
         temp.setInput();
@@ -51503,8 +51557,6 @@ function DetailView(map, data) {
   });
   Promise.all(arr).then(function () {
     state.items = component_ModuleDatabase.getModule("states").getList("name", ["name", "id"]);
-    district.items = component_ModuleDatabase.getModule("districts").getList("name", ["name", "id"]);
-    ward.items = component_ModuleDatabase.getModule("wards").getList("name", ["name", "id"]);
     street.items = component_ModuleDatabase.getModule("streets").getList("name", ["name", "id"]);
     temp.checkStateDistrict = component_ModuleDatabase.getModule("districts").getLibary("stateid", function (data) {
       return {
@@ -51517,7 +51569,7 @@ function DetailView(map, data) {
         text: data.name,
         value: data.name + "_" + data.id
       };
-    });
+    }, true);
     temp.checkWard = component_ModuleDatabase.getModule("wards").getLibary("id");
     temp.checkState = component_ModuleDatabase.getModule("states").getLibary("id");
     temp.checkDistrict = component_ModuleDatabase.getModule("districts").getLibary("id");
@@ -51526,40 +51578,6 @@ function DetailView(map, data) {
 
     if (data !== undefined) {
       temp.number.value = data.number;
-      index = data.street.lastIndexOf("_");
-      console.log(data.street);
-
-      if (index === -1) {
-        temp.street.items.push({
-          text: data.street,
-          value: data.street
-        });
-        temp.street.items = temp.street.items;
-      }
-
-      temp.street.value = data.street;
-      index = data.ward.lastIndexOf("_");
-
-      if (index === -1) {
-        temp.ward.items.push({
-          text: data.ward,
-          value: data.ward
-        });
-        temp.ward.items = temp.ward.items;
-      }
-
-      temp.ward.value = data.ward;
-      index = data.district.lastIndexOf("_");
-
-      if (index === -1) {
-        temp.district.items.push({
-          text: data.district,
-          value: data.district
-        });
-        temp.district.items = temp.district.items;
-      }
-
-      temp.district.value = data.district;
       index = data.state.lastIndexOf("_");
 
       if (index === -1) {
@@ -51571,6 +51589,42 @@ function DetailView(map, data) {
       }
 
       temp.state.value = data.state;
+      temp.state.emit("change");
+      index = data.district.lastIndexOf("_");
+
+      if (index === -1) {
+        temp.district.items.push({
+          text: data.district,
+          value: data.district
+        });
+        temp.district.items = temp.district.items;
+      }
+
+      temp.district.value = data.district;
+      temp.district.emit("change");
+      index = data.ward.lastIndexOf("_");
+
+      if (index === -1) {
+        temp.ward.items.push({
+          text: data.ward,
+          value: data.ward
+        });
+        temp.ward.items = temp.ward.items;
+      }
+
+      temp.ward.emit("change");
+      temp.ward.value = data.ward;
+      index = data.street.lastIndexOf("_");
+
+      if (index === -1) {
+        temp.street.items.push({
+          text: data.street,
+          value: data.street
+        });
+        temp.street.items = temp.street.items;
+      }
+
+      temp.street.value = data.street;
       if (data.lat !== undefined) temp.lat.value = data.lat;
       if (data.lng !== undefined) temp["long"].value = data.lng;
       temp.setInput();
@@ -52847,9 +52901,9 @@ function descViewImagePreview() {
       if (deltaYcontainerMainImage * event.deltaY < 0) deltaYcontainerMainImage = 0;else deltaYcontainerMainImage += event.deltaY;
     } else {
       if (deltaYcontainerMainImage < 0) {
-        self.setScale(-0.125);
-      } else {
         self.setScale(0.125);
+      } else {
+        self.setScale(-0.125);
       }
 
       deltaYcontainerMainImage = 0;
@@ -53118,6 +53172,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
+
 var modal_drag_drop_manyfiles_ = dom_Fcore._;
 var modal_drag_drop_manyfiles_$ = dom_Fcore.$;
 var xmlModalDragManyFiles;
@@ -53127,19 +53183,29 @@ var xmlModalDragManyFiles;
   iconSrc: "https://lab.daithangminh.vn/vivid_exticons/",
   deleteAllTrash: function deleteAllTrash() {},
   Image: function Image(srcImg) {
+    var img = modal_drag_drop_manyfiles_({
+      tag: "img",
+      "class": ["full-size"],
+      props: {
+        src: srcImg
+      },
+      on: {
+        click: function click() {
+          document.body.appendChild(descViewImagePreview([{
+            avatar: "",
+            userName: "",
+            src: srcImg,
+            date: "",
+            note: ""
+          }]));
+        }
+      }
+    });
+
     var temp = modal_drag_drop_manyfiles_({
       tag: "div",
       "class": "grid-item",
-      child: [{
-        tag: "img",
-        "class": ["full-size"],
-        props: {
-          src: srcImg
-        },
-        on: {
-          click: function click() {}
-        }
-      }, {
+      child: [img, {
         tag: "i",
         "class": "material-icons",
         style: {
@@ -53176,6 +53242,9 @@ var xmlModalDragManyFiles;
 
         if (el !== document) if (el.classList.contains("hasFocus")) el.classList.remove("hasFocus");
       }
+    });
+    img.addEventListener("load", function () {
+      temp.onload.bind(this)();
     });
     return temp;
   },
@@ -53445,13 +53514,14 @@ var xmlModalDragManyFiles;
     console.debug("update", fileNumber, percent, total);
     self.progressBar.value = total;
   },
-  handleFiles: function handleFiles(files, self) {
+  handleFiles: function handleFiles(files) {
+    var self = this;
     files = _toConsumableArray(files);
     self.initializeProgress(files.length);
 
     for (var i = 0; i < files.length; i++) {
-      self.uploadFile(files[i], i, self);
-      self.previewFile(files[i], self);
+      self.uploadFile(files[i], i);
+      self.previewFile(files[i]);
     }
   },
   marginAlign: function marginAlign() {
@@ -53472,7 +53542,9 @@ var xmlModalDragManyFiles;
 
     return temp;
   },
-  previewFile: function previewFile(file, self) {
+  previewFile: function previewFile(file) {
+    var self = this;
+
     if (self.gallery === undefined) {
       self.gallery = modal_drag_drop_manyfiles_$(".gallery_c0ek499ts0", self.containGetImage);
     }
@@ -53482,14 +53554,24 @@ var xmlModalDragManyFiles;
       reader.readAsDataURL(file);
 
       reader.onloadend = function () {
-        var img = self.Image(reader.result);
-        img.value = reader.result;
-        var parent = self.gallery;
-        parent.appendChild(img);
+        if (self.blackWhite === true) {
+          grayscale(reader.result, true).then(function (value) {
+            var img = self.Image(value);
+            img.value = value;
+            var parent = self.gallery;
+            parent.appendChild(img);
 
-        img.onload = function () {
-          image.style.width = img.naturalWidth * (img.clientHeight / self.imgUrl.naturalHeight) + "px";
-        };
+            img.onload = function () {};
+          });
+        } else {
+          var src = reader.result;
+          var img = self.Image(value);
+          img.value = value;
+          var parent = self.gallery;
+          parent.appendChild(img);
+
+          img.onload = function () {};
+        }
       };
     } else {
       var img = self.Image(this.iconSrc + file.name.substr(file.name.lastIndexOf('.') + 1) + ".svg");
@@ -53499,6 +53581,23 @@ var xmlModalDragManyFiles;
 
       img.onload = function () {};
     }
+  },
+  setBackWhite: function setBackWhite() {
+    this.blackWhite = true;
+  },
+  addFile: function addFile(data) {
+    var ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+    if (this.gallery === undefined) {
+      this.gallery = modal_drag_drop_manyfiles_$(".gallery_c0ek499ts0", this.containGetImage);
+    }
+
+    var img = this.Image(ref + data.src);
+    img.value = data;
+    var parent = this.gallery;
+    parent.appendChild(img);
+
+    img.onload = function () {};
   },
   resetFile: function resetFile() {
     var self = this;
@@ -53523,6 +53622,7 @@ var xmlModalDragManyFiles;
     return arr;
   },
   uploadFile: function uploadFile(file, i, self) {
+    var self = this;
     self.updateProgress(i, 100, self);
     self.select.classList.remove("disable");
     if (!self.xnen.classList.contains("visible")) self.xnen.classList.add("visible"); // var url = "./php/upload/handle_file_upload.php";
@@ -53740,6 +53840,7 @@ NewRealty_NewRealty.prototype.descView = function () {
 NewRealty_NewRealty.prototype.imageJuridical = function () {
   var result = Object.assign({}, modal_drag_drop_manyfiles);
   var container = result.containGetImage();
+  result.setBackWhite();
   result.createEvent();
 
   var temp = NewRealty_({
@@ -53759,6 +53860,13 @@ NewRealty_NewRealty.prototype.imageJuridical = function () {
   });
 
   this.viewJuridical = result;
+
+  if (this.data !== undefined) {
+    for (var i = 0; i < this.data.original.imageJuridical.length; i++) {
+      result.addFile(this.data.original.imageJuridical[i], "https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+    }
+  }
+
   return temp;
 };
 
@@ -53784,6 +53892,13 @@ NewRealty_NewRealty.prototype.imageCurrentStaus = function () {
   });
 
   this.viewCurrentStaus = result;
+
+  if (this.data !== undefined) {
+    for (var i = 0; i < this.data.original.imageCurrentStaus.length; i++) {
+      result.addFile(this.data.original.imageCurrentStaus[i], "https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+    }
+  }
+
   return temp;
 };
 
@@ -56849,23 +56964,7 @@ ListRealty_ListRealty.prototype.edit = function (data, parent, index) {
 ListRealty_ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
   var self = this;
   mNewRealty.promiseEditDB.then(function (value) {
-    component_ModuleDatabase.getModule("activehouses").update(value, true).then(function (result) {
-      if (result.add.length !== 0) {
-        for (var i = 0; i < value.contact.length; i++) {
-          if (value.contact[i].id === undefined) {
-            value.contact.splice(i, 1);
-            i--;
-          }
-        }
-
-        for (var i = 0; i < result.add.length; i++) {
-          if (result.add[i]["contacts"] !== undefined) value.contact.push(result.add[i]["contacts"]);
-        }
-      }
-
-      delete result.add;
-      delete result.update;
-      delete result["delete"];
+    component_ModuleDatabase.getModule("activehouses").update(value).then(function (result) {
       self.editView(value, data, parent, index);
     });
     mNewRealty.promiseEditDB = undefined;
