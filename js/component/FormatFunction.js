@@ -6,6 +6,9 @@ var _ = Fcore._;
 var $ = Fcore.$;
 
 export function formatDate(date,isMinutes = false, isHours = false , isDay = true, isMonth = true, isYear = false) {
+    if(typeof date == "object")
+    var d = date;
+    else
     var d = new Date(date); //time zone value from database
     //get the timezone offset from local time in minutes
     var tzDifference = -d.getTimezoneOffset();

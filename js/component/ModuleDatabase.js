@@ -56,13 +56,14 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
 
     var promiseLoad;
     
-    if(this.isFirst == true)
+    if(this.isFirst === true&&data.WHERE!==undefined)
     {
         data.isFirst = true;
+        this.isFirst = false;
     }
-    var isFirst = this.isFirst;
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(value){
+            
             if(self.data === undefined)
             self.data = [];
             if(data.WHERE===undefined)
@@ -71,11 +72,10 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
             }else
             {
                 self.checkLoaded[JSON.stringify(data.WHERE)] = value;
-                if(isFirst===true)
+                if(data.isFirst===true)
                 {
                     self.countRow = parseInt(value[value.length-1].count);
                     value.splice(value.length-1,1);
-                    self.isFirst = false;
                 }
             }
             var libary = self.Libary["id"];
@@ -301,6 +301,8 @@ DataStructure.prototype.add = function(data){
 DataStructure.prototype.setFormatAdd = function(data)
 {
     var self = this;
+    if(self.Libary[data.id]!==undefined)
+        return;
     for(var param in self.Libary)
     {
         if(typeof self.Libary[param]!= "function")

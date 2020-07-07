@@ -379,9 +379,9 @@ PlanningInformation.prototype.createHashRow = function(data,hash)
     var intLat,intLng,cellLat,cellLng,created;
     var center = data.getBounds().getCenter().toJSON();
         intLng = parseInt(center.lng/1);
-        cellLng = Math.ceil(center.lng%1/0.0009009009009009009)-1;
+        cellLng = Math.ceil(center.lng%1/(1/1110))-1;
         intLat = parseInt(center.lat/1);
-        cellLat = Math.ceil(center.lat%1/0.0009009009009009009)-1;
+        cellLat = Math.ceil(center.lat%1/(1/1110))-1;
         cellLng = intLng*10000+cellLng;
         cellLat = intLat*10000+cellLat;
         if(data.created!==undefined)
@@ -685,7 +685,7 @@ PlanningInformation.prototype.searchControlContent = function(){
                             self.polygon = self.polygon.concat(self.addWKT(value[i])); 
                         }
                         var center = value[value.length-1];
-                        self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat/10000)+(center.cellLat%10000-1)*0.0009009009009009009,parseInt(center.cellLng/10000)+(center.cellLng%10000-1)*0.0009009009009009009));
+                        self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat/10000)+(center.cellLat%10000-1)*(1/1110),parseInt(center.cellLng/10000)+(center.cellLng%10000-1)*(1/1110)));
                         self.mapView.map.setZoom(17);
                     })
                 }else
@@ -887,7 +887,7 @@ PlanningInformation.prototype.addCurrentWKT = function(created) {
         }
     }
 
-    this.mapView.map.setCenter(new google.maps.LatLng(parseInt(cellLat/10000)+(cellLat%10000-1)*0.0009009009009009009,parseInt(cellLng/10000)+(cellLng%10000-1)*0.0009009009009009009));
+    this.mapView.map.setCenter(new google.maps.LatLng(parseInt(cellLat/10000)+(cellLat%10000-1)*(1/1110),parseInt(cellLng/10000)+(cellLng%10000-1)*(1/1110)));
     this.mapView.map.setZoom(17);   
     return toReturn;  
 }

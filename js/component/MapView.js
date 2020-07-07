@@ -767,9 +767,9 @@ MapView.prototype.addMapPolygon = function()
             var latitude = center.lat();
             var longitude = center.lng();
             intLng = parseInt(longitude/1);
-            cellLng = Math.ceil(longitude%1/0.0009009009009009009);
+            cellLng = Math.ceil(longitude%1/(1/1110));
             intLat = parseInt(latitude/1);
-            cellLat = Math.ceil(latitude%1/0.0009009009009009009);
+            cellLat = Math.ceil(latitude%1/(1/1110));
             cellLng = intLng*10000+cellLng;
             cellLat = intLat*10000+cellLat;
             self.removeMapPolygonAround(cellLat,cellLng);
@@ -787,12 +787,13 @@ MapView.prototype.addMapPolygon = function()
                             self.checkMap[cellDeltaLat][cellDeltaLng] = [];
                             if(self.checkLibary[cellDeltaLat]===undefined)
                             self.checkLibary[cellDeltaLat] = [];
+                            self.checkLibary[cellDeltaLat][cellDeltaLng] = 1;
                         moduleDatabase.getModule("polygon").load({WHERE:{cellLng:cellDeltaLng,cellLat:cellDeltaLat}}).then(function(cellDeltaLat,cellDeltaLng,value){
                             for(var i=0;i<value.length;i++)
                             {
                                 self.addWKT(value[i]["AsText(`map`)"],cellDeltaLat,cellDeltaLng)
                             }
-                            self.checkLibary[cellDeltaLat][cellDeltaLng] = 1;
+                            
                         }.bind(null,cellDeltaLat,cellDeltaLng))
                     }else
                     {
@@ -806,6 +807,18 @@ MapView.prototype.addMapPolygon = function()
     });
 }
 
+MapView.prototype.getBlock = function(latitude,longitude)
+{
+    var intLng,cellLng,intLat,cellLat;
+    intLng = parseInt(longitude/1);
+    cellLng = Math.ceil(longitude%1/(1/1110));
+    intLat = parseInt(latitude/1);
+    cellLat = Math.ceil(latitude%1/(1/1110));
+    cellLng = intLng*10000+cellLng;
+    cellLat = intLat*10000+cellLat;
+    return [cellLat,cellLng];
+}
+
 MapView.prototype.addMapHouse = function()
 {
     var self = this;
@@ -817,38 +830,35 @@ MapView.prototype.addMapHouse = function()
     this.checkLibaryHouse = [];
     google.maps.event.addListener(self.map, 'zoom_changed', function() {
         var zoomLevel = self.map.getZoom();
-        if(zoomLevel>=20)
+        if(zoomLevel>=10)
         {
             self.enableHouse = true;
             new google.maps.event.trigger( self.map, 'center_changed' );
         }else
         {
-            self.enableHouse = false;
-            self.removeMapHouse();
+            self.enableHouse = true;
+            // self.removeMapHouse();
         }
     });
     self.map.setZoom(20);
-    console.log(self.map)
-    var intLng,cellLng,intLat,cellLat,cellDeltaLat,cellDeltaLng;
-    google.maps.event.addListener(self.map, "center_changed", function() {
+
+    google.maps.event.addListener(self.map, "idle", function() {
+        var bounds = self.map.getBounds();
+        var ne = bounds.getNorthEast(); // LatLng of the north-east corner
+        var sw = bounds.getSouthWest();
+
+        var topRight = self.getBlock(ne.lat(), ne.lng());
+        var bottomLeft = self.getBlock(sw.lat(), sw.lng());
+        self.bottomLeft = bottomLeft;
+        self.topRight = topRight;
+        console.log(bottomLeft,topRight)
         if(self.enableHouse == true)
         {
-            var center = this.getCenter();
-            var latitude = center.lat();
-            var longitude = center.lng();
-            intLng = parseInt(longitude/1);
-            cellLng = Math.ceil(longitude%1/0.0009009009009009009);
-            intLat = parseInt(latitude/1);
-            cellLat = Math.ceil(latitude%1/0.0009009009009009009);
-            cellLng = intLng*10000+cellLng;
-            cellLat = intLat*10000+cellLat;
-            self.removeMapHouseAround(cellLat,cellLng);
-            for(var m=-2;m<=1;m++)
+            self.removeMapHouseAround();
+            for(var cellDeltaLat=bottomLeft[0];cellDeltaLat<=topRight[0];cellDeltaLat++)
             {
-                for(var k=-2;k<=1;k++)
+                for(var cellDeltaLng=bottomLeft[1];cellDeltaLng<=topRight[1];cellDeltaLng++)
                 {
-                    cellDeltaLat = cellLat + m;
-                    cellDeltaLng = cellLng + k;
                     if(self.checkHouse[cellDeltaLat]===undefined||self.checkHouse[cellDeltaLat][cellDeltaLng]===undefined)
                     {
                         if(self.checkHouse[cellDeltaLat]===undefined)
@@ -858,11 +868,17 @@ MapView.prototype.addMapHouse = function()
                         if(self.checkLibaryHouse[cellDeltaLat]===undefined)
                             self.checkLibaryHouse[cellDeltaLat] = [];
 
+                        self.checkLibaryHouse[cellDeltaLat][cellDeltaLng] = 1;
                         moduleDatabase.getModule("activehouses").load({WHERE:{cellLng:cellDeltaLng,cellLat:cellDeltaLat}}).then(function(cellDeltaLat,cellDeltaLng,value){
                             for(var i=0;i<value.length;i++)
                             {
                                 self.addOrtherMarker(value[i],cellDeltaLat,cellDeltaLng);
-                                self.checkLibaryHouse[cellDeltaLat][cellDeltaLng] = 1;
+                            }
+                            if(value.length>0)
+                            {
+                                console.log("xxxxxxxxxxxx")
+                                var event = new CustomEvent('change-house');
+                                self.dispatchEvent(event);
                             }
                         }.bind(null,cellDeltaLat,cellDeltaLng))
                     }else
@@ -880,6 +896,7 @@ MapView.prototype.addMapHouse = function()
 MapView.prototype.addOrtherMarker = function(data,cellLat,cellLng)
 {
     var self = this;
+    var position = [data.lat,data.lng];
     var image = {
         url: "./assets/images/marker-red.png",
         // This marker is 20 pixels wide by 32 pixels high.
@@ -897,6 +914,7 @@ MapView.prototype.addOrtherMarker = function(data,cellLat,cellLng)
         title: "Latitude:" + position[0] + " | Longtitude:" + position[1],
         zIndex:2
     });
+    marker.data = data;
     this.checkHouse[cellLat][cellLng].push(marker);
     this.currentHouse.push([cellLat,cellLng]);
 
@@ -936,7 +954,10 @@ MapView.prototype.removeMapHouseAround = function(cellLat,cellLng){
     {
         currentLat = this.currentHouse[i][0];
         currentLng = this.currentHouse[i][1];
-        if(Math.abs(currentLat-cellLat)>3||Math.abs(currentLng-cellLng)>3)
+        if(currentLat<this.bottomLeft[0]||
+                currentLat>this.topRight[0]||
+                    currentLng<this.bottomLeft[1]||
+                        currentLng>this.topRight[1])
         {
             var arr = this.checkHouse[currentLat][currentLng];
 
@@ -1164,6 +1185,9 @@ MapView.prototype.smoothZoom = function (max, cnt) {
             google.maps.event.removeListener(z);
             self.smoothZoom(this.map, max, cnt + 1);
         });
-        setTimeout(function () { self.map.setZoom(cnt) }, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
+        setTimeout(function () { 
+            if(cnt!==undefined)
+            self.map.setZoom(cnt) 
+        }, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
     }
 }

@@ -1286,8 +1286,6 @@ tableView.prototype.pagination = function (number, functionClick) {
                                     prev.click();
                                     temp.style.color = "";
                                 }
-
-
                             }
                         },
                         props: {
@@ -1559,6 +1557,8 @@ tableView.prototype.pagination = function (number, functionClick) {
     this.goto = function(index){
         arr[index-1].click();
     }
+
+
     return temp;
 }
 

@@ -511,7 +511,7 @@ export default xmlModalDragManyFiles = {
             })
         }else
         {
-          var src = reader.result;
+          var value = reader.result;
           var img =  self.Image(value);
           img.value = value;
           var parent = self.gallery;

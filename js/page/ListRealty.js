@@ -106,7 +106,15 @@ ListRealty.prototype.getView = function () {
         class: "pizo-list-realty",
         child: [{
             class: 'absol-single-page-header',
-            child: [{
+            child: [
+                {
+                    tag: "span",
+                    class: "pizo-body-title-left",
+                    props: {
+                        innerHTML: "Nhà đất"
+                    }
+                },
+                {
                     tag: "div",
                     class: "pizo-list-realty-button",
                     child: [{

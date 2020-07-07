@@ -4,10 +4,11 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/MapRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { consoleWKT,loaddingWheel ,getGMT,formatDate } from '../component/FormatFunction';
+import { formatDate } from '../component/FormatFunction';
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
+
 
 
 var _ = Fcore._;
@@ -32,18 +33,6 @@ MapRealty.prototype.constructor = MapRealty;
 MapRealty.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
-    var input = _({
-        tag:"input",
-        class:"quantumWizTextinputPaperinputInput",
-        props:{
-            type:"number",
-            autocomplete:"off",
-            min:1,
-            max:200,
-            step:1,
-            value:50
-        }
-    })
     var allinput = _({
         tag:"input",
         class:"pizo-list-realty-page-allinput-input",
@@ -155,7 +144,7 @@ MapRealty.prototype.getView = function () {
         }
         self.mapView.map.setCenter(bounds.getCenter());
       });
-
+    this.mapView = mapView;
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-plan-main"],
@@ -168,14 +157,330 @@ MapRealty.prototype.getView = function () {
                     tag:"div",
                     class:["pizo-list-realty-main-result-control"],
                     child:[
-                        mapView
+                        {
+                            tag:"div",
+                            class:"pizo-list-realty-main-result-control-map-view",
+                            child:[
+                                mapView,
+                                self.modalRealty(), 
+                            ]
+                        }
                     ]
                 }
             ]   
         })
         );
-    this.mapView = mapView;
+
     return this.$view;
+}
+
+MapRealty.prototype.modalRealty = function(){
+    var self = this;
+    var container = _({
+        tag:"ul",
+        class:["photo-cards", "photo-cards_wow", "photo-cards_short"],
+        child:[
+        ]
+    })
+    var temp=_({
+        tag:"div",
+        class:["search-page-list-container", "double-column-only" ,"short-list-cards"],
+        child:[
+            {
+                tag:"div",
+                class:"result-list-container",
+                child:[
+                    {
+                        tag:"div",
+                        class:"search-page-list-header",
+                        child:[
+                            {
+                                tag:"h1",
+                                class:"search-title",
+                                props:{
+                                    innerHTML:"Bất động sản rao bán"
+                                }
+                            },
+                            {
+                                tag:"div",
+                                class:"search-subtitle",
+                                child:[
+                                    {
+                                        tag:"span",
+                                        class:"result-count"
+                                    },
+                                    {
+                                        tag:"div",
+                                        class:["sort-options", "visible"],
+                                        child:[
+                                            {
+                                                tag:"strong",
+                                                innerHTML:"Sắp xếp theo"
+                                            },
+                                            {
+                                                tag:"selectmenu",
+                                                props:{
+                                                    items:[
+                                                        {text:"Mới nhất",value:0},
+                                                        {text:"Giá (Thấp tới cao)",value:1},
+                                                        {text:"Giá (Cao tới thấp)",value:2},
+                                                        {text:"Diện tích",value:3}
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    container
+                ]
+            },
+            {
+                tag:"div",
+                class:["zsg-subfooter", "region-info-footer"]
+            }
+        ]
+    })
+    this.updateResult = function()
+    {
+        var cellLat,cellLng,arrTemp;
+        for(var i = 0;i<this.mapView.currentHouse.length;i++)
+        {
+            cellLat = this.mapView.currentHouse[i][0];
+            cellLng = this.mapView.currentHouse[i][1];
+            arrTemp = this.mapView.checkHouse[cellLat][cellLng];
+            console.log(this.mapView.checkHouse[cellLat][cellLng]);
+            // if()
+            for(var j = 0;j<arrTemp.length;j++)
+            {
+                container.appendChild(this.itemMap(arrTemp[j].data));
+            }
+        }
+    }
+    this.mapView.addEventListener("change-house", function() {
+        self.updateResult();
+    })
+    return temp;
+}
+
+MapRealty.prototype.itemMap = function(data){
+    var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+    if(data.imageCurrentStaus.length>0)
+    src = data.imageCurrentStaus[0].src;
+    var thumnail = _({
+        tag:"img",
+        props:{
+            src:"https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+src
+        }
+    });
+    var type;
+    var diffTime = Math.abs(new Date() - new Date(data.created));
+    var date = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    switch(parseInt(data.type))
+    {
+        case 0:
+            type = "Chưa xác định";
+            break;
+        case 1:
+            type = "Hẻm";
+            break;
+        case 2:
+            type = "Mặt tiền";
+            break;
+        case 3:
+            type = "Chung cư";
+            break;
+    }
+    var temp = _({
+        tag:"li",
+        child:[
+            {
+                tag:"scrpit",
+                props:{
+                    type:"application/ld+json",
+                    // innerHTML:"" Thêm scrpit cần để làm từ khóa cho google search
+                }
+            },
+            {
+                tag:"article",
+                class:["list-card", "list-card-short", "list-card_not-saved"],
+                child:[
+                    {
+                        tag:"div",
+                        class:"list-card-info",
+                        child:[
+                            {
+                                tag:"a",
+                                class:"list-card-link",
+                                props:{
+                                    src:"Link nhà"
+                                },
+                                child:[
+                                    {
+                                        tag:"address",
+                                        class:"list-card-addr",
+                                        props:{
+                                            innerHTML:"277 Trần Quang Khải"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                tag:"div",
+                                class:"list-card-footer",
+                                child:[
+                                    {
+                                        tag:"div",
+                                        class:"list-card-type",
+                                        child:[
+                                            {
+                                                tag:"i",
+                                                class:["material-icons", "list-card-type-icon", "zsg-icon-for-sale"],
+                                                props:{
+                                                    innerHTML:"brightness_1"
+                                                }
+                                            },
+                                            {
+                                                tag:"span",
+                                                props:{
+                                                    innerHTML:type
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                tag:"div",
+                                class:"list-card-heading",
+                                child:[
+                                    {
+                                        tag:"div",
+                                        class:"list-card-price",
+                                        props:{
+                                            innerHTML:"VND "+data.price+" tỉ"
+                                        }
+                                    },
+                                    {
+                                        tag:"ul",
+                                        class:"list-card-details",
+                                        child:[
+                                            {
+                                                tag:"li",
+                                                child:[
+                                                    {
+                                                        tag:"span",
+                                                        props:{
+                                                            innerHTML:data.width
+                                                        }
+                                                    },
+                                                    {
+                                                        tag:"abbr",
+                                                        class:"list-card-label",
+                                                        props:{
+                                                            innerHTML:"m"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                tag:"li",
+                                                child:[
+                                                    {
+                                                        tag:"span",
+                                                        props:{
+                                                            innerHTML:data.height
+                                                        }
+                                                    },
+                                                    {
+                                                        tag:"abbr",
+                                                        class:"list-card-label",
+                                                        props:{
+                                                            innerHTML:"m"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                tag:"li",
+                                                child:[
+                                                    {
+                                                        tag:"span",
+                                                        props:{
+                                                            innerHTML:data.acreage
+                                                        }
+                                                    },
+                                                    {
+                                                        tag:"abbr",
+                                                        class:"list-card-label",
+                                                        props:{
+                                                            innerHTML:"m²"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        tag:"div",
+                        class:"list-card-top",
+                        child:[
+                            {
+                                tag:"div",
+                                class:["list-card-variable-text", "list-card-img-overlay"],
+                                props:{
+                                    innerHTML:date+" ngày trước"
+                                }
+                            },
+                            {
+                                tag:"div",
+                                class:["list-card-brokerage", "list-card-img-overlay"],
+                                child:[
+                                    {
+                                        tag:"div",
+                                        class:"list-card-truncate",
+                                        props:{
+                                            innerHTML:data.content
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                tag:"a",
+                                class:["list-card-link", "list-card-img"],
+                                props:{
+                                    src:"Link nhà"
+                                },
+                                child:[
+                                    thumnail
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        tag:"button",
+                        class:"list-card-save",
+                        child:[
+                            {
+                                tag:"i",
+                                class:["favorite_border","material-icons"],
+                                props:{
+                                    innerHTML:"favorite_border"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    })
+    return temp;
 }
 
 MapRealty.prototype.searchControlContent = function(){
@@ -502,6 +807,9 @@ MapRealty.prototype.searchControlContent = function(){
     var temp = _({
         tag: "div",
         class: "pizo-list-realty-main-search-control",
+        style:{
+            display:"none"
+        },
         on: {
             click: function (event) {
                 this.hide();

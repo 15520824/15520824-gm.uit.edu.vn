@@ -52111,9 +52111,9 @@ MapView_MapView.prototype.addMapPolygon = function () {
       var latitude = center.lat();
       var longitude = center.lng();
       intLng = parseInt(longitude / 1);
-      cellLng = Math.ceil(longitude % 1 / 0.0009009009009009009);
+      cellLng = Math.ceil(longitude % 1 / (1/1110));
       intLat = parseInt(latitude / 1);
-      cellLat = Math.ceil(latitude % 1 / 0.0009009009009009009);
+      cellLat = Math.ceil(latitude % 1 / (1/1110));
       cellLng = intLng * 10000 + cellLng;
       cellLat = intLat * 10000 + cellLat;
       self.removeMapPolygonAround(cellLat, cellLng);
@@ -52173,9 +52173,9 @@ MapView_MapView.prototype.addMapHouse = function () {
       var latitude = center.lat();
       var longitude = center.lng();
       intLng = parseInt(longitude / 1);
-      cellLng = Math.ceil(longitude % 1 / 0.0009009009009009009);
+      cellLng = Math.ceil(longitude % 1 / (1/1110));
       intLat = parseInt(latitude / 1);
-      cellLat = Math.ceil(latitude % 1 / 0.0009009009009009009);
+      cellLat = Math.ceil(latitude % 1 / (1/1110));
       cellLng = intLng * 10000 + cellLng;
       cellLat = intLat * 10000 + cellLat;
       self.removeMapHouseAround(cellLat, cellLng);
@@ -60550,9 +60550,9 @@ PlanningInformation_PlanningInformation.prototype.createHashRow = function (data
   var intLat, intLng, cellLat, cellLng, created;
   var center = data.getBounds().getCenter().toJSON();
   intLng = parseInt(center.lng / 1);
-  cellLng = Math.ceil(center.lng % 1 / 0.0009009009009009009) - 1;
+  cellLng = Math.ceil(center.lng % 1 / (1/1110)) - 1;
   intLat = parseInt(center.lat / 1);
-  cellLat = Math.ceil(center.lat % 1 / 0.0009009009009009009) - 1;
+  cellLat = Math.ceil(center.lat % 1 / (1/1110)) - 1;
   cellLng = intLng * 10000 + cellLng;
   cellLat = intLat * 10000 + cellLat;
 
@@ -60829,7 +60829,7 @@ PlanningInformation_PlanningInformation.prototype.searchControlContent = functio
             }
 
             var center = value[value.length - 1];
-            self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat / 10000) + (center.cellLat % 10000 - 1) * 0.0009009009009009009, parseInt(center.cellLng / 10000) + (center.cellLng % 10000 - 1) * 0.0009009009009009009));
+            self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat / 10000) + (center.cellLat % 10000 - 1) * (1/1110), parseInt(center.cellLng / 10000) + (center.cellLng % 10000 - 1) * (1/1110)));
             self.mapView.map.setZoom(17);
           });
         } else {
@@ -61007,7 +61007,7 @@ PlanningInformation_PlanningInformation.prototype.addCurrentWKT = function (crea
     }
   }
 
-  this.mapView.map.setCenter(new google.maps.LatLng(parseInt(cellLat / 10000) + (cellLat % 10000 - 1) * 0.0009009009009009009, parseInt(cellLng / 10000) + (cellLng % 10000 - 1) * 0.0009009009009009009));
+  this.mapView.map.setCenter(new google.maps.LatLng(parseInt(cellLat / 10000) + (cellLat % 10000 - 1) * (1/1110), parseInt(cellLng / 10000) + (cellLng % 10000 - 1) * (1/1110)));
   this.mapView.map.setZoom(17);
   return toReturn;
 };
