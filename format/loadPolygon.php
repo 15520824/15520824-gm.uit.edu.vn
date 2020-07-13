@@ -65,7 +65,8 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         if(isset($check[$row["id"]]))
-            continue;
+        $data[$i++] = $row["id"];
+        else
         $data[$i++] = $row;
     }
 } else {

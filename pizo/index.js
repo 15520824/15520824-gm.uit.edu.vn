@@ -191,6 +191,8 @@ DataStructure.prototype.load = function () {
     }
   }
 
+  if (data.LIMIT !== undefined) {}
+
   var promiseLoad;
 
   if (this.isFirst === true && data.WHERE !== undefined) {
@@ -215,7 +217,12 @@ DataStructure.prototype.load = function () {
 
   promiseLoad = new Promise(function (resolve, reject) {
     self.queryData(self.phpLoader, data).then(function (value) {
-      value.concat(loadedData);
+      for (var i = 0; i < value.length; i++) {
+        if (typeof value[i] == "string") if (self.Libary["id"][value[i]] !== undefined) {
+          value[i] = self.Libary["id"][value[i]];
+        }
+      }
+
       if (self.data === undefined) self.data = [];
 
       if (data.WHERE === undefined) {
@@ -233,21 +240,21 @@ DataStructure.prototype.load = function () {
 
       if (libary === undefined) {
         self.data = value;
-      } else for (var i = 0; i < value.length; i++) {
+      } else {
         if (self.data.length === self.countRow) {
           if (self.promiseLoad === undefined) self.promiseLoad = Promise.resolve(self.data);
-          break;
-        }
-
-        if (libary[value[i].id] === undefined) {
-          self.data.push(value[i]);
-          self.setFormatAdd(value[i]);
+        } else for (var i = 0; i < value.length; i++) {
+          if (libary[value[i].id] === undefined) {
+            self.data.push(value[i]);
+            self.setFormatAdd(value[i]);
+          }
         }
       }
 
       self.getLibary();
       promiseLoad.status = "done";
       promiseLoad.data = value;
+      console.log(value);
       resolve(value);
     })["catch"](function (error) {
       promiseLoad.status = "reject";
@@ -396,10 +403,18 @@ DataStructure.prototype.getList = function (param, value, skip) {
 };
 
 DataStructure.prototype.add = function (data) {
+  var needChange = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
   var self = this;
   return new Promise(function (resolve, reject) {
     self.queryData(self.phpAdder, data).then(function (value) {
       Object.assign(data, value.data);
+
+      if (needChange === true) {
+        data.add = Object.assign({}, value.add);
+        data.update = Object.assign({}, value.update);
+        data["delete"] = Object.assign({}, value["delete"]);
+      }
+
       self.setFormatAdd(data);
 
       if (value.insert !== undefined) {
@@ -422,7 +437,7 @@ DataStructure.prototype.add = function (data) {
         }
       }
 
-      resolve(value);
+      resolve(data);
     })["catch"](function (err) {
       reject(err);
       console.error(err);
@@ -17866,7 +17881,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,.pizo-list-plan-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: calc(100% - 50px);\r\n    width: calc(100% - 30px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main{\r\n    flex-direction:column;\r\n}\r\n\r\n.pizo-new-realty-desc{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable th,.pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:50px;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-result-control .parent:nth-child(odd) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control .parent:nth-child(even) td{\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color:#f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #fff ;\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 23.1429rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,.pizo-list-plan-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: calc(100% - 50px);\r\n    width: calc(100% - 30px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main{\r\n    flex-direction:column;\r\n}\r\n\r\n.pizo-new-realty-desc{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable th,.pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:50px;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-result-control .parent:nth-child(odd) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control .parent:nth-child(even) td{\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color:#f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #fff ;\r\n}", ""]);
 
 
 
@@ -19104,7 +19119,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-result-control-map-view{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    \r\n}\r\n\r\n.pizo-list-realty-main-result-control-map-view .pizo-new-realty-location-map-view{\r\n    flex-grow: 2;\r\n    display: flex;    \r\n\r\n    margin-bottom: 0;\r\n    width: unset;\r\n    vertical-align: unset;\r\n    height: unset;\r\n    position: unset;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .search-page-list-container {\r\n        overflow-y: auto;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 390px;\r\n        box-shadow: -2px 2px 5px 0 rgba(0,0,0,.4);\r\n        z-index: 1;\r\n    }\r\n}\r\n\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 375px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 375px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 750px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 750px;\r\n    }\r\n}\r\n\r\n.result-list-container {\r\n    position: relative;\r\n    background-color: #fafafa;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .result-list-container {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container {\r\n    background: 0 0;\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n    padding: 12px 10px;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n        padding: 20px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-title {\r\n    font-size: 20px;\r\n    line-height: 26px;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-title {\r\n        margin-bottom: 12px;\r\n    }\r\n    \r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container .search-subtitle, .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n        margin-bottom: 8px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-subtitle {\r\n    margin-bottom: 10px;\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle {\r\n        position: relative;\r\n        display: -webkit-box;\r\n        display: flex;\r\n        -webkit-box-pack: justify;\r\n        justify-content: space-between;\r\n        font-size: 14px;\r\n        margin-bottom: 12px;\r\n    }\r\n}\r\n\r\n.result-list-container .result-count {\r\n    align-self: flex-start;\r\n    -webkit-box-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle .result-count {\r\n        font-weight: 600;\r\n    }\r\n}\r\n\r\n.result-list-container .sort-options {\r\n    display: none;\r\n}\r\n\r\n.result-list-container .sort-options.visible {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-align: start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.photo-cards.photo-cards_short {\r\n    padding: 0;\r\n    background-color: #F1F1F4;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\nbody:not(.mobile-web) .photo-cards.photo-cards_short {\r\n    background-color: #FFF;\r\n}\r\n\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 16px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\n.photo-cards.photo-cards_short>li {\r\n    display: block;\r\n    margin: 0 0 8px;\r\n    width: 100%;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: block;\r\n        margin: 0 0 8px;\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n.list-card {\r\n    background: #FFF;\r\n    border-bottom: 4px solid #006AFF;\r\n    box-shadow: 0 1px 2px rgba(0,0,0,.2);\r\n    cursor: pointer;\r\n}\r\n\r\n.list-card, .list-card-top {\r\n    position: relative;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: -webkit-box;\r\n    -webkit-box-orient: vertical;\r\n}\r\n\r\n.list-card {\r\n    display: flex;\r\n    -webkit-box-direction: reverse;\r\n    flex-direction: column-reverse;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.list-card {\r\n    grid-template-rows: auto 110px;\r\n    grid-template-areas:\r\n        'top'\r\n        'bottom';\r\n}\r\n\r\n.list-card-short {\r\n    grid-template-rows: auto;\r\n}\r\n\r\n.list-card-info {\r\n    padding: 15px;\r\n}\r\n\r\n.list-card-info {\r\n    display: flex;\r\n    -webkit-box-direction: normal;\r\n    flex-direction: column;\r\n    min-height: 110px;\r\n}\r\n\r\n.list-card-info {\r\n    grid-area: bottom;\r\n    grid-template-rows: repeat(3,auto);\r\n    min-height: auto;\r\n}\r\n\r\n.list-card-short .list-card-info {\r\n    min-height: 74px;\r\n    padding: 5px 8px 7px;\r\n}\r\n\r\n.list-card-addr, .list-card-details, .list-card-favorites-info, .list-card-footer, .list-card-heading, .list-card-link, .list-card-truncate, .list-card-type, .list-card-variable-text {\r\n    margin: 0;\r\n    min-width: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.zsg-link:visited, .zsg-link_primary:visited, a:visited {\r\n    color: #7A48D6;\r\n}\r\n\r\n.list-card-link:active, .list-card-link:hover, .list-card-link:link, .list-card-link:visited {\r\n    color: #2A2A33;\r\n}\r\n\r\n.list-card-addr {\r\n    font-size: 14px;\r\n    font-style: normal;\r\n    font-weight: 600;\r\n    margin-bottom: 5px;\r\n    min-width: 0;\r\n}\r\n\r\n.list-card-short .list-card-addr, .list-card-short .list-card-heading {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-footer, .list-card-horizontal {\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-direction: normal;\r\n}\r\n\r\n.list-card-footer {\r\n    -webkit-box-ordinal-group: 4;\r\n    order: 3;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.list-card-footer, .list-card-heading {\r\n    grid-template-columns: auto 1fr;\r\n    display: grid;\r\n}\r\n\r\n.list-card-footer {\r\n    grid-row: 3/4;\r\n}\r\n\r\n.list-card-type {\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-short .list-card-type {\r\n    margin-top: 3px;\r\n    height: 18px;\r\n    font-size: 12px;\r\n    line-height: 18px;\r\n}\r\n\r\n.list-card-heading {\r\n    line-height: 1;\r\n    margin-bottom: 9px;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-heading {\r\n    grid-row: 1/2;\r\n    -webkit-box-align: end;\r\n    align-items: end;\r\n}\r\n\r\n.list-card-price, .priceStyles {\r\n    font-weight: 600;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-price {\r\n    display: inline-block;\r\n    font-size: 26px;\r\n}\r\n\r\n.list-card-short .list-card-price {\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n    height: 32px;\r\n}\r\n\r\n.list-card-details {\r\n    display: inline;\r\n    font-size: 14px;\r\n    font-weight: 600;\r\n    list-style: none;\r\n    margin-left: 15px;\r\n    max-width: 100%;\r\n}\r\n\r\n.list-card-price+.list-card-details {\r\n    margin-bottom: 3px;\r\n}\r\n\r\n.list-card-short .list-card-price+.list-card-details {\r\n    margin-bottom: 5px;\r\n    text-align: right;\r\n}\r\n\r\n.list-card-details>li {\r\n    border-left: 1px solid #D1D1D5;\r\n    display: inline;\r\n    padding: 0 6px;\r\n}\r\n\r\n.list-card-details>li:first-child {\r\n    border-left: 0;\r\n    padding-left: 0;\r\n}\r\n\r\n.list-card-label {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n}\r\n\r\n.list-card-top {\r\n    grid-area: top;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: auto;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-variable-text {\r\n    z-index: 1;\r\n}\r\n\r\n.list-card-img-overlay {\r\n    background: rgba(0,0,0,.54);\r\n    color: #FFF;\r\n    padding: 5px 15px;\r\n    font-size: 13px;\r\n}\r\n\r\n.list-card-variable-text {\r\n    max-width: calc(100% - 40px);\r\n    left: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-brokerage, .list-card-save, .list-card-variable-text {\r\n    position: absolute;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-img, .list-card-overlay, .list-card-save, .list-card-variable-text {\r\n    grid-area: 1/1/-1/-1;\r\n}\r\n\r\n.list-card-variable-text {\r\n    place-self: start;\r\n}\r\n\r\n.list-card-variable-text {\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-brokerage {\r\n    background: 0 0;\r\n    width: 100%;\r\n    padding-bottom: 10px;\r\n    text-align: right;\r\n    text-shadow: 1px 1px 0 rgba(0,0,0,.25);\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.list-card-brokerage {\r\n    grid-area: auto;\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-img {\r\n    content: '';\r\n    display: block;\r\n    padding-top: 53.33%;\r\n    overflow: hidden;\r\n    position: relative;\r\n    background-color: #F1F1F4;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.list-card-short .list-card-img {\r\n    padding-top: 41.67%;\r\n}\r\n\r\n.list-card-img img {\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    max-width: 100%;\r\n    width: 100%;\r\n    height: auto;\r\n    -webkit-transform: translate3d(-50%,-50%,0);\r\n    transform: translate3d(-50%,-50%,0);\r\n}\r\n\r\n.list-card-save {\r\n    z-index: 1;\r\n    background: 0 0;\r\n    border: 0;\r\n    right: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-save {\r\n    align-self: start;\r\n    justify-self: end;\r\n}\r\n\r\nbody.responsive-search-page .search-page-container .list-card-save {\r\n    -webkit-transform: translate3d(0,0,0);\r\n}\r\n\r\n.list-card-save .list-card-save-content {\r\n    display: block;\r\n    width: 44px;\r\n    padding: 8px 8px 5px;\r\n    -webkit-filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    -webkit-transition: -webkit-filter .2s ease-out;\r\n    transition: -webkit-filter .2s ease-out;\r\n    transition: filter .2s ease-out;\r\n    transition: filter .2s ease-out,-webkit-filter .2s ease-out;\r\n}\r\n\r\n.list-card-type-icon.zsg-icon-for-sale{\r\n    font-size: 10px;\r\n}\r\n\r\n.favorite_border.material-icons{\r\n    font-size: 34px;\r\n}\r\n\r\n.responsive-mini-bubble {\r\n    color: #2A2A33;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    line-height: 15.6px;\r\n    position: relative;\r\n    background-color: #FFF;\r\n    font-size: 12px;\r\n    -webkit-tap-highlight-color: transparent;\r\n    font-family: Gotham,gotham,Verdana,sans-serif;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-content {\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-image {\r\n    background-position: 50% 50%;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    content: '';\r\n    height: 46px;\r\n    width: 46px;\r\n    margin-right: 5px;\r\n    border: 0;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details {\r\n    margin-bottom: 0;\r\n    height: 46px;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}", ""]);
+exports.push([module.i, ".pizo-list-realty-main-result-control-map-view{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    \r\n}\r\n\r\n.pizo-list-realty-main-result-control-map-view .pizo-new-realty-location-map-view{\r\n    flex-grow: 2;\r\n    display: flex;    \r\n\r\n    margin-bottom: 0;\r\n    width: unset;\r\n    vertical-align: unset;\r\n    height: unset;\r\n    position: unset;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .search-page-list-container {\r\n        overflow-y: auto;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 390px;\r\n        box-shadow: -2px 2px 5px 0 rgba(0,0,0,.4);\r\n        z-index: 1;\r\n    }\r\n}\r\n\r\n.search-page-list-container{\r\n    height: 100%;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 375px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 375px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 750px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 750px;\r\n    }\r\n}\r\n\r\n.result-list-container {\r\n    position: relative;\r\n    background-color: #fafafa;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .result-list-container {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container {\r\n    background: 0 0;\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n    padding: 12px 10px;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n        padding: 20px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-title {\r\n    font-size: 20px;\r\n    line-height: 26px;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-title {\r\n        margin-bottom: 12px;\r\n    }\r\n    \r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container .search-subtitle, .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n        margin-bottom: 8px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-subtitle {\r\n    margin-bottom: 10px;\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle {\r\n        position: relative;\r\n        display: -webkit-box;\r\n        display: flex;\r\n        -webkit-box-pack: justify;\r\n        justify-content: space-between;\r\n        font-size: 14px;\r\n        margin-bottom: 12px;\r\n    }\r\n}\r\n\r\n.result-list-container .result-count {\r\n    align-self: flex-start;\r\n    -webkit-box-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle .result-count {\r\n        font-weight: 600;\r\n    }\r\n}\r\n\r\n.result-list-container .sort-options {\r\n    display: none;\r\n}\r\n\r\n.result-list-container .sort-options.visible {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-align: start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.photo-cards.photo-cards_short {\r\n    padding: 0;\r\n    background-color: #F1F1F4;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\nbody:not(.mobile-web) .photo-cards.photo-cards_short {\r\n    background-color: #FFF;\r\n}\r\n\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 16px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\n.photo-cards.photo-cards_short>li {\r\n    display: block;\r\n    margin: 0 0 8px;\r\n    width: 100%;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: block;\r\n        margin: 0 0 8px;\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n.list-card {\r\n    background: #FFF;\r\n    border-bottom: 4px solid #006AFF;\r\n    box-shadow: 0 1px 2px rgba(0,0,0,.2);\r\n    cursor: pointer;\r\n}\r\n\r\n.list-card, .list-card-top {\r\n    position: relative;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: -webkit-box;\r\n    -webkit-box-orient: vertical;\r\n}\r\n\r\n.list-card {\r\n    display: flex;\r\n    -webkit-box-direction: reverse;\r\n    flex-direction: column-reverse;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.list-card {\r\n    grid-template-rows: auto 110px;\r\n    grid-template-areas:\r\n        'top'\r\n        'bottom';\r\n}\r\n\r\n.list-card-short {\r\n    grid-template-rows: auto;\r\n}\r\n\r\n.list-card-info {\r\n    padding: 15px;\r\n}\r\n\r\n.list-card-info {\r\n    display: flex;\r\n    -webkit-box-direction: normal;\r\n    flex-direction: column;\r\n    min-height: 110px;\r\n}\r\n\r\n.list-card-info {\r\n    grid-area: bottom;\r\n    grid-template-rows: repeat(3,auto);\r\n    min-height: auto;\r\n}\r\n\r\n.list-card-short .list-card-info {\r\n    min-height: 74px;\r\n    padding: 5px 8px 7px;\r\n}\r\n\r\n.list-card-addr, .list-card-details, .list-card-favorites-info, .list-card-footer, .list-card-heading, .list-card-link, .list-card-truncate, .list-card-type, .list-card-variable-text {\r\n    margin: 0;\r\n    min-width: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.zsg-link:visited, .zsg-link_primary:visited, a:visited {\r\n    color: #7A48D6;\r\n}\r\n\r\n.list-card-link:active, .list-card-link:hover, .list-card-link:link, .list-card-link:visited {\r\n    color: #2A2A33;\r\n}\r\n\r\n.list-card-addr {\r\n    font-size: 14px;\r\n    font-style: normal;\r\n    font-weight: 600;\r\n    margin-bottom: 5px;\r\n    min-width: 0;\r\n}\r\n\r\n.list-card-short .list-card-addr, .list-card-short .list-card-heading {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-footer, .list-card-horizontal {\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-direction: normal;\r\n}\r\n\r\n.list-card-footer {\r\n    -webkit-box-ordinal-group: 4;\r\n    order: 3;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.list-card-footer, .list-card-heading {\r\n    grid-template-columns: auto 1fr;\r\n    display: grid;\r\n}\r\n\r\n.list-card-footer {\r\n    grid-row: 3/4;\r\n}\r\n\r\n.list-card-type {\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-short .list-card-type {\r\n    margin-top: 3px;\r\n    height: 18px;\r\n    font-size: 12px;\r\n    line-height: 18px;\r\n}\r\n\r\n.list-card-heading {\r\n    line-height: 1;\r\n    margin-bottom: 9px;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-heading {\r\n    grid-row: 1/2;\r\n    -webkit-box-align: end;\r\n    align-items: end;\r\n}\r\n\r\n.list-card-price, .priceStyles {\r\n    font-weight: 600;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-price {\r\n    display: inline-block;\r\n    font-size: 26px;\r\n}\r\n\r\n.list-card-short .list-card-price {\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n    height: 32px;\r\n}\r\n\r\n.list-card-details {\r\n    display: inline;\r\n    font-size: 14px;\r\n    font-weight: 600;\r\n    list-style: none;\r\n    margin-left: 15px;\r\n    max-width: 100%;\r\n}\r\n\r\n.list-card-price+.list-card-details {\r\n    margin-bottom: 3px;\r\n}\r\n\r\n.list-card-short .list-card-price+.list-card-details {\r\n    margin-bottom: 5px;\r\n    text-align: right;\r\n}\r\n\r\n.list-card-details>li {\r\n    border-left: 1px solid #D1D1D5;\r\n    display: inline;\r\n    padding: 0 6px;\r\n}\r\n\r\n.list-card-details>li:first-child {\r\n    border-left: 0;\r\n    padding-left: 0;\r\n}\r\n\r\n.list-card-label {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n}\r\n\r\n.list-card-top {\r\n    grid-area: top;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: auto;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-variable-text {\r\n    z-index: 1;\r\n}\r\n\r\n.list-card-img-overlay {\r\n    background: rgba(0,0,0,.54);\r\n    color: #FFF;\r\n    padding: 5px 15px;\r\n    font-size: 13px;\r\n}\r\n\r\n.list-card-variable-text {\r\n    max-width: calc(100% - 40px);\r\n    left: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-brokerage, .list-card-save, .list-card-variable-text {\r\n    position: absolute;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-img, .list-card-overlay, .list-card-save, .list-card-variable-text {\r\n    grid-area: 1/1/-1/-1;\r\n}\r\n\r\n.list-card-variable-text {\r\n    place-self: start;\r\n}\r\n\r\n.list-card-variable-text {\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-brokerage {\r\n    background: 0 0;\r\n    width: 100%;\r\n    padding-bottom: 10px;\r\n    text-align: right;\r\n    text-shadow: 1px 1px 0 rgba(0,0,0,.25);\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.list-card-brokerage {\r\n    grid-area: auto;\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-img {\r\n    content: '';\r\n    display: block;\r\n    padding-top: 53.33%;\r\n    overflow: hidden;\r\n    position: relative;\r\n    background-color: #F1F1F4;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.list-card-short .list-card-img {\r\n    padding-top: 41.67%;\r\n}\r\n\r\n.list-card-img img {\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    max-width: 100%;\r\n    width: 100%;\r\n    height: auto;\r\n    -webkit-transform: translate3d(-50%,-50%,0);\r\n    transform: translate3d(-50%,-50%,0);\r\n}\r\n\r\n.list-card-save {\r\n    z-index: 1;\r\n    background: 0 0;\r\n    border: 0;\r\n    right: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-save {\r\n    align-self: start;\r\n    justify-self: end;\r\n}\r\n\r\nbody.responsive-search-page .search-page-container .list-card-save {\r\n    -webkit-transform: translate3d(0,0,0);\r\n}\r\n\r\n.list-card-save .list-card-save-content {\r\n    display: block;\r\n    width: 44px;\r\n    padding: 8px 8px 5px;\r\n    -webkit-filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    -webkit-transition: -webkit-filter .2s ease-out;\r\n    transition: -webkit-filter .2s ease-out;\r\n    transition: filter .2s ease-out;\r\n    transition: filter .2s ease-out,-webkit-filter .2s ease-out;\r\n}\r\n\r\n.list-card-type-icon.zsg-icon-for-sale{\r\n    font-size: 10px;\r\n}\r\n\r\n.favorite_border.material-icons{\r\n    font-size: 34px;\r\n}\r\n\r\n.responsive-mini-bubble {\r\n    color: #2A2A33;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    line-height: 15.6px;\r\n    position: relative;\r\n    background-color: #FFF;\r\n    font-size: 12px;\r\n    -webkit-tap-highlight-color: transparent;\r\n    font-family: Gotham,gotham,Verdana,sans-serif;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-content {\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-image {\r\n    background-position: 50% 50%;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    content: '';\r\n    height: 46px;\r\n    width: 46px;\r\n    margin-right: 5px;\r\n    border: 0;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details {\r\n    margin-bottom: 0;\r\n    height: 46px;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}", ""]);
 
 
 
@@ -52852,8 +52867,10 @@ MapView_MapView.prototype.addMapPolygon = function () {
                 cellLat: cellDeltaLat
               }]
             }).then(function (cellDeltaLat, cellDeltaLng, value) {
-              for (var i = 0; i < value.length; i++) {
-                self.addWKT(value[i]["AsText(`map`)"], cellDeltaLat, cellDeltaLng);
+              if (self.enablePolygon == true) {
+                for (var i = 0; i < value.length; i++) {
+                  self.addWKT(value[i]["AsText(`map`)"], cellDeltaLat, cellDeltaLng);
+                }
               }
             }.bind(null, cellDeltaLat, cellDeltaLng));
           } else {
@@ -58103,31 +58120,6 @@ NewWard_NewWard.prototype.getView = function (data) {
           }]
         }, {
           tag: "div",
-          "class": "pizo-new-state-container-type-container",
-          child: [{
-            tag: "span",
-            "class": "pizo-new-state-container-type-container-label",
-            props: {
-              innerHTML: "Loại"
-            }
-          }, {
-            tag: "selectmenu",
-            "class": "pizo-new-state-container-type-container-input",
-            props: {
-              items: [{
-                text: "Phường",
-                value: "Phường"
-              }, {
-                text: "Xã",
-                value: "Xã"
-              }, {
-                text: "Thị trấn",
-                value: "Thị trấn"
-              }]
-            }
-          }]
-        }, {
-          tag: "div",
           "class": "pizo-new-ward-container-district-container",
           child: [{
             tag: "span",
@@ -58152,12 +58144,10 @@ NewWard_NewWard.prototype.getView = function (data) {
   }));
   this.createPromise();
   this.name = NewWard_$('input.pizo-new-state-container-name-container-input', this.$view);
-  this.type = NewWard_$('div.pizo-new-state-container-type-container-input', this.$view);
   this.district = self.listWardElement;
 
   if (this.data !== undefined) {
     this.name.value = this.data.original.name;
-    this.type.value = this.data.original.type;
   }
 
   return this.$view;
@@ -58184,7 +58174,6 @@ NewWard_NewWard.prototype.getDataSave = function () {
   var temp = {
     id: this.data === undefined ? undefined : this.data.original.id,
     name: this.name.value,
-    type: this.type.value,
     districtid: getIDCompair(this.district.value)
   };
   if (this.data !== undefined) temp.id = this.data.original.id;
@@ -58470,13 +58459,6 @@ ListWard_ListWard.prototype.getView = function () {
         minWidth: "unset"
       }
     }, {
-      value: 'Loại',
-      sort: true,
-      style: {
-        minWidth: "200px",
-        width: "200px"
-      }
-    }, {
       value: 'Quận/Huyện',
       sort: true,
       style: {
@@ -58502,9 +58484,8 @@ ListWard_ListWard.prototype.getView = function () {
     self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListWard_$('.pizo-list-realty-page-allinput-container input', self.$view), 2);
-    self.mTable.addFilter(self.listWardElement, 4);
-    self.mTable.addFilter(self.listStateElement, 5);
-    self.mTable.addFilter(self.listDistrictElement, 3);
+    self.mTable.addFilter(self.listWardElement, 3);
+    self.mTable.addFilter(self.listStateElement, 4);
   });
   this.searchControl = this.searchControlContent();
   this.$view.addChild(ListWard_({
@@ -58562,15 +58543,15 @@ ListWard_ListWard.prototype.formatDataRow = function (data) {
 };
 
 ListWard_ListWard.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, data.type, {
+  var result = [{}, data.id, data.name, {
     value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid,
     element: ListWard_({
-      text: this.checkWard[parseInt(data.districtid)].type + " " + this.checkWard[parseInt(data.districtid)].name
+      text: this.checkWard[parseInt(data.districtid)].name
     })
   }, {
     value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid,
     element: ListWard_({
-      text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].type + " " + this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name
+      text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name
     })
   }, {}];
   result.original = data;
@@ -58638,24 +58619,6 @@ ListWard_ListWard.prototype.searchControlContent = function () {
       }
     }
   });
-  self.listDistrictElement = ListWard_({
-    tag: "selectmenu",
-    props: {
-      items: [{
-        text: "Tất cả",
-        value: 0
-      }, {
-        text: "Phường",
-        value: "Phường"
-      }, {
-        text: "Xã",
-        value: "Xã"
-      }, {
-        text: "Thị trấn",
-        value: "Thị trấn"
-      }]
-    }
-  });
 
   var content = ListWard_({
     tag: "div",
@@ -58698,20 +58661,6 @@ ListWard_ListWard.prototype.searchControlContent = function () {
             tag: "div",
             "class": "pizo-list-realty-main-search-control-row-district-ward-input",
             child: [self.listWardElement]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-state-district",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-state-district-label",
-            props: {
-              innerHTML: "Loại"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-state-district-input",
-            child: [self.listDistrictElement]
           }]
         }]
       }]
@@ -58983,34 +58932,6 @@ NewDistrict_NewDistrict.prototype.getView = function (data) {
           }]
         }, {
           tag: "div",
-          "class": "pizo-new-state-container-type-container",
-          child: [{
-            tag: "span",
-            "class": "pizo-new-state-container-type-container-label",
-            props: {
-              innerHTML: "Loại"
-            }
-          }, {
-            tag: "selectmenu",
-            "class": "pizo-new-state-container-type-container-input",
-            props: {
-              items: [{
-                text: "Thị xã",
-                value: "Thị xã"
-              }, {
-                text: "Huyện",
-                value: "Huyện"
-              }, {
-                text: "Quận",
-                value: "Quận"
-              }, {
-                text: "Thành phố",
-                value: "Thành phố"
-              }]
-            }
-          }]
-        }, {
-          tag: "div",
           "class": "pizo-new-state-container-nation-container",
           child: [{
             tag: "span",
@@ -59032,12 +58953,10 @@ NewDistrict_NewDistrict.prototype.getView = function (data) {
   }));
   this.createPromise();
   this.name = NewDistrict_$('input.pizo-new-state-container-name-container-input', this.$view);
-  this.type = NewDistrict_$('div.pizo-new-state-container-type-container-input', this.$view);
   this.state = NewDistrict_$('div.pizo-new-state-container-nation-container-input', this.$view);
 
   if (this.data !== undefined) {
     this.name.value = this.data.original.name;
-    this.type.value = this.data.original.type;
     this.state.value = this.data.original.stateid;
   }
 
@@ -59048,7 +58967,6 @@ NewDistrict_NewDistrict.prototype.getDataSave = function () {
   var temp = {
     id: this.data === undefined ? undefined : this.data.original.id,
     name: this.name.value,
-    type: this.type.value,
     stateid: this.state.value
   };
 
@@ -59914,28 +59832,6 @@ NewState_NewState.prototype.getView = function () {
           }]
         }, {
           tag: "div",
-          "class": "pizo-new-state-container-type-container",
-          child: [{
-            tag: "span",
-            "class": "pizo-new-state-container-type-container-label",
-            props: {
-              innerHTML: "Loại"
-            }
-          }, {
-            tag: "selectmenu",
-            "class": "pizo-new-state-container-type-container-input",
-            props: {
-              items: [{
-                text: "Thành phố",
-                value: "Thành phố"
-              }, {
-                text: "Tỉnh",
-                value: "Tỉnh"
-              }]
-            }
-          }]
-        }, {
-          tag: "div",
           "class": "pizo-new-state-container-nation-container",
           child: [{
             tag: "span",
@@ -59959,12 +59855,10 @@ NewState_NewState.prototype.getView = function () {
   }));
   this.createPromise();
   this.name = NewState_$('input.pizo-new-state-container-name-container-input"', this.$view);
-  this.type = NewState_$('div.pizo-new-state-container-type-container-input', this.$view);
   this.nation = NewState_$('div.pizo-new-state-container-nation-container-input', this.$view);
 
   if (this.data !== undefined) {
     this.name.value = this.data.original.name;
-    this.type.value = this.data.original.type;
     this.nation.value = this.data.original.nationid;
   }
 
@@ -59974,7 +59868,6 @@ NewState_NewState.prototype.getView = function () {
 NewState_NewState.prototype.getDataSave = function () {
   var temp = {
     name: this.name.value,
-    type: this.type.value,
     nationid: this.nation.value
   };
   if (this.data !== undefined) temp.id = this.data.original.id;
@@ -60231,13 +60124,6 @@ ListState_ListState.prototype.getView = function () {
           minWidth: "unset"
         }
       }, {
-        value: 'Loại',
-        sort: true,
-        style: {
-          minWidth: "200px",
-          width: "200px"
-        }
-      }, {
         value: 'Quốc gia',
         sort: true,
         style: {
@@ -60306,7 +60192,7 @@ ListState_ListState.prototype.formatDataRow = function (data) {
 };
 
 ListState_ListState.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, data.type, this.checkNation[parseInt(data.nationid)].longname, {}];
+  var result = [{}, data.id, data.name, this.checkNation[parseInt(data.nationid)].longname, {}];
   result.original = data;
   return result;
 };
@@ -60730,13 +60616,6 @@ ListDistrict_ListDistrict.prototype.getView = function () {
         minWidth: "unset"
       }
     }, {
-      value: 'Loại',
-      sort: true,
-      style: {
-        minWidth: "200px",
-        width: "200px"
-      }
-    }, {
       value: 'Tỉnh/Thành phố',
       sort: true,
       style: {
@@ -60752,12 +60631,12 @@ ListDistrict_ListDistrict.prototype.getView = function () {
         width: "30px"
       }
     }];
+    console.log(self.formatDataRow(value));
     self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListDistrict_$('.pizo-list-realty-page-allinput-container input', self.$view));
     self.listParent.updateItemList(listParam);
-    self.mTable.addFilter(self.listDistrictElement, 3);
-    self.mTable.addFilter(self.listParent, 4);
+    self.mTable.addFilter(self.listParent, 3);
   });
   this.searchControl = this.searchControlContent();
   this.$view.addChild(ListDistrict_({
@@ -60798,10 +60677,10 @@ ListDistrict_ListDistrict.prototype.formatDataRow = function (data) {
 };
 
 ListDistrict_ListDistrict.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, data.type, {
+  var result = [{}, data.id, data.name, {
     value: this.checkState[data.stateid].id,
     element: ListDistrict_({
-      text: this.checkState[data.stateid].type + " " + this.checkState[data.stateid].name
+      text: this.checkState[data.stateid].name
     })
   }, {}];
   result.original = data;
@@ -60841,28 +60720,6 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
     self.listParent.items = self.formatDataList(value);
   };
 
-  self.listDistrictElement = ListDistrict_({
-    tag: "selectmenu",
-    props: {
-      items: [{
-        text: "Tất cả",
-        value: 0
-      }, {
-        text: "Thị xã",
-        value: "Thị xã"
-      }, {
-        text: "Huyện",
-        value: "Huyện"
-      }, {
-        text: "Quận",
-        value: "Quận"
-      }, {
-        text: "Thành phố",
-        value: "Thành phố"
-      }]
-    }
-  });
-
   var content = ListDistrict_({
     tag: "div",
     "class": "pizo-list-realty-main-search-control-container",
@@ -60890,20 +60747,6 @@ ListDistrict_ListDistrict.prototype.searchControlContent = function () {
             tag: "div",
             "class": "pizo-list-realty-main-search-control-row-state-district-input",
             child: [self.listParent]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-state-district",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-state-district-label",
-            props: {
-              innerHTML: "Loại"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-state-district-input",
-            child: [self.listDistrictElement]
           }]
         }]
       }]
@@ -69129,7 +68972,7 @@ MapRealty_MapRealty.prototype.modalRealty = function () {
           tag: "h1",
           "class": "search-title",
           props: {
-            innerHTML: "Bất động sản rao bán"
+            innerHTML: "BẤT ĐỘNG SẢN RAO BÁN"
           }
         }, {
           tag: "div",
@@ -69142,9 +68985,17 @@ MapRealty_MapRealty.prototype.modalRealty = function () {
             "class": ["sort-options", "visible"],
             child: [{
               tag: "strong",
-              innerHTML: "Sắp xếp theo"
+              style: {
+                lineHeight: "30px"
+              },
+              props: {
+                innerHTML: "Sắp xếp theo:"
+              }
             }, {
               tag: "selectmenu",
+              style: {
+                marginLeft: "10px"
+              },
               props: {
                 items: [{
                   text: "Mới nhất",
@@ -69170,9 +69021,12 @@ MapRealty_MapRealty.prototype.modalRealty = function () {
     }]
   });
 
+  this.count = MapRealty_$("span.result-count", temp);
+
   this.updateResult = function () {
-    container.clearChild();
+    var check = [];
     var cellLat, cellLng, arrTemp;
+    var k = 0;
 
     for (var i = 0; i < this.mapView.currentHouse.length; i++) {
       cellLat = this.mapView.currentHouse[i][0];
@@ -69180,9 +69034,25 @@ MapRealty_MapRealty.prototype.modalRealty = function () {
       arrTemp = this.mapView.checkHouse[cellLat][cellLng];
 
       for (var j = 0; j < arrTemp.length; j++) {
-        container.appendChild(this.itemMap(arrTemp[j]));
+        if (container.check === undefined || container.check[arrTemp[j].data.id] === undefined) {
+          var x = this.itemMap(arrTemp[j]);
+          check[arrTemp[j].data.id] = x;
+          container.appendChild(x);
+        } else if (container.check !== undefined) {
+          check[arrTemp[j].data.id] = container.check[arrTemp[j].data.id];
+          delete container.check[arrTemp[j].data.id];
+        }
+
+        k++;
       }
     }
+
+    for (var param in container.check) {
+      container.check[param].selfRemove();
+    }
+
+    container.check = check;
+    this.count.innerHTML = k + " kết quả";
   };
 
   this.mapView.addEventListener("change-house", function () {

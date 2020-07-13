@@ -198,7 +198,7 @@ MapRealty.prototype.modalRealty = function(){
                                 tag:"h1",
                                 class:"search-title",
                                 props:{
-                                    innerHTML:"Bất động sản rao bán"
+                                    innerHTML:"BẤT ĐỘNG SẢN RAO BÁN"
                                 }
                             },
                             {
@@ -215,10 +215,18 @@ MapRealty.prototype.modalRealty = function(){
                                         child:[
                                             {
                                                 tag:"strong",
-                                                innerHTML:"Sắp xếp theo"
+                                                style:{
+                                                    lineHeight: "30px"
+                                                },
+                                                props:{
+                                                    innerHTML:"Sắp xếp theo:"
+                                                }
                                             },
                                             {
                                                 tag:"selectmenu",
+                                                style:{
+                                                    marginLeft:"10px"
+                                                },
                                                 props:{
                                                     items:[
                                                         {text:"Mới nhất",value:0},
@@ -243,10 +251,12 @@ MapRealty.prototype.modalRealty = function(){
             }
         ]
     })
+    this.count = $("span.result-count",temp);
     this.updateResult = function()
     {
-        container.clearChild();
+        var check = [];
         var cellLat,cellLng,arrTemp;
+        var k = 0;
         for(var i = 0;i<this.mapView.currentHouse.length;i++)
         {
             cellLat = this.mapView.currentHouse[i][0];
@@ -254,9 +264,25 @@ MapRealty.prototype.modalRealty = function(){
             arrTemp = this.mapView.checkHouse[cellLat][cellLng];
             for(var j = 0;j<arrTemp.length;j++)
             {
-                container.appendChild(this.itemMap(arrTemp[j]));
+                if(container.check===undefined||container.check[arrTemp[j].data.id]===undefined)
+                {
+                    var x = this.itemMap(arrTemp[j]);
+                    check[arrTemp[j].data.id] = x;
+                    container.appendChild(x);
+                }else if(container.check!==undefined)
+                {
+                    check[arrTemp[j].data.id] = container.check[arrTemp[j].data.id];
+                    delete container.check[arrTemp[j].data.id];
+                }
+                k++;
             }
         }
+        for(var param in container.check)
+        {
+            container.check[param].selfRemove();
+        }
+        container.check = check;
+        this.count.innerHTML = k + " kết quả";
     }
     this.mapView.addEventListener("change-house", function() {
         self.updateResult();
@@ -264,7 +290,580 @@ MapRealty.prototype.modalRealty = function(){
     return temp;
 }
 
+MapRealty.prototype.modalLargeRealty = function(data)
+{
+    var modal = _({
+        tag:"modal",
+        child:[
+            {
+                tag:"div",
+                class:["active-hdp-col", "yui3-app-views", "app-view-hdp"],
+                child:[
+                    {
+                        tag:"div",
+                        class:["active-view", "preload-lightbox"],
+                        child:[
+                            {
+                                tag:"div",
+                                class:"home-details-render",
+                                child:[
+                                    {
+                                        tag:"div",
+                                        class:"home-details-content",
+                                        child:[
+                                            {
+                                                tag:"button",
+                                                class:["ds-close-lightbox-icon", "hc-back-to-list"],
+                                                child:[
+                                                    {
+                                                        tag:"i",
+                                                        class:"material-icons",
+                                                        props:{
+                                                            innerHTML:"close"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                tag:"div",
+                                                class:["ds-wrapper", "znav-force-mobile-layout"],
+                                                child:[
+                                                    {
+                                                        tag:"div",
+                                                        class:["ds-container", "ds-mobile-single-scroll", "ds-container-lightboxed", "is-data-forward"],
+                                                        child:[
+                                                           {
+                                                               tag:"div",
+                                                               class:["ds-media-col", "ds-media-col-hidden-mobile"],
+                                                               child:[
+                                                                   {
+                                                                    tag:"ul",
+                                                                    class:"media-stream",
+                                                                    child:[
+                                                                        {
+                                                                            tag:"li",
+                                                                            class:["media-stream-tile", "media-stream-tile--prominent"],
+                                                                            child:[
+                                                                                {
+                                                                                    tag:"img",
+                                                                                    class:["media-stream-photo", "media-stream-photo--loader"],
+                                                                                    attr:{
+                                                                                        src:"https://photos.zillowstatic.com/cc_ft_960/ISj7h18efa8nyf1000000000.jpg"
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            tag:"li",
+                                                                            class:["media-stream-tile", "tile-1"],
+                                                                            child:[
+                                                                                {
+                                                                                    tag:"img",
+                                                                                    attr:{
+                                                                                        src:"https://photos.zillowstatic.com/cc_ft_576/ISb953shgvo4rg1000000000.jpg"
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            tag:"li",
+                                                                            class:["media-stream-tile", "tile-2"],
+                                                                            child:[
+                                                                                {
+                                                                                    tag:"img",
+                                                                                    attr:{
+                                                                                        src:"https://photos.zillowstatic.com/cc_ft_576/IS333r9bcng7rg1000000000.jpg"
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            tag:"li",
+                                                                            class:["media-stream-tile", "media-stream-tile--fullwidth", "media-stream-tile--halfheight", "media-stream-tile--upsell"],
+                                                                            child:[
+                                                                                {
+                                                                                    tag:"img",
+                                                                                    attr:{
+                                                                                        src:"https://photos.zillowstatic.com/cc_ft_576/ISj7h18efa8nyf1000000000.jpg"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    tag:"div",
+                                                                                    class:"upsell-photo-content",
+                                                                                    child:[
+                                                                                        {
+                                                                                            tag:"div",
+                                                                                            class:"ds-hero-headline",
+                                                                                            props:{
+                                                                                                innerHTML:"Quan tâm đến tour du lịch nhà này?"
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            tag:"ul",
+                                                                                            class:"contact-button-group",
+                                                                                            child:[
+                                                                                                {
+                                                                                                    tag:"li",
+                                                                                                    class:"contact-button",
+                                                                                                    child:[
+                                                                                                        {
+                                                                                                            tag:"button",
+                                                                                                            class:["Button-wpcbcc-0", "iJIIUW", "contact-button-condensed", "ds-button", "ds-label-small"],
+                                                                                                            props:{
+                                                                                                                innerHTML:"Đi thăm quan"
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                   }
+                                                               ]
+                                                           },
+                                                           {
+                                                               tag:"div",
+                                                               class:["ds-data-col", "ds-white-bg", "ds-data-col-data-forward"],
+                                                               child:[
+                                                                   {
+                                                                       tag:"div",
+                                                                       class:["sc-bAeIUo", "bhsEJe"],
+                                                                       child:[
+                                                                           {
+                                                                               tag:"div",
+                                                                               class:["sc-1tf5ijk-9", "fAdunC", "ds-action-bar"],
+                                                                               child:[
+                                                                                   {
+                                                                                       tag:"nav",
+                                                                                       class:["sc-exAgwC", "imHfmq"],
+                                                                                       child:[
+                                                                                           {
+                                                                                               tag:"div",
+                                                                                               class:"pizo-header-logo",
+                                                                                               child:[
+                                                                                                   {
+                                                                                                       tag:"img",
+                                                                                                       class:"pizo-header-logo-icon",
+                                                                                                       attr:{
+                                                                                                           src:"assets/images/logo.png"
+                                                                                                       }
+                                                                                                   },
+                                                                                                   {
+                                                                                                    tag:"img",
+                                                                                                    class:"pizo-header-logo-text",
+                                                                                                    attr:{
+                                                                                                        src:"assets/images/logo-text.png"
+                                                                                                    }
+                                                                                                }
+                                                                                               ]
+                                                                                           },
+                                                                                           {
+                                                                                               tag:"ul",
+                                                                                               class:["sc-GMQeP", "cjrQwi"],
+                                                                                               child:[
+                                                                                                   {
+                                                                                                       tag:"li",
+                                                                                                       class:["sc-cLQEGU", "cllLJF"],
+                                                                                                       child:[
+                                                                                                           {
+                                                                                                               tag:"button",
+                                                                                                               class:["sc-bdVaJa", "cKVUOM", "no-class"],
+                                                                                                               child:[
+                                                                                                                   {
+                                                                                                                       tag:"div",
+                                                                                                                       class:["sc-bMVAic", "gpVNOz"],
+                                                                                                                       child:[
+                                                                                                                           {
+                                                                                                                               tag:"div",
+                                                                                                                               class:["sc-gqPbQI", "eKDTCE"],
+                                                                                                                               child:[
+                                                                                                                                   {
+                                                                                                                                       tag:"i",
+                                                                                                                                       class:"material-icons",
+                                                                                                                                       props:{
+                                                                                                                                           innerHTML:"favorite_border"
+                                                                                                                                       }
+                                                                                                                                   }
+                                                                                                                               ]
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               tag:"span",
+                                                                                                                               class:["sc-hORach", "duJWoc"],
+                                                                                                                               props:{
+                                                                                                                                   innerHTML:" Save<!-- -->d "
+                                                                                                                               }
+                                                                                                                           }
+                                                                                                                       ]
+                                                                                                                   }
+                                                                                                               ]
+                                                                                                           }
+                                                                                                       ]
+                                                                                                   },
+                                                                                                   {
+                                                                                                       tag:"li",
+                                                                                                       class:["sc-cLQEGU", "cllLJF"],
+                                                                                                       child:[
+                                                                                                           {
+                                                                                                               tag:"button",
+                                                                                                               class:["sc-bMVAic", "gpVNOz"],
+                                                                                                               child:[
+                                                                                                                   {
+                                                                                                                       tag:"div",
+                                                                                                                       class:["sc-gqPbQI", "eKDTCE"],
+                                                                                                                       child:[
+                                                                                                                           {
+                                                                                                                               tag:"i",
+                                                                                                                               class:"material-icons",
+                                                                                                                               props:{
+                                                                                                                                   innerHTML:"share"
+                                                                                                                               }
+                                                                                                                           }
+                                                                                                                       ]
+                                                                                                                   },
+                                                                                                                   {
+                                                                                                                       tag:"span",
+                                                                                                                       class:["sc-hORach", "duJWoc"],
+                                                                                                                       props:{
+                                                                                                                           innerHTML:"Share"
+                                                                                                                       }
+                                                                                                                   }
+                                                                                                               ]
+                                                                                                           }
+                                                                                                       ]
+                                                                                                   },
+                                                                                                   {
+                                                                                                       tag:"li",
+                                                                                                       class:["sc-bMVAic", "bzoMbE"],
+                                                                                                       child:[
+                                                                                                           {
+                                                                                                               tag:"button",
+                                                                                                               class:["StyledDropdownIcon-sc-7y5ig8-0", "lhzQGq", "DropdownPopper-sc-1vnow1h-0", "kknbUe", "MenuPopper-sc-1uu201g-0", "eLpspV"],
+                                                                                                               child:[
+                                                                                                                   {
+                                                                                                                       tag:"div",
+                                                                                                                       class:["ds-text-button"],
+                                                                                                                       child:[
+                                                                                                                           {
+                                                                                                                               tag:"i",
+                                                                                                                               class:"material-icons",
+                                                                                                                               props:{
+                                                                                                                                   innerHTML:"more_horiz"
+                                                                                                                               }
+                                                                                                                           }
+                                                                                                                       ]
+                                                                                                                   },
+                                                                                                                   {
+                                                                                                                       tag:"span",
+                                                                                                                       class:["VisuallyHidden-t8tewe-0", "fyUmOz"],
+                                                                                                                       props:{
+                                                                                                                           innerHTML:"Show more"
+                                                                                                                       }
+                                                                                                                   }
+                                                                                                               ]
+                                                                                                           }
+                                                                                                       ]
+                                                                                                   }
+                                                                                               ]
+                                                                                           }
+                                                                                       ]
+                                                                                   }
+                                                                               ]
+                                                                           }
+                                                                       ]
+                                                                   },
+                                                                   {
+                                                                       tag:"div",
+                                                                       class:"ds-chip",
+                                                                       child:[
+                                                                           {
+                                                                               tag:"div",
+                                                                               class:"ds-home-details-chip",
+                                                                               child:[
+                                                                                   {
+                                                                                       tag:"div",
+                                                                                       class:"ds-summary-row-container",
+                                                                                       child:[
+                                                                                           {
+                                                                                               tag:"div",
+                                                                                               class:"ds-summary-row-content",
+                                                                                               child:[
+                                                                                                   {
+                                                                                                       tag:"div",
+                                                                                                       class:"ds-summary-row",
+                                                                                                       child:[
+                                                                                                           {
+                                                                                                               tag:"h3",
+                                                                                                               class:"ds-price",
+                                                                                                               child:[
+                                                                                                                   {
+                                                                                                                       tag:"span",
+                                                                                                                       class:"ds-value",
+                                                                                                                       props:{
+                                                                                                                           innerHTML:"Số tiền ở đây"
+                                                                                                                       }
+                                                                                                                   }
+                                                                                                               ]
+                                                                                                           },
+                                                                                                           {
+                                                                                                               tag:"header",
+                                                                                                               class:"ds-bed-bath-living-area-header",
+                                                                                                               child:[
+                                                                                                                   {
+                                                                                                                       tag:"h3",
+                                                                                                                       class:["ds-bed-bath-living-area-container"],
+                                                                                                                       child:[
+                                                                                                                           {
+                                                                                                                               tag:"span",
+                                                                                                                               class:"ds-bed-bath-living-area",
+                                                                                                                               child:[
+                                                                                                                                   {
+                                                                                                                                       tag:"span",
+                                                                                                                                       props:{
+                                                                                                                                           innerHTML:"2"
+                                                                                                                                       }
+                                                                                                                                   },
+                                                                                                                                   {
+                                                                                                                                       tag:"span",
+                                                                                                                                       class:"ds-summary-row-label-secondary",
+                                                                                                                                       props:{
+                                                                                                                                           innerHTML:"m"
+                                                                                                                                       }
+                                                                                                                                   }
+                                                                                                                               ]
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               tag:"span",
+                                                                                                                               class:"ds-vertical-divider"
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               tag:"button",
+                                                                                                                               class:["TriggerText-sc-139r5uq-0", "jfjsxZ", "TooltipPopper-io290n-0", "sc-jlyJG", "eVrWvb"],
+                                                                                                                               child:[
+                                                                                                                                   {
+                                                                                                                                       tag:"span",
+                                                                                                                                       class:"ds-bed-bath-living-area",
+                                                                                                                                       child:[
+                                                                                                                                           {
+                                                                                                                                               tag:"span",
+                                                                                                                                               props:{
+                                                                                                                                                    innerHTML:"1"
+                                                                                                                                                }
+                                                                                                                                           },
+                                                                                                                                           {
+                                                                                                                                               tag:"span",
+                                                                                                                                               class:"ds-summary-row-label-secondary",
+                                                                                                                                               props:{
+                                                                                                                                                   innerHTML:"m"
+                                                                                                                                               }
+                                                                                                                                           }
+                                                                                                                                       ]
+                                                                                                                                      
+                                                                                                                                   }
+                                                                                                                               ]
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                            tag:"span",
+                                                                                                                            class:"ds-vertical-divider"
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                tag:"span",
+                                                                                                                                class:"ds-bed-bath-living-area",
+                                                                                                                                child:[
+                                                                                                                                    {
+                                                                                                                                        tag:"span",
+                                                                                                                                        props:{
+                                                                                                                                            innerHTML:"1667"
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                    {
+                                                                                                                                        tag:"span",
+                                                                                                                                        class:"ds-summary-row-label-secondary",
+                                                                                                                                        props:{
+                                                                                                                                            innerHTML:"m²"
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                ]
+                                                                                                                            }
+                                                                                                                       ]
+                                                                                                                   }
+                                                                                                               ]
+                                                                                                           }
+                                                                                                       ]
+                                                                                                   }
+                                                                                               ]
+                                                                                           }
+                                                                                       ]
+                                                                                   },
+                                                                                   {
+                                                                                       tag:"div",
+                                                                                       class:"ds-price-change-address-row",
+                                                                                       child:[
+                                                                                           {
+                                                                                               tag:"header",
+                                                                                               child:[
+                                                                                                   {
+                                                                                                       tag:"h1",
+                                                                                                       class:"ds-address-container",
+                                                                                                       child:[
+                                                                                                           {
+                                                                                                               tag:"span",
+                                                                                                               props:{
+                                                                                                                   innerHTML:"Địa chỉ ở đây"
+                                                                                                               }
+                                                                                                           }
+                                                                                                       ]
+                                                                                                   }
+                                                                                               ]
+                                                                                           }
+                                                                                       ]
+                                                                                   },
+                                                                                   {
+                                                                                       tag:"div",
+                                                                                       class:["sc-hIVACf", "eiqksm", "ds-chip-removable-content"],
+                                                                                       style:{
+                                                                                            visibility: "visible",
+                                                                                            height: "19px",
+                                                                                            opacity: 1
+                                                                                       },
+                                                                                       child:[
+                                                                                           {
+                                                                                               tag:"p",
+                                                                                               class:["Text-aiai24-0", "StyledParagraph-sc-18ze78a-0", "dDDkWA", "sc-fgfRvd", "hmPfMB"],
+                                                                                               child:[
+                                                                                                   {
+                                                                                                       tag:"span",
+                                                                                                       class:["sc-likbZx", "ccUlrP", "ds-status-details"],
+                                                                                                       child:[
+                                                                                                        {
+                                                                                                            tag:"i",
+                                                                                                            class:"material-icons",
+                                                                                                            props:{
+                                                                                                                innerHTML:"favorite"
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            tag:"span",
+                                                                                                            props:{
+                                                                                                                innerHTML:"Đang bán"
+                                                                                                            }
+                                                                                                        }
+                                                                                                       ]
+                                                                                                   },
+                                                                                                   {
+                                                                                                    tag:"span",
+                                                                                                    class:["sc-drMfKT", "hVItaR"],
+                                                                                                    child:[
+                                                                                                        {
+                                                                                                            tag:"span",
+                                                                                                            class:["sc-eKZiaR", "haXPGg"],
+                                                                                                            props:{
+                                                                                                                innerHTML:"Định giá khu vực"
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            tag:"span",
+                                                                                                            class:["sc-ePZHVD", "iBZiRD", "ds-dashed-underline"],
+                                                                                                            props:{
+                                                                                                                innerHTML:"$489,000"
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                   
+                                                                                               ]
+                                                                                           }
+                                                                                       ]
+                                                                                   },
+                                                                                   {
+                                                                                       tag:"div",
+                                                                                       class:"ds-mortgage-row",
+                                                                                       child:[
+                                                                                           {
+                                                                                               tag:"span",
+                                                                                               class:["sc-CtfFt", "fLHEyC"],
+                                                                                               child:[
+                                                                                                   {
+                                                                                                       tag:"span",
+                                                                                                       class:["sc-fjmCvl", "fqWQvO"],
+                                                                                                       props:{
+                                                                                                           innerHTML:"Phí nhà đất"
+                                                                                                       }
+                                                                                                   },
+                                                                                                   {
+                                                                                                       tag:"span",
+                                                                                                       class:["sc-jzJRlG", "cpUdby"],
+                                                                                                       props:{
+                                                                                                           innerHTML:"$3,120/mo"
+                                                                                                       }
+                                                                                                   }
+                                                                                               ]
+                                                                                           }
+                                                                                       ]
+                                                                                   }
+                                                                               ]
+                                                                           }
+                                                                       ]
+                                                                   },
+                                                                   {
+                                                                       tag:"div",
+                                                                       class:"ds-buttons",
+                                                                       child:[
+                                                                           {
+                                                                               tag:"ul",
+                                                                               class:"contact-button-group",
+                                                                               child:[
+                                                                                   {
+                                                                                       tag:"li",
+                                                                                       class:"contact-button",
+                                                                                       child:[
+                                                                                           {
+                                                                                               tag:"button",
+                                                                                               class:["Button-wpcbcc-0", "cpEtCH", "contact-button-condensed", "ds-button", "ds-label-small"],
+                                                                                               props:{
+                                                                                                   innerHTML:"Liên lạc với nhân viên"
+                                                                                               }
+                                                                                           }
+                                                                                       ]
+                                                                                   },
+                                                                                   {
+                                                                                       tag:"li",
+                                                                                       class:"contact-button",
+                                                                                       child:[
+                                                                                           {
+                                                                                               tag:"button",
+                                                                                               class:["Button-wpcbcc-0", "btcvqQ", "contact-button-condensed", "ds-button", "ds-label-small"]
+                                                                                           }
+                                                                                       ]
+                                                                                   }
+                                                                               ]
+                                                                           }
+                                                                       ]
+                                                                   }
+                                                               ]
+                                                           }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    })
+    return modal;
+}
+
 MapRealty.prototype.itemMap = function(marker){
+    var self = this;
     var data = marker.data;
     var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
     if(data.imageCurrentStaus.length>0)
@@ -296,13 +895,17 @@ MapRealty.prototype.itemMap = function(marker){
     var temp = _({
         tag:"li",
         on:{
-            mousehover:function(event)
+            mouseover:function(event)
             {
-                google.maps.event.trigger(marker,"onmouseover");
+                google.maps.event.trigger(marker,'onmouseover');
             },
             mouseout:function(event)
             {
-                google.maps.event.trigger(marker,"onmouseout");
+                google.maps.event.trigger(marker,'onmouseout');
+            },
+            click:function(event)
+            {
+                document.body.appendChild(self.modalLargeRealty(data));
             }
         },
         child:[

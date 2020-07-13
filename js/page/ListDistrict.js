@@ -234,15 +234,14 @@ ListDistrict.prototype.getView = function () {
         { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
         {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
         {value:'Tên',sort:true,style:{minWidth:"unset"}},
-        {value:'Loại',sort:true,style:{minWidth:"200px",width:"200px"}},
         {value:'Tỉnh/Thành phố',sort:true,style:{minWidth:"200px",width:"200px"}},
         {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+        console.log(self.formatDataRow(value));
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
         self.listParent.updateItemList(listParam);
-        self.mTable.addFilter(self.listDistrictElement,3);
-        self.mTable.addFilter(self.listParent,4);
+        self.mTable.addFilter(self.listParent,3);
     });
 
     this.searchControl = this.searchControlContent();
@@ -301,8 +300,7 @@ ListDistrict.prototype.getDataRow = function(data)
         {},
         data.id,
         data.name,
-        data.type,
-        {value:this.checkState[data.stateid].id,element:_({text:this.checkState[data.stateid].type+" "+this.checkState[data.stateid].name})},
+        {value:this.checkState[data.stateid].id,element:_({text:this.checkState[data.stateid].name})},
         {}
         ]
         result.original = data;
@@ -333,18 +331,6 @@ ListDistrict.prototype.searchControlContent = function(){
         self.listParent.items = self.formatDataList(value);
     }
 
-    self.listDistrictElement = _({
-        tag:"selectmenu",
-        props:{
-            items:[
-                {text:"Tất cả",value:0},
-                {text:"Thị xã",value:"Thị xã"},
-                {text:"Huyện",value:"Huyện"},
-                {text:"Quận",value:"Quận"},
-                {text:"Thành phố",value:"Thành phố"}
-            ]
-        }
-    });
     var content = _({
         tag:"div",
         class:"pizo-list-realty-main-search-control-container",
@@ -384,27 +370,7 @@ ListDistrict.prototype.searchControlContent = function(){
                                 ]
 
                             },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-district",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
-                                        props:{
-                                            innerHTML:"Loại"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
-                                        child:[
-                                            self.listDistrictElement
-                                        ]
-                                    }
-                                ]
 
-                            },
                         ]
                     }
                 ]

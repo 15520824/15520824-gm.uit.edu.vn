@@ -35,6 +35,8 @@ DataStructure.prototype.generalOperator = function(data,WHERE)
     return eval(stringResult);
 }
 
+// DataStructure.prototype.generalOrder = function(data,W)
+
 DataStructure.prototype.operator = function(data,WHERE)
 {
     var stringResult = "(";
@@ -105,6 +107,18 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
             return Promise.resolve(self.promisePart[JSON.stringify(data.WHERE)].data);
         }
     }
+    
+    var odering  = ["id"]
+
+    if(data.ODERING!==undefined)
+    {
+        odering = data.ODERING;
+    }
+
+    if(data.LIMIT !== undefined)
+    {
+        
+    }
 
     var promiseLoad;
     
@@ -133,7 +147,14 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     }
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(value){
-            value.concat(loadedData);
+            for(var i = 0;i<value.length;i++)
+            {
+                if(typeof value[i] == "string")
+                    if(self.Libary["id"][value[i]]!==undefined)
+                    {
+                        value[i] = self.Libary["id"][value[i]];        
+                    }
+            }
             if(self.data === undefined)
             self.data = [];
             if(data.WHERE===undefined)
@@ -153,20 +174,23 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
             {
                 self.data = value;
             }else
-            for(var i = 0;i<value.length;i++)
             {
                 if(self.data.length === self.countRow)
                 {
                     if(self.promiseLoad === undefined)
                     self.promiseLoad = Promise.resolve(self.data);
-                    break;
                 }
-                if(libary[value[i].id]===undefined)
-                {
-                    self.data.push(value[i]);
-                    self.setFormatAdd(value[i]);
+                else
+                for(var i = 0;i<value.length;i++)
+                {   
+                    if(libary[value[i].id]===undefined)
+                    {
+                        self.data.push(value[i]);
+                        self.setFormatAdd(value[i]);
+                    }
                 }
             }
+            
             
             self.getLibary();
             promiseLoad.status = "done";
@@ -327,11 +351,17 @@ DataStructure.prototype.getList = function(param,value,skip){
     return result;
 }
 
-DataStructure.prototype.add = function(data){
+DataStructure.prototype.add = function(data,needChange = false){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpAdder,data).then(function(value){
                 Object.assign(data,value.data);
+                if(needChange === true)
+                {
+                    data.add = Object.assign({}, value.add);
+                    data.update = Object.assign({}, value.update);
+                    data.delete = Object.assign({}, value.delete);
+                }  
                 self.setFormatAdd(data);
                 if(value.insert!==undefined)
                 {
@@ -360,7 +390,7 @@ DataStructure.prototype.add = function(data){
                     }
                 }
 
-            resolve(value);
+            resolve(data);
         }).catch(function(err){
             reject(err);
             console.error(err)

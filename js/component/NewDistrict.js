@@ -134,31 +134,6 @@ NewDistrict.prototype.getView = function (data) {
                                 },
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-type-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-type-container-label",
-                                            props:{
-                                                innerHTML:"Loại"
-                                            }
-                                        },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-state-container-type-container-input",
-                                            props:{
-                                                items:[
-                                                    {text:"Thị xã",value:"Thị xã"},
-                                                    {text:"Huyện",value:"Huyện"},
-                                                    {text:"Quận",value:"Quận"},
-                                                    {text:"Thành phố",value:"Thành phố"},
-                                                ]
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
                                     class:"pizo-new-state-container-nation-container",
                                     child:[
                                         {
@@ -187,13 +162,11 @@ NewDistrict.prototype.getView = function (data) {
         );
     this.createPromise();
     this.name = $('input.pizo-new-state-container-name-container-input',this.$view);
-    this.type = $('div.pizo-new-state-container-type-container-input',this.$view);
     this.state = $('div.pizo-new-state-container-nation-container-input',this.$view);
     
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;
-        this.type.value = this.data.original.type;
         this.state.value = this.data.original.stateid;
     }
     return this.$view;
@@ -204,7 +177,6 @@ NewDistrict.prototype.getDataSave = function() {
     var temp = {
         id:this.data===undefined?undefined:this.data.original.id,
         name:this.name.value,
-        type:this.type.value,
         stateid:this.state.value
     }
     if(this.data!==undefined)

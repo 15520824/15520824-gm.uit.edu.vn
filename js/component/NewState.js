@@ -162,29 +162,6 @@ NewState.prototype.getView = function () {
                                 },
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-type-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-type-container-label",
-                                            props:{
-                                                innerHTML:"Loại"
-                                            }
-                                        },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-state-container-type-container-input",
-                                            props:{
-                                                items:[
-                                                    {text:"Thành phố",value:"Thành phố"},
-                                                    {text:"Tỉnh",value:"Tỉnh"}
-                                                ]
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
                                     class:"pizo-new-state-container-nation-container",
                                     child:[
                                         {
@@ -214,12 +191,10 @@ NewState.prototype.getView = function () {
         );
     this.createPromise();
     this.name = $('input.pizo-new-state-container-name-container-input"',this.$view);
-    this.type = $('div.pizo-new-state-container-type-container-input',this.$view);
     this.nation = $('div.pizo-new-state-container-nation-container-input',this.$view);
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;
-        this.type.value = this.data.original.type;
         this.nation.value = this.data.original.nationid;
     }
    
@@ -229,7 +204,6 @@ NewState.prototype.getView = function () {
 NewState.prototype.getDataSave = function() {
     var temp = {
         name:this.name.value,
-        type:this.type.value,
         nationid:this.nation.value
     }
     if(this.data!==undefined)

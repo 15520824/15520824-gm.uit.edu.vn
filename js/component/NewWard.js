@@ -185,30 +185,6 @@ NewWard.prototype.getView = function (data) {
                                 },
                                 {
                                     tag:"div",
-                                    class:"pizo-new-state-container-type-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-type-container-label",
-                                            props:{
-                                                innerHTML:"Loại"
-                                            }
-                                        },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-state-container-type-container-input",
-                                            props:{
-                                                items:[
-                                                    {text:"Phường",value:"Phường"},
-                                                    {text:"Xã",value:"Xã"},
-                                                    {text:"Thị trấn",value:"Thị trấn"},
-                                                ]
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
                                     class:"pizo-new-ward-container-district-container",
                                     child:[
                                         {
@@ -244,13 +220,11 @@ NewWard.prototype.getView = function (data) {
         );
     this.createPromise();
     this.name = $('input.pizo-new-state-container-name-container-input',this.$view);
-    this.type = $('div.pizo-new-state-container-type-container-input',this.$view);
     this.district = self.listWardElement;
     
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;
-        this.type.value = this.data.original.type;
     }
     return this.$view;
 }
@@ -277,7 +251,6 @@ NewWard.prototype.getDataSave = function() {
     var temp = {
         id:this.data===undefined?undefined:this.data.original.id,
         name:this.name.value,
-        type:this.type.value,
         districtid:getIDCompair(this.district.value)
     }
     if(this.data!==undefined)

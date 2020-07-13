@@ -242,16 +242,14 @@ ListWard.prototype.getView = function () {
         { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
         {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
         {value:'Tên',sort:true,style:{minWidth:"unset"}},
-        {value:'Loại',sort:true,style:{minWidth:"200px",width:"200px"}},
         {value:'Quận/Huyện',sort:true,style:{minWidth:"200px",width:"200px"}},
         {value:'Tỉnh/Thành phố',sort:true,style:{minWidth:"200px",width:"200px"}},
         {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view),2);
-        self.mTable.addFilter(self.listWardElement,4);
-        self.mTable.addFilter(self.listStateElement,5);
-        self.mTable.addFilter(self.listDistrictElement,3);
+        self.mTable.addFilter(self.listWardElement,3);
+        self.mTable.addFilter(self.listStateElement,4);
     })
 
     this.searchControl = this.searchControlContent();
@@ -318,9 +316,8 @@ ListWard.prototype.getDataRow = function(data)
         {},
         data.id,
         data.name,
-        data.type,
-        {value:this.checkWard[parseInt(data.districtid)].name+"_"+data.districtid,element:_({text:this.checkWard[parseInt(data.districtid)].type+" "+this.checkWard[parseInt(data.districtid)].name})},
-        {value:this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name+"_"+this.checkWard[parseInt(data.districtid)].stateid,element:_({text:this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].type+" "+this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name})},
+        {value:this.checkWard[parseInt(data.districtid)].name+"_"+data.districtid,element:_({text:this.checkWard[parseInt(data.districtid)].name})},
+        {value:this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name+"_"+this.checkWard[parseInt(data.districtid)].stateid,element:_({text:this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name})},
         {}
         ]
         result.original = data;
@@ -374,18 +371,6 @@ ListWard.prototype.searchControlContent = function(){
                 }
                
             }
-        }
-    });
-
-    self.listDistrictElement = _({
-        tag:"selectmenu",
-        props:{
-            items:[
-                {text:"Tất cả",value:0},
-                {text:"Phường",value:"Phường"},
-                {text:"Xã",value:"Xã"},
-                {text:"Thị trấn",value:"Thị trấn"}
-            ]
         }
     });
     var content = _({
@@ -447,28 +432,7 @@ ListWard.prototype.searchControlContent = function(){
                                     }
                                 ]
 
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-state-district",
-                                child:[
-                                    {
-                                        tag:"span",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-label",
-                                        props:{
-                                            innerHTML:"Loại"
-                                        }
-                                    },
-                                    {
-                                        tag:"div",
-                                        class:"pizo-list-realty-main-search-control-row-state-district-input",
-                                        child:[
-                                            self.listDistrictElement
-                                        ]
-                                    }
-                                ]
-
-                            },
+                            }
                         ]
                     }
                 ]

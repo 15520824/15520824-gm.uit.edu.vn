@@ -40,14 +40,25 @@ $result = $connector->query("SELECT `id`, `cellLat`, `cellLng`, `created`, AsTex
 
 $data = array();
 $i = 0; 
+if(isset($data["loaded"])){
+    for($i = 0;$i<count($data["loaded"]);$i++)
+    {
+        $check[$data["loaded"][$i]] = $i;
+    }
+}
+
 if($result)
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
+        if(isset($check[$row["id"]]))
+        $data[$i++] = $row["id"];
+        else
         $data[$i++] = $row;
     }
 } else {
 }
+
 
 if(isset($isFirst))
 {

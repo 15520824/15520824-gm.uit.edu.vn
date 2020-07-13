@@ -34,8 +34,15 @@ if (isset($_POST["data"])) {
         {
             $isFirst = $data["isFirst"];
         }
-        $operator = $data["WHERE"];
-        $WHERE = generalOperator($operator);
+
+        if (isset($data["WHERE"])) {
+            $operator = $data["WHERE"];
+            $WHERE = generalOperator($operator);
+        }
+        
+        if (isset($data["ORDERING"])) {
+            $ORDERING=$data["ORDERING"];
+        }
     }
 }else
 {
@@ -47,6 +54,12 @@ if($WHERE!=="")
 {
     $WHERE = " WHERE ".$WHERE;
 }
+
+if($ORDERING!=="")
+{
+    $ORDERING = " ORDER BY ".$ORDERING;
+}
+
 $result = $connector-> query("SELECT * FROM ".$prefix."activehouses".$WHERE.$ORDERING);
 $data = array();
 $i = 0; 
@@ -64,34 +77,37 @@ if($result)
         // output data of each row
         while($row = $result->fetch_assoc()) {
             if(isset($check[$row["id"]]))
-                continue;
-            $data[$i] = $row;
-            $equipment = $connector->load($prefix."house_equipments","houseid = ".$row["id"]);
-            $data[$i]["equipment"]=$equipment;
-            $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
-            $data[$i]["contact"]=$contact;
-            $image = $connector->load($prefix."image","houseid = ".$row["id"]);
-
-            $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( houseid = ".$row["id"]." )");
-            $imageJuridical = array();
-            $imageCurrentStaus = array();
-            if($imageresource)
-                if ($imageresource->num_rows > 0) {
-                    while($rowResource = $imageresource->fetch_assoc())
-                    {
-                        switch($rowResource["type"])
+                $data[$i] = $row["id"];
+            else
+            {
+                $data[$i] = $row;
+                $equipment = $connector->load($prefix."house_equipments","houseid = ".$row["id"]);
+                $data[$i]["equipment"]=$equipment;
+                $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
+                $data[$i]["contact"]=$contact;
+                $image = $connector->load($prefix."image","houseid = ".$row["id"]);
+    
+                $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( houseid = ".$row["id"]." )");
+                $imageJuridical = array();
+                $imageCurrentStaus = array();
+                if($imageresource)
+                    if ($imageresource->num_rows > 0) {
+                        while($rowResource = $imageresource->fetch_assoc())
                         {
-                            case 0:
-                                array_push($imageJuridical,$rowResource);  
-                            break;
-                            case 1:
-                                array_push($imageCurrentStaus,$rowResource);  
-                            break;
+                            switch($rowResource["type"])
+                            {
+                                case 0:
+                                    array_push($imageJuridical,$rowResource);  
+                                break;
+                                case 1:
+                                    array_push($imageCurrentStaus,$rowResource);  
+                                break;
+                            }
                         }
                     }
-                }
-            $data[$i]["imageJuridical"]=$imageJuridical;
-            $data[$i]["imageCurrentStaus"]=$imageCurrentStaus;
+                $data[$i]["imageJuridical"]=$imageJuridical;
+                $data[$i]["imageCurrentStaus"]=$imageCurrentStaus;
+            }
             $i++;
         }
     } else {

@@ -789,11 +789,13 @@ MapView.prototype.addMapPolygon = function()
                             self.checkLibary[cellDeltaLat] = [];
                             self.checkLibary[cellDeltaLat][cellDeltaLng] = 1;
                         moduleDatabase.getModule("polygon").load({WHERE:[{cellLng:cellDeltaLng},"&&",{cellLat:cellDeltaLat}]}).then(function(cellDeltaLat,cellDeltaLng,value){
-                            for(var i=0;i<value.length;i++)
+                            if(self.enablePolygon == true)
                             {
-                                self.addWKT(value[i]["AsText(`map`)"],cellDeltaLat,cellDeltaLng)
+                                for(var i=0;i<value.length;i++)
+                                {
+                                    self.addWKT(value[i]["AsText(`map`)"],cellDeltaLat,cellDeltaLng)
+                                }
                             }
-                            
                         }.bind(null,cellDeltaLat,cellDeltaLng))
                     }else
                     {
@@ -929,6 +931,7 @@ MapView.prototype.addMapHouse = function()
                 }
                 var event = new CustomEvent('change-house');
                 self.dispatchEvent(event);
+                
             })
         }
         
@@ -982,15 +985,32 @@ MapView.prototype.addOrtherMarker = function(data)
         var infowindow = new google.maps.InfoWindow({
             maxWidth: 350
           });
+        google.maps.event.addListener(infowindow, 'mouseover', function() {
+            marker.hover = false;
+        })
+        google.maps.event.addListener(infowindow, 'mouseout', function() {
+            marker.hover = true;
+        })
         marker.data = data;
         google.maps.event.addListener(marker, 'mouseover', function() {
-            infowindow.setContent(self.modalMiniRealty(marker.data));
-            infowindow.open(self.map, marker);
-            marker.setIcon(imageHover);
+            if(this.hover!==true)
+            {
+                infowindow.setContent(self.modalMiniRealty(marker.data));
+                infowindow.open(self.map, marker);
+                marker.setIcon(imageHover);
+            }
+            this.hover = true;
         });
         google.maps.event.addListener(marker, 'mouseout', function() {
-            marker.setIcon(image);
-            infowindow.close();
+            var element = this;
+            setTimeout(function(){
+                if(element.hover===true)
+                {
+                    marker.setIcon(image);
+                    infowindow.close();
+                }
+                element.hover = false;
+            },100);
         });
        
         if(this.checkHouse[position[0]]===undefined)
@@ -1011,12 +1031,6 @@ MapView.prototype.modalMiniRealty = function(data)
     var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
     if(data.imageCurrentStaus.length>0)
     src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+data.imageCurrentStaus[0].src;
-    var thumnail = _({
-        tag:"img",
-        props:{
-            src:src
-        }
-    });
     var temp = _(
         {
             tag:"a",
