@@ -6,6 +6,8 @@ import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
 import {insertAfter} from './FormatFunction';
 
+import Slip from './slip.js';
+
 var _ = Fcore._;
 var $ = Fcore.$;
 var traceOutBoundingClientRect = Fcore.traceOutBoundingClientRect;
@@ -541,9 +543,7 @@ function captureMousePosition(event) {
 
 
 export function tableView(header = [], data = [], dragHorizontal, dragVertical, childIndex = 1, indexRow = 50) {
-    if (window.mobilecheck())
-        return tableViewMobile(header, data);
-
+   
     var cell, row, check = [];
     var checkSpan = [];
     var headerTable = _({
@@ -648,7 +648,21 @@ export function tableView(header = [], data = [], dragHorizontal, dragVertical, 
 
     result.checkSpan = checkSpan;
 
+    if(window.mobilecheck())
+    {
+        result.setUpSlip();
+    }
+    result.setUpSlip();
     return result;
+}
+
+tableView.prototype.setUpSlip = function()
+{
+    // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
+
+    // this.bodyTable.addEventListener('slip:reorder', reorder, false);
+    this.slip = new Slip(this.bodyTable);
+    return this.slip;
 }
 
 tableView.prototype.getCellHeader = function(header,i)
@@ -2982,322 +2996,6 @@ tableView.prototype.getBound2Row = function (row1, row2) {
         ]
     })
     return temp;
-}
-
-export function tableViewMobile(header = [], data = []) {
-    var cell, row, value, check = [], bonus, style;
-    var dragVertical = false;
-    var dragHorizontal = false;
-    var checkSpan = [];
-    var headerTable = _({
-        tag: "thead",
-    });
-    var bodyTable = _({
-        tag: "tbody"
-    });
-
-    var result = _({
-        tag: "table",
-        style: {
-            fontSize: "0.7857rem"
-        },
-        class: "sortTable",
-        child: [
-            headerTable,
-            bodyTable
-        ]
-    });
-
-    result.headerTable = headerTable;
-    result.bodyTable = bodyTable;
-    Object.assign(result, tableView.prototype);
-    result.check = check;
-    result.header = header;
-    result.data = data;
-    result.dragVertical = dragVertical;
-    result.dragHorizontal = dragHorizontal;
-
-    setTimeout(function () {
-        if (window.scrollEvent === undefined) {
-            window.xMousePos = 0;
-            window.yMousePos = 0;
-            window.lastScrolledLeft = 0;
-            window.lastScrolledTop = 0;
-
-            document.addEventListener("mousemove", function (event) {
-                window.scrollEvent = captureMousePosition(event);
-            })
-            var scrollParent = result;
-
-            while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-                scrollParent = scrollParent.parentNode;
-            }
-            if (scrollParent === undefined)
-                return;
-
-            scrollParent.addEventListener("scroll", function (event) {
-                if (window.lastScrolledLeft != scrollParent.scrollLeft) {
-                    window.xMousePos -= window.lastScrolledLeft;
-                    window.lastScrolledLeft = scrollParent.scrollLeft;
-                    window.xMousePos += window.lastScrolledLeft;
-                }
-                if (lastScrolledTop != scrollParent.scrollTop) {
-                    window.yMousePos -= window.lastScrolledTop;
-                    window.lastScrolledTop = scrollParent.scrollTop;
-                    window.yMousePos += window.lastScrolledTop;
-                }
-            })
-        }
-    }, 10)
-
-    row = _({
-        tag: "tr"
-    });
-    headerTable.addChild(row);
-    result.clone = [];
-    var k = 0;
-    var toUpperCase = header.toUpperCase == true ? true : false;
-    var toLowerCase = header.toLowerCase == true ? true : false;
-    var functionClickSort;
-    for (var i = 0; i < header.length; i++) {
-        if (header[i].hidden === false || header[i].hidden === undefined) {
-            result.clone[k] = [];
-            if (header[i].value === undefined) {
-                if (typeof header[i] === "object")
-                    value = "";
-                else
-                    value = header[i];
-            }
-            else
-                value = header[i].value;
-            if (toUpperCase)
-                value = value.toUpperCase();
-            if (toLowerCase)
-                value = value.toLowerCase();
-            var functionClick = undefined;
-            switch (header[i].type) {
-                case "check":
-                    check[i] = "check";
-                    bonus = _({
-                        tag: "checkboxbutton",
-                        class: "pizo-checkbox",
-                        on: {
-                            click: function (event) {
-                                for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                                    result.bodyTable.listCheckBox[j].update(this.checked);
-                                }
-                            }
-                        }
-                    })
-                    bonus.update = function()
-                    {
-                        for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                            if(result.bodyTable.listCheckBox[j].checked === false)
-                            {
-                                result.bodyTable.listCheckBox[0].checked = false;
-                                return;
-                            }
-                        }
-                        result.bodyTable.listCheckBox[0].checked = true;
-                    }
-                    result.bodyTable.listCheckBox = [bonus];
-                    break;
-                case "increase":
-                    check[i] = "increase";
-                    break;
-                case "dragzone":
-                    if (dragVertical)
-                        check[i] = "dragzone";
-                    else {
-                        check[i] = "hidden";
-                        continue;
-                    }
-                    break;
-                case "detail":
-                    check[i] = "detail";
-                    var icon = "more";
-                    if (header[i].icon !== undefined)
-                        icon = header[i].icon;
-                    bonus = _({
-                        tag: "i",
-                        class: "material-icons",
-                        style: {
-                            fontSize: "1.4rem",
-                            cursor: "pointer",
-                            verticalAlign: "bottom"
-                        },
-                        props: {
-                            innerHTML: icon
-                        }
-                    })
-                    break;
-            }
-            if (header[i].sort === true || header[i].sort === undefined) {
-                functionClickSort = function (event, me, index, result, dataIndex, row) {
-                    var last_sort = document.getElementsByClassName("downgrade");
-                    last_sort = last_sort[0];
-                    me = me.parentNode;
-                    if (last_sort !== me && last_sort !== undefined) {
-                        last_sort.classList.remove("downgrade");
-                    }
-                    var last_sort = document.getElementsByClassName("upgrade");
-                    last_sort = last_sort[0];
-                    if (last_sort !== me && last_sort !== undefined) {
-                        last_sort.classList.remove("upgrade");
-                    }
-                    if (!me.classList.contains("downgrade")) {
-                        sortArray(result.data, index);
-                        me.classList.add("downgrade");
-                        if (me.classList.contains("upgrade"))
-                            me.classList.remove("upgrade");
-                    }
-                    else {
-                        sortArray(result.data, index, false);
-                        me.classList.add("upgrade");
-                        if (me.classList.contains("downgrade"))
-                            me.classList.remove("downgrade");
-                    }
-
-
-                    if (result.paginationElement.noneValue !== true)
-                        result.paginationElement.reActive();
-                    else
-                        result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
-                }
-            }
-
-            if (header[i].functionClick !== undefined)
-                functionClick = header[i].functionClick;
-            style = {};
-            if (header[i].style !== undefined)
-                style = header[i].style;
-            cell = _({
-                tag: "th",
-                attr: {
-                    role: 'columnheader'
-                },
-                style: style,
-                props: {
-                    id: i
-                },
-                on: {
-                    click: function (index, row, functionClick) {
-                        return function (event) {
-                            event.preventDefault();
-                            if (functionClick !== undefined)
-                            {
-                                row = this.parentNode;
-                                functionClick(event, this, index, result, row.data, row);
-                            }
-                        }
-                    }(i, functionClick),
-                    mousedown: dragHorizontal ? function (index) {
-                        return function (event) {
-                            event.preventDefault();
-                            var finalIndex;
-                            for (var i = 0; i < result.clone.length; i++) {
-                                if (result.clone[i][0].id == index) {
-                                    finalIndex = i;
-                                    break;
-                                }
-                            }
-                            this.hold = false;
-                            var dom = this;
-                            this.default = event;
-                            this.timeoutID = setTimeout(function () {
-                                dom.hold = true;
-                                moveElement(event, dom, result, finalIndex);
-                            }, 200);
-                        }
-                    }(i) : undefined,
-                    dragstart: dragHorizontal ? function () {
-                        return false;
-                    } : undefined,
-                    mouseup: function () {
-                        if (this.hold === false) {
-                            this.hold = true;
-                            // this.click();
-                            clearTimeout(this.timeoutID);
-                        }
-                    },
-                    mousemove: dragHorizontal ? function (index) {
-                        return function (event) {
-                            if (this.hold === false) {
-                                var finalIndex;
-                                for (var i = 0; i < result.clone.length; i++) {
-                                    if (result.clone[i][0].id == index) {
-                                        finalIndex = i;
-                                        break;
-                                    }
-                                }
-                                this.hold = false;
-                                var deltaX = this.default.clientX - event.clientX,
-                                    deltaY = this.default.clientY - event.clientY;
-                                if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
-                                    this.hold = true;
-                                    moveElement(event, this, result, finalIndex);
-                                    clearTimeout(this.timeoutID);
-                                }
-                            }
-                        }
-                    }(i) : undefined,
-                }
-            })
-            if (functionClick !== undefined)
-                cell.style.cursor = "pointer";
-            if (header[i].sort === true) {
-                cell.classList.add("has-sort")
-                setTimeout(function (cell, value) {
-                    cell.style.minWidth = fakeInput(value, window.getComputedStyle(cell).fontSize) + 30 + "px";
-                }(cell, value), 50);
-            }
-
-            if (header[i].element === undefined) {
-                cell.addChild(_({ text: value }));
-            } else {
-                cell.appendChild(data[i][j].element);
-            }
-
-            if (bonus !== undefined) {
-                cell.addChild(bonus);
-                bonus = undefined;
-            }
-            cell.addChild(_({
-                tag: "div",
-                class: "sort-container",
-                on: {
-                    click: function (index, row, functionClickSort) {
-                        return function (event) {
-                            event.preventDefault();
-                            if (functionClickSort !== undefined)
-                                functionClickSort(event, this, index, row.data, row, result);
-                        }
-                    }(i, row, functionClickSort),
-                },
-                child: [
-                    {
-                        tag: "sort-up",
-                        class: ["arrow_up"],
-                    },
-                    {
-                        tag: "sort-down",
-                        class: ["arrow_down"],
-                    }
-                ]
-            }));
-
-
-            result.clone[k++].push(cell);
-
-            row.addChild(cell);
-        } else
-            check[i] = "hidden";
-    }
-    result.childrenNodes = [];
-    result.getBodyTable(data);
-
-    result.checkSpan = checkSpan;
-    return result;
 }
 
 function sortArray(arr, index, increase = true) {

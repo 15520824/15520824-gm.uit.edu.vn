@@ -245,17 +245,16 @@ MapRealty.prototype.modalRealty = function(){
     })
     this.updateResult = function()
     {
+        container.clearChild();
         var cellLat,cellLng,arrTemp;
         for(var i = 0;i<this.mapView.currentHouse.length;i++)
         {
             cellLat = this.mapView.currentHouse[i][0];
             cellLng = this.mapView.currentHouse[i][1];
             arrTemp = this.mapView.checkHouse[cellLat][cellLng];
-            console.log(this.mapView.checkHouse[cellLat][cellLng]);
-            // if()
             for(var j = 0;j<arrTemp.length;j++)
             {
-                container.appendChild(this.itemMap(arrTemp[j].data));
+                container.appendChild(this.itemMap(arrTemp[j]));
             }
         }
     }
@@ -265,14 +264,15 @@ MapRealty.prototype.modalRealty = function(){
     return temp;
 }
 
-MapRealty.prototype.itemMap = function(data){
+MapRealty.prototype.itemMap = function(marker){
+    var data = marker.data;
     var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
     if(data.imageCurrentStaus.length>0)
-    src = data.imageCurrentStaus[0].src;
+    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+data.imageCurrentStaus[0].src;
     var thumnail = _({
         tag:"img",
         props:{
-            src:"https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+src
+            src:src
         }
     });
     var type;
@@ -295,6 +295,16 @@ MapRealty.prototype.itemMap = function(data){
     }
     var temp = _({
         tag:"li",
+        on:{
+            mousehover:function(event)
+            {
+                google.maps.event.trigger(marker,"onmouseover");
+            },
+            mouseout:function(event)
+            {
+                google.maps.event.trigger(marker,"onmouseout");
+            }
+        },
         child:[
             {
                 tag:"scrpit",

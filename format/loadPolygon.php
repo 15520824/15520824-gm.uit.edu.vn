@@ -3,6 +3,7 @@ include_once "../lib/jsdb.php";
 include_once "../lib/jsencoding.php";
 include_once "../lib/prefix.php";
 include_once "../lib/connection.php";
+include_once "../lib/generalOperator.php";
 
 header('Access-Control-Allow-Origin: *');
 header('Content-type: application/json');
@@ -22,6 +23,8 @@ if (isset($_POST["name"])) {
     exit();
 }
 
+$WHERE = "";
+$ORDERING = "";
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
 
@@ -31,14 +34,8 @@ if (isset($_POST["data"])) {
         {
             $isFirst = $data["isFirst"];
         }
-        $data = $data["WHERE"];
-        if (isset($data["cellLng"])) {
-            $cellLng=$data["cellLng"];
-        }
-        
-        if (isset($data["cellLat"])) {
-            $cellLat=$data["cellLat"];
-        }
+        $operator = $data["WHERE"];
+        $WHERE = generalOperator($operator);
     }
     
 }else
@@ -47,13 +44,28 @@ if (isset($_POST["data"])) {
     exit();
 }
 
-$result = $connector->query("SELECT `id`, `cellLat`, `cellLng`, `created`, AsText(`map`) FROM ".$prefix."geometry "."WHERE cellLat = ".$cellLat." AND "."cellLng = ".$cellLng);
+if($WHERE!=="")
+{
+    $WHERE = " WHERE ".$WHERE;
+}
+$result = $connector->query("SELECT `id`, `cellLat`, `cellLng`, `created`, AsText(`map`) FROM ".$prefix."geometry ".$WHERE.$ORDERING);
+
 $data = array();
 $i = 0;
+$check = array();
+if(isset($data["loaded"])){
+    for($i = 0;$i<count($data["loaded"]);$i++)
+    {
+        $check[$data["loaded"][$i]] = $i;
+    }
+}
+
 if($result)
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
+        if(isset($check[$row["id"]]))
+            continue;
         $data[$i++] = $row;
     }
 } else {

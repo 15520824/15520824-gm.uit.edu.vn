@@ -3,6 +3,7 @@ include_once "../lib/jsdb.php";
 include_once "../lib/jsencoding.php";
 include_once "../lib/prefix.php";
 include_once "../lib/connection.php";
+include_once "../lib/generalOperator.php";
 
 header('Access-Control-Allow-Origin: *');
 header('Content-type: application/json');
@@ -33,22 +34,8 @@ if (isset($_POST["data"])) {
         {
             $isFirst = $data["isFirst"];
         }
-        $data = $data["WHERE"];
-        if (isset($data["cellLng"])) {
-            $cellLng=$data["cellLng"];
-            $minLng = (($cellLng-1)%10000)*(1/1110)+intval(($cellLng-1)/10000);
-            $maxLng = (($cellLng)%10000)*(1/1110)+intval($cellLng/10000);
-            $WHERE.= "lng<=".$maxLng." AND lng>=".$minLng;
-        }
-        
-        if (isset($data["cellLat"])) {
-            $cellLat=$data["cellLat"];
-            $minLat = (($cellLat-1)%10000)*(1/1110)+intval(($cellLat-1)/10000);
-            $maxLat = (($cellLat)%10000)*(1/1110)+intval($cellLat/10000);
-            if($WHERE!="")
-            $WHERE.=" AND ";
-            $WHERE.= "lat<=".$maxLat." AND lat>=".$minLat;
-        }
+        $operator = $data["WHERE"];
+        $WHERE = generalOperator($operator);
     }
 }else
 {
@@ -63,11 +50,21 @@ if($WHERE!=="")
 $result = $connector-> query("SELECT * FROM ".$prefix."activehouses".$WHERE.$ORDERING);
 $data = array();
 $i = 0; 
+$check = array();
+if(isset($data["loaded"])){
+    for($i = 0;$i<count($data["loaded"]);$i++)
+    {
+        $check[$data["loaded"][$i]] = $i;
+    }
+}
+
 if($result)
 {
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
+            if(isset($check[$row["id"]]))
+                continue;
             $data[$i] = $row;
             $equipment = $connector->load($prefix."house_equipments","houseid = ".$row["id"]);
             $data[$i]["equipment"]=$equipment;

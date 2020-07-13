@@ -29,6 +29,59 @@ function DataStructure(hostDatabase ,name ,listFilePHP = ["load.php","add.php","
    this.isFirst = true;
 }
 
+DataStructure.prototype.generalOperator = function(data,WHERE)
+{
+    var stringResult = this.operator(data,WHERE);
+    return eval(stringResult);
+}
+
+DataStructure.prototype.operator = function(data,WHERE)
+{
+    var stringResult = "(";
+    for(var i = 0;i<WHERE.length;i++)
+    {
+        stringResult+= this.equal(data,WHERE[i]);
+    }
+    return stringResult+")";
+}
+
+DataStructure.prototype.equal = function(data,WHERE)
+{
+    var stringResult = "";
+    if(typeof WHERE === "string")
+    {
+        return WHERE;
+    }else
+    if(typeof WHERE === "object")
+    {
+        if(Array.isArray(WHERE))
+        {
+            for(var i = 0;i<WHERE.length;i++)
+            {
+                stringResult +=this.operator(WHERE[i]);
+            }
+        }else
+        {
+            for(var param in WHERE)
+            {
+                if(typeof WHERE[param] === "object")
+                {
+                    if(eval(data[param]+WHERE[param].operator+WHERE[param].value))
+                        stringResult+=true;
+                    else
+                        stringResult+=false;
+                }else
+                {
+                    if(data[param]===WHERE[param])
+                    stringResult+=true;
+                    else
+                    stringResult+=false;
+                }
+            }
+        }
+    }
+    return stringResult;
+}
 
 DataStructure.prototype.load = function(data = [],isLoaded = false){
     var self = this;
@@ -36,7 +89,6 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     {
         if(isLoaded == false&&self.promiseLoad!==undefined)
         {
-            console.log(self.promiseLoad.status)
             if(self.promiseLoad.status==="pending")
             return self.promiseLoad;
             else
@@ -61,9 +113,27 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
         data.isFirst = true;
         this.isFirst = false;
     }
+
+    var loadedData = [];
+    if(data.loaded===undefined)
+    {
+        data.loaded = [];
+    }
+
+    if(self.data!==undefined&&self.data.length!==0)
+    {
+        for(var i = 0;i<self.data.length;i++)
+        {
+            if(this.generalOperator(self.data[i],data.WHERE))
+            {
+                data.loaded.push(self.data[i]["id"]);
+                loadedData.push(self.data[i]);
+            }
+        }
+    }
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(value){
-            
+            value.concat(loadedData);
             if(self.data === undefined)
             self.data = [];
             if(data.WHERE===undefined)

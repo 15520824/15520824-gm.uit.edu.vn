@@ -527,3 +527,51 @@ body.responsive-search-page .search-page-container .list-card-save {
 .favorite_border.material-icons{
     font-size: 34px;
 }
+
+.responsive-mini-bubble {
+    color: #2A2A33;
+    display: -webkit-box;
+    display: flex;
+    line-height: 15.6px;
+    position: relative;
+    background-color: #FFF;
+    font-size: 12px;
+    -webkit-tap-highlight-color: transparent;
+    font-family: Gotham,gotham,Verdana,sans-serif;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.responsive-mini-bubble .mini-bubble-content {
+    display: -webkit-box;
+    display: flex;
+}
+
+.responsive-mini-bubble .mini-bubble-image {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: '';
+    height: 46px;
+    width: 46px;
+    margin-right: 5px;
+    border: 0;
+}
+
+.responsive-mini-bubble .mini-bubble-details {
+    margin-bottom: 0;
+    height: 46px;
+}
+
+.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {
+    height: 15.3px;
+    white-space: nowrap;
+}
+
+.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {
+    height: 15.3px;
+    white-space: nowrap;
+}

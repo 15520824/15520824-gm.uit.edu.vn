@@ -106,14 +106,14 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
 
   table.sortTable>tbody>tr.parent{
     opacity: 1;
-    transform: none;
-    transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76);
+    /* transform: none; */
+    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */
   }
 
   table.sortTable>tbody>tr{
     opacity: 0;
-    transform: rotateX(-90deg);
-    transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76);
+    /* transform: rotateX(-90deg); */
+    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */
   }
 
   table.sortTable>tbody>tr.hideTranslate.parent{
@@ -134,3 +134,7 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
 /* table.sortTable tr:nth-child(even) {
     background-color: #f5f5f5;
   } */
+
+  table.sortTable .slip-reordering .container-view{
+    z-index: 9999 !important;
+  }

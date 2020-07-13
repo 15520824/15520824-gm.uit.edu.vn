@@ -788,7 +788,7 @@ MapView.prototype.addMapPolygon = function()
                             if(self.checkLibary[cellDeltaLat]===undefined)
                             self.checkLibary[cellDeltaLat] = [];
                             self.checkLibary[cellDeltaLat][cellDeltaLng] = 1;
-                        moduleDatabase.getModule("polygon").load({WHERE:{cellLng:cellDeltaLng,cellLat:cellDeltaLat}}).then(function(cellDeltaLat,cellDeltaLng,value){
+                        moduleDatabase.getModule("polygon").load({WHERE:[{cellLng:cellDeltaLng},"&&",{cellLat:cellDeltaLat}]}).then(function(cellDeltaLat,cellDeltaLng,value){
                             for(var i=0;i<value.length;i++)
                             {
                                 self.addWKT(value[i]["AsText(`map`)"],cellDeltaLat,cellDeltaLng)
@@ -805,170 +805,6 @@ MapView.prototype.addMapPolygon = function()
         }
         
     });
-}
-
-MapView.prototype.getBlock = function(latitude,longitude)
-{
-    var intLng,cellLng,intLat,cellLat;
-    intLng = parseInt(longitude/1);
-    cellLng = Math.ceil(longitude%1/(1/1110));
-    intLat = parseInt(latitude/1);
-    cellLat = Math.ceil(latitude%1/(1/1110));
-    cellLng = intLng*10000+cellLng;
-    cellLat = intLat*10000+cellLat;
-    return [cellLat,cellLng];
-}
-
-MapView.prototype.addMapHouse = function()
-{
-    var self = this;
-    if(this.checkHouse === undefined)
-    this.checkHouse = [];
-    if(this.currentHouse === undefined)
-    this.currentHouse = [];
-    if(this.checkLibaryHouse === undefined)
-    this.checkLibaryHouse = [];
-    google.maps.event.addListener(self.map, 'zoom_changed', function() {
-        var zoomLevel = self.map.getZoom();
-        if(zoomLevel>=10)
-        {
-            self.enableHouse = true;
-            new google.maps.event.trigger( self.map, 'center_changed' );
-        }else
-        {
-            self.enableHouse = true;
-            // self.removeMapHouse();
-        }
-    });
-    self.map.setZoom(20);
-
-    google.maps.event.addListener(self.map, "idle", function() {
-        var bounds = self.map.getBounds();
-        var ne = bounds.getNorthEast(); // LatLng of the north-east corner
-        var sw = bounds.getSouthWest();
-
-        var topRight = self.getBlock(ne.lat(), ne.lng());
-        var bottomLeft = self.getBlock(sw.lat(), sw.lng());
-        self.bottomLeft = bottomLeft;
-        self.topRight = topRight;
-        console.log(bottomLeft,topRight)
-        if(self.enableHouse == true)
-        {
-            self.removeMapHouseAround();
-            for(var cellDeltaLat=bottomLeft[0];cellDeltaLat<=topRight[0];cellDeltaLat++)
-            {
-                for(var cellDeltaLng=bottomLeft[1];cellDeltaLng<=topRight[1];cellDeltaLng++)
-                {
-                    if(self.checkHouse[cellDeltaLat]===undefined||self.checkHouse[cellDeltaLat][cellDeltaLng]===undefined)
-                    {
-                        if(self.checkHouse[cellDeltaLat]===undefined)
-                            self.checkHouse[cellDeltaLat] = [];
-                        if(self.checkHouse[cellDeltaLat][cellDeltaLng]===undefined)
-                            self.checkHouse[cellDeltaLat][cellDeltaLng] = [];
-                        if(self.checkLibaryHouse[cellDeltaLat]===undefined)
-                            self.checkLibaryHouse[cellDeltaLat] = [];
-
-                        self.checkLibaryHouse[cellDeltaLat][cellDeltaLng] = 1;
-                        moduleDatabase.getModule("activehouses").load({WHERE:{cellLng:cellDeltaLng,cellLat:cellDeltaLat}}).then(function(cellDeltaLat,cellDeltaLng,value){
-                            for(var i=0;i<value.length;i++)
-                            {
-                                self.addOrtherMarker(value[i],cellDeltaLat,cellDeltaLng);
-                            }
-                            if(value.length>0)
-                            {
-                                console.log("xxxxxxxxxxxx")
-                                var event = new CustomEvent('change-house');
-                                self.dispatchEvent(event);
-                            }
-                        }.bind(null,cellDeltaLat,cellDeltaLng))
-                    }else
-                    {
-                        self.setMapHouse(cellDeltaLat,cellDeltaLng);
-                    }
-                }
-            }
-            
-        }
-        
-    });
-}
-
-MapView.prototype.addOrtherMarker = function(data,cellLat,cellLng)
-{
-    var self = this;
-    var position = [data.lat,data.lng];
-    var image = {
-        url: "./assets/images/marker-red.png",
-        // This marker is 20 pixels wide by 32 pixels high.
-        scaledSize: new google.maps.Size(24, 24), 
-        // The origin for this image is (0, 0).
-        origin: new google.maps.Point(0, 0),
-        // The anchor for this image is the base of the flagpole at (0, 32).
-        anchor: new google.maps.Point(12, 12)
-      };
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(position[0], position[1]),
-        map: self.map,
-        draggable:false,
-        icon:image,
-        title: "Latitude:" + position[0] + " | Longtitude:" + position[1],
-        zIndex:2
-    });
-    marker.data = data;
-    this.checkHouse[cellLat][cellLng].push(marker);
-    this.currentHouse.push([cellLat,cellLng]);
-
-    return this.checkHouse[cellLat][cellLng]; 
-}
-
-MapView.prototype.setMapHouse = function(cellLat,cellLng){
-    if(this.checkLibaryHouse[cellLat]===undefined||this.checkLibaryHouse[cellLat][cellLng]===1)
-    return;
-    var arr = this.checkHouse[cellLat][cellLng];
-    for(var i =0;i<arr.length;i++)
-    {
-        arr[i].setMap(this.map);
-    }
-    
-    if(this.checkLibaryHouse[cellLat][cellLng]!==1)
-    this.currentHouse.push([cellLat,cellLng]);
-
-}
-
-MapView.prototype.removeMapHouse = function(arr){
-    for(var i = this.currentHouse.length-1;i>=0;i--)
-    {
-        var arr = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
-        for(var j = 0;j<arr.length;j++)
-        {
-            arr[j].setMap(null);
-        }
-        this.checkLibaryHouse[this.currentHouse[i][0]][this.currentHouse[i][1]] = undefined;
-        this.currentHouse.splice(i,1);
-    }
-}
-
-MapView.prototype.removeMapHouseAround = function(cellLat,cellLng){
-    var currentLat,currentLng;
-    for(var i = this.currentHouse.length-1;i>=0;i--)
-    {
-        currentLat = this.currentHouse[i][0];
-        currentLng = this.currentHouse[i][1];
-        if(currentLat<this.bottomLeft[0]||
-                currentLat>this.topRight[0]||
-                    currentLng<this.bottomLeft[1]||
-                        currentLng>this.topRight[1])
-        {
-            var arr = this.checkHouse[currentLat][currentLng];
-
-            for(var j = 0;j<arr.length;j++)
-            {
-                arr[j].setMap(null);
-            }
-            this.currentHouse.splice(i,1);
-            this.checkLibaryHouse[currentLat][currentLng] = undefined;
-        }
-    } 
 }
 
 MapView.prototype.addWKT = function(multipolygonWKT,cellLat,cellLng) {
@@ -1043,6 +879,221 @@ MapView.prototype.removeMapPolygonAround = function(cellLat,cellLng){
             }
             this.currentPolygon.splice(i,1);
             this.checkLibary[currentLat][currentLng] = undefined;
+        }
+    } 
+}
+
+
+MapView.prototype.addMapHouse = function()
+{
+    var self = this;
+    if(this.checkHouse === undefined)
+    this.checkHouse = [];
+    if(this.currentHouse === undefined)
+    this.currentHouse = [];
+    google.maps.event.addListener(self.map, 'zoom_changed', function() {
+        var zoomLevel = self.map.getZoom();
+        if(zoomLevel>=10)
+        {
+            self.enableHouse = true;
+            new google.maps.event.trigger( self.map, 'center_changed' );
+        }else
+        {
+            self.enableHouse = true;
+            // self.removeMapHouse();
+        }
+    });
+    self.map.setZoom(20);
+
+    google.maps.event.addListener(self.map, "idle", function() {
+        var bounds = self.map.getBounds();
+        var ne = bounds.getNorthEast(); // LatLng of the north-east corner
+        var sw = bounds.getSouthWest();
+
+        var topRight = [ne.lat(), ne.lng()];
+        var bottomLeft = [sw.lat(), sw.lng()];
+        self.bottomLeft = bottomLeft;
+        self.topRight = topRight;
+
+        if(self.enableHouse == true)
+        {
+            self.removeMapHouseAround();
+            moduleDatabase.getModule("activehouses").load(
+                {WHERE:[{lat:{operator:">",value:bottomLeft[0]}},"&&",{lat:{operator:"<",value:topRight[0]}},"&&",
+                        {lng:{operator:">",value:bottomLeft[1]}},"&&",{lng:{operator:"<",value:topRight[1]}}]
+                }).then(
+                function(value){
+                for(var i=0;i<value.length;i++)
+                {
+                    self.addOrtherMarker(value[i]);
+                }
+                var event = new CustomEvent('change-house');
+                self.dispatchEvent(event);
+            })
+        }
+        
+    });
+}
+
+MapView.prototype.addOrtherMarker = function(data)
+{
+    var self = this;
+    var position = [data.lat,data.lng];
+    if(this.checkHouse[position[0]]!==undefined&&this.checkHouse[position[0]][position[1]]!==undefined)
+    {
+        var arr = this.checkHouse[position[0]][position[1]];
+        for(var j = 0;j<arr.length;j++)
+        {
+            if(arr[j].getMap()===null)
+            {
+                arr[j].setMap(self.map);
+                this.currentHouse.push(position);
+            }
+        }
+        var marker = arr;
+    }else{
+        var image = {
+            url: "./assets/images/marker-red.png",
+            // This marker is 20 pixels wide by 32 pixels high.
+            scaledSize: new google.maps.Size(24, 24), 
+            // The origin for this image is (0, 0).
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at (0, 32).
+            anchor: new google.maps.Point(12, 12)
+          };
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(position[0], position[1]),
+            map: self.map,
+            draggable:false,
+            icon:image,
+            zIndex:2
+        });
+
+        var imageHover = {
+            url: "./assets/images/marker-green.png",
+            // This marker is 20 pixels wide by 32 pixels high.
+            scaledSize: new google.maps.Size(24, 24), 
+            // The origin for this image is (0, 0).
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at (0, 32).
+            anchor: new google.maps.Point(12, 12)
+          };
+
+        var infowindow = new google.maps.InfoWindow({
+            maxWidth: 350
+          });
+        marker.data = data;
+        google.maps.event.addListener(marker, 'mouseover', function() {
+            infowindow.setContent(self.modalMiniRealty(marker.data));
+            infowindow.open(self.map, marker);
+            marker.setIcon(imageHover);
+        });
+        google.maps.event.addListener(marker, 'mouseout', function() {
+            marker.setIcon(image);
+            infowindow.close();
+        });
+       
+        if(this.checkHouse[position[0]]===undefined)
+            this.checkHouse[position[0]]=[];
+        if(this.checkHouse[position[0]][position[1]] === undefined)
+            this.checkHouse[position[0]][position[1]] = [marker];
+        else
+        this.checkHouse[position[0]][position[1]].push(marker);
+        this.currentHouse.push(position);
+    }
+ 
+
+    return marker; 
+}
+
+MapView.prototype.modalMiniRealty = function(data)
+{
+    var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+    if(data.imageCurrentStaus.length>0)
+    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+data.imageCurrentStaus[0].src;
+    var thumnail = _({
+        tag:"img",
+        props:{
+            src:src
+        }
+    });
+    var temp = _(
+        {
+            tag:"a",
+            class:"responsive-mini-bubble",
+            child:[
+                {
+                    tag:"div",
+                    class:"mini-bubble-content",
+                    child:[
+                        {
+                            tag:"div",
+                            class:"mini-bubble-image",
+                            style:{
+                                backgroundImage:`url(`+src+`)`
+                            }
+                        },
+                        {
+                            tag:"div",
+                            class:"mini-bubble-details",
+                            child:[
+                                {
+                                    tag:"strong",
+                                    props:{
+                                        innerHTML:"VND "+data.price+"tỉ"
+                                    }
+                                },
+                                {
+                                    tag:"div",
+                                    props:{
+                                        innerHTML:data.width+"m, "+data.height+"m"
+                                    }
+                                },
+                                {
+                                    tag:"div",
+                                    props:{
+                                        innerHTML:data.acreage+"m²"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        })
+        return temp;
+}
+
+MapView.prototype.removeMapHouse = function(arr){
+    for(var i = this.currentHouse.length-1;i>=0;i--)
+    {
+        var arr = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
+        for(var j = 0;j<arr.length;j++)
+        {
+            arr[j].setMap(null);
+        }
+        this.currentHouse.splice(i,1);
+    }
+}
+
+MapView.prototype.removeMapHouseAround = function(cellLat,cellLng){
+    var currentLat,currentLng;
+    for(var i = this.currentHouse.length-1;i>=0;i--)
+    {
+        currentLat = this.currentHouse[i][0];
+        currentLng = this.currentHouse[i][1];
+        if(currentLat<this.bottomLeft[0]||
+                currentLat>this.topRight[0]||
+                    currentLng<this.bottomLeft[1]||
+                        currentLng>this.topRight[1])
+        {
+            var arr = this.checkHouse[currentLat][currentLng];
+
+            for(var j = 0;j<arr.length;j++)
+            {
+                arr[j].setMap(null);
+            }
+            this.currentHouse.splice(i,1);
         }
     } 
 }
