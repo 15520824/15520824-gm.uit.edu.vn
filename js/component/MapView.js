@@ -114,6 +114,7 @@ export function DetailView(map,data) {
                 if(temp.checkStateDistrict[x]!==undefined)
                 district.items = temp.checkStateDistrict[x];
                 district.emit("change");
+                if(event!==undefined)
                 temp.setInput();
             }
         }
@@ -133,6 +134,7 @@ export function DetailView(map,data) {
                 var x = parseInt(getIDCompair(this.value));
                 if(temp.checkDistrictWard[x]!==undefined)
                 ward.items = temp.checkDistrictWard[x];
+                if(event!==undefined)
                 temp.setInput();
             }
         }
@@ -153,6 +155,10 @@ export function DetailView(map,data) {
                 var x = parseInt(getIDCompair(this.value));
                 var checkid = temp.checkDistrict[temp.checkWard[x].districtid].name+"_"+temp.checkWard[x].districtid;
                 district.value = checkid;
+                console.log(temp.checkWardStreet[x])
+                if(temp.checkWardStreet[x]!==undefined)
+                street.items = temp.checkWardStreet[x];
+                if(event!==undefined)
                 temp.setInput();
             }
         }
@@ -167,6 +173,7 @@ export function DetailView(map,data) {
         on:{
             change:function(event)
             {
+                if(event!==undefined)
                 temp.setInput();
             }
         }
@@ -177,6 +184,7 @@ export function DetailView(map,data) {
         on:{
             change:function(event)
             {
+                if(event!==undefined)
                 temp.setInput();
             }
         }
@@ -184,12 +192,13 @@ export function DetailView(map,data) {
     Promise.all(arr).then(function(){
         state.items = moduleDatabase.getModule("states").getList("name",["name","id"]);
 
-        street.items = moduleDatabase.getModule("streets").getList("name",["name","id"]);
-
         temp.checkStateDistrict = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
             return {text:data.name,value:data.name+"_"+data.id}
         },true);
         temp.checkDistrictWard = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
+            return {text:data.name,value:data.name+"_"+data.id}
+        },true);
+        temp.checkWardStreet = moduleDatabase.getModule("streets").getLibary("wardid",function(data){
             return {text:data.name,value:data.name+"_"+data.id}
         },true);
         temp.checkWard = moduleDatabase.getModule("wards").getLibary("id");
@@ -226,8 +235,8 @@ export function DetailView(map,data) {
                 temp.ward.items.push({text:data.ward,value:data.ward});
                 temp.ward.items= temp.ward.items;
             }
-            temp.ward.emit("change");
             temp.ward.value = data.ward;
+            temp.ward.emit("change");
             
             index = data.street.lastIndexOf("_");
             if(index===-1)
@@ -236,14 +245,12 @@ export function DetailView(map,data) {
                 temp.street.items = temp.street.items;
             }
             temp.street.value = data.street;
-           
+            temp.setInput(false);
             if(data.lat!==undefined)
             temp.lat.value = data.lat;
 
             if(data.lng!==undefined)
             temp.lng.value = data.lng;
-
-            temp.setInput();
             map.addMoveMarker([data.lat,data.lng]);
         }
     })
@@ -258,7 +265,7 @@ export function DetailView(map,data) {
             change:function(event)
             {
                 if(temp.changInput)
-                map.addMoveMarker([parseFloat(lat.value),parseFloat(lng.value)],false)
+                map.addMoveMarker([parseFloat(lng.value),parseFloat(lat.value)],false)
             }
         }
     })
@@ -272,7 +279,7 @@ export function DetailView(map,data) {
             change:function(event)
             {
                 if(temp.changInput)
-                map.addMoveMarker([parseFloat(lat.value),parseFloat(lng.value)],false)
+                map.addMoveMarker([parseFloat(lng.value),parseFloat(lat.value)],false)
             }
         }
     })
@@ -465,11 +472,12 @@ DetailView.prototype.getDataCurrent = function()
         state:this.state.value
     }
 
-    if(this.containerGPS.style.display === "none")
+    if(this.containerGPS.style.display == "")
     {
         temp.lng=this.lng.value;
         temp.lat=this.lat.value;
     }
+    console.log(temp)
     return temp;
 }
 
@@ -483,7 +491,8 @@ DetailView.prototype.activeAutocomplete = function(map) {
     };
     
     autocomplete = new google.maps.places.Autocomplete(
-        self.input, options);
+        self.input, options
+        );
 
     // Avoid paying for data that you don't need by restricting the set of
     // place fields that are returned to just the address components.
@@ -492,11 +501,14 @@ DetailView.prototype.activeAutocomplete = function(map) {
     // When the user selects an address from the drop-down, populate the
     // address fields in the form.
     autocomplete.addListener('place_changed', function () {
+        if(self.input.value!==self.input.lastValue)
         self.fillInAddress(autocomplete, self.input.value, map)
+        self.input.lastValue = self.input.value;
     });
+    self.autocomplete = autocomplete;
 }
 
-DetailView.prototype.setInput = function()
+DetailView.prototype.setInput = function(isChange=true)
 {
     var stringInput = "";
     var index;
@@ -554,103 +566,105 @@ DetailView.prototype.setInput = function()
         isFirst = ", "
     }
     this.input.value = stringInput;
+    if(isChange===true)
+    google.maps.event.trigger(this.autocomplete, 'place_changed');
 }
 
 DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
     // Get the place details from the autocomplete object.
-    var self = this;
-    var place = autocomplete.getPlace();
+    // var self = this;
+    // var place = autocomplete.getPlace();
     
     this.getLongLat(text).then(function (result) {
         map.addMoveMarker(result)
     })
     
-    var textResult = text;
-    var componentForm = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'long_name',
-        administrative_area_level_2: 'long_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-    };
+    // var textResult = text;
+    // var componentForm = {
+    //     street_number: 'short_name',
+    //     route: 'long_name',
+    //     locality: 'long_name',
+    //     administrative_area_level_1: 'long_name',
+    //     administrative_area_level_2: 'long_name',
+    //     country: 'long_name',
+    //     postal_code: 'short_name'
+    // };
     
-    self.number.value = "";
-    self.street.value = "";
-    self.state.value = "";
-    self.district.value = "";
-    self.ward.value = "";
+    // self.number.value = "";
+    // self.street.value = "";
+    // self.state.value = "";
+    // self.district.value = "";
+    // self.ward.value = "";
 
-    // Get each component of the address from the place details,
-    // and then fill-in the corresponding field on the form.
-    console.log(place)
-    for (var i = place.address_components.length-1; i >= 0 ; i--) {
-        var addressType = place.address_components[i].types[0];
-        if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            switch (addressType) {
-                case "street_number":
-                    var valueNumber = val;
-                    console.log(val)
-                    self.number.value = valueNumber;
-                    break;
-                case "route":
-                    var valueRoute = getContainsChild(self.street.items,{text:val,value:val})
-                    if(valueRoute === false)
-                    {
-                        self.street.items= self.street.items.concat([{text:val,value:val}])
-                        self.street.value = val;
-                        valueRoute = {text:val,value:val};
-                    }else
-                    self.street.value = valueRoute.value;
+    // // Get each component of the address from the place details,
+    // // and then fill-in the corresponding field on the form.
+    // console.log(place)
+    // for (var i = place.address_components.length-1; i >= 0 ; i--) {
+    //     var addressType = place.address_components[i].types[0];
+    //     if (componentForm[addressType]) {
+    //         var val = place.address_components[i][componentForm[addressType]];
+    //         switch (addressType) {
+    //             case "street_number":
+    //                 var valueNumber = val;
+    //                 console.log(val)
+    //                 self.number.value = valueNumber;
+    //                 break;
+    //             case "route":
+    //                 var valueRoute = getContainsChild(self.street.items,{text:val,value:val})
+    //                 if(valueRoute === false)
+    //                 {
+    //                     self.street.items= self.street.items.concat([{text:val,value:val}])
+    //                     self.street.value = val;
+    //                     valueRoute = {text:val,value:val};
+    //                 }else
+    //                 self.street.value = valueRoute.value;
 
-                    textResult = textResult.replace(textResult.slice(0,textResult.indexOf(val+", ")+val.length+2),"");
-                    break;
-                case "administrative_area_level_1":
-                    var valueState = getContainsChild(self.state.items,{text:val,value:val});
-                    if(valueState === false)
-                    {
-                        self.state.items=self.state.items.concat([{text:val,value:val}]);
-                        self.state.value = val;
-                        valueState = {text:val,value:val};
-                    }else
-                    self.state.value = valueState.value;
-                    break;
-                case "administrative_area_level_2":
-                    if(typeof valueState === "string")
-                    var valueDistrict = getContainsChild(self.district.items,{text:val,value:val});
-                    else
-                    var valueDistrict = getContainsChild(self.checkStateDistrict[getIDCompair(valueState.value)],{text:val,value:val});
-                    if(valueDistrict === false)
-                    {
-                        self.district.items=self.district.items.concat([{text:val,value:val}]);
-                        self.district.value = val;
-                        valueDistrict = {text:val,value:val};
-                    }else
-                    self.district.value = valueDistrict.value;
-                    break;
-                case "country":
-                    break;
-            }
-        }
-    }
-    var val  = textResult.slice(0,textResult.indexOf(","));
-    val = val.replace("Ward Number","Phường");
+    //                 textResult = textResult.replace(textResult.slice(0,textResult.indexOf(val+", ")+val.length+2),"");
+    //                 break;
+    //             case "administrative_area_level_1":
+    //                 var valueState = getContainsChild(self.state.items,{text:val,value:val});
+    //                 if(valueState === false)
+    //                 {
+    //                     self.state.items=self.state.items.concat([{text:val,value:val}]);
+    //                     self.state.value = val;
+    //                     valueState = {text:val,value:val};
+    //                 }else
+    //                 self.state.value = valueState.value;
+    //                 break;
+    //             case "administrative_area_level_2":
+    //                 if(typeof valueState === "string")
+    //                 var valueDistrict = getContainsChild(self.district.items,{text:val,value:val});
+    //                 else
+    //                 var valueDistrict = getContainsChild(self.checkStateDistrict[getIDCompair(valueState.value)],{text:val,value:val});
+    //                 if(valueDistrict === false)
+    //                 {
+    //                     self.district.items=self.district.items.concat([{text:val,value:val}]);
+    //                     self.district.value = val;
+    //                     valueDistrict = {text:val,value:val};
+    //                 }else
+    //                 self.district.value = valueDistrict.value;
+    //                 break;
+    //             case "country":
+    //                 break;
+    //         }
+    //     }
+    // }
+    // var val  = textResult.slice(0,textResult.indexOf(","));
+    // val = val.replace("Ward Number","Phường");
 
-    if(typeof valueDistrict === "string")
-    var valueWard = getContainsChild(self.ward.items,{text:val,value:val});
-    else
-    var valueWard = getContainsChild(self.checkDistrictWard[getIDCompair(valueDistrict.value)],{text:val,value:val});
-    if(valueWard===false)
-    {
-        self.ward.items=self.ward.items.concat([{text:val,value:val}]);
-        self.ward.value = val;
-    }
-    self.ward.value = valueWard.value;
+    // if(typeof valueDistrict === "string")
+    // var valueWard = getContainsChild(self.ward.items,{text:val,value:val});
+    // else
+    // var valueWard = getContainsChild(self.checkDistrictWard[getIDCompair(valueDistrict.value)],{text:val,value:val});
+    // if(valueWard===false)
+    // {
+    //     self.ward.items=self.ward.items.concat([{text:val,value:val}]);
+    //     self.ward.value = val;
+    // }
+    // self.ward.value = valueWard.value;
 
     
-    this.setInput();
+    // this.setInput();
 }
 
 
@@ -985,12 +999,6 @@ MapView.prototype.addOrtherMarker = function(data)
         var infowindow = new google.maps.InfoWindow({
             maxWidth: 350
           });
-        google.maps.event.addListener(infowindow, 'mouseover', function() {
-            marker.hover = false;
-        })
-        google.maps.event.addListener(infowindow, 'mouseout', function() {
-            marker.hover = true;
-        })
         marker.data = data;
         google.maps.event.addListener(marker, 'mouseover', function() {
             if(this.hover!==true)

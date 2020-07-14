@@ -8,7 +8,7 @@ import { formatDate } from '../component/FormatFunction';
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
-
+import {descViewImagePreview} from '../component/ModuleImage';
 
 
 var _ = Fcore._;
@@ -176,6 +176,7 @@ MapRealty.prototype.getView = function () {
 
 MapRealty.prototype.modalRealty = function(){
     var self = this;
+  
     var container = _({
         tag:"ul",
         class:["photo-cards", "photo-cards_wow", "photo-cards_short"],
@@ -290,8 +291,56 @@ MapRealty.prototype.modalRealty = function(){
     return temp;
 }
 
+MapRealty.prototype.mediaItem = function(data,index)
+{
+    var temp = _(
+        {
+            tag:"li",
+            class:["media-stream-tile"],
+            on:{
+                click:function(event)
+                {   
+                    var arr = [];
+                    for(var i = 0;i<manyfiles.length;i++)
+                    {
+                        arr.push({
+                                avatar:"https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
+                                userName:"Bùi Phạm Minh Thi",
+                                src:data[i].src,
+                                date:data[i].created,
+                                note:""
+                        })
+                    }
+                    document.body.appendChild(descViewImagePreview(arr,index));
+                }
+            },
+            child:[
+                {
+                    tag:"img",
+                    attr:{
+                        src:"https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+data[index].src
+                    }
+                }
+            ]
+        },
+    )
+    return temp;
+}
+
 MapRealty.prototype.modalLargeRealty = function(data)
 {
+    var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+    if(data.imageCurrentStaus.length>0)
+    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+data.imageCurrentStaus[0].src;
+    var staus = "";
+    if (parseInt(data.salestatus) % 10 == 1)
+        staus += "Còn bán";
+    if (parseInt(parseInt(data.salestatus) / 10) == 1) {
+        if (staus == "")
+            staus += "Còn cho thuê";
+        else
+            staus += " và còn cho thuê";
+    }
     var modal = _({
         tag:"modal",
         child:[
@@ -314,9 +363,19 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                             {
                                                 tag:"button",
                                                 class:["ds-close-lightbox-icon", "hc-back-to-list"],
+                                                on:{
+                                                    click:function(event)
+                                                    {
+                                                        modal.selfRemove();
+                                                    }
+                                                },
                                                 child:[
                                                     {
                                                         tag:"i",
+                                                        style:{
+                                                            fontSize:"2rem",
+                                                            color:"white"
+                                                        },
                                                         class:"material-icons",
                                                         props:{
                                                             innerHTML:"close"
@@ -343,84 +402,34 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                         {
                                                                             tag:"li",
                                                                             class:["media-stream-tile", "media-stream-tile--prominent"],
+                                                                            on:{
+                                                                                click:function(event)
+                                                                                {
+                                                                                    var arr = [];
+                                                                                    for(var i = 0;i<data.imageCurrentStaus.length;i++)
+                                                                                    {
+                                                                                        arr.push({
+                                                                                                avatar:"https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
+                                                                                                userName:"Bùi Phạm Minh Thi",
+                                                                                                src:data.imageCurrentStaus[i].src,
+                                                                                                date:data.imageCurrentStaus[i].created,
+                                                                                                note:""
+                                                                                        })
+                                                                                    }
+                                                                                    document.body.appendChild(descViewImagePreview(arr,0));
+                                                                                }
+                                                                            },
                                                                             child:[
                                                                                 {
                                                                                     tag:"img",
                                                                                     class:["media-stream-photo", "media-stream-photo--loader"],
                                                                                     attr:{
-                                                                                        src:"https://photos.zillowstatic.com/cc_ft_960/ISj7h18efa8nyf1000000000.jpg"
+                                                                                        src:src
                                                                                     }
                                                                                 }
                                                                             ]
                                                                         },
-                                                                        {
-                                                                            tag:"li",
-                                                                            class:["media-stream-tile", "tile-1"],
-                                                                            child:[
-                                                                                {
-                                                                                    tag:"img",
-                                                                                    attr:{
-                                                                                        src:"https://photos.zillowstatic.com/cc_ft_576/ISb953shgvo4rg1000000000.jpg"
-                                                                                    }
-                                                                                }
-                                                                            ]
-                                                                        },
-                                                                        {
-                                                                            tag:"li",
-                                                                            class:["media-stream-tile", "tile-2"],
-                                                                            child:[
-                                                                                {
-                                                                                    tag:"img",
-                                                                                    attr:{
-                                                                                        src:"https://photos.zillowstatic.com/cc_ft_576/IS333r9bcng7rg1000000000.jpg"
-                                                                                    }
-                                                                                }
-                                                                            ]
-                                                                        },
-                                                                        {
-                                                                            tag:"li",
-                                                                            class:["media-stream-tile", "media-stream-tile--fullwidth", "media-stream-tile--halfheight", "media-stream-tile--upsell"],
-                                                                            child:[
-                                                                                {
-                                                                                    tag:"img",
-                                                                                    attr:{
-                                                                                        src:"https://photos.zillowstatic.com/cc_ft_576/ISj7h18efa8nyf1000000000.jpg"
-                                                                                    }
-                                                                                },
-                                                                                {
-                                                                                    tag:"div",
-                                                                                    class:"upsell-photo-content",
-                                                                                    child:[
-                                                                                        {
-                                                                                            tag:"div",
-                                                                                            class:"ds-hero-headline",
-                                                                                            props:{
-                                                                                                innerHTML:"Quan tâm đến tour du lịch nhà này?"
-                                                                                            }
-                                                                                        },
-                                                                                        {
-                                                                                            tag:"ul",
-                                                                                            class:"contact-button-group",
-                                                                                            child:[
-                                                                                                {
-                                                                                                    tag:"li",
-                                                                                                    class:"contact-button",
-                                                                                                    child:[
-                                                                                                        {
-                                                                                                            tag:"button",
-                                                                                                            class:["Button-wpcbcc-0", "iJIIUW", "contact-button-condensed", "ds-button", "ds-label-small"],
-                                                                                                            props:{
-                                                                                                                innerHTML:"Đi thăm quan"
-                                                                                                            }
-                                                                                                        }
-                                                                                                    ]
-                                                                                                }
-                                                                                            ]
-                                                                                        }
-                                                                                    ]
-                                                                                }
-                                                                            ]
-                                                                        }
+                                                                       
                                                                     ]
                                                                    }
                                                                ]
@@ -456,7 +465,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                     tag:"img",
                                                                                                     class:"pizo-header-logo-text",
                                                                                                     attr:{
-                                                                                                        src:"assets/images/logo-text.png"
+                                                                                                        src:"assets/images/logo-text-blue.png"
                                                                                                     }
                                                                                                 }
                                                                                                ]
@@ -471,7 +480,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                        child:[
                                                                                                            {
                                                                                                                tag:"button",
-                                                                                                               class:["sc-bdVaJa", "cKVUOM", "no-class"],
+                                                                                                               class:["sc-bdVaJa", "gpVNOz"],
                                                                                                                child:[
                                                                                                                    {
                                                                                                                        tag:"div",
@@ -539,32 +548,32 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                        tag:"li",
                                                                                                        class:["sc-bMVAic", "bzoMbE"],
                                                                                                        child:[
-                                                                                                           {
-                                                                                                               tag:"button",
-                                                                                                               class:["StyledDropdownIcon-sc-7y5ig8-0", "lhzQGq", "DropdownPopper-sc-1vnow1h-0", "kknbUe", "MenuPopper-sc-1uu201g-0", "eLpspV"],
-                                                                                                               child:[
-                                                                                                                   {
-                                                                                                                       tag:"div",
-                                                                                                                       class:["ds-text-button"],
-                                                                                                                       child:[
-                                                                                                                           {
-                                                                                                                               tag:"i",
-                                                                                                                               class:"material-icons",
-                                                                                                                               props:{
-                                                                                                                                   innerHTML:"more_horiz"
-                                                                                                                               }
-                                                                                                                           }
-                                                                                                                       ]
-                                                                                                                   },
-                                                                                                                   {
-                                                                                                                       tag:"span",
-                                                                                                                       class:["VisuallyHidden-t8tewe-0", "fyUmOz"],
-                                                                                                                       props:{
-                                                                                                                           innerHTML:"Show more"
-                                                                                                                       }
-                                                                                                                   }
-                                                                                                               ]
-                                                                                                           }
+                                                                                                            {
+                                                                                                                tag:"button",
+                                                                                                                class:["sc-bMVAic", "gpVNOz"],
+                                                                                                                child:[
+                                                                                                                    {
+                                                                                                                        tag:"div",
+                                                                                                                        class:["sc-gqPbQI", "eKDTCE"],
+                                                                                                                        child:[
+                                                                                                                            {
+                                                                                                                                tag:"i",
+                                                                                                                                class:"material-icons",
+                                                                                                                                props:{
+                                                                                                                                    innerHTML:"more_horiz"
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        tag:"span",
+                                                                                                                        class:["sc-hORach", "duJWoc"],
+                                                                                                                        props:{
+                                                                                                                            innerHTML:"More"
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                ]
+                                                                                                            }
                                                                                                        ]
                                                                                                    }
                                                                                                ]
@@ -603,7 +612,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                                        tag:"span",
                                                                                                                        class:"ds-value",
                                                                                                                        props:{
-                                                                                                                           innerHTML:"Số tiền ở đây"
+                                                                                                                           innerHTML:"VND "+data.price+" tỉ"
                                                                                                                        }
                                                                                                                    }
                                                                                                                ]
@@ -623,7 +632,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                                                    {
                                                                                                                                        tag:"span",
                                                                                                                                        props:{
-                                                                                                                                           innerHTML:"2"
+                                                                                                                                           innerHTML:data.width
                                                                                                                                        }
                                                                                                                                    },
                                                                                                                                    {
@@ -650,7 +659,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                                                            {
                                                                                                                                                tag:"span",
                                                                                                                                                props:{
-                                                                                                                                                    innerHTML:"1"
+                                                                                                                                                    innerHTML:data.height
                                                                                                                                                 }
                                                                                                                                            },
                                                                                                                                            {
@@ -676,7 +685,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                                                     {
                                                                                                                                         tag:"span",
                                                                                                                                         props:{
-                                                                                                                                            innerHTML:"1667"
+                                                                                                                                            innerHTML:data.acreage
                                                                                                                                         }
                                                                                                                                     },
                                                                                                                                     {
@@ -748,62 +757,62 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                         {
                                                                                                             tag:"span",
                                                                                                             props:{
-                                                                                                                innerHTML:"Đang bán"
+                                                                                                                innerHTML:staus
                                                                                                             }
                                                                                                         }
                                                                                                        ]
                                                                                                    },
-                                                                                                   {
-                                                                                                    tag:"span",
-                                                                                                    class:["sc-drMfKT", "hVItaR"],
-                                                                                                    child:[
-                                                                                                        {
-                                                                                                            tag:"span",
-                                                                                                            class:["sc-eKZiaR", "haXPGg"],
-                                                                                                            props:{
-                                                                                                                innerHTML:"Định giá khu vực"
-                                                                                                            }
-                                                                                                        },
-                                                                                                        {
-                                                                                                            tag:"span",
-                                                                                                            class:["sc-ePZHVD", "iBZiRD", "ds-dashed-underline"],
-                                                                                                            props:{
-                                                                                                                innerHTML:"$489,000"
-                                                                                                            }
-                                                                                                        }
-                                                                                                    ]
-                                                                                                },
+                                                                                                //    {
+                                                                                                //     tag:"span",
+                                                                                                //     class:["sc-drMfKT", "hVItaR"],
+                                                                                                //     child:[
+                                                                                                //         {
+                                                                                                //             tag:"span",
+                                                                                                //             class:["sc-eKZiaR", "haXPGg"],
+                                                                                                //             props:{
+                                                                                                //                 innerHTML:"Định giá khu vực"
+                                                                                                //             }
+                                                                                                //         },
+                                                                                                //         {
+                                                                                                //             tag:"span",
+                                                                                                //             class:["sc-ePZHVD", "iBZiRD", "ds-dashed-underline"],
+                                                                                                //             props:{
+                                                                                                //                 innerHTML:"$489,000"
+                                                                                                //             }
+                                                                                                //         }
+                                                                                                //     ]
+                                                                                                // },
                                                                                                    
                                                                                                ]
                                                                                            }
                                                                                        ]
                                                                                    },
-                                                                                   {
-                                                                                       tag:"div",
-                                                                                       class:"ds-mortgage-row",
-                                                                                       child:[
-                                                                                           {
-                                                                                               tag:"span",
-                                                                                               class:["sc-CtfFt", "fLHEyC"],
-                                                                                               child:[
-                                                                                                   {
-                                                                                                       tag:"span",
-                                                                                                       class:["sc-fjmCvl", "fqWQvO"],
-                                                                                                       props:{
-                                                                                                           innerHTML:"Phí nhà đất"
-                                                                                                       }
-                                                                                                   },
-                                                                                                   {
-                                                                                                       tag:"span",
-                                                                                                       class:["sc-jzJRlG", "cpUdby"],
-                                                                                                       props:{
-                                                                                                           innerHTML:"$3,120/mo"
-                                                                                                       }
-                                                                                                   }
-                                                                                               ]
-                                                                                           }
-                                                                                       ]
-                                                                                   }
+                                                                                //    {
+                                                                                //        tag:"div",
+                                                                                //        class:"ds-mortgage-row",
+                                                                                //        child:[
+                                                                                //            {
+                                                                                //                tag:"span",
+                                                                                //                class:["sc-CtfFt", "fLHEyC"],
+                                                                                //                child:[
+                                                                                //                    {
+                                                                                //                        tag:"span",
+                                                                                //                        class:["sc-fjmCvl", "fqWQvO"],
+                                                                                //                        props:{
+                                                                                //                            innerHTML:"Phí nhà đất"
+                                                                                //                        }
+                                                                                //                    },
+                                                                                //                    {
+                                                                                //                        tag:"span",
+                                                                                //                        class:["sc-jzJRlG", "cpUdby"],
+                                                                                //                        props:{
+                                                                                //                            innerHTML:"$3,120/mo"
+                                                                                //                        }
+                                                                                //                    }
+                                                                                //                ]
+                                                                                //            }
+                                                                                //        ]
+                                                                                //    }
                                                                                ]
                                                                            }
                                                                        ]
@@ -835,7 +844,10 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                        child:[
                                                                                            {
                                                                                                tag:"button",
-                                                                                               class:["Button-wpcbcc-0", "btcvqQ", "contact-button-condensed", "ds-button", "ds-label-small"]
+                                                                                               class:["Button-wpcbcc-0", "btcvqQ", "contact-button-condensed", "ds-button", "ds-label-small"],
+                                                                                               props:{
+                                                                                                innerHTML:"Đặt tour thăm quan"
+                                                                                                }
                                                                                            }
                                                                                        ]
                                                                                    }
@@ -859,6 +871,59 @@ MapRealty.prototype.modalLargeRealty = function(data)
             }
         ]
     })
+    var mediaContainer = $("ul.media-stream",modal);
+    for(var i = 1;i<data.imageCurrentStaus.length;i++)
+    {
+        mediaContainer.appendChild(this.mediaItem(data.imageCurrentStaus,i));
+    }
+
+    mediaContainer.appendChild(_( {
+        tag:"li",
+        class:["media-stream-tile", "media-stream-tile--fullwidth", "media-stream-tile--halfheight", "media-stream-tile--upsell"],
+        child:[
+            {
+                tag:"img",
+                style:{
+                    opacity:0.25
+                },
+                attr:{
+                    src:src
+                }
+            },
+            {
+                tag:"div",
+                class:"upsell-photo-content",
+                child:[
+                    {
+                        tag:"div",
+                        class:"ds-hero-headline",
+                        props:{
+                            innerHTML:"Quan tâm đến tour du lịch nhà này?"
+                        }
+                    },
+                    {
+                        tag:"ul",
+                        class:"contact-button-group",
+                        child:[
+                            {
+                                tag:"li",
+                                class:"contact-button",
+                                child:[
+                                    {
+                                        tag:"button",
+                                        class:["Button-wpcbcc-0", "iJIIUW", "contact-button-condensed", "ds-button", "ds-label-small"],
+                                        props:{
+                                            innerHTML:"Đặt tour thăm quan"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }))
     return modal;
 }
 
@@ -897,11 +962,12 @@ MapRealty.prototype.itemMap = function(marker){
         on:{
             mouseover:function(event)
             {
-                google.maps.event.trigger(marker,'onmouseover');
+                console.log(marker)
+                new google.maps.event.trigger(marker,'onmouseover');
             },
             mouseout:function(event)
             {
-                google.maps.event.trigger(marker,'onmouseout');
+                new google.maps.event.trigger(marker,'onmouseout');
             },
             click:function(event)
             {

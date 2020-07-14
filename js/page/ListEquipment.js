@@ -235,7 +235,9 @@ ListEquipment.prototype.getView = function () {
             {value:'Có sẳn',sort:true,style:{minWidth:"200px",width:"200px"}},
             {value:'Ngày tạo',sort:true,style:{minWidth:"200px",width:"200px"}},
             {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
+            console.log(self.formatDataRow(value));
             self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+            
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
     });
@@ -284,7 +286,7 @@ ListEquipment.prototype.formatDataRow = function(data)
 ListEquipment.prototype.getDataRow = function(data)
 {
     var type;
-    switch(data.type)
+    switch(parseInt(data.type))
     {
         case 0:
             type = "Số lượng";

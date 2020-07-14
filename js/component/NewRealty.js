@@ -398,7 +398,10 @@ NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
                             selfElement.value = value.input.value;
                             temp.data = childNode.getDataCurrent();
                             childRemove.selfRemove();
-
+                            if(temp.data.lat!=undefined&&temp.data.lng!=undefined)
+                            {
+                                self.containerMap.addMoveMarker([temp.data.lng,temp.data.lat],false)
+                            }
                         },temp.data)
                         childNode.addLatLng();
                         var childRemove = _({
@@ -423,7 +426,7 @@ NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
         ]
     })
 
-    if(addressid!==0)
+    if(addressid!=0)
     {
         var number = this.checkAddress[addressid].addressnumber;
         var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
@@ -712,7 +715,7 @@ NewRealty.prototype.descViewdetail = function () {
         containerAdress.appendChild(addressCurrent);
         var map = new MapView();
         map.activePlanningMap();
-        map.addMoveMarker([this.data.original.lat,this.data.original.lng],false);
+        map.addMoveMarker([this.data.original.lng,this.data.original.lat],false);
         map.currentMarker.setDraggable(false);
         this.containerMap.parentNode.replaceChild(map, this.containerMap);
         this.containerMap = map;
@@ -2254,7 +2257,7 @@ NewRealty.prototype.convenientView = function () {
         on:{
             add:function(event)
             {
-                switch(event.itemData.data.type)
+                switch(parseInt(event.itemData.data.type))
                 {
                     case 0:
                         container.appendChild(self.itemCount(event.itemData.data));
@@ -2288,10 +2291,10 @@ NewRealty.prototype.convenientView = function () {
             temp = libary[this.data.original.equipment[i].equipmentid];
             temp.content = this.data.original.equipment[i].content;
             value.push(this.data.original.equipment[i].equipmentid);
-            switch(temp.type)
+            switch(parseInt(temp.type))
             {
                 case 0:
-                    if(temp.available===1)
+                    if(temp.available==1)
                     container.appendChild(self.itemCount(temp));
                     else
                     container.appendChild(self.itemDisplayNone(temp));

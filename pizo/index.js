@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 31);
+/******/ 	return __webpack_require__(__webpack_require__.s = 32);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -102,7 +102,7 @@ var ACore = new absol_src_HTML5_Dom__WEBPACK_IMPORTED_MODULE_0__[/* default */ "
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _jsform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
+/* harmony import */ var _jsform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(31);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -140,7 +140,8 @@ function DataStructure(hostDatabase, name) {
 DataStructure.prototype.generalOperator = function (data, WHERE) {
   var stringResult = this.operator(data, WHERE);
   return eval(stringResult);
-};
+}; // DataStructure.prototype.generalOrder = function(data,W)
+
 
 DataStructure.prototype.operator = function (data, WHERE) {
   var stringResult = "(";
@@ -189,6 +190,12 @@ DataStructure.prototype.load = function () {
     if (isLoaded == false && self.promisePart[JSON.stringify(data.WHERE)] !== undefined) {
       if (self.promisePart[JSON.stringify(data.WHERE)].status === "pending") return self.promisePart[JSON.stringify(data.WHERE)];else return Promise.resolve(self.promisePart[JSON.stringify(data.WHERE)].data);
     }
+  }
+
+  var odering = ["id"];
+
+  if (data.ODERING !== undefined) {
+    odering = data.ODERING;
   }
 
   if (data.LIMIT !== undefined) {}
@@ -254,7 +261,6 @@ DataStructure.prototype.load = function () {
       self.getLibary();
       promiseLoad.status = "done";
       promiseLoad.data = value;
-      console.log(value);
       resolve(value);
     })["catch"](function (error) {
       promiseLoad.status = "reject";
@@ -680,7 +686,6 @@ function Dom(option) {
         });
 
 
-
     this.$ = this.selectAttacth.bind(this);
     this._ = this.create.bind(this);
     this.buildDom = this._;
@@ -704,9 +709,9 @@ Dom.prototype.fromCode = function (code) {
 
 /**
  * DFS
- * @param {string} query 
- * @param {Element} root 
- * @param {function} onFound - return true to stop find 
+ * @param {string} query
+ * @param {Element} root
+ * @param {function} onFound - return true to stop find
  */
 Dom.prototype.selectAttacth = function (query, root, onFound) {
     var res;
@@ -720,9 +725,9 @@ Dom.prototype.selectAttacth = function (query, root, onFound) {
 
 /**
  * DFS
- * @param {string} query 
- * @param {Element} root 
- * @param {function} onFound - return true to stop find 
+ * @param {string} query
+ * @param {Element} root
+ * @param {function} onFound - return true to stop find
  */
 Dom.prototype.select = function (query, root, onFound) {
     root = root || document.documentElement;
@@ -731,8 +736,8 @@ Dom.prototype.select = function (query, root, onFound) {
 };
 
 /**
- * 
- * @param {Element} element 
+ *
+ * @param {Element} element
  */
 Dom.prototype.attach = function (element) {
     if (typeof element.attr == 'function') return;
@@ -751,11 +756,10 @@ Dom.prototype.makeNewTextNode = function (data) {
 };
 
 
-
 /**
- * 
+ *
  * @param {Object} option
- * @returns {Element} 
+ * @returns {Element}
  */
 Dom.prototype.create = function (option, isInherited) {
     var res;
@@ -765,16 +769,14 @@ Dom.prototype.create = function (option, isInherited) {
         option = {};
         /** fix reinit component */
         isInherited = true;
-    }
-    else {
+    } else {
         var optionType = typeof option;
         if (optionType == 'string') {
             option = option.trim();
             if (option[0] == '<') {
                 res = this.fromCode(option);
                 option = {};
-            }
-            else {
+            } else {
                 var queryObj = JSPath["a" /* default */].parseQuery(option);
                 option = {};
                 option.tag = queryObj.tagName || this.defaultTag;
@@ -795,19 +797,16 @@ Dom.prototype.create = function (option, isInherited) {
     if (option.elt) {
 
         res = option.elt;
-    }
-    else {
+    } else {
         if (!res) {
             if (creator) {
                 if (creator.render) {
                     res = creator.render(option.data);
-                }
-                else {
+                } else {
                     res = creator(option.data);
                 }
 
-            }
-            else {
+            } else {
                 res = this.makeNewElement(option.tag);
                 Object.assign(res, option.data);
             }
@@ -828,8 +827,7 @@ Dom.prototype.create = function (option, isInherited) {
                 for (var eventHandlerKey in eventHandler) {
                     if (res.eventHandler[eventHandlerKey]) {
                         throw new Error("Same name of eventHandler[" + eventHandlerKey + "]");
-                    }
-                    else {
+                    } else {
                         res.eventHandler[eventHandlerKey] = eventHandler[eventHandlerKey];
                     }
                 }
@@ -870,25 +868,21 @@ Dom.prototype.install = function (arg0, arg1) {
                     if (_this.creator[key] != func)
                         _this.creator[key] = func;
             });
-        }
-        else if (typeof (arg0) == 'function') {
+        } else if (typeof (arg0) == 'function') {
             var name = arg0.tag || getFunctionName(arg0) || arg0.name;
             if (name) {
                 this.creator[name.toLowerCase()] = arg0;
-            }
-            else {
+            } else {
                 console.error('No ident name of creator function', arg0);
             }
-        }
-        else if (arg0 instanceof Array) {
+        } else if (arg0 instanceof Array) {
             arg0.forEach(function (func) {
                 var name = arg0.tag || getFunctionName(func) || func.name;
                 if (name) {
                     _this.creator[name.toLowerCase()] = func;
                 }
             });
-        }
-        else if (typeof arg0 == 'object') {
+        } else if (typeof arg0 == 'object') {
             Object.keys(arg0).forEach(function (key) {
                 if (key.startsWith('_') || key.startsWith('$')) return;
                 var func = arg0[key];
@@ -896,9 +890,7 @@ Dom.prototype.install = function (arg0, arg1) {
                     if (_this.creator[key] != func)
                         _this.creator[key] = func;
             });
-        }
-        
-        else {
+        } else {
             console.error('Unknow data', arg0);
         }
     } else if (arguments.length == 2) {
@@ -910,8 +902,7 @@ Dom.prototype.install = function (arg0, arg1) {
                     if (_this.creator[key] != func)
                         _this.creator[key] = func;
             });
-        }
-        else if (arg0 instanceof RegExp) {
+        } else if (arg0 instanceof RegExp) {
             if (arg1.creator) arg1 = arg1.creator;
             Object.keys(arg1).forEach(function (key) {
                 if (key.match(arg0)) {
@@ -921,27 +912,31 @@ Dom.prototype.install = function (arg0, arg1) {
                             _this.creator[key] = func;
                 }
             });
-        }
-        else if (typeof (arg0) == 'string' && arg0.length > 0) {
+        } else if (typeof (arg0) == 'string' && arg0.length > 0) {
             if (typeof (arg1) == 'function') {
                 this.creator[arg0] = arg1;
-            }
-            else {
+            } else {
                 console.error('arg1 is not a function');
             }
         }
-    }
-    else {
+    } else {
         console.error('Invalid param');
     }
 
     return this;
 };
 
+/***
+ *
+ * @param {String | null} tagName
+ */
+Dom.prototype.require = function (tagName) {
+    return this.creator[tagName] || null;
+};
 
 /**
- * 
- * @param {*} o 
+ *
+ * @param {*} o
  * @returns {Boolean}
  */
 Dom.isDomNode = function (o) {
@@ -968,9 +963,6 @@ Dom.activeFullScreen = function (element) {
 };
 
 
-
-
-
 Dom.deactiveFullScreen = function () {
     if (document.exitFullscreen) {
         document.exitFullscreen();
@@ -990,7 +982,6 @@ Dom.isFullScreen = function () {
         document.msFullscreenElement;
     return !!fullScreenElement;
 };
-
 
 
 /**
@@ -1023,7 +1014,7 @@ Dom.traceOutBoundingClientRect = function (current) {
         if (isHtml) break;
         current = current.parentElement;
     }
-    return { left: left, right: right, top: top, bottom: bottom, width: right - left, height: bottom - top };
+    return {left: left, right: right, top: top, bottom: bottom, width: right - left, height: bottom - top};
 };
 
 
@@ -1052,18 +1043,17 @@ Dom.fontFaceIsLoaded = function (fontFace, timeout) {
                 if (remainTime < 0) {
                     resolve(false);
                     element.selfRemove();
-                }
-                else
+                } else
                     requestAnimationFrame(function () {
                         var currentOffsetWidth = element.getBoundingClientRect().width;
                         if (currentOffsetWidth != lastOffsetWidth) {
                             resolve(true);
                             element.selfRemove();
-                        }
-                        else
+                        } else
                             check(remainTime - 10);
                     }, 10);
             }
+
             check(timeout);
         });
     });
@@ -1079,7 +1069,7 @@ Dom.getScreenSize = function () {
         document.documentElement.clientHeight ||
         document.body.clientHeight;
 
-    return { WIDTH: width, HEIGHT: height, width: width, height: height };
+    return {WIDTH: width, HEIGHT: height, width: width, height: height};
 };
 
 
@@ -1095,8 +1085,7 @@ Dom.waitImageLoaded = function (img, timeout) {
     return new Promise(function (rs) {
         if (img.addEventListener) {
             img.addEventListener('load', rs, false);
-        }
-        else {
+        } else {
             img.attachEvent('onload', rs, false);
         }
         setTimeout(rs, timeout || 5000);
@@ -1144,8 +1133,7 @@ Dom.imageToCanvas = function (element) {
             preRender.selfRemove();
             return canvas;
         });
-    }
-    else {
+    } else {
         throw new Error("Element must be image");
     }
 };
@@ -1154,15 +1142,12 @@ Dom.imageToCanvas = function (element) {
 Dom.ShareInstance = new Dom();
 
 
-
-
 Dom.scrollWidthPromise;
 
 Dom.documentReady = new Promise(function (resolve) {
     if (document.body) {
         resolve();
-    }
-    else {
+    } else {
         window.addEventListener("load", resolve);
     }
 });
@@ -1171,16 +1156,32 @@ Dom.getScrollSize = function () {
     if (!Dom.scrollWidthPromise)
         Dom.scrollWidthPromise = new Promise(function (resolve) {
             function prerender() {
-                var parent = Dom.ShareInstance._({ style: { 'z-index': '-100', opacity: '0', width: '100px', height: '100px', overflow: 'scroll', top: '0', left: '0', 'box-sizing': 'content-box', position: 'fixed' } })
+                var parent = Dom.ShareInstance._({
+                    style: {
+                        'z-index': '-100',
+                        opacity: '0',
+                        width: '100px',
+                        height: '100px',
+                        overflow: 'scroll',
+                        top: '0',
+                        left: '0',
+                        'box-sizing': 'content-box',
+                        position: 'fixed'
+                    }
+                })
                     .addTo(document.body);
-                var child = Dom.ShareInstance._({ style: { width: '100%', height: '100%' } }).addTo(parent);
+                var child = Dom.ShareInstance._({style: {width: '100%', height: '100%'}}).addTo(parent);
                 requestAnimationFrame(function () {
                     var parentBound = parent.getBoundingClientRect();
                     var childBound = child.getBoundingClientRect();
-                    resolve({ width: parentBound.width - childBound.width, height: parentBound.height - childBound.height });
+                    resolve({
+                        width: parentBound.width - childBound.width,
+                        height: parentBound.height - childBound.height
+                    });
                     parent.selfRemove();
                 });
             }
+
             Dom.documentReady.then(prerender);
         });
     return Dom.scrollWidthPromise;
@@ -1267,21 +1268,21 @@ Dom.updateResizeSystem = function () {
     }
 
     Dom.lastResizeTime = now;
+
     function visitor(child) {
 
         if (typeof child.requestUpdateSize == 'function') {
             child.requestUpdateSize();
             return true;
-        }
-        else if (typeof child.updateSize == 'function') {
+        } else if (typeof child.updateSize == 'function') {
             child.updateSize();
             return true;
-        }
-        else if (typeof child.onresize == 'function') {
+        } else if (typeof child.onresize == 'function') {
             child.onresize();
             return true;
         }
     }
+
     if (Dom.ResizeSystemCacheElts === undefined) {
         Dom.ResizeSystemCacheElts = [];
         Dom.ResizeSystemElts.forEach(function (e) {
@@ -1291,23 +1292,20 @@ Dom.updateResizeSystem = function () {
             });
         });
 
-    }
-    else {
+    } else {
         Dom.ResizeSystemCacheElts.forEach(visitor);
     }
 };
 
-Dom.updateSizeUp = function(fromElt){
-    while (fromElt){
+Dom.updateSizeUp = function (fromElt) {
+    while (fromElt) {
         if (typeof fromElt.requestUpdateSize == 'function') {
             fromElt.requestUpdateSize();
             return true;
-        }
-        else if (typeof fromElt.updateSize == 'function') {
+        } else if (typeof fromElt.updateSize == 'function') {
             fromElt.updateSize();
             return true;
-        }
-        else if (typeof fromElt.onresize == 'function') {
+        } else if (typeof fromElt.onresize == 'function') {
             fromElt.onresize();
             return true;
         }
@@ -1481,7 +1479,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(40);
+var	fixUrls = __webpack_require__(41);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -1955,12 +1953,20 @@ OOP.inheritCreator = function (parent, child) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export eventProperties */
+/* unused harmony export touchProperties */
+/* unused harmony export isMouseRight */
+/* unused harmony export isMouseLeft */
+/* unused harmony export hitElement */
+/* unused harmony export copyEvent */
+/* unused harmony export copyTouch */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return findChangedTouchByIdent; });
+/* unused harmony export findTouchByIdent */
 function EventEmitter() {
     this._azar_extendEvents = this._azar_extendEvents || { supported: {}, prioritize: {}, nonprioritize: {} };
     this.__azar_force = !(typeof Node === "object" ? this instanceof Node : this && typeof this === "object" && typeof this.nodeType === "number" && typeof this.nodeName === "string");
 
 }
-
 
 
 EventEmitter.prototype.defineEvent = function (name) {
@@ -2016,12 +2022,12 @@ EventEmitter.prototype.fire = function (eventName, data) {
             var event = new Event(eventName);
             data && Object.assign(event, data);
             this.dispatchEvent(event);
-        } else
+        }
+        else
             throw new Error("Not support event " + eventName);
     }
     return this;
 };
-
 
 
 EventEmitter.prototype.eventEmittorOnWithTime = function (isOnce, arg0, arg1, arg2) {
@@ -2034,7 +2040,8 @@ EventEmitter.prototype.eventEmittorOnWithTime = function (isOnce, arg0, arg1, ar
     else {
         if (typeof arg1 == 'object') {
             return this.eventEmittorOnWithTime(isOnce, arg0, arg1.callback, arg1.cap);
-        } else {
+        }
+        else {
             var eventArr = this._azar_extendEvents[arg2 ? 'prioritize' : 'nonprioritize'][arg0] || [];
             var eventIndex = -1;
             for (var i = 0; i < eventArr.length; ++i) {
@@ -2078,7 +2085,6 @@ EventEmitter.prototype.eventEmittorOnWithTime = function (isOnce, arg0, arg1, ar
 };
 
 
-
 EventEmitter.prototype.on = function (arg0, arg1, arg2) {
     this.eventEmittorOnWithTime(false, arg0, arg1, arg2);
     return this;
@@ -2100,7 +2106,8 @@ EventEmitter.prototype.off = function (arg0, arg1, arg2) {
     else {
         if (typeof arg1 == 'object') {
             return this.off(arg0, arg1.callback, arg1.cap);
-        } else {
+        }
+        else {
             var eventArr = this._azar_extendEvents[arg2 ? 'prioritize' : 'nonprioritize'][arg0] || [];
             var newEventArray = [];
             for (var i = 0; i < eventArr.length; ++i) {
@@ -2129,47 +2136,55 @@ EventEmitter.prototype.off = function (arg0, arg1, arg2) {
 
 };
 
+var eventProperties = ["altKey", "bubbles", "button", "buttons", "cancelBubble", "cancelable", "clientX", "clientY", "composed",
+    "ctrlKey", "currentTarget", "defaultPrevented", "deltaMode", "deltaX", "deltaY", "deltaZ", "detail", "eventPhase",
+    "explicitOriginalTarget", "isTrusted", "layerX", "layerY", "metaKey", "movementX", "movementY", "mozInputSource",
+    "mozPressure", "offsetX", "offsetY", "originalTarget", "pageX", "pageY", "rangeOffset", "rangeParent", "region",
+    "relatedTarget", "returnValue", "screenX", "screenY", "shiftKey", "srcElement", "target", "timeStamp", "type",
+    "deltaMode", "deltaX", "deltaY", "deltaZ", 'preventDefault'];
 
+var touchProperties = ['clientX', 'clientY', 'force', 'indentifier', 'pageX', 'pageY', 'rotationAngle', 'screenX',
+    'screenY', 'target'];
 
-EventEmitter.isMouseRight = function (event) {
+function isMouseRight(event) {
     var isRightMB = false;
     if ("which" in event)  // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
         isRightMB = event.which == 3;
-    else if ("button" in event)  // IE, Opera 
+    else if ("button" in event)  // IE, Opera
         isRightMB = event.button == 2;
     return isRightMB;
-};
+}
 
-EventEmitter.isMouseLeft = function (event) {
+function isMouseLeft() {
     var isLeftMB = false;
     if ("which" in event)  // Gecko (Firefox), WebKit (Safari/Chrome) & Opera
         isLeftMB = event.which == 1;
-    else if ("button" in event)  // IE, Opera 
+    else if ("button" in event)  // IE, Opera
         isLeftMB = event.button == 1;
     return isLeftMB;
-};
+}
 
-EventEmitter.hitElement = function (element, event) {
+function hitElement(element, event) {
     var current = event.target;
     while (current) {
         if (current == element) return true;
         current = current.parentElement;
     }
     return false;
-};
+}
 
-EventEmitter.copyEvent = function (event, props) {
+function copyEvent(event, props) {
     var result = {};
     var key, value;
     //copy native property
-    for (var i = 0;i< EventEmitter.eventProperties.length; ++i){
-        key =  EventEmitter.eventProperties[i];
+    for (var i = 0; i < eventProperties.length; ++i) {
+        key = eventProperties[i];
         value = event[key];
-        if (value !== undefined){
-            if (typeof value == "function"){
+        if (value !== undefined) {
+            if (typeof value == "function") {
                 result[key] = event[key].bind(event);
             }
-            else{
+            else {
                 result[key] = event[key];
             }
         }
@@ -2178,15 +2193,74 @@ EventEmitter.copyEvent = function (event, props) {
     if (props)
         Object.assign(result, props);
     return result;
-};
+}
+
+function copyTouch(touch, props) {
+    var result = {};
+    var key, value;
+    //copy native property
+    for (var i = 0; i < touchProperties.length; ++i) {
+        key = touchProperties[i];
+        value = touch[key];
+        if (value !== undefined) {
+            if (typeof value == "function") {
+                result[key] = touch[key].bind(touch);
+            }
+            else {
+                result[key] = touch[key];
+            }
+        }
+    }
+    Object.assign(result, touch);
+    if (props)
+        Object.assign(result, props);
+    return result;
+}
+
+/***
+ *
+ * @param {TouchEvent} event
+ * @return {Touch | null}
+ */
+function findChangedTouchByIdent(event, identifier) {
+    if (event.changedTouches) {
+        for (var i = 0; i < event.changedTouches.length; ++i) {
+            if (event.changedTouches[i].identifier === identifier) {
+                return event.changedTouches[i];
+            }
+        }
+    }
+    return null;
+}
 
 
-EventEmitter.eventProperties = ["altKey", "bubbles", "button", "buttons", "cancelBubble", "cancelable", "clientX", "clientY", "composed",
-    "ctrlKey", "currentTarget", "defaultPrevented", "deltaMode", "deltaX", "deltaY", "deltaZ", "detail", "eventPhase",
-    "explicitOriginalTarget", "isTrusted", "layerX", "layerY", "metaKey", "movementX", "movementY", "mozInputSource",
-    "mozPressure", "offsetX", "offsetY", "originalTarget", "pageX", "pageY", "rangeOffset", "rangeParent", "region",
-    "relatedTarget", "returnValue", "screenX", "screenY", "shiftKey", "srcElement", "target", "timeStamp", "type",
-    "deltaMode", "deltaX", "deltaY", "deltaZ", 'preventDefault'];
+/***
+ *
+ * @param event
+ * @param identifier
+ * @return {Touch|null}
+ */
+function findTouchByIdent(event, identifier) {
+    if (event.touches) {
+        for (var i = 0; i < event.touches.length; ++i) {
+            if (event.touches[i].identifier === identifier) {
+                return event.touches[i];
+            }
+        }
+    }
+    return null;
+}
+
+
+EventEmitter.isMouseRight = isMouseRight;
+
+EventEmitter.isMouseLeft = isMouseLeft;
+
+EventEmitter.hitElement = hitElement;
+
+EventEmitter.copyEvent = copyEvent;
+
+EventEmitter.eventProperties = eventProperties;
 
 
 /* harmony default export */ __webpack_exports__["a"] = (EventEmitter);
@@ -2203,7 +2277,12 @@ EventEmitter.eventProperties = ["altKey", "bubbles", "button", "buttons", "cance
 
 
 
-
+/***
+ * @class
+ * @augments HTMLElement
+ * @augments EventEmitter
+ * @constructor
+ */
 function Element() {
     _EventEmitter__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].call(this);
     this._azar_extendAttributes = this._azar_extendAttributes || {};
@@ -2219,7 +2298,7 @@ Element.prototype.init = function (props) {
  * @property {Function} set
  * @property {Function} get
  * @property {Function} remove
- * 
+ *
  * @param {String} key
  * @param {AttributeDefiner} def
  */
@@ -2276,7 +2355,12 @@ Element.prototype.attr = function () {
 
 Element.prototype.addStyle = function (arg0, arg1) {
     if (typeof arg0 == 'string')
-        this.style[Object(_String_stringFormat__WEBPACK_IMPORTED_MODULE_2__["kebabCaseToCamelCase"])(arg0)] = arg1;
+        if (arg0.indexOf('-') >= 0) {
+            this.style.setProperty(arg0, arg1);
+        }
+        else {
+            this.style[arg0] = arg1;
+        }
     else {
         for (var key in arg0)
             this.addStyle(key, arg0[key]);
@@ -2287,9 +2371,13 @@ Element.prototype.addStyle = function (arg0, arg1) {
 Element.prototype.removeStyle = function (arg0) {
     var key;
     if (typeof arg0 == 'string') {
-        key = Object(_String_stringFormat__WEBPACK_IMPORTED_MODULE_2__["kebabCaseToCamelCase"])(arg0);
-        this.style[key] = null;
-        delete this.style[key];
+        if (arg0.indexOf('-') >= 0) {
+            this.style.removeProperty(arg0);
+        }
+        else {
+            this.style[arg0] = null;
+            delete this.style[arg0];
+        }
     }
     else {
         if (typeof arg0 instanceof Array) {
@@ -2303,7 +2391,6 @@ Element.prototype.removeStyle = function (arg0) {
     }
     return this;
 };
-
 
 
 Element.prototype.addChild = function (child) {
@@ -2336,7 +2423,6 @@ Element.prototype.selfRemove = function () {
 };
 
 
-
 Element.prototype.selfReplace = function (newNode) {
     if (this.parentElement)
         this.parentElement.replaceChild(newNode, this);
@@ -2351,8 +2437,8 @@ Element.prototype.clearChild = function () {
 };
 
 /**
- * 
- * @param {string} className 
+ *
+ * @param {string} className
  * @returns {Boolean}
  */
 Element.prototype.containsClass = function (className) {
@@ -2366,8 +2452,8 @@ Element.prototype.containsClass = function (className) {
 };
 
 /**
- * 
- * @param {string} className 
+ *
+ * @param {string} className
  * @returns {Element}
  */
 Element.prototype.addClass = function (className) {
@@ -2381,8 +2467,8 @@ Element.prototype.addClass = function (className) {
 };
 
 /**
- * 
- * @param {string} className 
+ *
+ * @param {string} className
  * @returns {Element}
  */
 Element.prototype.removeClass = function (className) {
@@ -2394,7 +2480,6 @@ Element.prototype.removeClass = function (className) {
         this.classList.remove(className);
     return this;
 };
-
 
 
 Element.prototype.getComputedStyleValue = function (key) {
@@ -2507,7 +2592,6 @@ Element.prototype.getCSSRules = function () {
 };
 
 
-
 /***
  * WARNING: this function may be unsafe
  */
@@ -2517,6 +2601,7 @@ Element.prototype.afterAttached = function (frameTimeOut) {
     var current = this;
     return new Promise(function (resolve, reject) {
         var delayTime = 0;
+
         function trace() {
             if (frameTimeOut < 0) {
                 // reject(tracer);
@@ -2533,16 +2618,16 @@ Element.prototype.afterAttached = function (frameTimeOut) {
                     else {
                         if (current.parentNode) {
                             current = current.parentNode;
-                        } else {
+                        }
+                        else {
                             if (delayTime < 25)
                                 delayTime += 1;
                             else if (delayTime < 100) {
                                 delayTime += 5;
                             }
-                            else
-                                if (delayTime < 1000) {
-                                    delayTime += 10;
-                                }
+                            else if (delayTime < 1000) {
+                                delayTime += 10;
+                            }
 
                             setTimeout(trace, delayTime);
                             return;
@@ -2551,10 +2636,10 @@ Element.prototype.afterAttached = function (frameTimeOut) {
                 }
             }
         }
+
         setTimeout(trace, 0);
     });
 };
-
 
 
 /***
@@ -2583,10 +2668,10 @@ Element.prototype.afterDisplayed = function (requestTimesOut) {
                 }
             }
         }
+
         trace();
     });
 };
-
 
 
 !(function () {
@@ -2634,7 +2719,11 @@ Element.prototype.afterDisplayed = function (requestTimesOut) {
                         if (!event.mozFixWheelScale) {
                             event.mozDeltaY = oldEvent.deltaY;
                             event.mozFixWheelScale = true;
-                            Object.defineProperty(event, 'deltaY', { get: function () { return this.mozDeltaY * 100 / 3; } });
+                            Object.defineProperty(event, 'deltaY', {
+                                get: function () {
+                                    return this.mozDeltaY * 100 / 3;
+                                }
+                            });
                         }
                         oldEvent.absolEvent = event;
                     }
@@ -2657,8 +2746,6 @@ Element.eventProperties = ["altKey", "bubbles", "button", "buttons", "cancelBubb
     "deltaMode", "deltaX", "deltaY", "deltaZ"];
 
 
-
-
 /* harmony default export */ __webpack_exports__["a"] = (Element);
 
 /***/ }),
@@ -2675,13 +2762,18 @@ var Element = __webpack_require__(7);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/HTML5/ElementNS.js
 
+
+/***
+ * @extends Element
+ * @constructor
+ */
 function ElementNS() {
     Element["a" /* default */].call(this);
 }
 
 Object.defineProperties(ElementNS.prototype, Object.getOwnPropertyDescriptors(Element["a" /* default */].prototype));
 
-ElementNS.prototype.attr = function () {      
+ElementNS.prototype.attr = function () {
     if (arguments.length == 1) {
         if (typeof (arguments[0]) == 'string') {
             if (this._azar_extendAttributes[arguments[0]]) {
@@ -2729,7 +2821,11 @@ var sattachhookCreator = function () {
     return Svg.ShareInstance._('<image  class="absol-attachhook" style:"display: none"  xlink:href=""/>');
 };
 
-
+/***
+ * @extends Dom
+ * @param option
+ * @constructor
+ */
 function Svg(option) {
     Dom["a" /* default */].call(this, option);
     this.defaultTag = 'g';
@@ -3401,7 +3497,7 @@ String.prototype.nonAccentVietnamese = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(25);
 /* harmony import */ var _BrowserRules__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_BrowserRules__WEBPACK_IMPORTED_MODULE_0__);
 
 
@@ -4082,9 +4178,9 @@ var TemplateString = __webpack_require__(11);
 
 
 
-var base64 = __webpack_require__(32)
-var ieee754 = __webpack_require__(33)
-var isArray = __webpack_require__(34)
+var base64 = __webpack_require__(33)
+var ieee754 = __webpack_require__(34)
+var isArray = __webpack_require__(35)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -5940,7 +6036,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(36);
+__webpack_require__(37);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -6267,7 +6363,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(135);
+var content = __webpack_require__(62);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6292,7 +6388,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(212);
+var content = __webpack_require__(135);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6314,6 +6410,31 @@ if(false) {}
 
 /***/ }),
 /* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(212);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer, module) {(function (w) {
@@ -6361,10 +6482,10 @@ if(false) {}
   }
 }(window));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(16).Buffer, __webpack_require__(35)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(16).Buffer, __webpack_require__(36)(module)))
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {(function () {
@@ -6388,7 +6509,7 @@ if(false) {}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(16).Buffer))
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6695,14 +6816,14 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(12)))
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, Buffer) {/* harmony import */ var _DocxTpl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
-/* harmony import */ var _assets_content_types_xml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
-/* harmony import */ var _assets_rels_xml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
-/* harmony import */ var _assets_document_xml_rels__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(28);
+/* harmony import */ var _assets_content_types_xml__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(27);
+/* harmony import */ var _assets_rels_xml__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(28);
+/* harmony import */ var _assets_document_xml_rels__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(29);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(17);
 /* harmony import */ var jszip__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jszip__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _HTML5_Dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2);
@@ -6939,28 +7060,28 @@ JSDocx.fromHTMLElement = function (element, options, getOuter, isWorkingElement)
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(12), __webpack_require__(16).Buffer))
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\">\r\n  <Default Extension=\"rels\" ContentType=\r\n    \"application/vnd.openxmlformats-package.relationships+xml\" />\r\n  <Override PartName=\"/word/document.xml\" ContentType=\r\n    \"application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml\"/>\r\n  <Override PartName=\"/word/afchunk.mht\" ContentType=\"message/rfc822\"/>\r\n</Types>\r\n");
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">\r\n  <Relationship\r\n      Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument\"\r\n      Target=\"/word/document.xml\" Id=\"R09c83fafc067488e\" />\r\n</Relationships>\r\n");
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">\r\n  <Relationship Type=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships/aFChunk\"\r\n    Target=\"/word/afchunk.mht\" Id=\"htmlChunk\" />\r\n</Relationships>\r\n");
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14285,7 +14406,7 @@ exports.tokTypes = types;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14758,14 +14879,14 @@ var FormClass = {
 /* harmony default export */ __webpack_exports__["a"] = (FormClass);
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(245);
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14924,7 +15045,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -15014,7 +15135,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -15025,7 +15146,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -15053,7 +15174,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -15243,10 +15364,10 @@ module.exports = function(module) {
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(12), __webpack_require__(37)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(12), __webpack_require__(38)))
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -15436,11 +15557,11 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(39);
+var content = __webpack_require__(40);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15461,7 +15582,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15471,7 +15592,7 @@ exports.push([module.i, ".as-has-hanger-drag,\r\n.as-has-hanger-drag * {\r\n    
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports) {
 
 
@@ -15566,11 +15687,11 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(42);
+var content = __webpack_require__(43);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15591,7 +15712,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15601,11 +15722,11 @@ exports.push([module.i, ".absol-span-input {\r\n    white-space: pre;\r\n}\r\n\r
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(44);
+var content = __webpack_require__(45);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15626,7 +15747,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15636,11 +15757,11 @@ exports.push([module.i, "button.absol-button {\r\n    text-align: left;\r\n    b
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(46);
+var content = __webpack_require__(47);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15661,7 +15782,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15671,11 +15792,11 @@ exports.push([module.i, ".as-flexicon-button {\r\n    box-sizing: border-box;\r\
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(48);
+var content = __webpack_require__(49);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15696,7 +15817,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15706,11 +15827,11 @@ exports.push([module.i, ".as-flexicon-input-icon-ctn>span,\r\n.as-flexicon-input
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(50);
+var content = __webpack_require__(51);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15731,7 +15852,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15741,11 +15862,11 @@ exports.push([module.i, ".absol-vscroller {\r\n    position: relative;\r\n    ov
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(52);
+var content = __webpack_require__(53);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15766,7 +15887,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15776,11 +15897,11 @@ exports.push([module.i, ".absol-number-input {\r\n    text-align: right;\r\n    
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(54);
+var content = __webpack_require__(55);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15801,7 +15922,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15811,11 +15932,11 @@ exports.push([module.i, ".absol-search-text-input {\r\n    position: relative;\r
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(56);
+var content = __webpack_require__(57);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15836,7 +15957,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15846,11 +15967,11 @@ exports.push([module.i, ".absol-select-table-render-space {\r\n    position: fix
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(58);
+var content = __webpack_require__(59);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15871,7 +15992,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -15881,11 +16002,11 @@ exports.push([module.i, ".absol-ico {\r\n    width: 1em;\r\n    height: 1em;\r\n
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(60);
+var content = __webpack_require__(61);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15904,41 +16025,16 @@ var update = __webpack_require__(4)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r\n    z-index: -100000;\r\n    width: 14px;\r\n    height: 14px;\r\n    top: 0;\r\n    opacity: 0;\r\n    resize: none;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-hinge-fixed-container {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 1000001;\r\n}\r\n\r\n.absol-context-hinge {\r\n    position: relative;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-context-hinge>.absol-context-menu {\r\n    position: absolute;\r\n    top: -10000px;\r\n    left: -10000px;\r\n    visibility: hidden;\r\n    z-index: 55;\r\n    display: inline-block;\r\n}\r\n\r\n.absol-context-hinge .absol-vmenu,\r\n.absol-context-hinge .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    /* background-color: rgb(37, 37, 38);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgb(7, 7, 7, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1); */\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-context-hinge.dark .absol-hmenu,\r\n.absol-context-hinge.dark .absol-vmenu,\r\n.dark .absol-context-hinge .absol-hmenu,\r\n.dark .absol-context-hinge .absol-vmenu {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.absol-context-menu-anchor {\r\n    position: fixed;\r\n    z-index: -1000;\r\n    left: 0;\r\n    top: 0;\r\n    display: block;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    font-size: 12px;\r\n}\r\n\r\n.absol-context-menu-anchor>textarea {\r\n    width: 40px;\r\n    height: 40px;\r\n    margin: 0;\r\n    resize: none;\r\n    border: none;\r\n    opacity: 0;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-menu-anchor.absol-active {\r\n    z-index: 100000000;\r\n    opacity: 1;\r\n    visibility: visible;\r\n}\r\n\r\n\r\n.absol-context-menu-anchor .absol-vmenu,\r\n.absol-context-menu-anchor .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgb(7, 7, 7, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1);\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n}\r\n\r\n\r\n.as-system-context-menu{\r\n    /** nothing here, to define use system context menu**/\r\n}", ""]);
-
-
 
 /***/ }),
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-var content = __webpack_require__(62);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".absol-context-menu-hook {\r\n    position: absolute;\r\n    z-index: -100000;\r\n    width: 14px;\r\n    height: 14px;\r\n    top: 0;\r\n    opacity: 0;\r\n    resize: none;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-hinge-fixed-container {\r\n    position: fixed;\r\n    left: 0;\r\n    top: 0;\r\n    z-index: 1000001;\r\n}\r\n\r\n.absol-context-hinge {\r\n    position: relative;\r\n    width: 0;\r\n    height: 0;\r\n}\r\n\r\n.absol-context-hinge > .absol-context-menu {\r\n    position: absolute;\r\n    top: -10000px;\r\n    left: -10000px;\r\n    visibility: hidden;\r\n    z-index: 55;\r\n    display: inline-block;\r\n}\r\n\r\n.absol-context-hinge .absol-vmenu,\r\n.absol-context-hinge .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    /* background-color: rgb(37, 37, 38);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgb(7, 7, 7, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1); */\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n}\r\n\r\n.absol-context-hinge.dark .absol-hmenu,\r\n.absol-context-hinge.dark .absol-vmenu,\r\n.dark .absol-context-hinge .absol-hmenu,\r\n.dark .absol-context-hinge .absol-vmenu {\r\n    background-color: rgb(37, 37, 38);\r\n}\r\n\r\n\r\n.absol-context-menu-anchor {\r\n    position: fixed;\r\n    z-index: -1000;\r\n    left: 0;\r\n    top: 0;\r\n    display: block;\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    font-size: 12px;\r\n}\r\n\r\n.absol-context-menu-anchor > textarea {\r\n    width: 160px;\r\n    height: 160px;\r\n    margin: 0;\r\n    resize: none;\r\n    border: none;\r\n    opacity: 0;\r\n    cursor: default;\r\n}\r\n\r\n.absol-context-menu-anchor.absol-active {\r\n    z-index: 100000000;\r\n    opacity: 1;\r\n    visibility: visible;\r\n}\r\n\r\n\r\n.absol-context-menu-anchor .absol-vmenu,\r\n.absol-context-menu-anchor .absol-hmenu {\r\n    padding-top: 0.4em;\r\n    padding-bottom: 0.4em;\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgb(7, 7, 7, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(7, 7, 7, 1);\r\n    color: black;\r\n    background-color: rgb(252, 252, 255);\r\n    -webkit-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    -moz-box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n    box-shadow: 2px 2px 9px 0px rgba(20, 20, 20, 1);\r\n}\r\n\r\n\r\n.as-system-context-menu {\r\n    /** nothing here, to define use system context menu**/\r\n}", ""]);
 
 
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(4)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
 
 /***/ }),
 /* 62 */
@@ -15946,7 +16042,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-modal {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    box-sizing: border-box;\r\n    z-index: 1000;\r\n}\r\n\r\n.absol-modal-hidden {\r\n    visibility: hidden;\r\n}\r\n\r\n.absol-modal-hcenter {\r\n    display: table;\r\n    text-align: center;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.absol-modal-vcenter {\r\n    display: table-cell;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-modal-container {\r\n    display: inline-block;\r\n    text-align: initial;\r\n}", ""]);
+exports.push([module.i, ".as-modal {\r\n    position: fixed;\r\n    left: 0;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    z-index: 1000;\r\n}\r\n\r\n.as-modal.as-hidden{\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n.as-modal.as-center {\r\n    text-align: center;\r\n}\r\n\r\n\r\n.as-modal.as-middle::before {\r\n    content: \"\";\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    height: 100%;\r\n    width: 0;\r\n}\r\n\r\n.as-modal > .as-modal-content {\r\n    display: inline-block;\r\n    text-align: initial;\r\n}\r\n\r\n/*for content*/\r\n.as-modal.as-middle > .as-modal-content {\r\n    vertical-align: middle;\r\n}\r\n", ""]);
 
 
 
@@ -16156,7 +16252,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position: fixed; */\r\n\r\n    /* top: 0; */\r\n    /* left: 0; */\r\n    width: 0;\r\n    height: 0;\r\n    overflow: visible;\r\n}\r\n\r\n.absol-selectmenu-anchor {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container {\r\n    position: absolute;\r\n    z-index: 1002;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container .absol-bscroller {\r\n    max-height: calc(100vh - 50px);\r\n}\r\n\r\n\r\n.absol-selectmenu-anchor.absol-disabled .absol-selectmenu-anchor-content-container {\r\n    visibility: hidden;\r\n    top: -100000px;\r\n    left: -10000px;\r\n    z-index: -1000;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box {\r\n    border: solid 1px rgb(100, 100, 255);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    -webkit-box-shadow: 2px 2px 6px 0px rgba(0, 0, 90, 0.55);\r\n    -moz-box-shadow: 2px 2px 6px 0px rgba(0, 0, 90, 0.55);\r\n    box-shadow: 2px 2px 6px 0px rgba(0, 0, 90, 0.55);\r\n}\r\n\r\n.absol-selectmenu-dropdown-box > .as-bscroller {\r\n    overflow-y: auto;\r\n}\r\n\r\n.absol-selectmenu-dropdown-box .absol-search-text-input {\r\n    margin: 0.2em;\r\n}\r\n\r\n\r\n.absol-selectmenu.absol-hidden {\r\n    display: none !important;\r\n}\r\n\r\n.absol-selectmenu-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 14px;\r\n}\r\n\r\n.absol-selectmenu-render-space > div {\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    background-color: #ebebe4;\r\n}\r\n\r\n\r\n.absol-selectmenu {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 30px;\r\n    min-width: 30px;\r\n    border: solid 1px #d6d6d6;\r\n    border-radius: 2px;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    outline: none;\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n/* .absol-selectmenu:hover {\r\n    border: solid 1px black;\r\n} */\r\n\r\n.absol-selectmenu-btn {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    width: 30px;\r\n    border: none;\r\n    background: transparent;\r\n    z-index: 2;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-selectmenu-btn svg.dropdown {\r\n    width: 10px;\r\n    height: 10px;\r\n    fill: #929292;\r\n}\r\n\r\n.absol-selectmenu:hover svg.dropdown {\r\n    width: 10px;\r\n    height: 10px;\r\n    fill: black;\r\n}\r\n\r\n.absol-selectmenu-holder-item {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 4px;\r\n    bottom: 4px;\r\n    /*1px for border*/\r\n}\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 28px;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button {\r\n    background-color: rgba(0, 0, 0, 0.1);\r\n    border-radius: 3px;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button:hover {\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.absol-scroll-bar-v-container {\r\n    width: 10px;\r\n}\r\n\r\n.absol-selectmenu .absol-search-text-input {\r\n    margin: 4px;\r\n}\r\n\r\n.absol-selectmenu-render-space .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item-desc-container {\r\n    right: 40px;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box .absol-bscroller {\r\n    overflow-y: auto;\r\n}", ""]);
+exports.push([module.i, ".absol-selectmenu-anchor-container {\r\n    /* position: fixed; */\r\n\r\n    /* top: 0; */\r\n    /* left: 0; */\r\n    width: 0;\r\n    height: 0;\r\n    overflow: visible;\r\n}\r\n\r\n.absol-selectmenu-anchor {\r\n    position: relative;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container {\r\n    position: absolute;\r\n    z-index: 1002;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.absol-selectmenu-anchor-content-container .absol-bscroller {\r\n    max-height: calc(100vh - 50px);\r\n}\r\n\r\n\r\n.absol-selectmenu-anchor.absol-disabled .absol-selectmenu-anchor-content-container {\r\n    visibility: hidden;\r\n    top: -100000px;\r\n    left: -10000px;\r\n    z-index: -1000;\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box {\r\n    border: solid 1px rgb(100, 100, 255);\r\n    box-sizing: border-box;\r\n    background-color: white;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    -webkit-box-shadow: 2px 2px 6px 0px rgba(0, 0, 90, 0.55);\r\n    -moz-box-shadow: 2px 2px 6px 0px rgba(0, 0, 90, 0.55);\r\n    box-shadow: 2px 2px 6px 0px rgba(0, 0, 90, 0.55);\r\n}\r\n\r\n.absol-selectmenu-dropdown-box > .as-bscroller {\r\n    overflow-y: auto;\r\n}\r\n\r\n.absol-selectmenu-dropdown-box .absol-search-text-input {\r\n    margin: 0.2em;\r\n}\r\n\r\n\r\n.absol-selectmenu.absol-hidden {\r\n    display: none !important;\r\n}\r\n\r\n.absol-selectmenu-render-space {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    font-size: 14px;\r\n}\r\n\r\n.absol-selectmenu-render-space > div {\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    pointer-events: none;\r\n}\r\n\r\n\r\n.absol-selectmenu.disabled {\r\n    background-color: #ebebe4;\r\n}\r\n\r\n\r\n.absol-selectmenu {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 30px;\r\n    min-width: 30px;\r\n    border: solid 1px #d6d6d6;\r\n    border-radius: 2px;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    font-size: 14px;\r\n    outline: none;\r\n    font-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n}\r\n\r\n/* .absol-selectmenu:hover {\r\n    border: solid 1px black;\r\n} */\r\n\r\n.absol-selectmenu-btn {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    width: 30px;\r\n    border: none;\r\n    background: transparent;\r\n    z-index: 2;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu-btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.absol-selectmenu-btn svg.dropdown {\r\n    width: 10px;\r\n    height: 10px;\r\n    fill: #929292;\r\n}\r\n\r\n.absol-selectmenu:hover svg.dropdown {\r\n    width: 10px;\r\n    height: 10px;\r\n    fill: black;\r\n}\r\n\r\n.absol-selectmenu-holder-item {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    top: 4px;\r\n    bottom: 4px;\r\n    /*1px for border*/\r\n}\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 28px;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button {\r\n    background-color: rgba(0, 0, 0, 0.1);\r\n    border-radius: 3px;\r\n}\r\n\r\n.absol-selectmenu .absol-scroll-button:hover {\r\n    background-color: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.absol-scroll-bar-v-container {\r\n    width: 10px;\r\n}\r\n\r\n.absol-selectmenu .absol-search-text-input {\r\n    margin: 4px;\r\n}\r\n\r\n.absol-selectmenu-render-space .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n\r\n.absol-selectmenu .absol-selectlist-item-desc-container {\r\n    right: 40px;\r\n}\r\n\r\n\r\n.absol-selectmenu-dropdown-box .absol-bscroller {\r\n    overflow-y: auto;\r\n}\r\n\r\n\r\n.as-select-anchor {\r\n    position: fixed;\r\n    z-index: 1000001;\r\n}\r\n\r\n\r\n.as-select-anchor.as-hidden {\r\n    left: 0;\r\n    top: 0;\r\n    z-index: -1000;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n", ""]);
 
 
 
@@ -16261,7 +16357,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-selectbox {\r\n    position: relative;\r\n    min-height: 30px;\r\n    min-width: 40px;\r\n    border: solid 1px #d6d6d6;\r\n    border-radius: 3px;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    padding-right: 20px;\r\n    overflow-y: auto;\r\n    cursor: copy;\r\n}\r\n\r\n.absol-selectbox.disabled {\r\n    pointer-events: none;\r\n    background-color: #ebebe4;\r\n}\r\n\r\n.absol-selectbox.disabled .absol-selectbox-item {\r\n    opacity: 0.7;\r\n}\r\n\r\n.absol-selectbox {\r\n    white-space: normal;\r\n}\r\n\r\n.absol-selectbox .absol-selectbox-item {\r\n    margin: 2px;\r\n}\r\n\r\n.absol-selectbox-item {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 30px;\r\n    box-sizing: border-box;\r\n    border-radius: 2px;\r\n    overflow: hidden;\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    font-size: 14px;\r\n    vertical-align: top;\r\n    white-space: normal;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-selectbox-item.as-theme-confirmed {\r\n    background-color: rgb(145, 228, 251);\r\n}\r\n\r\n.absol-selectbox-item.as-theme-declined {\r\n    background-color: rgb(255, 138, 138)\r\n}\r\n\r\n.absol-selectbox-item.as-theme-waiting {\r\n    background-color: rgb(255, 227, 174);\r\n    color: black;\r\n}\r\n\r\n.absol-selectbox-item-text {\r\n    height: 30px;\r\n    padding-right: 35px;\r\n    padding-left: 5px;\r\n    font-size: 14px;\r\n}\r\n\r\n.absol-selectbox-item-text:hover {\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n}\r\n\r\n.absol-selectbox-item-text span {\r\n    line-height: 30px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-selectbox-item-close {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    width: 30px;\r\n    text-align: center;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    cursor: pointer;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n}\r\n\r\n.absol-selectbox-item-close span {\r\n    font-size: 15px;\r\n    line-height: 30px;\r\n}\r\n\r\n.absol-selectbox {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-selectbox .absol-search-text-input {\r\n    margin: 4px;\r\n}\r\n\r\n.absol-selectbox:not(.focus) .absol-selectmenu-dropdown-box {\r\n    display: none;\r\n}\r\n\r\n.absol-selectbox .absol-selectlist-item.selected {\r\n    display: none;\r\n}", ""]);
+exports.push([module.i, ".absol-selectbox {\r\n    position: relative;\r\n    min-height: 30px;\r\n    min-width: 40px;\r\n    border: solid 1px #d6d6d6;\r\n    border-radius: 3px;\r\n    box-sizing: border-box;\r\n    padding-right: 20px;\r\n    overflow-y: auto;\r\n    cursor: copy;\r\n    outline: none;\r\n}\r\n\r\n.absol-selectbox.disabled {\r\n    pointer-events: none;\r\n    background-color: #ebebe4;\r\n}\r\n\r\n.absol-selectbox.disabled .absol-selectbox-item {\r\n    opacity: 0.7;\r\n}\r\n\r\n.absol-selectbox {\r\n    white-space: normal;\r\n}\r\n\r\n.absol-selectbox .absol-selectbox-item {\r\n    margin: 2px;\r\n}\r\n\r\n.absol-selectbox-item {\r\n    display: inline-block;\r\n    position: relative;\r\n    height: 30px;\r\n    box-sizing: border-box;\r\n    border-radius: 2px;\r\n    overflow: hidden;\r\n    background-color: #5bc0de;\r\n    border-color: #46b8da;\r\n    font-size: 14px;\r\n    vertical-align: top;\r\n    white-space: normal;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n.absol-selectbox-item.as-theme-confirmed {\r\n    background-color: rgb(145, 228, 251);\r\n}\r\n\r\n.absol-selectbox-item.as-theme-declined {\r\n    background-color: rgb(255, 138, 138)\r\n}\r\n\r\n.absol-selectbox-item.as-theme-waiting {\r\n    background-color: rgb(255, 227, 174);\r\n    color: black;\r\n}\r\n\r\n.absol-selectbox-item-text {\r\n    height: 30px;\r\n    padding-right: 35px;\r\n    padding-left: 5px;\r\n    font-size: 14px;\r\n}\r\n\r\n.absol-selectbox-item-text:hover {\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n}\r\n\r\n.absol-selectbox-item-text span {\r\n    line-height: 30px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.absol-selectbox-item-close {\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    width: 30px;\r\n    text-align: center;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    cursor: pointer;\r\n    background-color: rgba(0, 0, 0, 0.0893617021);\r\n}\r\n\r\n.absol-selectbox-item-close span {\r\n    font-size: 15px;\r\n    line-height: 30px;\r\n}\r\n\r\n.absol-selectbox {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n}\r\n\r\n.absol-selectbox .absol-search-text-input {\r\n    margin: 4px;\r\n}\r\n\r\n.absol-selectbox:not(.focus) .absol-selectmenu-dropdown-box {\r\n    display: none;\r\n}\r\n\r\n.absol-selectbox .absol-selectlist-item.selected {\r\n    display: none;\r\n}", ""]);
 
 
 
@@ -16821,7 +16917,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".as-button-array {\r\n    font-size: 14px;\r\n    border: 1px solid #006ce5;\r\n    display: inline-block;\r\n    border-radius: 0.2em;\r\n    overflow: hidden;\r\n}\r\n\r\n.as-button-array-item {\r\n    font-size: inherit;\r\n    height: 2em;\r\n    border: none;\r\n    box-sizing: border-box;\r\n    padding-left: 0.35714em;\r\n    padding-right: 0.35714em;\r\n    outline: none;\r\n    color: #006ce5;\r\n    background-color: white;\r\n    border-radius: 0;\r\n    transition: background-color 0.1s, color 0.1s;\r\n}\r\n\r\n.as-button-array-item:not(:first-child) {\r\n    border-left: 1px solid #006ce5;\r\n}\r\n\r\n\r\n.as-button-array-item.as-active {\r\n    color: white;\r\n    background-color: #006ce5;\r\n}", ""]);
+exports.push([module.i, ".as-button-array {\r\n    font-size: 14px;\r\n    border: 1px solid #006ce5;\r\n    display: inline-block;\r\n    border-radius: 0.2em;\r\n    overflow: hidden;\r\n}\r\n\r\n.as-button-array-item {\r\n    text-align: center;\r\n    font-size: inherit;\r\n    height: 2em;\r\n    border: none;\r\n    box-sizing: border-box;\r\n    padding-left: 0.35714em;\r\n    padding-right: 0.35714em;\r\n    outline: none;\r\n    color: #006ce5;\r\n    background-color: white;\r\n    border-radius: 0;\r\n    transition: background-color 0.1s, color 0.1s;\r\n    margin: 0;\r\n}\r\n\r\n.as-button-array-item:not(:first-child) {\r\n    border-left: 1px solid #006ce5;\r\n}\r\n\r\n\r\n.as-button-array-item.as-active {\r\n    color: white;\r\n    background-color: #006ce5;\r\n}", ""]);
 
 
 
@@ -18056,7 +18152,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.absol-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact, .pizo-new-realty-image{\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab,.pizo-new-realty-image-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{\r\n  text-align: right;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-structure{\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-toilet-label,\r\n.pizo-new-realty-dectruct-content-area-living-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-floor-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 6.5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span, .pizo-new-realty-detruct-content-price-rent-label,.pizo-new-realty-detruct-content-area-label{\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 158px;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n\r\n.pizo-new-realty-contact-tab{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-label{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-button{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  color: #fff;\r\n  background: #122246;\r\n  border: 1px solid #122246;\r\n  padding: 1px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name,.pizo-new-realty-contact-item-phone,.pizo-new-realty-contact-item-note{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-label,.pizo-new-realty-contact-item-phone-label,.pizo-new-realty-contact-item-note-label{\r\n    font-size: 1rem;\r\n    padding-top: 0.4375rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 6.5714rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-input,.pizo-new-realty-contact-item-phone-input,.pizo-new-realty-contact-item-note-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-selectbox{\r\n  min-width: 130px !important;\r\n}\r\n\r\n.pizo-new-realty-contact-item-close{\r\n  background-color: red;\r\n  color: white;\r\n}\r\n\r\n.pizo-new-realty-contact-item{\r\n  margin: 0.7143rem;\r\n  margin-bottom: 2.1429rem;\r\n}\r\n\r\n.btn-wrapper.input-append .pizo-new-realty-contact-tab-button{\r\n  width: 34px;\r\n  margin-left: 7px;\r\n  background: #ac000d;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input{\r\n  padding: 0;\r\n  justify-content: start;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close{\r\n  width: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.absol-selectmenu.pizo-new-realty-detruct-content-price-unit{\r\n    width: 4.5rem !important;\r\n    min-width: 4.5rem !important;\r\n    flex-shrink: 0;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-price-rent-label.pizo-new-realty-detruct-content-area-label{\r\n  width: fit-content;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price-rent-unit{\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-censorship{\r\n    align-items: center;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox{\r\n    margin-left: 0.7143rem;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 35px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child)\r\n{\r\n  margin-left: 70px;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child>span\r\n{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone-all{\r\n    display: inline-block;\r\n    margin-bottom: 0.7143rem;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n    margin-left: 1.0714rem;\r\n}\r\n\r\n.pizo-new-realty-image{\r\n  height: 400px;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty .modal-upload-XML-body-drop-save{\r\n  display: none;\r\n}\r\n\r\n.pizo-new-realty-image-tab{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.pizo-new-realty-image-content{\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n.pizo-new-realty .full-size{\r\n  height: 150px;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.as-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact, .pizo-new-realty-image{\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab,.pizo-new-realty-image-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{\r\n  text-align: right;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-structure{\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-toilet-label,\r\n.pizo-new-realty-dectruct-content-area-living-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-floor-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 6.5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span, .pizo-new-realty-detruct-content-price-rent-label,.pizo-new-realty-detruct-content-area-label{\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 158px;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n\r\n.pizo-new-realty-contact-tab{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-label{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-button{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  color: #fff;\r\n  background: #122246;\r\n  border: 1px solid #122246;\r\n  padding: 1px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name,.pizo-new-realty-contact-item-phone,.pizo-new-realty-contact-item-note{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-label,.pizo-new-realty-contact-item-phone-label,.pizo-new-realty-contact-item-note-label{\r\n    font-size: 1rem;\r\n    padding-top: 0.4375rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 6.5714rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-input,.pizo-new-realty-contact-item-phone-input,.pizo-new-realty-contact-item-note-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-selectbox{\r\n  min-width: 130px !important;\r\n}\r\n\r\n.pizo-new-realty-contact-item-close{\r\n  background-color: red;\r\n  color: white;\r\n}\r\n\r\n.pizo-new-realty-contact-item{\r\n  margin: 0.7143rem;\r\n  margin-bottom: 2.1429rem;\r\n}\r\n\r\n.btn-wrapper.input-append .pizo-new-realty-contact-tab-button{\r\n  width: 34px;\r\n  margin-left: 7px;\r\n  background: #ac000d;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input{\r\n  padding: 0;\r\n  justify-content: start;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close{\r\n  width: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.absol-selectmenu.pizo-new-realty-detruct-content-price-unit{\r\n    width: 4.5rem !important;\r\n    min-width: 4.5rem !important;\r\n    flex-shrink: 0;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-price-rent-label.pizo-new-realty-detruct-content-area-label{\r\n  width: fit-content;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price-rent-unit{\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-censorship{\r\n    align-items: center;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox{\r\n    margin-left: 0.7143rem;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 35px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child)\r\n{\r\n  margin-left: 70px;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child>span\r\n{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone-all{\r\n    display: inline-block;\r\n    margin-bottom: 0.7143rem;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n    margin-left: 1.0714rem;\r\n}\r\n\r\n.pizo-new-realty-image{\r\n  height: 400px;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty .modal-upload-XML-body-drop-save{\r\n  display: none;\r\n}\r\n\r\n.pizo-new-realty-image-tab{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.pizo-new-realty-image-content{\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n.pizo-new-realty .full-size{\r\n  height: 150px;\r\n}", ""]);
 
 
 
@@ -19119,7 +19215,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-result-control-map-view{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    \r\n}\r\n\r\n.pizo-list-realty-main-result-control-map-view .pizo-new-realty-location-map-view{\r\n    flex-grow: 2;\r\n    display: flex;    \r\n\r\n    margin-bottom: 0;\r\n    width: unset;\r\n    vertical-align: unset;\r\n    height: unset;\r\n    position: unset;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .search-page-list-container {\r\n        overflow-y: auto;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 390px;\r\n        box-shadow: -2px 2px 5px 0 rgba(0,0,0,.4);\r\n        z-index: 1;\r\n    }\r\n}\r\n\r\n.search-page-list-container{\r\n    height: 100%;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 375px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 375px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 750px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 750px;\r\n    }\r\n}\r\n\r\n.result-list-container {\r\n    position: relative;\r\n    background-color: #fafafa;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .result-list-container {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container {\r\n    background: 0 0;\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n    padding: 12px 10px;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n        padding: 20px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-title {\r\n    font-size: 20px;\r\n    line-height: 26px;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-title {\r\n        margin-bottom: 12px;\r\n    }\r\n    \r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container .search-subtitle, .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n        margin-bottom: 8px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-subtitle {\r\n    margin-bottom: 10px;\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle {\r\n        position: relative;\r\n        display: -webkit-box;\r\n        display: flex;\r\n        -webkit-box-pack: justify;\r\n        justify-content: space-between;\r\n        font-size: 14px;\r\n        margin-bottom: 12px;\r\n    }\r\n}\r\n\r\n.result-list-container .result-count {\r\n    align-self: flex-start;\r\n    -webkit-box-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle .result-count {\r\n        font-weight: 600;\r\n    }\r\n}\r\n\r\n.result-list-container .sort-options {\r\n    display: none;\r\n}\r\n\r\n.result-list-container .sort-options.visible {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-align: start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.photo-cards.photo-cards_short {\r\n    padding: 0;\r\n    background-color: #F1F1F4;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\nbody:not(.mobile-web) .photo-cards.photo-cards_short {\r\n    background-color: #FFF;\r\n}\r\n\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 16px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\n.photo-cards.photo-cards_short>li {\r\n    display: block;\r\n    margin: 0 0 8px;\r\n    width: 100%;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: block;\r\n        margin: 0 0 8px;\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n.list-card {\r\n    background: #FFF;\r\n    border-bottom: 4px solid #006AFF;\r\n    box-shadow: 0 1px 2px rgba(0,0,0,.2);\r\n    cursor: pointer;\r\n}\r\n\r\n.list-card, .list-card-top {\r\n    position: relative;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: -webkit-box;\r\n    -webkit-box-orient: vertical;\r\n}\r\n\r\n.list-card {\r\n    display: flex;\r\n    -webkit-box-direction: reverse;\r\n    flex-direction: column-reverse;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.list-card {\r\n    grid-template-rows: auto 110px;\r\n    grid-template-areas:\r\n        'top'\r\n        'bottom';\r\n}\r\n\r\n.list-card-short {\r\n    grid-template-rows: auto;\r\n}\r\n\r\n.list-card-info {\r\n    padding: 15px;\r\n}\r\n\r\n.list-card-info {\r\n    display: flex;\r\n    -webkit-box-direction: normal;\r\n    flex-direction: column;\r\n    min-height: 110px;\r\n}\r\n\r\n.list-card-info {\r\n    grid-area: bottom;\r\n    grid-template-rows: repeat(3,auto);\r\n    min-height: auto;\r\n}\r\n\r\n.list-card-short .list-card-info {\r\n    min-height: 74px;\r\n    padding: 5px 8px 7px;\r\n}\r\n\r\n.list-card-addr, .list-card-details, .list-card-favorites-info, .list-card-footer, .list-card-heading, .list-card-link, .list-card-truncate, .list-card-type, .list-card-variable-text {\r\n    margin: 0;\r\n    min-width: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.zsg-link:visited, .zsg-link_primary:visited, a:visited {\r\n    color: #7A48D6;\r\n}\r\n\r\n.list-card-link:active, .list-card-link:hover, .list-card-link:link, .list-card-link:visited {\r\n    color: #2A2A33;\r\n}\r\n\r\n.list-card-addr {\r\n    font-size: 14px;\r\n    font-style: normal;\r\n    font-weight: 600;\r\n    margin-bottom: 5px;\r\n    min-width: 0;\r\n}\r\n\r\n.list-card-short .list-card-addr, .list-card-short .list-card-heading {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-footer, .list-card-horizontal {\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-direction: normal;\r\n}\r\n\r\n.list-card-footer {\r\n    -webkit-box-ordinal-group: 4;\r\n    order: 3;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.list-card-footer, .list-card-heading {\r\n    grid-template-columns: auto 1fr;\r\n    display: grid;\r\n}\r\n\r\n.list-card-footer {\r\n    grid-row: 3/4;\r\n}\r\n\r\n.list-card-type {\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-short .list-card-type {\r\n    margin-top: 3px;\r\n    height: 18px;\r\n    font-size: 12px;\r\n    line-height: 18px;\r\n}\r\n\r\n.list-card-heading {\r\n    line-height: 1;\r\n    margin-bottom: 9px;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-heading {\r\n    grid-row: 1/2;\r\n    -webkit-box-align: end;\r\n    align-items: end;\r\n}\r\n\r\n.list-card-price, .priceStyles {\r\n    font-weight: 600;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-price {\r\n    display: inline-block;\r\n    font-size: 26px;\r\n}\r\n\r\n.list-card-short .list-card-price {\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n    height: 32px;\r\n}\r\n\r\n.list-card-details {\r\n    display: inline;\r\n    font-size: 14px;\r\n    font-weight: 600;\r\n    list-style: none;\r\n    margin-left: 15px;\r\n    max-width: 100%;\r\n}\r\n\r\n.list-card-price+.list-card-details {\r\n    margin-bottom: 3px;\r\n}\r\n\r\n.list-card-short .list-card-price+.list-card-details {\r\n    margin-bottom: 5px;\r\n    text-align: right;\r\n}\r\n\r\n.list-card-details>li {\r\n    border-left: 1px solid #D1D1D5;\r\n    display: inline;\r\n    padding: 0 6px;\r\n}\r\n\r\n.list-card-details>li:first-child {\r\n    border-left: 0;\r\n    padding-left: 0;\r\n}\r\n\r\n.list-card-label {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n}\r\n\r\n.list-card-top {\r\n    grid-area: top;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: auto;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-variable-text {\r\n    z-index: 1;\r\n}\r\n\r\n.list-card-img-overlay {\r\n    background: rgba(0,0,0,.54);\r\n    color: #FFF;\r\n    padding: 5px 15px;\r\n    font-size: 13px;\r\n}\r\n\r\n.list-card-variable-text {\r\n    max-width: calc(100% - 40px);\r\n    left: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-brokerage, .list-card-save, .list-card-variable-text {\r\n    position: absolute;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-img, .list-card-overlay, .list-card-save, .list-card-variable-text {\r\n    grid-area: 1/1/-1/-1;\r\n}\r\n\r\n.list-card-variable-text {\r\n    place-self: start;\r\n}\r\n\r\n.list-card-variable-text {\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-brokerage {\r\n    background: 0 0;\r\n    width: 100%;\r\n    padding-bottom: 10px;\r\n    text-align: right;\r\n    text-shadow: 1px 1px 0 rgba(0,0,0,.25);\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.list-card-brokerage {\r\n    grid-area: auto;\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-img {\r\n    content: '';\r\n    display: block;\r\n    padding-top: 53.33%;\r\n    overflow: hidden;\r\n    position: relative;\r\n    background-color: #F1F1F4;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.list-card-short .list-card-img {\r\n    padding-top: 41.67%;\r\n}\r\n\r\n.list-card-img img {\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    max-width: 100%;\r\n    width: 100%;\r\n    height: auto;\r\n    -webkit-transform: translate3d(-50%,-50%,0);\r\n    transform: translate3d(-50%,-50%,0);\r\n}\r\n\r\n.list-card-save {\r\n    z-index: 1;\r\n    background: 0 0;\r\n    border: 0;\r\n    right: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-save {\r\n    align-self: start;\r\n    justify-self: end;\r\n}\r\n\r\nbody.responsive-search-page .search-page-container .list-card-save {\r\n    -webkit-transform: translate3d(0,0,0);\r\n}\r\n\r\n.list-card-save .list-card-save-content {\r\n    display: block;\r\n    width: 44px;\r\n    padding: 8px 8px 5px;\r\n    -webkit-filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    -webkit-transition: -webkit-filter .2s ease-out;\r\n    transition: -webkit-filter .2s ease-out;\r\n    transition: filter .2s ease-out;\r\n    transition: filter .2s ease-out,-webkit-filter .2s ease-out;\r\n}\r\n\r\n.list-card-type-icon.zsg-icon-for-sale{\r\n    font-size: 10px;\r\n}\r\n\r\n.favorite_border.material-icons{\r\n    font-size: 34px;\r\n}\r\n\r\n.responsive-mini-bubble {\r\n    color: #2A2A33;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    line-height: 15.6px;\r\n    position: relative;\r\n    background-color: #FFF;\r\n    font-size: 12px;\r\n    -webkit-tap-highlight-color: transparent;\r\n    font-family: Gotham,gotham,Verdana,sans-serif;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-content {\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-image {\r\n    background-position: 50% 50%;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    content: '';\r\n    height: 46px;\r\n    width: 46px;\r\n    margin-right: 5px;\r\n    border: 0;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details {\r\n    margin-bottom: 0;\r\n    height: 46px;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}", ""]);
+exports.push([module.i, ".pizo-list-realty-main-result-control-map-view{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    \r\n}\r\n\r\n.pizo-list-realty-main-result-control-map-view .pizo-new-realty-location-map-view{\r\n    flex-grow: 2;\r\n    display: flex;    \r\n\r\n    margin-bottom: 0;\r\n    width: unset;\r\n    vertical-align: unset;\r\n    height: unset;\r\n    position: unset;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .search-page-list-container {\r\n        overflow-y: auto;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 390px;\r\n        box-shadow: -2px 2px 5px 0 rgba(0,0,0,.4);\r\n        z-index: 1;\r\n    }\r\n}\r\n\r\n.search-page-list-container{\r\n    height: 100%;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 375px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 375px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 750px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 750px;\r\n    }\r\n}\r\n\r\n.result-list-container {\r\n    position: relative;\r\n    background-color: #fafafa;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .result-list-container {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container {\r\n    background: 0 0;\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n    padding: 12px 10px;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n        padding: 20px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-title {\r\n    font-size: 20px;\r\n    line-height: 26px;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-title {\r\n        margin-bottom: 12px;\r\n    }\r\n    \r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container .search-subtitle, .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n        margin-bottom: 8px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-subtitle {\r\n    margin-bottom: 10px;\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle {\r\n        position: relative;\r\n        display: -webkit-box;\r\n        display: flex;\r\n        -webkit-box-pack: justify;\r\n        justify-content: space-between;\r\n        font-size: 14px;\r\n        margin-bottom: 12px;\r\n    }\r\n}\r\n\r\n.result-list-container .result-count {\r\n    align-self: flex-start;\r\n    -webkit-box-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle .result-count {\r\n        font-weight: 600;\r\n    }\r\n}\r\n\r\n.result-list-container .sort-options {\r\n    display: none;\r\n}\r\n\r\n.result-list-container .sort-options.visible {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-align: start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.photo-cards.photo-cards_short {\r\n    padding: 0;\r\n    background-color: #F1F1F4;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\nbody:not(.mobile-web) .photo-cards.photo-cards_short {\r\n    background-color: #FFF;\r\n}\r\n\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 16px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\n.photo-cards.photo-cards_short>li {\r\n    display: block;\r\n    margin: 0 0 8px;\r\n    width: 100%;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: block;\r\n        margin: 0 0 8px;\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n.list-card {\r\n    background: #FFF;\r\n    border-bottom: 4px solid #006AFF;\r\n    box-shadow: 0 1px 2px rgba(0,0,0,.2);\r\n    cursor: pointer;\r\n}\r\n\r\n.list-card, .list-card-top {\r\n    position: relative;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: -webkit-box;\r\n    -webkit-box-orient: vertical;\r\n}\r\n\r\n.list-card {\r\n    display: flex;\r\n    -webkit-box-direction: reverse;\r\n    flex-direction: column-reverse;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.list-card {\r\n    grid-template-rows: auto 110px;\r\n    grid-template-areas:\r\n        'top'\r\n        'bottom';\r\n}\r\n\r\n.list-card-short {\r\n    grid-template-rows: auto;\r\n}\r\n\r\n.list-card-info {\r\n    padding: 15px;\r\n}\r\n\r\n.list-card-info {\r\n    display: flex;\r\n    -webkit-box-direction: normal;\r\n    flex-direction: column;\r\n    min-height: 110px;\r\n}\r\n\r\n.list-card-info {\r\n    grid-area: bottom;\r\n    grid-template-rows: repeat(3,auto);\r\n    min-height: auto;\r\n}\r\n\r\n.list-card-short .list-card-info {\r\n    min-height: 74px;\r\n    padding: 5px 8px 7px;\r\n}\r\n\r\n.list-card-addr, .list-card-details, .list-card-favorites-info, .list-card-footer, .list-card-heading, .list-card-link, .list-card-truncate, .list-card-type, .list-card-variable-text {\r\n    margin: 0;\r\n    min-width: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.zsg-link:visited, .zsg-link_primary:visited, a:visited {\r\n    color: #7A48D6;\r\n}\r\n\r\n.list-card-link:active, .list-card-link:hover, .list-card-link:link, .list-card-link:visited {\r\n    color: #2A2A33;\r\n}\r\n\r\n.list-card-addr {\r\n    font-size: 14px;\r\n    font-style: normal;\r\n    font-weight: 600;\r\n    margin-bottom: 5px;\r\n    min-width: 0;\r\n}\r\n\r\n.list-card-short .list-card-addr, .list-card-short .list-card-heading {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-footer, .list-card-horizontal {\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-direction: normal;\r\n}\r\n\r\n.list-card-footer {\r\n    -webkit-box-ordinal-group: 4;\r\n    order: 3;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.list-card-footer, .list-card-heading {\r\n    grid-template-columns: auto 1fr;\r\n    display: grid;\r\n}\r\n\r\n.list-card-footer {\r\n    grid-row: 3/4;\r\n}\r\n\r\n.list-card-type {\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-short .list-card-type {\r\n    margin-top: 3px;\r\n    height: 18px;\r\n    font-size: 12px;\r\n    line-height: 18px;\r\n}\r\n\r\n.list-card-heading {\r\n    line-height: 1;\r\n    margin-bottom: 9px;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-heading {\r\n    grid-row: 1/2;\r\n    -webkit-box-align: end;\r\n    align-items: end;\r\n}\r\n\r\n.list-card-price, .priceStyles {\r\n    font-weight: 600;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-price {\r\n    display: inline-block;\r\n    font-size: 26px;\r\n}\r\n\r\n.list-card-short .list-card-price {\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n    height: 32px;\r\n}\r\n\r\n.list-card-details {\r\n    display: inline;\r\n    font-size: 14px;\r\n    font-weight: 600;\r\n    list-style: none;\r\n    margin-left: 15px;\r\n    max-width: 100%;\r\n}\r\n\r\n.list-card-price+.list-card-details {\r\n    margin-bottom: 3px;\r\n}\r\n\r\n.list-card-short .list-card-price+.list-card-details {\r\n    margin-bottom: 5px;\r\n    text-align: right;\r\n}\r\n\r\n.list-card-details>li {\r\n    border-left: 1px solid #D1D1D5;\r\n    display: inline;\r\n    padding: 0 6px;\r\n}\r\n\r\n.list-card-details>li:first-child {\r\n    border-left: 0;\r\n    padding-left: 0;\r\n}\r\n\r\n.list-card-label {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n}\r\n\r\n.list-card-top {\r\n    grid-area: top;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: auto;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-variable-text {\r\n    z-index: 1;\r\n}\r\n\r\n.list-card-img-overlay {\r\n    background: rgba(0,0,0,.54);\r\n    color: #FFF;\r\n    padding: 5px 15px;\r\n    font-size: 13px;\r\n}\r\n\r\n.list-card-variable-text {\r\n    max-width: calc(100% - 40px);\r\n    left: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-brokerage, .list-card-save, .list-card-variable-text {\r\n    position: absolute;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-img, .list-card-overlay, .list-card-save, .list-card-variable-text {\r\n    grid-area: 1/1/-1/-1;\r\n}\r\n\r\n.list-card-variable-text {\r\n    place-self: start;\r\n}\r\n\r\n.list-card-variable-text {\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-brokerage {\r\n    background: 0 0;\r\n    width: 100%;\r\n    padding-bottom: 10px;\r\n    text-align: right;\r\n    text-shadow: 1px 1px 0 rgba(0,0,0,.25);\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.list-card-brokerage {\r\n    grid-area: auto;\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-img {\r\n    content: '';\r\n    display: block;\r\n    padding-top: 53.33%;\r\n    overflow: hidden;\r\n    position: relative;\r\n    background-color: #F1F1F4;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.list-card-short .list-card-img {\r\n    padding-top: 41.67%;\r\n}\r\n\r\n.list-card-img img {\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    max-width: 100%;\r\n    width: 100%;\r\n    height: auto;\r\n    -webkit-transform: translate3d(-50%,-50%,0);\r\n    transform: translate3d(-50%,-50%,0);\r\n}\r\n\r\n.list-card-save {\r\n    z-index: 1;\r\n    background: 0 0;\r\n    border: 0;\r\n    right: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-save {\r\n    align-self: start;\r\n    justify-self: end;\r\n}\r\n\r\nbody.responsive-search-page .search-page-container .list-card-save {\r\n    -webkit-transform: translate3d(0,0,0);\r\n}\r\n\r\n.list-card-save .list-card-save-content {\r\n    display: block;\r\n    width: 44px;\r\n    padding: 8px 8px 5px;\r\n    -webkit-filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    -webkit-transition: -webkit-filter .2s ease-out;\r\n    transition: -webkit-filter .2s ease-out;\r\n    transition: filter .2s ease-out;\r\n    transition: filter .2s ease-out,-webkit-filter .2s ease-out;\r\n}\r\n\r\n.list-card-type-icon.zsg-icon-for-sale{\r\n    font-size: 10px;\r\n}\r\n\r\n.favorite_border.material-icons{\r\n    font-size: 34px;\r\n}\r\n\r\n.responsive-mini-bubble {\r\n    color: #2A2A33;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    line-height: 15.6px;\r\n    position: relative;\r\n    background-color: #FFF;\r\n    font-size: 12px;\r\n    -webkit-tap-highlight-color: transparent;\r\n    font-family: Gotham,gotham,Verdana,sans-serif;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-content {\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-image {\r\n    background-position: 50% 50%;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    content: '';\r\n    height: 46px;\r\n    width: 46px;\r\n    margin-right: 5px;\r\n    border: 0;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details {\r\n    margin-bottom: 0;\r\n    height: 46px;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.home-details-content{\r\n    position: relative;\r\n}\r\n\r\n.imHfmq {\r\n    height: 100%;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    margin: 0px 16px;\r\n}\r\n\r\n.ds-text-button {\r\n    color: #006aff;\r\n    padding: 0;\r\n    border: 0;\r\n    background: 0 0;\r\n}\r\n\r\n.fyUmOz {\r\n    clip: rect(0px, 0px, 0px, 0px);\r\n    height: 1px;\r\n    position: absolute;\r\n    width: 1px;\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    margin: -1px;\r\n    overflow: hidden;\r\n    padding: 0px;\r\n}\r\n\r\n.ds-text-button:hover {\r\n    color: #62aef7;\r\n}\r\n\r\n.duJWoc:hover {\r\n    text-decoration: none;\r\n}\r\n\r\n.duJWoc {\r\n    vertical-align: middle;\r\n}\r\n\r\n@media (min-width: 1024px)\r\n{\r\n    .imHfmq {\r\n        border-bottom: 1px solid rgb(209, 209, 213);\r\n    }\r\n}\r\n\r\n.zsg-form-group, .zsg-form-group li, ol, ul {\r\n    list-style: none;\r\n}\r\n\r\n.lhzQGq {\r\n    cursor: pointer;\r\n    color: rgb(0, 106, 255);\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: none;\r\n    padding: 0px;\r\n}\r\n\r\n.ds-close-lightbox-icon {\r\n    position: absolute;\r\n    top: 16px;\r\n    right: -40px;\r\n    border: none;\r\n    background-image: none;\r\n    background-color: transparent;\r\n    box-shadow: none;\r\n    padding: 0;\r\n    display: none;\r\n}\r\n\r\n@media only screen and (min-width: 1024px)\r\n{\r\n    .ds-close-lightbox-icon {\r\n        display: block;\r\n    }\r\n}\r\n\r\n.ds-wrapper {\r\n   \r\n}\r\n\r\n@media only screen and (min-width: 768px)\r\n{\r\n    .ds-wrapper {\r\n        overflow: hidden;\r\n    }\r\n}\r\n\r\n.ds-container {\r\n    -webkit-font-smoothing: antialiased;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    max-height: none;\r\n    position: relative;\r\n}\r\n\r\n.ds-media-col {\r\n    scroll-behavior: smooth;\r\n    overflow-x: hidden;\r\n    max-height: 100vh;\r\n}\r\n\r\n\r\n.ds-container .ds-data-view, .ds-container .ds-media-col {\r\n    overflow-y: scroll;\r\n    overflow-x: hidden;\r\n    -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n.ds-container .ds-media-col {\r\n    background: #fff;\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media only screen and (min-width: 768px)\r\n{\r\n    .ds-container.ds-mobile-single-scroll .ds-media-col {\r\n        display: block!important;\r\n    }\r\n}\r\n\r\n.media-stream {\r\n    background: #fff;\r\n}\r\n\r\n.media-stream {\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-flow: row wrap;\r\n    flex-flow: row wrap;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    margin: -2px;\r\n    width: calc(100% + 4px);\r\n    min-height: 30%!important;\r\n}\r\n\r\n@media screen and (min-width: 768px)\r\n{\r\n    .media-stream {\r\n        max-width: calc(100vw - 600px);\r\n    }\r\n}\r\n\r\n.media-stream {\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-gap: 4px;\r\n    grid-auto-columns: 1fr;\r\n    margin: 0 auto;\r\n    padding-inline-start: 0;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n.ds-container .ds-data-view>ul, .ds-container .ds-media-col>ul {\r\n    min-height: 80%;\r\n}\r\n\r\n.media-stream-tile {\r\n    cursor: pointer;\r\n    display: block;\r\n    overflow: hidden;\r\n    scroll-snap-align: center;\r\n    box-shadow: inset rgba(0,0,0,.15) 0 0 10px;\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n    height: calc(100vw * 3 / 4);\r\n    width: 100%;\r\n    border: 2px solid #eee;\r\n}\r\n\r\n@media screen and (min-width: 550px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 4px) * 3 / 8);\r\n        width: 50%;\r\n    }    \r\n}\r\n\r\n@media screen and (min-width: 550px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc(100vw * 3 / 4);\r\n        width: 100%;\r\n    }\r\n    \r\n}\r\n\r\n@media screen and (min-width: 768px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 400px) * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 400px - 4px) * 3/8);\r\n        width: 50%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 400px) * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1024px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        border-width: 2px;\r\n        height: calc((100vw - 400px - 72px * 2 - 4px) * 3/8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1024px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 400px - 72px * 2) * 3/4);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        border-width: 2px;\r\n        height: calc((100vw - 480px - 72px * 2 - 4px) * 3/8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 480px - 72px * 2) * 3/4);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1390px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        height: calc((768px - 4px) * 3/8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1390px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc(768px * 3/4);\r\n    }\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n    border-width: 0;\r\n    width: auto;\r\n}\r\n\r\n@media screen and (min-width: 550px)\r\n{\r\n    .media-stream .media-stream-tile--fullwidth, .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 2;\r\n        grid-column: span 2;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 768px)\r\n{\r\n    .media-stream .media-stream-tile--fullwidth, .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 1;\r\n        grid-column: span 1;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px)\r\n{\r\n    .media-stream .media-stream-tile--fullwidth, .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 2;\r\n        grid-column: span 2;\r\n    }\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-pack: center;\r\n    justify-content: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n}\r\n\r\n.ds-container .ds-hero-headline {\r\n    font-weight: 400;\r\n    font-size: 20px;\r\n    line-height: 30px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .ds-hero-headline {\r\n    font-weight: 600;\r\n    color: #fff;\r\n    text-align: center;\r\n    margin-top: -16px;\r\n    margin-bottom: 16px;\r\n    padding: 0 8px;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-inline-start: 0;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button:not(:first-child) {\r\n    margin-left: 8px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .contact-button-group {\r\n    height: unset;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n    -ms-flex-positive: 1;\r\n    flex-grow: 1;\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .contact-button-group .contact-button {\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0%;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    line-height: 21px;\r\n}\r\n\r\n.ds-white-bg {\r\n    background: #fff!important;\r\n}\r\n\r\n.ds-container .ds-data-col {\r\n    background: #eee;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n}\r\n\r\n@media only screen and (min-width: 768px)\r\n{\r\n    .ds-container .ds-data-col {\r\n        -ms-flex-preferred-size: 400px;\r\n        flex-basis: 400px;\r\n        max-width: 400px;\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 1280px)\r\n{\r\n    .ds-container .ds-data-col {\r\n        -ms-flex-preferred-size: 480px;\r\n        flex-basis: 480px;\r\n        max-width: 480px;\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 768px)\r\n{\r\n    .ds-container .ds-data-col.ds-data-col-data-forward {\r\n        -ms-flex-preferred-size: 500px;\r\n        flex-basis: 500px;\r\n        max-width: 500px;\r\n    }\r\n}\r\n\r\n.ds-container .ds-chip {\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.ds-container .ds-chip, .ds-container .ds-chip-mobile {\r\n    background-color: #fff;\r\n}\r\n\r\n.ds-home-details-chip {\r\n    margin: 0 16px;\r\n    padding-top: 16px;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-container {\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-content {\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n    width: 100%;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row {\r\n    margin-bottom: 4px;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-h2.zsg-separator, body, dd, dl, dt, fieldset, h1, h2, h2.zsg-separator, h3, h4, h5, h6, ol, p, ul {\r\n    margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator, h1, h2, h2.zsg-separator, h3, h4, h5, h6 {\r\n    color: inherit;\r\n}\r\n\r\n.zsg-h3, .zsg-h3_light, h3 {\r\n    font-size: 20px;\r\n    line-height: 1.5;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-content-item, .zsg-datatable-table .zsg-table-th, .zsg-datatable-table th, .zsg-form-legend, .zsg-h1, .zsg-h2, .zsg-h2.zsg-separator, .zsg-h3, .zsg-h4, .zsg-h5, .zsg-menu-header, .zsg-pagination>li, .zsg-step-content, .zsg-steps>li>a, .zsg-subfooter-header, .zsg-table .zsg-table-th, .zsg-table th, .zsg-toolbar_labeled .zsg-toolbar-label, h1, h2, h2.zsg-separator, h3, h4, h5, h6, p {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th, .zsg-datatable-table th, .zsg-form-legend, .zsg-h1, .zsg-h2, .zsg-h2.zsg-separator, .zsg-h3, .zsg-h4, .zsg-h5, .zsg-menu-header, .zsg-pagination>li, .zsg-step-content, .zsg-steps>li>a, .zsg-subfooter-header, .zsg-table .zsg-table-th, .zsg-table th, .zsg-toolbar_labeled .zsg-toolbar-label, h1, h2, h2.zsg-separator, h3, h4, h5, h6 {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row .ds-price {\r\n    display: inline;\r\n    font-size: 26px;\r\n    line-height: 1.26923077;\r\n    margin-right: 16px;\r\n}\r\n\r\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header, .ds-home-details-chip .ds-bed-bath-living-area-header .ds-bed-bath-living-area-container {\r\n    display: inline;\r\n}\r\n\r\n.zsg-h2.zsg-separator, body, dd, dl, dt, fieldset, h1, h2, h2.zsg-separator, h3, h4, h5, h6, ol, p, ul {\r\n    margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator, h1, h2, h2.zsg-separator, h3, h4, h5, h6 {\r\n    color: inherit;\r\n}\r\n\r\n.zsg-h3, .zsg-h3_light, h3 {\r\n    font-size: 20px;\r\n    line-height: 1.5;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-content-item, .zsg-datatable-table .zsg-table-th, .zsg-datatable-table th, .zsg-form-legend, .zsg-h1, .zsg-h2, .zsg-h2.zsg-separator, .zsg-h3, .zsg-h4, .zsg-h5, .zsg-menu-header, .zsg-pagination>li, .zsg-step-content, .zsg-steps>li>a, .zsg-subfooter-header, .zsg-table .zsg-table-th, .zsg-table th, .zsg-toolbar_labeled .zsg-toolbar-label, h1, h2, h2.zsg-separator, h3, h4, h5, h6, p {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th, .zsg-datatable-table th, .zsg-form-legend, .zsg-h1, .zsg-h2, .zsg-h2.zsg-separator, .zsg-h3, .zsg-h4, .zsg-h5, .zsg-menu-header, .zsg-pagination>li, .zsg-step-content, .zsg-steps>li>a, .zsg-subfooter-header, .zsg-table .zsg-table-th, .zsg-table th, .zsg-toolbar_labeled .zsg-toolbar-label, h1, h2, h2.zsg-separator, h3, h4, h5, h6 {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header, .ds-home-details-chip .ds-bed-bath-living-area-header .ds-bed-bath-living-area-container {\r\n    display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n    font-size: 15px;\r\n    line-height: 1.53333333;\r\n}\r\n\r\n.ds-container .ds-vertical-divider {\r\n    border-style: solid;\r\n    border-width: 0 1px 0 0;\r\n    border-color: #ccc;\r\n    margin-right: 8px;\r\n    padding-right: 8px;\r\n}\r\n\r\n.ds-home-details-chip .ds-vertical-divider {\r\n    border-style: solid;\r\n    border-width: 0 1px 0 0;\r\n    border-color: #ccc;\r\n    margin-right: 8px;\r\n    padding-right: 8px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header .ds-vertical-divider {\r\n    font-size: 15px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n    font-size: 15px;\r\n    line-height: 1.53333333;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-label-secondary {\r\n    font-weight: 400;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row {\r\n    margin-bottom: 4px;\r\n    font-size: 15px;\r\n    line-height: 1.53;\r\n    font-weight: 600;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row header {\r\n    display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row .ds-address-container {\r\n    display: inline;\r\n    font-size: 15px;\r\n    line-height: 1.53;\r\n    font-weight: 600;\r\n    letter-spacing: normal;\r\n}\r\n\r\n.ds-home-details-chip .ds-chip-removable-content {\r\n    will-change: height;\r\n}\r\n\r\n.ds-mortgage-row {\r\n    height: 21px;\r\n}\r\n\r\n.ds-container .ds-buttons, .ds-container .ds-buttons-mobile {\r\n    background: #fff;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n    padding: 0 16px 16px;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n    z-index: 1;\r\n    position: relative;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n    -ms-flex-positive: 1;\r\n    flex-grow: 1;\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    line-height: 21px;\r\n}\r\n\r\n@media screen and (min-width: 1390px)\r\n{\r\n    .media-stream .media-stream-tile--halfheight {\r\n        height: calc((768px - 4px) * 3/16);\r\n    }\r\n}\r\n\r\n\r\n.media-stream-tile--upsell {\r\n    background: #000;\r\n    position: relative;\r\n    cursor: unset;\r\n}\r\n\r\n.media-stream-tile figure, .media-stream-tile img {\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\r\n    -o-object-position: 50% 50%;\r\n    object-position: 50% 50%;\r\n}\r\n\r\n.iJIIUW {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n    height: 34px;\r\n    line-height: 22px;\r\n    color: rgb(255, 255, 255);\r\n    background-color: rgb(0, 106, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(0, 106, 255);\r\n}\r\n\r\n.cllLJF {\r\n    padding-right: 8px;\r\n    padding-left: 8px;\r\n}\r\n\r\n.cKVUOM {\r\n    text-transform: none;\r\n    -webkit-appearance: none;\r\n    font: inherit;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    border-width: initial;\r\n    border-style: none;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: none;\r\n}\r\n\r\nbutton, html input[type=button], input[type=reset], input[type=submit] {\r\n    -webkit-appearance: button;\r\n    cursor: pointer;\r\n}\r\n\r\n.gpVNOz {\r\n    display: flex;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    height: 100%;\r\n    color: rgb(0, 106, 255);\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: transparent;\r\n}\r\n\r\n.eKDTCE {\r\n    height: 20px;\r\n    width: 20px;\r\n    margin-right: 4px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.duJWoc {\r\n    vertical-align: middle;\r\n}\r\n\r\n.cjrQwi {\r\n    display: flex;\r\n    flex-direction: row;\r\n    -webkit-box-pack: end;\r\n    justify-content: flex-end;\r\n    height: 100%;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.jfjsxZ {\r\n    display: inline;\r\n    color: inherit;\r\n    cursor: pointer;\r\n    font-weight: inherit;\r\n    font-size: inherit;\r\n    font-family: inherit;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    background: none;\r\n    padding: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-image: initial;\r\n    border-bottom: 1px dashed rgb(0, 106, 255);\r\n}\r\n\r\n.eVrWvb {\r\n    border-bottom: 1px dashed rgb(167, 166, 171);\r\n}\r\n\r\n.eVrWvb, .eVrWvb.TriggerButton-sc-19o64qd-0, .eVrWvb.TriggerButton-sc-19o64qd-0::after {\r\n    cursor: help;\r\n}\r\n\r\n.cpEtCH {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 9px;\r\n    padding-bottom: 9px;\r\n    height: 42px;\r\n    line-height: 22px;\r\n    color: rgb(0, 106, 255);\r\n    background-color: rgb(255, 255, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(167, 166, 171);\r\n}\r\n\r\n.btcvqQ {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 9px;\r\n    padding-bottom: 9px;\r\n    height: 42px;\r\n    line-height: 22px;\r\n    color: rgb(255, 255, 255);\r\n    background-color: rgb(0, 106, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(0, 106, 255);\r\n}", ""]);
 
 
 
@@ -19226,11 +19322,11 @@ __webpack_require__.d(stringMatching_namespaceObject, "phraseMatch", function() 
 __webpack_require__.d(stringMatching_namespaceObject, "phraseLike", function() { return phraseLike; });
 
 // EXTERNAL MODULE: ./node_modules/atob/browser-atob.js
-var browser_atob = __webpack_require__(22);
+var browser_atob = __webpack_require__(23);
 var browser_atob_default = /*#__PURE__*/__webpack_require__.n(browser_atob);
 
 // EXTERNAL MODULE: ./node_modules/btoa/index.js
-var node_modules_btoa = __webpack_require__(23);
+var node_modules_btoa = __webpack_require__(24);
 var btoa_default = /*#__PURE__*/__webpack_require__.n(node_modules_btoa);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Polyfill/polyfill.js
@@ -22215,7 +22311,7 @@ var jszip_min = __webpack_require__(17);
 var jszip_min_default = /*#__PURE__*/__webpack_require__.n(jszip_min);
 
 // EXTERNAL MODULE: ./node_modules/absol/src/JSDocx/JSDocx.js
-var JSDocx = __webpack_require__(25);
+var JSDocx = __webpack_require__(26);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/Network/Broadcast.js
 
@@ -22855,7 +22951,7 @@ XHR.request = function (method, url, props, headers, body, successCallback, fail
 var stringFormat = __webpack_require__(9);
 
 // EXTERNAL MODULE: ./node_modules/babylon/lib/index.js
-var lib = __webpack_require__(29);
+var lib = __webpack_require__(30);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/JSX/attribute.js
 /**
@@ -23322,6 +23418,13 @@ Fragment.prototype.getContextManager = function () {
     return this.ctxMng;
 };
 
+Fragment.prototype.getView = function () {
+    if (this.$view) return this.$view;
+    this.$view = this.createView() || this.$view;
+    if (!this.$view) throw new Error("this.$view must be not null!");
+    if (this.onCreated) this.onCreated();
+    return this.$view;
+};
 
 /**
  * find context from parent
@@ -24134,8 +24237,6 @@ var shortMonthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
 
 
 
-//more https://www.myonlinetraininghub.com/excel-date-and-time-formatting
-// export var formatTokenRegex = /([a-zA-Z]|[^\s\-$-/:-?{-~!"^_`\[\]])+/g;//more
 var formatTokenRegex = /([,\.\-\/])|([a-zA-Z0-9]+)/g;//more
 
 /**
@@ -24533,6 +24634,9 @@ var src_absol = {
     Alarm: Time_Alarm,
     coreDom: Dom["a" /* default */].ShareInstance,
     coreSvg: Svg["a" /* default */].ShareInstance,
+    require: function(tagName){
+        return this.coreDom.require(tagName)|| this.coreSvg.require(tagName);
+    },
     domCreator: Dom["a" /* default */].ShareInstance.creator,
     svgCreator: Dom["a" /* default */].ShareInstance.creator,
     _: Dom["a" /* default */].ShareInstance._,
@@ -24553,22 +24657,22 @@ var src_absol = {
 };
 
 
-/* harmony default export */ var src = (src_absol);
+/* harmony default export */ var absol_src = (src_absol);
 // CONCATENATED MODULE: ./node_modules/absol/src/absol.js
 
 
 
 //for old plugin
-src.HTMLElement = src.Element;
-src.dom = src.Dom;
-src.event = src.EventEmitter;
-src.Event = src.EventEmitter;
-src.color = src.Color;
-src.documentReady = src.Dom.documentReady;
-window.AComp = src.AComp;
-window.PhotoSwipeViewer = src.PhotoSwipeViewer;
-window.IFrameBridge = src.IFrameBridge;
-window.absol = src;
+absol_src['HTML'+'El'+'ement'.toLowerCase()] = absol_src.Element;
+absol_src.dom = absol_src.Dom;
+absol_src.event = absol_src.EventEmitter;
+absol_src.Event = absol_src.EventEmitter;
+absol_src.color = absol_src.Color;
+absol_src.documentReady = absol_src.Dom.documentReady;
+window.AComp = absol_src.AComp;
+window.PhotoSwipeViewer = absol_src.PhotoSwipeViewer;
+window.IFrameBridge = absol_src.IFrameBridge;
+window.absol = absol_src;
 
 var mapKeys = {
     ShareDom: 'coreDom',
@@ -24578,18 +24682,18 @@ var mapKeys = {
     ShareCreator: 'domCreator'
 };
 
-src.logData = [];
-src.log = function () {
-    src.logData.push([new Error('TraceError')].concat(Array.prototype.slice.call(arguments)))
+absol_src.logData = [];
+absol_src.log = function () {
+    absol_src.logData.push([new Error('TraceError')].concat(Array.prototype.slice.call(arguments)))
 }
 
 Object.keys(mapKeys).forEach(function (key) {
     var valueKey = mapKeys[key];
-    Object.defineProperty(src, key, {
+    Object.defineProperty(absol_src, key, {
         get: function () {
             if (!this['__warn' + key + '__']) {
                 this['__warn' + key + '__'] = true;
-                src.log("use " + valueKey + ' instead of ' + key);
+                absol_src.log("use " + valueKey + ' instead of ' + key);
             }
             return this[valueKey];
         }
@@ -24606,8 +24710,9 @@ var ACore = __webpack_require__(0);
 
 
 
+
 var Hanger_ = ACore["a" /* default */]._;
-var Hanger_$ = ACore["a" /* default */].$;
+var $ = ACore["a" /* default */].$;
 
 function Hanger() {
     this.addClass('as-hanger');
@@ -24630,7 +24735,6 @@ function Hanger() {
         mousemove: this.eventHandler.hangerPointerMove
     };
 }
-
 
 
 Hanger.render = function () {
@@ -24683,10 +24787,9 @@ Hanger.eventHandler = {};
 
 Hanger.eventHandler.hangerPointerDown = function (event) {
     if (this._hangerPointerData) return;
-
     var bound = this.getBoundingClientRect();
     var startingPoint;
-    var isTouch = event.type == 'touchstart';
+    var isTouch = event.type === 'touchstart';
     var pointerIdent = -1;
     var target;
     if (isTouch) {
@@ -24741,15 +24844,18 @@ Hanger.eventHandler.hangerPointerDown = function (event) {
 Hanger.eventHandler.hangerPointerMove = function (event) {
     var pointerData = this._hangerPointerData;
     var isTouch = pointerData.isTouch;
-    var pointerIdent = -1;
+    var pointerIdent = -2;
     var currentPoint;
     if (isTouch) {
-        var touch = event.changedTouches[0];
-        pointerIdent = touch.identifier;
-        currentPoint = new Math_Vec2(touch.clientX, touch.clientY);
+        var touch = Object(EventEmitter["b" /* findChangedTouchByIdent */])(event, pointerData.pointerIdent);
+        if (touch) {
+            pointerIdent = touch.identifier;
+            currentPoint = new Math_Vec2(touch.clientX, touch.clientY);
+        }
     }
     else {
         currentPoint = new Math_Vec2(event.clientX, event.clientY);
+        pointerIdent = -1;
     }
     if (pointerIdent != pointerData.pointerIdent) return;
     pointerData.currentPoint = currentPoint;
@@ -24777,7 +24883,7 @@ Hanger.eventHandler.hangerPointerMove = function (event) {
         }
     }
 
-    if (pointerData.state == 1) {
+    if (pointerData.state === 1) {
         var dragEvent = {
             type: 'drag',
             originEvent: event,
@@ -24798,22 +24904,25 @@ Hanger.eventHandler.hangerPointerMove = function (event) {
     }
 };
 
-Hanger.eventHandler.hangerPointerFinish = function () {
+Hanger.eventHandler.hangerPointerFinish = function (event) {
     var pointerData = this._hangerPointerData;
-    var isTouch = pointerData.isTouch;
-    var pointerIdent = -1;
+    var isTouch = event.type === 'touchend';
+    if (pointerData.isTouch !== isTouch) return;
+    var pointerIdent = -2;
     var currentPoint;
     if (isTouch) {
-        var touch = event.changedTouches[0];
-        pointerIdent = touch.identifier;
-        currentPoint = new Math_Vec2(touch.clientX, touch.clientY);
+        var touch = Object(EventEmitter["b" /* findChangedTouchByIdent */])(event, pointerData.pointerIdent);
+        if (touch) {
+            pointerIdent = touch.identifier;
+            currentPoint = new Math_Vec2(touch.clientX, touch.clientY);
+        }
     }
     else {
         currentPoint = new Math_Vec2(event.clientX, event.clientY);
+        pointerIdent = -1;
     }
-    if (pointerIdent != pointerData.pointerIdent) return;
-
-    if (pointerData.state == 1) {
+    if (pointerIdent !== pointerData.pointerIdent) return;
+    if (pointerData.state === 1) {
         var dragEndEvent = {
             type: 'dragend',
             originEvent: event,
@@ -24845,7 +24954,7 @@ ACore["a" /* default */].install('hanger', Hanger);
 /* harmony default export */ var js_Hanger = (Hanger);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/hanger.css
-var hanger = __webpack_require__(38);
+var hanger = __webpack_require__(39);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/utils.js
 
@@ -25266,7 +25375,7 @@ ACore["a" /* default */].install('spaninput', SpanInput);
 
 /* harmony default export */ var js_SpanInput = (SpanInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/spaninput.css
-var spaninput = __webpack_require__(41);
+var spaninput = __webpack_require__(42);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/IconButton.js
 
@@ -25345,7 +25454,7 @@ ACore["a" /* default */].creator.iconbutton = IconButton;
 
 /* harmony default export */ var js_IconButton = (IconButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/iconbutton.css
-var iconbutton = __webpack_require__(43);
+var iconbutton = __webpack_require__(44);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/FlexiconButton.js
 
@@ -25415,7 +25524,7 @@ ACore["a" /* default */].install('flexiconbutton', FlexiconButton);
 
 /* harmony default export */ var js_FlexiconButton = (FlexiconButton);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/flexiconbutton.css
-var flexiconbutton = __webpack_require__(45);
+var flexiconbutton = __webpack_require__(46);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/FlexiconInput.js
 
@@ -25521,7 +25630,7 @@ ACore["a" /* default */].install('flexiconinput', FlexiconInput);
 
 /* harmony default export */ var js_FlexiconInput = (FlexiconInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/flexiconinput.css
-var flexiconinput = __webpack_require__(47);
+var flexiconinput = __webpack_require__(48);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Scroller.js
 
@@ -26081,7 +26190,7 @@ ACore["a" /* default */].creator.scrollbar = Scrollbar;
 ACore["a" /* default */].creator.vscroller = VScroller;
 ACore["a" /* default */].creator.hscroller = HScroller;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/scroller.css
-var css_scroller = __webpack_require__(49);
+var css_scroller = __webpack_require__(50);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/NumberInput.js
 
@@ -26467,7 +26576,7 @@ ACore["a" /* default */].install('NumberInput'.toLowerCase(), NumberInput);
 
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/numberinput.css
-var numberinput = __webpack_require__(51);
+var numberinput = __webpack_require__(52);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Searcher.js
 
@@ -26627,7 +26736,7 @@ ACore["a" /* default */].creator.searchtextinput = SearchTextInput;
 
 /* harmony default export */ var Searcher = (SearchTextInput);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/searcher.css
-var searcher = __webpack_require__(53);
+var searcher = __webpack_require__(54);
 
 // CONCATENATED MODULE: ./node_modules/absol/src/String/stringMatching.js
 /**
@@ -27474,7 +27583,7 @@ ACore["a" /* default */].creator.selecttable = SelectTable;
 
 /* harmony default export */ var js_SelectTable = (SelectTable);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selecttable.css
-var selecttable = __webpack_require__(55);
+var selecttable = __webpack_require__(56);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Menu.js
 
@@ -28131,7 +28240,7 @@ ACore["a" /* default */].creator.vmenuline = VMenuLine;
 ACore["a" /* default */].creator.dropdown = Dropdown;
 ACore["a" /* default */].creator.hmenuitem = HMenuItem;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/menu.css
-var css_menu = __webpack_require__(57);
+var css_menu = __webpack_require__(58);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/ContextMenu.js
 
@@ -28142,6 +28251,8 @@ var css_menu = __webpack_require__(57);
 var ContextMenu_ = ACore["a" /* default */]._;
 var ContextMenu_$ = ACore["a" /* default */].$;
 
+var supportContextEvent = false;
+
 function ContextCaptor() {
     this.attachedElt = null;
     this.$textarea = ContextMenu_$('textarea', this)
@@ -28149,7 +28260,7 @@ function ContextCaptor() {
     this._ss = 0;
     this._isTouch = false;
     /**
-    this._target = null;
+     this._target = null;
      * @type {Vec2}
      */
     this._posStart = null;
@@ -28160,8 +28271,10 @@ function ContextCaptor() {
     this._touchId = -100;
     this._longPressTimeout = -1;
     this._removeTimeout = -1;
-
+    this._fireContextMenuTimeout = -1;
     this.$target = null;
+    this._pointerSession = 0;
+    this._lastContextSession = 0;
 
     this.mousedownEvent = null;
     this.sync = Promise.resolve();
@@ -28202,14 +28315,15 @@ ContextCaptor.prototype.showContextMenu = function (x, y, props, onSelectItems, 
 
         self.off('requestcontextmenu', finish);
         setTimeout(function () {
-            anchor.selfRemove();
+            anchor.selfRemove();//
         }, 10);
     };
     var vmenu = ContextMenu_({
         tag: 'vmenu',
         props: props,
         on: {
-            press: onSelectItems || function () { }
+            press: onSelectItems || function () {
+            }
         }
     }).addTo(anchor);
     setTimeout(function () {
@@ -28245,6 +28359,46 @@ ContextCaptor.prototype._checkNeedHandle = function (target) {
     return needHandle;
 };
 
+
+ContextCaptor.prototype._fireContextMenuEvent = function () {
+    if (this._lastContextSession >= this._pointerSession) return;// prevent fire multi-times in a pointer session
+    this._lastContextSession = this._pointerSession;
+    var baseEventData = {
+        clientX: this._posCurrent.x,
+        clientY: this._posCurrent.y,
+        target: this.$target
+    };
+    this.emit('requestcontextmenu', baseEventData, this);
+    var self = this;
+
+    var propagation = true;
+    var localEvent = Object.assign({
+        clientX: this._posCurrent.x, clientY: this._posCurrent.y,
+        target: this.$target,
+        showContextMenu: function (props, onSelectItems) {
+            self.sync = self.sync.then(function () {
+                return new Promise(function (rs) {
+                    setTimeout(function () {
+                        self.showContextMenu(self._posCurrent.x, self._posCurrent.y, props, onSelectItems);
+                        rs();
+                    }, 30)
+                });
+            })
+        },
+        stopPropagation: function () {
+            propagation = false;
+        }
+    }, baseEventData);
+
+    var current = this.$target;
+    while (current && propagation) {
+        if (current.isSupportedEvent && current.isSupportedEvent('contextmenu')) {
+            current.emit('contextmenu', localEvent, current, this);
+        }
+        current = current.parentElement;
+    }
+};
+
 /**
  * @type {ContextCaptor}
  */
@@ -28252,7 +28406,7 @@ ContextCaptor.eventHandler = {};
 
 ContextCaptor.eventHandler.mousedown = function (event) {
     if (this._touchId != -100) return;
-
+    this._pointerSession++;
     var target;
     var isTouch;
     var touchId;
@@ -28273,6 +28427,7 @@ ContextCaptor.eventHandler.mousedown = function (event) {
     posCurrent = new Math_Vec2(pointer.clientX, pointer.clientY);
 
     if (isTouch) {
+
         var thisCT = this;
         this._longPressTimeout = setTimeout(function () {
             if (!thisCT._checkNeedHandle(target)) return;
@@ -28281,11 +28436,19 @@ ContextCaptor.eventHandler.mousedown = function (event) {
                 thisCT._removeTimeout = -1;
             }
 
-
             thisCT._ss++;
             thisCT.moveTo(thisCT._posCurrent);
             thisCT.active(true);
             thisCT._longPressTimeout = -1;
+            if (thisCT._fireContextMenuTimeout >= 0) {
+                clearTimeout(thisCT._fireContextMenuTimeout);
+            }
+            // show if device not support contextmenu event (after 700ms)
+            thisCT._fireContextMenuTimeout = setTimeout(function () {
+                if (!supportContextEvent) {
+                    thisCT._fireContextMenuEvent();
+                }
+            }, 300);
         }, 400);
         this.$target = target;
         this._isTouch = isTouch;
@@ -28324,8 +28487,8 @@ ContextCaptor.eventHandler.mousedown = function (event) {
  */
 ContextCaptor.prototype.moveTo = function (pos) {
     this.addStyle({
-        left: pos.x - 20 + 'px',
-        top: pos.y - 20 + 'px'
+        left: pos.x - 80 + 'px',
+        top: pos.y - 80 + 'px'
     });
 };
 
@@ -28336,14 +28499,12 @@ ContextCaptor.prototype.active = function (flag) {
         this.removeClass('absol-active');
 };
 
-ContextCaptor.eventHandler.mousemove = function () {
+ContextCaptor.eventHandler.mousemove = function (event) {
     var isTouch = this._isTouch;
-    var isTouch;
     var touchId;
     var pointer;
     var posCurrent;
     if (isTouch) {
-        isTouch = true;
         pointer = event.changedTouches[0];
         touchId = pointer.identifier;
     }
@@ -28363,7 +28524,7 @@ ContextCaptor.eventHandler.mousemove = function () {
 };
 
 
-ContextCaptor.eventHandler.mousefinish = function () {
+ContextCaptor.eventHandler.mousefinish = function (event) {
 
     var isTouch = this._isTouch;
     var touchId;
@@ -28396,45 +28557,22 @@ ContextCaptor.eventHandler.mousefinish = function () {
     }
 
     this._touchId = -100;
+    if (this._fireContextMenuTimeout >= 0) {
+        clearTimeout(this._fireContextMenuTimeout);
+    }
     var thisCT = this;
     this._removeTimeout = setTimeout(function () {
         thisCT.active(false);
         thisCT._removeTimeout = -1;
+
     }, 1);
 };
 
 ContextCaptor.eventHandler.contextmenu = function (event) {
-    this.emit('requestcontextmenu', event, this);
-    var self = this;
+    supportContextEvent = true;
     event.preventDefault();
+    this._fireContextMenuEvent();
 
-    var propagation = true;
-    var localEvent = {
-        clientX: event.clientX,
-        clientY: event.clientY,
-        target: this.$target,
-        showContextMenu: function (props, onSelectItems) {
-            self.sync = self.sync.then(function () {
-                return new Promise(function (rs) {
-                    setTimeout(function () {
-                        self.showContextMenu(event.clientX, event.clientY, props, onSelectItems);
-                        rs();
-                    }, 30)
-                });
-            })
-        },
-        stopPropagation: function () {
-            propagation = false;
-        }
-    }
-
-    var current = this.$target;
-    while (current && propagation) {
-        if (current.isSupportedEvent && current.isSupportedEvent('contextmenu')) {
-            current.emit('contextmenu', localEvent, current, this);
-        }
-        current = current.parentElement;
-    }
 };
 
 
@@ -28451,59 +28589,82 @@ ACore["a" /* default */].install('contextcaptor', ContextCaptor);
 
 /* harmony default export */ var ContextMenu = (ContextCaptor);
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/contextmenu.css
-var contextmenu = __webpack_require__(59);
+var contextmenu = __webpack_require__(60);
+
+// EXTERNAL MODULE: ./node_modules/absol-acomp/css/modal.css
+var css_modal = __webpack_require__(20);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/Modal.js
 
 
+
+var Modal_$ = ACore["a" /* default */].$;
+var Modal_ = ACore["a" /* default */]._;
+
 function Modal() {
-    var $ = ACore["a" /* default */].$;
-    var _ = ACore["a" /* default */]._;
+    this._contentAlign = [];
+    this.contentAlign = 'middle center';
+    this.$content = Modal_$('.as-modal-content', this);
+    console.log(this)
+}
 
-    var res = _({
-        class: 'absol-modal',
-        child: {
-            class: 'absol-modal-hcenter',
-            child: {
-                class: 'absol-modal-vcenter',
-                child: '.absol-modal-container'
 
-            }
-        }
-    });
-
-    res.$container = $('.absol-modal-container', res);
-
-    return res;
+Modal.tag = 'modal';
+Modal.render = function () {
+    return Modal_({ class: 'as-modal', child: '.as-modal-content' });
 };
 
-
-Modal.prototype.addChild = function (child) {
-    this.$container.addChild.apply(this.$container, arguments);
-    return this;
-};
+['findChildBefore', 'findChildAfter', 'removeChild', 'clearChild', 'addChild'].forEach(function (key) {
+    Modal.prototype[key] = function () {
+        this.$content[key].apply(this.$content, arguments);
+    }
+});
 
 
 Modal.property = {};
 Modal.property.show = {
     set: function (value) {
         if (value)
-            this.removeClass('absol-modal-hidden');
+            this.removeClass('as-hidden');
         else
-            this.addClass('absol-modal-hidden');
+            this.addClass('as-hidden');
     },
     get: function () {
-        return !this.containsClass('absol-modal-hidden');
+        return !this.containsClass('as-hidden');
     }
 };
 
+Modal.property.contentAlign = {
+    set: function (value) {
+        var thisM = this;
+        this._contentAlign.forEach(function (name) {
+            thisM.removeClass('as-' + name);
+        })
+        value = value || '';
+        if (typeof value === 'string') {
+            this._contentAlign = value.split(/\s+/);
+        }
+        else if (value instanceof Array) {
+            this._contentAlign = value;
+        }
+        else {
+            throw new Error("Invalid contentAlign!");
+        }
+        var thisM = this;
+        console.log(this._contentAlign)
+        this._contentAlign.forEach(function (name) {
+            thisM.addClass('as-' + name);
+        })
+    },
+    get: function () {
+        return this._contentAlign.join(' ');
+    }
+}
 
-ACore["a" /* default */].creator.modal = Modal;
+
+ACore["a" /* default */].install(Modal);
 
 /* harmony default export */ var js_Modal = (Modal);
-// EXTERNAL MODULE: ./node_modules/absol-acomp/css/modal.css
-var modal = __webpack_require__(61);
-
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TextEditor.js
 
 
@@ -32242,6 +32403,73 @@ ACore["a" /* default */].creator.selecttreemenu = SelectTreeMenu;
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/selectbox.css
 var selectbox = __webpack_require__(79);
 
+// CONCATENATED MODULE: ./node_modules/absol-acomp/js/PositionTracker.js
+
+
+
+/***
+ * extends {Element}
+ * @constructor
+ */
+function PositionTracker() {
+    this.defineEvent('positionchange');
+    this.$trackScrollParents = [];
+    this._scrollTrackEventHandler = this.notifyPositionChange.bind(this);
+}
+
+PositionTracker.tag = 'PositionTracker'.toLowerCase();
+
+/***
+ *
+ * @return {Element}
+ */
+PositionTracker.render = function(){
+    return _('div');
+};
+
+
+PositionTracker.prototype.notifyPositionChange = function (event) {
+    this.emit('positionchange', { type: 'positionchange', originEvent: event });
+};
+
+PositionTracker.prototype.startTrackPosition = function () {
+    if (this.$trackScrollParents.length > 0)
+        this.stopTrackPosition();
+    var trackElt = this;
+    while (trackElt) {
+        if (trackElt.addEventListener)
+            trackElt.addEventListener('scroll', this._scrollTrackEventHandler, false);
+        else
+            trackElt.attachEvent('onscroll', this._scrollTrackEventHandler, false);
+
+        this.$trackScrollParents.push(trackElt);
+        trackElt = trackElt.parentElement;
+    }
+    if (document.addEventListener) {
+        document.addEventListener('scroll', this._scrollTrackEventHandler, false);
+    }
+    else {
+        document.attachEvent('onscroll', this._scrollTrackEventHandler, false);
+    }
+    this.$trackScrollParents.push(document);
+};
+
+PositionTracker.prototype.stopTrackPosition = function () {
+    var trackElt;
+    for (var i = 0; i < this.$trackScrollParents.length; ++i) {
+        trackElt = this.$trackScrollParents[i];
+        if (trackElt.removeEventListener)
+            trackElt.removeEventListener('scroll', this._scrollTrackEventHandler, false);
+        else
+            trackElt.dettachEvent('onscroll', this._scrollTrackEventHandler, false);
+    }
+    this.$trackScrollParents = [];
+};
+
+ACore["a" /* default */].install(PositionTracker);
+
+/* harmony default export */ var js_PositionTracker = (PositionTracker);
+
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/SelectBoxItem.js
 
 
@@ -32333,24 +32561,35 @@ ACore["a" /* default */].install('SelectBoxItem'.toLowerCase(), SelectBoxItem);
 
 
 
+
 var SelectBox_isSupportedVar = window.CSS && window.CSS.supports && window.CSS.supports('--fake-var', 'red');
 
 var SelectBox_ = ACore["a" /* default */]._;
 var SelectBox_$ = ACore["a" /* default */].$;
 
-
+/***
+ * @extends PositionTracker
+ * @return {SelectBox}
+ * @constructor
+ */
 function SelectBox() {
+    SelectBox_({
+        tag: 'positiontracker',
+        elt: this,
+        on: {
+            positionchange: this.eventHandler.positionChange
+        }
+    });
     this.on('click', this.eventHandler.click);
 
-    this.$anchorCtn = js_SelectMenu.getAnchorCtn();
-    this.$anchor = SelectBox_('.absol-selectmenu-anchor.absol-disabled').addTo(this.$anchorCtn);
-    this.$anchorContentCtn = SelectBox_('.absol-selectmenu-anchor-content-container').addTo(this.$anchor);
-    this.$scrollTrackElts = [];
-
+    this.$anchor = SelectBox_('.as-select-anchor.as-hidden');
+    this._anchor = 0;//not display
+    this.forceDown = false;
+    this.selectListBound = { width: 0, height: 0 };
     this.$attachhook = SelectBox_$('attachhook', this)
         .on('error', this.eventHandler.attached);
 
-    this.$dropdownBox = SelectBox_('.absol-selectmenu-dropdown-box').addTo(this.$anchorContentCtn);
+    this.$dropdownBox = SelectBox_('.absol-selectmenu-dropdown-box').addTo(this.$anchor);
     this.$searchTextInput = SelectBox_('searchtextinput').addStyle('display', 'none').addTo(this.$dropdownBox);
     this.$vscroller = SelectBox_('bscroller').addTo(this.$dropdownBox);
     this.$selectlist = SelectBox_('.absol-selectlist').addTo(this.$vscroller);//reuse css
@@ -32385,9 +32624,60 @@ SelectBox.render = function () {
 };
 
 
-SelectBox.prototype.startTrackScroll = js_SelectMenu.prototype.startTrackScroll;
-SelectBox.prototype.stopTrackScroll = js_SelectMenu.prototype.stopTrackScroll;
-SelectBox.prototype.updateDropdownPostion = js_SelectMenu.prototype.updateDropdownPostion;
+SelectBox.prototype.updateDropdownPosition = function (keepAnchor) {
+    if (this.isFocus) {
+        var bound = this.getBoundingClientRect();
+        var outBound = Dom["a" /* default */].traceOutBoundingClientRect(this);
+        if (!keepAnchor) {
+            if (bound.top > outBound.bottom || bound.bottom < outBound.top) {
+                this.isFocus = false;
+                return;
+            }
+            var screenSize = Dom["a" /* default */].getScreenSize();
+            var searchHeight = 0;
+            if (this.enableSearch) {
+                searchHeight = this.$searchTextInput.getBoundingClientRect().height + 10;
+            }
+
+            var availableTop = bound.top - searchHeight - 20;
+            var availableBottom = screenSize.height - bound.bottom - searchHeight - 20;
+            if (this.forceDown || availableBottom > availableTop || availableBottom > this.selectListBound.height) {
+                this._anchor = 1;
+                if (this.$dropdownBox.firstChild !== this.$searchTextInput) {
+                    this.$searchTextInput.selfRemove();
+                    this.$dropdownBox.addChildBefore(this.$searchTextInput, this.$vscroller);
+                }
+                this.$vscroller.addStyle('max-height', availableBottom + 'px');
+            }
+            else {
+                this._anchor = -1;
+                if (this.$dropdownBox.lastChild != this.$searchTextInput) {
+                    this.$searchTextInput.selfRemove();
+                    this.$dropdownBox.addChild(this.$searchTextInput);
+                }
+                this.$vscroller.addStyle('max-height', availableTop + 'px');
+            }
+            this.$dropdownBox.addStyle('min-width', bound.width + 'px');
+        }
+
+        this.$anchor.addStyle('left', bound.left + 'px');
+        if (this._anchor === -1) {
+            this.$anchor.addStyle({
+                top: bound.top - this.$dropdownBox.clientHeight - 1 + 'px',
+            });
+        }
+        else if (this._anchor === 1) {
+            this.$anchor.addStyle({
+                top: bound.bottom + 'px'
+            });
+        }
+    }
+    else {
+        if (this.$anchor.parentElement) {
+            this.$anchor.remove();
+        }
+    }
+};
 
 SelectBox.prototype.startListenRemovable = function () {
 };// do not track, keep attached work
@@ -32410,9 +32700,35 @@ SelectBox.prototype._measureTextWidth = js_SelectList.prototype._measureTextWidt
 
 
 SelectBox.eventHandler = {};
-SelectBox.eventHandler.attached = js_SelectMenu.eventHandler.attached;
+
+SelectBox.eventHandler.attached = function () {
+    if (this._updateInterval) return;
+    this.$attachhook.updateSize = this.$attachhook.updateSize || this.updateDropdownPosition.bind(this);
+    Dom["a" /* default */].addToResizeSystem(this.$attachhook);
+    this.stopListenRemovable();
+    this.startListenRemovable();
+    if (!this._resourceReady) {
+        this._requestResource();
+        this._resourceReady = true;
+    }
+    this._updateInterval = setInterval(function () {
+        if (!this.isDescendantOf(document.body)) {
+            clearInterval(this._updateInterval);
+            this._updateInterval = undefined;
+            this.$anchor.selfRemove();
+            this.stopTrackPosition();
+            this.stopListenRemovable();
+            this.eventHandler.removeParent();
+        }
+    }.bind(this), 10000);
+};
+
 SelectBox.eventHandler.removeParent = function () {
 };
+
+SelectBox.eventHandler.positionChange = function () {
+    this.updateDropdownPosition(false);
+}
 
 SelectBox.eventHandler.scrollParent = js_SelectMenu.eventHandler.scrollParent;
 SelectBox.eventHandler.listSizeChangeAsync = js_SelectMenu.eventHandler.listSizeChangeAsync;
@@ -32467,9 +32783,11 @@ SelectBox.property.isFocus = {
         var self = this;
         this._isFocus = value;
         if (value) {
-            this.startTrackScroll();
-            this.$anchor.removeClass('absol-disabled');
+            this.startTrackPosition();
+            this.$anchor.addClass('as-hidden')
+                .addTo(document.body);
             var isAttached = false;
+
             setTimeout(function () {
                 if (isAttached) return;
                 SelectBox_$('body').on('mousedown', self.eventHandler.clickBody);
@@ -32488,11 +32806,15 @@ SelectBox.property.isFocus = {
                     self.$searchTextInput.focus();
                 }, 50);
             }
-            this.updateDropdownPostion();
+            this.updateDropdownPosition();
+            setTimeout(function () {
+                self.$anchor.removeClass('as-hidden');
+            }, 10);
         }
         else {
-            this.$anchor.addClass('absol-disabled');
-            this.stopTrackScroll();
+            this.stopTrackPosition();
+            this.$anchor.addClass('as-hidden');
+            this.$anchor.remove();
             SelectBox_$('body').off('mousedown', this.eventHandler.clickBody);
             setTimeout(function () {
                 if (self.$searchTextInput.value != 0) {
@@ -32755,7 +33077,7 @@ SelectBox.eventHandler.searchModify = function (event) {
         this.$searchList.items = view;
         this.$searchList.value = "NOTHING BE SELECTED";
     }
-    this.updateDropdownPostion(true);
+    this.updateDropdownPosition(true);
     this.$vscroller.scrollTop = 0;
 };
 
@@ -35258,6 +35580,7 @@ ACore["a" /* default */].install('tabframe', TabFrame);
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/TabView.js
 
 
+
 var TabView_ = ACore["a" /* default */]._;
 var TabView_$ = ACore["a" /* default */].$;
 
@@ -35301,7 +35624,7 @@ TabView.prototype.activeTab = function (id, userActive) {
     var needDeactiveHolder = [];
     var needActiveHolder = [];
     this._frameHolders.forEach(function (holder) {
-        if (holder.containterElt.containsClass('absol-tabview-container-hidden')) {
+        if (holder.containerElt.containsClass('absol-tabview-container-hidden')) {
             if (holder.id == id) {
                 needActiveHolder.push(holder);
             }
@@ -35314,7 +35637,7 @@ TabView.prototype.activeTab = function (id, userActive) {
     });
 
     needDeactiveHolder.forEach(function (holder) {
-        holder.containterElt.addClass('absol-tabview-container-hidden');
+        holder.containerElt.addClass('absol-tabview-container-hidden');
         holder.tabFrame.emit('deactive', {
             type: 'deactive',
             target: holder.tabFrame,
@@ -35327,7 +35650,7 @@ TabView.prototype.activeTab = function (id, userActive) {
 
     needActiveHolder.forEach(function (holder) {
         self._history.push(holder.id);
-        holder.containterElt.removeClass('absol-tabview-container-hidden');
+        holder.containerElt.removeClass('absol-tabview-container-hidden');
         self.$tabbar.activeTab(holder.id);
         holder.tabFrame.emit('active', {
             type: 'active',
@@ -35381,16 +35704,18 @@ TabView.prototype.removeTab = function (id, userActive) {
                         tabButton: holder.tabButton,
                         holder: holder
                     };
-                    if (!holder.containterElt.containsClass('absol-tabview-container-hidden'))
+                    if (!holder.containerElt.containsClass('absol-tabview-container-hidden'))
                         holder.tabFrame.emit('deactive', eventData2, holder.tabFrame);
                     eventData2.type = 'deactivetab';
                     eventData2.target = self;
-                    if (!holder.containterElt.containsClass('absol-tabview-container-hidden'))
+                    if (!holder.containerElt.containsClass('absol-tabview-container-hidden'))
                         self.emit('deactivetab', eventData2, self);
-                    self._frameHolders = self._frameHolders.filter(function (x) { return x.id != id; });
+                    self._frameHolders = self._frameHolders.filter(function (x) {
+                        return x.id != id;
+                    });
                     holder.tabFrame.notifyDetached();
                     self.$tabbar.removeTab(holder.id);
-                    holder.containterElt.remove();
+                    holder.containerElt.remove();
 
                     eventData2.type = 'remove';
                     eventData2.target = holder.tabFrame;
@@ -35408,7 +35733,6 @@ TabView.prototype.removeTab = function (id, userActive) {
     return Promise.all(resPromise);
 
 };
-
 
 
 TabView.prototype.notifyUpdateDesc = function (elt) {
@@ -35447,8 +35771,8 @@ TabView.prototype.addChild = function () {
         if (!elt.notifyAttached || !elt.notifyDetached) {
             throw new Error('element is not a tabframe');
         }
-        var containterElt = TabView_('.absol-tabview-container.absol-tabview-container-hidden');
-        self.appendChild(containterElt);//origin function
+        var containerElt = TabView_('.absol-tabview-container.absol-tabview-container-hidden');
+        self.appendChild(containerElt);//origin function
         elt.selfRemove();
         var id = elt.attr('id');
         var desc = elt.attr('desc') || undefined;
@@ -35456,7 +35780,7 @@ TabView.prototype.addChild = function () {
         var modified = elt.modified;
 
         var tabButton = self.$tabbar.addTab({ name: name, id: id, desc: desc, modified: modified });
-        containterElt.addChild(elt);
+        containerElt.addChild(elt);
         elt.notifyAttached(self);
         var holder = {};
         OOP["a" /* default */].drillProperty(holder, elt, 'id');
@@ -35471,8 +35795,8 @@ TabView.prototype.addChild = function () {
                 value: elt,
                 writable: false
             },
-            containterElt: {
-                value: containterElt,
+            containerElt: {
+                value: containerElt,
                 writable: false
             }
         });
@@ -35488,12 +35812,12 @@ TabView.prototype.activeLastTab = function () {
     }, {});
 
     while (this._history.length > 0) {
-        var id =  this._history[ this._history.length - 1];
+        var id = this._history[this._history.length - 1];
         if (dict[id]) {
             this.activeTab(id);
             break;
         }
-        else{
+        else {
             this._history.pop();
         }
     }
@@ -35509,11 +35833,66 @@ TabView.prototype.getAllChild = function () {
     });
 };
 
-
-TabView.prototype.activeFrame = function (elt) {
-    return this.activeTab(elt.attr('id'));
+TabView.prototype.getActiveTabHolder = function () {
+    var holder = null;
+    for (var i = 0; i < this._frameHolders.length; ++i) {
+        holder = this._frameHolders[i];
+        if (!holder.containerElt.containsClass('absol-tabview-container-hidden')) {
+            return holder;
+        }
+    }
+    return null;
 };
 
+TabView.prototype.getActiveTab = function () {
+    var holder = this.getActiveTabHolder();
+    return holder && holder.tabFrame;
+};
+
+TabView.prototype.getActiveTabId = function () {
+    var holder = this.getActiveTabHolder();
+    return holder && holder.id;
+};
+
+TabView.prototype.getTabById = function (id) {
+    var holder = this.getTabHolderById(id);
+    return  holder && holder.tabFrame;
+};
+
+TabView.prototype.getTabHolderById = function(id){
+    var holder = null;
+    for (var i = 0; i < this._frameHolders.length; ++i) {
+        holder = this._frameHolders[i];
+        if (holder.id === id) {
+            return holder;
+        }
+    }
+    return null;
+}
+
+
+
+
+TabView.prototype.activeFrame = function (elt) {
+    if (typeof elt == "string") {
+        return this.activeTab(elt);
+    }
+    else if (elt && elt.attr) {
+        return this.activeTab(elt.attr('id'));
+    }
+    else{
+        throw new Error("Invalid param, must be id or elt!");
+    }
+};
+
+
+TabView.property = {};
+
+TabView.property.historyOfTab = {
+    get: function () {
+        return this._history.slice();
+    }
+};
 
 ACore["a" /* default */].install('tabview', TabView);
 
@@ -39650,7 +40029,7 @@ ChromeCalendar.close = function (session) {
 var timepicker = __webpack_require__(133);
 
 // EXTERNAL MODULE: ./node_modules/absol-acomp/css/checkboxinput.css
-var checkboxinput = __webpack_require__(20);
+var checkboxinput = __webpack_require__(21);
 
 // CONCATENATED MODULE: ./node_modules/absol-acomp/js/NumberSpanInput.js
 
@@ -43066,11 +43445,10 @@ var BoardTable_$ = ACore["a" /* default */].$;
 
 
 function BoardTable() {
-    var events = {};
-    this.on({
+    var events = {
         touchstart: this.eventHandler.mousedown,
         mousedown: this.eventHandler.mousedown
-    });
+    };
     this.on(events);
     this._childHolders = [];
     this._dragEventData = null;
@@ -43252,7 +43630,6 @@ BoardTable.prototype.findChildHolderIndex = function (elt) {
 };
 
 
-
 BoardTable.prototype.getEffectZone = function () {
     var ez = this;
     while (ez) {
@@ -43327,23 +43704,25 @@ BoardTable.prototype._findHoverBoardIndex = function (clientX, clientY, excludes
 BoardTable.eventHandler = {};
 
 
-
-
-
 BoardTable.eventHandler.mousedown = function (event) {
+    if (this._dragEventData) return;
     var mousePos;
-    if (event.type == 'touchstart') {
-        if (event.changedTouches[0].identifier > 0) return;// only once touch a
-        mousePos = new Math_Vec2(event.touches[0].clientX, event.touches[0].clientY);
-    }
-    else if (this._dragEventDat) {
-        return;// not finish last drag
+    var pointerIdent = -1;
+    var target;
+    var isTouch = event.type == 'touchstart';
+    if (isTouch) {
+        var touch = event.changedTouches[0];
+        target = touch.target;
+        pointerIdent = touch.identifier;
+        mousePos = new Math_Vec2(touch.clientX, touch.clientY);
     }
     else {
         mousePos = new Math_Vec2(event.clientX, event.clientY);
+        target = event.target;
     }
 
-    var dragzone = this._findDragZone(event.target);
+
+    var dragzone = this._findDragZone(target);
     if (dragzone) {
         var boardElt = this._findBoard(dragzone);
         var holderIndex = this.findChildHolderIndex(boardElt);
@@ -43354,10 +43733,12 @@ BoardTable.eventHandler.mousedown = function (event) {
             boardElt: boardElt,
             state: 'WAIT',
             mouseStartPos: mousePos,
+            mousePos: mousePos,
             mouseBoardOffset: mouseBoardOffset,
             holderIndex: holderIndex,
             boardBound: cBound,
-            isTouch: event.type == 'touchstart'
+            isTouch: isTouch,
+            pointerIdent: pointerIdent
         };
         this.eventHandler.readyDrag(event);
     }
@@ -43385,16 +43766,7 @@ BoardTable.eventHandler.readyDrag = function (event) {
 
 BoardTable.eventHandler.mousemovePredrag = function (event) {
     var dragEventData = this._dragEventData;
-    var mousePos;
-    if (dragEventData.isTouch) {
-        if (event.changedTouches[0].identifier > 0) return;// only once touch a
-        mousePos = new Math_Vec2(event.touches[0].clientX, event.touches[0].clientY);
-    }
-    else {
-        mousePos = new Math_Vec2(event.clientX, event.clientY);
-    }
-
-    var dragEventData = this._dragEventData;
+    var mousePos = dragEventData.mousePos;
     var thisBT = this;
     event.preventDefault();
     var cBound = dragEventData.boardElt.getBoundingClientRect();
@@ -43442,22 +43814,18 @@ BoardTable.eventHandler.mousemovePredrag = function (event) {
         dragEventData.boardElt.addClass('as-board-moving');
         dragEventData.boardAt = dragEventData.holderIndex;
         dragEventData.boardIn = thisBT;
-        this.emit('dragitemstart', { type: 'dragitemstart', target: this, boardElt: this._dragEventData.boardElt }, this);
+        this.emit('dragitemstart', {
+            type: 'dragitemstart',
+            target: this,
+            boardElt: this._dragEventData.boardElt
+        }, this);
     }
 };
 
 
 BoardTable.eventHandler.mousemoveDragInSelf = function (event) {
     var dragEventData = this._dragEventData;
-    var mousePos;
-    if (event.type == 'touchmove') {
-        if (event.changedTouches[0].identifier > 0) return;// only once touch a
-        mousePos = new Math_Vec2(event.touches[0].clientX, event.touches[0].clientY);
-    }
-    else {
-        mousePos = new Math_Vec2(event.clientX, event.clientY);
-    }
-
+    var mousePos = dragEventData.mousePos;
     if (this._childHolders.length < 2) {
         if (dragEventData.boardIn != this) {
             this.insertBefore(dragEventData.placeHolderElt, this._childHolders[0].elt);
@@ -43534,15 +43902,8 @@ BoardTable.eventHandler.mousemoveDragInSelf = function (event) {
 };
 
 BoardTable.eventHandler.mousemoveDragInOther = function (event) {
-    var mousePos;
-    if (event.type == 'touchmove') {
-        if (event.changedTouches[0].identifier > 0) return;// only once touch a
-        mousePos = new Math_Vec2(event.touches[0].clientX, event.touches[0].clientY);
-    }
-    else {
-        mousePos = new Math_Vec2(event.clientX, event.clientY);
-    }
     var dragEventData = this._dragEventData;
+    var mousePos = dragEventData.mousePos;
     var other = dragEventData.inEffectZoneOf;
     if (other._childHolders.length == 0) {
         if (dragEventData.boardIn != other) {
@@ -43597,16 +43958,8 @@ BoardTable.eventHandler.mousemoveDrag = function (event) {
 };
 
 BoardTable.eventHandler.boarDrag = function (event) {
-    var mousePos;
-    if (event.type == 'touchmove') {
-        if (event.changedTouches[0].identifier > 0) return;// only once touch a
-        mousePos = new Math_Vec2(event.touches[0].clientX, event.touches[0].clientY);
-
-    }
-    else {
-        mousePos = new Math_Vec2(event.clientX, event.clientY);
-    }
     var dragEventData = this._dragEventData;
+    var mousePos = dragEventData.mousePos;
     var boardPos = mousePos.sub(dragEventData.mouseBoardOffset);
     dragEventData.boardElt.addStyle({
         left: boardPos.x + 'px',
@@ -43616,16 +43969,9 @@ BoardTable.eventHandler.boarDrag = function (event) {
 
 
 BoardTable.eventHandler.dragOnEffectZone = function (event) {
-    var mousePos;
     var dragEventData = this._dragEventData;
+    var mousePos = dragEventData.mousePos;
     var friendHolders = dragEventData.friendHolders;
-    if (dragEventData.isTouch) {
-        if (event.changedTouches[0].identifier > 0) return;// only once touch a
-        mousePos = new Math_Vec2(event.touches[0].clientX, event.touches[0].clientY);
-    }
-    else {
-        mousePos = new Math_Vec2(event.clientX, event.clientY);
-    }
     var bound;
     for (var i = 0; i < friendHolders.length; ++i) {
         bound = Math_Rectangle.fromClientRect(friendHolders[i].effectZone.getBoundingClientRect());
@@ -43675,7 +44021,8 @@ BoardTable.eventHandler.mousemoveOverflow = function (event) {
     if (vx != 0 || vy != 0) {
         var copyEvent = {
             type: event.type,
-            preventDefault: function () {/* noop */ },
+            preventDefault: function () {/* noop */
+            },
             target: event.target
         };
         if (event.type == 'touchmove') {
@@ -43707,19 +44054,34 @@ BoardTable.eventHandler.mousemoveOverflow = function (event) {
 };
 
 BoardTable.eventHandler.mousemove = function (event) {
-    if (event.type == 'touchmove') {
-        if (event.changedTouches[0].identifier > 0) return;// only once touch a
-    }
-    event.preventDefault();
     var dragEventData = this._dragEventData;
-    if (dragEventData.isTouch && dragEventData.state == 'DRAG') {
+    var isTouch = event.type === 'touchmove';
+    if (dragEventData.isTouch !== isTouch) return;
+    var mousePos;
+    var pointerIdent;
+    var touch = -2;
+    if (isTouch) {
+        touch = Object(EventEmitter["b" /* findChangedTouchByIdent */])(event, dragEventData.pointerIdent);
+        if (touch) {
+            pointerIdent = touch.identifier;
+            mousePos = new Math_Vec2(touch.clientX, touch.clientY);
+        }
+    }
+    else {
+        pointerIdent = -1;
+        mousePos = new Math_Vec2(event.clientX, event.clientY);
+    }
+    if (dragEventData.pointerIdent !== pointerIdent) return;
+    dragEventData.mousePos = mousePos;
+    event.preventDefault();
+    if (dragEventData.isTouch && dragEventData.state === 'DRAG') {
         this.eventHandler.dragOnEffectZone(event);//because touch not have mouseenter event
     }
-    if (dragEventData.state == 'PRE_DRAG') {
+    if (dragEventData.state === 'PRE_DRAG') {
         this.eventHandler.mousemovePredrag(event);
     }
 
-    if (dragEventData.state == 'DRAG') {
+    if (dragEventData.state === 'DRAG') {
         this.eventHandler.mousemoveDrag(event);
         this.eventHandler.boarDrag(event);
         this.eventHandler.mousemoveOverflow(event);
@@ -43727,10 +44089,28 @@ BoardTable.eventHandler.mousemove = function (event) {
 };
 
 
-
 BoardTable.eventHandler.mousefinish = function (event) {
     var dragEventData = this._dragEventData;
-    var changed = false;
+    var isTouch = event.type === 'touchend';
+    if (dragEventData.isTouch !== isTouch) return;
+    var mousePos;
+    var pointerIdent;
+    var touch = -2;
+    if (isTouch) {
+        touch = Object(EventEmitter["b" /* findChangedTouchByIdent */])(event, dragEventData.pointerIdent);
+        if (touch) {
+            pointerIdent = touch.identifier;
+            mousePos = new Math_Vec2(touch.clientX, touch.clientY);
+        }
+    }
+    else {
+        pointerIdent = -1;
+        mousePos = new Math_Vec2(event.clientX, event.clientY);
+    }
+    if (dragEventData.pointerIdent !== pointerIdent) return;
+    dragEventData.mousePos = mousePos;
+
+    var changed;
     if (dragEventData.state == 'DRAG') {
         setTimeout(function () {
             BoardTable_$(document.body).removeClass('as-has-board-table-drag');
@@ -43762,7 +44142,14 @@ BoardTable.eventHandler.mousefinish = function (event) {
                 var holder = this._childHolders.splice(dragEventData.holderIndex, 1)[0];
                 this._childHolders.splice(dragEventData.boardAt, 0, holder);
                 changed = 'orderchange';
-                this.emit('orderchange', { name: 'orderchange', boardElt: holder.elt, action: 'move', from: dragEventData.holderIndex, to: dragEventData.boardAt, target: this, }, this);
+                this.emit('orderchange', {
+                    name: 'orderchange',
+                    boardElt: holder.elt,
+                    action: 'move',
+                    from: dragEventData.holderIndex,
+                    to: dragEventData.boardAt,
+                    target: this,
+                }, this);
             }
         }
         else {
@@ -43771,7 +44158,13 @@ BoardTable.eventHandler.mousefinish = function (event) {
             ///remove all event
             var other = dragEventData.boardIn;
             changed = 'itemleave';
-            this.emit('itemleave', { name: 'itemleave', item: holder.elt, from: { index: dragEventData.holderIndex, table: this }, to: { index: dragEventData.boardAt, table: other }, target: this }, this);
+            this.emit('itemleave', {
+                name: 'itemleave',
+                item: holder.elt,
+                from: { index: dragEventData.holderIndex, table: this },
+                to: { index: dragEventData.boardAt, table: other },
+                target: this
+            }, this);
             if (other._childHolders.length == 0) {
                 other.appendChild(holder.elt);
                 other._childHolders.push(holder);
@@ -43792,9 +44185,20 @@ BoardTable.eventHandler.mousefinish = function (event) {
                     other._childHolders.push(holder);
                 }
             }
-            other.emit('itementer', { name: 'itementer', item: holder.elt, target: other, from: { index: dragEventData.holderIndex, table: this }, to: { index: dragEventData.boardAt, table: other } }, other);
+            other.emit('itementer', {
+                name: 'itementer',
+                item: holder.elt,
+                target: other,
+                from: { index: dragEventData.holderIndex, table: this },
+                to: { index: dragEventData.boardAt, table: other }
+            }, other);
         }
-        this.emit('dragitemend', { type: 'dragitemend', target: this, changed: changed, boardElt: this._dragEventData.boardElt }, this);
+        this.emit('dragitemend', {
+            type: 'dragitemend',
+            target: this,
+            changed: changed,
+            boardElt: this._dragEventData.boardElt
+        }, this);
     }
 
     var bodyEvents = {};
@@ -43835,7 +44239,6 @@ BoardTable.property.friends = {
         return this._friends;
     }
 };
-
 
 ACore["a" /* default */].install('boardtable', BoardTable);
 /* harmony default export */ var js_BoardTable = (BoardTable);
@@ -47111,7 +47514,7 @@ setTimeout(function () {
             tag: 'link',
             attr: {
                 rel: 'stylesheet',
-                href: '//cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css'
+                href: '//cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css'
             }
         }).addTo(document.head);
     }
@@ -53059,13 +53462,24 @@ MapView_MapView.prototype.addOrtherMarker = function (data) {
     });
     marker.data = data;
     google.maps.event.addListener(marker, 'mouseover', function () {
-      infowindow.setContent(self.modalMiniRealty(marker.data));
-      infowindow.open(self.map, marker);
-      marker.setIcon(imageHover);
+      if (this.hover !== true) {
+        infowindow.setContent(self.modalMiniRealty(marker.data));
+        infowindow.open(self.map, marker);
+        marker.setIcon(imageHover);
+      }
+
+      this.hover = true;
     });
     google.maps.event.addListener(marker, 'mouseout', function () {
-      marker.setIcon(image);
-      infowindow.close();
+      var element = this;
+      setTimeout(function () {
+        if (element.hover === true) {
+          marker.setIcon(image);
+          infowindow.close();
+        }
+
+        element.hover = false;
+      }, 100);
     });
     if (this.checkHouse[position[0]] === undefined) this.checkHouse[position[0]] = [];
     if (this.checkHouse[position[0]][position[1]] === undefined) this.checkHouse[position[0]][position[1]] = [marker];else this.checkHouse[position[0]][position[1]].push(marker);
@@ -53078,13 +53492,6 @@ MapView_MapView.prototype.addOrtherMarker = function (data) {
 MapView_MapView.prototype.modalMiniRealty = function (data) {
   var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
   if (data.imageCurrentStaus.length > 0) src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + data.imageCurrentStaus[0].src;
-
-  var thumnail = MapView_({
-    tag: "img",
-    props: {
-      src: src
-    }
-  });
 
   var temp = MapView_({
     tag: "a",
@@ -61775,7 +62182,7 @@ PlanningInformation_PlanningInformation.prototype.start = function () {};
 
 /* harmony default export */ var page_PlanningInformation = (PlanningInformation_PlanningInformation);
 // EXTERNAL MODULE: ./css/ListHelp.css
-var ListHelp = __webpack_require__(21);
+var ListHelp = __webpack_require__(22);
 
 // EXTERNAL MODULE: ./css/HelpContainer.css
 var HelpContainer = __webpack_require__(213);
@@ -68815,6 +69222,7 @@ var MapRealty = __webpack_require__(243);
 
 
 
+
 var MapRealty_ = dom_Fcore._;
 var MapRealty_$ = dom_Fcore.$;
 
@@ -69061,7 +69469,502 @@ MapRealty_MapRealty.prototype.modalRealty = function () {
   return temp;
 };
 
+MapRealty_MapRealty.prototype.mediaItem = function (data, index) {
+  var temp = MapRealty_({
+    tag: "li",
+    "class": ["media-stream-tile"],
+    on: {
+      click: function click(event) {
+        var arr = [];
+
+        for (var i = 0; i < manyfiles.length; i++) {
+          arr.push({
+            avatar: "https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
+            userName: "Bùi Phạm Minh Thi",
+            src: data[i].src,
+            date: data[i].created,
+            note: ""
+          });
+        }
+
+        document.body.appendChild(descViewImagePreview(arr, index));
+      }
+    },
+    child: [{
+      tag: "img",
+      attr: {
+        src: "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + data[index].src
+      }
+    }]
+  });
+
+  return temp;
+};
+
+MapRealty_MapRealty.prototype.modalLargeRealty = function (data) {
+  var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+  if (data.imageCurrentStaus.length > 0) src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + data.imageCurrentStaus[0].src;
+  var staus = "";
+  if (parseInt(data.salestatus) % 10 == 1) staus += "Còn bán";
+
+  if (parseInt(parseInt(data.salestatus) / 10) == 1) {
+    if (staus == "") staus += "Còn cho thuê";else staus += " và còn cho thuê";
+  }
+
+  var modal = MapRealty_({
+    tag: "modal",
+    child: [{
+      tag: "div",
+      "class": ["active-hdp-col", "yui3-app-views", "app-view-hdp"],
+      child: [{
+        tag: "div",
+        "class": ["active-view", "preload-lightbox"],
+        child: [{
+          tag: "div",
+          "class": "home-details-render",
+          child: [{
+            tag: "div",
+            "class": "home-details-content",
+            child: [{
+              tag: "button",
+              "class": ["ds-close-lightbox-icon", "hc-back-to-list"],
+              on: {
+                click: function click(event) {
+                  modal.selfRemove();
+                }
+              },
+              child: [{
+                tag: "i",
+                style: {
+                  fontSize: "2rem",
+                  color: "white"
+                },
+                "class": "material-icons",
+                props: {
+                  innerHTML: "close"
+                }
+              }]
+            }, {
+              tag: "div",
+              "class": ["ds-wrapper", "znav-force-mobile-layout"],
+              child: [{
+                tag: "div",
+                "class": ["ds-container", "ds-mobile-single-scroll", "ds-container-lightboxed", "is-data-forward"],
+                child: [{
+                  tag: "div",
+                  "class": ["ds-media-col", "ds-media-col-hidden-mobile"],
+                  child: [{
+                    tag: "ul",
+                    "class": "media-stream",
+                    child: [{
+                      tag: "li",
+                      "class": ["media-stream-tile", "media-stream-tile--prominent"],
+                      on: {
+                        click: function click(event) {
+                          var arr = [];
+
+                          for (var i = 0; i < data.imageCurrentStaus.length; i++) {
+                            arr.push({
+                              avatar: "https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
+                              userName: "Bùi Phạm Minh Thi",
+                              src: data.imageCurrentStaus[i].src,
+                              date: data.imageCurrentStaus[i].created,
+                              note: ""
+                            });
+                          }
+
+                          document.body.appendChild(descViewImagePreview(arr, 0));
+                        }
+                      },
+                      child: [{
+                        tag: "img",
+                        "class": ["media-stream-photo", "media-stream-photo--loader"],
+                        attr: {
+                          src: src
+                        }
+                      }]
+                    }]
+                  }]
+                }, {
+                  tag: "div",
+                  "class": ["ds-data-col", "ds-white-bg", "ds-data-col-data-forward"],
+                  child: [{
+                    tag: "div",
+                    "class": ["sc-bAeIUo", "bhsEJe"],
+                    child: [{
+                      tag: "div",
+                      "class": ["sc-1tf5ijk-9", "fAdunC", "ds-action-bar"],
+                      child: [{
+                        tag: "nav",
+                        "class": ["sc-exAgwC", "imHfmq"],
+                        child: [{
+                          tag: "div",
+                          "class": "pizo-header-logo",
+                          child: [{
+                            tag: "img",
+                            "class": "pizo-header-logo-icon",
+                            attr: {
+                              src: "assets/images/logo.png"
+                            }
+                          }, {
+                            tag: "img",
+                            "class": "pizo-header-logo-text",
+                            attr: {
+                              src: "assets/images/logo-text-blue.png"
+                            }
+                          }]
+                        }, {
+                          tag: "ul",
+                          "class": ["sc-GMQeP", "cjrQwi"],
+                          child: [{
+                            tag: "li",
+                            "class": ["sc-cLQEGU", "cllLJF"],
+                            child: [{
+                              tag: "button",
+                              "class": ["sc-bdVaJa", "gpVNOz"],
+                              child: [{
+                                tag: "div",
+                                "class": ["sc-bMVAic", "gpVNOz"],
+                                child: [{
+                                  tag: "div",
+                                  "class": ["sc-gqPbQI", "eKDTCE"],
+                                  child: [{
+                                    tag: "i",
+                                    "class": "material-icons",
+                                    props: {
+                                      innerHTML: "favorite_border"
+                                    }
+                                  }]
+                                }, {
+                                  tag: "span",
+                                  "class": ["sc-hORach", "duJWoc"],
+                                  props: {
+                                    innerHTML: " Save<!-- -->d "
+                                  }
+                                }]
+                              }]
+                            }]
+                          }, {
+                            tag: "li",
+                            "class": ["sc-cLQEGU", "cllLJF"],
+                            child: [{
+                              tag: "button",
+                              "class": ["sc-bMVAic", "gpVNOz"],
+                              child: [{
+                                tag: "div",
+                                "class": ["sc-gqPbQI", "eKDTCE"],
+                                child: [{
+                                  tag: "i",
+                                  "class": "material-icons",
+                                  props: {
+                                    innerHTML: "share"
+                                  }
+                                }]
+                              }, {
+                                tag: "span",
+                                "class": ["sc-hORach", "duJWoc"],
+                                props: {
+                                  innerHTML: "Share"
+                                }
+                              }]
+                            }]
+                          }, {
+                            tag: "li",
+                            "class": ["sc-bMVAic", "bzoMbE"],
+                            child: [{
+                              tag: "button",
+                              "class": ["sc-bMVAic", "gpVNOz"],
+                              child: [{
+                                tag: "div",
+                                "class": ["sc-gqPbQI", "eKDTCE"],
+                                child: [{
+                                  tag: "i",
+                                  "class": "material-icons",
+                                  props: {
+                                    innerHTML: "more_horiz"
+                                  }
+                                }]
+                              }, {
+                                tag: "span",
+                                "class": ["sc-hORach", "duJWoc"],
+                                props: {
+                                  innerHTML: "More"
+                                }
+                              }]
+                            }]
+                          }]
+                        }]
+                      }]
+                    }]
+                  }, {
+                    tag: "div",
+                    "class": "ds-chip",
+                    child: [{
+                      tag: "div",
+                      "class": "ds-home-details-chip",
+                      child: [{
+                        tag: "div",
+                        "class": "ds-summary-row-container",
+                        child: [{
+                          tag: "div",
+                          "class": "ds-summary-row-content",
+                          child: [{
+                            tag: "div",
+                            "class": "ds-summary-row",
+                            child: [{
+                              tag: "h3",
+                              "class": "ds-price",
+                              child: [{
+                                tag: "span",
+                                "class": "ds-value",
+                                props: {
+                                  innerHTML: "VND " + data.price + " tỉ"
+                                }
+                              }]
+                            }, {
+                              tag: "header",
+                              "class": "ds-bed-bath-living-area-header",
+                              child: [{
+                                tag: "h3",
+                                "class": ["ds-bed-bath-living-area-container"],
+                                child: [{
+                                  tag: "span",
+                                  "class": "ds-bed-bath-living-area",
+                                  child: [{
+                                    tag: "span",
+                                    props: {
+                                      innerHTML: data.width
+                                    }
+                                  }, {
+                                    tag: "span",
+                                    "class": "ds-summary-row-label-secondary",
+                                    props: {
+                                      innerHTML: "m"
+                                    }
+                                  }]
+                                }, {
+                                  tag: "span",
+                                  "class": "ds-vertical-divider"
+                                }, {
+                                  tag: "button",
+                                  "class": ["TriggerText-sc-139r5uq-0", "jfjsxZ", "TooltipPopper-io290n-0", "sc-jlyJG", "eVrWvb"],
+                                  child: [{
+                                    tag: "span",
+                                    "class": "ds-bed-bath-living-area",
+                                    child: [{
+                                      tag: "span",
+                                      props: {
+                                        innerHTML: data.height
+                                      }
+                                    }, {
+                                      tag: "span",
+                                      "class": "ds-summary-row-label-secondary",
+                                      props: {
+                                        innerHTML: "m"
+                                      }
+                                    }]
+                                  }]
+                                }, {
+                                  tag: "span",
+                                  "class": "ds-vertical-divider"
+                                }, {
+                                  tag: "span",
+                                  "class": "ds-bed-bath-living-area",
+                                  child: [{
+                                    tag: "span",
+                                    props: {
+                                      innerHTML: data.acreage
+                                    }
+                                  }, {
+                                    tag: "span",
+                                    "class": "ds-summary-row-label-secondary",
+                                    props: {
+                                      innerHTML: "m²"
+                                    }
+                                  }]
+                                }]
+                              }]
+                            }]
+                          }]
+                        }]
+                      }, {
+                        tag: "div",
+                        "class": "ds-price-change-address-row",
+                        child: [{
+                          tag: "header",
+                          child: [{
+                            tag: "h1",
+                            "class": "ds-address-container",
+                            child: [{
+                              tag: "span",
+                              props: {
+                                innerHTML: "Địa chỉ ở đây"
+                              }
+                            }]
+                          }]
+                        }]
+                      }, {
+                        tag: "div",
+                        "class": ["sc-hIVACf", "eiqksm", "ds-chip-removable-content"],
+                        style: {
+                          visibility: "visible",
+                          height: "19px",
+                          opacity: 1
+                        },
+                        child: [{
+                          tag: "p",
+                          "class": ["Text-aiai24-0", "StyledParagraph-sc-18ze78a-0", "dDDkWA", "sc-fgfRvd", "hmPfMB"],
+                          child: [{
+                            tag: "span",
+                            "class": ["sc-likbZx", "ccUlrP", "ds-status-details"],
+                            child: [{
+                              tag: "i",
+                              "class": "material-icons",
+                              props: {
+                                innerHTML: "favorite"
+                              }
+                            }, {
+                              tag: "span",
+                              props: {
+                                innerHTML: staus
+                              }
+                            }]
+                          } //    {
+                          //     tag:"span",
+                          //     class:["sc-drMfKT", "hVItaR"],
+                          //     child:[
+                          //         {
+                          //             tag:"span",
+                          //             class:["sc-eKZiaR", "haXPGg"],
+                          //             props:{
+                          //                 innerHTML:"Định giá khu vực"
+                          //             }
+                          //         },
+                          //         {
+                          //             tag:"span",
+                          //             class:["sc-ePZHVD", "iBZiRD", "ds-dashed-underline"],
+                          //             props:{
+                          //                 innerHTML:"$489,000"
+                          //             }
+                          //         }
+                          //     ]
+                          // },
+                          ]
+                        }]
+                      } //    {
+                      //        tag:"div",
+                      //        class:"ds-mortgage-row",
+                      //        child:[
+                      //            {
+                      //                tag:"span",
+                      //                class:["sc-CtfFt", "fLHEyC"],
+                      //                child:[
+                      //                    {
+                      //                        tag:"span",
+                      //                        class:["sc-fjmCvl", "fqWQvO"],
+                      //                        props:{
+                      //                            innerHTML:"Phí nhà đất"
+                      //                        }
+                      //                    },
+                      //                    {
+                      //                        tag:"span",
+                      //                        class:["sc-jzJRlG", "cpUdby"],
+                      //                        props:{
+                      //                            innerHTML:"$3,120/mo"
+                      //                        }
+                      //                    }
+                      //                ]
+                      //            }
+                      //        ]
+                      //    }
+                      ]
+                    }]
+                  }, {
+                    tag: "div",
+                    "class": "ds-buttons",
+                    child: [{
+                      tag: "ul",
+                      "class": "contact-button-group",
+                      child: [{
+                        tag: "li",
+                        "class": "contact-button",
+                        child: [{
+                          tag: "button",
+                          "class": ["Button-wpcbcc-0", "cpEtCH", "contact-button-condensed", "ds-button", "ds-label-small"],
+                          props: {
+                            innerHTML: "Liên lạc với nhân viên"
+                          }
+                        }]
+                      }, {
+                        tag: "li",
+                        "class": "contact-button",
+                        child: [{
+                          tag: "button",
+                          "class": ["Button-wpcbcc-0", "btcvqQ", "contact-button-condensed", "ds-button", "ds-label-small"],
+                          props: {
+                            innerHTML: "Đặt tour thăm quan"
+                          }
+                        }]
+                      }]
+                    }]
+                  }]
+                }]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }]
+  });
+
+  var mediaContainer = MapRealty_$("ul.media-stream", modal);
+
+  for (var i = 1; i < data.imageCurrentStaus.length; i++) {
+    mediaContainer.appendChild(this.mediaItem(data.imageCurrentStaus, i));
+  }
+
+  mediaContainer.appendChild(MapRealty_({
+    tag: "li",
+    "class": ["media-stream-tile", "media-stream-tile--fullwidth", "media-stream-tile--halfheight", "media-stream-tile--upsell"],
+    child: [{
+      tag: "img",
+      style: {
+        opacity: 0.25
+      },
+      attr: {
+        src: src
+      }
+    }, {
+      tag: "div",
+      "class": "upsell-photo-content",
+      child: [{
+        tag: "div",
+        "class": "ds-hero-headline",
+        props: {
+          innerHTML: "Quan tâm đến tour du lịch nhà này?"
+        }
+      }, {
+        tag: "ul",
+        "class": "contact-button-group",
+        child: [{
+          tag: "li",
+          "class": "contact-button",
+          child: [{
+            tag: "button",
+            "class": ["Button-wpcbcc-0", "iJIIUW", "contact-button-condensed", "ds-button", "ds-label-small"],
+            props: {
+              innerHTML: "Đặt tour thăm quan"
+            }
+          }]
+        }]
+      }]
+    }]
+  }));
+  return modal;
+};
+
 MapRealty_MapRealty.prototype.itemMap = function (marker) {
+  var self = this;
   var data = marker.data;
   var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
   if (data.imageCurrentStaus.length > 0) src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/" + data.imageCurrentStaus[0].src;
@@ -69098,11 +70001,15 @@ MapRealty_MapRealty.prototype.itemMap = function (marker) {
   var temp = MapRealty_({
     tag: "li",
     on: {
-      mousehover: function mousehover(event) {
-        google.maps.event.trigger(marker, "onmouseover");
+      mouseover: function mouseover(event) {
+        console.log(marker);
+        new google.maps.event.trigger(marker, 'onmouseover');
       },
       mouseout: function mouseout(event) {
-        google.maps.event.trigger(marker, "onmouseout");
+        new google.maps.event.trigger(marker, 'onmouseout');
+      },
+      click: function click(event) {
+        document.body.appendChild(self.modalLargeRealty(data));
       }
     },
     child: [{

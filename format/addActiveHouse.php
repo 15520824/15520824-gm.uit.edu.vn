@@ -268,6 +268,118 @@ for($i = 0 ;$i<$count_old;$i++)
     $connector->query("DELETE FROM ".$prefix."contact_link WHERE( id = ".$contact_old[$i]["id"].")");
 }
 
+
+$image_old = $connector->load($prefix."image","houseid = ".$data["id"]);
+
+if(isset($data["imageJuridical"]))
+{
+    $images = $data["imageJuridical"];
+    $count = count($images);
+    define('UPLOAD_DIR', "../../assets/upload/");
+    for ($i = 0; $i < $count; $i++){
+        $img = $images[$i];
+        if (isset($img["id"]))
+        {
+            for($j = 0;$j<count($image_old);$j++)
+            {
+                if($img["id"]==$image_old[$j]["id"])
+                {
+                    array_splice($image_old,$j,1);
+                    break;
+                }
+            }
+            continue;
+        }
+
+
+        $img = str_replace('data:image/', '', $img);
+        $pos = strpos($img, ";");
+        $extension = substr($img, 0, $pos);
+        $img = str_replace($extension.';base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $dataFile = base64_decode($img);
+        $filename = uniqid() .$milliseconds. '.'.$extension;
+
+        $file = UPLOAD_DIR .$filename;
+        $success = file_put_contents($file, $dataFile);
+        if (!$success){
+            echo "Unable to save the file.";
+            exit();
+        }
+
+        $obj_list = array(
+            'src' => $filename,
+            'type' => 0,
+            'houseid' => $data["id"],
+            'created' => new DateTime(),
+        );
+        $obj_list["id"] = $connector->insert($prefix.'image', $obj_list);
+        array_push($insert,array(
+            'image'=>$obj_list
+        ));
+        $data["imageJuridical"][$i] = $obj_list;
+    }
+}
+
+
+if(isset($data["imageCurrentStaus"]))
+{
+    $images = $data["imageCurrentStaus"];
+    $count = count($images);
+    for ($i = 0; $i < $count; $i++){
+        $img = $images[$i];
+        if (isset($img["id"]))
+        {
+            for($j = 0;$j<count($image_old);$j++)
+            {
+                if($img["id"]==$image_old[$j]["id"])
+                {
+                    array_splice($image_old,$j,1);
+                    break;
+                }
+            }
+            continue;
+        }
+
+        $img = str_replace('data:image/', '', $img);
+        $pos = strpos($img, ";");
+        $extension = substr($img, 0, $pos);
+        $img = str_replace($extension.';base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $dataFile = base64_decode($img);
+        $filename = uniqid() .$milliseconds. '.'.$extension;
+
+        $file = UPLOAD_DIR .$filename;
+        $success = file_put_contents($file, $dataFile);
+        if (!$success){
+            echo "Unable to save the file.";
+            exit();
+        }
+
+        $obj_list = array(
+            'src' => $filename,
+            'type' => 1,
+            'houseid' => $data["id"],
+            'created' => new DateTime(),
+        );
+        $obj_list["id"] = $connector->insert($prefix.'image', $obj_list);
+        array_push($insert,array(
+            'image'=>$obj_list
+        ));
+        $data["imageCurrentStaus"][$i] = $obj_list;
+    }
+}
+
+for($i = 0;$i<count($image_old);$i++)
+{
+    if (file_exists(UPLOAD_DIR .$image_old[$i]["src"])) {
+        unlink(UPLOAD_DIR .$image_old[$i]["src"]);
+        $connector->query("DELETE FROM ".$prefix."image WHERE( id = ".$image_old[$i]["id"].")");
+      } else {
+        echo 'Could not delete '.$filename.', file does not exist';
+      }
+}
+
 $result = array(
     'data'=>$data,
     'add'=>$insert,

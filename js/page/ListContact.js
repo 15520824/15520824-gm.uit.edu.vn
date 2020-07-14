@@ -71,7 +71,7 @@ ListContact.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Quản lý Tỉnh/TP"
+                            innerHTML: "Quản lý thông tin liên hệ"
                         }
                     },
                     {
