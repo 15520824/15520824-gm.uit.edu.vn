@@ -236,7 +236,6 @@ ListDistrict.prototype.getView = function () {
         {value:'Tên',sort:true,style:{minWidth:"unset"}},
         {value:'Tỉnh/Thành phố',sort:true,style:{minWidth:"200px",width:"200px"}},
         {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-        console.log(self.formatDataRow(value));
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));

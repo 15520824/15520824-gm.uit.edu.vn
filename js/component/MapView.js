@@ -265,7 +265,7 @@ export function DetailView(map,data) {
             change:function(event)
             {
                 if(temp.changInput)
-                map.addMoveMarker([parseFloat(lng.value),parseFloat(lat.value)],false)
+                map.addMoveMarker([parseFloat(lat.value),parseFloat(lng.value)],false)
             }
         }
     })
@@ -279,7 +279,7 @@ export function DetailView(map,data) {
             change:function(event)
             {
                 if(temp.changInput)
-                map.addMoveMarker([parseFloat(lng.value),parseFloat(lat.value)],false)
+                map.addMoveMarker([parseFloat(lat.value),parseFloat(lng.value)],false)
             }
         }
     })
@@ -474,8 +474,8 @@ DetailView.prototype.getDataCurrent = function()
 
     if(this.containerGPS.style.display == "")
     {
-        temp.lng=this.lng.value;
-        temp.lat=this.lat.value;
+        temp.lng=parseFloat(this.lng.value);
+        temp.lat=parseFloat(this.lat.value);
     }
     console.log(temp)
     return temp;
@@ -1176,8 +1176,8 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
         self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
         self.smoothZoom(20, self.map.getZoom());
         if(changeInput){
-            self.detailView.lng.value = position[0];
-            self.detailView.lat.value = position[1];
+            self.detailView.lng.value = position[1];
+            self.detailView.lat.value = position[0];
             self.detailView.changInput = true;
         }
         marker.addListener("dragend",function(event){
@@ -1185,8 +1185,8 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
             self.map.setCenter(new google.maps.LatLng(result[0], result[1]));
             self.smoothZoom(20, self.map.getZoom());
             if(changeInput){
-                self.detailView.lng.value = result[0];
-                self.detailView.lat.value = result[1];
+                self.detailView.lng.value = result[1];
+                self.detailView.lat.value = result[0];
                 self.detailView.changInput = true;
             }
         })
@@ -1200,8 +1200,8 @@ MapView.prototype.transition = function (result,changeInput) {
     var self=this;
     var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
     if(changeInput){
-        self.detailView.lng.value = result[0];
-        self.detailView.lat.value = result[1];
+        self.detailView.lng.value = result[1];
+        self.detailView.lat.value = result[0];
         self.detailView.changInput = true;
     }
 

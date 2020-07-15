@@ -3,6 +3,7 @@ include_once "../lib/jsdb.php";
 include_once "../lib/jsencoding.php";
 include_once "../lib/prefix.php";
 include_once "../lib/connection.php";
+include_once "../lib/generalOperator.php";
 
 header('Access-Control-Allow-Origin: *');
 header('Content-type: application/json');
@@ -72,16 +73,21 @@ if ($result->num_rows > 0) {
 } else {
 }
 
+$sendData = array(
+    "data"=>$data
+);
 if(isset($isFirst))
 {
     $count = $connector-> query("SELECT COUNT(*) FROM ".$prefix.$tableName);
     if($count)
     if ($count->num_rows == 1) {
-        array_push($data,$count->fetch_assoc());
+        $sendData["count"] = $count->fetch_row()[0];
     }
 }
 
-echo "ok".EncodingClass::fromVariable($data);
+echo "ok".EncodingClass::fromVariable(array(
+    "data"=>$data
+));
 
 exit(0);
 ?>

@@ -71,12 +71,18 @@ if ($result->num_rows > 0) {
     }
 } else {
 }
+
+$sendData = array(
+    "data"=>$data
+);
+
 if(isset($isFirst))
 {
     $count = $connector-> query("SELECT COUNT(*) FROM ".$prefix."geometry");
+    
     if($count)
     if ($count->num_rows == 1) {
-        array_push($data,$count->fetch_assoc());
+        $sendData["count"] = $count->fetch_row()[0];
     }
 }
 echo "ok".EncodingClass::fromVariable($data);

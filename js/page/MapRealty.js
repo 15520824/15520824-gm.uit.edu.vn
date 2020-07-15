@@ -48,7 +48,6 @@ MapRealty.prototype.getView = function () {
     var mapView = new MapView(); 
     mapView.activePlanningMap();
     this.searchControl = this.searchControlContent();
-
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",

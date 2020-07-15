@@ -26,7 +26,9 @@ if ($result->num_rows > 0) {
     }
 } else {
 }
-echo "ok".EncodingClass::fromVariable($data);
+echo "ok".EncodingClass::fromVariable(array(
+    "data"=>$data
+));
 exit(0);
 
 // // MultiPoint json example

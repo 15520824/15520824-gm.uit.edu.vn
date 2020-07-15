@@ -660,7 +660,9 @@ tableView.prototype.setUpSlip = function()
 {
     // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
 
-    // this.bodyTable.addEventListener('slip:reorder', reorder, false);
+    this.bodyTable.addEventListener('slip:reorder', function(e){
+        console.log(e);
+    }, false);
     this.slip = new Slip(this.bodyTable);
     return this.slip;
 }

@@ -32,7 +32,7 @@ function App(){
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-    moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActiveHouse.php"]);
+    moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActivehouse.php"]);
     moduleDatabase.getModule("contacts",["load.php","add.php","update.php","deleteContact.php"]);
     moduleDatabase.getModule("users",["load.php","add.php","update.php","deleteUser.php"]);
     moduleDatabase.getModule("polygon", ["loadPolygon.php", "addPolygon.php", "updatePolygon.php", "deletePolygon.php"]);

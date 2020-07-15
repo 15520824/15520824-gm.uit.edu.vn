@@ -177,6 +177,94 @@ DataStructure.prototype.equal = function (data, WHERE) {
   return stringResult;
 };
 
+DataStructure.prototype.loadAdvanced = function () {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var isLoaded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [0, 50];
+
+  if (data.WHERE == undefined) {
+    if (isLoaded == false && self.promiseLoad !== undefined) {
+      if (self.promiseLoad.status === "pending") return self.promiseLoad;else return Promise.resolve(self.data);
+    }
+  } else {
+    if (isLoaded == false && self.promisePart[JSON.stringify(data.WHERE)] !== undefined) {
+      if (self.promisePart[JSON.stringify(data.WHERE)].status === "pending") return self.promisePart[JSON.stringify(data.WHERE)];else return Promise.resolve(self.promisePart[JSON.stringify(data.WHERE)].data);
+    }
+  }
+
+  var promiseLoad;
+
+  if (this.isFirst === true && data.WHERE !== undefined) {
+    data.isFirst = true;
+    this.isFirst = false;
+  }
+
+  var loadedData = [];
+
+  if (data.loaded === undefined) {
+    data.loaded = [];
+  }
+
+  if (self.data !== undefined && self.data.length !== 0) {
+    for (var i = 0; i < self.data.length; i++) {
+      if (this.generalOperator(self.data[i], data.WHERE)) {
+        data.loaded.push(self.data[i]["id"]);
+        loadedData.push(self.data[i]);
+      }
+    }
+  }
+
+  promiseLoad = new Promise(function (resolve, reject) {
+    self.queryData(self.phpLoader, data).then(function (value) {
+      for (var i = 0; i < value.length; i++) {
+        if (typeof value[i] == "string") if (self.Libary["id"][value[i]] !== undefined) {
+          value[i] = self.Libary["id"][value[i]];
+        }
+      }
+
+      if (self.data === undefined) self.data = [];
+
+      if (data.WHERE === undefined) {
+        self.countRow = value.length;
+      } else {
+        self.checkLoaded[JSON.stringify(data.WHERE)] = value;
+
+        if (data.isFirst === true) {
+          self.countRow = parseInt(value[value.length - 1].count);
+          value.splice(value.length - 1, 1);
+        }
+      }
+
+      var libary = self.Libary["id"];
+
+      if (libary === undefined) {
+        self.data = value;
+      } else {
+        if (self.data.length === self.countRow) {
+          if (self.promiseLoad === undefined) self.promiseLoad = Promise.resolve(self.data);
+        } else for (var i = 0; i < value.length; i++) {
+          if (libary[value[i].id] === undefined) {
+            self.data.push(value[i]);
+            self.setFormatAdd(value[i]);
+          }
+        }
+      }
+
+      self.getLibary();
+      promiseLoad.status = "done";
+      promiseLoad.data = value;
+      resolve(value);
+    })["catch"](function (error) {
+      promiseLoad.status = "reject";
+      reject(error);
+      console.error(error);
+    });
+  });
+  promiseLoad.status = "pending";
+  if (data.WHERE === undefined) self.promiseLoad = promiseLoad;else self.promisePart[JSON.stringify(data.WHERE)] = promiseLoad;
+  return promiseLoad;
+};
+
 DataStructure.prototype.load = function () {
   var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var isLoaded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -191,14 +279,6 @@ DataStructure.prototype.load = function () {
       if (self.promisePart[JSON.stringify(data.WHERE)].status === "pending") return self.promisePart[JSON.stringify(data.WHERE)];else return Promise.resolve(self.promisePart[JSON.stringify(data.WHERE)].data);
     }
   }
-
-  var odering = ["id"];
-
-  if (data.ODERING !== undefined) {
-    odering = data.ODERING;
-  }
-
-  if (data.LIMIT !== undefined) {}
 
   var promiseLoad;
 
@@ -52629,7 +52709,7 @@ function DetailView(map, data) {
 
         if (temp.checkStateDistrict[x] !== undefined) district.items = temp.checkStateDistrict[x];
         district.emit("change");
-        temp.setInput();
+        if (event !== undefined) temp.setInput();
       }
     }
   });
@@ -52647,7 +52727,7 @@ function DetailView(map, data) {
       change: function change(event) {
         var x = parseInt(getIDCompair(this.value));
         if (temp.checkDistrictWard[x] !== undefined) ward.items = temp.checkDistrictWard[x];
-        temp.setInput();
+        if (event !== undefined) temp.setInput();
       }
     }
   });
@@ -52666,7 +52746,9 @@ function DetailView(map, data) {
         var x = parseInt(getIDCompair(this.value));
         var checkid = temp.checkDistrict[temp.checkWard[x].districtid].name + "_" + temp.checkWard[x].districtid;
         district.value = checkid;
-        temp.setInput();
+        console.log(temp.checkWardStreet[x]);
+        if (temp.checkWardStreet[x] !== undefined) street.items = temp.checkWardStreet[x];
+        if (event !== undefined) temp.setInput();
       }
     }
   });
@@ -52679,7 +52761,7 @@ function DetailView(map, data) {
     },
     on: {
       change: function change(event) {
-        temp.setInput();
+        if (event !== undefined) temp.setInput();
       }
     }
   });
@@ -52688,13 +52770,12 @@ function DetailView(map, data) {
     "class": "pizo-new-realty-location-detail-row-menu",
     on: {
       change: function change(event) {
-        temp.setInput();
+        if (event !== undefined) temp.setInput();
       }
     }
   });
   Promise.all(arr).then(function () {
     state.items = ModuleDatabase["a" /* default */].getModule("states").getList("name", ["name", "id"]);
-    street.items = ModuleDatabase["a" /* default */].getModule("streets").getList("name", ["name", "id"]);
     temp.checkStateDistrict = ModuleDatabase["a" /* default */].getModule("districts").getLibary("stateid", function (data) {
       return {
         text: data.name,
@@ -52702,6 +52783,12 @@ function DetailView(map, data) {
       };
     }, true);
     temp.checkDistrictWard = ModuleDatabase["a" /* default */].getModule("wards").getLibary("districtid", function (data) {
+      return {
+        text: data.name,
+        value: data.name + "_" + data.id
+      };
+    }, true);
+    temp.checkWardStreet = ModuleDatabase["a" /* default */].getModule("streets").getLibary("wardid", function (data) {
       return {
         text: data.name,
         value: data.name + "_" + data.id
@@ -52749,8 +52836,8 @@ function DetailView(map, data) {
         temp.ward.items = temp.ward.items;
       }
 
-      temp.ward.emit("change");
       temp.ward.value = data.ward;
+      temp.ward.emit("change");
       index = data.street.lastIndexOf("_");
 
       if (index === -1) {
@@ -52762,9 +52849,9 @@ function DetailView(map, data) {
       }
 
       temp.street.value = data.street;
+      temp.setInput(false);
       if (data.lat !== undefined) temp.lat.value = data.lat;
       if (data.lng !== undefined) temp.lng.value = data.lng;
-      temp.setInput();
       map.addMoveMarker([data.lat, data.lng]);
     }
   });
@@ -52940,11 +53027,12 @@ DetailView.prototype.getDataCurrent = function () {
     state: this.state.value
   };
 
-  if (this.containerGPS.style.display === "none") {
-    temp.lng = this.lng.value;
-    temp.lat = this.lat.value;
+  if (this.containerGPS.style.display == "") {
+    temp.lng = parseFloat(this.lng.value);
+    temp.lat = parseFloat(this.lat.value);
   }
 
+  console.log(temp);
   return temp;
 };
 
@@ -52965,11 +53053,14 @@ DetailView.prototype.activeAutocomplete = function (map) {
   // address fields in the form.
 
   autocomplete.addListener('place_changed', function () {
-    self.fillInAddress(autocomplete, self.input.value, map);
+    if (self.input.value !== self.input.lastValue) self.fillInAddress(autocomplete, self.input.value, map);
+    self.input.lastValue = self.input.value;
   });
+  self.autocomplete = autocomplete;
 };
 
 DetailView.prototype.setInput = function () {
+  var isChange = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
   var stringInput = "";
   var index;
   var valueNumber = this.number.value;
@@ -53009,137 +53100,95 @@ DetailView.prototype.setInput = function () {
   }
 
   this.input.value = stringInput;
+  if (isChange === true) google.maps.event.trigger(this.autocomplete, 'place_changed');
 };
 
 DetailView.prototype.fillInAddress = function (autocomplete, text, map) {
   // Get the place details from the autocomplete object.
-  var self = this;
-  var place = autocomplete.getPlace();
+  // var self = this;
+  // var place = autocomplete.getPlace();
   this.getLongLat(text).then(function (result) {
     map.addMoveMarker(result);
-  });
-  var textResult = text;
-  var componentForm = {
-    street_number: 'short_name',
-    route: 'long_name',
-    locality: 'long_name',
-    administrative_area_level_1: 'long_name',
-    administrative_area_level_2: 'long_name',
-    country: 'long_name',
-    postal_code: 'short_name'
-  };
-  self.number.value = "";
-  self.street.value = "";
-  self.state.value = "";
-  self.district.value = "";
-  self.ward.value = ""; // Get each component of the address from the place details,
-  // and then fill-in the corresponding field on the form.
-
-  console.log(place);
-
-  for (var i = place.address_components.length - 1; i >= 0; i--) {
-    var addressType = place.address_components[i].types[0];
-
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-
-      switch (addressType) {
-        case "street_number":
-          var valueNumber = val;
-          console.log(val);
-          self.number.value = valueNumber;
-          break;
-
-        case "route":
-          var valueRoute = getContainsChild(self.street.items, {
-            text: val,
-            value: val
-          });
-
-          if (valueRoute === false) {
-            self.street.items = self.street.items.concat([{
-              text: val,
-              value: val
-            }]);
-            self.street.value = val;
-            valueRoute = {
-              text: val,
-              value: val
-            };
-          } else self.street.value = valueRoute.value;
-
-          textResult = textResult.replace(textResult.slice(0, textResult.indexOf(val + ", ") + val.length + 2), "");
-          break;
-
-        case "administrative_area_level_1":
-          var valueState = getContainsChild(self.state.items, {
-            text: val,
-            value: val
-          });
-
-          if (valueState === false) {
-            self.state.items = self.state.items.concat([{
-              text: val,
-              value: val
-            }]);
-            self.state.value = val;
-            valueState = {
-              text: val,
-              value: val
-            };
-          } else self.state.value = valueState.value;
-
-          break;
-
-        case "administrative_area_level_2":
-          if (typeof valueState === "string") var valueDistrict = getContainsChild(self.district.items, {
-            text: val,
-            value: val
-          });else var valueDistrict = getContainsChild(self.checkStateDistrict[getIDCompair(valueState.value)], {
-            text: val,
-            value: val
-          });
-
-          if (valueDistrict === false) {
-            self.district.items = self.district.items.concat([{
-              text: val,
-              value: val
-            }]);
-            self.district.value = val;
-            valueDistrict = {
-              text: val,
-              value: val
-            };
-          } else self.district.value = valueDistrict.value;
-
-          break;
-
-        case "country":
-          break;
-      }
-    }
-  }
-
-  var val = textResult.slice(0, textResult.indexOf(","));
-  val = val.replace("Ward Number", "Phường");
-  if (typeof valueDistrict === "string") var valueWard = getContainsChild(self.ward.items, {
-    text: val,
-    value: val
-  });else var valueWard = getContainsChild(self.checkDistrictWard[getIDCompair(valueDistrict.value)], {
-    text: val,
-    value: val
-  });
-
-  if (valueWard === false) {
-    self.ward.items = self.ward.items.concat([{
-      text: val,
-      value: val
-    }]);
-    self.ward.value = val;
-  }
-
-  self.ward.value = valueWard.value;
-  this.setInput();
+  }); // var textResult = text;
+  // var componentForm = {
+  //     street_number: 'short_name',
+  //     route: 'long_name',
+  //     locality: 'long_name',
+  //     administrative_area_level_1: 'long_name',
+  //     administrative_area_level_2: 'long_name',
+  //     country: 'long_name',
+  //     postal_code: 'short_name'
+  // };
+  // self.number.value = "";
+  // self.street.value = "";
+  // self.state.value = "";
+  // self.district.value = "";
+  // self.ward.value = "";
+  // // Get each component of the address from the place details,
+  // // and then fill-in the corresponding field on the form.
+  // console.log(place)
+  // for (var i = place.address_components.length-1; i >= 0 ; i--) {
+  //     var addressType = place.address_components[i].types[0];
+  //     if (componentForm[addressType]) {
+  //         var val = place.address_components[i][componentForm[addressType]];
+  //         switch (addressType) {
+  //             case "street_number":
+  //                 var valueNumber = val;
+  //                 console.log(val)
+  //                 self.number.value = valueNumber;
+  //                 break;
+  //             case "route":
+  //                 var valueRoute = getContainsChild(self.street.items,{text:val,value:val})
+  //                 if(valueRoute === false)
+  //                 {
+  //                     self.street.items= self.street.items.concat([{text:val,value:val}])
+  //                     self.street.value = val;
+  //                     valueRoute = {text:val,value:val};
+  //                 }else
+  //                 self.street.value = valueRoute.value;
+  //                 textResult = textResult.replace(textResult.slice(0,textResult.indexOf(val+", ")+val.length+2),"");
+  //                 break;
+  //             case "administrative_area_level_1":
+  //                 var valueState = getContainsChild(self.state.items,{text:val,value:val});
+  //                 if(valueState === false)
+  //                 {
+  //                     self.state.items=self.state.items.concat([{text:val,value:val}]);
+  //                     self.state.value = val;
+  //                     valueState = {text:val,value:val};
+  //                 }else
+  //                 self.state.value = valueState.value;
+  //                 break;
+  //             case "administrative_area_level_2":
+  //                 if(typeof valueState === "string")
+  //                 var valueDistrict = getContainsChild(self.district.items,{text:val,value:val});
+  //                 else
+  //                 var valueDistrict = getContainsChild(self.checkStateDistrict[getIDCompair(valueState.value)],{text:val,value:val});
+  //                 if(valueDistrict === false)
+  //                 {
+  //                     self.district.items=self.district.items.concat([{text:val,value:val}]);
+  //                     self.district.value = val;
+  //                     valueDistrict = {text:val,value:val};
+  //                 }else
+  //                 self.district.value = valueDistrict.value;
+  //                 break;
+  //             case "country":
+  //                 break;
+  //         }
+  //     }
+  // }
+  // var val  = textResult.slice(0,textResult.indexOf(","));
+  // val = val.replace("Ward Number","Phường");
+  // if(typeof valueDistrict === "string")
+  // var valueWard = getContainsChild(self.ward.items,{text:val,value:val});
+  // else
+  // var valueWard = getContainsChild(self.checkDistrictWard[getIDCompair(valueDistrict.value)],{text:val,value:val});
+  // if(valueWard===false)
+  // {
+  //     self.ward.items=self.ward.items.concat([{text:val,value:val}]);
+  //     self.ward.value = val;
+  // }
+  // self.ward.value = valueWard.value;
+  // this.setInput();
 };
 
 function getContainsChild(arr, value) {
@@ -53619,8 +53668,8 @@ MapView_MapView.prototype.addMoveMarker = function (position) {
     self.smoothZoom(20, self.map.getZoom());
 
     if (changeInput) {
-      self.detailView.lng.value = position[0];
-      self.detailView.lat.value = position[1];
+      self.detailView.lng.value = position[1];
+      self.detailView.lat.value = position[0];
       self.detailView.changInput = true;
     }
 
@@ -53630,8 +53679,8 @@ MapView_MapView.prototype.addMoveMarker = function (position) {
       self.smoothZoom(20, self.map.getZoom());
 
       if (changeInput) {
-        self.detailView.lng.value = result[0];
-        self.detailView.lat.value = result[1];
+        self.detailView.lng.value = result[1];
+        self.detailView.lat.value = result[0];
         self.detailView.changInput = true;
       }
     });
@@ -53645,8 +53694,8 @@ MapView_MapView.prototype.transition = function (result, changeInput) {
   var position = [this.currentMarker.getPosition().lat(), this.currentMarker.getPosition().lng()];
 
   if (changeInput) {
-    self.detailView.lng.value = result[0];
-    self.detailView.lat.value = result[1];
+    self.detailView.lng.value = result[1];
+    self.detailView.lat.value = result[0];
     self.detailView.changInput = true;
   }
 
@@ -55285,6 +55334,10 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
             selfElement.value = value.input.value;
             temp.data = childNode.getDataCurrent();
             childRemove.selfRemove();
+
+            if (temp.data.lat != undefined && temp.data.lng != undefined) {
+              self.containerMap.addMoveMarker([temp.data.lat, temp.data.lng], false);
+            }
           }, temp.data);
           childNode.addLatLng();
 
@@ -55310,7 +55363,7 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
     }]
   });
 
-  if (addressid !== 0) {
+  if (addressid != 0) {
     var number = this.checkAddress[addressid].addressnumber;
     var street = this.checkStreet[this.checkAddress[addressid].streetid].name;
     var ward = this.checkWard[this.checkAddress[addressid].wardid].name;
@@ -56873,7 +56926,7 @@ NewRealty_NewRealty.prototype.convenientView = function () {
     },
     on: {
       add: function add(event) {
-        switch (event.itemData.data.type) {
+        switch (parseInt(event.itemData.data.type)) {
           case 0:
             container.appendChild(self.itemCount(event.itemData.data));
             break;
@@ -56904,9 +56957,9 @@ NewRealty_NewRealty.prototype.convenientView = function () {
       temp.content = this.data.original.equipment[i].content;
       value.push(this.data.original.equipment[i].equipmentid);
 
-      switch (temp.type) {
+      switch (parseInt(temp.type)) {
         case 0:
-          if (temp.available === 1) container.appendChild(self.itemCount(temp));else container.appendChild(self.itemDisplayNone(temp));
+          if (temp.available == 1) container.appendChild(self.itemCount(temp));else container.appendChild(self.itemDisplayNone(temp));
           break;
 
         case 1:
@@ -57864,7 +57917,7 @@ ListRealty_ListRealty.prototype.getDataRow = function (data) {
     if (staus == "") staus += "Còn cho thuê";else staus += " và còn cho thuê";
   }
 
-  if (data.addressid !== 0) {
+  if (data.addressid != 0) {
     var number = this.checkAddress[data.addressid].addressnumber;
     var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
     var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
@@ -59638,45 +59691,54 @@ ListStreet_ListStreet.prototype.getView = function () {
     setTimeout(functionX, 10);
   };
 
-  ModuleDatabase["a" /* default */].getModule("streets").load().then(function (value) {
-    ModuleDatabase["a" /* default */].getModule("wards").load().then(function (listWard) {
-      ModuleDatabase["a" /* default */].getModule("districts").load().then(function (listDistrict) {
-        ModuleDatabase["a" /* default */].getModule("states").load().then(function (listState) {
-          self.setListParamDitrict(listDistrict);
-          self.setListParamState(listState);
-          var header = [{
-            type: "increase",
-            value: "#",
-            style: {
-              minWidth: "50px",
-              width: "50px"
-            }
-          }, {
-            value: 'MS',
-            sort: true,
-            style: {
-              minWidth: "50px",
-              width: "50px"
-            }
-          }, {
-            value: 'Tên',
-            sort: true,
-            style: {
-              minWidth: "unset"
-            }
-          }, {
-            type: "detail",
-            functionClickAll: functionClickMore,
-            icon: "",
-            dragElement: false,
-            style: {
-              width: "30px"
-            }
-          }];
-          self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-          tabContainer.addChild(self.mTable);
-          self.mTable.addInputSearch(ListStreet_$('.pizo-list-realty-page-allinput-container input', self.$view)); // self.listParent.updateItemList(listParam);
-        });
+  var header = [{
+    type: "increase",
+    value: "#",
+    style: {
+      minWidth: "50px",
+      width: "50px"
+    }
+  }, {
+    value: 'MS',
+    sort: true,
+    style: {
+      minWidth: "50px",
+      width: "50px"
+    }
+  }, {
+    value: 'Tên',
+    sort: true,
+    style: {
+      minWidth: "unset"
+    }
+  }, {
+    value: 'Phường/xã',
+    sort: true,
+    style: {
+      minWidth: "unset"
+    }
+  }, {
+    type: "detail",
+    functionClickAll: functionClickMore,
+    icon: "",
+    dragElement: false,
+    style: {
+      width: "30px"
+    }
+  }];
+  self.mTable = new tableView(header, [], false, true, 2);
+  tabContainer.addChild(self.mTable);
+  self.mTable.addInputSearch(ListStreet_$('.pizo-list-realty-page-allinput-container input', self.$view)); // self.listParent.updateItemList(listParam);
+
+  ModuleDatabase["a" /* default */].getModule("wards").load().then(function (listWard) {
+    ModuleDatabase["a" /* default */].getModule("districts").load().then(function (listDistrict) {
+      ModuleDatabase["a" /* default */].getModule("states").load().then(function (listState) {
+        self.setListParamWard(listWard);
+        self.setListParamDitrict(listDistrict);
+        self.setListParamState(listState);
+        self.listStateElement.items = self.listState;
+        self.listStateElement.emit("change");
+        self.mTable.addFilter(self.listWardElement, 3);
       });
     });
   });
@@ -59689,20 +59751,29 @@ ListStreet_ListStreet.prototype.getView = function () {
   return this.$view;
 };
 
-ListStreet_ListStreet.prototype.setListParamWard = function () {
+ListStreet_ListStreet.prototype.setListParamWard = function (value) {
   this.checkWard = ModuleDatabase["a" /* default */].getModule("wards").getLibary("id");
-  this.listWard = ModuleDatabase["a" /* default */].getModule("wards").getList("name", "id");
+  this.checkDistrictWard = ModuleDatabase["a" /* default */].getModule("wards").getLibary("districtid", function (data) {
+    return {
+      text: data.name,
+      value: data.name + "_" + data.id
+    };
+  }, true);
 };
 
 ListStreet_ListStreet.prototype.setListParamDitrict = function (value) {
   this.checkDistrict = ModuleDatabase["a" /* default */].getModule("districts").getLibary("id");
-  this.listDistrict = ModuleDatabase["a" /* default */].getModule("districts").getList("name", "id");
+  this.checkStateDistrict = ModuleDatabase["a" /* default */].getModule("districts").getLibary("stateid", function (data) {
+    return {
+      text: data.name,
+      value: data.name + "_" + data.id
+    };
+  }, true);
 };
 
 ListStreet_ListStreet.prototype.setListParamState = function (value) {
   this.checkState = ModuleDatabase["a" /* default */].getModule("states").getLibary("id");
-  this.listState = ModuleDatabase["a" /* default */].getModule("states").getList("name", "id");
-  this.isLoaded = true;
+  this.listState = ModuleDatabase["a" /* default */].getModule("states").getList("name", ["name", "id"]);
 };
 
 ListStreet_ListStreet.prototype.getDataParam = function () {
@@ -59729,7 +59800,12 @@ ListStreet_ListStreet.prototype.formatDataRow = function (data) {
 };
 
 ListStreet_ListStreet.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, {}];
+  var result = [{}, data.id, data.name, {
+    value: this.checkWard[data.wardid].name + "_" + data.wardid,
+    element: ListStreet_({
+      text: this.checkWard[data.wardid].name
+    })
+  }, {}];
   result.original = data;
   return result;
 };
@@ -59751,57 +59827,63 @@ ListStreet_ListStreet.prototype.formatDataList = function (data) {
 };
 
 ListStreet_ListStreet.prototype.searchControlContent = function () {
-  var startDay, endDay, startDay1, endDay1;
-  startDay = ListStreet_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
+  var self = this;
+  self.listStateElement = ListStreet_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true
     },
     on: {
-      changed: function changed(date) {
-        endDay.minDateLimit = date;
+      change: function change(event) {
+        self.listDistrictElement.items = self.checkStateDistrict[this.value.slice(this.value.lastIndexOf("_") + 1)];
+        self.listDistrictElement.emit('change');
       }
     }
   });
-  endDay = ListStreet_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
+  self.listDistrictElement = ListStreet_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true
     },
     on: {
-      changed: function changed(date) {
-        startDay.maxDateLimit = date;
+      change: function change(event) {
+        self.listWardElement.items = [{
+          text: "Tất cả",
+          value: 0
+        }].concat(self.checkDistrictWard[this.value.slice(this.value.lastIndexOf("_") + 1)]);
+        self.listWardElement.emit('change');
+        var arr = [];
+        var arrTemp = self.checkDistrictWard[this.value.slice(this.value.lastIndexOf("_") + 1)];
+
+        for (var i = 0; i < arrTemp.length; i++) {
+          arr.push(ModuleDatabase["a" /* default */].getModule("streets").load({
+            WHERE: [{
+              wardid: parseFloat(arrTemp[i].value.slice(arrTemp[i].value.lastIndexOf("_") + 1))
+            }]
+          }));
+        }
+
+        Promise.all(arr).then(function (value) {
+          var result = [];
+
+          for (var i = 0; i < value.length; i++) {
+            result = result.concat(value[i]);
+          }
+
+          self.mTable.data = self.formatDataRow(result);
+          self.mTable.updatePagination();
+          self.mTable.resetHash();
+        });
       }
     }
   });
-  startDay1 = ListStreet_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(new Date().getFullYear(), 0, 1),
-      maxDateLimit: new Date()
+  self.listWardElement = ListStreet_({
+    tag: "selectmenu",
+    props: {
+      enableSearch: true
     },
     on: {
-      changed: function changed(date) {
-        endDay1.minDateLimit = date;
-      }
-    }
-  });
-  endDay1 = ListStreet_({
-    tag: 'calendar-input',
-    data: {
-      anchor: 'top',
-      value: new Date(),
-      minDateLimit: new Date()
-    },
-    on: {
-      changed: function changed(date) {
-        startDay1.maxDateLimit = date;
-      }
+      change: function change(event) {}
     }
   });
 
@@ -59828,23 +59910,7 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
             props: {
               innerHTML: "Tỉnh/TP"
             }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-state-ward-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Thành phố Hồ Chí Minh',
-                  id: 79
-                }, {
-                  text: 'Thủ đô Hà Nội',
-                  id: 80
-                }]
-              }
-            }]
-          }]
+          }, self.listStateElement]
         }, {
           tag: "div",
           "class": "pizo-list-realty-main-search-control-row-district-ward",
@@ -59854,39 +59920,17 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
             props: {
               innerHTML: "Quận/Huyện"
             }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-district-ward-input",
-            child: [{
-              tag: "selectmenu",
-              props: {
-                enableSearch: true,
-                items: [{
-                  text: 'Quận 1',
-                  id: 79
-                }, {
-                  text: 'Quận Bình Thạnh',
-                  id: 80
-                }, {
-                  text: 'Quận Tân Bình',
-                  id: 81
-                }]
-              }
-            }]
-          }]
+          }, self.listDistrictElement]
         }, {
           tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-button",
+          "class": "pizo-list-realty-main-search-control-row-district-ward",
           child: [{
-            tag: "button",
-            "class": ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
-            on: {
-              click: function click(evt) {
-                temp.reset();
-              }
-            },
-            child: ['<span>' + "Thiết lập lại" + '</span>']
-          }]
+            tag: "span",
+            "class": "pizo-list-realty-main-search-control-row-district-ward-label",
+            props: {
+              innerHTML: "Phường/xã"
+            }
+          }, self.listWardElement]
         }]
       }]
     }]
@@ -59904,54 +59948,10 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
   });
 
   temp.content = content;
-  content.timestart = startDay;
-  content.timeend = endDay;
-  content.lowprice = ListStreet_$('input.pizo-list-realty-main-search-control-row-price-input-low', content);
-  content.highprice = ListStreet_$('input.pizo-list-realty-main-search-control-row-price-input-high', content);
-  content.phone = ListStreet_$('.pizo-list-realty-main-search-control-row-phone-input input', content);
-  content.MS = ListStreet_$('.pizo-list-realty-main-search-control-row-MS-input input', content);
-  content.SN = ListStreet_$('.pizo-list-realty-main-search-control-row-SN input', content);
-  content.TD = ListStreet_$('.pizo-list-realty-main-search-control-row-TD input', content);
-  content.PX = ListStreet_$('.pizo-list-realty-main-search-control-row-PX input', content);
-  content.QH = ListStreet_$('.pizo-list-realty-main-search-control-row-QH input', content);
-  content.HT = ListStreet_$('.pizo-list-realty-main-search-control-row-HT input', content);
-
-  temp.show = function () {
-    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
-  };
-
-  temp.hide = function () {
-    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
-
-    var eventEnd = function eventEnd() {
-      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
-      content.classList.remove("hideTranslate");
-      content.removeEventListener("webkitTransitionEnd", eventEnd);
-      content.removeEventListener("transitionend", eventEnd);
-    }; // Code for Safari 3.1 to 6.0
-
-
-    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
-
-    content.addEventListener("transitionend", eventEnd);
-  };
 
   temp.apply = function () {};
 
-  temp.reset = function () {
-    content.timestart = new Date();
-    content.timeend = new Date();
-    content.lowprice.value = "";
-    content.highprice.value = "";
-    content.phone.value = "";
-    content.MS.value = "";
-    content.SN.value = "";
-    content.TD.value = "";
-    content.PX.value = "";
-    content.QH.value = "";
-    content.TT.value = "";
-    content.HT.value = 0;
-  };
+  temp.reset = function () {};
 
   return temp;
 };
@@ -61038,7 +61038,6 @@ ListDistrict_ListDistrict.prototype.getView = function () {
         width: "30px"
       }
     }];
-    console.log(self.formatDataRow(value));
     self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListDistrict_$('.pizo-list-realty-page-allinput-container input', self.$view));
@@ -67314,7 +67313,7 @@ ListContact_ListContact.prototype.getView = function () {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: "Quản lý Tỉnh/TP"
+          innerHTML: "Quản lý thông tin liên hệ"
         }
       }, {
         tag: "div",
@@ -68265,6 +68264,7 @@ ListEquipment_ListEquipment.prototype.getView = function () {
         width: "30px"
       }
     }];
+    console.log(self.formatDataRow(value));
     self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(ListEquipment_$('.pizo-list-realty-page-allinput-container input', self.$view));
@@ -68304,7 +68304,7 @@ ListEquipment_ListEquipment.prototype.formatDataRow = function (data) {
 ListEquipment_ListEquipment.prototype.getDataRow = function (data) {
   var type;
 
-  switch (data.type) {
+  switch (parseInt(data.type)) {
     case 0:
       type = "Số lượng";
       break;
@@ -70560,7 +70560,7 @@ function App_App() {
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
   this.loadConfig();
-  ModuleDatabase["a" /* default */].getModule("activehouses", ["loadActiveHouses.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActiveHouse.php"]);
+  ModuleDatabase["a" /* default */].getModule("activehouses", ["loadActiveHouses.php", "addActiveHouse.php", "updateActiveHouse.php", "deleteActivehouse.php"]);
   ModuleDatabase["a" /* default */].getModule("contacts", ["load.php", "add.php", "update.php", "deleteContact.php"]);
   ModuleDatabase["a" /* default */].getModule("users", ["load.php", "add.php", "update.php", "deleteUser.php"]);
   ModuleDatabase["a" /* default */].getModule("polygon", ["loadPolygon.php", "addPolygon.php", "updatePolygon.php", "deletePolygon.php"]);

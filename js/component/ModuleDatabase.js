@@ -85,128 +85,7 @@ DataStructure.prototype.equal = function(data,WHERE)
     return stringResult;
 }
 
-DataStructure.prototype.loadAdvanced = function(data=[],isLoaded = false,limit = [0,50])
-{
-    if(data.WHERE == undefined)
-    {
-        if(isLoaded == false&&self.promiseLoad!==undefined)
-        {
-            if(self.promiseLoad.status==="pending")
-            return self.promiseLoad;
-            else
-            return Promise.resolve(self.data);
-        }
-           
-    }else
-    {
-        if(isLoaded == false&&self.promisePart[JSON.stringify(data.WHERE)]!==undefined)
-        {
-            if(self.promisePart[JSON.stringify(data.WHERE)].status==="pending")
-            return self.promisePart[JSON.stringify(data.WHERE)];
-            else
-            return Promise.resolve(self.promisePart[JSON.stringify(data.WHERE)].data);
-        }
-    }
-
-    var promiseLoad;
-    
-    if(this.isFirst === true&&data.WHERE!==undefined)
-    {
-        data.isFirst = true;
-        this.isFirst = false;
-    }
-
-    var loadedData = [];
-    if(data.loaded===undefined)
-    {
-        data.loaded = [];
-    }
-
-    if(self.data!==undefined&&self.data.length!==0)
-    {
-        for(var i = 0;i<self.data.length;i++)
-        {
-            if(this.generalOperator(self.data[i],data.WHERE))
-            {
-                data.loaded.push(self.data[i]["id"]);
-                loadedData.push(self.data[i]);
-            }
-        }
-    }
-    promiseLoad = new Promise(function(resolve,reject){
-        self.queryData(self.phpLoader,data).then(function(value){
-            for(var i = 0;i<value.length;i++)
-            {
-                if(typeof value[i] == "string")
-                    if(self.Libary["id"][value[i]]!==undefined)
-                    {
-                        value[i] = self.Libary["id"][value[i]];        
-                    }
-            }
-            if(self.data === undefined)
-            self.data = [];
-            if(data.WHERE===undefined)
-            {
-                self.countRow = value.length;
-            }else
-            {
-                self.checkLoaded[JSON.stringify(data.WHERE)] = value;
-                if(data.isFirst===true)
-                {
-                    self.countRow = parseInt(value[value.length-1].count);
-                    value.splice(value.length-1,1);
-                }
-            }
-            var libary = self.Libary["id"];
-            if(libary === undefined)
-            {
-                self.data = value;
-            }else
-            {
-                if(self.data.length === self.countRow)
-                {
-                    if(self.promiseLoad === undefined)
-                    self.promiseLoad = Promise.resolve(self.data);
-                }
-                else
-                for(var i = 0;i<value.length;i++)
-                {   
-                    if(libary[value[i].id]===undefined)
-                    {
-                        self.data.push(value[i]);
-                        self.setFormatAdd(value[i]);
-                    }
-                }
-            }
-            
-            
-            self.getLibary();
-            promiseLoad.status = "done";
-            promiseLoad.data = value;
-            resolve(value);
-    })
-    .catch(function(error){
-        promiseLoad.status = "reject";
-        reject(error);
-        console.error(error);
-    })
-    })
-    promiseLoad.status = "pending";
-    if(data.WHERE === undefined)
-    self.promiseLoad = promiseLoad;
-    else
-    self.promisePart[JSON.stringify(data.WHERE)] = promiseLoad;
-
-    return promiseLoad;
-}
-
 DataStructure.prototype.load = function(data = [],isLoaded = false){
-    if(data.LIMIT!==undefined)
-    {
-        var x = data.LIMIT;
-        delete data.LIMIT;
-        return this.loadAdvanced(data = [],isLoaded = false,x);
-    }
     var self = this;
     if(data.WHERE == undefined)
     {
@@ -255,7 +134,8 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
         }
     }
     promiseLoad = new Promise(function(resolve,reject){
-        self.queryData(self.phpLoader,data).then(function(value){
+        self.queryData(self.phpLoader,data).then(function(valueRecived){
+            var value = valueRecived["data"];
             for(var i = 0;i<value.length;i++)
             {
                 if(typeof value[i] == "string")
@@ -274,8 +154,7 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
                 self.checkLoaded[JSON.stringify(data.WHERE)] = value;
                 if(data.isFirst===true)
                 {
-                    self.countRow = parseInt(value[value.length-1].count);
-                    value.splice(value.length-1,1);
+                    self.countRow = parseInt(valueRecived["count"]);
                 }
             }
             var libary = self.Libary["id"];

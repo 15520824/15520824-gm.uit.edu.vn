@@ -271,6 +271,7 @@ for($i = 0 ;$i<$count_old;$i++)
 
 $image_old = $connector->load($prefix."image","houseid = ".$data["id"]);
 
+$milliseconds = round(microtime(true) * 1000);
 if(isset($data["imageJuridical"]))
 {
     $images = $data["imageJuridical"];

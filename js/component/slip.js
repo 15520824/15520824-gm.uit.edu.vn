@@ -258,7 +258,7 @@
                                 this.setState(this.states.reorder);
                             }
                         }
-                    }.bind(this), 300);
+                    }.bind(this), 1);
                 }
 
                 return {
@@ -506,7 +506,6 @@
                             }
                             spliceIndex = i+1;
                         }
-
                         this.dispatch(this.target.node, 'reorder', {
                             spliceIndex: spliceIndex,
                             originalIndex: originalIndex,
@@ -798,7 +797,7 @@
         onMouseUp: function(e) {
             e.stopPropagation();
             if (this.usingTouch || e.button !== 0) return;
-
+            
             if (this.state.onEnd && false === this.state.onEnd.call(this)) {
                 e.preventDefault();
             }

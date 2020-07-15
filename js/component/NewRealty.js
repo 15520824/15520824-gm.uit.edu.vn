@@ -400,7 +400,7 @@ NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
                             childRemove.selfRemove();
                             if(temp.data.lat!=undefined&&temp.data.lng!=undefined)
                             {
-                                self.containerMap.addMoveMarker([temp.data.lng,temp.data.lat],false)
+                                self.containerMap.addMoveMarker([temp.data.lat,temp.data.lng],false)
                             }
                         },temp.data)
                         childNode.addLatLng();
@@ -715,7 +715,7 @@ NewRealty.prototype.descViewdetail = function () {
         containerAdress.appendChild(addressCurrent);
         var map = new MapView();
         map.activePlanningMap();
-        map.addMoveMarker([this.data.original.lng,this.data.original.lat],false);
+        map.addMoveMarker([this.data.original.lat,this.data.original.lng],false);
         map.currentMarker.setDraggable(false);
         this.containerMap.parentNode.replaceChild(map, this.containerMap);
         this.containerMap = map;
