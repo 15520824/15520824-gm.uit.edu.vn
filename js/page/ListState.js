@@ -229,12 +229,13 @@ ListState.prototype.getView = function () {
             nationModule.load().then(function(listParam){
             self.setListParam(listParam);
             var header = [
+            { type: "dragzone", value: "",style:{minWidth:"50px",width:"50px"}}, 
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
             {value:'Tên',sort:true,style:{minWidth:"unset"}},
             {value:'Quốc gia',sort:true,style:{minWidth:"200px",width:"200px"}},
             {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-            self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+            self.mTable = new tableView(header, self.formatDataRow(value), true, true, 2);
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
         });
@@ -297,6 +298,7 @@ ListState.prototype.formatDataRow = function(data)
 ListState.prototype.getDataRow = function(data)
 {
     var result = [
+        {},
         {},
         data.id,
         data.name,

@@ -258,7 +258,7 @@
                                 this.setState(this.states.reorder);
                             }
                         }
-                    }.bind(this), 1);
+                    }.bind(this), 300);
                 }
 
                 return {
