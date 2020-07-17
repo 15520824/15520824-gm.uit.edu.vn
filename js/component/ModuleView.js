@@ -663,42 +663,55 @@ tableView.prototype.setUpSlip = function()
     }, false);
     this.bodyTable.addEventListener('slip:reorder', function(e){
         var result = self;
-        console.log(e)
         var index = e.detail.originalIndex;
-        var me = self.bodyTable.childNodes[e.detail.originalIndex]
-        var row1 = e.detail.spliceIndex;
-        var row2 =  e.detail.spliceIndex+1;
-
+        var spliceIndex = e.detail.spliceIndex+1;
+    
+        if(index>=spliceIndex)
+        spliceIndex--;
+        var me = self.bodyTable.childNodes[index];
+        var elementReal = self.bodyTable.childNodes[spliceIndex];
+        
         var element = me;
-        while (element.tagName !== "TR" && element !== undefined) {
-            element = element.parentNode;
-        }
 
-        result.bodyTable.insertBefore(element, self.bodyTable.childNodes[row2]);
+        result.bodyTable.insertBefore(element, elementReal);
         if (element.getElementChild !== undefined) {
             var elementChild = element.getElementChild();
             if (elementChild.length !== 0) {
                 for (var i = 0; i < elementChild.length; i++) {
-                    result.bodyTable.insertBefore(elementChild[i], self.bodyTable.childNodes[row2]);
+                    result.bodyTable.insertBefore(elementChild[i], elementReal);
                 }
             }
         }
+
+        self = element.elementParent;
+        result = self;
+
+
         if (result.data.child !== undefined) {
-            result.data.child = changeIndex(result.data.child, index, row1);
+            index = self.childrenNodes.indexOf(element);
+            spliceIndex = self.childrenNodes.indexOf(elementReal);
+            if(spliceIndex===-1)
+            spliceIndex = self.childrenNodes.length;
+            if(index>=spliceIndex)
+            spliceIndex--;
+            result.data.child = changeIndex(result.data.child, index, spliceIndex);
         }
         else
-            result.data = changeIndex(result.data, index - 1, row1);
-        result.childrenNodes = changeIndex(result.childrenNodes, index, row1);
+        {
+            result.data = changeIndex(result.data, index, spliceIndex);
+        }
+            
+        result.childrenNodes = changeIndex(result.childrenNodes, index, spliceIndex);
         var k = 0;
         for (var i = 0; i < result.clone.length; i++) {
-            var checkValue = array_insertBefore(result.clone[i], element.childNodes[k], row2);
+            var checkValue = array_insertBefore(result.clone[i], element.childNodes[k], spliceIndex+1);
             if (checkValue === false)
                 continue;
             result.clone[i] = checkValue;
             k++;
         }
         if (result.checkSpan !== undefined)
-            result.checkSpan = changeIndex(result.checkSpan, index, row1);
+            result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
     }, false);
     this.slip = new Slip(this.bodyTable);
     return this.slip;
@@ -1759,7 +1772,6 @@ tableView.prototype.setDisPlay = function () {
         }, 10);
     }
     else {
-        this.classList.remove("more-child");
         this.setDisPlayNone();
     }
 }
@@ -1786,12 +1798,16 @@ tableView.prototype.setDisPlayVisable = function () {
 }
 
 tableView.prototype.setDisPlayNone = function () {
-    var childrenNodes = this.childrenNodes;
-    for (var i = 0; i < childrenNodes.length; i++) {
-        childrenNodes[i].classList.remove("parent");
-        childrenNodes[i].classList.add("disPlayNone");
-        if (childrenNodes[i].childrenNodes.length !== 0)
-            childrenNodes[i].setDisPlayNone();
+    if(this.classList.contains("more-child"))
+    {
+        this.classList.remove("more-child");
+        var childrenNodes = this.childrenNodes;
+        for (var i = 0; i < childrenNodes.length; i++) {
+            childrenNodes[i].classList.remove("parent");
+            childrenNodes[i].classList.add("disPlayNone");
+            if (childrenNodes[i].childrenNodes.length !== 0)
+                childrenNodes[i].setDisPlayNone();
+        }
     }
 }
 
@@ -1980,6 +1996,23 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
 
                 }(event, row, functionClick)
             },
+            mousedown: result.dragVertical ? function (event) {
+                return function (event, cellIndex, self) {
+                    var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+                    var element = cellIndex.parentNode;
+
+                    element.finalIndex = finalIndex;
+                    element.elementParent = self;
+                    
+                }(event, cell, result)
+            }: undefined,
+            mouseup: result.dragVertical ?function (event) {
+                return function (event, cellIndex, self) {
+                    var element = cellIndex.getParentNode();
+                    delete element.finalIndex;
+                    delete element.elementParent
+                }(event, cell, result)
+            }: undefined,
         }
     })
 

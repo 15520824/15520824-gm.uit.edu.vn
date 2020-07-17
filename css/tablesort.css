@@ -106,6 +106,12 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
 
   table.sortTable>tbody>tr.parent{
     opacity: 1;
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+    
     /* transform: none; */
     /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */
   }

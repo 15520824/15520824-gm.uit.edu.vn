@@ -413,7 +413,7 @@ ListPositions.prototype.addDBDepartment = function(mNewDepartment,row ){
     mNewDepartment.promiseAddDB.then(function(value){
         console.log(value)
         moduleDatabase.getModule("departments").add(value).then(function(result){
-            self.addViewDepartment(result.data,row);
+            self.addViewDepartment(result,row);
         })
         mNewDepartment.promiseAddDB = undefined;
         setTimeout(function(){
@@ -553,7 +553,7 @@ ListPositions.prototype.addDBPosition = function(mNewPosition,row ){
         var username = value.username;
         delete value.username;
         moduleDatabase.getModule("positions").add(value).then(function(result){
-            value.id = result.data.id;
+            value.id = result.id;
 
             if(value.username!==undefined)
             {
@@ -610,7 +610,7 @@ ListPositions.prototype.editDBPosition = function(mNewPosition,data,parent,index
         value.id = data.original.id;
 
         moduleDatabase.getModule("positions").update(value).then(function(result){
-            if(value.username!==undefined&&value.username.positionid != value.id)
+            if(value.username!==null&&value.username.positionid != value.id)
             {
                 var x = {
                     id:value.username.id,

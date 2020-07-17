@@ -403,15 +403,34 @@
                 var mouseOutsideTimer;
                 var zero = this.target.node.offsetTop + this.target.height/2;
                 var otherNodes = [];
+                var element = this.target.node;
+                if(element.childrenNodes.length!=0)
+                {
+                    element.setDisPlayNone();
+                }
+                if(element.elementParent.tagName == "TABLE")
+                {
+                    element.minDrag = element.elementParent.offsetTop +element.elementParent.headerTable.offsetHeight;
+                }else
+                element.minDrag = element.elementParent.offsetTop +element.elementParent.offsetHeight;
+                if(element.elementParent.tagName == "TABLE")
+                {
+                    element.maxDrag = element.elementParent.offsetTop +element.elementParent.offsetHeight-element.offsetHeight;
+                }else
+                element.maxDrag = element.elementParent.offsetTop +element.elementParent.getHeightChild();
+
+
                 for(var i=0; i < nodes.length; i++) {
                     if (nodes[i].nodeType != 1 || nodes[i] === this.target.node) continue;
                     var t = nodes[i].offsetTop;
                     nodes[i].style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.2s ease-in-out';
-                    otherNodes.push({
+                 
+                    nodes[i].transformObject = {
                         node: nodes[i],
                         baseTransform: getTransform(nodes[i]),
                         pos: t + (t < zero ? nodes[i].offsetHeight : 0) - zero,
-                    });
+                    };
+                    otherNodes.push(nodes[i].transformObject);
                 }
 
                 this.target.node.classList.add('slip-reordering');
@@ -422,30 +441,54 @@
                     this.container.style.webkitTransformStyle = 'preserve-3d';
                 }
 
+                function onChangeChild(arr,text)
+                {
+                    for(var i = 0;i<arr.length;i++)
+                    {
+                        arr[i].style[transformJSPropertyName] = text;
+                        if(arr[i].childrenNodes.length!==0)
+                        {
+                            onChangeChild(arr[i].childrenNodes,text);
+                        }
+                    }
+                }
                 function onMove() {
                     /*jshint validthis:true */
-
+                    var self = this;
                     this.updateScrolling();
 
                     if (mouseOutsideTimer) {
                         // don't care where the mouse is as long as it moves
                         clearTimeout(mouseOutsideTimer); mouseOutsideTimer = null;
                     }
-
+                    
                     var move = this.getTotalMovement();
+                    if(this.target.node.offsetTop+move.y<this.target.node.minDrag||this.target.node.offsetTop+move.y>this.target.node.maxDrag)
+                        return;
+                    
                     this.target.node.style[transformJSPropertyName] = 'translate(0,' + move.y + 'px) ' + hwTopLayerMagicStyle + this.target.baseTransform.value;
-
+                    this.target.node.moveY = move;
                     var height = this.target.height;
-                    otherNodes.forEach(function(o){
-                        var off = 0;
-                        if (o.pos < 0 && move.y < 0 && o.pos > move.y) {
-                            off = height;
+                    this.target.node.elementParent.childrenNodes.forEach(function(o){
+                        // o = o.transformObject;
+                        if(self.target.node!==o){
+                            o = o.transformObject;
+                            var off = 0;
+                            if (o.pos < 0 && move.y < 0 && o.pos > move.y) {
+                                off = height;
+                            }
+                            else if (o.pos > 0 && move.y > 0 && o.pos < move.y) {
+                                off = -height;
+                            }
+                            // FIXME: should change accelerated/non-accelerated state lazily
+                            o.node.style[transformJSPropertyName] = off ? 'translate(0,'+off+'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original;
+                            if(o.node.childrenNodes.length!=0)
+                            {
+                                var arr = o.node.childrenNodes;
+                                onChangeChild(arr,off ? 'translate(0,'+off+'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original);
+                            }
                         }
-                        else if (o.pos > 0 && move.y > 0 && o.pos < move.y) {
-                            off = -height;
-                        }
-                        // FIXME: should change accelerated/non-accelerated state lazily
-                        o.node.style[transformJSPropertyName] = off ? 'translate(0,'+off+'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original;
+                       
                     });
                     return false;
                 }
@@ -489,7 +532,7 @@
                     },
 
                     onEnd: function() {
-                        var move = this.getTotalMovement();
+                        var move = this.target.node.moveY;
                         var i, spliceIndex;
                         if (move.y < 0) {
                             for (i=0; i < otherNodes.length; i++) {
