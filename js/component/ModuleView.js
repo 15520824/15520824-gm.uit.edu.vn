@@ -531,7 +531,7 @@ function outFocus(clone, trigger, functionCheckZone, bg, parent) {
         bg.selfRemove();
     }, 20)
     clone.selfRemove();
-    var event = new CustomEvent('dragdrop');
+    var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: index,dataIndex: dataIndex,row: row,result:result}});
     parent.bodyTable.parentNode.dispatchEvent(event);
 }
 
@@ -569,6 +569,8 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.data = data;
     result.dragVertical = dragVertical;
     result.dragHorizontal = dragHorizontal;
+    result.isSwipeLeft = false;
+    result.isSwipeRight = false;
 
     result.updatePagination = function (number = result.tempIndexRow,isRedraw = true) {
         result.tempIndexRow = number;
@@ -654,6 +656,36 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     return result;
 }
 
+tableView.prototype.getElementNext = function(element)
+{
+    if(element.childrenNodes.length>0)
+    {
+        return this.getElementNext(element.childrenNodes[element.childrenNodes.length-1]);
+    }
+    return element.nextSibling;
+}
+
+tableView.prototype.setUpSwipe = function(isSwipeLeft = true,isSwipeRight = true)
+{
+    this.isSwipeLeft = isSwipeLeft;
+    this.isSwipeRight = isSwipeRight;
+}
+
+tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
+{
+    parent.exactlyDeleteRow(index);
+}
+
+tableView.prototype.swipeCompleteRight = function(e,me,index,data,row,parent)
+{
+    parent.exactlyDeleteRow(index);
+}
+
+tableView.prototype.swipeCancel = function()
+{
+    
+}
+
 tableView.prototype.setUpSlip = function()
 {
     var self = this;
@@ -661,17 +693,41 @@ tableView.prototype.setUpSlip = function()
     this.bodyTable.addEventListener('slip:beforewait', function(e){
         if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
+    this.bodyTable.addEventListener('slip:beforeswipe', function(e){
+        if(self.isSwipeLeft===false&&e.detail.directionX==="left")
+            e.preventDefault();
+        if(self.isSwipeRight===false&&e.detail.directionX==="right")
+            e.preventDefault();
+        
+    }, false);
+    this.bodyTable.addEventListener('slip:cancelswipe', function(e){
+        self.swipeCancel();
+    }, false);
+    this.bodyTable.addEventListener('slip:swipe', function(e){
+        console.log(e)
+        // functionClick(event, this, index, row.data, row, result);
+        var index = e.detail.originalIndex;
+        var me = self.bodyTable.childNodes[index];
+        var parent = me.elementParent;
+        var tempIndex = index;
+        index = parent.childrenNodes.indexOf(me);
+
+        if(e.detail.direction==="left")
+        self.swipeCompleteLeft(e,me,index,me.data,me,parent);
+        if(e.detail.direction==="right")
+        self.swipeCompleteRight(e,me,index,me.data,me,parent);
+    }, false);
     this.bodyTable.addEventListener('slip:reorder', function(e){
         var result = self;
         var index = e.detail.originalIndex;
-        var spliceIndex = e.detail.spliceIndex+1;
-    
-        if(index>=spliceIndex)
-        spliceIndex--;
+        var spliceIndex = e.detail.spliceIndex;
+        var tempIndex,tempSpliceIndex;
         var me = self.bodyTable.childNodes[index];
-        var elementReal = self.bodyTable.childNodes[spliceIndex];
+        var elementReal = me.elementParent.childrenNodes[spliceIndex];
         
         var element = me;
+        if(elementReal===undefined)
+            elementReal = self.getElementNext(me.elementParent.childrenNodes[me.elementParent.childrenNodes.length-1]);
 
         result.bodyTable.insertBefore(element, elementReal);
         if (element.getElementChild !== undefined) {
@@ -685,15 +741,14 @@ tableView.prototype.setUpSlip = function()
 
         self = element.elementParent;
         result = self;
-
-
+        tempIndex = index;
+        tempSpliceIndex = spliceIndex;
+        
         if (result.data.child !== undefined) {
             index = self.childrenNodes.indexOf(element);
             spliceIndex = self.childrenNodes.indexOf(elementReal);
             if(spliceIndex===-1)
             spliceIndex = self.childrenNodes.length;
-            if(index>=spliceIndex)
-            spliceIndex--;
             result.data.child = changeIndex(result.data.child, index, spliceIndex);
         }
         else
@@ -712,6 +767,8 @@ tableView.prototype.setUpSlip = function()
         }
         if (result.checkSpan !== undefined)
             result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
+        var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: tempIndex,spliceIndex: tempSpliceIndex,parent: self,dataSpliceIndex:spliceIndex,dataIndex:index}});
+        self.bodyTable.parentNode.dispatchEvent(event);
     }, false);
     this.slip = new Slip(this.bodyTable);
     return this.slip;
@@ -2400,46 +2457,18 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
 }
 
 tableView.prototype.dropRow = function (index) {
-    var result = this, deltaX = [];
+    var result = this;
     var element = result.clone[0][index + 1].parentNode;
     return new Promise(function (resolve, reject) {
         if (result.isUpdate === false)
             return;
-        var parent = element.childNodes[0].getParentNode();
         if (!element.classList.contains("hideTranslate"))
             element.classList.add("hideTranslate");
         if (element.childrenNodes.length !== 0)
             element.addHideAnimationChild();
-        parent.isUpdate = false;
+        result.isUpdate = false;
         var eventEnd = function () {
-            parent.dropRowChild(element)
-            var deltaY = 0;
-
-            deltaX = parent.checkLongRow(index);
-            for (var i = 0; i < element.childNodes.length; i++) {
-                parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
-                if (parent.checkSpan !== undefined)
-                    parent.checkSpan.splice(index, 1);
-                if (element.childNodes[i].colSpan !== undefined)
-                    deltaY += element.childNodes[i].colSpan - 1;
-            }
-            if (parent.childrenNodes.length !== 0) {
-                if (parent.data.child !== undefined) {
-                    var indexData = parent.data.child.indexOf(element.data);
-                    if(indexData!==-1)
-                    parent.data.child.splice(indexData, 1);
-                }
-                else {
-                    var indexData = parent.data.indexOf(element.data);
-                    if(indexData!==-1)
-                    parent.data.splice(indexData, 1);
-                }
-                parent.childrenNodes.splice(parent.childrenNodes.indexOf(element), 1);
-            }
-            if (result.checkVisibleChild !== undefined && result.childrenNodes.length === 0)
-                result.checkVisibleChild();
-            parent.isUpdate = true;
-            result.bodyTable.parentNode.resetHash();
+            result.exactlyDeleteRow(index);
             resolve();
         };
         // Code for Safari 3.1 to 6.0
@@ -2448,6 +2477,41 @@ tableView.prototype.dropRow = function (index) {
         // Standard syntax
         element.addEventListener("transitionend", eventEnd);
     })
+}
+
+tableView.prototype.exactlyDeleteRow = function(index)
+{
+    var parent = this, deltaX = [];
+    var element = parent.childrenNodes[index];
+    parent.dropRowChild(element);
+    var deltaY = 0;
+
+    deltaX = parent.checkLongRow(index);
+    for (var i = 0; i < element.childNodes.length; i++) {
+        parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
+        if (parent.checkSpan !== undefined)
+            parent.checkSpan.splice(index, 1);
+        if (element.childNodes[i].colSpan !== undefined)
+            deltaY += element.childNodes[i].colSpan - 1;
+    }
+    if (parent.childrenNodes.length !== 0) {
+        if (parent.data.child !== undefined) {
+            var indexData = parent.data.child.indexOf(element.data);
+            if(indexData!==-1)
+            parent.data.child.splice(indexData, 1);
+        }
+        else {
+            var indexData = parent.data.indexOf(element.data);
+            if(indexData!==-1)
+            parent.data.splice(indexData, 1);
+        }
+        parent.childrenNodes.splice(parent.childrenNodes.indexOf(element), 1);
+    }
+    if (parent.checkVisibleChild !== undefined && parent.childrenNodes.length === 0)
+        parent.checkVisibleChild();
+    parent.isUpdate = true;
+    parent.bodyTable.parentNode.resetHash();
+  
 }
 
 tableView.prototype.insertColumn = function (index, insertBefore = -1) {

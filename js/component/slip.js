@@ -534,16 +534,19 @@
                     onEnd: function() {
                         var move = this.target.node.moveY;
                         var i, spliceIndex;
+                        var arr = this.target.node.elementParent.childrenNodes;
+                        if(move.y===undefined)
+                        return false;
                         if (move.y < 0) {
-                            for (i=0; i < otherNodes.length; i++) {
-                                if (otherNodes[i].pos > move.y) {
+                            for (i=0; i < arr.length; i++) {
+                                if (arr[i].transformObject!==undefined&&arr[i].transformObject.pos > move.y) {
                                     break;
                                 }
                             }
                             spliceIndex = i;
                         } else {
-                            for (i=otherNodes.length-1; i >= 0; i--) {
-                                if (otherNodes[i].pos < move.y) {
+                            for (i=arr.length-1; i >= 0; i--) {
+                                if (arr[i].transformObject!==undefined&&arr[i].transformObject.pos < move.y) {
                                     break;
                                 }
                             }
@@ -552,7 +555,7 @@
                         this.dispatch(this.target.node, 'reorder', {
                             spliceIndex: spliceIndex,
                             originalIndex: originalIndex,
-                            insertBefore: otherNodes[spliceIndex] ? otherNodes[spliceIndex].node : null,
+                            insertBefore: arr[spliceIndex] ? arr[spliceIndex] : null,
                         });
 
                         this.setState(this.states.idle);
