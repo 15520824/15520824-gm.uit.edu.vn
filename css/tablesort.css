@@ -1,22 +1,14 @@
 .arrow_up{
-	transform: scale(1.06);
-	display: block;
-	margin-bottom: 2px;
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-	margin-top: calc(50% - 1px);
+  position: absolute;
+  transform: scale(1.06);
+  display: block;
+  top: 2px;
 }
 
 .arrow_down{
-	transform: scale(1.06);
-    display: block;
-    margin-top: 2px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    height: calc(50% - 2px);
+  position: absolute;
+  transform: scale(1.06);
+  top: calc(50% + 1px);
 }
 
 .sort-container{
@@ -24,22 +16,20 @@
 }
 
 .has-sort .sort-container{
-	position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-	display: inline-block;
-	height: 30px;
-    width: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+  display: flex;
+  position: relative;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  min-height: 20px;
 }
 
-.has-sort.downgrade .sort-container .arrow_up>path{
+.downgrade .sort-container .arrow_up>path{
 	fill: #fff !important;
 }
 
-.has-sort.upgrade .sort-container .arrow_down>path{
+.upgrade .sort-container .arrow_down>path{
 	fill: #fff !important;
 }
 .has-sort{
@@ -143,4 +133,17 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
 
   table.sortTable .slip-reordering .container-view{
     z-index: 9999 !important;
+  }
+
+  .container-header{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .container-header > span{
+    flex-grow: 2;
+    display: flex;
   }

@@ -531,7 +531,7 @@ function outFocus(clone, trigger, functionCheckZone, bg, parent) {
         bg.selfRemove();
     }, 20)
     clone.selfRemove();
-    var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: index,dataIndex: dataIndex,row: row,result:result}});
+    var event = new CustomEvent('dragdrop');
     parent.bodyTable.parentNode.dispatchEvent(event);
 }
 
@@ -897,78 +897,102 @@ tableView.prototype.getCellHeader = function(header,i)
     dragElement = true;
     if (header.dragElement !== undefined && header.dragElement === false)
         dragElement = false;
+    var container = _({
+        tag:"div",
+        class:"container-header"
+    });
+
+    var on = {
+        click: function (index, functionClick) {
+            return function (event) {
+                event.preventDefault();
+                if (functionClick !== undefined)
+                {
+                    var row = cell.parentNode;
+                    functionClick(event, this, index, row.data, row, result);
+                }
+                   
+            }
+        }(i, functionClick),
+    
+        dragstart: (dragHorizontal && dragElement) ? function () {
+            return false;
+        } : undefined,
+    };
+
+    var mousedown = (dragHorizontal && dragElement) ? function (index) {
+        return function (event) {
+            event.preventDefault();
+            var finalIndex;
+            for (var i = 0; i < result.clone.length; i++) {
+                if (result.clone[i][0].id == index) {
+                    finalIndex = i;
+                    break;
+                }
+            }
+            this.hold = false;
+            var dom = this;
+            this.default = event;
+            this.timeoutID = setTimeout(function () {
+                dom.hold = true;
+                moveElement(event, dom, result, finalIndex);
+            }, 200);
+        }
+    }(i) : undefined;
+    var mouseup = function () {
+        if (this.hold === false) {
+            this.hold = true;
+            // this.click();
+            clearTimeout(this.timeoutID);
+        }
+    };
+
+    var mousemove = (dragHorizontal && dragElement) ? function (index) {
+        return function (event) {
+            if (this.hold === false) {
+                var finalIndex;
+                for (var i = 0; i < result.clone.length; i++) {
+                    if (result.clone[i][0].id == index) {
+                        finalIndex = i;
+                        break;
+                    }
+                }
+                this.hold = false;
+                var deltaX = this.default.clientX - event.clientX,
+                    deltaY = this.default.clientY - event.clientY;
+                if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
+                    this.hold = true;
+                    moveElement(event, this, result, finalIndex);
+                    clearTimeout(this.timeoutID);
+                }
+            }
+        }
+    }(i) : undefined;
+
+    if(window.mobilecheck()){
+        on["touchstart"] = mousedown;
+        on["touchend"] = mouseup;
+        on["touchmove"] = mousemove;
+    }else
+    {
+        on["mousedown"] = mousedown;
+        on["mouseup"] = mouseup;
+        on["mousemove"] = mousemove;
+    }
+
     cell = _({
         tag: "th",
         attr: {
             role: 'columnheader'
         },
         style: style,
+        child:[
+            container
+        ],
         props: {
             id: i
-        },
-        on: {
-            click: function (index, functionClick) {
-                return function (event) {
-                    event.preventDefault();
-                    if (functionClick !== undefined)
-                    {
-                        var row = cell.parentNode;
-                        functionClick(event, this, index, row.data, row, result);
-                    }
-                       
-                }
-            }(i, functionClick),
-            mousedown: (dragHorizontal && dragElement) ? function (index) {
-                return function (event) {
-                    event.preventDefault();
-                    var finalIndex;
-                    for (var i = 0; i < result.clone.length; i++) {
-                        if (result.clone[i][0].id == index) {
-                            finalIndex = i;
-                            break;
-                        }
-                    }
-                    this.hold = false;
-                    var dom = this;
-                    this.default = event;
-                    this.timeoutID = setTimeout(function () {
-                        dom.hold = true;
-                        moveElement(event, dom, result, finalIndex);
-                    }, 200);
-                }
-            }(i) : undefined,
-            dragstart: (dragHorizontal && dragElement) ? function () {
-                return false;
-            } : undefined,
-            mouseup: function () {
-                if (this.hold === false) {
-                    this.hold = true;
-                    // this.click();
-                    clearTimeout(this.timeoutID);
-                }
-            },
-            mousemove: (dragHorizontal && dragElement) ? function (index) {
-                return function (event) {
-                    if (this.hold === false) {
-                        var finalIndex;
-                        for (var i = 0; i < result.clone.length; i++) {
-                            if (result.clone[i][0].id == index) {
-                                finalIndex = i;
-                                break;
-                            }
-                        }
-                        this.hold = false;
-                        var deltaX = this.default.clientX - event.clientX,
-                            deltaY = this.default.clientY - event.clientY;
-                        if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
-                            this.hold = true;
-                            moveElement(event, this, result, finalIndex);
-                            clearTimeout(this.timeoutID);
-                        }
-                    }
-                }
-            }(i) : undefined,
-        }
+        }, 
+        on:on
     })
     if (functionClick !== undefined)
         cell.style.cursor = "pointer";
@@ -1001,27 +1025,24 @@ tableView.prototype.getCellHeader = function(header,i)
 
     if (header.sort === true) {
         cell.classList.add("has-sort")
-        var tempFunc = function (cellIndex, childUpDown) {
-            return function () {
-                var style2 = window.getComputedStyle(childUpDown);
-                if (cellIndex.style.minWidth == "")
-                    cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
-            }
-        }(cell, childUpDown);
-        _('attachhook').once('error', tempFunc);
     }
 
     if (header.element === undefined) {
-        cell.addChild(_({ text: value }));
+        container.addChild(_({ 
+            tag:"span",
+            props:{
+                innerHTML:value
+            }
+         }));
     } else {
-        cell.appendChild(data[i][j].element);
+        container.appendChild(data[i][j].element);
     }
 
     if (bonus !== undefined) {
-        cell.addChild(bonus);
+        container.addChild(bonus);
         bonus = undefined;
     }
-    cell.addChild(childUpDown);
+    container.addChild(childUpDown);
     return cell;
 }
 
@@ -2036,42 +2057,54 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     if (data.style !== undefined)
         style = data.style;
 
+    var on = {
+        click: function (event) {
+            return function (event, row, functionClick) {
+                event.preventDefault();
+                if (functionClick !== undefined) {
+                    if (cell.getParentNode().childrenNodes.length !== 0)
+                        var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);
+                    else
+                        var finalIndex = 0;
+                    functionClick(event, cell, finalIndex, cell.getParentNode(), row.data, row);
+                }
+
+            }(event, row, functionClick)
+        }
+    }
+    var mousedown = result.dragVertical ? function (event) {
+        return function (event, cellIndex, self) {
+            var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+            var element = cellIndex.parentNode;
+
+            element.finalIndex = finalIndex;
+            element.elementParent = self;
+            
+        }(event, cell, result)
+    }: undefined;
+
+    var mouseup = result.dragVertical ?function (event) {
+        return function (event, cellIndex, self) {
+            var element = cellIndex.getParentNode();
+            delete element.finalIndex;
+            delete element.elementParent
+        }(event, cell, result)
+    }: undefined;
+    if(window.mobilecheck()){
+        on["touchstart"] = mousedown;
+        on["touchend"] = mouseup;
+    }else
+    {
+        on["mousedown"] = mousedown;
+        on["mouseup"] = mouseup;
+    }
+
     cell = _({
         tag: "td",
         style: style,
-        on: {
-            click: function (event) {
-                return function (event, row, functionClick) {
-                    event.preventDefault();
-                    if (functionClick !== undefined) {
-                        if (cell.getParentNode().childrenNodes.length !== 0)
-                            var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);
-                        else
-                            var finalIndex = 0;
-                        functionClick(event, cell, finalIndex, cell.getParentNode(), row.data, row);
-                    }
-
-                }(event, row, functionClick)
-            },
-            mousedown: result.dragVertical ? function (event) {
-                return function (event, cellIndex, self) {
-                    var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
-                    var element = cellIndex.parentNode;
-
-                    element.finalIndex = finalIndex;
-                    element.elementParent = self;
-                    
-                }(event, cell, result)
-            }: undefined,
-            mouseup: result.dragVertical ?function (event) {
-                return function (event, cellIndex, self) {
-                    var element = cellIndex.getParentNode();
-                    delete element.finalIndex;
-                    delete element.elementParent
-                }(event, cell, result)
-            }: undefined,
-        }
+        on:on
     })
+   
 
     if (functionClick !== undefined)
         cell.style.cursor = "pointer";
