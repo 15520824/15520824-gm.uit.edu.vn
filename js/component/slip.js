@@ -410,7 +410,7 @@
                 }
                 if(element.elementParent.tagName == "TABLE")
                 {
-                    element.minDrag = element.elementParent.offsetTop +element.elementParent.headerTable.offsetHeight;
+                    element.minDrag = element.elementParent.headerTable.offsetHeight;
                 }else
                 element.minDrag = element.elementParent.offsetTop +element.elementParent.offsetHeight;
                 if(element.elementParent.tagName == "TABLE")
