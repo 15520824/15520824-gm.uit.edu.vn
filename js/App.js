@@ -34,7 +34,7 @@ function App(){
     this.loadConfig();
     moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActivehouse.php"]);
     moduleDatabase.getModule("contacts",["load.php","add.php","update.php","deleteContact.php"]);
-    moduleDatabase.getModule("users",["load.php","add.php","update.php","deleteUser.php"]);
+    moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","deleteUser.php"]);
     moduleDatabase.getModule("polygon", ["loadPolygon.php", "addPolygon.php", "updatePolygon.php", "deletePolygon.php"]);
     moduleDatabase.getModule("geometry",["loadMap.php","addMap.php","updateMap.php","deleteMap.php"]);
     moduleDatabase.getModule("geometry_created",["loadCreatedMap.php"]);

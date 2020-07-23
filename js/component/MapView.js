@@ -94,7 +94,6 @@ export function DetailView(map,data) {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("districts").load({ORDERING:"stateid"}));
     arr.push(moduleDatabase.getModule("wards").load({ORDERING:"districtid"}));
-    arr.push(moduleDatabase.getModule("streets").load());
     var state,district,ward,street,number;
     state = _({
         tag: "selectmenu",
@@ -133,7 +132,11 @@ export function DetailView(map,data) {
             change:function(event){
                 var x = parseInt(getIDCompair(this.value));
                 if(temp.checkDistrictWard[x]!==undefined)
-                ward.items = temp.checkDistrictWard[x];
+                {
+                    ward.items = temp.checkDistrictWard[x];
+                    ward.emit("change");
+                }
+                
                 if(event!==undefined)
                 temp.setInput();
             }
@@ -153,13 +156,15 @@ export function DetailView(map,data) {
             change:function(event)
             {
                 var x = parseInt(getIDCompair(this.value));
-                var checkid = temp.checkDistrict[temp.checkWard[x].districtid].name+"_"+temp.checkWard[x].districtid;
-                district.value = checkid;
-                console.log(temp.checkWardStreet[x])
-                if(temp.checkWardStreet[x]!==undefined)
-                street.items = temp.checkWardStreet[x];
-                if(event!==undefined)
-                temp.setInput();
+                moduleDatabase.getModule("streets").load({WHERE:[{wardid:x}]}).then(function(value){
+                    temp.checkWardStreet = moduleDatabase.getModule("streets").getLibary("wardid",function(data){
+                        return {text:data.name,value:data.name+"_"+data.id}
+                    },true);
+                    street.items = temp.checkWardStreet[x];
+                    if(event!==undefined)
+                    temp.setInput();
+                })
+                
             }
         }
     });
@@ -198,13 +203,9 @@ export function DetailView(map,data) {
         temp.checkDistrictWard = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
             return {text:data.name,value:data.name+"_"+data.id}
         },true);
-        temp.checkWardStreet = moduleDatabase.getModule("streets").getLibary("wardid",function(data){
-            return {text:data.name,value:data.name+"_"+data.id}
-        },true);
         temp.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         temp.checkState = moduleDatabase.getModule("states").getLibary("id");
         temp.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
-        temp.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
 
         var index;
         if(data!==undefined)

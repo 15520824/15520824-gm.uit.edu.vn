@@ -136,6 +136,8 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(valueRecived){
             var value = valueRecived["data"];
+            if(value === undefined)
+            value = [];
             for(var i = 0;i<value.length;i++)
             {
                 if(typeof value[i] == "string")
@@ -178,8 +180,7 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
                     }
                 }
             }
-            
-            
+            if(self.Libary["id"]===undefined)
             self.getLibary();
             promiseLoad.status = "done";
             promiseLoad.data = value;
@@ -253,32 +254,36 @@ DataStructure.prototype.sync = function(element,functionSync){
 }
 
 DataStructure.prototype.setLibaryRow = function(data,param,formatFunction,isArray){
+    var self = this;
     if(this.Libary[param]===undefined){
         this.Libary[param] = [];
         this.Libary[param].isArray = isArray;
+        this.Libary[param].check = [];
         this.Libary[param].formatFunction = function(data,param){
             var result = formatFunction(data);
             result.getData = function(){
                 return data;
             };
+            if(this.check[data["id"]]!==undefined)
+            return;
+            this.check[data["id"]] = result;
             if(this[data[param]] == undefined||this[data[param]].index == 0){
                 if(this.isArray == true)
                     this[data[param]] = [result];
                 else
                 this[data[param]] = result;
-                this[data[param]].index = 0;
+                this[data[param]].index = 1;
             }
             else 
-            {
+            {               
                 if(this[data[param]].index == 1&&this.isArray!==true)
                 {
-                    if(this[data[param]].id == result.id)
-                    return;
                     this[data[param]] = [this[data[param]]];
                 }
                 this[data[param]].push(result);
+                this[data[param]].index++;
             }
-            this[data[param]].index++;
+            
         };
         this.Libary[param].deleteFunction = function(data,param){
             if(this[data[param]].index == 1&&this.isArray!==true)

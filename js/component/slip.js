@@ -410,12 +410,12 @@
                 }
                 if(element.elementParent.tagName == "TABLE")
                 {
-                    element.minDrag = element.elementParent.offsetTop +element.elementParent.headerTable.offsetHeight;
+                    element.minDrag = element.elementParent.headerTable.offsetHeight;
                 }else
-                element.minDrag = element.elementParent.offsetTop +element.elementParent.offsetHeight;
+                element.minDrag = element.elementParent.offsetTop + element.elementParent.offsetHeight;
                 if(element.elementParent.tagName == "TABLE")
                 {
-                    element.maxDrag = element.elementParent.offsetTop +element.elementParent.offsetHeight-element.offsetHeight;
+                    element.maxDrag = element.elementParent.offsetHeight-element.offsetHeight;
                 }else
                 element.maxDrag = element.elementParent.offsetTop +element.elementParent.getHeightChild();
 
@@ -535,8 +535,11 @@
                         var move = this.target.node.moveY;
                         var i, spliceIndex;
                         var arr = this.target.node.elementParent.childrenNodes;
-                        if(move.y===undefined)
-                        return false;
+                        if(move===undefined||move.y===undefined)
+                        {
+                            this.setState(this.states.idle);
+                            return false;
+                        }
                         if (move.y < 0) {
                             for (i=0; i < arr.length; i++) {
                                 if (arr[i].transformObject!==undefined&&arr[i].transformObject.pos > move.y) {
@@ -551,6 +554,11 @@
                                 }
                             }
                             spliceIndex = i+1;
+                        }
+                        if(spliceIndex == originalIndex)
+                        {
+                            this.setState(this.states.idle);
+                            return false;
                         }
                         this.dispatch(this.target.node, 'reorder', {
                             spliceIndex: spliceIndex,

@@ -34,6 +34,8 @@ export default xmlModalDragManyFiles = {
   {
     this.functionFormat = functionFormat;
   },
+  enableCheckBox:false,
+  enableSelectbox:false,
   Image: function(srcImg) {
     var self = this;
     var temp;
@@ -50,10 +52,16 @@ export default xmlModalDragManyFiles = {
           var manyfiles = self.getFile();
           var arr = [];
           var index;
+          console.log(manyfiles)
           for(var i = 0;i<manyfiles.length;i++)
           {
-            if(typeof manyfiles[i]=="object")
-            arr.push(self.functionFormat(manyfiles[i]));
+            if(typeof manyfiles[i]=="object"){
+              var dataTemp = self.functionFormat(manyfiles[i]);
+              if(manyfiles[i].ref!==undefined)
+              dataTemp.src = manyfiles[i].ref+manyfiles[i].src;
+
+              arr.push(dataTemp)
+            }
             else
             arr.push({avatar:self.avatar, userName:self.userName, src:manyfiles[i],date:(new Date()).toISOString(), note:self.note});
             if(manyfiles[i]==temp.value)
@@ -95,6 +103,25 @@ export default xmlModalDragManyFiles = {
         }
       ]
     });
+    if(self.enableCheckBox == true)
+    {
+      temp.insertBefore(_({
+        tag:"i",
+        class:"material-icons",
+        style:{
+          overflow: "hidden",
+          position: "absolute",
+          right: "7px",
+          top: "7px",
+          cursor: "pointer",
+          height: "fit-content",
+          margin: 0,
+          width: "fit-content",
+          userSelect: "none",
+          backgroundColor: "white",
+          fontSize : "21px"
+        }}),temp.firstChild)
+    }
     window.addEventListener("click", function(event) {
       if (
         event.target !== temp &&
@@ -394,7 +421,6 @@ export default xmlModalDragManyFiles = {
     if(self.dropArea===undefined)
     {
       self.dropArea = $('.drop-area_c0ek499ts0',self.containGetImage);
-      console.log("xxxxxx",self.containGetImage)
     }
     // self.dropArea = document.getElementById("drop-area");
     // Prevent default drag behaviors
@@ -542,8 +568,8 @@ export default xmlModalDragManyFiles = {
     {
       this.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
     }
-
     var img =  this.Image(ref+data.src);
+    data.ref = ref;
     img.value = data;
     var parent = this.gallery;
     parent.appendChild(img);

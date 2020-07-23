@@ -5,11 +5,13 @@ import '../../css/NewRealty.css';
 import '../../css/imagesilder.css';
 import { locationView,MapView } from "./MapView";
 import { descViewImagePreview } from './ModuleImage'
-import { unit_Long, unit_Zone, tableView } from './ModuleView';
-import {formatNumber,reFormatNumber,formatFit} from './FormatFunction'
+import { unit_Long, unit_Zone, deleteQuestion } from './ModuleView';
+import {formatNumber,reFormatNumber,formatFit,isEqual} from './FormatFunction'
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import moduleDatabase from './ModuleDatabase';
+import NewContact from './NewContact';
+import NewAccount from '../component/NewAccount';
 
 import xmlModalDragManyFiles from './modal_drag_drop_manyfiles';
 
@@ -107,11 +109,23 @@ NewRealty.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
-
-                                        self.rejectDB(self.getDataSave());
+                                        if(!isEqual(self.getDataSave(),self.data))
+                                        {
+                                            var deleteItem = deleteQuestion("Lưu thay đổi", "Bạn muốn đóng (tất cả những chỉnh sửa sẽ không được lưu lại)?");
+                                            self.$view.addChild(deleteItem);
+                                            deleteItem.promiseComfirm.then(function () {
+                                                self.rejectDB(self.getDataSave());
+                                                self.$view.selfRemove();
+                                            })
+                                        }
+                                        else
+                                        {
+                                            self.rejectDB(self.getDataSave());
+                                            self.$view.selfRemove();
+                                        }
+                                        
                                     }
                                 },
                                 child: [
@@ -124,6 +138,7 @@ NewRealty.prototype.getView = function () {
                                 on: {
                                     click: function (evt) {
                                         self.resolveDB(self.getDataSave());
+                                        self.data = self.getDataSave();
                                         self.createPromise();
                                     }
                                 },
@@ -137,6 +152,7 @@ NewRealty.prototype.getView = function () {
                                 on: {
                                     click: function (evt) {
                                         self.resolveDB(self.getDataSave());
+                                        self.data = self.getDataSave();
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
@@ -161,6 +177,9 @@ NewRealty.prototype.getView = function () {
         ]
     }));
     self.createPromise();
+    setTimeout(function(){
+        self.data = self.getDataSave();
+    },100)
     return this.$view;
 }
 
@@ -284,6 +303,17 @@ NewRealty.prototype.imageJuridical = function()
 NewRealty.prototype.imageCurrentStaus = function()
 {
     var result = Object.assign({}, xmlModalDragManyFiles);
+    result.enableClick = true;
+    result.enableCheckBox = true;
+    result.setFormatData(function(data){
+        return {
+            avatar:"https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
+            userName:"Bùi Phạm Minh Thi",
+            src:data.src,
+            date:data.created,
+            note:""
+    }
+    })
     var container = result.containGetImage();
     result.createEvent();
 
@@ -477,7 +507,6 @@ NewRealty.prototype.itemAdressOld = function(addressid = 0)
                 class: ["pizo-new-realty-desc-detail-1-row-input"],
                 on: {
                     click: function (event) {
-                        console.log("xxxxxxxxxxxxxxx");
                         this.blur();
                         var selfElement = this;
                         var childNode = locationView(function (value) {
@@ -1986,9 +2015,10 @@ NewRealty.prototype.getDataSave = function(){
         temp.addressid_old = address;
     }
 
-    if(this.data!==undefined)
+    if(this.data!==undefined&&this.data.original!==undefined)
     temp.id = this.data.original.id;
-    console.log(temp);
+    else
+    temp.id = this.data.id;
     return temp;
 }
 
@@ -2408,6 +2438,72 @@ NewRealty.prototype.itemDisplayNone = function(data)
     return temp;
 }
 
+NewRealty.prototype.editContact = function(node,data)
+{
+    var self = this;
+    var mNewContact = new NewContact({original:data});
+    mNewContact.attach(self.parent);
+    var frameview = mNewContact.getView();
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.editDBContact(mNewContact,data,node);
+}
+
+NewRealty.prototype.editDBContact = function(mNewContact,data,node){
+    var self = this;
+    mNewContact.promiseEditDB.then(function(value){
+        if(value.id===undefined)
+        moduleDatabase.getModule("users").add(value).then(function(result){
+            self.editViewAccount(result,node);
+        })
+        else
+        moduleDatabase.getModule("contacts").update(value).then(function(result){
+            self.editViewContact(result,node);
+        })
+        mNewContact.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewContact.promiseEditDB!==undefined)
+            self.editDBContact(mNewContact,data);
+        },10);
+    })
+}
+
+NewRealty.prototype.editViewContact = function(value,node){
+    node.setInformation(value);
+}
+
+
+NewRealty.prototype.editAccount = function(node,data)
+{
+    var self = this;
+    moduleDatabase.getModule("positions").load().then(function(value){
+        var mNewAccount = new NewAccount({original:data});
+        mNewAccount.attach(self.parent);
+        var frameview = mNewAccount.getView(moduleDatabase.getModule("positions").getList("name","id"));
+        self.parent.body.addChild(frameview);
+        self.parent.body.activeFrame(frameview);
+        self.editDBAccount(mNewAccount,data,node);
+    })
+}
+
+NewRealty.prototype.editDBAccount = function(mNewAccount,data,node){
+    var self = this;
+    mNewAccount.promiseEditDB.then(function(value){
+        moduleDatabase.getModule("users").update(value).then(function(result){
+            self.editViewAccount(result,node);
+        })
+        mNewAccount.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewAccount.promiseEditDB!==undefined)
+            self.editDBAccount(mNewAccount,data,parent,index);
+        },10);
+    })
+}
+
+NewRealty.prototype.editViewAccount = function(value,node){
+    node.setInformation(value);
+}
+
 NewRealty.prototype.contactItem = function(data){
   
     var name,typecontact,phone,statusphone,note;
@@ -2444,6 +2540,32 @@ NewRealty.prototype.contactItem = function(data){
                                 {text:"Họ hàng",value:3}
                             ]
                         }
+                    },
+                    {
+                        tag:"button",
+                        class:"pizo-new-realty-contact-item-setting",
+                        on:{
+                            click:function(event){
+                                var tempData = temp.getData();
+                                if(tempData.username!==undefined)
+                                self.editAccount(temp,tempData);
+                                else
+                                self.editContact(temp,tempData);
+                            }
+                        },
+                        child:[
+                            {
+                                tag:"i",
+                                class:"material-icons",
+                                style:{
+                                    fontSize:"1rem",
+                                    verticalAlign: "middle"
+                                },
+                                props:{
+                                    innerHTML:"settings"
+                                }
+                            }
+                        ]
                     },
                     {
                         tag:"button",
@@ -2531,6 +2653,9 @@ NewRealty.prototype.contactItem = function(data){
                     {
                         tag:"selectmenu",
                         class:"pizo-new-realty-contact-item-phone-selectbox",
+                        style:{
+                            width: "190px"
+                        },
                         props:{
                             items:[
                                 {text:"Còn hoạt động",value:1},

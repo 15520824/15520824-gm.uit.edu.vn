@@ -177,94 +177,6 @@ DataStructure.prototype.equal = function (data, WHERE) {
   return stringResult;
 };
 
-DataStructure.prototype.loadAdvanced = function () {
-  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var isLoaded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [0, 50];
-
-  if (data.WHERE == undefined) {
-    if (isLoaded == false && self.promiseLoad !== undefined) {
-      if (self.promiseLoad.status === "pending") return self.promiseLoad;else return Promise.resolve(self.data);
-    }
-  } else {
-    if (isLoaded == false && self.promisePart[JSON.stringify(data.WHERE)] !== undefined) {
-      if (self.promisePart[JSON.stringify(data.WHERE)].status === "pending") return self.promisePart[JSON.stringify(data.WHERE)];else return Promise.resolve(self.promisePart[JSON.stringify(data.WHERE)].data);
-    }
-  }
-
-  var promiseLoad;
-
-  if (this.isFirst === true && data.WHERE !== undefined) {
-    data.isFirst = true;
-    this.isFirst = false;
-  }
-
-  var loadedData = [];
-
-  if (data.loaded === undefined) {
-    data.loaded = [];
-  }
-
-  if (self.data !== undefined && self.data.length !== 0) {
-    for (var i = 0; i < self.data.length; i++) {
-      if (this.generalOperator(self.data[i], data.WHERE)) {
-        data.loaded.push(self.data[i]["id"]);
-        loadedData.push(self.data[i]);
-      }
-    }
-  }
-
-  promiseLoad = new Promise(function (resolve, reject) {
-    self.queryData(self.phpLoader, data).then(function (value) {
-      for (var i = 0; i < value.length; i++) {
-        if (typeof value[i] == "string") if (self.Libary["id"][value[i]] !== undefined) {
-          value[i] = self.Libary["id"][value[i]];
-        }
-      }
-
-      if (self.data === undefined) self.data = [];
-
-      if (data.WHERE === undefined) {
-        self.countRow = value.length;
-      } else {
-        self.checkLoaded[JSON.stringify(data.WHERE)] = value;
-
-        if (data.isFirst === true) {
-          self.countRow = parseInt(value[value.length - 1].count);
-          value.splice(value.length - 1, 1);
-        }
-      }
-
-      var libary = self.Libary["id"];
-
-      if (libary === undefined) {
-        self.data = value;
-      } else {
-        if (self.data.length === self.countRow) {
-          if (self.promiseLoad === undefined) self.promiseLoad = Promise.resolve(self.data);
-        } else for (var i = 0; i < value.length; i++) {
-          if (libary[value[i].id] === undefined) {
-            self.data.push(value[i]);
-            self.setFormatAdd(value[i]);
-          }
-        }
-      }
-
-      self.getLibary();
-      promiseLoad.status = "done";
-      promiseLoad.data = value;
-      resolve(value);
-    })["catch"](function (error) {
-      promiseLoad.status = "reject";
-      reject(error);
-      console.error(error);
-    });
-  });
-  promiseLoad.status = "pending";
-  if (data.WHERE === undefined) self.promiseLoad = promiseLoad;else self.promisePart[JSON.stringify(data.WHERE)] = promiseLoad;
-  return promiseLoad;
-};
-
 DataStructure.prototype.load = function () {
   var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var isLoaded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -303,7 +215,9 @@ DataStructure.prototype.load = function () {
   }
 
   promiseLoad = new Promise(function (resolve, reject) {
-    self.queryData(self.phpLoader, data).then(function (value) {
+    self.queryData(self.phpLoader, data).then(function (valueRecived) {
+      var value = valueRecived["data"];
+
       for (var i = 0; i < value.length; i++) {
         if (typeof value[i] == "string") if (self.Libary["id"][value[i]] !== undefined) {
           value[i] = self.Libary["id"][value[i]];
@@ -318,8 +232,7 @@ DataStructure.prototype.load = function () {
         self.checkLoaded[JSON.stringify(data.WHERE)] = value;
 
         if (data.isFirst === true) {
-          self.countRow = parseInt(value[value.length - 1].count);
-          value.splice(value.length - 1, 1);
+          self.countRow = parseInt(valueRecived["count"]);
         }
       }
 
@@ -18162,7 +18075,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".arrow_up{\r\n\ttransform: scale(1.06);\r\n\tdisplay: block;\r\n\tmargin-bottom: 2px;\r\n\tdisplay: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n\tmargin-top: calc(50% - 1px);\r\n}\r\n\r\n.arrow_down{\r\n\ttransform: scale(1.06);\r\n    display: block;\r\n    margin-top: 2px;\r\n    display: block;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    margin-bottom: auto;\r\n    height: calc(50% - 2px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n}\r\n\r\n.has-sort .sort-container{\r\n\tposition: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n\tdisplay: inline-block;\r\n\theight: 30px;\r\n    width: 20px;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n}\r\n\r\n.has-sort.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.has-sort.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n.margin-div-cell{\r\n    width: 1.71428571429rem;\r\n    display: inline-block;\r\n}\r\n\r\n.more-icon-container{\r\n    font-size: 16px;\r\n    position: absolute;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    top: 50%;\r\n    width: 20px;\r\n    height: 30px;\r\n    transform: translateX(-100%) translateX(-0.71428571428rem) translateY(-50%);\r\n}\r\n\r\n.more-button{\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateY(-2px);\r\n    -webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n    font-size: 20px;\r\n}\r\n\r\ntable.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.more-child> td> div>i.more-button{\r\n\ttransform: translateY(-50%) translateY(-2px) rotateZ(90deg);\r\n}\r\n  \r\n  .container-view{\r\n      display: inline-block;\r\n  }\r\n\r\n  table.sortTable td.margin-left-has-icon{\r\n    padding-left: 2.5rem;\r\n  }\r\n\r\n  \r\n  table.sortTable.padding-High-table tbody td:first-child{\r\n    padding-left: 2.85714285714rem;\r\n    \r\n  }\r\n\r\n  table.sortTable td:first-child{\r\n    padding-left: 0.71428571428rem;\r\n  }\r\n\r\n  table.sortTable td:last-child{\r\n    padding-right: 0.71428571428rem;\r\n  }\r\n\r\n  .drag-icon-button{\r\n    cursor: context-menu;\r\n  }\r\n\r\n  table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    /* transform: none; */\r\n    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */\r\n  }\r\n\r\n  table.sortTable>tbody>tr{\r\n    opacity: 0;\r\n    /* transform: rotateX(-90deg); */\r\n    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */\r\n  }\r\n\r\n  table.sortTable>tbody>tr.hideTranslate.parent{\r\n    -webkit-transition: 1s ease-in-out;\r\n    -moz-transition: 1s ease-in-out;\r\n    -o-transition: 1s ease-in-out;\r\n    transition: 1s ease-in-out;\r\n    transform: translateX(100%);\r\n  }\r\n  \r\n  .disPlayNone{\r\n    display: none !important;\r\n  }\r\n\r\n  .absol-frame-view-frame-container:not(.absol-active){\r\n    visibility: unset;\r\n  }\r\n/* table.sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */\r\n\r\n  table.sortTable .slip-reordering .container-view{\r\n    z-index: 9999 !important;\r\n  }", ""]);
+exports.push([module.i, ".arrow_up{\r\n  position: absolute;\r\n  transform: scale(1.06);\r\n  display: block;\r\n  top: 2px;\r\n}\r\n\r\n.arrow_down{\r\n  position: absolute;\r\n  transform: scale(1.06);\r\n  top: calc(50% + 1px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n}\r\n\r\n.has-sort .sort-container{\r\n  display: flex;\r\n  position: relative;\r\n  flex-shrink: 0;\r\n  justify-content: center;\r\n  align-items: center;\r\n  width: 20px;\r\n  min-height: 20px;\r\n}\r\n\r\n.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n.margin-div-cell{\r\n    width: 1.71428571429rem;\r\n    display: inline-block;\r\n}\r\n\r\n.more-icon-container{\r\n    font-size: 16px;\r\n    position: absolute;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    top: 50%;\r\n    width: 20px;\r\n    height: 30px;\r\n    transform: translateX(-100%) translateX(-0.71428571428rem) translateY(-50%);\r\n}\r\n\r\n.more-button{\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateY(-2px);\r\n    -webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n    font-size: 20px;\r\n}\r\n\r\ntable.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.more-child> td> div>i.more-button{\r\n\ttransform: translateY(-50%) translateY(-2px) rotateZ(90deg);\r\n}\r\n  \r\n  .container-view{\r\n      display: inline-block;\r\n  }\r\n\r\n  table.sortTable td.margin-left-has-icon{\r\n    padding-left: 2.5rem;\r\n  }\r\n\r\n  \r\n  table.sortTable.padding-High-table tbody td:first-child{\r\n    padding-left: 2.85714285714rem;\r\n    \r\n  }\r\n\r\n  table.sortTable td:first-child{\r\n    padding-left: 0.71428571428rem;\r\n  }\r\n\r\n  table.sortTable td:last-child{\r\n    padding-right: 0.71428571428rem;\r\n  }\r\n\r\n  .drag-icon-button{\r\n    cursor: context-menu;\r\n  }\r\n\r\n  table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    -moz-user-select: none; \r\n    -webkit-user-select: none; \r\n    -ms-user-select:none; \r\n    user-select:none;\r\n    -o-user-select:none;\r\n    \r\n    /* transform: none; */\r\n    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */\r\n  }\r\n\r\n  table.sortTable>tbody>tr{\r\n    opacity: 0;\r\n    /* transform: rotateX(-90deg); */\r\n    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */\r\n  }\r\n\r\n  table.sortTable>tbody>tr.hideTranslate.parent{\r\n    -webkit-transition: 1s ease-in-out;\r\n    -moz-transition: 1s ease-in-out;\r\n    -o-transition: 1s ease-in-out;\r\n    transition: 1s ease-in-out;\r\n    transform: translateX(100%);\r\n  }\r\n  \r\n  .disPlayNone{\r\n    display: none !important;\r\n  }\r\n\r\n  .absol-frame-view-frame-container:not(.absol-active){\r\n    visibility: unset;\r\n  }\r\n/* table.sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */\r\n\r\n  table.sortTable .slip-reordering .container-view{\r\n    z-index: 9999 !important;\r\n  }\r\n\r\n  .container-header{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n  }\r\n\r\n  .container-header > span{\r\n    flex-grow: 2;\r\n    display: flex;\r\n  }\r\n", ""]);
 
 
 
@@ -48969,16 +48882,30 @@ Slip.prototype = {
       var mouseOutsideTimer;
       var zero = this.target.node.offsetTop + this.target.height / 2;
       var otherNodes = [];
+      var element = this.target.node;
+
+      if (element.childrenNodes.length != 0) {
+        element.setDisPlayNone();
+      }
+
+      if (element.elementParent.tagName == "TABLE") {
+        element.minDrag = element.elementParent.headerTable.offsetHeight;
+      } else element.minDrag = element.elementParent.offsetTop + element.elementParent.offsetHeight;
+
+      if (element.elementParent.tagName == "TABLE") {
+        element.maxDrag = element.elementParent.offsetHeight - element.offsetHeight;
+      } else element.maxDrag = element.elementParent.offsetTop + element.elementParent.getHeightChild();
 
       for (var i = 0; i < nodes.length; i++) {
         if (nodes[i].nodeType != 1 || nodes[i] === this.target.node) continue;
         var t = nodes[i].offsetTop;
         nodes[i].style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.2s ease-in-out';
-        otherNodes.push({
+        nodes[i].transformObject = {
           node: nodes[i],
           baseTransform: getTransform(nodes[i]),
           pos: t + (t < zero ? nodes[i].offsetHeight : 0) - zero
-        });
+        };
+        otherNodes.push(nodes[i].transformObject);
       }
 
       this.target.node.classList.add('slip-reordering'); // this.target.node.style.zIndex = '99999';
@@ -48990,8 +48917,19 @@ Slip.prototype = {
         this.container.style.webkitTransformStyle = 'preserve-3d';
       }
 
+      function onChangeChild(arr, text) {
+        for (var i = 0; i < arr.length; i++) {
+          arr[i].style[transformJSPropertyName] = text;
+
+          if (arr[i].childrenNodes.length !== 0) {
+            onChangeChild(arr[i].childrenNodes, text);
+          }
+        }
+      }
+
       function onMove() {
         /*jshint validthis:true */
+        var self = this;
         this.updateScrolling();
 
         if (mouseOutsideTimer) {
@@ -49001,19 +48939,30 @@ Slip.prototype = {
         }
 
         var move = this.getTotalMovement();
+        if (this.target.node.offsetTop + move.y < this.target.node.minDrag || this.target.node.offsetTop + move.y > this.target.node.maxDrag) return;
         this.target.node.style[transformJSPropertyName] = 'translate(0,' + move.y + 'px) ' + hwTopLayerMagicStyle + this.target.baseTransform.value;
+        this.target.node.moveY = move;
         var height = this.target.height;
-        otherNodes.forEach(function (o) {
-          var off = 0;
+        this.target.node.elementParent.childrenNodes.forEach(function (o) {
+          // o = o.transformObject;
+          if (self.target.node !== o) {
+            o = o.transformObject;
+            var off = 0;
 
-          if (o.pos < 0 && move.y < 0 && o.pos > move.y) {
-            off = height;
-          } else if (o.pos > 0 && move.y > 0 && o.pos < move.y) {
-            off = -height;
-          } // FIXME: should change accelerated/non-accelerated state lazily
+            if (o.pos < 0 && move.y < 0 && o.pos > move.y) {
+              off = height;
+            } else if (o.pos > 0 && move.y > 0 && o.pos < move.y) {
+              off = -height;
+            } // FIXME: should change accelerated/non-accelerated state lazily
 
 
-          o.node.style[transformJSPropertyName] = off ? 'translate(0,' + off + 'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original;
+            o.node.style[transformJSPropertyName] = off ? 'translate(0,' + off + 'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original;
+
+            if (o.node.childrenNodes.length != 0) {
+              var arr = o.node.childrenNodes;
+              onChangeChild(arr, off ? 'translate(0,' + off + 'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original);
+            }
+          }
         });
         return false;
       }
@@ -49052,20 +49001,22 @@ Slip.prototype = {
           }.bind(this), 700);
         },
         onEnd: function onEnd() {
-          var move = this.getTotalMovement();
+          var move = this.target.node.moveY;
           var i, spliceIndex;
+          var arr = this.target.node.elementParent.childrenNodes;
+          if (move.y === undefined) return false;
 
           if (move.y < 0) {
-            for (i = 0; i < otherNodes.length; i++) {
-              if (otherNodes[i].pos > move.y) {
+            for (i = 0; i < arr.length; i++) {
+              if (arr[i].transformObject !== undefined && arr[i].transformObject.pos > move.y) {
                 break;
               }
             }
 
             spliceIndex = i;
           } else {
-            for (i = otherNodes.length - 1; i >= 0; i--) {
-              if (otherNodes[i].pos < move.y) {
+            for (i = arr.length - 1; i >= 0; i--) {
+              if (arr[i].transformObject !== undefined && arr[i].transformObject.pos < move.y) {
                 break;
               }
             }
@@ -49076,7 +49027,7 @@ Slip.prototype = {
           this.dispatch(this.target.node, 'reorder', {
             spliceIndex: spliceIndex,
             originalIndex: originalIndex,
-            insertBefore: otherNodes[spliceIndex] ? otherNodes[spliceIndex].node : null
+            insertBefore: arr[spliceIndex] ? arr[spliceIndex] : null
           });
           this.setState(this.states.idle);
           return false;
@@ -50022,8 +49973,8 @@ function captureMousePosition(event) {
 function tableView() {
   var header = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-  var dragHorizontal = arguments.length > 2 ? arguments[2] : undefined;
-  var dragVertical = arguments.length > 3 ? arguments[3] : undefined;
+  var dragHorizontal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var dragVertical = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   var childIndex = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
   var indexRow = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 50;
   var cell,
@@ -50053,6 +50004,8 @@ function tableView() {
   result.data = data;
   result.dragVertical = dragVertical;
   result.dragHorizontal = dragHorizontal;
+  result.isSwipeLeft = false;
+  result.isSwipeRight = false;
 
   result.updatePagination = function () {
     var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : result.tempIndexRow;
@@ -50128,17 +50081,122 @@ function tableView() {
   result.getBodyTable(data);
   result.checkSpan = checkSpan;
 
-  if (window.mobilecheck()) {
+  if (dragVertical) {
     result.setUpSlip();
   }
 
-  result.setUpSlip();
   return result;
 }
 
+tableView.prototype.getElementNext = function (element) {
+  if (element.childrenNodes.length > 0) {
+    return this.getElementNext(element.childrenNodes[element.childrenNodes.length - 1]);
+  }
+
+  return element.nextSibling;
+};
+
+tableView.prototype.setUpSwipe = function () {
+  var isSwipeLeft = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  var isSwipeRight = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  this.isSwipeLeft = isSwipeLeft;
+  this.isSwipeRight = isSwipeRight;
+};
+
+tableView.prototype.swipeCompleteLeft = function (e, me, index, data, row, parent) {
+  parent.exactlyDeleteRow(index);
+};
+
+tableView.prototype.swipeCompleteRight = function (e, me, index, data, row, parent) {
+  parent.exactlyDeleteRow(index);
+};
+
+tableView.prototype.swipeCancel = function () {};
+
 tableView.prototype.setUpSlip = function () {
-  // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
-  // this.bodyTable.addEventListener('slip:reorder', reorder, false);
+  var self = this; // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
+
+  this.bodyTable.addEventListener('slip:beforewait', function (e) {
+    if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
+  }, false);
+  this.bodyTable.addEventListener('slip:beforeswipe', function (e) {
+    if (self.isSwipeLeft === false && e.detail.directionX === "left") e.preventDefault();
+    if (self.isSwipeRight === false && e.detail.directionX === "right") e.preventDefault();
+  }, false);
+  this.bodyTable.addEventListener('slip:cancelswipe', function (e) {
+    self.swipeCancel();
+  }, false);
+  this.bodyTable.addEventListener('slip:swipe', function (e) {
+    console.log(e); // functionClick(event, this, index, row.data, row, result);
+
+    var index = e.detail.originalIndex;
+    var me = self.bodyTable.childNodes[index];
+    var parent = me.elementParent;
+    var tempIndex = index;
+    index = parent.childrenNodes.indexOf(me);
+    if (e.detail.direction === "left") self.swipeCompleteLeft(e, me, index, me.data, me, parent);
+    if (e.detail.direction === "right") self.swipeCompleteRight(e, me, index, me.data, me, parent);
+  }, false);
+  this.bodyTable.addEventListener('slip:reorder', function (e) {
+    var result = self;
+    var index = e.detail.originalIndex;
+    var spliceIndex = e.detail.spliceIndex;
+    var tempIndex, tempSpliceIndex;
+    var me = self.bodyTable.childNodes[index];
+    var elementReal = me.elementParent.childrenNodes[spliceIndex];
+    var element = me;
+    if (elementReal === undefined) elementReal = self.getElementNext(me.elementParent.childrenNodes[me.elementParent.childrenNodes.length - 1]);
+    result.bodyTable.insertBefore(element, elementReal);
+
+    if (element.getElementChild !== undefined) {
+      var elementChild = element.getElementChild();
+
+      if (elementChild.length !== 0) {
+        for (var i = 0; i < elementChild.length; i++) {
+          result.bodyTable.insertBefore(elementChild[i], elementReal);
+        }
+      }
+    }
+
+    self = element.elementParent;
+    result = self;
+    tempIndex = index;
+    tempSpliceIndex = spliceIndex;
+
+    if (result.data.child !== undefined) {
+      index = self.childrenNodes.indexOf(element);
+      spliceIndex = self.childrenNodes.indexOf(elementReal);
+      if (spliceIndex === -1) spliceIndex = self.childrenNodes.length;
+      result.data.child = changeIndex(result.data.child, index, spliceIndex);
+    } else {
+      result.data = changeIndex(result.data, index, spliceIndex);
+    }
+
+    result.childrenNodes = changeIndex(result.childrenNodes, index, spliceIndex);
+    var k = 0;
+
+    for (var i = 0; i < result.clone.length; i++) {
+      var checkValue = array_insertBefore(result.clone[i], element.childNodes[k], spliceIndex + 1);
+      if (checkValue === false) continue;
+      result.clone[i] = checkValue;
+      k++;
+    }
+
+    if (result.checkSpan !== undefined) result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
+    var event = new CustomEvent('dragdrop', {
+      bubbles: true,
+      detail: {
+        event: event,
+        me: me,
+        index: tempIndex,
+        spliceIndex: tempSpliceIndex,
+        parent: self,
+        dataSpliceIndex: spliceIndex,
+        dataIndex: index
+      }
+    });
+    self.bodyTable.parentNode.dispatchEvent(event);
+  }, false);
   this.slip = new Slip(this.bodyTable);
   return this.slip;
 };
@@ -50268,82 +50326,103 @@ tableView.prototype.getCellHeader = function (header, i) {
   if (header.style !== undefined) style = header.style;
   dragElement = true;
   if (header.dragElement !== undefined && header.dragElement === false) dragElement = false;
+
+  var container = ModuleView_({
+    tag: "div",
+    "class": "container-header"
+  });
+
+  var on = {
+    click: function (index, functionClick) {
+      return function (event) {
+        event.preventDefault();
+
+        if (functionClick !== undefined) {
+          var row = cell.parentNode;
+          functionClick(event, this, index, row.data, row, result);
+        }
+      };
+    }(i, functionClick),
+    dragstart: dragHorizontal && dragElement ? function () {
+      return false;
+    } : undefined
+  };
+  var mousedown = dragHorizontal && dragElement ? function (index) {
+    return function (event) {
+      event.preventDefault();
+      var finalIndex;
+
+      for (var i = 0; i < result.clone.length; i++) {
+        if (result.clone[i][0].id == index) {
+          finalIndex = i;
+          break;
+        }
+      }
+
+      this.hold = false;
+      var dom = this;
+      this["default"] = event;
+      this.timeoutID = setTimeout(function () {
+        dom.hold = true;
+        moveElement(event, dom, result, finalIndex);
+      }, 200);
+    };
+  }(i) : undefined;
+
+  var mouseup = function mouseup() {
+    if (this.hold === false) {
+      this.hold = true; // this.click();
+
+      clearTimeout(this.timeoutID);
+    }
+  };
+
+  var mousemove = dragHorizontal && dragElement ? function (index) {
+    return function (event) {
+      if (this.hold === false) {
+        var finalIndex;
+
+        for (var i = 0; i < result.clone.length; i++) {
+          if (result.clone[i][0].id == index) {
+            finalIndex = i;
+            break;
+          }
+        }
+
+        this.hold = false;
+        var deltaX = this["default"].clientX - event.clientX,
+            deltaY = this["default"].clientY - event.clientY;
+
+        if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
+          this.hold = true;
+          moveElement(event, this, result, finalIndex);
+          clearTimeout(this.timeoutID);
+        }
+      }
+    };
+  }(i) : undefined;
+
+  if (window.mobilecheck()) {
+    on["touchstart"] = mousedown;
+    on["touchend"] = mouseup;
+    on["touchmove"] = mousemove;
+  } else {
+    on["mousedown"] = mousedown;
+    on["mouseup"] = mouseup;
+    on["mousemove"] = mousemove;
+  }
+
   cell = ModuleView_({
     tag: "th",
     attr: {
       role: 'columnheader'
     },
     style: style,
+    child: [container],
     props: {
       id: i
     },
-    on: {
-      click: function (index, functionClick) {
-        return function (event) {
-          event.preventDefault();
-
-          if (functionClick !== undefined) {
-            var row = cell.parentNode;
-            functionClick(event, this, index, row.data, row, result);
-          }
-        };
-      }(i, functionClick),
-      mousedown: dragHorizontal && dragElement ? function (index) {
-        return function (event) {
-          event.preventDefault();
-          var finalIndex;
-
-          for (var i = 0; i < result.clone.length; i++) {
-            if (result.clone[i][0].id == index) {
-              finalIndex = i;
-              break;
-            }
-          }
-
-          this.hold = false;
-          var dom = this;
-          this["default"] = event;
-          this.timeoutID = setTimeout(function () {
-            dom.hold = true;
-            moveElement(event, dom, result, finalIndex);
-          }, 200);
-        };
-      }(i) : undefined,
-      dragstart: dragHorizontal && dragElement ? function () {
-        return false;
-      } : undefined,
-      mouseup: function mouseup() {
-        if (this.hold === false) {
-          this.hold = true; // this.click();
-
-          clearTimeout(this.timeoutID);
-        }
-      },
-      mousemove: dragHorizontal && dragElement ? function (index) {
-        return function (event) {
-          if (this.hold === false) {
-            var finalIndex;
-
-            for (var i = 0; i < result.clone.length; i++) {
-              if (result.clone[i][0].id == index) {
-                finalIndex = i;
-                break;
-              }
-            }
-
-            this.hold = false;
-            var deltaX = this["default"].clientX - event.clientX,
-                deltaY = this["default"].clientY - event.clientY;
-
-            if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
-              this.hold = true;
-              moveElement(event, this, result, finalIndex);
-              clearTimeout(this.timeoutID);
-            }
-          }
-        };
-      }(i) : undefined
-    }
+    on: on
   });
   if (functionClick !== undefined) cell.style.cursor = "pointer";
 
@@ -50373,31 +50452,25 @@ tableView.prototype.getCellHeader = function (header, i) {
 
   if (header.sort === true) {
     cell.classList.add("has-sort");
-
-    var tempFunc = function (cellIndex, childUpDown) {
-      return function () {
-        var style2 = window.getComputedStyle(childUpDown);
-        if (cellIndex.style.minWidth == "") cellIndex.style.minWidth = cellIndex.clientWidth + childUpDown.clientWidth + parseFloat(style2.borderLeftWidth) + parseFloat(style2.borderRightWidth) + 30 + "px";
-      };
-    }(cell, childUpDown);
-
-    ModuleView_('attachhook').once('error', tempFunc);
   }
 
   if (header.element === undefined) {
-    cell.addChild(ModuleView_({
-      text: value
+    container.addChild(ModuleView_({
+      tag: "span",
+      props: {
+        innerHTML: value
+      }
     }));
   } else {
-    cell.appendChild(data[i][j].element);
+    container.appendChild(data[i][j].element);
   }
 
   if (bonus !== undefined) {
-    cell.addChild(bonus);
+    container.addChild(bonus);
     bonus = undefined;
   }
 
-  cell.addChild(childUpDown);
+  container.addChild(childUpDown);
   return cell;
 };
 
@@ -51185,7 +51258,6 @@ tableView.prototype.setDisPlay = function () {
       }
     }, 10);
   } else {
-    this.classList.remove("more-child");
     this.setDisPlayNone();
   }
 };
@@ -51214,12 +51286,15 @@ tableView.prototype.setDisPlayVisable = function () {
 };
 
 tableView.prototype.setDisPlayNone = function () {
-  var childrenNodes = this.childrenNodes;
+  if (this.classList.contains("more-child")) {
+    this.classList.remove("more-child");
+    var childrenNodes = this.childrenNodes;
 
-  for (var i = 0; i < childrenNodes.length; i++) {
-    childrenNodes[i].classList.remove("parent");
-    childrenNodes[i].classList.add("disPlayNone");
-    if (childrenNodes[i].childrenNodes.length !== 0) childrenNodes[i].setDisPlayNone();
+    for (var i = 0; i < childrenNodes.length; i++) {
+      childrenNodes[i].classList.remove("parent");
+      childrenNodes[i].classList.add("disPlayNone");
+      if (childrenNodes[i].childrenNodes.length !== 0) childrenNodes[i].setDisPlayNone();
+    }
   }
 };
 
@@ -51278,48 +51353,46 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
           props: {
             innerHTML: "drag_indicator"
           },
-          on: {
-            mousedown: result.dragVertical ? function (event) {
-              var self = this;
-              return function (event, cellIndex, self) {
-                event.preventDefault();
-                var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
-                self.hold = false;
-                var dom = self;
-                self["default"] = event;
-                self.timeoutID = setTimeout(function () {
-                  dom.hold = true;
-                  moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
-                }, 200);
-              }(event, cell, self);
-            } : undefined,
-            dragstart: result.dragVertical ? function () {
-              return false;
-            } : undefined,
-            mouseup: function mouseup() {
-              if (this.hold === false) {
-                this.hold = true; // this.click();
-
-                clearTimeout(this.timeoutID);
-              }
-            },
-            mousemove: result.dragVertical ? function (event) {
-              var self = this;
-              return function (event, cellIndex, self) {
-                if (self.hold === false) {
-                  var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
-                  self.hold = false;
-                  var deltaX = self["default"].clientX - event.clientX,
-                      deltaY = self["default"].clientY - event.clientY;
-
-                  if (Math.abs(deltaX) + Math.abs(deltaY) > 10) {
-                    self.hold = true;
-                    moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
-                    clearTimeout(self.timeoutID);
-                  }
-                }
-              }(event, cell, self);
-            } : undefined
+          on: {// mousedown: result.dragVertical ? function (event) {
+            //     var self = this;
+            //     return function (event, cellIndex, self) {
+            //         event.preventDefault();
+            //         var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+            //         self.hold = false;
+            //         var dom = self;
+            //         self.default = event;
+            //         self.timeoutID = setTimeout(function () {
+            //             dom.hold = true;
+            //             moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
+            //         }, 200);
+            //     }(event, cell, self)
+            // } : undefined,
+            // dragstart: result.dragVertical ? function () {
+            //     return false;
+            // } : undefined,
+            // mouseup: function () {
+            //     if (this.hold === false) {
+            //         this.hold = true;
+            //         // this.click();
+            //         clearTimeout(this.timeoutID);
+            //     }
+            // },
+            // mousemove: result.dragVertical ? function (event) {
+            //     var self = this;
+            //     return function (event, cellIndex, self) {
+            //         if (self.hold === false) {
+            //             var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+            //             self.hold = false;
+            //             var deltaX = self.default.clientX - event.clientX,
+            //                 deltaY = self.default.clientY - event.clientY;
+            //             if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
+            //                 self.hold = true;
+            //                 moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
+            //                 clearTimeout(self.timeoutID);
+            //             }
+            //         }
+            //     }(event, cell, self)
+            // } : undefined,
           }
         });
       }
@@ -51385,21 +51458,46 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
   }
   style = {};
   if (data.style !== undefined) style = data.style;
+  var on = {
+    click: function click(event) {
+      return function (event, row, functionClick) {
+        event.preventDefault();
+
+        if (functionClick !== undefined) {
+          if (cell.getParentNode().childrenNodes.length !== 0) var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);else var finalIndex = 0;
+          functionClick(event, cell, finalIndex, cell.getParentNode(), row.data, row);
+        }
+      }(event, row, functionClick);
+    }
+  };
+  var mousedown = result.dragVertical ? function (event) {
+    return function (event, cellIndex, self) {
+      var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+      var element = cellIndex.parentNode;
+      element.finalIndex = finalIndex;
+      element.elementParent = self;
+    }(event, cell, result);
+  } : undefined;
+  var mouseup = result.dragVertical ? function (event) {
+    return function (event, cellIndex, self) {
+      var element = cellIndex.getParentNode();
+      delete element.finalIndex;
+      delete element.elementParent;
+    }(event, cell, result);
+  } : undefined;
+
+  if (window.mobilecheck()) {
+    on["touchstart"] = mousedown;
+    on["touchend"] = mouseup;
+  } else {
+    on["mousedown"] = mousedown;
+    on["mouseup"] = mouseup;
+  }
+
   cell = ModuleView_({
     tag: "td",
     style: style,
-    on: {
-      click: function click(event) {
-        return function (event, row, functionClick) {
-          event.preventDefault();
-
-          if (functionClick !== undefined) {
-            if (cell.getParentNode().childrenNodes.length !== 0) var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);else var finalIndex = 0;
-            functionClick(event, cell, finalIndex, cell.getParentNode(), row.data, row);
-          }
-        }(event, row, functionClick);
-      }
-    }
+    on: on
   });
   if (functionClick !== undefined) cell.style.cursor = "pointer";
 
@@ -51512,6 +51610,10 @@ tableView.prototype.updateTable = function (header) {
 
   this.checkSpan = checkSpan;
   this.data = data;
+
+  if (result.dragVertical) {
+    result.setUpSlip();
+  }
 };
 
 tableView.prototype.getLastElement = function (element) {
@@ -51778,42 +51880,16 @@ tableView.prototype.updateRow = function (data, index) {
 };
 
 tableView.prototype.dropRow = function (index) {
-  var result = this,
-      deltaX = [];
+  var result = this;
   var element = result.clone[0][index + 1].parentNode;
   return new Promise(function (resolve, reject) {
     if (result.isUpdate === false) return;
-    var parent = element.childNodes[0].getParentNode();
     if (!element.classList.contains("hideTranslate")) element.classList.add("hideTranslate");
     if (element.childrenNodes.length !== 0) element.addHideAnimationChild();
-    parent.isUpdate = false;
+    result.isUpdate = false;
 
     var eventEnd = function eventEnd() {
-      parent.dropRowChild(element);
-      var deltaY = 0;
-      deltaX = parent.checkLongRow(index);
-
-      for (var i = 0; i < element.childNodes.length; i++) {
-        parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
-        if (parent.checkSpan !== undefined) parent.checkSpan.splice(index, 1);
-        if (element.childNodes[i].colSpan !== undefined) deltaY += element.childNodes[i].colSpan - 1;
-      }
-
-      if (parent.childrenNodes.length !== 0) {
-        if (parent.data.child !== undefined) {
-          var indexData = parent.data.child.indexOf(element.data);
-          if (indexData !== -1) parent.data.child.splice(indexData, 1);
-        } else {
-          var indexData = parent.data.indexOf(element.data);
-          if (indexData !== -1) parent.data.splice(indexData, 1);
-        }
-
-        parent.childrenNodes.splice(parent.childrenNodes.indexOf(element), 1);
-      }
-
-      if (result.checkVisibleChild !== undefined && result.childrenNodes.length === 0) result.checkVisibleChild();
-      parent.isUpdate = true;
-      result.bodyTable.parentNode.resetHash();
+      result.exactlyDeleteRow(index);
       resolve();
     }; // Code for Safari 3.1 to 6.0
 
@@ -51822,6 +51898,37 @@ tableView.prototype.dropRow = function (index) {
 
     element.addEventListener("transitionend", eventEnd);
   });
+};
+
+tableView.prototype.exactlyDeleteRow = function (index) {
+  var parent = this,
+      deltaX = [];
+  var element = parent.childrenNodes[index];
+  parent.dropRowChild(element);
+  var deltaY = 0;
+  deltaX = parent.checkLongRow(index);
+
+  for (var i = 0; i < element.childNodes.length; i++) {
+    parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
+    if (parent.checkSpan !== undefined) parent.checkSpan.splice(index, 1);
+    if (element.childNodes[i].colSpan !== undefined) deltaY += element.childNodes[i].colSpan - 1;
+  }
+
+  if (parent.childrenNodes.length !== 0) {
+    if (parent.data.child !== undefined) {
+      var indexData = parent.data.child.indexOf(element.data);
+      if (indexData !== -1) parent.data.child.splice(indexData, 1);
+    } else {
+      var indexData = parent.data.indexOf(element.data);
+      if (indexData !== -1) parent.data.splice(indexData, 1);
+    }
+
+    parent.childrenNodes.splice(parent.childrenNodes.indexOf(element), 1);
+  }
+
+  if (parent.checkVisibleChild !== undefined && parent.childrenNodes.length === 0) parent.checkVisibleChild();
+  parent.isUpdate = true;
+  parent.bodyTable.parentNode.resetHash();
 };
 
 tableView.prototype.insertColumn = function (index) {
@@ -59715,7 +59822,7 @@ ListStreet_ListStreet.prototype.getView = function () {
     value: 'Phường/xã',
     sort: true,
     style: {
-      minWidth: "unset"
+      minWidth: "100px"
     }
   }, {
     type: "detail",
@@ -59847,33 +59954,37 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
     },
     on: {
       change: function change(event) {
-        self.listWardElement.items = [{
-          text: "Tất cả",
-          value: 0
-        }].concat(self.checkDistrictWard[this.value.slice(this.value.lastIndexOf("_") + 1)]);
-        self.listWardElement.emit('change');
-        var arr = [];
-        var arrTemp = self.checkDistrictWard[this.value.slice(this.value.lastIndexOf("_") + 1)];
+        if (this.value !== this.lastValue) {
+          self.listWardElement.items = [{
+            text: "Tất cả",
+            value: 0
+          }].concat(self.checkDistrictWard[this.value.slice(this.value.lastIndexOf("_") + 1)]);
+          self.listWardElement.emit('change');
+          var arr = [];
+          var arrTemp = self.checkDistrictWard[this.value.slice(this.value.lastIndexOf("_") + 1)];
 
-        for (var i = 0; i < arrTemp.length; i++) {
-          arr.push(ModuleDatabase["a" /* default */].getModule("streets").load({
-            WHERE: [{
-              wardid: parseFloat(arrTemp[i].value.slice(arrTemp[i].value.lastIndexOf("_") + 1))
-            }]
-          }));
-        }
-
-        Promise.all(arr).then(function (value) {
-          var result = [];
-
-          for (var i = 0; i < value.length; i++) {
-            result = result.concat(value[i]);
+          for (var i = 0; i < arrTemp.length; i++) {
+            arr.push(ModuleDatabase["a" /* default */].getModule("streets").load({
+              WHERE: [{
+                wardid: parseFloat(arrTemp[i].value.slice(arrTemp[i].value.lastIndexOf("_") + 1))
+              }]
+            }));
           }
 
-          self.mTable.data = self.formatDataRow(result);
-          self.mTable.updatePagination();
-          self.mTable.resetHash();
-        });
+          Promise.all(arr).then(function (value) {
+            var result = [];
+
+            for (var i = 0; i < value.length; i++) {
+              result = result.concat(value[i]);
+            }
+
+            self.mTable.data = self.formatDataRow(result);
+            self.mTable.updatePagination();
+            self.mTable.resetHash();
+          });
+        }
+
+        this.lastValue = this.value;
       }
     }
   });
@@ -60511,6 +60622,13 @@ ListState_ListState.prototype.getView = function () {
     nationModule.load().then(function (listParam) {
       self.setListParam(listParam);
       var header = [{
+        type: "dragzone",
+        value: "",
+        style: {
+          minWidth: "50px",
+          width: "50px"
+        }
+      }, {
         type: "increase",
         value: "#",
         style: {
@@ -60546,7 +60664,8 @@ ListState_ListState.prototype.getView = function () {
           width: "30px"
         }
       }];
-      self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+      self.mTable = new tableView(header, self.formatDataRow(value), true, true, 2);
+      self.mTable.setUpSwipe(true, false);
       tabContainer.addChild(self.mTable);
       self.mTable.addInputSearch(ListState_$('.pizo-list-realty-page-allinput-container input', self.$view));
     });
@@ -60599,7 +60718,7 @@ ListState_ListState.prototype.formatDataRow = function (data) {
 };
 
 ListState_ListState.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, this.checkNation[parseInt(data.nationid)].longname, {}];
+  var result = [{}, {}, data.id, data.name, this.checkNation[parseInt(data.nationid)].longname, {}];
   result.original = data;
   return result;
 };
@@ -64732,7 +64851,7 @@ ListPositions_ListPositions.prototype.addDBDepartment = function (mNewDepartment
   mNewDepartment.promiseAddDB.then(function (value) {
     console.log(value);
     ModuleDatabase["a" /* default */].getModule("departments").add(value).then(function (result) {
-      self.addViewDepartment(result.data, row);
+      self.addViewDepartment(result, row);
     });
     mNewDepartment.promiseAddDB = undefined;
     setTimeout(function () {
@@ -64852,7 +64971,7 @@ ListPositions_ListPositions.prototype.addDBPosition = function (mNewPosition, ro
     var username = value.username;
     delete value.username;
     ModuleDatabase["a" /* default */].getModule("positions").add(value).then(function (result) {
-      value.id = result.data.id;
+      value.id = result.id;
 
       if (value.username !== undefined) {
         var x = {
@@ -64896,7 +65015,7 @@ ListPositions_ListPositions.prototype.editDBPosition = function (mNewPosition, d
   mNewPosition.promiseEditDB.then(function (value) {
     value.id = data.original.id;
     ModuleDatabase["a" /* default */].getModule("positions").update(value).then(function (result) {
-      if (value.username !== undefined && value.username.positionid != value.id) {
+      if (value.username !== null && value.username.positionid != value.id) {
         var x = {
           id: value.username.id,
           positionid: value.id

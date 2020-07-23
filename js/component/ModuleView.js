@@ -776,7 +776,7 @@ tableView.prototype.setUpSlip = function()
 
 tableView.prototype.getCellHeader = function(header,i)
 {
-    var value,style,dragElement,cell,bonus;
+    var value,style,classList,dragElement,cell,bonus;
     var result = this;
     var dragHorizontal = result.dragHorizontal;
     var dragVertical = result.dragVertical;
@@ -894,6 +894,9 @@ tableView.prototype.getCellHeader = function(header,i)
     style = {};
     if (header.style !== undefined)
         style = header.style;
+    classList = [];
+    if (header.classList !== undefined)
+        classList = header.classList;
     dragElement = true;
     if (header.dragElement !== undefined && header.dragElement === false)
         dragElement = false;
@@ -986,6 +989,7 @@ tableView.prototype.getCellHeader = function(header,i)
             role: 'columnheader'
         },
         style: style,
+        class:classList,
         child:[
             container
         ],
@@ -1898,7 +1902,7 @@ tableView.prototype.getDivMargin = function () {
 
 tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row) {
     var data = dataOrigin;
-    var result = this, value, bonus, style, cell;
+    var result = this, value, bonus, style, classList, cell;
     if (checkSpan[i] !== undefined) {
         if (checkSpan[i][k] == 2)
             return 2;
@@ -2056,6 +2060,9 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     style = {};
     if (data.style !== undefined)
         style = data.style;
+    classList = {};
+    if (data.classList !== undefined)
+    classList = data.classList;
 
     var on = {
         click: function (event) {
@@ -2102,6 +2109,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     cell = _({
         tag: "td",
         style: style,
+        class:classList,
         on:on
     })
    

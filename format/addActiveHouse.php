@@ -50,21 +50,7 @@ while (isset($data["addressid".$index]))
         'addresses'=> $dataInsertAddress
         ));
     }else{
-        if(isset($address["streetid"]))
-    {
-        $streetid = $address["streetid"];
-    }else if(isset($address["street"]))
-    {
-        $street = $address["street"];
-        $dataStreet = array(
-            'name'=>$street,
-        );
-        $streetid = $connector-> insert($prefix."streets", $dataStreet);
-        $dataStreet["id"] = $streetid;
-        array_push($insert,array(
-            'streets'=>$dataStreet
-        ));
-    }
+        
         
         if(isset($address["wardid"]))
         {
@@ -115,17 +101,25 @@ while (isset($data["addressid".$index]))
             $wardid = $connector-> insert($prefix."wards", $dataWard);
         }
 
+        if(isset($address["streetid"]))
+        {
+            $streetid = $address["streetid"];
+        }else if(isset($address["street"]))
+        {
+            $street = $address["street"];
+            $dataStreet = array(
+                'name'=>$street,
+                'wardid'=>$wardid
+            );
+            $streetid = $connector-> insert($prefix."streets", $dataStreet);
+            $dataStreet["id"] = $streetid;
+            array_push($insert,array(
+                'streets'=>$dataStreet
+            ));
+        }
         if(isset($address["number"]))
         {
             $number = $address["number"];
-        }
-        $dataLinkWardStreet = $connector-> load($prefix."ward_street_link","wardid=".$wardid." AND streetid=".$streetid);
-        if (count($dataLinkWardStreet) == 0) {
-            $dataWardSteet = array(
-                'wardid' => $wardid,
-                'streetid' => $streetid
-            );
-            $linkWardStreet = $connector-> insert($prefix."ward_street_link", $dataWardSteet);
         }
 
         $dataAddress = $connector-> load($prefix."addresses","addressnumber='".$number."' AND streetid=".$streetid." AND wardid=".$wardid);

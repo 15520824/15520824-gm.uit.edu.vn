@@ -245,8 +245,6 @@ ListRealty.prototype.getView = function () {
 
     var arr = [];
     arr.push(moduleDatabase.getModule("activehouses").load());
-    arr.push(moduleDatabase.getModule("addresses").load());
-    arr.push(moduleDatabase.getModule("streets").load());
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
@@ -254,8 +252,6 @@ ListRealty.prototype.getView = function () {
     arr.push(moduleDatabase.getModule("juridicals").load());
     Promise.all(arr).then(function (values) {
         var value = values[0];
-        self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
-        self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
         self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
         self.checkState = moduleDatabase.getModule("states").getLibary("id");
@@ -333,7 +329,33 @@ ListRealty.prototype.getView = function () {
             functionClickAll: functionClickMore,
             dragElement: false
         }];
-        self.mTable = new tableView(header, self.formatDataRow(value), true, true, 1);
+        self.mTable = new tableView(header, [], true, true, 1);
+        var arr = [];
+        var connect = "";
+        for(var i = 0;i<value.length;i++)
+        {
+            if(connect!=="")
+            arr.push(connect);
+            arr.push({id:value[i].addressid});
+            connect = "||";
+        }
+        moduleDatabase.getModule("addresses").load({WHERE:arr}).then(function(valueAdr){
+            self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
+            var connect = "";
+            var arr = [];
+            for(var i = 0;i<valueAdr.length;i++)
+            {
+                if(connect!=="")
+                arr.push(connect);
+                arr.push({id:valueAdr[i].streetid});
+                connect = "||";
+            }
+            moduleDatabase.getModule("streets").load({WHERE:arr}).then(function(valueStr){
+                self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+                self.mTable.updateTable(undefined,self.formatDataRow(value));
+            })
+        })
+        
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
         
@@ -450,6 +472,7 @@ ListRealty.prototype.getDataRow = function (data) {
         else
             staus += " và còn cho thuê";
     }
+
     if(data.addressid!=0)
     {
         var number = this.checkAddress[data.addressid].addressnumber;
@@ -505,7 +528,6 @@ ListRealty.prototype.getDataRow = function (data) {
         {}
     ];
     result.original = data;
-    console.log(result)
     return result;
 }
 
@@ -953,7 +975,7 @@ ListRealty.prototype.editView = function (value, data, parent, index) {
 
     var indexOF = index,
         element = parent;
-
+    console.log(data)
     element.updateRow(data, indexOF, true);
 }
 
