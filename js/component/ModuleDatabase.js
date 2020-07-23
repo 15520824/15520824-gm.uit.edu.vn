@@ -116,11 +116,12 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
         this.isFirst = false;
     }
 
-    var loadedData = [];
     if(data.loaded===undefined)
     {
         data.loaded = [];
     }
+    if(data.loaded[this.name]==undefined)
+    data.loaded[this.name] = [];
 
     if(self.data!==undefined&&self.data.length!==0)
     {
@@ -128,62 +129,18 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
         {
             if(this.generalOperator(self.data[i],data.WHERE))
             {
-                data.loaded.push(self.data[i]["id"]);
-                loadedData.push(self.data[i]);
+                data.loaded[this.name].push(self.data[i]["id"]);
             }
         }
     }
+
+
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(valueRecived){
             var value = valueRecived["data"];
-            if(value === undefined)
-            value = [];
-            for(var i = 0;i<value.length;i++)
-            {
-                if(typeof value[i] == "string")
-                    if(self.Libary["id"][value[i]]!==undefined)
-                    {
-                        value[i] = self.Libary["id"][value[i]];        
-                    }
-            }
-            if(self.data === undefined)
-            self.data = [];
-            if(data.WHERE===undefined)
-            {
-                self.countRow = value.length;
-            }else
-            {
-                self.checkLoaded[JSON.stringify(data.WHERE)] = value;
-                if(data.isFirst===true)
-                {
-                    self.countRow = parseInt(valueRecived["count"]);
-                }
-            }
-            var libary = self.Libary["id"];
-            if(libary === undefined)
-            {
-                self.data = value;
-            }else
-            {
-                if(self.data.length === self.countRow)
-                {
-                    if(self.promiseLoad === undefined)
-                    self.promiseLoad = Promise.resolve(self.data);
-                }
-                else
-                for(var i = 0;i<value.length;i++)
-                {   
-                    if(libary[value[i].id]===undefined)
-                    {
-                        self.data.push(value[i]);
-                        self.setFormatAdd(value[i]);
-                    }
-                }
-            }
-            if(self.Libary["id"]===undefined)
-            self.getLibary();
-            promiseLoad.status = "done";
-            promiseLoad.data = value;
+            self.setFormatLoad(value,promiseLoad);
+            var loaded = valueRecived["loaded"];
+            for(var i = 0,i<)
             resolve(value);
     })
     .catch(function(error){
@@ -199,6 +156,66 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     self.promisePart[JSON.stringify(data.WHERE)] = promiseLoad;
 
     return promiseLoad;
+}
+
+DataStructure.prototype.setFormatLoad = function(value,promiseLoad,valueIndex)
+{
+    var self = this;
+    if(value === undefined)
+        value = [];
+    for(var i = 0;i<value.length;i++)
+    {
+        if(typeof value[i] == "string")
+            if(self.Libary["id"][value[i]]!==undefined)
+            {
+                value[i] = self.Libary["id"][value[i]];        
+            }
+    }
+    if(self.data === undefined)
+    self.data = [];
+    if(data.WHERE===undefined)
+    {
+        self.countRow = value.length;
+    }else
+    {
+        self.checkLoaded[JSON.stringify(data.WHERE)] = value;
+        if(data.isFirst===true)
+        {
+            self.countRow = parseInt(valueRecived["count"]);
+        }
+    }
+    var libary = self.Libary["id"];
+    if(libary === undefined)
+    {
+        self.data = value;
+    }else
+    {
+        if(self.data.length === self.countRow)
+        {
+            if(self.promiseLoad === undefined)
+            self.promiseLoad = Promise.resolve(self.data);
+        }
+        else
+        for(var i = 0;i<value.length;i++)
+        {   
+            if(libary[value[i].id]===undefined)
+            {
+                self.data.push(value[i]);
+                self.setFormatAdd(value[i]);
+            }
+        }
+    }
+    if(self.Libary["id"]===undefined)
+    self.getLibary();
+    if(promiseLoad!=="object"){
+        promiseLoad.status = "done";
+        promiseLoad.data = value;
+    }else
+    {
+        var tempOpe = {};
+        tempOpe[promiseLoad.slice(0,promiseLoad.lastIndexOf("s")+1)] = valueIndex;
+        this.promisePart[{WHERE:[tempOpe]}] = Promise.resolve(value);
+    }
 }
 
 DataStructure.prototype.getLibary = function(param,formatFunction,isArray = false,isLoaded = false){

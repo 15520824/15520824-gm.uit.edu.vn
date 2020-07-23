@@ -599,3 +599,21 @@
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
+
+.pizo-container-icon-radiobutton{
+  position: absolute;
+  left: 7px;
+  background-color: white;
+  top: 7px;
+  display: flex;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.pizo-container-icon-radiobutton>i{
+  color: white;
+}
+
+.checked-pizo .pizo-container-icon-radiobutton>i{
+  color: #122246;
+}

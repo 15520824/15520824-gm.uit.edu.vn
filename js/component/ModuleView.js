@@ -2060,7 +2060,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     style = {};
     if (data.style !== undefined)
         style = data.style;
-    classList = {};
+    classList = [];
     if (data.classList !== undefined)
     classList = data.classList;
 

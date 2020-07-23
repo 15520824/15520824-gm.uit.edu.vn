@@ -109,8 +109,7 @@ NewRealty.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                        
                                         if(!isEqual(self.getDataSave(),self.data))
                                         {
                                             var deleteItem = deleteQuestion("Lưu thay đổi", "Bạn muốn đóng (tất cả những chỉnh sửa sẽ không được lưu lại)?");
@@ -118,12 +117,16 @@ NewRealty.prototype.getView = function () {
                                             deleteItem.promiseComfirm.then(function () {
                                                 self.rejectDB(self.getDataSave());
                                                 self.$view.selfRemove();
+                                                var arr = self.parent.body.getAllChild();
+                                                self.parent.body.activeFrame(arr[arr.length - 1]);
                                             })
                                         }
                                         else
                                         {
                                             self.rejectDB(self.getDataSave());
                                             self.$view.selfRemove();
+                                            var arr = self.parent.body.getAllChild();
+                                            self.parent.body.activeFrame(arr[arr.length - 1]);
                                         }
                                         
                                     }
@@ -316,7 +319,6 @@ NewRealty.prototype.imageCurrentStaus = function()
     })
     var container = result.containGetImage();
     result.createEvent();
-
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-image",
@@ -1893,7 +1895,6 @@ NewRealty.prototype.getDataSave = function(){
     advanceDetruct += this.advanceDetruct2.checked?10:0;
     advanceDetruct += this.advanceDetruct3.checked?100:0;
     advanceDetruct += this.advanceDetruct4.checked?1000:0;
-    console.log(advanceDetruct)
     var temp = {
         height:this.inputHeight.value*this.inputUnitHeight.value,
         width:this.inputWidth.value*this.inputUnitWidth.value,
@@ -1921,8 +1922,8 @@ NewRealty.prototype.getDataSave = function(){
         imageJuridical:this.viewJuridical.getFile(),
         imageCurrentStaus:this.viewCurrentStaus.getFile()
     }
+    console.log(this.viewCurrentStaus.getImportTant());
     var arr = [];
-
     for(var i = 0;i<this.containerEquipment.childNodes.length;i++)
     {
         arr.push(this.containerEquipment.childNodes[i].getData());

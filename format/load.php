@@ -61,11 +61,22 @@ if($ORDERING!=="")
 $result = $connector-> query("SELECT * FROM ".$prefix.$tableName.$WHERE.$ORDERING);
 $data = array();
 $i = 0; 
+$check = array();
+foreach($data["loaded"] as $param=>$value)
+{
+    $check[$param] = [];
+    for($i = 0;$i<count($value);$i++)
+    {
+        $check[$param][$value] = $i;
+    }
+}
+
+
 if($result)
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        if(isset($check[$row["id"]]))
+        if(isset($check[$tableName][$row["id"]]))
         $data[$i++] = $row["id"];
         else
         $data[$i++] = $row;

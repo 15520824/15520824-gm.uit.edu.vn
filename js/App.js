@@ -38,6 +38,7 @@ function App(){
     moduleDatabase.getModule("polygon", ["loadPolygon.php", "addPolygon.php", "updatePolygon.php", "deletePolygon.php"]);
     moduleDatabase.getModule("geometry",["loadMap.php","addMap.php","updateMap.php","deleteMap.php"]);
     moduleDatabase.getModule("geometry_created",["loadCreatedMap.php"]);
+    moduleDatabase.getModule("image");
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
