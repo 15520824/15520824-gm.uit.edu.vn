@@ -62,6 +62,7 @@ $result = $connector-> query("SELECT * FROM ".$prefix.$tableName.$WHERE.$ORDERIN
 $data = array();
 $i = 0; 
 $check = array();
+if(isset($data["loaded"]))
 foreach($data["loaded"] as $param=>$value)
 {
     $check[$param] = [];

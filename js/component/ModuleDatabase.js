@@ -134,21 +134,25 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
         }
     }
 
-
+    
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(valueRecived){
             var value = valueRecived["data"];
-            self.setFormatLoad(value,promiseLoad);
-            var loaded = valueRecived["loaded"];
-            for(var i = 0,i<)
+            self.setFormatLoad(data,value,promiseLoad,valueRecived["count"]);
+            var loadedData = valueRecived["load"];
+            console.log(loadedData)
+            for(var param in loadedData)
+            {
+                console.log(moduleDatabase[param])
+                moduleDatabase.getModule(param).setFormatLoad({WHERE:data.WHERE},loadedData[param])
+            }
             resolve(value);
     })
     .catch(function(error){
         promiseLoad.status = "reject";
         reject(error);
         console.error(error);
-    })
-    })
+    })})
     promiseLoad.status = "pending";
     if(data.WHERE === undefined)
     self.promiseLoad = promiseLoad;
@@ -158,7 +162,7 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     return promiseLoad;
 }
 
-DataStructure.prototype.setFormatLoad = function(value,promiseLoad,valueIndex)
+DataStructure.prototype.setFormatLoad = function(data,value,promiseLoad,count = -1)
 {
     var self = this;
     if(value === undefined)
@@ -181,7 +185,8 @@ DataStructure.prototype.setFormatLoad = function(value,promiseLoad,valueIndex)
         self.checkLoaded[JSON.stringify(data.WHERE)] = value;
         if(data.isFirst===true)
         {
-            self.countRow = parseInt(valueRecived["count"]);
+            if(count!==-1)
+            self.countRow = parseInt(count);
         }
     }
     var libary = self.Libary["id"];
@@ -212,9 +217,7 @@ DataStructure.prototype.setFormatLoad = function(value,promiseLoad,valueIndex)
         promiseLoad.data = value;
     }else
     {
-        var tempOpe = {};
-        tempOpe[promiseLoad.slice(0,promiseLoad.lastIndexOf("s")+1)] = valueIndex;
-        this.promisePart[{WHERE:[tempOpe]}] = Promise.resolve(value);
+        this.promisePart[data.WHERE] = Promise.resolve(value);
     }
 }
 

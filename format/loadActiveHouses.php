@@ -65,6 +65,7 @@ $data = array();
 $i = 0; 
 
 $check = array();
+if(isset($data["loaded"]))
 foreach($data["loaded"] as $param=>$value)
 {
     $check[$param] = [];
@@ -96,20 +97,12 @@ if($result)
                     if ($imageresource->num_rows > 0) {
                         while($rowResource = $imageresource->fetch_assoc())
                         {
-                            if(isset($check["image"][$rowResource["id"]]))
-                            {
-                                array_push($image,$rowResource["id"]);
-                                array_push($imageAll,$rowResource["id"]);
-                            }
-                            else
-                            {
-                                array_push($image,$rowResource); 
-                                array_push($imageAll,$rowResource); 
-                            }
+                            array_push($image,$rowResource["id"]);
+                            array_push($imageAll,$rowResource);
                                 
                         }
                     }
-                $data[$i] = $image;
+                $data[$i]["image"] = $image;
             }
             $i++;
         }

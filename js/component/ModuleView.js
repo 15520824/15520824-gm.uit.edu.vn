@@ -1410,88 +1410,96 @@ tableView.prototype.pagination = function (number, functionClick) {
         tag: "div",
         class: "pagination-wrapper",
     })
-    var temp = _({
-        tag: "div",
-        class: "pagination",
-        child: [
-            {
-                tag: "div",
-                class: "pagination-container",
-                child: [
-                    overlay,
-                    {
-                        tag: "div",
-                        class: "pagination-prev",
-                        on: {
-                            click: function (event) {
-                                var temp = $("a.active", container);
-
-                                if (temp !== undefined)
-                                    var prev = temp.previousSibling;
-                                while (prev != null && prev.classList.contains("detail"))
-                                    prev = prev.previousSibling;
-                                if (prev !== null) {
-                                    prev.click();
-                                    temp.style.color = "";
-                                }
-                            }
-                        },
-                        props: {
-                        },
-                        child: [
-                            {
-                                tag: "span",
-                                class: ["icon-pagination", "icon-pagination-prev"],
-                                child: [
-                                    {
-                                        tag: "i",
-                                        class: ["icon", "material-icons"],
-                                        props: {
-                                            innerHTML: "keyboard_arrow_left"
+    var temp = _(
+        {
+            tag:"div",
+            class:"pagination-align",
+            child:[
+                {
+                    tag: "div",
+                    class: "pagination",
+                    child: [
+                        {
+                            tag: "div",
+                            class: "pagination-container",
+                            child: [
+                                overlay,
+                                {
+                                    tag: "div",
+                                    class: "pagination-prev",
+                                    on: {
+                                        click: function (event) {
+                                            var temp = $("a.active", container);
+            
+                                            if (temp !== undefined)
+                                                var prev = temp.previousSibling;
+                                            while (prev != null && prev.classList.contains("detail"))
+                                                prev = prev.previousSibling;
+                                            if (prev !== null) {
+                                                prev.click();
+                                                temp.style.color = "";
+                                            }
                                         }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    container,
-                    {
-                        tag: "div",
-                        class: "pagination-next",
-                        on: {
-                            click: function (event) {
-                                var temp = $("a.active", container);
-
-                                if (temp !== undefined)
-                                    var next = temp.nextSibling;
-                                while (next != null && next.classList.contains("detail"))
-                                    next = next.nextSibling;
-                                if (next !== null) {
-                                    next.click();
-                                    temp.style.color = "";
-                                }
-                            }
-                        },
-                        child: [
-                            {
-                                tag: "span",
-                                class: ["icon-pagination", "icon-pagination-next"],
-                                child: [
-                                    {
-                                        tag: "i",
-                                        class: ["icon", "material-icons"],
-                                        props: {
-                                            innerHTML: "keyboard_arrow_left"
+                                    },
+                                    props: {
+                                    },
+                                    child: [
+                                        {
+                                            tag: "span",
+                                            class: ["icon-pagination", "icon-pagination-prev"],
+                                            child: [
+                                                {
+                                                    tag: "i",
+                                                    class: ["icon", "material-icons"],
+                                                    props: {
+                                                        innerHTML: "keyboard_arrow_left"
+                                                    }
+                                                }
+                                            ]
                                         }
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    })
+                                    ]
+                                },
+                                container,
+                                {
+                                    tag: "div",
+                                    class: "pagination-next",
+                                    on: {
+                                        click: function (event) {
+                                            var temp = $("a.active", container);
+            
+                                            if (temp !== undefined)
+                                                var next = temp.nextSibling;
+                                            while (next != null && next.classList.contains("detail"))
+                                                next = next.nextSibling;
+                                            if (next !== null) {
+                                                next.click();
+                                                temp.style.color = "";
+                                            }
+                                        }
+                                    },
+                                    child: [
+                                        {
+                                            tag: "span",
+                                            class: ["icon-pagination", "icon-pagination-next"],
+                                            child: [
+                                                {
+                                                    tag: "i",
+                                                    class: ["icon", "material-icons"],
+                                                    props: {
+                                                        innerHTML: "keyboard_arrow_left"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+        )
 
     for (var i = 0; i < countPrecent; i++) {
         if (i == 1) {

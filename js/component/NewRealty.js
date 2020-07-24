@@ -295,9 +295,10 @@ NewRealty.prototype.imageJuridical = function()
     this.viewJuridical = result;
     if(this.data!==undefined)
     {
-        for(var i = 0;i<this.data.original.imageJuridical.length;i++)
+        for(var i = 0;i<this.data.original.image.length;i++)
         {
-            result.addFile(this.data.original.imageJuridical[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+            if(this.data.original.image[i].type==0)
+            result.addFile(this.data.original.image[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
         }
     }
     return temp;
@@ -342,9 +343,10 @@ NewRealty.prototype.imageCurrentStaus = function()
     this.viewCurrentStaus = result;
     if(this.data!==undefined)
     {
-        for(var i = 0;i<this.data.original.imageCurrentStaus.length;i++)
+        for(var i = 0;i<this.data.original.image.length;i++)
         {
-            result.addFile(this.data.original.imageCurrentStaus[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+            if(this.data.original.image[i].type==1)
+            result.addFile(this.data.original.image[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
         }
     }
     return temp;

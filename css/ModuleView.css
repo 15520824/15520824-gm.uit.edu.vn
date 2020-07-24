@@ -151,7 +151,7 @@ table.sortTable th,table.sortTableClone th {
   position: sticky;
   position: -webkit-sticky;
   top: 0px;
-  z-index: 2;
+  z-index: 4;
 }
 
 table.sortTable td,table.sortTableClone td {
@@ -500,7 +500,7 @@ table.sortTable th.postionStickyCell{
   display: flex;
   justify-content: center;
   position: absolute;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(10px);
   left: 50%;
 }
 .pagination-container {
@@ -584,5 +584,14 @@ table.sortTable th.postionStickyCell{
 
 .pagination-wrapper{
   display: flex;
+}
+
+.pagination-align{
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 100%;
+  height: 92px;
+  background-color: white;
 }
 
