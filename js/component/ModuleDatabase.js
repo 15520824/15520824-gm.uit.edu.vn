@@ -139,13 +139,13 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
         self.queryData(self.phpLoader,data).then(function(valueRecived){
             var value = valueRecived["data"];
             self.setFormatLoad(data,value,promiseLoad,valueRecived["count"]);
-            var loadedData = valueRecived["load"];
-            console.log(loadedData)
-            for(var param in loadedData)
-            {
-                console.log(moduleDatabase[param])
-                moduleDatabase.getModule(param).setFormatLoad({WHERE:data.WHERE},loadedData[param])
-            }
+            // var loadedData = valueRecived["load"];
+            // console.log(loadedData)
+            // for(var param in loadedData)
+            // {
+            //     console.log(moduleDatabase[param])
+            //     moduleDatabase.getModule(param).setFormatLoad({WHERE:data.WHERE},loadedData[param])
+            // }
             resolve(value);
     })
     .catch(function(error){

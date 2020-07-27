@@ -1037,9 +1037,7 @@ MapView.prototype.addOrtherMarker = function(data)
 
 MapView.prototype.modalMiniRealty = function(data)
 {
-    var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
-    if(data.imageCurrentStaus.length>0)
-    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+data.imageCurrentStaus[0].src;
+    
     var temp = _(
         {
             tag:"a",
@@ -1052,9 +1050,6 @@ MapView.prototype.modalMiniRealty = function(data)
                         {
                             tag:"div",
                             class:"mini-bubble-image",
-                            style:{
-                                backgroundImage:`url(`+src+`)`
-                            }
                         },
                         {
                             tag:"div",
@@ -1084,6 +1079,11 @@ MapView.prototype.modalMiniRealty = function(data)
                 }
             ]
         })
+        var image = ("div.mini-bubble-image",temp);
+        // var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+        // if(data.imageCurrentStaus.length>0)
+        // src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+data.image[0].src;
+        // moduleDatabase.getModule("image").load({WHERE:[{id}]})
         return temp;
 }
 

@@ -89,9 +89,8 @@ if($result)
                 $data[$i]["equipment"]=$equipment;
                 $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
                 $data[$i]["contact"]=$contact;
-                $image = $connector->load($prefix."image","houseid = ".$row["id"]);
     
-                $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( activehouseid = ".$row["id"]." )");
+                $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( houseid = ".$row["id"]." )");
                 $image = array();
                 if($imageresource)
                     if ($imageresource->num_rows > 0) {
@@ -111,10 +110,7 @@ if($result)
 }
 
 $sendData = array(
-    "data"=>$data,
-    "load"=>array(
-        "image"=>$imageAll
-    )
+    "data"=>$data
 );
 if(isset($isFirst))
 {

@@ -293,14 +293,30 @@ NewRealty.prototype.imageJuridical = function()
         ]
     })
     this.viewJuridical = result;
+    var arr = [];
+    var first = "";
     if(this.data!==undefined)
     {
         for(var i = 0;i<this.data.original.image.length;i++)
         {
-            if(this.data.original.image[i].type==0)
-            result.addFile(this.data.original.image[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+            if(first!=="")
+            arr.push(first);
+            arr.push({id:this.data.original.image[i]})
+            if(first=="")
+            {
+                
+                first = "||";
+            }
         }
+       
     }
+    if(arr.length>0)
+    moduleDatabase.getModule("image").load({WHERE:arr}).then(function(values){
+        console.log(values)
+        for(var i = 0;i<values.length;i++)
+        if(values[i].type == 0)
+        result.addFile(values[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+    })
     return temp;
 }
 
@@ -341,14 +357,29 @@ NewRealty.prototype.imageCurrentStaus = function()
         ]
     })
     this.viewCurrentStaus = result;
+    var arr = [];
+    var first = "";
     if(this.data!==undefined)
     {
         for(var i = 0;i<this.data.original.image.length;i++)
         {
-            if(this.data.original.image[i].type==1)
-            result.addFile(this.data.original.image[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+            if(first!=="")
+            arr.push(first);
+            arr.push({id:this.data.original.image[i]});
+            if(first=="")
+            {
+                
+                first = "||";
+            }
         }
+       
     }
+    if(arr.length>0)
+    moduleDatabase.getModule("image").load({WHERE:arr}).then(function(values){
+        for(var i = 0;i<values.length;i++)
+        if(values[i].type == 1)
+        result.addFile(values[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+    })
     return temp;
 }
 
@@ -1897,6 +1928,19 @@ NewRealty.prototype.getDataSave = function(){
     advanceDetruct += this.advanceDetruct2.checked?10:0;
     advanceDetruct += this.advanceDetruct3.checked?100:0;
     advanceDetruct += this.advanceDetruct4.checked?1000:0;
+
+    var image = [];
+    var arr = this.viewJuridical.getFile().concat(this.viewCurrentStaus.getFile());
+    for(var i = 0;i<arr.length;i++)
+    {
+        if(typeof arr[i] == "string")
+        {
+            image.push(arr[i]);
+        }else
+        {
+            image.push(parseInt(arr[i].id))
+        }
+    }
     var temp = {
         height:this.inputHeight.value*this.inputUnitHeight.value,
         width:this.inputWidth.value*this.inputUnitWidth.value,
@@ -1921,8 +1965,8 @@ NewRealty.prototype.getDataSave = function(){
         pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
         advancedetruct:advanceDetruct,
         juridical:this.juridical.value,
-        imageJuridical:this.viewJuridical.getFile(),
-        imageCurrentStaus:this.viewCurrentStaus.getFile()
+        image:image,
+        // important:this.viewCurrentStaus.getImportTant()
     }
     console.log(this.viewCurrentStaus.getImportTant());
     var arr = [];

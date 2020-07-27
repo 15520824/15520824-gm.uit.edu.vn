@@ -263,18 +263,18 @@ for($i = 0 ;$i<$count_old;$i++)
 
 $image_old = $connector->load($prefix."image","houseid = ".$data["id"]);
 
-if(isset($data["imageJuridical"]))
+if(isset($data["image"]))
 {
-    $images = $data["imageJuridical"];
+    $images = $data["image"];
     $count = count($images);
     define('UPLOAD_DIR', "../../assets/upload/");
     for ($i = 0; $i < $count; $i++){
         $img = $images[$i];
-        if (isset($img["id"]))
+        if (is_numeric ($img))
         {
             for($j = 0;$j<count($image_old);$j++)
             {
-                if($img["id"]==$image_old[$j]["id"])
+                if($img==$image_old[$j]["id"])
                 {
                     array_splice($image_old,$j,1);
                     break;
@@ -305,60 +305,11 @@ if(isset($data["imageJuridical"]))
             'houseid' => $data["id"],
             'created' => new DateTime(),
         );
-        $obj_list["id"] = $connector->insert($prefix.'image', $obj_list);
+        $image_id = $connector->insert($prefix.'image', $obj_list);
         array_push($insert,array(
             'image'=>$obj_list
         ));
-        $data["imageJuridical"][$i] = $obj_list;
-    }
-}
-
-
-if(isset($data["imageCurrentStaus"]))
-{
-    $images = $data["imageCurrentStaus"];
-    $count = count($images);
-    for ($i = 0; $i < $count; $i++){
-        $img = $images[$i];
-        if (isset($img["id"]))
-        {
-            for($j = 0;$j<count($image_old);$j++)
-            {
-                if($img["id"]==$image_old[$j]["id"])
-                {
-                    array_splice($image_old,$j,1);
-                    break;
-                }
-            }
-            continue;
-        }
-
-        $img = str_replace('data:image/', '', $img);
-        $pos = strpos($img, ";");
-        $extension = substr($img, 0, $pos);
-        $img = str_replace($extension.';base64,', '', $img);
-        $img = str_replace(' ', '+', $img);
-        $dataFile = base64_decode($img);
-        $filename = uniqid() .$milliseconds. '.'.$extension;
-
-        $file = UPLOAD_DIR .$filename;
-        $success = file_put_contents($file, $dataFile);
-        if (!$success){
-            echo "Unable to save the file.";
-            exit();
-        }
-
-        $obj_list = array(
-            'src' => $filename,
-            'type' => 1,
-            'houseid' => $data["id"],
-            'created' => new DateTime(),
-        );
-        $obj_list["id"] = $connector->insert($prefix.'image', $obj_list);
-        array_push($insert,array(
-            'image'=>$obj_list
-        ));
-        $data["imageCurrentStaus"][$i] = $obj_list;
+        $data["image"][$i] = $image_id;
     }
 }
 

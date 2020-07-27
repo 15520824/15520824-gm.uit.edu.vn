@@ -85,7 +85,7 @@ if(isset($isFirst))
         $sendData["count"] = $count->fetch_row()[0];
     }
 }
-echo "ok".EncodingClass::fromVariable($data);
+echo "ok".EncodingClass::fromVariable($sendData);
 
 exit(0);
 ?>
