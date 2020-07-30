@@ -105,7 +105,7 @@ export default xmlModalDragManyFiles = {
     });
     if(self.enableCheckBox == true)
     {
-      temp.insertBefore(_({
+      var checkboxButton = _({
         tag:"button",
         class:"pizo-container-icon-radiobutton",
         on:{
@@ -139,7 +139,9 @@ export default xmlModalDragManyFiles = {
             }
           }
         ]
-      }),temp.firstChild)
+      })
+      temp.checkboxButton = checkboxButton
+      temp.insertBefore(checkboxButton,temp.firstChild)
     }
     window.addEventListener("click", function(event) {
       if (
@@ -592,6 +594,10 @@ export default xmlModalDragManyFiles = {
       this.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
     }
     var img =  this.Image(ref+data.src);
+    if(this.enableCheckBox&&data.thumnail==1){
+      img.checkboxButton.click();
+    }
+      
     data.ref = ref;
     img.value = data;
     var parent = this.gallery;

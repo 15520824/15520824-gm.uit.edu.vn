@@ -270,13 +270,26 @@ if(isset($data["image"]))
     define('UPLOAD_DIR', "../../assets/upload/");
     for ($i = 0; $i < $count; $i++){
         $img = $images[$i];
-        if (is_numeric ($img))
+        if (is_numeric ($img["src"]))
         {
             for($j = 0;$j<count($image_old);$j++)
             {
-                if($img==$image_old[$j]["id"])
+                if($img["src"]==$image_old[$j]["id"])
                 {
+                    if(isset($img["thumnail"])&&$image_old[$j]["thumnail"]!=$img["thumnail"])
+                    {
+                        $connector->update($prefix.'image',array(
+                            "id"=>$img["src"],
+                            "thumnail"=>$img["thumnail"]
+                        ));
+                        $image_old[$j]["thumnail"] = $img["thumnail"];
+                        array_push($update,array(
+                            'image'=>$image_old[$j]
+                        ));
+                    }
+                   
                     array_splice($image_old,$j,1);
+                    $data["image"][$i] = intval($img["src"]);
                     break;
                 }
             }
@@ -284,12 +297,12 @@ if(isset($data["image"]))
         }
 
 
-        $img = str_replace('data:image/', '', $img);
-        $pos = strpos($img, ";");
-        $extension = substr($img, 0, $pos);
-        $img = str_replace($extension.';base64,', '', $img);
-        $img = str_replace(' ', '+', $img);
-        $dataFile = base64_decode($img);
+        $img["src"] = str_replace('data:image/', '', $img["src"]);
+        $pos = strpos($img["src"], ";");
+        $extension = substr($img["src"], 0, $pos);
+        $img["src"] = str_replace($extension.';base64,', '', $img["src"]);
+        $img["src"] = str_replace(' ', '+', $img["src"]);
+        $dataFile = base64_decode($img["src"]);
         $filename = uniqid() .$milliseconds. '.'.$extension;
 
         $file = UPLOAD_DIR .$filename;
@@ -298,14 +311,23 @@ if(isset($data["image"]))
             echo "Unable to save the file.";
             exit();
         }
-
+        if($img["type"]==0)
+        $type = 0;
+        else
+        $type = 1;
+        if(isset($img["thumnail"])&&$img["thumnail"]==1)
+        $thumnail=1;
+        else
+        $thumnail=0;
         $obj_list = array(
             'src' => $filename,
-            'type' => 0,
+            'type' => $type,
             'houseid' => $data["id"],
             'created' => new DateTime(),
+            'thumnail' => $thumnail
         );
         $image_id = $connector->insert($prefix.'image', $obj_list);
+        $obj_list["id"] = $image_id;
         array_push($insert,array(
             'image'=>$obj_list
         ));

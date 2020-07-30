@@ -1930,16 +1930,33 @@ NewRealty.prototype.getDataSave = function(){
     advanceDetruct += this.advanceDetruct4.checked?1000:0;
 
     var image = [];
-    var arr = this.viewJuridical.getFile().concat(this.viewCurrentStaus.getFile());
+    var arr = this.viewJuridical.getFile();
     for(var i = 0;i<arr.length;i++)
     {
         if(typeof arr[i] == "string")
         {
-            image.push(arr[i]);
+            image.push({src:arr[i],type:0});
         }else
         {
-            image.push(parseInt(arr[i].id))
+            image.push({src:arr[i].id,type:0});
         }
+    }
+    var thumnail = this.viewCurrentStaus.getImportTant();
+    console.log(thumnail)
+    arr = this.viewCurrentStaus.getFile();
+    for(var i = 0;i<arr.length;i++)
+    {
+        if(typeof arr[i] == "string")
+        {
+            var src = arr[i];
+        }else
+        {
+            var src = arr[i].id;
+        }
+        if(i == thumnail)
+        image.push({src:src,type:1,thumnail:1});
+        else
+        image.push({src:src,type:1,thumnail:0});
     }
     var temp = {
         height:this.inputHeight.value*this.inputUnitHeight.value,
@@ -1968,7 +1985,6 @@ NewRealty.prototype.getDataSave = function(){
         image:image,
         // important:this.viewCurrentStaus.getImportTant()
     }
-    console.log(this.viewCurrentStaus.getImportTant());
     var arr = [];
     for(var i = 0;i<this.containerEquipment.childNodes.length;i++)
     {

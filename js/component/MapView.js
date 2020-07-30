@@ -1079,11 +1079,38 @@ MapView.prototype.modalMiniRealty = function(data)
                 }
             ]
         })
-        var image = ("div.mini-bubble-image",temp);
-        // var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
-        // if(data.imageCurrentStaus.length>0)
-        // src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+data.image[0].src;
-        // moduleDatabase.getModule("image").load({WHERE:[{id}]})
+        var image = $("div.mini-bubble-image",temp);
+        var first = "";
+        var arr = [];
+        if(data!==undefined)
+        {
+            for(var i = 0;i<data.image.length;i++)
+            {
+                if(first!=="")
+                arr.push(first);
+                arr.push({id:data.image[i]})
+                if(first=="")
+                {
+                    
+                    first = "||";
+                }
+            }
+        
+        }
+        if(arr.length>0)
+        moduleDatabase.getModule("image").load({WHERE:arr}).then(function(values){
+            var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
+            for(var i = 0;i<values.length;i++){
+                if(values[i].thumnail == 1){
+                    src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+values[i].src;
+                    break;
+                }
+                
+            }
+            image.style.backgroundImage = `url(`+src+`)`;
+        })
+
+  
         return temp;
 }
 

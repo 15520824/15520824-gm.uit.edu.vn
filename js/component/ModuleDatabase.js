@@ -123,21 +123,58 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     if(data.loaded[this.name]==undefined)
     data.loaded[this.name] = [];
 
-    if(self.data!==undefined&&self.data.length!==0)
-    {
-        for(var i = 0;i<self.data.length;i++)
+    if(data.WHERE!==undefined)
+        if(self.data!==undefined&&self.data.length!==0)
         {
-            if(this.generalOperator(self.data[i],data.WHERE))
+            for(var i = 0;i<self.data.length;i++)
+            {
+                if(this.generalOperator(self.data[i],data.WHERE))
+                {
+                    data.loaded[this.name].push(self.data[i]["id"]);
+                }
+            }
+        }
+    else
+        if(self.data!==undefined&&self.data.length!==0)
+        {
+            for(var i = 0;i<self.data.length;i++)
             {
                 data.loaded[this.name].push(self.data[i]["id"]);
             }
         }
-    }
 
     
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(valueRecived){
             var value = valueRecived["data"];
+            var update = valueRecived["update"];
+            var insert = valueRecived["add"];
+            if(insert!==undefined)
+                {
+                    for(var i = 0;i<value.add.length;i++)
+                    {
+                        for(var param in insert[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatAdd(insert[i][param]);
+                            }
+                        }
+                    }
+                }
+                if(update!==undefined)
+                {
+                    for(var i = 0;i<update.length;i++)
+                    {
+                        for(var param in update[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+                            }
+                        }
+                    }
+                }
             self.setFormatLoad(data,value,promiseLoad,valueRecived["count"]);
             // var loadedData = valueRecived["load"];
             // console.log(loadedData)
@@ -376,28 +413,30 @@ DataStructure.prototype.add = function(data,needChange = false){
                     data.delete = Object.assign({}, value.delete);
                 }  
                 self.setFormatAdd(data);
-                if(value.insert!==undefined)
+                var update = value["update"];
+                var insert = value["add"];
+                if(insert!==undefined)
                 {
-                    for(var i = 0;i<value.insert.length;i++)
+                    for(var i = 0;i<value.add.length;i++)
                     {
-                        for(var param in value.insert[i])
+                        for(var param in insert[i])
                         {
                             if(moduleDatabase.data[param]!==undefined)
                             {
-                                moduleDatabase.data[param].setFormatAdd(value.insert[i][param]);
+                                moduleDatabase.data[param].setFormatAdd(insert[i][param]);
                             }
                         }
                     }
                 }
-                if(value.update!==undefined)
+                if(update!==undefined)
                 {
-                    for(var i = 0;i<value.update.length;i++)
+                    for(var i = 0;i<update.length;i++)
                     {
-                        for(var param in value.update[i])
+                        for(var param in update[i])
                         {
                             if(moduleDatabase.data[param]!==undefined)
                             {
-                                moduleDatabase.data[param].setFormatUpdate(value.update[i][param]);
+                                moduleDatabase.data[param].setFormatUpdate(update[i][param]);
                             }
                         }
                     }
@@ -459,28 +498,30 @@ DataStructure.prototype.update = function(data,needChange = false){
                     data.delete = Object.assign({}, value.delete);
                 }  
                 self.setFormatUpdate(data);
-                if(value.add!==undefined)
+                var update = value["update"];
+                var insert = value["add"];
+                if(insert!==undefined)
                 {
                     for(var i = 0;i<value.add.length;i++)
                     {
-                        for(var param in value.add[i])
+                        for(var param in insert[i])
                         {
                             if(moduleDatabase.data[param]!==undefined)
                             {
-                                moduleDatabase.data[param].setFormatAdd(value.add[i][param]);
+                                moduleDatabase.data[param].setFormatAdd(insert[i][param]);
                             }
                         }
                     }
                 }
-                if(value.update!==undefined)
+                if(update!==undefined)
                 {
-                    for(var i = 0;i<value.update.length;i++)
+                    for(var i = 0;i<update.length;i++)
                     {
-                        for(var param in value.update[i])
+                        for(var param in update[i])
                         {
                             if(moduleDatabase.data[param]!==undefined)
                             {
-                                moduleDatabase.data[param].setFormatUpdate(value.update[i][param]);
+                                moduleDatabase.data[param].setFormatUpdate(update[i][param]);
                             }
                         }
                     }

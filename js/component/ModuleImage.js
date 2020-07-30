@@ -204,7 +204,7 @@ export function descViewImagePreview(data=[],index = 0,promiseLazyLoad){
                                         class:["image-show__img", "z-fh", "fadeInImageShow"],
                                         attr:{
                                             draggable:"false",
-                                            crossorigin:"Anonymous",
+                                            // crossorigin:"Anonymous",
 
                                         }
                                     }
@@ -399,6 +399,9 @@ export function descViewImagePreview(data=[],index = 0,promiseLazyLoad){
 
     var container = _({
         tag:"modal",
+        attr:{
+            tabindex:1
+        },
         child:[
             temp
         ]
@@ -535,10 +538,18 @@ export function descViewImagePreview(data=[],index = 0,promiseLazyLoad){
     var functionESC = function(event){
         if(event.keyCode == 27){
             self.selfRemove();
-            window.removeEventListener("keydown",functionESC);
+            self.removeEventListener("keydown",functionESC);
+            var arr = document.body.getElementsByClassName("as-modal");
+            if(arr.length>0)
+            {
+                arr[arr.length-1].focus();
+            }
         }
     }
-    window.addEventListener("keydown",functionESC)
+    self.addEventListener("keydown",functionESC);
+    setTimeout(function(){
+        self.focus();
+    },100);
     return self;
 }
 
@@ -636,7 +647,7 @@ descViewImagePreview.prototype.resetImage = function(data)
         class:["image-show__img", "z-fh", "fadeInImageShow"],
         attr:{
             draggable:"false",
-            crossorigin:"Anonymous",
+            // crossorigin:"Anonymous",
             src:data.src
         }
     })
@@ -781,12 +792,17 @@ descViewImagePreview.prototype.addFunctionLazyLoad = function(promiseLazyLoad)
 descViewImagePreview.prototype.ItemTimeLine = function(data,i)
 {
     var self = this;
+    var index;
+    if(data.index!==undefined)
+    index = data.index;
+    else
+    index = i;
     var temp = _(
         {
             tag:"div",
             class:"image-show__thumb-container",
             props:{
-                id:"thumb_"+i
+                id:"thumb_"+index
             },
             on:{
                 click: function(event){
@@ -798,7 +814,7 @@ descViewImagePreview.prototype.ItemTimeLine = function(data,i)
                     tag:"img",
                     class:["image-show__thumb", "clickable"],
                     attr:{
-                        crossorigin:"Anonymous"
+                        // crossorigin:"Anonymous"
                     },
                     props:{
                         src:data.src
@@ -808,7 +824,7 @@ descViewImagePreview.prototype.ItemTimeLine = function(data,i)
         }
     )
     temp.data = data;
-    temp.index = i;
+    temp.index = index
 
     temp.imageElement = $('div.image-show__thumb-container img.image-show__thumb',temp);
     
