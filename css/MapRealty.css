@@ -1084,20 +1084,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
     line-height: 1.53333333;
 }
 
-.ds-container .ds-vertical-divider {
-    border-style: solid;
-    border-width: 0 1px 0 0;
-    border-color: #ccc;
-    margin-right: 8px;
-    padding-right: 8px;
-}
-
 .ds-home-details-chip .ds-vertical-divider {
-    border-style: solid;
-    border-width: 0 1px 0 0;
-    border-color: #ccc;
     margin-right: 8px;
-    padding-right: 8px;
+    padding-left: 8px;
 }
 
 .ds-home-details-chip .ds-bed-bath-living-area-header .ds-vertical-divider {

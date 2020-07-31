@@ -504,7 +504,7 @@ table.sortTable th.postionStickyCell{
   left: 50%;
 }
 .pagination-container {
-  padding: 10px 0;
+  padding: 5px 0;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -514,8 +514,8 @@ table.sortTable th.postionStickyCell{
 }
 .pagination-hover-overlay {
   background-color: #00c1dd;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 5px;
   position: absolute;
   top: 50%;
@@ -527,8 +527,8 @@ table.sortTable th.postionStickyCell{
 .pagination .icon-pagination {
   color: rgba(51, 61, 69, 0.5);
   font-size: 11px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -537,7 +537,7 @@ table.sortTable th.postionStickyCell{
   background-color: #fff;
 }
 .pagination-prev {
-  margin-right: 15px;
+  margin-right: 5px;
   margin-left: 10px;
   cursor: pointer;
 }
@@ -550,8 +550,8 @@ table.sortTable th.postionStickyCell{
 }
 
 .pagination-next {
-  margin-left: 15px;
-  margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 5px;
   cursor: pointer;
 }
 .pagination-next .icon-pagination-next {
@@ -560,9 +560,10 @@ table.sortTable th.postionStickyCell{
 .pagination-page-number {
   display: none;
   border-radius: 5px;
+  padding:5px;
   color: #333d45;
-  width: 50px;
-  height: 50px;
+  min-width: 30px;
+  height: 30px;
   align-items: center;
   justify-content: center;
   transition-duration: 0.5s;
@@ -591,7 +592,7 @@ table.sortTable th.postionStickyCell{
   transform: translateX(-50%);
   left: 50%;
   width: 100%;
-  height: 92px;
+  height: 72px;
   background-color: white;
 }
 

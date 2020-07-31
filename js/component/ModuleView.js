@@ -1399,6 +1399,7 @@ tableView.prototype.pagination = function (number, functionClick) {
 
     var self = this;
     var paginationLeftPos = "20px";
+    var paginationWidthPos = "40px";
     var paginationOpacity = 0;
     var checkPaginationClick = 0;
     var arr = [];
@@ -1410,93 +1411,94 @@ tableView.prototype.pagination = function (number, functionClick) {
         tag: "div",
         class: "pagination-wrapper",
     })
+    var realTemp = _({
+        tag: "div",
+        class: "pagination",
+        child: [
+            {
+                tag: "div",
+                class: "pagination-container",
+                child: [
+                    overlay,
+                    {
+                        tag: "div",
+                        class: "pagination-prev",
+                        on: {
+                            click: function (event) {
+                                var temp = $("a.active", container);
+
+                                if (temp !== undefined)
+                                    var prev = temp.previousSibling;
+                                while (prev != null && prev.classList.contains("detail"))
+                                    prev = prev.previousSibling;
+                                if (prev !== null) {
+                                    prev.click();
+                                    temp.style.color = "";
+                                }
+                            }
+                        },
+                        props: {
+                        },
+                        child: [
+                            {
+                                tag: "span",
+                                class: ["icon-pagination", "icon-pagination-prev"],
+                                child: [
+                                    {
+                                        tag: "i",
+                                        class: ["icon", "material-icons"],
+                                        props: {
+                                            innerHTML: "keyboard_arrow_left"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    container,
+                    {
+                        tag: "div",
+                        class: "pagination-next",
+                        on: {
+                            click: function (event) {
+                                var temp = $("a.active", container);
+
+                                if (temp !== undefined)
+                                    var next = temp.nextSibling;
+                                while (next != null && next.classList.contains("detail"))
+                                    next = next.nextSibling;
+                                if (next !== null) {
+                                    next.click();
+                                    temp.style.color = "";
+                                }
+                            }
+                        },
+                        child: [
+                            {
+                                tag: "span",
+                                class: ["icon-pagination", "icon-pagination-next"],
+                                child: [
+                                    {
+                                        tag: "i",
+                                        class: ["icon", "material-icons"],
+                                        props: {
+                                            innerHTML: "keyboard_arrow_left"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    })
     var temp = _(
         {
             tag:"div",
             class:"pagination-align",
             child:[
-                {
-                    tag: "div",
-                    class: "pagination",
-                    child: [
-                        {
-                            tag: "div",
-                            class: "pagination-container",
-                            child: [
-                                overlay,
-                                {
-                                    tag: "div",
-                                    class: "pagination-prev",
-                                    on: {
-                                        click: function (event) {
-                                            var temp = $("a.active", container);
-            
-                                            if (temp !== undefined)
-                                                var prev = temp.previousSibling;
-                                            while (prev != null && prev.classList.contains("detail"))
-                                                prev = prev.previousSibling;
-                                            if (prev !== null) {
-                                                prev.click();
-                                                temp.style.color = "";
-                                            }
-                                        }
-                                    },
-                                    props: {
-                                    },
-                                    child: [
-                                        {
-                                            tag: "span",
-                                            class: ["icon-pagination", "icon-pagination-prev"],
-                                            child: [
-                                                {
-                                                    tag: "i",
-                                                    class: ["icon", "material-icons"],
-                                                    props: {
-                                                        innerHTML: "keyboard_arrow_left"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                container,
-                                {
-                                    tag: "div",
-                                    class: "pagination-next",
-                                    on: {
-                                        click: function (event) {
-                                            var temp = $("a.active", container);
-            
-                                            if (temp !== undefined)
-                                                var next = temp.nextSibling;
-                                            while (next != null && next.classList.contains("detail"))
-                                                next = next.nextSibling;
-                                            if (next !== null) {
-                                                next.click();
-                                                temp.style.color = "";
-                                            }
-                                        }
-                                    },
-                                    child: [
-                                        {
-                                            tag: "span",
-                                            class: ["icon-pagination", "icon-pagination-next"],
-                                            child: [
-                                                {
-                                                    tag: "i",
-                                                    class: ["icon", "material-icons"],
-                                                    props: {
-                                                        innerHTML: "keyboard_arrow_left"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
+                realTemp
             ]
         }
         )
@@ -1543,7 +1545,8 @@ tableView.prototype.pagination = function (number, functionClick) {
                         setTimeout(function(){
                             paginationLeftPos = x.offsetLeft + "px";
                             overlay.style.left = paginationLeftPos;
-                  
+                            paginationWidthPos = x.offsetWidth +"px";
+                            overlay.style.width = paginationWidthPos;
                         },10)
                       
                         this.style.color = "#fff";
@@ -1561,6 +1564,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                     paginationOpacity = 1;
                     overlay.style.backgroundColor = "#00c1dd";
                     overlay.style.left = this.offsetLeft + "px";
+                    overlay.style.width = this.offsetWidth + "px";
                     overlay.style.opacity = paginationOpacity;
                     var active = $("a.active", container);
 
@@ -1577,7 +1581,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                     overlay.style.backgroundColor = "#00178a";
                     overlay.style.opacity = paginationOpacity;
                     overlay.style.left = paginationLeftPos;
-
+                    overlay.style.width = paginationWidthPos;
                     this.style.color = "#333d45";
                     var active = $("a.active", container);
                     if (active !== undefined)
@@ -1611,9 +1615,11 @@ tableView.prototype.pagination = function (number, functionClick) {
 
             arr[0].classList.add("active");
             paginationLeftPos = arr[0].offsetLeft + "px";
+            paginationWidthPos = arr[0].offsetWidth + "px";
             paginationOpacity = 1;
             checkPaginationClick = 1;
             overlay.style.left = paginationLeftPos;
+            overlay.style.width = paginationWidthPos;
             overlay.style.backgroundColor = "#00178a";
             overlay.style.opacity = paginationOpacity;
             arr[0].style.color = "#fff";
@@ -1628,69 +1634,42 @@ tableView.prototype.pagination = function (number, functionClick) {
     var displayNone = [];
     temp.updateSize = function () {
         setTimeout(function(){
+
             temp.detailLeft.style.display = "";
             temp.detailRight.style.display = "";
             for (var i = 0; i < displayNone.length; i++) {
                 displayNone[i].style.display = "";
             }
-            var count = parseInt((self.offsetWidth-20) / 50) - 4;
+            
             var i = 0;
             var active = $("a.active", container);
             displayNone = [active];
-            var countTime = -99;
-            if (count < arr.length) {
-                var countTime = count;
-            }
+
             var lastIndexPrev,lastIndexPrevBefore;
             var lastIndexNext,lastIndexNextBefore;
             var isLeft = false, isRight = false;
             if (active !== undefined) {
                 var prev = active.previousSibling, next = active.nextSibling;
-    
-                while (i <= count && !(isLeft == true && isRight == true)) {
+                
+                while (realTemp.offsetWidth <= self.offsetWidth - 40 && !(isLeft == true && isRight == true)) {
                     if (isRight == false && next != null) {
-                        if (i == countTime) {
-                            while (next == temp.detailRight || next == temp.detailLeft)
-                                next = next.nextSibling;
-    
-                                isRight = true;
-                                lastIndexNext.style.display = "";
-                                lastIndexNextBefore.style.display = "";
-    
-                                temp.detailRight.style.display = "flex";
-                                displayNone.push(container.lastChild);
-                                container.lastChild.style.display = "flex";                        
-                        } else {
-                            while (next == temp.detailRight || next == temp.detailLeft)
-                                next = next.nextSibling;
-                            next.style.display = "flex";
-    
-                            lastIndexNextBefore = lastIndexNext;
-                            lastIndexNext = next;
-    
-                            displayNone.push(next);
+
+                        while (next == temp.detailRight || next == temp.detailLeft)
                             next = next.nextSibling;
-                            i++;
-                        }
+                        next.style.display = "flex";
+
+                        lastIndexNextBefore = lastIndexNext;
+                        lastIndexNext = next;
+
+                        displayNone.push(next);
+                        next = next.nextSibling;
+                        i++;
                     } else {
                         isRight = true;
                     }
-    
-                    if (i > count)
+                    if(realTemp.offsetWidth > self.offsetWidth - 40)
                         break;
-    
                     if (isLeft == false && prev != null) {
-                        if (i == countTime) {
-                            while (prev == temp.detailLeft || prev == temp.detailRight)
-                            prev = prev.previousSibling;
-    
-                            isLeft = true;
-                            lastIndexPrev.style.display = "";
-                            lastIndexPrevBefore.style.display = "";
-                            temp.detailLeft.style.display = "flex";
-                            displayNone.push(container.firstChild);
-                            container.firstChild.style.display = "flex";
-                        } else {
                             while (prev == temp.detailLeft || prev == temp.detailRight)
                                 prev = prev.previousSibling;
                             prev.style.display = "flex";
@@ -1701,10 +1680,28 @@ tableView.prototype.pagination = function (number, functionClick) {
                             displayNone.push(prev);
                             prev = prev.previousSibling;
                             i++;
-                        }
                     } else {
                         isLeft = true;
                     }
+                }
+                if(isRight==false&&lastIndexNext.nextSibling !== null)
+                {
+                    lastIndexNext.style.display = "";
+                    lastIndexNextBefore.style.display = "";
+
+                    temp.detailRight.style.display = "flex";
+                    displayNone.push(container.lastChild);
+                    container.lastChild.style.display = "flex";     
+                }
+
+                if(isLeft==false&&lastIndexPrev.previousSibling !== null)
+                {
+                    lastIndexPrev.style.display = "";
+                    lastIndexPrevBefore.style.display = "";
+
+                    temp.detailLeft.style.display = "flex";
+                    displayNone.push(container.firstChild);
+                    container.firstChild.style.display = "flex";
                 }
             }
         },10);

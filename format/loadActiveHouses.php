@@ -39,10 +39,9 @@ if (isset($_POST["data"])) {
             $operator = $data["WHERE"];
             $WHERE = generalOperator($operator);
         }
-        
-        if (isset($data["ORDERING"])) {
-            $ORDERING=$data["ORDERING"];
-        }
+    }
+    if (isset($data["ORDERING"])) {
+        $ORDERING=$data["ORDERING"];
     }
 }else
 {
@@ -61,20 +60,22 @@ if($ORDERING!=="")
 }
 
 $result = $connector-> query("SELECT * FROM ".$prefix."activehouses".$WHERE.$ORDERING);
-$data = array();
-$i = 0; 
-
 $check = array();
 if(isset($data["loaded"]))
-foreach($data["loaded"] as $param=>$value)
 {
-    $check[$param] = [];
-    for($i = 0;$i<count($value);$i++)
+    foreach($data["loaded"] as $param=>$value)
     {
-        $check[$param][$value] = $i;
+        $check[$param] = [];
+        for($i = 0;$i<count($value);$i++)
+        {
+            $check[$param][$value[$i]] = $i;
+        }
     }
 }
+
 $imageAll = array();
+$data = array();
+$i = 0;
 if($result)
 {
     if ($result->num_rows > 0) {

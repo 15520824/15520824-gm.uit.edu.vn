@@ -404,7 +404,6 @@ export function isEqual(value, other) {
 	// Compare properties
 	if (type === '[object Array]') {
 		for (var i = 0; i < valueLen; i++) {
-            console.log(compare(value[i], other[i]),value[i], other[i])
 			if (compare(value[i], other[i]) === false) return false;
 		}
 	} else {

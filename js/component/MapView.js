@@ -203,6 +203,7 @@ export function DetailView(map,data) {
         temp.checkDistrictWard = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
             return {text:data.name,value:data.name+"_"+data.id}
         },true);
+
         temp.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         temp.checkState = moduleDatabase.getModule("states").getLibary("id");
         temp.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
@@ -252,7 +253,9 @@ export function DetailView(map,data) {
 
             if(data.lng!==undefined)
             temp.lng.value = data.lng;
-            map.addMoveMarker([data.lat,data.lng]);
+            var postionData = [data.lat,data.lng];
+            postionData["data"] = data;
+            map.addMoveMarker(postionData);
         }
     })
     var lat,lng;
@@ -478,12 +481,12 @@ DetailView.prototype.getDataCurrent = function()
         temp.lng=parseFloat(this.lng.value);
         temp.lat=parseFloat(this.lat.value);
     }
-    console.log(temp)
     return temp;
 }
 
 DetailView.prototype.activeAutocomplete = function(map) {
     var self = this;
+    map.setCurrentLocation();
     var autocomplete;
     var options = {
         // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
@@ -935,10 +938,16 @@ MapView.prototype.addMapHouse = function()
         if(self.enableHouse == true)
         {
             self.removeMapHouseAround();
-            moduleDatabase.getModule("activehouses").load(
-                {WHERE:[{lat:{operator:">",value:bottomLeft[0]}},"&&",{lat:{operator:"<",value:topRight[0]}},"&&",
-                        {lng:{operator:">",value:bottomLeft[1]}},"&&",{lng:{operator:"<",value:topRight[1]}}]
-                }).then(
+            var queryData = [{lat:{operator:">",value:bottomLeft[0]}},"&&",{lat:{operator:"<",value:topRight[0]}},"&&",
+            {lng:{operator:">",value:bottomLeft[1]}},"&&",{lng:{operator:"<",value:topRight[1]}}];
+
+            if(self.currentMarker&&self.currentMarker.data!==undefined)
+            {
+                queryData = [queryData];
+                queryData.push("&&");
+                queryData.push({id:{operator:"!=",value:self.currentMarker.data.id}})
+            }
+            moduleDatabase.getModule("activehouses").load({WHERE:queryData}).then(
                 function(value){
                 for(var i=0;i<value.length;i++)
                 {
@@ -996,30 +1005,38 @@ MapView.prototype.addOrtherMarker = function(data)
             // The anchor for this image is the base of the flagpole at (0, 32).
             anchor: new google.maps.Point(12, 12)
           };
-
+        // var mouseOverInfoWindow = false, timeoutID;
         var infowindow = new google.maps.InfoWindow({
             maxWidth: 350
           });
+         
+        // google.maps.event.addListener(infowindow, 'domready', function() {
+
+        //     infowindow.addListener('mouseover', function() {
+        //         mouseOverInfoWindow = true;
+        //     });
+        //     infowindow.addListener('mouseout', function() {
+        //         marker.setIcon(image);
+        //         infowindow.close();
+        //         mouseOverInfoWindow = false;
+        //     });
+        // });
+
         marker.data = data;
         google.maps.event.addListener(marker, 'mouseover', function() {
-            if(this.hover!==true)
-            {
-                infowindow.setContent(self.modalMiniRealty(marker.data));
-                infowindow.open(self.map, marker);
-                marker.setIcon(imageHover);
-            }
-            this.hover = true;
+            infowindow.setContent(self.modalMiniRealty(marker.data));
+            infowindow.open(self.map, marker);
+            marker.setIcon(imageHover);
         });
-        google.maps.event.addListener(marker, 'mouseout', function() {
-            var element = this;
-            setTimeout(function(){
-                if(element.hover===true)
-                {
-                    marker.setIcon(image);
-                    infowindow.close();
-                }
-                element.hover = false;
-            },100);
+        google.maps.event.addListener(marker, 'mouseout', function(event) {
+            // timeoutID = setTimeout(function() {
+            //     if (!mouseOverInfoWindow) {
+            //         marker.setIcon(image);
+            //         infowindow.close();
+            //     }
+            //   }, 400);
+              marker.setIcon(image);
+              infowindow.close();
         });
        
         if(this.checkHouse[position[0]]===undefined)
@@ -1064,7 +1081,7 @@ MapView.prototype.modalMiniRealty = function(data)
                                 {
                                     tag:"div",
                                     props:{
-                                        innerHTML:data.width+"m, "+data.height+"m"
+                                        innerHTML:data.width+"m x "+data.height+"m"
                                     }
                                 },
                                 {
@@ -1167,15 +1184,32 @@ MapView.prototype.activeMap = function (center = [10.822500, 106.629104], zoom =
     this.delay = 10;
     this.numDeltas = 50;
     this.draggable = false;
+    this.moveCurrentMarker = true;
     return map;
+}
+
+MapView.prototype.setCurrentLocation = function()
+{
+    var geolocationDiv = document.createElement('div');
+    var geolocationControl = this.GeolocationControl(geolocationDiv, this.map);
+
+    this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(geolocationDiv);
+}
+
+MapView.prototype.setMoveMarkerWithCurrent = function(value){
+    this.moveCurrentMarker = value;
 }
 
 MapView.prototype.addMoveMarker = function (position,changeInput=true) {
     var self = this;
     var marker;
-    
-    if(changeInput)
-    self.detailView.changInput = false;
+    if(self.detailView!==undefined)
+    {
+        if(changeInput)
+        self.detailView.changInput = false;
+    }else
+        changeInput = false;
+
     if (this.currentMarker !== undefined) {
         marker = this.currentMarker;
         self.transition(position,changeInput).then(function (value) {
@@ -1201,6 +1235,11 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
             zIndex:2
         });
         this.currentMarker = marker;
+        if(position.data!==undefined)
+        {
+            marker.data = position.data;
+        }
+        console.log("111111111111111111")
         self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
         self.smoothZoom(20, self.map.getZoom());
         if(changeInput){
@@ -1290,5 +1329,54 @@ MapView.prototype.smoothZoom = function (max, cnt) {
             if(cnt!==undefined)
             self.map.setZoom(cnt) 
         }, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
+    }
+}
+
+
+
+
+MapView.prototype.GeolocationControl = function(controlDiv) {
+
+    // Set CSS for the control button
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = '#444';
+    controlUI.style.borderStyle = 'solid';
+    controlUI.style.borderWidth = '1px';
+    controlUI.style.borderColor = 'white';
+    controlUI.style.height = '28px';
+    controlUI.style.marginTop = '5px';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.textAlign = 'center';
+    controlUI.title = 'Click to center map on your location';
+    controlDiv.appendChild(controlUI);
+
+    // Set CSS for the control text
+    var controlText = document.createElement('div');
+    controlText.style.fontFamily = 'Arial,sans-serif';
+    controlText.style.fontSize = '10px';
+    controlText.style.color = 'white';
+    controlText.style.paddingLeft = '10px';
+    controlText.style.paddingRight = '10px';
+    controlText.style.marginTop = '8px';
+    controlText.innerHTML = 'Center map on your location';
+    controlUI.appendChild(controlText);
+
+    // Setup the click event listeners to geolocate user
+    google.maps.event.addDomListener(controlUI, 'click', this.geolocateMap.bind(this));
+}
+
+MapView.prototype.geolocateMap = function() {
+    var self = this;
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+            if(self.moveCurrentMarker)
+            self.addMoveMarker([position.coords.latitude, position.coords.longitude]);
+            else
+            {
+                self.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+                self.smoothZoom(20, self.map.getZoom());
+            }
+        });
     }
 }

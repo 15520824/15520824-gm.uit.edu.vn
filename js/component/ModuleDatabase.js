@@ -58,10 +58,7 @@ DataStructure.prototype.equal = function(data,WHERE)
     {
         if(Array.isArray(WHERE))
         {
-            for(var i = 0;i<WHERE.length;i++)
-            {
-                stringResult +=this.operator(WHERE[i]);
-            }
+            stringResult +=this.operator(data,WHERE);
         }else
         {
             for(var param in WHERE)
@@ -118,11 +115,11 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
 
     if(data.loaded===undefined)
     {
-        data.loaded = [];
+        data.loaded = {};
     }
     if(data.loaded[this.name]==undefined)
     data.loaded[this.name] = [];
-
+  
     if(data.WHERE!==undefined)
         if(self.data!==undefined&&self.data.length!==0)
         {
@@ -142,8 +139,6 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
                 data.loaded[this.name].push(self.data[i]["id"]);
             }
         }
-
-    
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(valueRecived){
             var value = valueRecived["data"];
@@ -204,14 +199,7 @@ DataStructure.prototype.setFormatLoad = function(data,value,promiseLoad,count = 
     var self = this;
     if(value === undefined)
         value = [];
-    for(var i = 0;i<value.length;i++)
-    {
-        if(typeof value[i] == "string")
-            if(self.Libary["id"][value[i]]!==undefined)
-            {
-                value[i] = self.Libary["id"][value[i]];        
-            }
-    }
+
     if(self.data === undefined)
     self.data = [];
     if(data.WHERE===undefined)
@@ -229,7 +217,7 @@ DataStructure.prototype.setFormatLoad = function(data,value,promiseLoad,count = 
     var libary = self.Libary["id"];
     if(libary === undefined)
     {
-        self.data = value;
+        self.data = [...value];
     }else
     {
         if(self.data.length === self.countRow)
@@ -237,24 +225,25 @@ DataStructure.prototype.setFormatLoad = function(data,value,promiseLoad,count = 
             if(self.promiseLoad === undefined)
             self.promiseLoad = Promise.resolve(self.data);
         }
-        else
         for(var i = 0;i<value.length;i++)
-        {   
-            if(libary[value[i].id]===undefined)
+        {
+            if(typeof value[i] == "string"){
+                if(self.Libary["id"][value[i]]!==undefined)
+                {
+                    value[i] = self.Libary["id"][value[i]];        
+                }
+            }else
             {
-                self.data.push(value[i]);
                 self.setFormatAdd(value[i]);
-            }
+            }   
         }
     }
+    
     if(self.Libary["id"]===undefined)
     self.getLibary();
-    if(promiseLoad!=="object"){
+    if(typeof promiseLoad == "object"){
         promiseLoad.status = "done";
         promiseLoad.data = value;
-    }else
-    {
-        this.promisePart[data.WHERE] = Promise.resolve(value);
     }
 }
 

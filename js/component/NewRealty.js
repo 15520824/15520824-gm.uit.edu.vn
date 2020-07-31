@@ -312,7 +312,6 @@ NewRealty.prototype.imageJuridical = function()
     }
     if(arr.length>0)
     moduleDatabase.getModule("image").load({WHERE:arr}).then(function(values){
-        console.log(values)
         for(var i = 0;i<values.length;i++)
         if(values[i].type == 0)
         result.addFile(values[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
@@ -428,8 +427,13 @@ NewRealty.prototype.descViewImageThumnail = function (dataImage, index, promiseL
     return temp;
 }
 
-NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
+NewRealty.prototype.itemAdress = function(data = {addressid:0},lat,lng)
 {
+    var addressid;
+    if(data.addressid !== undefined)
+    addressid = data.addressid;
+    else
+    addressid = 0;
     var self = this;
     var text = _({ text: "Địa chỉ" });
     var important = _({
@@ -500,7 +504,7 @@ NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
         $("input.pizo-new-realty-desc-detail-1-row-input",temp).value = number+" "+street+", "+ward+", "+district+", "+state;
         temp.data = {
-            id:addressid,
+            id:data.id,
             number:this.checkAddress[addressid].addressnumber,
             street:this.checkStreet[this.checkAddress[addressid].streetid].name+"_"+this.checkAddress[addressid].streetid,
             ward:this.checkWard[this.checkAddress[addressid].wardid].name+"_"+this.checkAddress[addressid].wardid,
@@ -513,9 +517,13 @@ NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
     return temp;
 }
 
-NewRealty.prototype.itemAdressOld = function(addressid = 0)
+NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
 {
-    var self = this;
+    var addressid;
+    if(data.addressid_old !== undefined)
+    addressid = data.addressid_old;
+    else
+    addressid = 0;
     var text = _({ text: "Địa chỉ cũ" });
     var important = _({
         tag: "span",
@@ -580,7 +588,6 @@ NewRealty.prototype.itemAdressOld = function(addressid = 0)
         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
         $("input.pizo-new-realty-desc-detail-1-row-input",temp).value = number+" "+street+", "+ward+", "+district+", "+state;
         temp.data = {
-            id:addressid,
             number:this.checkAddress[addressid].addressnumber,
             street:this.checkStreet[this.checkAddress[addressid].streetid].name+"_"+this.checkAddress[addressid].streetid,
             ward:this.checkWard[this.checkAddress[addressid].wardid].name+"_"+this.checkAddress[addressid].wardid,
@@ -775,15 +782,17 @@ NewRealty.prototype.descViewdetail = function () {
     });
     if(this.data!==undefined)
     {
-        var addressCurrent = this.itemAdress(this.data.original.addressid,this.data.original.lat,this.data.original.lng)
+        var addressCurrent = this.itemAdress(this.data.original,this.data.original.lat,this.data.original.lng)
         containerAdress.appendChild(addressCurrent);
         var map = new MapView();
-        map.activePlanningMap();
-        map.addMoveMarker([this.data.original.lat,this.data.original.lng],false);
+        var position = [this.data.original.lat,this.data.original.lng];
+        position["data"] = this.data.original;
+        map.addMoveMarker(position,false);
         map.currentMarker.setDraggable(false);
+        map.activePlanningMap();
         this.containerMap.parentNode.replaceChild(map, this.containerMap);
         this.containerMap = map;
-        var addressOld = this.itemAdressOld(this.data.original.addressid_old)
+        var addressOld = this.itemAdressOld(this.data.original)
         containerAdress.appendChild(addressOld);
     }else
     {

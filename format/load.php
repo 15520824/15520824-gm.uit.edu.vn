@@ -59,8 +59,7 @@ if($ORDERING!=="")
 }
 
 $result = $connector-> query("SELECT * FROM ".$prefix.$tableName.$WHERE.$ORDERING);
-$data = array();
-$i = 0; 
+
 $check = array();
 if(isset($data["loaded"]))
 foreach($data["loaded"] as $param=>$value)
@@ -68,11 +67,11 @@ foreach($data["loaded"] as $param=>$value)
     $check[$param] = [];
     for($i = 0;$i<count($value);$i++)
     {
-        $check[$param][$value] = $i;
+        $check[$param][$value[$i]] = $i;
     }
 }
-
-
+$data = array();
+$i = 0;
 if($result)
 if ($result->num_rows > 0) {
     // output data of each row
@@ -97,9 +96,7 @@ if(isset($isFirst))
     }
 }
 
-echo "ok".EncodingClass::fromVariable(array(
-    "data"=>$data
-));
+echo "ok".EncodingClass::fromVariable($sendData);
 
 exit(0);
 ?>

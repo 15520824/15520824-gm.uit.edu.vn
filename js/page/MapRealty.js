@@ -47,6 +47,9 @@ MapRealty.prototype.getView = function () {
 
     var mapView = new MapView(); 
     mapView.activePlanningMap();
+    mapView.setCurrentLocation();
+    mapView.setMoveMarkerWithCurrent(false);
+    mapView.geolocateMap();
     this.searchControl = this.searchControlContent();
     this.$view = _({
         tag: 'singlepage',
@@ -266,6 +269,7 @@ MapRealty.prototype.modalRealty = function(){
             {
                 if(container.check===undefined||container.check[arrTemp[j].data.id]===undefined)
                 {
+                    
                     var x = this.itemMap(arrTemp[j]);
                     check[arrTemp[j].data.id] = x;
                     container.appendChild(x);
@@ -343,6 +347,46 @@ MapRealty.prototype.modalLargeRealty = function(data)
         tag:"img",
         class:["media-stream-photo", "media-stream-photo--loader"],
     })
+
+   
+    var mediaContainer = _({
+        tag:"ul",
+        class:"media-stream",
+        child:[
+            {
+                tag:"li",
+                class:["media-stream-tile", "media-stream-tile--prominent"],
+                on:{
+                    click:function(event)
+                    {
+                        var arr = [];
+                        for(var  i = 0;i<modal.image.length;i++)
+                        {
+                            arr.push({
+                                index : i,
+                                avatar:"https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
+                                userName:"Bùi Phạm Minh Thi",
+                                src:"https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+modal.image[i].src,
+                                date:modal.image[i].created,
+                                note:""
+                        })
+                        }
+                        document.body.appendChild(descViewImagePreview(arr,modal.indexThumnail));
+                    }
+                },
+                child:[
+                    imageThumnail
+                ]
+            },
+           
+        ]
+    });
+    var mediaContainer2 = _({
+        tag:"ul",
+        class:"media-stream",
+        child:[
+        ]
+    });
     var modal = _({
         tag:"modal",
         attr:{
@@ -401,37 +445,25 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                class:["ds-media-col", "ds-media-col-hidden-mobile"],
                                                                child:[
                                                                    {
-                                                                    tag:"ul",
-                                                                    class:"media-stream",
-                                                                    child:[
-                                                                        {
-                                                                            tag:"li",
-                                                                            class:["media-stream-tile", "media-stream-tile--prominent"],
-                                                                            on:{
-                                                                                click:function(event)
-                                                                                {
-                                                                                    var arr = [];
-                                                                                    for(var  i = 0;i<modal.image.length;i++)
-                                                                                    {
-                                                                                        arr.push({
-                                                                                            index : i,
-                                                                                            avatar:"https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
-                                                                                            userName:"Bùi Phạm Minh Thi",
-                                                                                            src:"https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+modal.image[i].src,
-                                                                                            date:modal.image[i].created,
-                                                                                            note:""
-                                                                                    })
-                                                                                    }
-                                                                                    document.body.appendChild(descViewImagePreview(arr,modal.indexThumnail));
-                                                                                }
+                                                                        tag: 'frameview',
+                                                                        child: [
+                                                                            {
+                                                                                tag: 'singlepage',
+                                                                                id: 'frame-status',
+                                                                                child:[
+                                                                                    mediaContainer
+                                                                                ]
                                                                             },
-                                                                            child:[
-                                                                                imageThumnail
-                                                                            ]
-                                                                        },
-                                                                       
-                                                                    ]
+                                                                            {
+                                                                                tag: 'singlepage',
+                                                                                id: 'frame-juridicals',
+                                                                                child:[
+                                                                                    mediaContainer2
+                                                                                ]
+                                                                            }
+                                                                        ]
                                                                    }
+                                                                 ///media container
                                                                ]
                                                            },
                                                            {
@@ -646,7 +678,10 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                                            },
                                                                                                                            {
                                                                                                                                tag:"span",
-                                                                                                                               class:"ds-vertical-divider"
+                                                                                                                               class:"ds-vertical-divider",
+                                                                                                                               props:{
+                                                                                                                                   innerHTML:"x"
+                                                                                                                               }
                                                                                                                            },
                                                                                                                            {
                                                                                                                                tag:"button",
@@ -676,7 +711,10 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                                            },
                                                                                                                            {
                                                                                                                             tag:"span",
-                                                                                                                            class:"ds-vertical-divider"
+                                                                                                                            class:"ds-vertical-divider",
+                                                                                                                            props:{
+                                                                                                                                innerHTML:"|"
+                                                                                                                            }
                                                                                                                             },
                                                                                                                             {
                                                                                                                                 tag:"span",
@@ -824,7 +862,37 @@ MapRealty.prototype.modalLargeRealty = function(data)
             }
         ]
     })
-    var mediaContainer = $("ul.media-stream",modal);
+    var statictabParams = {
+        tag: 'statictabbar',
+        attr: {
+            'data-group': 'group1'
+        },
+        props: {
+            items: [
+                {
+                    text: 'Ảnh hiện trạng',
+                    value: 'status'
+                },
+                {
+                    text: 'Ảnh pháp lý',
+                    value: 'juridicals'
+                }
+            ],
+        },
+        on: {
+            change: function () {
+                var self = this;
+                frameView.activeFrameById('frame-' + this.value);
+                absol.$('statictabbar[data-group="group1"]', false, function (e) {
+                    if (e != self) {
+                        e.value = self.value;
+                    }
+                    return false;
+                })
+            }
+        }
+    };
+    _(statictabParams).addTo($('.ds-media-col.ds-media-col-hidden-mobile',modal));
     var first = "";
     var arr = [];
     if(data!==undefined)
@@ -938,7 +1006,7 @@ MapRealty.prototype.itemMap = function(marker){
     });
     var type;
     var diffTime = Math.abs(new Date() - new Date(data.created));
-    var date = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    var date = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     switch(parseInt(data.type))
     {
         case 0:
@@ -959,11 +1027,11 @@ MapRealty.prototype.itemMap = function(marker){
         on:{
             mouseover:function(event)
             {
-                new google.maps.event.trigger(marker,'onmouseover');
+                google.maps.event.trigger(marker,'mouseover');
             },
             mouseout:function(event)
             {
-                new google.maps.event.trigger(marker,'onmouseout');
+                google.maps.event.trigger(marker,'mouseout');
             },
             click:function(event)
             {
@@ -1184,8 +1252,36 @@ MapRealty.prototype.itemMap = function(marker){
         }
         thumnail.setAttribute("src",src);
     })
+    var listener = google.maps.event.addListener(marker, 'click', function(event) {
+        temp.click();
+    })
+    setTimeout(function(){
+        onRemove(temp,function(){
+            google.maps.event.removeListener(listener);
+        })
+    },50)
+   
     return temp;
 }
+
+function onRemove(element, callback) {
+    const parent = element.parentNode;
+    if (!parent) throw new Error("The node must already be attached");
+  
+    const obs = new MutationObserver(mutations => {
+      for (const mutation of mutations) {
+        for (const el of mutation.removedNodes) {
+          if (el === element) {
+            obs.disconnect();
+            callback();
+          }
+        }
+      }
+    });
+    obs.observe(parent, {
+      childList: true,
+    });
+  }
 
 MapRealty.prototype.searchControlContent = function(){
     var startDay, endDay;

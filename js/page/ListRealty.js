@@ -100,6 +100,20 @@ ListRealty.prototype.getView = function () {
             '<span>' + "Gộp" + '</span>'
         ]
     })
+
+    var viewMapButton = _({
+        tag: "button",
+        class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+        on: {
+            click: function (evt) {
+               app.openPage(18);
+            }
+        },
+        child: [
+            '<span>' + "Xem bản đồ" + '</span>'
+        ]
+    })
+    
     
     this.$view = _({
         tag: 'singlepage',
@@ -132,7 +146,8 @@ ListRealty.prototype.getView = function () {
                             ]
                         },
                         saveButton,
-                        mergeButton
+                        mergeButton,
+                        viewMapButton
                     ]
                 },
                 {
@@ -251,7 +266,6 @@ ListRealty.prototype.getView = function () {
     arr.push(moduleDatabase.getModule("equipments").load());
     arr.push(moduleDatabase.getModule("juridicals").load());
     Promise.all(arr).then(function (values) {
-        console.log(values)
         var value = values[0];
         self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
@@ -473,7 +487,6 @@ ListRealty.prototype.getDataRow = function (data) {
         else
             staus += " và còn cho thuê";
     }
-    console.log(data)
     if(data.addressid!=0)
     {
         var number = this.checkAddress[data.addressid].addressnumber;
