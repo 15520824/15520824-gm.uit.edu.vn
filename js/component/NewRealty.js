@@ -1660,7 +1660,46 @@ NewRealty.prototype.detructView = function () {
                             }
                         ]
                     },
-                     {
+                    {
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-content-area-right",
+                        child: [
+                            {
+                                tag: "span",
+                                class: "pizo-new-realty-detruct-content-area-label",
+                                props: {
+                                    innerHTML: "Chiều rộng đường vào"
+                                },
+                            },
+                            {
+                                tag: "input",
+                                class: ["pizo-new-realty-dectruct-content-area-access", "pizo-new-realty-dectruct-input"],
+                                attr: {
+                                    type: "number",
+                                    min: 0,
+                                    step: 1
+                                },
+                                props:{
+                                    value:0
+                                }
+                            },
+                            unitWidthRoad
+                        ]
+                    },
+                ]
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-dectruct-tab",
+                props: {
+                    innerHTML: "Giá"
+                }
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-dectruct-content",
+                child:[
+                    {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area",
                         child: [
@@ -1821,33 +1860,6 @@ NewRealty.prototype.detructView = function () {
                             }
                         ]
                     },
-                    {
-                        tag: "div",
-                        class: "pizo-new-realty-dectruct-content-area-right",
-                        child: [
-                            {
-                                tag: "span",
-                                class: "pizo-new-realty-detruct-content-area-label",
-                                props: {
-                                    innerHTML: "Chiều rộng đường vào"
-                                },
-                            },
-                            {
-                                tag: "input",
-                                class: ["pizo-new-realty-dectruct-content-area-access", "pizo-new-realty-dectruct-input"],
-                                attr: {
-                                    type: "number",
-                                    min: 0,
-                                    step: 1
-                                },
-                                props:{
-                                    value:0
-                                }
-                            },
-                            unitWidthRoad
-                        ]
-                    },
-               
                 ]
             }
         ]

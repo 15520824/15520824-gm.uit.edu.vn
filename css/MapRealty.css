@@ -394,7 +394,7 @@ body:not(.mobile-web) .photo-cards.photo-cards_short {
 }
 
 .list-card-details>li {
-    border-left: 1px solid #D1D1D5;
+    
     display: inline;
     padding: 0 6px;
 }
@@ -403,6 +403,12 @@ body:not(.mobile-web) .photo-cards.photo-cards_short {
     border-left: 0;
     padding-left: 0;
 }
+
+.list-card-details>li:last-child {
+    border-left: 1px solid #D1D1D5;
+}
+
+
 
 .list-card-label {
     font-size: 14px;
@@ -699,7 +705,7 @@ body.responsive-search-page .search-page-container .list-card-save {
 
 
 .ds-container .ds-data-view, .ds-container .ds-media-col {
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 }
@@ -714,6 +720,8 @@ body.responsive-search-page .search-page-container .list-card-save {
 {
     .ds-container.ds-mobile-single-scroll .ds-media-col {
         display: block!important;
+        position: relative;
+        height: 90vh;
     }
 }
 
@@ -753,6 +761,8 @@ body.responsive-search-page .search-page-container .list-card-save {
 
 .ds-container .ds-data-view>ul, .ds-container .ds-media-col>ul {
     min-height: 80%;
+    overflow: auto;
+    height: calc(100% - 48px);
 }
 
 .media-stream-tile {
@@ -1364,4 +1374,44 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     border-radius: 3px;
     transition: all 0.2s ease 0s;
     border-color: rgb(0, 106, 255);
+}
+
+.image-tabcontainer .absol-static-tabbar-active-box{
+    top:unset;
+}
+
+.image-tabcontainer .absol-static-tabbar-active-box .absol-static-tabbar-hline{
+    border-bottom: solid 5px rgb(127, 127, 128);
+}
+
+.image-tabcontainer .absol-static-tabbar-button>span{
+    font-size: 1.2em;
+}
+
+.image-tabcontainer .absol-static-tabbar-button{
+    width: 50%;
+}
+
+
+.image-tabcontainer .absol-static-tabbar-button:hover {
+    color: rgb(30, 30, 55);
+    font-weight: 600;
+}
+
+
+.image-tabcontainer .absol-static-tabbar-button.active {
+    background-color: #26438d;
+    color: white;
+}
+
+.pizo-new-realty-dectruct.pizo-only-view{
+    width: unset;
+    margin-top:unset;
+    margin-right: unset;
+    margin: 10px;
+}
+
+.pizo-new-realty-dectruct.pizo-only-view input{
+    pointer-events: none;
+    border: none !important;
 }

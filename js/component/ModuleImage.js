@@ -806,7 +806,7 @@ descViewImagePreview.prototype.ItemTimeLine = function(data,i)
             },
             on:{
                 click: function(event){
-                    self.SelectImage(i);
+                    self.SelectImage(index);
                 }
             },
             child:[

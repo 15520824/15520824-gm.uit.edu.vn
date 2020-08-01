@@ -38,7 +38,17 @@ function App(){
     moduleDatabase.getModule("polygon", ["loadPolygon.php", "addPolygon.php", "updatePolygon.php", "deletePolygon.php"]);
     moduleDatabase.getModule("geometry",["loadMap.php","addMap.php","updateMap.php","deleteMap.php"]);
     moduleDatabase.getModule("geometry_created",["loadCreatedMap.php"]);
-    moduleDatabase.getModule("image");
+    moduleDatabase.getModule("streets");
+    moduleDatabase.getModule("helps");
+    moduleDatabase.getModule("states");
+    moduleDatabase.getModule("districts");
+    moduleDatabase.getModule("wards");
+    moduleDatabase.getModule("addresses");
+    moduleDatabase.getModule("equipments");
+    moduleDatabase.getModule("departments");
+    moduleDatabase.getModule("positions");
+    moduleDatabase.getModule("juridicals");
+    moduleDatabase.getModule("nations");
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
@@ -330,9 +340,9 @@ App.prototype.openPage = function(index){
     switch(index)
     {
         case 4:
-            xmlModalDragManyFiles.createModal(document.body,function(value){
-                console.log(value);
-            })
+            // xmlModalDragManyFiles.createModal(document.body,function(value){
+            //     console.log(value);
+            // })
             break;
         case 5:
             var mListPositions = new ListPositions();
