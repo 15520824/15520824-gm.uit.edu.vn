@@ -1708,6 +1708,9 @@ tableView.prototype.pagination = function (number, functionClick) {
     }
         temp.updateSize();
     this.goto = function(index){
+        var active = $("a.active", container);
+        if (active !== undefined)
+        active.style.color = "#333d45";
         arr[index-1].click();
     }
 

@@ -155,6 +155,17 @@ MapRealty.prototype.getView = function () {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());
     arr.push(moduleDatabase.getModule("juridicals").load());
+    moduleDatabase.getModule("users").load().then(function(value)
+    {
+        self.checkUser = moduleDatabase.getModule("users").getLibary("phone");
+        self.checkUserID = moduleDatabase.getModule("users").getLibary("id");
+    })
+
+    moduleDatabase.getModule("contacts").load().then(function(value)
+    {
+        self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+        self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
+    })
     Promise.all(arr).then(function(values){
         this.checkState = moduleDatabase.getModule("states").getLibary("id");
         this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
@@ -1162,6 +1173,573 @@ MapRealty.prototype.modalLargeRealty = function(data)
     return modal;
 }
 
+MapRealty.prototype.itemCount = function(data)
+{
+    var input = _({
+        tag: "input",
+        class: ["pizo-new-realty-dectruct-content-area-floor", "pizo-new-realty-dectruct-input"],
+        attr: {
+            type: "number",
+            min: 0,
+            step: 1
+        },
+        props:{
+            value:1
+        }
+    });
+    if(data.content!==undefined)
+    {
+        input.value = data.content;
+    }
+    var temp = _({
+        tag: "div",
+        class: ["pizo-new-realty-dectruct-content-area-size-zone-all"],
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-desc-detail-row",
+                child: [
+                    {
+                        tag: "span",
+                        class: "pizo-new-realty-dectruct-content-area-floor-label",
+                        props: {
+                            innerHTML: data.name,
+                        },
+                    },
+                    input
+                ]
+            }
+        ]
+    });
+    temp.equipmentid = data.id;
+    temp.getData = function()
+    {
+        var result = {
+            equipmentid:data.id,
+            content:input.value
+        }
+        return result;
+    }
+    return temp;
+}
+
+MapRealty.prototype.itemDisplayNone = function(data)
+{
+    var temp = _({
+        tag:"div",
+        style:{
+            display:"none"
+        }
+    })
+    temp.equipmentid = data.id;
+    temp.getData = function()
+    {
+        var result = {
+            equipmentid:data.id,
+            content:data.content
+        }
+        return result;
+    }
+    return temp;
+}
+
+MapRealty.prototype.convenientView = function (data) {
+    var self = this;
+    var dataEquipments = moduleDatabase.getModule("equipments").data;
+    var arr = [];
+    for(var i = 0;i<dataEquipments.length;i++)
+    {
+        if(dataEquipments[i].available===0)
+        continue;
+        arr.push({text:dataEquipments[i].name,value:dataEquipments[i].id,data:dataEquipments[i]})
+    }
+    var container = _({
+        tag:"div",
+        class:"pizo-new-realty-dectruct-content-area-size"
+    })
+    var equipment = _({
+        tag:"selectbox",
+        style:{
+            width:"100%",
+            pointerEvents:"none"
+        },
+        props:{
+            items:arr,
+            enableSearch: true
+        },
+        on:{
+            add:function(event)
+            {
+                switch(parseInt(event.itemData.data.type))
+                {
+                    case 0:
+                        container.appendChild(self.itemCount(event.itemData.data));
+                        break;
+                    case 1:
+                        container.appendChild(self.itemDisplayNone(event.itemData.data));
+                        break;
+                }
+            },
+            remove:function(event)
+            {
+                for(var i = 0;i<container.childNodes.length;i++)
+                {
+                    if(container.childNodes[i].equipmentid == event.itemData.data.id)
+                    {
+                        container.childNodes[i].selfRemove();
+                        break;
+                    }
+                }
+            }
+        }
+    });
+
+    if(data!==undefined)
+    {
+        var value = [];
+        var temp;
+        var libary = moduleDatabase.getModule("equipments").getLibary("id");
+        for(var i = 0;i<data.equipment.length;i++)
+        {
+            temp = libary[data.equipment[i].equipmentid];
+            temp.content = data.equipment[i].content;
+            value.push(data.equipment[i].equipmentid);
+            switch(parseInt(temp.type))
+            {
+                case 0:
+                    if(temp.available==1)
+                    container.appendChild(self.itemCount(temp));
+                    else
+                    container.appendChild(self.itemDisplayNone(temp));
+                    break;
+                case 1:
+                    container.appendChild(self.itemDisplayNone(temp));
+                    break;
+            }
+        }
+        equipment.values = value;
+    }
+    
+    var temp = _({
+        tag: "div",
+        class: "pizo-new-realty-convenient",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-convenient-tab",
+                props: {
+                    innerHTML: "Tiện ích trong nhà"
+                }
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-convenient-content",
+                child: [
+                    {
+                        tag: "div",
+                        class: "pizo-new-realty-convenient-content-size",
+                        child: [
+                            equipment
+                        ]
+                    },
+                    container
+                ]
+            }
+        ]
+    })
+    this.containerEquipment = container;
+    return temp;
+}
+
+MapRealty.prototype.contactView = function (data) {
+    var self = this;
+    var containerContact = _({
+        tag: "div",
+        class: "pizo-new-realty-contact-content",
+        child: [
+        ]
+    });
+    var temp = _({
+        tag: "div",
+        class: "pizo-new-realty-contact",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-contact-tab",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-tab-label",
+                        props:{
+                            innerHTML:"Thông tin liên hệ"
+                        }
+                    },
+                    // {
+                    //     tag:"button",
+                    //     class:"pizo-new-realty-contact-tab-button",
+                    //     on:{
+                    //         click:function(event){
+                    //             containerContact.appendChild(self.contactItem());
+                                
+                    //         }
+                    //     },
+                    //     child:[
+                    //         {
+                    //             tag:"i",
+                    //             class:"material-icons",
+                    //             style:{
+                    //                 fontSize:"1rem"
+                    //             },
+                    //             props:{
+                    //                 innerHTML:"add"
+                    //             }
+                    //         }
+                    //     ]
+                    // }
+                ]
+            },
+            containerContact
+        ]
+    })
+    console.log(data.contact)
+    if(data!==undefined)
+    {
+        for(var i = 0 ;i<data.contact.length;i++)
+        {
+            containerContact.appendChild(this.contactItem(data.contact[i]));
+        }
+    }
+    this.containerContact = containerContact;
+
+    return temp;
+}
+
+MapRealty.prototype.juridicalView = function (data) {
+    var arr = moduleDatabase.getModule("juridicals").getList("name","id");
+    var temp = _({
+        tag: "div",
+        class: "pizo-new-realty-juridical",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-juridical-tab",
+                props: {
+                    innerHTML: "Pháp lý"
+                }
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-juridical-content",
+                child: [
+                    {
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-content-area-right",
+                        child: [
+                            {
+                                tag: "span",
+                                class: "pizo-new-realty-detruct-content-area-label",
+                                props: {
+                                    innerHTML: "Tình trạng"
+                                },
+                            },
+                            {
+                                tag: "selectmenu",
+                                class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
+                                props: {
+                                    items:arr
+                                }
+                            }
+                        ]
+                    },
+                ]
+            }
+        ]
+    })
+    this.juridical = $('div.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input',temp);
+    if(data!==undefined)
+    {
+        this.juridical.value = data.juridical;
+    }
+    return temp;
+}
+
+MapRealty.prototype.contactItem = function(data){
+  
+    var name,typecontact,phone,statusphone,note;
+    var self = this;
+    var temp = _({
+        tag:"div",
+        class:"pizo-new-realty-contact-item",
+        child:[
+            {
+                tag:"div",
+                class:"pizo-new-realty-contact-item-name",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-item-name-label",
+                        props:{
+                            innerHTML:"Tên"
+                        }
+                    },
+                    {
+                        tag:"input",
+                        class:"pizo-new-realty-contact-item-name-input",
+                        props:{
+                        }
+                    },
+                    {
+                        tag:"selectmenu",
+                        class:"pizo-new-realty-contact-item-name-selectbox",
+                        props:{
+                            items:[
+                                {text:"Chưa xác định",value:0},
+                                {text:"Môi giới", value:1},
+                                {text:"Chủ nhà",value:2},
+                                {text:"Họ hàng",value:3}
+                            ]
+                        }
+                    },
+                    {
+                        tag:"button",
+                        class:"pizo-new-realty-contact-item-setting",
+                        on:{
+                            click:function(event){
+                                var tempData = temp.getData();
+                                if(tempData.username!==undefined)
+                                self.editAccount(temp,tempData);
+                                else
+                                self.editContact(temp,tempData);
+                            }
+                        },
+                        child:[
+                            {
+                                tag:"i",
+                                class:"material-icons",
+                                style:{
+                                    fontSize:"1rem",
+                                    verticalAlign: "middle"
+                                },
+                                props:{
+                                    innerHTML:"settings"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        tag:"button",
+                        class:"pizo-new-realty-contact-item-close",
+                        on:{
+                            click:function(event){
+                                temp.selfRemove();
+                            }
+                        },
+                        child:[
+                            {
+                                tag:"i",
+                                class:"material-icons",
+                                style:{
+                                    fontSize:"1rem",
+                                    verticalAlign: "middle"
+                                },
+                                props:{
+                                    innerHTML:"close"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                tag:"div",
+                class:"pizo-new-realty-contact-item-phone",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-item-phone-label",
+                        props:{
+                            innerHTML:"Số điện thoại"
+                        }
+                    },
+                    {
+                        tag:"input",
+                        class:"pizo-new-realty-contact-item-phone-input",
+                        props:{
+                            type:"number"
+                        },
+                        on:{
+                            change:function(event)
+                            {
+                                if(self.checkUser===undefined)
+                                {
+                                    var element = this;
+                                    moduleDatabase.getModule("users").load().then(function(){
+                                        setTimeout(function(){
+                                            element.emit("change");
+                                        },10)
+                                      
+                                    })
+                                    return;
+                                }
+                                if(self.checkContact===undefined)
+                                {
+                                    var element = this;
+                                    moduleDatabase.getModule("contacts").load().then(function(){
+                                        setTimeout(function(){
+                                            element.emit("change");
+                                        },10)
+                                    })
+                                    return;
+                                }
+                                if(self.checkUser[this.value]!==undefined||self.checkContact[this.value]!==undefined)
+                                {
+                                    if(self.checkUser[this.value]!==undefined){
+                                        var tempValue = self.checkUser[this.value];
+                                        temp.setInformation(tempValue);
+                                    }
+                                    else
+                                    {
+                                        var tempValue = self.checkContact[this.value];
+                                        temp.setInformation(tempValue);
+                                    }
+                                }else
+                                {
+                                    temp.setOpenForm();
+                                }
+                            }
+                        }
+                    },
+                    {
+                        tag:"selectmenu",
+                        class:"pizo-new-realty-contact-item-phone-selectbox",
+                        style:{
+                            width: "190px"
+                        },
+                        props:{
+                            items:[
+                                {text:"Còn hoạt động",value:1},
+                                {text:"Sai số", value:0},
+                                {text:"Gọi lại sau",value:2},
+                                {text:"Bỏ qua",value:3},
+                                {text:"Khóa máy",value:4}
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                tag:"div",
+                class:"pizo-new-realty-contact-item-note",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-item-note-label",
+                        props:{
+                            innerHTML:"Ghi chú"
+                        }
+                    },
+                    {
+                        tag:"textarea",
+                        class:"pizo-new-realty-contact-item-note-input"
+                    }
+                ]
+            },
+        ]
+    })
+    var name = $('input.pizo-new-realty-contact-item-name-input',temp);
+    var typecontact = $('div.pizo-new-realty-contact-item-name-selectbox',temp);
+    var phone = $('input.pizo-new-realty-contact-item-phone-input',temp);
+    var statusphone = $('div.pizo-new-realty-contact-item-phone-selectbox',temp);
+    var note = $('textarea.pizo-new-realty-contact-item-note-input',temp);
+    phone.checkContact = function(data)
+    {
+        if(self.checkUserID===undefined)
+        {
+            var element = this;
+            moduleDatabase.getModule("users").load().then(function(){
+                setTimeout(function(){
+                    element.checkContact(data);
+                },10)
+            })
+            return;
+        }
+        if(self.checkContactID===undefined)
+        {
+            var element = this;
+            moduleDatabase.getModule("contacts").load().then(function(){
+                setTimeout(function(){
+                    element.checkContact(data);
+                },10)
+            })
+            return;
+        }
+        if(data.contactid!==undefined&&data.contactid!==0)
+        {
+            temp.setInformation(self.checkContactID[data.contactid]);
+        }else
+        if(data.userid!==undefined&&data.userid!==0)
+        {
+            temp.setInformation(self.checkUserID[data.userid]);
+        }else
+        {
+            temp.setInformation(data);
+        }
+    }
+    temp.setInformation = function(data)
+    {
+        if(data === undefined)
+        {
+            temp.selfRemove();
+            return;
+        }
+        temp.data = data;
+        if(data.statusphone === undefined)
+            statusphone.value = 1
+        else
+            statusphone.value = data.statusphone;
+        phone.value = data.phone;
+        name.value = data.name;
+        name.setAttribute("disabled","");
+        statusphone.style.pointerEvents = "none";
+        statusphone.style.backgroundColor = "#f3f3f3";
+    }
+    temp.setOpenForm = function(data)
+    {
+        temp.data = data;
+        statusphone.value = 1;
+        name.removeAttribute("disabled");
+        statusphone.style.pointerEvents = "unset";
+        statusphone.style.backgroundColor = "unset";
+    }
+    temp.getData = function()
+    {
+        if(temp.data!==undefined)
+        {
+            temp.data.typecontact = typecontact.value;
+            temp.data.note = note.value;
+            return temp.data;
+        }else
+        {
+            return {
+                name:name.value,
+                statusphone:statusphone.value,
+                phone:phone.value,
+                typecontact : typecontact.value,
+                note:note.value
+            }
+        }
+    }
+
+    if(data!==undefined)
+    {
+        phone.checkContact(data);
+        typecontact.value = data.typecontact;
+        note.value = data.note;
+    }
+
+    return temp;
+}
+
 MapRealty.prototype.detailHouse = function (data) {
     var unitHeight = unit_Long(function (event) {
         var height = $('input.pizo-new-realty-dectruct-content-area-height', temp);
@@ -1188,11 +1766,80 @@ MapRealty.prototype.detailHouse = function (data) {
         width.value = width.value * event.lastValue / event.value;
     })
     var self = this;
-
+    var priceRent = _(  {
+        tag: "div",
+        class: "pizo-new-realty-dectruct-content-area-right",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-desc-detail-row",
+                child: [
+                    {
+                        tag: "span",
+                        class: ["pizo-new-realty-detruct-content-price-rent-label","pizo-new-realty-detruct-content-area-label"],
+                        props: {
+                            innerHTML: "Giá thuê tháng"
+                        },
+                    },
+                    {
+                        tag: "input",
+                        class: ["pizo-new-realty-detruct-content-price-rent","pizo-new-realty-dectruct-input"],
+                        on:{
+                            input:function(event)
+                            {
+                                this.value = formatNumber(this.value);
+                            },
+                            blur:function(event)
+                            {
+                                this.value = reFormatNumber(this.value);
+                            }
+                        }
+                    },
+                    {
+                        tag:"selectmenu",
+                        class:  "pizo-new-realty-detruct-content-price-rent-unit",
+                        on:{
+                            change:function(event){
+                                var price = $('input.pizo-new-realty-detruct-content-price-rent', temp);
+                                price.value = (price.value * event.lastValue / event.value);
+                            }
+                        },
+                        props:{
+                            items:[
+                                {text:"VND",value:1},
+                                {text:"USD",value:23180}
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+    if(data.salestatus/10<1)
+    {
+        priceRent.style.display = "none";
+    }
+    var fullAdressOld = "";
+    if(data.addressid_old!=0)
+    {
+        var number = this.checkAddress[data.addressid_old].addressnumber;
+        var street = this.checkStreet[this.checkAddress[data.addressid_old].streetid].name;
+        var ward = this.checkWard[this.checkAddress[data.addressid_old].wardid].name;
+        var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].name;
+        var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].stateid].name;
+        fullAdressOld = number+" "+street+", "+ward+", "+district+", "+state;
+    }
     var temp = _({
         tag: "div",
         class: ["pizo-new-realty-dectruct","pizo-only-view"],
         child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-dectruct-tab",
+                props: {
+                    innerHTML: "Mô tả"
+                }
+            },
             {
                 tag: "div",
                 class: "pizo-new-realty-dectruct-tab",
@@ -1992,56 +2639,7 @@ MapRealty.prototype.detailHouse = function (data) {
                             }
                         ]
                     },
-                    {
-                        tag: "div",
-                        class: "pizo-new-realty-dectruct-content-area-right",
-                        child: [
-                            {
-                                tag: "div",
-                                class: "pizo-new-realty-desc-detail-row",
-                                child: [
-                                    {
-                                        tag: "span",
-                                        class: ["pizo-new-realty-detruct-content-price-rent-label","pizo-new-realty-detruct-content-area-label"],
-                                        props: {
-                                            innerHTML: "Giá thuê tháng"
-                                        },
-                                    },
-                                    {
-                                        tag: "input",
-                                        class: ["pizo-new-realty-detruct-content-price-rent","pizo-new-realty-dectruct-input"],
-                                        on:{
-                                            input:function(event)
-                                            {
-                                                this.value = formatNumber(this.value);
-                                            },
-                                            blur:function(event)
-                                            {
-                                                this.value = reFormatNumber(this.value);
-                                            }
-                                        }
-                                    },
-                                    {
-                                        tag:"selectmenu",
-                                        class:  "pizo-new-realty-detruct-content-price-rent-unit",
-                                        on:{
-                                            change:function(event){
-                                                var price = $('input.pizo-new-realty-detruct-content-price-rent', temp);
-                                                price.value = (price.value * event.lastValue / event.value);
-                                            }
-                                        },
-                                        props:{
-                                            items:[
-                                                {text:"VND",value:1},
-                                                {text:"USD",value:23180}
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                  
+                    priceRent,
                     {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area-right",
@@ -2068,7 +2666,10 @@ MapRealty.prototype.detailHouse = function (data) {
                         ]
                     },
                 ]
-            }
+            },
+            this.convenientView(data),
+            this.contactView(data),
+            this.juridicalView(data)
         ]
     })
     var inputHeight = $('input.pizo-new-realty-dectruct-content-area-height.pizo-new-realty-dectruct-input',temp);
@@ -2178,6 +2779,7 @@ MapRealty.prototype.itemMap = function(marker){
         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
         fullAdress = number+" "+street+", "+ward+", "+district+", "+state;
     }
+
     var statusIcon = _({
         tag:"i",
         class:["material-icons", "list-card-type-icon", "zsg-icon-for-sale"],

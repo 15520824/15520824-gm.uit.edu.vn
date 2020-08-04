@@ -904,7 +904,16 @@ NewRealty.prototype.descViewdetail = function () {
                                                     },
                                                     {
                                                         tag: "checkbox",
-                                                        class: "pizo-new-realty-desc-detail-row-menu-2-checkbox"
+                                                        class: "pizo-new-realty-desc-detail-row-menu-2-checkbox",
+                                                        on:{
+                                                            change:function(event)
+                                                            {
+                                                                if(this.checked == false)
+                                                                self.priceRent.style.display = "none";
+                                                                else
+                                                                self.priceRent.style.display = "";
+                                                            }
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -981,6 +990,56 @@ NewRealty.prototype.detructView = function () {
         width.value = width.value * event.lastValue / event.value;
     })
     var self = this;
+
+    var priceRent = _(    {
+        tag: "div",
+        class: "pizo-new-realty-dectruct-content-area-right",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-desc-detail-row",
+                child: [
+                    {
+                        tag: "span",
+                        class: ["pizo-new-realty-detruct-content-price-rent-label","pizo-new-realty-detruct-content-area-label"],
+                        props: {
+                            innerHTML: "Giá thuê tháng"
+                        },
+                    },
+                    {
+                        tag: "input",
+                        class: ["pizo-new-realty-detruct-content-price-rent","pizo-new-realty-dectruct-input"],
+                        on:{
+                            input:function(event)
+                            {
+                                this.value = formatNumber(this.value);
+                            },
+                            blur:function(event)
+                            {
+                                this.value = reFormatNumber(this.value);
+                            }
+                        }
+                    },
+                    {
+                        tag:"selectmenu",
+                        class:  "pizo-new-realty-detruct-content-price-rent-unit",
+                        on:{
+                            change:function(event){
+                                var price = $('input.pizo-new-realty-detruct-content-price-rent', temp);
+                                price.value = (price.value * event.lastValue / event.value);
+                            }
+                        },
+                        props:{
+                            items:[
+                                {text:"VND",value:1},
+                                {text:"USD",value:23180}
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    });
 
     var temp = _({
         tag: "div",
@@ -1785,56 +1844,7 @@ NewRealty.prototype.detructView = function () {
                             }
                         ]
                     },
-                    {
-                        tag: "div",
-                        class: "pizo-new-realty-dectruct-content-area-right",
-                        child: [
-                            {
-                                tag: "div",
-                                class: "pizo-new-realty-desc-detail-row",
-                                child: [
-                                    {
-                                        tag: "span",
-                                        class: ["pizo-new-realty-detruct-content-price-rent-label","pizo-new-realty-detruct-content-area-label"],
-                                        props: {
-                                            innerHTML: "Giá thuê tháng"
-                                        },
-                                    },
-                                    {
-                                        tag: "input",
-                                        class: ["pizo-new-realty-detruct-content-price-rent","pizo-new-realty-dectruct-input"],
-                                        on:{
-                                            input:function(event)
-                                            {
-                                                this.value = formatNumber(this.value);
-                                            },
-                                            blur:function(event)
-                                            {
-                                                this.value = reFormatNumber(this.value);
-                                            }
-                                        }
-                                    },
-                                    {
-                                        tag:"selectmenu",
-                                        class:  "pizo-new-realty-detruct-content-price-rent-unit",
-                                        on:{
-                                            change:function(event){
-                                                var price = $('input.pizo-new-realty-detruct-content-price-rent', temp);
-                                                price.value = (price.value * event.lastValue / event.value);
-                                            }
-                                        },
-                                        props:{
-                                            items:[
-                                                {text:"VND",value:1},
-                                                {text:"USD",value:23180}
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                  
+                    priceRent,
                     {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area-right",
@@ -1890,6 +1900,7 @@ NewRealty.prototype.detructView = function () {
     this.inputLiving = $('input.pizo-new-realty-dectruct-content-area-living',temp);
     this.inputBasement = $('input.pizo-new-realty-dectruct-content-area-basement',temp);
     this.inputFloor = $('input.pizo-new-realty-dectruct-content-area-floor',temp);
+    this.priceRent = priceRent;
 
     this.advanceDetruct = $("div.pizo-new-realty-dectruct-content-area-advance",temp);
     this.simpleDetruct = $("div.pizo-new-realty-dectruct-content-area-simple",temp);
