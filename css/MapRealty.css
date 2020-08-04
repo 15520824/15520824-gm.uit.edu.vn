@@ -1587,6 +1587,7 @@ input[type="submit"] {
   margin-right: unset;
   margin: 10px;
   overflow: auto;
+  position: relative;
 }
 
 .pizo-new-realty-dectruct.pizo-only-view input {
@@ -1641,5 +1642,5 @@ input[type="submit"] {
 }
 
 .home-details-content .as-button-range{
-    height: 30px;
+    height: 40px;
 }

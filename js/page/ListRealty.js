@@ -353,6 +353,12 @@ ListRealty.prototype.getView = function () {
             arr.push(connect);
             arr.push({id:value[i].addressid});
             connect = "||";
+            if(value[i].addressid_old)
+            {
+                arr.push(connect);
+                arr.push({id:value[i].addressid_old});
+            }
+       
         }
         moduleDatabase.getModule("addresses").load({WHERE:arr}).then(function(valueAdr){
             self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");

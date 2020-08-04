@@ -15,13 +15,11 @@ import ListHelp from './page/ListHelp';
 import ListEditHelp from './page/ListEditHelp';
 import ListPositions from './page/ListPositions';
 import ListAccount from './page/ListAccount';
-import ListAddress from './page/ListAddress';
 import ListContact from './page/ListContact';
 import ListEquipment from './page/ListEquipment';
 import ListJuridical from './page/ListJuridical';
 import MapRealty from './page/MapRealty';
 
-import xmlModalDragManyFiles from './component/modal_drag_drop_manyfiles';
 import moduleDatabase from './component/ModuleDatabase';
 
 var _ = Fcore._;
@@ -195,10 +193,6 @@ App.prototype.getView = function()
                                                 {
                                                     text:"Tên đường",
                                                     pageIndex:24
-                                                },
-                                                {
-                                                    text:"Địa chỉ",
-                                                    pageIndex:25
                                                 },
                                                 {
                                                     text:"Thông tin quy hoạch",
@@ -439,13 +433,6 @@ App.prototype.openPage = function(index){
             var mListStreet = new ListStreet();
             mListStreet.attach(this);
             var frameview = mListStreet.getView();
-            this.body.addChild(frameview);
-            this.body.activeFrame(frameview);
-        break;
-        case 25:
-            var mListAddress = new ListAddress();
-            mListAddress.attach(this);
-            var frameview = mListAddress.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;
