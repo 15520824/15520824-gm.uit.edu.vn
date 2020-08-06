@@ -481,11 +481,15 @@
                                 off = -height;
                             }
                             // FIXME: should change accelerated/non-accelerated state lazily
-                            o.node.style[transformJSPropertyName] = off ? 'translate(0,'+off+'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original;
-                            if(o.node.childrenNodes.length!=0)
+                            var transform = off ? 'translate(0,'+off+'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original;
+                            if(o.node.style[transformJSPropertyName]!=transform)
                             {
-                                var arr = o.node.childrenNodes;
-                                onChangeChild(arr,off ? 'translate(0,'+off+'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original);
+                                o.node.style[transformJSPropertyName] = transform;
+                                if(o.node.childrenNodes.length!=0)
+                                {
+                                    var arr = o.node.childrenNodes;
+                                    onChangeChild(arr,transform);
+                                }
                             }
                         }
                        

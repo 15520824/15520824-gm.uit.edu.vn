@@ -665,10 +665,16 @@ tableView.prototype.getElementNext = function(element)
     return element.nextSibling;
 }
 
-tableView.prototype.setUpSwipe = function(isSwipeLeft = true,isSwipeRight = true)
+tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
 {
-    this.isSwipeLeft = isSwipeLeft;
-    this.isSwipeRight = isSwipeRight;
+    if(isSwipeLeft!==undefined)
+    {
+        this.isSwipeLeft = true;
+    }
+    if(isSwipeRight!==undefined)
+    {
+        this.isSwipeRight = true;
+    }
 }
 
 tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
