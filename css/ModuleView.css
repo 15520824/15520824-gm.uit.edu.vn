@@ -495,14 +495,26 @@ table.sortTable th.postionStickyCell{
   color: red;
   cursor: pointer;
 }
-
+/* 
 .pagination {
   display: flex;
   justify-content: center;
   position: absolute;
   transform: translateX(-50%) translateY(10px);
   left: 50%;
+} */
+.container-sortTable{
+  width: 100%;
+  overflow: auto;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .pagination-container {
   padding: 5px 0;
   border-radius: 8px;
@@ -563,7 +575,6 @@ table.sortTable th.postionStickyCell{
   padding:5px;
   color: #333d45;
   min-width: 30px;
-  height: 30px;
   align-items: center;
   justify-content: center;
   transition-duration: 0.5s;
@@ -572,6 +583,9 @@ table.sortTable th.postionStickyCell{
   font-weight: 700;
   font-size: 18px;
   cursor: pointer;
+  -moz-box-sizing: unset;
+  box-sizing: unset;
+  -webkit-box-sizing: unset;
 }
 .pagination-wrapper .pagination-page-number.active{
   display: flex;
@@ -586,7 +600,7 @@ table.sortTable th.postionStickyCell{
 .pagination-wrapper{
   display: flex;
 }
-
+/* 
 .pagination-align{
   position: absolute;
   transform: translateX(-50%);
@@ -594,5 +608,5 @@ table.sortTable th.postionStickyCell{
   width: 100%;
   height: 72px;
   background-color: white;
-}
+} */
 

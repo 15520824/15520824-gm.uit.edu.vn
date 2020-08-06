@@ -316,9 +316,6 @@
     width: 100%;
 }
 
-.pizo-list-realty-main-result-control .sortTable th,.pizo-list-realty-main-result-control .sortTableClone th{
-    top:50px;
-}
 
 
 .pizo-list-realty-main-result-control .parent:nth-child(odd) td{

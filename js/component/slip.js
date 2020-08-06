@@ -408,14 +408,14 @@
                 {
                     element.setDisPlayNone();
                 }
-                if(element.elementParent.tagName == "TABLE")
+                if(element.elementParent.tagName == "DIV")
                 {
                     element.minDrag = element.elementParent.headerTable.offsetHeight;
                 }else
                 element.minDrag = element.elementParent.offsetTop + element.elementParent.offsetHeight;
-                if(element.elementParent.tagName == "TABLE")
+                if(element.elementParent.tagName == "DIV")
                 {
-                    element.maxDrag = element.elementParent.offsetHeight-element.offsetHeight;
+                    element.maxDrag = element.elementParent.childNodes[0].offsetHeight-element.offsetHeight;
                 }else
                 element.maxDrag = element.elementParent.offsetTop +element.elementParent.getHeightChild();
 
