@@ -404,6 +404,7 @@ DataStructure.prototype.add = function(data,needChange = false){
                 self.setFormatAdd(data);
                 var update = value["update"];
                 var insert = value["add"];
+                var deleteValue = value["delete"];
                 if(insert!==undefined)
                 {
                     for(var i = 0;i<value.add.length;i++)
@@ -426,6 +427,19 @@ DataStructure.prototype.add = function(data,needChange = false){
                             if(moduleDatabase.data[param]!==undefined)
                             {
                                 moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+                            }
+                        }
+                    }
+                }
+                if(deleteValue!==undefined)
+                {
+                    for(var i = 0;i<deleteValue.length;i++)
+                    {
+                        for(var param in deleteValue[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatDelete(deleteValue[i][param]);
                             }
                         }
                     }
@@ -489,6 +503,7 @@ DataStructure.prototype.update = function(data,needChange = false){
                 self.setFormatUpdate(data);
                 var update = value["update"];
                 var insert = value["add"];
+                var deleteValue = value["delete"];
                 if(insert!==undefined)
                 {
                     for(var i = 0;i<value.add.length;i++)
@@ -511,6 +526,19 @@ DataStructure.prototype.update = function(data,needChange = false){
                             if(moduleDatabase.data[param]!==undefined)
                             {
                                 moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+                            }
+                        }
+                    }
+                }
+                if(deleteValue!==undefined)
+                {
+                    for(var i = 0;i<deleteValue.length;i++)
+                    {
+                        for(var param in deleteValue[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatDelete(deleteValue[i][param]);
                             }
                         }
                     }
@@ -543,20 +571,68 @@ DataStructure.prototype.setFormatUpdate = function(data)
     }
 }
 
+DataStructure.prototype.setFormatDelete = function(data){
+    var self = this;
+    console.log(data)
+    if(data.id!==undefined)
+    {
+        var temp = self.Libary["id"][data.id];
+        for(var param in self.Libary)
+        {
+            if(typeof self.Libary[param]!= "function")
+            self.Libary[param].deleteFunction(temp,param);
+        }
+        self.data.splice(self.data.indexOf(temp),1);
+        self.countRow--;
+    }
+}
+
 DataStructure.prototype.delete = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpDeleter,data).then(function(value){
-            if(data.id!==undefined)
+            self.setFormatDelete(data);
+            var update = value["update"];
+            var insert = value["add"];
+            var deleteValue = value["delete"];
+            if(insert!==undefined)
             {
-                var temp = self.Libary["id"][data.id];
-                for(var param in self.Libary)
+                for(var i = 0;i<value.add.length;i++)
                 {
-                    if(typeof self.Libary[param]!= "function")
-                    self.Libary[param].deleteFunction(temp,param);
+                    for(var param in insert[i])
+                    {
+                        if(moduleDatabase.data[param]!==undefined)
+                        {
+                            moduleDatabase.data[param].setFormatAdd(insert[i][param]);
+                        }
+                    }
                 }
-                self.data.splice(self.data.indexOf(temp),1);
-                self.countRow--;
+            }
+            if(update!==undefined)
+            {
+                for(var i = 0;i<update.length;i++)
+                {
+                    for(var param in update[i])
+                    {
+                        if(moduleDatabase.data[param]!==undefined)
+                        {
+                            moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+                        }
+                    }
+                }
+            }
+            if(deleteValue!==undefined)
+            {
+                for(var i = 0;i<deleteValue.length;i++)
+                {
+                    for(var param in deleteValue[i])
+                    {
+                        if(moduleDatabase.data[param]!==undefined)
+                        {
+                            moduleDatabase.data[param].setFormatDelete(deleteValue[i][param]);
+                        }
+                    }
+                }
             }
             resolve();
         }).catch(function(err){

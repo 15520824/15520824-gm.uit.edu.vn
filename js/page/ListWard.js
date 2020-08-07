@@ -177,6 +177,9 @@ ListWard.prototype.getView = function () {
     var tabContainer = _({
         tag:"div",
         class:["pizo-list-realty-main-result-control","drag-zone-bg","no-animation"],
+        style:{
+            height:"calc(100% - 60px)"
+        },
         child:[
         ]
     })

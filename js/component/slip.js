@@ -334,6 +334,14 @@
                         if (Math.abs(move.y) < this.target.height+20) {
                             if (this.dispatch(this.target.node, 'animateswipe', {x: move.x, originalIndex: originalIndex})) {
                                 this.target.node.style[transformJSPropertyName] = 'translate(' + move.x + 'px,0) ' + hwLayerMagicStyle + this.target.baseTransform.value;
+                                if(this.target.node.hiddenButton!==undefined){
+                                    this.target.node.hiddenButton.style["height"] = this.target.node.offsetHeight+"px";
+                                    this.target.node.hiddenButton.style["min-width"] = this.target.node.offsetHeight+"px"
+                                    this.target.node.hiddenButton.style[transformJSPropertyName] = 'translate(' + -move.x + 'px,0) ' + hwLayerMagicStyle + this.target.baseTransform.value;
+                                    if(-move.x>0)
+                                    this.target.node.hiddenButton.style["width"] = -move.x+"px"
+                                }
+                                
                             }
                             return false;
                         } else {
@@ -354,8 +362,8 @@
                         var swipedPercent = Math.abs((this.startPosition.x - this.previousPosition.x) / this.container.clientWidth) * 100;
 
                         var swiped = (velocity > this.options.minimumSwipeVelocity && move.time > this.options.minimumSwipeTime) || (this.options.keepSwipingPercent && swipedPercent > this.options.keepSwipingPercent);
-
-                        if (swiped) {
+        
+                        if (swiped) {  
                             if (this.dispatch(this.target.node, 'swipe', {direction: move.directionX, originalIndex: originalIndex})) {
                                 swipeSuccess = true; // can't animate here, leaveState overrides anim
                             }
@@ -940,13 +948,26 @@
             // save, because this.target/container could change during animation
             target = target || this.target;
 
-            target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.1s ease-out';
+            target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 5s ease-out';
             target.node.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle + target.baseTransform.value;
+            if(target.node.hiddenButton!==undefined)
+            {
+                target.node.hiddenButton.style[transitionJSPropertyName] = transformCSSPropertyName + ' 5s ease-out';
+                
+                target.node.hiddenButton.style[transformJSPropertyName] = 'scaleX(0) translate(0,0) ' + hwLayerMagicStyle + target.baseTransform.value;
+            }
             setTimeout(function(){
                 target.node.style[transitionJSPropertyName] = '';
                 target.node.style[transformJSPropertyName] = target.baseTransform.original;
+                if(target.node.hiddenButton!==undefined)
+                {
+                    console.log("xxxxxxx")
+                    target.node.hiddenButton.style["width"] = 0;
+                    target.node.hiddenButton.style[transitionJSPropertyName] = '';
+                    target.node.hiddenButton.style[transformJSPropertyName] = target.baseTransform.original;
+                }
                 if (callback) callback.call(this, target);
-            }.bind(this), 101);
+            }.bind(this), 5001);
         },
 
         animateSwipe: function(callback) {

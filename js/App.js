@@ -43,7 +43,7 @@ function App(){
     moduleDatabase.getModule("wards");
     moduleDatabase.getModule("addresses");
     moduleDatabase.getModule("equipments");
-    moduleDatabase.getModule("departments");
+    moduleDatabase.getModule("departments",["load.php","add.php","update.php","deleteDepartment.php"]);
     moduleDatabase.getModule("positions");
     moduleDatabase.getModule("juridicals");
     moduleDatabase.getModule("nations");

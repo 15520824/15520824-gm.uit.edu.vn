@@ -426,6 +426,7 @@ ListPositions.prototype.addDBDepartment = function(mNewDepartment,row ){
 
 ListPositions.prototype.addViewDepartment = function(value,parent){
     var result = [
+        {},
         value.name,
         value.code,
         {}

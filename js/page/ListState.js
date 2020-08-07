@@ -236,7 +236,7 @@ ListState.prototype.getView = function () {
             {value:'Quốc gia',sort:true,style:{minWidth:"200px",width:"200px"}},
             {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
             self.mTable = new tableView(header, self.formatDataRow(value), true, true, 2);
-            self.mTable.setUpSwipe(true,false);
+            self.mTable.setUpSwipe([{icon:"",text:"Test cực mạnh",background:"green"},{icon:"",text:"Test cực mạnh",background:"red"}]);
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
         });

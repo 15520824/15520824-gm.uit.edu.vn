@@ -567,31 +567,9 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.dragHorizontal = dragHorizontal;
     result.isSwipeLeft = false;
     result.isSwipeRight = false;
+    result.sortArray = [];
 
-    result.updatePagination = function (number = result.tempIndexRow,isRedraw = true) {
-        if(true)
-        {
-            result.tempIndexRow = indexRow;
-            if(isRedraw){
-                result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
-                if(result.childrenNodes.length<=indexRow*10)
-                result.childNodes[1].style.display = "none";
-            }                                                   
-        }else{
-            result.tempIndexRow = number;
-            if (result.paginationElement !== undefined) {
-                if(isRedraw)
-                result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
-                var pagination = result.pagination(result.tempIndexRow);
-                result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
-            } else {
-                var pagination = result.pagination(result.tempIndexRow);
-                result.appendChild(pagination);
-            }
-
-            result.paginationElement = pagination;
-        }
-    }
+    
 
     if (window.scrollEvent === undefined) {
         window.xMousePos = 0;
@@ -616,9 +594,34 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             }
         })
     }
-    if(true)
+    result.updatePagination = function (number = result.tempIndexRow,isRedraw = true) {
+        if(false)
+        {
+            result.tempIndexRow = indexRow;
+            if(isRedraw){
+                result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+                scrollParent.emit("scroll");
+            }                                                   
+        }else{
+            result.tempIndexRow = parseInt(number);
+            if (result.paginationElement !== undefined) {
+                if(isRedraw){
+                    result.indexRow = 0;
+                    result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+                }
+                var pagination = result.pagination(result.tempIndexRow);
+                result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
+            } else {
+                var pagination = result.pagination(result.tempIndexRow);
+                result.appendChild(pagination);
+            }
+
+            result.paginationElement = pagination;
+        }
+    }
+    if(false)
     {
-        result.appendChild(_({
+        var tempLimit = _({
             tag:"div",
             child:[
                 {
@@ -627,29 +630,36 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                         padding: "10px",
                         textAlign: "center",
                         display: "block",
-                        fontSize: "16px"
+                        fontSize: "16px",
                     },
                     props:{
                         innerHTML:"Để tìm kiếm các phần tử cũ hơn vui lòng sử dung Tìm kiếm"
                     }
                 }
             ]
-        }))
+        })
+        tempLimit.style.display = "none";
+        result.appendChild(tempLimit);
         scrollParent.addEventListener("scroll",function(event){
+                if(this.startIndex>10*indexRow)
+                {
+                    if(tempLimit.style.display !== "block")
+                    tempLimit.style.display = "block";
+                    return;
+                }else
+                {
+                    if(tempLimit.style.display !== "none")
+                    tempLimit.style.display = "none";
+                }
                 if(this.scrollTop >= (this.scrollHeight - this.offsetHeight))
                 {
-                    // console.log(this.startIndex,10*indexRow)
-                    if(this.startIndex>10*indexRow)
-                    {
-                        result.childNodes[1].style.display = "block";
-                        return;
-                    }
                     this.getBodyTable(this.data);
                     if (this.bodyTable.listCheckBox !== undefined&&this.bodyTable.listCheckBox.length>0)
                     {
                         this.bodyTable.listCheckBox[0].update();
                     }
                 }
+                this.setUpSwipe();
         })   
     }
     result.updatePagination(indexRow,false);
@@ -684,6 +694,9 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     if(dragVertical)
     {
         result.setUpSlip();
+        if(result.isSwipeLeft||result.isSwipeRight)
+        result.addEventSwipe();
+        result.slip = new Slip(result.bodyTable);
     }
     return result;
 }
@@ -701,33 +714,117 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
 {
     if(isSwipeLeft!==undefined)
     {
-        this.isSwipeLeft = true;
+        this.isSwipeLeft = isSwipeLeft;
     }
+    console.log(this.isSwipeLeft)
+    if(this.isSwipeLeft!==undefined)
+    {       
+        for(var i = 0;i<this.bodyTable.childNodes.length;i++)
+        {
+            if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
+            continue;
+            var hiddenButton = _({
+                tag:"div",
+                class:"button-hidden-swipe-container"
+            })
+            for(var j=0;j<this.isSwipeLeft.length;j++){
+               
+                
+                this.bodyTable.childNodes[i].appendChild(hiddenButton);
+                hiddenButton.appendChild(_({
+                    tag:"div",
+                    class:"button-hidden-swipe",
+                    style:{
+                        backgroundColor:this.isSwipeLeft[j].background
+                    },
+                    child:[
+                        {
+                            tag:"i",
+                            class:["material-icons","button-hidden-swipe-icon"],
+                            style:{
+                                color:this.isSwipeLeft[j].iconcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeLeft[j].icon
+                            }
+                        },
+                        {
+                            tag:"span",
+                            class:"button-hidden-swipe-text",
+                            style:{
+                                color:this.isSwipeLeft[j].textcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeLeft[j].text
+                            }
+                        }
+                    ]
+                }))
+               
+            }
+            this.bodyTable.childNodes[i].hiddenButton = hiddenButton;
+        }
+    }
+    
     if(isSwipeRight!==undefined)
     {
-        this.isSwipeRight = true;
+        this.isSwipeRight = isSwipeRight;
+    }
+    if(this.isSwipeRight!==undefined)
+    {
+        for(var i = 0;i<this.bodyTable.childNodes.length;i++)
+        {
+            if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
+                continue;
+            var hiddenButton = _({
+                tag:"div",
+                class:"button-hidden-swipe-container"
+            })
+            this.bodyTable.childNodes[i].appendChild(hiddenButton);
+            for(var j=0;j<this.isSwipeRight.length;j++)
+            {
+                hiddenButton.appendChild(_({
+                    tag:"div",
+                    class:"button-hidden-swipe",
+                    style:{
+                        backgroundColor:this.isSwipeRight[j].background
+                    },
+                    child:[
+                        {
+                            tag:"i",
+                            class:["material-icons","button-hidden-swipe-icon"],
+                            style:{
+                                color:this.isSwipeRight[j].iconcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeRight[j].icon
+                            }
+                        },
+                        {
+                            tag:"span",
+                            class:"button-hidden-swipe-text",
+                            style:{
+                                color:this.isSwipeRight[j].textcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeRight[j].text
+                            }
+                        }
+                    ]
+                }))
+                this.bodyTable.childNodes[i].hiddenButton = hiddenButton
+            }
+        }
+    }
+    if(isSwipeLeft||isSwipeRight)
+    {
+        this.addEventSwipe();
     }
 }
 
-tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
-{
-    parent.exactlyDeleteRow(index);
-}
-
-tableView.prototype.swipeCompleteRight = function(e,me,index,data,row,parent)
-{
-    parent.exactlyDeleteRow(index);
-}
-
-tableView.prototype.swipeCancel = function()
-{
-    
-}
-
-tableView.prototype.setUpSlip = function()
+tableView.prototype.addEventSwipe = function()
 {
     var self = this;
-    // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
     this.bodyTable.addEventListener('slip:beforewait', function(e){
         if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
@@ -742,19 +839,41 @@ tableView.prototype.setUpSlip = function()
         self.swipeCancel();
     }, false);
     this.bodyTable.addEventListener('slip:swipe', function(e){
-        console.log(e)
         // functionClick(event, this, index, row.data, row, result);
         var index = e.detail.originalIndex;
         var me = self.bodyTable.childNodes[index];
         var parent = me.elementParent;
         // var tempIndex = index;
         index = parent.childrenNodes.indexOf(me);
-
         if(e.detail.direction==="left")
         self.swipeCompleteLeft(e,me,index,me.data,me,parent);
         if(e.detail.direction==="right")
         self.swipeCompleteRight(e,me,index,me.data,me,parent);
     }, false);
+}
+
+tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
+{
+    console.log(index)
+    parent.exactlyDeleteRow(index);
+}
+
+tableView.prototype.swipeCompleteRight = function(e,me,index,data,row,parent)
+{
+    console.log(index)
+    parent.exactlyDeleteRow(index);
+}
+
+tableView.prototype.swipeCancel = function()
+{
+    
+}
+
+tableView.prototype.setUpSlip = function()
+{
+    var self = this;
+    // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
+   
     this.bodyTable.addEventListener('slip:reorder', function(e){
         var result = self;
         var index = e.detail.originalIndex;
@@ -808,8 +927,7 @@ tableView.prototype.setUpSlip = function()
         var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: tempIndex,spliceIndex: tempSpliceIndex,parent: self,dataSpliceIndex:spliceIndex,dataIndex:index}});
         self.dispatchEvent(event);
     }, false);
-    this.slip = new Slip(this.bodyTable);
-    return this.slip;
+   
 }
 
 tableView.prototype.getCellHeader = function(header,i)
@@ -926,6 +1044,7 @@ tableView.prototype.getCellHeader = function(header,i)
 
         }
     }
+
 
     if (header.functionClick !== undefined)
         functionClick = header.functionClick;
@@ -1065,6 +1184,11 @@ tableView.prototype.getCellHeader = function(header,i)
         ]
     })
 
+    result.sortArray[i] = childUpDown;
+    
+    result.exactlySort =  function(){
+        childUpDown.click();
+    }
     if (header.sort === true) {
         cell.classList.add("has-sort")
     }
@@ -1310,7 +1434,7 @@ tableView.prototype.setVisiableAllNoneUpdate = function (arr) {
     }
 }
 
-tableView.prototype.getBodyTable = function (data) {
+tableView.prototype.getBodyTable = function (data,index = 0) {
     var temp = this.bodyTable;
     var result = this, k, delta = [], row, cell;
     var arr = [];
@@ -1325,12 +1449,12 @@ tableView.prototype.getBodyTable = function (data) {
     {
         this.startIndex = 0;
     }
+
     if (parent.checkSpan === undefined)
         result.checkSpan = [];
     if(result.indexRow == undefined||result.indexRow == this.tempIndexRow)
         result.indexRow = 0;
-    
-  
+
     for (; (i < data.length && this.indexRow < this.tempIndexRow); i++) {
         if (data[i].child !== undefined)
             data[i].child.updateVisible = data.updateVisible;
@@ -1363,7 +1487,11 @@ tableView.prototype.getBodyTable = function (data) {
                     result.setVisiableAllNoneUpdate(data[i].child)
             }
         }
-
+        if(index !== 0)
+        {
+            index--;
+            continue;
+        }
         row = result.getRow(data[i]);
         temp.addChild(row);
         arr.push(row);
@@ -1690,7 +1818,7 @@ tableView.prototype.pagination = function (number, functionClick) {
             if (active !== undefined) {
                 var prev = active.previousSibling, next = active.nextSibling;
                 
-                while (container.offsetWidth <= self.offsetWidth - 40 && !(isLeft == true && isRight == true)) {
+                while (container.offsetWidth <= self.offsetWidth - 80 && !(isLeft == true && isRight == true)) {
                     if (isRight == false && next != null) {
 
                         while (next == temp.detailRight || next == temp.detailLeft)
@@ -1706,7 +1834,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                     } else {
                         isRight = true;
                     }
-                    if(container.offsetWidth > self.offsetWidth - 40)
+                    if(container.offsetWidth > self.offsetWidth - 80)
                         break;
                     if (isLeft == false && prev != null) {
                             while (prev == temp.detailLeft || prev == temp.detailRight)
@@ -2264,14 +2392,20 @@ tableView.prototype.updateTable = function (header, data = [], dragHorizontal, d
     this.bodyTable = temp;
     result.childrenNodes = [];
     this.currentIndex = undefined;
-    result.getBodyTable(data);
+    result.getBodyTable(data,index);
     if(temp.listCheckBox[0]!==undefined)
     {
         temp.listCheckBox[0].update();
     }
     this.checkSpan = checkSpan;
     this.data = data;
-    this.slip = new Slip(this.bodyTable);
+    if(result.dragVertical)
+    {
+        result.setUpSlip();
+        if(result.isSwipeLeft||result.isSwipeRight)
+        this.setUpSwipe();
+        result.slip = new Slip(result.bodyTable);
+    }
 }
 
 tableView.prototype.getLastElement = function(element)
@@ -2572,9 +2706,12 @@ tableView.prototype.exactlyDeleteRow = function(index)
     var element = parent.childrenNodes[index];
     parent.dropRowChild(element);
     var deltaY = 0;
-
+    console.log(parent.clone)
     deltaX = parent.checkLongRow(index);
+    console.log(element)
     for (var i = 0; i < element.childNodes.length; i++) {
+        if(element.tagName!=="TD")
+            continue;
         parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
         if (parent.checkSpan !== undefined)
             parent.checkSpan.splice(index, 1);
