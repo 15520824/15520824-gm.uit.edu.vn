@@ -336,10 +336,34 @@
                                 this.target.node.style[transformJSPropertyName] = 'translate(' + move.x + 'px,0) ' + hwLayerMagicStyle + this.target.baseTransform.value;
                                 if(this.target.node.hiddenButton!==undefined){
                                     this.target.node.hiddenButton.style["height"] = this.target.node.offsetHeight+"px";
-                                    this.target.node.hiddenButton.style["min-width"] = this.target.node.offsetHeight+"px"
                                     this.target.node.hiddenButton.style[transformJSPropertyName] = 'translate(' + -move.x + 'px,0) ' + hwLayerMagicStyle + this.target.baseTransform.value;
                                     if(-move.x>0)
-                                    this.target.node.hiddenButton.style["width"] = -move.x+"px"
+                                    this.target.node.hiddenButton.style["width"] = -move.x+"px";
+                                    if(this.target.node.hiddenButton.offsetWidth>this.target.node.hiddenButton.childNodes[0].offsetWidth)
+                                    {
+                                        var tempElement =  this.target.node.hiddenButton.childNodes[0].childNodes[this.target.node.hiddenButton.childNodes[0].childNodes.length-1];
+                                        if(tempElement!==undefined&&!tempElement.classList.contains("button-hidden-swipe-activeAll"))
+                                        {
+                                            var clone = tempElement.cloneNode(true)
+                                            tempElement.parentNode.appendChild(clone);
+                                            clone.classList.add("button-hidden-swipe-activeAll");
+                                            clone.classList.add("button-hidden-swipe-activeAll-width");
+                                        }
+                                    }else
+                                    {
+                                        var tempElement =  this.target.node.hiddenButton.childNodes[0].childNodes[this.target.node.hiddenButton.childNodes[0].childNodes.length-1];
+                                        if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll"))
+                                        {
+                                            tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+                                            setTimeout(function(){
+                                                if(tempElement.parentNode!==null){
+                                                    console.log(tempElement.parentNode)
+                                                    tempElement.parentNode.removeChild(tempElement);
+                                                }
+                                                
+                                            },200)
+                                        }
+                                    }
                                 }
                                 
                             }
@@ -948,11 +972,11 @@
             // save, because this.target/container could change during animation
             target = target || this.target;
 
-            target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 5s ease-out';
+            target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.2s ease-out';
             target.node.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle + target.baseTransform.value;
             if(target.node.hiddenButton!==undefined)
             {
-                target.node.hiddenButton.style[transitionJSPropertyName] = transformCSSPropertyName + ' 5s ease-out';
+                target.node.hiddenButton.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.2s ease-out';
                 
                 target.node.hiddenButton.style[transformJSPropertyName] = 'scaleX(0) translate(0,0) ' + hwLayerMagicStyle + target.baseTransform.value;
             }
@@ -961,13 +985,12 @@
                 target.node.style[transformJSPropertyName] = target.baseTransform.original;
                 if(target.node.hiddenButton!==undefined)
                 {
-                    console.log("xxxxxxx")
                     target.node.hiddenButton.style["width"] = 0;
                     target.node.hiddenButton.style[transitionJSPropertyName] = '';
                     target.node.hiddenButton.style[transformJSPropertyName] = target.baseTransform.original;
                 }
                 if (callback) callback.call(this, target);
-            }.bind(this), 5001);
+            }.bind(this), 201);
         },
 
         animateSwipe: function(callback) {

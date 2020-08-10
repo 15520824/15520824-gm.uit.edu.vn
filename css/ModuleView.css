@@ -616,15 +616,14 @@ table.sortTable th.postionStickyCell{
   right: 0;
   z-index: -1;*/
   height: 100%;
-  width: 100%;
-  position: relative;
-  flex-grow: 2;
-  display: flex;
+  display: inline-block;
+  overflow: hidden;
+  transition:width 0.2s ease-out;
+  transition:width 0.2s ease-in;
 }
 
 .button-hidden-swipe-container{
   position: absolute;
-  display: flex;
   right: 0;
   z-index: -1;
   top:0;
@@ -635,6 +634,9 @@ table.sortTable th.postionStickyCell{
   display: inline-block;
   position: absolute;
   overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
 .button-hidden-swipe-text{
@@ -642,4 +644,29 @@ table.sortTable th.postionStickyCell{
   display: inline-block;
   position: absolute;
   overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: white;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.button-hidden-swipe-detail{
+  position: relative;
+}
+
+.button-hidden-swipe-calcWidth{
+  display: inline-block;
+  height: 100%;
+}
+
+.button-hidden-swipe-activeAll{
+  position: absolute;
+  right: 0;
+  max-width: unset !important;
+}
+
+.button-hidden-swipe-activeAll-width{
+  width: 100% !important;
 }

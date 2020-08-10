@@ -712,114 +712,144 @@ tableView.prototype.getElementNext = function(element)
 
 tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
 {
-    if(isSwipeLeft!==undefined)
-    {
-        this.isSwipeLeft = isSwipeLeft;
-    }
-    console.log(this.isSwipeLeft)
-    if(this.isSwipeLeft!==undefined)
-    {       
-        for(var i = 0;i<this.bodyTable.childNodes.length;i++)
+    setTimeout(function(){
+        if(isSwipeLeft!==undefined)
         {
-            if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
-            continue;
-            var hiddenButton = _({
-                tag:"div",
-                class:"button-hidden-swipe-container"
-            })
-            for(var j=0;j<this.isSwipeLeft.length;j++){
-               
-                
-                this.bodyTable.childNodes[i].appendChild(hiddenButton);
-                hiddenButton.appendChild(_({
-                    tag:"div",
-                    class:"button-hidden-swipe",
-                    style:{
-                        backgroundColor:this.isSwipeLeft[j].background
-                    },
-                    child:[
-                        {
-                            tag:"i",
-                            class:["material-icons","button-hidden-swipe-icon"],
-                            style:{
-                                color:this.isSwipeLeft[j].iconcolor
-                            },
-                            props:{
-                                innerHTML: this.isSwipeLeft[j].icon
-                            }
-                        },
-                        {
-                            tag:"span",
-                            class:"button-hidden-swipe-text",
-                            style:{
-                                color:this.isSwipeLeft[j].textcolor
-                            },
-                            props:{
-                                innerHTML: this.isSwipeLeft[j].text
-                            }
-                        }
-                    ]
-                }))
-               
-            }
-            this.bodyTable.childNodes[i].hiddenButton = hiddenButton;
+            this.isSwipeLeft = isSwipeLeft;
         }
-    }
-    
-    if(isSwipeRight!==undefined)
-    {
-        this.isSwipeRight = isSwipeRight;
-    }
-    if(this.isSwipeRight!==undefined)
-    {
-        for(var i = 0;i<this.bodyTable.childNodes.length;i++)
-        {
-            if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
-                continue;
-            var hiddenButton = _({
-                tag:"div",
-                class:"button-hidden-swipe-container"
-            })
-            this.bodyTable.childNodes[i].appendChild(hiddenButton);
-            for(var j=0;j<this.isSwipeRight.length;j++)
+        if(this.isSwipeLeft!==undefined)
+        {       
+            for(var i = 0;i<this.bodyTable.childNodes.length;i++)
             {
-                hiddenButton.appendChild(_({
+                if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
+                continue;
+                var hiddenButton = _({
                     tag:"div",
-                    class:"button-hidden-swipe",
-                    style:{
-                        backgroundColor:this.isSwipeRight[j].background
-                    },
-                    child:[
-                        {
-                            tag:"i",
-                            class:["material-icons","button-hidden-swipe-icon"],
-                            style:{
-                                color:this.isSwipeRight[j].iconcolor
-                            },
-                            props:{
-                                innerHTML: this.isSwipeRight[j].icon
-                            }
+                    class:"button-hidden-swipe-container",
+                    child:[{
+                        tag:"div",
+                        class:"button-hidden-swipe-calcWidth"
+                    }]
+                })
+                for(var j=0;j<this.isSwipeLeft.length;j++){
+                    this.bodyTable.childNodes[i].appendChild(hiddenButton);
+                    hiddenButton.childNodes[0].appendChild(_({
+                        tag:"div",
+                        class:"button-hidden-swipe",
+                        style:{
+                            width:1/this.isSwipeLeft.length*100+"%",
+                            backgroundColor:this.isSwipeLeft[j].background,
+                            maxWidth:this.bodyTable.childNodes[i].offsetHeight+"px",
+                            zIndex:j
                         },
-                        {
-                            tag:"span",
-                            class:"button-hidden-swipe-text",
-                            style:{
-                                color:this.isSwipeRight[j].textcolor
-                            },
-                            props:{
-                                innerHTML: this.isSwipeRight[j].text
+                        child:[
+                            {
+                                tag:"div",
+                                class:"button-hidden-swipe-detail",
+                                style:{
+                                    width:this.bodyTable.childNodes[i].offsetHeight+"px",
+                                    height:this.bodyTable.childNodes[i].offsetHeight+"px",
+                                },
+                                child:[
+                                    {
+                                        tag:"i",
+                                        class:["material-icons","button-hidden-swipe-icon"],
+                                        style:{
+                                            color:this.isSwipeLeft[j].iconcolor
+                                        },
+                                        props:{
+                                            innerHTML: this.isSwipeLeft[j].icon
+                                        }
+                                    },
+                                    {
+                                        tag:"span",
+                                        class:"button-hidden-swipe-text",
+                                        style:{
+                                            color:this.isSwipeLeft[j].textcolor
+                                        },
+                                        props:{
+                                            innerHTML: this.isSwipeLeft[j].text
+                                        }
+                                    }
+                                ]
                             }
-                        }
-                    ]
-                }))
-                this.bodyTable.childNodes[i].hiddenButton = hiddenButton
+                        ]
+                    }))
+                
+                }
+                this.bodyTable.childNodes[i].hiddenButton = hiddenButton;
             }
         }
-    }
-    if(isSwipeLeft||isSwipeRight)
-    {
-        this.addEventSwipe();
-    }
+        
+        if(isSwipeRight!==undefined)
+        {
+            this.isSwipeRight = isSwipeRight;
+        }
+        if(this.isSwipeRight!==undefined)
+        {
+            for(var i = 0;i<this.bodyTable.childNodes.length;i++)
+            {
+                if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
+                    continue;
+                var hiddenButton = _({
+                    tag:"div",
+                    class:"button-hidden-swipe-container"
+                })
+                this.bodyTable.childNodes[i].appendChild(hiddenButton);
+                for(var j=0;j<this.isSwipeRight.length;j++)
+                {
+                    hiddenButton.appendChild(_({
+                        tag:"div",
+                        class:"button-hidden-swipe",
+                        style:{
+                            width:(j+1)/this.isSwipeRight.length*100+"%",
+                            backgroundColor:this.isSwipeRight[j].background,
+                            zIndex:this.isSwipeRight.length-j,
+                            minWidth:this.bodyTable.childNodes[i].offsetHeight+"px"
+                        },
+                        child:[
+                            {
+                                tag:"div",
+                                class:"button-hidden-swipe-container-detail",
+                                style:{
+                                    width:(this.isSwipeRight.length-j)/this.isSwipeRight.length*100+"%",
+                                },
+                                child:[
+                                    {
+                                        tag:"i",
+                                        class:["material-icons","button-hidden-swipe-icon"],
+                                        style:{
+                                            color:this.isSwipeRight[j].iconcolor
+                                        },
+                                        props:{
+                                            innerHTML: this.isSwipeRight[j].icon
+                                        }
+                                    },
+                                    {
+                                        tag:"span",
+                                        class:"button-hidden-swipe-text",
+                                        style:{
+                                            color:this.isSwipeRight[j].textcolor
+                                        },
+                                        props:{
+                                            innerHTML: this.isSwipeRight[j].text
+                                        }
+                                    }
+                                ]
+                            }
+                            
+                        ]
+                    }))
+                    this.bodyTable.childNodes[i].hiddenButton = hiddenButton
+                }
+            }
+        }
+        if(isSwipeLeft||isSwipeRight)
+        {
+            this.addEventSwipe();
+        }
+    }.bind(this),100)
+    
 }
 
 tableView.prototype.addEventSwipe = function()
