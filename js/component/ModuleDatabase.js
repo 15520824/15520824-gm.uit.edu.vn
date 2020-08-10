@@ -58,10 +58,7 @@ DataStructure.prototype.equal = function(data,WHERE)
     {
         if(Array.isArray(WHERE))
         {
-            for(var i = 0;i<WHERE.length;i++)
-            {
-                stringResult +=this.operator(WHERE[i]);
-            }
+            stringResult +=this.operator(data,WHERE);
         }else
         {
             for(var param in WHERE)
@@ -116,81 +113,78 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
         this.isFirst = false;
     }
 
-    var loadedData = [];
     if(data.loaded===undefined)
     {
-        data.loaded = [];
+        data.loaded = {};
     }
-
-    if(self.data!==undefined&&self.data.length!==0)
-    {
-        for(var i = 0;i<self.data.length;i++)
+    if(data.loaded[this.name]==undefined)
+    data.loaded[this.name] = [];
+  
+    if(data.WHERE!==undefined)
+        if(self.data!==undefined&&self.data.length!==0)
         {
-            if(this.generalOperator(self.data[i],data.WHERE))
+            for(var i = 0;i<self.data.length;i++)
             {
-                data.loaded.push(self.data[i]["id"]);
-                loadedData.push(self.data[i]);
+                if(this.generalOperator(self.data[i],data.WHERE))
+                {
+                    data.loaded[this.name].push(self.data[i]["id"]);
+                }
             }
         }
-    }
+    else
+        if(self.data!==undefined&&self.data.length!==0)
+        {
+            for(var i = 0;i<self.data.length;i++)
+            {
+                data.loaded[this.name].push(self.data[i]["id"]);
+            }
+        }
     promiseLoad = new Promise(function(resolve,reject){
         self.queryData(self.phpLoader,data).then(function(valueRecived){
             var value = valueRecived["data"];
-            for(var i = 0;i<value.length;i++)
-            {
-                if(typeof value[i] == "string")
-                    if(self.Libary["id"][value[i]]!==undefined)
-                    {
-                        value[i] = self.Libary["id"][value[i]];        
-                    }
-            }
-            if(self.data === undefined)
-            self.data = [];
-            if(data.WHERE===undefined)
-            {
-                self.countRow = value.length;
-            }else
-            {
-                self.checkLoaded[JSON.stringify(data.WHERE)] = value;
-                if(data.isFirst===true)
+            var update = valueRecived["update"];
+            var insert = valueRecived["add"];
+            if(insert!==undefined)
                 {
-                    self.countRow = parseInt(valueRecived["count"]);
-                }
-            }
-            var libary = self.Libary["id"];
-            if(libary === undefined)
-            {
-                self.data = value;
-            }else
-            {
-                if(self.data.length === self.countRow)
-                {
-                    if(self.promiseLoad === undefined)
-                    self.promiseLoad = Promise.resolve(self.data);
-                }
-                else
-                for(var i = 0;i<value.length;i++)
-                {   
-                    if(libary[value[i].id]===undefined)
+                    for(var i = 0;i<value.add.length;i++)
                     {
-                        self.data.push(value[i]);
-                        self.setFormatAdd(value[i]);
+                        for(var param in insert[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatAdd(insert[i][param]);
+                            }
+                        }
                     }
                 }
-            }
-            
-            
-            self.getLibary();
-            promiseLoad.status = "done";
-            promiseLoad.data = value;
+                if(update!==undefined)
+                {
+                    for(var i = 0;i<update.length;i++)
+                    {
+                        for(var param in update[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+                            }
+                        }
+                    }
+                }
+            self.setFormatLoad(data,value,promiseLoad,valueRecived["count"]);
+            // var loadedData = valueRecived["load"];
+            // console.log(loadedData)
+            // for(var param in loadedData)
+            // {
+            //     console.log(moduleDatabase[param])
+            //     moduleDatabase.getModule(param).setFormatLoad({WHERE:data.WHERE},loadedData[param])
+            // }
             resolve(value);
     })
     .catch(function(error){
         promiseLoad.status = "reject";
         reject(error);
         console.error(error);
-    })
-    })
+    })})
     promiseLoad.status = "pending";
     if(data.WHERE === undefined)
     self.promiseLoad = promiseLoad;
@@ -198,6 +192,59 @@ DataStructure.prototype.load = function(data = [],isLoaded = false){
     self.promisePart[JSON.stringify(data.WHERE)] = promiseLoad;
 
     return promiseLoad;
+}
+
+DataStructure.prototype.setFormatLoad = function(data,value,promiseLoad,count = -1)
+{
+    var self = this;
+    if(value === undefined)
+        value = [];
+
+    if(self.data === undefined)
+    self.data = [];
+    if(data.WHERE===undefined)
+    {
+        self.countRow = value.length;
+    }else
+    {
+        self.checkLoaded[JSON.stringify(data.WHERE)] = value;
+        if(data.isFirst===true)
+        {
+            if(count!==-1)
+            self.countRow = parseInt(count);
+        }
+    }
+    var libary = self.Libary["id"];
+    if(libary === undefined)
+    {
+        self.data = [...value];
+    }else
+    {
+        if(self.data.length === self.countRow)
+        {
+            if(self.promiseLoad === undefined)
+            self.promiseLoad = Promise.resolve(self.data);
+        }
+        for(var i = 0;i<value.length;i++)
+        {
+            if(typeof value[i] == "string"){
+                if(self.Libary["id"][value[i]]!==undefined)
+                {
+                    value[i] = self.Libary["id"][value[i]];        
+                }
+            }else
+            {
+                self.setFormatAdd(value[i]);
+            }   
+        }
+    }
+    
+    if(self.Libary["id"]===undefined)
+    self.getLibary();
+    if(typeof promiseLoad == "object"){
+        promiseLoad.status = "done";
+        promiseLoad.data = value;
+    }
 }
 
 DataStructure.prototype.getLibary = function(param,formatFunction,isArray = false,isLoaded = false){
@@ -253,32 +300,36 @@ DataStructure.prototype.sync = function(element,functionSync){
 }
 
 DataStructure.prototype.setLibaryRow = function(data,param,formatFunction,isArray){
+    var self = this;
     if(this.Libary[param]===undefined){
         this.Libary[param] = [];
         this.Libary[param].isArray = isArray;
+        this.Libary[param].check = [];
         this.Libary[param].formatFunction = function(data,param){
             var result = formatFunction(data);
             result.getData = function(){
                 return data;
             };
+            if(this.check[data["id"]]!==undefined)
+            return;
+            this.check[data["id"]] = result;
             if(this[data[param]] == undefined||this[data[param]].index == 0){
                 if(this.isArray == true)
                     this[data[param]] = [result];
                 else
                 this[data[param]] = result;
-                this[data[param]].index = 0;
+                this[data[param]].index = 1;
             }
             else 
-            {
+            {               
                 if(this[data[param]].index == 1&&this.isArray!==true)
                 {
-                    if(this[data[param]].id == result.id)
-                    return;
                     this[data[param]] = [this[data[param]]];
                 }
                 this[data[param]].push(result);
+                this[data[param]].index++;
             }
-            this[data[param]].index++;
+            
         };
         this.Libary[param].deleteFunction = function(data,param){
             if(this[data[param]].index == 1&&this.isArray!==true)
@@ -351,28 +402,44 @@ DataStructure.prototype.add = function(data,needChange = false){
                     data.delete = Object.assign({}, value.delete);
                 }  
                 self.setFormatAdd(data);
-                if(value.insert!==undefined)
+                var update = value["update"];
+                var insert = value["add"];
+                var deleteValue = value["delete"];
+                if(insert!==undefined)
                 {
-                    for(var i = 0;i<value.insert.length;i++)
+                    for(var i = 0;i<value.add.length;i++)
                     {
-                        for(var param in value.insert[i])
+                        for(var param in insert[i])
                         {
                             if(moduleDatabase.data[param]!==undefined)
                             {
-                                moduleDatabase.data[param].setFormatAdd(value.insert[i][param]);
+                                moduleDatabase.data[param].setFormatAdd(insert[i][param]);
                             }
                         }
                     }
                 }
-                if(value.update!==undefined)
+                if(update!==undefined)
                 {
-                    for(var i = 0;i<value.update.length;i++)
+                    for(var i = 0;i<update.length;i++)
                     {
-                        for(var param in value.update[i])
+                        for(var param in update[i])
                         {
                             if(moduleDatabase.data[param]!==undefined)
                             {
-                                moduleDatabase.data[param].setFormatUpdate(value.update[i][param]);
+                                moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+                            }
+                        }
+                    }
+                }
+                if(deleteValue!==undefined)
+                {
+                    for(var i = 0;i<deleteValue.length;i++)
+                    {
+                        for(var param in deleteValue[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatDelete(deleteValue[i][param]);
                             }
                         }
                     }
@@ -434,28 +501,44 @@ DataStructure.prototype.update = function(data,needChange = false){
                     data.delete = Object.assign({}, value.delete);
                 }  
                 self.setFormatUpdate(data);
-                if(value.add!==undefined)
+                var update = value["update"];
+                var insert = value["add"];
+                var deleteValue = value["delete"];
+                if(insert!==undefined)
                 {
                     for(var i = 0;i<value.add.length;i++)
                     {
-                        for(var param in value.add[i])
+                        for(var param in insert[i])
                         {
                             if(moduleDatabase.data[param]!==undefined)
                             {
-                                moduleDatabase.data[param].setFormatAdd(value.add[i][param]);
+                                moduleDatabase.data[param].setFormatAdd(insert[i][param]);
                             }
                         }
                     }
                 }
-                if(value.update!==undefined)
+                if(update!==undefined)
                 {
-                    for(var i = 0;i<value.update.length;i++)
+                    for(var i = 0;i<update.length;i++)
                     {
-                        for(var param in value.update[i])
+                        for(var param in update[i])
                         {
                             if(moduleDatabase.data[param]!==undefined)
                             {
-                                moduleDatabase.data[param].setFormatUpdate(value.update[i][param]);
+                                moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+                            }
+                        }
+                    }
+                }
+                if(deleteValue!==undefined)
+                {
+                    for(var i = 0;i<deleteValue.length;i++)
+                    {
+                        for(var param in deleteValue[i])
+                        {
+                            if(moduleDatabase.data[param]!==undefined)
+                            {
+                                moduleDatabase.data[param].setFormatDelete(deleteValue[i][param]);
                             }
                         }
                     }
@@ -488,20 +571,68 @@ DataStructure.prototype.setFormatUpdate = function(data)
     }
 }
 
+DataStructure.prototype.setFormatDelete = function(data){
+    var self = this;
+    console.log(data)
+    if(data.id!==undefined)
+    {
+        var temp = self.Libary["id"][data.id];
+        for(var param in self.Libary)
+        {
+            if(typeof self.Libary[param]!= "function")
+            self.Libary[param].deleteFunction(temp,param);
+        }
+        self.data.splice(self.data.indexOf(temp),1);
+        self.countRow--;
+    }
+}
+
 DataStructure.prototype.delete = function(data){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpDeleter,data).then(function(value){
-            if(data.id!==undefined)
+            self.setFormatDelete(data);
+            var update = value["update"];
+            var insert = value["add"];
+            var deleteValue = value["delete"];
+            if(insert!==undefined)
             {
-                var temp = self.Libary["id"][data.id];
-                for(var param in self.Libary)
+                for(var i = 0;i<value.add.length;i++)
                 {
-                    if(typeof self.Libary[param]!= "function")
-                    self.Libary[param].deleteFunction(temp,param);
+                    for(var param in insert[i])
+                    {
+                        if(moduleDatabase.data[param]!==undefined)
+                        {
+                            moduleDatabase.data[param].setFormatAdd(insert[i][param]);
+                        }
+                    }
                 }
-                self.data.splice(self.data.indexOf(temp),1);
-                self.countRow--;
+            }
+            if(update!==undefined)
+            {
+                for(var i = 0;i<update.length;i++)
+                {
+                    for(var param in update[i])
+                    {
+                        if(moduleDatabase.data[param]!==undefined)
+                        {
+                            moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+                        }
+                    }
+                }
+            }
+            if(deleteValue!==undefined)
+            {
+                for(var i = 0;i<deleteValue.length;i++)
+                {
+                    for(var param in deleteValue[i])
+                    {
+                        if(moduleDatabase.data[param]!==undefined)
+                        {
+                            moduleDatabase.data[param].setFormatDelete(deleteValue[i][param]);
+                        }
+                    }
+                }
             }
             resolve();
         }).catch(function(err){

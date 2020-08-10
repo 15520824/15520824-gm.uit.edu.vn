@@ -72,7 +72,16 @@ function EditHelpContainer(phpLoader) {
             self.$view.resetChoice(self.$view.mTable.bodyTable);
         }
         listParent.updateItemList();
-        self.$view.resetChoice(self.$view.mTable.bodyTable);
+        var x = setInterval(function(){
+            if(self.$view.editor!==undefined)
+            {
+                clearInterval(x);
+                self.$view.resetChoice(self.$view.mTable.bodyTable);
+            }
+        },100)
+        setTimeout(function(){
+            clearInterval(x);
+        },5000);
     });
 
     var input = _({

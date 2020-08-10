@@ -5,11 +5,13 @@ import '../../css/NewRealty.css';
 import '../../css/imagesilder.css';
 import { locationView,MapView } from "./MapView";
 import { descViewImagePreview } from './ModuleImage'
-import { unit_Long, unit_Zone, tableView } from './ModuleView';
-import {formatNumber,reFormatNumber,formatFit} from './FormatFunction'
+import { unit_Long, unit_Zone, deleteQuestion } from './ModuleView';
+import {formatNumber,reFormatNumber,formatFit,isEqual} from './FormatFunction'
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import moduleDatabase from './ModuleDatabase';
+import NewContact from './NewContact';
+import NewAccount from '../component/NewAccount';
 
 import xmlModalDragManyFiles from './modal_drag_drop_manyfiles';
 
@@ -107,11 +109,26 @@ NewRealty.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
-
-                                        self.rejectDB(self.getDataSave());
+                                        
+                                        if(!isEqual(self.getDataSave(),self.data))
+                                        {
+                                            var deleteItem = deleteQuestion("Lưu thay đổi", "Bạn muốn đóng (tất cả những chỉnh sửa sẽ không được lưu lại)?");
+                                            self.$view.addChild(deleteItem);
+                                            deleteItem.promiseComfirm.then(function () {
+                                                self.rejectDB(self.getDataSave());
+                                                self.$view.selfRemove();
+                                                var arr = self.parent.body.getAllChild();
+                                                self.parent.body.activeFrame(arr[arr.length - 1]);
+                                            })
+                                        }
+                                        else
+                                        {
+                                            self.rejectDB(self.getDataSave());
+                                            self.$view.selfRemove();
+                                            var arr = self.parent.body.getAllChild();
+                                            self.parent.body.activeFrame(arr[arr.length - 1]);
+                                        }
+                                        
                                     }
                                 },
                                 child: [
@@ -124,6 +141,7 @@ NewRealty.prototype.getView = function () {
                                 on: {
                                     click: function (evt) {
                                         self.resolveDB(self.getDataSave());
+                                        self.data = self.getDataSave();
                                         self.createPromise();
                                     }
                                 },
@@ -137,6 +155,7 @@ NewRealty.prototype.getView = function () {
                                 on: {
                                     click: function (evt) {
                                         self.resolveDB(self.getDataSave());
+                                        self.data = self.getDataSave();
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
@@ -161,6 +180,9 @@ NewRealty.prototype.getView = function () {
         ]
     }));
     self.createPromise();
+    setTimeout(function(){
+        self.data = self.getDataSave();
+    },100)
     return this.$view;
 }
 
@@ -271,22 +293,48 @@ NewRealty.prototype.imageJuridical = function()
         ]
     })
     this.viewJuridical = result;
+    var arr = [];
+    var first = "";
     if(this.data!==undefined)
     {
-        for(var i = 0;i<this.data.original.imageJuridical.length;i++)
+        for(var i = 0;i<this.data.original.image.length;i++)
         {
-            result.addFile(this.data.original.imageJuridical[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+            if(first!=="")
+            arr.push(first);
+            arr.push({id:this.data.original.image[i]})
+            if(first=="")
+            {
+                
+                first = "||";
+            }
         }
+       
     }
+    if(arr.length>0)
+    moduleDatabase.getModule("image").load({WHERE:arr}).then(function(values){
+        for(var i = 0;i<values.length;i++)
+        if(values[i].type == 0)
+        result.addFile(values[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+    })
     return temp;
 }
 
 NewRealty.prototype.imageCurrentStaus = function()
 {
     var result = Object.assign({}, xmlModalDragManyFiles);
+    result.enableClick = true;
+    result.enableCheckBox = true;
+    result.setFormatData(function(data){
+        return {
+            avatar:"https://4.bp.blogspot.com/-AYOvATaN5wQ/V5sRt4Kim_I/AAAAAAAAF8s/QWR5ZHQ8N38ByHRLP2nOCJySfMmJur5sACLcB/s280/sieu-nhan-cuu-the-gioi.jpg",
+            userName:"Bùi Phạm Minh Thi",
+            src:data.src,
+            date:data.created,
+            note:""
+    }
+    })
     var container = result.containGetImage();
     result.createEvent();
-
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-image",
@@ -308,13 +356,29 @@ NewRealty.prototype.imageCurrentStaus = function()
         ]
     })
     this.viewCurrentStaus = result;
+    var arr = [];
+    var first = "";
     if(this.data!==undefined)
     {
-        for(var i = 0;i<this.data.original.imageCurrentStaus.length;i++)
+        for(var i = 0;i<this.data.original.image.length;i++)
         {
-            result.addFile(this.data.original.imageCurrentStaus[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+            if(first!=="")
+            arr.push(first);
+            arr.push({id:this.data.original.image[i]});
+            if(first=="")
+            {
+                
+                first = "||";
+            }
         }
+       
     }
+    if(arr.length>0)
+    moduleDatabase.getModule("image").load({WHERE:arr}).then(function(values){
+        for(var i = 0;i<values.length;i++)
+        if(values[i].type == 1)
+        result.addFile(values[i],"https://lab.daithangminh.vn/home_co/pizo/assets/upload/");
+    })
     return temp;
 }
 
@@ -363,8 +427,13 @@ NewRealty.prototype.descViewImageThumnail = function (dataImage, index, promiseL
     return temp;
 }
 
-NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
+NewRealty.prototype.itemAdress = function(data = {addressid:0},lat,lng)
 {
+    var addressid;
+    if(data.addressid !== undefined)
+    addressid = data.addressid;
+    else
+    addressid = 0;
     var self = this;
     var text = _({ text: "Địa chỉ" });
     var important = _({
@@ -435,7 +504,7 @@ NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
         $("input.pizo-new-realty-desc-detail-1-row-input",temp).value = number+" "+street+", "+ward+", "+district+", "+state;
         temp.data = {
-            id:addressid,
+            id:data.id,
             number:this.checkAddress[addressid].addressnumber,
             street:this.checkStreet[this.checkAddress[addressid].streetid].name+"_"+this.checkAddress[addressid].streetid,
             ward:this.checkWard[this.checkAddress[addressid].wardid].name+"_"+this.checkAddress[addressid].wardid,
@@ -448,9 +517,13 @@ NewRealty.prototype.itemAdress = function(addressid = 0,lat,lng)
     return temp;
 }
 
-NewRealty.prototype.itemAdressOld = function(addressid = 0)
+NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
 {
-    var self = this;
+    var addressid;
+    if(data.addressid_old !== undefined)
+    addressid = data.addressid_old;
+    else
+    addressid = 0;
     var text = _({ text: "Địa chỉ cũ" });
     var important = _({
         tag: "span",
@@ -477,7 +550,6 @@ NewRealty.prototype.itemAdressOld = function(addressid = 0)
                 class: ["pizo-new-realty-desc-detail-1-row-input"],
                 on: {
                     click: function (event) {
-                        console.log("xxxxxxxxxxxxxxx");
                         this.blur();
                         var selfElement = this;
                         var childNode = locationView(function (value) {
@@ -516,7 +588,6 @@ NewRealty.prototype.itemAdressOld = function(addressid = 0)
         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name;
         $("input.pizo-new-realty-desc-detail-1-row-input",temp).value = number+" "+street+", "+ward+", "+district+", "+state;
         temp.data = {
-            id:addressid,
             number:this.checkAddress[addressid].addressnumber,
             street:this.checkStreet[this.checkAddress[addressid].streetid].name+"_"+this.checkAddress[addressid].streetid,
             ward:this.checkWard[this.checkAddress[addressid].wardid].name+"_"+this.checkAddress[addressid].wardid,
@@ -711,15 +782,17 @@ NewRealty.prototype.descViewdetail = function () {
     });
     if(this.data!==undefined)
     {
-        var addressCurrent = this.itemAdress(this.data.original.addressid,this.data.original.lat,this.data.original.lng)
+        var addressCurrent = this.itemAdress(this.data.original,this.data.original.lat,this.data.original.lng)
         containerAdress.appendChild(addressCurrent);
         var map = new MapView();
-        map.activePlanningMap();
-        map.addMoveMarker([this.data.original.lat,this.data.original.lng],false);
+        var position = [this.data.original.lat,this.data.original.lng];
+        position["data"] = this.data.original;
+        map.addMoveMarker(position,false);
         map.currentMarker.setDraggable(false);
+        map.activePlanningMap();
         this.containerMap.parentNode.replaceChild(map, this.containerMap);
         this.containerMap = map;
-        var addressOld = this.itemAdressOld(this.data.original.addressid_old)
+        var addressOld = this.itemAdressOld(this.data.original)
         containerAdress.appendChild(addressOld);
     }else
     {
@@ -831,7 +904,16 @@ NewRealty.prototype.descViewdetail = function () {
                                                     },
                                                     {
                                                         tag: "checkbox",
-                                                        class: "pizo-new-realty-desc-detail-row-menu-2-checkbox"
+                                                        class: "pizo-new-realty-desc-detail-row-menu-2-checkbox",
+                                                        on:{
+                                                            change:function(event)
+                                                            {
+                                                                if(this.checked == false)
+                                                                self.priceRent.style.display = "none";
+                                                                else
+                                                                self.priceRent.style.display = "";
+                                                            }
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -908,6 +990,56 @@ NewRealty.prototype.detructView = function () {
         width.value = width.value * event.lastValue / event.value;
     })
     var self = this;
+
+    var priceRent = _(    {
+        tag: "div",
+        class: "pizo-new-realty-dectruct-content-area-right",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-desc-detail-row",
+                child: [
+                    {
+                        tag: "span",
+                        class: ["pizo-new-realty-detruct-content-price-rent-label","pizo-new-realty-detruct-content-area-label"],
+                        props: {
+                            innerHTML: "Giá thuê tháng"
+                        },
+                    },
+                    {
+                        tag: "input",
+                        class: ["pizo-new-realty-detruct-content-price-rent","pizo-new-realty-dectruct-input"],
+                        on:{
+                            input:function(event)
+                            {
+                                this.value = formatNumber(this.value);
+                            },
+                            blur:function(event)
+                            {
+                                this.value = reFormatNumber(this.value);
+                            }
+                        }
+                    },
+                    {
+                        tag:"selectmenu",
+                        class:  "pizo-new-realty-detruct-content-price-rent-unit",
+                        on:{
+                            change:function(event){
+                                var price = $('input.pizo-new-realty-detruct-content-price-rent', temp);
+                                price.value = (price.value * event.lastValue / event.value);
+                            }
+                        },
+                        props:{
+                            items:[
+                                {text:"VND",value:1},
+                                {text:"USD",value:23180}
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    });
 
     var temp = _({
         tag: "div",
@@ -1587,7 +1719,46 @@ NewRealty.prototype.detructView = function () {
                             }
                         ]
                     },
-                     {
+                    {
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-content-area-right",
+                        child: [
+                            {
+                                tag: "span",
+                                class: "pizo-new-realty-detruct-content-area-label",
+                                props: {
+                                    innerHTML: "Chiều rộng đường vào"
+                                },
+                            },
+                            {
+                                tag: "input",
+                                class: ["pizo-new-realty-dectruct-content-area-access", "pizo-new-realty-dectruct-input"],
+                                attr: {
+                                    type: "number",
+                                    min: 0,
+                                    step: 1
+                                },
+                                props:{
+                                    value:0
+                                }
+                            },
+                            unitWidthRoad
+                        ]
+                    },
+                ]
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-dectruct-tab",
+                props: {
+                    innerHTML: "Giá"
+                }
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-dectruct-content",
+                child:[
+                    {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area",
                         child: [
@@ -1673,56 +1844,7 @@ NewRealty.prototype.detructView = function () {
                             }
                         ]
                     },
-                    {
-                        tag: "div",
-                        class: "pizo-new-realty-dectruct-content-area-right",
-                        child: [
-                            {
-                                tag: "div",
-                                class: "pizo-new-realty-desc-detail-row",
-                                child: [
-                                    {
-                                        tag: "span",
-                                        class: ["pizo-new-realty-detruct-content-price-rent-label","pizo-new-realty-detruct-content-area-label"],
-                                        props: {
-                                            innerHTML: "Giá thuê tháng"
-                                        },
-                                    },
-                                    {
-                                        tag: "input",
-                                        class: ["pizo-new-realty-detruct-content-price-rent","pizo-new-realty-dectruct-input"],
-                                        on:{
-                                            input:function(event)
-                                            {
-                                                this.value = formatNumber(this.value);
-                                            },
-                                            blur:function(event)
-                                            {
-                                                this.value = reFormatNumber(this.value);
-                                            }
-                                        }
-                                    },
-                                    {
-                                        tag:"selectmenu",
-                                        class:  "pizo-new-realty-detruct-content-price-rent-unit",
-                                        on:{
-                                            change:function(event){
-                                                var price = $('input.pizo-new-realty-detruct-content-price-rent', temp);
-                                                price.value = (price.value * event.lastValue / event.value);
-                                            }
-                                        },
-                                        props:{
-                                            items:[
-                                                {text:"VND",value:1},
-                                                {text:"USD",value:23180}
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                  
+                    priceRent,
                     {
                         tag: "div",
                         class: "pizo-new-realty-dectruct-content-area-right",
@@ -1748,33 +1870,6 @@ NewRealty.prototype.detructView = function () {
                             }
                         ]
                     },
-                    {
-                        tag: "div",
-                        class: "pizo-new-realty-dectruct-content-area-right",
-                        child: [
-                            {
-                                tag: "span",
-                                class: "pizo-new-realty-detruct-content-area-label",
-                                props: {
-                                    innerHTML: "Chiều rộng đường vào"
-                                },
-                            },
-                            {
-                                tag: "input",
-                                class: ["pizo-new-realty-dectruct-content-area-access", "pizo-new-realty-dectruct-input"],
-                                attr: {
-                                    type: "number",
-                                    min: 0,
-                                    step: 1
-                                },
-                                props:{
-                                    value:0
-                                }
-                            },
-                            unitWidthRoad
-                        ]
-                    },
-               
                 ]
             }
         ]
@@ -1805,6 +1900,7 @@ NewRealty.prototype.detructView = function () {
     this.inputLiving = $('input.pizo-new-realty-dectruct-content-area-living',temp);
     this.inputBasement = $('input.pizo-new-realty-dectruct-content-area-basement',temp);
     this.inputFloor = $('input.pizo-new-realty-dectruct-content-area-floor',temp);
+    this.priceRent = priceRent;
 
     this.advanceDetruct = $("div.pizo-new-realty-dectruct-content-area-advance",temp);
     this.simpleDetruct = $("div.pizo-new-realty-dectruct-content-area-simple",temp);
@@ -1864,7 +1960,36 @@ NewRealty.prototype.getDataSave = function(){
     advanceDetruct += this.advanceDetruct2.checked?10:0;
     advanceDetruct += this.advanceDetruct3.checked?100:0;
     advanceDetruct += this.advanceDetruct4.checked?1000:0;
-    console.log(advanceDetruct)
+
+    var image = [];
+    var arr = this.viewJuridical.getFile();
+    for(var i = 0;i<arr.length;i++)
+    {
+        if(typeof arr[i] == "string")
+        {
+            image.push({src:arr[i],type:0});
+        }else
+        {
+            image.push({src:arr[i].id,type:0});
+        }
+    }
+    var thumnail = this.viewCurrentStaus.getImportTant();
+    console.log(thumnail)
+    arr = this.viewCurrentStaus.getFile();
+    for(var i = 0;i<arr.length;i++)
+    {
+        if(typeof arr[i] == "string")
+        {
+            var src = arr[i];
+        }else
+        {
+            var src = arr[i].id;
+        }
+        if(i == thumnail)
+        image.push({src:src,type:1,thumnail:1});
+        else
+        image.push({src:src,type:1,thumnail:0});
+    }
     var temp = {
         height:this.inputHeight.value*this.inputUnitHeight.value,
         width:this.inputWidth.value*this.inputUnitWidth.value,
@@ -1889,11 +2014,10 @@ NewRealty.prototype.getDataSave = function(){
         pricerent:reFormatNumber(this.inputPriceRent.value)*this.inputPriceRentUnit.value,
         advancedetruct:advanceDetruct,
         juridical:this.juridical.value,
-        imageJuridical:this.viewJuridical.getFile(),
-        imageCurrentStaus:this.viewCurrentStaus.getFile()
+        image:image,
+        // important:this.viewCurrentStaus.getImportTant()
     }
     var arr = [];
-
     for(var i = 0;i<this.containerEquipment.childNodes.length;i++)
     {
         arr.push(this.containerEquipment.childNodes[i].getData());
@@ -1986,9 +2110,10 @@ NewRealty.prototype.getDataSave = function(){
         temp.addressid_old = address;
     }
 
-    if(this.data!==undefined)
+    if(this.data!==undefined&&this.data.original!==undefined)
     temp.id = this.data.original.id;
-    console.log(temp);
+    else
+    temp.id = this.data.id;
     return temp;
 }
 
@@ -2408,6 +2533,72 @@ NewRealty.prototype.itemDisplayNone = function(data)
     return temp;
 }
 
+NewRealty.prototype.editContact = function(node,data)
+{
+    var self = this;
+    var mNewContact = new NewContact({original:data});
+    mNewContact.attach(self.parent);
+    var frameview = mNewContact.getView();
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.editDBContact(mNewContact,data,node);
+}
+
+NewRealty.prototype.editDBContact = function(mNewContact,data,node){
+    var self = this;
+    mNewContact.promiseEditDB.then(function(value){
+        if(value.id===undefined)
+        moduleDatabase.getModule("users").add(value).then(function(result){
+            self.editViewAccount(result,node);
+        })
+        else
+        moduleDatabase.getModule("contacts").update(value).then(function(result){
+            self.editViewContact(result,node);
+        })
+        mNewContact.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewContact.promiseEditDB!==undefined)
+            self.editDBContact(mNewContact,data);
+        },10);
+    })
+}
+
+NewRealty.prototype.editViewContact = function(value,node){
+    node.setInformation(value);
+}
+
+
+NewRealty.prototype.editAccount = function(node,data)
+{
+    var self = this;
+    moduleDatabase.getModule("positions").load().then(function(value){
+        var mNewAccount = new NewAccount({original:data});
+        mNewAccount.attach(self.parent);
+        var frameview = mNewAccount.getView(moduleDatabase.getModule("positions").getList("name","id"));
+        self.parent.body.addChild(frameview);
+        self.parent.body.activeFrame(frameview);
+        self.editDBAccount(mNewAccount,data,node);
+    })
+}
+
+NewRealty.prototype.editDBAccount = function(mNewAccount,data,node){
+    var self = this;
+    mNewAccount.promiseEditDB.then(function(value){
+        moduleDatabase.getModule("users").update(value).then(function(result){
+            self.editViewAccount(result,node);
+        })
+        mNewAccount.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewAccount.promiseEditDB!==undefined)
+            self.editDBAccount(mNewAccount,data,parent,index);
+        },10);
+    })
+}
+
+NewRealty.prototype.editViewAccount = function(value,node){
+    node.setInformation(value);
+}
+
 NewRealty.prototype.contactItem = function(data){
   
     var name,typecontact,phone,statusphone,note;
@@ -2444,6 +2635,32 @@ NewRealty.prototype.contactItem = function(data){
                                 {text:"Họ hàng",value:3}
                             ]
                         }
+                    },
+                    {
+                        tag:"button",
+                        class:"pizo-new-realty-contact-item-setting",
+                        on:{
+                            click:function(event){
+                                var tempData = temp.getData();
+                                if(tempData.username!==undefined)
+                                self.editAccount(temp,tempData);
+                                else
+                                self.editContact(temp,tempData);
+                            }
+                        },
+                        child:[
+                            {
+                                tag:"i",
+                                class:"material-icons",
+                                style:{
+                                    fontSize:"1rem",
+                                    verticalAlign: "middle"
+                                },
+                                props:{
+                                    innerHTML:"settings"
+                                }
+                            }
+                        ]
                     },
                     {
                         tag:"button",
@@ -2531,6 +2748,9 @@ NewRealty.prototype.contactItem = function(data){
                     {
                         tag:"selectmenu",
                         class:"pizo-new-realty-contact-item-phone-selectbox",
+                        style:{
+                            width: "190px"
+                        },
                         props:{
                             items:[
                                 {text:"Còn hoạt động",value:1},

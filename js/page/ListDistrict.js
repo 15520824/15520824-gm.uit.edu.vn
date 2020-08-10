@@ -176,6 +176,9 @@ ListDistrict.prototype.getView = function () {
     var tabContainer = _({
         tag:"div",
         class:["pizo-list-realty-main-result-control","drag-zone-bg"],
+        style:{
+            height:"calc(100% - 60px)"
+        },
         child:[
         ]
     })

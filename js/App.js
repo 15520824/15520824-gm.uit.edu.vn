@@ -15,13 +15,11 @@ import ListHelp from './page/ListHelp';
 import ListEditHelp from './page/ListEditHelp';
 import ListPositions from './page/ListPositions';
 import ListAccount from './page/ListAccount';
-import ListAddress from './page/ListAddress';
 import ListContact from './page/ListContact';
 import ListEquipment from './page/ListEquipment';
 import ListJuridical from './page/ListJuridical';
 import MapRealty from './page/MapRealty';
 
-import xmlModalDragManyFiles from './component/modal_drag_drop_manyfiles';
 import moduleDatabase from './component/ModuleDatabase';
 
 var _ = Fcore._;
@@ -34,10 +32,21 @@ function App(){
     this.loadConfig();
     moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActivehouse.php"]);
     moduleDatabase.getModule("contacts",["load.php","add.php","update.php","deleteContact.php"]);
-    moduleDatabase.getModule("users",["load.php","add.php","update.php","deleteUser.php"]);
+    moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","deleteUser.php"]);
     moduleDatabase.getModule("polygon", ["loadPolygon.php", "addPolygon.php", "updatePolygon.php", "deletePolygon.php"]);
     moduleDatabase.getModule("geometry",["loadMap.php","addMap.php","updateMap.php","deleteMap.php"]);
     moduleDatabase.getModule("geometry_created",["loadCreatedMap.php"]);
+    moduleDatabase.getModule("streets");
+    moduleDatabase.getModule("helps");
+    moduleDatabase.getModule("states");
+    moduleDatabase.getModule("districts");
+    moduleDatabase.getModule("wards");
+    moduleDatabase.getModule("addresses");
+    moduleDatabase.getModule("equipments");
+    moduleDatabase.getModule("departments",["load.php","add.php","update.php","deleteDepartment.php"]);
+    moduleDatabase.getModule("positions");
+    moduleDatabase.getModule("juridicals");
+    moduleDatabase.getModule("nations");
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
@@ -186,10 +195,6 @@ App.prototype.getView = function()
                                                     pageIndex:24
                                                 },
                                                 {
-                                                    text:"Địa chỉ",
-                                                    pageIndex:25
-                                                },
-                                                {
                                                     text:"Thông tin quy hoạch",
                                                     pageIndex:26
                                                 }
@@ -329,9 +334,9 @@ App.prototype.openPage = function(index){
     switch(index)
     {
         case 4:
-            xmlModalDragManyFiles.createModal(document.body,function(value){
-                console.log(value);
-            })
+            // xmlModalDragManyFiles.createModal(document.body,function(value){
+            //     console.log(value);
+            // })
             break;
         case 5:
             var mListPositions = new ListPositions();
@@ -428,13 +433,6 @@ App.prototype.openPage = function(index){
             var mListStreet = new ListStreet();
             mListStreet.attach(this);
             var frameview = mListStreet.getView();
-            this.body.addChild(frameview);
-            this.body.activeFrame(frameview);
-        break;
-        case 25:
-            var mListAddress = new ListAddress();
-            mListAddress.attach(this);
-            var frameview = mListAddress.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;

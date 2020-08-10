@@ -38,15 +38,21 @@ if($ORDERING!="")
 $ORDERING = " ORDER BY ".$ORDERING;
 $result = $connector->query("SELECT `id`, `cellLat`, `cellLng`, `created`, AsText(`map`) FROM ".$prefix."geometry".$WHERE.$ORDERING);
 
-$data = array();
-$i = 0; 
-if(isset($data["loaded"])){
-    for($i = 0;$i<count($data["loaded"]);$i++)
+ 
+$check = array();
+if(isset($data["loaded"]))
+{
+    foreach($data["loaded"] as $param=>$value)
     {
-        $check[$data["loaded"][$i]] = $i;
+        $check[$param] = [];
+        for($i = 0;$i<count($value);$i++)
+        {
+            $check[$param][$value[$i]] = $i;
+        }
     }
 }
 
+$data = array();
 if($result)
 if ($result->num_rows > 0) {
     // output data of each row

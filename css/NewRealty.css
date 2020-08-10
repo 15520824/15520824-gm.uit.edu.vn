@@ -386,7 +386,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100%;
   align-items: stretch;
 }
 
@@ -504,6 +503,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .pizo-new-realty-contact-item-close{
   background-color: red;
+  color: white;
+}
+
+
+.pizo-new-realty-contact-item-setting{
+  background-color: blue;
   color: white;
 }
 

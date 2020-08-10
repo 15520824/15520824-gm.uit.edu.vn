@@ -50,22 +50,6 @@ while (isset($data["addressid".$index]))
         'addresses'=> $dataInsertAddress
         ));
     }else{
-        if(isset($address["streetid"]))
-    {
-        $streetid = $address["streetid"];
-    }else if(isset($address["street"]))
-    {
-        $street = $address["street"];
-        $dataStreet = array(
-            'name'=>$street,
-        );
-        $streetid = $connector-> insert($prefix."streets", $dataStreet);
-        $dataStreet["id"] = $streetid;
-        array_push($insert,array(
-            'streets'=>$dataStreet
-        ));
-    }
-        
         if(isset($address["wardid"]))
         {
             $wardid = $address["wardid"];
@@ -113,19 +97,27 @@ while (isset($data["addressid".$index]))
                 'districtid'=>$districtid
             );
             $wardid = $connector-> insert($prefix."wards", $dataWard);
+            
         }
-
+        if(isset($address["streetid"]))
+        {
+            $streetid = $address["streetid"];
+        }else if(isset($address["street"]))
+        {
+            $street = $address["street"];
+            $dataStreet = array(
+                'name'=>$street,
+                'wardid'=>$wardid
+            );
+            $streetid = $connector-> insert($prefix."streets", $dataStreet);
+            $dataStreet["id"] = $streetid;
+            array_push($insert,array(
+                'streets'=>$dataStreet
+            ));
+        }
         if(isset($address["number"]))
         {
             $number = $address["number"];
-        }
-        $dataLinkWardStreet = $connector-> load($prefix."ward_street_link","wardid=".$wardid." AND streetid=".$streetid);
-        if (count($dataLinkWardStreet) == 0) {
-            $dataWardSteet = array(
-                'wardid' => $wardid,
-                'streetid' => $streetid
-            );
-            $linkWardStreet = $connector-> insert($prefix."ward_street_link", $dataWardSteet);
         }
 
         $dataAddress = $connector-> load($prefix."addresses","addressnumber='".$number."' AND streetid=".$streetid." AND wardid=".$wardid);
@@ -271,20 +263,33 @@ for($i = 0 ;$i<$count_old;$i++)
 
 $image_old = $connector->load($prefix."image","houseid = ".$data["id"]);
 
-if(isset($data["imageJuridical"]))
+if(isset($data["image"]))
 {
-    $images = $data["imageJuridical"];
+    $images = $data["image"];
     $count = count($images);
     define('UPLOAD_DIR', "../../assets/upload/");
     for ($i = 0; $i < $count; $i++){
         $img = $images[$i];
-        if (isset($img["id"]))
+        if (is_numeric ($img["src"]))
         {
             for($j = 0;$j<count($image_old);$j++)
             {
-                if($img["id"]==$image_old[$j]["id"])
+                if($img["src"]==$image_old[$j]["id"])
                 {
+                    if(isset($img["thumnail"])&&$image_old[$j]["thumnail"]!=$img["thumnail"])
+                    {
+                        $connector->update($prefix.'image',array(
+                            "id"=>$img["src"],
+                            "thumnail"=>$img["thumnail"]
+                        ));
+                        $image_old[$j]["thumnail"] = $img["thumnail"];
+                        array_push($update,array(
+                            'image'=>$image_old[$j]
+                        ));
+                    }
+                   
                     array_splice($image_old,$j,1);
+                    $data["image"][$i] = intval($img["src"]);
                     break;
                 }
             }
@@ -292,12 +297,12 @@ if(isset($data["imageJuridical"]))
         }
 
 
-        $img = str_replace('data:image/', '', $img);
-        $pos = strpos($img, ";");
-        $extension = substr($img, 0, $pos);
-        $img = str_replace($extension.';base64,', '', $img);
-        $img = str_replace(' ', '+', $img);
-        $dataFile = base64_decode($img);
+        $img["src"] = str_replace('data:image/', '', $img["src"]);
+        $pos = strpos($img["src"], ";");
+        $extension = substr($img["src"], 0, $pos);
+        $img["src"] = str_replace($extension.';base64,', '', $img["src"]);
+        $img["src"] = str_replace(' ', '+', $img["src"]);
+        $dataFile = base64_decode($img["src"]);
         $filename = uniqid() .$milliseconds. '.'.$extension;
 
         $file = UPLOAD_DIR .$filename;
@@ -306,67 +311,27 @@ if(isset($data["imageJuridical"]))
             echo "Unable to save the file.";
             exit();
         }
-
+        if($img["type"]==0)
+        $type = 0;
+        else
+        $type = 1;
+        if(isset($img["thumnail"])&&$img["thumnail"]==1)
+        $thumnail=1;
+        else
+        $thumnail=0;
         $obj_list = array(
             'src' => $filename,
-            'type' => 0,
+            'type' => $type,
             'houseid' => $data["id"],
             'created' => new DateTime(),
+            'thumnail' => $thumnail
         );
-        $obj_list["id"] = $connector->insert($prefix.'image', $obj_list);
+        $image_id = $connector->insert($prefix.'image', $obj_list);
+        $obj_list["id"] = $image_id;
         array_push($insert,array(
             'image'=>$obj_list
         ));
-        $data["imageJuridical"][$i] = $obj_list;
-    }
-}
-
-
-if(isset($data["imageCurrentStaus"]))
-{
-    $images = $data["imageCurrentStaus"];
-    $count = count($images);
-    for ($i = 0; $i < $count; $i++){
-        $img = $images[$i];
-        if (isset($img["id"]))
-        {
-            for($j = 0;$j<count($image_old);$j++)
-            {
-                if($img["id"]==$image_old[$j]["id"])
-                {
-                    array_splice($image_old,$j,1);
-                    break;
-                }
-            }
-            continue;
-        }
-
-        $img = str_replace('data:image/', '', $img);
-        $pos = strpos($img, ";");
-        $extension = substr($img, 0, $pos);
-        $img = str_replace($extension.';base64,', '', $img);
-        $img = str_replace(' ', '+', $img);
-        $dataFile = base64_decode($img);
-        $filename = uniqid() .$milliseconds. '.'.$extension;
-
-        $file = UPLOAD_DIR .$filename;
-        $success = file_put_contents($file, $dataFile);
-        if (!$success){
-            echo "Unable to save the file.";
-            exit();
-        }
-
-        $obj_list = array(
-            'src' => $filename,
-            'type' => 1,
-            'houseid' => $data["id"],
-            'created' => new DateTime(),
-        );
-        $obj_list["id"] = $connector->insert($prefix.'image', $obj_list);
-        array_push($insert,array(
-            'image'=>$obj_list
-        ));
-        $data["imageCurrentStaus"][$i] = $obj_list;
+        $data["image"][$i] = $image_id;
     }
 }
 

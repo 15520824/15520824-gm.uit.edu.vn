@@ -10,7 +10,7 @@ import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
-import NewDistrict from '../component/NewDistrict';
+import NewStreet from '../component/NewStreet';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -177,6 +177,9 @@ ListStreet.prototype.getView = function () {
     var tabContainer = _({
         tag:"div",
         class:["pizo-list-realty-main-result-control","drag-zone-bg","no-animation"],
+        style:{
+            height:"calc(100% - 63px)"
+        },
         child:[
         ]
     })
@@ -187,11 +190,6 @@ ListStreet.prototype.getView = function () {
        
         docTypeMemuProps = {
             items: [
-                {
-                    text: 'Thêm',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:0,
-                },
                 {
                     text: 'Sửa',
                     icon: 'span.mdi.mdi-text-short',
@@ -207,9 +205,6 @@ ListStreet.prototype.getView = function () {
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
-                case 0:
-                    self.add(data.original.id,row);
-                    break;
                 case 1:
                     self.edit(data,parent,index);
                     break;
@@ -295,6 +290,7 @@ ListStreet.prototype.setListParamState = function(value)
 {
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
     this.listState = moduleDatabase.getModule("states").getList("name",["name","id"]);
+    this.isLoaded = true;
 }
 
 ListStreet.prototype.getDataParam = function()
@@ -350,6 +346,9 @@ ListStreet.prototype.searchControlContent = function(){
     var self = this;
     self.listStateElement = _({
         tag:"selectmenu",
+        style:{
+            width:"100%"
+        },
         props:{
             enableSearch:true,
         },
@@ -363,6 +362,9 @@ ListStreet.prototype.searchControlContent = function(){
 
     self.listDistrictElement = _({
         tag:"selectmenu",
+        style:{
+            width:"100%"
+        },
         props:{
             enableSearch:true,
         },
@@ -399,6 +401,9 @@ ListStreet.prototype.searchControlContent = function(){
 
     self.listWardElement = _({
         tag:"selectmenu",
+        style:{
+            width:"100%"
+        },
         props:{
             enableSearch:true,
         },
@@ -533,34 +538,29 @@ ListStreet.prototype.add = function(parent_id = 0,row)
     if(!this.isLoaded)
         return;
     var self = this;
-    var mNewDistrict = new NewDistrict(undefined,parent_id);
-    mNewDistrict.attach(self.parent);
-    var frameview = mNewDistrict.getView(self.getDataParam());
+    var mNewStreet = new NewStreet(undefined,parent_id);
+    mNewStreet.attach(self.parent);
+    var frameview = mNewStreet.getView(self.listParam);
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.addDB(mNewDistrict,row);
+    self.addDB(mNewStreet,row);
 }
 
-ListStreet.prototype.addDB = function(mNewDistrict,row ){
+ListStreet.prototype.addDB = function(mNewStreet,row ){
     var self = this;
-    mNewDistrict.promiseAddDB.then(function(value){
-        var phpFile = moduleDatabase.addStatesPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+    mNewStreet.promiseAddDB.then(function(value){
+        moduleDatabase.getModule("streets").add(value).then(function(result){
             self.addView(result.data,row);
         })
-        mNewDistrict.promiseAddDB = undefined;
+        mNewStreet.promiseAddDB = undefined;
         setTimeout(function(){
-            if(mNewDistrict.promiseAddDB!==undefined)
-            self.addDB(mNewDistrict);
+            if(mNewStreet.promiseAddDB!==undefined)
+            self.addDB(mNewStreet);
         },10);
     })
 }
 
 ListStreet.prototype.addView = function(value,parent){
-    value.created = getGMT();
-    value.modified = getGMT();
     var result = this.getDataRow(value);
     
     var element = this.mTable;
@@ -572,35 +572,30 @@ ListStreet.prototype.edit = function(data,parent,index)
     if(!this.isLoaded)
         return;
     var self = this;
-    var mNewDistrict = new NewDistrict(data);
-    mNewDistrict.attach(self.parent);
-    var frameview = mNewDistrict.getView(self.getDataParam());
+    var mNewStreet = new NewStreet(data);
+    mNewStreet.attach(self.parent);
+    var frameview = mNewStreet.getView(self.listParam);
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mNewDistrict,data,parent,index);
+    self.editDB(mNewStreet,data,parent,index);
 }
 
-ListStreet.prototype.editDB = function(mNewDistrict,data,parent,index){
+ListStreet.prototype.editDB = function(mNewStreet,data,parent,index){
     var self = this;
-    mNewDistrict.promiseEditDB.then(function(value){
-        var phpFile = moduleDatabase.updateStatesPHP;
-        if(self.phpUpdateContent)
-        phpFile = self.phpUpdateContent;
+    mNewStreet.promiseEditDB.then(function(value){
         value.id = data.original.id;
-        moduleDatabase.updateData(phpFile,value).then(function(result){
+        moduleDatabase.getModule("streets").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
-        mNewDistrict.promiseEditDB = undefined;
+        mNewStreet.promiseEditDB = undefined;
         setTimeout(function(){
-        if(mNewDistrict.promiseEditDB!==undefined)
-            self.editDB(mNewDistrict,data,parent,index);
+        if(mNewStreet.promiseEditDB!==undefined)
+            self.editDB(mNewStreet,data,parent,index);
         },10);
     })
 }
 
 ListStreet.prototype.editView = function(value,data,parent,index){
-    value.created = data.original.created;
-    value.modified = getGMT();
     var data = this.getDataRow(value);
 
     var indexOF = index,element = parent;
@@ -630,10 +625,7 @@ ListStreet.prototype.deleteView = function(parent,index){
 
 ListStreet.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    var phpFile = moduleDatabase.deleteStatesPHP;
-    if(self.phpDeleteContent)
-    phpFile = self.phpUpdateContent;
-    moduleDatabase.updateData(phpFile,data).then(function(value){
+    moduleDatabase.getModule("streets").delete({id:data.id}).then(function(value){
         self.deleteView(parent,index);
     })
 }

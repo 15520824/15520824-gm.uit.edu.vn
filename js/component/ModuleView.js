@@ -307,13 +307,7 @@ function moveAtFix(clone, pageY, shiftY, result) {
 }
 
 function moveElement(event, me, result, index) {
-    var scrollParent = me;
-
-    while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-        scrollParent = scrollParent.parentNode;
-    }
-    if (scrollParent === undefined)
-        return;
+    var scrollParent = result.realTable.parentNode;
 
     scrollParent.addEventListener("scroll", function (event) {
         bg.isMove = false;
@@ -378,14 +372,7 @@ function moveElementFix(event, me, result, index) {
     var clone = result.cloneRow(index);
     var bg = result.backGroundFix(index);
 
-    var scrollParent = me;
-
-    while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-        scrollParent = scrollParent.parentNode;
-    }
-    if (scrollParent === undefined)
-        return;
-
+    var scrollParent = result.realTable.parentNode;
 
     result.bodyTable.appendChild(bg);
     bg.appendChild(clone);
@@ -532,7 +519,7 @@ function outFocus(clone, trigger, functionCheckZone, bg, parent) {
     }, 20)
     clone.selfRemove();
     var event = new CustomEvent('dragdrop');
-    parent.bodyTable.parentNode.dispatchEvent(event);
+    parent.realTable.parentNode.dispatchEvent(event);
 }
 
 
@@ -552,8 +539,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     var bodyTable = _({
         tag: "tbody"
     });
-
-    var result = _({
+    var realTable = _({
         tag: "table",
         class: "sortTable",
         child: [
@@ -561,6 +547,16 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             bodyTable
         ]
     });
+    var result = _(
+        {
+            tag:"div",
+            class:"container-sortTable",
+            child:[
+                realTable
+            ]
+        }
+        );
+    result.realTable = realTable;
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
     Object.assign(result, tableView.prototype);
@@ -571,56 +567,102 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.dragHorizontal = dragHorizontal;
     result.isSwipeLeft = false;
     result.isSwipeRight = false;
+    result.sortArray = [];
 
+    
+
+    if (window.scrollEvent === undefined) {
+        window.xMousePos = 0;
+        window.yMousePos = 0;
+        window.lastScrolledLeft = 0;
+        window.lastScrolledTop = 0;
+
+        document.addEventListener("mousemove", function (event) {
+            window.scrollEvent = captureMousePosition(event);
+        })
+        var scrollParent = result;
+        scrollParent.addEventListener("scroll", function (event) {
+            if (window.lastScrolledLeft != scrollParent.scrollLeft) {
+                window.xMousePos -= window.lastScrolledLeft;
+                window.lastScrolledLeft = scrollParent.scrollLeft;
+                window.xMousePos += window.lastScrolledLeft;
+            }
+            if (lastScrolledTop != scrollParent.scrollTop) {
+                window.yMousePos -= window.lastScrolledTop;
+                window.lastScrolledTop = scrollParent.scrollTop;
+                window.yMousePos += window.lastScrolledTop;
+            }
+        })
+    }
     result.updatePagination = function (number = result.tempIndexRow,isRedraw = true) {
-        result.tempIndexRow = number;
-        if (result.paginationElement !== undefined) {
-            if(isRedraw)
-            result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
-            var pagination = result.pagination(result.tempIndexRow);
-            result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
-        } else {
-            var pagination = result.pagination(result.tempIndexRow);
-            result.appendChild(pagination);
-        }
+        if(false)
+        {
+            result.tempIndexRow = indexRow;
+            if(isRedraw){
+                result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+                scrollParent.emit("scroll");
+            }                                                   
+        }else{
+            result.tempIndexRow = parseInt(number);
+            if (result.paginationElement !== undefined) {
+                if(isRedraw){
+                    result.indexRow = 0;
+                    result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+                }
+                var pagination = result.pagination(result.tempIndexRow);
+                result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
+            } else {
+                var pagination = result.pagination(result.tempIndexRow);
+                result.appendChild(pagination);
+            }
 
-        result.paginationElement = pagination;
+            result.paginationElement = pagination;
+        }
+    }
+    if(false)
+    {
+        var tempLimit = _({
+            tag:"div",
+            child:[
+                {
+                    tag:"span",
+                    style:{
+                        padding: "10px",
+                        textAlign: "center",
+                        display: "block",
+                        fontSize: "16px",
+                    },
+                    props:{
+                        innerHTML:"Để tìm kiếm các phần tử cũ hơn vui lòng sử dung Tìm kiếm"
+                    }
+                }
+            ]
+        })
+        tempLimit.style.display = "none";
+        result.appendChild(tempLimit);
+        scrollParent.addEventListener("scroll",function(event){
+                if(this.startIndex>10*indexRow)
+                {
+                    if(tempLimit.style.display !== "block")
+                    tempLimit.style.display = "block";
+                    return;
+                }else
+                {
+                    if(tempLimit.style.display !== "none")
+                    tempLimit.style.display = "none";
+                }
+                if(this.scrollTop >= (this.scrollHeight - this.offsetHeight))
+                {
+                    this.getBodyTable(this.data);
+                    if (this.bodyTable.listCheckBox !== undefined&&this.bodyTable.listCheckBox.length>0)
+                    {
+                        this.bodyTable.listCheckBox[0].update();
+                    }
+                }
+                this.setUpSwipe();
+        })   
     }
     result.updatePagination(indexRow,false);
-
-    setTimeout(function () {
-        if (window.scrollEvent === undefined) {
-            window.xMousePos = 0;
-            window.yMousePos = 0;
-            window.lastScrolledLeft = 0;
-            window.lastScrolledTop = 0;
-
-            document.addEventListener("mousemove", function (event) {
-                window.scrollEvent = captureMousePosition(event);
-            })
-            var scrollParent = result;
-
-            while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-                scrollParent = scrollParent.parentNode;
-            }
-            if (scrollParent === undefined)
-                return;
-            result.scrollParent = scrollParent;
-            scrollParent.addEventListener("scroll", function (event) {
-                if (window.lastScrolledLeft != scrollParent.scrollLeft) {
-                    window.xMousePos -= window.lastScrolledLeft;
-                    window.lastScrolledLeft = scrollParent.scrollLeft;
-                    window.xMousePos += window.lastScrolledLeft;
-                }
-                if (lastScrolledTop != scrollParent.scrollTop) {
-                    window.yMousePos -= window.lastScrolledTop;
-                    window.lastScrolledTop = scrollParent.scrollTop;
-                    window.yMousePos += window.lastScrolledTop;
-                }
-            })
-        }
-    }, 10)
-
     row = _({
         tag: "tr"
     });
@@ -652,6 +694,9 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     if(dragVertical)
     {
         result.setUpSlip();
+        if(result.isSwipeLeft||result.isSwipeRight)
+        result.addEventSwipe();
+        result.slip = new Slip(result.bodyTable);
     }
     return result;
 }
@@ -665,31 +710,121 @@ tableView.prototype.getElementNext = function(element)
     return element.nextSibling;
 }
 
-tableView.prototype.setUpSwipe = function(isSwipeLeft = true,isSwipeRight = true)
+tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
 {
-    this.isSwipeLeft = isSwipeLeft;
-    this.isSwipeRight = isSwipeRight;
-}
-
-tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
-{
-    parent.exactlyDeleteRow(index);
-}
-
-tableView.prototype.swipeCompleteRight = function(e,me,index,data,row,parent)
-{
-    parent.exactlyDeleteRow(index);
-}
-
-tableView.prototype.swipeCancel = function()
-{
+    if(isSwipeLeft!==undefined)
+    {
+        this.isSwipeLeft = isSwipeLeft;
+    }
+    console.log(this.isSwipeLeft)
+    if(this.isSwipeLeft!==undefined)
+    {       
+        for(var i = 0;i<this.bodyTable.childNodes.length;i++)
+        {
+            if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
+            continue;
+            var hiddenButton = _({
+                tag:"div",
+                class:"button-hidden-swipe-container"
+            })
+            for(var j=0;j<this.isSwipeLeft.length;j++){
+               
+                
+                this.bodyTable.childNodes[i].appendChild(hiddenButton);
+                hiddenButton.appendChild(_({
+                    tag:"div",
+                    class:"button-hidden-swipe",
+                    style:{
+                        backgroundColor:this.isSwipeLeft[j].background
+                    },
+                    child:[
+                        {
+                            tag:"i",
+                            class:["material-icons","button-hidden-swipe-icon"],
+                            style:{
+                                color:this.isSwipeLeft[j].iconcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeLeft[j].icon
+                            }
+                        },
+                        {
+                            tag:"span",
+                            class:"button-hidden-swipe-text",
+                            style:{
+                                color:this.isSwipeLeft[j].textcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeLeft[j].text
+                            }
+                        }
+                    ]
+                }))
+               
+            }
+            this.bodyTable.childNodes[i].hiddenButton = hiddenButton;
+        }
+    }
     
+    if(isSwipeRight!==undefined)
+    {
+        this.isSwipeRight = isSwipeRight;
+    }
+    if(this.isSwipeRight!==undefined)
+    {
+        for(var i = 0;i<this.bodyTable.childNodes.length;i++)
+        {
+            if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
+                continue;
+            var hiddenButton = _({
+                tag:"div",
+                class:"button-hidden-swipe-container"
+            })
+            this.bodyTable.childNodes[i].appendChild(hiddenButton);
+            for(var j=0;j<this.isSwipeRight.length;j++)
+            {
+                hiddenButton.appendChild(_({
+                    tag:"div",
+                    class:"button-hidden-swipe",
+                    style:{
+                        backgroundColor:this.isSwipeRight[j].background
+                    },
+                    child:[
+                        {
+                            tag:"i",
+                            class:["material-icons","button-hidden-swipe-icon"],
+                            style:{
+                                color:this.isSwipeRight[j].iconcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeRight[j].icon
+                            }
+                        },
+                        {
+                            tag:"span",
+                            class:"button-hidden-swipe-text",
+                            style:{
+                                color:this.isSwipeRight[j].textcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeRight[j].text
+                            }
+                        }
+                    ]
+                }))
+                this.bodyTable.childNodes[i].hiddenButton = hiddenButton
+            }
+        }
+    }
+    if(isSwipeLeft||isSwipeRight)
+    {
+        this.addEventSwipe();
+    }
 }
 
-tableView.prototype.setUpSlip = function()
+tableView.prototype.addEventSwipe = function()
 {
     var self = this;
-    // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
     this.bodyTable.addEventListener('slip:beforewait', function(e){
         if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
@@ -704,19 +839,41 @@ tableView.prototype.setUpSlip = function()
         self.swipeCancel();
     }, false);
     this.bodyTable.addEventListener('slip:swipe', function(e){
-        console.log(e)
         // functionClick(event, this, index, row.data, row, result);
         var index = e.detail.originalIndex;
         var me = self.bodyTable.childNodes[index];
         var parent = me.elementParent;
-        var tempIndex = index;
+        // var tempIndex = index;
         index = parent.childrenNodes.indexOf(me);
-
         if(e.detail.direction==="left")
         self.swipeCompleteLeft(e,me,index,me.data,me,parent);
         if(e.detail.direction==="right")
         self.swipeCompleteRight(e,me,index,me.data,me,parent);
     }, false);
+}
+
+tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
+{
+    console.log(index)
+    parent.exactlyDeleteRow(index);
+}
+
+tableView.prototype.swipeCompleteRight = function(e,me,index,data,row,parent)
+{
+    console.log(index)
+    parent.exactlyDeleteRow(index);
+}
+
+tableView.prototype.swipeCancel = function()
+{
+    
+}
+
+tableView.prototype.setUpSlip = function()
+{
+    var self = this;
+    // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
+   
     this.bodyTable.addEventListener('slip:reorder', function(e){
         var result = self;
         var index = e.detail.originalIndex;
@@ -768,15 +925,14 @@ tableView.prototype.setUpSlip = function()
         if (result.checkSpan !== undefined)
             result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
         var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: tempIndex,spliceIndex: tempSpliceIndex,parent: self,dataSpliceIndex:spliceIndex,dataIndex:index}});
-        self.bodyTable.parentNode.dispatchEvent(event);
+        self.dispatchEvent(event);
     }, false);
-    this.slip = new Slip(this.bodyTable);
-    return this.slip;
+   
 }
 
 tableView.prototype.getCellHeader = function(header,i)
 {
-    var value,style,dragElement,cell,bonus;
+    var value,style,classList,dragElement,cell,bonus;
     var result = this;
     var dragHorizontal = result.dragHorizontal;
     var dragVertical = result.dragVertical;
@@ -881,7 +1037,7 @@ tableView.prototype.getCellHeader = function(header,i)
             }
             var event = new CustomEvent('sort',{bubbles:true,detail:{event:event,me: me,index: index,dataIndex: dataIndex,row: row,result:result}});
             result.dispatchEvent(event);
-            if (result.paginationElement.noneValue !== true)
+            if (result.paginationElement!==undefined&&result.paginationElement.noneValue !== true)
                 result.paginationElement.reActive();
             else
                 result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
@@ -889,11 +1045,15 @@ tableView.prototype.getCellHeader = function(header,i)
         }
     }
 
+
     if (header.functionClick !== undefined)
         functionClick = header.functionClick;
     style = {};
     if (header.style !== undefined)
         style = header.style;
+    classList = [];
+    if (header.classList !== undefined)
+        classList = header.classList;
     dragElement = true;
     if (header.dragElement !== undefined && header.dragElement === false)
         dragElement = false;
@@ -986,6 +1146,7 @@ tableView.prototype.getCellHeader = function(header,i)
             role: 'columnheader'
         },
         style: style,
+        class:classList,
         child:[
             container
         ],
@@ -1023,6 +1184,11 @@ tableView.prototype.getCellHeader = function(header,i)
         ]
     })
 
+    result.sortArray[i] = childUpDown;
+    
+    result.exactlySort =  function(){
+        childUpDown.click();
+    }
     if (header.sort === true) {
         cell.classList.add("has-sort")
     }
@@ -1268,15 +1434,28 @@ tableView.prototype.setVisiableAllNoneUpdate = function (arr) {
     }
 }
 
-tableView.prototype.getBodyTable = function (data, index = 0) {
+tableView.prototype.getBodyTable = function (data,index = 0) {
     var temp = this.bodyTable;
     var result = this, k, delta = [], row, cell;
     var arr = [];
+    var i = 0;
+    if(this.startIndex === undefined)
+    this.startIndex = 0;
+    if(this.currentIndex !== undefined)
+    {
+        i = this.currentIndex;
+        this.startIndex += result.indexRow;
+    }else
+    {
+        this.startIndex = 0;
+    }
+
     if (parent.checkSpan === undefined)
         result.checkSpan = [];
     if(result.indexRow == undefined||result.indexRow == this.tempIndexRow)
         result.indexRow = 0;
-    for (var i = 0; (i < data.length && this.indexRow < this.tempIndexRow); i++) {
+
+    for (; (i < data.length && this.indexRow < this.tempIndexRow); i++) {
         if (data[i].child !== undefined)
             data[i].child.updateVisible = data.updateVisible;
 
@@ -1316,11 +1495,11 @@ tableView.prototype.getBodyTable = function (data, index = 0) {
         row = result.getRow(data[i]);
         temp.addChild(row);
         arr.push(row);
-        for (var j = 0; j < temp.parentNode.clone.length; j++) {
-            k = parseFloat(temp.parentNode.clone[j][0].id);
+        for (var j = 0; j < result.realTable.parentNode.clone.length; j++) {
+            k = parseFloat(result.realTable.parentNode.clone[j][0].id);
             if (delta[j] === undefined)
                 delta[j] = 0;
-            cell = result.getCell(data[i][k], this.indexRow, k, j, result.checkSpan, row);
+            cell = result.getCell(data[i][k], this.indexRow + this.startIndex, k, j, result.checkSpan, row);
             if (cell === 6 || cell === 2) {
                 result.clone[j].splice(this.indexRow + 1 - delta[j], 1);
                 delta[j] += 1;
@@ -1336,7 +1515,7 @@ tableView.prototype.getBodyTable = function (data, index = 0) {
         row.checkChild();
         this.indexRow++;
     }
-
+    this.currentIndex = i;
     if(data.updateVisible)
         result.setConfirm(data, i);
     if (result.checkMargin !== undefined)
@@ -1344,7 +1523,7 @@ tableView.prototype.getBodyTable = function (data, index = 0) {
 
     data.updateVisible = undefined;
     result.childrenNodes = result.childrenNodes.concat(arr);
-    this.indexRow = 0;
+    // this.indexRow = 0;
     return arr;
 }
 
@@ -1395,6 +1574,7 @@ tableView.prototype.pagination = function (number, functionClick) {
 
     var self = this;
     var paginationLeftPos = "20px";
+    var paginationWidthPos = "40px";
     var paginationOpacity = 0;
     var checkPaginationClick = 0;
     var arr = [];
@@ -1406,7 +1586,7 @@ tableView.prototype.pagination = function (number, functionClick) {
         tag: "div",
         class: "pagination-wrapper",
     })
-    var temp = _({
+    var realTemp = _({
         tag: "div",
         class: "pagination",
         child: [
@@ -1488,6 +1668,7 @@ tableView.prototype.pagination = function (number, functionClick) {
             }
         ]
     })
+    var temp = realTemp;
 
     for (var i = 0; i < countPrecent; i++) {
         if (i == 1) {
@@ -1531,7 +1712,8 @@ tableView.prototype.pagination = function (number, functionClick) {
                         setTimeout(function(){
                             paginationLeftPos = x.offsetLeft + "px";
                             overlay.style.left = paginationLeftPos;
-                  
+                            paginationWidthPos = x.offsetWidth +"px";
+                            overlay.style.width = paginationWidthPos;
                         },10)
                       
                         this.style.color = "#fff";
@@ -1549,6 +1731,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                     paginationOpacity = 1;
                     overlay.style.backgroundColor = "#00c1dd";
                     overlay.style.left = this.offsetLeft + "px";
+                    overlay.style.width = this.offsetWidth + "px";
                     overlay.style.opacity = paginationOpacity;
                     var active = $("a.active", container);
 
@@ -1565,7 +1748,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                     overlay.style.backgroundColor = "#00178a";
                     overlay.style.opacity = paginationOpacity;
                     overlay.style.left = paginationLeftPos;
-
+                    overlay.style.width = paginationWidthPos;
                     this.style.color = "#333d45";
                     var active = $("a.active", container);
                     if (active !== undefined)
@@ -1599,9 +1782,11 @@ tableView.prototype.pagination = function (number, functionClick) {
 
             arr[0].classList.add("active");
             paginationLeftPos = arr[0].offsetLeft + "px";
+            paginationWidthPos = arr[0].offsetWidth + "px";
             paginationOpacity = 1;
             checkPaginationClick = 1;
             overlay.style.left = paginationLeftPos;
+            overlay.style.width = paginationWidthPos;
             overlay.style.backgroundColor = "#00178a";
             overlay.style.opacity = paginationOpacity;
             arr[0].style.color = "#fff";
@@ -1616,69 +1801,42 @@ tableView.prototype.pagination = function (number, functionClick) {
     var displayNone = [];
     temp.updateSize = function () {
         setTimeout(function(){
+
             temp.detailLeft.style.display = "";
             temp.detailRight.style.display = "";
             for (var i = 0; i < displayNone.length; i++) {
                 displayNone[i].style.display = "";
             }
-            var count = parseInt((self.offsetWidth-20) / 50) - 4;
+            
             var i = 0;
             var active = $("a.active", container);
             displayNone = [active];
-            var countTime = -99;
-            if (count < arr.length) {
-                var countTime = count;
-            }
+
             var lastIndexPrev,lastIndexPrevBefore;
             var lastIndexNext,lastIndexNextBefore;
             var isLeft = false, isRight = false;
             if (active !== undefined) {
                 var prev = active.previousSibling, next = active.nextSibling;
-    
-                while (i <= count && !(isLeft == true && isRight == true)) {
+                
+                while (container.offsetWidth <= self.offsetWidth - 80 && !(isLeft == true && isRight == true)) {
                     if (isRight == false && next != null) {
-                        if (i == countTime) {
-                            while (next == temp.detailRight || next == temp.detailLeft)
-                                next = next.nextSibling;
-    
-                                isRight = true;
-                                lastIndexNext.style.display = "";
-                                lastIndexNextBefore.style.display = "";
-    
-                                temp.detailRight.style.display = "flex";
-                                displayNone.push(container.lastChild);
-                                container.lastChild.style.display = "flex";                        
-                        } else {
-                            while (next == temp.detailRight || next == temp.detailLeft)
-                                next = next.nextSibling;
-                            next.style.display = "flex";
-    
-                            lastIndexNextBefore = lastIndexNext;
-                            lastIndexNext = next;
-    
-                            displayNone.push(next);
+
+                        while (next == temp.detailRight || next == temp.detailLeft)
                             next = next.nextSibling;
-                            i++;
-                        }
+                        next.style.display = "flex";
+
+                        lastIndexNextBefore = lastIndexNext;
+                        lastIndexNext = next;
+
+                        displayNone.push(next);
+                        next = next.nextSibling;
+                        i++;
                     } else {
                         isRight = true;
                     }
-    
-                    if (i > count)
+                    if(container.offsetWidth > self.offsetWidth - 80)
                         break;
-    
                     if (isLeft == false && prev != null) {
-                        if (i == countTime) {
-                            while (prev == temp.detailLeft || prev == temp.detailRight)
-                            prev = prev.previousSibling;
-    
-                            isLeft = true;
-                            lastIndexPrev.style.display = "";
-                            lastIndexPrevBefore.style.display = "";
-                            temp.detailLeft.style.display = "flex";
-                            displayNone.push(container.firstChild);
-                            container.firstChild.style.display = "flex";
-                        } else {
                             while (prev == temp.detailLeft || prev == temp.detailRight)
                                 prev = prev.previousSibling;
                             prev.style.display = "flex";
@@ -1689,16 +1847,37 @@ tableView.prototype.pagination = function (number, functionClick) {
                             displayNone.push(prev);
                             prev = prev.previousSibling;
                             i++;
-                        }
                     } else {
                         isLeft = true;
                     }
+                }
+                if(isRight==false&&lastIndexNext.nextSibling !== null)
+                {
+                    lastIndexNext.style.display = "";
+                    lastIndexNextBefore.style.display = "";
+
+                    temp.detailRight.style.display = "flex";
+                    displayNone.push(container.lastChild);
+                    container.lastChild.style.display = "flex";     
+                }
+
+                if(isLeft==false&&lastIndexPrev.previousSibling !== null)
+                {
+                    lastIndexPrev.style.display = "";
+                    lastIndexPrevBefore.style.display = "";
+
+                    temp.detailLeft.style.display = "flex";
+                    displayNone.push(container.firstChild);
+                    container.firstChild.style.display = "flex";
                 }
             }
         },10);
     }
         temp.updateSize();
     this.goto = function(index){
+        var active = $("a.active", container);
+        if (active !== undefined)
+        active.style.color = "#333d45";
         arr[index-1].click();
     }
 
@@ -1715,6 +1894,7 @@ tableView.prototype.getRow = function (data) {
         temp.className = temp.className + " parent";
     }, 10);
     Object.assign(temp, tableView.prototype);
+    temp.realTable = result.realTable;
     temp.headerTable = result.headerTable;
     temp.bodyTable = result.bodyTable;
     temp.check = result.check;
@@ -1768,8 +1948,8 @@ tableView.prototype.getRow = function (data) {
         var indexMore = 0;
         if (temp.childIndex !== undefined) {
             if (temp.childIndex === 0) {
-                if (!result.headerTable.parentNode.classList.contains("padding-High-table"))
-                    result.headerTable.parentNode.classList.add("padding-High-table");
+                if (!result.realTable.parentNode.classList.contains("padding-High-table"))
+                    result.realTable.parentNode.classList.add("padding-High-table");
             }
 
             indexMore = temp.childIndex;
@@ -1818,7 +1998,7 @@ tableView.prototype.getRow = function (data) {
     temp.checkVisibleChild = function () {
         this.buttonClick.selfRemove();
         var parent = this.childNodes[0].getParentNode();
-        if (parent.tagName === "TABLE") {
+        if (parent.tagName === "DIV") {
             for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
                 if (parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.contains("margin-left-has-icon"))
                     parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.remove("margin-left-has-icon")
@@ -1898,7 +2078,7 @@ tableView.prototype.getDivMargin = function () {
 
 tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row) {
     var data = dataOrigin;
-    var result = this, value, bonus, style, cell;
+    var result = this, value, bonus, style, classList, cell;
     if (checkSpan[i] !== undefined) {
         if (checkSpan[i][k] == 2)
             return 2;
@@ -2056,6 +2236,9 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     style = {};
     if (data.style !== undefined)
         style = data.style;
+    classList = [];
+    if (data.classList !== undefined)
+    classList = data.classList;
 
     var on = {
         click: function (event) {
@@ -2102,6 +2285,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     cell = _({
         tag: "td",
         style: style,
+        class:classList,
         on:on
     })
    
@@ -2178,7 +2362,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
         var parent = cell.clone[0][0];
         parent = parent;
         if (parent.tagName === "TH")
-            return parent.parentNode.parentNode.parentNode;
+            return parent.parentNode.parentNode.parentNode.parentNode;
         return parent.parentNode;
     }
     return cell;
@@ -2197,17 +2381,18 @@ tableView.prototype.updateTable = function (header, data = [], dragHorizontal, d
     if (dragVertical !== undefined)
         result.dragVertical = dragVertical;
    
-    if (this.bodyTable.listCheckBox !== undefined)
+    if (this.bodyTable.listCheckBox !== undefined&&this.bodyTable.listCheckBox.length>0)
         temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
 
     for (var i = 0; i < result.clone.length; i++) {
         result.clone[i] = [result.clone[i].shift()];
     }
 
-    this.replaceChild(temp, this.bodyTable);
+    this.realTable.replaceChild(temp, this.bodyTable);
     this.bodyTable = temp;
     result.childrenNodes = [];
-    result.getBodyTable(data, index);
+    this.currentIndex = undefined;
+    result.getBodyTable(data,index);
     if(temp.listCheckBox[0]!==undefined)
     {
         temp.listCheckBox[0].update();
@@ -2217,6 +2402,9 @@ tableView.prototype.updateTable = function (header, data = [], dragHorizontal, d
     if(result.dragVertical)
     {
         result.setUpSlip();
+        if(result.isSwipeLeft||result.isSwipeRight)
+        this.setUpSwipe();
+        result.slip = new Slip(result.bodyTable);
     }
 }
 
@@ -2268,8 +2456,8 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
         result.bodyTable.insertBefore(row, tempElement.nextSibling);
     }
 
-    for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
-        k = parseFloat(this.bodyTable.parentNode.clone[i][0].id);
+    for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
+        k = parseFloat(this.realTable.parentNode.clone[i][0].id);
         cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
         if (cell === 6) {
             result.clone[k++].splice(index, 1);
@@ -2357,7 +2545,7 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
         result.checkMargin();
 
     //    result.checkDataUpdate(row);
-    result.bodyTable.parentNode.updateHash(row);
+    result.realTable.parentNode.updateHash(row);
     return row;
 }
 
@@ -2388,7 +2576,7 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     var checkChild = false;
     if (data.original!==undefined&&data.original.isCheckUpdate===true)
     {
-        var table = result.bodyTable.parentNode;
+        var table = result.realTable.parentNode;
         table.updateTable(undefined,table.data);
         delete data.isCheckUpdate;
         return;
@@ -2405,8 +2593,8 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
         row.clone = temp.clone;
     }
 
-    for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
-        k = parseFloat(this.bodyTable.parentNode.clone[i][0].id);
+    for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
+        k = parseFloat(this.realTable.parentNode.parentNode.clone[i][0].id);
         cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
         if (cell === 6) {
             result.clone[k++].splice(index, 1);
@@ -2484,8 +2672,8 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
         result.checkMargin();
 
     //    result.checkDataUpdate(row);
-    result.bodyTable.parentNode.resetHash();
-    result.bodyTable.parentNode.updateHash(row);
+    result.realTable.parentNode.resetHash();
+    result.realTable.parentNode.updateHash(row);
     return row;
 }
 
@@ -2518,9 +2706,12 @@ tableView.prototype.exactlyDeleteRow = function(index)
     var element = parent.childrenNodes[index];
     parent.dropRowChild(element);
     var deltaY = 0;
-
+    console.log(parent.clone)
     deltaX = parent.checkLongRow(index);
+    console.log(element)
     for (var i = 0; i < element.childNodes.length; i++) {
+        if(element.tagName!=="TD")
+            continue;
         parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
         if (parent.checkSpan !== undefined)
             parent.checkSpan.splice(index, 1);
@@ -2543,7 +2734,7 @@ tableView.prototype.exactlyDeleteRow = function(index)
     if (parent.checkVisibleChild !== undefined && parent.childrenNodes.length === 0)
         parent.checkVisibleChild();
     parent.isUpdate = true;
-    parent.bodyTable.parentNode.resetHash();
+    parent.realTable.parentNode.resetHash();
   
 }
 
@@ -2707,12 +2898,7 @@ tableView.prototype.dropRowChildElement = function () {
 
 tableView.prototype.backGroundFix = function (index) {
     var rect = this.getBoundingClientRect();
-    var scrollParent = this;
-    while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-        scrollParent = scrollParent.parentNode;
-    }
-    if (scrollParent === undefined)
-        return;
+    var scrollParent = this.realTable.parentNode;
     var rectDistance = traceOutBoundingClientRect(this);
 
     var temp = _(
@@ -2754,13 +2940,8 @@ tableView.prototype.backGroundFix = function (index) {
 
 tableView.prototype.backGround = function (height, callback, index) {
     var rect = this.getBoundingClientRect();
-    var scrollParent = this;
+    var scrollParent = this.realTable.parentNode;
     var rectDistance = traceOutBoundingClientRect(this);
-    while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-        scrollParent = scrollParent.parentNode;
-    }
-    if (scrollParent === undefined)
-        return;
 
     var temp = _({
         tag: "div",

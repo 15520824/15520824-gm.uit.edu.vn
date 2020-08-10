@@ -137,7 +137,6 @@ HashTable.prototype.getKey = function(key,index){
                                         check[stringCheck][column][1].confirm = undefined;
                                 }else
                                 {
-                                    console.log(stringCheck);
                                     if(check[stringCheck][column][1].isFilter === undefined)
                                     {
                                         check[stringCheck][column][1].confirm = true;

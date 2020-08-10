@@ -34,6 +34,8 @@ export default xmlModalDragManyFiles = {
   {
     this.functionFormat = functionFormat;
   },
+  enableCheckBox:false,
+  enableSelectbox:false,
   Image: function(srcImg) {
     var self = this;
     var temp;
@@ -50,10 +52,16 @@ export default xmlModalDragManyFiles = {
           var manyfiles = self.getFile();
           var arr = [];
           var index;
+          console.log(manyfiles)
           for(var i = 0;i<manyfiles.length;i++)
           {
-            if(typeof manyfiles[i]=="object")
-            arr.push(self.functionFormat(manyfiles[i]));
+            if(typeof manyfiles[i]=="object"){
+              var dataTemp = self.functionFormat(manyfiles[i]);
+              if(manyfiles[i].ref!==undefined)
+              dataTemp.src = manyfiles[i].ref+manyfiles[i].src;
+
+              arr.push(dataTemp)
+            }
             else
             arr.push({avatar:self.avatar, userName:self.userName, src:manyfiles[i],date:(new Date()).toISOString(), note:self.note});
             if(manyfiles[i]==temp.value)
@@ -95,6 +103,46 @@ export default xmlModalDragManyFiles = {
         }
       ]
     });
+    if(self.enableCheckBox == true)
+    {
+      var checkboxButton = _({
+        tag:"button",
+        class:"pizo-container-icon-radiobutton",
+        on:{
+          click:function(event){
+            if(self.gallery===undefined)
+            {
+              self.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
+            }
+            var arr = self.gallery.getElementsByClassName("checked-pizo");
+            if(arr.length>0)
+            arr[0].classList.remove("checked-pizo");
+            {
+              temp.classList.add("checked-pizo");
+            }
+          
+          }
+        },
+        child:[
+          {
+            tag:"i",
+            class:"material-icons",
+            style:{
+              overflow: "hidden",
+              cursor: "pointer",
+              userSelect: "none",
+              fontSize : "13px",
+            },
+           
+            props:{
+              innerHTML:"stop_circle"
+            }
+          }
+        ]
+      })
+      temp.checkboxButton = checkboxButton
+      temp.insertBefore(checkboxButton,temp.firstChild)
+    }
     window.addEventListener("click", function(event) {
       if (
         event.target !== temp &&
@@ -116,6 +164,10 @@ export default xmlModalDragManyFiles = {
     {
       temp.onload.bind(this)();
     })
+    if(self.getFile().length == 0)
+    {
+      temp.classList.add("checked-pizo");
+    }
     return temp;
   },
   containGetImage: function() {
@@ -394,7 +446,6 @@ export default xmlModalDragManyFiles = {
     if(self.dropArea===undefined)
     {
       self.dropArea = $('.drop-area_c0ek499ts0',self.containGetImage);
-      console.log("xxxxxx",self.containGetImage)
     }
     // self.dropArea = document.getElementById("drop-area");
     // Prevent default drag behaviors
@@ -542,8 +593,12 @@ export default xmlModalDragManyFiles = {
     {
       this.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
     }
-
     var img =  this.Image(ref+data.src);
+    if(this.enableCheckBox&&data.thumnail==1){
+      img.checkboxButton.click();
+    }
+      
+    data.ref = ref;
     img.value = data;
     var parent = this.gallery;
     parent.appendChild(img);
@@ -570,6 +625,15 @@ export default xmlModalDragManyFiles = {
       arr.push(this.gallery.childNodes[i].value);
     }
     return arr;
+  },
+  getImportTant:function(){
+    if(this.gallery===undefined)
+    {
+      this.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
+    }
+    var arr = this.gallery.getElementsByClassName("checked-pizo");
+    if(arr.length>0)
+    return this.getFile().indexOf(arr[0].value);
   },
   uploadFile: function(file, i, self) {
     var self = this;

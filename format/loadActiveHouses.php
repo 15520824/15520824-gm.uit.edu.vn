@@ -39,10 +39,9 @@ if (isset($_POST["data"])) {
             $operator = $data["WHERE"];
             $WHERE = generalOperator($operator);
         }
-        
-        if (isset($data["ORDERING"])) {
-            $ORDERING=$data["ORDERING"];
-        }
+    }
+    if (isset($data["ORDERING"])) {
+        $ORDERING=$data["ORDERING"];
     }
 }else
 {
@@ -61,22 +60,28 @@ if($ORDERING!=="")
 }
 
 $result = $connector-> query("SELECT * FROM ".$prefix."activehouses".$WHERE.$ORDERING);
-$data = array();
-$i = 0; 
 $check = array();
-if(isset($data["loaded"])){
-    for($i = 0;$i<count($data["loaded"]);$i++)
+if(isset($data["loaded"]))
+{
+    foreach($data["loaded"] as $param=>$value)
     {
-        $check[$data["loaded"][$i]] = $i;
+        $check[$param] = [];
+        for($i = 0;$i<count($value);$i++)
+        {
+            $check[$param][$value[$i]] = $i;
+        }
     }
 }
 
+$imageAll = array();
+$data = array();
+$i = 0;
 if($result)
 {
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            if(isset($check[$row["id"]]))
+            if(isset($check["activehouses"][$row["id"]]))
                 $data[$i] = $row["id"];
             else
             {
@@ -85,28 +90,19 @@ if($result)
                 $data[$i]["equipment"]=$equipment;
                 $contact = $connector->load($prefix."contact_link","houseid = ".$row["id"]);
                 $data[$i]["contact"]=$contact;
-                $image = $connector->load($prefix."image","houseid = ".$row["id"]);
     
                 $imageresource = $connector-> query("SELECT * FROM ".$prefix."image"." WHERE( houseid = ".$row["id"]." )");
-                $imageJuridical = array();
-                $imageCurrentStaus = array();
+                $image = array();
                 if($imageresource)
                     if ($imageresource->num_rows > 0) {
                         while($rowResource = $imageresource->fetch_assoc())
                         {
-                            switch($rowResource["type"])
-                            {
-                                case 0:
-                                    array_push($imageJuridical,$rowResource);  
-                                break;
-                                case 1:
-                                    array_push($imageCurrentStaus,$rowResource);  
-                                break;
-                            }
+                            array_push($image,$rowResource["id"]);
+                            array_push($imageAll,$rowResource);
+                                
                         }
                     }
-                $data[$i]["imageJuridical"]=$imageJuridical;
-                $data[$i]["imageCurrentStaus"]=$imageCurrentStaus;
+                $data[$i]["image"] = $image;
             }
             $i++;
         }
