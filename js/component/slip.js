@@ -224,7 +224,7 @@
         startPosition: null, // x,y,time where first touch began
         latestPosition: null, // x,y,time where the finger is currently
         previousPosition: null, // x,y,time where the finger was ~100ms ago (for velocity calculation)
-
+        startPositionAverage:null,
         canPreventScrolling: false,
 
         states: {
@@ -299,6 +299,7 @@
 
             swipe: function swipeStateInit() {
                 var swipeSuccess = false;
+                var swipeAverage = false;
                 var container = this.container;
 
                 var originalIndex = findIndex(this.target, this.container.childNodes);
@@ -324,48 +325,81 @@
                                 }
                             }.bind(this));
                         } else {
+                            if(swipeAverage)
+                            this.animateToAverage(removeClass);
+                            else
                             this.animateToZero(removeClass);
                         }
                     },
 
                     onMove: function() {
-                        var move = this.getTotalMovement();
-
+                        var delta = 0;
+                        if(this.target.node.startPositionAverage!==undefined)
+                        delta = this.target.node.startPositionAverage;
+                        var move = this.getTotalMovementAvarage(delta);
+                        
                         if (Math.abs(move.y) < this.target.height+20) {
                             if (this.dispatch(this.target.node, 'animateswipe', {x: move.x, originalIndex: originalIndex})) {
-                                this.target.node.style[transformJSPropertyName] = 'translate(' + move.x + 'px,0) ' + hwLayerMagicStyle + this.target.baseTransform.value;
-                                if(this.target.node.hiddenButton!==undefined){
-                                    this.target.node.hiddenButton.style["height"] = this.target.node.offsetHeight+"px";
-                                    this.target.node.hiddenButton.style[transformJSPropertyName] = 'translate(' + -move.x + 'px,0) ' + hwLayerMagicStyle + this.target.baseTransform.value;
-                                    if(-move.x>0)
-                                    this.target.node.hiddenButton.style["width"] = -move.x+"px";
-                                    if(this.target.node.hiddenButton.offsetWidth>this.target.node.hiddenButton.childNodes[0].offsetWidth)
-                                    {
-                                        var tempElement =  this.target.node.hiddenButton.childNodes[0].childNodes[this.target.node.hiddenButton.childNodes[0].childNodes.length-1];
-                                        if(tempElement!==undefined&&!tempElement.classList.contains("button-hidden-swipe-activeAll"))
+                           
+                                if(true)
+                                {
+                                    this.target.node.style[transformJSPropertyName] = 'translate(' + move.x + 'px,0) ' + hwLayerMagicStyle;
+                                    if(this.target.node.hiddenButtonRight!==undefined){
+                                        var hiddenButtonRight = this.target.node.hiddenButtonRight;
+                                        hiddenButtonRight.style["height"] = this.target.node.offsetHeight+"px";
+                                        hiddenButtonRight.style[transformJSPropertyName] = 'translate(' + -move.x + 'px,0) ' + hwLayerMagicStyle;
+                                        if(-move.x>0)
+                                        hiddenButtonRight.style["width"] = -move.x+"px";
+                                        var tempElement =  hiddenButtonRight.childNodes[0].childNodes[hiddenButtonRight.childNodes[0].childNodes.length-1];
+                                        var lastWidth;
+                                        if(tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                        lastWidth = parseInt(tempElement.style.maxWidth);
+                                        else
+                                        lastWidth = tempElement.offsetWidth;
+                                        if(hiddenButtonRight.offsetWidth>hiddenButtonRight.childNodes[0].offsetWidth+lastWidth)
                                         {
-                                            var clone = tempElement.cloneNode(true)
-                                            tempElement.parentNode.appendChild(clone);
-                                            clone.classList.add("button-hidden-swipe-activeAll");
-                                            clone.classList.add("button-hidden-swipe-activeAll-width");
+                                            if(tempElement!==undefined&&!tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                            {
+                                                tempElement.classList.add("button-hidden-swipe-activeAll-width");
+                                            }
+                                        }else
+                                        {
+                                            if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                            {
+                                                tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+                                            }
                                         }
-                                    }else
-                                    {
-                                        var tempElement =  this.target.node.hiddenButton.childNodes[0].childNodes[this.target.node.hiddenButton.childNodes[0].childNodes.length-1];
-                                        if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll"))
+                                    }
+                                }else
+                                {
+                                    this.target.node.style[transformJSPropertyName] = 'translate(' + move.x + 'px,0) ' + hwLayerMagicStyle;
+                                    if(this.target.node.hiddenButtonLeft!==undefined){
+                                        var hiddenButtonLeft = this.target.node.hiddenButtonLeft;
+                                        hiddenButtonLeft.style["height"] = this.target.node.offsetHeight+"px";
+                                        hiddenButtonLeft.style[transformJSPropertyName] = 'translate(' + -move.x + 'px,0) ' + hwLayerMagicStyle;
+                                        if(-move.x>0)
+                                        hiddenButtonLeft.style["width"] = -move.x+"px";
+                                        var tempElement =  hiddenButtonLeft.childNodes[0].childNodes[hiddenButtonLeft.childNodes[0].childNodes.length-1];
+                                        var lastWidth;
+                                        if(tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                        lastWidth = parseInt(tempElement.style.maxWidth);
+                                        else
+                                        lastWidth = tempElement.offsetWidth;
+                                        if(hiddenButtonLeft.offsetWidth>hiddenButtonLeft.childNodes[0].offsetWidth+lastWidth)
                                         {
-                                            tempElement.classList.remove("button-hidden-swipe-activeAll-width");
-                                            setTimeout(function(){
-                                                if(tempElement.parentNode!==null){
-                                                    console.log(tempElement.parentNode)
-                                                    tempElement.parentNode.removeChild(tempElement);
-                                                }
-                                                
-                                            },200)
+                                            if(tempElement!==undefined&&!tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                            {
+                                                tempElement.classList.add("button-hidden-swipe-activeAll-width");
+                                            }
+                                        }else
+                                        {
+                                            if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                            {
+                                                tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+                                            }
                                         }
                                     }
                                 }
-                                
                             }
                             return false;
                         } else {
@@ -379,14 +413,27 @@
                     },
 
                     onEnd: function() {
-                        var move = this.getAbsoluteMovement();
-                        var velocity = move.x / move.time;
+                        var hiddenButtonRight = this.target.node.hiddenButtonRight;
+                        var tempElement =  hiddenButtonRight.childNodes[0].childNodes[hiddenButtonRight.childNodes[0].childNodes.length-1];
+                        var delta = 0;
+                        if(this.target.node.startPositionAverage!=undefined&&this.target.node.startPositionAverage>0)
+                        delta = this.target.node.startPositionAverage;
 
-                        // How far out has the item been swiped?
-                        var swipedPercent = Math.abs((this.startPosition.x - this.previousPosition.x) / this.container.clientWidth) * 100;
+                        var move = this.getAbsoluteMovementAvarage(delta);
+                        
+                        if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                        {
+                            var swiped = true;
+                        }else
+                        {
+                            var velocity = (move.x-delta) / move.time;
+                            // How far out has the item been swiped?
+                            var swipedPercent = Math.abs((this.startPosition.x - this.previousPosition.x) / this.container.clientWidth) * 100;
 
-                        var swiped = (velocity > this.options.minimumSwipeVelocity && move.time > this.options.minimumSwipeTime) || (this.options.keepSwipingPercent && swipedPercent > this.options.keepSwipingPercent);
-        
+                            if(move.x>parseInt(tempElement.style.maxWidth)*(hiddenButtonRight.childNodes[0].childNodes.length)/2)
+                            swipeAverage = true;
+                            var swiped = (velocity > this.options.minimumSwipeVelocity && move.time > this.options.minimumSwipeTime) || (this.options.keepSwipingPercent && swipedPercent > this.options.keepSwipingPercent);
+                        }
                         if (swiped) {  
                             if (this.dispatch(this.target.node, 'swipe', {direction: move.directionX, originalIndex: originalIndex})) {
                                 swipeSuccess = true; // can't animate here, leaveState overrides anim
@@ -911,6 +958,16 @@
             };
         },
 
+        getTotalMovementAvarage: function(delta)
+        {
+            var scrollOffset = this.target.scrollContainer.scrollTop - this.target.origScrollTop;
+            return {
+                x: this.latestPosition.x - this.startPosition.x - delta,
+                y: this.latestPosition.y - this.startPosition.y + scrollOffset,
+                time: this.latestPosition.time - this.startPosition.time,
+            };
+        },
+
         getAbsoluteMovement: function() {
             var move = this.getTotalMovement();
             return {
@@ -921,6 +978,18 @@
                 directionY: move.y < 0 ? 'up' : 'down',
             };
         },
+
+        getAbsoluteMovementAvarage: function(delta) {
+            var move = this.getTotalMovementAvarage(delta);
+            return {
+                x: Math.abs(move.x),
+                y: Math.abs(move.y),
+                time: move.time,
+                directionX: move.x < 0 ? 'left' : 'right',
+                directionY: move.y < 0 ? 'up' : 'down',
+            };
+        },
+
 
         updateScrolling: function() {
             var triggerOffset = 40,
@@ -971,26 +1040,71 @@
         animateToZero: function(callback, target) {
             // save, because this.target/container could change during animation
             target = target || this.target;
+            var delta = 0;
+            if(this.target.node.startPositionAverage!=undefined&&this.target.node.startPositionAverage>0)
+            delta = this.target.node.startPositionAverage;
+
+            var move = this.getTotalMovementAvarage(delta);
 
             target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.2s ease-out';
-            target.node.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle + target.baseTransform.value;
-            if(target.node.hiddenButton!==undefined)
+            target.node.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle;
+            if(move.x>0&&target.node.hiddenButtonRight!==undefined)
             {
-                target.node.hiddenButton.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.2s ease-out';
-                
-                target.node.hiddenButton.style[transformJSPropertyName] = 'scaleX(0) translate(0,0) ' + hwLayerMagicStyle + target.baseTransform.value;
+                target.node.hiddenButtonRight.style[transitionJSPropertyName] = "all" + ' 0.2s ease-out';
+                target.node.hiddenButtonRight.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle;
+                target.node.hiddenButtonRight.style["width"] = 0;
+                var tempElement =  this.target.node.hiddenButtonRight.childNodes[0].childNodes[this.target.node.hiddenButtonRight.childNodes[0].childNodes.length-1];
+                if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                {
+                    tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+                }
             }
+
             setTimeout(function(){
                 target.node.style[transitionJSPropertyName] = '';
-                target.node.style[transformJSPropertyName] = target.baseTransform.original;
-                if(target.node.hiddenButton!==undefined)
+                target.node.style[transformJSPropertyName] = '';
+                if(move.x&&target.node.hiddenButtonRight!==undefined)
                 {
-                    target.node.hiddenButton.style["width"] = 0;
-                    target.node.hiddenButton.style[transitionJSPropertyName] = '';
-                    target.node.hiddenButton.style[transformJSPropertyName] = target.baseTransform.original;
+                   
+                    target.node.hiddenButtonRight.style[transitionJSPropertyName] = '';
+                    target.node.hiddenButtonRight.style[transformJSPropertyName] = '';
                 }
                 if (callback) callback.call(this, target);
+                target.node.startPositionAverage = 0;
             }.bind(this), 201);
+        },
+
+        animateToAverage: function(callback, target) {
+            // save, because this.target/container could change during animation
+            target = target || this.target;
+            var delta = 0;
+            if(this.target.node.startPositionAverage!=undefined&&this.target.node.startPositionAverage>0)
+            delta = this.target.node.startPositionAverage;
+
+            var move = this.getAbsoluteMovementAvarage(delta);
+            if(move.x>0&&target.node.hiddenButtonRight!==undefined)
+            {
+                var transformWidth = parseInt(target.node.hiddenButtonRight.childNodes[0].childNodes[0].style.maxWidth)*4/1.2;
+                target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.1s ease-in';
+                target.node.style[transformJSPropertyName] = 'translate('+-transformWidth+'px,0) ' + hwLayerMagicStyle;
+           
+                target.node.hiddenButtonRight.style[transitionJSPropertyName] = 'all' + ' 0.1s ease-in';
+                target.node.hiddenButtonRight.style[transformJSPropertyName] = 'translate('+transformWidth+'px,0) ' + hwLayerMagicStyle;
+                target.node.hiddenButtonRight.style["width"] = transformWidth+"px";
+                var tempElement =  this.target.node.hiddenButtonRight.childNodes[0].childNodes[this.target.node.hiddenButtonRight.childNodes[0].childNodes.length-1];
+                if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                {
+                    tempElement.classList.remove("button-hidden-swipe-activeAll-width");     
+                }
+            }
+            
+            setTimeout(function(){
+                target.node.style[transitionJSPropertyName] = '';
+                if(move.x>0&&target.node.hiddenButtonRight!==undefined)
+                target.node.hiddenButtonRight.style[transitionJSPropertyName] = '';
+                if (callback) callback.call(this, target);
+                target.node.startPositionAverage = transformWidth;
+            }.bind(this), 101);
         },
 
         animateSwipe: function(callback) {

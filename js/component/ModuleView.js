@@ -721,11 +721,11 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
         {       
             for(var i = 0;i<this.bodyTable.childNodes.length;i++)
             {
-                if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
+                if(this.bodyTable.childNodes[i].hiddenButtonLeft!==undefined)
                 continue;
                 var hiddenButton = _({
                     tag:"div",
-                    class:"button-hidden-swipe-container",
+                    class:"button-hidden-swipe-container-left",
                     child:[{
                         tag:"div",
                         class:"button-hidden-swipe-calcWidth"
@@ -733,13 +733,14 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                 })
                 for(var j=0;j<this.isSwipeLeft.length;j++){
                     this.bodyTable.childNodes[i].appendChild(hiddenButton);
-                    hiddenButton.childNodes[0].appendChild(_({
+                    var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",
+                        on:this.isSwipeLeft[j].event,
                         style:{
                             width:1/this.isSwipeLeft.length*100+"%",
                             backgroundColor:this.isSwipeLeft[j].background,
-                            maxWidth:this.bodyTable.childNodes[i].offsetHeight+"px",
+                            maxWidth:this.bodyTable.childNodes[i].offsetHeight*1.2+"px",
                             zIndex:j
                         },
                         child:[
@@ -774,10 +775,13 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                                 ]
                             }
                         ]
-                    }))
+                    })
+                    if(j == this.isSwipeLeft.length-1)
+                    tempElement.classList.add("button-hidden-swipe-activeAll");
+                    hiddenButton.childNodes[0].appendChild(tempElement)
                 
                 }
-                this.bodyTable.childNodes[i].hiddenButton = hiddenButton;
+                this.bodyTable.childNodes[i].hiddenButtonLeft = hiddenButton;
             }
         }
         
@@ -785,34 +789,43 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
         {
             this.isSwipeRight = isSwipeRight;
         }
+
         if(this.isSwipeRight!==undefined)
-        {
+        {       
             for(var i = 0;i<this.bodyTable.childNodes.length;i++)
             {
-                if(this.bodyTable.childNodes[i].hiddenButton!==undefined)
-                    continue;
+                if(this.bodyTable.childNodes[i].hiddenButtonRight!==undefined)
+                continue;
                 var hiddenButton = _({
                     tag:"div",
-                    class:"button-hidden-swipe-container"
+                    class:"button-hidden-swipe-container-right",
+                    child:[{
+                        tag:"div",
+                        class:"button-hidden-swipe-calcWidth"
+                    }]
                 })
-                this.bodyTable.childNodes[i].appendChild(hiddenButton);
-                for(var j=0;j<this.isSwipeRight.length;j++)
-                {
-                    hiddenButton.appendChild(_({
+                for(var j=0;j<this.isSwipeRight.length;j++){
+                    this.bodyTable.childNodes[i].appendChild(hiddenButton);
+                    var on = {};
+                    if(this.isSwipeRight[j].event!==undefined)
+                    on = this.isSwipeRight[j].event;
+                    var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",
+                        on:on,
                         style:{
-                            width:(j+1)/this.isSwipeRight.length*100+"%",
+                            width:1/this.isSwipeRight.length*100+"%",
                             backgroundColor:this.isSwipeRight[j].background,
-                            zIndex:this.isSwipeRight.length-j,
-                            minWidth:this.bodyTable.childNodes[i].offsetHeight+"px"
+                            maxWidth:this.bodyTable.childNodes[i].offsetHeight*1.2+"px",
+                            zIndex:j
                         },
                         child:[
                             {
                                 tag:"div",
-                                class:"button-hidden-swipe-container-detail",
+                                class:"button-hidden-swipe-detail",
                                 style:{
-                                    width:(this.isSwipeRight.length-j)/this.isSwipeRight.length*100+"%",
+                                    width:this.bodyTable.childNodes[i].offsetHeight+"px",
+                                    height:this.bodyTable.childNodes[i].offsetHeight+"px",
                                 },
                                 child:[
                                     {
@@ -837,18 +850,22 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                                     }
                                 ]
                             }
-                            
                         ]
-                    }))
-                    this.bodyTable.childNodes[i].hiddenButton = hiddenButton
+                    })
+                    if(j == this.isSwipeRight.length-1)
+                    tempElement.classList.add("button-hidden-swipe-activeAll");
+                    hiddenButton.childNodes[0].appendChild(tempElement)
+                
                 }
+                this.bodyTable.childNodes[i].hiddenButtonRight = hiddenButton;
             }
         }
+        
         if(isSwipeLeft||isSwipeRight)
         {
             this.addEventSwipe();
         }
-    }.bind(this),100)
+    }.bind(this),80)
     
 }
 
@@ -859,9 +876,9 @@ tableView.prototype.addEventSwipe = function()
         if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
     this.bodyTable.addEventListener('slip:beforeswipe', function(e){
-        if(self.isSwipeLeft===false&&e.detail.directionX==="left")
+        if(self.isSwipeRight===false&&e.detail.directionX==="left")
             e.preventDefault();
-        if(self.isSwipeRight===false&&e.detail.directionX==="right")
+        if(self.isSwipeLeft===false&&e.detail.directionX==="right")
             e.preventDefault();
         
     }, false);

@@ -622,11 +622,20 @@ table.sortTable th.postionStickyCell{
   transition:width 0.2s ease-in;
 }
 
-.button-hidden-swipe-container{
+.button-hidden-swipe-container-left{
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  top:0;
+  height: 100%;
+}
+
+.button-hidden-swipe-container-right{
   position: absolute;
   right: 0;
   z-index: -1;
   top:0;
+  height: 100%;
 }
 
 .button-hidden-swipe-icon{
@@ -657,8 +666,7 @@ table.sortTable th.postionStickyCell{
 }
 
 .button-hidden-swipe-calcWidth{
-  display: inline-block;
-  height: 100%;
+  display: inline;
 }
 
 .button-hidden-swipe-activeAll{
