@@ -303,7 +303,7 @@
                 var container = this.container;
 
                 var originalIndex = findIndex(this.target, this.container.childNodes);
-
+                this.target.node.originalIndex = originalIndex;
                 container.classList.add('slip-swiping-container');
                 function removeClass() {
                     container.classList.remove('slip-swiping-container');

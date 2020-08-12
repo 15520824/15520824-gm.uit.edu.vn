@@ -595,7 +595,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         })
     }
     result.updatePagination = function (number = result.tempIndexRow,isRedraw = true) {
-        if(false)
+        if(window.mobilecheck())
         {
             result.tempIndexRow = indexRow;
             if(isRedraw){
@@ -619,7 +619,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             result.paginationElement = pagination;
         }
     }
-    if(false)
+    if(window.mobilecheck())
     {
         var tempLimit = _({
             tag:"div",
@@ -806,19 +806,31 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                 })
                 for(var j=0;j<this.isSwipeRight.length;j++){
                     this.bodyTable.childNodes[i].appendChild(hiddenButton);
-                    var on = {};
+
                     var iconStyle = {};
                     if(this.isSwipeRight[j].iconStyle!==undefined)
                     iconStyle = this.isSwipeRight[j].iconStyle;
                     var textStyle = {};
                     if(this.isSwipeRight[j].textStyle!==undefined)
                      textStyle = this.isSwipeRight[j].textStyle;
-                    if(this.isSwipeRight[j].event!==undefined)
-                    on = this.isSwipeRight[j].event;
+                    
                     var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",
-                        on:on,
+                        on:{
+                            click:function(index,indexEvent,e)
+                            {
+                                if(this.isSwipeRight[indexEvent].event!==undefined)
+                                {
+                                   
+                                    var me = this.bodyTable.childNodes[index];
+                                    var index = me.originalIndex;
+                                    var parent = me.elementParent;
+                                    this.isSwipeRight[indexEvent].event(e,me,index,me.data,me,parent)
+                                }
+                                   
+                            }.bind(this,i,j)
+                        },
                         style:{
                             width:1/this.isSwipeRight.length*100+"%",
                             backgroundColor:this.isSwipeRight[j].background,
