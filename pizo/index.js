@@ -470,6 +470,7 @@ DataStructure.prototype.add = function (data) {
       self.setFormatAdd(data);
       var update = value["update"];
       var insert = value["add"];
+      var deleteValue = value["delete"];
 
       if (insert !== undefined) {
         for (var i = 0; i < value.add.length; i++) {
@@ -486,6 +487,16 @@ DataStructure.prototype.add = function (data) {
           for (var param in update[i]) {
             if (moduleDatabase.data[param] !== undefined) {
               moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+            }
+          }
+        }
+      }
+
+      if (deleteValue !== undefined) {
+        for (var i = 0; i < deleteValue.length; i++) {
+          for (var param in deleteValue[i]) {
+            if (moduleDatabase.data[param] !== undefined) {
+              moduleDatabase.data[param].setFormatDelete(deleteValue[i][param]);
             }
           }
         }
@@ -549,6 +560,7 @@ DataStructure.prototype.update = function (data) {
         self.setFormatUpdate(data);
         var update = value["update"];
         var insert = value["add"];
+        var deleteValue = value["delete"];
 
         if (insert !== undefined) {
           for (var i = 0; i < value.add.length; i++) {
@@ -565,6 +577,16 @@ DataStructure.prototype.update = function (data) {
             for (var param in update[i]) {
               if (moduleDatabase.data[param] !== undefined) {
                 moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+              }
+            }
+          }
+        }
+
+        if (deleteValue !== undefined) {
+          for (var i = 0; i < deleteValue.length; i++) {
+            for (var param in deleteValue[i]) {
+              if (moduleDatabase.data[param] !== undefined) {
+                moduleDatabase.data[param].setFormatDelete(deleteValue[i][param]);
               }
             }
           }
@@ -594,19 +616,59 @@ DataStructure.prototype.setFormatUpdate = function (data) {
   }
 };
 
+DataStructure.prototype.setFormatDelete = function (data) {
+  var self = this;
+  console.log(data);
+
+  if (data.id !== undefined) {
+    var temp = self.Libary["id"][data.id];
+
+    for (var param in self.Libary) {
+      if (typeof self.Libary[param] != "function") self.Libary[param].deleteFunction(temp, param);
+    }
+
+    self.data.splice(self.data.indexOf(temp), 1);
+    self.countRow--;
+  }
+};
+
 DataStructure.prototype["delete"] = function (data) {
   var self = this;
   return new Promise(function (resolve, reject) {
     self.queryData(self.phpDeleter, data).then(function (value) {
-      if (data.id !== undefined) {
-        var temp = self.Libary["id"][data.id];
+      self.setFormatDelete(data);
+      var update = value["update"];
+      var insert = value["add"];
+      var deleteValue = value["delete"];
 
-        for (var param in self.Libary) {
-          if (typeof self.Libary[param] != "function") self.Libary[param].deleteFunction(temp, param);
+      if (insert !== undefined) {
+        for (var i = 0; i < value.add.length; i++) {
+          for (var param in insert[i]) {
+            if (moduleDatabase.data[param] !== undefined) {
+              moduleDatabase.data[param].setFormatAdd(insert[i][param]);
+            }
+          }
         }
+      }
 
-        self.data.splice(self.data.indexOf(temp), 1);
-        self.countRow--;
+      if (update !== undefined) {
+        for (var i = 0; i < update.length; i++) {
+          for (var param in update[i]) {
+            if (moduleDatabase.data[param] !== undefined) {
+              moduleDatabase.data[param].setFormatUpdate(update[i][param]);
+            }
+          }
+        }
+      }
+
+      if (deleteValue !== undefined) {
+        for (var i = 0; i < deleteValue.length; i++) {
+          for (var param in deleteValue[i]) {
+            if (moduleDatabase.data[param] !== undefined) {
+              moduleDatabase.data[param].setFormatDelete(deleteValue[i][param]);
+            }
+          }
+        }
       }
 
       resolve();
@@ -6638,7 +6700,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(214);
+var content = __webpack_require__(216);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -17957,7 +18019,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\n.no-animation table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    transform: none;\r\n    transition: none;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n    width: calc(100% - 17px) !important;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important{\r\n    color: #d93025;\r\n}\r\n\r\n.hasErrorElement {\r\n    background-color: #000000;\r\n}\r\n\r\n.pizo-app .absol-checkbox.pizo-checkbox .absol-checkbox-icon{\r\n    display: block; \r\n}", ""]);
+exports.push([module.i, "html{\r\n    font-size: 14px;\r\n}\r\n\r\ninput{\r\n    font-size: 1rem;\r\n}\r\n\r\n.no-animation table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    transform: none;\r\n    transition: none;\r\n}\r\n\r\nbody {\r\n    --blue: #122246;\r\n    --indigo: #6610f2;\r\n    --purple: #6f42c1;\r\n    --pink: #e83e8c;\r\n    --red: #dc3545;\r\n    --orange: #fd7e14;\r\n    --yellow: #ffc107;\r\n    --green: #28a745;\r\n    --teal: #20c997;\r\n    --cyan: #17a2b8;\r\n    --white: #fff;\r\n    --gray: #6c757d;\r\n    --gray-dark: #343a40;\r\n    --primary: #007bff;\r\n    --secondary: #6c757d;\r\n    --success: #28a745;\r\n    --info: #17a2b8;\r\n    --warning: #ffc107;\r\n    --danger: #dc3545;\r\n    --light: #f8f9fa;\r\n    --dark: #343a40;\r\n    --breakpoint-xs: 0;\r\n    --breakpoint-sm: 41.1429rem;\r\n    --breakpoint-md: 54.8571rem;\r\n    --breakpoint-lg: 70.8571rem;\r\n    --breakpoint-xl: 85.7143rem;\r\n    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\r\n    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;\r\n    --border-color:#253863;\r\n    --color-body:#eef5f9;\r\n    --color-input-color:#d6d6d6;\r\n}\r\n\r\nbody{\r\n    margin: 0rem;\r\n    font-family: \"Segoe UI\", \"SegoeuiPc\", \"San Francisco\", \"Helvetica Neue\", \"Helvetica\", \"Lucida Grande\", \"Roboto\", \"Ubuntu\", \"Tahoma\", Microsoft Sans Serif, Tahoma, Arial, sans-serif;\r\n    color: #222222;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-font-smoothing: antialiased;\r\n    text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.app-container{\r\n    width:100vw;\r\n    height: 100vh;\r\n}\r\n\r\n.pizo-app{\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-header{\r\n    width: calc(100% - 0.1429rem);\r\n    border:  0.0714rem solid var(--border-color);\r\n    background-color: var(--blue);\r\n}\r\n\r\n\r\n.pizo-header-logo{\r\n    padding-left: 1.4286rem;\r\n    padding-right: 1.4286rem;\r\n    height: calc(100% - 1.4286rem);\r\n    padding-top: 0.7143rem;\r\n    padding-bottom: 0.7143rem;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-header-logo-icon{\r\n    height: 2.1429rem;\r\n    width: 2.1429rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n\r\n.pizo-header-logo-text{\r\n    margin-left: 0.3571rem;\r\n    height: 1.0714rem;\r\n    vertical-align: middle;\r\n}\r\n\r\n.pizo-header-menu{\r\n    vertical-align: middle;\r\n    background-color: transparent;\r\n    padding-top: 1rem;\r\n    padding-bottom: 1rem;\r\n    text-align: center;\r\n    border-left: 0.0714rem solid var(--border-color);\r\n}\r\n\r\n.pizo-header-menu .absol-hmenu-button{\r\n    color: var(--white);\r\n}\r\n\r\n.pizo-body{\r\n    display: inline-block;\r\n    width: 100%;\r\n    height: calc(100% - 4.0714rem);\r\n    background: var(--color-body);\r\n}\r\n\r\n.pizo-body-title{\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-body-title-left{\r\n    transform: translateY(-100%) translateY(-0.625rem);\r\n    float: left;\r\n    color: var( --blue);\r\n    line-height: 2.1429rem;\r\n    font-size: 1.5rem;\r\n    position: fixed;\r\n}\r\n\r\n.breadcrumb-item+.breadcrumb-item::before {\r\n    display: inline-block;\r\n    padding-right: .5rem;\r\n    padding-left: .5rem;\r\n    color: var(--gray);\r\n    content: \"/\";\r\n}\r\n.pizo-body-title-right-item{\r\n    color: var(--primary);\r\n    text-decoration: none;\r\n    background-color: transparent;\r\n}\r\n\r\n.pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {\r\n    content: \"\\e649\";\r\n    font-family: themify;\r\n    font-size: 0.7857rem;\r\n}\r\n\r\n.pizo-body-title-right{\r\n    margin-right: 2.1429rem;\r\n    margin-top: 0.71428571428rem;\r\n    font-size: 1rem;\r\n    float: right;\r\n}\r\n\r\n.absol-single-page-header{\r\n    z-index: 1000;\r\n    width: calc(100% - 17px) !important;\r\n}\r\n\r\n.outer-wrapper {\r\n    width: calc(100% - 1.4286rem);\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    position: relative;\r\n}\r\n\r\n.portal-section {\r\n    float: right;\r\n}\r\n\r\n.not-login-signin{\r\n    background: #2f426d;\r\n    color: #fff;\r\n    padding: 0.5rem 0.7143rem;\r\n    border-radius: 0.1429rem;\r\n    display: block;\r\n    font-size: 1rem;\r\n    white-space: nowrap;\r\n}\r\n\r\n.portal-section .not-loggedin {\r\n    width: auto;\r\n    float: none;\r\n    background: 0 0;\r\n    display: block;\r\n    padding: 0;\r\n    position: absolute;\r\n    transform: translate(-110%, -0);\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.material-icons{\r\n    font-size: 1.5rem;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important{\r\n    color: #d93025;\r\n}\r\n\r\n.hasErrorElement {\r\n    background-color: #000000;\r\n}\r\n\r\n.pizo-app .absol-checkbox.pizo-checkbox .absol-checkbox-icon{\r\n    display: block; \r\n}", ""]);
 
 
 
@@ -17992,7 +18054,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 26.4286rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,.pizo-list-plan-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: calc(100% - 50px);\r\n    width: calc(100% - 30px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main{\r\n    flex-direction:column;\r\n}\r\n\r\n.pizo-new-realty-desc{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable th,.pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:50px;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-result-control .parent:nth-child(odd) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control .parent:nth-child(even) td{\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color:#f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #fff ;\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    display: inline-block;\r\n    margin-left: 1.4286rem;\r\n    width: calc(100% - 26.4286rem);\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,.pizo-list-plan-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: calc(100% - 50px);\r\n    width: calc(100% - 30px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main{\r\n    flex-direction:column;\r\n}\r\n\r\n.pizo-new-realty-desc{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    width: calc(10% - 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 4rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}\r\n\r\n\r\n\r\n.pizo-list-realty-main-result-control .parent:nth-child(odd) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control .parent:nth-child(even) td{\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color:#f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #fff ;\r\n}", ""]);
 
 
 
@@ -18062,7 +18124,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  pointer-events: none;\r\n  z-index: 100;\r\n  max-width: 100%;\r\n  background-color: white;\r\n  overflow: hidden;\r\n}\r\n\r\n.background-opacity-1{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo{\r\n  z-index: 9999999999;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n  position: fixed;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\ntable.sortTable{\r\n  max-width: 100%;\r\n}\r\n\r\n/* .absol-single-page-scroller{\r\n  width: 500px;\r\n  margin: auto;\r\n} */\r\n\r\ntable.sortTable,table.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 5px;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    border-spacing: 0;\r\n}\r\n\r\n\r\n\r\ntable.sortTableClone{\r\n  left: 0;\r\n  font-size: 1rem;\r\n  position: absolute;\r\n  z-index: 1000;\r\n}\r\n\r\n\r\n\r\n\r\n\r\ntable.sortTable th,table.sortTable td,\r\ntable.sortTableClone th,table.sortTableClone td {\r\n  padding: 0.35714285714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n  position: relative;\r\n}\r\ntable.sortTable th,table.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  top: 0px;\r\n  z-index: 4;\r\n}\r\n\r\ntable.sortTable td,table.sortTableClone td {\r\n  vertical-align: middle;\r\n}\r\ntable.sortTable thead:first-child tr th,\r\ntable.sortTable thead:first-child tr td,\r\ntable.sortTableClone thead:first-child tr th,\r\ntable.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\ntable.sortTable tbody + tbody,table.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\ntable.sortTable th + th,\r\ntable.sortTable td + td,\r\ntable.sortTable th + td,\r\ntable.sortTable td + th,\r\ntable.sortTableClone th + th,\r\ntable.sortTableClone td + td,\r\ntable.sortTableClone th + td,\r\ntable.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\ntable.sortTable thead:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child td,\r\ntable.sortTableClone thead:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\ntable.sortTable tbody{\r\n  position: relative;\r\n}\r\n\r\ntable.sortTable td.postionStickyCell,table.sortTable th.postionStickyCell{\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  left: 0;\r\n  z-index: 1;\r\n}\r\n\r\ntable.sortTable th.postionStickyCell{\r\n  z-index: 3;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n\r\n.module-delete-container{\r\n  display: inline-block;\r\n  position: relative;\r\n  padding: 10px;\r\n  border: 1px solid #888;\r\n  border-radius: 4px;\r\n  max-height: 90vh;\r\n  overflow: auto;\r\n  background-color: #fefefe;\r\n  box-shadow: 4px 4px 10px 0px black;\r\n}\r\n\r\n.module-delete-button>button{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n  width: 90px;\r\n}\r\n\r\n.module-delete-button>button:hover{\r\n  background-color: rgb(213, 213, 213);\r\n  cursor: pointer;\r\n}\r\n\r\n.module-delete-button>button:not(:first-child){\r\n  margin-left: 30px;\r\n}\r\n\r\n.module-delete-header{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-title{\r\n  font-size: 1.14285714286rem;\r\n  padding-top: 0.5rem;\r\n  padding-bottom: 0.5rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  overflow: hidden;\r\n  position: relative;\r\n  min-width: 20rem;\r\n}\r\n\r\n.module-delete-header-close-container{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n}\r\n\r\n.module-delete-button{\r\n  text-align: center;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-content{\r\n  margin-top: 24px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-header-close.material-icons{\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-close.material-icons:hover{\r\n  color: red;\r\n  cursor: pointer;\r\n}\r\n\r\n.pagination {\r\n  display: flex;\r\n  justify-content: center;\r\n  position: absolute;\r\n  transform: translateX(-50%) translateY(10px);\r\n  left: 50%;\r\n}\r\n.pagination-container {\r\n  padding: 5px 0;\r\n  border-radius: 8px;\r\n  border: 1px solid rgba(0, 0, 0, 0.1);\r\n  background-color: #fff;\r\n  display: inline-flex;\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.pagination-hover-overlay {\r\n  background-color: #00c1dd;\r\n  width: 40px;\r\n  height: 40px;\r\n  border-radius: 5px;\r\n  position: absolute;\r\n  top: 50%;\r\n  transform: translateY(-50%);\r\n  transition-duration: 0.5s;\r\n  left: 60px;\r\n  opacity: 0;\r\n}\r\n.pagination .icon-pagination {\r\n  color: rgba(51, 61, 69, 0.5);\r\n  font-size: 11px;\r\n  width: 40px;\r\n  height: 40px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  position: relative;\r\n  z-index: 3;\r\n  background-color: #fff;\r\n}\r\n.pagination-prev {\r\n  margin-right: 5px;\r\n  margin-left: 10px;\r\n  cursor: pointer;\r\n}\r\n.pagination-prev .icon-pagination-prev {\r\n  transform: rotate(0deg);\r\n}\r\n\r\n.pagination-prev .icon-pagination-prev>i,.pagination-next .icon-pagination-next>i {\r\n  font-size: 2rem;\r\n}\r\n\r\n.pagination-next {\r\n  margin-left: 10px;\r\n  margin-right: 5px;\r\n  cursor: pointer;\r\n}\r\n.pagination-next .icon-pagination-next {\r\n  transform: rotate(180deg);\r\n}\r\n.pagination-page-number {\r\n  display: none;\r\n  border-radius: 5px;\r\n  padding:5px;\r\n  color: #333d45;\r\n  min-width: 30px;\r\n  height: 30px;\r\n  align-items: center;\r\n  justify-content: center;\r\n  transition-duration: 0.5s;\r\n  position: relative;\r\n  z-index: 2;\r\n  font-weight: 700;\r\n  font-size: 18px;\r\n  cursor: pointer;\r\n}\r\n.pagination-wrapper .pagination-page-number.active{\r\n  display: flex;\r\n}\r\n.pagination-page-number:hover {\r\n  color: #fff;\r\n}\r\n.pagination-page-number.active {\r\n  color: #fff;\r\n}\r\n\r\n.pagination-wrapper{\r\n  display: flex;\r\n}\r\n\r\n.pagination-align{\r\n  position: absolute;\r\n  transform: translateX(-50%);\r\n  left: 50%;\r\n  width: 100%;\r\n  height: 72px;\r\n  background-color: white;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  width: 3rem;\r\n  text-align: right;\r\n  border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n  visibility: hidden;\r\n  position: absolute;\r\n  top: -71.3571rem;\r\n  left: -71.3571rem;\r\n  font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  pointer-events: none;\r\n  z-index: 100;\r\n  max-width: 100%;\r\n  background-color: white;\r\n  overflow: hidden;\r\n}\r\n\r\n.background-opacity-1{\r\n  opacity: 0.5;\r\n  position: fixed;\r\n  z-index: 100;\r\n  background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo{\r\n  z-index: 9999999999;\r\n}\r\n\r\n.delete-zone{\r\n  border: 0.1429rem dashed #0087F7;\r\n  text-align: center;\r\n  position: fixed;\r\n}\r\n\r\n.delete-zone-icon{\r\n  font-size: 4.2857rem;\r\n  display: inline-block;\r\n}\r\n\r\n.detele-zone-label{\r\n  font-size: 2.1429rem;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone{\r\n  border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon{\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n  opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center{\r\n  border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle{\r\n  border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-right{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone-center{\r\n  display: inline-block;\r\n  height: 100%;\r\n}\r\n\r\n.move-hover-zone{\r\n  display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot{\r\n  display: block;\r\n}\r\n\r\n.move-hover-zone-middle{\r\n  opacity: 1;\r\n}\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\ntable.sortTable{\r\n  max-width: 100%;\r\n}\r\n\r\n/* .absol-single-page-scroller{\r\n  width: 500px;\r\n  margin: auto;\r\n} */\r\n\r\ntable.sortTable,table.sortTableClone {\r\n    background: #fff;\r\n    border-radius: 5px;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    border-spacing: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n\r\ntable.sortTableClone{\r\n  left: 0;\r\n  font-size: 1rem;\r\n  position: absolute;\r\n  z-index: 1000;\r\n}\r\n\r\n\r\n\r\n\r\n\r\ntable.sortTable th,table.sortTable td,\r\ntable.sortTableClone th,table.sortTableClone td {\r\n  padding: 0.35714285714rem;\r\n  text-align: left;\r\n  border-top: 1px solid var(--color-input-color);\r\n  position: relative;\r\n}\r\ntable.sortTable th,table.sortTableClone th {\r\n  background: #36304a;\r\n  vertical-align: middle;\r\n  color: #fff;\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  top: 0px;\r\n  z-index: 4;\r\n}\r\n\r\ntable.sortTable td,table.sortTableClone td {\r\n  vertical-align: middle;\r\n}\r\ntable.sortTable thead:first-child tr th,\r\ntable.sortTable thead:first-child tr td,\r\ntable.sortTableClone thead:first-child tr th,\r\ntable.sortTableClone thead:first-child tr td {\r\n  border-top: 0;\r\n}\r\ntable.sortTable tbody + tbody,table.sortTableClone tbody + tbody {\r\n  border-top: 1px solid #ddd;\r\n}\r\ntable.sortTable th + th,\r\ntable.sortTable td + td,\r\ntable.sortTable th + td,\r\ntable.sortTable td + th,\r\ntable.sortTableClone th + th,\r\ntable.sortTableClone td + td,\r\ntable.sortTableClone th + td,\r\ntable.sortTableClone td + th {\r\n  border-left: 1px solid #ddd;\r\n}\r\ntable.sortTable thead:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child td,\r\ntable.sortTableClone thead:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child td  {\r\n  border-top: 0;\r\n}\r\n\r\ntable.sortTable tbody{\r\n  position: relative;\r\n}\r\n\r\ntable.sortTable td.postionStickyCell,table.sortTable th.postionStickyCell{\r\n  position: sticky;\r\n  position: -webkit-sticky;\r\n  left: 0;\r\n  z-index: 1;\r\n}\r\n\r\ntable.sortTable th.postionStickyCell{\r\n  z-index: 3;\r\n}\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n.clearfix:after {\r\n  content: \".\";\r\n  display: block;\r\n  height: 0;\r\n  clear: both;\r\n  visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n  height: 1%;\r\n} /* IE6 */\r\n*:first-child + html .clearfix {\r\n  min-height: 1%;\r\n} /* IE7 */\r\n\r\n/* Syntax highlighting */\r\n.c {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment */\r\n.err {\r\n  color: #a61717;\r\n  background-color: #e3d2d2;\r\n} /* Error */\r\n.k {\r\n  font-weight: bold;\r\n} /* Keyword */\r\n.o {\r\n  font-weight: bold;\r\n} /* Operator */\r\n.cm {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Multiline */\r\n.cp {\r\n  color: #999;\r\n  font-weight: bold;\r\n} /* Comment.Preproc */\r\n.c1 {\r\n  color: #998;\r\n  font-style: italic;\r\n} /* Comment.Single */\r\n.cs {\r\n  color: #999;\r\n  font-weight: bold;\r\n  font-style: italic;\r\n} /* Comment.Special */\r\n.gd {\r\n  color: #000;\r\n  background-color: #fdd;\r\n} /* Generic.Deleted */\r\n.gd .x {\r\n  color: #000;\r\n  background-color: #faa;\r\n} /* Generic.Deleted.Specific */\r\n.ge {\r\n  font-style: italic;\r\n} /* Generic.Emph */\r\n.gr {\r\n  color: #a00;\r\n} /* Generic.Error */\r\n.gh {\r\n  color: #999;\r\n} /* Generic.Heading */\r\n.gi {\r\n  color: #000;\r\n  background-color: #dfd;\r\n} /* Generic.Inserted */\r\n.gi .x {\r\n  color: #000;\r\n  background-color: #afa;\r\n} /* Generic.Inserted.Specific */\r\n.go {\r\n  color: #888;\r\n} /* Generic.Output */\r\n.gp {\r\n  color: #555;\r\n} /* Generic.Prompt */\r\n.gs {\r\n  font-weight: bold;\r\n} /* Generic.Strong */\r\n.gu {\r\n  color: #aaa;\r\n} /* Generic.Subheading */\r\n.gt {\r\n  color: #a00;\r\n} /* Generic.Traceback */\r\n.kc {\r\n  font-weight: bold;\r\n} /* Keyword.Constant */\r\n.kd {\r\n  font-weight: bold;\r\n} /* Keyword.Declaration */\r\n.kp {\r\n  font-weight: bold;\r\n} /* Keyword.Pseudo */\r\n.kr {\r\n  font-weight: bold;\r\n} /* Keyword.Reserved */\r\n.kt {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Keyword.Type */\r\n.m {\r\n  color: #099;\r\n} /* Literal.Number */\r\n.s {\r\n  color: #d14;\r\n} /* Literal.String */\r\n.na {\r\n  color: #008080;\r\n} /* Name.Attribute */\r\n.nb {\r\n  color: #0086b3;\r\n} /* Name.Builtin */\r\n.nc {\r\n  color: #458;\r\n  font-weight: bold;\r\n} /* Name.Class */\r\n.no {\r\n  color: #008080;\r\n} /* Name.Constant */\r\n.ni {\r\n  color: #800080;\r\n} /* Name.Entity */\r\n.ne {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Exception */\r\n.nf {\r\n  color: #900;\r\n  font-weight: bold;\r\n} /* Name.Function */\r\n.nn {\r\n  color: #555;\r\n} /* Name.Namespace */\r\n.nt {\r\n  color: #000080;\r\n} /* Name.Tag */\r\n.nv {\r\n  color: #008080;\r\n} /* Name.Variable */\r\n.ow {\r\n  font-weight: bold;\r\n} /* Operator.Word */\r\n.w {\r\n  color: #bbb;\r\n} /* Text.Whitespace */\r\n.mf {\r\n  color: #099;\r\n} /* Literal.Number.Float */\r\n.mh {\r\n  color: #099;\r\n} /* Literal.Number.Hex */\r\n.mi {\r\n  color: #099;\r\n} /* Literal.Number.Integer */\r\n.mo {\r\n  color: #099;\r\n} /* Literal.Number.Oct */\r\n.sb {\r\n  color: #d14;\r\n} /* Literal.String.Backtick */\r\n.sc {\r\n  color: #d14;\r\n} /* Literal.String.Char */\r\n.sd {\r\n  color: #d14;\r\n} /* Literal.String.Doc */\r\n.s2 {\r\n  color: #d14;\r\n} /* Literal.String.Double */\r\n.se {\r\n  color: #d14;\r\n} /* Literal.String.Escape */\r\n.sh {\r\n  color: #d14;\r\n} /* Literal.String.Heredoc */\r\n.si {\r\n  color: #d14;\r\n} /* Literal.String.Interpol */\r\n.sx {\r\n  color: #d14;\r\n} /* Literal.String.Other */\r\n.sr {\r\n  color: #009926;\r\n} /* Literal.String.Regex */\r\n.s1 {\r\n  color: #d14;\r\n} /* Literal.String.Single */\r\n.ss {\r\n  color: #990073;\r\n} /* Literal.String.Symbol */\r\n.bp {\r\n  color: #999;\r\n} /* Name.Builtin.Pseudo */\r\n.vc {\r\n  color: #008080;\r\n} /* Name.Variable.Class */\r\n.vg {\r\n  color: #008080;\r\n} /* Name.Variable.Global */\r\n.vi {\r\n  color: #008080;\r\n} /* Name.Variable.Instance */\r\n.il {\r\n  color: #099;\r\n} /* Literal.Number.Integer.Long */\r\n\r\n.module-delete-container{\r\n  display: inline-block;\r\n  position: relative;\r\n  padding: 10px;\r\n  border: 1px solid #888;\r\n  border-radius: 4px;\r\n  max-height: 90vh;\r\n  overflow: auto;\r\n  background-color: #fefefe;\r\n  box-shadow: 4px 4px 10px 0px black;\r\n}\r\n\r\n.module-delete-button>button{\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n  width: 90px;\r\n}\r\n\r\n.module-delete-button>button:hover{\r\n  background-color: rgb(213, 213, 213);\r\n  cursor: pointer;\r\n}\r\n\r\n.module-delete-button>button:not(:first-child){\r\n  margin-left: 30px;\r\n}\r\n\r\n.module-delete-header{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-title{\r\n  font-size: 1.14285714286rem;\r\n  padding-top: 0.5rem;\r\n  padding-bottom: 0.5rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  overflow: hidden;\r\n  position: relative;\r\n  min-width: 20rem;\r\n}\r\n\r\n.module-delete-header-close-container{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n}\r\n\r\n.module-delete-button{\r\n  text-align: center;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-content{\r\n  margin-top: 24px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-header-close.material-icons{\r\n  font-weight: bold;\r\n}\r\n\r\n.module-delete-header-close.material-icons:hover{\r\n  color: red;\r\n  cursor: pointer;\r\n}\r\n/* \r\n.pagination {\r\n  display: flex;\r\n  justify-content: center;\r\n  position: absolute;\r\n  transform: translateX(-50%) translateY(10px);\r\n  left: 50%;\r\n} */\r\n.container-sortTable{\r\n  width: 100%;\r\n  overflow: auto;\r\n}\r\n\r\n.pagination {\r\n  display: flex;\r\n  justify-content: center;\r\n  padding-top: 5px;\r\n  padding-bottom: 5px;\r\n}\r\n\r\n.pagination-container {\r\n  padding: 5px 0;\r\n  border-radius: 8px;\r\n  border: 1px solid rgba(0, 0, 0, 0.1);\r\n  background-color: #fff;\r\n  display: inline-flex;\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.pagination-hover-overlay {\r\n  background-color: #00c1dd;\r\n  width: 40px;\r\n  height: 40px;\r\n  border-radius: 5px;\r\n  position: absolute;\r\n  top: 50%;\r\n  transform: translateY(-50%);\r\n  transition-duration: 0.5s;\r\n  left: 60px;\r\n  opacity: 0;\r\n}\r\n.pagination .icon-pagination {\r\n  color: rgba(51, 61, 69, 0.5);\r\n  font-size: 11px;\r\n  width: 40px;\r\n  height: 40px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  position: relative;\r\n  z-index: 3;\r\n  background-color: #fff;\r\n}\r\n.pagination-prev {\r\n  margin-right: 5px;\r\n  margin-left: 10px;\r\n  cursor: pointer;\r\n}\r\n.pagination-prev .icon-pagination-prev {\r\n  transform: rotate(0deg);\r\n}\r\n\r\n.pagination-prev .icon-pagination-prev>i,.pagination-next .icon-pagination-next>i {\r\n  font-size: 2rem;\r\n}\r\n\r\n.pagination-next {\r\n  margin-left: 10px;\r\n  margin-right: 5px;\r\n  cursor: pointer;\r\n}\r\n.pagination-next .icon-pagination-next {\r\n  transform: rotate(180deg);\r\n}\r\n.pagination-page-number {\r\n  display: none;\r\n  border-radius: 5px;\r\n  padding:5px;\r\n  color: #333d45;\r\n  min-width: 30px;\r\n  align-items: center;\r\n  justify-content: center;\r\n  transition-duration: 0.5s;\r\n  position: relative;\r\n  z-index: 2;\r\n  font-weight: 700;\r\n  font-size: 18px;\r\n  cursor: pointer;\r\n  -moz-box-sizing: unset;\r\n  box-sizing: unset;\r\n  -webkit-box-sizing: unset;\r\n}\r\n.pagination-wrapper .pagination-page-number.active{\r\n  display: flex;\r\n}\r\n.pagination-page-number:hover {\r\n  color: #fff;\r\n}\r\n.pagination-page-number.active {\r\n  color: #fff;\r\n}\r\n\r\n.pagination-wrapper{\r\n  display: flex;\r\n}\r\n/* \r\n.pagination-align{\r\n  position: absolute;\r\n  transform: translateX(-50%);\r\n  left: 50%;\r\n  width: 100%;\r\n  height: 72px;\r\n  background-color: white;\r\n} */\r\n\r\n.button-hidden-swipe{\r\n  /* position: absolute;\r\n  right: 0;\r\n  z-index: -1;*/\r\n  height: 100%;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  transition:width 0.2s ease-out;\r\n  transition:width 0.2s ease-in;\r\n}\r\n\r\n.button-hidden-swipe-container-left{\r\n  position: absolute;\r\n  left: 0;\r\n  z-index: -1;\r\n  top:0;\r\n  height: 100%;\r\n}\r\n\r\n.button-hidden-swipe-container-right{\r\n  position: absolute;\r\n  right: 0;\r\n  z-index: -1;\r\n  top:0;\r\n  height: 100%;\r\n}\r\n\r\n.button-hidden-swipe-icon{\r\n  max-width: 100%;\r\n}\r\n\r\n.button-hidden-swipe-text{\r\n\r\n}\r\n\r\n.button-hidden-swipe-detail-content{\r\n  max-width: 100%;\r\n  display: inline-block;\r\n  position: absolute;\r\n  overflow: hidden;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%,-50%);\r\n  color: white;\r\n  font-size: 16px;\r\n  font-weight: bolder;\r\n  text-align: center;\r\n}\r\n\r\n.button-hidden-swipe-detail{\r\n  position: relative;\r\n}\r\n\r\n.button-hidden-swipe-calcWidth{\r\n  display: inline;\r\n}\r\n\r\n.button-hidden-swipe-activeAll{\r\n  position: absolute;\r\n  right: 0;\r\n  max-width: unset !important;\r\n}\r\n\r\n.button-hidden-swipe-activeAll-width{\r\n  width: 100% !important;\r\n}", ""]);
 
 
 
@@ -18097,7 +18159,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".arrow_up{\r\n  position: absolute;\r\n  transform: scale(1.06);\r\n  display: block;\r\n  top: 2px;\r\n}\r\n\r\n.arrow_down{\r\n  position: absolute;\r\n  transform: scale(1.06);\r\n  top: calc(50% + 1px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n}\r\n\r\n.has-sort .sort-container{\r\n  display: flex;\r\n  position: relative;\r\n  flex-shrink: 0;\r\n  justify-content: center;\r\n  align-items: center;\r\n  width: 20px;\r\n  min-height: 20px;\r\n}\r\n\r\n.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n.margin-div-cell{\r\n    width: 1.71428571429rem;\r\n    display: inline-block;\r\n}\r\n\r\n.more-icon-container{\r\n    font-size: 16px;\r\n    position: absolute;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    top: 50%;\r\n    width: 20px;\r\n    height: 30px;\r\n    transform: translateX(-100%) translateX(-0.71428571428rem) translateY(-50%);\r\n}\r\n\r\n.more-button{\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateY(-2px);\r\n    -webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n    font-size: 20px;\r\n}\r\n\r\ntable.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.more-child> td> div>i.more-button{\r\n\ttransform: translateY(-50%) translateY(-2px) rotateZ(90deg);\r\n}\r\n  \r\n  .container-view{\r\n      display: inline-block;\r\n  }\r\n\r\n  table.sortTable td.margin-left-has-icon{\r\n    padding-left: 2.5rem;\r\n  }\r\n\r\n  \r\n  table.sortTable.padding-High-table tbody td:first-child{\r\n    padding-left: 2.85714285714rem;\r\n    \r\n  }\r\n\r\n  table.sortTable td:first-child{\r\n    padding-left: 0.71428571428rem;\r\n  }\r\n\r\n  table.sortTable td:last-child{\r\n    padding-right: 0.71428571428rem;\r\n  }\r\n\r\n  .drag-icon-button{\r\n    cursor: context-menu;\r\n  }\r\n\r\n  table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    -moz-user-select: none; \r\n    -webkit-user-select: none; \r\n    -ms-user-select:none; \r\n    user-select:none;\r\n    -o-user-select:none;\r\n    \r\n    /* transform: none; */\r\n    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */\r\n  }\r\n\r\n  table.sortTable>tbody>tr{\r\n    opacity: 0;\r\n    /* transform: rotateX(-90deg); */\r\n    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */\r\n  }\r\n\r\n  table.sortTable>tbody>tr.hideTranslate.parent{\r\n    -webkit-transition: 1s ease-in-out;\r\n    -moz-transition: 1s ease-in-out;\r\n    -o-transition: 1s ease-in-out;\r\n    transition: 1s ease-in-out;\r\n    transform: translateX(100%);\r\n  }\r\n  \r\n  .disPlayNone{\r\n    display: none !important;\r\n  }\r\n\r\n  .absol-frame-view-frame-container:not(.absol-active){\r\n    visibility: unset;\r\n  }\r\n/* table.sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */\r\n\r\n  table.sortTable .slip-reordering .container-view{\r\n    z-index: 9999 !important;\r\n  }\r\n\r\n  .container-header{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n  }\r\n\r\n  .container-header > span{\r\n    flex-grow: 2;\r\n    display: flex;\r\n  }\r\n", ""]);
+exports.push([module.i, ".arrow_up{\r\n  position: absolute;\r\n  transform: scale(1.06);\r\n  display: block;\r\n  top: 2px;\r\n}\r\n\r\n.arrow_down{\r\n  position: absolute;\r\n  transform: scale(1.06);\r\n  top: calc(50% + 1px);\r\n}\r\n\r\n.sort-container{\r\n\tdisplay: none;\r\n}\r\n\r\n.has-sort .sort-container{\r\n  display: flex;\r\n  position: relative;\r\n  flex-shrink: 0;\r\n  justify-content: center;\r\n  align-items: center;\r\n  width: 20px;\r\n  min-height: 20px;\r\n}\r\n\r\n.downgrade .sort-container .arrow_up>path{\r\n\tfill: #fff !important;\r\n}\r\n\r\n.upgrade .sort-container .arrow_down>path{\r\n\tfill: #fff !important;\r\n}\r\n.has-sort{\r\n\tposition: relative;\r\n}\r\n\r\n.margin-div-cell{\r\n    width: 1.71428571429rem;\r\n    display: inline-block;\r\n}\r\n\r\n.more-icon-container{\r\n    font-size: 16px;\r\n    position: absolute;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    top: 50%;\r\n    width: 20px;\r\n    height: 30px;\r\n    transform: translateX(-100%) translateX(-0.71428571428rem) translateY(-50%);\r\n}\r\n\r\n.more-button{\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%) translateY(-2px);\r\n    -webkit-transition: 0.5s ease-in-out;\r\n    -moz-transition: 0.5s ease-in-out;\r\n    -o-transition: 0.5s ease-in-out;\r\n    transition: 0.5s ease-in-out;\r\n    font-size: 20px;\r\n}\r\n\r\ntable.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.more-child> td> div>i.more-button{\r\n\ttransform: translateY(-50%) translateY(-2px) rotateZ(90deg);\r\n}\r\n  \r\n  .container-view{\r\n      display: inline-block;\r\n  }\r\n\r\n  table.sortTable td.margin-left-has-icon{\r\n    padding-left: 2.5rem;\r\n  }\r\n\r\n  \r\n  table.sortTable.padding-High-table tbody td:first-child{\r\n    padding-left: 2.85714285714rem;\r\n    \r\n  }\r\n\r\n  table.sortTable td:first-child{\r\n    padding-left: 0.71428571428rem;\r\n  }\r\n\r\n  table.sortTable td:last-child{\r\n    padding-right: 0.71428571428rem;\r\n  }\r\n\r\n  .drag-icon-button{\r\n    cursor: context-menu;\r\n  }\r\n\r\n  table.sortTable>tbody>tr.parent{\r\n    opacity: 1;\r\n    -moz-user-select: none; \r\n    -webkit-user-select: none; \r\n    -ms-user-select:none; \r\n    user-select:none;\r\n    -o-user-select:none;\r\n    position: relative;\r\n    height: 100px;\r\n    transform: scale(1);\r\n    /* transform: none; */\r\n    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */\r\n  }\r\n\r\n  table.sortTable>tbody>tr{\r\n    opacity: 0;\r\n    /* transform: rotateX(-90deg); */\r\n    /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */\r\n  }\r\n\r\n  table.sortTable>tbody>tr.hideTranslate.parent{\r\n    -webkit-transition: 1s ease-in-out;\r\n    -moz-transition: 1s ease-in-out;\r\n    -o-transition: 1s ease-in-out;\r\n    transition: 1s ease-in-out;\r\n    transform: translateX(100%);\r\n  }\r\n  \r\n  .disPlayNone{\r\n    display: none !important;\r\n  }\r\n\r\n  .absol-frame-view-frame-container:not(.absol-active){\r\n    visibility: unset;\r\n  }\r\n/* table.sortTable tr:nth-child(even) {\r\n    background-color: #f5f5f5;\r\n  } */\r\n\r\n  table.sortTable .slip-reordering .container-view{\r\n    z-index: 9999 !important;\r\n  }\r\n\r\n  .container-header{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n  }\r\n\r\n  .container-header > span{\r\n    flex-grow: 2;\r\n    display: flex;\r\n  }\r\n", ""]);
 
 
 
@@ -18167,7 +18229,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.as-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact, .pizo-new-realty-image{\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab,.pizo-new-realty-image-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{\r\n  text-align: right;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-structure{\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-toilet-label,\r\n.pizo-new-realty-dectruct-content-area-living-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-floor-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 6.5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span, .pizo-new-realty-detruct-content-price-rent-label,.pizo-new-realty-detruct-content-area-label{\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 158px;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n\r\n.pizo-new-realty-contact-tab{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-label{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-button{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  color: #fff;\r\n  background: #122246;\r\n  border: 1px solid #122246;\r\n  padding: 1px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name,.pizo-new-realty-contact-item-phone,.pizo-new-realty-contact-item-note{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-label,.pizo-new-realty-contact-item-phone-label,.pizo-new-realty-contact-item-note-label{\r\n    font-size: 1rem;\r\n    padding-top: 0.4375rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 6.5714rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-input,.pizo-new-realty-contact-item-phone-input,.pizo-new-realty-contact-item-note-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-selectbox{\r\n  min-width: 130px !important;\r\n}\r\n\r\n.pizo-new-realty-contact-item-close{\r\n  background-color: red;\r\n  color: white;\r\n}\r\n\r\n\r\n.pizo-new-realty-contact-item-setting{\r\n  background-color: blue;\r\n  color: white;\r\n}\r\n\r\n.pizo-new-realty-contact-item{\r\n  margin: 0.7143rem;\r\n  margin-bottom: 2.1429rem;\r\n}\r\n\r\n.btn-wrapper.input-append .pizo-new-realty-contact-tab-button{\r\n  width: 34px;\r\n  margin-left: 7px;\r\n  background: #ac000d;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input{\r\n  padding: 0;\r\n  justify-content: start;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close{\r\n  width: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.absol-selectmenu.pizo-new-realty-detruct-content-price-unit{\r\n    width: 4.5rem !important;\r\n    min-width: 4.5rem !important;\r\n    flex-shrink: 0;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-price-rent-label.pizo-new-realty-detruct-content-area-label{\r\n  width: fit-content;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price-rent-unit{\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-censorship{\r\n    align-items: center;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox{\r\n    margin-left: 0.7143rem;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 35px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child)\r\n{\r\n  margin-left: 70px;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child>span\r\n{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone-all{\r\n    display: inline-block;\r\n    margin-bottom: 0.7143rem;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n    margin-left: 1.0714rem;\r\n}\r\n\r\n.pizo-new-realty-image{\r\n  height: 400px;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty .modal-upload-XML-body-drop-save{\r\n  display: none;\r\n}\r\n\r\n.pizo-new-realty-image-tab{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.pizo-new-realty-image-content{\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n.pizo-new-realty .full-size{\r\n  height: 150px;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-realty-desc-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  margin-bottom: 0.7143rem;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-desc-detail {\r\n  width: 50%;\r\n  max-width: 100%;\r\n  min-width: 380px;\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell {\r\n  width: calc(50% - 2.1429rem);\r\n  max-width: calc(50% - 2.1429rem);\r\n  display: inline-block;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu {\r\n  -webkit-box-flex: 0;\r\n  -ms-flex: 0 0 calc(80% - 1.5rem);\r\n  flex: 0 0 calc(80% - 1.5rem);\r\n  max-width: calc(80% - 1.5rem);\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu {\r\n  width: calc(100% - 4.8333rem);\r\n  margin-left: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell:not(:first-child) {\r\n  margin-left: 4.2857rem;\r\n}\r\n\r\n.pizo-new-realty-desc-content {\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row:not(:last-child) {\r\n  margin-bottom: 0.7143rem;\r\n  margin-top: 1px;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-label {\r\n  font-size: 1rem;\r\n  padding-top: 0.4375rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone\r\n  .pizo-new-realty-desc-detail-row-cell-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2 {\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-1-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-menu-2-checkbox {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-1-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-cell-menu-2-span {\r\n  font-size: 1rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: flex-end;\r\n  overflow: hidden;\r\n  position: relative;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 5.71428571429rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-1-row-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.as-modal {\r\n  background-color: rgba(0, 0, 0, 0.502);\r\n  overflow-y: auto;\r\n  z-index: 1002;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct {\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n  margin-right: 30px;\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell {\r\n  display: inline-block;\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell:not(:last-child) {\r\n  margin-right: 30px;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation-cell.center-child {\r\n  width: calc(33% - 30px);\r\n  min-width: 380px;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-utility,.pizo-new-realty-convenient,.pizo-new-realty-juridical,.pizo-new-realty-history, .pizo-new-realty-contact, .pizo-new-realty-image{\r\n  width: 100%;\r\n  vertical-align: top;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-utility-tab,.pizo-new-realty-convenient-tab,.pizo-new-realty-juridical-tab,.pizo-new-realty-history-tab,.pizo-new-realty-contact-tab,.pizo-new-realty-image-tab {\r\n  padding: 0.7143rem;\r\n  border-bottom: solid 0.0714rem #ccc;\r\n  background: #f3f3f3;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-width-label,\r\n.pizo-new-realty-dectruct-content-area-height-label,\r\n.pizo-new-realty-dectruct-content-area-1-label,\r\n.pizo-new-realty-dectruct-content-area-2-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  flex-shrink: 0;\r\n  width: 4rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label,\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  font-size: 1rem;\r\n  flex-shrink: 0;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4.71428571429rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style\r\n  .pizo-new-realty-detruct-content-area-label {\r\n  width: 4rem;\r\n  padding-right: 0.71428571429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-unit-size {\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-input {\r\n  border: solid 0.0714rem var(--color-input-color);\r\n  font-size: 1rem;\r\n  padding: 0.4286rem;\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-desc-infomation .pizo-new-realty-dectruct-input{\r\n  text-align: right;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-direction {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-type {\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-structure{\r\n  min-width: unset !important;\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-area-label {\r\n  font-weight: bold;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-desc-detail-row\r\n  .pizo-new-realty-dectruct-content-area-size-zone {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-bedroom-label,\r\n.pizo-new-realty-dectruct-content-area-kitchen-label,\r\n.pizo-new-realty-dectruct-content-area-toilet-label,\r\n.pizo-new-realty-dectruct-content-area-living-label,\r\n.pizo-new-realty-dectruct-content-area-basement-label,\r\n.pizo-new-realty-dectruct-content-area-floor-label {\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  align-items: center;\r\n  width: 6.5rem;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style {\r\n  width: calc(50% - 0.71428571428rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.margin-style {\r\n  width: calc(50% - 1.42857142857rem);\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct .pizo-new-realty-dectruct-content-area-size-right {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right > span, .pizo-new-realty-detruct-content-price-rent-label,.pizo-new-realty-detruct-content-area-label{\r\n  padding-right: 0.7143rem;\r\n  font-size: 1rem;\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: 158px;\r\n  align-items: center;\r\n  padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone {\r\n  display: inline-block;\r\n  margin-bottom: 0.7143rem;\r\n  width: calc(50% - 1.0714rem);\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone > span {\r\n  display: inline-block;\r\n  vertical-align: -webkit-baseline-middle;\r\n}\r\n\r\n.pizo-new-realty-convenient .pizo-new-realty-convenient-content-area-size {\r\n  margin-left: 0.7143rem;\r\n  margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-right {\r\n  margin: 0.7143rem;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {\r\n  margin-left: 2.1429rem;\r\n}\r\n\r\n.pizo-new-realty-convenient-content-size {\r\n  margin: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n  text-align: center;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: #ebebeb;\r\n  border: solid 0.0714rem #c0c0c0;\r\n  border-radius: 0.2rem;\r\n  font-size: 1rem;\r\n  overflow: hidden;\r\n  line-height: 2rem;\r\n  box-sizing: content-box;\r\n  height: 2rem;\r\n  white-space: nowrap;\r\n}\r\n\r\n.absol-single-page-header .pizo-list-realty-button-element:not(:first-child) {\r\n  margin-left: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button-element > span {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  height: 2rem;\r\n  box-sizing: border-box;\r\n  line-height: 2rem;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  text-align: center;\r\n  margin-left: 0.7rem;\r\n  margin-right: 0.7rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.absol-dropdown-content {\r\n  z-index: 1001;\r\n}\r\n\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-1-label {\r\n}\r\n\r\n.pizo-new-realty-contact-tab{\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-label{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.pizo-new-realty-contact-tab-button{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n  width: fit-content;\r\n  color: #fff;\r\n  background: #122246;\r\n  border: 1px solid #122246;\r\n  padding: 1px;\r\n  border-radius: 4px;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name,.pizo-new-realty-contact-item-phone,.pizo-new-realty-contact-item-note{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-label,.pizo-new-realty-contact-item-phone-label,.pizo-new-realty-contact-item-note-label{\r\n    font-size: 1rem;\r\n    padding-top: 0.4375rem;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: 6.5714rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-input,.pizo-new-realty-contact-item-phone-input,.pizo-new-realty-contact-item-note-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-contact-item-name-selectbox{\r\n  min-width: 130px !important;\r\n}\r\n\r\n.pizo-new-realty-contact-item-close{\r\n  background-color: red;\r\n  color: white;\r\n}\r\n\r\n\r\n.pizo-new-realty-contact-item-setting{\r\n  background-color: blue;\r\n  color: white;\r\n}\r\n\r\n.pizo-new-realty-contact-item{\r\n  margin: 0.7143rem;\r\n  margin-bottom: 2.1429rem;\r\n}\r\n\r\n.btn-wrapper.input-append .pizo-new-realty-contact-tab-button{\r\n  width: 34px;\r\n  margin-left: 7px;\r\n  background: #ac000d;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input{\r\n  padding: 0;\r\n  justify-content: start;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text{\r\n  height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close{\r\n  width: 24px;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-close span{\r\n  line-height: 24px;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n.absol-selectmenu.pizo-new-realty-detruct-content-price-unit{\r\n    width: 4.5rem !important;\r\n    min-width: 4.5rem !important;\r\n    flex-shrink: 0;\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone.no-margin-style .pizo-new-realty-detruct-content-price-rent-label.pizo-new-realty-detruct-content-area-label{\r\n  width: fit-content;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-price-rent-unit{\r\n  width: 4.5rem !important;\r\n  min-width: 4.5rem !important;\r\n  flex-shrink: 0;\r\n  vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-detruct-content-censorship{\r\n    align-items: center;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox{\r\n    margin-left: 0.7143rem;\r\n    margin-top: 0.7143rem;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 35px);\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child)\r\n{\r\n  margin-left: 70px;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-selectbox-child>span\r\n{\r\n  flex-grow: 2;\r\n  display: flex;\r\n}\r\n\r\n\r\n.pizo-new-realty-dectruct-content-area-size-zone-all{\r\n    display: inline-block;\r\n    margin-bottom: 0.7143rem;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n    margin-left: 1.0714rem;\r\n}\r\n\r\n.pizo-new-realty-image{\r\n  height: 400px;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty .modal-upload-XML-body-drop-save{\r\n  display: none;\r\n}\r\n\r\n.pizo-new-realty-image-tab{\r\n  display: flex;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.pizo-new-realty-image-content{\r\n  flex-grow: 2;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n.pizo-new-realty .full-size{\r\n  height: 150px;\r\n}", ""]);
 
 
 
@@ -18590,7 +18652,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".pizo-new-ward-container-ward-container{\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-ward-container-ward-container-label{\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7.7857rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-ward-container-ward-container-input{\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}", ""]);
 
 
 
@@ -18730,7 +18792,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realty-location-map-view{\r\n    max-width: 100%;\r\n    min-width: 27.1429rem;\r\n    display: inline-block;\r\n    margin-bottom: unset;\r\n    width: calc(100% - 5px);\r\n    vertical-align: top;\r\n    margin-left: unset;\r\n}\r\n\r\n.hiddenUI{\r\n    display: none;\r\n}\r\n\r\n.pizo-list-plan-main-search-control-row-selectbox-plan{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n    align-items: center;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input{\r\n    padding-left: 10px;\r\n    flex-grow: 2;\r\n    display: flex;    \r\n    padding-right: 5px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input>div{\r\n    width: 100%;\r\n    min-width: unset !important;\r\n}\r\n\r\n.pizo-list-plan-main-search-control-row{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.pizo-list-plan-main{\r\n    padding-top: 0;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item{\r\n    height: 24px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-text{\r\n    height: 24px;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-close span{\r\n    line-height: 24px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-text span  {\r\n    line-height: 24px;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -18738,18 +18800,8 @@ exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realt
 /* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".pizo-list-help-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    height: calc(100% - 50px);\r\n    position: absolute;\r\n    width: calc(100% - 30px);\r\n}", ""]);
 
-
-
-/***/ }),
-/* 215 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(216);
+var content = __webpack_require__(215);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -18770,12 +18822,22 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realty-location-map-view{\r\n    max-width: 100%;\r\n    min-width: 27.1429rem;\r\n    display: inline-block;\r\n    margin-bottom: unset;\r\n    width: calc(100% - 5px);\r\n    vertical-align: top;\r\n    margin-left: unset;\r\n}\r\n\r\n.hiddenUI{\r\n    display: none;\r\n}\r\n\r\n.pizo-list-plan-main-search-control-row-selectbox-plan{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n    align-items: center;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input{\r\n    padding-left: 10px;\r\n    flex-grow: 2;\r\n    display: flex;    \r\n    padding-right: 5px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input>div{\r\n    width: 100%;\r\n    min-width: unset !important;\r\n}\r\n\r\n.pizo-list-plan-main-search-control-row{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.pizo-list-plan-main{\r\n    padding-top: 0;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item{\r\n    height: 24px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-text{\r\n    height: 24px;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-close span{\r\n    line-height: 24px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-text span  {\r\n    line-height: 24px;\r\n}", ""]);
+
+
+
+/***/ }),
 /* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button{\r\n    border-bottom: 2px #546e7a solid;\r\n    background-color: #263238;\r\n    color: #eeeeee;\r\n    border-radius: 0;\r\n    margin-left: 0;\r\n    margin-right: 0;\r\n    border: none;\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    padding: 8px 24px 8px 32px;\r\n    color: #eeeeee;\r\n    cursor: default;\r\n    white-space: pre;\r\n    margin-top: 5px;\r\n    z-index: 3;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    transform: translate(-100%,-50%) translateX(-5px);\r\n    top: 50%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{\r\n   border-bottom: none;\r\n   height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav{\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-tabview-container{\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ntable.b-workZone__layout{\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,.b-workZone__layout tr{\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview{\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container{\r\n    height: calc(100% - 40px);\r\n    top: unset;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTable td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article{\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content{\r\n    height: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav{\r\n    font-size: 1rem;\r\n    padding: 0.5rem 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons{\r\n    font-size: 1rem;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    padding: 0 0 0 19px;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n}\r\n\r\n.b-article {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: calc(100% - 5px);\r\n    align-items: stretch;\r\n    color: #eeeeee;\r\n    padding: 0;\r\n    position: relative;\r\n    padding-top: 5px;\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span{\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i{\r\n    vertical-align: middle;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only{\r\n    top:0;\r\n}\r\n\r\n.os-host, .os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n", ""]);
+exports.push([module.i, ".pizo-list-help-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    height: calc(100% - 50px);\r\n    position: absolute;\r\n    width: calc(100% - 30px);\r\n}", ""]);
 
 
 
@@ -18810,7 +18872,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 0.5rem;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
+exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button{\r\n    border-bottom: 2px #546e7a solid;\r\n    background-color: #263238;\r\n    color: #eeeeee;\r\n    border-radius: 0;\r\n    margin-left: 0;\r\n    margin-right: 0;\r\n    border: none;\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    padding: 8px 24px 8px 32px;\r\n    color: #eeeeee;\r\n    cursor: default;\r\n    white-space: pre;\r\n    margin-top: 5px;\r\n    z-index: 3;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    transform: translate(-100%,-50%) translateX(-5px);\r\n    top: 50%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{\r\n   border-bottom: none;\r\n   height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav{\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-tabview-container{\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ntable.b-workZone__layout{\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,.b-workZone__layout tr{\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview{\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container{\r\n    height: calc(100% - 40px);\r\n    top: unset;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTable td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article{\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content{\r\n    height: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav{\r\n    font-size: 1rem;\r\n    padding: 0.5rem 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons{\r\n    font-size: 1rem;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    padding: 0 0 0 19px;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n}\r\n\r\n.b-article {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: calc(100% - 5px);\r\n    align-items: stretch;\r\n    color: #eeeeee;\r\n    padding: 0;\r\n    position: relative;\r\n    padding-top: 5px;\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span{\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i{\r\n    vertical-align: middle;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only{\r\n    top:0;\r\n}\r\n\r\n.os-host, .os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n", ""]);
 
 
 
@@ -18845,7 +18907,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-category-container-name-container-input,\r\n.pizo-new-category-container-alias-container-input,\r\n.pizo-new-category-container-code-container-input,\r\n.pizo-new-category-container-note-container-input,\r\n.pizo-new-category-container-username-container-input,\r\n.pizo-new-state-selectbox-container-input {\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-category-container-name-container-label,\r\n.pizo-new-category-container-alias-container-label,\r\n.pizo-new-category-container-code-container-label,\r\n.pizo-new-category-container-username-container-label,\r\n.pizo-new-category-container-note-container-label,\r\n.pizo-new-state-selectbox-container-label {\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-category-container-name-container,\r\n.pizo-new-category-container-alias-container,\r\n.pizo-new-category-container-code-container,\r\n.pizo-new-category-container-username-container,\r\n.pizo-new-category-container-note-container,\r\n.pizo-new-state-selectbox-container {\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-name,\r\n.pizo-new-category-container-alias,\r\n.pizo-new-category-container-code,\r\n.pizo-new-category-container-username,\r\n.pizo-new-category-container-note,\r\n.pizo-new-state-selectbox {\r\n    padding: 5px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-category-container{\r\n    width: 60%;\r\n}\r\n\r\n.pizo-new-catergory-container>div:first-child {\r\n    padding-top: 0;\r\n}\r\n\r\n.pizo-new-catergory-container>div:last-child {\r\n    padding-bottom: 0;\r\n}\r\n\r\n.label-used-error,\r\n.label-invalid-error {\r\n    display: none;\r\n}\r\n\r\n.hasErrorElement.used-error .label-used-error,\r\n.hasErrorElement.invalid-error .label-invalid-error {\r\n    display: inline;\r\n    width: 232px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}", ""]);
+exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 0.5rem;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
 
 
 
@@ -18880,7 +18942,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "span.pizo-list-realty-page-allinput-input:empty:before {\r\n    content: \"\\200b\";\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr:hover td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr.choice td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-realty-main-result-control-child,.pizo-list-realty-main-result-control-child{\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: auto;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .pizo-list-realty-main-result-control-child .sortTable th, .pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:0px;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-category-container-name-container-input,\r\n.pizo-new-category-container-alias-container-input,\r\n.pizo-new-category-container-code-container-input,\r\n.pizo-new-category-container-note-container-input,\r\n.pizo-new-category-container-username-container-input,\r\n.pizo-new-state-selectbox-container-input {\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-category-container-name-container-label,\r\n.pizo-new-category-container-alias-container-label,\r\n.pizo-new-category-container-code-container-label,\r\n.pizo-new-category-container-username-container-label,\r\n.pizo-new-category-container-note-container-label,\r\n.pizo-new-state-selectbox-container-label {\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-category-container-name-container,\r\n.pizo-new-category-container-alias-container,\r\n.pizo-new-category-container-code-container,\r\n.pizo-new-category-container-username-container,\r\n.pizo-new-category-container-note-container,\r\n.pizo-new-state-selectbox-container {\r\n    display: flex;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-name,\r\n.pizo-new-category-container-alias,\r\n.pizo-new-category-container-code,\r\n.pizo-new-category-container-username,\r\n.pizo-new-category-container-note,\r\n.pizo-new-state-selectbox {\r\n    padding: 5px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-category-container{\r\n    width: 60%;\r\n}\r\n\r\n.pizo-new-catergory-container>div:first-child {\r\n    padding-top: 0;\r\n}\r\n\r\n.pizo-new-catergory-container>div:last-child {\r\n    padding-bottom: 0;\r\n}\r\n\r\n.label-used-error,\r\n.label-invalid-error {\r\n    display: none;\r\n}\r\n\r\n.hasErrorElement.used-error .label-used-error,\r\n.hasErrorElement.invalid-error .label-invalid-error {\r\n    display: inline;\r\n    width: 232px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}", ""]);
 
 
 
@@ -18915,7 +18977,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "span.pizo-list-realty-page-allinput-input:empty:before {\r\n    content: \"\\200b\";\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr:hover td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr.choice td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-realty-main-result-control-child,.pizo-list-realty-main-result-control-child{\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: auto;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .pizo-list-realty-main-result-control-child .sortTable th, .pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:0px;\r\n}", ""]);
 
 
 
@@ -18950,7 +19012,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-category-container-note-container-input{\r\n    height: 10rem;\r\n}\r\n\r\n.pizo-new-category-container-note-container-label{\r\n    align-items: start;\r\n    margin-top: 0.5rem;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -18985,7 +19047,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: calc(18% - 3px);\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".pizo-new-category-container-note-container-input{\r\n    height: 10rem;\r\n}\r\n\r\n.pizo-new-category-container-note-container-label{\r\n    align-items: start;\r\n    margin-top: 0.5rem;\r\n}", ""]);
 
 
 
@@ -19020,7 +19082,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: calc(18% - 3px);\r\n}\r\n\r\n", ""]);
 
 
 
@@ -19230,7 +19292,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-result-control-map-view{\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    \r\n}\r\n\r\n.pizo-list-realty-main-result-control-map-view .pizo-new-realty-location-map-view{\r\n    flex-grow: 2;\r\n    display: flex;    \r\n\r\n    margin-bottom: 0;\r\n    width: unset;\r\n    vertical-align: unset;\r\n    height: unset;\r\n    position: unset;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .search-page-list-container {\r\n        overflow-y: auto;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 390px;\r\n        box-shadow: -2px 2px 5px 0 rgba(0,0,0,.4);\r\n        z-index: 1;\r\n    }\r\n}\r\n\r\n.search-page-list-container{\r\n    height: 100%;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 375px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 375px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 750px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 750px;\r\n    }\r\n}\r\n\r\n.result-list-container {\r\n    position: relative;\r\n    background-color: #fafafa;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .result-list-container {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container {\r\n    background: 0 0;\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n    padding: 12px 10px;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n        padding: 20px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-title {\r\n    font-size: 20px;\r\n    line-height: 26px;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-title {\r\n        margin-bottom: 12px;\r\n    }\r\n    \r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container .search-subtitle, .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n        margin-bottom: 8px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-subtitle {\r\n    margin-bottom: 10px;\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle {\r\n        position: relative;\r\n        display: -webkit-box;\r\n        display: flex;\r\n        -webkit-box-pack: justify;\r\n        justify-content: space-between;\r\n        font-size: 14px;\r\n        margin-bottom: 12px;\r\n    }\r\n}\r\n\r\n.result-list-container .result-count {\r\n    align-self: flex-start;\r\n    -webkit-box-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    .responsive-search-page .search-page-list-container .search-subtitle .result-count {\r\n        font-weight: 600;\r\n    }\r\n}\r\n\r\n.result-list-container .sort-options {\r\n    display: none;\r\n}\r\n\r\n.result-list-container .sort-options.visible {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-align: start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.photo-cards.photo-cards_short {\r\n    padding: 0;\r\n    background-color: #F1F1F4;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\nbody:not(.mobile-web) .photo-cards.photo-cards_short {\r\n    background-color: #FFF;\r\n}\r\n\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 16px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\n.photo-cards.photo-cards_short>li {\r\n    display: block;\r\n    margin: 0 0 8px;\r\n    width: 100%;\r\n}\r\n\r\n@media screen and (min-width: 640px)\r\n{\r\n    .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1007px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: block;\r\n        margin: 0 0 8px;\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n.list-card {\r\n    background: #FFF;\r\n    border-bottom: 4px solid #006AFF;\r\n    box-shadow: 0 1px 2px rgba(0,0,0,.2);\r\n    cursor: pointer;\r\n}\r\n\r\n.list-card, .list-card-top {\r\n    position: relative;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: -webkit-box;\r\n    -webkit-box-orient: vertical;\r\n}\r\n\r\n.list-card {\r\n    display: flex;\r\n    -webkit-box-direction: reverse;\r\n    flex-direction: column-reverse;\r\n}\r\n\r\n.list-card, .list-card-info {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.list-card {\r\n    grid-template-rows: auto 110px;\r\n    grid-template-areas:\r\n        'top'\r\n        'bottom';\r\n}\r\n\r\n.list-card-short {\r\n    grid-template-rows: auto;\r\n}\r\n\r\n.list-card-info {\r\n    padding: 15px;\r\n}\r\n\r\n.list-card-info {\r\n    display: flex;\r\n    -webkit-box-direction: normal;\r\n    flex-direction: column;\r\n    min-height: 110px;\r\n}\r\n\r\n.list-card-info {\r\n    grid-area: bottom;\r\n    grid-template-rows: repeat(3,auto);\r\n    min-height: auto;\r\n}\r\n\r\n.list-card-short .list-card-info {\r\n    min-height: 74px;\r\n    padding: 5px 8px 7px;\r\n}\r\n\r\n.list-card-addr, .list-card-details, .list-card-favorites-info, .list-card-footer, .list-card-heading, .list-card-link, .list-card-truncate, .list-card-type, .list-card-variable-text {\r\n    margin: 0;\r\n    min-width: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.zsg-link:visited, .zsg-link_primary:visited, a:visited {\r\n    color: #7A48D6;\r\n}\r\n\r\n.list-card-link:active, .list-card-link:hover, .list-card-link:link, .list-card-link:visited {\r\n    color: #2A2A33;\r\n}\r\n\r\n.list-card-addr {\r\n    font-size: 14px;\r\n    font-style: normal;\r\n    font-weight: 600;\r\n    margin-bottom: 5px;\r\n    min-width: 0;\r\n}\r\n\r\n.list-card-short .list-card-addr, .list-card-short .list-card-heading {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-footer, .list-card-horizontal {\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-direction: normal;\r\n}\r\n\r\n.list-card-footer {\r\n    -webkit-box-ordinal-group: 4;\r\n    order: 3;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.list-card-footer, .list-card-heading {\r\n    grid-template-columns: auto 1fr;\r\n    display: grid;\r\n}\r\n\r\n.list-card-footer {\r\n    grid-row: 3/4;\r\n}\r\n\r\n.list-card-type {\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-short .list-card-type {\r\n    margin-top: 3px;\r\n    height: 18px;\r\n    font-size: 12px;\r\n    line-height: 18px;\r\n}\r\n\r\n.list-card-heading {\r\n    line-height: 1;\r\n    margin-bottom: 9px;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-heading {\r\n    grid-row: 1/2;\r\n    -webkit-box-align: end;\r\n    align-items: end;\r\n}\r\n\r\n.list-card-price, .priceStyles {\r\n    font-weight: 600;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-price {\r\n    display: inline-block;\r\n    font-size: 26px;\r\n}\r\n\r\n.list-card-short .list-card-price {\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n    height: 32px;\r\n}\r\n\r\n.list-card-details {\r\n    display: inline;\r\n    font-size: 14px;\r\n    font-weight: 600;\r\n    list-style: none;\r\n    margin-left: 15px;\r\n    max-width: 100%;\r\n}\r\n\r\n.list-card-price+.list-card-details {\r\n    margin-bottom: 3px;\r\n}\r\n\r\n.list-card-short .list-card-price+.list-card-details {\r\n    margin-bottom: 5px;\r\n    text-align: right;\r\n}\r\n\r\n.list-card-details>li {\r\n    \r\n    display: inline;\r\n    padding: 0 6px;\r\n}\r\n\r\n.list-card-details>li:first-child {\r\n    border-left: 0;\r\n    padding-left: 0;\r\n}\r\n\r\n.list-card-details>li:last-child {\r\n    border-left: 1px solid #D1D1D5;\r\n}\r\n\r\n\r\n\r\n.list-card-label {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n}\r\n\r\n.list-card-top {\r\n    grid-area: top;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: auto;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-variable-text {\r\n    z-index: 1;\r\n}\r\n\r\n.list-card-img-overlay {\r\n    background: rgba(0,0,0,.54);\r\n    color: #FFF;\r\n    padding: 5px 15px;\r\n    font-size: 13px;\r\n}\r\n\r\n.list-card-variable-text {\r\n    max-width: calc(100% - 40px);\r\n    left: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-brokerage, .list-card-save, .list-card-variable-text {\r\n    position: absolute;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage, .list-card-img, .list-card-overlay, .list-card-save, .list-card-variable-text {\r\n    grid-area: 1/1/-1/-1;\r\n}\r\n\r\n.list-card-variable-text {\r\n    place-self: start;\r\n}\r\n\r\n.list-card-variable-text {\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-brokerage {\r\n    background: 0 0;\r\n    width: 100%;\r\n    padding-bottom: 10px;\r\n    text-align: right;\r\n    text-shadow: 1px 1px 0 rgba(0,0,0,.25);\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.list-card-brokerage {\r\n    grid-area: auto;\r\n    -webkit-transition: opacity .2s linear;\r\n    transition: opacity .2s linear;\r\n}\r\n\r\n.list-card-img {\r\n    content: '';\r\n    display: block;\r\n    padding-top: 53.33%;\r\n    overflow: hidden;\r\n    position: relative;\r\n    background-color: #F1F1F4;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.list-card-short .list-card-img {\r\n    padding-top: 41.67%;\r\n}\r\n\r\n.list-card-img img {\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    max-width: 100%;\r\n    width: 100%;\r\n    height: auto;\r\n    -webkit-transform: translate3d(-50%,-50%,0);\r\n    transform: translate3d(-50%,-50%,0);\r\n}\r\n\r\n.list-card-save {\r\n    z-index: 1;\r\n    background: 0 0;\r\n    border: 0;\r\n    right: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-save {\r\n    align-self: start;\r\n    justify-self: end;\r\n}\r\n\r\nbody.responsive-search-page .search-page-container .list-card-save {\r\n    -webkit-transform: translate3d(0,0,0);\r\n}\r\n\r\n.list-card-save .list-card-save-content {\r\n    display: block;\r\n    width: 44px;\r\n    padding: 8px 8px 5px;\r\n    -webkit-filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    filter: drop-shadow(0 0 1px rgba(0, 0, 0, .66));\r\n    -webkit-transition: -webkit-filter .2s ease-out;\r\n    transition: -webkit-filter .2s ease-out;\r\n    transition: filter .2s ease-out;\r\n    transition: filter .2s ease-out,-webkit-filter .2s ease-out;\r\n}\r\n\r\n.list-card-type-icon.zsg-icon-for-sale{\r\n    font-size: 10px;\r\n}\r\n\r\n.favorite_border.material-icons{\r\n    font-size: 34px;\r\n}\r\n\r\n.responsive-mini-bubble {\r\n    color: #2A2A33;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    line-height: 15.6px;\r\n    position: relative;\r\n    background-color: #FFF;\r\n    font-size: 12px;\r\n    -webkit-tap-highlight-color: transparent;\r\n    font-family: Gotham,gotham,Verdana,sans-serif;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-content {\r\n    display: -webkit-box;\r\n    display: flex;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-image {\r\n    background-position: 50% 50%;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    content: '';\r\n    height: 46px;\r\n    width: 46px;\r\n    margin-right: 5px;\r\n    border: 0;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details {\r\n    margin-bottom: 0;\r\n    height: 46px;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div, .responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.home-details-content{\r\n    position: relative;\r\n}\r\n\r\n.imHfmq {\r\n    height: 100%;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    margin: 0px 16px;\r\n}\r\n\r\n.ds-text-button {\r\n    color: #006aff;\r\n    padding: 0;\r\n    border: 0;\r\n    background: 0 0;\r\n}\r\n\r\n.fyUmOz {\r\n    clip: rect(0px, 0px, 0px, 0px);\r\n    height: 1px;\r\n    position: absolute;\r\n    width: 1px;\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    margin: -1px;\r\n    overflow: hidden;\r\n    padding: 0px;\r\n}\r\n\r\n.ds-text-button:hover {\r\n    color: #62aef7;\r\n}\r\n\r\n.duJWoc:hover {\r\n    text-decoration: none;\r\n}\r\n\r\n.duJWoc {\r\n    vertical-align: middle;\r\n}\r\n\r\n@media (min-width: 1024px)\r\n{\r\n    .imHfmq {\r\n        border-bottom: 1px solid rgb(209, 209, 213);\r\n    }\r\n}\r\n\r\n.zsg-form-group, .zsg-form-group li, ol, ul {\r\n    list-style: none;\r\n}\r\n\r\n.lhzQGq {\r\n    cursor: pointer;\r\n    color: rgb(0, 106, 255);\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: none;\r\n    padding: 0px;\r\n}\r\n\r\n.ds-close-lightbox-icon {\r\n    position: absolute;\r\n    top: 16px;\r\n    right: -40px;\r\n    border: none;\r\n    background-image: none;\r\n    background-color: transparent;\r\n    box-shadow: none;\r\n    padding: 0;\r\n    display: none;\r\n}\r\n\r\n@media only screen and (min-width: 1024px)\r\n{\r\n    .ds-close-lightbox-icon {\r\n        display: block;\r\n    }\r\n}\r\n\r\n.ds-wrapper {\r\n   \r\n}\r\n\r\n@media only screen and (min-width: 768px)\r\n{\r\n    .ds-wrapper {\r\n        overflow: hidden;\r\n    }\r\n}\r\n\r\n.ds-container {\r\n    -webkit-font-smoothing: antialiased;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    max-height: none;\r\n    position: relative;\r\n}\r\n\r\n.ds-media-col {\r\n    scroll-behavior: smooth;\r\n    overflow-x: hidden;\r\n    max-height: 100vh;\r\n}\r\n\r\n\r\n.ds-container .ds-data-view, .ds-container .ds-media-col {\r\n    overflow-y: auto;\r\n    overflow-x: hidden;\r\n    -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n.ds-container .ds-media-col {\r\n    background: #fff;\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media only screen and (min-width: 768px)\r\n{\r\n    .ds-container.ds-mobile-single-scroll .ds-media-col {\r\n        display: block!important;\r\n        position: relative;\r\n        height: 90vh;\r\n    }\r\n}\r\n\r\n.media-stream {\r\n    background: #fff;\r\n}\r\n\r\n.media-stream {\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-flow: row wrap;\r\n    flex-flow: row wrap;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    margin: -2px;\r\n    width: calc(100% + 4px);\r\n    min-height: 30%!important;\r\n}\r\n\r\n@media screen and (min-width: 768px)\r\n{\r\n    .media-stream {\r\n        max-width: calc(100vw - 600px);\r\n    }\r\n}\r\n\r\n.media-stream {\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-gap: 4px;\r\n    grid-auto-columns: 1fr;\r\n    margin: 0 auto;\r\n    padding-inline-start: 0;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n.ds-container .ds-data-view>ul, .ds-container .ds-media-col>ul {\r\n    min-height: 80%;\r\n    overflow: auto;\r\n    height: calc(100% - 48px);\r\n}\r\n\r\n.media-stream-tile {\r\n    cursor: pointer;\r\n    display: block;\r\n    overflow: hidden;\r\n    scroll-snap-align: center;\r\n    box-shadow: inset rgba(0,0,0,.15) 0 0 10px;\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n    height: calc(100vw * 3 / 4);\r\n    width: 100%;\r\n    border: 2px solid #eee;\r\n}\r\n\r\n@media screen and (min-width: 550px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 4px) * 3 / 8);\r\n        width: 50%;\r\n    }    \r\n}\r\n\r\n@media screen and (min-width: 550px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc(100vw * 3 / 4);\r\n        width: 100%;\r\n    }\r\n    \r\n}\r\n\r\n@media screen and (min-width: 768px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 400px) * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 400px - 4px) * 3/8);\r\n        width: 50%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 400px) * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1024px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        border-width: 2px;\r\n        height: calc((100vw - 400px - 72px * 2 - 4px) * 3/8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1024px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 400px - 72px * 2) * 3/4);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        border-width: 2px;\r\n        height: calc((100vw - 480px - 72px * 2 - 4px) * 3/8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 480px - 72px * 2) * 3/4);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1390px)\r\n{\r\n    .media-stream .media-stream-tile {\r\n        height: calc((768px - 4px) * 3/8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1390px)\r\n{\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc(768px * 3/4);\r\n    }\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n    border-width: 0;\r\n    width: auto;\r\n}\r\n\r\n@media screen and (min-width: 550px)\r\n{\r\n    .media-stream .media-stream-tile--fullwidth, .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 2;\r\n        grid-column: span 2;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 768px)\r\n{\r\n    .media-stream .media-stream-tile--fullwidth, .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 1;\r\n        grid-column: span 1;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px)\r\n{\r\n    .media-stream .media-stream-tile--fullwidth, .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 2;\r\n        grid-column: span 2;\r\n    }\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-pack: center;\r\n    justify-content: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n}\r\n\r\n.ds-container .ds-hero-headline {\r\n    font-weight: 400;\r\n    font-size: 20px;\r\n    line-height: 30px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .ds-hero-headline {\r\n    font-weight: 600;\r\n    color: #fff;\r\n    text-align: center;\r\n    margin-top: -16px;\r\n    margin-bottom: 16px;\r\n    padding: 0 8px;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-inline-start: 0;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button:not(:first-child) {\r\n    margin-left: 8px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .contact-button-group {\r\n    height: unset;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n    -ms-flex-positive: 1;\r\n    flex-grow: 1;\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .contact-button-group .contact-button {\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0%;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    line-height: 21px;\r\n}\r\n\r\n.ds-white-bg {\r\n    background: #fff!important;\r\n}\r\n\r\n.ds-container .ds-data-col {\r\n    background: #eee;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n}\r\n\r\n@media only screen and (min-width: 768px)\r\n{\r\n    .ds-container .ds-data-col {\r\n        -ms-flex-preferred-size: 400px;\r\n        flex-basis: 400px;\r\n        max-width: 400px;\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 1280px)\r\n{\r\n    .ds-container .ds-data-col {\r\n        -ms-flex-preferred-size: 480px;\r\n        flex-basis: 480px;\r\n        max-width: 480px;\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 768px)\r\n{\r\n    .ds-container .ds-data-col.ds-data-col-data-forward {\r\n        -ms-flex-preferred-size: 500px;\r\n        flex-basis: 500px;\r\n        max-width: 500px;\r\n    }\r\n}\r\n\r\n.ds-container .ds-chip {\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.ds-container .ds-chip, .ds-container .ds-chip-mobile {\r\n    background-color: #fff;\r\n}\r\n\r\n.ds-home-details-chip {\r\n    margin: 0 16px;\r\n    padding-top: 16px;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-container {\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-content {\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n    width: 100%;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row {\r\n    margin-bottom: 4px;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-h2.zsg-separator, body, dd, dl, dt, fieldset, h1, h2, h2.zsg-separator, h3, h4, h5, h6, ol, p, ul {\r\n    margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator, h1, h2, h2.zsg-separator, h3, h4, h5, h6 {\r\n    color: inherit;\r\n}\r\n\r\n.zsg-h3, .zsg-h3_light, h3 {\r\n    font-size: 20px;\r\n    line-height: 1.5;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-content-item, .zsg-datatable-table .zsg-table-th, .zsg-datatable-table th, .zsg-form-legend, .zsg-h1, .zsg-h2, .zsg-h2.zsg-separator, .zsg-h3, .zsg-h4, .zsg-h5, .zsg-menu-header, .zsg-pagination>li, .zsg-step-content, .zsg-steps>li>a, .zsg-subfooter-header, .zsg-table .zsg-table-th, .zsg-table th, .zsg-toolbar_labeled .zsg-toolbar-label, h1, h2, h2.zsg-separator, h3, h4, h5, h6, p {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th, .zsg-datatable-table th, .zsg-form-legend, .zsg-h1, .zsg-h2, .zsg-h2.zsg-separator, .zsg-h3, .zsg-h4, .zsg-h5, .zsg-menu-header, .zsg-pagination>li, .zsg-step-content, .zsg-steps>li>a, .zsg-subfooter-header, .zsg-table .zsg-table-th, .zsg-table th, .zsg-toolbar_labeled .zsg-toolbar-label, h1, h2, h2.zsg-separator, h3, h4, h5, h6 {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row .ds-price {\r\n    display: inline;\r\n    font-size: 26px;\r\n    line-height: 1.26923077;\r\n    margin-right: 16px;\r\n}\r\n\r\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header, .ds-home-details-chip .ds-bed-bath-living-area-header .ds-bed-bath-living-area-container {\r\n    display: inline;\r\n}\r\n\r\n.zsg-h2.zsg-separator, body, dd, dl, dt, fieldset, h1, h2, h2.zsg-separator, h3, h4, h5, h6, ol, p, ul {\r\n    margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator, h1, h2, h2.zsg-separator, h3, h4, h5, h6 {\r\n    color: inherit;\r\n}\r\n\r\n.zsg-h3, .zsg-h3_light, h3 {\r\n    font-size: 20px;\r\n    line-height: 1.5;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-content-item, .zsg-datatable-table .zsg-table-th, .zsg-datatable-table th, .zsg-form-legend, .zsg-h1, .zsg-h2, .zsg-h2.zsg-separator, .zsg-h3, .zsg-h4, .zsg-h5, .zsg-menu-header, .zsg-pagination>li, .zsg-step-content, .zsg-steps>li>a, .zsg-subfooter-header, .zsg-table .zsg-table-th, .zsg-table th, .zsg-toolbar_labeled .zsg-toolbar-label, h1, h2, h2.zsg-separator, h3, h4, h5, h6, p {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th, .zsg-datatable-table th, .zsg-form-legend, .zsg-h1, .zsg-h2, .zsg-h2.zsg-separator, .zsg-h3, .zsg-h4, .zsg-h5, .zsg-menu-header, .zsg-pagination>li, .zsg-step-content, .zsg-steps>li>a, .zsg-subfooter-header, .zsg-table .zsg-table-th, .zsg-table th, .zsg-toolbar_labeled .zsg-toolbar-label, h1, h2, h2.zsg-separator, h3, h4, h5, h6 {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header, .ds-home-details-chip .ds-bed-bath-living-area-header .ds-bed-bath-living-area-container {\r\n    display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n    font-size: 15px;\r\n    line-height: 1.53333333;\r\n}\r\n\r\n.ds-home-details-chip .ds-vertical-divider {\r\n    margin-right: 8px;\r\n    padding-left: 8px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header .ds-vertical-divider {\r\n    font-size: 15px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n    font-size: 15px;\r\n    line-height: 1.53333333;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-label-secondary {\r\n    font-weight: 400;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row {\r\n    margin-bottom: 4px;\r\n    font-size: 15px;\r\n    line-height: 1.53;\r\n    font-weight: 600;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row header {\r\n    display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row .ds-address-container {\r\n    display: inline;\r\n    font-size: 15px;\r\n    line-height: 1.53;\r\n    font-weight: 600;\r\n    letter-spacing: normal;\r\n}\r\n\r\n.ds-home-details-chip .ds-chip-removable-content {\r\n    will-change: height;\r\n}\r\n\r\n.ds-mortgage-row {\r\n    height: 21px;\r\n}\r\n\r\n.ds-container .ds-buttons, .ds-container .ds-buttons-mobile {\r\n    background: #fff;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n    padding: 0 16px 16px;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n    z-index: 1;\r\n    position: relative;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n    -ms-flex-positive: 1;\r\n    flex-grow: 1;\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    line-height: 21px;\r\n}\r\n\r\n@media screen and (min-width: 1390px)\r\n{\r\n    .media-stream .media-stream-tile--halfheight {\r\n        height: calc((768px - 4px) * 3/16);\r\n    }\r\n}\r\n\r\n\r\n.media-stream-tile--upsell {\r\n    background: #000;\r\n    position: relative;\r\n    cursor: unset;\r\n}\r\n\r\n.media-stream-tile figure, .media-stream-tile img {\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\r\n    -o-object-position: 50% 50%;\r\n    object-position: 50% 50%;\r\n}\r\n\r\n.iJIIUW {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n    height: 34px;\r\n    line-height: 22px;\r\n    color: rgb(255, 255, 255);\r\n    background-color: rgb(0, 106, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(0, 106, 255);\r\n}\r\n\r\n.cllLJF {\r\n    padding-right: 8px;\r\n    padding-left: 8px;\r\n}\r\n\r\n.cKVUOM {\r\n    text-transform: none;\r\n    -webkit-appearance: none;\r\n    font: inherit;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    border-width: initial;\r\n    border-style: none;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: none;\r\n}\r\n\r\nbutton, html input[type=button], input[type=reset], input[type=submit] {\r\n    -webkit-appearance: button;\r\n    cursor: pointer;\r\n}\r\n\r\n.gpVNOz {\r\n    display: flex;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    height: 100%;\r\n    color: rgb(0, 106, 255);\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: transparent;\r\n}\r\n\r\n.eKDTCE {\r\n    height: 20px;\r\n    width: 20px;\r\n    margin-right: 4px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.duJWoc {\r\n    vertical-align: middle;\r\n}\r\n\r\n.cjrQwi {\r\n    display: flex;\r\n    flex-direction: row;\r\n    -webkit-box-pack: end;\r\n    justify-content: flex-end;\r\n    height: 100%;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.jfjsxZ {\r\n    display: inline;\r\n    color: inherit;\r\n    cursor: pointer;\r\n    font-weight: inherit;\r\n    font-size: inherit;\r\n    font-family: inherit;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    background: none;\r\n    padding: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-image: initial;\r\n    border-bottom: 1px dashed rgb(0, 106, 255);\r\n}\r\n\r\n.eVrWvb {\r\n    border-bottom: 1px dashed rgb(167, 166, 171);\r\n}\r\n\r\n.eVrWvb, .eVrWvb.TriggerButton-sc-19o64qd-0, .eVrWvb.TriggerButton-sc-19o64qd-0::after {\r\n    cursor: help;\r\n}\r\n\r\n.cpEtCH {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 9px;\r\n    padding-bottom: 9px;\r\n    height: 42px;\r\n    line-height: 22px;\r\n    color: rgb(0, 106, 255);\r\n    background-color: rgb(255, 255, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(167, 166, 171);\r\n}\r\n\r\n.btcvqQ {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 9px;\r\n    padding-bottom: 9px;\r\n    height: 42px;\r\n    line-height: 22px;\r\n    color: rgb(255, 255, 255);\r\n    background-color: rgb(0, 106, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(0, 106, 255);\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-active-box{\r\n    top:unset;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-active-box .absol-static-tabbar-hline{\r\n    border-bottom: solid 5px rgb(127, 127, 128);\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button>span{\r\n    font-size: 1.2em;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button{\r\n    width: 50%;\r\n}\r\n\r\n\r\n.image-tabcontainer .absol-static-tabbar-button:hover {\r\n    color: rgb(30, 30, 55);\r\n    font-weight: 600;\r\n}\r\n\r\n\r\n.image-tabcontainer .absol-static-tabbar-button.active {\r\n    background-color: #26438d;\r\n    color: white;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view{\r\n    width: unset;\r\n    margin-top:unset;\r\n    margin-right: unset;\r\n    margin: 10px;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view input{\r\n    pointer-events: none;\r\n    border: none !important;\r\n}", ""]);
+exports.push([module.i, ".pizo-list-realty-main-result-control-map-view {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  width: 100%;\r\n  height: 100%;\r\n  align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main-result-control-map-view\r\n  .pizo-new-realty-location-map-view {\r\n  flex-grow: 2;\r\n  display: flex;\r\n\r\n  margin-bottom: 0;\r\n  width: unset;\r\n  vertical-align: unset;\r\n  height: unset;\r\n  position: unset;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  body:not(.mobile-web) .search-page-list-container {\r\n    overflow-y: auto;\r\n    -webkit-box-flex: 0;\r\n    flex: 0 0 390px;\r\n    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.4);\r\n    z-index: 1;\r\n  }\r\n}\r\n\r\n.search-page-list-container {\r\n  height: 100%;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  body:not(.mobile-web) .double-column-only {\r\n    width: 375px;\r\n    -webkit-box-flex: 0;\r\n    flex: 0 0 375px;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n  body:not(.mobile-web) .double-column-only {\r\n    width: 750px;\r\n    -webkit-box-flex: 0;\r\n    flex: 0 0 750px;\r\n  }\r\n}\r\n\r\n.result-list-container {\r\n  position: relative;\r\n  background-color: #fafafa;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  .result-list-container {\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container {\r\n  background: 0 0;\r\n}\r\n\r\n.responsive-search-page\r\n  .short-list-cards\r\n  .result-list-container\r\n  > .search-page-list-header {\r\n  padding: 12px 10px;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  .responsive-search-page\r\n    .short-list-cards\r\n    .result-list-container\r\n    > .search-page-list-header {\r\n    padding: 20px;\r\n  }\r\n}\r\n\r\n.result-list-container .search-title {\r\n  font-size: 20px;\r\n  line-height: 26px;\r\n  margin-block-start: 0;\r\n  margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  .responsive-search-page .search-page-list-container .search-title {\r\n    margin-bottom: 12px;\r\n  }\r\n}\r\n\r\n.responsive-search-page\r\n  .short-list-cards\r\n  .result-list-container\r\n  .search-subtitle,\r\n.responsive-search-page .short-list-cards .result-list-container .search-title {\r\n  margin-bottom: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  .responsive-search-page\r\n    .short-list-cards\r\n    .result-list-container\r\n    .search-title {\r\n    margin-bottom: 8px;\r\n  }\r\n}\r\n\r\n.result-list-container .search-subtitle {\r\n  margin-bottom: 10px;\r\n  display: -webkit-box;\r\n  display: flex;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  .responsive-search-page .search-page-list-container .search-subtitle {\r\n    position: relative;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    font-size: 14px;\r\n    margin-bottom: 12px;\r\n  }\r\n}\r\n\r\n.result-list-container .result-count {\r\n  align-self: flex-start;\r\n  -webkit-box-flex: 1;\r\n  flex: 1;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  .responsive-search-page\r\n    .search-page-list-container\r\n    .search-subtitle\r\n    .result-count {\r\n    font-weight: 600;\r\n  }\r\n}\r\n\r\n.result-list-container .sort-options {\r\n  display: none;\r\n}\r\n\r\n.result-list-container .sort-options.visible {\r\n  display: -webkit-box;\r\n  display: flex;\r\n  -webkit-box-align: start;\r\n  align-items: flex-start;\r\n}\r\n\r\n.photo-cards.photo-cards_short {\r\n  padding: 0;\r\n  background-color: #f1f1f4;\r\n  margin-block-start: 0;\r\n  margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 640px) {\r\n  .photo-cards.photo-cards_short {\r\n    padding: 0 8px 0 16px;\r\n  }\r\n}\r\n\r\nbody:not(.mobile-web) .photo-cards.photo-cards_short {\r\n  background-color: #fff;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n    padding: 0 16px;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n  body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n    padding: 0 8px 0 16px;\r\n  }\r\n}\r\n\r\n.photo-cards.photo-cards_short > li {\r\n  display: block;\r\n  margin: 0 0 8px;\r\n  width: 100%;\r\n}\r\n\r\n@media screen and (min-width: 640px) {\r\n  .photo-cards.photo-cards_short > li {\r\n    display: inline-block;\r\n    margin-right: 8px;\r\n    vertical-align: top;\r\n    width: calc((100% / 2) - 8px);\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n  body:not(.mobile-web) .photo-cards.photo-cards_short > li {\r\n    display: block;\r\n    margin: 0 0 8px;\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n  body:not(.mobile-web) .photo-cards.photo-cards_short > li {\r\n    display: inline-block;\r\n    margin-right: 8px;\r\n    vertical-align: top;\r\n    width: calc((100% / 2) - 8px);\r\n  }\r\n}\r\n\r\n.list-card {\r\n  background: #fff;\r\n  border-bottom: 4px solid #006aff;\r\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);\r\n  cursor: pointer;\r\n}\r\n\r\n.list-card,\r\n.list-card-top {\r\n  position: relative;\r\n}\r\n\r\n.list-card,\r\n.list-card-info {\r\n  display: -webkit-box;\r\n  -webkit-box-orient: vertical;\r\n}\r\n\r\n.list-card {\r\n  display: flex;\r\n  -webkit-box-direction: reverse;\r\n  flex-direction: column-reverse;\r\n}\r\n\r\n.list-card,\r\n.list-card-info {\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n}\r\n\r\n.list-card {\r\n  grid-template-rows: auto 110px;\r\n  grid-template-areas:\r\n    \"top\"\r\n    \"bottom\";\r\n}\r\n\r\n.list-card-short {\r\n  grid-template-rows: auto;\r\n}\r\n\r\n.list-card-info {\r\n  padding: 15px;\r\n}\r\n\r\n.list-card-info {\r\n  display: flex;\r\n  -webkit-box-direction: normal;\r\n  flex-direction: column;\r\n  min-height: 110px;\r\n}\r\n\r\n.list-card-info {\r\n  grid-area: bottom;\r\n  grid-template-rows: repeat(3, auto);\r\n  min-height: auto;\r\n}\r\n\r\n.list-card-short .list-card-info {\r\n  min-height: 74px;\r\n  padding: 5px 8px 7px;\r\n}\r\n\r\n.list-card-addr,\r\n.list-card-details,\r\n.list-card-favorites-info,\r\n.list-card-footer,\r\n.list-card-heading,\r\n.list-card-link,\r\n.list-card-truncate,\r\n.list-card-type,\r\n.list-card-variable-text {\r\n  margin: 0;\r\n  min-width: 0;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n}\r\n\r\n.list-card-link {\r\n  display: grid;\r\n  -webkit-box-ordinal-group: 3;\r\n  order: 2;\r\n}\r\n\r\n.zsg-link:visited,\r\n.zsg-link_primary:visited,\r\na:visited {\r\n  color: #7a48d6;\r\n}\r\n\r\n.list-card-link:active,\r\n.list-card-link:hover,\r\n.list-card-link:link,\r\n.list-card-link:visited {\r\n  color: #2a2a33;\r\n}\r\n\r\n.list-card-addr {\r\n  font-size: 14px;\r\n  font-style: normal;\r\n  font-weight: 600;\r\n  margin-bottom: 5px;\r\n  min-width: 0;\r\n}\r\n\r\n.list-card-short .list-card-addr,\r\n.list-card-short .list-card-heading {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.list-card-footer,\r\n.list-card-horizontal {\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n}\r\n\r\n.list-card-footer {\r\n  -webkit-box-ordinal-group: 4;\r\n  order: 3;\r\n  display: -webkit-box;\r\n  display: flex;\r\n  flex-direction: row;\r\n}\r\n\r\n.list-card-footer,\r\n.list-card-heading {\r\n  grid-template-columns: auto 1fr;\r\n  display: grid;\r\n}\r\n\r\n.list-card-footer {\r\n  grid-row: 3/4;\r\n}\r\n\r\n.list-card-type {\r\n  font-size: 13px;\r\n  font-weight: 600;\r\n  -webkit-box-ordinal-group: 2;\r\n  order: 1;\r\n}\r\n\r\n.list-card-short .list-card-type {\r\n  margin-top: 3px;\r\n  height: 18px;\r\n  font-size: 12px;\r\n  line-height: 18px;\r\n}\r\n\r\n.list-card-heading {\r\n  line-height: 1;\r\n  margin-bottom: 9px;\r\n  -webkit-box-ordinal-group: 2;\r\n  order: 1;\r\n}\r\n\r\n.list-card-heading {\r\n  grid-row: 1/2;\r\n  -webkit-box-align: end;\r\n  align-items: end;\r\n}\r\n\r\n.list-card-price,\r\n.priceStyles {\r\n  font-weight: 600;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.list-card-price {\r\n  display: inline-block;\r\n  font-size: 26px;\r\n}\r\n\r\n.list-card-short .list-card-price {\r\n  font-size: 24px;\r\n  line-height: 32px;\r\n  height: 32px;\r\n}\r\n\r\n.list-card-details {\r\n  display: inline;\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  list-style: none;\r\n  margin-left: 15px;\r\n  max-width: 100%;\r\n}\r\n\r\n.list-card-price + .list-card-details {\r\n  margin-bottom: 3px;\r\n}\r\n\r\n.list-card-short .list-card-price + .list-card-details {\r\n  margin-bottom: 5px;\r\n  text-align: right;\r\n}\r\n\r\n.list-card-details > li {\r\n  display: inline;\r\n  padding: 0 6px;\r\n}\r\n\r\n.list-card-details > li:first-child {\r\n  border-left: 0;\r\n  padding-left: 0;\r\n}\r\n\r\n.list-card-details > li:last-child {\r\n  border-left: 1px solid #d1d1d5;\r\n}\r\n\r\n.list-card-label {\r\n  font-size: 14px;\r\n  font-weight: 400;\r\n}\r\n\r\n.list-card-top {\r\n  grid-area: top;\r\n  display: grid;\r\n  grid-template-columns: 1fr;\r\n  grid-template-rows: auto;\r\n  overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage,\r\n.list-card-variable-text {\r\n  z-index: 1;\r\n}\r\n\r\n.list-card-img-overlay {\r\n  background: rgba(0, 0, 0, 0.54);\r\n  color: #fff;\r\n  padding: 5px 15px;\r\n  font-size: 13px;\r\n}\r\n\r\n.list-card-variable-text {\r\n  max-width: calc(100% - 40px);\r\n  left: 0;\r\n  top: 0;\r\n}\r\n\r\n.list-card-brokerage,\r\n.list-card-save,\r\n.list-card-variable-text {\r\n  position: absolute;\r\n  overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage,\r\n.list-card-img,\r\n.list-card-overlay,\r\n.list-card-save,\r\n.list-card-variable-text {\r\n  grid-area: 1/1/-1/-1;\r\n}\r\n\r\n.list-card-variable-text {\r\n  place-self: start;\r\n}\r\n\r\n.list-card-variable-text {\r\n  -webkit-transition: opacity 0.2s linear;\r\n  transition: opacity 0.2s linear;\r\n}\r\n\r\n.list-card-brokerage {\r\n  background: 0 0;\r\n  width: 100%;\r\n  padding-bottom: 10px;\r\n  text-align: right;\r\n  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n.list-card-brokerage {\r\n  grid-area: auto;\r\n  -webkit-transition: opacity 0.2s linear;\r\n  transition: opacity 0.2s linear;\r\n}\r\n\r\n.list-card-img {\r\n  content: \"\";\r\n  display: block;\r\n  padding-top: 53.33%;\r\n  overflow: hidden;\r\n  position: relative;\r\n  background-color: #f1f1f4;\r\n}\r\n\r\n.list-card-link {\r\n  display: grid;\r\n  -webkit-box-ordinal-group: 3;\r\n  order: 2;\r\n}\r\n\r\n.list-card-short .list-card-img {\r\n  padding-top: 41.67%;\r\n}\r\n\r\n.list-card-img img {\r\n  position: absolute;\r\n  left: 50%;\r\n  top: 50%;\r\n  max-width: 100%;\r\n  width: 100%;\r\n  height: auto;\r\n  -webkit-transform: translate3d(-50%, -50%, 0);\r\n  transform: translate3d(-50%, -50%, 0);\r\n}\r\n\r\n.list-card-save {\r\n  z-index: 1;\r\n  background: 0 0;\r\n  border: 0;\r\n  right: 0;\r\n  top: 0;\r\n}\r\n\r\n.list-card-save {\r\n  align-self: start;\r\n  justify-self: end;\r\n}\r\n\r\nbody.responsive-search-page .search-page-container .list-card-save {\r\n  -webkit-transform: translate3d(0, 0, 0);\r\n}\r\n\r\n.list-card-save .list-card-save-content {\r\n  display: block;\r\n  width: 44px;\r\n  padding: 8px 8px 5px;\r\n  -webkit-filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.66));\r\n  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.66));\r\n  -webkit-transition: -webkit-filter 0.2s ease-out;\r\n  transition: -webkit-filter 0.2s ease-out;\r\n  transition: filter 0.2s ease-out;\r\n  transition: filter 0.2s ease-out, -webkit-filter 0.2s ease-out;\r\n}\r\n\r\n.list-card-type-icon.zsg-icon-for-sale {\r\n  font-size: 10px;\r\n}\r\n\r\n.favorite_border.material-icons {\r\n  font-size: 34px;\r\n}\r\n\r\n.responsive-mini-bubble {\r\n  color: #2a2a33;\r\n  display: -webkit-box;\r\n  display: flex;\r\n  line-height: 15.6px;\r\n  position: relative;\r\n  background-color: #fff;\r\n  font-size: 12px;\r\n  -webkit-tap-highlight-color: transparent;\r\n  font-family: Gotham, gotham, Verdana, sans-serif;\r\n  cursor: pointer;\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  user-select: none;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-content {\r\n  display: -webkit-box;\r\n  display: flex;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-image {\r\n  background-position: 50% 50%;\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  content: \"\";\r\n  height: 46px;\r\n  width: 46px;\r\n  margin-right: 5px;\r\n  border: 0;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details {\r\n  margin-bottom: 0;\r\n  height: 46px;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div,\r\n.responsive-mini-bubble .mini-bubble-details strong {\r\n  height: 15.3px;\r\n  white-space: nowrap;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div,\r\n.responsive-mini-bubble .mini-bubble-details strong {\r\n  height: 15.3px;\r\n  white-space: nowrap;\r\n}\r\n\r\n.home-details-content {\r\n  position: relative;\r\n}\r\n\r\n.imHfmq {\r\n  height: 100%;\r\n  display: flex;\r\n  -webkit-box-pack: justify;\r\n  justify-content: space-between;\r\n  -webkit-box-align: center;\r\n  align-items: center;\r\n  margin: 0px 16px;\r\n}\r\n\r\n.ds-text-button {\r\n  color: #006aff;\r\n  padding: 0;\r\n  border: 0;\r\n  background: 0 0;\r\n}\r\n\r\n.fyUmOz {\r\n  clip: rect(0px, 0px, 0px, 0px);\r\n  height: 1px;\r\n  position: absolute;\r\n  width: 1px;\r\n  border-width: 0px;\r\n  border-style: initial;\r\n  border-color: initial;\r\n  border-image: initial;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  padding: 0px;\r\n}\r\n\r\n.ds-text-button:hover {\r\n  color: #62aef7;\r\n}\r\n\r\n.duJWoc:hover {\r\n  text-decoration: none;\r\n}\r\n\r\n.duJWoc {\r\n  vertical-align: middle;\r\n}\r\n\r\n@media (min-width: 1024px) {\r\n  .imHfmq {\r\n    border-bottom: 1px solid rgb(209, 209, 213);\r\n  }\r\n}\r\n\r\n.zsg-form-group,\r\n.zsg-form-group li,\r\nol,\r\nul {\r\n  list-style: none;\r\n}\r\n\r\n.lhzQGq {\r\n  cursor: pointer;\r\n  color: rgb(0, 106, 255);\r\n  border-width: 0px;\r\n  border-style: initial;\r\n  border-color: initial;\r\n  border-image: initial;\r\n  background: none;\r\n  padding: 0px;\r\n}\r\n\r\n.ds-close-lightbox-icon {\r\n  position: absolute;\r\n  top: 16px;\r\n  right: -40px;\r\n  border: none;\r\n  background-image: none;\r\n  background-color: transparent;\r\n  box-shadow: none;\r\n  padding: 0;\r\n  display: none;\r\n}\r\n\r\n@media only screen and (min-width: 1024px) {\r\n  .ds-close-lightbox-icon {\r\n    display: block;\r\n  }\r\n}\r\n\r\n.ds-wrapper {\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n  .ds-wrapper {\r\n    overflow: hidden;\r\n  }\r\n}\r\n\r\n.ds-container {\r\n  -webkit-font-smoothing: antialiased;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  max-height: none;\r\n  position: relative;\r\n  height: 90vh;\r\n}\r\n\r\n.ds-media-col {\r\n  scroll-behavior: smooth;\r\n  overflow-x: hidden;\r\n  max-height: 100vh;\r\n}\r\n\r\n.ds-container .ds-data-view,\r\n.ds-container .ds-media-col {\r\n  overflow-y: auto;\r\n  overflow-x: hidden;\r\n  -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n.ds-container .ds-media-col {\r\n  background: #fff;\r\n  -ms-flex: 1;\r\n  flex: 1;\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n  .ds-container.ds-mobile-single-scroll .ds-media-col {\r\n    display: block !important;\r\n    position: relative;\r\n  }\r\n}\r\n\r\n.media-stream {\r\n  background: #fff;\r\n}\r\n\r\n.media-stream {\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-flow: row wrap;\r\n  flex-flow: row wrap;\r\n  -ms-flex-line-pack: start;\r\n  align-content: flex-start;\r\n  margin: -2px;\r\n  width: calc(100% + 4px);\r\n  min-height: 30% !important;\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n  .media-stream {\r\n    max-width: calc(100vw - 600px);\r\n  }\r\n}\r\n\r\n.media-stream {\r\n  display: -ms-grid;\r\n  display: grid;\r\n  grid-gap: 4px;\r\n  grid-auto-columns: 1fr;\r\n  margin: 0 auto;\r\n  padding-inline-start: 0;\r\n  margin-block-start: 0;\r\n  margin-block-end: 0;\r\n}\r\n\r\n.ds-container .ds-data-view > ul,\r\n.ds-container .ds-media-col > ul {\r\n  min-height: 80%;\r\n  overflow: auto;\r\n  height: calc(100% - 48px);\r\n}\r\n\r\n.media-stream-tile {\r\n  cursor: pointer;\r\n  display: block;\r\n  overflow: hidden;\r\n  scroll-snap-align: center;\r\n  box-shadow: inset rgba(0, 0, 0, 0.15) 0 0 10px;\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n  height: calc(100vw * 3 / 4);\r\n  width: 100%;\r\n  border: 2px solid #eee;\r\n}\r\n\r\n@media screen and (min-width: 550px) {\r\n  .media-stream .media-stream-tile {\r\n    height: calc((100vw - 4px) * 3 / 8);\r\n    width: 50%;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 550px) {\r\n  .media-stream .media-stream-tile--prominent {\r\n    height: calc(100vw * 3 / 4);\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n  .media-stream .media-stream-tile {\r\n    height: calc((100vw - 400px) * 3 / 4);\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 900px) {\r\n  .media-stream .media-stream-tile {\r\n    height: calc((100vw - 400px - 4px) * 3 / 8);\r\n    width: 50%;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 900px) {\r\n  .media-stream .media-stream-tile--prominent {\r\n    height: calc((100vw - 400px) * 3 / 4);\r\n    width: 100%;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1024px) {\r\n  .media-stream .media-stream-tile {\r\n    border-width: 2px;\r\n    height: calc((100vw - 400px - 72px * 2 - 4px) * 3 / 8);\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1024px) {\r\n  .media-stream .media-stream-tile--prominent {\r\n    height: calc((100vw - 400px - 72px * 2) * 3 / 4);\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n  .media-stream .media-stream-tile {\r\n    border-width: 2px;\r\n    height: calc((100vw - 480px - 72px * 2 - 4px) * 3 / 8);\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n  .media-stream .media-stream-tile--prominent {\r\n    height: calc((100vw - 480px - 72px * 2) * 3 / 4);\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1390px) {\r\n  .media-stream .media-stream-tile {\r\n    height: calc((768px - 4px) * 3 / 8);\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1390px) {\r\n  .media-stream .media-stream-tile--prominent {\r\n    height: calc(768px * 3 / 4);\r\n  }\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n  border-width: 0;\r\n  width: auto;\r\n}\r\n\r\n@media screen and (min-width: 550px) {\r\n  .media-stream .media-stream-tile--fullwidth,\r\n  .media-stream .media-stream-tile--prominent {\r\n    -ms-grid-column: span 2;\r\n    grid-column: span 2;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n  .media-stream .media-stream-tile--fullwidth,\r\n  .media-stream .media-stream-tile--prominent {\r\n    -ms-grid-column: span 1;\r\n    grid-column: span 1;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 900px) {\r\n  .media-stream .media-stream-tile--fullwidth,\r\n  .media-stream .media-stream-tile--prominent {\r\n    -ms-grid-column: span 2;\r\n    grid-column: span 2;\r\n  }\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content {\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-pack: center;\r\n  justify-content: center;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n  -ms-flex-direction: column;\r\n  flex-direction: column;\r\n}\r\n\r\n.ds-container .ds-hero-headline {\r\n  font-weight: 400;\r\n  font-size: 20px;\r\n  line-height: 30px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .ds-hero-headline {\r\n  font-weight: 600;\r\n  color: #fff;\r\n  text-align: center;\r\n  margin-top: -16px;\r\n  margin-bottom: 16px;\r\n  padding: 0 8px;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n  padding-inline-start: 0;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button:not(:first-child) {\r\n  margin-left: 8px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .contact-button-group {\r\n  height: unset;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n  -ms-flex-positive: 1;\r\n  flex-grow: 1;\r\n  -ms-flex-preferred-size: 0;\r\n  flex-basis: 0;\r\n}\r\n\r\n.media-stream-tile--upsell\r\n  .upsell-photo-content\r\n  .contact-button-group\r\n  .contact-button {\r\n  -ms-flex-preferred-size: 0;\r\n  flex-basis: 0%;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  line-height: 21px;\r\n}\r\n\r\n.ds-white-bg {\r\n  background: #fff !important;\r\n}\r\n\r\n.ds-container .ds-data-col {\r\n  background: #eee;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-direction: column;\r\n  flex-direction: column;\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n  .ds-container .ds-data-col {\r\n    -ms-flex-preferred-size: 400px;\r\n    flex-basis: 400px;\r\n    max-width: 400px;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 1280px) {\r\n  .ds-container .ds-data-col {\r\n    -ms-flex-preferred-size: 480px;\r\n    flex-basis: 480px;\r\n    max-width: 480px;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n  .ds-container .ds-data-col.ds-data-col-data-forward {\r\n    -ms-flex-preferred-size: 500px;\r\n    flex-basis: 500px;\r\n    max-width: 500px;\r\n  }\r\n}\r\n\r\n.ds-container .ds-chip {\r\n  padding-bottom: 16px;\r\n}\r\n\r\n.ds-container .ds-chip,\r\n.ds-container .ds-chip-mobile {\r\n  background-color: #fff;\r\n}\r\n\r\n.ds-home-details-chip {\r\n  margin: 0 16px;\r\n  padding-top: 16px;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-container {\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-content {\r\n  -ms-flex: 1;\r\n  flex: 1;\r\n  width: 100%;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row {\r\n  margin-bottom: 4px;\r\n  font-weight: 600;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nbody,\r\ndd,\r\ndl,\r\ndt,\r\nfieldset,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\nol,\r\np,\r\nul {\r\n  margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n  color: inherit;\r\n}\r\n\r\n.zsg-h3,\r\n.zsg-h3_light,\r\nh3 {\r\n  font-size: 20px;\r\n  line-height: 1.5;\r\n  font-weight: 600;\r\n}\r\n\r\n.zsg-content-item,\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination > li,\r\n.zsg-step-content,\r\n.zsg-steps > li > a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\np {\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination > li,\r\n.zsg-step-content,\r\n.zsg-steps > li > a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n  display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row .ds-price {\r\n  display: inline;\r\n  font-size: 26px;\r\n  line-height: 1.26923077;\r\n  margin-right: 16px;\r\n}\r\n\r\narticle,\r\naside,\r\ndetails,\r\nfigcaption,\r\nfigure,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmain,\r\nnav,\r\nsection,\r\nsummary {\r\n  display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header,\r\n.ds-home-details-chip\r\n  .ds-bed-bath-living-area-header\r\n  .ds-bed-bath-living-area-container {\r\n  display: inline;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nbody,\r\ndd,\r\ndl,\r\ndt,\r\nfieldset,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\nol,\r\np,\r\nul {\r\n  margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n  color: inherit;\r\n}\r\n\r\n.zsg-h3,\r\n.zsg-h3_light,\r\nh3 {\r\n  font-size: 20px;\r\n  line-height: 1.5;\r\n  font-weight: 600;\r\n}\r\n\r\n.zsg-content-item,\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination > li,\r\n.zsg-step-content,\r\n.zsg-steps > li > a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\np {\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination > li,\r\n.zsg-step-content,\r\n.zsg-steps > li > a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n  display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header,\r\n.ds-home-details-chip\r\n  .ds-bed-bath-living-area-header\r\n  .ds-bed-bath-living-area-container {\r\n  display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n  font-size: 15px;\r\n  line-height: 1.53333333;\r\n}\r\n\r\n.ds-home-details-chip .ds-vertical-divider {\r\n  margin-right: 8px;\r\n  padding-left: 8px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header .ds-vertical-divider {\r\n  font-size: 15px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n  font-size: 15px;\r\n  line-height: 1.53333333;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-label-secondary {\r\n  font-weight: 400;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row {\r\n  margin-bottom: 4px;\r\n  font-size: 15px;\r\n  line-height: 1.53;\r\n  font-weight: 600;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row header {\r\n  display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row .ds-address-container {\r\n  display: inline;\r\n  font-size: 15px;\r\n  line-height: 1.53;\r\n  font-weight: 600;\r\n  letter-spacing: normal;\r\n}\r\n\r\n.ds-home-details-chip .ds-chip-removable-content {\r\n  will-change: height;\r\n}\r\n\r\n.ds-mortgage-row {\r\n  height: 21px;\r\n}\r\n\r\n.ds-container .ds-buttons,\r\n.ds-container .ds-buttons-mobile {\r\n  background: #fff;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n  padding: 0 16px 16px;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n  z-index: 1;\r\n  position: relative;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n  -ms-flex-positive: 1;\r\n  flex-grow: 1;\r\n  -ms-flex-preferred-size: 0;\r\n  flex-basis: 0;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  line-height: 21px;\r\n}\r\n\r\n@media screen and (min-width: 1390px) {\r\n  .media-stream .media-stream-tile--halfheight {\r\n    height: calc((768px - 4px) * 3 / 16);\r\n  }\r\n}\r\n\r\n.media-stream-tile--upsell {\r\n  background: #000;\r\n  position: relative;\r\n  cursor: unset;\r\n}\r\n\r\n.media-stream-tile figure,\r\n.media-stream-tile img {\r\n  width: 100%;\r\n  height: 100%;\r\n  -o-object-fit: cover;\r\n  object-fit: cover;\r\n  -o-object-position: 50% 50%;\r\n  object-position: 50% 50%;\r\n}\r\n\r\n.iJIIUW {\r\n  -webkit-font-smoothing: antialiased;\r\n  font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  letter-spacing: 0px;\r\n  text-transform: none;\r\n  text-align: center;\r\n  display: inline-block;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  user-select: none;\r\n  padding-left: 20px;\r\n  padding-right: 20px;\r\n  cursor: pointer;\r\n  padding-top: 5px;\r\n  padding-bottom: 5px;\r\n  height: 34px;\r\n  line-height: 22px;\r\n  color: rgb(255, 255, 255);\r\n  background-color: rgb(0, 106, 255);\r\n  margin: 0px;\r\n  text-decoration: none;\r\n  border-width: 1px;\r\n  border-style: solid;\r\n  border-image: initial;\r\n  border-radius: 3px;\r\n  transition: all 0.2s ease 0s;\r\n  border-color: rgb(0, 106, 255);\r\n}\r\n\r\n.cllLJF {\r\n  padding-right: 8px;\r\n  padding-left: 8px;\r\n}\r\n\r\n.cKVUOM {\r\n  text-transform: none;\r\n  -webkit-appearance: none;\r\n  font: inherit;\r\n  margin: 0px;\r\n  padding: 0px;\r\n  border-width: initial;\r\n  border-style: none;\r\n  border-color: initial;\r\n  border-image: initial;\r\n  background: none;\r\n}\r\n\r\nbutton,\r\nhtml input[type=\"button\"],\r\ninput[type=\"reset\"],\r\ninput[type=\"submit\"] {\r\n  -webkit-appearance: button;\r\n  cursor: pointer;\r\n}\r\n\r\n.gpVNOz {\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  align-items: center;\r\n  font-weight: 700;\r\n  cursor: pointer;\r\n  height: 100%;\r\n  color: rgb(0, 106, 255);\r\n  padding: 0px;\r\n  border-width: 0px;\r\n  border-style: initial;\r\n  border-color: initial;\r\n  border-image: initial;\r\n  background: transparent;\r\n}\r\n\r\n.eKDTCE {\r\n  height: 20px;\r\n  width: 20px;\r\n  margin-right: 4px;\r\n  vertical-align: middle;\r\n}\r\n\r\n.duJWoc {\r\n  vertical-align: middle;\r\n}\r\n\r\n.cjrQwi {\r\n  display: flex;\r\n  flex-direction: row;\r\n  -webkit-box-pack: end;\r\n  justify-content: flex-end;\r\n  height: 100%;\r\n  -webkit-box-align: center;\r\n  align-items: center;\r\n}\r\n\r\n.jfjsxZ {\r\n  display: inline;\r\n  color: inherit;\r\n  cursor: pointer;\r\n  font-weight: inherit;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  border-top-style: initial;\r\n  border-right-style: initial;\r\n  border-left-style: initial;\r\n  border-top-color: initial;\r\n  border-right-color: initial;\r\n  border-left-color: initial;\r\n  background: none;\r\n  padding: 0px;\r\n  border-width: 0px 0px 1px;\r\n  border-image: initial;\r\n  border-bottom: 1px dashed rgb(0, 106, 255);\r\n}\r\n\r\n.eVrWvb {\r\n  border-bottom: 1px dashed rgb(167, 166, 171);\r\n}\r\n\r\n.eVrWvb,\r\n.eVrWvb.TriggerButton-sc-19o64qd-0,\r\n.eVrWvb.TriggerButton-sc-19o64qd-0::after {\r\n  cursor: help;\r\n}\r\n\r\n.cpEtCH {\r\n  -webkit-font-smoothing: antialiased;\r\n  font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  letter-spacing: 0px;\r\n  text-transform: none;\r\n  text-align: center;\r\n  display: inline-block;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  user-select: none;\r\n  padding-left: 20px;\r\n  padding-right: 20px;\r\n  cursor: pointer;\r\n  padding-top: 9px;\r\n  padding-bottom: 9px;\r\n  height: 42px;\r\n  line-height: 22px;\r\n  color: rgb(0, 106, 255);\r\n  background-color: rgb(255, 255, 255);\r\n  margin: 0px;\r\n  text-decoration: none;\r\n  border-width: 1px;\r\n  border-style: solid;\r\n  border-image: initial;\r\n  border-radius: 3px;\r\n  transition: all 0.2s ease 0s;\r\n  border-color: rgb(167, 166, 171);\r\n}\r\n\r\n.btcvqQ {\r\n  -webkit-font-smoothing: antialiased;\r\n  font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  letter-spacing: 0px;\r\n  text-transform: none;\r\n  text-align: center;\r\n  display: inline-block;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  user-select: none;\r\n  padding-left: 20px;\r\n  padding-right: 20px;\r\n  cursor: pointer;\r\n  padding-top: 9px;\r\n  padding-bottom: 9px;\r\n  height: 42px;\r\n  line-height: 22px;\r\n  color: rgb(255, 255, 255);\r\n  background-color: rgb(0, 106, 255);\r\n  margin: 0px;\r\n  text-decoration: none;\r\n  border-width: 1px;\r\n  border-style: solid;\r\n  border-image: initial;\r\n  border-radius: 3px;\r\n  transition: all 0.2s ease 0s;\r\n  border-color: rgb(0, 106, 255);\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-active-box {\r\n  top: unset;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-active-box .absol-static-tabbar-hline {\r\n  border-bottom: solid 5px rgb(127, 127, 128);\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button > span {\r\n  font-size: 1.2em;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button {\r\n  width: 50%;\r\n  min-width: 400px;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button:hover {\r\n  color: rgb(30, 30, 55);\r\n  font-weight: 600;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button.active {\r\n  background-color: #26438d;\r\n  color: white;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view {\r\n  width: unset;\r\n  margin-top: unset;\r\n  margin-right: unset;\r\n  margin: 10px;\r\n  overflow: auto;\r\n  position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view input {\r\n  pointer-events: none;\r\n  border: none !important;\r\n  text-align: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view textarea {\r\n    pointer-events: none;\r\n  }\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view\r\n  .absol-selectbox-item-close {\r\n  display: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view\r\n  .absol-selectbox-item-text {\r\n  padding-right: 5px;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view\r\n  .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit)\r\n  .absol-selectmenu-btn {\r\n  display: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view\r\n  .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit)\r\n  .absol-selectlist-item\r\n  span {\r\n  padding-right: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view\r\n  .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit) {\r\n  text-align: right;\r\n  pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu .absol-selectlist-item span{\r\n    padding-right: 7px;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .pizo-new-realty-contact-item-setting{\r\n    display: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .pizo-new-realty-contact-item-close{\r\n    display: none;\r\n}\r\n\r\n.home-details-content .as-button-range{\r\n    height: 40px;\r\n}", ""]);
 
 
 
@@ -48422,8 +48484,6 @@ HashTable.prototype.getKey = function (key, index) {
                   if (check[stringCheck][column][1].exactly === undefined) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;else if (check[stringCheck][column][1].exactly > check[stringCheck][column].tempExactly) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
                 } else check[stringCheck][column][1].confirm = undefined;
               } else {
-                console.log(stringCheck);
-
                 if (check[stringCheck][column][1].isFilter === undefined) {
                   check[stringCheck][column][1].confirm = true;
                   if (check[stringCheck][column][1].exactly === undefined) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;else if (check[stringCheck][column][1].exactly > check[stringCheck][column].tempExactly) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
@@ -49166,6 +49226,7 @@ Slip.prototype = {
   // x,y,time where the finger is currently
   previousPosition: null,
   // x,y,time where the finger was ~100ms ago (for velocity calculation)
+  startPositionAverage: null,
   canPreventScrolling: false,
   states: {
     idle: function idleStateInit() {
@@ -49240,6 +49301,7 @@ Slip.prototype = {
     },
     swipe: function swipeStateInit() {
       var swipeSuccess = false;
+      var swipeAverage = false;
       var container = this.container;
       var originalIndex = findIndex(this.target, this.container.childNodes);
       container.classList.add('slip-swiping-container');
@@ -49264,18 +49326,42 @@ Slip.prototype = {
               }
             }.bind(this));
           } else {
-            this.animateToZero(removeClass);
+            if (swipeAverage) this.animateToAverage(removeClass);else this.animateToZero(removeClass);
           }
         },
         onMove: function onMove() {
-          var move = this.getTotalMovement();
+          var delta = 0;
+          if (this.target.node.startPositionAverage !== undefined) delta = this.target.node.startPositionAverage;
+          var move = this.getTotalMovementAvarage(delta);
 
           if (Math.abs(move.y) < this.target.height + 20) {
             if (this.dispatch(this.target.node, 'animateswipe', {
               x: move.x,
               originalIndex: originalIndex
             })) {
-              this.target.node.style[transformJSPropertyName] = 'translate(' + move.x + 'px,0) ' + hwLayerMagicStyle + this.target.baseTransform.value;
+              if (true) {
+                this.target.node.style[transformJSPropertyName] = 'translate(' + move.x + 'px,0) ' + hwLayerMagicStyle;
+
+                if (this.target.node.hiddenButtonRight !== undefined) {
+                  var hiddenButtonRight = this.target.node.hiddenButtonRight;
+                  hiddenButtonRight.style["height"] = this.target.node.offsetHeight + "px";
+                  hiddenButtonRight.style[transformJSPropertyName] = 'translate(' + -move.x + 'px,0) ' + hwLayerMagicStyle;
+                  if (-move.x > 0) hiddenButtonRight.style["width"] = -move.x + "px";
+                  var tempElement = hiddenButtonRight.childNodes[0].childNodes[hiddenButtonRight.childNodes[0].childNodes.length - 1];
+                  var lastWidth;
+                  if (tempElement.classList.contains("button-hidden-swipe-activeAll-width")) lastWidth = parseInt(tempElement.style.maxWidth);else lastWidth = tempElement.clientWidth;
+
+                  if (hiddenButtonRight.offsetWidth > hiddenButtonRight.childNodes[0].offsetWidth + lastWidth) {
+                    if (tempElement !== undefined && !tempElement.classList.contains("button-hidden-swipe-activeAll-width")) {
+                      tempElement.classList.add("button-hidden-swipe-activeAll-width");
+                    }
+                  } else {
+                    if (tempElement !== undefined && tempElement.classList.contains("button-hidden-swipe-activeAll-width")) {
+                      tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+                    }
+                  }
+                }
+              } else { var lastWidth, tempElement, hiddenButtonLeft; }
             }
 
             return false;
@@ -49288,11 +49374,21 @@ Slip.prototype = {
           this.state.onEnd.call(this);
         },
         onEnd: function onEnd() {
-          var move = this.getAbsoluteMovement();
-          var velocity = move.x / move.time; // How far out has the item been swiped?
+          var hiddenButtonRight = this.target.node.hiddenButtonRight;
+          var tempElement = hiddenButtonRight.childNodes[0].childNodes[hiddenButtonRight.childNodes[0].childNodes.length - 1];
+          var delta = 0;
+          if (this.target.node.startPositionAverage != undefined && this.target.node.startPositionAverage > 0) delta = this.target.node.startPositionAverage;
+          var move = this.getAbsoluteMovementAvarage(delta);
 
-          var swipedPercent = Math.abs((this.startPosition.x - this.previousPosition.x) / this.container.clientWidth) * 100;
-          var swiped = velocity > this.options.minimumSwipeVelocity && move.time > this.options.minimumSwipeTime || this.options.keepSwipingPercent && swipedPercent > this.options.keepSwipingPercent;
+          if (tempElement !== undefined && tempElement.classList.contains("button-hidden-swipe-activeAll-width")) {
+            var swiped = true;
+          } else {
+            var velocity = (move.x - delta) / move.time; // How far out has the item been swiped?
+
+            var swipedPercent = Math.abs((this.startPosition.x - this.previousPosition.x) / this.container.clientWidth) * 100;
+            if (move.x > parseInt(tempElement.style.maxWidth) * hiddenButtonRight.childNodes[0].childNodes.length / 2) swipeAverage = true;
+            var swiped = velocity > this.options.minimumSwipeVelocity && move.time > this.options.minimumSwipeTime || this.options.keepSwipingPercent && swipedPercent > this.options.keepSwipingPercent;
+          }
 
           if (swiped) {
             if (this.dispatch(this.target.node, 'swipe', {
@@ -49352,12 +49448,12 @@ Slip.prototype = {
         element.setDisPlayNone();
       }
 
-      if (element.elementParent.tagName == "TABLE") {
+      if (element.elementParent.tagName == "DIV") {
         element.minDrag = element.elementParent.headerTable.offsetHeight;
       } else element.minDrag = element.elementParent.offsetTop + element.elementParent.offsetHeight;
 
-      if (element.elementParent.tagName == "TABLE") {
-        element.maxDrag = element.elementParent.offsetHeight - element.offsetHeight;
+      if (element.elementParent.tagName == "DIV") {
+        element.maxDrag = element.elementParent.childNodes[0].offsetHeight - element.offsetHeight;
       } else element.maxDrag = element.elementParent.offsetTop + element.elementParent.getHeightChild();
 
       for (var i = 0; i < nodes.length; i++) {
@@ -49420,11 +49516,15 @@ Slip.prototype = {
             } // FIXME: should change accelerated/non-accelerated state lazily
 
 
-            o.node.style[transformJSPropertyName] = off ? 'translate(0,' + off + 'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original;
+            var transform = off ? 'translate(0,' + off + 'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original;
 
-            if (o.node.childrenNodes.length != 0) {
-              var arr = o.node.childrenNodes;
-              onChangeChild(arr, off ? 'translate(0,' + off + 'px) ' + hwLayerMagicStyle + o.baseTransform.value : o.baseTransform.original);
+            if (o.node.style[transformJSPropertyName] != transform) {
+              o.node.style[transformJSPropertyName] = transform;
+
+              if (o.node.childrenNodes.length != 0) {
+                var arr = o.node.childrenNodes;
+                onChangeChild(arr, transform);
+              }
             }
           }
         });
@@ -49796,8 +49896,26 @@ Slip.prototype = {
       time: this.latestPosition.time - this.startPosition.time
     };
   },
+  getTotalMovementAvarage: function getTotalMovementAvarage(delta) {
+    var scrollOffset = this.target.scrollContainer.scrollTop - this.target.origScrollTop;
+    return {
+      x: this.latestPosition.x - this.startPosition.x - delta,
+      y: this.latestPosition.y - this.startPosition.y + scrollOffset,
+      time: this.latestPosition.time - this.startPosition.time
+    };
+  },
   getAbsoluteMovement: function getAbsoluteMovement() {
     var move = this.getTotalMovement();
+    return {
+      x: Math.abs(move.x),
+      y: Math.abs(move.y),
+      time: move.time,
+      directionX: move.x < 0 ? 'left' : 'right',
+      directionY: move.y < 0 ? 'up' : 'down'
+    };
+  },
+  getAbsoluteMovementAvarage: function getAbsoluteMovementAvarage(delta) {
+    var move = this.getTotalMovementAvarage(delta);
     return {
       x: Math.abs(move.x),
       y: Math.abs(move.y),
@@ -49854,12 +49972,62 @@ Slip.prototype = {
   animateToZero: function animateToZero(callback, target) {
     // save, because this.target/container could change during animation
     target = target || this.target;
-    target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.1s ease-out';
-    target.node.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle + target.baseTransform.value;
+    var delta = 0;
+    if (this.target.node.startPositionAverage != undefined && this.target.node.startPositionAverage > 0) delta = this.target.node.startPositionAverage;
+    var move = this.getTotalMovementAvarage(delta);
+    target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.2s ease-out';
+    target.node.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle;
+
+    if (move.x > 0 && target.node.hiddenButtonRight !== undefined) {
+      target.node.hiddenButtonRight.style[transitionJSPropertyName] = "all" + ' 0.2s ease-out';
+      target.node.hiddenButtonRight.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle;
+      target.node.hiddenButtonRight.style["width"] = 0;
+      var tempElement = this.target.node.hiddenButtonRight.childNodes[0].childNodes[this.target.node.hiddenButtonRight.childNodes[0].childNodes.length - 1];
+
+      if (tempElement !== undefined && tempElement.classList.contains("button-hidden-swipe-activeAll-width")) {
+        tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+      }
+    }
+
     setTimeout(function () {
       target.node.style[transitionJSPropertyName] = '';
-      target.node.style[transformJSPropertyName] = target.baseTransform.original;
+      target.node.style[transformJSPropertyName] = '';
+
+      if (move.x && target.node.hiddenButtonRight !== undefined) {
+        target.node.hiddenButtonRight.style[transitionJSPropertyName] = '';
+        target.node.hiddenButtonRight.style[transformJSPropertyName] = '';
+      }
+
       if (callback) callback.call(this, target);
+      target.node.startPositionAverage = 0;
+    }.bind(this), 201);
+  },
+  animateToAverage: function animateToAverage(callback, target) {
+    // save, because this.target/container could change during animation
+    target = target || this.target;
+    var delta = 0;
+    if (this.target.node.startPositionAverage != undefined && this.target.node.startPositionAverage > 0) delta = this.target.node.startPositionAverage;
+    var move = this.getAbsoluteMovementAvarage(delta);
+
+    if (move.x > 0 && target.node.hiddenButtonRight !== undefined) {
+      var transformWidth = parseInt(target.node.hiddenButtonRight.childNodes[0].childNodes[0].style.maxWidth) * this.target.node.hiddenButtonRight.childNodes[0].childNodes.length / 1.2;
+      target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.1s ease-in';
+      target.node.style[transformJSPropertyName] = 'translate(' + -transformWidth + 'px,0) ' + hwLayerMagicStyle;
+      target.node.hiddenButtonRight.style[transitionJSPropertyName] = 'all' + ' 0.1s ease-in';
+      target.node.hiddenButtonRight.style[transformJSPropertyName] = 'translate(' + transformWidth + 'px,0) ' + hwLayerMagicStyle;
+      target.node.hiddenButtonRight.style["width"] = transformWidth + "px";
+      var tempElement = this.target.node.hiddenButtonRight.childNodes[0].childNodes[this.target.node.hiddenButtonRight.childNodes[0].childNodes.length - 1];
+
+      if (tempElement !== undefined && tempElement.classList.contains("button-hidden-swipe-activeAll-width")) {
+        tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+      }
+    }
+
+    setTimeout(function () {
+      target.node.style[transitionJSPropertyName] = '';
+      if (move.x > 0 && target.node.hiddenButtonRight !== undefined) target.node.hiddenButtonRight.style[transitionJSPropertyName] = '';
+      if (callback) callback.call(this, target);
+      target.node.startPositionAverage = transformWidth;
     }.bind(this), 101);
   },
   animateSwipe: function animateSwipe(callback) {
@@ -50211,13 +50379,7 @@ function moveAtFix(clone, pageY, shiftY, result) {
 }
 
 function moveElement(event, me, result, index) {
-  var scrollParent = me;
-
-  while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-    scrollParent = scrollParent.parentNode;
-  }
-
-  if (scrollParent === undefined) return;
+  var scrollParent = result.realTable.parentNode;
   scrollParent.addEventListener("scroll", function (event) {
     bg.isMove = false;
     outFocus(clone, _trigger, functionCheckZone, bg, result);
@@ -50273,13 +50435,7 @@ function moveElementFix(event, me, result, index) {
   var trigger;
   var clone = result.cloneRow(index);
   var bg = result.backGroundFix(index);
-  var scrollParent = me;
-
-  while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-    scrollParent = scrollParent.parentNode;
-  }
-
-  if (scrollParent === undefined) return;
+  var scrollParent = result.realTable.parentNode;
   result.bodyTable.appendChild(bg);
   bg.appendChild(clone);
 
@@ -50435,7 +50591,7 @@ function outFocus(clone, trigger, functionCheckZone, bg, parent) {
   }, 20);
   clone.selfRemove();
   var event = new CustomEvent('dragdrop');
-  parent.bodyTable.parentNode.dispatchEvent(event);
+  parent.realTable.parentNode.dispatchEvent(event);
 }
 
 function captureMousePosition(event) {
@@ -50463,12 +50619,19 @@ function tableView() {
     tag: "tbody"
   });
 
-  var result = ModuleView_({
+  var realTable = ModuleView_({
     tag: "table",
     "class": "sortTable",
     child: [headerTable, bodyTable]
   });
 
+  var result = ModuleView_({
+    tag: "div",
+    "class": "container-sortTable",
+    child: [realTable]
+  });
+
+  result.realTable = realTable;
   result.headerTable = headerTable;
   result.bodyTable = bodyTable;
   Object.assign(result, tableView.prototype);
@@ -50479,57 +50642,59 @@ function tableView() {
   result.dragHorizontal = dragHorizontal;
   result.isSwipeLeft = false;
   result.isSwipeRight = false;
+  result.sortArray = [];
+
+  if (window.scrollEvent === undefined) {
+    window.xMousePos = 0;
+    window.yMousePos = 0;
+    window.lastScrolledLeft = 0;
+    window.lastScrolledTop = 0;
+    document.addEventListener("mousemove", function (event) {
+      window.scrollEvent = captureMousePosition(event);
+    });
+    var scrollParent = result;
+    scrollParent.addEventListener("scroll", function (event) {
+      if (window.lastScrolledLeft != scrollParent.scrollLeft) {
+        window.xMousePos -= window.lastScrolledLeft;
+        window.lastScrolledLeft = scrollParent.scrollLeft;
+        window.xMousePos += window.lastScrolledLeft;
+      }
+
+      if (lastScrolledTop != scrollParent.scrollTop) {
+        window.yMousePos -= window.lastScrolledTop;
+        window.lastScrolledTop = scrollParent.scrollTop;
+        window.yMousePos += window.lastScrolledTop;
+      }
+    });
+  }
 
   result.updatePagination = function () {
     var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : result.tempIndexRow;
     var isRedraw = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-    result.tempIndexRow = number;
 
-    if (result.paginationElement !== undefined) {
-      if (isRedraw) result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
-      var pagination = result.pagination(result.tempIndexRow);
-      result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
-    } else {
-      var pagination = result.pagination(result.tempIndexRow);
-      result.appendChild(pagination);
-    }
+    if (false) {} else {
+      result.tempIndexRow = parseInt(number);
 
-    result.paginationElement = pagination;
-  };
+      if (result.paginationElement !== undefined) {
+        if (isRedraw) {
+          result.indexRow = 0;
+          result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+        }
 
-  result.updatePagination(indexRow, false);
-  setTimeout(function () {
-    if (window.scrollEvent === undefined) {
-      window.xMousePos = 0;
-      window.yMousePos = 0;
-      window.lastScrolledLeft = 0;
-      window.lastScrolledTop = 0;
-      document.addEventListener("mousemove", function (event) {
-        window.scrollEvent = captureMousePosition(event);
-      });
-      var scrollParent = result;
-
-      while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-        scrollParent = scrollParent.parentNode;
+        var pagination = result.pagination(result.tempIndexRow);
+        result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
+      } else {
+        var pagination = result.pagination(result.tempIndexRow);
+        result.appendChild(pagination);
       }
 
-      if (scrollParent === undefined) return;
-      result.scrollParent = scrollParent;
-      scrollParent.addEventListener("scroll", function (event) {
-        if (window.lastScrolledLeft != scrollParent.scrollLeft) {
-          window.xMousePos -= window.lastScrolledLeft;
-          window.lastScrolledLeft = scrollParent.scrollLeft;
-          window.xMousePos += window.lastScrolledLeft;
-        }
-
-        if (lastScrolledTop != scrollParent.scrollTop) {
-          window.yMousePos -= window.lastScrolledTop;
-          window.lastScrolledTop = scrollParent.scrollTop;
-          window.yMousePos += window.lastScrolledTop;
-        }
-      });
+      result.paginationElement = pagination;
     }
-  }, 10);
+  };
+
+  if (false) { var tempLimit; }
+
+  result.updatePagination(indexRow, false);
   row = ModuleView_({
     tag: "tr"
   });
@@ -50556,6 +50721,8 @@ function tableView() {
 
   if (dragVertical) {
     result.setUpSlip();
+    if (result.isSwipeLeft || result.isSwipeRight) result.addEventSwipe();
+    result.slip = new Slip(result.bodyTable);
   }
 
   return result;
@@ -50569,18 +50736,192 @@ tableView.prototype.getElementNext = function (element) {
   return element.nextSibling;
 };
 
-tableView.prototype.setUpSwipe = function () {
-  var isSwipeLeft = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-  var isSwipeRight = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-  this.isSwipeLeft = isSwipeLeft;
-  this.isSwipeRight = isSwipeRight;
+tableView.prototype.setUpSwipe = function (isSwipeLeft, isSwipeRight) {
+  setTimeout(function () {
+    if (isSwipeLeft !== undefined) {
+      this.isSwipeLeft = isSwipeLeft;
+    }
+
+    if (this.isSwipeLeft !== undefined) {
+      for (var i = 0; i < this.bodyTable.childNodes.length; i++) {
+        if (this.bodyTable.childNodes[i].hiddenButtonLeft !== undefined) continue;
+
+        var hiddenButton = ModuleView_({
+          tag: "div",
+          "class": "button-hidden-swipe-container-left",
+          child: [{
+            tag: "div",
+            "class": "button-hidden-swipe-calcWidth"
+          }]
+        });
+
+        for (var j = 0; j < this.isSwipeLeft.length; j++) {
+          this.bodyTable.childNodes[i].appendChild(hiddenButton);
+
+          var tempElement = ModuleView_({
+            tag: "div",
+            "class": "button-hidden-swipe",
+            on: this.isSwipeLeft[j].event,
+            style: {
+              width: 1 / this.isSwipeLeft.length * 100 + "%",
+              backgroundColor: this.isSwipeLeft[j].background,
+              maxWidth: this.bodyTable.childNodes[i].offsetHeight * 1.2 + "px",
+              zIndex: j
+            },
+            child: [{
+              tag: "div",
+              "class": "button-hidden-swipe-detail",
+              style: {
+                width: this.bodyTable.childNodes[i].offsetHeight + "px",
+                height: this.bodyTable.childNodes[i].offsetHeight + "px"
+              },
+              child: [{
+                tag: "i",
+                "class": ["material-icons", "button-hidden-swipe-icon"],
+                style: {
+                  color: this.isSwipeLeft[j].iconcolor
+                },
+                props: {
+                  innerHTML: this.isSwipeLeft[j].icon
+                }
+              }, {
+                tag: "span",
+                "class": "button-hidden-swipe-text",
+                style: {
+                  color: this.isSwipeLeft[j].textcolor
+                },
+                props: {
+                  innerHTML: this.isSwipeLeft[j].text
+                }
+              }]
+            }]
+          });
+
+          if (j == this.isSwipeLeft.length - 1) tempElement.classList.add("button-hidden-swipe-activeAll");
+          hiddenButton.childNodes[0].appendChild(tempElement);
+        }
+
+        this.bodyTable.childNodes[i].hiddenButtonLeft = hiddenButton;
+      }
+    }
+
+    if (isSwipeRight !== undefined) {
+      this.isSwipeRight = isSwipeRight;
+    }
+
+    if (this.isSwipeRight !== undefined) {
+      for (var i = 0; i < this.bodyTable.childNodes.length; i++) {
+        if (this.bodyTable.childNodes[i].hiddenButtonRight !== undefined) continue;
+
+        var hiddenButton = ModuleView_({
+          tag: "div",
+          "class": "button-hidden-swipe-container-right",
+          child: [{
+            tag: "div",
+            "class": "button-hidden-swipe-calcWidth"
+          }]
+        });
+
+        for (var j = 0; j < this.isSwipeRight.length; j++) {
+          this.bodyTable.childNodes[i].appendChild(hiddenButton);
+          var on = {};
+          var iconStyle = {};
+          if (this.isSwipeRight[j].iconStyle !== undefined) iconStyle = this.isSwipeRight[j].iconStyle;
+          var textStyle = {};
+          if (this.isSwipeRight[j].textStyle !== undefined) textStyle = this.isSwipeRight[j].textStyle;
+          if (this.isSwipeRight[j].event !== undefined) on = this.isSwipeRight[j].event;
+
+          var tempElement = ModuleView_({
+            tag: "div",
+            "class": "button-hidden-swipe",
+            on: on,
+            style: {
+              width: 1 / this.isSwipeRight.length * 100 + "%",
+              backgroundColor: this.isSwipeRight[j].background,
+              maxWidth: this.bodyTable.childNodes[i].offsetHeight * 1.2 + "px",
+              zIndex: j
+            },
+            child: [{
+              tag: "div",
+              "class": "button-hidden-swipe-detail",
+              style: {
+                width: this.bodyTable.childNodes[i].offsetHeight + "px",
+                height: this.bodyTable.childNodes[i].offsetHeight + "px"
+              },
+              child: [{
+                tag: "div",
+                "class": "button-hidden-swipe-detail-content",
+                child: [{
+                  tag: "i",
+                  "class": ["material-icons", "button-hidden-swipe-icon"],
+                  style: iconStyle,
+                  props: {
+                    innerHTML: this.isSwipeRight[j].icon
+                  }
+                }, {
+                  tag: "span",
+                  "class": "button-hidden-swipe-text",
+                  style: textStyle,
+                  props: {
+                    innerHTML: this.isSwipeRight[j].text
+                  }
+                }]
+              }]
+            }]
+          });
+
+          if (j == this.isSwipeRight.length - 1) tempElement.classList.add("button-hidden-swipe-activeAll");
+          hiddenButton.childNodes[0].appendChild(tempElement);
+        }
+
+        this.bodyTable.childNodes[i].hiddenButtonRight = hiddenButton;
+      }
+    }
+
+    if (isSwipeLeft || isSwipeRight) {
+      this.addEventSwipe();
+    }
+  }.bind(this), 80);
+};
+
+tableView.prototype.addEventSwipe = function () {
+  var self = this;
+  this.bodyTable.addEventListener('slip:beforewait', function (e) {
+    if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
+  }, false);
+  this.bodyTable.addEventListener('slip:beforeswipe', function (e) {
+    var startPoint = e.target;
+
+    while (startPoint != null && startPoint.tagName != "TR") {
+      startPoint = startPoint.parentNode;
+    }
+
+    startPoint = startPoint.startPositionAverage;
+    if (self.isSwipeRight === false && e.detail.directionX === "left" && !(startPoint > 0)) e.preventDefault();
+    if (self.isSwipeLeft === false && e.detail.directionX === "right" && !(startPoint > 0)) e.preventDefault();
+  }, false);
+  this.bodyTable.addEventListener('slip:cancelswipe', function (e) {
+    self.swipeCancel();
+  }, false);
+  this.bodyTable.addEventListener('slip:swipe', function (e) {
+    // functionClick(event, this, index, row.data, row, result);
+    var index = e.detail.originalIndex;
+    var me = self.bodyTable.childNodes[index];
+    var parent = me.elementParent; // var tempIndex = index;
+
+    index = parent.childrenNodes.indexOf(me);
+    if (e.detail.direction === "left") self.swipeCompleteLeft(e, me, index, me.data, me, parent);
+    if (e.detail.direction === "right") self.swipeCompleteRight(e, me, index, me.data, me, parent);
+  }, false);
 };
 
 tableView.prototype.swipeCompleteLeft = function (e, me, index, data, row, parent) {
+  console.log(index);
   parent.exactlyDeleteRow(index);
 };
 
 tableView.prototype.swipeCompleteRight = function (e, me, index, data, row, parent) {
+  console.log(index);
   parent.exactlyDeleteRow(index);
 };
 
@@ -50589,27 +50930,6 @@ tableView.prototype.swipeCancel = function () {};
 tableView.prototype.setUpSlip = function () {
   var self = this; // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
 
-  this.bodyTable.addEventListener('slip:beforewait', function (e) {
-    if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
-  }, false);
-  this.bodyTable.addEventListener('slip:beforeswipe', function (e) {
-    if (self.isSwipeLeft === false && e.detail.directionX === "left") e.preventDefault();
-    if (self.isSwipeRight === false && e.detail.directionX === "right") e.preventDefault();
-  }, false);
-  this.bodyTable.addEventListener('slip:cancelswipe', function (e) {
-    self.swipeCancel();
-  }, false);
-  this.bodyTable.addEventListener('slip:swipe', function (e) {
-    console.log(e); // functionClick(event, this, index, row.data, row, result);
-
-    var index = e.detail.originalIndex;
-    var me = self.bodyTable.childNodes[index];
-    var parent = me.elementParent;
-    var tempIndex = index;
-    index = parent.childrenNodes.indexOf(me);
-    if (e.detail.direction === "left") self.swipeCompleteLeft(e, me, index, me.data, me, parent);
-    if (e.detail.direction === "right") self.swipeCompleteRight(e, me, index, me.data, me, parent);
-  }, false);
   this.bodyTable.addEventListener('slip:reorder', function (e) {
     var result = self;
     var index = e.detail.originalIndex;
@@ -50668,10 +50988,8 @@ tableView.prototype.setUpSlip = function () {
         dataIndex: index
       }
     });
-    self.bodyTable.parentNode.dispatchEvent(event);
+    self.dispatchEvent(event);
   }, false);
-  this.slip = new Slip(this.bodyTable);
-  return this.slip;
 };
 
 tableView.prototype.getCellHeader = function (header, i) {
@@ -50790,7 +51108,7 @@ tableView.prototype.getCellHeader = function (header, i) {
         }
       });
       result.dispatchEvent(event);
-      if (result.paginationElement.noneValue !== true) result.paginationElement.reActive();else result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
+      if (result.paginationElement !== undefined && result.paginationElement.noneValue !== true) result.paginationElement.reActive();else result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
     };
   }
 
@@ -50925,6 +51243,12 @@ tableView.prototype.getCellHeader = function (header, i) {
       "class": ["arrow_down"]
     }]
   });
+
+  result.sortArray[i] = childUpDown;
+
+  result.exactlySort = function () {
+    childUpDown.click();
+  };
 
   if (header.sort === true) {
     cell.classList.add("has-sort");
@@ -51162,10 +51486,20 @@ tableView.prototype.getBodyTable = function (data) {
       row,
       cell;
   var arr = [];
+  var i = 0;
+  if (this.startIndex === undefined) this.startIndex = 0;
+
+  if (this.currentIndex !== undefined) {
+    i = this.currentIndex;
+    this.startIndex += result.indexRow;
+  } else {
+    this.startIndex = 0;
+  }
+
   if (parent.checkSpan === undefined) result.checkSpan = [];
   if (result.indexRow == undefined || result.indexRow == this.tempIndexRow) result.indexRow = 0;
 
-  for (var i = 0; i < data.length && this.indexRow < this.tempIndexRow; i++) {
+  for (; i < data.length && this.indexRow < this.tempIndexRow; i++) {
     if (data[i].child !== undefined) data[i].child.updateVisible = data.updateVisible;
 
     if (data.updateVisible === true) {
@@ -51204,10 +51538,10 @@ tableView.prototype.getBodyTable = function (data) {
     temp.addChild(row);
     arr.push(row);
 
-    for (var j = 0; j < temp.parentNode.clone.length; j++) {
-      k = parseFloat(temp.parentNode.clone[j][0].id);
+    for (var j = 0; j < result.realTable.parentNode.clone.length; j++) {
+      k = parseFloat(result.realTable.parentNode.clone[j][0].id);
       if (delta[j] === undefined) delta[j] = 0;
-      cell = result.getCell(data[i][k], this.indexRow, k, j, result.checkSpan, row);
+      cell = result.getCell(data[i][k], this.indexRow + this.startIndex, k, j, result.checkSpan, row);
 
       if (cell === 6 || cell === 2) {
         result.clone[j].splice(this.indexRow + 1 - delta[j], 1);
@@ -51228,11 +51562,12 @@ tableView.prototype.getBodyTable = function (data) {
     this.indexRow++;
   }
 
+  this.currentIndex = i;
   if (data.updateVisible) result.setConfirm(data, i);
   if (result.checkMargin !== undefined) result.checkMargin();
   data.updateVisible = undefined;
-  result.childrenNodes = result.childrenNodes.concat(arr);
-  this.indexRow = 0;
+  result.childrenNodes = result.childrenNodes.concat(arr); // this.indexRow = 0;
+
   return arr;
 };
 
@@ -51367,11 +51702,7 @@ tableView.prototype.pagination = function (number, functionClick) {
     }]
   });
 
-  var temp = ModuleView_({
-    tag: "div",
-    "class": "pagination-align",
-    child: [realTemp]
-  });
+  var temp = realTemp;
 
   for (var i = 0; i < countPrecent; i++) {
     if (i == 1) {
@@ -51517,7 +51848,7 @@ tableView.prototype.pagination = function (number, functionClick) {
         var prev = active.previousSibling,
             next = active.nextSibling;
 
-        while (realTemp.offsetWidth <= self.offsetWidth - 40 && !(isLeft == true && isRight == true)) {
+        while (container.offsetWidth <= self.offsetWidth - 80 && !(isLeft == true && isRight == true)) {
           if (isRight == false && next != null) {
             while (next == temp.detailRight || next == temp.detailLeft) {
               next = next.nextSibling;
@@ -51533,7 +51864,7 @@ tableView.prototype.pagination = function (number, functionClick) {
             isRight = true;
           }
 
-          if (realTemp.offsetWidth > self.offsetWidth - 40) break;
+          if (container.offsetWidth > self.offsetWidth - 80) break;
 
           if (isLeft == false && prev != null) {
             while (prev == temp.detailLeft || prev == temp.detailRight) {
@@ -51573,6 +51904,8 @@ tableView.prototype.pagination = function (number, functionClick) {
   temp.updateSize();
 
   this["goto"] = function (index) {
+    var active = ModuleView_$("a.active", container);
+    if (active !== undefined) active.style.color = "#333d45";
     arr[index - 1].click();
   };
 
@@ -51589,6 +51922,7 @@ tableView.prototype.getRow = function (data) {
     temp.className = temp.className + " parent";
   }, 10);
   Object.assign(temp, tableView.prototype);
+  temp.realTable = result.realTable;
   temp.headerTable = result.headerTable;
   temp.bodyTable = result.bodyTable;
   temp.check = result.check;
@@ -51645,7 +51979,7 @@ tableView.prototype.getRow = function (data) {
 
     if (temp.childIndex !== undefined) {
       if (temp.childIndex === 0) {
-        if (!result.headerTable.parentNode.classList.contains("padding-High-table")) result.headerTable.parentNode.classList.add("padding-High-table");
+        if (!result.realTable.parentNode.classList.contains("padding-High-table")) result.realTable.parentNode.classList.add("padding-High-table");
       }
 
       indexMore = temp.childIndex;
@@ -51698,7 +52032,7 @@ tableView.prototype.getRow = function (data) {
     this.buttonClick.selfRemove();
     var parent = this.childNodes[0].getParentNode();
 
-    if (parent.tagName === "TABLE") {
+    if (parent.tagName === "DIV") {
       for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
         if (parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.contains("margin-left-has-icon")) parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.remove("margin-left-has-icon");
       }
@@ -52047,7 +52381,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
   cell.getParentNode = function () {
     var parent = cell.clone[0][0];
     parent = parent;
-    if (parent.tagName === "TH") return parent.parentNode.parentNode.parentNode;
+    if (parent.tagName === "TH") return parent.parentNode.parentNode.parentNode.parentNode;
     return parent.parentNode;
   };
 
@@ -52069,15 +52403,16 @@ tableView.prototype.updateTable = function (header) {
   temp.listCheckBox = [];
   if (dragHorizontal !== undefined) result.dragHorizontal = dragHorizontal;
   if (dragVertical !== undefined) result.dragVertical = dragVertical;
-  if (this.bodyTable.listCheckBox !== undefined) temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
+  if (this.bodyTable.listCheckBox !== undefined && this.bodyTable.listCheckBox.length > 0) temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
 
   for (var i = 0; i < result.clone.length; i++) {
     result.clone[i] = [result.clone[i].shift()];
   }
 
-  this.replaceChild(temp, this.bodyTable);
+  this.realTable.replaceChild(temp, this.bodyTable);
   this.bodyTable = temp;
   result.childrenNodes = [];
+  this.currentIndex = undefined;
   result.getBodyTable(data, index);
 
   if (temp.listCheckBox[0] !== undefined) {
@@ -52089,6 +52424,8 @@ tableView.prototype.updateTable = function (header) {
 
   if (result.dragVertical) {
     result.setUpSlip();
+    if (result.isSwipeLeft || result.isSwipeRight) this.setUpSwipe();
+    result.slip = new Slip(result.bodyTable);
   }
 };
 
@@ -52135,8 +52472,8 @@ tableView.prototype.insertRow = function (data) {
     result.bodyTable.insertBefore(row, tempElement.nextSibling);
   }
 
-  for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
-    k = parseFloat(this.bodyTable.parentNode.clone[i][0].id);
+  for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
+    k = parseFloat(this.realTable.parentNode.clone[i][0].id);
     cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
 
     if (cell === 6) {
@@ -52223,7 +52560,7 @@ tableView.prototype.insertRow = function (data) {
   if (row.childrenNodes.length !== 0) row.checkIcon();else row.checkClone();
   if (result.checkMargin !== undefined) result.checkMargin(); //    result.checkDataUpdate(row);
 
-  result.bodyTable.parentNode.updateHash(row);
+  result.realTable.parentNode.updateHash(row);
   return row;
 };
 
@@ -52256,7 +52593,7 @@ tableView.prototype.updateRow = function (data, index) {
   var checkChild = false;
 
   if (data.original !== undefined && data.original.isCheckUpdate === true) {
-    var table = result.bodyTable.parentNode;
+    var table = result.realTable.parentNode;
     table.updateTable(undefined, table.data);
     delete data.isCheckUpdate;
     return;
@@ -52272,8 +52609,8 @@ tableView.prototype.updateRow = function (data, index) {
     row.clone = temp.clone;
   }
 
-  for (var i = 0; i < this.bodyTable.parentNode.clone.length; i++) {
-    k = parseFloat(this.bodyTable.parentNode.clone[i][0].id);
+  for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
+    k = parseFloat(this.realTable.parentNode.parentNode.clone[i][0].id);
     cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
 
     if (cell === 6) {
@@ -52350,8 +52687,8 @@ tableView.prototype.updateRow = function (data, index) {
   if (row.childrenNodes.length !== 0) row.checkIcon();else row.checkClone();
   if (result.checkMargin !== undefined) result.checkMargin(); //    result.checkDataUpdate(row);
 
-  result.bodyTable.parentNode.resetHash();
-  result.bodyTable.parentNode.updateHash(row);
+  result.realTable.parentNode.resetHash();
+  result.realTable.parentNode.updateHash(row);
   return row;
 };
 
@@ -52382,9 +52719,12 @@ tableView.prototype.exactlyDeleteRow = function (index) {
   var element = parent.childrenNodes[index];
   parent.dropRowChild(element);
   var deltaY = 0;
+  console.log(parent.clone);
   deltaX = parent.checkLongRow(index);
+  console.log(element);
 
   for (var i = 0; i < element.childNodes.length; i++) {
+    if (element.tagName !== "TD") continue;
     parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
     if (parent.checkSpan !== undefined) parent.checkSpan.splice(index, 1);
     if (element.childNodes[i].colSpan !== undefined) deltaY += element.childNodes[i].colSpan - 1;
@@ -52404,7 +52744,7 @@ tableView.prototype.exactlyDeleteRow = function (index) {
 
   if (parent.checkVisibleChild !== undefined && parent.childrenNodes.length === 0) parent.checkVisibleChild();
   parent.isUpdate = true;
-  parent.bodyTable.parentNode.resetHash();
+  parent.realTable.parentNode.resetHash();
 };
 
 tableView.prototype.insertColumn = function (index) {
@@ -52541,13 +52881,7 @@ tableView.prototype.dropRowChildElement = function () {
 
 tableView.prototype.backGroundFix = function (index) {
   var rect = this.getBoundingClientRect();
-  var scrollParent = this;
-
-  while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-    scrollParent = scrollParent.parentNode;
-  }
-
-  if (scrollParent === undefined) return;
+  var scrollParent = this.realTable.parentNode;
   var rectDistance = traceOutBoundingClientRect(this);
 
   var temp = ModuleView_({
@@ -52588,14 +52922,8 @@ tableView.prototype.backGroundFix = function (index) {
 
 tableView.prototype.backGround = function (height, callback, index) {
   var rect = this.getBoundingClientRect();
-  var scrollParent = this;
+  var scrollParent = this.realTable.parentNode;
   var rectDistance = traceOutBoundingClientRect(this);
-
-  while (scrollParent !== undefined && !scrollParent.classList.contains("absol-single-page-scroller")) {
-    scrollParent = scrollParent.parentNode;
-  }
-
-  if (scrollParent === undefined) return;
 
   var temp = ModuleView_({
     tag: "div",
@@ -57372,7 +57700,12 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
                 }
               }, {
                 tag: "checkbox",
-                "class": "pizo-new-realty-desc-detail-row-menu-2-checkbox"
+                "class": "pizo-new-realty-desc-detail-row-menu-2-checkbox",
+                on: {
+                  change: function change(event) {
+                    if (this.checked == false) self.priceRent.style.display = "none";else self.priceRent.style.display = "";
+                  }
+                }
               }]
             }]
           }]
@@ -57436,6 +57769,51 @@ NewRealty_NewRealty.prototype.detructView = function () {
     width.value = width.value * event.lastValue / event.value;
   });
   var self = this;
+
+  var priceRent = NewRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-dectruct-content-area-right",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-desc-detail-row",
+      child: [{
+        tag: "span",
+        "class": ["pizo-new-realty-detruct-content-price-rent-label", "pizo-new-realty-detruct-content-area-label"],
+        props: {
+          innerHTML: "Giá thuê tháng"
+        }
+      }, {
+        tag: "input",
+        "class": ["pizo-new-realty-detruct-content-price-rent", "pizo-new-realty-dectruct-input"],
+        on: {
+          input: function input(event) {
+            this.value = formatNumber(this.value);
+          },
+          blur: function blur(event) {
+            this.value = reFormatNumber(this.value);
+          }
+        }
+      }, {
+        tag: "selectmenu",
+        "class": "pizo-new-realty-detruct-content-price-rent-unit",
+        on: {
+          change: function change(event) {
+            var price = NewRealty_$('input.pizo-new-realty-detruct-content-price-rent', temp);
+            price.value = price.value * event.lastValue / event.value;
+          }
+        },
+        props: {
+          items: [{
+            text: "VND",
+            value: 1
+          }, {
+            text: "USD",
+            value: 23180
+          }]
+        }
+      }]
+    }]
+  });
 
   var temp = NewRealty_({
     tag: "div",
@@ -58105,50 +58483,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
             }]
           }]
         }]
-      }, {
-        tag: "div",
-        "class": "pizo-new-realty-dectruct-content-area-right",
-        child: [{
-          tag: "div",
-          "class": "pizo-new-realty-desc-detail-row",
-          child: [{
-            tag: "span",
-            "class": ["pizo-new-realty-detruct-content-price-rent-label", "pizo-new-realty-detruct-content-area-label"],
-            props: {
-              innerHTML: "Giá thuê tháng"
-            }
-          }, {
-            tag: "input",
-            "class": ["pizo-new-realty-detruct-content-price-rent", "pizo-new-realty-dectruct-input"],
-            on: {
-              input: function input(event) {
-                this.value = formatNumber(this.value);
-              },
-              blur: function blur(event) {
-                this.value = reFormatNumber(this.value);
-              }
-            }
-          }, {
-            tag: "selectmenu",
-            "class": "pizo-new-realty-detruct-content-price-rent-unit",
-            on: {
-              change: function change(event) {
-                var price = NewRealty_$('input.pizo-new-realty-detruct-content-price-rent', temp);
-                price.value = price.value * event.lastValue / event.value;
-              }
-            },
-            props: {
-              items: [{
-                text: "VND",
-                value: 1
-              }, {
-                text: "USD",
-                value: 23180
-              }]
-            }
-          }]
-        }]
-      }, {
+      }, priceRent, {
         tag: "div",
         "class": "pizo-new-realty-dectruct-content-area-right",
         child: [{
@@ -58206,6 +58541,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
   this.inputLiving = NewRealty_$('input.pizo-new-realty-dectruct-content-area-living', temp);
   this.inputBasement = NewRealty_$('input.pizo-new-realty-dectruct-content-area-basement', temp);
   this.inputFloor = NewRealty_$('input.pizo-new-realty-dectruct-content-area-floor', temp);
+  this.priceRent = priceRent;
   this.advanceDetruct = NewRealty_$("div.pizo-new-realty-dectruct-content-area-advance", temp);
   this.simpleDetruct = NewRealty_$("div.pizo-new-realty-dectruct-content-area-simple", temp);
   this.advanceDetruct1 = NewRealty_$("div.pizo-new-realty-dectruct-content-area-selectbox-child-1", temp);
@@ -59589,6 +59925,13 @@ ListRealty_ListRealty.prototype.getView = function () {
         id: value[i].addressid
       });
       connect = "||";
+
+      if (value[i].addressid_old) {
+        arr.push(connect);
+        arr.push({
+          id: value[i].addressid_old
+        });
+      }
     }
 
     ModuleDatabase["a" /* default */].getModule("addresses").load({
@@ -60656,6 +60999,9 @@ ListWard_ListWard.prototype.getView = function () {
   var tabContainer = ListWard_({
     tag: "div",
     "class": ["pizo-list-realty-main-result-control", "drag-zone-bg", "no-animation"],
+    style: {
+      height: "calc(100% - 60px)"
+    },
     child: []
   });
 
@@ -61096,20 +61442,22 @@ ListWard_ListWard.prototype.start = function () {};
 // EXTERNAL MODULE: ./css/ListStreet.css
 var ListStreet = __webpack_require__(202);
 
-// EXTERNAL MODULE: ./css/NewDistrict.css
-var NewDistrict = __webpack_require__(204);
+// EXTERNAL MODULE: ./css/NewStreet.css
+var NewStreet = __webpack_require__(204);
 
-// CONCATENATED MODULE: ./js/component/NewDistrict.js
-
-
+// CONCATENATED MODULE: ./js/component/NewStreet.js
 
 
 
 
-var NewDistrict_ = dom_Fcore._;
-var NewDistrict_$ = dom_Fcore.$;
 
-function NewDistrict_NewDistrict(data) {
+
+
+
+var NewStreet_ = dom_Fcore._;
+var NewStreet_$ = dom_Fcore.$;
+
+function NewStreet_NewStreet(data) {
   component_BaseView.call(this);
   AppPattern_Fragment.call(this);
   this.cmdRunner = new AppPattern_CMDRunner(this);
@@ -61119,17 +61467,17 @@ function NewDistrict_NewDistrict(data) {
   if (this.data == undefined) this.textHeader = "Thêm ";
 }
 
-NewDistrict_NewDistrict.prototype.setContainer = function (parent) {
+NewStreet_NewStreet.prototype.setContainer = function (parent) {
   this.parent = parent;
 };
 
-Object.defineProperties(NewDistrict_NewDistrict.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
-NewDistrict_NewDistrict.prototype.constructor = NewDistrict_NewDistrict;
+Object.defineProperties(NewStreet_NewStreet.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewStreet_NewStreet.prototype.constructor = NewStreet_NewStreet;
 
-NewDistrict_NewDistrict.prototype.getView = function (data) {
+NewStreet_NewStreet.prototype.getView = function (data) {
   if (this.$view) return this.$view;
   var self = this;
-  this.$view = NewDistrict_({
+  this.$view = NewStreet_({
     tag: 'singlepage',
     "class": "pizo-list-realty",
     child: [{
@@ -61138,7 +61486,7 @@ NewDistrict_NewDistrict.prototype.getView = function (data) {
         tag: "span",
         "class": "pizo-body-title-left",
         props: {
-          innerHTML: self.textHeader + "Quận/Huyện"
+          innerHTML: self.textHeader + "Phường xã"
         }
       }, {
         tag: "div",
@@ -61181,7 +61529,70 @@ NewDistrict_NewDistrict.prototype.getView = function (data) {
       }]
     }]
   });
-  this.$view.addChild(NewDistrict_({
+  self.listStateElement = NewStreet_({
+    tag: "selectmenu",
+    "class": "pizo-new-state-container-nation-container-input",
+    props: {
+      enableSearch: true
+    },
+    on: {
+      change: function change(event) {
+        var x = getIDCompair(this.value);
+        self.listDistrictElement.items = self.checkStateDistrict[x];
+        self.listDistrictElement.emit("change");
+      }
+    }
+  });
+  self.listDistrictElement = NewStreet_({
+    tag: "selectmenu",
+    "class": "pizo-new-ward-container-district-container-input",
+    props: {
+      enableSearch: true
+    },
+    on: {
+      change: function change(event) {
+        var x = getIDCompair(this.value);
+        self.listWardElement.items = self.checkDistrictWard[x];
+        self.listWardElement.emit("change");
+      }
+    }
+  });
+  self.listWardElement = NewStreet_({
+    tag: "selectmenu",
+    "class": "pizo-new-ward-container-district-container-input",
+    props: {
+      enableSearch: true
+    },
+    on: {
+      change: function change(event) {}
+    }
+  });
+  var arr = [];
+  arr.push(ModuleDatabase["a" /* default */].getModule("wards").load());
+  arr.push(ModuleDatabase["a" /* default */].getModule("districts").load());
+  arr.push(ModuleDatabase["a" /* default */].getModule("states").load());
+  Promise.all(arr).then(function (values) {
+    var listWard = values[0];
+    var listDistrict = values[1];
+    var listState = values[2];
+    self.setListParamState(listState);
+    self.listStateElement.items = self.listState;
+    self.setListParamDistrict(listDistrict); // self.listDistrictElement.items = self.listDistrict;
+
+    self.setListParamWard(listWard); // self.listWardElement.items = self.listWard;
+
+    if (self.data !== undefined) {
+      var x = parseInt(self.data.original.wardid);
+      var checkidState = self.checkState[self.checkDistrict[self.checkWard[x].districtid].stateid].name + "_" + self.checkDistrict[self.checkWard[x].districtid].stateid;
+      self.listStateElement.value = checkidState;
+      self.listStateElement.emit("change");
+      var checkid = self.checkDistrict[self.checkWard[x].districtid].name + "_" + self.checkWard[x].districtid;
+      self.listDistrictElement.value = checkid;
+      self.listDistrictElement.emit("change");
+      self.listWardElement.value = self.checkWard[self.data.original.wardid].name + "_" + self.data.original.wardid;
+    }
+  });
+  this.$view.addChild(NewStreet_({
     tag: "div",
     "class": ["pizo-list-realty-main"],
     child: [{
@@ -61205,6 +61616,26 @@ NewDistrict_NewDistrict.prototype.getView = function (data) {
           }]
         }, {
           tag: "div",
+          "class": "pizo-new-ward-container-ward-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-ward-container-ward-container-label",
+            props: {
+              innerHTML: "Phường/Xã"
+            }
+          }, self.listWardElement]
+        }, {
+          tag: "div",
+          "class": "pizo-new-ward-container-district-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-ward-container-district-container-label",
+            props: {
+              innerHTML: "Quận/Huyện"
+            }
+          }, self.listDistrictElement]
+        }, {
+          tag: "div",
           "class": "pizo-new-state-container-nation-container",
           child: [{
             tag: "span",
@@ -61212,45 +61643,59 @@ NewDistrict_NewDistrict.prototype.getView = function (data) {
             props: {
               innerHTML: "Tỉnh/Thành phố"
             }
-          }, {
-            tag: "selectmenu",
-            "class": "pizo-new-state-container-nation-container-input",
-            props: {
-              enableSearch: true,
-              items: data
-            }
-          }]
+          }, self.listStateElement]
         }]
       }]
     }]
   }));
   this.createPromise();
-  this.name = NewDistrict_$('input.pizo-new-state-container-name-container-input', this.$view);
-  this.state = NewDistrict_$('div.pizo-new-state-container-nation-container-input', this.$view);
+  this.name = NewStreet_$('input.pizo-new-state-container-name-container-input', this.$view);
+  this.district = self.listDistrictElement;
 
   if (this.data !== undefined) {
     this.name.value = this.data.original.name;
-    this.state.value = this.data.original.stateid;
   }
 
   return this.$view;
 };
 
-NewDistrict_NewDistrict.prototype.getDataSave = function () {
+NewStreet_NewStreet.prototype.setListParamWard = function (value) {
+  this.checkWard = ModuleDatabase["a" /* default */].getModule("wards").getLibary("id");
+  this.checkDistrictWard = ModuleDatabase["a" /* default */].getModule("wards").getLibary("districtid", function (data) {
+    return {
+      text: data.name,
+      value: data.name + "_" + data.id
+    };
+  }, true); // this.listWard = moduleDatabase.getModule("wards").getList("name",["name","id"]);
+};
+
+NewStreet_NewStreet.prototype.setListParamDistrict = function (value) {
+  this.checkDistrict = ModuleDatabase["a" /* default */].getModule("districts").getLibary("id");
+  this.checkStateDistrict = ModuleDatabase["a" /* default */].getModule("districts").getLibary("stateid", function (data) {
+    return {
+      text: data.name,
+      value: data.name + "_" + data.id
+    };
+  }, true); // this.listDistrict = moduleDatabase.getModule("districts").getList("name",["name","id"]);
+};
+
+NewStreet_NewStreet.prototype.setListParamState = function () {
+  this.checkState = ModuleDatabase["a" /* default */].getModule("states").getLibary("id");
+  this.listState = ModuleDatabase["a" /* default */].getModule("states").getList("name", ["name", "id"]);
+  this.isLoaded = true;
+};
+
+NewStreet_NewStreet.prototype.getDataSave = function () {
   var temp = {
     id: this.data === undefined ? undefined : this.data.original.id,
     name: this.name.value,
-    stateid: this.state.value
+    wardid: getIDCompair(this.listWardElement.value)
   };
-
-  if (this.data !== undefined) {
-    temp.id = this.data.original.id;
-  }
-
+  if (this.data !== undefined) temp.id = this.data.original.id;
   return temp;
 };
 
-NewDistrict_NewDistrict.prototype.createPromise = function () {
+NewStreet_NewStreet.prototype.createPromise = function () {
   var self = this;
 
   if (this.data === undefined) {
@@ -61266,26 +61711,26 @@ NewDistrict_NewDistrict.prototype.createPromise = function () {
   }
 };
 
-NewDistrict_NewDistrict.prototype.resetPromise = function (value) {
+NewStreet_NewStreet.prototype.resetPromise = function (value) {
   if (self.promiseAddDB !== undefined) self.promiseAddDB = undefined;
   if (self.promiseEditDB !== undefined) self.promiseEditDB = undefined;
 };
 
-NewDistrict_NewDistrict.prototype.refresh = function () {
+NewStreet_NewStreet.prototype.refresh = function () {
   var data;
   var editor = this.getContext(R.LAYOUT_EDITOR);
   if (editor) data = editor.getData();
   if (data) this.setData(data);
 };
 
-NewDistrict_NewDistrict.prototype.setData = function (data) {
+NewStreet_NewStreet.prototype.setData = function (data) {
   this.data = data;
   this.data.tracking = "OK";
   this.dataFlushed = false;
   if (this.state == "RUNNING") this.flushDataToView();
 };
 
-NewDistrict_NewDistrict.prototype.flushDataToView = function () {
+NewStreet_NewStreet.prototype.flushDataToView = function () {
   if (this.dataFlushed) return;
   this.dataFlushed = true; //TODO: remove older view
 
@@ -61301,9 +61746,9 @@ NewDistrict_NewDistrict.prototype.flushDataToView = function () {
   }
 };
 
-NewDistrict_NewDistrict.prototype.start = function () {};
+NewStreet_NewStreet.prototype.start = function () {};
 
-/* harmony default export */ var component_NewDistrict = (NewDistrict_NewDistrict);
+/* harmony default export */ var component_NewStreet = (NewStreet_NewStreet);
 // CONCATENATED MODULE: ./js/page/ListStreet.js
 
 
@@ -61453,6 +61898,9 @@ ListStreet_ListStreet.prototype.getView = function () {
   var tabContainer = ListStreet_({
     tag: "div",
     "class": ["pizo-list-realty-main-result-control", "drag-zone-bg", "no-animation"],
+    style: {
+      height: "calc(100% - 63px)"
+    },
     child: []
   });
 
@@ -61461,10 +61909,6 @@ ListStreet_ListStreet.prototype.getView = function () {
   var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
     docTypeMemuProps = {
       items: [{
-        text: 'Thêm',
-        icon: 'span.mdi.mdi-text-short',
-        value: 0
-      }, {
         text: 'Sửa',
         icon: 'span.mdi.mdi-text-short',
         value: 1
@@ -61476,10 +61920,6 @@ ListStreet_ListStreet.prototype.getView = function () {
     };
     token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
       switch (menuItem.value) {
-        case 0:
-          self.add(data.original.id, row);
-          break;
-
         case 1:
           self.edit(data, parent, index);
           break;
@@ -61587,6 +62027,7 @@ ListStreet_ListStreet.prototype.setListParamDitrict = function (value) {
 ListStreet_ListStreet.prototype.setListParamState = function (value) {
   this.checkState = ModuleDatabase["a" /* default */].getModule("states").getLibary("id");
   this.listState = ModuleDatabase["a" /* default */].getModule("states").getList("name", ["name", "id"]);
+  this.isLoaded = true;
 };
 
 ListStreet_ListStreet.prototype.getDataParam = function () {
@@ -61643,6 +62084,9 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
   var self = this;
   self.listStateElement = ListStreet_({
     tag: "selectmenu",
+    style: {
+      width: "100%"
+    },
     props: {
       enableSearch: true
     },
@@ -61655,6 +62099,9 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
   });
   self.listDistrictElement = ListStreet_({
     tag: "selectmenu",
+    style: {
+      width: "100%"
+    },
     props: {
       enableSearch: true
     },
@@ -61696,6 +62143,9 @@ ListStreet_ListStreet.prototype.searchControlContent = function () {
   });
   self.listWardElement = ListStreet_({
     tag: "selectmenu",
+    style: {
+      width: "100%"
+    },
     props: {
       enableSearch: true
     },
@@ -61794,32 +62244,28 @@ ListStreet_ListStreet.prototype.add = function () {
   var row = arguments.length > 1 ? arguments[1] : undefined;
   if (!this.isLoaded) return;
   var self = this;
-  var mNewDistrict = new component_NewDistrict(undefined, parent_id);
-  mNewDistrict.attach(self.parent);
-  var frameview = mNewDistrict.getView(self.getDataParam());
+  var mNewStreet = new component_NewStreet(undefined, parent_id);
+  mNewStreet.attach(self.parent);
+  var frameview = mNewStreet.getView(self.listParam);
   self.parent.body.addChild(frameview);
   self.parent.body.activeFrame(frameview);
-  self.addDB(mNewDistrict, row);
+  self.addDB(mNewStreet, row);
 };
 
-ListStreet_ListStreet.prototype.addDB = function (mNewDistrict, row) {
+ListStreet_ListStreet.prototype.addDB = function (mNewStreet, row) {
   var self = this;
-  mNewDistrict.promiseAddDB.then(function (value) {
-    var phpFile = ModuleDatabase["a" /* default */].addStatesPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    ModuleDatabase["a" /* default */].updateData(phpFile, value).then(function (result) {
+  mNewStreet.promiseAddDB.then(function (value) {
+    ModuleDatabase["a" /* default */].getModule("streets").add(value).then(function (result) {
       self.addView(result.data, row);
     });
-    mNewDistrict.promiseAddDB = undefined;
+    mNewStreet.promiseAddDB = undefined;
     setTimeout(function () {
-      if (mNewDistrict.promiseAddDB !== undefined) self.addDB(mNewDistrict);
+      if (mNewStreet.promiseAddDB !== undefined) self.addDB(mNewStreet);
     }, 10);
   });
 };
 
 ListStreet_ListStreet.prototype.addView = function (value, parent) {
-  value.created = getGMT();
-  value.modified = getGMT();
   var result = this.getDataRow(value);
   var element = this.mTable;
   element.insertRow(result);
@@ -61828,33 +62274,29 @@ ListStreet_ListStreet.prototype.addView = function (value, parent) {
 ListStreet_ListStreet.prototype.edit = function (data, parent, index) {
   if (!this.isLoaded) return;
   var self = this;
-  var mNewDistrict = new component_NewDistrict(data);
-  mNewDistrict.attach(self.parent);
-  var frameview = mNewDistrict.getView(self.getDataParam());
+  var mNewStreet = new component_NewStreet(data);
+  mNewStreet.attach(self.parent);
+  var frameview = mNewStreet.getView(self.listParam);
   self.parent.body.addChild(frameview);
   self.parent.body.activeFrame(frameview);
-  self.editDB(mNewDistrict, data, parent, index);
+  self.editDB(mNewStreet, data, parent, index);
 };
 
-ListStreet_ListStreet.prototype.editDB = function (mNewDistrict, data, parent, index) {
+ListStreet_ListStreet.prototype.editDB = function (mNewStreet, data, parent, index) {
   var self = this;
-  mNewDistrict.promiseEditDB.then(function (value) {
-    var phpFile = ModuleDatabase["a" /* default */].updateStatesPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
+  mNewStreet.promiseEditDB.then(function (value) {
     value.id = data.original.id;
-    ModuleDatabase["a" /* default */].updateData(phpFile, value).then(function (result) {
+    ModuleDatabase["a" /* default */].getModule("streets").update(value).then(function (result) {
       self.editView(value, data, parent, index);
     });
-    mNewDistrict.promiseEditDB = undefined;
+    mNewStreet.promiseEditDB = undefined;
     setTimeout(function () {
-      if (mNewDistrict.promiseEditDB !== undefined) self.editDB(mNewDistrict, data, parent, index);
+      if (mNewStreet.promiseEditDB !== undefined) self.editDB(mNewStreet, data, parent, index);
     }, 10);
   });
 };
 
 ListStreet_ListStreet.prototype.editView = function (value, data, parent, index) {
-  value.created = data.original.created;
-  value.modified = getGMT();
   var data = this.getDataRow(value);
   var indexOF = index,
       element = parent;
@@ -61879,9 +62321,9 @@ ListStreet_ListStreet.prototype.deleteView = function (parent, index) {
 
 ListStreet_ListStreet.prototype.deleteDB = function (data, parent, index) {
   var self = this;
-  var phpFile = ModuleDatabase["a" /* default */].deleteStatesPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  ModuleDatabase["a" /* default */].updateData(phpFile, data).then(function (value) {
+  ModuleDatabase["a" /* default */].getModule("streets")["delete"]({
+    id: data.id
+  }).then(function (value) {
     self.deleteView(parent, index);
   });
 };
@@ -62371,9 +62813,23 @@ ListState_ListState.prototype.getView = function () {
         }
       }];
       self.mTable = new tableView(header, self.formatDataRow(value), true, true, 2);
-      self.mTable.setUpSwipe(true, false);
       tabContainer.addChild(self.mTable);
       self.mTable.addInputSearch(ListState_$('.pizo-list-realty-page-allinput-container input', self.$view));
+      self.mTable.setUpSwipe(undefined, [{
+        icon: "close",
+        iconStyle: {
+          color: "white"
+        },
+        text: "Test",
+        background: "green"
+      }, {
+        icon: "close",
+        iconStyle: {
+          color: "white"
+        },
+        text: "Test",
+        background: "blue"
+      }]);
     });
   });
   this.searchControl = this.searchControlContent();
@@ -62629,6 +63085,214 @@ ListState_ListState.prototype.start = function () {};
 // EXTERNAL MODULE: ./css/ListDistrict.css
 var ListDistrict = __webpack_require__(210);
 
+// EXTERNAL MODULE: ./css/NewDistrict.css
+var NewDistrict = __webpack_require__(212);
+
+// CONCATENATED MODULE: ./js/component/NewDistrict.js
+
+
+
+
+
+
+var NewDistrict_ = dom_Fcore._;
+var NewDistrict_$ = dom_Fcore.$;
+
+function NewDistrict_NewDistrict(data) {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.textHeader = "Sửa ";
+  this.data = data;
+  if (this.data == undefined) this.textHeader = "Thêm ";
+}
+
+NewDistrict_NewDistrict.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(NewDistrict_NewDistrict.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NewDistrict_NewDistrict.prototype.constructor = NewDistrict_NewDistrict;
+
+NewDistrict_NewDistrict.prototype.getView = function (data) {
+  if (this.$view) return this.$view;
+  var self = this;
+  this.$view = NewDistrict_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: self.textHeader + "Quận/Huyện"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+              self.rejectDB(self.getDataSave());
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.createPromise();
+            }
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.resolveDB(self.getDataSave());
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Lưu và đóng" + '</span>']
+        }]
+      }]
+    }]
+  });
+  this.$view.addChild(NewDistrict_({
+    tag: "div",
+    "class": ["pizo-list-realty-main"],
+    child: [{
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [{
+        tag: "div",
+        "class": "pizo-new-state-container",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-state-container-name-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-name-container-label",
+            props: {
+              innerHTML: "Tên"
+            }
+          }, {
+            tag: "input",
+            "class": ["pizo-new-state-container-name-container-input", "pizo-new-realty-dectruct-input"]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-state-container-nation-container",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-state-container-nation-container-label",
+            props: {
+              innerHTML: "Tỉnh/Thành phố"
+            }
+          }, {
+            tag: "selectmenu",
+            "class": "pizo-new-state-container-nation-container-input",
+            props: {
+              enableSearch: true,
+              items: data
+            }
+          }]
+        }]
+      }]
+    }]
+  }));
+  this.createPromise();
+  this.name = NewDistrict_$('input.pizo-new-state-container-name-container-input', this.$view);
+  this.state = NewDistrict_$('div.pizo-new-state-container-nation-container-input', this.$view);
+
+  if (this.data !== undefined) {
+    this.name.value = this.data.original.name;
+    this.state.value = this.data.original.stateid;
+  }
+
+  return this.$view;
+};
+
+NewDistrict_NewDistrict.prototype.getDataSave = function () {
+  var temp = {
+    id: this.data === undefined ? undefined : this.data.original.id,
+    name: this.name.value,
+    stateid: this.state.value
+  };
+
+  if (this.data !== undefined) {
+    temp.id = this.data.original.id;
+  }
+
+  return temp;
+};
+
+NewDistrict_NewDistrict.prototype.createPromise = function () {
+  var self = this;
+
+  if (this.data === undefined) {
+    self.promiseAddDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  } else {
+    self.promiseEditDB = new Promise(function (resolve, reject) {
+      self.resolveDB = resolve;
+      self.rejectDB = reject;
+    });
+  }
+};
+
+NewDistrict_NewDistrict.prototype.resetPromise = function (value) {
+  if (self.promiseAddDB !== undefined) self.promiseAddDB = undefined;
+  if (self.promiseEditDB !== undefined) self.promiseEditDB = undefined;
+};
+
+NewDistrict_NewDistrict.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+NewDistrict_NewDistrict.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+NewDistrict_NewDistrict.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+NewDistrict_NewDistrict.prototype.start = function () {};
+
+/* harmony default export */ var component_NewDistrict = (NewDistrict_NewDistrict);
 // CONCATENATED MODULE: ./js/page/ListDistrict.js
 
 
@@ -62777,6 +63441,9 @@ ListDistrict_ListDistrict.prototype.getView = function () {
   var tabContainer = ListDistrict_({
     tag: "div",
     "class": ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+    style: {
+      height: "calc(100% - 60px)"
+    },
     child: []
   });
 
@@ -63159,7 +63826,7 @@ ListDistrict_ListDistrict.prototype.start = function () {};
 
 /* harmony default export */ var page_ListDistrict = (ListDistrict_ListDistrict);
 // EXTERNAL MODULE: ./css/PlanningInformation.css
-var PlanningInformation = __webpack_require__(212);
+var PlanningInformation = __webpack_require__(214);
 
 // CONCATENATED MODULE: ./js/page/PlanningInformation.js
 function PlanningInformation_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { PlanningInformation_typeof = function _typeof(obj) { return typeof obj; }; } else { PlanningInformation_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return PlanningInformation_typeof(obj); }
@@ -64009,7 +64676,7 @@ PlanningInformation_PlanningInformation.prototype.start = function () {};
 var ListHelp = __webpack_require__(29);
 
 // EXTERNAL MODULE: ./css/HelpContainer.css
-var HelpContainer = __webpack_require__(215);
+var HelpContainer = __webpack_require__(217);
 
 // CONCATENATED MODULE: ./js/component/HelpContainer.js
 
@@ -64338,10 +65005,10 @@ ListHelp_ListHelp.prototype.start = function () {};
 
 /* harmony default export */ var page_ListHelp = (ListHelp_ListHelp);
 // EXTERNAL MODULE: ./css/EditHelpContainer.css
-var EditHelpContainer = __webpack_require__(217);
+var EditHelpContainer = __webpack_require__(219);
 
 // EXTERNAL MODULE: ./css/NewCategory.css
-var NewCategory = __webpack_require__(219);
+var NewCategory = __webpack_require__(221);
 
 // CONCATENATED MODULE: ./js/component/EditHelpContainer.js
 
@@ -65451,10 +66118,10 @@ ListEditHelp_ListHelp.prototype.start = function () {};
 
 /* harmony default export */ var ListEditHelp = (ListEditHelp_ListHelp);
 // EXTERNAL MODULE: ./css/ListPositions.css
-var ListPositions = __webpack_require__(221);
+var ListPositions = __webpack_require__(223);
 
 // EXTERNAL MODULE: ./css/NewDepartment.css
-var NewDepartment = __webpack_require__(223);
+var NewDepartment = __webpack_require__(225);
 
 // CONCATENATED MODULE: ./js/component/NewDepartment.js
 
@@ -65704,7 +66371,7 @@ NewDepartment_NewDepartment.prototype.start = function () {};
 
 /* harmony default export */ var component_NewDepartment = (NewDepartment_NewDepartment);
 // EXTERNAL MODULE: ./css/NewPosition.css
-var NewPosition = __webpack_require__(225);
+var NewPosition = __webpack_require__(227);
 
 // CONCATENATED MODULE: ./js/component/NewPosition.js
 
@@ -66581,7 +67248,7 @@ ListPositions_ListPositions.prototype.addDBDepartment = function (mNewDepartment
 };
 
 ListPositions_ListPositions.prototype.addViewDepartment = function (value, parent) {
-  var result = [value.name, value.code, {}];
+  var result = [{}, value.name, value.code, {}];
   result.original = value;
   var element = parent;
   if (value.parent_id == 0) element = this.mTable;else for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
@@ -66840,7 +67507,7 @@ ListPositions_ListPositions.prototype.start = function () {};
 
 /* harmony default export */ var page_ListPositions = (ListPositions_ListPositions);
 // EXTERNAL MODULE: ./css/ListAccount.css
-var ListAccount = __webpack_require__(227);
+var ListAccount = __webpack_require__(229);
 
 // CONCATENATED MODULE: ./js/page/ListAccount.js
 
@@ -67573,709 +68240,6 @@ ListAccount_ListAccount.prototype.flushDataToView = function () {
 ListAccount_ListAccount.prototype.start = function () {};
 
 /* harmony default export */ var page_ListAccount = (ListAccount_ListAccount);
-// EXTERNAL MODULE: ./css/ListAdress.css
-var ListAdress = __webpack_require__(229);
-
-// CONCATENATED MODULE: ./js/page/ListAddress.js
-
-
-
-
-
-
-
-
-
-
-var ListAddress_ = dom_Fcore._;
-var ListAddress_$ = dom_Fcore.$;
-
-function ListAddress_ListAdress() {
-  component_BaseView.call(this);
-  AppPattern_Fragment.call(this);
-  this.cmdRunner = new AppPattern_CMDRunner(this);
-  this.loadConfig();
-}
-
-ListAddress_ListAdress.prototype.setContainer = function (parent) {
-  this.parent = parent;
-};
-
-Object.defineProperties(ListAddress_ListAdress.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
-ListAddress_ListAdress.prototype.constructor = ListAddress_ListAdress;
-
-ListAddress_ListAdress.prototype.getView = function () {
-  if (this.$view) return this.$view;
-  var self = this;
-
-  var input = ListAddress_({
-    tag: "input",
-    "class": "quantumWizTextinputPaperinputInput",
-    on: {
-      change: function change() {
-        self.mTable.updatePagination(this.value);
-      }
-    },
-    props: {
-      type: "number",
-      autocomplete: "off",
-      min: 1,
-      max: 200,
-      step: 1,
-      value: 50
-    }
-  });
-
-  var allinput = ListAddress_({
-    tag: "input",
-    "class": "pizo-list-realty-page-allinput-input",
-    props: {
-      placeholder: "Tìm kiếm"
-    }
-  });
-
-  if (window.mobilecheck()) {
-    allinput.placeholder = "Tìm kiếm";
-  }
-
-  this.$view = ListAddress_({
-    tag: 'singlepage',
-    "class": "pizo-list-realty",
-    child: [{
-      "class": 'absol-single-page-header',
-      child: [{
-        tag: "span",
-        "class": "pizo-body-title-left",
-        props: {
-          innerHTML: "Quản lý địa chỉ"
-        }
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-button",
-        child: [{
-          tag: "button",
-          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
-          on: {
-            click: function click(evt) {
-              self.$view.selfRemove();
-              var arr = self.parent.body.getAllChild();
-              self.parent.body.activeFrame(arr[arr.length - 1]);
-            }
-          },
-          child: ['<span>' + "Đóng" + '</span>']
-        }, {
-          tag: "button",
-          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
-          on: {
-            click: function click(evt) {
-              self.add();
-            }
-          },
-          child: ['<span>' + "Thêm" + '</span>']
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-page-allinput",
-        child: [{
-          tag: "div",
-          "class": "pizo-list-realty-page-allinput-container",
-          child: [allinput, {
-            tag: "button",
-            "class": "pizo-list-realty-page-allinput-search",
-            child: [{
-              tag: 'i',
-              "class": 'material-icons',
-              props: {
-                innerHTML: 'search'
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-page-allinput-filter",
-          on: {
-            click: function click(event) {
-              self.searchControl.show();
-            }
-          },
-          child: [{
-            tag: 'filter-ico'
-          }, {
-            tag: "span",
-            "class": "navbar-search__filter-text",
-            props: {
-              innerHTML: "Lọc"
-            }
-          }]
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-list-realty-page-number-line",
-        child: [input, {
-          tag: "span",
-          "class": "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
-          props: {
-            innerHTML: "Số dòng"
-          }
-        }]
-      }]
-    }]
-  });
-
-  var tabContainer = ListAddress_({
-    tag: "div",
-    "class": ["pizo-list-realty-main-result-control", "drag-zone-bg", "no-animation"],
-    child: []
-  });
-
-  var docTypeMemuProps, token, functionX;
-
-  var functionClickMore = function functionClickMore(event, me, index, parent, data, row) {
-    docTypeMemuProps = {
-      items: [{
-        text: 'Thêm',
-        icon: 'span.mdi.mdi-text-short',
-        value: 0
-      }, {
-        text: 'Sửa',
-        icon: 'span.mdi.mdi-text-short',
-        value: 1
-      }, {
-        text: 'Xóa',
-        icon: 'span.mdi.mdi-text',
-        value: 2
-      }]
-    };
-    token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
-      switch (menuItem.value) {
-        case 0:
-          self.add(data.original.id, row);
-          break;
-
-        case 1:
-          self.edit(data, parent, index);
-          break;
-
-        case 2:
-          self["delete"](data.original, parent, index);
-          break;
-      }
-    });
-
-    functionX = function (token) {
-      return function () {
-        var x = function x(event) {
-          absol.QuickMenu.close(token);
-          document.body.removeEventListener("click", x);
-        };
-
-        document.body.addEventListener("click", x);
-      };
-    }(token);
-
-    setTimeout(functionX, 10);
-  };
-
-  var arr = [];
-  arr.push(ModuleDatabase["a" /* default */].getModule("addresses").load());
-  arr.push(ModuleDatabase["a" /* default */].getModule("streets").load());
-  arr.push(ModuleDatabase["a" /* default */].getModule("wards").load());
-  arr.push(ModuleDatabase["a" /* default */].getModule("districts").load());
-  arr.push(ModuleDatabase["a" /* default */].getModule("states").load());
-  Promise.all(arr).then(function () {
-    self.setListParamStreet();
-    self.setListParamDitrict();
-    self.setListParamState();
-    self.setListParamWard();
-    self.listStateElement.items = self.listState;
-    self.listDistrictElement.items = self.listDistrict;
-    self.listWardElement.items = self.listWard;
-    var header = [{
-      type: "increase",
-      value: "#",
-      style: {
-        minWidth: "50px",
-        width: "50px"
-      }
-    }, {
-      value: 'MS',
-      sort: true,
-      style: {
-        minWidth: "50px",
-        width: "50px"
-      }
-    }, {
-      value: 'Số nhà',
-      sort: true,
-      style: {
-        minWidth: "unset"
-      }
-    }, {
-      value: 'Đường',
-      sort: true,
-      style: {
-        minWidth: "unset"
-      }
-    }, {
-      value: 'Phường/Xã',
-      sort: true,
-      style: {
-        minWidth: "unset"
-      }
-    }, {
-      value: 'Quận/Huyện',
-      sort: true,
-      style: {
-        minWidth: "unset"
-      }
-    }, {
-      value: 'Tỉnh/TP',
-      sort: true,
-      style: {
-        minWidth: "unset"
-      }
-    }, {
-      type: "detail",
-      functionClickAll: functionClickMore,
-      icon: "",
-      dragElement: false,
-      style: {
-        width: "30px"
-      }
-    }];
-    self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-    tabContainer.addChild(self.mTable);
-    self.mTable.addInputSearch(ListAddress_$('.pizo-list-realty-page-allinput-container input', self.$view));
-    self.mTable.addFilter(self.listWardElement, 4);
-    self.mTable.addFilter(self.listDistrictElement, 5);
-    self.mTable.addFilter(self.listStateElement, 6);
-  });
-  this.searchControl = this.searchControlContent();
-  this.$view.addChild(ListAddress_({
-    tag: "div",
-    "class": ["pizo-list-realty-main"],
-    child: [this.searchControl, tabContainer]
-  }));
-  return this.$view;
-};
-
-ListAddress_ListAdress.prototype.setListParamStreet = function () {
-  this.checkStreet = ModuleDatabase["a" /* default */].getModule("streets").getLibary("id");
-  this.listStreet = ModuleDatabase["a" /* default */].getModule("streets").getList("name", ["name", "id"]);
-};
-
-ListAddress_ListAdress.prototype.setListParamWard = function () {
-  this.checkWard = ModuleDatabase["a" /* default */].getModule("wards").getLibary("id");
-  this.listWard = [{
-    text: "Tất cả",
-    value: 0
-  }].concat(ModuleDatabase["a" /* default */].getModule("wards").getList("name", ["name", "id"]));
-  this.checkWardDistrict = ModuleDatabase["a" /* default */].getModule("wards").getLibary("districtid", function (data) {
-    return {
-      text: data.name,
-      value: data.name + "_" + data.id
-    };
-  }, true);
-};
-
-ListAddress_ListAdress.prototype.setListParamDitrict = function () {
-  this.checkDistrict = ModuleDatabase["a" /* default */].getModule("districts").getLibary("id");
-  this.listDistrict = [{
-    text: "Tất cả",
-    value: 0
-  }].concat(ModuleDatabase["a" /* default */].getModule("districts").getList("name", ["name", "id"]));
-  this.checkDistrictState = ModuleDatabase["a" /* default */].getModule("districts").getLibary("stateid", function (data) {
-    return {
-      text: data.name,
-      value: data.name + "_" + data.id
-    };
-  }, true);
-};
-
-ListAddress_ListAdress.prototype.setListParamState = function () {
-  this.checkState = ModuleDatabase["a" /* default */].getModule("states").getLibary("id");
-  this.listState = [{
-    text: "Tất cả",
-    value: 0
-  }].concat(ModuleDatabase["a" /* default */].getModule("states").getList("name", ["name", "id"]));
-  this.isLoaded = true;
-};
-
-ListAddress_ListAdress.prototype.getDataParam = function () {
-  return this.listParam;
-};
-
-ListAddress_ListAdress.prototype.formatDataRow = function (data) {
-  var temp = [];
-  var check = [];
-  var k = 0;
-
-  for (var i = 0; i < data.length; i++) {
-    var result = this.getDataRow(data[i]);
-
-    if (check[data[i].parent_id] !== undefined) {
-      if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
-      check[data[i].parent_id].child.push(result);
-    } else temp[k++] = result;
-
-    check[data[i].id] = result;
-  }
-
-  return temp;
-};
-
-ListAddress_ListAdress.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.addressnumber, {
-    element: ListAddress_({
-      text: this.checkStreet[data.streetid].name
-    }),
-    value: this.checkStreet[data.streetid].name + "_" + this.checkStreet[data.streetid].id
-  }, {
-    element: ListAddress_({
-      text: this.checkWard[data.wardid].name
-    }),
-    value: this.checkWard[data.wardid].name + "_" + this.checkWard[data.wardid].id
-  }, {
-    element: ListAddress_({
-      text: this.checkDistrict[this.checkWard[data.wardid].districtid].name
-    }),
-    value: this.checkDistrict[this.checkWard[data.wardid].districtid].name + "_" + this.checkDistrict[this.checkWard[data.wardid].districtid].id
-  }, {
-    element: ListAddress_({
-      text: this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name
-    }),
-    value: this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].name + "_" + this.checkState[this.checkDistrict[this.checkWard[data.wardid].districtid].stateid].id
-  }, {}];
-  result.original = data;
-  return result;
-};
-
-ListAddress_ListAdress.prototype.formatDataList = function (data) {
-  var temp = [{
-    text: "Tất cả",
-    value: 0
-  }];
-
-  for (var i = 0; i < data.length; i++) {
-    temp[i + 1] = {
-      text: data[i].name,
-      value: data[i].id
-    };
-  }
-
-  return temp;
-};
-
-ListAddress_ListAdress.prototype.searchControlContent = function () {
-  var self = this;
-  self.listStateElement = ListAddress_({
-    tag: "selectmenu",
-    props: {
-      enableSearch: true,
-      items: [{
-        text: "Tất cả",
-        value: 0
-      }]
-    },
-    on: {
-      change: function change(event) {
-        if (this.value == 0) {
-          self.listDistrictElement.items = self.listDistrict;
-        } else {
-          if (event !== undefined) {
-            self.listDistrictElement.value = 0;
-          }
-
-          self.listDistrictElement.items = [{
-            text: "Tất cả",
-            value: 0
-          }].concat(self.checkDistrictState[this.value.slice(this.value.lastIndexOf("_") + 1)]);
-          self.listDistrictElement.emit('change');
-        }
-      }
-    }
-  });
-  self.listDistrictElement = ListAddress_({
-    tag: "selectmenu",
-    props: {
-      enableSearch: true,
-      items: [{
-        text: "Tất cả",
-        value: 0
-      }]
-    },
-    on: {
-      change: function change(event) {
-        if (this.value == 0) {
-          self.listWardElement.items = self.listWard;
-        } else {
-          var checkResult = self.checkState[self.checkDistrict[this.value.slice(this.value.lastIndexOf("_") + 1)].stateid];
-          var checkid = checkResult.name + "_" + checkResult.id;
-
-          if (self.listStateElement.value != checkid) {
-            self.listStateElement.value = checkid;
-            self.listStateElement.emit('change');
-          }
-
-          if (event !== undefined) {
-            self.listWardElement.value = 0;
-          }
-
-          self.listWardElement.items = [{
-            text: "Tất cả",
-            value: 0
-          }].concat(self.checkWardDistrict[this.value.slice(this.value.lastIndexOf("_") + 1)]);
-          self.listWardElement.emit('change');
-        }
-      }
-    }
-  });
-  self.listWardElement = ListAddress_({
-    tag: "selectmenu",
-    props: {
-      enableSearch: true,
-      items: [{
-        text: "Tất cả",
-        value: 0
-      }]
-    },
-    on: {
-      change: function change(event) {
-        if (this.value !== 0) {
-          var checkResult = self.checkDistrict[self.checkWard[this.value.slice(this.value.lastIndexOf("_") + 1)].districtid];
-          var checkid = checkResult.name + "_" + checkResult.id;
-
-          if (self.listDistrictElement.value != checkid) {
-            self.listDistrictElement.value = checkid;
-            self.listDistrictElement.emit('change');
-          }
-        }
-      }
-    }
-  });
-
-  var content = ListAddress_({
-    tag: "div",
-    "class": "pizo-list-realty-main-search-control-container",
-    on: {
-      click: function click(event) {
-        event.stopPropagation();
-      }
-    },
-    child: [{
-      tag: "div",
-      "class": "pizo-list-realty-main-search-control-container-scroller",
-      child: [{
-        tag: "div",
-        "class": "pizo-list-realty-main-search-control-row",
-        child: [{
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-state-ward",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-state-ward-label",
-            props: {
-              innerHTML: "Tỉnh/TP"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-state-ward-input",
-            child: [self.listStateElement]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-district-ward",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-district-ward-label",
-            props: {
-              innerHTML: "Quận/Huyện"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-district-ward-input",
-            child: [self.listDistrictElement]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-list-realty-main-search-control-row-district-ward",
-          child: [{
-            tag: "span",
-            "class": "pizo-list-realty-main-search-control-row-district-ward-label",
-            props: {
-              innerHTML: "Phường/Xã"
-            }
-          }, {
-            tag: "div",
-            "class": "pizo-list-realty-main-search-control-row-district-ward-input",
-            child: [self.listWardElement]
-          }]
-        }]
-      }]
-    }]
-  });
-
-  var temp = ListAddress_({
-    tag: "div",
-    "class": "pizo-list-realty-main-search-control",
-    on: {
-      click: function click(event) {
-        this.hide();
-      }
-    },
-    child: [content]
-  });
-
-  temp.content = content;
-  return temp;
-};
-
-ListAddress_ListAdress.prototype.getDataCurrent = function () {
-  return this.getDataChild(this.mTable.data);
-};
-
-ListAddress_ListAdress.prototype.getDataChild = function (arr) {
-  var self = this;
-  var result = [];
-
-  for (var i = 0; i < arr.length; i++) {
-    result.push(arr[i].original);
-    if (arr[i].child.length !== 0) result = result.concat(self.getDataChild(arr[i].child));
-  }
-
-  return result;
-};
-
-ListAddress_ListAdress.prototype.add = function () {
-  var parent_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-  var row = arguments.length > 1 ? arguments[1] : undefined;
-  if (!this.isLoaded) return;
-  var self = this;
-  var mNewDistrict = new component_NewDistrict(undefined, parent_id);
-  mNewDistrict.attach(self.parent);
-  var frameview = mNewDistrict.getView(self.getDataParam());
-  self.parent.body.addChild(frameview);
-  self.parent.body.activeFrame(frameview);
-  self.addDB(mNewDistrict, row);
-};
-
-ListAddress_ListAdress.prototype.addDB = function (mNewDistrict, row) {
-  var self = this;
-  mNewDistrict.promiseAddDB.then(function (value) {
-    var phpFile = ModuleDatabase["a" /* default */].addStatesPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    ModuleDatabase["a" /* default */].updateData(phpFile, value).then(function (result) {
-      self.addView(result.data, row);
-    });
-    mNewDistrict.promiseAddDB = undefined;
-    setTimeout(function () {
-      if (mNewDistrict.promiseAddDB !== undefined) self.addDB(mNewDistrict);
-    }, 10);
-  });
-};
-
-ListAddress_ListAdress.prototype.addView = function (value, parent) {
-  value.created = getGMT();
-  value.modified = getGMT();
-  var result = this.getDataRow(value);
-  var element = this.mTable;
-  element.insertRow(result);
-};
-
-ListAddress_ListAdress.prototype.edit = function (data, parent, index) {
-  if (!this.isLoaded) return;
-  var self = this;
-  var mNewDistrict = new component_NewDistrict(data);
-  mNewDistrict.attach(self.parent);
-  var frameview = mNewDistrict.getView(self.getDataParam());
-  self.parent.body.addChild(frameview);
-  self.parent.body.activeFrame(frameview);
-  self.editDB(mNewDistrict, data, parent, index);
-};
-
-ListAddress_ListAdress.prototype.editDB = function (mNewDistrict, data, parent, index) {
-  var self = this;
-  mNewDistrict.promiseEditDB.then(function (value) {
-    var phpFile = ModuleDatabase["a" /* default */].updateStatesPHP;
-    if (self.phpUpdateContent) phpFile = self.phpUpdateContent;
-    value.id = data.original.id;
-    ModuleDatabase["a" /* default */].updateData(phpFile, value).then(function (result) {
-      self.editView(value, data, parent, index);
-    });
-    mNewDistrict.promiseEditDB = undefined;
-    setTimeout(function () {
-      if (mNewDistrict.promiseEditDB !== undefined) self.editDB(mNewDistrict, data, parent, index);
-    }, 10);
-  });
-};
-
-ListAddress_ListAdress.prototype.editView = function (value, data, parent, index) {
-  value.created = data.original.created;
-  value.modified = getGMT();
-  var data = this.getDataRow(value);
-  var indexOF = index,
-      element = parent;
-  element.updateRow(data, indexOF, true);
-};
-
-ListAddress_ListAdress.prototype["delete"] = function (data, parent, index) {
-  if (!this.isLoaded) return;
-  var self = this;
-  var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
-  this.$view.addChild(deleteItem);
-  deleteItem.promiseComfirm.then(function () {
-    self.deleteDB(data, parent, index);
-  });
-};
-
-ListAddress_ListAdress.prototype.deleteView = function (parent, index) {
-  var self = this;
-  var bodyTable = parent.bodyTable;
-  parent.dropRow(index).then(function () {});
-};
-
-ListAddress_ListAdress.prototype.deleteDB = function (data, parent, index) {
-  var self = this;
-  var phpFile = ModuleDatabase["a" /* default */].deleteStatesPHP;
-  if (self.phpDeleteContent) phpFile = self.phpUpdateContent;
-  ModuleDatabase["a" /* default */].updateData(phpFile, data).then(function (value) {
-    self.deleteView(parent, index);
-  });
-};
-
-ListAddress_ListAdress.prototype.refresh = function () {
-  var data;
-  var editor = this.getContext(R.LAYOUT_EDITOR);
-  if (editor) data = editor.getData();
-  if (data) this.setData(data);
-};
-
-ListAddress_ListAdress.prototype.setData = function (data) {
-  this.data = data;
-  this.data.tracking = "OK";
-  this.dataFlushed = false;
-  if (this.state == "RUNNING") this.flushDataToView();
-};
-
-ListAddress_ListAdress.prototype.flushDataToView = function () {
-  if (this.dataFlushed) return;
-  this.dataFlushed = true; //TODO: remove older view
-
-  if (!this.data) return;
-  this.$content.clearChild();
-
-  if (this.data && this.$view) {
-    this.rootComponent = this.build(this.data);
-    this.$content.addChild(this.rootComponent.view);
-    this.rootComponent.onAttach();
-    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
-    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
-  }
-};
-
-ListAddress_ListAdress.prototype.start = function () {};
-
-/* harmony default export */ var ListAddress = (ListAddress_ListAdress);
 // EXTERNAL MODULE: ./css/ListContact.css
 var ListContact = __webpack_require__(231);
 
@@ -70392,6 +70356,14 @@ MapRealty_MapRealty.prototype.getView = function () {
   arr.push(ModuleDatabase["a" /* default */].getModule("states").load());
   arr.push(ModuleDatabase["a" /* default */].getModule("equipments").load());
   arr.push(ModuleDatabase["a" /* default */].getModule("juridicals").load());
+  ModuleDatabase["a" /* default */].getModule("users").load().then(function (value) {
+    self.checkUser = ModuleDatabase["a" /* default */].getModule("users").getLibary("phone");
+    self.checkUserID = ModuleDatabase["a" /* default */].getModule("users").getLibary("id");
+  });
+  ModuleDatabase["a" /* default */].getModule("contacts").load().then(function (value) {
+    self.checkContact = ModuleDatabase["a" /* default */].getModule("contacts").getLibary("phone");
+    self.checkContactID = ModuleDatabase["a" /* default */].getModule("contacts").getLibary("id");
+  });
   Promise.all(arr).then(function (values) {
     this.checkState = ModuleDatabase["a" /* default */].getModule("states").getLibary("id");
     this.checkDistrict = ModuleDatabase["a" /* default */].getModule("districts").getLibary("id");
@@ -70543,6 +70515,13 @@ MapRealty_MapRealty.prototype.modalRealty = function () {
         id: value[i].data.addressid
       });
       connect = "||";
+
+      if (value[i].addressid_old) {
+        arr.push(connect);
+        arr.push({
+          id: value[i].addressid_old
+        });
+      }
     }
 
     if (arr.length > 0) ModuleDatabase["a" /* default */].getModule("addresses").load({
@@ -70754,6 +70733,44 @@ MapRealty_MapRealty.prototype.modalLargeRealty = function (data) {
       statusIcon.style.color = "purple";
       break;
   }
+
+  self.buttonRange = MapRealty_({
+    tag: 'buttonrange',
+    props: {
+      items: [{
+        text: "Mô tả",
+        value: 0
+      }, {
+        text: "Thông tin xây dựng",
+        value: 1
+      }, {
+        text: "Giá",
+        value: 2
+      }, {
+        text: "Tiện ích trong nhà",
+        value: 3
+      }, {
+        text: "Thông tin liên hệ",
+        value: 4
+      }, {
+        text: "Pháp lý",
+        value: 5
+      }, {
+        text: "Lịch sử sở hữu",
+        value: 6
+      }]
+    },
+    on: {
+      change: function change(event) {
+        self.detailHouseView.childNodes[this.value].childNodes[0].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "start"
+        });
+      }
+    }
+  });
+  self.detailHouseView = self.detailHouse(data);
 
   var modal = MapRealty_({
     tag: "modal",
@@ -71085,35 +71102,7 @@ MapRealty_MapRealty.prototype.modalLargeRealty = function (data) {
                         }]
                       }]
                     }]
-                  }, {
-                    tag: 'buttonrange',
-                    props: {
-                      items: [{
-                        text: "Thông tin xây dựng",
-                        value: 0
-                      }, {
-                        text: "Giá",
-                        value: 1
-                      }, {
-                        text: "Tiện ích trong nhà",
-                        value: 2
-                      }, {
-                        text: "Thông tin liên hệ",
-                        value: 3
-                      }, {
-                        text: "Pháp lý",
-                        value: 4
-                      }, {
-                        text: "Lịch sử sở hữu",
-                        value: 5
-                      }]
-                    },
-                    on: {
-                      change: function change(event) {
-                        console.log(event.value, this.value);
-                      }
-                    }
-                  }, self.detailHouse(data) //    {
+                  }, self.buttonRange, self.detailHouseView //    {
                   //        tag:"div",
                   //        class:"ds-buttons",
                   //        child:[
@@ -71266,6 +71255,503 @@ MapRealty_MapRealty.prototype.modalLargeRealty = function (data) {
   return modal;
 };
 
+MapRealty_MapRealty.prototype.itemCount = function (data) {
+  var input = MapRealty_({
+    tag: "input",
+    "class": ["pizo-new-realty-dectruct-content-area-floor", "pizo-new-realty-dectruct-input"],
+    attr: {
+      type: "number",
+      min: 0,
+      step: 1
+    },
+    props: {
+      value: 1
+    }
+  });
+
+  if (data.content !== undefined) {
+    input.value = data.content;
+  }
+
+  var temp = MapRealty_({
+    tag: "div",
+    "class": ["pizo-new-realty-dectruct-content-area-size-zone-all"],
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-desc-detail-row",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-dectruct-content-area-floor-label",
+        props: {
+          innerHTML: data.name
+        }
+      }, input]
+    }]
+  });
+
+  temp.equipmentid = data.id;
+
+  temp.getData = function () {
+    var result = {
+      equipmentid: data.id,
+      content: input.value
+    };
+    return result;
+  };
+
+  return temp;
+};
+
+MapRealty_MapRealty.prototype.itemDisplayNone = function (data) {
+  var temp = MapRealty_({
+    tag: "div",
+    style: {
+      display: "none"
+    }
+  });
+
+  temp.equipmentid = data.id;
+
+  temp.getData = function () {
+    var result = {
+      equipmentid: data.id,
+      content: data.content
+    };
+    return result;
+  };
+
+  return temp;
+};
+
+MapRealty_MapRealty.prototype.convenientView = function (data) {
+  var self = this;
+  var dataEquipments = ModuleDatabase["a" /* default */].getModule("equipments").data;
+  var arr = [];
+
+  for (var i = 0; i < dataEquipments.length; i++) {
+    if (dataEquipments[i].available === 0) continue;
+    arr.push({
+      text: dataEquipments[i].name,
+      value: dataEquipments[i].id,
+      data: dataEquipments[i]
+    });
+  }
+
+  var container = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-dectruct-content-area-size"
+  });
+
+  var equipment = MapRealty_({
+    tag: "selectbox",
+    style: {
+      width: "100%",
+      pointerEvents: "none"
+    },
+    props: {
+      items: arr,
+      enableSearch: true
+    },
+    on: {
+      add: function add(event) {
+        switch (parseInt(event.itemData.data.type)) {
+          case 0:
+            container.appendChild(self.itemCount(event.itemData.data));
+            break;
+
+          case 1:
+            container.appendChild(self.itemDisplayNone(event.itemData.data));
+            break;
+        }
+      },
+      remove: function remove(event) {
+        for (var i = 0; i < container.childNodes.length; i++) {
+          if (container.childNodes[i].equipmentid == event.itemData.data.id) {
+            container.childNodes[i].selfRemove();
+            break;
+          }
+        }
+      }
+    }
+  });
+
+  if (data !== undefined) {
+    var value = [];
+    var temp;
+    var libary = ModuleDatabase["a" /* default */].getModule("equipments").getLibary("id");
+
+    for (var i = 0; i < data.equipment.length; i++) {
+      temp = libary[data.equipment[i].equipmentid];
+      temp.content = data.equipment[i].content;
+      value.push(data.equipment[i].equipmentid);
+
+      switch (parseInt(temp.type)) {
+        case 0:
+          if (temp.available == 1) container.appendChild(self.itemCount(temp));else container.appendChild(self.itemDisplayNone(temp));
+          break;
+
+        case 1:
+          container.appendChild(self.itemDisplayNone(temp));
+          break;
+      }
+    }
+
+    equipment.values = value;
+  }
+
+  var temp = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-convenient",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-convenient-tab",
+      props: {
+        innerHTML: "Tiện ích trong nhà"
+      }
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-convenient-content",
+      child: [{
+        tag: "div",
+        "class": "pizo-new-realty-convenient-content-size",
+        child: [equipment]
+      }, container]
+    }]
+  });
+
+  this.containerEquipment = container;
+  return temp;
+};
+
+MapRealty_MapRealty.prototype.contactView = function (data) {
+  var self = this;
+
+  var containerContact = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-contact-content",
+    child: []
+  });
+
+  var temp = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-contact",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-contact-tab",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-contact-tab-label",
+        props: {
+          innerHTML: "Thông tin liên hệ"
+        }
+      } // {
+      //     tag:"button",
+      //     class:"pizo-new-realty-contact-tab-button",
+      //     on:{
+      //         click:function(event){
+      //             containerContact.appendChild(self.contactItem());
+      //         }
+      //     },
+      //     child:[
+      //         {
+      //             tag:"i",
+      //             class:"material-icons",
+      //             style:{
+      //                 fontSize:"1rem"
+      //             },
+      //             props:{
+      //                 innerHTML:"add"
+      //             }
+      //         }
+      //     ]
+      // }
+      ]
+    }, containerContact]
+  });
+
+  console.log(data.contact);
+
+  if (data !== undefined) {
+    for (var i = 0; i < data.contact.length; i++) {
+      containerContact.appendChild(this.contactItem(data.contact[i]));
+    }
+  }
+
+  this.containerContact = containerContact;
+  return temp;
+};
+
+MapRealty_MapRealty.prototype.juridicalView = function (data) {
+  var arr = ModuleDatabase["a" /* default */].getModule("juridicals").getList("name", "id");
+
+  var temp = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-juridical",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-juridical-tab",
+      props: {
+        innerHTML: "Pháp lý"
+      }
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-juridical-content",
+      child: [{
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-content-area-right",
+        child: [{
+          tag: "span",
+          "class": "pizo-new-realty-detruct-content-area-label",
+          props: {
+            innerHTML: "Tình trạng"
+          }
+        }, {
+          tag: "selectmenu",
+          "class": ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
+          props: {
+            items: arr
+          }
+        }]
+      }]
+    }]
+  });
+
+  this.juridical = MapRealty_$('div.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input', temp);
+
+  if (data !== undefined) {
+    this.juridical.value = data.juridical;
+  }
+
+  return temp;
+};
+
+MapRealty_MapRealty.prototype.contactItem = function (data) {
+  var name, typecontact, phone, statusphone, note;
+  var self = this;
+
+  var temp = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-contact-item",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-contact-item-name",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-contact-item-name-label",
+        props: {
+          innerHTML: "Tên"
+        }
+      }, {
+        tag: "input",
+        "class": "pizo-new-realty-contact-item-name-input",
+        props: {}
+      }, {
+        tag: "selectmenu",
+        "class": "pizo-new-realty-contact-item-name-selectbox",
+        props: {
+          items: [{
+            text: "Chưa xác định",
+            value: 0
+          }, {
+            text: "Môi giới",
+            value: 1
+          }, {
+            text: "Chủ nhà",
+            value: 2
+          }, {
+            text: "Họ hàng",
+            value: 3
+          }]
+        }
+      }, {
+        tag: "button",
+        "class": "pizo-new-realty-contact-item-setting",
+        on: {
+          click: function click(event) {
+            var tempData = temp.getData();
+            if (tempData.username !== undefined) self.editAccount(temp, tempData);else self.editContact(temp, tempData);
+          }
+        },
+        child: [{
+          tag: "i",
+          "class": "material-icons",
+          style: {
+            fontSize: "1rem",
+            verticalAlign: "middle"
+          },
+          props: {
+            innerHTML: "settings"
+          }
+        }]
+      }, {
+        tag: "button",
+        "class": "pizo-new-realty-contact-item-close",
+        on: {
+          click: function click(event) {
+            temp.selfRemove();
+          }
+        },
+        child: [{
+          tag: "i",
+          "class": "material-icons",
+          style: {
+            fontSize: "1rem",
+            verticalAlign: "middle"
+          },
+          props: {
+            innerHTML: "close"
+          }
+        }]
+      }]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-contact-item-phone",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-contact-item-phone-label",
+        props: {
+          innerHTML: "Số điện thoại"
+        }
+      }, {
+        tag: "span",
+        "class": "pizo-new-realty-contact-item-phone-input",
+        style: {
+          pointerEvents: "unset"
+        },
+        props: {
+          type: "number"
+        },
+        on: {
+          click: function click(event) {
+            this.innerText = this.realValue;
+          }
+        }
+      }, {
+        tag: "selectmenu",
+        "class": "pizo-new-realty-contact-item-phone-selectbox",
+        style: {
+          width: "190px"
+        },
+        props: {
+          items: [{
+            text: "Còn hoạt động",
+            value: 1
+          }, {
+            text: "Sai số",
+            value: 0
+          }, {
+            text: "Gọi lại sau",
+            value: 2
+          }, {
+            text: "Bỏ qua",
+            value: 3
+          }, {
+            text: "Khóa máy",
+            value: 4
+          }]
+        }
+      }]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-contact-item-note",
+      child: [{
+        tag: "span",
+        "class": "pizo-new-realty-contact-item-note-label",
+        props: {
+          innerHTML: "Ghi chú"
+        }
+      }, {
+        tag: "textarea",
+        "class": "pizo-new-realty-contact-item-note-input"
+      }]
+    }]
+  });
+
+  var name = MapRealty_$('input.pizo-new-realty-contact-item-name-input', temp);
+  var typecontact = MapRealty_$('div.pizo-new-realty-contact-item-name-selectbox', temp);
+  var phone = MapRealty_$('span.pizo-new-realty-contact-item-phone-input', temp);
+  var statusphone = MapRealty_$('div.pizo-new-realty-contact-item-phone-selectbox', temp);
+  var note = MapRealty_$('textarea.pizo-new-realty-contact-item-note-input', temp);
+
+  phone.checkContact = function (data) {
+    if (self.checkUserID === undefined) {
+      var element = this;
+      ModuleDatabase["a" /* default */].getModule("users").load().then(function () {
+        setTimeout(function () {
+          element.checkContact(data);
+        }, 10);
+      });
+      return;
+    }
+
+    if (self.checkContactID === undefined) {
+      var element = this;
+      ModuleDatabase["a" /* default */].getModule("contacts").load().then(function () {
+        setTimeout(function () {
+          element.checkContact(data);
+        }, 10);
+      });
+      return;
+    }
+
+    if (data.contactid !== undefined && data.contactid !== 0) {
+      temp.setInformation(self.checkContactID[data.contactid]);
+    } else if (data.userid !== undefined && data.userid !== 0) {
+      temp.setInformation(self.checkUserID[data.userid]);
+    } else {
+      temp.setInformation(data);
+    }
+  };
+
+  temp.setInformation = function (data) {
+    if (data === undefined) {
+      temp.selfRemove();
+      return;
+    }
+
+    temp.data = data;
+    if (data.statusphone === undefined) statusphone.value = 1;else statusphone.value = data.statusphone;
+    phone.innerText = "xxxxxxxxxx";
+    phone.realValue = data.phone;
+    name.value = data.name;
+    name.setAttribute("disabled", "");
+    statusphone.style.pointerEvents = "none";
+    statusphone.style.backgroundColor = "#f3f3f3";
+  };
+
+  temp.setOpenForm = function (data) {
+    temp.data = data;
+    statusphone.value = 1;
+    name.removeAttribute("disabled");
+    statusphone.style.pointerEvents = "unset";
+    statusphone.style.backgroundColor = "unset";
+  };
+
+  temp.getData = function () {
+    if (temp.data !== undefined) {
+      temp.data.typecontact = typecontact.value;
+      temp.data.note = note.value;
+      return temp.data;
+    } else {
+      return {
+        name: name.value,
+        statusphone: statusphone.value,
+        phone: phone.value,
+        typecontact: typecontact.value,
+        note: note.value
+      };
+    }
+  };
+
+  if (data !== undefined) {
+    phone.checkContact(data);
+    typecontact.value = data.typecontact;
+    note.value = data.note;
+  }
+
+  return temp;
+};
+
 MapRealty_MapRealty.prototype.detailHouse = function (data) {
   var unitHeight = unit_Long(function (event) {
     var height = MapRealty_$('input.pizo-new-realty-dectruct-content-area-height', temp);
@@ -71293,185 +71779,792 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
   });
   var self = this;
 
+  var priceRent = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-dectruct-content-area-right",
+    child: [{
+      tag: "div",
+      "class": "pizo-new-realty-desc-detail-row",
+      child: [{
+        tag: "span",
+        "class": ["pizo-new-realty-detruct-content-price-rent-label", "pizo-new-realty-detruct-content-area-label"],
+        props: {
+          innerHTML: "Giá thuê tháng"
+        }
+      }, {
+        tag: "input",
+        "class": ["pizo-new-realty-detruct-content-price-rent", "pizo-new-realty-dectruct-input"],
+        on: {
+          input: function input(event) {
+            this.value = formatNumber(this.value);
+          },
+          blur: function blur(event) {
+            this.value = reFormatNumber(this.value);
+          }
+        }
+      }, {
+        tag: "selectmenu",
+        "class": "pizo-new-realty-detruct-content-price-rent-unit",
+        on: {
+          change: function change(event) {
+            var price = MapRealty_$('input.pizo-new-realty-detruct-content-price-rent', temp);
+            price.value = price.value * event.lastValue / event.value;
+          }
+        },
+        props: {
+          items: [{
+            text: "VND",
+            value: 1
+          }, {
+            text: "USD",
+            value: 23180
+          }]
+        }
+      }]
+    }]
+  });
+
+  if (data.salestatus / 10 < 1) {
+    priceRent.style.display = "none";
+  }
+
+  var fullAdressOld = "";
+
+  if (data.addressid_old != 0) {
+    var number = this.checkAddress[data.addressid_old].addressnumber;
+    var street = this.checkStreet[this.checkAddress[data.addressid_old].streetid].name;
+    var ward = this.checkWard[this.checkAddress[data.addressid_old].wardid].name;
+    var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].name;
+    var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].stateid].name;
+    fullAdressOld = number + " " + street + ", " + ward + ", " + district + ", " + state;
+  }
+
+  var oldAddress = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-dectruct-content-area-right",
+    child: [{
+      tag: "span",
+      "class": "pizo-new-realty-detruct-content-area-label",
+      style: {
+        width: "70px"
+      },
+      child: [{
+        text: "Địa chỉ cũ"
+      }]
+    }, {
+      tag: "input",
+      "class": ["pizo-new-realty-dectruct-input"],
+      props: {
+        value: fullAdressOld
+      }
+    }]
+  });
+
+  var fullName = data.name;
+
+  var name = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-dectruct-content-area-right",
+    child: [{
+      tag: "span",
+      "class": "pizo-new-realty-detruct-content-area-label",
+      style: {
+        width: "70px"
+      },
+      child: [{
+        text: "Tên"
+      }]
+    }, {
+      tag: "input",
+      "class": ["pizo-new-realty-dectruct-input"],
+      props: {
+        value: fullName
+      }
+    }]
+  });
+
+  var fullDesc = data.content;
+
+  var desc = MapRealty_({
+    tag: "div",
+    "class": "pizo-new-realty-dectruct-content-area-right",
+    child: [{
+      tag: "span",
+      "class": "pizo-new-realty-detruct-content-area-label",
+      style: {
+        width: "70px"
+      },
+      child: [{
+        text: "Mô tả"
+      }]
+    }, {
+      tag: "span",
+      "class": ["pizo-new-realty-dectruct-input"],
+      style: {
+        border: "none"
+      },
+      props: {
+        innerHTML: fullDesc
+      }
+    }]
+  });
+
+  if (fullAdressOld === "") {
+    oldAddress.style.display = "none";
+  }
+
+  if (fullName === "") {
+    name.style.display = "none";
+  }
+
+  if (fullDesc === "") {
+    desc.style.display = "none";
+  }
+
   var temp = MapRealty_({
     tag: "div",
     "class": ["pizo-new-realty-dectruct", "pizo-only-view"],
+    on: {
+      scroll: function scroll(event) {
+        for (var i = this.childNodes.length - 1; i >= 0; i--) {
+          if (this.childNodes[i].offsetTop < this.scrollTop) {
+            self.buttonRange.value = i + 1;
+            return;
+          }
+        }
+
+        self.buttonRange.value = 0;
+      }
+    },
     child: [{
       tag: "div",
-      "class": "pizo-new-realty-dectruct-tab",
-      props: {
-        innerHTML: "Thông tin xây dựng"
-      }
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-dectruct-content",
+      // class:"",
       child: [{
         tag: "div",
-        "class": "pizo-new-realty-dectruct-content-area",
+        "class": "pizo-new-realty-dectruct-tab",
+        props: {
+          innerHTML: "Mô tả"
+        }
+      }, name, oldAddress, desc]
+    }, {
+      tag: "div",
+      child: [{
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-tab",
+        props: {
+          innerHTML: "Thông tin xây dựng"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-content",
         child: [{
-          tag: "span",
-          "class": "pizo-new-realty-detruct-content-area-label",
-          props: {
-            innerHTML: "Diện tích"
-          }
-        }, {
           tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
+          "class": "pizo-new-realty-dectruct-content-area",
           child: [{
+            tag: "span",
+            "class": "pizo-new-realty-detruct-content-area-label",
+            props: {
+              innerHTML: "Diện tích"
+            }
+          }, {
             tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            "class": "pizo-new-realty-dectruct-content-area-size",
             child: [{
               tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
               child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-height-label",
-                props: {
-                  innerHTML: "Ngang"
-                }
-              }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-height", "pizo-new-realty-dectruct-input"],
-                on: {
-                  change: function change(event) {
-                    var valueA = 0;
-                    var valueB = 0;
-
-                    if (this.value !== "") {
-                      valueA = this.value * this.nextSibling.value;
-                    }
-
-                    var width = MapRealty_$('input.pizo-new-realty-dectruct-content-area-width', temp);
-
-                    if (width.value !== "") {
-                      valueB = width.value * width.nextSibling.value;
-                    }
-
-                    var input1 = MapRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
-                    input1.value = valueA * valueB / input1.nextSibling.value;
-                    var input2 = MapRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
-                    input2.value = valueA * valueB / input2.nextSibling.value;
-                    var inputall = MapRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
-                    inputall.value = valueA * valueB / input2.nextSibling.value;
-                    inputall.emit("change");
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-height-label",
+                  props: {
+                    innerHTML: "Ngang"
                   }
-                },
-                attr: {
-                  type: "number",
-                  min: 0
-                }
-              }, unitHeight]
+                }, {
+                  tag: "input",
+                  "class": ["pizo-new-realty-dectruct-content-area-height", "pizo-new-realty-dectruct-input"],
+                  on: {
+                    change: function change(event) {
+                      var valueA = 0;
+                      var valueB = 0;
+
+                      if (this.value !== "") {
+                        valueA = this.value * this.nextSibling.value;
+                      }
+
+                      var width = MapRealty_$('input.pizo-new-realty-dectruct-content-area-width', temp);
+
+                      if (width.value !== "") {
+                        valueB = width.value * width.nextSibling.value;
+                      }
+
+                      var input1 = MapRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
+                      input1.value = valueA * valueB / input1.nextSibling.value;
+                      var input2 = MapRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
+                      input2.value = valueA * valueB / input2.nextSibling.value;
+                      var inputall = MapRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
+                      inputall.value = valueA * valueB / input2.nextSibling.value;
+                      inputall.emit("change");
+                    }
+                  },
+                  attr: {
+                    type: "number",
+                    min: 0
+                  }
+                }, unitHeight]
+              }]
+            }, {
+              tag: "div",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-width-label",
+                  props: {
+                    innerHTML: "Dài"
+                  }
+                }, {
+                  tag: "input",
+                  "class": ["pizo-new-realty-dectruct-content-area-width", "pizo-new-realty-dectruct-input"],
+                  on: {
+                    change: function change(event) {
+                      var valueA = 0;
+                      var valueB = 0;
+
+                      if (this.value !== "") {
+                        valueA = this.value * this.nextSibling.value;
+                      }
+
+                      var height = MapRealty_$('input.pizo-new-realty-dectruct-content-area-height', temp);
+
+                      if (height.value !== "") {
+                        valueB = height.value * height.nextSibling.value;
+                      }
+
+                      var input1 = MapRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
+                      input1.value = valueA * valueB / input1.nextSibling.value;
+                      var input2 = MapRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
+                      input2.value = valueA * valueB / input2.nextSibling.value;
+                      var inputall = MapRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
+                      inputall.value = valueA * valueB / input2.nextSibling.value;
+                      inputall.emit("change");
+                    }
+                  },
+                  attr: {
+                    type: "number",
+                    min: 0
+                  }
+                }, unitWidth]
+              }]
             }]
           }, {
             tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            "class": "pizo-new-realty-dectruct-content-area-size",
             child: [{
               tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
               child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-width-label",
-                props: {
-                  innerHTML: "Dài"
-                }
-              }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-width", "pizo-new-realty-dectruct-input"],
-                on: {
-                  change: function change(event) {
-                    var valueA = 0;
-                    var valueB = 0;
-
-                    if (this.value !== "") {
-                      valueA = this.value * this.nextSibling.value;
-                    }
-
-                    var height = MapRealty_$('input.pizo-new-realty-dectruct-content-area-height', temp);
-
-                    if (height.value !== "") {
-                      valueB = height.value * height.nextSibling.value;
-                    }
-
-                    var input1 = MapRealty_$('input.pizo-new-realty-dectruct-content-area-1', temp);
-                    input1.value = valueA * valueB / input1.nextSibling.value;
-                    var input2 = MapRealty_$('input.pizo-new-realty-dectruct-content-area-2', temp);
-                    input2.value = valueA * valueB / input2.nextSibling.value;
-                    var inputall = MapRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
-                    inputall.value = valueA * valueB / input2.nextSibling.value;
-                    inputall.emit("change");
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-1-label",
+                  props: {
+                    innerHTML: "Đất XD"
                   }
-                },
-                attr: {
-                  type: "number",
-                  min: 0
-                }
-              }, unitWidth]
+                }, {
+                  tag: "input",
+                  "class": ["pizo-new-realty-dectruct-content-area-1", "pizo-new-realty-dectruct-input"],
+                  attr: {
+                    type: "number",
+                    min: 0
+                  }
+                }, unit_Zone_1]
+              }]
+            }, {
+              tag: "div",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-2-label",
+                  props: {
+                    innerHTML: "Sàn XD"
+                  }
+                }, {
+                  tag: "input",
+                  "class": ["pizo-new-realty-dectruct-content-area-2", "pizo-new-realty-dectruct-input"],
+                  attr: {
+                    type: "number",
+                    min: 0
+                  }
+                }, unit_Zone_2]
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-1-label",
+                  props: {
+                    innerHTML: "Diện tích"
+                  }
+                }, {
+                  tag: "input",
+                  "class": ["pizo-new-realty-dectruct-content-area-all", "pizo-new-realty-dectruct-input"],
+                  on: {
+                    change: function change(event) {
+                      var inputValue = MapRealty_$("input.pizo-new-realty-detruct-content-price-per", temp);
+                      var price = MapRealty_$('input.pizo-new-realty-detruct-content-price', temp);
+                      var priceUnit = MapRealty_$('div.pizo-new-realty-detruct-content-price-unit', temp);
+                      var areaValue = MapRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
+                      var areaValueUnit = unit_Zone_all;
+                      inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) * 1000;
+                    }
+                  },
+                  attr: {
+                    type: "number",
+                    min: 0
+                  }
+                }, unit_Zone_all]
+              }]
+            }, {
+              tag: "div",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-2-label",
+                  props: {
+                    innerHTML: "Kết cấu"
+                  }
+                }, {
+                  tag: "selectmenu",
+                  "class": "pizo-new-realty-detruct-content-structure",
+                  on: {
+                    change: function change(event) {
+                      if (this.value === 3) advanceDetruct.style.display = "";else advanceDetruct.style.display = "none";
+                      if (this.value >= 2) simpleDetruct.style.display = "";else simpleDetruct.style.display = "none";
+                    }
+                  },
+                  props: {
+                    items: [{
+                      text: "Chưa xác định",
+                      value: 0
+                    }, {
+                      text: "Đất trống",
+                      value: 1
+                    }, {
+                      text: "Cấp 4",
+                      value: 2
+                    }, {
+                      text: "Sẳn *",
+                      value: 3
+                    }]
+                  }
+                }]
+              }]
             }]
           }]
         }, {
           tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
+          "class": ["pizo-new-realty-dectruct-content-area", "pizo-new-realty-dectruct-content-area-simple"],
           child: [{
+            tag: "span",
+            "class": "pizo-new-realty-detruct-content-area-label",
+            style: {
+              marginBottom: "0.7143rem"
+            },
+            props: {
+              innerHTML: "Quy mô kết cấu"
+            }
+          }, {
             tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            "class": "pizo-new-realty-dectruct-content-area-advance",
             child: [{
               tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
+              "class": ["pizo-new-realty-dectruct-content-area-size"],
               child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-1-label",
-                props: {
-                  innerHTML: "Đất XD"
-                }
+                tag: "div",
+                "class": ["pizo-new-realty-dectruct-content-area-size-zone"],
+                child: [{
+                  tag: "div",
+                  "class": "pizo-new-realty-desc-detail-row",
+                  child: [{
+                    tag: "span",
+                    "class": "pizo-new-realty-dectruct-content-area-floor-label",
+                    props: {
+                      innerHTML: "Tầng"
+                    }
+                  }, {
+                    tag: "input",
+                    "class": ["pizo-new-realty-dectruct-content-area-floor", "pizo-new-realty-dectruct-input"],
+                    attr: {
+                      type: "number",
+                      min: 0,
+                      step: 1
+                    },
+                    props: {
+                      value: 0
+                    }
+                  }]
+                }]
               }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-1", "pizo-new-realty-dectruct-input"],
-                attr: {
-                  type: "number",
-                  min: 0
-                }
-              }, unit_Zone_1]
+                tag: "div",
+                "class": "pizo-new-realty-dectruct-content-area-size-zone",
+                child: [{
+                  tag: "div",
+                  "class": "pizo-new-realty-desc-detail-row",
+                  child: [{
+                    tag: "span",
+                    "class": "pizo-new-realty-dectruct-content-area-basement-label",
+                    props: {
+                      innerHTML: "Hầm"
+                    }
+                  }, {
+                    tag: "input",
+                    "class": ["pizo-new-realty-dectruct-content-area-basement", "pizo-new-realty-dectruct-input"],
+                    attr: {
+                      type: "number",
+                      min: 0,
+                      step: 1
+                    },
+                    props: {
+                      value: 0
+                    }
+                  }]
+                }]
+              }]
+            }, {
+              tag: "div",
+              "class": "pizo-new-realty-dectruct-content-area-selectbox",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-realty-dectruct-content-area-size-zone",
+                child: [{
+                  tag: "div",
+                  "class": "pizo-new-realty-desc-detail-row",
+                  child: [{
+                    tag: "div",
+                    "class": "pizo-new-realty-dectruct-content-area-selectbox-child",
+                    child: [{
+                      tag: "span",
+                      props: {
+                        innerHTML: "Lửng"
+                      }
+                    }, {
+                      tag: "checkbox",
+                      "class": "pizo-new-realty-dectruct-content-area-selectbox-child-1"
+                    }]
+                  }, {
+                    tag: "div",
+                    "class": "pizo-new-realty-dectruct-content-area-selectbox-child",
+                    child: [{
+                      tag: "span",
+                      props: {
+                        innerHTML: "Sân thượng"
+                      }
+                    }, {
+                      tag: "checkbox",
+                      "class": "pizo-new-realty-dectruct-content-area-selectbox-child-2"
+                    }]
+                  }]
+                }]
+              }, {
+                tag: "div",
+                "class": "pizo-new-realty-dectruct-content-area-size-zone",
+                child: [{
+                  tag: "div",
+                  "class": "pizo-new-realty-desc-detail-row",
+                  child: [{
+                    tag: "div",
+                    "class": "pizo-new-realty-dectruct-content-area-selectbox-child",
+                    child: [{
+                      tag: "span",
+                      props: {
+                        innerHTML: "Ban công"
+                      }
+                    }, {
+                      tag: "checkbox",
+                      "class": "pizo-new-realty-dectruct-content-area-selectbox-child-3"
+                    }]
+                  }, {
+                    tag: "div",
+                    "class": "pizo-new-realty-dectruct-content-area-selectbox-child",
+                    child: [{
+                      tag: "span",
+                      props: {
+                        innerHTML: "Thang máy"
+                      }
+                    }, {
+                      tag: "checkbox",
+                      "class": "pizo-new-realty-dectruct-content-area-selectbox-child-4"
+                    }]
+                  }]
+                }]
+              }]
             }]
           }, {
             tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            "class": "pizo-new-realty-dectruct-content-area-size",
             child: [{
               tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
               child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-2-label",
-                props: {
-                  innerHTML: "Sàn XD"
-                }
-              }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-2", "pizo-new-realty-dectruct-input"],
-                attr: {
-                  type: "number",
-                  min: 0
-                }
-              }, unit_Zone_2]
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-bedroom-label",
+                  props: {
+                    innerHTML: "Phòng ngủ"
+                  }
+                }, {
+                  tag: "input",
+                  "class": ["pizo-new-realty-dectruct-content-area-bedroom", "pizo-new-realty-dectruct-input"],
+                  attr: {
+                    type: "number",
+                    min: 0,
+                    step: 1
+                  },
+                  props: {
+                    value: 0
+                  }
+                }]
+              }]
+            }, {
+              tag: "div",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-living-label",
+                  props: {
+                    innerHTML: "Phòng khách"
+                  }
+                }, {
+                  tag: "input",
+                  "class": ["pizo-new-realty-dectruct-content-area-living", "pizo-new-realty-dectruct-input"],
+                  attr: {
+                    type: "number",
+                    min: 0,
+                    step: 1
+                  },
+                  props: {
+                    value: 0
+                  }
+                }]
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": "pizo-new-realty-dectruct-content-area-size",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-kitchen-label",
+                  props: {
+                    innerHTML: "Bếp"
+                  }
+                }, {
+                  tag: "input",
+                  "class": ["pizo-new-realty-dectruct-content-area-kitchen", "pizo-new-realty-dectruct-input"],
+                  attr: {
+                    type: "number",
+                    min: 0,
+                    step: 1
+                  },
+                  props: {
+                    value: 0
+                  }
+                }]
+              }]
+            }, {
+              tag: "div",
+              "class": "pizo-new-realty-dectruct-content-area-size-zone",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-realty-desc-detail-row",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-realty-dectruct-content-area-toilet-label",
+                  props: {
+                    innerHTML: "Toilet"
+                  }
+                }, {
+                  tag: "input",
+                  "class": ["pizo-new-realty-dectruct-content-area-toilet", "pizo-new-realty-dectruct-input"],
+                  attr: {
+                    type: "number",
+                    min: 0,
+                    step: 1
+                  },
+                  props: {
+                    value: 0
+                  }
+                }]
+              }]
             }]
           }]
         }, {
           tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
+          "class": "pizo-new-realty-dectruct-content-area",
           child: [{
             tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            "class": ["pizo-new-realty-dectruct-content-area-size-zone", "no-margin-style"],
             child: [{
               tag: "div",
               "class": "pizo-new-realty-desc-detail-row",
               child: [{
                 tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-1-label",
+                "class": "pizo-new-realty-detruct-content-area-label",
                 props: {
-                  innerHTML: "Diện tích"
+                  innerHTML: "Hướng"
+                }
+              }, {
+                tag: "selectmenu",
+                "class": "pizo-new-realty-detruct-content-direction",
+                props: {
+                  items: [{
+                    text: "Chưa xác định",
+                    value: 0
+                  }, {
+                    text: "Đông",
+                    value: 6
+                  }, {
+                    text: "Tây",
+                    value: 4
+                  }, {
+                    text: "Nam",
+                    value: 2
+                  }, {
+                    text: "Bắc",
+                    value: 8
+                  }, {
+                    text: "Đông Bắc",
+                    value: 9
+                  }, {
+                    text: "Đông Nam",
+                    value: 3
+                  }, {
+                    text: "Tây Bắc",
+                    value: 7
+                  }, {
+                    text: "Tây Nam",
+                    value: 1
+                  }]
+                }
+              }]
+            }]
+          }, {
+            tag: "div",
+            "class": ["pizo-new-realty-dectruct-content-area-size-zone", "margin-style"],
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-detruct-content-area-label",
+                props: {
+                  innerHTML: "Loại nhà"
+                }
+              }, {
+                tag: "selectmenu",
+                "class": "pizo-new-realty-detruct-content-type",
+                props: {
+                  items: [{
+                    text: "Chưa xác định",
+                    value: 0
+                  }, {
+                    text: "Hẻm",
+                    value: 1
+                  }, {
+                    text: "Mặt tiền",
+                    value: 2
+                  }, {
+                    text: "Chung cư",
+                    value: 3
+                  }]
+                }
+              }]
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-new-realty-dectruct-content-area-right",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-realty-detruct-content-area-label",
+            props: {
+              innerHTML: "Chiều rộng đường vào"
+            }
+          }, {
+            tag: "input",
+            "class": ["pizo-new-realty-dectruct-content-area-access", "pizo-new-realty-dectruct-input"],
+            attr: {
+              type: "number",
+              min: 0,
+              step: 1
+            },
+            props: {
+              value: 0
+            }
+          }, unitWidthRoad]
+        }]
+      }]
+    }, {
+      tag: "div",
+      child: [{
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-tab",
+        props: {
+          innerHTML: "Giá"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-content",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-realty-dectruct-content-area",
+          child: [{
+            tag: "div",
+            "class": ["pizo-new-realty-dectruct-content-area-size-zone", "no-margin-style"],
+            child: [{
+              tag: "div",
+              "class": "pizo-new-realty-desc-detail-row",
+              child: [{
+                tag: "span",
+                "class": "pizo-new-realty-detruct-content-area-label",
+                props: {
+                  innerHTML: "Giá"
                 }
               }, {
                 tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-all", "pizo-new-realty-dectruct-input"],
+                "class": ["pizo-new-realty-detruct-content-price", "pizo-new-realty-dectruct-input"],
+                props: {
+                  value: 0
+                },
                 on: {
                   change: function change(event) {
                     var inputValue = MapRealty_$("input.pizo-new-realty-detruct-content-price-per", temp);
@@ -71481,557 +72574,87 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
                     var areaValueUnit = unit_Zone_all;
                     inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) * 1000;
                   }
-                },
-                attr: {
-                  type: "number",
-                  min: 0
-                }
-              }, unit_Zone_all]
-            }]
-          }, {
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
-              child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-2-label",
-                props: {
-                  innerHTML: "Kết cấu"
                 }
               }, {
                 tag: "selectmenu",
-                "class": "pizo-new-realty-detruct-content-structure",
+                "class": "pizo-new-realty-detruct-content-price-unit",
                 on: {
                   change: function change(event) {
-                    if (this.value === 3) advanceDetruct.style.display = "";else advanceDetruct.style.display = "none";
-                    if (this.value >= 2) simpleDetruct.style.display = "";else simpleDetruct.style.display = "none";
+                    var price = MapRealty_$('input.pizo-new-realty-detruct-content-price', temp);
+                    price.value = price.value * event.lastValue / event.value;
                   }
                 },
                 props: {
                   items: [{
-                    text: "Chưa xác định",
-                    value: 0
-                  }, {
-                    text: "Đất trống",
+                    text: "tỉ",
                     value: 1
                   }, {
-                    text: "Cấp 4",
-                    value: 2
-                  }, {
-                    text: "Sẳn *",
-                    value: 3
+                    text: "triệu",
+                    value: 1 / 1000
                   }]
-                }
-              }]
-            }]
-          }]
-        }]
-      }, {
-        tag: "div",
-        "class": ["pizo-new-realty-dectruct-content-area", "pizo-new-realty-dectruct-content-area-simple"],
-        child: [{
-          tag: "span",
-          "class": "pizo-new-realty-detruct-content-area-label",
-          style: {
-            marginBottom: "0.7143rem"
-          },
-          props: {
-            innerHTML: "Quy mô kết cấu"
-          }
-        }, {
-          tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-advance",
-          child: [{
-            tag: "div",
-            "class": ["pizo-new-realty-dectruct-content-area-size"],
-            child: [{
-              tag: "div",
-              "class": ["pizo-new-realty-dectruct-content-area-size-zone"],
-              child: [{
-                tag: "div",
-                "class": "pizo-new-realty-desc-detail-row",
-                child: [{
-                  tag: "span",
-                  "class": "pizo-new-realty-dectruct-content-area-floor-label",
-                  props: {
-                    innerHTML: "Tầng"
-                  }
-                }, {
-                  tag: "input",
-                  "class": ["pizo-new-realty-dectruct-content-area-floor", "pizo-new-realty-dectruct-input"],
-                  attr: {
-                    type: "number",
-                    min: 0,
-                    step: 1
-                  },
-                  props: {
-                    value: 0
-                  }
-                }]
-              }]
-            }, {
-              tag: "div",
-              "class": "pizo-new-realty-dectruct-content-area-size-zone",
-              child: [{
-                tag: "div",
-                "class": "pizo-new-realty-desc-detail-row",
-                child: [{
-                  tag: "span",
-                  "class": "pizo-new-realty-dectruct-content-area-basement-label",
-                  props: {
-                    innerHTML: "Hầm"
-                  }
-                }, {
-                  tag: "input",
-                  "class": ["pizo-new-realty-dectruct-content-area-basement", "pizo-new-realty-dectruct-input"],
-                  attr: {
-                    type: "number",
-                    min: 0,
-                    step: 1
-                  },
-                  props: {
-                    value: 0
-                  }
-                }]
-              }]
-            }]
-          }, {
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-selectbox",
-            child: [{
-              tag: "div",
-              "class": "pizo-new-realty-dectruct-content-area-size-zone",
-              child: [{
-                tag: "div",
-                "class": "pizo-new-realty-desc-detail-row",
-                child: [{
-                  tag: "div",
-                  "class": "pizo-new-realty-dectruct-content-area-selectbox-child",
-                  child: [{
-                    tag: "span",
-                    props: {
-                      innerHTML: "Lửng"
-                    }
-                  }, {
-                    tag: "checkbox",
-                    "class": "pizo-new-realty-dectruct-content-area-selectbox-child-1"
-                  }]
-                }, {
-                  tag: "div",
-                  "class": "pizo-new-realty-dectruct-content-area-selectbox-child",
-                  child: [{
-                    tag: "span",
-                    props: {
-                      innerHTML: "Sân thượng"
-                    }
-                  }, {
-                    tag: "checkbox",
-                    "class": "pizo-new-realty-dectruct-content-area-selectbox-child-2"
-                  }]
-                }]
-              }]
-            }, {
-              tag: "div",
-              "class": "pizo-new-realty-dectruct-content-area-size-zone",
-              child: [{
-                tag: "div",
-                "class": "pizo-new-realty-desc-detail-row",
-                child: [{
-                  tag: "div",
-                  "class": "pizo-new-realty-dectruct-content-area-selectbox-child",
-                  child: [{
-                    tag: "span",
-                    props: {
-                      innerHTML: "Ban công"
-                    }
-                  }, {
-                    tag: "checkbox",
-                    "class": "pizo-new-realty-dectruct-content-area-selectbox-child-3"
-                  }]
-                }, {
-                  tag: "div",
-                  "class": "pizo-new-realty-dectruct-content-area-selectbox-child",
-                  child: [{
-                    tag: "span",
-                    props: {
-                      innerHTML: "Thang máy"
-                    }
-                  }, {
-                    tag: "checkbox",
-                    "class": "pizo-new-realty-dectruct-content-area-selectbox-child-4"
-                  }]
-                }]
-              }]
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
-              child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-bedroom-label",
-                props: {
-                  innerHTML: "Phòng ngủ"
-                }
-              }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-bedroom", "pizo-new-realty-dectruct-input"],
-                attr: {
-                  type: "number",
-                  min: 0,
-                  step: 1
-                },
-                props: {
-                  value: 0
                 }
               }]
             }]
           }, {
             tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
+            "class": ["pizo-new-realty-dectruct-content-area-size-zone", "margin-style"],
             child: [{
               tag: "div",
               "class": "pizo-new-realty-desc-detail-row",
               child: [{
                 tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-living-label",
+                "class": "pizo-new-realty-detruct-content-area-label",
                 props: {
-                  innerHTML: "Phòng khách"
+                  innerHTML: "Giá m²"
                 }
               }, {
                 tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-living", "pizo-new-realty-dectruct-input"],
+                "class": ["pizo-new-realty-detruct-content-price-per", "pizo-new-realty-dectruct-input"],
                 attr: {
-                  type: "number",
-                  min: 0,
-                  step: 1
-                },
-                props: {
-                  value: 0
+                  disabled: ""
                 }
               }]
             }]
           }]
-        }, {
+        }, priceRent, {
           tag: "div",
-          "class": "pizo-new-realty-dectruct-content-area-size",
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
-              child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-kitchen-label",
-                props: {
-                  innerHTML: "Bếp"
-                }
-              }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-kitchen", "pizo-new-realty-dectruct-input"],
-                attr: {
-                  type: "number",
-                  min: 0,
-                  step: 1
-                },
-                props: {
-                  value: 0
-                }
-              }]
-            }]
-          }, {
-            tag: "div",
-            "class": "pizo-new-realty-dectruct-content-area-size-zone",
-            child: [{
-              tag: "div",
-              "class": "pizo-new-realty-desc-detail-row",
-              child: [{
-                tag: "span",
-                "class": "pizo-new-realty-dectruct-content-area-toilet-label",
-                props: {
-                  innerHTML: "Toilet"
-                }
-              }, {
-                tag: "input",
-                "class": ["pizo-new-realty-dectruct-content-area-toilet", "pizo-new-realty-dectruct-input"],
-                attr: {
-                  type: "number",
-                  min: 0,
-                  step: 1
-                },
-                props: {
-                  value: 0
-                }
-              }]
-            }]
-          }]
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-new-realty-dectruct-content-area",
-        child: [{
-          tag: "div",
-          "class": ["pizo-new-realty-dectruct-content-area-size-zone", "no-margin-style"],
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-desc-detail-row",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-realty-detruct-content-area-label",
-              props: {
-                innerHTML: "Hướng"
-              }
-            }, {
-              tag: "selectmenu",
-              "class": "pizo-new-realty-detruct-content-direction",
-              props: {
-                items: [{
-                  text: "Chưa xác định",
-                  value: 0
-                }, {
-                  text: "Đông",
-                  value: 6
-                }, {
-                  text: "Tây",
-                  value: 4
-                }, {
-                  text: "Nam",
-                  value: 2
-                }, {
-                  text: "Bắc",
-                  value: 8
-                }, {
-                  text: "Đông Bắc",
-                  value: 9
-                }, {
-                  text: "Đông Nam",
-                  value: 3
-                }, {
-                  text: "Tây Bắc",
-                  value: 7
-                }, {
-                  text: "Tây Nam",
-                  value: 1
-                }]
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": ["pizo-new-realty-dectruct-content-area-size-zone", "margin-style"],
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-desc-detail-row",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-realty-detruct-content-area-label",
-              props: {
-                innerHTML: "Loại nhà"
-              }
-            }, {
-              tag: "selectmenu",
-              "class": "pizo-new-realty-detruct-content-type",
-              props: {
-                items: [{
-                  text: "Chưa xác định",
-                  value: 0
-                }, {
-                  text: "Hẻm",
-                  value: 1
-                }, {
-                  text: "Mặt tiền",
-                  value: 2
-                }, {
-                  text: "Chung cư",
-                  value: 3
-                }]
-              }
-            }]
-          }]
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-new-realty-dectruct-content-area-right",
-        child: [{
-          tag: "span",
-          "class": "pizo-new-realty-detruct-content-area-label",
-          props: {
-            innerHTML: "Chiều rộng đường vào"
-          }
-        }, {
-          tag: "input",
-          "class": ["pizo-new-realty-dectruct-content-area-access", "pizo-new-realty-dectruct-input"],
-          attr: {
-            type: "number",
-            min: 0,
-            step: 1
-          },
-          props: {
-            value: 0
-          }
-        }, unitWidthRoad]
-      }]
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-dectruct-tab",
-      props: {
-        innerHTML: "Giá"
-      }
-    }, {
-      tag: "div",
-      "class": "pizo-new-realty-dectruct-content",
-      child: [{
-        tag: "div",
-        "class": "pizo-new-realty-dectruct-content-area",
-        child: [{
-          tag: "div",
-          "class": ["pizo-new-realty-dectruct-content-area-size-zone", "no-margin-style"],
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-desc-detail-row",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-realty-detruct-content-area-label",
-              props: {
-                innerHTML: "Giá"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-detruct-content-price", "pizo-new-realty-dectruct-input"],
-              props: {
-                value: 0
-              },
-              on: {
-                change: function change(event) {
-                  var inputValue = MapRealty_$("input.pizo-new-realty-detruct-content-price-per", temp);
-                  var price = MapRealty_$('input.pizo-new-realty-detruct-content-price', temp);
-                  var priceUnit = MapRealty_$('div.pizo-new-realty-detruct-content-price-unit', temp);
-                  var areaValue = MapRealty_$('input.pizo-new-realty-dectruct-content-area-all', temp);
-                  var areaValueUnit = unit_Zone_all;
-                  inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) * 1000;
-                }
-              }
-            }, {
-              tag: "selectmenu",
-              "class": "pizo-new-realty-detruct-content-price-unit",
-              on: {
-                change: function change(event) {
-                  var price = MapRealty_$('input.pizo-new-realty-detruct-content-price', temp);
-                  price.value = price.value * event.lastValue / event.value;
-                }
-              },
-              props: {
-                items: [{
-                  text: "tỉ",
-                  value: 1
-                }, {
-                  text: "triệu",
-                  value: 1 / 1000
-                }]
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": ["pizo-new-realty-dectruct-content-area-size-zone", "margin-style"],
-          child: [{
-            tag: "div",
-            "class": "pizo-new-realty-desc-detail-row",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-realty-detruct-content-area-label",
-              props: {
-                innerHTML: "Giá m²"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-realty-detruct-content-price-per", "pizo-new-realty-dectruct-input"],
-              attr: {
-                disabled: ""
-              }
-            }]
-          }]
-        }]
-      }, {
-        tag: "div",
-        "class": "pizo-new-realty-dectruct-content-area-right",
-        child: [{
-          tag: "div",
-          "class": "pizo-new-realty-desc-detail-row",
+          "class": "pizo-new-realty-dectruct-content-area-right",
           child: [{
             tag: "span",
-            "class": ["pizo-new-realty-detruct-content-price-rent-label", "pizo-new-realty-detruct-content-area-label"],
+            "class": "pizo-new-realty-detruct-content-area-label",
             props: {
-              innerHTML: "Giá thuê tháng"
+              innerHTML: "Phù hợp khai thác"
             }
           }, {
-            tag: "input",
-            "class": ["pizo-new-realty-detruct-content-price-rent", "pizo-new-realty-dectruct-input"],
-            on: {
-              input: function input(event) {
-                this.value = formatNumber(this.value);
-              },
-              blur: function blur(event) {
-                this.value = reFormatNumber(this.value);
-              }
-            }
-          }, {
-            tag: "selectmenu",
-            "class": "pizo-new-realty-detruct-content-price-rent-unit",
-            on: {
-              change: function change(event) {
-                var price = MapRealty_$('input.pizo-new-realty-detruct-content-price-rent', temp);
-                price.value = price.value * event.lastValue / event.value;
-              }
-            },
+            tag: "selectbox",
+            "class": ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
             props: {
               items: [{
-                text: "VND",
+                text: "Để ở",
                 value: 1
               }, {
-                text: "USD",
-                value: 23180
+                text: "Cho thuê",
+                value: 10
+              }, {
+                text: "Kinh doanh",
+                value: 100
+              }, {
+                text: "Làm văn phòng",
+                value: 1000
               }]
             }
           }]
         }]
-      }, {
+      }]
+    }, this.convenientView(data), this.contactView(data), this.juridicalView(data), {
+      tag: "div",
+      // class:"",
+      child: [{
         tag: "div",
-        "class": "pizo-new-realty-dectruct-content-area-right",
-        child: [{
-          tag: "span",
-          "class": "pizo-new-realty-detruct-content-area-label",
-          props: {
-            innerHTML: "Phù hợp khai thác"
-          }
-        }, {
-          tag: "selectbox",
-          "class": ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
-          props: {
-            items: [{
-              text: "Để ở",
-              value: 1
-            }, {
-              text: "Cho thuê",
-              value: 10
-            }, {
-              text: "Kinh doanh",
-              value: 100
-            }, {
-              text: "Làm văn phòng",
-              value: 1000
-            }]
-          }
-        }]
+        "class": "pizo-new-realty-dectruct-tab",
+        props: {
+          innerHTML: "Lịch sử sở hữu"
+        }
       }]
     }]
   });
@@ -72797,8 +73420,6 @@ MapRealty_MapRealty.prototype.start = function () {};
 
 
 
-
-
 var App_ = dom_Fcore._;
 var App_$ = dom_Fcore.$;
 
@@ -72820,7 +73441,7 @@ function App_App() {
   ModuleDatabase["a" /* default */].getModule("wards");
   ModuleDatabase["a" /* default */].getModule("addresses");
   ModuleDatabase["a" /* default */].getModule("equipments");
-  ModuleDatabase["a" /* default */].getModule("departments");
+  ModuleDatabase["a" /* default */].getModule("departments", ["load.php", "add.php", "update.php", "deleteDepartment.php"]);
   ModuleDatabase["a" /* default */].getModule("positions");
   ModuleDatabase["a" /* default */].getModule("juridicals");
   ModuleDatabase["a" /* default */].getModule("nations");
@@ -72939,9 +73560,6 @@ App_App.prototype.getView = function () {
               }, {
                 text: "Tên đường",
                 pageIndex: 24
-              }, {
-                text: "Địa chỉ",
-                pageIndex: 25
               }, {
                 text: "Thông tin quy hoạch",
                 pageIndex: 26
@@ -73156,14 +73774,6 @@ App_App.prototype.openPage = function (index) {
       var mListStreet = new page_ListStreet();
       mListStreet.attach(this);
       var frameview = mListStreet.getView();
-      this.body.addChild(frameview);
-      this.body.activeFrame(frameview);
-      break;
-
-    case 25:
-      var mListAddress = new ListAddress();
-      mListAddress.attach(this);
-      var frameview = mListAddress.getView();
       this.body.addChild(frameview);
       this.body.activeFrame(frameview);
       break;

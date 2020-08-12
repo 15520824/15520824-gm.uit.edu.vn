@@ -807,6 +807,12 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                 for(var j=0;j<this.isSwipeRight.length;j++){
                     this.bodyTable.childNodes[i].appendChild(hiddenButton);
                     var on = {};
+                    var iconStyle = {};
+                    if(this.isSwipeRight[j].iconStyle!==undefined)
+                    iconStyle = this.isSwipeRight[j].iconStyle;
+                    var textStyle = {};
+                    if(this.isSwipeRight[j].textStyle!==undefined)
+                     textStyle = this.isSwipeRight[j].textStyle;
                     if(this.isSwipeRight[j].event!==undefined)
                     on = this.isSwipeRight[j].event;
                     var tempElement = _({
@@ -829,24 +835,26 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                                 },
                                 child:[
                                     {
-                                        tag:"i",
-                                        class:["material-icons","button-hidden-swipe-icon"],
-                                        style:{
-                                            color:this.isSwipeRight[j].iconcolor
-                                        },
-                                        props:{
-                                            innerHTML: this.isSwipeRight[j].icon
-                                        }
-                                    },
-                                    {
-                                        tag:"span",
-                                        class:"button-hidden-swipe-text",
-                                        style:{
-                                            color:this.isSwipeRight[j].textcolor
-                                        },
-                                        props:{
-                                            innerHTML: this.isSwipeRight[j].text
-                                        }
+                                        tag:"div",
+                                        class:"button-hidden-swipe-detail-content",
+                                        child:[
+                                            {
+                                                tag:"i",
+                                                class:["material-icons","button-hidden-swipe-icon"],
+                                                style:iconStyle,
+                                                props:{
+                                                    innerHTML: this.isSwipeRight[j].icon
+                                                },
+                                            },
+                                            {
+                                                tag:"span",
+                                                class:"button-hidden-swipe-text",
+                                                style:textStyle,
+                                                props:{
+                                                    innerHTML: this.isSwipeRight[j].text
+                                                }
+                                            }
+                                        ]
                                     }
                                 ]
                             }
@@ -876,9 +884,13 @@ tableView.prototype.addEventSwipe = function()
         if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
     this.bodyTable.addEventListener('slip:beforeswipe', function(e){
-        if(self.isSwipeRight===false&&e.detail.directionX==="left")
+        var startPoint = e.target;
+        while(startPoint!=null&&startPoint.tagName != "TR")
+        startPoint = startPoint.parentNode;
+        startPoint = startPoint.startPositionAverage;
+        if(self.isSwipeRight===false&&e.detail.directionX==="left"&&!(startPoint>0))
             e.preventDefault();
-        if(self.isSwipeLeft===false&&e.detail.directionX==="right")
+        if(self.isSwipeLeft===false&&e.detail.directionX==="right"&&!(startPoint>0))
             e.preventDefault();
         
     }, false);

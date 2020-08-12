@@ -239,7 +239,7 @@ ListState.prototype.getView = function () {
             
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-            self.mTable.setUpSwipe(undefined,[{icon:"",text:"Test cực mạnh",background:"green"},{icon:"",text:"Test cực mạnh",background:"red"},{icon:"",text:"Test cực mạnh",background:"yellow"},{icon:"",text:"Test cực mạnh",background:"blue"}]);
+            self.mTable.setUpSwipe(undefined,[{icon:"close",iconStyle:{color:"white"},text:"Test",background:"green"},{icon:"close",iconStyle:{color:"white"},text:"Test",background:"blue"}]);
         });
     });
 

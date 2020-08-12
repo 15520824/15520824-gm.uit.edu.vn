@@ -355,7 +355,7 @@
                                         if(tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
                                         lastWidth = parseInt(tempElement.style.maxWidth);
                                         else
-                                        lastWidth = tempElement.offsetWidth;
+                                        lastWidth = tempElement.clientWidth;
                                         if(hiddenButtonRight.offsetWidth>hiddenButtonRight.childNodes[0].offsetWidth+lastWidth)
                                         {
                                             if(tempElement!==undefined&&!tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
@@ -1084,7 +1084,7 @@
             var move = this.getAbsoluteMovementAvarage(delta);
             if(move.x>0&&target.node.hiddenButtonRight!==undefined)
             {
-                var transformWidth = parseInt(target.node.hiddenButtonRight.childNodes[0].childNodes[0].style.maxWidth)*4/1.2;
+                var transformWidth = parseInt(target.node.hiddenButtonRight.childNodes[0].childNodes[0].style.maxWidth)*this.target.node.hiddenButtonRight.childNodes[0].childNodes.length/1.2;
                 target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.1s ease-in';
                 target.node.style[transformJSPropertyName] = 'translate('+-transformWidth+'px,0) ' + hwLayerMagicStyle;
            

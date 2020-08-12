@@ -640,15 +640,13 @@ table.sortTable th.postionStickyCell{
 
 .button-hidden-swipe-icon{
   max-width: 100%;
-  display: inline-block;
-  position: absolute;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
 }
 
 .button-hidden-swipe-text{
+
+}
+
+.button-hidden-swipe-detail-content{
   max-width: 100%;
   display: inline-block;
   position: absolute;
@@ -659,6 +657,7 @@ table.sortTable th.postionStickyCell{
   color: white;
   font-size: 16px;
   font-weight: bolder;
+  text-align: center;
 }
 
 .button-hidden-swipe-detail{
