@@ -432,6 +432,9 @@
 
                             if(move.x>parseInt(tempElement.style.maxWidth)*(hiddenButtonRight.childNodes[0].childNodes.length)/2)
                             swipeAverage = true;
+                            if(delta>0)
+                            swiped = false;
+                            else
                             var swiped = (velocity > this.options.minimumSwipeVelocity && move.time > this.options.minimumSwipeTime) || (this.options.keepSwipingPercent && swipedPercent > this.options.keepSwipingPercent);
                         }
                         if (swiped) {  

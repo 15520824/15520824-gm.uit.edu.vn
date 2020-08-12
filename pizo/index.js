@@ -49304,6 +49304,7 @@ Slip.prototype = {
       var swipeAverage = false;
       var container = this.container;
       var originalIndex = findIndex(this.target, this.container.childNodes);
+      this.target.node.originalIndex = originalIndex;
       container.classList.add('slip-swiping-container');
 
       function removeClass() {
@@ -50672,7 +50673,14 @@ function tableView() {
     var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : result.tempIndexRow;
     var isRedraw = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
-    if (false) {} else {
+    if (window.mobilecheck()) {
+      result.tempIndexRow = indexRow;
+
+      if (isRedraw) {
+        result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+        scrollParent.emit("scroll");
+      }
+    } else {
       result.tempIndexRow = parseInt(number);
 
       if (result.paginationElement !== undefined) {
@@ -50692,7 +50700,44 @@ function tableView() {
     }
   };
 
-  if (false) { var tempLimit; }
+  if (window.mobilecheck()) {
+    var tempLimit = ModuleView_({
+      tag: "div",
+      child: [{
+        tag: "span",
+        style: {
+          padding: "10px",
+          textAlign: "center",
+          display: "block",
+          fontSize: "16px"
+        },
+        props: {
+          innerHTML: "Để tìm kiếm các phần tử cũ hơn vui lòng sử dung Tìm kiếm"
+        }
+      }]
+    });
+
+    tempLimit.style.display = "none";
+    result.appendChild(tempLimit);
+    scrollParent.addEventListener("scroll", function (event) {
+      if (this.startIndex > 10 * indexRow) {
+        if (tempLimit.style.display !== "block") tempLimit.style.display = "block";
+        return;
+      } else {
+        if (tempLimit.style.display !== "none") tempLimit.style.display = "none";
+      }
+
+      if (this.scrollTop >= this.scrollHeight - this.offsetHeight) {
+        this.getBodyTable(this.data);
+
+        if (this.bodyTable.listCheckBox !== undefined && this.bodyTable.listCheckBox.length > 0) {
+          this.bodyTable.listCheckBox[0].update();
+        }
+      }
+
+      this.setUpSwipe();
+    });
+  }
 
   result.updatePagination(indexRow, false);
   row = ModuleView_({
@@ -50824,17 +50869,24 @@ tableView.prototype.setUpSwipe = function (isSwipeLeft, isSwipeRight) {
 
         for (var j = 0; j < this.isSwipeRight.length; j++) {
           this.bodyTable.childNodes[i].appendChild(hiddenButton);
-          var on = {};
           var iconStyle = {};
           if (this.isSwipeRight[j].iconStyle !== undefined) iconStyle = this.isSwipeRight[j].iconStyle;
           var textStyle = {};
           if (this.isSwipeRight[j].textStyle !== undefined) textStyle = this.isSwipeRight[j].textStyle;
-          if (this.isSwipeRight[j].event !== undefined) on = this.isSwipeRight[j].event;
 
           var tempElement = ModuleView_({
             tag: "div",
             "class": "button-hidden-swipe",
-            on: on,
+            on: {
+              click: function (index, indexEvent, e) {
+                if (this.isSwipeRight[indexEvent].event !== undefined) {
+                  var me = this.bodyTable.childNodes[index];
+                  var index = me.originalIndex;
+                  var parent = me.elementParent;
+                  this.isSwipeRight[indexEvent].event(e, me, index, me.data, me, parent);
+                }
+              }.bind(this, i, j)
+            },
             style: {
               width: 1 / this.isSwipeRight.length * 100 + "%",
               backgroundColor: this.isSwipeRight[j].background,
@@ -62821,7 +62873,10 @@ ListState_ListState.prototype.getView = function () {
           color: "white"
         },
         text: "Test",
-        background: "green"
+        background: "green",
+        event: function event(_event) {
+          console.log(_event);
+        }
       }, {
         icon: "close",
         iconStyle: {
