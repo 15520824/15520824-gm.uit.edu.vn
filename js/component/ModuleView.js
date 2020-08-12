@@ -694,7 +694,6 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     if(dragVertical)
     {
         result.setUpSlip();
-        if(result.isSwipeLeft||result.isSwipeRight)
         result.addEventSwipe();
         result.slip = new Slip(result.bodyTable);
     }
@@ -712,6 +711,7 @@ tableView.prototype.getElementNext = function(element)
 
 tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
 {
+    console.log(isSwipeLeft,isSwipeRight)
     setTimeout(function(){
         if(isSwipeLeft!==undefined)
         {
@@ -881,10 +881,7 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
             }
         }
         
-        if(isSwipeLeft||isSwipeRight)
-        {
-            this.addEventSwipe();
-        }
+        this.addEventSwipe();
     }.bind(this),80)
     
 }
