@@ -711,7 +711,6 @@ tableView.prototype.getElementNext = function(element)
 
 tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
 {
-    console.log(isSwipeLeft,isSwipeRight)
     setTimeout(function(){
         if(isSwipeLeft!==undefined)
         {
@@ -822,7 +821,6 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                             {
                                 if(this.isSwipeRight[indexEvent].event!==undefined)
                                 {
-                                   
                                     var me = this.bodyTable.childNodes[index];
                                     var index = me.originalIndex;
                                     var parent = me.elementParent;
@@ -901,8 +899,9 @@ tableView.prototype.addEventSwipe = function()
             e.preventDefault();
         if(self.isSwipeLeft===false&&e.detail.directionX==="right"&&!(startPoint>0))
             e.preventDefault();
-        
-    }, false);
+        // else if(!startPoint>0)
+        // this.slip.animateToZero();
+    }.bind(this), false);
     this.bodyTable.addEventListener('slip:cancelswipe', function(e){
         self.swipeCancel();
     }, false);
