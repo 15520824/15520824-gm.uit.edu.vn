@@ -232,7 +232,7 @@
                 this.removeMouseHandlers();
                 if (this.target) {
                     this.target.node.style.willChange = '';
-                    this.target = null;
+                    // this.target = null;
                 }
                 this.usingTouch = false;
 
@@ -321,14 +321,14 @@
                                     removeClass();
                                     return true;
                                 } else {
-                                    this.animateToZero(undefined, target);
+                                    this.animateToZeroHidden(undefined, target);
                                 }
                             }.bind(this));
                         } else {
                             if(swipeAverage)
                             this.animateToAverage(removeClass);
                             else
-                            this.animateToZero(removeClass);
+                            this.animateToZeroHidden(removeClass);
                         }
                     },
 
@@ -825,6 +825,7 @@
 
         onMouseDown: function(e) {
             e.stopPropagation();
+             
             if (this.usingTouch || e.button != 0 || !this.setTarget(e)) return;
 
             this.addMouseHandlers(); // mouseup, etc.
@@ -879,6 +880,11 @@
                 scrollContainer = scrollContainer || top;
             }
 
+            if(this.target!==null&&this.target.node!==targetNode)
+            {
+                this.animateToZeroHidden(undefined,this.target);
+            }
+         
             this.target = {
                 originalTarget: e.target,
                 node: targetNode,
@@ -1075,6 +1081,56 @@
                 if (callback) callback.call(this, target);
                 target.node.startPositionAverage = 0;
             }.bind(this), 201);
+        },
+
+        animateToZeroHidden: function(callback, target) {
+            // save, because this.target/container could change during animation
+            target = target || this.target;
+            var delta = 0;
+            if(this.target.node.startPositionAverage!=undefined&&this.target.node.startPositionAverage>0)
+            delta = this.target.node.startPositionAverage;
+
+            var move = this.getTotalMovementAvarage(delta);
+
+            target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.2s ease-out';
+            target.node.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle;
+            if(move.x>0&&target.node.hiddenButtonRight!==undefined)
+            {
+                target.node.hiddenButtonRight.style[transitionJSPropertyName] = "all" + ' 0.2s ease-out';
+                target.node.hiddenButtonRight.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle;
+                target.node.hiddenButtonRight.style["width"] = 0;
+                var tempElement =  this.target.node.hiddenButtonRight.childNodes[0].childNodes[this.target.node.hiddenButtonRight.childNodes[0].childNodes.length-1];
+                if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                {
+                    tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+                }
+            }
+
+            setTimeout(function(){
+                target.node.style[transitionJSPropertyName] = '';
+                target.node.style[transformJSPropertyName] = '';
+                if(move.x&&target.node.hiddenButtonRight!==undefined)
+                {
+                   
+                    target.node.hiddenButtonRight.style[transitionJSPropertyName] = '';
+                    target.node.hiddenButtonRight.style[transformJSPropertyName] = '';
+                }
+                if (callback) callback.call(this, target);
+                target.node.startPositionAverage = 0;
+            }.bind(this), 201);
+        },
+
+        animateToZero: function(callback, target) {
+            // save, because this.target/container could change during animation
+            target = target || this.target;
+
+            target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.1s ease-out';
+            target.node.style[transformJSPropertyName] = 'translate(0,0) ' + hwLayerMagicStyle + target.baseTransform.value;
+            setTimeout(function(){
+                target.node.style[transitionJSPropertyName] = '';
+                target.node.style[transformJSPropertyName] = target.baseTransform.original;
+                if (callback) callback.call(this, target);
+            }.bind(this), 101);
         },
 
         animateToAverage: function(callback, target) {

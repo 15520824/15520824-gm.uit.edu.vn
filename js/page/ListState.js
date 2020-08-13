@@ -408,7 +408,7 @@ ListState.prototype.addDB = function(mNewState,row ){
     var self = this;
     mNewState.promiseAddDB.then(function(value){
         moduleDatabase.getModule("states").add(value).then(function(result){
-            self.addView(result.data,row);
+            self.addView(result,row);
         })
         mNewState.promiseAddDB = undefined;
         setTimeout(function(){

@@ -283,7 +283,7 @@ function moveAtFix(clone, pageY, shiftY, result) {
     var tempx = height - 3 * clone.clientHeight / 4;
     var top = clone.clientHeight / 2;
 
-    if (result.tagName !== "TABLE") {
+    if (result.tagName !== "DIV") {
         height += result.getHeightChild();
         tempx = height;
     } else {
@@ -887,6 +887,8 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
 tableView.prototype.addEventSwipe = function()
 {
     var self = this;
+    if(this.bodyTable.addEventComplete == true)
+        return;
     this.bodyTable.addEventListener('slip:beforewait', function(e){
         if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
@@ -917,6 +919,7 @@ tableView.prototype.addEventSwipe = function()
         if(e.detail.direction==="right")
         self.swipeCompleteRight(e,me,index,me.data,me,parent);
     }, false);
+    this.bodyTable.addEventComplete = true;
 }
 
 tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
@@ -2512,7 +2515,7 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
     var checkChild = false;
 
 
-    if (result.tagName === "TABLE")
+    if (result.tagName === "DIV")
         result.bodyTable.addChild(row);
     else {
         checkChild = true;
@@ -2548,7 +2551,7 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
 
     result.childrenNodes[index] = row;
     
-    if (result.tagName !== "TABLE") {
+    if (result.tagName !== "DIV") {
         if (index === result.data.child.length) {
             result.data.child.push(data);
             x = data;
@@ -2613,6 +2616,7 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
 
     //    result.checkDataUpdate(row);
     result.realTable.parentNode.updateHash(row);
+    this.setUpSwipe();
     return row;
 }
 
@@ -2689,7 +2693,7 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     indexData = index;
     result.childrenNodes[index] = row;
     
-    if (result.tagName !== "TABLE") {
+    if (result.tagName !== "DIV") {
         x = Object.assign(result.data.child[indexData], data);
         result.data.child[indexData] = x;
     }
@@ -2885,11 +2889,11 @@ tableView.prototype.changeParent = function (index, rowParent) {
     if (parent.childrenNodes.length !== 0) {
         var indexData = parent.childrenNodes.indexOf(element);
         var dataTemp;
-        if(parent.tagName == "TABLE")
+        if(parent.tagName == "DIV")
             dataTemp = parent.data[indexData];
         else
             dataTemp = parent.data.child[indexData];
-        if(rowParent.tagName == "TABLE")
+        if(rowParent.tagName == "DIV")
         rowParent.data.push(dataTemp);
         else
         rowParent.data.child.push(dataTemp);
@@ -2919,7 +2923,7 @@ tableView.prototype.addHideAnimationChild = function () {
 
 tableView.prototype.changeRowChild = function (element, parent) {
     var current;
-    if (parent.tagName === "TABLE") {
+    if (parent.tagName === "DIV") {
         current = null;
         parent.bodyTable.addChild(element);
     }
@@ -2936,7 +2940,7 @@ tableView.prototype.changeRowChild = function (element, parent) {
 
 tableView.prototype.changeRowChildElement = function (current) {
     for (var i = 0; i < this.childrenNodes.length; i++) {
-        if (this.tagName === "TABLE"||current == null)
+        if (this.tagName === "DIV"||current == null)
             this.bodyTable.addChild(this.childrenNodes[i]);
         else{
             insertAfter(this.childrenNodes[i], current);
@@ -3342,7 +3346,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
         var style2 = window.getComputedStyle(self.clone[0][row2]);
         elementReal = self.clone[0][row2].parentNode;
     } else {
-        if (self.tagName !== "TABLE") {
+        if (self.tagName !== "DIV") {
             if (self.clone[0][row1].parentNode.childrenNodes.length !== 0) {
                 var x = self.clone[0][row1].parentNode.getElementChild();
                 elementReal = x[x.length - 1].nextSibling;
