@@ -5,6 +5,8 @@ import "../../css/NewAccount.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import { formatDate, getGMT } from '../component/FormatFunction';
+import { locationView } from "./MapView";
+import xmlModalDragImage from './modal_drag_drop_image';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -410,85 +412,97 @@ NewAccount.prototype.getView = function (dataParent) {
                                     ]
                                 },
                                 
-                                // {
-                                //     tag:"div",
-                                //     class:"pizo-new-account-container-avatar",
-                                //     child:[
-                                //         {
-                                //             tag:"div",
-                                //             class:"pizo-new-account-container-avatar-container",
-                                //             child:[
-                                //                 {
-                                //                     tag:"span",
-                                //                     class:"pizo-new-account-container-avatar-container-label",
-                                //                     props:{
-                                //                         innerHTML:"Avatar"
-                                //                     }
-                                //                 },
-                                //                 {
-                                //                     tag:"div",
-                                //                     class:"pizo-new-account-container-avatar-container-image",
-                                //                     child:[
-                                //                         {
-                                //                             tag:"img",
-                                //                             class:"pizo-new-account-container-avatar-container-image-content",
-                                //                         }
-                                //                     ]
-                                //                 }
-                                //             ]
-                                //         }
-                                //     ]
-                                // },
+                                {
+                                    tag:"div",
+                                    class:"pizo-new-account-container-avatar",
+                                    child:[
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-account-container-avatar-container",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    class:"pizo-new-account-container-avatar-container-label",
+                                                    props:{
+                                                        innerHTML:"Avatar"
+                                                    }
+                                                },
+                                                {
+                                                    tag:"div",
+                                                    class:"pizo-new-account-container-avatar-container-image",
+                                                    on:{
+                                                        click:function(event){
+                                                            xmlModalDragImage.createModal(document.body,function(){
+                                                                if(xmlModalDragImage.imgUrl)
+                                                                this.childNodes[0].src = xmlModalDragImage.imgUrl.src;
+                                                            }.bind(this));
+                                                            xmlModalDragImage.addImage(this.childNodes[0].src);
+                                                        }
+                                                    },
+                                                    child:[
+                                                        {
+                                                            tag:"img",
+                                                            class:"pizo-new-account-container-avatar-container-image-content",
+                                                            attr:{
+                                                                src:"../assets/avatar/avatar-default.png"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
                                 
-                                // {
-                                //     tag:"div",
-                                //     class:"pizo-new-account-container-address",
-                                //     child:[
-                                //         {
-                                //             tag:"div",
-                                //             class:"pizo-new-account-container-address-container",
-                                //             child:[
-                                //                 {
-                                //                     tag:"span",
-                                //                     class:"pizo-new-account-container-address-container-label",
-                                //                     props:{
-                                //                         innerHTML:"Địa chỉ"
-                                //                     }
-                                //                 },
-                                //                 {
-                                //                     tag: "input",
-                                //                     class: ["pizo-new-account-container-address-container-input"],
-                                //                     on: {
-                                //                         click: function (event) {
-                                //                             this.blur();
-                                //                             var selfElement = this;
-                                //                             var childNode = locationView(function (value) {
-                                //                                 selfElement.value = value.input.value;
-                                //                                 childRemove.selfRemove();
-                                //                             })
-                                //                             var childRemove = _({
-                                //                                 tag: "modal",
-                                //                                 on: {
-                                //                                     click: function (event) {
-                                //                                         var target = event.target;
-                                //                                         while (target !== childNode && target !== childRemove && target !== document.body)
-                                //                                             target = target.parentNode;
-                                //                                         if (target === childRemove)
-                                //                                             childRemove.selfRemove();
-                                //                                     }
-                                //                                 },
-                                //                                 child: [
-                                //                                     childNode
-                                //                                 ]
-                                //                             })
-                                //                             self.$view.addChild(childRemove)
-                                //                         }
-                                //                     }
-                                //                 }
-                                //             ]
-                                //         }
-                                //     ]
-                                // },
+                                {
+                                    tag:"div",
+                                    class:"pizo-new-account-container-address",
+                                    child:[
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-account-container-address-container",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    class:"pizo-new-account-container-address-container-label",
+                                                    props:{
+                                                        innerHTML:"Địa chỉ"
+                                                    }
+                                                },
+                                                {
+                                                    tag: "input",
+                                                    class: ["pizo-new-account-container-address-container-input"],
+                                                    on: {
+                                                        click: function (event) {
+                                                            this.blur();
+                                                            var selfElement = this;
+                                                            var childNode = locationView(function (value) {
+                                                                selfElement.value = value.input.value;
+                                                                childRemove.selfRemove();
+                                                            })
+                                                            var childRemove = _({
+                                                                tag: "modal",
+                                                                on: {
+                                                                    click: function (event) {
+                                                                        var target = event.target;
+                                                                        while (target !== childNode && target !== childRemove && target !== document.body)
+                                                                            target = target.parentNode;
+                                                                        if (target === childRemove)
+                                                                            childRemove.selfRemove();
+                                                                    }
+                                                                },
+                                                                child: [
+                                                                    childNode
+                                                                ]
+                                                            })
+                                                            self.$view.addChild(childRemove)
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
                                 {
                                     tag:"div",
                                     class:"pizo-new-account-container-status-position",

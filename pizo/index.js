@@ -57312,7 +57312,7 @@ NewRealty_NewRealty.prototype.descViewImageThumnail = function (dataImage, index
   return temp;
 };
 
-NewRealty_NewRealty.prototype.itemAdress = function () {
+NewRealty_NewRealty.prototype.itemAddress = function () {
   var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     addressid: 0
   };
@@ -57336,7 +57336,7 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
 
   var temp = NewRealty_({
     tag: "div",
-    "class": ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+    "class": ["pizo-new-realty-desc-detail-row", "addressItemCheck"],
     child: [{
       tag: "span",
       "class": "pizo-new-realty-desc-detail-1-row-label",
@@ -57403,7 +57403,7 @@ NewRealty_NewRealty.prototype.itemAdress = function () {
   return temp;
 };
 
-NewRealty_NewRealty.prototype.itemAdressOld = function () {
+NewRealty_NewRealty.prototype.itemAddressOld = function () {
   var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     addressid_old: 0
   };
@@ -57424,7 +57424,7 @@ NewRealty_NewRealty.prototype.itemAdressOld = function () {
 
   var temp = NewRealty_({
     tag: "div",
-    "class": ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+    "class": ["pizo-new-realty-desc-detail-row", "addressItemCheck"],
     child: [{
       tag: "span",
       "class": "pizo-new-realty-desc-detail-1-row-label",
@@ -57481,7 +57481,7 @@ NewRealty_NewRealty.prototype.itemAdressOld = function () {
   }
 
   return temp;
-}; // NewRealty.prototype.itemAdress = function (addressid = 0) {
+}; // NewRealty.prototype.itemAddress = function (addressid = 0) {
 //     var self = this;
 //     var text = _({ text: "Địa chỉ" });
 //     var important = _({
@@ -57493,7 +57493,7 @@ NewRealty_NewRealty.prototype.itemAdressOld = function () {
 //     });
 //     var temp = _({
 //         tag: "div",
-//         class: ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+//         class: ["pizo-new-realty-desc-detail-row", "addressItemCheck"],
 //         child: [
 //             {
 //                 tag: "span",
@@ -57551,7 +57551,7 @@ NewRealty_NewRealty.prototype.itemAdressOld = function () {
 //     temp.parentUpdateIndex = function () {
 //         var k = 0;
 //         for (var i = 0; i < temp.parentNode.childNodes.length; i++) {
-//             if (!temp.parentNode.childNodes[i].classList.contains("adressItemCheck"))
+//             if (!temp.parentNode.childNodes[i].classList.contains("addressItemCheck"))
 //                 return;
 //             temp.parentNode.childNodes[i].updateIndex(k++);
 //         }
@@ -57565,7 +57565,7 @@ NewRealty_NewRealty.prototype.itemAdressOld = function () {
 //             switch (temp.index) {
 //                 case undefined:
 //                 case 0:
-//                     if (temp.nextSibling.classList.contains("adressItemCheck")&&(temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
+//                     if (temp.nextSibling.classList.contains("addressItemCheck")&&(temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
 //                         temp.nextSibling.selfRemove();
 //                     }
 //                     var containerMap = _({
@@ -57605,7 +57605,7 @@ NewRealty_NewRealty.prototype.itemAdressOld = function () {
 //                     }
 //                     if(next === temp)
 //                     {
-//                         temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+//                         temp.parentNode.insertBefore(self.itemAddress(), temp.nextSibling);
 //                         temp.parentUpdateIndex();
 //                     }
 //                     break;
@@ -57613,7 +57613,7 @@ NewRealty_NewRealty.prototype.itemAdressOld = function () {
 //                 case 2:
 //                     if(next === temp)
 //                     {
-//                         temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+//                         temp.parentNode.insertBefore(self.itemAddress(), temp.nextSibling);
 //                         temp.parentUpdateIndex();
 //                     }
 //                     break;
@@ -57621,7 +57621,7 @@ NewRealty_NewRealty.prototype.itemAdressOld = function () {
 //             return false;
 //         }
 //     }
-//     this.inputAdress = $('input.pizo-new-realty-desc-detail-1-row-input',temp);
+//     this.inputAddress = $('input.pizo-new-realty-desc-detail-1-row-input',temp);
 //     if(addressid!==0)
 //     {
 //         var number = this.checkAddress[addressid].addressnumber;
@@ -57648,7 +57648,7 @@ NewRealty_NewRealty.prototype.itemAdressOld = function () {
 NewRealty_NewRealty.prototype.descViewdetail = function () {
   var self = this;
 
-  var containerAdress = NewRealty_({
+  var containerAddress = NewRealty_({
     tag: "div",
     style: {
       marginBottom: "10px"
@@ -57656,8 +57656,8 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
   });
 
   if (this.data !== undefined) {
-    var addressCurrent = this.itemAdress(this.data.original, this.data.original.lat, this.data.original.lng);
-    containerAdress.appendChild(addressCurrent);
+    var addressCurrent = this.itemAddress(this.data.original, this.data.original.lat, this.data.original.lng);
+    containerAddress.appendChild(addressCurrent);
     var map = new MapView_MapView();
     var position = [this.data.original.lat, this.data.original.lng];
     position["data"] = this.data.original;
@@ -57666,23 +57666,23 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
     map.activePlanningMap();
     this.containerMap.parentNode.replaceChild(map, this.containerMap);
     this.containerMap = map;
-    var addressOld = this.itemAdressOld(this.data.original);
-    containerAdress.appendChild(addressOld);
+    var addressOld = this.itemAddressOld(this.data.original);
+    containerAddress.appendChild(addressOld);
   } else {
-    var addressCurrent = this.itemAdress();
-    containerAdress.appendChild(addressCurrent);
+    var addressCurrent = this.itemAddress();
+    containerAddress.appendChild(addressCurrent);
     var map = new MapView_MapView();
     map.activePlanningMap();
     this.containerMap.parentNode.replaceChild(map, this.containerMap);
     this.containerMap = map;
-    var addressOld = this.itemAdressOld();
-    containerAdress.appendChild(addressOld);
+    var addressOld = this.itemAddressOld();
+    containerAddress.appendChild(addressOld);
   }
 
   var temp = NewRealty_({
     tag: "div",
     "class": ["pizo-new-realty-desc-detail", "pizo-new-realty-dectruct-content-area-size-zone"],
-    child: [containerAdress, {
+    child: [containerAddress, {
       tag: "div",
       "class": "pizo-new-realty-desc-detail-row",
       child: [{
@@ -57791,7 +57791,7 @@ NewRealty_NewRealty.prototype.descViewdetail = function () {
   this.inputContent = NewRealty_$('textarea.pizo-new-realty-desc-detail-row-input', temp);
   this.addressCurrent = addressCurrent;
   this.addressOld = addressOld;
-  this.containerAdress = containerAdress;
+  this.containerAddress = containerAddress;
   return temp;
 };
 
@@ -70752,7 +70752,7 @@ MapRealty_MapRealty.prototype.modalLargeRealty = function (data) {
 
   staticTabbar.value = "status";
   staticTabbar.emit("change");
-  var fullAdress = "";
+  var fullAddress = "";
 
   if (data.addressid != 0) {
     var number = this.checkAddress[data.addressid].addressnumber;
@@ -70760,7 +70760,7 @@ MapRealty_MapRealty.prototype.modalLargeRealty = function (data) {
     var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
     var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
     var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
-    fullAdress = number + " " + street + ", " + ward + ", " + district + ", " + state;
+    fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
   }
 
   var statusIcon = MapRealty_({
@@ -71128,7 +71128,7 @@ MapRealty_MapRealty.prototype.modalLargeRealty = function (data) {
                             child: [{
                               tag: "span",
                               props: {
-                                innerHTML: fullAdress
+                                innerHTML: fullAddress
                               }
                             }]
                           }]
@@ -71883,7 +71883,7 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
     priceRent.style.display = "none";
   }
 
-  var fullAdressOld = "";
+  var fullAddressOld = "";
 
   if (data.addressid_old != 0) {
     var number = this.checkAddress[data.addressid_old].addressnumber;
@@ -71891,7 +71891,7 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
     var ward = this.checkWard[this.checkAddress[data.addressid_old].wardid].name;
     var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].name;
     var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].stateid].name;
-    fullAdressOld = number + " " + street + ", " + ward + ", " + district + ", " + state;
+    fullAddressOld = number + " " + street + ", " + ward + ", " + district + ", " + state;
   }
 
   var oldAddress = MapRealty_({
@@ -71910,7 +71910,7 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
       tag: "input",
       "class": ["pizo-new-realty-dectruct-input"],
       props: {
-        value: fullAdressOld
+        value: fullAddressOld
       }
     }]
   });
@@ -71964,7 +71964,7 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
     }]
   });
 
-  if (fullAdressOld === "") {
+  if (fullAddressOld === "") {
     oldAddress.style.display = "none";
   }
 
@@ -72813,7 +72813,7 @@ MapRealty_MapRealty.prototype.itemMap = function (marker) {
       break;
   }
 
-  var fullAdress = "";
+  var fullAddress = "";
 
   if (data.addressid != 0) {
     var number = this.checkAddress[data.addressid].addressnumber;
@@ -72821,7 +72821,7 @@ MapRealty_MapRealty.prototype.itemMap = function (marker) {
     var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
     var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
     var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
-    fullAdress = number + " " + street + ", " + ward + ", " + district + ", " + state;
+    fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
   }
 
   var statusIcon = MapRealty_({
@@ -72885,7 +72885,7 @@ MapRealty_MapRealty.prototype.itemMap = function (marker) {
             tag: "address",
             "class": "list-card-addr",
             props: {
-              innerHTML: fullAdress
+              innerHTML: fullAddress
             }
           }]
         }, {

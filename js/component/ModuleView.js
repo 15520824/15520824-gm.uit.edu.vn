@@ -4,7 +4,7 @@ import '../../css/tablesort.css';
 // import TabView from 'absol-acomp/js/TabView';
 import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
-import {insertAfter} from './FormatFunction';
+import {insertAfter, isNumeric} from './FormatFunction';
 
 import Slip from './slip.js';
 
@@ -693,9 +693,11 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.checkSpan = checkSpan;
     if(dragVertical)
     {
-        result.setUpSlip();
-        result.addEventSwipe();
         result.slip = new Slip(result.bodyTable);
+        result.setUpSlip();
+        setTimeout(function(){
+            result.addEventSwipe();
+        },80)
     }
     return result;
 }
@@ -890,13 +892,14 @@ tableView.prototype.addEventSwipe = function()
     if(this.bodyTable.addEventComplete == true)
         return;
     this.bodyTable.addEventListener('slip:beforewait', function(e){
-        if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
+        if (Array.isArray(e.target.className)&&e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
     this.bodyTable.addEventListener('slip:beforeswipe', function(e){
         var startPoint = e.target;
         while(startPoint!=null&&startPoint.tagName != "TR")
         startPoint = startPoint.parentNode;
         startPoint = startPoint.startPositionAverage;
+      
         if(self.isSwipeRight===false&&e.detail.directionX==="left"&&!(startPoint>0))
             e.preventDefault();
         if(self.isSwipeLeft===false&&e.detail.directionX==="right"&&!(startPoint>0))
@@ -945,59 +948,81 @@ tableView.prototype.setUpSlip = function()
     // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
    
     this.bodyTable.addEventListener('slip:reorder', function(e){
-        var result = self;
         var index = e.detail.originalIndex;
         var spliceIndex = e.detail.spliceIndex;
-        var tempIndex,tempSpliceIndex;
-        var me = self.bodyTable.childNodes[index];
-        var elementReal = me.elementParent.childrenNodes[spliceIndex];
-        
-        var element = me;
-        if(elementReal===undefined)
-            elementReal = self.getElementNext(me.elementParent.childrenNodes[me.elementParent.childrenNodes.length-1]);
-
-        result.bodyTable.insertBefore(element, elementReal);
-        if (element.getElementChild !== undefined) {
-            var elementChild = element.getElementChild();
-            if (elementChild.length !== 0) {
-                for (var i = 0; i < elementChild.length; i++) {
-                    result.bodyTable.insertBefore(elementChild[i], elementReal);
-                }
-            }
-        }
-
-        self = element.elementParent;
-        result = self;
-        tempIndex = index;
-        tempSpliceIndex = spliceIndex;
-        
-        if (result.data.child !== undefined) {
-            index = self.childrenNodes.indexOf(element);
-            spliceIndex = self.childrenNodes.indexOf(elementReal);
-            if(spliceIndex===-1)
-            spliceIndex = self.childrenNodes.length;
-            result.data.child = changeIndex(result.data.child, index, spliceIndex);
-        }
-        else
-        {
-            result.data = changeIndex(result.data, index, spliceIndex);
-        }
-            
-        result.childrenNodes = changeIndex(result.childrenNodes, index, spliceIndex);
-        var k = 0;
-        for (var i = 0; i < result.clone.length; i++) {
-            var checkValue = array_insertBefore(result.clone[i], element.childNodes[k], spliceIndex+1);
-            if (checkValue === false)
-                continue;
-            result.clone[i] = checkValue;
-            k++;
-        }
-        if (result.checkSpan !== undefined)
-            result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
-        var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: tempIndex,spliceIndex: tempSpliceIndex,parent: self,dataSpliceIndex:spliceIndex,dataIndex:index}});
-        self.dispatchEvent(event);
+        self.changeRowIndex(index,spliceIndex);
     }, false);
    
+}
+
+tableView.prototype.changeRowIndex = function(index,spliceIndex)
+{
+    var self = this;
+    var result = self;
+    if(isNumeric(index)!=true)
+    {
+        var me = index;
+        index = -1;
+        for(var i = 0;i<self.bodyTable.childNodes.length;i++)
+        {
+            if(self.bodyTable.childNodes[i]==me)
+            {
+                index = i;
+                break;
+            }
+        }
+    }
+    else
+    var me = self.bodyTable.childNodes[index];
+
+    var tempIndex,tempSpliceIndex;
+
+    var elementReal = me.elementParent.childrenNodes[spliceIndex];
+    
+    var element = me;
+    if(elementReal===undefined)
+        elementReal = self.getElementNext(me.elementParent.childrenNodes[me.elementParent.childrenNodes.length-1]);
+
+    result.bodyTable.insertBefore(element, elementReal);
+    if (element.getElementChild !== undefined) {
+        var elementChild = element.getElementChild();
+        if (elementChild.length !== 0) {
+            for (var i = 0; i < elementChild.length; i++) {
+                result.bodyTable.insertBefore(elementChild[i], elementReal);
+            }
+        }
+    }
+
+    self = element.elementParent;
+    result = self;
+    tempIndex = index;
+    tempSpliceIndex = spliceIndex;
+    
+    if (result.data.child !== undefined) {
+        index = self.childrenNodes.indexOf(element);
+        spliceIndex = self.childrenNodes.indexOf(elementReal);
+        if(spliceIndex===-1)
+        spliceIndex = self.childrenNodes.length;
+        result.data.child = changeIndex(result.data.child, index, spliceIndex);
+    }
+    else
+    {
+        result.data = changeIndex(result.data, index, spliceIndex);
+    }
+        
+    result.childrenNodes = changeIndex(result.childrenNodes, index, spliceIndex);
+    var k = 0;
+    for (var i = 0; i < result.clone.length; i++) {
+        var checkValue = array_insertBefore(result.clone[i], element.childNodes[k], spliceIndex+1);
+        if (checkValue === false)
+            continue;
+        result.clone[i] = checkValue;
+        k++;
+    }
+    if (result.checkSpan !== undefined)
+        result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
+    var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: tempIndex,spliceIndex: tempSpliceIndex,parent: self,dataSpliceIndex:spliceIndex,dataIndex:index}});
+    self.dispatchEvent(event);
 }
 
 tableView.prototype.getCellHeader = function(header,i)
@@ -1225,6 +1250,8 @@ tableView.prototype.getCellHeader = function(header,i)
         }, 
         on:on
     })
+
+    cell.data = header;
     if (functionClick !== undefined)
         cell.style.cursor = "pointer";
     var childUpDown = _({
@@ -1280,6 +1307,13 @@ tableView.prototype.getCellHeader = function(header,i)
     }
     container.addChild(childUpDown);
     return cell;
+}
+
+tableView.prototype.sortTable = function(index,increase){
+    if(increase == -1)
+    {
+
+    }
 }
 
 tableView.prototype.checkLongRow = function (index) {
@@ -1532,7 +1566,7 @@ tableView.prototype.getBodyTable = function (data,index = 0) {
         if (data.updateVisible === true) {
             var tempCheck = data[i].confirm;
             data[i].confirm = undefined;
-            data[i].exactly = undefined;
+            // data[i].exactly = undefined;
             if (tempCheck !== true) {
                 data[i].visiable = false;
                 if (data[i].child !== undefined)
@@ -2146,6 +2180,34 @@ tableView.prototype.getDivMargin = function () {
     })
 }
 
+tableView.prototype.getTrueCheckBox = function()
+{
+    var indexCheckBox = -1;
+    for(var i=0;i<this.header.length;i++)
+    {
+        if(this.header[i].type == "check")
+        {
+            indexCheckBox = i;
+            break;
+        }
+    }
+    if(indexCheckBox===-1)
+    return  [];
+    return this.checkChildCheckBox(this.data,indexCheckBox);
+}
+
+tableView.prototype.checkChildCheckBox = function(data,indexCheckBox){
+    var arr = [];
+    for(var i = 0;i<data.length;i++)
+    {   
+        if(data[i][indexCheckBox]==true||data[i][indexCheckBox]["value"]==true)
+        arr.push(data[i]);
+        if(data[i].child.length>0)
+        arr.concat(this.checkChildCheckBox(data[i].child,indexCheckBox));
+    }
+    return arr;
+}
+
 tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row) {
     var data = dataOrigin;
     var result = this, value, bonus, style, classList, cell;
@@ -2665,7 +2727,7 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     }
 
     for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
-        k = parseFloat(this.realTable.parentNode.parentNode.clone[i][0].id);
+        k = parseFloat(this.realTable.parentNode.clone[i][0].id);
         cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
         if (cell === 6) {
             result.clone[k++].splice(index, 1);
@@ -2841,6 +2903,7 @@ tableView.prototype.insertColumn = function (index, insertBefore = -1) {
     {
         cell = this.getCell(this.childrenNodes[i].data[index],i,index,this.clone[this.clone.length-1][0].id+1,this.checkSpan,this.childrenNodes[i]);
         current.push(cell);
+        cell.clone = this.clone;
         if(insertBefore===-1)
         this.childrenNodes[i].appendChild(cell);
         else
@@ -2953,7 +3016,8 @@ tableView.prototype.changeRowChildElement = function (current) {
 }
 
 tableView.prototype.dropRowChild = function (element) {
-    element.selfRemove();
+    if(element!==undefined&&element.parentNode!==undefined)
+        element.parentNode.removeChild(element);
     if (element.childrenNodes.length !== 0)
         element.dropRowChildElement()
 }

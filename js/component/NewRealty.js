@@ -427,7 +427,7 @@ NewRealty.prototype.descViewImageThumnail = function (dataImage, index, promiseL
     return temp;
 }
 
-NewRealty.prototype.itemAdress = function(data = {addressid:0},lat,lng)
+NewRealty.prototype.itemAddress = function(data = {addressid:0},lat,lng)
 {
     var addressid;
     if(data.addressid !== undefined)
@@ -445,7 +445,7 @@ NewRealty.prototype.itemAdress = function(data = {addressid:0},lat,lng)
     });
     var temp = _({
         tag: "div",
-        class: ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+        class: ["pizo-new-realty-desc-detail-row", "addressItemCheck"],
         child: [
             {
                 tag: "span",
@@ -517,7 +517,7 @@ NewRealty.prototype.itemAdress = function(data = {addressid:0},lat,lng)
     return temp;
 }
 
-NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
+NewRealty.prototype.itemAddressOld = function(data = {addressid_old:0})
 {
     var addressid;
     if(data.addressid_old !== undefined)
@@ -534,7 +534,7 @@ NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
     });
     var temp = _({
         tag: "div",
-        class: ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+        class: ["pizo-new-realty-desc-detail-row", "addressItemCheck"],
         child: [
             {
                 tag: "span",
@@ -598,7 +598,7 @@ NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
     return temp;
 }
 
-// NewRealty.prototype.itemAdress = function (addressid = 0) {
+// NewRealty.prototype.itemAddress = function (addressid = 0) {
 
 
 //     var self = this;
@@ -612,7 +612,7 @@ NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
 //     });
 //     var temp = _({
 //         tag: "div",
-//         class: ["pizo-new-realty-desc-detail-row", "adressItemCheck"],
+//         class: ["pizo-new-realty-desc-detail-row", "addressItemCheck"],
 //         child: [
 //             {
 //                 tag: "span",
@@ -673,7 +673,7 @@ NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
 //     temp.parentUpdateIndex = function () {
 //         var k = 0;
 //         for (var i = 0; i < temp.parentNode.childNodes.length; i++) {
-//             if (!temp.parentNode.childNodes[i].classList.contains("adressItemCheck"))
+//             if (!temp.parentNode.childNodes[i].classList.contains("addressItemCheck"))
 //                 return;
 //             temp.parentNode.childNodes[i].updateIndex(k++);
 //         }
@@ -689,7 +689,7 @@ NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
 //             switch (temp.index) {
 //                 case undefined:
 //                 case 0:
-//                     if (temp.nextSibling.classList.contains("adressItemCheck")&&(temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
+//                     if (temp.nextSibling.classList.contains("addressItemCheck")&&(temp.nextSibling.value === "" || temp.nextSibling.value === undefined)) {
 //                         temp.nextSibling.selfRemove();
 //                     }
 //                     var containerMap = _({
@@ -731,7 +731,7 @@ NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
 //                     }
 //                     if(next === temp)
 //                     {
-//                         temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+//                         temp.parentNode.insertBefore(self.itemAddress(), temp.nextSibling);
 //                         temp.parentUpdateIndex();
 //                     }
 //                     break;
@@ -739,7 +739,7 @@ NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
 //                 case 2:
 //                     if(next === temp)
 //                     {
-//                         temp.parentNode.insertBefore(self.itemAdress(), temp.nextSibling);
+//                         temp.parentNode.insertBefore(self.itemAddress(), temp.nextSibling);
 //                         temp.parentUpdateIndex();
 //                     }
 //                     break;
@@ -749,7 +749,7 @@ NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
 //         }
         
 //     }
-//     this.inputAdress = $('input.pizo-new-realty-desc-detail-1-row-input',temp);
+//     this.inputAddress = $('input.pizo-new-realty-desc-detail-1-row-input',temp);
 //     if(addressid!==0)
 //     {
 //         var number = this.checkAddress[addressid].addressnumber;
@@ -774,7 +774,7 @@ NewRealty.prototype.itemAdressOld = function(data = {addressid_old:0})
 
 NewRealty.prototype.descViewdetail = function () {
     var self = this;
-    var containerAdress = _({
+    var containerAddress = _({
         tag:"div",
         style:{
             marginBottom:"10px"
@@ -782,8 +782,8 @@ NewRealty.prototype.descViewdetail = function () {
     });
     if(this.data!==undefined)
     {
-        var addressCurrent = this.itemAdress(this.data.original,this.data.original.lat,this.data.original.lng)
-        containerAdress.appendChild(addressCurrent);
+        var addressCurrent = this.itemAddress(this.data.original,this.data.original.lat,this.data.original.lng)
+        containerAddress.appendChild(addressCurrent);
         var map = new MapView();
         var position = [this.data.original.lat,this.data.original.lng];
         position["data"] = this.data.original;
@@ -792,19 +792,19 @@ NewRealty.prototype.descViewdetail = function () {
         map.activePlanningMap();
         this.containerMap.parentNode.replaceChild(map, this.containerMap);
         this.containerMap = map;
-        var addressOld = this.itemAdressOld(this.data.original)
-        containerAdress.appendChild(addressOld);
+        var addressOld = this.itemAddressOld(this.data.original)
+        containerAddress.appendChild(addressOld);
     }else
     {
         
-        var addressCurrent = this.itemAdress();
-        containerAdress.appendChild(addressCurrent);
+        var addressCurrent = this.itemAddress();
+        containerAddress.appendChild(addressCurrent);
         var map = new MapView();
         map.activePlanningMap();
         this.containerMap.parentNode.replaceChild(map, this.containerMap);
         this.containerMap = map;
-        var addressOld = this.itemAdressOld();
-        containerAdress.appendChild(addressOld);
+        var addressOld = this.itemAddressOld();
+        containerAddress.appendChild(addressOld);
     }
 
    
@@ -812,7 +812,7 @@ NewRealty.prototype.descViewdetail = function () {
         tag: "div",
         class: ["pizo-new-realty-desc-detail", "pizo-new-realty-dectruct-content-area-size-zone"],
         child: [ 
-            containerAdress,
+            containerAddress,
             {
                 tag: "div",
                 class: "pizo-new-realty-desc-detail-row",
@@ -959,7 +959,7 @@ NewRealty.prototype.descViewdetail = function () {
     this.addressCurrent = addressCurrent;
     this.addressOld = addressOld;
 
-    this.containerAdress = containerAdress;
+    this.containerAddress = containerAddress;
     return temp;
 }
 
@@ -2110,10 +2110,12 @@ NewRealty.prototype.getDataSave = function(){
         temp.addressid_old = address;
     }
 
-    if(this.data!==undefined&&this.data.original!==undefined)
-    temp.id = this.data.original.id;
-    else
-    temp.id = this.data.id;
+    if(this.data!==undefined){
+        if(this.data.original!==undefined)
+        temp.id = this.data.original.id;
+        else 
+        temp.id = this.data.id;
+    }
     return temp;
 }
 

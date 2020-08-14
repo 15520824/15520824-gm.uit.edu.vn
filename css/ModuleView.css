@@ -506,6 +506,7 @@ table.sortTable th.postionStickyCell{
 .container-sortTable{
   width: 100%;
   overflow: auto;
+  height: 100%;
 }
 
 .pagination {

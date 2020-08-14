@@ -21,6 +21,11 @@ export default xmlModalDragImage = {
     var temp = _({
       tag: "img",
       class: "full-size",
+      style:{
+        position:"absolute",
+        left:"50%",
+        transform: "translateX(-50%)"
+      },
       props: {
         src: srcImg
       },
@@ -174,6 +179,9 @@ export default xmlModalDragImage = {
                           tag: "div",
                           class:
                             "modal-upload-XML-body-drop-area-main-gallery",
+                            style:{
+                              top:0
+                            },
                           props: {
                             id: "gallery"
                           }
@@ -653,43 +661,48 @@ export default xmlModalDragImage = {
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = function() {
-      self.imgUrl = self.Image(reader.result);
-      var img = _({
-        tag: "div",
-        class: "image-autoresize",
-        style: {
-          pointerEvents: "none",
-          textAlign: "left"
-        },
-        child: [
-          self.imgUrl
-        ],
-        on: {
-          sizechange: function(event) {}
-        }
-      });
-      var parent = document.getElementById("gallery");
-      parent.style.position = "relative";
-      var value;
-      var srcURL;
-      for (var i = 0; i < parent.childNodes.length; i++) {
-        srcURL = parent.childNodes[i]
-          .getElementsByClassName("full-size")[0]
-          .getAttribute("src");
-        value = self.imgAll.indexOf(srcURL);
-        if (i != -1) {
-          self.imgAll.splice(value, 1);
-        }
+      self.addImage(reader.result);
+    };
+  },
+  addImage: function(src)
+  {
+    var self = this;
+    self.imgUrl = self.Image(src);
+    var img = _({
+      tag: "div",
+      class: "image-autoresize",
+      style: {
+        pointerEvents: "none",
+        textAlign: "left"
+      },
+      child: [
+        self.imgUrl
+      ],
+      on: {
+        sizechange: function(event) {}
       }
-      parent.clearChild();
-      parent.appendChild(img);
+    });
+    var parent = document.getElementById("gallery");
+    parent.style.position = "relative";
+    var value;
+    var srcURL;
+    for (var i = 0; i < parent.childNodes.length; i++) {
+      srcURL = parent.childNodes[i]
+        .getElementsByClassName("full-size")[0]
+        .getAttribute("src");
+      value = self.imgAll.indexOf(srcURL);
+      if (i != -1) {
+        self.imgAll.splice(value, 1);
+      }
+    }
+    parent.clearChild();
+    parent.appendChild(img);
 
-      self.imgUrl.onload = function() {
-        img.style.width =
-          self.imgUrl.naturalWidth *
-            (img.clientHeight / self.imgUrl.naturalHeight) +
-          "px";
-      };
+    self.imgUrl.onload = function() {
+      img.style.width =
+        self.imgUrl.naturalWidth *
+          (img.clientHeight / self.imgUrl.naturalHeight) +
+        "px";
     };
   },
   uploadFile: function(file, i, self) {

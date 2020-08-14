@@ -6,6 +6,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import MergeRealty from '../component/MergeRealty';
 
+
 import {
     tableView,
     deleteQuestion
@@ -76,7 +77,6 @@ ListRealty.prototype.getView = function () {
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
             click: function (evt) {
-               
                 if(this.currentMerge === true)
                 {
                     // self.merge();
@@ -86,6 +86,7 @@ ListRealty.prototype.getView = function () {
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(0,0);
                     this.currentMerge = undefined;
+                    self.merge(self.mTable.getTrueCheckBox());
                 }else
                 {
                     saveButton.style.display = "none";
@@ -926,7 +927,6 @@ ListRealty.prototype.searchControlContent = function () {
     return temp;
 }
 
-
 ListRealty.prototype.add = function (parent_id = 0, row) {
     var self = this;
     var mNewRealty = new NewRealty(undefined, parent_id);
@@ -1032,7 +1032,7 @@ ListRealty.prototype.merge = function(data,parent,index)
     var frameview = mMergeRealty.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mMergeRealty, data, parent, index);
+    self.mergeDB(mMergeRealty, data, parent, index);
 }
 
 ListRealty.prototype.mergeDB = function(mMergeRealty,data,parent,index)

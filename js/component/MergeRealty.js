@@ -4,6 +4,8 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/MergeRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
+import MergeTool from 'absol-form';
+import moduleDatabase from '../component/ModuleDatabase';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -131,6 +133,152 @@ MergeRealty.prototype.getView = function () {
         ]
     });
 
+    var myTool = new MergeTool.MPOTMergeTool();
+    var toolView = myTool.getView();
+    var itemsAddress = [];
+    var itemData;
+    var valueAddress,valueAddressOld;
+    this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
+    this.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+    this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+    this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+    this.checkState = moduleDatabase.getModule("states").getLibary("id");
+    var number,street,ward,district,state,fullAddress;
+    for(var i = 0;i<this.data.length;i++)
+    {
+        //Địa chỉ hiện tại
+        itemData = this.data[i].original;
+        if(itemData.addressid!==0)
+        number = this.checkAddress[itemData.addressid].addressnumber;
+        street = this.checkStreet[this.checkAddress[itemData.addressid].streetid].name;
+        ward = this.checkWard[this.checkAddress[itemData.addressid].wardid].name;
+        district = this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid].wardid].districtid].name;
+        state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid].wardid].districtid].stateid].name;
+        fullAddress = number+" "+street+", "+ward+", "+district+", "+state;
+        itemsAddress.push(fullAddress);
+        if(valueAddress===undefined)
+        valueAddress = fullAddress;
+
+        //Địa chỉ cũ
+        // if(itemData.addressid!==0)
+        // number = this.checkAddress[itemData.addressid].addressnumber;
+        // street = this.checkStreet[this.checkAddress[itemData.addressid].streetid].name;
+        // ward = this.checkWard[this.checkAddress[itemData.addressid].wardid].name;
+        // district = this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid].wardid].districtid].name;
+        // state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid].wardid].districtid].stateid].name;
+        // fullAddress = number+" "+street+", "+ward+", "+district+", "+state;
+        // itemsAddress.push(fullAddress);
+        // if(valueAddressOld===undefined)
+        // valueAddressOld = fullAddress;
+    }
+    var dataAddress =  {
+        type: 'text',
+        name: 'Địa chỉ',
+        id: 'address',
+        action: "single-choice",
+        value: valueAddress,
+        items: itemsAddress
+    }
+
+    myTool.setData(
+        {
+            editor: {
+                title: 'Quản lý bất động sản',
+                properties: [
+                    dataAddress,
+                    {
+                        type: 'text',
+                        name: 'Tên',
+                        id: 'name',
+                        action: 'input',
+                        placeholder: "Nguyễn Văn An"
+                    },
+                    {
+                        type: 'text',
+                        name: 'MSSV',
+                        id: 'stid',
+                        action: 'input',
+                        value: '5130abcd'
+                    },
+                    {
+                        type: 'number',
+                        name: 'Tuổi',
+                        id: 'old',
+                        action: "single-choice",
+                        value: 20,
+                        items: [15, 16, 17, 18, 19, 20, 21, 22, 25]
+                    },
+                    {
+                        type: 'number',
+                        name: 'Tháng trong năm',
+                        id: 'months',
+                        action: "multi-choice",
+                        values: [],
+                        items: Array(12).fill(0).map((u, i) => i + 1)
+                    },
+                    {
+                        type: 'text',
+                        name: 'Giới tính',
+                        id: 'sx',
+                        action: 'single-choice',
+                        items: [
+                            'Nam', "Nữ"
+                        ],
+                        value: 'Nam'
+                    },
+                    {
+                        type: 'text',
+                        name: 'Ngôn ngữ',
+                        id: 'lang',
+                        action: 'multi-choice',
+                        items: ['English', 'Tiếng Việt', "Javascript"]
+                    },
+                    {
+                        type: 'group',
+                        name: 'Thông tin liên lạc',
+                        id: 'contact',
+                        properties: [
+                            {
+                                type: 'text',
+                                long: true,
+                                id: 'address',
+                                name: 'Địa chỉ',
+                                action: 'input'
+                            },
+                            {
+                                type: 'text',
+                                name: 'SĐT',
+                                id: 'phone',
+                                action: 'input'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'group',
+                        name: 'Nguời bảo hộ',
+                        id: 'tutor',
+                        properties: [
+                            {
+                                type: 'text',
+                                action: 'input',
+                                name: 'Địa chỉ',
+                                long: true,
+                                fName: 'Địa chỉ(người bảo hộ)',
+                                id: 'tutor_address'
+                            },
+                            {
+                                type: 'text',
+                                name: 'SĐT(người bảo hộ)',
+                                id: 'tutor_phone',
+                                action: 'input'
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    );
+    toolView.addStyle({ width: '100%', height: '100%' });
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-realty-main"],
@@ -139,89 +287,14 @@ MergeRealty.prototype.getView = function () {
                     tag:"div",
                     class:["pizo-list-realty-main-result-control"],
                     child:[
-                        {
-                            tag:"div",
-                            class:"pizo-new-state-container",
-                            child:[
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-state-container-name-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-name-container-label",
-                                            props:{
-                                                innerHTML:"Tên"
-                                            }
-                                        },
-                                        {
-                                            tag:"input",
-                                            class:["pizo-new-state-container-name-container-input","pizo-new-realty-dectruct-input"],
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-state-container-type-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-type-container-label",
-                                            props:{
-                                                innerHTML:"Loại"
-                                            }
-                                        },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-state-container-type-container-input",
-                                            props:{
-                                                items:[
-                                                    {text:"Thành phố",value:"Thành phố"},
-                                                    {text:"Tỉnh",value:"Tỉnh"}
-                                                ]
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-state-container-nation-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-nation-container-label",
-                                            props:{
-                                                innerHTML:"Quốc gia"
-                                            }
-                                        },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-state-container-nation-container-input",
-                                            props:{
-                                                items:[
-                                                    {text:"Việt Nam",value:1},
-                                                ]
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
+                        toolView
                     ]
                 }
             ]   
         })
         );
     this.createPromise();
-    this.name = $('input.pizo-new-state-container-name-container-input"',this.$view);
-    this.type = $('div.pizo-new-state-container-type-container-input',this.$view);
-    this.nation = $('div.pizo-new-state-container-nation-container-input',this.$view);
-    if(this.data!==undefined)
-    {
-        this.name.value = this.data.original.name;
-        this.type.value = this.data.original.type;
-        this.nation.value = this.data.original.nationid;
-    }
+   
    
     return this.$view;
 }

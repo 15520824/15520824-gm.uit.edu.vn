@@ -95,6 +95,9 @@ HashTable.prototype.getKey = function(key,index){
                         if(check[row][column]===undefined){
                                 check[row][column] =  objectElement[j];
                                 check[row][column].indexCharacter = key.length-1;
+                                check[row][column].lastCheck = [objectElement];
+                                check[row][column].lastIndexCheck = [];
+                                check[row][column].lastIndex = objectElement[j][0];
                                 check[row][column].tempExactly = parseFloat("0."+objectElement[j][0]);
                         }
                         else {
@@ -106,9 +109,52 @@ HashTable.prototype.getKey = function(key,index){
                                     continue Loop2;
                                 }else
                                 {
+                                    var prevCheck = objectElement[j][0];
+                                 
+                                    var currentIndex = check[row][column][0];
                                     var tempIndex = check[row][column].indexCharacter;
-                                    var tempExactly = check[row][column].tempExactly + (objectElement[j][0] - check[row][column][0]);
-                                    check[row][column] =  objectElement[j];
+                                    var tempExactly = check[row][column].tempExactly + (prevCheck - currentIndex);
+                                    var lastCheck = check[row][column].lastCheck;
+                                    var lastIndexCheck =  check[row][column].lastIndexCheck;
+                                    // prevCheck = currentIndex;
+                                    for(var m=lastIndexCheck.length-1;m>=0;m--)
+                                    {
+                                        var itemCheck = lastCheck[m+1];
+                                        var itemIndexCheck = 1;
+                                        var lastIndex = lastIndexCheck[m];
+                                        var oldIndex = lastIndexCheck[m];
+                                        
+                                        
+                                        for(var n = itemIndexCheck;n<itemCheck.length;n++)
+                                        {
+                                            console.log(itemCheck[n][0],prevCheck)
+                                            if(itemCheck[n][0]>prevCheck)
+                                            break;
+                                            lastIndex = itemCheck[n][0];
+                                        }
+                                        prevCheck = lastIndex;
+                                        if(lastIndex-oldIndex>0)
+                                        {
+                                            tempExactly -= (lastIndex-oldIndex);
+                                            lastIndexCheck[m] = lastIndex;
+                                            if(m==0)
+                                            {
+                                                tempExactly = parseInt(tempExactly) + parseFloat("0."+lastIndex);
+                                            }
+                                        }
+                                        else
+                                        break;
+                                    }
+                                    
+                                    lastCheck.push(objectElement);
+                                    lastIndexCheck.push(check[row][column].lastIndex);
+                                    
+                                    check[row][column] = objectElement[j];
+                                    
+                                    check[row][column].lastCheck = lastCheck;
+                                    check[row][column].lastIndexCheck = lastIndexCheck;
+                                    check[row][column].lastIndex = objectElement[j][0];
+
                                     check[row][column].indexCharacter = tempIndex-1;
                                     check[row][column].tempExactly = tempExactly;
                                 }

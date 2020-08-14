@@ -356,7 +356,7 @@
                                         lastWidth = parseInt(tempElement.style.maxWidth);
                                         else
                                         lastWidth = tempElement.clientWidth;
-                                        if(hiddenButtonRight.offsetWidth>hiddenButtonRight.childNodes[0].offsetWidth+lastWidth)
+                                        if(hiddenButtonRight.offsetWidth>=hiddenButtonRight.childNodes[0].offsetWidth+lastWidth)
                                         {
                                             if(tempElement!==undefined&&!tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
                                             {
@@ -414,7 +414,9 @@
 
                     onEnd: function() {
                         var hiddenButtonRight = this.target.node.hiddenButtonRight;
-                        var tempElement =  hiddenButtonRight.childNodes[0].childNodes[hiddenButtonRight.childNodes[0].childNodes.length-1];
+                        var tempElement;
+                        if(hiddenButtonRight!==undefined)
+                        tempElement =  hiddenButtonRight.childNodes[0].childNodes[hiddenButtonRight.childNodes[0].childNodes.length-1];
                         var delta = 0;
                         if(this.target.node.startPositionAverage!=undefined&&this.target.node.startPositionAverage>0)
                         delta = this.target.node.startPositionAverage;
@@ -429,9 +431,10 @@
                             var velocity = (move.x-delta) / move.time;
                             // How far out has the item been swiped?
                             var swipedPercent = Math.abs((this.startPosition.x - this.previousPosition.x) / this.container.clientWidth) * 100;
-
+                            if(tempElement!==undefined)
                             if(move.x>parseInt(tempElement.style.maxWidth)*(hiddenButtonRight.childNodes[0].childNodes.length)/2)
                             swipeAverage = true;
+
                             if(delta>0)
                             swiped = false;
                             else

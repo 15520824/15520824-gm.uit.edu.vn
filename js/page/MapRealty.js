@@ -535,7 +535,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
     })
     staticTabbar.value = "status";
     staticTabbar.emit("change");
-    var fullAdress = "";
+    var fullAddress = "";
     if(data.addressid!=0)
     {
         var number = this.checkAddress[data.addressid].addressnumber;
@@ -543,7 +543,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
         var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
         var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
-        fullAdress = number+" "+street+", "+ward+", "+district+", "+state;
+        fullAddress = number+" "+street+", "+ward+", "+district+", "+state;
     }
     var statusIcon = _({
         tag:"i",
@@ -970,7 +970,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                            {
                                                                                                                tag:"span",
                                                                                                                props:{
-                                                                                                                   innerHTML:fullAdress
+                                                                                                                   innerHTML:fullAddress
                                                                                                                }
                                                                                                            }
                                                                                                        ]
@@ -1795,7 +1795,7 @@ MapRealty.prototype.detailHouse = function (data) {
     {
         priceRent.style.display = "none";
     }
-    var fullAdressOld = "";
+    var fullAddressOld = "";
     if(data.addressid_old!=0)
     {
         var number = this.checkAddress[data.addressid_old].addressnumber;
@@ -1803,7 +1803,7 @@ MapRealty.prototype.detailHouse = function (data) {
         var ward = this.checkWard[this.checkAddress[data.addressid_old].wardid].name;
         var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].name;
         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid_old].wardid].districtid].stateid].name;
-        fullAdressOld = number+" "+street+", "+ward+", "+district+", "+state;
+        fullAddressOld = number+" "+street+", "+ward+", "+district+", "+state;
     }
     var oldAddress = _({
         tag: "div",
@@ -1823,7 +1823,7 @@ MapRealty.prototype.detailHouse = function (data) {
                 tag: "input",
                 class: ["pizo-new-realty-dectruct-input"],
                 props:{
-                    value:fullAdressOld
+                    value:fullAddressOld
                 }
             }
             
@@ -1882,7 +1882,7 @@ MapRealty.prototype.detailHouse = function (data) {
             
         ]
     }); 
-    if(fullAdressOld === "")
+    if(fullAddressOld === "")
     {
         oldAddress.style.display = "none";
     }
@@ -2880,7 +2880,7 @@ MapRealty.prototype.itemMap = function(marker){
             type = "Chung cư";
             break;
     }
-    var fullAdress = "";
+    var fullAddress = "";
     if(data.addressid!=0)
     {
         var number = this.checkAddress[data.addressid].addressnumber;
@@ -2888,7 +2888,7 @@ MapRealty.prototype.itemMap = function(marker){
         var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
         var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
-        fullAdress = number+" "+street+", "+ward+", "+district+", "+state;
+        fullAddress = number+" "+street+", "+ward+", "+district+", "+state;
     }
 
     var statusIcon = _({
@@ -2957,7 +2957,7 @@ MapRealty.prototype.itemMap = function(marker){
                                         tag:"address",
                                         class:"list-card-addr",
                                         props:{
-                                            innerHTML:fullAdress
+                                            innerHTML:fullAddress
                                         }
                                     }
                                 ]

@@ -418,3 +418,8 @@ export function isEqual(value, other) {
 	return true;
 
 };
+
+
+export function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }

@@ -201,3 +201,17 @@ input:checked+.absol-switch-slider:before{
     -ms-transform: translateX(1em) translateY(-50%);
     transform: translateX(1em) translateY(-50%);
 }
+
+.pizo-new-account-container-avatar-container-image{
+    flex-grow: 2;
+    display: flex;
+}
+
+.pizo-new-account-container-avatar-container-image-content{
+    max-height: 110px;
+    max-width: 110px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid rgb(214, 214, 214);
+}
