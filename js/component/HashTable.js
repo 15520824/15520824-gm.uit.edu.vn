@@ -98,7 +98,11 @@ HashTable.prototype.getKey = function(key,index){
                                 check[row][column].lastCheck = [objectElement];
                                 check[row][column].lastIndexCheck = [];
                                 check[row][column].lastIndex = objectElement[j][0];
-                                check[row][column].tempExactly = parseFloat("0."+objectElement[j][0]);
+                                var temp = key.length - (objectElement[j][0]+"").length;
+                                var tempString = "";
+                                for(var x = 0;x<temp;x++)
+                                tempString+="0";
+                                check[row][column].tempExactly = parseFloat("0."+tempString+objectElement[j][0]);
                         }
                         else {
                             if(objectElement[j][0]>check[row][column][0])
@@ -124,10 +128,8 @@ HashTable.prototype.getKey = function(key,index){
                                         var lastIndex = lastIndexCheck[m];
                                         var oldIndex = lastIndexCheck[m];
                                         
-                                        
                                         for(var n = itemIndexCheck;n<itemCheck.length;n++)
                                         {
-                                            console.log(itemCheck[n][0],prevCheck)
                                             if(itemCheck[n][0]>prevCheck)
                                             break;
                                             lastIndex = itemCheck[n][0];
@@ -137,17 +139,21 @@ HashTable.prototype.getKey = function(key,index){
                                         {
                                             tempExactly -= (lastIndex-oldIndex);
                                             lastIndexCheck[m] = lastIndex;
-                                            if(m==0)
+                                            if(m==lastIndexCheck.length-1)
                                             {
-                                                tempExactly = parseInt(tempExactly) + parseFloat("0."+lastIndex);
+                                                var temp = key.length - (lastIndex+"").length;
+                                                var tempString = "";
+                                                for(var x = 0;x<temp;x++)
+                                                tempString+="0";
+                                                tempExactly = parseInt(tempExactly) + parseFloat("0."+tempString+lastIndex);
                                             }
                                         }
                                         else
                                         break;
                                     }
                                     
-                                    lastCheck.push(objectElement);
-                                    lastIndexCheck.push(check[row][column].lastIndex);
+                                    lastCheck.unshift(objectElement);
+                                    lastIndexCheck.unshift(check[row][column].lastIndex);
                                     
                                     check[row][column] = objectElement[j];
                                     

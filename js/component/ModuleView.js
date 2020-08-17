@@ -1566,7 +1566,7 @@ tableView.prototype.getBodyTable = function (data,index = 0) {
         if (data.updateVisible === true) {
             var tempCheck = data[i].confirm;
             data[i].confirm = undefined;
-            // data[i].exactly = undefined;
+            data[i].exactly = undefined;
             if (tempCheck !== true) {
                 data[i].visiable = false;
                 if (data[i].child !== undefined)
@@ -1824,6 +1824,7 @@ tableView.prototype.pagination = function (number, functionClick) {
 
                         if (functionClick !== undefined)
                             functionClick(event, i);
+                        self.indexRow = 0;
                         self.updateTable(undefined, self.data, self.dragHorizontal, self.dragVertical, i * number);
                         if (self.scrollParent !== undefined)
                             self.scrollParent.scrollTop = 0;
