@@ -248,14 +248,15 @@ export function DetailView(map,data) {
             }
             temp.street.value = data.street;
             temp.setInput(false);
-            if(data.lat!==undefined)
-            temp.lat.value = data.lat;
-
-            if(data.lng!==undefined)
-            temp.lng.value = data.lng;
-            var postionData = [data.lat,data.lng];
-            postionData["data"] = data;
-            map.addMoveMarker(postionData);
+            if(data.lat!==undefined&&data.lng!==undefined)
+            {
+                temp.lat.value = data.lat;
+                temp.lng.value = data.lng;
+                var postionData = [data.lat,data.lng];
+                postionData["data"] = data;
+                map.addMoveMarker(postionData);
+            }else
+            temp.setInput();
         }
     })
     var lat,lng;
@@ -1239,7 +1240,6 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
         {
             marker.data = position.data;
         }
-        console.log("111111111111111111")
         self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
         self.smoothZoom(20, self.map.getZoom());
         if(changeInput){

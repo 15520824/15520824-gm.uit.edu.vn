@@ -556,7 +556,6 @@ NewRealty.prototype.itemAddressOld = function(data = {addressid_old:0})
                             selfElement.value = value.input.value;
                             temp.data = childNode.getDataCurrent();
                             childRemove.selfRemove();
-
                         },temp.data)
                         var childRemove = _({
                             tag: "modal",

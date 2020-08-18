@@ -2553,7 +2553,7 @@ tableView.prototype.getLastElement = function(element)
 tableView.prototype.insertRow = function (data, checkMust = false) {
     var result = this, k, cell;
     if (result.isUpdate === false)
-        return;
+    return;
     var delta = [];
     var index = result.childrenNodes.length;
     var row = result.getRow(data);
@@ -2686,7 +2686,7 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
 tableView.prototype.updateRow = function (data, index, checkMust = false) {
     var result = this, k, cell;
     if (result.isUpdate === false)
-        return;
+    return;
     var delta = [];
     var row = result.getRow(data);
 
@@ -2821,9 +2821,10 @@ tableView.prototype.dropRow = function (index) {
             element.classList.add("hideTranslate");
         if (element.childrenNodes.length !== 0)
             element.addHideAnimationChild();
-        result.isUpdate = false;
+            result.isUpdate = false;
         var eventEnd = function () {
             result.exactlyDeleteRow(index);
+            result.isUpdate = true;
             resolve();
         };
         // Code for Safari 3.1 to 6.0
@@ -2867,9 +2868,7 @@ tableView.prototype.exactlyDeleteRow = function(index)
     }
     if (parent.checkVisibleChild !== undefined && parent.childrenNodes.length === 0)
         parent.checkVisibleChild();
-    parent.isUpdate = true;
     parent.realTable.parentNode.resetHash();
-  
 }
 
 tableView.prototype.insertColumn = function (index, insertBefore = -1) {

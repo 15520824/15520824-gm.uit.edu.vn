@@ -477,6 +477,7 @@ ListState.prototype.delete = function(data,parent,index)
 ListState.prototype.deleteView = function(parent,index){
     var self = this;
     var bodyTable = parent.bodyTable;
+    console.log(parent,index)
     parent.dropRow(index).then(function(){
     });
 }

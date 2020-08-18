@@ -230,6 +230,9 @@ ListAccount.prototype.getView = function () {
     var arr = [];
     arr.push(moduleDatabase.getModule("users").load());
     arr.push(moduleDatabase.getModule("positions").load());
+    arr.push(moduleDatabase.getModule("wards").load());
+    arr.push(moduleDatabase.getModule("districts").load());
+    arr.push(moduleDatabase.getModule("states").load());
     Promise.all(arr).then(function(values)
     {
         var value = values[0];
@@ -666,7 +669,6 @@ ListAccount.prototype.addDB = function(mNewAccount,row){
 }
 
 ListAccount.prototype.addView = function(value,parent){
-    console.log(value);
     var result = this.getDataRow(value);
     
     var element = this.mTable;
@@ -690,7 +692,6 @@ ListAccount.prototype.editDB = function(mNewAccount,data,parent,index){
     var self = this;
     mNewAccount.promiseEditDB.then(function(value){
         value.id = data.original.id;
-        console.log(value);
         moduleDatabase.getModule("users").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
