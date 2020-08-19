@@ -1923,7 +1923,7 @@ tableView.prototype.pagination = function (number, functionClick) {
             if (active !== undefined) {
                 var prev = active.previousSibling, next = active.nextSibling;
                 
-                while (container.offsetWidth <= self.offsetWidth - 80 && !(isLeft == true && isRight == true)) {
+                while (container.offsetWidth <= self.realTable.offsetWidth - 160 && !(isLeft == true && isRight == true)) {
                     if (isRight == false && next != null) {
 
                         while (next == temp.detailRight || next == temp.detailLeft)
@@ -1939,7 +1939,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                     } else {
                         isRight = true;
                     }
-                    if(container.offsetWidth > self.offsetWidth - 80)
+                    if(container.offsetWidth > self.realTable.offsetWidth - 160)
                         break;
                     if (isLeft == false && prev != null) {
                             while (prev == temp.detailLeft || prev == temp.detailRight)
@@ -1956,7 +1956,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                         isLeft = true;
                     }
                 }
-                if(isRight==false&&lastIndexNext.nextSibling !== null)
+                if(isRight==false&&lastIndexNext!==undefined&&lastIndexNext.nextSibling !== null)
                 {
                     lastIndexNext.style.display = "";
                     lastIndexNextBefore.style.display = "";
@@ -1966,7 +1966,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                     container.lastChild.style.display = "flex";     
                 }
 
-                if(isLeft==false&&lastIndexPrev.previousSibling !== null)
+                if(isLeft==false&&lastIndexPrev!==undefined&&lastIndexPrev.previousSibling !== null)
                 {
                     lastIndexPrev.style.display = "";
                     lastIndexPrevBefore.style.display = "";

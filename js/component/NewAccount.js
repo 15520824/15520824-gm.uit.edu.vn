@@ -171,7 +171,7 @@ NewAccount.prototype.getView = function (dataParent) {
     var state,district,ward,street;
     state = _({
         tag: "selectmenu",
-        class: "pizo-new-realty-location-detail-row-menu",
+        class: "pizo-new-realty-desc-detail-row-permission-state",
         props:{
             enableSearch: true
         },
@@ -194,7 +194,7 @@ NewAccount.prototype.getView = function (dataParent) {
     });
     district = _({
         tag: "selectmenu",
-        class: "pizo-new-realty-location-detail-row-menu",
+        class: "pizo-new-realty-desc-detail-row-permission-district",
         props:{
             enableSearch: true
         },
@@ -218,7 +218,7 @@ NewAccount.prototype.getView = function (dataParent) {
     });
     ward = _({
         tag: "selectmenu",
-        class: "pizo-new-realty-location-detail-row-menu",
+        class: "pizo-new-realty-desc-detail-row-permission-ward",
         props:{
             enableSearch: true
         },
@@ -244,7 +244,7 @@ NewAccount.prototype.getView = function (dataParent) {
     });
     street = _({
         tag: "selectmenu",
-        class: "pizo-new-realty-location-detail-row-menu",
+        class: "pizo-new-realty-desc-detail-row-permission-street",
         style:{
             poiterEvent:"none",
             backGroundColor:"#fafafa"
@@ -896,9 +896,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 {
                                                     tag: "div",
                                                     class: "pizo-new-realty-desc-detail-row-permission",
-                                                    style:{
-                                                        width:"25%"
-                                                    },
                                                     child: [
                                                         {
                                                             tag: "span",
@@ -916,9 +913,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 {
                                                     tag: "div",
                                                     class: "pizo-new-realty-desc-detail-row-permission",
-                                                    style:{
-                                                        width:"25%"
-                                                    },
                                                     child: [
                                                         {
                                                             tag: "span",
@@ -937,7 +931,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                     tag: "div",
                                                     class: "pizo-new-realty-desc-detail-row-permission",
                                                     style:{
-                                                        width:"50%"
+                                                        width:"55%"
                                                     },
                                                     child: [
                                                         {
@@ -1227,9 +1221,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                         {
                                             tag: "div",
                                             class: "pizo-new-realty-desc-detail-row-permission",
-                                            style:{
-                                                width: 100/3+"%"
-                                            },
                                             child: [
                                                 {
                                                     tag: "span",
@@ -1261,6 +1252,14 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 }
                                             ]
                                         },
+                                        {
+                                            tag: "div",
+                                            class: "pizo-new-realty-desc-detail-row-permission",
+                                        },
+                                        {
+                                            tag: "div",
+                                            class: "pizo-new-realty-desc-detail-row-permission",
+                                        }
                                     ]
                                 },
                                 {
@@ -1925,9 +1924,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                         {
                                             tag: "div",
                                             class: "pizo-new-realty-desc-detail-row-permission",
-                                            style:{
-                                                width:"25%"
-                                            },
                                             child: [
                                                 {
                                                     tag: "span",
@@ -1945,9 +1941,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                         {
                                             tag: "div",
                                             class: "pizo-new-realty-desc-detail-row-permission",
-                                            style:{
-                                                width:"25%"
-                                            },
                                             child: [
                                                 {
                                                     tag: "span",
@@ -1965,9 +1958,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                         {
                                             tag: "div",
                                             class: "pizo-new-realty-desc-detail-row-permission",
-                                            style:{
-                                                width:"50%"
-                                            },
                                             child: [
                                                 {
                                                     tag: "span",
@@ -1982,6 +1972,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 }
                                             ]
                                         },
+                                        {
+                                            tag: "div",
+                                            class: "pizo-new-realty-desc-detail-row-permission",
+                                        }
                                     ]
                                 },
                                 {
@@ -2155,20 +2149,16 @@ NewAccount.prototype.getView = function (dataParent) {
                     class:["pizo-list-realty-main-result-control-advance"],
                     child:[
                         {
-                            tag: "div",
-                            class: "pizo-new-realty-location-detail",
-                            style:{
-                                marginTop:"10px",
-                                width: "calc(37.5% - 10px)"
-                            },
-                            child: [
+                            tag:"div",
+                            class:["pizo-new-account-container","pizo-new-account-advance-permission"],
+                            child:[
                                 {
                                     tag: "div",
-                                    class: "pizo-new-realty-location-detail-row",
+                                    class: "pizo-new-account-container-permission-child",
                                     child: [
                                         {
                                             tag: "span",
-                                            class: "pizo-new-realty-location-detail-row-label",
+                                            class: "pizo-new-realty-desc-detail-row-permission",
                                             props: {
                                                 innerHTML: "Tỉnh/TP"
                                             }
@@ -2178,11 +2168,11 @@ NewAccount.prototype.getView = function (dataParent) {
                                 },
                                 {
                                     tag: "div",
-                                    class: "pizo-new-realty-location-detail-row",
+                                    class: "pizo-new-account-container-permission-child",
                                     child: [
                                         {
                                             tag: "span",
-                                            class: "pizo-new-realty-location-detail-row-label",
+                                            class: "pizo-new-realty-desc-detail-row-permission",
                                             props: {
                                                 innerHTML: "Quận/Huyện"
                                             }
@@ -2192,32 +2182,44 @@ NewAccount.prototype.getView = function (dataParent) {
                                 },
                                 {
                                     tag: "div",
-                                    class: "pizo-new-realty-location-detail-row",
+                                    class: "pizo-new-account-container-permission-child",
                                     child: [
                                         {
                                             tag: "span",
-                                            class: "pizo-new-realty-location-detail-row-label",
+                                            class: "pizo-new-realty-desc-detail-row-permission",
                                             props: {
                                                 innerHTML: "Phường/Xã"
                                             }
                                         },
                                         ward
                                     ]
-                                },
-                                {
+                                },{
                                     tag: "div",
-                                    class: "pizo-new-realty-location-detail-row",
+                                    class: "pizo-new-account-container-permission-child",
                                     child: [
                                         {
                                             tag: "span",
-                                            class: "pizo-new-realty-location-detail-row-label",
+                                            class: "pizo-new-realty-desc-detail-row-permission",
                                             props: {
                                                 innerHTML: "Đường"
                                             }
                                         },
                                         street
                                     ]
-                                },
+                                }
+                            ]
+                        },
+                        {
+                            tag:"div",
+                            class:"pizo-new-account-container-permission",
+                            child:[
+                                {
+                                    tag:"i",
+                                    class:"material-icons",
+                                    props:{
+                                        innerHTML:"send"
+                                    }
+                                }
                             ]
                         }
                     ]
