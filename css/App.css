@@ -12,6 +12,10 @@ input{
     transition: none;
 }
 
+.pizo-app .container-sortTable{
+    width: 100%;
+}
+
 body {
     --blue: #122246;
     --indigo: #6610f2;

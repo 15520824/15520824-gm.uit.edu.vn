@@ -136,6 +136,8 @@ export function getGMT(date,timezone = 0,onlyDay = false) {
 
 export function getIDCompair(string)
 {
+    if(string == 0)
+    return 0;
     return string.slice(string.lastIndexOf("_")+1);
 }
 

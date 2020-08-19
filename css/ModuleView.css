@@ -504,7 +504,7 @@ table.sortTable th.postionStickyCell{
   left: 50%;
 } */
 .container-sortTable{
-  width: 100%;
+  width: fit-content;
   overflow: auto;
   height: 100%;
 }

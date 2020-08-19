@@ -338,10 +338,10 @@ MapRealty.prototype.modalRealty = function(){
             arr.push(connect);
             arr.push({id:value[i].data.addressid});
             connect = "||";
-            if(value[i].addressid_old)
+            if(value[i].data.addressid_old)
             {
                 arr.push(connect);
-                arr.push({id:value[i].addressid_old});
+                arr.push({id:value[i].data.addressid_old});
             }
         }
         if(arr.length>0)

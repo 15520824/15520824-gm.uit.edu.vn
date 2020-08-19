@@ -695,9 +695,6 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     {
         result.slip = new Slip(result.bodyTable);
         result.setUpSlip();
-        setTimeout(function(){
-            result.addEventSwipe();
-        },80)
     }
     return result;
 }
@@ -881,18 +878,44 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
             }
         }
         
-        this.addEventSwipe();
+    
     }.bind(this),80)
+}
+
+tableView.prototype.addEvent = function()
+{
+   
+}
+
+tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
+{
+    console.log(index)
+    parent.exactlyDeleteRow(index);
+}
+
+tableView.prototype.swipeCompleteRight = function(e,me,index,data,row,parent)
+{
+    console.log(index)
+    parent.exactlyDeleteRow(index);
+}
+
+tableView.prototype.swipeCancel = function()
+{
     
 }
 
-tableView.prototype.addEventSwipe = function()
+tableView.prototype.setUpSlip = function()
 {
     var self = this;
+    this.bodyTable.addEventListener('slip:reorder', function(e){
+        var index = e.detail.originalIndex;
+        var spliceIndex = e.detail.spliceIndex;
+        self.changeRowIndex(index,spliceIndex);
+    }, false);
     if(this.bodyTable.addEventComplete == true)
         return;
     this.bodyTable.addEventListener('slip:beforewait', function(e){
-        if (Array.isArray(e.target.className)&&e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
+        if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
     this.bodyTable.addEventListener('slip:beforeswipe', function(e){
         var startPoint = e.target;
@@ -923,36 +946,6 @@ tableView.prototype.addEventSwipe = function()
         self.swipeCompleteRight(e,me,index,me.data,me,parent);
     }, false);
     this.bodyTable.addEventComplete = true;
-}
-
-tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
-{
-    console.log(index)
-    parent.exactlyDeleteRow(index);
-}
-
-tableView.prototype.swipeCompleteRight = function(e,me,index,data,row,parent)
-{
-    console.log(index)
-    parent.exactlyDeleteRow(index);
-}
-
-tableView.prototype.swipeCancel = function()
-{
-    
-}
-
-tableView.prototype.setUpSlip = function()
-{
-    var self = this;
-    // this.bodyTable.addEventListener('slip:beforereorder', beforereorder, false);
-   
-    this.bodyTable.addEventListener('slip:reorder', function(e){
-        var index = e.detail.originalIndex;
-        var spliceIndex = e.detail.spliceIndex;
-        self.changeRowIndex(index,spliceIndex);
-    }, false);
-   
 }
 
 tableView.prototype.changeRowIndex = function(index,spliceIndex)

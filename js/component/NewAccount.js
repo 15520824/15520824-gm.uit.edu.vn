@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/NewAccount.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate, getGMT } from '../component/FormatFunction';
+import { getIDCompair, getGMT } from '../component/FormatFunction';
 import { locationView } from "./MapView";
 import xmlModalDragImage from './modal_drag_drop_image';
 import moduleDatabase from '../component/ModuleDatabase';
@@ -148,7 +148,6 @@ NewAccount.prototype.getView = function (dataParent) {
             self.checkAddress = moduleDatabase.getModule("addresses_user").getLibary("id");
             var connect = "";
             var arr = [];
-            console.log(valueAdr)
             for(var i = 0;i<valueAdr.length;i++)
             {
                 if(connect!=="")
@@ -179,16 +178,20 @@ NewAccount.prototype.getView = function (dataParent) {
             change:function(event)
             {
                 var x = parseInt(getIDCompair(this.value));
-                for(var i = 0;i<temp.checkStateDistrict[x].length;i++)
+                if(x == 0){
+                    district.items = [{text:"Tất cả",value:0}]
+                    district.value = 0;
+                }else
                 {
-                    if(temp.checkStateDistrict[x][i] == district.value)
-                    return;
+                    for(var i = 0;i<self.checkStateDistrict[x].length;i++)
+                    {
+                        if(self.checkStateDistrict[x][i] == district.value)
+                        return;
+                    }
+                    if(self.checkStateDistrict[x]!==undefined);
+                    district.items = [{text:"Tất cả",value:0}].concat(self.checkStateDistrict[x]);
                 }
-                if(temp.checkStateDistrict[x]!==undefined)
-                district.items = temp.checkStateDistrict[x];
                 district.emit("change");
-                if(event!==undefined)
-                temp.setInput();
             }
         }
     });
@@ -205,14 +208,17 @@ NewAccount.prototype.getView = function (dataParent) {
         on:{
             change:function(event){
                 var x = parseInt(getIDCompair(this.value));
-                if(temp.checkDistrictWard[x]!==undefined)
+                if(x == 0){
+                    ward.items = [{text:"Tất cả",value:0}]
+                    ward.value = 0;
+                }else
                 {
-                    ward.items = temp.checkDistrictWard[x];
-                    ward.emit("change");
+                    if(self.checkDistrictWard[x]!==undefined)
+                    {
+                        ward.items = [{text:"Tất cả",value:0}].concat(self.checkDistrictWard[x]);
+                    }    
                 }
-                
-                if(event!==undefined)
-                temp.setInput();
+                ward.emit("change");
             }
         }
     });
@@ -230,15 +236,17 @@ NewAccount.prototype.getView = function (dataParent) {
             change:function(event)
             {
                 var x = parseInt(getIDCompair(this.value));
+                if(x == 0)
+                {
+                    street.items = [{text:"Tất cả",value:0}];
+                }else
                 moduleDatabase.getModule("streets").load({WHERE:[{wardid:x}]}).then(function(value){
-                    temp.checkWardStreet = moduleDatabase.getModule("streets").getLibary("wardid",function(data){
+                    self.checkWardStreet = moduleDatabase.getModule("streets").getLibary("wardid",function(data){
                         return {text:data.name,value:data.name+"_"+data.id}
                     },true);
-                    street.items = temp.checkWardStreet[x];
-                    if(event!==undefined)
-                    temp.setInput();
+                    street.items = [{text:"Tất cả",value:0}].concat(self.checkWardStreet[x]);
                 })
-                
+                street.emit("change");
             }
         }
     });
@@ -252,8 +260,6 @@ NewAccount.prototype.getView = function (dataParent) {
         on:{
             change:function(event)
             {
-                if(event!==undefined)
-                temp.setInput();
             }
         }
     });
@@ -2214,11 +2220,24 @@ NewAccount.prototype.getView = function (dataParent) {
                             class:"pizo-new-account-container-permission",
                             child:[
                                 {
-                                    tag:"i",
-                                    class:"material-icons",
-                                    props:{
-                                        innerHTML:"send"
-                                    }
+                                    tag:"div",
+                                    class:"pizo-new-account-container-permission-addvance-selectmenu",
+                                    child:[
+                                        {
+                                            tag:"i",
+                                            class:["material-icons","pizo-new-account-container-permission-addvance-selectmenu-icon"],
+                                            props:{
+                                                innerHTML:"send"
+                                            }
+                                        },
+                                        {
+                                            tag:"selectbox",
+                                            class:"pizo-new-account-container-permission-addvance-selectmenu-content",
+                                            props:{
+                                                items:[]
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -2227,6 +2246,26 @@ NewAccount.prototype.getView = function (dataParent) {
             ]   
         })
         );
+    var arr = [];
+    arr.push(moduleDatabase.getModule("states").load());
+    arr.push(moduleDatabase.getModule("districts").load({ORDERING:"stateid"}));
+    arr.push(moduleDatabase.getModule("wards").load({ORDERING:"districtid"}));
+
+    Promise.all(arr).then(function(){
+        state.items = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("states").getList("name",["name","id"]));
+
+        this.checkStateDistrict = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
+            return {text:data.name,value:data.name+"_"+data.id}
+        },true);
+        this.checkDistrictWard = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
+            return {text:data.name,value:data.name+"_"+data.id}
+        },true);
+
+        this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
+        this.checkState = moduleDatabase.getModule("states").getLibary("id");
+        this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+
+    }.bind(this))
 
     this.name = $('input.pizo-new-account-container-name-container-input',this.$view);
     this.username = $('input.pizo-new-account-container-username-container-input',this.$view);
