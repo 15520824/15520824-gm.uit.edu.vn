@@ -52,7 +52,6 @@ export default xmlModalDragManyFiles = {
           var manyfiles = self.getFile();
           var arr = [];
           var index;
-          console.log(manyfiles)
           for(var i = 0;i<manyfiles.length;i++)
           {
             if(typeof manyfiles[i]=="object"){

@@ -889,13 +889,11 @@ tableView.prototype.addEvent = function()
 
 tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
 {
-    console.log(index)
     parent.exactlyDeleteRow(index);
 }
 
 tableView.prototype.swipeCompleteRight = function(e,me,index,data,row,parent)
 {
-    console.log(index)
     parent.exactlyDeleteRow(index);
 }
 
@@ -2808,10 +2806,8 @@ tableView.prototype.dropRow = function (index) {
     var result = this;
     var element = result.clone[0][index + 1].parentNode;
     return new Promise(function (resolve, reject) {
-        console.log(result.isUpdate)
         if (result.isUpdate === false)
             reject();
-        console.log(element)
         if (!element.classList.contains("hideTranslate"))
             element.classList.add("hideTranslate");
         if (element.childrenNodes.length !== 0)
@@ -2840,7 +2836,6 @@ tableView.prototype.exactlyDeleteRow = function(index)
     for (var i = 0; i < element.childNodes.length; i++) {
         if( element.childNodes[i].tagName!=="TD")
             continue;
-        console.log(deltaY)
         parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
         if (parent.checkSpan !== undefined)
             parent.checkSpan.splice(index, 1);
@@ -3293,7 +3288,6 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
         },
         on: {
             mouseover: isShow ? function () {
-                console.log(this.parentNode.isMove)
                 if (this.parentNode.isMove === false) {
                     self.moveColumn(self.clone, colum1, colum2, index)
                 }
