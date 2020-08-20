@@ -2838,7 +2838,7 @@ tableView.prototype.exactlyDeleteRow = function(index)
     var deltaY = 0;
     deltaX = parent.checkLongRow(index);
     for (var i = 0; i < element.childNodes.length; i++) {
-        if( element.childNode[i].tagName!=="TD")
+        if( element.childNodes[i].tagName!=="TD")
             continue;
         console.log(deltaY)
         parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
