@@ -370,6 +370,7 @@ App.prototype.openPage = function(index){
         case 13:
             var mListRealty = new ListRealty();
             mListRealty.attach(this);
+            mListRealty.setCensorship();
             var frameview = mListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);

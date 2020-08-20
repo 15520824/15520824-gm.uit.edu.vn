@@ -948,6 +948,10 @@ MapView.prototype.addMapHouse = function()
                 queryData.push("&&");
                 queryData.push({id:{operator:"!=",value:self.currentMarker.data.id}})
             }
+            if(queryData.length>0){
+                queryData.push("&&");
+                queryData.push({censorship:1});
+            }
             moduleDatabase.getModule("activehouses").load({WHERE:queryData}).then(
                 function(value){
                 for(var i=0;i<value.length;i++)

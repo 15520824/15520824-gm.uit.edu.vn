@@ -918,6 +918,35 @@ NewRealty.prototype.descViewdetail = function () {
                                             }
                                         ]
                                     },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-new-realty-desc-detail-row-cell-menu-3",
+                                        style:{
+                                            display:"none"
+                                        },
+                                        child: [
+                                            {
+                                                tag: "div",
+                                                class: "pizo-new-realty-desc-detail-row",
+                                                child: [
+                                                    {
+                                                        tag: "span",
+                                                        class: "pizo-new-realty-desc-detail-row-cell-menu-3-span",
+                                                        props: {
+                                                            innerHTML: "Kiểm duyệt"
+                                                        }
+                                                    },
+                                                    {
+                                                        tag: "switch",
+                                                        class: "pizo-new-realty-desc-detail-row-menu-3-checkbox",
+                                                        props:{
+                                                            checked:false
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
                                 ]
                             }
                         ]
@@ -953,6 +982,8 @@ NewRealty.prototype.descViewdetail = function () {
     this.inputName = $('input.pizo-new-realty-desc-detail-row-cell-input',temp);
     this.inputLease = $('div.pizo-new-realty-desc-detail-row-menu-2-checkbox',temp);
     this.inputSell = $('div.pizo-new-realty-desc-detail-row-menu-1-checkbox',temp);
+    this.inputCensorship = $('label.pizo-new-realty-desc-detail-row-menu-3-checkbox',temp);
+    this.containerCensorship = $('div.pizo-new-realty-desc-detail-row-cell-menu-3',temp);
     this.inputContent = $('textarea.pizo-new-realty-desc-detail-row-input',temp);
     
     this.addressCurrent = addressCurrent;
@@ -1008,6 +1039,9 @@ NewRealty.prototype.detructView = function () {
                     {
                         tag: "input",
                         class: ["pizo-new-realty-detruct-content-price-rent","pizo-new-realty-dectruct-input"],
+                        props:{
+                            value:0
+                        },
                         on:{
                             input:function(event)
                             {
@@ -1946,8 +1980,17 @@ NewRealty.prototype.detructView = function () {
         this.advanceDetruct3.checked = advanceDetruct%10?true:false;
         advanceDetruct = parseInt(advanceDetruct/10);
         this.advanceDetruct4.checked = advanceDetruct%10==1?true:false;
+        this.inputCensorship.checked = parseInt(original.censorship)==1?true:false;
+        if(this.isCensorship===true){
+            this.containerCensorship.style.display = "";
+        }
     }
     return temp;
+}
+
+NewRealty.prototype.setCensorship = function()
+{
+    this.isCensorship = true;
 }
 
 NewRealty.prototype.getDataSave = function(){
@@ -2014,6 +2057,7 @@ NewRealty.prototype.getDataSave = function(){
         advancedetruct:advanceDetruct,
         juridical:this.juridical.value,
         image:image,
+        censorship:this.inputCensorship.checked==true?1:0
         // important:this.viewCurrentStaus.getImportTant()
     }
     var arr = [];
@@ -2110,9 +2154,9 @@ NewRealty.prototype.getDataSave = function(){
     }
 
     if(this.data!==undefined){
-        if(this.data.original!==undefined)
+        if(this.data.original!==undefined&&this.data.original.id!==undefined)
         temp.id = this.data.original.id;
-        else 
+        else if(this.data.id!==undefined)
         temp.id = this.data.id;
     }
     return temp;

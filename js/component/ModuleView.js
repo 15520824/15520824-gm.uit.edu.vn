@@ -599,14 +599,13 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         {
             result.tempIndexRow = indexRow;
             if(isRedraw){
-                result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+                result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical,undefined,false);
                 scrollParent.emit("scroll");
             }                                                   
         }else{
             result.tempIndexRow = parseInt(number);
             if (result.paginationElement !== undefined) {
                 if(isRedraw){
-                    result.indexRow = 0;
                     result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
                 }
                 var pagination = result.pagination(result.tempIndexRow);
@@ -913,7 +912,7 @@ tableView.prototype.setUpSlip = function()
     if(this.bodyTable.addEventComplete == true)
         return;
     this.bodyTable.addEventListener('slip:beforewait', function(e){
-        if (e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
+        if (e.target.className.indexOf!==undefined&&e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
     this.bodyTable.addEventListener('slip:beforeswipe', function(e){
         var startPoint = e.target;
@@ -2492,13 +2491,16 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     return cell;
 }
 
-tableView.prototype.updateTable = function (header, data = [], dragHorizontal, dragVertical, index = 0) {
+tableView.prototype.updateTable = function (header, data = [], dragHorizontal, dragVertical, index = 0,isUpdate = true) {
     var checkSpan = [];
     var result = this;
     var temp = _({
         tag: "tbody"
     });
-    
+    if(data!==undefined)
+    this.data = data;
+    if(isUpdate == true)
+    result.indexRow = 0;
     temp.listCheckBox = [];
     if (dragHorizontal !== undefined)
         result.dragHorizontal = dragHorizontal;
@@ -2516,13 +2518,13 @@ tableView.prototype.updateTable = function (header, data = [], dragHorizontal, d
     this.bodyTable = temp;
     result.childrenNodes = [];
     this.currentIndex = undefined;
-    result.getBodyTable(data,index);
+    result.getBodyTable(this.data,index);
     if(temp.listCheckBox[0]!==undefined)
     {
         temp.listCheckBox[0].update();
     }
     this.checkSpan = checkSpan;
-    this.data = data;
+   
     if(result.dragVertical)
     {
         result.setUpSlip();
@@ -2669,6 +2671,7 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
         result.checkMargin();
 
     //    result.checkDataUpdate(row);
+    result.realTable.parentNode.resetHash();
     result.realTable.parentNode.updateHash(row);
     this.setUpSwipe();
     return row;
@@ -2699,7 +2702,9 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     }
 
     var checkChild = false;
-    if (data.original!==undefined&&data.original.isCheckUpdate===true)
+
+    if ((result.tagName=="DIV"&&result.childrenNodes.length!=result.data.length)||
+        (result.tagName!=="DIV"&&result.childrenNodes.length!=result.data.child.length))
     {
         var table = result.realTable.parentNode;
         table.updateTable(undefined,table.data);

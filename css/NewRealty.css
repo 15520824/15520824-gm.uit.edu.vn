@@ -82,7 +82,7 @@
   padding-right: 0.7143rem;
 }
 
-.pizo-new-realty-desc-detail-row-cell-menu-1 {
+.pizo-new-realty-desc-detail-row-cell-menu-1, .pizo-new-realty-desc-detail-row-cell-menu-2, .pizo-new-realty-desc-detail-row-cell-menu-3 {
   flex-grow: 2;
   display: flex;
   justify-content: center;
@@ -90,38 +90,14 @@
   position: relative;
 }
 
-.pizo-new-realty-desc-detail-row-cell-menu-2 {
-  flex-grow: 2;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-}
-
-.pizo-new-realty-desc-detail-row-menu-1-checkbox {
+.pizo-new-realty-desc-detail-row-menu-1-checkbox, .pizo-new-realty-desc-detail-row-menu-2-checkbox, .pizo-new-realty-desc-detail-row-menu-3-checkbox {
   font-size: 1rem;
   display: flex;
   align-items: center;
+  margin: auto;
 }
 
-.pizo-new-realty-desc-detail-row-menu-2-checkbox {
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.pizo-new-realty-desc-detail-row-cell-menu-1-span {
-  font-size: 1rem;
-  flex-grow: 2;
-  display: flex;
-  justify-content: flex-end;
-  overflow: hidden;
-  position: relative;
-  align-items: center;
-  padding-right: 0.7143rem;
-}
-
-.pizo-new-realty-desc-detail-row-cell-menu-2-span {
+.pizo-new-realty-desc-detail-row-cell-menu-1-span, .pizo-new-realty-desc-detail-row-cell-menu-2-span, .pizo-new-realty-desc-detail-row-cell-menu-3-span {
   font-size: 1rem;
   flex-grow: 2;
   display: flex;

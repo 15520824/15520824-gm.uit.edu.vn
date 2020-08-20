@@ -34,6 +34,10 @@ ListRealty.prototype.setContainer = function (parent) {
 
 Object.defineProperties(ListRealty.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 ListRealty.prototype.constructor = ListRealty;
+ListRealty.prototype.setCensorship = function()
+{
+    this.isCensorship = true;
+}
 
 ListRealty.prototype.getView = function () {
     if (this.$view) return this.$view;
@@ -260,6 +264,9 @@ ListRealty.prototype.getView = function () {
     })
 
     var arr = [];
+    if(this.isCensorship===true)
+    arr.push(moduleDatabase.getModule("activehouses").load({WHERE:[{censorship:0}]}));
+    else
     arr.push(moduleDatabase.getModule("activehouses").load());
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("districts").load());
@@ -374,7 +381,16 @@ ListRealty.prototype.getView = function () {
             }
             moduleDatabase.getModule("streets").load({WHERE:arr}).then(function(valueStr){
                 self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
-                self.mTable.updateTable(undefined,self.formatDataRow(value));
+                if(self.isCensorship)
+                {
+                    value = moduleDatabase.getModule("activehouses").getLibary("censorship",self.getDataRow.bind(self),true);
+                    value = value[0];
+                }else
+                {
+                    value = self.formatDataRow(value);
+                }
+
+                self.mTable.updateTable(undefined,value);
             })
         })
         
@@ -434,7 +450,6 @@ ListRealty.prototype.formatDataRow = function (data) {
             temp[k++] = result;
         check[data[i].id] = result;
     }
-
     return temp;
 }
 
@@ -931,6 +946,8 @@ ListRealty.prototype.add = function (parent_id = 0, row) {
     var self = this;
     var mNewRealty = new NewRealty(undefined, parent_id);
     mNewRealty.attach(self.parent);
+    if(this.isCensorship===true)
+    mNewRealty.setCensorship();
     mNewRealty.setDataListAccount(self.listAccoutData);
     mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
@@ -942,7 +959,6 @@ ListRealty.prototype.add = function (parent_id = 0, row) {
 ListRealty.prototype.addDB = function (mNewRealty, row) {
     var self = this;
     mNewRealty.promiseAddDB.then(function (value) {
-        
         moduleDatabase.getModule("activehouses").add(value).then(function (result) {
             self.addView(result, row);
         })
@@ -965,8 +981,9 @@ ListRealty.prototype.addView = function (value, parent) {
 ListRealty.prototype.edit = function (data, parent, index) {
     var self = this;
     var mNewRealty = new NewRealty(data);
-    console.log(mNewRealty)
     mNewRealty.attach(self.parent);
+    if(this.isCensorship===true)
+    mNewRealty.setCensorship();
     mNewRealty.setDataListAccount(self.listAccoutData);
     mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
@@ -995,8 +1012,11 @@ ListRealty.prototype.editView = function (value, data, parent, index) {
 
     var indexOF = index,
         element = parent;
-    console.log(data)
     element.updateRow(data, indexOF, true);
+    if(this.isCensorship&&data.censorship===1)
+    {
+        element.updateTable();
+    }
 }
 
 ListRealty.prototype.delete = function (data, parent, index) {

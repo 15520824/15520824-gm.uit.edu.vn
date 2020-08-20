@@ -66,7 +66,14 @@ function delete($connector,$tableName,$parent_id,&$arrayDelete)
         }
         $result = $connector->query("DELETE FROM ".$tableName." WHERE (parent_id=".$parent_id.")");
     }
+    $tempDataPosition = $connector->load($prefix."positions","department_id = ".$parent_id);
+    $countPosition = count($tempDataPosition);
     
+    if($countPosition>0)
+        for($i = 0;$i<$countPosition;$i++)
+            array_push($arrayDelete,array("positions"=>$tempDataPosition[$i]));
+
+    $result = $connector->query("DELETE FROM ".$prefix."positions WHERE (department_id=".$parent_id.")");
 }
 
 exit(0);

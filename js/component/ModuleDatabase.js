@@ -258,7 +258,6 @@ DataStructure.prototype.getLibary = function(param,formatFunction,isArray = fals
             param = [param];
         }else
             param = param;
-    
         for(var j = 0;j<param.length;j++)
         {
             if(isLoaded === true||this.Libary[param] == undefined)
@@ -269,8 +268,11 @@ DataStructure.prototype.getLibary = function(param,formatFunction,isArray = fals
                 }
             }
         }
-        if(param.length == 1)
+        if(param.length == 1){
+            if(this.Libary[param[0]]==undefined)
+            this.Libary[param[0]] = [];
             return this.Libary[param[0]];
+        }
     }else
     {
         var isID = false;
@@ -311,7 +313,7 @@ DataStructure.prototype.setLibaryRow = function(data,param,formatFunction,isArra
                 return data;
             };
             if(this.check[data["id"]]!==undefined)
-            return;
+                return;
             this.check[data["id"]] = result;
             if(this[data[param]] == undefined||this[data[param]].index == 0){
                 if(this.isArray == true)
@@ -346,6 +348,8 @@ DataStructure.prototype.setLibaryRow = function(data,param,formatFunction,isArra
                 if(this[data[param]].index == 1&&this.isArray!==true)
                 this[data[param]] = this[data[param]][0];
             }
+            if(this.check[data["id"]]!==undefined)
+            this.check[data["id"]] = undefined;
         }
     }
     this.Libary[param].formatFunction(data,param);
@@ -456,7 +460,7 @@ DataStructure.prototype.add = function(data,needChange = false){
 DataStructure.prototype.setFormatAdd = function(data)
 {
     var self = this;
-    if(self.Libary[data.id]!==undefined)
+    if(self.Libary["id"][data.id]!==undefined)
         return;
     for(var param in self.Libary)
     {
@@ -483,6 +487,7 @@ DataStructure.prototype.setFormatAdd = function(data)
         }
         return {text:text,value:checkvalue};
     }
+
     self.data.push(data);  
     self.countRow++;
 }
@@ -493,14 +498,14 @@ DataStructure.prototype.update = function(data,needChange = false){
         self.queryData(self.phpUpdater,data).then(function(value){
             if(data.id!==undefined)
             {
-                Object.assign(data,value.data);
                 if(needChange === true)
                 {
                     data.add = Object.assign({}, value.add);
                     data.update = Object.assign({}, value.update);
                     data.delete = Object.assign({}, value.delete);
                 }  
-                self.setFormatUpdate(data);
+                self.setFormatUpdate(value.data);
+                Object.assign(data,value.data);
                 var update = value["update"];
                 var insert = value["add"];
                 var deleteValue = value["delete"];
@@ -564,10 +569,24 @@ DataStructure.prototype.setFormatUpdate = function(data)
             self.Libary[param].deleteFunction(temp,param);
             temp[param] = data[param];
             self.Libary[param].formatFunction(temp,param);
-            if(self.Libary[param]===true)
-            data.isCheckUpdate = true;
+
         }else
         temp[param] = data[param];
+    }
+    for(var param in this.promisePart)
+    {
+        if(this.generalOperator(temp,JSON.parse(param))===true)
+        {
+            if(this.promisePart[param].data.indexOf(temp)===-1)
+            {
+                this.promisePart[param].data.push(temp);
+            }
+        }else
+        {
+            var index = this.promisePart[param].data.indexOf(temp);
+            if(index!==-1)
+            this.promisePart[param].data.splice(index,1);
+        }
     }
 }
 

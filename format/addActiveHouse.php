@@ -149,6 +149,7 @@ while (isset($data["addressid".$index]))
 }
 
 $result = $connector-> insert($prefix."activehouses", $data);
+echo $connector->lastquery;
 $data["id"] = $result;
 
 if(isset($data["equipment"]))

@@ -320,7 +320,6 @@ ListPositions.prototype.getView = function () {
 
 ListPositions.prototype.formatDataRowPosition = function(data){
     this.checkDepartment = moduleDatabase.getModule("positions").getLibary("department_id",this.getDataRowPosition.bind(this),true);
-    console.log(moduleDatabase)
 }
 
 ListPositions.prototype.getDataRowPosition = function(data)
@@ -461,9 +460,8 @@ ListPositions.prototype.editDepartment = function(data,parent,index)
 ListPositions.prototype.editDBDepartment = function(mNewDepartment,data,parent,index){
     var self = this;
     mNewDepartment.promiseEditDB.then(function(value){
-        value.id = data.original.id;
         moduleDatabase.getModule("departments").update(value).then(function(result){
-            self.editViewDepartment(value,data,parent,index);
+            self.editViewDepartment(result,data,parent,index);
         })
         mNewDepartment.promiseEditDB = undefined;
         setTimeout(function(){
@@ -608,11 +606,9 @@ ListPositions.prototype.editPosition = function(data,parent,index)
 
 ListPositions.prototype.editDBPosition = function(mNewPosition,data,parent,index){
     var self = this;
-    mNewPosition.promiseEditDB.then(function(value){
-        value.id = data.original.id;
-
-        moduleDatabase.getModule("positions").update(value).then(function(result){
-            if(value.username!==null&&value.username.positionid != value.id)
+    mNewPosition.promiseEditDB.then(function(result){
+        moduleDatabase.getModule("positions").update(result).then(function(value){
+            if(value.username!==undefined&&value.username.positionid != value.id)
             {
                 var x = {
                     id:value.username.id,

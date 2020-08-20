@@ -256,11 +256,15 @@ NewDepartment.prototype.getView = function (dataParent) {
 }
 
 NewDepartment.prototype.getData = function(){
-    return {
+    var temp = {
         name:this.name.value,
         code:this.code.value,
         parent_id:this.parentElement.value
     }
+
+    if(this.data!==undefined)
+    temp.id = this.data.original.id;
+    return temp;
 }
 
 NewDepartment.prototype.refresh = function () {

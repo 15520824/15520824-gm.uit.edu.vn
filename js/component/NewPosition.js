@@ -318,13 +318,16 @@ NewPosition.prototype.getView = function (dataParent) {
 
 NewPosition.prototype.getDataCurrent = function()
 {
-    return {
+    var temp = {
         department_id:this.department.value,
         name:this.name.value,
         code:this.code.value,
         note:this.note.value,
         username:this.username.data
     }
+    if(this.data!==undefined)
+    temp.id = this.data.original.id;
+    return temp;
 }
 
 NewPosition.prototype.getDataRowListAccount = function(data){

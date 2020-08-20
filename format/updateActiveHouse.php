@@ -50,6 +50,8 @@ while (isset($data["addressid".$index]))
         'addresses'=> $dataInsertAddress
         ));
     }else{
+        
+        
         if(isset($address["wardid"]))
         {
             $wardid = $address["wardid"];
@@ -97,8 +99,8 @@ while (isset($data["addressid".$index]))
                 'districtid'=>$districtid
             );
             $wardid = $connector-> insert($prefix."wards", $dataWard);
-            
         }
+
         if(isset($address["streetid"]))
         {
             $streetid = $address["streetid"];
@@ -125,7 +127,7 @@ while (isset($data["addressid".$index]))
             $dataInsertAddress = array(
                 'addressnumber' => $number,
                 'wardid' => $wardid,
-                'streetid' => $streetid
+                'streetid' => $streetid,
             );
             $addressid = $connector-> insert($prefix."addresses", $dataInsertAddress);
             $dataInsertAddress["id"] = $addressid;
@@ -142,9 +144,10 @@ while (isset($data["addressid".$index]))
     
     $data["addressid".$index] = $addressid;
     if($index == "_old")
-        break;
+    break;
     $index = "_old";
 }
+
 $milliseconds = round(microtime(true) * 1000);
 
 if(isset($data["equipment"]))
