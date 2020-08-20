@@ -2253,7 +2253,9 @@ NewAccount.prototype.getView = function (dataParent) {
 
     Promise.all(arr).then(function(){
         state.items = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("states").getList("name",["name","id"]));
-
+        district.items = [{text:"Tất cả",value:0}];
+        ward.items = [{text:"Tất cả",value:0}];
+        street.items = [{text:"Tất cả",value:0}];
         this.checkStateDistrict = moduleDatabase.getModule("districts").getLibary("stateid",function(data){
             return {text:data.name,value:data.name+"_"+data.id}
         },true);

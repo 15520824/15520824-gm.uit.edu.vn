@@ -658,7 +658,7 @@ ListAccount.prototype.addDB = function(mNewAccount,row){
     var self = this;
     mNewAccount.promiseAddDB.then(function(value){
         moduleDatabase.getModule("users").add(value).then(function(result){
-            self.addView(result.data,row);
+            self.addView(result,row);
         })
         mNewAccount.promiseAddDB = undefined;
         setTimeout(function(){

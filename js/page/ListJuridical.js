@@ -376,7 +376,7 @@ ListJuridical.prototype.addDB = function(mNewJuridical,row ){
     var self = this;
     mNewJuridical.promiseAddDB.then(function(value){
         moduleDatabase.getModule("juridicals").add(value).then(function(result){
-            self.addView(result.data,row);
+            self.addView(result,row);
         })
         mNewJuridical.promiseAddDB = undefined;
         setTimeout(function(){

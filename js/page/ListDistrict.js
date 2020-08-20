@@ -460,7 +460,7 @@ ListDistrict.prototype.addDB = function(mNewDistrict,row ){
     var self = this;
     mNewDistrict.promiseAddDB.then(function(value){
         moduleDatabase.getModule("districts").add(value).then(function(result){
-            self.addView(result.data,row);
+            self.addView(result,row);
         })
         mNewDistrict.promiseAddDB = undefined;
         setTimeout(function(){

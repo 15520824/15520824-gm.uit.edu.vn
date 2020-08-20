@@ -944,7 +944,7 @@ ListRealty.prototype.addDB = function (mNewRealty, row) {
     mNewRealty.promiseAddDB.then(function (value) {
         
         moduleDatabase.getModule("activehouses").add(value).then(function (result) {
-            self.addView(result.data, row);
+            self.addView(result, row);
         })
         mNewRealty.promiseAddDB = undefined;
         setTimeout(function () {

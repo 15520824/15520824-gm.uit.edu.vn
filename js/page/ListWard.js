@@ -500,7 +500,7 @@ ListWard.prototype.addDB = function(mNewWard,row ){
     var self = this;
     mNewWard.promiseAddDB.then(function(value){
         moduleDatabase.getModule("wards").add(value).then(function(result){
-            self.addView(result.data,row);
+            self.addView(result,row);
         })
         mNewWard.promiseAddDB = undefined;
         setTimeout(function(){

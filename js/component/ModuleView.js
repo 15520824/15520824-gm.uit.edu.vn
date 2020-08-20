@@ -2808,8 +2808,10 @@ tableView.prototype.dropRow = function (index) {
     var result = this;
     var element = result.clone[0][index + 1].parentNode;
     return new Promise(function (resolve, reject) {
+        console.log(result.isUpdate)
         if (result.isUpdate === false)
-            return;
+            reject();
+        console.log(element)
         if (!element.classList.contains("hideTranslate"))
             element.classList.add("hideTranslate");
         if (element.childrenNodes.length !== 0)
@@ -2817,7 +2819,7 @@ tableView.prototype.dropRow = function (index) {
             result.isUpdate = false;
         var eventEnd = function () {
             result.exactlyDeleteRow(index);
-            result.isUpdate = true;
+            result.isUpdate = undefined;
             resolve();
         };
         // Code for Safari 3.1 to 6.0
@@ -2834,12 +2836,11 @@ tableView.prototype.exactlyDeleteRow = function(index)
     var element = parent.childrenNodes[index];
     parent.dropRowChild(element);
     var deltaY = 0;
-    console.log(parent.clone)
     deltaX = parent.checkLongRow(index);
-    console.log(element)
     for (var i = 0; i < element.childNodes.length; i++) {
-        if(element.tagName!=="TD")
+        if( element.childNode[i].tagName!=="TD")
             continue;
+        console.log(deltaY)
         parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
         if (parent.checkSpan !== undefined)
             parent.checkSpan.splice(index, 1);
@@ -2847,17 +2848,17 @@ tableView.prototype.exactlyDeleteRow = function(index)
             deltaY += element.childNodes[i].colSpan - 1;
     }
     if (parent.childrenNodes.length !== 0) {
-        if (parent.data.child !== undefined) {
-            var indexData = parent.data.child.indexOf(element.data);
-            if(indexData!==-1)
-            parent.data.child.splice(indexData, 1);
-        }
-        else {
-            var indexData = parent.data.indexOf(element.data);
-            if(indexData!==-1)
-            parent.data.splice(indexData, 1);
-        }
         parent.childrenNodes.splice(parent.childrenNodes.indexOf(element), 1);
+    }
+    if (parent.tagName !== "DIV") {
+        var indexData = parent.data.child.indexOf(element.data);
+        if(indexData!==-1)
+        parent.data.child.splice(indexData, 1);
+    }
+    else {
+        var indexData = parent.data.indexOf(element.data);
+        if(indexData!==-1)
+        parent.data.splice(indexData, 1);
     }
     if (parent.checkVisibleChild !== undefined && parent.childrenNodes.length === 0)
         parent.checkVisibleChild();

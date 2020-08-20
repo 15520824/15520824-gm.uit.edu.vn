@@ -550,7 +550,7 @@ ListStreet.prototype.addDB = function(mNewStreet,row ){
     var self = this;
     mNewStreet.promiseAddDB.then(function(value){
         moduleDatabase.getModule("streets").add(value).then(function(result){
-            self.addView(result.data,row);
+            self.addView(result,row);
         })
         mNewStreet.promiseAddDB = undefined;
         setTimeout(function(){
@@ -619,6 +619,7 @@ ListStreet.prototype.delete = function(data,parent,index)
 ListStreet.prototype.deleteView = function(parent,index){
     var self = this;
     var bodyTable = parent.bodyTable;
+    console.log(index)
     parent.dropRow(index).then(function(){
     });
 }

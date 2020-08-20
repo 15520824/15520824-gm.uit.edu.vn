@@ -405,7 +405,7 @@ ListEquipment.prototype.addDB = function(mNewEquipment,row ){
     var self = this;
     mNewEquipment.promiseAddDB.then(function(value){
         moduleDatabase.getModule("equipments").add(value).then(function(result){
-            self.addView(result.data,row);
+            self.addView(result,row);
         })
         mNewEquipment.promiseAddDB = undefined;
         setTimeout(function(){

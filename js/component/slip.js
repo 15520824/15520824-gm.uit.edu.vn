@@ -944,7 +944,7 @@
         },
 
         onMouseUp: function(e) {
-            e.stopPropagation();
+            // e.stopPropagation();
             if (this.usingTouch || e.button !== 0) return;
             
             if (this.state.onEnd && false === this.state.onEnd.call(this)) {
@@ -953,7 +953,7 @@
         },
 
         onTouchEnd: function(e) {
-            e.stopPropagation();
+            // e.stopPropagation();
             if (e.touches.length > 1) {
                 this.cancel();
             } else if (this.state.onEnd && false === this.state.onEnd.call(this)) {
