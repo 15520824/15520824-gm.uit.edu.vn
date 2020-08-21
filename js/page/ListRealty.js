@@ -5,6 +5,7 @@ import "../../css/ListRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import MergeRealty from '../component/MergeRealty';
+import MapRealty from './MapRealty';
 
 
 import {
@@ -26,6 +27,16 @@ function ListRealty() {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
+    this.modalLargeRealty = MapRealty.prototype.modalLargeRealty;
+    this.detailHouse = MapRealty.prototype.detailHouse;
+    this.convenientView = MapRealty.prototype.convenientView;
+    this.itemCount = MapRealty.prototype.itemCount;
+    this.contactView = MapRealty.prototype.contactView;
+    this.contactItem = MapRealty.prototype.contactItem;
+    this.juridicalView = MapRealty.prototype.juridicalView;
+    this.mediaItem = MapRealty.prototype.mediaItem;
+    this.requestEdit = MapRealty.prototype.requestEdit;
+    this.requestEditDB = MapRealty.prototype.requestEditDB;
 }
 
 ListRealty.prototype.setContainer = function (parent) {
@@ -64,7 +75,8 @@ ListRealty.prototype.getView = function () {
     if (window.mobilecheck()) {
         allinput.placeholder = "Tìm bất động sản"
     }
-    var saveButton = _({
+    var saveButton,callAgainButton,mergeButton,viewMapButton,confirmButton,cancelConfirmButton;
+    saveButton = _({
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
@@ -76,7 +88,8 @@ ListRealty.prototype.getView = function () {
             '<span>' + "Thêm" + '</span>'
         ]
     });
-    var mergeButton = _({
+
+    callAgainButton = _({
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
@@ -86,6 +99,124 @@ ListRealty.prototype.getView = function () {
                     // self.merge();
                     // this.currentMerge = undefined;
                     saveButton.style.display = "";
+                    mergeButton.style.display = "";
+                    confirmButton.style.display = "";
+                    cancelConfirmButton.style.display = "";
+                    viewMapButton.style.display = "";
+                    this.childNodes[0].innerHTML = "Yêu cầu gọi lại";
+                    self.mTable.deleteColumn(0);
+                    self.mTable.insertColumn(0,0);
+                    this.currentMerge = undefined;
+                    // self.merge(self.mTable.getTrueCheckBox());
+                }else
+                {
+                    saveButton.style.display = "none";
+                    mergeButton.style.display = "none";
+                    confirmButton.style.display = "none";
+                    cancelConfirmButton.style.display = "none";
+                    viewMapButton.style.display = "none";
+                    this.childNodes[0].innerHTML = "Xong";
+                    self.mTable.deleteColumn(0);
+                    self.mTable.insertColumn(1,0);
+                    this.currentMerge = true;
+                }
+            }
+        },
+        child: [
+            '<span>' + "Yêu cầu gọi lại" + '</span>'
+        ]
+    });
+
+    confirmButton = _({
+        tag: "button",
+        class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+        on: {
+            click: function (evt) {
+                if(this.currentMerge === true)
+                {
+                    // self.merge();
+                    // this.currentMerge = undefined;
+                    saveButton.style.display = "";
+                    mergeButton.style.display = "";
+                    callAgainButton.style.display = "";
+                    cancelConfirmButton.style.display = "";
+                    viewMapButton.style.display = "";
+                    this.childNodes[0].innerHTML = "Yêu cầu gọi lại";
+                    self.mTable.deleteColumn(0);
+                    self.mTable.insertColumn(0,0);
+                    this.currentMerge = undefined;
+                    // self.merge(self.mTable.getTrueCheckBox());
+                }else
+                {
+                    saveButton.style.display = "none";
+                    mergeButton.style.display = "none";
+                    callAgainButton.style.display = "none";
+                    cancelConfirmButton.style.display = "none";
+                    viewMapButton.style.display = "none";
+                    this.childNodes[0].innerHTML = "Xong";
+                    self.mTable.deleteColumn(0);
+                    self.mTable.insertColumn(1,0);
+                    this.currentMerge = true;
+                }
+            }
+        },
+        child: [
+            '<span>' + "Duyệt" + '</span>'
+        ]
+    });
+
+    cancelConfirmButton = _({
+        tag: "button",
+        class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+        on: {
+            click: function (evt) {
+                if(this.currentMerge === true)
+                {
+                    // self.merge();
+                    // this.currentMerge = undefined;
+                    saveButton.style.display = "";
+                    mergeButton.style.display = "";
+                    callAgainButton.style.display = "";
+                    confirmButton.style.display = "";
+                    viewMapButton.style.display = "";
+                    this.childNodes[0].innerHTML = "Yêu cầu gọi lại";
+                    self.mTable.deleteColumn(0);
+                    self.mTable.insertColumn(0,0);
+                    this.currentMerge = undefined;
+                    // self.merge(self.mTable.getTrueCheckBox());
+                }else
+                {
+                    saveButton.style.display = "none";
+                    mergeButton.style.display = "none";
+                    callAgainButton.style.display = "none";
+                    confirmButton.style.display = "none";
+                    viewMapButton.style.display = "none";
+                    this.childNodes[0].innerHTML = "Xong";
+                    self.mTable.deleteColumn(0);
+                    self.mTable.insertColumn(1,0);
+                    this.currentMerge = true;
+                }
+            }
+        },
+        child: [
+            '<span>' + "Hủy duyệt" + '</span>'
+        ]
+    });
+
+    mergeButton = _({
+        tag: "button",
+        class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+        on: {
+            click: function (evt) {
+                if(this.currentMerge === true)
+                {
+                    // self.merge();
+                    // this.currentMerge = undefined;
+                    confirmButton.style.display = "";
+                    saveButton.style.display = "";
+                    callAgainButton.style.display = "";
+                    cancelConfirmButton.style.display = "";
+                    viewMapButton.style.display = "";
                     this.childNodes[0].innerHTML = "Gộp";
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(0,0);
@@ -93,7 +224,11 @@ ListRealty.prototype.getView = function () {
                     self.merge(self.mTable.getTrueCheckBox());
                 }else
                 {
+                    confirmButton.style.display = "none";
                     saveButton.style.display = "none";
+                    callAgainButton.style.display = "none";
+                    cancelConfirmButton.style.display = "none";
+                    viewMapButton.style.display = "none";
                     this.childNodes[0].innerHTML = "Xong";
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(1,0);
@@ -106,7 +241,7 @@ ListRealty.prototype.getView = function () {
         ]
     })
 
-    var viewMapButton = _({
+    viewMapButton = _({
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
@@ -117,12 +252,14 @@ ListRealty.prototype.getView = function () {
         child: [
             '<span>' + "Xem bản đồ" + '</span>'
         ]
-    })
+    });
+
+    
     
     
     this.$view = _({
         tag: 'singlepage',
-        class: "pizo-list-realty",
+        class: ["pizo-list-realty","pizo-list-realty-main-header"],
         child: [{
             class: 'absol-single-page-header',
             child: [
@@ -152,6 +289,9 @@ ListRealty.prototype.getView = function () {
                         },
                         saveButton,
                         mergeButton,
+                        callAgainButton,
+                        confirmButton,
+                        cancelConfirmButton,
                         viewMapButton
                     ]
                 },
@@ -229,6 +369,11 @@ ListRealty.prototype.getView = function () {
                     icon: 'span.mdi.mdi-text',
                     value: 1,
                 },
+                {
+                    text: 'Chi tiết',
+                    icon: 'span.mdi.mdi-text',
+                    value: 2,
+                }
             ]
         };
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
@@ -238,6 +383,9 @@ ListRealty.prototype.getView = function () {
                     break;
                 case 1:
                     self.delete(data.original, parent, index);
+                    break;
+                case 2:
+                    document.body.appendChild(self.modalLargeRealty(data.original));
                     break;
             }
         });

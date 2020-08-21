@@ -290,6 +290,12 @@ input:checked+.absol-switch-slider:before{
     display: flex;
     flex-shrink: 0;
     padding-right: 30px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.pizo-new-account-container-permission-addvance-selectmenu-icon:hover{
+    color: #73aed3;
 }
 
 .pizo-new-account-container-permission-addvance-selectmenu-content{

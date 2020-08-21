@@ -423,6 +423,33 @@ MapRealty.prototype.edit = function (data) {
     self.editDB(mNewRealty, data);
 }
 
+MapRealty.prototype.requestEdit = function (data) {
+    var self = this;
+    var mNewRealty = new NewRealty(data);
+    mNewRealty.attach(self.parent);
+    mNewRealty.setRequestEdit();
+    mNewRealty.setDataListAccount(self.listAccoutData);
+    mNewRealty.setDataListContact(self.listContactData);
+    var frameview = mNewRealty.getView();
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.editDB(mNewRealty, data);
+}
+
+MapRealty.prototype.requestEditDB = function (data) {
+    var self = this
+    mNewRealty.promiseEditDB.then(function (value) {
+        moduleDatabase.getModule("inactivehouses").update(value).then(function (result) {
+            self.editView(value, data);
+        })
+        mNewRealty.promiseEditDB = undefined;
+        setTimeout(function () {
+            if (mNewRealty.promiseEditDB !== undefined)
+                self.editDB(mNewRealty, data);
+        }, 10);
+    })
+}
+
 MapRealty.prototype.editDB = function (mNewRealty, data) {
     var self = this
     mNewRealty.promiseEditDB.then(function (value) {
@@ -712,7 +739,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                child:[
                                                                                                    {
                                                                                                        tag:"li",
-                                                                                                       class:["sc-cLQEGU", "cllLJF"],
+                                                                                                       class:["sc-cLQEGU-1", "cllLJF"],
                                                                                                        child:[
                                                                                                            {
                                                                                                                tag:"button",
@@ -749,8 +776,51 @@ MapRealty.prototype.modalLargeRealty = function(data)
                                                                                                        ]
                                                                                                    },
                                                                                                    {
+                                                                                                    tag:"li",
+                                                                                                    class:["sc-cLQEGU-2", "cllLJF"],
+                                                                                                    style:{
+                                                                                                        display:"none"
+                                                                                                    },
+                                                                                                    child:[
+                                                                                                        {
+                                                                                                            tag:"button",
+                                                                                                            class:["sc-bMVAic", "gpVNOz"],
+                                                                                                            on:{
+                                                                                                                click:function()
+                                                                                                                {
+                                                                                                                    console.log(self)
+                                                                                                                    self.requestEdit({original:data});
+                                                                                                                    modal.selfRemove();
+                                                                                                                }
+                                                                                                            },
+                                                                                                            child:[
+                                                                                                                {
+                                                                                                                    tag:"div",
+                                                                                                                    class:["sc-gqPbQI", "eKDTCE"],
+                                                                                                                    child:[
+                                                                                                                        {
+                                                                                                                            tag:"i",
+                                                                                                                            class:"material-icons",
+                                                                                                                            props:{
+                                                                                                                                innerHTML:"edit"
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    tag:"span",
+                                                                                                                    class:["sc-hORach", "duJWoc"],
+                                                                                                                    props:{
+                                                                                                                        innerHTML:"Yêu cầu chỉnh sửa"
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                    },
+                                                                                                   {
                                                                                                        tag:"li",
-                                                                                                       class:["sc-cLQEGU", "cllLJF"],
+                                                                                                       class:["sc-cLQEGU-3", "cllLJF"],
                                                                                                        child:[
                                                                                                            {
                                                                                                                tag:"button",
@@ -1177,6 +1247,15 @@ MapRealty.prototype.modalLargeRealty = function(data)
     setTimeout(function(){
         modal.focus();
     },100);
+
+    var requestEdit = $("li.sc-cLQEGU-2",modal);
+    var realEdit = $("li.sc-cLQEGU-3",modal);
+    if(true)
+    {
+        requestEdit.style.display = "";
+        realEdit.style.display = "none";
+    }
+    
     return modal;
 }
 
@@ -1408,7 +1487,6 @@ MapRealty.prototype.contactView = function (data) {
             containerContact
         ]
     })
-    console.log(data.contact)
     if(data!==undefined)
     {
         for(var i = 0 ;i<data.contact.length;i++)

@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/NewAccount.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { getIDCompair, getGMT } from '../component/FormatFunction';
+import { getIDCompair, getGMT, getNameCompair } from '../component/FormatFunction';
 import { locationView } from "./MapView";
 import xmlModalDragImage from './modal_drag_drop_image';
 import moduleDatabase from '../component/ModuleDatabase';
@@ -263,6 +263,91 @@ NewAccount.prototype.getView = function (dataParent) {
             }
         }
     });
+    var selectPermission = _({
+        tag:"selectbox",
+        class:"pizo-new-account-container-permission-addvance-selectmenu-content",
+        on:{
+            click:function(event)
+            {
+                var element = event.target;
+                while(!(element.classList.contains("absol-selectbox-item-close")||element.classList.contains("absol-selectbox-item")||element.classList.contains("absol-selectbox")))
+                element = element.parentNode;
+                if(element.classList.contains("absol-selectbox-item"))
+                {
+                    var dataTemp = JSON.parse(element.data.value);
+                    if(dataTemp["streetid"]!==undefined)
+                    {
+                        street.value = dataTemp["streetid"];
+                        street.emit("change");
+                        dataTemp = self.checkStreet[getIDCompair(dataTemp["streetid"])];
+
+                        ward.value = self.checkWard[dataTemp.wardid].name +"_"+ dataTemp.wardid;
+                        ward.emit("change"); 
+                        dataTemp = self.checkWard[dataTemp.wardid];
+
+                        district.value = self.checkDistrict[dataTemp.districtid].name +"_"+ dataTemp.districtid;
+                        district.emit("change"); 
+                        dataTemp = self.checkDistrict[dataTemp.districtid];
+
+                        state.value = self.checkState[dataTemp.stateid].name +"_"+ dataTemp.stateid;
+                        state.emit("change"); 
+
+                    }else
+                    {
+                        if(dataTemp["wardid"]!==undefined)
+                        {
+                            ward.value = dataTemp["wardid"];
+                            ward.emit("change");
+                            dataTemp = self.checkWard[getIDCompair(dataTemp["wardid"])];
+
+                            district.value = self.checkDistrict[dataTemp.districtid].name +"_"+ dataTemp.districtid;
+                            district.emit("change"); 
+                            dataTemp = self.checkDistrict[dataTemp.districtid];
+
+                            state.value = self.checkState[dataTemp.stateid].name +"_"+ dataTemp.stateid;
+                            state.emit("change"); 
+
+                            street.value = 0;
+                            street.emit("change");
+                        }else
+                        {
+                            if(dataTemp["districtid"]!==undefined)
+                            {
+                                district.value = dataTemp["districtid"];
+                                district.emit("change");
+                                dataTemp = self.checkDistrict[getIDCompair(dataTemp["districtid"])];
+                                
+                                state.value = self.checkState[dataTemp.stateid].name +"_"+ dataTemp.stateid;
+                                state.emit("change"); 
+
+                                ward.value = 0;
+                                ward.emit("change");
+                            }else
+                            {
+                                if(dataTemp["stateid"]!==undefined)
+                                {
+                                    state.value = dataTemp["stateid"];
+                                    state.emit("change");
+
+                                    district.value = 0;
+                                    district.emit("change");
+                                }else
+                                {
+                                    state.value = 0;
+                                    state.emit("change");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        props:{
+            items:[],
+            disableClickToFocus:true
+        }
+    });
+
     this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-realty-main"],
@@ -868,23 +953,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                                             class: "pizo-new-realty-desc-detail-row-cell-menu-ultra-span",
                                                             props: {
                                                                 innerHTML: "Thực hiện gọi lại"
-                                                            }
-                                                        },
-                                                        {
-                                                            tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    tag: "div",
-                                                    class: "pizo-new-realty-desc-detail-row-permission",
-                                                    child: [
-                                                        {
-                                                            tag: "span",
-                                                            class: "pizo-new-realty-desc-detail-row-cell-menu-ultra-span",
-                                                            props: {
-                                                                innerHTML: "Upload hình ảnh nhanh"
                                                             }
                                                         },
                                                         {
@@ -2226,17 +2294,70 @@ NewAccount.prototype.getView = function (dataParent) {
                                         {
                                             tag:"i",
                                             class:["material-icons","pizo-new-account-container-permission-addvance-selectmenu-icon"],
+                                            on:{
+                                                click:function(event)
+                                                {
+                                                    var indexValue;
+                                                    var itemValue;
+                                                    if(street.value == 0)
+                                                    {
+                                                        if(ward.value == 0)
+                                                        {
+                                                            if(district.value == 0)
+                                                            {
+                                                                if(state.value == 0)
+                                                                {
+                                                                    indexValue = 0;
+                                                                    itemValue = {
+                                                                        text:"Tất cả",
+                                                                        value:indexValue
+                                                                    }
+                                                                }else
+                                                                {
+                                                                    indexValue = '{"stateid":"'+state.value+'"}';
+                                                                    itemValue = {
+                                                                        text:getNameCompair(state.value),
+                                                                        value:indexValue
+                                                                    }
+                                                                }
+                                                            }else
+                                                            {
+                                                                indexValue = '{"districtid":"'+district.value+'"}';
+                                                                itemValue = {
+                                                                    text:getNameCompair(district.value),
+                                                                    value:indexValue
+                                                                }
+                                                            }
+                                                        }else
+                                                        {
+                                                            indexValue = '{"wardid":"'+ward.value+'"}';
+                                                            itemValue = {
+                                                                text:getNameCompair(ward.value),
+                                                                value:indexValue
+                                                            }
+                                                        }
+                                                    }else
+                                                    {
+                                                        indexValue = '{"streetid":"'+street.value+'"}';
+                                                        itemValue = {
+                                                            text:getNameCompair(street.value),
+                                                            value:indexValue
+                                                        }
+                                                    }
+                                                    if(selectPermission.values.indexOf(indexValue)==-1)
+                                                    {
+                                                        selectPermission.items.push(itemValue);
+                                                        selectPermission.values.push(indexValue);
+                                                        selectPermission.items = selectPermission.items;
+                                                        selectPermission.values = selectPermission.values;
+                                                    }
+                                                }
+                                            },
                                             props:{
                                                 innerHTML:"send"
                                             }
                                         },
-                                        {
-                                            tag:"selectbox",
-                                            class:"pizo-new-account-container-permission-addvance-selectmenu-content",
-                                            props:{
-                                                items:[]
-                                            }
-                                        }
+                                        selectPermission
                                     ]
                                 }
                             ]
@@ -2250,7 +2371,10 @@ NewAccount.prototype.getView = function (dataParent) {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("districts").load({ORDERING:"stateid"}));
     arr.push(moduleDatabase.getModule("wards").load({ORDERING:"districtid"}));
-
+    this.state = state;
+    this.district = district;
+    this.ward = ward;
+    this.street = street;
     Promise.all(arr).then(function(){
         state.items = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("states").getList("name",["name","id"]));
         district.items = [{text:"Tất cả",value:0}];

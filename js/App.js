@@ -31,6 +31,7 @@ function App(){
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActivehouse.php"]);
+    moduleDatabase.getModule("inactivehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActivehouse.php"]);
     moduleDatabase.getModule("contacts",["load.php","add.php","update.php","deleteContact.php"]);
     moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","deleteUser.php"]);
     moduleDatabase.getModule("polygon", ["loadPolygon.php", "addPolygon.php", "updatePolygon.php", "deletePolygon.php"]);
@@ -149,10 +150,10 @@ App.prototype.getView = function()
                                                     text:"Dự án đã quan tâm",
                                                     pageIndex:12
                                                 },
-                                                {
-                                                    text:"Cần kiểm duyệt",
-                                                    pageIndex:13
-                                                },
+                                                // {
+                                                //     text:"Cần kiểm duyệt",
+                                                //     pageIndex:13
+                                                // },
                                                 {
                                                     text:"Cần gọi lại",
                                                     pageIndex:14
@@ -160,10 +161,6 @@ App.prototype.getView = function()
                                                 {
                                                     text:"Cần gộp",
                                                     pageIndex:15
-                                                },
-                                                {
-                                                    text:"Cập nhật hình ảnh nhanh",
-                                                    pageIndex:16
                                                 },
                                                 {
                                                     text:"Yêu cầu chỉnh sửa",

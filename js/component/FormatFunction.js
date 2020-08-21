@@ -141,6 +141,13 @@ export function getIDCompair(string)
     return string.slice(string.lastIndexOf("_")+1);
 }
 
+export function getNameCompair(string)
+{
+    if(string == 0)
+    return "";
+    return string.slice(0,string.lastIndexOf("_"));
+}
+
 export function removeAccents(str) {
     return str.normalize('NFD')
               .replace(/[\u0300-\u036f]/g, '')

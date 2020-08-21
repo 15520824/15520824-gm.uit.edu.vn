@@ -137,7 +137,7 @@ NewRealty.prototype.getView = function () {
                             },
                             {
                                 tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                class: ["pizo-list-realty-button-save","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
                                         self.resolveDB(self.getDataSave());
@@ -151,7 +151,7 @@ NewRealty.prototype.getView = function () {
                             },
                             {
                                 tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                                class: ["pizo-list-realty-button-save-close","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
                                         self.resolveDB(self.getDataSave());
@@ -163,6 +163,25 @@ NewRealty.prototype.getView = function () {
                                 },
                                 child: [
                                 '<span>' + "Lưu và đóng" + '</span>'
+                                ]
+                            },
+                            {
+                                tag: "button",
+                                class: ["pizo-list-realty-button-request-edit","pizo-list-realty-button-element"],
+                                style:{
+                                    display:"none"
+                                },
+                                on: {
+                                    click: function (evt) {
+                                        self.resolveDB(self.getDataSave());
+                                        self.data = self.getDataSave();
+                                        self.$view.selfRemove();
+                                        var arr = self.parent.body.getAllChild();
+                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                    }
+                                },
+                                child: [
+                                '<span>' + "Gửi yêu cầu chỉnh sửa" + '</span>'
                                 ]
                             }
                         ]
@@ -180,6 +199,15 @@ NewRealty.prototype.getView = function () {
         ]
     }));
     self.createPromise();
+    self.saveButton = $("button.pizo-list-realty-button-save",this.$view);
+    self.saveCloseButton = $("button.pizo-list-realty-button-save-close",this.$view);
+    self.requestEditButton = $("button.pizo-list-realty-button-request-edit",this.$view);
+    if(this.isRequestEdit)
+    {
+        self.requestEditButton.style.display = "";
+        self.saveButton.style.display = "none";
+        self.saveCloseButton.style.display = "none"
+    }
     setTimeout(function(){
         self.data = self.getDataSave();
     },100)
@@ -1981,7 +2009,7 @@ NewRealty.prototype.detructView = function () {
         advanceDetruct = parseInt(advanceDetruct/10);
         this.advanceDetruct4.checked = advanceDetruct%10==1?true:false;
         this.inputCensorship.checked = parseInt(original.censorship)==1?true:false;
-        if(this.isCensorship===true){
+        if(this.data!==undefined){
             this.containerCensorship.style.display = "";
         }
     }
@@ -1991,6 +2019,11 @@ NewRealty.prototype.detructView = function () {
 NewRealty.prototype.setCensorship = function()
 {
     this.isCensorship = true;
+}
+
+NewRealty.prototype.setRequestEdit = function()
+{
+    this.isRequestEdit = true;
 }
 
 NewRealty.prototype.getDataSave = function(){
@@ -2154,10 +2187,18 @@ NewRealty.prototype.getDataSave = function(){
     }
 
     if(this.data!==undefined){
-        if(this.data.original!==undefined&&this.data.original.id!==undefined)
-        temp.id = this.data.original.id;
-        else if(this.data.id!==undefined)
-        temp.id = this.data.id;
+        if(this.isRequestEdit)
+        {
+            if(this.data.original!==undefined&&this.data.original.id!==undefined)
+            temp.id = this.data.original.id;
+            else if(this.data.id!==undefined)
+            temp.id = this.data.id;
+        }else{
+            if(this.data.original!==undefined&&this.data.original.id!==undefined)
+            temp.id = this.data.original.id;
+            else if(this.data.id!==undefined)
+            temp.id = this.data.id;
+        }
     }
     return temp;
 }

@@ -1566,7 +1566,7 @@ input[type="submit"] {
   font-size: 1.2em;
 }
 
-.image-tabcontainer .absol-static-tabbar-button {
+.home-details-content .image-tabcontainer .absol-static-tabbar-button {
   width: 50%;
   min-width: 400px;
 }
