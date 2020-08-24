@@ -90,7 +90,6 @@ export function DetailView(map,data) {
         }
     });
     var arr = [];
-    
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("districts").load({ORDERING:"stateid"}));
     arr.push(moduleDatabase.getModule("wards").load({ORDERING:"districtid"}));
@@ -448,6 +447,7 @@ export function DetailView(map,data) {
             containerGPS
         ]
     })
+    temp.map = map;
     temp.input = input;
     temp.number = number;
     temp.district = district;
@@ -458,7 +458,7 @@ export function DetailView(map,data) {
     temp.lng = lng;
     temp.lat = lat;
     temp.containerGPS = containerGPS;
-    temp.activeAutocomplete(map);
+    // temp.activeAutocomplete(map);
     return temp;
 }
 
@@ -515,6 +515,7 @@ DetailView.prototype.activeAutocomplete = function(map) {
 
 DetailView.prototype.setInput = function(isChange=true)
 {
+    var self = this;
     var stringInput = "";
     var index;
     var valueNumber = this.number.value;
@@ -571,8 +572,13 @@ DetailView.prototype.setInput = function(isChange=true)
         isFirst = ", "
     }
     this.input.value = stringInput;
+
     if(isChange===true)
-    google.maps.event.trigger(this.autocomplete, 'place_changed');
+    this.getLongLat(stringInput).then(function (result) {
+        self.map.addMoveMarker(result)
+    })
+    // if(isChange===true)
+    // google.maps.event.trigger(this.autocomplete, 'place_changed');
 }
 
 DetailView.prototype.fillInAddress = function (autocomplete, text, map) {

@@ -121,6 +121,7 @@ HashTable.prototype.getKey = function(key,index){
                                     var lastCheck = check[row][column].lastCheck;
                                     var lastIndexCheck =  check[row][column].lastIndexCheck;
                                     // prevCheck = currentIndex;
+                                    var tempDistance = 0;
                                     for(var m=lastIndexCheck.length-1;m>=0;m--)
                                     {
                                         var itemCheck = lastCheck[m+1];
@@ -137,7 +138,8 @@ HashTable.prototype.getKey = function(key,index){
                                         prevCheck = lastIndex;
                                         if(lastIndex-oldIndex>0)
                                         {
-                                            tempExactly -= (lastIndex-oldIndex);
+                                            tempExactly -= ((lastIndex-oldIndex)-tempDistance);
+                                            tempDistance += (lastIndex-oldIndex);
                                             lastIndexCheck[m] = lastIndex;
                                             if(m==lastIndexCheck.length-1)
                                             {

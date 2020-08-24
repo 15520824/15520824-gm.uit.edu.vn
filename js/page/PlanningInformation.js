@@ -91,7 +91,7 @@ PlanningInformation.prototype.getView = function () {
                             return console.error(err.stack);
                         }
                     
-                        var wkt = GeoJSON.parse(dxf)
+                        var wkt = GeoJSON.parse(dxf);
                         var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
                         window.dcel.extractLines();
                         var faces = dcel.internalFaces();
@@ -621,6 +621,7 @@ PlanningInformation.prototype.addEventPolygon = function(polygon)
 
 PlanningInformation.prototype.selectPolygonFunction = function(bns){
     this.removeAllSelect();
+    console.log(bns)
     if(this.editPolygon!==undefined)
     this.editPolygon.toInActive(this);
     var path = [];
@@ -630,7 +631,7 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns){
         tempPath = [];
         var boundary = this.polygon[i].boundary();
         if(bns.Za.i<boundary.min.lat&&boundary.max.lat<bns.Za.j
-            &&bns.Ua.i<boundary.min.lng&&boundary.max.lng<bns.Ua.j)
+            &&bns.Va.i<boundary.min.lng&&boundary.max.lng<bns.Va.j)
         {
             for(var j = 0;j<this.polygon[i].getPath().getLength();j++)
             {
@@ -679,7 +680,7 @@ PlanningInformation.prototype.searchControlContent = function(){
             add:function(event)
             {
                 if(self.hash[event.value]===undefined){
-                    moduleDatabase.getModule("geometry").load({WHERE:"created='"+event.value+"'"}).then(function(value){
+                    moduleDatabase.getModule("geometry").load({WHERE:[{created:"'"+event.value+"'"}]}).then(function(value){
                         for(var i = 0;i<value.length;i++)
                         {
                             self.polygon = self.polygon.concat(self.addWKT(value[i])); 

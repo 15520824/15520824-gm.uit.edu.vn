@@ -1549,7 +1549,6 @@ MapRealty.prototype.juridicalView = function (data) {
 }
 
 MapRealty.prototype.contactItem = function(data){
-  
     var name,typecontact,phone,statusphone,note;
     var self = this;
     var temp = _({

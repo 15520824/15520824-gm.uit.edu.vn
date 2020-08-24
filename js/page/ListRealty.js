@@ -37,6 +37,18 @@ function ListRealty() {
     this.mediaItem = MapRealty.prototype.mediaItem;
     this.requestEdit = MapRealty.prototype.requestEdit;
     this.requestEditDB = MapRealty.prototype.requestEditDB;
+
+    moduleDatabase.getModule("users").load().then(function(value)
+    {
+        this.checkUser = moduleDatabase.getModule("users").getLibary("phone");
+        this.checkUserID = moduleDatabase.getModule("users").getLibary("id");
+    }.bind(this))
+
+    moduleDatabase.getModule("contacts").load().then(function(value)
+    {
+        this.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+        this.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
+    }.bind(this))
 }
 
 ListRealty.prototype.setContainer = function (parent) {
@@ -69,7 +81,7 @@ ListRealty.prototype.getView = function () {
         tag: "input",
         class: "pizo-list-realty-page-allinput-input",
         props: {
-            placeholder: "Tìm theo mã, tên, địa chỉ bất động sản"
+            placeholder: "Tìm theo mã, tên, số điện thoại, địa chỉ bất động sản"
         }
     });
     if (window.mobilecheck()) {
@@ -254,8 +266,13 @@ ListRealty.prototype.getView = function () {
         ]
     });
 
-    
-    
+    var hiddenConfirm = _({
+         tag:"selectmenu",
+         class:"selectmenu-hidden-confirm",
+         child:[
+             {text:""}
+         ]
+    })
     
     this.$view = _({
         tag: 'singlepage',
@@ -762,30 +779,73 @@ ListRealty.prototype.searchControlContent = function () {
             child: [{
                     tag: "div",
                     class: "pizo-list-realty-main-search-control-row",
-                    child: [{
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-date",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-date-label",
-                                    props: {
-                                        innerHTML: "Thời gian"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-date-input",
-                                    child: [
-                                        startDay,
-                                        endDay
-                                    ]
-                                }
-                            ]
-                        },
+                    style:{
+                        display:"none"
+                    },
+                    child: [
+                        // {
+                        //     tag: "div",
+                        //     class: "pizo-list-realty-main-search-control-row-date",
+                        //     child: [{
+                        //             tag: "span",
+                        //             class: "pizo-list-realty-main-search-control-row-date-label",
+                        //             props: {
+                        //                 innerHTML: "Thời gian"
+                        //             }
+                        //         },
+                        //         {
+                        //             tag: "div",
+                        //             class: "pizo-list-realty-main-search-control-row-date-input",
+                        //             child: [
+                        //                 startDay,
+                        //                 endDay
+                        //             ]
+                        //         }
+                        //     ]
+                        // },
                         {
                             tag: "div",
                             class: "pizo-list-realty-main-search-control-row-price",
-                            child: [{
+                            child: [
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-HT",
+                                    child: [{
+                                            tag: "span",
+                                            class: "pizo-list-realty-main-search-control-row-HT-label",
+                                            props: {
+                                                innerHTML: "Tình trạng"
+                                            }
+                                        },
+                                        {
+                                            tag: "div",
+                                            class: "pizo-list-realty-main-search-control-row-HT-input",
+                                            child: [{
+                                                tag: "selectmenu",
+                                                props: {
+                                                    items: [{
+                                                            text: "Tất cả",
+                                                            value: 0
+                                                        },
+                                                        {
+                                                            text: "Còn bán",
+                                                            value: 1
+                                                        },
+                                                        {
+                                                            text: "Đã bán",
+                                                            value: 2
+                                                        },
+                                                        {
+                                                            text: "Ngưng bán",
+                                                            value: 3
+                                                        },
+                                                    ]
+                                                }
+                                            }]
+                                        }
+                                    ]
+                                },
+                                {
                                     tag: "span",
                                     class: "pizo-list-realty-main-search-control-row-price-label",
                                     props: {
@@ -817,206 +877,170 @@ ListRealty.prototype.searchControlContent = function () {
                                 }
                             ]
                         },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-phone",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-phone-label",
-                                    props: {
-                                        innerHTML: "Số điện thoại"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-phone-input",
-                                    child: [{
-                                        tag: "input",
-                                        props: {
-                                            type: "number",
-                                            autocomplete: "off"
-                                        }
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-button",
-                            child: [{
-                                tag: "button",
-                                class: ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        temp.reset();
-                                    }
-                                },
-                                child: [
-                                    '<span>' + "Thiết lập lại" + '</span>'
-                                ]
-                            }]
-                        },
+                        // {
+                        //     tag: "div",
+                        //     class: "pizo-list-realty-main-search-control-row-phone",
+                        //     child: [{
+                        //             tag: "span",
+                        //             class: "pizo-list-realty-main-search-control-row-phone-label",
+                        //             props: {
+                        //                 innerHTML: "Số điện thoại"
+                        //             }
+                        //         },
+                        //         {
+                        //             tag: "div",
+                        //             class: "pizo-list-realty-main-search-control-row-phone-input",
+                        //             child: [{
+                        //                 tag: "input",
+                        //                 props: {
+                        //                     type: "number",
+                        //                     autocomplete: "off"
+                        //                 }
+                        //             }]
+                        //         }
+                        //     ]
+                        // },
+                        // {
+                        //     tag: "div",
+                        //     class: "pizo-list-realty-main-search-control-row-button",
+                        //     child: [{
+                        //         tag: "button",
+                        //         class: ["pizo-list-realty-button-deleteall", "pizo-list-realty-button-element"],
+                        //         on: {
+                        //             click: function (evt) {
+                        //                 temp.reset();
+                        //             }
+                        //         },
+                        //         child: [
+                        //             '<span>' + "Thiết lập lại" + '</span>'
+                        //         ]
+                        //     }]
+                        // },
                     ]
                 },
                 {
                     tag: "div",
                     class: "pizo-list-realty-main-search-control-row",
-                    child: [{
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-MS",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-MS-label",
-                                    props: {
-                                        innerHTML: "Mã số"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-MS-input",
-                                    child: [{
-                                        tag: "input",
-                                        props: {
-                                            type: "number",
-                                            autocomplete: "off"
-                                        }
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-SN",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-SN-label",
-                                    props: {
-                                        innerHTML: "Số nhà"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-SN-input",
-                                    child: [{
-                                        tag: "input",
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-TD",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-TD-label",
-                                    props: {
-                                        innerHTML: "Tên đường"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-TD-input",
-                                    child: [{
-                                        tag: "input",
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-PX",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-PX-label",
-                                    props: {
-                                        innerHTML: "Phường/Xã"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-PX-input",
-                                    child: [{
-                                        tag: "input",
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-QH",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-QH-label",
-                                    props: {
-                                        innerHTML: "Quận huyện"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-QH-input",
-                                    child: [{
-                                        tag: "input",
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-TT",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-TT-label",
-                                    props: {
-                                        innerHTML: "Tỉnh/TP"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-TT-input",
-                                    child: [{
-                                        tag: "input"
-                                    }]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-HT",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-HT-label",
-                                    props: {
-                                        innerHTML: "Tình trạng"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-HT-input",
-                                    child: [{
-                                        tag: "selectmenu",
-                                        props: {
-                                            items: [{
-                                                    text: "Tất cả",
-                                                    value: 0
-                                                },
-                                                {
-                                                    text: "Còn bán",
-                                                    value: 1
-                                                },
-                                                {
-                                                    text: "Đã bán",
-                                                    value: 2
-                                                },
-                                                {
-                                                    text: "Ngưng bán",
-                                                    value: 3
-                                                },
-                                            ]
-                                        }
-                                    }]
-                                }
-                            ]
-                        }
+                    child: [
+                        // {
+                        //     tag: "div",
+                        //     class: "pizo-list-realty-main-search-control-row-MS",
+                        //     child: [{
+                        //             tag: "span",
+                        //             class: "pizo-list-realty-main-search-control-row-MS-label",
+                        //             props: {
+                        //                 innerHTML: "Mã số"
+                        //             }
+                        //         },
+                        //         {
+                        //             tag: "div",
+                        //             class: "pizo-list-realty-main-search-control-row-MS-input",
+                        //             child: [{
+                        //                 tag: "input",
+                        //                 props: {
+                        //                     type: "number",
+                        //                     autocomplete: "off"
+                        //                 }
+                        //             }]
+                        //         }
+                        //     ]
+                        // },
+                        // {
+                        //     tag: "div",
+                        //     class: "pizo-list-realty-main-search-control-row-SN",
+                        //     child: [{
+                        //             tag: "span",
+                        //             class: "pizo-list-realty-main-search-control-row-SN-label",
+                        //             props: {
+                        //                 innerHTML: "Số nhà"
+                        //             }
+                        //         },
+                        //         {
+                        //             tag: "div",
+                        //             class: "pizo-list-realty-main-search-control-row-SN-input",
+                        //             child: [{
+                        //                 tag: "input",
+                        //             }]
+                        //         }
+                        //     ]
+                        // },
+                        // {
+                        //     tag: "div",
+                        //     class: "pizo-list-realty-main-search-control-row-TD",
+                        //     child: [{
+                        //             tag: "span",
+                        //             class: "pizo-list-realty-main-search-control-row-TD-label",
+                        //             props: {
+                        //                 innerHTML: "Tên đường"
+                        //             }
+                        //         },
+                        //         {
+                        //             tag: "div",
+                        //             class: "pizo-list-realty-main-search-control-row-TD-input",
+                        //             child: [{
+                        //                 tag: "input",
+                        //             }]
+                        //         }
+                        //     ]
+                        // },
+                        // {
+                        //     tag: "div",
+                        //     class: "pizo-list-realty-main-search-control-row-PX",
+                        //     child: [{
+                        //             tag: "span",
+                        //             class: "pizo-list-realty-main-search-control-row-PX-label",
+                        //             props: {
+                        //                 innerHTML: "Phường/Xã"
+                        //             }
+                        //         },
+                        //         {
+                        //             tag: "div",
+                        //             class: "pizo-list-realty-main-search-control-row-PX-input",
+                        //             child: [{
+                        //                 tag: "input",
+                        //             }]
+                        //         }
+                        //     ]
+                        // },
+                        // {
+                        //     tag: "div",
+                        //     class: "pizo-list-realty-main-search-control-row-QH",
+                        //     child: [{
+                        //             tag: "span",
+                        //             class: "pizo-list-realty-main-search-control-row-QH-label",
+                        //             props: {
+                        //                 innerHTML: "Quận huyện"
+                        //             }
+                        //         },
+                        //         {
+                        //             tag: "div",
+                        //             class: "pizo-list-realty-main-search-control-row-QH-input",
+                        //             child: [{
+                        //                 tag: "input",
+                        //             }]
+                        //         }
+                        //     ]
+                        // },
+                        // {
+                        //     tag: "div",
+                        //     class: "pizo-list-realty-main-search-control-row-TT",
+                        //     child: [{
+                        //             tag: "span",
+                        //             class: "pizo-list-realty-main-search-control-row-TT-label",
+                        //             props: {
+                        //                 innerHTML: "Tỉnh/TP"
+                        //             }
+                        //         },
+                        //         {
+                        //             tag: "div",
+                        //             class: "pizo-list-realty-main-search-control-row-TT-input",
+                        //             child: [{
+                        //                 tag: "input"
+                        //             }]
+                        //         }
+                        //     ]
+                        // },
+
                     ]
                 }
             ]

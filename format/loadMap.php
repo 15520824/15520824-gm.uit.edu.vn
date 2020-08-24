@@ -3,6 +3,7 @@ include_once "../lib/jsdb.php";
 include_once "../lib/jsencoding.php";
 include_once "../lib/prefix.php";
 include_once "../lib/connection.php";
+include_once "../lib/generalOperator.php";
 
 header('Access-Control-Allow-Origin: *');
 header('Content-type: application/json');
@@ -21,7 +22,8 @@ if (isset($_POST["data"])) {
         {
             $isFirst = $data["isFirst"];
         }
-        $WHERE=$data["WHERE"];
+        $operator = $data["WHERE"];
+        $WHERE = generalOperator($operator);
     }
     
     if (isset($data["ORDERING"])) {
