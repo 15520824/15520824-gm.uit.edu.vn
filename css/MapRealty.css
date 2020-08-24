@@ -1642,5 +1642,5 @@ input[type="submit"] {
 }
 
 .home-details-content .as-button-range{
-    height: 59px;
+    min-height: 2em;
 }

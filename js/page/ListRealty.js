@@ -88,6 +88,23 @@ ListRealty.prototype.getView = function () {
         allinput.placeholder = "Tìm bất động sản"
     }
     var saveButton,callAgainButton,mergeButton,viewMapButton,confirmButton,cancelConfirmButton;
+    
+    var hiddenConfirm = _({
+        tag:"selectmenu",
+        class:"selectmenu-hidden-confirm",
+        style:{
+            display:"none"
+        },
+        props:{
+            value:0,
+            items:[
+                {text:"Tất cả",value:0},
+                {text:"Duyệt",value:"censorship1"},
+                {text:"Chưa duyệt",value:"censorship0"},
+            ]
+        }
+   })
+
     saveButton = _({
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
@@ -153,11 +170,27 @@ ListRealty.prototype.getView = function () {
                     callAgainButton.style.display = "";
                     cancelConfirmButton.style.display = "";
                     viewMapButton.style.display = "";
-                    this.childNodes[0].innerHTML = "Yêu cầu gọi lại";
+                    this.childNodes[0].innerHTML = "Duyệt";
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(0,0);
                     this.currentMerge = undefined;
-                    // self.merge(self.mTable.getTrueCheckBox());
+                    hiddenConfirm.value = 0;
+                    hiddenConfirm.emit("change");
+                    var dataSum = self.mTable.getTrueCheckBox();
+                    var arr  = [];
+                    var tempData;
+                    for(var i = 0;i<dataSum.length;i++)
+                    {
+                        dataSum[i][20] = "censorship1";
+                        dataSum[i].original.censorship = 1;
+                        dataSum[i][1] = {};
+                        tempData = self.getDataEditFake(dataSum[i]);
+                        self.mTable.resetHash();
+                        arr.push(moduleDatabase.getModule("activehouses").update(tempData));
+                    }
+                    Promise.all(arr).then(function(){
+                       
+                    })
                 }else
                 {
                     saveButton.style.display = "none";
@@ -169,6 +202,8 @@ ListRealty.prototype.getView = function () {
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(1,0);
                     this.currentMerge = true;
+                    hiddenConfirm.value = "censorship0";
+                    hiddenConfirm.emit("change");
                 }
             }
         },
@@ -191,11 +226,28 @@ ListRealty.prototype.getView = function () {
                     callAgainButton.style.display = "";
                     confirmButton.style.display = "";
                     viewMapButton.style.display = "";
-                    this.childNodes[0].innerHTML = "Yêu cầu gọi lại";
+                    this.childNodes[0].innerHTML = "Hủy duyệt";
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(0,0);
                     this.currentMerge = undefined;
-                    // self.merge(self.mTable.getTrueCheckBox());
+                    hiddenConfirm.value = 0;
+                    hiddenConfirm.emit("change");
+
+                    var dataSum = self.mTable.getTrueCheckBox();
+                    var arr  = [];
+                    var tempData;
+                    for(var i = 0;i<dataSum.length;i++)
+                    {
+                        dataSum[i][20] = "censorship0";
+                        dataSum[i].original.censorship = 0;
+                        dataSum[i][1] = {};
+                        tempData = self.getDataEditFake(dataSum[i]);
+                        self.mTable.resetHash();
+                        arr.push(moduleDatabase.getModule("activehouses").update(tempData));
+                    }
+                    Promise.all(arr).then(function(){
+                       
+                    })
                 }else
                 {
                     saveButton.style.display = "none";
@@ -207,6 +259,8 @@ ListRealty.prototype.getView = function () {
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(1,0);
                     this.currentMerge = true;
+                    hiddenConfirm.value = "censorship1";
+                    hiddenConfirm.emit("change");
                 }
             }
         },
@@ -266,13 +320,6 @@ ListRealty.prototype.getView = function () {
         ]
     });
 
-    var hiddenConfirm = _({
-         tag:"selectmenu",
-         class:"selectmenu-hidden-confirm",
-         child:[
-             {text:""}
-         ]
-    })
     
     this.$view = _({
         tag: 'singlepage',
@@ -516,6 +563,8 @@ ListRealty.prototype.getView = function () {
             type: "detail",
             functionClickAll: functionClickMore,
             dragElement: false
+        },{
+            hidden:true
         }];
         self.mTable = new tableView(header, [], true, true, 1);
         var arr = [];
@@ -556,12 +605,12 @@ ListRealty.prototype.getView = function () {
                 }
 
                 self.mTable.updateTable(undefined,value);
+                self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
+                self.mTable.addFilter(hiddenConfirm,20);
             })
         })
         
         tabContainer.addChild(self.mTable);
-        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
-        
         moduleDatabase.getModule("users").load().then(function (value) {
             self.formatDataRowAccount(value);
         })
@@ -726,7 +775,8 @@ ListRealty.prototype.getDataRow = function (data) {
         data.price * 1000 / data.acreage + " triệu",
         staus,
         formatDate(data.created, true, true, true, true, true),
-        {}
+        {},
+        "censorship"+data.censorship
     ];
     result.original = data;
     return result;
@@ -779,9 +829,6 @@ ListRealty.prototype.searchControlContent = function () {
             child: [{
                     tag: "div",
                     class: "pizo-list-realty-main-search-control-row",
-                    style:{
-                        display:"none"
-                    },
                     child: [
                         // {
                         //     tag: "div",
@@ -1164,11 +1211,24 @@ ListRealty.prototype.edit = function (data, parent, index) {
     self.editDB(mNewRealty, data, parent, index);
 }
 
+ListRealty.prototype.getDataEditFake = function(data)
+{
+    var self = this;
+    var mNewRealty = new NewRealty(data);
+    mNewRealty.setDataListAccount(self.listAccoutData);
+    mNewRealty.setDataListContact(self.listContactData);
+    var frameview = mNewRealty.getView();
+    var temp = mNewRealty.getDataSave();
+    temp.image = data.original.image;
+    return temp;
+}
+
 ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
     var self = this;
     mNewRealty.promiseEditDB.then(function (value) {
         moduleDatabase.getModule("activehouses").update(value).then(function (result) {
-            self.editView(value, data, parent, index);
+            result.created = data.original.created;
+            self.editView(result, parent, index);
         })
         mNewRealty.promiseEditDB = undefined;
         setTimeout(function () {
@@ -1178,17 +1238,15 @@ ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
     })
 }
 
-ListRealty.prototype.editView = function (value, data, parent, index) {
-    value.created = data.original.created;
+ListRealty.prototype.editView = function (value, parent, index) {
     var data = this.getDataRow(value);
-
     var indexOF = index,
         element = parent;
     element.updateRow(data, indexOF, true);
-    if(this.isCensorship&&data.censorship===1)
-    {
-        element.updateTable();
-    }
+    // if(this.isCensorship&&data.censorship===1)
+    // {
+    //     element.updateTable();
+    // }
 }
 
 ListRealty.prototype.delete = function (data, parent, index) {

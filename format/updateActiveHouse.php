@@ -37,6 +37,13 @@ $update = array();
 while (isset($data["addressid".$index]))
 {
     $address=$data["addressid".$index];
+    if(gettype($address)=="string")
+    {
+        if($index == "_old")
+        break;
+        $index = "_old";
+        continue;
+    }
     if(isset($address["id"])){
         $addressid = $address["id"];
         $dataInsertAddress = array(
@@ -50,8 +57,6 @@ while (isset($data["addressid".$index]))
         'addresses'=> $dataInsertAddress
         ));
     }else{
-        
-        
         if(isset($address["wardid"]))
         {
             $wardid = $address["wardid"];
@@ -273,6 +278,20 @@ if(isset($data["image"]))
     define('UPLOAD_DIR', "../../assets/upload/");
     for ($i = 0; $i < $count; $i++){
         $img = $images[$i];
+        if(is_numeric($img))
+        {
+            for($j = 0;$j<count($image_old);$j++)
+            {
+                if($img==$image_old[$j]["id"])
+                {
+                    array_splice($image_old,$j,1);
+                    $data["image"][$i] = intval($img);
+                    break;
+                }
+            }
+            continue;
+        }
+
         if (is_numeric ($img["src"]))
         {
             for($j = 0;$j<count($image_old);$j++)
@@ -349,6 +368,7 @@ for($i = 0;$i<count($image_old);$i++)
 }
 
 $result = $connector-> update($prefix."activehouses", $data);
+
 $result = array(
     'data'=>$data,
     'add'=>$insert,

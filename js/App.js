@@ -19,6 +19,7 @@ import ListContact from './page/ListContact';
 import ListEquipment from './page/ListEquipment';
 import ListJuridical from './page/ListJuridical';
 import MapRealty from './page/MapRealty';
+import ListTypeActivehouse from './page/ListTypeActivehouse';
 
 import moduleDatabase from './component/ModuleDatabase';
 
@@ -213,6 +214,10 @@ App.prototype.getView = function()
                                                 {
                                                     text:"Thông tin liên hệ",
                                                     pageIndex:33
+                                                },
+                                                {
+                                                    text:"Loại bất động sản",
+                                                    pageIndex:34
                                                 }
                                             ]
                                         },
@@ -460,6 +465,13 @@ App.prototype.openPage = function(index){
             var mListContact = new ListContact();
             mListContact.attach(this);
             var frameview = mListContact.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 34:
+            var mListTypeActivehouse = new ListTypeActivehouse();
+            mListTypeActivehouse.attach(this);
+            var frameview = mListTypeActivehouse.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
         break;

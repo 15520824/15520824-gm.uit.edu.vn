@@ -1044,6 +1044,10 @@ tableView.prototype.getCellHeader = function(header,i)
             bonus = _({
                 tag: "checkboxbutton",
                 class: "pizo-checkbox",
+                style:{
+                    display:"flex",
+                    flexGrow:2
+                },
                 on: {
                     click: function (event) {
                         for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
@@ -1459,7 +1463,7 @@ tableView.prototype.updateHash = function (row) {
                         value = object[this.inputFilter[k][1]];
                     else
                         value = "";
-                    if(this.inputFilter[k][0].value != data[this.inputFilter[k][1]])
+                    if(this.inputFilter[k][0].value != object[this.inputFilter[k][1]])
                     {
                         row.classList.add("disPlayNone");
                         setTimeout(function(){
@@ -1508,6 +1512,7 @@ tableView.prototype.resetHash = function () {
     var self = this;
     if (self.hashTable !== undefined)
         self.hashTable = new HashTable(self.data);
+        console.log(self.hashTableFilter)
     if (self.hashTableFilter !== undefined)
         self.hashTableFilter = new HashTableFilter(self.data);
 }
@@ -2683,7 +2688,6 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     return;
     var delta = [];
     var row = result.getRow(data);
-
     for (var i = 0; i < result.clone.length; i++) {
         delta[i] = 0;
         if (result.checkSpan !== undefined) {
@@ -2702,19 +2706,18 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     }
 
     var checkChild = false;
-
-    if ((result.tagName=="DIV"&&result.childrenNodes.length!=result.data.length)||
-        (result.tagName!=="DIV"&&result.childrenNodes.length!=result.data.child.length))
-    {
-        var table = result.realTable.parentNode;
-        table.updateTable(undefined,table.data);
-        delete data.isCheckUpdate;
-        return;
-    }
+    // if ((result.tagName=="DIV"&&result.childrenNodes.length!=result.data.length)||
+    //     (result.tagName!=="DIV"&&result.childrenNodes.length!=result.data.child.length))
+    // {
+    //     var table = result.realTable.parentNode;
+    //     table.updateTable(undefined,table.data);
+    //     return;
+    // }
 
 
     var temp;
     temp = result.childrenNodes[index];
+    console.log(row,temp)
     result.bodyTable.replaceChild(row, temp);
     row.classList.value = temp.classList.value;
 
@@ -2744,23 +2747,17 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
         k++;
         row.addChild(cell);
     }
-    var x, indexData;
+    var x;
     
-    if(result.childrenNodes[index]===undefined)
-    indexData = result.childrenNodes.length;
-    else
-    indexData = index;
     result.childrenNodes[index] = row;
     
     if (result.tagName !== "DIV") {
-        x = Object.assign(result.data.child[indexData], data);
-        result.data.child[indexData] = x;
+        x = Object.assign(temp.data, data);
     }
     else {
-        x = Object.assign(result.data[indexData], data);
-        result.data[indexData] = x;
+        x = Object.assign(temp.data, data);
     }
-    row.data = x;
+    row.data = temp.data;
     if (temp !== undefined) {
         row.childrenNodes = temp.childrenNodes;
         row.clone = temp.clone;
