@@ -1766,12 +1766,7 @@ NewRealty.prototype.detructView = function () {
                                                 tag: "selectmenu",
                                                 class: "pizo-new-realty-detruct-content-type",
                                                 props: {
-                                                    items: [
-                                                        { text: "Chưa xác định", value:0},
-                                                        { text: "Hẻm", value: 1 },
-                                                        { text: "Mặt tiền", value: 2 },
-                                                        { text: "Chung cư", value: 3 },
-                                                    ]
+                                                    items: moduleDatabase.getModule("type_activehouses").getList("name","id"),
                                                 }
                                             },
                                         ]

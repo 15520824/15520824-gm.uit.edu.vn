@@ -1154,7 +1154,7 @@ tableView.prototype.getCellHeader = function(header,i)
     var on = {
         click: function (index, functionClick) {
             return function (event) {
-                event.preventDefault();
+                // event.preventDefault();
                 if (functionClick !== undefined)
                 {
                     var row = cell.parentNode;
@@ -1254,7 +1254,7 @@ tableView.prototype.getCellHeader = function(header,i)
         on: {
             click: function (index, functionClickSort) {
                 return function (event) {
-                    event.preventDefault();
+                    // event.preventDefault();
                     if (functionClickSort !== undefined)
                     {
                         var row = cell.parentNode;
@@ -2371,7 +2371,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     var on = {
         click: function (event) {
             return function (event, row, functionClick) {
-                event.preventDefault();
+                // event.preventDefault();
                 if (functionClick !== undefined) {
                     if (cell.getParentNode().childrenNodes.length !== 0)
                         var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);
@@ -3686,6 +3686,106 @@ export function deleteQuestion(title, content, yes = "Có", no = "không") {
                                             class: "module-delete-button-no-label",
                                             props: {
                                                 innerHTML: no
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
+                }
+            ]
+        })
+    })
+
+    temp.promiseComfirm = promiseComfirm;
+    return temp;
+}
+
+
+export function confirmQuestion(title, content, yes = "OK") {
+    var contentElement;
+    if (typeof content !== "object") {
+        contentElement = _(
+            {
+                tag: "span",
+                class: "module-delete-header-content",
+                props: {
+                    innerHTML: content
+                }
+            }
+        )
+    } else {
+        contentElement = content;
+    }
+    var temp;
+    var promiseComfirm = new Promise(function (resolve, reject) {
+        temp = _({
+            tag: "modal",
+            class: "modal-delete-module",
+            child: [
+                {
+                    tag: "div",
+                    class: "module-delete-container",
+                    child: [
+                        {
+                            tag: "div",
+                            class: "module-delete-header",
+                            child: [
+                                {
+                                    tag: "span",
+                                    class: "module-delete-header-title",
+                                    props: {
+                                        innerHTML: title
+                                    }
+                                },
+                                {
+                                    tag: "div",
+                                    class: "module-delete-header-close-container",
+                                    on: {
+                                        click: function (event) {
+                                            temp.selfRemove();
+                                            reject();
+                                        }
+                                    },
+                                    child: [
+                                        {
+                                            tag: "i",
+                                            class: ["module-delete-header-close", "material-icons"],
+                                            props: {
+                                                innerHTML: "close"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "module-delete-content",
+                            child: [
+                                contentElement
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "module-delete-button",
+                            child: [
+                                {
+                                    tag: "button",
+                                    class: "module-delete-button-yes",
+                                    on: {
+                                        click: function (event) {
+                                            temp.selfRemove();
+                                            resolve();
+                                        }
+                                    },
+                                    child: [
+                                        {
+                                            tag: "span",
+                                            class: "module-delete-button-yes-label",
+                                            props: {
+                                                innerHTML: yes
                                             }
                                         }
                                     ]

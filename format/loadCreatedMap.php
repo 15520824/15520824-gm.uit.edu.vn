@@ -14,7 +14,7 @@ if ($connector == null) {
 
 $connector -> db -> set_charset("utf8");
 
-$result = $connector->query("SELECT DISTINCT `created` FROM ".$prefix."geometry");
+$result = $connector->query("SELECT DISTINCT `created`,`name` FROM ".$prefix."geometry");
 
 $data = array();
 $i = 0; 

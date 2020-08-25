@@ -1,14 +1,14 @@
 import BaseView from './BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/NewJuridical.css"
+import "../../css/NewTypeActivehouse.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function NewJuridical(data) {
+function NewTypeActivehouse(data) {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
@@ -21,15 +21,15 @@ function NewJuridical(data) {
     this.textHeader = "Thêm ";
 }
 
-NewJuridical.prototype.setContainer = function(parent)
+NewTypeActivehouse.prototype.setContainer = function(parent)
 {
     this.parent = parent;
 }
 
-Object.defineProperties(NewJuridical.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-NewJuridical.prototype.constructor = NewJuridical;
+Object.defineProperties(NewTypeActivehouse.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+NewTypeActivehouse.prototype.constructor = NewTypeActivehouse;
 
-NewJuridical.prototype.getDataSave = function() {
+NewTypeActivehouse.prototype.getDataSave = function() {
     
     return {
         id:this.data===undefined?undefined:this.data.original.id,
@@ -39,7 +39,7 @@ NewJuridical.prototype.getDataSave = function() {
     }
 }
 
-NewJuridical.prototype.createPromise = function()
+NewTypeActivehouse.prototype.createPromise = function()
 {
     var self = this;
     if(this.data === undefined)
@@ -59,7 +59,7 @@ NewJuridical.prototype.createPromise = function()
     }
 }
 
-NewJuridical.prototype.getView = function () {
+NewTypeActivehouse.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
     this.$view = _({
@@ -218,13 +218,13 @@ NewJuridical.prototype.getView = function () {
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;
-        this.type.value = this.data.original.type;
+        // this.type.value = this.data.original.type;
     }
    
     return this.$view;
 }
 
-NewJuridical.prototype.getDataSave = function() {
+NewTypeActivehouse.prototype.getDataSave = function() {
     var temp = {
         name:this.name.value,
         // type:this.type.value,
@@ -234,7 +234,7 @@ NewJuridical.prototype.getDataSave = function() {
     return temp;
 }
 
-NewJuridical.prototype.refresh = function () {
+NewTypeActivehouse.prototype.refresh = function () {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -242,7 +242,7 @@ NewJuridical.prototype.refresh = function () {
         this.setData(data);
 };
 
-NewJuridical.prototype.setData = function (data) {
+NewTypeActivehouse.prototype.setData = function (data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -250,7 +250,7 @@ NewJuridical.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-NewJuridical.prototype.flushDataToView = function () {
+NewTypeActivehouse.prototype.flushDataToView = function () {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -265,8 +265,8 @@ NewJuridical.prototype.flushDataToView = function () {
     }
 };
 
-NewJuridical.prototype.start = function () {
+NewTypeActivehouse.prototype.start = function () {
 
 }
 
-export default NewJuridical;
+export default NewTypeActivehouse;

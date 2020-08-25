@@ -170,6 +170,10 @@ if(isset($data["avatar"]))
     }
 }
 
+if (isset($data["password"])) {
+    $data["password"]=md5($data["password"]."safe.Login.via.normal.HTTP"."000000");
+}
+
 $result = $connector-> insert($prefix."users", $data);
 $data["id"] = $result;
 echo "ok".EncodingClass::fromVariable(array(

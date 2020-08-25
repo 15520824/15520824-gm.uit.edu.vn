@@ -241,7 +241,6 @@ ListAccount.prototype.getView = function () {
         var header = [
         { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
         {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
-        {value:'Tài khoản',sort:true,style:{minWidth:"unset"}},
         {value:'Họ và tên',sort:true,style:{minWidth:"unset"}},
         {value:'Số điện thoại',style:{minWidth:"90px",width:"90px"}} , 
         {value:'Email',sort:true,style:{minWidth:"unset"}},
@@ -319,7 +318,6 @@ ListAccount.prototype.getDataRow = function(data)
     var result = [
         {},
         data.id,
-        data.username,
         {value:data.name,style:{whiteSpace:"nowrap"}},
         data.phone,
         data.email,
@@ -541,24 +539,24 @@ ListAccount.prototype.searchControlContent = function(){
                             //         }
                             //     ]
                             // },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-main-search-control-row-button",
-                                child:[
-                                    {
-                                        tag: "button",
-                                        class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
-                                        on: {
-                                            click: function (evt) {
-                                                temp.reset();
-                                            }
-                                        },
-                                        child: [
-                                        '<span>' + "Thiết lập lại" + '</span>'
-                                        ]
-                                    }
-                                ]
-                            },
+                            // {
+                            //     tag:"div",
+                            //     class:"pizo-list-realty-main-search-control-row-button",
+                            //     child:[
+                            //         {
+                            //             tag: "button",
+                            //             class: ["pizo-list-realty-button-deleteall","pizo-list-realty-button-element"],
+                            //             on: {
+                            //                 click: function (evt) {
+                            //                     temp.reset();
+                            //                 }
+                            //             },
+                            //             child: [
+                            //             '<span>' + "Thiết lập lại" + '</span>'
+                            //             ]
+                            //         }
+                            //     ]
+                            // },
                         ]
                     }
                 ]

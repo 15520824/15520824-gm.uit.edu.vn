@@ -481,6 +481,7 @@ ListRealty.prototype.getView = function () {
     else
     arr.push(moduleDatabase.getModule("activehouses").load());
     arr.push(moduleDatabase.getModule("wards").load());
+    arr.push(moduleDatabase.getModule("type_activehouses").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());

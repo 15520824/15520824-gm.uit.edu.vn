@@ -8,6 +8,7 @@ import { consoleWKT,loaddingWheel ,getGMT,formatDate } from '../component/Format
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
+import { deleteQuestion } from '../component/ModuleView';
 
 
 var _ = Fcore._;
@@ -76,12 +77,13 @@ PlanningInformation.prototype.getView = function () {
                     console.log(file)
                     var extension = file.name.slice((Math.max(0, file.name.lastIndexOf(".")) || Infinity) + 1);
                     var fileText = e.target.result;
-                    if(extension === "json"){
-                        moduleDatabase.getModule("geometry").add({map:fileText}).then(function(value){
-                            loadding.disable();
-                        });
-                    }
-                    else if(extension === "dxf")
+                    // if(extension === "json"){
+                    //     moduleDatabase.getModule("geometry").add({map:fileText}).then(function(value){
+                    //         loadding.disable();
+                    //     });
+                    // }
+                    // else 
+                    if(extension === "dxf")
                     {
                         var parser = new DxfParser();
                         var dxf = null;
@@ -407,8 +409,29 @@ PlanningInformation.prototype.createHashRow = function(data,hash)
 
 PlanningInformation.prototype.saveCurrentDataMap = function()
 {
-     var data = this.createHash(this.polygon);
+    var data = this.createHash(this.polygon);
     var gmt = getGMT();
+    var inputElement = _({
+        tag:"div",
+        class:"pizo-name-commit-planning",
+        child:[
+            {
+                tag:"span",
+                class:"pizo-name-commit-planning-text",
+                props:{
+                    innerHTML:"Chú thích lần commit"
+                }
+            },
+            {
+                tag:"input",
+                class:"pizo-name-commit-planning-input",
+                props:{
+                    value:"Commit vào thời gian "+formatDate(gmt,true,true,true,true,true,true)
+                }
+            }
+        ]
+    });
+
     for(var param in data)
     {
         if(isNaN(param/1)===true)
@@ -433,9 +456,11 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
                     moduleDatabase.getModule("geometry").add({
                         cellLat:cellLat,
                         cellLng:cellLng,
+                        name:input.value,
                         created:param,
                         map:wkt.toString()
                     })
+                   
                 }else
                 {
                     var arr = dataLat[cellLng];
@@ -489,12 +514,24 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
                     arr[i].created = gmt;
                     arr[i] = stringWKT;
                 }
-                promiseAll.push(moduleDatabase.getModule("geometry").add({
-                    cellLat:param,
-                    cellLng:child,
-                    created:gmt,
-                    map:wkt.toString()
-                }))
+                var deleteQuestionCommit = deleteQuestion("Chú thích lần commit",inputElement);
+                this.$view.appendChild(deleteQuestionCommit);
+                    deleteQuestionCommit.promiseComfirm.then(function(result,tempCellLat,tempCellLng,created,mapString,input){
+                        console.log(result,tempCellLat,tempCellLng,created,mapString,input);
+                        // moduleDatabase.getModule("geometry").add({
+                        //     cellLat:tempCellLat,
+                        //     cellLng:tempCellLng,
+                        //     name:input.value,
+                        //     created:created,
+                        //     map:mapString
+                        // })
+                }.bind(null,param,child,gmt,wkt.toString(),inputElement))
+                // promiseAll.push(moduleDatabase.getModule("geometry").add({
+                //     cellLat:param,
+                //     cellLng:child,
+                //     created:gmt,
+                //     map:wkt.toString()
+                // }))
             }
             var x = data[param];
             delete data[param];
@@ -621,7 +658,6 @@ PlanningInformation.prototype.addEventPolygon = function(polygon)
 
 PlanningInformation.prototype.selectPolygonFunction = function(bns){
     this.removeAllSelect();
-    console.log(bns)
     if(this.editPolygon!==undefined)
     this.editPolygon.toInActive(this);
     var path = [];

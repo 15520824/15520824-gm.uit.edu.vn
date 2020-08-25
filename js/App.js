@@ -196,6 +196,10 @@ App.prototype.getView = function()
                                                 {
                                                     text:"Thông tin quy hoạch",
                                                     pageIndex:26
+                                                },
+                                                {
+                                                    text:"Thông tin quy hoạch chú thích",
+                                                    pageIndex:27
                                                 }
                                             ]
                                         },
@@ -441,6 +445,13 @@ App.prototype.openPage = function(index){
             this.body.activeFrame(frameview);
         break;
         case 26:
+            var mPlanningInformation = new PlanningInformation();
+            mPlanningInformation.attach(this);
+            var frameview = mPlanningInformation.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+        break;
+        case 27:
             var mPlanningInformation = new PlanningInformation();
             mPlanningInformation.attach(this);
             var frameview = mPlanningInformation.getView();

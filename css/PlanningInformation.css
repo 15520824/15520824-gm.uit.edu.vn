@@ -62,3 +62,22 @@
 .pizo-list-realty-main-search-control-row-selectbox-plan-input .absol-selectbox-item-text span  {
     line-height: 24px;
 }
+
+.pizo-name-commit-planning-text{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.pizo-name-commit-planning-input{
+    padding: 0.4286rem;
+    border: solid 0.0714rem var(--color-input-color);
+    min-width:400px;
+    display: inline-block;
+    font-size: 1.01rem;
+}
+
+.gmnoprint{
+    transform: scale(1.58);
+    left: 196px;
+    top: 13px;
+}

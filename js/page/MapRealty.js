@@ -151,6 +151,7 @@ MapRealty.prototype.getView = function () {
     this.mapView = mapView;
     var arr = [];
     arr.push(moduleDatabase.getModule("wards").load());
+    arr.push(moduleDatabase.getModule("type_activehouses").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());
@@ -172,6 +173,7 @@ MapRealty.prototype.getView = function () {
         this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         this.checkequipment = moduleDatabase.getModule("equipments").getLibary("id");
         this.checkJuridical = moduleDatabase.getModule("juridicals").getLibary("id");
+        this.checkTypeHouse = moduleDatabase.getModule("type_activehouses").getList("id");
         this.$view.addChild(_({
             tag:"div",
             class:["pizo-list-plan-main"],
@@ -411,6 +413,34 @@ MapRealty.prototype.mediaItem = function(data,index)
     return temp;
 }
 
+MapRealty.prototype.requestEdit = function (data) {
+    var self = this;
+    var mNewRealty = new NewRealty(data);
+    mNewRealty.attach(self.parent);
+    mNewRealty.setRequestEdit();
+    mNewRealty.setDataListAccount(self.listAccoutData);
+    mNewRealty.setDataListContact(self.listContactData);
+    var frameview = mNewRealty.getView();
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.requestEditDB(mNewRealty, data);
+}
+
+MapRealty.prototype.requestEditDB = function (data) {
+    var self = this
+    mNewRealty.promiseEditDB.then(function (value) {
+        moduleDatabase.getModule("inactivehouses").update(value).then(function (result) {
+            self.editView(value, data);
+        })
+        mNewRealty.promiseEditDB = undefined;
+        setTimeout(function () {
+            if (mNewRealty.promiseEditDB !== undefined)
+                self.requestEditDB(mNewRealty, data);
+        }, 10);
+    })
+}
+
+
 MapRealty.prototype.edit = function (data) {
     var self = this;
     var mNewRealty = new NewRealty(data);
@@ -423,32 +453,6 @@ MapRealty.prototype.edit = function (data) {
     self.editDB(mNewRealty, data);
 }
 
-MapRealty.prototype.requestEdit = function (data) {
-    var self = this;
-    var mNewRealty = new NewRealty(data);
-    mNewRealty.attach(self.parent);
-    mNewRealty.setRequestEdit();
-    mNewRealty.setDataListAccount(self.listAccoutData);
-    mNewRealty.setDataListContact(self.listContactData);
-    var frameview = mNewRealty.getView();
-    self.parent.body.addChild(frameview);
-    self.parent.body.activeFrame(frameview);
-    self.editDB(mNewRealty, data);
-}
-
-MapRealty.prototype.requestEditDB = function (data) {
-    var self = this
-    mNewRealty.promiseEditDB.then(function (value) {
-        moduleDatabase.getModule("inactivehouses").update(value).then(function (result) {
-            self.editView(value, data);
-        })
-        mNewRealty.promiseEditDB = undefined;
-        setTimeout(function () {
-            if (mNewRealty.promiseEditDB !== undefined)
-                self.editDB(mNewRealty, data);
-        }, 10);
-    })
-}
 
 MapRealty.prototype.editDB = function (mNewRealty, data) {
     var self = this
@@ -2668,12 +2672,7 @@ MapRealty.prototype.detailHouse = function (data) {
                                                         tag: "selectmenu",
                                                         class: "pizo-new-realty-detruct-content-type",
                                                         props: {
-                                                            items: [
-                                                                { text: "Chưa xác định", value:0},
-                                                                { text: "Hẻm", value: 1 },
-                                                                { text: "Mặt tiền", value: 2 },
-                                                                { text: "Chung cư", value: 3 },
-                                                            ]
+                                                            items: moduleDatabase.getModule("type_activehouses").getList("name","id")
                                                         }
                                                     },
                                                 ]
@@ -2942,21 +2941,9 @@ MapRealty.prototype.itemMap = function(marker){
     var type;
     var diffTime = Math.abs(new Date() - new Date(data.created));
     var date = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    switch(parseInt(data.type))
-    {
-        case 0:
-            type = "Chưa xác định";
-            break;
-        case 1:
-            type = "Hẻm";
-            break;
-        case 2:
-            type = "Mặt tiền";
-            break;
-        case 3:
-            type = "Chung cư";
-            break;
-    }
+    type = this.checkTypeHouse[parseInt(data.type)];
+    if(type!==undefined)
+    type = type.name;
     var fullAddress = "";
     if(data.addressid!=0)
     {

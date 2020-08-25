@@ -8,7 +8,7 @@ import { getIDCompair, getGMT, getNameCompair } from '../component/FormatFunctio
 import { locationView } from "./MapView";
 import xmlModalDragImage from './modal_drag_drop_image';
 import moduleDatabase from '../component/ModuleDatabase';
-
+import { confirmQuestion } from './ModuleView';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -18,6 +18,10 @@ function NewAccount(data) {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     this.data = data;
+    if(data!==undefined)
+    this.textHeader = "Sửa ";
+    else
+    this.textHeader = "Thêm ";
 }
 
 NewAccount.prototype.setContainer = function(parent)
@@ -77,7 +81,7 @@ NewAccount.prototype.getView = function (dataParent) {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML: "Thêm tài khoản"
+                            innerHTML: this.textHeader+" tài khoản"
                         }
                     },
                     {
@@ -105,8 +109,12 @@ NewAccount.prototype.getView = function (dataParent) {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        self.resolveDB(self.getDataSave());
-                                        self.createPromise();
+                                        var tempData = self.getDataSave();
+                                        if(tempData!==undefined)
+                                        {
+                                            self.resolveDB();
+                                            self.createPromise();
+                                        }
                                     }
                                 },
                                 child: [
@@ -118,11 +126,14 @@ NewAccount.prototype.getView = function (dataParent) {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-
-                                        self.resolveDB(self.getDataSave());
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                        var tempData = self.getDataSave();
+                                        if(tempData!==undefined)
+                                        {
+                                            self.resolveDB(self.getDataSave());
+                                            self.$view.selfRemove();
+                                            var arr = self.parent.body.getAllChild();
+                                            self.parent.body.activeFrame(arr[arr.length - 1]);
+                                        }
                                     }
                                 },
                                 child: [
@@ -362,22 +373,22 @@ NewAccount.prototype.getView = function (dataParent) {
                             child:[
                                 {
                                     tag:"div",
-                                    class:"pizo-new-account-container-username",
+                                    class:"pizo-new-account-container-name",
                                     child:[
                                         {
                                             tag:"div",
-                                            class:"pizo-new-account-container-username-container",
+                                            class:"pizo-new-account-container-name-container",
                                             child:[
                                                 {
                                                     tag:"span",
-                                                    class:"pizo-new-account-container-username-container-label",
+                                                    class:"pizo-new-account-container-name-container-label",
                                                     props:{
-                                                        innerHTML:"Tài khoản đăng nhập"
+                                                        innerHTML:"Họ và tên"
                                                     }
                                                 },
                                                 {
                                                     tag:"input",
-                                                    class:["pizo-new-account-container-username-container-input","pizo-new-realty-dectruct-input"],
+                                                    class:["pizo-new-account-container-name-container-input","pizo-new-realty-dectruct-input"],
                                                     on:{
                                                     }
                                                 }
@@ -385,6 +396,131 @@ NewAccount.prototype.getView = function (dataParent) {
                                         }
                                     ]
                                 },
+                                {
+                                    tag:"div",
+                                    class:"pizo-new-account-container-email",
+                                    child:[
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-account-container-email-container",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    class:"pizo-new-account-container-email-container-label",
+                                                    props:{
+                                                        innerHTML:"Email"
+                                                    }
+                                                },
+                                                {
+                                                    tag:"input",
+                                                    class:["pizo-new-account-container-email-container-input","pizo-new-realty-dectruct-input"],
+                                                    on:{
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    tag:"div",
+                                    class:"pizo-new-account-container-phone-birthday-gender",
+                                    child:[
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-account-container-phone",
+                                            child:[
+                                                {
+                                                    tag:"div",
+                                                    class:"pizo-new-account-container-phone-container",
+                                                    child:[
+                                                        {
+                                                            tag:"span",
+                                                            class:"pizo-new-account-container-phone-container-label",
+                                                            props:{
+                                                                innerHTML:"Số điện thoại"
+                                                            },
+                                                            child:[
+                                                                {
+                                                                    tag: "span",
+                                                                    class: "pizo-new-realty-location-detail-row-label-important",
+                                                                    props: {
+                                                                        innerHTML: "*"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            tag:"input",
+                                                            class:["pizo-new-account-container-phone-container-input","pizo-new-realty-dectruct-input"],
+                                                            props:{
+                                                                type:"number"
+                                                            },
+                                                            on:{
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-account-container-birthday",
+                                            child:[
+                                                {
+                                                    tag:"div",
+                                                    class:"pizo-new-account-container-birthday-container",
+                                                    child:[
+                                                        {
+                                                            tag:"span",
+                                                            class:"pizo-new-account-container-birthday-container-label",
+                                                            props:{
+                                                                innerHTML:"Ngày sinh"
+                                                            }
+                                                        },
+                                                        {
+                                                            tag: 'calendar-input',
+                                                            data: {
+                                                                anchor: 'top',
+                                                                value: new Date(new Date().getFullYear(), 0, 1),
+                                                                maxDateLimit: new Date()
+                                                            },
+                                                            on: {
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-account-container-gender",
+                                            child:[
+                                                {
+                                                    tag:"div",
+                                                    class:"pizo-new-account-container-gender-container",
+                                                    child:[
+                                                        {
+                                                            tag:"span",
+                                                            class:"pizo-new-account-container-gender-container-label",
+                                                            props:{
+                                                                innerHTML:"Giới tính"
+                                                            }
+                                                        },
+                                                        {
+                                                            tag:"selectmenu",
+                                                            props:{
+                                                                items:[
+                                                                    {text:"Nam",value:"Nam"},
+                                                                    {text:"Nữ",value:"Nữ"}
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },   
                                 {
                                     tag:"div",
                                     class:"pizo-new-account-container-change-password",
@@ -477,148 +613,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                             ]
                                         }
                                     ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-account-container-name",
-                                    child:[
-                                        {
-                                            tag:"div",
-                                            class:"pizo-new-account-container-name-container",
-                                            child:[
-                                                {
-                                                    tag:"span",
-                                                    class:"pizo-new-account-container-name-container-label",
-                                                    props:{
-                                                        innerHTML:"Họ và tên"
-                                                    }
-                                                },
-                                                {
-                                                    tag:"input",
-                                                    class:["pizo-new-account-container-name-container-input","pizo-new-realty-dectruct-input"],
-                                                    on:{
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-account-container-email",
-                                    child:[
-                                        {
-                                            tag:"div",
-                                            class:"pizo-new-account-container-email-container",
-                                            child:[
-                                                {
-                                                    tag:"span",
-                                                    class:"pizo-new-account-container-email-container-label",
-                                                    props:{
-                                                        innerHTML:"Email"
-                                                    }
-                                                },
-                                                {
-                                                    tag:"input",
-                                                    class:["pizo-new-account-container-email-container-input","pizo-new-realty-dectruct-input"],
-                                                    on:{
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-account-container-phone-birthday-gender",
-                                    child:[
-                                        {
-                                            tag:"div",
-                                            class:"pizo-new-account-container-phone",
-                                            child:[
-                                                {
-                                                    tag:"div",
-                                                    class:"pizo-new-account-container-phone-container",
-                                                    child:[
-                                                        {
-                                                            tag:"span",
-                                                            class:"pizo-new-account-container-phone-container-label",
-                                                            props:{
-                                                                innerHTML:"Số điện thoại"
-                                                            }
-                                                        },
-                                                        {
-                                                            tag:"input",
-                                                            class:["pizo-new-account-container-phone-container-input","pizo-new-realty-dectruct-input"],
-                                                            props:{
-                                                                type:"number"
-                                                            },
-                                                            on:{
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            tag:"div",
-                                            class:"pizo-new-account-container-birthday",
-                                            child:[
-                                                {
-                                                    tag:"div",
-                                                    class:"pizo-new-account-container-birthday-container",
-                                                    child:[
-                                                        {
-                                                            tag:"span",
-                                                            class:"pizo-new-account-container-birthday-container-label",
-                                                            props:{
-                                                                innerHTML:"Ngày sinh"
-                                                            }
-                                                        },
-                                                        {
-                                                            tag: 'calendar-input',
-                                                            data: {
-                                                                anchor: 'top',
-                                                                value: new Date(new Date().getFullYear(), 0, 1),
-                                                                maxDateLimit: new Date()
-                                                            },
-                                                            on: {
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            tag:"div",
-                                            class:"pizo-new-account-container-gender",
-                                            child:[
-                                                {
-                                                    tag:"div",
-                                                    class:"pizo-new-account-container-gender-container",
-                                                    child:[
-                                                        {
-                                                            tag:"span",
-                                                            class:"pizo-new-account-container-gender-container-label",
-                                                            props:{
-                                                                innerHTML:"Giới tính"
-                                                            }
-                                                        },
-                                                        {
-                                                            tag:"selectmenu",
-                                                            props:{
-                                                                items:[
-                                                                    {text:"Nam",value:"Nam"},
-                                                                    {text:"Nữ",value:"Nữ"}
-                                                                ]
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },         
+                                },      
                                 {
                                     tag:"div",
                                     class:"pizo-new-account-container-avatar",
@@ -961,12 +956,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         }
                                                     ]
                                                 },
-                                            ]
-                                        },
-                                        {
-                                            tag:"div",
-                                            class:["pizo-new-account-container-permission-4","pizo-new-account-container-permission-child"],
-                                            child:[
                                                 {
                                                     tag: "div",
                                                     class: "pizo-new-realty-desc-detail-row-permission",
@@ -984,6 +973,12 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         }
                                                     ]
                                                 },
+                                            ]
+                                        },
+                                        {
+                                            tag:"div",
+                                            class:["pizo-new-account-container-permission-4","pizo-new-account-container-permission-child"],
+                                            child:[
                                                 {
                                                     tag: "div",
                                                     class: "pizo-new-realty-desc-detail-row-permission",
@@ -1004,9 +999,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 {
                                                     tag: "div",
                                                     class: "pizo-new-realty-desc-detail-row-permission",
-                                                    style:{
-                                                        width:"55%"
-                                                    },
                                                     child: [
                                                         {
                                                             tag: "span",
@@ -1021,6 +1013,14 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         }
                                                     ]
                                                 },
+                                                {
+                                                    tag: "div",
+                                                    class: "pizo-new-realty-desc-detail-row-permission",
+                                                },
+                                                {
+                                                    tag: "div",
+                                                    class: "pizo-new-realty-desc-detail-row-permission",
+                                                }
                                             ]
                                         },
                                     ]
@@ -2394,7 +2394,6 @@ NewAccount.prototype.getView = function (dataParent) {
     }.bind(this))
 
     this.name = $('input.pizo-new-account-container-name-container-input',this.$view);
-    this.username = $('input.pizo-new-account-container-username-container-input',this.$view);
     this.email = $('input.pizo-new-account-container-email-container-input',this.$view);
     this.phone = $('input.pizo-new-account-container-phone-container-input',this.$view);
     this.birthday = $('div.pizo-new-account-container-birthday-container div',this.$view);
@@ -2405,11 +2404,13 @@ NewAccount.prototype.getView = function (dataParent) {
     // this.permission = $('div.pizo-new-account-container-permission-container label.absol-switch',this.$view);
     this.avatar = $("img.pizo-new-account-container-avatar-container-image-content",this.$view);
     container = $("div.pizo-new-account-container-password",self.$view);
+    this.containerPassword = container;
+    this.newPassWord = $('input.pizo-new-account-container-password-container-input-new',this.$view);
+    this.confirmPassWord = $('input.pizo-new-account-container-password-container-input-new-confirm',this.$view);
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;
-        this.username.value = this.data.original.username;
-        this.username.setAttribute("disabled","");
+        this.phone.setAttribute("disabled","");
         this.email.value = this.data.original.email;
         this.phone.value = this.data.original.phone;
         this.birthday.value = new Date(this.data.original.birthday);
@@ -2508,9 +2509,15 @@ NewAccount.prototype.itemAddressOld = function(data = {addressid_old:0})
 NewAccount.prototype.getDataSave = function() {
     var avatar = this.avatar.src;
     avatar = avatar.replace("https://lab.daithangminh.vn/home_co/pizo/assets/avatar/","");
+    var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+    if(vnf_regex.test(this.phone.value) == false)
+    {
+        var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại chưa đúng vui lòng kiểm tra lại!");
+        this.$view.addChild(deleteItem);
+        return;
+    }
     var temp = {
         name:this.name.value,
-        username:this.username.value,
         email:this.email.value,
         phone:this.phone.value,
         birthday: getGMT(this.birthday.value,new Date().getTimezoneOffset()/-60,true),
@@ -2520,7 +2527,18 @@ NewAccount.prototype.getDataSave = function() {
         // permission:this.permission.checked?1:0,
         avatar:avatar
     }
-
+    if(this.containerPassword.style.display == "unset")
+    {
+        if(this.newPassWord.value=="" ||this.newPassWord.value !== this.confirmPassWord.value)
+        {
+            var deleteItem = confirmQuestion("Xác nhận mật khẩu", "Mật khẩu xác nhận chưa đúng vui lòng kiểm tra lại!");
+            this.$view.addChild(deleteItem);
+            return;
+        }else
+        {
+            temp.password = this.newPassWord.value;
+        }
+    }
     if(this.address.data!==undefined){
         var address = {};
         var data = this.address.data;
