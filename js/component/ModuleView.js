@@ -2457,12 +2457,15 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     cell.addChild(container);
     cell.checkLeft();
 
-    if (data.element === undefined) {
+    if (data.element !== undefined) {
+        container.appendChild(data.element);
+    } else if(data.adapter !== undefined)
+    {
+        container.appendChild(data.adapter());
+    }
+    else {
         if(this.check[j]!=="dragzone"&&this.check[j]!=="check"&&this.check[j]!=="deltail")
         container.addChild(_({ text: value }))
-
-    } else {
-        container.appendChild(data.element);
     }
 
     if (bonus !== undefined) {

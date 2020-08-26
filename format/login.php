@@ -14,7 +14,7 @@ if ($connector == null) {
 }
 
 $connector ->db -> set_charset("utf8");
-
+var_dump($_POST);
 if (isset($_POST["name"])) {
     $tableName=$_POST["name"];
 }else
