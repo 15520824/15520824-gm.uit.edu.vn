@@ -2461,7 +2461,9 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
         container.appendChild(data.element);
     } else if(data.adapter !== undefined)
     {
-        container.appendChild(data.adapter());
+        var tempAdapter = data.adapter();
+        container.appendChild(tempAdapter);
+        data.element = tempAdapter;
     }
     else {
         if(this.check[j]!=="dragzone"&&this.check[j]!=="check"&&this.check[j]!=="deltail")

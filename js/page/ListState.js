@@ -304,7 +304,7 @@ ListState.prototype.getDataRow = function(data)
         {},
         data.id,
         data.name,
-        {adapter:function(longname){ return _({text:longname})}.bind(this,this.checkNation[parseInt(data.nationid)].longname)},
+        this.checkNation[parseInt(data.nationid)].longname,
         {}
         ]
         result.original = data;

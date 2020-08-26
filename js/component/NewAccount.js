@@ -1506,7 +1506,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                             tag:"span",
                                             class:"pizo-new-account-container-prermission-container-label",
                                             props:{
-                                                innerHTML:"Tài khoản"
+                                                innerHTML:"Phường/ xã"
                                             }
                                         },
                                         {
@@ -1911,7 +1911,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                             tag:"span",
                                             class:"pizo-new-account-container-prermission-container-label",
                                             props:{
-                                                innerHTML:"Tài khoản"
+                                                innerHTML:"Nhập xuất dữ liệu"
                                             }
                                         },
                                         {
@@ -1922,7 +1922,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                     tag: "span",
                                                     class: "pizo-new-realty-desc-detail-row-cell-menu-ultra-span",
                                                     props: {
-                                                        innerHTML: "Danh sách"
+                                                        innerHTML: "Nhập dữ liệu"
                                                     }
                                                 },
                                                 {
@@ -1939,7 +1939,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                     tag: "span",
                                                     class: "pizo-new-realty-desc-detail-row-cell-menu-ultra-span",
                                                     props: {
-                                                        innerHTML: "Thêm"
+                                                        innerHTML: "Xuất dữ liệu"
                                                     }
                                                 },
                                                 {
@@ -1952,34 +1952,12 @@ NewAccount.prototype.getView = function (dataParent) {
                                             tag: "div",
                                             class: "pizo-new-realty-desc-detail-row-permission",
                                             child: [
-                                                {
-                                                    tag: "span",
-                                                    class: "pizo-new-realty-desc-detail-row-cell-menu-ultra-span",
-                                                    props: {
-                                                        innerHTML: "Sửa"
-                                                    }
-                                                },
-                                                {
-                                                    tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
-                                                }
                                             ]
                                         },
                                         {
                                             tag: "div",
                                             class: "pizo-new-realty-desc-detail-row-permission",
                                             child: [
-                                                {
-                                                    tag: "span",
-                                                    class: "pizo-new-realty-desc-detail-row-cell-menu-ultra-span",
-                                                    props: {
-                                                        innerHTML: "Xóa"
-                                                    }
-                                                },
-                                                {
-                                                    tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
-                                                }
                                             ]
                                         },
                                     ]
