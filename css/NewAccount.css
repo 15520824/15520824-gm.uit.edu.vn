@@ -313,3 +313,7 @@ input:checked+.absol-switch-slider:before{
     align-items: stretch;
     align-items: center;
   }
+
+.absol-selectbox-item.selectedIItem{
+    background-color: #4e618d;
+}

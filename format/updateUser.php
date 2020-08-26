@@ -24,6 +24,7 @@ if (isset($_POST["name"])) {
 
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
+    if(isset($_POST["birthday"]))
     $data["birthday"] = new DateTime($data["birthday"]);
 }else
 {
@@ -172,6 +173,10 @@ if(isset($data["avatar"]))
 
 if (isset($data["password"])) {
     $data["password"]=md5($data["password"]."safe.Login.via.normal.HTTP"."000000");
+}
+
+if (isset($data["permission"])) {
+    var_dump($data["permission"]);
 }
 
 $result = $connector-> update($prefix."users", $data);

@@ -689,14 +689,15 @@ ListAccount.prototype.edit = function(data,parent,index)
 ListAccount.prototype.editDB = function(mNewAccount,data,parent,index){
     var self = this;
     mNewAccount.promiseEditDB.then(function(value){
-        value.id = data.original.id;
         moduleDatabase.getModule("users").update(value).then(function(result){
             self.editView(value,data,parent,index);
         })
         mNewAccount.promiseEditDB = undefined;
         setTimeout(function(){
         if(mNewAccount.promiseEditDB!==undefined)
+        {
             self.editDB(mNewAccount,data,parent,index);
+        }
         },10);
     })
 }

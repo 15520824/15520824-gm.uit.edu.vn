@@ -110,9 +110,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                 on: {
                                     click: function (evt) {
                                         var tempData = self.getDataSave();
+                                        console.log(tempData)
                                         if(tempData!==undefined)
                                         {
-                                            self.resolveDB();
+                                            // self.resolveDB(tempData);
                                             self.createPromise();
                                         }
                                     }
@@ -129,7 +130,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                         var tempData = self.getDataSave();
                                         if(tempData!==undefined)
                                         {
-                                            self.resolveDB(self.getDataSave());
+                                            self.resolveDB(tempData);
                                             self.$view.selfRemove();
                                             var arr = self.parent.body.getAllChild();
                                             self.parent.body.activeFrame(arr[arr.length - 1]);
@@ -202,6 +203,7 @@ NewAccount.prototype.getView = function (dataParent) {
                     if(self.checkStateDistrict[x]!==undefined);
                     district.items = [{text:"Tất cả",value:0}].concat(self.checkStateDistrict[x]);
                 }
+                self.resetPermission();
                 district.emit("change");
             }
         }
@@ -230,6 +232,8 @@ NewAccount.prototype.getView = function (dataParent) {
                     }    
                 }
                 ward.emit("change");
+                if(event!==undefined)
+                self.addPermissionParent({districtid:x});
             }
         }
     });
@@ -258,6 +262,8 @@ NewAccount.prototype.getView = function (dataParent) {
                     street.items = [{text:"Tất cả",value:0}].concat(self.checkWardStreet[x]);
                 })
                 street.emit("change");
+                if(event!==undefined)
+                self.addPermissionParent({wardid:x});
             }
         }
     });
@@ -271,6 +277,9 @@ NewAccount.prototype.getView = function (dataParent) {
         on:{
             change:function(event)
             {
+                self.resetPermissionChoice();
+                if(event!==undefined)
+                self.addPermissionParent({streetid:x});
             }
         }
     });
@@ -290,17 +299,14 @@ NewAccount.prototype.getView = function (dataParent) {
                     {
                         street.value = dataTemp["streetid"];
                         street.emit("change");
-                        dataTemp = self.checkStreet[getIDCompair(dataTemp["streetid"])];
 
-                        ward.value = self.checkWard[dataTemp.wardid].name +"_"+ dataTemp.wardid;
+                        ward.value = dataTemp["wardid"];
                         ward.emit("change"); 
-                        dataTemp = self.checkWard[dataTemp.wardid];
 
-                        district.value = self.checkDistrict[dataTemp.districtid].name +"_"+ dataTemp.districtid;
+                        district.value = dataTemp["districtid"];
                         district.emit("change"); 
-                        dataTemp = self.checkDistrict[dataTemp.districtid];
 
-                        state.value = self.checkState[dataTemp.stateid].name +"_"+ dataTemp.stateid;
+                        state.value = dataTemp["stateid"];
                         state.emit("change"); 
 
                     }else
@@ -309,30 +315,21 @@ NewAccount.prototype.getView = function (dataParent) {
                         {
                             ward.value = dataTemp["wardid"];
                             ward.emit("change");
-                            dataTemp = self.checkWard[getIDCompair(dataTemp["wardid"])];
 
-                            district.value = self.checkDistrict[dataTemp.districtid].name +"_"+ dataTemp.districtid;
+                            district.value = dataTemp["districtid"];
                             district.emit("change"); 
-                            dataTemp = self.checkDistrict[dataTemp.districtid];
-
-                            state.value = self.checkState[dataTemp.stateid].name +"_"+ dataTemp.stateid;
+    
+                            state.value = dataTemp["stateid"];
                             state.emit("change"); 
-
-                            street.value = 0;
-                            street.emit("change");
                         }else
                         {
                             if(dataTemp["districtid"]!==undefined)
                             {
                                 district.value = dataTemp["districtid"];
                                 district.emit("change");
-                                dataTemp = self.checkDistrict[getIDCompair(dataTemp["districtid"])];
-                                
-                                state.value = self.checkState[dataTemp.stateid].name +"_"+ dataTemp.stateid;
-                                state.emit("change"); 
 
-                                ward.value = 0;
-                                ward.emit("change");
+                                state.value = dataTemp["stateid"];
+                                state.emit("change"); 
                             }else
                             {
                                 if(dataTemp["stateid"]!==undefined)
@@ -350,6 +347,17 @@ NewAccount.prototype.getView = function (dataParent) {
                             }
                         }
                     }
+                    var objectPermission = self.checkPermission[element.data.value];
+                    for(var i = 0;i<objectPermission.length;i++)
+                    {
+                        $("div.checkbox_"+objectPermission[i],self.$view).checked = true;
+                    }
+                    var selected = $("div.absol-selectbox-item.selectedIItem",selectPermission);
+                    if(selected!==undefined)
+                    {
+                        selected.classList.remove("selectedIItem");
+                    }
+                    element.classList.add("selectedIItem");
                 }
             }
         },
@@ -770,7 +778,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_56"],
                                                         }
                                                     ]
                                                 },
@@ -787,7 +795,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_57"],
                                                         }
                                                     ]
                                                 },
@@ -804,7 +812,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_58"],
                                                         }
                                                     ]
                                                 },
@@ -821,7 +829,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_59"],
                                                         }
                                                     ]
                                                 },
@@ -844,7 +852,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_60"],
                                                         }
                                                     ]
                                                 },
@@ -861,7 +869,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_61"],
                                                         }
                                                     ]
                                                 },
@@ -878,7 +886,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_62"],
                                                         }
                                                     ]
                                                 },
@@ -895,7 +903,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_63"],
                                                         }
                                                     ]
                                                 },
@@ -918,7 +926,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_64"],
                                                         }
                                                     ]
                                                 },
@@ -935,7 +943,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_65"],
                                                         }
                                                     ]
                                                 },
@@ -952,7 +960,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_66"],
                                                         }
                                                     ]
                                                 },
@@ -969,7 +977,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_67"],
                                                         }
                                                     ]
                                                 },
@@ -992,7 +1000,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_68"],
                                                         }
                                                     ]
                                                 },
@@ -1004,12 +1012,12 @@ NewAccount.prototype.getView = function (dataParent) {
                                                             tag: "span",
                                                             class: "pizo-new-realty-desc-detail-row-cell-menu-ultra-span",
                                                             props: {
-                                                                innerHTML: "Đồng ý/Từ chối"
+                                                                innerHTML: "Xác nhận chỉnh sửa"
                                                             }
                                                         },
                                                         {
                                                             tag: "checkbox",
-                                                            class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                            class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_69"],
                                                         }
                                                     ]
                                                 },
@@ -1062,7 +1070,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_1"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1079,7 +1111,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_2"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1096,7 +1131,11 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_3"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
+
                                                 }
                                             ]
                                         },
@@ -1113,7 +1152,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_4"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1143,7 +1185,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_5"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1160,7 +1226,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_6"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1177,7 +1246,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_7"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1194,7 +1266,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_8"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1224,7 +1299,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_9"],
+                                                    on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1241,7 +1340,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_10"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1258,7 +1360,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_11"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1275,7 +1380,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_12"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1305,7 +1413,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_49"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1322,7 +1454,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_50"]
                                                 }
                                             ]
                                         },
@@ -1360,7 +1492,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_13"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1377,7 +1533,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_14"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1394,7 +1553,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_15"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1411,7 +1573,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_16"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1441,7 +1606,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_17"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1458,7 +1647,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_18"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1475,7 +1667,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_19"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1492,7 +1687,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_20"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1522,7 +1720,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_21"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1539,7 +1761,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_22"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1556,7 +1781,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_23"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1573,7 +1801,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_24"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1603,7 +1834,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_25"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1620,7 +1875,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_26"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1637,7 +1895,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_27"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1654,7 +1915,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_28"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1684,7 +1948,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_29"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1701,7 +1989,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_30"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1718,7 +2009,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_31"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1735,7 +2029,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_32"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1765,7 +2062,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_33"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1782,7 +2103,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_34"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1799,7 +2123,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_35"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1816,7 +2143,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_36"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1846,7 +2176,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_37"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1863,7 +2217,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_38"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1880,7 +2237,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_39"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1897,7 +2257,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_40"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -1927,7 +2290,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_51"]
                                                 }
                                             ]
                                         },
@@ -1944,7 +2307,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_52"]
                                                 }
                                             ]
                                         },
@@ -1986,7 +2349,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_53"]
                                                 }
                                             ]
                                         },
@@ -2003,7 +2366,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_54"]
                                                 }
                                             ]
                                         },
@@ -2020,7 +2383,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_55"]
                                                 }
                                             ]
                                         },
@@ -2054,7 +2417,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_41"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -2071,7 +2458,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_42"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -2088,7 +2478,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_43"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -2105,7 +2498,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_44"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -2135,7 +2531,31 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_45"],
+                                                   on:{
+                                                        click:function(event)
+                                                        {
+                                                            if(this.checked == false)
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = true;
+                                                                }
+                                                            }else
+                                                            {
+                                                                var index = parseInt(getIDCompair(this.classList[2]))
+                                                                for(var i = 0;i<3;i++)
+                                                                {
+                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
+                                                                    if(elementTemp!==undefined)
+                                                                    elementTemp.disabled = false;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         },
@@ -2152,7 +2572,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_46"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -2169,7 +2592,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_47"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -2186,7 +2612,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 },
                                                 {
                                                     tag: "checkbox",
-                                                    class: "pizo-new-realty-desc-detail-row-menu-1-checkbox"
+                                                    class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_48"],
+                                                    props:{
+                                                        disabled : true
+                                                    }
                                                 }
                                             ]
                                         },
@@ -2277,6 +2706,14 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 {
                                                     var indexValue;
                                                     var itemValue;
+                                                    var objectPermission = [];
+                                                    for(var  i = 56;i<69;i++)
+                                                    {
+                                                        if($("div.checkbox_"+i,self.$view).checked == true)
+                                                        {
+                                                            objectPermission.push(i);
+                                                        }
+                                                    }
                                                     if(street.value == 0)
                                                     {
                                                         if(ward.value == 0)
@@ -2300,7 +2737,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                                 }
                                                             }else
                                                             {
-                                                                indexValue = '{"districtid":"'+district.value+'"}';
+                                                                indexValue = '{"stateid":"'+state.value+'","districtid":"'+district.value+'"}';
                                                                 itemValue = {
                                                                     text:getNameCompair(district.value),
                                                                     value:indexValue
@@ -2308,7 +2745,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                             }
                                                         }else
                                                         {
-                                                            indexValue = '{"wardid":"'+ward.value+'"}';
+                                                            indexValue = '{"stateid":"'+state.value+'","districtid":"'+district.value+'","wardid":"'+ward.value+'"}';
                                                             itemValue = {
                                                                 text:getNameCompair(ward.value),
                                                                 value:indexValue
@@ -2316,7 +2753,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         }
                                                     }else
                                                     {
-                                                        indexValue = '{"streetid":"'+street.value+'"}';
+                                                        indexValue = '{"stateid":"'+state.value+'","districtid":"'+district.value+'","wardid":"'+ward.value+'","streetid":"'+street.value+'"}';
                                                         itemValue = {
                                                             text:getNameCompair(street.value),
                                                             value:indexValue
@@ -2329,6 +2766,23 @@ NewAccount.prototype.getView = function (dataParent) {
                                                         selectPermission.items = selectPermission.items;
                                                         selectPermission.values = selectPermission.values;
                                                     }
+
+                                                    var selected = $("div.absol-selectbox-item.selectedIItem",selectPermission);
+                                                    if(selected!==undefined)
+                                                    {
+                                                        selected.classList.remove("selectedIItem");
+                                                    }
+                                                    var arrayItem = selectPermission.getElementsByClassName("absol-selectbox-item");
+                                                    for(var i = 0;i<arrayItem.length;i++)
+                                                    {
+                                                        if(arrayItem[i].data.value == indexValue)
+                                                        {
+                                                            arrayItem[i].classList.add("selectedIItem");
+                                                            break;
+                                                        }
+                                                    }
+
+                                                    self.checkPermission[indexValue] = objectPermission;
                                                 }
                                             },
                                             props:{
@@ -2368,9 +2822,10 @@ NewAccount.prototype.getView = function (dataParent) {
         this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         this.checkState = moduleDatabase.getModule("states").getLibary("id");
         this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
+        this.checkPermission = [];
 
     }.bind(this))
-
+    this.selectPermission = selectPermission;
     this.name = $('input.pizo-new-account-container-name-container-input',this.$view);
     this.email = $('input.pizo-new-account-container-email-container-input',this.$view);
     this.phone = $('input.pizo-new-account-container-phone-container-input',this.$view);
@@ -2484,6 +2939,72 @@ NewAccount.prototype.itemAddressOld = function(data = {addressid_old:0})
 }
 
 
+NewAccount.prototype.resetPermission = function()
+{
+    for(var i = 56;i<70;i++)
+    {
+        if($("div.checkbox_"+i,this.$view).checked == true)
+        $("div.checkbox_"+i,this.$view).checked = false;
+    }
+}
+
+NewAccount.prototype.resetPermissionChoice = function()
+{
+    var selected = $("div.absol-selectbox-item.selectedIItem",this.selectPermission);
+    if(selected!==undefined)
+    {
+        selected.classList.remove("selectedIItem");
+    }
+}
+
+NewAccount.prototype.addPermissionParent = function(objectChild)
+{
+    for(var param in this.checkPermission)
+    {
+        if(this.checkPermissionParent(objectChild,JSON.parse(param)))
+        {
+            console.log(objectChild,JSON.parse(param))
+        }
+    }
+}
+
+NewAccount.prototype.checkPermissionParent = function(objectChild,objectParent)
+{
+    if(objectChild["streetid"]!==undefined)
+    {
+        var dataTemp =  this.checkStreet[objectChild["streetid"]].wardid;
+        if(objectParent["wardid"]!==undefined&&dataTemp == getIDCompair(objectParent["wardid"]))
+        {
+            return true;
+        }else
+        {
+            return this.checkPermissionParent({districtid:dataTemp},objectParent)
+        }
+    }
+
+    if(objectChild["wardid"]!==undefined)
+    {
+        var dataTemp =  this.checkWard[objectChild["wardid"]].districtid;
+        if(objectParent["districtid"]!==undefined&&dataTemp == getIDCompair(objectParent["districtid"]))
+        {
+            return true;
+        }else
+        {
+            return this.checkPermissionParent({districtid:dataTemp},objectParent)
+        }
+    }
+
+    if(objectChild["districtid"]!==undefined)
+    {
+        var dataTemp =  this.checkDistrict[objectChild["districtid"]].stateid;
+        if(objectParent["stateid"]!==undefined&&dataTemp == getIDCompair(objectParent["stateid"]))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 NewAccount.prototype.getDataSave = function() {
     var avatar = this.avatar.src;
     avatar = avatar.replace("https://lab.daithangminh.vn/home_co/pizo/assets/avatar/","");
@@ -2494,6 +3015,19 @@ NewAccount.prototype.getDataSave = function() {
         this.$view.addChild(deleteItem);
         return;
     }
+    var permission = {...this.checkPermission};
+    if(permission[0]===undefined)
+    {
+        permission[0] = [];
+    }
+    for(var i = 1;i<56;i++)
+    {
+        var tempCheckbox =  $("div.checkbox_"+(i),this.$view);
+        if(tempCheckbox.checked == true)
+        {
+            permission[0].unshift(i);
+        }
+    }
     var temp = {
         name:this.name.value,
         email:this.email.value,
@@ -2502,7 +3036,7 @@ NewAccount.prototype.getDataSave = function() {
         gender:this.gender.value,
         positionid:this.position.value,
         status:this.status.checked?1:0,
-        // permission:this.permission.checked?1:0,
+        permission:permission,
         avatar:avatar
     }
     if(this.containerPassword.style.display == "unset")
