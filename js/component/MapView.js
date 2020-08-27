@@ -1000,25 +1000,25 @@ MapView.prototype.addOrtherMarker = function(data)
             anchor: new google.maps.Point(12, 12)
           };
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(position[0], position[1]),
-            map: self.map,
-            draggable:false,
-            icon:image,
-            zIndex:2
+            position : new google.maps.LatLng(position[0], position[1]),
+            map : self.map,
+            draggable : false,
+            icon : image,
+            zIndex : 2
         });
 
         var imageHover = {
-            url: "./assets/images/marker-green.png",
+            url : "./assets/images/marker-green.png",
             // This marker is 20 pixels wide by 32 pixels high.
-            scaledSize: new google.maps.Size(24, 24), 
+            scaledSize : new google.maps.Size(24, 24), 
             // The origin for this image is (0, 0).
-            origin: new google.maps.Point(0, 0),
+            origin : new google.maps.Point(0, 0),
             // The anchor for this image is the base of the flagpole at (0, 32).
-            anchor: new google.maps.Point(12, 12)
+            anchor : new google.maps.Point(12, 12)
           };
         // var mouseOverInfoWindow = false, timeoutID;
         var infowindow = new google.maps.InfoWindow({
-            maxWidth: 350
+            maxWidth : 350
           });
          
         // google.maps.event.addListener(infowindow, 'domready', function() {

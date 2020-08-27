@@ -110,7 +110,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                 on: {
                                     click: function (evt) {
                                         var tempData = self.getDataSave();
-                                        console.log(tempData)
+                                        // console.log(tempData)
                                         if(tempData!==undefined)
                                         {
                                             // self.resolveDB(tempData);
@@ -203,8 +203,14 @@ NewAccount.prototype.getView = function (dataParent) {
                     if(self.checkStateDistrict[x]!==undefined);
                     district.items = [{text:"Tất cả",value:0}].concat(self.checkStateDistrict[x]);
                 }
-                self.resetPermission();
                 district.emit("change");
+                if(event!==undefined)
+                {
+                    if(this.value == 0)
+                    self.setValueNull("state");
+                    else
+                    self.addPermissionParent({stateid:this.value});
+                }
             }
         }
     });
@@ -233,7 +239,12 @@ NewAccount.prototype.getView = function (dataParent) {
                 }
                 ward.emit("change");
                 if(event!==undefined)
-                self.addPermissionParent({districtid:x});
+                {
+                    if(this.value == 0)
+                    self.setValueNull("district");
+                    else
+                    self.addPermissionParent({districtid:this.value});
+                }
             }
         }
     });
@@ -263,7 +274,12 @@ NewAccount.prototype.getView = function (dataParent) {
                 })
                 street.emit("change");
                 if(event!==undefined)
-                self.addPermissionParent({wardid:x});
+                {
+                    if(this.value == 0)
+                    self.setValueNull("ward");
+                    else
+                    self.addPermissionParent({wardid:this.value});
+                }
             }
         }
     });
@@ -277,9 +293,16 @@ NewAccount.prototype.getView = function (dataParent) {
         on:{
             change:function(event)
             {
-                self.resetPermissionChoice();
                 if(event!==undefined)
-                self.addPermissionParent({streetid:x});
+                {
+                    if(event!==undefined)
+                    {
+                        if(this.value == 0)
+                        self.setValueNull("ward");
+                        else
+                        self.addPermissionParent({streetid:this.value});
+                    }
+                }
             }
         }
     });
@@ -347,17 +370,51 @@ NewAccount.prototype.getView = function (dataParent) {
                             }
                         }
                     }
+                    self.resetPermission();
                     var objectPermission = self.checkPermission[element.data.value];
+                    self.addPermissionParent(JSON.parse(element.data.value));
                     for(var i = 0;i<objectPermission.length;i++)
                     {
                         $("div.checkbox_"+objectPermission[i],self.$view).checked = true;
                     }
+                    self.resetPermissionChoice();
+                    element.classList.add("selectedIItem");
+                }
+            },
+            remove:function(event)
+            {
+                if(self.checkPermission[event.itemElt.data.value]!==undefined)
+                {
+                    delete self.checkPermission[event.itemElt.data.value]!==undefined;
+                }
+                if(event.itemElt.classList.contains("selectedIItem"))
+                {
+                    if(selectPermission.values.indexOf(0)!==-1)
+                    {
+                        var arrayItem = selectPermission.getElementsByClassName("absol-selectbox-item");
+                        for(var i = 0;i<arrayItem.length;i++)
+                        {
+                            if(arrayItem[i].data.value == 0)
+                            {
+                                arrayItem[i].click();
+                                break;
+                            }
+                        }
+                    }else
+                    {
+                        var arrayItem = selectPermission.getElementsByClassName("absol-selectbox-item");
+                        if(arrayItem.length)
+                        {
+                            arrayItem[0].click();
+                        }
+                    }
+                }else
+                {
                     var selected = $("div.absol-selectbox-item.selectedIItem",selectPermission);
                     if(selected!==undefined)
                     {
-                        selected.classList.remove("selectedIItem");
+                        selected.click();
                     }
-                    element.classList.add("selectedIItem");
                 }
             }
         },
@@ -2707,9 +2764,9 @@ NewAccount.prototype.getView = function (dataParent) {
                                                     var indexValue;
                                                     var itemValue;
                                                     var objectPermission = [];
-                                                    for(var  i = 56;i<69;i++)
+                                                    for(var  i = 56;i<70;i++)
                                                     {
-                                                        if($("div.checkbox_"+i,self.$view).checked == true)
+                                                        if($("div.checkbox_"+i,self.$view).checked == true&&$("div.checkbox_"+i,self.$view).disabled == false)
                                                         {
                                                             objectPermission.push(i);
                                                         }
@@ -2840,6 +2897,10 @@ NewAccount.prototype.getView = function (dataParent) {
     this.containerPassword = container;
     this.newPassWord = $('input.pizo-new-account-container-password-container-input-new',this.$view);
     this.confirmPassWord = $('input.pizo-new-account-container-password-container-input-new-confirm',this.$view);
+    this.street = street;
+    this.ward = ward;
+    this.district = district;
+    this.state = state
     if(this.data!==undefined)
     {
         this.name.value = this.data.original.name;
@@ -2945,6 +3006,8 @@ NewAccount.prototype.resetPermission = function()
     {
         if($("div.checkbox_"+i,this.$view).checked == true)
         $("div.checkbox_"+i,this.$view).checked = false;
+        if($("div.checkbox_"+i,this.$view).disabled == true)
+        $("div.checkbox_"+i,this.$view).disabled = false;
     }
 }
 
@@ -2957,52 +3020,230 @@ NewAccount.prototype.resetPermissionChoice = function()
     }
 }
 
+NewAccount.prototype.backPermission = function(objectChild)
+{
+    var temp = {...objectChild};
+    if(temp["streetid"]!==undefined)
+    {
+        if(temp["streetid"] == 0)
+        return {stateid:0};
+        if(temp["wardid"]==undefined)
+        {
+                temp["wardid"] = this.checkStreet[getIDCompair(temp["streetid"])].wardid;
+                temp["wardid"] = this.checkWard[temp["wardid"]].name+"_"+temp["wardid"];
+        }
+        delete temp["streetid"];
+        return temp;        
+    }
+    if(temp["wardid"]!==undefined)
+    {
+        if(temp["wardid"] == 0)
+        return {stateid:0};
+        if(temp["districtid"]==undefined)
+        {
+            temp["districtid"] = this.checkWard[getIDCompair(temp["wardid"])].districtid;
+            temp["districtid"] = this.checkDistrict[temp["districtid"]].name+"_"+temp["districtid"];
+        }
+        delete temp["wardid"];
+        return temp;        
+    }
+    if(temp["districtid"]!==undefined)
+    {
+        if(temp["districtid"] == 0)
+        return {stateid:0};
+        if(temp["stateid"]==undefined)
+        {
+                temp["stateid"] = this.checkDistrict[getIDCompair(temp["districtid"])].stateid;
+                temp["stateid"] = this.checkState[temp["stateid"]].name+"_"+temp["stateid"];
+        }
+        delete temp["districtid"];
+        return temp;        
+    }
+    return {stateid:0};
+}
+
 NewAccount.prototype.addPermissionParent = function(objectChild)
 {
+    this.resetPermission();
+    this.resetPermissionChoice();
+    var objectChildOlder = this.backPermission(objectChild);
     for(var param in this.checkPermission)
     {
-        if(this.checkPermissionParent(objectChild,JSON.parse(param)))
+        var objectParam = JSON.parse(param);
+        if(this.checkSameAddress(objectChild,objectParam))
         {
-            console.log(objectChild,JSON.parse(param))
+            this.sameClick(param);
+        }else
+        {
+            if(param==0||(this.checkOlderPermission(objectChildOlder,JSON.parse(param))&&this.checkPermissionParent(objectChildOlder,objectParam)))
+            {
+                for(var i = 0;i<this.checkPermission[param].length;i++)
+                {
+                    var tempCheckbox =  $("div.checkbox_"+(this.checkPermission[param][i]),this.$view);
+                    tempCheckbox.checked = true;
+                    if(objectChildOlder!=0)
+                    tempCheckbox.disabled = true;
+                }
+            }
         }
     }
 }
 
-NewAccount.prototype.checkPermissionParent = function(objectChild,objectParent)
+NewAccount.prototype.checkSameAddress = function(objectChild,object)
 {
-    if(objectChild["streetid"]!==undefined)
+    var param;
+    if(typeof objectChild == "object")
     {
-        var dataTemp =  this.checkStreet[objectChild["streetid"]].wardid;
-        if(objectParent["wardid"]!==undefined&&dataTemp == getIDCompair(objectParent["wardid"]))
+        for(param in objectChild)
         {
-            return true;
-        }else
+            if(object[param]!==undefined&&objectChild[param]==object[param])
+            {
+                continue;
+            }
+            return false;
+        }
+        if(!this.checkOlderPermission(objectChild,object))
+        return false;
+    }else
+    return false;
+    return true;
+}
+
+NewAccount.prototype.sameClick = function(param)
+{
+    var objectPermission = param;
+    var arrayItem = this.selectPermission.getElementsByClassName("absol-selectbox-item");
+    for(var i = 0;i<arrayItem.length;i++)
+    {
+        if(arrayItem[i].data.value == objectPermission)
         {
-            return this.checkPermissionParent({districtid:dataTemp},objectParent)
+            if(!arrayItem[i].classList.contains("selectedIItem"))
+            arrayItem[i].click();
+            break;
         }
     }
+}
 
+NewAccount.prototype.checkOlderPermission = function(objectChild,objectParent)
+{
     if(objectChild["wardid"]!==undefined)
     {
-        var dataTemp =  this.checkWard[objectChild["wardid"]].districtid;
-        if(objectParent["districtid"]!==undefined&&dataTemp == getIDCompair(objectParent["districtid"]))
+        if(objectParent["streetid"]!==undefined)
+        return false;
+    }
+    else
+    if(objectChild["districtid"]!==undefined)
+    {
+        if(objectParent["wardid"]!==undefined)
+        return false;
+    }
+    else
+    if(objectChild["stateid"]!==undefined)
+    {
+        if(objectParent["districtid"]!==undefined)
+        return false;
+    }
+
+
+    return true;
+}
+
+NewAccount.prototype.checkPermissionParent = function(objectChild,objectParent)
+{
+    if(objectChild["wardid"]!==undefined)
+    {
+        var dataTemp =  getIDCompair(objectChild["wardid"]);
+        if(objectParent["wardid"]!==undefined)
         {
+            if(dataTemp == getIDCompair(objectParent["wardid"]))
             return true;
         }else
         {
+            dataTemp =  this.checkWard[dataTemp].districtid;
+            dataTemp = this.checkDistrict[dataTemp].name+"_"+dataTemp;
             return this.checkPermissionParent({districtid:dataTemp},objectParent)
         }
     }
 
     if(objectChild["districtid"]!==undefined)
     {
-        var dataTemp =  this.checkDistrict[objectChild["districtid"]].stateid;
+        var dataTemp =  getIDCompair(objectChild["districtid"]);
+        if(objectParent["districtid"]!==undefined)
+        {
+            if(dataTemp == getIDCompair(objectParent["districtid"]))
+            return true;
+        }else
+        {
+            dataTemp =  this.checkDistrict[dataTemp].stateid;
+            dataTemp = this.checkState[dataTemp].name+"_"+dataTemp;
+            return this.checkPermissionParent({stateid:dataTemp},objectParent);
+        }
+    }
+
+    if(objectChild["stateid"]!==undefined)
+    {
+        var dataTemp = getIDCompair(objectChild["stateid"]);
+       
         if(objectParent["stateid"]!==undefined&&dataTemp == getIDCompair(objectParent["stateid"]))
         {
             return true;
         }
     }
     return false;
+}
+
+
+
+NewAccount.prototype.setValueNull = function(object)
+{
+    if(object == "street")
+    {
+        if(this.ward.value!=0){
+            this.addPermissionParent({wardid:this.ward.value});
+        }else
+        {
+            return this.setValueNull("ward");
+        }
+    }
+    if(object == "ward")
+    {
+        if(this.district.value != 0)
+        {
+            this.addPermissionParent({districtid:this.district.value});
+        }else
+        {
+            return this.setValueNull("district");
+        }
+    }
+    if(object == "district")
+    {
+        if(this.state.value != 0)
+        {
+            this.addPermissionParent({stateid:this.state.value});
+        }else
+        {
+            return this.setValueNull("state");
+        }
+    }
+    if(object == "state")
+    {
+        if(this.selectPermission.values.indexOf(0)!==-1)
+        {
+            var arrayItem = this.selectPermission.getElementsByClassName("absol-selectbox-item");
+            for(var i = 0;i<arrayItem.length;i++)
+            {
+                if(arrayItem[i].data.value == 0)
+                {
+                    arrayItem[i].click();
+                    break;
+                }
+            }
+        }else
+        {
+            this.resetPermission();
+            this.resetPermissionChoice();
+        }
+    }
 }
 
 NewAccount.prototype.getDataSave = function() {
@@ -3029,15 +3270,15 @@ NewAccount.prototype.getDataSave = function() {
         }
     }
     var temp = {
-        name:this.name.value,
-        email:this.email.value,
-        phone:this.phone.value,
-        birthday: getGMT(this.birthday.value,new Date().getTimezoneOffset()/-60,true),
-        gender:this.gender.value,
-        positionid:this.position.value,
-        status:this.status.checked?1:0,
-        permission:permission,
-        avatar:avatar
+        name : this.name.value,
+        email : this.email.value,
+        phone : this.phone.value,
+        birthday : getGMT(this.birthday.value,new Date().getTimezoneOffset()/-60,true),
+        gender : this.gender.value,
+        positionid : this.position.value,
+        status : this.status.checked?1:0,
+        permission : permission,
+        avatar : avatar
     }
     if(this.containerPassword.style.display == "unset")
     {
@@ -3051,7 +3292,7 @@ NewAccount.prototype.getDataSave = function() {
             temp.password = this.newPassWord.value;
         }
     }
-    if(this.address.data!==undefined){
+    if(this.address.data !== undefined){
         var address = {};
         var data = this.address.data;
 
@@ -3088,7 +3329,7 @@ NewAccount.prototype.getDataSave = function() {
 
         temp.addressid = address;
     }
-    if(this.data!==undefined)
+    if(this.data !== undefined)
     temp.id = this.data.original.id;
     return temp;
 }
