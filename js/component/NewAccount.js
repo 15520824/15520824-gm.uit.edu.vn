@@ -110,10 +110,10 @@ NewAccount.prototype.getView = function (dataParent) {
                                 on: {
                                     click: function (evt) {
                                         var tempData = self.getDataSave();
-                                        // console.log(tempData)
+                                    
                                         if(tempData!==undefined)
                                         {
-                                            // self.resolveDB(tempData);
+                                            self.resolveDB(tempData);
                                             self.createPromise();
                                         }
                                     }
@@ -167,7 +167,7 @@ NewAccount.prototype.getView = function (dataParent) {
                 arr.push({id:valueAdr[i].streetid});
                 connect = "||";
             }
-            console.log(arr)
+
             moduleDatabase.getModule("streets").load({WHERE:arr}).then(function(valueStr){
                 self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
                 self.checkState = moduleDatabase.getModule("states").getLibary("id");
@@ -1471,30 +1471,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 {
                                                     tag: "checkbox",
                                                     class: ["pizo-new-realty-desc-detail-row-menu-1-checkbox","checkbox_49"],
-                                                   on:{
-                                                        click:function(event)
-                                                        {
-                                                            if(this.checked == false)
-                                                            {
-                                                                var index = parseInt(getIDCompair(this.classList[2]))
-                                                                for(var i = 0;i<3;i++)
-                                                                {
-                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
-                                                                    if(elementTemp!==undefined)
-                                                                    elementTemp.disabled = true;
-                                                                }
-                                                            }else
-                                                            {
-                                                                var index = parseInt(getIDCompair(this.classList[2]))
-                                                                for(var i = 0;i<3;i++)
-                                                                {
-                                                                    var elementTemp = $("div.checkbox_"+(index+1+i),self.$view);
-                                                                    if(elementTemp!==undefined)
-                                                                    elementTemp.disabled = false;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
                                                 }
                                             ]
                                         },
@@ -2860,6 +2836,23 @@ NewAccount.prototype.getView = function (dataParent) {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("districts").load({ORDERING:"stateid"}));
     arr.push(moduleDatabase.getModule("wards").load({ORDERING:"districtid"}));
+    if(this.data!==undefined)
+    {
+        var x =moduleDatabase.queryData("loadPermision.php",{userid:this.data.original.id},"privileges");
+        x.then(function(result){
+            for(var i = 0;i<result.length;i++)
+            {
+                var permissionTemp = result[i].permission
+                if(permissionTemp<56&&permissionTemp>1)
+                {
+                    var tempCheckbox =  $("div.checkbox_"+(permissionTemp),self.$view);
+                    tempCheckbox.click();
+                }
+            }
+        })
+        arr.push(x);
+    }
+    
     this.state = state;
     this.district = district;
     this.ward = ward;
@@ -3081,7 +3074,7 @@ NewAccount.prototype.addPermissionParent = function(objectChild)
                 {
                     var tempCheckbox =  $("div.checkbox_"+(this.checkPermission[param][i]),this.$view);
                     tempCheckbox.checked = true;
-                    if(objectChildOlder!=0)
+                    if(objectChild!=0)
                     tempCheckbox.disabled = true;
                 }
             }
@@ -3256,7 +3249,24 @@ NewAccount.prototype.getDataSave = function() {
         this.$view.addChild(deleteItem);
         return;
     }
+    var arrayItem = this.selectPermission.getElementsByClassName("absol-selectbox-item")
+    for(var i = 0;i<arrayItem.length;i++)
+    {
+        arrayItem[i].click();
+    }
     var permission = {...this.checkPermission};
+    var tempParam;
+    for(var param in permission)
+    {
+        tempParam = JSON.parse(param);
+        for(var paramChild in  tempParam)
+        {
+            tempParam[paramChild] = getIDCompair(tempParam[paramChild]);
+        }
+        permission[JSON.stringify(tempParam)] = permission[param];
+        delete permission[param];
+    }
+    permission[0] = this.checkPermission[0];
     if(permission[0]===undefined)
     {
         permission[0] = [];
@@ -3269,6 +3279,7 @@ NewAccount.prototype.getDataSave = function() {
             permission[0].unshift(i);
         }
     }
+    console.log(this.checkPermission)
     var temp = {
         name : this.name.value,
         email : this.email.value,

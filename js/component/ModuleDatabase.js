@@ -1,6 +1,5 @@
 import FormClass from './jsform';
 
-
 var moduleDatabase = new ModuleDatabase();
 console.log(moduleDatabase)
 function ModuleDatabase() {
@@ -15,6 +14,8 @@ ModuleDatabase.prototype.getModule = function(name,listFilePHP,isCreated = false
     }else
     return this.data[name];
 }
+
+
 
 function DataStructure(hostDatabase ,name ,listFilePHP = ["load.php","add.php","update.php","delete.php"]){
    this.phpLoader = hostDatabase+listFilePHP[0];
@@ -661,11 +662,16 @@ DataStructure.prototype.delete = function(data){
     })
 }
 
-export default moduleDatabase;
-
-DataStructure.prototype.queryData = function (phpFile,data) {
+DataStructure.prototype.queryData = function (phpFile,data,name = "") {
     var self = this;
     var result = {};
+    
+    if(self.name!==undefined)
+    {
+        name = self.name;
+    }
+    if(this.hostDatabase!==undefined)
+    phpFile = this.hostDatabase+phpFile;
     for(var param in  data){
         if(typeof data[param] == "function")
         continue;
@@ -674,7 +680,7 @@ DataStructure.prototype.queryData = function (phpFile,data) {
     return new Promise(function(resolve,reject){
         FormClass.api_call({
             url: phpFile,
-            params: [{name:"name",value:self.name},
+            params: [{name:"name",value:name},
                     {name:"data",value:EncodingClass.string.fromVariable(result)}],
             func: function(success, message) {
                 if (success){
@@ -691,3 +697,6 @@ DataStructure.prototype.queryData = function (phpFile,data) {
     })
 };
 
+ModuleDatabase.prototype.queryData = DataStructure.prototype.queryData;
+
+export default moduleDatabase;

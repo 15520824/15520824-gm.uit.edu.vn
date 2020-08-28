@@ -138,7 +138,7 @@ export function getIDCompair(string)
 {
     if(string == 0)
     return 0;
-    return string.slice(string.lastIndexOf("_")+1);
+    return parseInt(string.slice(string.lastIndexOf("_")+1));
 }
 
 export function getNameCompair(string)

@@ -352,21 +352,24 @@
                                         hiddenButtonRight.style["width"] = -move.x+"px";
                                         var tempElement =  hiddenButtonRight.childNodes[0].childNodes[hiddenButtonRight.childNodes[0].childNodes.length-1];
                                         var lastWidth;
-                                        if(tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
-                                        lastWidth = parseInt(tempElement.style.maxWidth);
-                                        else
-                                        lastWidth = tempElement.clientWidth;
-                                        if(hiddenButtonRight.offsetWidth>=hiddenButtonRight.childNodes[0].offsetWidth+lastWidth)
+                                        if(tempElement!==undefined)
                                         {
-                                            if(tempElement!==undefined&&!tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                            if(tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                            lastWidth = parseInt(tempElement.style.maxWidth);
+                                            else
+                                            lastWidth = tempElement.clientWidth;
+                                            if(hiddenButtonRight.offsetWidth>=hiddenButtonRight.childNodes[0].offsetWidth+lastWidth)
                                             {
-                                                tempElement.classList.add("button-hidden-swipe-activeAll-width");
-                                            }
-                                        }else
-                                        {
-                                            if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                                if(tempElement!==undefined&&!tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                                {
+                                                    tempElement.classList.add("button-hidden-swipe-activeAll-width");
+                                                }
+                                            }else
                                             {
-                                                tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+                                                if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
+                                                {
+                                                    tempElement.classList.remove("button-hidden-swipe-activeAll-width");
+                                                }
                                             }
                                         }
                                     }

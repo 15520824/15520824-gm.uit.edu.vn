@@ -175,10 +175,27 @@ if (isset($data["password"])) {
     $data["password"]=md5($data["password"]."safe.Login.via.normal.HTTP"."000000");
 }
 
-if (isset($data["permission"])) {
-    var_dump($data["permission"]);
-}
+$connector->query("DELETE FROM ".$prefix."privileges WHERE userid = ".$data["id"]);
 
+if (isset($data["permission"])) {
+    foreach($data["permission"] as $param=>$value)
+    {
+        if($param === 0)
+        $tempData = array();
+        else
+        $tempData = json_decode($param,true);
+
+        $count = count($value);
+        $tempData["userid"] = $data["id"];
+        for($i = 0;$i<$count;$i++)
+        {
+            $tempData["permission"] = $value[$i];
+            $result = $connector-> insert($prefix."privileges", $tempData);
+        }
+          
+    }
+}
+unset($data["permission"]);
 $result = $connector-> update($prefix."users", $data);
 echo "ok".EncodingClass::fromVariable(array(
     'data'=>$data
