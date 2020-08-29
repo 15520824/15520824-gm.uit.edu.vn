@@ -14,6 +14,7 @@ if ($connector == null) {
 }
 
 $connector ->db -> set_charset("utf8");
+
 if (isset($_POST["name"])) {
     $tableName=$_POST["name"];
 }else
@@ -30,37 +31,9 @@ if (isset($_POST["data"])) {
     exit();
 }
 
-if (isset($data["phone"])) {
-    $phone=$data["phone"];
-}else
-{
-    echo "BAD_REQUEST (400)";
-    exit();
-}
+$result = $connector->load($prefix.$tableName,"userid = ".$data["userid"]);
 
-if (isset($data["password"])) {
-    $password=md5($data["password"]."safe.Login.via.normal.HTTP"."000000");
-}else
-{
-    echo "BAD_REQUEST (400)";
-    exit();
-}
-
-$milliseconds = round(microtime(true) * 1000);
-
-$result = $connector->load($prefix."users","phone = ".$phone." AND password = '".$password."'");
-if(count($result)>0)
-{
-    $token = $milliseconds.uniqid();
-    $connector->insert($prefix."safe_login",array(
-        "token"=>$token,
-        "userid"=>$result[0]["id"]
-    ));
-    
-}else
-$token = false;
-
-echo "ok".EncodingClass::fromVariable($token);
+echo "ok".EncodingClass::fromVariable($result);
 
 exit(0);
 ?>

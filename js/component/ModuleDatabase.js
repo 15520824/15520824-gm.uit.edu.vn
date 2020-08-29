@@ -2,6 +2,7 @@ import FormClass from './jsform';
 
 var moduleDatabase = new ModuleDatabase();
 console.log(moduleDatabase)
+
 function ModuleDatabase() {
     this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/template/";
     this.data = [];

@@ -344,6 +344,9 @@ NewAccount.prototype.getView = function (dataParent) {
     
                             state.value = dataTemp["stateid"];
                             state.emit("change"); 
+                             
+                            street.value = 0;
+                            street.emit("change");
                         }else
                         {
                             if(dataTemp["districtid"]!==undefined)
@@ -353,6 +356,9 @@ NewAccount.prototype.getView = function (dataParent) {
 
                                 state.value = dataTemp["stateid"];
                                 state.emit("change"); 
+
+                                ward.value = 0;
+                                ward.emit("change");
                             }else
                             {
                                 if(dataTemp["stateid"]!==undefined)
@@ -3150,6 +3156,7 @@ NewAccount.prototype.checkPermissionParent = function(objectChild,objectParent)
         {
             if(dataTemp == getIDCompair(objectParent["wardid"]))
             return true;
+            return false;
         }else
         {
             dataTemp =  this.checkWard[dataTemp].districtid;
@@ -3165,6 +3172,7 @@ NewAccount.prototype.checkPermissionParent = function(objectChild,objectParent)
         {
             if(dataTemp == getIDCompair(objectParent["districtid"]))
             return true;
+            return false;
         }else
         {
             dataTemp =  this.checkDistrict[dataTemp].stateid;

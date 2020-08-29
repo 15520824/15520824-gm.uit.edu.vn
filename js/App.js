@@ -2,6 +2,7 @@
 import BaseView from './component/BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
+import LoginForm from './page/LoginForm';
 import "../css/App.css";
 import R from './R';
 import Fcore from './dom/Fcore';
@@ -57,7 +58,12 @@ App.prototype.constructor = App;
 
 App.prototype.getView = function()
 {
-    if (this.$view) return this.$view;
+    if(true)
+    {
+        var mLoginForm = new LoginForm();
+        this.$view = mLoginForm.getView();
+        return this.$view;
+    }
     var self = this;
     this.body = _(
             {
