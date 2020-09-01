@@ -158,5 +158,5 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
   }
 
   table.sortTable tr.parent:hover td{
-    background-color:rgb(191 191 191) !important;
+    background-color:rgb(191 191 191);
   }
