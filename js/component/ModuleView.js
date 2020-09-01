@@ -2722,7 +2722,6 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
 
     var temp;
     temp = result.childrenNodes[index];
-    console.log(row,temp)
     result.bodyTable.replaceChild(row, temp);
     row.classList.value = temp.classList.value;
 

@@ -47,16 +47,20 @@ if (isset($data["password"])) {
 }
 
 $milliseconds = round(microtime(true) * 1000);
-
+$connector->query("DELETE FROM ".$prefix."safe_login WHERE created < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 3 DAY))");
 $result = $connector->load($prefix."users","phone = ".$phone." AND password = '".$password."'");
 if(count($result)>0)
 {
     $token = $milliseconds.uniqid();
-    $connector->insert($prefix."safe_login",array(
+    $tempToken = array(
         "token"=>$token,
         "userid"=>$result[0]["id"]
-    ));
-    
+    );
+    $connector->insert($prefix."safe_login",$tempToken);
+    $token = array(
+        "token"=>$token,
+        "user"=>$result
+    );
 }else
 $token = false;
 

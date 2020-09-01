@@ -192,7 +192,6 @@ body{
     padding: 0;
     position: absolute;
     transform: translate(-110%, -0);
-    margin-top: 0.7143rem;
 }
 
 .material-icons{
@@ -209,4 +208,56 @@ body{
 
 .pizo-app .absol-checkbox.pizo-checkbox .absol-checkbox-icon{
     display: block; 
+}
+
+._7ql {
+    border-radius: 2px;
+    display: inline;
+    vertical-align: inherit;
+}
+
+._1m6h {
+    height: 28px;
+    width: 28px;
+}
+
+._h2p ._7ql {
+    margin-left: -10px;
+}
+
+._2qgu._2qgu {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+._1qv9 {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+._cy7 {
+    margin: 11px 0 8px 0;
+}
+
+._h2p ._cy7 {
+    margin-right: 1px;
+}
+
+._1vp5 {
+    background-color: transparent;
+    color: inherit;
+    display: inline-block;
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+    height: 27px;
+    line-height: 28px;
+    padding: 0 10px 1px;
+    position: relative;
+    text-decoration: none;
+    vertical-align: top;
+    white-space: nowrap;
+    color: white;
+    font-size: 14px;
 }

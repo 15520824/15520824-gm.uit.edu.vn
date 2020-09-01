@@ -60,6 +60,11 @@ NewAccount.prototype.resetPromise = function(value)
     self.promiseEditDB = undefined;
 }
 
+NewAccount.prototype.setOnlyInformation = function()
+{
+    this.isOnlyInformation = true
+}
+
 NewAccount.prototype.getView = function (dataParent) {
     if (this.$view) return this.$view;
     var self = this;
@@ -149,9 +154,6 @@ NewAccount.prototype.getView = function (dataParent) {
     });
     var active = _( {
         tag:"switch"
-    })
-    var activePemission = _( {
-        tag:"switch",
     })
     var address = this.itemAddressOld();
     if(this.data!==undefined){
@@ -526,8 +528,6 @@ NewAccount.prototype.getView = function (dataParent) {
                                                             props:{
                                                                 type:"number"
                                                             },
-                                                            on:{
-                                                            }
                                                         }
                                                     ]
                                                 }
@@ -703,22 +703,22 @@ NewAccount.prototype.getView = function (dataParent) {
                                                 {
                                                     tag:"div",
                                                     class:"pizo-new-account-container-avatar-container-image",
-                                                    on:{
-                                                        click:function(event){
-                                                            xmlModalDragImage.createModal(document.body,function(){
-                                                                if(xmlModalDragImage.imgUrl)
-                                                                this.childNodes[0].src = xmlModalDragImage.imgUrl.src;
-                                                            }.bind(this));
-                                                            xmlModalDragImage.addImage(this.childNodes[0].src);
-                                                        }
-                                                    },
                                                     child:[
                                                         {
                                                             tag:"img",
                                                             class:"pizo-new-account-container-avatar-container-image-content",
                                                             attr:{
                                                                 src:"../assets/avatar/avatar-default.png"
-                                                            }
+                                                            },
+                                                            on:{
+                                                                click:function(event){
+                                                                    xmlModalDragImage.createModal(document.body,function(){
+                                                                        if(xmlModalDragImage.imgUrl)
+                                                                        this.src = xmlModalDragImage.imgUrl.src;
+                                                                    }.bind(this));
+                                                                    xmlModalDragImage.addImage(this.src);
+                                                                }
+                                                            },
                                                         }
                                                     ]
                                                 }
@@ -2844,7 +2844,7 @@ NewAccount.prototype.getView = function (dataParent) {
     arr.push(moduleDatabase.getModule("wards").load({ORDERING:"districtid"}));
     if(this.data!==undefined)
     {
-        var x =moduleDatabase.queryData("loadPermision.php",{userid:this.data.original.id},"privileges");
+        var x = moduleDatabase.queryData("loadPermision.php",{userid:this.data.original.id},"privileges");
         x.then(function(result){
             for(var i = 0;i<result.length;i++)
             {
@@ -2874,7 +2874,6 @@ NewAccount.prototype.getView = function (dataParent) {
         this.checkDistrictWard = moduleDatabase.getModule("wards").getLibary("districtid",function(data){
             return {text:data.name,value:data.name+"_"+data.id}
         },true);
-
         this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         this.checkState = moduleDatabase.getModule("states").getLibary("id");
         this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
@@ -2919,6 +2918,13 @@ NewAccount.prototype.getView = function (dataParent) {
     {
         $("div.pizo-new-account-container-change-password",this.$view).style.display = "none";
         container.style.display = "unset";
+    }
+    if(this.isOnlyInformation === true)
+    {
+        $("div.pizo-new-account-container-permission",this.$view).style.display = "none";
+        $("div.pizo-new-account-container.pizo-new-account-advance-permission",this.$view).parentNode.style.display = "none";
+        $("div.pizo-new-account-container-permission-realty",this.$view).style.display = "none";
+        $("div.pizo-new-account-container-status-position",this.$view).style.display = "none";
     }
     return this.$view;
 }
@@ -3257,6 +3263,15 @@ NewAccount.prototype.getDataSave = function() {
         this.$view.addChild(deleteItem);
         return;
     }
+    if(this.data==undefined)
+    {
+        if(moduleDatabase.getModule("users").getLibary("phone")[this.phone.value]!==undefined)
+        {
+            var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại chưa đúng vui lòng kiểm tra lại!");
+            this.$view.addChild(deleteItem);
+            return;
+        }
+    }
     var arrayItem = this.selectPermission.getElementsByClassName("absol-selectbox-item")
     for(var i = 0;i<arrayItem.length;i++)
     {
@@ -3287,7 +3302,6 @@ NewAccount.prototype.getDataSave = function() {
             permission[0].unshift(i);
         }
     }
-    console.log(this.checkPermission)
     var temp = {
         name : this.name.value,
         email : this.email.value,

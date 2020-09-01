@@ -7,6 +7,8 @@ import Fcore from '../dom/Fcore';
 
 import moduleDatabase from '../component/ModuleDatabase';
 
+import { setCookie } from '../component/FormatFunction';
+
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -77,6 +79,13 @@ LoginForm.prototype.getView = function () {
                                                                     {
                                                                         tag:"input",
                                                                         class:"form-control",
+                                                                        on:{
+                                                                            input:function()
+                                                                            {
+                                                                                if(self.notifycationLogin.style.display == "")
+                                                                                self.notifycationLogin.style.display = "none";
+                                                                            }
+                                                                        },
                                                                         props:{
                                                                             id:"phone-password-pizo-complete",
                                                                             name:"phone",
@@ -99,6 +108,13 @@ LoginForm.prototype.getView = function () {
                                                                     {
                                                                         tag:"input",
                                                                         class:"form-control",
+                                                                        on:{
+                                                                            input:function()
+                                                                            {
+                                                                                if(self.notifycationLogin.style.display == "")
+                                                                                self.notifycationLogin.style.display = "none";
+                                                                            }
+                                                                        },
                                                                         props:{
                                                                             id:"input-password-pizo-complete",
                                                                             name:"password",
@@ -126,7 +142,8 @@ LoginForm.prototype.getView = function () {
                                                                                 tag:"input",
                                                                                 props:{
                                                                                     id:"checkbox-signup",
-                                                                                    type:"checkbox"
+                                                                                    type:"checkbox",
+                                                                                    checked:true
                                                                                 }
                                                                             },
                                                                             {
@@ -144,6 +161,16 @@ LoginForm.prototype.getView = function () {
                                                     },
                                                     {
                                                         tag:"div",
+                                                        class:["alert", "alert-danger"],
+                                                        style:{
+                                                            display:"none"
+                                                        },
+                                                        props:{
+                                                            innerHTML:"Đăng nhập thất bại"
+                                                        }
+                                                    },
+                                                    {
+                                                        tag:"div",
                                                         class:["form-group", "text-center", "m-t-20"],
                                                         child:[
                                                             {
@@ -152,7 +179,7 @@ LoginForm.prototype.getView = function () {
                                                                 child:[
                                                                     {
                                                                         tag:"button",
-                                                                        class:["btn", "btn-info", "btn-lg", "btn-block", "text-uppercase", "waves-effect", "waves-light"],
+                                                                        class:["btn-login", "btn-login-info", "btn-login-lg", "btn-login-block", "text-uppercase", "waves-effect", "waves-light"],
                                                                         on:{
                                                                             click:function(event)
                                                                             {
@@ -186,9 +213,10 @@ LoginForm.prototype.getView = function () {
     var functionX = function(event){
         if (event.keyCode === 13) {
             self.requestLogin();
-           
         }
     }
+    this.inputSaveLogin = $("input#checkbox-signup",this.$view);
+    this.notifycationLogin = $("div.alert.alert-danger",this.$view);
     window.addEventListener("keydown",functionX);
     this.functionX = functionX;
     return this.$view;
@@ -196,11 +224,25 @@ LoginForm.prototype.getView = function () {
 
 LoginForm.prototype.requestLogin = function()
 {
-    var self = this;
-    moduleDatabase.queryData("login.php",{phone:self.inputPhone.value,password:self.inputPassword.value},"users").then(function(value){
-        console.log(value)
-    })
-    window.removeEventListener("keydown",this.functionX)
+    moduleDatabase.queryData("login.php",{phone:this.inputPhone.value,password:this.inputPassword.value},"users").then(function(value){
+        if(value == false)
+        {
+            if(this.notifycationLogin.style.display == "none")
+            this.notifycationLogin.style.display = "";
+        }else
+        {
+            if(this.inputSaveLogin.checked==true)
+            {
+                setCookie("token_pizo_phone",value["token"],3);
+                setCookie("userid_pizo_phone",value["user"][0]["id"],3);
+            }
+            window.token = value["token"];
+            window.userid = value["user"][0]["id"];
+            moduleDatabase.getModule("users").setFormatLoad({WHERE:[{userid:value["user"][0]["id"]}]},value["user"]);
+            window.removeEventListener("keydown",this.functionX)
+            this.resolveDB(value);
+        }
+    }.bind(this))
 }
 
 LoginForm.prototype.createPromise = function()

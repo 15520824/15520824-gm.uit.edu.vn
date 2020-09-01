@@ -4,7 +4,6 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/ListWard.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatDate, getGMT } from '../component/FormatFunction';
 
 import moduleDatabase from '../component/ModuleDatabase';
 

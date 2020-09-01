@@ -128,7 +128,8 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
   .absol-frame-view-frame-container:not(.absol-active){
     visibility: unset;
   }
-/* table.sortTable tr:nth-child(even) {
+
+  /* table.sortTable tr:nth-child(even) {
     background-color: #f5f5f5;
   } */
 
@@ -147,4 +148,15 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
   .container-header > span{
     flex-grow: 2;
     display: flex;
+  }
+
+  table.sortTable .parent:nth-child(odd) td{
+    background-color: #f5f5f5;
+  }
+  table.sortTable .parent:nth-child(even) td{
+      background-color: #fff;
+  }
+
+  table.sortTable tr.parent:hover td{
+    background-color:rgb(191 191 191) !important;
   }

@@ -1,5 +1,5 @@
 import FormClass from './jsform';
-
+require('../encode');
 var moduleDatabase = new ModuleDatabase();
 console.log(moduleDatabase)
 
@@ -26,7 +26,6 @@ function DataStructure(hostDatabase ,name ,listFilePHP = ["load.php","add.php","
    this.name = name;
    this.Libary = [];
    this.sync = [];
-   this.checkLoaded = [];
    this.promisePart = [];
    this.isFirst = true;
 }
@@ -209,7 +208,12 @@ DataStructure.prototype.setFormatLoad = function(data,value,promiseLoad,count = 
         self.countRow = value.length;
     }else
     {
-        self.checkLoaded[JSON.stringify(data.WHERE)] = value;
+        if(promiseLoad == undefined)
+        {
+            self.promisePart[JSON.stringify(data.WHERE)] = Promise.resolve(value);
+            self.promisePart[JSON.stringify(data.WHERE)].data = value;   
+        }
+
         if(data.isFirst===true)
         {
             if(count!==-1)
@@ -579,6 +583,7 @@ DataStructure.prototype.setFormatUpdate = function(data)
     {
         if(this.generalOperator(temp,JSON.parse(param))===true)
         {
+            console.log(param)
             if(this.promisePart[param].data.indexOf(temp)===-1)
             {
                 this.promisePart[param].data.push(temp);

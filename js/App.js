@@ -16,11 +16,13 @@ import ListHelp from './page/ListHelp';
 import ListEditHelp from './page/ListEditHelp';
 import ListPositions from './page/ListPositions';
 import ListAccount from './page/ListAccount';
+import NewAccount from './component/NewAccount';
 import ListContact from './page/ListContact';
 import ListEquipment from './page/ListEquipment';
 import ListJuridical from './page/ListJuridical';
 import MapRealty from './page/MapRealty';
 import ListTypeActivehouse from './page/ListTypeActivehouse';
+import { getCookie, eraseCookie ,setCookie } from './component/FormatFunction';
 
 import moduleDatabase from './component/ModuleDatabase';
 
@@ -58,13 +60,125 @@ App.prototype.constructor = App;
 
 App.prototype.getView = function()
 {
-    if(true)
+    if(getCookie("token_pizo_phone")==undefined)
     {
-        var mLoginForm = new LoginForm();
-        this.$view = mLoginForm.getView();
-        return this.$view;
+        if(window.token == undefined)
+        {
+            var mLoginForm = new LoginForm();
+            this.$view = mLoginForm.getView();
+            mLoginForm.promiseLogin.then(function(token){
+                var parentNode = this.$view.parentNode;
+                var pastView = this.$view;
+                parentNode.replaceChild(this.getView(),pastView);
+            }.bind(this))
+            return this.$view;
+        }
+    }else
+    {
+        if(window.token == undefined)
+        {
+            moduleDatabase.queryData("getToken.php",{token:getCookie("token_pizo_phone"),userid:getCookie("userid_pizo_phone")},"safe_login").then(function(value){
+                if(value == false)
+                {
+                    eraseCookie("token_pizo_phone");
+                    eraseCookie("userid_pizo_phone");
+                    var parentNode = this.$view.parentNode;
+                    var pastView = this.$view;
+                    parentNode.replaceChild(this.getView(),pastView);
+                }else
+                {
+                    setCookie("token_pizo_phone",getCookie("token_pizo_phone"),3);
+                    setCookie("userid_pizo_phone",getCookie("userid_pizo_phone"),3);
+                    window.token = getCookie("token_pizo_phone");
+                    window.userid = getCookie("userid_pizo_phone");
+                    moduleDatabase.getModule("users").setFormatLoad({WHERE:[{userid:getCookie("userid_pizo_phone")}]},value);
+                    this.imageAvatar.src = "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + moduleDatabase.getModule("users").getLibary("id")[window.userid].avatar;
+                    this.nameAvatar.innerHTML = moduleDatabase.getModule("users").getLibary("id")[window.userid].name.split(" ").pop();
+                }
+            }.bind(this))
+        }
+        else
+        {
+            this.enableAvatar = true;
+        }
     }
     var self = this;
+    this.imageAvatar = _({
+        tag:"img",
+        class:["_2qgu", "_7ql", "_1m6h", "img"],
+        props:{
+            src:"./assets/avatar/avatar-default.png"
+        }
+    });
+    this.nameAvatar = _({
+        tag:"span",
+        class:"_1vp5",
+        props:{
+            innerHTML:""
+        }
+    });
+    var avatarIcon = _({
+        tag:"div",
+        class:["_1k67", "_cy7"],
+        child:[
+            {
+                tag:"span",
+                class:"_1qv9",
+                child:[
+                    this.imageAvatar,
+                    this.nameAvatar
+                ]
+            }
+        ]
+    })
+    var docTypeMemuProps = {
+        items: [
+            {
+                text: 'Hồ sơ cá nhân',
+                icon: {
+                    tag:"i",
+                    class:"material-icons",
+                    props:{
+                        innerHTML:"person"
+                    }
+                },
+                value:"information"
+            },
+            {
+                text: 'Đăng xuất',
+                icon: {
+                    tag:"i",
+                    class:"material-icons",
+                    props:{
+                        innerHTML:"arrow_forward"
+                    }
+                },
+                value:"logout"
+            },
+        ]
+    };
+
+    absol.QuickMenu.showWhenClick(avatarIcon, docTypeMemuProps, [2], function (menuItem) {
+        switch(menuItem.value)
+        {
+            case "information":
+                if(window.userid!==undefined)
+                this.edit({original:moduleDatabase.getModule("users").getLibary("id")[window.userid]});
+                break;
+            case "logout":
+                moduleDatabase.queryData("deleteToken.php",{token:getCookie("token_pizo_phone"),userid:getCookie("userid_pizo_phone")},"safe_login").then(function(value){
+                })
+                eraseCookie("token_pizo_phone");
+                eraseCookie("userid_pizo_phone");
+                window.token = undefined;
+                window.userid = undefined;
+                var parentNode = this.$view.parentNode;
+                var pastView = this.$view;
+                parentNode.replaceChild(this.getView(),pastView);
+                break;
+        }
+    }.bind(this));
+   
     this.body = _(
             {
                 tag:"frameview",
@@ -114,19 +228,7 @@ App.prototype.getView = function()
                                         tag:"div",
                                         class:"not-loggedin",
                                         child:[
-                                            {
-                                                tag:"button",
-                                                class:"not-login-signin",
-                                                child:[
-                                                    {
-                                                        tag:"span",
-                                                        class:"not-login-signin-text",
-                                                        props:{
-                                                            innerHTML:"Đăng nhập"
-                                                        }
-                                                    }
-                                                ]
-                                            }
+                                            avatarIcon
                                         ]
                                     }
                                 ]
@@ -330,7 +432,21 @@ App.prototype.getView = function()
     // this.body.addChild(frameview);
     // this.body.activeFrame(frameview);
     this.refresh();
-    
+    if(this.enableAvatar)
+    {
+        this.imageAvatar.src = "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + moduleDatabase.getModule("users").getLibary("id")[window.userid].avatar;
+        this.nameAvatar.innerHTML = moduleDatabase.getModule("users").getLibary("id")[window.userid].name.split(" ").pop();
+        this.enableAvatar = undefined;
+    }
+    var arr = [];
+    arr.push(moduleDatabase.getModule("positions").load());
+    arr.push(moduleDatabase.getModule("wards").load());
+    arr.push(moduleDatabase.getModule("districts").load());
+    arr.push(moduleDatabase.getModule("states").load());
+    Promise.all(arr).then(function(){
+        this.isLoaded = true;
+        this.listParamPosition = moduleDatabase.getModule("positions").getList("name","id");
+    }.bind(this));
     return this.$view;
 }
 
@@ -502,6 +618,39 @@ App.prototype.openPage = function(index){
         
     }
    
+}
+
+App.prototype.edit = function(data,parent,index)
+{
+    if(!this.isLoaded)
+        return;
+    var self = this;
+    var mNewAccount = new NewAccount(data);
+    mNewAccount.attach(self);
+    mNewAccount.setOnlyInformation();
+    var frameview = mNewAccount.getView(self.listParamPosition);
+    self.body.addChild(frameview);
+    self.body.activeFrame(frameview);
+    self.editDB(mNewAccount,data,parent,index);
+}
+
+App.prototype.editDB = function(mNewAccount,data,parent,index){
+    var self = this;
+    mNewAccount.promiseEditDB.then(function(value){
+        moduleDatabase.getModule("users").update(value).then(function(result){
+            self.editView(value,data,parent,index);
+        })
+        mNewAccount.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewAccount.promiseEditDB!==undefined)
+        {
+            self.editDB(mNewAccount,data,parent,index);
+        }
+        },10);
+    })
+}
+
+App.prototype.editView = function(value,data,parent,index){
 }
 
 App.prototype.setData = function (data) {

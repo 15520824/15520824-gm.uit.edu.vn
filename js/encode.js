@@ -1094,3 +1094,5 @@ var EncodingClass = {
         }
     }
 };
+
+window.EncodingClass = EncodingClass;
