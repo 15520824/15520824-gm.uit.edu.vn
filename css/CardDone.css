@@ -1,0 +1,10 @@
+.sortTable thead th,
+.sortTableClone thead th {
+    text-align: center;
+    background-color: #d6d6d6;
+    color: black ;
+    border: unset ;
+    font-size: var(--font-size-table-header) ;
+    font-weight: var(--font-weight-table-header) ;
+    padding: 10px;
+}
