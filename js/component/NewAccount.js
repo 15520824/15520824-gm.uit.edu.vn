@@ -2845,25 +2845,41 @@ NewAccount.prototype.getView = function (dataParent) {
     if(this.data!==undefined)
     {
         var x = moduleDatabase.queryData("loadPermision.php",{userid:this.data.original.id},"privileges");
-        x.then(function(result){
-            for(var i = 0;i<result.length;i++)
+        var resolveStreet;
+        var y = new Promise(function(resolve,reject){
+            resolveStreet = resolve;
+        })
+        x.then(function(values){
+            var where = [];
+            var first = ""
+            for(var i = 0;i<values.length;i++)
             {
-                var permissionTemp = result[i].permission
-                if(permissionTemp<56&&permissionTemp>1)
-                {
-                    var tempCheckbox =  $("div.checkbox_"+(permissionTemp),self.$view);
-                    tempCheckbox.click();
+                if(values[i].streetid!=0){
+                    if(first!=="")
+                    where.push(first);
+                    where.push({id:values[i].streetid});
+                    if(first == "")
+                    first = "&&";
                 }
             }
-        })
+            if(where.length>0)
+            moduleDatabase.getModule("streets").load({WHERE:where}).then(function(value){
+                this.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
+                resolveStreet();
+            }.bind(this));
+            else{
+                resolveStreet();
+            }
+        }.bind(this))
         arr.push(x);
+        arr.push(y);
     }
     
     this.state = state;
     this.district = district;
     this.ward = ward;
     this.street = street;
-    Promise.all(arr).then(function(){
+    Promise.all(arr).then(function(values){
         state.items = [{text:"Tất cả",value:0}].concat(moduleDatabase.getModule("states").getList("name",["name","id"]));
         district.items = [{text:"Tất cả",value:0}];
         ward.items = [{text:"Tất cả",value:0}];
@@ -2878,7 +2894,85 @@ NewAccount.prototype.getView = function (dataParent) {
         this.checkState = moduleDatabase.getModule("states").getLibary("id");
         this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
         this.checkPermission = [];
-
+        if(values[3]!==undefined)
+        {
+            var result =values[3];
+            for(var i = 0;i<result.length;i++)
+            {
+                var permissionTemp = result[i].permission
+                if(permissionTemp<56&&permissionTemp>0)
+                {
+                    var tempCheckbox =  $("div.checkbox_"+(permissionTemp),self.$view);
+                    tempCheckbox.click();
+                }else
+                {
+                    var indexTemp = "{";
+                    var tempCheck;
+                    if(result[i]["stateid"]!==0)
+                    {
+                        tempCheck = this.checkState[result[i]["stateid"]];
+                         if(tempCheck!==undefined)
+                         indexTemp += '"stateid":"'+tempCheck.name+"_"+tempCheck.id+'"';
+                    }
+                    if(result[i]["districtid"]!==0)
+                    {
+                        tempCheck = this.checkDistrict[result[i]["districtid"]];
+                         if(tempCheck!==undefined)
+                         indexTemp += ',"districtid":"'+tempCheck.name+"_"+tempCheck.id+'"';
+                    }
+                    if(result[i]["wardid"]!==0)
+                    {
+                        tempCheck = this.checkWard[result[i]["wardid"]];
+                         if(tempCheck!==undefined)
+                         indexTemp += ',"wardid":"'+tempCheck.name+"_"+tempCheck.id+'"';
+                    }
+                    if(result[i]["streetid"]!==0)
+                    {
+                        tempCheck = this.checkStreet[result[i]["streetid"]];
+                         if(tempCheck!==undefined)
+                         indexTemp += ',"streetid":"'+tempCheck.name+"_"+tempCheck.id+'"';
+                    }
+                    if(indexTemp == "{")
+                    indexTemp = 0;
+                    else
+                    indexTemp += "}";
+                    if(this.checkPermission[indexTemp]===undefined)
+                    this.checkPermission[indexTemp] = [];
+                    this.checkPermission[indexTemp].push(permissionTemp);
+                }
+            }
+            var indexValue,indexItem,stringTemp,lastParam;
+            for(var param in this.checkPermission)
+            {
+                if(param == 0)
+                {
+                    indexValue = 0;
+                    indexItem = {
+                        text:"Tất cả",
+                        value:indexValue
+                    }
+                }else
+                {
+                    stringTemp = JSON.parse(param);
+                    lastParam = Object.keys(stringTemp)[Object.keys(stringTemp).length-1];
+                    indexValue = param;
+                    indexItem = {
+                        text:getNameCompair(stringTemp[lastParam]),
+                        value:param
+                    }
+                }
+                
+                selectPermission.items.push(indexItem);
+                selectPermission.values.push(indexValue);
+                selectPermission.items = selectPermission.items;
+                selectPermission.values = selectPermission.values;
+                var arrayItem = selectPermission.getElementsByClassName("absol-selectbox-item");
+                if(arrayItem.length)
+                {
+                    arrayItem[0].click();
+                }
+            }
+        }
     }.bind(this))
     this.selectPermission = selectPermission;
     this.name = $('input.pizo-new-account-container-name-container-input',this.$view);

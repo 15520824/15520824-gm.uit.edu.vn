@@ -8,3 +8,7 @@
     font-weight: var(--font-weight-table-header) ;
     padding: 10px;
 }
+
+table.sortTable th, table.sortTable td, table.sortTableClone th, table.sortTableClone td{
+    border-bottom: 1px solid #ddd;
+}

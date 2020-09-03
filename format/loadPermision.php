@@ -31,7 +31,7 @@ if (isset($_POST["data"])) {
     exit();
 }
 
-$result = $connector->load($prefix.$tableName,"userid = ".$data["userid"]);
+$result = $connector->load($prefix.$tableName,"userid = ".$data["userid"],"`streetid` , `wardid` , `districtid` , `stateid`");
 
 echo "ok".EncodingClass::fromVariable($result);
 

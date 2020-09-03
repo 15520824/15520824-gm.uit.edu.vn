@@ -163,7 +163,7 @@ App.prototype.getView = function()
         {
             case "information":
                 if(window.userid!==undefined)
-                this.edit({original:moduleDatabase.getModule("users").getLibary("id")[window.userid]});
+                this.prevEdit({original:moduleDatabase.getModule("users").getLibary("id")[window.userid]});
                 break;
             case "logout":
                 moduleDatabase.queryData("deleteToken.php",{token:getCookie("token_pizo_phone"),userid:getCookie("userid_pizo_phone")},"safe_login").then(function(value){
@@ -235,150 +235,16 @@ App.prototype.getView = function()
                             },
                             {
                                 tag:"hmenu",
-                                class:"pizo-header-menu",
+                                class:"",
                                 on: {
                                     press: function(event) {
                                         var item = event.menuItem;
                                         if (typeof item.pageIndex == 'number') {
-                                            self.openPage(item.pageIndex);
+                                            self.prevOpenPage(item.pageIndex);
                                             document.body.click();
                                         }
                                     }
                                 },
-                                props:{
-                                    items:[
-                                        {
-                                            text: "Dự án",
-                                            pageIndex: 1,
-                                            items:[
-                                                {
-                                                    text:"Tất cả",
-                                                    pageIndex:11
-                                                },
-                                                {
-                                                    text:"Dự án đã quan tâm",
-                                                    pageIndex:12
-                                                },
-                                                // {
-                                                //     text:"Cần kiểm duyệt",
-                                                //     pageIndex:13
-                                                // },
-                                                {
-                                                    text:"Cần gọi lại",
-                                                    pageIndex:14
-                                                },
-                                                {
-                                                    text:"Cần gộp",
-                                                    pageIndex:15
-                                                },
-                                                {
-                                                    text:"Yêu cầu chỉnh sửa",
-                                                    pageIndex:17
-                                                },
-                                                {
-                                                    text:"Bản đồ",
-                                                    pageIndex:18
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            text: "Khu vực",
-                                            pageIndex: 2,
-                                            items:[
-                                                {
-                                                    text:"Tỉnh/TP",
-                                                    pageIndex:21
-                                                },
-                                                {
-                                                    text:"Quận/Huyện",
-                                                    pageIndex:22
-                                                },
-                                                {
-                                                    text:"Phường/Xã",
-                                                    pageIndex:23
-                                                },
-                                                {
-                                                    text:"Tên đường",
-                                                    pageIndex:24
-                                                },
-                                                {
-                                                    text:"Thông tin quy hoạch",
-                                                    pageIndex:26
-                                                },
-                                                {
-                                                    text:"Thông tin quy hoạch chú thích",
-                                                    pageIndex:27
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            text: "Thông tin",
-                                            pageIndex: 3,
-                                            items:[
-                                                {
-                                                    text:"Tiện nghi trong nhà",
-                                                    pageIndex:31
-                                                },
-                                                {
-                                                    text:"Pháp lý",
-                                                    pageIndex:32
-                                                },
-                                                {
-                                                    text:"Thông tin liên hệ",
-                                                    pageIndex:33
-                                                },
-                                                {
-                                                    text:"Loại bất động sản",
-                                                    pageIndex:34
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            text: "Thông báo",
-                                            pageIndex: 4
-                                        },
-                                        {
-                                            text: "Sơ đồ tổ chức",
-                                            pageIndex: 5
-                                        },
-                                        {
-                                            text: "Tài khoản",
-                                            pageIndex: 6
-                                        },
-                                        {
-                                            text: "Thống kê",
-                                            pageIndex: 7,
-                                            items:[
-                                                {
-                                                    text:"Tổng quan",
-                                                    pageIndex:71
-                                                },
-                                                {
-                                                    text:"Cuộc gọi",
-                                                    pageIndex:72
-                                                },
-                                                {
-                                                    text:"Upload hình",
-                                                    pageIndex:73
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            text: "Nhập xuất dữ liệu",
-                                            pageIndex: 9
-                                        },
-                                        {
-                                            text: "Trợ giúp",
-                                            pageIndex: 10,
-                                            items:[
-                                                {
-                                                    text:"Sửa trợ giúp",
-                                                    pageIndex:101
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
                             }
                         ]
                     },
@@ -431,6 +297,7 @@ App.prototype.getView = function()
     // var frameview = mListHelp.getView();
     // this.body.addChild(frameview);
     // this.body.activeFrame(frameview);
+    this.hMenu = $("div.pizo-header-menu",this.$view);
     this.refresh();
     if(this.enableAvatar)
     {
@@ -443,10 +310,11 @@ App.prototype.getView = function()
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
-    Promise.all(arr).then(function(){
-        this.isLoaded = true;
+    this.promiseAll = Promise.all(arr);
+    this.promiseAll.then(function(){
         this.listParamPosition = moduleDatabase.getModule("positions").getList("name","id");
     }.bind(this));
+    this.getPermisionOpenPage();
     return this.$view;
 }
 
@@ -458,8 +326,145 @@ App.prototype.refresh = function () {
         this.setData(data);
 };
 
-App.prototype.openPage = function(index){
+App.prototype.getPermisionOpenPage = function(index)
+{
+    if(moduleDatabase.checkPermission == undefined){
+        moduleDatabase.checkPermission = [];
+        this.promisePermission = moduleDatabase.queryData("loadPermision.php",{userid:window.userid},"privileges").then(function(result){
+            for(var i = 0;i<result.length;i++)
+            {
+                var permissionTemp = result[i].permission
+                if(permissionTemp<56&&permissionTemp>0)
+                {
+                    moduleDatabase.checkPermission[0].push(permissionTemp);
+                }else
+                {
+                    var indexTemp = "{";
+                    if(result[i]["stateid"]!==0)
+                    {
+                            indexTemp += '"stateid":"'+result[i]["stateid"]+'"';
+                    }
+                    if(result[i]["districtid"]!==0)
+                    {
+                            indexTemp += ',"districtid":"'+result[i]["districtid"]+'"';
+                    }
+                    if(result[i]["wardid"]!==0)
+                    {
+                            indexTemp += ',"wardid":"'+result[i]["districtid"]+'"';
+                    }
+                    if(result[i]["streetid"]!==0)
+                    {
+                            indexTemp += ',"streetid":"'+result[i]["streetid"]+'"';
+                    }
+                    if(indexTemp == "{")
+                    indexTemp = 0;
+                    else
+                    indexTemp += "}";
+                    
+                    moduleDatabase.checkPermission[indexTemp].push(permissionTemp);
+                }
+            }
+            this.hMenu.items = [];
+            var isRealty = false;
+            for(var param in moduleDatabase.checkPermission)
+            {
+                if(param == 0)
+                {
+                    if(moduleDatabase.checkPermission[0].indexOf(13)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(17)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(21)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(25)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(29)!=-1)
+                    {
+                        if(moduleDatabase.checkPermission[0].indexOf(13)!=-1)
+                        menuZone.push({
+                            text:"Tỉnh/TP",
+                            pageIndex:21
+                        })
+                        if(moduleDatabase.checkPermission[0].indexOf(17)!=-1)
+                        menuZone.push({
+                            text:"Quận/Huyện",
+                            pageIndex:22
+                        })
+                        if(moduleDatabase.checkPermission[0].indexOf(21)!=-1)
+                        menuZone.push({
+                            text:"Phường/Xã",
+                            pageIndex:23
+                        })
+                        if(moduleDatabase.checkPermission[0].indexOf(25)!=-1)
+                        menuZone.push({
+                            text:"Tên đường",
+                            pageIndex:24
+                        })
+                        if(moduleDatabase.checkPermission[0].indexOf(29)!=-1)
+                        {
+                            menuZone.push({
+                                text:"Thông tin quy hoạch",
+                                pageIndex:26
+                            })
+                            menuZone.push( {
+                                text:"Thông tin quy hoạch chú thích",
+                                pageIndex:27
+                            })
+                        }
+                        this.hMenu.items.unshift({
+                            text: "Khu vực",
+                            pageIndex: 2,
+                            items:menuZone
+                        })
+                    }
+                }
+                isRealty = true;
+            }
+            if(isRealty === true)
+            this.hMenu.items.unshift( {
+                text: "Dự án",
+                pageIndex: 1,
+                items:[
+                    {
+                        text:"Tất cả",
+                        pageIndex:11
+                    },
+                    {
+                        text:"Dự án đã quan tâm",
+                        pageIndex:12
+                    },
+                    // {
+                    //     text:"Cần kiểm duyệt",
+                    //     pageIndex:13
+                    // },
+                    {
+                        text:"Cần gọi lại",
+                        pageIndex:14
+                    },
+                    {
+                        text:"Cần gộp",
+                        pageIndex:15
+                    },
+                    {
+                        text:"Yêu cầu chỉnh sửa",
+                        pageIndex:17
+                    },
+                    {
+                        text:"Bản đồ",
+                        pageIndex:18
+                    }
+                ]
+            });
+            this.hMenu.items = this.hMenu.items;
+        }.bind(this)) 
+    }
+}
 
+App.prototype.prevOpenPage = function(index)
+{
+    this.promisePermission.then(function(){
+        this.openPage(index);
+    }.bind(this));
+}
+
+App.prototype.openPage = function(index){
+    var finalPage;
     switch(index)
     {
         case 4:
@@ -473,6 +478,7 @@ App.prototype.openPage = function(index){
             var frameview = mListPositions.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListPositions;
         break;
         case 6:
             var mListAccount = new ListAccount();
@@ -480,6 +486,7 @@ App.prototype.openPage = function(index){
             var frameview = mListAccount.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListAccount;
         break;
         case 11:
             var mListRealty = new ListRealty();
@@ -487,6 +494,7 @@ App.prototype.openPage = function(index){
             var frameview = mListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListRealty;
         break;
         case 12:
             var mListRealty = new ListRealty();
@@ -494,6 +502,7 @@ App.prototype.openPage = function(index){
             var frameview = mListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListRealty;
         break;
         case 13:
             var mListRealty = new ListRealty();
@@ -502,6 +511,7 @@ App.prototype.openPage = function(index){
             var frameview = mListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListRealty;
         break;
         case 14:
             var mListRealty = new ListRealty();
@@ -509,6 +519,7 @@ App.prototype.openPage = function(index){
             var frameview = mListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListRealty;
         break;
         case 15:
             var mListRealty = new ListRealty();
@@ -516,6 +527,7 @@ App.prototype.openPage = function(index){
             var frameview = ListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListRealty;
         break;
         case 16:
             var mListRealty = new ListRealty();
@@ -523,6 +535,7 @@ App.prototype.openPage = function(index){
             var frameview = mListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListRealty;
         break;
         case 17:
             var mListRealty = new ListRealty();
@@ -530,6 +543,7 @@ App.prototype.openPage = function(index){
             var frameview = mListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListRealty;
         break;
         case 18:
             var mMapRealty = new MapRealty();
@@ -537,6 +551,7 @@ App.prototype.openPage = function(index){
             var frameview = mMapRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mMapRealty;
         break;
         case 21:
             var mListState = new ListState();
@@ -544,6 +559,7 @@ App.prototype.openPage = function(index){
             var frameview = mListState.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListState;
         break;
         case 22:
             var mListDistrict = new ListDistrict();
@@ -551,6 +567,7 @@ App.prototype.openPage = function(index){
             var frameview = mListDistrict.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListDistrict;
         break;
         case 23:
             var mListWard = new ListWard();
@@ -558,6 +575,7 @@ App.prototype.openPage = function(index){
             var frameview = mListWard.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListWard;
         break;
         case 24:
             var mListStreet = new ListStreet();
@@ -565,6 +583,7 @@ App.prototype.openPage = function(index){
             var frameview = mListStreet.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListStreet;
         break;
         case 26:
             var mPlanningInformation = new PlanningInformation();
@@ -572,6 +591,7 @@ App.prototype.openPage = function(index){
             var frameview = mPlanningInformation.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mPlanningInformation;
         break;
         case 27:
             var mPlanningInformation = new PlanningInformation();
@@ -579,6 +599,7 @@ App.prototype.openPage = function(index){
             var frameview = mPlanningInformation.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mPlanningInformation;
         break;
         case 31:
             var mListEquipment = new ListEquipment();
@@ -586,6 +607,7 @@ App.prototype.openPage = function(index){
             var frameview = mListEquipment.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListEquipment;
         break;
         case 32:
             var mListJuridical = new ListJuridical();
@@ -593,6 +615,7 @@ App.prototype.openPage = function(index){
             var frameview = mListJuridical.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListJuridical;
         break;
         case 33:
             var mListContact = new ListContact();
@@ -600,6 +623,7 @@ App.prototype.openPage = function(index){
             var frameview = mListContact.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListContact;
         break;
         case 34:
             var mListTypeActivehouse = new ListTypeActivehouse();
@@ -607,6 +631,7 @@ App.prototype.openPage = function(index){
             var frameview = mListTypeActivehouse.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListTypeActivehouse;
         break;
         case 101:
             var mListEditHelp = new ListEditHelp();
@@ -614,16 +639,23 @@ App.prototype.openPage = function(index){
             var frameview = mListEditHelp.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
+            finalPage = mListEditHelp;
         break;
         
     }
+    return finalPage;
    
+}
+
+App.prototype.prevEdit = function(data,parent,index)
+{
+    this.promiseAll.then(function(){
+        this.edit(data,parent,index);
+    }.bind(this));
 }
 
 App.prototype.edit = function(data,parent,index)
 {
-    if(!this.isLoaded)
-        return;
     var self = this;
     var mNewAccount = new NewAccount(data);
     mNewAccount.attach(self);
