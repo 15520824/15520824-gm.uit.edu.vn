@@ -111,7 +111,7 @@ export default xmlModalDragManyFiles = {
           click:function(event){
             if(self.gallery===undefined)
             {
-              self.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
+              self.gallery = $(".gallery_c0ek499ts0",this.mContainGetImage);
             }
             var arr = self.gallery.getElementsByClassName("checked-pizo");
             if(arr.length>0)
@@ -352,7 +352,7 @@ export default xmlModalDragManyFiles = {
     });
     self.xnen = temp;
 
-    self.containGetImage = temp;
+    self.mContainGetImage = temp;
     return temp;
   },
   createModal: function(DOMElement,functionClickDone=function(){},functionClickCancel=function(){}) {
@@ -444,7 +444,7 @@ export default xmlModalDragManyFiles = {
     var self = this;
     if(self.dropArea===undefined)
     {
-      self.dropArea = $('.drop-area_c0ek499ts0',self.containGetImage);
+      self.dropArea = $('.drop-area_c0ek499ts0',self.mContainGetImage);
     }
     // self.dropArea = document.getElementById("drop-area");
     // Prevent default drag behaviors
@@ -498,7 +498,7 @@ export default xmlModalDragManyFiles = {
   initializeProgress: function(numFiles) {
     var self = this;
     if(self.progressBar===undefined)
-    self.progressBar =  $('.progress-bar_c0ek499ts0',self.containGetImage);
+    self.progressBar =  $('.progress-bar_c0ek499ts0',self.mContainGetImage);
     self.progressBar.value = 0;
     self.uploadProgress = [];
 
@@ -541,7 +541,7 @@ export default xmlModalDragManyFiles = {
     var self = this;
     if(self.gallery===undefined)
     {
-      self.gallery = $(".gallery_c0ek499ts0",self.containGetImage);
+      self.gallery = $(".gallery_c0ek499ts0",self.mContainGetImage);
     }
     if(file.type.match("image.*"))
     {
@@ -590,7 +590,7 @@ export default xmlModalDragManyFiles = {
   addFile: function(data,ref = "") {
     if(this.gallery===undefined)
     {
-      this.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
+      this.gallery = $(".gallery_c0ek499ts0",this.mContainGetImage);
     }
     var img =  this.Image(ref+data.src);
     if(this.enableCheckBox&&data.thumnail==1){
@@ -609,7 +609,7 @@ export default xmlModalDragManyFiles = {
     var self = this;
     if(self.gallery===undefined)
     {
-      self.gallery = $(".gallery_c0ek499ts0",self.containGetImage);
+      self.gallery = $(".gallery_c0ek499ts0",self.mContainGetImage);
     }
     self.gallery.clearChild();
   },
@@ -617,7 +617,7 @@ export default xmlModalDragManyFiles = {
     var arr = [];
     if(this.gallery===undefined)
     {
-      this.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
+      this.gallery = $(".gallery_c0ek499ts0",this.mContainGetImage);
     }
     for(var i=0;i<this.gallery.childNodes.length;i++)
     {
@@ -628,7 +628,7 @@ export default xmlModalDragManyFiles = {
   getImportTant:function(){
     if(this.gallery===undefined)
     {
-      this.gallery = $(".gallery_c0ek499ts0",this.containGetImage);
+      this.gallery = $(".gallery_c0ek499ts0",this.mContainGetImage);
     }
     var arr = this.gallery.getElementsByClassName("checked-pizo");
     if(arr.length>0)
