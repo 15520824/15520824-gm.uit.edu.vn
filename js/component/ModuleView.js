@@ -1,7 +1,7 @@
 import Fcore from '../dom/Fcore';
 import '../../css/ModuleView.css';
 import '../../css/tablesort.css';
-import '../../css/CardDone.css';
+// import '../../css/CardDone.css';
 // import TabView from 'absol-acomp/js/TabView';
 import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
