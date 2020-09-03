@@ -877,8 +877,10 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                 this.bodyTable.childNodes[i].hiddenButtonRight = hiddenButton;
             }
         }
-        
-    
+        if(this.isSwipeLeft||this.isSwipeRight)
+        {
+            this.realTable.style.overflow = "hidden";
+        }
     }.bind(this),80)
 }
 

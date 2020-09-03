@@ -313,6 +313,7 @@
 
                 return {
                     leaveState: function() {
+                        console.log(swipeSuccess)
                         if (swipeSuccess) {
                             this.animateSwipe(function(target){
                                 target.node.style[transformJSPropertyName] = target.baseTransform.original;
@@ -358,7 +359,7 @@
                                             lastWidth = parseInt(tempElement.style.maxWidth);
                                             else
                                             lastWidth = tempElement.clientWidth;
-                                            if(hiddenButtonRight.offsetWidth>=hiddenButtonRight.childNodes[0].offsetWidth+lastWidth)
+                                            if(hiddenButtonRight.offsetWidth>hiddenButtonRight.childNodes[0].offsetWidth+lastWidth||(hiddenButtonRight.childNodes[0].childNodes.length == 1&&-move.x>0))
                                             {
                                                 if(tempElement!==undefined&&!tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
                                                 {
@@ -435,7 +436,7 @@
                             // How far out has the item been swiped?
                             var swipedPercent = Math.abs((this.startPosition.x - this.previousPosition.x) / this.container.clientWidth) * 100;
                             if(tempElement!==undefined)
-                            if(move.x>parseInt(tempElement.style.maxWidth)*(hiddenButtonRight.childNodes[0].childNodes.length)/2)
+                            if(move.x>parseInt(tempElement.style.maxWidth)*(hiddenButtonRight.childNodes[0].childNodes.length)/2&&move.directionX=="left")
                             swipeAverage = true;
 
                             if(delta>0)
