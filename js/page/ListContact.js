@@ -222,9 +222,12 @@ ListContact.prototype.getView = function () {
 
         setTimeout(functionX,10)
     }
+    var arr = [];
+    arr.push(moduleDatabase.getModule("contacts").load());
+    arr.push(moduleDatabase.getModule("users").load());
 
-
-    moduleDatabase.getModule("contacts").load().then(function(value){
+    Promise.all(arr).then(function(values){
+        var value=values[0];
             var header = [
             { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
             {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 

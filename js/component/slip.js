@@ -820,7 +820,7 @@
         },
 
         onMouseLeave: function(e) {
-            e.stopPropagation();
+            // e.stopPropagation();
             if (this.usingTouch) return;
 
             if (e.target === document.documentElement || e.relatedTarget === document.documentElement) {

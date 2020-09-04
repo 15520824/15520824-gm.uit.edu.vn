@@ -3359,7 +3359,7 @@ NewAccount.prototype.getDataSave = function() {
     }
     if(this.data==undefined)
     {
-        if(moduleDatabase.getModule("users").getLibary("phone")[this.phone.value]!==undefined)
+        if(moduleDatabase.getModule("users").getLibary("phone")[this.phone.value]!==undefined||moduleDatabase.getModule("contacts").getLibary("phone")[this.phone.value]!==undefined)
         {
             var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại chưa đúng vui lòng kiểm tra lại!");
             this.$view.addChild(deleteItem);

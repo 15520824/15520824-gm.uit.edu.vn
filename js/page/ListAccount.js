@@ -186,8 +186,13 @@ ListAccount.prototype.getView = function () {
     })
 
     var docTypeMemuProps,token,functionX;
+    token = "showMenu";
     var functionClickMore = function(event, me, index, parent, data, row)
     {
+        if (token == absol.QuickMenu._session) {
+            token = "showMenu";
+            return;
+        }
         docTypeMemuProps = {
             items: []
         };
@@ -241,6 +246,7 @@ ListAccount.prototype.getView = function () {
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
+    arr.push(moduleDatabase.getModule("contacts").load());
     Promise.all(arr).then(function(values)
     {
         var value = values[0];

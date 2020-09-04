@@ -94,18 +94,7 @@ ListEquipment.prototype.getView = function () {
                                 '<span>' + "Đóng" + '</span>'
                                 ]
                             },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.add();
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Thêm" + '</span>'
-                                ]
-                            }
+                            
                         ]
                     },
                     {
@@ -175,6 +164,21 @@ ListEquipment.prototype.getView = function () {
             },
         ]
     });
+    if(moduleDatabase.checkPermission[0].indexOf(34)!==-1)
+    {
+        $("div.pizo-list-realty-button",this.$view).appendChild(_({
+            tag: "button",
+            class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+            on: {
+                click: function (evt) {
+                    self.add();
+                }
+            },
+            child: [
+            '<span>' + "Thêm" + '</span>'
+            ]
+        }));
+    }
     var tabContainer = _({
         tag:"div",
         class:["pizo-list-realty-main-result-control","drag-zone-bg"],
@@ -183,23 +187,32 @@ ListEquipment.prototype.getView = function () {
     })
 
     var docTypeMemuProps,token,functionX;
+    token = "showMenu"
     var functionClickMore = function(event, me, index, parent, data, row)
     {
-       
+        if (token == absol.QuickMenu._session) {
+            token = "showMenu";
+            return;
+        }  
         docTypeMemuProps = {
-            items: [
-                {
-                    text: 'Sửa',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:1,
-                },
-                {
-                    text: 'Xóa',
-                    icon: 'span.mdi.mdi-text',
-                    value:2,
-                },
-            ]
+            items: []
         };
+        if(moduleDatabase.checkPermission[0].indexOf(35)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Sửa',
+                icon: 'span.mdi.mdi-text-short',
+                value:1,
+            });
+        }
+        if(moduleDatabase.checkPermission[0].indexOf(36)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Xóa',
+                icon: 'span.mdi.mdi-text',
+                value:2,
+            });
+        }
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
