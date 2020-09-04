@@ -128,6 +128,7 @@
     min-height: 0.0714rem;
     display: inline-block;
     vertical-align: bottom;
+    width: 20%;
 }
 
 .pizo-list-realty-main-search-control-row-date{
@@ -210,10 +211,6 @@
     width: calc(100% - 1rem);
     padding: 0.4286rem;
     border: solid 0.0714rem  var(--color-input-color);
-}
-
-.pizo-list-realty-main-search-control-row-HT{
-    width: calc(10% - 1.4286rem);
 }
 
 .pizo-list-realty-main-search-control-row-HT-input{
@@ -339,4 +336,37 @@
 }
 .pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{
     background-color: #fff ;
+}
+
+.pizo-list-realty-main-search-control-row-HT-label{
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.pizo-list-realty-main-search-control-row-HT-input{
+    flex-grow: 2;
+    display: flex;
+}
+
+.pizo-list-realty-main-search-control-row-HT{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+}
+
+.pizo-list-realty-main-search-control-row-price-label{
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.pizo-list-realty-main-search-control-row-price-input{
+    flex-grow: 2;
+    display: flex;
 }

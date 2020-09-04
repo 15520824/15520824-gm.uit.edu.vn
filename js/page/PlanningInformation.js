@@ -166,18 +166,6 @@ PlanningInformation.prototype.getView = function () {
                                 '<span>' + "Lưu" + '</span>'
                                 ]
                             },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        hiddenInput.click()
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Thêm" + '</span>'
-                                ]
-                            }
                         ]
                     },
                     {
@@ -216,7 +204,21 @@ PlanningInformation.prototype.getView = function () {
             },
         ]
     });
-
+    if(moduleDatabase.checkPermission[0].indexOf(30)!==-1)
+    {
+        $("div.pizo-list-realty-button",this.$view).appendChild(_({
+            tag: "button",
+            class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+            on: {
+                click: function (evt) {
+                    hiddenInput.click()
+                }
+            },
+            child: [
+            '<span>' + "Thêm" + '</span>'
+            ]
+        }));
+    }
 
     this.$view.addChild(_({
             tag:"div",
@@ -247,37 +249,40 @@ PlanningInformation.prototype.getView = function () {
         editable: true,
         draggable: true
       };
-    var drawingManager = new google.maps.drawing.DrawingManager({
-        drawingControlOptions: {
-          drawingModes: [
-            google.maps.drawing.OverlayType.POLYGON
-          ]
-        },
-        markerOptions: {
-          draggable: true
-        },
-        polylineOptions: {
-        },
-        draggableCursor:'crosshair',
-        rectangleOptions: polyOptions,
-        circleOptions: polyOptions,
-        polygonOptions: polyOptions,
-        map: this.mapView.map
-    });
-    google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
-        self.removeAllSelect();
-        var polygon = e.overlay;
-        self.polygon.push(polygon);
-        self.addEventPolygon(polygon);
-        if(self.editPolygon !== undefined)
-        {
-            self.editPolygon.toInActive(self);
-        }
-        polygon.toActive(self);
-        polygon.setOptions({editable:true,draggable:true});
-        self.editPolygon = polygon;
-       
-    })
+    if(moduleDatabase.checkPermission[0].indexOf(30)!==-1)
+    {
+        var drawingManager = new google.maps.drawing.DrawingManager({
+            drawingControlOptions: {
+              drawingModes: [
+                google.maps.drawing.OverlayType.POLYGON
+              ]
+            },
+            markerOptions: {
+              draggable: true
+            },
+            polylineOptions: {
+            },
+            draggableCursor:'crosshair',
+            rectangleOptions: polyOptions,
+            circleOptions: polyOptions,
+            polygonOptions: polyOptions,
+            map: this.mapView.map
+        });
+        google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
+            self.removeAllSelect();
+            var polygon = e.overlay;
+            self.polygon.push(polygon);
+            self.addEventPolygon(polygon);
+            if(self.editPolygon !== undefined)
+            {
+                self.editPolygon.toInActive(self);
+            }
+            polygon.toActive(self);
+            polygon.setOptions({editable:true,draggable:true});
+            self.editPolygon = polygon;
+           
+        })
+    }
     this.mapView.map.setOptions({ maxZoom: 30 });
     this.drawingManager = drawingManager;
     this.polygon = [];
@@ -285,6 +290,8 @@ PlanningInformation.prototype.getView = function () {
     window.addEventListener("keydown",function(e){
         if(e.keyCode==46)
         {
+            if(moduleDatabase.checkPermission[0].indexOf(32)==-1)
+            return;
             if(self.editPolygon!==undefined)
             {
                 self.editPolygon.setMap(null);
@@ -597,6 +604,8 @@ PlanningInformation.prototype.addEventPolygon = function(polygon)
 {
     var self = this;
     google.maps.event.addListener(polygon, 'click', function (event) {
+        if(moduleDatabase.checkPermission[0].indexOf(31)==-1)
+        return;
         if(self.editPolygon===this)
         {
             this.toInActive(self);
@@ -657,6 +666,10 @@ PlanningInformation.prototype.addEventPolygon = function(polygon)
 }
 
 PlanningInformation.prototype.selectPolygonFunction = function(bns){
+    if(moduleDatabase.checkPermission[0].indexOf(31)==-1)
+    {
+        return;
+    }
     this.removeAllSelect();
     if(this.editPolygon!==undefined)
     this.editPolygon.toInActive(this);

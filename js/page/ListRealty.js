@@ -608,6 +608,7 @@ ListRealty.prototype.getView = function () {
                 self.mTable.updateTable(undefined,value);
                 self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
                 self.mTable.addFilter(hiddenConfirm,20);
+                self.mTable.addFilter(self.HTinput,17);
             })
         })
         
@@ -774,7 +775,7 @@ ListRealty.prototype.getDataRow = function (data) {
         direction,
         data.price + " tỉ",
         data.price * 1000 / data.acreage + " triệu",
-        staus,
+        {value:parseInt(data.salestatus)+1,element:_({text:staus})},
         formatDate(data.created, true, true, true, true, true),
         {},
         "censorship"+data.censorship
@@ -877,50 +878,66 @@ ListRealty.prototype.searchControlContent = function () {
                                                         },
                                                         {
                                                             text: "Còn bán",
-                                                            value: 1
-                                                        },
-                                                        {
-                                                            text: "Đã bán",
                                                             value: 2
                                                         },
                                                         {
-                                                            text: "Ngưng bán",
-                                                            value: 3
+                                                            text: "Còn cho thuê",
+                                                            value: 11
                                                         },
+                                                        {
+                                                            text: "Còn bán và còn cho thuê",
+                                                            value: 12
+                                                        },
+                                                        {
+                                                            text: "Ngừng giao dịch",
+                                                            value: 1
+                                                        }
                                                     ]
                                                 }
                                             }]
                                         }
                                     ]
                                 },
-                                {
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-price-label",
-                                    props: {
-                                        innerHTML: "Khoảng giá"
-                                    }
-                                },
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-price",
+                            child: [
                                 {
                                     tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-price-input",
-                                    child: [{
-                                            tag: "input",
-                                            class: "pizo-list-realty-main-search-control-row-price-input-low",
+                                    class: "pizo-list-realty-main-search-control-row-HT",
+                                    child:[
+                                        {
+                                            tag: "span",
+                                            class: "pizo-list-realty-main-search-control-row-price-label",
                                             props: {
-                                                type: "number",
-                                                autocomplete: "off",
-                                                placeholder: "đ Từ",
+                                                innerHTML: "Khoảng giá"
                                             }
                                         },
                                         {
-                                            tag: "input",
-                                            class: "pizo-list-realty-main-search-control-row-price-input-high",
-                                            props: {
-                                                type: "number",
-                                                autocomplete: "off",
-                                                placeholder: "đ Đến",
-                                            }
-                                        },
+                                            tag: "div",
+                                            class: "pizo-list-realty-main-search-control-row-price-input",
+                                            child: [{
+                                                    tag: "input",
+                                                    class: "pizo-list-realty-main-search-control-row-price-input-low",
+                                                    props: {
+                                                        type: "number",
+                                                        autocomplete: "off",
+                                                        placeholder: "đ Từ",
+                                                    }
+                                                },
+                                                {
+                                                    tag: "input",
+                                                    class: "pizo-list-realty-main-search-control-row-price-input-high",
+                                                    props: {
+                                                        type: "number",
+                                                        autocomplete: "off",
+                                                        placeholder: "đ Đến",
+                                                    }
+                                                },
+                                            ]
+                                        }
                                     ]
                                 }
                             ]
@@ -1119,7 +1136,7 @@ ListRealty.prototype.searchControlContent = function () {
     content.PX = $('.pizo-list-realty-main-search-control-row-PX input', content);
     content.QH = $('.pizo-list-realty-main-search-control-row-QH input', content);
     content.HT = $('.pizo-list-realty-main-search-control-row-HT input', content);
-
+    this.HTinput = $('div.pizo-list-realty-main-search-control-row-HT-input',content).childNodes[0];
     temp.show = function () {
         if (!temp.classList.contains("showTranslate"))
             temp.classList.add("showTranslate");

@@ -413,10 +413,10 @@ App.prototype.getPermisionOpenPage = function()
                                 text:"Thông tin quy hoạch",
                                 pageIndex:26
                             })
-                            menuZone.push( {
-                                text:"Thông tin quy hoạch chú thích",
-                                pageIndex:27
-                            })
+                            // menuZone.push( {
+                            //     text:"Thông tin quy hoạch chú thích",
+                            //     pageIndex:27
+                            // })
                         }
                         this.firstElement.push({
                             text: "Khu vực",

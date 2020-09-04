@@ -65,53 +65,56 @@ ListPositions.prototype.getView = function () {
                                 '<span>' + "Đóng" + '</span>'
                                 ]
                             },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.addDepartment();
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Thêm bộ phận" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                       var arr  = self.mTable.getElementsByClassName("choice");
-                                       if(arr.length == 1)
-                                            arr = arr[0];
-                                        else
-                                            return;
-                                        self.addPosition(arr.data.original.id,arr);
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Thêm chức vụ" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
+                            // {
+                            //     tag: "button",
+                            //     class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+                            //     on: {
+                            //         click: function (evt) {
                                         
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Tìm nhân viên" + '</span>'
-                                ]
-                            }
+                            //         }
+                            //     },
+                            //     child: [
+                            //     '<span>' + "Tìm nhân viên" + '</span>'
+                            //     ]
+                            // }
                         ]
                     },
                 ]
             },
         ]
     });
+    if(moduleDatabase.checkPermission[0].indexOf(6)!==-1)
+    {
+        $("div.pizo-list-realty-button",this.$view).appendChild(_({
+            tag: "button",
+            class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+            on: {
+                click: function (evt) {
+                    self.addDepartment();
+                }
+            },
+            child: [
+            '<span>' + "Thêm bộ phận" + '</span>'
+            ]
+        }));
+        $("div.pizo-list-realty-button",this.$view).appendChild(_({
+            tag: "button",
+            class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+            on: {
+                click: function (evt) {
+                   var arr  = self.mTable.getElementsByClassName("choice");
+                   if(arr.length == 1)
+                        arr = arr[0];
+                    else
+                        return;
+                    self.addPosition(arr.data.original.id,arr);
+                }
+            },
+            child: [
+            '<span>' + "Thêm chức vụ" + '</span>'
+            ]
+        }));
+    }
     var tabInput = _({
         tag:"input",
         class:"pizo-list-realty-page-allinput-input",
@@ -148,33 +151,48 @@ ListPositions.prototype.getView = function () {
     })
 
     var docTypeMemuProps,token,functionX;
+    token = "showMenu";
     var functionClickMore = function(event, me, index, parent, data, row)
     {
-       
+        if (token == absol.QuickMenu._session) {
+            token = "showMenu";
+            return;
+        }
         docTypeMemuProps = {
-            items: [
-                {
-                    text: 'Thêm',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:0,
-                },
-                {
-                    text: 'Sửa',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:1,
-                },
-                {
-                    text: 'Xóa',
-                    icon: 'span.mdi.mdi-text',
-                    value:2,
-                },
-                {
-                    text: 'Thêm chức vụ',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:3,
-                },
-            ]
+            items: []
         };
+        if(moduleDatabase.checkPermission[0].indexOf(6)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Thêm',
+                icon: 'span.mdi.mdi-text-short',
+                value:0,
+            });
+        }
+        if(moduleDatabase.checkPermission[0].indexOf(7)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Sửa',
+                icon: 'span.mdi.mdi-text-short',
+                value:1,
+            });
+        }
+        if(moduleDatabase.checkPermission[0].indexOf(8)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Xóa',
+                icon: 'span.mdi.mdi-text',
+                value:2,
+            });
+        }
+        if(moduleDatabase.checkPermission[0].indexOf(6)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Thêm chức vụ',
+                icon: 'span.mdi.mdi-text-short',
+                value:3,
+            });
+        }
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
@@ -215,25 +233,33 @@ ListPositions.prototype.getView = function () {
         self.titleInput.value = data.original.name;
         self.titleInput.data = data.original.id;
     }
-
+    var token2 = "showMenu";
     var functionClickMoreSencond = function(event, me, index, parent, data, row)
     {
-       
+        if (token2 == absol.QuickMenu._session) {
+            token2 = "showMenu";
+            return;
+        }
         docTypeMemuProps = {
-            items: [
-                {
-                    text: 'Sửa',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:0,
-                },
-                {
-                    text: 'Xóa',
-                    icon: 'span.mdi.mdi-text',
-                    value:1,
-                }
-            ]
+            items: []
         };
-        token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
+        if(moduleDatabase.checkPermission[0].indexOf(7)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Sửa',
+                icon: 'span.mdi.mdi-text-short',
+                value:0,
+            });
+        }
+        if(moduleDatabase.checkPermission[0].indexOf(8)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Xóa',
+                icon: 'span.mdi.mdi-text',
+                value:1,
+            });
+        }
+        token2 = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
                 case 0:
@@ -245,15 +271,15 @@ ListPositions.prototype.getView = function () {
             }
         });
 
-        functionX = function(token){
+        functionX = function(token2){
             return function(){
                 var x = function(event){
-                    absol.QuickMenu.close(token);
+                    absol.QuickMenu.close(token2);
                     document.body.removeEventListener("click",x);
                 }
                 document.body.addEventListener("click",x)
             }
-        }(token);
+        }(token2);
 
         setTimeout(functionX,10)
     }

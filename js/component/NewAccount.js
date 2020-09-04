@@ -3361,7 +3361,7 @@ NewAccount.prototype.getDataSave = function() {
     {
         if(moduleDatabase.getModule("users").getLibary("phone")[this.phone.value]!==undefined||moduleDatabase.getModule("contacts").getLibary("phone")[this.phone.value]!==undefined)
         {
-            var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại chưa đúng vui lòng kiểm tra lại!");
+            var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại trùng vui lòng kiểm tra lại!");
             this.$view.addChild(deleteItem);
             return;
         }

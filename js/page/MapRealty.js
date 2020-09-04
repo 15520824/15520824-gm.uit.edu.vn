@@ -426,7 +426,7 @@ MapRealty.prototype.requestEdit = function (data) {
     self.requestEditDB(mNewRealty, data);
 }
 
-MapRealty.prototype.requestEditDB = function (data) {
+MapRealty.prototype.requestEditDB = function (mNewRealty, data) {
     var self = this
     mNewRealty.promiseEditDB.then(function (value) {
         moduleDatabase.getModule("inactivehouses").update(value).then(function (result) {
@@ -603,7 +603,7 @@ MapRealty.prototype.modalLargeRealty = function(data)
         tag: 'buttonrange',
         props: {
             items: [
-                {text:"Mô tả",value:0},
+                {text:"Thông tin chung",value:0},
                 {text:"Thông tin xây dựng",value:1},
                 {text:"Giá",value:2},
                 {text:"Tiện ích trong nhà",value:3},

@@ -4,7 +4,8 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/NewContact.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-
+import moduleDatabase from '../component/ModuleDatabase';
+import { confirmQuestion } from './ModuleView';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -73,8 +74,13 @@ NewContact.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        self.resolveDB(self.getDataSave());
-                                        self.createPromise();
+                                        var tempData = self.getDataSave();
+                                    
+                                        if(tempData!==undefined)
+                                        {
+                                            self.resolveDB(tempData);
+                                            self.createPromise();
+                                        }
                                     }
                                 },
                                 child: [
@@ -86,10 +92,14 @@ NewContact.prototype.getView = function () {
                                 class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
                                 on: {
                                     click: function (evt) {
-                                        self.resolveDB(self.getDataSave());
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                        var tempData = self.getDataSave();
+                                        if(tempData!==undefined)
+                                        {
+                                            self.resolveDB(self.getDataSave());
+                                            self.$view.selfRemove();
+                                            var arr = self.parent.body.getAllChild();
+                                            self.parent.body.activeFrame(arr[arr.length - 1]);
+                                        }
                                     }
                                 },
                                 child: [
@@ -227,7 +237,7 @@ NewContact.prototype.getDataSave = function() {
     }
     if(moduleDatabase.getModule("users").getLibary("phone")[this.phone.value]!==undefined||moduleDatabase.getModule("contacts").getLibary("phone")[this.phone.value]!==undefined)
     {
-        var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại chưa đúng vui lòng kiểm tra lại!");
+        var deleteItem = confirmQuestion("Xác nhận số điện thoại", "Số điện thoại trùng vui lòng kiểm tra lại!");
         this.$view.addChild(deleteItem);
         return;
     }

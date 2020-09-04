@@ -83,7 +83,7 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
   }
 
   table.sortTable td:first-child{
-    padding-left: 0.71428571428rem;
+    padding-left: 5px;
   }
 
   table.sortTable td:last-child{
