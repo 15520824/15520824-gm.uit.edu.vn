@@ -85,6 +85,7 @@ App.prototype.getView = function()
                     var parentNode = this.$view.parentNode;
                     var pastView = this.$view;
                     parentNode.replaceChild(this.getView(),pastView);
+                    moduleDatabase.checkPermission = undefined;
                 }else
                 {
                     setCookie("token_pizo_phone",getCookie("token_pizo_phone"),3);
@@ -94,11 +95,13 @@ App.prototype.getView = function()
                     moduleDatabase.getModule("users").setFormatLoad({WHERE:[{userid:getCookie("userid_pizo_phone")}]},value);
                     this.imageAvatar.src = "https://lab.daithangminh.vn/home_co/pizo/assets/avatar/" + moduleDatabase.getModule("users").getLibary("id")[window.userid].avatar;
                     this.nameAvatar.innerHTML = moduleDatabase.getModule("users").getLibary("id")[window.userid].name.split(" ").pop();
+                    this.getPermisionOpenPage();
                 }
             }.bind(this))
         }
         else
         {
+            this.getPermisionOpenPage();
             this.enableAvatar = true;
         }
     }
@@ -175,6 +178,7 @@ App.prototype.getView = function()
                 var parentNode = this.$view.parentNode;
                 var pastView = this.$view;
                 parentNode.replaceChild(this.getView(),pastView);
+                moduleDatabase.checkPermission = undefined;
                 break;
         }
     }.bind(this));
@@ -188,6 +192,7 @@ App.prototype.getView = function()
                 }
             }
     )
+    this.firstElement = [];
     this.$view = _({
         tag:"div",
         class:"pizo-app",
@@ -235,7 +240,10 @@ App.prototype.getView = function()
                             },
                             {
                                 tag:"hmenu",
-                                class:"",
+                                class:"pizo-header-menu",
+                                props:{
+                                    items:this.firstElement
+                                },
                                 on: {
                                     press: function(event) {
                                         var item = event.menuItem;
@@ -314,7 +322,6 @@ App.prototype.getView = function()
     this.promiseAll.then(function(){
         this.listParamPosition = moduleDatabase.getModule("positions").getList("name","id");
     }.bind(this));
-    this.getPermisionOpenPage();
     return this.$view;
 }
 
@@ -326,11 +333,13 @@ App.prototype.refresh = function () {
         this.setData(data);
 };
 
-App.prototype.getPermisionOpenPage = function(index)
+App.prototype.getPermisionOpenPage = function()
 {
     if(moduleDatabase.checkPermission == undefined){
         moduleDatabase.checkPermission = [];
-        this.promisePermission = moduleDatabase.queryData("loadPermision.php",{userid:window.userid},"privileges").then(function(result){
+        moduleDatabase.checkPermission[0] = [];
+        this.promisePermission = moduleDatabase.queryData("loadPermision.php",{userid:window.userid},"privileges");
+        this.promisePermission.then(function(result){
             for(var i = 0;i<result.length;i++)
             {
                 var permissionTemp = result[i].permission
@@ -364,7 +373,8 @@ App.prototype.getPermisionOpenPage = function(index)
                     moduleDatabase.checkPermission[indexTemp].push(permissionTemp);
                 }
             }
-            this.hMenu.items = [];
+            if(this.firstElement == undefined)
+            this.firstElement = [];
             var isRealty = false;
             for(var param in moduleDatabase.checkPermission)
             {
@@ -376,6 +386,7 @@ App.prototype.getPermisionOpenPage = function(index)
                     moduleDatabase.checkPermission[0].indexOf(25)!=-1||
                     moduleDatabase.checkPermission[0].indexOf(29)!=-1)
                     {
+                        var menuZone = [];
                         if(moduleDatabase.checkPermission[0].indexOf(13)!=-1)
                         menuZone.push({
                             text:"Tỉnh/TP",
@@ -407,9 +418,128 @@ App.prototype.getPermisionOpenPage = function(index)
                                 pageIndex:27
                             })
                         }
-                        this.hMenu.items.unshift({
+                        this.firstElement.push({
                             text: "Khu vực",
                             pageIndex: 2,
+                            items:menuZone
+                        })
+                    }
+
+                    if(moduleDatabase.checkPermission[0].indexOf(9)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(33)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(37)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(41)!=-1)
+                    {
+                        var menuZone = [];
+                        if(moduleDatabase.checkPermission[0].indexOf(33)!=-1)
+                        menuZone.push({
+                            text:"Tiện nghi trong nhà",
+                            pageIndex:31
+                        })
+                        if(moduleDatabase.checkPermission[0].indexOf(37)!=-1)
+                        menuZone.push({
+                            text:"Pháp lý",
+                            pageIndex:32
+                        })
+                        if(moduleDatabase.checkPermission[0].indexOf(9)!=-1)
+                        menuZone.push({
+                            text:"Thông tin liên hệ",
+                            pageIndex:33
+                        })
+                        if(moduleDatabase.checkPermission[0].indexOf(41)!=-1)
+                        menuZone.push({
+                            text:"Loại bất động sản",
+                            pageIndex:34
+                        })
+
+                        this.firstElement.push({
+                            text: "Thông tin",
+                            pageIndex: 3,
+                            items:menuZone
+                        })
+                    }
+
+                    if(moduleDatabase.checkPermission[0].indexOf(49)!=-1)
+                    {
+                        var menuZone = [];
+                        this.firstElement.push({
+                            text: "Thông báo",
+                            pageIndex: 4,
+                            items:menuZone
+                        })
+                    }
+
+                    if(moduleDatabase.checkPermission[0].indexOf(5)!=-1)
+                    {
+                        var menuZone = [];
+                        this.firstElement.push({
+                            text: "Sơ đồ tổ chức",
+                            pageIndex: 5,
+                            items:menuZone
+                        })
+                    }
+
+                    if(moduleDatabase.checkPermission[0].indexOf(1)!=-1)
+                    {
+                        var menuZone = [];
+                        this.firstElement.push({
+                            text: "Tài khoản",
+                            pageIndex: 6,
+                            items:menuZone
+                        })
+                    }
+                    
+                    if(moduleDatabase.checkPermission[0].indexOf(53)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(54)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(55)!=-1)
+                    {
+                        var menuZone = [];
+                        if(moduleDatabase.checkPermission[0].indexOf(53)!=-1)
+                        menuZone.push({
+                            text:"Tổng quan",
+                            pageIndex:71
+                        })
+                        if(moduleDatabase.checkPermission[0].indexOf(54)!=-1)
+                        menuZone.push({
+                            text:"Cuộc gọi",
+                            pageIndex:72
+                        })
+                        if(moduleDatabase.checkPermission[0].indexOf(55)!=-1)
+                        menuZone.push({
+                            text:"Upload hình",
+                            pageIndex:73
+                        })
+
+                        this.firstElement.push({
+                            text: "Thống kê",
+                            pageIndex: 7,
+                            items:menuZone
+                        })
+                    }
+
+
+                    if(moduleDatabase.checkPermission[0].indexOf(51)!=-1||
+                    moduleDatabase.checkPermission[0].indexOf(52)!=-1)
+                    {
+                        var menuZone = [];
+                        this.firstElement.push({
+                            text: "Nhập xuất dữ liệu",
+                            pageIndex: 9,
+                            items:menuZone
+                        })
+                    }
+
+                    if(moduleDatabase.checkPermission[0].indexOf(45)!=-1)
+                    {
+                        var menuZone = [];
+                        if(moduleDatabase.checkPermission[0].indexOf(45)!=-1)
+                        menuZone.push({
+                            text:"Sửa trợ giúp",
+                            pageIndex:73
+                        })
+                        this.firstElement.push({
+                            text: "Trợ giúp",
+                            pageIndex: 10,
                             items:menuZone
                         })
                     }
@@ -417,10 +547,10 @@ App.prototype.getPermisionOpenPage = function(index)
                 isRealty = true;
             }
             if(isRealty === true)
-            this.hMenu.items.unshift( {
+            this.firstElement.unshift({
                 text: "Dự án",
                 pageIndex: 1,
-                items:[
+                items: [
                     {
                         text:"Tất cả",
                         pageIndex:11
@@ -451,7 +581,7 @@ App.prototype.getPermisionOpenPage = function(index)
                     }
                 ]
             });
-            this.hMenu.items = this.hMenu.items;
+            this.hMenu.items = this.firstElement;
         }.bind(this)) 
     }
 }

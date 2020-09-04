@@ -12,3 +12,7 @@
 table.sortTable th, table.sortTable td, table.sortTableClone th, table.sortTableClone td{
     border-bottom: 1px solid #ddd;
 }
+
+table.sortTable, table.sortTableClone{
+    border: 1px solid #ddd;
+}

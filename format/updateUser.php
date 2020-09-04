@@ -24,6 +24,7 @@ if (isset($_POST["name"])) {
 
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
+    if(isset($data["birthday"]))
     $data["birthday"] = new DateTime($data["birthday"]);
 }else
 {

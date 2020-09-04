@@ -332,7 +332,6 @@ NewPosition.prototype.getDataCurrent = function()
 
 NewPosition.prototype.getDataRowListAccount = function(data){
     var temp = [
-        data.username,
         data.name,
         data.phone,
         data.email,
@@ -348,7 +347,7 @@ NewPosition.prototype.setDataListAccount = function(data){
 
 NewPosition.prototype.formatDataRowListAccount = function(data)
 {
-    var temp = [["",
+    var temp = [[
         "Không có nhân viên nào",
         "",
         "",
@@ -367,8 +366,7 @@ NewPosition.prototype.formatDataRowListAccount = function(data)
                 this.username.value = data[i].name;
                 this.username.data = data[i];
                 isCheck = true;
-            }
-            
+            } 
         }
     }
     return temp;
@@ -446,7 +444,6 @@ NewPosition.prototype.listLink = function(data){
     })
 
     var header = [
-        {value:'Tài khoản',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
         {value:'Họ và tên',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},
         {value:'Số điện thoại',style:{minWidth:"90px",width:"90px"} , functionClickAll: self.functionChoice.bind(self.modal)} , 
         {value:'Email',sort:true,style:{minWidth:"unset"} , functionClickAll: self.functionChoice.bind(self.modal)},

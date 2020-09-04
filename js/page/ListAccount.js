@@ -92,18 +92,6 @@ ListAccount.prototype.getView = function () {
                                 child: [
                                 '<span>' + "Đóng" + '</span>'
                                 ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.add();
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Thêm" + '</span>'
-                                ]
                             }
                         ]
                     },
@@ -174,6 +162,22 @@ ListAccount.prototype.getView = function () {
             },
         ]
     });
+
+    if(moduleDatabase.checkPermission[0].indexOf(2)!==-1)
+    {
+        $("div.pizo-list-realty-button",this.$view).appendChild(_({
+            tag: "button",
+            class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+            on: {
+                click: function (evt) {
+                    self.add();
+                }
+            },
+            child: [
+            '<span>' + "Thêm" + '</span>'
+            ]
+        }));
+    }
     var tabContainer = _({
         tag:"div",
         class:["pizo-list-realty-main-result-control","drag-zone-bg"],
@@ -184,21 +188,25 @@ ListAccount.prototype.getView = function () {
     var docTypeMemuProps,token,functionX;
     var functionClickMore = function(event, me, index, parent, data, row)
     {
-       
         docTypeMemuProps = {
-            items: [
-                {
-                    text: 'Sửa',
-                    icon: 'span.mdi.mdi-text-short',
-                    value:1,
-                },
-                {
-                    text: 'Xóa',
-                    icon: 'span.mdi.mdi-text',
-                    value:2,
-                },
-            ]
+            items: []
         };
+        if(moduleDatabase.checkPermission[0].indexOf(3)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Sửa',
+                icon: 'span.mdi.mdi-text-short',
+                value:1,
+            });
+        }
+        if(moduleDatabase.checkPermission[0].indexOf(4)!==-1)
+        {
+            docTypeMemuProps.items.push({
+                text: 'Xóa',
+                icon: 'span.mdi.mdi-text',
+                value:2,
+            });
+        }
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
             switch(menuItem.value)
             {
@@ -246,8 +254,7 @@ ListAccount.prototype.getView = function () {
         {value:'Email',sort:true,style:{minWidth:"unset"}},
         {value:'Chức danh',sort:true,style:{minWidth:"100px",width:"100px"}},
         {value:'Truy cập lần cuối',sort:true,style:{minWidth:"140px",width:"140px"}},
-        { value:'Hệ thống', sort:true,style:{minWidth:"105px",width:"105px"} },
-        { value:'Hoạt đông', sort:true,style:{minWidth:"105px",width:"105px"} },
+        { value:'Hoạt động', sort:true,style:{minWidth:"105px",width:"105px"} },
         {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
         tabContainer.addChild(self.mTable);
@@ -323,7 +330,6 @@ ListAccount.prototype.getDataRow = function(data)
         data.email,
         name,
         {},
-        parseInt(data.permission)?"Có":"Không",
         parseInt(data.status)?"Có":"Không",
         {}
         ]

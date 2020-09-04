@@ -758,7 +758,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                             child:[
                                                                 {
                                                                     tag:"selectmenu",
-                                                                    class:["pizo-new-account-selectbox-container-input","pizo-new-realty-dectruct-input"],
+                                                                    class:["pizo-new-account-selectbox-container-input","pizo-new-realty-dectruct-input","disabled"],
                                                                     props:{
                                                                         enableSearch: true,
                                                                         items:x

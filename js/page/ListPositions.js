@@ -325,6 +325,7 @@ ListPositions.prototype.formatDataRowPosition = function(data){
 ListPositions.prototype.getDataRowPosition = function(data)
 {
     var name;
+    console.log(this.checkAccount[data.id],data)
     if(this.checkAccount[data.id]==undefined)
         name = "";
     else{
