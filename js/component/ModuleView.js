@@ -309,7 +309,12 @@ function moveAtFix(clone, pageY, shiftY, result) {
 
 function moveElement(event, me, result, index) {
     var scrollParent = result.realTable.parentNode;
-
+    while (scrollParent) {
+        var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
+        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+        scrollParent = scrollParent.parentElement;
+    }
+    if (scrollParent)
     scrollParent.addEventListener("scroll", function (event) {
         bg.isMove = false;
         outFocus(clone, trigger, functionCheckZone, bg, result);
@@ -374,7 +379,11 @@ function moveElementFix(event, me, result, index) {
     var bg = result.backGroundFix(index);
 
     var scrollParent = result.realTable.parentNode;
-
+    while (scrollParent) {
+        var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
+        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+        scrollParent = scrollParent.parentElement;
+    }
     result.bodyTable.appendChild(bg);
     bg.appendChild(clone);
     var functionCheckZone = function (event) {
@@ -582,6 +591,12 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             window.scrollEvent = captureMousePosition(event);
         })
         var scrollParent = result;
+        while (scrollParent) {
+            var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
+            if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+            scrollParent = scrollParent.parentElement;
+        }
+        if (scrollParent)
         scrollParent.addEventListener("scroll", function (event) {
             if (window.lastScrolledLeft != scrollParent.scrollLeft) {
                 window.xMousePos -= window.lastScrolledLeft;
@@ -3032,6 +3047,11 @@ tableView.prototype.dropRowChildElement = function () {
 tableView.prototype.backGroundFix = function (index) {
     var rect = this.getBoundingClientRect();
     var scrollParent = this.realTable.parentNode;
+    while (scrollParent) {
+        var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
+        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+        scrollParent = scrollParent.parentElement;
+    }
     var rectDistance = traceOutBoundingClientRect(this);
 
     var temp = _(
@@ -3074,6 +3094,11 @@ tableView.prototype.backGroundFix = function (index) {
 tableView.prototype.backGround = function (height, callback, index) {
     var rect = this.getBoundingClientRect();
     var scrollParent = this.realTable.parentNode;
+    while (scrollParent) {
+        var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
+        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+        scrollParent = scrollParent.parentElement;
+    }
     var rectDistance = traceOutBoundingClientRect(this);
 
     var temp = _({
