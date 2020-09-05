@@ -579,7 +579,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.isSwipeRight = false;
     result.sortArray = [];
 
-    
+    var scrollParent = null;
 
     if (window.scrollEvent === undefined) {
         window.xMousePos = 0;
@@ -590,7 +590,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         document.addEventListener("mousemove", function (event) {
             window.scrollEvent = captureMousePosition(event);
         })
-        var scrollParent = result;
+        scrollParent = result;
         while (scrollParent) {
             var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
             if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
@@ -655,6 +655,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         })
         tempLimit.style.display = "none";
         result.appendChild(tempLimit);
+        if (scrollParent)
         scrollParent.addEventListener("scroll",function(event){
                 if(this.startIndex>10*indexRow)
                 {
