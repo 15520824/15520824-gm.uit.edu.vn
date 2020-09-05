@@ -591,24 +591,68 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             window.scrollEvent = captureMousePosition(event);
         })
         var scrollParent = result;
-        while (scrollParent) {
-            var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
-            if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
-            scrollParent = scrollParent.parentElement;
-        }
-        if (scrollParent)
-        scrollParent.addEventListener("scroll", function (event) {
-            if (window.lastScrolledLeft != scrollParent.scrollLeft) {
-                window.xMousePos -= window.lastScrolledLeft;
-                window.lastScrolledLeft = scrollParent.scrollLeft;
-                window.xMousePos += window.lastScrolledLeft;
+        setTimeout(function(){
+            while (scrollParent) {
+                var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
+                if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+                scrollParent = scrollParent.parentElement;
             }
-            if (lastScrolledTop != scrollParent.scrollTop) {
-                window.yMousePos -= window.lastScrolledTop;
-                window.lastScrolledTop = scrollParent.scrollTop;
-                window.yMousePos += window.lastScrolledTop;
+            scrollParent.addEventListener("scroll", function (event) {
+                if (window.lastScrolledLeft != scrollParent.scrollLeft) {
+                    window.xMousePos -= window.lastScrolledLeft;
+                    window.lastScrolledLeft = scrollParent.scrollLeft;
+                    window.xMousePos += window.lastScrolledLeft;
+                }
+                if (lastScrolledTop != scrollParent.scrollTop) {
+                    window.yMousePos -= window.lastScrolledTop;
+                    window.lastScrolledTop = scrollParent.scrollTop;
+                    window.yMousePos += window.lastScrolledTop;
+                }
+            })
+            if(window.mobilecheck())
+            {
+                var tempLimit = _({
+                    tag:"div",
+                    child:[
+                        {
+                            tag:"span",
+                            style:{
+                                padding: "10px",
+                                textAlign: "center",
+                                display: "block",
+                                fontSize: "16px",
+                            },
+                            props:{
+                                innerHTML:"Để tìm kiếm các phần tử cũ hơn vui lòng sử dung Tìm kiếm"
+                            }
+                        }
+                    ]
+                })
+                tempLimit.style.display = "none";
+                result.appendChild(tempLimit);
+                scrollParent.addEventListener("scroll",function(event){
+                        if(this.startIndex>10*indexRow)
+                        {
+                            if(tempLimit.style.display !== "block")
+                            tempLimit.style.display = "block";
+                            return;
+                        }else
+                        {
+                            if(tempLimit.style.display !== "none")
+                            tempLimit.style.display = "none";
+                        }
+                        if(this.scrollTop >= (this.scrollHeight - this.offsetHeight))
+                        {
+                            this.getBodyTable(this.data);
+                            if (this.bodyTable.listCheckBox !== undefined&&this.bodyTable.listCheckBox.length>0)
+                            {
+                                this.bodyTable.listCheckBox[0].update();
+                            }
+                        }
+                        result.setUpSwipe();
+                })   
             }
-        })
+        }.bind(this),80)
     }
     result.updatePagination = function (number = result.tempIndexRow,isRedraw = true) {
         if(window.mobilecheck())
@@ -634,49 +678,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             result.paginationElement = pagination;
         }
     }
-    if(window.mobilecheck())
-    {
-        var tempLimit = _({
-            tag:"div",
-            child:[
-                {
-                    tag:"span",
-                    style:{
-                        padding: "10px",
-                        textAlign: "center",
-                        display: "block",
-                        fontSize: "16px",
-                    },
-                    props:{
-                        innerHTML:"Để tìm kiếm các phần tử cũ hơn vui lòng sử dung Tìm kiếm"
-                    }
-                }
-            ]
-        })
-        tempLimit.style.display = "none";
-        result.appendChild(tempLimit);
-        scrollParent.addEventListener("scroll",function(event){
-                if(this.startIndex>10*indexRow)
-                {
-                    if(tempLimit.style.display !== "block")
-                    tempLimit.style.display = "block";
-                    return;
-                }else
-                {
-                    if(tempLimit.style.display !== "none")
-                    tempLimit.style.display = "none";
-                }
-                if(this.scrollTop >= (this.scrollHeight - this.offsetHeight))
-                {
-                    this.getBodyTable(this.data);
-                    if (this.bodyTable.listCheckBox !== undefined&&this.bodyTable.listCheckBox.length>0)
-                    {
-                        this.bodyTable.listCheckBox[0].update();
-                    }
-                }
-                this.setUpSwipe();
-        })   
-    }
+    
     result.updatePagination(indexRow,false);
     row = _({
         tag: "tr"
