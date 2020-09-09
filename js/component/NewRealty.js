@@ -329,7 +329,7 @@ NewRealty.prototype.imageJuridical = function()
         {
             if(first!=="")
             arr.push(first);
-            arr.push({id:this.data.original.image[i]})
+            arr.push({id:parseInt(this.data.original.image[i])})
             if(first=="")
             {
                 
@@ -392,7 +392,7 @@ NewRealty.prototype.imageCurrentStaus = function()
         {
             if(first!=="")
             arr.push(first);
-            arr.push({id:this.data.original.image[i]});
+            arr.push({id:parseInt(this.data.original.image[i])});
             if(first=="")
             {
                 
@@ -2037,14 +2037,13 @@ NewRealty.prototype.getDataSave = function(){
     {
         if(typeof arr[i] == "string")
         {
-            image.push({src:arr[i],type:0});
+            image.push({src:arr[i],type:0,userid:window.userid});
         }else
         {
-            image.push({src:arr[i].id,type:0});
+            image.push({src:arr[i].id,type:0,userid:window.userid});
         }
     }
     var thumnail = this.viewCurrentStaus.getImportTant();
-    console.log(thumnail)
     arr = this.viewCurrentStaus.getFile();
     for(var i = 0;i<arr.length;i++)
     {
@@ -2056,9 +2055,9 @@ NewRealty.prototype.getDataSave = function(){
             var src = arr[i].id;
         }
         if(i == thumnail)
-        image.push({src:src,type:1,thumnail:1});
+        image.push({src:src,type:1,thumnail:1,userid:window.userid});
         else
-        image.push({src:src,type:1,thumnail:0});
+        image.push({src:src,type:1,thumnail:0,userid:window.userid});
     }
     var temp = {
         height:this.inputHeight.value*this.inputUnitHeight.value,
@@ -2182,18 +2181,14 @@ NewRealty.prototype.getDataSave = function(){
     }
 
     if(this.data!==undefined){
-        if(this.isRequestEdit)
-        {
-            if(this.data.original!==undefined&&this.data.original.id!==undefined)
-            temp.id = this.data.original.id;
-            else if(this.data.id!==undefined)
-            temp.id = this.data.id;
-        }else{
-            if(this.data.original!==undefined&&this.data.original.id!==undefined)
-            temp.id = this.data.original.id;
-            else if(this.data.id!==undefined)
-            temp.id = this.data.id;
-        }
+        if(this.data.original!==undefined&&this.data.original.id!==undefined)
+        temp.id = this.data.original.id;
+        else if(this.data.id!==undefined)
+        temp.id = this.data.id;
+    }
+    if(this.isRequestEdit)
+    {
+        temp.userid = window.userid;
     }
     return temp;
 }

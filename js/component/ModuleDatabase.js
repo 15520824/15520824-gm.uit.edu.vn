@@ -72,7 +72,7 @@ DataStructure.prototype.equal = function(data,WHERE)
                         stringResult+=false;
                 }else
                 {
-                    if(data[param]===WHERE[param])
+                    if(data[param]==WHERE[param])
                     stringResult+=true;
                     else
                     stringResult+=false;
@@ -404,13 +404,14 @@ DataStructure.prototype.add = function(data,needChange = false){
     var self = this;
     return new Promise(function(resolve,reject){
         self.queryData(self.phpAdder,data).then(function(value){
+                if(!Array.isArray(value.data))
                 Object.assign(data,value.data);
                 if(needChange === true)
                 {
                     data.add = Object.assign({}, value.add);
                     data.update = Object.assign({}, value.update);
                     data.delete = Object.assign({}, value.delete);
-                }  
+                }
                 self.setFormatAdd(data);
                 var update = value["update"];
                 var insert = value["add"];
@@ -466,8 +467,17 @@ DataStructure.prototype.add = function(data,needChange = false){
 DataStructure.prototype.setFormatAdd = function(data)
 {
     var self = this;
-    if(self.Libary["id"][data.id]!==undefined)
+    if(Array.isArray(data))
+    {
+        for(var i = 0;i<data.length;i++)
+        {
+            self.setFormatAdd(data[i]);
+        }
         return;
+    }
+    if(self.Libary["id"]!==undefined&&self.Libary["id"][data.id]!==undefined)
+        return;
+    console.log(data)
     for(var param in self.Libary)
     {
         if(typeof self.Libary[param]!= "function")
@@ -493,7 +503,11 @@ DataStructure.prototype.setFormatAdd = function(data)
         }
         return {text:text,value:checkvalue};
     }
-
+    if(self.data == undefined)
+    {
+        self.data = [];
+        self.countRow = 0;
+    }
     self.data.push(data);  
     self.countRow++;
 }
@@ -583,7 +597,6 @@ DataStructure.prototype.setFormatUpdate = function(data)
     {
         if(this.generalOperator(temp,JSON.parse(param))===true)
         {
-            console.log(param)
             if(this.promisePart[param].data.indexOf(temp)===-1)
             {
                 this.promisePart[param].data.push(temp);

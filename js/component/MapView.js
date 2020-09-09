@@ -1116,7 +1116,7 @@ MapView.prototype.modalMiniRealty = function(data)
             {
                 if(first!=="")
                 arr.push(first);
-                arr.push({id:data.image[i]})
+                arr.push({id:parseInt(data.image[i])})
                 if(first=="")
                 {
                     
@@ -1125,18 +1125,18 @@ MapView.prototype.modalMiniRealty = function(data)
             }
         
         }
+        var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
         if(arr.length>0)
         moduleDatabase.getModule("image").load({WHERE:arr}).then(function(values){
-            var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
             for(var i = 0;i<values.length;i++){
                 if(values[i].thumnail == 1){
                     src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+values[i].src;
+                    image.style.backgroundImage = `url(`+src+`)`;
                     break;
                 }
-                
             }
-            image.style.backgroundImage = `url(`+src+`)`;
         })
+        image.style.backgroundImage = `url(`+src+`)`;
 
   
         return temp;

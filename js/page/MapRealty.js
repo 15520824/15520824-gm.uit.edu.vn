@@ -429,8 +429,8 @@ MapRealty.prototype.requestEdit = function (data) {
 MapRealty.prototype.requestEditDB = function (mNewRealty, data) {
     var self = this
     mNewRealty.promiseEditDB.then(function (value) {
-        moduleDatabase.getModule("inactivehouses").update(value).then(function (result) {
-            self.editView(value, data);
+        moduleDatabase.getModule("modification_requests").add(value).then(function (result) {
+            // self.editView(value, data);
         })
         mNewRealty.promiseEditDB = undefined;
         setTimeout(function () {
@@ -502,6 +502,8 @@ MapRealty.prototype.modalLargeRealty = function(data)
                     click:function(event)
                     {
                         var arr = [];
+                        if(!modal.image)
+                        return;
                         for(var  i = 0;i<modal.image.length;i++)
                         {
                             arr.push({
@@ -1161,17 +1163,17 @@ MapRealty.prototype.modalLargeRealty = function(data)
         }
     
     }
+    var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
     if(arr.length>0)
     moduleDatabase.getModule("image").load({WHERE:arr}).then(function(values){
-        var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
         var m;
         for(var i = 0;i<values.length;i++){
             if(values[i].thumnail == 1){
                 src = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/"+values[i].src;
                 m = i;
+                imageThumnail.setAttribute("src",src);
                 break;
             }
-            
         }
         var arrTemp = [];
         var arrTemp2 = [];
@@ -1193,49 +1195,10 @@ MapRealty.prototype.modalLargeRealty = function(data)
                 mediaContainer2.appendChild(self.mediaItem(arrTemp2,k));
             }
         }
-        imageThumnail.setAttribute("src",src);
         modal.image = arrTemp;
     })
+    imageThumnail.setAttribute("src",src);
     
-    // mediaContainer.appendChild(_( {
-    //     tag:"li",
-    //     class:["media-stream-tile", "media-stream-tile--fullwidth", "media-stream-tile--halfheight", "media-stream-tile--upsell"],
-    //     child:[
-    //         {
-    //             tag:"div",
-    //             class:"upsell-photo-content",
-    //             child:[
-    //                 {
-    //                     tag:"div",
-    //                     class:"ds-hero-headline",
-    //                     props:{
-    //                         innerHTML:"Quan tâm đến tour du lịch nhà này?"
-    //                     }
-    //                 },
-    //                 {
-    //                     tag:"ul",
-    //                     class:"contact-button-group",
-    //                     child:[
-    //                         {
-    //                             tag:"li",
-    //                             class:"contact-button",
-    //                             child:[
-    //                                 {
-    //                                     tag:"button",
-    //                                     class:["Button-wpcbcc-0", "iJIIUW", "contact-button-condensed", "ds-button", "ds-label-small"],
-    //                                     props:{
-    //                                         innerHTML:"Đặt tour thăm quan"
-    //                                     }
-    //                                 }
-    //                             ]
-    //                         }
-    //                     ]
-    //                 }
-    //             ]
-    //         }
-    //     ]
-    // }))
-
     var functionESC = function(event){
         if(event.keyCode == 27){
             modal.selfRemove();
@@ -3193,6 +3156,7 @@ MapRealty.prototype.itemMap = function(marker){
         }
        
     }
+    var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
     if(arr.length>0)
     moduleDatabase.getModule("image").load({WHERE:arr}).then(function(values){
         var src = "https://photos.zillowstatic.com/p_e/ISrh2fnbc4956m0000000000.jpg";
@@ -3205,6 +3169,7 @@ MapRealty.prototype.itemMap = function(marker){
         }
         thumnail.setAttribute("src",src);
     })
+    thumnail.setAttribute("src",src);
     var listener = google.maps.event.addListener(marker, 'click', function(event) {
         temp.click();
     })

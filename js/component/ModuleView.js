@@ -557,12 +557,24 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             bodyTable
         ]
     });
+    var resolveAdd;
+    var promiseAdd = new Promise(function(resolve,reject){
+        resolveAdd = resolve;
+    })
     var result = _(
         {
             tag:"div",
             class:"container-sortTable",
             child:[
-                realTable
+                realTable,
+                {
+                    tag: 'attachhook',
+                    on: {
+                        error: function () {
+                            resolveAdd();
+                        }
+                    }
+                }
             ]
         }
         );
@@ -591,12 +603,13 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             window.scrollEvent = captureMousePosition(event);
         })
         var scrollParent = result;
-        setTimeout(function(){
+        promiseAdd.then(function(){
             while (scrollParent) {
                 var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
                 if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
                 scrollParent = scrollParent.parentElement;
             }
+            if(scrollParent)
             scrollParent.addEventListener("scroll", function (event) {
                 if (window.lastScrolledLeft != scrollParent.scrollLeft) {
                     window.xMousePos -= window.lastScrolledLeft;
@@ -630,6 +643,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                 })
                 tempLimit.style.display = "none";
                 result.appendChild(tempLimit);
+                if(scrollParent)
                 scrollParent.addEventListener("scroll",function(event){
                         if(this.startIndex>10*indexRow)
                         {
@@ -652,7 +666,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                         result.setUpSwipe();
                 })   
             }
-        }.bind(this),80)
+        }.bind(this))
     }
     result.updatePagination = function (number = result.tempIndexRow,isRedraw = true) {
         if(window.mobilecheck())
@@ -660,6 +674,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             result.tempIndexRow = indexRow;
             if(isRedraw){
                 result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical,undefined,false);
+                if(scrollParent)
                 scrollParent.emit("scroll");
             }                                                   
         }else{
@@ -1532,7 +1547,6 @@ tableView.prototype.resetHash = function () {
     var self = this;
     if (self.hashTable !== undefined)
         self.hashTable = new HashTable(self.data);
-        console.log(self.hashTableFilter)
     if (self.hashTableFilter !== undefined)
         self.hashTableFilter = new HashTableFilter(self.data);
 }
@@ -3054,6 +3068,12 @@ tableView.prototype.backGroundFix = function (index) {
         if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
         scrollParent = scrollParent.parentElement;
     }
+    var scrollLeft = scrollTop = 0;
+    if(scrollParent)
+    {
+        scrollLeft = scrollParent.scrollLeft;
+        scrollTop = scrollParent.scrollTop;
+    }
     var rectDistance = traceOutBoundingClientRect(this);
 
     var temp = _(
@@ -3062,9 +3082,9 @@ tableView.prototype.backGroundFix = function (index) {
             class: "background-opacity",
             style: {
                 top: rect.y + 'px',
-                left: rect.x + scrollParent.scrollLeft + 'px',
+                left: rect.x + scrollLeft + 'px',
                 backgroundColor: "#ffffff00",
-                realTop: rect.y + scrollParent.scrollTop,
+                realTop: rect.y + scrollTop,
                 width: rectDistance.width - 17 + "px"
             },
             child: [
@@ -3102,7 +3122,9 @@ tableView.prototype.backGround = function (height, callback, index) {
         scrollParent = scrollParent.parentElement;
     }
     var rectDistance = traceOutBoundingClientRect(this);
-
+    var scrollTop = 0;
+    if(scrollParent)
+    scrollTop = scrollParent.scrollTop;
     var temp = _({
         tag: "div",
         class: "background-opacity-1",
@@ -3110,7 +3132,7 @@ tableView.prototype.backGround = function (height, callback, index) {
             top: rect.y + 'px',
             left: rect.x - 17 + 'px',
             backgroundColor: "#ffffff00",
-            realTop: rect.y + scrollParent.scrollTop,
+            realTop: rect.y + scrollTop,
             // width:rectDistance.width-17+"px"
         },
         child: [

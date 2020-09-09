@@ -346,7 +346,8 @@ if(isset($data["image"]))
             'type' => $type,
             'houseid' => $data["id"],
             'created' => new DateTime(),
-            'thumnail' => $thumnail
+            'thumnail' => $thumnail,
+            'userid' => $img["userid"]
         );
         $image_id = $connector->insert($prefix.'image', $obj_list);
         $obj_list["id"] = $image_id;

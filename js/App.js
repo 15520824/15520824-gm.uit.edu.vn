@@ -35,6 +35,7 @@ function App(){
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     moduleDatabase.getModule("activehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActivehouse.php"]);
+    moduleDatabase.getModule("modification_requests",["loadModificationRequests.php","addModificationRequests.php","updateModificationRequests.php","deleteModificationRequests.php"])
     moduleDatabase.getModule("inactivehouses",["loadActiveHouses.php","addActiveHouse.php","updateActiveHouse.php","deleteActivehouse.php"]);
     moduleDatabase.getModule("contacts",["load.php","add.php","update.php","deleteContact.php"]);
     moduleDatabase.getModule("users",["load.php","addUser.php","updateUser.php","deleteUser.php"]);

@@ -276,17 +276,23 @@ if(isset($data["image"]))
     define('UPLOAD_DIR', "../../assets/upload/");
     for ($i = 0; $i < $count; $i++){
         $img = $images[$i];
-        if (is_numeric ($img["src"]))
+        if (is_numeric($img["src"]))
         {
             for($j = 0;$j<count($image_old);$j++)
             {
                 if($img["src"]==$image_old[$j]["id"])
                 {
                     if(isset($img["thumnail"])&&$image_old[$j]["thumnail"]!=$img["thumnail"])
-                    $connector->update($prefix.'image', array(
-                        "id"=>$img["src"],
-                        "thumnail"=>$img["thumnail"]
-                    ));
+                    {
+                        $connector->update($prefix.'image', array(
+                            "id"=>$img["src"],
+                            "thumnail"=>$img["thumnail"]
+                        ));
+                        $image_old[$j]["thumnail"] = $img["thumnail"];
+                        array_push($update,array(
+                            'image'=>$image_old[$j]
+                        ));
+                    }
                     array_splice($image_old,$j,1);
                     $data["image"][$i] = intval($img["src"]);
                     break;
@@ -323,7 +329,8 @@ if(isset($data["image"]))
             'type' => $type,
             'houseid' => $data["id"],
             'created' => new DateTime(),
-            'thumnail' => $thumnail
+            'thumnail' => $thumnail,
+            'userid' => $img["userid"]
         );
         $image_id = $connector->insert($prefix.'image', $obj_list);
         array_push($insert,array(

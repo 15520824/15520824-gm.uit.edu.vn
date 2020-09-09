@@ -15,12 +15,7 @@ function MergeRealty(data) {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-        
-    this.textHeader = "Sửa ";
     this.data = data;
-
-    if(this.data ==undefined)
-    this.textHeader = "Thêm ";
 }
 
 MergeRealty.prototype.setContainer = function(parent)
@@ -75,7 +70,7 @@ MergeRealty.prototype.getView = function () {
                         tag: "span",
                         class: "pizo-body-title-left",
                         props: {
-                            innerHTML:  self.textHeader+"Tỉnh/TP"
+                            innerHTML: "Gộp bất động sản"
                         }
                     },
                     {
@@ -227,7 +222,7 @@ MergeRealty.prototype.getView = function () {
     myTool.setData(
         {
             editor: {
-                title: 'Quản lý bất động sản',
+                title: 'Thông tin bất động sản sau gộp',
                 properties: [
                     {
                         type:"group",

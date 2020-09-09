@@ -708,7 +708,7 @@ NewAccount.prototype.getView = function (dataParent) {
                                                             tag:"img",
                                                             class:"pizo-new-account-container-avatar-container-image-content",
                                                             attr:{
-                                                                src:"../assets/avatar/avatar-default.png"
+                                                                src:"./assets/avatar/avatar-default.png"
                                                             },
                                                             on:{
                                                                 click:function(event){
