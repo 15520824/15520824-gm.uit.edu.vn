@@ -102,7 +102,7 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
     user-select:none;
     -o-user-select:none;
     position: relative;
-    transform: scale(1);
+    /* transform: scale(1); */
     /* transform: none; */
     /* transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76); */
   }

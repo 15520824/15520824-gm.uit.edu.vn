@@ -2589,8 +2589,6 @@ tableView.prototype.getLastElement = function(element)
 
 tableView.prototype.insertRow = function (data, checkMust = false) {
     var result = this, k, cell;
-    if (result.isUpdate === false)
-    return;
     var delta = [];
     var index = result.childrenNodes.length;
     var row = result.getRow(data);
@@ -2723,8 +2721,6 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
 
 tableView.prototype.updateRow = function (data, index, checkMust = false) {
     var result = this, k, cell;
-    if (result.isUpdate === false)
-    return;
     var delta = [];
     var row = result.getRow(data);
     for (var i = 0; i < result.clone.length; i++) {
@@ -2846,16 +2842,14 @@ tableView.prototype.dropRow = function (index) {
     var result = this;
     var element = result.clone[0][index + 1].parentNode;
     return new Promise(function (resolve, reject) {
-        if (result.isUpdate === false)
-            reject();
         if (!element.classList.contains("hideTranslate"))
             element.classList.add("hideTranslate");
         if (element.childrenNodes.length !== 0)
             element.addHideAnimationChild();
-            result.isUpdate = false;
+            result.bodyTable.parentNode.style.pointerEvents = "none";
         var eventEnd = function () {
             result.exactlyDeleteRow(index);
-            result.isUpdate = undefined;
+            result.bodyTable.parentNode.style.pointerEvents = "";
             resolve();
         };
         // Code for Safari 3.1 to 6.0
@@ -3714,7 +3708,9 @@ export function deleteQuestion(title, content, yes = "Có", no = "không") {
                                     on: {
                                         click: function (event) {
                                             temp.selfRemove();
-                                            resolve();
+                                            setTimeout(function(){
+                                                resolve();
+                                            },60);
                                         }
                                     },
                                     child: [

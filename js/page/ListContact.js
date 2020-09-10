@@ -503,7 +503,6 @@ ListContact.prototype.deleteView = function(parent,index){
 
 ListContact.prototype.deleteDB = function(data,parent,index){
     var self = this;
-    console.log(data)
     moduleDatabase.getModule("contacts").delete({id:data.id}).then(function(value){
         self.deleteView(parent,index);
     })

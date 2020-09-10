@@ -38,7 +38,7 @@ if($WHERE!="")
 $WHERE = " WHERE ".$WHERE;
 if($ORDERING!="")
 $ORDERING = " ORDER BY ".$ORDERING;
-$result = $connector->query("SELECT `id`, `cellLat`, `cellLng`, `created`, AsText(`map`) FROM ".$prefix."geometry".$WHERE.$ORDERING);
+$result = $connector->query("SELECT `id`, `cellLat`, `cellLng`, `created`, `name`, AsText(`map`) FROM ".$prefix."geometry".$WHERE.$ORDERING);
 
  
 $check = array();

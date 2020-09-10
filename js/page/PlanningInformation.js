@@ -8,7 +8,7 @@ import { consoleWKT,loaddingWheel ,getGMT,formatDate } from '../component/Format
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
-import { deleteQuestion } from '../component/ModuleView';
+import { confirmQuestion } from '../component/ModuleView';
 
 
 var _ = Fcore._;
@@ -30,21 +30,37 @@ PlanningInformation.prototype.setContainer = function(parent)
 Object.defineProperties(PlanningInformation.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 PlanningInformation.prototype.constructor = PlanningInformation;
 
+PlanningInformation.prototype.setUpDxfFile = function(fileText,loadding)
+{
+    var parser = new DxfParser();
+    var dxf = null;
+    try {
+        dxf = parser.parseSync(fileText);
+    } catch (err) {
+        return console.error(err.stack);
+    }
+    
+    var wkt = GeoJSON.parse(dxf);
+    var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
+    window.dcel.extractLines();
+    var faces = dcel.internalFaces();
+    wkt = consoleWKT(faces);
+    
+    this.polygon =  this.polygon.concat(this.addWKT(wkt));
+    this.mapView.map.setCenter(center);
+    this.mapView.map.setZoom(17);
+    this.mapView.map.data.setStyle({
+        strokeColor: "#000000",
+        strokeOpacity: 0.8,
+        strokeWeight: 1,
+    });
+    console.timeEnd("dcel cost");
+    loadding.disable();
+}
+
 PlanningInformation.prototype.getView = function () {
     if (this.$view) return this.$view;
     var self = this;
-    var input = _({
-        tag:"input",
-        class:"quantumWizTextinputPaperinputInput",
-        props:{
-            type:"number",
-            autocomplete:"off",
-            min:1,
-            max:200,
-            step:1,
-            value:50
-        }
-    })
     var allinput = _({
         tag:"input",
         class:"pizo-list-realty-page-allinput-input",
@@ -69,7 +85,6 @@ PlanningInformation.prototype.getView = function () {
                 if(this.files.length==0)
                     return;
                 var file = this.files[0];
-                var loadding = new loaddingWheel();
                 var reader = new FileReader();
                 reader.readAsText(this.files[0]);
                 reader.onload = function(e) {
@@ -77,38 +92,48 @@ PlanningInformation.prototype.getView = function () {
                     console.log(file)
                     var extension = file.name.slice((Math.max(0, file.name.lastIndexOf(".")) || Infinity) + 1);
                     var fileText = e.target.result;
-                    // if(extension === "json"){
-                    //     moduleDatabase.getModule("geometry").add({map:fileText}).then(function(value){
-                    //         loadding.disable();
-                    //     });
-                    // }
-                    // else 
                     if(extension === "dxf")
                     {
-                        var parser = new DxfParser();
-                        var dxf = null;
-                        try {
-                            dxf = parser.parseSync(fileText);
-                        } catch (err) {
-                            return console.error(err.stack);
-                        }
-                    
-                        var wkt = GeoJSON.parse(dxf);
-                        var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
-                        window.dcel.extractLines();
-                        var faces = dcel.internalFaces();
-                        wkt = consoleWKT(faces);
+                        if(self.commitComment==undefined)
+                        {
+                            var gmt = getGMT();
+                            var inputElement = _({
+                                tag:"div",
+                                class:"pizo-name-commit-planning",
+                                child:[
+                                    {
+                                        tag:"span",
+                                        class:"pizo-name-commit-planning-text",
+                                        props:{
+                                            innerHTML:"Chú thích lần commit"
+                                        }
+                                    },
+                                    {
+                                        tag:"input",
+                                        class:"pizo-name-commit-planning-input",
+                                        props:{
+                                            value:"Commit vào thời gian "+formatDate(gmt,true,true,true,true,true,true)
+                                        }
+                                    }
+                                ]
+                            });
                         
-                        self.polygon =  self.polygon.concat(self.addWKT(wkt));
-                        mapView.map.setCenter(center);
-                        mapView.map.setZoom(17);
-                        mapView.map.data.setStyle({
-                            strokeColor: "#000000",
-                            strokeOpacity: 0.8,
-                            strokeWeight: 1,
-                        });
-                        console.timeEnd("dcel cost");
-                        loadding.disable();
+                            var deleteQuestionCommit = confirmQuestion("Chú thích lần commit",inputElement);
+                            document.body.appendChild(deleteQuestionCommit);
+                            deleteQuestionCommit.promiseComfirm.then(function(){
+                                self.commitComment = inputElement.childNodes[1].value;
+                                var loadding = new loaddingWheel();
+                                setTimeout(function(){
+                                    self.setUpDxfFile(fileText,loadding)
+                                },60)
+                            })
+                        }else
+                        {
+                            var loadding = new loaddingWheel();
+                            setTimeout(function(){
+                                self.setUpDxfFile(fileText,loadding)
+                            },60)
+                        }
                     }
                 }   
             }
@@ -418,91 +443,72 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
 {
     var data = this.createHash(this.polygon);
     var gmt = getGMT();
-    var inputElement = _({
-        tag:"div",
-        class:"pizo-name-commit-planning",
-        child:[
-            {
-                tag:"span",
-                class:"pizo-name-commit-planning-text",
-                props:{
-                    innerHTML:"Chú thích lần commit"
-                }
-            },
-            {
-                tag:"input",
-                class:"pizo-name-commit-planning-input",
-                props:{
-                    value:"Commit vào thời gian "+formatDate(gmt,true,true,true,true,true,true)
-                }
-            }
-        ]
-    });
-
+    var name;
     for(var param in data)
     {
         if(isNaN(param/1)===true)
         {
-         for(var cellLat in data[param])
-         {
-             var dataLat = data[param][cellLat];
-             for(var cellLng in  dataLat)
-             {
-                if(this.hash[param]===undefined||this.hash[param][cellLat]===undefined||this.hash[param][cellLat][cellLng]===undefined)
+            name = data[param].name;
+            for(var cellLat in data[param])
+            {
+                var dataLat = data[param][cellLat];
+                for(var cellLng in  dataLat)
                 {
-                    var arr = dataLat[cellLng];
-                    var wkt = new Wkt.Wkt();
-                    for(var i = 0;i<arr.length;i++)
+                    if(this.hash[param]===undefined||this.hash[param][cellLat]===undefined||this.hash[param][cellLat][cellLng]===undefined)
                     {
-                        if(i===0)
-                        wkt.read(arr[i]);
-                        else
-                        wkt.merge(new Wkt.Wkt(arr[i]));
-                    }
-                    
-                    moduleDatabase.getModule("geometry").add({
-                        cellLat:cellLat,
-                        cellLng:cellLng,
-                        name:input.value,
-                        created:param,
-                        map:wkt.toString()
-                    })
-                   
-                }else
-                {
-                    var arr = dataLat[cellLng];
-                    var wkt = new Wkt.Wkt();
-                    for(var i = 0;i<arr.length;i++)
-                    {
-                        if(i===0)
-                        wkt.read(arr[i]);
-                        else
-                        wkt.merge(new Wkt.Wkt(arr[i]));
-                    }
-
-                    var arr = this.hash[param][cellLat][cellLng];
-                    var wkt2 = new Wkt.Wkt();
-                    for(var i = 0;i<arr.length;i++)
-                    {
-                        if(i===0)
-                        wkt2.read(arr[i]);
-                        else
-                        wkt2.merge(new Wkt.Wkt(arr[i]));
-                    }
-
-                    if(wkt.toString()!==wkt2.toString())
-                    {
-                        moduleDatabase.getModule("geometry").update({
+                        var arr = dataLat[cellLng];
+                        var wkt = new Wkt.Wkt();
+                        for(var i = 0;i<arr.length;i++)
+                        {
+                            if(i===0)
+                            wkt.read(arr[i]);
+                            else
+                            wkt.merge(new Wkt.Wkt(arr[i]));
+                        }
+                        
+                        moduleDatabase.getModule("geometry").add({
                             cellLat:cellLat,
                             cellLng:cellLng,
+                            name:input.value,
                             created:param,
                             map:wkt.toString()
-                        });
+                        })
+                    
+                    }else
+                    {
+                        var arr = dataLat[cellLng];
+                        var wkt = new Wkt.Wkt();
+                        for(var i = 0;i<arr.length;i++)
+                        {
+                            if(i===0)
+                            wkt.read(arr[i]);
+                            else
+                            wkt.merge(new Wkt.Wkt(arr[i]));
+                        }
+
+                        var arr = this.hash[param][cellLat][cellLng];
+                        var wkt2 = new Wkt.Wkt();
+                        for(var i = 0;i<arr.length;i++)
+                        {
+                            if(i===0)
+                            wkt2.read(arr[i]);
+                            else
+                            wkt2.merge(new Wkt.Wkt(arr[i]));
+                        }
+
+                        if(wkt.toString()!==wkt2.toString())
+                        {
+                            moduleDatabase.getModule("geometry").update({
+                                cellLat:cellLat,
+                                cellLng:cellLng,
+                                created:param,
+                                map:wkt.toString()
+                            });
+                        }
+                        delete this.hash[param][cellLat][cellLng];
                     }
-                    delete this.hash[param][cellLat][cellLng];
                 }
-             }
-         }   
+            }   
         }
         else
         {
@@ -521,24 +527,13 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
                     arr[i].created = gmt;
                     arr[i] = stringWKT;
                 }
-                var deleteQuestionCommit = deleteQuestion("Chú thích lần commit",inputElement);
-                this.$view.appendChild(deleteQuestionCommit);
-                    deleteQuestionCommit.promiseComfirm.then(function(result,tempCellLat,tempCellLng,created,mapString,input){
-                        console.log(result,tempCellLat,tempCellLng,created,mapString,input);
-                        // moduleDatabase.getModule("geometry").add({
-                        //     cellLat:tempCellLat,
-                        //     cellLng:tempCellLng,
-                        //     name:input.value,
-                        //     created:created,
-                        //     map:mapString
-                        // })
-                }.bind(null,param,child,gmt,wkt.toString(),inputElement))
-                // promiseAll.push(moduleDatabase.getModule("geometry").add({
-                //     cellLat:param,
-                //     cellLng:child,
-                //     created:gmt,
-                //     map:wkt.toString()
-                // }))
+                promiseAll.push(moduleDatabase.getModule("geometry").add({
+                    cellLat:param,
+                    cellLng:child,
+                    name:this.commitComment,
+                    created:gmt,
+                    map:wkt.toString()
+                }))
             }
             var x = data[param];
             delete data[param];
@@ -560,6 +555,8 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
     var promiseAllDelete = [];
     for(var param in this.hash)
     {
+        if(this.filterTime.values.indexOf(param)==-1)
+        continue;
         if(isNaN(param/1))
         {
             for(var ortherLat in  this.hash[param])
@@ -597,6 +594,7 @@ PlanningInformation.prototype.saveCurrentDataMap = function()
     Promise.all(promiseAllDelete).then(function(values){
 
     })
+    this.commitComment = undefined;
     this.hash = data;
 }
 
@@ -670,6 +668,7 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns){
     {
         return;
     }
+
     this.removeAllSelect();
     if(this.editPolygon!==undefined)
     this.editPolygon.toInActive(this);
@@ -679,7 +678,7 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns){
     {
         tempPath = [];
         var boundary = this.polygon[i].boundary();
-        if(bns.Za.i<boundary.min.lat&&boundary.max.lat<bns.Za.j
+        if(bns.ab.i<boundary.min.lat&&boundary.max.lat<bns.ab.j
             &&bns.Va.i<boundary.min.lng&&boundary.max.lng<bns.Va.j)
         {
             for(var j = 0;j<this.polygon[i].getPath().getLength();j++)
@@ -735,6 +734,7 @@ PlanningInformation.prototype.searchControlContent = function(){
                             self.polygon = self.polygon.concat(self.addWKT(value[i])); 
                         }
                         var center = value[value.length-1];
+                        console.log(parseInt(center.cellLat/10000)+(center.cellLat%10000-1)*(1/1110),parseInt(center.cellLng/10000)+(center.cellLng%10000-1)*(1/1110))
                         self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat/10000)+(center.cellLat%10000-1)*(1/1110),parseInt(center.cellLng/10000)+(center.cellLng%10000-1)*(1/1110)));
                         self.mapView.map.setZoom(17);
                     })
@@ -763,7 +763,7 @@ PlanningInformation.prototype.searchControlContent = function(){
         var list = [];
         for(var i = 0;i<value.length;i++)
         {
-            list.push({text:formatDate(value[i].created,true,true,true,true,true,true),value:value[i].created});
+            list.push({text:value[i].name+" ("+(formatDate(value[i].created,true,true,true,true,true,true))+")",value:value[i].created});
         }
         this.items = list;
     }
@@ -877,10 +877,11 @@ PlanningInformation.prototype.searchControlContent = function(){
 PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
     if(this.hash === undefined)
     this.hash = [];
-    var created;
+    var created,name;
     if(typeof multipolygonWKT == "object")
     {
         created = multipolygonWKT["created"];
+        name = multipolygonWKT["name"]
         multipolygonWKT = multipolygonWKT["AsText(`map`)"];
     }
     var wkt = new Wkt.Wkt();
@@ -899,8 +900,10 @@ PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
             geodesic: true
         })
         this.addEventPolygon(polygon);
-        if(created!==undefined)
-        polygon.created = created;
+        if(created!==undefined){
+            polygon.created = created;
+            polygon.name = name;
+        }
         toReturn.push(polygon);
         this.createHashRow(polygon,this.hash);
     }

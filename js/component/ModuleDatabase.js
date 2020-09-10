@@ -477,7 +477,6 @@ DataStructure.prototype.setFormatAdd = function(data)
     }
     if(self.Libary["id"]!==undefined&&self.Libary["id"][data.id]!==undefined)
         return;
-    console.log(data)
     for(var param in self.Libary)
     {
         if(typeof self.Libary[param]!= "function")
@@ -612,7 +611,6 @@ DataStructure.prototype.setFormatUpdate = function(data)
 
 DataStructure.prototype.setFormatDelete = function(data){
     var self = this;
-    console.log(data)
     if(data.id!==undefined)
     {
         var temp = self.Libary["id"][data.id];

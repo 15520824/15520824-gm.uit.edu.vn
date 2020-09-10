@@ -24,11 +24,12 @@ $created = $data['created'];
 $insert_data = array(
     "cellLat"=>$data["cellLat"],
     "cellLng"=>$data["cellLng"],
+    "name"=>$data["name"],
     "created"=>$created,
     "map"=>"GeomFromText('".$wkt."')"
 );
 
-$result = $connector->query("INSERT INTO ".$prefix."geometry(`cellLat`, `cellLng`, `created`, `map`) VALUES (".$insert_data["cellLat"].",".$insert_data["cellLng"].",'".$insert_data["created"]."',".$insert_data["map"].")");
+$result = $connector->query("INSERT INTO ".$prefix."geometry(`cellLat`, `cellLng`, `created`, `name`, `map`) VALUES (".$insert_data["cellLat"].",".$insert_data["cellLng"].",'".$insert_data["created"]."','".$insert_data["name"]."',".$insert_data["map"].")");
 $id = $connector->query("select last_insert_id()");
 $id = (int)$id->fetch_assoc()["last_insert_id()"];
 echo "ok".EncodingClass::fromVariable($id);
