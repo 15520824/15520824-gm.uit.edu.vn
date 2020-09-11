@@ -94,7 +94,7 @@ PlanningInformation.prototype.getView = function () {
                     var fileText = e.target.result;
                     if(extension === "dxf")
                     {
-                        if(self.commitComment==undefined)
+                        if(true)
                         {
                             var gmt = getGMT();
                             var inputElement = _({

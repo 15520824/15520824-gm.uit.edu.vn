@@ -411,6 +411,7 @@ function moveElementFix(event, me, result, index) {
     }
     let shiftY = clone.clientHeight / 2;
     moveAtFix(clone, event.pageY, shiftY, result);
+    if(scrollParent)
     scrollParent.addEventListener("scroll", function (event) {
         moveAtFix(clone, event.pageY, shiftY, result);
         bg.style.top = parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop) + "px";
@@ -763,6 +764,22 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                 })
                 for(var j=0;j<this.isSwipeLeft.length;j++){
                     this.bodyTable.childNodes[i].appendChild(hiddenButton);
+                    var icon;
+                    if(typeof this.isSwipeLeft[j].icon == "string")
+                    {
+                        icon = _({
+                            tag:"i",
+                            class:["material-icons","button-hidden-swipe-icon"],
+                            style:{
+                                color:this.isSwipeLeft[j].iconcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeLeft[j].icon
+                            }
+                        });
+                    }else
+                        icon = this.isSwipeLeft[j].icon;
+
                     var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",
@@ -782,16 +799,7 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                                     height:this.bodyTable.childNodes[i].offsetHeight+"px",
                                 },
                                 child:[
-                                    {
-                                        tag:"i",
-                                        class:["material-icons","button-hidden-swipe-icon"],
-                                        style:{
-                                            color:this.isSwipeLeft[j].iconcolor
-                                        },
-                                        props:{
-                                            innerHTML: this.isSwipeLeft[j].icon
-                                        }
-                                    },
+                                    icon,
                                     {
                                         tag:"span",
                                         class:"button-hidden-swipe-text",
@@ -836,30 +844,26 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                 })
                 for(var j=0;j<this.isSwipeRight.length;j++){
                     this.bodyTable.childNodes[i].appendChild(hiddenButton);
-
-                    var iconStyle = {};
-                    if(this.isSwipeRight[j].iconStyle!==undefined)
-                    iconStyle = this.isSwipeRight[j].iconStyle;
-                    var textStyle = {};
-                    if(this.isSwipeRight[j].textStyle!==undefined)
-                     textStyle = this.isSwipeRight[j].textStyle;
-                    
+                    var icon;
+                    if(typeof this.isSwipeRight[j].icon == "string")
+                    {
+                        icon = _({
+                            tag:"i",
+                            class:["material-icons","button-hidden-swipe-icon"],
+                            style:{
+                                color:this.isSwipeRight[j].iconcolor
+                            },
+                            props:{
+                                innerHTML: this.isSwipeRight[j].icon
+                            }
+                        });
+                    }else
+                        icon = this.isSwipeRight[j].icon;
+                        
                     var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",
-                        on:{
-                            click:function(index,indexEvent,e)
-                            {
-                                if(this.isSwipeRight[indexEvent].event!==undefined)
-                                {
-                                    var me = this.bodyTable.childNodes[index];
-                                    var index = me.originalIndex;
-                                    var parent = me.elementParent;
-                                    this.isSwipeRight[indexEvent].event(e,me,index,me.data,me,parent)
-                                }
-                                   
-                            }.bind(this,i,j)
-                        },
+                        on:this.isSwipeRight[j].event,
                         style:{
                             width:1/this.isSwipeRight.length*100+"%",
                             backgroundColor:this.isSwipeRight[j].background,
@@ -875,36 +879,24 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                                     height:this.bodyTable.childNodes[i].offsetHeight+"px",
                                 },
                                 child:[
+                                    icon,
                                     {
-                                        tag:"div",
-                                        class:"button-hidden-swipe-detail-content",
-                                        child:[
-                                            {
-                                                tag:"i",
-                                                class:["material-icons","button-hidden-swipe-icon"],
-                                                style:iconStyle,
-                                                props:{
-                                                    innerHTML: this.isSwipeRight[j].icon
-                                                },
-                                            },
-                                            {
-                                                tag:"span",
-                                                class:"button-hidden-swipe-text",
-                                                style:textStyle,
-                                                props:{
-                                                    innerHTML: this.isSwipeRight[j].text
-                                                }
-                                            }
-                                        ]
+                                        tag:"span",
+                                        class:"button-hidden-swipe-text",
+                                        style:{
+                                            color:this.isSwipeLeft[j].textcolor
+                                        },
+                                        props:{
+                                            innerHTML: this.isSwipeLeft[j].text
+                                        }
                                     }
                                 ]
                             }
                         ]
                     })
-                    if(j == this.isSwipeRight.length-1)
+                    if(j == this.isSwipeLeft.length-1)
                     tempElement.classList.add("button-hidden-swipe-activeAll");
                     hiddenButton.childNodes[0].appendChild(tempElement)
-                
                 }
                 this.bodyTable.childNodes[i].hiddenButtonRight = hiddenButton;
             }
