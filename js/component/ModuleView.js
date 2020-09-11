@@ -876,7 +876,7 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                         style:{
                             width:1/this.isSwipeRight.length*100+"%",
                             backgroundColor:this.isSwipeRight[j].background,
-                            maxWidth:((this.bodyTable.childNodes[i].offsetWidth-window.innerWidth/2)/this.isSwipeRight.length)+"px",
+                            maxWidth:((this.bodyTable.childNodes[i].offsetWidth*3/4)/this.isSwipeRight.length)+"px",
                             zIndex:j
                         },
                         child:[

@@ -255,12 +255,12 @@ ListState.prototype.getView = function () {
                 tag:"i",
                 class:["material-icons","button-hidden-swipe-icon"],
                 style:{
-                    color:"white"
+                    color:"red"
                 },
                 props:{
                     innerHTML: "close"
                 }
-            }),text:"Test",background:"yellow",event:{click:function(event){console.log(event)}}},{icon:"close",text:"Test",background:"green",event:function(event){console.log(event)}}]);
+            }),text:"Test",background:"yellow",event:{click:function(event){console.log(event)}}},{icon:"close",text:"Test Test",background:"green",event:function(event){console.log(event)}}]);
         });
     });
 

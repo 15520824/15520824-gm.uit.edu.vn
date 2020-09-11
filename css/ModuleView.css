@@ -506,6 +506,7 @@ table.sortTable th.postionStickyCell{
 .container-sortTable{
   overflow: auto;
   height: 100%;
+  display: inline-block;
 }
 
 .pagination {
@@ -660,6 +661,19 @@ table.sortTable th.postionStickyCell{
 
 .button-hidden-swipe-detail{
   position: relative;
+  text-align: center;
+  display: table;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.button-hidden-swipe-detail>i{
+  display: table-row;
+}
+
+.button-hidden-swipe-detail>span{
+  display: table-row;
+  white-space: nowrap;
 }
 
 .button-hidden-swipe-calcWidth{
