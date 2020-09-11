@@ -313,7 +313,6 @@
 
                 return {
                     leaveState: function() {
-                        console.log(swipeSuccess)
                         if (swipeSuccess) {
                             this.animateSwipe(function(target){
                                 target.node.style[transformJSPropertyName] = target.baseTransform.original;
@@ -426,7 +425,7 @@
                         delta = this.target.node.startPositionAverage;
 
                         var move = this.getAbsoluteMovementAvarage(delta);
-                        
+                        var swiped = false;
                         if(tempElement!==undefined&&tempElement.classList.contains("button-hidden-swipe-activeAll-width"))
                         {
                             var swiped = true;
@@ -436,13 +435,17 @@
                             // How far out has the item been swiped?
                             var swipedPercent = Math.abs((this.startPosition.x - this.previousPosition.x) / this.container.clientWidth) * 100;
                             if(tempElement!==undefined)
-                            if(move.x>parseInt(tempElement.style.maxWidth)*(hiddenButtonRight.childNodes[0].childNodes.length)/2&&move.directionX=="left")
-                            swipeAverage = true;
-
-                            if(delta>0)
-                            swiped = false;
-                            else
-                            var swiped = (velocity > this.options.minimumSwipeVelocity && move.time > this.options.minimumSwipeTime) || (this.options.keepSwipingPercent && swipedPercent > this.options.keepSwipingPercent);
+                            {
+                                // console.log(move.x,tempElement.childNodes[0])
+                                if(move.x>parseInt(tempElement.childNodes[0].offsetWidth)*(hiddenButtonRight.childNodes[0].childNodes.length)&&move.directionX=="left")
+                                swipeAverage = true;
+                            }else
+                            {
+                                if(delta>0)
+                                swiped = false;
+                                else
+                                var swiped = (velocity > this.options.minimumSwipeVelocity && move.time > this.options.minimumSwipeTime) || (this.options.keepSwipingPercent && swipedPercent > this.options.keepSwipingPercent);
+                            }
                         }
                         if (swiped) {  
                             if (this.dispatch(this.target.node, 'swipe', {direction: move.directionX, originalIndex: originalIndex})) {
@@ -1150,7 +1153,7 @@
             var move = this.getAbsoluteMovementAvarage(delta);
             if(move.x>0&&target.node.hiddenButtonRight!==undefined)
             {
-                var transformWidth = parseInt(target.node.hiddenButtonRight.childNodes[0].childNodes[0].style.maxWidth)*this.target.node.hiddenButtonRight.childNodes[0].childNodes.length/1.2;
+                var transformWidth = parseInt(target.node.hiddenButtonRight.childNodes[0].childNodes[0].childNodes[0].offsetWidth)*this.target.node.hiddenButtonRight.childNodes[0].childNodes.length;
                 target.node.style[transitionJSPropertyName] = transformCSSPropertyName + ' 0.1s ease-in';
                 target.node.style[transformJSPropertyName] = 'translate('+-transformWidth+'px,0) ' + hwLayerMagicStyle;
            

@@ -187,31 +187,37 @@ MergeRealty.prototype.getView = function () {
         if(valueContent===undefined)
         valueContent = itemData.content;
 
-        sumWidth += itemData.width;
+        sumWidth += parseFloat(itemData.width);
         itemWidth.push(itemData.width);
         if(valueWidth===undefined)
         valueWidth = itemData.width;
 
-        sumHeight += itemData.height;
+        sumHeight += parseFloat(itemData.height);
         itemHeight.push(itemData.height);
         if(valueHeight===undefined)
         valueHeight = itemData.height;
 
-        sumAcreage += itemData.acreage;
+        sumAcreage += parseFloat(itemData.acreage);
         itemAcreage.push(itemData.acreage);
         if(valueAcreage===undefined)
         valueAcreage = itemData.acreage;
 
-        sumLandarea += itemData.landarea;
+        sumLandarea += parseFloat(itemData.landarea);
         itemLandarea.push(itemData.landarea);
         if(valueLandarea===undefined)
         valueLandarea = itemData.landarea;
 
-        sumFloorarea += itemData.floorarea;
+        sumFloorarea += parseFloat(itemData.floorarea);
         itemFloorarea.push(itemData.floorarea);
         if(valueFloorarea===undefined)
         valueFloorarea = itemData.floorarea;
     }
+
+    itemWidth.push(sumWidth);
+    itemHeight.push(sumHeight);
+    itemAcreage.push(sumAcreage);
+    itemLandarea.push(sumLandarea);
+    itemFloorarea.push(sumFloorarea);
 
     var dataName =  {
         type: 'text',

@@ -782,7 +782,18 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                     var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",
-                        on:this.isSwipeLeft[j].event,
+                        on:{
+                            click:function(index,indexEvent,e)
+                            {
+                                if(this.isSwipeRight[indexEvent].event!==undefined)
+                                {
+                                    var me = this.bodyTable.childNodes[index];
+                                    var index = me.originalIndex;
+                                    var parent = me.elementParent;
+                                    this.isSwipeRight[indexEvent].event(e,me,index,me.data,me,parent)
+                                }
+                            }.bind(this,i,j)
+                        },
                         style:{
                             width:1/this.isSwipeLeft.length*100+"%",
                             backgroundColor:this.isSwipeLeft[j].background,
@@ -865,17 +876,13 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                         style:{
                             width:1/this.isSwipeRight.length*100+"%",
                             backgroundColor:this.isSwipeRight[j].background,
-                            maxWidth:this.bodyTable.childNodes[i].offsetHeight*1.2+"px",
+                            maxWidth:((this.bodyTable.childNodes[i].offsetWidth-window.innerWidth/2)/this.isSwipeRight.length)+"px",
                             zIndex:j
                         },
                         child:[
                             {
                                 tag:"div",
                                 class:"button-hidden-swipe-detail",
-                                style:{
-                                    width:this.bodyTable.childNodes[i].offsetHeight+"px",
-                                    height:this.bodyTable.childNodes[i].offsetHeight+"px",
-                                },
                                 child:[
                                     icon,
                                     {
@@ -897,6 +904,22 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                     hiddenButton.childNodes[0].appendChild(tempElement)
                 }
                 this.bodyTable.childNodes[i].hiddenButtonRight = hiddenButton;
+                setTimeout(function(hiddenButton){
+                    var container;
+                    var max = 0;
+                    
+                    for(var i = 0;i<hiddenButton.childNodes[0].childNodes.length;i++)
+                    {
+                        container = hiddenButton.childNodes[0].childNodes[i].childNodes[0];
+                        if(max<container.offsetWidth)
+                        max = container.offsetWidth;
+                    }
+                    for(var i = 0;i<hiddenButton.childNodes[0].childNodes.length;i++)
+                    {
+                        container = hiddenButton.childNodes[0].childNodes[i].childNodes[0];
+                        container.style.minWidth = max+"px";
+                    }
+                }.bind(this,hiddenButton),80)
             }
         }
         if(this.isSwipeLeft||this.isSwipeRight)
