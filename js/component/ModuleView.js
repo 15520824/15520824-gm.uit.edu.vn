@@ -778,11 +778,7 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                             }
                         });
                     }else
-                        icon = this.isSwipeLeft[j].icon;
-                    if(this.isSwipeLeft[j].textcolor!==undefined)
-                    {
-
-                    }
+                        icon = this.isSwipeRight[j].icon.cloneNode(true);
                     var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",
@@ -861,8 +857,7 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                             }
                         });
                     }else
-                        icon = this.isSwipeRight[j].icon;
-                        
+                        icon = this.isSwipeRight[j].icon.cloneNode(true);
                     var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",

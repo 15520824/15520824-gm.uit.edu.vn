@@ -136,11 +136,11 @@ MergeRealty.prototype.getView = function () {
     var valueAddress,valueAddressOld;
     var valueName,itemName = [];
     var valueContent,itemContent = [];
-    var valueWidth,itemWidth = [];
-    var valueHeight,itemHeight = [];
-    var valueAcreage,itemAcreage = [];
-    var valueLandarea,itemLandarea = [];
-    var valueFloorarea,itemFloorarea = [];
+    var valueWidth,itemWidth = [],sumWidth = 0;
+    var valueHeight,itemHeight = [],sumHeight = 0;
+    var valueAcreage,itemAcreage = [],sumAcreage = 0;
+    var valueLandarea,itemLandarea = [],sumLandarea = 0;
+    var valueFloorarea,itemFloorarea = [],sumFloorarea = 0;
     this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
     this.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
     this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
@@ -187,22 +187,27 @@ MergeRealty.prototype.getView = function () {
         if(valueContent===undefined)
         valueContent = itemData.content;
 
+        sumWidth += itemData.width;
         itemWidth.push(itemData.width);
         if(valueWidth===undefined)
         valueWidth = itemData.width;
 
+        sumHeight += itemData.height;
         itemHeight.push(itemData.height);
         if(valueHeight===undefined)
         valueHeight = itemData.height;
 
+        sumAcreage += itemData.acreage;
         itemAcreage.push(itemData.acreage);
         if(valueAcreage===undefined)
         valueAcreage = itemData.acreage;
 
+        sumLandarea += itemData.landarea;
         itemLandarea.push(itemData.landarea);
         if(valueLandarea===undefined)
         valueLandarea = itemData.landarea;
 
+        sumFloorarea += itemData.floorarea;
         itemFloorarea.push(itemData.floorarea);
         if(valueFloorarea===undefined)
         valueFloorarea = itemData.floorarea;
@@ -280,7 +285,7 @@ MergeRealty.prototype.getView = function () {
         items: itemLandarea
     }
 
-    var dataLandarea =  {
+    var dataFloorarea =  {
         type: 'text',
         name: 'Đất xây dựng',
         id: 'height',
@@ -312,7 +317,9 @@ MergeRealty.prototype.getView = function () {
                         properties: [
                             dataWidth,
                             dataHeight,
-                            dataAcreage
+                            dataAcreage,
+                            dataLandarea,
+                            dataFloorarea
                         ]
                     }
                 ]
