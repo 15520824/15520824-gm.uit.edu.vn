@@ -779,7 +779,10 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                         });
                     }else
                         icon = this.isSwipeLeft[j].icon;
+                    if(this.isSwipeLeft[j].textcolor!==undefined)
+                    {
 
+                    }
                     var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",
@@ -884,17 +887,17 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                                         tag:"span",
                                         class:"button-hidden-swipe-text",
                                         style:{
-                                            color:this.isSwipeLeft[j].textcolor
+                                            color:this.isSwipeRight[j].textcolor
                                         },
                                         props:{
-                                            innerHTML: this.isSwipeLeft[j].text
+                                            innerHTML: this.isSwipeRight[j].text
                                         }
                                     }
                                 ]
                             }
                         ]
                     })
-                    if(j == this.isSwipeLeft.length-1)
+                    if(j == this.isSwipeRight.length-1)
                     tempElement.classList.add("button-hidden-swipe-activeAll");
                     hiddenButton.childNodes[0].appendChild(tempElement)
                 }

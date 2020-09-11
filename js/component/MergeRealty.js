@@ -136,6 +136,11 @@ MergeRealty.prototype.getView = function () {
     var valueAddress,valueAddressOld;
     var valueName,itemName = [];
     var valueContent,itemContent = [];
+    var valueWidth,itemWidth = [];
+    var valueHeight,itemHeight = [];
+    var valueAcreage,itemAcreage = [];
+    var valueLandarea,itemLandarea = [];
+    var valueFloorarea,itemFloorarea = [];
     this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
     this.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
     this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
@@ -181,6 +186,26 @@ MergeRealty.prototype.getView = function () {
         itemContent.push(itemData.content);
         if(valueContent===undefined)
         valueContent = itemData.content;
+
+        itemWidth.push(itemData.width);
+        if(valueWidth===undefined)
+        valueWidth = itemData.width;
+
+        itemHeight.push(itemData.height);
+        if(valueHeight===undefined)
+        valueHeight = itemData.height;
+
+        itemAcreage.push(itemData.acreage);
+        if(valueAcreage===undefined)
+        valueAcreage = itemData.acreage;
+
+        itemLandarea.push(itemData.landarea);
+        if(valueLandarea===undefined)
+        valueLandarea = itemData.landarea;
+
+        itemFloorarea.push(itemData.floorarea);
+        if(valueFloorarea===undefined)
+        valueFloorarea = itemData.floorarea;
     }
 
     var dataName =  {
@@ -219,6 +244,51 @@ MergeRealty.prototype.getView = function () {
         items: itemContent
     }
 
+    var dataWidth =  {
+        type: 'text',
+        name: 'Dài',
+        id: 'width',
+        action: "single-choice",
+        value: valueWidth,
+        items: itemWidth
+    }
+
+    var dataHeight =  {
+        type: 'text',
+        name: 'Ngang',
+        id: 'height',
+        action: "single-choice",
+        value: valueHeight,
+        items: itemHeight
+    }
+
+    var dataAcreage =  {
+        type: 'text',
+        name: 'Đất xây dựng',
+        id: 'height',
+        action: "single-choice",
+        value: valueAcreage,
+        items: itemAcreage
+    }
+
+    var dataLandarea =  {
+        type: 'text',
+        name: 'Đất xây dựng',
+        id: 'height',
+        action: "single-choice",
+        value: valueLandarea,
+        items: itemLandarea
+    }
+
+    var dataLandarea =  {
+        type: 'text',
+        name: 'Đất xây dựng',
+        id: 'height',
+        action: "single-choice",
+        value: valueFloorarea,
+        items: itemFloorarea
+    }
+
     myTool.setData(
         {
             editor: {
@@ -240,7 +310,9 @@ MergeRealty.prototype.getView = function () {
                         name: 'Thông tin xây dựng',
                         id:"construction",
                         properties: [
-
+                            dataWidth,
+                            dataHeight,
+                            dataAcreage
                         ]
                     }
                 ]

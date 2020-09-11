@@ -37,6 +37,7 @@ function ListRealty() {
     this.mediaItem = MapRealty.prototype.mediaItem;
     this.requestEdit = MapRealty.prototype.requestEdit;
     this.requestEditDB = MapRealty.prototype.requestEditDB;
+    this.itemDisplayNone = MapRealty.prototype.itemDisplayNone;
 
     moduleDatabase.getModule("users").load().then(function(value)
     {
