@@ -13,7 +13,7 @@
   "dependencies": {
     "absol": "^1.14.7",
     "absol-acomp": "^0.9.36",
-    "absol-form": "github:duthienkt/absol-form#master"
+    "mpot-merge-tool": "github:duthienkt/mpot-merge-tool#master"
   },
   "devDependencies": {
     "@babel/core": "^7.11.0",

@@ -4,8 +4,9 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/MergeRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import MergeTool from 'absol-form';
+import MergeTool from 'mpot-merge-tool';
 import moduleDatabase from '../component/ModuleDatabase';
+import { MapView } from "./MapView";
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -129,6 +130,7 @@ MergeRealty.prototype.getView = function () {
     });
 
     var myTool = new MergeTool.MPOTMergeTool();
+    var element = new MapView();
     var toolView = myTool.getView();
     var itemsAddress = [];
     var itemsAddressOld = [];
@@ -147,7 +149,7 @@ MergeRealty.prototype.getView = function () {
     this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
     var number,street,ward,district,state,fullAddress;
-
+    var checkAddress = [];
     for(var i = 0;i<this.data.length;i++)
     {
         //Địa chỉ hiện tại
@@ -161,8 +163,12 @@ MergeRealty.prototype.getView = function () {
             state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid].wardid].districtid].stateid].name;
             fullAddress = number+" "+street+", "+ward+", "+district+", "+state;
             itemsAddress.push(fullAddress);
+            checkAddress[fullAddress] = [itemData.lat,itemData.lng];
             if(valueAddress===undefined)
-            valueAddress = fullAddress;
+            {
+                valueAddress = fullAddress;
+                element.addMoveMarker(checkAddress[fullAddress])
+            }
         }
 
         //Địa chỉ cũ
@@ -219,10 +225,12 @@ MergeRealty.prototype.getView = function () {
     itemLandarea.push(sumLandarea);
     itemFloorarea.push(sumFloorarea);
 
+
+
     var dataName =  {
         type: 'text',
         name: 'Tên',
-        id: 'address',
+        id: 'name',
         action: "single-choice",
         value: valueName,
         items: itemName
@@ -234,13 +242,13 @@ MergeRealty.prototype.getView = function () {
         id: 'address',
         action: "single-choice",
         value: valueAddress,
-        items: itemsAddress
+        items: itemsAddress,
     }
 
     var dataAddressOld =  {
         type: 'text',
         name: 'Địa chỉ cũ',
-        id: 'address',
+        id: 'address-old',
         action: "single-choice",
         value: valueAddressOld,
         items: itemsAddressOld
@@ -249,7 +257,7 @@ MergeRealty.prototype.getView = function () {
     var dataContent =  {
         type: 'text',
         name: 'Mô tả',
-        id: 'address',
+        id: 'description',
         action: "single-choice",
         value: valueContent,
         items: itemContent
@@ -257,7 +265,7 @@ MergeRealty.prototype.getView = function () {
 
     var dataWidth =  {
         type: 'text',
-        name: 'Dài',
+        name: 'Dài (m)',
         id: 'width',
         action: "single-choice",
         value: valueWidth,
@@ -266,7 +274,7 @@ MergeRealty.prototype.getView = function () {
 
     var dataHeight =  {
         type: 'text',
-        name: 'Ngang',
+        name: 'Ngang (m)',
         id: 'height',
         action: "single-choice",
         value: valueHeight,
@@ -275,8 +283,8 @@ MergeRealty.prototype.getView = function () {
 
     var dataAcreage =  {
         type: 'text',
-        name: 'Đất xây dựng',
-        id: 'height',
+        name: 'Đất xây dựng (m²)',
+        id: 'acreage',
         action: "single-choice",
         value: valueAcreage,
         items: itemAcreage
@@ -284,8 +292,8 @@ MergeRealty.prototype.getView = function () {
 
     var dataLandarea =  {
         type: 'text',
-        name: 'Đất xây dựng',
-        id: 'height',
+        name: 'Đất xây dựng (m²)',
+        id: 'landarea',
         action: "single-choice",
         value: valueLandarea,
         items: itemLandarea
@@ -293,18 +301,38 @@ MergeRealty.prototype.getView = function () {
 
     var dataFloorarea =  {
         type: 'text',
-        name: 'Đất xây dựng',
-        id: 'height',
+        name: 'Đất xây dựng (m²)',
+        id: 'floorarea',
         action: "single-choice",
         value: valueFloorarea,
         items: itemFloorarea
     }
+
+    var dataFloorarea =  {
+        type: 'text',
+        name: 'Kết cấu',
+        id: 'structure',
+        action: "single-choice",
+        value: valueFloorarea,
+        items: itemFloorarea
+    }
+
+    myTool.editor.on("nodechange",function(event){
+        if(checkAddress[event.nodePreviewData.value])
+        element.addMoveMarker(checkAddress[event.nodePreviewData.value])
+    })
 
     myTool.setData(
         {
             editor: {
                 title: 'Thông tin bất động sản sau gộp',
                 properties: [
+                    {
+                        type: 'constant',
+                        id: 'GPS',
+                        action: 'const',
+                        element:element
+                    },
                     {
                         type:"group",
                         name: 'Thông tin chung',

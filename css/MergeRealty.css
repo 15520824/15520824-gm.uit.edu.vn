@@ -2,3 +2,108 @@
     padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
+
+.mpot-preview-body{
+    position: relative;
+}
+
+#preview-GPS{
+    position: absolute;
+    width: 50%;
+    right: 0px;
+    height: calc(100% - 20px);
+}
+#preview-GPS .mpot-base-preview-name{
+    display: none;
+}
+
+#preview-GPS .mpot-base-preview-content{
+    width: 100%;
+    height: 100%;
+}
+
+#preview-GPS .mpot-base-preview-content > div{
+    width: 100%;
+    height: 100%;
+}
+
+#preview-GPS .mpot-base-preview-content .card-edit-company-block-maps-child{
+    width: 100%;
+    height: 100%;
+}
+
+
+#preview-GPS .mpot-base-preview-content .pizo-new-realty-location-map-view{
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    min-width: unset;
+}
+
+.mpot-base-preview{
+    margin-top:5px;
+}
+
+#preview-general{
+    max-width: 50%;
+}
+
+#preview-address{
+    display: flex;
+}
+
+#preview-address .mpot-base-preview-name{
+    display: flex;
+    flex-shrink: 0;
+}
+
+#preview-address-old{
+    display: flex;
+}
+
+#preview-address-old .mpot-base-preview-name{
+    display: flex;
+    flex-shrink: 0;
+}
+
+#preview-description{
+    display: flex;
+}
+
+#preview-description .mpot-base-preview-name{
+    display: flex;
+    flex-shrink: 0;
+}
+
+#preview-construction{
+    max-width: 50%;
+}
+
+#preview-construction .mpot-base-preview{
+    width: 50%;
+    display: inline-flex;
+}
+
+#preview-construction .mpot-base-preview .mpot-base-preview-content{
+    display: flex;
+    flex-shrink: 0;
+    padding-right: 30px;
+}
+
+#preview-construction .mpot-base-preview .mpot-base-preview-name{
+    flex-grow: 2;
+    display: flex;
+    width: unset;
+}
+
+#edit-construction .mpot-choice-list{
+    display: flex;
+    table-layout: unset;
+}
+
+#edit-construction .mpot-choice-list .mpot-choice{
+    flex-grow: 2;
+    display: flex;
+    width: 100%;
+    padding-left: 20px;
+}

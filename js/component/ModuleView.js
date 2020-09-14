@@ -773,9 +773,7 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                         icon = _({
                             tag:"i",
                             class:["material-icons","button-hidden-swipe-icon"],
-                            style:{
-                                color:this.isSwipeLeft[j].iconcolor
-                            },
+                            style:this.isSwipeLeft[j].iconStyle,
                             props:{
                                 innerHTML: this.isSwipeLeft[j].icon
                             }
@@ -812,21 +810,26 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                                     height:this.bodyTable.childNodes[i].offsetHeight+"px",
                                 },
                                 child:[
-                                    icon,
-                                    {
-                                        tag:"span",
-                                        class:"button-hidden-swipe-text",
-                                        style:{
-                                            color:this.isSwipeLeft[j].textcolor
-                                        },
-                                        props:{
-                                            innerHTML: this.isSwipeLeft[j].text
-                                        }
-                                    }
+                                    icon
                                 ]
                             }
                         ]
                     })
+                    if(!(this.isSwipeLeft[j].text==""||this.isSwipeLeft[j].text == undefined))
+                    {
+                        tempElement.childNodes[0].appendChild(
+                            _({
+                                tag:"span",
+                                class:"button-hidden-swipe-text",
+                                style:{
+                                    color:this.isSwipeLeft[j].textcolor
+                                },
+                                props:{
+                                    innerHTML: this.isSwipeLeft[j].text
+                                }
+                            })
+                        );
+                    }
                     if(j == this.isSwipeLeft.length-1)
                     tempElement.classList.add("button-hidden-swipe-activeAll");
                     hiddenButton.childNodes[0].appendChild(tempElement)
@@ -863,9 +866,7 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                         icon = _({
                             tag:"i",
                             class:["material-icons","button-hidden-swipe-icon"],
-                            style:{
-                                color:this.isSwipeRight[j].iconcolor
-                            },
+                            style:this.isSwipeRight[j].iconStyle,
                             props:{
                                 innerHTML: this.isSwipeRight[j].icon
                             }
@@ -899,20 +900,25 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                                 class:"button-hidden-swipe-detail",
                                 child:[
                                     icon,
-                                    {
-                                        tag:"span",
-                                        class:"button-hidden-swipe-text",
-                                        style:{
-                                            color:this.isSwipeRight[j].textcolor
-                                        },
-                                        props:{
-                                            innerHTML: this.isSwipeRight[j].text
-                                        }
-                                    }
                                 ]
                             }
                         ]
                     })
+                    if(!(this.isSwipeRight[j].text==""||this.isSwipeRight[j].text == undefined))
+                    {
+                        tempElement.childNodes[0].appendChild(
+                            _({
+                                tag:"span",
+                                class:"button-hidden-swipe-text",
+                                style:{
+                                    color:this.isSwipeRight[j].textcolor
+                                },
+                                props:{
+                                    innerHTML: this.isSwipeRight[j].text
+                                }
+                            })
+                        );
+                    }
                     if(j == this.isSwipeRight.length-1)
                     tempElement.classList.add("button-hidden-swipe-activeAll");
                     hiddenButton.childNodes[0].appendChild(tempElement)
