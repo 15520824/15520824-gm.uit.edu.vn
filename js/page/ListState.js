@@ -251,16 +251,16 @@ ListState.prototype.getView = function () {
             
             tabContainer.addChild(self.mTable);
             self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input',self.$view));
-            self.mTable.setUpSwipe(undefined,[{icon: _({
-                tag:"i",
-                class:["material-icons","button-hidden-swipe-icon"],
-                style:{
-                    color:"red"
-                },
-                props:{
-                    innerHTML: "close"
-                }
-            }),text:"Test",background:"yellow",event:{click:function(event){console.log(event)}}},{icon:"close",text:"Test Test",background:"green",event:function(event){console.log(event)}}]);
+            // self.mTable.setUpSwipe(undefined,[{icon: _({
+            //     tag:"i",
+            //     class:["material-icons","button-hidden-swipe-icon"],
+            //     style:{
+            //         color:"red"
+            //     },
+            //     props:{
+            //         innerHTML: "close"
+            //     }
+            // }),text:"Test",background:"yellow",event:{click:function(event){console.log(event)}}},{icon:"close",text:"Test Test",background:"green",event:function(event){console.log(event)}}]);
         });
     });
 

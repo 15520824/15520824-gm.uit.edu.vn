@@ -658,10 +658,13 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                         }
                         if(this.scrollTop >= (this.scrollHeight - this.offsetHeight))
                         {
-                            this.getBodyTable(this.data);
-                            if (this.bodyTable.listCheckBox !== undefined&&this.bodyTable.listCheckBox.length>0)
+                            if(this.getBodyTable!==undefined)
                             {
-                                this.bodyTable.listCheckBox[0].update();
+                                this.getBodyTable(this.data);
+                                if (this.bodyTable.listCheckBox !== undefined&&this.bodyTable.listCheckBox.length>0)
+                                {
+                                    this.bodyTable.listCheckBox[0].update();
+                                }
                             }
                         }
                         result.setUpSwipe();
