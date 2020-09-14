@@ -665,6 +665,9 @@ table.sortTable th.postionStickyCell{
   display: table;
   padding-left: 10px;
   padding-right: 10px;
+  -moz-box-sizing: unset;
+  box-sizing: unset;
+  -webkit-box-sizing: unset;
 }
 
 .button-hidden-swipe-detail>i{
