@@ -672,6 +672,8 @@ table.sortTable th.postionStickyCell{
 
 .button-hidden-swipe-detail>i{
   display: table-row;
+  font-size: 24px;
+  line-height: 25px;
 }
 
 .button-hidden-swipe-detail>span{
