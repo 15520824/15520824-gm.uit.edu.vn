@@ -788,12 +788,12 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                         on:{
                             click:function(index,indexEvent,e)
                             {
-                                if(this.isSwipeRight[indexEvent].event!==undefined)
+                                if(this.isSwipeLeft[indexEvent].event!==undefined)
                                 {
                                     var me = this.bodyTable.childNodes[index];
                                     var index = me.originalIndex;
                                     var parent = me.elementParent;
-                                    this.isSwipeRight[indexEvent].event(e,me,index,me.data,me,parent)
+                                    this.isSwipeLeft[indexEvent].event(e,me,index,me.data,me,parent)
                                 }
                             }.bind(this,i,j)
                         },
@@ -875,7 +875,18 @@ tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
                     var tempElement = _({
                         tag:"div",
                         class:"button-hidden-swipe",
-                        on:this.isSwipeRight[j].event,
+                        on:{
+                            click:function(index,indexEvent,e)
+                            {
+                                if(this.isSwipeRight[indexEvent].event!==undefined)
+                                {
+                                    var me = this.bodyTable.childNodes[index];
+                                    var index = me.originalIndex;
+                                    var parent = me.elementParent;
+                                    this.isSwipeRight[indexEvent].event(e,me,index,me.data,me,parent)
+                                }
+                            }.bind(this,i,j)
+                        },
                         style:{
                             width:1/this.isSwipeRight.length*100+"%",
                             backgroundColor:this.isSwipeRight[j].background,
