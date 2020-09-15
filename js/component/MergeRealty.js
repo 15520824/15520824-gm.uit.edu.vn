@@ -150,6 +150,7 @@ MergeRealty.prototype.getView = function () {
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
     var number,street,ward,district,state,fullAddress;
     var checkAddress = [];
+    var valueStructure,itemStructure = [];
     for(var i = 0;i<this.data.length;i++)
     {
         //Địa chỉ hiện tại
@@ -217,7 +218,398 @@ MergeRealty.prototype.getView = function () {
         itemFloorarea.push(itemData.floorarea);
         if(valueFloorarea===undefined)
         valueFloorarea = itemData.floorarea;
+        var advanceDetruct = itemData.advancedetruct;
+        var advanceDetruct1 = advanceDetruct%10?true:false;
+        advanceDetruct = parseInt(advanceDetruct/10);
+        var advanceDetruct2 = advanceDetruct%10?true:false;
+        advanceDetruct = parseInt(advanceDetruct/10);
+        var  advanceDetruct3 = advanceDetruct%10?true:false;
+        advanceDetruct = parseInt(advanceDetruct/10);
+        var advanceDetruct4 =   advanceDetruct%10?true:false;
+        advanceDetruct = _({
+            tag:"div",
+            class:"pizo-new-realty-dectruct-content-area-advance",
+            child:[
+                {
+                    tag: "div",
+                    class: ["pizo-new-realty-dectruct-content-area-size",],
+                    child: [
+                        {
+                            tag: "div",
+                            class: ["pizo-new-realty-dectruct-content-area-size-zone"],
+                            child: [
+                                {
+                                    tag: "div",
+                                    class: "pizo-new-realty-desc-detail-row",
+                                    child: [
+                                        {
+                                            tag: "span",
+                                            class: "pizo-new-realty-dectruct-content-area-floor-label",
+                                            props: {
+                                                innerHTML: "Tầng"
+                                            },
+                                        },
+                                        {
+                                            tag: "input",
+                                            class: ["pizo-new-realty-dectruct-content-area-floor", "pizo-new-realty-dectruct-input"],
+                                            attr: {
+                                                type: "number",
+                                                min: 0,
+                                                step: 1
+                                            },
+                                            props:{
+                                                value:itemData.floor
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-new-realty-dectruct-content-area-size-zone",
+                            child: [
+                                {
+                                    tag: "div",
+                                    class: "pizo-new-realty-desc-detail-row",
+                                    child: [
+                                        {
+                                            tag: "span",
+                                            class: "pizo-new-realty-dectruct-content-area-basement-label",
+                                            props: {
+                                                innerHTML: "Hầm"
+                                            },
+                                        },
+                                        {
+                                            tag: "input",
+                                            class: ["pizo-new-realty-dectruct-content-area-basement", "pizo-new-realty-dectruct-input"],
+                                            attr: {
+                                                type: "number",
+                                                min: 0,
+                                                step: 1
+                                            },
+                                            props:{
+                                                value:itemData.basement
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        
+                    ]
+                },
+                {
+                    tag:"div",
+                    class:"pizo-new-realty-dectruct-content-area-selectbox",
+                    child:[
+                        {
+                            tag:"div",
+                            class:"pizo-new-realty-dectruct-content-area-size-zone",
+                            child:[
+                                {
+                                    tag:"div",
+                                    class:"pizo-new-realty-desc-detail-row",
+                                    child:[
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-realty-dectruct-content-area-selectbox-child",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    props:{
+                                                        innerHTML:"Lửng"
+                                                    }
+                                                },
+                                                {
+                                                    tag:"checkbox",
+                                                    class:"pizo-new-realty-dectruct-content-area-selectbox-child-1",
+                                                    props:{
+                                                        checked:advanceDetruct1
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-realty-dectruct-content-area-selectbox-child",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    props:{
+                                                        innerHTML:"Sân thượng"
+                                                    }
+                                                },
+                                                {
+                                                    tag:"checkbox",
+                                                    class:"pizo-new-realty-dectruct-content-area-selectbox-child-2",
+                                                    props:{
+                                                        checked:advanceDetruct2
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag:"div",
+                            class:"pizo-new-realty-dectruct-content-area-size-zone",
+                            child:[
+                                {
+                                    tag:"div",
+                                    class:"pizo-new-realty-desc-detail-row",
+                                    child:[
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-realty-dectruct-content-area-selectbox-child",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    props:{
+                                                        innerHTML:"Ban công"
+                                                    }
+                                                },
+                                                {
+                                                    tag:"checkbox",
+                                                    class:"pizo-new-realty-dectruct-content-area-selectbox-child-3",
+                                                    props:{
+                                                        checked:advanceDetruct3
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            tag:"div",
+                                            class:"pizo-new-realty-dectruct-content-area-selectbox-child",
+                                            child:[
+                                                {
+                                                    tag:"span",
+                                                    props:{
+                                                        innerHTML:"Thang máy"
+                                                    }
+                                                },
+                                                {
+                                                    tag:"checkbox",
+                                                    class:"pizo-new-realty-dectruct-content-area-selectbox-child-4",
+                                                    props:{
+                                                        checked:advanceDetruct4
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
+                }
+            ]
+        });
+        var simpleDetruct = _({
+            tag: "div",
+            class: ["pizo-new-realty-dectruct-content-area","pizo-new-realty-dectruct-content-area-simple"],
+            child: [
+                {
+                    tag: "span",
+                    class: "pizo-new-realty-detruct-content-area-label",
+                    style: {
+                        marginBottom: "0.7143rem"
+                    },
+                    props: {
+                        innerHTML: "Quy mô kết cấu"
+                    },
+                },
+                advanceDetruct,
+                {
+                    tag: "div",
+                    class: "pizo-new-realty-dectruct-content-area-size",
+                    child: [
+                        {
+                            tag: "div",
+                            class: "pizo-new-realty-dectruct-content-area-size-zone",
+                            child: [
+                                {
+                                    tag: "div",
+                                    class: "pizo-new-realty-desc-detail-row",
+                                    child: [
+                                        {
+                                            tag: "span",
+                                            class: "pizo-new-realty-dectruct-content-area-bedroom-label",
+                                            props: {
+                                                innerHTML: "Phòng ngủ"
+                                            },
+                                        },
+                                        {
+                                            tag: "input",
+                                            class: ["pizo-new-realty-dectruct-content-area-bedroom", "pizo-new-realty-dectruct-input"],
+                                            attr: {
+                                                type: "number",
+                                                min: 0,
+                                                step: 1
+                                            },
+                                            props:{
+                                                value:itemData.bedroom
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-new-realty-dectruct-content-area-size-zone",
+                            child: [
+                                {
+                                    tag: "div",
+                                    class: "pizo-new-realty-desc-detail-row",
+                                    child: [
+                                        {
+                                            tag: "span",
+                                            class: "pizo-new-realty-dectruct-content-area-living-label",
+                                            props: {
+                                                innerHTML: "Phòng khách"
+                                            },
+                                        },
+                                        {
+                                            tag: "input",
+                                            class: ["pizo-new-realty-dectruct-content-area-living", "pizo-new-realty-dectruct-input"],
+                                            attr: {
+                                                type: "number",
+                                                min: 0,
+                                                step: 1
+                                            },
+                                            props:{
+                                                value:itemData.living
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: "div",
+                    class: "pizo-new-realty-dectruct-content-area-size",
+                    child: [
+                        {
+                            tag: "div",
+                            class: "pizo-new-realty-dectruct-content-area-size-zone",
+                            child: [
+                                {
+                                    tag: "div",
+                                    class: "pizo-new-realty-desc-detail-row",
+                                    child: [
+                                        {
+                                            tag: "span",
+                                            class: "pizo-new-realty-dectruct-content-area-kitchen-label",
+                                            props: {
+                                                innerHTML: "Bếp"
+                                            },
+                                        },
+                                        {
+                                            tag: "input",
+                                            class: ["pizo-new-realty-dectruct-content-area-kitchen", "pizo-new-realty-dectruct-input"],
+                                            attr: {
+                                                type: "number",
+                                                min: 0,
+                                                step: 1
+                                            },
+                                            props:{
+                                                value:itemData.kitchen
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-new-realty-dectruct-content-area-size-zone",
+                            child: [
+                                {
+                                    tag: "div",
+                                    class: "pizo-new-realty-desc-detail-row",
+                                    child: [
+                                        {
+                                            tag: "span",
+                                            class: "pizo-new-realty-dectruct-content-area-toilet-label",
+                                            props: {
+                                                innerHTML: "Toilet"
+                                            },
+                                        },
+                                        {
+                                            tag: "input",
+                                            class: ["pizo-new-realty-dectruct-content-area-toilet", "pizo-new-realty-dectruct-input"],
+                                            attr: {
+                                                type: "number",
+                                                min: 0,
+                                                step: 1
+                                            },
+                                            props:{
+                                                value:itemData.toilet
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+            ]
+        });
+        var tempSelectbox = _({
+            tag: "selectmenu",
+            class: "pizo-new-realty-detruct-content-structure",
+            on:{
+                change:function(event)
+                {
+                    if(this.value==3)
+                    advanceDetruct.style.display = "";
+                    else
+                    advanceDetruct.style.display = "none";
+                    if(this.value>=2)
+                    simpleDetruct.style.display = "";
+                    else
+                    simpleDetruct.style.display = "none";
+                }
+            },
+            props: {
+                items: [
+                   {text:"Chưa xác định",value:0},
+                   {text:"Đất trống",value:1},
+                   {text:"Cấp 4",value:2},
+                   {text:"Sẳn *",value:3},
+                ],
+                value:itemData.structure
+            }
+        });
+        var elementTemp = _({
+            tag: "div",
+            class: "pizo-new-realty-dectruct-content-area-size-zone",
+            style:{
+                pointerEvents:"none"
+            },
+            child: [
+                {
+                    tag: "div",
+                    class: "pizo-new-realty-desc-detail-row",
+                    child: [
+                        tempSelectbox
+                    ]
+                },
+                simpleDetruct
+            ]})
+            elementTemp.simpleDetruct = simpleDetruct;
+        tempSelectbox.emit("change");
+        itemStructure.push({value:i+1,element:elementTemp});
+        if(valueStructure===undefined)
+        valueStructure = i+1;
     }
+
+  
 
     itemWidth.push(sumWidth);
     itemHeight.push(sumHeight);
@@ -307,19 +699,33 @@ MergeRealty.prototype.getView = function () {
         value: valueFloorarea,
         items: itemFloorarea
     }
-
-    var dataFloorarea =  {
-        type: 'text',
+    var dataStructure =  {
+        type: 'element',
         name: 'Kết cấu',
         id: 'structure',
         action: "single-choice",
-        value: valueFloorarea,
-        items: itemFloorarea
+        value: valueStructure,
+        items: itemStructure
     }
 
+
+    var elementStructure = _({
+        tag:"div",
+        class:"container-structure"
+    })
+
     myTool.editor.on("nodechange",function(event){
-        if(checkAddress[event.nodePreviewData.value])
-        element.addMoveMarker(checkAddress[event.nodePreviewData.value])
+        switch(event.nodePreviewData.id)
+        {
+            case "address":
+            if(checkAddress[event.nodePreviewData.value])
+                element.addMoveMarker(checkAddress[event.nodePreviewData.value])
+                break;
+            case "structure":
+                elementStructure.clearChild();
+                elementStructure.appendChild(event.nodePreviewData.item.element.simpleDetruct.cloneNode(true))
+                break;
+        }
     })
 
     myTool.setData(
@@ -328,32 +734,45 @@ MergeRealty.prototype.getView = function () {
                 title: 'Thông tin bất động sản sau gộp',
                 properties: [
                     {
-                        type: 'constant',
-                        id: 'GPS',
-                        action: 'const',
-                        element:element
-                    },
-                    {
-                        type:"group",
-                        name: 'Thông tin chung',
-                        id:"general",
-                        properties: [
-                            dataName,
-                            dataAddress,
-                            dataAddressOld,
-                            dataContent
-                        ]
-                    },
-                    {
-                        type:"group",
-                        name: 'Thông tin xây dựng',
-                        id:"construction",
-                        properties: [
-                            dataWidth,
-                            dataHeight,
-                            dataAcreage,
-                            dataLandarea,
-                            dataFloorarea
+                        type:"container",
+                        id:"container-general",
+                        properties:[
+                            {
+                                type: 'constant',
+                                id: 'GPS',
+                                action: 'const',
+                                element:element
+                            },
+                            {
+                                type:"group",
+                                name: 'Thông tin chung',
+                                id:"general",
+                                properties: [
+                                    dataName,
+                                    dataAddress, 
+                                    dataAddressOld,
+                                    dataContent
+                                ]
+                            },
+                            {
+                                type:"group",
+                                name: 'Thông tin xây dựng',
+                                id:"construction",
+                                properties: [
+                                    dataWidth,
+                                    dataHeight,
+                                    dataAcreage,
+                                    dataLandarea,
+                                    dataFloorarea,
+                                    dataStructure
+                                ]
+                            },
+                            {
+                                type: 'constant',
+                                id: 'structure-detail',
+                                action: 'const',
+                                element:elementStructure
+                            }
                         ]
                     }
                 ]
@@ -376,8 +795,6 @@ MergeRealty.prototype.getView = function () {
         })
         );
     this.createPromise();
-   
-   
     return this.$view;
 }
 

@@ -11,7 +11,7 @@
     position: absolute;
     width: 50%;
     right: 0px;
-    height: calc(100% - 20px);
+    height: 100%;
 }
 #preview-GPS .mpot-base-preview-name{
     display: none;
@@ -96,14 +96,109 @@
     width: unset;
 }
 
-#edit-construction .mpot-choice-list{
+#edit-construction .mpot-group-editor-item#width .mpot-choice-list,
+#edit-construction .mpot-group-editor-item#height .mpot-choice-list,
+#edit-construction .mpot-group-editor-item#acreage .mpot-choice-list,
+#edit-construction .mpot-group-editor-item#landarea .mpot-choice-list,
+#edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list{
     display: flex;
     table-layout: unset;
 }
 
-#edit-construction .mpot-choice-list .mpot-choice{
+#edit-construction .mpot-group-editor-item#width .mpot-choice-list .mpot-choice,
+#edit-construction .mpot-group-editor-item#height .mpot-choice-list .mpot-choice,
+#edit-construction .mpot-group-editor-item#acreage .mpot-choice-list .mpot-choice,
+#edit-construction .mpot-group-editor-item#landarea .mpot-choice-list .mpot-choice,
+#edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list .mpot-choice{
     flex-grow: 2;
     display: flex;
     width: 100%;
     padding-left: 20px;
 }
+
+#preview-structure .pizo-new-realty-desc-detail-row{
+    margin-bottom: 0;
+}
+
+#preview-structure .pizo-new-realty-dectruct-content-area-size-zone{
+    margin-bottom: 0;
+}
+
+#preview-structure .pizo-new-realty-dectruct-content-area{
+    display: none;
+}
+
+#preview-structure .pizo-new-realty-detruct-content-structure{
+    width: 120px;
+}
+
+#preview-structure .mpot-base-preview-name{
+    padding-top: 12px;
+}
+
+#preview-structure .mpot-base-preview-content > div > div{
+    width: 100%;
+}
+
+#preview-structure .pizo-new-realty-dectruct-content-area-size{
+    margin-top: 10px;
+}
+
+#structure .mpot-choice-list{
+    width: 100%;
+}
+
+#structure .mpot-choice-list .mpot-choice-value>span{
+    width: 100%;
+    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+}
+
+#structure .mpot-choice-list .mpot-choice-value>span>div{
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#structure .pizo-new-realty-desc-detail-row{
+    margin-bottom: 0;
+}
+
+#structure .mpot-choice{
+    border-top: 1px;
+}
+
+#structure .pizo-new-realty-detruct-content-structure{
+    border-right: none;
+}
+
+#preview-container-general{
+    position: relative;
+}
+
+#preview-structure-detail .mpot-base-preview-name{
+    display: none;
+}
+
+#preview-structure-detail{
+    max-width: 50%;
+    margin-top: 0;
+}
+
+#preview-structure-detail .pizo-new-realty-dectruct-content-area{
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 30px;
+}
+
+#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox, #structure .pizo-new-realty-dectruct-content-area-selectbox{
+    margin:0;
+}
+
+/* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){
+    margin-left: 20px;
+}
+
+#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child{
+    width: calc(50% - 10px);
+} */

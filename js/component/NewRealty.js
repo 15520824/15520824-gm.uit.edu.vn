@@ -1357,7 +1357,8 @@ NewRealty.prototype.detructView = function () {
                                                         on:{
                                                             change:function(event)
                                                             {
-                                                                if(this.value===3)
+                                                                console.log(this.value)
+                                                                if(this.value==3)
                                                                 self.advanceDetruct.style.display = "";
                                                                 else
                                                                 self.advanceDetruct.style.display = "none";
