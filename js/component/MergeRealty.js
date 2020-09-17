@@ -131,6 +131,7 @@ MergeRealty.prototype.getView = function () {
 
     var myTool = new MergeTool.MPOTMergeTool();
     var element = new MapView();
+    element.activePlanningMap();
     var toolView = myTool.getView();
     var itemsAddress = [];
     var itemsAddressOld = [];
@@ -165,6 +166,7 @@ MergeRealty.prototype.getView = function () {
             fullAddress = number+" "+street+", "+ward+", "+district+", "+state;
             itemsAddress.push(fullAddress);
             checkAddress[fullAddress] = [itemData.lat,itemData.lng];
+            checkAddress[fullAddress].data = itemData;
             if(valueAddress===undefined)
             {
                 valueAddress = fullAddress;

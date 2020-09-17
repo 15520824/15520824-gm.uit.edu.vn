@@ -1221,7 +1221,7 @@ MapView.prototype.addMoveMarker = function (position,changeInput=true) {
     }else
         changeInput = false;
 
-    if (this.currentMarker !== undefined) {
+    if (this.currentMarker !== undefined&&position.data==undefined) {
         marker = this.currentMarker;
         self.transition(position,changeInput).then(function (value) {
             self.map.setCenter(new google.maps.LatLng(position[0], position[1]));
