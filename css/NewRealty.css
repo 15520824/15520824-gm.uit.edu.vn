@@ -39,7 +39,7 @@
 }
 
 .pizo-new-realty-desc-detail-row {
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   display: -ms-flexbox;
   display: flex;
   width: 100%;
@@ -359,7 +359,7 @@
 
 .pizo-new-realty-dectruct-content-area-right {
   margin: 0.7143rem;
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   display: -ms-flexbox;
   display: flex;
   align-items: stretch;
@@ -420,7 +420,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .pizo-new-realty-contact-tab{
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   display: -ms-flexbox;
   display: flex;
   height: 100%;
@@ -444,7 +444,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .pizo-new-realty-contact-item-name,.pizo-new-realty-contact-item-phone,.pizo-new-realty-contact-item-note{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: 100%;
@@ -559,7 +559,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .pizo-new-realty-dectruct-content-area-selectbox-child{
     width: calc(50% - 35px);
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     align-items: stretch;
@@ -588,7 +588,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .pizo-new-realty-image{
   height: 400px;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: 100%;

@@ -94,6 +94,11 @@ export default xmlModalDragManyFiles = {
           on:{
             click:function(event){
               this.parentNode.selfRemove();
+              if(self.getFile().length == 0)
+              {
+                if(!self.select.classList.contains("disable"))
+                self.select.classList.add("disable");
+              }
             }
           },
           props:{
@@ -216,7 +221,7 @@ export default xmlModalDragManyFiles = {
                 color: "white"
               },
               props: {
-                innerHTML: "Chọn"
+                innerHTML: "Tải lên"
               }
             }
           ]

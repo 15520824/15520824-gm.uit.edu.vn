@@ -1,6 +1,6 @@
 .pizo-new-state-container-name-container,.pizo-new-state-container-type-container,.pizo-new-state-container-nation-container{
     display: flex;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     align-items: stretch;

@@ -32,7 +32,7 @@
 }
 
 .pizo-list-plan-main-search-control-row{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: 100%;

@@ -64,7 +64,7 @@
 }
 
 .freebirdFormeditorViewHeaderTopRow {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
 }
@@ -74,7 +74,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 1;
@@ -85,7 +85,7 @@
 
 .freebirdFormeditorViewTabTabWrapper {
     bottom: 0;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     box-pack: justify;
@@ -98,7 +98,7 @@
 }
 
 .freebirdFormeditorViewTabMargin {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 1;
@@ -169,7 +169,7 @@
 }
 
 .freebirdFormeditorViewFatDesktop {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     height: 0;
@@ -218,7 +218,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     height: 100%;
@@ -260,7 +260,7 @@
 }
 
 .quantumWizTabsPapertabsTabList {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     border-bottom: 1px solid rgba(0,0,0,0.12);
@@ -269,7 +269,7 @@
 }
 
 .freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 0;
@@ -398,7 +398,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     padding-right: 2px;
@@ -471,7 +471,7 @@
     -webkit-align-items: flex-start;
     align-items: flex-start;
     background-color: #fff;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     height: 40px;
@@ -484,7 +484,7 @@
     box-align: stretch;
     -webkit-align-items: stretch;
     align-items: stretch;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 1;
@@ -616,7 +616,7 @@
 }
 
 .freebirdFormeditorViewCursorColorContainer {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-orient: vertical;
@@ -630,7 +630,7 @@
 }
 
 .freebirdFormeditorViewCursorRoot {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     height: 100%;
@@ -642,7 +642,7 @@
 }
 
 .freebirdFormeditorViewPagePageFields {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     background-color: #fff;
@@ -663,7 +663,7 @@
 }
 
 .freebirdFormeditorViewItemTitleInputWrapper {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     width: 100%;
@@ -671,7 +671,7 @@
 
 .freebirdFormeditorViewItemRoot {
     background-color: #fff;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-orient: vertical;
@@ -686,7 +686,7 @@
 }
 
 .freebirdFormeditorViewItemContentWrapper {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-orient: horizontal;
@@ -699,7 +699,7 @@
 }
 
 .item-dlg-dragHandle {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     box-pack: center;
@@ -723,7 +723,7 @@
     box-align: end;
     -webkit-align-items: flex-end;
     align-items: flex-end;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
@@ -810,7 +810,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
@@ -822,7 +822,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     height: 30px;
@@ -834,7 +834,7 @@
     box-align: stretch;
     -webkit-align-items: stretch;
     align-items: stretch;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 1;
@@ -856,7 +856,7 @@
     -webkit-align-items: center;
     align-items: center;
     cursor: move;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-orient: vertical;
@@ -881,7 +881,7 @@
     /* margin: auto;
     margin-left: .75rem;
     padding-top: 5px; */
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-orient: vertical;
@@ -947,7 +947,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     border-top: 1px solid #e0e0e0;
@@ -966,7 +966,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     height: 44px;
@@ -992,7 +992,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     box-pack: end;
@@ -1039,7 +1039,7 @@
     box-align: start;
     -webkit-align-items: flex-start;
     align-items: flex-start;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     height: 96px;
@@ -1050,7 +1050,7 @@
     box-align: start;
     -webkit-align-items: flex-start;
     align-items: flex-start;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     height: 96px;
@@ -1062,7 +1062,7 @@
     -webkit-align-items: center;
     align-items: center;
     color: rgba(0,0,0,0.54);
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
@@ -1150,7 +1150,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     height: 30px;
@@ -1162,7 +1162,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
 }
@@ -1182,7 +1182,7 @@
     align-items: center;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     font-size: 16px;
@@ -1199,7 +1199,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: nowrap;
@@ -1220,7 +1220,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     border-top: 1px solid #e0e0e0;
@@ -1281,7 +1281,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
 }
@@ -1333,7 +1333,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     min-height: 30px;
@@ -1393,7 +1393,7 @@
     box-align: stretch;
     -webkit-align-items: stretch;
     align-items: stretch;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-orient: vertical;
@@ -1437,7 +1437,7 @@
     box-align: stretch;
     -webkit-align-items: stretch;
     align-items: stretch;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 1;
@@ -1454,7 +1454,7 @@
     box-align: stretch;
     -webkit-align-items: stretch;
     align-items: stretch;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 1;
@@ -1474,7 +1474,7 @@
     box-align: stretch;
     -webkit-align-items: stretch;
     align-items: stretch;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 1;
@@ -1503,7 +1503,7 @@
     box-align: stretch;
     -webkit-align-items: stretch;
     align-items: stretch;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 1;
@@ -1521,7 +1521,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     box-pack: center;
@@ -1559,7 +1559,7 @@
 }
 
 .quantumWizDialogPaperdialogTitleBar {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-flex-shrink: 0;
@@ -1625,7 +1625,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-box-flex: 1;
@@ -1639,7 +1639,7 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
 }
@@ -1688,7 +1688,7 @@
 }
 
 .quantumWizDialogPaperdialogBottomButtons {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-flex-shrink: 0;

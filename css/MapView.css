@@ -9,6 +9,8 @@
     border-bottom: solid 0.0714rem #ccc;
     margin-bottom: 0.7143rem;
     background: #f3f3f3;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
   }
   
@@ -38,7 +40,7 @@
   }
   
   .pizo-new-realty-location-detail-row {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;

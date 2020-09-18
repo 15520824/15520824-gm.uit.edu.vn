@@ -15,7 +15,7 @@
 }
 
 .pizo-app .absol-single-page-header{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     align-items: stretch;
@@ -33,6 +33,8 @@
     padding-left: 1.4286rem;
     position: relative;
     flex-grow: 2;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
 }
 
@@ -86,7 +88,7 @@
     position: absolute;
     height: calc(100% - 50px);
     width: calc(100% - 30px);
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     align-items: stretch;
@@ -101,6 +103,8 @@
 }
 
 .pizo-list-realty-main-search-control{
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
     flex-shrink: 0;
 }
@@ -109,7 +113,7 @@
     flex-grow: 2;
     position: relative;
     align-items: stretch;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     flex-direction: column;
@@ -340,6 +344,8 @@
 
 .pizo-list-realty-main-search-control-row-HT-label{
     display: flex;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     flex-shrink: 0;
     align-items: center;
     padding-right: 10px;
@@ -347,11 +353,13 @@
 
 .pizo-list-realty-main-search-control-row-HT-input{
     flex-grow: 2;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
 }
 
 .pizo-list-realty-main-search-control-row-HT{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: 100%;
@@ -361,6 +369,8 @@
 
 .pizo-list-realty-main-search-control-row-price-label{
     display: flex;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     flex-shrink: 0;
     align-items: center;
     padding-right: 10px;
@@ -369,4 +379,6 @@
 .pizo-list-realty-main-search-control-row-price-input{
     flex-grow: 2;
     display: flex;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
 }

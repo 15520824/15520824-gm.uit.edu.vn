@@ -1,6 +1,6 @@
 
 .b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     height: 100% !important;
@@ -89,7 +89,7 @@
 .btn-wrapper.input-append{
     margin: 10px;
     position: relative;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     align-items: stretch;
@@ -101,7 +101,7 @@
 }
 
 .pizo-new-category-container-alias-active{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: 100%;

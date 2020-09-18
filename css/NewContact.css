@@ -1,6 +1,6 @@
 .pizo-new-contact-container-name-container,.pizo-new-contact-container-email-container,.pizo-new-contact-container-type-container,.pizo-new-contact-container-phone-container{
     display: flex;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     align-items: stretch;

@@ -138,7 +138,7 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
   }
 
   .container-header{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: 100%;

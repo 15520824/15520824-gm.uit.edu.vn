@@ -7,6 +7,7 @@ import Fcore from '../dom/Fcore';
 import MergeTool from 'mpot-merge-tool';
 import moduleDatabase from '../component/ModuleDatabase';
 import { MapView } from "./MapView";
+import NewAccount from '../component/NewAccount';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -144,14 +145,44 @@ MergeRealty.prototype.getView = function () {
     var valueAcreage,itemAcreage = [],sumAcreage = 0;
     var valueLandarea,itemLandarea = [],sumLandarea = 0;
     var valueFloorarea,itemFloorarea = [],sumFloorarea = 0;
+    var valueDirection,itemDirection = [];
+    var checkDirection = {
+        0:"Chưa xác định",
+        6:"Đông",
+        4:"Tây",
+        2:"Nam",
+        8:"Bắc",
+        9:"Đông Bắc",
+        3:"Đông Nam",
+        7:"Tây Bắc",
+        1:"Tây Nam"
+    }
+    var valueType,itemType = [];
+    var checkType =  moduleDatabase.getModule("type_activehouses").getLibary("id");
+    var number,street,ward,district,state,fullAddress;
+    var checkAddress = [];
+    var valueRoadWidth,itemRoadWidth = [],sumRoadWidth = 0;
+
+    var itemEquipments = [],itemContact = [];
+
     this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
     this.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
     this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
     this.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
     this.checkState = moduleDatabase.getModule("states").getLibary("id");
-    var number,street,ward,district,state,fullAddress;
-    var checkAddress = [];
-    var valueStructure,itemStructure = [];
+    moduleDatabase.getModule("users").load().then(function(value)
+    {
+        self.checkUser = moduleDatabase.getModule("users").getLibary("phone");
+        self.checkUserID = moduleDatabase.getModule("users").getLibary("id");
+    })
+
+    moduleDatabase.getModule("contacts").load().then(function(value)
+    {
+        self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
+        self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
+    })
+    
+    var valueStructure,itemStructure = [] , valueSimpleStructure;
     for(var i = 0;i<this.data.length;i++)
     {
         //Địa chỉ hiện tại
@@ -220,6 +251,7 @@ MergeRealty.prototype.getView = function () {
         itemFloorarea.push(itemData.floorarea);
         if(valueFloorarea===undefined)
         valueFloorarea = itemData.floorarea;
+
         var advanceDetruct = itemData.advancedetruct;
         var advanceDetruct1 = advanceDetruct%10?true:false;
         advanceDetruct = parseInt(advanceDetruct/10);
@@ -228,6 +260,7 @@ MergeRealty.prototype.getView = function () {
         var  advanceDetruct3 = advanceDetruct%10?true:false;
         advanceDetruct = parseInt(advanceDetruct/10);
         var advanceDetruct4 =   advanceDetruct%10?true:false;
+
         advanceDetruct = _({
             tag:"div",
             class:"pizo-new-realty-dectruct-content-area-advance",
@@ -604,11 +637,38 @@ MergeRealty.prototype.getView = function () {
                 },
                 simpleDetruct
             ]})
-            elementTemp.simpleDetruct = simpleDetruct;
         tempSelectbox.emit("change");
-        itemStructure.push({value:i+1,element:elementTemp});
+        itemStructure.push({value:i+1,element:elementTemp.cloneNode(true),simpleDetruct:simpleDetruct});
         if(valueStructure===undefined)
-        valueStructure = i+1;
+        {
+            valueSimpleStructure = simpleDetruct;
+            valueStructure = i+1;
+        }
+        
+        itemDirection.push(checkDirection[itemData.direction]);
+        if(valueDirection===undefined)
+        valueDirection = checkDirection[itemData.direction];
+        
+        if(checkType[itemData.type])
+        {
+            itemType.push(checkType[itemData.type].name);
+            if(valueType===undefined)
+            valueType = checkType[itemData.type].name;
+        }
+        
+        sumRoadWidth += parseFloat(itemData.roadwidth);
+        itemRoadWidth.push(itemData.roadwidth);
+        if(valueRoadWidth===undefined)
+        valueRoadWidth = itemData.roadwidth;
+        if(itemData.contact.length>0)
+        {
+            var tempElement = this.contactItem(itemData.contact[i]);
+            itemContact.push({value:false,element:tempElement});
+        }
+        if(itemData.equipment.length>0)
+        {
+            itemEquipments.push({value:false,element:this.convenientView(itemData),itemData:itemData.equipment});
+        }
     }
 
   
@@ -618,13 +678,14 @@ MergeRealty.prototype.getView = function () {
     itemAcreage.push(sumAcreage);
     itemLandarea.push(sumLandarea);
     itemFloorarea.push(sumFloorarea);
-
+    itemRoadWidth.push(sumRoadWidth);
 
 
     var dataName =  {
         type: 'text',
         name: 'Tên',
         id: 'name',
+        enableEdit:true,
         action: "single-choice",
         value: valueName,
         items: itemName
@@ -652,55 +713,62 @@ MergeRealty.prototype.getView = function () {
         type: 'text',
         name: 'Mô tả',
         id: 'description',
+        enableEdit:true,
         action: "single-choice",
         value: valueContent,
         items: itemContent
     }
 
     var dataWidth =  {
-        type: 'text',
+        type: 'number',
         name: 'Dài (m)',
         id: 'width',
+        enableEdit:true,
         action: "single-choice",
         value: valueWidth,
         items: itemWidth
     }
 
     var dataHeight =  {
-        type: 'text',
+        type: 'number',
         name: 'Ngang (m)',
         id: 'height',
+        enableEdit:true,
         action: "single-choice",
         value: valueHeight,
         items: itemHeight
     }
 
     var dataAcreage =  {
-        type: 'text',
+        type: 'number',
         name: 'Đất xây dựng (m²)',
         id: 'acreage',
+        enableEdit:true,
         action: "single-choice",
         value: valueAcreage,
         items: itemAcreage
     }
 
     var dataLandarea =  {
-        type: 'text',
+        type: 'number',
         name: 'Đất xây dựng (m²)',
         id: 'landarea',
+        enableEdit:true,
         action: "single-choice",
         value: valueLandarea,
         items: itemLandarea
     }
 
     var dataFloorarea =  {
-        type: 'text',
+        type: 'number',
         name: 'Đất xây dựng (m²)',
         id: 'floorarea',
+        enableEdit:true,
         action: "single-choice",
         value: valueFloorarea,
         items: itemFloorarea
     }
+
     var dataStructure =  {
         type: 'element',
         name: 'Kết cấu',
@@ -710,11 +778,64 @@ MergeRealty.prototype.getView = function () {
         items: itemStructure
     }
 
+    var dataDirection =  {
+        type: 'text',
+        name: 'Hướng',
+        id: 'direction',
+        action: "single-choice",
+        value: valueDirection,
+        items: itemDirection
+    }
+
+    var dataType =  {
+        type: 'text',
+        name: 'Loại nhà',
+        id: 'type-house',
+        action: "single-choice",
+        value: valueType,
+        items: itemType
+    }
+
+    var dataRoadWidth =  {
+        type: 'text',
+        name: 'Chiều rộng đường vào (m)',
+        id: 'roadwidth',
+        enableEdit:true,
+        action: "single-choice",
+        value: valueRoadWidth,
+        items: itemRoadWidth
+    }
+
+    var dataEquipments =  {
+        type: 'element',
+        name: 'Tiện ích trong nhà',
+        id: 'equipments',
+        action: "multi-choice",
+        items: itemEquipments
+    }
+
+    var dataContact =  {
+        type: 'element',
+        name: 'Liên hệ',
+        id: 'contact',
+        action: "multi-choice",
+        items: itemContact
+    }
 
     var elementStructure = _({
         tag:"div",
         class:"container-structure"
     })
+
+    var elementEquipments = _({
+        tag:"div",
+        class:"container-equipments",
+        child:[
+            self.convenientView({equipment:[]})
+        ]
+    })
+
+    elementStructure.appendChild(valueSimpleStructure);
 
     myTool.editor.on("nodechange",function(event){
         switch(event.nodePreviewData.id)
@@ -725,8 +846,28 @@ MergeRealty.prototype.getView = function () {
                 break;
             case "structure":
                 elementStructure.clearChild();
-                elementStructure.appendChild(event.nodePreviewData.item.element.simpleDetruct.cloneNode(true))
+                elementStructure.appendChild(event.nodePreviewData.item.simpleDetruct)
                 break;
+            case "equipments":
+                elementEquipments.clearChild();
+                var result = [];
+                var checkEquipment = [],valueTemp;
+                for(var i = 0;i<event.nodePreviewData.values.length;i++)
+                {
+                    for(var j = 0;j<event.nodePreviewData.values[i].itemData.length;j++)
+                    {
+                        valueTemp = event.nodePreviewData.values[i].itemData[j];
+                        if(checkEquipment[valueTemp.equipmentid]===undefined)
+                        checkEquipment[valueTemp.equipmentid] = {equipmentid:valueTemp.equipmentid,content:parseInt(valueTemp.content)};
+                        else
+                        checkEquipment[valueTemp.equipmentid].content += parseInt(valueTemp.content);
+                    }
+                }
+                for(var param in checkEquipment)
+                {
+                    result.push(checkEquipment[param]);
+                }
+                elementEquipments.appendChild(self.convenientView({equipment:result}));
         }
     })
 
@@ -766,17 +907,46 @@ MergeRealty.prototype.getView = function () {
                                     dataAcreage,
                                     dataLandarea,
                                     dataFloorarea,
-                                    dataStructure
+                                    dataStructure,
+                                    {
+                                        type: 'constant',
+                                        id: 'structure-detail',
+                                        changeid:'structure',
+                                        action: 'const',
+                                        element:elementStructure
+                                    },
+                                    dataDirection,
+                                    dataType,
+                                    dataRoadWidth
                                 ]
                             },
+                        ]
+                    },
+                    {
+                        type:"container",
+                        id:"container-orther",
+                        properties:[
+                            dataEquipments,
                             {
                                 type: 'constant',
-                                id: 'structure-detail',
+                                id: 'equipments-detail',
+                                changeid:'equipments',
                                 action: 'const',
-                                element:elementStructure
+                                element:elementEquipments
                             }
                         ]
+                    },
+                    {
+                        type:"container",
+                        id:"container-contact",
+                        properties:[
+                            dataContact
+                        ]
                     }
+                    // {
+                    //     type:"container",
+                    //     id:"container-general",
+                    // }
                 ]
             }
         }
@@ -798,6 +968,494 @@ MergeRealty.prototype.getView = function () {
         );
     this.createPromise();
     return this.$view;
+}
+
+MergeRealty.prototype.contactItem = function(data){
+    var name,typecontact,phone,statusphone,note;
+    var self = this;
+    var temp = _({
+        tag:"div",
+        class:"pizo-new-realty-contact-item",
+        child:[
+            {
+                tag:"div",
+                class:"pizo-new-realty-contact-item-name",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-item-name-label",
+                        props:{
+                            innerHTML:"Tên"
+                        }
+                    },
+                    {
+                        tag:"input",
+                        class:"pizo-new-realty-contact-item-name-input",
+                        props:{
+                        }
+                    },
+                    {
+                        tag:"selectmenu",
+                        class:"pizo-new-realty-contact-item-name-selectbox",
+                        props:{
+                            items:[
+                                {text:"Chưa xác định",value:0},
+                                {text:"Môi giới", value:1},
+                                {text:"Chủ nhà",value:2},
+                                {text:"Họ hàng",value:3}
+                            ]
+                        }
+                    },
+                    {
+                        tag:"button",
+                        class:"pizo-new-realty-contact-item-setting",
+                        on:{
+                            click:function(event){
+                                var tempData = temp.getData();
+                                if(tempData.password!==undefined)
+                                self.editAccount(temp,tempData);
+                                else
+                                self.editContact(temp,tempData);
+                            }
+                        },
+                        child:[
+                            {
+                                tag:"i",
+                                class:"material-icons",
+                                style:{
+                                    fontSize:"1rem",
+                                    verticalAlign: "middle"
+                                },
+                                props:{
+                                    innerHTML:"settings"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                tag:"div",
+                class:"pizo-new-realty-contact-item-phone",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-item-phone-label",
+                        props:{
+                            innerHTML:"Số điện thoại"
+                        }
+                    },
+                    {
+                        tag:"input",
+                        class:"pizo-new-realty-contact-item-phone-input",
+                        props:{
+                            type:"number"
+                        },
+                        on:{
+                            change:function(event)
+                            {
+                                if(self.checkUser===undefined)
+                                {
+                                    var element = this;
+                                    moduleDatabase.getModule("users").load().then(function(){
+                                        setTimeout(function(){
+                                            element.emit("change");
+                                        },10)
+                                      
+                                    })
+                                    return;
+                                }
+                                if(self.checkContact===undefined)
+                                {
+                                    var element = this;
+                                    moduleDatabase.getModule("contacts").load().then(function(){
+                                        setTimeout(function(){
+                                            element.emit("change");
+                                        },10)
+                                    })
+                                    return;
+                                }
+                                if(self.checkUser[this.value]!==undefined||self.checkContact[this.value]!==undefined)
+                                {
+                                    if(self.checkUser[this.value]!==undefined){
+                                        var tempValue = self.checkUser[this.value];
+                                        temp.setInformation(tempValue);
+                                    }
+                                    else
+                                    {
+                                        var tempValue = self.checkContact[this.value];
+                                        temp.setInformation(tempValue);
+                                    }
+                                }else
+                                {
+                                    temp.setOpenForm();
+                                }
+                            }
+                        }
+                    },
+                    {
+                        tag:"selectmenu",
+                        class:"pizo-new-realty-contact-item-phone-selectbox",
+                        style:{
+                            width: "190px"
+                        },
+                        props:{
+                            items:[
+                                {text:"Còn hoạt động",value:1},
+                                {text:"Sai số", value:0},
+                                {text:"Gọi lại sau",value:2},
+                                {text:"Bỏ qua",value:3},
+                                {text:"Khóa máy",value:4}
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                tag:"div",
+                class:"pizo-new-realty-contact-item-note",
+                child:[
+                    {
+                        tag:"span",
+                        class:"pizo-new-realty-contact-item-note-label",
+                        props:{
+                            innerHTML:"Ghi chú"
+                        }
+                    },
+                    {
+                        tag:"textarea",
+                        class:"pizo-new-realty-contact-item-note-input"
+                    }
+                ]
+            },
+        ]
+    })
+    var name = $('input.pizo-new-realty-contact-item-name-input',temp);
+    var typecontact = $('div.pizo-new-realty-contact-item-name-selectbox',temp);
+    var phone = $('input.pizo-new-realty-contact-item-phone-input',temp);
+    var statusphone = $('div.pizo-new-realty-contact-item-phone-selectbox',temp);
+    var note = $('textarea.pizo-new-realty-contact-item-note-input',temp);
+    phone.checkContact = function(data)
+    {
+        if(self.checkUserID===undefined)
+        {
+            var element = this;
+            moduleDatabase.getModule("users").load().then(function(){
+                setTimeout(function(){
+                    element.checkContact(data);
+                },10)
+            })
+            return;
+        }
+        if(self.checkContactID===undefined)
+        {
+            var element = this;
+            moduleDatabase.getModule("contacts").load().then(function(){
+                setTimeout(function(){
+                    element.checkContact(data);
+                },10)
+            })
+            return;
+        }
+        if(data.contactid!==undefined&&data.contactid!==0)
+        {
+            temp.setInformation(self.checkContactID[data.contactid]);
+        }else
+        if(data.userid!==undefined&&data.userid!==0)
+        {
+            temp.setInformation(self.checkUserID[data.userid]);
+        }else
+        {
+            temp.setInformation(data);
+        }
+    }
+    temp.setInformation = function(data)
+    {
+        if(data === undefined)
+        {
+            temp.selfRemove();
+            return;
+        }
+        temp.data = data;
+        if(data.statusphone === undefined)
+            statusphone.value = 1
+        else
+            statusphone.value = data.statusphone;
+        phone.value = data.phone;
+        name.value = data.name;
+        name.setAttribute("disabled","");
+        statusphone.style.pointerEvents = "none";
+        statusphone.style.backgroundColor = "#f3f3f3";
+    }
+    temp.setOpenForm = function(data)
+    {
+        temp.data = data;
+        statusphone.value = 1;
+        name.removeAttribute("disabled");
+        statusphone.style.pointerEvents = "unset";
+        statusphone.style.backgroundColor = "unset";
+    }
+    temp.getData = function()
+    {
+        if(temp.data!==undefined)
+        {
+            temp.data.typecontact = typecontact.value;
+            temp.data.note = note.value;
+            return temp.data;
+        }else
+        {
+            return {
+                name:name.value,
+                statusphone:statusphone.value,
+                phone:phone.value,
+                typecontact : typecontact.value,
+                note:note.value
+            }
+        }
+    }
+
+    if(data!==undefined)
+    {
+        phone.checkContact(data);
+        typecontact.value = data.typecontact;
+        note.value = data.note;
+    }
+
+    return temp;
+}
+
+MergeRealty.prototype.editAccount = function(node,data)
+{
+    var self = this;
+    moduleDatabase.getModule("positions").load().then(function(value){
+        var mNewAccount = new NewAccount({original:data});
+        mNewAccount.attach(self.parent);
+        var frameview = mNewAccount.getView(moduleDatabase.getModule("positions").getList("name","id"));
+        self.parent.body.addChild(frameview);
+        self.parent.body.activeFrame(frameview);
+        self.editDBAccount(mNewAccount,data,node);
+    })
+}
+
+MergeRealty.prototype.editDBAccount = function(mNewAccount,data,node){
+    var self = this;
+    mNewAccount.promiseEditDB.then(function(value){
+        moduleDatabase.getModule("users").update(value).then(function(result){
+            self.editViewAccount(result,node);
+        })
+        mNewAccount.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewAccount.promiseEditDB!==undefined)
+            self.editDBAccount(mNewAccount,data,parent,index);
+        },10);
+    })
+}
+
+MergeRealty.prototype.editViewAccount = function(value,node){
+    node.setInformation(value);
+}
+
+MergeRealty.prototype.editDBContact = function(mNewContact,data,node){
+    var self = this;
+    mNewContact.promiseEditDB.then(function(value){
+        if(value.id===undefined)
+        moduleDatabase.getModule("users").add(value).then(function(result){
+            self.editViewAccount(result,node);
+        })
+        else
+        moduleDatabase.getModule("contacts").update(value).then(function(result){
+            self.editViewContact(result,node);
+        })
+        mNewContact.promiseEditDB = undefined;
+        setTimeout(function(){
+        if(mNewContact.promiseEditDB!==undefined)
+            self.editDBContact(mNewContact,data);
+        },10);
+    })
+}
+
+MergeRealty.prototype.editViewContact = function(value,node){
+    node.setInformation(value);
+}
+
+MergeRealty.prototype.editContact = function(node,data)
+{
+    var self = this;
+    var mNewContact = new NewContact({original:data});
+    mNewContact.attach(self.parent);
+    var frameview = mNewContact.getView();
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.editDBContact(mNewContact,data,node);
+}
+
+MergeRealty.prototype.convenientView = function (dataHouse) {
+    var self = this;
+    var data = moduleDatabase.getModule("equipments").data;
+    var arr = [];
+    for(var i = 0;i<data.length;i++)
+    {
+        if(data[i].available===0)
+        continue;
+        arr.push({text:data[i].name,value:data[i].id,data:data[i]})
+    }
+    var container = _({
+        tag:"div",
+        class:"pizo-new-realty-dectruct-content-area-size"
+    })
+    var equipment = _({
+        tag:"selectbox",
+        style:{
+            width:"100%"
+        },
+        props:{
+            items:arr,
+            enableSearch: true
+        },
+        on:{
+            add:function(event)
+            {
+                switch(parseInt(event.itemData.data.type))
+                {
+                    case 0:
+                        container.appendChild(self.itemCount(event.itemData.data));
+                        break;
+                    case 1:
+                        container.appendChild(self.itemDisplayNone(event.itemData.data));
+                        break;
+                }
+            },
+            remove:function(event)
+            {
+                for(var i = 0;i<container.childNodes.length;i++)
+                {
+                    if(container.childNodes[i].equipmentid == event.itemData.data.id)
+                    {
+                        container.childNodes[i].selfRemove();
+                        break;
+                    }
+                }
+            }
+        }
+    });
+
+    if(this.data!==undefined)
+    {
+        var value = [];
+        var temp;
+        var libary = moduleDatabase.getModule("equipments").getLibary("id");
+        for(var i = 0;i<dataHouse.equipment.length;i++)
+        {
+            temp = libary[dataHouse.equipment[i].equipmentid];
+            temp.content = dataHouse.equipment[i].content;
+            value.push(dataHouse.equipment[i].equipmentid);
+            switch(parseInt(temp.type))
+            {
+                case 0:
+                    if(temp.available==1)
+                    container.appendChild(self.itemCount(temp));
+                    else
+                    container.appendChild(self.itemDisplayNone(temp));
+                    break;
+                case 1:
+                    container.appendChild(self.itemDisplayNone(temp));
+                    break;
+            }
+        }
+        equipment.values = value;
+    }
+    
+    var temp = _({
+        tag: "div",
+        class: "pizo-new-realty-convenient",
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-convenient-content",
+                child: [
+                    {
+                        tag: "div",
+                        class: "pizo-new-realty-convenient-content-size",
+                        child: [
+                            equipment
+                        ]
+                    },
+                    container
+                ]
+            }
+        ]
+    })
+    return temp;
+}
+
+MergeRealty.prototype.itemCount = function(data)
+{
+    var input = _({
+        tag: "input",
+        class: ["pizo-new-realty-dectruct-content-area-floor", "pizo-new-realty-dectruct-input"],
+        attr: {
+            type: "number",
+            min: 0,
+            step: 1
+        },
+        props:{
+            value:1
+        }
+    });
+    if(data.content!==undefined)
+    {
+        input.value = data.content;
+    }
+    var temp = _({
+        tag: "div",
+        class: ["pizo-new-realty-dectruct-content-area-size-zone-all"],
+        child: [
+            {
+                tag: "div",
+                class: "pizo-new-realty-desc-detail-row",
+                child: [
+                    {
+                        tag: "span",
+                        class: "pizo-new-realty-dectruct-content-area-floor-label",
+                        props: {
+                            innerHTML: data.name,
+                        },
+                    },
+                    input
+                ]
+            }
+        ]
+    });
+    temp.equipmentid = data.id;
+    temp.getData = function()
+    {
+        var result = {
+            equipmentid:data.id,
+            content:input.value
+        }
+        return result;
+    }
+    return temp;
+}
+
+MergeRealty.prototype.itemDisplayNone = function(data)
+{
+    var temp = _({
+        tag:"div",
+        style:{
+            display:"none"
+        }
+    })
+    temp.equipmentid = data.id;
+    temp.getData = function()
+    {
+        var result = {
+            equipmentid:data.id,
+            content:data.content
+        }
+        return result;
+    }
+    return temp;
 }
 
 MergeRealty.prototype.getDataSave = function() {

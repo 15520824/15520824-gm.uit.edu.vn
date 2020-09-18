@@ -1,5 +1,5 @@
 .pizo-list-realty-main-result-control-map-view {
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   display: -ms-flexbox;
   display: flex;
   width: 100%;
@@ -11,7 +11,8 @@
   .pizo-new-realty-location-map-view {
   flex-grow: 2;
   display: flex;
-
+  /*display: -webkit-box;*/
+  display: -ms-flexbox;
   margin-bottom: 0;
   width: unset;
   vertical-align: unset;
@@ -112,14 +113,16 @@
 
 .result-list-container .search-subtitle {
   margin-bottom: 10px;
-  display: -webkit-box;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
 }
 
 @media screen and (min-width: 1007px) {
   .responsive-search-page .search-page-list-container .search-subtitle {
     position: relative;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -148,7 +151,8 @@
 }
 
 .result-list-container .sort-options.visible {
-  display: -webkit-box;
+  /*display: -webkit-box;*/
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
   align-items: flex-start;
@@ -229,11 +233,13 @@ body:not(.mobile-web) .photo-cards.photo-cards_short {
 
 .list-card,
 .list-card-info {
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   -webkit-box-orient: vertical;
 }
 
 .list-card {
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   -webkit-box-direction: reverse;
   flex-direction: column-reverse;
@@ -261,6 +267,8 @@ body:not(.mobile-web) .photo-cards.photo-cards_short {
 }
 
 .list-card-info {
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   -webkit-box-direction: normal;
   flex-direction: column;
@@ -335,7 +343,8 @@ a:visited {
 .list-card-footer {
   -webkit-box-ordinal-group: 4;
   order: 3;
-  display: -webkit-box;
+  /*display: -webkit-box;*/
+  display: -ms-flexbox;
   display: flex;
   flex-direction: row;
 }
@@ -566,7 +575,8 @@ body.responsive-search-page .search-page-container .list-card-save {
 
 .responsive-mini-bubble {
   color: #2a2a33;
-  display: -webkit-box;
+  /*display: -webkit-box;*/
+  display: -ms-flexbox;
   display: flex;
   line-height: 15.6px;
   position: relative;
@@ -582,7 +592,8 @@ body.responsive-search-page .search-page-container .list-card-save {
 }
 
 .responsive-mini-bubble .mini-bubble-content {
-  display: -webkit-box;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
 }
 
@@ -620,6 +631,8 @@ body.responsive-search-page .search-page-container .list-card-save {
 
 .imHfmq {
   height: 100%;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
   justify-content: space-between;
@@ -714,7 +727,8 @@ ul {
 
 .ds-container {
   -webkit-font-smoothing: antialiased;
-  display: -ms-flexbox;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   height: 100%;
   max-height: none;
@@ -753,7 +767,8 @@ ul {
 }
 
 .media-stream {
-  display: -ms-flexbox;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
@@ -910,7 +925,8 @@ ul {
   bottom: 0;
   left: 0;
   right: 0;
-  display: -ms-flexbox;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
   justify-content: center;
@@ -936,7 +952,8 @@ ul {
 }
 
 .ds-container .contact-button-group {
-  display: -ms-flexbox;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
@@ -978,7 +995,8 @@ ul {
 
 .ds-container .ds-data-col {
   background: #eee;
-  display: -ms-flexbox;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -1023,7 +1041,8 @@ ul {
 }
 
 .ds-home-details-chip .ds-summary-row-container {
-  display: -ms-flexbox;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
 }
 
@@ -1327,7 +1346,8 @@ h6 {
 }
 
 .ds-container .contact-button-group {
-  display: -ms-flexbox;
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
   align-items: center;
@@ -1426,6 +1446,8 @@ input[type="submit"] {
 }
 
 .gpVNOz {
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
@@ -1453,6 +1475,8 @@ input[type="submit"] {
 }
 
 .cjrQwi {
+  /*display: -webkit-box;*/
+display: -ms-flexbox;
   display: flex;
   flex-direction: row;
   -webkit-box-pack: end;

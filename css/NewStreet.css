@@ -1,6 +1,6 @@
 .pizo-new-ward-container-ward-container{
     display: flex;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     align-items: stretch;

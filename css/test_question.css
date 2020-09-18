@@ -47,7 +47,7 @@
 .modal-upload-XML-body {
   position: relative;
   height: calc(100% - 61px);
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   display: -ms-flexbox;
   display: flex;
   width: 100%;
@@ -76,7 +76,7 @@
 }
 
 .modal-upload-XML-body-drop-area-main-form {
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   display: -ms-flexbox;
   display: flex;
   width: 100%;
@@ -251,7 +251,7 @@
     box-align: end;
     -webkit-align-items: flex-end;
     align-items: flex-end;
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
@@ -384,7 +384,7 @@
   bottom: 0;
   -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);
   box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   display: -webkit-flex;
   display: flex;
   -webkit-box-orient: vertical;
@@ -412,7 +412,7 @@
   align-items: center;
   -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   display: -webkit-flex;
   display: flex;
   -webkit-flex-shrink: 0;
@@ -465,7 +465,7 @@
   -webkit-align-items: flex-start;
   align-items: flex-start;
   border-bottom: 1px solid rgba(0,0,0,0.12);
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   display: -webkit-flex;
   display: flex;
   -webkit-box-orient: vertical;

@@ -87,7 +87,8 @@ input:checked + .slide-container  .slide {
     transition: opacity 1s ease-in-out;
 }
 
-input:checked + .slide-container .nav label { display: flex; }
+input:checked + .slide-container .nav label { display: flex; /*display: -webkit-box;*/
+    display: -ms-flexbox; }
 
 .nav-dots {
 	width: 100%;

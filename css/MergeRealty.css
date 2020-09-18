@@ -49,30 +49,56 @@
 }
 
 #preview-address{
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
 }
 
 #preview-address .mpot-base-preview-name{
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
     flex-shrink: 0;
 }
 
 #preview-address-old{
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
 }
 
 #preview-address-old .mpot-base-preview-name{
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
     flex-shrink: 0;
 }
 
-#preview-description{
+#preview-description, #preview-name{
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
 }
 
-#preview-description .mpot-base-preview-name{
+#preview-description .mpot-base-preview-name,
+#preview-name .mpot-base-preview-name{
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
     flex-shrink: 0;
+}
+
+#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:first-child{
+
+}
+
+#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:last-child{
+    margin-left: 30px;
+    width: calc(50% + 5px);
+}
+
+#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:last-child{
+    
 }
 
 #preview-construction{
@@ -85,23 +111,63 @@
 }
 
 #preview-construction .mpot-base-preview .mpot-base-preview-content{
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
     flex-shrink: 0;
     padding-right: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.mpot-base-preview .mpot-base-preview-content>*{
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+.mpot-base-preview .mpot-base-preview-content>span{
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    text-align: justify;
+    display: block;
+    width: 100%;
+}
+
+#preview-description .mpot-base-preview-content,
+#preview-name .mpot-base-preview-content{
+    width: 100%;
+    display: flex;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
 }
 
 #preview-construction .mpot-base-preview .mpot-base-preview-name{
     flex-grow: 2;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     display: flex;
     width: unset;
+    white-space: nowrap;
+}
+
+#preview-description .mpot-base-preview-content{
+    width: 100%;
+    display: flex;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
 }
 
 #edit-construction .mpot-group-editor-item#width .mpot-choice-list,
 #edit-construction .mpot-group-editor-item#height .mpot-choice-list,
 #edit-construction .mpot-group-editor-item#acreage .mpot-choice-list,
 #edit-construction .mpot-group-editor-item#landarea .mpot-choice-list,
-#edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list{
+#edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list,
+#edit-construction .mpot-group-editor-item#direction .mpot-choice-list,
+#edit-construction .mpot-group-editor-item#type-house .mpot-choice-list,
+#edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list{
     display: flex;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     table-layout: unset;
 }
 
@@ -109,9 +175,14 @@
 #edit-construction .mpot-group-editor-item#height .mpot-choice-list .mpot-choice,
 #edit-construction .mpot-group-editor-item#acreage .mpot-choice-list .mpot-choice,
 #edit-construction .mpot-group-editor-item#landarea .mpot-choice-list .mpot-choice,
-#edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list .mpot-choice{
+#edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list .mpot-choice,
+#edit-construction .mpot-group-editor-item#direction .mpot-choice-list .mpot-choice,
+#edit-construction .mpot-group-editor-item#type-house .mpot-choice-list .mpot-choice,
+#edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list .mpot-choice{
     flex-grow: 2;
     display: flex;
+    /*display: -webkit-box;*/
+display: -ms-flexbox;
     width: 100%;
     padding-left: 20px;
 }
@@ -180,21 +251,69 @@
     display: none;
 }
 
-#preview-structure-detail{
-    max-width: 50%;
+#preview-construction .mpot-base-preview#preview-structure-detail{
+    width: 100%;
     margin-top: 0;
+}
+
+#preview-construction .mpot-base-preview#preview-structure-detail .mpot-base-preview-content{
+    width: 100%;
+    padding-right: 0;
 }
 
 #preview-structure-detail .pizo-new-realty-dectruct-content-area{
     margin-top: 0;
     margin-left: 0;
     margin-right: 30px;
+    margin-bottom: 0;
+}
+
+#preview-direction .mpot-base-preview-name{
+    font-weight: bold;
+}
+
+#preview-type-house .mpot-base-preview-name{
+    font-weight: bold;
 }
 
 #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox, #structure .pizo-new-realty-dectruct-content-area-selectbox{
     margin:0;
 }
 
+/* #preview-structure-detail .absol-checkbox{
+    pointer-events: none;
+} */
+
+#preview-structure-detail .pizo-new-realty-dectruct-content-area-simple>div:last-child .pizo-new-realty-dectruct-content-area-size-zone{
+    margin-bottom: 0;
+}
+
+#preview-construction .mpot-base-preview#preview-roadwidth{
+    width: 100%;
+}
+
+#preview-construction .mpot-base-preview#preview-roadwidth .mpot-base-preview-name{
+    font-weight: bold;
+}
+
+#edit-equipments .mpot-choice-list{
+    width: 100%;
+}
+
+#edit-equipments .mpot-choice-list .mpot-choice-value{
+    pointer-events: none;
+}
+
+#edit-equipments .mpot-choice-list .mpot-choice-value>span{
+    width: 100%;
+    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+}
+
+#edit-equipments .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size{
+    margin-right:0;
+}
 /* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){
     margin-left: 20px;
 }
@@ -202,3 +321,137 @@
 #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child{
     width: calc(50% - 10px);
 } */
+
+#edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close{
+    display: none;
+}
+
+#edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text{
+    padding-right: 10px;
+}
+
+#preview-equipments .mpot-base-preview-content{
+    display: none;
+}
+
+#preview-container-orther{
+    /*display: -webkit-box;*/
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}
+
+#preview-container-orther>div.mpot-preview-group-name{
+    display: none;
+}
+
+#preview-equipments{
+    /*display: -webkit-box;*/
+    display: -ms-flexbox;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+#preview-equipments-detail{
+    /*display: -webkit-box;*/
+    display: -ms-flexbox;
+    display: flex;
+    flex-grow: 2;
+}
+
+#preview-equipments-detail .mpot-base-preview-content{
+    width: 100%;
+}
+
+#preview-equipments-detail .mpot-base-preview-content .pizo-new-realty-convenient-content-size{
+    margin-right: 0;
+}
+
+#preview-equipments .mpot-base-preview-name{
+    width: auto;
+    font-weight: bold;
+}
+
+#preview-equipments-detail .mpot-base-preview-name{
+    width: 30px;
+}
+
+
+#edit-contact .mpot-choice-list .mpot-choice-value{
+    pointer-events: none;
+}
+
+#edit-contact .mpot-choice-list .mpot-choice-value>span{
+    width: 100%;
+    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+}
+
+#edit-contact .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size{
+    margin-right:0;
+}
+/* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){
+    margin-left: 20px;
+}
+
+#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child{
+    width: calc(50% - 10px);
+} */
+
+#edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close{
+    display: none;
+}
+
+#edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text{
+    padding-right: 10px;
+}
+
+#edit-contact .mpot-choice-list{
+    width: 100%;
+}
+
+#edit-contact .pizo-new-realty-contact-item-setting{
+    display: none;
+}
+
+#edit-contact .pizo-new-realty-contact-item{
+    margin-bottom: 0.7143rem;
+}
+
+#preview-contact .pizo-new-realty-contact-item{
+    padding: 0.7143rem;
+    margin: 0;
+    padding-bottom: 0.7143rem;
+    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+}
+
+#preview-contact{
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}
+
+#preview-contact .mpot-base-preview-name{
+    /*display: -webkit-box;*/
+    display: -ms-flexbox;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+#preview-contact .mpot-base-preview-content{
+    display: -ms-flexbox;
+    display: flex;
+    flex-grow: 2;
+}
+
+#preview-contact .mpot-base-preview-content>div{
+    width: 100%;
+}

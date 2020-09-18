@@ -17,7 +17,7 @@
 
 
 .pizo-new-realty-desc-detail-row-permission{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: 100%;
@@ -87,7 +87,7 @@
 .pizo-new-account-container-phone-birthday-gender,
 .pizo-new-account-container-birthday-container,
 .pizo-new-account-container-gender-container{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: 100%;
@@ -202,7 +202,7 @@
 }
 
 .pizo-new-account-container-password-container-new,.pizo-new-account-container-password-container-new-confirm{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: calc(50% - 15px);
@@ -305,7 +305,7 @@ input:checked+.absol-switch-slider:before{
 }
 
 .pizo-new-account-container-permission-addvance-selectmenu{
-    display: -webkit-box;
+    /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
     width: 100%;

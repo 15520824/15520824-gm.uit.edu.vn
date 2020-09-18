@@ -2719,7 +2719,7 @@ NewRealty.prototype.contactItem = function(data){
                         on:{
                             click:function(event){
                                 var tempData = temp.getData();
-                                if(tempData.username!==undefined)
+                                if(tempData.password!==undefined)
                                 self.editAccount(temp,tempData);
                                 else
                                 self.editContact(temp,tempData);
@@ -2988,7 +2988,6 @@ NewRealty.prototype.formatDataRowListAccount = function(data)
 
 NewRealty.prototype.getDataRowListAccount = function(data){
     var temp = [
-        data.username,
         data.name,
         data.phone,
         data.email,
@@ -3048,7 +3047,6 @@ NewRealty.prototype.contactView = function () {
                         on:{
                             click:function(event){
                                 containerContact.appendChild(self.contactItem());
-                                
                             }
                         },
                         child:[
