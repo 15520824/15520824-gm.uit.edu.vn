@@ -2394,7 +2394,10 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
                 dataOrigin.value = this.checked;
                 else{
                     dataOrigin.value = checked;
-                    this.checked = checked;
+                    if(this.checked !== checked)
+                    {
+                        this.click();
+                    }
                 }
             }
             if(dataOrigin.value===true)

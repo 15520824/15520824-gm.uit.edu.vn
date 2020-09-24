@@ -148,6 +148,7 @@ table.sortTable tr.more-child> td> div>i.more-button, table.sortTableClone tr.mo
   .container-header > span{
     flex-grow: 2;
     display: flex;
+    align-items: center;
   }
 
   table.sortTable .parent:nth-child(odd) td{
