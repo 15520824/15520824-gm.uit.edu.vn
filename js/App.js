@@ -536,7 +536,7 @@ App.prototype.getPermisionOpenPage = function()
                         if(moduleDatabase.checkPermission[0].indexOf(45)!=-1)
                         menuZone.push({
                             text:"Sửa trợ giúp",
-                            pageIndex:73
+                            pageIndex:101
                         })
                         this.firstElement.push({
                             text: "Trợ giúp",

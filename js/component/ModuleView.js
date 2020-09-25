@@ -1117,7 +1117,7 @@ tableView.prototype.getCellHeader = function(header,i)
                     flexGrow:2
                 },
                 on: {
-                    click: function (event) {
+                    change: function (event) {
                         for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
                             result.bodyTable.listCheckBox[j].update(this.checked);
                         }
@@ -2367,7 +2367,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
                 tag: "checkboxbutton",
                 class: "pizo-checkbox",
                 on: {
-                    click: function (event) {
+                    change: function (event) {
                             if (result.bodyTable.listCheckBox !== undefined) {
                                 if (this.checked === false)
                                     result.bodyTable.listCheckBox[0].checked = false;
@@ -2394,9 +2394,10 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
                 dataOrigin.value = this.checked;
                 else{
                     dataOrigin.value = checked;
-                    if(this.checked !== checked)
+                    if(this.checked != checked)
                     {
-                        this.click();
+                        this.checked = checked;
+                        this.emit("change");
                     }
                 }
             }

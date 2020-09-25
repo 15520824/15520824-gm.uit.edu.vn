@@ -740,7 +740,10 @@ ListRealty.prototype.getDataRow = function (data) {
    
     var result = [
         {},
-        {},
+        {functionClick:function(){
+            var data = arguments[4].original;
+            console.log(arguments[4][0].value,arguments[1].childNodes[0].childNodes[0].checked)
+        }},
         {},
         {
             value: data.id,
