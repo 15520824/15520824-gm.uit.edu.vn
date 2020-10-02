@@ -611,18 +611,31 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                 scrollParent = scrollParent.parentElement;
             }
             if(scrollParent)
-            scrollParent.addEventListener("scroll", function (event) {
-                if (window.lastScrolledLeft != scrollParent.scrollLeft) {
-                    window.xMousePos -= window.lastScrolledLeft;
-                    window.lastScrolledLeft = scrollParent.scrollLeft;
-                    window.xMousePos += window.lastScrolledLeft;
+            {
+                var lastScrollTime = new Date().getTime();
+                var functionScrollTemp = function (event) {
+                    var now = new Date().getTime();
+                    if(now - lastScrollTime > 300)
+                    {
+                        if (!result.isDescendantOf(scrollParent)){
+                            scrollParent.removeEventListener("scroll", functionScrollTemp);
+                            return;
+                        }
+                    }
+                    lastScrollTime = new Date().getTime();
+                    if (result.lastScrolledLeft != scrollParent.scrollLeft) {
+                        window.xMousePos -= result.lastScrolledLeft;
+                        result.lastScrolledLeft = scrollParent.scrollLeft;
+                        window.xMousePos += result.lastScrolledLeft;
+                    }
+                    if (result.lastScrolledTop != scrollParent.scrollTop) {
+                        window.yMousePos -= result.lastScrolledTop;
+                        result.lastScrolledTop = scrollParent.scrollTop;
+                        window.yMousePos += result.lastScrolledTop;
+                    }
                 }
-                if (lastScrolledTop != scrollParent.scrollTop) {
-                    window.yMousePos -= window.lastScrolledTop;
-                    window.lastScrolledTop = scrollParent.scrollTop;
-                    window.yMousePos += window.lastScrolledTop;
-                }
-            })
+                scrollParent.addEventListener("scroll", functionScrollTemp);
+            }
             if(window.mobilecheck())
             {
                 var tempLimit = _({
@@ -2432,6 +2445,14 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
             functionClick = result.header[j].functionClickAll;
     }
 
+    var functionChange = undefined;
+    if (data.functionChange !== undefined)
+        functionChange = data.functionChange;
+    else {
+        if (result.header[j].functionChangeAll !== undefined)
+            functionChange = result.header[j].functionChangeAll;
+    }
+
     style = {};
     if (data.style !== undefined)
         style = data.style;
@@ -2452,6 +2473,19 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
                 }
 
             }(event, row, functionClick)
+        },
+        change: function (event) {
+            return function (event, row, functionChange) {
+                // event.preventDefault();
+                if (functionChange !== undefined) {
+                    if (cell.getParentNode().childrenNodes.length !== 0)
+                        var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);
+                    else
+                        var finalIndex = 0;
+                        functionChange(event, cell, finalIndex, cell.getParentNode(), row.data, row);
+                }
+
+            }(event, row, functionChange)
         }
     }
     var mousedown = result.dragVertical ? function (event) {
@@ -2685,27 +2719,16 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
     var x;
 
     result.childrenNodes[index] = row;
-    
+
     if (result.tagName !== "DIV") {
-        if (index === result.data.child.length) {
-            result.data.child.push(data);
-            x = data;
-        }
-        else {
-            x = Object.assign(result.data.child[index], data);
-            result.data.child[index] = x;
-        }
+        result.data.child.splice(index,0,data);
+        x = data;
     }
     else {
-        if (index === result.data.length) {
-            result.data.push(data);
-            x = data;
-        }
-        else {
-            x = Object.assign(result.data[index], data);
-            result.data[index] = x;
-        }
+        result.data.splice(index,0,data);
+        x = data;
     }
+
 
     row.data = x;
     var temp;

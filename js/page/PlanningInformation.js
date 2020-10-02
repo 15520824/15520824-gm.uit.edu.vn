@@ -674,12 +674,27 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns){
     this.editPolygon.toInActive(this);
     var path = [];
     var tempPath;
+    if(this.a == undefined||this.b == undefined)
+    {
+        for(var param in bns)
+        {
+            if(!(this.a == undefined||this.b == undefined))
+            break;
+            if(bns[param].i>50)
+            {
+                this.a = param;
+            }else if(bns[param].i<50)
+            {
+                this.b = param;
+            }
+        }
+    }
     for(var i=0;i<this.polygon.length;i++)
     {
         tempPath = [];
-        var boundary = this.polygon[i].boundary();
-        if(bns.ab.i<boundary.min.lat&&boundary.max.lat<bns.ab.j
-            &&bns.Va.i<boundary.min.lng&&boundary.max.lng<bns.Va.j)
+        var boundary = this.polygon[i].boundary(); 
+        if(bns[this.b].i<boundary.min.lat&&boundary.max.lat<bns[this.b].j
+            &&bns[this.a].i<boundary.min.lng&&boundary.max.lng<bns[this.a].j)
         {
             for(var j = 0;j<this.polygon[i].getPath().getLength();j++)
             {

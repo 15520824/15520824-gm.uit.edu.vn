@@ -174,8 +174,8 @@ function rotation_point(cx,cy,angle,x,y)
     fls = true;
     console.log(centerLatLng);
   }
-    y -= GeoJSON.entities[GeoJSON.entities.length-1].position.y;
-    x -=  GeoJSON.entities[GeoJSON.entities.length-1].position.x;
+  y -= GeoJSON.mapPoint.y;
+  x -=  GeoJSON.mapPoint.x;
     // var newPos - 
     // var nY = x;
     // var nX = -y;
@@ -220,14 +220,39 @@ function rotation_point(cx,cy,angle,x,y)
   // The one and only public function.
   // Converts an array of objects into a GeoJSON feature collection
   GeoJSON.parse = function(objects, params, callback) {
+    console.log(objects)
     if(objects.entities !== undefined)
       this.entities = objects.entities;
     if(objects.header !== undefined){
       this.header = objects.header;
       this.header.VN2000_X = NBT_to_VN2000_X(this.header.$LATITUDE,this.header.$LONGITUDE,0);
       this.header.VN2000_Y = NBT_to_VN2000_Y(this.header.$LATITUDE,this.header.$LONGITUDE,0);
-      this.header.distance_X = this.header.VN2000_X - objects.entities[objects.entities.length-1].position.x;
-      this.header.distance_Y = this.header.VN2000_Y - objects.entities[objects.entities.length-1].position.y;
+      if(objects.entities[objects.entities.length-1].position)
+      {
+        this.mapPoint = {
+          x:objects.entities[objects.entities.length-1].position.x,
+          y:objects.entities[objects.entities.length-1].position.y
+        }
+        this.header.distance_X = this.header.VN2000_X - this.mapPoint.x;
+        this.header.distance_Y = this.header.VN2000_Y - this.mapPoint.y;
+      }
+      else
+      {
+        for(var i = this.entities.length-1;i>=0;i--)
+        {
+          if(this.entities[i].name)
+          if(this.entities[i].name.toLowerCase() == "mappoint")
+          {
+            this.mapPoint = {
+              x:this.entities[i].position.x,
+              y:this.entities[i].position.y
+            }
+            this.header.distance_X = this.header.VN2000_X - this.mapPoint.x;
+            this.header.distance_Y = this.header.VN2000_Y - this.mapPoint.y;
+            break;
+          }
+        }
+      }
       this.EXTMIN = ConvertGeo(this.header.$EXTMIN.y,this.header.$EXTMIN.x);
       this.EXTMAX = ConvertGeo(this.header.$EXTMAX.y,this.header.$EXTMAX.x);
     }
