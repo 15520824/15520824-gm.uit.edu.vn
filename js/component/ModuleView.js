@@ -2186,6 +2186,15 @@ tableView.prototype.getRow = function (data) {
         }
     }
 
+    temp.updateCurrentRow = function(data)
+    {
+        var parent = temp.childNodes[0].getParentNode();
+        var index = parent.childrenNodes.indexOf(this);
+        if(index == -1)
+        return;
+        parent.updateRow(data,index);
+    }
+
     return temp;
 }
 
@@ -2801,14 +2810,6 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     }
 
     var checkChild = false;
-    // if ((result.tagName=="DIV"&&result.childrenNodes.length!=result.data.length)||
-    //     (result.tagName!=="DIV"&&result.childrenNodes.length!=result.data.child.length))
-    // {
-    //     var table = result.realTable.parentNode;
-    //     table.updateTable(undefined,table.data);
-    //     return;
-    // }
-
 
     var temp;
     temp = result.childrenNodes[index];
