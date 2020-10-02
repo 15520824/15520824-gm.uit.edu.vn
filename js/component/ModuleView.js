@@ -2192,7 +2192,7 @@ tableView.prototype.getRow = function (data) {
         var index = parent.childrenNodes.indexOf(this);
         if(index == -1)
         return;
-        parent.updateRow(data,index);
+        return parent.updateRow(data,index);
     }
 
     return temp;
