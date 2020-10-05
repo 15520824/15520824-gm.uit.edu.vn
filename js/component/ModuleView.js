@@ -2071,7 +2071,7 @@ tableView.prototype.getRow = function (data) {
     });
     var result = this;
     setTimeout(function () {
-        temp.className = temp.className + " parent";
+        temp.classList.add("parent");
     }, 10);
     Object.assign(temp, tableView.prototype);
     temp.realTable = result.realTable;
@@ -2953,6 +2953,13 @@ tableView.prototype.exactlyDeleteRow = function(index)
     if (parent.checkVisibleChild !== undefined && parent.childrenNodes.length === 0)
         parent.checkVisibleChild();
     parent.realTable.parentNode.resetHash();
+    if(parent.tagName == "DIV")
+    {
+        if(parent.childrenNodes.length == 0)
+        {
+            parent.updatePagination();
+        }
+    }
 }
 
 tableView.prototype.insertColumn = function (index, insertBefore = -1) {
