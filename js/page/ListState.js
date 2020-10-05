@@ -261,6 +261,9 @@ ListState.prototype.getView = function () {
                     innerHTML: "close"
                 }
             }),text:"Test",background:"yellow",event:{click:function(event){console.log(event)}}},{icon:"close",text:"Test Test",background:"green",event:function(event){console.log(event)}}]);
+            self.mTable.addEventListener("dragdrop",function(event){
+                console.log(event)
+            })
         });
     });
 

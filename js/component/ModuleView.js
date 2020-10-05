@@ -1092,7 +1092,7 @@ tableView.prototype.changeRowIndex = function(index,spliceIndex)
     }
     if (result.checkSpan !== undefined)
         result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
-    var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: tempIndex,spliceIndex: tempSpliceIndex,parent: self,dataSpliceIndex:spliceIndex,dataIndex:index}});
+    var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: tempIndex,spliceIndex: tempSpliceIndex,parent: self,dataSpliceIndex:spliceIndex,dataIndex:index,afterIndex:index = self.childrenNodes.indexOf(element)}});
     self.dispatchEvent(event);
 }
 
