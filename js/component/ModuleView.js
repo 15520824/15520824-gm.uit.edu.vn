@@ -2622,7 +2622,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     return cell;
 }
 
-tableView.prototype.updateTable = function (header, data = [], dragHorizontal, dragVertical, index = 0,isUpdate = true) {
+tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical, index = 0,isUpdate = true) {
     var checkSpan = [];
     var result = this;
     var temp = _({
@@ -2662,6 +2662,10 @@ tableView.prototype.updateTable = function (header, data = [], dragHorizontal, d
         if(result.isSwipeLeft||result.isSwipeRight)
         this.setUpSwipe();
         result.slip = new Slip(result.bodyTable);
+    }
+   if(data!==undefined)
+    {
+        result.paginationElement.reActive();
     }
 }
 
