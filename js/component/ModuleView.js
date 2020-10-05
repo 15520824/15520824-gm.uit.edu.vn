@@ -1939,7 +1939,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                 innerHTML: i + 1
             }
         })
-
+        choiceSelect.index = i + 1;
         arr.push(choiceSelect);
         container.appendChild(choiceSelect);
     }
@@ -2061,6 +2061,13 @@ tableView.prototype.pagination = function (number, functionClick) {
         arr[index-1].click();
     }
 
+    this.getPaginationIndex = function(){
+        var active = $("a.active", container);
+        if (active !== undefined)
+        return active.index;
+        else
+        return -1;
+    }
 
     return temp;
 }
