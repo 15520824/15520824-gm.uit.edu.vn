@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/PlanningInformation.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { consoleWKT,loaddingWheel ,getGMT,formatDate } from '../component/FormatFunction';
+import { consoleWKT,loaddingWheel , getGMT, formatDate, consoleWKTLine } from '../component/FormatFunction';
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
@@ -44,8 +44,12 @@ PlanningInformation.prototype.setUpDxfFile = function(fileText,loadding)
     var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
     window.dcel.extractLines();
     var faces = dcel.internalFaces();
-    wkt = consoleWKT(faces);
-    
+    wkt = consoleWKT(faces,window.dcel.checkHedges);
+    var lines = consoleWKTLine(window.dcel.checkHedges);
+    this.addLine(lines);
+    if(this.isVisiableLine === true)
+    this.showHideLine();
+    this.isVisiableLine = true;
     this.polygon =  this.polygon.concat(this.addWKT(wkt));
     this.mapView.map.setCenter(center);
     this.mapView.map.setZoom(17);
@@ -56,6 +60,26 @@ PlanningInformation.prototype.setUpDxfFile = function(fileText,loadding)
     });
     console.timeEnd("dcel cost");
     loadding.disable();
+}
+
+PlanningInformation.prototype.showHideLine = function()
+{
+    if(this.lines)
+    if(this.isVisiableLine === true)
+    {
+        for(var i = 0;i<this.lines.length;i++)
+        {
+            this.lines[i].setMap(null);
+        }
+        this.isVisiableLine = false
+    }else
+    {
+        for(var i = 0;i<this.lines.length;i++)
+        {
+            this.lines[i].setMap(this.mapView.map);
+        }
+        this.isVisiableLine = true;
+    }
 }
 
 PlanningInformation.prototype.getView = function () {
@@ -74,6 +98,36 @@ PlanningInformation.prototype.getView = function () {
     }
 
     var mapView = new MapView(); 
+    // Set CSS for the control button
+    var controlDiv = document.createElement('div');
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = '#444';
+    controlUI.style.borderStyle = 'solid';
+    controlUI.style.borderWidth = '1px';
+    controlUI.style.borderColor = 'white';
+    controlUI.style.height = '28px';
+    controlUI.style.marginTop = '5px';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.textAlign = 'center';
+    controlUI.title = 'Click to center map on your location';
+    controlDiv.appendChild(controlUI);
+
+    // Set CSS for the control text
+    var controlText = document.createElement('div');
+    controlText.style.fontFamily = 'Arial,sans-serif';
+    controlText.style.fontSize = '10px';
+    controlText.style.color = 'white';
+    controlText.style.paddingLeft = '10px';
+    controlText.style.paddingRight = '10px';
+    controlText.style.marginTop = '8px';
+    controlText.innerHTML = 'Chọn để ẩn hiện nét đã bỏ';
+    controlUI.appendChild(controlText);
+
+    // Setup the click event listeners to geolocate user
+    google.maps.event.addDomListener(controlUI, 'click', this.showHideLine.bind(this));
+
+    mapView.map.controls[google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
+    
     this.searchControl = this.searchControlContent();
 
     var hiddenInput = _({
@@ -648,7 +702,8 @@ PlanningInformation.prototype.addEventPolygon = function(polygon)
                         path.push(tempPath) 
                         this.setMap(null);
                         self.selectPolygon.push(this);
-
+                        if(this.isVisiableLine === true)
+                        this.showHideLine();
                         self.createAllPolygon(path);
                         
                     }
@@ -670,6 +725,8 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns){
     }
 
     this.removeAllSelect();
+    if(this.isVisiableLine === true)
+    this.showHideLine();
     if(this.editPolygon!==undefined)
     this.editPolygon.toInActive(this);
     var path = [];
@@ -923,6 +980,27 @@ PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
         this.createHashRow(polygon,this.hash);
     }
         
+    return toReturn;  
+}
+
+PlanningInformation.prototype.addLine = function(lines) {
+    var wkt = new Wkt.Wkt();
+    wkt.read(lines);
+    var toReturn = [];
+    var components = wkt.components;
+    for(var k=0;k<components.length;k++){
+        var line = components[k];
+        var polyline = new google.maps.Polyline({
+            path: line,
+            geodesic: true,
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+        })
+        polyline.setMap(this.mapView.map);
+        toReturn.push(polyline);
+    }
+    this.lines = toReturn;
     return toReturn;  
 }
 

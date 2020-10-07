@@ -256,7 +256,7 @@ function toBase64(arr) {
     );
  }
 
-export function consoleWKT(areas){
+export function consoleWKT(areas,checkHe){
     var multipolygon = "MULTIPOLYGON("
     var polygon,isFirst,coordinates,isFirstPolygon="";
     areas.forEach(function(f) {
@@ -278,11 +278,26 @@ export function consoleWKT(areas){
                 }
                 multipolygon+=isFirstPolygon+polygon;
                 isFirstPolygon = ",";
-            } 
+            }
     });
     multipolygon+=")";
     return multipolygon;
 }
+
+
+export function consoleWKTLine(lines){
+    var isFirstLines="";
+    var multilines = "MultiLineString("
+    lines.forEach(function(f) {
+        multilines += isFirstLines + "("+ f.origin.x+ " " + f.origin.y;
+        multilines += ", " + f.twin.origin.x+ " " + f.twin.origin.y+")";
+        isFirstLines = ","
+    });
+    multilines+=")";
+    console.log(multilines)
+    return multilines;
+}
+
 export function checkRule(poly)
 {
     var sum = 0

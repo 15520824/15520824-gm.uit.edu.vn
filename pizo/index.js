@@ -50266,7 +50266,7 @@ function toBase64(arr) {
   }, ''));
 }
 
-function consoleWKT(areas) {
+function consoleWKT(areas, checkHe) {
   var multipolygon = "MULTIPOLYGON(";
   var polygon,
       isFirst,
@@ -50297,6 +50297,18 @@ function consoleWKT(areas) {
   });
   multipolygon += ")";
   return multipolygon;
+}
+function consoleWKTLine(lines) {
+  var isFirstLines = "";
+  var multilines = "MultiLineString(";
+  lines.forEach(function (f) {
+    multilines += isFirstLines + "(" + f.origin.x + " " + f.origin.y;
+    multilines += ", " + f.twin.origin.x + " " + f.twin.origin.y + ")";
+    isFirstLines = ",";
+  });
+  multilines += ")";
+  console.log(multilines);
+  return multilines;
 }
 function checkRule(poly) {
   var sum = 0;
@@ -55156,7 +55168,7 @@ MapView_MapView.prototype.GeolocationControl = function (controlDiv) {
   controlText.style.paddingLeft = '10px';
   controlText.style.paddingRight = '10px';
   controlText.style.marginTop = '8px';
-  controlText.innerHTML = 'Center map on your location';
+  controlText.innerHTML = 'Chọn để quay về vị trí hiện tại';
   controlUI.appendChild(controlText); // Setup the click event listeners to geolocate user
 
   google.maps.event.addDomListener(controlUI, 'click', this.geolocateMap.bind(this));
@@ -58330,7 +58342,8 @@ tableView.prototype.changeRowIndex = function (index, spliceIndex) {
       spliceIndex: tempSpliceIndex,
       parent: self,
       dataSpliceIndex: spliceIndex,
-      dataIndex: index
+      dataIndex: index,
+      afterIndex: index = self.childrenNodes.indexOf(element)
     }
   });
   self.dispatchEvent(event);
@@ -59138,6 +59151,7 @@ tableView.prototype.pagination = function (number, functionClick) {
       }
     });
 
+    choiceSelect.index = i + 1;
     arr.push(choiceSelect);
     container.appendChild(choiceSelect);
   }
@@ -59261,6 +59275,11 @@ tableView.prototype.pagination = function (number, functionClick) {
     arr[index - 1].click();
   };
 
+  this.getPaginationIndex = function () {
+    var active = ModuleView_$("a.active", container);
+    if (active !== undefined) return active.index;else return -1;
+  };
+
   return temp;
 };
 
@@ -59271,7 +59290,7 @@ tableView.prototype.getRow = function (data) {
 
   var result = this;
   setTimeout(function () {
-    temp.className = temp.className + " parent";
+    temp.classList.add("parent");
   }, 10);
   Object.assign(temp, tableView.prototype);
   temp.realTable = result.realTable;
@@ -59389,6 +59408,13 @@ tableView.prototype.getRow = function (data) {
         if (parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.contains("margin-left-has-icon")) parent.bodyTable.childNodes[i].childNodes[parent.childIndex].classList.remove("margin-left-has-icon");
       }
     }
+  };
+
+  temp.updateCurrentRow = function (data) {
+    var parent = temp.childNodes[0].getParentNode();
+    var index = parent.childrenNodes.indexOf(this);
+    if (index == -1) return;
+    return parent.updateRow(data, index);
   };
 
   return temp;
@@ -59785,10 +59811,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
   return cell;
 };
 
-tableView.prototype.updateTable = function (header) {
-  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-  var dragHorizontal = arguments.length > 2 ? arguments[2] : undefined;
-  var dragVertical = arguments.length > 3 ? arguments[3] : undefined;
+tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
   var index = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
   var isUpdate = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
   var checkSpan = [];
@@ -59825,6 +59848,10 @@ tableView.prototype.updateTable = function (header) {
     result.setUpSlip();
     if (result.isSwipeLeft || result.isSwipeRight) this.setUpSwipe();
     result.slip = new Slip(result.bodyTable);
+  }
+
+  if (data !== undefined) {
+    if (result.paginationElement !== undefined) result.paginationElement.reActive();
   }
 };
 
@@ -59899,21 +59926,11 @@ tableView.prototype.insertRow = function (data) {
   result.childrenNodes[index] = row;
 
   if (result.tagName !== "DIV") {
-    if (index === result.data.child.length) {
-      result.data.child.push(data);
-      x = data;
-    } else {
-      x = Object.assign(result.data.child[index], data);
-      result.data.child[index] = x;
-    }
+    result.data.child.splice(index, 0, data);
+    x = data;
   } else {
-    if (index === result.data.length) {
-      result.data.push(data);
-      x = data;
-    } else {
-      x = Object.assign(result.data[index], data);
-      result.data[index] = x;
-    }
+    result.data.splice(index, 0, data);
+    x = data;
   }
 
   row.data = x;
@@ -59989,14 +60006,7 @@ tableView.prototype.updateRow = function (data, index) {
     }
   }
 
-  var checkChild = false; // if ((result.tagName=="DIV"&&result.childrenNodes.length!=result.data.length)||
-  //     (result.tagName!=="DIV"&&result.childrenNodes.length!=result.data.child.length))
-  // {
-  //     var table = result.realTable.parentNode;
-  //     table.updateTable(undefined,table.data);
-  //     return;
-  // }
-
+  var checkChild = false;
   var temp;
   temp = result.childrenNodes[index];
   result.bodyTable.replaceChild(row, temp);
@@ -60137,6 +60147,12 @@ tableView.prototype.exactlyDeleteRow = function (index) {
 
   if (parent.checkVisibleChild !== undefined && parent.childrenNodes.length === 0) parent.checkVisibleChild();
   parent.realTable.parentNode.resetHash();
+
+  if (parent.tagName == "DIV") {
+    if (parent.childrenNodes.length == 0) {
+      parent.updatePagination();
+    }
+  }
 };
 
 tableView.prototype.insertColumn = function (index) {
@@ -76380,6 +76396,9 @@ ListState_ListState.prototype.getView = function () {
           console.log(_event);
         }
       }]);
+      self.mTable.addEventListener("dragdrop", function (event) {
+        console.log(event);
+      });
     });
   });
   this.searchControl = this.searchControlContent();
@@ -77443,7 +77462,11 @@ PlanningInformation_PlanningInformation.prototype.setUpDxfFile = function (fileT
   var center = new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
   window.dcel.extractLines();
   var faces = dcel.internalFaces();
-  wkt = consoleWKT(faces);
+  wkt = consoleWKT(faces, window.dcel.checkHedges);
+  var lines = consoleWKTLine(window.dcel.checkHedges);
+  this.addLine(lines);
+  if (this.isVisiableLine === true) this.showHideLine();
+  this.isVisiableLine = true;
   this.polygon = this.polygon.concat(this.addWKT(wkt));
   this.mapView.map.setCenter(center);
   this.mapView.map.setZoom(17);
@@ -77454,6 +77477,22 @@ PlanningInformation_PlanningInformation.prototype.setUpDxfFile = function (fileT
   });
   console.timeEnd("dcel cost");
   loadding.disable();
+};
+
+PlanningInformation_PlanningInformation.prototype.showHideLine = function () {
+  if (this.lines) if (this.isVisiableLine === true) {
+    for (var i = 0; i < this.lines.length; i++) {
+      this.lines[i].setMap(null);
+    }
+
+    this.isVisiableLine = false;
+  } else {
+    for (var i = 0; i < this.lines.length; i++) {
+      this.lines[i].setMap(this.mapView.map);
+    }
+
+    this.isVisiableLine = true;
+  }
 };
 
 PlanningInformation_PlanningInformation.prototype.getView = function () {
@@ -77472,7 +77511,33 @@ PlanningInformation_PlanningInformation.prototype.getView = function () {
     allinput.placeholder = "Tìm theo địa chỉ";
   }
 
-  var mapView = new MapView_MapView();
+  var mapView = new MapView_MapView(); // Set CSS for the control button
+
+  var controlDiv = document.createElement('div');
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#444';
+  controlUI.style.borderStyle = 'solid';
+  controlUI.style.borderWidth = '1px';
+  controlUI.style.borderColor = 'white';
+  controlUI.style.height = '28px';
+  controlUI.style.marginTop = '5px';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Click to center map on your location';
+  controlDiv.appendChild(controlUI); // Set CSS for the control text
+
+  var controlText = document.createElement('div');
+  controlText.style.fontFamily = 'Arial,sans-serif';
+  controlText.style.fontSize = '10px';
+  controlText.style.color = 'white';
+  controlText.style.paddingLeft = '10px';
+  controlText.style.paddingRight = '10px';
+  controlText.style.marginTop = '8px';
+  controlText.innerHTML = 'Chọn để ẩn hiện nét đã bỏ';
+  controlUI.appendChild(controlText); // Setup the click event listeners to geolocate user
+
+  google.maps.event.addDomListener(controlUI, 'click', this.showHideLine.bind(this));
+  mapView.map.controls[google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
   this.searchControl = this.searchControlContent();
 
   var hiddenInput = PlanningInformation_({
@@ -77979,6 +78044,7 @@ PlanningInformation_PlanningInformation.prototype.addEventPolygon = function (po
             path.push(tempPath);
             this.setMap(null);
             self.selectPolygon.push(this);
+            if (this.isVisiableLine === true) this.showHideLine();
             self.createAllPolygon(path);
           }
         } else {
@@ -77999,6 +78065,7 @@ PlanningInformation_PlanningInformation.prototype.selectPolygonFunction = functi
   }
 
   this.removeAllSelect();
+  if (this.isVisiableLine === true) this.showHideLine();
   if (this.editPolygon !== undefined) this.editPolygon.toInActive(this);
   var path = [];
   var tempPath;
@@ -78235,6 +78302,29 @@ PlanningInformation_PlanningInformation.prototype.addWKT = function (multipolygo
     this.createHashRow(polygon, this.hash);
   }
 
+  return toReturn;
+};
+
+PlanningInformation_PlanningInformation.prototype.addLine = function (lines) {
+  var wkt = new Wkt.Wkt();
+  wkt.read(lines);
+  var toReturn = [];
+  var components = wkt.components;
+
+  for (var k = 0; k < components.length; k++) {
+    var line = components[k];
+    var polyline = new google.maps.Polyline({
+      path: line,
+      geodesic: true,
+      strokeColor: "#FF0000",
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+    polyline.setMap(this.mapView.map);
+    toReturn.push(polyline);
+  }
+
+  this.lines = toReturn;
   return toReturn;
 };
 

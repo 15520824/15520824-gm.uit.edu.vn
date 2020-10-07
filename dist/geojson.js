@@ -380,7 +380,7 @@ function rotation_point(cx,cy,angle,x,y)
       {
         if(params.hasOwnProperty(param) && geoms[geom].indexOf(param) !== -1){
           params.geom[geom] = params[param];
-          delete params[param];
+          // delete params[param];
         }
       }
     }
@@ -411,9 +411,9 @@ function rotation_point(cx,cy,angle,x,y)
   // to the GeoJSON features array
   function getFeature(args) {
     var item = args.item,
-      settings = args.params,
-      propFunc;
-
+    settings = args.params,
+    propFunc;
+    
       if(GeoJSON.tables!==undefined&&GeoJSON.tables.layer.layers[item.layer].visible===false){
         return undefined;
       }
@@ -437,10 +437,16 @@ function rotation_point(cx,cy,angle,x,y)
     var feature = { "type": "Feature" };
     feature.geometry = buildGeom(item, settings);
     if(feature.geometry!==undefined)
-    if(feature.geometry.type==="LineString"){
-      for(var k=1;k<feature.geometry.coordinates.length;k++)
+    {
+      if(feature.geometry.type==="LineString"){
+        for(var k=1;k<feature.geometry.coordinates.length;k++)
+        {
+          window.dcel.stackLine([feature.geometry.coordinates[k],feature.geometry.coordinates[k-1]]);
+        }
+      }
+      if(args.item.shape)
       {
-        window.dcel.stackLine([feature.geometry.coordinates[k],feature.geometry.coordinates[k-1]]);
+        window.dcel.stackLine([feature.geometry.coordinates[0],feature.geometry.coordinates[feature.geometry.coordinates.length-1]]);
       }
     }
     feature.properties = propFunc.call(item);

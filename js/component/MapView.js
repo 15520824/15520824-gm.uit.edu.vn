@@ -1368,7 +1368,7 @@ MapView.prototype.GeolocationControl = function(controlDiv) {
     controlText.style.paddingLeft = '10px';
     controlText.style.paddingRight = '10px';
     controlText.style.marginTop = '8px';
-    controlText.innerHTML = 'Center map on your location';
+    controlText.innerHTML = 'Chọn để quay về vị trí hiện tại';
     controlUI.appendChild(controlText);
 
     // Setup the click event listeners to geolocate user

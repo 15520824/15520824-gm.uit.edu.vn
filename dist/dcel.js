@@ -579,6 +579,8 @@
          * @type {Hedge[]} 
          */
         this.hedges = [];
+
+        this.checkHedges = [];
         /**
          * @type {Face[]} 
          */
@@ -721,14 +723,43 @@
                 if(x===arr[i])
                 {
                     var arrTemp =  arr.slice(0,i);
+                    if(arr === this.hedges)
+                    for(var j = i;j<i+mLength;j++)
+                    {
+                        delete this.checkHedges[arr[j].id];
+                        delete this.checkHedges[arr[j].twin.id];
+                    }
                     if(replaceParams!==undefined)
-                    return arrTemp.concat(replaceParams,arr.slice(i+mLength,arr.length));
-                    else
-                    return arrTemp.concat(arr.slice(i+mLength,arr.length));
+                    {
+                        if(replaceParams.id!==undefined)
+                        this.checkHedges[replaceParams.id] = replaceParams;
+                        else
+                        {
+                            for(var k = 0;k<replaceParams.length;k++)
+                            {
+                                this.checkHedges[replaceParams[k].id] = replaceParams[k];
+                            }
+                        }
+                        return arrTemp.concat(replaceParams,arr.slice(i+mLength,arr.length));
+                    }
+                    else{
+                        return arrTemp.concat(arr.slice(i+mLength,arr.length));
+                    }
                 }
             }
             if(replaceParams!==undefined)
-            return arr.concat(replaceParams)
+            {
+                if(replaceParams.id!==undefined)
+                    this.checkHedges[replaceParams.id] = replaceParams;
+                else
+                {
+                    for(var k = 0;k<replaceParams.length;k++)
+                    {
+                        this.checkHedges[replaceParams[k].id] = replaceParams[k];
+                    }
+                }
+                return arr.concat(replaceParams)
+            }
             return arr;
         },
         setDatas: function(lines) {
@@ -765,6 +796,8 @@
                 v.hedgelist.push(h2);
                 this.hedges.push(h2);
                 this.hedges.push(h1);
+                this.checkHedges[h1.id] = h1;
+                this.checkHedges[h2.id] = h2;
                 minX= v.x<v1.x?v.x:v1.x;
                 minY= v.y<v1.y?v.y:v1.y;
                 maxX= v.x>v1.x?v.x:v1.x;
@@ -818,9 +851,12 @@
                     // We link the hedge to the new face
                     f.wedge = h;
                     f.wedge.face = f;
+                    var arrTemp = [];
                     // And we traverse the boundary of the new face
+                    arrTemp.push(h);
                     while (h.nexthedge !== f.wedge) {
                         try{
+                            arrTemp.push(h.nexthedge);
                             h = h.nexthedge;
                             h.face = f;
                         }catch(err)
@@ -828,9 +864,18 @@
                             console.log(i,h,f)
                         }
                     }
+                    if(f.internal == true){
+                        for(var i= 0;i<arrTemp.length;i++)
+                        {
+                            delete this.checkHedges[arrTemp[i].id];
+                            delete this.checkHedges[arrTemp[i].twin.id];
+                        }
+                    }
                     faces.push(f);
                 }
             }
+            console.log(hedges)
+            console.log(this.checkHedges)
         },
         parseCross : function(h1,h2,arrPointCross,arrCol)
         {
@@ -1328,11 +1373,13 @@
 
             var h1 = new Hedge(v2, v1);
             hedges.push(h1);
+            this.checkHedges[h1.id] = h1;
             v1.hedgelist.push(h1);
             v1.sortincident();
 
             var h2 = new Hedge(v1, v2);
             hedges.push(h2);
+            this.checkHedges[h2.id] = h2;
             v2.hedgelist.push(h2);
             v2.sortincident();
 
@@ -1498,9 +1545,11 @@
 
             var index = hedges.indexOf(hedge);
             hedges.splice(index, 1);
+            delete this.checkHedges[hedge.id];
 
             var index = hedges.indexOf(twinHedge);
             hedges.splice(index, 1);
+            delete this.checkHedges[twinHedge.id];
 
             // step 2: remove face from faces
             // notice that two hedges may belong to the same face
@@ -1664,12 +1713,16 @@
             var h2 = new Hedge(twinHedge.origin, splitVertex);
             hedges.push(h1);
             hedges.push(h2);
+            this.checkHedges[h1.id] = h1;
+            this.checkHedges[h2.id] = h2;
 
             // instead of twinHedge
             var h3 = new Hedge(splitVertex, twinHedge.origin);
             var h4 = new Hedge(hedge.origin, splitVertex);
             hedges.push(h3);
             hedges.push(h4);
+            this.checkHedges[h3.id] = h3;
+            this.checkHedges[h4.id] = h4;
 
             // step 2: link faces
 
@@ -1731,10 +1784,11 @@
 
             var index = hedges.indexOf(hedge);
             hedges.splice(index, 1);
+            delete this.checkHedges[hedge.id];
 
             var index = hedges.indexOf(twinHedge);
             hedges.splice(index, 1);
-
+            delete this.checkHedges[twinHedge.id];
         }
 
     });
