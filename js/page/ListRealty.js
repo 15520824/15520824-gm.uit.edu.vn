@@ -39,31 +39,28 @@ function ListRealty() {
     this.requestEditDB = MapRealty.prototype.requestEditDB;
     this.itemDisplayNone = MapRealty.prototype.itemDisplayNone;
 
-    moduleDatabase.getModule("users").load().then(function(value)
-    {
+    moduleDatabase.getModule("users").load().then(function(value) {
         this.checkUser = moduleDatabase.getModule("users").getLibary("phone");
         this.checkUserID = moduleDatabase.getModule("users").getLibary("id");
     }.bind(this))
 
-    moduleDatabase.getModule("contacts").load().then(function(value)
-    {
+    moduleDatabase.getModule("contacts").load().then(function(value) {
         this.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
         this.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
     }.bind(this))
 }
 
-ListRealty.prototype.setContainer = function (parent) {
+ListRealty.prototype.setContainer = function(parent) {
     this.parent = parent;
 }
 
 Object.defineProperties(ListRealty.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 ListRealty.prototype.constructor = ListRealty;
-ListRealty.prototype.setCensorship = function()
-{
+ListRealty.prototype.setCensorship = function() {
     this.isCensorship = true;
 }
 
-ListRealty.prototype.getView = function () {
+ListRealty.prototype.getView = function() {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
@@ -88,29 +85,29 @@ ListRealty.prototype.getView = function () {
     if (window.mobilecheck()) {
         allinput.placeholder = "Tìm bất động sản"
     }
-    var saveButton,callAgainButton,mergeButton,viewMapButton,confirmButton,cancelConfirmButton;
-    
+    var saveButton, callAgainButton, mergeButton, viewMapButton, confirmButton, cancelConfirmButton;
+
     var hiddenConfirm = _({
-        tag:"selectmenu",
-        class:"selectmenu-hidden-confirm",
-        style:{
-            display:"none"
+        tag: "selectmenu",
+        class: "selectmenu-hidden-confirm",
+        style: {
+            display: "none"
         },
-        props:{
-            value:0,
-            items:[
-                {text:"Tất cả",value:0},
-                {text:"Duyệt",value:"censorship1"},
-                {text:"Chưa duyệt",value:"censorship0"},
+        props: {
+            value: 0,
+            items: [
+                { text: "Tất cả", value: 0 },
+                { text: "Duyệt", value: "censorship1" },
+                { text: "Chưa duyệt", value: "censorship0" },
             ]
         }
-   })
+    })
 
     saveButton = _({
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
-            click: function (evt) {
+            click: function(evt) {
                 self.add();
             }
         },
@@ -123,9 +120,8 @@ ListRealty.prototype.getView = function () {
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
-            click: function (evt) {
-                if(this.currentMerge === true)
-                {
+            click: function(evt) {
+                if (this.currentMerge === true) {
                     // self.merge();
                     // this.currentMerge = undefined;
                     saveButton.style.display = "";
@@ -135,11 +131,10 @@ ListRealty.prototype.getView = function () {
                     viewMapButton.style.display = "";
                     this.childNodes[0].innerHTML = "Yêu cầu gọi lại";
                     self.mTable.deleteColumn(0);
-                    self.mTable.insertColumn(0,0);
+                    self.mTable.insertColumn(0, 0);
                     this.currentMerge = undefined;
                     // self.merge(self.mTable.getTrueCheckBox());
-                }else
-                {
+                } else {
                     saveButton.style.display = "none";
                     mergeButton.style.display = "none";
                     confirmButton.style.display = "none";
@@ -147,7 +142,7 @@ ListRealty.prototype.getView = function () {
                     viewMapButton.style.display = "none";
                     this.childNodes[0].innerHTML = "Xong";
                     self.mTable.deleteColumn(0);
-                    self.mTable.insertColumn(1,0);
+                    self.mTable.insertColumn(1, 0);
                     this.currentMerge = true;
                 }
             }
@@ -161,11 +156,8 @@ ListRealty.prototype.getView = function () {
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
-            click: function (evt) {
-                if(this.currentMerge === true)
-                {
-                    // self.merge();
-                    // this.currentMerge = undefined;
+            click: function(evt) {
+                if (this.currentMerge === true) {
                     saveButton.style.display = "";
                     mergeButton.style.display = "";
                     callAgainButton.style.display = "";
@@ -173,15 +165,14 @@ ListRealty.prototype.getView = function () {
                     viewMapButton.style.display = "";
                     this.childNodes[0].innerHTML = "Duyệt";
                     self.mTable.deleteColumn(0);
-                    self.mTable.insertColumn(0,0);
+                    self.mTable.insertColumn(0, 0);
                     this.currentMerge = undefined;
                     hiddenConfirm.value = 0;
                     hiddenConfirm.emit("change");
                     var dataSum = self.mTable.getTrueCheckBox();
-                    var arr  = [];
+                    var arr = [];
                     var tempData;
-                    for(var i = 0;i<dataSum.length;i++)
-                    {
+                    for (var i = 0; i < dataSum.length; i++) {
                         dataSum[i][20] = "censorship1";
                         dataSum[i].original.censorship = 1;
                         dataSum[i][1] = {};
@@ -189,11 +180,10 @@ ListRealty.prototype.getView = function () {
                         self.mTable.resetHash();
                         arr.push(moduleDatabase.getModule("activehouses").update(tempData));
                     }
-                    Promise.all(arr).then(function(){
-                       
+                    Promise.all(arr).then(function() {
+
                     })
-                }else
-                {
+                } else {
                     saveButton.style.display = "none";
                     mergeButton.style.display = "none";
                     callAgainButton.style.display = "none";
@@ -201,7 +191,7 @@ ListRealty.prototype.getView = function () {
                     viewMapButton.style.display = "none";
                     this.childNodes[0].innerHTML = "Xong";
                     self.mTable.deleteColumn(0);
-                    self.mTable.insertColumn(1,0);
+                    self.mTable.insertColumn(1, 0);
                     this.currentMerge = true;
                     hiddenConfirm.value = "censorship0";
                     hiddenConfirm.emit("change");
@@ -217,9 +207,8 @@ ListRealty.prototype.getView = function () {
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
-            click: function (evt) {
-                if(this.currentMerge === true)
-                {
+            click: function(evt) {
+                if (this.currentMerge === true) {
                     // self.merge();
                     // this.currentMerge = undefined;
                     saveButton.style.display = "";
@@ -229,16 +218,15 @@ ListRealty.prototype.getView = function () {
                     viewMapButton.style.display = "";
                     this.childNodes[0].innerHTML = "Hủy duyệt";
                     self.mTable.deleteColumn(0);
-                    self.mTable.insertColumn(0,0);
+                    self.mTable.insertColumn(0, 0);
                     this.currentMerge = undefined;
                     hiddenConfirm.value = 0;
                     hiddenConfirm.emit("change");
 
                     var dataSum = self.mTable.getTrueCheckBox();
-                    var arr  = [];
+                    var arr = [];
                     var tempData;
-                    for(var i = 0;i<dataSum.length;i++)
-                    {
+                    for (var i = 0; i < dataSum.length; i++) {
                         dataSum[i][20] = "censorship0";
                         dataSum[i].original.censorship = 0;
                         dataSum[i][1] = {};
@@ -246,11 +234,10 @@ ListRealty.prototype.getView = function () {
                         self.mTable.resetHash();
                         arr.push(moduleDatabase.getModule("activehouses").update(tempData));
                     }
-                    Promise.all(arr).then(function(){
-                       
+                    Promise.all(arr).then(function() {
+
                     })
-                }else
-                {
+                } else {
                     saveButton.style.display = "none";
                     mergeButton.style.display = "none";
                     callAgainButton.style.display = "none";
@@ -258,7 +245,7 @@ ListRealty.prototype.getView = function () {
                     viewMapButton.style.display = "none";
                     this.childNodes[0].innerHTML = "Xong";
                     self.mTable.deleteColumn(0);
-                    self.mTable.insertColumn(1,0);
+                    self.mTable.insertColumn(1, 0);
                     this.currentMerge = true;
                     hiddenConfirm.value = "censorship1";
                     hiddenConfirm.emit("change");
@@ -274,9 +261,8 @@ ListRealty.prototype.getView = function () {
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
-            click: function (evt) {
-                if(this.currentMerge === true)
-                {
+            click: function(evt) {
+                if (this.currentMerge === true) {
                     // self.merge();
                     // this.currentMerge = undefined;
                     confirmButton.style.display = "";
@@ -286,11 +272,10 @@ ListRealty.prototype.getView = function () {
                     viewMapButton.style.display = "";
                     this.childNodes[0].innerHTML = "Gộp";
                     self.mTable.deleteColumn(0);
-                    self.mTable.insertColumn(0,0);
+                    self.mTable.insertColumn(0, 0);
                     this.currentMerge = undefined;
                     self.merge(self.mTable.getTrueCheckBox());
-                }else
-                {
+                } else {
                     confirmButton.style.display = "none";
                     saveButton.style.display = "none";
                     callAgainButton.style.display = "none";
@@ -298,7 +283,7 @@ ListRealty.prototype.getView = function () {
                     viewMapButton.style.display = "none";
                     this.childNodes[0].innerHTML = "Xong";
                     self.mTable.deleteColumn(0);
-                    self.mTable.insertColumn(1,0);
+                    self.mTable.insertColumn(1, 0);
                     this.currentMerge = true;
                 }
             }
@@ -312,8 +297,8 @@ ListRealty.prototype.getView = function () {
         tag: "button",
         class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
         on: {
-            click: function (evt) {
-               app.openPage(18);
+            click: function(evt) {
+                app.openPage(18);
             }
         },
         child: [
@@ -321,14 +306,13 @@ ListRealty.prototype.getView = function () {
         ]
     });
 
-    
+
     this.$view = _({
         tag: 'singlepage',
-        class: ["pizo-list-realty","pizo-list-realty-main-header"],
+        class: ["pizo-list-realty", "pizo-list-realty-main-header"],
         child: [{
             class: 'absol-single-page-header',
-            child: [
-                {
+            child: [{
                     tag: "span",
                     class: "pizo-body-title-left",
                     props: {
@@ -342,7 +326,7 @@ ListRealty.prototype.getView = function () {
                             tag: "button",
                             class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
                             on: {
-                                click: function (evt) {
+                                click: function(evt) {
                                     self.$view.selfRemove();
                                     var arr = self.parent.body.getAllChild();
                                     self.parent.body.activeFrame(arr[arr.length - 1]);
@@ -385,7 +369,7 @@ ListRealty.prototype.getView = function () {
                             tag: "div",
                             class: "pizo-list-realty-page-allinput-filter",
                             on: {
-                                click: function (event) {
+                                click: function(event) {
                                     self.searchControl.show();
                                 }
                             },
@@ -421,7 +405,7 @@ ListRealty.prototype.getView = function () {
         }, ]
     });
     var docTypeMemuProps, token, functionX;
-    var functionClickMore = function (event, me, index, parent, data, row) {
+    var functionClickMore = function(event, me, index, parent, data, row) {
 
         docTypeMemuProps = {
             items: [{
@@ -441,7 +425,7 @@ ListRealty.prototype.getView = function () {
                 }
             ]
         };
-        token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function (menuItem) {
+        token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function(menuItem) {
             switch (menuItem.value) {
                 case 0:
                     self.edit(data, parent, index);
@@ -455,9 +439,9 @@ ListRealty.prototype.getView = function () {
             }
         });
 
-        functionX = function (token) {
-            return function () {
-                var x = function (event) {
+        functionX = function(token) {
+            return function() {
+                var x = function(event) {
                     absol.QuickMenu.close(token);
                     document.body.removeEventListener("click", x);
                 }
@@ -477,161 +461,157 @@ ListRealty.prototype.getView = function () {
     })
 
     var arr = [];
-    if(this.isCensorship===true)
-    arr.push(moduleDatabase.getModule("activehouses").load({WHERE:[{censorship:0}]}));
+    if (this.isCensorship === true)
+        arr.push(moduleDatabase.getModule("activehouses").load({ WHERE: [{ censorship: 0 }] }));
     else
-    arr.push(moduleDatabase.getModule("activehouses").load());
+        arr.push(moduleDatabase.getModule("activehouses").load());
     arr.push(moduleDatabase.getModule("wards").load());
     arr.push(moduleDatabase.getModule("type_activehouses").load());
     arr.push(moduleDatabase.getModule("districts").load());
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());
     arr.push(moduleDatabase.getModule("juridicals").load());
-    Promise.all(arr).then(function (values) {
+    Promise.all(arr).then(function(values) {
         var value = values[0];
         self.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         self.checkDistrict = moduleDatabase.getModule("districts").getLibary("id");
         self.checkState = moduleDatabase.getModule("states").getLibary("id");
         var header = [{
-            type: "dragzone",
-            dragElement: false
-        }, 
-        {
-            type: "check",
-            dragElement: false,
-            hidden:true
-        }, 
-        {
-            type: "increase",
-            value: "#"
-        }, {
-            value: 'MS',
-            sort: true,
-            style: {
-                minWidth: "30px"
+                type: "dragzone",
+                dragElement: false
+            },
+            {
+                type: "check",
+                dragElement: false,
+                hidden: true
+            },
+            {
+                type: "increase",
+                value: "#"
+            }, {
+                value: 'MS',
+                sort: true,
+                style: {
+                    minWidth: "30px"
+                }
+            }, 'Số nhà', {
+                value: 'Tên đường'
+            }, {
+                value: 'Phường/Xã'
+            }, {
+                value: 'Quận/Huyện'
+            }, {
+                value: 'Tỉnh/TP'
+            }, {
+                value: 'Ghi chú'
+            }, {
+                value: 'Ngang',
+                sort: true,
+                style: {
+                    minWidth: "50px"
+                }
+            }, {
+                value: 'Dài',
+                sort: true,
+                style: {
+                    minWidth: "50px"
+                }
+            }, {
+                value: 'DT',
+                sort: true,
+                style: {
+                    minWidth: "50px"
+                }
+            }, {
+                value: 'Kết cấu'
+            }, {
+                value: 'Hướng'
+            }, {
+                value: 'Giá',
+                sort: true,
+                style: {
+                    minWidth: "50px"
+                }
+            }, {
+                value: 'Giá m²',
+                sort: true,
+                style: {
+                    minWidth: "50px"
+                }
+            }, {
+                value: 'Hiện trạng',
+                style: {
+                    minWidth: "85px"
+                }
+            }, {
+                value: 'Ngày tạo'
+            }, {
+                type: "detail",
+                functionClickAll: functionClickMore,
+                dragElement: false
+            }, {
+                hidden: true
             }
-        }, 'Số nhà', {
-            value: 'Tên đường'
-        }, {
-            value: 'Phường/Xã'
-        }, {
-            value: 'Quận/Huyện'
-        }, {
-            value: 'Tỉnh/TP'
-        }, {
-            value: 'Ghi chú'
-        }, {
-            value: 'Ngang',
-            sort: true,
-            style:{
-                minWidth: "50px"
-            }
-        }, {
-            value: 'Dài',
-            sort: true,
-            style:{
-                minWidth: "50px"
-            }
-        }, {
-            value: 'DT',
-            sort: true,
-            style:{
-                minWidth: "50px"
-            }
-        }, {
-            value: 'Kết cấu'
-        }, {
-            value: 'Hướng'
-        }, {
-            value:  'Giá',
-            sort: true,
-            style:{
-                minWidth: "50px"
-            }
-        }, {
-            value: 'Giá m²',
-            sort: true,
-            style:{
-                minWidth: "50px"
-            }
-        }, {
-            value: 'Hiện trạng',
-            style:{
-                minWidth:"85px"
-            }
-        }, {
-            value: 'Ngày tạo'
-        }, {
-            type: "detail",
-            functionClickAll: functionClickMore,
-            dragElement: false
-        },{
-            hidden:true
-        }];
+        ];
         self.mTable = new tableView(header, [], true, true, 1);
         var arr = [];
         var connect = "";
-        for(var i = 0;i<value.length;i++)
-        {
-            if(connect!=="")
-            arr.push(connect);
-            arr.push({id:value[i].addressid});
-            connect = "||";
-            if(value[i].addressid_old)
-            {
+        for (var i = 0; i < value.length; i++) {
+            if (connect !== "")
                 arr.push(connect);
-                arr.push({id:value[i].addressid_old});
+            arr.push({ id: value[i].addressid });
+            connect = "||";
+            if (value[i].addressid_old) {
+                arr.push(connect);
+                arr.push({ id: value[i].addressid_old });
             }
-       
+
         }
-        moduleDatabase.getModule("addresses").load({WHERE:arr}).then(function(valueAdr){
+        moduleDatabase.getModule("addresses").load({ WHERE: arr }).then(function(valueAdr) {
             self.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
             var connect = "";
             var arr = [];
-            for(var i = 0;i<valueAdr.length;i++)
-            {
-                if(connect!=="")
-                arr.push(connect);
-                arr.push({id:valueAdr[i].streetid});
+            for (var i = 0; i < valueAdr.length; i++) {
+                if (connect !== "")
+                    arr.push(connect);
+                arr.push({ id: valueAdr[i].streetid });
                 connect = "||";
             }
-            moduleDatabase.getModule("streets").load({WHERE:arr}).then(function(valueStr){
+            moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
                 self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
-                if(self.isCensorship)
-                {
-                    value = moduleDatabase.getModule("activehouses").getLibary("censorship",self.getDataRow.bind(self),true);
+                if (self.isCensorship) {
+                    value = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
                     value = value[0];
-                }else
-                {
+                } else {
                     value = self.formatDataRow(value);
                 }
 
-                self.mTable.updateTable(undefined,value);
+                self.mTable.updateTable(undefined, value);
                 self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
-                self.mTable.addFilter(hiddenConfirm,20);
-                self.mTable.addFilter(self.HTinput,17);
+                self.mTable.addFilter(hiddenConfirm, 20);
+                self.mTable.addFilter(self.HTinput, 17);
             })
         })
-        
+
         tabContainer.addChild(self.mTable);
-        moduleDatabase.getModule("users").load().then(function (value) {
+        moduleDatabase.getModule("users").load().then(function(value) {
             self.formatDataRowAccount(value);
         })
 
-        moduleDatabase.getModule("contacts").load().then(function (value) {
+        moduleDatabase.getModule("contacts").load().then(function(value) {
             self.formatDataRowContact(value);
         })
     });
 
 
-  
+
 
     this.searchControl = this.searchControlContent();
 
     this.$view.addChild(_({
         tag: "div",
         class: ["pizo-list-realty-main"],
-        style:{
+        style: {
             flexDirection: "column"
         },
         child: [
@@ -643,15 +623,15 @@ ListRealty.prototype.getView = function () {
 }
 
 
-ListRealty.prototype.formatDataRowAccount = function (data) {
+ListRealty.prototype.formatDataRowAccount = function(data) {
     this.listAccoutData = data;
 }
 
-ListRealty.prototype.formatDataRowContact = function (data) {
+ListRealty.prototype.formatDataRowContact = function(data) {
     this.listContactData = data;
 }
 
-ListRealty.prototype.formatDataRow = function (data) {
+ListRealty.prototype.formatDataRow = function(data) {
     var temp = [];
     var check = [];
     var k = 0;
@@ -670,7 +650,7 @@ ListRealty.prototype.formatDataRow = function (data) {
     return temp;
 }
 
-ListRealty.prototype.getDataRow = function (data) {
+ListRealty.prototype.getDataRow = function(data) {
     var structure;
     switch (parseInt(data.structure)) {
         case 0:
@@ -726,24 +706,24 @@ ListRealty.prototype.getDataRow = function (data) {
         else
             staus += " và còn cho thuê";
     }
-    if(data.addressid!=0)
-    {
+    if (data.addressid != 0) {
         var number = this.checkAddress[data.addressid].addressnumber;
         var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;
         var ward = this.checkWard[this.checkAddress[data.addressid].wardid].name;
         var district = this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].name;
         var state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[data.addressid].wardid].districtid].stateid].name;
-    }else
-    {
+    } else {
         var number = street = ward = district = state = "";
     }
-   
+
     var result = [
         {},
-        {functionClick:function(){
-            var data = arguments[4].original;
-            console.log(arguments[4][0].value,arguments[1].childNodes[0].childNodes[0].checked)
-        }},
+        {
+            functionClick: function() {
+                var data = arguments[4].original;
+                console.log(arguments[4][0].value, arguments[1].childNodes[0].childNodes[0].checked)
+            }
+        },
         {},
         {
             value: data.id,
@@ -779,17 +759,17 @@ ListRealty.prototype.getDataRow = function (data) {
         direction,
         data.price + " tỉ",
         data.price * 1000 / data.acreage + " triệu",
-        {value:parseInt(data.salestatus)+1,element:_({text:staus})},
+        { value: parseInt(data.salestatus) + 1, element: _({ text: staus }) },
         formatDate(data.created, true, true, true, true, true),
         {},
-        "censorship"+data.censorship
+        "censorship" + data.censorship
     ];
     result.original = data;
     return result;
 }
 
 
-ListRealty.prototype.searchControlContent = function () {
+ListRealty.prototype.searchControlContent = function() {
     var startDay, endDay;
 
     startDay = _({
@@ -800,7 +780,7 @@ ListRealty.prototype.searchControlContent = function () {
             maxDateLimit: new Date()
         },
         on: {
-            changed: function (date) {
+            changed: function(date) {
 
                 endDay.minDateLimit = date;
             }
@@ -815,7 +795,7 @@ ListRealty.prototype.searchControlContent = function () {
             minDateLimit: new Date()
         },
         on: {
-            changed: function (date) {
+            changed: function(date) {
 
                 startDay.maxDateLimit = date;
             }
@@ -825,7 +805,7 @@ ListRealty.prototype.searchControlContent = function () {
         tag: "div",
         class: "pizo-list-realty-main-search-control-container",
         on: {
-            click: function (event) {
+            click: function(event) {
                 event.stopPropagation();
             }
         },
@@ -859,92 +839,87 @@ ListRealty.prototype.searchControlContent = function () {
                         {
                             tag: "div",
                             class: "pizo-list-realty-main-search-control-row-price",
-                            child: [
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-HT",
-                                    child: [{
-                                            tag: "span",
-                                            class: "pizo-list-realty-main-search-control-row-HT-label",
-                                            props: {
-                                                innerHTML: "Tình trạng"
-                                            }
-                                        },
-                                        {
-                                            tag: "div",
-                                            class: "pizo-list-realty-main-search-control-row-HT-input",
-                                            child: [{
-                                                tag: "selectmenu",
-                                                props: {
-                                                    items: [{
-                                                            text: "Tất cả",
-                                                            value: 0
-                                                        },
-                                                        {
-                                                            text: "Còn bán",
-                                                            value: 2
-                                                        },
-                                                        {
-                                                            text: "Còn cho thuê",
-                                                            value: 11
-                                                        },
-                                                        {
-                                                            text: "Còn bán và còn cho thuê",
-                                                            value: 12
-                                                        },
-                                                        {
-                                                            text: "Ngừng giao dịch",
-                                                            value: 1
-                                                        }
-                                                    ]
-                                                }
-                                            }]
+                            child: [{
+                                tag: "div",
+                                class: "pizo-list-realty-main-search-control-row-HT",
+                                child: [{
+                                        tag: "span",
+                                        class: "pizo-list-realty-main-search-control-row-HT-label",
+                                        props: {
+                                            innerHTML: "Tình trạng"
                                         }
-                                    ]
-                                },
-                            ]
+                                    },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-list-realty-main-search-control-row-HT-input",
+                                        child: [{
+                                            tag: "selectmenu",
+                                            props: {
+                                                items: [{
+                                                        text: "Tất cả",
+                                                        value: 0
+                                                    },
+                                                    {
+                                                        text: "Còn bán",
+                                                        value: 2
+                                                    },
+                                                    {
+                                                        text: "Còn cho thuê",
+                                                        value: 11
+                                                    },
+                                                    {
+                                                        text: "Còn bán và còn cho thuê",
+                                                        value: 12
+                                                    },
+                                                    {
+                                                        text: "Ngừng giao dịch",
+                                                        value: 1
+                                                    }
+                                                ]
+                                            }
+                                        }]
+                                    }
+                                ]
+                            }, ]
                         },
                         {
                             tag: "div",
                             class: "pizo-list-realty-main-search-control-row-price",
-                            child: [
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-HT",
-                                    child:[
-                                        {
-                                            tag: "span",
-                                            class: "pizo-list-realty-main-search-control-row-price-label",
-                                            props: {
-                                                innerHTML: "Khoảng giá"
-                                            }
-                                        },
-                                        {
-                                            tag: "div",
-                                            class: "pizo-list-realty-main-search-control-row-price-input",
-                                            child: [{
-                                                    tag: "input",
-                                                    class: "pizo-list-realty-main-search-control-row-price-input-low",
-                                                    props: {
-                                                        type: "number",
-                                                        autocomplete: "off",
-                                                        placeholder: "đ Từ",
-                                                    }
-                                                },
-                                                {
-                                                    tag: "input",
-                                                    class: "pizo-list-realty-main-search-control-row-price-input-high",
-                                                    props: {
-                                                        type: "number",
-                                                        autocomplete: "off",
-                                                        placeholder: "đ Đến",
-                                                    }
-                                                },
-                                            ]
+                            child: [{
+                                tag: "div",
+                                class: "pizo-list-realty-main-search-control-row-HT",
+                                child: [{
+                                        tag: "span",
+                                        class: "pizo-list-realty-main-search-control-row-price-label",
+                                        props: {
+                                            innerHTML: "Khoảng giá"
                                         }
-                                    ]
-                                }
-                            ]
+                                    },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-list-realty-main-search-control-row-price-input",
+                                        child: [{
+                                                tag: "input",
+                                                class: "pizo-list-realty-main-search-control-row-price-input-low",
+                                                props: {
+                                                    type: "number",
+                                                    autocomplete: "off",
+                                                    placeholder: "đ Từ",
+                                                }
+                                            },
+                                            {
+                                                tag: "input",
+                                                class: "pizo-list-realty-main-search-control-row-price-input-high",
+                                                props: {
+                                                    type: "number",
+                                                    autocomplete: "off",
+                                                    placeholder: "đ Đến",
+                                                }
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }]
                         },
                         // {
                         //     tag: "div",
@@ -1119,7 +1094,7 @@ ListRealty.prototype.searchControlContent = function () {
         tag: "div",
         class: "pizo-list-realty-main-search-control",
         on: {
-            click: function (event) {
+            click: function(event) {
                 this.hide();
             }
         },
@@ -1140,15 +1115,15 @@ ListRealty.prototype.searchControlContent = function () {
     content.PX = $('.pizo-list-realty-main-search-control-row-PX input', content);
     content.QH = $('.pizo-list-realty-main-search-control-row-QH input', content);
     content.HT = $('.pizo-list-realty-main-search-control-row-HT input', content);
-    this.HTinput = $('div.pizo-list-realty-main-search-control-row-HT-input',content).childNodes[0];
-    temp.show = function () {
+    this.HTinput = $('div.pizo-list-realty-main-search-control-row-HT-input', content).childNodes[0];
+    temp.show = function() {
         if (!temp.classList.contains("showTranslate"))
             temp.classList.add("showTranslate");
     }
-    temp.hide = function () {
+    temp.hide = function() {
         if (!content.classList.contains("hideTranslate"))
             content.classList.add("hideTranslate");
-        var eventEnd = function () {
+        var eventEnd = function() {
             if (temp.classList.contains("showTranslate"))
                 temp.classList.remove("showTranslate");
             content.classList.remove("hideTranslate");
@@ -1161,10 +1136,10 @@ ListRealty.prototype.searchControlContent = function () {
         // Standard syntax
         content.addEventListener("transitionend", eventEnd);
     }
-    temp.apply = function () {
+    temp.apply = function() {
 
     }
-    temp.reset = function () {
+    temp.reset = function() {
         content.timestart = new Date();
         content.timeend = new Date();
         content.lowprice.value = "";
@@ -1183,12 +1158,12 @@ ListRealty.prototype.searchControlContent = function () {
     return temp;
 }
 
-ListRealty.prototype.add = function (parent_id = 0, row) {
+ListRealty.prototype.add = function(parent_id = 0, row) {
     var self = this;
     var mNewRealty = new NewRealty(undefined, parent_id);
     mNewRealty.attach(self.parent);
-    if(this.isCensorship===true)
-    mNewRealty.setCensorship();
+    if (this.isCensorship === true)
+        mNewRealty.setCensorship();
     mNewRealty.setDataListAccount(self.listAccoutData);
     mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
@@ -1197,21 +1172,21 @@ ListRealty.prototype.add = function (parent_id = 0, row) {
     self.addDB(mNewRealty, row);
 }
 
-ListRealty.prototype.addDB = function (mNewRealty, row) {
+ListRealty.prototype.addDB = function(mNewRealty, row) {
     var self = this;
-    mNewRealty.promiseAddDB.then(function (value) {
-        moduleDatabase.getModule("activehouses").add(value).then(function (result) {
+    mNewRealty.promiseAddDB.then(function(value) {
+        moduleDatabase.getModule("activehouses").add(value).then(function(result) {
             self.addView(result, row);
         })
         mNewRealty.promiseAddDB = undefined;
-        setTimeout(function () {
+        setTimeout(function() {
             if (mNewRealty.promiseAddDB !== undefined)
                 self.addDB(mNewRealty);
         }, 10);
     })
 }
 
-ListRealty.prototype.addView = function (value, parent) {
+ListRealty.prototype.addView = function(value, parent) {
     value.created = getGMT();
     var result = this.getDataRow(value);
 
@@ -1219,12 +1194,12 @@ ListRealty.prototype.addView = function (value, parent) {
     element.insertRow(result);
 }
 
-ListRealty.prototype.edit = function (data, parent, index) {
+ListRealty.prototype.edit = function(data, parent, index) {
     var self = this;
     var mNewRealty = new NewRealty(data);
     mNewRealty.attach(self.parent);
-    if(this.isCensorship===true)
-    mNewRealty.setCensorship();
+    if (this.isCensorship === true)
+        mNewRealty.setCensorship();
     mNewRealty.setDataListAccount(self.listAccoutData);
     mNewRealty.setDataListContact(self.listContactData);
     var frameview = mNewRealty.getView();
@@ -1233,8 +1208,7 @@ ListRealty.prototype.edit = function (data, parent, index) {
     self.editDB(mNewRealty, data, parent, index);
 }
 
-ListRealty.prototype.getDataEditFake = function(data)
-{
+ListRealty.prototype.getDataEditFake = function(data) {
     var self = this;
     var mNewRealty = new NewRealty(data);
     mNewRealty.setDataListAccount(self.listAccoutData);
@@ -1245,22 +1219,22 @@ ListRealty.prototype.getDataEditFake = function(data)
     return temp;
 }
 
-ListRealty.prototype.editDB = function (mNewRealty, data, parent, index) {
+ListRealty.prototype.editDB = function(mNewRealty, data, parent, index) {
     var self = this;
-    mNewRealty.promiseEditDB.then(function (value) {
-        moduleDatabase.getModule("activehouses").update(value).then(function (result) {
+    mNewRealty.promiseEditDB.then(function(value) {
+        moduleDatabase.getModule("activehouses").update(value).then(function(result) {
             result.created = data.original.created;
             self.editView(result, parent, index);
         })
         mNewRealty.promiseEditDB = undefined;
-        setTimeout(function () {
+        setTimeout(function() {
             if (mNewRealty.promiseEditDB !== undefined)
                 self.editDB(mNewRealty, data, parent, index);
         }, 10);
     })
 }
 
-ListRealty.prototype.editView = function (value, parent, index) {
+ListRealty.prototype.editView = function(value, parent, index) {
     var data = this.getDataRow(value);
     var indexOF = index,
         element = parent;
@@ -1271,53 +1245,68 @@ ListRealty.prototype.editView = function (value, parent, index) {
     // }
 }
 
-ListRealty.prototype.delete = function (data, parent, index) {
+ListRealty.prototype.delete = function(data, parent, index) {
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
     this.$view.addChild(deleteItem);
-    deleteItem.promiseComfirm.then(function () {
+    deleteItem.promiseComfirm.then(function() {
         self.deleteDB(data, parent, index);
     })
 }
 
-ListRealty.prototype.deleteView = function (parent, index) {
+ListRealty.prototype.deleteView = function(parent, index) {
     var self = this;
     var bodyTable = parent.bodyTable;
-    parent.dropRow(index).then(function () {});
+    parent.dropRow(index).then(function() {});
 }
 
-ListRealty.prototype.deleteDB = function (data, parent, index) {
+ListRealty.prototype.deleteDB = function(data, parent, index) {
     var self = this;
     var phpFile = moduleDatabase.deleteActiveHomesPHP;
     if (self.phpDeleteContent)
         phpFile = self.phpUpdateContent;
-    moduleDatabase.getModule("activehouses").delete({id:data.id}).then(function (value) {
+    moduleDatabase.getModule("activehouses").delete({ id: data.id }).then(function(value) {
         self.deleteView(parent, index);
     })
 }
 
-ListRealty.prototype.merge = function(data,parent,index)
-{
+ListRealty.prototype.merge = function(data, parent, index) {
     var self = this;
-    var mMergeRealty = new MergeRealty(data);
-    mMergeRealty.attach(self.parent);
-    var frameview = mMergeRealty.getView();
-    self.parent.body.addChild(frameview);
-    self.parent.body.activeFrame(frameview);
-    self.mergeDB(mMergeRealty, data, parent, index);
+    var promiseAll = [];
+    var arrTemp = [];
+    var firstOperator = "";
+    var dataTemp;
+    for (var i = 0; i < data.length; i++) {
+        dataTemp = data[i].original
+        if (dataTemp.image)
+            for (var j = 0; j < dataTemp.image.length; j++) {
+                if (firstOperator == "||")
+                    arrTemp.push(firstOperator);
+                arrTemp.push({ id: dataTemp.image[j] })
+                firstOperator = "||";
+            }
+
+    }
+    promiseAll.push(moduleDatabase.getModule("image").load({ WHERE: arrTemp }));
+    Promise.all(promiseAll).then(function() {
+        var mMergeRealty = new MergeRealty(data);
+        mMergeRealty.attach(self.parent);
+        var frameview = mMergeRealty.getView();
+        self.parent.body.addChild(frameview);
+        self.parent.body.activeFrame(frameview);
+        self.mergeDB(mMergeRealty, data, parent, index);
+    })
 }
 
-ListRealty.prototype.mergeDB = function(mMergeRealty,data,parent,index)
-{
+ListRealty.prototype.mergeDB = function(mMergeRealty, data, parent, index) {
 
 }
 
-ListRealty.prototype.mergeView = function(value, data, parent, index)
-{
+ListRealty.prototype.mergeView = function(value, data, parent, index) {
 
 }
 
-ListRealty.prototype.refresh = function () {
+ListRealty.prototype.refresh = function() {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -1325,7 +1314,7 @@ ListRealty.prototype.refresh = function () {
         this.setData(data);
 };
 
-ListRealty.prototype.setData = function (data) {
+ListRealty.prototype.setData = function(data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -1333,7 +1322,7 @@ ListRealty.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-ListRealty.prototype.flushDataToView = function () {
+ListRealty.prototype.flushDataToView = function() {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -1348,7 +1337,7 @@ ListRealty.prototype.flushDataToView = function () {
     }
 };
 
-ListRealty.prototype.start = function () {
+ListRealty.prototype.start = function() {
 
 }
 

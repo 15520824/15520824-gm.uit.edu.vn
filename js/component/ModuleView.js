@@ -2665,7 +2665,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     }
    if(data!==undefined)
     {
-        if (result.paginationElement!==undefined)
+        if (result.paginationElement!==undefined&&result.paginationElement.reActive)
         result.paginationElement.reActive();
     }
 }
