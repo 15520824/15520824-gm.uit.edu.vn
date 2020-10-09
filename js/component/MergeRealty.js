@@ -8,6 +8,7 @@ import MergeTool from 'mpot-merge-tool';
 import moduleDatabase from '../component/ModuleDatabase';
 import { MapView } from "./MapView";
 import NewAccount from '../component/NewAccount';
+import { reFormatNumber, formatFit } from './FormatFunction'
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -121,9 +122,10 @@ MergeRealty.prototype.getView = function() {
             ]
         }, ]
     });
-
     var myTool = new MergeTool.MPOTMergeTool();
+    this.myTool = myTool;
     var element = new MapView();
+    element.map.set("gestureHandling", "cooperative")
     element.activePlanningMap();
     var toolView = myTool.getView();
     var itemsAddress = [];
@@ -158,6 +160,7 @@ MergeRealty.prototype.getView = function() {
     var checkType = moduleDatabase.getModule("type_activehouses").getLibary("id");
     var number, street, ward, district, state, fullAddress;
     var checkAddress = [];
+    this.checkAddressData = checkAddress;
     var valueRoadWidth, itemRoadWidth = [],
         sumRoadWidth = 0;
 
@@ -165,7 +168,24 @@ MergeRealty.prototype.getView = function() {
         itemContact = [];
 
     var itemImageStaus = [];
+    itemImageStaus.functionChange = function(parent) {
+        var arr = parent.getElementsByClassName("checked-pizo");
+        if (arr.length == 0) {
+            if (parent.childNodes.length > 0)
+                parent.childNodes[0].classList.add("checked-pizo");
+        }
+    }
     var itemImageJuridical = [];
+    var itemInputFit = [];
+    var valueInputFit;
+    var itemInputPriceRent = [];
+    var valueInputPriceRent;
+    var itemInputPrice = [];
+    var valueInputPrice;
+    var itemInputJuridical = [];
+    var valueInputJuridical;
+
+    var arr = moduleDatabase.getModule("juridicals").getList("name", "id");
 
     this.checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
     this.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
@@ -191,9 +211,113 @@ MergeRealty.prototype.getView = function() {
         itemData = this.data[i].original;
         for (var j = 0; j < itemData.image.length; j++) {
             if (this.checkImage[itemData.image[j]].type == 1) {
-                itemImageStaus.push(prefixImage + this.checkImage[itemData.image[j]].src);
+                var dataChild = {
+                    value: true,
+                    element: absol._({
+                        tag: "div",
+                        class: "grid-item",
+                        child: [{
+                                tag: "button",
+                                class: "pizo-container-icon-radiobutton",
+                                on: {
+                                    click: function(event) {
+                                        var parent = this.parentNode.parentNode;
+                                        var arr = parent.getElementsByClassName("checked-pizo");
+                                        if (arr.length > 0)
+                                            arr[0].classList.remove("checked-pizo"); {
+                                            this.parentNode.classList.add("checked-pizo");
+                                        }
+                                    }
+                                },
+                                child: [{
+                                    tag: "i",
+                                    class: ["material-icons", "choice-button-img"],
+                                    style: {
+                                        overflow: "hidden",
+                                        cursor: "pointer",
+                                        userSelect: "none",
+                                        fontSize: "13px"
+                                    },
+                                    props: {
+                                        innerHTML: "stop_circle"
+                                    }
+                                }]
+                            },
+                            {
+                                tag: "img",
+                                class: "full-size",
+                                props: {
+                                    src: prefixImage + this.checkImage[itemData.image[j]].src
+                                }
+                            },
+                            {
+                                tag: "i",
+                                class: ["material-icons", "close-button-img"],
+                                style: {
+                                    overflow: "hidden",
+                                    position: "absolute",
+                                    right: "7px",
+                                    top: "7px",
+                                    cursor: "pointer",
+                                    height: "fit-content",
+                                    margin: "0px",
+                                    width: "fit-content",
+                                    userSelect: "none",
+                                    backgroundColor: "white",
+                                    fontSize: "21px"
+                                },
+                                props: {
+                                    innerHTML: "close"
+                                }
+                            }
+                        ]
+                    })
+                }
+                $(".close-button-img", dataChild.element).addEventListener("click", function(dataChild) {
+                    dataChild.value = false;
+                }.bind(null, dataChild))
+                itemImageStaus.push(dataChild);
             } else {
-                itemImageJuridical.push(prefixImage + this.checkImage[itemData.image[j]].src);
+                var dataChild = {
+                    value: true,
+                    element: absol._({
+                        tag: "div",
+                        class: "grid-item",
+                        child: [{
+                                tag: "img",
+                                class: "full-size",
+                                props: {
+                                    src: prefixImage + this.checkImage[itemData.image[j]].src
+                                }
+                            },
+                            {
+                                tag: "i",
+                                class: ["material-icons", "close-button-img"],
+                                style: {
+                                    overflow: "hidden",
+                                    position: "absolute",
+                                    right: "7px",
+                                    top: "7px",
+                                    cursor: "pointer",
+                                    height: "fit-content",
+                                    margin: "0px",
+                                    width: "fit-content",
+                                    userSelect: "none",
+                                    backgroundColor: "white",
+                                    fontSize: "21px"
+                                },
+                                props: {
+                                    innerHTML: "close"
+                                }
+                            }
+                        ]
+                    })
+                }
+                dataChild["data"] = this.checkImage[itemData.image[j]];
+                $(".close-button-img", dataChild.element).addEventListener("click", function(dataChild) {
+                    dataChild.value = false;
+                }.bind(null, dataChild))
+                itemImageJuridical.push(dataChild);
             }
         }
         if (itemData.addressid !== 0) {
@@ -266,7 +390,6 @@ MergeRealty.prototype.getView = function() {
         var advanceDetruct3 = advanceDetruct % 10 ? true : false;
         advanceDetruct = parseInt(advanceDetruct / 10);
         var advanceDetruct4 = advanceDetruct % 10 ? true : false;
-
         advanceDetruct = _({
             tag: "div",
             class: "pizo-new-realty-dectruct-content-area-advance",
@@ -567,6 +690,10 @@ MergeRealty.prototype.getView = function() {
                 },
             ]
         });
+        simpleDetruct.advanceDetruct1 = advanceDetruct1;
+        simpleDetruct.advanceDetruct2 = advanceDetruct2;
+        simpleDetruct.advanceDetruct3 = advanceDetruct3;
+        simpleDetruct.advanceDetruct4 = advanceDetruct4;
         var tempSelectbox = _({
             tag: "selectmenu",
             class: "pizo-new-realty-detruct-content-structure",
@@ -629,12 +756,147 @@ MergeRealty.prototype.getView = function() {
         itemRoadWidth.push(itemData.roadwidth);
         if (valueRoadWidth === undefined)
             valueRoadWidth = itemData.roadwidth;
+
         if (itemData.contact.length > 0) {
             var tempElement = this.contactItem(itemData.contact[i]);
-            itemContact.push({ value: false, element: tempElement, promiseComplete: tempElement.promiseComplete });
+            var dataChild = { value: false, element: tempElement, promiseComplete: tempElement.promiseComplete };
+            $(".pizo-new-realty-contact-item-close", tempElement).addEventListener("click", function(dataChild) {
+                dataChild.value = false;
+            }.bind(null, dataChild))
+            itemContact.push(dataChild);
         }
+
         if (itemData.equipment.length > 0) {
             itemEquipments.push({ value: false, element: this.convenientView(itemData), itemData: itemData.equipment });
+        }
+
+        var tempInputFit = _({
+            tag: "selectbox",
+            class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
+            props: {
+                items: [
+                    { text: "Để ở", value: 1 },
+                    { text: "Cho thuê", value: 10 },
+                    { text: "Kinh doanh", value: 100 },
+                    { text: "Làm văn phòng", value: 1000 },
+                ],
+                values: formatFit(parseInt(itemData.fit))
+            }
+        })
+        itemInputFit.push({ value: i + 1, element: tempInputFit });
+        if (valueInputFit === undefined) {
+            valueInputFit = i + 1;
+        }
+
+        var tempInputValue = _({
+            tag: "div",
+            class: "pizo-new-realty-desc-detail-row",
+            child: [{
+                    tag: "input",
+                    class: ["pizo-new-realty-detruct-content-price", "pizo-new-realty-dectruct-input"],
+                    props: {
+                        value: itemData.price
+                    },
+                    on: {
+                        // change: function(event) {
+                        //     var inputValue = $("input.pizo-new-realty-detruct-content-price-per", temp);
+                        //     var price = $('input.pizo-new-realty-detruct-content-price', temp);
+                        //     var priceUnit = $('div.pizo-new-realty-detruct-content-price-unit', temp)
+
+                        //     var areaValue = $('input.pizo-new-realty-dectruct-content-area-all', temp);
+                        //     var areaValueUnit = unit_Zone_all;
+                        //     inputValue.value = price.value * priceUnit.value / (areaValue.value * areaValueUnit.value) * 1000;
+                        // }
+                    },
+                },
+                {
+                    tag: "selectmenu",
+                    class: "pizo-new-realty-detruct-content-price-unit",
+                    on: {
+                        change: function(tempInputValue) {
+                            return function(event) {
+                                var price = $('input.pizo-new-realty-detruct-content-price', tempInputValue);
+                                price.value = price.value * event.lastValue / event.value;
+                            }
+                        }(tempInputValue)
+                    },
+                    props: {
+                        items: [
+                            { text: "tỉ", value: 1 },
+                            { text: "triệu", value: 1 / 1000 }
+                        ]
+                    }
+                }
+            ]
+        })
+        itemInputPrice.push({ value: i + 1, element: tempInputValue });
+        if (valueInputPrice === undefined) {
+            valueInputPrice = i + 1;
+        }
+
+        var tempInputValue = _({
+            tag: "div",
+            class: "pizo-new-realty-dectruct-content-area-right",
+            child: [{
+                tag: "div",
+                class: "pizo-new-realty-desc-detail-row",
+                child: [{
+                        tag: "input",
+                        class: ["pizo-new-realty-detruct-content-price-rent", "pizo-new-realty-dectruct-input"],
+                        props: {
+                            value: itemData.pricerent
+                        },
+                        on: {
+                            input: function(event) {
+                                this.value = formatNumber(this.value);
+                            },
+                            blur: function(event) {
+                                this.value = reFormatNumber(this.value);
+                            }
+                        }
+                    },
+                    {
+                        tag: "selectmenu",
+                        class: "pizo-new-realty-detruct-content-price-rent-unit",
+                        on: {
+                            change: function(tempInputValue) {
+                                return function(event) {
+                                    var price = $('input.pizo-new-realty-detruct-content-price-rent', tempInputValue);
+                                    price.value = (price.value * event.lastValue / event.value);
+                                }
+                            }(tempInputValue)
+                        },
+                        props: {
+                            items: [
+                                { text: "VND", value: 1 },
+                                { text: "USD", value: 23180 }
+                            ]
+                        }
+                    }
+                ]
+            }]
+        });
+        itemInputPriceRent.push({ value: i + 1, element: tempInputValue });
+        if (valueInputPriceRent === undefined) {
+            valueInputPriceRent = i + 1;
+        }
+        var tempInputValue = _({
+            tag: "div",
+            class: "pizo-new-realty-juridical-content",
+            child: [{
+                tag: "selectmenu",
+                style: {
+                    textAlign: "left"
+                },
+                class: ["pizo-new-realty-dectruct-content-area-fit", "pizo-new-realty-dectruct-input"],
+                props: {
+                    items: arr
+                }
+            }]
+        });
+        itemInputJuridical.push({ value: i + 1, element: tempInputValue });
+        if (valueInputJuridical === undefined) {
+            valueInputJuridical = i + 1;
         }
     }
 
@@ -794,7 +1056,6 @@ MergeRealty.prototype.getView = function() {
         name: 'Ảnh hiện trạng',
         id: 'image-status',
         action: "multi-choice",
-        values: itemImageStaus,
         items: itemImageStaus,
         style: {
             maxWidth: '200px',
@@ -803,16 +1064,55 @@ MergeRealty.prototype.getView = function() {
     }
 
     var dataImageJuridical = {
-        type: 'image',
+        type: 'element',
         name: 'Ảnh pháp lý',
         id: 'image-juridical',
         action: "multi-choice",
-        values: itemImageJuridical,
         items: itemImageJuridical,
         style: {
             maxWidth: '200px',
             maxHeight: '200px'
         }
+    }
+
+    var dataFit = {
+        type: 'element',
+        name: 'Phù hợp khai thác',
+        id: 'fit',
+        enableEdit: true,
+        action: "single-choice",
+        value: valueInputFit,
+        items: itemInputFit
+    }
+
+    var dataPrice = {
+        type: 'element',
+        name: 'Giá',
+        id: 'price-child',
+        enableEdit: true,
+        action: "single-choice",
+        value: valueInputPrice,
+        items: itemInputPrice
+    }
+
+    var dataPriceRent = {
+        type: 'element',
+        name: 'Giá thuê tháng',
+        id: 'price-rent',
+        enableEdit: true,
+        action: "single-choice",
+        value: valueInputPriceRent,
+        items: itemInputPriceRent
+    }
+
+    var dataJuridical = {
+        type: 'element',
+        name: 'Tình trạng pháp lý',
+        id: 'juridical',
+        enableEdit: true,
+        action: "single-choice",
+        value: valueInputJuridical,
+        items: itemInputJuridical
     }
 
     var elementStructure = _({
@@ -829,7 +1129,6 @@ MergeRealty.prototype.getView = function() {
     })
 
     elementStructure.appendChild(valueSimpleStructure);
-
     myTool.editor.on("nodechange", function(event) {
         switch (event.nodePreviewData.id) {
             case "address":
@@ -868,12 +1167,6 @@ MergeRealty.prototype.getView = function() {
                     type: "container",
                     id: "container-general",
                     properties: [{
-                            type: 'constant',
-                            id: 'GPS',
-                            action: 'const',
-                            element: element
-                        },
-                        {
                             type: "group",
                             name: 'Thông tin chung',
                             id: "general",
@@ -885,6 +1178,17 @@ MergeRealty.prototype.getView = function() {
                             ]
                         },
                         {
+                            type: 'constant',
+                            id: 'GPS',
+                            action: 'const',
+                            element: element
+                        }
+                    ]
+                },
+                {
+                    type: "container",
+                    id: "container-price-construct",
+                    properties: [{
                             type: "group",
                             name: 'Thông tin xây dựng',
                             id: "construction",
@@ -907,6 +1211,22 @@ MergeRealty.prototype.getView = function() {
                                 dataRoadWidth
                             ]
                         },
+                        {
+                            type: "container",
+                            id: "container-price-juridical",
+                            properties: [{
+                                    type: "group",
+                                    name: 'Giá',
+                                    id: "price",
+                                    properties: [
+                                        dataPrice,
+                                        dataPriceRent,
+                                        dataFit,
+                                    ]
+                                },
+                                dataJuridical
+                            ]
+                        }
                     ]
                 },
                 {
@@ -958,7 +1278,6 @@ MergeRealty.prototype.getView = function() {
 MergeRealty.prototype.contactItem = function(data) {
     var name, typecontact, phone, statusphone, note;
     var resolveComplete;
-    var rejectComplete;
     var promiseComplete = new Promise(function(resolve, reject) {
         resolveComplete = resolve;
     })
@@ -1014,6 +1333,21 @@ MergeRealty.prototype.contactItem = function(data) {
                             },
                             props: {
                                 innerHTML: "settings"
+                            }
+                        }]
+                    },
+                    {
+                        tag: "button",
+                        class: "pizo-new-realty-contact-item-close",
+                        child: [{
+                            tag: "i",
+                            class: "material-icons",
+                            style: {
+                                fontSize: "1rem",
+                                verticalAlign: "middle"
+                            },
+                            props: {
+                                innerHTML: "close"
                             }
                         }]
                     }
@@ -1402,13 +1736,150 @@ MergeRealty.prototype.itemDisplayNone = function(data) {
 }
 
 MergeRealty.prototype.getDataSave = function() {
-    var temp = {
-        name: this.name.value,
-        type: this.type.value,
-        nationid: this.nation.value
+    var temp = {};
+    var data = this.myTool.getData().previewData.properties;
+    console.log(data);
+    var advanceDetructElement = data[1].properties[0].properties[6].element.childNodes[0];
+    var fitUpdate = 0;
+    var inputFit = data[1].properties[1].properties[0].properties[2].item.element;
+    console.log(advanceDetructElement)
+    if (inputFit.values.length !== 0)
+        fitUpdate = inputFit.values.reduce(function(a, b) { return a + b; });
+    var advanceDetruct = 0;
+    advanceDetruct += advanceDetructElement.advanceDetruct1.checked ? 1 : 0;
+    advanceDetruct += advanceDetructElement.advanceDetruct2.checked ? 10 : 0;
+    advanceDetruct += advanceDetructElement.advanceDetruct3.checked ? 100 : 0;
+    advanceDetruct += advanceDetructElement.advanceDetruct4.checked ? 1000 : 0;
+    var image = [];
+    var arrJuridical = data[3].properties[1].values;
+    console.log(arrJuridical)
+    for (var i = 0; i < arrJuridical.length; i++) {
+        image.push({ src: arr[i].id, type: 0, userid: window.userid });
     }
-    if (this.data !== undefined)
-        temp.id = this.data.original.id;
+
+    var arrStatus = data[3].properties[1].values;
+    console.log(arrStatus)
+    for (var i = 0; i < arrStatus.length; i++) {
+        image.push({ src: src, type: 1, thumnail: 0, userid: window.userid });
+    }
+
+
+    var temp = {
+        height: this.inputHeight.value * this.inputUnitHeight.value,
+        width: this.inputWidth.value * this.inputUnitWidth.value,
+        landarea: this.inputZone1.value * this.inputUnitZone1.value,
+        floorarea: this.inputZone2.value * this.inputUnitZone2.value,
+        acreage: this.inputZoneAll.value * this.inputUnitZoneAll.value,
+        direction: this.direction.value,
+        type: this.type.value,
+        fit: fitUpdate,
+        roadwidth: this.inputWidthRoad.value * this.inputUnitWidthRoad.value,
+        floor: this.inputFloor.value,
+        basement: this.inputBasement.value,
+        bedroom: this.inputBedroom.value,
+        living: this.inputLiving.value,
+        toilet: this.inputToilet.value,
+        kitchen: this.inputKitchen.value,
+        price: this.inputPrice.value * this.inputUnitPrice.value,
+        name: data[0].properties[0].value,
+        content: this.inputContent.value,
+        salestatus: (this.inputLease.checked == true ? 1 : 0) * 10 + (this.inputSell.checked == true ? 1 : 0),
+        structure: this.structure.value,
+        pricerent: reFormatNumber(this.inputPriceRent.value) * this.inputPriceRentUnit.value,
+        advancedetruct: advanceDetruct,
+        juridical: this.juridical.value,
+        image: image,
+        censorship: this.inputCensorship.checked == true ? 1 : 0
+            // important:this.viewCurrentStaus.getImportTant()
+    }
+    var arr = [];
+    for (var i = 0; i < this.containerEquipment.childNodes.length; i++) {
+        arr.push(this.containerEquipment.childNodes[i].getData());
+    }
+    temp.equipment = arr;
+
+    var contact = [];
+    for (var i = 0; i < this.containerContact.childNodes.length; i++) {
+        contact.push(this.containerContact.childNodes[i].getData());
+    }
+    temp.contact = contact;
+
+    if (this.addressCurrent.data !== undefined) {
+        var address = {};
+        var data = this.addressCurrent.data;
+
+        var lastIndex = data.ward.lastIndexOf("_");
+        if (lastIndex === -1) {
+            address.ward = data.ward;
+            lastIndex = data.district.lastIndexOf("_");
+            if (lastIndex == -1) {
+                address.district = data.district;
+                lastIndex = data.state.lastIndexOf("_");
+                if (lastIndex == -1) {
+                    address.state = data.state;
+                } else {
+                    address.stateid = data.state.slice(lastIndex + 1);
+                }
+            } else
+                address.districtid = data.district.slice(lastIndex + 1);
+        } else
+            address.wardid = data.ward.slice(lastIndex + 1);
+
+        var lastIndex = data.street.lastIndexOf("_");
+        if (lastIndex === -1)
+            address.street = data.street;
+        else
+            address.streetid = data.street.slice(lastIndex + 1);
+
+        address.number = data.number;
+
+        temp.lat = data.lat;
+        temp.lng = data.lng;
+
+        temp.addressid = address;
+    }
+
+    if (this.addressOld.data !== undefined) {
+        var address = {};
+        var data = this.addressOld.data;
+
+        var lastIndex = data.ward.lastIndexOf("_");
+        if (lastIndex === -1) {
+            address.ward = data.ward;
+            lastIndex = data.district.lastIndexOf("_");
+            if (lastIndex == -1) {
+                address.district = data.district;
+                lastIndex = data.state.lastIndexOf("_");
+                if (lastIndex == -1) {
+                    address.state = data.state;
+                } else {
+                    address.stateid = data.state.slice(lastIndex + 1);
+                }
+            } else
+                address.districtid = data.district.slice(lastIndex + 1);
+        } else
+            address.wardid = data.ward.slice(lastIndex + 1);
+
+        var lastIndex = data.street.lastIndexOf("_");
+        if (lastIndex === -1)
+            address.street = data.street;
+        else
+            address.streetid = data.street.slice(lastIndex + 1);
+
+        address.number = data.number;
+
+        temp.addressid_old = address;
+    }
+
+    if (this.data !== undefined) {
+        if (this.data.original !== undefined && this.data.original.id !== undefined)
+            temp.id = this.data.original.id;
+        else if (this.data.id !== undefined)
+            temp.id = this.data.id;
+    }
+    if (this.isRequestEdit) {
+        temp.userid = window.userid;
+    }
     return temp;
 }
 

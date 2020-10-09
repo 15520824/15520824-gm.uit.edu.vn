@@ -1,473 +1,735 @@
-.mpot-choice-value {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-}
-
-.mpot-preview-body {
-    position: relative;
-}
-
-#preview-GPS {
-    position: absolute;
-    width: 50%;
-    right: 0px;
-    height: 100%;
-}
-
-#preview-GPS .mpot-base-preview-name {
-    display: none;
-}
-
-#preview-GPS .mpot-base-preview-content {
-    width: 100%;
-    height: 100%;
-}
-
-#preview-GPS .mpot-base-preview-content>div {
-    width: 100%;
-    height: 100%;
-}
-
-#preview-GPS .mpot-base-preview-content .card-edit-company-block-maps-child {
-    width: 100%;
-    height: 100%;
-}
-
-#preview-GPS .mpot-base-preview-content .pizo-new-realty-location-map-view {
-    width: 100%;
-    margin: 0;
-    height: 100%;
-    min-width: unset;
-}
-
-.mpot-base-preview {
-    margin-top: 5px;
-}
-
-#preview-general {
-    max-width: calc(50% - 30px);
-}
-
-#preview-address {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-}
-
-#preview-address .mpot-base-preview-name {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-    flex-shrink: 0;
-}
-
-#preview-address-old {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-}
-
-#preview-address-old .mpot-base-preview-name {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-    flex-shrink: 0;
-}
-
-#preview-description,
-#preview-name {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-}
-
-#preview-description .mpot-base-preview-name,
-#preview-name .mpot-base-preview-name {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-    flex-shrink: 0;
-}
-
-#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:first-child {}
-
-#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:last-child {
-    margin-left: 30px;
-    width: calc(50% + 5px);
-}
-
-#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:last-child {}
-
-#preview-construction {
-    max-width: 50%;
-}
-
-#preview-construction .mpot-base-preview {
-    width: 50%;
-    display: inline-flex;
-}
-
-#preview-construction .mpot-base-preview .mpot-base-preview-content {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-    flex-shrink: 0;
-    padding-right: 30px;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.mpot-base-preview .mpot-base-preview-content>* {
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
-}
-
-.mpot-base-preview .mpot-base-preview-content>span {
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-    text-align: justify;
-    display: block;
-    width: 100%;
-}
-
-#preview-description .mpot-base-preview-content,
-#preview-name .mpot-base-preview-content {
-    width: 100%;
-    display: flex;
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-}
-
-#preview-construction .mpot-base-preview .mpot-base-preview-name {
-    flex-grow: 2;
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-    width: unset;
-    white-space: nowrap;
-}
-
-#preview-description .mpot-base-preview-content {
-    width: 100%;
-    display: flex;
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-}
-
-#edit-construction .mpot-group-editor-item#width .mpot-choice-list,
-#edit-construction .mpot-group-editor-item#height .mpot-choice-list,
-#edit-construction .mpot-group-editor-item#acreage .mpot-choice-list,
-#edit-construction .mpot-group-editor-item#landarea .mpot-choice-list,
-#edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list,
-#edit-construction .mpot-group-editor-item#direction .mpot-choice-list,
-#edit-construction .mpot-group-editor-item#type-house .mpot-choice-list,
-#edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list {
-    display: flex;
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    table-layout: unset;
-}
-
-#edit-construction .mpot-group-editor-item#width .mpot-choice-list .mpot-choice,
-#edit-construction .mpot-group-editor-item#height .mpot-choice-list .mpot-choice,
-#edit-construction .mpot-group-editor-item#acreage .mpot-choice-list .mpot-choice,
-#edit-construction .mpot-group-editor-item#landarea .mpot-choice-list .mpot-choice,
-#edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list .mpot-choice,
-#edit-construction .mpot-group-editor-item#direction .mpot-choice-list .mpot-choice,
-#edit-construction .mpot-group-editor-item#type-house .mpot-choice-list .mpot-choice,
-#edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list .mpot-choice {
-    flex-grow: 2;
-    display: flex;
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    width: 100%;
-    padding-left: 20px;
-}
-
-#preview-structure .pizo-new-realty-desc-detail-row {
-    margin-bottom: 0;
-}
-
-#preview-structure .pizo-new-realty-dectruct-content-area-size-zone {
-    margin-bottom: 0;
-}
-
-#preview-structure .pizo-new-realty-dectruct-content-area {
-    display: none;
-}
-
-#preview-structure .pizo-new-realty-detruct-content-structure {
-    width: 120px;
-}
-
-#preview-structure .mpot-base-preview-name {
-    padding-top: 12px;
-}
-
-#preview-structure .mpot-base-preview-content>div>div {
-    width: 100%;
-}
-
-#preview-structure .pizo-new-realty-dectruct-content-area-size {
-    margin-top: 10px;
-}
-
-#structure .mpot-choice-list {
-    width: 100%;
-}
-
-#structure .mpot-choice-list .mpot-choice-value>span {
-    width: 100%;
-    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
-}
-
-#structure .mpot-choice-list .mpot-choice-value>span>div {
-    width: 100%;
-    margin-bottom: 0;
-}
-
-#structure .pizo-new-realty-desc-detail-row {
-    margin-bottom: 0;
-}
-
-#structure .mpot-choice {
-    border-top: 1px;
-}
-
-#structure .pizo-new-realty-detruct-content-structure {
-    border-right: none;
-}
-
-#preview-container-general {
-    position: relative;
-}
-
-#preview-structure-detail .mpot-base-preview-name {
-    display: none;
-}
-
-#preview-construction .mpot-base-preview#preview-structure-detail {
-    width: 100%;
-    margin-top: 0;
-}
-
-#preview-construction .mpot-base-preview#preview-structure-detail .mpot-base-preview-content {
-    width: 100%;
-    padding-right: 0;
-}
-
-#preview-structure-detail .pizo-new-realty-dectruct-content-area {
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 30px;
-    margin-bottom: 0;
-}
-
-#preview-direction .mpot-base-preview-name {
-    font-weight: bold;
-}
-
-#preview-type-house .mpot-base-preview-name {
-    font-weight: bold;
-}
-
-#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox,
-#structure .pizo-new-realty-dectruct-content-area-selectbox {
-    margin: 0;
-}
-
-
-/* #preview-structure-detail .absol-checkbox{
+    .mpot-choice-value {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+    
+    .mpot-preview-body {
+        position: relative;
+    }
+    
+    #preview-GPS {
+        flex-grow: 2;
+        display: flex;
+        width: 100%;
+        position: relative;
+        margin: 0;
+        padding-left: 5px;
+    }
+    
+    #preview-GPS .mpot-base-preview-name {
+        display: none;
+    }
+    
+    #preview-GPS .mpot-base-preview-content {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+    
+    #preview-GPS .mpot-base-preview-content>div {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+    
+    #preview-GPS .mpot-base-preview-content .card-edit-company-block-maps-child {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #preview-GPS .mpot-base-preview-content .pizo-new-realty-location-map-view {
+        width: 100%;
+        margin: 0;
+        height: 100%;
+        position: absolute;
+        min-width: unset;
+    }
+    
+    .mpot-base-preview {
+        margin-top: 5px;
+    }
+    
+    #preview-general {
+        flex-grow: 2;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        padding-right: 5px;
+    }
+    
+    #preview-general>div {
+        width: 100%;
+        display: flex;
+    }
+    
+    #preview-address {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+    }
+    
+    #preview-address .mpot-base-preview-name {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+        flex-shrink: 0;
+    }
+    
+    #preview-address-old {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+    }
+    
+    #preview-address-old .mpot-base-preview-name {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+        flex-shrink: 0;
+    }
+    
+    #preview-description,
+    #preview-name {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+    }
+    
+    #preview-description .mpot-base-preview-name,
+    #preview-name .mpot-base-preview-name {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+        flex-shrink: 0;
+    }
+    
+    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:first-child {}
+    
+    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:last-child {
+        margin-left: 30px;
+        width: calc(50% + 5px);
+    }
+    
+    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:last-child {}
+    
+    #preview-construction,
+    #preview-container-price-juridical {
+        flex-grow: 2;
+        display: flex;
+        width: 100%;
+    }
+    
+    #preview-container-price-juridical {
+        padding-left: 5px;
+        flex-direction: column;
+    }
+    
+    #preview-construction {
+        flex-flow: wrap;
+    }
+    
+    #preview-construction>div.mpot-preview-group-name {
+        display: flex;
+        width: 100%;
+    }
+    
+    #preview-construction .mpot-base-preview {
+        width: 50%;
+        display: inline-flex;
+    }
+    
+    #preview-construction .mpot-base-preview .mpot-base-preview-content {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+        flex-shrink: 0;
+        padding-right: 30px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    
+    .mpot-base-preview .mpot-base-preview-content>* {
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+    }
+    
+    .mpot-base-preview .mpot-base-preview-content>span {
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+        text-align: justify;
+        display: block;
+        width: 100%;
+        height: fit-content;
+    }
+    
+    #preview-description .mpot-base-preview-content,
+    #preview-name .mpot-base-preview-content,
+    #preview-address-old .mpot-base-preview-content,
+    #preview-address .mpot-base-preview-content {
+        width: 100%;
+        display: flex;
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        flex-grow: 2;
+    }
+    
+    #preview-construction .mpot-base-preview .mpot-base-preview-name {
+        flex-grow: 2;
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+        width: unset;
+        white-space: nowrap;
+    }
+    
+    #preview-description .mpot-base-preview-content {
+        width: 100%;
+        display: flex;
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+    }
+    
+    #edit-construction .mpot-group-editor-item#width .mpot-choice-list,
+    #edit-construction .mpot-group-editor-item#height .mpot-choice-list,
+    #edit-construction .mpot-group-editor-item#acreage .mpot-choice-list,
+    #edit-construction .mpot-group-editor-item#landarea .mpot-choice-list,
+    #edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list,
+    #edit-construction .mpot-group-editor-item#direction .mpot-choice-list,
+    #edit-construction .mpot-group-editor-item#type-house .mpot-choice-list,
+    #edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list {
+        display: flex;
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        table-layout: unset;
+    }
+    
+    #edit-construction .mpot-group-editor-item#width .mpot-choice-list .mpot-choice,
+    #edit-construction .mpot-group-editor-item#height .mpot-choice-list .mpot-choice,
+    #edit-construction .mpot-group-editor-item#acreage .mpot-choice-list .mpot-choice,
+    #edit-construction .mpot-group-editor-item#landarea .mpot-choice-list .mpot-choice,
+    #edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list .mpot-choice,
+    #edit-construction .mpot-group-editor-item#direction .mpot-choice-list .mpot-choice,
+    #edit-construction .mpot-group-editor-item#type-house .mpot-choice-list .mpot-choice,
+    #edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list .mpot-choice {
+        flex-grow: 2;
+        display: flex;
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        width: 100%;
+        padding-left: 20px;
+    }
+    
+    #preview-structure .pizo-new-realty-desc-detail-row {
+        margin-bottom: 0;
+    }
+    
+    #preview-structure .pizo-new-realty-dectruct-content-area-size-zone {
+        margin-bottom: 0;
+    }
+    
+    #preview-structure .pizo-new-realty-dectruct-content-area {
+        display: none;
+    }
+    
+    #preview-structure .pizo-new-realty-detruct-content-structure {
+        width: 120px;
+    }
+    
+    #preview-structure .mpot-base-preview-name {
+        padding-top: 12px;
+    }
+    
+    #preview-structure .mpot-base-preview-content>div>div {
+        width: 100%;
+    }
+    
+    #preview-structure .pizo-new-realty-dectruct-content-area-size {
+        margin-top: 10px;
+    }
+    
+    #structure .mpot-choice-list {
+        width: 100%;
+    }
+    
+    #structure .mpot-choice-list .mpot-choice-value>span {
+        width: 100%;
+        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+    }
+    
+    #structure .mpot-choice-list .mpot-choice-value>span>div {
+        width: 100%;
+        margin-bottom: 0;
+    }
+    
+    #structure .pizo-new-realty-desc-detail-row {
+        margin-bottom: 0;
+    }
+    
+    #structure .mpot-choice {
+        border-top: 1px;
+    }
+    
+    #structure .pizo-new-realty-detruct-content-structure {
+        border-right: none;
+    }
+    
+    #preview-container-general {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: stretch;
+    }
+    
+    #preview-container-general>div.mpot-preview-group-name {
+        display: none;
+    }
+    
+    #preview-structure-detail .mpot-base-preview-name {
+        display: none;
+    }
+    
+    #preview-construction .mpot-base-preview#preview-structure-detail {
+        width: 100%;
+        margin-top: 0;
+    }
+    
+    #preview-construction .mpot-base-preview#preview-structure-detail .mpot-base-preview-content {
+        width: 100%;
+        padding-right: 0;
+    }
+    
+    #preview-structure-detail .pizo-new-realty-dectruct-content-area {
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 30px;
+        margin-bottom: 0;
+    }
+    
+    #preview-direction .mpot-base-preview-name {
+        font-weight: bold;
+    }
+    
+    #preview-type-house .mpot-base-preview-name {
+        font-weight: bold;
+    }
+    
+    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox,
+    #structure .pizo-new-realty-dectruct-content-area-selectbox {
+        margin: 0;
+    }
+    /* #preview-structure-detail .absol-checkbox{
     pointer-events: none;
 } */
-
-#preview-structure-detail .pizo-new-realty-dectruct-content-area-simple>div:last-child .pizo-new-realty-dectruct-content-area-size-zone {
-    margin-bottom: 0;
-}
-
-#preview-construction .mpot-base-preview#preview-roadwidth {
-    width: 100%;
-}
-
-#preview-construction .mpot-base-preview#preview-roadwidth .mpot-base-preview-name {
-    font-weight: bold;
-}
-
-#edit-equipments .mpot-choice-list {
-    width: 100%;
-}
-
-#edit-equipments .mpot-choice-list .mpot-choice-value {
-    pointer-events: none;
-}
-
-#edit-equipments .mpot-choice-list .mpot-choice-value>span {
-    width: 100%;
-    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
-}
-
-#edit-equipments .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {
-    margin-right: 0;
-}
-
-
-/* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){
+    
+    #preview-structure-detail .pizo-new-realty-dectruct-content-area-simple>div:last-child .pizo-new-realty-dectruct-content-area-size-zone {
+        margin-bottom: 0;
+    }
+    
+    #preview-construction .mpot-base-preview#preview-roadwidth {
+        width: 100%;
+    }
+    
+    #preview-construction .mpot-base-preview#preview-roadwidth .mpot-base-preview-name {
+        font-weight: bold;
+    }
+    
+    #edit-equipments .mpot-choice-list {
+        width: 100%;
+    }
+    
+    #edit-equipments .mpot-choice-list .mpot-choice-value {
+        pointer-events: none;
+    }
+    
+    #edit-equipments .mpot-choice-list .mpot-choice-value>span {
+        width: 100%;
+        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+    }
+    
+    #edit-equipments .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {
+        margin-right: 0;
+    }
+    /* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){
     margin-left: 20px;
 }
 
 #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child{
     width: calc(50% - 10px);
 } */
-
-#edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {
-    display: none;
-}
-
-#edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text {
-    padding-right: 10px;
-}
-
-#preview-equipments .mpot-base-preview-content {
-    display: none;
-}
-
-#preview-container-orther {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-}
-
-#preview-container-orther>div.mpot-preview-group-name {
-    display: none;
-}
-
-#preview-equipments {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-}
-
-#preview-equipments-detail {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-    flex-grow: 2;
-}
-
-#preview-equipments-detail .mpot-base-preview-content {
-    width: 100%;
-}
-
-#preview-equipments-detail .mpot-base-preview-content .pizo-new-realty-convenient-content-size {
-    margin-right: 0;
-}
-
-#preview-equipments .mpot-base-preview-name {
-    width: auto;
-    font-weight: bold;
-}
-
-#preview-equipments-detail .mpot-base-preview-name {
-    width: 30px;
-}
-
-#edit-contact .mpot-choice-list .mpot-choice-value {
-    pointer-events: none;
-}
-
-#edit-contact .mpot-choice-list .mpot-choice-value>span {
-    width: 100%;
-    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
-}
-
-#edit-contact .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {
-    margin-right: 0;
-}
-
-
-/* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){
+    
+    #edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {
+        display: none;
+    }
+    
+    #edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text {
+        padding-right: 10px;
+    }
+    
+    #preview-equipments .mpot-base-preview-content {
+        display: none;
+    }
+    
+    #preview-container-orther {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+    }
+    
+    #preview-container-orther>div.mpot-preview-group-name {
+        display: none;
+    }
+    
+    #preview-equipments {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+    }
+    
+    #preview-equipments-detail {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+        flex-grow: 2;
+    }
+    
+    #preview-equipments-detail .mpot-base-preview-content {
+        width: 100%;
+    }
+    
+    #preview-equipments-detail .mpot-base-preview-content .pizo-new-realty-convenient-content-size {
+        margin-right: 0;
+    }
+    
+    #preview-equipments .mpot-base-preview-name {
+        width: auto;
+        font-weight: bold;
+    }
+    
+    #preview-equipments-detail .mpot-base-preview-name {
+        width: 30px;
+    }
+    
+    #edit-contact .mpot-choice-list .mpot-choice-value {
+        pointer-events: none;
+    }
+    
+    #edit-contact .mpot-choice-list .mpot-choice-value>span {
+        width: 100%;
+        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+    }
+    
+    #edit-contact .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {
+        margin-right: 0;
+    }
+    /* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){
     margin-left: 20px;
 }
 
 #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child{
     width: calc(50% - 10px);
 } */
-
-#edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {
-    display: none;
-}
-
-#edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text {
-    padding-right: 10px;
-}
-
-#edit-contact .mpot-choice-list {
-    width: 100%;
-}
-
-#edit-contact .pizo-new-realty-contact-item-setting {
-    display: none;
-}
-
-#edit-contact .pizo-new-realty-contact-item {
-    margin-bottom: 0.7143rem;
-}
-
-#preview-contact .pizo-new-realty-contact-item {
-    padding: 0.7143rem;
-    margin: 0;
-    padding-bottom: 0.7143rem;
-    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
-    box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
-}
-
-#preview-contact {
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-}
-
-#preview-contact .mpot-base-preview-name {
-    /*display: -webkit-box;*/
-    display: -ms-flexbox;
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-}
-
-#preview-contact .mpot-base-preview-content {
-    display: -ms-flexbox;
-    display: flex;
-    flex-grow: 2;
-}
-
-#preview-contact .mpot-base-preview-content>div {
-    width: 100%;
-}
-
-#preview-image-status img {
-    margin-right: 10px;
-    vertical-align: middle;
-    border: solid 1px #122246;
-    padding: 0;
-}
-
-#preview-image-juridical img {
-    margin-right: 10px;
-    vertical-align: middle;
-    border: solid 1px #122246;
-    padding: 0;
-}
+    
+    #edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {
+        display: none;
+    }
+    
+    #edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text {
+        padding-right: 10px;
+    }
+    
+    #edit-contact .mpot-choice-list {
+        width: 100%;
+    }
+    
+    #edit-contact .pizo-new-realty-contact-item-setting {
+        display: none;
+    }
+    
+    #edit-contact .pizo-new-realty-contact-item-close {
+        display: none;
+    }
+    
+    #edit-contact .pizo-new-realty-contact-item {
+        margin-bottom: 0.7143rem;
+    }
+    
+    #preview-contact .pizo-new-realty-contact-item {
+        padding: 0.7143rem;
+        margin: 0;
+        padding-bottom: 0.7143rem;
+        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+    }
+    
+    #preview-contact {
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+    }
+    
+    #preview-contact .mpot-base-preview-name {
+        /*display: -webkit-box;*/
+        display: -ms-flexbox;
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+    }
+    
+    #preview-contact .mpot-base-preview-content {
+        display: -ms-flexbox;
+        display: flex;
+        flex-grow: 2;
+    }
+    
+    #preview-contact .mpot-base-preview-content>div {
+        width: 100%;
+    }
+    
+    #preview-image-status img {
+        vertical-align: middle;
+        display: inline-block;
+        max-width: 300px;
+        max-height: 300px;
+        border: solid 1px #122246;
+        padding: 0;
+    }
+    
+    #preview-image-juridical img {
+        vertical-align: middle;
+        display: inline-block;
+        max-width: 300px;
+        max-height: 300px;
+        border: solid 1px #122246;
+        padding: 0;
+    }
+    
+    #edit-image-status .pizo-container-icon-radiobutton {
+        display: none;
+    }
+    
+    #edit-image-status .close-button-img {
+        display: none;
+    }
+    
+    #edit-image-juridical .close-button-img {
+        display: none;
+    }
+    
+    #preview-container-price-construct {
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #preview-container-price-construct>div.mpot-preview-group-name {
+        display: none;
+    }
+    
+    .mpot-preview-body>div:not(:last-child) {
+        margin-top: 10px;
+    }
+    
+    #fit .mpot-choice-list {
+        width: 100%;
+    }
+    
+    #fit .mpot-choice-list .mpot-choice-value {
+        pointer-events: none;
+    }
+    
+    #fit .mpot-choice-list .mpot-choice-value>span {
+        width: 100%;
+        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);
+    }
+    
+    #fit .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {
+        margin-right: 0;
+    }
+    
+    #fit .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {
+        display: none;
+    }
+    
+    #fit .pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text {
+        padding-right: 5px;
+    }
+    
+    #preview-price {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+        flex-direction: column;
+    }
+    
+    #preview-price>div.mpot-preview-group-name {
+        display: flex;
+    }
+    
+    #preview-fit {
+        display: flex;
+        width: 100%;
+    }
+    
+    #preview-fit>div.mpot-base-preview-name {
+        display: flex;
+        flex-shrink: 0;
+        width: fit-content;
+        white-space: nowrap;
+        padding: 0;
+        padding-right: 10px;
+        align-items: center;
+    }
+    
+    #preview-fit>div.mpot-base-preview-content {
+        flex-grow: 2;
+        display: flex;
+        width: 100%;
+        padding: 0;
+    }
+    
+    #preview-fit>div.mpot-base-preview-content>div {
+        flex-grow: 2;
+        display: flex;
+        width: 100%;
+    }
+    
+    #preview-fit>div.mpot-base-preview-content>div>div.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input {
+        display: block;
+    }
+    
+    #price-child .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {
+        text-align: right;
+    }
+    
+    #preview-price-child>div.mpot-base-preview-name {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+    }
+    
+    #preview-price-child>div.mpot-base-preview-content {
+        display: flex;
+        flex-grow: 2;
+        padding: 0;
+    }
+    
+    #preview-price-child>div.mpot-base-preview-content>div {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+    
+    #preview-price-child {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: stretch;
+    }
+    
+    #price-rent .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {
+        text-align: right;
+    }
+    
+    #preview-price-rent>div.mpot-base-preview-name {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+    }
+    
+    #preview-price-rent>div.mpot-base-preview-content {
+        display: flex;
+        flex-grow: 2;
+        padding: 0;
+    }
+    
+    #preview-price-rent>div.mpot-base-preview-content>div {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+    
+    #preview-price-rent {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: stretch;
+    }
+    
+    #preview-price-rent .pizo-new-realty-dectruct-content-area-right {
+        margin: 0;
+        width: 100%;
+    }
+    
+    #price-rent .pizo-new-realty-dectruct-content-area-right {
+        margin: 0;
+        width: 100%;
+    }
+    
+    #price-rent .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {
+        text-align: right;
+    }
+    
+    #preview-juridical>div.mpot-base-preview-name {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        width: 100%;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    
+    #preview-juridical>div.mpot-base-preview-content {
+        display: flex;
+        flex-grow: 2;
+        padding: 0;
+    }
+    
+    #preview-juridical>div.mpot-base-preview-content>div {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+    
+    #preview-juridical {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+        flex-direction: column;
+    }
+    
+    #preview-juridical .pizo-new-realty-juridical-content {
+        display: flex;
+        width: 100%;
+    }
