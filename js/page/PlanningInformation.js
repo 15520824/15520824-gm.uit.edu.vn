@@ -44,8 +44,9 @@ PlanningInformation.prototype.setUpDxfFile = function(fileText,loadding)
     var center =  new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
     window.dcel.extractLines();
     var faces = dcel.internalFaces();
-    wkt = consoleWKT(faces,window.dcel.checkHedges);
+    wkt = consoleWKT(faces);
     var lines = consoleWKTLine(window.dcel.checkHedges);
+    if(lines !== -1)
     this.addLine(lines);
     if(this.isVisiableLine === true)
     this.showHideLine();

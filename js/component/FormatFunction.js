@@ -256,7 +256,7 @@ function toBase64(arr) {
     );
  }
 
-export function consoleWKT(areas,checkHe){
+export function consoleWKT(areas){
     var multipolygon = "MULTIPOLYGON("
     var polygon,isFirst,coordinates,isFirstPolygon="";
     areas.forEach(function(f) {
@@ -294,7 +294,8 @@ export function consoleWKTLine(lines){
         isFirstLines = ","
     });
     multilines+=")";
-    console.log(multilines)
+    if(multilines == "MultiLineString()")
+    return -1;
     return multilines;
 }
 
