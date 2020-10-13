@@ -2258,6 +2258,7 @@ NewRealty.prototype.convenientView = function() {
     var data = moduleDatabase.getModule("equipments").data;
     var arr = [];
     for (var i = 0; i < data.length; i++) {
+        data[i].id = parseInt(data[i].id)
         if (data[i].available === 0)
             continue;
         arr.push({ text: data[i].name, value: data[i].id, data: data[i] })
@@ -2302,6 +2303,7 @@ NewRealty.prototype.convenientView = function() {
         var temp;
         var libary = moduleDatabase.getModule("equipments").getLibary("id");
         for (var i = 0; i < this.data.original.equipment.length; i++) {
+            this.data.original.equipment[i].equipmentid = parseInt(this.data.original.equipment[i].equipmentid);
             temp = libary[this.data.original.equipment[i].equipmentid];
             temp.content = this.data.original.equipment[i].content;
             value.push(this.data.original.equipment[i].equipmentid);

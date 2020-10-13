@@ -2,11 +2,12 @@
  * dcel.js (https://github.com/shawn0326/dcel.js)
  * @author shawn0326 http://www.halflab.me/
  */
-(function (global, factory) {
+(function(global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (factory());
-}(this, (function () { 'use strict';
+        typeof define === 'function' && define.amd ? define(factory) :
+        (factory());
+}(this, (function() {
+    'use strict';
 
     // by this, internal face is ccw
     // hedgelist is cw
@@ -40,7 +41,7 @@
         this.y = y;
 
         this.hedgelist = [];
-        
+
     }
 
     Object.assign(Vertex.prototype, {
@@ -111,20 +112,20 @@
         /**
          * @type {number}
          */
-        this.minX = + Infinity;
+        this.minX = +Infinity;
         /**
          * @type {number}
          */
-        this.minY = + Infinity;
+        this.minY = +Infinity;
 
         /**
          * @type {number}
          */
-        this.maxX = - Infinity;
+        this.maxX = -Infinity;
         /**
          * @type {number}
          */
-        this.maxY = - Infinity;
+        this.maxY = -Infinity;
 
     }
 
@@ -164,16 +165,16 @@
 
         reset: function() {
 
-            this.minX = + Infinity;
-            this.minY = + Infinity;
+            this.minX = +Infinity;
+            this.minY = +Infinity;
 
-            this.maxX = - Infinity;
-            this.maxY = - Infinity;
+            this.maxX = -Infinity;
+            this.maxY = -Infinity;
 
         },
 
         expand: function(point) {
-        
+
             this.minX = Math.min(point.x, this.minX);
             this.minY = Math.min(point.y, this.minY);
             this.maxX = Math.max(point.x, this.maxX);
@@ -191,12 +192,12 @@
 
         intersects: function(aabb) {
             return aabb.maxX < this.minX || aabb.minX > this.maxX ||
-            aabb.maxY < this.minY || aabb.minY > this.maxY ? false : true;
+                aabb.maxY < this.minY || aabb.minY > this.maxY ? false : true;
         },
 
         containsPoint: function(point) {
             return point.x <= this.maxX && point.x >= this.minX &&
-            point.y <= this.maxY && point.y >= this.minY ? true : false;
+                point.y <= this.maxY && point.y >= this.minY ? true : false;
         },
 
         containsPoints: function(points) {
@@ -224,7 +225,7 @@
         var p1, p2;
         var pointCount = polygonPoints.length;
         p1 = polygonPoints[0];
-     
+
         for (i = 1; i <= pointCount; i++) {
             p2 = polygonPoints[i % pointCount];
             if (
@@ -235,8 +236,8 @@
                     if (p1.x != p2.x) {
                         xinters =
                             (checkPoint.x - p1.x) *
-                                (p2.y - p1.y) /
-                                (p2.x - p1.x) +
+                            (p2.y - p1.y) /
+                            (p2.x - p1.x) +
                             p1.y;
                         if (p1.y == p2.y || checkPoint.y <= xinters) {
                             counter++;
@@ -256,7 +257,7 @@
     function pointsInsidePolygon(polygonPoints, checkPoints) {
 
         for (var i = 0, l = checkPoints.length; i < l; i++) {
-            if ( !pointInsidePolygon(polygonPoints, checkPoints[i]) ) {
+            if (!pointInsidePolygon(polygonPoints, checkPoints[i])) {
                 return false;
             }
         }
@@ -286,7 +287,7 @@
 
         this._vertexlist = [];
         this._vertexlistDirty = true;
-        
+
         this._dcel = dcel;
         this._holes = [];
         this._holesDirty = true;
@@ -325,7 +326,7 @@
 
                     this._areaDirty = false;
                 }
-                
+
                 return this._area;
             }
 
@@ -375,7 +376,7 @@
          * @type {boolean}
          */
         external: {
-            
+
             get: function() {
                 return this.area <= 0;
             }
@@ -400,19 +401,19 @@
                     var pl = this._vertexlist;
                     pl.length = 0;
                     pl.push(h.origin);
-                    while(h.nexthedge !== this.wedge) {
+                    while (h.nexthedge !== this.wedge) {
                         h = h.nexthedge;
                         // if(h.prevhedge !== h.twin) {
-                            pl.push(h.origin);
+                        pl.push(h.origin);
                         // }
                     }
 
                     this._vertexlistDirty = false;
-                    
+
                 }
 
                 return this._vertexlist;
-                
+
             }
 
         },
@@ -494,13 +495,13 @@
             // todo if area === 0, it's an hole??
             if (f.external) {
 
-                if ( this.area > Math.abs(f.area) ) {
+                if (this.area > Math.abs(f.area)) {
 
                     // test aabb first
-                    if ( this.aabb.containsPoints(f.vertexlist) ) {
-                        
+                    if (this.aabb.containsPoints(f.vertexlist)) {
+
                         // here make sure f is inside
-                        if( pointsInsidePolygon(this.vertexlist, f.vertexlist) ) {
+                        if (pointsInsidePolygon(this.vertexlist, f.vertexlist)) {
 
                             this._holes.push(f);
 
@@ -535,7 +536,7 @@
                     if (list1[i] !== list2[(offset + i) % l]) {
                         break;
                     }
-                    if ( i === (l - 1) ) {
+                    if (i === (l - 1)) {
                         return true;
                     }
                 }
@@ -569,6 +570,7 @@
      * @param {Number[]} [edges=] [[start1, end1], [start2, end2]...] starts and ends are indices of points
      */
     var Range = 1.1368683772161603e-13;
+
     function DCEL(lines) {
 
         /**
@@ -585,88 +587,83 @@
          * @type {Face[]} 
          */
         this.faces = [];
-        this.binaryTree = new AVLTree((GeoJSON.EXTMAX[0] - GeoJSON.EXTMIN[0])/2);
+        this.binaryTree = new AVLTree((GeoJSON.EXTMAX[0] - GeoJSON.EXTMIN[0]) / 2);
         console.log(this.binaryTree)
         var self = this;
         this.check = [];
         this.check[null] = [];
         this.check[null][null] = -1;
         this.positionCheck = [];
-        this.check.checkAssit = function(x,y)
-        {
-            var  findNodeX = self.binaryTree.findNode(x);
-            if(findNodeX!==false)
-            {
+        this.check.checkAssit = function(x, y) {
+            var findNodeX = self.binaryTree.findNode(x);
+            if (findNodeX !== false) {
                 var findNodeY = self.positionCheck[x].findNode(y);
-                if(y!==false)
-                return self.check[findNodeX][findNodeY];
+                if (y !== false)
+                    return self.check[findNodeX][findNodeY];
             }
             return false;
         }
-        this.check.insert = function(x,y)
-        {
-            var  findNode = self.binaryTree.find(x);
-            if(findNode===false)
-            self.binaryTree.insert(x);
+        this.check.insert = function(x, y) {
+            var findNode = self.binaryTree.find(x);
+            if (findNode === false)
+                self.binaryTree.insert(x);
             else
-            x = findNode;
-            if(self.positionCheck[x]===undefined)
-            self.positionCheck[x] = new AVLTree(y);
-            else{
+                x = findNode;
+            if (self.positionCheck[x] === undefined)
+                self.positionCheck[x] = new AVLTree(y);
+            else {
                 findNode = self.positionCheck[x].findNode(y);
-                if(findNode===false)
-                self.positionCheck[x].insert(y);
+                if (findNode === false)
+                    self.positionCheck[x].insert(y);
                 else
-                y = findNode;
+                    y = findNode;
             }
-            
+
         }
-        this.check.checkAssitAndInsert = function(x,y)
-        {
-            var  findNodeX = self.binaryTree.findNode(x);
-            
-            if(findNodeX===false)
-            self.binaryTree.insert(x);
+        this.check.checkAssitAndInsert = function(x, y) {
+            var findNodeX = self.binaryTree.findNode(x);
+
+            if (findNodeX === false)
+                self.binaryTree.insert(x);
             else
-            x = findNodeX;
-            if(self.positionCheck[x]===undefined)
-            self.positionCheck[x] = new AVLTree(y);
-            else{
+                x = findNodeX;
+            if (self.positionCheck[x] === undefined)
+                self.positionCheck[x] = new AVLTree(y);
+            else {
                 var findNodeY = self.positionCheck[x].findNode(y);
-                if(findNodeY===false)
-                self.positionCheck[x].insert(y);
+                if (findNodeY === false)
+                    self.positionCheck[x].insert(y);
                 else
-                y = findNodeY;
+                    y = findNodeY;
             }
-            if(self.check[x]==undefined)
-            self.check[x] = [];
-            if(self.check[x][y] === undefined){
+            if (self.check[x] == undefined)
+                self.check[x] = [];
+            if (self.check[x][y] === undefined) {
                 var v = self.check[x][y] = new Vertex(x, y);
                 self.vertices.push(v);
             }
-            
+
             return self.check[x][y];
         }
 
-        this.check.remove = function(x,y)
-        {
+        this.check.remove = function(x, y) {
             x = self.binaryTree.remove(x);
-            if(x===false)
-            return false;
+            if (x === false)
+                return false;
 
-            if(self.positionCheck[x]===undefined)
-            return false;
-            else{
-                y =  self.positionCheck[x].remove(y);
+            if (self.positionCheck[x] === undefined)
+                return false;
+            else {
+                y = self.positionCheck[x].remove(y);
             }
-            if(y===false)
-            return false;
-            
-            if(self.check[x][y]===undefined)
-            return false;
-            this.vertices = this.replaceParam(self.check[x][y],this.vertices,undefined); 
+            if (y === false)
+                return false;
+
+            if (self.check[x][y] === undefined)
+                return false;
+            this.vertices = this.replaceParam(self.check[x][y], this.vertices, undefined);
             self.check[x][y] = undefined;
-            
+
             return true;
         }
 
@@ -676,8 +673,8 @@
             width: GeoJSON.EXTMAX[0] - GeoJSON.EXTMIN[0],
             height: GeoJSON.EXTMAX[1] - GeoJSON.EXTMIN[1]
         }, 10, 4);
-       
-        
+
+
         if (lines) {
             this.setDatas(lines);
         }
@@ -692,69 +689,53 @@
          * @param {Number[]} points [[x1, y1], [x2, y2], ...]
          * @param {Number[]} edges [[start1, end1], [start2, end2]...] starts and ends are indices of points
          */
-        stackLine : function(line)
-        {
-            if(this.lines===undefined)
+        stackLine: function(line) {
+            if (this.lines === undefined)
                 this.lines = [];
             this.lines.push(line);
         },
-        extractLines : function()
-        {
+        extractLines: function() {
             this.setDatas(this.lines);
         },
-        checkArrayIS : function(x,arr)
-        {
-            for(var i=0;i<arr.length;i++)
-            {
-                if(x.id==arr[i].id)
-                {
+        checkArrayIS: function(x, arr) {
+            for (var i = 0; i < arr.length; i++) {
+                if (x.id == arr[i].id) {
                     return true;
                 }
             }
             return false;
         },
-        checkPostion :function(a,b)
-        {
-            return a.x==b.x&&a.y==b.y;
+        checkPostion: function(a, b) {
+            return a.x == b.x && a.y == b.y;
         },
-        replaceParam:function(x,arr,replaceParams,mLength=1){
-            for(var i=0;i<arr.length;i++)
-            {
-                if(x===arr[i])
-                {
-                    var arrTemp =  arr.slice(0,i);
-                    if(arr === this.hedges)
-                    for(var j = i;j<i+mLength;j++)
-                    {
-                        delete this.checkHedges[arr[j].id];
-                        delete this.checkHedges[arr[j].twin.id];
-                    }
-                    if(replaceParams!==undefined)
-                    {
-                        if(replaceParams.id!==undefined)
-                        this.checkHedges[replaceParams.id] = replaceParams;
-                        else
-                        {
-                            for(var k = 0;k<replaceParams.length;k++)
-                            {
+        replaceParam: function(x, arr, replaceParams, mLength = 1) {
+            for (var i = 0; i < arr.length; i++) {
+                if (x === arr[i]) {
+                    var arrTemp = arr.slice(0, i);
+                    if (arr === this.hedges)
+                        for (var j = i; j < i + mLength; j++) {
+                            delete this.checkHedges[arr[j].id];
+                            delete this.checkHedges[arr[j].twin.id];
+                        }
+                    if (replaceParams !== undefined) {
+                        if (replaceParams.id !== undefined)
+                            this.checkHedges[replaceParams.id] = replaceParams;
+                        else {
+                            for (var k = 0; k < replaceParams.length; k++) {
                                 this.checkHedges[replaceParams[k].id] = replaceParams[k];
                             }
                         }
-                        return arrTemp.concat(replaceParams,arr.slice(i+mLength,arr.length));
-                    }
-                    else{
-                        return arrTemp.concat(arr.slice(i+mLength,arr.length));
+                        return arrTemp.concat(replaceParams, arr.slice(i + mLength, arr.length));
+                    } else {
+                        return arrTemp.concat(arr.slice(i + mLength, arr.length));
                     }
                 }
             }
-            if(replaceParams!==undefined)
-            {
-                if(replaceParams.id!==undefined)
+            if (replaceParams !== undefined) {
+                if (replaceParams.id !== undefined)
                     this.checkHedges[replaceParams.id] = replaceParams;
-                else
-                {
-                    for(var k = 0;k<replaceParams.length;k++)
-                    {
+                else {
+                    for (var k = 0; k < replaceParams.length; k++) {
                         this.checkHedges[replaceParams[k].id] = replaceParams[k];
                     }
                 }
@@ -764,12 +745,12 @@
         },
         setDatas: function(lines) {
             var faces = this.faces;
-            var boundaryOrigin,maxX,minX,maxY,minY;
-            var v,v1
+            var boundaryOrigin, maxX, minX, maxY, minY;
+            var v, v1
 
             // Step 1: vertex list creation
             for (var i = 0; i < lines.length; i++) {
-                lines[i].sort(function (a, b) {
+                lines[i].sort(function(a, b) {
                     if (a[0] > b[0]) {
                         return 1;
                     }
@@ -785,8 +766,8 @@
                     return 0;
                 });
                 v = this.check.checkAssitAndInsert(lines[i][0][0], lines[i][0][1]);
-               
-                v1 = this.check.checkAssitAndInsert(lines[i][1][0],lines[i][1][1]);
+
+                v1 = this.check.checkAssitAndInsert(lines[i][1][0], lines[i][1][1]);
 
                 var h1 = new Hedge(v, v1);
                 var h2 = new Hedge(v1, v);
@@ -798,24 +779,24 @@
                 this.hedges.push(h1);
                 this.checkHedges[h1.id] = h1;
                 this.checkHedges[h2.id] = h2;
-                minX= v.x<v1.x?v.x:v1.x;
-                minY= v.y<v1.y?v.y:v1.y;
-                maxX= v.x>v1.x?v.x:v1.x;
-                maxY= v.y>v1.y?v.y:v1.y;
+                minX = v.x < v1.x ? v.x : v1.x;
+                minY = v.y < v1.y ? v.y : v1.y;
+                maxX = v.x > v1.x ? v.x : v1.x;
+                maxY = v.y > v1.y ? v.y : v1.y;
 
                 boundaryOrigin = {
                     x: minX,
                     y: minY,
-                    width: maxX-minX,
-                    height: maxY-minY
+                    width: maxX - minX,
+                    height: maxY - minY
                 };
                 boundaryOrigin.object = {
-                    h1:h1,
-                    h2:h2,
-                    v:v,
-                    v1:v1
+                    h1: h1,
+                    h2: h2,
+                    v: v,
+                    v1: v1
                 }
-                this.crossData(v,v1,h1,h2,boundaryOrigin)
+                this.crossData(v, v1, h1, h2, boundaryOrigin)
             }
             // Step 3: Identification of next and prev hedges
             var hedges = this.hedges;
@@ -829,18 +810,18 @@
                     v.hedgelist[0].prevhedge = v.hedgelist[0].twin;
                     v.hedgelist[0].twin.nexthedge = v.hedgelist[0];
                 } else {
-                    for(var i = 0; i < l - 1; i++) {
-                        v.hedgelist[i].twin.nexthedge = v.hedgelist[i+1];
-                        v.hedgelist[i+1].prevhedge = v.hedgelist[i].twin;
+                    for (var i = 0; i < l - 1; i++) {
+                        v.hedgelist[i].twin.nexthedge = v.hedgelist[i + 1];
+                        v.hedgelist[i + 1].prevhedge = v.hedgelist[i].twin;
                     }
-                    v.hedgelist[l-1].twin.nexthedge = v.hedgelist[0];
-                    v.hedgelist[0].prevhedge = v.hedgelist[l-1].twin;
+                    v.hedgelist[l - 1].twin.nexthedge = v.hedgelist[0];
+                    v.hedgelist[0].prevhedge = v.hedgelist[l - 1].twin;
                 }
             }
             // Step 4: Face assignment
             var provlist = hedges.slice(0);
             var nh = hedges.length;
-            var i=0;
+            var i = 0;
             while (nh > 0) {
                 var h = provlist.pop();
                 nh -= 1;
@@ -855,18 +836,16 @@
                     // And we traverse the boundary of the new face
                     arrTemp.push(h);
                     while (h.nexthedge !== f.wedge) {
-                        try{
+                        try {
                             arrTemp.push(h.nexthedge);
                             h = h.nexthedge;
                             h.face = f;
-                        }catch(err)
-                        {
-                            console.log(i,h,f)
+                        } catch (err) {
+                            console.log(i, h, f)
                         }
                     }
-                    if(f.internal == true){
-                        for(var i= 0;i<arrTemp.length;i++)
-                        {
+                    if (f.internal == true) {
+                        for (var i = 0; i < arrTemp.length; i++) {
                             delete this.checkHedges[arrTemp[i].id];
                             delete this.checkHedges[arrTemp[i].twin.id];
                         }
@@ -877,345 +856,332 @@
             console.log(hedges)
             console.log(this.checkHedges)
         },
-        parseCross : function(h1,h2,arrPointCross,arrCol)
-        {
-            var arrHedges=[],tempH1 = undefined,tempH2=h2;
-            var h1PointCross,h2PointCross,minX,minY,maxX,maxY,boundary;
-                    arrPointCross.sort(function (a, b) {
-                        if (a.x > b.x) {
-                            return 1;
-                        }
-                        if (a.x < b.x) {
-                            return -1;
-                        }
-                        if (a.y > b.y) {
-                            return 1;
-                        }
-                        if (a.y < b.y) {
-                            return -1;
-                        }
-                        
-                        return 0;
-                    });
-                    for(var j = 0;j<arrPointCross.length;j++)
-                    {
-                        if(arrPointCross[j].object!==undefined){
-                            if(Array.isArray(arrPointCross[j].object)){
-                                for(var p = 0;p<arrPointCross[j].object.length;p++)
-                                {
-                                     //////collisionV<->pointCross/////
-                                    if(!this.checkPostion(arrPointCross[j].object[p].v,arrPointCross[j])){
-                                        h1PointCross = new Hedge(arrPointCross[j].object[p].v, arrPointCross[j]);
-                                        h2PointCross = new Hedge(arrPointCross[j], arrPointCross[j].object[p].v);
-            
-                                        h1PointCross.twin = h2PointCross;
-                                        h2PointCross.twin = h1PointCross;
-                                        if(this.checkArrayIS(arrPointCross[j].object[p].h1,arrPointCross[j].hedgelist)){
-                                            arrPointCross[j].hedgelist = this.replaceParam(arrPointCross[j].object[p].h1,arrPointCross[j].hedgelist,h1PointCross);
-                                            this.hedges = this.replaceParam(arrPointCross[j].object[p].h1,this.hedges);
-                                        }
-                                        else
-                                        arrPointCross[j].hedgelist.push(h1PointCross);
-                                    
-                                        arrPointCross[j].object[p].v.hedgelist = this.replaceParam(arrPointCross[j].object[p].h2,arrPointCross[j].object[p].v.hedgelist,h2PointCross);
+        parseCross: function(h1, h2, arrPointCross, arrCol) {
+            var arrHedges = [],
+                tempH1 = undefined,
+                tempH2 = h2;
+            var h1PointCross, h2PointCross, minX, minY, maxX, maxY, boundary;
+            arrPointCross.sort(function(a, b) {
+                if (a.x > b.x) {
+                    return 1;
+                }
+                if (a.x < b.x) {
+                    return -1;
+                }
+                if (a.y > b.y) {
+                    return 1;
+                }
+                if (a.y < b.y) {
+                    return -1;
+                }
 
-                                        this.hedges = this.replaceParam(arrPointCross[j].object[p].h2,this.hedges,[h2PointCross,h1PointCross])
-            
-                                        minX= arrPointCross[j].object[p].v.x<arrPointCross[j].x?arrPointCross[j].object[p].v.x:arrPointCross[j].x;
-                                        minY= arrPointCross[j].object[p].v.y<arrPointCross[j].y?arrPointCross[j].object[p].v.y:arrPointCross[j].y;
-                                        maxX= arrPointCross[j].object[p].v.x>arrPointCross[j].x?arrPointCross[j].object[p].v.x:arrPointCross[j].x;
-                                        maxY= arrPointCross[j].object[p].v.y>arrPointCross[j].y?arrPointCross[j].object[p].v.y:arrPointCross[j].y;
-                                        boundary = {
-                                            x: minX,
-                                            y: minY,
-                                            width: maxX-minX,
-                                            height: maxY-minY
-                                        };
-                                        boundary.object = {
-                                            h1:h1PointCross,
-                                            h2:h2PointCross,
-                                            v:arrPointCross[j].object[p].v,
-                                            v1:arrPointCross[j]
-                                        }
-                                        this.myTree.insert(boundary);
-                                    }
-                                
-                                    //////collisionV1<->pointCross/////
-                                    if(!this.checkPostion(arrPointCross[j],arrPointCross[j].object[p].v1)){
-                                        h1PointCross = new Hedge(arrPointCross[j],arrPointCross[j].object[p].v1);
-                                        h2PointCross = new Hedge(arrPointCross[j].object[p].v1,arrPointCross[j]);
+                return 0;
+            });
+            for (var j = 0; j < arrPointCross.length; j++) {
+                if (arrPointCross[j].object !== undefined) {
+                    if (Array.isArray(arrPointCross[j].object)) {
+                        for (var p = 0; p < arrPointCross[j].object.length; p++) {
+                            //////collisionV<->pointCross/////
 
-                                        h1PointCross.twin = h2PointCross;
-                                        h2PointCross.twin = h1PointCross;
-                                        arrPointCross[j].object[p].v1.hedgelist = this.replaceParam(arrPointCross[j].object[p].h1,arrPointCross[j].object[p].v1.hedgelist,h1PointCross);
+                            if (!this.checkPostion(arrPointCross[j].object[p].v, arrPointCross[j])) {
+                                h1PointCross = new Hedge(arrPointCross[j].object[p].v, arrPointCross[j]);
+                                h2PointCross = new Hedge(arrPointCross[j], arrPointCross[j].object[p].v);
 
-                                        if(this.checkArrayIS(arrPointCross[j].object[p].h2,arrPointCross[j].hedgelist)){
-                                            arrPointCross[j].hedgelist = this.replaceParam(arrPointCross[j].object[p].h2,arrPointCross[j].hedgelist,h2PointCross);
-                                            this.hedges = this.replaceParam(arrPointCross[j].object[p].h2,this.hedges);
-                                        }
-                                        else
-                                        arrPointCross[j].hedgelist.push(h2PointCross);
-
-                                        this.hedges = this.replaceParam(arrPointCross[j].object[p].h1,this.hedges,[h2PointCross,h1PointCross])
-                            
-                                        minX= arrPointCross[j].x<arrPointCross[j].object[p].v1.x?arrPointCross[j].x:arrPointCross[j].object[p].v1.x;
-                                        minY= arrPointCross[j].y<arrPointCross[j].object[p].v1.y?arrPointCross[j].y:arrPointCross[j].object[p].v1.y;
-                                        maxX= arrPointCross[j].x>arrPointCross[j].object[p].v1.x?arrPointCross[j].x:arrPointCross[j].object[p].v1.x;
-                                        maxY= arrPointCross[j].y>arrPointCross[j].object[p].v1.y?arrPointCross[j].y:arrPointCross[j].object[p].v1.y;
-                                        boundary = {
-                                            x: minX,
-                                            y: minY,
-                                            width: maxX-minX,
-                                            height: maxY-minY
-                                        };
-                                        boundary.object = {
-                                            h1:h1PointCross,
-                                            h2:h2PointCross,
-                                            v:arrPointCross[j],
-                                            v1:arrPointCross[j].object[p].v1
-                                        }
-                                        this.myTree.insert(boundary);
-                                    }
-                                }
-                            }else
-                            {
-                                 //////collisionV<->pointCross/////
-                                if(!this.checkPostion(arrPointCross[j].object.v,arrPointCross[j])){
-                                    h1PointCross = new Hedge(arrPointCross[j].object.v, arrPointCross[j]);
-                                    h2PointCross = new Hedge(arrPointCross[j], arrPointCross[j].object.v);
-        
-                                    h1PointCross.twin = h2PointCross;
-                                    h2PointCross.twin = h1PointCross;
-                                    if(this.checkArrayIS(arrPointCross[j].object.h1,arrPointCross[j].hedgelist)){
-                                        arrPointCross[j].hedgelist = this.replaceParam(arrPointCross[j].object.h1,arrPointCross[j].hedgelist,h1PointCross);
-                                        this.hedges = this.replaceParam(arrPointCross[j].object.h1,this.hedges);
-                                    }
-                                    else
-                                    arrPointCross[j].hedgelist.push(h1PointCross);
-                                
-                                    arrPointCross[j].object.v.hedgelist = this.replaceParam(arrPointCross[j].object.h2,arrPointCross[j].object.v.hedgelist,h2PointCross);
-
-                                    this.hedges = this.replaceParam(arrPointCross[j].object.h2,this.hedges,[h2PointCross,h1PointCross])
-        
-                                    minX= arrPointCross[j].object.v.x<arrPointCross[j].x?arrPointCross[j].object.v.x:arrPointCross[j].x;
-                                    minY= arrPointCross[j].object.v.y<arrPointCross[j].y?arrPointCross[j].object.v.y:arrPointCross[j].y;
-                                    maxX= arrPointCross[j].object.v.x>arrPointCross[j].x?arrPointCross[j].object.v.x:arrPointCross[j].x;
-                                    maxY= arrPointCross[j].object.v.y>arrPointCross[j].y?arrPointCross[j].object.v.y:arrPointCross[j].y;
-                                    boundary = {
-                                        x: minX,
-                                        y: minY,
-                                        width: maxX-minX,
-                                        height: maxY-minY
-                                    };
-                                    boundary.object = {
-                                        h1:h1PointCross,
-                                        h2:h2PointCross,
-                                        v:arrPointCross[j].object.v,
-                                        v1:arrPointCross[j]
-                                    }
-                                    this.myTree.insert(boundary);
-                                }
-                            
-                                //////collisionV1<->pointCross/////
-                                if(!this.checkPostion(arrPointCross[j],arrPointCross[j].object.v1)){
-                                h1PointCross = new Hedge(arrPointCross[j],arrPointCross[j].object.v1);
-                                h2PointCross = new Hedge(arrPointCross[j].object.v1,arrPointCross[j]);
                                 h1PointCross.twin = h2PointCross;
                                 h2PointCross.twin = h1PointCross;
-                                arrPointCross[j].object.v1.hedgelist = this.replaceParam(arrPointCross[j].object.h1,arrPointCross[j].object.v1.hedgelist,h1PointCross);
+                                if (this.checkArrayIS(arrPointCross[j].object[p].h1, arrPointCross[j].hedgelist)) {
+                                    arrPointCross[j].hedgelist = this.replaceParam(arrPointCross[j].object[p].h1, arrPointCross[j].hedgelist, h1PointCross);
+                                    this.hedges = this.replaceParam(arrPointCross[j].object[p].h1, this.hedges);
+                                } else
+                                    arrPointCross[j].hedgelist.push(h1PointCross);
 
-                                if(this.checkArrayIS(arrPointCross[j].object.h2,arrPointCross[j].hedgelist)){
-                                    arrPointCross[j].hedgelist = this.replaceParam(arrPointCross[j].object.h2,arrPointCross[j].hedgelist,h2PointCross);
-                                    this.hedges = this.replaceParam(arrPointCross[j].object.h2,this.hedges);
-                                }
-                                else
-                                arrPointCross[j].hedgelist.push(h2PointCross);
+                                arrPointCross[j].object[p].v.hedgelist = this.replaceParam(arrPointCross[j].object[p].h2, arrPointCross[j].object[p].v.hedgelist, h2PointCross);
 
-                                this.hedges = this.replaceParam(arrPointCross[j].object.h1,this.hedges,[h2PointCross,h1PointCross])
-                    
-                                minX= arrPointCross[j].x<arrPointCross[j].object.v1.x?arrPointCross[j].x:arrPointCross[j].object.v1.x;
-                                minY= arrPointCross[j].y<arrPointCross[j].object.v1.y?arrPointCross[j].y:arrPointCross[j].object.v1.y;
-                                maxX= arrPointCross[j].x>arrPointCross[j].object.v1.x?arrPointCross[j].x:arrPointCross[j].object.v1.x;
-                                maxY= arrPointCross[j].y>arrPointCross[j].object.v1.y?arrPointCross[j].y:arrPointCross[j].object.v1.y;
+                                this.hedges = this.replaceParam(arrPointCross[j].object[p].h2, this.hedges, [h2PointCross, h1PointCross])
+
+                                minX = arrPointCross[j].object[p].v.x < arrPointCross[j].x ? arrPointCross[j].object[p].v.x : arrPointCross[j].x;
+                                minY = arrPointCross[j].object[p].v.y < arrPointCross[j].y ? arrPointCross[j].object[p].v.y : arrPointCross[j].y;
+                                maxX = arrPointCross[j].object[p].v.x > arrPointCross[j].x ? arrPointCross[j].object[p].v.x : arrPointCross[j].x;
+                                maxY = arrPointCross[j].object[p].v.y > arrPointCross[j].y ? arrPointCross[j].object[p].v.y : arrPointCross[j].y;
                                 boundary = {
                                     x: minX,
                                     y: minY,
-                                    width: maxX-minX,
-                                    height: maxY-minY
+                                    width: maxX - minX,
+                                    height: maxY - minY
                                 };
                                 boundary.object = {
-                                    h1:h1PointCross,
-                                    h2:h2PointCross,
-                                    v:arrPointCross[j],
-                                    v1:arrPointCross[j].object.v1
+                                    h1: h1PointCross,
+                                    h2: h2PointCross,
+                                    v: arrPointCross[j].object[p].v,
+                                    v1: arrPointCross[j]
                                 }
                                 this.myTree.insert(boundary);
-                                }
                             }
-                            arrPointCross[j].object = undefined;
+
+                            //////collisionV1<->pointCross/////
+                            if (!this.checkPostion(arrPointCross[j], arrPointCross[j].object[p].v1)) {
+                                h1PointCross = new Hedge(arrPointCross[j], arrPointCross[j].object[p].v1);
+                                h2PointCross = new Hedge(arrPointCross[j].object[p].v1, arrPointCross[j]);
+
+                                h1PointCross.twin = h2PointCross;
+                                h2PointCross.twin = h1PointCross;
+                                arrPointCross[j].object[p].v1.hedgelist = this.replaceParam(arrPointCross[j].object[p].h1, arrPointCross[j].object[p].v1.hedgelist, h1PointCross);
+
+                                if (this.checkArrayIS(arrPointCross[j].object[p].h2, arrPointCross[j].hedgelist)) {
+                                    arrPointCross[j].hedgelist = this.replaceParam(arrPointCross[j].object[p].h2, arrPointCross[j].hedgelist, h2PointCross);
+                                    this.hedges = this.replaceParam(arrPointCross[j].object[p].h2, this.hedges);
+                                } else
+                                    arrPointCross[j].hedgelist.push(h2PointCross);
+
+                                this.hedges = this.replaceParam(arrPointCross[j].object[p].h1, this.hedges, [h2PointCross, h1PointCross])
+
+                                minX = arrPointCross[j].x < arrPointCross[j].object[p].v1.x ? arrPointCross[j].x : arrPointCross[j].object[p].v1.x;
+                                minY = arrPointCross[j].y < arrPointCross[j].object[p].v1.y ? arrPointCross[j].y : arrPointCross[j].object[p].v1.y;
+                                maxX = arrPointCross[j].x > arrPointCross[j].object[p].v1.x ? arrPointCross[j].x : arrPointCross[j].object[p].v1.x;
+                                maxY = arrPointCross[j].y > arrPointCross[j].object[p].v1.y ? arrPointCross[j].y : arrPointCross[j].object[p].v1.y;
+                                boundary = {
+                                    x: minX,
+                                    y: minY,
+                                    width: maxX - minX,
+                                    height: maxY - minY
+                                };
+                                boundary.object = {
+                                    h1: h1PointCross,
+                                    h2: h2PointCross,
+                                    v: arrPointCross[j],
+                                    v1: arrPointCross[j].object[p].v1
+                                }
+                                this.myTree.insert(boundary);
+                            }
                         }
-                        if(j==arrPointCross.length-1)
-                            tempH1 = h1;
-                        if(j==0)
-                            continue;
-                        h1PointCross = new Hedge(arrPointCross[j-1],arrPointCross[j]);
-                        h2PointCross = new Hedge(arrPointCross[j],arrPointCross[j-1]);
-                        h1PointCross.twin = h2PointCross;
-                        h2PointCross.twin = h1PointCross;
+                    } else {
+                        //////collisionV<->pointCross/////
+                        if (!this.checkPostion(arrPointCross[j].object.v, arrPointCross[j])) {
+                            h1PointCross = new Hedge(arrPointCross[j].object.v, arrPointCross[j]);
+                            h2PointCross = new Hedge(arrPointCross[j], arrPointCross[j].object.v);
 
-                        if(tempH1!==undefined){
-                            arrPointCross[j].hedgelist = this.replaceParam(tempH1,arrPointCross[j].hedgelist,h1PointCross);
-                        }   
-                        else
-                        arrPointCross[j].hedgelist.push(h1PointCross);
+                            h1PointCross.twin = h2PointCross;
+                            h2PointCross.twin = h1PointCross;
+                            if (this.checkArrayIS(arrPointCross[j].object.h1, arrPointCross[j].hedgelist)) {
+                                arrPointCross[j].hedgelist = this.replaceParam(arrPointCross[j].object.h1, arrPointCross[j].hedgelist, h1PointCross);
+                                this.hedges = this.replaceParam(arrPointCross[j].object.h1, this.hedges);
+                            } else
+                                arrPointCross[j].hedgelist.push(h1PointCross);
 
-                        if(tempH2!==undefined){
-                            arrPointCross[j-1].hedgelist = this.replaceParam(tempH2,arrPointCross[j-1].hedgelist,h2PointCross);
+                            arrPointCross[j].object.v.hedgelist = this.replaceParam(arrPointCross[j].object.h2, arrPointCross[j].object.v.hedgelist, h2PointCross);
+
+                            this.hedges = this.replaceParam(arrPointCross[j].object.h2, this.hedges, [h2PointCross, h1PointCross])
+
+                            minX = arrPointCross[j].object.v.x < arrPointCross[j].x ? arrPointCross[j].object.v.x : arrPointCross[j].x;
+                            minY = arrPointCross[j].object.v.y < arrPointCross[j].y ? arrPointCross[j].object.v.y : arrPointCross[j].y;
+                            maxX = arrPointCross[j].object.v.x > arrPointCross[j].x ? arrPointCross[j].object.v.x : arrPointCross[j].x;
+                            maxY = arrPointCross[j].object.v.y > arrPointCross[j].y ? arrPointCross[j].object.v.y : arrPointCross[j].y;
+                            boundary = {
+                                x: minX,
+                                y: minY,
+                                width: maxX - minX,
+                                height: maxY - minY
+                            };
+                            boundary.object = {
+                                h1: h1PointCross,
+                                h2: h2PointCross,
+                                v: arrPointCross[j].object.v,
+                                v1: arrPointCross[j]
+                            }
+                            this.myTree.insert(boundary);
                         }
-                        else
-                        arrPointCross[j-1].hedgelist.push(h2PointCross)
 
-                        tempH2 = undefined;
+                        //////collisionV1<->pointCross/////
+                        if (!this.checkPostion(arrPointCross[j], arrPointCross[j].object.v1)) {
+                            h1PointCross = new Hedge(arrPointCross[j], arrPointCross[j].object.v1);
+                            h2PointCross = new Hedge(arrPointCross[j].object.v1, arrPointCross[j]);
 
-                        arrHedges.push(h2PointCross);
-                        arrHedges.push(h1PointCross);
+                            h1PointCross.twin = h2PointCross;
+                            h2PointCross.twin = h1PointCross;
+                            arrPointCross[j].object.v1.hedgelist = this.replaceParam(arrPointCross[j].object.h1, arrPointCross[j].object.v1.hedgelist, h1PointCross);
 
-                        minX= arrPointCross[j-1].x<arrPointCross[j].x?arrPointCross[j-1].x:arrPointCross[j].x;
-                        minY= arrPointCross[j-1].y<arrPointCross[j].y?arrPointCross[j-1].y:arrPointCross[j].y;
-                        maxX= arrPointCross[j-1].x>arrPointCross[j].x?arrPointCross[j-1].x:arrPointCross[j].x;
-                        maxY= arrPointCross[j-1].y>arrPointCross[j].y?arrPointCross[j-1].y:arrPointCross[j].y;
-                        boundary = {
-                            x: minX,
-                            y: minY,
-                            width: maxX-minX,
-                            height: maxY-minY
-                        };
-                        boundary.object = {
-                            h1:h1PointCross,
-                            h2:h2PointCross,
-                            v:arrPointCross[j-1],
-                            v1:arrPointCross[j]
+                            if (this.checkArrayIS(arrPointCross[j].object.h2, arrPointCross[j].hedgelist)) {
+                                arrPointCross[j].hedgelist = this.replaceParam(arrPointCross[j].object.h2, arrPointCross[j].hedgelist, h2PointCross);
+                                this.hedges = this.replaceParam(arrPointCross[j].object.h2, this.hedges);
+                            } else
+                                arrPointCross[j].hedgelist.push(h2PointCross);
+
+                            this.hedges = this.replaceParam(arrPointCross[j].object.h1, this.hedges, [h2PointCross, h1PointCross])
+
+                            minX = arrPointCross[j].x < arrPointCross[j].object.v1.x ? arrPointCross[j].x : arrPointCross[j].object.v1.x;
+                            minY = arrPointCross[j].y < arrPointCross[j].object.v1.y ? arrPointCross[j].y : arrPointCross[j].object.v1.y;
+                            maxX = arrPointCross[j].x > arrPointCross[j].object.v1.x ? arrPointCross[j].x : arrPointCross[j].object.v1.x;
+                            maxY = arrPointCross[j].y > arrPointCross[j].object.v1.y ? arrPointCross[j].y : arrPointCross[j].object.v1.y;
+                            boundary = {
+                                x: minX,
+                                y: minY,
+                                width: maxX - minX,
+                                height: maxY - minY
+                            };
+                            boundary.object = {
+                                h1: h1PointCross,
+                                h2: h2PointCross,
+                                v: arrPointCross[j],
+                                v1: arrPointCross[j].object.v1
+                            }
+                            this.myTree.insert(boundary);
                         }
-                        this.myTree.insert(boundary);
-                        
                     }
+                    arrPointCross[j].object = undefined;
+                }
+                if (j == arrPointCross.length - 1)
+                    tempH1 = h1;
+                if (j == 0)
+                    continue;
+                h1PointCross = new Hedge(arrPointCross[j - 1], arrPointCross[j]);
+                h2PointCross = new Hedge(arrPointCross[j], arrPointCross[j - 1]);
+                h1PointCross.twin = h2PointCross;
+                h2PointCross.twin = h1PointCross;
 
-                    for(var m=0;m<arrCol.length;m++)
-                    {
-                        this.myTree.removeObject(arrCol[m]);
-                    }
-                    this.hedges = this.replaceParam(h2,this.hedges,arrHedges,2);
+                if (tempH1 !== undefined) {
+                    arrPointCross[j].hedgelist = this.replaceParam(tempH1, arrPointCross[j].hedgelist, h1PointCross);
+                } else
+                    arrPointCross[j].hedgelist.push(h1PointCross);
+
+                if (tempH2 !== undefined) {
+                    arrPointCross[j - 1].hedgelist = this.replaceParam(tempH2, arrPointCross[j - 1].hedgelist, h2PointCross);
+                } else
+                    arrPointCross[j - 1].hedgelist.push(h2PointCross)
+
+                tempH2 = undefined;
+
+                arrHedges.push(h2PointCross);
+                arrHedges.push(h1PointCross);
+
+                minX = arrPointCross[j - 1].x < arrPointCross[j].x ? arrPointCross[j - 1].x : arrPointCross[j].x;
+                minY = arrPointCross[j - 1].y < arrPointCross[j].y ? arrPointCross[j - 1].y : arrPointCross[j].y;
+                maxX = arrPointCross[j - 1].x > arrPointCross[j].x ? arrPointCross[j - 1].x : arrPointCross[j].x;
+                maxY = arrPointCross[j - 1].y > arrPointCross[j].y ? arrPointCross[j - 1].y : arrPointCross[j].y;
+                boundary = {
+                    x: minX,
+                    y: minY,
+                    width: maxX - minX,
+                    height: maxY - minY
+                };
+                boundary.object = {
+                    h1: h1PointCross,
+                    h2: h2PointCross,
+                    v: arrPointCross[j - 1],
+                    v1: arrPointCross[j]
+                }
+                this.myTree.insert(boundary);
+
+            }
+
+            for (var m = 0; m < arrCol.length; m++) {
+                this.myTree.removeObject(arrCol[m]);
+            }
+            this.hedges = this.replaceParam(h2, this.hedges, arrHedges, 2);
         },
-        crossData : function(v,v1,h1,h2,boundaryOrigin)
-        {
+        crossData: function(v, v1, h1, h2, boundaryOrigin) {
             var vPointCross;
             var collision
-            var arrPointCross,arrCol;
+            var arrPointCross, arrCol;
             collision = this.myTree.retrieve(boundaryOrigin);
             arrCol = [];
-                var isCross = false;
-                arrPointCross = [];
-                var vTemp;
-                for(var j = 0;j<collision.length;j++)
-                {
-                    var pointCross =  window.linear.checkLineIntersection(v.x,v.y,v1.x,v1.y,collision[j].object.v.x,collision[j].object.v.y,collision[j].object.v1.x,collision[j].object.v1.y);
-                    if(pointCross!==false)
-                    {   
-                        if(pointCross[0]===null&&pointCross[1]===null){
-                            var collisionTemp = collision[j];
-                            isCross = true;
-                            var checkIntersection = [v,v1,collisionTemp.object.v,collisionTemp.object.v1].sort(function (a, b) {
-                                if (a.x > b.x) {
-                                    return 1;
-                                }
-                                if (a.x < b.x) {
-                                    return -1;
-                                }
-                                if (a.y > b.y) {
-                                    return 1;
-                                }
-                                if (a.y < b.y) {
-                                    return -1;
-                                }
-                                
-                                return 0;
-                            });
-                            
-                            for(var n=0;n<checkIntersection.length;n++)
-                            {
-                                if(checkIntersection[n]==v)
-                                checkIntersection[n].hedgelist = this.replaceParam(h2,checkIntersection[n].hedgelist); 
-                                if(checkIntersection[n]==v1)
-                                checkIntersection[n].hedgelist = this.replaceParam(h1,checkIntersection[n].hedgelist); 
-                                if(checkIntersection[n]==collisionTemp.object.v)
-                                    checkIntersection[n].hedgelist = this.replaceParam(collisionTemp.object.h2,checkIntersection[n].hedgelist); 
-                                if(checkIntersection[n]==collisionTemp.object.v1)
-                                    checkIntersection[n].hedgelist = this.replaceParam(collisionTemp.object.h1,checkIntersection[n].hedgelist); 
-                                if(n!==0&&n!==checkIntersection.length-1)
-                                {
-                                    if(checkIntersection[n].hedgelist.length!==0){
-                                        if(!this.checkArrayIS(checkIntersection[n],arrPointCross)){
-                                            arrPointCross.push(checkIntersection[n]); 
-                                        }
-                                    }
-                                    else{
-                                        if(this.checkArrayIS(checkIntersection[n],arrPointCross)){
-                                            arrPointCross.splice(n,1);
-                                        }
-                                        this.check.remove(checkIntersection[n].x,checkIntersection[n].y);
-                                        checkIntersection.splice(n,1);
-                                        n--;
-                                    }
-                                }
-                            }
-                            
-                            this.hedges = this.replaceParam(h1,this.hedges,undefined); 
-                            this.hedges = this.replaceParam(h2,this.hedges,undefined); 
-                            this.hedges = this.replaceParam(collisionTemp.object.h1,this.hedges,undefined); 
-                            this.hedges = this.replaceParam(collisionTemp.object.h2,this.hedges,undefined); 
-                            for(var n=0;n<checkIntersection.length;n++){
-                                
-                                vTemp = this.check.checkAssitAndInsert(checkIntersection[n].x,checkIntersection[n].y);
-
-                                if(n===0){
-                                    v=vTemp;
-                                    continue;
-                                }
-
-                                if(n===checkIntersection.length-1)
-                                    v1=vTemp;
-                            }
-                            
-                            arrCol.push(collisionTemp);
-                            isCross = true;
-                            continue;
-                        }else
-                            vPointCross = this.check.checkAssitAndInsert(pointCross[0],pointCross[1]);
-                        if(vPointCross.object===undefined)
-                        vPointCross.object = collision[j].object;
-                        else{
-                            vPointCross.object = [].concat(collision[j].object,vPointCross.object);
-                        }
-
-                        if(!this.checkArrayIS(vPointCross,arrPointCross)){
-                            arrPointCross.push(vPointCross);
-                        }
-                        arrCol.push(collision[j]);
-                        
+            var isCross = false;
+            arrPointCross = [];
+            var vTemp;
+            for (var j = 0; j < collision.length; j++) {
+                var pointCross = window.linear.checkLineIntersection(v.x, v.y, v1.x, v1.y, collision[j].object.v.x, collision[j].object.v.y, collision[j].object.v1.x, collision[j].object.v1.y);
+                if (pointCross !== false) {
+                    if (pointCross[0] === null && pointCross[1] === null) {
+                        var collisionTemp = collision[j];
                         isCross = true;
+                        var checkIntersection = [v, v1, collisionTemp.object.v, collisionTemp.object.v1].sort(function(a, b) {
+                            if (a.x > b.x) {
+                                return 1;
+                            }
+                            if (a.x < b.x) {
+                                return -1;
+                            }
+                            if (a.y > b.y) {
+                                return 1;
+                            }
+                            if (a.y < b.y) {
+                                return -1;
+                            }
+
+                            return 0;
+                        });
+
+                        for (var n = 0; n < checkIntersection.length; n++) {
+                            if (checkIntersection[n] == v)
+                                checkIntersection[n].hedgelist = this.replaceParam(h2, checkIntersection[n].hedgelist);
+                            if (checkIntersection[n] == v1)
+                                checkIntersection[n].hedgelist = this.replaceParam(h1, checkIntersection[n].hedgelist);
+                            if (checkIntersection[n] == collisionTemp.object.v)
+                                checkIntersection[n].hedgelist = this.replaceParam(collisionTemp.object.h2, checkIntersection[n].hedgelist);
+                            if (checkIntersection[n] == collisionTemp.object.v1)
+                                checkIntersection[n].hedgelist = this.replaceParam(collisionTemp.object.h1, checkIntersection[n].hedgelist);
+                            if (n !== 0 && n !== checkIntersection.length - 1) {
+                                if (checkIntersection[n].hedgelist.length !== 0) {
+                                    if (!this.checkArrayIS(checkIntersection[n], arrPointCross)) {
+                                        arrPointCross.push(checkIntersection[n]);
+                                    }
+                                } else {
+                                    if (this.checkArrayIS(checkIntersection[n], arrPointCross)) {
+                                        arrPointCross.splice(n, 1);
+                                    }
+                                    this.check.remove(checkIntersection[n].x, checkIntersection[n].y);
+                                    checkIntersection.splice(n, 1);
+                                    n--;
+                                }
+                            }
+                        }
+
+                        this.hedges = this.replaceParam(h1, this.hedges, undefined);
+                        this.hedges = this.replaceParam(h2, this.hedges, undefined);
+                        this.hedges = this.replaceParam(collisionTemp.object.h1, this.hedges, undefined);
+                        this.hedges = this.replaceParam(collisionTemp.object.h2, this.hedges, undefined);
+                        for (var n = 0; n < checkIntersection.length; n++) {
+
+                            vTemp = this.check.checkAssitAndInsert(checkIntersection[n].x, checkIntersection[n].y);
+
+                            if (n === 0) {
+                                v = vTemp;
+                                continue;
+                            }
+
+                            if (n === checkIntersection.length - 1)
+                                v1 = vTemp;
+                        }
+
+                        arrCol.push(collisionTemp);
+                        isCross = true;
+                        continue;
+                    } else
+                        vPointCross = this.check.checkAssitAndInsert(pointCross[0], pointCross[1]);
+                    if (vPointCross.object === undefined)
+                        vPointCross.object = collision[j].object;
+                    else {
+                        vPointCross.object = [].concat(collision[j].object, vPointCross.object);
                     }
+
+                    if (!this.checkArrayIS(vPointCross, arrPointCross)) {
+                        arrPointCross.push(vPointCross);
+                    }
+                    arrCol.push(collision[j]);
+
+                    isCross = true;
                 }
-                if(!this.checkArrayIS(v,arrPointCross)){
-                    arrPointCross.push(v);
-                }
-                
-                if(!this.checkArrayIS(v1,arrPointCross)){
-                    arrPointCross.push(v1);
-                }
-                if(isCross===true){
-                    this.parseCross(h1,h2,arrPointCross,arrCol);
-                }else
-                    this.myTree.insert(boundaryOrigin);
+            }
+            if (!this.checkArrayIS(v, arrPointCross)) {
+                arrPointCross.push(v);
+            }
+
+            if (!this.checkArrayIS(v1, arrPointCross)) {
+                arrPointCross.push(v1);
+            }
+            if (isCross === true) {
+                this.parseCross(h1, h2, arrPointCross, arrCol);
+            } else
+                this.myTree.insert(boundaryOrigin);
         },
         /**
          * get all internal (area > 0) faces
@@ -1223,7 +1189,8 @@
          * @return {Face[]} internal faces
          */
         internalFaces: function() {
-            var result = [], faces = this.faces;
+            var result = [],
+                faces = this.faces;
             for (var i = 0, l = faces.length; i < l; i++) {
                 var f = faces[i];
                 if (f.internal) {
@@ -1234,7 +1201,8 @@
         },
 
         internalFacesGeoJSON: function() {
-            var result = [], faces = this.faces;
+            var result = [],
+                faces = this.faces;
             for (var i = 0, l = faces.length; i < l; i++) {
                 var f = faces[i];
                 if (f.internal) {
@@ -1250,7 +1218,8 @@
          * @return {Face[]} external faces
          */
         externalFaces: function() {
-            var result = [], faces = this.faces;
+            var result = [],
+                faces = this.faces;
             for (var i = 0, l = faces.length; i < l; i++) {
                 var f = faces[i];
                 if (f.external) {
@@ -1285,7 +1254,7 @@
             vertices.length = 0;
             hedges.length = 0;
             faces.length = 0;
-            
+
         },
 
         /**
@@ -1300,7 +1269,7 @@
             var vertex;
             for (var i = 0, l = vertices.length; i < l; i++) {
                 vertex = vertices[i];
-                if(vertex.x === x && vertex.y === y) {
+                if (vertex.x === x && vertex.y === y) {
                     return vertex;
                 }
             }
@@ -1322,8 +1291,8 @@
             for (var i = 0, l = hedges.length; i < l; i++) {
                 hedge = hedges[i];
                 twinHedge = hedge.twin;
-                if (hedge.origin.x === x1 && hedge.origin.y === y1
-                && twinHedge.origin.x === x2 && twinHedge.origin.y === y2) {
+                if (hedge.origin.x === x1 && hedge.origin.y === y1 &&
+                    twinHedge.origin.x === x2 && twinHedge.origin.y === y2) {
                     return hedge;
                 }
             }
@@ -1400,7 +1369,7 @@
                     var hprev = v1.hedgelist[index - 1];
                     var hnext = v1.hedgelist[(index + 1) % v1.hedgelist.length];
                 }
-                
+
                 h1.prevhedge = hprev.twin;
                 hprev.twin.nexthedge = h1;
                 h2.nexthedge = hnext;
@@ -1459,14 +1428,14 @@
             var face2 = new Face(this);
             face2.wedge = head2;
 
-            if( face1.equals(face2) ) { 
+            if (face1.equals(face2)) {
                 face2.dispose();
                 face2 = null;
             }
 
             // set hedge face
 
-            if ( face1 ) {
+            if (face1) {
 
                 var h = face1.wedge;
                 h.face = face1;
@@ -1483,7 +1452,7 @@
                 faces.push(face1);
             }
 
-            if ( face2 ) {
+            if (face2) {
 
                 var h = face2.wedge;
                 h.face = face2;
@@ -1502,8 +1471,8 @@
 
             // step 6: mark hole dirty
 
-            if ( holesDirty ) {
-                
+            if (holesDirty) {
+
                 for (var i = 0, l = faces.length; i < l; i++) {
                     faces[i]._holesDirty = true;
                 }
@@ -1616,17 +1585,17 @@
             // step 4: add faces
 
             var face1 = useHead1 ? new Face(this) : null;
-            if ( face1 ) {
+            if (face1) {
                 face1.wedge = head1;
             }
 
             var face2 = useHead2 ? new Face(this) : null;
-            if ( face2 ) {
+            if (face2) {
                 face2.wedge = head2;
             }
 
-            if ( face1 && face2 ) {
-                if( face1.equals(face2) ) { 
+            if (face1 && face2) {
+                if (face1.equals(face2)) {
                     face2.dispose();
                     face2 = null;
                 }
@@ -1634,7 +1603,7 @@
 
             // set hedge face
 
-            if ( face1 ) {
+            if (face1) {
 
                 var h = face1.wedge;
                 h.face = face1;
@@ -1651,7 +1620,7 @@
                 faces.push(face1);
             }
 
-            if ( face2 ) {
+            if (face2) {
 
                 var h = face2.wedge;
                 h.face = face2;
@@ -1670,8 +1639,8 @@
 
             // step 5: mark hole dirty
 
-            if ( holesDirty ) {
-                
+            if (holesDirty) {
+
                 for (var i = 0, l = faces.length; i < l; i++) {
                     faces[i]._holesDirty = true;
                 }
@@ -1752,13 +1721,13 @@
 
             h1.prevhedge = (hedge.prevhedge !== twinHedge) ? hedge.prevhedge : h4;
             h1.prevhedge.nexthedge = h1;
-            
+
             h2.nexthedge = (hedge.nexthedge !== twinHedge) ? hedge.nexthedge : h3;
             h2.nexthedge.prevhedge = h2;
 
             h3.prevhedge = (twinHedge.prevhedge !== hedge) ? twinHedge.prevhedge : h2;
             h3.prevhedge.nexthedge = h3;
-            
+
             h4.nexthedge = (twinHedge.nexthedge !== hedge) ? twinHedge.nexthedge : h1;
             h4.nexthedge.prevhedge = h4;
 

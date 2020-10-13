@@ -271,11 +271,12 @@ MergeRealty.prototype.getView = function() {
                                 }
                             }
                         ]
-                    })
+                    }),
+                    id: itemData.image[j]
                 }
                 $(".close-button-img", dataChild.element).addEventListener("click", function(dataChild) {
                     dataChild.value = false;
-                }.bind(null, dataChild))
+                }.bind(null, dataChild));
                 itemImageStaus.push(dataChild);
             } else {
                 var dataChild = {
@@ -311,7 +312,8 @@ MergeRealty.prototype.getView = function() {
                                 }
                             }
                         ]
-                    })
+                    }),
+                    id: itemData.image[j]
                 }
                 dataChild["data"] = this.checkImage[itemData.image[j]];
                 $(".close-button-img", dataChild.element).addEventListener("click", function(dataChild) {
@@ -1738,11 +1740,9 @@ MergeRealty.prototype.itemDisplayNone = function(data) {
 MergeRealty.prototype.getDataSave = function() {
     var temp = {};
     var data = this.myTool.getData().previewData.properties;
-    console.log(data);
     var advanceDetructElement = data[1].properties[0].properties[6].element.childNodes[0];
     var fitUpdate = 0;
     var inputFit = data[1].properties[1].properties[0].properties[2].item.element;
-    console.log(advanceDetructElement)
     if (inputFit.values.length !== 0)
         fitUpdate = inputFit.values.reduce(function(a, b) { return a + b; });
     var advanceDetruct = 0;
@@ -1752,18 +1752,19 @@ MergeRealty.prototype.getDataSave = function() {
     advanceDetruct += advanceDetructElement.advanceDetruct4.checked ? 1000 : 0;
     var image = [];
     var arrJuridical = data[3].properties[1].values;
-    console.log(arrJuridical)
     for (var i = 0; i < arrJuridical.length; i++) {
-        image.push({ src: arr[i].id, type: 0, userid: window.userid });
+        image.push({ src: arrJuridical[i].id, type: 0, userid: window.userid });
     }
 
     var arrStatus = data[3].properties[1].values;
-    console.log(arrStatus)
     for (var i = 0; i < arrStatus.length; i++) {
-        image.push({ src: src, type: 1, thumnail: 0, userid: window.userid });
+        var thumnail = 0;
+        if (arrStatus[i].element.classList.contains("checked-pizo"))
+            thumnail = 1;
+        image.push({ src: arrStatus[i].id, type: 1, thumnail: thumnail, userid: window.userid });
     }
-
-
+    var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, censorship;
+    console.log(data)
     var temp = {
         height: this.inputHeight.value * this.inputUnitHeight.value,
         width: this.inputWidth.value * this.inputUnitWidth.value,
