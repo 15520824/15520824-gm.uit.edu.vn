@@ -19665,7 +19665,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:first-child)  {\r\n    margin-left: 0.3571rem;\r\n}\r\n.absol-single-page-header .absol-icon-button:not(:last-child)  {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-app .absol-single-page-header{\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput{\r\n    padding-left: 1.4286rem;\r\n    position: relative;\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\ndisplay: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search{\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number{\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n\r\n.pizo-list-realty-page-number-input{\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line{\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel{\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard{\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div{\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,.pizo-list-plan-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: calc(100% - 50px);\r\n    width: calc(100% - 30px);\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main{\r\n    flex-direction:column;\r\n}\r\n\r\n.pizo-new-realty-desc{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control{\r\n    /*display: -webkit-box;*/\r\ndisplay: -ms-flexbox;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control{\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container{\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row{\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: 20%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date{\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price{\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button{\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS{\r\n  width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN{\r\n    width: 9%;\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT{\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input{\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div{\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child)\r\n{\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input{\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input{\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem  var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button, \r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button { \r\n  -webkit-appearance: none; \r\n  margin: 0; \r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search{\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input{\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element{\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element{\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container{\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 9rem);\r\n}\r\n\r\n.navbar-search__filter{\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter{\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container{\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container{\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable{\r\n    width: 100%;\r\n}\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color: #fff;\r\n}\r\n\r\n/* after the first non-.parent, toggle colors */\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(odd) td{\r\n    background-color:#f5f5f5;\r\n}\r\n.pizo-list-realty-main-result-control tr:not(.parent) ~ .parent:nth-child(even) td{\r\n    background-color: #fff ;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-label{\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\ndisplay: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input{\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\ndisplay: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT{\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-label{\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\ndisplay: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input{\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\ndisplay: -ms-flexbox;\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:first-child) {\r\n    margin-left: 0.3571rem;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:last-child) {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-app .absol-single-page-header {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput {\r\n    padding-left: 1.4286rem;\r\n    position: relative;\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search {\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number {\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-number-input {\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line {\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel {\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard {\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div {\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,\r\n.pizo-list-plan-main {\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: 100%;\r\n    width: calc(100% - 30px);\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main {\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty-desc {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control {\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row {\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div {\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: 20%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date {\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price {\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button {\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div {\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child) {\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input {\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search {\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input {\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element {\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element {\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 9rem);\r\n}\r\n\r\n.navbar-search__filter {\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter {\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container {\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable {\r\n    width: 100%;\r\n}\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n/* after the first non-.parent, toggle colors */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #fff;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}", ""]);
 
 
 
@@ -54309,40 +54309,41 @@ Object.defineProperties(MPOTTextPreview.prototype, Object.getOwnPropertyDescript
 MPOTTextPreview.prototype.constructor = MPOTTextPreview;
 MPOTTextPreview.prototype.type = 'text';
 
-MPOTTextPreview.prototype.createView = function () {
+MPOTTextPreview.prototype.createView = function() {
     preview_MPOTBasePreview.prototype.createView.call(this);
     this.$text = MPOTTextPreview_({
         tag: 'span',
-        child:
-            {
-                text: ''
-            }
+        child: {
+            text: ''
+        }
     });
     this.$content.addChild(this.$text);
 };
 
 
-MPOTTextPreview.prototype._viewData = function () {
+MPOTTextPreview.prototype._viewData = function() {
     var data = this._data;
     if (data.values && data.values.length >= 0) {
         this.$text.firstChild.data = data.values.join(', ');
-    }
-    else {
+    } else {
         this.$text.firstChild.data = data.value || '';
+    }
+    if (this._data) {
+        this._data.element = this.$text.firstChild;
     }
 };
 
 MPOTTextPreview.prototype.setEditable = function() {
-    this.$text.setAttribute("contenteditable",true);
+    this.$text.setAttribute("contenteditable", true);
 }
 
-MPOTTextPreview.prototype.setData = function (data) {
+MPOTTextPreview.prototype.setData = function(data) {
     preview_MPOTBasePreview.prototype.setData.call(this, data);
     this._viewData();
 };
 
 
-MPOTTextPreview.prototype.getData = function () {
+MPOTTextPreview.prototype.getData = function() {
     return this._data;
 };
 
@@ -54493,60 +54494,62 @@ Object.defineProperties(MPOTNumberPreview.prototype, Object.getOwnPropertyDescri
 MPOTNumberPreview.prototype.constructor = MPOTNumberPreview;
 MPOTNumberPreview.prototype.type = 'number';
 
-MPOTNumberPreview.prototype.createView = function () {
+MPOTNumberPreview.prototype.createView = function() {
     preview_MPOTBasePreview.prototype.createView.call(this);
     this.$text = MPOTNumberPreview_({
         tag: 'span',
-        child:
-            {
-                text: ''
-            }
+        child: {
+            text: ''
+        }
     });
     setInputFilter(this.$text, function(value) {
-        return /^-?\d*[.,]?\d*$/.test(value); }); // Allow digits and '.' only, using a RegExp
+        return /^-?\d*[.,]?\d*$/.test(value);
+    }); // Allow digits and '.' only, using a RegExp
     this.$content.addChild(this.$text);
 };
 
 function setInputFilter(textbox, inputFilter) {
     ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-      textbox.addEventListener(event, function() {
-        if (inputFilter(this.textContent)) {
-          this.oldValue = this.textContent;
-        //   var range = document.createRange();
-        //   var sel = window.getSelection();
-        //   this.oldSelectionStart = this.selectionStart;
-        //   this.oldSelectionEnd = this.selectionEnd;
-        } else if (this.hasOwnProperty("oldValue")) {
-          this.textContent = this.oldValue;
-        //   this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-        } else {
-          this.textContent = "";
-        }
-      });
+        textbox.addEventListener(event, function() {
+            if (inputFilter(this.textContent)) {
+                this.oldValue = this.textContent;
+                //   var range = document.createRange();
+                //   var sel = window.getSelection();
+                //   this.oldSelectionStart = this.selectionStart;
+                //   this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+                this.textContent = this.oldValue;
+                //   this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            } else {
+                this.textContent = "";
+            }
+        });
     });
-  }
+}
 
-MPOTNumberPreview.prototype._viewData = function () {
+MPOTNumberPreview.prototype._viewData = function() {
     var data = this._data;
     if (data.values && data.values.length >= 0) {
         this.$text.firstChild.data = data.values.join(', ');
+    } else {
+        this.$text.firstChild.data = data.value;
     }
-    else {
-        this.$text.firstChild.data =data.value;
+    if (this._data) {
+        this._data.element = this.$text.firstChild;
     }
 };
 
 MPOTNumberPreview.prototype.setEditable = function() {
-    this.$text.setAttribute("contenteditable",true);
+    this.$text.setAttribute("contenteditable", true);
 }
 
-MPOTNumberPreview.prototype.setData = function (data) {
+MPOTNumberPreview.prototype.setData = function(data) {
     preview_MPOTBasePreview.prototype.setData.call(this, data);
     this._viewData();
 };
 
 
-MPOTNumberPreview.prototype.getData = function () {
+MPOTNumberPreview.prototype.getData = function() {
     return this._data;
 };
 
@@ -54625,7 +54628,7 @@ Object.defineProperties(MPOTElementPreview.prototype, Object.getOwnPropertyDescr
 MPOTElementPreview.prototype.constructor = MPOTElementPreview;
 MPOTElementPreview.prototype.type = 'element';
 
-MPOTElementPreview.prototype.createView = function () {
+MPOTElementPreview.prototype.createView = function() {
     preview_MPOTBasePreview.prototype.createView.call(this);
     this.$container = MPOTElementPreview_({
         tag: 'div',
@@ -54634,24 +54637,19 @@ MPOTElementPreview.prototype.createView = function () {
 };
 
 
-MPOTElementPreview.prototype._viewData = function () {
+MPOTElementPreview.prototype._viewData = function() {
     var data = this._data;
     this.$container.clearChild();
     if (data.values && data.values.length >= 0) {
-        for(var i =0;i<data.values.length;i++)
-        {
+        for (var i = 0; i < data.values.length; i++) {
             this.$container.appendChild(data.values[i].element);
         }
-    }else
-    {
-        if(data.item)
-        this.$container.appendChild(data.item.element);
-        else
-        {
-            for(var i = 0;i<data.items.length;i++)
-            {
-                if(data.items[i].value==data.value)
-                {
+    } else {
+        if (data.item)
+            this.$container.appendChild(data.item.element);
+        else {
+            for (var i = 0; i < data.items.length; i++) {
+                if (data.items[i].value == data.value) {
                     data.item = data.items[i];
                     this.$container.appendChild(data.item.element);
                     break;
@@ -54659,15 +54657,18 @@ MPOTElementPreview.prototype._viewData = function () {
             }
         }
     }
+    if (data.items)
+        if (data.items.functionChange)
+            data.items.functionChange(this.$container);
 };
 
-MPOTElementPreview.prototype.setData = function (data) {
+MPOTElementPreview.prototype.setData = function(data) {
     preview_MPOTBasePreview.prototype.setData.call(this, data);
     this._viewData();
 };
 
 
-MPOTElementPreview.prototype.getData = function () {
+MPOTElementPreview.prototype.getData = function() {
     return this._data;
 };
 
@@ -55554,32 +55555,45 @@ MPOTElementEditor.prototype._showMultiChoice = function() {
         child: data.items.map(function(item, idx) {
             var cloneNode = item.element.cloneNode(true);
             if (item.promiseComplete) {
-                console.log(cloneNode)
                 item.promiseComplete.then(function(cloneNode) {
                     cloneNode.parentNode.replaceChild(item.element.cloneNode(true), cloneNode);
                 }.bind(this, cloneNode))
             }
+
+            var selectChoice = MPOTElementEditor_({
+                tag: 'checkboxbutton',
+                props: {
+                    checked: thisE._choiceListChecked[idx].value,
+                    index: idx
+                },
+                on: {
+                    change: function() {
+                        thisE._choiceListChecked[this.index].value = this.checked;
+                    }
+                }
+            })
+
+            var value = thisE._choiceListChecked[idx].value;
+            Object.defineProperty(thisE._choiceListChecked[idx], 'value', {
+                get: function() { return value },
+                set: function(v) {
+                    value = v;
+                    selectChoice.checked = v;
+                    var dict = thisE._choiceListChecked;
+                    data.values = data.items.filter(function(u, i) {
+                        return dict[u];
+                    });
+                    thisE.notifyChange({ notFinish: true });
+                }
+            });
+
             return {
                 class: 'mpot-choice',
                 child: [{
                         class: 'mpot-choice-select-cell',
-                        child: {
-                            tag: 'checkboxbutton',
-                            props: {
-                                checked: thisE._choiceListChecked[idx].value,
-                                index: idx
-                            },
-                            on: {
-                                change: function() {
-                                    thisE._choiceListChecked[this.index].value = this.checked;
-                                    var dict = thisE._choiceListChecked;
-                                    data.values = data.items.filter(function(u, i) {
-                                        return dict[u];
-                                    });
-                                    thisE.notifyChange({ notFinish: true });
-                                }
-                            }
-                        }
+                        child: [
+                            selectChoice
+                        ]
                     },
                     {
                         class: 'mpot-choice-value',
@@ -55593,8 +55607,8 @@ MPOTElementEditor.prototype._showMultiChoice = function() {
                 ]
             }
         })
-
     });
+
     this._assignInputList(MPOTElementEditor_$$('checkboxbutton', this.$choiceList));
     this.$view.clearChild().addChild(this.$choiceList);
 };
@@ -55629,7 +55643,7 @@ MPOTElementEditor.prototype.getPreviewData = function() {
             pData.values = [];
             for (var i = 0; i < dict.length; i++) {
                 if (dict[i].value == true)
-                    pData.values.push(dict[i]);
+                    pData.values.push(data.items[i]);
             }
             break;
         default:
@@ -56345,18 +56359,17 @@ MPOTMergeTool.prototype.constructor = MPOTMergeTool;
 MPOTMergeTool.prototype.CONFIG_STORE_KEY = "AS_MPOT_CONFIG";
 
 MPOTMergeTool.prototype.config = {
-    previewWidth: 50
+    previewWidth: 60
 };
 
 
-MPOTMergeTool.prototype.createView = function () {
+MPOTMergeTool.prototype.createView = function() {
     this.$view = MPOTMergeTool_({
         class: 'mpot-merge-tool',
         style: {
             '--preview-width': this.config.previewWidth + '%'
         },
-        child: [
-            {
+        child: [{
                 tag: 'bscroller',
                 class: 'mpot-merge-tool-preview-ctn',
                 child: [
@@ -56382,11 +56395,11 @@ MPOTMergeTool.prototype.createView = function () {
         .on('dragend', this.ev_dragResizerEnd.bind(this));
 };
 
-MPOTMergeTool.prototype.ev_dragResizerStart = function () {
+MPOTMergeTool.prototype.ev_dragResizerStart = function() {
     this.$centerResizer.addClass('as-active');
 };
 
-MPOTMergeTool.prototype.ev_dragResizer = function (event) {
+MPOTMergeTool.prototype.ev_dragResizer = function(event) {
     var d = event.currentPoint.sub(event.startingPoint);
     var dx = d.x;
     var bound = this.$view.getBoundingClientRect();
@@ -56395,7 +56408,7 @@ MPOTMergeTool.prototype.ev_dragResizer = function (event) {
     Dom["a" /* default */].updateResizeSystem();
 };
 
-MPOTMergeTool.prototype.ev_dragResizerEnd = function (event) {
+MPOTMergeTool.prototype.ev_dragResizerEnd = function(event) {
     var d = event.currentPoint.sub(event.startingPoint);
     var dx = d.x;
     var bound = this.$view.getBoundingClientRect();
@@ -56407,33 +56420,38 @@ MPOTMergeTool.prototype.ev_dragResizerEnd = function (event) {
 };
 
 
-MPOTMergeTool.prototype._normalizeData = function (data) {
+MPOTMergeTool.prototype._normalizeData = function(data) {
     data = data || {};
     data.editor = normalizeEditData(data.editor);
     return data;
 };
 
-MPOTMergeTool.prototype.setData = function (data) {
+MPOTMergeTool.prototype.setData = function(data) {
     data = this._normalizeData(data);
     this._data = data;
     this.editor.setData(data.editor);
-    if(data.enEditable=== true&&this.preview.setEditable)
-    this.preview.setEditable();
+    if (data.enEditable === true && this.preview.setEditable)
+        this.preview.setEditable();
     this.preview.setData(this.editor.getPreviewData());
 };
 
-MPOTMergeTool.prototype.getData = function () {
-    return this._data;
+MPOTMergeTool.prototype.getData = function() {
+    return {
+        data: this._data,
+        previewData: this.editor.getPreviewData(),
+        editorData: this._data.editor
+    }
+
 };
 
-MPOTMergeTool.prototype.ev_editNodeChange = function (event) {
+MPOTMergeTool.prototype.ev_editNodeChange = function(event) {
     var pData = event.nodePreviewData;
     this.preview.setDataToNode(pData);
     if (!event.notFinish)
         this.emit('change', Object.assign({}, event, { type: 'change' }), this);
 };
 
-MPOTMergeTool.prototype.ev_pressNode = function (event, sender) {
+MPOTMergeTool.prototype.ev_pressNode = function(event, sender) {
     var nodeId = event.nodeId;
     this.editor.selectTabById(nodeId);
 };
@@ -63916,103 +63934,76 @@ NewAccount_NewAccount.prototype.getView = function (dataParent) {
     tag: "selectbox",
     "class": "pizo-new-account-container-permission-addvance-selectmenu-content",
     on: {
-      click: function click(event) {
-        var element = event.target;
+      activevaluechange: function activevaluechange(event) {
+        var dataTemp = JSON.parse(this.activeValue);
 
-        while (!(element.classList.contains("absol-selectbox-item-close") || element.classList.contains("absol-selectbox-item") || element.classList.contains("absol-selectbox"))) {
-          element = element.parentNode;
-        }
-
-        if (element.classList.contains("absol-selectbox-item")) {
-          var dataTemp = JSON.parse(element.data.value);
-
-          if (dataTemp["streetid"] !== undefined) {
-            street.value = dataTemp["streetid"];
-            street.emit("change");
+        if (dataTemp["streetid"] !== undefined) {
+          street.value = dataTemp["streetid"];
+          street.emit("change");
+          ward.value = dataTemp["wardid"];
+          ward.emit("change");
+          district.value = dataTemp["districtid"];
+          district.emit("change");
+          state.value = dataTemp["stateid"];
+          state.emit("change");
+        } else {
+          if (dataTemp["wardid"] !== undefined) {
             ward.value = dataTemp["wardid"];
             ward.emit("change");
             district.value = dataTemp["districtid"];
             district.emit("change");
             state.value = dataTemp["stateid"];
             state.emit("change");
+            street.value = 0;
+            street.emit("change");
           } else {
-            if (dataTemp["wardid"] !== undefined) {
-              ward.value = dataTemp["wardid"];
-              ward.emit("change");
+            if (dataTemp["districtid"] !== undefined) {
               district.value = dataTemp["districtid"];
               district.emit("change");
               state.value = dataTemp["stateid"];
               state.emit("change");
-              street.value = 0;
-              street.emit("change");
+              ward.value = 0;
+              ward.emit("change");
             } else {
-              if (dataTemp["districtid"] !== undefined) {
-                district.value = dataTemp["districtid"];
-                district.emit("change");
+              if (dataTemp["stateid"] !== undefined) {
                 state.value = dataTemp["stateid"];
                 state.emit("change");
-                ward.value = 0;
-                ward.emit("change");
+                district.value = 0;
+                district.emit("change");
               } else {
-                if (dataTemp["stateid"] !== undefined) {
-                  state.value = dataTemp["stateid"];
-                  state.emit("change");
-                  district.value = 0;
-                  district.emit("change");
-                } else {
-                  state.value = 0;
-                  state.emit("change");
-                }
+                state.value = 0;
+                state.emit("change");
               }
             }
           }
-
-          self.resetPermission();
-          var objectPermission = self.checkPermission[element.data.value];
-          self.addPermissionParent(JSON.parse(element.data.value));
-
-          for (var i = 0; i < objectPermission.length; i++) {
-            NewAccount_$("div.checkbox_" + objectPermission[i], self.$view).checked = true;
-          }
-
-          self.resetPermissionChoice();
-          element.classList.add("selectedIItem");
         }
+
+        self.resetPermission();
+        var objectPermission = self.checkPermission[this.activeValue];
+        self.addPermissionParent(JSON.parse(this.activeValue));
+
+        for (var i = 0; i < objectPermission.length; i++) {
+          NewAccount_$("div.checkbox_" + objectPermission[i], self.$view).checked = true;
+        }
+
+        self.resetPermissionChoice();
       },
       remove: function remove(event) {
-        if (self.checkPermission[event.itemElt.data.value] !== undefined) {
-          delete self.checkPermission[event.itemElt.data.value] !== undefined;
+        if (self.checkPermission[event.value] !== undefined) {
+          delete self.checkPermission[event.value] !== undefined;
         }
 
-        if (event.itemElt.classList.contains("selectedIItem")) {
-          if (selectPermission.values.indexOf(0) !== -1) {
-            var arrayItem = selectPermission.getElementsByClassName("absol-selectbox-item");
-
-            for (var i = 0; i < arrayItem.length; i++) {
-              if (arrayItem[i].data.value == 0) {
-                arrayItem[i].click();
-                break;
-              }
-            }
-          } else {
-            var arrayItem = selectPermission.getElementsByClassName("absol-selectbox-item");
-
-            if (arrayItem.length) {
-              arrayItem[0].click();
-            }
-          }
-        } else {
-          var selected = NewAccount_$("div.absol-selectbox-item.selectedIItem", selectPermission);
-
-          if (selected !== undefined) {
-            selected.click();
-          }
+        if (this.value == this.activeValue) {
+          if (this.values.length > 0) this.activeValue = this.values[0];
         }
+
+        this.emit("activevaluechange");
       }
     },
     props: {
       items: [],
-      disableClickToFocus: true
+      disableClickToFocus: true,
+      itemFocusable: true
     }
   });
 
@@ -65816,7 +65807,7 @@ NewAccount_NewAccount.prototype.getView = function (dataParent) {
                 var objectPermission = [];
 
                 for (var i = 56; i < 70; i++) {
-                  if (NewAccount_$("div.checkbox_" + i, self.$view).checked == true && NewAccount_$("div.checkbox_" + i, self.$view).disabled == false) {
+                  if (NewAccount_$("div.checkbox_" + i, self.$view).checked == true && NewAccount_$("div.checkbox_" + i, self.$view).disabled !== true) {
                     objectPermission.push(i);
                   }
                 }
@@ -65866,22 +65857,9 @@ NewAccount_NewAccount.prototype.getView = function (dataParent) {
                   selectPermission.values = selectPermission.values;
                 }
 
-                var selected = NewAccount_$("div.absol-selectbox-item.selectedIItem", selectPermission);
-
-                if (selected !== undefined) {
-                  selected.classList.remove("selectedIItem");
-                }
-
-                var arrayItem = selectPermission.getElementsByClassName("absol-selectbox-item");
-
-                for (var i = 0; i < arrayItem.length; i++) {
-                  if (arrayItem[i].data.value == indexValue) {
-                    arrayItem[i].classList.add("selectedIItem");
-                    break;
-                  }
-                }
-
+                selectPermission.activeValue = indexValue;
                 self.checkPermission[indexValue] = objectPermission;
+                selectPermission.emit("activevaluechange");
               }
             },
             props: {
@@ -66036,11 +66014,11 @@ NewAccount_NewAccount.prototype.getView = function (dataParent) {
         selectPermission.values.push(indexValue);
         selectPermission.items = selectPermission.items;
         selectPermission.values = selectPermission.values;
-        var arrayItem = selectPermission.getElementsByClassName("absol-selectbox-item");
+      }
 
-        if (arrayItem.length) {
-          arrayItem[0].click();
-        }
+      if (selectPermission.values.length > 0) {
+        selectPermission.activeValue = selectPermission.values[0];
+        selectPermission.emit("activevaluechange");
       }
     }
   }.bind(this));
@@ -66170,16 +66148,12 @@ NewAccount_NewAccount.prototype.itemAddressOld = function () {
 NewAccount_NewAccount.prototype.resetPermission = function () {
   for (var i = 56; i < 70; i++) {
     if (NewAccount_$("div.checkbox_" + i, this.$view).checked == true) NewAccount_$("div.checkbox_" + i, this.$view).checked = false;
+    console.log(NewAccount_$("div.checkbox_" + i, this.$view));
     if (NewAccount_$("div.checkbox_" + i, this.$view).disabled == true) NewAccount_$("div.checkbox_" + i, this.$view).disabled = false;
   }
 };
 
-NewAccount_NewAccount.prototype.resetPermissionChoice = function () {
-  var selected = NewAccount_$("div.absol-selectbox-item.selectedIItem", this.selectPermission);
-
-  if (selected !== undefined) {
-    selected.classList.remove("selectedIItem");
-  }
+NewAccount_NewAccount.prototype.resetPermissionChoice = function () {// this.selectPermission.activeValue = undefined;
 };
 
 NewAccount_NewAccount.prototype.backPermission = function (objectChild) {
@@ -66274,13 +66248,10 @@ NewAccount_NewAccount.prototype.checkSameAddress = function (objectChild, object
 
 NewAccount_NewAccount.prototype.sameClick = function (param) {
   var objectPermission = param;
-  var arrayItem = this.selectPermission.getElementsByClassName("absol-selectbox-item");
 
-  for (var i = 0; i < arrayItem.length; i++) {
-    if (arrayItem[i].data.value == objectPermission) {
-      if (!arrayItem[i].classList.contains("selectedIItem")) arrayItem[i].click();
-      break;
-    }
+  if (this.selectPermission.activeValue !== objectPermission) {
+    this.selectPermission.activeValue = objectPermission;
+    this.selectPermission.emit("activevaluechange");
   }
 };
 
@@ -66371,14 +66342,7 @@ NewAccount_NewAccount.prototype.setValueNull = function (object) {
 
   if (object == "state") {
     if (this.selectPermission.values.indexOf(0) !== -1) {
-      var arrayItem = this.selectPermission.getElementsByClassName("absol-selectbox-item");
-
-      for (var i = 0; i < arrayItem.length; i++) {
-        if (arrayItem[i].data.value == 0) {
-          arrayItem[i].click();
-          break;
-        }
-      }
+      if (this.selectPermission.values.length > 0) this.selectPermission.activeValue = this.selectPermission.values[0];
     } else {
       this.resetPermission();
       this.resetPermissionChoice();
@@ -66405,10 +66369,9 @@ NewAccount_NewAccount.prototype.getDataSave = function () {
     }
   }
 
-  var arrayItem = this.selectPermission.getElementsByClassName("absol-selectbox-item");
-
-  for (var i = 0; i < arrayItem.length; i++) {
-    arrayItem[i].click();
+  for (var i = 0; i < this.selectPermission.values.length; i++) {
+    this.selectPermission.activeValue = this.selectPermission.values[i];
+    this.selectPermission.emit("activevaluechange");
   }
 
   var permission = _objectSpread({}, this.checkPermission);
@@ -66791,7 +66754,8 @@ MergeRealty_MergeRealty.prototype.getView = function () {
                 innerHTML: "close"
               }
             }]
-          })
+          }),
+          id: itemData.image[j]
         };
         MergeRealty_$(".close-button-img", dataChild.element).addEventListener("click", function (dataChild) {
           dataChild.value = false;
@@ -66829,7 +66793,8 @@ MergeRealty_MergeRealty.prototype.getView = function () {
                 innerHTML: "close"
               }
             }]
-          })
+          }),
+          id: itemData.image[j]
         };
         dataChild["data"] = this.checkImage[itemData.image[j]];
         MergeRealty_$(".close-button-img", dataChild.element).addEventListener("click", function (dataChild) {
@@ -68206,11 +68171,9 @@ MergeRealty_MergeRealty.prototype.itemDisplayNone = function (data) {
 MergeRealty_MergeRealty.prototype.getDataSave = function () {
   var temp = {};
   var data = this.myTool.getData().previewData.properties;
-  console.log(data);
   var advanceDetructElement = data[1].properties[0].properties[6].element.childNodes[0];
   var fitUpdate = 0;
   var inputFit = data[1].properties[1].properties[0].properties[2].item.element;
-  console.log(advanceDetructElement);
   if (inputFit.values.length !== 0) fitUpdate = inputFit.values.reduce(function (a, b) {
     return a + b;
   });
@@ -68221,28 +68184,30 @@ MergeRealty_MergeRealty.prototype.getDataSave = function () {
   advanceDetruct += advanceDetructElement.advanceDetruct4.checked ? 1000 : 0;
   var image = [];
   var arrJuridical = data[3].properties[1].values;
-  console.log(arrJuridical);
 
   for (var i = 0; i < arrJuridical.length; i++) {
     image.push({
-      src: arr[i].id,
+      src: arrJuridical[i].id,
       type: 0,
       userid: window.userid
     });
   }
 
   var arrStatus = data[3].properties[1].values;
-  console.log(arrStatus);
 
   for (var i = 0; i < arrStatus.length; i++) {
+    var thumnail = 0;
+    if (arrStatus[i].element.classList.contains("checked-pizo")) thumnail = 1;
     image.push({
-      src: src,
+      src: arrStatus[i].id,
       type: 1,
-      thumnail: 0,
+      thumnail: thumnail,
       userid: window.userid
     });
   }
 
+  var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, censorship;
+  console.log(data);
   var temp = {
     height: this.inputHeight.value * this.inputUnitHeight.value,
     width: this.inputWidth.value * this.inputUnitWidth.value,
@@ -72064,6 +72029,7 @@ NewRealty_NewRealty.prototype.convenientView = function () {
   var arr = [];
 
   for (var i = 0; i < data.length; i++) {
+    data[i].id = parseInt(data[i].id);
     if (data[i].available === 0) continue;
     arr.push({
       text: data[i].name,
@@ -72115,6 +72081,7 @@ NewRealty_NewRealty.prototype.convenientView = function () {
     var libary = ModuleDatabase["a" /* default */].getModule("equipments").getLibary("id");
 
     for (var i = 0; i < this.data.original.equipment.length; i++) {
+      this.data.original.equipment[i].equipmentid = parseInt(this.data.original.equipment[i].equipmentid);
       temp = libary[this.data.original.equipment[i].equipmentid];
       temp.content = this.data.original.equipment[i].content;
       value.push(this.data.original.equipment[i].equipmentid);
@@ -80587,6 +80554,7 @@ PlanningInformation_PlanningInformation.prototype.setUpDxfFile = function (fileT
   }
 
   var wkt = GeoJSON.parse(dxf);
+  console.log(wkt);
   var center = new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
   window.dcel.extractLines();
   var faces = dcel.internalFaces();
@@ -80595,7 +80563,9 @@ PlanningInformation_PlanningInformation.prototype.setUpDxfFile = function (fileT
   if (lines !== -1) this.addLine(lines);
   if (this.isVisiableLine === true) this.showHideLine();
   this.isVisiableLine = true;
-  this.polygon = this.polygon.concat(this.addWKT(wkt));
+  var tempPolygon = this.addWKT(wkt);
+  this.polygon = this.polygon.concat(tempPolygon);
+  this.hash.polygon = tempPolygon;
   this.mapView.map.setCenter(center);
   this.mapView.map.setZoom(17);
   this.mapView.map.data.setStyle({
@@ -80988,13 +80958,15 @@ PlanningInformation_PlanningInformation.prototype.createHashRow = function (data
 PlanningInformation_PlanningInformation.prototype.saveCurrentDataMap = function () {
   var data = this.createHash(this.polygon);
   var gmt = getGMT();
-  var name;
 
   for (var param in data) {
+    if (param === "polygon") continue;
+
     if (isNaN(param / 1) === true) {
       name = data[param].name;
 
       for (var cellLat in data[param]) {
+        if (cellLat === "polygon") continue;
         var dataLat = data[param][cellLat];
 
         for (var cellLng in dataLat) {
@@ -81065,14 +81037,17 @@ PlanningInformation_PlanningInformation.prototype.saveCurrentDataMap = function 
       }
 
       var x = data[param];
+      var polygon = this.hash.polygon;
       delete data[param];
+      delete data.polygon;
       if (data[gmt] === undefined) data[gmt] = [];
       data[gmt][param] = x;
+      if (polygon) data[gmt].polygon = polygon;
       var date = formatDate(gmt, true, true, true, true, true);
 
       if (this.filterTime.values.indexOf(gmt) == -1) {
         this.filterTime.items.push({
-          text: date,
+          text: this.commitComment + " (" + date + ")",
           value: gmt
         });
         this.filterTime.items = this.filterTime.items;
@@ -81085,10 +81060,13 @@ PlanningInformation_PlanningInformation.prototype.saveCurrentDataMap = function 
   var promiseAllDelete = [];
 
   for (var param in this.hash) {
+    if (param === "polygon") continue;
     if (this.filterTime.values.indexOf(param) == -1) continue;
 
     if (isNaN(param / 1)) {
       for (var ortherLat in this.hash[param]) {
+        if (ortherLat === "polygon") continue;
+
         for (var ortherLng in this.hash[param][ortherLat]) {
           promiseAllDelete.push(ModuleDatabase["a" /* default */].getModule("geometry")["delete"]({
             cellLat: ortherLat,
@@ -81263,21 +81241,63 @@ PlanningInformation_PlanningInformation.prototype.searchControlContent = functio
       enableSearch: true
     },
     on: {
+      click: function click(event) {
+        if (this.disableClick === true) return;else {
+          var element = event.target;
+
+          while (!(element.classList.contains("absol-selectbox-item-close") || element.classList.contains("absol-selectbox-item") || element.classList.contains("absol-selectbox"))) {
+            element = element.parentNode;
+          }
+
+          if (element.data) {
+            self.removeAllSelect();
+            if (self.isVisiableLine === true) self.showHideLine();
+            if (self.editPolygon !== undefined) self.editPolygon.toInActive(this);
+            var path = [];
+            var tempPath;
+            console.log(self.hash, element.data.value);
+            var listPolygon = self.getCurrentWKT(element.data.value);
+
+            if (listPolygon) {
+              for (var i = 0; i < listPolygon.length; i++) {
+                tempPath = [];
+
+                for (var j = 0; j < listPolygon[i].getPath().getLength(); j++) {
+                  tempPath.push(listPolygon[i].getPath().getAt(j).toJSON());
+                }
+
+                listPolygon[i].setMap(null);
+                self.selectPolygon.push(listPolygon[i]);
+                path.push(tempPath);
+              }
+
+              self.createAllPolygon(path);
+            }
+          }
+        }
+      },
       add: function add(event) {
+        var elementThis = this;
+
         if (self.hash[event.value] === undefined) {
+          elementThis.disableClick = true;
           ModuleDatabase["a" /* default */].getModule("geometry").load({
             WHERE: [{
               created: "'" + event.value + "'"
             }]
           }).then(function (value) {
+            var result = [];
+
             for (var i = 0; i < value.length; i++) {
-              self.polygon = self.polygon.concat(self.addWKT(value[i]));
+              result = result.concat(self.addWKT(value[i]));
             }
 
+            self.polygon = self.polygon.concat(result);
+            self.hash[event.value].polygon = result;
             var center = value[value.length - 1];
-            console.log(parseInt(center.cellLat / 10000) + (center.cellLat % 10000 - 1) * (1 / 1110), parseInt(center.cellLng / 10000) + (center.cellLng % 10000 - 1) * (1 / 1110));
             self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat / 10000) + (center.cellLat % 10000 - 1) * (1 / 1110), parseInt(center.cellLng / 10000) + (center.cellLng % 10000 - 1) * (1 / 1110)));
             self.mapView.map.setZoom(17);
+            elementThis.disableClick = false;
           });
         } else {
           self.polygon = self.polygon.concat(self.addCurrentWKT(event.value));
@@ -81458,9 +81478,13 @@ PlanningInformation_PlanningInformation.prototype.addLine = function (lines) {
 
 PlanningInformation_PlanningInformation.prototype.addCurrentWKT = function (created) {
   var toReturn = [];
+  var cellLatTemp;
+  var cellLngTemp;
 
   for (var cellLat in this.hash[created]) {
     for (var cellLng in this.hash[created][cellLat]) {
+      if (cellLatTemp === undefined) cellLatTemp = cellLat;
+      if (cellLngTemp === undefined) cellLngTemp = cellLng;
       var arr = this.hash[created][cellLat][cellLng];
 
       for (var i = 0; i < arr.length; i++) {
@@ -81483,9 +81507,14 @@ PlanningInformation_PlanningInformation.prototype.addCurrentWKT = function (crea
     }
   }
 
-  this.mapView.map.setCenter(new google.maps.LatLng(parseInt(cellLat / 10000) + (cellLat % 10000 - 1) * (1 / 1110), parseInt(cellLng / 10000) + (cellLng % 10000 - 1) * (1 / 1110)));
+  this.mapView.map.setCenter(new google.maps.LatLng(parseInt(cellLatTemp / 10000) + (cellLatTemp % 10000 - 1) * (1 / 1110), parseInt(cellLngTemp / 10000) + (cellLngTemp % 10000 - 1) * (1 / 1110)));
   this.mapView.map.setZoom(17);
+  this.hash[created].polygon = toReturn;
   return toReturn;
+};
+
+PlanningInformation_PlanningInformation.prototype.getCurrentWKT = function (created) {
+  return this.hash[created].polygon;
 };
 
 PlanningInformation_PlanningInformation.prototype.refresh = function () {
@@ -88247,10 +88276,11 @@ App_App.prototype.getPermisionOpenPage = function () {
               menuZone.push({
                 text: "Thông tin quy hoạch",
                 pageIndex: 26
-              }); // menuZone.push( {
-              //     text:"Thông tin quy hoạch chú thích",
-              //     pageIndex:27
-              // })
+              });
+              menuZone.push({
+                text: "Thông tin quy hoạch chú thích",
+                pageIndex: 27
+              });
             }
 
             this.firstElement.push({
@@ -88544,12 +88574,12 @@ App_App.prototype.openPage = function (index) {
       break;
 
     case 27:
-      var mPlanningInformation = new page_PlanningInformation();
-      mPlanningInformation.attach(this);
-      var frameview = mPlanningInformation.getView();
-      this.body.addChild(frameview);
-      this.body.activeFrame(frameview);
-      finalPage = mPlanningInformation;
+      // var mPlanningInformation = new PlanningInformation();
+      // mPlanningInformation.attach(this);
+      // var frameview = mPlanningInformation.getView();
+      // this.body.addChild(frameview);
+      // this.body.activeFrame(frameview);
+      // finalPage = mPlanningInformation;
       break;
 
     case 31:

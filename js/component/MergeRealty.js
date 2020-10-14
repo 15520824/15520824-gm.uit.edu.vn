@@ -696,6 +696,7 @@ MergeRealty.prototype.getView = function() {
         simpleDetruct.advanceDetruct2 = advanceDetruct2;
         simpleDetruct.advanceDetruct3 = advanceDetruct3;
         simpleDetruct.advanceDetruct4 = advanceDetruct4;
+        simpleDetruct
         var tempSelectbox = _({
             tag: "selectmenu",
             class: "pizo-new-realty-detruct-content-structure",
@@ -972,7 +973,7 @@ MergeRealty.prototype.getView = function() {
 
     var dataAcreage = {
         type: 'number',
-        name: 'Đất xây dựng (m²)',
+        name: 'Diện tích (m²)',
         id: 'acreage',
         enableEdit: true,
         action: "single-choice",
@@ -992,7 +993,7 @@ MergeRealty.prototype.getView = function() {
 
     var dataFloorarea = {
         type: 'number',
-        name: 'Đất xây dựng (m²)',
+        name: 'Sàn xây dựng (m²)',
         id: 'floorarea',
         enableEdit: true,
         action: "single-choice",
@@ -1764,28 +1765,44 @@ MergeRealty.prototype.getDataSave = function() {
         image.push({ src: arrStatus[i].id, type: 1, thumnail: thumnail, userid: window.userid });
     }
     var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, censorship;
-    console.log(data)
+    width = data[1].properties[0].properties[0].element;
+    height = data[1].properties[0].properties[1].element;
+    acreage = data[1].properties[0].properties[2].element;
+    landarea = data[1].properties[0].properties[3].element;
+    floorarea = data[1].properties[0].properties[4].element;
+    structure = data[1].properties[0].properties[5].value;
+    direction = data[1].properties[0].properties[7].value;
+    type = data[1].properties[0].properties[8].value;
+    roadwidth = data[1].properties[0].properties[9].value;
+
+    floor = advanceDetructElement.inputFloor.value;
+    basement = advanceDetructElement.inputBasement.value;
+    bedroom = advanceDetructElement.inputBedroom.value;
+    living = advanceDetructElement.inputLiving.value;
+    toilet = advanceDetructElement.inputToilet.value;
+    kitchen = advanceDetructElement.inputKitchen.value;
+
     var temp = {
-        height: this.inputHeight.value * this.inputUnitHeight.value,
-        width: this.inputWidth.value * this.inputUnitWidth.value,
-        landarea: this.inputZone1.value * this.inputUnitZone1.value,
-        floorarea: this.inputZone2.value * this.inputUnitZone2.value,
-        acreage: this.inputZoneAll.value * this.inputUnitZoneAll.value,
-        direction: this.direction.value,
-        type: this.type.value,
+        height: height,
+        width: width,
+        landarea: landarea,
+        floorarea: floorarea,
+        acreage: acreage,
+        direction: direction,
+        type: type,
         fit: fitUpdate,
-        roadwidth: this.inputWidthRoad.value * this.inputUnitWidthRoad.value,
-        floor: this.inputFloor.value,
-        basement: this.inputBasement.value,
-        bedroom: this.inputBedroom.value,
-        living: this.inputLiving.value,
-        toilet: this.inputToilet.value,
-        kitchen: this.inputKitchen.value,
+        roadwidth: roadwidth,
+        floor: floor,
+        basement: basement,
+        bedroom: bedroom,
+        living: living,
+        toilet: toilet,
+        kitchen: kitchen,
         price: this.inputPrice.value * this.inputUnitPrice.value,
         name: data[0].properties[0].value,
         content: this.inputContent.value,
         salestatus: (this.inputLease.checked == true ? 1 : 0) * 10 + (this.inputSell.checked == true ? 1 : 0),
-        structure: this.structure.value,
+        structure: structure,
         pricerent: reFormatNumber(this.inputPriceRent.value) * this.inputPriceRentUnit.value,
         advancedetruct: advanceDetruct,
         juridical: this.juridical.value,

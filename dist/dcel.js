@@ -747,8 +747,7 @@
             var faces = this.faces;
             var boundaryOrigin, maxX, minX, maxY, minY;
             var v, v1
-
-            // Step 1: vertex list creation
+                // Step 1: vertex list creation
             for (var i = 0; i < lines.length; i++) {
                 lines[i].sort(function(a, b) {
                     if (a[0] > b[0]) {
@@ -819,6 +818,7 @@
                 }
             }
             // Step 4: Face assignment
+            console.log(hedges)
             var provlist = hedges.slice(0);
             var nh = hedges.length;
             var i = 0;
@@ -1039,12 +1039,28 @@
                 h2PointCross.twin = h1PointCross;
 
                 if (tempH1 !== undefined) {
-                    arrPointCross[j].hedgelist = this.replaceParam(tempH1, arrPointCross[j].hedgelist, h1PointCross);
+                    var tempIndex = arrPointCross[j].hedgelist.indexOf(tempH1);
+                    if (tempIndex != -1)
+                        arrPointCross[j].hedgelist = this.replaceParam(tempH1, arrPointCross[j].hedgelist, h1PointCross);
+                    else {
+                        arrPointCross[j].hedgelist.push(h1PointCross);
+                        tempIndex = arrPointCross[j - 1].hedgelist.indexOf(tempH1);
+                        if (tempIndex != -1)
+                            arrPointCross[j - 1].hedgelist.splice(tempIndex, 1);
+                    }
                 } else
                     arrPointCross[j].hedgelist.push(h1PointCross);
 
                 if (tempH2 !== undefined) {
-                    arrPointCross[j - 1].hedgelist = this.replaceParam(tempH2, arrPointCross[j - 1].hedgelist, h2PointCross);
+                    var tempIndex = arrPointCross[j - 1].hedgelist.indexOf(tempH2);
+                    if (tempIndex != -1)
+                        arrPointCross[j - 1].hedgelist = this.replaceParam(tempH2, arrPointCross[j - 1].hedgelist, h2PointCross);
+                    else {
+                        arrPointCross[j - 1].hedgelist.push(h2PointCross);
+                        tempIndex = arrPointCross[j].hedgelist.indexOf(tempH2);
+                        if (tempIndex != -1)
+                            arrPointCross[j].hedgelist.splice(tempIndex, 1);
+                    }
                 } else
                     arrPointCross[j - 1].hedgelist.push(h2PointCross)
 
