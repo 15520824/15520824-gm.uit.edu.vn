@@ -11,6 +11,7 @@ import ListStreet from './page/ListStreet';
 import ListState from './page/ListState';
 import ListDistrict from './page/ListDistrict';
 import PlanningInformation from './page/PlanningInformation';
+import NoteInformation from './page/NoteInformation';
 import ListHelp from './page/ListHelp';
 import ListEditHelp from './page/ListEditHelp';
 import ListPositions from './page/ListPositions';
@@ -673,12 +674,12 @@ App.prototype.openPage = function(index) {
             finalPage = mPlanningInformation;
             break;
         case 27:
-            // var mPlanningInformation = new PlanningInformation();
-            // mPlanningInformation.attach(this);
-            // var frameview = mPlanningInformation.getView();
-            // this.body.addChild(frameview);
-            // this.body.activeFrame(frameview);
-            // finalPage = mPlanningInformation;
+            var mNoteInformation = new NoteInformation();
+            mNoteInformation.attach(this);
+            var frameview = mNoteInformation.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
+            finalPage = mNoteInformation;
             break;
         case 31:
             var mListEquipment = new ListEquipment();

@@ -786,7 +786,6 @@ NewRealty.prototype.descViewdetail = function() {
         var addressOld = this.itemAddressOld(this.data.original)
         containerAddress.appendChild(addressOld);
     } else {
-
         var addressCurrent = this.itemAddress();
         containerAddress.appendChild(addressCurrent);
         var map = new MapView();

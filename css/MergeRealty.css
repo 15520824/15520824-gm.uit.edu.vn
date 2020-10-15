@@ -617,7 +617,7 @@
         display: block;
     }
     
-    #price-child .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {
+    .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {
         text-align: right;
     }
     
@@ -650,7 +650,11 @@
         align-items: stretch;
     }
     
-    #price-rent .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {
+    .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {
+        text-align: right;
+    }
+    
+    .pizo-new-realty-detruct-content-price-rent.pizo-new-realty-dectruct-input {
         text-align: right;
     }
     

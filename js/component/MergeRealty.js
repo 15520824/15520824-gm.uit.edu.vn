@@ -696,7 +696,12 @@ MergeRealty.prototype.getView = function() {
         simpleDetruct.advanceDetruct2 = advanceDetruct2;
         simpleDetruct.advanceDetruct3 = advanceDetruct3;
         simpleDetruct.advanceDetruct4 = advanceDetruct4;
-        simpleDetruct
+        simpleDetruct.inputFloor = $("input.pizo-new-realty-dectruct-content-area-floor", simpleDetruct);
+        simpleDetruct.inputBasement = $("input.pizo-new-realty-dectruct-content-area-basement", simpleDetruct);
+        simpleDetruct.inputBedroom = $("input.pizo-new-realty-dectruct-content-area-bedroom", simpleDetruct);
+        simpleDetruct.inputLiving = $("input.pizo-new-realty-dectruct-content-area-living", simpleDetruct);
+        simpleDetruct.inputToilet = $("input.pizo-new-realty-dectruct-content-area-toilet", simpleDetruct);
+        simpleDetruct.inputKitchen = $("input.pizo-new-realty-dectruct-content-area-kitchen", simpleDetruct);
         var tempSelectbox = _({
             tag: "selectmenu",
             class: "pizo-new-realty-detruct-content-structure",
@@ -1764,6 +1769,7 @@ MergeRealty.prototype.getDataSave = function() {
             thumnail = 1;
         image.push({ src: arrStatus[i].id, type: 1, thumnail: thumnail, userid: window.userid });
     }
+    var address, addressOld;
     var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, censorship;
     width = data[1].properties[0].properties[0].element;
     height = data[1].properties[0].properties[1].element;
@@ -1774,13 +1780,19 @@ MergeRealty.prototype.getDataSave = function() {
     direction = data[1].properties[0].properties[7].value;
     type = data[1].properties[0].properties[8].value;
     roadwidth = data[1].properties[0].properties[9].value;
-
     floor = advanceDetructElement.inputFloor.value;
     basement = advanceDetructElement.inputBasement.value;
     bedroom = advanceDetructElement.inputBedroom.value;
     living = advanceDetructElement.inputLiving.value;
     toilet = advanceDetructElement.inputToilet.value;
     kitchen = advanceDetructElement.inputKitchen.value;
+    price = data[1].properties[1].properties[0].properties[0].item.element.childNodes[0].value;
+    pricerent = data[1].properties[1].properties[0].properties[1].item.element.childNodes[0].value;
+    name = data[0].properties[0].properties[0].value;
+    var checkAddress = moduleDatabase.getModule("addresses").getLibary("name");
+    address = { addressid: checkAddress[data[0].properties[0].properties[1].value] };
+    addressOld = { addressid: checkAddress[data[0].properties[0].properties[2].value] };
+    content = data[0].properties[0].properties[3].value;
 
     var temp = {
         height: height,
@@ -1798,106 +1810,32 @@ MergeRealty.prototype.getDataSave = function() {
         living: living,
         toilet: toilet,
         kitchen: kitchen,
-        price: this.inputPrice.value * this.inputUnitPrice.value,
-        name: data[0].properties[0].value,
-        content: this.inputContent.value,
+        price: price,
+        name: name,
+        content: content,
         salestatus: (this.inputLease.checked == true ? 1 : 0) * 10 + (this.inputSell.checked == true ? 1 : 0),
         structure: structure,
-        pricerent: reFormatNumber(this.inputPriceRent.value) * this.inputPriceRentUnit.value,
+        pricerent: pricerent,
         advancedetruct: advanceDetruct,
         juridical: this.juridical.value,
         image: image,
-        censorship: this.inputCensorship.checked == true ? 1 : 0
+        censorship: this.inputCensorship.checked == true ? 1 : 0,
+        addressid: address,
+        addressid_old: addressOld
             // important:this.viewCurrentStaus.getImportTant()
     }
     var arr = [];
-    for (var i = 0; i < this.containerEquipment.childNodes.length; i++) {
-        arr.push(this.containerEquipment.childNodes[i].getData());
+    var containerEquipment = data[2].properties[1].element.childNodes[0].childNodes[0].childNodes[1];
+    for (var i = 0; i < containerEquipment.childNodes.length; i++) {
+        arr.push(containerEquipment.childNodes[i].getData());
     }
     temp.equipment = arr;
-
     var contact = [];
-    for (var i = 0; i < this.containerContact.childNodes.length; i++) {
-        contact.push(this.containerContact.childNodes[i].getData());
+    var containerContact = data[3].properties[0].values;
+    for (var i = 0; i < containerContact.length; i++) {
+        contact.push(containerContact[i].element.getData());
     }
     temp.contact = contact;
-
-    if (this.addressCurrent.data !== undefined) {
-        var address = {};
-        var data = this.addressCurrent.data;
-
-        var lastIndex = data.ward.lastIndexOf("_");
-        if (lastIndex === -1) {
-            address.ward = data.ward;
-            lastIndex = data.district.lastIndexOf("_");
-            if (lastIndex == -1) {
-                address.district = data.district;
-                lastIndex = data.state.lastIndexOf("_");
-                if (lastIndex == -1) {
-                    address.state = data.state;
-                } else {
-                    address.stateid = data.state.slice(lastIndex + 1);
-                }
-            } else
-                address.districtid = data.district.slice(lastIndex + 1);
-        } else
-            address.wardid = data.ward.slice(lastIndex + 1);
-
-        var lastIndex = data.street.lastIndexOf("_");
-        if (lastIndex === -1)
-            address.street = data.street;
-        else
-            address.streetid = data.street.slice(lastIndex + 1);
-
-        address.number = data.number;
-
-        temp.lat = data.lat;
-        temp.lng = data.lng;
-
-        temp.addressid = address;
-    }
-
-    if (this.addressOld.data !== undefined) {
-        var address = {};
-        var data = this.addressOld.data;
-
-        var lastIndex = data.ward.lastIndexOf("_");
-        if (lastIndex === -1) {
-            address.ward = data.ward;
-            lastIndex = data.district.lastIndexOf("_");
-            if (lastIndex == -1) {
-                address.district = data.district;
-                lastIndex = data.state.lastIndexOf("_");
-                if (lastIndex == -1) {
-                    address.state = data.state;
-                } else {
-                    address.stateid = data.state.slice(lastIndex + 1);
-                }
-            } else
-                address.districtid = data.district.slice(lastIndex + 1);
-        } else
-            address.wardid = data.ward.slice(lastIndex + 1);
-
-        var lastIndex = data.street.lastIndexOf("_");
-        if (lastIndex === -1)
-            address.street = data.street;
-        else
-            address.streetid = data.street.slice(lastIndex + 1);
-
-        address.number = data.number;
-
-        temp.addressid_old = address;
-    }
-
-    if (this.data !== undefined) {
-        if (this.data.original !== undefined && this.data.original.id !== undefined)
-            temp.id = this.data.original.id;
-        else if (this.data.id !== undefined)
-            temp.id = this.data.id;
-    }
-    if (this.isRequestEdit) {
-        temp.userid = window.userid;
-    }
     return temp;
 }
 
