@@ -737,3 +737,7 @@
         display: flex;
         width: 100%;
     }
+    
+    .displayNonePriceRent #preview-price-rent {
+        display: none;
+    }

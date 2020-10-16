@@ -1295,6 +1295,15 @@ ListRealty.prototype.merge = function(data, parent, index) {
         self.parent.body.addChild(frameview);
         self.parent.body.activeFrame(frameview);
         self.mergeDB(mMergeRealty, data, parent, index);
+        mMergeRealty.promiseEditDB.then(function(value) {
+            var oldId = value.oldId;
+            delete value.oldId;
+            console.log(value)
+                // moduleDatabase.getModule("activehouses").add(value);
+                // for (var i = 0; i < oldId.length; i++) {
+                //     console.log(oldId[i])
+                // }
+        })
     })
 }
 
