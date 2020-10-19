@@ -259,7 +259,8 @@ MergeRealty.prototype.getView = function() {
                             }
                         ]
                     }),
-                    id: itemData.image[j]
+                    id: itemData.image[j],
+                    copy: this.checkImage[itemData.image[j]].src
                 }
                 $(".close-button-img", dataChild.element).addEventListener("click", function(dataChild) {
                     dataChild.value = false;
@@ -300,7 +301,8 @@ MergeRealty.prototype.getView = function() {
                             }
                         ]
                     }),
-                    id: itemData.image[j]
+                    id: itemData.image[j],
+                    copy: this.checkImage[itemData.image[j]].src
                 }
                 dataChild["data"] = this.checkImage[itemData.image[j]];
                 $(".close-button-img", dataChild.element).addEventListener("click", function(dataChild) {
@@ -1780,7 +1782,7 @@ MergeRealty.prototype.getDataSave = function() {
     var image = [];
     var arrJuridical = data[3].properties[1].values;
     for (var i = 0; i < arrJuridical.length; i++) {
-        image.push({ src: arrJuridical[i].id, type: 0, userid: window.userid });
+        image.push({ src: arrJuridical[i].id, copy: arrJuridical[i].copy, type: 0, userid: window.userid });
     }
 
     var arrStatus = data[3].properties[1].values;
@@ -1788,18 +1790,30 @@ MergeRealty.prototype.getDataSave = function() {
         var thumnail = 0;
         if (arrStatus[i].element.classList.contains("checked-pizo"))
             thumnail = 1;
-        image.push({ src: arrStatus[i].id, type: 1, thumnail: thumnail, userid: window.userid });
+        image.push({ src: arrStatus[i].id, copy: arrStatus[i].copy, type: 1, thumnail: thumnail, userid: window.userid });
     }
     var address, addressOld;
-    var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical;
-    width = data[1].properties[0].properties[0].element;
-    height = data[1].properties[0].properties[1].element;
-    acreage = data[1].properties[0].properties[2].element;
-    landarea = data[1].properties[0].properties[3].element;
-    floorarea = data[1].properties[0].properties[4].element;
+    var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, lat, lng;
+    width = data[1].properties[0].properties[0].element.wholeText;
+    height = data[1].properties[0].properties[1].element.wholeText;
+    acreage = data[1].properties[0].properties[2].element.wholeText;
+    landarea = data[1].properties[0].properties[3].element.wholeText;
+    floorarea = data[1].properties[0].properties[4].element.wholeText;
+    var checkDetruct = {
+        "Chưa xác định": 0,
+        "Đông": 6,
+        "Tây": 4,
+        "Nam": 2,
+        "Bắc": 8,
+        "Đông Bắc": 9,
+        "Đông Nam": 3,
+        "Tây Bắc": 7,
+        "Tây Nam": 1
+    }
     structure = data[1].properties[0].properties[5].value;
-    direction = data[1].properties[0].properties[7].value;
-    type = data[1].properties[0].properties[8].value;
+    direction = checkDetruct[data[1].properties[0].properties[7].value];
+    var checkType = moduleDatabase.getModule("type_activehouses").getLibary("name");
+    type = checkType[data[1].properties[0].properties[8].value].id;
     roadwidth = data[1].properties[0].properties[9].value;
     floor = advanceDetructElement.inputFloor.value;
     basement = advanceDetructElement.inputBasement.value;
@@ -1808,16 +1822,19 @@ MergeRealty.prototype.getDataSave = function() {
     toilet = advanceDetructElement.inputToilet.value;
     kitchen = advanceDetructElement.inputKitchen.value;
     price = data[1].properties[1].properties[0].properties[0].item.element.childNodes[0].value;
-    pricerent = data[1].properties[1].properties[0].properties[1].item.element.childNodes[0].value;
+    pricerent = data[1].properties[1].properties[0].properties[1].item.element.childNodes[0].childNodes[0].value;
     name = data[0].properties[0].properties[0].value;
     var addressData = this.checkAddressName[data[0].properties[0].properties[2].value];
     var addressDataOld = this.checkAddressName[data[0].properties[0].properties[3].value];
-    if (addressData)
-        addressData = { lat: addressData[0], long: addressData[1], id: addressData.data.id };
+    if (addressData) {
+        lat = addressData[0];
+        lng = addressData[1];
+        addressData = { id: addressData.data.addressid };
+    }
     if (addressDataOld)
-        addressDataOld = { id: addressDataOld.data.id };
-    address = { addressid: addressData };
-    addressOld = { addressid: addressDataOld };
+        addressDataOld = { id: addressDataOld.data.addressid_old };
+    address = addressData;
+    addressOld = addressDataOld;
     content = data[0].properties[0].properties[4].value;
     salestatus = data[0].properties[0].properties[1].item.element;
     salestatus = (salestatus.inputLease.checked == true ? 1 : 0) * 10 + (salestatus.inputSell.checked == true ? 1 : 0);
@@ -1851,6 +1868,10 @@ MergeRealty.prototype.getDataSave = function() {
         addressid: address,
         addressid_old: addressOld
     }
+    if (lat)
+        temp.lat = lat;
+    if (lng)
+        temp.lng = lng;
     var arr = [];
     var containerEquipment = data[2].properties[1].element.childNodes[0].childNodes[0].childNodes[1];
     for (var i = 0; i < containerEquipment.childNodes.length; i++) {
@@ -1868,6 +1889,7 @@ MergeRealty.prototype.getDataSave = function() {
         arrID.push(this.data[i].original.id);
     }
     temp.oldId = arrID;
+    console.log(temp)
     return temp;
 }
 

@@ -1,7 +1,7 @@
 import BaseView from '../component/BaseView';
 import Fragment from "absol/src/AppPattern/Fragment";
 import CMDRunner from "absol/src/AppPattern/CMDRunner";
-import "../../css/PlanningInformation.css"
+import "../../css/NoteInformation.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 import { consoleWKT, loaddingWheel, getGMT, formatDate, consoleWKTLine } from '../component/FormatFunction';
@@ -14,7 +14,7 @@ import { confirmQuestion } from '../component/ModuleView';
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function PlanningInformation() {
+function NoteInformation() {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
@@ -22,14 +22,14 @@ function PlanningInformation() {
     this.hash = [];
 }
 
-PlanningInformation.prototype.setContainer = function(parent) {
+NoteInformation.prototype.setContainer = function(parent) {
     this.parent = parent;
 }
 
-Object.defineProperties(PlanningInformation.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
-PlanningInformation.prototype.constructor = PlanningInformation;
+Object.defineProperties(NoteInformation.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
+NoteInformation.prototype.constructor = NoteInformation;
 
-PlanningInformation.prototype.setUpDxfFile = function(fileText, loadding) {
+NoteInformation.prototype.setUpDxfFile = function(fileText, loadding) {
     var parser = new DxfParser();
     var dxf = null;
     try {
@@ -39,20 +39,11 @@ PlanningInformation.prototype.setUpDxfFile = function(fileText, loadding) {
     }
 
     var wkt = GeoJSON.parse(dxf);
-    console.log(wkt);
     var center = new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
-    window.dcel.extractLines();
-    var faces = dcel.internalFaces();
-    wkt = consoleWKT(faces);
-    var lines = consoleWKTLine(window.dcel.checkHedges);
+    console.log(window.dcel.lines);
+    var lines = consoleWKTLine(window.dcel.lines);
     if (lines !== -1)
         this.addLine(lines);
-    if (this.isVisiableLine === true)
-        this.showHideLine();
-    this.isVisiableLine = true;
-    var tempPolygon = this.addWKT(wkt);
-    this.polygon = this.polygon.concat(tempPolygon);
-    this.hash.polygon = tempPolygon;
     this.mapView.map.setCenter(center);
     this.mapView.map.setZoom(17);
     this.mapView.map.data.setStyle({
@@ -64,22 +55,7 @@ PlanningInformation.prototype.setUpDxfFile = function(fileText, loadding) {
     loadding.disable();
 }
 
-PlanningInformation.prototype.showHideLine = function() {
-    if (this.lines)
-        if (this.isVisiableLine === true) {
-            for (var i = 0; i < this.lines.length; i++) {
-                this.lines[i].setMap(null);
-            }
-            this.isVisiableLine = false
-        } else {
-            for (var i = 0; i < this.lines.length; i++) {
-                this.lines[i].setMap(this.mapView.map);
-            }
-            this.isVisiableLine = true;
-        }
-}
-
-PlanningInformation.prototype.getView = function() {
+NoteInformation.prototype.getView = function() {
     if (this.$view) return this.$view;
     var self = this;
     var allinput = _({
@@ -94,35 +70,6 @@ PlanningInformation.prototype.getView = function() {
     }
 
     var mapView = new MapView();
-    // Set CSS for the control button
-    var controlDiv = document.createElement('div');
-    var controlUI = document.createElement('div');
-    controlUI.style.backgroundColor = '#444';
-    controlUI.style.borderStyle = 'solid';
-    controlUI.style.borderWidth = '1px';
-    controlUI.style.borderColor = 'white';
-    controlUI.style.height = '28px';
-    controlUI.style.marginTop = '5px';
-    controlUI.style.cursor = 'pointer';
-    controlUI.style.textAlign = 'center';
-    controlUI.title = 'Click to center map on your location';
-    controlDiv.appendChild(controlUI);
-
-    // Set CSS for the control text
-    var controlText = document.createElement('div');
-    controlText.style.fontFamily = 'Arial,sans-serif';
-    controlText.style.fontSize = '10px';
-    controlText.style.color = 'white';
-    controlText.style.paddingLeft = '10px';
-    controlText.style.paddingRight = '10px';
-    controlText.style.marginTop = '8px';
-    controlText.innerHTML = 'Chọn để ẩn hiện nét đã bỏ';
-    controlUI.appendChild(controlText);
-
-    // Setup the click event listeners to geolocate user
-    google.maps.event.addDomListener(controlUI, 'click', this.showHideLine.bind(this));
-
-    mapView.map.controls[google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
 
     this.searchControl = this.searchControlContent();
 
@@ -401,7 +348,7 @@ PlanningInformation.prototype.getView = function() {
     return this.$view;
 }
 
-PlanningInformation.prototype.removeAllSelect = function() {
+NoteInformation.prototype.removeAllSelect = function() {
     var self = this;
     if (self.allPolygon !== undefined) {
         for (var i = 0; i < self.selectPolygon.length; i++) {
@@ -420,7 +367,7 @@ PlanningInformation.prototype.removeAllSelect = function() {
     }
 }
 
-PlanningInformation.prototype.createHash = function(arr) {
+NoteInformation.prototype.createHash = function(arr) {
     var data = [];
     for (var i = 0; i < arr.length; i++) {
         this.createHashRow(arr[i], data);
@@ -428,7 +375,7 @@ PlanningInformation.prototype.createHash = function(arr) {
     return data;
 }
 
-PlanningInformation.prototype.createHashRow = function(data, hash) {
+NoteInformation.prototype.createHashRow = function(data, hash) {
     var intLat, intLng, cellLat, cellLng, created;
     var center = data.getBounds().getCenter().toJSON();
     intLng = parseInt(center.lng / 1);
@@ -456,7 +403,7 @@ PlanningInformation.prototype.createHashRow = function(data, hash) {
 
 }
 
-PlanningInformation.prototype.saveCurrentDataMap = function() {
+NoteInformation.prototype.saveCurrentDataMap = function() {
     var data = this.createHash(this.polygon);
     var gmt = getGMT();
     for (var param in data) {
@@ -602,7 +549,7 @@ PlanningInformation.prototype.saveCurrentDataMap = function() {
     this.hash = data;
 }
 
-PlanningInformation.prototype.addEventPolygon = function(polygon) {
+NoteInformation.prototype.addEventPolygon = function(polygon) {
     var self = this;
     google.maps.event.addListener(polygon, 'click', function(event) {
         if (moduleDatabase.checkPermission[0].indexOf(31) == -1)
@@ -656,7 +603,7 @@ PlanningInformation.prototype.addEventPolygon = function(polygon) {
     });
 }
 
-PlanningInformation.prototype.selectPolygonFunction = function(bns) {
+NoteInformation.prototype.selectPolygonFunction = function(bns) {
     if (moduleDatabase.checkPermission[0].indexOf(31) == -1) {
         return;
     }
@@ -679,19 +626,11 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns) {
             }
         }
     }
-    var minX, maxX, minY, maxY;
-    minX = bns[this.b].i;
-    maxX = bns[this.b].j;
-    minY = bns[this.a].i;
-    maxY = bns[this.a].j;
-    while (0 > maxY)
-        maxY += 180;
-    maxY += 180;
     for (var i = 0; i < this.polygon.length; i++) {
         tempPath = [];
         var boundary = this.polygon[i].boundary();
-        if (minX < boundary.min.lat && boundary.max.lat < maxX &&
-            minY < boundary.min.lng && boundary.max.lng < maxY) {
+        if (bns[this.b].i < boundary.min.lat && boundary.max.lat < bns[this.b].j &&
+            bns[this.a].i < boundary.min.lng && boundary.max.lng < bns[this.a].j) {
             for (var j = 0; j < this.polygon[i].getPath().getLength(); j++) {
                 tempPath.push(this.polygon[i].getPath().getAt(j).toJSON())
             }
@@ -703,7 +642,7 @@ PlanningInformation.prototype.selectPolygonFunction = function(bns) {
     this.createAllPolygon(path)
 }
 
-PlanningInformation.prototype.createAllPolygon = function(path) {
+NoteInformation.prototype.createAllPolygon = function(path) {
     var polygon = new google.maps.Polygon({
         paths: path,
         strokeColor: "#eb4034",
@@ -726,7 +665,7 @@ PlanningInformation.prototype.createAllPolygon = function(path) {
     return polygon;
 }
 
-PlanningInformation.prototype.searchControlContent = function() {
+NoteInformation.prototype.searchControlContent = function() {
     var self = this;
     var filterTime = _({
         tag: "selectbox",
@@ -900,7 +839,7 @@ PlanningInformation.prototype.searchControlContent = function() {
     return temp;
 }
 
-PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
+NoteInformation.prototype.addWKT = function(multipolygonWKT) {
     if (this.hash === undefined)
         this.hash = [];
     var created, name;
@@ -935,7 +874,7 @@ PlanningInformation.prototype.addWKT = function(multipolygonWKT) {
     return toReturn;
 }
 
-PlanningInformation.prototype.addLine = function(lines) {
+NoteInformation.prototype.addLine = function(lines) {
     var wkt = new Wkt.Wkt();
     wkt.read(lines);
     var toReturn = [];
@@ -956,7 +895,7 @@ PlanningInformation.prototype.addLine = function(lines) {
     return toReturn;
 }
 
-PlanningInformation.prototype.addCurrentWKT = function(created) {
+NoteInformation.prototype.addCurrentWKT = function(created) {
     var toReturn = [];
     var cellLatTemp;
     var cellLngTemp;
@@ -993,12 +932,12 @@ PlanningInformation.prototype.addCurrentWKT = function(created) {
     return toReturn;
 }
 
-PlanningInformation.prototype.getCurrentWKT = function(created) {
+NoteInformation.prototype.getCurrentWKT = function(created) {
     return this.hash[created].polygon;
 }
 
 
-PlanningInformation.prototype.refresh = function() {
+NoteInformation.prototype.refresh = function() {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -1006,7 +945,7 @@ PlanningInformation.prototype.refresh = function() {
         this.setData(data);
 };
 
-PlanningInformation.prototype.setData = function(data) {
+NoteInformation.prototype.setData = function(data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -1014,7 +953,7 @@ PlanningInformation.prototype.setData = function(data) {
         this.flushDataToView();
 };
 
-PlanningInformation.prototype.flushDataToView = function() {
+NoteInformation.prototype.flushDataToView = function() {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -1029,8 +968,8 @@ PlanningInformation.prototype.flushDataToView = function() {
     }
 };
 
-PlanningInformation.prototype.start = function() {
+NoteInformation.prototype.start = function() {
 
 }
 
-export default PlanningInformation;
+export default NoteInformation;

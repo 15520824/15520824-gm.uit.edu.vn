@@ -46,16 +46,19 @@ while (isset($data["addressid".$index]))
     }
     if(isset($address["id"])){
         $addressid = $address["id"];
-        $dataInsertAddress = array(
-            'id' => $addressid,
-            'lng' => $address["lng"],
-            'lat' => $address["lat"]
-        );
-       $connector-> update($prefix."addresses", $dataInsertAddress);
-       array_push($update,
-       array(
-        'addresses'=> $dataInsertAddress
-        ));
+        if(isset($address["lng"])&&isset($address["lat"]))
+        {
+            $dataInsertAddress = array(
+                'id' => $addressid,
+                'lng' => $address["lng"],
+                'lat' => $address["lat"]
+            );
+           $connector-> update($prefix."addresses", $dataInsertAddress);
+           array_push($update,
+           array(
+            'addresses'=> $dataInsertAddress
+            ));
+        }
     }else{
         if(isset($address["wardid"]))
         {

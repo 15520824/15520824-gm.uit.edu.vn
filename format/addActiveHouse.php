@@ -39,19 +39,20 @@ while (isset($data["addressid".$index]))
     $address=$data["addressid".$index];
     if(isset($address["id"])){
         $addressid = $address["id"];
-        $dataInsertAddress = array(
-            'id' => $addressid,
-            'lng' => $address["lng"],
-            'lat' => $address["lat"]
-        );
-       $connector-> update($prefix."addresses", $dataInsertAddress);
-       array_push($update,
-       array(
-        'addresses'=> $dataInsertAddress
-        ));
+        if(isset($address["lng"])&&isset($address["lat"]))
+        {
+            $dataInsertAddress = array(
+                'id' => $addressid,
+                'lng' => $address["lng"],
+                'lat' => $address["lat"]
+            );
+           $connector-> update($prefix."addresses", $dataInsertAddress);
+           array_push($update,
+           array(
+            'addresses'=> $dataInsertAddress
+            ));
+        }
     }else{
-        
-        
         if(isset($address["wardid"]))
         {
             $wardid = $address["wardid"];
@@ -135,7 +136,6 @@ while (isset($data["addressid".$index]))
                 array(
                     'addresses'=>$dataInsertAddress
                 ));
-            
         }else
         {
             $addressid = $dataAddress[0]["id"];
@@ -149,7 +149,6 @@ while (isset($data["addressid".$index]))
 }
 
 $result = $connector-> insert($prefix."activehouses", $data);
-echo $connector->lastquery;
 $data["id"] = $result;
 
 if(isset($data["equipment"]))
@@ -189,6 +188,7 @@ if(isset($data["equipment"]))
         ));
     }
 }
+
 for($i = 0 ;$i<$count_old;$i++)
 {
     $connector->query( "DELETE FROM ".$prefix."house_equipments  WHERE (id = ".$equipment_old[$i]["id"].")");
@@ -263,7 +263,6 @@ for($i = 0 ;$i<$count_old;$i++)
     $connector->query("DELETE FROM ".$prefix."contact_link WHERE( id = ".$contact_old[$i]["id"].")");
 }
 
-
 $image_old = $connector->load($prefix."image","houseid = ".$data["id"]);
 
 $milliseconds = round(microtime(true) * 1000);
@@ -278,24 +277,51 @@ if(isset($data["image"]))
         $img = $images[$i];
         if (is_numeric($img["src"]))
         {
-            for($j = 0;$j<count($image_old);$j++)
+            if(isset($img["copy"]))
             {
-                if($img["src"]==$image_old[$j]["id"])
+                if (!copy(UPLOAD_DIR.$img["copy"], UPLOAD_DIR."new".$img["copy"])) {
+                    echo "failed to copy ".$img['copy']."...\n";
+                }else
                 {
-                    if(isset($img["thumnail"])&&$image_old[$j]["thumnail"]!=$img["thumnail"])
+                    $thumnail = 0;
+                    if(isset($img["thumnail"]))
+                    $thumnail = $img["thumnail"];
+
+                    $obj_list = array(
+                        'src' => $img["copy"]."new",
+                        'type' => $img["type"],
+                        'houseid' => $data["id"],
+                        'created' => new DateTime(),
+                        'thumnail' => $thumnail,
+                        'userid' => $img["userid"]
+                    );
+                    $image_id = $connector->insert($prefix.'image', $obj_list);
+                    array_push($insert,array(
+                        'image'=>$obj_list
+                    ));
+                    $data["image"][$i] = $image_id;
+                }
+            }else
+            {
+                for($j = 0;$j<count($image_old);$j++)
+                {
+                    if($img["src"]==$image_old[$j]["id"])
                     {
-                        $connector->update($prefix.'image', array(
-                            "id"=>$img["src"],
-                            "thumnail"=>$img["thumnail"]
-                        ));
-                        $image_old[$j]["thumnail"] = $img["thumnail"];
-                        array_push($update,array(
-                            'image'=>$image_old[$j]
-                        ));
+                        if(isset($img["thumnail"])&&$image_old[$j]["thumnail"]!=$img["thumnail"])
+                        {
+                            $connector->update($prefix.'image', array(
+                                "id"=>$img["src"],
+                                "thumnail"=>$img["thumnail"]
+                            ));
+                            $image_old[$j]["thumnail"] = $img["thumnail"];
+                            array_push($update,array(
+                                'image'=>$image_old[$j]
+                            ));
+                        }
+                        array_splice($image_old,$j,1);
+                        $data["image"][$i] = intval($img["src"]);
+                        break;
                     }
-                    array_splice($image_old,$j,1);
-                    $data["image"][$i] = intval($img["src"]);
-                    break;
                 }
             }
             continue;
