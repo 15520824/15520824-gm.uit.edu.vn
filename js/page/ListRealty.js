@@ -768,10 +768,91 @@ ListRealty.prototype.getDataRow = function(data) {
     return result;
 }
 
+function getEditDistance(a, b) {
+    if (a.length == 0) return b.length;
+    if (b.length == 0) return a.length;
+
+    var matrix = [];
+
+    // increment along the first column of each row
+    var i;
+    for (i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
+
+    // increment each column in the first row
+    var j;
+    for (j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
+
+    // Fill in the rest of the matrix
+    for (i = 1; i <= b.length; i++) {
+        for (j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) == a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, // substitution
+                    Math.min(matrix[i][j - 1] + 1, // insertion
+                        matrix[i - 1][j] + 1)); // deletion
+            }
+        }
+    }
+
+    return matrix[b.length][a.length];
+};
+
+ListRealty.prototype.mergeFilter = function(data) {
+    var checkAvaliable = [];
+    var result = [];
+    var tempData;
+    var tempPushData;
+    var indexData;
+    var index;
+    for (var i = 0; i < data.length; i++) {
+        indexData = data[i];
+        tempData = checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]];
+        if (tempData)
+            for (var j = 0; j < tempData.length; j++) {
+                if (tempData[j] !== undefined && getEditDistance(tempData[j][4], indexData[4]) <= indexData[4].length / 3) {
+                    tempPushData = result[indexData[5] + indexData[6] + indexData[7] + indexData[8]];
+                    if (tempPushData === undefined)
+                        tempPushData = [];
+                    if (indexData.visiable == undefined) {
+                        tempPushData.push(indexData);
+                        indexData.visiable = true;
+                        data.splice(i, 1);
+                        i--;
+                    }
+                    if (tempData[j][4].visiable == undefined) {
+                        index = data.indexOf(tempData[j]);
+                        if (index !== -1) {
+                            tempPushData.push(tempData[j]);
+                            tempData[j].visiable = true;
+                            data.splice(index, 1);
+                            i--;
+                        }
+                    }
+                    result[indexData[5] + indexData[6] + indexData[7] + indexData[8]] = tempPushData;
+                }
+            }
+        if (checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]] == undefined)
+            checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]] = [];
+        checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]].push(indexData);
+    }
+    var length = data.length;
+    var final = [...data];
+    for (var param in result) {
+        data.splice.apply(data, [0, length].concat(result[param]));
+        length = 0;
+    }
+    data.ortherFilter = true;
+    return final;
+}
 
 ListRealty.prototype.searchControlContent = function() {
     var startDay, endDay;
-
+    var self = this;
     startDay = _({
         tag: 'calendar-input',
         data: {
@@ -921,6 +1002,40 @@ ListRealty.prototype.searchControlContent = function() {
                                 ]
                             }]
                         },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-price",
+                            child: [{
+                                tag: "div",
+                                class: "pizo-list-realty-main-search-control-row-HT",
+                                child: [{
+                                        tag: "span",
+                                        class: "pizo-list-realty-main-search-control-row-price-label",
+                                        props: {
+                                            innerHTML: "Cần gộp"
+                                        }
+                                    },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-list-realty-main-search-control-row-HT-checkbox",
+                                        child: [{
+                                            tag: "checkbox",
+                                            on: {
+                                                change: function(event) {
+                                                    if (this.checked === true) {
+                                                        this.ortherData = self.mergeFilter(self.mTable.data);
+                                                        self.mTable.updateTable();
+                                                    } else {
+                                                        self.mTable.data.splice.apply(self.mTable.data, [self.mTable.data.length, 0].concat(this.ortherData));
+                                                        self.HTinput.emit("change");
+                                                    }
+                                                }
+                                            }
+                                        }]
+                                    }
+                                ]
+                            }]
+                        }
                         // {
                         //     tag: "div",
                         //     class: "pizo-list-realty-main-search-control-row-phone",
@@ -1296,10 +1411,8 @@ ListRealty.prototype.merge = function(data, parent, index) {
         self.parent.body.activeFrame(frameview);
         self.mergeDB(mMergeRealty, data, parent, index);
         mMergeRealty.promiseEditDB.then(function(value) {
-            var oldId = value.oldId;
-            delete value.oldId;
-            moduleDatabase.getModule("activehouses").add(value).then(function(value) {
-                self.addView(value);
+            moduleDatabase.getModule("activehouses").add(value).then(function(final) {
+                self.addView(final);
             });
             for (var i = 0; i < oldId.length; i++) {
                 console.log(oldId[i])

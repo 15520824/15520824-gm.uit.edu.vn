@@ -1827,13 +1827,16 @@ MergeRealty.prototype.getDataSave = function() {
     name = data[0].properties[0].properties[0].value;
     var addressData = this.checkAddressName[data[0].properties[0].properties[2].value];
     var addressDataOld = this.checkAddressName[data[0].properties[0].properties[3].value];
+    var addressReal;
+    var addressRealOld;
     if (addressData) {
         lat = addressData[0];
         lng = addressData[1];
-        addressData = { id: addressData.data.addressid };
+        addressReal = { id: addressData.data.addressid };
     }
     if (addressDataOld)
-        addressDataOld = { id: addressDataOld.data.addressid_old };
+        addressRealOld = { id: addressDataOld.data.addressid_old };
+
     address = addressData;
     addressOld = addressDataOld;
     content = data[0].properties[0].properties[4].value;
@@ -1866,8 +1869,8 @@ MergeRealty.prototype.getDataSave = function() {
         juridical: juridical,
         image: image,
         censorship: 1,
-        addressid: address,
-        addressid_old: addressOld
+        addressid: addressReal,
+        addressid_old: addressRealOld
     }
     if (lat)
         temp.lat = lat;

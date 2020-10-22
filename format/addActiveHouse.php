@@ -147,7 +147,12 @@ while (isset($data["addressid".$index]))
     break;
     $index = "_old";
 }
-
+if(!isset($data["addressid_old"]))
+$data["addressid_old"] = 0;
+if($data["oldId"])
+{
+    $oldId = $data["oldId"];
+}
 $result = $connector-> insert($prefix."activehouses", $data);
 $data["id"] = $result;
 
@@ -376,8 +381,25 @@ for($i = 0;$i<count($image_old);$i++)
         echo 'Could not delete '.$filename.', file does not exist';
       }
 }
-
+if(isset($oldId))
+{
+    for($i=0;$i<count($oldId);$i++)
+    {
+        $tempData = $connector->load($prefix."activehouses","id =".$oldId[$i]);
+        if(count($tempData)>0)
+        {
+            $connector->query("DELETE FROM ".$prefix."activehouses WHERE id =".$oldId[$i]);
+            $tempData["previousid"] = $oldId[$i];
+            unset($tempData["id"]);
+            $tempData["id"] = $connector->insert($prefix."inactivehouses",$tempData);
+            array_push($insert,array(
+                'inactivehouses'=>$tempData
+            ));
+        }
+    }
+}
 $result = array(
+    'delete'=>$delete,
     'data'=>$data,
     'add'=>$insert,
     'update'=>$update

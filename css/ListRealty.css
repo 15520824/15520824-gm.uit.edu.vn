@@ -134,15 +134,11 @@
     min-height: 0.0714rem;
     display: inline-block;
     vertical-align: bottom;
-    width: 20%;
+    height: 30px;
 }
 
 .pizo-list-realty-main-search-control-row-date {
     width: calc(18% + 1.4286rem);
-}
-
-.pizo-list-realty-main-search-control-row-price {
-    width: calc(36% - 2.1429rem);
 }
 
 .pizo-list-realty-main-search-control-row-phone {
@@ -356,6 +352,7 @@
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
+    height: 30px;
 }
 
 .pizo-list-realty-main-search-control-row-HT {
@@ -364,7 +361,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-    align-items: stretch;
+    align-items: center;
 }
 
 .pizo-list-realty-main-search-control-row-price-label {

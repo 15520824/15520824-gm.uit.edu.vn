@@ -1564,9 +1564,10 @@ tableView.prototype.getBodyTable = function(data, index = 0) {
 
     for (;
         (i < data.length && this.indexRow < this.tempIndexRow); i++) {
-        if (data[i].child !== undefined)
+        if (data[i].child !== undefined) {
             data[i].child.updateVisible = data.updateVisible;
-
+            data[i].child.ortherFilter = data.ortherFilter;
+        }
         if (data.updateVisible === true) {
             var tempCheck = data[i].confirm;
             data[i].confirm = undefined;
@@ -1591,6 +1592,12 @@ tableView.prototype.getBodyTable = function(data, index = 0) {
                 data[i].visiable = undefined;
                 if (data[i].child !== undefined)
                     result.setVisiableAllNoneUpdate(data[i].child)
+            } else if (data.ortherFilter === true) {
+                if (data[i].visiable === undefined) {
+                    if (data[i].child !== undefined)
+                        result.getBodyTable(data[i].child);
+                    continue;
+                }
             }
         }
         if (index !== 0) {
@@ -1626,6 +1633,7 @@ tableView.prototype.getBodyTable = function(data, index = 0) {
     if (result.checkMargin !== undefined)
         result.checkMargin();
 
+    data.ortherFilter = undefined;
     data.updateVisible = undefined;
     result.childrenNodes = result.childrenNodes.concat(arr);
     // this.indexRow = 0;
@@ -2198,8 +2206,14 @@ tableView.prototype.getTrueCheckBox = function() {
 tableView.prototype.checkChildCheckBox = function(data, indexCheckBox) {
     var arr = [];
     for (var i = 0; i < data.length; i++) {
-        if (data[i][indexCheckBox] == true || data[i][indexCheckBox]["value"] == true)
+        if (data[i][indexCheckBox] == true) {
+            data[i][indexCheckBox] = false;
             arr.push(data[i]);
+        }
+        if (data[i][indexCheckBox]["value"] == true) {
+            data[i][indexCheckBox]["value"] = false;
+            arr.push(data[i]);
+        }
         if (data[i].child.length > 0)
             arr.concat(this.checkChildCheckBox(data[i].child, indexCheckBox));
     }
@@ -2565,6 +2579,7 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
     if (data !== undefined) {
         if (result.paginationElement !== undefined && result.paginationElement.reActive)
             result.paginationElement.reActive();
+        result.realTable.parentNode.resetHash();
     }
 }
 
