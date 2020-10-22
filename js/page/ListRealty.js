@@ -1298,10 +1298,12 @@ ListRealty.prototype.merge = function(data, parent, index) {
         mMergeRealty.promiseEditDB.then(function(value) {
             var oldId = value.oldId;
             delete value.oldId;
-            // moduleDatabase.getModule("activehouses").add(value);
-            // for (var i = 0; i < oldId.length; i++) {
-            //     console.log(oldId[i])
-            // }
+            moduleDatabase.getModule("activehouses").add(value).then(function(value) {
+                self.addView(value);
+            });
+            for (var i = 0; i < oldId.length; i++) {
+                console.log(oldId[i])
+            }
         })
     })
 }

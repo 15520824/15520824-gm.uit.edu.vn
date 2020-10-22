@@ -5,7 +5,7 @@ import '../../css/tablesort.css';
 // import TabView from 'absol-acomp/js/TabView';
 import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
-import {insertAfter, isNumeric} from './FormatFunction';
+import { insertAfter, isNumeric } from './FormatFunction';
 
 import Slip from './slip.js';
 
@@ -18,15 +18,17 @@ export function ModuleView() {
 }
 
 export function alignFormCss(element, elementDynamic, GroupElement = []) {
-    var maxColumn = [], k, maxWidth, longElement = 0, check = [], countRow = [];
+    var maxColumn = [],
+        k, maxWidth, longElement = 0,
+        check = [],
+        countRow = [];
     for (var i = 0; i < element.length; i++) {
         k = 0;
         if (check.includes(element[i])) {
             element.splice(i, 1);
             i--;
             continue;
-        }
-        else {
+        } else {
             check.push(element[i])
         }
         for (var j = 0; j < element[i].childNodes.length; j++) {
@@ -61,11 +63,11 @@ export function alignFormCss(element, elementDynamic, GroupElement = []) {
             if (elementDynamic !== j || (Array.isArray(elementDynamic) && elementDynamic.includes(j))) {
                 value = '';
 
-                element[i].classList.forEach(function (result) {
+                element[i].classList.forEach(function(result) {
                     value += "." + result;
                 })
                 value += ' ';
-                element[i].childNodes[j].classList.forEach(function (result) {
+                element[i].childNodes[j].classList.forEach(function(result) {
                     value += "." + result;
                 })
                 var marginYes = 0;
@@ -92,16 +94,16 @@ export function alignFormCss(element, elementDynamic, GroupElement = []) {
         }
     }
     if (Dynamic.length !== 0) {
-        Dynamic.forEach(function (result, index) {
+        Dynamic.forEach(function(result, index) {
             for (var i = 0; i < Dynamic[index].length; i++) {
                 element[index].childNodes[Dynamic[index]]
                 value = '';
 
-                element[index].classList.forEach(function (result) {
+                element[index].classList.forEach(function(result) {
                     value += "." + result;
                 })
                 value += ' ';
-                element[index].childNodes[Dynamic[index]].classList.forEach(function (result) {
+                element[index].childNodes[Dynamic[index]].classList.forEach(function(result) {
                     value += "." + result;
                 })
 
@@ -141,8 +143,9 @@ function getDefaultFontSize(pa) {
 }
 
 export function selectElement(nameClass, elementDynamic) {
-    var ElementStack = [], GroupElement = [];
-    window.addEventListener("click", function (event) {
+    var ElementStack = [],
+        GroupElement = [];
+    window.addEventListener("click", function(event) {
         var elementTarget = event.target;
         while (elementTarget.classList !== undefined && !elementTarget.classList.contains(nameClass))
             elementTarget = elementTarget.parentNode;
@@ -151,14 +154,14 @@ export function selectElement(nameClass, elementDynamic) {
         }
     })
 
-    window.addEventListener("keydown", function (event) {
+    window.addEventListener("keydown", function(event) {
         if (event.keyCode === 27) {
             alignFormCss(ElementStack, elementDynamic, GroupElement)
         }
     })
 }
 
-export function unit_Long(functionX = function () { }) {
+export function unit_Long(functionX = function() {}) {
     return _({
         tag: "selectmenu",
         class: "pizo-new-realty-dectruct-content-area-unit",
@@ -175,7 +178,7 @@ export function unit_Long(functionX = function () { }) {
     });
 }
 
-export function unit_Zone(functionX = function () { }) {
+export function unit_Zone(functionX = function() {}) {
     return _({
         tag: "selectmenu",
         class: "pizo-new-realty-dectruct-content-area-unit-size",
@@ -193,44 +196,43 @@ export function unit_Zone(functionX = function () { }) {
 }
 
 export function input_choicenumber(point, callback) {
-    var input = absol._(
-        {
-            tag: "input",
-            class: "quantumWizTextinputPaperinputInput",
-            props: {
-                type: "number",
-                autocomplete: "off",
-                min: 0,
-                max: 999999,
-                step: 1,
-                dir: "auto",
-                badinput: false,
-                value: point
+    var input = absol._({
+        tag: "input",
+        class: "quantumWizTextinputPaperinputInput",
+        props: {
+            type: "number",
+            autocomplete: "off",
+            min: 0,
+            max: 999999,
+            step: 1,
+            dir: "auto",
+            badinput: false,
+            value: point
+        },
+        on: {
+            focus: function() {
+                return (function(input) {
+                    input.classList.add("isFocused");
+                })(input);
             },
-            on: {
-                focus: function () {
-                    return (function (input) {
-                        input.classList.add("isFocused");
-                    })(input);
-                },
-                blur: function () {
-                    return (function (input) {
-                        input.classList.remove("isFocused");
-                    })(input);
-                },
-                input: function () {
-                    return (function () {
-                        input.requestUpdateSize();
-                        if (callback !== undefined)
-                            callback(input.value);
-                    })();
-                }
+            blur: function() {
+                return (function(input) {
+                    input.classList.remove("isFocused");
+                })(input);
+            },
+            input: function() {
+                return (function() {
+                    input.requestUpdateSize();
+                    if (callback !== undefined)
+                        callback(input.value);
+                })();
             }
-        })
-    input.getValue = function () {
+        }
+    })
+    input.getValue = function() {
         return input.value;
     };
-    input.requestUpdateSize = function () {
+    input.requestUpdateSize = function() {
         input.style.width = fakeInput(input.value, 14) + 15 + "px";
     };
     input.requestUpdateSize();
@@ -311,28 +313,28 @@ function moveElement(event, me, result, index) {
     var scrollParent = result.realTable.parentNode;
     while (scrollParent) {
         var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
-        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight || scrollParent.clientWidth < scrollParent.scrollWidth)) break;
         scrollParent = scrollParent.parentElement;
     }
     if (scrollParent)
-    scrollParent.addEventListener("scroll", function (event) {
-        bg.isMove = false;
-        outFocus(clone, trigger, functionCheckZone, bg, result);
-    })
+        scrollParent.addEventListener("scroll", function(event) {
+            bg.isMove = false;
+            outFocus(clone, trigger, functionCheckZone, bg, result);
+        })
 
     var trigger;
     var height = 112;
     if (result.height !== undefined)
         height = result.height;
     var clone = result.cloneColumn(index);
-    var bg = result.backGround(height, function () {
+    var bg = result.backGround(height, function() {
         if (bg.noAction !== true)
             result.deleteColumn(index);
     }, index);
 
 
 
-    var functionCheckZone = function (event) {
+    var functionCheckZone = function(event) {
         if (AABBYY(window.xMousePos, window.yMousePos, bg.getDeleteZone().getBoundingClientRect())) {
             if (!bg.classList.contains("focus-blast"))
                 bg.classList.add("focus-blast");
@@ -365,9 +367,9 @@ function moveElement(event, me, result, index) {
     let shiftX = clone.clientWidth / 2;
     let shiftY = clone.clientHeight / 2;
     moveAt(clone, event.pageX, event.pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result);
-    window.addEventListener('mousemove', trigger = function (event) { onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, result)});
+    window.addEventListener('mousemove', trigger = function(event) { onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, result) });
 
-    window.onmouseup = function () {
+    window.onmouseup = function() {
         bg.isMove = false;
         outFocus(clone, trigger, functionCheckZone, bg, result);
     };
@@ -381,16 +383,16 @@ function moveElementFix(event, me, result, index) {
     var scrollParent = result.realTable.parentNode;
     while (scrollParent) {
         var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
-        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight || scrollParent.clientWidth < scrollParent.scrollWidth)) break;
         scrollParent = scrollParent.parentElement;
     }
     result.bodyTable.appendChild(bg);
     bg.appendChild(clone);
-    var functionCheckZone = function (event) {
+    var functionCheckZone = function(event) {
         var arrZone = bg.getZone();
         for (var i = 0; i < arrZone.length; i++) {
             var offset = clone.getBoundingClientRect();
-            var centerX = offset.left + offset.width / 2;    // [UPDATE] subtract to center
+            var centerX = offset.left + offset.width / 2; // [UPDATE] subtract to center
             var centerY = offset.top + offset.height / 2;
             var checkElement = arrZone[i];
             if (AAYY(centerX, centerY, checkElement.getBoundingClientRect())) {
@@ -411,16 +413,16 @@ function moveElementFix(event, me, result, index) {
     }
     let shiftY = clone.clientHeight / 2;
     moveAtFix(clone, event.pageY, shiftY, result);
-    if(scrollParent)
-    scrollParent.addEventListener("scroll", function (event) {
-        moveAtFix(clone, event.pageY, shiftY, result);
-        bg.style.top = parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop) + "px";
-    })
+    if (scrollParent)
+        scrollParent.addEventListener("scroll", function(event) {
+            moveAtFix(clone, event.pageY, shiftY, result);
+            bg.style.top = parseFloat(bg.style.realTop) - parseFloat(scrollParent.scrollTop) + "px";
+        })
     window.addEventListener('mousemove', functionCheckZone);
-    var trigger = function (event) {
+    var trigger = function(event) {
         onMouseMoveFix(clone, event, shiftY, result);
     }
-    var mouseUpFunction = function () {
+    var mouseUpFunction = function() {
         window.removeEventListener("mouseup", mouseUpFunction);
         var removeList = document.getElementsByClassName("focus-blast")[0];
         if (removeList !== undefined) {
@@ -449,8 +451,7 @@ function moveElementFix(event, me, result, index) {
             }
             if (result.data.child !== undefined) {
                 result.data.child = changeIndex(result.data.child, index - 1, row1);
-            }
-            else
+            } else
                 result.data = changeIndex(result.data, index - 1, row1);
             result.childrenNodes = changeIndex(result.childrenNodes, index - 1, row1);
             var k = 0;
@@ -491,8 +492,7 @@ function arr_change(arr, data, old_index, new_index) {
     if (old_index > new_index) {
         arr.splice(new_index, 0, data);
         arr.splice(old_index + 1, 1);
-    }
-    else {
+    } else {
         arr.splice(new_index, 0, data);
         arr.splice(old_index, 1);
     }
@@ -525,7 +525,7 @@ function outFocus(clone, trigger, functionCheckZone, bg, parent) {
     window.removeEventListener('mousemove', functionCheckZone);
     window.removeEventListener('mousemove', trigger);
     window.onmouseup = null;
-    setTimeout(function () {
+    setTimeout(function() {
         bg.selfRemove();
     }, 20)
     clone.selfRemove();
@@ -541,7 +541,7 @@ function captureMousePosition(event) {
 
 
 export function tableView(header = [], data = [], dragHorizontal = false, dragVertical = false, childIndex = 1, indexRow = 50) {
-   
+
     var cell, row, check = [];
     var checkSpan = [];
     var headerTable = _({
@@ -559,26 +559,24 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         ]
     });
     var resolveAdd;
-    var promiseAdd = new Promise(function(resolve,reject){
+    var promiseAdd = new Promise(function(resolve, reject) {
         resolveAdd = resolve;
     })
-    var result = _(
-        {
-            tag:"div",
-            class:"container-sortTable",
-            child:[
-                realTable,
-                {
-                    tag: 'attachhook',
-                    on: {
-                        error: function () {
-                            resolveAdd();
-                        }
+    var result = _({
+        tag: "div",
+        class: "container-sortTable",
+        child: [
+            realTable,
+            {
+                tag: 'attachhook',
+                on: {
+                    error: function() {
+                        resolveAdd();
                     }
                 }
-            ]
-        }
-        );
+            }
+        ]
+    });
     result.realTable = realTable;
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
@@ -592,7 +590,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.isSwipeRight = false;
     result.sortArray = [];
 
-    
+
 
     if (window.scrollEvent === undefined) {
         window.xMousePos = 0;
@@ -600,24 +598,22 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         window.lastScrolledLeft = 0;
         window.lastScrolledTop = 0;
 
-        document.addEventListener("mousemove", function (event) {
+        document.addEventListener("mousemove", function(event) {
             window.scrollEvent = captureMousePosition(event);
         })
         var scrollParent = result;
-        promiseAdd.then(function(){
+        promiseAdd.then(function() {
             while (scrollParent) {
                 var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
-                if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+                if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight || scrollParent.clientWidth < scrollParent.scrollWidth)) break;
                 scrollParent = scrollParent.parentElement;
             }
-            if(scrollParent)
-            {
+            if (scrollParent) {
                 var lastScrollTime = new Date().getTime();
-                var functionScrollTemp = function (event) {
+                var functionScrollTemp = function(event) {
                     var now = new Date().getTime();
-                    if(now - lastScrollTime > 300)
-                    {
-                        if (!result.isDescendantOf(scrollParent)){
+                    if (now - lastScrollTime > 300) {
+                        if (!result.isDescendantOf(scrollParent)) {
                             scrollParent.removeEventListener("scroll", functionScrollTemp);
                             return;
                         }
@@ -636,68 +632,59 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                 }
                 scrollParent.addEventListener("scroll", functionScrollTemp);
             }
-            if(window.mobilecheck())
-            {
+            if (window.mobilecheck()) {
                 var tempLimit = _({
-                    tag:"div",
-                    child:[
-                        {
-                            tag:"span",
-                            style:{
-                                padding: "10px",
-                                textAlign: "center",
-                                display: "block",
-                                fontSize: "16px",
-                            },
-                            props:{
-                                innerHTML:"Để tìm kiếm các phần tử cũ hơn vui lòng sử dung Tìm kiếm"
-                            }
+                    tag: "div",
+                    child: [{
+                        tag: "span",
+                        style: {
+                            padding: "10px",
+                            textAlign: "center",
+                            display: "block",
+                            fontSize: "16px",
+                        },
+                        props: {
+                            innerHTML: "Để tìm kiếm các phần tử cũ hơn vui lòng sử dung Tìm kiếm"
                         }
-                    ]
+                    }]
                 })
                 tempLimit.style.display = "none";
                 result.appendChild(tempLimit);
-                if(scrollParent)
-                scrollParent.addEventListener("scroll",function(event){
-                        if(this.startIndex>10*indexRow)
-                        {
-                            if(tempLimit.style.display !== "block")
-                            tempLimit.style.display = "block";
+                if (scrollParent)
+                    scrollParent.addEventListener("scroll", function(event) {
+                        if (this.startIndex > 10 * indexRow) {
+                            if (tempLimit.style.display !== "block")
+                                tempLimit.style.display = "block";
                             return;
-                        }else
-                        {
-                            if(tempLimit.style.display !== "none")
-                            tempLimit.style.display = "none";
+                        } else {
+                            if (tempLimit.style.display !== "none")
+                                tempLimit.style.display = "none";
                         }
-                        if(this.scrollTop >= (this.scrollHeight - this.offsetHeight))
-                        {
-                            if(this.getBodyTable!==undefined)
-                            {
+                        if (this.scrollTop >= (this.scrollHeight - this.offsetHeight)) {
+                            if (this.getBodyTable !== undefined) {
                                 this.getBodyTable(this.data);
-                                if (this.bodyTable.listCheckBox !== undefined&&this.bodyTable.listCheckBox.length>0)
-                                {
+                                if (this.bodyTable.listCheckBox !== undefined && this.bodyTable.listCheckBox.length > 0) {
                                     this.bodyTable.listCheckBox[0].update();
                                 }
                             }
                         }
                         result.setUpSwipe();
-                })   
+                    })
             }
         }.bind(this))
     }
-    result.updatePagination = function (number = result.tempIndexRow,isRedraw = true) {
-        if(window.mobilecheck())
-        {
+    result.updatePagination = function(number = result.tempIndexRow, isRedraw = true) {
+        if (window.mobilecheck()) {
             result.tempIndexRow = indexRow;
-            if(isRedraw){
-                result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical,undefined,false);
-                if(scrollParent)
-                scrollParent.emit("scroll");
-            }                                                   
-        }else{
+            if (isRedraw) {
+                result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical, undefined, false);
+                if (scrollParent)
+                    scrollParent.emit("scroll");
+            }
+        } else {
             result.tempIndexRow = parseInt(number);
             if (result.paginationElement !== undefined) {
-                if(isRedraw){
+                if (isRedraw) {
                     result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
                 }
                 var pagination = result.pagination(result.tempIndexRow);
@@ -710,8 +697,8 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             result.paginationElement = pagination;
         }
     }
-    
-    result.updatePagination(indexRow,false);
+
+    result.updatePagination(indexRow, false);
     row = _({
         tag: "tr"
     });
@@ -723,8 +710,8 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     for (var i = 0; i < header.length; i++) {
         if (header[i].hidden === false || header[i].hidden === undefined) {
             result.clone[k] = [];
-            
-            cell = result.getCellHeader(header[i],i)
+
+            cell = result.getCellHeader(header[i], i)
 
             result.clone[k++].push(cell);
 
@@ -740,319 +727,284 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.getBodyTable(data);
 
     result.checkSpan = checkSpan;
-    if(dragVertical)
-    {
+    if (dragVertical) {
         result.slip = new Slip(result.bodyTable);
         result.setUpSlip();
     }
     return result;
 }
 
-tableView.prototype.getElementNext = function(element)
-{
-    if(element.childrenNodes.length>0)
-    {
-        return this.getElementNext(element.childrenNodes[element.childrenNodes.length-1]);
+tableView.prototype.getElementNext = function(element) {
+    if (element.childrenNodes.length > 0) {
+        return this.getElementNext(element.childrenNodes[element.childrenNodes.length - 1]);
     }
     return element.nextSibling;
 }
 
-tableView.prototype.setUpSwipe = function(isSwipeLeft,isSwipeRight)
-{
-    setTimeout(function(){
-        if(isSwipeLeft!==undefined)
-        {
+tableView.prototype.setUpSwipe = function(isSwipeLeft, isSwipeRight) {
+    setTimeout(function() {
+        if (isSwipeLeft !== undefined) {
             this.isSwipeLeft = isSwipeLeft;
         }
-        if(this.isSwipeLeft!==undefined)
-        {       
-            for(var i = 0;i<this.bodyTable.childNodes.length;i++)
-            {
-                if(this.bodyTable.childNodes[i].hiddenButtonLeft!==undefined)
-                continue;
+        if (this.isSwipeLeft !== undefined) {
+            for (var i = 0; i < this.bodyTable.childNodes.length; i++) {
+                if (this.bodyTable.childNodes[i].hiddenButtonLeft !== undefined)
+                    continue;
                 var hiddenButton = _({
-                    tag:"div",
-                    class:"button-hidden-swipe-container-left",
-                    child:[{
-                        tag:"div",
-                        class:"button-hidden-swipe-calcWidth"
+                    tag: "div",
+                    class: "button-hidden-swipe-container-left",
+                    child: [{
+                        tag: "div",
+                        class: "button-hidden-swipe-calcWidth"
                     }]
                 })
-                for(var j=0;j<this.isSwipeLeft.length;j++){
+                for (var j = 0; j < this.isSwipeLeft.length; j++) {
                     this.bodyTable.childNodes[i].appendChild(hiddenButton);
                     var icon;
-                    if(typeof this.isSwipeLeft[j].icon == "string")
-                    {
+                    if (typeof this.isSwipeLeft[j].icon == "string") {
                         icon = _({
-                            tag:"i",
-                            class:["material-icons","button-hidden-swipe-icon"],
-                            style:this.isSwipeLeft[j].iconStyle,
-                            props:{
+                            tag: "i",
+                            class: ["material-icons", "button-hidden-swipe-icon"],
+                            style: this.isSwipeLeft[j].iconStyle,
+                            props: {
                                 innerHTML: this.isSwipeLeft[j].icon
                             }
                         });
-                    }else
+                    } else
                         icon = this.isSwipeRight[j].icon.cloneNode(true);
                     var tempElement = _({
-                        tag:"div",
-                        class:"button-hidden-swipe",
-                        on:{
-                            click:function(index,indexEvent,e)
-                            {
-                                if(this.isSwipeLeft[indexEvent].event!==undefined)
-                                {
+                        tag: "div",
+                        class: "button-hidden-swipe",
+                        on: {
+                            click: function(index, indexEvent, e) {
+                                if (this.isSwipeLeft[indexEvent].event !== undefined) {
                                     var me = this.bodyTable.childNodes[index];
                                     var index = me.originalIndex;
                                     var parent = me.elementParent;
-                                    this.isSwipeLeft[indexEvent].event(e,me,index,me.data,me,parent)
+                                    this.isSwipeLeft[indexEvent].event(e, me, index, me.data, me, parent)
                                 }
-                            }.bind(this,i,j)
+                            }.bind(this, i, j)
                         },
-                        style:{
-                            width:1/this.isSwipeLeft.length*100+"%",
-                            backgroundColor:this.isSwipeLeft[j].background,
-                            maxWidth:this.bodyTable.childNodes[i].offsetHeight*1.2+"px",
-                            zIndex:j
+                        style: {
+                            width: 1 / this.isSwipeLeft.length * 100 + "%",
+                            backgroundColor: this.isSwipeLeft[j].background,
+                            maxWidth: this.bodyTable.childNodes[i].offsetHeight * 1.2 + "px",
+                            zIndex: j
                         },
-                        child:[
-                            {
-                                tag:"div",
-                                class:"button-hidden-swipe-detail",
-                                style:{
-                                    width:this.bodyTable.childNodes[i].offsetHeight+"px",
-                                    height:this.bodyTable.childNodes[i].offsetHeight+"px",
-                                },
-                                child:[
-                                    icon
-                                ]
-                            }
-                        ]
+                        child: [{
+                            tag: "div",
+                            class: "button-hidden-swipe-detail",
+                            style: {
+                                width: this.bodyTable.childNodes[i].offsetHeight + "px",
+                                height: this.bodyTable.childNodes[i].offsetHeight + "px",
+                            },
+                            child: [
+                                icon
+                            ]
+                        }]
                     })
-                    if(!(this.isSwipeLeft[j].text==""||this.isSwipeLeft[j].text == undefined))
-                    {
+                    if (!(this.isSwipeLeft[j].text == "" || this.isSwipeLeft[j].text == undefined)) {
                         tempElement.childNodes[0].appendChild(
                             _({
-                                tag:"span",
-                                class:"button-hidden-swipe-text",
-                                style:{
-                                    color:this.isSwipeLeft[j].textcolor
+                                tag: "span",
+                                class: "button-hidden-swipe-text",
+                                style: {
+                                    color: this.isSwipeLeft[j].textcolor
                                 },
-                                props:{
+                                props: {
                                     innerHTML: this.isSwipeLeft[j].text
                                 }
                             })
                         );
                     }
-                    if(j == this.isSwipeLeft.length-1)
-                    tempElement.classList.add("button-hidden-swipe-activeAll");
+                    if (j == this.isSwipeLeft.length - 1)
+                        tempElement.classList.add("button-hidden-swipe-activeAll");
                     hiddenButton.childNodes[0].appendChild(tempElement)
-                
+
                 }
                 this.bodyTable.childNodes[i].hiddenButtonLeft = hiddenButton;
             }
         }
-        
-        if(isSwipeRight!==undefined)
-        {
+
+        if (isSwipeRight !== undefined) {
             this.isSwipeRight = isSwipeRight;
         }
 
-        if(this.isSwipeRight!==undefined)
-        {       
-            for(var i = 0;i<this.bodyTable.childNodes.length;i++)
-            {
-                if(this.bodyTable.childNodes[i].hiddenButtonRight!==undefined)
-                continue;
+        if (this.isSwipeRight !== undefined) {
+            for (var i = 0; i < this.bodyTable.childNodes.length; i++) {
+                if (this.bodyTable.childNodes[i].hiddenButtonRight !== undefined)
+                    continue;
                 var hiddenButton = _({
-                    tag:"div",
-                    class:"button-hidden-swipe-container-right",
-                    child:[{
-                        tag:"div",
-                        class:"button-hidden-swipe-calcWidth"
+                    tag: "div",
+                    class: "button-hidden-swipe-container-right",
+                    child: [{
+                        tag: "div",
+                        class: "button-hidden-swipe-calcWidth"
                     }]
                 })
-                for(var j=0;j<this.isSwipeRight.length;j++){
+                for (var j = 0; j < this.isSwipeRight.length; j++) {
                     this.bodyTable.childNodes[i].appendChild(hiddenButton);
                     var icon;
-                    if(typeof this.isSwipeRight[j].icon == "string")
-                    {
+                    if (typeof this.isSwipeRight[j].icon == "string") {
                         icon = _({
-                            tag:"i",
-                            class:["material-icons","button-hidden-swipe-icon"],
-                            style:this.isSwipeRight[j].iconStyle,
-                            props:{
+                            tag: "i",
+                            class: ["material-icons", "button-hidden-swipe-icon"],
+                            style: this.isSwipeRight[j].iconStyle,
+                            props: {
                                 innerHTML: this.isSwipeRight[j].icon
                             }
                         });
-                    }else
+                    } else
                         icon = this.isSwipeRight[j].icon.cloneNode(true);
                     var tempElement = _({
-                        tag:"div",
-                        class:"button-hidden-swipe",
-                        on:{
-                            click:function(index,indexEvent,e)
-                            {
-                                if(this.isSwipeRight[indexEvent].event!==undefined)
-                                {
+                        tag: "div",
+                        class: "button-hidden-swipe",
+                        on: {
+                            click: function(index, indexEvent, e) {
+                                if (this.isSwipeRight[indexEvent].event !== undefined) {
                                     var me = this.bodyTable.childNodes[index];
                                     var index = me.originalIndex;
                                     var parent = me.elementParent;
-                                    this.isSwipeRight[indexEvent].event(e,me,index,me.data,me,parent)
+                                    this.isSwipeRight[indexEvent].event(e, me, index, me.data, me, parent)
                                 }
-                            }.bind(this,i,j)
+                            }.bind(this, i, j)
                         },
-                        style:{
-                            width:1/this.isSwipeRight.length*100+"%",
-                            backgroundColor:this.isSwipeRight[j].background,
-                            maxWidth:((this.bodyTable.childNodes[i].offsetWidth*3/4)/this.isSwipeRight.length)+"px",
-                            zIndex:j
+                        style: {
+                            width: 1 / this.isSwipeRight.length * 100 + "%",
+                            backgroundColor: this.isSwipeRight[j].background,
+                            maxWidth: ((this.bodyTable.childNodes[i].offsetWidth * 3 / 4) / this.isSwipeRight.length) + "px",
+                            zIndex: j
                         },
-                        child:[
-                            {
-                                tag:"div",
-                                class:"button-hidden-swipe-detail",
-                                child:[
-                                    icon,
-                                ]
-                            }
-                        ]
+                        child: [{
+                            tag: "div",
+                            class: "button-hidden-swipe-detail",
+                            child: [
+                                icon,
+                            ]
+                        }]
                     })
-                    if(!(this.isSwipeRight[j].text==""||this.isSwipeRight[j].text == undefined))
-                    {
+                    if (!(this.isSwipeRight[j].text == "" || this.isSwipeRight[j].text == undefined)) {
                         tempElement.childNodes[0].appendChild(
                             _({
-                                tag:"span",
-                                class:"button-hidden-swipe-text",
-                                style:{
-                                    color:this.isSwipeRight[j].textcolor
+                                tag: "span",
+                                class: "button-hidden-swipe-text",
+                                style: {
+                                    color: this.isSwipeRight[j].textcolor
                                 },
-                                props:{
+                                props: {
                                     innerHTML: this.isSwipeRight[j].text
                                 }
                             })
                         );
                     }
-                    if(j == this.isSwipeRight.length-1)
-                    tempElement.classList.add("button-hidden-swipe-activeAll");
+                    if (j == this.isSwipeRight.length - 1)
+                        tempElement.classList.add("button-hidden-swipe-activeAll");
                     hiddenButton.childNodes[0].appendChild(tempElement)
                 }
                 this.bodyTable.childNodes[i].hiddenButtonRight = hiddenButton;
-                setTimeout(function(hiddenButton){
+                setTimeout(function(hiddenButton) {
                     var container;
                     var max = 0;
-                    
-                    for(var i = 0;i<hiddenButton.childNodes[0].childNodes.length;i++)
-                    {
+
+                    for (var i = 0; i < hiddenButton.childNodes[0].childNodes.length; i++) {
                         container = hiddenButton.childNodes[0].childNodes[i].childNodes[0];
-                        if(max<container.offsetWidth)
-                        max = container.offsetWidth;
+                        if (max < container.offsetWidth)
+                            max = container.offsetWidth;
                     }
-                    for(var i = 0;i<hiddenButton.childNodes[0].childNodes.length;i++)
-                    {
+                    for (var i = 0; i < hiddenButton.childNodes[0].childNodes.length; i++) {
                         container = hiddenButton.childNodes[0].childNodes[i].childNodes[0];
-                        container.style.minWidth = max+"px";
+                        container.style.minWidth = max + "px";
                     }
-                }.bind(this,hiddenButton),80)
+                }.bind(this, hiddenButton), 80)
             }
         }
-        if(this.isSwipeLeft||this.isSwipeRight)
-        {
+        if (this.isSwipeLeft || this.isSwipeRight) {
             this.realTable.style.overflow = "hidden";
         }
-    }.bind(this),80)
+    }.bind(this), 80)
 }
 
-tableView.prototype.addEvent = function()
-{
-   
+tableView.prototype.addEvent = function() {
+
 }
 
-tableView.prototype.swipeCompleteLeft = function(e,me,index,data,row,parent)
-{
+tableView.prototype.swipeCompleteLeft = function(e, me, index, data, row, parent) {
     parent.exactlyDeleteRow(index);
 }
 
-tableView.prototype.swipeCompleteRight = function(e,me,index,data,row,parent)
-{
+tableView.prototype.swipeCompleteRight = function(e, me, index, data, row, parent) {
     parent.exactlyDeleteRow(index);
 }
 
-tableView.prototype.swipeCancel = function()
-{
-    
+tableView.prototype.swipeCancel = function() {
+
 }
 
-tableView.prototype.setUpSlip = function()
-{
+tableView.prototype.setUpSlip = function() {
     var self = this;
-    this.bodyTable.addEventListener('slip:reorder', function(e){
+    this.bodyTable.addEventListener('slip:reorder', function(e) {
         var index = e.detail.originalIndex;
         var spliceIndex = e.detail.spliceIndex;
-        self.changeRowIndex(index,spliceIndex);
+        self.changeRowIndex(index, spliceIndex);
     }, false);
-    if(this.bodyTable.addEventComplete == true)
+    if (this.bodyTable.addEventComplete == true)
         return;
-    this.bodyTable.addEventListener('slip:beforewait', function(e){
-        if (e.target.className.indexOf!==undefined&&e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
+    this.bodyTable.addEventListener('slip:beforewait', function(e) {
+        if (e.target.className.indexOf !== undefined && e.target.className.indexOf('drag-icon-button') > -1) e.preventDefault();
     }, false);
-    this.bodyTable.addEventListener('slip:beforeswipe', function(e){
+    this.bodyTable.addEventListener('slip:beforeswipe', function(e) {
         var startPoint = e.target;
-        while(startPoint!=null&&startPoint.tagName != "TR")
-        startPoint = startPoint.parentNode;
+        while (startPoint != null && startPoint.tagName != "TR")
+            startPoint = startPoint.parentNode;
         startPoint = startPoint.startPositionAverage;
-      
-        if(self.isSwipeRight===false&&e.detail.directionX==="left"&&!(startPoint>0))
+
+        if (self.isSwipeRight === false && e.detail.directionX === "left" && !(startPoint > 0))
             e.preventDefault();
-        if(self.isSwipeLeft===false&&e.detail.directionX==="right"&&!(startPoint>0))
+        if (self.isSwipeLeft === false && e.detail.directionX === "right" && !(startPoint > 0))
             e.preventDefault();
         // else if(!startPoint>0)
         // this.slip.animateToZero();
     }.bind(this), false);
-    this.bodyTable.addEventListener('slip:cancelswipe', function(e){
+    this.bodyTable.addEventListener('slip:cancelswipe', function(e) {
         self.swipeCancel();
     }, false);
-    this.bodyTable.addEventListener('slip:swipe', function(e){
+    this.bodyTable.addEventListener('slip:swipe', function(e) {
         // functionClick(event, this, index, row.data, row, result);
         var index = e.detail.originalIndex;
         var me = self.bodyTable.childNodes[index];
         var parent = me.elementParent;
         // var tempIndex = index;
         index = parent.childrenNodes.indexOf(me);
-        if(e.detail.direction==="left")
-        self.swipeCompleteLeft(e,me,index,me.data,me,parent);
-        if(e.detail.direction==="right")
-        self.swipeCompleteRight(e,me,index,me.data,me,parent);
+        if (e.detail.direction === "left")
+            self.swipeCompleteLeft(e, me, index, me.data, me, parent);
+        if (e.detail.direction === "right")
+            self.swipeCompleteRight(e, me, index, me.data, me, parent);
     }, false);
     this.bodyTable.addEventComplete = true;
 }
 
-tableView.prototype.changeRowIndex = function(index,spliceIndex)
-{
+tableView.prototype.changeRowIndex = function(index, spliceIndex) {
     var self = this;
     var result = self;
-    if(isNumeric(index)!=true)
-    {
+    if (isNumeric(index) != true) {
         var me = index;
         index = -1;
-        for(var i = 0;i<self.bodyTable.childNodes.length;i++)
-        {
-            if(self.bodyTable.childNodes[i]==me)
-            {
+        for (var i = 0; i < self.bodyTable.childNodes.length; i++) {
+            if (self.bodyTable.childNodes[i] == me) {
                 index = i;
                 break;
             }
         }
-    }
-    else
-    var me = self.bodyTable.childNodes[index];
+    } else
+        var me = self.bodyTable.childNodes[index];
 
-    var tempIndex,tempSpliceIndex;
+    var tempIndex, tempSpliceIndex;
 
     var elementReal = me.elementParent.childrenNodes[spliceIndex];
-    
+
     var element = me;
-    if(elementReal===undefined)
-        elementReal = self.getElementNext(me.elementParent.childrenNodes[me.elementParent.childrenNodes.length-1]);
+    if (elementReal === undefined)
+        elementReal = self.getElementNext(me.elementParent.childrenNodes[me.elementParent.childrenNodes.length - 1]);
 
     result.bodyTable.insertBefore(element, elementReal);
     if (element.getElementChild !== undefined) {
@@ -1068,23 +1020,21 @@ tableView.prototype.changeRowIndex = function(index,spliceIndex)
     result = self;
     tempIndex = index;
     tempSpliceIndex = spliceIndex;
-    
+
     if (result.data.child !== undefined) {
         index = self.childrenNodes.indexOf(element);
         spliceIndex = self.childrenNodes.indexOf(elementReal);
-        if(spliceIndex===-1)
-        spliceIndex = self.childrenNodes.length;
+        if (spliceIndex === -1)
+            spliceIndex = self.childrenNodes.length;
         result.data.child = changeIndex(result.data.child, index, spliceIndex);
-    }
-    else
-    {
+    } else {
         result.data = changeIndex(result.data, index, spliceIndex);
     }
-        
+
     result.childrenNodes = changeIndex(result.childrenNodes, index, spliceIndex);
     var k = 0;
     for (var i = 0; i < result.clone.length; i++) {
-        var checkValue = array_insertBefore(result.clone[i], element.childNodes[k], spliceIndex+1);
+        var checkValue = array_insertBefore(result.clone[i], element.childNodes[k], spliceIndex + 1);
         if (checkValue === false)
             continue;
         result.clone[i] = checkValue;
@@ -1092,13 +1042,12 @@ tableView.prototype.changeRowIndex = function(index,spliceIndex)
     }
     if (result.checkSpan !== undefined)
         result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
-    var event = new CustomEvent('dragdrop',{bubbles:true,detail:{event:event,me: me,index: tempIndex,spliceIndex: tempSpliceIndex,parent: self,dataSpliceIndex:spliceIndex,dataIndex:index,afterIndex:index = self.childrenNodes.indexOf(element)}});
+    var event = new CustomEvent('dragdrop', { bubbles: true, detail: { event: event, me: me, index: tempIndex, spliceIndex: tempSpliceIndex, parent: self, dataSpliceIndex: spliceIndex, dataIndex: index, afterIndex: index = self.childrenNodes.indexOf(element) } });
     self.dispatchEvent(event);
 }
 
-tableView.prototype.getCellHeader = function(header,i)
-{
-    var value,style,classList,dragElement,cell,bonus;
+tableView.prototype.getCellHeader = function(header, i) {
+    var value, style, classList, dragElement, cell, bonus;
     var result = this;
     var dragHorizontal = result.dragHorizontal;
     var dragVertical = result.dragVertical;
@@ -1111,8 +1060,7 @@ tableView.prototype.getCellHeader = function(header,i)
             value = "";
         else
             value = header;
-    }
-    else
+    } else
         value = header.value;
     if (toUpperCase)
         value = value.toUpperCase();
@@ -1125,23 +1073,21 @@ tableView.prototype.getCellHeader = function(header,i)
             bonus = _({
                 tag: "checkboxbutton",
                 class: "pizo-checkbox",
-                style:{
-                    display:"flex",
-                    flexGrow:2
+                style: {
+                    display: "flex",
+                    flexGrow: 2
                 },
                 on: {
-                    change: function (event) {
+                    change: function(event) {
                         for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
                             result.bodyTable.listCheckBox[j].update(this.checked);
                         }
                     }
                 }
             })
-            bonus.update = function()
-            {
+            bonus.update = function() {
                 for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                    if(result.bodyTable.listCheckBox[j].checked === false)
-                    {
+                    if (result.bodyTable.listCheckBox[j].checked === false) {
                         result.bodyTable.listCheckBox[0].checked = false;
                         return;
                     }
@@ -1181,7 +1127,7 @@ tableView.prototype.getCellHeader = function(header,i)
             break;
     }
     if (header.sort === true || header.sort === undefined) {
-        functionClickSort = function (event, me, index, dataIndex, row, result) {
+        functionClickSort = function(event, me, index, dataIndex, row, result) {
             var last_sort = document.getElementsByClassName("downgrade");
             last_sort = last_sort[0];
             me = me.parentNode;
@@ -1198,16 +1144,15 @@ tableView.prototype.getCellHeader = function(header,i)
                 me.classList.add("downgrade");
                 if (me.classList.contains("upgrade"))
                     me.classList.remove("upgrade");
-            }
-            else {
+            } else {
                 sortArray(result.data, index, false);
                 me.classList.add("upgrade");
                 if (me.classList.contains("downgrade"))
                     me.classList.remove("downgrade");
             }
-            var event = new CustomEvent('sort',{bubbles:true,detail:{event:event,me: me,index: index,dataIndex: dataIndex,row: row,result:result}});
+            var event = new CustomEvent('sort', { bubbles: true, detail: { event: event, me: me, index: index, dataIndex: dataIndex, row: row, result: result } });
             result.dispatchEvent(event);
-            if (result.paginationElement!==undefined&&result.paginationElement.noneValue !== true)
+            if (result.paginationElement !== undefined && result.paginationElement.noneValue !== true)
                 result.paginationElement.reActive();
             else
                 result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
@@ -1228,30 +1173,29 @@ tableView.prototype.getCellHeader = function(header,i)
     if (header.dragElement !== undefined && header.dragElement === false)
         dragElement = false;
     var container = _({
-        tag:"div",
-        class:"container-header"
+        tag: "div",
+        class: "container-header"
     });
 
     var on = {
-        click: function (index, functionClick) {
-            return function (event) {
+        click: function(index, functionClick) {
+            return function(event) {
                 // event.preventDefault();
-                if (functionClick !== undefined)
-                {
+                if (functionClick !== undefined) {
                     var row = cell.parentNode;
                     functionClick(event, this, index, row.data, row, result);
                 }
-                   
+
             }
         }(i, functionClick),
-    
-        dragstart: (dragHorizontal && dragElement) ? function () {
+
+        dragstart: (dragHorizontal && dragElement) ? function() {
             return false;
         } : undefined,
     };
 
-    var mousedown = (dragHorizontal && dragElement) ? function (index) {
-        return function (event) {
+    var mousedown = (dragHorizontal && dragElement) ? function(index) {
+        return function(event) {
             event.preventDefault();
             var finalIndex;
             for (var i = 0; i < result.clone.length; i++) {
@@ -1263,13 +1207,13 @@ tableView.prototype.getCellHeader = function(header,i)
             this.hold = false;
             var dom = this;
             this.default = event;
-            this.timeoutID = setTimeout(function () {
+            this.timeoutID = setTimeout(function() {
                 dom.hold = true;
                 moveElement(event, dom, result, finalIndex);
             }, 200);
         }
     }(i) : undefined;
-    var mouseup = function () {
+    var mouseup = function() {
         if (this.hold === false) {
             this.hold = true;
             // this.click();
@@ -1277,8 +1221,8 @@ tableView.prototype.getCellHeader = function(header,i)
         }
     };
 
-    var mousemove = (dragHorizontal && dragElement) ? function (index) {
-        return function (event) {
+    var mousemove = (dragHorizontal && dragElement) ? function(index) {
+        return function(event) {
             if (this.hold === false) {
                 var finalIndex;
                 for (var i = 0; i < result.clone.length; i++) {
@@ -1299,12 +1243,11 @@ tableView.prototype.getCellHeader = function(header,i)
         }
     }(i) : undefined;
 
-    if(window.mobilecheck()){
+    if (window.mobilecheck()) {
         on["touchstart"] = mousedown;
         on["touchend"] = mouseup;
         on["touchmove"] = mousemove;
-    }else
-    {
+    } else {
         on["mousedown"] = mousedown;
         on["mouseup"] = mouseup;
         on["mousemove"] = mousemove;
@@ -1316,14 +1259,14 @@ tableView.prototype.getCellHeader = function(header,i)
             role: 'columnheader'
         },
         style: style,
-        class:classList,
-        child:[
+        class: classList,
+        child: [
             container
         ],
         props: {
             id: i
-        }, 
-        on:on
+        },
+        on: on
     })
 
     cell.data = header;
@@ -1333,19 +1276,17 @@ tableView.prototype.getCellHeader = function(header,i)
         tag: "div",
         class: "sort-container",
         on: {
-            click: function (index, functionClickSort) {
-                return function (event) {
+            click: function(index, functionClickSort) {
+                return function(event) {
                     // event.preventDefault();
-                    if (functionClickSort !== undefined)
-                    {
+                    if (functionClickSort !== undefined) {
                         var row = cell.parentNode;
                         functionClickSort(event, this, index, row.data, row, result);
                     }
                 }
             }(i, functionClickSort),
         },
-        child: [
-            {
+        child: [{
                 tag: "sort-up",
                 class: ["arrow_up"],
             },
@@ -1357,8 +1298,8 @@ tableView.prototype.getCellHeader = function(header,i)
     })
 
     result.sortArray[i] = childUpDown;
-    
-    result.exactlySort =  function(){
+
+    result.exactlySort = function() {
         childUpDown.click();
     }
     if (header.sort === true) {
@@ -1366,12 +1307,12 @@ tableView.prototype.getCellHeader = function(header,i)
     }
 
     if (header.element === undefined) {
-        container.addChild(_({ 
-            tag:"span",
-            props:{
-                innerHTML:value
+        container.addChild(_({
+            tag: "span",
+            props: {
+                innerHTML: value
             }
-         }));
+        }));
     } else {
         container.appendChild(data[i][j].element);
     }
@@ -1384,14 +1325,13 @@ tableView.prototype.getCellHeader = function(header,i)
     return cell;
 }
 
-tableView.prototype.sortTable = function(index,increase){
-    if(increase == -1)
-    {
+tableView.prototype.sortTable = function(index, increase) {
+    if (increase == -1) {
 
     }
 }
 
-tableView.prototype.checkLongRow = function (index) {
+tableView.prototype.checkLongRow = function(index) {
     var result = this;
     var delta = [];
     for (var i = 0; i < result.clone.length; i++) {
@@ -1407,7 +1347,7 @@ tableView.prototype.checkLongRow = function (index) {
     return delta;
 }
 
-tableView.prototype.checkLongColumn = function (row,column) {
+tableView.prototype.checkLongColumn = function(row, column) {
     var result = this;
     var delta = 0;
 
@@ -1421,15 +1361,14 @@ tableView.prototype.checkLongColumn = function (row,column) {
     return delta;
 }
 
-tableView.prototype.setArrayFix = function (num, isLeft) {
+tableView.prototype.setArrayFix = function(num, isLeft) {
     var i;
     var length;
 
     if (isLeft) {
         i = 0;
         length = num;
-    }
-    else {
+    } else {
         i = this.clone.length - num;
         length = this.clone.length;
     }
@@ -1447,26 +1386,26 @@ tableView.prototype.setArrayFix = function (num, isLeft) {
     }
 }
 
-tableView.prototype.setArrayScroll = function (num, isLeft = true) {
+tableView.prototype.setArrayScroll = function(num, isLeft = true) {
     var self = this;
-    _('attachhook').once('error', function () {
-        setTimeout(function () {
+    _('attachhook').once('error', function() {
+        setTimeout(function() {
             self.setArrayFix(num, isLeft);
         }, 10);
     })
 }
 
-tableView.prototype.addInputSearch = function (input,index) {
+tableView.prototype.addInputSearch = function(input, index) {
     var self = this;
     self.hashTable = new HashTable(self.data);
-    input.onchange = function (event, needUpdate = false) {
+    input.onchange = function(event, needUpdate = false) {
         if (this.updateTimeOut !== undefined) {
             clearTimeout(this._updateTimeOut);
             this.updateTimeOut = undefined;
         }
-        this.updateTimeOut = setTimeout(function () {
+        this.updateTimeOut = setTimeout(function() {
             if (input.value !== input.lastInputSearch || needUpdate == true) {
-                self.checkTableView(input.value,index);
+                self.checkTableView(input.value, index);
                 input.lastInputSearch = input.value;
                 self.updatePagination();
             }
@@ -1478,118 +1417,107 @@ tableView.prototype.addInputSearch = function (input,index) {
     self.inputElement.push(input);
 }
 
-tableView.prototype.addFilter = function (input, index, functionChange) {
+tableView.prototype.addFilter = function(input, index, functionChange) {
     var self = this;
     self.hashTableFilter = new HashTableFilter(self.data);
     var functionFilter;
-    if(functionChange===undefined)
-    {
-        functionFilter = function (event, needUpdate = false) {
+    if (functionChange === undefined) {
+        functionFilter = function(event, needUpdate = false) {
             self.checkTableViewFilter(input.value, index);
             self.updatePagination();
         }
-    }else
-    {
+    } else {
         functionFilter = functionChange
     }
     input.on("change", functionFilter)
     if (self.inputFilter === undefined)
         self.inputFilter = [];
-    self.inputFilter.push([input,index]);
+    self.inputFilter.push([input, index]);
 }
 
-tableView.prototype.checkTableView = function (value,index) {
+tableView.prototype.checkTableView = function(value, index) {
     var self = this;
-    self.hashTable.getKey(value,index);
-    self.data.sort(function(a,b){
-        if(a.exactly === undefined)
-        {
-            if(b.exactly === undefined)
+    self.hashTable.getKey(value, index);
+    self.data.sort(function(a, b) {
+        if (a.exactly === undefined) {
+            if (b.exactly === undefined)
                 return 0;
             return -1;
         }
 
-        if(b.exactly === undefined)
+        if (b.exactly === undefined)
             return 1;
-        
-        if(a.exactly < b.exactly)
-        {
+
+        if (a.exactly < b.exactly) {
             return -1;
         }
-        if(a.exactly > b.exactly)
-        {
+        if (a.exactly > b.exactly) {
             return 1;
         }
         return 0;
     })
 }
 
-tableView.prototype.checkTableViewFilter = function (value, index) {
+tableView.prototype.checkTableViewFilter = function(value, index) {
     var self = this;
     self.hashTableFilter.getKey(value, index);
 }
 
-tableView.prototype.updateHash = function (row) {
+tableView.prototype.updateHash = function(row) {
     var object = row.data;
     var value;
-    if(this.inputElement!==undefined||this.inputFilter!==undefined){
-        if(this.inputFilter!==undefined)
-            for(var k = 0;k<this.inputFilter.length;k++)
-                {
-                    if(this.inputFilter[k][0].value==0)
-                        continue;
-                    if (object[this.inputFilter[k][1]].value !== undefined)
-                        value = object[this.inputFilter[k][1]].value;
-                    else if (typeof object[this.inputFilter[k][1]] === "string")
-                        value = object[this.inputFilter[k][1]];
-                    else
-                        value = "";
-                    if(this.inputFilter[k][0].value != object[this.inputFilter[k][1]])
-                    {
-                        row.classList.add("disPlayNone");
-                        setTimeout(function(){
-                            row.classList.remove("parent");
-                        },10)
-                            return false;
-                    }
+    if (this.inputElement !== undefined || this.inputFilter !== undefined) {
+        if (this.inputFilter !== undefined)
+            for (var k = 0; k < this.inputFilter.length; k++) {
+                if (this.inputFilter[k][0].value == 0)
+                    continue;
+                if (object[this.inputFilter[k][1]].value !== undefined)
+                    value = object[this.inputFilter[k][1]].value;
+                else if (typeof object[this.inputFilter[k][1]] === "string")
+                    value = object[this.inputFilter[k][1]];
+                else
+                    value = "";
+                if (this.inputFilter[k][0].value != object[this.inputFilter[k][1]]) {
+                    row.classList.add("disPlayNone");
+                    setTimeout(function() {
+                        row.classList.remove("parent");
+                    }, 10)
+                    return false;
                 }
-        for(var i = 0;i<object.length;i++)
-        {
+            }
+        for (var i = 0; i < object.length; i++) {
             if (object[i].value !== undefined)
                 value = object[i].value;
             else if (typeof object[i] === "string")
                 value = object[i];
             else
                 value = "";
-            
-            if(this.inputElement!==undefined)
-                for(var k = 0;k<this.inputElement.length;k++)
-                {
-                    if(this.inputElement[k].value === "")
+
+            if (this.inputElement !== undefined)
+                for (var k = 0; k < this.inputElement.length; k++) {
+                    if (this.inputElement[k].value === "")
                         continue;
-                    for(var j = 0;j<value.length;j++)
-                    {
+                    for (var j = 0; j < value.length; j++) {
                         var checkCharacter = -1;
                         var current = this.inputElement[k].value.indexOf[value[j]];
-                        if(current == -1||current<checkCharacter)
-                        {
+                        if (current == -1 || current < checkCharacter) {
                             row.classList.add("disPlayNone");
-                            setTimeout(function(){
+                            setTimeout(function() {
                                 row.classList.remove("parent");
-                            },10)
-                                return false;
-                            
-                        }else
-                        checkCharacter = current;
-                    }   
+                            }, 10)
+                            return false;
+
+                        } else
+                            checkCharacter = current;
+                    }
                 }
         }
-        
+
     }
     return true;
 }
 
-tableView.prototype.resetHash = function () {
+tableView.prototype.resetHash = function() {
     var self = this;
     if (self.hashTable !== undefined)
         self.hashTable = new HashTable(self.data);
@@ -1597,7 +1525,7 @@ tableView.prototype.resetHash = function () {
         self.hashTableFilter = new HashTableFilter(self.data);
 }
 
-tableView.prototype.setVisiableAll = function (arr) {
+tableView.prototype.setVisiableAll = function(arr) {
     for (var i = 0; i < arr.length; i++) {
         arr[i].confirm = true;
         if (arr[i].child !== undefined)
@@ -1605,7 +1533,7 @@ tableView.prototype.setVisiableAll = function (arr) {
     }
 }
 
-tableView.prototype.setVisiableAllNoneUpdate = function (arr) {
+tableView.prototype.setVisiableAllNoneUpdate = function(arr) {
     for (var i = 0; i < arr.length; i++) {
         arr[i].visiable = true;
         if (arr[i].child !== undefined)
@@ -1613,28 +1541,29 @@ tableView.prototype.setVisiableAllNoneUpdate = function (arr) {
     }
 }
 
-tableView.prototype.getBodyTable = function (data,index = 0) {
+tableView.prototype.getBodyTable = function(data, index = 0) {
     var temp = this.bodyTable;
-    var result = this, k, delta = [], row, cell;
+    var result = this,
+        k, delta = [],
+        row, cell;
     var arr = [];
     var i = 0;
-    if(this.startIndex === undefined)
-    this.startIndex = 0;
-    if(this.currentIndex !== undefined)
-    {
+    if (this.startIndex === undefined)
+        this.startIndex = 0;
+    if (this.currentIndex !== undefined) {
         i = this.currentIndex;
         this.startIndex += result.indexRow;
-    }else
-    {
+    } else {
         this.startIndex = 0;
     }
 
     if (parent.checkSpan === undefined)
         result.checkSpan = [];
-    if(result.indexRow == undefined||result.indexRow == this.tempIndexRow)
+    if (result.indexRow == undefined || result.indexRow == this.tempIndexRow)
         result.indexRow = 0;
 
-    for (; (i < data.length && this.indexRow < this.tempIndexRow); i++) {
+    for (;
+        (i < data.length && this.indexRow < this.tempIndexRow); i++) {
         if (data[i].child !== undefined)
             data[i].child.updateVisible = data.updateVisible;
 
@@ -1644,8 +1573,7 @@ tableView.prototype.getBodyTable = function (data,index = 0) {
             data[i].exactly = undefined;
             if (tempCheck !== true) {
                 data[i].visiable = false;
-                if (data[i].child !== undefined)
-                {
+                if (data[i].child !== undefined) {
                     result.getBodyTable(data[i].child);
                 }
                 continue;
@@ -1659,15 +1587,13 @@ tableView.prototype.getBodyTable = function (data,index = 0) {
                 if (data[i].child !== undefined)
                     result.getBodyTable(data[i].child);
                 continue;
-            }else if (data[i].visiable === true)
-            {
+            } else if (data[i].visiable === true) {
                 data[i].visiable = undefined;
                 if (data[i].child !== undefined)
                     result.setVisiableAllNoneUpdate(data[i].child)
             }
         }
-        if(index !== 0)
-        {
+        if (index !== 0) {
             index--;
             continue;
         }
@@ -1695,7 +1621,7 @@ tableView.prototype.getBodyTable = function (data,index = 0) {
         this.indexRow++;
     }
     this.currentIndex = i;
-    if(data.updateVisible)
+    if (data.updateVisible)
         result.setConfirm(data, i);
     if (result.checkMargin !== undefined)
         result.checkMargin();
@@ -1706,12 +1632,12 @@ tableView.prototype.getBodyTable = function (data,index = 0) {
     return arr;
 }
 
-tableView.prototype.setConfirm = function (arr, i = 0) {
+tableView.prototype.setConfirm = function(arr, i = 0) {
     for (i; i < arr.length; i++) {
-        if(arr[i].confirm !== undefined)
-        arr[i].visiable = arr[i].confirm;
+        if (arr[i].confirm !== undefined)
+            arr[i].visiable = arr[i].confirm;
         else
-        arr[i].visiable = false;
+            arr[i].visiable = false;
         arr[i].confirm = undefined;
         arr[i].exactly = undefined;
         if (arr[i].child !== undefined) {
@@ -1720,13 +1646,13 @@ tableView.prototype.setConfirm = function (arr, i = 0) {
     }
 }
 
-tableView.prototype.countRow = function () {
+tableView.prototype.countRow = function() {
     var countRowVisiable = this.countRowChild(this.data);
 
     return countRowVisiable;
 }
 
-tableView.prototype.countRowChild = function (arr) {
+tableView.prototype.countRowChild = function(arr) {
     var countRowVisiable = 0
     for (var i = 0; i < arr.length; i++) {
         if (arr[i].visiable != false)
@@ -1737,7 +1663,7 @@ tableView.prototype.countRowChild = function (arr) {
     return countRowVisiable;
 }
 
-tableView.prototype.pagination = function (number, functionClick) {
+tableView.prototype.pagination = function(number, functionClick) {
     var countPrecent = Math.ceil(this.countRow() / number);
 
     if (countPrecent <= 1) {
@@ -1768,84 +1694,73 @@ tableView.prototype.pagination = function (number, functionClick) {
     var realTemp = _({
         tag: "div",
         class: "pagination",
-        child: [
-            {
-                tag: "div",
-                class: "pagination-container",
-                child: [
-                    overlay,
-                    {
-                        tag: "div",
-                        class: "pagination-prev",
-                        on: {
-                            click: function (event) {
-                                var temp = $("a.active", container);
+        child: [{
+            tag: "div",
+            class: "pagination-container",
+            child: [
+                overlay,
+                {
+                    tag: "div",
+                    class: "pagination-prev",
+                    on: {
+                        click: function(event) {
+                            var temp = $("a.active", container);
 
-                                if (temp !== undefined)
-                                    var prev = temp.previousSibling;
-                                while (prev != null && prev.classList.contains("detail"))
-                                    prev = prev.previousSibling;
-                                if (prev !== null) {
-                                    prev.click();
-                                    temp.style.color = "";
-                                }
+                            if (temp !== undefined)
+                                var prev = temp.previousSibling;
+                            while (prev != null && prev.classList.contains("detail"))
+                                prev = prev.previousSibling;
+                            if (prev !== null) {
+                                prev.click();
+                                temp.style.color = "";
                             }
-                        },
-                        props: {
-                        },
-                        child: [
-                            {
-                                tag: "span",
-                                class: ["icon-pagination", "icon-pagination-prev"],
-                                child: [
-                                    {
-                                        tag: "i",
-                                        class: ["icon", "material-icons"],
-                                        props: {
-                                            innerHTML: "keyboard_arrow_left"
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
+                        }
                     },
-                    container,
-                    {
-                        tag: "div",
-                        class: "pagination-next",
-                        on: {
-                            click: function (event) {
-                                var temp = $("a.active", container);
+                    props: {},
+                    child: [{
+                        tag: "span",
+                        class: ["icon-pagination", "icon-pagination-prev"],
+                        child: [{
+                            tag: "i",
+                            class: ["icon", "material-icons"],
+                            props: {
+                                innerHTML: "keyboard_arrow_left"
+                            }
+                        }]
+                    }]
+                },
+                container,
+                {
+                    tag: "div",
+                    class: "pagination-next",
+                    on: {
+                        click: function(event) {
+                            var temp = $("a.active", container);
 
-                                if (temp !== undefined)
-                                    var next = temp.nextSibling;
-                                while (next != null && next.classList.contains("detail"))
-                                    next = next.nextSibling;
-                                if (next !== null) {
-                                    next.click();
-                                    temp.style.color = "";
-                                }
+                            if (temp !== undefined)
+                                var next = temp.nextSibling;
+                            while (next != null && next.classList.contains("detail"))
+                                next = next.nextSibling;
+                            if (next !== null) {
+                                next.click();
+                                temp.style.color = "";
                             }
-                        },
-                        child: [
-                            {
-                                tag: "span",
-                                class: ["icon-pagination", "icon-pagination-next"],
-                                child: [
-                                    {
-                                        tag: "i",
-                                        class: ["icon", "material-icons"],
-                                        props: {
-                                            innerHTML: "keyboard_arrow_left"
-                                        }
-                                    }
-                                ]
+                        }
+                    },
+                    child: [{
+                        tag: "span",
+                        class: ["icon-pagination", "icon-pagination-next"],
+                        child: [{
+                            tag: "i",
+                            class: ["icon", "material-icons"],
+                            props: {
+                                innerHTML: "keyboard_arrow_left"
                             }
-                        ]
-                    }
-                ]
-            }
-        ]
+                        }]
+                    }]
+                }
+            ]
+        }]
     })
     var temp = realTemp;
 
@@ -1875,26 +1790,26 @@ tableView.prototype.pagination = function (number, functionClick) {
             tag: "a",
             class: "pagination-page-number",
             on: {
-                click: function (i) {
-                    return function (event) {
+                click: function(i) {
+                    return function(event) {
                         var active = $("a.active", container);
                         if (active !== undefined)
                             active.classList.remove("active");
                         this.classList.add("active");
                         temp.updateSize();
-            
+
                         paginationOpacity = 1;
                         checkPaginationClick = 1;
                         overlay.style.backgroundColor = "#00178a";
                         overlay.style.opacity = paginationOpacity;
                         var x = this;
-                        setTimeout(function(){
+                        setTimeout(function() {
                             paginationLeftPos = x.offsetLeft + "px";
                             overlay.style.left = paginationLeftPos;
-                            paginationWidthPos = x.offsetWidth +"px";
+                            paginationWidthPos = x.offsetWidth + "px";
                             overlay.style.width = paginationWidthPos;
-                        },10)
-                      
+                        }, 10)
+
                         this.style.color = "#fff";
 
                         if (functionClick !== undefined)
@@ -1903,11 +1818,11 @@ tableView.prototype.pagination = function (number, functionClick) {
                         self.updateTable(undefined, self.data, self.dragHorizontal, self.dragVertical, i * number);
                         if (self.scrollParent !== undefined)
                             self.scrollParent.scrollTop = 0;
-                        if(self.changePageIndex!==undefined)
+                        if (self.changePageIndex !== undefined)
                             self.changePageIndex(i);
                     }
                 }(i),
-                mouseover: function (event) {
+                mouseover: function(event) {
                     paginationOpacity = 1;
                     overlay.style.backgroundColor = "#00c1dd";
                     overlay.style.left = this.offsetLeft + "px";
@@ -1919,7 +1834,7 @@ tableView.prototype.pagination = function (number, functionClick) {
                         active.style.color = "#333d45";
                     this.style.color = "#fff";
                 },
-                mouseout: function (event) {
+                mouseout: function(event) {
                     if (checkPaginationClick) {
                         paginationOpacity = 1;
                     } else {
@@ -1944,14 +1859,14 @@ tableView.prototype.pagination = function (number, functionClick) {
         container.appendChild(choiceSelect);
     }
 
-    temp.resetChoice = function () {
-        setTimeout(function () {
+    temp.resetChoice = function() {
+        setTimeout(function() {
             arr[0].click();
         }, 10)
     }
 
-    temp.resetOnlyView = function () {
-        setTimeout(function () {
+    temp.resetOnlyView = function() {
+        setTimeout(function() {
             if (arr.length == 0)
                 return;
             var temp = $("a.active", container);
@@ -1972,32 +1887,34 @@ tableView.prototype.pagination = function (number, functionClick) {
             arr[0].style.color = "#fff";
         }, 10);
     }
-    temp.reActive = function () {
+    temp.reActive = function() {
         var temp = $("a.active", container);
         if (temp !== undefined)
             temp.click();
     }
     temp.resetOnlyView();
     var displayNone = [];
-    temp.updateSize = function () {
-        setTimeout(function(){
+    temp.updateSize = function() {
+        setTimeout(function() {
 
             temp.detailLeft.style.display = "";
             temp.detailRight.style.display = "";
             for (var i = 0; i < displayNone.length; i++) {
                 displayNone[i].style.display = "";
             }
-            
+
             var i = 0;
             var active = $("a.active", container);
             displayNone = [active];
 
-            var lastIndexPrev,lastIndexPrevBefore;
-            var lastIndexNext,lastIndexNextBefore;
-            var isLeft = false, isRight = false;
+            var lastIndexPrev, lastIndexPrevBefore;
+            var lastIndexNext, lastIndexNextBefore;
+            var isLeft = false,
+                isRight = false;
             if (active !== undefined) {
-                var prev = active.previousSibling, next = active.nextSibling;
-                
+                var prev = active.previousSibling,
+                    next = active.nextSibling;
+
                 while (container.offsetWidth <= self.realTable.offsetWidth - 160 && !(isLeft == true && isRight == true)) {
                     if (isRight == false && next != null) {
 
@@ -2014,35 +1931,33 @@ tableView.prototype.pagination = function (number, functionClick) {
                     } else {
                         isRight = true;
                     }
-                    if(container.offsetWidth > self.realTable.offsetWidth - 160)
+                    if (container.offsetWidth > self.realTable.offsetWidth - 160)
                         break;
                     if (isLeft == false && prev != null) {
-                            while (prev == temp.detailLeft || prev == temp.detailRight)
-                                prev = prev.previousSibling;
-                            prev.style.display = "flex";
-    
-                            lastIndexPrevBefore = lastIndexPrev;
-                            lastIndexPrev = prev;
-    
-                            displayNone.push(prev);
+                        while (prev == temp.detailLeft || prev == temp.detailRight)
                             prev = prev.previousSibling;
-                            i++;
+                        prev.style.display = "flex";
+
+                        lastIndexPrevBefore = lastIndexPrev;
+                        lastIndexPrev = prev;
+
+                        displayNone.push(prev);
+                        prev = prev.previousSibling;
+                        i++;
                     } else {
                         isLeft = true;
                     }
                 }
-                if(isRight==false&&lastIndexNext!==undefined&&lastIndexNext.nextSibling !== null)
-                {
+                if (isRight == false && lastIndexNext !== undefined && lastIndexNext.nextSibling !== null) {
                     lastIndexNext.style.display = "";
                     lastIndexNextBefore.style.display = "";
 
                     temp.detailRight.style.display = "flex";
                     displayNone.push(container.lastChild);
-                    container.lastChild.style.display = "flex";     
+                    container.lastChild.style.display = "flex";
                 }
 
-                if(isLeft==false&&lastIndexPrev!==undefined&&lastIndexPrev.previousSibling !== null)
-                {
+                if (isLeft == false && lastIndexPrev !== undefined && lastIndexPrev.previousSibling !== null) {
                     lastIndexPrev.style.display = "";
                     lastIndexPrevBefore.style.display = "";
 
@@ -2051,33 +1966,33 @@ tableView.prototype.pagination = function (number, functionClick) {
                     container.firstChild.style.display = "flex";
                 }
             }
-        },10);
+        }, 10);
     }
-        temp.updateSize();
-    this.goto = function(index){
+    temp.updateSize();
+    this.goto = function(index) {
         var active = $("a.active", container);
         if (active !== undefined)
-        active.style.color = "#333d45";
-        arr[index-1].click();
+            active.style.color = "#333d45";
+        arr[index - 1].click();
     }
 
-    this.getPaginationIndex = function(){
+    this.getPaginationIndex = function() {
         var active = $("a.active", container);
         if (active !== undefined)
-        return active.index;
+            return active.index;
         else
-        return -1;
+            return -1;
     }
 
     return temp;
 }
 
-tableView.prototype.getRow = function (data) {
+tableView.prototype.getRow = function(data) {
     var temp = _({
         tag: "tr",
     });
     var result = this;
-    setTimeout(function () {
+    setTimeout(function() {
         temp.classList.add("parent");
     }, 10);
     Object.assign(temp, tableView.prototype);
@@ -2100,14 +2015,14 @@ tableView.prototype.getRow = function (data) {
     temp.data.moreChild = undefined;
     temp.tempIndexRow = result.tempIndexRow;
 
-    temp.checkLeft = function () {
+    temp.checkLeft = function() {
         for (var i = 0; i < temp.childNodes.length; i++)
             temp.childNodes[i].checkLeft();
     }
     if (temp.data.marker !== undefined) {
         temp.id = temp.data.marker.toString();
     }
-    temp.checkChild = function (data) {
+    temp.checkChild = function(data) {
         temp.checkClone();
         if (data !== undefined)
             temp.data = data;
@@ -2118,7 +2033,7 @@ tableView.prototype.getRow = function (data) {
         }
     }
 
-    temp.checkClone = function () {
+    temp.checkClone = function() {
         if (temp.clone.length === 0) {
             temp.clone = [];
             var k = 0;
@@ -2131,7 +2046,7 @@ tableView.prototype.getRow = function (data) {
         }
     }
 
-    temp.checkIcon = function () {
+    temp.checkIcon = function() {
         var indexMore = 0;
         if (temp.childIndex !== undefined) {
             if (temp.childIndex === 0) {
@@ -2147,33 +2062,31 @@ tableView.prototype.getRow = function (data) {
             tag: "div",
             class: "more-icon-container",
             on: {
-                click: function (event) {
+                click: function(event) {
                     temp.setDisPlay();
                 }
             },
-            child: [
-                {
-                    tag: "i",
-                    class: ["material-icons", "more-button"],
-                    props: {
-                        innerHTML: "play_arrow"
-                    },
-                }
-            ]
+            child: [{
+                tag: "i",
+                class: ["material-icons", "more-button"],
+                props: {
+                    innerHTML: "play_arrow"
+                },
+            }]
         });
         var x = temp.childNodes[indexMore].firstChild;
         while (x.classList !== undefined && x.classList.contains("margin-div-cell"))
             x = x.nextSibling;
         temp.childNodes[indexMore].insertBefore(buttonClick, x);
         this.buttonClick = buttonClick;
-        result.checkMargin = function () {
+        result.checkMargin = function() {
             for (var i = 0; i < result.clone[indexMore].length; i++) {
                 if (!result.clone[indexMore][i].classList.contains("margin-left-has-icon"))
                     result.clone[indexMore][i].classList.add("margin-left-has-icon");
             }
         }
         result.checkMargin();
-        setTimeout(function () {
+        setTimeout(function() {
             if (temp.moreChild == false) {
                 temp.setDisPlay();
                 temp.moreChild = undefined;
@@ -2182,7 +2095,7 @@ tableView.prototype.getRow = function (data) {
     }
 
 
-    temp.checkVisibleChild = function () {
+    temp.checkVisibleChild = function() {
         this.buttonClick.selfRemove();
         var parent = this.childNodes[0].getParentNode();
         if (parent.tagName === "DIV") {
@@ -2193,67 +2106,64 @@ tableView.prototype.getRow = function (data) {
         }
     }
 
-    temp.updateCurrentRow = function(data)
-    {
+    temp.updateCurrentRow = function(data) {
         var parent = temp.childNodes[0].getParentNode();
         var index = parent.childrenNodes.indexOf(this);
-        if(index == -1)
-        return;
-        return parent.updateRow(data,index);
+        if (index == -1)
+            return;
+        return parent.updateRow(data, index);
     }
 
     return temp;
 }
 
-tableView.prototype.setDisPlay = function () {
+tableView.prototype.setDisPlay = function() {
     if (!this.classList.contains("more-child")) {
         this.classList.add("more-child");
         var childrenNodes = this.childrenNodes;
         var arrFunction = [];
         for (var i = 0; i < childrenNodes.length; i++) {
             childrenNodes[i].classList.remove("disPlayNone");
-            arrFunction.push(function (childrenNodes, i) {
-                return function () {
+            arrFunction.push(function(childrenNodes, i) {
+                return function() {
                     childrenNodes[i].classList.add("parent");
                 }
             }(childrenNodes, i));
             if (childrenNodes[i].childrenNodes.length !== 0)
                 childrenNodes[i].setDisPlayVisable();
         }
-        setTimeout(function () {
+        setTimeout(function() {
             for (var i = 0; i < arrFunction.length; i++)
                 arrFunction[i]();
         }, 10);
-    }
-    else {
+    } else {
         this.setDisPlayNone();
     }
 }
 
-tableView.prototype.setDisPlayVisable = function () {
+tableView.prototype.setDisPlayVisable = function() {
     if (this.classList.contains("more-child")) {
         var arrFunction = [];
         var childrenNodes = this.childrenNodes;
         for (var i = 0; i < childrenNodes.length; i++) {
             childrenNodes[i].classList.remove("disPlayNone");
-            arrFunction.push(function (childrenNodes, i) {
-                return function () {
+            arrFunction.push(function(childrenNodes, i) {
+                return function() {
                     childrenNodes[i].classList.add("parent");
                 }
             }(childrenNodes, i));
             if (childrenNodes[i].childrenNodes.length !== 0)
                 childrenNodes[i].setDisPlayVisable();
         }
-        setTimeout(function () {
+        setTimeout(function() {
             for (var i = 0; i < arrFunction.length; i++)
                 arrFunction[i]();
         }, 10);
     }
 }
 
-tableView.prototype.setDisPlayNone = function () {
-    if(this.classList.contains("more-child"))
-    {
+tableView.prototype.setDisPlayNone = function() {
+    if (this.classList.contains("more-child")) {
         this.classList.remove("more-child");
         var childrenNodes = this.childrenNodes;
         for (var i = 0; i < childrenNodes.length; i++) {
@@ -2265,44 +2175,41 @@ tableView.prototype.setDisPlayNone = function () {
     }
 }
 
-tableView.prototype.getDivMargin = function () {
+tableView.prototype.getDivMargin = function() {
     return _({
         tag: "div",
         class: "margin-div-cell"
     })
 }
 
-tableView.prototype.getTrueCheckBox = function()
-{
+tableView.prototype.getTrueCheckBox = function() {
     var indexCheckBox = -1;
-    for(var i=0;i<this.header.length;i++)
-    {
-        if(this.header[i].type == "check")
-        {
+    for (var i = 0; i < this.header.length; i++) {
+        if (this.header[i].type == "check") {
             indexCheckBox = i;
             break;
         }
     }
-    if(indexCheckBox===-1)
-    return  [];
-    return this.checkChildCheckBox(this.data,indexCheckBox);
+    if (indexCheckBox === -1)
+        return [];
+    return this.checkChildCheckBox(this.data, indexCheckBox);
 }
 
-tableView.prototype.checkChildCheckBox = function(data,indexCheckBox){
+tableView.prototype.checkChildCheckBox = function(data, indexCheckBox) {
     var arr = [];
-    for(var i = 0;i<data.length;i++)
-    {   
-        if(data[i][indexCheckBox]==true||data[i][indexCheckBox]["value"]==true)
-        arr.push(data[i]);
-        if(data[i].child.length>0)
-        arr.concat(this.checkChildCheckBox(data[i].child,indexCheckBox));
+    for (var i = 0; i < data.length; i++) {
+        if (data[i][indexCheckBox] == true || data[i][indexCheckBox]["value"] == true)
+            arr.push(data[i]);
+        if (data[i].child.length > 0)
+            arr.concat(this.checkChildCheckBox(data[i].child, indexCheckBox));
     }
     return arr;
 }
 
-tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row) {
+tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row) {
     var data = dataOrigin;
-    var result = this, value, bonus, style, classList, cell;
+    var result = this,
+        value, bonus, style, classList, cell;
     if (checkSpan[i] !== undefined) {
         if (checkSpan[i][k] == 2)
             return 2;
@@ -2315,8 +2222,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
             value = "";
         else
             value = data.toString();
-    }
-    else
+    } else
         value = data.value;
 
     switch (this.check[j]) {
@@ -2396,42 +2302,40 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
                 tag: "checkboxbutton",
                 class: "pizo-checkbox",
                 on: {
-                    change: function (event) {
-                            if (result.bodyTable.listCheckBox !== undefined) {
-                                if (this.checked === false)
-                                    result.bodyTable.listCheckBox[0].checked = false;
-                                else {
-                                    if (result.bodyTable.listCheckBox[0].checked === false)
-                                        for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                                            if (result.bodyTable.listCheckBox[j].checked === false) {
-                                                j--;
-                                                break;
-                                            }
+                    change: function(event) {
+                        if (result.bodyTable.listCheckBox !== undefined) {
+                            if (this.checked === false)
+                                result.bodyTable.listCheckBox[0].checked = false;
+                            else {
+                                if (result.bodyTable.listCheckBox[0].checked === false)
+                                    for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                                        if (result.bodyTable.listCheckBox[j].checked === false) {
+                                            j--;
+                                            break;
                                         }
-                                    if (j === result.bodyTable.listCheckBox.length) {
-                                        result.bodyTable.listCheckBox[0].checked = true;
                                     }
+                                if (j === result.bodyTable.listCheckBox.length) {
+                                    result.bodyTable.listCheckBox[0].checked = true;
                                 }
+                            }
                             this.update();
                         }
-                    } 
+                    }
                 }
             });
-            bonus.update = function(checked)
-            {
-                if(checked==undefined)
-                dataOrigin.value = this.checked;
-                else{
+            bonus.update = function(checked) {
+                if (checked == undefined)
+                    dataOrigin.value = this.checked;
+                else {
                     dataOrigin.value = checked;
-                    if(this.checked != checked)
-                    {
+                    if (this.checked != checked) {
                         this.checked = checked;
                         this.emit("change");
                     }
                 }
             }
-            if(dataOrigin.value===true)
-            bonus.checked = dataOrigin.value;
+            if (dataOrigin.value === true)
+                bonus.checked = dataOrigin.value;
             if (result.bodyTable.listCheckBox !== undefined)
                 result.bodyTable.listCheckBox.push(bonus);
             break;
@@ -2474,11 +2378,11 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
         style = data.style;
     classList = [];
     if (data.classList !== undefined)
-    classList = data.classList;
+        classList = data.classList;
 
     var on = {
-        click: function (event) {
-            return function (event, row, functionClick) {
+        click: function(event) {
+            return function(event, row, functionClick) {
                 // event.preventDefault();
                 if (functionClick !== undefined) {
                     if (cell.getParentNode().childrenNodes.length !== 0)
@@ -2490,43 +2394,42 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
 
             }(event, row, functionClick)
         },
-        change: function (event) {
-            return function (event, row, functionChange) {
+        change: function(event) {
+            return function(event, row, functionChange) {
                 // event.preventDefault();
                 if (functionChange !== undefined) {
                     if (cell.getParentNode().childrenNodes.length !== 0)
                         var finalIndex = cell.getParentNode().childrenNodes.indexOf(cell.parentNode);
                     else
                         var finalIndex = 0;
-                        functionChange(event, cell, finalIndex, cell.getParentNode(), row.data, row);
+                    functionChange(event, cell, finalIndex, cell.getParentNode(), row.data, row);
                 }
 
             }(event, row, functionChange)
         }
     }
-    var mousedown = result.dragVertical ? function (event) {
-        return function (event, cellIndex, self) {
+    var mousedown = result.dragVertical ? function(event) {
+        return function(event, cellIndex, self) {
             var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
             var element = cellIndex.parentNode;
 
             element.finalIndex = finalIndex;
             element.elementParent = self;
-            
-        }(event, cell, result)
-    }: undefined;
 
-    var mouseup = result.dragVertical ?function (event) {
-        return function (event, cellIndex, self) {
+        }(event, cell, result)
+    } : undefined;
+
+    var mouseup = result.dragVertical ? function(event) {
+        return function(event, cellIndex, self) {
             var element = cellIndex.getParentNode();
             delete element.finalIndex;
             delete element.elementParent
         }(event, cell, result)
-    }: undefined;
-    if(window.mobilecheck()){
+    } : undefined;
+    if (window.mobilecheck()) {
         on["touchstart"] = mousedown;
         on["touchend"] = mouseup;
-    }else
-    {
+    } else {
         on["mousedown"] = mousedown;
         on["mouseup"] = mouseup;
     }
@@ -2534,10 +2437,10 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     cell = _({
         tag: "td",
         style: style,
-        class:classList,
-        on:on
+        class: classList,
+        on: on
     })
-   
+
 
     if (functionClick !== undefined)
         cell.style.cursor = "pointer";
@@ -2546,8 +2449,8 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
         class: "container-view",
     })
 
-    cell.checkLeft = function () {
-        return function (cell, result, k) {
+    cell.checkLeft = function() {
+        return function(cell, result, k) {
 
             var widthSize = 0;
             var step = 1.71428571429;
@@ -2569,7 +2472,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     }
 
 
-    row.resetParentChild = function () {
+    row.resetParentChild = function() {
         for (var i = 0; i < row.childrenNodes.length; i++) {
             row.childrenNodes[i].parentMargin = row.parentMargin + 1;
             row.childrenNodes[i].resetParentChild();
@@ -2580,15 +2483,13 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
 
     if (data.element !== undefined) {
         container.appendChild(data.element);
-    } else if(data.adapter !== undefined)
-    {
+    } else if (data.adapter !== undefined) {
         var tempAdapter = data.adapter();
         container.appendChild(tempAdapter);
         data.element = tempAdapter;
-    }
-    else {
-        if(this.check[j]!=="dragzone"&&this.check[j]!=="check"&&this.check[j]!=="deltail")
-        container.addChild(_({ text: value }))
+    } else {
+        if (this.check[j] !== "dragzone" && this.check[j] !== "check" && this.check[j] !== "deltail")
+            container.addChild(_({ text: value }))
     }
 
     if (bonus !== undefined) {
@@ -2612,7 +2513,7 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
             checkSpan[i][l] = 6;
         }
     }
-    cell.getParentNode = function () {
+    cell.getParentNode = function() {
         var parent = cell.clone[0][0];
         parent = parent;
         if (parent.tagName === "TH")
@@ -2622,23 +2523,23 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k, checkSpan = [], row
     return cell;
 }
 
-tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical, index = 0,isUpdate = true) {
+tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVertical, index = 0, isUpdate = true) {
     var checkSpan = [];
     var result = this;
     var temp = _({
         tag: "tbody"
     });
-    if(data!==undefined)
-    this.data = data;
-    if(isUpdate == true)
-    result.indexRow = 0;
+    if (data !== undefined)
+        this.data = data;
+    if (isUpdate == true)
+        result.indexRow = 0;
     temp.listCheckBox = [];
     if (dragHorizontal !== undefined)
         result.dragHorizontal = dragHorizontal;
     if (dragVertical !== undefined)
         result.dragVertical = dragVertical;
-   
-    if (this.bodyTable.listCheckBox !== undefined&&this.bodyTable.listCheckBox.length>0)
+
+    if (this.bodyTable.listCheckBox !== undefined && this.bodyTable.listCheckBox.length > 0)
         temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
 
     for (var i = 0; i < result.clone.length; i++) {
@@ -2649,38 +2550,34 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
     this.bodyTable = temp;
     result.childrenNodes = [];
     this.currentIndex = undefined;
-    result.getBodyTable(this.data,index);
-    if(temp.listCheckBox[0]!==undefined)
-    {
+    result.getBodyTable(this.data, index);
+    if (temp.listCheckBox[0] !== undefined) {
         temp.listCheckBox[0].update();
     }
     this.checkSpan = checkSpan;
-   
-    if(result.dragVertical)
-    {
+
+    if (result.dragVertical) {
         result.setUpSlip();
-        if(result.isSwipeLeft||result.isSwipeRight)
-        this.setUpSwipe();
+        if (result.isSwipeLeft || result.isSwipeRight)
+            this.setUpSwipe();
         result.slip = new Slip(result.bodyTable);
     }
-   if(data!==undefined)
-    {
-        if (result.paginationElement!==undefined&&result.paginationElement.reActive)
-        result.paginationElement.reActive();
+    if (data !== undefined) {
+        if (result.paginationElement !== undefined && result.paginationElement.reActive)
+            result.paginationElement.reActive();
     }
 }
 
-tableView.prototype.getLastElement = function(element)
-{
-    if(element.childrenNodes!==undefined&&element.childrenNodes.length!==0)
-    {
-        return this.getLastElement(element.childrenNodes[element.childrenNodes.length-1]);
+tableView.prototype.getLastElement = function(element) {
+    if (element.childrenNodes !== undefined && element.childrenNodes.length !== 0) {
+        return this.getLastElement(element.childrenNodes[element.childrenNodes.length - 1]);
     }
     return element;
 }
 
-tableView.prototype.insertRow = function (data, checkMust = false) {
-    var result = this, k, cell;
+tableView.prototype.insertRow = function(data, checkMust = false) {
+    var result = this,
+        k, cell;
     var delta = [];
     var index = result.childrenNodes.length;
     var row = result.getRow(data);
@@ -2742,11 +2639,10 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
     result.childrenNodes[index] = row;
 
     if (result.tagName !== "DIV") {
-        result.data.child.splice(index,0,data);
+        result.data.child.splice(index, 0, data);
         x = data;
-    }
-    else {
-        result.data.splice(index,0,data);
+    } else {
+        result.data.splice(index, 0, data);
         x = data;
     }
 
@@ -2758,7 +2654,8 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
         row.clone = temp.clone;
         row.checkSpan = temp.checkSpan;
         if (row.clone !== undefined) {
-            var k = 0, l = 0;
+            var k = 0,
+                l = 0;
             var delta = 0;
             for (var i = 0; i < row.clone.length; i++) {
                 if (row.clone[i][0] === temp.childNodes[k]) {
@@ -2800,8 +2697,9 @@ tableView.prototype.insertRow = function (data, checkMust = false) {
     return row;
 }
 
-tableView.prototype.updateRow = function (data, index, checkMust = false) {
-    var result = this, k, cell;
+tableView.prototype.updateRow = function(data, index, checkMust = false) {
+    var result = this,
+        k, cell;
     var delta = [];
     var row = result.getRow(data);
     for (var i = 0; i < result.clone.length; i++) {
@@ -2855,13 +2753,12 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
         row.addChild(cell);
     }
     var x;
-    
+
     result.childrenNodes[index] = row;
-    
+
     if (result.tagName !== "DIV") {
         x = Object.assign(temp.data, data);
-    }
-    else {
+    } else {
         x = Object.assign(temp.data, data);
     }
     row.data = temp.data;
@@ -2870,7 +2767,8 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
         row.clone = temp.clone;
         row.checkSpan = temp.checkSpan;
         if (row.clone !== undefined) {
-            var k = 0, l = 0;
+            var k = 0,
+                l = 0;
             var delta = 0;
             for (var i = 0; i < row.clone.length; i++) {
                 if (row.clone[i][0] === temp.childNodes[k]) {
@@ -2911,16 +2809,16 @@ tableView.prototype.updateRow = function (data, index, checkMust = false) {
     return row;
 }
 
-tableView.prototype.dropRow = function (index) {
+tableView.prototype.dropRow = function(index) {
     var result = this;
     var element = result.clone[0][index + 1].parentNode;
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) {
         if (!element.classList.contains("hideTranslate"))
             element.classList.add("hideTranslate");
         if (element.childrenNodes.length !== 0)
             element.addHideAnimationChild();
-            result.bodyTable.parentNode.style.pointerEvents = "none";
-        var eventEnd = function () {
+        result.bodyTable.parentNode.style.pointerEvents = "none";
+        var eventEnd = function() {
             result.exactlyDeleteRow(index);
             result.bodyTable.parentNode.style.pointerEvents = "";
             resolve();
@@ -2933,15 +2831,15 @@ tableView.prototype.dropRow = function (index) {
     })
 }
 
-tableView.prototype.exactlyDeleteRow = function(index)
-{
-    var parent = this, deltaX = [];
+tableView.prototype.exactlyDeleteRow = function(index) {
+    var parent = this,
+        deltaX = [];
     var element = parent.childrenNodes[index];
     parent.dropRowChild(element);
     var deltaY = 0;
     deltaX = parent.checkLongRow(index);
     for (var i = 0; i < element.childNodes.length; i++) {
-        if( element.childNodes[i].tagName!=="TD")
+        if (element.childNodes[i].tagName !== "TD")
             continue;
         parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
         if (parent.checkSpan !== undefined)
@@ -2954,85 +2852,75 @@ tableView.prototype.exactlyDeleteRow = function(index)
     }
     if (parent.tagName !== "DIV") {
         var indexData = parent.data.child.indexOf(element.data);
-        if(indexData!==-1)
-        parent.data.child.splice(indexData, 1);
-    }
-    else {
+        if (indexData !== -1)
+            parent.data.child.splice(indexData, 1);
+    } else {
         var indexData = parent.data.indexOf(element.data);
-        if(indexData!==-1)
-        parent.data.splice(indexData, 1);
+        if (indexData !== -1)
+            parent.data.splice(indexData, 1);
     }
     if (parent.checkVisibleChild !== undefined && parent.childrenNodes.length === 0)
         parent.checkVisibleChild();
     parent.realTable.parentNode.resetHash();
-    if(parent.tagName == "DIV")
-    {
-        if(parent.childrenNodes.length == 0)
-        {
+    if (parent.tagName == "DIV") {
+        if (parent.childrenNodes.length == 0) {
             parent.updatePagination();
         }
     }
 }
 
-tableView.prototype.insertColumn = function (index, insertBefore = -1) {
-    var current=[];
-    var cell,cellHeader;
+tableView.prototype.insertColumn = function(index, insertBefore = -1) {
+    var current = [];
+    var cell, cellHeader;
     delete this.header[index].hidden;
     this.check[index] = this.header[index].type;
-    cellHeader = this.getCellHeader(this.header[index],index);
-    
+    cellHeader = this.getCellHeader(this.header[index], index);
+
     var currentClone;
-    if(insertBefore===-1)
-    {
+    if (insertBefore === -1) {
         this.headerTable.childNodes[0].appendChild(cellHeader);
         current.push(cellHeader);
         this.clone.push(current);
-    }
-    else
-    {
-        if(this.clone.length<insertBefore)
-        {
+    } else {
+        if (this.clone.length < insertBefore) {
             console.log("index insert > current index");
             return;
-        }else
-        currentClone = this.clone[insertBefore];
+        } else
+            currentClone = this.clone[insertBefore];
 
-        this.headerTable.childNodes[0].insertBefore(cellHeader,this.clone[insertBefore][0]);
+        this.headerTable.childNodes[0].insertBefore(cellHeader, this.clone[insertBefore][0]);
         current.push(cellHeader);
-        this.clone.splice(insertBefore,0,current);
+        this.clone.splice(insertBefore, 0, current);
     }
     var k = 1;
-    for(var i = 0;i<this.childrenNodes.length;i++)
-    {
-        cell = this.getCell(this.childrenNodes[i].data[index],i,index,this.clone[this.clone.length-1][0].id+1,this.checkSpan,this.childrenNodes[i]);
+    for (var i = 0; i < this.childrenNodes.length; i++) {
+        cell = this.getCell(this.childrenNodes[i].data[index], i, index, this.clone[this.clone.length - 1][0].id + 1, this.checkSpan, this.childrenNodes[i]);
         current.push(cell);
         cell.clone = this.clone;
-        if(insertBefore===-1)
-        this.childrenNodes[i].appendChild(cell);
-        else
-        {
-            if(this.childrenNodes[i]===currentClone[k].parentNode)
-            {
-                this.childrenNodes[i].insertBefore(cell,currentClone[k]);
-            }else
-            {
-                var tempIndexRow = insertBefore - this.checkLongColumn(i,insertBefore);
-                if(this.childrenNodes[i].childNodes[tempIndexRow]!==undefined)
-                this.childrenNodes[i].insertBefore(cell,this.childrenNodes[i].childNodes[tempIndexRow]);
+        if (insertBefore === -1)
+            this.childrenNodes[i].appendChild(cell);
+        else {
+            if (this.childrenNodes[i] === currentClone[k].parentNode) {
+                this.childrenNodes[i].insertBefore(cell, currentClone[k]);
+            } else {
+                var tempIndexRow = insertBefore - this.checkLongColumn(i, insertBefore);
+                if (this.childrenNodes[i].childNodes[tempIndexRow] !== undefined)
+                    this.childrenNodes[i].insertBefore(cell, this.childrenNodes[i].childNodes[tempIndexRow]);
                 else
-                this.childrenNodes[i].appendChild(cell);
+                    this.childrenNodes[i].appendChild(cell);
                 k--;
             }
         }
         if (this.childrenNodes[i].childrenNodes.length !== 0) {
-            this.childrenNodes[i].insertColumn(index,insertBefore);
+            this.childrenNodes[i].insertColumn(index, insertBefore);
         }
         k++;
     }
 }
 
-tableView.prototype.changeParent = function (index, rowParent) {
-    var result = this, deltaX = [];
+tableView.prototype.changeParent = function(index, rowParent) {
+    var result = this,
+        deltaX = [];
     var element = result.clone[0][index + 1].parentNode;
     var parent = element.childNodes[0].getParentNode();
 
@@ -3055,14 +2943,14 @@ tableView.prototype.changeParent = function (index, rowParent) {
     if (parent.childrenNodes.length !== 0) {
         var indexData = parent.childrenNodes.indexOf(element);
         var dataTemp;
-        if(parent.tagName == "DIV")
+        if (parent.tagName == "DIV")
             dataTemp = parent.data[indexData];
         else
             dataTemp = parent.data.child[indexData];
-        if(rowParent.tagName == "DIV")
-        rowParent.data.push(dataTemp);
+        if (rowParent.tagName == "DIV")
+            rowParent.data.push(dataTemp);
         else
-        rowParent.data.child.push(dataTemp);
+            rowParent.data.child.push(dataTemp);
         if (parent.data.child !== undefined)
             parent.data.child.splice(indexData, 1);
         else
@@ -3077,7 +2965,7 @@ tableView.prototype.changeParent = function (index, rowParent) {
     return rowParent.childrenNodes.length - 1;
 }
 
-tableView.prototype.addHideAnimationChild = function () {
+tableView.prototype.addHideAnimationChild = function() {
     for (var i = 0; i < this.childrenNodes.length; i++) {
         if (!this.childrenNodes[i].classList.contains("hideTranslate"))
             this.childrenNodes[i].classList.add("hideTranslate");
@@ -3087,13 +2975,12 @@ tableView.prototype.addHideAnimationChild = function () {
     }
 }
 
-tableView.prototype.changeRowChild = function (element, parent) {
+tableView.prototype.changeRowChild = function(element, parent) {
     var current;
     if (parent.tagName === "DIV") {
         current = null;
         parent.bodyTable.addChild(element);
-    }
-    else {
+    } else {
         current = parent.clone[0][parent.clone[0].length - 1].parentNode;
         insertAfter(element, current);
     }
@@ -3104,11 +2991,11 @@ tableView.prototype.changeRowChild = function (element, parent) {
         element.changeRowChildElement(element);
 }
 
-tableView.prototype.changeRowChildElement = function (current) {
+tableView.prototype.changeRowChildElement = function(current) {
     for (var i = 0; i < this.childrenNodes.length; i++) {
-        if (this.tagName === "DIV"||current == null)
+        if (this.tagName === "DIV" || current == null)
             this.bodyTable.addChild(this.childrenNodes[i]);
-        else{
+        else {
             insertAfter(this.childrenNodes[i], current);
         }
         this.childrenNodes[i].checkLeft();
@@ -3118,14 +3005,14 @@ tableView.prototype.changeRowChildElement = function (current) {
     }
 }
 
-tableView.prototype.dropRowChild = function (element) {
-    if(element!==undefined&&element.parentNode!==undefined)
+tableView.prototype.dropRowChild = function(element) {
+    if (element !== undefined && element.parentNode !== undefined)
         element.parentNode.removeChild(element);
     if (element.childrenNodes.length !== 0)
         element.dropRowChildElement()
 }
 
-tableView.prototype.dropRowChildElement = function () {
+tableView.prototype.dropRowChildElement = function() {
     for (var i = 0; i < this.childrenNodes.length; i++) {
         this.childrenNodes[i].selfRemove();
         if (this.childrenNodes[i].childrenNodes.length !== 0) {
@@ -3134,36 +3021,33 @@ tableView.prototype.dropRowChildElement = function () {
     }
 }
 
-tableView.prototype.backGroundFix = function (index) {
+tableView.prototype.backGroundFix = function(index) {
     var rect = this.getBoundingClientRect();
     var scrollParent = this.realTable.parentNode;
     while (scrollParent) {
         var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
-        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight || scrollParent.clientWidth < scrollParent.scrollWidth)) break;
         scrollParent = scrollParent.parentElement;
     }
     var scrollLeft = scrollTop = 0;
-    if(scrollParent)
-    {
+    if (scrollParent) {
         scrollLeft = scrollParent.scrollLeft;
         scrollTop = scrollParent.scrollTop;
     }
     var rectDistance = traceOutBoundingClientRect(this);
 
-    var temp = _(
-        {
-            tag: "div",
-            class: "background-opacity",
-            style: {
-                top: rect.y + 'px',
-                left: rect.x + scrollLeft + 'px',
-                backgroundColor: "#ffffff00",
-                realTop: rect.y + scrollTop,
-                width: rectDistance.width - 17 + "px"
-            },
-            child: [
-            ]
-        })
+    var temp = _({
+        tag: "div",
+        class: "background-opacity",
+        style: {
+            top: rect.y + 'px',
+            left: rect.x + scrollLeft + 'px',
+            backgroundColor: "#ffffff00",
+            realTop: rect.y + scrollTop,
+            width: rectDistance.width - 17 + "px"
+        },
+        child: []
+    })
     var arrZone = [];
     var tempElement = this.getBound2Row(undefined, 0, index);
     arrZone.push(tempElement);
@@ -3180,25 +3064,25 @@ tableView.prototype.backGroundFix = function (index) {
     arrZone.push(tempElement);
     temp.appendChild(tempElement);
 
-    temp.getZone = function () {
+    temp.getZone = function() {
         return arrZone;
     }
 
     return temp;
 }
 
-tableView.prototype.backGround = function (height, callback, index) {
+tableView.prototype.backGround = function(height, callback, index) {
     var rect = this.getBoundingClientRect();
     var scrollParent = this.realTable.parentNode;
     while (scrollParent) {
         var overflowStyle = window.getComputedStyle(scrollParent)['overflow'];
-        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight||scrollParent.clientWidth < scrollParent.scrollWidth)) break;
+        if ((overflowStyle === 'auto' || overflowStyle === 'scroll' || scrollParent.tagName === 'HTML') && (scrollParent.clientHeight < scrollParent.scrollHeight || scrollParent.clientWidth < scrollParent.scrollWidth)) break;
         scrollParent = scrollParent.parentElement;
     }
     var rectDistance = traceOutBoundingClientRect(this);
     var scrollTop = 0;
-    if(scrollParent)
-    scrollTop = scrollParent.scrollTop;
+    if (scrollParent)
+        scrollTop = scrollParent.scrollTop;
     var temp = _({
         tag: "div",
         class: "background-opacity-1",
@@ -3209,48 +3093,45 @@ tableView.prototype.backGround = function (height, callback, index) {
             realTop: rect.y + scrollTop,
             // width:rectDistance.width-17+"px"
         },
-        child: [
-            {
-                tag: "div",
-                class: "delete-zone",
-                style: {
-                    transform: "translateY(-" + height + "px)",
-                    top: rect.y + 'px',
-                    left: rectDistance.left + 'px',
-                    backgroundColor: "#ffffff00",
-                    height: height + "px",
-                    width: rectDistance.width + "px"
-                },
-                child: [
-                    {
-                        tag: "i",
-                        class: ["delete-zone-icon", "material-icons"],
-                        style: {
-                            marginTop: height / 2 - 30 + "px"
-                        },
-                        props: {
-                            innerHTML: "delete_forever"
-                        }
+        child: [{
+            tag: "div",
+            class: "delete-zone",
+            style: {
+                transform: "translateY(-" + height + "px)",
+                top: rect.y + 'px',
+                left: rectDistance.left + 'px',
+                backgroundColor: "#ffffff00",
+                height: height + "px",
+                width: rectDistance.width + "px"
+            },
+            child: [{
+                    tag: "i",
+                    class: ["delete-zone-icon", "material-icons"],
+                    style: {
+                        marginTop: height / 2 - 30 + "px"
                     },
-                    {
-                        tag: "span",
-                        class: ["detele-zone-label"],
-                        style: {
-                            marginTop: height / 2 - 15 + "px"
-                        },
-                        props: {
-                            innerHTML: "Delete"
-                        }
+                    props: {
+                        innerHTML: "delete_forever"
                     }
-                ],
-                on: {
-                    mouseover: function (event) {
-                        if (callback !== undefined && temp.isMove == false)
-                            callback(event);
+                },
+                {
+                    tag: "span",
+                    class: ["detele-zone-label"],
+                    style: {
+                        marginTop: height / 2 - 15 + "px"
                     },
+                    props: {
+                        innerHTML: "Delete"
+                    }
                 }
+            ],
+            on: {
+                mouseover: function(event) {
+                    if (callback !== undefined && temp.isMove == false)
+                        callback(event);
+                },
             }
-        ]
+        }]
     })
     var arrZone = [];
     var tempElement = this.getBound2Colum(undefined, 0, index);
@@ -3268,17 +3149,17 @@ tableView.prototype.backGround = function (height, callback, index) {
     arrZone.push(tempElement);
     temp.appendChild(tempElement);
 
-    temp.getDeleteZone = function () {
+    temp.getDeleteZone = function() {
         return temp.childNodes[0];
     }
-    temp.getZone = function () {
+    temp.getZone = function() {
         return arrZone;
     }
     return temp;
 }
 
 
-tableView.prototype.deleteColumn = function (index) {
+tableView.prototype.deleteColumn = function(index) {
     this.header[index].hidden = true;
     for (var i = 0; i < this.clone[index].length; i++) {
         this.clone[index][i].selfRemove();
@@ -3291,7 +3172,7 @@ tableView.prototype.deleteColumn = function (index) {
     }
 }
 
-tableView.prototype.cloneColumn = function (index, isFull = false) {
+tableView.prototype.cloneColumn = function(index, isFull = false) {
     var clone = this.clone[index][0].cloneNode(true);
     clone.style.width = this.clone[index][0].offsetWidth - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-right-width').replace("px", "") + 'px';
     clone.style.height = this.clone[index][0].offsetHeight - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[index][0], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
@@ -3324,7 +3205,7 @@ tableView.prototype.cloneColumn = function (index, isFull = false) {
     return result;
 }
 
-tableView.prototype.cloneCellColumn = function (bodyTable, cloneArray, index) {
+tableView.prototype.cloneCellColumn = function(bodyTable, cloneArray, index) {
     var clone, cell;
     for (var i = 1; i < cloneArray[index].length; i++) {
         clone = cloneArray[index][i].cloneNode(true);
@@ -3348,7 +3229,7 @@ tableView.prototype.cloneCellColumn = function (bodyTable, cloneArray, index) {
     }
 }
 
-tableView.prototype.cloneRow = function (index, isFull = false) {
+tableView.prototype.cloneRow = function(index, isFull = false) {
     var clone;
     var headerTable = _({
         tag: "thead"
@@ -3388,7 +3269,7 @@ tableView.prototype.cloneRow = function (index, isFull = false) {
     return result;
 }
 
-tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
+tableView.prototype.getBound2Colum = function(colum1, colum2, index) {
     var self = this;
     var left, right;
     var isShow = true;
@@ -3400,8 +3281,7 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
         right = (self.clone[colum2][0].offsetWidth) / 2 + parseFloat(window.getComputedStyle(self.clone[colum2][0]).webkitBorderHorizontalSpacing) / 2;
         if (self.clone[colum2][0].classList.contains("postionStickyCell"))
             isShow = false;
-    }
-    else
+    } else
         right = 20 + parseFloat(window.getComputedStyle(self).paddingRight);
 
     var center = _({
@@ -3419,14 +3299,13 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
             height: self.offsetHeight + "px",
         },
         on: {
-            mouseover: isShow ? function () {
+            mouseover: isShow ? function() {
                 if (this.parentNode.isMove === false) {
                     self.moveColumn(self.clone, colum1, colum2, index)
                 }
             } : undefined
         },
-        child: [
-            {
+        child: [{
                 tag: "div",
                 class: "move-hover-zone-left",
                 style: {
@@ -3446,13 +3325,14 @@ tableView.prototype.getBound2Colum = function (colum1, colum2, index) {
     return temp;
 }
 
-tableView.prototype.moveColumn = function (arrClone, colum1, colum2, index, i = 0) {
+tableView.prototype.moveColumn = function(arrClone, colum1, colum2, index, i = 0) {
     var parent;
     // if(index==colum1)
     //     return;
     // if(index==colum2)
     //     return;
-    var delta = 0, lastDelta;
+    var delta = 0,
+        lastDelta;
     for (i; i < arrClone[index].length; i++) {
         parent = arrClone[index][i - delta].parentNode;
         if (colum2 !== undefined) {
@@ -3461,8 +3341,7 @@ tableView.prototype.moveColumn = function (arrClone, colum1, colum2, index, i = 
                 continue;
             }
             parent.insertBefore(arrClone[index][i - delta], arrClone[colum2][i]);
-        }
-        else {
+        } else {
             parent.appendChild(arrClone[index][i]);
         }
         if (arrClone[index][i].rowSpan !== undefined) {
@@ -3491,7 +3370,7 @@ tableView.prototype.moveColumn = function (arrClone, colum1, colum2, index, i = 
     }
 }
 
-tableView.prototype.getHeightChild = function () {
+tableView.prototype.getHeightChild = function() {
     var result = 0;
     var self = this;
     var tempClone = self.childrenNodes;
@@ -3507,7 +3386,7 @@ tableView.prototype.getHeightChild = function () {
     return result;
 }
 
-tableView.prototype.getElementChild = function () {
+tableView.prototype.getElementChild = function() {
     var result = [];
     var self = this;
     var tempClone = self.childrenNodes;
@@ -3521,7 +3400,7 @@ tableView.prototype.getElementChild = function () {
     return result;
 }
 
-tableView.prototype.getBound2Row = function (row1, row2) {
+tableView.prototype.getBound2Row = function(row1, row2) {
     var self = this;
     var top, bottom, elementReal;
     if (self.clone[0][row1] !== undefined)
@@ -3534,15 +3413,13 @@ tableView.prototype.getBound2Row = function (row1, row2) {
             if (self.clone[0][row1].parentNode.childrenNodes.length !== 0) {
                 var x = self.clone[0][row1].parentNode.getElementChild();
                 elementReal = x[x.length - 1].nextSibling;
-            }
-            else
+            } else
                 elementReal = self.clone[0][row1].parentNode.nextSibling;
         }
     }
     if (row1 !== undefined) {
         top = (self.clone[0][row1].offsetHeight) / 2 + parseFloat(style1.webkitBorderVerticalSpacing) / 2;
-    }
-    else
+    } else
         top = parseFloat(window.getComputedStyle(self).paddingTop);
     if (row2 !== undefined) {
         if (self.clone[0][row2].parentNode.style.display === "none")
@@ -3557,8 +3434,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
         if (row1 !== undefined && self.clone[0][row2].parentNode.childrenNodes.length !== 0) {
             bottom += self.clone[0][row2].parentNode.getHeightChild();
         }
-    }
-    else {
+    } else {
         bottom = parseFloat(window.getComputedStyle(self).paddingBottom) + (self.clone[0][row1].offsetHeight) / 2;
     }
 
@@ -3582,11 +3458,9 @@ tableView.prototype.getBound2Row = function (row1, row2) {
             // backgroundColor:random_bg_color()
         },
         on: {
-            mouseover: function () {
-            }
+            mouseover: function() {}
         },
-        child: [
-            {
+        child: [{
                 tag: "div",
                 class: "move-hover-zone-top",
                 style: {
@@ -3611,7 +3485,7 @@ tableView.prototype.getBound2Row = function (row1, row2) {
 
 function sortArray(arr, index, increase = true) {
     if (increase) {
-        arr.sort(function (a, b) {
+        arr.sort(function(a, b) {
             if (a.child !== undefined)
                 sortArray(a.child, index, increase);
             var valueA = a[index].value;
@@ -3634,9 +3508,8 @@ function sortArray(arr, index, increase = true) {
             if (arr[arr.length - 1].child !== undefined) {
                 sortArray(arr[arr.length - 1].child, index, increase);
             }
-    }
-    else {
-        arr.sort(function (a, b) {
+    } else {
+        arr.sort(function(a, b) {
             if (a.child !== undefined)
                 sortArray(a.child, index, increase);
             var valueA = a[index].value;
@@ -3717,116 +3590,103 @@ export function removeAccents(str) {
 export function deleteQuestion(title, content, yes = "Có", no = "không") {
     var contentElement;
     if (typeof content !== "object") {
-        contentElement = _(
-            {
-                tag: "span",
-                class: "module-delete-header-content",
-                props: {
-                    innerHTML: content
-                }
+        contentElement = _({
+            tag: "span",
+            class: "module-delete-header-content",
+            props: {
+                innerHTML: content
             }
-        )
+        })
     } else {
         contentElement = content;
     }
     var temp;
-    var promiseComfirm = new Promise(function (resolve, reject) {
+    var promiseComfirm = new Promise(function(resolve, reject) {
         temp = _({
             tag: "modal",
             class: "modal-delete-module",
-            child: [
-                {
-                    tag: "div",
-                    class: "module-delete-container",
-                    child: [
-                        {
-                            tag: "div",
-                            class: "module-delete-header",
-                            child: [
-                                {
-                                    tag: "span",
-                                    class: "module-delete-header-title",
-                                    props: {
-                                        innerHTML: title
+            child: [{
+                tag: "div",
+                class: "module-delete-container",
+                child: [{
+                        tag: "div",
+                        class: "module-delete-header",
+                        child: [{
+                                tag: "span",
+                                class: "module-delete-header-title",
+                                props: {
+                                    innerHTML: title
+                                }
+                            },
+                            {
+                                tag: "div",
+                                class: "module-delete-header-close-container",
+                                on: {
+                                    click: function(event) {
+                                        temp.selfRemove();
+                                        reject();
                                     }
                                 },
-                                {
-                                    tag: "div",
-                                    class: "module-delete-header-close-container",
-                                    on: {
-                                        click: function (event) {
-                                            temp.selfRemove();
-                                            reject();
-                                        }
-                                    },
-                                    child: [
-                                        {
-                                            tag: "i",
-                                            class: ["module-delete-header-close", "material-icons"],
-                                            props: {
-                                                innerHTML: "close"
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "module-delete-content",
-                            child: [
-                                contentElement
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "module-delete-button",
-                            child: [
-                                {
-                                    tag: "button",
-                                    class: "module-delete-button-yes",
-                                    on: {
-                                        click: function (event) {
-                                            temp.selfRemove();
-                                            setTimeout(function(){
-                                                resolve();
-                                            },60);
-                                        }
-                                    },
-                                    child: [
-                                        {
-                                            tag: "span",
-                                            class: "module-delete-button-yes-label",
-                                            props: {
-                                                innerHTML: yes
-                                            }
-                                        }
-                                    ]
+                                child: [{
+                                    tag: "i",
+                                    class: ["module-delete-header-close", "material-icons"],
+                                    props: {
+                                        innerHTML: "close"
+                                    }
+                                }]
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "module-delete-content",
+                        child: [
+                            contentElement
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "module-delete-button",
+                        child: [{
+                                tag: "button",
+                                class: "module-delete-button-yes",
+                                on: {
+                                    click: function(event) {
+                                        temp.selfRemove();
+                                        setTimeout(function() {
+                                            resolve();
+                                        }, 60);
+                                    }
                                 },
-                                {
-                                    tag: "button",
-                                    class: "module-delete-button-no",
-                                    on: {
-                                        click: function (event) {
-                                            temp.selfRemove();
-                                            reject();
-                                        }
-                                    },
-                                    child: [
-                                        {
-                                            tag: "span",
-                                            class: "module-delete-button-no-label",
-                                            props: {
-                                                innerHTML: no
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                    ]
-                }
-            ]
+                                child: [{
+                                    tag: "span",
+                                    class: "module-delete-button-yes-label",
+                                    props: {
+                                        innerHTML: yes
+                                    }
+                                }]
+                            },
+                            {
+                                tag: "button",
+                                class: "module-delete-button-no",
+                                on: {
+                                    click: function(event) {
+                                        temp.selfRemove();
+                                        reject();
+                                    }
+                                },
+                                child: [{
+                                    tag: "span",
+                                    class: "module-delete-button-no-label",
+                                    props: {
+                                        innerHTML: no
+                                    }
+                                }]
+                            }
+                        ]
+                    },
+                ]
+            }]
         })
     })
 
@@ -3838,95 +3698,83 @@ export function deleteQuestion(title, content, yes = "Có", no = "không") {
 export function confirmQuestion(title, content, yes = "OK") {
     var contentElement;
     if (typeof content !== "object") {
-        contentElement = _(
-            {
-                tag: "span",
-                class: "module-delete-header-content",
-                props: {
-                    innerHTML: content
-                }
+        contentElement = _({
+            tag: "span",
+            class: "module-delete-header-content",
+            props: {
+                innerHTML: content
             }
-        )
+        })
     } else {
         contentElement = content;
     }
     var temp;
-    var promiseComfirm = new Promise(function (resolve, reject) {
+    var promiseComfirm = new Promise(function(resolve, reject) {
         temp = _({
             tag: "modal",
             class: "modal-delete-module",
-            child: [
-                {
-                    tag: "div",
-                    class: "module-delete-container",
-                    child: [
-                        {
-                            tag: "div",
-                            class: "module-delete-header",
-                            child: [
-                                {
-                                    tag: "span",
-                                    class: "module-delete-header-title",
-                                    props: {
-                                        innerHTML: title
+            child: [{
+                tag: "div",
+                class: "module-delete-container",
+                child: [{
+                        tag: "div",
+                        class: "module-delete-header",
+                        child: [{
+                                tag: "span",
+                                class: "module-delete-header-title",
+                                props: {
+                                    innerHTML: title
+                                }
+                            },
+                            {
+                                tag: "div",
+                                class: "module-delete-header-close-container",
+                                on: {
+                                    click: function(event) {
+                                        temp.selfRemove();
+                                        reject();
                                     }
                                 },
-                                {
-                                    tag: "div",
-                                    class: "module-delete-header-close-container",
-                                    on: {
-                                        click: function (event) {
-                                            temp.selfRemove();
-                                            reject();
-                                        }
-                                    },
-                                    child: [
-                                        {
-                                            tag: "i",
-                                            class: ["module-delete-header-close", "material-icons"],
-                                            props: {
-                                                innerHTML: "close"
-                                            }
-                                        }
-                                    ]
+                                child: [{
+                                    tag: "i",
+                                    class: ["module-delete-header-close", "material-icons"],
+                                    props: {
+                                        innerHTML: "close"
+                                    }
+                                }]
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "module-delete-content",
+                        child: [
+                            contentElement
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "module-delete-button",
+                        child: [{
+                            tag: "button",
+                            class: "module-delete-button-yes",
+                            on: {
+                                click: function(event) {
+                                    temp.selfRemove();
+                                    resolve();
                                 }
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "module-delete-content",
-                            child: [
-                                contentElement
-                            ]
-                        },
-                        {
-                            tag: "div",
-                            class: "module-delete-button",
-                            child: [
-                                {
-                                    tag: "button",
-                                    class: "module-delete-button-yes",
-                                    on: {
-                                        click: function (event) {
-                                            temp.selfRemove();
-                                            resolve();
-                                        }
-                                    },
-                                    child: [
-                                        {
-                                            tag: "span",
-                                            class: "module-delete-button-yes-label",
-                                            props: {
-                                                innerHTML: yes
-                                            }
-                                        }
-                                    ]
+                            },
+                            child: [{
+                                tag: "span",
+                                class: "module-delete-button-yes-label",
+                                props: {
+                                    innerHTML: yes
                                 }
-                            ]
-                        },
-                    ]
-                }
-            ]
+                            }]
+                        }]
+                    },
+                ]
+            }]
         })
     })
 

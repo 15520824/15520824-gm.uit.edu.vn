@@ -1780,12 +1780,13 @@ MergeRealty.prototype.getDataSave = function() {
     advanceDetruct += advanceDetructElement.advanceDetruct3.checked ? 100 : 0;
     advanceDetruct += advanceDetructElement.advanceDetruct4.checked ? 1000 : 0;
     var image = [];
-    var arrJuridical = data[3].properties[1].values;
+    var arrJuridical = data[3].properties[2].values;
     for (var i = 0; i < arrJuridical.length; i++) {
         image.push({ src: arrJuridical[i].id, copy: arrJuridical[i].copy, type: 0, userid: window.userid });
     }
 
     var arrStatus = data[3].properties[1].values;
+    console.log(arrStatus)
     for (var i = 0; i < arrStatus.length; i++) {
         var thumnail = 0;
         if (arrStatus[i].element.classList.contains("checked-pizo"))

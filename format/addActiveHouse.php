@@ -279,7 +279,8 @@ if(isset($data["image"]))
         {
             if(isset($img["copy"]))
             {
-                if (!copy(UPLOAD_DIR.$img["copy"], UPLOAD_DIR."new".$img["copy"])) {
+                $filename = uniqid().$img["copy"];
+                if (!copy(UPLOAD_DIR.$img["copy"], UPLOAD_DIR.$filename)) {
                     echo "failed to copy ".$img['copy']."...\n";
                 }else
                 {
@@ -288,7 +289,7 @@ if(isset($data["image"]))
                     $thumnail = $img["thumnail"];
 
                     $obj_list = array(
-                        'src' => $img["copy"]."new",
+                        'src' => $filename,
                         'type' => $img["type"],
                         'houseid' => $data["id"],
                         'created' => new DateTime(),

@@ -6879,7 +6879,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(252);
+var content = __webpack_require__(254);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -15348,7 +15348,7 @@ var FormClass = {
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(281);
+module.exports = __webpack_require__(283);
 
 
 /***/ }),
@@ -19700,7 +19700,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "    .mpot-choice-value {\r\n        padding-top: 0.5em;\r\n        padding-bottom: 0.5em;\r\n    }\r\n    \r\n    .mpot-preview-body {\r\n        position: relative;\r\n    }\r\n    \r\n    #preview-GPS {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n        position: relative;\r\n        margin: 0;\r\n        padding-left: 5px;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-name {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-content {\r\n        width: 100%;\r\n        height: 100%;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-content>div {\r\n        width: 100%;\r\n        height: 100%;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-content .card-edit-company-block-maps-child {\r\n        width: 100%;\r\n        height: 100%;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-content .pizo-new-realty-location-map-view {\r\n        width: 100%;\r\n        margin: 0;\r\n        height: 100%;\r\n        position: absolute;\r\n        min-width: unset;\r\n    }\r\n    \r\n    .mpot-base-preview {\r\n        margin-top: 5px;\r\n    }\r\n    \r\n    #preview-general {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n        flex-direction: column;\r\n        padding-right: 5px;\r\n    }\r\n    \r\n    #preview-general>div {\r\n        width: 100%;\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-address {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-address .mpot-base-preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n    }\r\n    \r\n    #preview-address-old {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-address-old .mpot-base-preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n    }\r\n    \r\n    #preview-description,\r\n    #preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-description .mpot-base-preview-name,\r\n    #preview-name .mpot-base-preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n    }\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:first-child {}\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:last-child {\r\n        margin-left: 30px;\r\n        width: calc(50% + 5px);\r\n    }\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:last-child {}\r\n    \r\n    #preview-construction,\r\n    #preview-container-price-juridical {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-container-price-juridical {\r\n        padding-left: 5px;\r\n        flex-direction: column;\r\n    }\r\n    \r\n    #preview-construction {\r\n        flex-flow: wrap;\r\n    }\r\n    \r\n    #preview-construction>div.mpot-preview-group-name {\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview {\r\n        width: 50%;\r\n        display: inline-flex;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview .mpot-base-preview-content {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        padding-right: 30px;\r\n        padding-top: 0;\r\n        padding-bottom: 0;\r\n    }\r\n    \r\n    .mpot-base-preview .mpot-base-preview-content>* {\r\n        padding-top: 0.25em;\r\n        padding-bottom: 0.25em;\r\n    }\r\n    \r\n    .mpot-base-preview .mpot-base-preview-content>span {\r\n        padding-left: 0.25em;\r\n        padding-right: 0.25em;\r\n        text-align: justify;\r\n        display: block;\r\n        width: 100%;\r\n        height: fit-content;\r\n    }\r\n    \r\n    #preview-description .mpot-base-preview-content,\r\n    #preview-name .mpot-base-preview-content,\r\n    #preview-address-old .mpot-base-preview-content,\r\n    #preview-address .mpot-base-preview-content {\r\n        width: 100%;\r\n        display: flex;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        flex-grow: 2;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview .mpot-base-preview-name {\r\n        flex-grow: 2;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: unset;\r\n        white-space: nowrap;\r\n    }\r\n    \r\n    #preview-description .mpot-base-preview-content {\r\n        width: 100%;\r\n        display: flex;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n    }\r\n    \r\n    #edit-construction .mpot-group-editor-item#width .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#height .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#acreage .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#landarea .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#direction .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#type-house .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list {\r\n        display: flex;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        table-layout: unset;\r\n    }\r\n    \r\n    #edit-construction .mpot-group-editor-item#width .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#height .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#acreage .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#landarea .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#direction .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#type-house .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list .mpot-choice {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        width: 100%;\r\n        padding-left: 20px;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-desc-detail-row {\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-dectruct-content-area-size-zone {\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-dectruct-content-area {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-detruct-content-structure {\r\n        width: 120px;\r\n    }\r\n    \r\n    #preview-structure .mpot-base-preview-name {\r\n        padding-top: 12px;\r\n    }\r\n    \r\n    #preview-structure .mpot-base-preview-content>div>div {\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-dectruct-content-area-size {\r\n        margin-top: 10px;\r\n    }\r\n    \r\n    #structure .mpot-choice-list {\r\n        width: 100%;\r\n    }\r\n    \r\n    #structure .mpot-choice-list .mpot-choice-value>span {\r\n        width: 100%;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #structure .mpot-choice-list .mpot-choice-value>span>div {\r\n        width: 100%;\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #structure .pizo-new-realty-desc-detail-row {\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #structure .mpot-choice {\r\n        border-top: 1px;\r\n    }\r\n    \r\n    #structure .pizo-new-realty-detruct-content-structure {\r\n        border-right: none;\r\n    }\r\n    \r\n    #preview-container-general {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        height: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-container-general>div.mpot-preview-group-name {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-structure-detail .mpot-base-preview-name {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview#preview-structure-detail {\r\n        width: 100%;\r\n        margin-top: 0;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview#preview-structure-detail .mpot-base-preview-content {\r\n        width: 100%;\r\n        padding-right: 0;\r\n    }\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area {\r\n        margin-top: 0;\r\n        margin-left: 0;\r\n        margin-right: 30px;\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #preview-direction .mpot-base-preview-name {\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #preview-type-house .mpot-base-preview-name {\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox,\r\n    #structure .pizo-new-realty-dectruct-content-area-selectbox {\r\n        margin: 0;\r\n    }\r\n    /* #preview-structure-detail .absol-checkbox{\r\n    pointer-events: none;\r\n} */\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-simple>div:last-child .pizo-new-realty-dectruct-content-area-size-zone {\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview#preview-roadwidth {\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview#preview-roadwidth .mpot-base-preview-name {\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list {\r\n        width: 100%;\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value {\r\n        pointer-events: none;\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value>span {\r\n        width: 100%;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {\r\n        margin-right: 0;\r\n    }\r\n    /* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 10px);\r\n} */\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text {\r\n        padding-right: 10px;\r\n    }\r\n    \r\n    #preview-equipments .mpot-base-preview-content {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-container-orther {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-container-orther>div.mpot-preview-group-name {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-equipments {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-equipments-detail {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-grow: 2;\r\n    }\r\n    \r\n    #preview-equipments-detail .mpot-base-preview-content {\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-equipments-detail .mpot-base-preview-content .pizo-new-realty-convenient-content-size {\r\n        margin-right: 0;\r\n    }\r\n    \r\n    #preview-equipments .mpot-base-preview-name {\r\n        width: auto;\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #preview-equipments-detail .mpot-base-preview-name {\r\n        width: 30px;\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value {\r\n        pointer-events: none;\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value>span {\r\n        width: 100%;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {\r\n        margin-right: 0;\r\n    }\r\n    /* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 10px);\r\n} */\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text {\r\n        padding-right: 10px;\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list {\r\n        width: 100%;\r\n    }\r\n    \r\n    #edit-contact .pizo-new-realty-contact-item-setting {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-contact .pizo-new-realty-contact-item-close {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-contact .pizo-new-realty-contact-item {\r\n        margin-bottom: 0.7143rem;\r\n    }\r\n    \r\n    #preview-contact .pizo-new-realty-contact-item {\r\n        padding: 0.7143rem;\r\n        margin: 0;\r\n        padding-bottom: 0.7143rem;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #preview-contact {\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-contact .mpot-base-preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-contact .mpot-base-preview-content {\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-grow: 2;\r\n    }\r\n    \r\n    #preview-contact .mpot-base-preview-content>div {\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-image-status img {\r\n        vertical-align: middle;\r\n        display: inline-block;\r\n        max-width: 300px;\r\n        max-height: 300px;\r\n        border: solid 1px #122246;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-image-juridical img {\r\n        vertical-align: middle;\r\n        display: inline-block;\r\n        max-width: 300px;\r\n        max-height: 300px;\r\n        border: solid 1px #122246;\r\n        padding: 0;\r\n    }\r\n    \r\n    #edit-image-status .pizo-container-icon-radiobutton {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-image-status .close-button-img {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-image-juridical .close-button-img {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-container-price-construct {\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        height: 100%;\r\n    }\r\n    \r\n    #preview-container-price-construct>div.mpot-preview-group-name {\r\n        display: none;\r\n    }\r\n    \r\n    .mpot-preview-body>div:not(:last-child) {\r\n        margin-top: 10px;\r\n    }\r\n    \r\n    #fit .mpot-choice-list {\r\n        width: 100%;\r\n    }\r\n    \r\n    #fit .mpot-choice-list .mpot-choice-value {\r\n        pointer-events: none;\r\n    }\r\n    \r\n    #fit .mpot-choice-list .mpot-choice-value>span {\r\n        width: 100%;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #fit .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {\r\n        margin-right: 0;\r\n    }\r\n    \r\n    #fit .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {\r\n        display: none;\r\n    }\r\n    \r\n    #fit .pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text {\r\n        padding-right: 5px;\r\n    }\r\n    \r\n    #preview-price {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n        flex-direction: column;\r\n    }\r\n    \r\n    #preview-price>div.mpot-preview-group-name {\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-fit {\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-fit>div.mpot-base-preview-name {\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        width: fit-content;\r\n        white-space: nowrap;\r\n        padding: 0;\r\n        padding-right: 10px;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-fit>div.mpot-base-preview-content {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-fit>div.mpot-base-preview-content>div {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-fit>div.mpot-base-preview-content>div>div.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input {\r\n        display: block;\r\n    }\r\n    \r\n    #price-child .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {\r\n        text-align: right;\r\n    }\r\n    \r\n    #preview-price-child>div.mpot-base-preview-name {\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-price-child>div.mpot-base-preview-content {\r\n        display: flex;\r\n        flex-grow: 2;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-price-child>div.mpot-base-preview-content>div {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-price-child {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        height: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #price-rent .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {\r\n        text-align: right;\r\n    }\r\n    \r\n    #preview-price-rent>div.mpot-base-preview-name {\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-price-rent>div.mpot-base-preview-content {\r\n        display: flex;\r\n        flex-grow: 2;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-price-rent>div.mpot-base-preview-content>div {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-price-rent {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        height: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-price-rent .pizo-new-realty-dectruct-content-area-right {\r\n        margin: 0;\r\n        width: 100%;\r\n    }\r\n    \r\n    #price-rent .pizo-new-realty-dectruct-content-area-right {\r\n        margin: 0;\r\n        width: 100%;\r\n    }\r\n    \r\n    #price-rent .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {\r\n        text-align: right;\r\n    }\r\n    \r\n    #preview-juridical>div.mpot-base-preview-name {\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n        width: 100%;\r\n        font-size: 1.2em;\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #preview-juridical>div.mpot-base-preview-content {\r\n        display: flex;\r\n        flex-grow: 2;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-juridical>div.mpot-base-preview-content>div {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-juridical {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n        flex-direction: column;\r\n    }\r\n    \r\n    #preview-juridical .pizo-new-realty-juridical-content {\r\n        display: flex;\r\n        width: 100%;\r\n    }", ""]);
+exports.push([module.i, "    .mpot-choice-value {\r\n        padding-top: 0.5em;\r\n        padding-bottom: 0.5em;\r\n    }\r\n    \r\n    .mpot-preview-body {\r\n        position: relative;\r\n    }\r\n    \r\n    #preview-GPS {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n        position: relative;\r\n        margin: 0;\r\n        padding-left: 5px;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-name {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-content {\r\n        width: 100%;\r\n        height: 100%;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-content>div {\r\n        width: 100%;\r\n        height: 100%;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-content .card-edit-company-block-maps-child {\r\n        width: 100%;\r\n        height: 100%;\r\n    }\r\n    \r\n    #preview-GPS .mpot-base-preview-content .pizo-new-realty-location-map-view {\r\n        width: 100%;\r\n        margin: 0;\r\n        height: 100%;\r\n        position: absolute;\r\n        min-width: unset;\r\n    }\r\n    \r\n    .mpot-base-preview {\r\n        margin-top: 5px;\r\n    }\r\n    \r\n    #preview-general {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n        flex-direction: column;\r\n        padding-right: 5px;\r\n    }\r\n    \r\n    #preview-general>div {\r\n        width: 100%;\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-address {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-address .mpot-base-preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n    }\r\n    \r\n    #preview-address-old {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-address-old .mpot-base-preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n    }\r\n    \r\n    #preview-description,\r\n    #preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-description .mpot-base-preview-name,\r\n    #preview-name .mpot-base-preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n    }\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:first-child {}\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:first-child .pizo-new-realty-desc-detail-row:last-child {\r\n        margin-left: 30px;\r\n        width: calc(50% + 5px);\r\n    }\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox:last-child {}\r\n    \r\n    #preview-construction,\r\n    #preview-container-price-juridical {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-container-price-juridical {\r\n        padding-left: 5px;\r\n        flex-direction: column;\r\n    }\r\n    \r\n    #preview-construction {\r\n        flex-flow: wrap;\r\n    }\r\n    \r\n    #preview-construction>div.mpot-preview-group-name {\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview {\r\n        width: 50%;\r\n        display: inline-flex;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview .mpot-base-preview-content {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        padding-right: 30px;\r\n        padding-top: 0;\r\n        padding-bottom: 0;\r\n    }\r\n    \r\n    .mpot-base-preview .mpot-base-preview-content>* {\r\n        padding-top: 0.25em;\r\n        padding-bottom: 0.25em;\r\n    }\r\n    \r\n    .mpot-base-preview .mpot-base-preview-content>span {\r\n        padding-left: 0.25em;\r\n        padding-right: 0.25em;\r\n        text-align: justify;\r\n        display: block;\r\n        width: 100%;\r\n        height: fit-content;\r\n    }\r\n    \r\n    #preview-description .mpot-base-preview-content,\r\n    #preview-name .mpot-base-preview-content,\r\n    #preview-address-old .mpot-base-preview-content,\r\n    #preview-address .mpot-base-preview-content {\r\n        width: 100%;\r\n        display: flex;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        flex-grow: 2;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview .mpot-base-preview-name {\r\n        flex-grow: 2;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: unset;\r\n        white-space: nowrap;\r\n    }\r\n    \r\n    #preview-description .mpot-base-preview-content {\r\n        width: 100%;\r\n        display: flex;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n    }\r\n    \r\n    #edit-construction .mpot-group-editor-item#width .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#height .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#acreage .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#landarea .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#direction .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#type-house .mpot-choice-list,\r\n    #edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list {\r\n        display: flex;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        table-layout: unset;\r\n    }\r\n    \r\n    #edit-construction .mpot-group-editor-item#width .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#height .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#acreage .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#landarea .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#floorarea .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#direction .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#type-house .mpot-choice-list .mpot-choice,\r\n    #edit-construction .mpot-group-editor-item#roadwidth .mpot-choice-list .mpot-choice {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-desc-detail-row {\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-dectruct-content-area-size-zone {\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-dectruct-content-area {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-detruct-content-structure {\r\n        width: 120px;\r\n        min-width: unset;\r\n    }\r\n    \r\n    #preview-structure .mpot-base-preview-name {\r\n        padding-top: 12px;\r\n    }\r\n    \r\n    #preview-structure .mpot-base-preview-content>div>div {\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-structure .pizo-new-realty-dectruct-content-area-size {\r\n        margin-top: 10px;\r\n    }\r\n    \r\n    #structure .mpot-choice-list {\r\n        width: 100%;\r\n    }\r\n    \r\n    #structure .mpot-choice-list .mpot-choice-value>span {\r\n        width: 100%;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #structure .mpot-choice-list .mpot-choice-value>span>div {\r\n        width: 100%;\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #structure .pizo-new-realty-desc-detail-row {\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #structure .mpot-choice {\r\n        border-top: 1px;\r\n    }\r\n    \r\n    #structure .pizo-new-realty-detruct-content-structure {\r\n        border-right: none;\r\n    }\r\n    \r\n    #preview-container-general {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        height: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-container-general>div.mpot-preview-group-name {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-structure-detail .mpot-base-preview-name {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview#preview-structure-detail {\r\n        width: 100%;\r\n        margin-top: 0;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview#preview-structure-detail .mpot-base-preview-content {\r\n        width: 100%;\r\n        padding-right: 0;\r\n    }\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area {\r\n        margin-top: 0;\r\n        margin-left: 0;\r\n        margin-right: 30px;\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #preview-direction .mpot-base-preview-name {\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #preview-type-house .mpot-base-preview-name {\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox,\r\n    #structure .pizo-new-realty-dectruct-content-area-selectbox {\r\n        margin: 0;\r\n    }\r\n    /* #preview-structure-detail .absol-checkbox{\r\n    pointer-events: none;\r\n} */\r\n    \r\n    #preview-structure-detail .pizo-new-realty-dectruct-content-area-simple>div:last-child .pizo-new-realty-dectruct-content-area-size-zone {\r\n        margin-bottom: 0;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview#preview-roadwidth {\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-construction .mpot-base-preview#preview-roadwidth .mpot-base-preview-name {\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list {\r\n        width: 100%;\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value {\r\n        pointer-events: none;\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value>span {\r\n        width: 100%;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {\r\n        margin-right: 0;\r\n    }\r\n    /* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 10px);\r\n} */\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-equipments .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text {\r\n        padding-right: 10px;\r\n    }\r\n    \r\n    #preview-equipments .mpot-base-preview-content {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-container-orther {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-container-orther>div.mpot-preview-group-name {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-equipments {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-equipments-detail {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-grow: 2;\r\n    }\r\n    \r\n    #preview-equipments-detail .mpot-base-preview-content {\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-equipments-detail .mpot-base-preview-content .pizo-new-realty-convenient-content-size {\r\n        margin-right: 0;\r\n    }\r\n    \r\n    #preview-equipments .mpot-base-preview-name {\r\n        width: auto;\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #preview-equipments-detail .mpot-base-preview-name {\r\n        width: 30px;\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value {\r\n        pointer-events: none;\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value>span {\r\n        width: 100%;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {\r\n        margin-right: 0;\r\n    }\r\n    /* #preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child:not(:first-child){\r\n    margin-left: 20px;\r\n}\r\n\r\n#preview-structure-detail .pizo-new-realty-dectruct-content-area-selectbox-child{\r\n    width: calc(50% - 10px);\r\n} */\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list .mpot-choice-value .absol-selectbox-item-text {\r\n        padding-right: 10px;\r\n    }\r\n    \r\n    #edit-contact .mpot-choice-list {\r\n        width: 100%;\r\n    }\r\n    \r\n    #edit-contact .pizo-new-realty-contact-item-setting {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-contact .pizo-new-realty-contact-item-close {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-contact .pizo-new-realty-contact-item {\r\n        margin-bottom: 0.7143rem;\r\n    }\r\n    \r\n    #preview-contact .pizo-new-realty-contact-item {\r\n        padding: 0.7143rem;\r\n        margin: 0;\r\n        padding-bottom: 0.7143rem;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #preview-contact {\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-contact .mpot-base-preview-name {\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-contact .mpot-base-preview-content {\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        flex-grow: 2;\r\n    }\r\n    \r\n    #preview-contact .mpot-base-preview-content>div {\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-image-status img {\r\n        vertical-align: middle;\r\n        display: inline-block;\r\n        max-width: 300px;\r\n        max-height: 300px;\r\n        border: solid 1px #122246;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-image-juridical img {\r\n        vertical-align: middle;\r\n        display: inline-block;\r\n        max-width: 300px;\r\n        max-height: 300px;\r\n        border: solid 1px #122246;\r\n        padding: 0;\r\n    }\r\n    \r\n    #edit-image-status .pizo-container-icon-radiobutton {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-image-status .close-button-img {\r\n        display: none;\r\n    }\r\n    \r\n    #edit-image-juridical .close-button-img {\r\n        display: none;\r\n    }\r\n    \r\n    #preview-container-price-construct {\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        height: 100%;\r\n    }\r\n    \r\n    #preview-container-price-construct>div.mpot-preview-group-name {\r\n        display: none;\r\n    }\r\n    \r\n    .mpot-preview-body>div:not(:last-child) {\r\n        margin-top: 10px;\r\n    }\r\n    \r\n    #fit .mpot-choice-list {\r\n        width: 100%;\r\n    }\r\n    \r\n    #fit .mpot-choice-list .mpot-choice-value {\r\n        pointer-events: none;\r\n    }\r\n    \r\n    #fit .mpot-choice-list .mpot-choice-value>span {\r\n        width: 100%;\r\n        -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);\r\n        box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);\r\n    }\r\n    \r\n    #fit .mpot-choice-list .mpot-choice-value>span .pizo-new-realty-convenient-content-size {\r\n        margin-right: 0;\r\n    }\r\n    \r\n    #fit .mpot-choice-list .mpot-choice-value .absol-selectbox-item-close {\r\n        display: none;\r\n    }\r\n    \r\n    #fit .pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input .absol-selectbox-item .absol-selectbox-item-text {\r\n        padding-right: 5px;\r\n    }\r\n    \r\n    #preview-price {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n        flex-direction: column;\r\n    }\r\n    \r\n    #preview-price>div.mpot-preview-group-name {\r\n        display: flex;\r\n    }\r\n    \r\n    #preview-fit {\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-fit>div.mpot-base-preview-name {\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        width: fit-content;\r\n        white-space: nowrap;\r\n        padding: 0;\r\n        padding-right: 10px;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-fit>div.mpot-base-preview-content {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-fit>div.mpot-base-preview-content>div {\r\n        flex-grow: 2;\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    #preview-fit>div.mpot-base-preview-content>div>div.pizo-new-realty-dectruct-content-area-fit.pizo-new-realty-dectruct-input {\r\n        display: block;\r\n    }\r\n    \r\n    .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {\r\n        text-align: right;\r\n    }\r\n    \r\n    #preview-price-child>div.mpot-base-preview-name {\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-price-child>div.mpot-base-preview-content {\r\n        display: flex;\r\n        flex-grow: 2;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-price-child>div.mpot-base-preview-content>div {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-price-child {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        height: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {\r\n        text-align: right;\r\n    }\r\n    \r\n    .pizo-new-realty-detruct-content-price-rent.pizo-new-realty-dectruct-input {\r\n        text-align: right;\r\n    }\r\n    \r\n    #preview-price-rent>div.mpot-base-preview-name {\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n    }\r\n    \r\n    #preview-price-rent>div.mpot-base-preview-content {\r\n        display: flex;\r\n        flex-grow: 2;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-price-rent>div.mpot-base-preview-content>div {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-price-rent {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        height: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-price-rent .pizo-new-realty-dectruct-content-area-right {\r\n        margin: 0;\r\n        width: 100%;\r\n    }\r\n    \r\n    #price-rent .pizo-new-realty-dectruct-content-area-right {\r\n        margin: 0;\r\n        width: 100%;\r\n    }\r\n    \r\n    #price-rent .pizo-new-realty-detruct-content-price.pizo-new-realty-dectruct-input {\r\n        text-align: right;\r\n    }\r\n    \r\n    #preview-juridical>div.mpot-base-preview-name {\r\n        display: flex;\r\n        flex-shrink: 0;\r\n        align-items: center;\r\n        width: 100%;\r\n        font-size: 1.2em;\r\n        font-weight: bold;\r\n    }\r\n    \r\n    #preview-juridical>div.mpot-base-preview-content {\r\n        display: flex;\r\n        flex-grow: 2;\r\n        padding: 0;\r\n    }\r\n    \r\n    #preview-juridical>div.mpot-base-preview-content>div {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n    }\r\n    \r\n    #preview-juridical {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        width: 100%;\r\n        align-items: stretch;\r\n        flex-direction: column;\r\n    }\r\n    \r\n    #preview-juridical .pizo-new-realty-juridical-content {\r\n        display: flex;\r\n        width: 100%;\r\n    }\r\n    \r\n    .displayNonePriceRent #preview-price-rent {\r\n        display: none;\r\n    }", ""]);
 
 
 
@@ -20616,18 +20616,8 @@ exports.push([module.i, ".pizo-list-realty-main-result-control > .pizo-new-realt
 /* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
-// Module
-exports.push([module.i, ".pizo-list-help-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    height: calc(100% - 50px);\r\n    position: absolute;\r\n    width: calc(100% - 30px);\r\n}", ""]);
 
-
-
-/***/ }),
-/* 253 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(254);
+var content = __webpack_require__(253);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -20648,12 +20638,22 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "", ""]);
+
+
+
+/***/ }),
 /* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button{\r\n    border-bottom: 2px #546e7a solid;\r\n    background-color: #263238;\r\n    color: #eeeeee;\r\n    border-radius: 0;\r\n    margin-left: 0;\r\n    margin-right: 0;\r\n    border: none;\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    padding: 8px 24px 8px 32px;\r\n    color: #eeeeee;\r\n    cursor: default;\r\n    white-space: pre;\r\n    margin-top: 5px;\r\n    z-index: 3;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    transform: translate(-100%,-50%) translateX(-5px);\r\n    top: 50%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{\r\n   border-bottom: none;\r\n   height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav{\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-tabview-container{\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ntable.b-workZone__layout{\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,.b-workZone__layout tr{\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview{\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container{\r\n    height: calc(100% - 40px);\r\n    top: unset;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTable td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article{\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content{\r\n    height: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav{\r\n    font-size: 1rem;\r\n    padding: 0.5rem 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons{\r\n    font-size: 1rem;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout{\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    padding: 0 0 0 19px;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n}\r\n\r\n.b-article {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: calc(100% - 5px);\r\n    align-items: stretch;\r\n    color: #eeeeee;\r\n    padding: 0;\r\n    position: relative;\r\n    padding-top: 5px;\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header{\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span{\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i{\r\n    vertical-align: middle;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only{\r\n    top:0;\r\n}\r\n\r\n.os-host, .os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n", ""]);
+exports.push([module.i, ".pizo-list-help-main{\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    height: calc(100% - 50px);\r\n    position: absolute;\r\n    width: calc(100% - 30px);\r\n}", ""]);
 
 
 
@@ -20688,7 +20688,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 0.5rem;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
+exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button{\r\n    border-bottom: 2px #546e7a solid;\r\n    background-color: #263238;\r\n    color: #eeeeee;\r\n    border-radius: 0;\r\n    margin-left: 0;\r\n    margin-right: 0;\r\n    border: none;\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    padding: 8px 24px 8px 32px;\r\n    color: #eeeeee;\r\n    cursor: default;\r\n    white-space: pre;\r\n    margin-top: 5px;\r\n    z-index: 3;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    transform: translate(-100%,-50%) translateX(-5px);\r\n    top: 50%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{\r\n   border-bottom: none;\r\n   height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav{\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n}\r\n\r\n.absol-tabview-container{\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ntable.b-workZone__layout{\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,.b-workZone__layout tr{\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview{\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container{\r\n    height: calc(100% - 40px);\r\n    top: unset;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTable td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone{\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td{\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article{\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content{\r\n    height: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav{\r\n    font-size: 1rem;\r\n    padding: 0.5rem 1rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons{\r\n    font-size: 1rem;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout{\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1rem;\r\n    white-space: pre;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    padding: 0 0 0 19px;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n}\r\n\r\n.b-article {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: calc(100% - 5px);\r\n    align-items: stretch;\r\n    color: #eeeeee;\r\n    padding: 0;\r\n    position: relative;\r\n    padding-top: 5px;\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header{\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span{\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i{\r\n    vertical-align: middle;\r\n    font-size: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only{\r\n    top:0;\r\n}\r\n\r\n.os-host, .os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n", ""]);
 
 
 
@@ -20723,7 +20723,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-category-container-name-container-input,\r\n.pizo-new-category-container-alias-container-input,\r\n.pizo-new-category-container-code-container-input,\r\n.pizo-new-category-container-note-container-input,\r\n.pizo-new-category-container-username-container-input,\r\n.pizo-new-state-selectbox-container-input {\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-category-container-name-container-label,\r\n.pizo-new-category-container-alias-container-label,\r\n.pizo-new-category-container-code-container-label,\r\n.pizo-new-category-container-username-container-label,\r\n.pizo-new-category-container-note-container-label,\r\n.pizo-new-state-selectbox-container-label {\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-category-container-name-container,\r\n.pizo-new-category-container-alias-container,\r\n.pizo-new-category-container-code-container,\r\n.pizo-new-category-container-username-container,\r\n.pizo-new-category-container-note-container,\r\n.pizo-new-state-selectbox-container {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-name,\r\n.pizo-new-category-container-alias,\r\n.pizo-new-category-container-code,\r\n.pizo-new-category-container-username,\r\n.pizo-new-category-container-note,\r\n.pizo-new-state-selectbox {\r\n    padding: 5px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-category-container{\r\n    width: 60%;\r\n}\r\n\r\n.pizo-new-catergory-container>div:first-child {\r\n    padding-top: 0;\r\n}\r\n\r\n.pizo-new-catergory-container>div:last-child {\r\n    padding-bottom: 0;\r\n}\r\n\r\n.label-used-error,\r\n.label-invalid-error {\r\n    display: none;\r\n}\r\n\r\n.hasErrorElement.used-error .label-used-error,\r\n.hasErrorElement.invalid-error .label-invalid-error {\r\n    display: inline;\r\n    width: 232px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}", ""]);
+exports.push([module.i, "\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column; /* Safari */\r\n    flex-direction:         column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before{\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before{\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before{\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n\r\n.title-label{\r\n    \r\n}\r\n\r\n.alias-label{\r\n    color: #3071a9;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr:hover {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category{\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container{\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n}\r\n\r\n.btn.hasTooltip{\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list{\r\n    padding: 0.5rem;\r\n    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;    /* Firefox, other Gecko */\r\n    box-sizing: border-box; \r\n\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n\r\n.btn-wrapper.input-append{\r\n    margin: 10px;\r\n    position: relative;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n\r\n}\r\n\r\n#matd .sortTable>thead>tr>th{\r\n    min-width:unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active{\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias{\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish{\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label{\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n  div.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857rem;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }", ""]);
 
 
 
@@ -20758,7 +20758,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "span.pizo-list-realty-page-allinput-input:empty:before {\r\n    content: \"\\200b\";\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr:hover td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr.choice td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-realty-main-result-control-child,.pizo-list-realty-main-result-control-child{\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    justify-content: center;\r\n    overflow: auto;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .pizo-list-realty-main-result-control-child .sortTable th, .pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:0px;\r\n}\r\n\r\n.list-linkChoice-container .container-sortTable{\r\n    height: auto;\r\n}", ""]);
+exports.push([module.i, ".pizo-new-category-container-name-container-input,\r\n.pizo-new-category-container-alias-container-input,\r\n.pizo-new-category-container-code-container-input,\r\n.pizo-new-category-container-note-container-input,\r\n.pizo-new-category-container-username-container-input,\r\n.pizo-new-state-selectbox-container-input {\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1rem;\r\n    padding: 0.4286rem;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-category-container-name-container-label,\r\n.pizo-new-category-container-alias-container-label,\r\n.pizo-new-category-container-code-container-label,\r\n.pizo-new-category-container-username-container-label,\r\n.pizo-new-category-container-note-container-label,\r\n.pizo-new-state-selectbox-container-label {\r\n    font-size: 1rem;\r\n    display: flex;\r\n    align-items: center;\r\n    flex-shrink: 0;\r\n    width: 7rem;\r\n    padding-right: 0.7143rem;\r\n}\r\n\r\n.pizo-new-category-container-name-container,\r\n.pizo-new-category-container-alias-container,\r\n.pizo-new-category-container-code-container,\r\n.pizo-new-category-container-username-container,\r\n.pizo-new-category-container-note-container,\r\n.pizo-new-state-selectbox-container {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-name,\r\n.pizo-new-category-container-alias,\r\n.pizo-new-category-container-code,\r\n.pizo-new-category-container-username,\r\n.pizo-new-category-container-note,\r\n.pizo-new-state-selectbox {\r\n    padding: 5px;\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-category-container{\r\n    width: 60%;\r\n}\r\n\r\n.pizo-new-catergory-container>div:first-child {\r\n    padding-top: 0;\r\n}\r\n\r\n.pizo-new-catergory-container>div:last-child {\r\n    padding-bottom: 0;\r\n}\r\n\r\n.label-used-error,\r\n.label-invalid-error {\r\n    display: none;\r\n}\r\n\r\n.hasErrorElement.used-error .label-used-error,\r\n.hasErrorElement.invalid-error .label-invalid-error {\r\n    display: inline;\r\n    width: 232px;\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n}", ""]);
 
 
 
@@ -20793,7 +20793,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "span.pizo-list-realty-page-allinput-input:empty:before {\r\n    content: \"\\200b\";\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr:hover td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-position-list .sortTable tbody tr.choice td{\r\n    background-color: #BFBFBF;\r\n}\r\n\r\n.pizo-list-realty-main-result-control-child,.pizo-list-realty-main-result-control-child{\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    justify-content: center;\r\n    overflow: auto;\r\n    position: relative;\r\n}\r\n\r\n.pizo-list-realty-main-result-control .pizo-list-realty-main-result-control-child .sortTable th, .pizo-list-realty-main-result-control .sortTableClone th{\r\n    top:0px;\r\n}\r\n\r\n.list-linkChoice-container .container-sortTable{\r\n    height: auto;\r\n}", ""]);
 
 
 
@@ -20828,7 +20828,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-category-container-note-container-input{\r\n    height: 10rem;\r\n}\r\n\r\n.pizo-new-category-container-note-container-label{\r\n    align-items: start;\r\n    margin-top: 0.5rem;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -20863,7 +20863,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: calc(18% - 3px);\r\n}\r\n\r\n", ""]);
+exports.push([module.i, ".pizo-new-category-container-note-container-input{\r\n    height: 10rem;\r\n}\r\n\r\n.pizo-new-category-container-note-container-label{\r\n    align-items: start;\r\n    margin-top: 0.5rem;\r\n}", ""]);
 
 
 
@@ -20898,7 +20898,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: calc(18% - 3px);\r\n}\r\n\r\n", ""]);
 
 
 
@@ -20968,7 +20968,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-autocomplete-input.pizo-new-state-container-type-container-input .absol-autocomplete-input-text{\r\n    padding: 0.4286rem;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 
 
@@ -21003,7 +21003,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".absol-autocomplete-input.pizo-new-state-container-type-container-input .absol-autocomplete-input-text{\r\n    padding: 0.4286rem;\r\n}", ""]);
 
 
 
@@ -21114,6 +21114,41 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 /* 281 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(282);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 282 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, "", ""]);
+
+
+
+/***/ }),
+/* 283 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54703,21 +54738,21 @@ MPOTBaseEditor.prototype.constructor = MPOTBaseEditor;
 
 MPOTBaseEditor.prototype.type = 'base';
 
-MPOTBaseEditor.prototype.createView = function () {
+MPOTBaseEditor.prototype.createView = function() {
     this.$view = MPOTBaseEditor_({
         class: 'mpot-base-editor'
     });
 };
 
-MPOTBaseEditor.prototype._assignInputList = function (eList) {
+MPOTBaseEditor.prototype._assignInputList = function(eList) {
     var thisE = this;
     eList = eList || [];
     this.$inputList = eList;
-    this.$inputList.forEach(function (elt, idx, arr) {
+    this.$inputList.forEach(function(elt, idx, arr) {
         elt.attr('tabindex', '1');
         elt.addClass('mpot-choice-input');
         if (!elt.tagName.toLowerCase().match(/input|texarea/)) {
-            elt.on('keydown', function (event) {
+            elt.on('keydown', function(event) {
                 var focusElt;
                 switch (event.key) {
                     case 'ArrowUp':
@@ -54742,12 +54777,12 @@ MPOTBaseEditor.prototype._assignInputList = function (eList) {
     });
 };
 
-MPOTBaseEditor.prototype._focusInput = function (inputElt) {
+MPOTBaseEditor.prototype._focusInput = function(inputElt) {
     // inputElt.focus();
     if (inputElt.tagName.toLowerCase().match(/input|textarea/)) inputElt.select();
 };
 
-MPOTBaseEditor.prototype._findFocusInput = function () {
+MPOTBaseEditor.prototype._findFocusInput = function() {
     if (this.$inputList.length === 0) return null;
     var res;
     var input;
@@ -54758,38 +54793,37 @@ MPOTBaseEditor.prototype._findFocusInput = function () {
     return res || this.$inputList[0];
 };
 
-MPOTBaseEditor.prototype.focus = function () {
+MPOTBaseEditor.prototype.focus = function() {
     var input = this._findFocusInput();
     if (input) this._focusInput(input);
 };
 
-MPOTBaseEditor.prototype.getView = function () {
+MPOTBaseEditor.prototype.getView = function() {
     if (this.$view) return this.$view;
 };
 
-MPOTBaseEditor.prototype.setData = function (data) {
+MPOTBaseEditor.prototype.setData = function(data) {
     this._data = data;
 }
 
 
-MPOTBaseEditor.prototype.getData = function () {
+MPOTBaseEditor.prototype.getData = function() {
     return this._data;
 };
 
-MPOTBaseEditor.prototype.notifyChange = function (extendData) {
+MPOTBaseEditor.prototype.notifyChange = function(extendData) {
     this.emit('change', Object.assign({}, extendData), this);
 };
 
-MPOTBaseEditor.prototype.getPreviewData = function () {
+MPOTBaseEditor.prototype.getPreviewData = function() {
     return { type: this.type };
 };
 
-MPOTBaseEditor.prototype.isCompleted = function () {
+MPOTBaseEditor.prototype.isCompleted = function() {
     return true;
 };
 
 /* harmony default export */ var edit_MPOTBaseEditor = (MPOTBaseEditor);
-
 // CONCATENATED MODULE: ./node_modules/mpot-merge-tool/js/edit/MPOTTextEditor.js
 
 
@@ -54808,7 +54842,7 @@ Object.defineProperties(MPOTTextEditor.prototype, Object.getOwnPropertyDescripto
 MPOTTextEditor.prototype.constructor = MPOTTextEditor;
 MPOTTextEditor.prototype.type = 'text';
 
-MPOTTextEditor.prototype._showInput = function () {
+MPOTTextEditor.prototype._showInput = function() {
     var thisE = this;
     var data = this._data;
     this.$view.clearChild();
@@ -54820,14 +54854,14 @@ MPOTTextEditor.prototype._showInput = function () {
             boxSizing: 'border-box'
         },
         on: {
-            keydown: function (event) {
+            keydown: function(event) {
                 if (event.key === 'Enter' && !event.shiftKey && !event.ctrlKey) {
                     data.value = this.value;
                     this.blur();
                     thisE.notifyChange();
                 }
             },
-            input: function () {
+            input: function() {
                 data.value = this.value;
                 thisE.notifyChange({ notFinish: true });
             }
@@ -54838,8 +54872,7 @@ MPOTTextEditor.prototype._showInput = function () {
             tag: 'textarea'
 
         });
-    }
-    else {
+    } else {
         Object.assign(aOb, {
             tag: 'input',
             attr: {
@@ -54855,41 +54888,41 @@ MPOTTextEditor.prototype._showInput = function () {
     this.$view.addChild(this.$input);
 };
 
-MPOTTextEditor.prototype._showSingleChoice = function () {
+MPOTTextEditor.prototype._showSingleChoice = function() {
     var thisE = this;
     var data = this._data;
     var groupName = randomIdent(10);
     var checkInputText = [];
-    var result = [],item;
-    for(var i = 0; i<data.items.length; i++)
-    {
+    var result = [],
+        item;
+    for (var i = 0; i < data.items.length; i++) {
         item = data.items[i];
-        if(checkInputText[item]==1)
+        if (checkInputText[item] == 1)
             continue;
         checkInputText[item] = 1;
+        var tempIndex = MPOTTextEditor_({
+            tag: 'radiobutton',
+            attr: {
+                name: groupName
+            },
+            props: {
+                checked: item === data.value,
+                value: item
+            },
+            on: {
+                change: function() {
+                    if (this.checked) {
+                        data.value = this.value;
+                        thisE.notifyChange();
+                    }
+                }
+            }
+        });
         result.push({
             class: 'mpot-choice',
-            child: [
-                {
+            child: [{
                     class: 'mpot-choice-select-cell',
-                    child: {
-                        tag: 'radiobutton',
-                        attr: {
-                            name: groupName
-                        },
-                        props: {
-                            checked: item === data.value,
-                            value:item
-                        },
-                        on: {
-                            change: function () {
-                                if (this.checked) {
-                                    data.value = this.value;
-                                    thisE.notifyChange();
-                                }
-                            }
-                        }
-                    }
+                    child: tempIndex,
                 },
                 {
                     class: 'mpot-choice-value',
@@ -54900,6 +54933,13 @@ MPOTTextEditor.prototype._showSingleChoice = function () {
                 }
             ]
         });
+        if (data.value === undefined) {
+            tempIndex.checked = true;
+            tempIndex.emit("change");
+        } else if (data.value == item) {
+            tempIndex.checked = true;
+            tempIndex.emit("change");
+        }
     }
     this.$choiceList = MPOTTextEditor_({
         class: 'mpot-choice-list',
@@ -54909,20 +54949,19 @@ MPOTTextEditor.prototype._showSingleChoice = function () {
     this.$view.clearChild().addChild(this.$choiceList);
 };
 
-MPOTTextEditor.prototype._showMultiChoice = function () {
+MPOTTextEditor.prototype._showMultiChoice = function() {
     var thisE = this;
     var data = this._data;
-    this._choiceListChecked = (data.values || []).reduce(function (ac, cr) {
+    this._choiceListChecked = (data.values || []).reduce(function(ac, cr) {
         ac[cr] = true;
         return ac;
     }, {});
     this.$choiceList = MPOTTextEditor_({
         class: 'mpot-choice-list',
-        child: data.items.map(function (item, idx) {
+        child: data.items.map(function(item, idx) {
             return {
                 class: 'mpot-choice',
-                child: [
-                    {
+                child: [{
                         class: 'mpot-choice-select-cell',
                         child: {
                             tag: 'checkboxbutton',
@@ -54930,10 +54969,10 @@ MPOTTextEditor.prototype._showMultiChoice = function () {
                                 checked: thisE._choiceListChecked[item]
                             },
                             on: {
-                                change: function () {
+                                change: function() {
                                     thisE._choiceListChecked[item] = this.checked;
                                     var dict = thisE._choiceListChecked;
-                                    data.values = data.items.filter(function (u, i) {
+                                    data.values = data.items.filter(function(u, i) {
                                         return dict[u];
                                     });
                                     thisE.notifyChange({ notFinish: true });
@@ -54958,25 +54997,23 @@ MPOTTextEditor.prototype._showMultiChoice = function () {
 };
 
 
-MPOTTextEditor.prototype.setData = function (data) {
+MPOTTextEditor.prototype.setData = function(data) {
     this._data = data;
     if (data.action === 'input') {
         this._showInput();
-    }
-    else if (data.action === 'single-choice') {
+    } else if (data.action === 'single-choice') {
         this._showSingleChoice();
-    }
-    else if (data.action === 'multi-choice') {
+    } else if (data.action === 'multi-choice') {
         this._showMultiChoice();
     }
 };
 
-MPOTTextEditor.prototype.isCompleted = function () {
+MPOTTextEditor.prototype.isCompleted = function() {
     var data = this._data;
     return !!(data.value || (data.values && data.values.length > 0));
 };
 
-MPOTTextEditor.prototype.getPreviewData = function () {
+MPOTTextEditor.prototype.getPreviewData = function() {
     var data = this._data;
 
     var pData = {
@@ -54988,11 +55025,11 @@ MPOTTextEditor.prototype.getPreviewData = function () {
     switch (data.action) {
         case 'multi-choice':
             var dict = this._choiceListChecked;
-            pData.values = data.items.filter(function (u, i) {
+            pData.values = data.items.filter(function(u, i) {
                 return dict[u];
             });
             break;
-        default :
+        default:
             pData.value = data.value;
             break;
     }
@@ -55221,7 +55258,7 @@ Object.defineProperties(MPOTNumberEditor.prototype, Object.getOwnPropertyDescrip
 MPOTNumberEditor.prototype.constructor = MPOTNumberEditor;
 MPOTNumberEditor.prototype.type = 'text';
 
-MPOTNumberEditor.prototype._showInput = function () {
+MPOTNumberEditor.prototype._showInput = function() {
     var thisE = this;
     var data = this._data;
     this.$view.clearChild();
@@ -55233,7 +55270,7 @@ MPOTNumberEditor.prototype._showInput = function () {
             boxSizing: 'border-box'
         },
         on: {
-            keydown: function (event) {
+            keydown: function(event) {
                 if (event.key === 'Enter' && !event.shiftKey && !event.ctrlKey) {
                     data.value = parseFloat(this.value);
                     if (isNaN(data.value)) data.value = null;
@@ -55241,7 +55278,7 @@ MPOTNumberEditor.prototype._showInput = function () {
                     thisE.notifyChange();
                 }
             },
-            input: function () {
+            input: function() {
                 data.value = parseFloat(this.value);
                 if (isNaN(data.value)) data.value = null;
                 thisE.notifyChange({ notFinish: true });
@@ -55261,65 +55298,79 @@ MPOTNumberEditor.prototype._showInput = function () {
     this.$view.addChild(this.$input);
 };
 
-MPOTNumberEditor.prototype._showSingleChoice = function () {
+MPOTNumberEditor.prototype._showSingleChoice = function() {
     var thisE = this;
     var data = this._data;
     var groupName = randomIdent(10);
+    var result = [];
+    var checkElement = [];
+    var item;
+    for (var i = 0; i < data.items.length; i++) {
+        item = data.items[i];
+        if (checkElement[item] !== undefined)
+            continue;
+        checkElement[item] = 1;
+        var tempIndex = MPOTNumberEditor_({
+            tag: 'radiobutton',
+            attr: {
+                name: groupName
+            },
+            props: {
+                checked: item === data.value
+            },
+            on: {
+                change: function() {
+                    if (this.checked) {
+                        data.value = item;
+                        thisE.notifyChange();
+                    }
+                }
+            }
+        });
+        result.push({
+            class: 'mpot-choice',
+            child: [{
+                    class: 'mpot-choice-select-cell',
+                    child: tempIndex,
+                },
+                {
+                    class: 'mpot-choice-value',
+                    child: {
+                        tag: 'span',
+                        child: { text: item }
+                    }
+                }
+            ]
+        });
+        if (data.value === undefined) {
+            tempIndex.checked = true;
+            tempIndex.emit("change");
+        } else if (data.value == item) {
+            tempIndex.checked = true;
+            tempIndex.emit("change");
+        }
+    }
     this.$choiceList = MPOTNumberEditor_({
         class: 'mpot-choice-list',
-        child: data.items.map(function (item, idx) {
-            return {
-                class: 'mpot-choice',
-                child: [
-                    {
-                        class: 'mpot-choice-select-cell',
-                        child: {
-                            tag: 'radiobutton',
-                            attr: {
-                                name: groupName
-                            },
-                            props: {
-                                checked: item === data.value
-                            },
-                            on: {
-                                change: function () {
-                                    if (this.checked) {
-                                        data.value = item;
-                                        thisE.notifyChange();
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    {
-                        class: 'mpot-choice-value',
-                        child: {
-                            tag: 'span',
-                            child: { text: item }
-                        }
-                    }
-                ]
-            };
-        })
+        child: result
     });
     this._assignInputList(MPOTNumberEditor_$$('radiobutton', this.$choiceList));
     this.$view.clearChild().addChild(this.$choiceList);
 };
 
-MPOTNumberEditor.prototype._showMultiChoice = function () {
+MPOTNumberEditor.prototype._showMultiChoice = function() {
     var thisE = this;
     var data = this._data;
-    this._choiceListChecked = (data.values || []).reduce(function (ac, cr) {
+    this._choiceListChecked = (data.values || []).reduce(function(ac, cr) {
         ac[cr] = true;
         return ac;
     }, {});
     this.$choiceList = MPOTNumberEditor_({
         class: 'mpot-choice-list',
-        child: data.items.map(function (item, idx) {
+        child: data.items.map(function(item, idx) {
             return {
                 class: 'mpot-choice',
-                child: [
-                    {
+                child: [{
                         class: 'mpot-choice-select-cell',
                         child: {
                             tag: 'checkboxbutton',
@@ -55327,10 +55378,10 @@ MPOTNumberEditor.prototype._showMultiChoice = function () {
                                 checked: thisE._choiceListChecked[item]
                             },
                             on: {
-                                change: function () {
+                                change: function() {
                                     thisE._choiceListChecked[item] = this.checked;
                                     var dict = thisE._choiceListChecked;
-                                    data.values = data.items.filter(function (u, i) {
+                                    data.values = data.items.filter(function(u, i) {
                                         return dict[u];
                                     });
                                     thisE.notifyChange({ notFinish: true });
@@ -55354,25 +55405,23 @@ MPOTNumberEditor.prototype._showMultiChoice = function () {
     this.$view.clearChild().addChild(this.$choiceList);
 };
 
-MPOTNumberEditor.prototype.isCompleted = function () {
+MPOTNumberEditor.prototype.isCompleted = function() {
     var data = this._data;
     return !!((typeof data.value === 'number') || (data.values && data.values.length > 0))
 };
 
-MPOTNumberEditor.prototype.setData = function (data) {
+MPOTNumberEditor.prototype.setData = function(data) {
     this._data = data;
     if (data.action === 'input') {
         this._showInput();
-    }
-    else if (data.action === 'single-choice') {
+    } else if (data.action === 'single-choice') {
         this._showSingleChoice();
-    }
-    else if (data.action === 'multi-choice') {
+    } else if (data.action === 'multi-choice') {
         this._showMultiChoice();
     }
 };
 
-MPOTNumberEditor.prototype.getPreviewData = function () {
+MPOTNumberEditor.prototype.getPreviewData = function() {
     var data = this._data;
     var pData = {
         type: this.type,
@@ -55384,7 +55433,7 @@ MPOTNumberEditor.prototype.getPreviewData = function () {
         case 'multi-choice':
             pData.values = data.values;
             break;
-        default :
+        default:
             pData.value = data.value;
             break;
     }
@@ -55488,54 +55537,109 @@ Object.defineProperties(MPOTElementEditor.prototype, Object.getOwnPropertyDescri
 MPOTElementEditor.prototype.constructor = MPOTElementEditor;
 MPOTElementEditor.prototype.type = 'element';
 
+function checkValueElement(element) {
+    var input = element.getElementsByTagName("input");
+    var textarea = element.getElementsByTagName("textarea");
+    var result = [];
+    for (var i = 0; i < input.length; i++) {
+        result.push(input[i].value);
+    }
+    for (var i = 0; i < textarea.length; i++) {
+        result.push(textarea[i].value);
+    }
+    return result;
+}
+
+function checkManyArray(arrAll, arrChild) {
+    for (var i = 0; i < arrAll.length; i++) {
+        if (check2Array(arrAll[i], arrChild))
+            return true;
+    }
+    return false;
+}
+
+function check2Array(arr1, arr2) {
+    if (arr1.length !== arr2.length)
+        return false;
+    for (var i = 0; i < arr1.length; i++) {
+        if (arr1[i] != arr2[i])
+            return false;
+    }
+    return true;
+}
+
 MPOTElementEditor.prototype._showSingleChoice = function() {
     var thisE = this;
     var data = this._data;
     var groupName = randomIdent(10);
-    this.$choiceList = MPOTElementEditor_({
-        class: 'mpot-choice-list',
-        child: data.items.map(function(item, idx) {
-            var cloneNode = item.element.cloneNode(true);
-            if (item.promiseComplete) {
-                item.promiseComplete.then(function() {
-                    cloneNode.parentNode.replaceChild(item.element.cloneNode(), cloneNode);
-                })
-            }
-            return {
-                class: 'mpot-choice',
-                child: [{
-                        class: 'mpot-choice-select-cell',
-                        child: {
-                            tag: 'radiobutton',
-                            attr: {
-                                name: groupName
-                            },
-                            props: {
-                                checked: item.value === data.value
-                            },
-                            on: {
-                                change: function() {
-                                    if (this.checked) {
-                                        data.value = item.value;
-                                        data.item = item;
-                                        thisE.notifyChange();
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    {
-                        class: 'mpot-choice-value',
-                        child: {
-                            tag: 'span',
-                            child: [
-                                cloneNode
-                            ]
+    var checkElement = [];
+    var result = [];
+    var item;
+    for (var i = 0; i < data.items.length; i++) {
+        item = data.items[i];
+        if (checkElement[item.element.innerHTML] !== undefined && checkManyArray(checkElement[item.element.innerHTML], checkValueElement(item.element))) {
+            continue;
+        }
+        var cloneNode = item.element.cloneNode(true);
+        if (item.promiseComplete) {
+            item.promiseComplete.then(function() {
+                cloneNode.parentNode.replaceChild(item.element.cloneNode(), cloneNode);
+            })
+        }
+        if (checkElement[item.element.innerHTML]) {
+            checkElement[item.element.innerHTML][++checkElement[item.element.innerHTML].index] = checkValueElement(item.element);
+        } else {
+            checkElement[item.element.innerHTML] = [];
+            checkElement[item.element.innerHTML].index = 0;
+            checkElement[item.element.innerHTML][checkElement[item.element.innerHTML].index] = checkValueElement(item.element);
+        }
+        var tempIndex = MPOTElementEditor_({
+            tag: 'radiobutton',
+            attr: {
+                name: groupName
+            },
+            on: {
+                change: function(item) {
+                    return function(event) {
+                        if (this.checked) {
+                            data.value = item.value;
+                            data.item = item;
+                            thisE.notifyChange();
                         }
                     }
-                ]
-            };
+                }(item)
+            }
         })
+        result.push({
+            class: 'mpot-choice',
+            child: [{
+                    class: 'mpot-choice-select-cell',
+                    child: [
+                        tempIndex
+                    ]
+                },
+                {
+                    class: 'mpot-choice-value',
+                    child: {
+                        tag: 'span',
+                        child: [
+                            cloneNode
+                        ]
+                    }
+                }
+            ]
+        });
+        if (data.value === undefined) {
+            tempIndex.checked = true;
+            tempIndex.emit("change");
+        } else if (data.value == item.value) {
+            tempIndex.checked = true;
+            tempIndex.emit("change");
+        }
+    }
+    this.$choiceList = MPOTElementEditor_({
+        class: 'mpot-choice-list',
+        child: result
     });
 
     this._assignInputList(MPOTElementEditor_$$('radiobutton', this.$choiceList));
@@ -55961,11 +56065,11 @@ MPOTGroupEditor.prototype.constructor = MPOTGroupEditor;
 MPOTGroupEditor.prototype.type = 'group';
 
 
-MPOTGroupEditor.prototype.setData = function (data) {
+MPOTGroupEditor.prototype.setData = function(data) {
     this._data = data;
     var thisE = this;
     this.$view.clearChild();
-    this.children = data.properties.map(function (prop) {
+    this.children = data.properties.map(function(prop) {
         var type = prop.type;
         var editor = createEditor(type);
         editor.on('change', thisE.ev_nodeChange.bind(thisE));
@@ -55975,8 +56079,7 @@ MPOTGroupEditor.prototype.setData = function (data) {
         editor.setData(prop);
         var itemElt = MPOTGroupEditor_({
             class: 'mpot-group-editor-item',
-            child: [
-                {
+            child: [{
                     class: 'mpot-group-editor-item-name',
                     child: {
                         text: prop.name
@@ -55986,19 +56089,19 @@ MPOTGroupEditor.prototype.setData = function (data) {
             ]
         });
         thisE.$view.addChild(itemElt);
-        if(prop.id)
-        itemElt.id = prop.id;
+        if (prop.id)
+            itemElt.id = prop.id;
         return editor;
     });
 };
 
-MPOTGroupEditor.prototype.focus = function () {
+MPOTGroupEditor.prototype.focus = function() {
     if (this.children.length > 0) {
         this.children[0].focus();
     }
 }
 
-MPOTGroupEditor.prototype.getPreviewData = function () {
+MPOTGroupEditor.prototype.getPreviewData = function() {
     var data = this._data;
     var pData = {
         id: data.id,
@@ -56006,31 +56109,30 @@ MPOTGroupEditor.prototype.getPreviewData = function () {
         name: data.name
     };
 
-    pData.properties = this.children.map(function (child) {
+    pData.properties = this.children.map(function(child) {
         return child.getData();
     });
 
     return pData;
 };
 
-MPOTGroupEditor.prototype.ev_nodeChange = function (event, sender) {
+MPOTGroupEditor.prototype.ev_nodeChange = function(event, sender) {
     if (sender === this.children[this.children.length - 1]) {
         this.emit('change', event, sender);
-    }
-    else {
+    } else {
         if (!event.notFinish) {
             event.notFinish = true;
             this.emit('change', event, sender);
             var idx = this.children.indexOf(sender);
-            this.children[idx + 1].focus();
-        }
-        else {
+            if (idx !== -1)
+                this.children[idx + 1].focus();
+        } else {
             this.emit('change', event, sender);
         }
     }
 };
 
-MPOTGroupEditor.prototype.isCompleted = function () {
+MPOTGroupEditor.prototype.isCompleted = function() {
     for (var i = 0; i < this.children.length; ++i) {
         if (!this.children[i].isCompleted()) return false;
     }
@@ -56065,6 +56167,10 @@ function MPOTPropertyEditor() {
     this.setContext('PROPERTY_EDITOR', this);
     this._data = {};
     this.ev_nodeChange = this.ev_nodeChange.bind(this);
+    this.isChange = false;
+    setTimeout(function() {
+        this.isChange = true;
+    }.bind(this), 300)
 }
 
 Object.defineProperties(MPOTPropertyEditor.prototype, Object.getOwnPropertyDescriptors(core_BaseEditor.prototype));
@@ -56072,28 +56178,23 @@ MPOTPropertyEditor.prototype.constructor = MPOTPropertyEditor;
 
 MPOTPropertyEditor.prototype._nodeConstructor = EditorConstructors;
 
-MPOTPropertyEditor.prototype.createView = function () {
+MPOTPropertyEditor.prototype.createView = function() {
     this.$view = MPOTPropertyEditor_({
         class: 'mpot-property-editor',
-        child: [
-            {
+        child: [{
                 class: 'mpot-property-editor-header',
-                child: [
-                    {
-                        tag: 'buttonrange',
-                        style: {
-                            width: 'auto'
-                        }
+                child: [{
+                    tag: 'buttonrange',
+                    style: {
+                        width: 'auto'
                     }
-                ]
+                }]
             },
             {
                 class: 'mpot-property-editor-body',
-                child: [
-                    {
-                        tag: 'frameview'
-                    }
-                ]
+                child: [{
+                    tag: 'frameview'
+                }]
             }
         ]
     });
@@ -56109,16 +56210,16 @@ MPOTPropertyEditor.prototype.createView = function () {
     this.$frameview = MPOTPropertyEditor_$('frameview', this.$body);
 };
 
-MPOTPropertyEditor.prototype._loadHeader = function () {
+MPOTPropertyEditor.prototype._loadHeader = function() {
     this._headerHolders = this._loadHeaderContent(this._data.properties);
-    this._headerHolderById = this._headerHolders.reduce(function (ac, cr) {
+    this._headerHolderById = this._headerHolders.reduce(function(ac, cr) {
         ac[cr.id] = cr;
         return ac;
     }, {});
 
-    this._tabItems = this._headerHolders.filter(function (holder) {
+    this._tabItems = this._headerHolders.filter(function(holder) {
         return holder.display;
-    }).map(function (holder) {
+    }).map(function(holder) {
         return {
             text: holder.fName,
             value: holder.id
@@ -56127,15 +56228,12 @@ MPOTPropertyEditor.prototype._loadHeader = function () {
     this.$tabbar.items = this._tabItems;
 }
 
-MPOTPropertyEditor.prototype._loadHeaderContent = function(arr)
-{
+MPOTPropertyEditor.prototype._loadHeaderContent = function(arr) {
     var result = [];
     var property;
-    for(var i = 0;i<arr.length;i++)
-    {
+    for (var i = 0; i < arr.length; i++) {
         property = arr[i];
-        if(property.type === "container")
-        {
+        if (property.type === "container") {
             result = result.concat(this._loadHeaderContent(property.properties));
             continue;
         }
@@ -56154,7 +56252,7 @@ MPOTPropertyEditor.prototype._loadHeaderContent = function(arr)
     return result;
 }
 
-MPOTPropertyEditor.prototype._loadPropertyNodeKey = function () {
+MPOTPropertyEditor.prototype._loadPropertyNodeKey = function() {
     this._nodeKey = this._data.properties.reduce(function visit(ac, property) {
         var key = property.id || property.name || randomIdent(10);
         var holder = {
@@ -56168,25 +56266,23 @@ MPOTPropertyEditor.prototype._loadPropertyNodeKey = function () {
     }, {});
 };
 
-MPOTPropertyEditor.prototype._loadPropertyTab = function () {
+MPOTPropertyEditor.prototype._loadPropertyTab = function() {
     this.$frameview.clearChild();
-    
-    
-    this._headerHolders.forEach(function (it) {
+
+
+    this._headerHolders.forEach(function(it) {
         this.updateHeader(it)
     }.bind(this));
     var i = 0;
-    while(this._headerHolders[i].property!==undefined&&this._headerHolders[i].property["type"]=="constant")
-    {
+    while (this._headerHolders[i].property !== undefined && this._headerHolders[i].property["type"] == "constant") {
         i++;
     }
-    if(i<this._headerHolders.length)
-    this._headerHolders[i].$frame.requestActive();
+    if (i < this._headerHolders.length)
+        this._headerHolders[i].$frame.requestActive();
     this.$tabbar.value = this._headerHolders[i].id;
 };
 
-MPOTPropertyEditor.prototype.updateHeader = function(it)
-{
+MPOTPropertyEditor.prototype.updateHeader = function(it) {
     var thisE = this;
     var view;
     var frameElt;
@@ -56199,24 +56295,23 @@ MPOTPropertyEditor.prototype.updateHeader = function(it)
     it.editor.attach(thisE);
     view = it.editor.getView();
     it.editor.setData(prop);
-    if(view){
+    if (view) {
         frameElt.addChild(view);
-        if(prop.id)
-        view.id = "edit-"+prop.id;
+        if (prop.id)
+            view.id = "edit-" + prop.id;
     }
 }
 
-MPOTPropertyEditor.prototype.selectTabById = function (id) {
+MPOTPropertyEditor.prototype.selectTabById = function(id) {
     var thisE = this;
     var headerHolder = this._headerHolderById[id];
     if (headerHolder) {
         this.$tabbar.value = headerHolder.id;
         this.$tabbar.notifyChange();
-    }
-    else {
-        this._headerHolders.forEach(function (holder) {
+    } else {
+        this._headerHolders.forEach(function(holder) {
             if (holder.property.type === 'group') {
-                var index = holder.property.properties.map(function (p) {
+                var index = holder.property.properties.map(function(p) {
                     return p.id
                 }).indexOf(id);
                 if (index >= 0) {
@@ -56230,39 +56325,36 @@ MPOTPropertyEditor.prototype.selectTabById = function (id) {
 };
 
 
-MPOTPropertyEditor.prototype.setData = function (data) {
+MPOTPropertyEditor.prototype.setData = function(data) {
     this._data = data;
     this._loadPropertyNodeKey();
     this._loadHeader();
     this._loadPropertyTab();
 };
 
-MPOTPropertyEditor.prototype.getPreviewData = function () {
+MPOTPropertyEditor.prototype.getPreviewData = function() {
     var data = this._data;
     var pData = {};
     pData.title = data.title;
     var propsData = data.properties;
     var propsDataChild = []
-    for(var i = 0;i< propsData.length;i++)
+    for (var i = 0; i < propsData.length; i++)
         propsDataChild.push(this.getDataChild(propsData[i]));
 
     pData.properties = propsDataChild;
     return pData;
 };
 
-MPOTPropertyEditor.prototype.getDataChild = function(prop)
-{
-    if(prop.type === "container")
-    {
+MPOTPropertyEditor.prototype.getDataChild = function(prop) {
+    if (prop.type === "container") {
         var arr = [];
-        for(var i = 0;i<prop.properties.length;i++)
-        {
+        for (var i = 0; i < prop.properties.length; i++) {
             arr.push(this.getDataChild(prop.properties[i]));
         }
         return {
-            type:"container",
-            id:prop.id,
-            properties:arr
+            type: "container",
+            id: prop.id,
+            properties: arr
         };
     }
     var id = prop.id;
@@ -56270,7 +56362,7 @@ MPOTPropertyEditor.prototype.getDataChild = function(prop)
     return holder.editor.getPreviewData();
 }
 
-MPOTPropertyEditor.prototype.ev_tabbarChange = function (event) {
+MPOTPropertyEditor.prototype.ev_tabbarChange = function(event) {
     var key = this.$tabbar.value;
     var holder = this._headerHolderById[key];
     var frameElt = holder.$frame;
@@ -56279,33 +56371,32 @@ MPOTPropertyEditor.prototype.ev_tabbarChange = function (event) {
 };
 
 
-MPOTPropertyEditor.prototype.ev_nodeChange = function (event, sender) {
+MPOTPropertyEditor.prototype.ev_nodeChange = function(event, sender) {
     var pData = sender.getPreviewData()
     var holder = this._headerHolderById[pData.id];
     this.notifyNodeChange(Object.assign({}, event, { nodePreviewData: pData }));
-    if (!event.notFinish)
+    if (!event.notFinish && this.isChange === true)
         setTimeout(this.$tabbar.nextValue.bind(this.$tabbar, true), 300);
 };
 
 
-MPOTPropertyEditor.prototype.notifyNodeChange = function (extendData) {
+MPOTPropertyEditor.prototype.notifyNodeChange = function(extendData) {
     this.emit('nodechange', Object.assign({}, extendData, { type: 'nodechange' }), this);
 };
 
-MPOTPropertyEditor.prototype.getCompletedMask = function () {
-    return this._headerHolders.map(function (holder) {
+MPOTPropertyEditor.prototype.getCompletedMask = function() {
+    return this._headerHolders.map(function(holder) {
         return holder.editor.isCompleted();
     });
 };
 
-MPOTPropertyEditor.prototype.isCompleted = function () {
-    return this.getCompletedMask().reduce(function (ac, cr) {
+MPOTPropertyEditor.prototype.isCompleted = function() {
+    return this.getCompletedMask().reduce(function(ac, cr) {
         return ac && cr;
     }, true);
 };
 
 /* harmony default export */ var js_MPOTPropertyEditor = (MPOTPropertyEditor);
-
 // CONCATENATED MODULE: ./node_modules/mpot-merge-tool/js/utils.js
 
 
@@ -66519,15 +66610,6 @@ MergeRealty_MergeRealty.prototype.setContainer = function (parent) {
 Object.defineProperties(MergeRealty_MergeRealty.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
 MergeRealty_MergeRealty.prototype.constructor = MergeRealty_MergeRealty;
 
-MergeRealty_MergeRealty.prototype.getDataSave = function () {
-  return {
-    id: this.data === undefined ? undefined : this.data.original.id,
-    name: this.name.value,
-    type: this.type.value,
-    districtid: this.district.value
-  };
-};
-
 MergeRealty_MergeRealty.prototype.createPromise = function () {
   var self = this;
 
@@ -66608,28 +66690,19 @@ MergeRealty_MergeRealty.prototype.getView = function () {
   var itemsAddress = [];
   var itemsAddressOld = [];
   var itemData;
-  var valueAddress, valueAddressOld;
-  var valueName,
-      itemName = [];
-  var valueContent,
-      itemContent = [];
-  var valueWidth,
-      itemWidth = [],
+  var itemName = [];
+  var itemContent = [];
+  var itemWidth = [],
       sumWidth = 0;
-  var valueHeight,
-      itemHeight = [],
+  var itemHeight = [],
       sumHeight = 0;
-  var valueAcreage,
-      itemAcreage = [],
+  var itemAcreage = [],
       sumAcreage = 0;
-  var valueLandarea,
-      itemLandarea = [],
+  var itemLandarea = [],
       sumLandarea = 0;
-  var valueFloorarea,
-      itemFloorarea = [],
+  var itemFloorarea = [],
       sumFloorarea = 0;
-  var valueDirection,
-      itemDirection = [];
+  var itemDirection = [];
   var checkDirection = {
     0: "Chưa xác định",
     6: "Đông",
@@ -66641,17 +66714,18 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     7: "Tây Bắc",
     1: "Tây Nam"
   };
-  var valueType,
-      itemType = [];
+  var itemType = [];
   var checkType = ModuleDatabase["a" /* default */].getModule("type_activehouses").getLibary("id");
   var number, street, ward, district, state, fullAddress;
-  var checkAddress = [];
+  this.checkAddressName = [];
+  var checkAddress = this.checkAddressName;
   this.checkAddressData = checkAddress;
   var valueRoadWidth,
       itemRoadWidth = [],
       sumRoadWidth = 0;
   var itemEquipments = [],
       itemContact = [];
+  var itemCheckStatus = [];
   var itemImageStaus = [];
 
   itemImageStaus.functionChange = function (parent) {
@@ -66664,13 +66738,9 @@ MergeRealty_MergeRealty.prototype.getView = function () {
 
   var itemImageJuridical = [];
   var itemInputFit = [];
-  var valueInputFit;
   var itemInputPriceRent = [];
-  var valueInputPriceRent;
   var itemInputPrice = [];
-  var valueInputPrice;
   var itemInputJuridical = [];
-  var valueInputJuridical;
   var arr = ModuleDatabase["a" /* default */].getModule("juridicals").getList("name", "id");
   this.checkAddress = ModuleDatabase["a" /* default */].getModule("addresses").getLibary("id");
   this.checkStreet = ModuleDatabase["a" /* default */].getModule("streets").getLibary("id");
@@ -66686,9 +66756,8 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     self.checkContact = ModuleDatabase["a" /* default */].getModule("contacts").getLibary("phone");
     self.checkContactID = ModuleDatabase["a" /* default */].getModule("contacts").getLibary("id");
   });
-  var valueStructure,
-      itemStructure = [],
-      valueSimpleStructure;
+  var valueSimpleStructure,
+      itemStructure = [];
   var prefixImage = "https://lab.daithangminh.vn/home_co/pizo/assets/upload/";
 
   for (var i = 0; i < this.data.length; i++) {
@@ -66755,7 +66824,8 @@ MergeRealty_MergeRealty.prototype.getView = function () {
               }
             }]
           }),
-          id: itemData.image[j]
+          id: itemData.image[j],
+          copy: this.checkImage[itemData.image[j]].src
         };
         MergeRealty_$(".close-button-img", dataChild.element).addEventListener("click", function (dataChild) {
           dataChild.value = false;
@@ -66794,7 +66864,8 @@ MergeRealty_MergeRealty.prototype.getView = function () {
               }
             }]
           }),
-          id: itemData.image[j]
+          id: itemData.image[j],
+          copy: this.checkImage[itemData.image[j]].src
         };
         dataChild["data"] = this.checkImage[itemData.image[j]];
         MergeRealty_$(".close-button-img", dataChild.element).addEventListener("click", function (dataChild) {
@@ -66814,11 +66885,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
       itemsAddress.push(fullAddress);
       checkAddress[fullAddress] = [itemData.lat, itemData.lng];
       checkAddress[fullAddress].data = itemData;
-
-      if (valueAddress === undefined) {
-        valueAddress = fullAddress;
-        element.addMoveMarker(checkAddress[fullAddress]);
-      }
     } //Địa chỉ cũ
 
 
@@ -66829,29 +66895,81 @@ MergeRealty_MergeRealty.prototype.getView = function () {
       district = this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid_old].wardid].districtid].name;
       state = this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[itemData.addressid_old].wardid].districtid].stateid].name;
       fullAddress = number + " " + street + ", " + ward + ", " + district + ", " + state;
+      checkAddress[fullAddress] = {};
+      checkAddress[fullAddress].data = itemData;
       itemsAddressOld.push(fullAddress);
-      if (valueAddressOld === undefined) valueAddressOld = fullAddress;
     }
 
     itemName.push(itemData.name);
-    if (valueName === undefined) valueName = itemData.name;
+    var inputSell = parseInt(itemData.salestatus % 10) == 1 ? true : false;
+    var inputLease = parseInt(itemData.salestatus / 10) == 1 ? true : false;
+
+    var tempStatus = MergeRealty_({
+      tag: "div",
+      "class": "pizo-new-realty-desc-detail-row",
+      style: {
+        pointerEvents: "none"
+      },
+      child: [{
+        tag: "div",
+        "class": "pizo-new-realty-desc-detail-row-cell-menu-1",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-realty-desc-detail-row",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-realty-desc-detail-row-cell-menu-1-span",
+            props: {
+              innerHTML: "Còn bán"
+            }
+          }, {
+            tag: "checkbox",
+            "class": "pizo-new-realty-desc-detail-row-menu-1-checkbox",
+            props: {
+              checked: inputSell
+            }
+          }]
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-new-realty-desc-detail-row-cell-menu-2",
+        child: [{
+          tag: "div",
+          "class": "pizo-new-realty-desc-detail-row",
+          child: [{
+            tag: "span",
+            "class": "pizo-new-realty-desc-detail-row-cell-menu-2-span",
+            props: {
+              innerHTML: "Còn cho thuê"
+            }
+          }, {
+            tag: "checkbox",
+            "class": "pizo-new-realty-desc-detail-row-menu-2-checkbox",
+            props: {
+              checked: inputLease
+            }
+          }]
+        }]
+      }]
+    });
+
+    tempStatus.inputLease = MergeRealty_$("div.pizo-new-realty-desc-detail-row-menu-2-checkbox", tempStatus);
+    tempStatus.inputSell = MergeRealty_$("div.pizo-new-realty-desc-detail-row-menu-1-checkbox", tempStatus);
+    itemCheckStatus.push({
+      value: i + 1,
+      element: tempStatus
+    });
     itemContent.push(itemData.content);
-    if (valueContent === undefined) valueContent = itemData.content;
     sumWidth += parseFloat(itemData.width);
     itemWidth.push(itemData.width);
-    if (valueWidth === undefined) valueWidth = itemData.width;
     sumHeight += parseFloat(itemData.height);
     itemHeight.push(itemData.height);
-    if (valueHeight === undefined) valueHeight = itemData.height;
     sumAcreage += parseFloat(itemData.acreage);
     itemAcreage.push(itemData.acreage);
-    if (valueAcreage === undefined) valueAcreage = itemData.acreage;
     sumLandarea += parseFloat(itemData.landarea);
     itemLandarea.push(itemData.landarea);
-    if (valueLandarea === undefined) valueLandarea = itemData.landarea;
     sumFloorarea += parseFloat(itemData.floorarea);
     itemFloorarea.push(itemData.floorarea);
-    if (valueFloorarea === undefined) valueFloorarea = itemData.floorarea;
     var advanceDetruct = itemData.advancedetruct;
     var advanceDetruct1 = advanceDetruct % 10 ? true : false;
     advanceDetruct = parseInt(advanceDetruct / 10);
@@ -67127,6 +67245,12 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     simpleDetruct.advanceDetruct2 = advanceDetruct2;
     simpleDetruct.advanceDetruct3 = advanceDetruct3;
     simpleDetruct.advanceDetruct4 = advanceDetruct4;
+    simpleDetruct.inputFloor = MergeRealty_$("input.pizo-new-realty-dectruct-content-area-floor", simpleDetruct);
+    simpleDetruct.inputBasement = MergeRealty_$("input.pizo-new-realty-dectruct-content-area-basement", simpleDetruct);
+    simpleDetruct.inputBedroom = MergeRealty_$("input.pizo-new-realty-dectruct-content-area-bedroom", simpleDetruct);
+    simpleDetruct.inputLiving = MergeRealty_$("input.pizo-new-realty-dectruct-content-area-living", simpleDetruct);
+    simpleDetruct.inputToilet = MergeRealty_$("input.pizo-new-realty-dectruct-content-area-toilet", simpleDetruct);
+    simpleDetruct.inputKitchen = MergeRealty_$("input.pizo-new-realty-dectruct-content-area-kitchen", simpleDetruct);
 
     var tempSelectbox = MergeRealty_({
       tag: "selectmenu",
@@ -67175,17 +67299,14 @@ MergeRealty_MergeRealty.prototype.getView = function () {
       simpleDetruct: simpleDetruct
     });
 
-    if (valueStructure === undefined) {
+    if (valueSimpleStructure === undefined) {
       valueSimpleStructure = simpleDetruct;
-      valueStructure = i + 1;
     }
 
     itemDirection.push(checkDirection[itemData.direction]);
-    if (valueDirection === undefined) valueDirection = checkDirection[itemData.direction];
 
     if (checkType[itemData.type]) {
       itemType.push(checkType[itemData.type].name);
-      if (valueType === undefined) valueType = checkType[itemData.type].name;
     }
 
     sumRoadWidth += parseFloat(itemData.roadwidth);
@@ -67239,10 +67360,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
       element: tempInputFit
     });
 
-    if (valueInputFit === undefined) {
-      valueInputFit = i + 1;
-    }
-
     var tempInputValue = MergeRealty_({
       tag: "div",
       "class": "pizo-new-realty-desc-detail-row",
@@ -67288,10 +67405,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
       value: i + 1,
       element: tempInputValue
     });
-
-    if (valueInputPrice === undefined) {
-      valueInputPrice = i + 1;
-    }
 
     var tempInputValue = MergeRealty_({
       tag: "div",
@@ -67342,10 +67455,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
       element: tempInputValue
     });
 
-    if (valueInputPriceRent === undefined) {
-      valueInputPriceRent = i + 1;
-    }
-
     var tempInputValue = MergeRealty_({
       tag: "div",
       "class": "pizo-new-realty-juridical-content",
@@ -67365,10 +67474,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
       value: i + 1,
       element: tempInputValue
     });
-
-    if (valueInputJuridical === undefined) {
-      valueInputJuridical = i + 1;
-    }
   }
 
   itemWidth.push(sumWidth);
@@ -67383,15 +67488,20 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'name',
     enableEdit: true,
     action: "single-choice",
-    value: valueName,
     items: itemName
+  };
+  var dataStatus = {
+    type: 'element',
+    name: 'Hiện trạng',
+    id: 'status-active',
+    action: "single-choice",
+    items: itemCheckStatus
   };
   var dataAddress = {
     type: 'text',
     name: 'Địa chỉ',
     id: 'address',
     action: "single-choice",
-    value: valueAddress,
     items: itemsAddress
   };
   var dataAddressOld = {
@@ -67399,7 +67509,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     name: 'Địa chỉ cũ',
     id: 'address-old',
     action: "single-choice",
-    value: valueAddressOld,
     items: itemsAddressOld
   };
   var dataContent = {
@@ -67408,7 +67517,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'description',
     enableEdit: true,
     action: "single-choice",
-    value: valueContent,
     items: itemContent
   };
   var dataWidth = {
@@ -67417,7 +67525,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'width',
     enableEdit: true,
     action: "single-choice",
-    value: valueWidth,
     items: itemWidth
   };
   var dataHeight = {
@@ -67426,16 +67533,14 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'height',
     enableEdit: true,
     action: "single-choice",
-    value: valueHeight,
     items: itemHeight
   };
   var dataAcreage = {
     type: 'number',
-    name: 'Đất xây dựng (m²)',
+    name: 'Diện tích (m²)',
     id: 'acreage',
     enableEdit: true,
     action: "single-choice",
-    value: valueAcreage,
     items: itemAcreage
   };
   var dataLandarea = {
@@ -67444,16 +67549,14 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'landarea',
     enableEdit: true,
     action: "single-choice",
-    value: valueLandarea,
     items: itemLandarea
   };
   var dataFloorarea = {
     type: 'number',
-    name: 'Đất xây dựng (m²)',
+    name: 'Sàn xây dựng (m²)',
     id: 'floorarea',
     enableEdit: true,
     action: "single-choice",
-    value: valueFloorarea,
     items: itemFloorarea
   };
   var dataStructure = {
@@ -67461,7 +67564,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     name: 'Kết cấu',
     id: 'structure',
     action: "single-choice",
-    value: valueStructure,
     items: itemStructure
   };
   var dataDirection = {
@@ -67469,7 +67571,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     name: 'Hướng',
     id: 'direction',
     action: "single-choice",
-    value: valueDirection,
     items: itemDirection
   };
   var dataType = {
@@ -67477,7 +67578,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     name: 'Loại nhà',
     id: 'type-house',
     action: "single-choice",
-    value: valueType,
     items: itemType
   };
   var dataRoadWidth = {
@@ -67486,7 +67586,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'roadwidth',
     enableEdit: true,
     action: "single-choice",
-    value: valueRoadWidth,
     items: itemRoadWidth
   };
   var dataEquipments = {
@@ -67531,7 +67630,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'fit',
     enableEdit: true,
     action: "single-choice",
-    value: valueInputFit,
     items: itemInputFit
   };
   var dataPrice = {
@@ -67540,7 +67638,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'price-child',
     enableEdit: true,
     action: "single-choice",
-    value: valueInputPrice,
     items: itemInputPrice
   };
   var dataPriceRent = {
@@ -67549,7 +67646,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'price-rent',
     enableEdit: true,
     action: "single-choice",
-    value: valueInputPriceRent,
     items: itemInputPriceRent
   };
   var dataJuridical = {
@@ -67558,7 +67654,6 @@ MergeRealty_MergeRealty.prototype.getView = function () {
     id: 'juridical',
     enableEdit: true,
     action: "single-choice",
-    value: valueInputJuridical,
     items: itemInputJuridical
   };
 
@@ -67610,6 +67705,28 @@ MergeRealty_MergeRealty.prototype.getView = function () {
         elementEquipments.appendChild(self.convenientView({
           equipment: result
         }));
+        break;
+
+      case "status-active":
+        var elementParent = event.nodePreviewData.item.element;
+
+        while (elementParent && !elementParent.classList.contains("mpot-preview-body")) {
+          elementParent = elementParent.parentNode;
+        }
+
+        if (event.nodePreviewData.item.element.inputLease.checked === false) {
+          if (elementParent) {
+            elementParent.classList.add("displayNonePriceRent");
+          }
+        } else if (event.nodePreviewData.item.element.inputLease.checked === true) {
+          if (elementParent) {
+            elementParent.classList.remove("displayNonePriceRent");
+          }
+        }
+
+        break;
+
+      default:
     }
   });
   myTool.setData({
@@ -67622,7 +67739,7 @@ MergeRealty_MergeRealty.prototype.getView = function () {
           type: "group",
           name: 'Thông tin chung',
           id: "general",
-          properties: [dataName, dataAddress, dataAddressOld, dataContent]
+          properties: [dataName, dataStatus, dataAddress, dataAddressOld, dataContent]
         }, {
           type: 'constant',
           id: 'GPS',
@@ -68183,138 +68300,139 @@ MergeRealty_MergeRealty.prototype.getDataSave = function () {
   advanceDetruct += advanceDetructElement.advanceDetruct3.checked ? 100 : 0;
   advanceDetruct += advanceDetructElement.advanceDetruct4.checked ? 1000 : 0;
   var image = [];
-  var arrJuridical = data[3].properties[1].values;
+  var arrJuridical = data[3].properties[2].values;
 
   for (var i = 0; i < arrJuridical.length; i++) {
     image.push({
       src: arrJuridical[i].id,
+      copy: arrJuridical[i].copy,
       type: 0,
       userid: window.userid
     });
   }
 
   var arrStatus = data[3].properties[1].values;
+  console.log(arrStatus);
 
   for (var i = 0; i < arrStatus.length; i++) {
     var thumnail = 0;
     if (arrStatus[i].element.classList.contains("checked-pizo")) thumnail = 1;
     image.push({
       src: arrStatus[i].id,
+      copy: arrStatus[i].copy,
       type: 1,
       thumnail: thumnail,
       userid: window.userid
     });
   }
 
-  var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, censorship;
-  console.log(data);
-  var temp = {
-    height: this.inputHeight.value * this.inputUnitHeight.value,
-    width: this.inputWidth.value * this.inputUnitWidth.value,
-    landarea: this.inputZone1.value * this.inputUnitZone1.value,
-    floorarea: this.inputZone2.value * this.inputUnitZone2.value,
-    acreage: this.inputZoneAll.value * this.inputUnitZoneAll.value,
-    direction: this.direction.value,
-    type: this.type.value,
-    fit: fitUpdate,
-    roadwidth: this.inputWidthRoad.value * this.inputUnitWidthRoad.value,
-    floor: this.inputFloor.value,
-    basement: this.inputBasement.value,
-    bedroom: this.inputBedroom.value,
-    living: this.inputLiving.value,
-    toilet: this.inputToilet.value,
-    kitchen: this.inputKitchen.value,
-    price: this.inputPrice.value * this.inputUnitPrice.value,
-    name: data[0].properties[0].value,
-    content: this.inputContent.value,
-    salestatus: (this.inputLease.checked == true ? 1 : 0) * 10 + (this.inputSell.checked == true ? 1 : 0),
-    structure: this.structure.value,
-    pricerent: reFormatNumber(this.inputPriceRent.value) * this.inputPriceRentUnit.value,
-    advancedetruct: advanceDetruct,
-    juridical: this.juridical.value,
-    image: image,
-    censorship: this.inputCensorship.checked == true ? 1 : 0 // important:this.viewCurrentStaus.getImportTant()
-
+  var address, addressOld;
+  var height, width, landarea, floorarea, acreage, direction, type, roadwidth, floor, basement, bedroom, living, toilet, kitchen, price, name, content, salestatus, structure, pricerent, juridical, lat, lng;
+  width = data[1].properties[0].properties[0].element.wholeText;
+  height = data[1].properties[0].properties[1].element.wholeText;
+  acreage = data[1].properties[0].properties[2].element.wholeText;
+  landarea = data[1].properties[0].properties[3].element.wholeText;
+  floorarea = data[1].properties[0].properties[4].element.wholeText;
+  var checkDetruct = {
+    "Chưa xác định": 0,
+    "Đông": 6,
+    "Tây": 4,
+    "Nam": 2,
+    "Bắc": 8,
+    "Đông Bắc": 9,
+    "Đông Nam": 3,
+    "Tây Bắc": 7,
+    "Tây Nam": 1
   };
-  var arr = [];
+  structure = data[1].properties[0].properties[5].value;
+  direction = checkDetruct[data[1].properties[0].properties[7].value];
+  var checkType = ModuleDatabase["a" /* default */].getModule("type_activehouses").getLibary("name");
+  type = checkType[data[1].properties[0].properties[8].value].id;
+  roadwidth = data[1].properties[0].properties[9].value;
+  floor = advanceDetructElement.inputFloor.value;
+  basement = advanceDetructElement.inputBasement.value;
+  bedroom = advanceDetructElement.inputBedroom.value;
+  living = advanceDetructElement.inputLiving.value;
+  toilet = advanceDetructElement.inputToilet.value;
+  kitchen = advanceDetructElement.inputKitchen.value;
+  price = data[1].properties[1].properties[0].properties[0].item.element.childNodes[0].value;
+  pricerent = data[1].properties[1].properties[0].properties[1].item.element.childNodes[0].childNodes[0].value;
+  name = data[0].properties[0].properties[0].value;
+  var addressData = this.checkAddressName[data[0].properties[0].properties[2].value];
+  var addressDataOld = this.checkAddressName[data[0].properties[0].properties[3].value];
 
-  for (var i = 0; i < this.containerEquipment.childNodes.length; i++) {
-    arr.push(this.containerEquipment.childNodes[i].getData());
+  if (addressData) {
+    lat = addressData[0];
+    lng = addressData[1];
+    addressData = {
+      id: addressData.data.addressid
+    };
+  }
+
+  if (addressDataOld) addressDataOld = {
+    id: addressDataOld.data.addressid_old
+  };
+  address = addressData;
+  addressOld = addressDataOld;
+  content = data[0].properties[0].properties[4].value;
+  salestatus = data[0].properties[0].properties[1].item.element;
+  salestatus = (salestatus.inputLease.checked == true ? 1 : 0) * 10 + (salestatus.inputSell.checked == true ? 1 : 0);
+  juridical = data[1].properties[1].properties[1].item.element.childNodes[0].value;
+  var temp = {
+    height: height,
+    width: width,
+    landarea: landarea,
+    floorarea: floorarea,
+    acreage: acreage,
+    direction: direction,
+    type: type,
+    fit: fitUpdate,
+    roadwidth: roadwidth,
+    floor: floor,
+    basement: basement,
+    bedroom: bedroom,
+    living: living,
+    toilet: toilet,
+    kitchen: kitchen,
+    price: price,
+    name: name,
+    content: content,
+    salestatus: salestatus,
+    structure: structure,
+    pricerent: pricerent,
+    advancedetruct: advanceDetruct,
+    juridical: juridical,
+    image: image,
+    censorship: 1,
+    addressid: address,
+    addressid_old: addressOld
+  };
+  if (lat) temp.lat = lat;
+  if (lng) temp.lng = lng;
+  var arr = [];
+  var containerEquipment = data[2].properties[1].element.childNodes[0].childNodes[0].childNodes[1];
+
+  for (var i = 0; i < containerEquipment.childNodes.length; i++) {
+    arr.push(containerEquipment.childNodes[i].getData());
   }
 
   temp.equipment = arr;
   var contact = [];
+  var containerContact = data[3].properties[0].values;
 
-  for (var i = 0; i < this.containerContact.childNodes.length; i++) {
-    contact.push(this.containerContact.childNodes[i].getData());
+  for (var i = 0; i < containerContact.length; i++) {
+    contact.push(containerContact[i].element.getData());
   }
 
   temp.contact = contact;
+  var arrID = [];
 
-  if (this.addressCurrent.data !== undefined) {
-    var address = {};
-    var data = this.addressCurrent.data;
-    var lastIndex = data.ward.lastIndexOf("_");
-
-    if (lastIndex === -1) {
-      address.ward = data.ward;
-      lastIndex = data.district.lastIndexOf("_");
-
-      if (lastIndex == -1) {
-        address.district = data.district;
-        lastIndex = data.state.lastIndexOf("_");
-
-        if (lastIndex == -1) {
-          address.state = data.state;
-        } else {
-          address.stateid = data.state.slice(lastIndex + 1);
-        }
-      } else address.districtid = data.district.slice(lastIndex + 1);
-    } else address.wardid = data.ward.slice(lastIndex + 1);
-
-    var lastIndex = data.street.lastIndexOf("_");
-    if (lastIndex === -1) address.street = data.street;else address.streetid = data.street.slice(lastIndex + 1);
-    address.number = data.number;
-    temp.lat = data.lat;
-    temp.lng = data.lng;
-    temp.addressid = address;
+  for (var i = 0; i < this.data.length; i++) {
+    arrID.push(this.data[i].original.id);
   }
 
-  if (this.addressOld.data !== undefined) {
-    var address = {};
-    var data = this.addressOld.data;
-    var lastIndex = data.ward.lastIndexOf("_");
-
-    if (lastIndex === -1) {
-      address.ward = data.ward;
-      lastIndex = data.district.lastIndexOf("_");
-
-      if (lastIndex == -1) {
-        address.district = data.district;
-        lastIndex = data.state.lastIndexOf("_");
-
-        if (lastIndex == -1) {
-          address.state = data.state;
-        } else {
-          address.stateid = data.state.slice(lastIndex + 1);
-        }
-      } else address.districtid = data.district.slice(lastIndex + 1);
-    } else address.wardid = data.ward.slice(lastIndex + 1);
-
-    var lastIndex = data.street.lastIndexOf("_");
-    if (lastIndex === -1) address.street = data.street;else address.streetid = data.street.slice(lastIndex + 1);
-    address.number = data.number;
-    temp.addressid_old = address;
-  }
-
-  if (this.data !== undefined) {
-    if (this.data.original !== undefined && this.data.original.id !== undefined) temp.id = this.data.original.id;else if (this.data.id !== undefined) temp.id = this.data.id;
-  }
-
-  if (this.isRequestEdit) {
-    temp.userid = window.userid;
-  }
-
+  temp.oldId = arrID;
+  console.log(temp);
   return temp;
 };
 
@@ -77127,6 +77245,17 @@ ListRealty_ListRealty.prototype.merge = function (data, parent, index) {
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
     self.mergeDB(mMergeRealty, data, parent, index);
+    mMergeRealty.promiseEditDB.then(function (value) {
+      var oldId = value.oldId;
+      delete value.oldId;
+      ModuleDatabase["a" /* default */].getModule("activehouses").add(value).then(function (value) {
+        self.addView(value);
+      });
+
+      for (var i = 0; i < oldId.length; i++) {
+        console.log(oldId[i]);
+      }
+    });
   });
 };
 
@@ -81188,11 +81317,23 @@ PlanningInformation_PlanningInformation.prototype.selectPolygonFunction = functi
     }
   }
 
+  var minX, maxX, minY, maxY;
+  minX = bns[this.b].i;
+  maxX = bns[this.b].j;
+  minY = bns[this.a].i;
+  maxY = bns[this.a].j;
+
+  while (0 > maxY) {
+    maxY += 180;
+  }
+
+  maxY += 180;
+
   for (var i = 0; i < this.polygon.length; i++) {
     tempPath = [];
     var boundary = this.polygon[i].boundary();
 
-    if (bns[this.b].i < boundary.min.lat && boundary.max.lat < bns[this.b].j && bns[this.a].i < boundary.min.lng && boundary.max.lng < bns[this.a].j) {
+    if (minX < boundary.min.lat && boundary.max.lat < maxX && minY < boundary.min.lng && boundary.max.lng < maxY) {
       for (var j = 0; j < this.polygon[i].getPath().getLength(); j++) {
         tempPath.push(this.polygon[i].getPath().getAt(j).toJSON());
       }
@@ -81550,11 +81691,1002 @@ PlanningInformation_PlanningInformation.prototype.flushDataToView = function () 
 PlanningInformation_PlanningInformation.prototype.start = function () {};
 
 /* harmony default export */ var page_PlanningInformation = (PlanningInformation_PlanningInformation);
+// EXTERNAL MODULE: ./css/NoteInformation.css
+var NoteInformation = __webpack_require__(252);
+
+// CONCATENATED MODULE: ./js/page/NoteInformation.js
+function NoteInformation_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { NoteInformation_typeof = function _typeof(obj) { return typeof obj; }; } else { NoteInformation_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return NoteInformation_typeof(obj); }
+
+
+
+
+
+
+
+
+
+
+
+var NoteInformation_ = dom_Fcore._;
+var NoteInformation_$ = dom_Fcore.$;
+
+function NoteInformation_NoteInformation() {
+  component_BaseView.call(this);
+  AppPattern_Fragment.call(this);
+  this.cmdRunner = new AppPattern_CMDRunner(this);
+  this.loadConfig();
+  this.hash = [];
+}
+
+NoteInformation_NoteInformation.prototype.setContainer = function (parent) {
+  this.parent = parent;
+};
+
+Object.defineProperties(NoteInformation_NoteInformation.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
+NoteInformation_NoteInformation.prototype.constructor = NoteInformation_NoteInformation;
+
+NoteInformation_NoteInformation.prototype.setUpDxfFile = function (fileText, loadding) {
+  var parser = new DxfParser();
+  var dxf = null;
+
+  try {
+    dxf = parser.parseSync(fileText);
+  } catch (err) {
+    return console.error(err.stack);
+  }
+
+  var wkt = GeoJSON.parse(dxf);
+  var center = new google.maps.LatLng(GeoJSON.header.$LATITUDE, GeoJSON.header.$LONGITUDE);
+  console.log(window.dcel.lines);
+  var lines = consoleWKTLine(window.dcel.lines);
+  if (lines !== -1) this.addLine(lines);
+  this.mapView.map.setCenter(center);
+  this.mapView.map.setZoom(17);
+  this.mapView.map.data.setStyle({
+    strokeColor: "#000000",
+    strokeOpacity: 0.8,
+    strokeWeight: 1
+  });
+  console.timeEnd("dcel cost");
+  loadding.disable();
+};
+
+NoteInformation_NoteInformation.prototype.getView = function () {
+  if (this.$view) return this.$view;
+  var self = this;
+
+  var allinput = NoteInformation_({
+    tag: "input",
+    "class": "pizo-list-realty-page-allinput-input",
+    props: {
+      placeholder: "Tìm theo địa chỉ"
+    }
+  });
+
+  if (window.mobilecheck()) {
+    allinput.placeholder = "Tìm theo địa chỉ";
+  }
+
+  var mapView = new MapView_MapView();
+  this.searchControl = this.searchControlContent();
+
+  var hiddenInput = NoteInformation_({
+    tag: "input",
+    "class": "hiddenUI",
+    on: {
+      change: function change(event) {
+        if (this.files.length == 0) return;
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.readAsText(this.files[0]);
+
+        reader.onload = function (e) {
+          console.time("dcel cost");
+          console.log(file);
+          var extension = file.name.slice((Math.max(0, file.name.lastIndexOf(".")) || Infinity) + 1);
+          var fileText = e.target.result;
+
+          if (extension === "dxf") {
+            if (true) {
+              var gmt = getGMT();
+
+              var inputElement = NoteInformation_({
+                tag: "div",
+                "class": "pizo-name-commit-planning",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-name-commit-planning-text",
+                  props: {
+                    innerHTML: "Chú thích lần commit"
+                  }
+                }, {
+                  tag: "input",
+                  "class": "pizo-name-commit-planning-input",
+                  props: {
+                    value: "Commit vào thời gian " + formatDate(gmt, true, true, true, true, true, true)
+                  }
+                }]
+              });
+
+              var deleteQuestionCommit = confirmQuestion("Chú thích lần commit", inputElement);
+              document.body.appendChild(deleteQuestionCommit);
+              deleteQuestionCommit.promiseComfirm.then(function () {
+                self.commitComment = inputElement.childNodes[1].value;
+                var loadding = new loaddingWheel();
+                setTimeout(function () {
+                  self.setUpDxfFile(fileText, loadding);
+                }, 60);
+              });
+            } else { var loadding; }
+          }
+        };
+      }
+    },
+    props: {
+      id: "file-field",
+      type: "file"
+    }
+  });
+
+  this.$view = NoteInformation_({
+    tag: 'singlepage',
+    "class": "pizo-list-realty",
+    child: [{
+      "class": 'absol-single-page-header',
+      style: {
+        paddingRight: 0
+      },
+      child: [{
+        tag: "span",
+        "class": "pizo-body-title-left",
+        props: {
+          innerHTML: "Thông tin quy hoạch"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-button",
+        child: [{
+          tag: "button",
+          "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.$view.selfRemove();
+              var arr = self.parent.body.getAllChild();
+              self.parent.body.activeFrame(arr[arr.length - 1]);
+            }
+          },
+          child: ['<span>' + "Đóng" + '</span>']
+        }, hiddenInput, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              self.saveCurrentDataMap();
+            }
+          },
+          child: ['<span>' + "Lưu" + '</span>']
+        }]
+      }, {
+        tag: "div",
+        "class": "pizo-list-realty-page-allinput",
+        style: {
+          width: "calc(100% - 190px)"
+        },
+        child: [{
+          tag: "div",
+          "class": "pizo-list-realty-page-allinput-container",
+          style: {
+            width: "100%"
+          },
+          child: [allinput, {
+            tag: "button",
+            "class": "pizo-list-realty-page-allinput-search",
+            child: [{
+              tag: 'i',
+              "class": 'material-icons',
+              props: {
+                innerHTML: 'search'
+              }
+            }]
+          }]
+        }]
+      }]
+    }]
+  });
+
+  if (ModuleDatabase["a" /* default */].checkPermission[0].indexOf(30) !== -1) {
+    NoteInformation_$("div.pizo-list-realty-button", this.$view).appendChild(NoteInformation_({
+      tag: "button",
+      "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+      on: {
+        click: function click(evt) {
+          hiddenInput.click();
+        }
+      },
+      child: ['<span>' + "Thêm" + '</span>']
+    }));
+  }
+
+  this.$view.addChild(NoteInformation_({
+    tag: "div",
+    "class": ["pizo-list-plan-main"],
+    style: {
+      flexDirection: "column"
+    },
+    child: [this.searchControl, {
+      tag: "div",
+      "class": ["pizo-list-realty-main-result-control"],
+      child: [mapView]
+    }]
+  }));
+  this.mapView = mapView;
+  this.mapView.map.enableKeyDragZoom(this.selectPolygonFunction.bind(this));
+  this.mapView.map.setTilt(45);
+  var polyOptions = {
+    strokeColor: "#eb4034",
+    fillColor: "#c18986",
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    editable: true,
+    draggable: true
+  };
+
+  if (ModuleDatabase["a" /* default */].checkPermission[0].indexOf(30) !== -1) {
+    var drawingManager = new google.maps.drawing.DrawingManager({
+      drawingControlOptions: {
+        drawingModes: [google.maps.drawing.OverlayType.POLYGON]
+      },
+      markerOptions: {
+        draggable: true
+      },
+      polylineOptions: {},
+      draggableCursor: 'crosshair',
+      rectangleOptions: polyOptions,
+      circleOptions: polyOptions,
+      polygonOptions: polyOptions,
+      map: this.mapView.map
+    });
+    google.maps.event.addListener(drawingManager, 'overlaycomplete', function (e) {
+      self.removeAllSelect();
+      var polygon = e.overlay;
+      self.polygon.push(polygon);
+      self.addEventPolygon(polygon);
+
+      if (self.editPolygon !== undefined) {
+        self.editPolygon.toInActive(self);
+      }
+
+      polygon.toActive(self);
+      polygon.setOptions({
+        editable: true,
+        draggable: true
+      });
+      self.editPolygon = polygon;
+    });
+  }
+
+  this.mapView.map.setOptions({
+    maxZoom: 30
+  });
+  this.drawingManager = drawingManager;
+  this.polygon = [];
+  this.selectPolygon = [];
+  window.addEventListener("keydown", function (e) {
+    if (e.keyCode == 46) {
+      if (ModuleDatabase["a" /* default */].checkPermission[0].indexOf(32) == -1) return;
+
+      if (self.editPolygon !== undefined) {
+        self.editPolygon.setMap(null);
+        var index = self.polygon.indexOf(self.editPolygon);
+        self.polygon.splice(index, 1);
+      }
+
+      for (var i = 0; i < self.selectPolygon.length; i++) {
+        self.selectPolygon[i].setMap(null);
+        google.maps.event.clearListeners(self.selectPolygon[i], 'click');
+        var index = self.polygon.indexOf(self.selectPolygon[i]);
+        self.polygon.splice(index, 1);
+      }
+
+      if (self.allPolygon !== undefined) {
+        self.allPolygon.setMap(null);
+        self.allPolygon = undefined;
+      }
+
+      self.selectPolygon = [];
+    } else if (e.keyCode == 27) {
+      self.removeAllSelect();
+
+      if (self.editPolygon !== undefined) {
+        self.editPolygon.toInActive(self);
+      }
+    }
+  });
+  this.allinput = allinput;
+  var searchBox = new google.maps.places.SearchBox(allinput, {
+    // terms:['street_number','route','locality','administrative_area_level_1','administrative_area_level_2','administrative_area_level_3'],
+    types: ['geocode'],
+    componentRestrictions: {
+      country: 'vn'
+    }
+  });
+  google.maps.event.addListener(this.mapView.map, 'bounds_changed', function () {
+    var bounds = self.mapView.map.getBounds();
+    searchBox.setBounds(bounds);
+  });
+  this.searchBox = searchBox;
+  google.maps.event.addListener(searchBox, 'places_changed', function () {
+    var places = searchBox.getPlaces(); // For each place, get the icon, place name, and location.
+
+    var bounds = new google.maps.LatLngBounds();
+    var place = null;
+
+    for (var i = 0; place = places[i]; i++) {
+      bounds.extend(place.geometry.location);
+    }
+
+    self.mapView.map.setCenter(bounds.getCenter());
+  });
+  ModuleDatabase["a" /* default */].getModule("geometry_created").load(undefined, true).then(function (value) {
+    self.filterTime.updateItem(value);
+  });
+  return this.$view;
+};
+
+NoteInformation_NoteInformation.prototype.removeAllSelect = function () {
+  var self = this;
+
+  if (self.allPolygon !== undefined) {
+    for (var i = 0; i < self.selectPolygon.length; i++) {
+      self.selectPolygon[i].setMap(self.mapView.map);
+
+      if (self.allPolygon !== undefined && self.allPolygon.deltaDrag !== undefined && (self.allPolygon.deltaDrag.lat !== 0 || self.allPolygon.deltaDrag.lng !== 0)) {
+        var center = self.selectPolygon[i].getBounds().getCenter().toJSON();
+        center.lat += self.allPolygon.deltaDrag.lat;
+        center.lng += self.allPolygon.deltaDrag.lng;
+        self.selectPolygon[i].moveTo(new google.maps.LatLng(center.lat, center.lng));
+      }
+    }
+
+    self.allPolygon.setMap(null);
+    self.allPolygon = undefined;
+    self.selectPolygon = [];
+  }
+};
+
+NoteInformation_NoteInformation.prototype.createHash = function (arr) {
+  var data = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    this.createHashRow(arr[i], data);
+  }
+
+  return data;
+};
+
+NoteInformation_NoteInformation.prototype.createHashRow = function (data, hash) {
+  var intLat, intLng, cellLat, cellLng, created;
+  var center = data.getBounds().getCenter().toJSON();
+  intLng = parseInt(center.lng / 1);
+  cellLng = Math.ceil(center.lng % 1 / (1 / 1110)) - 1;
+  intLat = parseInt(center.lat / 1);
+  cellLat = Math.ceil(center.lat % 1 / (1 / 1110)) - 1;
+  cellLng = intLng * 10000 + cellLng;
+  cellLat = intLat * 10000 + cellLat;
+
+  if (data.created !== undefined) {
+    created = data.created;
+    if (hash[created] === undefined) hash[created] = [];
+    if (hash[created][cellLat] == undefined) hash[created][cellLat] = [];
+    if (hash[created][cellLat][cellLng] == undefined) hash[created][cellLat][cellLng] = [];
+    hash[created][cellLat][cellLng].push(data.ToWKT());
+  } else {
+    if (hash[cellLat] == undefined) hash[cellLat] = [];
+    if (hash[cellLat][cellLng] == undefined) hash[cellLat][cellLng] = [];
+    hash[cellLat][cellLng].push(data);
+  }
+};
+
+NoteInformation_NoteInformation.prototype.saveCurrentDataMap = function () {
+  var data = this.createHash(this.polygon);
+  var gmt = getGMT();
+
+  for (var param in data) {
+    if (param === "polygon") continue;
+
+    if (isNaN(param / 1) === true) {
+      name = data[param].name;
+
+      for (var cellLat in data[param]) {
+        if (cellLat === "polygon") continue;
+        var dataLat = data[param][cellLat];
+
+        for (var cellLng in dataLat) {
+          if (this.hash[param] === undefined || this.hash[param][cellLat] === undefined || this.hash[param][cellLat][cellLng] === undefined) {
+            var arr = dataLat[cellLng];
+            var wkt = new Wkt.Wkt();
+
+            for (var i = 0; i < arr.length; i++) {
+              if (i === 0) wkt.read(arr[i]);else wkt.merge(new Wkt.Wkt(arr[i]));
+            }
+
+            ModuleDatabase["a" /* default */].getModule("geometry").add({
+              cellLat: cellLat,
+              cellLng: cellLng,
+              name: input.value,
+              created: param,
+              map: wkt.toString()
+            });
+          } else {
+            var arr = dataLat[cellLng];
+            var wkt = new Wkt.Wkt();
+
+            for (var i = 0; i < arr.length; i++) {
+              if (i === 0) wkt.read(arr[i]);else wkt.merge(new Wkt.Wkt(arr[i]));
+            }
+
+            var arr = this.hash[param][cellLat][cellLng];
+            var wkt2 = new Wkt.Wkt();
+
+            for (var i = 0; i < arr.length; i++) {
+              if (i === 0) wkt2.read(arr[i]);else wkt2.merge(new Wkt.Wkt(arr[i]));
+            }
+
+            if (wkt.toString() !== wkt2.toString()) {
+              ModuleDatabase["a" /* default */].getModule("geometry").update({
+                cellLat: cellLat,
+                cellLng: cellLng,
+                created: param,
+                map: wkt.toString()
+              });
+            }
+
+            delete this.hash[param][cellLat][cellLng];
+          }
+        }
+      }
+    } else {
+      var promiseAll = [];
+
+      for (var child in data[param]) {
+        var arr = data[param][child];
+        var wkt = new Wkt.Wkt();
+
+        for (var i = 0; i < arr.length; i++) {
+          var stringWKT = arr[i].ToWKT();
+          if (i === 0) wkt.read(stringWKT);else wkt.merge(new Wkt.Wkt(stringWKT));
+          arr[i].created = gmt;
+          arr[i] = stringWKT;
+        }
+
+        promiseAll.push(ModuleDatabase["a" /* default */].getModule("geometry").add({
+          cellLat: param,
+          cellLng: child,
+          name: this.commitComment,
+          created: gmt,
+          map: wkt.toString()
+        }));
+      }
+
+      var x = data[param];
+      var polygon = this.hash.polygon;
+      delete data[param];
+      delete data.polygon;
+      if (data[gmt] === undefined) data[gmt] = [];
+      data[gmt][param] = x;
+      if (polygon) data[gmt].polygon = polygon;
+      var date = formatDate(gmt, true, true, true, true, true);
+
+      if (this.filterTime.values.indexOf(gmt) == -1) {
+        this.filterTime.items.push({
+          text: this.commitComment + " (" + date + ")",
+          value: gmt
+        });
+        this.filterTime.items = this.filterTime.items;
+        this.filterTime.values.push(gmt);
+        this.filterTime.values = this.filterTime.values;
+      }
+    }
+  }
+
+  var promiseAllDelete = [];
+
+  for (var param in this.hash) {
+    if (param === "polygon") continue;
+    if (this.filterTime.values.indexOf(param) == -1) continue;
+
+    if (isNaN(param / 1)) {
+      for (var ortherLat in this.hash[param]) {
+        if (ortherLat === "polygon") continue;
+
+        for (var ortherLng in this.hash[param][ortherLat]) {
+          promiseAllDelete.push(ModuleDatabase["a" /* default */].getModule("geometry")["delete"]({
+            cellLat: ortherLat,
+            cellLng: ortherLng,
+            created: param
+          }));
+        }
+      }
+    }
+
+    if (data[param] === undefined) {
+      for (var i = 0; i < this.filterTime.values.length; i++) {
+        if (this.filterTime.values[i] == param) {
+          this.filterTime.values.splice(i, 1);
+          this.filterTime.values = this.filterTime.values;
+          break;
+        }
+      }
+
+      for (var i = 0; i < this.filterTime.items.length; i++) {
+        if (this.filterTime.items[i].value == param) {
+          this.filterTime.items.splice(i, 1);
+          this.filterTime.items = this.filterTime.items;
+          break;
+        }
+      }
+    }
+  }
+
+  Promise.all(promiseAllDelete).then(function (values) {});
+  this.commitComment = undefined;
+  this.hash = data;
+};
+
+NoteInformation_NoteInformation.prototype.addEventPolygon = function (polygon) {
+  var self = this;
+  google.maps.event.addListener(polygon, 'click', function (event) {
+    if (ModuleDatabase["a" /* default */].checkPermission[0].indexOf(31) == -1) return;
+
+    if (self.editPolygon === this) {
+      this.toInActive(self);
+    } else {
+      if (self.editPolygon !== undefined) {
+        self.editPolygon.toInActive(self);
+        this.toActive(self);
+        this.setOptions({
+          editable: true,
+          draggable: true
+        });
+      } else {
+        if (self.allPolygon !== undefined) {
+          if (self.selectPolygon.indexOf(this) === -1) {
+            self.allPolygon.setMap(null);
+            var path = [];
+            var tempPath;
+
+            for (var i = 0; i < self.selectPolygon.length; i++) {
+              if (self.allPolygon !== undefined && self.allPolygon.deltaDrag !== undefined && (self.allPolygon.deltaDrag.lat !== 0 || self.allPolygon.deltaDrag.lng !== 0)) {
+                var center = self.selectPolygon[i].getBounds().getCenter().toJSON();
+                center.lat += self.allPolygon.deltaDrag.lat;
+                center.lng += self.allPolygon.deltaDrag.lng;
+                self.selectPolygon[i].moveTo(new google.maps.LatLng(center.lat, center.lng));
+              }
+
+              tempPath = [];
+
+              for (var j = 0; j < self.selectPolygon[i].getPath().getLength(); j++) {
+                tempPath.push(self.selectPolygon[i].getPath().getAt(j).toJSON());
+              }
+
+              self.selectPolygon[i].setMap(null);
+              path.push(tempPath);
+            }
+
+            tempPath = [];
+
+            for (var j = 0; j < this.getPath().getLength(); j++) {
+              tempPath.push(this.getPath().getAt(j).toJSON());
+            }
+
+            path.push(tempPath);
+            this.setMap(null);
+            self.selectPolygon.push(this);
+            if (this.isVisiableLine === true) this.showHideLine();
+            self.createAllPolygon(path);
+          }
+        } else {
+          this.toActive(self);
+          this.setOptions({
+            editable: true,
+            draggable: true
+          });
+        }
+      }
+    }
+  });
+};
+
+NoteInformation_NoteInformation.prototype.selectPolygonFunction = function (bns) {
+  if (ModuleDatabase["a" /* default */].checkPermission[0].indexOf(31) == -1) {
+    return;
+  }
+
+  this.removeAllSelect();
+  if (this.isVisiableLine === true) this.showHideLine();
+  if (this.editPolygon !== undefined) this.editPolygon.toInActive(this);
+  var path = [];
+  var tempPath;
+
+  if (this.a == undefined || this.b == undefined) {
+    for (var param in bns) {
+      if (!(this.a == undefined || this.b == undefined)) break;
+
+      if (bns[param].i > 50) {
+        this.a = param;
+      } else if (bns[param].i < 50) {
+        this.b = param;
+      }
+    }
+  }
+
+  for (var i = 0; i < this.polygon.length; i++) {
+    tempPath = [];
+    var boundary = this.polygon[i].boundary();
+
+    if (bns[this.b].i < boundary.min.lat && boundary.max.lat < bns[this.b].j && bns[this.a].i < boundary.min.lng && boundary.max.lng < bns[this.a].j) {
+      for (var j = 0; j < this.polygon[i].getPath().getLength(); j++) {
+        tempPath.push(this.polygon[i].getPath().getAt(j).toJSON());
+      }
+
+      this.polygon[i].setMap(null);
+      this.selectPolygon.push(this.polygon[i]);
+    }
+
+    path.push(tempPath);
+  }
+
+  this.createAllPolygon(path);
+};
+
+NoteInformation_NoteInformation.prototype.createAllPolygon = function (path) {
+  var polygon = new google.maps.Polygon({
+    paths: path,
+    strokeColor: "#eb4034",
+    fillColor: "#c18986",
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    draggable: true,
+    geodesic: true
+  });
+  google.maps.event.addListener(polygon, 'dragstart', function (e) {
+    if (this.dragStart == undefined) this.dragStart = polygon.getBounds().getCenter().toJSON();
+  });
+  google.maps.event.addListener(polygon, 'dragend', function (e) {
+    var center = polygon.getBounds().getCenter().toJSON();
+    this.deltaDrag = {
+      lat: center.lat - this.dragStart.lat,
+      lng: center.lng - this.dragStart.lng
+    };
+  });
+  polygon.setMap(this.mapView.map);
+  this.allPolygon = polygon;
+  return polygon;
+};
+
+NoteInformation_NoteInformation.prototype.searchControlContent = function () {
+  var self = this;
+
+  var filterTime = NoteInformation_({
+    tag: "selectbox",
+    props: {
+      enableSearch: true
+    },
+    on: {
+      click: function click(event) {
+        if (this.disableClick === true) return;else {
+          var element = event.target;
+
+          while (!(element.classList.contains("absol-selectbox-item-close") || element.classList.contains("absol-selectbox-item") || element.classList.contains("absol-selectbox"))) {
+            element = element.parentNode;
+          }
+
+          if (element.data) {
+            self.removeAllSelect();
+            if (self.isVisiableLine === true) self.showHideLine();
+            if (self.editPolygon !== undefined) self.editPolygon.toInActive(this);
+            var path = [];
+            var tempPath;
+            console.log(self.hash, element.data.value);
+            var listPolygon = self.getCurrentWKT(element.data.value);
+
+            if (listPolygon) {
+              for (var i = 0; i < listPolygon.length; i++) {
+                tempPath = [];
+
+                for (var j = 0; j < listPolygon[i].getPath().getLength(); j++) {
+                  tempPath.push(listPolygon[i].getPath().getAt(j).toJSON());
+                }
+
+                listPolygon[i].setMap(null);
+                self.selectPolygon.push(listPolygon[i]);
+                path.push(tempPath);
+              }
+
+              self.createAllPolygon(path);
+            }
+          }
+        }
+      },
+      add: function add(event) {
+        var elementThis = this;
+
+        if (self.hash[event.value] === undefined) {
+          elementThis.disableClick = true;
+          ModuleDatabase["a" /* default */].getModule("geometry").load({
+            WHERE: [{
+              created: "'" + event.value + "'"
+            }]
+          }).then(function (value) {
+            var result = [];
+
+            for (var i = 0; i < value.length; i++) {
+              result = result.concat(self.addWKT(value[i]));
+            }
+
+            self.polygon = self.polygon.concat(result);
+            self.hash[event.value].polygon = result;
+            var center = value[value.length - 1];
+            self.mapView.map.setCenter(new google.maps.LatLng(parseInt(center.cellLat / 10000) + (center.cellLat % 10000 - 1) * (1 / 1110), parseInt(center.cellLng / 10000) + (center.cellLng % 10000 - 1) * (1 / 1110)));
+            self.mapView.map.setZoom(17);
+            elementThis.disableClick = false;
+          });
+        } else {
+          self.polygon = self.polygon.concat(self.addCurrentWKT(event.value));
+        }
+      },
+      remove: function remove(event) {
+        self.removeAllSelect();
+
+        for (var i = self.polygon.length - 1; i >= 0; i--) {
+          if (self.polygon[i].created === event.value) {
+            self.polygon[i].setMap(null);
+            self.polygon.splice(i, 1);
+          }
+        }
+      }
+    }
+  });
+
+  filterTime.updateItem = function (value) {
+    var list = [];
+
+    for (var i = 0; i < value.length; i++) {
+      list.push({
+        text: value[i].name + " (" + formatDate(value[i].created, true, true, true, true, true, true) + ")",
+        value: value[i].created
+      });
+    }
+
+    this.items = list;
+  };
+
+  var content = NoteInformation_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control-container",
+    on: {
+      click: function click(event) {
+        event.stopPropagation();
+      }
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-list-realty-main-search-control-container-scroller",
+      child: [{
+        tag: "div",
+        "class": "pizo-list-plan-main-search-control-row",
+        child: [{
+          tag: "div",
+          "class": "pizo-list-plan-main-search-control-row-selectbox-plan",
+          child: [{
+            tag: "span",
+            "class": "pizo-list-plan-main-search-control-row-selectbox-plan-label",
+            props: {
+              innerHTML: "Lần commit"
+            }
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-selectbox-plan-input",
+          child: [filterTime]
+        }]
+      }]
+    }]
+  });
+
+  var temp = NoteInformation_({
+    tag: "div",
+    "class": "pizo-list-realty-main-search-control",
+    on: {
+      click: function click(event) {
+        this.hide();
+      }
+    },
+    child: [content]
+  });
+
+  this.filterTime = filterTime;
+
+  temp.show = function () {
+    if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
+  };
+
+  temp.hide = function () {
+    if (!content.classList.contains("hideTranslate")) content.classList.add("hideTranslate");
+
+    var eventEnd = function eventEnd() {
+      if (temp.classList.contains("showTranslate")) temp.classList.remove("showTranslate");
+      content.classList.remove("hideTranslate");
+      content.removeEventListener("webkitTransitionEnd", eventEnd);
+      content.removeEventListener("transitionend", eventEnd);
+    }; // Code for Safari 3.1 to 6.0
+
+
+    content.addEventListener("webkitTransitionEnd", eventEnd); // Standard syntax
+
+    content.addEventListener("transitionend", eventEnd);
+  };
+
+  temp.apply = function () {};
+
+  temp.reset = function () {
+    content.lowprice.value = "";
+    content.highprice.value = "";
+    content.phone.value = "";
+    content.MS.value = "";
+    content.SN.value = "";
+    content.TD.value = "";
+    content.PX.value = "";
+    content.QH.value = "";
+    content.TT.value = "";
+    content.HT.value = 0;
+  };
+
+  return temp;
+};
+
+NoteInformation_NoteInformation.prototype.addWKT = function (multipolygonWKT) {
+  if (this.hash === undefined) this.hash = [];
+  var created, name;
+
+  if (NoteInformation_typeof(multipolygonWKT) == "object") {
+    created = multipolygonWKT["created"];
+    name = multipolygonWKT["name"];
+    multipolygonWKT = multipolygonWKT["AsText(`map`)"];
+  }
+
+  var wkt = new Wkt.Wkt();
+  wkt.read(multipolygonWKT);
+  var toReturn = [];
+  var components = wkt.components;
+
+  for (var k = 0; k < components.length; k++) {
+    var line = components[k];
+    var polygon = new google.maps.Polygon({
+      paths: line,
+      strokeColor: "#000000",
+      fillColor: "#adaeaf",
+      strokeOpacity: 0.8,
+      strokeWeight: 1,
+      map: this.mapView.map,
+      geodesic: true
+    });
+    this.addEventPolygon(polygon);
+
+    if (created !== undefined) {
+      polygon.created = created;
+      polygon.name = name;
+    }
+
+    toReturn.push(polygon);
+    this.createHashRow(polygon, this.hash);
+  }
+
+  return toReturn;
+};
+
+NoteInformation_NoteInformation.prototype.addLine = function (lines) {
+  var wkt = new Wkt.Wkt();
+  wkt.read(lines);
+  var toReturn = [];
+  var components = wkt.components;
+
+  for (var k = 0; k < components.length; k++) {
+    var line = components[k];
+    var polyline = new google.maps.Polyline({
+      path: line,
+      geodesic: true,
+      strokeColor: "#FF0000",
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+    polyline.setMap(this.mapView.map);
+    toReturn.push(polyline);
+  }
+
+  this.lines = toReturn;
+  return toReturn;
+};
+
+NoteInformation_NoteInformation.prototype.addCurrentWKT = function (created) {
+  var toReturn = [];
+  var cellLatTemp;
+  var cellLngTemp;
+
+  for (var cellLat in this.hash[created]) {
+    for (var cellLng in this.hash[created][cellLat]) {
+      if (cellLatTemp === undefined) cellLatTemp = cellLat;
+      if (cellLngTemp === undefined) cellLngTemp = cellLng;
+      var arr = this.hash[created][cellLat][cellLng];
+
+      for (var i = 0; i < arr.length; i++) {
+        var wkt = new Wkt.Wkt();
+        wkt.read(arr[i]);
+        var components = wkt.components;
+        var polygon = new google.maps.Polygon({
+          paths: components,
+          strokeColor: "#000000",
+          fillColor: "#adaeaf",
+          strokeOpacity: 0.8,
+          strokeWeight: 1,
+          map: this.mapView.map,
+          geodesic: true
+        });
+        this.addEventPolygon(polygon);
+        if (created !== undefined) polygon.created = created;
+        toReturn.push(polygon);
+      }
+    }
+  }
+
+  this.mapView.map.setCenter(new google.maps.LatLng(parseInt(cellLatTemp / 10000) + (cellLatTemp % 10000 - 1) * (1 / 1110), parseInt(cellLngTemp / 10000) + (cellLngTemp % 10000 - 1) * (1 / 1110)));
+  this.mapView.map.setZoom(17);
+  this.hash[created].polygon = toReturn;
+  return toReturn;
+};
+
+NoteInformation_NoteInformation.prototype.getCurrentWKT = function (created) {
+  return this.hash[created].polygon;
+};
+
+NoteInformation_NoteInformation.prototype.refresh = function () {
+  var data;
+  var editor = this.getContext(R.LAYOUT_EDITOR);
+  if (editor) data = editor.getData();
+  if (data) this.setData(data);
+};
+
+NoteInformation_NoteInformation.prototype.setData = function (data) {
+  this.data = data;
+  this.data.tracking = "OK";
+  this.dataFlushed = false;
+  if (this.state == "RUNNING") this.flushDataToView();
+};
+
+NoteInformation_NoteInformation.prototype.flushDataToView = function () {
+  if (this.dataFlushed) return;
+  this.dataFlushed = true; //TODO: remove older view
+
+  if (!this.data) return;
+  this.$content.clearChild();
+
+  if (this.data && this.$view) {
+    this.rootComponent = this.build(this.data);
+    this.$content.addChild(this.rootComponent.view);
+    this.rootComponent.onAttach();
+    this.$widthIp.value = this.rootComponent.getStyle('width', 'px');
+    this.$heightIp.value = this.rootComponent.getStyle('height', 'px');
+  }
+};
+
+NoteInformation_NoteInformation.prototype.start = function () {};
+
+/* harmony default export */ var page_NoteInformation = (NoteInformation_NoteInformation);
 // EXTERNAL MODULE: ./css/ListHelp.css
 var ListHelp = __webpack_require__(35);
 
 // EXTERNAL MODULE: ./css/HelpContainer.css
-var HelpContainer = __webpack_require__(253);
+var HelpContainer = __webpack_require__(255);
 
 // CONCATENATED MODULE: ./js/component/HelpContainer.js
 
@@ -81883,10 +83015,10 @@ ListHelp_ListHelp.prototype.start = function () {};
 
 /* harmony default export */ var page_ListHelp = (ListHelp_ListHelp);
 // EXTERNAL MODULE: ./css/EditHelpContainer.css
-var EditHelpContainer = __webpack_require__(255);
+var EditHelpContainer = __webpack_require__(257);
 
 // EXTERNAL MODULE: ./css/NewCategory.css
-var NewCategory = __webpack_require__(257);
+var NewCategory = __webpack_require__(259);
 
 // CONCATENATED MODULE: ./js/component/EditHelpContainer.js
 
@@ -82996,10 +84128,10 @@ ListEditHelp_ListHelp.prototype.start = function () {};
 
 /* harmony default export */ var ListEditHelp = (ListEditHelp_ListHelp);
 // EXTERNAL MODULE: ./css/ListPositions.css
-var ListPositions = __webpack_require__(259);
+var ListPositions = __webpack_require__(261);
 
 // EXTERNAL MODULE: ./css/NewDepartment.css
-var NewDepartment = __webpack_require__(261);
+var NewDepartment = __webpack_require__(263);
 
 // CONCATENATED MODULE: ./js/component/NewDepartment.js
 
@@ -83251,7 +84383,7 @@ NewDepartment_NewDepartment.prototype.start = function () {};
 
 /* harmony default export */ var component_NewDepartment = (NewDepartment_NewDepartment);
 // EXTERNAL MODULE: ./css/NewPosition.css
-var NewPosition = __webpack_require__(263);
+var NewPosition = __webpack_require__(265);
 
 // CONCATENATED MODULE: ./js/component/NewPosition.js
 
@@ -84006,7 +85138,6 @@ ListPositions_ListPositions.prototype.getView = function () {
         width: "30px"
       }
     }];
-    console.log(value);
     self.mTable = new tableView(header, self.formatDataRow(value), false, true, 1);
     tabContainer.addChild(self.mTable);
     self.mTable.addInputSearch(tabInput);
@@ -84159,7 +85290,6 @@ ListPositions_ListPositions.prototype.addDepartment = function () {
 ListPositions_ListPositions.prototype.addDBDepartment = function (mNewDepartment, row) {
   var self = this;
   mNewDepartment.promiseAddDB.then(function (value) {
-    console.log(value);
     ModuleDatabase["a" /* default */].getModule("departments").add(value).then(function (result) {
       self.addViewDepartment(result, row);
     });
@@ -84428,7 +85558,7 @@ ListPositions_ListPositions.prototype.start = function () {};
 
 /* harmony default export */ var page_ListPositions = (ListPositions_ListPositions);
 // EXTERNAL MODULE: ./css/ListAccount.css
-var ListAccount = __webpack_require__(265);
+var ListAccount = __webpack_require__(267);
 
 // CONCATENATED MODULE: ./js/page/ListAccount.js
 
@@ -85176,7 +86306,7 @@ ListAccount_ListAccount.prototype.start = function () {};
 
 /* harmony default export */ var page_ListAccount = (ListAccount_ListAccount);
 // EXTERNAL MODULE: ./css/ListContact.css
-var ListContact = __webpack_require__(267);
+var ListContact = __webpack_require__(269);
 
 // CONCATENATED MODULE: ./js/page/ListContact.js
 
@@ -85718,10 +86848,10 @@ ListContact_ListContact.prototype.start = function () {};
 
 /* harmony default export */ var page_ListContact = (ListContact_ListContact);
 // EXTERNAL MODULE: ./css/ListEquipment.css
-var ListEquipment = __webpack_require__(269);
+var ListEquipment = __webpack_require__(271);
 
 // EXTERNAL MODULE: ./css/NewEquipment.css
-var NewEquipment = __webpack_require__(271);
+var NewEquipment = __webpack_require__(273);
 
 // CONCATENATED MODULE: ./js/component/NewEquipment.js
 
@@ -86496,10 +87626,10 @@ ListEquipment_ListEquipment.prototype.start = function () {};
 
 /* harmony default export */ var page_ListEquipment = (ListEquipment_ListEquipment);
 // EXTERNAL MODULE: ./css/ListJuridical.css
-var ListJuridical = __webpack_require__(273);
+var ListJuridical = __webpack_require__(275);
 
 // EXTERNAL MODULE: ./css/NewJuridical.css
-var NewJuridical = __webpack_require__(275);
+var NewJuridical = __webpack_require__(277);
 
 // CONCATENATED MODULE: ./js/component/NewJuridical.js
 
@@ -87205,10 +88335,10 @@ ListJuridical_ListJuridical.prototype.start = function () {};
 
 /* harmony default export */ var page_ListJuridical = (ListJuridical_ListJuridical);
 // EXTERNAL MODULE: ./css/ListTypeActivehouse.css
-var ListTypeActivehouse = __webpack_require__(277);
+var ListTypeActivehouse = __webpack_require__(279);
 
 // EXTERNAL MODULE: ./css/NewTypeActivehouse.css
-var NewTypeActivehouse = __webpack_require__(279);
+var NewTypeActivehouse = __webpack_require__(281);
 
 // CONCATENATED MODULE: ./js/component/NewTypeActivehouse.js
 
@@ -87938,6 +89068,7 @@ ListTypeActivehouse_ListTypeActivehouse.prototype.start = function () {};
 
 
 
+
 var App_ = dom_Fcore._;
 var App_$ = dom_Fcore.$;
 
@@ -87966,6 +89097,7 @@ function App_App() {
   ModuleDatabase["a" /* default */].getModule("positions");
   ModuleDatabase["a" /* default */].getModule("juridicals");
   ModuleDatabase["a" /* default */].getModule("nations");
+  ModuleDatabase["a" /* default */].getModule("type_activehouses");
 }
 
 Object.defineProperties(App_App.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
@@ -88574,12 +89706,12 @@ App_App.prototype.openPage = function (index) {
       break;
 
     case 27:
-      // var mPlanningInformation = new PlanningInformation();
-      // mPlanningInformation.attach(this);
-      // var frameview = mPlanningInformation.getView();
-      // this.body.addChild(frameview);
-      // this.body.activeFrame(frameview);
-      // finalPage = mPlanningInformation;
+      var mNoteInformation = new page_NoteInformation();
+      mNoteInformation.attach(this);
+      var frameview = mNoteInformation.getView();
+      this.body.addChild(frameview);
+      this.body.activeFrame(frameview);
+      finalPage = mNoteInformation;
       break;
 
     case 31:

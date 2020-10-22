@@ -39,6 +39,7 @@ foreach(array_keys($data) as $param)
     $WHERE .= $isFirst.$param."=".$data[$param];
     $isFirst = " AND ";
 }
+define('UPLOAD_DIR', "../../assets/upload/");
 if($WHERE!="")
 {
     $dataDelete = $connector->load($prefix.$tableName,$WHERE);
@@ -46,13 +47,24 @@ if($WHERE!="")
     {
         $connector->query("DELETE FROM ".$prefix."contact_link"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
         $connector->query("DELETE FROM ".$prefix."house_equipments"." WHERE( houseid = ".$dataDelete[$i]["id"].")");
+
+        $image_old = $connector->load($prefix."image","houseid = ".$dataDelete[$i]["id"]);
+        for($i = 0;$i<count($image_old);$i++)
+        {
+            if (file_exists(UPLOAD_DIR .$image_old[$i]["src"])) {
+                unlink(UPLOAD_DIR .$image_old[$i]["src"]);
+                $connector->query("DELETE FROM ".$prefix."image WHERE( id = ".$image_old[$i]["id"].")");
+              } else {
+                echo 'Could not delete '.$filename.', file does not exist';
+              }
+        }
     }
     $WHERE = " WHERE (".$WHERE.")";
+
     $result = $connector->query("DELETE FROM ".$prefix.$tableName.$WHERE);
     echo "ok".EncodingClass::fromVariable($result); 
 }else
 echo "BAD_REQUEST (400)";
-
 
 
 exit(0);
