@@ -383,11 +383,24 @@ for($i = 0;$i<count($image_old);$i++)
 }
 if(isset($oldId))
 {
+    $delete = array();
     for($i=0;$i<count($oldId);$i++)
     {
         $tempData = $connector->load($prefix."activehouses","id =".$oldId[$i]);
         if(count($tempData)>0)
         {
+            $tempData = $tempData[0];
+            $new = array();
+
+            foreach ($tempData as $k => $v) {
+                if(gettype($v) == "object")
+                $new[$k] = clone $v;
+                else
+                $new[$k] = $v;
+            }
+            array_push($delete,array(
+                'activehouses'=>$new
+            ));
             $connector->query("DELETE FROM ".$prefix."activehouses WHERE id =".$oldId[$i]);
             $tempData["previousid"] = $oldId[$i];
             unset($tempData["id"]);

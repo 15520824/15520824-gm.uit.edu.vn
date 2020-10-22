@@ -842,9 +842,9 @@ ListRealty.prototype.mergeFilter = function(data) {
     }
     var length = data.length;
     var final = [...data];
+    data.splice(0,length);
     for (var param in result) {
-        data.splice.apply(data, [0, length].concat(result[param]));
-        length = 0;
+        data.splice.apply(data, [0, 0].concat(result[param]));
     }
     data.ortherFilter = true;
     return final;
@@ -1231,6 +1231,8 @@ ListRealty.prototype.searchControlContent = function() {
     content.QH = $('.pizo-list-realty-main-search-control-row-QH input', content);
     content.HT = $('.pizo-list-realty-main-search-control-row-HT input', content);
     this.HTinput = $('div.pizo-list-realty-main-search-control-row-HT-input', content).childNodes[0];
+    this.HTcheckbox = $('div.pizo-list-realty-main-search-control-row-HT-checkbox', content).childNodes[0];
+   
     temp.show = function() {
         if (!temp.classList.contains("showTranslate"))
             temp.classList.add("showTranslate");
@@ -1291,7 +1293,7 @@ ListRealty.prototype.addDB = function(mNewRealty, row) {
     var self = this;
     mNewRealty.promiseAddDB.then(function(value) {
         moduleDatabase.getModule("activehouses").add(value).then(function(result) {
-            self.addView(result, row);
+            self.addView(result);
         })
         mNewRealty.promiseAddDB = undefined;
         setTimeout(function() {
@@ -1412,11 +1414,16 @@ ListRealty.prototype.merge = function(data, parent, index) {
         self.mergeDB(mMergeRealty, data, parent, index);
         mMergeRealty.promiseEditDB.then(function(value) {
             moduleDatabase.getModule("activehouses").add(value).then(function(final) {
-                self.addView(final);
+                var valueFinal;
+                if (self.isCensorship) {
+                    valueFinal = moduleDatabase.getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
+                    valueFinal = valueFinal[0];
+                } else {
+                    valueFinal = self.formatDataRow(moduleDatabase.getModule("activehouses").data);
+                }
+                self.mTable.data = valueFinal;
+                self.HTinput.emit("change");
             });
-            for (var i = 0; i < oldId.length; i++) {
-                console.log(oldId[i])
-            }
         })
     })
 }
