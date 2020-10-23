@@ -283,6 +283,7 @@ DataStructure.prototype.setFormatLoad = function (data, value, promiseLoad) {
 
   if (libary === undefined) {
     self.data = _toConsumableArray(value);
+    self.getLibary("id");
   } else {
     if (self.data.length === self.countRow) {
       if (self.promiseLoad === undefined) self.promiseLoad = Promise.resolve(self.data);
@@ -298,8 +299,6 @@ DataStructure.prototype.setFormatLoad = function (data, value, promiseLoad) {
       }
     }
   }
-
-  if (self.Libary["id"] === undefined) self.getLibary();
 
   if (_typeof(promiseLoad) == "object") {
     promiseLoad.status = "done";
@@ -324,8 +323,10 @@ DataStructure.prototype.getLibary = function (param, formatFunction) {
 
       for (var j = 0; j < param.length; j++) {
         if (isLoaded === true || _this.Libary[param] == undefined) {
+          _this.setLibary(param, formatFunction, isArray);
+
           for (var i = 0; i < _this.data.length; i++) {
-            _this.setLibaryRow(_this.data[i], param[j], formatFunction, isArray);
+            _this.setLibaryRow(_this.data[i], param[j]);
           }
         }
       }
@@ -340,12 +341,16 @@ DataStructure.prototype.getLibary = function (param, formatFunction) {
       for (var param in _this.Libary) {
         if (param === "id") isID = true;
 
+        _this.setLibary(param, formatFunction, isArray);
+
         for (var i = 0; i < _this.data.length; i++) {
           _this.setLibaryRow(_this.data[i], param, formatFunction, isArray);
         }
       }
 
       if (isID === false) {
+        _this.setLibary("id", formatFunction, isArray);
+
         for (var i = 0; i < _this.data.length; i++) {
           _this.setLibaryRow(_this.data[i], "id", formatFunction, isArray);
         }
@@ -360,9 +365,7 @@ DataStructure.prototype.sync = function (element, functionSync) {
   this.sync.push(element, functionSync);
 };
 
-DataStructure.prototype.setLibaryRow = function (data, param, formatFunction, isArray) {
-  var self = this;
-
+DataStructure.prototype.setLibary = function (param, formatFunction, isArray) {
   if (this.Libary[param] === undefined) {
     this.Libary[param] = [];
     this.Libary[param].isArray = isArray;
@@ -406,9 +409,9 @@ DataStructure.prototype.setLibaryRow = function (data, param, formatFunction, is
       if (this.check[data["id"]] !== undefined) this.check[data["id"]] = undefined;
     };
   }
+};
 
-  this.Libary[param].formatFunction(data, param);
-
+DataStructure.prototype.setLibaryRow = function (data, param) {
   data.getList = function (name, value) {
     var text = "";
 
@@ -429,6 +432,8 @@ DataStructure.prototype.setLibaryRow = function (data, param, formatFunction, is
       value: checkvalue
     };
   };
+
+  this.Libary[param].formatFunction(data, param);
 };
 
 DataStructure.prototype.getList = function (param, value, skip) {
@@ -720,6 +725,9 @@ DataStructure.prototype.queryData = function (phpFile, data) {
       params: [{
         name: "name",
         value: name
+      }, {
+        name: "userid",
+        value: window.userid
       }, {
         name: "data",
         value: EncodingClass.string.fromVariable(result)
@@ -19665,7 +19673,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:first-child) {\r\n    margin-left: 0.3571rem;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:last-child) {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-app .absol-single-page-header {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput {\r\n    padding-left: 1.4286rem;\r\n    position: relative;\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search {\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number {\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-number-input {\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line {\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel {\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard {\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div {\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,\r\n.pizo-list-plan-main {\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: 100%;\r\n    width: calc(100% - 30px);\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main {\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty-desc {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control {\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row {\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div {\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    width: 20%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date {\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price {\r\n    width: calc(36% - 2.1429rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button {\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div {\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child) {\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input {\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search {\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input {\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element {\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element {\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 9rem);\r\n}\r\n\r\n.navbar-search__filter {\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter {\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container {\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable {\r\n    width: 100%;\r\n}\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n/* after the first non-.parent, toggle colors */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #fff;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:first-child) {\r\n    margin-left: 0.3571rem;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:last-child) {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-app .absol-single-page-header {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput {\r\n    padding-left: 1.4286rem;\r\n    position: relative;\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search {\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number {\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-number-input {\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line {\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel {\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard {\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div {\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,\r\n.pizo-list-plan-main {\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: 100%;\r\n    width: calc(100% - 30px);\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main {\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty-desc {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control {\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row {\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div {\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date {\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button {\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div {\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child) {\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input {\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search {\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input {\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element {\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element {\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 9rem);\r\n}\r\n\r\n.navbar-search__filter {\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter {\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container {\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable {\r\n    width: 100%;\r\n}\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n/* after the first non-.parent, toggle colors */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #fff;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: center;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}", ""]);
 
 
 
@@ -56599,7 +56607,7 @@ var MapView = __webpack_require__(213);
 
 var MapView_ = dom_Fcore._;
 var MapView_$ = dom_Fcore.$;
-function locationView(functionDone, data) {
+function locationView(functionDone, data, functionCancel) {
   var map = MapView_MapView();
   var detailView = DetailView(map, data);
   map.activeDetail(detailView);
@@ -56643,6 +56651,21 @@ function locationView(functionDone, data) {
       child: [detailView, map]
     }]
   });
+
+  if (functionCancel) {
+    MapView_$("div.pizo-new-realty-location-tab", temp).appendChild(MapView_({
+      tag: "button",
+      "class": "pizo-new-realty-location-donebutton",
+      on: {
+        click: function click(event) {
+          functionCancel(detailView, map);
+        }
+      },
+      props: {
+        innerHTML: "Hủy"
+      }
+    }));
+  }
 
   temp.map = map;
   temp.detailView = detailView;
@@ -58716,6 +58739,7 @@ function HashTableFilter(data) {
   this.lastIndex = [];
   this.lastKey = [];
   this.lastIndexFilter = [];
+  this.functionCheck = [];
   return this;
 }
 
@@ -59666,7 +59690,7 @@ Slip.prototype = (_Slip$prototype = {
 
       while (scrollContainer) {
         if (scrollContainer == top) break;
-        if (scrollContainer != document.body && scrollContainer.scrollHeight > scrollContainer.clientHeight && window.getComputedStyle(scrollContainer)['overflow-y'] != 'visible') break;
+        if (scrollContainer != document.body && scrollContainer.scrollHeight - scrollContainer.clientHeight > 10 && window.getComputedStyle(scrollContainer)['overflow-y'] != 'visible') break;
         scrollContainer = scrollContainer.parentNode;
       }
 
@@ -61551,7 +61575,10 @@ tableView.prototype.getBodyTable = function (data) {
   if (result.indexRow == undefined || result.indexRow == this.tempIndexRow) result.indexRow = 0;
 
   for (; i < data.length && this.indexRow < this.tempIndexRow; i++) {
-    if (data[i].child !== undefined) data[i].child.updateVisible = data.updateVisible;
+    if (data[i].child !== undefined) {
+      data[i].child.updateVisible = data.updateVisible;
+      data[i].child.ortherFilter = data.ortherFilter;
+    }
 
     if (data.updateVisible === true) {
       var tempCheck = data[i].confirm;
@@ -61577,6 +61604,11 @@ tableView.prototype.getBodyTable = function (data) {
       } else if (data[i].visiable === true) {
         data[i].visiable = undefined;
         if (data[i].child !== undefined) result.setVisiableAllNoneUpdate(data[i].child);
+      } else if (data.ortherFilter === true) {
+        if (data[i].visiable === undefined) {
+          if (data[i].child !== undefined) result.getBodyTable(data[i].child);
+          continue;
+        }
       }
     }
 
@@ -61616,6 +61648,7 @@ tableView.prototype.getBodyTable = function (data) {
   this.currentIndex = i;
   if (data.updateVisible) result.setConfirm(data, i);
   if (result.checkMargin !== undefined) result.checkMargin();
+  data.ortherFilter = undefined;
   data.updateVisible = undefined;
   result.childrenNodes = result.childrenNodes.concat(arr); // this.indexRow = 0;
 
@@ -62194,7 +62227,16 @@ tableView.prototype.checkChildCheckBox = function (data, indexCheckBox) {
   var arr = [];
 
   for (var i = 0; i < data.length; i++) {
-    if (data[i][indexCheckBox] == true || data[i][indexCheckBox]["value"] == true) arr.push(data[i]);
+    if (data[i][indexCheckBox] == true) {
+      data[i][indexCheckBox] = false;
+      arr.push(data[i]);
+    }
+
+    if (data[i][indexCheckBox]["value"] == true) {
+      data[i][indexCheckBox]["value"] = false;
+      arr.push(data[i]);
+    }
+
     if (data[i].child.length > 0) arr.concat(this.checkChildCheckBox(data[i].child, indexCheckBox));
   }
 
@@ -62539,6 +62581,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
 
   if (data !== undefined) {
     if (result.paginationElement !== undefined && result.paginationElement.reActive) result.paginationElement.reActive();
+    result.realTable.parentNode.resetHash();
   }
 };
 
@@ -66239,7 +66282,6 @@ NewAccount_NewAccount.prototype.itemAddressOld = function () {
 NewAccount_NewAccount.prototype.resetPermission = function () {
   for (var i = 56; i < 70; i++) {
     if (NewAccount_$("div.checkbox_" + i, this.$view).checked == true) NewAccount_$("div.checkbox_" + i, this.$view).checked = false;
-    console.log(NewAccount_$("div.checkbox_" + i, this.$view));
     if (NewAccount_$("div.checkbox_" + i, this.$view).disabled == true) NewAccount_$("div.checkbox_" + i, this.$view).disabled = false;
   }
 };
@@ -68360,16 +68402,18 @@ MergeRealty_MergeRealty.prototype.getDataSave = function () {
   name = data[0].properties[0].properties[0].value;
   var addressData = this.checkAddressName[data[0].properties[0].properties[2].value];
   var addressDataOld = this.checkAddressName[data[0].properties[0].properties[3].value];
+  var addressReal;
+  var addressRealOld;
 
   if (addressData) {
     lat = addressData[0];
     lng = addressData[1];
-    addressData = {
+    addressReal = {
       id: addressData.data.addressid
     };
   }
 
-  if (addressDataOld) addressDataOld = {
+  if (addressDataOld) addressRealOld = {
     id: addressDataOld.data.addressid_old
   };
   address = addressData;
@@ -68404,8 +68448,8 @@ MergeRealty_MergeRealty.prototype.getDataSave = function () {
     juridical: juridical,
     image: image,
     censorship: 1,
-    addressid: address,
-    addressid_old: addressOld
+    addressid: addressReal,
+    addressid_old: addressRealOld
   };
   if (lat) temp.lat = lat;
   if (lng) temp.lng = lng;
@@ -70569,7 +70613,11 @@ NewRealty_NewRealty.prototype.itemAddressOld = function () {
             selfElement.value = value.input.value;
             temp.data = childNode.getDataCurrent();
             childRemove.selfRemove();
-          }, temp.data);
+          }, temp.data, function () {
+            selfElement.value = "";
+            temp.data = undefined;
+            childRemove.selfRemove();
+          });
 
           var childRemove = NewRealty_({
             tag: "modal",
@@ -73900,10 +73948,7 @@ MapRealty_MapRealty.prototype.modalLargeRealty = function (data) {
   var requestEdit = MapRealty_$("li.sc-cLQEGU-2", modal);
   var realEdit = MapRealty_$("li.sc-cLQEGU-3", modal);
 
-  if (true) {
-    requestEdit.style.display = "";
-    realEdit.style.display = "none";
-  }
+  if (false) {}
 
   return modal;
 };
@@ -76023,6 +76068,18 @@ MapRealty_MapRealty.prototype.start = function () {};
 
 /* harmony default export */ var page_MapRealty = (MapRealty_MapRealty);
 // CONCATENATED MODULE: ./js/page/ListRealty.js
+function ListRealty_toConsumableArray(arr) { return ListRealty_arrayWithoutHoles(arr) || ListRealty_iterableToArray(arr) || ListRealty_unsupportedIterableToArray(arr) || ListRealty_nonIterableSpread(); }
+
+function ListRealty_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function ListRealty_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return ListRealty_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return ListRealty_arrayLikeToArray(o, minLen); }
+
+function ListRealty_iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function ListRealty_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return ListRealty_arrayLikeToArray(arr); }
+
+function ListRealty_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 
@@ -76742,8 +76799,100 @@ ListRealty_ListRealty.prototype.getDataRow = function (data) {
   return result;
 };
 
+function getEditDistance(a, b) {
+  if (a.length == 0) return b.length;
+  if (b.length == 0) return a.length;
+  var matrix = []; // increment along the first column of each row
+
+  var i;
+
+  for (i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  } // increment each column in the first row
+
+
+  var j;
+
+  for (j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  } // Fill in the rest of the matrix
+
+
+  for (i = 1; i <= b.length; i++) {
+    for (j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) == a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, // substitution
+        Math.min(matrix[i][j - 1] + 1, // insertion
+        matrix[i - 1][j] + 1)); // deletion
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
+}
+
+;
+
+ListRealty_ListRealty.prototype.mergeFilter = function (data) {
+  var checkAvaliable = [];
+  var result = [];
+  var tempData;
+  var tempPushData;
+  var indexData;
+  var index;
+
+  for (var i = 0; i < data.length; i++) {
+    indexData = data[i];
+    tempData = checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]];
+    if (tempData) for (var j = 0; j < tempData.length; j++) {
+      if (tempData[j] !== undefined && getEditDistance(tempData[j][4], indexData[4]) <= indexData[4].length / 3) {
+        tempPushData = result[indexData[5] + indexData[6] + indexData[7] + indexData[8]];
+        if (tempPushData === undefined) tempPushData = [];
+
+        if (indexData.visiable == undefined) {
+          tempPushData.push(indexData);
+          indexData.visiable = true;
+          data.splice(i, 1);
+          i--;
+        }
+
+        if (tempData[j][4].visiable == undefined) {
+          index = data.indexOf(tempData[j]);
+
+          if (index !== -1) {
+            tempPushData.push(tempData[j]);
+            tempData[j].visiable = true;
+            data.splice(index, 1);
+            i--;
+          }
+        }
+
+        result[indexData[5] + indexData[6] + indexData[7] + indexData[8]] = tempPushData;
+      }
+    }
+    if (checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]] == undefined) checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]] = [];
+    checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]].push(indexData);
+  }
+
+  var length = data.length;
+
+  var _final = ListRealty_toConsumableArray(data);
+
+  data.splice(0, length);
+
+  for (var param in result) {
+    data.splice.apply(data, [0, 0].concat(result[param]));
+  }
+
+  data.ortherFilter = true;
+  return _final;
+};
+
 ListRealty_ListRealty.prototype.searchControlContent = function () {
   var startDay, endDay;
+  var self = this;
   startDay = ListRealty_({
     tag: 'calendar-input',
     data: {
@@ -76873,6 +77022,37 @@ ListRealty_ListRealty.prototype.searchControlContent = function () {
                   type: "number",
                   autocomplete: "off",
                   placeholder: "đ Đến"
+                }
+              }]
+            }]
+          }]
+        }, {
+          tag: "div",
+          "class": "pizo-list-realty-main-search-control-row-price",
+          child: [{
+            tag: "div",
+            "class": "pizo-list-realty-main-search-control-row-HT",
+            child: [{
+              tag: "span",
+              "class": "pizo-list-realty-main-search-control-row-price-label",
+              props: {
+                innerHTML: "Cần gộp"
+              }
+            }, {
+              tag: "div",
+              "class": "pizo-list-realty-main-search-control-row-HT-checkbox",
+              child: [{
+                tag: "checkbox",
+                on: {
+                  change: function change(event) {
+                    if (this.checked === true) {
+                      this.ortherData = self.mergeFilter(self.mTable.data);
+                      self.mTable.updateTable();
+                    } else {
+                      self.mTable.data.splice.apply(self.mTable.data, [self.mTable.data.length, 0].concat(this.ortherData));
+                      self.HTinput.emit("change");
+                    }
+                  }
                 }
               }]
             }]
@@ -77067,6 +77247,7 @@ ListRealty_ListRealty.prototype.searchControlContent = function () {
   content.QH = ListRealty_$('.pizo-list-realty-main-search-control-row-QH input', content);
   content.HT = ListRealty_$('.pizo-list-realty-main-search-control-row-HT input', content);
   this.HTinput = ListRealty_$('div.pizo-list-realty-main-search-control-row-HT-input', content).childNodes[0];
+  this.HTcheckbox = ListRealty_$('div.pizo-list-realty-main-search-control-row-HT-checkbox', content).childNodes[0];
 
   temp.show = function () {
     if (!temp.classList.contains("showTranslate")) temp.classList.add("showTranslate");
@@ -77127,7 +77308,7 @@ ListRealty_ListRealty.prototype.addDB = function (mNewRealty, row) {
   var self = this;
   mNewRealty.promiseAddDB.then(function (value) {
     ModuleDatabase["a" /* default */].getModule("activehouses").add(value).then(function (result) {
-      self.addView(result, row);
+      self.addView(result);
     });
     mNewRealty.promiseAddDB = undefined;
     setTimeout(function () {
@@ -77246,15 +77427,19 @@ ListRealty_ListRealty.prototype.merge = function (data, parent, index) {
     self.parent.body.activeFrame(frameview);
     self.mergeDB(mMergeRealty, data, parent, index);
     mMergeRealty.promiseEditDB.then(function (value) {
-      var oldId = value.oldId;
-      delete value.oldId;
-      ModuleDatabase["a" /* default */].getModule("activehouses").add(value).then(function (value) {
-        self.addView(value);
-      });
+      ModuleDatabase["a" /* default */].getModule("activehouses").add(value).then(function (_final2) {
+        var valueFinal;
 
-      for (var i = 0; i < oldId.length; i++) {
-        console.log(oldId[i]);
-      }
+        if (self.isCensorship) {
+          valueFinal = ModuleDatabase["a" /* default */].getModule("activehouses").getLibary("censorship", self.getDataRow.bind(self), true);
+          valueFinal = valueFinal[0];
+        } else {
+          valueFinal = self.formatDataRow(ModuleDatabase["a" /* default */].getModule("activehouses").data);
+        }
+
+        self.mTable.data = valueFinal;
+        self.HTinput.emit("change");
+      });
     });
   });
 };
@@ -89534,13 +89719,15 @@ App_App.prototype.getPermisionOpenPage = function () {
         //     text:"Cần kiểm duyệt",
         //     pageIndex:13
         // },
+        // {
+        //     text: "Cần gọi lại",
+        //     pageIndex: 14
+        // },
+        // {
+        //     text: "Cần gộp",
+        //     pageIndex: 15
+        // },
         {
-          text: "Cần gọi lại",
-          pageIndex: 14
-        }, {
-          text: "Cần gộp",
-          pageIndex: 15
-        }, {
           text: "Yêu cầu chỉnh sửa",
           pageIndex: 17
         }, {

@@ -547,10 +547,15 @@ NewRealty.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
                         this.blur();
                         var selfElement = this;
                         var childNode = locationView(function(value) {
-                            selfElement.value = value.input.value;
-                            temp.data = childNode.getDataCurrent();
-                            childRemove.selfRemove();
-                        }, temp.data)
+                                selfElement.value = value.input.value;
+                                temp.data = childNode.getDataCurrent();
+                                childRemove.selfRemove();
+                            }, temp.data,
+                            function() {
+                                selfElement.value = "";
+                                temp.data = undefined;
+                                childRemove.selfRemove();
+                            })
                         var childRemove = _({
                             tag: "modal",
                             on: {

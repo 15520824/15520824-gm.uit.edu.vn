@@ -149,9 +149,13 @@ while (isset($data["addressid".$index]))
 }
 if(!isset($data["addressid_old"]))
 $data["addressid_old"] = 0;
-if($data["oldId"])
+if(isset($data["oldId"]))
 {
     $oldId = $data["oldId"];
+}
+if(isset($data["userid"]))
+{
+    $userid = $data["userid"];
 }
 $result = $connector-> insert($prefix."activehouses", $data);
 $data["id"] = $result;
@@ -384,6 +388,7 @@ for($i = 0;$i<count($image_old);$i++)
 if(isset($oldId))
 {
     $delete = array();
+    $mergeData = array();
     for($i=0;$i<count($oldId);$i++)
     {
         $tempData = $connector->load($prefix."activehouses","id =".$oldId[$i]);
@@ -391,7 +396,7 @@ if(isset($oldId))
         {
             $tempData = $tempData[0];
             $new = array();
-
+            array_push($mergeData,$tempData["id"]);
             foreach ($tempData as $k => $v) {
                 if(gettype($v) == "object")
                 $new[$k] = clone $v;
@@ -409,6 +414,28 @@ if(isset($oldId))
                 'inactivehouses'=>$tempData
             ));
         }
+    }
+    if(isset($userid));
+    {
+        $log = "Được gộp vào thời gian ".date("H:i:s d-m-Y")." từ các bất động sản %".json_encode($mergeData); ;
+        $logData = array(
+            'log' => $log,
+            'houseid' => $data["id"],
+            'userid' => $userid,
+        );
+        $connector->insert($prefix.'activehouses_logs', $logData);
+    }
+}else
+{
+    if(isset($userid));
+    {
+        $log = "Được tạo vào thời gian".date("H:i:s d-m-Y");
+        $logData = array(
+            'log' => $log,
+            'houseid' => $data["id"],
+            'userid' => $userid,
+        );
+        $connector->insert($prefix.'activehouses_logs', $logData);
     }
 }
 $result = array(

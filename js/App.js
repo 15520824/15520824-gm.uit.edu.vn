@@ -516,14 +516,14 @@ App.prototype.getPermisionOpenPage = function() {
                         //     text:"Cần kiểm duyệt",
                         //     pageIndex:13
                         // },
-                        {
-                            text: "Cần gọi lại",
-                            pageIndex: 14
-                        },
-                        {
-                            text: "Cần gộp",
-                            pageIndex: 15
-                        },
+                        // {
+                        //     text: "Cần gọi lại",
+                        //     pageIndex: 14
+                        // },
+                        // {
+                        //     text: "Cần gộp",
+                        //     pageIndex: 15
+                        // },
                         {
                             text: "Yêu cầu chỉnh sửa",
                             pageIndex: 17

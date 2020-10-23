@@ -2767,7 +2767,7 @@ NewAccount.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
                 state: this.checkState[this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid].name + "_" + this.checkDistrict[this.checkWard[this.checkAddress[addressid].wardid].districtid].stateid
             }
         }
-    }.bind(this)
+    }.bind(this);
     temp.setAddressData(addressid);
     return temp;
 }
@@ -2777,7 +2777,6 @@ NewAccount.prototype.resetPermission = function() {
     for (var i = 56; i < 70; i++) {
         if ($("div.checkbox_" + i, this.$view).checked == true)
             $("div.checkbox_" + i, this.$view).checked = false;
-        console.log($("div.checkbox_" + i, this.$view))
         if ($("div.checkbox_" + i, this.$view).disabled == true)
             $("div.checkbox_" + i, this.$view).disabled = false;
     }

@@ -188,6 +188,7 @@ DataStructure.prototype.setFormatLoad = function(data, value, promiseLoad, count
     var libary = self.Libary["id"];
     if (libary === undefined) {
         self.data = [...value];
+        self.getLibary("id");
     } else {
         if (self.data.length === self.countRow) {
             if (self.promiseLoad === undefined)
@@ -204,8 +205,6 @@ DataStructure.prototype.setFormatLoad = function(data, value, promiseLoad, count
         }
     }
 
-    if (self.Libary["id"] === undefined)
-        self.getLibary();
     if (typeof promiseLoad == "object") {
         promiseLoad.status = "done";
         promiseLoad.data = value;
@@ -224,8 +223,9 @@ DataStructure.prototype.getLibary = function(param, formatFunction, isArray = fa
             param = param;
         for (var j = 0; j < param.length; j++) {
             if (isLoaded === true || this.Libary[param] == undefined) {
+                this.setLibary(param, formatFunction, isArray)
                 for (var i = 0; i < this.data.length; i++) {
-                    this.setLibaryRow(this.data[i], param[j], formatFunction, isArray);
+                    this.setLibaryRow(this.data[i], param[j]);
                 }
             }
         }
@@ -239,11 +239,13 @@ DataStructure.prototype.getLibary = function(param, formatFunction, isArray = fa
         for (var param in this.Libary) {
             if (param === "id")
                 isID = true;
+            this.setLibary(param, formatFunction, isArray);
             for (var i = 0; i < this.data.length; i++) {
                 this.setLibaryRow(this.data[i], param, formatFunction, isArray);
             }
         }
         if (isID === false) {
+            this.setLibary("id", formatFunction, isArray);
             for (var i = 0; i < this.data.length; i++) {
                 this.setLibaryRow(this.data[i], "id", formatFunction, isArray);
             }
@@ -257,8 +259,7 @@ DataStructure.prototype.sync = function(element, functionSync) {
     this.sync.push(element, functionSync);
 }
 
-DataStructure.prototype.setLibaryRow = function(data, param, formatFunction, isArray) {
-    var self = this;
+DataStructure.prototype.setLibary = function(param, formatFunction, isArray) {
     if (this.Libary[param] === undefined) {
         this.Libary[param] = [];
         this.Libary[param].isArray = isArray;
@@ -304,7 +305,9 @@ DataStructure.prototype.setLibaryRow = function(data, param, formatFunction, isA
                 this.check[data["id"]] = undefined;
         }
     }
-    this.Libary[param].formatFunction(data, param);
+}
+
+DataStructure.prototype.setLibaryRow = function(data, param) {
     data.getList = function(name, value) {
         var text = "";
         for (var i = 0; i < name.length; i++) {
@@ -325,6 +328,7 @@ DataStructure.prototype.setLibaryRow = function(data, param, formatFunction, isA
         }
         return { text: text, value: checkvalue };
     }
+    this.Libary[param].formatFunction(data, param);
 }
 
 DataStructure.prototype.getList = function(param, value, skip) {
@@ -590,6 +594,7 @@ DataStructure.prototype.queryData = function(phpFile, data, name = "") {
         FormClass.api_call({
             url: phpFile,
             params: [{ name: "name", value: name },
+                { name: "userid", value: window.userid },
                 { name: "data", value: EncodingClass.string.fromVariable(result) }
             ],
             func: function(success, message) {
