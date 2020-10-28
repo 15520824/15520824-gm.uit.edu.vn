@@ -677,7 +677,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         if (window.mobilecheck()) {
             result.tempIndexRow = indexRow;
             if (isRedraw) {
-                result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical, undefined, false);
+                result.updateTable(undefined, undefined, undefined, undefined, undefined, false);
                 if (scrollParent)
                     scrollParent.emit("scroll");
             }
@@ -685,7 +685,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             result.tempIndexRow = parseInt(number);
             if (result.paginationElement !== undefined) {
                 if (isRedraw) {
-                    result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+                    result.updateTable();
                 }
                 var pagination = result.pagination(result.tempIndexRow);
                 result.paginationElement.parentNode.replaceChild(pagination, result.paginationElement);
@@ -724,7 +724,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.childIndex = childIndex;
 
     result.childrenNodes = [];
-    result.getBodyTable(data);
+    result.getBodyTable(data, undefined, true);
 
     result.checkSpan = checkSpan;
     if (dragVertical) {
@@ -1155,7 +1155,7 @@ tableView.prototype.getCellHeader = function(header, i) {
             if (result.paginationElement !== undefined && result.paginationElement.noneValue !== true)
                 result.paginationElement.reActive();
             else
-                result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
+                result.updateTable();
 
         }
     }
@@ -1541,7 +1541,7 @@ tableView.prototype.setVisiableAllNoneUpdate = function(arr) {
     }
 }
 
-tableView.prototype.getBodyTable = function(data, index = 0) {
+tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
     var temp = this.bodyTable;
     var result = this,
         k, delta = [],
@@ -1556,9 +1556,7 @@ tableView.prototype.getBodyTable = function(data, index = 0) {
     } else {
         this.startIndex = 0;
     }
-
-    if (parent.checkSpan === undefined)
-        result.checkSpan = [];
+    result.checkSpan = [];
     if (result.indexRow == undefined || result.indexRow == this.tempIndexRow)
         result.indexRow = 0;
 
@@ -1630,6 +1628,8 @@ tableView.prototype.getBodyTable = function(data, index = 0) {
     this.currentIndex = i;
     if (data.updateVisible)
         result.setConfirm(data, i);
+    if (isFirst == true)
+        result.setMergeCell(data, result.checkSpan, i)
     if (result.checkMargin !== undefined)
         result.checkMargin();
 
@@ -1640,7 +1640,109 @@ tableView.prototype.getBodyTable = function(data, index = 0) {
     return arr;
 }
 
+tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
+    var data;
+    var rowMergeData;
+    for (i; i < arr.length; i++) {
+        rowMergeData = arr[i].getRowMerge;
+        if (rowMergeData === undefined) {
+            rowMergeData = [arr[i]];
+            Object.defineProperty(arr[i], "getRowMerge", {
+                get: function(rowMergeData) {
+                    return function() {
+                        return rowMergeData;
+                    }
+                }(rowMergeData),
+
+                set: function(rowMergeData) {
+                    return function(value) {
+                        rowMergeData = value;
+                    }
+                }(rowMergeData),
+
+                configurable: true
+            });
+        }
+        for (var j = 0; j < arr[i].length; j++) {
+            data = arr[i][j];
+            if (checkSpan[i] !== undefined) {
+                if (checkSpan[i][j] == 2) {
+                    var rowMerge = arr[i - 1].getRowMerge;
+                    rowMerge.push(arr[i]);
+                    var define = arr[i - 1][j];
+                    Object.defineProperty(arr[i], j, {
+                        get: function(define) {
+                            return function() {
+                                return define;
+                            }
+                        }(define),
+
+                        set: function(define) {
+                            return function(value) {
+                                define = value;
+                            }
+                        }
+                    });
+                    Object.defineProperty(arr[i], "getRowMerge", {
+                        get: function(rowMerge) {
+                            return function() {
+                                return rowMerge;
+                            }
+                        }(rowMerge),
+
+                        set: function(rowMerge) {
+                            return function(value) {
+                                rowMerge = value;
+                            }
+                        }(rowMerge),
+
+                        configurable: true
+                    });
+                }
+
+                if (checkSpan[i][j] == 6) {
+                    var define = arr[i][j - 1];
+                    Object.defineProperty(arr[i], j, {
+                        get: function(define) {
+                            return function() {
+                                return define;
+                            }
+                        }(define),
+
+                        set: function(define) {
+                            return function() {
+                                define = value;
+                            }
+                        }(define),
+
+                    });
+                }
+            }
+
+            if (data.rowspan !== undefined) {
+                for (var l = i + 1; l < i + data.rowspan; l++) {
+                    if (checkSpan[l] === undefined)
+                        checkSpan[l] = [];
+                    checkSpan[l][j] = 2;
+                }
+                delete data.rowspan;
+            }
+            if (data.colspan !== undefined) {
+                checkSpan[i] = [];
+                for (var l = j + 1; l < j + data.colspan; l++) {
+                    checkSpan[i][l] = 6;
+                }
+                delete data.colspan;
+            }
+        }
+        if (arr[i].child !== undefined) {
+            this.setMergeCell(arr[i].child, checkSpan);
+        }
+    }
+}
+
 tableView.prototype.setConfirm = function(arr, i = 0) {
+    var data;
     for (i; i < arr.length; i++) {
         if (arr[i].confirm !== undefined)
             arr[i].visiable = arr[i].confirm;
@@ -1648,6 +1750,7 @@ tableView.prototype.setConfirm = function(arr, i = 0) {
             arr[i].visiable = false;
         arr[i].confirm = undefined;
         arr[i].exactly = undefined;
+        arr[i].isComplete = undefined;
         if (arr[i].child !== undefined) {
             this.setConfirm(arr[i].child);
         }
@@ -1823,7 +1926,7 @@ tableView.prototype.pagination = function(number, functionClick) {
                         if (functionClick !== undefined)
                             functionClick(event, i);
                         self.indexRow = 0;
-                        self.updateTable(undefined, self.data, self.dragHorizontal, self.dragVertical, i * number);
+                        self.updateTable(undefined, undefined, undefined, undefined, i * number);
                         if (self.scrollParent !== undefined)
                             self.scrollParent.scrollTop = 0;
                         if (self.changePageIndex !== undefined)
@@ -2003,6 +2106,21 @@ tableView.prototype.getRow = function(data) {
     setTimeout(function() {
         temp.classList.add("parent");
     }, 10);
+    var rowMerge = data.getRowMerge;
+    if (rowMerge === undefined) {
+        rowMerge = [data];
+    }
+    Object.defineProperty(data, "getRowMerge", {
+        get() {
+            return rowMerge;
+        },
+
+        set(value) {
+            rowMerge = value;
+        },
+
+        configurable: true
+    });
     Object.assign(temp, tableView.prototype);
     temp.realTable = result.realTable;
     temp.headerTable = result.headerTable;
@@ -2226,8 +2344,12 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
     var data = dataOrigin;
     var result = this,
         value, bonus, style, classList, cell;
+    var realIndex = i;
+    i = result.data.indexOf(dataOld);
     if (checkSpan[i] !== undefined) {
-        if (checkSpan[i][k] == 2) {
+        if (checkSpan[i][j] == 2) {
+            var rowMerge = result.data[i - 1].getRowMerge;
+            rowMerge.push(result.data[i]);
             var define = result.data[i - 1][j];
             Object.defineProperty(dataOld, j, {
                 get() {
@@ -2238,10 +2360,20 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
                     define = value;
                 }
             });
+            Object.defineProperty(result.data[i], "getRowMerge", {
+                get() {
+                    return rowMerge;
+                },
 
+                set(value) {
+                    rowMerge = value;
+                },
+
+                configurable: true
+            });
             return 2;
         }
-        if (checkSpan[i][k] == 6) {
+        if (checkSpan[i][j] == 6) {
             var define = dataOld[j - 1];
             Object.defineProperty(dataOld, j, {
                 get() {
@@ -2250,7 +2382,8 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
 
                 set(value) {
                     define = value;
-                }
+                },
+
             });
 
             return 6;
@@ -2269,7 +2402,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
         case "hidden":
             return true;
         case "increase":
-            value += (i + 1);
+            value += (realIndex + 1);
             break;
         case "dragzone":
             if (data.icon !== undefined) {
@@ -2542,16 +2675,16 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
         for (var l = i + 1; l < i + data.rowspan; l++) {
             if (checkSpan[l] === undefined)
                 checkSpan[l] = [];
-            checkSpan[l][k] = 2;
+            checkSpan[l][j] = 2;
         }
         delete data.rowspan;
-    } else if (typeof result.data[i + 1] === "object" && (typeof result.data[i][k] === "object" || typeof result.data[i + 1][k] === "object")) {
+    } else if (typeof result.data[i + 1] === "object" && ((typeof result.data[i][j] === "object") && (typeof result.data[i + 1][j] === "object"))) {
         var index = 1;
         for (var l = i + 1; l < result.data.length; l++) {
-            if (data === result.data[l][k]) {
+            if (result.data[i][j] === result.data[l][j]) {
                 if (checkSpan[l] === undefined)
                     checkSpan[l] = [];
-                checkSpan[l][k] = 2;
+                checkSpan[l][j] = 2;
                 index++;
             } else
                 break;
@@ -2563,14 +2696,14 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
     if (data.colspan !== undefined) {
         cell.setAttribute("colspan", data.colspan);
         checkSpan[i] = [];
-        for (var l = k + 1; l < k + data.colspan; l++) {
+        for (var l = j + 1; l < j + data.colspan; l++) {
             checkSpan[i][l] = 6;
         }
         delete data.colspan;
-    } else if (typeof dataOld[k] === "object" || typeof dataOld[k + 1] === "object") {
+    } else if ((typeof dataOld[j] === "object") && (typeof dataOld[j + 1] === "object")) {
         var index = 1;
-        for (var l = k + 1; l < dataOld.length; l++) {
-            if (data === dataOld[l]) {
+        for (var l = j + 1; l < dataOld.length; l++) {
+            if (dataOld[j] === dataOld[l]) {
                 if (checkSpan[i] === undefined)
                     checkSpan[i] = [];
                 checkSpan[i][l] = 6;
@@ -2593,13 +2726,16 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
 }
 
 tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVertical, index = 0, isUpdate = true) {
-    var checkSpan = [];
+    this.checkSpan = [];
     var result = this;
     var temp = _({
         tag: "tbody"
     });
-    if (data !== undefined)
+    var isFirst = false;
+    if (data !== undefined) {
         this.data = data;
+        isFirst = true;
+    }
     if (isUpdate == true)
         result.indexRow = 0;
     temp.listCheckBox = [];
@@ -2619,11 +2755,11 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
     this.bodyTable = temp;
     result.childrenNodes = [];
     this.currentIndex = undefined;
-    result.getBodyTable(this.data, index);
+    result.getBodyTable(this.data, index, isFirst);
     if (temp.listCheckBox[0] !== undefined) {
         temp.listCheckBox[0].update();
     }
-    this.checkSpan = checkSpan;
+
 
     if (result.dragVertical) {
         result.setUpSlip();
@@ -3289,7 +3425,7 @@ tableView.prototype.cloneCellColumn = function(bodyTable, cloneArray, index) {
         })
         cell.classList = cloneArray[index][i].parentNode.classList;
         if (cloneArray[index][i].colSpan !== undefined)
-            clone.setAttribute("rowSpan", "")
+            clone.setAttribute("rowspan", "")
         bodyTable.addChild(cell);
         if (cloneArray[index][i].parentNode.clone !== undefined) {
             var cloneArrayTemp = cloneArray[index][i].parentNode.clone;
@@ -3333,7 +3469,7 @@ tableView.prototype.cloneRow = function(index, isFull = false) {
         clone = this.clone[i][index].cloneNode(true);
         clone.style.width = this.clone[i][index].offsetWidth - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-right-width').replace("px", "") + 1 + 'px';
         clone.style.height = this.clone[i][index].offsetHeight - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
-        clone.setAttribute("colSpan", "")
+        clone.setAttribute("colspan", "")
         row.appendChild(clone);
     }
     return result;
@@ -3553,56 +3689,76 @@ tableView.prototype.getBound2Row = function(row1, row2) {
     return temp;
 }
 
+function compareIncrease(valueA, valueB) {
+    if (typeof valueA === "string")
+        valueA = valueA.toLowerCase();
+    if (typeof valueB === "string")
+        valueB = valueB.toLowerCase();
+    if (valueA > valueB)
+        return -1;
+    if (valueA < valueB)
+        return 1;
+    return 0;
+}
+
+function sortChildArray(arr, index, increase = true) {}
+
 function sortArray(arr, index, increase = true) {
-    if (increase) {
-        arr.sort(function(a, b) {
-            if (a.child !== undefined)
-                sortArray(a.child, index, increase);
-            var valueA = a[index].value;
-            var valueB = b[index].value;
-            if (valueA === undefined)
-                valueA = a[index];
-            if (valueB === undefined)
-                valueB = b[index];
-            if (typeof valueA === "string")
-                valueA = valueA.toLowerCase();
-            if (typeof valueB === "string")
-                valueB = valueB.toLowerCase();
-            if (valueA > valueB)
-                return -1;
-            if (valueA < valueB)
-                return 1;
-            return 0;
-        })
-        if (arr.length !== 0)
-            if (arr[arr.length - 1].child !== undefined) {
-                sortArray(arr[arr.length - 1].child, index, increase);
+    var check = [];
+    var result = [];
+    var index;
+    for (var i = 0; i < arr.length; i++) {
+        var object = arr[i].getRowMerge;
+        if (check[JSON.stringify(JSON.stringify(object))])
+            continue;
+        index = object.length;
+        for (var j = 0; j < object.length; j++) {
+            if (check[JSON.stringify(object[j])]) {
+                index--;
+                continue;
             }
-    } else {
-        arr.sort(function(a, b) {
-            if (a.child !== undefined)
-                sortArray(a.child, index, increase);
-            var valueA = a[index].value;
-            var valueB = b[index].value;
-            if (valueA === undefined)
-                valueA = a[index];
-            if (valueB === undefined)
-                valueB = b[index];
-            if (typeof valueA === "string")
-                valueA = valueA.toLowerCase();
-            if (typeof valueB === "string")
-                valueB = valueB.toLowerCase();
-            if (valueA < valueB)
-                return -1;
-            if (valueA > valueB)
-                return 1;
-            return 0;
-        })
-        if (arr.length !== 0)
-            if (arr[arr.length - 1].child !== undefined) {
-                sortArray(arr[arr.length - 1].child, index, increase);
-            }
+            check[JSON.stringify(object[j])] = object[j];
+        }
+        if (index > 0) {
+            check[JSON.stringify(object)] = object;
+            result.push(object);
+        }
     }
+    if (increase) {
+        result.sort(function(prev, next) {
+            var a = prev[0];
+            var b = next[0];
+            if (a.child !== undefined)
+                sortArray(a.child, index, increase);
+            var valueA = a[index].value;
+            var valueB = b[index].value;
+            if (valueA === undefined)
+                valueA = a[index];
+            if (valueB === undefined)
+                valueB = b[index];
+            return compareIncrease(valueA, valueB);
+        })
+    } else {
+        result.sort(function(prev, next) {
+
+            var a = prev[0];
+            var b = next[0];
+            if (a.child !== undefined)
+                sortArray(a.child, index, increase);
+            var valueA = a[index].value;
+            var valueB = b[index].value;
+            if (valueA === undefined)
+                valueA = a[index];
+            if (valueB === undefined)
+                valueB = b[index];
+            return compareIncrease(valueB, valueA);
+        })
+    }
+    arr = [];
+    for (var param in result) {
+        arr = arr.concat(result[param]);
+    }
+    console.log(arr);
 }
 
 export function getDate() {

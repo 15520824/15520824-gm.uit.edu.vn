@@ -21,7 +21,7 @@ HashTableFilter.prototype.functionSetHash = function(data, dataParent = "") {
         var stringCheck = m + dataParent;
         if (this.check[stringCheck] == undefined) {
             this.check[stringCheck] = [];
-            this.check[stringCheck].data = data[m];
+            this.check[stringCheck].data = object.getRowMerge;
         }
 
         for (var i = 0; i < object.length; i++) {
@@ -117,16 +117,28 @@ HashTableFilter.prototype.getKey = function(key, index) {
             }
             if (countIn == countAll) {
                 if (this.data.isSearch) {
-                    if (checkRow.data.isSearch === true)
-                        checkRow.data.confirm = true;
-                } else
-                if (checkRow.data.isSearch === undefined)
-                    checkRow.data.confirm = true;
+                    for (var k = 0; k < checkRow.data.length; k++) {
+                        if (checkRow.data[k].isSearch === true)
+                            checkRow.data[k].confirm = true;
+                        checkRow.data[k].isFilter = true;
+                        checkRow.data[k].isComplete = true;
+                    }
+                } else {
+                    for (var k = 0; k < checkRow.data.length; k++) {
+                        if (checkRow.data[k].isComplete)
+                            continue;
+                        if (checkRow.data[k].isSearch === undefined)
+                            checkRow.data[k].confirm = true;
+                        checkRow.data[k].isFilter = true;
+                        checkRow.data[k].isComplete = true;
+                    }
+                }
                 this.lastIndexFilter.push(checkRow);
-                checkRow.data.isFilter = true;
             } else {
-                checkRow.data.isFilter = undefined;
-                checkRow.data.confirm = undefined;
+                if (checkRow.data[k].isComplete !== true) {
+                    checkRow.data.isFilter = undefined;
+                    checkRow.data.confirm = undefined;
+                }
             }
         }
 }

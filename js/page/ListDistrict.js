@@ -235,7 +235,7 @@ ListDistrict.prototype.getView = function() {
         ];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
         tabContainer.addChild(self.mTable);
-        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
+        // self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
         self.listParent.updateItemList(listParam);
         self.mTable.addFilter(self.listParent, 3);
     });
@@ -270,7 +270,7 @@ ListDistrict.prototype.formatDataRow = function(data) {
     var k = 0;
     for (var i = 0; i < data.length; i++) {
 
-        var result = this.getDataRow(data[i], i);
+        var result = this.getDataRow(data[i]);
         if (check[data[i].parent_id] !== undefined) {
             if (check[data[i].parent_id].child === undefined)
                 check[data[i].parent_id].child = [];
@@ -283,7 +283,7 @@ ListDistrict.prototype.formatDataRow = function(data) {
     return temp;
 }
 
-ListDistrict.prototype.getDataRow = function(data, i) {
+ListDistrict.prototype.getDataRow = function(data) {
     var result = [
         {},
         data.id,

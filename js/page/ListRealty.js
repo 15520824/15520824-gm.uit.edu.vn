@@ -585,7 +585,6 @@ ListRealty.prototype.getView = function() {
                 } else {
                     value = self.formatDataRow(value);
                 }
-
                 self.mTable.updateTable(undefined, value);
                 self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
                 self.mTable.addFilter(hiddenConfirm, 20);
@@ -1424,6 +1423,7 @@ ListRealty.prototype.merge = function(data, parent, index) {
                 } else {
                     valueFinal = self.formatDataRow(moduleDatabase.getModule("activehouses").data);
                 }
+
                 self.mTable.data = valueFinal;
                 self.HTinput.emit("change");
             });
