@@ -842,7 +842,7 @@ ListRealty.prototype.mergeFilter = function(data) {
     }
     var length = data.length;
     var final = [...data];
-    data.splice(0,length);
+    data.splice(0, length);
     for (var param in result) {
         data.splice.apply(data, [0, 0].concat(result[param]));
     }
@@ -1005,6 +1005,9 @@ ListRealty.prototype.searchControlContent = function() {
                         {
                             tag: "div",
                             class: "pizo-list-realty-main-search-control-row-price",
+                            style: {
+                                height: "30px"
+                            },
                             child: [{
                                 tag: "div",
                                 class: "pizo-list-realty-main-search-control-row-HT",
@@ -1232,7 +1235,7 @@ ListRealty.prototype.searchControlContent = function() {
     content.HT = $('.pizo-list-realty-main-search-control-row-HT input', content);
     this.HTinput = $('div.pizo-list-realty-main-search-control-row-HT-input', content).childNodes[0];
     this.HTcheckbox = $('div.pizo-list-realty-main-search-control-row-HT-checkbox', content).childNodes[0];
-   
+
     temp.show = function() {
         if (!temp.classList.contains("showTranslate"))
             temp.classList.add("showTranslate");

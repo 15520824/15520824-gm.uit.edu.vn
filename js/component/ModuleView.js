@@ -1611,7 +1611,7 @@ tableView.prototype.getBodyTable = function(data, index = 0) {
             k = parseFloat(result.realTable.parentNode.clone[j][0].id);
             if (delta[j] === undefined)
                 delta[j] = 0;
-            cell = result.getCell(data[i][k], this.indexRow + this.startIndex, k, j, result.checkSpan, row);
+            cell = result.getCell(data[i], this.indexRow + this.startIndex, k, j, result.checkSpan, row);
             if (cell === 6 || cell === 2) {
                 result.clone[j].splice(this.indexRow + 1 - delta[j], 1);
                 delta[j] += 1;
@@ -2221,14 +2221,40 @@ tableView.prototype.checkChildCheckBox = function(data, indexCheckBox) {
 }
 
 tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row) {
+    var dataOld = dataOrigin;
+    dataOrigin = dataOrigin[j];
     var data = dataOrigin;
     var result = this,
         value, bonus, style, classList, cell;
     if (checkSpan[i] !== undefined) {
-        if (checkSpan[i][k] == 2)
+        if (checkSpan[i][k] == 2) {
+            var define = result.data[i - 1][j];
+            Object.defineProperty(dataOld, j, {
+                get() {
+                    return define;
+                },
+
+                set(value) {
+                    define = value;
+                }
+            });
+
             return 2;
-        if (checkSpan[i][k] == 6)
+        }
+        if (checkSpan[i][k] == 6) {
+            var define = dataOld[j - 1];
+            Object.defineProperty(dataOld, j, {
+                get() {
+                    return define;
+                },
+
+                set(value) {
+                    define = value;
+                }
+            });
+
             return 6;
+        }
     }
 
     if (data.value === undefined) {
@@ -2518,13 +2544,42 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
                 checkSpan[l] = [];
             checkSpan[l][k] = 2;
         }
+        delete data.rowspan;
+    } else if (typeof result.data[i + 1] === "object" && (typeof result.data[i][k] === "object" || typeof result.data[i + 1][k] === "object")) {
+        var index = 1;
+        for (var l = i + 1; l < result.data.length; l++) {
+            if (data === result.data[l][k]) {
+                if (checkSpan[l] === undefined)
+                    checkSpan[l] = [];
+                checkSpan[l][k] = 2;
+                index++;
+            } else
+                break;
+        }
+        if (index > 1) {
+            cell.setAttribute("rowspan", index);
+        }
     }
     if (data.colspan !== undefined) {
         cell.setAttribute("colspan", data.colspan);
-
-        checkSpan[i] = []
+        checkSpan[i] = [];
         for (var l = k + 1; l < k + data.colspan; l++) {
             checkSpan[i][l] = 6;
+        }
+        delete data.colspan;
+    } else if (typeof dataOld[k] === "object" || typeof dataOld[k + 1] === "object") {
+        var index = 1;
+        for (var l = k + 1; l < dataOld.length; l++) {
+            if (data === dataOld[l]) {
+                if (checkSpan[i] === undefined)
+                    checkSpan[i] = [];
+                checkSpan[i][l] = 6;
+                index++;
+            } else
+                break;
+        }
+        if (index > 1) {
+            cell.setAttribute("colspan", index);
         }
     }
     cell.getParentNode = function() {
@@ -2630,7 +2685,7 @@ tableView.prototype.insertRow = function(data, checkMust = false) {
 
     for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
         k = parseFloat(this.realTable.parentNode.clone[i][0].id);
-        cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
+        cell = result.getCell(data, index, k, i, result.checkSpan, row);
         if (cell === 6) {
             result.clone[k++].splice(index, 1);
             continue;
@@ -2748,7 +2803,7 @@ tableView.prototype.updateRow = function(data, index, checkMust = false) {
 
     for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
         k = parseFloat(this.realTable.parentNode.clone[i][0].id);
-        cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
+        cell = result.getCell(data, index, k, i, result.checkSpan, row);
         if (cell === 6) {
             result.clone[k++].splice(index, 1);
             continue;
@@ -2909,7 +2964,7 @@ tableView.prototype.insertColumn = function(index, insertBefore = -1) {
     }
     var k = 1;
     for (var i = 0; i < this.childrenNodes.length; i++) {
-        cell = this.getCell(this.childrenNodes[i].data[index], i, index, this.clone[this.clone.length - 1][0].id + 1, this.checkSpan, this.childrenNodes[i]);
+        cell = this.getCell(this.childrenNodes[i].data, i, index, this.clone[this.clone.length - 1][0].id + 1, this.checkSpan, this.childrenNodes[i]);
         current.push(cell);
         cell.clone = this.clone;
         if (insertBefore === -1)
