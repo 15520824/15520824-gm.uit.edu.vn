@@ -1691,36 +1691,36 @@ tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
                     var rowMerge = arr[i - 1].getRowMerge;
                     if (rowMerge.indexOf(arr[i]) === -1) {
                         rowMerge.push(arr[i]);
-                        var define = arr[i - 1][j];
-                        Object.defineProperty(arr[i], j, {
-                            get: function(define) {
-                                return function() {
-                                    return define;
-                                }
-                            }(define),
-
-                            set: function(define) {
-                                return function(value) {
-                                    define = value;
-                                }
-                            }
-                        });
-                        Object.defineProperty(arr[i], "getRowMerge", {
-                            get: function(rowMerge) {
-                                return function() {
-                                    return rowMerge;
-                                }
-                            }(rowMerge),
-
-                            set: function(rowMerge) {
-                                return function(value) {
-                                    rowMerge = value;
-                                }
-                            }(rowMerge),
-
-                            configurable: true
-                        });
                     }
+                    Object.defineProperty(arr[i], "getRowMerge", {
+                        get: function(rowMerge) {
+                            return function() {
+                                return rowMerge;
+                            }
+                        }(rowMerge),
+
+                        set: function(rowMerge) {
+                            return function(value) {
+                                rowMerge = value;
+                            }
+                        }(rowMerge),
+
+                        configurable: true
+                    });
+                    var define = arr[i - 1][j];
+                    Object.defineProperty(arr[i], j, {
+                        get: function(define) {
+                            return function() {
+                                return define;
+                            }
+                        }(define),
+
+                        set: function(define) {
+                            return function(value) {
+                                define = value;
+                            }
+                        }
+                    });
                 }
 
                 if (checkSpan[i][j] == 6) {
@@ -2374,29 +2374,28 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
             var rowMerge = result.data[i - 1].getRowMerge;
             if (rowMerge.indexOf(result.data[i]) === -1) {
                 rowMerge.push(result.data[i]);
-                var define = result.data[i - 1][j];
-                Object.defineProperty(dataOld, j, {
-                    get() {
-                        return define;
-                    },
-
-                    set(value) {
-                        define = value;
-                    }
-                });
-                Object.defineProperty(result.data[i], "getRowMerge", {
-                    get() {
-                        return rowMerge;
-                    },
-
-                    set(value) {
-                        rowMerge = value;
-                    },
-
-                    configurable: true
-                });
             }
+            Object.defineProperty(result.data[i], "getRowMerge", {
+                get() {
+                    return rowMerge;
+                },
 
+                set(value) {
+                    rowMerge = value;
+                },
+
+                configurable: true
+            });
+            var define = result.data[i - 1][j];
+            Object.defineProperty(dataOld, j, {
+                get() {
+                    return define;
+                },
+
+                set(value) {
+                    define = value;
+                }
+            });
             return 2;
         }
         if (checkSpan[i][j] == 6) {
