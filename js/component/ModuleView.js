@@ -1557,12 +1557,13 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
     } else {
         this.startIndex = 0;
     }
+    var deltaLong = -1;
+    var isFlag = false;
     result.checkSpan = [];
     if (result.indexRow == undefined || result.indexRow == this.tempIndexRow)
         result.indexRow = 0;
-
     for (;
-        (i < data.length && this.indexRow < this.tempIndexRow); i++) {
+        (i < data.length && this.indexRow <= this.tempIndexRow + deltaLong); i++) {
         if (data[i].child !== undefined) {
             data[i].child.updateVisible = data.updateVisible;
             data[i].child.ortherFilter = data.ortherFilter;
@@ -1601,17 +1602,35 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
         }
         if (index !== 0) {
             index--;
+            isFlag = true;
             continue;
         }
+
+        if (isFlag == true) {
+            if (index === 0) {
+                if (data[i].getRowMerge && data[i].getRowMerge.length > 1) {
+                    var indexDataRow = data[i].getRowMerge.indexOf(data[i]);
+                    if (indexDataRow > 0) {
+                        i -= indexDataRow;
+                        deltaLong += indexDataRow;
+                    }
+                }
+            }
+            isFlag = false;
+        }
+
         row = result.getRow(data[i]);
         temp.addChild(row);
         arr.push(row);
-
+        var tempX = { a: this.tempIndexRow - this.indexRow + deltaLong };
         for (var j = 0; j < result.realTable.parentNode.clone.length; j++) {
             k = parseFloat(result.realTable.parentNode.clone[j][0].id);
             if (delta[j] === undefined)
                 delta[j] = 0;
-            cell = result.getCell(data[i], this.indexRow + startIndexCell, k, j, result.checkSpan, row);
+
+            cell = result.getCell(data[i], this.indexRow + startIndexCell, k, j, result.checkSpan, row, tempX);
+            if (this.tempIndexRow - this.indexRow + deltaLong < tempX.a)
+                deltaLong += tempX.a;
             if (cell === 6 || cell === 2) {
                 result.clone[j].splice(this.indexRow + 1 - delta[j], 1);
                 delta[j] += 1;
@@ -1727,14 +1746,14 @@ tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
                         checkSpan[l] = [];
                     checkSpan[l][j] = 2;
                 }
-                delete data.rowspan;
+                data.rowspan = undefined;
             }
             if (data.colspan !== undefined) {
                 checkSpan[i] = [];
                 for (var l = j + 1; l < j + data.colspan; l++) {
                     checkSpan[i][l] = 6;
                 }
-                delete data.colspan;
+                data.colspan = undefined;
             }
         }
         if (arr[i].child !== undefined) {
@@ -2340,7 +2359,7 @@ tableView.prototype.checkChildCheckBox = function(data, indexCheckBox) {
     return arr;
 }
 
-tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row) {
+tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row, orther) {
     var dataOld = dataOrigin;
     dataOrigin = dataOrigin[j];
     var data = dataOrigin;
@@ -2680,7 +2699,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
                 checkSpan[l] = [];
             checkSpan[l][j] = 2;
         }
-        delete data.rowspan;
+        data.rowspan = undefined;
     } else if (typeof result.data[i + 1] === "object" && ((typeof result.data[i][j] === "object") && (typeof result.data[i + 1][j] === "object"))) {
         var index = 1;
         for (var l = i + 1; l < result.data.length; l++) {
@@ -2694,6 +2713,9 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
         }
         if (index > 1) {
             cell.setAttribute("rowspan", index);
+            if (orther)
+                if (orther.a < index - 1)
+                    orther.a += index - 1;
         }
     }
     if (data.colspan !== undefined) {
@@ -2702,7 +2724,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
         for (var l = j + 1; l < j + data.colspan; l++) {
             checkSpan[i][l] = 6;
         }
-        delete data.colspan;
+        data.colspan = undefined;
     } else if ((typeof dataOld[j] === "object") && (typeof dataOld[j + 1] === "object")) {
         var index = 1;
         for (var l = j + 1; l < dataOld.length; l++) {
