@@ -243,7 +243,7 @@ ListWard.prototype.getView = function() {
         ];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
         tabContainer.addChild(self.mTable);
-        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view), 2);
+        self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
         self.mTable.addFilter(self.listWardElement, 3);
         self.mTable.addFilter(self.listStateElement, 4);
     })

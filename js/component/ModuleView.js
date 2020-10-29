@@ -1140,12 +1140,12 @@ tableView.prototype.getCellHeader = function(header, i) {
                 last_sort.classList.remove("upgrade");
             }
             if (!me.classList.contains("downgrade")) {
-                sortArray(result.data, index);
+                result.data = sortArray(result.data, index);
                 me.classList.add("downgrade");
                 if (me.classList.contains("upgrade"))
                     me.classList.remove("upgrade");
             } else {
-                sortArray(result.data, index, false);
+                result.data = sortArray(result.data, index, false);
                 me.classList.add("upgrade");
                 if (me.classList.contains("downgrade"))
                     me.classList.remove("downgrade");
@@ -1548,6 +1548,7 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
         row, cell;
     var arr = [];
     var i = 0;
+    var startIndexCell = index;
     if (this.startIndex === undefined)
         this.startIndex = 0;
     if (this.currentIndex !== undefined) {
@@ -1605,11 +1606,12 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
         row = result.getRow(data[i]);
         temp.addChild(row);
         arr.push(row);
+
         for (var j = 0; j < result.realTable.parentNode.clone.length; j++) {
             k = parseFloat(result.realTable.parentNode.clone[j][0].id);
             if (delta[j] === undefined)
                 delta[j] = 0;
-            cell = result.getCell(data[i], this.indexRow + this.startIndex, k, j, result.checkSpan, row);
+            cell = result.getCell(data[i], this.indexRow + startIndexCell, k, j, result.checkSpan, row);
             if (cell === 6 || cell === 2) {
                 result.clone[j].splice(this.indexRow + 1 - delta[j], 1);
                 delta[j] += 1;
@@ -2349,7 +2351,8 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row)
     if (checkSpan[i] !== undefined) {
         if (checkSpan[i][j] == 2) {
             var rowMerge = result.data[i - 1].getRowMerge;
-            rowMerge.push(result.data[i]);
+            if (rowMerge.indexOf(result.data[i]) === -1)
+                rowMerge.push(result.data[i]);
             var define = result.data[i - 1][j];
             Object.defineProperty(dataOld, j, {
                 get() {
@@ -2936,7 +2939,6 @@ tableView.prototype.updateRow = function(data, index, checkMust = false) {
         row.childrenNodes = temp.childrenNodes;
         row.clone = temp.clone;
     }
-
     for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
         k = parseFloat(this.realTable.parentNode.clone[i][0].id);
         cell = result.getCell(data, index, k, i, result.checkSpan, row);
@@ -3701,8 +3703,6 @@ function compareIncrease(valueA, valueB) {
     return 0;
 }
 
-function sortChildArray(arr, index, increase = true) {}
-
 function sortArray(arr, index, increase = true) {
     var check = [];
     var result = [];
@@ -3728,8 +3728,9 @@ function sortArray(arr, index, increase = true) {
         result.sort(function(prev, next) {
             var a = prev[0];
             var b = next[0];
-            if (a.child !== undefined)
-                sortArray(a.child, index, increase);
+            if (prev.length === 1)
+                if (a.child !== undefined)
+                    a.child = sortArray(a.child, index, increase);
             var valueA = a[index].value;
             var valueB = b[index].value;
             if (valueA === undefined)
@@ -3738,13 +3739,18 @@ function sortArray(arr, index, increase = true) {
                 valueB = b[index];
             return compareIncrease(valueA, valueB);
         })
+        if (arr.length !== 0)
+            if (arr[arr.length - 1].length === 1) {
+                if (arr[arr.length - 1][0].child !== undefined)
+                    arr[arr.length - 1][0].child = sortArray(arr[arr.length - 1][0].child, index, increase);
+            }
     } else {
         result.sort(function(prev, next) {
-
             var a = prev[0];
             var b = next[0];
-            if (a.child !== undefined)
-                sortArray(a.child, index, increase);
+            if (prev.length === 1)
+                if (a.child !== undefined)
+                    a.child = sortArray(a.child, index, increase);
             var valueA = a[index].value;
             var valueB = b[index].value;
             if (valueA === undefined)
@@ -3753,12 +3759,17 @@ function sortArray(arr, index, increase = true) {
                 valueB = b[index];
             return compareIncrease(valueB, valueA);
         })
+        if (arr.length !== 0)
+            if (arr[arr.length - 1].length === 1) {
+                if (arr[arr.length - 1][0].child !== undefined)
+                    arr[arr.length - 1][0].child = sortArray(arr[arr.length - 1][0].child, index, increase);
+            }
     }
     arr = [];
     for (var param in result) {
         arr = arr.concat(result[param]);
     }
-    console.log(arr);
+    return arr;
 }
 
 export function getDate() {
