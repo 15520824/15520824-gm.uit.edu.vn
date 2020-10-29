@@ -3706,20 +3706,23 @@ function compareIncrease(valueA, valueB) {
 function sortArray(arr, index, increase = true) {
     var check = [];
     var result = [];
-    var index;
+    var indexLength;
+
+    if (arr.length === 0)
+        return [];
     for (var i = 0; i < arr.length; i++) {
         var object = arr[i].getRowMerge;
         if (check[JSON.stringify(JSON.stringify(object))])
             continue;
-        index = object.length;
+        indexLength = object.length;
         for (var j = 0; j < object.length; j++) {
             if (check[JSON.stringify(object[j])]) {
-                index--;
+                indexLength--;
                 continue;
             }
             check[JSON.stringify(object[j])] = object[j];
         }
-        if (index > 0) {
+        if (indexLength > 0) {
             check[JSON.stringify(object)] = object;
             result.push(object);
         }
@@ -3739,10 +3742,10 @@ function sortArray(arr, index, increase = true) {
                 valueB = b[index];
             return compareIncrease(valueA, valueB);
         })
-        if (arr.length !== 0)
-            if (arr[arr.length - 1].length === 1) {
-                if (arr[arr.length - 1][0].child !== undefined)
-                    arr[arr.length - 1][0].child = sortArray(arr[arr.length - 1][0].child, index, increase);
+        if (result.length !== 0)
+            if (result[result.length - 1].length === 1) {
+                if (result[result.length - 1][0].child !== undefined)
+                    result[result.length - 1][0].child = sortArray(result[result.length - 1][0].child, index, increase);
             }
     } else {
         result.sort(function(prev, next) {
@@ -3759,10 +3762,10 @@ function sortArray(arr, index, increase = true) {
                 valueB = b[index];
             return compareIncrease(valueB, valueA);
         })
-        if (arr.length !== 0)
-            if (arr[arr.length - 1].length === 1) {
-                if (arr[arr.length - 1][0].child !== undefined)
-                    arr[arr.length - 1][0].child = sortArray(arr[arr.length - 1][0].child, index, increase);
+        if (result.length !== 0)
+            if (result[result.length - 1].length === 1) {
+                if (result[result.length - 1][0].child !== undefined)
+                    result[result.length - 1][0].child = sortArray(result[result.length - 1][0].child, index, increase);
             }
     }
     arr = [];
