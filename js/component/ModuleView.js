@@ -1689,36 +1689,38 @@ tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
             if (checkSpan[i] !== undefined) {
                 if (checkSpan[i][j] == 2) {
                     var rowMerge = arr[i - 1].getRowMerge;
-                    rowMerge.push(arr[i]);
-                    var define = arr[i - 1][j];
-                    Object.defineProperty(arr[i], j, {
-                        get: function(define) {
-                            return function() {
-                                return define;
-                            }
-                        }(define),
+                    if (rowMerge.indexOf(arr[i]) === -1) {
+                        rowMerge.push(arr[i]);
+                        var define = arr[i - 1][j];
+                        Object.defineProperty(arr[i], j, {
+                            get: function(define) {
+                                return function() {
+                                    return define;
+                                }
+                            }(define),
 
-                        set: function(define) {
-                            return function(value) {
-                                define = value;
+                            set: function(define) {
+                                return function(value) {
+                                    define = value;
+                                }
                             }
-                        }
-                    });
-                    Object.defineProperty(arr[i], "getRowMerge", {
-                        get: function(rowMerge) {
-                            return function() {
-                                return rowMerge;
-                            }
-                        }(rowMerge),
+                        });
+                        Object.defineProperty(arr[i], "getRowMerge", {
+                            get: function(rowMerge) {
+                                return function() {
+                                    return rowMerge;
+                                }
+                            }(rowMerge),
 
-                        set: function(rowMerge) {
-                            return function(value) {
-                                rowMerge = value;
-                            }
-                        }(rowMerge),
+                            set: function(rowMerge) {
+                                return function(value) {
+                                    rowMerge = value;
+                                }
+                            }(rowMerge),
 
-                        configurable: true
-                    });
+                            configurable: true
+                        });
+                    }
                 }
 
                 if (checkSpan[i][j] == 6) {
@@ -2370,29 +2372,31 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
     if (checkSpan[i] !== undefined) {
         if (checkSpan[i][j] == 2) {
             var rowMerge = result.data[i - 1].getRowMerge;
-            if (rowMerge.indexOf(result.data[i]) === -1)
+            if (rowMerge.indexOf(result.data[i]) === -1) {
                 rowMerge.push(result.data[i]);
-            var define = result.data[i - 1][j];
-            Object.defineProperty(dataOld, j, {
-                get() {
-                    return define;
-                },
+                var define = result.data[i - 1][j];
+                Object.defineProperty(dataOld, j, {
+                    get() {
+                        return define;
+                    },
 
-                set(value) {
-                    define = value;
-                }
-            });
-            Object.defineProperty(result.data[i], "getRowMerge", {
-                get() {
-                    return rowMerge;
-                },
+                    set(value) {
+                        define = value;
+                    }
+                });
+                Object.defineProperty(result.data[i], "getRowMerge", {
+                    get() {
+                        return rowMerge;
+                    },
 
-                set(value) {
-                    rowMerge = value;
-                },
+                    set(value) {
+                        rowMerge = value;
+                    },
 
-                configurable: true
-            });
+                    configurable: true
+                });
+            }
+
             return 2;
         }
         if (checkSpan[i][j] == 6) {
