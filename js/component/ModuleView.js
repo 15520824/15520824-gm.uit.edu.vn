@@ -2380,6 +2380,9 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
         localData = result.data.child;
     }
     i = localData.indexOf(dataOld);
+    if (i === -1) {
+        i = realIndex;
+    }
     if (checkSpan[i] !== undefined) {
         if (checkSpan[i][j] == 2) {
             var rowMerge = localData[i - 1].getRowMerge;

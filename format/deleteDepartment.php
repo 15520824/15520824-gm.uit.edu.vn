@@ -44,7 +44,7 @@ if($WHERE!="")
     $WHERE = " WHERE (".$WHERE.")";
     $result = $connector->query("DELETE FROM ".$prefix.$tableName.$WHERE);
     $arrayDelete = array();
-    delete($connector,$prefix.$tableName,$data["id"],$arrayDelete);
+    delete($connector,$prefix.$tableName,$data["id"],$arrayDelete,$prefix);
     echo "ok".EncodingClass::fromVariable(array(
         "data"=>$result,
         "delete"=>$arrayDelete
@@ -53,7 +53,7 @@ if($WHERE!="")
 }else
 echo "BAD_REQUEST (400)";
 
-function delete($connector,$tableName,$parent_id,&$arrayDelete)
+function delete($connector,$tableName,$parent_id,&$arrayDelete,$prefix)
 {
     $tempData = $connector->load($tableName,"parent_id = ".$parent_id);
     $count = count($tempData);
@@ -62,7 +62,7 @@ function delete($connector,$tableName,$parent_id,&$arrayDelete)
         for($i = 0;$i<$count;$i++)
         {
             array_push($arrayDelete,array("departments"=>$tempData[$i]));
-            delete($connector,$tableName,$tempData[$i]["id"],$arrayDelete);
+            delete($connector,$tableName,$tempData[$i]["id"],$arrayDelete,$prefix);
         }
         $result = $connector->query("DELETE FROM ".$tableName." WHERE (parent_id=".$parent_id.")");
     }
