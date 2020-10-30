@@ -2116,7 +2116,7 @@ tableView.prototype.pagination = function(number, functionClick) {
         if (active !== undefined)
             return active.index;
         else
-            return -1;
+            return 1;
     }
 
     return temp;

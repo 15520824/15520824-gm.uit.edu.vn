@@ -246,9 +246,6 @@ ListWard.prototype.getView = function() {
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view), 2);
         self.mTable.addFilter(self.listWardElement, 3);
         self.mTable.addFilter(self.listStateElement, 4);
-        self.mTable.insertLastRow(function() {
-            return ["50", {}, {}, {}, {}, {}];
-        })
     })
 
     this.searchControl = this.searchControlContent();
