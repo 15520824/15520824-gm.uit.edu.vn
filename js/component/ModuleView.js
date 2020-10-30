@@ -2373,14 +2373,20 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
     var result = this,
         value, bonus, style, classList, cell;
     var realIndex = i;
-    i = result.data.indexOf(dataOld);
+    var localData;
+    if (result.tagName === "DIV") {
+        localData = result.data;
+    } else {
+        localData = result.data.child;
+    }
+    i = localData.indexOf(dataOld);
     if (checkSpan[i] !== undefined) {
         if (checkSpan[i][j] == 2) {
-            var rowMerge = result.data[i - 1].getRowMerge;
-            if (rowMerge.indexOf(result.data[i]) === -1) {
-                rowMerge.push(result.data[i]);
+            var rowMerge = localData[i - 1].getRowMerge;
+            if (rowMerge.indexOf(localData[i]) === -1) {
+                rowMerge.push(localData[i]);
             }
-            Object.defineProperty(result.data[i], "getRowMerge", {
+            Object.defineProperty(localData[i], "getRowMerge", {
                 get() {
                     return rowMerge;
                 },
@@ -2391,7 +2397,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
 
                 configurable: true
             });
-            var define = result.data[i - 1][j];
+            var define = localData[i - 1][j];
             Object.defineProperty(dataOld, j, {
                 get() {
                     return define;
@@ -2715,11 +2721,11 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
             checkSpan[l][j] = 2;
         }
         data.rowspan = undefined;
-    } else if (realIndex !== -1)
-        if (typeof result.data[i + 1] === "object" && ((typeof result.data[i][j] === "object") && (typeof result.data[i + 1][j] === "object"))) {
+    } else if (realIndex !== -1) {
+        if (typeof localData[i + 1] === "object" && ((typeof localData[i][j] === "object") && (typeof localData[i + 1][j] === "object"))) {
             var index = 1;
-            for (var l = i + 1; l < result.data.length; l++) {
-                if (result.data[i][j] === result.data[l][j]) {
+            for (var l = i + 1; l < localData.length; l++) {
+                if (localData[i][j] === localData[l][j]) {
                     if (checkSpan[l] === undefined)
                         checkSpan[l] = [];
                     checkSpan[l][j] = 2;
@@ -2734,6 +2740,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
                         orther.a += index - 1;
             }
         }
+    }
     if (data.colspan !== undefined) {
         cell.setAttribute("colspan", data.colspan);
         checkSpan[i] = [];
