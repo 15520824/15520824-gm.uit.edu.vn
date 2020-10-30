@@ -1140,12 +1140,12 @@ tableView.prototype.getCellHeader = function(header, i) {
                 last_sort.classList.remove("upgrade");
             }
             if (!me.classList.contains("downgrade")) {
-                result.data = sortArray(result.data, index);
+                sortArray(result.data, index);
                 me.classList.add("downgrade");
                 if (me.classList.contains("upgrade"))
                     me.classList.remove("upgrade");
             } else {
-                result.data = sortArray(result.data, index, false);
+                sortArray(result.data, index, false);
                 me.classList.add("upgrade");
                 if (me.classList.contains("downgrade"))
                     me.classList.remove("downgrade");
@@ -3757,8 +3757,9 @@ function sortArray(arr, index, increase = true) {
             var a = prev[0];
             var b = next[0];
             if (prev.length === 1)
-                if (a.child !== undefined)
-                    a.child = sortArray(a.child, index, increase);
+                if (a.child !== undefined) {
+                    sortArray(a.child, index, increase);
+                }
             var valueA = a[index].value;
             var valueB = b[index].value;
             if (valueA === undefined)
@@ -3770,7 +3771,7 @@ function sortArray(arr, index, increase = true) {
         if (result.length !== 0)
             if (result[result.length - 1].length === 1) {
                 if (result[result.length - 1][0].child !== undefined)
-                    result[result.length - 1][0].child = sortArray(result[result.length - 1][0].child, index, increase);
+                    sortArray(result[result.length - 1][0].child, index, increase);
             }
     } else {
         result.sort(function(prev, next) {
@@ -3778,7 +3779,7 @@ function sortArray(arr, index, increase = true) {
             var b = next[0];
             if (prev.length === 1)
                 if (a.child !== undefined)
-                    a.child = sortArray(a.child, index, increase);
+                    sortArray(a.child, index, increase);
             var valueA = a[index].value;
             var valueB = b[index].value;
             if (valueA === undefined)
@@ -3790,12 +3791,14 @@ function sortArray(arr, index, increase = true) {
         if (result.length !== 0)
             if (result[result.length - 1].length === 1) {
                 if (result[result.length - 1][0].child !== undefined)
-                    result[result.length - 1][0].child = sortArray(result[result.length - 1][0].child, index, increase);
+                    sortArray(result[result.length - 1][0].child, index, increase);
             }
     }
-    arr = [];
+    arr.splice(0, arr.length);
     for (var param in result) {
-        arr = arr.concat(result[param]);
+        for (var i = 0; i < result[param].length; i++) {
+            arr.push(result[param][i]);
+        }
     }
     return arr;
 }
