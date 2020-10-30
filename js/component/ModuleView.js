@@ -2119,6 +2119,10 @@ tableView.prototype.pagination = function(number, functionClick) {
             return 1;
     }
 
+    this.getPaginationLength = function() {
+        return countPrecent;
+    }
+
     return temp;
 }
 
@@ -2969,6 +2973,7 @@ tableView.prototype.lastRowElement = function() {
                 }
                 row.addChild(cell);
             }
+            this.lastElement = row;
         }
     }
 }
