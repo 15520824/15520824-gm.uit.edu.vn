@@ -1657,6 +1657,7 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
     data.ortherFilter = undefined;
     data.updateVisible = undefined;
     result.childrenNodes = result.childrenNodes.concat(arr);
+    result.lastRowElement();
     // this.indexRow = 0;
     return arr;
 }
@@ -2427,14 +2428,129 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
         case "hidden":
             return true;
         case "increase":
-            value += (realIndex + 1);
+            if (value === "")
+                value += (realIndex + 1);
             break;
         case "dragzone":
-            if (data.icon !== undefined) {
-                icon = data.icon;
+            if (realIndex !== -1) {
+                if (data.icon !== undefined) {
+                    icon = data.icon;
+                    bonus = _({
+                        tag: "i",
+                        class: ["material-icons"],
+                        style: {
+                            fontSize: "20px",
+                            cursor: "pointer"
+                        },
+                        props: {
+                            innerHTML: icon
+                        }
+                    })
+                } else {
+                    bonus = _({
+                        tag: "i",
+                        class: ["material-icons", "drag-icon-button"],
+                        props: {
+                            innerHTML: "drag_indicator"
+                        },
+                        on: {
+                            // mousedown: result.dragVertical ? function (event) {
+                            //     var self = this;
+                            //     return function (event, cellIndex, self) {
+                            //         event.preventDefault();
+                            //         var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+                            //         self.hold = false;
+                            //         var dom = self;
+                            //         self.default = event;
+                            //         self.timeoutID = setTimeout(function () {
+                            //             dom.hold = true;
+                            //             moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
+                            //         }, 200);
+                            //     }(event, cell, self)
+                            // } : undefined,
+                            // dragstart: result.dragVertical ? function () {
+                            //     return false;
+                            // } : undefined,
+                            // mouseup: function () {
+                            //     if (this.hold === false) {
+                            //         this.hold = true;
+                            //         // this.click();
+                            //         clearTimeout(this.timeoutID);
+                            //     }
+                            // },
+                            // mousemove: result.dragVertical ? function (event) {
+                            //     var self = this;
+                            //     return function (event, cellIndex, self) {
+                            //         if (self.hold === false) {
+                            //             var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+                            //             self.hold = false;
+                            //             var deltaX = self.default.clientX - event.clientX,
+                            //                 deltaY = self.default.clientY - event.clientY;
+                            //             if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
+                            //                 self.hold = true;
+                            //                 moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
+                            //                 clearTimeout(self.timeoutID);
+                            //             }
+                            //         }
+                            //     }(event, cell, self)
+                            // } : undefined,
+                        }
+                    })
+                }
+            }
+            break;
+        case "check":
+            if (realIndex !== -1) {
+                bonus = _({
+                    tag: "checkboxbutton",
+                    class: "pizo-checkbox",
+                    on: {
+                        change: function(event) {
+                            if (result.bodyTable.listCheckBox !== undefined) {
+                                if (this.checked === false)
+                                    result.bodyTable.listCheckBox[0].checked = false;
+                                else {
+                                    if (result.bodyTable.listCheckBox[0].checked === false)
+                                        for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                                            if (result.bodyTable.listCheckBox[j].checked === false) {
+                                                j--;
+                                                break;
+                                            }
+                                        }
+                                    if (j === result.bodyTable.listCheckBox.length) {
+                                        result.bodyTable.listCheckBox[0].checked = true;
+                                    }
+                                }
+                                this.update();
+                            }
+                        }
+                    }
+                });
+                bonus.update = function(checked) {
+                    if (checked == undefined)
+                        dataOrigin.value = this.checked;
+                    else {
+                        dataOrigin.value = checked;
+                        if (this.checked != checked) {
+                            this.checked = checked;
+                            this.emit("change");
+                        }
+                    }
+                }
+                if (dataOrigin.value === true)
+                    bonus.checked = dataOrigin.value;
+                if (result.bodyTable.listCheckBox !== undefined)
+                    result.bodyTable.listCheckBox.push(bonus);
+            }
+            break;
+        case "detail":
+            if (realIndex !== -1) {
+                var icon = "more_vert";
+                if (data.icon !== undefined)
+                    icon = data.icon;
                 bonus = _({
                     tag: "i",
-                    class: ["material-icons"],
+                    class: "material-icons",
                     style: {
                         fontSize: "20px",
                         cursor: "pointer"
@@ -2443,115 +2559,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
                         innerHTML: icon
                     }
                 })
-            } else {
-                bonus = _({
-                    tag: "i",
-                    class: ["material-icons", "drag-icon-button"],
-                    props: {
-                        innerHTML: "drag_indicator"
-                    },
-                    on: {
-                        // mousedown: result.dragVertical ? function (event) {
-                        //     var self = this;
-                        //     return function (event, cellIndex, self) {
-                        //         event.preventDefault();
-                        //         var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
-                        //         self.hold = false;
-                        //         var dom = self;
-                        //         self.default = event;
-                        //         self.timeoutID = setTimeout(function () {
-                        //             dom.hold = true;
-                        //             moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
-                        //         }, 200);
-                        //     }(event, cell, self)
-                        // } : undefined,
-                        // dragstart: result.dragVertical ? function () {
-                        //     return false;
-                        // } : undefined,
-                        // mouseup: function () {
-                        //     if (this.hold === false) {
-                        //         this.hold = true;
-                        //         // this.click();
-                        //         clearTimeout(this.timeoutID);
-                        //     }
-                        // },
-                        // mousemove: result.dragVertical ? function (event) {
-                        //     var self = this;
-                        //     return function (event, cellIndex, self) {
-                        //         if (self.hold === false) {
-                        //             var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
-                        //             self.hold = false;
-                        //             var deltaX = self.default.clientX - event.clientX,
-                        //                 deltaY = self.default.clientY - event.clientY;
-                        //             if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
-                        //                 self.hold = true;
-                        //                 moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
-                        //                 clearTimeout(self.timeoutID);
-                        //             }
-                        //         }
-                        //     }(event, cell, self)
-                        // } : undefined,
-                    }
-                })
             }
-            break;
-        case "check":
-            bonus = _({
-                tag: "checkboxbutton",
-                class: "pizo-checkbox",
-                on: {
-                    change: function(event) {
-                        if (result.bodyTable.listCheckBox !== undefined) {
-                            if (this.checked === false)
-                                result.bodyTable.listCheckBox[0].checked = false;
-                            else {
-                                if (result.bodyTable.listCheckBox[0].checked === false)
-                                    for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                                        if (result.bodyTable.listCheckBox[j].checked === false) {
-                                            j--;
-                                            break;
-                                        }
-                                    }
-                                if (j === result.bodyTable.listCheckBox.length) {
-                                    result.bodyTable.listCheckBox[0].checked = true;
-                                }
-                            }
-                            this.update();
-                        }
-                    }
-                }
-            });
-            bonus.update = function(checked) {
-                if (checked == undefined)
-                    dataOrigin.value = this.checked;
-                else {
-                    dataOrigin.value = checked;
-                    if (this.checked != checked) {
-                        this.checked = checked;
-                        this.emit("change");
-                    }
-                }
-            }
-            if (dataOrigin.value === true)
-                bonus.checked = dataOrigin.value;
-            if (result.bodyTable.listCheckBox !== undefined)
-                result.bodyTable.listCheckBox.push(bonus);
-            break;
-        case "detail":
-            var icon = "more_vert";
-            if (data.icon !== undefined)
-                icon = data.icon;
-            bonus = _({
-                tag: "i",
-                class: "material-icons",
-                style: {
-                    fontSize: "20px",
-                    cursor: "pointer"
-                },
-                props: {
-                    innerHTML: icon
-                }
-            })
             break;
 
     }
@@ -2703,24 +2711,25 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
             checkSpan[l][j] = 2;
         }
         data.rowspan = undefined;
-    } else if (typeof result.data[i + 1] === "object" && ((typeof result.data[i][j] === "object") && (typeof result.data[i + 1][j] === "object"))) {
-        var index = 1;
-        for (var l = i + 1; l < result.data.length; l++) {
-            if (result.data[i][j] === result.data[l][j]) {
-                if (checkSpan[l] === undefined)
-                    checkSpan[l] = [];
-                checkSpan[l][j] = 2;
-                index++;
-            } else
-                break;
+    } else if (realIndex !== -1)
+        if (typeof result.data[i + 1] === "object" && ((typeof result.data[i][j] === "object") && (typeof result.data[i + 1][j] === "object"))) {
+            var index = 1;
+            for (var l = i + 1; l < result.data.length; l++) {
+                if (result.data[i][j] === result.data[l][j]) {
+                    if (checkSpan[l] === undefined)
+                        checkSpan[l] = [];
+                    checkSpan[l][j] = 2;
+                    index++;
+                } else
+                    break;
+            }
+            if (index > 1) {
+                cell.setAttribute("rowspan", index);
+                if (orther)
+                    if (orther.a < index - 1)
+                        orther.a += index - 1;
+            }
         }
-        if (index > 1) {
-            cell.setAttribute("rowspan", index);
-            if (orther)
-                if (orther.a < index - 1)
-                    orther.a += index - 1;
-        }
-    }
     if (data.colspan !== undefined) {
         cell.setAttribute("colspan", data.colspan);
         checkSpan[i] = [];
@@ -2728,21 +2737,22 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
             checkSpan[i][l] = 6;
         }
         data.colspan = undefined;
-    } else if ((typeof dataOld[j] === "object") && (typeof dataOld[j + 1] === "object")) {
-        var index = 1;
-        for (var l = j + 1; l < dataOld.length; l++) {
-            if (dataOld[j] === dataOld[l]) {
-                if (checkSpan[i] === undefined)
-                    checkSpan[i] = [];
-                checkSpan[i][l] = 6;
-                index++;
-            } else
-                break;
+    } else if (realIndex !== -1)
+        if ((typeof dataOld[j] === "object") && (typeof dataOld[j + 1] === "object")) {
+            var index = 1;
+            for (var l = j + 1; l < dataOld.length; l++) {
+                if (dataOld[j] === dataOld[l]) {
+                    if (checkSpan[i] === undefined)
+                        checkSpan[i] = [];
+                    checkSpan[i][l] = 6;
+                    index++;
+                } else
+                    break;
+            }
+            if (index > 1) {
+                cell.setAttribute("colspan", index);
+            }
         }
-        if (index > 1) {
-            cell.setAttribute("colspan", index);
-        }
-    }
     cell.getParentNode = function() {
         var parent = cell.clone[0][0];
         parent = parent;
@@ -2929,6 +2939,38 @@ tableView.prototype.insertRow = function(data, checkMust = false) {
     result.realTable.parentNode.updateHash(row);
     this.setUpSwipe();
     return row;
+}
+
+tableView.prototype.insertLastRow = function(functionLast) {
+    this.functionLast = functionLast;
+    this.lastRowElement();
+}
+
+tableView.prototype.lastRowElement = function() {
+    if (this.functionLast) {
+        if (this.tagName === "DIV") {
+            var tempDataLast = [];
+            for (var i = 0; i < this.childrenNodes.length; i++) {
+                tempDataLast.push(this.childrenNodes[i].data);
+            }
+            var tempLast = this.functionLast(tempDataLast, this.childrenNodes, this.getPaginationIndex());
+            var row = this.getRow(tempLast);
+            this.bodyTable.addChild(row);
+
+            for (var j = 0; j < this.realTable.parentNode.clone.length; j++) {
+                var k = parseFloat(this.realTable.parentNode.clone[j][0].id);
+
+                var cell = this.getCell(tempLast, -1, k, j, this.checkSpan, row);
+                if (cell === 6 || cell === 2) {
+                    continue;
+                }
+                if (cell === true) {
+                    continue;
+                }
+                row.addChild(cell);
+            }
+        }
+    }
 }
 
 tableView.prototype.updateRow = function(data, index, checkMust = false) {
