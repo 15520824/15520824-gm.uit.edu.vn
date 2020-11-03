@@ -17,13 +17,15 @@
     position: relative;
 }
 
-.image-show__close > .fa-close, .image-show__close > .quote-base__close-icon {
+.image-show__close>.fa-close,
+.image-show__close>.quote-base__close-icon {
     font-size: 0.8571rem;
     color: white;
     padding: 0rem;
 }
 
-.fa-close:before, .quote-base__close-icon:before {
+.fa-close:before,
+.quote-base__close-icon:before {
     content: "close";
 }
 
@@ -31,17 +33,41 @@
     float: right;
 }
 
-i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
+i.btn.fa.fa-chevron-right.unclickable,
+i.btn.fa.fa-chevron-left.unclickable {
     pointer-events: none;
     cursor: default;
     color: rgb(152, 152, 152);
 }
-.clickable, .txt-clickable, .chat-message__actions__btn, .chat-resend, .sticker-selector__menu__item, .slideshow__bottom__dot {
+
+.clickable,
+.txt-clickable,
+.chat-message__actions__btn,
+.chat-resend,
+.sticker-selector__menu__item,
+.slideshow__bottom__dot {
     cursor: pointer;
     -webkit-app-region: no-drag;
 }
 
-.fa, .image-placeholder, .media-store-preview-item__picture, .image-show__thumb, .card--group-photo__row__item img.card--group-photo__row__item__photo, img.chat-message-picture__photo, .chat-message-picture__gif__thumb, .chat-message-picture__photo > img, .quote-banner-thumb, .link-placeholder, .link-thumb, .link-thumb.default, .thumb-img-suggest, .card--link-img, .card--link-img.default, .media-item__file-type.photo, .cb-info-file-item-overlay__check, .quote-base__close-icon, .file-tick__icon-setting {
+.image-placeholder,
+.media-store-preview-item__picture,
+.image-show__thumb,
+.card--group-photo__row__item img.card--group-photo__row__item__photo,
+img.chat-message-picture__photo,
+.chat-message-picture__gif__thumb,
+.chat-message-picture__photo>img,
+.quote-banner-thumb,
+.link-placeholder,
+.link-thumb,
+.link-thumb.default,
+.thumb-img-suggest,
+.card--link-img,
+.card--link-img.default,
+.media-item__file-type.photo,
+.cb-info-file-item-overlay__check,
+.quote-base__close-icon,
+.file-tick__icon-setting {
     display: inline-block;
     font: normal normal normal 1rem/1 'zalo-font';
     font-size: inherit;
@@ -98,7 +124,7 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     transition: opacity 1s linear;
 }
 
-.image-show__btnc__fullscreen{
+.image-show__btnc__fullscreen {
     position: absolute;
     bottom: 0;
     right: 0.6429rem;
@@ -116,7 +142,8 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     pointer-events: auto;
 }
 
-.image-show__bottom__ctrl > .btn:hover, .image-show__bottom__ctrl > a > .btn:hover {
+.image-show__bottom__ctrl>.btn:hover,
+.image-show__bottom__ctrl>a>.btn:hover {
     color: #0068ff;
 }
 
@@ -136,7 +163,7 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     text-align: center;
 }
 
-.image-show__btn__inside > .fa-chevron-left {
+.image-show__btn__inside>.fa-chevron-left {
     margin-top: 0.9286rem;
     margin-right: 0.2857rem;
 }
@@ -150,7 +177,9 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     max-height: 100%;
 }
 
-.fadeIn, .fadeInShort, .fadeInImageShow {
+.fadeIn,
+.fadeInShort,
+.fadeInImageShow {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
 }
@@ -160,7 +189,6 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     transition: transform 0.1s ease-out;
     max-width: 100%;
     user-select: none;
-
     cursor: default;
     vertical-align: middle;
     display: inline-block;
@@ -171,7 +199,16 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     animation-duration: .4s;
 }
 
-.flx-fix, header, .chat-info-general__options, .chat-info-general__section__header, .avatar, .thumb-img-suggest, .chat-date > span, .card--link-img, .card--link-img.default, .chat-onboard__icon {
+.flx-fix,
+header,
+.chat-info-general__options,
+.chat-info-general__section__header,
+.avatar,
+.thumb-img-suggest,
+.chat-date>span,
+.card--link-img,
+.card--link-img.default,
+.chat-onboard__icon {
     flex: 0 0 auto;
 }
 
@@ -182,7 +219,7 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     opacity: 0.2;
 }
 
-.image-show__btn__inside > .fa-chevron-right {
+.image-show__btn__inside>.fa-chevron-right {
     margin-top: 0.9286rem;
     margin-left: 0.1429rem;
 }
@@ -228,15 +265,22 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     font-size: 1.2143rem;
 }
 
-.dib, .chat-box-member__info, .image-show__bottom__sender > .avatar, .image-show__bottom__sender__info, .chat-input__img-preview__thumb {
+.dib,
+.chat-box-member__info,
+.image-show__bottom__sender>.avatar,
+.image-show__bottom__sender__info,
+.chat-input__img-preview__thumb {
     display: inline-block;
 }
 
-.fl-l, .image-show__bottom__sender > .avatar, .image-show__bottom__sender__info, .chat-input__img-preview__thumb {
+.fl-l,
+.image-show__bottom__sender>.avatar,
+.image-show__bottom__sender__info,
+.chat-input__img-preview__thumb {
     float: left;
 }
 
-.image-show__bottom__sender > .avatar {
+.image-show__bottom__sender>.avatar {
     margin-top: 0.3929rem;
     margin-right: 1rem;
     margin-left: 1rem;
@@ -248,30 +292,72 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     width: calc(100% - 6.4286rem);
 }
 
-.bg-center, .link-thumb, .link-thumb.default, .avatar-img, .avatar-img.avatar-number-m, #zalo, .thumb-img-suggest, .chat-input__img-preview__thumb, .card--link-img, .card--link-img.default, .message-view__blur, .message-info_num, .sticker-selector__menu__item, .gif__thumb {
+.bg-center,
+.link-thumb,
+.link-thumb.default,
+.avatar-img,
+.avatar-img.avatar-number-m,
+#zalo,
+.thumb-img-suggest,
+.chat-input__img-preview__thumb,
+.card--link-img,
+.card--link-img.default,
+.message-view__blur,
+.message-info_num,
+.sticker-selector__menu__item,
+.gif__thumb {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
 }
 
-.avatar-img, .avatar-img.avatar-number-m {
+.avatar-img,
+.avatar-img.avatar-number-m {
     border-radius: 100%;
 }
 
-.avatar--xs > .avatar-img {
+.avatar--xs>.avatar-img {
     width: 2.8571rem;
     height: 2.8571rem;
     background-color: #c9d4e5;
 }
 
-.truncate, .chat-box-member__info__name, .item-title-name, .item-message, .file-banner-content__sender-name, .file-banner-content__full-name, .cb-info-file-item__send-date, .cb-info-file-item__file-size, .cb-info-file-item__suggest-preview-file, .cb-info-file-item__suggest-preview-folder, .cb-info-file-item__error-msg, .search-result-file__send-date, .search-result-file__file-size, .search-result-file__suggest-preview-file, .search-result-file__suggest-preview-folder, .search-result-file__file-name, .search-result-file__file-name-seg, .file-progress-row__start-text, .file-progress-row__end-text, .quote-file__name, .quote-file__text, .file-suggest-item__name, .file-suggest-item__size, .file-suggest-item__conversation, .file-star-msg-content__title, .file-star-msg-content__size, .file-message__content-title, .file-message__content-error, .fmsg-send-time__error-msg {
+.truncate,
+.chat-box-member__info__name,
+.item-title-name,
+.item-message,
+.file-banner-content__sender-name,
+.file-banner-content__full-name,
+.cb-info-file-item__send-date,
+.cb-info-file-item__file-size,
+.cb-info-file-item__suggest-preview-file,
+.cb-info-file-item__suggest-preview-folder,
+.cb-info-file-item__error-msg,
+.search-result-file__send-date,
+.search-result-file__file-size,
+.search-result-file__suggest-preview-file,
+.search-result-file__suggest-preview-folder,
+.search-result-file__file-name,
+.search-result-file__file-name-seg,
+.file-progress-row__start-text,
+.file-progress-row__end-text,
+.quote-file__name,
+.quote-file__text,
+.file-suggest-item__name,
+.file-suggest-item__size,
+.file-suggest-item__conversation,
+.file-star-msg-content__title,
+.file-star-msg-content__size,
+.file-message__content-title,
+.file-message__content-error,
+.fmsg-send-time__error-msg {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     word-wrap: break-word;
 }
 
-.image-show__bottom__sender__info > div:first-child {
+.image-show__bottom__sender__info>div:first-child {
     margin-top: 0.4286rem;
     margin-bottom: 0.1429rem;
 }
@@ -290,20 +376,38 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     color: #83878d;
 }
 
-.image-show__bottom__ctrl > .btn, .image-show__bottom__ctrl > a > .btn {
+.image-show__bottom__ctrl>.btn,
+.image-show__bottom__ctrl>a>.btn {
     color: white;
     font-size: 1.5714rem;
     margin: 0;
     padding-right: 1.4286rem;
 }
 
-.image-show__bottom__ctrl > .btn.fa-chevron-left, .image-show__bottom__ctrl > a > .btn.fa-chevron-left {
+.image-show__bottom__ctrl>.btn.fa-chevron-left,
+.image-show__bottom__ctrl>a>.btn.fa-chevron-left {
     padding-right: 0.5714rem;
     font-size: 1.6429rem;
 }
 
-
-.fa:before, .image-placeholder:before, .media-store-preview-item__picture:before, .image-show__thumb:before, .card--group-photo__row__item img.card--group-photo__row__item__photo:before, img.chat-message-picture__photo:before, .chat-message-picture__gif__thumb:before, .chat-message-picture__photo > img:before, .quote-banner-thumb:before, .link-placeholder:before, .link-thumb:before, .link-thumb.default:before, .thumb-img-suggest:before, .card--link-img:before, .card--link-img.default:before, .media-item__file-type.photo:before, .cb-info-file-item-overlay__check:before, .quote-base__close-icon:before, .file-tick__icon-setting:before {
+.image-placeholder:before,
+.media-store-preview-item__picture:before,
+.image-show__thumb:before,
+.card--group-photo__row__item img.card--group-photo__row__item__photo:before,
+img.chat-message-picture__photo:before,
+.chat-message-picture__gif__thumb:before,
+.chat-message-picture__photo>img:before,
+.quote-banner-thumb:before,
+.link-placeholder:before,
+.link-thumb:before,
+.link-thumb.default:before,
+.thumb-img-suggest:before,
+.card--link-img:before,
+.card--link-img.default:before,
+.media-item__file-type.photo:before,
+.cb-info-file-item-overlay__check:before,
+.quote-base__close-icon:before,
+.file-tick__icon-setting:before {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
@@ -319,7 +423,8 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     -webkit-font-smoothing: antialiased;
 }
 
-.image-show__bottom__ctrl > .btn.fa-chevron-right, .image-show__bottom__ctrl > a > .btn.fa-chevron-right {
+.image-show__bottom__ctrl>.btn.fa-chevron-right,
+.image-show__bottom__ctrl>a>.btn.fa-chevron-right {
     padding-left: 0.6429rem;
     padding-right: 0.5714rem;
     font-size: 1.6429rem;
@@ -329,7 +434,7 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     padding-right: 0;
 }
 
-#image-show-forward > i {
+#image-show-forward>i {
     padding: 0 0.8571rem;
     font-size: 1.2143rem;
     position: relative;
@@ -343,7 +448,14 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     padding-right: 0;
 }
 
-.image-show__bottom__ctrl > .btn.fa-download, .image-show__bottom__ctrl > .btn.fa-rotate-left, .image-show__bottom__ctrl > .btn.fa-rotate-right, .image-show__bottom__ctrl > a > .btn.fa-download, .image-show__bottom__ctrl > a > .btn.fa-rotate-left, .image-show__bottom__ctrl > a > .btn.fa-rotate-right,.image-show__bottom__ctrl > a > .btn.fa-more-option,.image-show__bottom__ctrl > .btn.fa-more-option {
+.image-show__bottom__ctrl>.btn.fa-download,
+.image-show__bottom__ctrl>.btn.fa-rotate-left,
+.image-show__bottom__ctrl>.btn.fa-rotate-right,
+.image-show__bottom__ctrl>a>.btn.fa-download,
+.image-show__bottom__ctrl>a>.btn.fa-rotate-left,
+.image-show__bottom__ctrl>a>.btn.fa-rotate-right,
+.image-show__bottom__ctrl>a>.btn.fa-more-option,
+.image-show__bottom__ctrl>.btn.fa-more-option {
     padding-left: 0.8571rem;
     padding-right: 0.8571rem;
 }
@@ -388,14 +500,16 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     height: 5.7143rem;
 }
 
-.image-show__thumb-container.selected .image-show__thumb, .image-show__thumb.chat-message.first-selected, .image-show__thumb.chat-message.last-selected {
+.image-show__thumb-container.selected .image-show__thumb,
+.image-show__thumb.chat-message.first-selected,
+.image-show__thumb.chat-message.last-selected {
     box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);
     -moz-box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);
     -webkit-box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);
     filter: brightness(100%);
 }
 
-.image-show__thumb-container.selected .image-show__thumb{
+.image-show__thumb-container.selected .image-show__thumb {
     width: 7.1429rem;
     height: 7.1429rem;
 }
@@ -409,13 +523,91 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     align-items: flex-end;
 }
 
-.flx, .snippet, .item-setting-action, header, #groupNameInput--change, .item-setting, .chat-info-general__action__item, .chat-info-general__section__header, .group-setting, .mg-item, .card, .card-content, .modal, .tab-content, .file-banner-content, .file-banner-content__thumb-container, .empty-btn, .rl-msg, .rl-msg .rl-msg-content, .cb-info-file-item__thumb-container, .search-result-file__thumb-container, .search-result-file__file-name, .file-progress-row, .file-actions-row, .file-suggest-item, .file-suggest-item__left-container, .file-suggest-item__right-container, .file-layout, .file-layout__thumb-container, .file-layout__right-container, .file-layout__top-container, .file-layout__bot-container, .file-star-msg-content, .file-star-msg-content__right-block, .fmsg-send-time, .entry-content-v2, .zl-label-add-more, .zl-modal, .pr-status-content, .header-title-container {
+.flx,
+.snippet,
+.item-setting-action,
+header,
+#groupNameInput--change,
+.item-setting,
+.chat-info-general__action__item,
+.chat-info-general__section__header,
+.group-setting,
+.mg-item,
+.card,
+.card-content,
+.modal,
+.tab-content,
+.file-banner-content,
+.file-banner-content__thumb-container,
+.empty-btn,
+.rl-msg,
+.rl-msg .rl-msg-content,
+.cb-info-file-item__thumb-container,
+.search-result-file__thumb-container,
+.search-result-file__file-name,
+.file-progress-row,
+.file-actions-row,
+.file-suggest-item,
+.file-suggest-item__left-container,
+.file-suggest-item__right-container,
+.file-layout,
+.file-layout__thumb-container,
+.file-layout__right-container,
+.file-layout__top-container,
+.file-layout__bot-container,
+.file-star-msg-content,
+.file-star-msg-content__right-block,
+.fmsg-send-time,
+.entry-content-v2,
+.zl-label-add-more,
+.zl-modal,
+.pr-status-content,
+.header-title-container {
     display: -webkit-flex;
     display: flex;
     flex-flow: row nowrap;
 }
 
-.flx, .snippet, .item-setting-action, header, #groupNameInput--change, .item-setting, .chat-info-general__action__item, .chat-info-general__section__header, .group-setting, .mg-item, .card, .card-content, .modal, .tab-content, .file-banner-content, .file-banner-content__thumb-container, .empty-btn, .rl-msg, .rl-msg .rl-msg-content, .cb-info-file-item__thumb-container, .search-result-file__thumb-container, .search-result-file__file-name, .file-progress-row, .file-actions-row, .file-suggest-item, .file-suggest-item__left-container, .file-suggest-item__right-container, .file-layout, .file-layout__thumb-container, .file-layout__right-container, .file-layout__top-container, .file-layout__bot-container, .file-star-msg-content, .file-star-msg-content__right-block, .fmsg-send-time, .entry-content-v2, .zl-label-add-more, .zl-modal, .pr-status-content, .header-title-container {
+.flx,
+.snippet,
+.item-setting-action,
+header,
+#groupNameInput--change,
+.item-setting,
+.chat-info-general__action__item,
+.chat-info-general__section__header,
+.group-setting,
+.mg-item,
+.card,
+.card-content,
+.modal,
+.tab-content,
+.file-banner-content,
+.file-banner-content__thumb-container,
+.empty-btn,
+.rl-msg,
+.rl-msg .rl-msg-content,
+.cb-info-file-item__thumb-container,
+.search-result-file__thumb-container,
+.search-result-file__file-name,
+.file-progress-row,
+.file-actions-row,
+.file-suggest-item,
+.file-suggest-item__left-container,
+.file-suggest-item__right-container,
+.file-layout,
+.file-layout__thumb-container,
+.file-layout__right-container,
+.file-layout__top-container,
+.file-layout__bot-container,
+.file-star-msg-content,
+.file-star-msg-content__right-block,
+.fmsg-send-time,
+.entry-content-v2,
+.zl-label-add-more,
+.zl-modal,
+.pr-status-content,
+.header-title-container {
     display: flex;
 }
 
@@ -496,7 +688,7 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     width: 6.0714rem;
 }
 
-.fadeInImageShowNoAnimation{
+.fadeInImageShowNoAnimation {
     -webkit-transition: none !important;
     -moz-transition: none !important;
     -o-transition: none !important;
@@ -533,7 +725,7 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     display: none !important;
 }
 
-.timeLineContainerCheck{
+.timeLineContainerCheck {
     display: flex;
     padding: 1.0714rem 0rem 0rem 1.0714rem;
     -webkit-transition: 1s ease-in-out;
@@ -542,6 +734,6 @@ i.btn.fa.fa-chevron-right.unclickable,i.btn.fa.fa-chevron-left.unclickable{
     transition: 1s ease-in-out;
 }
 
-.transformX-100{
+.transformX-100 {
     transform: translateX(-100%);
 }
