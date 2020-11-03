@@ -301,7 +301,7 @@ ListWard.prototype.formatDataRow = function(data) {
 ListWard.prototype.getDataRow = function(data, i) {
     if (i % 3 === 0) {
         var result = [
-            {},
+            { rowspan: 2 },
             data.id,
             { value: data.name, rowspan: 2 },
             { value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid, element: _({ text: this.checkWard[parseInt(data.districtid)].name }) },

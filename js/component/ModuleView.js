@@ -1562,6 +1562,7 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
     result.checkSpan = [];
     if (result.indexRow == undefined || result.indexRow == this.tempIndexRow)
         result.indexRow = 0;
+    var indexIncrease = { a: this.indexRow + startIndexCell };
     for (;
         (i < data.length && this.indexRow <= this.tempIndexRow + deltaLong); i++) {
         if (data[i].child !== undefined) {
@@ -1626,12 +1627,13 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
         temp.addChild(row);
         arr.push(row);
         var tempX = { a: this.tempIndexRow - this.indexRow + deltaLong };
+
         for (var j = 0; j < result.realTable.parentNode.clone.length; j++) {
             k = parseFloat(result.realTable.parentNode.clone[j][0].id);
             if (delta[j] === undefined)
                 delta[j] = 0;
 
-            cell = result.getCell(data[i], this.indexRow + startIndexCell, k, j, result.checkSpan, row, tempX);
+            cell = result.getCell(data[i], indexIncrease, k, j, result.checkSpan, row, tempX);
             if (this.tempIndexRow - this.indexRow + deltaLong < tempX.a)
                 deltaLong += tempX.a;
             if (cell === 6 || cell === 2) {
@@ -1648,6 +1650,7 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
         }
         row.checkChild();
         this.indexRow++;
+        indexIncrease.a++;
     }
     this.currentIndex = i;
     if (data.updateVisible)
@@ -2377,7 +2380,12 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
     var data = dataOrigin;
     var result = this,
         value, bonus, style, classList, cell;
-    var realIndex = i;
+    if (typeof i === "object") {
+        var objectRealIndex = i;
+        var realIndex = objectRealIndex.a;
+    } else {
+        var realIndex = i;
+    }
     var localData;
     if (result.tagName === "DIV") {
         localData = result.data;
@@ -2415,6 +2423,10 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
                     define = value;
                 }
             });
+            if (this.check[j] === "increase")
+                if (typeof objectRealIndex === "object") {
+                    objectRealIndex.a--;
+                }
             return 2;
         }
         if (checkSpan[i][j] == 6) {
