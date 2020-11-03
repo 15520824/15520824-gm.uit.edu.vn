@@ -484,10 +484,6 @@ ListRealty.prototype.getView = function() {
                 type: "check",
                 dragElement: false,
                 hidden: true
-            },
-            {
-                type: "increase",
-                value: "#"
             }, {
                 value: 'MS',
                 sort: true,
@@ -723,7 +719,6 @@ ListRealty.prototype.getDataRow = function(data) {
                 console.log(arguments[4][0].value, arguments[1].childNodes[0].childNodes[0].checked)
             }
         },
-        {},
         {
             value: data.id,
             style: {
