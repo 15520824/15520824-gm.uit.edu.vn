@@ -43,6 +43,24 @@ HashTable.prototype.functionSetHash = function(data, dataParent = "") {
 
 HashTable.prototype.getKey = function(key, index) {
     if (key === "") {
+        this.data.sort(function(a, b) {
+            if (a.exactly === undefined) {
+                if (b.exactly === undefined)
+                    return 0;
+                return -1;
+            }
+
+            if (b.exactly === undefined)
+                return 1;
+
+            if (a.exactly < b.exactly) {
+                return -1;
+            }
+            if (a.exactly > b.exactly) {
+                return 1;
+            }
+            return 0;
+        })
         for (var i = 0; i < this.data.length; i++) {
             if (this.data.isFilter) {
                 if (this.data[i].isFilter === true)

@@ -125,7 +125,7 @@ HashTableFilter.prototype.getKey = function(key, index) {
                     }
                 } else {
                     for (var k = 0; k < checkRow.data.length; k++) {
-                        if (checkRow.data[k].isComplete)
+                        if (checkRow.data[k].isComplete === true)
                             continue;
                         if (checkRow.data[k].isSearch === undefined)
                             checkRow.data[k].confirm = true;
@@ -135,9 +135,11 @@ HashTableFilter.prototype.getKey = function(key, index) {
                 }
                 this.lastIndexFilter.push(checkRow);
             } else {
-                if (checkRow.data[k].isComplete !== true) {
-                    checkRow.data.isFilter = undefined;
-                    checkRow.data.confirm = undefined;
+                for (var k = 0; k < checkRow.data.length; k++) {
+                    if (checkRow.data[k].isComplete !== true) {
+                        checkRow.data[k].isFilter = undefined;
+                        checkRow.data[k].confirm = undefined;
+                    }
                 }
             }
         }

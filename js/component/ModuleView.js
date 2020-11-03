@@ -1572,6 +1572,9 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
             var tempCheck = data[i].confirm;
             data[i].confirm = undefined;
             data[i].exactly = undefined;
+            data[i].isComplete = undefined;
+            if (data[i].oldIndex === undefined)
+                data[i].oldIndex = i;
             if (tempCheck !== true) {
                 data[i].visiable = false;
                 if (data[i].child !== undefined) {
@@ -1768,6 +1771,8 @@ tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
 tableView.prototype.setConfirm = function(arr, i = 0) {
     var data;
     for (i; i < arr.length; i++) {
+        if (arr[i].oldIndex === undefined)
+            arr[i].oldIndex = i;
         if (arr[i].confirm !== undefined)
             arr[i].visiable = arr[i].confirm;
         else
@@ -3854,6 +3859,7 @@ function sortArray(arr, index, increase = true) {
     arr.splice(0, arr.length);
     for (var param in result) {
         for (var i = 0; i < result[param].length; i++) {
+            result[param][i].oldIndex = i;
             arr.push(result[param][i]);
         }
     }
