@@ -212,7 +212,10 @@ ListPositions.prototype.getView = function() {
         setTimeout(functionX, 10)
     }
     var functionClickRow = function(event, me, index, parent, data, row) {
-        self.mTablePosition.updateTable(undefined, self.checkDepartment[data.original.id]);
+        var updateData = [];
+        if (self.checkDepartment[data.original.id])
+            updateData = self.checkDepartment[data.original.id];
+        self.mTablePosition.updateTable(undefined, updateData);
 
         var arr = self.mTable.getElementsByClassName("choice");
         for (var i = 0; i < arr.length; i++)
@@ -327,6 +330,7 @@ ListPositions.prototype.getView = function() {
 
 ListPositions.prototype.formatDataRowPosition = function(data) {
     this.checkDepartment = moduleDatabase.getModule("positions").getLibary("department_id", this.getDataRowPosition.bind(this), true);
+    console.log(this.checkDepartment)
 }
 
 ListPositions.prototype.getDataRowPosition = function(data) {
@@ -455,9 +459,10 @@ ListPositions.prototype.editDepartment = function(data, parent, index) {
 
 ListPositions.prototype.editDBDepartment = function(mNewDepartment, data, parent, index) {
     var self = this;
+    var parent_id = data.original.parent_id;
     mNewDepartment.promiseEditDB.then(function(value) {
         moduleDatabase.getModule("departments").update(value).then(function(result) {
-            self.editViewDepartment(result, data, parent, index);
+            self.editViewDepartment(result, data, parent, index, parent_id);
         })
         mNewDepartment.promiseEditDB = undefined;
         setTimeout(function() {
@@ -467,21 +472,14 @@ ListPositions.prototype.editDBDepartment = function(mNewDepartment, data, parent
     })
 }
 
-ListPositions.prototype.editViewDepartment = function(value, data, parent, index) {
+ListPositions.prototype.editViewDepartment = function(value, data, parent, index, parent_id) {
     var isChangeView = false;
 
-    data.original.name = value.name;
-    data.original.code = value.code;
-
-    if (data.original.parent_id != value.parent_id) {
+    if (parent_id != value.parent_id) {
         isChangeView = true;
     }
-    data.original.parent_id = value.parent_id;
-
-
-    data[0] = value.name;
-    data[1] = value.code;
-
+    data[1] = value.name;
+    data[2] = value.code;
 
     var indexOF = index,
         element = parent;
@@ -489,7 +487,7 @@ ListPositions.prototype.editViewDepartment = function(value, data, parent, index
     if (isChangeView === true) {
         var element;
         if (value.parent_id == 0)
-            element = parent.bodyTable.parentNode;
+            element = parent.realTable.parentNode;
         else
             for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
                 if (parent.bodyTable.childNodes[i].data.original.id == value.parent_id) {
@@ -578,7 +576,6 @@ ListPositions.prototype.addViewPosition = function(value, parent) {
     if (value.department_id != arr.data.original.id)
         return;
     var result = this.getDataRowPosition(value);
-
     var element = this.mTablePosition;
     element.insertRow(result);
 }

@@ -19673,7 +19673,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:first-child) {\r\n    margin-left: 0.3571rem;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:last-child) {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-app .absol-single-page-header {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput {\r\n    padding-left: 1.4286rem;\r\n    position: relative;\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search {\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number {\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-number-input {\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line {\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel {\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard {\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div {\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,\r\n.pizo-list-plan-main {\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: 100%;\r\n    width: calc(100% - 30px);\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main {\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty-desc {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control {\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row {\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div {\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date {\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button {\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div {\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child) {\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input {\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search {\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input {\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element {\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element {\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 9rem);\r\n}\r\n\r\n.navbar-search__filter {\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter {\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container {\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable {\r\n    width: 100%;\r\n}\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n/* after the first non-.parent, toggle colors */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #fff;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: center;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}", ""]);
+exports.push([module.i, ".absol-single-page-header {\r\n    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;\r\n    background-color: white;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:first-child) {\r\n    margin-left: 0.3571rem;\r\n}\r\n\r\n.absol-single-page-header .absol-icon-button:not(:last-child) {\r\n    margin-right: 0.3571rem;\r\n}\r\n\r\n.pizo-list-realty-button {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-app .absol-single-page-header {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n    display: inline-block;\r\n    font-size: 1.01rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput {\r\n    padding-left: 1.4286rem;\r\n    position: relative;\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-search {\r\n    position: absolute;\r\n    transform: translate(-105%, 0.2rem);\r\n    height: calc(100% - 0.4rem);\r\n    width: 4rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-page-number {\r\n    margin-right: 1.7143rem;\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.pizo-list-realty-page-number-input {\r\n    width: 2.1429rem;\r\n}\r\n\r\n.pizo-list-realty-page-number-line {\r\n    left: calc(100% - 10px);\r\n    position: absolute;\r\n    transform: translate(-100%, 0);\r\n    white-space: nowrap;\r\n    top: 0.7143rem;\r\n    height: 2rem;\r\n}\r\n\r\n.freebirdFormeditorViewAssessmentWidgetsPointsLabel {\r\n    margin: auto;\r\n    margin-left: 0.3571rem\r\n}\r\n\r\n.pizo-body-dashboard {\r\n    margin: 1.4286rem;\r\n    margin-top: 2.1429rem;\r\n    width: calc(100% - 2.8571rem);\r\n    height: calc(100% - 3.2857rem);\r\n}\r\n\r\n.pizo-body-dashboard>div {\r\n    background-color: white;\r\n}\r\n\r\n.pizo-list-realty-main,\r\n.pizo-list-plan-main {\r\n    margin-left: 1.4286rem;\r\n    margin-right: 0.7143rem;\r\n    position: absolute;\r\n    height: 100%;\r\n    width: calc(100% - 30px);\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main {\r\n    flex-direction: column;\r\n}\r\n\r\n.pizo-new-realty-desc {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.pizo-list-realty-main-result-control {\r\n    flex-grow: 2;\r\n    position: relative;\r\n    align-items: stretch;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: column;\r\n    max-height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-container {\r\n    width: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row {\r\n    margin-bottom: 0.7143rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div {\r\n    min-height: 0.0714rem;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date {\r\n    width: calc(18% + 1.4286rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button {\r\n    width: calc(28% - 1.8125rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN {\r\n    width: 9%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-SN-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TD-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-PX-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-QH-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT {\r\n    width: calc(18% - 1.7857rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-TT-input>input {\r\n    width: calc(100% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    height: 1.9375rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input>div {\r\n    min-width: 100% !important;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row>div:not(:first-child) {\r\n    margin-left: 1.4286rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input {\r\n    width: calc(50% - 1rem);\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    text-align: right;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input {\r\n    padding: 0.4286rem;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    width: calc(100% - 1rem);\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-price-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-phone-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-inner-spin-button,\r\n.pizo-list-realty-main-search-control-row-MS-input>input::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-button-search {\r\n    margin-top: 1rem;\r\n    margin-bottom: auto;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-date-input .absol-calendar-input {\r\n    width: calc(50% - 0.1429rem);\r\n}\r\n\r\n.pizo-list-realty-button-apply.pizo-list-realty-button-element {\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-button-deleteall.pizo-list-realty-button-element {\r\n    margin-left: 1rem;\r\n    width: calc(50% - 0.6428rem);\r\n}\r\n\r\n.pizo-list-realty-page-allinput-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: calc(100% - 9rem);\r\n}\r\n\r\n.navbar-search__filter {\r\n    width: 1.5rem;\r\n    stroke: #ee4d2d!important;\r\n    fill: #ee4d2d!important;\r\n    display: inline-block;\r\n}\r\n\r\n.navbar-search__filter-text {\r\n    color: #ee4d2d;\r\n    display: inline-block;\r\n    vertical-align: bottom;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.pizo-list-realty-page-allinput-filter {\r\n    display: inline-block;\r\n    position: relative;\r\n    vertical-align: middle;\r\n    margin-left: 1rem;\r\n    display: none;\r\n    margin-bottom: 0.2rem;\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .pizo-list-realty-main-search-control-container {\r\n    transform: translateX(-100%);\r\n}\r\n\r\n.pizo-list-realty-main-search-control.showTranslate .hideTranslate.pizo-list-realty-main-search-control-container {\r\n    transform: translateX(0);\r\n}\r\n\r\n.pizo-list-realty-main-result-control .sortTable {\r\n    width: 100%;\r\n}\r\n\r\n\r\n/* after the second non-.parent, toggle again */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #fff;\r\n}\r\n\r\n\r\n/* after the first non-.parent, toggle colors */\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(odd) td {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.pizo-list-realty-main-result-control tr:not(.parent)~.parent:nth-child(even) td {\r\n    background-color: #fff;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT-input {\r\n    flex-grow: 2;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 30px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-HT {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: center;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-label {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    align-items: center;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-list-realty-main-search-control-row-price-input {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}", ""]);
 
 
 
@@ -58579,7 +58579,7 @@ HashTable.prototype.functionSetHash = function (data) {
         var stringCheck = m + dataParent;
         if (hash[tempCharater][stringCheck] == undefined) hash[tempCharater][stringCheck] = [];
         if (hash[tempCharater][stringCheck][i] === undefined) hash[tempCharater][stringCheck][i] = [];
-        hash[tempCharater][stringCheck][i].push([j, data[m]]);
+        hash[tempCharater][stringCheck][i].push([j, data[m].getRowMerge]);
       }
     }
 
@@ -58700,28 +58700,54 @@ HashTable.prototype.getKey = function (key, index) {
             var arrParent = row.split("_");
             var k = 0;
             var stringCheck = arrParent[k];
+            var charCode = stringCheck.charCodeAt(0);
 
             while (k < arrParent.length) {
               if (this.data.isFilter) {
-                if (check[stringCheck][column][1].isFilter === true) {
-                  check[stringCheck][column][1].confirm = true;
-                  if (check[stringCheck][column][1].exactly === undefined) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;else if (check[stringCheck][column][1].exactly > check[stringCheck][column].tempExactly) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
-                } else check[stringCheck][column][1].confirm = undefined;
+                var object = check[stringCheck][column][1];
+
+                for (var l = 0; l < object.length; l++) {
+                  if (object[l].isFilter === true) {
+                    object[l].confirm = true;
+                    object[l].isComplete = true;
+                    var tempExactly = check[stringCheck][column].tempExactly + charCode / 1000000000;
+                    if (object[l].exactly === undefined) object[l].exactly = tempExactly;else if (object[l].exactly > tempExactly) object[l].exactly = tempExactly;
+                  } else object[l].confirm = undefined;
+                }
               } else {
-                if (check[stringCheck][column][1].isFilter === undefined) {
-                  check[stringCheck][column][1].confirm = true;
-                  if (check[stringCheck][column][1].exactly === undefined) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;else if (check[stringCheck][column][1].exactly > check[stringCheck][column].tempExactly) check[stringCheck][column][1].exactly = check[stringCheck][column].tempExactly;
-                } else check[stringCheck][column][1].confirm = undefined;
+                var object = check[stringCheck][column][1];
+
+                for (var l = 0; l < object.length; l++) {
+                  if (object[l].isFilter === undefined) {
+                    object[l].confirm = true;
+                    object[l].isComplete = true;
+                    var tempExactly = check[stringCheck][column].tempExactly + charCode / 1000000000;
+                    if (object[l].exactly === undefined) object[l].exactly = tempExactly;else if (object[l].exactly > tempExactly) object[l].exactly = tempExactly;
+                  } else object[l].confirm = undefined;
+                }
               }
 
-              check[stringCheck][column][1].isSearch = true;
+              var object = check[stringCheck][column][1];
+
+              for (var l = 0; l < object.length; l++) {
+                object[l].isSearch = true;
+              }
+
+              charCode += arrParent[k].charCodeAt(0);
               stringCheck += "_" + arrParent[k++];
             }
 
             continue Loop1;
           } else {
-            objectElement[j][1].isSearch = undefined;
-            objectElement[j][1].confirm = undefined;
+            var object = objectElement[j][1];
+
+            for (var l = 0; l < object.length; l++) {
+              if (object[l].isComplete !== true) {
+                object[l].isSearch = undefined;
+                object[l].confirm = undefined;
+              }
+            }
+
             continue Loop2;
           }
         }
@@ -58755,7 +58781,7 @@ HashTableFilter.prototype.functionSetHash = function (data) {
 
     if (this.check[stringCheck] == undefined) {
       this.check[stringCheck] = [];
-      this.check[stringCheck].data = data[m];
+      this.check[stringCheck].data = object.getRowMerge;
     }
 
     for (var i = 0; i < object.length; i++) {
@@ -58843,14 +58869,26 @@ HashTableFilter.prototype.getKey = function (key, index) {
 
     if (countIn == countAll) {
       if (this.data.isSearch) {
-        if (checkRow.data.isSearch === true) checkRow.data.confirm = true;
-      } else if (checkRow.data.isSearch === undefined) checkRow.data.confirm = true;
+        for (var k = 0; k < checkRow.data.length; k++) {
+          if (checkRow.data[k].isSearch === true) checkRow.data[k].confirm = true;
+          checkRow.data[k].isFilter = true;
+          checkRow.data[k].isComplete = true;
+        }
+      } else {
+        for (var k = 0; k < checkRow.data.length; k++) {
+          if (checkRow.data[k].isComplete) continue;
+          if (checkRow.data[k].isSearch === undefined) checkRow.data[k].confirm = true;
+          checkRow.data[k].isFilter = true;
+          checkRow.data[k].isComplete = true;
+        }
+      }
 
       this.lastIndexFilter.push(checkRow);
-      checkRow.data.isFilter = true;
     } else {
-      checkRow.data.isFilter = undefined;
-      checkRow.data.confirm = undefined;
+      if (checkRow.data[k].isComplete !== true) {
+        checkRow.data.isFilter = undefined;
+        checkRow.data.confirm = undefined;
+      }
     }
   }
 };
@@ -60689,7 +60727,7 @@ function tableView() {
       result.tempIndexRow = indexRow;
 
       if (isRedraw) {
-        result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical, undefined, false);
+        result.updateTable(undefined, undefined, undefined, undefined, undefined, false);
         if (scrollParent) scrollParent.emit("scroll");
       }
     } else {
@@ -60697,7 +60735,7 @@ function tableView() {
 
       if (result.paginationElement !== undefined) {
         if (isRedraw) {
-          result.updateTable(result.header, result.data, result.dragHorizontal, result.dragVertical);
+          result.updateTable();
         }
 
         var pagination = result.pagination(result.tempIndexRow);
@@ -60733,7 +60771,7 @@ function tableView() {
   result.parentMargin = 0;
   result.childIndex = childIndex;
   result.childrenNodes = [];
-  result.getBodyTable(data);
+  result.getBodyTable(data, undefined, true);
   result.checkSpan = checkSpan;
 
   if (dragVertical) {
@@ -61180,7 +61218,7 @@ tableView.prototype.getCellHeader = function (header, i) {
         }
       });
       result.dispatchEvent(event);
-      if (result.paginationElement !== undefined && result.paginationElement.noneValue !== true) result.paginationElement.reActive();else result.updateTable(result.header, result.data, dragHorizontal, dragVertical);
+      if (result.paginationElement !== undefined && result.paginationElement.noneValue !== true) result.paginationElement.reActive();else result.updateTable();
     };
   }
 
@@ -61554,6 +61592,7 @@ tableView.prototype.setVisiableAllNoneUpdate = function (arr) {
 
 tableView.prototype.getBodyTable = function (data) {
   var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var isFirst = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   var temp = this.bodyTable;
   var result = this,
       k,
@@ -61562,6 +61601,7 @@ tableView.prototype.getBodyTable = function (data) {
       cell;
   var arr = [];
   var i = 0;
+  var startIndexCell = index;
   if (this.startIndex === undefined) this.startIndex = 0;
 
   if (this.currentIndex !== undefined) {
@@ -61571,10 +61611,12 @@ tableView.prototype.getBodyTable = function (data) {
     this.startIndex = 0;
   }
 
-  if (parent.checkSpan === undefined) result.checkSpan = [];
+  var deltaLong = -1;
+  var isFlag = false;
+  result.checkSpan = [];
   if (result.indexRow == undefined || result.indexRow == this.tempIndexRow) result.indexRow = 0;
 
-  for (; i < data.length && this.indexRow < this.tempIndexRow; i++) {
+  for (; i < data.length && this.indexRow <= this.tempIndexRow + deltaLong; i++) {
     if (data[i].child !== undefined) {
       data[i].child.updateVisible = data.updateVisible;
       data[i].child.ortherFilter = data.ortherFilter;
@@ -61614,17 +61656,37 @@ tableView.prototype.getBodyTable = function (data) {
 
     if (index !== 0) {
       index--;
+      isFlag = true;
       continue;
+    }
+
+    if (isFlag == true) {
+      if (index === 0) {
+        if (data[i].getRowMerge && data[i].getRowMerge.length > 1) {
+          var indexDataRow = data[i].getRowMerge.indexOf(data[i]);
+
+          if (indexDataRow > 0) {
+            i -= indexDataRow;
+            deltaLong += indexDataRow;
+          }
+        }
+      }
+
+      isFlag = false;
     }
 
     row = result.getRow(data[i]);
     temp.addChild(row);
     arr.push(row);
+    var tempX = {
+      a: this.tempIndexRow - this.indexRow + deltaLong
+    };
 
     for (var j = 0; j < result.realTable.parentNode.clone.length; j++) {
       k = parseFloat(result.realTable.parentNode.clone[j][0].id);
       if (delta[j] === undefined) delta[j] = 0;
-      cell = result.getCell(data[i][k], this.indexRow + this.startIndex, k, j, result.checkSpan, row);
+      cell = result.getCell(data[i], this.indexRow + startIndexCell, k, j, result.checkSpan, row, tempX);
+      if (this.tempIndexRow - this.indexRow + deltaLong < tempX.a) deltaLong += tempX.a;
 
       if (cell === 6 || cell === 2) {
         result.clone[j].splice(this.indexRow + 1 - delta[j], 1);
@@ -61647,21 +61709,132 @@ tableView.prototype.getBodyTable = function (data) {
 
   this.currentIndex = i;
   if (data.updateVisible) result.setConfirm(data, i);
+  if (isFirst == true) result.setMergeCell(data, result.checkSpan, i);
   if (result.checkMargin !== undefined) result.checkMargin();
   data.ortherFilter = undefined;
   data.updateVisible = undefined;
-  result.childrenNodes = result.childrenNodes.concat(arr); // this.indexRow = 0;
+  result.childrenNodes = result.childrenNodes.concat(arr);
+  result.lastRowElement(); // this.indexRow = 0;
 
   return arr;
 };
 
+tableView.prototype.setMergeCell = function (arr, checkSpan) {
+  var i = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var data;
+  var rowMergeData;
+
+  for (i; i < arr.length; i++) {
+    rowMergeData = arr[i].getRowMerge;
+
+    if (rowMergeData === undefined) {
+      rowMergeData = [arr[i]];
+      Object.defineProperty(arr[i], "getRowMerge", {
+        get: function (rowMergeData) {
+          return function () {
+            return rowMergeData;
+          };
+        }(rowMergeData),
+        set: function (rowMergeData) {
+          return function (value) {
+            rowMergeData = value;
+          };
+        }(rowMergeData),
+        configurable: true
+      });
+    }
+
+    for (var j = 0; j < arr[i].length; j++) {
+      data = arr[i][j];
+
+      if (checkSpan[i] !== undefined) {
+        if (checkSpan[i][j] == 2) {
+          var rowMerge = arr[i - 1].getRowMerge;
+
+          if (rowMerge.indexOf(arr[i]) === -1) {
+            rowMerge.push(arr[i]);
+          }
+
+          Object.defineProperty(arr[i], "getRowMerge", {
+            get: function (rowMerge) {
+              return function () {
+                return rowMerge;
+              };
+            }(rowMerge),
+            set: function (rowMerge) {
+              return function (value) {
+                rowMerge = value;
+              };
+            }(rowMerge),
+            configurable: true
+          });
+          var define = arr[i - 1][j];
+          Object.defineProperty(arr[i], j, {
+            get: function (define) {
+              return function () {
+                return define;
+              };
+            }(define),
+            set: function set(define) {
+              return function (value) {
+                define = value;
+              };
+            }
+          });
+        }
+
+        if (checkSpan[i][j] == 6) {
+          var define = arr[i][j - 1];
+          Object.defineProperty(arr[i], j, {
+            get: function (define) {
+              return function () {
+                return define;
+              };
+            }(define),
+            set: function (define) {
+              return function () {
+                define = value;
+              };
+            }(define)
+          });
+        }
+      }
+
+      if (data.rowspan !== undefined) {
+        for (var l = i + 1; l < i + data.rowspan; l++) {
+          if (checkSpan[l] === undefined) checkSpan[l] = [];
+          checkSpan[l][j] = 2;
+        }
+
+        data.rowspan = undefined;
+      }
+
+      if (data.colspan !== undefined) {
+        checkSpan[i] = [];
+
+        for (var l = j + 1; l < j + data.colspan; l++) {
+          checkSpan[i][l] = 6;
+        }
+
+        data.colspan = undefined;
+      }
+    }
+
+    if (arr[i].child !== undefined) {
+      this.setMergeCell(arr[i].child, checkSpan);
+    }
+  }
+};
+
 tableView.prototype.setConfirm = function (arr) {
   var i = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var data;
 
   for (i; i < arr.length; i++) {
     if (arr[i].confirm !== undefined) arr[i].visiable = arr[i].confirm;else arr[i].visiable = false;
     arr[i].confirm = undefined;
     arr[i].exactly = undefined;
+    arr[i].isComplete = undefined;
 
     if (arr[i].child !== undefined) {
       this.setConfirm(arr[i].child);
@@ -61835,7 +62008,7 @@ tableView.prototype.pagination = function (number, functionClick) {
             this.style.color = "#fff";
             if (functionClick !== undefined) functionClick(event, i);
             self.indexRow = 0;
-            self.updateTable(undefined, self.data, self.dragHorizontal, self.dragVertical, i * number);
+            self.updateTable(undefined, undefined, undefined, undefined, i * number);
             if (self.scrollParent !== undefined) self.scrollParent.scrollTop = 0;
             if (self.changePageIndex !== undefined) self.changePageIndex(i);
           };
@@ -61997,7 +62170,11 @@ tableView.prototype.pagination = function (number, functionClick) {
 
   this.getPaginationIndex = function () {
     var active = ModuleView_$("a.active", container);
-    if (active !== undefined) return active.index;else return -1;
+    if (active !== undefined) return active.index;else return 1;
+  };
+
+  this.getPaginationLength = function () {
+    return countPrecent;
   };
 
   return temp;
@@ -62012,6 +62189,21 @@ tableView.prototype.getRow = function (data) {
   setTimeout(function () {
     temp.classList.add("parent");
   }, 10);
+  var rowMerge = data.getRowMerge;
+
+  if (rowMerge === undefined) {
+    rowMerge = [data];
+  }
+
+  Object.defineProperty(data, "getRowMerge", {
+    get: function get() {
+      return rowMerge;
+    },
+    set: function set(value) {
+      rowMerge = value;
+    },
+    configurable: true
+  });
   Object.assign(temp, tableView.prototype);
   temp.realTable = result.realTable;
   temp.headerTable = result.headerTable;
@@ -62246,6 +62438,9 @@ tableView.prototype.checkChildCheckBox = function (data, indexCheckBox) {
 tableView.prototype.getCell = function (dataOrigin, i, j, k) {
   var checkSpan = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : [];
   var row = arguments.length > 5 ? arguments[5] : undefined;
+  var orther = arguments.length > 6 ? arguments[6] : undefined;
+  var dataOld = dataOrigin;
+  dataOrigin = dataOrigin[j];
   var data = dataOrigin;
   var result = this,
       value,
@@ -62253,10 +62448,62 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
       style,
       classList,
       cell;
+  var realIndex = i;
+  var localData;
+
+  if (result.tagName === "DIV") {
+    localData = result.data;
+  } else {
+    localData = result.data.child;
+  }
+
+  i = localData.indexOf(dataOld);
+
+  if (i === -1) {
+    i = realIndex;
+  }
 
   if (checkSpan[i] !== undefined) {
-    if (checkSpan[i][k] == 2) return 2;
-    if (checkSpan[i][k] == 6) return 6;
+    if (checkSpan[i][j] == 2) {
+      var rowMerge = localData[i - 1].getRowMerge;
+
+      if (rowMerge.indexOf(localData[i]) === -1) {
+        rowMerge.push(localData[i]);
+      }
+
+      Object.defineProperty(localData[i], "getRowMerge", {
+        get: function get() {
+          return rowMerge;
+        },
+        set: function set(value) {
+          rowMerge = value;
+        },
+        configurable: true
+      });
+      var define = localData[i - 1][j];
+      Object.defineProperty(dataOld, j, {
+        get: function get() {
+          return define;
+        },
+        set: function set(value) {
+          define = value;
+        }
+      });
+      return 2;
+    }
+
+    if (checkSpan[i][j] == 6) {
+      var define = dataOld[j - 1];
+      Object.defineProperty(dataOld, j, {
+        get: function get() {
+          return define;
+        },
+        set: function set(value) {
+          define = value;
+        }
+      });
+      return 6;
+    }
   }
 
   if (data.value === undefined) {
@@ -62268,15 +62515,128 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
       return true;
 
     case "increase":
-      value += i + 1;
+      if (value === "") value += realIndex + 1;
       break;
 
     case "dragzone":
-      if (data.icon !== undefined) {
-        icon = data.icon;
+      if (realIndex !== -1) {
+        if (data.icon !== undefined) {
+          icon = data.icon;
+          bonus = ModuleView_({
+            tag: "i",
+            "class": ["material-icons"],
+            style: {
+              fontSize: "20px",
+              cursor: "pointer"
+            },
+            props: {
+              innerHTML: icon
+            }
+          });
+        } else {
+          bonus = ModuleView_({
+            tag: "i",
+            "class": ["material-icons", "drag-icon-button"],
+            props: {
+              innerHTML: "drag_indicator"
+            },
+            on: {// mousedown: result.dragVertical ? function (event) {
+              //     var self = this;
+              //     return function (event, cellIndex, self) {
+              //         event.preventDefault();
+              //         var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+              //         self.hold = false;
+              //         var dom = self;
+              //         self.default = event;
+              //         self.timeoutID = setTimeout(function () {
+              //             dom.hold = true;
+              //             moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
+              //         }, 200);
+              //     }(event, cell, self)
+              // } : undefined,
+              // dragstart: result.dragVertical ? function () {
+              //     return false;
+              // } : undefined,
+              // mouseup: function () {
+              //     if (this.hold === false) {
+              //         this.hold = true;
+              //         // this.click();
+              //         clearTimeout(this.timeoutID);
+              //     }
+              // },
+              // mousemove: result.dragVertical ? function (event) {
+              //     var self = this;
+              //     return function (event, cellIndex, self) {
+              //         if (self.hold === false) {
+              //             var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
+              //             self.hold = false;
+              //             var deltaX = self.default.clientX - event.clientX,
+              //                 deltaY = self.default.clientY - event.clientY;
+              //             if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
+              //                 self.hold = true;
+              //                 moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
+              //                 clearTimeout(self.timeoutID);
+              //             }
+              //         }
+              //     }(event, cell, self)
+              // } : undefined,
+            }
+          });
+        }
+      }
+
+      break;
+
+    case "check":
+      if (realIndex !== -1) {
+        bonus = ModuleView_({
+          tag: "checkboxbutton",
+          "class": "pizo-checkbox",
+          on: {
+            change: function change(event) {
+              if (result.bodyTable.listCheckBox !== undefined) {
+                if (this.checked === false) result.bodyTable.listCheckBox[0].checked = false;else {
+                  if (result.bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
+                    if (result.bodyTable.listCheckBox[j].checked === false) {
+                      j--;
+                      break;
+                    }
+                  }
+
+                  if (j === result.bodyTable.listCheckBox.length) {
+                    result.bodyTable.listCheckBox[0].checked = true;
+                  }
+                }
+                this.update();
+              }
+            }
+          }
+        });
+
+        bonus.update = function (checked) {
+          if (checked == undefined) dataOrigin.value = this.checked;else {
+            dataOrigin.value = checked;
+
+            if (this.checked != checked) {
+              this.checked = checked;
+              this.emit("change");
+            }
+          }
+        };
+
+        if (dataOrigin.value === true) bonus.checked = dataOrigin.value;
+        if (result.bodyTable.listCheckBox !== undefined) result.bodyTable.listCheckBox.push(bonus);
+      }
+
+      break;
+
+    case "detail":
+      if (realIndex !== -1) {
+        var icon = "more_vert";
+        if (data.icon !== undefined) icon = data.icon;
         bonus = ModuleView_({
           tag: "i",
-          "class": ["material-icons"],
+          "class": "material-icons",
           style: {
             fontSize: "20px",
             cursor: "pointer"
@@ -62285,113 +62645,8 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
             innerHTML: icon
           }
         });
-      } else {
-        bonus = ModuleView_({
-          tag: "i",
-          "class": ["material-icons", "drag-icon-button"],
-          props: {
-            innerHTML: "drag_indicator"
-          },
-          on: {// mousedown: result.dragVertical ? function (event) {
-            //     var self = this;
-            //     return function (event, cellIndex, self) {
-            //         event.preventDefault();
-            //         var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
-            //         self.hold = false;
-            //         var dom = self;
-            //         self.default = event;
-            //         self.timeoutID = setTimeout(function () {
-            //             dom.hold = true;
-            //             moveElementFix(event, dom, cellIndex.getParentNode(), finalIndex + 1);
-            //         }, 200);
-            //     }(event, cell, self)
-            // } : undefined,
-            // dragstart: result.dragVertical ? function () {
-            //     return false;
-            // } : undefined,
-            // mouseup: function () {
-            //     if (this.hold === false) {
-            //         this.hold = true;
-            //         // this.click();
-            //         clearTimeout(this.timeoutID);
-            //     }
-            // },
-            // mousemove: result.dragVertical ? function (event) {
-            //     var self = this;
-            //     return function (event, cellIndex, self) {
-            //         if (self.hold === false) {
-            //             var finalIndex = cellIndex.getParentNode().childrenNodes.indexOf(cellIndex.parentNode);
-            //             self.hold = false;
-            //             var deltaX = self.default.clientX - event.clientX,
-            //                 deltaY = self.default.clientY - event.clientY;
-            //             if ((Math.abs(deltaX) + Math.abs(deltaY)) > 10) {
-            //                 self.hold = true;
-            //                 moveElementFix(event, self, cellIndex.getParentNode(), finalIndex + 1);
-            //                 clearTimeout(self.timeoutID);
-            //             }
-            //         }
-            //     }(event, cell, self)
-            // } : undefined,
-          }
-        });
       }
 
-      break;
-
-    case "check":
-      bonus = ModuleView_({
-        tag: "checkboxbutton",
-        "class": "pizo-checkbox",
-        on: {
-          change: function change(event) {
-            if (result.bodyTable.listCheckBox !== undefined) {
-              if (this.checked === false) result.bodyTable.listCheckBox[0].checked = false;else {
-                if (result.bodyTable.listCheckBox[0].checked === false) for (var j = 1; j < result.bodyTable.listCheckBox.length; j++) {
-                  if (result.bodyTable.listCheckBox[j].checked === false) {
-                    j--;
-                    break;
-                  }
-                }
-
-                if (j === result.bodyTable.listCheckBox.length) {
-                  result.bodyTable.listCheckBox[0].checked = true;
-                }
-              }
-              this.update();
-            }
-          }
-        }
-      });
-
-      bonus.update = function (checked) {
-        if (checked == undefined) dataOrigin.value = this.checked;else {
-          dataOrigin.value = checked;
-
-          if (this.checked != checked) {
-            this.checked = checked;
-            this.emit("change");
-          }
-        }
-      };
-
-      if (dataOrigin.value === true) bonus.checked = dataOrigin.value;
-      if (result.bodyTable.listCheckBox !== undefined) result.bodyTable.listCheckBox.push(bonus);
-      break;
-
-    case "detail":
-      var icon = "more_vert";
-      if (data.icon !== undefined) icon = data.icon;
-      bonus = ModuleView_({
-        tag: "i",
-        "class": "material-icons",
-        style: {
-          fontSize: "20px",
-          cursor: "pointer"
-        },
-        props: {
-          innerHTML: icon
-        }
-      });
       break;
   }
 
@@ -62517,7 +62772,26 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
 
     for (var l = i + 1; l < i + data.rowspan; l++) {
       if (checkSpan[l] === undefined) checkSpan[l] = [];
-      checkSpan[l][k] = 2;
+      checkSpan[l][j] = 2;
+    }
+
+    data.rowspan = undefined;
+  } else if (realIndex !== -1) {
+    if (ModuleView_typeof(localData[i + 1]) === "object" && ModuleView_typeof(localData[i][j]) === "object" && ModuleView_typeof(localData[i + 1][j]) === "object") {
+      var index = 1;
+
+      for (var l = i + 1; l < localData.length; l++) {
+        if (localData[i][j] === localData[l][j]) {
+          if (checkSpan[l] === undefined) checkSpan[l] = [];
+          checkSpan[l][j] = 2;
+          index++;
+        } else break;
+      }
+
+      if (index > 1) {
+        cell.setAttribute("rowspan", index);
+        if (orther) if (orther.a < index - 1) orther.a += index - 1;
+      }
     }
   }
 
@@ -62525,8 +62799,24 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
     cell.setAttribute("colspan", data.colspan);
     checkSpan[i] = [];
 
-    for (var l = k + 1; l < k + data.colspan; l++) {
+    for (var l = j + 1; l < j + data.colspan; l++) {
       checkSpan[i][l] = 6;
+    }
+
+    data.colspan = undefined;
+  } else if (realIndex !== -1) if (ModuleView_typeof(dataOld[j]) === "object" && ModuleView_typeof(dataOld[j + 1]) === "object") {
+    var index = 1;
+
+    for (var l = j + 1; l < dataOld.length; l++) {
+      if (dataOld[j] === dataOld[l]) {
+        if (checkSpan[i] === undefined) checkSpan[i] = [];
+        checkSpan[i][l] = 6;
+        index++;
+      } else break;
+    }
+
+    if (index > 1) {
+      cell.setAttribute("colspan", index);
     }
   }
 
@@ -62543,14 +62833,20 @@ tableView.prototype.getCell = function (dataOrigin, i, j, k) {
 tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVertical) {
   var index = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
   var isUpdate = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
-  var checkSpan = [];
+  this.checkSpan = [];
   var result = this;
 
   var temp = ModuleView_({
     tag: "tbody"
   });
 
-  if (data !== undefined) this.data = data;
+  var isFirst = false;
+
+  if (data !== undefined) {
+    this.data = data;
+    isFirst = true;
+  }
+
   if (isUpdate == true) result.indexRow = 0;
   temp.listCheckBox = [];
   if (dragHorizontal !== undefined) result.dragHorizontal = dragHorizontal;
@@ -62565,13 +62861,11 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
   this.bodyTable = temp;
   result.childrenNodes = [];
   this.currentIndex = undefined;
-  result.getBodyTable(this.data, index);
+  result.getBodyTable(this.data, index, isFirst);
 
   if (temp.listCheckBox[0] !== undefined) {
     temp.listCheckBox[0].update();
   }
-
-  this.checkSpan = checkSpan;
 
   if (result.dragVertical) {
     result.setUpSlip();
@@ -62629,7 +62923,7 @@ tableView.prototype.insertRow = function (data) {
 
   for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
     k = parseFloat(this.realTable.parentNode.clone[i][0].id);
-    cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
+    cell = result.getCell(data, index, k, i, result.checkSpan, row);
 
     if (cell === 6) {
       result.clone[k++].splice(index, 1);
@@ -62711,6 +63005,44 @@ tableView.prototype.insertRow = function (data) {
   return row;
 };
 
+tableView.prototype.insertLastRow = function (functionLast) {
+  this.functionLast = functionLast;
+  this.lastRowElement();
+};
+
+tableView.prototype.lastRowElement = function () {
+  if (this.functionLast) {
+    if (this.tagName === "DIV") {
+      var tempDataLast = [];
+
+      for (var i = 0; i < this.childrenNodes.length; i++) {
+        tempDataLast.push(this.childrenNodes[i].data);
+      }
+
+      var tempLast = this.functionLast(tempDataLast, this.childrenNodes, this.getPaginationIndex());
+      var row = this.getRow(tempLast);
+      this.bodyTable.addChild(row);
+
+      for (var j = 0; j < this.realTable.parentNode.clone.length; j++) {
+        var k = parseFloat(this.realTable.parentNode.clone[j][0].id);
+        var cell = this.getCell(tempLast, -1, k, j, this.checkSpan, row);
+
+        if (cell === 6 || cell === 2) {
+          continue;
+        }
+
+        if (cell === true) {
+          continue;
+        }
+
+        row.addChild(cell);
+      }
+
+      this.lastElement = row;
+    }
+  }
+};
+
 tableView.prototype.updateRow = function (data, index) {
   var checkMust = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   var result = this,
@@ -62749,7 +63081,7 @@ tableView.prototype.updateRow = function (data, index) {
 
   for (var i = 0; i < this.realTable.parentNode.clone.length; i++) {
     k = parseFloat(this.realTable.parentNode.clone[i][0].id);
-    cell = result.getCell(data[k], index, k, i, result.checkSpan, row);
+    cell = result.getCell(data, index, k, i, result.checkSpan, row);
 
     if (cell === 6) {
       result.clone[k++].splice(index, 1);
@@ -62912,7 +63244,7 @@ tableView.prototype.insertColumn = function (index) {
   var k = 1;
 
   for (var i = 0; i < this.childrenNodes.length; i++) {
-    cell = this.getCell(this.childrenNodes[i].data[index], i, index, this.clone[this.clone.length - 1][0].id + 1, this.checkSpan, this.childrenNodes[i]);
+    cell = this.getCell(this.childrenNodes[i].data, i, index, this.clone[this.clone.length - 1][0].id + 1, this.checkSpan, this.childrenNodes[i]);
     current.push(cell);
     cell.clone = this.clone;
     if (insertBefore === -1) this.childrenNodes[i].appendChild(cell);else {
@@ -63223,7 +63555,7 @@ tableView.prototype.cloneCellColumn = function (bodyTable, cloneArray, index) {
       child: [clone]
     });
     cell.classList = cloneArray[index][i].parentNode.classList;
-    if (cloneArray[index][i].colSpan !== undefined) clone.setAttribute("rowSpan", "");
+    if (cloneArray[index][i].colSpan !== undefined) clone.setAttribute("rowspan", "");
     bodyTable.addChild(cell);
 
     if (cloneArray[index][i].parentNode.clone !== undefined) {
@@ -63267,7 +63599,7 @@ tableView.prototype.cloneRow = function (index) {
     clone = this.clone[i][index].cloneNode(true);
     clone.style.width = this.clone[i][index].offsetWidth - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-left').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-right').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-left-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-right-width').replace("px", "") + 1 + 'px';
     clone.style.height = this.clone[i][index].offsetHeight - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-top').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('padding-bottom').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-top-width').replace("px", "") - window.getComputedStyle(this.clone[i][index], null).getPropertyValue('border-bottom-width').replace("px", "") + 'px';
-    clone.setAttribute("colSpan", "");
+    clone.setAttribute("colspan", "");
     row.appendChild(clone);
   }
 
@@ -63477,42 +63809,82 @@ tableView.prototype.getBound2Row = function (row1, row2) {
   return temp;
 };
 
+function compareIncrease(valueA, valueB) {
+  if (typeof valueA === "string") valueA = valueA.toLowerCase();
+  if (typeof valueB === "string") valueB = valueB.toLowerCase();
+  if (valueA > valueB) return -1;
+  if (valueA < valueB) return 1;
+  return 0;
+}
+
 function sortArray(arr, index) {
   var increase = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var check = [];
+  var result = [];
+  var indexLength;
+  if (arr.length === 0) return [];
 
-  if (increase) {
-    arr.sort(function (a, b) {
-      if (a.child !== undefined) sortArray(a.child, index, increase);
-      var valueA = a[index].value;
-      var valueB = b[index].value;
-      if (valueA === undefined) valueA = a[index];
-      if (valueB === undefined) valueB = b[index];
-      if (typeof valueA === "string") valueA = valueA.toLowerCase();
-      if (typeof valueB === "string") valueB = valueB.toLowerCase();
-      if (valueA > valueB) return -1;
-      if (valueA < valueB) return 1;
-      return 0;
-    });
-    if (arr.length !== 0) if (arr[arr.length - 1].child !== undefined) {
-      sortArray(arr[arr.length - 1].child, index, increase);
+  for (var i = 0; i < arr.length; i++) {
+    var object = arr[i].getRowMerge;
+    if (check[JSON.stringify(JSON.stringify(object))]) continue;
+    indexLength = object.length;
+
+    for (var j = 0; j < object.length; j++) {
+      if (check[JSON.stringify(object[j])]) {
+        indexLength--;
+        continue;
+      }
+
+      check[JSON.stringify(object[j])] = object[j];
     }
-  } else {
-    arr.sort(function (a, b) {
-      if (a.child !== undefined) sortArray(a.child, index, increase);
-      var valueA = a[index].value;
-      var valueB = b[index].value;
-      if (valueA === undefined) valueA = a[index];
-      if (valueB === undefined) valueB = b[index];
-      if (typeof valueA === "string") valueA = valueA.toLowerCase();
-      if (typeof valueB === "string") valueB = valueB.toLowerCase();
-      if (valueA < valueB) return -1;
-      if (valueA > valueB) return 1;
-      return 0;
-    });
-    if (arr.length !== 0) if (arr[arr.length - 1].child !== undefined) {
-      sortArray(arr[arr.length - 1].child, index, increase);
+
+    if (indexLength > 0) {
+      check[JSON.stringify(object)] = object;
+      result.push(object);
     }
   }
+
+  if (increase) {
+    result.sort(function (prev, next) {
+      var a = prev[0];
+      var b = next[0];
+      if (prev.length === 1) if (a.child !== undefined) {
+        sortArray(a.child, index, increase);
+      }
+      var valueA = a[index].value;
+      var valueB = b[index].value;
+      if (valueA === undefined) valueA = a[index];
+      if (valueB === undefined) valueB = b[index];
+      return compareIncrease(valueA, valueB);
+    });
+    if (result.length !== 0) if (result[result.length - 1].length === 1) {
+      if (result[result.length - 1][0].child !== undefined) sortArray(result[result.length - 1][0].child, index, increase);
+    }
+  } else {
+    result.sort(function (prev, next) {
+      var a = prev[0];
+      var b = next[0];
+      if (prev.length === 1) if (a.child !== undefined) sortArray(a.child, index, increase);
+      var valueA = a[index].value;
+      var valueB = b[index].value;
+      if (valueA === undefined) valueA = a[index];
+      if (valueB === undefined) valueB = b[index];
+      return compareIncrease(valueB, valueA);
+    });
+    if (result.length !== 0) if (result[result.length - 1].length === 1) {
+      if (result[result.length - 1][0].child !== undefined) sortArray(result[result.length - 1][0].child, index, increase);
+    }
+  }
+
+  arr.splice(0, arr.length);
+
+  for (var param in result) {
+    for (var i = 0; i < result[param].length; i++) {
+      arr.push(result[param][i]);
+    }
+  }
+
+  return arr;
 }
 
 function getDate() {
@@ -77029,6 +77401,9 @@ ListRealty_ListRealty.prototype.searchControlContent = function () {
         }, {
           tag: "div",
           "class": "pizo-list-realty-main-search-control-row-price",
+          style: {
+            height: "30px"
+          },
           child: [{
             tag: "div",
             "class": "pizo-list-realty-main-search-control-row-HT",
@@ -78073,7 +78448,7 @@ ListWard_ListWard.prototype.formatDataRow = function (data) {
   var k = 0;
 
   for (var i = 0; i < data.length; i++) {
-    var result = this.getDataRow(data[i]);
+    var result = this.getDataRow(data[i], i);
 
     if (check[data[i].parent_id] !== undefined) {
       if (check[data[i].parent_id].child === undefined) check[data[i].parent_id].child = [];
@@ -78086,8 +78461,23 @@ ListWard_ListWard.prototype.formatDataRow = function (data) {
   return temp;
 };
 
-ListWard_ListWard.prototype.getDataRow = function (data) {
-  var result = [{}, data.id, data.name, {
+ListWard_ListWard.prototype.getDataRow = function (data, i) {
+  if (i % 3 === 0) {
+    var result = [{}, data.id, {
+      value: data.name,
+      rowspan: 2
+    }, {
+      value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid,
+      element: ListWard_({
+        text: this.checkWard[parseInt(data.districtid)].name
+      })
+    }, {
+      value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid,
+      element: ListWard_({
+        text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name
+      })
+    }, {}];
+  } else var result = [{}, data.id, data.name, {
     value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid,
     element: ListWard_({
       text: this.checkWard[parseInt(data.districtid)].name
@@ -78098,6 +78488,7 @@ ListWard_ListWard.prototype.getDataRow = function (data) {
       text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name
     })
   }, {}];
+
   result.original = data;
   return result;
 };
@@ -79778,33 +80169,17 @@ ListState_ListState.prototype.getView = function () {
       }];
       self.mTable = new tableView(header, self.formatDataRow(value), true, true, 2);
       tabContainer.addChild(self.mTable);
-      self.mTable.addInputSearch(ListState_$('.pizo-list-realty-page-allinput-container input', self.$view));
-      self.mTable.setUpSwipe(undefined, [{
-        icon: ListState_({
-          tag: "i",
-          "class": ["material-icons", "button-hidden-swipe-icon"],
-          style: {
-            color: "red"
-          },
-          props: {
-            innerHTML: "close"
-          }
-        }),
-        text: "Test",
-        background: "yellow",
-        event: {
-          click: function click(event) {
-            console.log(event);
-          }
-        }
-      }, {
-        icon: "close",
-        text: "Test Test",
-        background: "green",
-        event: function event(_event) {
-          console.log(_event);
-        }
-      }]);
+      self.mTable.addInputSearch(ListState_$('.pizo-list-realty-page-allinput-container input', self.$view)); // self.mTable.setUpSwipe(undefined,[{icon: _({
+      //     tag:"i",
+      //     class:["material-icons","button-hidden-swipe-icon"],
+      //     style:{
+      //         color:"red"
+      //     },
+      //     props:{
+      //         innerHTML: "close"
+      //     }
+      // }),text:"Test",background:"yellow",event:{click:function(event){console.log(event)}}},{icon:"close",text:"Test Test",background:"green",event:function(event){console.log(event)}}]);
+
       self.mTable.addEventListener("dragdrop", function (event) {
         console.log(event);
       });
@@ -80529,8 +80904,8 @@ ListDistrict_ListDistrict.prototype.getView = function () {
       }
     }];
     self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-    tabContainer.addChild(self.mTable);
-    self.mTable.addInputSearch(ListDistrict_$('.pizo-list-realty-page-allinput-container input', self.$view));
+    tabContainer.addChild(self.mTable); // self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
+
     self.listParent.updateItemList(listParam);
     self.mTable.addFilter(self.listParent, 3);
   });
@@ -85226,7 +85601,9 @@ ListPositions_ListPositions.prototype.getView = function () {
   };
 
   var functionClickRow = function functionClickRow(event, me, index, parent, data, row) {
-    self.mTablePosition.updateTable(undefined, self.checkDepartment[data.original.id]);
+    var updateData = [];
+    if (self.checkDepartment[data.original.id]) updateData = self.checkDepartment[data.original.id];
+    self.mTablePosition.updateTable(undefined, updateData);
     var arr = self.mTable.getElementsByClassName("choice");
 
     for (var i = 0; i < arr.length; i++) {
@@ -85406,6 +85783,7 @@ ListPositions_ListPositions.prototype.getView = function () {
 
 ListPositions_ListPositions.prototype.formatDataRowPosition = function (data) {
   this.checkDepartment = ModuleDatabase["a" /* default */].getModule("positions").getLibary("department_id", this.getDataRowPosition.bind(this), true);
+  console.log(this.checkDepartment);
 };
 
 ListPositions_ListPositions.prototype.getDataRowPosition = function (data) {
@@ -85510,9 +85888,10 @@ ListPositions_ListPositions.prototype.editDepartment = function (data, parent, i
 
 ListPositions_ListPositions.prototype.editDBDepartment = function (mNewDepartment, data, parent, index) {
   var self = this;
+  var parent_id = data.original.parent_id;
   mNewDepartment.promiseEditDB.then(function (value) {
     ModuleDatabase["a" /* default */].getModule("departments").update(value).then(function (result) {
-      self.editViewDepartment(result, data, parent, index);
+      self.editViewDepartment(result, data, parent, index, parent_id);
     });
     mNewDepartment.promiseEditDB = undefined;
     setTimeout(function () {
@@ -85521,24 +85900,21 @@ ListPositions_ListPositions.prototype.editDBDepartment = function (mNewDepartmen
   });
 };
 
-ListPositions_ListPositions.prototype.editViewDepartment = function (value, data, parent, index) {
+ListPositions_ListPositions.prototype.editViewDepartment = function (value, data, parent, index, parent_id) {
   var isChangeView = false;
-  data.original.name = value.name;
-  data.original.code = value.code;
 
-  if (data.original.parent_id != value.parent_id) {
+  if (parent_id != value.parent_id) {
     isChangeView = true;
   }
 
-  data.original.parent_id = value.parent_id;
-  data[0] = value.name;
-  data[1] = value.code;
+  data[1] = value.name;
+  data[2] = value.code;
   var indexOF = index,
       element = parent;
 
   if (isChangeView === true) {
     var element;
-    if (value.parent_id == 0) element = parent.bodyTable.parentNode;else for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
+    if (value.parent_id == 0) element = parent.realTable.parentNode;else for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
       if (parent.bodyTable.childNodes[i].data.original.id == value.parent_id) {
         element = parent.bodyTable.childNodes[i];
         break;
