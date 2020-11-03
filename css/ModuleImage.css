@@ -22,10 +22,6 @@
     font-size: 0.8571rem;
     color: white;
     padding: 0rem;
-}
-
-.fa-close:before,
-.quote-base__close-icon:before {
     content: "close";
 }
 
