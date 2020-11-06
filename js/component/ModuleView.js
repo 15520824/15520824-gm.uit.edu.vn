@@ -576,17 +576,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             }
         ]
     });
-    var realData = data;
-    data = [];
-    var tempData;
-    for (var i = 0; i < realData.length; i++) {
-        tempData = [];
-        for (var param in realData[i]) {
-            tempData[param] = realData[i][param];
-        }
-        data[i] = tempData;
-    }
-    console.log(data)
+
     result.realTable = realTable;
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
@@ -2812,16 +2802,6 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
     });
     var isFirst = false;
     if (data !== undefined) {
-        var realData = data;
-        data = [];
-        var tempData;
-        for (var i = 0; i < realData.length; i++) {
-            tempData = [];
-            for (var param in realData[i]) {
-                tempData[param] = realData[i][param];
-            }
-            data[i] = tempData;
-        }
         this.data = data;
         isFirst = true;
     }
