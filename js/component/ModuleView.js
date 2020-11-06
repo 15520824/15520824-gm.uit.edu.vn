@@ -6,6 +6,50 @@ import '../../css/tablesort.css';
 import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
 import { insertAfter, isNumeric } from './FormatFunction';
+import Svg from 'absol/src/HTML5/Svg';
+
+Svg.ShareInstance._;
+Svg.ShareInstance.$;
+
+
+window.getTextSize = function getTextSize(text) {
+    var svg = Svg.ShareInstance._({
+        tag: 'svg',
+        style: {
+            position: 'fixed',
+            zIndex: '10000',
+            top: 0,
+            left: 0,
+            background: 'gray'
+        },
+        child: {
+            child: {
+                tag: 'text',
+                attr: {
+                    transform: 'rotate(45)',
+                    x: 0,
+                    y: 0
+                },
+                style: {
+                    fill: 'green'
+                },
+                child: { text: text },
+            }
+        }
+
+    }).addTo(document.body);
+    var text = Svg.ShareInstance.$('g');
+    var size = text.getBBox();
+    svg.attr({
+        width: size.width,
+        height: size.height,
+        viewBox: [size.x, size.y, size.width, size.height].join(' ')
+    })
+    return size;
+}
+
+
+
 
 import Slip from './slip.js';
 

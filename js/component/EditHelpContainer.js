@@ -8,9 +8,7 @@ import "../../css/NewCategory.css"
 
 import { tableView, deleteQuestion } from './ModuleView';
 import { allowNumbersOnly, createAlias } from './ModuleView';
-
 import moduleDatabase from '../component/ModuleDatabase';
-import FormClass from './jsform';
 
 var _ = Fcore._;
 var $ = Fcore.$;
