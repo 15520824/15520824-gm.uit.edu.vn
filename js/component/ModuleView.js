@@ -576,7 +576,17 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             }
         ]
     });
-
+    data.checkVisiableCell = function(x, y) {
+        if (x > 0) {
+            if (this[x - 1][y] === this[x][y])
+                return false;
+        }
+        if (y > 0) {
+            if (this[x][y - 1] === this[x][y])
+                return false;
+        }
+        return true;
+    }
     result.realTable = realTable;
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
@@ -2814,6 +2824,17 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
     });
     var isFirst = false;
     if (data !== undefined) {
+        data.checkVisiableCell = function(x, y) {
+            if (x > 0) {
+                if (this[x - 1][y] === this[x][y])
+                    return false;
+            }
+            if (y > 0) {
+                if (this[x][y - 1] === this[x][y])
+                    return false;
+            }
+            return true;
+        }
         this.data = data;
         isFirst = true;
     }
