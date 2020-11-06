@@ -152,7 +152,7 @@ table.sortTableClone th {
     color: #fff;
     position: sticky;
     position: -webkit-sticky;
-    top: -1px;
+    top: 0px;
     z-index: 4;
 }
 
