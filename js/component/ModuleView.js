@@ -577,6 +577,8 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         ]
     });
     data.checkVisiableCell = function(x, y) {
+        if (typeof this[x][y] !== "object")
+            return true;
         if (x > 0) {
             if (this[x - 1][y] === this[x][y])
                 return false;
@@ -1679,6 +1681,8 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
 }
 
 tableView.prototype.checkVisiableCell = function(x, y) {
+    if (typeof this.data[x][y] !== "object")
+        return true;
     if (x > 0) {
         if (this.data[x - 1][y] === this.data[x][y])
             return false;
@@ -2825,6 +2829,8 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
     var isFirst = false;
     if (data !== undefined) {
         data.checkVisiableCell = function(x, y) {
+            if (typeof this[x][y] !== "object")
+                return true;
             if (x > 0) {
                 if (this[x - 1][y] === this[x][y])
                     return false;
