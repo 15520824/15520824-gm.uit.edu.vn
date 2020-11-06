@@ -694,8 +694,28 @@
                 this.lines = [];
             this.lines.push(line);
         },
+        stackLineOnly: function(line) {
+            if (this.linesOnly === undefined)
+                this.linesOnly = [];
+            this.linesOnly.push(line);
+        },
         extractLines: function() {
             this.setDatas(this.lines);
+        },
+        extractOnlyLines: function() {
+            var lines = this.linesOnly;
+            var result = [];
+            var tempResult;
+            // Step 1: vertex list creation
+            for (var i = 0; i < lines.length; i++) {
+                tempResult = [];
+                for (var j = 0; j < lines[i].length; j++) {
+                    tempResult.push({ lng: lines[i][j][0], lat: lines[i][j][1] })
+                }
+                result.push(tempResult);
+            }
+            // Step 3: Identification of next and prev hedges
+            return result;
         },
         checkArrayIS: function(x, arr) {
             for (var i = 0; i < arr.length; i++) {
@@ -818,7 +838,6 @@
                 }
             }
             // Step 4: Face assignment
-            console.log(hedges)
             var provlist = hedges.slice(0);
             var nh = hedges.length;
             var i = 0;

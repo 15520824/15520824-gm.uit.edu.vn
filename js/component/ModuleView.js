@@ -541,7 +541,6 @@ function captureMousePosition(event) {
 
 
 export function tableView(header = [], data = [], dragHorizontal = false, dragVertical = false, childIndex = 1, indexRow = 50) {
-
     var cell, row, check = [];
     var checkSpan = [];
     var headerTable = _({
@@ -577,6 +576,17 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             }
         ]
     });
+    var realData = data;
+    data = [];
+    var tempData;
+    for (var i = 0; i < realData.length; i++) {
+        tempData = [];
+        for (var param in realData[i]) {
+            tempData[param] = realData[i][param];
+        }
+        data[i] = tempData;
+    }
+    console.log(data)
     result.realTable = realTable;
     result.headerTable = headerTable;
     result.bodyTable = bodyTable;
@@ -1800,8 +1810,8 @@ tableView.prototype.countRowChild = function(arr) {
     for (var i = 0; i < arr.length; i++) {
         if (arr[i].visiable != false)
             countRowVisiable++;
-        if (arr[i].child !== undefined)
-            countRowVisiable += this.countRowChild(arr[i].child);
+        // if (arr[i].child !== undefined)
+        //     countRowVisiable += this.countRowChild(arr[i].child);
     }
     return countRowVisiable;
 }
@@ -2802,6 +2812,16 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
     });
     var isFirst = false;
     if (data !== undefined) {
+        var realData = data;
+        data = [];
+        var tempData;
+        for (var i = 0; i < realData.length; i++) {
+            tempData = [];
+            for (var param in realData[i]) {
+                tempData[param] = realData[i][param];
+            }
+            data[i] = tempData;
+        }
         this.data = data;
         isFirst = true;
     }
