@@ -1400,6 +1400,8 @@ tableView.prototype.setArrayFix = function(num, isLeft) {
 
 tableView.prototype.setArrayScroll = function(num, isLeft = true) {
     var self = this;
+    this.numArrayFix = num;
+    this.isLeftArrayFix = isLeft;
     _('attachhook').once('error', function() {
         setTimeout(function() {
             self.setArrayFix(num, isLeft);
@@ -3024,6 +3026,8 @@ tableView.prototype.lastRowElement = function() {
                 tempDataLast.push(this.childrenNodes[i].data);
             }
             var tempLast = this.functionLast(tempDataLast, this.childrenNodes, this.getPaginationIndex());
+            if (tempLast === undefined)
+                return;
             var row = this.getRow(tempLast);
             this.bodyTable.addChild(row);
 
