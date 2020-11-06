@@ -1668,6 +1668,18 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
     return arr;
 }
 
+tableView.prototype.checkVisiableCell = function(x, y) {
+    if (x > 0) {
+        if (this.data[x - 1][y] === this.data[x][y])
+            return false;
+    }
+    if (y > 0) {
+        if (this.data[x][y - 1] === this.data[x][y])
+            return false;
+    }
+    return true;
+}
+
 tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
     var data;
     var rowMergeData;
