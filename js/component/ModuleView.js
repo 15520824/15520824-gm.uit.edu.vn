@@ -1374,28 +1374,32 @@ tableView.prototype.checkLongColumn = function(row, column) {
 }
 
 tableView.prototype.setArrayFix = function(num, isLeft) {
-    var i;
-    var length;
+    setTimeout(function() {
+        var i;
+        var length;
 
-    if (isLeft) {
-        i = 0;
-        length = num;
-    } else {
-        i = this.clone.length - num;
-        length = this.clone.length;
-    }
-    var isFirst = false;
-    for (; i < length; i++) {
-        for (var j = 0; j < this.clone[i].length; j++) {
-            if (!this.clone[i][j].classList.contains("postionStickyCell"))
-                this.clone[i][j].classList.add("postionStickyCell");
-            this.clone[i][j].style.left = this.clone[i][j].offsetLeft + "px";
-            if (isFirst && this.clone[i][j].parentNode.childrenNodes.length !== 0)
-                this.clone[i][j].parentNode.setArrayFix(num, isLeft);
-            isFirst = true;
+        if (isLeft) {
+            i = 0;
+            length = num;
+        } else {
+            i = this.clone.length - num;
+            length = this.clone.length;
         }
-        isFirst = false;
-    }
+        var isFirst = false;
+        for (; i < length; i++) {
+            for (var j = 0; j < this.clone[i].length; j++) {
+                if (!this.clone[i][j].classList.contains("postionStickyCell")) {
+                    this.clone[i][j].classList.add("postionStickyCell");
+                    this.clone[i][j].style.left = this.clone[i][j].offsetLeft + "px";
+                }
+                if (isFirst && this.clone[i][j].parentNode.childrenNodes.length !== 0)
+                    this.clone[i][j].parentNode.setArrayFix(num, isLeft);
+                isFirst = true;
+            }
+            isFirst = false;
+        }
+    }.bind(this), 80)
+
 }
 
 tableView.prototype.setArrayScroll = function(num, isLeft = true) {
@@ -2882,6 +2886,9 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
             result.paginationElement.reActive();
         result.realTable.parentNode.resetHash();
     }
+    if (result.numArrayFix && result.isLeftArrayFix) {
+        result.setArrayFix(result.numArrayFix, result.isLeftArrayFix);
+    }
 }
 
 tableView.prototype.getLastElement = function(element) {
@@ -3010,6 +3017,9 @@ tableView.prototype.insertRow = function(data, checkMust = false) {
     result.realTable.parentNode.resetHash();
     result.realTable.parentNode.updateHash(row);
     this.setUpSwipe();
+    if (result.realTable.parentNode.numArrayFix && result.realTable.parentNode.isLeftArrayFix) {
+        result.setArrayFix(result.realTable.parentNode.numArrayFix, result.realTable.parentNode.isLeftArrayFix);
+    }
     return row;
 }
 
