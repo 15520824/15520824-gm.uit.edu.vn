@@ -2,17 +2,22 @@
 .sortTableClone thead th {
     text-align: center;
     background-color: #d6d6d6;
-    color: black ;
-    border: unset ;
-    font-size: var(--font-size-table-header) ;
-    font-weight: var(--font-weight-table-header) ;
+    color: black;
+    border: unset;
+    font-size: var(--font-size-table-header);
+    font-weight: var(--font-weight-table-header);
     padding: 10px;
 }
 
-table.sortTable th, table.sortTable td, table.sortTableClone th, table.sortTableClone td{
+table.sortTable th,
+table.sortTable td,
+table.sortTableClone th,
+table.sortTableClone td {
     border-bottom: 1px solid #ddd;
 }
 
-table.sortTable, table.sortTableClone{
+table.sortTable,
+table.sortTableClone {
     border: 1px solid #ddd;
+    border-top: 0;
 }
