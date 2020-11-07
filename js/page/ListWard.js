@@ -239,9 +239,11 @@ ListWard.prototype.getView = function() {
             { value: 'Tên', sort: true, style: { minWidth: "unset" } },
             { value: 'Quận/Huyện', sort: true, style: { minWidth: "200px", width: "200px" } },
             { value: 'Tỉnh/Thành phố', sort: true, style: { minWidth: "200px", width: "200px" } },
-            { type: "detail", functionClickAll: functionClickMore, icon: "", dragElement: false, style: { width: "30px" } }
+            { type: "detail", functionClickAll: functionClickMore, icon: "", dragElement: false, style: { width: "30px", maxWidth: "30px" } }
         ];
-        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 3);
+        self.mTable.setArrayScroll(2, true);
+        // self.mTable.setArrayScroll(2, false)
         tabContainer.addChild(self.mTable);
         self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view), 2);
         self.mTable.addFilter(self.listWardElement, 3);
@@ -299,24 +301,14 @@ ListWard.prototype.formatDataRow = function(data) {
 }
 
 ListWard.prototype.getDataRow = function(data, i) {
-    if (i % 3 === 0) {
-        var result = [
-            {},
-            data.id,
-            { value: data.name, rowspan: 2 },
-            { value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid, element: _({ text: this.checkWard[parseInt(data.districtid)].name }) },
-            { value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid, element: _({ text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name }) },
-            {}
-        ]
-    } else
-        var result = [
-            {},
-            data.id,
-            data.name,
-            { value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid, element: _({ text: this.checkWard[parseInt(data.districtid)].name }) },
-            { value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid, element: _({ text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name }) },
-            {}
-        ]
+    var result = [
+        {},
+        data.id,
+        data.name,
+        { value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid, element: _({ text: this.checkWard[parseInt(data.districtid)].name }) },
+        { value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid, element: _({ text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name }) },
+        {}
+    ]
     result.original = data;
     return result;
 }

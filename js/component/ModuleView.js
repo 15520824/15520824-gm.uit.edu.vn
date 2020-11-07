@@ -1418,38 +1418,85 @@ tableView.prototype.checkLongColumn = function(row, column) {
 }
 
 tableView.prototype.setArrayFix = function(num, isLeft) {
-    setTimeout(function() {
-        var i;
-        var length;
+    var x = setInterval(function() {
+        if (this.clone[0][0].offsetWidth > 0) {
+            clearInterval(x);
+            var i;
+            var length;
 
-        if (isLeft) {
-            i = 0;
-            length = num;
-        } else {
-            i = this.clone.length - num;
-            length = this.clone.length;
-        }
-        var isFirst = false;
-        for (; i < length; i++) {
-            for (var j = 0; j < this.clone[i].length; j++) {
-                if (!this.clone[i][j].classList.contains("postionStickyCell")) {
-                    this.clone[i][j].classList.add("postionStickyCell");
-                    this.clone[i][j].style.left = this.clone[i][j].offsetLeft + "px";
-                }
-                if (isFirst && this.clone[i][j].parentNode.childrenNodes.length !== 0)
-                    this.clone[i][j].parentNode.setArrayFix(num, isLeft);
-                isFirst = true;
+            if (isLeft) {
+                i = 0;
+                length = num;
+            } else {
+                i = this.clone.length - num;
+                length = this.clone.length;
             }
-            isFirst = false;
+            var isFirst = false;
+            var isAdd = false;
+            var arrWidth = [];
+            for (; i < length; i++) {
+                if (this.clone[i][0].tagName === "TH" && !this.clone[i][0].classList.contains("postionStickyCell")) {
+                    this.clone[i][0].classList.add("postionStickyCell");
+                    this.clone[i][0].style.zIndex = 6;
+                    arrWidth[i] = this.clone[i][0].offsetWidth + "px";
+                    isAdd = true;
+                }
+            }
+            var ratio;
+            if (i !== 0) {
+                i = num;
+                length = this.clone.length;
+            } else {
+                i = 0;
+                length = num;
+            }
+            if (isAdd === true) {
+                var sum = 0;
+                var a = i;
+                for (i = 0; i < length; i++) {
+                    if (this.clone[i][0].style.maxWidth === "") {
+                        sum += this.clone[i][0].offsetWidth;
+                    }
+                }
+                ratio = this.realTable.offsetWidth / (sum);
+                for (; a < length; a++) {
+                    if (this.clone[a][0].style.maxWidth === "") {
+                        arrWidth[a] = this.clone[a][0].offsetWidth * ratio + "px";
+                    } else {
+                        arrWidth[a] = this.clone[a][0].offsetWidth + "px";
+                    }
+                }
+            } else
+                ratio = 1;
+            if (ratio !== 1)
+                for (var i = 0; i < this.clone.length; i++) {
+                    this.clone[i][0].style.minWidth = arrWidth[i];
+                    this.clone[i][0].style.width = arrWidth[i];
+                    this.clone[i][0].style.maxWidth = arrWidth[i];
+                    if (this.clone[i][0].classList.contains("postionStickyCell")) {
+                        this.clone[i][0].style.left = this.clone[i][0].offsetLeft + "px";
+                    }
+                }
+            for (var i = 0; i < this.clone.length; i++)
+                for (var j = 0; j < this.clone[i].length; j++) {
+                    if (this.clone[i][j].tagName !== "TH" && !this.clone[i][j].classList.contains("postionStickyCell") && this.clone[i][0].classList.contains("postionStickyCell")) {
+                        this.clone[i][j].classList.add("postionStickyCell");
+                        this.clone[i][j].style.left = this.clone[i][0].style.left;
+                    }
+                    if (this.clone[i][j].parentNode.childrenNodes && this.clone[i][j].parentNode.childrenNodes.length !== 0)
+                        this.clone[i][j].parentNode.setArrayFix(num, isLeft);
+                }
         }
-    }.bind(this), 80)
+    }.bind(this), 10)
 
 }
 
 tableView.prototype.setArrayScroll = function(num, isLeft = true) {
     var self = this;
-    this.numArrayFix = num;
-    this.isLeftArrayFix = isLeft;
+    if (isLeft)
+        this.numArrayFixLeft = num;
+    else
+        this.numArrayFixRight = num;
     _('attachhook').once('error', function() {
         setTimeout(function() {
             self.setArrayFix(num, isLeft);
@@ -2930,8 +2977,11 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
             result.paginationElement.reActive();
         result.realTable.parentNode.resetHash();
     }
-    if (result.numArrayFix && result.isLeftArrayFix) {
-        result.setArrayFix(result.numArrayFix, result.isLeftArrayFix);
+    if (result.numArrayFixLeft) {
+        result.setArrayFix(result.numArrayFixLeft, true);
+    }
+    if (result.numArrayFixRight) {
+        result.setArrayFix(result.numArrayFixRight, false);
     }
 }
 
@@ -3061,8 +3111,11 @@ tableView.prototype.insertRow = function(data, checkMust = false) {
     result.realTable.parentNode.resetHash();
     result.realTable.parentNode.updateHash(row);
     this.setUpSwipe();
-    if (result.realTable.parentNode.numArrayFix && result.realTable.parentNode.isLeftArrayFix) {
-        result.setArrayFix(result.realTable.parentNode.numArrayFix, result.realTable.parentNode.isLeftArrayFix);
+    if (result.realTable.parentNode.numArrayFixLeft) {
+        result.setArrayFix(result.realTable.parentNode.numArrayFixLeft, true);
+    }
+    if (result.realTable.parentNode.numArrayFixRight) {
+        result.setArrayFix(result.realTable.parentNode.numArrayFixRight, false);
     }
     return row;
 }
