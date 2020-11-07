@@ -1467,7 +1467,7 @@ tableView.prototype.setArrayFix = function(num, isLeft) {
                 }
             } else
                 ratio = 1;
-            if (ratio !== 1)
+            if (isAdd === true)
                 for (var i = 0; i < this.clone.length; i++) {
                     this.clone[i][0].style.minWidth = arrWidth[i];
                     this.clone[i][0].style.width = arrWidth[i];
