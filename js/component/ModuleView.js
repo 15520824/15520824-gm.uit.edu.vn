@@ -1431,7 +1431,6 @@ tableView.prototype.setArrayFix = function(num, isLeft) {
                 i = this.clone.length - num;
                 length = this.clone.length;
             }
-            var isFirst = false;
             var isAdd = false;
             var arrWidth = [];
             for (; i < length; i++) {

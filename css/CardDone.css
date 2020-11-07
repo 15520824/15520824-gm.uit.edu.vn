@@ -18,6 +18,10 @@ table.sortTableClone td {
 
 table.sortTable,
 table.sortTableClone {
-    border: 1px solid #ddd;
     border-top: 0;
+}
+
+table.sortTable tr+td,
+table.sortTableClone tr+td {
+    border-left: 1px solid #ddd;
 }
