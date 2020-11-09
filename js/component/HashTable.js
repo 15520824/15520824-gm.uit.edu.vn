@@ -44,6 +44,7 @@ HashTable.prototype.functionSetHash = function(data, dataParent = "") {
 }
 
 HashTable.prototype.getKey = function(key, index) {
+    key = key.trim();
     if (key === "") {
         this.data.sort(function(a, b) {
             if (a.exactly === undefined) {
