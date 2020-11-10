@@ -1644,8 +1644,6 @@ tableView.prototype.setVisiableAll = function(arr) {
 tableView.prototype.setVisiableAllNoneUpdate = function(arr) {
     for (var i = 0; i < arr.length; i++) {
         arr[i].visiable = true;
-        if (arr[i].child !== undefined)
-            this.setVisiableAllNoneUpdate(arr[i].child);
     }
 }
 
