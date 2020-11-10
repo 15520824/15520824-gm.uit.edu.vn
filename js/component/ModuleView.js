@@ -1633,6 +1633,14 @@ tableView.prototype.resetHash = function() {
         self.hashTableFilter = new HashTableFilter(self.data);
 }
 
+tableView.prototype.setVisiableFalse = function(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        arr[i].visiable = false;
+        if (arr[i].child !== undefined)
+            this.setVisiableFalse(arr[i].child);
+    }
+}
+
 tableView.prototype.setVisiableAll = function(arr) {
     for (var i = 0; i < arr.length; i++) {
         arr[i].confirm = true;
@@ -1686,9 +1694,11 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
             data[i].isComplete = undefined;
             if (tempCheck !== true) {
                 data[i].visiable = false;
-                // if (data[i].child !== undefined) {
-                //     result.getBodyTable(data[i].child);
-                // }
+                if (data[i].child !== undefined)
+                    result.setVisiableFalse(data[i].child)
+                    // if (data[i].child !== undefined) {
+                    //     result.getBodyTable(data[i].child);
+                    // }
                 continue;
             } else {
                 data[i].visiable = undefined;
@@ -2443,7 +2453,8 @@ tableView.prototype.setMoreChild = function(childrenNodes) {
         if (childrenNodes[i].classList.contains("more-child")) {
             if (childrenNodes[i].childrenNodes && childrenNodes[i].childrenNodes.length > 0) {
                 childrenNodes[i].setMoreChild(childrenNodes[i].childrenNodes);
-            }
+            } else
+                childrenNodes[i].setDisPlayNone();
         } else {
             childrenNodes[i].setDisPlayNone();
         }
