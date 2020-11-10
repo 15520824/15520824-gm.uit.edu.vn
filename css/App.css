@@ -1,18 +1,18 @@
-html{
+html {
     font-size: 14px;
 }
 
-input{
+input {
     font-size: 1rem;
 }
 
-.no-animation table.sortTable>tbody>tr.parent{
+.no-animation table.sortTable>tbody>tr.parent {
     opacity: 1;
     transform: none;
     transition: none;
 }
 
-.pizo-app .container-sortTable{
+.pizo-app .container-sortTable {
     width: 100%;
 }
 
@@ -43,14 +43,14 @@ body {
     --breakpoint-md: 54.8571rem;
     --breakpoint-lg: 70.8571rem;
     --breakpoint-xl: 85.7143rem;
-    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-    --border-color:#253863;
-    --color-body:#eef5f9;
-    --color-input-color:#d6d6d6;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --border-color: #253863;
+    --color-body: #eef5f9;
+    --color-input-color: #d6d6d6;
 }
 
-body{
+body {
     margin: 0rem;
     font-family: "Segoe UI", "SegoeuiPc", "San Francisco", "Helvetica Neue", "Helvetica", "Lucida Grande", "Roboto", "Ubuntu", "Tahoma", Microsoft Sans Serif, Tahoma, Arial, sans-serif;
     color: #222222;
@@ -59,24 +59,23 @@ body{
     text-shadow: 0rem 0 0rem rgba(0, 0, 0, 0.2);
 }
 
-.app-container{
-    width:100vw;
+.app-container {
+    width: 100vw;
     height: 100vh;
 }
 
-.pizo-app{
+.pizo-app {
     height: 100%;
     width: 100%;
 }
 
-.pizo-header{
+.pizo-header {
     width: calc(100% - 0.1429rem);
-    border:  0.0714rem solid var(--border-color);
+    border: 0.0714rem solid var(--border-color);
     background-color: var(--blue);
 }
 
-
-.pizo-header-logo{
+.pizo-header-logo {
     padding-left: 1.4286rem;
     padding-right: 1.4286rem;
     height: calc(100% - 1.4286rem);
@@ -85,20 +84,19 @@ body{
     display: inline-block;
 }
 
-.pizo-header-logo-icon{
+.pizo-header-logo-icon {
     height: 2.1429rem;
     width: 2.1429rem;
     vertical-align: middle;
 }
 
-
-.pizo-header-logo-text{
+.pizo-header-logo-text {
     margin-left: 0.3571rem;
     height: 1.0714rem;
     vertical-align: middle;
 }
 
-.pizo-header-menu{
+.pizo-header-menu {
     vertical-align: middle;
     background-color: transparent;
     padding-top: 1rem;
@@ -107,23 +105,23 @@ body{
     border-left: 0.0714rem solid var(--border-color);
 }
 
-.pizo-header-menu .absol-hmenu-button{
+.pizo-header-menu .absol-hmenu-button {
     color: var(--white);
 }
 
-.pizo-body{
+.pizo-body {
     display: inline-block;
     width: 100%;
     height: calc(100% - 4.0714rem);
     background: var(--color-body);
 }
 
-.pizo-body-title{
+.pizo-body-title {
     position: absolute;
     width: 100%;
 }
 
-.pizo-body-title-left{
+.pizo-body-title-left {
     transform: translateY(-100%) translateY(-0.625rem);
     float: left;
     color: var( --blue);
@@ -139,7 +137,8 @@ body{
     color: var(--gray);
     content: "/";
 }
-.pizo-body-title-right-item{
+
+.pizo-body-title-right-item {
     color: var(--primary);
     text-decoration: none;
     background-color: transparent;
@@ -151,14 +150,14 @@ body{
     font-size: 0.7857rem;
 }
 
-.pizo-body-title-right{
+.pizo-body-title-right {
     margin-right: 2.1429rem;
     margin-top: 0.71428571428rem;
     font-size: 1rem;
     float: right;
 }
 
-.absol-single-page-header{
+.absol-single-page-header {
     z-index: 1000;
     width: calc(100% - 17px) !important;
 }
@@ -174,7 +173,7 @@ body{
     float: right;
 }
 
-.not-login-signin{
+.not-login-signin {
     background: #2f426d;
     color: #fff;
     padding: 0.5rem 0.7143rem;
@@ -194,11 +193,11 @@ body{
     transform: translate(-110%, -0);
 }
 
-.material-icons{
+.material-icons {
     font-size: 1.5rem;
 }
 
-.pizo-new-realty-location-detail-row-label-important{
+.pizo-new-realty-location-detail-row-label-important {
     color: #d93025;
 }
 
@@ -206,8 +205,8 @@ body{
     background-color: #000000;
 }
 
-.pizo-app .absol-checkbox.pizo-checkbox .absol-checkbox-icon{
-    display: block; 
+.pizo-app .absol-checkbox.pizo-checkbox .absol-checkbox-icon {
+    display: block;
 }
 
 ._7ql {
