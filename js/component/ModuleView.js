@@ -1686,9 +1686,9 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
             data[i].isComplete = undefined;
             if (tempCheck !== true) {
                 data[i].visiable = false;
-                if (data[i].child !== undefined) {
-                    result.getBodyTable(data[i].child);
-                }
+                // if (data[i].child !== undefined) {
+                //     result.getBodyTable(data[i].child);
+                // }
                 continue;
             } else {
                 data[i].visiable = undefined;
@@ -1700,8 +1700,8 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
         } else {
 
             if (data[i].visiable === false) {
-                if (data[i].child !== undefined)
-                    result.getBodyTable(data[i].child);
+                // if (data[i].child !== undefined)
+                //     result.getBodyTable(data[i].child);
                 continue;
             } else if (data[i].visiable === true) {
                 data[i].visiable = undefined;
@@ -1709,8 +1709,8 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
                 //     result.setVisiableAllNoneUpdate(data[i].child)
             } else if (data.ortherFilter === true) {
                 if (data[i].visiable === undefined) {
-                    if (data[i].child !== undefined)
-                        result.getBodyTable(data[i].child);
+                    // if (data[i].child !== undefined)
+                    //     result.getBodyTable(data[i].child);
                     continue;
                 }
             }
