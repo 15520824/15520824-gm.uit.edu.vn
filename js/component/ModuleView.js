@@ -2416,6 +2416,11 @@ tableView.prototype.getRow = function(data) {
 
 tableView.prototype.setDisPlay = function() {
     if (!this.classList.contains("more-child") && this.data.child && this.data.child.length !== this.childrenNodes.length) {
+        for (var i = 0; i < this.childrenNodes.length; i++) {
+            this.childrenNodes[i].selfRemove();
+        }
+        this.childrenNodes = [];
+        this.currentIndex = 0;
         this.setVisiableAllNoneUpdate(this.data.child);
         this.getBodyTable(this.data.child, undefined, undefined, this.nextSibling);
     }
