@@ -1649,13 +1649,14 @@ tableView.prototype.setVisiableAllNoneUpdate = function(arr) {
     }
 }
 
-tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
+tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, nodeBefore) {
     var temp = this.bodyTable;
     var result = this,
         k, delta = [],
         row, cell;
     var arr = [];
     var i = 0;
+    var isCheckChild;
     var startIndexCell = index;
     if (this.startIndex === undefined)
         this.startIndex = 0;
@@ -1673,6 +1674,7 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
     var indexIncrease = { a: this.indexRow + startIndexCell };
     for (;
         (i < data.length && this.indexRow <= this.tempIndexRow + deltaLong); i++) {
+        isCheckChild = false;
         if (data[i].child !== undefined) {
             data[i].child.updateVisible = data.updateVisible;
             data[i].child.ortherFilter = data.ortherFilter;
@@ -1692,8 +1694,10 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
                 continue;
             } else {
                 data[i].visiable = undefined;
-                if (data[i].child !== undefined)
-                    result.setVisiableAll(data[i].child)
+                data[i].updateVisible = undefined;
+                isCheckChild = true;
+                // if (data[i].child !== undefined)
+                //     result.setVisiableAll(data[i].child)
             }
         } else {
             if (data[i].visiable === false) {
@@ -1732,7 +1736,16 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
         }
 
         row = result.getRow(data[i]);
-        temp.addChild(row);
+        if (isCheckChild === true)
+            _('attachhook').once('error', function(rowAfter) {
+                if (rowAfter.childrenNodes && rowAfter.childrenNodes.length == 0 && rowAfter.classList.contains("more-child")) {
+                    rowAfter.classList.remove("more-child");
+                }
+            }.bind(this, row))
+        if (nodeBefore) {
+            insertAfter(row, nodeBefore);
+        } else
+            temp.addChild(row);
         arr.push(row);
         var tempX = { a: this.tempIndexRow - this.indexRow + deltaLong };
 
@@ -1760,7 +1773,7 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false) {
         this.indexRow++;
         indexIncrease.a++;
     }
-    this.currentIndex = i;
+    this.currentIndex = indexIncrease.a++;
     if (data.updateVisible)
         result.setConfirm(data, i);
     if (isFirst == true)
@@ -2402,6 +2415,10 @@ tableView.prototype.getRow = function(data) {
 }
 
 tableView.prototype.setDisPlay = function() {
+    if (this.data.child && this.data.child.length !== this.childrenNodes.length) {
+        this.setVisiableAllNoneUpdate(this.data.child);
+        this.getBodyTable(this.data.child, undefined, undefined, this);
+    }
     if (!this.classList.contains("more-child")) {
         this.classList.add("more-child");
         var childrenNodes = this.childrenNodes;
