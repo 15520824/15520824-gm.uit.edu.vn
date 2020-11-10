@@ -2323,8 +2323,7 @@ tableView.prototype.getRow = function(data) {
             temp.data = data;
         if (temp.data.child.length !== 0) {
             temp.checkIcon();
-            var tempElement = temp.getElementNext(temp);
-            temp.getBodyTable(temp.data.child, undefined, undefined, tempElement);
+            temp.getBodyTable(temp.data.child, undefined, undefined, temp.getElementNext(result));
         }
     }
 
