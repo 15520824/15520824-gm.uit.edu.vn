@@ -1706,8 +1706,8 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
                 continue;
             } else if (data[i].visiable === true) {
                 data[i].visiable = undefined;
-                if (data[i].child !== undefined)
-                    result.setVisiableAllNoneUpdate(data[i].child)
+                // if (data[i].child !== undefined)
+                //     result.setVisiableAllNoneUpdate(data[i].child)
             } else if (data.ortherFilter === true) {
                 if (data[i].visiable === undefined) {
                     if (data[i].child !== undefined)
