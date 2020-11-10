@@ -2440,12 +2440,13 @@ tableView.prototype.setMoreChild = function(childrenNodes) {
                 rowAfter.classList.remove("more-child");
             }
         }.bind(this, childrenNodes[i]))
-        if (childrenNodes[i].classList.contains("more-child"))
+        if (childrenNodes[i].classList.contains("more-child")) {
             if (childrenNodes[i].childrenNodes && childrenNodes[i].childrenNodes.length > 0) {
                 childrenNodes[i].setMoreChild(childrenNodes[i].childrenNodes);
-            } else {
-                childrenNodes[i].setDisPlayNone();
             }
+        } else {
+            childrenNodes[i].setDisPlayNone();
+        }
     }
 }
 
