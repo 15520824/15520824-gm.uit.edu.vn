@@ -2451,22 +2451,13 @@ tableView.prototype.setMoreChild = function(childrenNodes) {
 
 tableView.prototype.setDisPlayVisable = function() {
     if (this.classList.contains("more-child")) {
-        var arrFunction = [];
         var childrenNodes = this.childrenNodes;
         for (var i = 0; i < childrenNodes.length; i++) {
             childrenNodes[i].classList.remove("disPlayNone");
-            arrFunction.push(function(childrenNodes, i) {
-                return function() {
-                    childrenNodes[i].classList.add("parent");
-                }
-            }(childrenNodes, i));
+            childrenNodes[i].classList.add("parent");
             if (childrenNodes[i].childrenNodes.length !== 0)
                 childrenNodes[i].setDisPlayVisable();
         }
-        setTimeout(function() {
-            for (var i = 0; i < arrFunction.length; i++)
-                arrFunction[i]();
-        }, 10);
     }
 }
 
