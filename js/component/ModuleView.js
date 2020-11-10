@@ -2425,22 +2425,21 @@ tableView.prototype.setDisPlay = function() {
     }
     if (!this.classList.contains("more-child")) {
         this.classList.add("more-child");
-        var childrenNodes = this.childrenNodes;
-        var arrFunction = [];
-        for (var i = 0; i < childrenNodes.length; i++) {
-            childrenNodes[i].classList.remove("disPlayNone");
-            arrFunction.push(function(childrenNodes, i) {
-                return function() {
-                    childrenNodes[i].classList.add("parent");
-                }
-            }(childrenNodes, i));
-        }
-        setTimeout(function() {
-            for (var i = 0; i < arrFunction.length; i++)
-                arrFunction[i]();
-        }, 10);
+        this.setMoreChild(this.childrenNodes);
     } else {
+        this.classList.remove("more-child");
         this.setDisPlayNone();
+    }
+}
+
+tableView.prototype.setMoreChild = function(childrenNodes) {
+    for (var i = 0; i < childrenNodes.length; i++) {
+        childrenNodes[i].classList.remove("disPlayNone");
+        childrenNodes[i].classList.add("parent");
+        if (childrenNodes[i].classList.contains("more-child"))
+            if (childrenNodes[i].childrenNodes && childrenNodes[i].childrenNodes.length > 0) {
+                childrenNodes[i].setMoreChild(childrenNodes[i].childrenNodes);
+            }
     }
 }
 
@@ -2466,15 +2465,12 @@ tableView.prototype.setDisPlayVisable = function() {
 }
 
 tableView.prototype.setDisPlayNone = function() {
-    if (this.classList.contains("more-child")) {
-        this.classList.remove("more-child");
-        var childrenNodes = this.childrenNodes;
-        for (var i = 0; i < childrenNodes.length; i++) {
-            childrenNodes[i].classList.remove("parent");
-            childrenNodes[i].classList.add("disPlayNone");
-            if (childrenNodes[i].childrenNodes.length !== 0)
-                childrenNodes[i].setDisPlayNone();
-        }
+    var childrenNodes = this.childrenNodes;
+    for (var i = 0; i < childrenNodes.length; i++) {
+        childrenNodes[i].classList.remove("parent");
+        childrenNodes[i].classList.add("disPlayNone");
+        if (childrenNodes[i].childrenNodes.length !== 0)
+            childrenNodes[i].setDisPlayNone();
     }
 }
 
