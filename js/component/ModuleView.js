@@ -2323,8 +2323,7 @@ tableView.prototype.getRow = function(data) {
             temp.data = data;
         if (temp.data.child.length !== 0) {
             temp.checkIcon();
-            temp.getBodyTable(temp.data.child, undefined, undefined, temp.nextSibling);
-
+            temp.getBodyTable(temp.data.child, undefined, undefined, temp.getElementNext(temp));
         }
     }
 
@@ -2421,7 +2420,7 @@ tableView.prototype.setDisPlay = function() {
         this.childrenNodes = [];
         this.currentIndex = 0;
         this.setVisiableAllNoneUpdate(this.data.child);
-        this.getBodyTable(this.data.child, undefined, undefined, this.nextSibling);
+        this.getBodyTable(this.data.child, undefined, undefined, this.getElementNext(this));
     }
     if (!this.classList.contains("more-child")) {
         this.classList.add("more-child");
@@ -2436,6 +2435,11 @@ tableView.prototype.setMoreChild = function(childrenNodes) {
     for (var i = 0; i < childrenNodes.length; i++) {
         childrenNodes[i].classList.remove("disPlayNone");
         childrenNodes[i].classList.add("parent");
+        _('attachhook').once('error', function(rowAfter) {
+            if (rowAfter.childrenNodes && rowAfter.childrenNodes.length == 0 && rowAfter.classList.contains("more-child")) {
+                rowAfter.classList.remove("more-child");
+            }
+        }.bind(this, childrenNodes[i]))
         if (childrenNodes[i].classList.contains("more-child"))
             if (childrenNodes[i].childrenNodes && childrenNodes[i].childrenNodes.length > 0) {
                 childrenNodes[i].setMoreChild(childrenNodes[i].childrenNodes);
