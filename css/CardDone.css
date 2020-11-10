@@ -21,12 +21,12 @@ table.sortTableClone {
     border-top: 0;
 }
 
-table.sortTable,
-table.sortTableClone {
+table.sortTable tr:first-child,
+table.sortTableClone tr:first-child {
     border-left: 1px solid #ddd;
 }
 
-table.sortTable,
-table.sortTableClone {
+table.sortTable tr:last-child,
+table.sortTableClone tr:last-child {
     border-right: 1px solid #ddd;
 }
