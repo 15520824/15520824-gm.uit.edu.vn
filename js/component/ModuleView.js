@@ -2417,13 +2417,14 @@ tableView.prototype.getRow = function(data) {
 tableView.prototype.setDisPlay = function() {
     if (!this.classList.contains("more-child") && this.data.child && this.data.child.length !== this.childrenNodes.length) {
         this.data.updateVisible = undefined;
-        for (var i = 0; i < this.childrenNodes.length; i++) {
-            this.childrenNodes[i].selfRemove();
-        }
         this.childrenNodes = [];
         this.currentIndex = 0;
         this.setVisiableAllNoneUpdate(this.data.child);
         this.getBodyTable(this.data.child, undefined, undefined, this.nextSibling);
+        var arr = this.childrenNodes;
+        for (var i = 0; i < arr.length; i++) {
+            arr[i].selfRemove();
+        }
     }
     if (!this.classList.contains("more-child")) {
         this.classList.add("more-child");
