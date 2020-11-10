@@ -1743,7 +1743,7 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
                 }
             }.bind(this, row))
         if (nodeBefore) {
-            insertAfter(row, nodeBefore);
+            temp.insertBefore(row, nodeBefore);
         } else
             temp.addChild(row);
         arr.push(row);
@@ -2416,8 +2416,12 @@ tableView.prototype.getRow = function(data) {
 
 tableView.prototype.setDisPlay = function() {
     if (this.data.child && this.data.child.length !== this.childrenNodes.length) {
+        // for (var i = 0; i < this.childrenNodes.length; i++) {
+        //     this.childrenNodes[i].selfRemove();
+        // }
+        // this.childrenNodes = [];
         this.setVisiableAllNoneUpdate(this.data.child);
-        this.getBodyTable(this.data.child, undefined, undefined, this);
+        this.getBodyTable(this.data.child, undefined, undefined, this.nextSibling);
     }
     if (!this.classList.contains("more-child")) {
         this.classList.add("more-child");
