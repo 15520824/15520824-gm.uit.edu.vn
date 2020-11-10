@@ -43,40 +43,47 @@ HashTable.prototype.functionSetHash = function(data, dataParent = "") {
 
 }
 
+HashTable.prototype.hashVisiableAll = function(arr, isFilter) {
+    arr.sort(function(a, b) {
+        if (a.oldIndex === undefined) {
+            if (b.oldIndex === undefined)
+                return 0;
+            return -1;
+        }
+
+        if (b.oldIndex === undefined)
+            return 1;
+
+        if (a.oldIndex < b.oldIndex) {
+            return -1;
+        }
+        if (a.oldIndex > b.oldIndex) {
+            return 1;
+        }
+        return 0;
+    })
+    for (var i = 0; i < arr.length; i++) {
+        if (isFilter) {
+            if (arr[i].isFilter === true)
+                arr[i].visiable = true;
+            else
+                arr[i].visiable = false;
+        } else
+        if (arr[i].isFilter === undefined)
+            arr[i].visiable = true;
+        else
+            arr[i].visiable = false;
+        arr[i].isSearch = undefined;
+        if (arr[i].child && arr[i].child.length > 0) {
+            this.hashVisiableAll(arr[i].child, isFilter)
+        }
+    }
+}
+
 HashTable.prototype.getKey = function(key, index) {
     key = key.trim();
     if (key === "") {
-        this.data.sort(function(a, b) {
-            if (a.exactly === undefined) {
-                if (b.exactly === undefined)
-                    return 0;
-                return -1;
-            }
-
-            if (b.exactly === undefined)
-                return 1;
-
-            if (a.exactly < b.exactly) {
-                return -1;
-            }
-            if (a.exactly > b.exactly) {
-                return 1;
-            }
-            return 0;
-        })
-        for (var i = 0; i < this.data.length; i++) {
-            if (this.data.isFilter) {
-                if (this.data[i].isFilter === true)
-                    this.data[i].visiable = true;
-                else
-                    this.data[i].visiable = false;
-            } else
-            if (this.data[i].isFilter === undefined)
-                this.data[i].visiable = true;
-            else
-                this.data[i].visiable = false;
-            this.data[i].isSearch = undefined;
-        }
+        this.hashVisiableAll(this.data, this.data.isFilter)
         this.data.isSearch = undefined;
         return;
     }

@@ -1679,13 +1679,13 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
             data[i].child.updateVisible = data.updateVisible;
             data[i].child.ortherFilter = data.ortherFilter;
         }
+        if (data[i].oldIndex === undefined)
+            data[i].oldIndex = i;
         if (data.updateVisible === true) {
             var tempCheck = data[i].confirm;
             data[i].confirm = undefined;
             data[i].exactly = undefined;
             data[i].isComplete = undefined;
-            if (data[i].oldIndex === undefined)
-                data[i].oldIndex = i;
             if (tempCheck !== true) {
                 data[i].visiable = false;
                 if (data[i].child !== undefined) {
@@ -1700,6 +1700,7 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
                 //     result.setVisiableAll(data[i].child)
             }
         } else {
+
             if (data[i].visiable === false) {
                 if (data[i].child !== undefined)
                     result.getBodyTable(data[i].child);
@@ -1907,7 +1908,6 @@ tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
 }
 
 tableView.prototype.setConfirm = function(arr, i = 0) {
-    var data;
     for (i; i < arr.length; i++) {
         if (arr[i].oldIndex === undefined)
             arr[i].oldIndex = i;
@@ -2325,7 +2325,7 @@ tableView.prototype.getRow = function(data) {
             temp.data = data;
         if (temp.data.child.length !== 0) {
             temp.checkIcon();
-            temp.getBodyTable(temp.data.child);
+            temp.getBodyTable(temp.data.child, undefined, undefined, temp.nextSibling);
 
         }
     }
@@ -2417,14 +2417,13 @@ tableView.prototype.getRow = function(data) {
 tableView.prototype.setDisPlay = function() {
     if (!this.classList.contains("more-child") && this.data.child && this.data.child.length !== this.childrenNodes.length) {
         this.data.updateVisible = undefined;
+        for (var i = 0; i < this.childrenNodes.length; i++) {
+            this.childrenNodes[i].selfRemove();
+        }
         this.childrenNodes = [];
         this.currentIndex = 0;
         this.setVisiableAllNoneUpdate(this.data.child);
         this.getBodyTable(this.data.child, undefined, undefined, this.nextSibling);
-        var arr = this.childrenNodes;
-        for (var i = 0; i < arr.length; i++) {
-            arr[i].selfRemove();
-        }
     }
     if (!this.classList.contains("more-child")) {
         this.classList.add("more-child");
@@ -2437,8 +2436,6 @@ tableView.prototype.setDisPlay = function() {
                     childrenNodes[i].classList.add("parent");
                 }
             }(childrenNodes, i));
-            if (childrenNodes[i].childrenNodes.length !== 0)
-                childrenNodes[i].setDisPlayVisable();
         }
         setTimeout(function() {
             for (var i = 0; i < arrFunction.length; i++)
