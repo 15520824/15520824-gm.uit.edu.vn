@@ -2881,10 +2881,15 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
 
     if (data.rowspan !== undefined) {
         cell.setAttribute("rowspan", data.rowspan);
+        if (orther)
+            if (orther.a < data.rowspan - 1)
+                orther.a += data.rowspan - 1;
+
         for (var l = i + 1; l < i + data.rowspan; l++) {
             if (checkSpan[l] === undefined)
                 checkSpan[l] = [];
             checkSpan[l][j] = 2;
+
         }
         data.rowspan = undefined;
     } else if (realIndex !== -1) {
