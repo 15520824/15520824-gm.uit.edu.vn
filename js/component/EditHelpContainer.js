@@ -13,7 +13,7 @@ import moduleDatabase from '../component/ModuleDatabase';
 var _ = Fcore._;
 var $ = Fcore.$;
 
-function EditHelpContainer(phpLoader) {
+function EditHelpContainer() {
     BaseView.call(this);
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
@@ -403,7 +403,7 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
     if (this.alias.parentNode.parentNode.classList.contains("hasErrorElement"))
         return;
     if (this.saveDataCurrent(row) === true)
-        return
+        return;
 
     row.indexDetail = index;
     row.parentDetail = parent;

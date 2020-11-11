@@ -35,3 +35,23 @@ if (!google.maps.Polyline.prototype.getBounds) {
         return bounds;
     };
 }
+
+if (!google.maps.Polyline.prototype.Contains) {
+    google.maps.Polygon.prototype.Contains = function(point) {
+        var crossings = 0,
+            path = this.getPath();
+
+        // for each edge
+        for (var i = 0; i < path.getLength(); i++) {
+            var a = path.getAt(i),
+                j = i + 1;
+            if (j >= path.getLength()) {
+                j = 0;
+            }
+            var b = path.getAt(j);
+            if (rayCrossesSegment(point, a, b)) {
+                crossings++;
+            }
+        }
+    }
+}

@@ -3148,6 +3148,10 @@ tableView.prototype.insertLastRow = function(functionLast) {
     this.lastRowElement();
 }
 
+tableView.prototype.getPaginationIndex = function() {
+    return 1;
+}
+
 tableView.prototype.lastRowElement = function() {
     if (this.functionLast) {
         if (this.tagName === "DIV") {
@@ -3204,6 +3208,7 @@ tableView.prototype.updateRow = function(data, index, checkMust = false) {
 
     var temp;
     temp = result.childrenNodes[index];
+
     result.bodyTable.replaceChild(row, temp);
     row.classList.value = temp.classList.value;
 
@@ -3284,6 +3289,11 @@ tableView.prototype.updateRow = function(data, index, checkMust = false) {
         result.checkMargin();
 
     //    result.checkDataUpdate(row);
+    if (temp.classList.contains("more-child")) {
+        row.classList.add("more-child");
+    } else {
+        row.classList.remove("more-child");
+    }
     result.realTable.parentNode.resetHash();
     result.realTable.parentNode.updateHash(row);
     return row;

@@ -385,9 +385,9 @@ for($i = 0;$i<count($image_old);$i++)
         echo 'Could not delete '.$filename.', file does not exist';
       }
 }
+$delete = array();
 if(isset($oldId))
 {
-    $delete = array();
     $mergeData = array();
     for($i=0;$i<count($oldId);$i++)
     {

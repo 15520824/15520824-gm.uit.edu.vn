@@ -739,10 +739,10 @@ MapView.prototype.addMapPolygon = function() {
         }
     });
     self.map.setZoom(20);
-    console.log(self.map)
     var intLng, cellLng, intLat, cellLat, cellDeltaLat, cellDeltaLng;
     google.maps.event.addListener(self.map, "center_changed", function() {
         if (self.enablePolygon == true) {
+            var promiseAll = [];
             var center = this.getCenter();
             var latitude = center.lat();
             var longitude = center.lng();
@@ -765,21 +765,76 @@ MapView.prototype.addMapPolygon = function() {
                         if (self.checkLibary[cellDeltaLat] === undefined)
                             self.checkLibary[cellDeltaLat] = [];
                         self.checkLibary[cellDeltaLat][cellDeltaLng] = 1;
-                        moduleDatabase.getModule("polygon").load({ WHERE: [{ cellLng: cellDeltaLng }, "&&", { cellLat: cellDeltaLat }] }).then(function(cellDeltaLat, cellDeltaLng, value) {
-                            if (self.enablePolygon == true) {
-                                for (var i = 0; i < value.length; i++) {
-                                    self.addWKT(value[i]["AsText(`map`)"], cellDeltaLat, cellDeltaLng)
+                        var promiseTemp = new Promise(function(resolve, reject) {
+                            moduleDatabase.getModule("polygon").load({ WHERE: [{ cellLng: cellDeltaLng }, "&&", { cellLat: cellDeltaLat }] }).then(function(cellDeltaLat, cellDeltaLng, value) {
+                                if (self.enablePolygon == true) {
+                                    for (var i = 0; i < value.length; i++) {
+                                        self.addWKT(value[i]["AsText(`map`)"], cellDeltaLat, cellDeltaLng)
+                                    }
+                                    resolve();
                                 }
-                            }
-                        }.bind(null, cellDeltaLat, cellDeltaLng))
+                            }.bind(null, cellDeltaLat, cellDeltaLng));
+                        });
+
+                        promiseAll.push(promiseTemp);
                     } else {
                         self.setMapPolygon(cellDeltaLat, cellDeltaLng);
                     }
                 }
             }
-
+            if (self.isDoneMarker) {
+                promiseAll.push(self.isDoneMarker)
+                Promise.all(promiseAll).then(function() {
+                    for (var i = 0; i < self.currentHouse.length; i++) {
+                        var marker = self.checkHouse[self.currentHouse[i][0]][self.currentHouse[i][1]];
+                        if (marker.length > 0)
+                            marker = marker[0];
+                        if (marker.isTrigger === true)
+                            continue;
+                        var cellLatX, cellLngX, intLngX, intLatX, deltaLat, deltaLng;
+                        intLngX = parseInt(self.currentHouse[i][1] / 1);
+                        cellLngX = self.currentHouse[i][1] % 1 / (1 / 1110);
+                        deltaLng = cellLngX % 1;
+                        if (deltaLng > 0.5)
+                            cellLngX = Math.ceil(cellLngX) - 1;
+                        else
+                            cellLngX = Math.ceil(cellLngX) - 2;
+                        intLatX = parseInt(self.currentHouse[i][0] / 1);
+                        cellLatX = self.currentHouse[i][0] % 1 / (1 / 1110);
+                        deltaLat = cellLatX % 1;
+                        if (deltaLat > 0.5)
+                            cellLatX = Math.ceil(cellLatX) - 1;
+                        else
+                            cellLatX = Math.ceil(cellLatX) - 2;
+                        cellLngX = intLngX * 10000 + cellLngX;
+                        cellLatX = intLatX * 10000 + cellLatX;
+                        for (var k = 0; k < 2; k++) {
+                            for (var n = 0; n < 2; n++) {
+                                var arrPolygon = self.checkMap[cellLatX + k];
+                                if (arrPolygon) {
+                                    arrPolygon = arrPolygon[cellLngX + n];
+                                    if (arrPolygon)
+                                        for (var j = 0; j < arrPolygon.length; j++) {
+                                            if (google.maps.geometry.poly.containsLocation(marker.getPosition(), arrPolygon[j])) {
+                                                google.maps.event.addListener(arrPolygon[j], "mousemove", function() {
+                                                    google.maps.event.trigger(marker, 'mouseover');
+                                                });
+                                                google.maps.event.addListener(arrPolygon[j], "click", function() {
+                                                    google.maps.event.trigger(marker, 'click');
+                                                });
+                                                google.maps.event.addListener(arrPolygon[j], "mouseout", function() {
+                                                    google.maps.event.trigger(marker, 'mouseout');
+                                                });
+                                                marker.isTrigger = true;
+                                            }
+                                        }
+                                }
+                            }
+                        }
+                    }
+                })
+            }
         }
-
     });
 }
 
@@ -787,8 +842,6 @@ MapView.prototype.addWKT = function(multipolygonWKT, cellLat, cellLng) {
     var wkt = new Wkt.Wkt();
     wkt.read(multipolygonWKT);
     var components = wkt.components;
-
-
     for (var k = 0; k < components.length; k++) {
         var line = components[k];
         var polygon = new google.maps.Polygon({
@@ -800,6 +853,13 @@ MapView.prototype.addWKT = function(multipolygonWKT, cellLat, cellLng) {
             map: this.map,
             geodesic: true
         })
+        google.maps.event.addListener(polygon, "mouseover", function() {
+            this.setOptions({ fillColor: "#00FF00" });
+        });
+
+        google.maps.event.addListener(polygon, "mouseout", function() {
+            this.setOptions({ fillColor: "#adaeaf" });
+        });
         this.checkMap[cellLat][cellLng].push(polygon);
     }
     if (this.checkLibary[cellLat] === undefined)
@@ -814,7 +874,8 @@ MapView.prototype.setMapPolygon = function(cellLat, cellLng) {
         return;
     var arr = this.checkMap[cellLat][cellLng];
     for (var i = 0; i < arr.length; i++) {
-        arr[i].setMap(this.map);
+        if (arr[i].getMap() === null)
+            arr[i].setMap(this.map);
     }
     if (this.checkLibary[cellLat] === undefined)
         this.checkLibary[cellLat] = [];
@@ -873,46 +934,49 @@ MapView.prototype.addMapHouse = function() {
     self.map.setZoom(20);
 
     google.maps.event.addListener(self.map, "idle", function() {
-        var bounds = self.map.getBounds();
-        var ne = bounds.getNorthEast(); // LatLng of the north-east corner
-        var sw = bounds.getSouthWest();
+        self.isDoneMarker = new Promise(function(resolve, reject) {
+            var bounds = self.map.getBounds();
+            var ne = bounds.getNorthEast(); // LatLng of the north-east corner
+            var sw = bounds.getSouthWest();
 
-        var topRight = [ne.lat(), ne.lng()];
-        var bottomLeft = [sw.lat(), sw.lng()];
-        self.bottomLeft = bottomLeft;
-        self.topRight = topRight;
+            var topRight = [ne.lat(), ne.lng()];
+            var bottomLeft = [sw.lat(), sw.lng()];
+            self.bottomLeft = bottomLeft;
+            self.topRight = topRight;
 
-        if (self.enableHouse == true) {
-            self.removeMapHouseAround();
-            var queryData = [{ lat: { operator: ">", value: bottomLeft[0] } }, "&&", { lat: { operator: "<", value: topRight[0] } }, "&&",
-                { lng: { operator: ">", value: bottomLeft[1] } }, "&&", { lng: { operator: "<", value: topRight[1] } }
-            ];
+            if (self.enableHouse == true) {
+                self.removeMapHouseAround();
+                var queryData = [{ lat: { operator: ">", value: bottomLeft[0] } }, "&&", { lat: { operator: "<", value: topRight[0] } }, "&&",
+                    { lng: { operator: ">", value: bottomLeft[1] } }, "&&", { lng: { operator: "<", value: topRight[1] } }
+                ];
 
-            if (self.currentMarker && self.currentMarker.data !== undefined) {
-                queryData = [queryData];
-                queryData.push("&&");
-                queryData.push({ id: { operator: "!=", value: self.currentMarker.data.id } })
+                if (self.currentMarker && self.currentMarker.data !== undefined) {
+                    queryData = [queryData];
+                    queryData.push("&&");
+                    queryData.push({ id: { operator: "!=", value: self.currentMarker.data.id } })
+                }
+                if (queryData.length > 0) {
+                    queryData.push("&&");
+                    queryData.push({ censorship: 1 });
+                }
+                moduleDatabase.getModule("activehouses").load({ WHERE: queryData }).then(
+                    function(value) {
+                        for (var i = 0; i < value.length; i++) {
+                            self.addOrtherMarker(value[i]);
+                        }
+                        var event = new CustomEvent('change-house');
+                        self.dispatchEvent(event);
+                        resolve();
+                    })
             }
-            if (queryData.length > 0) {
-                queryData.push("&&");
-                queryData.push({ censorship: 1 });
-            }
-            moduleDatabase.getModule("activehouses").load({ WHERE: queryData }).then(
-                function(value) {
-                    for (var i = 0; i < value.length; i++) {
-                        self.addOrtherMarker(value[i]);
-                    }
-                    var event = new CustomEvent('change-house');
-                    self.dispatchEvent(event);
-
-                })
-        }
+        }.bind(this));
 
     });
 }
 
 MapView.prototype.addOrtherMarker = function(data) {
     var self = this;
+
     var position = [data.lat, data.lng];
     if (this.checkHouse[position[0]] !== undefined && this.checkHouse[position[0]][position[1]] !== undefined) {
         var arr = this.checkHouse[position[0]][position[1]];
@@ -969,8 +1033,11 @@ MapView.prototype.addOrtherMarker = function(data) {
 
         marker.data = data;
         google.maps.event.addListener(marker, 'mouseover', function() {
+            if (infowindow.visible === true)
+                return;
             infowindow.setContent(self.modalMiniRealty(marker.data));
             infowindow.open(self.map, marker);
+            infowindow.visible = true;
             marker.setIcon(imageHover);
         });
         google.maps.event.addListener(marker, 'mouseout', function(event) {
@@ -982,6 +1049,7 @@ MapView.prototype.addOrtherMarker = function(data) {
             //   }, 400);
             marker.setIcon(image);
             infowindow.close();
+            infowindow.visible = false;
         });
 
         if (this.checkHouse[position[0]] === undefined)
@@ -993,7 +1061,7 @@ MapView.prototype.addOrtherMarker = function(data) {
         this.currentHouse.push(position);
     }
 
-
+    self.isDoneMarker = true;
     return marker;
 }
 

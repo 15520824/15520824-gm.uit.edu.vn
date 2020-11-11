@@ -1,4 +1,4 @@
-.b-workZone__content.m-workZone__content__nav .absol-tabbar-button{
+.b-workZone__content.m-workZone__content__nav .absol-tabbar-button {
     border-bottom: 2px #546e7a solid;
     background-color: #263238;
     color: #eeeeee;
@@ -19,7 +19,7 @@
     z-index: 3;
 }
 
-.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before{
+.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
@@ -34,25 +34,25 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
     position: absolute;
-    transform: translate(-100%,-50%) translateX(-5px);
+    transform: translate(-100%, -50%) translateX(-5px);
     top: 50%;
 }
 
-.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover{
+.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover {
     background-color: #b0bec5;
     color: #ffffff;
     cursor: pointer;
 }
 
-.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before{
+.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before {
     content: "list";
 }
 
-.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before{
+.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before {
     content: "gavel";
 }
 
-.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before{
+.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before {
     content: "search";
 }
 
@@ -64,43 +64,44 @@
     box-sizing: content-box;
 }
 
-.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button{
+.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button {
     height: 100%;
 }
 
-.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar{
-   border-bottom: none;
-   height: 40px;
+.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar {
+    border-bottom: none;
+    height: 40px;
 }
 
-.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container{
+.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container {
     display: none;
 }
 
-.b-workZone__side.m-workZone__side__nav{
+.b-workZone__side.m-workZone__side__nav {
     background-color: #263238;
     height: 100%;
     position: relative;
     vertical-align: top;
 }
 
-.absol-tabview-container{
+.absol-tabview-container {
     width: 100%;
     height: 100%;
 }
 
-table.b-workZone__layout{
+table.b-workZone__layout {
     border-spacing: 0;
     width: 100%;
     height: 100%;
     position: relative;
 }
 
-.b-workZone__layout td,.b-workZone__layout tr{
+.b-workZone__layout td,
+.b-workZone__layout tr {
     padding: 0;
 }
 
-.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active{
+.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active {
     border-bottom: 2px #546e7a solid;
 }
 
@@ -115,66 +116,68 @@ table.b-workZone__layout{
     margin: 0;
 }
 
-.b-workZone__layout .absol-tabview{
+.b-workZone__layout .absol-tabview {
     position: static;
 }
 
-.b-workZone__layout .absol-tabview-container{
+.b-workZone__layout .absol-tabview-container {
     height: calc(100% - 40px);
-    top: unset;
+    top: 40px;
     left: unset;
     right: unset;
     bottom: unset;
 }
 
-.b-workZone__layout .sortTable{
+.b-workZone__layout .absol-tabview-container table.sortTable .parent td {
+    background-color: unset;
+}
+
+.b-workZone__layout .sortTable {
     width: 100%;
     border-radius: 0;
     background-color: unset;
     color: #eeeeee;
-
 }
 
-.b-workZone__content.m-workZone__content__nav .sortTable>thead{
+.b-workZone__content.m-workZone__content__nav .sortTable>thead {
     display: none;
 }
 
-.b-workZone__layout .sortTable td{
+.b-workZone__layout .sortTable td {
     border-top: 1px solid #000000;
     padding: 7px;
 }
 
-
-.b-workZone__content.m-workZone__content__nav .sortTableClone{
+.b-workZone__content.m-workZone__content__nav .sortTableClone {
     width: 100%;
     border-radius: 0;
     background-color: unset;
     color: #eeeeee;
-
 }
 
-.b-workZone__content.m-workZone__content__nav .sortTableClone>thead{
+.b-workZone__content.m-workZone__content__nav .sortTableClone>thead {
     display: none;
 }
 
-.b-workZone__layout .sortTableClone td{
+.b-workZone__layout .sortTableClone td {
     border-top: 1px solid #000000;
     padding: 7px;
 }
 
-.b-workZone__side.m-workZone__side__article{
+.b-workZone__side.m-workZone__side__article {
     background-color: #263238;
     width: unset;
     height: 100%;
 }
 
-.b-workZone__content#workZone_article__content{
+.b-workZone__content#workZone_article__content {
     height: 100%;
 }
 
 .b-pageContent__side #internal_wrapper * {
     box-sizing: content-box;
 }
+
 .b-breadCrumbs__items {
     list-style: none;
     margin: 0;
@@ -191,7 +194,7 @@ table.b-workZone__layout{
     white-space: pre;
 }
 
-.b-article__headerSide.m-article__headerSide__nav{
+.b-article__headerSide.m-article__headerSide__nav {
     font-size: 1rem;
     padding: 0.5rem 1rem;
     flex-grow: 2;
@@ -202,7 +205,7 @@ table.b-workZone__layout{
     position: relative;
 }
 
-.b-article__headerSide.m-article__headerSide__buttons{
+.b-article__headerSide.m-article__headerSide__buttons {
     font-size: 1rem;
     padding: 8px 26px;
     display: flex;
@@ -212,7 +215,7 @@ table.b-workZone__layout{
     width: fit-content;
 }
 
-.b-article__headerLayout{
+.b-article__headerLayout {
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
@@ -258,29 +261,30 @@ li.b-controlButtons__item {
     flex-direction: column;
 }
 
-.b-article__headerLayout-edit#article__header{
+.b-article__headerLayout-edit#article__header {
     display: flex;
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     flex-shrink: 0;
 }
 
-.b-controlButtons__item>span{
+.b-controlButtons__item>span {
     vertical-align: initial;
     padding: 5px;
 }
 
-.b-controlButtons__item>i{
+.b-controlButtons__item>i {
     vertical-align: middle;
     font-size: 1rem;
     cursor: pointer;
 }
 
-.cke_screen_reader_only{
-    top:0;
+.cke_screen_reader_only {
+    top: 0;
 }
 
-.os-host, .os-host-textarea {
+.os-host,
+.os-host-textarea {
     position: relative;
     overflow: visible!important;
     -webkit-box-orient: vertical;

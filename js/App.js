@@ -274,11 +274,6 @@ App.prototype.getView = function() {
             }
         ]
     });
-    // var mListHelp = new ListHelp();
-    // mListHelp.attach(this);
-    // var frameview = mListHelp.getView();
-    // this.body.addChild(frameview);
-    // this.body.activeFrame(frameview);
     this.hMenu = $("div.pizo-header-menu", this.$view);
     this.refresh();
     if (this.enableAvatar) {
@@ -713,6 +708,13 @@ App.prototype.openPage = function(index) {
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
             finalPage = mListTypeActivehouse;
+            break;
+        case 10:
+            var mListHelp = new ListHelp();
+            mListHelp.attach(this);
+            var frameview = mListHelp.getView();
+            this.body.addChild(frameview);
+            this.body.activeFrame(frameview);
             break;
         case 101:
             var mListEditHelp = new ListEditHelp();

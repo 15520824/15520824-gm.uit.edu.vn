@@ -274,7 +274,9 @@ ListRealty.prototype.getView = function() {
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(0, 0);
                     this.currentMerge = undefined;
-                    self.merge(self.mTable.getTrueCheckBox());
+                    var arrMerge = self.mTable.getTrueCheckBox();
+                    if (arrMerge.length > 0)
+                        self.merge(arrMerge);
                 } else {
                     confirmButton.style.display = "none";
                     saveButton.style.display = "none";
@@ -583,7 +585,7 @@ ListRealty.prototype.getView = function() {
                 }
                 self.mTable.updateTable(undefined, value);
                 self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
-                self.mTable.addFilter(hiddenConfirm, 20);
+                self.mTable.addFilter(hiddenConfirm, 19);
                 self.mTable.addFilter(self.HTinput, 17);
             })
         })
