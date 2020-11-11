@@ -3167,7 +3167,7 @@ tableView.prototype.lastRowElement = function() {
             if (tempLast === undefined)
                 return;
             var row = this.getRow(tempLast);
-            if (this.lastElement.parentNode && this.lastElement.parentNode.parentNode)
+            if (this.lastElement && this.lastElement.parentNode && this.lastElement.parentNode.parentNode)
                 this.bodyTable.addChild(row);
             else {
                 this.bodyTable.addChild(this.lastElement);
