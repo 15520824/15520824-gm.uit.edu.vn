@@ -3152,6 +3152,10 @@ tableView.prototype.getPaginationIndex = function() {
     return 1;
 }
 
+tableView.prototype.getPaginationLength = function() {
+    return 1;
+}
+
 tableView.prototype.lastRowElement = function() {
     if (this.functionLast) {
         if (this.tagName === "DIV") {
