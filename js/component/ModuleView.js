@@ -708,7 +708,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                 result.appendChild(tempLimit);
                 if (scrollParent)
                     scrollParent.addEventListener("scroll", function(event) {
-                        if (result.startIndex > indexRow * 10 && result.currentIndex !== result.data.length) {
+                        if (result.currentIndex > indexRow * 10 && result.currentIndex !== result.data.length) {
                             if (tempLimit.style.display !== "block")
                                 tempLimit.style.display = "block";
                             return;
@@ -718,7 +718,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                         }
                         if (result.currentIndex === result.data.length)
                             return;
-                        result.indexPage = result.startIndex / 10 + 1;
+                        result.indexPage = result.currentIndex / 10 + 1;
                         if (this.scrollTop >= (this.scrollHeight - this.offsetHeight)) {
                             if (result.getBodyTable !== undefined) {
                                 result.getBodyTable(result.data);
