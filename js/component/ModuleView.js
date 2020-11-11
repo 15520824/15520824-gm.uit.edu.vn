@@ -645,7 +645,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.isSwipeLeft = false;
     result.isSwipeRight = false;
     result.sortArray = [];
-
+    result.indexPageSum = Math.ceil(result.data.length / indexRow);
 
 
     if (window.scrollEvent === undefined) {
@@ -708,7 +708,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                 result.appendChild(tempLimit);
                 if (scrollParent)
                     scrollParent.addEventListener("scroll", function(event) {
-                        if (this.startIndex > 10 * indexRow) {
+                        if (result.startIndex > indexRow * 10 && result.startIndex !== result.data.length) {
                             if (tempLimit.style.display !== "block")
                                 tempLimit.style.display = "block";
                             return;
@@ -716,11 +716,12 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                             if (tempLimit.style.display !== "none")
                                 tempLimit.style.display = "none";
                         }
+                        result.indexPage = result.startIndex / 10 + 1;
                         if (this.scrollTop >= (this.scrollHeight - this.offsetHeight)) {
-                            if (this.getBodyTable !== undefined) {
-                                this.getBodyTable(this.data);
-                                if (this.bodyTable.listCheckBox !== undefined && this.bodyTable.listCheckBox.length > 0) {
-                                    this.bodyTable.listCheckBox[0].update();
+                            if (result.getBodyTable !== undefined) {
+                                result.getBodyTable(result.data);
+                                if (result.bodyTable.listCheckBox !== undefined && result.bodyTable.listCheckBox.length > 0) {
+                                    result.bodyTable.listCheckBox[0].update();
                                 }
                             }
                         }
@@ -2968,6 +2969,7 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
         }
         this.data = data;
         isFirst = true;
+        result.indexPageSum = Math.ceil(result.data.length / indexRow);
     }
     if (isUpdate == true)
         result.indexRow = 0;
@@ -3145,6 +3147,8 @@ tableView.prototype.insertRow = function(data, checkMust = false) {
     if (result.realTable.parentNode.numArrayFixRight) {
         result.setArrayFix(result.realTable.parentNode.numArrayFixRight, false);
     }
+    result.indexPageSum++;
+    result.indexPage++;
     return row;
 }
 
@@ -3154,11 +3158,15 @@ tableView.prototype.insertLastRow = function(functionLast) {
 }
 
 tableView.prototype.getPaginationIndex = function() {
-    return 1;
+    if (this.indexPage === undefined)
+        return 1;
+    return this.indexPage;
 }
 
 tableView.prototype.getPaginationLength = function() {
-    return 1;
+    if (this.indexPageSum === undefined)
+        return 1;
+    return this.indexPageSum;
 }
 
 tableView.prototype.lastRowElement = function() {
@@ -3371,6 +3379,8 @@ tableView.prototype.exactlyDeleteRow = function(index) {
             parent.updatePagination();
         }
     }
+    result.indexPageSum--;
+    result.indexPage--;
 }
 
 tableView.prototype.insertColumn = function(index, insertBefore = -1) {
@@ -3466,6 +3476,10 @@ tableView.prototype.changeParent = function(index, rowParent) {
 
     if (result.checkVisibleChild !== undefined && result.childrenNodes.length === 0)
         result.checkVisibleChild();
+    result.indexPageSum++;
+    result.indexPage++;
+    rowParent.indexPageSum--;
+    result.indexPage++;
     return rowParent.childrenNodes.length - 1;
 }
 
