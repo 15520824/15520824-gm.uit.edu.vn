@@ -3167,7 +3167,12 @@ tableView.prototype.lastRowElement = function() {
             if (tempLast === undefined)
                 return;
             var row = this.getRow(tempLast);
-            this.bodyTable.addChild(row);
+            if (this.lastElement.parentNode && this.lastElement.parentNode.parentNode)
+                this.bodyTable.addChild(row);
+            else {
+                this.bodyTable.addChild(this.lastElement);
+                this.bodyTable.replaceChild(row, this.lastElement);
+            }
 
             for (var j = 0; j < this.realTable.parentNode.clone.length; j++) {
                 var k = parseFloat(this.realTable.parentNode.clone[j][0].id);
