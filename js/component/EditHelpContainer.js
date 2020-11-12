@@ -472,7 +472,7 @@ EditHelpContainer.prototype.functionChoice = function(event, me, index, parent, 
         self.modal.clickTime = 0;
     if (arr == row && today - self.modal.clickTime < 300) {
         self.modal.selfRemove();
-        self.modal.resolve(event, me, index, parent, data, row);
+        self.modal.resolve({ event: event, me: me, index: index, parent: parent, data: data, row: row });
     }
     self.modal.clickTime = today;
     if (arr.length !== 0)
@@ -660,7 +660,7 @@ EditHelpContainer.prototype.addView = function(value, row, parent_id) {
     ];
     result.original = value;
     var temp = row.insertRow(result);
-    temp.scrollIntoView(true);
+    temp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
     this.listParent.updateItemList();
 }
 
@@ -894,7 +894,11 @@ EditHelpContainer.prototype.itemEdit = function() {
                 self.editor = CKEDITOR.replace(textId);
                 self.editor.addCommand("comand_link_direction", {
                     exec: function(edt) {
-                        self.appendChild(self.listLink())
+                        var listLink = self.listLink();
+                        self.appendChild(listLink);
+                        listLink.promiseSelectList.then(function() {
+                            console.log(arguments)
+                        })
                     }
                 });
             }
@@ -909,7 +913,8 @@ EditHelpContainer.prototype.listLink = function() {
 
     var header = [{ value: "Title", sort: true, functionClickAll: self.functionChoice.bind(self) }, { value: "Date", sort: true }, { value: "ID", sort: true }];
     var mTable = new tableView(header, self.formatDataRowList(self.getDataCurrent()), false, false, 0);
-    mTable.style.width = "calc(100% - 90px)";
+    mTable.style.width = "calc(100% - 20px)";
+    mTable.style.marginLeft = "10px";
     var input = _({
         tag: "input",
         class: "input-search-list",
@@ -952,7 +957,7 @@ EditHelpContainer.prototype.listLink = function() {
         }]
     })
     mTable.addInputSearch(input);
-    self.promiseSelectList = new Promise(function(resolve, reject) {
+    self.modal.promiseSelectList = new Promise(function(resolve, reject) {
         self.modal.resolve = resolve;
         self.modal.reject = reject;
     })

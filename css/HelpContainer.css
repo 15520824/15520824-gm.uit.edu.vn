@@ -126,6 +126,7 @@ table.b-workZone__layout {
     left: unset;
     right: unset;
     bottom: unset;
+    overflow: unset;
 }
 
 .b-workZone__layout .absol-tabview-container table.sortTable .parent td {

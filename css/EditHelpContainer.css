@@ -65,6 +65,15 @@
     min-width: 800px;
     min-height: 600px;
     background-color: #263238;
+    top: unset;
+    left: unset;
+    bottom: unset;
+    right: unset;
+    position: unset;
+}
+
+.list-linkChoice-container table.sortTable .parent td {
+    background-color: unset;
 }
 
 .btn.hasTooltip {

@@ -3387,8 +3387,8 @@ tableView.prototype.exactlyDeleteRow = function(index) {
             parent.updatePagination();
         }
     }
-    result.indexPageSum--;
-    result.indexPage--;
+    parent.indexPageSum--;
+    parent.indexPage--;
 }
 
 tableView.prototype.insertColumn = function(index, insertBefore = -1) {
