@@ -34,7 +34,10 @@ HashTable.prototype.functionSetHash = function(data, dataParent = "") {
                     hash[tempCharater][stringCheck][i] = [];
                 hash[tempCharater][stringCheck][i].push(j);
             }
-            checkData[stringCheck] = data[m].getRowMerge;
+            if (data[m].getRowMerge)
+                checkData[stringCheck] = data[m].getRowMerge;
+            else
+                checkData[stringCheck] = [data[m]];
         }
         if (data[m].child !== undefined) {
             this.functionSetHash(data[m].child, "_" + m + dataParent);

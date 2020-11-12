@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://pizo.vn/admin/login -->
+<html lang="vi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="N5xPMUeVZVgK21yhbNo0X2mr3hUN4bReA9Q4N7tn">
+        <link rel="shortcut icon" href="https://pizo.vn/favicon.ico" type="image/x-icon">
+
+        <title>Login | Pizo</title>
+
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+
+        <!-- Bootstrap Core CSS -->
+        <link href="./Login _ Pizo_files/bootstrap.min.css" rel="stylesheet">
+        <link href="./Login _ Pizo_files/dropzone.css" rel="stylesheet" type="text/css">
+
+        
+        <link href="./Login _ Pizo_files/select2.min.css" rel="stylesheet">
+        <link href="./Login _ Pizo_files/select2-bootstrap.css" rel="stylesheet">
+
+        <link href="./Login _ Pizo_files/style.css" rel="stylesheet">
+
+        <!-- You can change the theme colors from here -->
+        <link href="./Login _ Pizo_files/blue.css" id="theme" rel="stylesheet">
+
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Popup CSS -->
+        <link href="./Login _ Pizo_files/magnific-popup.css" rel="stylesheet">
+        <link href="./Login _ Pizo_files/jquery.fancybox.css" rel="stylesheet">
+
+        <link href="./Login _ Pizo_files/chartist.min.css" rel="stylesheet">
+        <link href="./Login _ Pizo_files/chartist-init.css" rel="stylesheet">
+        <link href="./Login _ Pizo_files/jquery.datetimepicker.css" rel="stylesheet">
+
+        <link href="./Login _ Pizo_files/datepicker.min.css" rel="stylesheet">
+
+        <link href="./Login _ Pizo_files/custom.css" rel="stylesheet">
+
+        
+        <script>
+            var BASE_URL = "https://pizo.vn";
+
+            var LOCATION_PROVINCE_URL = "https://pizo.vn/api/v1.0/location/province";
+            var LOCATION_DISTRICT_URL = "https://pizo.vn/api/v1.0/location/district";
+            var LOCATION_WARD_URL = "https://pizo.vn/api/v1.0/location/ward";
+            var LOCATION_STREET_URL = "https://pizo.vn/api/v1.0/location/street";
+            var LOCATION_ADD_STREET_URL = "https://pizo.vn/admin/ajax/add-street";
+
+            var PRODUCT_UNAPPROVED_URL = "https://pizo.vn/admin/products/ajax/un_approved";
+            var PRODUCT_APPROVED_URL = "https://pizo.vn/admin/products/ajax/approved";
+            var PRODUCT_DELETE_URL = "https://pizo.vn/admin/products/ajax/delete";
+
+            var PRODUCT_MERGE_URL = "https://pizo.vn/admin/products/merge/make";
+            var PRODUCT_MERGE_DETAIL_URL = "https://pizo.vn/admin/products/merge/detail/product";
+
+            var USER_SEARCH_URL = "https://pizo.vn/admin/ajax/search-user";
+            var PRODUCT_CALLBACK_REQUEST_URL = "https://pizo.vn/admin/products/callback-request";
+            var PRODUCT_GET_NOTE_URL = "https://pizo.vn/admin/products/ajax/get-note";
+
+            var PRODUCT_CALLBACK_MAKE_URL = "https://pizo.vn/admin/products/callback/make";
+            var PRODUCT_CALLBACK_DETAIL_URL = "https://pizo.vn/admin/products/callback/detail/product";
+            var PRODUCT_DETAIL_URL = "https://pizo.vn/admin/products/detail";
+            var PRODUCT_HISTORY_EDIT_URL = "https://pizo.vn/admin/products/history-edit";
+            var PRODUCT_NEAR_URL = "https://pizo.vn/admin/products/ajax/get-near-product";
+
+            var UPDATE_HOME_NUMBER_NOTE_URL = "https://pizo.vn/admin/products/merge/update-home-number-note";
+        </script>
+
+    <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+        <body class="">
+
+                        <section id="wrapper">
+        <div class="login-register" style="background-image:url(https://pizo.vn/storage/backend/assets/images/background/login-register.jpg);">
+            <div class="login-box card">
+                <div class="card-body">
+                    <form class="form-horizontal form-material" id="loginform" action="https://pizo.vn/admin/login" method="post">
+                        <h3 class="box-title m-b-20 text-center">Đăng nhập</h3>
+                        <input type="hidden" name="_token" value="N5xPMUeVZVgK21yhbNo0X2mr3hUN4bReA9Q4N7tn">                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" name="phone" type="tel" required="" placeholder="Số điện thoại">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" name="password" type="password" required="" placeholder="Mật khẩu">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12 font-14">
+                                <div class="checkbox checkbox-primary pull-left p-t-0">
+                                    <input id="checkbox-signup" type="checkbox">
+                                    <label for="checkbox-signup"> Ghi nhớ đăng nhập </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group text-center m-t-20">
+                            <div class="col-xs-12">
+                                <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">
+                                    Đăng nhập
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+        
+        <script src="./Login _ Pizo_files/jquery.min.js.download"></script>
+        <script src="./Login _ Pizo_files/jquery-ui.min.js.download"></script>
+
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="./Login _ Pizo_files/popper.min.js.download"></script>
+        <script src="./Login _ Pizo_files/bootstrap.min.js.download"></script>
+
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="./Login _ Pizo_files/jquery.slimscroll.js.download"></script>
+
+        <!--Wave Effects -->
+        <script src="./Login _ Pizo_files/waves.js.download"></script>
+
+        <!--Menu sidebar -->
+        <script src="./Login _ Pizo_files/sidebarmenu.js.download"></script>
+
+        <!--stickey kit -->
+        <script src="./Login _ Pizo_files/sticky-kit.min.js.download"></script>
+        <script src="./Login _ Pizo_files/jquery.sparkline.min.js.download"></script>
+
+        <!--Custom JavaScript -->
+        <script src="./Login _ Pizo_files/custom.min.js.download"></script>
+
+        <script src="./Login _ Pizo_files/mustache.min.js.download"></script>
+
+        <!-- Magnific popup JavaScript -->
+        <script src="./Login _ Pizo_files/jquery.magnific-popup.min.js.download"></script>
+        <script src="./Login _ Pizo_files/jquery.magnific-popup-init.js.download"></script>
+
+        <!-- chartist chart -->
+        <script src="./Login _ Pizo_files/chartist.min.js.download"></script>
+        <script src="./Login _ Pizo_files/chartist-plugin-tooltip.min.js.download"></script>
+
+        <script src="./Login _ Pizo_files/select2.full.min.js.download"></script>
+        <script src="./Login _ Pizo_files/jquery.datetimepicker.js.download"></script>
+        <script src="./Login _ Pizo_files/jquery.mask.min.js.download"></script>
+        <script src="./Login _ Pizo_files/jquery.fancybox.js.download"></script>
+
+        <script src="./Login _ Pizo_files/datepicker.min.js.download"></script>
+
+
+
+        <script src="./Login _ Pizo_files/dropzone.js.download" type="text/javascript"></script>
+
+        <script src="./Login _ Pizo_files/select2.full.min.js.download" type="text/javascript"></script>
+
+        <script src="./Login _ Pizo_files/custom.js.download"></script>
+        <script src="./Login _ Pizo_files/lck.app.js.download"></script>
+
+                                
+    
+
+</body></html>

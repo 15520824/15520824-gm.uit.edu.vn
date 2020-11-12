@@ -2971,7 +2971,7 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
         }
         this.data = data;
         isFirst = true;
-        result.indexPageSum = Math.ceil(result.data.length / indexRow);
+        result.indexPageSum = Math.ceil(result.data.length / result.indexRow);
     }
     if (isUpdate == true)
         result.indexRow = 0;

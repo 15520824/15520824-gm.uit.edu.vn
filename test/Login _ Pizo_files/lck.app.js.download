@@ -1,0 +1,231 @@
+var LCKApp = {
+    token: null,
+    contact_id: 0,
+    init: function () {
+        $.fn.modal.Constructor.prototype._enforceFocus = function () {
+        };
+
+        $('.select2').select2({theme: "bootstrap"});
+
+        $('.select2_tag').select2({tags: true, theme: "bootstrap"});
+
+        $('[data-toggle="datepicker-simple"]').datepicker({
+            format: 'dd-mm-yyyy',
+            endDate: $.now(),
+            autoHide: true
+        });
+
+        $('[data-toggle="datepicker"]').datetimepicker({
+            format: 'Y-m-d H:i:s'
+        });
+
+        $('[data-toggle="datepicker2"]').datetimepicker({
+            format: 'Y-m-d'
+        });
+
+        $('.calculator_in').change(function () {
+            LCKApp.calculatorArea();
+        });
+    },
+    setToken: function (token) {
+        LCKApp.token = token;
+        $('meta[name="csrf-token"]').attr('content', token);
+    },
+    getToken: function () {
+        return $('meta[name="csrf-token"]').attr('content');
+    },
+    selectLocation: function (form_id) {
+        $(form_id + '.select_province').change(function () {
+            $(form_id + '.select_district').html('<option value="">Chọn</option>');
+            $(form_id + '.select_ward').html('<option value="">Chọn</option>');
+            $(form_id + '.select_street').html('<option value="">Chọn</option>');
+            var province_id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: LOCATION_DISTRICT_URL,
+                data: {province_id: province_id},
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data.data, function (index, element) {
+                        $(form_id + '.select_district').append('<option value=' + element.id + '>' + element.name + '</option>');
+                    });
+                }
+            });
+        });
+
+        $(form_id + '.select_district').change(function () {
+            $(form_id + '.select_ward').html('<option value="">Chọn</option>');
+            $(form_id + '.select_street').html('<option value="">Chọn</option>');
+            var district_id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: LOCATION_WARD_URL,
+                data: {district_id: district_id},
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data.data, function (index, element) {
+                        $(form_id + '.select_ward').append('<option value=' + element.id + '>' + element.name + '</option>');
+                    });
+                }
+            });
+        });
+
+        $(form_id + '.select_ward').change(function () {
+            $(form_id + '.select_street').html('<option value="">Chọn</option>');
+            var ward_id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: LOCATION_STREET_URL,
+                data: {ward_id: ward_id},
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data.data, function (index, element) {
+                        $(form_id + '.select_street').append('<option value=' + element.id + '>' + element.name + '</option>');
+                    });
+                }
+            });
+        });
+    },
+    addStreet: function () {
+        var form = jQuery('#form-add-street');
+        var modal = jQuery('#addStreet-modal');
+        var objDistrict = jQuery('#form-add-street .select_district');
+        var objWard = jQuery('#form-add-street .select_ward');
+        var objStreet = jQuery('#form-add-street .input_street_name');
+
+        objDistrict.removeClass('form-control-danger');
+        objDistrict.parent().removeClass('has-danger');
+        objStreet.removeClass('form-control-danger');
+        objStreet.parent().removeClass('has-danger');
+
+        var district_id = objDistrict.val();
+        var ward_id = objWard.val();
+        var street_name = objStreet.val();
+
+        if (district_id == null || district_id == '') {
+            objWard.addClass('form-control-danger');
+            objWard.parent().addClass('has-danger');
+            return false;
+        }
+        if (street_name == null || street_name == '') {
+            objStreet.addClass('form-control-danger');
+            objStreet.parent().addClass('has-danger');
+            return false;
+        }
+
+        jQuery.ajax({
+            type: 'POST',
+            url: LOCATION_ADD_STREET_URL,
+            data: {ward_id: ward_id, street_name: street_name, _token: LCKApp.getToken()},
+            dataType: 'json',
+            success: function (data) {
+                objDistrict.removeClass('form-control-danger');
+                objDistrict.parent().removeClass('has-danger');
+                objStreet.removeClass('form-control-danger');
+                objStreet.parent().removeClass('has-danger');
+
+                if (data.e == 0) {
+                    form.trigger("reset");
+                    modal.modal('hide');
+                } else if (data.e == -1) {
+                    alert(data.r);
+                }
+            }
+        });
+    },
+    calculatorArea: function () {
+        var el_width = $('input[name=horizontal]');
+        var el_length = $('input[name=vertical]');
+        var el_area = $('input[name=area]');
+
+        var el_price = $('input[name=price]');
+        var el_price_type = $('select[name=price_type]');
+        var el_land_sqm_price = $('input[name=price_per_square_meters]');
+
+        var width = parseFloat(el_width.val());
+        var length = parseFloat(el_length.val());
+        var area = parseFloat(el_area.val());
+
+        var price = parseFloat(el_price.val());
+        var price_type = parseInt(el_price_type.val());
+        var land_sqm_price = parseFloat(el_land_sqm_price.val());
+
+        width = isNaN(width) ? 0 : width;
+        length = isNaN(length) ? 0 : length;
+        area = isNaN(area) ? 0 : area;
+
+        price = isNaN(price) ? 0 : price;
+        price_type = isNaN(price_type) ? 0 : price_type;
+
+
+        var price_full = 0;
+        price_full = price_type == 1 ? (price) : (price * 1000);
+
+        area = area <= 0 ? parseFloat(width * length) : area;
+        el_area.val(LCKApp.roundDigit(area));
+
+        land_sqm_price = parseFloat(price_full / area);
+
+        land_sqm_price = isNaN(land_sqm_price) ? 0 : land_sqm_price;
+
+        el_land_sqm_price.val(LCKApp.roundDigit(land_sqm_price, 1));
+    },
+    roundDigit: function (num, digit) {
+        if (digit === undefined)
+            digit = 10;
+
+        return Math.round(num * digit) / digit;
+    },
+    loadContact: function (contact) {
+        var template = $('#template_contact').html();
+
+        Mustache.parse(template);
+
+        $.each(contact, function (index, value) {
+            LCKApp.contact_id += 1;
+
+            var rendered = Mustache.render(template, {
+                id: LCKApp.contact_id,
+                contact_id: value.id,
+                name: value.name,
+                type: value.type,
+                phone: value.phone,
+                status: value.status
+            });
+
+            rendered = $.parseHTML(rendered);
+            $(rendered).find('.type_contact option[value="' + value.type + '"]').attr('selected', true)
+            $(rendered).find('.status_contact option[value=' + value.status + ']').attr('selected', true);
+            $('.contact_div').append(rendered);
+        })
+    },
+    addContact: function () {
+        LCKApp.contact_id += 1;
+
+        var template = $('#template_contact').html();
+
+        Mustache.parse(template);
+
+        var rendered = Mustache.render(template, {
+            id: LCKApp.contact_id,
+            contact_id: '',
+            name: '',
+            type: '',
+            phone: '',
+            status: ''
+        });
+
+        $('.contact_div').append(rendered);
+    },
+    deleteContact: function (d) {
+        var id = $(d).data('id');
+        if (id != '') {
+            $('#form-add').append('<input type="hidden" name="deleted_contact[]" value="' + id + '" />')
+        }
+        $(d).parent().parent().parent().parent().remove()
+    }
+}
+
+$(document).ready(function () {
+    LCKApp.init();
+})
