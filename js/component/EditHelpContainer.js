@@ -828,7 +828,7 @@ EditHelpContainer.prototype.updateChild = function(child) {
             if (isUpdate || child[i].original.ordering != i) {
                 if (child[i].original.ordering != i)
                     child[i].original.ordering = i;
-                moduleDatabase.getModule("helps").load(dataUpdate);
+                moduleDatabase.getModule("helps").update(dataUpdate);
             }
         }
 
@@ -870,7 +870,7 @@ EditHelpContainer.prototype.setDataTitle = function(data) {
 
 EditHelpContainer.prototype.deleteDB = function(data, parent, index) {
     var self = this;
-    moduleDatabase.getModule("helps").load(data).then(function(value) {
+    moduleDatabase.getModule("helps").delete(data).then(function(value) {
         self.deleteView(parent, index);
     })
 }

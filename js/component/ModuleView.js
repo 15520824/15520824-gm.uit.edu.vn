@@ -1658,7 +1658,7 @@ tableView.prototype.setVisiableAllNoneUpdate = function(arr) {
     }
 }
 
-tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, nodeBefore) {
+tableView.prototype.getBodyTable = function(data, index, isFirst = false, nodeBefore) {
     var temp = this.bodyTable;
     var result = this,
         k, delta = [],
@@ -1666,19 +1666,24 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
     var arr = [];
     var i = 0;
     var isCheckChild;
-    var startIndexCell = index;
-    if (this.startIndex === undefined)
+    if (this.startIndex == undefined)
         this.startIndex = 0;
+    var startIndexCell;
+    if (index == undefined) {
+        index = 0;
+        startIndexCell = this.startIndex
+    } else
+        startIndexCell = index;
+
     if (this.currentIndex !== undefined) {
         i = this.currentIndex;
-        this.startIndex += result.indexRow;
     } else {
-        this.startIndex = 0;
+        this.currentIndex = i;
     }
     var deltaLong = -1;
     var isFlag = false;
     result.checkSpan = [];
-    if (result.indexRow == undefined || result.indexRow == this.tempIndexRow)
+    if (result.indexRow == undefined || result.indexRow >= this.tempIndexRow)
         result.indexRow = 0;
     var indexIncrease = { a: this.indexRow + startIndexCell };
     for (;
@@ -1785,7 +1790,8 @@ tableView.prototype.getBodyTable = function(data, index = 0, isFirst = false, no
         this.indexRow++;
         indexIncrease.a++;
     }
-    this.currentIndex = indexIncrease.a++;
+    this.currentIndex = i;
+    this.startIndex = indexIncrease.a;
     if (data.updateVisible)
         result.setConfirm(data, i);
     if (isFirst == true)
