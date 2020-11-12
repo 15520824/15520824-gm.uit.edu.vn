@@ -20,25 +20,67 @@ function EditHelpContainer() {
     this.loadConfig();
     var self = this;
     if (this.$view) return this.$view;
+    var input = _({
+        tag: "input",
+        class: "input-search-list",
+        props: {
+            type: "text",
+            placeholder: "Search"
+        }
+    });
     var tabContainer = _({
-        tag: "tabframe",
+        tag: "div",
         class: "header-display-visible",
-        attr: {
-            name: "Menu",
-            id: "matd",
-            desc: ""
-        },
-        child: []
+        child: [{
+            tag: "div",
+            class: "js-stools-container-bar",
+            child: [{
+                    tag: "div",
+                    class: ["absol-tabbar-button", "absol-tabbar-button-active"],
+                    child: [{
+                        tag: "div",
+                        class: "absol-tabbar-button-text",
+                        props: {
+                            innerHTML: "Menu"
+                        }
+                    }]
+                },
+                {
+                    tag: "div",
+                    class: ["btn-wrapper", "input-append"],
+                    child: [
+                        input
+                    ]
+                }
+            ]
+        }]
     })
 
     this.$view = _({
-        tag: "table",
-        class: "b-workZone__layout"
+        tag: "div",
+        class: "b-workZone__layout",
+        child: [{
+            tag: "div",
+            class: ["b-workZone__side", "m-workZone__side__nav"],
+            child: [{
+                tag: "div",
+                class: ["b-workZone__content", "m-workZone__content__nav"],
+                props: {
+                    id: "workZone_nav",
+                },
+                child: [{
+                    tag: "div",
+                    class: "absol-tab-frame-small",
+                    child: [
+                        tabContainer,
+                    ]
+                }]
+            }]
+        }, ]
     })
     Object.assign(this.$view, EditHelpContainer.prototype);
 
     this.$view.editor = this.$view.itemEdit();
-
     var listParent = _({
         tag: "selectmenu",
         class: ["pizo-new-state-selectbox-container-input", "pizo-new-realty-dectruct-input"],
@@ -57,8 +99,199 @@ function EditHelpContainer() {
     })
 
     var updateTableFunction;
-    moduleDatabase.getModule("helps").load().then(function(value) {
+    this.$view.addChild(_({
+        tag: "div",
+        class: ["b-workZone__side", "m-workZone__side__article"],
+        props: {
+            id: "workZone_article"
+        },
+        child: [{
+            tag: "div",
+            class: "b-workZone__content",
+            props: {
+                id: "workZone_article__content"
+            },
+            child: [{
+                tag: "div",
+                class: "b-article",
+                child: [{
+                        tag: "div",
+                        class: "b-article__headerLayout-edit",
+                        props: {
+                            id: "article__header"
+                        },
+                        child: [{
+                            tag: "div",
+                            class: ["b-article__headerSide", "m-article__headerSide__nav"],
+                            props: {
+                                id: "headerSide__nav"
+                            },
+                            child: [{
+                                tag: "ul",
+                                class: "b-breadCrumbs__items",
+                                child: [{
+                                    tag: "div",
+                                    class: "pizo-new-catergory-container",
+                                    child: [{
+                                            tag: "div",
+                                            class: "pizo-new-category-container-name",
+                                            child: [{
+                                                tag: "div",
+                                                class: "pizo-new-category-container-name-container",
+                                                child: [{
+                                                        tag: "span",
+                                                        class: "pizo-new-category-container-name-container-label",
+                                                        props: {
+                                                            innerHTML: "Tên"
+                                                        }
+                                                    },
+                                                    {
+                                                        tag: "input",
+                                                        class: ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
+                                                        on: {
+                                                            change: function(event) {
+                                                                if (self.$view.alias.value === "" || self.$view.aliasErorr.classList.contains("hasErrorElement")) {
+                                                                    self.$view.alias.value = createAlias(this.value);
+                                                                    self.$view.alias.dispatchEvent(new Event("input"));
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }]
+                                        },
+                                        {
+                                            tag: "div",
+                                            class: "pizo-new-category-container-alias-active",
+                                            child: [{
+                                                    tag: "div",
+                                                    class: "pizo-new-category-container-alias",
+                                                    child: [{
+                                                            tag: "div",
+                                                            class: "pizo-new-category-container-alias-container",
+                                                            child: [{
+                                                                    tag: "span",
+                                                                    class: "pizo-new-category-container-alias-container-label",
+                                                                    props: {
+                                                                        innerHTML: "Alias"
+                                                                    },
+                                                                    child: [{
+                                                                        tag: "span",
+                                                                        class: "pizo-new-realty-location-detail-row-label-important",
+                                                                        props: {
+                                                                            innerHTML: "*"
+                                                                        }
+                                                                    }]
+                                                                },
+                                                                {
+                                                                    tag: "input",
+                                                                    class: ["pizo-new-category-container-alias-container-input", "pizo-new-realty-dectruct-input"],
+                                                                    on: {
+                                                                        input: function(event) {
+                                                                            var parent = this.parentNode.parentNode;
 
+                                                                            if (this.value == "") {
+                                                                                if (!parent.classList.contains("hasErrorElement"))
+                                                                                    parent.classList.add("hasErrorElement");
+                                                                                if (!parent.classList.contains("invalid-error"))
+                                                                                    parent.classList.add("invalid-error");
+                                                                            } else {
+                                                                                if (parent.classList.contains("invalid-error"))
+                                                                                    parent.classList.remove("invalid-error");
+                                                                            }
+
+                                                                            if (listParent.items.check[this.value] !== undefined && self.$view.rowSelected.data.original.alias !== this.value) {
+                                                                                if (!parent.classList.contains("hasErrorElement"))
+                                                                                    parent.classList.add("hasErrorElement");
+                                                                                if (!parent.classList.contains("used-error"))
+                                                                                    parent.classList.add("used-error");
+                                                                            } else {
+                                                                                if (parent.classList.contains("used-error"))
+                                                                                    parent.classList.remove("used-error");
+                                                                            }
+
+
+                                                                            if (!parent.classList.contains("used-error") && !parent.classList.contains("invalid-error") && parent.classList.contains("hasErrorElement"))
+                                                                                parent.classList.remove("hasErrorElement")
+                                                                        },
+                                                                        keypress: function(event) {
+                                                                            allowNumbersOnly(event);
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                            ]
+                                                        },
+                                                        {
+                                                            tag: "span",
+                                                            class: ["pizo-new-realty-location-detail-row-label-important", "label-used-error"],
+                                                            props: {
+                                                                innerHTML: "Alias không có sẳn để sử dụng"
+                                                            }
+                                                        },
+                                                        {
+                                                            tag: "span",
+                                                            class: ["pizo-new-realty-location-detail-row-label-important", "label-invalid-error"],
+                                                            props: {
+                                                                innerHTML: "Alias không thể để trống"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    tag: "div",
+                                                    class: "pizo-new-state-publish",
+                                                    child: [{
+                                                        tag: "div",
+                                                        class: "pizo-new-state-publish-container",
+                                                        child: [{
+                                                                tag: "span",
+                                                                class: "pizo-new-category-container-publish-container-label",
+                                                                props: {
+                                                                    innerHTML: "Xuất bản"
+                                                                }
+                                                            },
+                                                            active
+                                                        ]
+                                                    }]
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            tag: "div",
+                                            class: "pizo-new-state-selectbox",
+                                            child: [{
+                                                tag: "div",
+                                                class: "pizo-new-state-selectbox-container",
+                                                child: [{
+                                                        tag: "span",
+                                                        class: "pizo-new-state-selectbox-container-label",
+                                                        props: {
+                                                            innerHTML: "Danh mục cha"
+                                                        }
+                                                    },
+                                                    listParent
+                                                ]
+                                            }]
+                                        }
+                                    ]
+                                }]
+                            }]
+                        }]
+                    },
+                    {
+                        tag: "div",
+                        class: ["b-article__wrapper", "os-host", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
+                        child: [
+                            self.$view.editor
+                        ]
+                    }
+                ]
+            }]
+        }]
+    }))
+    moduleDatabase.getModule("helps").load().then(function(value) {
+        return;
         var header = [{ type: "dragzone" }, { value: "Title", sort: true, functionClickAll: self.$view.functionClickDetail.bind(self.$view), style: { minWidth: "unset !important" } }, "Publish", { type: "detail", style: { maxWidth: "21px" }, functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
         self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
         tabContainer.addChild(self.$view.mTable);
@@ -77,266 +310,8 @@ function EditHelpContainer() {
         setTimeout(function() {
             clearInterval(x);
         }, 5000);
+        self.$view.mTable.addInputSearch(input);
     });
-
-    var input = _({
-        tag: "input",
-        class: "input-search-list",
-        props: {
-            type: "text",
-            placeholder: "Search"
-        }
-    });
-    this.$view.addChild(_({
-        tag: "tbody",
-        child: [{
-            tag: "tr",
-            child: [{
-                    tag: "td",
-                    class: ["b-workZone__side", "m-workZone__side__nav"],
-                    child: [{
-                        tag: "div",
-                        class: ["b-workZone__content", "m-workZone__content__nav"],
-                        props: {
-                            id: "workZone_nav",
-                        },
-                        child: [{
-                            tag: "tabview",
-                            class: "absol-tab-frame-small",
-                            style: {
-                                width: "fit-content"
-                            },
-                            child: [
-                                tabContainer,
-                                {
-                                    tag: "tabframe",
-                                    attr: {
-                                        name: "Search",
-                                        id: "matd3",
-                                        desc: "",
-                                    },
-                                    child: [{
-                                        tag: "div",
-                                        class: ["absol-single-page-scroller"],
-                                        child: [{
-                                                tag: "div",
-                                                class: "js-stools-container-bar",
-                                                child: [{
-                                                    tag: "div",
-                                                    class: ["btn-wrapper", "input-append"],
-                                                    child: [
-                                                        input
-                                                    ]
-                                                }]
-                                            },
-
-                                        ]
-                                    }]
-                                }
-                            ]
-                        }]
-                    }]
-                },
-                {
-                    tag: "td",
-                    class: ["b-workZone__side", "m-workZone__side__article"],
-                    props: {
-                        id: "workZone_article"
-                    },
-                    child: [{
-                        tag: "div",
-                        class: "b-workZone__content",
-                        props: {
-                            id: "workZone_article__content"
-                        },
-                        child: [{
-                            tag: "div",
-                            class: "b-article",
-                            child: [{
-                                    tag: "div",
-                                    class: "b-article__headerLayout-edit",
-                                    props: {
-                                        id: "article__header"
-                                    },
-                                    child: [{
-                                        tag: "div",
-                                        class: ["b-article__headerSide", "m-article__headerSide__nav"],
-                                        props: {
-                                            id: "headerSide__nav"
-                                        },
-                                        child: [{
-                                            tag: "ul",
-                                            class: "b-breadCrumbs__items",
-                                            child: [{
-                                                tag: "div",
-                                                class: "pizo-new-catergory-container",
-                                                child: [{
-                                                        tag: "div",
-                                                        class: "pizo-new-category-container-name",
-                                                        child: [{
-                                                            tag: "div",
-                                                            class: "pizo-new-category-container-name-container",
-                                                            child: [{
-                                                                    tag: "span",
-                                                                    class: "pizo-new-category-container-name-container-label",
-                                                                    props: {
-                                                                        innerHTML: "Tên"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    tag: "input",
-                                                                    class: ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
-                                                                    on: {
-                                                                        change: function(event) {
-                                                                            if (self.$view.alias.value === "" || self.$view.aliasErorr.classList.contains("hasErrorElement")) {
-                                                                                self.$view.alias.value = createAlias(this.value);
-                                                                                self.$view.alias.dispatchEvent(new Event("input"));
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }]
-                                                    },
-                                                    {
-                                                        tag: "div",
-                                                        class: "pizo-new-category-container-alias-active",
-                                                        child: [{
-                                                                tag: "div",
-                                                                class: "pizo-new-category-container-alias",
-                                                                child: [{
-                                                                        tag: "div",
-                                                                        class: "pizo-new-category-container-alias-container",
-                                                                        child: [{
-                                                                                tag: "span",
-                                                                                class: "pizo-new-category-container-alias-container-label",
-                                                                                props: {
-                                                                                    innerHTML: "Alias"
-                                                                                },
-                                                                                child: [{
-                                                                                    tag: "span",
-                                                                                    class: "pizo-new-realty-location-detail-row-label-important",
-                                                                                    props: {
-                                                                                        innerHTML: "*"
-                                                                                    }
-                                                                                }]
-                                                                            },
-                                                                            {
-                                                                                tag: "input",
-                                                                                class: ["pizo-new-category-container-alias-container-input", "pizo-new-realty-dectruct-input"],
-                                                                                on: {
-                                                                                    input: function(event) {
-                                                                                        var parent = this.parentNode.parentNode;
-
-                                                                                        if (this.value == "") {
-                                                                                            if (!parent.classList.contains("hasErrorElement"))
-                                                                                                parent.classList.add("hasErrorElement");
-                                                                                            if (!parent.classList.contains("invalid-error"))
-                                                                                                parent.classList.add("invalid-error");
-                                                                                        } else {
-                                                                                            if (parent.classList.contains("invalid-error"))
-                                                                                                parent.classList.remove("invalid-error");
-                                                                                        }
-
-                                                                                        if (listParent.items.check[this.value] !== undefined && self.$view.rowSelected.data.original.alias !== this.value) {
-                                                                                            if (!parent.classList.contains("hasErrorElement"))
-                                                                                                parent.classList.add("hasErrorElement");
-                                                                                            if (!parent.classList.contains("used-error"))
-                                                                                                parent.classList.add("used-error");
-                                                                                        } else {
-                                                                                            if (parent.classList.contains("used-error"))
-                                                                                                parent.classList.remove("used-error");
-                                                                                        }
-
-
-                                                                                        if (!parent.classList.contains("used-error") && !parent.classList.contains("invalid-error") && parent.classList.contains("hasErrorElement"))
-                                                                                            parent.classList.remove("hasErrorElement")
-                                                                                    },
-                                                                                    keypress: function(event) {
-                                                                                        allowNumbersOnly(event);
-                                                                                    }
-                                                                                }
-                                                                            }
-
-                                                                        ]
-                                                                    },
-                                                                    {
-                                                                        tag: "span",
-                                                                        class: ["pizo-new-realty-location-detail-row-label-important", "label-used-error"],
-                                                                        props: {
-                                                                            innerHTML: "Alias không có sẳn để sử dụng"
-                                                                        }
-                                                                    },
-                                                                    {
-                                                                        tag: "span",
-                                                                        class: ["pizo-new-realty-location-detail-row-label-important", "label-invalid-error"],
-                                                                        props: {
-                                                                            innerHTML: "Alias không thể để trống"
-                                                                        }
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                tag: "div",
-                                                                class: "pizo-new-state-publish",
-                                                                child: [{
-                                                                    tag: "div",
-                                                                    class: "pizo-new-state-publish-container",
-                                                                    child: [{
-                                                                            tag: "span",
-                                                                            class: "pizo-new-category-container-publish-container-label",
-                                                                            props: {
-                                                                                innerHTML: "Xuất bản"
-                                                                            }
-                                                                        },
-                                                                        active
-                                                                    ]
-                                                                }]
-                                                            },
-                                                        ]
-                                                    },
-                                                    {
-                                                        tag: "div",
-                                                        class: "pizo-new-state-selectbox",
-                                                        child: [{
-                                                            tag: "div",
-                                                            class: "pizo-new-state-selectbox-container",
-                                                            child: [{
-                                                                    tag: "span",
-                                                                    class: "pizo-new-state-selectbox-container-label",
-                                                                    props: {
-                                                                        innerHTML: "Danh mục cha"
-                                                                    }
-                                                                },
-                                                                listParent
-                                                            ]
-                                                        }]
-                                                    }
-                                                ]
-                                            }]
-                                        }]
-                                    }]
-                                },
-                                {
-                                    tag: "div",
-                                    class: ["b-article__wrapper", "os-host", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
-                                    child: [
-                                        self.$view.editor
-                                    ]
-                                }
-                            ]
-                        }]
-                    }]
-                }
-            ]
-        }]
-    }))
-
-    var scrollLeftContainer = $('div.b-workZone__content.m-workZone__content__nav#workZone_nav div.absol-tabview.absol-tab-frame-small', this.$view);
-    scrollLeftContainer.activeTab("matd");
-    for (var i = 0; i < scrollLeftContainer.childNodes.length; i++) {
-        scrollLeftContainer.childNodes[i].classList.add("absol-single-page-scroller")
-    }
 
     this.$view.name = $('input.pizo-new-category-container-name-container-input.pizo-new-realty-dectruct-input', this.$view);
     this.$view.alias = $('input.pizo-new-category-container-alias-container-input.pizo-new-realty-dectruct-input', this.$view);

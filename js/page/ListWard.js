@@ -301,11 +301,11 @@ ListWard.prototype.formatDataRow = function(data) {
 }
 
 ListWard.prototype.getDataRow = function(data, i) {
-    if (i % 3 === 0) {
+    if (i % 6 === 0) {
         var result = [
             {},
-            { value: data.id, rowspan: 2 },
-            data.name,
+            { value: data.id },
+            { value: data.name, rowspan: 5, colspan: 2 },
             { value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid, element: _({ text: this.checkWard[parseInt(data.districtid)].name }) },
             { value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid, element: _({ text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name }) },
             {}

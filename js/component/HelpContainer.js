@@ -198,6 +198,8 @@ function HelpContainer() {
         }]
     });
     Object.assign(this.$view, HelpContainer.prototype);
+    var scrollLeftContainer = $('div.absol-tab-frame-small', this.$view);
+    scrollLeftContainer.activeTab("matd");
     return this.$view;
 }
 
