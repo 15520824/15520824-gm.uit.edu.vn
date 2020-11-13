@@ -1830,6 +1830,10 @@ tableView.prototype.checkVisiableCell = function(x, y) {
 tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
     var data;
     var rowMergeData;
+    if(i === -1)
+    {
+        return;
+    }
     for (i; i < arr.length; i++) {
         rowMergeData = arr[i].getRowMerge;
         if (rowMergeData === undefined) {
