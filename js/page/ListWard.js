@@ -283,12 +283,12 @@ ListWard.prototype.getDataParam = function() {
 }
 
 ListWard.prototype.formatDataRow = function(data) {
+    return [];
     var temp = [];
     var check = [];
     var k = 0;
     for (var i = 0; i < data.length; i++) {
-
-        var result = this.getDataRow(data[i], i);
+        var result = this.getDataRow(data[i]);
         if (check[data[i].parent_id] !== undefined) {
             if (check[data[i].parent_id].child === undefined)
                 check[data[i].parent_id].child = [];
@@ -300,25 +300,15 @@ ListWard.prototype.formatDataRow = function(data) {
     return temp;
 }
 
-ListWard.prototype.getDataRow = function(data, i) {
-    if (i % 6 === 0) {
-        var result = [
-            {},
-            { value: data.id },
-            { value: data.name, rowspan: 5, colspan: 2 },
-            { value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid, element: _({ text: this.checkWard[parseInt(data.districtid)].name }) },
-            { value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid, element: _({ text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name }) },
-            {}
-        ]
-    } else
-        var result = [
-            {},
-            data.id,
-            data.name,
-            { value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid, element: _({ text: this.checkWard[parseInt(data.districtid)].name }) },
-            { value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid, element: _({ text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name }) },
-            {}
-        ]
+ListWard.prototype.getDataRow = function(data) {
+    var result = [
+        {},
+        data.id,
+        data.name,
+        { value: this.checkWard[parseInt(data.districtid)].name + "_" + data.districtid, element: _({ text: this.checkWard[parseInt(data.districtid)].name }) },
+        { value: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name + "_" + this.checkWard[parseInt(data.districtid)].stateid, element: _({ text: this.checkState[parseInt(this.checkWard[parseInt(data.districtid)].stateid)].name }) },
+        {}
+    ]
     result.original = data;
     return result;
 }

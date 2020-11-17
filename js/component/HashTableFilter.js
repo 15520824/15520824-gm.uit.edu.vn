@@ -103,7 +103,7 @@ HashTableFilter.prototype.getKey = function(key, index) {
         this.lastIndexFilter[i].isFilter = undefined;
     }
     this.lastIndexFilter = [];
-    if (hash[index][key] !== undefined)
+    if (hash[index] !== undefined && hash[index][key] !== undefined)
         for (var i = 0; i < hash[index][key].length; i++) {
             var checkRow = this.check[hash[index][key][i]];
 
