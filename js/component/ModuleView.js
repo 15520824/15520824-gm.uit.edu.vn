@@ -408,7 +408,7 @@ function moveElement(event, me, result, index) {
 
     result.appendChild(bg);
     bg.appendChild(clone);
-    let shiftX = clone.clientWidth / 2;
+    let shiftX = clone.clientWidth / 2 - 15;
     let shiftY = clone.clientHeight / 2;
     moveAt(clone, event.pageX, event.pageY, shiftX, shiftY, trigger, functionCheckZone, bg, result);
     window.addEventListener('mousemove', trigger = function(event) { onMouseMove(clone, event, shiftX, shiftY, trigger, functionCheckZone, bg, result) });
@@ -1184,6 +1184,11 @@ tableView.prototype.getCellHeader = function(header, i) {
                 },
                 props: {
                     innerHTML: icon
+                },
+                on: {
+                    click: function() {
+                        document.body.appendChild(result.modalChoice());
+                    }
                 }
             })
             break;
@@ -1385,6 +1390,46 @@ tableView.prototype.getCellHeader = function(header, i) {
     }
     container.addChild(childUpDown);
     return cell;
+}
+
+tableView.prototype.modalChoice = function() {
+    var tempDiv = _({
+        tag: "div",
+        class: ""
+    })
+    var modal = _({
+        tag: "modal",
+        class: "",
+        child: [
+            tempDiv
+        ]
+    })
+    var checked, value;
+    for (var i = 0; i < this.header.length; i++) {
+        if (this.header[i].type === "check") {
+            continue;
+        }
+        if (this.header[i].hidden == true)
+            checked = false;
+        else
+            checked = true;
+        if (this.header[i].value !== undefined)
+            value = this.header[i].value;
+        else if (typeof this.header[i] === "string")
+            value = this.header[i];
+        else
+            value = "";
+        if (value == "")
+            continue;
+        tempDiv.addChild(_({
+            tag: "checkbox",
+            props: {
+                checked: checked,
+                text: value
+            }
+        }))
+    }
+    return modal;
 }
 
 tableView.prototype.sortTable = function(index, increase) {
@@ -1830,8 +1875,7 @@ tableView.prototype.checkVisiableCell = function(x, y) {
 tableView.prototype.setMergeCell = function(arr, checkSpan, i = 0) {
     var data;
     var rowMergeData;
-    if(i === -1)
-    {
+    if (i === -1) {
         return;
     }
     for (i; i < arr.length; i++) {

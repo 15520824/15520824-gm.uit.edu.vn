@@ -311,7 +311,7 @@ MergeRealty.prototype.getView = function() {
                 itemImageJuridical.push(dataChild);
             }
         }
-        if (itemData.addressid !== 0) {
+        if (itemData.addressid != 0) {
             number = this.checkAddress[itemData.addressid].addressnumber;
             street = this.checkStreet[this.checkAddress[itemData.addressid].streetid].name;
             ward = this.checkWard[this.checkAddress[itemData.addressid].wardid].name;

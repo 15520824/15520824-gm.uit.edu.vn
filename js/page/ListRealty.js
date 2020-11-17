@@ -703,6 +703,8 @@ ListRealty.prototype.getDataRow = function(data) {
         else
             staus += " và còn cho thuê";
     }
+    if (data.addressid === undefined)
+        data.addressid = 0;
     if (data.addressid != 0) {
         var number = this.checkAddress[data.addressid].addressnumber;
         var street = this.checkStreet[this.checkAddress[data.addressid].streetid].name;

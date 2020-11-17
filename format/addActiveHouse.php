@@ -22,6 +22,11 @@ if (isset($_POST["name"])) {
     exit();
 }
 
+if(isset($_POST["userid"]))
+{
+    $userid = $_POST["userid"];
+}
+
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
 }else
@@ -141,8 +146,10 @@ while (isset($data["addressid".$index]))
             $addressid = $dataAddress[0]["id"];
         }
     }
-    
+    if(isset($addressid))
     $data["addressid".$index] = $addressid;
+    else
+    $data["addressid".$index] = 0;
     if($index == "_old")
     break;
     $index = "_old";
@@ -153,10 +160,7 @@ if(isset($data["oldId"]))
 {
     $oldId = $data["oldId"];
 }
-if(isset($data["userid"]))
-{
-    $userid = $data["userid"];
-}
+
 $result = $connector-> insert($prefix."activehouses", $data);
 $data["id"] = $result;
 
@@ -427,7 +431,7 @@ if(isset($oldId))
     }
 }else
 {
-    if(isset($userid));
+    if(isset($userid))
     {
         $log = "Được tạo vào thời gian".date("H:i:s d-m-Y");
         $logData = array(

@@ -17,9 +17,9 @@
     position: relative;
 }
 
-.image-show__close>.fa-close,
+.image-show__close>.fa-close:before,
 .image-show__close>.quote-base__close-icon {
-    font-size: 0.8571rem;
+    font-size: 1.5rem;
     color: white;
     padding: 0rem;
     content: "close";
@@ -29,8 +29,8 @@
     float: right;
 }
 
-i.btn.fa.fa-chevron-right.unclickable,
-i.btn.fa.fa-chevron-left.unclickable {
+i.btn.material-icons.fa-chevron-right.unclickable,
+i.btn.material-icons.fa-chevron-left.unclickable {
     pointer-events: none;
     cursor: default;
     color: rgb(152, 152, 152);
@@ -162,11 +162,11 @@ img.chat-message-picture__photo,
 .image-show__btn__inside>.fa-chevron-left {
     margin-top: 0.9286rem;
     margin-right: 0.2857rem;
+    transform: translateX(0.3571rem);
 }
 
 .fa-chevron-left:before {
     content: "arrow_back_ios";
-    transform: translateX(0.3571rem);
 }
 
 .z-fh {
@@ -366,7 +366,7 @@ header,
 }
 
 .btn {
-    font-size: 1.2857rem;
+    font-size: 1.5rem;
     cursor: pointer;
     margin: 0rem;
     color: #83878d;
@@ -375,7 +375,6 @@ header,
 .image-show__bottom__ctrl>.btn,
 .image-show__bottom__ctrl>a>.btn {
     color: white;
-    font-size: 1.5714rem;
     margin: 0;
     padding-right: 1.4286rem;
 }
@@ -383,7 +382,6 @@ header,
 .image-show__bottom__ctrl>.btn.fa-chevron-left,
 .image-show__bottom__ctrl>a>.btn.fa-chevron-left {
     padding-right: 0.5714rem;
-    font-size: 1.6429rem;
 }
 
 .image-placeholder:before,
@@ -423,7 +421,6 @@ img.chat-message-picture__photo:before,
 .image-show__bottom__ctrl>a>.btn.fa-chevron-right {
     padding-left: 0.6429rem;
     padding-right: 0.5714rem;
-    font-size: 1.6429rem;
 }
 
 #image-show-forward {
@@ -432,7 +429,6 @@ img.chat-message-picture__photo:before,
 
 #image-show-forward>i {
     padding: 0 0.8571rem;
-    font-size: 1.2143rem;
     position: relative;
 }
 
