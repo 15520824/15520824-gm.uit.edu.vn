@@ -3215,7 +3215,7 @@ tableView.prototype.insertRow = function(data, checkMust = false) {
 
     //    result.checkDataUpdate(row);
     result.realTable.parentNode.resetHash();
-    result.realTable.parentNode.updateHash(row);
+    // result.realTable.parentNode.updateHash(row);
     this.setUpSwipe();
     if (result.realTable.parentNode.numArrayFixLeft) {
         result.setArrayFix(result.realTable.parentNode.numArrayFixLeft, true);
@@ -3393,7 +3393,7 @@ tableView.prototype.updateRow = function(data, index, checkMust = false) {
         row.classList.remove("more-child");
     }
     result.realTable.parentNode.resetHash();
-    result.realTable.parentNode.updateHash(row);
+    // result.realTable.parentNode.updateHash(row);
     return row;
 }
 

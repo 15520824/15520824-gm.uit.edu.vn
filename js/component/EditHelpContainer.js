@@ -9,6 +9,7 @@ import "../../css/NewCategory.css"
 import { tableView, deleteQuestion } from './ModuleView';
 import { allowNumbersOnly, createAlias } from './ModuleView';
 import moduleDatabase from '../component/ModuleDatabase';
+import { loaddingWheel } from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -103,7 +104,7 @@ function EditHelpContainer() {
         tag: "div",
         class: ["b-workZone__side", "m-workZone__side__article"],
         props: {
-            id: "workZone_article"
+            id: "workZone_article",
         },
         child: [{
             tag: "div",
@@ -154,6 +155,9 @@ function EditHelpContainer() {
                                                                     self.$view.alias.value = createAlias(this.value);
                                                                     self.$view.alias.dispatchEvent(new Event("input"));
                                                                 }
+                                                            },
+                                                            blur: function() {
+                                                                self.$view.saveDataCurrent();
                                                             }
                                                         }
                                                     }
@@ -216,6 +220,9 @@ function EditHelpContainer() {
                                                                         },
                                                                         keypress: function(event) {
                                                                             allowNumbersOnly(event);
+                                                                        },
+                                                                        blur: function() {
+                                                                            self.$view.saveDataCurrent();
                                                                         }
                                                                     }
                                                                 }
@@ -291,20 +298,19 @@ function EditHelpContainer() {
         }]
     }))
     moduleDatabase.getModule("helps").load().then(function(value) {
-        return;
-        var header = [{ type: "dragzone" }, { value: "Title", sort: true, functionClickAll: self.$view.functionClickDetail.bind(self.$view), style: { minWidth: "unset !important" } }, "Publish", { type: "detail", style: { maxWidth: "21px" }, functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
+        var header = [{ type: "dragzone", style: { width: "30px" } }, { value: "Title", sort: true, functionClickAll: self.$view.functionClickDetail.bind(self.$view), style: { minWidth: "unset !important" } }, "Publish", { type: "detail", style: { maxWidth: "21px" }, functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
         self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
         tabContainer.addChild(self.$view.mTable);
         updateTableFunction = self.$view.mTable.updateTable.bind(self.$view.mTable);
         self.$view.mTable.updateTable = function() {
+            self.$view.resetChoice();
             updateTableFunction.apply(self.$view.mTable, arguments);
-            self.$view.resetChoice(self.$view.mTable.bodyTable);
         }
         listParent.updateItemList();
         var x = setInterval(function() {
             if (self.$view.editor !== undefined) {
                 clearInterval(x);
-                self.$view.resetChoice(self.$view.mTable.bodyTable);
+                self.$view.resetChoice();
             }
         }, 100)
         setTimeout(function() {
@@ -409,31 +415,41 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
     }
 
     if (isRemove) {
-        arr.classList.remove("choice-event-category");
+        if (arr.classList)
+            arr.classList.remove("choice-event-category");
     }
 
-    var rowSelected = this.editView(value, arr.data, arr.parentDetail, arr.indexDetail);
+    if (arr.data) {
+        var rowSelected = this.editView(value, arr.data, arr.parentDetail, arr.indexDetail);
 
-    if (!isRemove) {
-
-        rowSelected.parentDetail = arr.parentDetail;
-        rowSelected.indexDetail = arr.indexDetail
+        if (!isRemove) {
+            rowSelected.parentDetail = arr.parentDetail;
+            rowSelected.indexDetail = arr.indexDetail
+        }
     }
+
     return false;
 }
 
-EditHelpContainer.prototype.resetChoice = function(bodyTable) {
-    var choice = this.getElementsByClassName("choice-event-category");
-    if (choice.length == 0) {
-        bodyTable.childNodes[0].indexDetail = 0;
-
-        bodyTable.childNodes[0].parentDetail = this.mTable;
-        this.rowSelected = bodyTable.childNodes[0];
-        bodyTable.childNodes[0].classList.add("choice-event-category");
-        this.setDataTitle(bodyTable.childNodes[0].data.original);
-        this.editor.setData(bodyTable.childNodes[0].data.original.fulltext);
-        this.alias.dispatchEvent(new Event("input"));
+EditHelpContainer.prototype.resetChoice = function() {
+    var arr = this.getElementsByClassName("choice-event-category");
+    if (arr.length !== 0) {
+        this.saveDataCurrent();
+        this.resetDataTitle();
     }
+    // var choice = this.getElementsByClassName("choice-event-category");
+    // var mTable = this.mTable;
+    // if (choice.length == 0) {
+    //     if (mTable.childrenNodes.length > 0) {
+    //         mTable.childrenNodes[0].indexDetail = 0;
+    //         mTable.childrenNodes[0].parentDetail = mTable;
+    //         this.rowSelected = mTable.childrenNodes[0];
+    //         mTable.childrenNodes[0].classList.add("choice-event-category");
+    //         this.setDataTitle(mTable.childrenNodes[0].data.original);
+    //         this.editor.setData(mTable.childrenNodes[0].data.original.fulltext);
+    //         this.alias.dispatchEvent(new Event("input"));
+    //     }
+    // }
 }
 
 EditHelpContainer.prototype.functionChoice = function(event, me, index, parent, data, row) {
@@ -450,13 +466,15 @@ EditHelpContainer.prototype.functionChoice = function(event, me, index, parent, 
         self.modal.resolve({ event: event, me: me, index: index, parent: parent, data: data, row: row });
     }
     self.modal.clickTime = today;
-    if (arr.length !== 0)
-        arr.classList.remove("choice-list-category");
+    if (arr.length !== 0) {
+        if (arr)
+            arr.classList.remove("choice-list-category");
+    }
 
     row.classList.add("choice-list-category");
 }
 
-EditHelpContainer.prototype.syncRow = function(arr) {
+EditHelpContainer.prototype.syncRow = function() {
     this.saveDataCurrent();
 }
 
@@ -692,7 +710,7 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
         class: "cross-element"
     })
     data[1] = {
-        value: data.title,
+        value: data.original.title,
         element: _({
             tag: "div",
             child: [{
@@ -757,16 +775,21 @@ EditHelpContainer.prototype.editContentAll = function() {
     var self = this;
     self.syncRow();
     var sync = self.mTable.data;
-    self.updateChild(sync);
+    var loadding = new loaddingWheel();
+    var promiseAll = self.updateChild(sync);
+    Promise.all(promiseAll).then(function() {
+        loadding.disable();
+    })
 }
 
 EditHelpContainer.prototype.updateChild = function(child) {
     var self = this;
+    var promiseAll = [];
     var dataUpdate = {};
     var isUpdate;
     for (var i = 0; i < child.length; i++) {
         if (child[i].original.id == undefined) {
-            self.addDB(child[i].original);
+            promiseAll.push(self.addDB(child[i].original));
         } else {
             isUpdate = false;
             dataUpdate.id = child[i].original.id;
@@ -803,13 +826,14 @@ EditHelpContainer.prototype.updateChild = function(child) {
             if (isUpdate || child[i].original.ordering != i) {
                 if (child[i].original.ordering != i)
                     child[i].original.ordering = i;
-                moduleDatabase.getModule("helps").update(dataUpdate);
+                promiseAll.push(moduleDatabase.getModule("helps").update(dataUpdate));
             }
         }
 
         if (child[i].child.length !== 0)
-            this.updateChild(child[i].child);
+            promiseAll.concat(this.updateChild(child[i].child));
     }
+    return promiseAll;
 }
 
 
@@ -825,16 +849,21 @@ EditHelpContainer.prototype.delete = function(data, parent, index) {
 
 EditHelpContainer.prototype.deleteView = function(parent, index) {
     var self = this;
-    var bodyTable = parent.bodyTable;
     if (this.rowSelected.parentDetail === parent && this.rowSelected.indexDetail > index)
         this.rowSelected.indexDetail--;
     parent.dropRow(index).then(function() {
-        self.resetChoice(bodyTable);
+        self.resetChoice();
         self.listParent.updateItemList();
     });
 }
 
-
+EditHelpContainer.prototype.resetDataTitle = function(data) {
+    this.name.value = "";
+    this.alias.value = "";
+    this.listParent.value = 0;
+    this.active.checked = false;
+    this.editor.setData("");
+}
 
 EditHelpContainer.prototype.setDataTitle = function(data) {
     this.name.value = data.title;
@@ -867,12 +896,20 @@ EditHelpContainer.prototype.itemEdit = function() {
             error: function() {
                 this.selfRemove();
                 self.editor = CKEDITOR.replace(textId);
+                // self.editor.on('doubleclick', function(evt) {
+                //     var element = evt.data.element;
+                //     if (element.is('a') && !element.getAttribute('_cke_realelement'))
+                //         evt.data.dialog = null;
+                // }, null, null, 10);
+                self.editor.on('blur', function(e) {
+                    self.saveDataCurrent();
+                });
                 self.editor.addCommand("comand_link_direction", {
                     exec: function(edt) {
                         var listLink = self.listLink();
                         self.appendChild(listLink);
-                        listLink.promiseSelectList.then(function() {
-                            console.log(arguments)
+                        listLink.promiseSelectList.then(function(value) {
+                            self.editor.insertHtml("<a id=x86" + value.data.original.id + " href='./'>" + value.data.original.title + "</a>");
                         })
                     }
                 });

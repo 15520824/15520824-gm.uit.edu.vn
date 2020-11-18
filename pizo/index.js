@@ -84003,13 +84003,16 @@ EditHelpContainer_EditHelpContainer.prototype.resetChoice = function (bodyTable)
   var choice = this.getElementsByClassName("choice-event-category");
 
   if (choice.length == 0) {
-    bodyTable.childNodes[0].indexDetail = 0;
-    bodyTable.childNodes[0].parentDetail = this.mTable;
-    this.rowSelected = bodyTable.childNodes[0];
-    bodyTable.childNodes[0].classList.add("choice-event-category");
-    this.setDataTitle(bodyTable.childNodes[0].data.original);
-    this.editor.setData(bodyTable.childNodes[0].data.original.fulltext);
-    this.alias.dispatchEvent(new Event("input"));
+    if(bodyTable.childNodes.length>0)
+    {
+      bodyTable.childNodes[0].indexDetail = 0;
+      bodyTable.childNodes[0].parentDetail = this.mTable;
+      this.rowSelected = bodyTable.childNodes[0];
+      bodyTable.childNodes[0].classList.add("choice-event-category");
+      this.setDataTitle(bodyTable.childNodes[0].data.original);
+      this.editor.setData(bodyTable.childNodes[0].data.original.fulltext);
+      this.alias.dispatchEvent(new Event("input"));
+    }
   }
 };
 

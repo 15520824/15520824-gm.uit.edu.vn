@@ -82,7 +82,7 @@
 }
 
 .input-search-list {
-    padding: 0.5rem;
+    padding: 5px;
     -webkit-box-sizing: border-box;
     /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;
@@ -100,6 +100,7 @@
     display: flex;
     align-items: stretch;
     flex-grow: 2;
+    margin-bottom: 0;
 }
 
 #matd .sortTable>thead>tr>th {
