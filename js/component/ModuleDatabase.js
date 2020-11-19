@@ -1,5 +1,5 @@
 import FormClass from './jsform';
-require('../encode');
+import '../encode';
 var moduleDatabase = new ModuleDatabase();
 console.log(moduleDatabase)
 

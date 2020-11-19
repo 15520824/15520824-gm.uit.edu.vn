@@ -4,6 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/HelpContainer.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
+import Dom from 'absol/src/HTML5/Dom';
 import moduleDatabase from '../component/ModuleDatabase';
 
 import { tableView } from './ModuleView'
@@ -17,16 +18,7 @@ function HelpContainer() {
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
     if (this.$view) return this.$view;
-    moduleDatabase.getModule("helps").load().then(function(value) {
-        var header = [{ value: "Title", sort: true, functionClickAll: this.$view.functionClickDetail.bind(this.$view), style: { minWidth: "unset !important" } }];
-        this.$view.mTable = new tableView(header, this.$view.formatDataRow(value), false, true, 0);
-        mTable.parentNode.replaceChild(this.$view.mTable, mTable);
-        this.$view.firstChildClick();
-    }.bind(this));
-
-    var mTable = _({
-        tag: "div"
-    });
+    var self = this;
     var input = _({
         tag: "input",
         class: "input-search-list",
@@ -35,6 +27,18 @@ function HelpContainer() {
             placeholder: "Search"
         }
     });
+    moduleDatabase.getModule("helps").load().then(function(value) {
+        var header = [{ value: "Title", sort: true, functionClickAll: this.$view.functionClickDetail.bind(this.$view), style: { minWidth: "unset !important" } }];
+        this.$view.mTable = new tableView(header, this.$view.formatDataRow(value), false, true, 0);
+        this.$view.mTable.addInputSearch(input);
+        mTable.parentNode.replaceChild(this.$view.mTable, mTable);
+        this.$view.firstChildClick();
+    }.bind(this));
+
+    var mTable = _({
+        tag: "div"
+    });
+
     var tabContainer = _({
         tag: "div",
         class: "header-display-visible",
@@ -147,6 +151,19 @@ function HelpContainer() {
                                 child: [{
                                         tag: "li",
                                         class: ["b-controlButtons__item", "m-controlButtons__item__prev"],
+                                        on: {
+                                            click: function() {
+                                                if (self.$view.mTable) {
+                                                    var arr = self.$view.mTable.getElementsByClassName("choice-event-category");
+                                                    if (arr.length > 0) {
+                                                        arr = arr[0];
+                                                        arr = self.$view.mTable.getElementPrevVisiale(arr);
+                                                        if (arr)
+                                                            arr.childNodes[0].click();
+                                                    }
+                                                }
+                                            }
+                                        },
                                         child: [{
                                                 tag: "i",
                                                 class: "material-icons",
@@ -166,6 +183,19 @@ function HelpContainer() {
                                     {
                                         tag: "li",
                                         class: ["b-controlButtons__item", "m-controlButtons__item__next"],
+                                        on: {
+                                            click: function() {
+                                                if (self.$view.mTable) {
+                                                    var arr = self.$view.mTable.getElementsByClassName("choice-event-category");
+                                                    if (arr.length > 0) {
+                                                        arr = arr[0];
+                                                        arr = self.$view.mTable.getElementNextVisiale(arr);
+                                                        if (arr)
+                                                            arr.childNodes[0].click();
+                                                    }
+                                                }
+                                            }
+                                        },
                                         child: [{
                                                 tag: "span",
                                                 class: "b-controlButtons__link_text",
@@ -185,6 +215,11 @@ function HelpContainer() {
                                     {
                                         tag: "li",
                                         class: ["b-controlButtons__item", "m-controlButtons__item__print"],
+                                        on: {
+                                            click: function() {
+                                                Dom.printElement(self.$view.containerView.parentNode);
+                                            }
+                                        },
                                         child: [{
                                                 tag: "i",
                                                 class: "material-icons",

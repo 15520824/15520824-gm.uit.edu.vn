@@ -206,6 +206,12 @@ table.b-workZone__layout {
     position: relative;
     font-size: 1rem;
     white-space: pre;
+    cursor: pointer;
+}
+
+.b-controlButtons__item:hover {
+    background-color: #b0bec5;
+    color: #ffffff;
 }
 
 li.b-controlButtons__item {
@@ -213,7 +219,7 @@ li.b-controlButtons__item {
 }
 
 .m-controlButtons__item__print {
-    padding: 0 0 0 19px;
+    margin: 0 0 0 19px;
 }
 
 .b-controlButtons__items {
@@ -369,4 +375,38 @@ li.b-controlButtons__item {
 
 .container-content-information .cke_editable.cke_editable_themed.cke_contents_ltr.cke_show_borders {
     margin: 20px;
+}
+
+@media print {
+    html,
+    body,
+     :root {
+        padding: 0;
+        margin: 0;
+        height: unset;
+        width: unset;
+        border: none;
+        overflow: unset;
+    }
+}
+
+@media print {
+    table {
+        width: 100%;
+    }
+}
+
+@media print {
+    table {
+        page-break-inside: auto
+    }
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto
+    }
+}
+
+.b-controlButtons__item.m-controlButtons__item__print>i {
+    vertical-align: top;
+    padding-top: 3px;
 }

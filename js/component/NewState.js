@@ -13,16 +13,15 @@ function NewState(data) {
     Fragment.call(this);
     this.cmdRunner = new CMDRunner(this);
     this.loadConfig();
-        
+
     this.textHeader = "Sửa ";
     this.data = data;
 
-    if(this.data ==undefined)
-    this.textHeader = "Thêm ";
+    if (this.data == undefined)
+        this.textHeader = "Thêm ";
 }
 
-NewState.prototype.setContainer = function(parent)
-{
+NewState.prototype.setContainer = function(parent) {
     this.parent = parent;
 }
 
@@ -30,188 +29,172 @@ Object.defineProperties(NewState.prototype, Object.getOwnPropertyDescriptors(Bas
 NewState.prototype.constructor = NewState;
 
 NewState.prototype.getDataSave = function() {
-    
+
     return {
-        id:this.data===undefined?undefined:this.data.original.id,
-        name:this.name.value,
-        type:this.type.value,
-        districtid:this.district.value
+        id: this.data === undefined ? undefined : this.data.original.id,
+        name: this.name.value,
+        type: this.type.value,
+        districtid: this.district.value
     }
 }
 
-NewState.prototype.createPromise = function()
-{
+NewState.prototype.createPromise = function() {
     var self = this;
-    if(this.data === undefined)
-    {
-        self.promiseAddDB = new Promise(function(resolve,reject){
+    if (this.data === undefined) {
+        self.promiseAddDB = new Promise(function(resolve, reject) {
             self.resolveDB = resolve;
             self.rejectDB = reject;
         })
 
-    }else
-    {
-        self.promiseEditDB = new Promise(function(resolve,reject){
+    } else {
+        self.promiseEditDB = new Promise(function(resolve, reject) {
             self.resolveDB = resolve;
             self.rejectDB = reject;
         })
-        
+
     }
 }
 
-NewState.prototype.getView = function () {
+NewState.prototype.getView = function() {
     if (this.$view) return this.$view;
     var self = this;
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
-        child: [
-            {
-                class: 'absol-single-page-header',
-                child: [
-                    {
-                        tag: "span",
-                        class: "pizo-body-title-left",
-                        props: {
-                            innerHTML:  self.textHeader+"Tỉnh/TP"
-                        }
-                    },
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-button",
-                        child: [
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
-
-                                        self.rejectDB(self.getDataSave());
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Đóng" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.resolveDB(self.getDataSave());
-                                        self.createPromise();
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Lưu" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.resolveDB(self.getDataSave());
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Lưu và đóng" + '</span>'
-                                ]
-                            }
-                        ]
+        child: [{
+            class: 'absol-single-page-header',
+            child: [{
+                    tag: "span",
+                    class: "pizo-body-title-left",
+                    props: {
+                        innerHTML: self.textHeader + "Tỉnh/TP"
                     }
-                ]
-            },
-        ]
-    });
-
-    this.$view.addChild(_({
-            tag:"div",
-            class:["pizo-list-realty-main"],
-            child:[
+                },
                 {
-                    tag:"div",
-                    class:["pizo-list-realty-main-result-control"],
-                    child:[
-                        {
-                            tag:"div",
-                            class:"pizo-new-state-container",
-                            child:[
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-state-container-name-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-name-container-label",
-                                            props:{
-                                                innerHTML:"Tên"
-                                            }
-                                        },
-                                        {
-                                            tag:"input",
-                                            class:["pizo-new-state-container-name-container-input","pizo-new-realty-dectruct-input"],
-                                        }
-                                    ]
-                                },
-                                {
-                                    tag:"div",
-                                    class:"pizo-new-state-container-nation-container",
-                                    child:[
-                                        {
-                                            tag:"span",
-                                            class:"pizo-new-state-container-nation-container-label",
-                                            props:{
-                                                innerHTML:"Quốc gia"
-                                            }
-                                        },
-                                        {
-                                            tag:"selectmenu",
-                                            class:"pizo-new-state-container-nation-container-input",
-                                            props:{
-                                                items:[
-                                                    {text:"Việt Nam",value:1},
-                                                ]
-                                            }
-                                        }
-                                    ]
+                    tag: "div",
+                    class: "pizo-list-realty-button",
+                    child: [{
+                            tag: "button",
+                            class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    self.$view.selfRemove();
+                                    var arr = self.parent.body.getAllChild();
+                                    self.parent.body.activeFrame(arr[arr.length - 1]);
+
+                                    self.rejectDB(self.getDataSave());
                                 }
+                            },
+                            child: [
+                                '<span>' + "Đóng" + '</span>'
+                            ]
+                        },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    self.resolveDB(self.getDataSave());
+                                    self.createPromise();
+                                }
+                            },
+                            child: [
+                                '<span>' + "Lưu" + '</span>'
+                            ]
+                        },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    self.resolveDB(self.getDataSave());
+                                    self.$view.selfRemove();
+                                    var arr = self.parent.body.getAllChild();
+                                    self.parent.body.activeFrame(arr[arr.length - 1]);
+                                }
+                            },
+                            child: [
+                                '<span>' + "Lưu và đóng" + '</span>'
                             ]
                         }
                     ]
                 }
-            ]   
-        })
-        );
+            ]
+        }, ]
+    });
+
+    this.$view.addChild(_({
+        tag: "div",
+        class: ["pizo-list-realty-main"],
+        child: [{
+            tag: "div",
+            class: ["pizo-list-realty-main-result-control"],
+            child: [{
+                tag: "div",
+                class: "pizo-new-state-container",
+                child: [{
+                        tag: "div",
+                        class: "pizo-new-state-container-name-container",
+                        child: [{
+                                tag: "span",
+                                class: "pizo-new-state-container-name-container-label",
+                                props: {
+                                    innerHTML: "Tên"
+                                }
+                            },
+                            {
+                                tag: "input",
+                                class: ["pizo-new-state-container-name-container-input", "pizo-new-realty-dectruct-input"],
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-new-state-container-nation-container",
+                        child: [{
+                                tag: "span",
+                                class: "pizo-new-state-container-nation-container-label",
+                                props: {
+                                    innerHTML: "Quốc gia"
+                                }
+                            },
+                            {
+                                tag: "selectmenu",
+                                class: "pizo-new-state-container-nation-container-input",
+                                props: {
+                                    items: [
+                                        { text: "Việt Nam", value: 1 },
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }]
+        }]
+    }));
     this.createPromise();
-    this.name = $('input.pizo-new-state-container-name-container-input"',this.$view);
-    this.nation = $('div.pizo-new-state-container-nation-container-input',this.$view);
-    if(this.data!==undefined)
-    {
+    this.name = $('input.pizo-new-state-container-name-container-input"', this.$view);
+    this.nation = $('div.pizo-new-state-container-nation-container-input', this.$view);
+    if (this.data !== undefined) {
         this.name.value = this.data.original.name;
         this.nation.value = this.data.original.nationid;
     }
-   
+
     return this.$view;
 }
 
 NewState.prototype.getDataSave = function() {
     var temp = {
-        name:this.name.value,
-        nationid:this.nation.value
+        name: this.name.value,
+        nationid: this.nation.value
     }
-    if(this.data!==undefined)
-    temp.id = this.data.original.id;
+    if (this.data !== undefined)
+        temp.id = this.data.original.id;
     return temp;
 }
 
-NewState.prototype.refresh = function () {
+NewState.prototype.refresh = function() {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -219,7 +202,7 @@ NewState.prototype.refresh = function () {
         this.setData(data);
 };
 
-NewState.prototype.setData = function (data) {
+NewState.prototype.setData = function(data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -227,7 +210,7 @@ NewState.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-NewState.prototype.flushDataToView = function () {
+NewState.prototype.flushDataToView = function() {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -242,7 +225,7 @@ NewState.prototype.flushDataToView = function () {
     }
 };
 
-NewState.prototype.start = function () {
+NewState.prototype.start = function() {
 
 }
 

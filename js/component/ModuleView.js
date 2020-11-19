@@ -800,6 +800,26 @@ tableView.prototype.getElementNext = function(element) {
     return element.nextSibling;
 }
 
+tableView.prototype.getElementNextVisiale = function(element) {
+    element = element.nextSibling;
+    if (element)
+        while (element.nextSibling && element.nextSibling.classList.contains("displayNone")) {
+            element = element.nextSibling;
+        }
+    return element;
+}
+
+
+tableView.prototype.getElementPrevVisiale = function(element) {
+    element = element.previousSibling;
+    if (element)
+        while (element.previousSibling && element.previousSibling.classList.contains("displayNone")) {
+            element = element.previousSibling;
+        }
+    return element;
+}
+
+
 tableView.prototype.setUpSwipe = function(isSwipeLeft, isSwipeRight) {
     setTimeout(function() {
         if (isSwipeLeft !== undefined) {
@@ -2964,7 +2984,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
             data.rowspan = undefined;
         }
     } else
-    // if (realIndex !== -1) {
+    if (realIndex !== -1) {
     if (typeof localData[i + 1] === "object" && ((typeof localData[i][j] === "object") && (typeof localData[i + 1][j] === "object"))) {
         var index = 1;
         for (var l = i + 1; l < localData.length; l++) {
@@ -2983,7 +3003,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
                 if (orther.a < index - 1)
                     orther.a += index - 1;
         }
-        // }
+        }
     }
     if (data.colspan !== undefined) {
         cell.setAttribute("colspan", data.colspan);
