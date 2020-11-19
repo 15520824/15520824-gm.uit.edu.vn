@@ -5,7 +5,7 @@ import "../../css/ListHelp.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
 
-import EditHelpContainer  from '../component/EditHelpContainer';
+import EditHelpContainer from '../component/EditHelpContainer';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -17,93 +17,87 @@ function ListHelp() {
     this.loadConfig();
 }
 
-ListHelp.prototype.setContainer = function(parent)
-{
+ListHelp.prototype.setContainer = function(parent) {
     this.parent = parent;
 }
 
 Object.defineProperties(ListHelp.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 ListHelp.prototype.constructor = ListHelp;
 
-ListHelp.prototype.getView = function () {
+ListHelp.prototype.getView = function() {
     if (this.$view) return this.$view;
     var self = this;
     var containerHelp = new EditHelpContainer();
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
-        child: [
-            {
-                class: 'absol-single-page-header',
-                child: [
-                    {
-                        tag: "span",
-                        class: "pizo-body-title-left",
-                        props: {
-                            innerHTML: "Thêm Tỉnh/TP"
-                        }
-                    },
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-button",
-                        child: [
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Đóng" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        containerHelp.editContentAll();
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Lưu" + '</span>'
-                                ]
-                            },
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        containerHelp.add();
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Thêm" + '</span>'
-                                ]
-                            }
-                        ]
+        child: [{
+            class: 'absol-single-page-header',
+            child: [{
+                    tag: "span",
+                    class: "pizo-body-title-left",
+                    props: {
+                        innerHTML: "Thêm Tỉnh/TP"
                     }
-                ]
-            },
-        ]
+                },
+                {
+                    tag: "div",
+                    class: "pizo-list-realty-button",
+                    child: [{
+                            tag: "button",
+                            class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    self.$view.selfRemove();
+                                    var arr = self.parent.body.getAllChild();
+                                    self.parent.body.activeFrame(arr[arr.length - 1]);
+                                }
+                            },
+                            child: [
+                                '<span>' + "Đóng" + '</span>'
+                            ]
+                        },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    containerHelp.editContentAll();
+                                }
+                            },
+                            child: [
+                                '<span>' + "Lưu" + '</span>'
+                            ]
+                        },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    containerHelp.add();
+                                }
+                            },
+                            child: [
+                                '<span>' + "Thêm" + '</span>'
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }, ]
     });
-    containerHelp.parent  = this.parent;
+    containerHelp.parent = this.parent;
     this.$view.addChild(_({
-            tag:"div",
-            class:["pizo-list-help-main"],
-            child:[
-                containerHelp
-            ]   
-        })
-        );
+        tag: "div",
+        class: ["pizo-list-help-main"],
+        child: [
+            containerHelp
+        ]
+    }));
     return this.$view;
 }
 
-ListHelp.prototype.refresh = function () {
+ListHelp.prototype.refresh = function() {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -111,7 +105,7 @@ ListHelp.prototype.refresh = function () {
         this.setData(data);
 };
 
-ListHelp.prototype.setData = function (data) {
+ListHelp.prototype.setData = function(data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -119,7 +113,7 @@ ListHelp.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-ListHelp.prototype.flushDataToView = function () {
+ListHelp.prototype.flushDataToView = function() {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -134,7 +128,7 @@ ListHelp.prototype.flushDataToView = function () {
     }
 };
 
-ListHelp.prototype.start = function () {
+ListHelp.prototype.start = function() {
 
 }
 

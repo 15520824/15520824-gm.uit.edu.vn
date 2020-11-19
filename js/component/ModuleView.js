@@ -128,7 +128,7 @@ export function alignFormCss(element, elementDynamic, GroupElement = []) {
                 border = parseFloat(border);
 
                 value += '{\n';
-                value += 'width: ' + (tempWidth - (padding + border + 1) / fontSizeHtml) + 'rem; \n';
+                value += 'width: ' + (tempWidth - (padding + border + 1) / fontSizeHtml) + 'em; \n';
                 value += '}\n';
                 countRow[i] += tempWidth;
                 resultcss += value;
@@ -160,7 +160,7 @@ export function alignFormCss(element, elementDynamic, GroupElement = []) {
                 var padding = parseFloat(paddingLeft) + parseFloat(paddingRight);
 
                 value += '{\n';
-                value += 'width: calc(' + 100 / Dynamic[index].length + '% - ' + (countRow[index] / Dynamic[index].length + (padding + border + 1) / fontSizeHtml) + 'rem); \n';
+                value += 'width: calc(' + 100 / Dynamic[index].length + '% - ' + (countRow[index] / Dynamic[index].length + (padding + border + 1) / fontSizeHtml) + 'em); \n';
                 value += '}\n';
                 resultcss += value;
             }
@@ -177,7 +177,7 @@ function getDefaultFontSize(pa) {
     pa = pa || document.body;
     var who = document.createElement('div');
 
-    who.style.cssText = 'display:inline-block; padding:0; line-height:1; position:absolute; visibility:hidden; font-size:1rem';
+    who.style.cssText = 'display:inline-block; padding:0; line-height:1; position:absolute; visibility:hidden; font-size:1em';
 
     who.appendChild(document.createTextNode('M'));
     pa.appendChild(who);
@@ -298,7 +298,7 @@ export function fakeInput(text, size) {
     else temp[0].innerHTML = text + "-";
     if (size !== undefined) {
         temp[0].style.fontSize = size + "px";
-    } else temp[0].style.fontSize = "1.7857rem";
+    } else temp[0].style.fontSize = "1.7857em";
     return temp[0].offsetWidth;
 }
 
@@ -1198,7 +1198,7 @@ tableView.prototype.getCellHeader = function(header, i) {
                 tag: "i",
                 class: "material-icons",
                 style: {
-                    fontSize: "1.4rem",
+                    fontSize: "1.4em",
                     cursor: "pointer",
                     verticalAlign: "bottom"
                 },
@@ -2932,7 +2932,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
                         widthSize += step;
                     }
                 }
-            container.style.width = "calc(100% - " + widthSize + "rem)";
+            container.style.width = "calc(100% - " + widthSize + "em)";
             if (widthSize !== 0)
                 cell.classList.add("margin-left-has-icon");
         }(cell, row, k)
@@ -2985,24 +2985,24 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
         }
     } else
     if (realIndex !== -1) {
-    if (typeof localData[i + 1] === "object" && ((typeof localData[i][j] === "object") && (typeof localData[i + 1][j] === "object"))) {
-        var index = 1;
-        for (var l = i + 1; l < localData.length; l++) {
-            if (localData[i][j] === localData[l][j]) {
-                if (checkSpan[l] === undefined)
-                    checkSpan[l] = [];
-                checkSpan[l][j] = 2;
-                index++;
-            } else
-                break;
-        }
-        if (index > 1) {
-            isCheckRow = index - 1;
-            cell.setAttribute("rowspan", index);
-            if (orther)
-                if (orther.a < index - 1)
-                    orther.a += index - 1;
-        }
+        if (typeof localData[i + 1] === "object" && ((typeof localData[i][j] === "object") && (typeof localData[i + 1][j] === "object"))) {
+            var index = 1;
+            for (var l = i + 1; l < localData.length; l++) {
+                if (localData[i][j] === localData[l][j]) {
+                    if (checkSpan[l] === undefined)
+                        checkSpan[l] = [];
+                    checkSpan[l][j] = 2;
+                    index++;
+                } else
+                    break;
+            }
+            if (index > 1) {
+                isCheckRow = index - 1;
+                cell.setAttribute("rowspan", index);
+                if (orther)
+                    if (orther.a < index - 1)
+                        orther.a += index - 1;
+            }
         }
     }
     if (data.colspan !== undefined) {
