@@ -298,7 +298,7 @@ function EditHelpContainer() {
         }]
     }))
     moduleDatabase.getModule("helps").load().then(function(value) {
-        var header = [{ type: "dragzone", style: { width: "30px" } }, { value: "Title", sort: true, functionClickAll: self.$view.functionClickDetail.bind(self.$view), style: { minWidth: "unset !important" } }, "Publish", { type: "detail", style: { maxWidth: "21px" }, functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
+        var header = [{ type: "dragzone", style: { width: "30px" } }, { value: "Title", sort: true, functionClickAll: self.$view.functionClickDetail.bind(self.$view), style: { minWidth: "unset !important" } }, "Publish", { type: "detail", functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
         self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
         tabContainer.addChild(self.$view.mTable);
         updateTableFunction = self.$view.mTable.updateTable.bind(self.$view.mTable);
