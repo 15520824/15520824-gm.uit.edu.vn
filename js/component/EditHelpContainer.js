@@ -492,7 +492,7 @@ EditHelpContainer.prototype.formatDataRow = function(data) {
             tag: "div",
             class: "cross-element"
         })
-        var result = [{ value: "", style: { maxWidth: "21px" } }, {
+        var result = [{ value: "" }, {
                 value: data[i].title,
                 element: _({
                     tag: "div",
@@ -516,9 +516,8 @@ EditHelpContainer.prototype.formatDataRow = function(data) {
             {
                 value: data[i].active,
                 element: checkElement,
-                style: { maxWidth: "21px" }
             },
-            { value: "", style: { maxWidth: "21px" } }
+            { value: "" }
         ];
         result.original = data[i];
         if (check[data[i].parent_id] !== undefined) {

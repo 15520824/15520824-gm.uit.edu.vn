@@ -232,9 +232,9 @@ table.sortTableClone>tbody>tr>td:first-child {
 }
 
 .b-workZone__side.m-workZone__side__nav table.sortTable th,
-table.sortTable td,
-table.sortTableClone th,
-table.sortTableClone td {
+.b-workZone__side.m-workZone__side__nav table.sortTable td,
+.b-workZone__side.m-workZone__side__nav table.sortTableClone th,
+.b-workZone__side.m-workZone__side__nav table.sortTableClone td {
     border-bottom: unset;
 }
 
