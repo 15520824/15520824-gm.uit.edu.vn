@@ -1,8 +1,8 @@
 .quantumWizTextinputPaperinputInput {
     display: inline-block;
-    font-size: 1rem;
-    padding: 0.4286rem;
-    width: 3rem;
+    font-size: 1em;
+    padding: 0.4286em;
+    width: 3em;
     text-align: right;
     border: solid 0.0714rem var(--color-input-color);
 }
@@ -10,8 +10,8 @@
 .fake-text {
     visibility: hidden;
     position: absolute;
-    top: -71.3571rem;
-    left: -71.3571rem;
+    top: -71.3571em;
+    left: -71.3571em;
     font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 }
 
@@ -43,12 +43,12 @@
 }
 
 .delete-zone-icon {
-    font-size: 4.2857rem;
+    font-size: 4.2857em;
     display: inline-block;
 }
 
 .detele-zone-label {
-    font-size: 2.1429rem;
+    font-size: 2.1429em;
     display: inline-block;
     vertical-align: top;
 }
@@ -123,7 +123,7 @@ table.sortTableClone {
     background: #fff;
     /* margin: 0 auto; */
     position: relative;
-    font-size: 1rem;
+    font-size: 1em;
     border-spacing: 0;
     border-collapse: separate;
     /* overflow: hidden; */
@@ -131,7 +131,7 @@ table.sortTableClone {
 
 table.sortTableClone {
     left: 0;
-    font-size: 1rem;
+    font-size: 1em;
     position: absolute;
     z-index: 1000;
 }
@@ -140,7 +140,7 @@ table.sortTable th,
 table.sortTable td,
 table.sortTableClone th,
 table.sortTableClone td {
-    padding: 0.35714285714rem;
+    padding: 0.35714285714em;
     text-align: left;
     border-top: 1px solid var(--color-input-color);
     position: relative;
@@ -687,12 +687,12 @@ table.sortTable th.postionStickyCell {
     margin: 0;
     background-color: #ebebeb;
     border: solid 0.0714rem #c0c0c0;
-    border-radius: 0.2rem;
-    font-size: 1rem;
+    border-radius: 0.2em;
+    font-size: 1em;
     overflow: hidden;
-    line-height: 2rem;
+    line-height: 2em;
     box-sizing: content-box;
-    height: 2rem;
+    height: 2em;
     white-space: nowrap;
     width: 90px;
 }
@@ -717,20 +717,20 @@ table.sortTable th.postionStickyCell {
 }
 
 .module-delete-header-title {
-    font-size: 1.14285714286rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    font-size: 1.14285714286em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     flex-grow: 2;
     display: flex;
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     overflow: hidden;
     position: relative;
-    min-width: 20rem;
+    min-width: 20em;
 }
 
 .module-delete-header-close-container {
-    font-size: 1rem;
+    font-size: 1em;
     display: flex;
     /*display: -webkit-box;*/
     display: -ms-flexbox;
@@ -832,7 +832,7 @@ table.sortTable th.postionStickyCell {
 
 .pagination-prev .icon-pagination-prev>i,
 .pagination-next .icon-pagination-next>i {
-    font-size: 2rem;
+    font-size: 2em;
 }
 
 .pagination-next {

@@ -7,25 +7,30 @@
     padding: 5% 0;
     position: fixed;
 }
+
 .login-box {
     width: 400px;
     margin: 0 auto;
 }
+
 .card {
     -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
     border-radius: 4px;
 }
+
 .card-body {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: 1.25rem;
+    padding: 1.25em;
     background: white;
 }
+
 .text-center {
     text-align: center!important;
 }
+
 html body .m-b-20 {
     margin-bottom: 20px;
     color: #455a64;
@@ -34,29 +39,34 @@ html body .m-b-20 {
     line-height: 30px;
     font-size: 21px;
 }
+
 .form-group {
     margin-bottom: 25px;
 }
+
 .form-material .form-group {
     overflow: hidden;
 }
+
 .form-control {
     display: block;
     width: calc(100% - 1.5rem);
-    padding: .375rem .75rem;
+    padding: .375rem .75em;
     font-size: 18px;
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: .25em;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
 .form-control {
     color: #67757c;
     display: initial;
 }
+
 .form-material .form-control {
     background-color: transparent;
     background-position: center bottom, center calc(100% - 1px);
@@ -66,7 +76,10 @@ html body .m-b-20 {
     -o-transition: background 0s ease-out 0s;
     transition: background 0s ease-out 0s;
 }
-.form-material .form-control, .form-material .form-control.focus, .form-material .form-control:focus {
+
+.form-material .form-control,
+.form-material .form-control.focus,
+.form-material .form-control:focus {
     background-image: -webkit-gradient(linear, left top, left bottom, from(#1976d2), to(#1976d2)), -webkit-gradient(linear, left top, left bottom, from(rgba(120, 130, 140, 0.13)), to(rgba(120, 130, 140, 0.13)));
     background-image: -webkit-linear-gradient(#1976d2, #1976d2), -webkit-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
     background-image: -o-linear-gradient(#1976d2, #1976d2), -o-linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
@@ -77,6 +90,7 @@ html body .m-b-20 {
     box-shadow: none;
     float: none;
 }
+
 .btn-login {
     display: inline-block;
     font-weight: 400;
@@ -88,30 +102,36 @@ html body .m-b-20 {
     -ms-user-select: none;
     user-select: none;
     border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
+    padding: .375rem .75em;
+    font-size: 1em;
     line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: .25em;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
 .btn-login-info {
     color: #fff;
     background-color: #17a2b8;
     border-color: #17a2b8;
 }
-.btn-login-group-lg>.btn-login, .btn-login-lg {
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
+
+.btn-login-group-lg>.btn-login,
+.btn-login-lg {
+    padding: .5rem 1em;
+    font-size: 1.25em;
     line-height: 1.5;
-    border-radius: .3rem;
+    border-radius: .3em;
 }
+
 .btn-login-block {
     display: block;
     width: 100%;
 }
+
 .text-uppercase {
     text-transform: uppercase!important;
 }
+
 .waves-effect {
     position: relative;
     cursor: pointer;
@@ -131,15 +151,19 @@ html body .m-b-20 {
     -ms-transition: all 0.1s ease-out;
     transition: all 0.1s ease-out;
 }
+
 .btn-login {
     padding: 7px 12px;
     cursor: pointer;
 }
+
 .btn-login-lg {
-    padding: .75rem 1.5rem;
-    font-size: 1.25rem;
+    padding: .75rem 1.5em;
+    font-size: 1.25em;
 }
-.btn-login-info, .btn-login-info.disabled {
+
+.btn-login-info,
+.btn-login-info.disabled {
     background: #1976d2;
     border: 1px solid #1976d2;
     -webkit-box-shadow: 0 2px 2px 0 rgba(66, 165, 245, 0.14), 0 3px 1px -2px rgba(66, 165, 245, 0.2), 0 1px 5px 0 rgba(66, 165, 245, 0.12);
@@ -148,16 +172,19 @@ html body .m-b-20 {
     -o-transition: 0.2s ease-in;
     transition: 0.2s ease-in;
 }
+
 .btn-login:not(:disabled):not(.disabled) {
     cursor: pointer;
 }
+
 .alert {
     position: relative;
-    padding: .75rem 1.25rem;
-    margin-bottom: 1rem;
+    padding: .75rem 1.25em;
+    margin-bottom: 1em;
     border: 1px solid transparent;
-    border-radius: .25rem;
+    border-radius: .25em;
 }
+
 .alert-danger {
     color: #721c24;
     background-color: #f8d7da;

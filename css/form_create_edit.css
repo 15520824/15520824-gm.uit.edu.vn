@@ -1,5 +1,3 @@
-
-
 /*////////////////////////////////////////////////////////////*/
 
 .freebirdMaterialHeaderbannerLabelTextContainer {
@@ -7,48 +5,48 @@
     min-width: 0%;
 }
 
-.icon-ceneter{
+.icon-ceneter {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
-.PageView{
+.PageView {
     width: 100%;
     margin: auto;
 }
 
-.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder{
+.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputPlaceholder {
     color: rgba(255, 255, 255, 0.38);
-    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 500 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     top: 6px;
 }
 
-.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput{
+.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputInput {
     color: #333;
-    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 500 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     height: 30px;
 }
 
-.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder{
+.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputPlaceholder {
     color: rgba(0, 0, 0, 0.38);
 }
 
-.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent{
+.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputMainContent {
     height: unset;
     top: -5px;
 }
 
-.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl{
+.freebirdFormeditorViewHeaderTopRow .quantumWizTextinputPaperinputEl {
     padding-bottom: unset;
 }
 
-.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline{
+.freebirdHeaderMastWithOverlay .quantumWizTextinputPaperinputUnderline {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl{
+.freebirdFormeditorViewHeaderInlineDocTitle .quantumWizTextinputPaperinputEl {
     width: 100%;
 }
 
@@ -138,9 +136,9 @@
     border: solid 1px rgb(30, 30, 32);
 }
 
-.absol-static-tabbar .absol-static-tabbar-button{
-    height:48px;
-    width:150px;
+.absol-static-tabbar .absol-static-tabbar-button {
+    height: 48px;
+    width: 150px;
 }
 
 .freebirdFormeditorViewTabInlineTabContent {
@@ -157,7 +155,6 @@
     max-width: 90vw;
     min-width: 770px;
     width: 60%;
-
 }
 
 .freebirdFormeditorViewEditingsurfacePanel {
@@ -180,16 +177,17 @@
     position: relative;
     width: 100%;
 }
+
 .freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatPositioner {
     top: 44px;
     right: -69px;
     position: absolute;
-    -webkit-transition: all .3s cubic-bezier(0.4,0.0,0.2,1);
-    transition: all .3s cubic-bezier(0.4,0.0,0.2,1);
+    -webkit-transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: all .3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.freebirdFormeditorViewFatPositioner{
-    width:52px;
+.freebirdFormeditorViewFatPositioner {
+    width: 52px;
 }
 
 .freebirdFormeditorViewFatDesktop .freebirdFormeditorViewFatMenuItem:first-child {
@@ -207,8 +205,8 @@
 
 .freebirdFormeditorViewFatCard {
     background-color: #fff;
-    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
-    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
     -webkit-border-radius: 2px;
     border-radius: 2px;
 }
@@ -230,17 +228,17 @@
 
 .freebirdFormeditorViewTabPointLabel {
     color: #757575;
-    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 500 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 }
 
 .freebirdFormeditorViewTabTitleLabel {
-    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 500 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     margin-right: 10px;
-    margin-top:auto;
-    margin-bottom:auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
-.freebirdFormeditorViewTabTitleLabel:not(:first-child){
+.freebirdFormeditorViewTabTitleLabel:not(:first-child) {
     margin-left: 20px;
 }
 
@@ -263,12 +261,15 @@
     /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
-    border-bottom: 1px solid rgba(0,0,0,0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     position: relative;
     width: 100%;
 }
 
-.freebirdFormeditorViewTabSchemaEditorTab.exportTab, .freebirdFormeditorViewTabProcessEditorTab.exportTab, .freebirdFormeditorViewTabSurveyResultsViewTab.exportTab, .freebirdFormeditorViewTabResponsesViewTab.exportTab {
+.freebirdFormeditorViewTabSchemaEditorTab.exportTab,
+.freebirdFormeditorViewTabProcessEditorTab.exportTab,
+.freebirdFormeditorViewTabSurveyResultsViewTab.exportTab,
+.freebirdFormeditorViewTabResponsesViewTab.exportTab {
     /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
@@ -287,12 +288,12 @@
     -webkit-flex-grow: 1;
     flex-grow: 1;
     border: 0;
-    color: rgba(0,0,0,0.54);
+    color: rgba(0, 0, 0, 0.54);
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
     line-height: 48px;
-    min-width: 4rem;
+    min-width: 4em;
     outline: none;
     overflow: hidden;
     position: relative;
@@ -310,7 +311,7 @@
     white-space: nowrap;
 }
 
-.isSelected .quantumWizTabsPapertabsTabContent{
+.isSelected .quantumWizTabsPapertabsTabContent {
     color: rgb(103, 58, 183);
 }
 
@@ -324,11 +325,11 @@
     display: block;
 }
 
-.freebirdThemedTab  {
+.freebirdThemedTab {
     background-color: rgb(103, 58, 183);
 }
 
-.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator{
+.freebirdThemedTab .quantumWizTabsPapertabsStaticTabIndicator {
     background-color: rgb(103, 58, 183);
 }
 
@@ -346,7 +347,7 @@
     bottom: 0;
     height: 2px;
     position: absolute;
-    will-change: left,width;
+    will-change: left, width;
     left: 269px;
     width: 102px;
 }
@@ -367,12 +368,12 @@
     box-flex: 1;
     -webkit-flex-grow: 1;
     flex-grow: 1;
-    min-width: 1rem;
+    min-width: 1em;
     transition: width 0.25s;
-}   
+}
 
-.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea{
-    top:5px;
+.freebirdFormeditorViewHeaderDocTitle .quantumWizTextinputPaperinputContentArea {
+    top: 5px;
 }
 
 .freebirdHeaderMastWithOverlay .freebirdMutedText {
@@ -381,7 +382,7 @@
 
 .freebirdFormeditorViewHeaderSaveIndicator {
     cursor: default;
-    font: 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 400 12px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     font-style: italic;
     margin: 0 16px;
     min-width: 80px;
@@ -404,11 +405,14 @@
     padding-right: 2px;
 }
 
-.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton, .freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {
+.freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu,
+.freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderPreviewButton,
+.freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderSettingsButton,
+.freebirdFormeditorViewHeaderHeaderActions .freebirdFormeditorViewHeaderCustomThemeButton {
     display: block;
 }
 
-.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text{
+.freebirdFormeditorViewHeaderHeaderActions .absol-selectlist-item-text {
     color: #000;
 }
 
@@ -430,8 +434,8 @@
 }
 
 .quantumWizButtonPapericonbuttonDark {
-    color: rgba(255,255,255,0.749);
-    fill: rgba(255,255,255,0.749);
+    color: rgba(255, 255, 255, 0.749);
+    fill: rgba(255, 255, 255, 0.749);
 }
 
 .quantumWizButtonPapericonbuttonEl {
@@ -457,10 +461,9 @@
     margin-bottom: auto;
 }
 
-
 .freebirdFormeditorViewPagePageCard {
-    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
-    box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
     min-width: 250px;
     word-wrap: break-word;
 }
@@ -494,7 +497,7 @@
 }
 
 .freebirdMaterialHeaderbannerSectionText {
-    font: 400 16px/24px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 400 16px/24px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     padding: 8px 8px 8px 42px;
 }
 
@@ -516,14 +519,13 @@
 .freebirdSolidFill {
     fill: rgb(103, 58, 183);
     stroke: rgb(103, 58, 183);
-}   
+}
 
 .freebirdMaterialHeaderbannerSectionTriangle>polygon {
     stroke-width: 1;
 }
 
-
-.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput{
+.freebirdFormeditorViewPageSectionTitleRow .quantumWizTextinputPapertextareaInput {
     font-size: 20px;
     line-height: 135%;
     width: 100%;
@@ -536,32 +538,31 @@
     -webkit-flex-grow: 1;
     flex-grow: 1;
     position: relative;
-    
 }
 
-.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor{
-    background-color: #4d90fe;  
+.freebirdFormeditorViewItemInactive .freebirdFormeditorViewCursorColor {
+    background-color: #4d90fe;
     width: 3px;
 }
 
-.freebirdFormeditorViewItemcardRoot:hover{
+.freebirdFormeditorViewItemcardRoot:hover {
     -webkit-box-shadow: 0px 0px 0px 1px green;
     -moz-box-shadow: 0px 0px 0px 1px green;
     box-shadow: 0px 0px 0px 1px green;
 }
 
-.freebirdFormviewerViewItemList{
+.freebirdFormviewerViewItemList {
     counter-reset: number;
 }
 
-.freebirdFormeditorViewItemcardRoot{
+.freebirdFormeditorViewItemcardRoot {
     counter-increment: number;
     margin-top: 1px;
 }
 
-.freebirdFormeditorViewItemTitleRowContain::before{
+.freebirdFormeditorViewItemTitleRowContain::before {
     content: counter(number);
-    font-size: 4rem;
+    font-size: 4em;
     font-weight: bold;
     color: #000;
     opacity: 0.5;
@@ -570,48 +571,47 @@
     top: 7px;
 }
 
-
-.freebirdFormeditorViewPagePageFields:hover{
+.freebirdFormeditorViewPagePageFields:hover {
     -webkit-box-shadow: 0px 0px 0px 1px green;
     -moz-box-shadow: 0px 0px 0px 1px green;
     box-shadow: 0px 0px 0px 1px green;
 }
 
-.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot{
+.freebirdFormeditorViewItemInactive.freebirdFormeditorViewItemcardRoot {
     border: unset;
 }
 
-.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields{
+.freebirdFormeditorViewItemInactive.freebirdFormeditorViewPagePageFields {
     border: unset;
 }
 
-.point-dame .absol-icon-button-icon-container{
+.point-dame .absol-icon-button-icon-container {
     margin-top: 4px;
 }
 
-.OrtherInput{
+.OrtherInput {
     width: 50%;
     display: inline-block;
 }
 
-.OrtherInput .quantumWizTextinputPapertextareaInput{
-    color: rgba(0,0,0,0.54);
+.OrtherInput .quantumWizTextinputPapertextareaInput {
+    color: rgba(0, 0, 0, 0.54);
 }
 
-.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper{
-    -webkit-box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.3);
+.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemContentWrapper {
+    -webkit-box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-.freebirdFormeditorViewItemInactive .freebirdMaterialIcon{
+.freebirdFormeditorViewItemInactive .freebirdMaterialIcon {
     visibility: visible;
 }
 
-.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow{
+.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionFooterFooterRow {
     visibility: visible;
 }
 
-.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser{
+.freebirdFormeditorViewItemInactive .freebirdFormeditorViewItemTypechooserTypeChooser {
     display: inline-block;
 }
 
@@ -694,8 +694,8 @@
     -webkit-flex-direction: row;
     flex-direction: row;
     position: relative;
-    -webkit-transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);
-    transition: box-shadow .25s cubic-bezier(0.0,0.0,0.2,1);
+    -webkit-transition: box-shadow .25s cubic-bezier(0.0, 0.0, 0.2, 1);
+    transition: box-shadow .25s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
 .item-dlg-dragHandle {
@@ -742,13 +742,17 @@
     margin-left: 5px;
 }
 
-.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput, .freebirdFormeditorViewItemTitleSizer {
+.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput,
+.freebirdFormeditorViewItemTitleInput .quantumWizTextinputPapertextareaInput,
+.freebirdFormeditorViewItemTitleSizer {
     font-size: 16px;
     line-height: 135%;
     font-weight: bold;
 }
 
-.freebirdFormeditorViewQuestionBodyRadioBody, .freebirdFormeditorViewQuestionBodyCheckboxBody, .freebirdFormeditorViewQuestionBodySelectBody {
+.freebirdFormeditorViewQuestionBodyRadioBody,
+.freebirdFormeditorViewQuestionBodyCheckboxBody,
+.freebirdFormeditorViewQuestionBodySelectBody {
     margin-right: 0;
 }
 
@@ -768,7 +772,7 @@
     opacity: .3;
 }
 
-.freebirdMaterialIcon{
+.freebirdMaterialIcon {
     visibility: hidden;
 }
 
@@ -784,21 +788,21 @@
     align-items: flex-start;
 }
 
-.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton{
+.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemDuplicateButton {
     margin-top: auto;
     margin-bottom: auto;
     height: 30px;
     width: 30px;
 }
 
-.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton{
+.freebirdFormeditorViewOmnilistItemRoot .freebirdFormeditorViewItemPictureButton {
     margin-top: auto;
     margin-bottom: auto;
     height: 30px;
     width: 30px;
 }
 
-.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton{
+.freebirdFormeditorViewItemRoot .freebirdFormeditorViewItemCheckButton {
     margin-top: auto;
     margin-bottom: auto;
     height: 30px;
@@ -829,7 +833,7 @@
     margin: auto;
 }
 
-.freebirdMaterialScalecontentContainerSelection{
+.freebirdMaterialScalecontentContainerSelection {
     -webkit-box-align: stretch;
     box-align: stretch;
     -webkit-align-items: stretch;
@@ -866,20 +870,20 @@
     -webkit-flex-shrink: 0;
     flex-shrink: 0;
     font-weight: bold;
-    opacity: .3; 
+    opacity: .3;
     width: 42px;
     visibility: hidden;
 }
 
-.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl{
+.docssharedWizOmnilistItemRoot .quantumWizTogglePaperradioEl {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 10px;
 }
 
-.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl{
+.docssharedWizOmnilistItemRoot .quantumWizTextinputPapertextareaEl {
     /* margin: auto;
-    margin-left: .75rem;
+    margin-left: .75em;
     padding-top: 5px; */
     /*display: -webkit-box;*/
     display: -webkit-flex;
@@ -906,7 +910,7 @@
     font-size: 16px;
 }
 
-.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle{
+.freebirdFormeditorViewItemInactive .docssharedWizOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent:hover .omnilist-draghandle {
     visibility: visible;
 }
 
@@ -915,10 +919,15 @@
     margin-top: 10px;
 }
 
-.freebirdFormeditorViewQuestionBodyShortTextBody, .freebirdFormeditorViewQuestionBodyLongTextBody, .freebirdFormeditorViewQuestionBodyTimeBody, .freebirdFormeditorViewQuestionBodyScaleBody, .freebirdFormeditorViewQuestionBodyDateBody, .freebirdFormeditorViewQuestionBodyFileUploadBody, .freebirdFormeditorViewQuestionBodyDrawingBody {
+.freebirdFormeditorViewQuestionBodyShortTextBody,
+.freebirdFormeditorViewQuestionBodyLongTextBody,
+.freebirdFormeditorViewQuestionBodyTimeBody,
+.freebirdFormeditorViewQuestionBodyScaleBody,
+.freebirdFormeditorViewQuestionBodyDateBody,
+.freebirdFormeditorViewQuestionBodyFileUploadBody,
+.freebirdFormeditorViewQuestionBodyDrawingBody {
     margin-left: 42px;
 }
-
 
 .freebirdFormeditorViewQuestionBodyLongtextbodyRoot {
     width: 100%;
@@ -928,7 +937,7 @@
     width: unset;
 }
 
-.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput{
+.freebirdFormeditorViewItemTitleRow .freebirdFormeditorViewQuestionBodyLongtextbodyLongTextInput {
     width: 100%;
 }
 
@@ -936,7 +945,10 @@
     width: 50%;
 }
 
-.freebirdFormeditorViewItemOverflowButton, .freebirdFormeditorViewItemDeleteButton, .freebirdFormeditorViewItemDuplicateButton, .freebirdFormeditorViewItemPictureButton {
+.freebirdFormeditorViewItemOverflowButton,
+.freebirdFormeditorViewItemDeleteButton,
+.freebirdFormeditorViewItemDuplicateButton,
+.freebirdFormeditorViewItemPictureButton {
     -webkit-flex-shrink: 0;
     flex-shrink: 0;
     opacity: .54;
@@ -1014,7 +1026,7 @@
     font-weight: 600;
     margin-right: 8px;
     -webkit-user-select: none;
-    vertical-align: bottom; 
+    vertical-align: bottom;
 }
 
 .quantumWizTogglePapertoggleEl {
@@ -1030,7 +1042,7 @@
     z-index: 0;
 }
 
-.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl{
+.freebirdFormeditorViewQuestionFooterRequiredToggleContainer .quantumWizTogglePapertoggleEl {
     margin-bottom: 0px;
 }
 
@@ -1061,11 +1073,11 @@
     box-align: center;
     -webkit-align-items: center;
     align-items: center;
-    color: rgba(0,0,0,0.54);
+    color: rgba(0, 0, 0, 0.54);
     /*display: -webkit-box;*/
     display: -webkit-flex;
     display: flex;
-    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 400 14px/20px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 }
 
 .freebirdFormeditorViewItemTypechooserTypeChooser {
@@ -1074,74 +1086,75 @@
     position: relative;
 }
 
-.freebirdFormeditorViewQuestionFooterRequiredToggleContainer{
+.freebirdFormeditorViewQuestionFooterRequiredToggleContainer {
     margin-right: 16px;
 }
 
-.absol-switch-slider{
+.absol-switch-slider {
     -webkit-transition: unset;
     transition: unset;
 }
 
-.blueBackground{
+.blueBackground {
     background-color: white;
     border-color: #46b8da;
     color: #5bc0de;
 }
 
-.whiteBackground{
+.whiteBackground {
     background-color: #673ab7;
     border-color: #ffffff;
     color: #ffffff;
 }
 
-.whiteBackground .absol-icon-button-icon-container{
+.whiteBackground .absol-icon-button-icon-container {
     background-color: unset;
 }
 
-.whiteBackground .absol-icon-button-icon-container>i{
-    color: #ffffff;;
+.whiteBackground .absol-icon-button-icon-container>i {
+    color: #ffffff;
+    ;
 }
 
-.whiteBackground .absol-icon-button-text-container{
-    border-left:unset;
+.whiteBackground .absol-icon-button-text-container {
+    border-left: unset;
     margin: auto;
     vertical-align: unset;
 }
 
-.blueBackground .absol-icon-button-icon-container{
+.blueBackground .absol-icon-button-icon-container {
     background-color: unset;
 }
 
-.blueBackground .absol-icon-button-icon-container>i{
+.blueBackground .absol-icon-button-icon-container>i {
     color: #5bc0de;
 }
 
-.blueBackground .absol-icon-button-text-container{
-    border-left:unset;
+.blueBackground .absol-icon-button-text-container {
+    border-left: unset;
 }
 
-.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{
+.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton {
     display: none;
 }
 
-.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton{
+.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemDuplicateButton {
     display: inline-block;
 }
 
-.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{
+.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton {
     visibility: hidden;
 }
 
-.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton{
+.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .freebirdFormeditorViewItemPictureButton {
     visibility: visible;
 }
 
-.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{
+.freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline {
     visibility: hidden;
 }
 
-.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline{
+.freebirdFormeditorViewItemInactive .freebirdFormeditorViewQuestionBodySelectBody .freebirdFormeditorViewOmnilistItemRoot:hover .docssharedWizOmnilistItemPrimaryContent .quantumWizTextinputPapertextareaEl .quantumWizTextinputPapertextareaMainContent .quantumWizTextinputPapertextareaUnderline {
     visibility: visible;
 }
 
@@ -1187,7 +1200,7 @@
     display: flex;
     font-size: 16px;
     font-weight: 500;
-    min-height: 2rem;
+    min-height: 2em;
     padding-bottom: 24px;
     padding-left: 42px;
     padding-right: 42px;
@@ -1233,25 +1246,25 @@
     padding-right: 2px;
 }
 
-.feedBack{
+.feedBack {
     border: none;
     height: 44px;
     margin-bottom: 10px;
 }
 
-.feedBack .absol-icon-button-icon-container{
+.feedBack .absol-icon-button-icon-container {
     margin-top: 1px;
 }
 
-.feedBack .material-icons{
+.feedBack .material-icons {
     font-size: 21px;
 }
 
-.feedBack .quantumWizButtonPaperbuttonEl{
+.feedBack .quantumWizButtonPaperbuttonEl {
     text-transform: none;
 }
 
-.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span{
+.feedBack .quantumWizButtonPaperbuttonEl .absol-icon-button-text-container>span {
     margin: 0px;
 }
 
@@ -1288,7 +1301,7 @@
 
 .freebirdFormeditorViewAssessmentWidgetsPointsInput {
     max-width: 250px;
-    margin: 0 .5rem;
+    margin: 0 .5em;
 }
 
 .freebirdFormeditorViewAssessmentWidgetsPointsInput .quantumWizTextinputPaperinputInput {
@@ -1296,7 +1309,8 @@
     text-align: right;
 }
 
-.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {
+.freebirdFormeditorViewPageTitleInput,
+.freebirdFormeditorViewPageDescriptionInput {
     display: block;
     width: 100%;
     margin-top: 16px;
@@ -1305,12 +1319,14 @@
     padding-bottom: 8px;
 }
 
-.freebirdFormeditorViewPageSectionTitleRow, .freebirdFormeditorViewPageSectionDescriptionRow{
+.freebirdFormeditorViewPageSectionTitleRow,
+.freebirdFormeditorViewPageSectionDescriptionRow {
     padding-right: 24px;
     padding-left: 42px;
 }
 
-.freebirdFormeditorViewPageTitleInput, .freebirdFormeditorViewPageDescriptionInput {
+.freebirdFormeditorViewPageTitleInput,
+.freebirdFormeditorViewPageDescriptionInput {
     display: block;
     width: 100%;
     margin-top: 16px;
@@ -1318,7 +1334,7 @@
     box-sizing: border-box;
 }
 
-.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder{
+.freebirdFormeditorViewPageTitleInput .quantumWizTextinputPapertextareaPlaceholder {
     font-size: 34px;
 }
 
@@ -1340,6 +1356,7 @@
     overflow: hidden;
     padding: 0 10px;
 }
+
 .freebirdFormeditorViewAssessmentAnswersListItem {
     cursor: pointer;
     font-size: 13px;
@@ -1361,26 +1378,27 @@
 .isChecked {
     background-color: #f1f8e9;
 }
-.freebirdFormeditorViewAssessmentAnswersListItemContent:hover{
-    border-left: 2px solid rgba(0,0,0,0.26);
+
+.freebirdFormeditorViewAssessmentAnswersListItemContent:hover {
+    border-left: 2px solid rgba(0, 0, 0, 0.26);
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding-left: 8px;
     border-color: green;
- }
+}
 
- .freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl{
+.freebirdFormeditorViewAssessmentAnswersListItem .quantumWizButtonEl {
     display: none;
- }
+}
 
- .isChecked .quantumWizButtonEl{
-     display: inline-block;
- }
+.isChecked .quantumWizButtonEl {
+    display: inline-block;
+}
 
- .quantumWizMenuPapermenuiconbuttonEl{
+.quantumWizMenuPapermenuiconbuttonEl {
     width: 40px;
     height: 40px;
- }
+}
 
 .quantumWizDialogEl {
     -webkit-flex-shrink: 1;
@@ -1400,17 +1418,17 @@
     box-orient: vertical;
     -webkit-flex-direction: column;
     flex-direction: column;
-    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);
-    transition: -webkit-transform .225s cubic-bezier(0.0,0.0,0.2,1);
-    -webkit-transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);
-    transition: transform .225s cubic-bezier(0.0,0.0,0.2,1);
+    -webkit-transition: -webkit-transform .225s cubic-bezier(0.0, 0.0, 0.2, 1);
+    transition: -webkit-transform .225s cubic-bezier(0.0, 0.0, 0.2, 1);
+    -webkit-transition: transform .225s cubic-bezier(0.0, 0.0, 0.2, 1);
+    transition: transform .225s cubic-bezier(0.0, 0.0, 0.2, 1);
     position: relative;
     background-color: #fff;
     -webkit-border-radius: 2px;
     border-radius: 2px;
-    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);
-    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24);
-    max-width: 24rem;
+    -webkit-box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+    max-width: 24em;
     outline: 1px solid transparent;
     overflow: hidden;
 }
@@ -1421,8 +1439,9 @@
     width: 440px;
 }
 
-.freebirdFormeditorDialogReorderDialogContent, .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {
-    border-bottom: 1px solid rgba(0,0,0,0.12);
+.freebirdFormeditorDialogReorderDialogContent,
+.freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .freebirdFormeditorDialogReorderDialog .quantumWizDialogPaperdialogTitleBar {
@@ -1469,7 +1488,7 @@
     max-width: 120px;
 }
 
-.freebirdMaterialScalecontentContainerMain{
+.freebirdMaterialScalecontentContainerMain {
     -webkit-box-align: stretch;
     box-align: stretch;
     -webkit-align-items: stretch;
@@ -1486,7 +1505,7 @@
     text-align: center;
 }
 
-.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput{
+.freebirdMaterialScalecontentRangeLabelColumn .quantumWizTextinputPapertextareaInput {
     max-width: 120px;
     text-align: center;
 }
@@ -1513,10 +1532,13 @@
     -webkit-flex-direction: column;
     flex-direction: column;
     text-align: center;
-    margin-top:auto;
+    margin-top: auto;
 }
 
-.freebirdMaterialScalecontentLabel, .freebirdMaterialScalecontentRangeLabelContainer, .freebirdMaterialScalecontentRangeLabelPlaceholder, .freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {
+.freebirdMaterialScalecontentLabel,
+.freebirdMaterialScalecontentRangeLabelContainer,
+.freebirdMaterialScalecontentRangeLabelPlaceholder,
+.freebirdMaterialScalecontentColumn .freebirdMaterialScalecontentInput {
     -webkit-box-align: center;
     box-align: center;
     -webkit-align-items: center;
@@ -1528,24 +1550,25 @@
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     justify-content: center;
-    min-height: 3rem;
+    min-height: 3em;
 }
 
-.freebirdMaterialScalecontentRangeLabelContainer{
+.freebirdMaterialScalecontentRangeLabelContainer {
     margin-top: auto;
     margin-bottom: 7px;
 }
 
-.freebirdMaterialScalecontentLabel{
+.freebirdMaterialScalecontentLabel {
     padding-left: 5px;
     padding-right: 5px;
     min-height: 24px;
 }
 
-.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel{
+.freebirdMaterialScalecontentContainerSelection:first-child .freebirdMaterialScalecontentLabel {
     padding-left: 0px;
 }
-.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel{
+
+.freebirdMaterialScalecontentContainerSelection:last-child .freebirdMaterialScalecontentLabel {
     padding-right: 0px;
 }
 
@@ -1553,7 +1576,7 @@
     background-color: #fafafa;
 }
 
-.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput{
+.freebirdMaterialScalecontentLabel .quantumWizTextinputPapertextareaInput {
     text-align: center;
     width: 100%;
 }
@@ -1564,7 +1587,6 @@
     display: flex;
     -webkit-flex-shrink: 0;
     flex-shrink: 0;
-    
     padding: 24px 24px 20px 24px;
 }
 
@@ -1577,7 +1599,7 @@
     flex-shrink: 1;
     overflow: hidden;
     word-wrap: break-word;
-    font: 500 20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 500 20px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 }
 
 .quantumWizDialogPaperdialogContent {
@@ -1588,7 +1610,7 @@
     -webkit-flex-shrink: 2;
     flex-shrink: 2;
     display: block;
-    font: 400 14px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 400 14px/20px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     padding: 0 24px;
 }
 
@@ -1596,8 +1618,8 @@
     padding: 0;
 }
 
-.freebirdFormeditorDialogReorderDialogContent{
-    border-bottom: 1px solid rgba(0,0,0,0.12);
+.freebirdFormeditorDialogReorderDialogContent {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .quantumWizCommonPositioningScrollableHost {
@@ -1609,14 +1631,15 @@
     -webkit-flex: 1;
     flex: 1;
 }
+
 .freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderTitle {
     font-size: 16px;
     font-weight: 550;
 }
 
 .freebirdFormeditorDialogReorderSection .freebirdFormeditorDialogReorderPosition {
-    color: rgba(0,0,0,0.54);
-    font: 400 13px/20px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    color: rgba(0, 0, 0, 0.54);
+    font: 400 13px/20px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     line-height: 18px;
 }
 
@@ -1649,10 +1672,10 @@
 }
 
 .freebirdFormeditorDialogReorderSection {
-    border-top: 1px solid rgba(0,0,0,0.12);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle{
+.freebirdFormeditorDialogReorderSection:hover .docssharedWizOmnilistItemPrimaryContent .omnilist-draghandle-container .docssharedWizOmnilistItemDragHandle {
     visibility: visible;
 }
 
@@ -1662,28 +1685,30 @@
     width: 60px;
 }
 
-.freebirdFormeditorDialogReorderSection:hover,.freebirdFormeditorDialogReorderSection.isFocused{
-    border-left:4px solid #4285f4;
+.freebirdFormeditorDialogReorderSection:hover,
+.freebirdFormeditorDialogReorderSection.isFocused {
+    border-left: 4px solid #4285f4;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     cursor: pointer;
 }
 
-.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle{
-   padding-left: 0px;
+.freebirdFormeditorDialogReorderSection:hover .omnilist-draghandle,
+.freebirdFormeditorDialogReorderSection.isFocused .omnilist-draghandle {
+    padding-left: 0px;
 }
 
-.absol-tooltip-root{
+.absol-tooltip-root {
     z-index: 9999;
 }
 
-.freebirdFormeditorDialogReorderSection:first-child .leftControl{
-    color: rgba(0,0,0,0.54);
+.freebirdFormeditorDialogReorderSection:first-child .leftControl {
+    color: rgba(0, 0, 0, 0.54);
     pointer-events: none;
 }
 
-.freebirdFormeditorDialogReorderSection:last-child .rightControl{
-    color: rgba(0,0,0,0.54);
+.freebirdFormeditorDialogReorderSection:last-child .rightControl {
+    color: rgba(0, 0, 0, 0.54);
     pointer-events: none;
 }
 
@@ -1711,7 +1736,7 @@
     display: inline-block;
     font-size: 14px;
     font-weight: 550;
-    min-width: 4rem;
+    min-width: 4em;
     outline: none;
     overflow: hidden;
     position: relative;
@@ -1721,7 +1746,7 @@
     z-index: 0;
 }
 
-.quantumWizDialogPaperdialogBottomButtons{
+.quantumWizDialogPaperdialogBottomButtons {
     padding: 16px;
 }
 
@@ -1730,7 +1755,8 @@
     min-width: 88px;
 }
 
-.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2, .quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {
+.quantumWizDialogPaperdialogDialogButton.quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2,
+.quantumWizDialogPaperdialogBottomButtons .quantumWizButtonPaperbuttonEl.quantumWizButtonPaperbutton2El2 {
     min-width: 64px;
 }
 
@@ -1757,8 +1783,8 @@
     width: 48px;
     z-index: 1;
     background-color: #f5f5f5;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .freebirdFormeditorViewMediaEditMenuButtonClose {
@@ -1784,60 +1810,65 @@
     width: 36px;
     z-index: 1;
     background-color: #f5f5f5;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
     display: none;
 }
 
-.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose{
+.freebirdFormeditorViewItemInactive .freebirdFormeditorViewMediaEditMenuButtonClose {
     display: inline-block;
 }
 
-.absol-width-height-resizer-anchor-bot-right,.absol-width-height-resizer-anchor-bot-left,.absol-width-height-resizer-anchor-top-right,.absol-width-height-resizer-anchor-top-left
-{
+.absol-width-height-resizer-anchor-bot-right,
+.absol-width-height-resizer-anchor-bot-left,
+.absol-width-height-resizer-anchor-top-right,
+.absol-width-height-resizer-anchor-top-left {
     display: none;
 }
-.hasFocus .absol-width-height-resizer-anchor-bot-right,.hasFocus .absol-width-height-resizer-anchor-bot-left,.hasFocus .absol-width-height-resizer-anchor-top-right,.hasFocus  .absol-width-height-resizer-anchor-top-left
-{
+
+.hasFocus .absol-width-height-resizer-anchor-bot-right,
+.hasFocus .absol-width-height-resizer-anchor-bot-left,
+.hasFocus .absol-width-height-resizer-anchor-top-right,
+.hasFocus .absol-width-height-resizer-anchor-top-left {
     display: unset;
 }
 
-.freebirdFormeditorViewMediaEditMenuButton{
-    display:none;
+.freebirdFormeditorViewMediaEditMenuButton {
+    display: none;
 }
 
-.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton{
+.freebirdFormeditorViewItemInactive .image-autoresize-create:not(.hasFocus) .freebirdFormeditorViewMediaEditMenuButton {
     display: inline-block;
 }
 
-.infotext{
-    display:table-cell;
+.infotext {
+    display: table-cell;
     vertical-align: top;
     padding-top: 7px;
-    height:30px;
-    padding: 0.5rem;
- }
+    height: 30px;
+    padding: 0.5em;
+}
 
- .properties{
-    display:table-cell;
+.properties {
+    display: table-cell;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    font-size: 1rem;
-    padding: 0.5rem;
+    font-size: 1em;
+    padding: 0.5em;
     vertical-align: middle;
     resize: none;
-    width:374px;
-    height:30px;
+    width: 374px;
+    height: 30px;
     margin-left: 10px;
 }
 
-.container-form{
+.container-form {
     display: table-row;
     min-width: 374px;
 }
 
-.point-dame .freebirdMaterialIcon{
+.point-dame .freebirdMaterialIcon {
     background-color: #673ab7;
 }
 
@@ -1845,26 +1876,25 @@
     top: 0px;
 }
 
-.absol-context-hinge-fixed-container{
+.absol-context-hinge-fixed-container {
     z-index: 1002;
 }
 
-.vertical-center{
+.vertical-center {
     left: 50%;
     transform: translate(50%, 0);
 }
 
-.disable{
+.disable {
     opacity: .5;
     pointer-events: none;
 }
 
-.visible .disable{
+.visible .disable {
     opacity: 1;
     pointer-events: unset;
 }
 
-.selected .freebirdFormeditorViewItemPictureButton{
+.selected .freebirdFormeditorViewItemPictureButton {
     visibility: visible !important;
 }
-

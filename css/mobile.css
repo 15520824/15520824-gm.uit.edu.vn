@@ -1,177 +1,174 @@
+.pizo-new-realty-dectruct {
+    width: 100% !important;
+    min-width: 100% !important;
+    margin-right: 0;
+}
 
+.pizo-new-realty-desc-infomation-cell {
+    width: 100% !important;
+    min-width: 100% !important;
+    margin-right: 0;
+}
 
-    .pizo-new-realty-dectruct {
-        width: 100% !important;
-        min-width: 100% !important;
-        margin-right: 0;
-    }
-    
-    .pizo-new-realty-desc-infomation-cell{
-        width: 100% !important;
-        min-width: 100% !important;
-        margin-right: 0;
-    }
-    
-    .pizo-new-realty-dectruct-content-area-size-zone{
-        width: 100% !important;
-        min-width: 100% !important;
-        vertical-align: top;
-    }
-    
-    .pizo-new-realty-convenient-content-area-size-zone{
-        width: 100% !important;
-        min-width: 100% !important;
-        vertical-align: top;
-        margin-left: 0px;
-    }
-    
-    .pizo-new-realty-convenient-content-area-size-zone:not(:first-child){
-        margin-top: 0.7143rem;
-        margin-left: 0px;
-    }
-    
-    .pizo-new-realty-dectruct-content-area-size-zone:not(:first-child)
-    {
-        margin-top: 0.7143rem;
-        margin-left: 0px;
-    }
-    
-    .pizo-new-realty-desc-infomation-cell:not(:last-child){
-        margin-right: 0px;
-    }
-    
-    html{
-        font-size: 4vw;
-    }
-    
-    .pizo-new-relty-desc-content-thumnail{
-        width: 100%;
-        margin-left: 0;
-    }
-    
-    .pizo-new-realty-desc-detail{
-        width: 100%;
-    }
-    
-    .pizo-new-realty-dectruct-content-area-size-zone{
-        width: 100%;
-    }
-    
-    .pizo-header-more{
-        display: none !important;
-    }
-    
-    .pizo-header-menu{
-        width: 100%;
-        border-top: 0.0714rem solid var(--border-color);
-    }
-    
-    .outer-wrapper{
-        width: 100%;
-    }
-    
-    .portal-section .not-loggedin{
-        margin-top: 1rem;
-    }
-    
-    .absol-single-page-header{
-        padding-left: 10px;
-        padding-right: 10px;
-        width: 100% !important;
-    }
-    
-    .pizo-body{
-        height: calc(100% - 7.25rem);
-    }
-    
-    .pizo-new-relty-desc-content-thumnail{
-        height: 16rem;
-    }
-    
-    .pizo-body-dashboard{
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-    }
-    
-    .pizo-list-realty-page-allinput{
-        width: 100%
-    }
-    
-    .pizo-list-realty-page-allinput{
-        margin-top: 0.7143rem;
-        margin-left: 0;
-    }
-    
-    .pizo-list-realty-main{
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    
-    .pizo-list-realty-main-search-control-row>div{
-        width: 100%;
-    }
-    
-    .pizo-list-realty-page-allinput-filter{
-        display: inline-block;
-    }
-    
-    .pizo-list-realty-main-search-control{
-        position: fixed;
-        background-color: white;
-        width: 20%;
-    }
-    
-    .pizo-list-realty-main-search-control-row>div{
-        width: 100%;
-    }
-    
-    .pizo-list-realty-main-search-control {
-        position: fixed;
-        background-color: white;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 100%;
-        z-index: 1002;
-        background-color: rgba(0,0,0,0.5);
-    }
-    
-    .pizo-list-realty-main-search-control-container{
-        width: 80%;
-        -webkit-transition: 1s ease-in-out;
-        -moz-transition: 1s ease-in-out;
-        -o-transition: 1s ease-in-out;
-        transition: 1s ease-in-out;
-        background-color: white;
-        position: relative;
-        height: 100%;
-        left: 100%;
-    }
-    
-    .pizo-list-realty-main-search-control-container-scroller{
-        overflow-y: auto;
-        padding: 0.75rem 1rem;
-        width: calc(100% - 2rem);
-        height: calc(100% - 1.5rem);
-    }
-    
-    .pizo-list-realty-main-search-control-row-button{
-        position: absolute;
-        bottom: 0;
-        padding: 1rem;
-        background-color: white;
-        width: calc(100% - 2rem) !important;
-        left: 50%;
-        transform: translate(-50%, 0);
-    }
-    
-    .pizo-list-realty-main-search-control-row>div:not(:first-child){
-        margin-left: 0;
-        margin-top: 0.7143rem;
-    }
+.pizo-new-realty-dectruct-content-area-size-zone {
+    width: 100% !important;
+    min-width: 100% !important;
+    vertical-align: top;
+}
 
-    .pizo-new-realty-dectruct-content-area-size-zone.margin-style .pizo-new-realty-detruct-content-area-label{
-        width: 4.71428571429rem;
-        padding-right: 0.71428571429rem;
-    }
+.pizo-new-realty-convenient-content-area-size-zone {
+    width: 100% !important;
+    min-width: 100% !important;
+    vertical-align: top;
+    margin-left: 0px;
+}
+
+.pizo-new-realty-convenient-content-area-size-zone:not(:first-child) {
+    margin-top: 0.7143em;
+    margin-left: 0px;
+}
+
+.pizo-new-realty-dectruct-content-area-size-zone:not(:first-child) {
+    margin-top: 0.7143em;
+    margin-left: 0px;
+}
+
+.pizo-new-realty-desc-infomation-cell:not(:last-child) {
+    margin-right: 0px;
+}
+
+html {
+    font-size: 4vw;
+}
+
+.pizo-new-relty-desc-content-thumnail {
+    width: 100%;
+    margin-left: 0;
+}
+
+.pizo-new-realty-desc-detail {
+    width: 100%;
+}
+
+.pizo-new-realty-dectruct-content-area-size-zone {
+    width: 100%;
+}
+
+.pizo-header-more {
+    display: none !important;
+}
+
+.pizo-header-menu {
+    width: 100%;
+    border-top: 0.0714rem solid var(--border-color);
+}
+
+.outer-wrapper {
+    width: 100%;
+}
+
+.portal-section .not-loggedin {
+    margin-top: 1em;
+}
+
+.absol-single-page-header {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100% !important;
+}
+
+.pizo-body {
+    height: calc(100% - 7.25rem);
+}
+
+.pizo-new-relty-desc-content-thumnail {
+    height: 16em;
+}
+
+.pizo-body-dashboard {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+.pizo-list-realty-page-allinput {
+    width: 100%
+}
+
+.pizo-list-realty-page-allinput {
+    margin-top: 0.7143em;
+    margin-left: 0;
+}
+
+.pizo-list-realty-main {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.pizo-list-realty-main-search-control-row>div {
+    width: 100%;
+}
+
+.pizo-list-realty-page-allinput-filter {
+    display: inline-block;
+}
+
+.pizo-list-realty-main-search-control {
+    position: fixed;
+    background-color: white;
+    width: 20%;
+}
+
+.pizo-list-realty-main-search-control-row>div {
+    width: 100%;
+}
+
+.pizo-list-realty-main-search-control {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    z-index: 1002;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pizo-list-realty-main-search-control-container {
+    width: 80%;
+    -webkit-transition: 1s ease-in-out;
+    -moz-transition: 1s ease-in-out;
+    -o-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
+    background-color: white;
+    position: relative;
+    height: 100%;
+    left: 100%;
+}
+
+.pizo-list-realty-main-search-control-container-scroller {
+    overflow-y: auto;
+    padding: 0.75rem 1em;
+    width: calc(100% - 2rem);
+    height: calc(100% - 1.5rem);
+}
+
+.pizo-list-realty-main-search-control-row-button {
+    position: absolute;
+    bottom: 0;
+    padding: 1em;
+    background-color: white;
+    width: calc(100% - 2rem) !important;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.pizo-list-realty-main-search-control-row>div:not(:first-child) {
+    margin-left: 0;
+    margin-top: 0.7143em;
+}
+
+.pizo-new-realty-dectruct-content-area-size-zone.margin-style .pizo-new-realty-detruct-content-area-label {
+    width: 4.71428571429em;
+    padding-right: 0.71428571429em;
+}

@@ -1,8 +1,8 @@
-.pizo-new-category-container-note-container-input{
-    height: 10rem;
+.pizo-new-category-container-note-container-input {
+    height: 10em;
 }
 
-.pizo-new-category-container-note-container-label{
+.pizo-new-category-container-note-container-label {
     align-items: start;
-    margin-top: 0.5rem;
+    margin-top: 0.5em;
 }

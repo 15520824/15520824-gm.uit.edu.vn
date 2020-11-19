@@ -1,160 +1,159 @@
 .modal-upload-XML {
-  width: 66vw;
-  height: 85vh;
-  min-width: 520px;
-  min-height: 320px;
-  max-width: 1052px;
-  max-height: 650px;
-  background-color: white;
+    width: 66vw;
+    height: 85vh;
+    min-width: 520px;
+    min-height: 320px;
+    max-width: 1052px;
+    max-height: 650px;
+    background-color: white;
 }
 
 .quantumWizButtonPaperbutton2El2 .quantumWizButtonPaperbuttonLabel {
-  margin: 8px;
+    margin: 8px;
 }
 
-
 .quantumWizButtonPaperbuttonLabel {
-  display: inline-block;
-  margin: .5rem;
+    display: inline-block;
+    margin: .5em;
 }
 
 .modal-upload-XML-header {
-  padding: 17px 20px;
-  position: relative;
+    padding: 17px 20px;
+    position: relative;
 }
 
 .modal-upload-XML-header-text {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  display: inline-block;
-  font-size: 20px;
-  vertical-align: top;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    display: inline-block;
+    font-size: 20px;
+    vertical-align: top;
 }
 
 .modal-upload-XML-header-icon-close {
-  overflow: hidden;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  cursor: pointer;
-  height: inherit;
-  margin: 0;
-  width: inherit;
-  user-select: none;
+    overflow: hidden;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    height: inherit;
+    margin: 0;
+    width: inherit;
+    user-select: none;
 }
 
 .modal-upload-XML-body {
-  position: relative;
-  height: calc(100% - 61px);
-  /*display: -webkit-box;*/
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-  flex-direction: column;
+    position: relative;
+    height: calc(100% - 61px);
+    /*display: -webkit-box;*/
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
 }
 
 .modal-upload-XML-body-navigation {
-  height: 50px;
-  border-bottom: 1px solid #e1e1e1;
-  -moz-box-shadow: 0 1px 5px 1px #e1e1e1;
-  -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;
-  box-shadow: 0 1px 5px 1px #e1e1e1;
-  z-index: 1;
+    height: 50px;
+    border-bottom: 1px solid #e1e1e1;
+    -moz-box-shadow: 0 1px 5px 1px #e1e1e1;
+    -webkit-box-shadow: 0 1px 5px 1px #e1e1e1;
+    box-shadow: 0 1px 5px 1px #e1e1e1;
+    z-index: 1;
 }
 
 .modal-upload-XML-body-drop {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 .modal-upload-XML-body-drop-area-main {
-  height: 100%;
+    height: 100%;
 }
 
 .modal-upload-XML-body-drop-area-main-form {
-  /*display: -webkit-box;*/
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: stretch;
-  flex-direction: column;
+    /*display: -webkit-box;*/
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+    flex-direction: column;
 }
 
-.modal-upload-XML-body-drop-area-main-form-content{
-  border: #ddd 4px dashed;
-  border-radius: 2px;
-  text-align: center;
-  position: relative;
-  margin-bottom: 0px;
-  padding: 10px;
-  flex-grow: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.modal-upload-XML-body-drop-area-main-form-content {
+    border: #ddd 4px dashed;
+    border-radius: 2px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 0px;
+    padding: 10px;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .modal-upload-XML-body-db-area-main-form {
-  display: none;
-  width: 100%;
-  height: 100%;
+    display: none;
+    width: 100%;
+    height: 100%;
 }
 
 .modal-upload-XML-body-db-area-main-form-search {
-  font-size: 13px;
-  text-align: left;
-  position: relative;
-  margin: 15px 0 4px 20px;
+    font-size: 13px;
+    text-align: left;
+    position: relative;
+    margin: 15px 0 4px 20px;
 }
 
-.modal-upload-XML-body-db-area-main-form-search-input{
-  -webkit-transition: all .218s;
-  -moz-transition: all .218s;
-  -o-transition: all .218s;
-  transition: all .218s;
-  margin: 4px 15px 5px 0;
-  vertical-align: middle;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;
-  border-radius: 1px;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
-  font-size: 13px;
-  height: 25px;
-  padding: 1px 8px;
-  width: 410px;   
-  padding-left: 50px;
+.modal-upload-XML-body-db-area-main-form-search-input {
+    -webkit-transition: all .218s;
+    -moz-transition: all .218s;
+    -o-transition: all .218s;
+    transition: all .218s;
+    margin: 4px 15px 5px 0;
+    vertical-align: middle;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    font-size: 13px;
+    height: 25px;
+    padding: 1px 8px;
+    width: 410px;
+    padding-left: 50px;
 }
 
-.modal-upload-XML-body-db-area-main-form-search-filter{
-  border: 1px solid #dae4f6;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  display: inline-block;
-  height: 23px;
-  left: 22px;
-  outline: medium none;
-  position: absolute;
-  top: 6px;
-  background-color: #c6dafc;
-  border-color: #c6dafc;
-  left: 2px;
+.modal-upload-XML-body-db-area-main-form-search-filter {
+    border: 1px solid #dae4f6;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    display: inline-block;
+    height: 23px;
+    left: 22px;
+    outline: medium none;
+    position: absolute;
+    top: 6px;
+    background-color: #c6dafc;
+    border-color: #c6dafc;
+    left: 2px;
 }
 
-.modal-upload-XML-body-db-area-main-form-search-filter-text{   
-  display: inline-block;
-  font-size: 12px;
-  line-height: 23px;
-  padding: 0 3px;
-  vertical-align: top;
+.modal-upload-XML-body-db-area-main-form-search-filter-text {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 23px;
+    padding: 0 3px;
+    vertical-align: top;
 }
 
-.modal-upload-XML-body-db-area-main-form-files{
+.modal-upload-XML-body-db-area-main-form-files {
     bottom: 0;
     border-top: 1px solid #e1e1e1;
     font-size: 13px;
@@ -168,62 +167,61 @@
 }
 
 .modal-upload-XML-body-drop-area {
-  width: calc(100% - 40px);
-  height: calc(100% - 20px);
-  display: inline-block;
-  padding: 20px;
-  padding-bottom: 0;
+    width: calc(100% - 40px);
+    height: calc(100% - 20px);
+    display: inline-block;
+    padding: 20px;
+    padding-bottom: 0;
 }
 
-.modal-upload-XML-body-drop-area-main-form-input{
+.modal-upload-XML-body-drop-area-main-form-input {
     display: none;
 }
 
 .modal-upload-XML-body-drop-area-main-form-button {
-  font-size: 16px;
-  vertical-align: top;
+    font-size: 16px;
+    vertical-align: top;
 }
 
 .modal-upload-XML-body-drop-area-main-process-bar {
-  width: 50%;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translate(-50%, 0);
+    width: 50%;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .modal-upload-XML-body-drop-area-main-form-tutorial {
-  font-size: 20pt;
-  color: #ccc;
-  padding: 0 10px;
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  transform: translate(-50%, -50%);
+    font-size: 20pt;
+    color: #ccc;
+    padding: 0 10px;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
 }
 
-.modal-upload-XML-body-db-area-main-form-files-list{
+.modal-upload-XML-body-db-area-main-form-files-list {
     padding: 16px 8px 8px 20px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width:100%;
+    width: 100%;
     height: 100%;
 }
 
-.modal-upload-XML-body-db-area-main-form-files-list-title{
+.modal-upload-XML-body-db-area-main-form-files-list-title {
     padding-bottom: 8px;
     padding-top: 8px;
-
 }
 
-.modal-upload-XML-body-db-area-main-form-files-list-content{
+.modal-upload-XML-body-db-area-main-form-files-list-content {
     display: inline-block;
     margin-bottom: 8px;
     width: 100%;
 }
 
-.modal-upload-XML-body-db-area-main-form-files-list-item{
+.modal-upload-XML-body-db-area-main-form-files-list-item {
     display: inline-block;
     position: relative;
     touch-action: pan-x pan-y;
@@ -233,14 +231,12 @@
     width: calc(25% - 20px);
 }
 
-
-
-.modal-upload-XML-body-db-area-main-form-files-list-img{
+.modal-upload-XML-body-db-area-main-form-files-list-img {
     height: auto;
     width: 100%;
 }
 
-.modal-upload-XML-body-db-area-main-form-files-list-label{
+.modal-upload-XML-body-db-area-main-form-files-list-label {
     border-bottom-left-radius: 1px;
     border-bottom-right-radius: 1px;
     height: 30px;
@@ -259,28 +255,28 @@
     border-top: 1px solid #e1e1e1;
 }
 
-.modal-upload-XML-body-db-area-main-form-files-list-icon{    
-  margin: 8px;
-  margin-top: auto;
-  margin-bottom: auto;
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  vertical-align: middle;
-  display: inline-block;
-  background-color: #6846b6;
-  color: white;
+.modal-upload-XML-body-db-area-main-form-files-list-icon {
+    margin: 8px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+    display: inline-block;
+    background-color: #6846b6;
+    color: white;
 }
 
-.modal-upload-XML-body-db-area-main-form-files-list-labelText{
+.modal-upload-XML-body-db-area-main-form-files-list-labelText {
     margin: auto;
     min-width: 60%;
     -webkit-box-flex: 1;
@@ -295,325 +291,325 @@
 }
 
 .XML-autoresize {
-  max-height: calc(100% - 20px);
-  vertical-align: middle;
-  margin-left: 10px;
-  margin-right: 10px;
-  height: calc(100% - 20px);
-  max-width: calc(100% - 20px);
-  display: inline-block;
+    max-height: calc(100% - 20px);
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+    display: inline-block;
 }
 
 .absol-width-height-resizer-content {
-  width: unset;
+    width: unset;
 }
 
 #fileElemXML {
-  display: none;
+    display: none;
 }
 
 .modal-upload-XML-body-navigation-bar {
-  background: transparent;
-  border: none;
-  float: left;
-  height: 14px;
-  margin: 0 18px;
-  padding: 16px 4px 7px;
-  position: static;
-  user-select: none;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  font-weight: bold;
-  padding-bottom: 18px;
-  user-select: none;
-  color:#2222229e;
+    background: transparent;
+    border: none;
+    float: left;
+    height: 14px;
+    margin: 0 18px;
+    padding: 16px 4px 7px;
+    position: static;
+    user-select: none;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    font-weight: bold;
+    padding-bottom: 18px;
+    user-select: none;
+    color: #2222229e;
 }
 
-.modal-upload-XML-body-navigation-bar:hover{
-  border-bottom: 2px solid #4d90fe;
+.modal-upload-XML-body-navigation-bar:hover {
+    border-bottom: 2px solid #4d90fe;
 }
 
-.modal-upload-XML-body-navigation-bar-button{
-  display: inline-block;
-  font-size: 14px;
-  vertical-align: middle;
-  user-select: none;
-  font-weight: 600;
+.modal-upload-XML-body-navigation-bar-button {
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: middle;
+    user-select: none;
+    font-weight: 600;
 }
 
-.modal-upload-XML-body-drop-save{
-  position: relative;
-  padding: 10px 0;
-  display: flex;
-  flex-shrink: 0;
+.modal-upload-XML-body-drop-save {
+    position: relative;
+    padding: 10px 0;
+    display: flex;
+    flex-shrink: 0;
 }
 
-.fit-content-XML{
-  width: auto;
+.fit-content-XML {
+    width: auto;
 }
 
-.selected-modal{
-  border-bottom: 2px solid #4d90fe;
-  color: #222;
+.selected-modal {
+    border-bottom: 2px solid #4d90fe;
+    color: #222;
 }
 
-.on-hold{
-  box-shadow: 2px 2px 10px;
-  -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);
-  -moz-box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);
+.on-hold {
+    box-shadow: 2px 2px 10px;
+    -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
+    -moz-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
 }
 
-.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{
-  background-color: #4285f4;
+.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label {
+    background-color: #4285f4;
 }
 
-.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label{
-  color: white;
+.on-hold .modal-upload-XML-body-db-area-main-form-files-list-label {
+    color: white;
 }
 
 .freebirdCommonSidebarSidebar.freebirdCommonSidebarIsVisible {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  z-index: 1002;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    z-index: 1002;
 }
 
 .freebirdCommonSidebarSidebar {
-  background-color: #fff;
-  bottom: 0;
-  -webkit-box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);
-  box-shadow: 0 7px 10px 1px rgba(0,0,0,0.14), 0 2px 16px 1px rgba(0,0,0,0.12), 0 4px 5px -2px rgba(0,0,0,0.2);
-  /*display: -webkit-box;*/
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  box-orient: vertical;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  height: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  position: fixed;
-  right: 0;
-  -webkit-transition: -webkit-transform 300ms ease-out;
-  transition: transform 300ms ease-out;
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-  width: 26%;
-  min-width: 300px;
-  z-index: 3;
+    background-color: #fff;
+    bottom: 0;
+    -webkit-box-shadow: 0 7px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 16px 1px rgba(0, 0, 0, 0.12), 0 4px 5px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 7px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 16px 1px rgba(0, 0, 0, 0.12), 0 4px 5px -2px rgba(0, 0, 0, 0.2);
+    /*display: -webkit-box;*/
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    -webkit-transition: -webkit-transform 300ms ease-out;
+    transition: transform 300ms ease-out;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    width: 26%;
+    min-width: 300px;
+    z-index: 3;
 }
 
 .freebirdCommonSidebarHeader {
-  -webkit-box-align: center;
-  box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);
-  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);
-  /*display: -webkit-box;*/
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-shrink: 0;
-  flex-shrink: 0;
-  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
-  font-size: 15px;
-  box-pack: justify;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  /* padding: 0 0 0 20px; */
-  text-transform: uppercase;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    /*display: -webkit-box;*/
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    box-pack: justify;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    /* padding: 0 0 0 20px; */
+    text-transform: uppercase;
 }
 
 .freebirdCommonSidebarContent {
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-transition: width 300ms ease-out;
-  transition: width 300ms ease-out;
-  word-break: break-word;
-  white-space: pre;
-  -webkit-box-align: center;
-  box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-flex-shrink: 0;
-  flex-shrink: 0;
-  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
-  font-size: 15px;
-  box-pack: justify;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-transition: width 300ms ease-out;
+    transition: width 300ms ease-out;
+    word-break: break-word;
+    white-space: pre;
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    box-pack: justify;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
 }
 
 .freebirdFormeditorQuestionimportHelpText {
-  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
-  font-weight: 300;
-  margin-top: 12px;
+    font: 400 13px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    margin-top: 12px;
 }
 
 .freebirdCommonSidebarIsExpanded .freebirdCommonSidebarContent {
-  width: 100%;
-  height: calc(100% - 48px);
+    width: 100%;
+    height: calc(100% - 48px);
 }
 
 .freebirdFormeditorQuestionimportHeader {
-  -webkit-box-align: start;
-  box-align: start;
-  -webkit-align-items: flex-start;
-  align-items: flex-start;
-  border-bottom: 1px solid rgba(0,0,0,0.12);
-  /*display: -webkit-box;*/
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  box-orient: vertical;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  box-pack: justify;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  padding: 20px;
-  white-space: normal;
-  width:100%;
+    -webkit-box-align: start;
+    box-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    /*display: -webkit-box;*/
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    box-pack: justify;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding: 20px;
+    white-space: normal;
+    width: 100%;
 }
 
 .freebirdFormeditorQuestionimportTitle {
-  font: 600 15px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
-  width: 100%;
-  word-wrap: break-word;
+    font: 600 15px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    width: 100%;
+    word-wrap: break-word;
 }
 
 .freebirdFormeditorQuestionimportImportedQuestions {
-  -webkit-box-flex: 0 1 auto;
-  -webkit-flex: 0 1 auto;
-  flex: 0 1 auto;
-  overflow-y: auto;
-  white-space: normal;
-  height: calc(100% - 113px);
+    -webkit-box-flex: 0 1 auto;
+    -webkit-flex: 0 1 auto;
+    flex: 0 1 auto;
+    overflow-y: auto;
+    white-space: normal;
+    height: calc(100% - 113px);
 }
 
 .freebirdFormeditorQuestionimportCheckbox {
-  font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
-  margin: 12px;
+    font: 400 13px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    margin: 12px;
 }
 
 .freebirdFormeditorQuestionimportSection {
-  margin-top: 32px;
+    margin-top: 32px;
 }
 
 .freebirdFormeditorQuestionimportChangeFormButton {
-  color: #1a73e8;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: normal;
-  margin: 8px 2px;
+    color: #1a73e8;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: normal;
+    margin: 8px 2px;
 }
 
 .freebirdFormeditorQuestionimportSearch {
-  font-size: 13px;
-  text-align: left;
-  position: relative;
-  margin-top: 10px;
-  width: 100%;
+    font-size: 13px;
+    text-align: left;
+    position: relative;
+    margin-top: 10px;
+    width: 100%;
 }
 
 .freebirdFormeditorQuestionimportSearchInput {
-  -webkit-transition: all .218s;
-  -moz-transition: all .218s;
-  -o-transition: all .218s;
-  transition: all .218s;
-  margin: 4px 15px 5px 0;
-  vertical-align: middle;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;
-  border-radius: 1px;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
-  font-size: 13px;
-  height: 25px;
-  width: 410px;
-  padding-left: 50px;
+    -webkit-transition: all .218s;
+    -moz-transition: all .218s;
+    -o-transition: all .218s;
+    transition: all .218s;
+    margin: 4px 15px 5px 0;
+    vertical-align: middle;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    font-size: 13px;
+    height: 25px;
+    width: 410px;
+    padding-left: 50px;
 }
 
 .freebirdFormeditorQuestionimportSearchFilter {
-  border: 1px solid #dae4f6;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  display: inline-block;
-  height: 23px;
-  left: 22px;
-  outline: medium none;
-  position: absolute;
-  top: 6px;
-  background-color: #c6dafc;
-  border-color: #c6dafc;
-  left: 2px;
+    border: 1px solid #dae4f6;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    display: inline-block;
+    height: 23px;
+    left: 22px;
+    outline: medium none;
+    position: absolute;
+    top: 6px;
+    background-color: #c6dafc;
+    border-color: #c6dafc;
+    left: 2px;
 }
 
 .freebirdFormeditorQuestionimportSearchFilterText {
-  display: inline-block;
-  font-size: 12px;
-  line-height: 23px;
-  padding: 0 3px;
-  vertical-align: top;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 23px;
+    padding: 0 3px;
+    vertical-align: top;
 }
 
 .freebirdFormeditorViewHeaderSendButton.freebirdFormeditorViewHeaderHeaderMenu.freebirdFormeditorSidebarQuestionimportImportButtonWrapper {
-  -webkit-box-flex: 0 0 auto;
-  -webkit-flex: 0 0 auto;
-  flex: 0 0 auto;
-  margin-bottom: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 10px;
-  background: #4285f4;
-  color: #fff;
+    -webkit-box-flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    background: #4285f4;
+    color: #fff;
 }
 
-.grid{
-  width: 100%;
-  display: inline-block;
-  position: relative;
+.grid {
+    width: 100%;
+    display: inline-block;
+    position: relative;
 }
 
-.grid-item{
-  height: 50%;
-  display: inline-block;
-  position: relative;
+.grid-item {
+    height: 50%;
+    display: inline-block;
+    position: relative;
 }
 
-.modal-upload-XML-body-drop-area-main-gallery{
-  width: 100%;
-  height: calc(100% - 70px);
-  position: absolute;
-  top: 45px;
-  overflow: auto;
+.modal-upload-XML-body-drop-area-main-gallery {
+    width: 100%;
+    height: calc(100% - 70px);
+    position: absolute;
+    top: 45px;
+    overflow: auto;
 }
 
-.back-white-convert .full-size{
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+.back-white-convert .full-size {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
 }
 
-.pizo-container-icon-radiobutton{
-  position: absolute;
-  left: 7px;
-  background-color: white;
-  top: 7px;
-  display: flex;
-  border-radius: 50%;
-  padding: 2px;
+.pizo-container-icon-radiobutton {
+    position: absolute;
+    left: 7px;
+    background-color: white;
+    top: 7px;
+    display: flex;
+    border-radius: 50%;
+    padding: 2px;
 }
 
-.pizo-container-icon-radiobutton>i{
-  color: white;
+.pizo-container-icon-radiobutton>i {
+    color: white;
 }
 
-.checked-pizo .pizo-container-icon-radiobutton>i{
-  color: #122246;
+.checked-pizo .pizo-container-icon-radiobutton>i {
+    color: #122246;
 }

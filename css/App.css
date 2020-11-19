@@ -3,7 +3,7 @@ html {
 }
 
 input {
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .no-animation table.sortTable>tbody>tr.parent {
@@ -39,10 +39,10 @@ body {
     --light: #f8f9fa;
     --dark: #343a40;
     --breakpoint-xs: 0;
-    --breakpoint-sm: 41.1429rem;
-    --breakpoint-md: 54.8571rem;
-    --breakpoint-lg: 70.8571rem;
-    --breakpoint-xl: 85.7143rem;
+    --breakpoint-sm: 41.1429em;
+    --breakpoint-md: 54.8571em;
+    --breakpoint-lg: 70.8571em;
+    --breakpoint-xl: 85.7143em;
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --border-color: #253863;
@@ -51,7 +51,7 @@ body {
 }
 
 body {
-    margin: 0rem;
+    margin: 0em;
     font-family: "Segoe UI", "SegoeuiPc", "San Francisco", "Helvetica Neue", "Helvetica", "Lucida Grande", "Roboto", "Ubuntu", "Tahoma", Microsoft Sans Serif, Tahoma, Arial, sans-serif;
     color: #222222;
     -webkit-font-smoothing: antialiased;
@@ -76,31 +76,31 @@ body {
 }
 
 .pizo-header-logo {
-    padding-left: 1.4286rem;
-    padding-right: 1.4286rem;
+    padding-left: 1.4286em;
+    padding-right: 1.4286em;
     height: calc(100% - 1.4286rem);
-    padding-top: 0.7143rem;
-    padding-bottom: 0.7143rem;
+    padding-top: 0.7143em;
+    padding-bottom: 0.7143em;
     display: inline-block;
 }
 
 .pizo-header-logo-icon {
-    height: 2.1429rem;
-    width: 2.1429rem;
+    height: 2.1429em;
+    width: 2.1429em;
     vertical-align: middle;
 }
 
 .pizo-header-logo-text {
-    margin-left: 0.3571rem;
-    height: 1.0714rem;
+    margin-left: 0.3571em;
+    height: 1.0714em;
     vertical-align: middle;
 }
 
 .pizo-header-menu {
     vertical-align: middle;
     background-color: transparent;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 1em;
+    padding-bottom: 1em;
     text-align: center;
     border-left: 0.0714rem solid var(--border-color);
 }
@@ -125,15 +125,15 @@ body {
     transform: translateY(-100%) translateY(-0.625rem);
     float: left;
     color: var( --blue);
-    line-height: 2.1429rem;
-    font-size: 1.5rem;
+    line-height: 2.1429em;
+    font-size: 1.5em;
     position: fixed;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
     display: inline-block;
-    padding-right: .5rem;
-    padding-left: .5rem;
+    padding-right: .5em;
+    padding-left: .5em;
     color: var(--gray);
     content: "/";
 }
@@ -147,13 +147,13 @@ body {
 .pizo-body-title .pizo-body-title-right-item+.pizo-body-title-right-item:before {
     content: "\e649";
     font-family: themify;
-    font-size: 0.7857rem;
+    font-size: 0.7857em;
 }
 
 .pizo-body-title-right {
-    margin-right: 2.1429rem;
-    margin-top: 0.71428571428rem;
-    font-size: 1rem;
+    margin-right: 2.1429em;
+    margin-top: 0.71428571428em;
+    font-size: 1em;
     float: right;
 }
 
@@ -176,10 +176,10 @@ body {
 .not-login-signin {
     background: #2f426d;
     color: #fff;
-    padding: 0.5rem 0.7143rem;
-    border-radius: 0.1429rem;
+    padding: 0.5rem 0.7143em;
+    border-radius: 0.1429em;
     display: block;
-    font-size: 1rem;
+    font-size: 1em;
     white-space: nowrap;
 }
 
@@ -194,7 +194,7 @@ body {
 }
 
 .material-icons {
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 .pizo-new-realty-location-detail-row-label-important {

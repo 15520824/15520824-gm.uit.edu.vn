@@ -38,7 +38,7 @@
 }
 
 .margin-div-cell {
-    width: 1.71428571429rem;
+    width: 1.71428571429em;
     display: inline-block;
 }
 
@@ -75,11 +75,11 @@ table.sortTableClone tr.more-child>td>div>i.more-button {
 }
 
 table.sortTable td.margin-left-has-icon {
-    padding-left: 2.5rem;
+    padding-left: 2.5em;
 }
 
 table.sortTable.padding-High-table tbody td:first-child {
-    padding-left: 2.85714285714rem;
+    padding-left: 2.85714285714em;
 }
 
 .drag-icon-button {

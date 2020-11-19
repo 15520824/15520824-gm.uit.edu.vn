@@ -1,4 +1,5 @@
-.pizo-new-account-container, .pizo-new-account-container-permission{
+.pizo-new-account-container,
+.pizo-new-account-container-permission {
     width: calc(50% - 15px);
     min-width: 620px;
     display: inline-block;
@@ -6,17 +7,16 @@
     height: 100%;
 }
 
-.pizo-list-realty-main-result-control-advance:not(:first-child){
+.pizo-list-realty-main-result-control-advance:not(:first-child) {
     margin-top: 10px;
 }
 
-.pizo-new-account-container-prermission-label{
+.pizo-new-account-container-prermission-label {
     font-size: 20px;
     font-weight: 500;
 }
 
-
-.pizo-new-realty-desc-detail-row-permission{
+.pizo-new-realty-desc-detail-row-permission {
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
@@ -26,47 +26,40 @@
     margin: auto;
 }
 
-.pizo-new-account-container.pizo-new-account-advance-permission .pizo-new-account-container-permission-child>span
-{
+.pizo-new-account-container.pizo-new-account-advance-permission .pizo-new-account-container-permission-child>span {
     width: 20%;
 }
 
-.pizo-new-account-container.pizo-new-account-advance-permission .pizo-new-account-container-permission-child>div
-{
+.pizo-new-account-container.pizo-new-account-advance-permission .pizo-new-account-container-permission-child>div {
     width: 80%;
 }
 
-.pizo-new-account-container-permission-realty .pizo-new-realty-desc-detail-row-permission:nth-child(1)
-{
+.pizo-new-account-container-permission-realty .pizo-new-realty-desc-detail-row-permission:nth-child(1) {
     width: 20%;
 }
- 
-.pizo-new-account-container-permission-realty .pizo-new-realty-desc-detail-row-permission:nth-child(2)
-{
+
+.pizo-new-account-container-permission-realty .pizo-new-realty-desc-detail-row-permission:nth-child(2) {
     width: 25%;
 }
 
-.pizo-new-account-container-permission-realty .pizo-new-realty-desc-detail-row-permission:nth-child(3)
-{
+.pizo-new-account-container-permission-realty .pizo-new-realty-desc-detail-row-permission:nth-child(3) {
     width: 25%;
 }
 
-.pizo-new-account-container-permission-realty .pizo-new-realty-desc-detail-row-permission:nth-child(4)
-{
+.pizo-new-account-container-permission-realty .pizo-new-realty-desc-detail-row-permission:nth-child(4) {
     width: 30%;
 }
 
-.pizo-new-account-container-permission .pizo-new-account-container-prermission-container-label{
+.pizo-new-account-container-permission .pizo-new-account-container-prermission-container-label {
     font-size: 16px;
     color: red;
 }
 
-
-.pizo-new-account-container-permission{
+.pizo-new-account-container-permission {
     padding-left: 30px;
 }
 
-.pizo-new-account-container-permission-child{
+.pizo-new-account-container-permission-child {
     flex-grow: 2;
     display: flex;
     justify-content: center;
@@ -86,7 +79,7 @@
 .pizo-new-account-container-status-position,
 .pizo-new-account-container-phone-birthday-gender,
 .pizo-new-account-container-birthday-container,
-.pizo-new-account-container-gender-container{
+.pizo-new-account-container-gender-container {
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
@@ -99,7 +92,7 @@
 .pizo-new-account-container-position-container,
 .pizo-new-account-container-birthday-container,
 .pizo-new-account-container-gender-container,
-.pizo-new-account-container-phone-container{
+.pizo-new-account-container-phone-container {
     margin-bottom: 0;
 }
 
@@ -116,52 +109,53 @@
 .pizo-new-account-container-birthday,
 .pizo-new-account-container-birthday-container-label,
 .pizo-new-account-container-prermission-container-label,
-.pizo-new-account-container-gender-container-label{
-    font-size: 1rem;
+.pizo-new-account-container-gender-container-label {
+    font-size: 1em;
     display: flex;
     flex-shrink: 0;
-    width: 5.71428571429rem;
-    padding-right: 0.7143rem;
+    width: 5.71428571429em;
+    padding-right: 0.7143em;
     width: 147px;
     margin: auto;
 }
 
-.pizo-new-account-container-status-container-label,.pizo-new-account-container-birthday-container-label{
-    padding-right: 0.7143rem;
+.pizo-new-account-container-status-container-label,
+.pizo-new-account-container-birthday-container-label {
+    padding-right: 0.7143em;
     width: auto;
-    font-size: 1rem;
+    font-size: 1em;
     line-height: 30px;
     margin-top: auto;
     margin-bottom: auto;
 }
 
 .pizo-new-account-container-gender,
-.pizo-new-account-container-birthday{
+.pizo-new-account-container-birthday {
     width: auto;
-    padding-left:  14px;
+    padding-left: 14px;
     padding-right: 0;
 }
 
-.pizo-new-account-container-status-container-label{
+.pizo-new-account-container-status-container-label {
     width: auto;
 }
 
-.pizo-new-account-container-status{
+.pizo-new-account-container-status {
     width: auto;
     padding-right: 0;
     padding-left: 30px;
 }
 
-.pizo-new-account-container-status-container>label{
+.pizo-new-account-container-status-container>label {
     margin-top: auto;
     margin-bottom: auto;
 }
 
-.pizo-new-account-container-birthday-container>div{
+.pizo-new-account-container-birthday-container>div {
     margin-top: auto;
     margin-bottom: auto;
     border: solid 0.0714rem var(--color-input-color);
-    font-size: 1rem;
+    font-size: 1em;
     flex-grow: 2;
     display: flex;
     justify-content: center;
@@ -169,7 +163,7 @@
     position: relative;
 }
 
-.pizo-new-account-container-gender-container-label{
+.pizo-new-account-container-gender-container-label {
     width: auto;
     padding-right: 10px;
     vertical-align: top;
@@ -185,10 +179,10 @@
 .pizo-new-account-container-phone-container-input,
 .pizo-new-account-container-position-container-input,
 .pizo-new-account-container-position,
-.pizo-new-account-container-phone{
+.pizo-new-account-container-phone {
     border: solid 0.0714rem var(--color-input-color);
-    font-size: 1rem;
-    padding: 0.4286rem;
+    font-size: 1em;
+    padding: 0.4286em;
     flex-grow: 2;
     display: flex;
     justify-content: center;
@@ -196,12 +190,15 @@
     position: relative;
 }
 
-.pizo-new-account-container-position-container-input,.pizo-new-account-container-position,.pizo-new-account-container-phone{
+.pizo-new-account-container-position-container-input,
+.pizo-new-account-container-position,
+.pizo-new-account-container-phone {
     padding: unset;
     border: none;
 }
 
-.pizo-new-account-container-password-container-new,.pizo-new-account-container-password-container-new-confirm{
+.pizo-new-account-container-password-container-new,
+.pizo-new-account-container-password-container-new-confirm {
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
@@ -210,74 +207,73 @@
     align-items: stretch;
 }
 
-.pizo-new-account-container-password-container-new{
+.pizo-new-account-container-password-container-new {
     padding-right: 15px;
 }
 
-.pizo-new-account-container-password-container-new-confirm{
+.pizo-new-account-container-password-container-new-confirm {
     padding-left: 15px;
 }
 
-.pizo-new-account-container-change-password-show{
+.pizo-new-account-container-change-password-show {
     display: unset
 }
 
-.pizo-new-account-container-change-password-hide{
+.pizo-new-account-container-change-password-hide {
     display: none;
 }
 
-.show-password-change .pizo-new-account-container-change-password-show{
+.show-password-change .pizo-new-account-container-change-password-show {
     display: none;
 }
 
-.show-password-change .pizo-new-account-container-change-password-hide{
+.show-password-change .pizo-new-account-container-change-password-hide {
     display: unset;
 }
 
-.pizo-new-realty-desc-detail-row-cell-menu-ultra-span{
-    font-size: 1rem;
+.pizo-new-realty-desc-detail-row-cell-menu-ultra-span {
+    font-size: 1em;
     flex-grow: 2;
     display: flex;
     justify-content: flex-end;
     overflow: hidden;
     position: relative;
     align-items: center;
-    padding-right: 0.7143rem;
+    padding-right: 0.7143em;
 }
 
-.pizo-new-account-container-permission-child:not(:first-child)
-{
+.pizo-new-account-container-permission-child:not(:first-child) {
     margin-top: 10px;
 }
 
-.pizo-new-account-container-change-password{
+.pizo-new-account-container-change-password {
     cursor: pointer;
     padding-left: 170px;
     margin-bottom: 10px;
     color: var(--primary);
 }
 
-.pizo-new-account-container-password{
+.pizo-new-account-container-password {
     display: none;
 }
 
-.absol-switch-slider:before{
+.absol-switch-slider:before {
     top: 50%;
     transform: translateY(-50%);
 }
 
-input:checked+.absol-switch-slider:before{
+input:checked+.absol-switch-slider:before {
     -webkit-transform: translateX(1em) translateY(-50%);
     -ms-transform: translateX(1em) translateY(-50%);
     transform: translateX(1em) translateY(-50%);
 }
 
-.pizo-new-account-container-avatar-container-image{
+.pizo-new-account-container-avatar-container-image {
     flex-grow: 2;
     display: flex;
 }
 
-.pizo-new-account-container-avatar-container-image-content{
+.pizo-new-account-container-avatar-container-image-content {
     max-height: 110px;
     max-width: 110px;
     cursor: pointer;
@@ -286,7 +282,7 @@ input:checked+.absol-switch-slider:before{
     border: 1px solid rgb(214, 214, 214);
 }
 
-.pizo-new-account-container-permission-addvance-selectmenu-icon{
+.pizo-new-account-container-permission-addvance-selectmenu-icon {
     display: flex;
     flex-shrink: 0;
     padding-right: 30px;
@@ -294,17 +290,17 @@ input:checked+.absol-switch-slider:before{
     font-size: 30px;
 }
 
-.pizo-new-account-container-permission-addvance-selectmenu-icon:hover{
+.pizo-new-account-container-permission-addvance-selectmenu-icon:hover {
     color: #73aed3;
 }
 
-.pizo-new-account-container-permission-addvance-selectmenu-content{
+.pizo-new-account-container-permission-addvance-selectmenu-content {
     display: flex;
     flex-grow: 2;
     height: 100%;
 }
 
-.pizo-new-account-container-permission-addvance-selectmenu{
+.pizo-new-account-container-permission-addvance-selectmenu {
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     display: flex;
@@ -312,8 +308,8 @@ input:checked+.absol-switch-slider:before{
     height: 100%;
     align-items: stretch;
     align-items: center;
-  }
+}
 
-.absol-selectbox-item.selectedIItem{
+.absol-selectbox-item.selectedIItem {
     background-color: #4e618d;
 }

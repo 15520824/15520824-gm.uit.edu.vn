@@ -461,13 +461,13 @@
     }
     
     #edit-contact .pizo-new-realty-contact-item {
-        margin-bottom: 0.7143rem;
+        margin-bottom: 0.7143em;
     }
     
     #preview-contact .pizo-new-realty-contact-item {
-        padding: 0.7143rem;
+        padding: 0.7143em;
         margin: 0;
-        padding-bottom: 0.7143rem;
+        padding-bottom: 0.7143em;
         -webkit-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 3px 7px 25px -9px rgba(0, 0, 0, 0.75);
         box-shadow: 3px 7px 10px -9px rgba(0, 0, 0, 0.75);

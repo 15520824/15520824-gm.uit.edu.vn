@@ -44,7 +44,7 @@
 
 .alias-label {
     color: #3071a9;
-    font-size: 0.8rem;
+    font-size: 0.8em;
 }
 
 .b-workZone__content.m-workZone__content__nav .sortTable>tbody>tr:hover {
@@ -139,7 +139,7 @@ div.tick-element:before {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 1.2857rem;
+    font-size: 1.2857em;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
@@ -160,7 +160,7 @@ div.cross-element:before {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 1.2857rem;
+    font-size: 1.2857em;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;

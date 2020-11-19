@@ -5,8 +5,8 @@
 .pizo-new-category-container-username-container-input,
 .pizo-new-state-selectbox-container-input {
     border: solid 0.0714rem var(--color-input-color);
-    font-size: 1rem;
-    padding: 0.4286rem;
+    font-size: 1em;
+    padding: 0.4286em;
     flex-grow: 2;
     display: flex;
     justify-content: center;
@@ -20,12 +20,12 @@
 .pizo-new-category-container-username-container-label,
 .pizo-new-category-container-note-container-label,
 .pizo-new-state-selectbox-container-label {
-    font-size: 1rem;
+    font-size: 1em;
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    width: 7rem;
-    padding-right: 0.7143rem;
+    width: 7em;
+    padding-right: 0.7143em;
 }
 
 .pizo-new-category-container-name-container,
@@ -53,7 +53,7 @@
     padding-right: 0;
 }
 
-.pizo-new-category-container{
+.pizo-new-category-container {
     width: 60%;
 }
 

@@ -1,14 +1,14 @@
 .absol-single-page-header {
-    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286rem;
+    padding: 0.7143rem 0.7143rem 0.7143rem 1.4286em;
     background-color: white;
 }
 
 .absol-single-page-header .absol-icon-button:not(:first-child) {
-    margin-left: 0.3571rem;
+    margin-left: 0.3571em;
 }
 
 .absol-single-page-header .absol-icon-button:not(:last-child) {
-    margin-right: 0.3571rem;
+    margin-right: 0.3571em;
 }
 
 .pizo-list-realty-button {
@@ -24,15 +24,15 @@
 }
 
 .pizo-list-realty-page-allinput-input {
-    padding: 0.4286rem;
+    padding: 0.4286em;
     border: solid 0.0714rem var(--color-input-color);
     width: calc(100% - 1rem);
     display: inline-block;
-    font-size: 1.01rem;
+    font-size: 1.01em;
 }
 
 .pizo-list-realty-page-allinput {
-    padding-left: 1.4286rem;
+    padding-left: 1.4286em;
     position: relative;
     flex-grow: 2;
     /*display: -webkit-box;*/
@@ -44,18 +44,18 @@
     position: absolute;
     transform: translate(-105%, 0.2rem);
     height: calc(100% - 0.4rem);
-    width: 4rem;
+    width: 4em;
     border: solid 0.0714rem var(--color-input-color);
 }
 
 .pizo-list-realty-page-number {
-    margin-right: 1.7143rem;
+    margin-right: 1.7143em;
     position: relative;
     display: inline-block;
 }
 
 .pizo-list-realty-page-number-input {
-    width: 2.1429rem;
+    width: 2.1429em;
 }
 
 .pizo-list-realty-page-number-line {
@@ -63,8 +63,8 @@
     position: absolute;
     transform: translate(-100%, 0);
     white-space: nowrap;
-    top: 0.7143rem;
-    height: 2rem;
+    top: 0.7143em;
+    height: 2em;
 }
 
 .freebirdFormeditorViewAssessmentWidgetsPointsLabel {
@@ -73,8 +73,8 @@
 }
 
 .pizo-body-dashboard {
-    margin: 1.4286rem;
-    margin-top: 2.1429rem;
+    margin: 1.4286em;
+    margin-top: 2.1429em;
     width: calc(100% - 2.8571rem);
     height: calc(100% - 3.2857rem);
 }
@@ -85,8 +85,8 @@
 
 .pizo-list-realty-main,
 .pizo-list-plan-main {
-    margin-left: 1.4286rem;
-    margin-right: 0.7143rem;
+    margin-left: 1.4286em;
+    margin-right: 0.7143em;
     position: absolute;
     height: 100%;
     width: calc(100% - 30px);
@@ -127,11 +127,11 @@
 }
 
 .pizo-list-realty-main-search-control-row {
-    margin-bottom: 0.7143rem;
+    margin-bottom: 0.7143em;
 }
 
 .pizo-list-realty-main-search-control-row>div {
-    min-height: 0.0714rem;
+    min-height: 0.0714em;
     display: inline-block;
     vertical-align: bottom;
 }
@@ -154,7 +154,7 @@
 
 .pizo-list-realty-main-search-control-row-MS-input>input {
     width: calc(100% - 1rem);
-    padding: 0.4286rem;
+    padding: 0.4286em;
     border: solid 0.0714rem var(--color-input-color);
 }
 
@@ -164,7 +164,7 @@
 
 .pizo-list-realty-main-search-control-row-SN-input>input {
     width: calc(100% - 1rem);
-    padding: 0.4286rem;
+    padding: 0.4286em;
     border: solid 0.0714rem var(--color-input-color);
 }
 
@@ -174,7 +174,7 @@
 
 .pizo-list-realty-main-search-control-row-TD-input>input {
     width: calc(100% - 1rem);
-    padding: 0.4286rem;
+    padding: 0.4286em;
     border: solid 0.0714rem var(--color-input-color);
 }
 
@@ -184,7 +184,7 @@
 
 .pizo-list-realty-main-search-control-row-PX-input>input {
     width: calc(100% - 1rem);
-    padding: 0.4286rem;
+    padding: 0.4286em;
     border: solid 0.0714rem var(--color-input-color);
 }
 
@@ -194,7 +194,7 @@
 
 .pizo-list-realty-main-search-control-row-QH-input>input {
     width: calc(100% - 1rem);
-    padding: 0.4286rem;
+    padding: 0.4286em;
     border: solid 0.0714rem var(--color-input-color);
 }
 
@@ -204,12 +204,12 @@
 
 .pizo-list-realty-main-search-control-row-TT-input>input {
     width: calc(100% - 1rem);
-    padding: 0.4286rem;
+    padding: 0.4286em;
     border: solid 0.0714rem var(--color-input-color);
 }
 
 .pizo-list-realty-main-search-control-row-HT-input {
-    height: 1.9375rem;
+    height: 1.9375em;
 }
 
 .pizo-list-realty-main-search-control-row-HT-input>div {
@@ -218,18 +218,18 @@
 }
 
 .pizo-list-realty-main-search-control-row>div:not(:first-child) {
-    margin-left: 1.4286rem;
+    margin-left: 1.4286em;
 }
 
 .pizo-list-realty-main-search-control-row-price-input>input {
     width: calc(50% - 1rem);
-    padding: 0.4286rem;
+    padding: 0.4286em;
     border: solid 0.0714rem var(--color-input-color);
     text-align: right;
 }
 
 .pizo-list-realty-main-search-control-row-phone-input>input {
-    padding: 0.4286rem;
+    padding: 0.4286em;
     border: solid 0.0714rem var(--color-input-color);
     width: calc(100% - 1rem);
 }
@@ -253,7 +253,7 @@
 }
 
 .pizo-list-realty-main-search-control-row-button-search {
-    margin-top: 1rem;
+    margin-top: 1em;
     margin-bottom: auto;
 }
 
@@ -266,7 +266,7 @@
 }
 
 .pizo-list-realty-button-deleteall.pizo-list-realty-button-element {
-    margin-left: 1rem;
+    margin-left: 1em;
     width: calc(50% - 0.6428rem);
 }
 
@@ -277,7 +277,7 @@
 }
 
 .navbar-search__filter {
-    width: 1.5rem;
+    width: 1.5em;
     stroke: #ee4d2d!important;
     fill: #ee4d2d!important;
     display: inline-block;
@@ -287,16 +287,16 @@
     color: #ee4d2d;
     display: inline-block;
     vertical-align: bottom;
-    font-size: 0.8rem;
+    font-size: 0.8em;
 }
 
 .pizo-list-realty-page-allinput-filter {
     display: inline-block;
     position: relative;
     vertical-align: middle;
-    margin-left: 1rem;
+    margin-left: 1em;
     display: none;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.2em;
 }
 
 .pizo-list-realty-main-search-control.showTranslate {

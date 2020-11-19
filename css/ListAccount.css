@@ -1,7 +1,7 @@
-.pizo-list-realty-main-search-control-row-positions,.pizo-list-realty-main-search-control-row-status{
-    min-height: 0.0714rem;
+.pizo-list-realty-main-search-control-row-positions,
+.pizo-list-realty-main-search-control-row-status {
+    min-height: 0.0714em;
     display: inline-block;
     vertical-align: bottom;
     width: calc(18% - 3px);
 }
-
