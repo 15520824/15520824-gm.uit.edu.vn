@@ -2963,26 +2963,27 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
             }
             data.rowspan = undefined;
         }
-    } else if (realIndex !== -1) {
-        if (typeof localData[i + 1] === "object" && ((typeof localData[i][j] === "object") && (typeof localData[i + 1][j] === "object"))) {
-            var index = 1;
-            for (var l = i + 1; l < localData.length; l++) {
-                if (localData[i][j] === localData[l][j]) {
-                    if (checkSpan[l] === undefined)
-                        checkSpan[l] = [];
-                    checkSpan[l][j] = 2;
-                    index++;
-                } else
-                    break;
-            }
-            if (index > 1) {
-                isCheckRow = index - 1;
-                cell.setAttribute("rowspan", index);
-                if (orther)
-                    if (orther.a < index - 1)
-                        orther.a += index - 1;
-            }
+    } else
+    // if (realIndex !== -1) {
+    if (typeof localData[i + 1] === "object" && ((typeof localData[i][j] === "object") && (typeof localData[i + 1][j] === "object"))) {
+        var index = 1;
+        for (var l = i + 1; l < localData.length; l++) {
+            if (localData[i][j] === localData[l][j]) {
+                if (checkSpan[l] === undefined)
+                    checkSpan[l] = [];
+                checkSpan[l][j] = 2;
+                index++;
+            } else
+                break;
         }
+        if (index > 1) {
+            isCheckRow = index - 1;
+            cell.setAttribute("rowspan", index);
+            if (orther)
+                if (orther.a < index - 1)
+                    orther.a += index - 1;
+        }
+        // }
     }
     if (data.colspan !== undefined) {
         cell.setAttribute("colspan", data.colspan);
@@ -2994,24 +2995,25 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
             }
         }
         data.colspan = undefined;
-    } else if (realIndex !== -1)
-        if ((typeof dataOld[j] === "object") && (typeof dataOld[j + 1] === "object")) {
-            var index = 1;
-            for (var l = j + 1; l < dataOld.length; l++) {
-                if (dataOld[j] === dataOld[l]) {
-                    for (var x = 0; x <= isCheckRow; x++) {
-                        if (checkSpan[i + x] === undefined)
-                            checkSpan[i + x] = [];
-                        checkSpan[i + x][l] = 6;
-                    }
-                    index++;
-                } else
-                    break;
-            }
-            if (index > 1) {
-                cell.setAttribute("colspan", index);
-            }
+    } else
+    // if (realIndex !== -1)
+    if ((typeof dataOld[j] === "object") && (typeof dataOld[j + 1] === "object")) {
+        var index = 1;
+        for (var l = j + 1; l < dataOld.length; l++) {
+            if (dataOld[j] === dataOld[l]) {
+                for (var x = 0; x <= isCheckRow; x++) {
+                    if (checkSpan[i + x] === undefined)
+                        checkSpan[i + x] = [];
+                    checkSpan[i + x][l] = 6;
+                }
+                index++;
+            } else
+                break;
         }
+        if (index > 1) {
+            cell.setAttribute("colspan", index);
+        }
+    }
     cell.getParentNode = function() {
         var parent = cell.clone[0][0];
         parent = parent;

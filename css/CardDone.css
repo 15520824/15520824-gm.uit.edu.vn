@@ -19,6 +19,7 @@ table.sortTableClone td {
 table.sortTable,
 table.sortTableClone {
     border-top: 0;
+    border-right: 1px solid #ddd;
 }
 
 table.sortTable>tbody>tr>td:first-child,
@@ -26,7 +27,8 @@ table.sortTableClone>tbody>tr>td:first-child {
     border-left: 1px solid #ddd;
 }
 
-table.sortTable>tbody>tr>td:last-child,
+
+/* table.sortTable>tbody>tr>td:last-child,
 table.sortTableClone>tbody>tr>td:last-child {
     border-right: 1px solid #ddd;
-}
+} */
