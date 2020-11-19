@@ -231,3 +231,14 @@ table.sortTableClone>tbody>tr>td:first-child {
     border-left: unset;
     border-bottom: unset;
 }
+
+.b-workZone__side.m-workZone__side__nav table.sortTable th,
+table.sortTableClone th {
+    background-color: #36304a;
+    vertical-align: middle;
+    color: #fff;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0px;
+    z-index: 4;
+}
