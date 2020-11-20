@@ -739,10 +739,10 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
                 }
             }
         var indexTemp = parent.childrenNodes[index];
-        parent.changeParent(index, element);
+        indexOF = parent.changeParent(index, element);
+        indexTemp.parentDetail = element;
+        indexTemp.indexDetail = indexOF;
         indexTemp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-        this.saveDataCurrent();
-        indexOF = indexTemp.indexDetail;
     }
     var temp = element.updateRow(data, indexOF, true);
 
