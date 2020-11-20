@@ -307,15 +307,6 @@ function EditHelpContainer() {
             updateTableFunction.apply(self.$view.mTable, arguments);
         }
         listParent.updateItemList();
-        var x = setInterval(function() {
-            if (self.$view.editor !== undefined) {
-                clearInterval(x);
-                self.$view.resetChoice();
-            }
-        }, 100)
-        setTimeout(function() {
-            clearInterval(x);
-        }, 5000);
         self.$view.mTable.addInputSearch(input);
     });
 
@@ -659,7 +650,7 @@ EditHelpContainer.prototype.addView = function(value, row, parent_id) {
 EditHelpContainer.prototype.addDB = function(value) {
     var self = this;
     moduleDatabase.getModule("helps").add(value).then(function(result) {
-        value.id = result.data.id;
+        value.id = result.id;
     });
 }
 
@@ -848,7 +839,7 @@ EditHelpContainer.prototype.delete = function(data, parent, index) {
 
 EditHelpContainer.prototype.deleteView = function(parent, index) {
     var self = this;
-    if (this.rowSelected.parentDetail === parent && this.rowSelected.indexDetail > index)
+    if (this.rowSelected && this.rowSelected.parentDetail === parent && this.rowSelected.indexDetail > index)
         this.rowSelected.indexDetail--;
     parent.dropRow(index).then(function() {
         self.resetChoice();
@@ -873,9 +864,12 @@ EditHelpContainer.prototype.setDataTitle = function(data) {
 
 EditHelpContainer.prototype.deleteDB = function(data, parent, index) {
     var self = this;
-    moduleDatabase.getModule("helps").delete(data).then(function(value) {
+    if (data.id)
+        moduleDatabase.getModule("helps").delete({ id: data.id }).then(function(value) {
+            self.deleteView(parent, index);
+        })
+    else
         self.deleteView(parent, index);
-    })
 }
 
 EditHelpContainer.prototype.itemEdit = function() {

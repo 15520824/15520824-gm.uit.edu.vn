@@ -13,6 +13,7 @@
     overflow: hidden;
     position: relative;
     color: black;
+    background-color: white;
 }
 
 .pizo-new-category-container-name-container-label,
