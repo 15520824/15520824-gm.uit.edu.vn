@@ -283,7 +283,7 @@ HelpContainer.prototype.functionClickDetail = function(event, me, index, parent,
         text = window.location.href.replace(window.addHref, "");
     }
     window.addHref = data.original.alias;
-    history.replaceState({}, "", text + window.addHref);
+    history.replaceState({}, "", text + "/" + window.addHref);
     this.titleLabel.innerHTML = data.original.title;
     this.containerView.innerHTML = data.original.fulltext;
 }
