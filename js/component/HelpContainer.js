@@ -294,20 +294,12 @@ HelpContainer.prototype.formatDataRow = function(data) {
             element: _({
                 tag: "div",
                 child: [{
-                        tag: "span",
-                        class: "title-label",
-                        props: {
-                            innerHTML: data[i].title
-                        }
-                    },
-                    {
-                        tag: "span",
-                        class: "alias-label",
-                        props: {
-                            innerHTML: " (Alias :" + data[i].alias + ")"
-                        }
+                    tag: "span",
+                    class: "title-label",
+                    props: {
+                        innerHTML: data[i].title
                     }
-                ]
+                }]
             }),
         }];
         result.original = data[i];
