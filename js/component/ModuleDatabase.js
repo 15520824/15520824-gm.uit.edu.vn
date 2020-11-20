@@ -22,7 +22,35 @@ function DataStructure(hostDatabase, name, listFilePHP = ["load.php", "add.php",
     this.phpAdder = hostDatabase + listFilePHP[1];
     this.phpUpdater = hostDatabase + listFilePHP[2];
     this.phpDeleter = hostDatabase + listFilePHP[3];
-    this.name = name;
+    var nameTemp = name;
+    var self = this;
+    Object.defineProperty(this, "name", {
+        get() {
+            return nameTemp;
+        },
+
+        set(value) {
+            self.prefix[nameTemp] = [self.Libary, self.countRow, self.data, self.isFirst, self.promiseLoad, self.promisePart, self.sync];
+            nameTemp = value;
+            if (self.prefix[nameTemp]) {
+                self.Libary = self.prefix[nameTemp][0];
+                self.countRow = self.prefix[nameTemp][1];
+                self.data = self.prefix[nameTemp][2];
+                self.isFirst = self.prefix[nameTemp][3];
+                self.promiseLoad = self.prefix[nameTemp][4];
+                self.promisePart = self.prefix[nameTemp][5];
+                self.sync = self.prefix[nameTemp][6];
+            } else {
+                self.Libary = [];
+                self.sync = [];
+                self.promisePart = [];
+                self.isFirst = true;
+                self.countRow = undefined;
+                self.data = [];
+                self.promiseLoad = undefined;
+            }
+        },
+    });
     this.Libary = [];
     this.sync = [];
     this.promisePart = [];
