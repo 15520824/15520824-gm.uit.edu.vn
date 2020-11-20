@@ -248,3 +248,11 @@ table.sortTableClone th {
     top: 0px;
     z-index: 4;
 }
+
+.pizo-new-category-container-alias.hasErrorElement {
+    background-color: #000000;
+}
+
+.pizo-new-realty-location-detail-row-label-important {
+    color: #d93025;
+}
