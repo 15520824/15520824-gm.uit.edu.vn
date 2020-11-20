@@ -419,13 +419,13 @@ li.b-controlButtons__item {
     border: #d3d3d3 1px dotted;
 }
 
-tr {
+.b-workZone__layout tr {
     display: table-row;
     vertical-align: inherit;
     border: grey;
 }
 
-table {
+.b-workZone__layout table {
     border-collapse: separate;
     border-spacing: 2px;
 }
