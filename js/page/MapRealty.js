@@ -11,6 +11,7 @@ import moduleDatabase from '../component/ModuleDatabase';
 import { descViewImagePreview } from '../component/ModuleImage';
 import NewRealty from '../component/NewRealty';
 import { unit_Long, unit_Zone, deleteQuestion } from '../component/ModuleView';
+import BrowserDetector from 'absol/src/Detector/BrowserDetector';
 
 
 var _ = Fcore._;
@@ -41,7 +42,7 @@ MapRealty.prototype.getView = function() {
             placeholder: "Tìm theo địa chỉ"
         }
     });
-    if (window.mobilecheck()) {
+    if (BrowserDetector.isMobile) {
         allinput.placeholder = "Tìm theo địa chỉ"
     }
 

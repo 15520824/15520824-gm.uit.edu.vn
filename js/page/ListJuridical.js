@@ -10,6 +10,7 @@ import moduleDatabase from '../component/ModuleDatabase';
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
 import NewJuridical from '../component/NewJuridical';
+import BrowserDetector from 'absol/src/Detector/BrowserDetector';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -21,173 +22,157 @@ function ListJuridical() {
     this.loadConfig();
 }
 
-ListJuridical.prototype.setContainer = function(parent)
-{
+ListJuridical.prototype.setContainer = function(parent) {
     this.parent = parent;
 }
 
 Object.defineProperties(ListJuridical.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 ListJuridical.prototype.constructor = ListJuridical;
 
-ListJuridical.prototype.getView = function () {
+ListJuridical.prototype.getView = function() {
     if (this.$view) return this.$view;
     var self = this;
     var input = _({
-        tag:"input",
-        class:"quantumWizTextinputPaperinputInput",
-        on:{
-            change:function(){
+        tag: "input",
+        class: "quantumWizTextinputPaperinputInput",
+        on: {
+            change: function() {
                 self.mTable.updatePagination(this.value);
             }
         },
-        props:{
-            type:"number",
-            autocomplete:"off",
-            min:1,
-            max:200,
-            step:1,
-            value:50
+        props: {
+            type: "number",
+            autocomplete: "off",
+            min: 1,
+            max: 200,
+            step: 1,
+            value: 50
         }
     })
     var allinput = _({
-        tag:"input",
-        class:"pizo-list-realty-page-allinput-input",
-        props:{
-            placeholder:"Tìm kiếm"
+        tag: "input",
+        class: "pizo-list-realty-page-allinput-input",
+        props: {
+            placeholder: "Tìm kiếm"
         }
     });
-    if(window.mobilecheck())
-    {
+    if (BrowserDetector.isMobile) {
         allinput.placeholder = "Tìm kiếm"
     }
     this.$view = _({
         tag: 'singlepage',
         class: "pizo-list-realty",
-        child: [
-            {
-                class: 'absol-single-page-header',
-                child: [
-                    {
-                        tag: "span",
-                        class: "pizo-body-title-left",
-                        props: {
-                            innerHTML: "Quản lý pháp lý"
-                        }
-                    },
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-button",
-                        child: [
-                            {
-                                tag: "button",
-                                class: ["pizo-list-realty-button-quit","pizo-list-realty-button-element"],
-                                on: {
-                                    click: function (evt) {
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
-                                    }
-                                },
-                                child: [
-                                '<span>' + "Đóng" + '</span>'
-                                ]
-                            },
-                        ]
-                    },
-                    {
-                        tag:"div",
-                        class:"pizo-list-realty-page-allinput",
-                        child:[
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-page-allinput-container",
-                                child:[
-                                    allinput,
-                                    {
-                                        tag:"button",
-                                        class:"pizo-list-realty-page-allinput-search",
-                                        child:[
-                                            {
-                                                tag: 'i',
-                                                class: 'material-icons',
-                                                props: {
-                                                    innerHTML: 'search'
-                                                },
-                                            },
-                                        ]
-                                    },
-                                ]
-                            },
-                            {
-                                tag:"div",
-                                class:"pizo-list-realty-page-allinput-filter",
-                                on:{
-                                    click:function(event)
-                                    {
-                                        self.searchControl.show();
-                                    }
-                                },
-                                child:[
-                                    {
-                                        tag: 'filter-ico',
-                                    },
-                                    {
-                                        tag:"span",
-                                        class:"navbar-search__filter-text",
-                                        props:{
-                                            innerHTML:"Lọc"
-                                        }
-                                    }
-                                ]
-                            },
-                        ]
-                    },
-                    {
-                        tag: "div",
-                        class: "pizo-list-realty-page-number-line",
-                        child: [
-                            input,
-                            {
-                                tag: "span",
-                                class:
-                                    "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
-                                props: {
-                                    innerHTML: "Số dòng"
-                                }
-                            }
-                        ]
+        child: [{
+            class: 'absol-single-page-header',
+            child: [{
+                    tag: "span",
+                    class: "pizo-body-title-left",
+                    props: {
+                        innerHTML: "Quản lý pháp lý"
                     }
-                ]
-            },
-        ]
+                },
+                {
+                    tag: "div",
+                    class: "pizo-list-realty-button",
+                    child: [{
+                        tag: "button",
+                        class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
+                        on: {
+                            click: function(evt) {
+                                self.$view.selfRemove();
+                                var arr = self.parent.body.getAllChild();
+                                self.parent.body.activeFrame(arr[arr.length - 1]);
+                            }
+                        },
+                        child: [
+                            '<span>' + "Đóng" + '</span>'
+                        ]
+                    }, ]
+                },
+                {
+                    tag: "div",
+                    class: "pizo-list-realty-page-allinput",
+                    child: [{
+                            tag: "div",
+                            class: "pizo-list-realty-page-allinput-container",
+                            child: [
+                                allinput,
+                                {
+                                    tag: "button",
+                                    class: "pizo-list-realty-page-allinput-search",
+                                    child: [{
+                                        tag: 'i',
+                                        class: 'material-icons',
+                                        props: {
+                                            innerHTML: 'search'
+                                        },
+                                    }, ]
+                                },
+                            ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-page-allinput-filter",
+                            on: {
+                                click: function(event) {
+                                    self.searchControl.show();
+                                }
+                            },
+                            child: [{
+                                    tag: 'filter-ico',
+                                },
+                                {
+                                    tag: "span",
+                                    class: "navbar-search__filter-text",
+                                    props: {
+                                        innerHTML: "Lọc"
+                                    }
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    tag: "div",
+                    class: "pizo-list-realty-page-number-line",
+                    child: [
+                        input,
+                        {
+                            tag: "span",
+                            class: "freebirdFormeditorViewAssessmentWidgetsPointsLabel",
+                            props: {
+                                innerHTML: "Số dòng"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }, ]
     });
     var tabContainer = _({
-        tag:"div",
-        class:["pizo-list-realty-main-result-control","drag-zone-bg"],
-        child:[
-        ]
+        tag: "div",
+        class: ["pizo-list-realty-main-result-control", "drag-zone-bg"],
+        child: []
     })
 
-    if(moduleDatabase.checkPermission[0].indexOf(38)!==-1)
-    {
-        $("div.pizo-list-realty-button",this.$view).appendChild(_({
+    if (moduleDatabase.checkPermission[0].indexOf(38) !== -1) {
+        $("div.pizo-list-realty-button", this.$view).appendChild(_({
             tag: "button",
-            class: ["pizo-list-realty-button-add","pizo-list-realty-button-element"],
+            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
             on: {
-                click: function (evt) {
+                click: function(evt) {
                     self.add();
                 }
             },
             child: [
-            '<span>' + "Thêm" + '</span>'
+                '<span>' + "Thêm" + '</span>'
             ]
         }));
     }
-    var docTypeMemuProps,token,functionX;
+    var docTypeMemuProps, token, functionX;
     token = "showMenu";
-    var functionClickMore = function(event, me, index, parent, data, row)
-    {
-       
+    var functionClickMore = function(event, me, index, parent, data, row) {
+
         if (token == absol.QuickMenu._session) {
             token = "showMenu";
             return;
@@ -195,143 +180,132 @@ ListJuridical.prototype.getView = function () {
         docTypeMemuProps = {
             items: []
         };
-        if(moduleDatabase.checkPermission[0].indexOf(39)!==-1)
-        {
+        if (moduleDatabase.checkPermission[0].indexOf(39) !== -1) {
             docTypeMemuProps.items.push({
                 text: 'Sửa',
                 icon: 'span.mdi.mdi-text-short',
-                value:1,
+                value: 1,
             });
         }
-        if(moduleDatabase.checkPermission[0].indexOf(40)!==-1)
-        {
+        if (moduleDatabase.checkPermission[0].indexOf(40) !== -1) {
             docTypeMemuProps.items.push({
                 text: 'Xóa',
                 icon: 'span.mdi.mdi-text',
-                value:2,
+                value: 2,
             });
         }
-        token = absol.QuickMenu.show(me, docTypeMemuProps, [3,4], function (menuItem) {
-            switch(menuItem.value)
-            {
+        token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function(menuItem) {
+            switch (menuItem.value) {
                 case 1:
-                    self.edit(data,parent,index);
+                    self.edit(data, parent, index);
                     break;
                 case 2:
-                    self.delete(data.original,parent,index);
+                    self.delete(data.original, parent, index);
                     break;
             }
         });
 
-        functionX = function(token){
-            return function(){
-                var x = function(event){
+        functionX = function(token) {
+            return function() {
+                var x = function(event) {
                     absol.QuickMenu.close(token);
-                    document.body.removeEventListener("click",x);
+                    document.body.removeEventListener("click", x);
                 }
-                document.body.addEventListener("click",x)
+                document.body.addEventListener("click", x)
             }
         }(token);
 
-        setTimeout(functionX,10)
+        setTimeout(functionX, 10)
     }
 
     var juridicalModule = moduleDatabase.getModule("juridicals");
-        juridicalModule.load().then(function(value){
-            var header = [
-            { type: "increase", value: "#",style:{minWidth:"50px",width:"50px"}}, 
-            {value:'MS',sort:true,style:{minWidth:"50px",width:"50px"}}, 
-            {value:'Tên',sort:true,style:{minWidth:"unset"}},
-            {type:"detail", functionClickAll:functionClickMore,icon:"",dragElement : false,style:{width:"30px"}}];
-            self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
-            tabContainer.addChild(self.mTable);
+    juridicalModule.load().then(function(value) {
+        var header = [
+            { type: "increase", value: "#", style: { minWidth: "50px", width: "50px" } },
+            { value: 'MS', sort: true, style: { minWidth: "50px", width: "50px" } },
+            { value: 'Tên', sort: true, style: { minWidth: "unset" } },
+            { type: "detail", functionClickAll: functionClickMore, icon: "", dragElement: false, style: { width: "30px" } }
+        ];
+        self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);
+        tabContainer.addChild(self.mTable);
     });
 
     this.searchControl = this.searchControlContent();
 
     this.$view.addChild(_({
-            tag:"div",
-            class:["pizo-list-realty-main"],
-            child:[
-                this.searchControl,
-                tabContainer
-            ]   
-        })
-        );
+        tag: "div",
+        class: ["pizo-list-realty-main"],
+        child: [
+            this.searchControl,
+            tabContainer
+        ]
+    }));
     return this.$view;
 }
 
-ListJuridical.prototype.formatDataRow = function(data)
-{
+ListJuridical.prototype.formatDataRow = function(data) {
     var temp = [];
     var check = [];
     var k = 0;
-    for(var i=0;i<data.length;i++)
-    {
+    for (var i = 0; i < data.length; i++) {
 
         var result = this.getDataRow(data[i]);
-        if(check[data[i].parent_id]!==undefined)
-        {
-            if(check[data[i].parent_id].child === undefined)
-            check[data[i].parent_id].child = [];
+        if (check[data[i].parent_id] !== undefined) {
+            if (check[data[i].parent_id].child === undefined)
+                check[data[i].parent_id].child = [];
             check[data[i].parent_id].child.push(result);
-        }
-        else
-        temp[k++] = result;
+        } else
+            temp[k++] = result;
         check[data[i].id] = result;
     }
     return temp;
 }
 
-ListJuridical.prototype.getDataRow = function(data)
-{
+ListJuridical.prototype.getDataRow = function(data) {
     var result = [
         {},
         data.id,
         data.name,
         {}
-        ]
-        result.original = data;
+    ]
+    result.original = data;
     return result;
 }
 
-ListJuridical.prototype.formatDataList = function(data){
-    var temp = [{text:"Tất cả",value:0}];
-    for(var i = 0;i<data.length;i++)
-    {
-        temp[i+1] = {text:data[i].name,value:data[i].id};
+ListJuridical.prototype.formatDataList = function(data) {
+    var temp = [{ text: "Tất cả", value: 0 }];
+    for (var i = 0; i < data.length; i++) {
+        temp[i + 1] = { text: data[i].name, value: data[i].id };
     }
     return temp;
 }
 
-ListJuridical.prototype.searchControlContent = function(){  
+ListJuridical.prototype.searchControlContent = function() {
     var content = _({
-        tag:"div"
+        tag: "div"
     })
     var temp = _({
-        tag:"div",
-        style:{
-            display:"none"
+        tag: "div",
+        style: {
+            display: "none"
         },
-        child:[
+        child: [
             content
         ]
     })
-    temp.show = function()
-    {
-        if(!temp.classList.contains("showTranslate"))
-        temp.classList.add("showTranslate");
+    temp.show = function() {
+        if (!temp.classList.contains("showTranslate"))
+            temp.classList.add("showTranslate");
     }
-    temp.hide = function()
-    {
-        if(!content.classList.contains("hideTranslate"))
+    temp.hide = function() {
+        if (!content.classList.contains("hideTranslate"))
             content.classList.add("hideTranslate");
-        var eventEnd = function(){
-            if(temp.classList.contains("showTranslate"))
-            temp.classList.remove("showTranslate");
+        var eventEnd = function() {
+            if (temp.classList.contains("showTranslate"))
+                temp.classList.remove("showTranslate");
             content.classList.remove("hideTranslate");
-            content.removeEventListener("webkitTransitionEnd",eventEnd);
-            content.removeEventListener("transitionend",eventEnd);
+            content.removeEventListener("webkitTransitionEnd", eventEnd);
+            content.removeEventListener("transitionend", eventEnd);
         };
         // Code for Safari 3.1 to 6.0
         content.addEventListener("webkitTransitionEnd", eventEnd);
@@ -339,132 +313,124 @@ ListJuridical.prototype.searchControlContent = function(){
         // Standard syntax
         content.addEventListener("transitionend", eventEnd);
     }
-    temp.apply = function()
-    {
+    temp.apply = function() {
 
     }
-    temp.reset = function()
-    {
+    temp.reset = function() {
         content.timestart = new Date();
         content.timeend = new Date();
-       
+
     }
 
-  
+
     return temp;
 }
 
-ListJuridical.prototype.getDataCurrent = function()
-{
+ListJuridical.prototype.getDataCurrent = function() {
     return this.getDataChild(this.mTable.data);
 }
 
 
 
-ListJuridical.prototype.getDataChild = function(arr)
-{
+ListJuridical.prototype.getDataChild = function(arr) {
     var self = this;
     var result = [];
-    for(var i = 0;i<arr.length;i++)
-    {
+    for (var i = 0; i < arr.length; i++) {
         result.push(arr[i].original);
-        if(arr[i].child.length!==0)
-        result = result.concat(self.getDataChild(arr[i].child));
+        if (arr[i].child.length !== 0)
+            result = result.concat(self.getDataChild(arr[i].child));
     }
     return result;
 }
 
-ListJuridical.prototype.add = function(parent_id = 0,row)
-{
+ListJuridical.prototype.add = function(parent_id = 0, row) {
     var self = this;
-    var mNewJuridical = new NewJuridical(undefined,parent_id);
+    var mNewJuridical = new NewJuridical(undefined, parent_id);
     mNewJuridical.attach(self.parent);
     var frameview = mNewJuridical.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.addDB(mNewJuridical,row);
+    self.addDB(mNewJuridical, row);
 }
 
-ListJuridical.prototype.addDB = function(mNewJuridical,row ){
+ListJuridical.prototype.addDB = function(mNewJuridical, row) {
     var self = this;
-    mNewJuridical.promiseAddDB.then(function(value){
-        moduleDatabase.getModule("juridicals").add(value).then(function(result){
-            self.addView(result,row);
+    mNewJuridical.promiseAddDB.then(function(value) {
+        moduleDatabase.getModule("juridicals").add(value).then(function(result) {
+            self.addView(result, row);
         })
         mNewJuridical.promiseAddDB = undefined;
-        setTimeout(function(){
-            if(mNewJuridical.promiseAddDB!==undefined)
-            self.addDB(mNewJuridical);
-        },10);
+        setTimeout(function() {
+            if (mNewJuridical.promiseAddDB !== undefined)
+                self.addDB(mNewJuridical);
+        }, 10);
     })
 }
 
-ListJuridical.prototype.addView = function(value,parent){
+ListJuridical.prototype.addView = function(value, parent) {
     var result = this.getDataRow(value);
-    
+
     var element = this.mTable;
     element.insertRow(result);
 }
 
-ListJuridical.prototype.edit = function(data,parent,index)
-{
+ListJuridical.prototype.edit = function(data, parent, index) {
     var self = this;
     var mNewJuridical = new NewJuridical(data);
     mNewJuridical.attach(self.parent);
     var frameview = mNewJuridical.getView();
     self.parent.body.addChild(frameview);
     self.parent.body.activeFrame(frameview);
-    self.editDB(mNewJuridical,data,parent,index);
+    self.editDB(mNewJuridical, data, parent, index);
 }
 
-ListJuridical.prototype.editDB = function(mNewJuridical,data,parent,index){
+ListJuridical.prototype.editDB = function(mNewJuridical, data, parent, index) {
     var self = this;
-    mNewJuridical.promiseEditDB.then(function(value){
+    mNewJuridical.promiseEditDB.then(function(value) {
         value.id = data.original.id;
-        moduleDatabase.getModule("juridicals").update(value).then(function(result){
-            self.editView(value,data,parent,index);
+        moduleDatabase.getModule("juridicals").update(value).then(function(result) {
+            self.editView(value, data, parent, index);
         })
         mNewJuridical.promiseEditDB = undefined;
-        setTimeout(function(){
-        if(mNewJuridical.promiseEditDB!==undefined)
-            self.editDB(mNewJuridical,data,parent,index);
-        },10);
+        setTimeout(function() {
+            if (mNewJuridical.promiseEditDB !== undefined)
+                self.editDB(mNewJuridical, data, parent, index);
+        }, 10);
     })
 }
 
-ListJuridical.prototype.editView = function(value,data,parent,index){
+ListJuridical.prototype.editView = function(value, data, parent, index) {
     var data = this.getDataRow(value);
 
-    var indexOF = index,element = parent;
-    
-    element.updateRow(data,indexOF,true);
+    var indexOF = index,
+        element = parent;
+
+    element.updateRow(data, indexOF, true);
 }
 
-ListJuridical.prototype.delete = function(data,parent,index)
-{   
+ListJuridical.prototype.delete = function(data, parent, index) {
     var self = this;
-    var deleteItem = deleteQuestion("Xoá danh mục","Bạn có chắc muốn xóa :"+data.name);
+    var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.name);
     this.$view.addChild(deleteItem);
-    deleteItem.promiseComfirm.then(function(){
-        self.deleteDB(data,parent,index);
+    deleteItem.promiseComfirm.then(function() {
+        self.deleteDB(data, parent, index);
     })
 }
 
-ListJuridical.prototype.deleteView = function(parent,index){
+ListJuridical.prototype.deleteView = function(parent, index) {
     var self = this;
     var bodyTable = parent.bodyTable;
-    parent.dropRow(index).then(function(){
-    });
+    parent.dropRow(index).then(function() {});
 }
 
-ListJuridical.prototype.deleteDB = function(data,parent,index){
+ListJuridical.prototype.deleteDB = function(data, parent, index) {
     var self = this;
-    moduleDatabase.getModule("juridicals").delete({id:data.id}).then(function(value){
-        self.deleteView(parent,index);
+    moduleDatabase.getModule("juridicals").delete({ id: data.id }).then(function(value) {
+        self.deleteView(parent, index);
     })
 }
 
-ListJuridical.prototype.refresh = function () {
+ListJuridical.prototype.refresh = function() {
     var data;
     var editor = this.getContext(R.LAYOUT_EDITOR);
     if (editor) data = editor.getData();
@@ -472,7 +438,7 @@ ListJuridical.prototype.refresh = function () {
         this.setData(data);
 };
 
-ListJuridical.prototype.setData = function (data) {
+ListJuridical.prototype.setData = function(data) {
     this.data = data;
     this.data.tracking = "OK";
     this.dataFlushed = false;
@@ -480,7 +446,7 @@ ListJuridical.prototype.setData = function (data) {
         this.flushDataToView();
 };
 
-ListJuridical.prototype.flushDataToView = function () {
+ListJuridical.prototype.flushDataToView = function() {
     if (this.dataFlushed) return;
     this.dataFlushed = true;
     //TODO: remove older view
@@ -495,7 +461,7 @@ ListJuridical.prototype.flushDataToView = function () {
     }
 };
 
-ListJuridical.prototype.start = function () {
+ListJuridical.prototype.start = function() {
 
 }
 

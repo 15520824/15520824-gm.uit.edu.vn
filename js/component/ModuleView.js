@@ -7,6 +7,10 @@ import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
 import { insertAfter, isNumeric } from './FormatFunction';
 import Svg from 'absol/src/HTML5/Svg';
+import BrowserDetector from 'absol/src/Detector/BrowserDetector';
+
+BrowserDetector.isMobile
+
 
 Svg.ShareInstance._;
 Svg.ShareInstance.$;
@@ -688,7 +692,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                 }
                 scrollParent.addEventListener("scroll", functionScrollTemp);
             }
-            if (window.mobilecheck()) {
+            if (BrowserDetector.isMobile) {
                 var tempLimit = _({
                     tag: "div",
                     child: [{
@@ -733,7 +737,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         }.bind(this))
     }
     result.updatePagination = function(number = result.tempIndexRow, isRedraw = true) {
-        if (window.mobilecheck()) {
+        if (BrowserDetector.isMobile) {
             result.tempIndexRow = indexRow;
             if (isRedraw) {
                 result.updateTable(undefined, undefined, undefined, undefined, undefined, false);
@@ -1330,7 +1334,7 @@ tableView.prototype.getCellHeader = function(header, i) {
         }
     }(i) : undefined;
 
-    if (window.mobilecheck()) {
+    if (BrowserDetector.isMobile) {
         on["touchstart"] = mousedown;
         on["touchend"] = mouseup;
         on["touchmove"] = mousemove;
@@ -2894,7 +2898,7 @@ tableView.prototype.getCell = function(dataOrigin, i, j, k, checkSpan = [], row,
             delete element.elementParent
         }(event, cell, result)
     } : undefined;
-    if (window.mobilecheck()) {
+    if (BrowserDetector.isMobile) {
         on["touchstart"] = mousedown;
         on["touchend"] = mouseup;
     } else {

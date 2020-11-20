@@ -18,6 +18,7 @@ import {
     getGMT
 } from '../component/FormatFunction';
 import moduleDatabase from '../component/ModuleDatabase';
+import BrowserDetector from 'absol/src/Detector/BrowserDetector';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -82,7 +83,7 @@ ListRealty.prototype.getView = function() {
             placeholder: "Tìm theo mã, tên, số điện thoại, địa chỉ bất động sản"
         }
     });
-    if (window.mobilecheck()) {
+    if (BrowserDetector.isMobile) {
         allinput.placeholder = "Tìm bất động sản"
     }
     var saveButton, callAgainButton, mergeButton, viewMapButton, confirmButton, cancelConfirmButton;

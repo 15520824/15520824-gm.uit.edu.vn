@@ -10,6 +10,7 @@ import moduleDatabase from '../component/ModuleDatabase';
 import { tableView, deleteQuestion } from '../component/ModuleView';
 
 import NewDistrict from '../component/NewDistrict';
+import BrowserDetector from 'absol/src/Detector/BrowserDetector';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -55,7 +56,7 @@ ListDistrict.prototype.getView = function() {
             placeholder: "Tìm kiếm"
         }
     });
-    if (window.mobilecheck()) {
+    if (BrowserDetector.isMobile) {
         allinput.placeholder = "Tìm kiếm"
     }
     this.$view = _({

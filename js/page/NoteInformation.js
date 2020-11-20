@@ -9,7 +9,7 @@ import { consoleWKT, loaddingWheel, getGMT, formatDate, consoleWKTLine } from '.
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
 import { confirmQuestion } from '../component/ModuleView';
-
+import BrowserDetector from 'absol/src/Detector/BrowserDetector';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -65,7 +65,7 @@ NoteInformation.prototype.getView = function() {
             placeholder: "Tìm theo địa chỉ"
         }
     });
-    if (window.mobilecheck()) {
+    if (BrowserDetector.isMobile) {
         allinput.placeholder = "Tìm theo địa chỉ"
     }
 
