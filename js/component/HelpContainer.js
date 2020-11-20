@@ -278,6 +278,12 @@ HelpContainer.prototype.functionClickDetail = function(event, me, index, parent,
             arr.classList.remove("choice-event-category");
     }
     row.classList.add("choice-event-category");
+    var text = window.location.href;
+    if (window.addHref !== undefined) {
+        text = window.location.href.replace(window.addHref, "");
+    }
+    window.addHref = data.original.alias;
+    history.replaceState({}, "", text + window.addHref);
     this.titleLabel.innerHTML = data.original.title;
     this.containerView.innerHTML = data.original.fulltext;
 }
@@ -293,6 +299,9 @@ HelpContainer.prototype.formatDataRow = function(data) {
             value: data[i].title,
             element: _({
                 tag: "div",
+                props: {
+                    id: data[i].id
+                },
                 child: [{
                     tag: "span",
                     class: "title-label",
