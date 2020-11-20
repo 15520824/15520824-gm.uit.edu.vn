@@ -33,6 +33,16 @@ function HelpContainer() {
         this.$view.mTable.addInputSearch(input);
         this.$view.mTable.headerTable.style.display = "none";
         mTable.parentNode.replaceChild(this.$view.mTable, mTable);
+        self.$view.checkAlias = moduleDatabase.getModule("helps").getLibary("alias");
+        if (window.exttask) {
+            if (self.$view.checkAlias[window.exttask]) {
+                setTimeout(function() {
+                    var temp = this.$view.mTable.getElementById("x86" + self.$view.checkAlias[window.exttask].id);
+                    if (temp)
+                        temp.click();
+                }.bind(this), 80);
+            }
+        }
         this.$view.firstChildClick();
     }.bind(this));
 
@@ -301,7 +311,7 @@ HelpContainer.prototype.formatDataRow = function(data) {
             element: _({
                 tag: "div",
                 props: {
-                    id: data[i].id
+                    id: "x86" + data[i].id
                 },
                 child: [{
                     tag: "span",
