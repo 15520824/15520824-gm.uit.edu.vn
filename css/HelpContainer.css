@@ -300,6 +300,7 @@ li.b-controlButtons__item {
 .js-stools-container-bar {
     display: flex;
     flex-shrink: 0;
+    position: sticky;
 }
 
 .header-display-visible .container-sortTable {

@@ -193,7 +193,6 @@ function EditHelpContainer() {
                                                                     on: {
                                                                         input: function(event) {
                                                                             var parent = this.parentNode.parentNode;
-
                                                                             if (this.value == "") {
                                                                                 if (!parent.classList.contains("hasErrorElement"))
                                                                                     parent.classList.add("hasErrorElement");
