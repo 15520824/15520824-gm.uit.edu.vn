@@ -742,7 +742,9 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
         indexOF = parent.changeParent(index, element);
         indexTemp.parentDetail = element;
         indexTemp.indexDetail = indexOF;
-        indexTemp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+        setTimeout(function() {
+            indexTemp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+        }, 100)
     }
     var temp = element.updateRow(data, indexOF, true);
 
