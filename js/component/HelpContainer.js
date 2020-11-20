@@ -24,13 +24,14 @@ function HelpContainer() {
         class: "input-search-list",
         props: {
             type: "text",
-            placeholder: "Search"
+            placeholder: "Tìm kiếm"
         }
     });
     moduleDatabase.getModule("helps").load().then(function(value) {
         var header = [{ value: "Title", sort: true, functionClickAll: this.$view.functionClickDetail.bind(this.$view), style: { minWidth: "unset !important" } }];
         this.$view.mTable = new tableView(header, this.$view.formatDataRow(value), false, true, 0);
         this.$view.mTable.addInputSearch(input);
+        this.$view.mTable.headerTable.style.display = "none";
         mTable.parentNode.replaceChild(this.$view.mTable, mTable);
         this.$view.firstChildClick();
     }.bind(this));
@@ -52,7 +53,7 @@ function HelpContainer() {
                             tag: "div",
                             class: "absol-tabbar-button-text",
                             props: {
-                                innerHTML: "Menu"
+                                innerHTML: "Danh mục"
                             }
                         }]
                     },
@@ -175,7 +176,7 @@ function HelpContainer() {
                                                 tag: "span",
                                                 class: "b-controlButtons__link_text",
                                                 props: {
-                                                    innerHTML: " Previous page"
+                                                    innerHTML: " Trang trước"
                                                 }
                                             }
                                         ]
@@ -200,7 +201,7 @@ function HelpContainer() {
                                                 tag: "span",
                                                 class: "b-controlButtons__link_text",
                                                 props: {
-                                                    innerHTML: " Next page"
+                                                    innerHTML: " Trang tiếp theo"
                                                 }
                                             },
                                             {
@@ -231,7 +232,7 @@ function HelpContainer() {
                                                 tag: "span",
                                                 class: "b-controlButtons__link_text",
                                                 props: {
-                                                    innerHTML: "Print"
+                                                    innerHTML: "In"
                                                 }
                                             }
                                         ]

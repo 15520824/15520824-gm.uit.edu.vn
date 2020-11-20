@@ -10,12 +10,6 @@
 
 .b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before {}
 
-.b-workZone__content.m-workZone__content__nav .absol-tabbar-button:hover {
-    background-color: #b0bec5;
-    color: #ffffff;
-    cursor: pointer;
-}
-
 .b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before {
     content: "list";
 }
