@@ -419,7 +419,8 @@ li.b-controlButtons__item {
     border: #d3d3d3 1px dotted;
 }
 
-.b-workZone__layout tr {
+.b-workZone__layout tr,
+.b-workZone__layout td {
     display: table-row;
     vertical-align: inherit;
     border: grey;
