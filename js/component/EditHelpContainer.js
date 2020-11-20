@@ -730,7 +730,7 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
     if (isChangeView === true) {
         var element;
         if (value.parent_id == 0)
-            element = parent.bodyTable.parentNode;
+            element = parent.realTable.parentNode;
         else
             for (var i = 0; i < parent.bodyTable.childNodes.length; i++) {
                 if (parent.bodyTable.childNodes[i].data.original.id == value.parent_id) {
@@ -738,9 +738,14 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
                     break;
                 }
             }
+        var indexTemp = parent.childrenNodes[index];
         parent.changeParent(index, element);
+        indexTemp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+        indexTemp.childNodes[1].click();
+        indexOF = indexTemp.indexDetail;
     }
     var temp = element.updateRow(data, indexOF, true);
+
     this.listParent.updateItemList();
     return temp;
 }
