@@ -37,7 +37,8 @@ function HelpContainer() {
         if (window.exttask) {
             if (self.$view.checkAlias[window.exttask]) {
                 setTimeout(function() {
-                    var temp = this.$view.mTable.getElementById("x86" + self.$view.checkAlias[window.exttask].id);
+                    var temp = document.getElementById("x86" + self.$view.checkAlias[window.exttask].id);
+                    window.addHref = window.exttask;
                     if (temp)
                         temp.click();
                 }.bind(this), 80);
