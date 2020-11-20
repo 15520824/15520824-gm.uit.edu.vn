@@ -741,7 +741,7 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
         var indexTemp = parent.childrenNodes[index];
         parent.changeParent(index, element);
         indexTemp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-        indexTemp.childNodes[1].click();
+        this.saveDataCurrent();
         indexOF = indexTemp.indexDetail;
     }
     var temp = element.updateRow(data, indexOF, true);
