@@ -1,7 +1,6 @@
 import FormClass from './jsform';
 import '../encode';
 var moduleDatabase = new ModuleDatabase();
-console.log(moduleDatabase)
 
 function ModuleDatabase() {
     this.hostDatabase = "https://lab.daithangminh.vn/home_co/pizo/php/template/";
