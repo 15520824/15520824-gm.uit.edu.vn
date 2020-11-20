@@ -24,6 +24,7 @@ function DataStructure(hostDatabase, name, listFilePHP = ["load.php", "add.php",
     this.phpDeleter = hostDatabase + listFilePHP[3];
     var nameTemp = name;
     var self = this;
+    self.prefix = [];
     Object.defineProperty(this, "name", {
         get() {
             return nameTemp;
