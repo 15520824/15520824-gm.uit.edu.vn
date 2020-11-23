@@ -257,3 +257,11 @@ table.sortTableClone th {
 .pizo-new-realty-location-detail-row-label-important {
     color: #d93025;
 }
+
+.cke_button_label.cke_button__linkdb_label{
+    display: block;
+}
+
+.cke_button_label.cke_button__note_label{
+    display: block;
+}

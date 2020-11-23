@@ -2508,6 +2508,15 @@ tableView.prototype.getRow = function(data) {
             return;
         return parent.updateRow(data, index);
     }
+    
+    temp.getParentNode = function()
+    {
+        var parent = temp.childNodes[0].getParentNode();
+        var index = parent.childrenNodes.indexOf(this);
+        if (index == -1)
+            return;
+        return parent;
+    }
 
     return temp;
 }
@@ -3230,7 +3239,9 @@ tableView.prototype.insertRow = function(data, checkMust = false) {
     }
     if (checkChild === true || checkMust === true) {
         if (result.checkIcon !== undefined)
+        {
             result.checkIcon();
+        }
     }
     if (row.childrenNodes.length !== 0)
         row.checkIcon();
@@ -3413,11 +3424,13 @@ tableView.prototype.updateRow = function(data, index, checkMust = false) {
         result.checkMargin();
 
     //    result.checkDataUpdate(row);
-    if (temp.classList.contains("more-child")) {
-        row.classList.add("more-child");
-    } else {
-        row.classList.remove("more-child");
-    }
+    setTimeout(function(){
+        if (temp.classList.contains("more-child")) {
+            row.classList.add("more-child");
+        } else {
+            row.classList.remove("more-child");
+        }
+    },100)
     result.realTable.parentNode.resetHash();
     // result.realTable.parentNode.updateHash(row);
     return row;
@@ -3628,7 +3641,7 @@ tableView.prototype.changeRowChildElement = function(current) {
 tableView.prototype.dropRowChild = function(element) {
     if (element !== undefined && element.parentNode !== undefined)
         element.parentNode.removeChild(element);
-    if (element.childrenNodes.length !== 0)
+    if (element !== undefined && element.childrenNodes.length !== 0)
         element.dropRowChildElement()
 }
 

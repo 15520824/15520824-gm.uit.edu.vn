@@ -322,9 +322,7 @@ Object.defineProperties(EditHelpContainer.prototype, Object.getOwnPropertyDescri
 EditHelpContainer.prototype.constructor = EditHelpContainer;
 
 EditHelpContainer.prototype.functionClickMore = function(event, me, index, parent, data, row) {
-
     var self = this;
-
     var docTypeMemuProps = {
         items: [{
                 text: 'Thêm',
@@ -346,12 +344,27 @@ EditHelpContainer.prototype.functionClickMore = function(event, me, index, paren
     var token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function(menuItem) {
         switch (menuItem.value) {
             case 0:
+                if(row.parentNode == null)
+                {
+                    for(var i = 0;i<parent.childrenNodes.length;i++)
+                    {
+                        if(row.data == parent.childrenNodes[i].data)
+                        {
+                            row = parent.childrenNodes[i];
+                            break;
+                        }
+                    }
+                }
                 self.add(row.data.original.id, row);
                 break;
                 // case 1:
                 //     self.edit(data,parent,index);
                 //     break;
             case 2:
+                if(parent.parentNode == null)
+                {
+                    parent = row.getParentNode();
+                }
                 self.delete(row.data.original, parent, index);
                 break;
         }
@@ -379,7 +392,6 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
     row.indexDetail = index;
     row.parentDetail = parent;
     this.rowSelected = row;
-
     row.classList.add("choice-event-category");
     this.setDataTitle(data.original);
     this.editor.setData(data.original.fulltext);
@@ -394,7 +406,7 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
     if (arr == row)
         return true;
     if (row === undefined)
-        isRemove = false
+        isRemove = false;
 
     var value = {
         title: this.name.value,
@@ -444,7 +456,6 @@ EditHelpContainer.prototype.resetChoice = function() {
 
 EditHelpContainer.prototype.functionChoice = function(event, me, index, parent, data, row) {
     var self = this;
-
     var arr = this.getElementsByClassName("choice-list-category");
     if (arr.length !== 0)
         arr = arr[0];
@@ -586,7 +597,8 @@ EditHelpContainer.prototype.getDataChild = function(arr) {
 }
 
 EditHelpContainer.prototype.default = function(parent_id = 0, ordering = -1) {
-    return {
+    var id;
+    var result = {
         active: 0,
         fulltext: "",
         ordering: ordering,
@@ -594,15 +606,28 @@ EditHelpContainer.prototype.default = function(parent_id = 0, ordering = -1) {
         title: "New Category",
         alias: ""
     }
+    Object.defineProperty(result, "id", {
+        get() {
+            return id;
+        },
+
+        set(value) {
+            id = value;
+        },
+
+        configurable: true
+    });
+    return result;
 }
 
-EditHelpContainer.prototype.add = function(parentid = 0, row = this.mTable) {
+EditHelpContainer.prototype.add = function(parentid, row = this.mTable) {
     var self = this;
     self.addView(undefined, row, parentid)
 }
 
 EditHelpContainer.prototype.addView = function(value, row, parent_id) {
     if (value == undefined) {
+        console.log(parent_id)
         value = this.default(parent_id, row.childrenNodes.length);
     }
     var checkElement = parseInt(value.active) ? _({
@@ -647,10 +672,11 @@ EditHelpContainer.prototype.addView = function(value, row, parent_id) {
 }
 
 EditHelpContainer.prototype.addDB = function(value) {
-    var self = this;
-    moduleDatabase.getModule("helps").add(value).then(function(result) {
+    var promiseAdd = moduleDatabase.getModule("helps").add(value);
+    promiseAdd.then(function(result) {
         value.id = result.id;
     });
+    return promiseAdd;
 }
 
 EditHelpContainer.prototype.edit = function(data, parent, index) {
@@ -783,9 +809,11 @@ EditHelpContainer.prototype.updateChild = function(child) {
     var promiseAll = [];
     var dataUpdate = {};
     var isUpdate;
+    var promiseParent;
     for (var i = 0; i < child.length; i++) {
         if (child[i].original.id == undefined) {
-            promiseAll.push(self.addDB(child[i].original));
+            promiseParent = self.addDB(child[i].original);
+            promiseAll.push(promiseParent);
         } else {
             isUpdate = false;
             dataUpdate.id = child[i].original.id;
@@ -827,7 +855,24 @@ EditHelpContainer.prototype.updateChild = function(child) {
         }
 
         if (child[i].child.length !== 0)
-            promiseAll.concat(this.updateChild(child[i].child));
+        {
+            if(promiseParent){
+                var x = new Promise(function(index,resolve,reject){
+                    promiseParent.then(function(value){
+                        for(var j = 0;j<child[index].child.length;j++)
+                        {
+                            child[index].child[j].original.parent_id = value.id;
+                        }
+                        promiseAll = promiseAll.concat(this.updateChild(child[index].child));
+                        resolve()
+                    }.bind(this))
+                }.bind(this,i))
+                promiseAll.push(x);
+            }else
+            {
+                promiseAll = promiseAll.concat(this.updateChild(child[i].child));
+            }
+        }
     }
     return promiseAll;
 }
@@ -868,10 +913,30 @@ EditHelpContainer.prototype.setDataTitle = function(data) {
     this.active.checked = parseInt(data.active);
 }
 
+EditHelpContainer.prototype.addPromisePush = function(data){
+    var result = [];
+    var dataOriginal = data.original;
+    if(dataOriginal&&dataOriginal.id)
+    {
+        result.push(moduleDatabase.getModule("helps").delete({ id: dataOriginal.id }));
+    }
+    if(data.child&&data.child.length>0)
+    {
+        for(var i = 0;i<data.child.length;i++)
+        {
+            result = result.concat(this.addPromisePush(data.child[i]));
+        }
+    }
+    return result;
+}
+
 EditHelpContainer.prototype.deleteDB = function(data, parent, index) {
     var self = this;
-    if (data.id)
-        moduleDatabase.getModule("helps").delete({ id: data.id }).then(function(value) {
+    var row = parent.childrenNodes[index];
+    var promiseAll = this.addPromisePush(row.data);
+    
+    if (promiseAll.length>0)
+        Promise.all(promiseAll).then(function(value) {
             self.deleteView(parent, index);
         })
     else
@@ -904,6 +969,15 @@ EditHelpContainer.prototype.itemEdit = function() {
                     self.saveDataCurrent();
                 });
                 self.editor.addCommand("comand_link_direction", {
+                    exec: function(edt) {
+                        var listLink = self.listLink();
+                        self.appendChild(listLink);
+                        listLink.promiseSelectList.then(function(value) {
+                            self.editor.insertHtml("<a id=x86" + value.data.original.id + " href='./'>" + value.data.original.title + "</a>");
+                        })
+                    }
+                });
+                self.editor.addCommand("comand_note", {
                     exec: function(edt) {
                         var listLink = self.listLink();
                         self.appendChild(listLink);

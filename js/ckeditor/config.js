@@ -10,7 +10,7 @@
 
 CKEDITOR.editorConfig = function( config )
     {
-        config.extraPlugins = 'LinkDB';
+        config.extraPlugins = ['LinkDB',"Note"];
         // config.extraPlugins = ['Attach_Activity','Attach'];
         // config.extraPlugins = 'Attach';
         config.toolbar = 'MyToolbar';
@@ -23,7 +23,7 @@ CKEDITOR.editorConfig = function( config )
             '/',
             { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat' ] },
             { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
-            { name: 'links', items: [ 'Link', 'Unlink', 'Anchor','LinkDB' ] },
+            { name: 'links', items: [ 'Link', 'Unlink', 'Anchor','LinkDB', 'Note' ] },
             { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
             '/',
             { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
