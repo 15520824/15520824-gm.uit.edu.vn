@@ -37,7 +37,7 @@ ListHelp.prototype.getView = function() {
                     tag: "span",
                     class: "pizo-body-title-left",
                     props: {
-                        innerHTML: "Thêm Tỉnh/TP"
+                        innerHTML: "Chỉnh sửa trợ giúp"
                     }
                 },
                 {
@@ -48,9 +48,20 @@ ListHelp.prototype.getView = function() {
                             class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
                             on: {
                                 click: function(evt) {
-                                    self.$view.selfRemove();
-                                    var arr = self.parent.body.getAllChild();
-                                    self.parent.body.activeFrame(arr[arr.length - 1]);
+                                    if (!containerHelp.closeEditPage()) {
+                                        self.$view.selfRemove();
+                                        var arr = self.parent.body.getAllChild();
+                                        self.parent.body.activeFrame(arr[arr.length - 1]);
+                                    } else {
+                                        var arr = self.$view.getElementsByClassName("pizo-list-realty-button-add");
+                                        for (var i = 0; i < arr.length; i++) {
+                                            arr[i].style.display = "";
+                                        }
+                                        var arr = self.$view.getElementsByClassName("pizo-list-realty-button-edit-page");
+                                        for (var i = 0; i < arr.length; i++) {
+                                            arr[i].style.display = "none";
+                                        }
+                                    }
                                 }
                             },
                             child: [
@@ -80,7 +91,42 @@ ListHelp.prototype.getView = function() {
                             child: [
                                 '<span>' + "Thêm" + '</span>'
                             ]
-                        }
+                        },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    containerHelp.editPage();
+                                    var arr = self.$view.getElementsByClassName("pizo-list-realty-button-add");
+                                    for (var i = 0; i < arr.length; i++) {
+                                        arr[i].style.display = "none";
+                                    }
+                                    var arr = self.$view.getElementsByClassName("pizo-list-realty-button-edit-page");
+                                    for (var i = 0; i < arr.length; i++) {
+                                        arr[i].style.display = "";
+                                    }
+                                }
+                            },
+                            child: [
+                                '<span>' + "Cài đặt trang" + '</span>'
+                            ]
+                        },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-edit-page", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
+                                    containerHelp.editContentAll();
+                                }
+                            },
+                            style: {
+                                display: "none"
+                            },
+                            child: [
+                                '<span>' + "Lưu" + '</span>'
+                            ]
+                        },
                     ]
                 }
             ]

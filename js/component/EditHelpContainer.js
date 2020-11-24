@@ -964,17 +964,30 @@ EditHelpContainer.prototype.itemEdit = function() {
                         var listLink = self.listLink();
                         self.appendChild(listLink);
                         listLink.promiseSelectList.then(function(value) {
-                            self.editor.insertHtml("<a id=x86" + value.data.original.id + " href='./'>" + value.data.original.title + "</a>");
+                            self.editor.insertHtml("<a id=x64" + value.data.original.id + " href='./'>" + value.data.original.title + "</a>");
                         })
                     }
                 });
                 self.editor.addCommand("comand_note", {
                     exec: function(edt) {
-                        var listLink = self.listLink();
-                        self.appendChild(listLink);
-                        listLink.promiseSelectList.then(function(value) {
-                            self.editor.insertHtml("<a id=x86" + value.data.original.id + " href='./'>" + value.data.original.title + "</a>");
-                        })
+                        var selected_text = self.editor.getSelection().getSelectedText();
+                        self.editor.insertHtml(`<div style="
+                        display: flex;
+                        border: 2px solid #f4eb49;
+                        padding: 5px;
+                        padding-bottom: 20px;
+                        "><i class="material-icons" style="
+                        display: flex;
+                        flex-shrink: 0;
+                        width: 40px;
+                        font-size: 30px;
+                        color: #f4eb49;
+                    ">sticky_note_2</i> <span style="
+                        flex-grow: 2;
+                        display: flex;
+                        padding: 5px;
+                    ">` + selected_text + `</span></div>
+                    `);
                     }
                 });
             }
@@ -1038,6 +1051,126 @@ EditHelpContainer.prototype.listLink = function() {
         self.modal.reject = reject;
     })
     return self.modal;
+}
+
+EditHelpContainer.prototype.editPage = function() {
+    var textIdHeader = ("text_" + Math.random() + Math.random()).replace(/\./g, '');
+    var textIdFooter = ("text_" + Math.random() + Math.random()).replace(/\./g, '');
+
+    var ckeditHeader = _({
+        tag: 'attachhook',
+        on: {
+            error: function() {
+                this.selfRemove();
+                self.editor = CKEDITOR.replace(textIdHeader);
+                // self.editor.on('doubleclick', function(evt) {
+                //     var element = evt.data.element;
+                //     if (element.is('a') && !element.getAttribute('_cke_realelement'))
+                //         evt.data.dialog = null;
+                // }, null, null, 10);
+                self.editor.addCommand("comand_link_direction", {
+                    exec: function(edt) {
+                        var listLink = self.listLink();
+                        self.appendChild(listLink);
+                        listLink.promiseSelectList.then(function(value) {
+                            self.editor.insertHtml("<a id=x86" + value.data.original.id + " href='./'>" + value.data.original.title + "</a>");
+                        })
+                    }
+                });
+                self.editor.addCommand("comand_note", {
+                    exec: function(edt) {
+
+                    }
+                });
+            }
+        }
+    });
+    var ckeditFooter = _({
+        tag: 'attachhook',
+        on: {
+            error: function() {
+                this.selfRemove();
+                self.editor = CKEDITOR.replace(textIdFooter);
+                // self.editor.on('doubleclick', function(evt) {
+                //     var element = evt.data.element;
+                //     if (element.is('a') && !element.getAttribute('_cke_realelement'))
+                //         evt.data.dialog = null;
+                // }, null, null, 10);
+                self.editor.addCommand("comand_link_direction", {
+                    exec: function(edt) {
+                        var listLink = self.listLink();
+                        self.appendChild(listLink);
+                        listLink.promiseSelectList.then(function(value) {
+                            self.editor.insertHtml("<a id=x86" + value.data.original.id + " href='./'>" + value.data.original.title + "</a>");
+                        })
+                    }
+                });
+                self.editor.addCommand("comand_note", {
+                    exec: function(edt) {
+
+                    }
+                });
+            }
+        }
+    });
+    var settingPage = _({
+        tag: "div",
+        class: "setting-page-container",
+        child: [{
+            tag: "div",
+            class: "setting-page-container-header",
+            child: [{
+                tag: "span",
+                class: "setting-page-container-header-label",
+                props: {
+                    innerHTML: "Header"
+                }
+            }, {
+                tag: "div",
+                class: "setting-page-container-header-editor",
+                child: [{
+                    tag: "div",
+                    props: {
+                        id: textIdHeader
+                    }
+                }]
+            }]
+        }, {
+            tag: "div",
+            class: "setting-page-container-footer",
+            child: [{
+                tag: "span",
+                class: "setting-page-container-footer-label",
+                props: {
+                    innerHTML: "Footer"
+                }
+            }, {
+                tag: "div",
+                class: "setting-page-container-footer-editor",
+                child: [{
+                    tag: "div",
+                    props: {
+                        id: textIdFooter
+                    }
+                }]
+            }]
+        }]
+    })
+    this.appendChild(settingPage);
+    this.settingPage = settingPage;
+}
+
+EditHelpContainer.prototype.saveHeaderFooter = function() {
+
+}
+
+EditHelpContainer.prototype.closeEditPage = function() {
+    if (this.settingPage) {
+        this.settingPage.selfRemove();
+        this.settingPage = undefined;
+        return true;
+    }
+    return false;
 }
 
 EditHelpContainer.prototype.refresh = function() {
