@@ -344,12 +344,9 @@ EditHelpContainer.prototype.functionClickMore = function(event, me, index, paren
     var token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function(menuItem) {
         switch (menuItem.value) {
             case 0:
-                if(row.parentNode == null)
-                {
-                    for(var i = 0;i<parent.childrenNodes.length;i++)
-                    {
-                        if(row.data == parent.childrenNodes[i].data)
-                        {
+                if (row.parentNode == null) {
+                    for (var i = 0; i < parent.childrenNodes.length; i++) {
+                        if (row.data == parent.childrenNodes[i].data) {
                             row = parent.childrenNodes[i];
                             break;
                         }
@@ -361,8 +358,7 @@ EditHelpContainer.prototype.functionClickMore = function(event, me, index, paren
                 //     self.edit(data,parent,index);
                 //     break;
             case 2:
-                if(parent.parentNode == null)
-                {
+                if (parent.parentNode == null) {
                     parent = row.getParentNode();
                 }
                 self.delete(row.data.original, parent, index);
@@ -438,6 +434,7 @@ EditHelpContainer.prototype.resetChoice = function() {
     if (arr.length !== 0) {
         this.saveDataCurrent();
         this.resetDataTitle();
+        arr[0].classList.remove("choice-event-category");
     }
     // var choice = this.getElementsByClassName("choice-event-category");
     // var mTable = this.mTable;
@@ -854,22 +851,19 @@ EditHelpContainer.prototype.updateChild = function(child) {
             }
         }
 
-        if (child[i].child.length !== 0)
-        {
-            if(promiseParent){
-                var x = new Promise(function(index,resolve,reject){
-                    promiseParent.then(function(value){
-                        for(var j = 0;j<child[index].child.length;j++)
-                        {
+        if (child[i].child.length !== 0) {
+            if (promiseParent) {
+                var x = new Promise(function(index, resolve, reject) {
+                    promiseParent.then(function(value) {
+                        for (var j = 0; j < child[index].child.length; j++) {
                             child[index].child[j].original.parent_id = value.id;
                         }
                         promiseAll = promiseAll.concat(this.updateChild(child[index].child));
                         resolve()
                     }.bind(this))
-                }.bind(this,i))
+                }.bind(this, i))
                 promiseAll.push(x);
-            }else
-            {
+            } else {
                 promiseAll = promiseAll.concat(this.updateChild(child[i].child));
             }
         }
@@ -913,17 +907,14 @@ EditHelpContainer.prototype.setDataTitle = function(data) {
     this.active.checked = parseInt(data.active);
 }
 
-EditHelpContainer.prototype.addPromisePush = function(data){
+EditHelpContainer.prototype.addPromisePush = function(data) {
     var result = [];
     var dataOriginal = data.original;
-    if(dataOriginal&&dataOriginal.id)
-    {
+    if (dataOriginal && dataOriginal.id) {
         result.push(moduleDatabase.getModule("helps").delete({ id: dataOriginal.id }));
     }
-    if(data.child&&data.child.length>0)
-    {
-        for(var i = 0;i<data.child.length;i++)
-        {
+    if (data.child && data.child.length > 0) {
+        for (var i = 0; i < data.child.length; i++) {
             result = result.concat(this.addPromisePush(data.child[i]));
         }
     }
@@ -934,8 +925,8 @@ EditHelpContainer.prototype.deleteDB = function(data, parent, index) {
     var self = this;
     var row = parent.childrenNodes[index];
     var promiseAll = this.addPromisePush(row.data);
-    
-    if (promiseAll.length>0)
+
+    if (promiseAll.length > 0)
         Promise.all(promiseAll).then(function(value) {
             self.deleteView(parent, index);
         })
