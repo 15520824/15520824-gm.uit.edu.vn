@@ -330,3 +330,7 @@ table.sortTableClone th {
 .setting-page-container .cke_bottom.cke_reset_all {
     flex-shrink: 0;
 }
+
+.b-article .b-article__headerLayout-edit {
+    color: #eeeeee;
+}

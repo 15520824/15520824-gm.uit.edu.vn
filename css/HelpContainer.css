@@ -222,8 +222,6 @@ li.b-controlButtons__item {
     display: flex;
     width: 100%;
     height: calc(100% - 5px);
-    align-items: stretch;
-    color: #eeeeee;
     padding: 0;
     position: relative;
     padding-top: 5px;
