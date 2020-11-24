@@ -63,6 +63,10 @@ function EditHelpContainer() {
         child: [{
             tag: "div",
             class: ["b-workZone__side", "m-workZone__side__nav"],
+            style: {
+                height: "calc(100% - 50px)",
+                top: "50px"
+            },
             child: [{
                 tag: "div",
                 class: ["b-workZone__content", "m-workZone__content__nav"],
