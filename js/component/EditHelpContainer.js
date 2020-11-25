@@ -310,7 +310,7 @@ function EditHelpContainer() {
         }]
     }))
     moduleDatabase.getModule("helps").load({ ORDERING: "parent_id , ordering" }).then(function(value) {
-        var header = [{ type: "dragzone", style: { width: "30px" } }, { value: "Title", sort: true, functionClickAll: self.$view.functionClickDetail.bind(self.$view), style: { minWidth: "unset !important" } }, "Publish", { type: "detail", functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
+        var header = [{ type: "dragzone", style: { width: "30px" } }, { value: "Title", sort: true, functionClickAll: self.$view.functionClickDetail.bind(self.$view), style: { minWidth: "unset !important" } }, { value: "Publish", style: { width: "67px" } }, { type: "detail", functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "", style: { width: "30px" } }];
         self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
         tabContainer.addChild(self.$view.mTable);
         updateTableFunction = self.$view.mTable.updateTable.bind(self.$view.mTable);
@@ -403,6 +403,7 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
     row.classList.add("choice-event-category");
     this.setDataTitle(data.original);
     this.editor.setData(data.original.fulltext);
+    this.editorRelated.setData(data.original.related);
     this.alias.dispatchEvent(new Event("input"));
 }
 
@@ -420,6 +421,7 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
         title: this.name.value,
         alias: this.alias.value,
         fulltext: this.editor.getData(),
+        related: this.editorRelated.getData(),
         active: this.active.checked ? 1 : 0,
         parent_id: this.listParent.value,
         id: this.idCurrent
@@ -492,7 +494,6 @@ EditHelpContainer.prototype.syncRow = function() {
 
 EditHelpContainer.prototype.formatDataRow = function(data) {
     var temp = [];
-    var checkID = [];
     var check = [];
     var checkElement;
     for (var i = 0; i < data.length; i++) {
@@ -708,10 +709,14 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
             data.original.isActive = true;
 
 
+
         if (value.fulltext !== undefined) {
             if (data.original.fulltext !== value.fulltext)
                 data.original.isFulltext = true;
-
+        }
+        if (value.related !== undefined) {
+            if (data.original.related !== value.related)
+                data.original.isRelated = true;
         }
         if (data.original.parent_id !== value.parent_id)
             data.original.isParent_id = true;
@@ -723,6 +728,8 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
 
     if (value.fulltext !== undefined)
         data.original.fulltext = value.fulltext;
+    if (value.related !== undefined)
+        data.original.related = value.related;
 
     if (data.original.parent_id != value.parent_id) {
         isChangeView = true;
@@ -860,6 +867,13 @@ EditHelpContainer.prototype.updateChild = function(child) {
                 dataUpdate.fulltext = child[i].original.fulltext;
                 child[i].original.isFulltext = false;
             }
+
+            if (child[i].original.isRelated === true) {
+                isUpdate = true;
+                dataUpdate.related = child[i].original.related;
+                child[i].original.isRelated = false;
+            }
+
             if (child[i].original.ordering != i) {
                 isUpdate = true;
                 dataUpdate.ordering = i;
@@ -917,6 +931,7 @@ EditHelpContainer.prototype.resetDataTitle = function(data) {
     this.listParent.value = 0;
     this.active.checked = false;
     this.editor.setData("");
+    this.editorRelated.setData("");
     this.idCurrent = undefined;
 }
 
