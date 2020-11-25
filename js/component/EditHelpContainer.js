@@ -300,7 +300,7 @@ function EditHelpContainer() {
             }]
         }]
     }))
-    moduleDatabase.getModule("helps").load().then(function(value) {
+    moduleDatabase.getModule("helps").load({ ORDERING: "parent_id , ordering" }).then(function(value) {
         var header = [{ type: "dragzone", style: { width: "30px" } }, { value: "Title", sort: true, functionClickAll: self.$view.functionClickDetail.bind(self.$view), style: { minWidth: "unset !important" } }, "Publish", { type: "detail", functionClickAll: self.$view.functionClickMore.bind(self.$view), icon: "" }];
         self.$view.mTable = new tableView(header, self.$view.formatDataRow(value), false, true, 1);
         tabContainer.addChild(self.$view.mTable);
@@ -813,6 +813,8 @@ EditHelpContainer.prototype.updateChild = function(child) {
     var promiseParent;
     for (var i = 0; i < child.length; i++) {
         if (child[i].original.id == undefined) {
+            if (child[i].original.ordering != i)
+                child[i].original.ordering = i;
             promiseParent = self.addDB(child[i].original);
             promiseAll.push(promiseParent);
         } else {
@@ -847,10 +849,12 @@ EditHelpContainer.prototype.updateChild = function(child) {
                 dataUpdate.fulltext = child[i].original.fulltext;
                 child[i].original.isFulltext = false;
             }
-
-            if (isUpdate || child[i].original.ordering != i) {
-                if (child[i].original.ordering != i)
-                    child[i].original.ordering = i;
+            if (child[i].original.ordering != i) {
+                isUpdate = true;
+                dataUpdate.ordering = i;
+                child[i].original.ordering = i;
+            }
+            if (isUpdate) {
                 promiseAll.push(moduleDatabase.getModule("helps").update(dataUpdate));
             }
         }

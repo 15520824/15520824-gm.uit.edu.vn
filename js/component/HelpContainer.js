@@ -27,7 +27,7 @@ function HelpContainer() {
             placeholder: "Tìm kiếm"
         }
     });
-    moduleDatabase.getModule("helps").load().then(function(value) {
+    moduleDatabase.getModule("helps").load({ ORDERING: "parent_id , ordering" }).then(function(value) {
         var header = [{ value: "Title", sort: true, functionClickAll: this.$view.functionClickDetail.bind(this.$view), style: { minWidth: "unset !important" } }];
         this.$view.mTable = new tableView(header, this.$view.formatDataRow(value), false, true, 0);
         this.$view.mTable.addInputSearch(input);
