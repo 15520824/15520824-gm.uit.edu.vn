@@ -1006,7 +1006,7 @@ EditHelpContainer.prototype.listLink = function() {
     var self = this;
 
     var header = [{ value: "Title", sort: true, functionClickAll: self.functionChoice.bind(self) }, { value: "Date", sort: true }, { value: "ID", sort: true }];
-    var mTable = new tableView(header, self.formatDataRowList(self.getDataCurrent()), false, false, 0);
+    var mTable = new tableView(header, self.formatDataRowList(self.getDataCurrent()), true, false, 0);
     mTable.style.width = "calc(100% - 20px)";
     mTable.style.marginLeft = "10px";
     var input = _({

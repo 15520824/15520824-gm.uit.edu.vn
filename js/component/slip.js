@@ -542,8 +542,7 @@ Slip.prototype = {
                 this.target.node.style[transformJSPropertyName] = 'translate(0,' + move.y + 'px) ' + hwTopLayerMagicStyle + this.target.baseTransform.value;
                 this.target.node.moveY = move;
                 var height = this.target.height;
-                console.log(this.target.node.childrenNodes, "xxxxxxxxxx")
-                this.target.node.childrenNodes.forEach(function(o) {
+                this.target.node.elementParent.childrenNodes.forEach(function(o) {
                     // o = o.transformObject;
                     if (self.target.node !== o) {
                         o = o.transformObject;

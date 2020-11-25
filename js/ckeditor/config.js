@@ -14,12 +14,12 @@ CKEDITOR.editorConfig = function(config) {
     config.contentsCss = 'https://fonts.googleapis.com/icon?family=Material+Icons';
     // config.cloudServices_uploadUrl = 'DDFFE2739B83A73DDF16AB641ECA2';
     // config.cloudServices_tokenUrl = 'https://lab.daithangminh.vn/hr_system_settings/php/uploadMedia.php';
-    config.filebrowserBrowseUrl = 'ckfinder/ckfinder.html';
-    config.filebrowserImageBrowseUrl = 'ckfinder/ckfinder.html?type=Images';
-    config.filebrowserFlashBrowseUrl = 'ckfinder/ckfinder.html?type=Flash';
-    config.filebrowserUploadUrl = 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
-    config.filebrowserImageUploadUrl = 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
-    config.filebrowserFlashUploadUrl = 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
+    config.filebrowserBrowseUrl = 'js/ckfinder/ckfinder.html';
+    config.filebrowserImageBrowseUrl = 'js/ckfinder/ckfinder.html?type=Images';
+    config.filebrowserFlashBrowseUrl = 'js/ckfinder/ckfinder.html?type=Flash';
+    config.filebrowserUploadUrl = 'js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
+    config.filebrowserImageUploadUrl = 'js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
+    config.filebrowserFlashUploadUrl = 'js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
     // config.extraPlugins = ['Attach_Activity','Attach'];
     // config.extraPlugins = 'Attach';
     config.toolbar = 'MyToolbar';
