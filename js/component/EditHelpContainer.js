@@ -85,7 +85,9 @@ function EditHelpContainer() {
     })
     Object.assign(this.$view, EditHelpContainer.prototype);
 
-    this.$view.editor = this.$view.itemEdit();
+    var editor = this.$view.itemEdit();
+    var editorBottom = this.$view.itemEditRelated();
+
     var listParent = _({
         tag: "selectmenu",
         class: ["pizo-new-state-selectbox-container-input", "pizo-new-realty-dectruct-input"],
@@ -293,7 +295,14 @@ function EditHelpContainer() {
                         tag: "div",
                         class: ["b-article__wrapper", "os-host", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
                         child: [
-                            self.$view.editor
+                            editor
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        class: ["b-article__wrapper", "os-host-bottom", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
+                        child: [
+                            editorBottom
                         ]
                     }
                 ]
@@ -1006,6 +1015,70 @@ EditHelpContainer.prototype.itemEdit = function() {
     return temp;
 }
 
+EditHelpContainer.prototype.itemEditRelated = function() {
+    var self = this;
+    var textId = ("text_" + Math.random() + Math.random()).replace(/\./g, '');
+    var temp = _({
+        tag: 'div',
+        class: "container-bot-related",
+        props: {
+            id: textId
+        }
+    })
+
+    var ckedit = _({
+        tag: 'attachhook',
+        on: {
+            error: function() {
+                this.selfRemove();
+                self.editorRelated = CKEDITOR.replace(textId);
+                CKFinder.setupCKEditor(self.editorRelated, './');
+                // self.editor.on('doubleclick', function(evt) {
+                //     var element = evt.data.element;
+                //     if (element.is('a') && !element.getAttribute('_cke_realelement'))
+                //         evt.data.dialog = null;
+                // }, null, null, 10);
+                self.editorRelated.on('blur', function(e) {
+                    self.saveDataCurrent();
+                });
+                self.editorRelated.addCommand("comand_link_direction", {
+                    exec: function(edt) {
+                        var listLink = self.listLink();
+                        self.appendChild(listLink);
+                        listLink.promiseSelectList.then(function(value) {
+                            self.editorRelated.insertHtml("<a id=x64" + value.data.original.id + " href='./'>" + value.data.original.title + "</a>");
+                        })
+                    }
+                });
+                self.editorRelated.addCommand("comand_note", {
+                    exec: function(edt) {
+                        var selected_text = self.editorRelated.getSelection().getSelectedText();
+                        self.editorRelated.insertHtml(`<div style="
+                        display: flex;
+                        border: 2px solid #f4eb49;
+                        padding: 5px;
+                        padding-bottom: 20px;
+                        "><i class="material-icons" style="
+                        display: flex;
+                        flex-shrink: 0;
+                        width: 40px;
+                        font-size: 30px;
+                        color: #f4eb49;
+                    ">sticky_note_2</i> <span style="
+                        flex-grow: 2;
+                        display: flex;
+                        padding: 5px;
+                    ">` + selected_text + `</span></div>
+                    `);
+                    }
+                });
+            }
+        }
+    });
+
+    return temp;
+}
+
 EditHelpContainer.prototype.listLink = function() {
     var self = this;
 
@@ -1126,44 +1199,61 @@ EditHelpContainer.prototype.editPage = function() {
         tag: "div",
         class: "setting-page-container",
         child: [{
-            tag: "div",
-            class: "setting-page-container-header",
-            child: [{
-                tag: "span",
-                class: "setting-page-container-header-label",
-                props: {
-                    innerHTML: "Header"
-                }
+                tag: "div",
+                class: "setting-page-container-title",
+                child: [{
+                        tag: "span",
+                        class: "setting-page-container-title-label",
+                        props: {
+                            innerHTML: "Title"
+                        }
+                    },
+                    {
+                        tag: "input",
+                        class: "setting-page-container-title-input",
+                    }
+                ]
+            },
+            {
+                tag: "div",
+                class: "setting-page-container-header",
+                child: [{
+                    tag: "span",
+                    class: "setting-page-container-header-label",
+                    props: {
+                        innerHTML: "Header"
+                    }
+                }, {
+                    tag: "div",
+                    class: "setting-page-container-header-editor",
+                    child: [{
+                        tag: "div",
+                        props: {
+                            id: textIdHeader
+                        }
+                    }]
+                }]
             }, {
                 tag: "div",
-                class: "setting-page-container-header-editor",
+                class: "setting-page-container-footer",
                 child: [{
-                    tag: "div",
+                    tag: "span",
+                    class: "setting-page-container-footer-label",
                     props: {
-                        id: textIdHeader
+                        innerHTML: "Footer"
                     }
-                }]
-            }]
-        }, {
-            tag: "div",
-            class: "setting-page-container-footer",
-            child: [{
-                tag: "span",
-                class: "setting-page-container-footer-label",
-                props: {
-                    innerHTML: "Footer"
-                }
-            }, {
-                tag: "div",
-                class: "setting-page-container-footer-editor",
-                child: [{
+                }, {
                     tag: "div",
-                    props: {
-                        id: textIdFooter
-                    }
+                    class: "setting-page-container-footer-editor",
+                    child: [{
+                        tag: "div",
+                        props: {
+                            id: textIdFooter
+                        }
+                    }]
                 }]
-            }]
-        }]
+            }
+        ]
     })
     this.appendChild(settingPage);
     this.settingPage = settingPage;
