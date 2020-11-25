@@ -955,6 +955,7 @@ EditHelpContainer.prototype.itemEdit = function() {
             error: function() {
                 this.selfRemove();
                 self.editor = CKEDITOR.replace(textId);
+                CKFinder.setupCKEditor(self.editor);
                 // self.editor.on('doubleclick', function(evt) {
                 //     var element = evt.data.element;
                 //     if (element.is('a') && !element.getAttribute('_cke_realelement'))
