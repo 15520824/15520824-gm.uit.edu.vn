@@ -318,7 +318,6 @@ function EditHelpContainer() {
             self.$view.resetChoice();
             updateTableFunction.apply(self.$view.mTable, arguments);
         }
-        listParent.updateItemList();
         self.$view.mTable.addInputSearch(input);
     });
 
@@ -416,13 +415,14 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
         return true;
     if (row === undefined)
         isRemove = false;
-
+    this.listParent.updateItemList();
     var value = {
         title: this.name.value,
         alias: this.alias.value,
         fulltext: this.editor.getData(),
         active: this.active.checked ? 1 : 0,
-        parent_id: this.listParent.value
+        parent_id: this.listParent.value,
+        id: this.idCurrent
     }
 
     if (isRemove) {
@@ -492,8 +492,8 @@ EditHelpContainer.prototype.syncRow = function() {
 
 EditHelpContainer.prototype.formatDataRow = function(data) {
     var temp = [];
+    var checkID = [];
     var check = [];
-    var k = 0;
     var checkElement;
     for (var i = 0; i < data.length; i++) {
         checkElement = parseInt(data[i].active) ? _({
@@ -531,16 +531,27 @@ EditHelpContainer.prototype.formatDataRow = function(data) {
             { value: "" }
         ];
         result.original = data[i];
-        if (check[data[i].parent_id] !== undefined) {
-            if (check[data[i].parent_id].child === undefined)
-                check[data[i].parent_id].child = [];
-            check[data[i].parent_id].child.push(result);
-        } else
-            temp[k++] = result;
-        check[data[i].id] = result;
+        if (data[i].parent_id != 0) {
+            if (check[data[i].parent_id] === undefined)
+                check[data[i].parent_id] = [];
+            check[data[i].parent_id].push(result);
+        } else {
+            temp.push(result);
+        }
     }
-
+    for (var i = 0; i < temp.length; i++) {
+        temp[i].child = this.checkarrayChild(temp[i].original.id, check);
+    }
     return temp;
+}
+
+EditHelpContainer.prototype.checkarrayChild = function(id, check) {
+    if (check[id] === undefined)
+        return [];
+    for (var i = 0; i < check[id].length; i++) {
+        check[id][i].child = this.checkarrayChild(check[id][i].original.id, check);
+    }
+    return check[id];
 }
 
 EditHelpContainer.prototype.formatDataRowList = function(data) {
@@ -583,7 +594,9 @@ EditHelpContainer.prototype.formatDataRowChoice = function() {
     var check = [];
     var dataParent = self.getDataCurrent();
     for (var i = 0; i < dataParent.length; i++) {
-        array[i + 1] = { text: dataParent[i].title, value: parseFloat(dataParent[i].id) };
+        if (dataParent[i].id == this.idCurrent)
+            continue;
+        array.push({ text: dataParent[i].title, value: parseFloat(dataParent[i].id) });
         if (self.data == undefined)
             check[dataParent[i].alias] = dataParent[i];
     }
@@ -616,17 +629,6 @@ EditHelpContainer.prototype.default = function(parent_id = 0, ordering = -1) {
         title: "New Category",
         alias: ""
     }
-    Object.defineProperty(result, "id", {
-        get() {
-            return id;
-        },
-
-        set(value) {
-            id = value;
-        },
-
-        configurable: true
-    });
     return result;
 }
 
@@ -915,11 +917,14 @@ EditHelpContainer.prototype.resetDataTitle = function(data) {
     this.listParent.value = 0;
     this.active.checked = false;
     this.editor.setData("");
+    this.idCurrent = undefined;
 }
 
 EditHelpContainer.prototype.setDataTitle = function(data) {
     this.name.value = data.title;
     this.alias.value = data.alias;
+    this.idCurrent = data.id;
+    this.listParent.updateItemList();
     this.listParent.value = data.parent_id;
     this.active.checked = parseInt(data.active);
 }
