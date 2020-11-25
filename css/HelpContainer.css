@@ -221,11 +221,11 @@ li.b-controlButtons__item {
     display: -ms-flexbox;
     display: flex;
     width: 100%;
-    height: calc(100% - 5px);
+    height: 100%;
     padding: 0;
     position: relative;
-    padding-top: 5px;
     flex-direction: column;
+    overflow: auto;
 }
 
 .b-article__headerLayout-edit#article__header {
@@ -233,6 +233,8 @@ li.b-controlButtons__item {
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     flex-shrink: 0;
+    position: sticky;
+    top: 0;
 }
 
 .b-controlButtons__item>span {
@@ -273,6 +275,7 @@ li.b-controlButtons__item {
     display: flex;
     /*display: -webkit-box;*/
     display: -ms-flexbox;
+    min-height: 305px;
 }
 
 .b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {
