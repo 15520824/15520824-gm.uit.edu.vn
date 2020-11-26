@@ -58,7 +58,6 @@ export default xmlModalDragManyFiles = {
               var dataTemp = self.functionFormat(manyfiles[i]);
               if(manyfiles[i].ref!==undefined)
               dataTemp.src = manyfiles[i].ref+manyfiles[i].src;
-
               arr.push(dataTemp)
             }
             else
@@ -557,11 +556,10 @@ export default xmlModalDragManyFiles = {
         {
             grayscale(reader.result,true).then(function(value){
               var img =  self.Image(value);
-              img.value = value;
+              img.value = reader.result;
               var parent = self.gallery;
               parent.appendChild(img);
               img.onload = function() {
-                
               };
             })
         }else
@@ -572,7 +570,6 @@ export default xmlModalDragManyFiles = {
           var parent = self.gallery;
           parent.appendChild(img);
           img.onload = function() {
-            
           };
         }
         
