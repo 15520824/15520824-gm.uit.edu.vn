@@ -556,7 +556,7 @@ export default xmlModalDragManyFiles = {
         {
             grayscale(reader.result,true).then(function(value){
               var img =  self.Image(value);
-              img.value = reader.result;
+              img.value = {src:value,file:file};
               var parent = self.gallery;
               parent.appendChild(img);
               img.onload = function() {
@@ -564,13 +564,13 @@ export default xmlModalDragManyFiles = {
             })
         }else
         {
-          var value = reader.result;
-          var img =  self.Image(value);
-          img.value = value;
-          var parent = self.gallery;
-          parent.appendChild(img);
-          img.onload = function() {
-          };
+            var value = reader.result;
+            var img =  self.Image(value);
+            img.value = {src:value,file:file};
+            var parent = self.gallery;
+            parent.appendChild(img);
+            img.onload = function() {
+            };
         }
         
       };
