@@ -173,6 +173,9 @@ export default xmlModalDragManyFiles = {
     }
     return temp;
   },
+  enableGetDetail: function(isDetail = true){
+    this.enableDetail = isDetail;
+  },
   containGetImage: function() {
     var self = this;
     var input = _({
@@ -556,7 +559,12 @@ export default xmlModalDragManyFiles = {
         {
             grayscale(reader.result,true).then(function(value){
               var img =  self.Image(value);
-              img.value = {src:value,file:file};
+              if(self.enableDetail == true){
+                img.value = {src:reader.result,file:file};
+              }else
+              {
+                img.value = reader.result;
+              }
               var parent = self.gallery;
               parent.appendChild(img);
               img.onload = function() {
@@ -566,7 +574,12 @@ export default xmlModalDragManyFiles = {
         {
             var value = reader.result;
             var img =  self.Image(value);
-            img.value = {src:value,file:file};
+            if(self.enableDetail == true){
+              img.value = {src:value,file:file};
+            }else
+            {
+              img.value = value;
+            }
             var parent = self.gallery;
             parent.appendChild(img);
             img.onload = function() {
