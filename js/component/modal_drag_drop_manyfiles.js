@@ -58,7 +58,6 @@ export default xmlModalDragManyFiles = {
               var dataTemp = self.functionFormat(manyfiles[i]);
               if(manyfiles[i].ref!==undefined)
               dataTemp.src = manyfiles[i].ref+manyfiles[i].src;
-
               arr.push(dataTemp)
             }
             else
@@ -173,6 +172,9 @@ export default xmlModalDragManyFiles = {
       temp.classList.add("checked-pizo");
     }
     return temp;
+  },
+  enableGetDetail: function(isDetail = true){
+    this.enableDetail = isDetail;
   },
   containGetImage: function() {
     var self = this;
@@ -557,23 +559,31 @@ export default xmlModalDragManyFiles = {
         {
             grayscale(reader.result,true).then(function(value){
               var img =  self.Image(value);
-              img.value = value;
+              if(self.enableDetail == true){
+                img.value = {src:reader.result,file:file};
+              }else
+              {
+                img.value = reader.result;
+              }
               var parent = self.gallery;
               parent.appendChild(img);
               img.onload = function() {
-                
               };
             })
         }else
         {
-          var value = reader.result;
-          var img =  self.Image(value);
-          img.value = value;
-          var parent = self.gallery;
-          parent.appendChild(img);
-          img.onload = function() {
-            
-          };
+            var value = reader.result;
+            var img =  self.Image(value);
+            if(self.enableDetail == true){
+              img.value = {src:value,file:file};
+            }else
+            {
+              img.value = value;
+            }
+            var parent = self.gallery;
+            parent.appendChild(img);
+            img.onload = function() {
+            };
         }
         
       };
