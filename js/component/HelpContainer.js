@@ -358,22 +358,22 @@ HelpContainer.prototype.addClickProps = function() {
     for (var i = 0; i < arr.length; i++) {
         if (arr[i].id.indexOf("x64") !== -1) {
 
-            arr[i].addEventListener("click", function(event) {
+            arr[i].addEventListener("click", function(index, event) {
                 event.preventDefault();
-                var element = document.getElementById(arr[i].id.replace("x64", "x86"));
+                var element = document.getElementById(arr[index].id.replace("x64", "x86"));
                 if (element) {
                     element.click();
                     element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
                 } else {
                     self.inputLabel.value = "";
                     self.inputLabel.onchange();
-                    var element = document.getElementById(arr[i].id.replace("x64", "x86"));
+                    var element = document.getElementById(arr[index].id.replace("x64", "x86"));
                     if (element) {
                         element.click();
                         element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
                     }
                 }
-            })
+            }.bind(this, i))
         }
     }
 }
