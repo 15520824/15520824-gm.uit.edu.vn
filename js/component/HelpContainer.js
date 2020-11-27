@@ -111,6 +111,10 @@ function HelpContainer() {
             spellcheck: false
         }
     })
+    var location = _({
+        tag: "span",
+        class: "b-breadCrumbs__location_content",
+    })
     var title = _({
         tag: "li",
         class: "b-breadCrumbs__item",
@@ -146,10 +150,24 @@ function HelpContainer() {
                                     id: "headerSide__nav"
                                 },
                                 child: [{
-                                    tag: "ul",
-                                    class: "b-breadCrumbs__items",
-                                    child: [title]
-                                }]
+                                        tag: "ul",
+                                        class: "b-breadCrumbs__items",
+                                        child: [title]
+                                    },
+                                    {
+                                        tag: "div",
+                                        class: "b-breadCrumbs__location",
+                                        child: [{
+                                                tag: "span",
+                                                class: "b-breadCrumbs__location_title",
+                                                props: {
+                                                    innerHTML: "Bạn ở đây "
+                                                }
+                                            },
+                                            location
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 tag: "div",
@@ -263,6 +281,7 @@ function HelpContainer() {
     Object.assign(this.$view, HelpContainer.prototype);
     this.$view.containerView = containerView;
     this.$view.titleLabel = title;
+    this.$view.locationLabel = location;
     return this.$view;
 }
 
@@ -278,6 +297,18 @@ HelpContainer.prototype.firstChildClick = function() {
             text += "<div style='border: 1px solid;'></div>" + this.mTable.childrenNodes[0].data.original.related;
         }
         this.containerView.innerHTML = text;
+        var location = "";
+
+        var tempElement = this.mTable.childrenNodes[0];
+        while (tempElement && tempElement.tagName != "DIV") {
+            if (location !== "") {
+                location = "<span> > </span>" + location;
+            }
+            console.log(tempElement)
+            location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
+            tempElement = tempElement.getParentNode();
+        }
+        this.locationLabel.innerHTML = location;
         this.addClickProps();
     }
 }
@@ -307,6 +338,17 @@ HelpContainer.prototype.functionClickDetail = function(event, me, index, parent,
         text += "<div style='border: 1px solid;'></div>" + data.original.related;
     }
     this.containerView.innerHTML = text;
+    var location = "";
+    var tempElement = row;
+    while (tempElement && tempElement.tagName != "DIV") {
+        if (location !== "") {
+            location = "<span> > </span>" + location;
+        }
+        console.log(tempElement)
+        location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
+        tempElement = tempElement.getParentNode();
+    }
+    this.locationLabel.innerHTML = location;
     this.addClickProps();
 }
 

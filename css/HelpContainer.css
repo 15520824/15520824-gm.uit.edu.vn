@@ -365,6 +365,7 @@ li.b-controlButtons__item {
 
 .container-content-information .cke_editable.cke_editable_themed.cke_contents_ltr.cke_show_borders {
     margin: 20px;
+    margin-top: 0px;
 }
 
 @media print {
@@ -455,6 +456,7 @@ li.b-controlButtons__item {
     font-size: 18px;
     font-weight: bold;
     padding: 10px;
+    padding-bottom: 0;
 }
 
 .container-content-information-bottom {
@@ -473,5 +475,31 @@ li.b-controlButtons__item {
 }
 
 .b-controlButtons__item.m-controlButtons__item__prev {
+    margin-left: 10px;
+}
+
+.b-workZone__layout_helpcontainer_view a {
+    color: #17a2b8;
+}
+
+.b-workZone__layout_helpcontainer_view .b-breadCrumbs__items {
+    display: flex;
+}
+
+.b-workZone__layout_helpcontainer_view .b-article__headerSide.m-article__headerSide__nav {
+    flex-direction: column;
+}
+
+.b-breadCrumbs__location {
+    display: flex;
+    margin: 10px;
+}
+
+.b-breadCrumbs__location_title {
+    white-space: nowrap;
+    margin-left: 50px;
+}
+
+.b-breadCrumbs__location_content {
     margin-left: 10px;
 }
