@@ -282,6 +282,7 @@ function HelpContainer() {
     this.$view.containerView = containerView;
     this.$view.titleLabel = title;
     this.$view.locationLabel = location;
+    this.$view.inputLabel = input;
     return this.$view;
 }
 
@@ -344,7 +345,6 @@ HelpContainer.prototype.functionClickDetail = function(event, me, index, parent,
         if (location !== "") {
             location = "<span> > </span>" + location;
         }
-        console.log(tempElement)
         location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
         tempElement = tempElement.getParentNode();
     }
@@ -353,15 +353,27 @@ HelpContainer.prototype.functionClickDetail = function(event, me, index, parent,
 }
 
 HelpContainer.prototype.addClickProps = function() {
+    var self = this;
     var arr = this.getElementsByTagName("a");
     for (var i = 0; i < arr.length; i++) {
         if (arr[i].id.indexOf("x64") !== -1) {
-            var element = document.getElementById(arr[i].id.replace("x64", "x86"));
-            arr[i].addEventListener("click", function(ele, event) {
+
+            arr[i].addEventListener("click", function(event) {
                 event.preventDefault();
-                ele.click();
-                ele.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-            }.bind(this, element))
+                var element = document.getElementById(arr[i].id.replace("x64", "x86"));
+                if (element) {
+                    element.click();
+                    element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+                } else {
+                    self.inputLabel.value = "";
+                    self.inputLabel.onchange();
+                    var element = document.getElementById(arr[i].id.replace("x64", "x86"));
+                    if (element) {
+                        element.click();
+                        element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+                    }
+                }
+            })
         }
     }
 }
