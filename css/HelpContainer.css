@@ -154,12 +154,12 @@ table.b-workZone__layout {
     vertical-align: top;
     margin: 0;
     font-size: 1em;
-    white-space: pre;
 }
 
 .b-article__headerSide.m-article__headerSide__nav {
     font-size: 1em;
-    padding: 0.5rem 1em;
+    padding: 5px 10px;
+    padding-top: 0;
     flex-grow: 2;
     display: flex;
     /*display: -webkit-box;*/
@@ -208,12 +208,13 @@ li.b-controlButtons__item {
 }
 
 .m-controlButtons__item__print {
-    margin: 0 0 0 19px;
+    margin: 0;
 }
 
 .b-controlButtons__items {
     margin: 0;
     list-style-type: none;
+    padding: 0;
 }
 
 .b-article {
@@ -233,8 +234,6 @@ li.b-controlButtons__item {
     /*display: -webkit-box;*/
     display: -ms-flexbox;
     flex-shrink: 0;
-    position: sticky;
-    top: 0;
 }
 
 .b-controlButtons__item>span {
@@ -244,7 +243,7 @@ li.b-controlButtons__item {
 
 .b-controlButtons__item>i {
     vertical-align: middle;
-    font-size: 1em;
+    font-size: 22px;
     cursor: pointer;
 }
 
@@ -275,7 +274,7 @@ li.b-controlButtons__item {
     display: flex;
     /*display: -webkit-box;*/
     display: -ms-flexbox;
-    min-height: 305px;
+    min-height: 500px;
 }
 
 .b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {
@@ -399,7 +398,7 @@ li.b-controlButtons__item {
 
 .b-controlButtons__item.m-controlButtons__item__print>i {
     vertical-align: top;
-    padding-top: 3px;
+    padding-top: 2px;
 }
 
 .cke_show_borders table.cke_show_border,
@@ -422,4 +421,57 @@ li.b-controlButtons__item {
 .container-content-information table {
     border-collapse: separate;
     border-spacing: 2px;
+}
+
+.b-article .pizo-new-category-container-name {
+    position: sticky;
+    top: 0;
+    display: flex;
+    /* display: -webkit-box; */
+    display: -ms-flexbox;
+    flex-shrink: 0;
+    background-color: #263238;
+    z-index: 10;
+    color: #eeeeee;
+    padding: 5px 10px;
+    padding-left: 15px;
+}
+
+.b-workZone__layout_helpcontainer_view .b-article__headerLayout#article__header {
+    background-color: white;
+    margin: 10px;
+    margin-bottom: 0;
+    width: unset;
+}
+
+.b-workZone__layout_helpcontainer_view .container-content-information {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.b-workZone__layout_helpcontainer_view .b-breadCrumbs__item {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.container-content-information-bottom {
+    flex-shrink: 0;
+    display: flex;
+    background-color: white;
+    margin: 10px;
+    margin-top: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.b-controlButtons__item.m-controlButtons__item__next {
+    position: absolute;
+    right: 10px;
+}
+
+.b-controlButtons__item.m-controlButtons__item__prev {
+    margin-left: 10px;
 }

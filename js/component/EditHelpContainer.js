@@ -123,6 +123,37 @@ function EditHelpContainer() {
                 class: "b-article",
                 child: [{
                         tag: "div",
+                        class: "pizo-new-category-container-name",
+                        child: [{
+                            tag: "div",
+                            class: "pizo-new-category-container-name-container",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-new-category-container-name-container-label",
+                                    props: {
+                                        innerHTML: "Tên"
+                                    }
+                                },
+                                {
+                                    tag: "input",
+                                    class: ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
+                                    on: {
+                                        change: function(event) {
+                                            if (self.$view.alias.value === "" || self.$view.aliasErorr.classList.contains("hasErrorElement")) {
+                                                self.$view.alias.value = createAlias(this.value);
+                                                self.$view.alias.dispatchEvent(new Event("input"));
+                                            }
+                                        },
+                                        blur: function() {
+                                            self.$view.saveDataCurrent();
+                                        }
+                                    }
+                                }
+                            ]
+                        }]
+                    },
+                    {
+                        tag: "div",
                         class: "b-article__headerLayout-edit",
                         props: {
                             id: "article__header"
@@ -140,37 +171,6 @@ function EditHelpContainer() {
                                     tag: "div",
                                     class: "pizo-new-catergory-container",
                                     child: [{
-                                            tag: "div",
-                                            class: "pizo-new-category-container-name",
-                                            child: [{
-                                                tag: "div",
-                                                class: "pizo-new-category-container-name-container",
-                                                child: [{
-                                                        tag: "span",
-                                                        class: "pizo-new-category-container-name-container-label",
-                                                        props: {
-                                                            innerHTML: "Tên"
-                                                        }
-                                                    },
-                                                    {
-                                                        tag: "input",
-                                                        class: ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
-                                                        on: {
-                                                            change: function(event) {
-                                                                if (self.$view.alias.value === "" || self.$view.aliasErorr.classList.contains("hasErrorElement")) {
-                                                                    self.$view.alias.value = createAlias(this.value);
-                                                                    self.$view.alias.dispatchEvent(new Event("input"));
-                                                                }
-                                                            },
-                                                            blur: function() {
-                                                                self.$view.saveDataCurrent();
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            }]
-                                        },
-                                        {
                                             tag: "div",
                                             class: "pizo-new-category-container-alias-active",
                                             child: [{

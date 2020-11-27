@@ -83,7 +83,7 @@ function HelpContainer() {
 
     this.$view = _({
         tag: "div",
-        class: "b-workZone__layout",
+        class: ["b-workZone__layout", "b-workZone__layout_helpcontainer_view"],
         child: [{
             tag: "div",
             class: ["b-workZone__side", "m-workZone__side__nav"],
@@ -134,129 +134,129 @@ function HelpContainer() {
                 tag: "div",
                 class: "b-article",
                 child: [{
-                    tag: "div",
-                    class: "b-article__headerLayout",
-                    props: {
-                        id: "article__header"
-                    },
-                    child: [{
-                            tag: "div",
-                            class: ["b-article__headerSide", "m-article__headerSide__nav"],
-                            props: {
-                                id: "headerSide__nav"
-                            },
-                            child: [{
-                                tag: "ul",
-                                class: "b-breadCrumbs__items",
-                                child: [title]
-                            }]
+                        tag: "div",
+                        class: "b-article__headerLayout",
+                        props: {
+                            id: "article__header"
                         },
-                        {
-                            tag: "div",
-                            class: ["b-article__headerSide", "m-article__headerSide__buttons"],
-                            props: {
-                                id: "headerSide__buttons"
-                            },
-                            child: [{
-                                tag: "ul",
-                                class: "b-controlButtons__items",
+                        child: [{
+                                tag: "div",
+                                class: ["b-article__headerSide", "m-article__headerSide__nav"],
+                                props: {
+                                    id: "headerSide__nav"
+                                },
                                 child: [{
-                                        tag: "li",
-                                        class: ["b-controlButtons__item", "m-controlButtons__item__prev"],
-                                        on: {
-                                            click: function() {
-                                                if (self.$view.mTable) {
-                                                    var arr = self.$view.mTable.getElementsByClassName("choice-event-category");
-                                                    if (arr.length > 0) {
-                                                        arr = arr[0];
-                                                        arr = self.$view.mTable.getElementPrevVisiale(arr);
-                                                        if (arr)
-                                                            arr.childNodes[0].click();
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        child: [{
-                                                tag: "i",
-                                                class: "material-icons",
-                                                props: {
-                                                    innerHTML: "arrow_back"
-                                                }
-                                            },
-                                            {
-                                                tag: "span",
-                                                class: "b-controlButtons__link_text",
-                                                props: {
-                                                    innerHTML: " Trang trước"
-                                                }
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        tag: "li",
-                                        class: ["b-controlButtons__item", "m-controlButtons__item__next"],
-                                        on: {
-                                            click: function() {
-                                                if (self.$view.mTable) {
-                                                    var arr = self.$view.mTable.getElementsByClassName("choice-event-category");
-                                                    if (arr.length > 0) {
-                                                        arr = arr[0];
-                                                        arr = self.$view.mTable.getElementNextVisiale(arr);
-                                                        if (arr)
-                                                            arr.childNodes[0].click();
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        child: [{
-                                                tag: "span",
-                                                class: "b-controlButtons__link_text",
-                                                props: {
-                                                    innerHTML: " Trang tiếp theo"
+                                    tag: "ul",
+                                    class: "b-breadCrumbs__items",
+                                    child: [title]
+                                }]
+                            },
+                            {
+                                tag: "div",
+                                class: ["b-article__headerSide", "m-article__headerSide__buttons"],
+                                props: {
+                                    id: "headerSide__buttons"
+                                },
+                                child: [{
+                                    tag: "ul",
+                                    class: "b-controlButtons__items",
+                                    child: [
+
+                                        {
+                                            tag: "li",
+                                            class: ["b-controlButtons__item", "m-controlButtons__item__print"],
+                                            on: {
+                                                click: function() {
+                                                    Dom.printElement(self.$view.containerView.parentNode);
                                                 }
                                             },
-                                            {
-                                                tag: "i",
-                                                class: "material-icons",
-                                                props: {
-                                                    innerHTML: "arrow_forward"
-                                                }
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        tag: "li",
-                                        class: ["b-controlButtons__item", "m-controlButtons__item__print"],
-                                        on: {
-                                            click: function() {
-                                                Dom.printElement(self.$view.containerView.parentNode);
-                                            }
-                                        },
-                                        child: [{
+                                            child: [{
                                                 tag: "i",
                                                 class: "material-icons",
                                                 props: {
                                                     innerHTML: "print"
                                                 }
-                                            },
-                                            {
-                                                tag: "span",
-                                                class: "b-controlButtons__link_text",
-                                                props: {
-                                                    innerHTML: "In"
-                                                }
+                                            }]
+                                        }
+                                    ]
+                                }]
+                            }
+                        ]
+                    }, {
+                        tag: "div",
+                        class: "container-content-information",
+                        child: [containerView]
+                    },
+                    {
+                        tag: "div",
+                        class: "container-content-information-bottom",
+                        child: [{
+                                tag: "li",
+                                class: ["b-controlButtons__item", "m-controlButtons__item__prev"],
+                                on: {
+                                    click: function() {
+                                        if (self.$view.mTable) {
+                                            var arr = self.$view.mTable.getElementsByClassName("choice-event-category");
+                                            if (arr.length > 0) {
+                                                arr = arr[0];
+                                                arr = self.$view.mTable.getElementPrevVisiale(arr);
+                                                if (arr)
+                                                    arr.childNodes[0].click();
                                             }
-                                        ]
+                                        }
+                                    }
+                                },
+                                child: [{
+                                        tag: "i",
+                                        class: "material-icons",
+                                        props: {
+                                            innerHTML: "arrow_back"
+                                        }
+                                    },
+                                    {
+                                        tag: "span",
+                                        class: "b-controlButtons__link_text",
+                                        props: {
+                                            innerHTML: " Trang trước"
+                                        }
                                     }
                                 ]
-                            }]
-                        }
-                    ]
-                }, {
-                    tag: "div",
-                    class: "container-content-information",
-                    child: [containerView]
-                }]
+                            },
+                            {
+                                tag: "li",
+                                class: ["b-controlButtons__item", "m-controlButtons__item__next"],
+                                on: {
+                                    click: function() {
+                                        if (self.$view.mTable) {
+                                            var arr = self.$view.mTable.getElementsByClassName("choice-event-category");
+                                            if (arr.length > 0) {
+                                                arr = arr[0];
+                                                arr = self.$view.mTable.getElementNextVisiale(arr);
+                                                if (arr)
+                                                    arr.childNodes[0].click();
+                                            }
+                                        }
+                                    }
+                                },
+                                child: [{
+                                        tag: "span",
+                                        class: "b-controlButtons__link_text",
+                                        props: {
+                                            innerHTML: " Trang tiếp theo"
+                                        }
+                                    },
+                                    {
+                                        tag: "i",
+                                        class: "material-icons",
+                                        props: {
+                                            innerHTML: "arrow_forward"
+                                        }
+                                    }
+                                ]
+                            },
+                        ]
+                    }
+                ]
             }]
         }]
     }))
@@ -273,7 +273,12 @@ HelpContainer.prototype.firstChildClick = function() {
     if (this.mTable.childrenNodes.length > 0) {
         this.mTable.childrenNodes[0].classList.add("choice-event-category");
         this.titleLabel.innerHTML = this.mTable.childrenNodes[0].data.original.title;
-        this.containerView.innerHTML = this.mTable.childrenNodes[0].data.original.fulltext;
+        var text = this.mTable.childrenNodes[0].data.original.fulltext;
+        if (this.mTable.childrenNodes[0].data.original.related != "") {
+            text += "<div style='border: 1px solid;'></div>" + this.mTable.childrenNodes[0].data.original.related;
+        }
+        this.containerView.innerHTML = text;
+        this.addClickProps();
     }
 }
 HelpContainer.prototype.functionClickDetail = function(event, me, index, parent, data, row) {
@@ -297,43 +302,78 @@ HelpContainer.prototype.functionClickDetail = function(event, me, index, parent,
     window.addHref = data.original.alias;
     history.replaceState({}, "", text + window.addHref);
     this.titleLabel.innerHTML = data.original.title;
-    this.containerView.innerHTML = data.original.fulltext;
+    var text = data.original.fulltext;
+    if (data.original.related) {
+        text += "<div style='border: 1px solid;'></div>" + data.original.related;
+    }
+    this.containerView.innerHTML = text;
+    this.addClickProps();
+}
+
+HelpContainer.prototype.addClickProps = function() {
+    var arr = this.getElementsByTagName("a");
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].id.indexOf("x64") !== -1) {
+            var element = document.getElementById(arr[i].id.replace("x64", "x86"));
+            arr[i].addEventListener("click", function(ele, event) {
+                event.preventDefault();
+                ele.click();
+                ele.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            }.bind(this, element))
+        }
+    }
+}
+
+HelpContainer.prototype.formatDataRowOne = function(data) {
+    var result = [{
+        value: data.title,
+        element: _({
+            tag: "div",
+            props: {
+                id: "x86" + data.id
+            },
+            child: [{
+                tag: "span",
+                class: "title-label",
+                props: {
+                    innerHTML: data.title
+                }
+            }, ]
+        }),
+    }, ];
+    result.original = data;
+    return result;
 }
 
 HelpContainer.prototype.formatDataRow = function(data) {
     var temp = [];
     var check = [];
-    var k = 0;
+    var result;
     for (var i = 0; i < data.length; i++) {
-        if (!parseInt(data[i].active))
+        if (data[i].active == 0)
             continue;
-        var result = [{
-            value: data[i].title,
-            element: _({
-                tag: "div",
-                props: {
-                    id: "x86" + data[i].id
-                },
-                child: [{
-                    tag: "span",
-                    class: "title-label",
-                    props: {
-                        innerHTML: data[i].title
-                    }
-                }]
-            }),
-        }];
-        result.original = data[i];
-        if (check[data[i].parent_id] !== undefined) {
-            if (check[data[i].parent_id].child === undefined)
-                check[data[i].parent_id].child = [];
-            check[data[i].parent_id].child.push(result);
-        } else
-            temp[k++] = result;
-        check[data[i].id] = result;
+        result = this.formatDataRowOne(data[i]);
+        if (data[i].parent_id != 0) {
+            if (check[data[i].parent_id] === undefined)
+                check[data[i].parent_id] = [];
+            check[data[i].parent_id].push(result);
+        } else {
+            temp.push(result);
+        }
     }
-
+    for (var i = 0; i < temp.length; i++) {
+        temp[i].child = this.checkarrayChild(temp[i].original.id, check);
+    }
     return temp;
+}
+
+HelpContainer.prototype.checkarrayChild = function(id, check) {
+    if (check[id] === undefined)
+        return [];
+    for (var i = 0; i < check[id].length; i++) {
+        check[id][i].child = this.checkarrayChild(check[id][i].original.id, check);
+    }
+    return check[id];
 }
 
 HelpContainer.prototype.refresh = function() {
