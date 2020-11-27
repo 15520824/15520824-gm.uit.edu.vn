@@ -392,7 +392,8 @@ EditHelpContainer.prototype.functionClickMore = function(event, me, index, paren
 }
 
 EditHelpContainer.prototype.functionClickDetail = function(event, me, index, parent, data, row) {
-    if (this.alias.parentNode.parentNode.classList.contains("hasErrorElement"))
+    var arr = this.getElementsByClassName("choice-event-category");
+    if (this.alias.parentNode.parentNode.classList.contains("hasErrorElement") && arr.length > 0)
         return;
     if (this.saveDataCurrent(row) === true)
         return;
@@ -491,47 +492,51 @@ EditHelpContainer.prototype.syncRow = function() {
     this.saveDataCurrent();
 }
 
+EditHelpContainer.prototype.formatDataRowOne = function(data) {
+    var checkElement = parseInt(data.active) ? _({
+        tag: "div",
+        class: "tick-element"
+    }) : _({
+        tag: "div",
+        class: "cross-element"
+    })
+    var result = [{ value: "" }, {
+            value: data.title,
+            element: _({
+                tag: "div",
+                child: [{
+                        tag: "span",
+                        class: "title-label",
+                        props: {
+                            innerHTML: data.title
+                        }
+                    },
+                    {
+                        tag: "span",
+                        class: "alias-label",
+                        props: {
+                            innerHTML: " (Alias :" + data.alias + ")"
+                        }
+                    }
+                ]
+            }),
+        },
+        {
+            value: data.active,
+            element: checkElement,
+        },
+        { value: "" }
+    ];
+    result.original = data;
+    return result;
+}
 
 EditHelpContainer.prototype.formatDataRow = function(data) {
     var temp = [];
     var check = [];
-    var checkElement;
+    var result;
     for (var i = 0; i < data.length; i++) {
-        checkElement = parseInt(data[i].active) ? _({
-            tag: "div",
-            class: "tick-element"
-        }) : _({
-            tag: "div",
-            class: "cross-element"
-        })
-        var result = [{ value: "" }, {
-                value: data[i].title,
-                element: _({
-                    tag: "div",
-                    child: [{
-                            tag: "span",
-                            class: "title-label",
-                            props: {
-                                innerHTML: data[i].title
-                            }
-                        },
-                        {
-                            tag: "span",
-                            class: "alias-label",
-                            props: {
-                                innerHTML: " (Alias :" + data[i].alias + ")"
-                            }
-                        }
-                    ]
-                }),
-            },
-            {
-                value: data[i].active,
-                element: checkElement,
-            },
-            { value: "" }
-        ];
-        result.original = data[i];
+        result = this.formatDataRowOne(data[i]);
         if (data[i].parent_id != 0) {
             if (check[data[i].parent_id] === undefined)
                 check[data[i].parent_id] = [];
@@ -621,7 +626,6 @@ EditHelpContainer.prototype.getDataChild = function(arr) {
 }
 
 EditHelpContainer.prototype.default = function(parent_id = 0, ordering = -1) {
-    var id;
     var result = {
         active: 0,
         fulltext: "",
@@ -635,51 +639,18 @@ EditHelpContainer.prototype.default = function(parent_id = 0, ordering = -1) {
 
 EditHelpContainer.prototype.add = function(parentid, row = this.mTable) {
     var self = this;
-    self.addView(undefined, row, parentid)
+    var value = this.default(parentid, row.childrenNodes.length);
+    var promiseParent = self.addDB(value);
+    var loadding = new loaddingWheel();
+    promiseParent.then(function(result) {
+        value = self.formatDataRowOne(result);
+        self.addView(value, row);
+        loadding.disable();
+    })
 }
 
-EditHelpContainer.prototype.addView = function(value, row, parent_id) {
-    if (value == undefined) {
-        console.log(parent_id)
-        value = this.default(parent_id, row.childrenNodes.length);
-    }
-    var checkElement = parseInt(value.active) ? _({
-        tag: "div",
-        class: "tick-element"
-    }) : _({
-        tag: "div",
-        class: "cross-element"
-    })
-    var result = [{ value: "", style: { maxWidth: "21px" } }, {
-            value: value.title,
-            element: _({
-                tag: "div",
-                child: [{
-                        tag: "span",
-                        class: "title-label",
-                        props: {
-                            innerHTML: value.title
-                        }
-                    },
-                    {
-                        tag: "span",
-                        class: "alias-label",
-                        props: {
-                            innerHTML: " (Alias :" + value.alias + ")"
-                        }
-                    }
-                ]
-            }),
-        },
-        {
-            value: parseInt(value.active),
-            element: checkElement,
-            style: { maxWidth: "21px" }
-        },
-        { value: "", style: { maxWidth: "21px" } }
-    ];
-    result.original = value;
-    var temp = row.insertRow(result);
+EditHelpContainer.prototype.addView = function(value, row) {
+    var temp = row.insertRow(value);
     temp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
     this.listParent.updateItemList();
 }
@@ -693,7 +664,6 @@ EditHelpContainer.prototype.addDB = function(value) {
 }
 
 EditHelpContainer.prototype.edit = function(data, parent, index) {
-
     var self = this;
 }
 
@@ -828,77 +798,56 @@ EditHelpContainer.prototype.updateChild = function(child) {
     var promiseAll = [];
     var dataUpdate = {};
     var isUpdate;
-    var promiseParent;
     for (var i = 0; i < child.length; i++) {
-        if (child[i].original.id == undefined) {
-            if (child[i].original.ordering != i)
-                child[i].original.ordering = i;
-            promiseParent = self.addDB(child[i].original);
-            promiseAll.push(promiseParent);
-        } else {
-            isUpdate = false;
-            dataUpdate.id = child[i].original.id;
-            if (child[i].original.isTitle === true) {
-                isUpdate = true;
-                dataUpdate.title = child[i].original.title;
-                child[i].original.isTitle = false;
-            }
+        isUpdate = false;
+        dataUpdate.id = child[i].original.id;
+        if (child[i].original.isTitle === true) {
+            isUpdate = true;
+            dataUpdate.title = child[i].original.title;
+            child[i].original.isTitle = false;
+        }
 
-            if (child[i].original.isAlias === true) {
-                isUpdate = true;
-                dataUpdate.alias = child[i].original.alias;
-                child[i].original.isAlias = false;
-            }
+        if (child[i].original.isAlias === true) {
+            isUpdate = true;
+            dataUpdate.alias = child[i].original.alias;
+            child[i].original.isAlias = false;
+        }
 
-            if (child[i].original.isActive === true) {
-                isUpdate = true;
-                dataUpdate.active = child[i].original.active;
-                child[i].original.isActive = false;
-            }
+        if (child[i].original.isActive === true) {
+            isUpdate = true;
+            dataUpdate.active = child[i].original.active;
+            child[i].original.isActive = false;
+        }
 
-            if (child[i].original.isParent_id === true) {
-                isUpdate = true;
-                dataUpdate.parent_id = child[i].original.parent_id;
-                child[i].original.isParent_id = false;
-            }
+        if (child[i].original.isParent_id === true) {
+            isUpdate = true;
+            dataUpdate.parent_id = child[i].original.parent_id;
+            child[i].original.isParent_id = false;
+        }
 
-            if (child[i].original.isFulltext === true) {
-                isUpdate = true;
-                dataUpdate.fulltext = child[i].original.fulltext;
-                child[i].original.isFulltext = false;
-            }
+        if (child[i].original.isFulltext === true) {
+            isUpdate = true;
+            dataUpdate.fulltext = child[i].original.fulltext;
+            child[i].original.isFulltext = false;
+        }
 
-            if (child[i].original.isRelated === true) {
-                isUpdate = true;
-                dataUpdate.related = child[i].original.related;
-                child[i].original.isRelated = false;
-            }
+        if (child[i].original.isRelated === true) {
+            isUpdate = true;
+            dataUpdate.related = child[i].original.related;
+            child[i].original.isRelated = false;
+        }
 
-            if (child[i].original.ordering != i) {
-                isUpdate = true;
-                dataUpdate.ordering = i;
-                child[i].original.ordering = i;
-            }
-            if (isUpdate) {
-                promiseAll.push(moduleDatabase.getModule("helps").update(dataUpdate));
-            }
+        if (child[i].original.ordering != i) {
+            isUpdate = true;
+            dataUpdate.ordering = i;
+            child[i].original.ordering = i;
+        }
+        if (isUpdate) {
+            promiseAll.push(moduleDatabase.getModule("helps").update(dataUpdate));
         }
 
         if (child[i].child.length !== 0) {
-            if (promiseParent) {
-                var x = new Promise(function(index, resolve, reject) {
-                    promiseParent.then(function(value) {
-                        for (var j = 0; j < child[index].child.length; j++) {
-                            child[index].child[j].original.parent_id = value.id;
-                        }
-                        promiseAll = promiseAll.concat(this.updateChild(child[index].child));
-                        resolve()
-                    }.bind(this))
-                }.bind(this, i))
-                promiseAll.push(x);
-            } else {
-                promiseAll = promiseAll.concat(this.updateChild(child[i].child));
-            }
+            promiseAll = promiseAll.concat(this.updateChild(child[i].child));
         }
     }
     return promiseAll;
@@ -906,7 +855,6 @@ EditHelpContainer.prototype.updateChild = function(child) {
 
 
 EditHelpContainer.prototype.delete = function(data, parent, index) {
-
     var self = this;
     var deleteItem = deleteQuestion("Xoá danh mục", "Bạn có chắc muốn xóa :" + data.title);
     this.addChild(deleteItem);
@@ -962,13 +910,19 @@ EditHelpContainer.prototype.deleteDB = function(data, parent, index) {
     var self = this;
     var row = parent.childrenNodes[index];
     var promiseAll = this.addPromisePush(row.data);
-
     if (promiseAll.length > 0)
         Promise.all(promiseAll).then(function(value) {
+            if (parent.childrenNodes[index] && parent.childrenNodes[index].classList.contains("choice-event-category")) {
+                self.resetDataTitle();
+            }
             self.deleteView(parent, index);
         })
-    else
+    else {
+        if (parent.childrenNodes[index] && parent.childrenNodes[index].classList.contains("choice-event-category")) {
+            self.resetDataTitle();
+        }
         self.deleteView(parent, index);
+    }
 }
 
 EditHelpContainer.prototype.itemEdit = function() {
