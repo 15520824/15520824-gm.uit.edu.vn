@@ -367,11 +367,13 @@ HelpContainer.prototype.addClickProps = function() {
                 } else {
                     self.inputLabel.value = "";
                     self.inputLabel.onchange();
-                    var element = document.getElementById(arr[index].id.replace("x64", "x86"));
-                    if (element) {
-                        element.click();
-                        element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-                    }
+                    setTimeout(function() {
+                        var element = document.getElementById(arr[index].id.replace("x64", "x86"));
+                        if (element) {
+                            element.click();
+                            element.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+                        }
+                    }, 150)
                 }
             }.bind(this, i))
         }
