@@ -432,8 +432,6 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
     this.locationLabel.innerHTML = location;
     this.containerPreview.style.display = "";
     this.containerEditView.style.display = "none";
-    row.indexDetail = index;
-    row.parentDetail = parent;
     this.rowSelected = row;
     row.classList.add("choice-event-category");
     this.setDataTitle(data.original);
@@ -444,6 +442,7 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
 
 EditHelpContainer.prototype.saveDataCurrent = function(row) {
     var arr = this.getElementsByClassName("choice-event-category");
+
     var isRemove = true;
     if (arr.length !== 0)
         arr = arr[0];
@@ -468,12 +467,7 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
     }
 
     if (arr.data) {
-        var rowSelected = this.editView(value, arr.data, arr.parentDetail, arr.indexDetail);
-
-        if (!isRemove) {
-            rowSelected.parentDetail = arr.parentDetail;
-            rowSelected.indexDetail = arr.indexDetail
-        }
+        this.editView(value, arr.data, arr);
     }
     this.listParent.updateItemList();
     return false;
@@ -797,7 +791,8 @@ EditHelpContainer.prototype.editViewContent = function() {
     return temp;
 }
 
-EditHelpContainer.prototype.editView = function(value, data, parent, index) {
+EditHelpContainer.prototype.editView = function(value, data, elementParam) {
+    var parent = elementParam.getParentNode();
     var isChangeView = false;
     if (data.original.id != undefined) {
         if (data.original.title !== value.title)
@@ -868,8 +863,6 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
         element: checkElement,
         style: { maxWidth: "21px" }
     };
-    var indexOF = index,
-        element = parent;
     if (isChangeView === true) {
         var element;
         if (value.parent_id == 0)
@@ -881,15 +874,13 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
                     break;
                 }
             }
-        var indexTemp = parent.childrenNodes[index];
-        indexOF = parent.changeParent(index, element);
-        indexTemp.parentDetail = element;
-        indexTemp.indexDetail = indexOF;
+        var index = parent.childrenNodes.indexOf(elementParam);
+        parent.changeParent(index, element);
         setTimeout(function() {
-            indexTemp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            elementParam.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
         }, 100)
     }
-    var temp = element.updateRow(data, indexOF, true);
+    var temp = elementParam.updateCurrentRow(data);
 
     this.listParent.updateItemList();
     return temp;
@@ -995,7 +986,7 @@ EditHelpContainer.prototype.delete = function(data, parent, index) {
 
 EditHelpContainer.prototype.deleteView = function(parent, index) {
     var self = this;
-    if (this.rowSelected && this.rowSelected.parentDetail === parent && this.rowSelected.indexDetail > index)
+    if (this.rowSelected)
         this.rowSelected.indexDetail--;
     parent.dropRow(index).then(function() {
         self.resetChoice();

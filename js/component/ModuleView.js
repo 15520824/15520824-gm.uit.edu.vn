@@ -1133,10 +1133,9 @@ tableView.prototype.changeRowIndex = function(index, spliceIndex) {
     result = self;
     tempIndex = index;
     tempSpliceIndex = spliceIndex;
-
+    index = self.childrenNodes.indexOf(element);
+    spliceIndex = self.childrenNodes.indexOf(elementReal);
     if (result.data.child !== undefined) {
-        index = self.childrenNodes.indexOf(element);
-        spliceIndex = self.childrenNodes.indexOf(elementReal);
         if (spliceIndex === -1)
             spliceIndex = self.childrenNodes.length;
         result.data.child = changeIndex(result.data.child, index, spliceIndex);
