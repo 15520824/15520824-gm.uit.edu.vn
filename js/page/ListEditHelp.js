@@ -97,6 +97,18 @@ ListHelp.prototype.getView = function() {
                             class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
                             on: {
                                 click: function(evt) {
+                                    containerHelp.enableEditViewContent();
+                                }
+                            },
+                            child: [
+                                '<span>' + "Sửa" + '</span>'
+                            ]
+                        },
+                        {
+                            tag: "button",
+                            class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+                            on: {
+                                click: function(evt) {
                                     containerHelp.editPage();
                                     var arr = self.$view.getElementsByClassName("pizo-list-realty-button-add");
                                     for (var i = 0; i < arr.length; i++) {

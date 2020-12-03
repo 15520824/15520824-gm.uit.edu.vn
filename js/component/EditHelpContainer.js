@@ -106,6 +106,201 @@ function EditHelpContainer() {
     })
 
     var updateTableFunction;
+    var containerEditView = _({
+        tag: "div",
+        class: "b-article",
+        style: {
+            display: "none"
+        },
+        child: [{
+                tag: "div",
+                class: "pizo-new-category-container-name",
+                child: [{
+                    tag: "div",
+                    class: "pizo-new-category-container-name-container",
+                    child: [{
+                            tag: "span",
+                            class: "pizo-new-category-container-name-container-label",
+                            props: {
+                                innerHTML: "Tên"
+                            }
+                        },
+                        {
+                            tag: "input",
+                            class: ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
+                            on: {
+                                change: function(event) {
+                                    if (self.$view.alias.value === "" || self.$view.aliasErorr.classList.contains("hasErrorElement")) {
+                                        self.$view.alias.value = createAlias(this.value);
+                                        self.$view.alias.dispatchEvent(new Event("input"));
+                                    }
+                                },
+                                blur: function() {
+                                    self.$view.saveDataCurrent();
+                                }
+                            }
+                        }
+                    ]
+                }]
+            },
+            {
+                tag: "div",
+                class: "b-article__headerLayout-edit",
+                props: {
+                    id: "article__header"
+                },
+                child: [{
+                    tag: "div",
+                    class: ["b-article__headerSide", "m-article__headerSide__nav"],
+                    props: {
+                        id: "headerSide__nav"
+                    },
+                    child: [{
+                        tag: "ul",
+                        class: "b-breadCrumbs__items",
+                        child: [{
+                            tag: "div",
+                            class: "pizo-new-catergory-container",
+                            child: [{
+                                    tag: "div",
+                                    class: "pizo-new-category-container-alias-active",
+                                    child: [{
+                                            tag: "div",
+                                            class: "pizo-new-category-container-alias",
+                                            child: [{
+                                                    tag: "div",
+                                                    class: "pizo-new-category-container-alias-container",
+                                                    child: [{
+                                                            tag: "span",
+                                                            class: "pizo-new-category-container-alias-container-label",
+                                                            props: {
+                                                                innerHTML: "Alias"
+                                                            },
+                                                            child: [{
+                                                                tag: "span",
+                                                                class: "pizo-new-realty-location-detail-row-label-important",
+                                                                props: {
+                                                                    innerHTML: "*"
+                                                                }
+                                                            }]
+                                                        },
+                                                        {
+                                                            tag: "input",
+                                                            class: ["pizo-new-category-container-alias-container-input", "pizo-new-realty-dectruct-input"],
+                                                            on: {
+                                                                input: function(event) {
+                                                                    var parent = this.parentNode.parentNode;
+                                                                    if (this.value == "") {
+                                                                        if (!parent.classList.contains("hasErrorElement"))
+                                                                            parent.classList.add("hasErrorElement");
+                                                                        if (!parent.classList.contains("invalid-error"))
+                                                                            parent.classList.add("invalid-error");
+                                                                    } else {
+                                                                        if (parent.classList.contains("invalid-error"))
+                                                                            parent.classList.remove("invalid-error");
+                                                                    }
+
+                                                                    if (listParent.items.check[this.value] !== undefined && self.$view.rowSelected.data.original.alias !== this.value) {
+                                                                        if (!parent.classList.contains("hasErrorElement"))
+                                                                            parent.classList.add("hasErrorElement");
+                                                                        if (!parent.classList.contains("used-error"))
+                                                                            parent.classList.add("used-error");
+                                                                    } else {
+                                                                        if (parent.classList.contains("used-error"))
+                                                                            parent.classList.remove("used-error");
+                                                                    }
+
+
+                                                                    if (!parent.classList.contains("used-error") && !parent.classList.contains("invalid-error") && parent.classList.contains("hasErrorElement"))
+                                                                        parent.classList.remove("hasErrorElement")
+                                                                },
+                                                                keypress: function(event) {
+                                                                    allowNumbersOnly(event);
+                                                                },
+                                                                blur: function() {
+                                                                    self.$view.saveDataCurrent();
+                                                                }
+                                                            }
+                                                        }
+
+                                                    ]
+                                                },
+                                                {
+                                                    tag: "span",
+                                                    class: ["pizo-new-realty-location-detail-row-label-important", "label-used-error"],
+                                                    props: {
+                                                        innerHTML: "Alias không có sẳn để sử dụng"
+                                                    }
+                                                },
+                                                {
+                                                    tag: "span",
+                                                    class: ["pizo-new-realty-location-detail-row-label-important", "label-invalid-error"],
+                                                    props: {
+                                                        innerHTML: "Alias không thể để trống"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            tag: "div",
+                                            class: "pizo-new-state-publish",
+                                            child: [{
+                                                tag: "div",
+                                                class: "pizo-new-state-publish-container",
+                                                child: [{
+                                                        tag: "span",
+                                                        class: "pizo-new-category-container-publish-container-label",
+                                                        props: {
+                                                            innerHTML: "Xuất bản"
+                                                        }
+                                                    },
+                                                    active
+                                                ]
+                                            }]
+                                        },
+                                    ]
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-new-state-selectbox",
+                                    child: [{
+                                        tag: "div",
+                                        class: "pizo-new-state-selectbox-container",
+                                        child: [{
+                                                tag: "span",
+                                                class: "pizo-new-state-selectbox-container-label",
+                                                props: {
+                                                    innerHTML: "Danh mục cha"
+                                                }
+                                            },
+                                            listParent
+                                        ]
+                                    }]
+                                }
+                            ]
+                        }]
+                    }]
+                }]
+            },
+            {
+                tag: "div",
+                class: ["b-article__wrapper", "os-host", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
+                child: [
+                    editor
+                ]
+            },
+            {
+                tag: "div",
+                class: ["b-article__wrapper", "os-host-bottom", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
+                child: [
+                    editorBottom
+                ]
+            }
+        ]
+    });
+    var containerPreview = this.$view.editViewContent();
+    this.$view.containerEditView = containerEditView;
+    this.$view.containerPreview = containerPreview;
     this.$view.addChild(_({
         tag: "div",
         class: ["b-workZone__side", "m-workZone__side__article"],
@@ -118,195 +313,10 @@ function EditHelpContainer() {
             props: {
                 id: "workZone_article__content"
             },
-            child: [{
-                tag: "div",
-                class: "b-article",
-                child: [{
-                        tag: "div",
-                        class: "pizo-new-category-container-name",
-                        child: [{
-                            tag: "div",
-                            class: "pizo-new-category-container-name-container",
-                            child: [{
-                                    tag: "span",
-                                    class: "pizo-new-category-container-name-container-label",
-                                    props: {
-                                        innerHTML: "Tên"
-                                    }
-                                },
-                                {
-                                    tag: "input",
-                                    class: ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
-                                    on: {
-                                        change: function(event) {
-                                            if (self.$view.alias.value === "" || self.$view.aliasErorr.classList.contains("hasErrorElement")) {
-                                                self.$view.alias.value = createAlias(this.value);
-                                                self.$view.alias.dispatchEvent(new Event("input"));
-                                            }
-                                        },
-                                        blur: function() {
-                                            self.$view.saveDataCurrent();
-                                        }
-                                    }
-                                }
-                            ]
-                        }]
-                    },
-                    {
-                        tag: "div",
-                        class: "b-article__headerLayout-edit",
-                        props: {
-                            id: "article__header"
-                        },
-                        child: [{
-                            tag: "div",
-                            class: ["b-article__headerSide", "m-article__headerSide__nav"],
-                            props: {
-                                id: "headerSide__nav"
-                            },
-                            child: [{
-                                tag: "ul",
-                                class: "b-breadCrumbs__items",
-                                child: [{
-                                    tag: "div",
-                                    class: "pizo-new-catergory-container",
-                                    child: [{
-                                            tag: "div",
-                                            class: "pizo-new-category-container-alias-active",
-                                            child: [{
-                                                    tag: "div",
-                                                    class: "pizo-new-category-container-alias",
-                                                    child: [{
-                                                            tag: "div",
-                                                            class: "pizo-new-category-container-alias-container",
-                                                            child: [{
-                                                                    tag: "span",
-                                                                    class: "pizo-new-category-container-alias-container-label",
-                                                                    props: {
-                                                                        innerHTML: "Alias"
-                                                                    },
-                                                                    child: [{
-                                                                        tag: "span",
-                                                                        class: "pizo-new-realty-location-detail-row-label-important",
-                                                                        props: {
-                                                                            innerHTML: "*"
-                                                                        }
-                                                                    }]
-                                                                },
-                                                                {
-                                                                    tag: "input",
-                                                                    class: ["pizo-new-category-container-alias-container-input", "pizo-new-realty-dectruct-input"],
-                                                                    on: {
-                                                                        input: function(event) {
-                                                                            var parent = this.parentNode.parentNode;
-                                                                            if (this.value == "") {
-                                                                                if (!parent.classList.contains("hasErrorElement"))
-                                                                                    parent.classList.add("hasErrorElement");
-                                                                                if (!parent.classList.contains("invalid-error"))
-                                                                                    parent.classList.add("invalid-error");
-                                                                            } else {
-                                                                                if (parent.classList.contains("invalid-error"))
-                                                                                    parent.classList.remove("invalid-error");
-                                                                            }
-
-                                                                            if (listParent.items.check[this.value] !== undefined && self.$view.rowSelected.data.original.alias !== this.value) {
-                                                                                if (!parent.classList.contains("hasErrorElement"))
-                                                                                    parent.classList.add("hasErrorElement");
-                                                                                if (!parent.classList.contains("used-error"))
-                                                                                    parent.classList.add("used-error");
-                                                                            } else {
-                                                                                if (parent.classList.contains("used-error"))
-                                                                                    parent.classList.remove("used-error");
-                                                                            }
-
-
-                                                                            if (!parent.classList.contains("used-error") && !parent.classList.contains("invalid-error") && parent.classList.contains("hasErrorElement"))
-                                                                                parent.classList.remove("hasErrorElement")
-                                                                        },
-                                                                        keypress: function(event) {
-                                                                            allowNumbersOnly(event);
-                                                                        },
-                                                                        blur: function() {
-                                                                            self.$view.saveDataCurrent();
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                            ]
-                                                        },
-                                                        {
-                                                            tag: "span",
-                                                            class: ["pizo-new-realty-location-detail-row-label-important", "label-used-error"],
-                                                            props: {
-                                                                innerHTML: "Alias không có sẳn để sử dụng"
-                                                            }
-                                                        },
-                                                        {
-                                                            tag: "span",
-                                                            class: ["pizo-new-realty-location-detail-row-label-important", "label-invalid-error"],
-                                                            props: {
-                                                                innerHTML: "Alias không thể để trống"
-                                                            }
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    tag: "div",
-                                                    class: "pizo-new-state-publish",
-                                                    child: [{
-                                                        tag: "div",
-                                                        class: "pizo-new-state-publish-container",
-                                                        child: [{
-                                                                tag: "span",
-                                                                class: "pizo-new-category-container-publish-container-label",
-                                                                props: {
-                                                                    innerHTML: "Xuất bản"
-                                                                }
-                                                            },
-                                                            active
-                                                        ]
-                                                    }]
-                                                },
-                                            ]
-                                        },
-                                        {
-                                            tag: "div",
-                                            class: "pizo-new-state-selectbox",
-                                            child: [{
-                                                tag: "div",
-                                                class: "pizo-new-state-selectbox-container",
-                                                child: [{
-                                                        tag: "span",
-                                                        class: "pizo-new-state-selectbox-container-label",
-                                                        props: {
-                                                            innerHTML: "Danh mục cha"
-                                                        }
-                                                    },
-                                                    listParent
-                                                ]
-                                            }]
-                                        }
-                                    ]
-                                }]
-                            }]
-                        }]
-                    },
-                    {
-                        tag: "div",
-                        class: ["b-article__wrapper", "os-host", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
-                        child: [
-                            editor
-                        ]
-                    },
-                    {
-                        tag: "div",
-                        class: ["b-article__wrapper", "os-host-bottom", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
-                        child: [
-                            editorBottom
-                        ]
-                    }
-                ]
-            }]
+            child: [
+                containerEditView,
+                containerPreview
+            ]
         }]
     }))
     moduleDatabase.getModule("helps").load({ ORDERING: "parent_id , ordering" }).then(function(value) {
@@ -326,12 +336,18 @@ function EditHelpContainer() {
     this.$view.listParent = listParent;
     this.$view.aliasErorr = $('div.pizo-new-category-container-alias', this.$view);
     this.$view.active = active;
+
     return this.$view;
 
 }
 
 Object.defineProperties(EditHelpContainer.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 EditHelpContainer.prototype.constructor = EditHelpContainer;
+
+EditHelpContainer.prototype.enableEditViewContent = function() {
+    this.containerPreview.style.display = "none";
+    this.containerEditView.style.display = "";
+}
 
 EditHelpContainer.prototype.functionClickMore = function(event, me, index, parent, data, row) {
     var self = this;
@@ -398,6 +414,24 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
     if (this.saveDataCurrent(row) === true)
         return;
 
+    this.titleLabel.innerHTML = data.original.title;
+    var text = data.original.fulltext;
+    if (data.original.related) {
+        text += "<div style='border: 1px solid;'></div>" + data.original.related;
+    }
+    this.containerView.innerHTML = text;
+    var location = "";
+    var tempElement = row;
+    while (tempElement && tempElement.tagName != "DIV") {
+        if (location !== "") {
+            location = "<span> > </span>" + location;
+        }
+        location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
+        tempElement = tempElement.getParentNode();
+    }
+    this.locationLabel.innerHTML = location;
+    this.containerPreview.style.display = "";
+    this.containerEditView.style.display = "none";
     row.indexDetail = index;
     row.parentDetail = parent;
     this.rowSelected = row;
@@ -663,8 +697,104 @@ EditHelpContainer.prototype.addDB = function(value) {
     return promiseAdd;
 }
 
-EditHelpContainer.prototype.edit = function(data, parent, index) {
-    var self = this;
+EditHelpContainer.prototype.edit = function(data, parent, index) {}
+
+EditHelpContainer.prototype.editViewContent = function() {
+    var location = _({
+        tag: "span",
+        class: "b-breadCrumbs__location_content",
+    })
+    var title = _({
+        tag: "li",
+        class: "b-breadCrumbs__item",
+        props: {
+            innerHTML: "Introduction"
+        }
+    })
+    var containerView = _({
+        tag: "div",
+        class: ["cke_editable", "cke_editable_themed", "cke_contents_ltr", "cke_show_borders"],
+        props: {
+            contenteditable: true,
+            spellcheck: false
+        }
+    })
+    var temp = _({
+        tag: "div",
+        class: ["b-article", "b-workZone__layout_helpcontainer_view"],
+        child: [{
+            tag: "div",
+            class: "b-article__headerLayout",
+            props: {
+                id: "article__header"
+            },
+            child: [{
+                    tag: "div",
+                    class: ["b-article__headerSide", "m-article__headerSide__nav"],
+                    props: {
+                        id: "headerSide__nav"
+                    },
+                    child: [{
+                            tag: "ul",
+                            class: "b-breadCrumbs__items",
+                            child: [title]
+                        },
+                        {
+                            tag: "div",
+                            class: "b-breadCrumbs__location",
+                            child: [{
+                                    tag: "span",
+                                    class: "b-breadCrumbs__location_title",
+                                    props: {
+                                        innerHTML: "Bạn ở đây "
+                                    }
+                                },
+                                location
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: "div",
+                    class: ["b-article__headerSide", "m-article__headerSide__buttons"],
+                    props: {
+                        id: "headerSide__buttons"
+                    },
+                    child: [{
+                        tag: "ul",
+                        class: "b-controlButtons__items",
+                        child: [
+
+                            {
+                                tag: "li",
+                                class: ["b-controlButtons__item", "m-controlButtons__item__print"],
+                                on: {
+                                    click: function() {
+                                        Dom.printElement(self.$view.containerView.parentNode);
+                                    }
+                                },
+                                child: [{
+                                    tag: "i",
+                                    class: "material-icons",
+                                    props: {
+                                        innerHTML: "print"
+                                    }
+                                }]
+                            }
+                        ]
+                    }]
+                }
+            ]
+        }, {
+            tag: "div",
+            class: "container-content-information",
+            child: [containerView]
+        }]
+    })
+    this.containerView = containerView;
+    this.titleLabel = title;
+    this.locationLabel = location;
+    return temp;
 }
 
 EditHelpContainer.prototype.editView = function(value, data, parent, index) {
