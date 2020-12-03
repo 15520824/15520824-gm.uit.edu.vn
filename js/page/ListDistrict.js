@@ -11,7 +11,7 @@ import { tableView, deleteQuestion } from '../component/ModuleView';
 
 import NewDistrict from '../component/NewDistrict';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
-
+import { loadingWheel } from '../component/FormatFunction';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -430,8 +430,10 @@ ListDistrict.prototype.add = function(parent_id = 0, row) {
 ListDistrict.prototype.addDB = function(mNewDistrict, row) {
     var self = this;
     mNewDistrict.promiseAddDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("districts").add(value).then(function(result) {
             self.addView(result, row);
+            loading.disable();
         })
         mNewDistrict.promiseAddDB = undefined;
         setTimeout(function() {

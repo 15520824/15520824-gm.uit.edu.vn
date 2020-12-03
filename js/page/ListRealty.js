@@ -6,7 +6,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import MergeRealty from '../component/MergeRealty';
 import MapRealty from './MapRealty';
-
+import { loadingWheel } from '../component/FormatFunction';
 
 import {
     tableView,
@@ -181,8 +181,9 @@ ListRealty.prototype.getView = function() {
                         self.mTable.resetHash();
                         arr.push(moduleDatabase.getModule("activehouses").update(tempData));
                     }
+                    var loading = new loadingWheel();
                     Promise.all(arr).then(function() {
-
+                        loading.disable();
                     })
                 } else {
                     saveButton.style.display = "none";
@@ -235,8 +236,9 @@ ListRealty.prototype.getView = function() {
                         self.mTable.resetHash();
                         arr.push(moduleDatabase.getModule("activehouses").update(tempData));
                     }
+                    var loading = new loadingWheel();
                     Promise.all(arr).then(function() {
-
+                        loading.disable();
                     })
                 } else {
                     saveButton.style.display = "none";
@@ -481,18 +483,21 @@ ListRealty.prototype.getView = function() {
         self.checkState = moduleDatabase.getModule("states").getLibary("id");
         var header = [{
                 type: "dragzone",
-                dragElement: false
+                dragElement: false,
+                disabled: true
             },
             {
                 type: "check",
                 dragElement: false,
-                hidden: true
+                hidden: true,
+                disabled: true
             }, {
                 value: 'MS',
                 sort: true,
                 style: {
                     minWidth: "30px"
-                }
+                },
+                disableInput: true
             }, 'Số nhà', {
                 value: 'Tên đường'
             }, {
@@ -502,7 +507,8 @@ ListRealty.prototype.getView = function() {
             }, {
                 value: 'Tỉnh/TP'
             }, {
-                value: 'Ghi chú'
+                value: 'Ghi chú',
+                hidden: true,
             }, {
                 value: 'Ngang',
                 sort: true,
@@ -539,20 +545,28 @@ ListRealty.prototype.getView = function() {
                 }
             }, {
                 value: 'Hiện trạng',
+                disableInput: true,
                 style: {
                     minWidth: "85px"
                 }
             }, {
-                value: 'Ngày tạo'
+                value: 'Ngày tạo',
+                sort: true
+            }, {
+                value: 'Ngày cập nhật',
+                sort: true
             }, {
                 type: "detail",
                 functionClickAll: functionClickMore,
-                dragElement: false
+                dragElement: false,
+                disabled: true
             }, {
-                hidden: true
+                hidden: true,
+                disabled: true
             }
         ];
         self.mTable = new tableView(header, [], true, true, 1);
+        self.mTable.addInputSearchHeader();
         var arr = [];
         var connect = "";
         for (var i = 0; i < value.length; i++) {
@@ -586,8 +600,8 @@ ListRealty.prototype.getView = function() {
                 }
                 self.mTable.updateTable(undefined, value);
                 self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
-                self.mTable.addFilter(hiddenConfirm, 19);
-                self.mTable.addFilter(self.HTinput, 17);
+                self.mTable.addFilter(hiddenConfirm, 20);
+                self.mTable.addFilter(self.HTinput, 16);
             })
         })
 
@@ -661,7 +675,18 @@ ListRealty.prototype.getDataRow = function(data) {
             structure = "Cấp 4";
             break;
         case 3:
-            structure = "Sẳn *";
+            structure = data.floor + " Tầng";
+            var advanceDetruct = data.advancedetruct;
+            var isAD = advanceDetruct % 10 ? true : false;
+            advanceDetruct = parseInt(advanceDetruct / 10);
+            var isAD1 = advanceDetruct % 10 ? true : false;
+            advanceDetruct = parseInt(advanceDetruct / 10);
+            if (isAD) {
+                structure += "+ Lửng";
+            }
+            if (isAD1) {
+                structure += "+ Sân thượng";
+            }
             break;
     }
     var direction;
@@ -759,7 +784,8 @@ ListRealty.prototype.getDataRow = function(data) {
         data.price + " tỉ",
         data.price * 1000 / data.acreage + " triệu",
         { value: parseInt(data.salestatus) + 1, element: _({ text: staus }) },
-        formatDate(data.created, true, true, true, true, true),
+        { value: formatDate(data.created, true, true, true, true, true), valuesort: new Date(data.created) },
+        { value: formatDate(data.modified, true, true, true, true, true), valuesort: new Date(data.modified) },
         {},
         "censorship" + data.censorship
     ];
@@ -1294,8 +1320,10 @@ ListRealty.prototype.add = function(parent_id = 0, row) {
 ListRealty.prototype.addDB = function(mNewRealty, row) {
     var self = this;
     mNewRealty.promiseAddDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("activehouses").add(value).then(function(result) {
             self.addView(result);
+            loading.disable();
         })
         mNewRealty.promiseAddDB = undefined;
         setTimeout(function() {
@@ -1341,9 +1369,11 @@ ListRealty.prototype.getDataEditFake = function(data) {
 ListRealty.prototype.editDB = function(mNewRealty, data, parent, index) {
     var self = this;
     mNewRealty.promiseEditDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("activehouses").update(value).then(function(result) {
             result.created = data.original.created;
             self.editView(result, parent, index);
+            loading.disable();
         })
         mNewRealty.promiseEditDB = undefined;
         setTimeout(function() {
@@ -1384,8 +1414,10 @@ ListRealty.prototype.deleteDB = function(data, parent, index) {
     var phpFile = moduleDatabase.deleteActiveHomesPHP;
     if (self.phpDeleteContent)
         phpFile = self.phpUpdateContent;
+    var loading = new loadingWheel();
     moduleDatabase.getModule("activehouses").delete({ id: data.id }).then(function(value) {
         self.deleteView(parent, index);
+        loading.disable();
     })
 }
 
@@ -1415,6 +1447,7 @@ ListRealty.prototype.merge = function(data, parent, index) {
         self.parent.body.activeFrame(frameview);
         self.mergeDB(mMergeRealty, data, parent, index);
         mMergeRealty.promiseEditDB.then(function(value) {
+            var loading = new loadingWheel();
             moduleDatabase.getModule("activehouses").add(value).then(function(final) {
                 var valueFinal;
                 if (self.isCensorship) {
@@ -1426,6 +1459,7 @@ ListRealty.prototype.merge = function(data, parent, index) {
 
                 self.mTable.data = valueFinal;
                 self.HTinput.emit("change");
+                loading.disable();
             });
         })
     })

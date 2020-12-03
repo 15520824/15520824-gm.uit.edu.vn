@@ -13,7 +13,6 @@ import NewRealty from '../component/NewRealty';
 import { unit_Long, unit_Zone, deleteQuestion } from '../component/ModuleView';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
 
-
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -2539,6 +2538,17 @@ MapRealty.prototype.detailHouse = function(data) {
                     class: "pizo-new-realty-dectruct-tab",
                     props: {
                         innerHTML: "Lịch sử sở hữu"
+                    }
+                }]
+            },
+            {
+                tag: "div",
+                // class:"",
+                child: [{
+                    tag: "div",
+                    class: "pizo-new-realty-dectruct-tab",
+                    props: {
+                        innerHTML: "Tiến trình lịch sử"
                     }
                 }]
             }

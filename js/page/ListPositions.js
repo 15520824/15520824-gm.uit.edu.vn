@@ -12,6 +12,7 @@ import { tableView, deleteQuestion } from '../component/ModuleView';
 
 import NewDepartment from '../component/NewDepartment';
 import NewPosition from '../component/NewPosition';
+import { loadingWheel } from '../component/FormatFunction';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -414,8 +415,10 @@ ListPositions.prototype.addDepartment = function(parent_id = 0, row) {
 ListPositions.prototype.addDBDepartment = function(mNewDepartment, row) {
     var self = this;
     mNewDepartment.promiseAddDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("departments").add(value).then(function(result) {
             self.addViewDepartment(result, row);
+            loading.disable();
         })
         mNewDepartment.promiseAddDB = undefined;
         setTimeout(function() {
@@ -461,8 +464,10 @@ ListPositions.prototype.editDBDepartment = function(mNewDepartment, data, parent
     var self = this;
     var parent_id = data.original.parent_id;
     mNewDepartment.promiseEditDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("departments").update(value).then(function(result) {
             self.editViewDepartment(result, data, parent, index, parent_id);
+            loading.disable();
         })
         mNewDepartment.promiseEditDB = undefined;
         setTimeout(function() {
@@ -521,8 +526,10 @@ ListPositions.prototype.deleteViewDepartment = function(parent, index) {
 
 ListPositions.prototype.deleteDBDepartment = function(data, parent, index) {
     var self = this;
+    var loading = new loadingWheel();
     moduleDatabase.getModule("departments").delete({ id: data.id }).then(function(value) {
         self.deleteViewDepartment(parent, index);
+        loading.disable();
     })
 }
 
@@ -539,12 +546,14 @@ ListPositions.prototype.addPosition = function(parent_id = 0, row) {
 
 ListPositions.prototype.addDBPosition = function(mNewPosition, row) {
     var self = this;
+
     mNewPosition.promiseAddDB.then(function(value) {
         var username = value.username;
         delete value.username;
+        var loading = new loadingWheel();
         moduleDatabase.getModule("positions").add(value).then(function(result) {
-            value.id = result.id;
 
+            value.id = result.id;
             if (value.username !== undefined) {
                 var x = {
                     id: username.id,
@@ -552,10 +561,13 @@ ListPositions.prototype.addDBPosition = function(mNewPosition, row) {
                 }
                 moduleDatabase.getModule("users").update(x).then(function() {
                     self.addViewPosition(value, row);
+                    loading.disable();
                 })
 
-            } else
+            } else {
                 self.addViewPosition(value, row);
+                loading.disable();
+            }
         })
 
 
@@ -594,6 +606,7 @@ ListPositions.prototype.editPosition = function(data, parent, index) {
 ListPositions.prototype.editDBPosition = function(mNewPosition, data, parent, index) {
     var self = this;
     mNewPosition.promiseEditDB.then(function(result) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("positions").update(result).then(function(value) {
             if (value.username !== undefined && value.username.positionid != value.id) {
                 var x = {
@@ -628,6 +641,7 @@ ListPositions.prototype.editDBPosition = function(mNewPosition, data, parent, in
                     self.checkAccount[value.id] = value.username;
                     value.username = undefined;
                     self.editViewPosition(value, data, parent, index);
+                    loading.disable();
                 })
 
             } else
@@ -669,8 +683,10 @@ ListPositions.prototype.deleteViewPosition = function(parent, index) {
 
 ListPositions.prototype.deleteDBPosition = function(data, parent, index) {
     var self = this;
+    var loading = new loadingWheel();
     moduleDatabase.getModule("positions").delete({ id: data.id }).then(function(value) {
         self.deleteViewPosition(parent, index);
+        loading.disable();
     })
 }
 

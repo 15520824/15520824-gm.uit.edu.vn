@@ -12,7 +12,7 @@ import { tableView, deleteQuestion } from '../component/ModuleView';
 import NewEquipment from '../component/NewEquipment';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
 import { getGMT, formatDate } from '../component/FormatFunction';
-
+import { loadingWheel } from '../component/FormatFunction';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -415,9 +415,11 @@ ListEquipment.prototype.edit = function(data, parent, index) {
 ListEquipment.prototype.editDB = function(mNewEquipment, data, parent, index) {
     var self = this;
     mNewEquipment.promiseEditDB.then(function(value) {
+        var loading = new loadingWheel();
         value.id = data.original.id;
         moduleDatabase.getModule("equipments").update(value).then(function(result) {
             self.editView(value, data, parent, index);
+            loading.disable();
         })
         mNewEquipment.promiseEditDB = undefined;
         setTimeout(function() {
@@ -454,8 +456,10 @@ ListEquipment.prototype.deleteView = function(parent, index) {
 
 ListEquipment.prototype.deleteDB = function(data, parent, index) {
     var self = this;
+    var loading = new loadingWheel();
     moduleDatabase.getModule("equipments").delete({ id: data.id }).then(function(value) {
         self.deleteView(parent, index);
+        loading.disable();
     })
 }
 

@@ -101,18 +101,18 @@ NewRealty.prototype.getView = function() {
                             class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
                             on: {
                                 click: function(evt) {
-
-                                    if (!isEqual(self.getDataSave(), self.data)) {
+                                    var dataSave = self.getDataSave();
+                                    if (dataSave !== false && !isEqual(dataSave, self.data)) {
                                         var deleteItem = deleteQuestion("Lưu thay đổi", "Bạn muốn đóng (tất cả những chỉnh sửa sẽ không được lưu lại)?");
                                         self.$view.addChild(deleteItem);
                                         deleteItem.promiseComfirm.then(function() {
-                                            self.rejectDB(self.getDataSave());
+                                            self.rejectDB(dataSave);
                                             self.$view.selfRemove();
                                             var arr = self.parent.body.getAllChild();
                                             self.parent.body.activeFrame(arr[arr.length - 1]);
                                         })
                                     } else {
-                                        self.rejectDB(self.getDataSave());
+                                        self.rejectDB(dataSave);
                                         self.$view.selfRemove();
                                         var arr = self.parent.body.getAllChild();
                                         self.parent.body.activeFrame(arr[arr.length - 1]);
@@ -129,8 +129,11 @@ NewRealty.prototype.getView = function() {
                             class: ["pizo-list-realty-button-save", "pizo-list-realty-button-element"],
                             on: {
                                 click: function(evt) {
-                                    self.resolveDB(self.getDataSave());
-                                    self.data = self.getDataSave();
+                                    var dataSave = self.getDataSave(true);
+                                    if (dataSave == false)
+                                        return;
+                                    self.resolveDB(dataSave);
+                                    self.data = dataSave;
                                     self.createPromise();
                                 }
                             },
@@ -143,8 +146,11 @@ NewRealty.prototype.getView = function() {
                             class: ["pizo-list-realty-button-save-close", "pizo-list-realty-button-element"],
                             on: {
                                 click: function(evt) {
-                                    self.resolveDB(self.getDataSave());
-                                    self.data = self.getDataSave();
+                                    var dataSave = self.getDataSave(true);
+                                    if (dataSave == false)
+                                        return;
+                                    self.resolveDB(dataSave);
+                                    self.data = dataSave;
                                     self.$view.selfRemove();
                                     var arr = self.parent.body.getAllChild();
                                     self.parent.body.activeFrame(arr[arr.length - 1]);
@@ -520,13 +526,6 @@ NewRealty.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
     else
         addressid = 0;
     var text = _({ text: "Địa chỉ cũ" });
-    var important = _({
-        tag: "span",
-        class: "pizo-new-realty-location-detail-row-label-important",
-        props: {
-            innerHTML: "*"
-        }
-    });
     var temp = _({
         tag: "div",
         class: ["pizo-new-realty-desc-detail-row", "addressItemCheck"],
@@ -534,8 +533,7 @@ NewRealty.prototype.itemAddressOld = function(data = { addressid_old: 0 }) {
                 tag: "span",
                 class: "pizo-new-realty-desc-detail-1-row-label",
                 child: [
-                    text,
-                    important
+                    text
                 ]
 
             },
@@ -1008,6 +1006,13 @@ NewRealty.prototype.detructView = function() {
                     props: {
                         innerHTML: "Giá thuê tháng"
                     },
+                    child: [{
+                        tag: "span",
+                        class: "pizo-new-realty-location-detail-row-label-important",
+                        props: {
+                            innerHTML: "*"
+                        }
+                    }]
                 },
                 {
                     tag: "input",
@@ -1043,7 +1048,20 @@ NewRealty.prototype.detructView = function() {
             ]
         }]
     });
-
+    var important = _({
+        tag: "span",
+        class: "pizo-new-realty-location-detail-row-label-important",
+        props: {
+            innerHTML: "*"
+        }
+    });
+    var important1 = _({
+        tag: "span",
+        class: "pizo-new-realty-location-detail-row-label-important",
+        props: {
+            innerHTML: "*"
+        }
+    });
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-dectruct",
@@ -1082,6 +1100,9 @@ NewRealty.prototype.detructView = function() {
                                                     props: {
                                                         innerHTML: "Ngang"
                                                     },
+                                                    child: [
+                                                        important
+                                                    ]
                                                 },
                                                 {
                                                     tag: "input",
@@ -1127,6 +1148,9 @@ NewRealty.prototype.detructView = function() {
                                                     props: {
                                                         innerHTML: "Dài"
                                                     },
+                                                    child: [
+                                                        important1
+                                                    ]
                                                 },
                                                 {
                                                     tag: "input",
@@ -1703,6 +1727,13 @@ NewRealty.prototype.detructView = function() {
                                             props: {
                                                 innerHTML: "Giá"
                                             },
+                                            child: [{
+                                                tag: "span",
+                                                class: "pizo-new-realty-location-detail-row-label-important",
+                                                props: {
+                                                    innerHTML: "*"
+                                                }
+                                            }]
                                         },
                                         {
                                             tag: "input",
@@ -1883,7 +1914,7 @@ NewRealty.prototype.setRequestEdit = function() {
     this.isRequestEdit = true;
 }
 
-NewRealty.prototype.getDataSave = function() {
+NewRealty.prototype.getDataSave = function(isCheck = false) {
     var fitUpdate = 0;
     if (this.inputFit.values.length !== 0)
         fitUpdate = this.inputFit.values.reduce(function(a, b) { return a + b; });
@@ -1943,6 +1974,7 @@ NewRealty.prototype.getDataSave = function() {
         censorship: this.inputCensorship.checked == true ? 1 : 0
             // important:this.viewCurrentStaus.getImportTant()
     }
+
     var arr = [];
     for (var i = 0; i < this.containerEquipment.childNodes.length; i++) {
         arr.push(this.containerEquipment.childNodes[i].getData());
@@ -2031,6 +2063,53 @@ NewRealty.prototype.getDataSave = function() {
     if (this.isRequestEdit) {
         temp.userid = window.userid;
     }
+    if (isCheck == true) {
+        if (temp.addressid == undefined) {
+            alert("Vui lòng nhập địa chỉ");
+            this.inputLease.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            return false;
+        }
+
+        if (temp.salestatus == 0 && temp.id !== undefined) {
+            alert("Vui lòng nhập thông tin hiện trạng");
+            this.inputLease.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            return false;
+        }
+
+        if (contact.length == 0) {
+            alert("Vui lòng nhập thông tin liên hệ");
+            this.containerEquipment.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            return false;
+        }
+
+        if (temp.height == 0 || temp.height == "") {
+            alert("Vui lòng nhập chiều ngang");
+            this.inputHeight.focus();
+            this.inputHeight.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            return false;
+        }
+        if (temp.width == 0 || temp.width == "") {
+            alert("Vui lòng nhập chiều dài");
+            this.inputWidth.focus();
+            this.inputWidth.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            return false;
+        }
+
+        if (temp.price == 0) {
+            alert("Vui lòng nhập giá");
+            this.inputPrice.focus();
+            this.inputPrice.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            return false;
+        }
+
+        if (temp.pricerent == 0) {
+            alert("Vui lòng nhập giá thuê");
+            this.inputPriceRent.focus();
+            this.inputPriceRent.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            return false;
+        }
+    }
+
     return temp;
 }
 
@@ -2798,6 +2877,13 @@ NewRealty.prototype.contactView = function() {
         class: "pizo-new-realty-contact-content",
         child: []
     });
+    var important = _({
+        tag: "span",
+        class: "pizo-new-realty-location-detail-row-label-important",
+        props: {
+            innerHTML: "*"
+        }
+    });
     var temp = _({
         tag: "div",
         class: "pizo-new-realty-contact",
@@ -2809,7 +2895,10 @@ NewRealty.prototype.contactView = function() {
                         class: "pizo-new-realty-contact-tab-label",
                         props: {
                             innerHTML: "Thông tin liên hệ"
-                        }
+                        },
+                        child: [
+                            important
+                        ]
                     },
                     {
                         tag: "button",

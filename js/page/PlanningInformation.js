@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/PlanningInformation.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { consoleWKT, loaddingWheel, getGMT, formatDate, consoleWKTLine } from '../component/FormatFunction';
+import { consoleWKT, loadingWheel, getGMT, formatDate, consoleWKTLine } from '../component/FormatFunction';
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
@@ -29,7 +29,7 @@ PlanningInformation.prototype.setContainer = function(parent) {
 Object.defineProperties(PlanningInformation.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
 PlanningInformation.prototype.constructor = PlanningInformation;
 
-PlanningInformation.prototype.setUpDxfFile = function(fileText, loadding) {
+PlanningInformation.prototype.setUpDxfFile = function(fileText, loading) {
     var parser = new DxfParser();
     var dxf = null;
     try {
@@ -61,7 +61,7 @@ PlanningInformation.prototype.setUpDxfFile = function(fileText, loadding) {
         strokeWeight: 1,
     });
     console.timeEnd("dcel cost");
-    loadding.disable();
+    loading.disable();
 }
 
 PlanningInformation.prototype.showHideLine = function() {
@@ -168,15 +168,15 @@ PlanningInformation.prototype.getView = function() {
                             document.body.appendChild(deleteQuestionCommit);
                             deleteQuestionCommit.promiseComfirm.then(function() {
                                 self.commitComment = inputElement.childNodes[1].value;
-                                var loadding = new loaddingWheel();
+                                var loading = new loadingWheel();
                                 setTimeout(function() {
-                                    self.setUpDxfFile(fileText, loadding)
+                                    self.setUpDxfFile(fileText, loading)
                                 }, 60)
                             })
                         } else {
-                            var loadding = new loaddingWheel();
+                            var loading = new loadingWheel();
                             setTimeout(function() {
-                                self.setUpDxfFile(fileText, loadding)
+                                self.setUpDxfFile(fileText, loading)
                             }, 60)
                         }
                     }

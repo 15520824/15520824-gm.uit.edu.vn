@@ -42,10 +42,11 @@
 
 .pizo-list-realty-page-allinput-search {
     position: absolute;
-    transform: translate(-105%, 0.2rem);
     height: calc(100% - 0.4rem);
     width: 4em;
     border: solid 0.0714rem var(--color-input-color);
+    right: 3px;
+    top: 3px;
 }
 
 .pizo-list-realty-page-number {

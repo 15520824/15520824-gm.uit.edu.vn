@@ -11,7 +11,7 @@ import { tableView, deleteQuestion } from '../component/ModuleView';
 
 import NewWard from '../component/NewWard';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
-
+import { loadingWheel } from '../component/FormatFunction';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -471,8 +471,10 @@ ListWard.prototype.add = function(parent_id = 0, row) {
 ListWard.prototype.addDB = function(mNewWard, row) {
     var self = this;
     mNewWard.promiseAddDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("wards").add(value).then(function(result) {
             self.addView(result, row);
+            loading.disable();
         })
         mNewWard.promiseAddDB = undefined;
         setTimeout(function() {
@@ -505,8 +507,10 @@ ListWard.prototype.editDB = function(mNewWard, data, parent, index) {
     var self = this;
     mNewWard.promiseEditDB.then(function(value) {
         value.id = data.original.id;
+        var loading = new loadingWheel();
         moduleDatabase.getModule("wards").update(value).then(function(result) {
             self.editView(value, data, parent, index);
+            loading.disable();
         })
         mNewWard.promiseEditDB = undefined;
         setTimeout(function() {
@@ -545,8 +549,10 @@ ListWard.prototype.deleteView = function(parent, index) {
 
 ListWard.prototype.deleteDB = function(data, parent, index) {
     var self = this;
+    var loading = new loadingWheel();
     moduleDatabase.getModule("wards").delete({ id: data.id }).then(function(value) {
         self.deleteView(parent, index);
+        loading.disable();
     })
 }
 

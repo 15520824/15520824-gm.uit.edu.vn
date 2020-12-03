@@ -9,7 +9,7 @@ import "../../css/NewCategory.css"
 import { tableView, deleteQuestion } from './ModuleView';
 import { allowNumbersOnly, createAlias } from './ModuleView';
 import moduleDatabase from '../component/ModuleDatabase';
-import { loaddingWheel } from './FormatFunction';
+import { loadingWheel } from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -417,7 +417,7 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
         return true;
     if (row === undefined)
         isRemove = false;
-    this.listParent.updateItemList();
+
     var value = {
         title: this.name.value,
         alias: this.alias.value,
@@ -441,7 +441,7 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
             rowSelected.indexDetail = arr.indexDetail
         }
     }
-
+    this.listParent.updateItemList();
     return false;
 }
 
@@ -641,11 +641,11 @@ EditHelpContainer.prototype.add = function(parentid, row = this.mTable) {
     var self = this;
     var value = this.default(parentid, row.childrenNodes.length);
     var promiseParent = self.addDB(value);
-    var loadding = new loaddingWheel();
+    var loading = new loadingWheel();
     promiseParent.then(function(result) {
         value = self.formatDataRowOne(result);
         self.addView(value, row);
-        loadding.disable();
+        loading.disable();
     })
 }
 
@@ -677,8 +677,6 @@ EditHelpContainer.prototype.editView = function(value, data, parent, index) {
             data.original.isAlias = true;
         if (data.original.active !== value.active)
             data.original.isActive = true;
-
-
 
         if (value.fulltext !== undefined) {
             if (data.original.fulltext !== value.fulltext)
@@ -786,20 +784,22 @@ EditHelpContainer.prototype.editContentAll = function() {
     var self = this;
     self.syncRow();
     var sync = self.mTable.data;
-    var loadding = new loaddingWheel();
+    var loading = new loadingWheel();
     var promiseAll = self.updateChild(sync);
     Promise.all(promiseAll).then(function() {
-        loadding.disable();
-    })
+        loading.disable();
+        var arr = this.getElementsByClassName("choice-event-category");
+        if (this.alias.parentNode.parentNode.classList.contains("hasErrorElement") && arr.length > 0)
+            arr[0].scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    }.bind(this))
 }
 
 EditHelpContainer.prototype.updateChild = function(child) {
-    var self = this;
     var promiseAll = [];
-    var dataUpdate = {};
     var isUpdate;
     for (var i = 0; i < child.length; i++) {
         isUpdate = false;
+        var dataUpdate = {};
         dataUpdate.id = child[i].original.id;
         if (child[i].original.isTitle === true) {
             isUpdate = true;

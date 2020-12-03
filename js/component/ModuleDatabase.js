@@ -607,7 +607,6 @@ DataStructure.prototype.delete = function(data) {
 DataStructure.prototype.queryData = function(phpFile, data, name = "") {
     var self = this;
     var result = {};
-
     if (self.name !== undefined) {
         name = self.name;
     }

@@ -11,7 +11,7 @@ import { tableView, deleteQuestion } from '../component/ModuleView';
 
 import NewJuridical from '../component/NewJuridical';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
-
+import { loadingWheel } from '../component/FormatFunction';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -356,8 +356,10 @@ ListJuridical.prototype.add = function(parent_id = 0, row) {
 ListJuridical.prototype.addDB = function(mNewJuridical, row) {
     var self = this;
     mNewJuridical.promiseAddDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("juridicals").add(value).then(function(result) {
             self.addView(result, row);
+            loading.disable();
         })
         mNewJuridical.promiseAddDB = undefined;
         setTimeout(function() {
@@ -387,9 +389,11 @@ ListJuridical.prototype.edit = function(data, parent, index) {
 ListJuridical.prototype.editDB = function(mNewJuridical, data, parent, index) {
     var self = this;
     mNewJuridical.promiseEditDB.then(function(value) {
+        var loading = new loadingWheel();
         value.id = data.original.id;
         moduleDatabase.getModule("juridicals").update(value).then(function(result) {
             self.editView(value, data, parent, index);
+            loading.disable();
         })
         mNewJuridical.promiseEditDB = undefined;
         setTimeout(function() {
@@ -425,8 +429,10 @@ ListJuridical.prototype.deleteView = function(parent, index) {
 
 ListJuridical.prototype.deleteDB = function(data, parent, index) {
     var self = this;
+    var loading = new loadingWheel();
     moduleDatabase.getModule("juridicals").delete({ id: data.id }).then(function(value) {
         self.deleteView(parent, index);
+        loading.disable();
     })
 }
 

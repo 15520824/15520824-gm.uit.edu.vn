@@ -797,6 +797,33 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     return result;
 }
 
+tableView.prototype.updateTableHeader = function() {
+    var header = this.header;
+    var result = this;
+    var check = this.check;
+    var cell, row;
+    row = _({
+        tag: "tr"
+    });
+    var k = 0;
+    result.clone = [];
+    for (var i = 0; i < header.length; i++) {
+        if (header[i].hidden === false || header[i].hidden === undefined) {
+            check[i] = undefined;
+            result.clone[k] = [];
+            cell = result.getCellHeader(header[i], i)
+            result.clone[k++].push(cell);
+            row.addChild(cell);
+        } else
+            check[i] = "hidden";
+    }
+    this.headerTable.replaceChild(row, this.headerTable.childNodes[0]);
+    if (this.isInputHeader) {
+        this.addInputSearchHeader();
+    }
+    this.updateTable();
+}
+
 tableView.prototype.getElementNext = function(element) {
     if (element.childrenNodes.length > 0) {
         return this.getElementNext(element.childrenNodes[element.childrenNodes.length - 1]);
@@ -1287,7 +1314,7 @@ tableView.prototype.getCellHeader = function(header, i) {
 
     var mousedown = (dragHorizontal && dragElement) ? function(index) {
         return function(event) {
-            event.preventDefault();
+            // event.preventDefault();
             var finalIndex;
             for (var i = 0; i < result.clone.length; i++) {
                 if (result.clone[i][0].id == index) {
@@ -1413,45 +1440,110 @@ tableView.prototype.getCellHeader = function(header, i) {
         bonus = undefined;
     }
     container.addChild(childUpDown);
+    cell.container = container;
     return cell;
 }
 
 tableView.prototype.modalChoice = function() {
+    var self = this;
     var tempDiv = _({
         tag: "div",
-        class: ""
+        class: "tableview-choice-container-content",
     })
+    var functionESC;
     var modal = _({
         tag: "modal",
-        class: "",
-        child: [
-            tempDiv
-        ]
-    })
-    var checked, value;
-    for (var i = 0; i < this.header.length; i++) {
-        if (this.header[i].type === "check") {
-            continue;
+        class: "tableview-choice-container",
+        child: [{
+                tag: "div",
+                class: "tableview-choice-container-tab",
+                child: [{
+                        tag: "span",
+                        class: "tableview-choice-container-tab-label",
+                        props: {
+                            innerHTML: "Chọn thông tin hiển thị"
+                        }
+                    },
+                    {
+                        tag: "button",
+                        class: "tableview-choice-container-tab-button",
+                        on: {
+                            click: function(event) {
+                                modal.applyChecked();
+                                self.updateTableHeader();
+                                modal.selfRemove();
+                                modal.removeEventListener("keydown", functionESC);
+                            }
+                        },
+                        props: {
+                            innerHTML: "Xong"
+                        }
+                    }
+                ]
+            },
+            tempDiv,
+        ],
+        on: {
+            click: function(event) {
+                if (event.target.classList.contains("tableview-choice-container") == true) {
+                    modal.selfRemove();
+                    modal.removeEventListener("keydown", functionESC);
+                }
+            }
         }
-        if (this.header[i].hidden == true)
+    })
+    functionESC = function(event) {
+        if (event.keyCode == 27) {
+            modal.selfRemove();
+            modal.removeEventListener("keydown", functionESC);
+        }
+    }
+    var arrCheckBox = [];
+    self.addEventListener("keydown", functionESC);
+    var checked, value;
+    for (var i = 0; i < self.header.length; i++) {
+        if (self.header[i].disabled == true)
+            continue;
+        if (self.header[i].hidden == true)
             checked = false;
         else
             checked = true;
-        if (this.header[i].value !== undefined)
-            value = this.header[i].value;
-        else if (typeof this.header[i] === "string")
-            value = this.header[i];
+        if (self.header[i].value !== undefined)
+            value = self.header[i].value;
+        else if (typeof self.header[i] === "string")
+            value = self.header[i];
         else
             value = "";
-        if (value == "")
-            continue;
-        tempDiv.addChild(_({
+        var checkboxTemp = _({
             tag: "checkbox",
             props: {
                 checked: checked,
                 text: value
             }
-        }))
+        })
+        checkboxTemp.data = i;
+        tempDiv.addChild(checkboxTemp);
+        arrCheckBox.push(checkboxTemp);
+    }
+    modal.applyChecked = function() {
+        for (var i = 0; i < arrCheckBox.length; i++) {
+            if (arrCheckBox[i].data.disabled == true)
+                continue;
+            if (arrCheckBox[i].checked == false) {
+                if (typeof self.header[arrCheckBox[i].data] == "object") {
+                    self.header[arrCheckBox[i].data].hidden = true;
+                } else {
+                    self.header[arrCheckBox[i].data] = {
+                        value: self.header[arrCheckBox[i].data],
+                        hidden: true
+                    }
+                }
+            } else {
+                if (typeof self.header[arrCheckBox[i].data] == "object") {
+                    self.header[arrCheckBox[i].data].hidden = undefined;
+                }
+            }
+        }
     }
     return modal;
 }
@@ -1576,6 +1668,32 @@ tableView.prototype.setArrayScroll = function(num, isLeft = true) {
             self.setArrayFix(num, isLeft);
         }, 10);
     })
+}
+
+tableView.prototype.addInputSearchHeader = function() {
+    this.isInputHeader = true;
+    var header = this.header;
+    var check = this.check;
+    var headerElement = this.headerTable.childNodes[0];
+    var k = 0;
+    for (var i = 0; i < header.length; i++) {
+        if (check[i] === undefined && header[i].disableInput !== true) {
+            var input = _({
+                tag: "input",
+                class: "searchheader-input"
+            })
+            this.addInputSearch(input, i);
+            headerElement.childNodes[k].appendChild(_({
+                tag: "div",
+                class: "searchheader",
+                child: [
+                    input
+                ]
+            }))
+        }
+        if (check[i] !== "hidden")
+            k++;
+    }
 }
 
 tableView.prototype.addInputSearch = function(input, index) {
@@ -2508,9 +2626,8 @@ tableView.prototype.getRow = function(data) {
             return;
         return parent.updateRow(data, index);
     }
-    
-    temp.getParentNode = function()
-    {
+
+    temp.getParentNode = function() {
         var parent = temp.childNodes[0].getParentNode();
         var index = parent.childrenNodes.indexOf(this);
         if (index == -1)
@@ -3094,7 +3211,10 @@ tableView.prototype.updateTable = function(header, data, dragHorizontal, dragVer
         temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
 
     for (var i = 0; i < result.clone.length; i++) {
-        result.clone[i] = [result.clone[i].shift()];
+        if (this.headerTable.childNodes.length > 1)
+            result.clone[i] = [result.clone[i][0], result.clone[i][1]];
+        else
+            result.clone[i] = [result.clone[i].shift()];
     }
 
     this.realTable.replaceChild(temp, this.bodyTable);
@@ -3238,8 +3358,7 @@ tableView.prototype.insertRow = function(data, checkMust = false) {
 
     }
     if (checkChild === true || checkMust === true) {
-        if (result.checkIcon !== undefined)
-        {
+        if (result.checkIcon !== undefined) {
             result.checkIcon();
         }
     }
@@ -3424,13 +3543,13 @@ tableView.prototype.updateRow = function(data, index, checkMust = false) {
         result.checkMargin();
 
     //    result.checkDataUpdate(row);
-    setTimeout(function(){
+    setTimeout(function() {
         if (temp.classList.contains("more-child")) {
             row.classList.add("more-child");
         } else {
             row.classList.remove("more-child");
         }
-    },100)
+    }, 100)
     result.realTable.parentNode.resetHash();
     // result.realTable.parentNode.updateHash(row);
     return row;
@@ -3553,7 +3672,6 @@ tableView.prototype.changeParent = function(index, rowParent) {
     var element = result.clone[0][index + 1].parentNode;
     var parent = element.childNodes[0].getParentNode();
 
-
     var deltaY = 0;
 
     deltaX = parent.checkLongRow(index);
@@ -3566,8 +3684,6 @@ tableView.prototype.changeParent = function(index, rowParent) {
         if (element.childNodes[i].colSpan !== undefined)
             deltaY += element.childNodes[i].colSpan - 1;
     }
-
-
 
     if (parent.childrenNodes.length !== 0) {
         var indexData = parent.childrenNodes.indexOf(element);
@@ -3793,7 +3909,13 @@ tableView.prototype.backGround = function(height, callback, index) {
 
 
 tableView.prototype.deleteColumn = function(index) {
-    this.header[index].hidden = true;
+    if (typeof this.header[index] == "object")
+        this.header[index].hidden = true;
+    else
+        this.header[index] = {
+            value: this.header[index],
+            hidden: true
+        }
     for (var i = 0; i < this.clone[index].length; i++) {
         this.clone[index][i].selfRemove();
     }
@@ -4160,8 +4282,14 @@ function sortArray(arr, index, increase = true) {
                 if (a.child !== undefined) {
                     sortArray(a.child, index, increase);
                 }
-            var valueA = a[index].value;
-            var valueB = b[index].value;
+            if (a[index].valuesort)
+                var valueA = a[index].valuesort;
+            else
+                var valueA = a[index].value;
+            if (b[index].valuesort)
+                var valueB = b[index].valuesort;
+            else
+                var valueB = b[index].value;
             if (valueA === undefined)
                 valueA = a[index];
             if (valueB === undefined)
@@ -4180,8 +4308,14 @@ function sortArray(arr, index, increase = true) {
             if (prev.length === 1)
                 if (a.child !== undefined)
                     sortArray(a.child, index, increase);
-            var valueA = a[index].value;
-            var valueB = b[index].value;
+            if (a[index].valuesort)
+                var valueA = a[index].valuesort;
+            else
+                var valueA = a[index].value;
+            if (b[index].valuesort)
+                var valueB = b[index].valuesort;
+            else
+                var valueB = b[index].value;
             if (valueA === undefined)
                 valueA = a[index];
             if (valueB === undefined)

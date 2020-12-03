@@ -11,7 +11,7 @@ import { tableView, deleteQuestion } from '../component/ModuleView';
 
 import NewTypeActivehouse from '../component/NewTypeActivehouse';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
-
+import { loadingWheel } from '../component/FormatFunction';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -355,8 +355,10 @@ ListTypeActivehouse.prototype.add = function(parent_id = 0, row) {
 ListTypeActivehouse.prototype.addDB = function(mNewTypeActivehouse, row) {
     var self = this;
     mNewTypeActivehouse.promiseAddDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("type_activehouses").add(value).then(function(result) {
             self.addView(result, row);
+            loading.disable();
         })
         mNewTypeActivehouse.promiseAddDB = undefined;
         setTimeout(function() {
@@ -387,8 +389,10 @@ ListTypeActivehouse.prototype.editDB = function(mNewTypeActivehouse, data, paren
     var self = this;
     mNewTypeActivehouse.promiseEditDB.then(function(value) {
         value.id = data.original.id;
+        var loading = new loadingWheel();
         moduleDatabase.getModule("type_activehouses").update(value).then(function(result) {
             self.editView(value, data, parent, index);
+            loading.disable();
         })
         mNewTypeActivehouse.promiseEditDB = undefined;
         setTimeout(function() {
@@ -424,8 +428,10 @@ ListTypeActivehouse.prototype.deleteView = function(parent, index) {
 
 ListTypeActivehouse.prototype.deleteDB = function(data, parent, index) {
     var self = this;
+    var loading = new loadingWheel();
     moduleDatabase.getModule("type_activehouses").delete({ id: data.id }).then(function(value) {
         self.deleteView(parent, index);
+        loading.disable();
     })
 }
 

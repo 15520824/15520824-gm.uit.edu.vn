@@ -371,6 +371,7 @@ for($i = 0;$i<count($image_old);$i++)
       }
 }
 
+$data["modified"] = new DateTime();
 $result = $connector-> update($prefix."activehouses", $data);
 
 $result = array(

@@ -161,6 +161,7 @@ if(isset($data["oldId"]))
     $oldId = $data["oldId"];
 }
 
+$data["modified"] = new DateTime();
 $result = $connector-> insert($prefix."activehouses", $data);
 $data["id"] = $result;
 

@@ -2657,6 +2657,7 @@ NewAccount.prototype.getView = function(dataParent) {
         }
     }.bind(this))
     this.selectPermission = selectPermission;
+    this.sendButton = $('.pizo-new-account-container-permission-addvance-selectmenu-icon', this.$view);
     this.name = $('input.pizo-new-account-container-name-container-input', this.$view);
     this.email = $('input.pizo-new-account-container-email-container-input', this.$view);
     this.phone = $('input.pizo-new-account-container-phone-container-input', this.$view);
@@ -2957,6 +2958,7 @@ NewAccount.prototype.setValueNull = function(object) {
 }
 
 NewAccount.prototype.getDataSave = function() {
+    this.sendButton.click();
     var avatar = this.avatar.src;
     avatar = avatar.replace("https://lab.daithangminh.vn/home_co/pizo/assets/avatar/", "");
     var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;

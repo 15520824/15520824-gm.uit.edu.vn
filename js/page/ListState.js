@@ -11,7 +11,7 @@ import { tableView, deleteQuestion } from '../component/ModuleView';
 
 import NewState from '../component/NewState';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
-
+import { loadingWheel } from '../component/FormatFunction';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -396,8 +396,10 @@ ListState.prototype.add = function(parent_id = 0, row) {
 ListState.prototype.addDB = function(mNewState, row) {
     var self = this;
     mNewState.promiseAddDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("states").add(value).then(function(result) {
             self.addView(result, row);
+            loading.disable();
         })
         mNewState.promiseAddDB = undefined;
         setTimeout(function() {
@@ -430,8 +432,10 @@ ListState.prototype.editDB = function(mNewState, data, parent, index) {
     var self = this;
     mNewState.promiseEditDB.then(function(value) {
         value.id = data.original.id;
+        var loading = new loadingWheel();
         moduleDatabase.getModule("states").update(value).then(function(result) {
             self.editView(value, data, parent, index);
+            loading.disable();
         })
         mNewState.promiseEditDB = undefined;
         setTimeout(function() {
@@ -471,8 +475,10 @@ ListState.prototype.deleteView = function(parent, index) {
 
 ListState.prototype.deleteDB = function(data, parent, index) {
     var self = this;
+    var loading = new loadingWheel();
     moduleDatabase.getModule("states").delete({ id: data.id }).then(function(value) {
         self.deleteView(parent, index);
+        loading.disable();
     })
 }
 

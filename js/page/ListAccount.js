@@ -13,7 +13,7 @@ import { tableView, deleteQuestion } from '../component/ModuleView';
 import NewAccount from '../component/NewAccount';
 
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
-
+import { loadingWheel } from '../component/FormatFunction';
 var _ = Fcore._;
 var $ = Fcore.$;
 
@@ -614,8 +614,10 @@ ListAccount.prototype.add = function(parent_id = 0, row) {
 ListAccount.prototype.addDB = function(mNewAccount, row) {
     var self = this;
     mNewAccount.promiseAddDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("users").add(value).then(function(result) {
             self.addView(result, row);
+            loading.disable();
         })
         mNewAccount.promiseAddDB = undefined;
         setTimeout(function() {
@@ -647,8 +649,10 @@ ListAccount.prototype.edit = function(data, parent, index) {
 ListAccount.prototype.editDB = function(mNewAccount, data, parent, index) {
     var self = this;
     mNewAccount.promiseEditDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("users").update(value).then(function(result) {
             self.editView(value, data, parent, index);
+            loading.disable();
         })
         mNewAccount.promiseEditDB = undefined;
         setTimeout(function() {
@@ -688,8 +692,10 @@ ListAccount.prototype.deleteView = function(parent, index) {
 
 ListAccount.prototype.deleteDB = function(data, parent, index) {
     var self = this;
+    var loading = new loadingWheel();
     moduleDatabase.getModule("users").delete({ id: data.id }).then(function(value) {
         self.deleteView(parent, index);
+        loading.disable();
     })
 }
 

@@ -9,6 +9,7 @@ import moduleDatabase from '../component/ModuleDatabase';
 import { MapView } from "./MapView";
 import NewAccount from '../component/NewAccount';
 import { reFormatNumber, formatFit } from './FormatFunction'
+import { loadingWheel } from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -1569,8 +1570,10 @@ MergeRealty.prototype.editAccount = function(node, data) {
 MergeRealty.prototype.editDBAccount = function(mNewAccount, data, node) {
     var self = this;
     mNewAccount.promiseEditDB.then(function(value) {
+        var loading = new loadingWheel();
         moduleDatabase.getModule("users").update(value).then(function(result) {
             self.editViewAccount(result, node);
+            loading.disable();
         })
         mNewAccount.promiseEditDB = undefined;
         setTimeout(function() {
@@ -1586,14 +1589,17 @@ MergeRealty.prototype.editViewAccount = function(value, node) {
 
 MergeRealty.prototype.editDBContact = function(mNewContact, data, node) {
     var self = this;
+    var loading = new loadingWheel();
     mNewContact.promiseEditDB.then(function(value) {
         if (value.id === undefined)
             moduleDatabase.getModule("users").add(value).then(function(result) {
                 self.editViewAccount(result, node);
+                loading.disable();
             })
         else
             moduleDatabase.getModule("contacts").update(value).then(function(result) {
                 self.editViewContact(result, node);
+                loading.disable();
             })
         mNewContact.promiseEditDB = undefined;
         setTimeout(function() {

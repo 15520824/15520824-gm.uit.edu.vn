@@ -149,7 +149,7 @@ table.sortTableClone td {
 table.sortTable th,
 table.sortTableClone th {
     background: #36304a;
-    vertical-align: middle;
+    vertical-align: top;
     color: #fff;
     position: sticky;
     position: -webkit-sticky;
@@ -975,4 +975,62 @@ table.sortTable th.postionStickyCell {
 
 .button-hidden-swipe-activeAll-width {
     width: 100% !important;
+}
+
+.tableview-choice-container-content {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+    background-color: white;
+    width: 50vw;
+    height: 50vh;
+    position: relative;
+}
+
+.tableview-choice-container-content .absol-checkbox {
+    text-align: center;
+}
+
+.tableview-choice-container-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.tableview-choice-container-tab {
+    border-bottom: solid 0.0714rem #ccc;
+    background: #f3f3f3;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.tableview-choice-container-tab-label {
+    padding: 0.7143em;
+    width: 100%;
+}
+
+.tableview-choice-container-tab-button {
+    display: inline-block;
+    width: 6em;
+    margin: 5px;
+}
+
+.searchheader-input {
+    flex-grow: 2;
+    display: flex;
+    align-items: center;
+    border: none;
+    position: absolute;
+    width: calc(100% - 4px);
+}
+
+.searchheader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    position: relative;
+    height: 18px;
+    margin-top: 5px;
 }
