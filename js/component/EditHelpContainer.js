@@ -357,7 +357,34 @@ EditHelpContainer.prototype.disableEditViewContent = function() {
     this.containerEditView.style.display = "none";
     this.tabContainer.style.pointerEvents = "";
     this.enableEditting = false;
-    this.saveDataCurrent();
+    var row = this.getElementsByClassName("choice-event-category");
+    var data;
+    if(row.length === 1)
+    {
+        row = row[0]
+    }
+    data = row.data;
+    if(data)
+    {
+        this.titleLabel.innerHTML = data.original.title;
+        var text = data.original.fulltext;
+        if (data.original.related) {
+            text += "<div style='border: 1px solid;'></div>" + data.original.related;
+        }
+        this.containerView.innerHTML = text;
+        var location = "";
+        var tempElement = row;
+        while (tempElement && tempElement.tagName != "DIV") {
+            if (location !== "") {
+                location = "<span> > </span>" + location;
+            }
+            location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
+            tempElement = tempElement.getParentNode();
+        }
+        console.log(location)
+        if(location!=="")
+        this.locationLabel.innerHTML = location;
+    }
 }
 
 
@@ -456,27 +483,6 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
     var isRemove = true;
     if (arr.length !== 0)
         arr = arr[0];
-    var data = arr.data;
-    if(data)
-    {
-        this.titleLabel.innerHTML = data.original.title;
-        var text = data.original.fulltext;
-        if (data.original.related) {
-            text += "<div style='border: 1px solid;'></div>" + data.original.related;
-        }
-        this.containerView.innerHTML = text;
-        var location = "";
-        var tempElement = row;
-        while (tempElement && tempElement.tagName != "DIV") {
-            if (location !== "") {
-                location = "<span> > </span>" + location;
-            }
-            location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
-            tempElement = tempElement.getParentNode();
-        }
-        if(location!=="")
-        this.locationLabel.innerHTML = location;
-    }
     if (arr == row)
         return true;
     if (row === undefined)
