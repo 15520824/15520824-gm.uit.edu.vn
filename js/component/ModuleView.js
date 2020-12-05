@@ -3673,7 +3673,7 @@ tableView.prototype.changeParent = function(index, rowParent) {
 
     var deltaY = 0;
 
-    deltaX = parent.checkLongRow(index);
+    deltaX = parent.checkLongRow(index); 
     parent.changeRowChild(element, rowParent);
     for (var i = 0; i < element.childNodes.length; i++) {
         element.childNodes[i].clone = rowParent.clone;
@@ -3730,7 +3730,7 @@ tableView.prototype.changeRowChild = function(element, parent) {
         current = null;
         parent.bodyTable.addChild(element);
     } else {
-        current = parent.clone[0][parent.clone[0].length - 1].parentNode;
+        current = parent.getParentNode();
         element.parentNode.insertBefore(element, this.getElementNext(current));
     }
     element.parentMargin = parent.parentMargin + 1;

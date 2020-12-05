@@ -456,6 +456,26 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
     var isRemove = true;
     if (arr.length !== 0)
         arr = arr[0];
+    var data = arr.data;
+    if(data)
+    {
+        this.titleLabel.innerHTML = data.original.title;
+        var text = data.original.fulltext;
+        if (data.original.related) {
+            text += "<div style='border: 1px solid;'></div>" + data.original.related;
+        }
+        this.containerView.innerHTML = text;
+        var location = "";
+        var tempElement = row;
+        while (tempElement && tempElement.tagName != "DIV") {
+            if (location !== "") {
+                location = "<span> > </span>" + location;
+            }
+            location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
+            tempElement = tempElement.getParentNode();
+        }
+        this.locationLabel.innerHTML = location;
+    }
     if (arr == row)
         return true;
     if (row === undefined)
@@ -470,7 +490,7 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
         parent_id: this.listParent.value,
         id: this.idCurrent
     }
-
+    
     if (isRemove) {
         if (arr.classList)
             arr.classList.remove("choice-event-category");

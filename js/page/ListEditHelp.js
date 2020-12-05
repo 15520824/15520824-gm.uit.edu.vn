@@ -48,20 +48,22 @@ ListHelp.prototype.getView = function() {
                             class: ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
                             on: {
                                 click: function(evt) {
-                                    if (!containerHelp.closeEditPage()) {
-                                        self.$view.selfRemove();
-                                        var arr = self.parent.body.getAllChild();
-                                        self.parent.body.activeFrame(arr[arr.length - 1]);
-                                    } else {
-                                        var arr = self.$view.getElementsByClassName("pizo-list-realty-button-add");
-                                        for (var i = 0; i < arr.length; i++) {
-                                            arr[i].style.display = "";
-                                        }
-                                        var arr = self.$view.getElementsByClassName("pizo-list-realty-button-edit-page");
-                                        for (var i = 0; i < arr.length; i++) {
-                                            arr[i].style.display = "none";
-                                        }
-                                    }
+                                    containerHelp.disableEditViewContent();
+                                    // if (!containerHelp.closeEditPage()) {
+                                    //     self.$view.selfRemove();
+                                    //     var arr = self.parent.body.getAllChild();
+                                    //     self.parent.body.activeFrame(arr[arr.length - 1]);
+                                    // } else {
+                                    //     var arr = self.$view.getElementsByClassName("pizo-list-realty-button-add");
+                                    //     for (var i = 0; i < arr.length; i++) {
+                                    //         arr[i].style.display = "";
+                                    //     }
+                                    //     var arr = self.$view.getElementsByClassName("pizo-list-realty-button-edit-page");
+                                    //     for (var i = 0; i < arr.length; i++) {
+                                    //         arr[i].style.display = "none";
+                                    //     }
+                                    //     containerHelp.disableEditViewContent();
+                                    // }
                                 }
                             },
                             child: [
