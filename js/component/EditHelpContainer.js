@@ -474,6 +474,7 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
             location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
             tempElement = tempElement.getParentNode();
         }
+        if(location!=="")
         this.locationLabel.innerHTML = location;
     }
     if (arr == row)
