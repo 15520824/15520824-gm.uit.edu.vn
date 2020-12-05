@@ -3731,7 +3731,7 @@ tableView.prototype.changeRowChild = function(element, parent) {
         parent.bodyTable.addChild(element);
     } else {
         current = parent.getParentNode();
-        element.parentNode.insertBefore(element, this.getElementNext(current));
+        element.parentNode.insertBefore(element, this.getElementNext(parent));
     }
     element.parentMargin = parent.parentMargin + 1;
     element.resetParentChild();
