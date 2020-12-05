@@ -3676,6 +3676,7 @@ tableView.prototype.changeParent = function(index, rowParent) {
     deltaX = parent.checkLongRow(index);
     parent.changeRowChild(element, rowParent);
     for (var i = 0; i < element.childNodes.length; i++) {
+        element.childNodes[i].clone = rowParent.clone;
         rowParent.clone[i + deltaY].push(element.childNodes[i]);
         parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
         if (parent.checkSpan !== undefined)
