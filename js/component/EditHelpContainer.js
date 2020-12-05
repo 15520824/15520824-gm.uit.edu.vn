@@ -357,6 +357,7 @@ EditHelpContainer.prototype.disableEditViewContent = function() {
     this.containerEditView.style.display = "none";
     this.tabContainer.style.pointerEvents = "";
     this.enableEditting = false;
+    this.saveDataCurrent();
 }
 
 
