@@ -331,6 +331,7 @@ function EditHelpContainer() {
         self.$view.mTable.addInputSearch(input);
     });
 
+    this.$view.tabContainer = tabContainer;
     this.$view.name = $('input.pizo-new-category-container-name-container-input.pizo-new-realty-dectruct-input', this.$view);
     this.$view.alias = $('input.pizo-new-category-container-alias-container-input.pizo-new-realty-dectruct-input', this.$view);
     this.$view.listParent = listParent;
@@ -347,7 +348,17 @@ EditHelpContainer.prototype.constructor = EditHelpContainer;
 EditHelpContainer.prototype.enableEditViewContent = function() {
     this.containerPreview.style.display = "none";
     this.containerEditView.style.display = "";
+    this.tabContainer.style.pointerEvents = "none";
+    this.enableEditting = true;
 }
+
+EditHelpContainer.prototype.disableEditViewContent = function() {
+    this.containerPreview.style.display = "";
+    this.containerEditView.style.display = "none";
+    this.tabContainer.style.pointerEvents = "";
+    this.enableEditting = false;
+}
+
 
 EditHelpContainer.prototype.functionClickMore = function(event, me, index, parent, data, row) {
     var self = this;
@@ -430,8 +441,6 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
         tempElement = tempElement.getParentNode();
     }
     this.locationLabel.innerHTML = location;
-    this.containerPreview.style.display = "";
-    this.containerEditView.style.display = "none";
     this.rowSelected = row;
     row.classList.add("choice-event-category");
     this.setDataTitle(data.original);
