@@ -36,12 +36,18 @@ function HelpContainer() {
         self.$view.checkAlias = moduleDatabase.getModule("helps").getLibary("alias");
         if (window.exttask) {
             if (self.$view.checkAlias[window.exttask]) {
-                setTimeout(function() {
+                var x = setInterval(function() {
                     var temp = document.getElementById("x86" + self.$view.checkAlias[window.exttask].id);
                     window.addHref = window.exttask;
-                    if (temp)
+                    if (temp) {
                         temp.click();
+                        temp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+                        clearInterval(x);
+                    }
                 }.bind(this), 80);
+                setTimeout(function() {
+                    clearInterval(x);
+                }, 5000)
             }
         }
         this.$view.firstChildClick();
@@ -296,7 +302,7 @@ HelpContainer.prototype.firstChildClick = function() {
         var text = this.mTable.childrenNodes[0].data.original.fulltext;
         if (this.mTable.childrenNodes[0].data.original.related != "") {
             text += "<div style='border: 1px solid;'></div>";
-            text += "<h4>Bài liên quan</h4>";
+            text += "<h3>Bài liên quan</h3>";
             text += this.mTable.childrenNodes[0].data.original.related;
         }
         text += "<div style='width:100%;height:150px'></div>";
@@ -340,7 +346,7 @@ HelpContainer.prototype.functionClickDetail = function(event, me, index, parent,
     var text = data.original.fulltext;
     if (data.original.related) {
         text += "<div style='border: 1px solid;'></div>";
-        text += "<h4>Bài liên quan</h4>";
+        text += "<h3>Bài liên quan</h3>";
         text += data.original.related;
     }
     text += "<div style='width:100%;height:150px'></div>";

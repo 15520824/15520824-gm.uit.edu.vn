@@ -455,7 +455,7 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
     var text = data.original.fulltext;
     if (data.original.related) {
         text += "<div style='border: 1px solid;'></div>";
-        text += "<h4>Bài liên quan</h4>";
+        text += "<h3>Bài liên quan</h3>";
         text += data.original.related;
     }
     text += "<div style='width:100%;height:150px'></div>";
