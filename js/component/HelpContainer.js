@@ -34,23 +34,27 @@ function HelpContainer() {
         this.$view.mTable.headerTable.style.display = "none";
         mTable.parentNode.replaceChild(this.$view.mTable, mTable);
         self.$view.checkAlias = moduleDatabase.getModule("helps").getLibary("alias");
-        if (window.exttask) {
-            if (self.$view.checkAlias[window.exttask]) {
-                var x = setInterval(function() {
-                    var temp = document.getElementById("x86" + self.$view.checkAlias[window.exttask].id);
-                    window.addHref = window.exttask;
-                    if (temp) {
-                        temp.click();
-                        temp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-                        clearInterval(x);
-                    }
-                }.bind(this), 80);
-                setTimeout(function() {
-                    clearInterval(x);
-                }, 5000)
-            }
-        }
         this.$view.firstChildClick();
+        var x = setInterval(function() {
+            if (window.exttask) {
+                if (self.$view.checkAlias[window.exttask]) {
+                    if (window.exttask) {
+                        var temp = document.getElementById("x86" + self.$view.checkAlias[window.exttask].id);
+                        window.addHref = window.exttask;
+                        if (temp) {
+                            temp.click();
+                            temp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+                            clearInterval(x);
+                        }
+                    }
+                }
+            }
+        }, 80);
+
+        setTimeout(function() {
+            clearInterval(x);
+        }, 5000);
+
     }.bind(this));
 
     var mTable = _({
