@@ -359,18 +359,17 @@ EditHelpContainer.prototype.disableEditViewContent = function() {
     this.enableEditting = false;
     var row = this.getElementsByClassName("choice-event-category");
     var data;
-    if(row.length === 1)
-    {
+    if (row.length === 1) {
         row = row[0]
     }
     data = row.data;
-    if(data)
-    {
+    if (data) {
         this.titleLabel.innerHTML = data.original.title;
         var text = data.original.fulltext;
         if (data.original.related) {
             text += "<div style='border: 1px solid;'></div>" + data.original.related;
         }
+        text += "<div style='width:100%;height:150px'></div>";
         this.containerView.innerHTML = text;
         var location = "";
         var tempElement = row;
@@ -381,9 +380,8 @@ EditHelpContainer.prototype.disableEditViewContent = function() {
             location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
             tempElement = tempElement.getParentNode();
         }
-        console.log(location)
-        if(location!=="")
-        this.locationLabel.innerHTML = location;
+        if (location !== "")
+            this.locationLabel.innerHTML = location;
     }
 }
 
@@ -456,8 +454,11 @@ EditHelpContainer.prototype.functionClickDetail = function(event, me, index, par
     this.titleLabel.innerHTML = data.original.title;
     var text = data.original.fulltext;
     if (data.original.related) {
-        text += "<div style='border: 1px solid;'></div>" + data.original.related;
+        text += "<div style='border: 1px solid;'></div>";
+        text += "<h4>Bài liên quan</h4>";
+        text += data.original.related;
     }
+    text += "<div style='width:100%;height:150px'></div>";
     this.containerView.innerHTML = text;
     var location = "";
     var tempElement = row;
@@ -497,7 +498,7 @@ EditHelpContainer.prototype.saveDataCurrent = function(row) {
         parent_id: this.listParent.value,
         id: this.idCurrent
     }
-    
+
     if (isRemove) {
         if (arr.classList)
             arr.classList.remove("choice-event-category");

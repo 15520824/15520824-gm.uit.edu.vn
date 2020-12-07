@@ -295,8 +295,11 @@ HelpContainer.prototype.firstChildClick = function() {
         this.titleLabel.innerHTML = this.mTable.childrenNodes[0].data.original.title;
         var text = this.mTable.childrenNodes[0].data.original.fulltext;
         if (this.mTable.childrenNodes[0].data.original.related != "") {
-            text += "<div style='border: 1px solid;'></div>" + this.mTable.childrenNodes[0].data.original.related;
+            text += "<div style='border: 1px solid;'></div>";
+            text += "<h4>Bài liên quan</h4>";
+            text += this.mTable.childrenNodes[0].data.original.related;
         }
+        text += "<div style='width:100%;height:150px'></div>";
         this.containerView.innerHTML = text;
         var location = "";
 
@@ -336,8 +339,11 @@ HelpContainer.prototype.functionClickDetail = function(event, me, index, parent,
     this.titleLabel.innerHTML = data.original.title;
     var text = data.original.fulltext;
     if (data.original.related) {
-        text += "<div style='border: 1px solid;'></div>" + data.original.related;
+        text += "<div style='border: 1px solid;'></div>";
+        text += "<h4>Bài liên quan</h4>";
+        text += data.original.related;
     }
+    text += "<div style='width:100%;height:150px'></div>";
     this.containerView.innerHTML = text;
     var location = "";
     var tempElement = row;
