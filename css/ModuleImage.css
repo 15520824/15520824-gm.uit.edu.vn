@@ -161,6 +161,7 @@ img.chat-message-picture__photo,
 .image-show__btn__inside>.fa-chevron-left {
     margin-top: 24px;
     transform: translateX(0.3571rem);
+    font-size: 32px;
 }
 
 .fa-chevron-left:before {
@@ -216,6 +217,7 @@ header,
 .image-show__btn__inside>.fa-chevron-right {
     margin-top: 24px;
     margin-left: 0.1429em;
+    font-size: 32px;
 }
 
 .fa-chevron-right:before {
@@ -357,7 +359,7 @@ header,
 }
 
 .image-show__bottom__ctrl {
-    width: 24.2857em;
+    width: 400px;
     margin: 0rem auto;
     padding-top: 1em;
     text-align: center;
