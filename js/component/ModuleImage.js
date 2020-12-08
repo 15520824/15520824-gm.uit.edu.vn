@@ -112,10 +112,9 @@ export function descViewImagePreview(data = [], index = 0, promiseLazyLoad) {
                                         tag: "div",
                                         class: ["timeline-slider__handle"],
                                         style: {
-                                            width: "0.8571rem",
-                                            height: "0.8571rem",
-                                            left: "0.4643rem",
-                                            top: "calc(0% - 0rem)"
+                                            width: "12px",
+                                            height: "12px",
+                                            left: "6px",
                                         },
                                         child: [{
                                             tag: "div",
