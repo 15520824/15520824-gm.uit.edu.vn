@@ -46,8 +46,8 @@ export function descViewImagePreview(data = [], index = 0, promiseLazyLoad) {
                 tag: "div",
                 style: {
                     display: "flex",
-                    height: "calc(100vh - 6.42857142857rem)",
-                    margin: "0.3571rem"
+                    height: "calc(100vh - 95px)",
+                    padding: "5px"
                 },
                 child: [{
                         tag: "div",

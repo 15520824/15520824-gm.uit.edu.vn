@@ -168,6 +168,7 @@ ListRealty.prototype.getView = function() {
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(0, 0);
                     this.currentMerge = undefined;
+                    self.mTable.data.splice.apply(self.mTable.data, [self.mTable.data.length, 0].concat(this.ortherData));
                     hiddenConfirm.value = 0;
                     hiddenConfirm.emit("change");
                     var dataSum = self.mTable.getTrueCheckBox();
@@ -195,6 +196,7 @@ ListRealty.prototype.getView = function() {
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(1, 0);
                     this.currentMerge = true;
+                    this.ortherData = self.browserFilter(self.mTable.data);
                     hiddenConfirm.value = "censorship0";
                     hiddenConfirm.emit("change");
                 }
@@ -827,6 +829,52 @@ function getEditDistance(a, b) {
     return matrix[b.length][a.length];
 };
 
+ListRealty.prototype.browserFilter = function(data) {
+    var checkAvaliable = [];
+    var result = [];
+    var tempData;
+    var tempPushData;
+    var indexData;
+    var index;
+    for (var i = 0; i < data.length; i++) {
+        indexData = data[i];
+        indexData.visiable = true;
+        tempData = checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
+        if (tempData)
+            for (var j = 0; j < tempData.length; j++) {
+                if (tempData[j] !== undefined && getEditDistance(tempData[j][3], indexData[3]) <= indexData[3].length / 3) {
+
+                    tempPushData = result[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
+                    if (tempPushData === undefined)
+                        tempPushData = [];
+                    tempPushData.push(indexData);
+                    indexData.visiable = false;
+                    data.splice(i, 1);
+                    i--;
+
+
+                    index = data.indexOf(tempData[j]);
+                    if (index !== -1) {
+                        tempPushData.push(tempData[j]);
+                        tempData[j].visiable = false;
+                        data.splice(index, 1);
+                        i--;
+                    }
+                    result[indexData[4] + indexData[5] + indexData[6] + indexData[7]] = tempPushData;
+                }
+            }
+        if (checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]] == undefined)
+            checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]] = [];
+        checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]].push(indexData);
+    }
+    var final = [];
+    for (var param in result) {
+        final.splice.apply(final, [0, 0].concat(result[param]));
+    }
+    data.ortherFilter = true;
+    return final;
+}
+
 ListRealty.prototype.mergeFilter = function(data) {
     var checkAvaliable = [];
     var result = [];
@@ -836,11 +884,11 @@ ListRealty.prototype.mergeFilter = function(data) {
     var index;
     for (var i = 0; i < data.length; i++) {
         indexData = data[i];
-        tempData = checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]];
+        tempData = checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
         if (tempData)
             for (var j = 0; j < tempData.length; j++) {
-                if (tempData[j] !== undefined && getEditDistance(tempData[j][4], indexData[4]) <= indexData[4].length / 3) {
-                    tempPushData = result[indexData[5] + indexData[6] + indexData[7] + indexData[8]];
+                if (tempData[j] !== undefined && getEditDistance(tempData[j][3], indexData[3]) <= indexData[3].length / 3) {
+                    tempPushData = result[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
                     if (tempPushData === undefined)
                         tempPushData = [];
                     if (indexData.visiable == undefined) {
@@ -858,12 +906,12 @@ ListRealty.prototype.mergeFilter = function(data) {
                             i--;
                         }
                     }
-                    result[indexData[5] + indexData[6] + indexData[7] + indexData[8]] = tempPushData;
+                    result[indexData[4] + indexData[5] + indexData[6] + indexData[7]] = tempPushData;
                 }
             }
-        if (checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]] == undefined)
-            checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]] = [];
-        checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]].push(indexData);
+        if (checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]] == undefined)
+            checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]] = [];
+        checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]].push(indexData);
     }
     var length = data.length;
     var final = [...data];

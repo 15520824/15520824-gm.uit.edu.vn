@@ -1653,7 +1653,7 @@ MapRealty.prototype.detailHouse = function(data) {
         priceRent.style.display = "none";
     }
     var fullAddressOld = "";
-    if (data.addressid_old != 0) {
+    if (data.addressid_old && data.addressid_old != 0) {
         var number = this.checkAddress[data.addressid_old].addressnumber;
         var street = this.checkStreet[this.checkAddress[data.addressid_old].streetid].name;
         var ward = this.checkWard[this.checkAddress[data.addressid_old].wardid].name;
@@ -2532,7 +2532,7 @@ MapRealty.prototype.detailHouse = function(data) {
             this.juridicalView(data),
             {
                 tag: "div",
-                // class:"",
+                class: "pizo-new-realty-dectruct-tab-ownership-history",
                 child: [{
                     tag: "div",
                     class: "pizo-new-realty-dectruct-tab",
@@ -2543,12 +2543,32 @@ MapRealty.prototype.detailHouse = function(data) {
             },
             {
                 tag: "div",
-                // class:"",
+                class: "pizo-new-realty-dectruct-tab-historical-progress",
+                child: [{
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-tab",
+                        props: {
+                            innerHTML: "Tiến trình lịch sử"
+                        }
+                    },
+                    {
+                        tag: "div",
+                        class: "pizo-new-realty-dectruct-tab-historical-progress-container",
+                        child: [{
+                            tag: "span",
+                            class: "pizo-new-realty-dectruct-tab-historical-progress-label",
+                        }]
+                    }
+                ]
+            },
+            {
+                tag: "div",
+                class: "pizo-new-realty-dectruct-tab-ownership-history",
                 child: [{
                     tag: "div",
                     class: "pizo-new-realty-dectruct-tab",
                     props: {
-                        innerHTML: "Tiến trình lịch sử"
+                        innerHTML: "Ghi chú"
                     }
                 }]
             }
@@ -2588,6 +2608,7 @@ MapRealty.prototype.detailHouse = function(data) {
     var advanceDetruct2 = $("div.pizo-new-realty-dectruct-content-area-selectbox-child-2", temp);
     var advanceDetruct3 = $("div.pizo-new-realty-dectruct-content-area-selectbox-child-3", temp);
     var advanceDetruct4 = $("div.pizo-new-realty-dectruct-content-area-selectbox-child-4", temp);
+    var historical = $('span.pizo-new-realty-dectruct-tab-historical-progress-label', temp);
 
     if (data !== undefined) {
         var original = data;
@@ -2620,6 +2641,17 @@ MapRealty.prototype.detailHouse = function(data) {
         advanceDetruct3.checked = advanceDetruct % 10 ? true : false;
         advanceDetruct = parseInt(advanceDetruct / 10);
         advanceDetruct4.checked = advanceDetruct % 10 == 1 ? true : false;
+        moduleDatabase.getModule("activehouses_logs").load({
+            WHERE: [{ houseid: original.id }],
+            ORDERING: "created"
+        }).then(function(value) {
+            var text = "";
+            for (var i = value.length - 1; i >= 0; i--) {
+                text += value[i].log;
+                text += "</br>"
+            }
+            historical.innerHTML = text;
+        })
     }
     return temp;
 }

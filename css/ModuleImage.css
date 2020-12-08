@@ -19,7 +19,6 @@
 
 .image-show__close>.fa-close:before,
 .image-show__close>.quote-base__close-icon {
-    font-size: 1.5em;
     color: white;
     padding: 0em;
     content: "close";
@@ -111,7 +110,7 @@ img.chat-message-picture__photo,
 }
 
 .image-show__btnc__right {
-    right: 0;
+    right: 50px;
     opacity: 1;
 }
 
@@ -160,8 +159,7 @@ img.chat-message-picture__photo,
 }
 
 .image-show__btn__inside>.fa-chevron-left {
-    margin-top: 0.9286em;
-    margin-right: 0.2857em;
+    margin-top: 24px;
     transform: translateX(0.3571rem);
 }
 
@@ -216,7 +214,7 @@ header,
 }
 
 .image-show__btn__inside>.fa-chevron-right {
-    margin-top: 0.9286em;
+    margin-top: 24px;
     margin-left: 0.1429em;
 }
 
@@ -256,8 +254,8 @@ header,
 }
 
 .avatar--xs {
-    width: 2.8571em;
-    height: 2.8571em;
+    width: 40px;
+    height: 40px;
     font-size: 1.2143em;
 }
 
@@ -313,8 +311,8 @@ header,
 }
 
 .avatar--xs>.avatar-img {
-    width: 2.8571em;
-    height: 2.8571em;
+    width: 40px;
+    height: 40px;
     background-color: #c9d4e5;
 }
 
@@ -366,7 +364,6 @@ header,
 }
 
 .btn {
-    font-size: 1.5em;
     cursor: pointer;
     margin: 0em;
     color: #83878d;

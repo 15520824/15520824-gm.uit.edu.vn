@@ -422,7 +422,7 @@ if(isset($oldId))
     }
     if(isset($userid));
     {
-        $log = "Được gộp vào thời gian ".date("H:i:s d-m-Y")." từ các bất động sản %".json_encode($mergeData); ;
+        $log = "Được gộp vào thời gian ".date("H:i:s d-m-Y"); ;
         $logData = array(
             'log' => $log,
             'houseid' => $data["id"],
@@ -434,7 +434,7 @@ if(isset($oldId))
 {
     if(isset($userid))
     {
-        $log = "Được tạo vào thời gian".date("H:i:s d-m-Y");
+        $log = "Được tạo vào thời gian ".date("H:i:s d-m-Y");
         $logData = array(
             'log' => $log,
             'houseid' => $data["id"],

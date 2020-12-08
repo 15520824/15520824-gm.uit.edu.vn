@@ -22,6 +22,11 @@ if (isset($_POST["name"])) {
     exit();
 }
 
+if(isset($_POST["userid"]))
+{
+    $userid = $_POST["userid"];
+}
+
 if (isset($_POST["data"])) {
     $data=EncodingClass::toVariable($_POST["data"]);
 }else
@@ -371,6 +376,16 @@ for($i = 0;$i<count($image_old);$i++)
       }
 }
 
+if(isset($userid))
+{
+    $log = "Được cập nhật vào thời gian ".date("H:i:s d-m-Y");
+    $logData = array(
+        'log' => $log,
+        'houseid' => $data["id"],
+        'userid' => $userid,
+    );
+    $connector->insert($prefix.'activehouses_logs', $logData);
+}
 $data["modified"] = new DateTime();
 $result = $connector-> update($prefix."activehouses", $data);
 
