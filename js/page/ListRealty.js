@@ -61,6 +61,33 @@ ListRealty.prototype.setCensorship = function() {
     this.isCensorship = true;
 }
 
+ListRealty.prototype.requestEdit = function(data) {
+    var self = this;
+    var mNewRealty = new NewRealty(data);
+    mNewRealty.attach(self.parent);
+    mNewRealty.setRequestEdit();
+    mNewRealty.setDataListAccount(self.listAccoutData);
+    mNewRealty.setDataListContact(self.listContactData);
+    var frameview = mNewRealty.getView();
+    self.parent.body.addChild(frameview);
+    self.parent.body.activeFrame(frameview);
+    self.requestEditDB(mNewRealty, data);
+}
+
+ListRealty.prototype.requestEditDB = function(mNewRealty, data) {
+    var self = this
+    mNewRealty.promiseEditDB.then(function(value) {
+        moduleDatabase.getModule("modification_requests").add(value).then(function(result) {
+            // self.editView(value, data);
+        })
+        mNewRealty.promiseEditDB = undefined;
+        setTimeout(function() {
+            if (mNewRealty.promiseEditDB !== undefined)
+                self.requestEditDB(mNewRealty, data);
+        }, 10);
+    })
+}
+
 ListRealty.prototype.getView = function() {
     if (this.$view) return this.$view;
     var self = this;
@@ -282,6 +309,8 @@ ListRealty.prototype.getView = function() {
                     var arrMerge = self.mTable.getTrueCheckBox();
                     if (arrMerge.length > 0)
                         self.merge(arrMerge);
+                    self.mTable.data.splice.apply(self.mTable.data, [self.mTable.data.length, 0].concat(this.ortherData));
+                    self.HTinput.emit("change");
                 } else {
                     confirmButton.style.display = "none";
                     saveButton.style.display = "none";
@@ -289,9 +318,12 @@ ListRealty.prototype.getView = function() {
                     cancelConfirmButton.style.display = "none";
                     viewMapButton.style.display = "none";
                     this.childNodes[0].innerHTML = "Xong";
+                    this.ortherData = self.mergeFilterNone(self.mTable.data);
+                    self.mTable.updateTable();
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(1, 0);
                     this.currentMerge = true;
+              
                 }
             }
         },
@@ -413,25 +445,88 @@ ListRealty.prototype.getView = function() {
     });
     var docTypeMemuProps, token, functionX;
     var functionClickMore = function(event, me, index, parent, data, row) {
-
-        docTypeMemuProps = {
-            items: [{
-                    text: 'Sửa',
-                    icon: 'span.mdi.mdi-text-short',
-                    value: 0,
-                },
+        var isEdit = false;
+        var isRequest = false;
+        var isDetail = false;
+        var isDelete = false;
+        var districtid;
+        var stateid;
+        Loop: for(var param in moduleDatabase.checkPermission)
+        {
+            var object = JSON.parse(param);
+            var address = self.checkAddress[data.original.addressid];
+            districtid = undefined;
+            stateid = undefined;
+            if(address.wardid)
+            districtid = self.checkWard[address.wardid].districtid;
+            if(districtid)
+            stateid = self.checkDistrict[districtid].stateid;
+            for(var objectParam in object)
+            {
+                if(objectParam === "stateid")
                 {
-                    text: 'Xóa',
-                    icon: 'span.mdi.mdi-text',
-                    value: 1,
-                },
+                    if(stateid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(objectParam === "districtid")
                 {
-                    text: 'Chi tiết',
-                    icon: 'span.mdi.mdi-text',
-                    value: 2,
+                    if(districtid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(object[objectParam]!==address[objectParam])
+                {
+                    continue Loop;
                 }
-            ]
-        };
+            }
+            if(moduleDatabase.checkPermission[param].indexOf(58)!==-1)
+            {
+                isEdit = true;
+            }
+            if(moduleDatabase.checkPermission[param].indexOf(59)!==-1)
+            {
+                isDelete = true;
+            }
+            if(moduleDatabase.checkPermission[param].indexOf(67)!==-1)
+            {
+                isDetail = true;
+            }
+            if(moduleDatabase.checkPermission[param].indexOf(68)!==-1)
+            {
+                isRequest = true;
+            }
+        }
+        docTypeMemuProps = {
+            items:[]
+        }
+        if(isEdit)
+        docTypeMemuProps.items.push({
+            text: 'Sửa',
+            icon: 'span.mdi.mdi-text-short',
+            value: 0,
+        });
+        else
+        {
+            if(isRequest)
+            {
+                docTypeMemuProps.items.push({
+                    text: 'Yêu cầu chỉnh sửa',
+                    icon: 'span.mdi.mdi-text-short',
+                    value: 3,
+                });
+            }
+        }
+        if(isDelete)
+        docTypeMemuProps.items.push({
+            text: 'Xóa',
+            icon: 'span.mdi.mdi-text',
+            value: 1,
+        });
+        if(isDetail)
+        docTypeMemuProps.items.push({
+            text: 'Chi tiết',
+            icon: 'span.mdi.mdi-text',
+            value: 2,
+        });
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function(menuItem) {
             switch (menuItem.value) {
                 case 0:
@@ -443,6 +538,8 @@ ListRealty.prototype.getView = function() {
                 case 2:
                     document.body.appendChild(self.modalLargeRealty(data.original));
                     break;
+                case 3:
+                    self.requestEdit({ original: data.original });
             }
         });
 
@@ -649,9 +746,53 @@ ListRealty.prototype.formatDataRow = function(data) {
     var temp = [];
     var check = [];
     var k = 0;
+    var self = this;
+    var districtid;
+    var stateid;
+    var isAvailable;
+    var isCensorshipFalse;
     for (var i = 0; i < data.length; i++) {
-
-        var result = this.getDataRow(data[i]);
+        isAvailable = false;
+        isCensorshipFalse = false;
+        Loop: for(var param in moduleDatabase.checkPermission)
+        {
+            var object = JSON.parse(param);
+            var address = self.checkAddress[data[i].addressid];
+            districtid = undefined;
+            stateid = undefined;
+            if(address.wardid)
+            districtid = self.checkWard[address.wardid].districtid;
+            if(districtid)
+            stateid = self.checkDistrict[districtid].stateid;
+            for(var objectParam in object)
+            {
+                if(objectParam === "stateid")
+                {
+                    if(stateid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(objectParam === "districtid")
+                {
+                    if(districtid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(object[objectParam]!==address[objectParam])
+                {
+                    continue Loop;
+                }
+            }
+            if(moduleDatabase.checkPermission[param].indexOf(56)!==-1)
+            {
+                isAvailable = true;
+            }
+            if(moduleDatabase.checkPermission[param].indexOf(63)!==-1)
+            {
+                isCensorshipFalse = true;
+            }
+        }
+        if(isAvailable == false)
+            continue;
+        var result = this.getDataRow(data[i],isCensorshipFalse);
         result.original = data[i];
         if (check[data[i].parent_id] !== undefined) {
             if (check[data[i].parent_id].child === undefined)
@@ -664,7 +805,7 @@ ListRealty.prototype.formatDataRow = function(data) {
     return temp;
 }
 
-ListRealty.prototype.getDataRow = function(data) {
+ListRealty.prototype.getDataRow = function(data,isCensorshipFalse) {
     var structure;
     switch (parseInt(data.structure)) {
         case 0:
@@ -742,7 +883,14 @@ ListRealty.prototype.getDataRow = function(data) {
     } else {
         var number = street = ward = district = state = "";
     }
-
+    var textCensorship = "censorship" + data.censorship;
+    if(data.censorship == 1)
+    {
+        if(isCensorshipFalse === false)
+        {
+            textCensorship = "xxxxxxxxxxxxxxxxx"
+        }
+    }
     var result = [
         {},
         {
@@ -789,7 +937,7 @@ ListRealty.prototype.getDataRow = function(data) {
         { value: formatDate(data.created, true, true, true, true, true), valuesort: new Date(data.created) },
         { value: formatDate(data.modified, true, true, true, true, true), valuesort: new Date(data.modified) },
         {},
-        "censorship" + data.censorship
+        textCensorship
     ];
     result.original = data;
     return result;
@@ -836,7 +984,46 @@ ListRealty.prototype.browserFilter = function(data) {
     var tempPushData;
     var indexData;
     var index;
+    var isAvailable;
+    var districtid;
+    var stateid;
+    var self = this;
     for (var i = 0; i < data.length; i++) {
+        isAvailable = false;
+        Loop: for(var param in moduleDatabase.checkPermission)
+        {
+            var object = JSON.parse(param);
+            var address = self.checkAddress[data[i].original.addressid];
+            districtid = undefined;
+            stateid = undefined;
+            if(address.wardid)
+            districtid = self.checkWard[address.wardid].districtid;
+            if(districtid)
+            stateid = self.checkDistrict[districtid].stateid;
+            for(var objectParam in object)
+            {
+                if(objectParam === "stateid")
+                {
+                    if(stateid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(objectParam === "districtid")
+                {
+                    if(districtid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(object[objectParam]!==address[objectParam])
+                {
+                    continue Loop;
+                }
+            }
+            if(moduleDatabase.checkPermission[param].indexOf(62)!==-1)
+            {
+                isAvailable = true;
+            }
+        }
+        if(isAvailable == false)
+            continue;
         indexData = data[i];
         indexData.visiable = true;
         tempData = checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
@@ -882,7 +1069,46 @@ ListRealty.prototype.mergeFilter = function(data) {
     var tempPushData;
     var indexData;
     var index;
+    var isAvailable;
+    var districtid;
+    var stateid;
+    var self = this;
     for (var i = 0; i < data.length; i++) {
+        isAvailable = false;
+        Loop: for(var param in moduleDatabase.checkPermission)
+        {
+            var object = JSON.parse(param);
+            var address = self.checkAddress[data[i].original.addressid];
+            districtid = undefined;
+            stateid = undefined;
+            if(address.wardid)
+            districtid = self.checkWard[address.wardid].districtid;
+            if(districtid)
+            stateid = self.checkDistrict[districtid].stateid;
+            for(var objectParam in object)
+            {
+                if(objectParam === "stateid")
+                {
+                    if(stateid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(objectParam === "districtid")
+                {
+                    if(districtid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(object[objectParam]!==address[objectParam])
+                {
+                    continue Loop;
+                }
+            }
+            if(moduleDatabase.checkPermission[param].indexOf(64)!==-1)
+            {
+                isAvailable = true;
+            }
+        }
+        if(isAvailable == false)
+            continue;
         indexData = data[i];
         tempData = checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
         if (tempData)
@@ -919,6 +1145,66 @@ ListRealty.prototype.mergeFilter = function(data) {
     for (var param in result) {
         data.splice.apply(data, [0, 0].concat(result[param]));
     }
+    data.ortherFilter = true;
+    return final;
+}
+
+ListRealty.prototype.mergeFilterNone = function(data) {
+    var checkAvaliable = [];
+    var result = [];
+    var tempData;
+    var tempPushData;
+    var indexData;
+    var index;
+    var isAvailable;
+    var districtid;
+    var stateid;
+    var self = this;
+    for (var i = 0; i < data.length; i++) {
+        isAvailable = false;
+        Loop: for(var param in moduleDatabase.checkPermission)
+        {
+            var object = JSON.parse(param);
+            var address = self.checkAddress[data[i].original.addressid];
+            districtid = undefined;
+            stateid = undefined;
+            if(address.wardid)
+            districtid = self.checkWard[address.wardid].districtid;
+            if(districtid)
+            stateid = self.checkDistrict[districtid].stateid;
+            for(var objectParam in object)
+            {
+                if(objectParam === "stateid")
+                {
+                    if(stateid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(objectParam === "districtid")
+                {
+                    if(districtid!==object[objectParam])
+                    continue Loop;
+                }else
+                if(object[objectParam]!==address[objectParam])
+                {
+                    continue Loop;
+                }
+            }
+            if(moduleDatabase.checkPermission[param].indexOf(64)!==-1)
+            {
+                isAvailable = true;
+            }
+        }
+        if(isAvailable == false)
+            continue;
+        data[i].visiable = true;
+        result.push(data[i]);
+        data.splice(i,1);
+        i--;
+    }
+    var length = data.length;
+    var final = [...data];
+    data.splice(0, length);
+    data.splice.apply(data, [0, 0].concat(result));
     data.ortherFilter = true;
     return final;
 }

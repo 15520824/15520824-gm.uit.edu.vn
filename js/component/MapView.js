@@ -705,7 +705,13 @@ export function MapView() {
     Object.assign(temp, MapView.prototype);
     temp.mapReplace = $('div.pizo-new-realty-location-map-view-content', temp);
     temp.map = temp.activeMap();
+    temp.isShowAddress = true;
     return temp;
+}
+
+
+MapView.prototype.setLabelUnder = function(isShowAddress = true) {
+    this.isShowAddress = isShowAddress;
 }
 
 MapView.prototype.activePlanningMap = function() {
@@ -997,14 +1003,47 @@ MapView.prototype.addOrtherMarker = function(data) {
             // The anchor for this image is the base of the flagpole at (0, 32).
             anchor: new google.maps.Point(12, 12)
         };
-        var marker = new google.maps.Marker({
+        var label;
+        if (self.isShowAddress === true) {
+            var checkAddress = moduleDatabase.getModule("addresses").getLibary("id");
+            if (checkAddress[data.addressid])
+                label = checkAddress[data.addressid].addressnumber;
+        } else if (self.isShowAddress === false) {
+            if (parseInt(data.salestatus / 10) == 1 ? true : false)
+                label = data.price + " tỉ";
+            else if (parseInt(data.salestatus % 10) == 1 ? true : false)
+                label = (parseInt(data.pricerent) / 1000000) + " triệu";
+            else if (data.price > 0)
+                label = data.price + " tỉ";
+            else if (data.pricerent > 0)
+                label = data.price + " VND";
+        }
+        var labelContent = _({
+            tag: "div",
+            child: [{
+                    tag: "div",
+                    class: "arrow",
+                },
+                {
+                    tag: "div",
+                    class: "inner",
+                    props: {
+                        innerHTML: label
+                    }
+                }
+            ]
+        })
+
+        var marker = new MarkerWithLabel({
             position: new google.maps.LatLng(position[0], position[1]),
             map: self.map,
             draggable: false,
             icon: image,
-            zIndex: 2
+            labelContent: labelContent,
+            labelAnchor: new google.maps.Point(40, -5),
+            labelClass: "labels",
+            zIndex: 2,
         });
-
         var imageHover = {
             url: "./assets/images/marker-green.png",
             // This marker is 20 pixels wide by 32 pixels high.
@@ -1063,6 +1102,10 @@ MapView.prototype.addOrtherMarker = function(data) {
 
     self.isDoneMarker = true;
     return marker;
+}
+
+MapView.prototype.setFilter = function() {
+
 }
 
 MapView.prototype.modalMiniRealty = function(data) {

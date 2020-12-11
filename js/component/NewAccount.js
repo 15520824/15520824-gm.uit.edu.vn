@@ -817,7 +817,7 @@ NewAccount.prototype.getView = function(dataParent) {
                                                         tag: "span",
                                                         class: "pizo-new-realty-desc-detail-row-cell-menu-ultra-span",
                                                         props: {
-                                                            innerHTML: "Cần kiểm duyệt"
+                                                            innerHTML: "Duyệt"
                                                         }
                                                     },
                                                     {
@@ -833,7 +833,7 @@ NewAccount.prototype.getView = function(dataParent) {
                                                         tag: "span",
                                                         class: "pizo-new-realty-desc-detail-row-cell-menu-ultra-span",
                                                         props: {
-                                                            innerHTML: "Sửa (Cần kiểm duyệt)"
+                                                            innerHTML: "Hủy duyệt"
                                                         }
                                                     },
                                                     {

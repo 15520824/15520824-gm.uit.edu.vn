@@ -20016,7 +20016,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-new-realty-location {\r\n    width: 100vw;\r\n    width: 80vw;\r\n    background-color: white;\r\n}\r\n\r\n.pizo-new-realty-location-tab {\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    margin-bottom: 0.7143em;\r\n    background: #f3f3f3;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-tab>span {\r\n    padding: 0.7143em;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-donebutton {\r\n    display: inline-block;\r\n    width: 6em;\r\n    margin: 5px;\r\n}\r\n\r\n.pizo-new-realty-location-detail {\r\n    max-width: 100%;\r\n    min-width: 380px;\r\n    display: inline-block;\r\n    margin-bottom: 0.7143em;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-location-content {\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row:not(:last-child) {\r\n    margin-bottom: 0.7143em;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    max-width: calc(33.333333% - 4.2857rem);\r\n    text-align: right;\r\n    font-size: 1em;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    padding-left: 2.1429em;\r\n    padding-right: 2.1429em;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-menu {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 66.666667%;\r\n    flex: 0 0 66.666667%;\r\n    max-width: 66.666667%;\r\n}\r\n\r\ninput.pizo-new-realty-location-detail-row-menu {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n}\r\n\r\n.pizo-new-realty-location-map-view {\r\n    max-width: 100%;\r\n    min-width: 380px;\r\n    display: inline-block;\r\n    margin-bottom: 0.7143em;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n    height: calc(100% - 0.7143rem);\r\n    position: absolute;\r\n    margin-left: 1.0714em;\r\n}\r\n\r\n.pizo-new-realty-location-map-view-content {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-long {\r\n    display: inline-block;\r\n    margin-left: 2.1429em;\r\n    width: calc(50% - 2.0714rem);\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-lat {\r\n    display: inline-block;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n    width: calc(50% - 2.0714rem);\r\n}", ""]);
+exports.push([module.i, ".pizo-new-realty-location {\r\n    width: 100vw;\r\n    width: 80vw;\r\n    background-color: white;\r\n}\r\n\r\n.pizo-new-realty-location-tab {\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    margin-bottom: 0.7143em;\r\n    background: #f3f3f3;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-realty-location-tab>span {\r\n    padding: 0.7143em;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-donebutton {\r\n    display: inline-block;\r\n    width: 6em;\r\n    margin: 5px;\r\n}\r\n\r\n.pizo-new-realty-location-detail {\r\n    max-width: 100%;\r\n    min-width: 380px;\r\n    display: inline-block;\r\n    margin-bottom: 0.7143em;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n}\r\n\r\n.pizo-new-realty-location-content {\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-wrap: wrap;\r\n    flex-wrap: wrap;\r\n    width: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row:not(:last-child) {\r\n    margin-bottom: 0.7143em;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    flex: 0 0 calc(33.333333% - 4.2857rem);\r\n    max-width: calc(33.333333% - 4.2857rem);\r\n    text-align: right;\r\n    font-size: 1em;\r\n    margin-top: auto;\r\n    margin-bottom: auto;\r\n    padding-left: 2.1429em;\r\n    padding-right: 2.1429em;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-menu {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 0 66.666667%;\r\n    flex: 0 0 66.666667%;\r\n    max-width: 66.666667%;\r\n}\r\n\r\ninput.pizo-new-realty-location-detail-row-menu {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input {\r\n    -webkit-box-flex: 0;\r\n    -ms-flex: 0 calc(66.666667% - 1rem);\r\n    flex: 0 0 calc(66.666667% - 1rem);\r\n    max-width: calc(66.666667% - 1rem);\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n}\r\n\r\n.pizo-new-realty-location-map-view {\r\n    max-width: 100%;\r\n    min-width: 380px;\r\n    display: inline-block;\r\n    margin-bottom: 0.7143em;\r\n    width: calc(50% - 1.0714rem);\r\n    vertical-align: top;\r\n    height: calc(100% - 0.7143rem);\r\n    position: absolute;\r\n    margin-left: 1.0714em;\r\n}\r\n\r\n.pizo-new-realty-location-map-view-content {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-long {\r\n    display: inline-block;\r\n    margin-left: 2.1429em;\r\n    width: calc(50% - 2.0714rem);\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-input-lat {\r\n    display: inline-block;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n    width: calc(50% - 2.0714rem);\r\n}\r\n\r\n.labels .arrow {\r\n    border-top-color: #000000;\r\n    border-right-color: rgba(0, 0, 0, 0);\r\n    border-bottom-color: rgba(0, 0, 0, 0);\r\n    border-left-color: rgba(0, 0, 0, 0);\r\n    border-width: 5px 5px 0;\r\n    bottom: 0;\r\n    left: 50%;\r\n    margin-left: -5px;\r\n    border-style: solid;\r\n    height: 0;\r\n    position: absolute;\r\n    width: 0;\r\n    display: none;\r\n}\r\n\r\n.labels .inner {\r\n    background-color: #fff;\r\n    border-radius: 5px;\r\n    color: #000;\r\n    min-width: 50px;\r\n    padding: 3px 8px;\r\n    text-align: center;\r\n    text-decoration: none;\r\n    box-shadow: 2px 2px 2px #7a7a7a;\r\n}\r\n\r\n.labels {\r\n    margin-top: -3px;\r\n    padding: 5px;\r\n    position: absolute;\r\n    visibility: visible;\r\n    z-index: 1030;\r\n}", ""]);
 
 
 
@@ -20116,7 +20116,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n    display: inline-block;\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n    width: 3em;\r\n    text-align: right;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n    visibility: hidden;\r\n    position: absolute;\r\n    top: -71.3571em;\r\n    left: -71.3571em;\r\n    font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity {\r\n    opacity: 0.5;\r\n    position: fixed;\r\n    pointer-events: none;\r\n    z-index: 100;\r\n    max-width: 100%;\r\n    background-color: white;\r\n    overflow: hidden;\r\n}\r\n\r\n.background-opacity-1 {\r\n    opacity: 0.5;\r\n    position: fixed;\r\n    z-index: 100;\r\n    background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo {\r\n    z-index: 9999999999;\r\n}\r\n\r\n.delete-zone {\r\n    border: 0.1429rem dashed #0087F7;\r\n    text-align: center;\r\n    position: fixed;\r\n}\r\n\r\n.delete-zone-icon {\r\n    font-size: 4.2857em;\r\n    display: inline-block;\r\n}\r\n\r\n.detele-zone-label {\r\n    font-size: 2.1429em;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone {\r\n    border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon {\r\n    opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n    opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center {\r\n    border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle {\r\n    border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left {\r\n    display: inline-block;\r\n    height: 100%;\r\n}\r\n\r\n.move-hover-zone-right {\r\n    display: inline-block;\r\n    height: 100%;\r\n}\r\n\r\n.move-hover-zone-center {\r\n    display: inline-block;\r\n    height: 100%;\r\n}\r\n\r\n.move-hover-zone {\r\n    display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot {\r\n    display: block;\r\n}\r\n\r\n.move-hover-zone-middle {\r\n    opacity: 1;\r\n}\r\n\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n\r\ntable.sortTable {\r\n    max-width: 100%;\r\n}\r\n\r\n\r\n/* .absol-single-page-scroller{\r\n  width: 500px;\r\n  margin: auto;\r\n} */\r\n\r\ntable.sortTable,\r\ntable.sortTableClone {\r\n    background: #fff;\r\n    /* margin: 0 auto; */\r\n    position: relative;\r\n    font-size: 1em;\r\n    border-spacing: 0;\r\n    border-collapse: separate;\r\n    /* overflow: hidden; */\r\n}\r\n\r\ntable.sortTableClone {\r\n    left: 0;\r\n    font-size: 1em;\r\n    position: absolute;\r\n    z-index: 1000;\r\n}\r\n\r\ntable.sortTable th,\r\ntable.sortTable td,\r\ntable.sortTableClone th,\r\ntable.sortTableClone td {\r\n    padding: 0.35714285714em;\r\n    text-align: left;\r\n    border-top: 1px solid var(--color-input-color);\r\n    position: relative;\r\n}\r\n\r\ntable.sortTable th,\r\ntable.sortTableClone th {\r\n    background: #36304a;\r\n    vertical-align: middle;\r\n    color: #fff;\r\n    position: sticky;\r\n    position: -webkit-sticky;\r\n    top: 0px;\r\n    z-index: 4;\r\n}\r\n\r\ntable.sortTable td,\r\ntable.sortTableClone td {\r\n    vertical-align: middle;\r\n}\r\n\r\ntable.sortTable thead:first-child tr th,\r\ntable.sortTable thead:first-child tr td,\r\ntable.sortTableClone thead:first-child tr th,\r\ntable.sortTableClone thead:first-child tr td {\r\n    border-top: 0;\r\n}\r\n\r\ntable.sortTable tbody+tbody,\r\ntable.sortTableClone tbody+tbody {\r\n    border-top: 1px solid #ddd;\r\n}\r\n\r\ntable.sortTable th+th,\r\ntable.sortTable td+td,\r\ntable.sortTable th+td,\r\ntable.sortTable td+th,\r\ntable.sortTableClone th+th,\r\ntable.sortTableClone td+td,\r\ntable.sortTableClone th+td,\r\ntable.sortTableClone td+th {\r\n    border-left: 1px solid #ddd;\r\n}\r\n\r\ntable.sortTable thead:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child td,\r\ntable.sortTableClone thead:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child td {\r\n    border-top: 0;\r\n}\r\n\r\ntable.sortTable tbody {\r\n    position: relative;\r\n}\r\n\r\ntable.sortTable td.postionStickyCell,\r\ntable.sortTable th.postionStickyCell {\r\n    position: sticky;\r\n    position: -webkit-sticky;\r\n    left: 0;\r\n    z-index: 1;\r\n}\r\n\r\ntable.sortTable th.postionStickyCell {\r\n    z-index: 3;\r\n}\r\n\r\n\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n\r\n.clearfix:after {\r\n    content: \".\";\r\n    display: block;\r\n    height: 0;\r\n    clear: both;\r\n    visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n    height: 1%;\r\n}\r\n\r\n\r\n/* IE6 */\r\n\r\n*:first-child+html .clearfix {\r\n    min-height: 1%;\r\n}\r\n\r\n\r\n/* IE7 */\r\n\r\n\r\n/* Syntax highlighting */\r\n\r\n.c {\r\n    color: #998;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Comment */\r\n\r\n.err {\r\n    color: #a61717;\r\n    background-color: #e3d2d2;\r\n}\r\n\r\n\r\n/* Error */\r\n\r\n.k {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword */\r\n\r\n.o {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Operator */\r\n\r\n.cm {\r\n    color: #998;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Comment.Multiline */\r\n\r\n.cp {\r\n    color: #999;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Comment.Preproc */\r\n\r\n.c1 {\r\n    color: #998;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Comment.Single */\r\n\r\n.cs {\r\n    color: #999;\r\n    font-weight: bold;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Comment.Special */\r\n\r\n.gd {\r\n    color: #000;\r\n    background-color: #fdd;\r\n}\r\n\r\n\r\n/* Generic.Deleted */\r\n\r\n.gd .x {\r\n    color: #000;\r\n    background-color: #faa;\r\n}\r\n\r\n\r\n/* Generic.Deleted.Specific */\r\n\r\n.ge {\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Generic.Emph */\r\n\r\n.gr {\r\n    color: #a00;\r\n}\r\n\r\n\r\n/* Generic.Error */\r\n\r\n.gh {\r\n    color: #999;\r\n}\r\n\r\n\r\n/* Generic.Heading */\r\n\r\n.gi {\r\n    color: #000;\r\n    background-color: #dfd;\r\n}\r\n\r\n\r\n/* Generic.Inserted */\r\n\r\n.gi .x {\r\n    color: #000;\r\n    background-color: #afa;\r\n}\r\n\r\n\r\n/* Generic.Inserted.Specific */\r\n\r\n.go {\r\n    color: #888;\r\n}\r\n\r\n\r\n/* Generic.Output */\r\n\r\n.gp {\r\n    color: #555;\r\n}\r\n\r\n\r\n/* Generic.Prompt */\r\n\r\n.gs {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Generic.Strong */\r\n\r\n.gu {\r\n    color: #aaa;\r\n}\r\n\r\n\r\n/* Generic.Subheading */\r\n\r\n.gt {\r\n    color: #a00;\r\n}\r\n\r\n\r\n/* Generic.Traceback */\r\n\r\n.kc {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Constant */\r\n\r\n.kd {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Declaration */\r\n\r\n.kp {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Pseudo */\r\n\r\n.kr {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Reserved */\r\n\r\n.kt {\r\n    color: #458;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Type */\r\n\r\n.m {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number */\r\n\r\n.s {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String */\r\n\r\n.na {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Attribute */\r\n\r\n.nb {\r\n    color: #0086b3;\r\n}\r\n\r\n\r\n/* Name.Builtin */\r\n\r\n.nc {\r\n    color: #458;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Name.Class */\r\n\r\n.no {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Constant */\r\n\r\n.ni {\r\n    color: #800080;\r\n}\r\n\r\n\r\n/* Name.Entity */\r\n\r\n.ne {\r\n    color: #900;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Name.Exception */\r\n\r\n.nf {\r\n    color: #900;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Name.Function */\r\n\r\n.nn {\r\n    color: #555;\r\n}\r\n\r\n\r\n/* Name.Namespace */\r\n\r\n.nt {\r\n    color: #000080;\r\n}\r\n\r\n\r\n/* Name.Tag */\r\n\r\n.nv {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Variable */\r\n\r\n.ow {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Operator.Word */\r\n\r\n.w {\r\n    color: #bbb;\r\n}\r\n\r\n\r\n/* Text.Whitespace */\r\n\r\n.mf {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Float */\r\n\r\n.mh {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Hex */\r\n\r\n.mi {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Integer */\r\n\r\n.mo {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Oct */\r\n\r\n.sb {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Backtick */\r\n\r\n.sc {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Char */\r\n\r\n.sd {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Doc */\r\n\r\n.s2 {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Double */\r\n\r\n.se {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Escape */\r\n\r\n.sh {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Heredoc */\r\n\r\n.si {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Interpol */\r\n\r\n.sx {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Other */\r\n\r\n.sr {\r\n    color: #009926;\r\n}\r\n\r\n\r\n/* Literal.String.Regex */\r\n\r\n.s1 {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Single */\r\n\r\n.ss {\r\n    color: #990073;\r\n}\r\n\r\n\r\n/* Literal.String.Symbol */\r\n\r\n.bp {\r\n    color: #999;\r\n}\r\n\r\n\r\n/* Name.Builtin.Pseudo */\r\n\r\n.vc {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Variable.Class */\r\n\r\n.vg {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Variable.Global */\r\n\r\n.vi {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Variable.Instance */\r\n\r\n.il {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Integer.Long */\r\n\r\n.module-delete-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    padding: 10px;\r\n    border: 1px solid #888;\r\n    border-radius: 4px;\r\n    max-height: 90vh;\r\n    overflow: auto;\r\n    background-color: #fefefe;\r\n    box-shadow: 4px 4px 10px 0px black;\r\n}\r\n\r\n.module-delete-button>button {\r\n    text-align: center;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    line-height: 2em;\r\n    box-sizing: content-box;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n    width: 90px;\r\n}\r\n\r\n.module-delete-button>button:hover {\r\n    background-color: rgb(213, 213, 213);\r\n    cursor: pointer;\r\n}\r\n\r\n.module-delete-button>button:not(:first-child) {\r\n    margin-left: 30px;\r\n}\r\n\r\n.module-delete-header {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    font-weight: bold;\r\n}\r\n\r\n.module-delete-header-title {\r\n    font-size: 1.14285714286em;\r\n    padding-top: 0.5em;\r\n    padding-bottom: 0.5em;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    overflow: hidden;\r\n    position: relative;\r\n    min-width: 20em;\r\n}\r\n\r\n.module-delete-header-close-container {\r\n    font-size: 1em;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n}\r\n\r\n.module-delete-button {\r\n    text-align: center;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-content {\r\n    margin-top: 24px;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-header-close.material-icons {\r\n    font-weight: bold;\r\n}\r\n\r\n.module-delete-header-close.material-icons:hover {\r\n    color: red;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n/* \r\n.pagination {\r\n  display: flex;\r\n  justify-content: center;\r\n  position: absolute;\r\n  transform: translateX(-50%) translateY(10px);\r\n  left: 50%;\r\n} */\r\n\r\n.container-sortTable {\r\n    overflow: auto;\r\n    height: 100%;\r\n    display: inline-block;\r\n}\r\n\r\n.pagination {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    justify-content: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.pagination-container {\r\n    padding: 5px 0;\r\n    border-radius: 8px;\r\n    border: 1px solid rgba(0, 0, 0, 0.1);\r\n    background-color: #fff;\r\n    display: inline-flex;\r\n    position: relative;\r\n    overflow: hidden;\r\n}\r\n\r\n.pagination-hover-overlay {\r\n    background-color: #00c1dd;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 5px;\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    transition-duration: 0.5s;\r\n    left: 60px;\r\n    opacity: 0;\r\n}\r\n\r\n.pagination .icon-pagination {\r\n    color: rgba(51, 61, 69, 0.5);\r\n    font-size: 11px;\r\n    width: 40px;\r\n    height: 40px;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    align-items: center;\r\n    justify-content: center;\r\n    position: relative;\r\n    z-index: 3;\r\n    background-color: #fff;\r\n}\r\n\r\n.pagination-prev {\r\n    margin-right: 5px;\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n\r\n.pagination-prev .icon-pagination-prev {\r\n    transform: rotate(0deg);\r\n}\r\n\r\n.pagination-prev .icon-pagination-prev>i,\r\n.pagination-next .icon-pagination-next>i {\r\n    font-size: 2em;\r\n}\r\n\r\n.pagination-next {\r\n    margin-left: 10px;\r\n    margin-right: 5px;\r\n    cursor: pointer;\r\n}\r\n\r\n.pagination-next .icon-pagination-next {\r\n    transform: rotate(180deg);\r\n}\r\n\r\n.pagination-page-number {\r\n    display: none;\r\n    border-radius: 5px;\r\n    padding: 5px;\r\n    color: #333d45;\r\n    min-width: 30px;\r\n    align-items: center;\r\n    justify-content: center;\r\n    transition-duration: 0.5s;\r\n    position: relative;\r\n    z-index: 2;\r\n    font-weight: 700;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    -moz-box-sizing: unset;\r\n    box-sizing: unset;\r\n    -webkit-box-sizing: unset;\r\n}\r\n\r\n.pagination-wrapper .pagination-page-number.active {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}\r\n\r\n.pagination-page-number:hover {\r\n    color: #fff;\r\n}\r\n\r\n.pagination-page-number.active {\r\n    color: #fff;\r\n}\r\n\r\n.pagination-wrapper {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}\r\n\r\n\r\n/* \r\n.pagination-align{\r\n  position: absolute;\r\n  transform: translateX(-50%);\r\n  left: 50%;\r\n  width: 100%;\r\n  height: 72px;\r\n  background-color: white;\r\n} */\r\n\r\n.button-hidden-swipe {\r\n    /* position: absolute;\r\n  right: 0;\r\n  z-index: -1;*/\r\n    height: 100%;\r\n    display: inline-block;\r\n    overflow: hidden;\r\n    transition: width 0.2s ease-out;\r\n    transition: width 0.2s ease-in;\r\n}\r\n\r\n.button-hidden-swipe-container-left {\r\n    position: absolute;\r\n    left: 0;\r\n    z-index: -1;\r\n    top: 0;\r\n    height: 100%;\r\n}\r\n\r\n.button-hidden-swipe-container-right {\r\n    position: absolute;\r\n    right: 0;\r\n    z-index: -1;\r\n    top: 0;\r\n    height: 100%;\r\n}\r\n\r\n.button-hidden-swipe-icon {\r\n    max-width: 100%;\r\n}\r\n\r\n.button-hidden-swipe-text {}\r\n\r\n.button-hidden-swipe-detail-content {\r\n    max-width: 100%;\r\n    display: inline-block;\r\n    position: absolute;\r\n    overflow: hidden;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    color: white;\r\n    font-weight: bolder;\r\n    text-align: center;\r\n}\r\n\r\n.button-hidden-swipe-detail {\r\n    position: relative;\r\n    text-align: center;\r\n    display: table;\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n    -moz-box-sizing: unset;\r\n    box-sizing: unset;\r\n    -webkit-box-sizing: unset;\r\n}\r\n\r\n.button-hidden-swipe-detail>i {\r\n    display: table-row;\r\n    font-size: 24px;\r\n    line-height: 25px;\r\n}\r\n\r\n.button-hidden-swipe-detail>span {\r\n    display: table-row;\r\n    white-space: nowrap;\r\n}\r\n\r\n.button-hidden-swipe-calcWidth {\r\n    display: inline;\r\n}\r\n\r\n.button-hidden-swipe-activeAll {\r\n    position: absolute;\r\n    right: 0;\r\n    max-width: unset !important;\r\n}\r\n\r\n.button-hidden-swipe-activeAll-width {\r\n    width: 100% !important;\r\n}\r\n\r\n.tableview-choice-container-content {\r\n    display: grid;\r\n    grid-template-columns: auto auto auto auto;\r\n    align-items: center;\r\n    background-color: white;\r\n    width: 50vw;\r\n    height: 50vh;\r\n    position: relative;\r\n}\r\n\r\n.tableview-choice-container-content .absol-checkbox {\r\n    text-align: center;\r\n}\r\n\r\n.tableview-choice-container-button {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.tableview-choice-container-tab {\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    background: #f3f3f3;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.tableview-choice-container-tab-label {\r\n    padding: 0.7143em;\r\n    width: 100%;\r\n}\r\n\r\n.tableview-choice-container-tab-button {\r\n    display: inline-block;\r\n    width: 6em;\r\n    margin: 5px;\r\n}", ""]);
+exports.push([module.i, ".quantumWizTextinputPaperinputInput {\r\n    display: inline-block;\r\n    font-size: 1em;\r\n    padding: 0.4286em;\r\n    width: 3em;\r\n    text-align: right;\r\n    border: solid 0.0714rem var(--color-input-color);\r\n}\r\n\r\n.fake-text {\r\n    visibility: hidden;\r\n    position: absolute;\r\n    top: -71.3571em;\r\n    left: -71.3571em;\r\n    font: 500 1.7857rem Roboto, RobotoDraft, Helvetica, Arial, sans-serif;\r\n}\r\n\r\n.background-opacity {\r\n    opacity: 0.5;\r\n    position: fixed;\r\n    pointer-events: none;\r\n    z-index: 100;\r\n    max-width: 100%;\r\n    background-color: white;\r\n    overflow: hidden;\r\n}\r\n\r\n.background-opacity-1 {\r\n    opacity: 0.5;\r\n    position: fixed;\r\n    z-index: 100;\r\n    background-color: white;\r\n}\r\n\r\n.pac-container.pac-logo {\r\n    z-index: 9999999999;\r\n}\r\n\r\n.delete-zone {\r\n    border: 0.1429rem dashed #0087F7;\r\n    text-align: center;\r\n    position: fixed;\r\n}\r\n\r\n.delete-zone-icon {\r\n    font-size: 4.2857em;\r\n    display: inline-block;\r\n}\r\n\r\n.detele-zone-label {\r\n    font-size: 2.1429em;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n}\r\n\r\n.focus-blast .delete-zone {\r\n    border-style: solid;\r\n}\r\n\r\n.focus-blast .delete-zone .delete-zone-icon {\r\n    opacity: 0.5;\r\n}\r\n\r\n.focus-blast .delete-zone .detele-zone-label {\r\n    opacity: 0.5;\r\n}\r\n\r\n.focus-blast.move-hover-zone .move-hover-zone-center {\r\n    border: 0.0714rem solid blue;\r\n}\r\n\r\n.focus-blast.move-hover-zone-topbot .move-hover-zone-middle {\r\n    border: 4px solid blue;\r\n}\r\n\r\n.move-hover-zone-left {\r\n    display: inline-block;\r\n    height: 100%;\r\n}\r\n\r\n.move-hover-zone-right {\r\n    display: inline-block;\r\n    height: 100%;\r\n}\r\n\r\n.move-hover-zone-center {\r\n    display: inline-block;\r\n    height: 100%;\r\n}\r\n\r\n.move-hover-zone {\r\n    display: inline-block;\r\n}\r\n\r\n.move-hover-zone-topbot {\r\n    display: block;\r\n}\r\n\r\n.move-hover-zone-middle {\r\n    opacity: 1;\r\n}\r\n\r\n\r\n/* ------------------------------------------\r\n  Reset ♥\r\n  http://meyerweb.com/eric/tools/css/reset/\r\n  v2.0 | 20110126\r\n  License: none (public domain)\r\n---------------------------------------------*/\r\n\r\ntable.sortTable {\r\n    max-width: 100%;\r\n}\r\n\r\n\r\n/* .absol-single-page-scroller{\r\n  width: 500px;\r\n  margin: auto;\r\n} */\r\n\r\ntable.sortTable,\r\ntable.sortTableClone {\r\n    background: #fff;\r\n    /* margin: 0 auto; */\r\n    position: relative;\r\n    font-size: 1em;\r\n    border-spacing: 0;\r\n    border-collapse: separate;\r\n    /* overflow: hidden; */\r\n}\r\n\r\ntable.sortTableClone {\r\n    left: 0;\r\n    font-size: 1em;\r\n    position: absolute;\r\n    z-index: 1000;\r\n}\r\n\r\ntable.sortTable th,\r\ntable.sortTable td,\r\ntable.sortTableClone th,\r\ntable.sortTableClone td {\r\n    padding: 0.35714285714em;\r\n    text-align: left;\r\n    border-top: 1px solid var(--color-input-color);\r\n    position: relative;\r\n}\r\n\r\ntable.sortTable th,\r\ntable.sortTableClone th {\r\n    background: #36304a;\r\n    vertical-align: top;\r\n    color: #fff;\r\n    position: sticky;\r\n    position: -webkit-sticky;\r\n    top: 0px;\r\n    z-index: 4;\r\n}\r\n\r\ntable.sortTable td,\r\ntable.sortTableClone td {\r\n    vertical-align: middle;\r\n}\r\n\r\ntable.sortTable thead:first-child tr th,\r\ntable.sortTable thead:first-child tr td,\r\ntable.sortTableClone thead:first-child tr th,\r\ntable.sortTableClone thead:first-child tr td {\r\n    border-top: 0;\r\n}\r\n\r\ntable.sortTable tbody+tbody,\r\ntable.sortTableClone tbody+tbody {\r\n    border-top: 1px solid #ddd;\r\n}\r\n\r\ntable.sortTable th+th,\r\ntable.sortTable td+td,\r\ntable.sortTable th+td,\r\ntable.sortTable td+th,\r\ntable.sortTableClone th+th,\r\ntable.sortTableClone td+td,\r\ntable.sortTableClone th+td,\r\ntable.sortTableClone td+th {\r\n    border-left: 1px solid #ddd;\r\n}\r\n\r\ntable.sortTable thead:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child th,\r\ntable.sortTable tbody:first-child tr:first-child td,\r\ntable.sortTableClone thead:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child th,\r\ntable.sortTableClone tbody:first-child tr:first-child td {\r\n    border-top: 0;\r\n}\r\n\r\ntable.sortTable tbody {\r\n    position: relative;\r\n}\r\n\r\ntable.sortTable td.postionStickyCell,\r\ntable.sortTable th.postionStickyCell {\r\n    position: sticky;\r\n    position: -webkit-sticky;\r\n    left: 0;\r\n    z-index: 1;\r\n}\r\n\r\ntable.sortTable th.postionStickyCell {\r\n    z-index: 3;\r\n}\r\n\r\n\r\n/*-----------------------------------\r\n  Markup free clearing\r\n  Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack\r\n-------------------------------------*/\r\n\r\n.clearfix:after {\r\n    content: \".\";\r\n    display: block;\r\n    height: 0;\r\n    clear: both;\r\n    visibility: hidden;\r\n}\r\n\r\n* html .clearfix {\r\n    height: 1%;\r\n}\r\n\r\n\r\n/* IE6 */\r\n\r\n*:first-child+html .clearfix {\r\n    min-height: 1%;\r\n}\r\n\r\n\r\n/* IE7 */\r\n\r\n\r\n/* Syntax highlighting */\r\n\r\n.c {\r\n    color: #998;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Comment */\r\n\r\n.err {\r\n    color: #a61717;\r\n    background-color: #e3d2d2;\r\n}\r\n\r\n\r\n/* Error */\r\n\r\n.k {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword */\r\n\r\n.o {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Operator */\r\n\r\n.cm {\r\n    color: #998;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Comment.Multiline */\r\n\r\n.cp {\r\n    color: #999;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Comment.Preproc */\r\n\r\n.c1 {\r\n    color: #998;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Comment.Single */\r\n\r\n.cs {\r\n    color: #999;\r\n    font-weight: bold;\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Comment.Special */\r\n\r\n.gd {\r\n    color: #000;\r\n    background-color: #fdd;\r\n}\r\n\r\n\r\n/* Generic.Deleted */\r\n\r\n.gd .x {\r\n    color: #000;\r\n    background-color: #faa;\r\n}\r\n\r\n\r\n/* Generic.Deleted.Specific */\r\n\r\n.ge {\r\n    font-style: italic;\r\n}\r\n\r\n\r\n/* Generic.Emph */\r\n\r\n.gr {\r\n    color: #a00;\r\n}\r\n\r\n\r\n/* Generic.Error */\r\n\r\n.gh {\r\n    color: #999;\r\n}\r\n\r\n\r\n/* Generic.Heading */\r\n\r\n.gi {\r\n    color: #000;\r\n    background-color: #dfd;\r\n}\r\n\r\n\r\n/* Generic.Inserted */\r\n\r\n.gi .x {\r\n    color: #000;\r\n    background-color: #afa;\r\n}\r\n\r\n\r\n/* Generic.Inserted.Specific */\r\n\r\n.go {\r\n    color: #888;\r\n}\r\n\r\n\r\n/* Generic.Output */\r\n\r\n.gp {\r\n    color: #555;\r\n}\r\n\r\n\r\n/* Generic.Prompt */\r\n\r\n.gs {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Generic.Strong */\r\n\r\n.gu {\r\n    color: #aaa;\r\n}\r\n\r\n\r\n/* Generic.Subheading */\r\n\r\n.gt {\r\n    color: #a00;\r\n}\r\n\r\n\r\n/* Generic.Traceback */\r\n\r\n.kc {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Constant */\r\n\r\n.kd {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Declaration */\r\n\r\n.kp {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Pseudo */\r\n\r\n.kr {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Reserved */\r\n\r\n.kt {\r\n    color: #458;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Keyword.Type */\r\n\r\n.m {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number */\r\n\r\n.s {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String */\r\n\r\n.na {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Attribute */\r\n\r\n.nb {\r\n    color: #0086b3;\r\n}\r\n\r\n\r\n/* Name.Builtin */\r\n\r\n.nc {\r\n    color: #458;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Name.Class */\r\n\r\n.no {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Constant */\r\n\r\n.ni {\r\n    color: #800080;\r\n}\r\n\r\n\r\n/* Name.Entity */\r\n\r\n.ne {\r\n    color: #900;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Name.Exception */\r\n\r\n.nf {\r\n    color: #900;\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Name.Function */\r\n\r\n.nn {\r\n    color: #555;\r\n}\r\n\r\n\r\n/* Name.Namespace */\r\n\r\n.nt {\r\n    color: #000080;\r\n}\r\n\r\n\r\n/* Name.Tag */\r\n\r\n.nv {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Variable */\r\n\r\n.ow {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n/* Operator.Word */\r\n\r\n.w {\r\n    color: #bbb;\r\n}\r\n\r\n\r\n/* Text.Whitespace */\r\n\r\n.mf {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Float */\r\n\r\n.mh {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Hex */\r\n\r\n.mi {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Integer */\r\n\r\n.mo {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Oct */\r\n\r\n.sb {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Backtick */\r\n\r\n.sc {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Char */\r\n\r\n.sd {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Doc */\r\n\r\n.s2 {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Double */\r\n\r\n.se {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Escape */\r\n\r\n.sh {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Heredoc */\r\n\r\n.si {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Interpol */\r\n\r\n.sx {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Other */\r\n\r\n.sr {\r\n    color: #009926;\r\n}\r\n\r\n\r\n/* Literal.String.Regex */\r\n\r\n.s1 {\r\n    color: #d14;\r\n}\r\n\r\n\r\n/* Literal.String.Single */\r\n\r\n.ss {\r\n    color: #990073;\r\n}\r\n\r\n\r\n/* Literal.String.Symbol */\r\n\r\n.bp {\r\n    color: #999;\r\n}\r\n\r\n\r\n/* Name.Builtin.Pseudo */\r\n\r\n.vc {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Variable.Class */\r\n\r\n.vg {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Variable.Global */\r\n\r\n.vi {\r\n    color: #008080;\r\n}\r\n\r\n\r\n/* Name.Variable.Instance */\r\n\r\n.il {\r\n    color: #099;\r\n}\r\n\r\n\r\n/* Literal.Number.Integer.Long */\r\n\r\n.module-delete-container {\r\n    display: inline-block;\r\n    position: relative;\r\n    padding: 10px;\r\n    border: 1px solid #888;\r\n    border-radius: 4px;\r\n    max-height: 90vh;\r\n    overflow: auto;\r\n    background-color: #fefefe;\r\n    box-shadow: 4px 4px 10px 0px black;\r\n}\r\n\r\n.module-delete-button>button {\r\n    text-align: center;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    line-height: 2em;\r\n    box-sizing: content-box;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n    width: 90px;\r\n}\r\n\r\n.module-delete-button>button:hover {\r\n    background-color: rgb(213, 213, 213);\r\n    cursor: pointer;\r\n}\r\n\r\n.module-delete-button>button:not(:first-child) {\r\n    margin-left: 30px;\r\n}\r\n\r\n.module-delete-header {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n    font-weight: bold;\r\n}\r\n\r\n.module-delete-header-title {\r\n    font-size: 1.14285714286em;\r\n    padding-top: 0.5em;\r\n    padding-bottom: 0.5em;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    overflow: hidden;\r\n    position: relative;\r\n    min-width: 20em;\r\n}\r\n\r\n.module-delete-header-close-container {\r\n    font-size: 1em;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n}\r\n\r\n.module-delete-button {\r\n    text-align: center;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-content {\r\n    margin-top: 24px;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.module-delete-header-close.material-icons {\r\n    font-weight: bold;\r\n}\r\n\r\n.module-delete-header-close.material-icons:hover {\r\n    color: red;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\n/* \r\n.pagination {\r\n  display: flex;\r\n  justify-content: center;\r\n  position: absolute;\r\n  transform: translateX(-50%) translateY(10px);\r\n  left: 50%;\r\n} */\r\n\r\n.container-sortTable {\r\n    overflow: auto;\r\n    height: 100%;\r\n    display: inline-block;\r\n}\r\n\r\n.pagination {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    justify-content: center;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n}\r\n\r\n.pagination-container {\r\n    padding: 5px 0;\r\n    border-radius: 8px;\r\n    border: 1px solid rgba(0, 0, 0, 0.1);\r\n    background-color: #fff;\r\n    display: inline-flex;\r\n    position: relative;\r\n    overflow: hidden;\r\n}\r\n\r\n.pagination-hover-overlay {\r\n    background-color: #00c1dd;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 5px;\r\n    position: absolute;\r\n    top: 50%;\r\n    transform: translateY(-50%);\r\n    transition-duration: 0.5s;\r\n    left: 60px;\r\n    opacity: 0;\r\n}\r\n\r\n.pagination .icon-pagination {\r\n    color: rgba(51, 61, 69, 0.5);\r\n    font-size: 11px;\r\n    width: 40px;\r\n    height: 40px;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    align-items: center;\r\n    justify-content: center;\r\n    position: relative;\r\n    z-index: 3;\r\n    background-color: #fff;\r\n}\r\n\r\n.pagination-prev {\r\n    margin-right: 5px;\r\n    margin-left: 10px;\r\n    cursor: pointer;\r\n}\r\n\r\n.pagination-prev .icon-pagination-prev {\r\n    transform: rotate(0deg);\r\n}\r\n\r\n.pagination-prev .icon-pagination-prev>i,\r\n.pagination-next .icon-pagination-next>i {\r\n    font-size: 2em;\r\n}\r\n\r\n.pagination-next {\r\n    margin-left: 10px;\r\n    margin-right: 5px;\r\n    cursor: pointer;\r\n}\r\n\r\n.pagination-next .icon-pagination-next {\r\n    transform: rotate(180deg);\r\n}\r\n\r\n.pagination-page-number {\r\n    display: none;\r\n    border-radius: 5px;\r\n    padding: 5px;\r\n    color: #333d45;\r\n    min-width: 30px;\r\n    align-items: center;\r\n    justify-content: center;\r\n    transition-duration: 0.5s;\r\n    position: relative;\r\n    z-index: 2;\r\n    font-weight: 700;\r\n    font-size: 18px;\r\n    cursor: pointer;\r\n    -moz-box-sizing: unset;\r\n    box-sizing: unset;\r\n    -webkit-box-sizing: unset;\r\n}\r\n\r\n.pagination-wrapper .pagination-page-number.active {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}\r\n\r\n.pagination-page-number:hover {\r\n    color: #fff;\r\n}\r\n\r\n.pagination-page-number.active {\r\n    color: #fff;\r\n}\r\n\r\n.pagination-wrapper {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n}\r\n\r\n\r\n/* \r\n.pagination-align{\r\n  position: absolute;\r\n  transform: translateX(-50%);\r\n  left: 50%;\r\n  width: 100%;\r\n  height: 72px;\r\n  background-color: white;\r\n} */\r\n\r\n.button-hidden-swipe {\r\n    /* position: absolute;\r\n  right: 0;\r\n  z-index: -1;*/\r\n    height: 100%;\r\n    display: inline-block;\r\n    overflow: hidden;\r\n    transition: width 0.2s ease-out;\r\n    transition: width 0.2s ease-in;\r\n}\r\n\r\n.button-hidden-swipe-container-left {\r\n    position: absolute;\r\n    left: 0;\r\n    z-index: -1;\r\n    top: 0;\r\n    height: 100%;\r\n}\r\n\r\n.button-hidden-swipe-container-right {\r\n    position: absolute;\r\n    right: 0;\r\n    z-index: -1;\r\n    top: 0;\r\n    height: 100%;\r\n}\r\n\r\n.button-hidden-swipe-icon {\r\n    max-width: 100%;\r\n}\r\n\r\n.button-hidden-swipe-text {}\r\n\r\n.button-hidden-swipe-detail-content {\r\n    max-width: 100%;\r\n    display: inline-block;\r\n    position: absolute;\r\n    overflow: hidden;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n    color: white;\r\n    font-weight: bolder;\r\n    text-align: center;\r\n}\r\n\r\n.button-hidden-swipe-detail {\r\n    position: relative;\r\n    text-align: center;\r\n    display: table;\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n    -moz-box-sizing: unset;\r\n    box-sizing: unset;\r\n    -webkit-box-sizing: unset;\r\n}\r\n\r\n.button-hidden-swipe-detail>i {\r\n    display: table-row;\r\n    font-size: 24px;\r\n    line-height: 25px;\r\n}\r\n\r\n.button-hidden-swipe-detail>span {\r\n    display: table-row;\r\n    white-space: nowrap;\r\n}\r\n\r\n.button-hidden-swipe-calcWidth {\r\n    display: inline;\r\n}\r\n\r\n.button-hidden-swipe-activeAll {\r\n    position: absolute;\r\n    right: 0;\r\n    max-width: unset !important;\r\n}\r\n\r\n.button-hidden-swipe-activeAll-width {\r\n    width: 100% !important;\r\n}\r\n\r\n.tableview-choice-container-content {\r\n    display: grid;\r\n    grid-template-columns: auto auto auto auto;\r\n    align-items: center;\r\n    background-color: white;\r\n    width: 50vw;\r\n    height: 50vh;\r\n    position: relative;\r\n}\r\n\r\n.tableview-choice-container-content .absol-checkbox {\r\n    text-align: center;\r\n}\r\n\r\n.tableview-choice-container-button {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n}\r\n\r\n.tableview-choice-container-tab {\r\n    border-bottom: solid 0.0714rem #ccc;\r\n    background: #f3f3f3;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.tableview-choice-container-tab-label {\r\n    padding: 0.7143em;\r\n    width: 100%;\r\n}\r\n\r\n.tableview-choice-container-tab-button {\r\n    display: inline-block;\r\n    width: 6em;\r\n    margin: 5px;\r\n}\r\n\r\n.searchheader-input {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    align-items: center;\r\n    border: none;\r\n    position: absolute;\r\n    width: calc(100% - 4px);\r\n}\r\n\r\n.searchheader {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    position: relative;\r\n    height: 18px;\r\n    margin-top: 5px;\r\n}", ""]);
 
 
 
@@ -20186,7 +20186,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".pizo-list-realty-main-result-control-map-view {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main-result-control-map-view .pizo-new-realty-location-map-view {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    margin-bottom: 0;\r\n    width: unset;\r\n    vertical-align: unset;\r\n    height: unset;\r\n    position: unset;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    body:not(.mobile-web) .search-page-list-container {\r\n        overflow-y: auto;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 390px;\r\n        box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.4);\r\n        z-index: 1;\r\n    }\r\n}\r\n\r\n.search-page-list-container {\r\n    height: 100%;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 375px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 375px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 750px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 750px;\r\n    }\r\n}\r\n\r\n.result-list-container {\r\n    position: relative;\r\n    background-color: #fafafa;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .result-list-container {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container {\r\n    background: 0 0;\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n    padding: 12px 10px;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n        padding: 20px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-title {\r\n    font-size: 20px;\r\n    line-height: 26px;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .search-page-list-container .search-title {\r\n        margin-bottom: 12px;\r\n    }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container .search-subtitle,\r\n.responsive-search-page .short-list-cards .result-list-container .search-title {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n        margin-bottom: 8px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-subtitle {\r\n    margin-bottom: 10px;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .search-page-list-container .search-subtitle {\r\n        position: relative;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        -webkit-box-pack: justify;\r\n        justify-content: space-between;\r\n        font-size: 14px;\r\n        margin-bottom: 12px;\r\n    }\r\n}\r\n\r\n.result-list-container .result-count {\r\n    align-self: flex-start;\r\n    -webkit-box-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .search-page-list-container .search-subtitle .result-count {\r\n        font-weight: 600;\r\n    }\r\n}\r\n\r\n.result-list-container .sort-options {\r\n    display: none;\r\n}\r\n\r\n.result-list-container .sort-options.visible {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-align: start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.photo-cards.photo-cards_short {\r\n    padding: 0;\r\n    background-color: #f1f1f4;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 640px) {\r\n    .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\nbody:not(.mobile-web) .photo-cards.photo-cards_short {\r\n    background-color: #fff;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 16px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\n.photo-cards.photo-cards_short>li {\r\n    display: block;\r\n    margin: 0 0 8px;\r\n    width: 100%;\r\n}\r\n\r\n@media screen and (min-width: 640px) {\r\n    .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: block;\r\n        margin: 0 0 8px;\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n.list-card {\r\n    background: #fff;\r\n    border-bottom: 4px solid #006aff;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);\r\n    cursor: pointer;\r\n}\r\n\r\n.list-card,\r\n.list-card-top {\r\n    position: relative;\r\n}\r\n\r\n.list-card,\r\n.list-card-info {\r\n    /*display: -webkit-box;*/\r\n    -webkit-box-orient: vertical;\r\n}\r\n\r\n.list-card {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-direction: reverse;\r\n    flex-direction: column-reverse;\r\n}\r\n\r\n.list-card,\r\n.list-card-info {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.list-card {\r\n    grid-template-rows: auto 110px;\r\n    grid-template-areas: \"top\" \"bottom\";\r\n}\r\n\r\n.list-card-short {\r\n    grid-template-rows: auto;\r\n}\r\n\r\n.list-card-info {\r\n    padding: 15px;\r\n}\r\n\r\n.list-card-info {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-direction: normal;\r\n    flex-direction: column;\r\n    min-height: 110px;\r\n}\r\n\r\n.list-card-info {\r\n    grid-area: bottom;\r\n    grid-template-rows: repeat(3, auto);\r\n    min-height: auto;\r\n}\r\n\r\n.list-card-short .list-card-info {\r\n    min-height: 74px;\r\n    padding: 5px 8px 7px;\r\n}\r\n\r\n.list-card-addr,\r\n.list-card-details,\r\n.list-card-favorites-info,\r\n.list-card-footer,\r\n.list-card-heading,\r\n.list-card-link,\r\n.list-card-truncate,\r\n.list-card-type,\r\n.list-card-variable-text {\r\n    margin: 0;\r\n    min-width: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.zsg-link:visited,\r\n.zsg-link_primary:visited,\r\na:visited {\r\n    color: #7a48d6;\r\n}\r\n\r\n.list-card-link:active,\r\n.list-card-link:hover,\r\n.list-card-link:link,\r\n.list-card-link:visited {\r\n    color: #2a2a33;\r\n}\r\n\r\n.list-card-addr {\r\n    font-size: 14px;\r\n    font-style: normal;\r\n    font-weight: 600;\r\n    margin-bottom: 5px;\r\n    min-width: 0;\r\n}\r\n\r\n.list-card-short .list-card-addr,\r\n.list-card-short .list-card-heading {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-footer,\r\n.list-card-horizontal {\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-direction: normal;\r\n}\r\n\r\n.list-card-footer {\r\n    -webkit-box-ordinal-group: 4;\r\n    order: 3;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.list-card-footer,\r\n.list-card-heading {\r\n    grid-template-columns: auto 1fr;\r\n    display: grid;\r\n}\r\n\r\n.list-card-footer {\r\n    grid-row: 3/4;\r\n}\r\n\r\n.list-card-type {\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-short .list-card-type {\r\n    margin-top: 3px;\r\n    height: 18px;\r\n    font-size: 12px;\r\n    line-height: 18px;\r\n}\r\n\r\n.list-card-heading {\r\n    line-height: 1;\r\n    margin-bottom: 9px;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-heading {\r\n    grid-row: 1/2;\r\n    -webkit-box-align: end;\r\n    align-items: end;\r\n}\r\n\r\n.list-card-price,\r\n.priceStyles {\r\n    font-weight: 600;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-price {\r\n    display: inline-block;\r\n    font-size: 26px;\r\n}\r\n\r\n.list-card-short .list-card-price {\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n    height: 32px;\r\n}\r\n\r\n.list-card-details {\r\n    display: inline;\r\n    font-size: 14px;\r\n    font-weight: 600;\r\n    list-style: none;\r\n    margin-left: 15px;\r\n    max-width: 100%;\r\n}\r\n\r\n.list-card-price+.list-card-details {\r\n    margin-bottom: 3px;\r\n}\r\n\r\n.list-card-short .list-card-price+.list-card-details {\r\n    margin-bottom: 5px;\r\n    text-align: right;\r\n}\r\n\r\n.list-card-details>li {\r\n    display: inline;\r\n    padding: 0 6px;\r\n}\r\n\r\n.list-card-details>li:first-child {\r\n    border-left: 0;\r\n    padding-left: 0;\r\n}\r\n\r\n.list-card-details>li:last-child {\r\n    border-left: 1px solid #d1d1d5;\r\n}\r\n\r\n.list-card-label {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n}\r\n\r\n.list-card-top {\r\n    grid-area: top;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: auto;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage,\r\n.list-card-variable-text {\r\n    z-index: 1;\r\n}\r\n\r\n.list-card-img-overlay {\r\n    background: rgba(0, 0, 0, 0.54);\r\n    color: #fff;\r\n    padding: 5px 15px;\r\n    font-size: 13px;\r\n}\r\n\r\n.list-card-variable-text {\r\n    max-width: calc(100% - 40px);\r\n    left: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-brokerage,\r\n.list-card-save,\r\n.list-card-variable-text {\r\n    position: absolute;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage,\r\n.list-card-img,\r\n.list-card-overlay,\r\n.list-card-save,\r\n.list-card-variable-text {\r\n    grid-area: 1/1/-1/-1;\r\n}\r\n\r\n.list-card-variable-text {\r\n    place-self: start;\r\n}\r\n\r\n.list-card-variable-text {\r\n    -webkit-transition: opacity 0.2s linear;\r\n    transition: opacity 0.2s linear;\r\n}\r\n\r\n.list-card-brokerage {\r\n    background: 0 0;\r\n    width: 100%;\r\n    padding-bottom: 10px;\r\n    text-align: right;\r\n    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.list-card-brokerage {\r\n    grid-area: auto;\r\n    -webkit-transition: opacity 0.2s linear;\r\n    transition: opacity 0.2s linear;\r\n}\r\n\r\n.list-card-img {\r\n    content: \"\";\r\n    display: block;\r\n    padding-top: 53.33%;\r\n    overflow: hidden;\r\n    position: relative;\r\n    background-color: #f1f1f4;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.list-card-short .list-card-img {\r\n    padding-top: 41.67%;\r\n}\r\n\r\n.list-card-img img {\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    max-width: 100%;\r\n    width: 100%;\r\n    height: auto;\r\n    -webkit-transform: translate3d(-50%, -50%, 0);\r\n    transform: translate3d(-50%, -50%, 0);\r\n}\r\n\r\n.list-card-save {\r\n    z-index: 1;\r\n    background: 0 0;\r\n    border: 0;\r\n    right: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-save {\r\n    align-self: start;\r\n    justify-self: end;\r\n}\r\n\r\nbody.responsive-search-page .search-page-container .list-card-save {\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n}\r\n\r\n.list-card-save .list-card-save-content {\r\n    display: block;\r\n    width: 44px;\r\n    padding: 8px 8px 5px;\r\n    -webkit-filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.66));\r\n    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.66));\r\n    -webkit-transition: -webkit-filter 0.2s ease-out;\r\n    transition: -webkit-filter 0.2s ease-out;\r\n    transition: filter 0.2s ease-out;\r\n    transition: filter 0.2s ease-out, -webkit-filter 0.2s ease-out;\r\n}\r\n\r\n.list-card-type-icon.zsg-icon-for-sale {\r\n    font-size: 10px;\r\n}\r\n\r\n.favorite_border.material-icons {\r\n    font-size: 34px;\r\n}\r\n\r\n.responsive-mini-bubble {\r\n    color: #2a2a33;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    line-height: 15.6px;\r\n    position: relative;\r\n    background-color: #fff;\r\n    font-size: 12px;\r\n    -webkit-tap-highlight-color: transparent;\r\n    font-family: Gotham, gotham, Verdana, sans-serif;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-content {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-image {\r\n    background-position: 50% 50%;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    content: \"\";\r\n    height: 46px;\r\n    width: 46px;\r\n    margin-right: 5px;\r\n    border: 0;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details {\r\n    margin-bottom: 0;\r\n    height: 46px;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div,\r\n.responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div,\r\n.responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.home-details-content {\r\n    position: relative;\r\n}\r\n\r\n.imHfmq {\r\n    height: 100%;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    margin: 0px 16px;\r\n}\r\n\r\n.ds-text-button {\r\n    color: #006aff;\r\n    padding: 0;\r\n    border: 0;\r\n    background: 0 0;\r\n}\r\n\r\n.fyUmOz {\r\n    clip: rect(0px, 0px, 0px, 0px);\r\n    height: 1px;\r\n    position: absolute;\r\n    width: 1px;\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    margin: -1px;\r\n    overflow: hidden;\r\n    padding: 0px;\r\n}\r\n\r\n.ds-text-button:hover {\r\n    color: #62aef7;\r\n}\r\n\r\n.duJWoc:hover {\r\n    text-decoration: none;\r\n}\r\n\r\n.duJWoc {\r\n    vertical-align: middle;\r\n}\r\n\r\n@media (min-width: 1024px) {\r\n    .imHfmq {\r\n        border-bottom: 1px solid rgb(209, 209, 213);\r\n    }\r\n}\r\n\r\n.zsg-form-group,\r\n.zsg-form-group li,\r\nol,\r\nul {\r\n    list-style: none;\r\n}\r\n\r\n.lhzQGq {\r\n    cursor: pointer;\r\n    color: rgb(0, 106, 255);\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: none;\r\n    padding: 0px;\r\n}\r\n\r\n.ds-close-lightbox-icon {\r\n    position: absolute;\r\n    top: 16px;\r\n    right: -40px;\r\n    border: none;\r\n    background-image: none;\r\n    background-color: transparent;\r\n    box-shadow: none;\r\n    padding: 0;\r\n    display: none;\r\n}\r\n\r\n@media only screen and (min-width: 1024px) {\r\n    .ds-close-lightbox-icon {\r\n        display: block;\r\n    }\r\n}\r\n\r\n.ds-wrapper {}\r\n\r\n@media only screen and (min-width: 768px) {\r\n    .ds-wrapper {\r\n        overflow: hidden;\r\n    }\r\n}\r\n\r\n.ds-container {\r\n    -webkit-font-smoothing: antialiased;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    max-height: none;\r\n    position: relative;\r\n    height: 90vh;\r\n}\r\n\r\n.ds-media-col {\r\n    scroll-behavior: smooth;\r\n    overflow-x: hidden;\r\n    max-height: 100vh;\r\n}\r\n\r\n.ds-container .ds-data-view,\r\n.ds-container .ds-media-col {\r\n    overflow-y: auto;\r\n    overflow-x: hidden;\r\n    -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n.ds-container .ds-media-col {\r\n    background: #fff;\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n    .ds-container.ds-mobile-single-scroll .ds-media-col {\r\n        display: block !important;\r\n        position: relative;\r\n    }\r\n}\r\n\r\n.media-stream {\r\n    background: #fff;\r\n}\r\n\r\n.media-stream {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-flow: row wrap;\r\n    flex-flow: row wrap;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    margin: -2px;\r\n    width: calc(100% + 4px);\r\n    min-height: 30% !important;\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n    .media-stream {\r\n        max-width: calc(100vw - 600px);\r\n    }\r\n}\r\n\r\n.media-stream {\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-gap: 4px;\r\n    grid-auto-columns: 1fr;\r\n    margin: 0 auto;\r\n    padding-inline-start: 0;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n.ds-container .ds-data-view>ul,\r\n.ds-container .ds-media-col>ul {\r\n    min-height: 80%;\r\n    overflow: auto;\r\n    height: calc(100% - 48px);\r\n}\r\n\r\n.media-stream-tile {\r\n    cursor: pointer;\r\n    display: block;\r\n    overflow: hidden;\r\n    scroll-snap-align: center;\r\n    box-shadow: inset rgba(0, 0, 0, 0.15) 0 0 10px;\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n    height: calc(100vw * 3 / 4);\r\n    width: 100%;\r\n    border: 2px solid #eee;\r\n}\r\n\r\n@media screen and (min-width: 550px) {\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 4px) * 3 / 8);\r\n        width: 50%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 550px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc(100vw * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 400px) * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px) {\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 400px - 4px) * 3 / 8);\r\n        width: 50%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 400px) * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1024px) {\r\n    .media-stream .media-stream-tile {\r\n        border-width: 2px;\r\n        height: calc((100vw - 400px - 72px * 2 - 4px) * 3 / 8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1024px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 400px - 72px * 2) * 3 / 4);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    .media-stream .media-stream-tile {\r\n        border-width: 2px;\r\n        height: calc((100vw - 480px - 72px * 2 - 4px) * 3 / 8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 480px - 72px * 2) * 3 / 4);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1390px) {\r\n    .media-stream .media-stream-tile {\r\n        height: calc((768px - 4px) * 3 / 8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1390px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc(768px * 3 / 4);\r\n    }\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n    border-width: 0;\r\n    width: auto;\r\n}\r\n\r\n@media screen and (min-width: 550px) {\r\n    .media-stream .media-stream-tile--fullwidth,\r\n    .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 2;\r\n        grid-column: span 2;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n    .media-stream .media-stream-tile--fullwidth,\r\n    .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 1;\r\n        grid-column: span 1;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px) {\r\n    .media-stream .media-stream-tile--fullwidth,\r\n    .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 2;\r\n        grid-column: span 2;\r\n    }\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-pack: center;\r\n    justify-content: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n}\r\n\r\n.ds-container .ds-hero-headline {\r\n    font-weight: 400;\r\n    font-size: 20px;\r\n    line-height: 30px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .ds-hero-headline {\r\n    font-weight: 600;\r\n    color: #fff;\r\n    text-align: center;\r\n    margin-top: -16px;\r\n    margin-bottom: 16px;\r\n    padding: 0 8px;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-inline-start: 0;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button:not(:first-child) {\r\n    margin-left: 8px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .contact-button-group {\r\n    height: unset;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n    -ms-flex-positive: 1;\r\n    flex-grow: 1;\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .contact-button-group .contact-button {\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0%;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    line-height: 21px;\r\n}\r\n\r\n.ds-white-bg {\r\n    background: #fff !important;\r\n}\r\n\r\n.ds-container .ds-data-col {\r\n    background: #eee;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n    .ds-container .ds-data-col {\r\n        -ms-flex-preferred-size: 400px;\r\n        flex-basis: 400px;\r\n        max-width: 400px;\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 1280px) {\r\n    .ds-container .ds-data-col {\r\n        -ms-flex-preferred-size: 480px;\r\n        flex-basis: 480px;\r\n        max-width: 480px;\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n    .ds-container .ds-data-col.ds-data-col-data-forward {\r\n        -ms-flex-preferred-size: 500px;\r\n        flex-basis: 500px;\r\n        max-width: 500px;\r\n    }\r\n}\r\n\r\n.ds-container .ds-chip {\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.ds-container .ds-chip,\r\n.ds-container .ds-chip-mobile {\r\n    background-color: #fff;\r\n}\r\n\r\n.ds-home-details-chip {\r\n    margin: 0 16px;\r\n    padding-top: 16px;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-container {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-content {\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n    width: 100%;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row {\r\n    margin-bottom: 4px;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nbody,\r\ndd,\r\ndl,\r\ndt,\r\nfieldset,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\nol,\r\np,\r\nul {\r\n    margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n    color: inherit;\r\n}\r\n\r\n.zsg-h3,\r\n.zsg-h3_light,\r\nh3 {\r\n    font-size: 20px;\r\n    line-height: 1.5;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-content-item,\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination>li,\r\n.zsg-step-content,\r\n.zsg-steps>li>a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination>li,\r\n.zsg-step-content,\r\n.zsg-steps>li>a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row .ds-price {\r\n    display: inline;\r\n    font-size: 26px;\r\n    line-height: 1.26923077;\r\n    margin-right: 16px;\r\n}\r\n\r\narticle,\r\naside,\r\ndetails,\r\nfigcaption,\r\nfigure,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmain,\r\nnav,\r\nsection,\r\nsummary {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header,\r\n.ds-home-details-chip .ds-bed-bath-living-area-header .ds-bed-bath-living-area-container {\r\n    display: inline;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nbody,\r\ndd,\r\ndl,\r\ndt,\r\nfieldset,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\nol,\r\np,\r\nul {\r\n    margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n    color: inherit;\r\n}\r\n\r\n.zsg-h3,\r\n.zsg-h3_light,\r\nh3 {\r\n    font-size: 20px;\r\n    line-height: 1.5;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-content-item,\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination>li,\r\n.zsg-step-content,\r\n.zsg-steps>li>a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination>li,\r\n.zsg-step-content,\r\n.zsg-steps>li>a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header,\r\n.ds-home-details-chip .ds-bed-bath-living-area-header .ds-bed-bath-living-area-container {\r\n    display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n    font-size: 15px;\r\n    line-height: 1.53333333;\r\n}\r\n\r\n.ds-home-details-chip .ds-vertical-divider {\r\n    margin-right: 8px;\r\n    padding-left: 8px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header .ds-vertical-divider {\r\n    font-size: 15px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n    font-size: 15px;\r\n    line-height: 1.53333333;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-label-secondary {\r\n    font-weight: 400;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row {\r\n    margin-bottom: 4px;\r\n    font-size: 15px;\r\n    line-height: 1.53;\r\n    font-weight: 600;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row header {\r\n    display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row .ds-address-container {\r\n    display: inline;\r\n    font-size: 15px;\r\n    line-height: 1.53;\r\n    font-weight: 600;\r\n    letter-spacing: normal;\r\n}\r\n\r\n.ds-home-details-chip .ds-chip-removable-content {\r\n    will-change: height;\r\n}\r\n\r\n.ds-mortgage-row {\r\n    height: 21px;\r\n}\r\n\r\n.ds-container .ds-buttons,\r\n.ds-container .ds-buttons-mobile {\r\n    background: #fff;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n    padding: 0 16px 16px;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n    z-index: 1;\r\n    position: relative;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n    -ms-flex-positive: 1;\r\n    flex-grow: 1;\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    line-height: 21px;\r\n}\r\n\r\n@media screen and (min-width: 1390px) {\r\n    .media-stream .media-stream-tile--halfheight {\r\n        height: calc((768px - 4px) * 3 / 16);\r\n    }\r\n}\r\n\r\n.media-stream-tile--upsell {\r\n    background: #000;\r\n    position: relative;\r\n    cursor: unset;\r\n}\r\n\r\n.media-stream-tile figure,\r\n.media-stream-tile img {\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\r\n    -o-object-position: 50% 50%;\r\n    object-position: 50% 50%;\r\n}\r\n\r\n.iJIIUW {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n    height: 34px;\r\n    line-height: 22px;\r\n    color: rgb(255, 255, 255);\r\n    background-color: rgb(0, 106, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(0, 106, 255);\r\n}\r\n\r\n.cllLJF {\r\n    padding-right: 8px;\r\n    padding-left: 8px;\r\n}\r\n\r\n.cKVUOM {\r\n    text-transform: none;\r\n    -webkit-appearance: none;\r\n    font: inherit;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    border-width: initial;\r\n    border-style: none;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: none;\r\n}\r\n\r\nbutton,\r\nhtml input[type=\"button\"],\r\ninput[type=\"reset\"],\r\ninput[type=\"submit\"] {\r\n    -webkit-appearance: button;\r\n    cursor: pointer;\r\n}\r\n\r\n.gpVNOz {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    height: 100%;\r\n    color: rgb(0, 106, 255);\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: transparent;\r\n}\r\n\r\n.eKDTCE {\r\n    height: 20px;\r\n    width: 20px;\r\n    margin-right: 4px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.duJWoc {\r\n    vertical-align: middle;\r\n}\r\n\r\n.cjrQwi {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: row;\r\n    -webkit-box-pack: end;\r\n    justify-content: flex-end;\r\n    height: 100%;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.jfjsxZ {\r\n    display: inline;\r\n    color: inherit;\r\n    cursor: pointer;\r\n    font-weight: inherit;\r\n    font-size: inherit;\r\n    font-family: inherit;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    background: none;\r\n    padding: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-image: initial;\r\n    border-bottom: 1px dashed rgb(0, 106, 255);\r\n}\r\n\r\n.eVrWvb {\r\n    border-bottom: 1px dashed rgb(167, 166, 171);\r\n}\r\n\r\n.eVrWvb,\r\n.eVrWvb.TriggerButton-sc-19o64qd-0,\r\n.eVrWvb.TriggerButton-sc-19o64qd-0::after {\r\n    cursor: help;\r\n}\r\n\r\n.cpEtCH {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 9px;\r\n    padding-bottom: 9px;\r\n    height: 42px;\r\n    line-height: 22px;\r\n    color: rgb(0, 106, 255);\r\n    background-color: rgb(255, 255, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(167, 166, 171);\r\n}\r\n\r\n.btcvqQ {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 9px;\r\n    padding-bottom: 9px;\r\n    height: 42px;\r\n    line-height: 22px;\r\n    color: rgb(255, 255, 255);\r\n    background-color: rgb(0, 106, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(0, 106, 255);\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-active-box {\r\n    top: unset;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-active-box .absol-static-tabbar-hline {\r\n    border-bottom: solid 5px rgb(127, 127, 128);\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button>span {\r\n    font-size: 1.2em;\r\n}\r\n\r\n.home-details-content .image-tabcontainer .absol-static-tabbar-button {\r\n    width: 50%;\r\n    min-width: 400px;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button:hover {\r\n    color: rgb(30, 30, 55);\r\n    font-weight: 600;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button.active {\r\n    background-color: #26438d;\r\n    color: white;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view {\r\n    width: unset;\r\n    margin-top: unset;\r\n    margin-right: unset;\r\n    margin: 10px;\r\n    overflow: auto;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view input {\r\n    pointer-events: none;\r\n    border: none !important;\r\n    text-align: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view textarea {\r\n    pointer-events: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectbox-item-close {\r\n    display: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectbox-item-text {\r\n    padding-right: 5px;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit) .absol-selectmenu-btn {\r\n    display: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit) .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit) {\r\n    text-align: right;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 7px;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .pizo-new-realty-contact-item-setting {\r\n    display: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .pizo-new-realty-contact-item-close {\r\n    display: none;\r\n}\r\n\r\n.home-details-content .as-button-range {\r\n    min-height: 2em;\r\n}", ""]);
+exports.push([module.i, ".pizo-list-realty-main-result-control-map-view {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-list-realty-main-result-control-map-view .pizo-new-realty-location-map-view {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    margin-bottom: 0;\r\n    width: unset;\r\n    vertical-align: unset;\r\n    height: unset;\r\n    position: unset;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    body:not(.mobile-web) .search-page-list-container {\r\n        overflow-y: auto;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 390px;\r\n        box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.4);\r\n        z-index: 1;\r\n    }\r\n}\r\n\r\n.search-page-list-container {\r\n    height: 100%;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 375px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 375px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    body:not(.mobile-web) .double-column-only {\r\n        width: 750px;\r\n        -webkit-box-flex: 0;\r\n        flex: 0 0 750px;\r\n    }\r\n}\r\n\r\n.result-list-container {\r\n    position: relative;\r\n    background-color: #fafafa;\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .result-list-container {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container {\r\n    background: 0 0;\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n    padding: 12px 10px;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .short-list-cards .result-list-container>.search-page-list-header {\r\n        padding: 20px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-title {\r\n    font-size: 20px;\r\n    line-height: 26px;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .search-page-list-container .search-title {\r\n        margin-bottom: 12px;\r\n    }\r\n}\r\n\r\n.responsive-search-page .short-list-cards .result-list-container .search-subtitle,\r\n.responsive-search-page .short-list-cards .result-list-container .search-title {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .short-list-cards .result-list-container .search-title {\r\n        margin-bottom: 8px;\r\n    }\r\n}\r\n\r\n.result-list-container .search-subtitle {\r\n    margin-bottom: 10px;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .search-page-list-container .search-subtitle {\r\n        position: relative;\r\n        /*display: -webkit-box;*/\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        -webkit-box-pack: justify;\r\n        justify-content: space-between;\r\n        font-size: 14px;\r\n        margin-bottom: 12px;\r\n    }\r\n}\r\n\r\n.result-list-container .result-count {\r\n    align-self: flex-start;\r\n    -webkit-box-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    .responsive-search-page .search-page-list-container .search-subtitle .result-count {\r\n        font-weight: 600;\r\n    }\r\n}\r\n\r\n.result-list-container .sort-options {\r\n    display: none;\r\n}\r\n\r\n.result-list-container .sort-options.visible {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-align: start;\r\n    align-items: flex-start;\r\n}\r\n\r\n.photo-cards.photo-cards_short {\r\n    padding: 0;\r\n    background-color: #f1f1f4;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n@media screen and (min-width: 640px) {\r\n    .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\nbody:not(.mobile-web) .photo-cards.photo-cards_short {\r\n    background-color: #fff;\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 16px;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short {\r\n        padding: 0 8px 0 16px;\r\n    }\r\n}\r\n\r\n.photo-cards.photo-cards_short>li {\r\n    display: block;\r\n    margin: 0 0 8px;\r\n    width: 100%;\r\n}\r\n\r\n@media screen and (min-width: 640px) {\r\n    .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1007px) {\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: block;\r\n        margin: 0 0 8px;\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    body:not(.mobile-web) .photo-cards.photo-cards_short>li {\r\n        display: inline-block;\r\n        margin-right: 8px;\r\n        vertical-align: top;\r\n        width: calc((100% / 2) - 8px);\r\n    }\r\n}\r\n\r\n.list-card {\r\n    background: #fff;\r\n    border-bottom: 4px solid #006aff;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);\r\n    cursor: pointer;\r\n}\r\n\r\n.list-card,\r\n.list-card-top {\r\n    position: relative;\r\n}\r\n\r\n.list-card,\r\n.list-card-info {\r\n    /*display: -webkit-box;*/\r\n    -webkit-box-orient: vertical;\r\n}\r\n\r\n.list-card {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-direction: reverse;\r\n    flex-direction: column-reverse;\r\n}\r\n\r\n.list-card,\r\n.list-card-info {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n}\r\n\r\n.list-card {\r\n    grid-template-rows: auto 110px;\r\n    grid-template-areas: \"top\" \"bottom\";\r\n}\r\n\r\n.list-card-short {\r\n    grid-template-rows: auto;\r\n}\r\n\r\n.list-card-info {\r\n    padding: 15px;\r\n}\r\n\r\n.list-card-info {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-direction: normal;\r\n    flex-direction: column;\r\n    min-height: 110px;\r\n}\r\n\r\n.list-card-info {\r\n    grid-area: bottom;\r\n    grid-template-rows: repeat(3, auto);\r\n    min-height: auto;\r\n}\r\n\r\n.list-card-short .list-card-info {\r\n    min-height: 74px;\r\n    padding: 5px 8px 7px;\r\n}\r\n\r\n.list-card-addr,\r\n.list-card-details,\r\n.list-card-favorites-info,\r\n.list-card-footer,\r\n.list-card-heading,\r\n.list-card-link,\r\n.list-card-truncate,\r\n.list-card-type,\r\n.list-card-variable-text {\r\n    margin: 0;\r\n    min-width: 0;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.zsg-link:visited,\r\n.zsg-link_primary:visited,\r\na:visited {\r\n    color: #7a48d6;\r\n}\r\n\r\n.list-card-link:active,\r\n.list-card-link:hover,\r\n.list-card-link:link,\r\n.list-card-link:visited {\r\n    color: #2a2a33;\r\n}\r\n\r\n.list-card-addr {\r\n    font-size: 14px;\r\n    font-style: normal;\r\n    font-weight: 600;\r\n    margin-bottom: 5px;\r\n    min-width: 0;\r\n}\r\n\r\n.list-card-short .list-card-addr,\r\n.list-card-short .list-card-heading {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-footer,\r\n.list-card-horizontal {\r\n    -webkit-box-orient: horizontal;\r\n    -webkit-box-direction: normal;\r\n}\r\n\r\n.list-card-footer {\r\n    -webkit-box-ordinal-group: 4;\r\n    order: 3;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: row;\r\n}\r\n\r\n.list-card-footer,\r\n.list-card-heading {\r\n    grid-template-columns: auto 1fr;\r\n    display: grid;\r\n}\r\n\r\n.list-card-footer {\r\n    grid-row: 3/4;\r\n}\r\n\r\n.list-card-type {\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-short .list-card-type {\r\n    margin-top: 3px;\r\n    height: 18px;\r\n    font-size: 12px;\r\n    line-height: 18px;\r\n}\r\n\r\n.list-card-heading {\r\n    line-height: 1;\r\n    margin-bottom: 9px;\r\n    -webkit-box-ordinal-group: 2;\r\n    order: 1;\r\n}\r\n\r\n.list-card-heading {\r\n    grid-row: 1/2;\r\n    -webkit-box-align: end;\r\n    align-items: end;\r\n}\r\n\r\n.list-card-price,\r\n.priceStyles {\r\n    font-weight: 600;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.list-card-price {\r\n    display: inline-block;\r\n    font-size: 26px;\r\n}\r\n\r\n.list-card-short .list-card-price {\r\n    font-size: 24px;\r\n    line-height: 32px;\r\n    height: 32px;\r\n}\r\n\r\n.list-card-details {\r\n    display: inline;\r\n    font-size: 14px;\r\n    font-weight: 600;\r\n    list-style: none;\r\n    margin-left: 15px;\r\n    max-width: 100%;\r\n}\r\n\r\n.list-card-price+.list-card-details {\r\n    margin-bottom: 3px;\r\n}\r\n\r\n.list-card-short .list-card-price+.list-card-details {\r\n    margin-bottom: 5px;\r\n    text-align: right;\r\n}\r\n\r\n.list-card-details>li {\r\n    display: inline;\r\n    padding: 0 6px;\r\n}\r\n\r\n.list-card-details>li:first-child {\r\n    border-left: 0;\r\n    padding-left: 0;\r\n}\r\n\r\n.list-card-details>li:last-child {\r\n    border-left: 1px solid #d1d1d5;\r\n}\r\n\r\n.list-card-label {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n}\r\n\r\n.list-card-top {\r\n    grid-area: top;\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    grid-template-rows: auto;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage,\r\n.list-card-variable-text {\r\n    z-index: 1;\r\n}\r\n\r\n.list-card-img-overlay {\r\n    background: rgba(0, 0, 0, 0.54);\r\n    color: #fff;\r\n    padding: 5px 15px;\r\n    font-size: 13px;\r\n}\r\n\r\n.list-card-variable-text {\r\n    max-width: calc(100% - 40px);\r\n    left: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-brokerage,\r\n.list-card-save,\r\n.list-card-variable-text {\r\n    position: absolute;\r\n    overflow: hidden;\r\n}\r\n\r\n.list-card-brokerage,\r\n.list-card-img,\r\n.list-card-overlay,\r\n.list-card-save,\r\n.list-card-variable-text {\r\n    grid-area: 1/1/-1/-1;\r\n}\r\n\r\n.list-card-variable-text {\r\n    place-self: start;\r\n}\r\n\r\n.list-card-variable-text {\r\n    -webkit-transition: opacity 0.2s linear;\r\n    transition: opacity 0.2s linear;\r\n}\r\n\r\n.list-card-brokerage {\r\n    background: 0 0;\r\n    width: 100%;\r\n    padding-bottom: 10px;\r\n    text-align: right;\r\n    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);\r\n    bottom: 0;\r\n    right: 0;\r\n}\r\n\r\n.list-card-brokerage {\r\n    grid-area: auto;\r\n    -webkit-transition: opacity 0.2s linear;\r\n    transition: opacity 0.2s linear;\r\n}\r\n\r\n.list-card-img {\r\n    content: \"\";\r\n    display: block;\r\n    padding-top: 53.33%;\r\n    overflow: hidden;\r\n    position: relative;\r\n    background-color: #f1f1f4;\r\n}\r\n\r\n.list-card-link {\r\n    display: grid;\r\n    -webkit-box-ordinal-group: 3;\r\n    order: 2;\r\n}\r\n\r\n.list-card-short .list-card-img {\r\n    padding-top: 41.67%;\r\n}\r\n\r\n.list-card-img img {\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    max-width: 100%;\r\n    width: 100%;\r\n    height: auto;\r\n    -webkit-transform: translate3d(-50%, -50%, 0);\r\n    transform: translate3d(-50%, -50%, 0);\r\n}\r\n\r\n.list-card-save {\r\n    z-index: 1;\r\n    background: 0 0;\r\n    border: 0;\r\n    right: 0;\r\n    top: 0;\r\n}\r\n\r\n.list-card-save {\r\n    align-self: start;\r\n    justify-self: end;\r\n}\r\n\r\nbody.responsive-search-page .search-page-container .list-card-save {\r\n    -webkit-transform: translate3d(0, 0, 0);\r\n}\r\n\r\n.list-card-save .list-card-save-content {\r\n    display: block;\r\n    width: 44px;\r\n    padding: 8px 8px 5px;\r\n    -webkit-filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.66));\r\n    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.66));\r\n    -webkit-transition: -webkit-filter 0.2s ease-out;\r\n    transition: -webkit-filter 0.2s ease-out;\r\n    transition: filter 0.2s ease-out;\r\n    transition: filter 0.2s ease-out, -webkit-filter 0.2s ease-out;\r\n}\r\n\r\n.list-card-type-icon.zsg-icon-for-sale {\r\n    font-size: 10px;\r\n}\r\n\r\n.favorite_border.material-icons {\r\n    font-size: 34px;\r\n}\r\n\r\n.responsive-mini-bubble {\r\n    color: #2a2a33;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    line-height: 15.6px;\r\n    position: relative;\r\n    background-color: #fff;\r\n    font-size: 12px;\r\n    -webkit-tap-highlight-color: transparent;\r\n    font-family: Gotham, gotham, Verdana, sans-serif;\r\n    cursor: pointer;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-content {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-image {\r\n    background-position: 50% 50%;\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    content: \"\";\r\n    height: 46px;\r\n    width: 46px;\r\n    margin-right: 5px;\r\n    border: 0;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details {\r\n    margin-bottom: 0;\r\n    height: 46px;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div,\r\n.responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.responsive-mini-bubble .mini-bubble-details div,\r\n.responsive-mini-bubble .mini-bubble-details strong {\r\n    height: 15.3px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.home-details-content {\r\n    position: relative;\r\n}\r\n\r\n.imHfmq {\r\n    height: 100%;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    margin: 0px 16px;\r\n}\r\n\r\n.ds-text-button {\r\n    color: #006aff;\r\n    padding: 0;\r\n    border: 0;\r\n    background: 0 0;\r\n}\r\n\r\n.fyUmOz {\r\n    clip: rect(0px, 0px, 0px, 0px);\r\n    height: 1px;\r\n    position: absolute;\r\n    width: 1px;\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    margin: -1px;\r\n    overflow: hidden;\r\n    padding: 0px;\r\n}\r\n\r\n.ds-text-button:hover {\r\n    color: #62aef7;\r\n}\r\n\r\n.duJWoc:hover {\r\n    text-decoration: none;\r\n}\r\n\r\n.duJWoc {\r\n    vertical-align: middle;\r\n}\r\n\r\n@media (min-width: 1024px) {\r\n    .imHfmq {\r\n        border-bottom: 1px solid rgb(209, 209, 213);\r\n    }\r\n}\r\n\r\n.zsg-form-group,\r\n.zsg-form-group li,\r\nol,\r\nul {\r\n    list-style: none;\r\n}\r\n\r\n.lhzQGq {\r\n    cursor: pointer;\r\n    color: rgb(0, 106, 255);\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: none;\r\n    padding: 0px;\r\n}\r\n\r\n.ds-close-lightbox-icon {\r\n    position: absolute;\r\n    top: 16px;\r\n    right: -40px;\r\n    border: none;\r\n    background-image: none;\r\n    background-color: transparent;\r\n    box-shadow: none;\r\n    padding: 0;\r\n    display: none;\r\n}\r\n\r\n@media only screen and (min-width: 1024px) {\r\n    .ds-close-lightbox-icon {\r\n        display: block;\r\n    }\r\n}\r\n\r\n.ds-wrapper {}\r\n\r\n@media only screen and (min-width: 768px) {\r\n    .ds-wrapper {\r\n        overflow: hidden;\r\n    }\r\n}\r\n\r\n.ds-container {\r\n    -webkit-font-smoothing: antialiased;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100%;\r\n    max-height: none;\r\n    position: relative;\r\n    height: 90vh;\r\n}\r\n\r\n.ds-media-col {\r\n    scroll-behavior: smooth;\r\n    overflow-x: hidden;\r\n    max-height: 100vh;\r\n}\r\n\r\n.ds-container .ds-data-view,\r\n.ds-container .ds-media-col {\r\n    overflow-y: auto;\r\n    overflow-x: hidden;\r\n    -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n.ds-container .ds-media-col {\r\n    background: #fff;\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n    .ds-container.ds-mobile-single-scroll .ds-media-col {\r\n        display: block !important;\r\n        position: relative;\r\n    }\r\n}\r\n\r\n.media-stream {\r\n    background: #fff;\r\n}\r\n\r\n.media-stream {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-flow: row wrap;\r\n    flex-flow: row wrap;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    margin: -2px;\r\n    width: calc(100% + 4px);\r\n    min-height: 30% !important;\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n    .media-stream {\r\n        max-width: calc(100vw - 600px);\r\n    }\r\n}\r\n\r\n.media-stream {\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-gap: 4px;\r\n    grid-auto-columns: 1fr;\r\n    margin: 0 auto;\r\n    padding-inline-start: 0;\r\n    margin-block-start: 0;\r\n    margin-block-end: 0;\r\n}\r\n\r\n.ds-container .ds-data-view>ul,\r\n.ds-container .ds-media-col>ul {\r\n    min-height: 80%;\r\n    overflow: auto;\r\n    height: calc(100% - 48px);\r\n}\r\n\r\n.media-stream-tile {\r\n    cursor: pointer;\r\n    display: block;\r\n    overflow: hidden;\r\n    scroll-snap-align: center;\r\n    box-shadow: inset rgba(0, 0, 0, 0.15) 0 0 10px;\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n    height: calc(100vw * 3 / 4);\r\n    width: 100%;\r\n    border: 2px solid #eee;\r\n}\r\n\r\n@media screen and (min-width: 550px) {\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 4px) * 3 / 8);\r\n        width: 50%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 550px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc(100vw * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 400px) * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px) {\r\n    .media-stream .media-stream-tile {\r\n        height: calc((100vw - 400px - 4px) * 3 / 8);\r\n        width: 50%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 400px) * 3 / 4);\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1024px) {\r\n    .media-stream .media-stream-tile {\r\n        border-width: 2px;\r\n        height: calc((100vw - 400px - 72px * 2 - 4px) * 3 / 8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1024px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 400px - 72px * 2) * 3 / 4);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    .media-stream .media-stream-tile {\r\n        border-width: 2px;\r\n        height: calc((100vw - 480px - 72px * 2 - 4px) * 3 / 8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1280px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc((100vw - 480px - 72px * 2) * 3 / 4);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1390px) {\r\n    .media-stream .media-stream-tile {\r\n        height: calc((768px - 4px) * 3 / 8);\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 1390px) {\r\n    .media-stream .media-stream-tile--prominent {\r\n        height: calc(768px * 3 / 4);\r\n    }\r\n}\r\n\r\n.media-stream .media-stream-tile {\r\n    border-width: 0;\r\n    width: auto;\r\n}\r\n\r\n@media screen and (min-width: 550px) {\r\n    .media-stream .media-stream-tile--fullwidth,\r\n    .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 2;\r\n        grid-column: span 2;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 768px) {\r\n    .media-stream .media-stream-tile--fullwidth,\r\n    .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 1;\r\n        grid-column: span 1;\r\n    }\r\n}\r\n\r\n@media screen and (min-width: 900px) {\r\n    .media-stream .media-stream-tile--fullwidth,\r\n    .media-stream .media-stream-tile--prominent {\r\n        -ms-grid-column: span 2;\r\n        grid-column: span 2;\r\n    }\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-pack: center;\r\n    justify-content: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n}\r\n\r\n.ds-container .ds-hero-headline {\r\n    font-weight: 400;\r\n    font-size: 20px;\r\n    line-height: 30px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .ds-hero-headline {\r\n    font-weight: 600;\r\n    color: #fff;\r\n    text-align: center;\r\n    margin-top: -16px;\r\n    margin-bottom: 16px;\r\n    padding: 0 8px;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    padding-inline-start: 0;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button:not(:first-child) {\r\n    margin-left: 8px;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .contact-button-group {\r\n    height: unset;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n    -ms-flex-positive: 1;\r\n    flex-grow: 1;\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0;\r\n}\r\n\r\n.media-stream-tile--upsell .upsell-photo-content .contact-button-group .contact-button {\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0%;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    line-height: 21px;\r\n}\r\n\r\n.ds-white-bg {\r\n    background: #fff !important;\r\n}\r\n\r\n.ds-container .ds-data-col {\r\n    background: #eee;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n    .ds-container .ds-data-col {\r\n        -ms-flex-preferred-size: 400px;\r\n        flex-basis: 400px;\r\n        max-width: 400px;\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 1280px) {\r\n    .ds-container .ds-data-col {\r\n        -ms-flex-preferred-size: 480px;\r\n        flex-basis: 480px;\r\n        max-width: 480px;\r\n    }\r\n}\r\n\r\n@media only screen and (min-width: 768px) {\r\n    .ds-container .ds-data-col.ds-data-col-data-forward {\r\n        -ms-flex-preferred-size: 500px;\r\n        flex-basis: 500px;\r\n        max-width: 500px;\r\n    }\r\n}\r\n\r\n.ds-container .ds-chip {\r\n    padding-bottom: 16px;\r\n}\r\n\r\n.ds-container .ds-chip,\r\n.ds-container .ds-chip-mobile {\r\n    background-color: #fff;\r\n}\r\n\r\n.ds-home-details-chip {\r\n    margin: 0 16px;\r\n    padding-top: 16px;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-container {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-content {\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n    width: 100%;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row {\r\n    margin-bottom: 4px;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nbody,\r\ndd,\r\ndl,\r\ndt,\r\nfieldset,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\nol,\r\np,\r\nul {\r\n    margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n    color: inherit;\r\n}\r\n\r\n.zsg-h3,\r\n.zsg-h3_light,\r\nh3 {\r\n    font-size: 20px;\r\n    line-height: 1.5;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-content-item,\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination>li,\r\n.zsg-step-content,\r\n.zsg-steps>li>a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination>li,\r\n.zsg-step-content,\r\n.zsg-steps>li>a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row .ds-price {\r\n    display: inline;\r\n    font-size: 26px;\r\n    line-height: 1.26923077;\r\n    margin-right: 16px;\r\n}\r\n\r\narticle,\r\naside,\r\ndetails,\r\nfigcaption,\r\nfigure,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmain,\r\nnav,\r\nsection,\r\nsummary {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header,\r\n.ds-home-details-chip .ds-bed-bath-living-area-header .ds-bed-bath-living-area-container {\r\n    display: inline;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nbody,\r\ndd,\r\ndl,\r\ndt,\r\nfieldset,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6,\r\nol,\r\np,\r\nul {\r\n    margin: 0;\r\n}\r\n\r\n.zsg-h2.zsg-separator,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n    color: inherit;\r\n}\r\n\r\n.zsg-h3,\r\n.zsg-h3_light,\r\nh3 {\r\n    font-size: 20px;\r\n    line-height: 1.5;\r\n    font-weight: 600;\r\n}\r\n\r\n.zsg-content-item,\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination>li,\r\n.zsg-step-content,\r\n.zsg-steps>li>a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.zsg-datatable-table .zsg-table-th,\r\n.zsg-datatable-table th,\r\n.zsg-form-legend,\r\n.zsg-h1,\r\n.zsg-h2,\r\n.zsg-h2.zsg-separator,\r\n.zsg-h3,\r\n.zsg-h4,\r\n.zsg-h5,\r\n.zsg-menu-header,\r\n.zsg-pagination>li,\r\n.zsg-step-content,\r\n.zsg-steps>li>a,\r\n.zsg-subfooter-header,\r\n.zsg-table .zsg-table-th,\r\n.zsg-table th,\r\n.zsg-toolbar_labeled .zsg-toolbar-label,\r\nh1,\r\nh2,\r\nh2.zsg-separator,\r\nh3,\r\nh4,\r\nh5,\r\nh6 {\r\n    display: block;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header,\r\n.ds-home-details-chip .ds-bed-bath-living-area-header .ds-bed-bath-living-area-container {\r\n    display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n    font-size: 15px;\r\n    line-height: 1.53333333;\r\n}\r\n\r\n.ds-home-details-chip .ds-vertical-divider {\r\n    margin-right: 8px;\r\n    padding-left: 8px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area-header .ds-vertical-divider {\r\n    font-size: 15px;\r\n}\r\n\r\n.ds-home-details-chip .ds-bed-bath-living-area {\r\n    font-size: 15px;\r\n    line-height: 1.53333333;\r\n}\r\n\r\n.ds-home-details-chip .ds-summary-row-label-secondary {\r\n    font-weight: 400;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row {\r\n    margin-bottom: 4px;\r\n    font-size: 15px;\r\n    line-height: 1.53;\r\n    font-weight: 600;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row header {\r\n    display: inline;\r\n}\r\n\r\n.ds-home-details-chip .ds-price-change-address-row .ds-address-container {\r\n    display: inline;\r\n    font-size: 15px;\r\n    line-height: 1.53;\r\n    font-weight: 600;\r\n    letter-spacing: normal;\r\n}\r\n\r\n.ds-home-details-chip .ds-chip-removable-content {\r\n    will-change: height;\r\n}\r\n\r\n.ds-mortgage-row {\r\n    height: 21px;\r\n}\r\n\r\n.ds-container .ds-buttons,\r\n.ds-container .ds-buttons-mobile {\r\n    background: #fff;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n    padding: 0 16px 16px;\r\n}\r\n\r\n.ds-container .ds-buttons {\r\n    z-index: 1;\r\n    position: relative;\r\n}\r\n\r\n.ds-container .contact-button-group {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.ds-container .contact-button-group .contact-button {\r\n    -ms-flex-positive: 1;\r\n    flex-grow: 1;\r\n    -ms-flex-preferred-size: 0;\r\n    flex-basis: 0;\r\n}\r\n\r\n.ds-container .ds-label-small {\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    line-height: 21px;\r\n}\r\n\r\n@media screen and (min-width: 1390px) {\r\n    .media-stream .media-stream-tile--halfheight {\r\n        height: calc((768px - 4px) * 3 / 16);\r\n    }\r\n}\r\n\r\n.media-stream-tile--upsell {\r\n    background: #000;\r\n    position: relative;\r\n    cursor: unset;\r\n}\r\n\r\n.media-stream-tile figure,\r\n.media-stream-tile img {\r\n    width: 100%;\r\n    height: 100%;\r\n    -o-object-fit: cover;\r\n    object-fit: cover;\r\n    -o-object-position: 50% 50%;\r\n    object-position: 50% 50%;\r\n}\r\n\r\n.iJIIUW {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n    height: 34px;\r\n    line-height: 22px;\r\n    color: rgb(255, 255, 255);\r\n    background-color: rgb(0, 106, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(0, 106, 255);\r\n}\r\n\r\n.cllLJF {\r\n    padding-right: 8px;\r\n    padding-left: 8px;\r\n}\r\n\r\n.cKVUOM {\r\n    text-transform: none;\r\n    -webkit-appearance: none;\r\n    font: inherit;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    border-width: initial;\r\n    border-style: none;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: none;\r\n}\r\n\r\nbutton,\r\nhtml input[type=\"button\"],\r\ninput[type=\"reset\"],\r\ninput[type=\"submit\"] {\r\n    -webkit-appearance: button;\r\n    cursor: pointer;\r\n}\r\n\r\n.gpVNOz {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    height: 100%;\r\n    color: rgb(0, 106, 255);\r\n    padding: 0px;\r\n    border-width: 0px;\r\n    border-style: initial;\r\n    border-color: initial;\r\n    border-image: initial;\r\n    background: transparent;\r\n}\r\n\r\n.eKDTCE {\r\n    height: 20px;\r\n    width: 20px;\r\n    margin-right: 4px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.duJWoc {\r\n    vertical-align: middle;\r\n}\r\n\r\n.cjrQwi {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    flex-direction: row;\r\n    -webkit-box-pack: end;\r\n    justify-content: flex-end;\r\n    height: 100%;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.jfjsxZ {\r\n    display: inline;\r\n    color: inherit;\r\n    cursor: pointer;\r\n    font-weight: inherit;\r\n    font-size: inherit;\r\n    font-family: inherit;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    background: none;\r\n    padding: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-image: initial;\r\n    border-bottom: 1px dashed rgb(0, 106, 255);\r\n}\r\n\r\n.eVrWvb {\r\n    border-bottom: 1px dashed rgb(167, 166, 171);\r\n}\r\n\r\n.eVrWvb,\r\n.eVrWvb.TriggerButton-sc-19o64qd-0,\r\n.eVrWvb.TriggerButton-sc-19o64qd-0::after {\r\n    cursor: help;\r\n}\r\n\r\n.cpEtCH {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 9px;\r\n    padding-bottom: 9px;\r\n    height: 42px;\r\n    line-height: 22px;\r\n    color: rgb(0, 106, 255);\r\n    background-color: rgb(255, 255, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(167, 166, 171);\r\n}\r\n\r\n.btcvqQ {\r\n    -webkit-font-smoothing: antialiased;\r\n    font-family: \"Open Sans\", Tahoma, Geneva, sans-serif;\r\n    font-weight: 600;\r\n    font-size: 14px;\r\n    letter-spacing: 0px;\r\n    text-transform: none;\r\n    text-align: center;\r\n    display: inline-block;\r\n    box-sizing: border-box;\r\n    width: 100%;\r\n    user-select: none;\r\n    padding-left: 20px;\r\n    padding-right: 20px;\r\n    cursor: pointer;\r\n    padding-top: 9px;\r\n    padding-bottom: 9px;\r\n    height: 42px;\r\n    line-height: 22px;\r\n    color: rgb(255, 255, 255);\r\n    background-color: rgb(0, 106, 255);\r\n    margin: 0px;\r\n    text-decoration: none;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-image: initial;\r\n    border-radius: 3px;\r\n    transition: all 0.2s ease 0s;\r\n    border-color: rgb(0, 106, 255);\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-active-box {\r\n    top: unset;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-active-box .absol-static-tabbar-hline {\r\n    border-bottom: solid 5px rgb(127, 127, 128);\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button>span {\r\n    font-size: 1.2em;\r\n}\r\n\r\n.home-details-content .image-tabcontainer .absol-static-tabbar-button {\r\n    width: 50%;\r\n    min-width: 400px;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button:hover {\r\n    color: rgb(30, 30, 55);\r\n    font-weight: 600;\r\n}\r\n\r\n.image-tabcontainer .absol-static-tabbar-button.active {\r\n    background-color: #26438d;\r\n    color: white;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view {\r\n    width: unset;\r\n    margin-top: unset;\r\n    margin-right: unset;\r\n    margin: 10px;\r\n    overflow: auto;\r\n    position: relative;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view input {\r\n    pointer-events: none;\r\n    border: none !important;\r\n    text-align: center;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view textarea {\r\n    pointer-events: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectbox-item-close {\r\n    display: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectbox-item-text {\r\n    padding-right: 5px;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit) .absol-selectmenu-btn {\r\n    display: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit) .absol-selectlist-item span {\r\n    padding-right: 0;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit) {\r\n    text-align: right;\r\n    pointer-events: none;\r\n}\r\n\r\n.absol-selectmenu .absol-selectlist-item span {\r\n    padding-right: 7px;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .pizo-new-realty-contact-item-setting {\r\n    display: none;\r\n}\r\n\r\n.pizo-new-realty-dectruct.pizo-only-view .pizo-new-realty-contact-item-close {\r\n    display: none;\r\n}\r\n\r\n.home-details-content .as-button-range {\r\n    min-height: 2em;\r\n}\r\n\r\n.pizo-new-realty-dectruct-tab-historical-progress-container {\r\n    margin: 0.7143em;\r\n    margin-bottom: 2.1429em;\r\n}\r\n\r\n.search-page-list-container.double-column-only.short-list-cards {\r\n    position: relative;\r\n}", ""]);
 
 
 
@@ -20221,7 +20221,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".image-show {\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: #3e4041;\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-between;\r\n}\r\n\r\n.image-show__title {\r\n    background-color: #545454;\r\n    color: white;\r\n    font-size: 1.1429em;\r\n    padding-left: 1em;\r\n    height: 2.1429em;\r\n    position: relative;\r\n}\r\n\r\n.image-show__close>.fa-close:before,\r\n.image-show__close>.quote-base__close-icon {\r\n    font-size: 1.5em;\r\n    color: white;\r\n    padding: 0em;\r\n    content: \"close\";\r\n}\r\n\r\n.fl-r {\r\n    float: right;\r\n}\r\n\r\ni.btn.material-icons.fa-chevron-right.unclickable,\r\ni.btn.material-icons.fa-chevron-left.unclickable {\r\n    pointer-events: none;\r\n    cursor: default;\r\n    color: rgb(152, 152, 152);\r\n}\r\n\r\n.clickable,\r\n.txt-clickable,\r\n.chat-message__actions__btn,\r\n.chat-resend,\r\n.sticker-selector__menu__item,\r\n.slideshow__bottom__dot {\r\n    cursor: pointer;\r\n    -webkit-app-region: no-drag;\r\n}\r\n\r\n.image-placeholder,\r\n.media-store-preview-item__picture,\r\n.image-show__thumb,\r\n.card--group-photo__row__item img.card--group-photo__row__item__photo,\r\nimg.chat-message-picture__photo,\r\n.chat-message-picture__gif__thumb,\r\n.chat-message-picture__photo>img,\r\n.quote-banner-thumb,\r\n.link-placeholder,\r\n.link-thumb,\r\n.link-thumb.default,\r\n.thumb-img-suggest,\r\n.card--link-img,\r\n.card--link-img.default,\r\n.media-item__file-type.photo,\r\n.cb-info-file-item-overlay__check,\r\n.quote-base__close-icon,\r\n.file-tick__icon-setting {\r\n    display: inline-block;\r\n    font: normal normal normal 1rem/1 'zalo-font';\r\n    font-size: inherit;\r\n    text-rendering: auto;\r\n    text-shadow: none;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n}\r\n\r\n.image-show__body {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.image-show__btnc {\r\n    position: absolute;\r\n    top: calc((100% - 5.7857rem)/2 - 2.7143rem);\r\n    z-index: 10;\r\n    display: flex;\r\n    align-items: center;\r\n    pointer-events: none;\r\n}\r\n\r\n.image-show__btnc__left {\r\n    left: 0em;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__left.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__wrapper__img {\r\n    width: auto;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    object-fit: contain;\r\n}\r\n\r\n.image-show__btnc__right {\r\n    right: 0;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__right.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__btnc__fullscreen {\r\n    position: absolute;\r\n    bottom: 0;\r\n    right: 0.6429em;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 6.4286em;\r\n    height: 8.5714em;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn.clickable {\r\n    opacity: 0.6;\r\n    pointer-events: auto;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn:hover,\r\n.image-show__bottom__ctrl>a>.btn:hover {\r\n    color: #0068ff;\r\n}\r\n\r\n.image-show__btn.clickable:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n.image-show__btn__inside {\r\n    background-color: black;\r\n    border-radius: 50%;\r\n    width: 3.5714em;\r\n    height: 3.5714em;\r\n    margin-top: 50%;\r\n    margin-left: 1.4286em;\r\n    line-height: 3.5714em;\r\n    font-size: 1.6429em;\r\n    text-align: center;\r\n}\r\n\r\n.image-show__btn__inside>.fa-chevron-left {\r\n    margin-top: 0.9286em;\r\n    margin-right: 0.2857em;\r\n    transform: translateX(0.3571rem);\r\n}\r\n\r\n.fa-chevron-left:before {\r\n    content: \"arrow_back_ios\";\r\n}\r\n\r\n.z-fh {\r\n    max-height: 100%;\r\n}\r\n\r\n.fadeIn,\r\n.fadeInShort,\r\n.fadeInImageShow {\r\n    -webkit-animation-name: fadeIn;\r\n    animation-name: fadeIn;\r\n}\r\n\r\n.image-show__img {\r\n    object-fit: contain;\r\n    transition: transform 0.1s ease-out;\r\n    max-width: 100%;\r\n    user-select: none;\r\n    cursor: default;\r\n    vertical-align: middle;\r\n    display: inline-block;\r\n}\r\n\r\n.fadeInImageShow {\r\n    -webkit-animation-duration: .4s;\r\n    animation-duration: .4s;\r\n}\r\n\r\n.flx-fix,\r\nheader,\r\n.chat-info-general__options,\r\n.chat-info-general__section__header,\r\n.avatar,\r\n.thumb-img-suggest,\r\n.chat-date>span,\r\n.card--link-img,\r\n.card--link-img.default,\r\n.chat-onboard__icon {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 6.4286em;\r\n    height: 8.5714em;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn__inside>.fa-chevron-right {\r\n    margin-top: 0.9286em;\r\n    margin-left: 0.1429em;\r\n}\r\n\r\n.fa-chevron-right:before {\r\n    content: \"arrow_forward_ios\";\r\n}\r\n\r\n.image-show__icon-fullscreen {\r\n    font-size: 2.8571em;\r\n    color: white;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__icon-fullscreen.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.fa-fullscreen-icon:before {\r\n    content: \"web\";\r\n}\r\n\r\n.image-show__bottom {\r\n    background-color: #545454;\r\n    height: 3.5714em;\r\n    position: relative;\r\n}\r\n\r\n.image-show__bottom__sender {\r\n    width: 30%;\r\n}\r\n\r\n.avatar {\r\n    position: relative;\r\n    color: white;\r\n    contain: layout size style;\r\n}\r\n\r\n.avatar--xs {\r\n    width: 2.8571em;\r\n    height: 2.8571em;\r\n    font-size: 1.2143em;\r\n}\r\n\r\n.dib,\r\n.chat-box-member__info,\r\n.image-show__bottom__sender>.avatar,\r\n.image-show__bottom__sender__info,\r\n.chat-input__img-preview__thumb {\r\n    display: inline-block;\r\n}\r\n\r\n.fl-l,\r\n.image-show__bottom__sender>.avatar,\r\n.image-show__bottom__sender__info,\r\n.chat-input__img-preview__thumb {\r\n    float: left;\r\n}\r\n\r\n.image-show__bottom__sender>.avatar {\r\n    margin-top: 0.3929em;\r\n    margin-right: 1em;\r\n    margin-left: 1em;\r\n}\r\n\r\n.image-show__bottom__sender__info {\r\n    color: white;\r\n    font-size: 0.9286em;\r\n    width: calc(100% - 6.4286rem);\r\n}\r\n\r\n.bg-center,\r\n.link-thumb,\r\n.link-thumb.default,\r\n.avatar-img,\r\n.avatar-img.avatar-number-m,\r\n#zalo,\r\n.thumb-img-suggest,\r\n.chat-input__img-preview__thumb,\r\n.card--link-img,\r\n.card--link-img.default,\r\n.message-view__blur,\r\n.message-info_num,\r\n.sticker-selector__menu__item,\r\n.gif__thumb {\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    background-position: 50%;\r\n}\r\n\r\n.avatar-img,\r\n.avatar-img.avatar-number-m {\r\n    border-radius: 100%;\r\n}\r\n\r\n.avatar--xs>.avatar-img {\r\n    width: 2.8571em;\r\n    height: 2.8571em;\r\n    background-color: #c9d4e5;\r\n}\r\n\r\n.truncate,\r\n.chat-box-member__info__name,\r\n.item-title-name,\r\n.item-message,\r\n.file-banner-content__sender-name,\r\n.file-banner-content__full-name,\r\n.cb-info-file-item__send-date,\r\n.cb-info-file-item__file-size,\r\n.cb-info-file-item__suggest-preview-file,\r\n.cb-info-file-item__suggest-preview-folder,\r\n.cb-info-file-item__error-msg,\r\n.search-result-file__send-date,\r\n.search-result-file__file-size,\r\n.search-result-file__suggest-preview-file,\r\n.search-result-file__suggest-preview-folder,\r\n.search-result-file__file-name,\r\n.search-result-file__file-name-seg,\r\n.file-progress-row__start-text,\r\n.file-progress-row__end-text,\r\n.quote-file__name,\r\n.quote-file__text,\r\n.file-suggest-item__name,\r\n.file-suggest-item__size,\r\n.file-suggest-item__conversation,\r\n.file-star-msg-content__title,\r\n.file-star-msg-content__size,\r\n.file-message__content-title,\r\n.file-message__content-error,\r\n.fmsg-send-time__error-msg {\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.image-show__bottom__sender__info>div:first-child {\r\n    margin-top: 0.4286em;\r\n    margin-bottom: 0.1429em;\r\n}\r\n\r\n.image-show__bottom__ctrl {\r\n    width: 24.2857em;\r\n    margin: 0rem auto;\r\n    padding-top: 1em;\r\n    text-align: center;\r\n}\r\n\r\n.btn {\r\n    font-size: 1.5em;\r\n    cursor: pointer;\r\n    margin: 0em;\r\n    color: #83878d;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn,\r\n.image-show__bottom__ctrl>a>.btn {\r\n    color: white;\r\n    margin: 0;\r\n    padding-right: 1.4286em;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn.fa-chevron-left,\r\n.image-show__bottom__ctrl>a>.btn.fa-chevron-left {\r\n    padding-right: 0.5714em;\r\n}\r\n\r\n.image-placeholder:before,\r\n.media-store-preview-item__picture:before,\r\n.image-show__thumb:before,\r\n.card--group-photo__row__item img.card--group-photo__row__item__photo:before,\r\nimg.chat-message-picture__photo:before,\r\n.chat-message-picture__gif__thumb:before,\r\n.chat-message-picture__photo>img:before,\r\n.quote-banner-thumb:before,\r\n.link-placeholder:before,\r\n.link-thumb:before,\r\n.link-thumb.default:before,\r\n.thumb-img-suggest:before,\r\n.card--link-img:before,\r\n.card--link-img.default:before,\r\n.media-item__file-type.photo:before,\r\n.cb-info-file-item-overlay__check:before,\r\n.quote-base__close-icon:before,\r\n.file-tick__icon-setting:before {\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.7143em;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn.fa-chevron-right,\r\n.image-show__bottom__ctrl>a>.btn.fa-chevron-right {\r\n    padding-left: 0.6429em;\r\n    padding-right: 0.5714em;\r\n}\r\n\r\n#image-show-forward {\r\n    padding-right: 0;\r\n}\r\n\r\n#image-show-forward>i {\r\n    padding: 0 0.8571em;\r\n    position: relative;\r\n}\r\n\r\n.fa-share-photoview:before {\r\n    content: \"share\";\r\n}\r\n\r\n#image-show-download {\r\n    padding-right: 0;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn.fa-download,\r\n.image-show__bottom__ctrl>.btn.fa-rotate-left,\r\n.image-show__bottom__ctrl>.btn.fa-rotate-right,\r\n.image-show__bottom__ctrl>a>.btn.fa-download,\r\n.image-show__bottom__ctrl>a>.btn.fa-rotate-left,\r\n.image-show__bottom__ctrl>a>.btn.fa-rotate-right,\r\n.image-show__bottom__ctrl>a>.btn.fa-more-option,\r\n.image-show__bottom__ctrl>.btn.fa-more-option {\r\n    padding-left: 0.8571em;\r\n    padding-right: 0.8571em;\r\n}\r\n\r\n.fa-download:before {\r\n    content: \"vertical_align_bottom\";\r\n}\r\n\r\n.fa-rotate-left:before {\r\n    content: \"rotate_left\";\r\n}\r\n\r\n.fa-rotate-right:before {\r\n    content: \"rotate_right\";\r\n}\r\n\r\n.fa-more-option:before {\r\n    content: \"more_vert\";\r\n}\r\n\r\n.image-show__thumb__legend {\r\n    bottom: 5em;\r\n    color: white;\r\n    padding-left: 0.0714em;\r\n    margin-bottom: 1.4286em;\r\n    margin-left: 0.2143em;\r\n    font-size: 1em;\r\n    background: #3e4041;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin: 0.7143rem 0.5714em;\r\n}\r\n\r\n.image-show__thumb {\r\n    position: relative;\r\n    user-select: none;\r\n    object-fit: cover;\r\n    margin: 0.2857em;\r\n    border-radius: 0.2143em;\r\n    filter: brightness(50%);\r\n    width: 5.7143em;\r\n    height: 5.7143em;\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb,\r\n.image-show__thumb.chat-message.first-selected,\r\n.image-show__thumb.chat-message.last-selected {\r\n    box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);\r\n    -moz-box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);\r\n    -webkit-box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);\r\n    filter: brightness(100%);\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb {\r\n    width: 7.1429em;\r\n    height: 7.1429em;\r\n}\r\n\r\n.image-show__thumb-container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.flx-al-e {\r\n    align-items: flex-end;\r\n}\r\n\r\n.flx,\r\n.snippet,\r\n.item-setting-action,\r\nheader,\r\n#groupNameInput--change,\r\n.item-setting,\r\n.chat-info-general__action__item,\r\n.chat-info-general__section__header,\r\n.group-setting,\r\n.mg-item,\r\n.card,\r\n.card-content,\r\n.modal,\r\n.tab-content,\r\n.file-banner-content,\r\n.file-banner-content__thumb-container,\r\n.empty-btn,\r\n.rl-msg,\r\n.rl-msg .rl-msg-content,\r\n.cb-info-file-item__thumb-container,\r\n.search-result-file__thumb-container,\r\n.search-result-file__file-name,\r\n.file-progress-row,\r\n.file-actions-row,\r\n.file-suggest-item,\r\n.file-suggest-item__left-container,\r\n.file-suggest-item__right-container,\r\n.file-layout,\r\n.file-layout__thumb-container,\r\n.file-layout__right-container,\r\n.file-layout__top-container,\r\n.file-layout__bot-container,\r\n.file-star-msg-content,\r\n.file-star-msg-content__right-block,\r\n.fmsg-send-time,\r\n.entry-content-v2,\r\n.zl-label-add-more,\r\n.zl-modal,\r\n.pr-status-content,\r\n.header-title-container {\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n}\r\n\r\n.flx,\r\n.snippet,\r\n.item-setting-action,\r\nheader,\r\n#groupNameInput--change,\r\n.item-setting,\r\n.chat-info-general__action__item,\r\n.chat-info-general__section__header,\r\n.group-setting,\r\n.mg-item,\r\n.card,\r\n.card-content,\r\n.modal,\r\n.tab-content,\r\n.file-banner-content,\r\n.file-banner-content__thumb-container,\r\n.empty-btn,\r\n.rl-msg,\r\n.rl-msg .rl-msg-content,\r\n.cb-info-file-item__thumb-container,\r\n.search-result-file__thumb-container,\r\n.search-result-file__file-name,\r\n.file-progress-row,\r\n.file-actions-row,\r\n.file-suggest-item,\r\n.file-suggest-item__left-container,\r\n.file-suggest-item__right-container,\r\n.file-layout,\r\n.file-layout__thumb-container,\r\n.file-layout__right-container,\r\n.file-layout__top-container,\r\n.file-layout__bot-container,\r\n.file-star-msg-content,\r\n.file-star-msg-content__right-block,\r\n.fmsg-send-time,\r\n.entry-content-v2,\r\n.zl-label-add-more,\r\n.zl-modal,\r\n.pr-status-content,\r\n.header-title-container {\r\n    display: flex;\r\n}\r\n\r\n.image-show__list {\r\n    padding: 0em;\r\n    overflow-x: hidden;\r\n    overflow-y: scroll;\r\n    display: inline;\r\n    -ms-overflow-style: none;\r\n    scrollbar-width: none;\r\n    transform: translateX(1.2143rem);\r\n    margin-left: -1.2143em;\r\n}\r\n\r\n.timeline-slider {\r\n    position: relative;\r\n    cursor: pointer;\r\n    width: 1.6429em;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.timeline-slider__track {\r\n    position: absolute;\r\n    height: 100%;\r\n    top: 0.1429em;\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 0.8571em;\r\n    height: 0.8571em;\r\n    background: #7a787b;\r\n    left: 0.4643em;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--left {\r\n    bottom: calc(0% - 0.8571rem);\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 0.8571em;\r\n    height: 0.8571em;\r\n    background: #7a787b;\r\n    left: 0.4643em;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--right {\r\n    bottom: calc(100% - 0.8571rem);\r\n}\r\n\r\n.timeline-slider__handle {\r\n    position: absolute;\r\n    background: white;\r\n    border-radius: 50%;\r\n}\r\n\r\n.timeline-slider__track__progress {\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 0.1429em;\r\n    background: #7a787b;\r\n}\r\n\r\n.timeline-slider__tooltip {\r\n    position: absolute;\r\n    top: -0.3571em;\r\n    right: -6.4286em;\r\n    z-index: 1;\r\n    background: white;\r\n    text-align: center;\r\n    font-size: 0.8571em;\r\n    width: 6.0714em;\r\n}\r\n\r\n.fadeInImageShowNoAnimation {\r\n    -webkit-transition: none !important;\r\n    -moz-transition: none !important;\r\n    -o-transition: none !important;\r\n    transition: none !important;\r\n}\r\n\r\n.image-show__meta-wrapper {\r\n    text-align: left;\r\n    position: absolute;\r\n    z-index: 1;\r\n    bottom: 5em;\r\n    max-width: 60%;\r\n    max-height: 6.7857em;\r\n    min-height: 1.7143em;\r\n    cursor: default;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    border-radius: 0.7143em;\r\n    background: rgba(0, 0, 0, 0.5);\r\n    padding: 0.0714rem 0.7143em;\r\n    opacity: 1;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__caption {\r\n    color: rgba(255, 255, 255, 0.9);\r\n    margin: 0.5rem 0;\r\n    overflow-y: auto;\r\n    word-break: break-word;\r\n}\r\n\r\n.displayNone {\r\n    display: none !important;\r\n}\r\n\r\n.timeLineContainerCheck {\r\n    display: flex;\r\n    padding: 1.0714rem 0rem 0rem 1.0714em;\r\n    -webkit-transition: 1s ease-in-out;\r\n    -moz-transition: 1s ease-in-out;\r\n    -o-transition: 1s ease-in-out;\r\n    transition: 1s ease-in-out;\r\n}\r\n\r\n.transformX-100 {\r\n    transform: translateX(-100%);\r\n}", ""]);
+exports.push([module.i, ".image-show {\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: #3e4041;\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-between;\r\n}\r\n\r\n.image-show__title {\r\n    background-color: #545454;\r\n    color: white;\r\n    font-size: 1.1429em;\r\n    padding-left: 1em;\r\n    height: 2.1429em;\r\n    position: relative;\r\n}\r\n\r\n.image-show__close>.fa-close:before,\r\n.image-show__close>.quote-base__close-icon {\r\n    color: white;\r\n    padding: 0em;\r\n    content: \"close\";\r\n}\r\n\r\n.fl-r {\r\n    float: right;\r\n}\r\n\r\ni.btn.material-icons.fa-chevron-right.unclickable,\r\ni.btn.material-icons.fa-chevron-left.unclickable {\r\n    pointer-events: none;\r\n    cursor: default;\r\n    color: rgb(152, 152, 152);\r\n}\r\n\r\n.clickable,\r\n.txt-clickable,\r\n.chat-message__actions__btn,\r\n.chat-resend,\r\n.sticker-selector__menu__item,\r\n.slideshow__bottom__dot {\r\n    cursor: pointer;\r\n    -webkit-app-region: no-drag;\r\n}\r\n\r\n.image-placeholder,\r\n.media-store-preview-item__picture,\r\n.image-show__thumb,\r\n.card--group-photo__row__item img.card--group-photo__row__item__photo,\r\nimg.chat-message-picture__photo,\r\n.chat-message-picture__gif__thumb,\r\n.chat-message-picture__photo>img,\r\n.quote-banner-thumb,\r\n.link-placeholder,\r\n.link-thumb,\r\n.link-thumb.default,\r\n.thumb-img-suggest,\r\n.card--link-img,\r\n.card--link-img.default,\r\n.media-item__file-type.photo,\r\n.cb-info-file-item-overlay__check,\r\n.quote-base__close-icon,\r\n.file-tick__icon-setting {\r\n    display: inline-block;\r\n    font: normal normal normal 1rem/1 'zalo-font';\r\n    font-size: inherit;\r\n    text-rendering: auto;\r\n    text-shadow: none;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n}\r\n\r\n.image-show__body {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.image-show__btnc {\r\n    position: absolute;\r\n    top: calc((100% - 5.7857rem)/2 - 2.7143rem);\r\n    z-index: 10;\r\n    display: flex;\r\n    align-items: center;\r\n    pointer-events: none;\r\n}\r\n\r\n.image-show__btnc__left {\r\n    left: 0em;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__left.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__wrapper__img {\r\n    width: auto;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    object-fit: contain;\r\n}\r\n\r\n.image-show__btnc__right {\r\n    right: 50px;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__btnc__right.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__btnc__fullscreen {\r\n    position: absolute;\r\n    bottom: 0;\r\n    right: 0.6429em;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 6.4286em;\r\n    height: 8.5714em;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn.clickable {\r\n    opacity: 0.6;\r\n    pointer-events: auto;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn:hover,\r\n.image-show__bottom__ctrl>a>.btn:hover {\r\n    color: #0068ff;\r\n}\r\n\r\n.image-show__btn.clickable:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n.image-show__btn__inside {\r\n    background-color: black;\r\n    border-radius: 50%;\r\n    width: 3.5714em;\r\n    height: 3.5714em;\r\n    margin-top: 50%;\r\n    margin-left: 1.4286em;\r\n    line-height: 3.5714em;\r\n    font-size: 1.6429em;\r\n    text-align: center;\r\n}\r\n\r\n.image-show__btn__inside>.fa-chevron-left {\r\n    margin-top: 24px;\r\n    transform: translateX(0.3571rem);\r\n    font-size: 32px;\r\n}\r\n\r\n.fa-chevron-left:before {\r\n    content: \"arrow_back_ios\";\r\n}\r\n\r\n.z-fh {\r\n    max-height: 100%;\r\n}\r\n\r\n.fadeIn,\r\n.fadeInShort,\r\n.fadeInImageShow {\r\n    -webkit-animation-name: fadeIn;\r\n    animation-name: fadeIn;\r\n}\r\n\r\n.image-show__img {\r\n    object-fit: contain;\r\n    transition: transform 0.1s ease-out;\r\n    max-width: 100%;\r\n    user-select: none;\r\n    cursor: default;\r\n    vertical-align: middle;\r\n    display: inline-block;\r\n}\r\n\r\n.fadeInImageShow {\r\n    -webkit-animation-duration: .4s;\r\n    animation-duration: .4s;\r\n}\r\n\r\n.flx-fix,\r\nheader,\r\n.chat-info-general__options,\r\n.chat-info-general__section__header,\r\n.avatar,\r\n.thumb-img-suggest,\r\n.chat-date>span,\r\n.card--link-img,\r\n.card--link-img.default,\r\n.chat-onboard__icon {\r\n    flex: 0 0 auto;\r\n}\r\n\r\n.image-show__btn {\r\n    width: 6.4286em;\r\n    height: 8.5714em;\r\n    color: white;\r\n    opacity: 0.2;\r\n}\r\n\r\n.image-show__btn__inside>.fa-chevron-right {\r\n    margin-top: 24px;\r\n    margin-left: 0.1429em;\r\n    font-size: 32px;\r\n}\r\n\r\n.fa-chevron-right:before {\r\n    content: \"arrow_forward_ios\";\r\n}\r\n\r\n.image-show__icon-fullscreen {\r\n    font-size: 2.8571em;\r\n    color: white;\r\n    opacity: 1;\r\n}\r\n\r\n.image-show__icon-fullscreen.hide {\r\n    opacity: 0;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.fa-fullscreen-icon:before {\r\n    content: \"web\";\r\n}\r\n\r\n.image-show__bottom {\r\n    background-color: #545454;\r\n    height: 3.5714em;\r\n    position: relative;\r\n}\r\n\r\n.image-show__bottom__sender {\r\n    width: 30%;\r\n}\r\n\r\n.avatar {\r\n    position: relative;\r\n    color: white;\r\n    contain: layout size style;\r\n}\r\n\r\n.avatar--xs {\r\n    width: 40px;\r\n    height: 40px;\r\n    font-size: 1.2143em;\r\n}\r\n\r\n.dib,\r\n.chat-box-member__info,\r\n.image-show__bottom__sender>.avatar,\r\n.image-show__bottom__sender__info,\r\n.chat-input__img-preview__thumb {\r\n    display: inline-block;\r\n}\r\n\r\n.fl-l,\r\n.image-show__bottom__sender>.avatar,\r\n.image-show__bottom__sender__info,\r\n.chat-input__img-preview__thumb {\r\n    float: left;\r\n}\r\n\r\n.image-show__bottom__sender>.avatar {\r\n    margin-top: 0.3929em;\r\n    margin-right: 1em;\r\n    margin-left: 1em;\r\n}\r\n\r\n.image-show__bottom__sender__info {\r\n    color: white;\r\n    font-size: 0.9286em;\r\n    width: calc(100% - 6.4286rem);\r\n}\r\n\r\n.bg-center,\r\n.link-thumb,\r\n.link-thumb.default,\r\n.avatar-img,\r\n.avatar-img.avatar-number-m,\r\n#zalo,\r\n.thumb-img-suggest,\r\n.chat-input__img-preview__thumb,\r\n.card--link-img,\r\n.card--link-img.default,\r\n.message-view__blur,\r\n.message-info_num,\r\n.sticker-selector__menu__item,\r\n.gif__thumb {\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    background-position: 50%;\r\n}\r\n\r\n.avatar-img,\r\n.avatar-img.avatar-number-m {\r\n    border-radius: 100%;\r\n}\r\n\r\n.avatar--xs>.avatar-img {\r\n    width: 40px;\r\n    height: 40px;\r\n    background-color: #c9d4e5;\r\n}\r\n\r\n.truncate,\r\n.chat-box-member__info__name,\r\n.item-title-name,\r\n.item-message,\r\n.file-banner-content__sender-name,\r\n.file-banner-content__full-name,\r\n.cb-info-file-item__send-date,\r\n.cb-info-file-item__file-size,\r\n.cb-info-file-item__suggest-preview-file,\r\n.cb-info-file-item__suggest-preview-folder,\r\n.cb-info-file-item__error-msg,\r\n.search-result-file__send-date,\r\n.search-result-file__file-size,\r\n.search-result-file__suggest-preview-file,\r\n.search-result-file__suggest-preview-folder,\r\n.search-result-file__file-name,\r\n.search-result-file__file-name-seg,\r\n.file-progress-row__start-text,\r\n.file-progress-row__end-text,\r\n.quote-file__name,\r\n.quote-file__text,\r\n.file-suggest-item__name,\r\n.file-suggest-item__size,\r\n.file-suggest-item__conversation,\r\n.file-star-msg-content__title,\r\n.file-star-msg-content__size,\r\n.file-message__content-title,\r\n.file-message__content-error,\r\n.fmsg-send-time__error-msg {\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.image-show__bottom__sender__info>div:first-child {\r\n    margin-top: 0.4286em;\r\n    margin-bottom: 0.1429em;\r\n}\r\n\r\n.image-show__bottom__ctrl {\r\n    width: 400px;\r\n    margin: 0rem auto;\r\n    padding-top: 1em;\r\n    text-align: center;\r\n}\r\n\r\n.btn {\r\n    cursor: pointer;\r\n    margin: 0em;\r\n    color: #83878d;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn,\r\n.image-show__bottom__ctrl>a>.btn {\r\n    color: white;\r\n    margin: 0;\r\n    padding-right: 1.4286em;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn.fa-chevron-left,\r\n.image-show__bottom__ctrl>a>.btn.fa-chevron-left {\r\n    padding-right: 0.5714em;\r\n}\r\n\r\n.image-placeholder:before,\r\n.media-store-preview-item__picture:before,\r\n.image-show__thumb:before,\r\n.card--group-photo__row__item img.card--group-photo__row__item__photo:before,\r\nimg.chat-message-picture__photo:before,\r\n.chat-message-picture__gif__thumb:before,\r\n.chat-message-picture__photo>img:before,\r\n.quote-banner-thumb:before,\r\n.link-placeholder:before,\r\n.link-thumb:before,\r\n.link-thumb.default:before,\r\n.thumb-img-suggest:before,\r\n.card--link-img:before,\r\n.card--link-img.default:before,\r\n.media-item__file-type.photo:before,\r\n.cb-info-file-item-overlay__check:before,\r\n.quote-base__close-icon:before,\r\n.file-tick__icon-setting:before {\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.7143em;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn.fa-chevron-right,\r\n.image-show__bottom__ctrl>a>.btn.fa-chevron-right {\r\n    padding-left: 0.6429em;\r\n    padding-right: 0.5714em;\r\n}\r\n\r\n#image-show-forward {\r\n    padding-right: 0;\r\n}\r\n\r\n#image-show-forward>i {\r\n    padding: 0 0.8571em;\r\n    position: relative;\r\n}\r\n\r\n.fa-share-photoview:before {\r\n    content: \"share\";\r\n}\r\n\r\n#image-show-download {\r\n    padding-right: 0;\r\n}\r\n\r\n.image-show__bottom__ctrl>.btn.fa-download,\r\n.image-show__bottom__ctrl>.btn.fa-rotate-left,\r\n.image-show__bottom__ctrl>.btn.fa-rotate-right,\r\n.image-show__bottom__ctrl>a>.btn.fa-download,\r\n.image-show__bottom__ctrl>a>.btn.fa-rotate-left,\r\n.image-show__bottom__ctrl>a>.btn.fa-rotate-right,\r\n.image-show__bottom__ctrl>a>.btn.fa-more-option,\r\n.image-show__bottom__ctrl>.btn.fa-more-option {\r\n    padding-left: 0.8571em;\r\n    padding-right: 0.8571em;\r\n}\r\n\r\n.fa-download:before {\r\n    content: \"vertical_align_bottom\";\r\n}\r\n\r\n.fa-rotate-left:before {\r\n    content: \"rotate_left\";\r\n}\r\n\r\n.fa-rotate-right:before {\r\n    content: \"rotate_right\";\r\n}\r\n\r\n.fa-more-option:before {\r\n    content: \"more_vert\";\r\n}\r\n\r\n.image-show__thumb__legend {\r\n    bottom: 5em;\r\n    color: white;\r\n    padding-left: 0.0714em;\r\n    margin-bottom: 1.4286em;\r\n    margin-left: 0.2143em;\r\n    font-size: 1em;\r\n    background: #3e4041;\r\n    display: flex;\r\n    justify-content: center;\r\n    margin: 0.7143rem 0.5714em;\r\n}\r\n\r\n.image-show__thumb {\r\n    position: relative;\r\n    user-select: none;\r\n    object-fit: cover;\r\n    margin: 0.2857em;\r\n    border-radius: 0.2143em;\r\n    filter: brightness(50%);\r\n    width: 5.7143em;\r\n    height: 5.7143em;\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb,\r\n.image-show__thumb.chat-message.first-selected,\r\n.image-show__thumb.chat-message.last-selected {\r\n    box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);\r\n    -moz-box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);\r\n    -webkit-box-shadow: 0rem 0rem 0rem 0.1429rem rgba(255, 255, 255, 0.5);\r\n    filter: brightness(100%);\r\n}\r\n\r\n.image-show__thumb-container.selected .image-show__thumb {\r\n    width: 7.1429em;\r\n    height: 7.1429em;\r\n}\r\n\r\n.image-show__thumb-container {\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.flx-al-e {\r\n    align-items: flex-end;\r\n}\r\n\r\n.flx,\r\n.snippet,\r\n.item-setting-action,\r\nheader,\r\n#groupNameInput--change,\r\n.item-setting,\r\n.chat-info-general__action__item,\r\n.chat-info-general__section__header,\r\n.group-setting,\r\n.mg-item,\r\n.card,\r\n.card-content,\r\n.modal,\r\n.tab-content,\r\n.file-banner-content,\r\n.file-banner-content__thumb-container,\r\n.empty-btn,\r\n.rl-msg,\r\n.rl-msg .rl-msg-content,\r\n.cb-info-file-item__thumb-container,\r\n.search-result-file__thumb-container,\r\n.search-result-file__file-name,\r\n.file-progress-row,\r\n.file-actions-row,\r\n.file-suggest-item,\r\n.file-suggest-item__left-container,\r\n.file-suggest-item__right-container,\r\n.file-layout,\r\n.file-layout__thumb-container,\r\n.file-layout__right-container,\r\n.file-layout__top-container,\r\n.file-layout__bot-container,\r\n.file-star-msg-content,\r\n.file-star-msg-content__right-block,\r\n.fmsg-send-time,\r\n.entry-content-v2,\r\n.zl-label-add-more,\r\n.zl-modal,\r\n.pr-status-content,\r\n.header-title-container {\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    flex-flow: row nowrap;\r\n}\r\n\r\n.flx,\r\n.snippet,\r\n.item-setting-action,\r\nheader,\r\n#groupNameInput--change,\r\n.item-setting,\r\n.chat-info-general__action__item,\r\n.chat-info-general__section__header,\r\n.group-setting,\r\n.mg-item,\r\n.card,\r\n.card-content,\r\n.modal,\r\n.tab-content,\r\n.file-banner-content,\r\n.file-banner-content__thumb-container,\r\n.empty-btn,\r\n.rl-msg,\r\n.rl-msg .rl-msg-content,\r\n.cb-info-file-item__thumb-container,\r\n.search-result-file__thumb-container,\r\n.search-result-file__file-name,\r\n.file-progress-row,\r\n.file-actions-row,\r\n.file-suggest-item,\r\n.file-suggest-item__left-container,\r\n.file-suggest-item__right-container,\r\n.file-layout,\r\n.file-layout__thumb-container,\r\n.file-layout__right-container,\r\n.file-layout__top-container,\r\n.file-layout__bot-container,\r\n.file-star-msg-content,\r\n.file-star-msg-content__right-block,\r\n.fmsg-send-time,\r\n.entry-content-v2,\r\n.zl-label-add-more,\r\n.zl-modal,\r\n.pr-status-content,\r\n.header-title-container {\r\n    display: flex;\r\n}\r\n\r\n.image-show__list {\r\n    padding: 0em;\r\n    overflow-x: hidden;\r\n    overflow-y: scroll;\r\n    display: inline;\r\n    -ms-overflow-style: none;\r\n    scrollbar-width: none;\r\n    transform: translateX(1.2143rem);\r\n    margin-left: -1.2143em;\r\n}\r\n\r\n.timeline-slider {\r\n    position: relative;\r\n    cursor: pointer;\r\n    width: 1.6429em;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.timeline-slider__track {\r\n    position: absolute;\r\n    height: 100%;\r\n    top: 0.1429em;\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 0.8571em;\r\n    height: 0.8571em;\r\n    background: #7a787b;\r\n    left: 0.4643em;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--left {\r\n    bottom: calc(0% - 0.8571rem);\r\n}\r\n\r\n.timeline-slider__pivot {\r\n    position: absolute;\r\n    width: 0.8571em;\r\n    height: 0.8571em;\r\n    background: #7a787b;\r\n    left: 0.4643em;\r\n    border-radius: 50%;\r\n    pointer-events: none;\r\n}\r\n\r\n.timeline-slider__pivot--right {\r\n    bottom: calc(100% - 0.8571rem);\r\n}\r\n\r\n.timeline-slider__handle {\r\n    position: absolute;\r\n    background: white;\r\n    border-radius: 50%;\r\n}\r\n\r\n.timeline-slider__track__progress {\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 0.1429em;\r\n    background: #7a787b;\r\n}\r\n\r\n.timeline-slider__tooltip {\r\n    position: absolute;\r\n    top: -0.3571em;\r\n    right: -6.4286em;\r\n    z-index: 1;\r\n    background: white;\r\n    text-align: center;\r\n    font-size: 0.8571em;\r\n    width: 6.0714em;\r\n}\r\n\r\n.fadeInImageShowNoAnimation {\r\n    -webkit-transition: none !important;\r\n    -moz-transition: none !important;\r\n    -o-transition: none !important;\r\n    transition: none !important;\r\n}\r\n\r\n.image-show__meta-wrapper {\r\n    text-align: left;\r\n    position: absolute;\r\n    z-index: 1;\r\n    bottom: 5em;\r\n    max-width: 60%;\r\n    max-height: 6.7857em;\r\n    min-height: 1.7143em;\r\n    cursor: default;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    border-radius: 0.7143em;\r\n    background: rgba(0, 0, 0, 0.5);\r\n    padding: 0.0714rem 0.7143em;\r\n    opacity: 1;\r\n    transition: opacity 1s linear;\r\n}\r\n\r\n.image-show__caption {\r\n    color: rgba(255, 255, 255, 0.9);\r\n    margin: 0.5rem 0;\r\n    overflow-y: auto;\r\n    word-break: break-word;\r\n}\r\n\r\n.displayNone {\r\n    display: none !important;\r\n}\r\n\r\n.timeLineContainerCheck {\r\n    display: flex;\r\n    padding: 1.0714rem 0rem 0rem 1.0714em;\r\n    -webkit-transition: 1s ease-in-out;\r\n    -moz-transition: 1s ease-in-out;\r\n    -o-transition: 1s ease-in-out;\r\n    transition: 1s ease-in-out;\r\n}\r\n\r\n.transformX-100 {\r\n    transform: translateX(-100%);\r\n}", ""]);
 
 
 
@@ -20724,7 +20724,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    justify-items: center;\r\n    align-items: center;\r\n    margin-top: 10px;\r\n    margin-left: 10px;\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before {}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before {\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before {\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before {\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button {\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar {\r\n    border-bottom: none;\r\n    height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container {\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav {\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\ntable.b-workZone__layout {\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,\r\n.b-workZone__layout tr {\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active {\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview {\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container {\r\n    height: calc(100% - 40px);\r\n    top: 40px;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n    overflow: unset;\r\n}\r\n\r\n.b-workZone__layout .header-display-visible table.sortTable .parent td {\r\n    background-color: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable {\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n}\r\n\r\n.b-workZone__layout .sortTable td {\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone {\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead {\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td {\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article {\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1em;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav {\r\n    font-size: 1em;\r\n    padding: 5px 10px;\r\n    padding-top: 0;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons {\r\n    font-size: 1em;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1em;\r\n    white-space: pre;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-controlButtons__item:hover {\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    margin: 0;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n    padding: 0;\r\n}\r\n\r\n.b-article {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    position: relative;\r\n    flex-direction: column;\r\n    overflow: auto;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span {\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i {\r\n    vertical-align: middle;\r\n    font-size: 22px;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only {\r\n    top: 0;\r\n}\r\n\r\n.os-host,\r\n.os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    min-height: 500px;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n\r\n.header-display-visible {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    flex-direction: column;\r\n}\r\n\r\n.js-stools-container-bar {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    position: sticky;\r\n}\r\n\r\n.header-display-visible .container-sortTable {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    margin: 10px;\r\n    width: calc(100% - 20px);\r\n    height: calc(100% - 20px);\r\n}\r\n\r\n.absol-tab-frame-small {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.container-content-information {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    font-family: sans-serif, Arial, Verdana, \"Trebuchet MS\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\r\n    font-size: 12px;\r\n    color: #333;\r\n    background-color: #fff;\r\n    margin: 1em;\r\n    overflow: auto;\r\n}\r\n\r\n.container-content-information h1,\r\n.container-content-information h2,\r\n.container-content-information h3,\r\n.container-content-information h4,\r\n.container-content-information h5,\r\n.container-content-information h6 {\r\n    font-weight: normal;\r\n    line-height: 1.2;\r\n}\r\n\r\n.container-content-information h3 {\r\n    display: block;\r\n    font-size: 1.17em;\r\n    margin-block-start: 1em;\r\n    margin-block-end: 1em;\r\n    margin-inline-start: 0px;\r\n    margin-inline-end: 0px;\r\n    font-weight: bold;\r\n}\r\n\r\n.cke_editable {\r\n    cursor: text;\r\n}\r\n\r\n.cke_editable {\r\n    font-size: 16px;\r\n    line-height: 1.6;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.container-content-information ul {\r\n    list-style-type: disc;\r\n}\r\n\r\n.container-content-information li {\r\n    display: list-item;\r\n    text-align: -webkit-match-parent;\r\n}\r\n\r\n.container-content-information .cke_editable.cke_editable_themed.cke_contents_ltr.cke_show_borders {\r\n    margin: 20px;\r\n    margin-top: 0px;\r\n}\r\n\r\n@media print {\r\n    html,\r\n    body,\r\n     :root {\r\n        padding: 0;\r\n        margin: 0;\r\n        height: unset;\r\n        width: unset;\r\n        border: none;\r\n        overflow: unset;\r\n    }\r\n}\r\n\r\n@media print {\r\n    table {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media print {\r\n    table {\r\n        page-break-inside: auto\r\n    }\r\n    tr {\r\n        page-break-inside: avoid;\r\n        page-break-after: auto\r\n    }\r\n}\r\n\r\n.b-controlButtons__item.m-controlButtons__item__print>i {\r\n    vertical-align: top;\r\n    padding-top: 2px;\r\n}\r\n\r\n.cke_show_borders table.cke_show_border,\r\n.cke_show_borders table.cke_show_border>tr>td,\r\n.cke_show_borders table.cke_show_border>tr>th,\r\n.cke_show_borders table.cke_show_border>tbody>tr>td,\r\n.cke_show_borders table.cke_show_border>tbody>tr>th,\r\n.cke_show_borders table.cke_show_border>thead>tr>td,\r\n.cke_show_borders table.cke_show_border>thead>tr>th,\r\n.cke_show_borders table.cke_show_border>tfoot>tr>td,\r\n.cke_show_borders table.cke_show_border>tfoot>tr>th {\r\n    border: #d3d3d3 1px dotted;\r\n}\r\n\r\n.container-content-information tr,\r\n.container-content-information td {\r\n    border: 1px solid grey;\r\n}\r\n\r\n.container-content-information table {\r\n    border-collapse: separate;\r\n    border-spacing: 2px;\r\n}\r\n\r\n.b-article .pizo-new-category-container-name {\r\n    position: sticky;\r\n    top: 0;\r\n    display: flex;\r\n    /* display: -webkit-box; */\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    background-color: #263238;\r\n    z-index: 10;\r\n    color: #eeeeee;\r\n    padding: 5px 10px;\r\n    padding-left: 15px;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .b-article__headerLayout#article__header {\r\n    background-color: white;\r\n    margin: 10px;\r\n    margin-bottom: 0;\r\n    width: unset;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .container-content-information {\r\n    margin-right: 10px;\r\n    margin-left: 10px;\r\n    margin-top: 0;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .b-breadCrumbs__item {\r\n    font-size: 18px;\r\n    font-weight: bold;\r\n    padding: 10px;\r\n    padding-bottom: 0;\r\n}\r\n\r\n.container-content-information-bottom {\r\n    flex-shrink: 0;\r\n    display: flex;\r\n    background-color: white;\r\n    margin: 10px;\r\n    margin-top: 0;\r\n    padding-bottom: 10px;\r\n    padding-top: 10px;\r\n}\r\n\r\n.b-controlButtons__item.m-controlButtons__item__next {\r\n    position: absolute;\r\n    right: 10px;\r\n}\r\n\r\n.b-controlButtons__item.m-controlButtons__item__prev {\r\n    margin-left: 10px;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view a {\r\n    color: #17a2b8;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .b-breadCrumbs__items {\r\n    display: flex;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .b-article__headerSide.m-article__headerSide__nav {\r\n    flex-direction: column;\r\n}\r\n\r\n.b-breadCrumbs__location {\r\n    display: flex;\r\n    margin: 10px;\r\n}\r\n\r\n.b-breadCrumbs__location_title {\r\n    white-space: nowrap;\r\n    margin-left: 50px;\r\n}\r\n\r\n.b-breadCrumbs__location_content {\r\n    margin-left: 10px;\r\n}", ""]);
+exports.push([module.i, ".b-workZone__content.m-workZone__content__nav .absol-tabbar-button {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    justify-items: center;\r\n    align-items: center;\r\n    margin-top: 10px;\r\n    margin-left: 10px;\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button::before {}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd::before {\r\n    content: \"list\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd2::before {\r\n    content: \"gavel\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button#tabbuton-matd3::before {\r\n    content: \"search\";\r\n}\r\n\r\n.b-tabs__selectorItems {\r\n    white-space: nowrap;\r\n    position: relative;\r\n    width: 100%;\r\n    margin-top: 0;\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button {\r\n    height: 100%;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar {\r\n    border-bottom: none;\r\n    height: 40px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabbar-button .absol-tabbar-button-icon-container {\r\n    display: none;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav {\r\n    background-color: #263238;\r\n    height: 100%;\r\n    position: relative;\r\n    vertical-align: top;\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\ntable.b-workZone__layout {\r\n    border-spacing: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n}\r\n\r\n.b-workZone__layout td,\r\n.b-workZone__layout tr {\r\n    padding: 0;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active {\r\n    border-bottom: 2px #546e7a solid;\r\n}\r\n\r\n.m-workZone__side__nav {\r\n    width: 30%;\r\n    padding-right: 1px;\r\n}\r\n\r\n.b-workZone__side {\r\n    padding-left: 1px;\r\n    padding-right: 1px;\r\n    margin: 0;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview {\r\n    position: static;\r\n}\r\n\r\n.b-workZone__layout .absol-tabview-container {\r\n    height: calc(100% - 40px);\r\n    top: 40px;\r\n    left: unset;\r\n    right: unset;\r\n    bottom: unset;\r\n    overflow: unset;\r\n}\r\n\r\n.b-workZone__layout .header-display-visible table.sortTable .parent td {\r\n    background-color: unset;\r\n}\r\n\r\n.b-workZone__layout .sortTable {\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n}\r\n\r\n.b-workZone__layout .sortTable td {\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone {\r\n    width: 100%;\r\n    border-radius: 0;\r\n    background-color: unset;\r\n    color: #eeeeee;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTableClone>thead {\r\n    display: none;\r\n}\r\n\r\n.b-workZone__layout .sortTableClone td {\r\n    border-top: 1px solid #000000;\r\n    padding: 7px;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__article {\r\n    background-color: #263238;\r\n    width: unset;\r\n    height: 100%;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.b-workZone__content#workZone_article__content {\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.b-pageContent__side #internal_wrapper * {\r\n    box-sizing: content-box;\r\n}\r\n\r\n.b-breadCrumbs__items {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.b-breadCrumbs__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0;\r\n    font-size: 1em;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__nav {\r\n    font-size: 1em;\r\n    padding: 5px 10px;\r\n    padding-bottom: 20px;\r\n    padding-top: 0;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.b-article__headerSide.m-article__headerSide__buttons {\r\n    font-size: 1em;\r\n    padding: 8px 26px;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    width: fit-content;\r\n}\r\n\r\n.b-article__headerLayout {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    align-items: stretch;\r\n    background-color: #263238;\r\n}\r\n\r\n.b-controlButtons__item {\r\n    display: -moz-inline-stack;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 0 8px 0 0;\r\n    position: relative;\r\n    font-size: 1em;\r\n    white-space: pre;\r\n    cursor: pointer;\r\n}\r\n\r\n.b-controlButtons__item:hover {\r\n    background-color: #b0bec5;\r\n    color: #ffffff;\r\n}\r\n\r\nli.b-controlButtons__item {\r\n    overflow: hidden;\r\n}\r\n\r\n.m-controlButtons__item__print {\r\n    margin: 0;\r\n}\r\n\r\n.b-controlButtons__items {\r\n    margin: 0;\r\n    list-style-type: none;\r\n    padding: 0;\r\n}\r\n\r\n.b-article {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    position: relative;\r\n    flex-direction: column;\r\n    overflow: auto;\r\n    font-family: Arial;\r\n}\r\n\r\n.b-article__headerLayout-edit#article__header {\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-controlButtons__item>span {\r\n    vertical-align: initial;\r\n    padding: 5px;\r\n}\r\n\r\n.b-controlButtons__item>i {\r\n    vertical-align: middle;\r\n    font-size: 22px;\r\n    cursor: pointer;\r\n}\r\n\r\n.cke_screen_reader_only {\r\n    top: 0;\r\n}\r\n\r\n.os-host,\r\n.os-host-textarea {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-grow: 2;\r\n    display: flex;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    min-height: 600px;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n\r\n.header-display-visible {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    flex-direction: column;\r\n}\r\n\r\n.js-stools-container-bar {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    position: sticky;\r\n}\r\n\r\n.header-display-visible .container-sortTable {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    margin: 10px;\r\n    width: calc(100% - 20px);\r\n    height: calc(100% - 20px);\r\n}\r\n\r\n.absol-tab-frame-small {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.container-content-information {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    font-family: sans-serif, Arial, Verdana, \"Trebuchet MS\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\r\n    font-size: 12px;\r\n    color: #333;\r\n    background-color: #fff;\r\n    margin: 1em;\r\n    overflow: auto;\r\n}\r\n\r\n.container-content-information h1,\r\n.container-content-information h2,\r\n.container-content-information h3,\r\n.container-content-information h4,\r\n.container-content-information h5,\r\n.container-content-information h6 {\r\n    font-weight: normal;\r\n    line-height: 1.2;\r\n}\r\n\r\n.container-content-information h3 {\r\n    display: block;\r\n    font-size: 1.17em;\r\n    margin-block-start: 1em;\r\n    margin-block-end: 1em;\r\n    margin-inline-start: 0px;\r\n    margin-inline-end: 0px;\r\n    font-weight: bold;\r\n}\r\n\r\n.cke_editable {\r\n    cursor: text;\r\n}\r\n\r\n.cke_editable {\r\n    font-size: 16px;\r\n    line-height: 1.6;\r\n    word-wrap: break-word;\r\n}\r\n\r\n.container-content-information ul {\r\n    list-style-type: disc;\r\n}\r\n\r\n.container-content-information li {\r\n    display: list-item;\r\n    text-align: -webkit-match-parent;\r\n}\r\n\r\n.container-content-information .cke_editable.cke_editable_themed.cke_contents_ltr.cke_show_borders {\r\n    margin: 20px;\r\n    margin-top: 0px;\r\n}\r\n\r\n@media print {\r\n    html,\r\n    body,\r\n     :root {\r\n        padding: 0;\r\n        margin: 0;\r\n        height: unset;\r\n        width: unset;\r\n        border: none;\r\n        overflow: unset;\r\n    }\r\n}\r\n\r\n@media print {\r\n    table {\r\n        width: 100%;\r\n    }\r\n}\r\n\r\n@media print {\r\n    table {\r\n        page-break-inside: auto\r\n    }\r\n    tr {\r\n        page-break-inside: avoid;\r\n        page-break-after: auto\r\n    }\r\n}\r\n\r\n.b-controlButtons__item.m-controlButtons__item__print>i {\r\n    vertical-align: top;\r\n    padding-top: 2px;\r\n}\r\n\r\n.cke_show_borders table.cke_show_border,\r\n.cke_show_borders table.cke_show_border>tr>td,\r\n.cke_show_borders table.cke_show_border>tr>th,\r\n.cke_show_borders table.cke_show_border>tbody>tr>td,\r\n.cke_show_borders table.cke_show_border>tbody>tr>th,\r\n.cke_show_borders table.cke_show_border>thead>tr>td,\r\n.cke_show_borders table.cke_show_border>thead>tr>th,\r\n.cke_show_borders table.cke_show_border>tfoot>tr>td,\r\n.cke_show_borders table.cke_show_border>tfoot>tr>th {\r\n    border: #d3d3d3 1px dotted;\r\n}\r\n\r\n.container-content-information tr,\r\n.container-content-information td {\r\n    border: 1px solid grey;\r\n}\r\n\r\n.container-content-information table {\r\n    border-collapse: separate;\r\n    border-spacing: 2px;\r\n}\r\n\r\n.b-article .pizo-new-category-container-name {\r\n    position: sticky;\r\n    top: 0;\r\n    display: flex;\r\n    /* display: -webkit-box; */\r\n    display: -ms-flexbox;\r\n    flex-shrink: 0;\r\n    background-color: #263238;\r\n    z-index: 10;\r\n    color: #eeeeee;\r\n    padding: 5px 10px;\r\n    padding-left: 15px;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .b-article__headerLayout#article__header {\r\n    background-color: white;\r\n    margin: 10px;\r\n    margin-bottom: 0;\r\n    width: unset;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .container-content-information {\r\n    margin-right: 10px;\r\n    margin-left: 10px;\r\n    margin-top: 0;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .b-breadCrumbs__item {\r\n    font-size: 18px;\r\n    font-weight: bold;\r\n    padding: 10px;\r\n    padding-bottom: 0;\r\n}\r\n\r\n.container-content-information-bottom {\r\n    flex-shrink: 0;\r\n    display: flex;\r\n    background-color: white;\r\n    margin: 10px;\r\n    margin-top: 0;\r\n    padding-bottom: 10px;\r\n    padding-top: 10px;\r\n}\r\n\r\n.b-controlButtons__item.m-controlButtons__item__next {\r\n    position: absolute;\r\n    right: 10px;\r\n}\r\n\r\n.b-controlButtons__item.m-controlButtons__item__prev {\r\n    margin-left: 10px;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view a {\r\n    color: #17a2b8;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .b-breadCrumbs__items {\r\n    display: flex;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view .b-article__headerSide.m-article__headerSide__nav {\r\n    flex-direction: column;\r\n}\r\n\r\n.b-workZone__layout_helpcontainer_view p {\r\n    margin: 0;\r\n}\r\n\r\n.b-breadCrumbs__location {\r\n    display: flex;\r\n    margin: 10px;\r\n}\r\n\r\n.b-breadCrumbs__location_title {\r\n    white-space: nowrap;\r\n    margin-left: 50px;\r\n}\r\n\r\n.b-breadCrumbs__location_content {\r\n    margin-left: 10px;\r\n}", ""]);
 
 
 
@@ -20759,7 +20759,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, ".b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column;\r\n    /* Safari */\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before {\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before {\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before {\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n.title-label {}\r\n\r\n.alias-label {\r\n    color: #3071a9;\r\n    font-size: 0.8em;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>tbody>tr:hover {\r\n    background-color: #00000080;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category {\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container {\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n    top: unset;\r\n    left: unset;\r\n    bottom: unset;\r\n    right: unset;\r\n    position: unset;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.list-linkChoice-container table.sortTable .parent td {\r\n    background-color: unset;\r\n}\r\n\r\n.btn.hasTooltip {\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list {\r\n    padding: 5px;\r\n    -webkit-box-sizing: border-box;\r\n    /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;\r\n    /* Firefox, other Gecko */\r\n    box-sizing: border-box;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.btn-wrapper.input-append {\r\n    margin: 10px;\r\n    position: relative;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n    flex-grow: 2;\r\n}\r\n\r\n#matd .sortTable>thead>tr>th {\r\n    min-width: unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias {\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label {\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857em;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\ndiv.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857em;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.b-workZone__layout {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n    text-align: center;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    line-height: 2em;\r\n    box-sizing: content-box;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.pizo-list-realty-button .pizo-list-realty-button-element:not(:first-child) {\r\n    margin-left: 0.3571em;\r\n}\r\n\r\n.pizo-list-realty-button-element>span {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    line-height: 2em;\r\n    text-align: center;\r\n    font-size: 1em;\r\n    text-align: center;\r\n    margin-left: 0.7em;\r\n    margin-right: 0.7em;\r\n    line-height: inherit;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav table.sortTable>tbody>tr>td:first-child,\r\ntable.sortTableClone>tbody>tr>td:first-child {\r\n    border-left: unset;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav table.sortTable th,\r\n.b-workZone__side.m-workZone__side__nav table.sortTable td,\r\n.b-workZone__side.m-workZone__side__nav table.sortTableClone th,\r\n.b-workZone__side.m-workZone__side__nav table.sortTableClone td {\r\n    border-bottom: unset;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav table.sortTable th,\r\ntable.sortTableClone th {\r\n    background-color: #36304a;\r\n    vertical-align: middle;\r\n    color: #fff;\r\n    position: sticky;\r\n    position: -webkit-sticky;\r\n    top: 0px;\r\n    z-index: 4;\r\n}\r\n\r\n.pizo-new-category-container-alias.hasErrorElement {\r\n    background-color: #000000;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important {\r\n    color: #d93025;\r\n}\r\n\r\n.cke_button_label.cke_button__linkdb_label {\r\n    display: block;\r\n}\r\n\r\n.cke_button_label.cke_button__note_label {\r\n    display: block;\r\n}\r\n\r\n.setting-page-container {\r\n    z-index: 10;\r\n    position: absolute;\r\n    width: 100%;\r\n    height: calc(100% - 2px);\r\n    background-color: white;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.setting-page-container-title {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    justify-content: flex-end;\r\n    padding: 10px;\r\n}\r\n\r\n.setting-page-container-title-label {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    font-size: 20px;\r\n    align-items: center;\r\n    padding: 10px;\r\n    color: #eeeeee;\r\n    background-color: #263238;\r\n    width: 100px;\r\n}\r\n\r\n.setting-page-container-title-input {\r\n    padding: 5px;\r\n    margin: 10p;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width: 50%;\r\n}\r\n\r\n.setting-page-container-header,\r\n.setting-page-container-footer {\r\n    width: 100%;\r\n    height: 50%;\r\n    display: flex;\r\n    flex-grow: 2;\r\n    background-color: #263238;\r\n    flex-direction: column;\r\n}\r\n\r\n.setting-page-container-header-label,\r\n.setting-page-container-footer-label {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    font-size: 20px;\r\n    align-items: center;\r\n    padding: 10px;\r\n    color: #eeeeee;\r\n}\r\n\r\n.setting-page-container-header-editor,\r\n.setting-page-container-footer-editor {\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.setting-page-container-header-editor>div,\r\n.setting-page-container-footer-editor>div {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.setting-page-container .cke_inner.cke_reset {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column;\r\n    /* Safari */\r\n    flex-direction: column;\r\n}\r\n\r\n.setting-page-container .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.setting-page-container .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.setting-page-container .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article .b-article__headerLayout-edit {\r\n    color: #eeeeee;\r\n}\r\n\r\n.os-host-bottom {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-shrink: 0;\r\n    display: flex;\r\n}\r\n\r\n.b-article__wrapper.os-host-bottom.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n\r\n.b-article__wrapper.os-host-bottom.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n}", ""]);
+exports.push([module.i, ".b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column;\r\n    /* Safari */\r\n    flex-direction: column;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.b-article__wrapper.os-host.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.material-icons-add::before {\r\n    content: \"add\";\r\n}\r\n\r\n.material-icons-edit::before {\r\n    content: \"edit\";\r\n}\r\n\r\n.material-icons-delete::before {\r\n    content: \"delete\";\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>thead {\r\n    display: table-header-group;\r\n}\r\n\r\n.title-label {}\r\n\r\n.alias-label {\r\n    color: #3071a9;\r\n    font-size: 0.8em;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .sortTable>tbody>tr:hover {\r\n    background-color: #00000080;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav .header-display-visible .sortTable>tbody>tr.choice-event-category {\r\n    background-color: #000000;\r\n}\r\n\r\n.b-workZone__layout .sortTable>tbody>tr.choice-list-category {\r\n    background-color: #000000;\r\n}\r\n\r\n.list-linkChoice-container {\r\n    width: 80vw;\r\n    height: 80vh;\r\n    min-width: 800px;\r\n    min-height: 600px;\r\n    background-color: #263238;\r\n    top: unset;\r\n    left: unset;\r\n    bottom: unset;\r\n    right: unset;\r\n    position: unset;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.list-linkChoice-container table.sortTable .parent td {\r\n    background-color: unset;\r\n}\r\n\r\n.btn.hasTooltip {\r\n    position: absolute;\r\n    transform: translate(-100%);\r\n}\r\n\r\n.input-search-list {\r\n    padding: 5px;\r\n    -webkit-box-sizing: border-box;\r\n    /* Safari/Chrome, other WebKit */\r\n    -moz-box-sizing: border-box;\r\n    /* Firefox, other Gecko */\r\n    box-sizing: border-box;\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.btn-wrapper.input-append {\r\n    margin: 10px;\r\n    position: relative;\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    align-items: stretch;\r\n    flex-grow: 2;\r\n}\r\n\r\n#matd .sortTable>thead>tr>th {\r\n    min-width: unset !important;\r\n}\r\n\r\n.pizo-new-category-container-alias-active {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.pizo-new-category-container-alias {\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.pizo-new-state-publish {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    margin: auto;\r\n    padding-left: 30px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.pizo-new-category-container-publish-container-label {\r\n    margin-right: 10px;\r\n    vertical-align: bottom;\r\n}\r\n\r\ndiv.tick-element:before {\r\n    content: \"check\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857em;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\ndiv.cross-element:before {\r\n    content: \"close\";\r\n    font-family: 'Material Icons';\r\n    font-weight: normal;\r\n    font-style: normal;\r\n    font-size: 1.2857em;\r\n    line-height: 1;\r\n    letter-spacing: normal;\r\n    text-transform: none;\r\n    display: inline-block;\r\n    white-space: nowrap;\r\n    word-wrap: normal;\r\n    direction: ltr;\r\n    -webkit-font-feature-settings: 'liga';\r\n    -webkit-font-smoothing: antialiased;\r\n    position: absolute;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.b-workZone__layout {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    align-items: stretch;\r\n}\r\n\r\n.b-workZone__content.m-workZone__content__nav {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    width: 100%;\r\n    height: 100%;\r\n    font-family: Arial, Helvetica, sans-serif;\r\n}\r\n\r\n.pizo-list-realty-button-element {\r\n    text-align: center;\r\n    padding: 0;\r\n    margin: 0;\r\n    background-color: #ebebeb;\r\n    border: solid 0.0714rem #c0c0c0;\r\n    border-radius: 0.2em;\r\n    font-size: 1em;\r\n    overflow: hidden;\r\n    line-height: 2em;\r\n    box-sizing: content-box;\r\n    height: 2em;\r\n    white-space: nowrap;\r\n}\r\n\r\n.pizo-list-realty-button .pizo-list-realty-button-element:not(:first-child) {\r\n    margin-left: 0.3571em;\r\n}\r\n\r\n.pizo-list-realty-button-element>span {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    height: 2em;\r\n    box-sizing: border-box;\r\n    line-height: 2em;\r\n    text-align: center;\r\n    font-size: 1em;\r\n    text-align: center;\r\n    margin-left: 0.7em;\r\n    margin-right: 0.7em;\r\n    line-height: inherit;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav table.sortTable>tbody>tr>td:first-child,\r\ntable.sortTableClone>tbody>tr>td:first-child {\r\n    border-left: unset;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav table.sortTable th,\r\n.b-workZone__side.m-workZone__side__nav table.sortTable td,\r\n.b-workZone__side.m-workZone__side__nav table.sortTableClone th,\r\n.b-workZone__side.m-workZone__side__nav table.sortTableClone td {\r\n    border-bottom: unset;\r\n}\r\n\r\n.b-workZone__side.m-workZone__side__nav table.sortTable th,\r\ntable.sortTableClone th {\r\n    background-color: #36304a;\r\n    vertical-align: middle;\r\n    color: #fff;\r\n    position: sticky;\r\n    position: -webkit-sticky;\r\n    top: 0px;\r\n    z-index: 4;\r\n}\r\n\r\n.pizo-new-category-container-alias.hasErrorElement {\r\n    background-color: #000000;\r\n}\r\n\r\n.pizo-new-realty-location-detail-row-label-important {\r\n    color: #d93025;\r\n}\r\n\r\n.cke_button_label.cke_button__linkdb_label {\r\n    display: block;\r\n}\r\n\r\n.cke_button_label.cke_button__note_label {\r\n    display: block;\r\n}\r\n\r\n.setting-page-container {\r\n    z-index: 10;\r\n    position: absolute;\r\n    width: 100%;\r\n    height: calc(100% - 2px);\r\n    background-color: white;\r\n    display: flex;\r\n    flex-direction: column;\r\n}\r\n\r\n.setting-page-container-title {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    justify-content: flex-end;\r\n    padding: 10px;\r\n}\r\n\r\n.setting-page-container-title-label {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    font-size: 20px;\r\n    align-items: center;\r\n    padding: 10px;\r\n    color: #eeeeee;\r\n    background-color: #263238;\r\n    width: 100px;\r\n}\r\n\r\n.setting-page-container-title-input {\r\n    padding: 5px;\r\n    margin: 10p;\r\n    -webkit-box-sizing: border-box;\r\n    -moz-box-sizing: border-box;\r\n    box-sizing: border-box;\r\n    width: 50%;\r\n}\r\n\r\n.setting-page-container-header,\r\n.setting-page-container-footer {\r\n    width: 100%;\r\n    height: 50%;\r\n    display: flex;\r\n    flex-grow: 2;\r\n    background-color: #263238;\r\n    flex-direction: column;\r\n}\r\n\r\n.setting-page-container-header-label,\r\n.setting-page-container-footer-label {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n    font-size: 20px;\r\n    align-items: center;\r\n    padding: 10px;\r\n    color: #eeeeee;\r\n}\r\n\r\n.setting-page-container-header-editor,\r\n.setting-page-container-footer-editor {\r\n    flex-grow: 2;\r\n    display: flex;\r\n}\r\n\r\n.setting-page-container-header-editor>div,\r\n.setting-page-container-footer-editor>div {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.setting-page-container .cke_inner.cke_reset {\r\n    /*display: -webkit-box;*/\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column;\r\n    /* Safari */\r\n    flex-direction: column;\r\n}\r\n\r\n.setting-page-container .cke_top.cke_reset_all {\r\n    display: flex;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.setting-page-container .cke_contents.cke_reset {\r\n    flex-grow: 2;\r\n    display: flex;\r\n    height: unset !important;\r\n}\r\n\r\n.setting-page-container .cke_bottom.cke_reset_all {\r\n    flex-shrink: 0;\r\n}\r\n\r\n.b-article .b-article__headerLayout-edit {\r\n    color: #eeeeee;\r\n}\r\n\r\n.os-host-bottom {\r\n    position: relative;\r\n    overflow: visible!important;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n    -ms-flex-direction: column;\r\n    flex-direction: column;\r\n    -ms-flex-wrap: nowrap;\r\n    flex-wrap: nowrap;\r\n    -webkit-box-pack: start;\r\n    -ms-flex-pack: start;\r\n    justify-content: flex-start;\r\n    -ms-flex-line-pack: start;\r\n    align-content: flex-start;\r\n    -webkit-box-align: start;\r\n    -ms-flex-align: start;\r\n    -ms-grid-row-align: flex-start;\r\n    align-items: flex-start;\r\n    flex-shrink: 0;\r\n    display: flex;\r\n}\r\n\r\n.b-article__wrapper.os-host-bottom.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke.cke_reset.cke_chrome.cke_ltr.cke_browser_webkit {\r\n    height: calc(100% - 2px);\r\n    width: calc(100% - 2px);\r\n}\r\n\r\n.b-article__wrapper.os-host-bottom.os-theme-dark.os-host-resize-disabled.os-host-scrollbar-horizontal-hidden.os-host-overflow.os-host-overflow-y.os-host-transition .cke_inner.cke_reset {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    height: 100% !important;\r\n    align-items: stretch;\r\n    -webkit-flex-direction: column;\r\n    flex-direction: column;\r\n}", ""]);
 
 
 
@@ -22762,7 +22762,7 @@ TemplateXML.parse = function (text) {
 
 /* harmony default export */ var JSMaker_TemplateXML = (TemplateXML);
 // EXTERNAL MODULE: ./node_modules/absol/src/HTML5/Dom.js + 1 modules
-var Dom = __webpack_require__(2);
+var HTML5_Dom = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./node_modules/absol/src/HTML5/Svg.js
 var Svg = __webpack_require__(9);
@@ -24578,12 +24578,12 @@ function textToNodes(text) {
     var lines = text.split(/\r?\n/);
     return lines.map(function (text) {
         if (text.length == 0) {
-            return Dom["a" /* default */].ShareInstance._({
+            return HTML5_Dom["a" /* default */].ShareInstance._({
                 child: { tag: 'br' }
             });
         }
         else {
-            return Dom["a" /* default */].ShareInstance._({
+            return HTML5_Dom["a" /* default */].ShareInstance._({
                 child: { text: text }
             });
         }
@@ -26944,7 +26944,7 @@ function DomSignal(attachHookElt) {
     EventEmitter["a" /* default */].call(this);
     this.signals = {};
     this.ev_attached = this.ev_attached.bind(this);
-    this.$attachhook = attachHookElt || Dom["a" /* default */].ShareInstance._('attachhook');
+    this.$attachhook = attachHookElt || HTML5_Dom["a" /* default */].ShareInstance._('attachhook');
     this.$attachhookParent = (attachHookElt && attachHookElt.parentElement) || null;
     this.$attachhook.on('attached', this.ev_attached);
 }
@@ -27326,7 +27326,7 @@ var src_absol = {
     JSPath: JSPath["a" /* default */],
     TemplateString: TemplateString["a" /* default */],
     TemplateXML: JSMaker_TemplateXML,
-    Dom: Dom["a" /* default */],
+    Dom: HTML5_Dom["a" /* default */],
     Svg: Svg["a" /* default */],
     BrowserDetector: BrowserDetector["a" /* default */],
     OOP: OOP["a" /* default */],
@@ -27341,16 +27341,16 @@ var src_absol = {
     file: file_namespaceObject,
     base64: base64_namespaceObject,
     Alarm: Time_Alarm,
-    coreDom: Dom["a" /* default */].ShareInstance,
+    coreDom: HTML5_Dom["a" /* default */].ShareInstance,
     coreSvg: Svg["a" /* default */].ShareInstance,
     require: function (tagName) {
         return this.coreDom.require(tagName) || this.coreSvg.require(tagName);
     },
-    domCreator: Dom["a" /* default */].ShareInstance.creator,
-    svgCreator: Dom["a" /* default */].ShareInstance.creator,
-    _: Dom["a" /* default */].ShareInstance._,
-    $: Dom["a" /* default */].ShareInstance.$,
-    $$: Dom["a" /* default */].ShareInstance.$$,
+    domCreator: HTML5_Dom["a" /* default */].ShareInstance.creator,
+    svgCreator: HTML5_Dom["a" /* default */].ShareInstance.creator,
+    _: HTML5_Dom["a" /* default */].ShareInstance._,
+    $: HTML5_Dom["a" /* default */].ShareInstance.$,
+    $$: HTML5_Dom["a" /* default */].ShareInstance.$$,
     _svg: Svg["a" /* default */].ShareInstance._,
     $svg: Svg["a" /* default */].ShareInstance.$,
     Ref: AppPattern_Ref,
@@ -27431,7 +27431,7 @@ var MaterialDesignIconsNameMap = {
 
 var MaterialDesignIconsCode = {};
 
-Dom["a" /* default */].documentReady.then(function () {
+HTML5_Dom["a" /* default */].documentReady.then(function () {
     var _ = ACore["a" /* default */]._;
     var a = _({
         tag: 'span',
@@ -28646,7 +28646,7 @@ AutoCompleteInput.prototype.pushData = function (data, sessionIndex, query) {
             maxHeight = parseFloat(maxHeight.replace('px', ''));
         }
 
-        var outBound = Dom["a" /* default */].traceOutBoundingClientRect(this);
+        var outBound = HTML5_Dom["a" /* default */].traceOutBoundingClientRect(this);
         var bound = this.$input.getBoundingClientRect();
         var aTop = bound.top - outBound.top;
         var aBotom = outBound.bottom - bound.bottom;
@@ -30127,7 +30127,7 @@ BoardTable.eventHandler.mousemoveOverflow = function (event) {
 
     var outBound;
     var bBound;
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     var vx = 0;
     var vy = 0;
     bBound = this._dragEventData.boardElt.getBoundingClientRect();
@@ -30663,7 +30663,7 @@ ACore["a" /* default */].$scrollStyle = (function () {
         ].join('\n');
         document.head.appendChild(element);
 
-        Dom["a" /* default */].getScrollSize().then(function (size) {
+        HTML5_Dom["a" /* default */].getScrollSize().then(function (size) {
             element.innerHTML = [
                 '.absol-vscroller-viewport{ margin-right: ' + (-size.width) + 'px; min-width: calc(100% + ' + (size.width) + 'px);}',
                 '.absol-hscroller-viewport{ margin-bottom: ' + (-size.height) + 'px; min-height: calc(100% + ' + (size.height) + 'px);}'
@@ -30848,7 +30848,7 @@ function HScroller() {
     this.$attachHook = Scroller_$('attachhook', this)
         .on('error', function () {
             this.requestUpdateSize = this.requestUpdateSize || thisHS.requestUpdateSize.bind(thisHS);
-            Dom["a" /* default */].addToResizeSystem(this);
+            HTML5_Dom["a" /* default */].addToResizeSystem(this);
         });
 
     this.sync = new Promise(function (rs, rj) {
@@ -31953,7 +31953,7 @@ ChromeCalendar.show = function (element, calendarProps, anchor, calendarPickList
     if (document.body)
         exec();
     else
-        Dom["a" /* default */].documentReady.then(exec);
+        HTML5_Dom["a" /* default */].documentReady.then(exec);
 
     return ChromeCalendar._session;
 };
@@ -31968,7 +31968,7 @@ ChromeCalendar.close = function (session) {
         ChromeCalendar.$ctn.remove();
     }
     if (document.body) exec();
-    else Dom["a" /* default */].documentReady.then(exec);
+    else HTML5_Dom["a" /* default */].documentReady.then(exec);
 
 };
 
@@ -32344,7 +32344,7 @@ CheckboxInput.autoReplace = function () {
 };
 
 CheckboxInput.initAfterLoad = function () {
-    Dom["a" /* default */].documentReady.then(function () {
+    HTML5_Dom["a" /* default */].documentReady.then(function () {
         CheckboxInput.autoReplace();
     })
 };
@@ -32548,7 +32548,7 @@ function CircleSectionLabel() {
     this.$index = CircleSectionLabel_$('.as-circle-section-label-index', this);
     this.$text = CircleSectionLabel_$('.as-circle-section-label-text', this);
     this.$attachhook = CircleSectionLabel_('attachhook').addTo(this).on('error', function () {
-        Dom["a" /* default */].addToResizeSystem(this);
+        HTML5_Dom["a" /* default */].addToResizeSystem(this);
         this.requestUpdateSize();
     });
 
@@ -32713,7 +32713,7 @@ function Follower() {
         .addTo(this)
         .on('attached', function () {
             this.requestUpdateSize();
-            Dom["a" /* default */].addToResizeSystem(this);
+            HTML5_Dom["a" /* default */].addToResizeSystem(this);
         });
     this.$attachhook.requestUpdateSize = this.updatePosition.bind(this);
 
@@ -32773,7 +32773,7 @@ Follower.prototype.updatePosition = function () {
     if (!this.$followTarget) return;
     this.emit('preupdateposition', { target: this }, this);
     var targetBound = this.$followTarget.getBoundingClientRect();
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     var outRect = new Math_Rectangle(0, 0, screenSize.width, screenSize.height);
     var bound = this.getBoundingClientRect();
     var x = 0;
@@ -32872,7 +32872,7 @@ Follower.property.followTarget = {
             elt = Follower_$(elt) || document.getElementById(elt);
         }
 
-        if (Dom["a" /* default */].isDomNode(elt)) {
+        if (HTML5_Dom["a" /* default */].isDomNode(elt)) {
             this.$followTarget = elt;
             this._lastAncho = undefined;
             this.refollow();
@@ -33094,7 +33094,7 @@ Dropdown.property.show = {
 };
 
 Dropdown.prototype.findAvailablePosition = function () {
-    var outBound = Dom["a" /* default */].traceOutBoundingClientRect(document.body);
+    var outBound = HTML5_Dom["a" /* default */].traceOutBoundingClientRect(document.body);
     var containerBound = this.$container.getBoundingClientRect();
     var bound = this.getBoundingClientRect();
     var distTop = bound.top - outBound.top;
@@ -33419,7 +33419,7 @@ VMenu.prototype._childFromItems = function (items) {
         if (typeof item === 'string' && (item.substr(0, 1) === '-' || item.substr(0, 1) === '=')) {
             itemElt = Menu_('vmenuline');
         }
-        else if (Object(Dom["c" /* isDomNode */])(item)) {
+        else if (Object(HTML5_Dom["c" /* isDomNode */])(item)) {
             itemElt = item;
         }
         else if (item.child || item.class || item.tag || item.style || typeof item === 'string') {
@@ -33635,7 +33635,7 @@ VRootMenu.prototype._childFromItems = function (items) {
         if (typeof item === 'string' && (item.substr(0, 1) === '-' || item.substr(0, 1) === '=')) {
             itemElt = Menu_('vmenuline');
         }
-        else if (Object(Dom["c" /* isDomNode */])(item)) {
+        else if (Object(HTML5_Dom["c" /* isDomNode */])(item)) {
             itemElt = item;
         }
         else if (item.child || item.class || item.tag || item.style || typeof item === 'string') {
@@ -33756,7 +33756,7 @@ ContextCaptor.prototype.showContextMenu = function (x, y, props, onSelectItems, 
         }
     }).addTo(anchor);
     setTimeout(function () {
-        var screenSize = Dom["a" /* default */].getScreenSize();
+        var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
         var menuBound = vmenu.getBoundingClientRect();
         if (x + menuBound.width > screenSize.width - 17) {
             x -= menuBound.width;
@@ -34008,7 +34008,7 @@ ContextCaptor.eventHandler.contextmenu = function (event) {
 ContextCaptor.auto = function () {
     if (ContextCaptor.$elt) return;
     ContextCaptor.$elt = ContextMenu_('contextcaptor');
-    Dom["a" /* default */].documentReady.then(function () {
+    HTML5_Dom["a" /* default */].documentReady.then(function () {
         ContextCaptor.$elt.addTo(document.body);
         ContextCaptor.$elt.attachTo(document.body);
     });
@@ -34776,7 +34776,7 @@ DraggableVStack.prototype._updateFriends = function () {
     var dict = {};
     dict[this._privateDraggableVStackIdent] = this;
     this.$friends = this.friends.reduce(function (ac, cr) {
-        if (Dom["a" /* default */].isDomNode(cr)) {
+        if (HTML5_Dom["a" /* default */].isDomNode(cr)) {
             if (cr._privateDraggableVStackIdent) {
                 ac.result.push(cr);
                 ac.dict[cr._privateDraggableVStackIdent] = cr;
@@ -34899,7 +34899,7 @@ DraggableVStack.eventHandler.dragOverflow = function (event) {
     if (!scroller) return;
     var outBound = scroller.getBoundingClientRect();
     var bBound = this.$cloneContainer.getBoundingClientRect();
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     if (scroller.tagName !== "HTML") {
         outBound = {
             top: Math.max(outBound.top, 0),
@@ -35151,7 +35151,7 @@ DraggableVStack.prototype._autoScrollParentIfNeed = function (delta) {
     if (!(delta > 0)) delta = 10000;
     var bound = this.getBoundingClientRect();
     var cloneBound = this.$cloneContainer.getBoundingClientRect();
-    var outBound = Dom["a" /* default */].traceOutBoundingClientRect(this.$cloneContainer);
+    var outBound = HTML5_Dom["a" /* default */].traceOutBoundingClientRect(this.$cloneContainer);
     if (outBound.bottom >= cloneBound.bottom && outBound.top <= cloneBound.top) return;
     var scrollables = [];
     var current = this;
@@ -35572,7 +35572,7 @@ var DropPanelStack_$ = ACore["a" /* default */].$;
 function DropPanelStack() {
     var res = this;
     this.$attachHook = DropPanelStack_('attachhook').on('error', function () {
-        Dom["a" /* default */].addToResizeSystem(this);
+        HTML5_Dom["a" /* default */].addToResizeSystem(this);
         this.updateSize = res.updateSize.bind(res);
     });
     this.sync = new Promise(function (rs) {
@@ -36036,7 +36036,7 @@ Sprite.property.src = {
             this._state = NOT_READY;
             var thisSprite = this;
             this._textureLoaded = false;
-            Dom["a" /* default */].waitImageLoaded(this.texture, this.loadTextureTimeout).then(function (rs) {
+            HTML5_Dom["a" /* default */].waitImageLoaded(this.texture, this.loadTextureTimeout).then(function (rs) {
                     if (thisSprite.texture == cImage) {
                         thisSprite._textureLoaded = true;
                         if (thisSprite._frames) {
@@ -36331,7 +36331,7 @@ ExpNode.property.icon = {
         }
         if (value && value != null) {
             var newE;
-            if (!Dom["a" /* default */].isDomNode(value)) {
+            if (!HTML5_Dom["a" /* default */].isDomNode(value)) {
                 newE = ExpTree_(value);
             }
 
@@ -37402,7 +37402,7 @@ ACore["a" /* default */].install(TabButton);
 /* harmony default export */ var js_TabButton = (TabButton);
 
 
-Dom["a" /* default */].documentReady.then(function () {
+HTML5_Dom["a" /* default */].documentReady.then(function () {
     var a = TabButton_({
         tag: 'span',
         class: ['mdi', 'mdi-close-circle'],
@@ -37941,7 +37941,7 @@ function SinglePage() {
         .on('error', function () {
             this.updateSize();
             setTimeout(this.updateSize, 20);
-            Dom["a" /* default */].addToResizeSystem(this);
+            HTML5_Dom["a" /* default */].addToResizeSystem(this);
         });
     this.$attachhook.updateSize = this.updateSize.bind(this);
     this.$header = null;
@@ -38087,7 +38087,7 @@ function HexaSectionLabel() {
     this.$index = HexaSectionLabel_$('.as-hexa-section-label-index', this);
     this.$text = HexaSectionLabel_$('.as-hexa-section-label-text', this);
     this.$attachhook = HexaSectionLabel_('attachhook').addTo(this).on('error', function () {
-        Dom["a" /* default */].addToResizeSystem(this);
+        HTML5_Dom["a" /* default */].addToResizeSystem(this);
         this.requestUpdateSize();
     });
 
@@ -38201,7 +38201,7 @@ function VRuler() {
     var self = this;
     this.$attachHook = VRuler_('attachhook').on('error', function () {
         this.updateSize = self.update.bind(self);
-        Dom["a" /* default */].addToResizeSystem(this);
+        HTML5_Dom["a" /* default */].addToResizeSystem(this);
         this.updateSize();
     }).addTo(this);
 
@@ -38375,7 +38375,7 @@ function HRuler() {
     var self = this;
     this.$attachHook = HRuler_('attachhook').on('error', function () {
         this.updateSize = self.update.bind(self);
-        Dom["a" /* default */].addToResizeSystem(this);
+        HTML5_Dom["a" /* default */].addToResizeSystem(this);
         this.updateSize();
     }).addTo(self);
 
@@ -38650,7 +38650,7 @@ function LinearColorBar() {
     var thisBar = this;
     this.$attachhook = LinearColorBar_('attachhook').addTo(this).on('error', function () {
         thisBar._attached = true;
-        Dom["a" /* default */].addToResizeSystem(this);
+        HTML5_Dom["a" /* default */].addToResizeSystem(this);
         this.requestUpdateSize();
     });
 
@@ -38900,7 +38900,7 @@ var mediainput = __webpack_require__(110);
 
 
 
-var MediACore = new Dom["a" /* default */]();
+var MediACore = new HTML5_Dom["a" /* default */]();
 MediACore.install(ACore["a" /* default */]);
 
 
@@ -39609,7 +39609,7 @@ MediaInput.eventHandler.paste = function (event) {
                     img = MediaInput_$(img);
                     var source = img.getAttribute('src');
                     img.selfRemove();
-                    Dom["a" /* default */].imageToCanvas(img).then(function (canvas) {
+                    HTML5_Dom["a" /* default */].imageToCanvas(img).then(function (canvas) {
                         var dataURI = canvas.toDataURL();
                         var blob = dataURItoBlob(dataURI);
                         var file = blobToFile(blob);
@@ -41163,7 +41163,7 @@ function OnScreenWindow() {
     res.$attachhook = OnsScreenWindow_('attachhook').addTo(res)
         .on('error', function () {
             this.updateSize = this.updateSize || res.relocation.bind(res);
-            Dom["a" /* default */].addToResizeSystem(this);
+            HTML5_Dom["a" /* default */].addToResizeSystem(this);
         });
 
     res.$minimizeBtn = OnsScreenWindow_$('button.absol-onscreen-window-head-bar-button-minimize', res);
@@ -41235,7 +41235,7 @@ OnScreenWindow.eventHandler.beginDragHeaderbar = function (event) {
     if (!EventEmitter["a" /* default */].hitElement(this.$headerButtonCtn, event)) {
         this.$headerbar.on('drag', this.eventHandler.dragHeaderbar);
         this.$headerbar.on('dragend', this.eventHandler.endDragHeaderbar);
-        var screenSize = Dom["a" /* default */].getScreenSize();
+        var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
         var bound = this.getBoundingClientRect();
         this.__moveData__ = {
             bound: bound,
@@ -41272,7 +41272,7 @@ OnScreenWindow.eventHandler.beginDragBottom = function (event) {
     if (event.target != this.$bottomResizer) return;
     this.$bottomResizer.on('drag', this.eventHandler.dragBottom);
     this.$bottomResizer.on('dragend', this.eventHandler.endDragBottom);
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     var bound = this.getBoundingClientRect();
     this.__moveData__ = {
         bound: bound,
@@ -41303,7 +41303,7 @@ OnScreenWindow.eventHandler.beginDragRight = function (event) {
     if (event.target != this.$rightResizer) return;
     this.$rightResizer.on('drag', this.eventHandler.dragRight);
     this.$rightResizer.on('dragend', this.eventHandler.endDragRight);
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     var bound = this.getBoundingClientRect();
     var minWidth = this.$windowTitle.getBoundingClientRect().right - bound.left + this.$headerButtonCtn.getBoundingClientRect().width;
     this.__moveData__ = {
@@ -41407,7 +41407,7 @@ OnScreenWindow.eventHandler.beginDragButtonRight = function (event) {
     if (event.target != this.$bottomRightResizer) return;
     this.$bottomRightResizer.on('drag', this.eventHandler.dragButtonRight);
     this.$bottomRightResizer.on('dragend', this.eventHandler.endDragButtonRight);
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     var bound = this.getBoundingClientRect();
     var minWidth = this.$windowTitle.getBoundingClientRect().right - bound.left + this.$headerButtonCtn.getBoundingClientRect().width;
     this.__moveData__ = {
@@ -41446,7 +41446,7 @@ OnScreenWindow.eventHandler.beginDragBottomLeft = function (event) {
     this.$bottomLeftResizer.on('dragend', this.eventHandler.endDragBottomLeft);
     var bound = this.getBoundingClientRect();
     var minWidth = this.$windowTitle.getBoundingClientRect().right - bound.left + this.$headerButtonCtn.getBoundingClientRect().width;
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     this.__moveData__ = {
         maxLeft: bound.right - minWidth,
         bound: bound,
@@ -41527,7 +41527,7 @@ OnScreenWindow.eventHandler.beginDragTopRight = function (event) {
     if (event.target != this.$topRightResizer) return;
     this.$topRightResizer.on('drag', this.eventHandler.dragTopRight);
     this.$topRightResizer.on('dragend', this.eventHandler.endDragTopRight);
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     var bound = this.getBoundingClientRect();
     var fontSize = this.getFontSize();
     var minWidth = this.$windowTitle.getBoundingClientRect().right - bound.left + this.$headerButtonCtn.getBoundingClientRect().width;
@@ -41610,7 +41610,7 @@ OnScreenWindow.property.windowTitle = {
 
 OnScreenWindow.prototype.relocation = function () {
     var bound = this.getBoundingClientRect();
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     var isRelocated = false;
     if (bound.bottom >= screenSize.height) {
         this.addStyle('top', Math.max(0, screenSize.height - bound.height) + 'px');
@@ -42140,7 +42140,7 @@ PreInput.eventHandler.paste = function (event) {
                     });
 
                     Promise.all(images.map(function (img) {
-                        return Dom["a" /* default */].imageToCanvas(img).then(function (canvas) {
+                        return HTML5_Dom["a" /* default */].imageToCanvas(img).then(function (canvas) {
                             var dataURI = canvas.toDataURL();
                             var blob = dataURItoBlob(dataURI);
                             var file = blobToFile(blob);
@@ -42546,7 +42546,7 @@ QuickListButton.eventHandler.preopen = function () {
 
 QuickListButton.eventHandler.preUpdatePosition = function () {
     var bound = this.getBoundingClientRect();
-    var screenSize = Dom["a" /* default */].getScreenSize();
+    var screenSize = HTML5_Dom["a" /* default */].getScreenSize();
     var maxHeight = Math.max(screenSize.height - bound.bottom, bound.top) - 10;
     this.$list.addStyle('max-height', maxHeight + 'px');
 };
@@ -43187,7 +43187,7 @@ QuickMenu.updatePosition = function () {
     var ebound = QuickMenu.$element.getBoundingClientRect();
     var menuBound = menu.getBoundingRecursiveRect(3);
     var qBound = qmenu.getBoundingClientRect();
-    var outBound = Dom["a" /* default */].traceOutBoundingClientRect(qmenu);
+    var outBound = HTML5_Dom["a" /* default */].traceOutBoundingClientRect(qmenu);
     //padding
     outBound.left += 2;
     outBound.top += 2;
@@ -43309,7 +43309,7 @@ QuickMenu.show = function (element, menuProps, anchor, menuListener, darkTheme) 
 
     QuickMenu._session = Math.random() * 10000000000 >> 0;
     QuickMenu.$ctn.addTo(document.body);
-    Dom["a" /* default */].addToResizeSystem(QuickMenu.$ctn);
+    HTML5_Dom["a" /* default */].addToResizeSystem(QuickMenu.$ctn);
 
     QuickMenu.$ctn.updateSize = QuickMenu.updatePosition.bind(QuickMenu);
     QuickMenu.$element = element;
@@ -43851,7 +43851,7 @@ RadioButton.autoReplace = function () {
 };
 
 RadioButton.initAfterLoad = function (){
-    Dom["a" /* default */].documentReady.then(function (){
+    HTML5_Dom["a" /* default */].documentReady.then(function (){
         RadioButton.autoReplace();
     })
 };
@@ -44898,7 +44898,7 @@ SelectListBox.prototype.viewListAt = function (offset) {
     }
     var fontSize = this.$listScroller.getFontSize() || 14;
     offset = Math.max(0, Math.min(offset, this._displayItems.length - 1));
-    var screenSize = Object(Dom["b" /* getScreenSize */])();
+    var screenSize = Object(HTML5_Dom["b" /* getScreenSize */])();
     var maxItem = Math.ceil(Math.max(window.screen.height, screenSize.height) / 20);
     var contentBound = this.$content.getBoundingClientRect();
 
@@ -45167,7 +45167,7 @@ SelectListBox.eventHandler.searchModify = function () {
 SelectListBox.eventHandler.scroll = function () {
     var scrollerBound = this.$listScroller.getBoundingClientRect();
     var topIdx = this._findFirstPageIdx();
-    var screenSize = Object(Dom["b" /* getScreenSize */])();
+    var screenSize = Object(HTML5_Dom["b" /* getScreenSize */])();
     var maxItem = Math.ceil(Math.max(window.screen.height, screenSize.height) / 20);
     var topBound = this.$listPages[topIdx].getBoundingClientRect();
     var botIdx = this._findLastPageIdx();
@@ -45476,11 +45476,11 @@ SelectMenu.eventHandler.selectListBoxPressItem = function (event) {
 
 SelectMenu.eventHandler.preUpdateListPosition = function () {
     var bound = this.getBoundingClientRect();
-    var screenSize = Object(Dom["b" /* getScreenSize */])();
+    var screenSize = Object(HTML5_Dom["b" /* getScreenSize */])();
     var availableTop = bound.top - 5;
     var availableBot = screenSize.height - 5 - bound.bottom;
     this.$selectlistBox.addStyle('--max-height', Math.max(availableBot, availableTop) + 'px');
-    var outBound = Object(Dom["d" /* traceOutBoundingClientRect */])(this);
+    var outBound = Object(HTML5_Dom["d" /* traceOutBoundingClientRect */])(this);
     if (bound.bottom < outBound.top || bound.top > outBound.bottom || bound.right < outBound.left || bound.left > outBound.right) {
         this.isFocus = false;
     }
@@ -45955,7 +45955,7 @@ var selecttable = __webpack_require__(30);
 
 
 
-var privateDom = new Dom["a" /* default */]().install(ACore["a" /* default */]);
+var privateDom = new HTML5_Dom["a" /* default */]().install(ACore["a" /* default */]);
 var SelectTable_$ = privateDom.$;
 var SelectTable_ = privateDom._;
 
@@ -45988,7 +45988,7 @@ function SelectTable() {
     this.$addAllBtn.updateSize = function () {
         thisST.updateScroller && thisST.updateScroller();
     };
-    Dom["a" /* default */].addToResizeSystem(this.$addAllBtn);
+    HTML5_Dom["a" /* default */].addToResizeSystem(this.$addAllBtn);
     return this;
 }
 
@@ -46662,7 +46662,7 @@ ACore["a" /* default */].install(SelectTable);
 
 
 
-var SelectTable2_privateDom = new Dom["a" /* default */]().install(ACore["a" /* default */]).install(js_SelectTable.privateDom);
+var SelectTable2_privateDom = new HTML5_Dom["a" /* default */]().install(ACore["a" /* default */]).install(js_SelectTable.privateDom);
 var SelectTable2_$ = SelectTable2_privateDom.$;
 var SelectTable2_ = SelectTable2_privateDom._;
 
@@ -47816,7 +47816,7 @@ function TableScroller() {
     this.$attachHook = TableScroller_$('attachhook', this);
     this.$attachHook.requestUpdateSize = this._updateContentSize.bind(this);
     this.$attachHook.on('error', function () {
-        Dom["a" /* default */].addToResizeSystem(this);
+        HTML5_Dom["a" /* default */].addToResizeSystem(this);
     });
 
     this.sync = new Promise(function (rs) {
@@ -47886,7 +47886,7 @@ TableScroller.render = function () {
 
 TableScroller.scrollSize = 17;//default 
 
-Dom["a" /* default */].getScrollSize().then(function (size) {
+HTML5_Dom["a" /* default */].getScrollSize().then(function (size) {
     TableScroller.scrollSize = size.width;//default scroller
     TableScroller.$style = TableScroller_('style[id="table-scroller-css"]').addTo(document.head);
     TableScroller.$style.innerHTML = [
@@ -47899,8 +47899,8 @@ Dom["a" /* default */].getScrollSize().then(function (size) {
         '}'
 
     ].join('\n');
-    Dom["a" /* default */].updateResizeSystem();
-    setTimeout(Dom["a" /* default */].updateResizeSystem.bind(Dom["a" /* default */]), 30);// css load delay
+    HTML5_Dom["a" /* default */].updateResizeSystem();
+    setTimeout(HTML5_Dom["a" /* default */].updateResizeSystem.bind(HTML5_Dom["a" /* default */]), 30);// css load delay
 });
 
 TableScroller.eventHandler = {};
@@ -48231,7 +48231,7 @@ function TableVScroller() {
     this.$viewport = TableVScroller_$('bscroller.absol-table-vscroller-viewport', this);
 
     this.$attachHook.on('error', function () {
-        Dom["a" /* default */].addToResizeSystem(thisTS.$attachHook);
+        HTML5_Dom["a" /* default */].addToResizeSystem(thisTS.$attachHook);
     });
     this.$topTable = TableVScroller_$('.absol-table-vscroller-head', this);
     this.$headLine = TableVScroller_$('.absol-table-vscroller-head-line', this);
@@ -48587,14 +48587,14 @@ SelectMenu_SelectMenu.prototype.updateDropdownPostion = function (updateAnchor) 
     }
     var bound = this.getBoundingClientRect();
     if (!updateAnchor) {
-        var outBound = Dom["a" /* default */].traceOutBoundingClientRect(this);
+        var outBound = HTML5_Dom["a" /* default */].traceOutBoundingClientRect(this);
 
         if (!this.isFocus || bound.top > outBound.bottom || bound.bottom < outBound.top) {
             this.isFocus = false;
             return;
         }
 
-        var anchorOutBound = Dom["a" /* default */].traceOutBoundingClientRect(this.$anchor);
+        var anchorOutBound = HTML5_Dom["a" /* default */].traceOutBoundingClientRect(this.$anchor);
         var searchBound = this.$searchTextInput.getBoundingClientRect();
         var availableTop = bound.top - anchorOutBound.top - (this.enableSearch ? searchBound.height + 8 : 0) - 20;
         var availableBottom = anchorOutBound.bottom - bound.bottom - (this.enableSearch ? searchBound.height + 8 : 0) - 20;
@@ -48829,7 +48829,7 @@ SelectMenu_SelectMenu.eventHandler.attached = function () {
     if (this._updateInterval) return;
     if (!this.$anchor.parentNode) this.$anchor.addTo(this.$anchorCtn);
     this.$attachhook.updateSize = this.$attachhook.updateSize || this.updateDropdownPostion.bind(this);
-    Dom["a" /* default */].addToResizeSystem(this.$attachhook);
+    HTML5_Dom["a" /* default */].addToResizeSystem(this.$attachhook);
     this.stopListenRemovable();
     this.startListenRemovable();
     if (!this._resourceReady) {
@@ -49199,7 +49199,7 @@ function TimePicker() {
     if (isTouchDevice)
         this.addClass('ac-time-picker-touch');
     this.$attachook = TimePicker_('attachhook').addTo(this).on('error', function () {
-        Dom["a" /* default */].addToResizeSystem(this);
+        HTML5_Dom["a" /* default */].addToResizeSystem(this);
         this.requestUpdateSize();
         thisPicker.addStyle('font-size', thisPicker.getComputedStyleValue('font-size'));
     });
@@ -50355,7 +50355,7 @@ ToolTip.show = function (element, content, orientation) {
 
     Tooltip_$('', content, function (elt) {
         if (elt.tagName == "IMG" && elt.src) {
-            Dom["a" /* default */].waitImageLoaded(elt).then(ToolTip.updatePosition.bind(ToolTip));
+            HTML5_Dom["a" /* default */].waitImageLoaded(elt).then(ToolTip.updatePosition.bind(ToolTip));
             ;
         }
         else if (elt.sync) {
@@ -50365,7 +50365,7 @@ ToolTip.show = function (element, content, orientation) {
     var currentSession = Math.random() * 10000000000 >> 0;
 
     ToolTip.$root.addTo(document.body);
-    Dom["a" /* default */].addToResizeSystem(ToolTip.$tooltip.$arrow);
+    HTML5_Dom["a" /* default */].addToResizeSystem(ToolTip.$tooltip.$arrow);
 
     ToolTip.$element = element;
     ToolTip._session = currentSession;
@@ -51594,7 +51594,7 @@ ButtonRange.eventHandler.clickItem = function (item, event) {
 
 ButtonRange.eventHandler.attached = function () {
     if (this.style.width === 'auto') this.autoWidth = true;
-    Dom["a" /* default */].addToResizeSystem(this.$attachHook);
+    HTML5_Dom["a" /* default */].addToResizeSystem(this.$attachHook);
     this.updateSize();
 };
 
@@ -51881,7 +51881,7 @@ RadioInput.autoReplace = function () {
 };
 
 RadioInput.initAfterLoad = function (){
-    Dom["a" /* default */].documentReady.then(function (){
+    HTML5_Dom["a" /* default */].documentReady.then(function (){
         RadioInput.autoReplace();
     })
 };
@@ -51942,7 +51942,7 @@ OnScreenWidget.prototype.configPrefix = 'on-screen-widget-';
 
 OnScreenWidget.prototype._genConfig = function () {
     this._widgetBound = this.getBoundingClientRect();
-    var screenSize = Object(Dom["b" /* getScreenSize */])();
+    var screenSize = Object(HTML5_Dom["b" /* getScreenSize */])();
     return {
         cx: (this._widgetBound.left + this._widgetBound.width / 2) * 100 / screenSize.width,
         cy: (this._widgetBound.top + this._widgetBound.height / 2) * 100 / screenSize.height
@@ -51998,7 +51998,7 @@ OnScreenWidget.eventHandler.attached = function () {
     var images = OnScreenWidget_$$('img', this);
     var syncs = images.map(function (img) {
         if (img.classList.contains('absol-attachhook')) return Promise.resolve();
-        return Object(Dom["e" /* waitImageLoaded */])(img, 100);
+        return Object(HTML5_Dom["e" /* waitImageLoaded */])(img, 100);
     });
     var thisW = this;
     Promise.all(syncs).then(function () {
@@ -52014,7 +52014,7 @@ OnScreenWidget.eventHandler.widgetStartDrag = function (event) {
 
 OnScreenWidget.eventHandler.widgetDrag = function (event) {
     event.preventDefault();
-    var screenSize = Object(Dom["b" /* getScreenSize */])();
+    var screenSize = Object(HTML5_Dom["b" /* getScreenSize */])();
     var p0 = new Math_Vec2(this._widgetBound.left, this._widgetBound.top);
     var dv = event.currentPoint.sub(event.startingPoint);
     var p1 = p0.add(dv);
@@ -52541,8 +52541,8 @@ absol.MaterialDesignIconsNameMap = MaterialDesignIconsNameMap;
 // CONCATENATED MODULE: ./js/dom/Fcore.js
 
 
-var Fcore = new Dom["a" /* default */]();
-Fcore.traceOutBoundingClientRect = Dom["a" /* default */].traceOutBoundingClientRect;
+var Fcore = new HTML5_Dom["a" /* default */]();
+Fcore.traceOutBoundingClientRect = HTML5_Dom["a" /* default */].traceOutBoundingClientRect;
 Fcore.install(absol_acomp_AComp.core);
 /* harmony default export */ var dom_Fcore = (Fcore);
 // CONCATENATED MODULE: ./js/dom/Icons.js
@@ -53511,7 +53511,7 @@ var mpotpreview = __webpack_require__(201);
 
 
 
-var CPCore = new Dom["a" /* default */]({ creator: Object.assign({}, absol_acomp_AComp.creator) });
+var CPCore = new HTML5_Dom["a" /* default */]({ creator: Object.assign({}, absol_acomp_AComp.creator) });
 /* harmony default export */ var components_CPCore = (CPCore);
 // EXTERNAL MODULE: ./node_modules/absol-colorpicker/style/colorpicker.css
 var colorpicker = __webpack_require__(203);
@@ -54231,7 +54231,7 @@ var absol_colorpicker_ColorPicker = {
 
 
 
-var FCore_Fcore = new Dom["a" /* default */]();
+var FCore_Fcore = new HTML5_Dom["a" /* default */]();
 
 FCore_Fcore.install(absol_acomp_AComp.core);
 FCore_Fcore.install(absol_colorpicker.core);
@@ -56532,7 +56532,7 @@ MPOTMergeTool.prototype.ev_dragResizer = function(event) {
     var bound = this.$view.getBoundingClientRect();
     var newWidth = Math.max(20, Math.min(80, this.config.previewWidth + dx * 100 / bound.width));
     this.$view.addStyle('--preview-width', newWidth + '%');
-    Dom["a" /* default */].updateResizeSystem();
+    HTML5_Dom["a" /* default */].updateResizeSystem();
 };
 
 MPOTMergeTool.prototype.ev_dragResizerEnd = function(event) {
@@ -57307,8 +57307,14 @@ function MapView_MapView() {
   Object.assign(temp, MapView_MapView.prototype);
   temp.mapReplace = MapView_$('div.pizo-new-realty-location-map-view-content', temp);
   temp.map = temp.activeMap();
+  temp.isShowAddress = true;
   return temp;
 }
+
+MapView_MapView.prototype.setLabelUnder = function () {
+  var isShowAddress = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  this.isShowAddress = isShowAddress;
+};
 
 MapView_MapView.prototype.activePlanningMap = function () {
   this.addMapPolygon();
@@ -57629,11 +57635,37 @@ MapView_MapView.prototype.addOrtherMarker = function (data) {
       // The anchor for this image is the base of the flagpole at (0, 32).
       anchor: new google.maps.Point(12, 12)
     };
-    var marker = new google.maps.Marker({
+    var label;
+
+    if (self.isShowAddress === true) {
+      var checkAddress = ModuleDatabase["a" /* default */].getModule("addresses").getLibary("id");
+      if (checkAddress[data.addressid]) label = checkAddress[data.addressid].addressnumber;
+    } else if (self.isShowAddress === false) {
+      if (parseInt(data.salestatus / 10) == 1 ? true : false) label = data.price + " tỉ";else if (parseInt(data.salestatus % 10) == 1 ? true : false) label = parseInt(data.pricerent) / 1000000 + " triệu";else if (data.price > 0) label = data.price + " tỉ";else if (data.pricerent > 0) label = data.price + " VND";
+    }
+
+    var labelContent = MapView_({
+      tag: "div",
+      child: [{
+        tag: "div",
+        "class": "arrow"
+      }, {
+        tag: "div",
+        "class": "inner",
+        props: {
+          innerHTML: label
+        }
+      }]
+    });
+
+    var marker = new MarkerWithLabel({
       position: new google.maps.LatLng(position[0], position[1]),
       map: self.map,
       draggable: false,
       icon: image,
+      labelContent: labelContent,
+      labelAnchor: new google.maps.Point(40, -5),
+      labelClass: "labels",
       zIndex: 2
     });
     var imageHover = {
@@ -57686,6 +57718,8 @@ MapView_MapView.prototype.addOrtherMarker = function (data) {
   self.isDoneMarker = true;
   return marker;
 };
+
+MapView_MapView.prototype.setFilter = function () {};
 
 MapView_MapView.prototype.modalMiniRealty = function (data) {
   var temp = MapView_({
@@ -60999,6 +61033,11 @@ tableView.prototype.updateTableHeader = function () {
   }
 
   this.headerTable.replaceChild(row, this.headerTable.childNodes[0]);
+
+  if (this.isInputHeader) {
+    this.addInputSearchHeader();
+  }
+
   this.updateTable();
 };
 
@@ -61301,10 +61340,10 @@ tableView.prototype.changeRowIndex = function (index, spliceIndex) {
   result = self;
   tempIndex = index;
   tempSpliceIndex = spliceIndex;
+  index = self.childrenNodes.indexOf(element);
+  spliceIndex = self.childrenNodes.indexOf(elementReal);
 
   if (result.data.child !== undefined) {
-    index = self.childrenNodes.indexOf(element);
-    spliceIndex = self.childrenNodes.indexOf(elementReal);
     if (spliceIndex === -1) spliceIndex = self.childrenNodes.length;
     result.data.child = changeIndex(result.data.child, index, spliceIndex);
   } else {
@@ -61496,7 +61535,7 @@ tableView.prototype.getCellHeader = function (header, i) {
   };
   var mousedown = dragHorizontal && dragElement ? function (index) {
     return function (event) {
-      event.preventDefault();
+      // event.preventDefault();
       var finalIndex;
 
       for (var i = 0; i < result.clone.length; i++) {
@@ -61625,6 +61664,7 @@ tableView.prototype.getCellHeader = function (header, i) {
   }
 
   container.addChild(childUpDown);
+  cell.container = container;
   return cell;
 };
 
@@ -61855,6 +61895,32 @@ tableView.prototype.setArrayScroll = function (num) {
       self.setArrayFix(num, isLeft);
     }, 10);
   });
+};
+
+tableView.prototype.addInputSearchHeader = function () {
+  this.isInputHeader = true;
+  var header = this.header;
+  var check = this.check;
+  var headerElement = this.headerTable.childNodes[0];
+  var k = 0;
+
+  for (var i = 0; i < header.length; i++) {
+    if (check[i] === undefined && header[i].disableInput !== true) {
+      var input = ModuleView_({
+        tag: "input",
+        "class": "searchheader-input"
+      });
+
+      this.addInputSearch(input, i);
+      headerElement.childNodes[k].appendChild(ModuleView_({
+        tag: "div",
+        "class": "searchheader",
+        child: [input]
+      }));
+    }
+
+    if (check[i] !== "hidden") k++;
+  }
 };
 
 tableView.prototype.addInputSearch = function (input, index) {
@@ -63369,7 +63435,7 @@ tableView.prototype.updateTable = function (header, data, dragHorizontal, dragVe
   if (this.bodyTable.listCheckBox !== undefined && this.bodyTable.listCheckBox.length > 0) temp.listCheckBox[0] = this.bodyTable.listCheckBox[0];
 
   for (var i = 0; i < result.clone.length; i++) {
-    result.clone[i] = [result.clone[i].shift()];
+    if (this.headerTable.childNodes.length > 1) result.clone[i] = [result.clone[i][0], result.clone[i][1]];else result.clone[i] = [result.clone[i].shift()];
   }
 
   this.realTable.replaceChild(temp, this.bodyTable);
@@ -63835,6 +63901,7 @@ tableView.prototype.changeParent = function (index, rowParent) {
   parent.changeRowChild(element, rowParent);
 
   for (var i = 0; i < element.childNodes.length; i++) {
+    element.childNodes[i].clone = rowParent.clone;
     rowParent.clone[i + deltaY].push(element.childNodes[i]);
     parent.clone[i + deltaY].splice(index + 1 - deltaX[i + deltaY], 1);
     if (parent.checkSpan !== undefined) parent.checkSpan.splice(index, 1);
@@ -63876,8 +63943,8 @@ tableView.prototype.changeRowChild = function (element, parent) {
     current = null;
     parent.bodyTable.addChild(element);
   } else {
-    current = parent.clone[0][parent.clone[0].length - 1].parentNode;
-    element.parentNode.insertBefore(element, this.getElementNext(current));
+    current = parent.getParentNode();
+    element.parentNode.insertBefore(element, this.getElementNext(parent));
   }
 
   element.parentMargin = parent.parentMargin + 1;
@@ -64418,8 +64485,8 @@ function sortArray(arr, index) {
       if (prev.length === 1) if (a.child !== undefined) {
         sortArray(a.child, index, increase);
       }
-      var valueA = a[index].value;
-      var valueB = b[index].value;
+      if (a[index].valuesort) var valueA = a[index].valuesort;else var valueA = a[index].value;
+      if (b[index].valuesort) var valueB = b[index].valuesort;else var valueB = b[index].value;
       if (valueA === undefined) valueA = a[index];
       if (valueB === undefined) valueB = b[index];
       return compareIncrease(valueA, valueB);
@@ -64432,8 +64499,8 @@ function sortArray(arr, index) {
       var a = prev[0];
       var b = next[0];
       if (prev.length === 1) if (a.child !== undefined) sortArray(a.child, index, increase);
-      var valueA = a[index].value;
-      var valueB = b[index].value;
+      if (a[index].valuesort) var valueA = a[index].valuesort;else var valueA = a[index].value;
+      if (b[index].valuesort) var valueB = b[index].valuesort;else var valueB = b[index].value;
       if (valueA === undefined) valueA = a[index];
       if (valueB === undefined) valueB = b[index];
       return compareIncrease(valueB, valueA);
@@ -69515,8 +69582,8 @@ function descViewImagePreview() {
       tag: "div",
       style: {
         display: "flex",
-        height: "calc(100vh - 6.42857142857rem)",
-        margin: "0.3571rem"
+        height: "calc(100vh - 95px)",
+        padding: "5px"
       },
       child: [{
         tag: "div",
@@ -69576,10 +69643,9 @@ function descViewImagePreview() {
             tag: "div",
             "class": ["timeline-slider__handle"],
             style: {
-              width: "0.8571rem",
-              height: "0.8571rem",
-              left: "0.4643rem",
-              top: "calc(0% - 0rem)"
+              width: "12px",
+              height: "12px",
+              left: "6px"
             },
             child: [{
               tag: "div",
@@ -72820,6 +72886,7 @@ NewRealty_NewRealty.prototype.detructView = function () {
     var checkStatus = parseInt(original.salestatus);
     this.inputLease.checked = parseInt(checkStatus / 10) == 1 ? true : false;
     this.inputSell.checked = parseInt(checkStatus % 10) == 1 ? true : false;
+    if (this.inputSell.checked == true) this.priceRent.style.display = "none";
     this.inputContent.value = original.content;
     this.inputFit.values = formatFit(parseInt(original.fit));
     this.inputPrice.emit("change");
@@ -74019,6 +74086,7 @@ MapRealty_MapRealty.prototype.getView = function () {
   }
 
   var mapView = new MapView_MapView();
+  mapView.setLabelUnder(false);
   mapView.activePlanningMap();
   mapView.setCurrentLocation();
   mapView.setMoveMarkerWithCurrent(false);
@@ -74124,7 +74192,7 @@ MapRealty_MapRealty.prototype.getView = function () {
     this.checkWard = ModuleDatabase["a" /* default */].getModule("wards").getLibary("id");
     this.checkequipment = ModuleDatabase["a" /* default */].getModule("equipments").getLibary("id");
     this.checkJuridical = ModuleDatabase["a" /* default */].getModule("juridicals").getLibary("id");
-    this.checkTypeHouse = ModuleDatabase["a" /* default */].getModule("type_activehouses").getList("id");
+    this.checkTypeHouse = ModuleDatabase["a" /* default */].getModule("type_activehouses").getLibary("id");
     this.$view.addChild(MapRealty_({
       tag: "div",
       "class": ["pizo-list-plan-main"],
@@ -75400,14 +75468,21 @@ MapRealty_MapRealty.prototype.contactItem = function (data) {
         tag: "span",
         "class": "pizo-new-realty-contact-item-phone-input",
         style: {
-          pointerEvents: "unset"
+          pointerEvents: "unset",
+          cursor: "pointer"
         },
         props: {
           type: "number"
         },
         on: {
           click: function click(event) {
-            this.innerText = this.realValue;
+            if (this.isCheck) {
+              this.innerText = "xxxxxxxxxx";
+              this.isCheck = false;
+            } else {
+              this.innerText = this.realValue;
+              this.isCheck = true;
+            }
           }
         }
       }, {
@@ -75614,7 +75689,7 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
 
   var fullAddressOld = "";
 
-  if (data.addressid_old != 0) {
+  if (data.addressid_old && data.addressid_old != 0) {
     var number = this.checkAddress[data.addressid_old].addressnumber;
     var street = this.checkStreet[this.checkAddress[data.addressid_old].streetid].name;
     var ward = this.checkWard[this.checkAddress[data.addressid_old].wardid].name;
@@ -76420,12 +76495,39 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
       }]
     }, this.convenientView(data), this.contactView(data), this.juridicalView(data), {
       tag: "div",
-      // class:"",
+      "class": "pizo-new-realty-dectruct-tab-ownership-history",
       child: [{
         tag: "div",
         "class": "pizo-new-realty-dectruct-tab",
         props: {
           innerHTML: "Lịch sử sở hữu"
+        }
+      }]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-dectruct-tab-historical-progress",
+      child: [{
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-tab",
+        props: {
+          innerHTML: "Tiến trình lịch sử"
+        }
+      }, {
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-tab-historical-progress-container",
+        child: [{
+          tag: "span",
+          "class": "pizo-new-realty-dectruct-tab-historical-progress-label"
+        }]
+      }]
+    }, {
+      tag: "div",
+      "class": "pizo-new-realty-dectruct-tab-ownership-history",
+      child: [{
+        tag: "div",
+        "class": "pizo-new-realty-dectruct-tab",
+        props: {
+          innerHTML: "Ghi chú"
         }
       }]
     }]
@@ -76463,6 +76565,7 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
   var advanceDetruct2 = MapRealty_$("div.pizo-new-realty-dectruct-content-area-selectbox-child-2", temp);
   var advanceDetruct3 = MapRealty_$("div.pizo-new-realty-dectruct-content-area-selectbox-child-3", temp);
   var advanceDetruct4 = MapRealty_$("div.pizo-new-realty-dectruct-content-area-selectbox-child-4", temp);
+  var historical = MapRealty_$('span.pizo-new-realty-dectruct-tab-historical-progress-label', temp);
 
   if (data !== undefined) {
     var original = data;
@@ -76495,6 +76598,21 @@ MapRealty_MapRealty.prototype.detailHouse = function (data) {
     advanceDetruct3.checked = advanceDetruct % 10 ? true : false;
     advanceDetruct = parseInt(advanceDetruct / 10);
     advanceDetruct4.checked = advanceDetruct % 10 == 1 ? true : false;
+    ModuleDatabase["a" /* default */].getModule("activehouses_logs").load({
+      WHERE: [{
+        houseid: original.id
+      }],
+      ORDERING: "created"
+    }).then(function (value) {
+      var text = "";
+
+      for (var i = value.length - 1; i >= 0; i--) {
+        text += value[i].log;
+        text += "</br>";
+      }
+
+      historical.innerHTML = text;
+    });
   }
 
   return temp;
@@ -77331,6 +77449,7 @@ ListRealty_ListRealty.prototype.getView = function () {
           self.mTable.deleteColumn(0);
           self.mTable.insertColumn(0, 0);
           this.currentMerge = undefined;
+          self.mTable.data.splice.apply(self.mTable.data, [self.mTable.data.length, 0].concat(this.ortherData));
           hiddenConfirm.value = 0;
           hiddenConfirm.emit("change");
           var dataSum = self.mTable.getTrueCheckBox();
@@ -77360,6 +77479,7 @@ ListRealty_ListRealty.prototype.getView = function () {
           self.mTable.deleteColumn(0);
           self.mTable.insertColumn(1, 0);
           this.currentMerge = true;
+          this.ortherData = self.browserFilter(self.mTable.data);
           hiddenConfirm.value = "censorship0";
           hiddenConfirm.emit("change");
         }
@@ -77623,7 +77743,8 @@ ListRealty_ListRealty.prototype.getView = function () {
       sort: true,
       style: {
         minWidth: "30px"
-      }
+      },
+      disableInput: true
     }, 'Số nhà', {
       value: 'Tên đường'
     }, {
@@ -77671,6 +77792,7 @@ ListRealty_ListRealty.prototype.getView = function () {
       }
     }, {
       value: 'Hiện trạng',
+      disableInput: true,
       style: {
         minWidth: "85px"
       }
@@ -77690,6 +77812,7 @@ ListRealty_ListRealty.prototype.getView = function () {
       disabled: true
     }];
     self.mTable = new tableView(header, [], true, true, 1);
+    self.mTable.addInputSearchHeader();
     var arr = [];
     var connect = "";
 
@@ -77737,8 +77860,8 @@ ListRealty_ListRealty.prototype.getView = function () {
 
         self.mTable.updateTable(undefined, value);
         self.mTable.addInputSearch(ListRealty_$('.pizo-list-realty-page-allinput-container input', self.$view));
-        self.mTable.addFilter(hiddenConfirm, 19);
-        self.mTable.addFilter(self.HTinput, 17);
+        self.mTable.addFilter(hiddenConfirm, 20);
+        self.mTable.addFilter(self.HTinput, 16);
       });
     });
     tabContainer.addChild(self.mTable);
@@ -77913,7 +78036,13 @@ ListRealty_ListRealty.prototype.getDataRow = function (data) {
     element: ListRealty_({
       text: staus
     })
-  }, formatDate(data.created, true, true, true, true, true), formatDate(data.modified, true, true, true, true, true), {}, "censorship" + data.censorship];
+  }, {
+    value: formatDate(data.created, true, true, true, true, true),
+    valuesort: new Date(data.created)
+  }, {
+    value: formatDate(data.modified, true, true, true, true, true),
+    valuesort: new Date(data.modified)
+  }, {}, "censorship" + data.censorship];
   result.original = data;
   return result;
 };
@@ -77954,6 +78083,52 @@ function getEditDistance(a, b) {
 
 ;
 
+ListRealty_ListRealty.prototype.browserFilter = function (data) {
+  var checkAvaliable = [];
+  var result = [];
+  var tempData;
+  var tempPushData;
+  var indexData;
+  var index;
+
+  for (var i = 0; i < data.length; i++) {
+    indexData = data[i];
+    indexData.visiable = true;
+    tempData = checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
+    if (tempData) for (var j = 0; j < tempData.length; j++) {
+      if (tempData[j] !== undefined && getEditDistance(tempData[j][3], indexData[3]) <= indexData[3].length / 3) {
+        tempPushData = result[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
+        if (tempPushData === undefined) tempPushData = [];
+        tempPushData.push(indexData);
+        indexData.visiable = false;
+        data.splice(i, 1);
+        i--;
+        index = data.indexOf(tempData[j]);
+
+        if (index !== -1) {
+          tempPushData.push(tempData[j]);
+          tempData[j].visiable = false;
+          data.splice(index, 1);
+          i--;
+        }
+
+        result[indexData[4] + indexData[5] + indexData[6] + indexData[7]] = tempPushData;
+      }
+    }
+    if (checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]] == undefined) checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]] = [];
+    checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]].push(indexData);
+  }
+
+  var _final = [];
+
+  for (var param in result) {
+    _final.splice.apply(_final, [0, 0].concat(result[param]));
+  }
+
+  data.ortherFilter = true;
+  return _final;
+};
+
 ListRealty_ListRealty.prototype.mergeFilter = function (data) {
   var checkAvaliable = [];
   var result = [];
@@ -77964,10 +78139,10 @@ ListRealty_ListRealty.prototype.mergeFilter = function (data) {
 
   for (var i = 0; i < data.length; i++) {
     indexData = data[i];
-    tempData = checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]];
+    tempData = checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
     if (tempData) for (var j = 0; j < tempData.length; j++) {
-      if (tempData[j] !== undefined && getEditDistance(tempData[j][4], indexData[4]) <= indexData[4].length / 3) {
-        tempPushData = result[indexData[5] + indexData[6] + indexData[7] + indexData[8]];
+      if (tempData[j] !== undefined && getEditDistance(tempData[j][3], indexData[3]) <= indexData[3].length / 3) {
+        tempPushData = result[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
         if (tempPushData === undefined) tempPushData = [];
 
         if (indexData.visiable == undefined) {
@@ -77988,16 +78163,16 @@ ListRealty_ListRealty.prototype.mergeFilter = function (data) {
           }
         }
 
-        result[indexData[5] + indexData[6] + indexData[7] + indexData[8]] = tempPushData;
+        result[indexData[4] + indexData[5] + indexData[6] + indexData[7]] = tempPushData;
       }
     }
-    if (checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]] == undefined) checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]] = [];
-    checkAvaliable[indexData[5] + indexData[6] + indexData[7] + indexData[8]].push(indexData);
+    if (checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]] == undefined) checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]] = [];
+    checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]].push(indexData);
   }
 
   var length = data.length;
 
-  var _final = ListRealty_toConsumableArray(data);
+  var _final2 = ListRealty_toConsumableArray(data);
 
   data.splice(0, length);
 
@@ -78006,7 +78181,7 @@ ListRealty_ListRealty.prototype.mergeFilter = function (data) {
   }
 
   data.ortherFilter = true;
-  return _final;
+  return _final2;
 };
 
 ListRealty_ListRealty.prototype.searchControlContent = function () {
@@ -78556,7 +78731,7 @@ ListRealty_ListRealty.prototype.merge = function (data, parent, index) {
     self.mergeDB(mMergeRealty, data, parent, index);
     mMergeRealty.promiseEditDB.then(function (value) {
       var loading = new loadingWheel();
-      ModuleDatabase["a" /* default */].getModule("activehouses").add(value).then(function (_final2) {
+      ModuleDatabase["a" /* default */].getModule("activehouses").add(value).then(function (_final3) {
         var valueFinal;
 
         if (self.isCensorship) {
@@ -79203,7 +79378,6 @@ ListWard_ListWard.prototype.getDataParam = function () {
 };
 
 ListWard_ListWard.prototype.formatDataRow = function (data) {
-  return [];
   var temp = [];
   var check = [];
   var k = 0;
@@ -82182,6 +82356,12 @@ PlanningInformation_PlanningInformation.prototype.getView = function () {
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
+              self.removeAllSelect();
+
+              if (self.editPolygon !== undefined) {
+                self.editPolygon.toInActive(self);
+              }
+
               self.saveCurrentDataMap();
             }
           },
@@ -84059,18 +84239,30 @@ function HelpContainer_HelpContainer() {
     this.$view.mTable.headerTable.style.display = "none";
     mTable.parentNode.replaceChild(this.$view.mTable, mTable);
     self.$view.checkAlias = ModuleDatabase["a" /* default */].getModule("helps").getLibary("alias");
-
-    if (window.exttask) {
-      if (self.$view.checkAlias[window.exttask]) {
-        setTimeout(function () {
-          var temp = document.getElementById("x86" + self.$view.checkAlias[window.exttask].id);
-          window.addHref = window.exttask;
-          if (temp) temp.click();
-        }.bind(this), 80);
-      }
-    }
-
     this.$view.firstChildClick();
+    var x = setInterval(function () {
+      if (window.exttask) {
+        if (self.$view.checkAlias[window.exttask]) {
+          if (window.exttask) {
+            var temp = document.getElementById("x86" + self.$view.checkAlias[window.exttask].id);
+            window.addHref = window.exttask;
+
+            if (temp) {
+              temp.click();
+              temp.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+                inline: "center"
+              });
+              clearInterval(x);
+            }
+          }
+        }
+      }
+    }, 80);
+    setTimeout(function () {
+      clearInterval(x);
+    }, 5000);
   }.bind(this));
 
   var mTable = HelpContainer_({
@@ -84200,7 +84392,7 @@ function HelpContainer_HelpContainer() {
                 "class": ["b-controlButtons__item", "m-controlButtons__item__print"],
                 on: {
                   click: function click() {
-                    Dom["a" /* default */].printElement(self.$view.containerView.parentNode);
+                    HTML5_Dom["a" /* default */].printElement(self.$view.containerView.parentNode);
                   }
                 },
                 child: [{
@@ -84301,9 +84493,12 @@ HelpContainer_HelpContainer.prototype.firstChildClick = function () {
     var text = this.mTable.childrenNodes[0].data.original.fulltext;
 
     if (this.mTable.childrenNodes[0].data.original.related != "") {
-      text += "<div style='border: 1px solid;'></div>" + this.mTable.childrenNodes[0].data.original.related;
+      text += "<div style='border: 1px solid;'></div>";
+      text += "<h3>Bài liên quan</h3>";
+      text += this.mTable.childrenNodes[0].data.original.related;
     }
 
+    text += "<div style='width:100%;height:150px'></div>";
     this.containerView.innerHTML = text;
     var location = "";
     var tempElement = this.mTable.childrenNodes[0];
@@ -84347,9 +84542,12 @@ HelpContainer_HelpContainer.prototype.functionClickDetail = function (event, me,
   var text = data.original.fulltext;
 
   if (data.original.related) {
-    text += "<div style='border: 1px solid;'></div>" + data.original.related;
+    text += "<div style='border: 1px solid;'></div>";
+    text += "<h3>Bài liên quan</h3>";
+    text += data.original.related;
   }
 
+  text += "<div style='width:100%;height:150px'></div>";
   this.containerView.innerHTML = text;
   var location = "";
   var tempElement = row;
@@ -84681,6 +84879,172 @@ function EditHelpContainer_EditHelpContainer() {
   });
 
   var updateTableFunction;
+
+  var containerEditView = EditHelpContainer_({
+    tag: "div",
+    "class": "b-article",
+    style: {
+      display: "none"
+    },
+    child: [{
+      tag: "div",
+      "class": "pizo-new-category-container-name",
+      child: [{
+        tag: "div",
+        "class": "pizo-new-category-container-name-container",
+        child: [{
+          tag: "span",
+          "class": "pizo-new-category-container-name-container-label",
+          props: {
+            innerHTML: "Tên"
+          }
+        }, {
+          tag: "input",
+          "class": ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
+          on: {
+            change: function change(event) {
+              if (self.$view.alias.value === "" || self.$view.aliasErorr.classList.contains("hasErrorElement")) {
+                self.$view.alias.value = createAlias(this.value);
+                self.$view.alias.dispatchEvent(new Event("input"));
+              }
+            },
+            blur: function blur() {
+              self.$view.saveDataCurrent();
+            }
+          }
+        }]
+      }]
+    }, {
+      tag: "div",
+      "class": "b-article__headerLayout-edit",
+      props: {
+        id: "article__header"
+      },
+      child: [{
+        tag: "div",
+        "class": ["b-article__headerSide", "m-article__headerSide__nav"],
+        props: {
+          id: "headerSide__nav"
+        },
+        child: [{
+          tag: "ul",
+          "class": "b-breadCrumbs__items",
+          child: [{
+            tag: "div",
+            "class": "pizo-new-catergory-container",
+            child: [{
+              tag: "div",
+              "class": "pizo-new-category-container-alias-active",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-category-container-alias",
+                child: [{
+                  tag: "div",
+                  "class": "pizo-new-category-container-alias-container",
+                  child: [{
+                    tag: "span",
+                    "class": "pizo-new-category-container-alias-container-label",
+                    props: {
+                      innerHTML: "Alias"
+                    },
+                    child: [{
+                      tag: "span",
+                      "class": "pizo-new-realty-location-detail-row-label-important",
+                      props: {
+                        innerHTML: "*"
+                      }
+                    }]
+                  }, {
+                    tag: "input",
+                    "class": ["pizo-new-category-container-alias-container-input", "pizo-new-realty-dectruct-input"],
+                    on: {
+                      input: function input(event) {
+                        var parent = this.parentNode.parentNode;
+
+                        if (this.value == "") {
+                          if (!parent.classList.contains("hasErrorElement")) parent.classList.add("hasErrorElement");
+                          if (!parent.classList.contains("invalid-error")) parent.classList.add("invalid-error");
+                        } else {
+                          if (parent.classList.contains("invalid-error")) parent.classList.remove("invalid-error");
+                        }
+
+                        if (listParent.items.check[this.value] !== undefined && self.$view.rowSelected.data.original.alias !== this.value) {
+                          if (!parent.classList.contains("hasErrorElement")) parent.classList.add("hasErrorElement");
+                          if (!parent.classList.contains("used-error")) parent.classList.add("used-error");
+                        } else {
+                          if (parent.classList.contains("used-error")) parent.classList.remove("used-error");
+                        }
+
+                        if (!parent.classList.contains("used-error") && !parent.classList.contains("invalid-error") && parent.classList.contains("hasErrorElement")) parent.classList.remove("hasErrorElement");
+                      },
+                      keypress: function keypress(event) {
+                        allowNumbersOnly(event);
+                      },
+                      blur: function blur() {
+                        self.$view.saveDataCurrent();
+                      }
+                    }
+                  }]
+                }, {
+                  tag: "span",
+                  "class": ["pizo-new-realty-location-detail-row-label-important", "label-used-error"],
+                  props: {
+                    innerHTML: "Alias không có sẳn để sử dụng"
+                  }
+                }, {
+                  tag: "span",
+                  "class": ["pizo-new-realty-location-detail-row-label-important", "label-invalid-error"],
+                  props: {
+                    innerHTML: "Alias không thể để trống"
+                  }
+                }]
+              }, {
+                tag: "div",
+                "class": "pizo-new-state-publish",
+                child: [{
+                  tag: "div",
+                  "class": "pizo-new-state-publish-container",
+                  child: [{
+                    tag: "span",
+                    "class": "pizo-new-category-container-publish-container-label",
+                    props: {
+                      innerHTML: "Xuất bản"
+                    }
+                  }, active]
+                }]
+              }]
+            }, {
+              tag: "div",
+              "class": "pizo-new-state-selectbox",
+              child: [{
+                tag: "div",
+                "class": "pizo-new-state-selectbox-container",
+                child: [{
+                  tag: "span",
+                  "class": "pizo-new-state-selectbox-container-label",
+                  props: {
+                    innerHTML: "Danh mục cha"
+                  }
+                }, listParent]
+              }]
+            }]
+          }]
+        }]
+      }]
+    }, {
+      tag: "div",
+      "class": ["b-article__wrapper", "os-host", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
+      child: [editor]
+    }, {
+      tag: "div",
+      "class": ["b-article__wrapper", "os-host-bottom", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
+      child: [editorBottom]
+    }]
+  });
+
+  var containerPreview = this.$view.editViewContent();
+  this.$view.containerEditView = containerEditView;
+  this.$view.containerPreview = containerPreview;
   this.$view.addChild(EditHelpContainer_({
     tag: "div",
     "class": ["b-workZone__side", "m-workZone__side__article"],
@@ -84693,164 +85057,7 @@ function EditHelpContainer_EditHelpContainer() {
       props: {
         id: "workZone_article__content"
       },
-      child: [{
-        tag: "div",
-        "class": "b-article",
-        child: [{
-          tag: "div",
-          "class": "pizo-new-category-container-name",
-          child: [{
-            tag: "div",
-            "class": "pizo-new-category-container-name-container",
-            child: [{
-              tag: "span",
-              "class": "pizo-new-category-container-name-container-label",
-              props: {
-                innerHTML: "Tên"
-              }
-            }, {
-              tag: "input",
-              "class": ["pizo-new-category-container-name-container-input", "pizo-new-realty-dectruct-input"],
-              on: {
-                change: function change(event) {
-                  if (self.$view.alias.value === "" || self.$view.aliasErorr.classList.contains("hasErrorElement")) {
-                    self.$view.alias.value = createAlias(this.value);
-                    self.$view.alias.dispatchEvent(new Event("input"));
-                  }
-                },
-                blur: function blur() {
-                  self.$view.saveDataCurrent();
-                }
-              }
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": "b-article__headerLayout-edit",
-          props: {
-            id: "article__header"
-          },
-          child: [{
-            tag: "div",
-            "class": ["b-article__headerSide", "m-article__headerSide__nav"],
-            props: {
-              id: "headerSide__nav"
-            },
-            child: [{
-              tag: "ul",
-              "class": "b-breadCrumbs__items",
-              child: [{
-                tag: "div",
-                "class": "pizo-new-catergory-container",
-                child: [{
-                  tag: "div",
-                  "class": "pizo-new-category-container-alias-active",
-                  child: [{
-                    tag: "div",
-                    "class": "pizo-new-category-container-alias",
-                    child: [{
-                      tag: "div",
-                      "class": "pizo-new-category-container-alias-container",
-                      child: [{
-                        tag: "span",
-                        "class": "pizo-new-category-container-alias-container-label",
-                        props: {
-                          innerHTML: "Alias"
-                        },
-                        child: [{
-                          tag: "span",
-                          "class": "pizo-new-realty-location-detail-row-label-important",
-                          props: {
-                            innerHTML: "*"
-                          }
-                        }]
-                      }, {
-                        tag: "input",
-                        "class": ["pizo-new-category-container-alias-container-input", "pizo-new-realty-dectruct-input"],
-                        on: {
-                          input: function input(event) {
-                            var parent = this.parentNode.parentNode;
-
-                            if (this.value == "") {
-                              if (!parent.classList.contains("hasErrorElement")) parent.classList.add("hasErrorElement");
-                              if (!parent.classList.contains("invalid-error")) parent.classList.add("invalid-error");
-                            } else {
-                              if (parent.classList.contains("invalid-error")) parent.classList.remove("invalid-error");
-                            }
-
-                            if (listParent.items.check[this.value] !== undefined && self.$view.rowSelected.data.original.alias !== this.value) {
-                              if (!parent.classList.contains("hasErrorElement")) parent.classList.add("hasErrorElement");
-                              if (!parent.classList.contains("used-error")) parent.classList.add("used-error");
-                            } else {
-                              if (parent.classList.contains("used-error")) parent.classList.remove("used-error");
-                            }
-
-                            if (!parent.classList.contains("used-error") && !parent.classList.contains("invalid-error") && parent.classList.contains("hasErrorElement")) parent.classList.remove("hasErrorElement");
-                          },
-                          keypress: function keypress(event) {
-                            allowNumbersOnly(event);
-                          },
-                          blur: function blur() {
-                            self.$view.saveDataCurrent();
-                          }
-                        }
-                      }]
-                    }, {
-                      tag: "span",
-                      "class": ["pizo-new-realty-location-detail-row-label-important", "label-used-error"],
-                      props: {
-                        innerHTML: "Alias không có sẳn để sử dụng"
-                      }
-                    }, {
-                      tag: "span",
-                      "class": ["pizo-new-realty-location-detail-row-label-important", "label-invalid-error"],
-                      props: {
-                        innerHTML: "Alias không thể để trống"
-                      }
-                    }]
-                  }, {
-                    tag: "div",
-                    "class": "pizo-new-state-publish",
-                    child: [{
-                      tag: "div",
-                      "class": "pizo-new-state-publish-container",
-                      child: [{
-                        tag: "span",
-                        "class": "pizo-new-category-container-publish-container-label",
-                        props: {
-                          innerHTML: "Xuất bản"
-                        }
-                      }, active]
-                    }]
-                  }]
-                }, {
-                  tag: "div",
-                  "class": "pizo-new-state-selectbox",
-                  child: [{
-                    tag: "div",
-                    "class": "pizo-new-state-selectbox-container",
-                    child: [{
-                      tag: "span",
-                      "class": "pizo-new-state-selectbox-container-label",
-                      props: {
-                        innerHTML: "Danh mục cha"
-                      }
-                    }, listParent]
-                  }]
-                }]
-              }]
-            }]
-          }]
-        }, {
-          tag: "div",
-          "class": ["b-article__wrapper", "os-host", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
-          child: [editor]
-        }, {
-          tag: "div",
-          "class": ["b-article__wrapper", "os-host-bottom", "os-theme-dark", "os-host-resize-disabled", "os-host-scrollbar-horizontal-hidden", "os-host-overflow", "os-host-overflow-y", "os-host-transition"],
-          child: [editorBottom]
-        }]
-      }]
+      child: [containerEditView, containerPreview]
     }]
   }));
   ModuleDatabase["a" /* default */].getModule("helps").load({
@@ -84892,6 +85099,7 @@ function EditHelpContainer_EditHelpContainer() {
 
     self.$view.mTable.addInputSearch(input);
   });
+  this.$view.tabContainer = tabContainer;
   this.$view.name = EditHelpContainer_$('input.pizo-new-category-container-name-container-input.pizo-new-realty-dectruct-input', this.$view);
   this.$view.alias = EditHelpContainer_$('input.pizo-new-category-container-alias-container-input.pizo-new-realty-dectruct-input', this.$view);
   this.$view.listParent = listParent;
@@ -84902,6 +85110,53 @@ function EditHelpContainer_EditHelpContainer() {
 
 Object.defineProperties(EditHelpContainer_EditHelpContainer.prototype, Object.getOwnPropertyDescriptors(component_BaseView.prototype));
 EditHelpContainer_EditHelpContainer.prototype.constructor = EditHelpContainer_EditHelpContainer;
+
+EditHelpContainer_EditHelpContainer.prototype.enableEditViewContent = function () {
+  this.containerPreview.style.display = "none";
+  this.containerEditView.style.display = "";
+  this.tabContainer.style.pointerEvents = "none";
+  this.enableEditting = true;
+};
+
+EditHelpContainer_EditHelpContainer.prototype.disableEditViewContent = function () {
+  this.containerPreview.style.display = "";
+  this.containerEditView.style.display = "none";
+  this.tabContainer.style.pointerEvents = "";
+  this.enableEditting = false;
+  var row = this.getElementsByClassName("choice-event-category");
+  var data;
+
+  if (row.length === 1) {
+    row = row[0];
+  }
+
+  data = row.data;
+
+  if (data) {
+    this.titleLabel.innerHTML = data.original.title;
+    var text = data.original.fulltext;
+
+    if (data.original.related) {
+      text += "<div style='border: 1px solid;'></div>" + data.original.related;
+    }
+
+    text += "<div style='width:100%;height:150px'></div>";
+    this.containerView.innerHTML = text;
+    var location = "";
+    var tempElement = row;
+
+    while (tempElement && tempElement.tagName != "DIV") {
+      if (location !== "") {
+        location = "<span> > </span>" + location;
+      }
+
+      location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
+      tempElement = tempElement.getParentNode();
+    }
+
+    if (location !== "") this.locationLabel.innerHTML = location;
+  }
+};
 
 EditHelpContainer_EditHelpContainer.prototype.functionClickMore = function (event, me, index, parent, data, row) {
   var self = this;
@@ -84967,8 +85222,30 @@ EditHelpContainer_EditHelpContainer.prototype.functionClickDetail = function (ev
   var arr = this.getElementsByClassName("choice-event-category");
   if (this.alias.parentNode.parentNode.classList.contains("hasErrorElement") && arr.length > 0) return;
   if (this.saveDataCurrent(row) === true) return;
-  row.indexDetail = index;
-  row.parentDetail = parent;
+  this.titleLabel.innerHTML = data.original.title;
+  var text = data.original.fulltext;
+
+  if (data.original.related) {
+    text += "<div style='border: 1px solid;'></div>";
+    text += "<h3>Bài liên quan</h3>";
+    text += data.original.related;
+  }
+
+  text += "<div style='width:100%;height:150px'></div>";
+  this.containerView.innerHTML = text;
+  var location = "";
+  var tempElement = row;
+
+  while (tempElement && tempElement.tagName != "DIV") {
+    if (location !== "") {
+      location = "<span> > </span>" + location;
+    }
+
+    location = "<a href='./' id='x64" + tempElement.data.original.id + "'>" + tempElement.data.original.title + "</a>" + location;
+    tempElement = tempElement.getParentNode();
+  }
+
+  this.locationLabel.innerHTML = location;
   this.rowSelected = row;
   row.classList.add("choice-event-category");
   this.setDataTitle(data.original);
@@ -84998,12 +85275,7 @@ EditHelpContainer_EditHelpContainer.prototype.saveDataCurrent = function (row) {
   }
 
   if (arr.data) {
-    var rowSelected = this.editView(value, arr.data, arr.parentDetail, arr.indexDetail);
-
-    if (!isRemove) {
-      rowSelected.parentDetail = arr.parentDetail;
-      rowSelected.indexDetail = arr.indexDetail;
-    }
+    this.editView(value, arr.data, arr);
   }
 
   this.listParent.updateItemList();
@@ -85258,11 +85530,103 @@ EditHelpContainer_EditHelpContainer.prototype.addDB = function (value) {
   return promiseAdd;
 };
 
-EditHelpContainer_EditHelpContainer.prototype.edit = function (data, parent, index) {
-  var self = this;
+EditHelpContainer_EditHelpContainer.prototype.edit = function (data, parent, index) {};
+
+EditHelpContainer_EditHelpContainer.prototype.editViewContent = function () {
+  var location = EditHelpContainer_({
+    tag: "span",
+    "class": "b-breadCrumbs__location_content"
+  });
+
+  var title = EditHelpContainer_({
+    tag: "li",
+    "class": "b-breadCrumbs__item",
+    props: {
+      innerHTML: "Introduction"
+    }
+  });
+
+  var containerView = EditHelpContainer_({
+    tag: "div",
+    "class": ["cke_editable", "cke_editable_themed", "cke_contents_ltr", "cke_show_borders"],
+    props: {
+      contenteditable: true,
+      spellcheck: false
+    }
+  });
+
+  var temp = EditHelpContainer_({
+    tag: "div",
+    "class": ["b-article", "b-workZone__layout_helpcontainer_view"],
+    child: [{
+      tag: "div",
+      "class": "b-article__headerLayout",
+      props: {
+        id: "article__header"
+      },
+      child: [{
+        tag: "div",
+        "class": ["b-article__headerSide", "m-article__headerSide__nav"],
+        props: {
+          id: "headerSide__nav"
+        },
+        child: [{
+          tag: "ul",
+          "class": "b-breadCrumbs__items",
+          child: [title]
+        }, {
+          tag: "div",
+          "class": "b-breadCrumbs__location",
+          child: [{
+            tag: "span",
+            "class": "b-breadCrumbs__location_title",
+            props: {
+              innerHTML: "Bạn ở đây "
+            }
+          }, location]
+        }]
+      }, {
+        tag: "div",
+        "class": ["b-article__headerSide", "m-article__headerSide__buttons"],
+        props: {
+          id: "headerSide__buttons"
+        },
+        child: [{
+          tag: "ul",
+          "class": "b-controlButtons__items",
+          child: [{
+            tag: "li",
+            "class": ["b-controlButtons__item", "m-controlButtons__item__print"],
+            on: {
+              click: function click() {
+                Dom.printElement(self.$view.containerView.parentNode);
+              }
+            },
+            child: [{
+              tag: "i",
+              "class": "material-icons",
+              props: {
+                innerHTML: "print"
+              }
+            }]
+          }]
+        }]
+      }]
+    }, {
+      tag: "div",
+      "class": "container-content-information",
+      child: [containerView]
+    }]
+  });
+
+  this.containerView = containerView;
+  this.titleLabel = title;
+  this.locationLabel = location;
+  return temp;
 };
 
-EditHelpContainer_EditHelpContainer.prototype.editView = function (value, data, parent, index) {
+EditHelpContainer_EditHelpContainer.prototype.editView = function (value, data, elementParam) {
+  var parent = elementParam.getParentNode();
   var isChangeView = false;
 
   if (data.original.id != undefined) {
@@ -85328,8 +85692,6 @@ EditHelpContainer_EditHelpContainer.prototype.editView = function (value, data, 
       maxWidth: "21px"
     }
   };
-  var indexOF = index,
-      element = parent;
 
   if (isChangeView === true) {
     var element;
@@ -85339,12 +85701,10 @@ EditHelpContainer_EditHelpContainer.prototype.editView = function (value, data, 
         break;
       }
     }
-    var indexTemp = parent.childrenNodes[index];
-    indexOF = parent.changeParent(index, element);
-    indexTemp.parentDetail = element;
-    indexTemp.indexDetail = indexOF;
+    var index = parent.childrenNodes.indexOf(elementParam);
+    parent.changeParent(index, element);
     setTimeout(function () {
-      indexTemp.scrollIntoView({
+      elementParam.scrollIntoView({
         behavior: "smooth",
         block: "center",
         inline: "center"
@@ -85352,7 +85712,7 @@ EditHelpContainer_EditHelpContainer.prototype.editView = function (value, data, 
     }, 100);
   }
 
-  var temp = element.updateRow(data, indexOF, true);
+  var temp = elementParam.updateCurrentRow(data);
   this.listParent.updateItemList();
   return temp;
 };
@@ -85390,11 +85750,11 @@ EditHelpContainer_EditHelpContainer.prototype.editContentAll = function () {
 
 EditHelpContainer_EditHelpContainer.prototype.updateChild = function (child) {
   var promiseAll = [];
-  var dataUpdate = {};
   var isUpdate;
 
   for (var i = 0; i < child.length; i++) {
     isUpdate = false;
+    var dataUpdate = {};
     dataUpdate.id = child[i].original.id;
 
     if (child[i].original.isTitle === true) {
@@ -85462,7 +85822,7 @@ EditHelpContainer_EditHelpContainer.prototype["delete"] = function (data, parent
 
 EditHelpContainer_EditHelpContainer.prototype.deleteView = function (parent, index) {
   var self = this;
-  if (this.rowSelected && this.rowSelected.parentDetail === parent && this.rowSelected.indexDetail > index) this.rowSelected.indexDetail--;
+  if (this.rowSelected) this.rowSelected.indexDetail--;
   parent.dropRow(index).then(function () {
     self.resetChoice();
     self.listParent.updateItemList();
@@ -85901,23 +86261,21 @@ ListEditHelp_ListHelp.prototype.getView = function () {
           "class": ["pizo-list-realty-button-quit", "pizo-list-realty-button-element"],
           on: {
             click: function click(evt) {
-              if (!containerHelp.closeEditPage()) {
-                self.$view.selfRemove();
-                var arr = self.parent.body.getAllChild();
-                self.parent.body.activeFrame(arr[arr.length - 1]);
-              } else {
-                var arr = self.$view.getElementsByClassName("pizo-list-realty-button-add");
-
-                for (var i = 0; i < arr.length; i++) {
-                  arr[i].style.display = "";
-                }
-
-                var arr = self.$view.getElementsByClassName("pizo-list-realty-button-edit-page");
-
-                for (var i = 0; i < arr.length; i++) {
-                  arr[i].style.display = "none";
-                }
-              }
+              containerHelp.disableEditViewContent(); // if (!containerHelp.closeEditPage()) {
+              //     self.$view.selfRemove();
+              //     var arr = self.parent.body.getAllChild();
+              //     self.parent.body.activeFrame(arr[arr.length - 1]);
+              // } else {
+              //     var arr = self.$view.getElementsByClassName("pizo-list-realty-button-add");
+              //     for (var i = 0; i < arr.length; i++) {
+              //         arr[i].style.display = "";
+              //     }
+              //     var arr = self.$view.getElementsByClassName("pizo-list-realty-button-edit-page");
+              //     for (var i = 0; i < arr.length; i++) {
+              //         arr[i].style.display = "none";
+              //     }
+              //     containerHelp.disableEditViewContent();
+              // }
             }
           },
           child: ['<span>' + "Đóng" + '</span>']
@@ -85939,6 +86297,15 @@ ListEditHelp_ListHelp.prototype.getView = function () {
             }
           },
           child: ['<span>' + "Thêm" + '</span>']
+        }, {
+          tag: "button",
+          "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
+          on: {
+            click: function click(evt) {
+              containerHelp.enableEditViewContent();
+            }
+          },
+          child: ['<span>' + "Sửa" + '</span>']
         }, {
           tag: "button",
           "class": ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],

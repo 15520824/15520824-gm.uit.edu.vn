@@ -40,13 +40,11 @@ function HelpContainer() {
                 if (self.$view.checkAlias[window.exttask]) {
                     if (window.exttask) {
                         var temp = document.getElementById("x86" + self.$view.checkAlias[window.exttask].id);
-                        console.log("xxxxxxxxxxxxxx", window.exttask, temp);
                         window.addHref = window.exttask;
                         if (temp) {
                             temp.click();
                             temp.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
                             clearInterval(x);
-                            console.log("xxxxxxxxxxxxxx", temp);
                         }
                     }
                 }

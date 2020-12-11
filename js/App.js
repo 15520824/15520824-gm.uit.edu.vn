@@ -329,7 +329,8 @@ App.prototype.getPermisionOpenPage = function() {
                         indexTemp = 0;
                     else
                         indexTemp += "}";
-
+                    if (moduleDatabase.checkPermission[indexTemp] == undefined)
+                        moduleDatabase.checkPermission[indexTemp] = [];
                     moduleDatabase.checkPermission[indexTemp].push(permissionTemp);
                 }
             }

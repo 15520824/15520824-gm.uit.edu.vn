@@ -46,6 +46,7 @@ MapRealty.prototype.getView = function() {
     }
 
     var mapView = new MapView();
+    mapView.setLabelUnder(false);
     mapView.activePlanningMap();
     mapView.setCurrentLocation();
     mapView.setMoveMarkerWithCurrent(false);
@@ -160,7 +161,7 @@ MapRealty.prototype.getView = function() {
         this.checkWard = moduleDatabase.getModule("wards").getLibary("id");
         this.checkequipment = moduleDatabase.getModule("equipments").getLibary("id");
         this.checkJuridical = moduleDatabase.getModule("juridicals").getLibary("id");
-        this.checkTypeHouse = moduleDatabase.getModule("type_activehouses").getList("id");
+        this.checkTypeHouse = moduleDatabase.getModule("type_activehouses").getLibary("id");
         this.$view.addChild(_({
             tag: "div",
             class: ["pizo-list-plan-main"],
@@ -711,15 +712,14 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                         {
                                                                             tag: "li",
                                                                             class: ["sc-cLQEGU-2", "cllLJF"],
-                                                                            style: {
-                                                                                display: "none"
+                                                                            style:{
+                                                                                display:"none"
                                                                             },
                                                                             child: [{
                                                                                 tag: "button",
                                                                                 class: ["sc-bMVAic", "gpVNOz"],
                                                                                 on: {
                                                                                     click: function() {
-                                                                                        console.log(self)
                                                                                         self.requestEdit({ original: data });
                                                                                         modal.selfRemove();
                                                                                     }
@@ -748,6 +748,9 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                         {
                                                                             tag: "li",
                                                                             class: ["sc-cLQEGU-3", "cllLJF"],
+                                                                            style:{
+                                                                                display:"none"
+                                                                            },
                                                                             child: [{
                                                                                 tag: "button",
                                                                                 class: ["sc-bMVAic", "gpVNOz"],
@@ -1086,12 +1089,38 @@ MapRealty.prototype.modalLargeRealty = function(data) {
     setTimeout(function() {
         modal.focus();
     }, 100);
-
+    console.log(moduleDatabase.checkPermission)
     var requestEdit = $("li.sc-cLQEGU-2", modal);
     var realEdit = $("li.sc-cLQEGU-3", modal);
-    if (false) {
-        requestEdit.style.display = "";
+    var isEdit = false;
+    var isRequest = false;
+    Loop: for(var param in moduleDatabase.checkPermission)
+    {
+        var object = JSON.parse(param);
+        for(var objectParam in object)
+        {
+            if(object[objectParam]!==data[objectParam])
+            {
+                continue Loop;
+            }
+        }
+        if(moduleDatabase.checkPermission[param].indexOf(58)!==-1)
+        {
+            isEdit = true;
+        }
+        if(moduleDatabase.checkPermission[param].indexOf(68)!==-1)
+        {
+            isRequest = true;
+        }
+    }
+    if (isEdit) {
+        realEdit.style.display = "";
+    } else {
         realEdit.style.display = "none";
+        if (isRequest) {
+            requestEdit.style.display = "";
+        } else
+            requestEdit.style.display = "none";
     }
 
     return modal;
@@ -1450,14 +1479,21 @@ MapRealty.prototype.contactItem = function(data) {
                         tag: "span",
                         class: "pizo-new-realty-contact-item-phone-input",
                         style: {
-                            pointerEvents: "unset"
+                            pointerEvents: "unset",
+                            cursor: "pointer"
                         },
                         props: {
                             type: "number"
                         },
                         on: {
                             click: function(event) {
-                                this.innerText = this.realValue;
+                                if (this.isCheck) {
+                                    this.innerText = "xxxxxxxxxx";
+                                    this.isCheck = false;
+                                } else {
+                                    this.innerText = this.realValue;
+                                    this.isCheck = true;
+                                }
                             }
                         }
                     },
@@ -2655,7 +2691,6 @@ MapRealty.prototype.detailHouse = function(data) {
     }
     return temp;
 }
-
 
 MapRealty.prototype.itemMap = function(marker) {
     var self = this;

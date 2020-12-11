@@ -226,6 +226,10 @@ PlanningInformation.prototype.getView = function() {
                             class: ["pizo-list-realty-button-add", "pizo-list-realty-button-element"],
                             on: {
                                 click: function(evt) {
+                                    self.removeAllSelect();
+                                    if (self.editPolygon !== undefined) {
+                                        self.editPolygon.toInActive(self);
+                                    }
                                     self.saveCurrentDataMap();
                                 }
                             },

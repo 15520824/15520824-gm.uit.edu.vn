@@ -123,3 +123,38 @@ input.pizo-new-realty-location-detail-row-menu {
     padding: 0.4286em;
     width: calc(50% - 2.0714rem);
 }
+
+.labels .arrow {
+    border-top-color: #000000;
+    border-right-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-width: 5px 5px 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-style: solid;
+    height: 0;
+    position: absolute;
+    width: 0;
+    display: none;
+}
+
+.labels .inner {
+    background-color: #fff;
+    border-radius: 5px;
+    color: #000;
+    min-width: 50px;
+    padding: 3px 8px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 2px 2px 2px #7a7a7a;
+}
+
+.labels {
+    margin-top: -3px;
+    padding: 5px;
+    position: absolute;
+    visibility: visible;
+    z-index: 1030;
+}

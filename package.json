@@ -11,15 +11,15 @@
   "author": "Pham Quoc Du Thien",
   "license": "ISC",
   "dependencies": {
-    "absol": "^1.15.10",
-    "absol-acomp": "^0.9.49",
-    "ckeditor4": "^4.15.0",
+    "absol": "^1.15.20",
+    "absol-acomp": "^0.9.55",
+    "ckeditor4": "^4.15.1",
     "mpot-merge-tool": "github:duthienkt/mpot-merge-tool#master"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "babel-loader": "^8.0.6",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "babel-loader": "^8.2.2",
     "babel-minify-webpack-plugin": "^0.3.1",
     "css-loader": "^2.1.1",
     "raw-loader": "^2.0.0",

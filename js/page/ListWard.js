@@ -284,7 +284,6 @@ ListWard.prototype.getDataParam = function() {
 }
 
 ListWard.prototype.formatDataRow = function(data) {
-    return [];
     var temp = [];
     var check = [];
     var k = 0;
