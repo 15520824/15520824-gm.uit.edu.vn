@@ -89,7 +89,7 @@ function EditHelpContainer() {
     var editorBottom = this.$view.itemEditRelated();
 
     var listParent = _({
-        tag: "selectmenu",
+        tag: "selecttreemenu",
         class: ["pizo-new-state-selectbox-container-input", "pizo-new-realty-dectruct-input"],
         style: {
             backGroundColor: ""
@@ -660,20 +660,40 @@ EditHelpContainer.prototype.formatDataRowList = function(data) {
     return temp;
 }
 
-EditHelpContainer.prototype.formatDataRowChoice = function() {
-    var self = this;
-    var array = [{ text: "Danh mục cao nhất", value: 0 }];
-    var check = [];
-    var dataParent = self.getDataCurrent();
-    for (var i = 0; i < dataParent.length; i++) {
-        if (dataParent[i].id == this.idCurrent)
+EditHelpContainer.prototype.checkarrayChildChoice = function(id, check) {
+    if (check[id] === undefined)
+        return [];
+    for (var i = 0; i < check[id].length; i++) {
+        if (id == this.idCurrent)
             continue;
-        array.push({ text: dataParent[i].title, value: parseFloat(dataParent[i].id) });
-        if (self.data == undefined)
-            check[dataParent[i].alias] = dataParent[i];
+        check[id][i].items = this.checkarrayChildChoice(check[id][i].value, check);
     }
-    array.check = check;
-    return array;
+    return check[id];
+}
+
+EditHelpContainer.prototype.formatDataRowChoice = function() {
+    var temp = [{ text: "Danh mục cao nhất", value: 0 }];
+    var check = [];
+    var result;
+    temp.check = [];
+    var data = this.getDataCurrent();
+    for (var i = 0; i < data.length; i++) {
+        temp.check[data[i].alias] = data[i];
+        if (data[i].id == this.idCurrent)
+            continue;
+        result = { text: data[i].title, value: parseFloat(data[i].id) };
+        if (data[i].parent_id != 0) {
+            if (check[data[i].parent_id] === undefined)
+                check[data[i].parent_id] = [];
+            check[data[i].parent_id].push(result);
+        } else {
+            temp.push(result);
+        }
+    }
+    for (var i = 0; i < temp.length; i++) {
+        temp[i].items = this.checkarrayChildChoice(temp[i].value, check);
+    }
+    return temp;
 }
 
 EditHelpContainer.prototype.getDataCurrent = function() {

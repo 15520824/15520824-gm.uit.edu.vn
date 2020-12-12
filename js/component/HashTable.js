@@ -23,16 +23,32 @@ HashTable.prototype.functionSetHash = function(data, dataParent = "") {
             else
                 value = "";
             var stringCheck = m + dataParent;
-            for (var j = 0; j < value.length; j++) {
-                tempCharater = value[j].toLocaleLowerCase();
-                if (hash[tempCharater] === undefined) {
-                    hash[tempCharater] = [];
+            if (Array.isArray(value)) {
+                for (var k = 0; k < value.length; k++) {
+                    for (var j = 0; j < value[k].length; j++) {
+                        tempCharater = value[k][j].toLocaleLowerCase();
+                        if (hash[tempCharater] === undefined) {
+                            hash[tempCharater] = [];
+                        }
+                        if (hash[tempCharater][stringCheck] == undefined)
+                            hash[tempCharater][stringCheck] = [];
+                        if (hash[tempCharater][stringCheck][i] === undefined)
+                            hash[tempCharater][stringCheck][i] = [];
+                        hash[tempCharater][stringCheck][i].push(j);
+                    }
                 }
-                if (hash[tempCharater][stringCheck] == undefined)
-                    hash[tempCharater][stringCheck] = [];
-                if (hash[tempCharater][stringCheck][i] === undefined)
-                    hash[tempCharater][stringCheck][i] = [];
-                hash[tempCharater][stringCheck][i].push(j);
+            } else {
+                for (var j = 0; j < value.length; j++) {
+                    tempCharater = value[j].toLocaleLowerCase();
+                    if (hash[tempCharater] === undefined) {
+                        hash[tempCharater] = [];
+                    }
+                    if (hash[tempCharater][stringCheck] == undefined)
+                        hash[tempCharater][stringCheck] = [];
+                    if (hash[tempCharater][stringCheck][i] === undefined)
+                        hash[tempCharater][stringCheck][i] = [];
+                    hash[tempCharater][stringCheck][i].push(j);
+                }
             }
             if (data[m].getRowMerge)
                 checkData[stringCheck] = data[m].getRowMerge;

@@ -323,7 +323,7 @@ ListRealty.prototype.getView = function() {
                     self.mTable.deleteColumn(0);
                     self.mTable.insertColumn(1, 0);
                     this.currentMerge = true;
-              
+
                 }
             }
         },
@@ -451,63 +451,52 @@ ListRealty.prototype.getView = function() {
         var isDelete = false;
         var districtid;
         var stateid;
-        Loop: for(var param in moduleDatabase.checkPermission)
-        {
+        Loop: for (var param in moduleDatabase.checkPermission) {
             var object = JSON.parse(param);
             var address = self.checkAddress[data.original.addressid];
             districtid = undefined;
             stateid = undefined;
-            if(address.wardid)
-            districtid = self.checkWard[address.wardid].districtid;
-            if(districtid)
-            stateid = self.checkDistrict[districtid].stateid;
-            for(var objectParam in object)
-            {
-                if(objectParam === "stateid")
-                {
-                    if(stateid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(objectParam === "districtid")
-                {
-                    if(districtid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(object[objectParam]!==address[objectParam])
-                {
+            if (address.wardid)
+                districtid = self.checkWard[address.wardid].districtid;
+            if (districtid)
+                stateid = self.checkDistrict[districtid].stateid;
+            for (var objectParam in object) {
+                if (objectParam === "stateid") {
+                    if (stateid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (objectParam === "districtid") {
+                    if (districtid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (object[objectParam] !== address[objectParam]) {
                     continue Loop;
                 }
             }
-            if(moduleDatabase.checkPermission[param].indexOf(58)!==-1)
-            {
+            if (moduleDatabase.checkPermission[param].indexOf(58) !== -1) {
                 isEdit = true;
             }
-            if(moduleDatabase.checkPermission[param].indexOf(59)!==-1)
-            {
+            if (moduleDatabase.checkPermission[param].indexOf(59) !== -1) {
                 isDelete = true;
             }
-            if(moduleDatabase.checkPermission[param].indexOf(67)!==-1)
-            {
+            if (moduleDatabase.checkPermission[param].indexOf(67) !== -1) {
                 isDetail = true;
             }
-            if(moduleDatabase.checkPermission[param].indexOf(68)!==-1)
-            {
+            if (moduleDatabase.checkPermission[param].indexOf(68) !== -1) {
                 isRequest = true;
             }
         }
         docTypeMemuProps = {
-            items:[]
+            items: []
         }
-        if(isEdit)
-        docTypeMemuProps.items.push({
-            text: 'Sửa',
-            icon: 'span.mdi.mdi-text-short',
-            value: 0,
-        });
-        else
-        {
-            if(isRequest)
-            {
+        if (isEdit)
+            docTypeMemuProps.items.push({
+                text: 'Sửa',
+                icon: 'span.mdi.mdi-text-short',
+                value: 0,
+            });
+        else {
+            if (isRequest) {
                 docTypeMemuProps.items.push({
                     text: 'Yêu cầu chỉnh sửa',
                     icon: 'span.mdi.mdi-text-short',
@@ -515,18 +504,18 @@ ListRealty.prototype.getView = function() {
                 });
             }
         }
-        if(isDelete)
-        docTypeMemuProps.items.push({
-            text: 'Xóa',
-            icon: 'span.mdi.mdi-text',
-            value: 1,
-        });
-        if(isDetail)
-        docTypeMemuProps.items.push({
-            text: 'Chi tiết',
-            icon: 'span.mdi.mdi-text',
-            value: 2,
-        });
+        if (isDelete)
+            docTypeMemuProps.items.push({
+                text: 'Xóa',
+                icon: 'span.mdi.mdi-text',
+                value: 1,
+            });
+        if (isDetail)
+            docTypeMemuProps.items.push({
+                text: 'Chi tiết',
+                icon: 'span.mdi.mdi-text',
+                value: 2,
+            });
         token = absol.QuickMenu.show(me, docTypeMemuProps, [3, 4], function(menuItem) {
             switch (menuItem.value) {
                 case 0:
@@ -664,6 +653,7 @@ ListRealty.prototype.getView = function() {
                 disabled: true
             }
         ];
+        header.isSaveTheme = "#19001080";
         self.mTable = new tableView(header, [], true, true, 1);
         self.mTable.addInputSearchHeader();
         var arr = [];
@@ -754,45 +744,38 @@ ListRealty.prototype.formatDataRow = function(data) {
     for (var i = 0; i < data.length; i++) {
         isAvailable = false;
         isCensorshipFalse = false;
-        Loop: for(var param in moduleDatabase.checkPermission)
-        {
+        Loop: for (var param in moduleDatabase.checkPermission) {
             var object = JSON.parse(param);
             var address = self.checkAddress[data[i].addressid];
             districtid = undefined;
             stateid = undefined;
-            if(address.wardid)
-            districtid = self.checkWard[address.wardid].districtid;
-            if(districtid)
-            stateid = self.checkDistrict[districtid].stateid;
-            for(var objectParam in object)
-            {
-                if(objectParam === "stateid")
-                {
-                    if(stateid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(objectParam === "districtid")
-                {
-                    if(districtid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(object[objectParam]!==address[objectParam])
-                {
+            if (address.wardid)
+                districtid = self.checkWard[address.wardid].districtid;
+            if (districtid)
+                stateid = self.checkDistrict[districtid].stateid;
+            for (var objectParam in object) {
+                if (objectParam === "stateid") {
+                    if (stateid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (objectParam === "districtid") {
+                    if (districtid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (object[objectParam] !== address[objectParam]) {
                     continue Loop;
                 }
             }
-            if(moduleDatabase.checkPermission[param].indexOf(56)!==-1)
-            {
+            if (moduleDatabase.checkPermission[param].indexOf(56) !== -1) {
                 isAvailable = true;
             }
-            if(moduleDatabase.checkPermission[param].indexOf(63)!==-1)
-            {
+            if (moduleDatabase.checkPermission[param].indexOf(63) !== -1) {
                 isCensorshipFalse = true;
             }
         }
-        if(isAvailable == false)
+        if (isAvailable == false)
             continue;
-        var result = this.getDataRow(data[i],isCensorshipFalse);
+        var result = this.getDataRow(data[i], isCensorshipFalse);
         result.original = data[i];
         if (check[data[i].parent_id] !== undefined) {
             if (check[data[i].parent_id].child === undefined)
@@ -805,7 +788,7 @@ ListRealty.prototype.formatDataRow = function(data) {
     return temp;
 }
 
-ListRealty.prototype.getDataRow = function(data,isCensorshipFalse) {
+ListRealty.prototype.getDataRow = function(data, isCensorshipFalse) {
     var structure;
     switch (parseInt(data.structure)) {
         case 0:
@@ -884,12 +867,14 @@ ListRealty.prototype.getDataRow = function(data,isCensorshipFalse) {
         var number = street = ward = district = state = "";
     }
     var textCensorship = "censorship" + data.censorship;
-    if(data.censorship == 1)
-    {
-        if(isCensorshipFalse === false)
-        {
+    if (data.censorship == 1) {
+        if (isCensorshipFalse === false) {
             textCensorship = "xxxxxxxxxxxxxxxxx"
         }
+    }
+    var statusValue = parseInt(data.salestatus) + 1;
+    if (statusValue == 12) {
+        statusValue = [2, 11];
     }
     var result = [
         {},
@@ -933,7 +918,7 @@ ListRealty.prototype.getDataRow = function(data,isCensorshipFalse) {
         direction,
         data.price + " tỉ",
         data.price * 1000 / data.acreage + " triệu",
-        { value: parseInt(data.salestatus) + 1, element: _({ text: staus }) },
+        { value: statusValue, element: _({ text: staus }) },
         { value: formatDate(data.created, true, true, true, true, true), valuesort: new Date(data.created) },
         { value: formatDate(data.modified, true, true, true, true, true), valuesort: new Date(data.modified) },
         {},
@@ -990,39 +975,33 @@ ListRealty.prototype.browserFilter = function(data) {
     var self = this;
     for (var i = 0; i < data.length; i++) {
         isAvailable = false;
-        Loop: for(var param in moduleDatabase.checkPermission)
-        {
+        Loop: for (var param in moduleDatabase.checkPermission) {
             var object = JSON.parse(param);
             var address = self.checkAddress[data[i].original.addressid];
             districtid = undefined;
             stateid = undefined;
-            if(address.wardid)
-            districtid = self.checkWard[address.wardid].districtid;
-            if(districtid)
-            stateid = self.checkDistrict[districtid].stateid;
-            for(var objectParam in object)
-            {
-                if(objectParam === "stateid")
-                {
-                    if(stateid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(objectParam === "districtid")
-                {
-                    if(districtid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(object[objectParam]!==address[objectParam])
-                {
+            if (address.wardid)
+                districtid = self.checkWard[address.wardid].districtid;
+            if (districtid)
+                stateid = self.checkDistrict[districtid].stateid;
+            for (var objectParam in object) {
+                if (objectParam === "stateid") {
+                    if (stateid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (objectParam === "districtid") {
+                    if (districtid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (object[objectParam] !== address[objectParam]) {
                     continue Loop;
                 }
             }
-            if(moduleDatabase.checkPermission[param].indexOf(62)!==-1)
-            {
+            if (moduleDatabase.checkPermission[param].indexOf(62) !== -1) {
                 isAvailable = true;
             }
         }
-        if(isAvailable == false)
+        if (isAvailable == false)
             continue;
         indexData = data[i];
         indexData.visiable = true;
@@ -1075,39 +1054,33 @@ ListRealty.prototype.mergeFilter = function(data) {
     var self = this;
     for (var i = 0; i < data.length; i++) {
         isAvailable = false;
-        Loop: for(var param in moduleDatabase.checkPermission)
-        {
+        Loop: for (var param in moduleDatabase.checkPermission) {
             var object = JSON.parse(param);
             var address = self.checkAddress[data[i].original.addressid];
             districtid = undefined;
             stateid = undefined;
-            if(address.wardid)
-            districtid = self.checkWard[address.wardid].districtid;
-            if(districtid)
-            stateid = self.checkDistrict[districtid].stateid;
-            for(var objectParam in object)
-            {
-                if(objectParam === "stateid")
-                {
-                    if(stateid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(objectParam === "districtid")
-                {
-                    if(districtid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(object[objectParam]!==address[objectParam])
-                {
+            if (address.wardid)
+                districtid = self.checkWard[address.wardid].districtid;
+            if (districtid)
+                stateid = self.checkDistrict[districtid].stateid;
+            for (var objectParam in object) {
+                if (objectParam === "stateid") {
+                    if (stateid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (objectParam === "districtid") {
+                    if (districtid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (object[objectParam] !== address[objectParam]) {
                     continue Loop;
                 }
             }
-            if(moduleDatabase.checkPermission[param].indexOf(64)!==-1)
-            {
+            if (moduleDatabase.checkPermission[param].indexOf(64) !== -1) {
                 isAvailable = true;
             }
         }
-        if(isAvailable == false)
+        if (isAvailable == false)
             continue;
         indexData = data[i];
         tempData = checkAvaliable[indexData[4] + indexData[5] + indexData[6] + indexData[7]];
@@ -1162,43 +1135,37 @@ ListRealty.prototype.mergeFilterNone = function(data) {
     var self = this;
     for (var i = 0; i < data.length; i++) {
         isAvailable = false;
-        Loop: for(var param in moduleDatabase.checkPermission)
-        {
+        Loop: for (var param in moduleDatabase.checkPermission) {
             var object = JSON.parse(param);
             var address = self.checkAddress[data[i].original.addressid];
             districtid = undefined;
             stateid = undefined;
-            if(address.wardid)
-            districtid = self.checkWard[address.wardid].districtid;
-            if(districtid)
-            stateid = self.checkDistrict[districtid].stateid;
-            for(var objectParam in object)
-            {
-                if(objectParam === "stateid")
-                {
-                    if(stateid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(objectParam === "districtid")
-                {
-                    if(districtid!==object[objectParam])
-                    continue Loop;
-                }else
-                if(object[objectParam]!==address[objectParam])
-                {
+            if (address.wardid)
+                districtid = self.checkWard[address.wardid].districtid;
+            if (districtid)
+                stateid = self.checkDistrict[districtid].stateid;
+            for (var objectParam in object) {
+                if (objectParam === "stateid") {
+                    if (stateid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (objectParam === "districtid") {
+                    if (districtid !== object[objectParam])
+                        continue Loop;
+                } else
+                if (object[objectParam] !== address[objectParam]) {
                     continue Loop;
                 }
             }
-            if(moduleDatabase.checkPermission[param].indexOf(64)!==-1)
-            {
+            if (moduleDatabase.checkPermission[param].indexOf(64) !== -1) {
                 isAvailable = true;
             }
         }
-        if(isAvailable == false)
+        if (isAvailable == false)
             continue;
         data[i].visiable = true;
         result.push(data[i]);
-        data.splice(i,1);
+        data.splice(i, 1);
         i--;
     }
     var length = data.length;
@@ -1306,10 +1273,6 @@ ListRealty.prototype.searchControlContent = function() {
                                                     {
                                                         text: "Còn cho thuê",
                                                         value: 11
-                                                    },
-                                                    {
-                                                        text: "Còn bán và còn cho thuê",
-                                                        value: 12
                                                     },
                                                     {
                                                         text: "Ngừng giao dịch",

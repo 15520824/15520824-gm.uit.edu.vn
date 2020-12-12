@@ -5,12 +5,9 @@ import '../../css/tablesort.css';
 // import TabView from 'absol-acomp/js/TabView';
 import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
-import { insertAfter, isNumeric } from './FormatFunction';
+import { insertAfter, isNumeric, setCookie, getCookie, eraseCookie } from './FormatFunction';
 import Svg from 'absol/src/HTML5/Svg';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
-
-BrowserDetector.isMobile
-
 
 Svg.ShareInstance._;
 Svg.ShareInstance.$;
@@ -575,6 +572,9 @@ function outFocus(clone, trigger, functionCheckZone, bg, parent) {
     window.onmouseup = null;
     setTimeout(function() {
         bg.selfRemove();
+        if (parent.isSaveTheme) {
+            parent.saveTheme();
+        }
     }, 20)
     clone.selfRemove();
     var event = new CustomEvent('dragdrop');
@@ -642,6 +642,13 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     result.bodyTable = bodyTable;
     Object.assign(result, tableView.prototype);
     result.check = check;
+    if (header.isSaveTheme) {
+        result.isSaveTheme = header.isSaveTheme;
+        if (getCookie(result.isSaveTheme + "token_pizo_table_header" + window.token) != undefined) {
+            header = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_header" + window.token));
+            result.arrSortHeader = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_sort" + window.token));
+        }
+    }
     result.header = header;
     result.data = data;
     result.dragVertical = dragVertical;
@@ -762,26 +769,11 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
     }
 
     result.updatePagination(indexRow, false);
-    row = _({
-        tag: "tr"
-    });
-    headerTable.addChild(row);
     result.clone = [];
     var k = 0;
     result.toUpperCase = header.toUpperCase == true ? true : false;
     result.toLowerCase = header.toLowerCase == true ? true : false;
-    for (var i = 0; i < header.length; i++) {
-        if (header[i].hidden === false || header[i].hidden === undefined) {
-            result.clone[k] = [];
-
-            cell = result.getCellHeader(header[i], i)
-
-            result.clone[k++].push(cell);
-
-            row.addChild(cell);
-        } else
-            check[i] = "hidden";
-    }
+    result.updateTableOnlyHeader();
     result.parentMargin = 0;
 
     result.childIndex = childIndex;
@@ -798,6 +790,18 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
 }
 
 tableView.prototype.updateTableHeader = function() {
+    this.updateTableOnlyHeader();
+    if (this.isSaveTheme) {
+        this.saveTheme();
+    }
+
+    if (this.isInputHeader) {
+        this.addInputSearchHeader();
+    }
+    this.updateTable();
+}
+
+tableView.prototype.updateTableOnlyHeader = function() {
     var header = this.header;
     var result = this;
     var check = this.check;
@@ -807,21 +811,34 @@ tableView.prototype.updateTableHeader = function() {
     });
     var k = 0;
     result.clone = [];
-    for (var i = 0; i < header.length; i++) {
-        if (header[i].hidden === false || header[i].hidden === undefined) {
-            check[i] = undefined;
-            result.clone[k] = [];
-            cell = result.getCellHeader(header[i], i)
-            result.clone[k++].push(cell);
-            row.addChild(cell);
-        } else
+    if (this.arrSortHeader) {
+        for (var i = 0; i < header.length; i++)
             check[i] = "hidden";
-    }
-    this.headerTable.replaceChild(row, this.headerTable.childNodes[0]);
-    if (this.isInputHeader) {
-        this.addInputSearchHeader();
-    }
-    this.updateTable();
+        for (var i = 0; i < this.arrSortHeader.length; i++) {
+            if (header[this.arrSortHeader[i]].hidden === false || header[this.arrSortHeader[i]].hidden === undefined) {
+                check[this.arrSortHeader[i]] = undefined;
+                result.clone[k] = [];
+                cell = result.getCellHeader(header[this.arrSortHeader[i]], this.arrSortHeader[i])
+                result.clone[k++].push(cell);
+                row.addChild(cell);
+            } else
+                check[this.arrSortHeader[i]] = "hidden";
+        }
+    } else
+        for (var i = 0; i < header.length; i++) {
+            if (header[i].hidden === false || header[i].hidden === undefined) {
+                check[i] = undefined;
+                result.clone[k] = [];
+                cell = result.getCellHeader(header[i], i)
+                result.clone[k++].push(cell);
+                row.addChild(cell);
+            } else
+                check[i] = "hidden";
+        }
+    if (this.headerTable.childNodes[0])
+        this.headerTable.replaceChild(row, this.headerTable.childNodes[0]);
+    else
+        this.headerTable.appendChild(row);
 }
 
 tableView.prototype.getElementNext = function(element) {
@@ -1156,6 +1173,16 @@ tableView.prototype.changeRowIndex = function(index, spliceIndex) {
         result.checkSpan = changeIndex(result.checkSpan, index, spliceIndex);
     var event = new CustomEvent('dragdrop', { bubbles: true, detail: { event: event, me: me, index: tempIndex, spliceIndex: tempSpliceIndex, parent: self, dataSpliceIndex: spliceIndex, dataIndex: index, afterIndex: index = self.childrenNodes.indexOf(element) } });
     self.dispatchEvent(event);
+}
+
+tableView.prototype.saveTheme = function() {
+    setCookie(this.isSaveTheme + "token_pizo_table_header" + window.token, JSON.stringify(this.header), 3);
+    var arr = [];
+    for (var i = 0; i < this.clone.length; i++) {
+        arr.push(this.clone[i][0].id);
+    }
+    this.arrSortHeader = arr;
+    setCookie(this.isSaveTheme + "token_pizo_table_sort" + window.token, JSON.stringify(arr), 3);
 }
 
 tableView.prototype.getCellHeader = function(header, i) {
@@ -1524,6 +1551,9 @@ tableView.prototype.modalChoice = function() {
         tempDiv.addChild(checkboxTemp);
         arrCheckBox.push(checkboxTemp);
     }
+    if (this.isSaveTheme) {
+        this.saveTheme();
+    }
     modal.applyChecked = function() {
         for (var i = 0; i < arrCheckBox.length; i++) {
             if (arrCheckBox[i].data.disabled == true)
@@ -1540,6 +1570,11 @@ tableView.prototype.modalChoice = function() {
             } else {
                 if (typeof self.header[arrCheckBox[i].data] == "object") {
                     self.header[arrCheckBox[i].data].hidden = undefined;
+                    if (self.arrSortHeader) {
+                        if (self.arrSortHeader.indexOf(arrCheckBox[i].data.toString()) == -1) {
+                            self.arrSortHeader.push(arrCheckBox[i].data)
+                        }
+                    }
                 }
             }
         }
@@ -1673,16 +1708,17 @@ tableView.prototype.addInputSearchHeader = function() {
     this.isInputHeader = true;
     var header = this.header;
     var check = this.check;
-    var headerElement = this.headerTable.childNodes[0];
-    var k = 0;
-    for (var i = 0; i < header.length; i++) {
-        if (check[i] === undefined && header[i].disableInput !== true) {
+    var clone = this.clone;
+    var index;
+    for (var i = 0; i < clone.length; i++) {
+        index = clone[i][0].id;
+        if (check[index] === undefined && header[index].disableInput !== true) {
             var input = _({
                 tag: "input",
                 class: "searchheader-input"
             })
-            this.addInputSearch(input, i);
-            headerElement.childNodes[k].appendChild(_({
+            this.addInputSearch(input, index);
+            clone[i][0].appendChild(_({
                 tag: "div",
                 class: "searchheader",
                 child: [
@@ -1690,8 +1726,6 @@ tableView.prototype.addInputSearchHeader = function() {
                 ]
             }))
         }
-        if (check[i] !== "hidden")
-            k++;
     }
 }
 
@@ -3663,6 +3697,9 @@ tableView.prototype.insertColumn = function(index, insertBefore = -1) {
         }
         k++;
     }
+    if (this.isSaveTheme) {
+        this.saveTheme();
+    }
 }
 
 tableView.prototype.changeParent = function(index, rowParent) {
@@ -3673,7 +3710,7 @@ tableView.prototype.changeParent = function(index, rowParent) {
 
     var deltaY = 0;
 
-    deltaX = parent.checkLongRow(index); 
+    deltaX = parent.checkLongRow(index);
     parent.changeRowChild(element, rowParent);
     for (var i = 0; i < element.childNodes.length; i++) {
         element.childNodes[i].clone = rowParent.clone;
@@ -3909,11 +3946,12 @@ tableView.prototype.backGround = function(height, callback, index) {
 
 
 tableView.prototype.deleteColumn = function(index) {
-    if (typeof this.header[index] == "object")
-        this.header[index].hidden = true;
+    var realIndex = this.clone[index][0].id;
+    if (typeof this.header[realIndex] == "object")
+        this.header[realIndex].hidden = true;
     else
-        this.header[index] = {
-            value: this.header[index],
+        this.header[realIndex] = {
+            value: this.header[realIndex],
             hidden: true
         }
     for (var i = 0; i < this.clone[index].length; i++) {
@@ -3924,6 +3962,9 @@ tableView.prototype.deleteColumn = function(index) {
         if (this.childrenNodes[i].childrenNodes.length !== 0) {
             this.childrenNodes[i].deleteColumn(index);
         }
+    }
+    if (this.isSaveTheme) {
+        this.saveTheme();
     }
 }
 

@@ -1597,6 +1597,7 @@ input[type="submit"] {
 .pizo-new-realty-dectruct.pizo-only-view .absol-selectmenu:not(.pizo-new-realty-dectruct-content-area-unit-size):not(.pizo-new-realty-dectruct-content-area-unit):not(.pizo-new-realty-detruct-content-price-unit):not(.pizo-new-realty-detruct-content-price-rent-unit) {
     text-align: right;
     pointer-events: none;
+    height: 33px;
 }
 
 .absol-selectmenu .absol-selectlist-item span {
