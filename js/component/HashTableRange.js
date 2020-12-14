@@ -1,4 +1,5 @@
 export function HashTableFilter(data) {
+
     this.hash = [];
     this.data = data;
     this.check = [];

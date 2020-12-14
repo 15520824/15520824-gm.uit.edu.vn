@@ -1183,12 +1183,10 @@ ListRealty.prototype.searchControlContent = function() {
         tag: 'calendar-input',
         data: {
             anchor: 'top',
-            value: new Date(new Date().getFullYear(), 0, 1),
             maxDateLimit: new Date()
         },
         on: {
             changed: function(date) {
-
                 endDay.minDateLimit = date;
             }
         }
@@ -1222,28 +1220,7 @@ ListRealty.prototype.searchControlContent = function() {
             child: [{
                     tag: "div",
                     class: "pizo-list-realty-main-search-control-row",
-                    child: [
-                        // {
-                        //     tag: "div",
-                        //     class: "pizo-list-realty-main-search-control-row-date",
-                        //     child: [{
-                        //             tag: "span",
-                        //             class: "pizo-list-realty-main-search-control-row-date-label",
-                        //             props: {
-                        //                 innerHTML: "Thời gian"
-                        //             }
-                        //         },
-                        //         {
-                        //             tag: "div",
-                        //             class: "pizo-list-realty-main-search-control-row-date-input",
-                        //             child: [
-                        //                 startDay,
-                        //                 endDay
-                        //             ]
-                        //         }
-                        //     ]
-                        // },
-                        {
+                    child: [{
                             tag: "div",
                             class: "pizo-list-realty-main-search-control-row-price",
                             child: [{
@@ -1284,6 +1261,30 @@ ListRealty.prototype.searchControlContent = function() {
                                     }
                                 ]
                             }, ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-date",
+                            child: [{
+                                tag: "div",
+                                class: "pizo-list-realty-main-search-control-row-HT",
+                                child: [{
+                                        tag: "span",
+                                        class: "pizo-list-realty-main-search-control-row-date-label",
+                                        props: {
+                                            innerHTML: "Thời gian"
+                                        }
+                                    },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-list-realty-main-search-control-row-date-input",
+                                        child: [
+                                            startDay,
+                                            endDay
+                                        ]
+                                    }
+                                ]
+                            }]
                         },
                         {
                             tag: "div",

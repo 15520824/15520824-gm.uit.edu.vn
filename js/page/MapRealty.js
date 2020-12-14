@@ -168,7 +168,52 @@ MapRealty.prototype.getView = function() {
             style: {
                 flexDirection: "column"
             },
-            child: [
+            child: [{
+                    tag: "div",
+                    class: "pizo-list-realty-main-search-control-row",
+                    child: [{
+                        tag: "div",
+                        class: "pizo-list-realty-main-search-control-row-price",
+                        child: [{
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-HT",
+                            child: [{
+                                    tag: "span",
+                                    class: "pizo-list-realty-main-search-control-row-HT-label",
+                                    props: {
+                                        innerHTML: "Tình trạng"
+                                    }
+                                },
+                                {
+                                    tag: "div",
+                                    class: "pizo-list-realty-main-search-control-row-HT-input",
+                                    child: [{
+                                        tag: "selectmenu",
+                                        props: {
+                                            items: [{
+                                                    text: "Tất cả",
+                                                    value: 0
+                                                },
+                                                {
+                                                    text: "Còn bán",
+                                                    value: 2
+                                                },
+                                                {
+                                                    text: "Còn cho thuê",
+                                                    value: 11
+                                                },
+                                                {
+                                                    text: "Ngừng giao dịch",
+                                                    value: 1
+                                                }
+                                            ]
+                                        }
+                                    }]
+                                }
+                            ]
+                        }, ]
+                    }, ]
+                },
                 this.searchControl,
                 {
                     tag: "div",
@@ -712,8 +757,8 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                         {
                                                                             tag: "li",
                                                                             class: ["sc-cLQEGU-2", "cllLJF"],
-                                                                            style:{
-                                                                                display:"none"
+                                                                            style: {
+                                                                                display: "none"
                                                                             },
                                                                             child: [{
                                                                                 tag: "button",
@@ -748,8 +793,8 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                         {
                                                                             tag: "li",
                                                                             class: ["sc-cLQEGU-3", "cllLJF"],
-                                                                            style:{
-                                                                                display:"none"
+                                                                            style: {
+                                                                                display: "none"
                                                                             },
                                                                             child: [{
                                                                                 tag: "button",
@@ -1094,22 +1139,17 @@ MapRealty.prototype.modalLargeRealty = function(data) {
     var realEdit = $("li.sc-cLQEGU-3", modal);
     var isEdit = false;
     var isRequest = false;
-    Loop: for(var param in moduleDatabase.checkPermission)
-    {
+    Loop: for (var param in moduleDatabase.checkPermission) {
         var object = JSON.parse(param);
-        for(var objectParam in object)
-        {
-            if(object[objectParam]!==data[objectParam])
-            {
+        for (var objectParam in object) {
+            if (object[objectParam] !== data[objectParam]) {
                 continue Loop;
             }
         }
-        if(moduleDatabase.checkPermission[param].indexOf(58)!==-1)
-        {
+        if (moduleDatabase.checkPermission[param].indexOf(58) !== -1) {
             isEdit = true;
         }
-        if(moduleDatabase.checkPermission[param].indexOf(68)!==-1)
-        {
+        if (moduleDatabase.checkPermission[param].indexOf(68) !== -1) {
             isRequest = true;
         }
     }

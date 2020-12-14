@@ -137,8 +137,8 @@
     vertical-align: bottom;
 }
 
-.pizo-list-realty-main-search-control-row-date {
-    width: calc(18% + 1.4286rem);
+.pizo-list-realty-main-search-control-row-date-label {
+    padding-right: 10px;
 }
 
 .pizo-list-realty-main-search-control-row-phone {
