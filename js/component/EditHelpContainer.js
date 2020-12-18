@@ -353,6 +353,7 @@ EditHelpContainer.prototype.enableEditViewContent = function() {
 }
 
 EditHelpContainer.prototype.disableEditViewContent = function() {
+    this.saveDataCurrent();
     this.containerPreview.style.display = "";
     this.containerEditView.style.display = "none";
     this.tabContainer.style.pointerEvents = "";
