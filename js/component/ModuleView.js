@@ -5,6 +5,7 @@ import '../../css/tablesort.css';
 // import TabView from 'absol-acomp/js/TabView';
 import { HashTable } from '../component/HashTable';
 import { HashTableFilter } from '../component/HashTableFilter';
+import { HashTableRange } from '../component/HashTableRange';
 import { insertAfter, isNumeric, setCookie, getCookie, eraseCookie } from './FormatFunction';
 import Svg from 'absol/src/HTML5/Svg';
 import BrowserDetector from 'absol/src/Detector/BrowserDetector';
@@ -649,6 +650,9 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
             result.arrSortHeader = JSON.parse(getCookie(result.isSaveTheme + "token_pizo_table_sort" + window.token));
         }
     }
+    if (header.attachScroll) {
+        result.attachScroll = header.attachScroll;
+    }
     result.header = header;
     result.data = data;
     result.dragVertical = dragVertical;
@@ -699,7 +703,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
                 }
                 scrollParent.addEventListener("scroll", functionScrollTemp);
             }
-            if (BrowserDetector.isMobile) {
+            if (BrowserDetector.isMobile || result.attachScroll === true) {
                 var tempLimit = _({
                     tag: "div",
                     child: [{
@@ -744,7 +748,7 @@ export function tableView(header = [], data = [], dragHorizontal = false, dragVe
         }.bind(this))
     }
     result.updatePagination = function(number = result.tempIndexRow, isRedraw = true) {
-        if (BrowserDetector.isMobile) {
+        if (BrowserDetector.isMobile || this.attachScroll == true) {
             result.tempIndexRow = indexRow;
             if (isRedraw) {
                 result.updateTable(undefined, undefined, undefined, undefined, undefined, false);
@@ -1731,7 +1735,8 @@ tableView.prototype.addInputSearchHeader = function() {
 
 tableView.prototype.addInputSearch = function(input, index) {
     var self = this;
-    self.hashTable = new HashTable(self.data);
+    if (self.hashTable == undefined)
+        self.hashTable = new HashTable(self.data);
     input.onchange = function(event, needUpdate = false) {
         if (this.updateTimeOut !== undefined) {
             clearTimeout(this._updateTimeOut);
@@ -1753,7 +1758,8 @@ tableView.prototype.addInputSearch = function(input, index) {
 
 tableView.prototype.addFilter = function(input, index, functionChange) {
     var self = this;
-    self.hashTableFilter = new HashTableFilter(self.data);
+    if (self.hashTableFilter == undefined)
+        self.hashTableFilter = new HashTableFilter(self.data);
     var functionFilter;
     if (functionChange === undefined) {
         functionFilter = function(event, needUpdate = false) {
@@ -1767,6 +1773,26 @@ tableView.prototype.addFilter = function(input, index, functionChange) {
     if (self.inputFilter === undefined)
         self.inputFilter = [];
     self.inputFilter.push([input, index]);
+}
+
+tableView.prototype.addRange = function(min, max, index, functionChange) {
+    var self = this;
+    var id = ("range_" + Math.random() + Math.random()).replace(/\./g, '');
+    if (self.hashTableRange == undefined)
+        self.hashTableRange = new HashTableRange(self.data, id, index);
+    else
+        self.hashTableRange.setUpKey(id, index);
+    var functionRange;
+    if (functionRange === undefined) {
+        functionRange = function(event, needUpdate = false) {
+            self.checkTableViewRange(min.value, max.value, id);
+            self.updatePagination();
+        }
+    } else {
+        functionRange = functionChange
+    }
+    min.on("change", functionRange);
+    max.on("change", functionRange);
 }
 
 tableView.prototype.checkTableView = function(value, index) {
@@ -1795,6 +1821,11 @@ tableView.prototype.checkTableView = function(value, index) {
 tableView.prototype.checkTableViewFilter = function(value, index) {
     var self = this;
     self.hashTableFilter.getKey(value, index);
+}
+
+tableView.prototype.checkTableViewRange = function(min, max, id) {
+    var self = this;
+    self.hashTableRange.getKey(min, max, id);
 }
 
 tableView.prototype.updateHash = function(row) {

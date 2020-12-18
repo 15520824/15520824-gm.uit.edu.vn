@@ -337,6 +337,19 @@ App.prototype.getPermisionOpenPage = function() {
             if (this.firstElement == undefined)
                 this.firstElement = [];
             var isRealty = false;
+            var checkStringPermission = JSON.stringify(moduleDatabase.checkPermission);
+            if (checkStringPermission.indexOf(57) == -1 &&
+                checkStringPermission.indexOf(58) == -1 &&
+                checkStringPermission.indexOf(59) == -1 &&
+                checkStringPermission.indexOf(60) == -1 &&
+                checkStringPermission.indexOf(61) == -1 &&
+                checkStringPermission.indexOf(62) == -1 &&
+                checkStringPermission.indexOf(63) == -1 &&
+                checkStringPermission.indexOf(64) == -1 &&
+                checkStringPermission.indexOf(65) == -1 &&
+                checkStringPermission.indexOf(69) == -1) {
+                moduleDatabase.checkPermission.isStaff = true;
+            }
             for (var param in moduleDatabase.checkPermission) {
                 if (param == 0) {
                     if (moduleDatabase.checkPermission[0].indexOf(13) != -1 ||
@@ -480,19 +493,19 @@ App.prototype.getPermisionOpenPage = function() {
                         })
                     }
 
-                    if (moduleDatabase.checkPermission[0].indexOf(45) != -1) {
-                        var menuZone = [];
-                        if (moduleDatabase.checkPermission[0].indexOf(45) != -1)
-                            menuZone.push({
-                                text: "Sửa trợ giúp",
-                                pageIndex: 101
-                            })
-                        this.firstElement.push({
-                            text: "Trợ giúp",
-                            pageIndex: 10,
-                            items: menuZone
-                        })
-                    }
+                    // if (moduleDatabase.checkPermission[0].indexOf(45) != -1) {
+                    //     var menuZone = [];
+                    //     if (moduleDatabase.checkPermission[0].indexOf(45) != -1)
+                    //         menuZone.push({
+                    //             text: "Sửa trợ giúp",
+                    //             pageIndex: 101
+                    //         })
+                    //     this.firstElement.push({
+                    //         text: "Trợ giúp",
+                    //         pageIndex: 10,
+                    //         items: menuZone
+                    //     })
+                    // }
                 }
                 isRealty = true;
             }

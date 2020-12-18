@@ -1887,8 +1887,10 @@ NewRealty.prototype.detructView = function() {
         var checkStatus = parseInt(original.salestatus);
         this.inputLease.checked = parseInt(checkStatus / 10) == 1 ? true : false;
         this.inputSell.checked = parseInt(checkStatus % 10) == 1 ? true : false;
-        if (this.inputSell.checked == true)
+        if (this.inputLease.checked == false)
             this.priceRent.style.display = "none";
+        else
+            this.priceRent.style.display = "";
         this.inputContent.value = original.content;
         this.inputFit.values = formatFit(parseInt(original.fit));
         this.inputPrice.emit("change");

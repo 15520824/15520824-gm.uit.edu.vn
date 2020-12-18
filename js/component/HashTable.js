@@ -1,5 +1,5 @@
+import { isVisiableColumn } from './FormatFunction';
 export function HashTable(data) {
-
     this.hash = [];
     this.checkData = [];
     this.functionSetHash(data)
@@ -16,6 +16,8 @@ HashTable.prototype.functionSetHash = function(data, dataParent = "") {
     for (var m = 0; m < data.length; m++) {
         object = data[m];
         for (var i = 0; i < object.length; i++) {
+            if (object[i].valuesearch !== undefined)
+                value = object[i].value;
             if (object[i].value !== undefined)
                 value = object[i].value;
             else if (typeof object[i] === "string")
@@ -62,7 +64,7 @@ HashTable.prototype.functionSetHash = function(data, dataParent = "") {
 
 }
 
-HashTable.prototype.hashVisiableAll = function(arr, isFilter) {
+HashTable.prototype.hashVisiableAll = function(arr) {
     arr.sort(function(a, b) {
         if (a.oldIndex === undefined) {
             if (b.oldIndex === undefined)
@@ -82,19 +84,14 @@ HashTable.prototype.hashVisiableAll = function(arr, isFilter) {
         return 0;
     })
     for (var i = 0; i < arr.length; i++) {
-        if (isFilter) {
-            if (arr[i].isFilter === true)
-                arr[i].visiable = true;
-            else
-                arr[i].visiable = false;
-        } else
-        if (arr[i].isFilter === undefined)
+        if (isVisiableColumn(this.data, arr[i], "isSearch")) {
             arr[i].visiable = true;
-        else
+        } else {
             arr[i].visiable = false;
+        }
         arr[i].isSearch = undefined;
         if (arr[i].child && arr[i].child.length > 0) {
-            this.hashVisiableAll(arr[i].child, isFilter)
+            this.hashVisiableAll(arr[i].child)
         }
     }
 }
@@ -102,8 +99,7 @@ HashTable.prototype.hashVisiableAll = function(arr, isFilter) {
 HashTable.prototype.getKey = function(key, index) {
     key = key.trim();
     if (key === "") {
-        this.hashVisiableAll(this.data, this.data.isFilter)
-        this.data.isSearch = undefined;
+        this.hashVisiableAll(this.data)
         return;
     }
     var check = [];
@@ -205,34 +201,18 @@ HashTable.prototype.getKey = function(key, index) {
                             var stringCheck = arrParent[k];
                             var charCode = stringCheck.charCodeAt(0);
                             while (k >= 0) {
-                                if (this.data.isFilter) {
-                                    var object = this.checkData[stringCheck];
-                                    for (var l = 0; l < object.length; l++) {
-                                        if (object[l].isFilter === true) {
-                                            object[l].confirm = true;
-                                            object[l].isComplete = true;
-                                            var tempExactly = check[row][column].tempExactly + charCode / 1000000000;
-                                            if (object[l].exactly === undefined)
-                                                object[l].exactly = tempExactly;
-                                            else if (object[l].exactly > tempExactly)
-                                                object[l].exactly = tempExactly;
-                                        } else
-                                            object[l].confirm = undefined;
-                                    }
-                                } else {
-                                    var object = this.checkData[stringCheck];
-                                    for (var l = 0; l < object.length; l++) {
-                                        if (object[l].isFilter === undefined) {
-                                            object[l].confirm = true;
-                                            object[l].isComplete = true;
-                                            var tempExactly = check[row][column].tempExactly + charCode / 1000000000;
-                                            if (object[l].exactly === undefined)
-                                                object[l].exactly = tempExactly;
-                                            else if (object[l].exactly > tempExactly)
-                                                object[l].exactly = tempExactly;
-                                        } else
-                                            object[l].confirm = undefined;
-                                    }
+                                var object = this.checkData[stringCheck];
+                                for (var l = 0; l < object.length; l++) {
+                                    if (isVisiableColumn(this.data, object[l], "isSearch") === true) {
+                                        object[l].confirm = true;
+                                        object[l].isComplete = true;
+                                        var tempExactly = check[row][column].tempExactly + charCode / 1000000000;
+                                        if (object[l].exactly === undefined)
+                                            object[l].exactly = tempExactly;
+                                        else if (object[l].exactly > tempExactly)
+                                            object[l].exactly = tempExactly;
+                                    } else
+                                        object[l].confirm = undefined;
                                 }
                                 var object = this.checkData[stringCheck];
                                 for (var l = 0; l < object.length; l++) {

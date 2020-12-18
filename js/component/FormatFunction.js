@@ -56,11 +56,15 @@ export function formatDate(date, isMinutes = false, isHours = false, isDay = tru
 }
 
 export function formatNumber(n) {
+    if (n == "")
+        return "";
     // format number 1000000 to 1,234,567
     return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
 
 export function reFormatNumber(n) {
+    if (n == "")
+        return "";
     return parseFloat(n.split(",").join(""));
 }
 
@@ -447,6 +451,20 @@ export function getCookie(name) {
     }
     return null;
 }
+
 export function eraseCookie(name) {
     document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+export function isVisiableColumn(dataAll, dataRow, current) {
+    var isComplete = ["isFilter", "isSearch", "isRange"];
+    for (var i = 0; i < isComplete.length; i++) {
+        if (isComplete[i] == current)
+            continue;
+        if ((dataAll[isComplete[i]] == true && dataRow[isComplete[i]]) ||
+            (dataAll[isComplete[i]] == undefined && dataRow[isComplete[i]] == undefined))
+            continue;
+        return false;
+    }
+    return true;
 }

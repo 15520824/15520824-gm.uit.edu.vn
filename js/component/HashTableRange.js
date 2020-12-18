@@ -1,146 +1,66 @@
-export function HashTableFilter(data) {
+import { isVisiableColumn } from "./FormatFunction";
 
-    this.hash = [];
+export function HashTableRange(data, id, index) {
     this.data = data;
-    this.check = [];
-    this.functionSetHash(data);
+    this.hash = [];
     this.indexCount = [];
-    this.lastIndex = [];
-    this.lastKey = [];
-    this.lastIndexFilter = [];
-    this.functionCheck = [];
+    this.setUpKey(id, index);
     return this;
 }
 
-HashTableFilter.prototype.functionSetHash = function(data, dataParent = "") {
-    var hash = this.hash;
-    var value;
-    var object;
-    for (var m = 0; m < data.length; m++) {
-        object = data[m];
-        var stringCheck = m + dataParent;
-        if (this.check[stringCheck] == undefined) {
-            this.check[stringCheck] = [];
-            this.check[stringCheck].data = object.getRowMerge;
+HashTableRange.prototype.setUpKey = function(id, index) {
+    this.hash[id] = [index];
+}
+
+HashTableRange.prototype.hashVisiableAll = function(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        if (isVisiableColumn(this.data, arr[i], "isRange")) {
+            arr[i].visiable = true;
+        } else {
+            arr[i].visiable = false;
         }
-
-        for (var i = 0; i < object.length; i++) {
-            if (object[i].value !== undefined)
-                value = object[i].value;
-            else if (typeof object[i] === "string")
-                value = object[i];
-            else
-                value = "";
-            if (Array.isArray(value)) {
-                for (var j = 0; j < value.length; j++) {
-                    if (hash[i] === undefined)
-                        hash[i] = [];
-                    if (hash[i][value[j]] === undefined)
-                        hash[i][value[j]] = [];
-                    hash[i][value[j]].push(stringCheck);
-                }
-            } else {
-                if (hash[i] === undefined)
-                    hash[i] = [];
-                if (hash[i][value] === undefined)
-                    hash[i][value] = [];
-                hash[i][value].push(stringCheck);
-            }
-
-
-            if (data[m].child !== undefined) {
-                this.functionSetHash(data[m].child, "_" + m + dataParent);
-            }
+        arr[i].isRange = undefined;
+        if (arr[i].child && arr[i].child.length > 0) {
+            this.hashVisiableAll(arr[i].child)
         }
-
     }
 }
 
-HashTableFilter.prototype.getKey = function(key, index) {
-    var hash = this.hash;
-
-    this.lastKey[index] = key;
-    if (key == 0) {
-        if (this.lastIndex[index] !== undefined)
-            for (var i = 0; i < this.lastIndex[index].length; i++)
-                this.lastIndex[index][i][index] = undefined;
-        delete this.indexCount[index];
-        var countAll = this.indexCount.reduce((a, b) => a + b, 0);
-
-        if (countAll > 0) {
-            for (var tempx in this.indexCount) {
-                index = parseInt(tempx);
-                key = this.lastKey[index];
-                break;
-            }
-        } else {
-            for (var i = 0; i < this.data.length; i++) {
-                if (this.data.isSearch) {
-                    if (this.data[i].isSearch === true)
-                        this.data[i].visiable = true;
-                } else
-                if (this.data[i].isSearch === undefined)
-                    this.data[i].visiable = true;
-
-                this.data[i].isFilter = undefined;
-            }
-            this.data.isFilter = undefined;
-            return;
-        }
-
-    }
+HashTableRange.prototype.getKey = function(min, max, id) {
+    if (min == this.hash[id][1] && max == this.hash[id][2])
+        return;
+    this.hash[id][1] = min;
+    this.hash[id][2] = max;
+    var index = this.hash[id][0];
+    var value, object;
+    this.data.isRange = true;
     this.data.updateVisible = true;
-    this.indexCount[index] = 1;
-    this.data.isFilter = true;
-
-    var countAll = this.indexCount.reduce((a, b) => a + b, 0);
-    if (this.lastIndex[index] !== undefined)
-        for (var i = 0; i < this.lastIndex[index].length; i++)
-            this.lastIndex[index][i][index] = undefined;
-    this.lastIndex[index] = [];
-
-    for (var i = 0; i < this.lastIndexFilter.length; i++) {
-        this.lastIndexFilter[i].isFilter = undefined;
-    }
-    this.lastIndexFilter = [];
-    if (hash[index] !== undefined && hash[index][key] !== undefined)
-        for (var i = 0; i < hash[index][key].length; i++) {
-            var checkRow = this.check[hash[index][key][i]];
-
-            checkRow[index] = true;
-            this.lastIndex[index].push(checkRow);
-            var countIn = 0
-            for (var param in checkRow) {
-                if (checkRow[param] === true) {
-                    countIn++;
-                }
-            }
-            if (countIn == countAll) {
-                if (this.data.isSearch) {
-                    for (var k = 0; k < checkRow.data.length; k++) {
-                        if (checkRow.data[k].isSearch === true)
-                            checkRow.data[k].confirm = true;
-                        checkRow.data[k].isFilter = true;
-                        checkRow.data[k].isComplete = true;
-                    }
-                } else {
-                    for (var k = 0; k < checkRow.data.length; k++) {
-                        if (checkRow.data[k].isComplete === true)
-                            continue;
-                        if (checkRow.data[k].isSearch === undefined)
-                            checkRow.data[k].confirm = true;
-                        checkRow.data[k].isFilter = true;
-                        checkRow.data[k].isComplete = true;
-                    }
-                }
-                this.lastIndexFilter.push(checkRow);
+    Loop: for (var i = 0; i < this.data.length; i++) {
+        var object = this.data[i][index];
+        if (object.value !== undefined)
+            value = object.value;
+        else if (typeof object === "string")
+            value = object;
+        else
+            value = "";
+        if (this.indexCount[i] == undefined)
+            this.indexCount[i] = [];
+        if ((min === "" || min == undefined || min < value) && (max === "" || max == undefined || value < max)) {
+            this.indexCount[i][id] = true;
+        } else
+            this.indexCount[i][id] = false;
+        for (var param in this.hash) {
+            if (this.indexCount[i][param] == false) {
+                this.data[i].isRange = false;
+                this.data[i].confirm = undefined;
+                continue Loop;
             } else {
-                for (var k = 0; k < checkRow.data.length; k++) {
-                    if (checkRow.data[k].isComplete !== true) {
-                        checkRow.data[k].isFilter = undefined;
-                        checkRow.data[k].confirm = undefined;
-                    }
-                }
+                this.data[i].isRange = true;
+                if (isVisiableColumn(this.data, this.data[i], "isRange")) {
+                    this.data[i].confirm = true;
+                } else
+                    this.data[i].confirm = undefined;
             }
         }
+    }
 }

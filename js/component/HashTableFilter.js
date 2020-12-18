@@ -1,3 +1,4 @@
+import { isVisiableColumn } from './FormatFunction';
 export function HashTableFilter(data) {
     this.hash = [];
     this.data = data;
@@ -55,6 +56,20 @@ HashTableFilter.prototype.functionSetHash = function(data, dataParent = "") {
     }
 }
 
+HashTableFilter.prototype.hashVisiableAll = function(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        if (isVisiableColumn(this.data, arr[i], "isFilter")) {
+            arr[i].visiable = true;
+        } else {
+            arr[i].visiable = false;
+        }
+        arr[i].isFilter = undefined;
+        if (arr[i].child && arr[i].child.length > 0) {
+            this.hashVisiableAll(arr[i].child)
+        }
+    }
+}
+
 HashTableFilter.prototype.getKey = function(key, index) {
     var hash = this.hash;
 
@@ -65,7 +80,6 @@ HashTableFilter.prototype.getKey = function(key, index) {
                 this.lastIndex[index][i][index] = undefined;
         delete this.indexCount[index];
         var countAll = this.indexCount.reduce((a, b) => a + b, 0);
-
         if (countAll > 0) {
             for (var tempx in this.indexCount) {
                 index = parseInt(tempx);
@@ -73,17 +87,7 @@ HashTableFilter.prototype.getKey = function(key, index) {
                 break;
             }
         } else {
-            for (var i = 0; i < this.data.length; i++) {
-                if (this.data.isSearch) {
-                    if (this.data[i].isSearch === true)
-                        this.data[i].visiable = true;
-                } else
-                if (this.data[i].isSearch === undefined)
-                    this.data[i].visiable = true;
-
-                this.data[i].isFilter = undefined;
-            }
-            this.data.isFilter = undefined;
+            this.hashVisiableAll(this.data);
             return;
         }
 
@@ -115,22 +119,11 @@ HashTableFilter.prototype.getKey = function(key, index) {
                 }
             }
             if (countIn == countAll) {
-                if (this.data.isSearch) {
-                    for (var k = 0; k < checkRow.data.length; k++) {
-                        if (checkRow.data[k].isSearch === true)
-                            checkRow.data[k].confirm = true;
-                        checkRow.data[k].isFilter = true;
-                        checkRow.data[k].isComplete = true;
-                    }
-                } else {
-                    for (var k = 0; k < checkRow.data.length; k++) {
-                        if (checkRow.data[k].isComplete === true)
-                            continue;
-                        if (checkRow.data[k].isSearch === undefined)
-                            checkRow.data[k].confirm = true;
-                        checkRow.data[k].isFilter = true;
-                        checkRow.data[k].isComplete = true;
-                    }
+                for (var k = 0; k < checkRow.data.length; k++) {
+                    if (isVisiableColumn(this.data, checkRow.data[k], "isFilter") === true)
+                        checkRow.data[k].confirm = true;
+                    checkRow.data[k].isFilter = true;
+                    checkRow.data[k].isComplete = true;
                 }
                 this.lastIndexFilter.push(checkRow);
             } else {

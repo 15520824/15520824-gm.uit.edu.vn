@@ -6,7 +6,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import MergeRealty from '../component/MergeRealty';
 import MapRealty from './MapRealty';
-import { loadingWheel } from '../component/FormatFunction';
+import { loadingWheel, formatNumber, reFormatNumber } from '../component/FormatFunction';
 
 import {
     tableView,
@@ -654,6 +654,9 @@ ListRealty.prototype.getView = function() {
             }
         ];
         header.isSaveTheme = "#19001080";
+        if (moduleDatabase.checkPermission.isStaff == true) {
+            header.attachSrcoll = true;
+        }
         self.mTable = new tableView(header, [], true, true, 1);
         self.mTable.addInputSearchHeader();
         var arr = [];
@@ -689,6 +692,8 @@ ListRealty.prototype.getView = function() {
                 }
                 self.mTable.updateTable(undefined, value);
                 self.mTable.addInputSearch($('.pizo-list-realty-page-allinput-container input', self.$view));
+                self.mTable.addRange(self.startDay, self.endDay, 17);
+                self.mTable.addRange(self.lowprice, self.highprice, 14);
                 self.mTable.addFilter(hiddenConfirm, 20);
                 self.mTable.addFilter(self.HTinput, 16);
             })
@@ -916,11 +921,11 @@ ListRealty.prototype.getDataRow = function(data, isCensorshipFalse) {
         },
         structure,
         direction,
-        data.price + " tỉ",
+        { element: _({ text: data.price + " tỉ" }), value: data.price * 1000000000 },
         data.price * 1000 / data.acreage + " triệu",
         { value: statusValue, element: _({ text: staus }) },
-        { value: formatDate(data.created, true, true, true, true, true), valuesort: new Date(data.created) },
-        { value: formatDate(data.modified, true, true, true, true, true), valuesort: new Date(data.modified) },
+        { valuesearch: formatDate(data.created, true, true, true, true, true), element: _({ text: formatDate(data.created, true, true, true, true, true) }), valuesort: new Date(data.created), value: new Date(data.created) },
+        { valuesearch: formatDate(data.created, true, true, true, true, true), element: _({ text: formatDate(data.modified, true, true, true, true, true) }), valuesort: new Date(data.modified), value: new Date(data.modified) },
         {},
         textCensorship
     ];
@@ -1179,10 +1184,13 @@ ListRealty.prototype.mergeFilterNone = function(data) {
 ListRealty.prototype.searchControlContent = function() {
     var startDay, endDay;
     var self = this;
+    var oneYearFromNow = new Date();
+    oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() - 1);
     startDay = _({
         tag: 'calendar-input',
         data: {
             anchor: 'top',
+            value: oneYearFromNow,
             maxDateLimit: new Date()
         },
         on: {
@@ -1272,7 +1280,7 @@ ListRealty.prototype.searchControlContent = function() {
                                         tag: "span",
                                         class: "pizo-list-realty-main-search-control-row-date-label",
                                         props: {
-                                            innerHTML: "Thời gian"
+                                            innerHTML: "Thời gian tạo"
                                         }
                                     },
                                     {
@@ -1306,18 +1314,32 @@ ListRealty.prototype.searchControlContent = function() {
                                                 tag: "input",
                                                 class: "pizo-list-realty-main-search-control-row-price-input-low",
                                                 props: {
-                                                    type: "number",
                                                     autocomplete: "off",
                                                     placeholder: "đ Từ",
+                                                },
+                                                on: {
+                                                    input: function(event) {
+                                                        this.value = formatNumber(this.value);
+                                                    },
+                                                    change: function(event) {
+                                                        this.value = reFormatNumber(this.value);
+                                                    }
                                                 }
                                             },
                                             {
                                                 tag: "input",
                                                 class: "pizo-list-realty-main-search-control-row-price-input-high",
                                                 props: {
-                                                    type: "number",
                                                     autocomplete: "off",
                                                     placeholder: "đ Đến",
+                                                },
+                                                on: {
+                                                    input: function(event) {
+                                                        this.value = formatNumber(this.value);
+                                                    },
+                                                    change: function(event) {
+                                                        this.value = reFormatNumber(this.value);
+                                                    }
                                                 }
                                             },
                                         ]
@@ -1545,17 +1567,17 @@ ListRealty.prototype.searchControlContent = function() {
     })
 
     temp.content = content;
-    content.timestart = startDay;
-    content.timeend = endDay;
-    content.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low', content);
-    content.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high', content);
-    content.phone = $('.pizo-list-realty-main-search-control-row-phone-input input', content);
-    content.MS = $('.pizo-list-realty-main-search-control-row-MS-input input', content);
-    content.SN = $('.pizo-list-realty-main-search-control-row-SN input', content);
-    content.TD = $('.pizo-list-realty-main-search-control-row-TD input', content);
-    content.PX = $('.pizo-list-realty-main-search-control-row-PX input', content);
-    content.QH = $('.pizo-list-realty-main-search-control-row-QH input', content);
-    content.HT = $('.pizo-list-realty-main-search-control-row-HT input', content);
+    this.startDay = startDay;
+    this.endDay = endDay;
+    this.lowprice = $('input.pizo-list-realty-main-search-control-row-price-input-low', content);
+    this.highprice = $('input.pizo-list-realty-main-search-control-row-price-input-high', content);
+    this.phone = $('.pizo-list-realty-main-search-control-row-phone-input input', content);
+    this.MS = $('.pizo-list-realty-main-search-control-row-MS-input input', content);
+    this.SN = $('.pizo-list-realty-main-search-control-row-SN input', content);
+    this.TD = $('.pizo-list-realty-main-search-control-row-TD input', content);
+    this.PX = $('.pizo-list-realty-main-search-control-row-PX input', content);
+    this.QH = $('.pizo-list-realty-main-search-control-row-QH input', content);
+    this.HT = $('.pizo-list-realty-main-search-control-row-HT input', content);
     this.HTinput = $('div.pizo-list-realty-main-search-control-row-HT-input', content).childNodes[0];
     this.HTcheckbox = $('div.pizo-list-realty-main-search-control-row-HT-checkbox', content).childNodes[0];
 
@@ -1583,18 +1605,18 @@ ListRealty.prototype.searchControlContent = function() {
 
     }
     temp.reset = function() {
-        content.timestart = new Date();
-        content.timeend = new Date();
-        content.lowprice.value = "";
-        content.highprice.value = "";
-        content.phone.value = "";
-        content.MS.value = "";
-        content.SN.value = "";
-        content.TD.value = "";
-        content.PX.value = "";
-        content.QH.value = "";
-        content.TT.value = "";
-        content.HT.value = 0;
+        this.timestart = new Date();
+        this.timeend = new Date();
+        this.lowprice.value = "";
+        this.highprice.value = "";
+        this.phone.value = "";
+        this.MS.value = "";
+        this.SN.value = "";
+        this.TD.value = "";
+        this.PX.value = "";
+        this.QH.value = "";
+        this.TT.value = "";
+        this.HT.value = 0;
     }
 
 
