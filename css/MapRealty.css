@@ -1038,33 +1038,11 @@ ul {
     font-weight: 600;
 }
 
-.zsg-h2.zsg-separator,
-body,
-dd,
-dl,
-dt,
-fieldset,
-h1,
-h2,
-h2.zsg-separator,
-h3,
-h4,
-h5,
-h6,
-ol,
-p,
-ul {
+.zsg-h2.zsg-separator {
     margin: 0;
 }
 
-.zsg-h2.zsg-separator,
-h1,
-h2,
-h2.zsg-separator,
-h3,
-h4,
-h5,
-h6 {
+.zsg-h2.zsg-separator {
     color: inherit;
 }
 
@@ -1144,33 +1122,11 @@ summary {
     display: inline;
 }
 
-.zsg-h2.zsg-separator,
-body,
-dd,
-dl,
-dt,
-fieldset,
-h1,
-h2,
-h2.zsg-separator,
-h3,
-h4,
-h5,
-h6,
-ol,
-p,
-ul {
+.zsg-h2.zsg-separator{
     margin: 0;
 }
 
-.zsg-h2.zsg-separator,
-h1,
-h2,
-h2.zsg-separator,
-h3,
-h4,
-h5,
-h6 {
+.zsg-h2.zsg-separator{
     color: inherit;
 }
 
@@ -1219,14 +1175,7 @@ h3 {
 .zsg-subfooter-header,
 .zsg-table .zsg-table-th,
 .zsg-table th,
-.zsg-toolbar_labeled .zsg-toolbar-label,
-h1,
-h2,
-h2.zsg-separator,
-h3,
-h4,
-h5,
-h6 {
+.zsg-toolbar_labeled .zsg-toolbar-label{
     display: block;
 }
 

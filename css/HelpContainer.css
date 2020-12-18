@@ -514,10 +514,6 @@ li.b-controlButtons__item {
     flex-direction: column;
 }
 
-.b-workZone__layout_helpcontainer_view p {
-    margin: 0;
-}
-
 .b-breadCrumbs__location {
     display: flex;
     margin: 10px;
