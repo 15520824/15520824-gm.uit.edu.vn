@@ -59,11 +59,6 @@ table.b-workZone__layout {
     position: relative;
 }
 
-.b-workZone__layout td,
-.b-workZone__layout tr {
-    padding: 0;
-}
-
 .b-workZone__content.m-workZone__content__nav .absol-tabview .absol-tabbar-button.absol-tabbar-button-active {
     border-bottom: 2px #546e7a solid;
 }
@@ -425,6 +420,17 @@ li.b-controlButtons__item {
 .container-content-information table {
     border-collapse: separate;
     border-spacing: 2px;
+}
+
+.container-content-information table[style] {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    -webkit-border-horizontal-spacing: 0px;
+    -webkit-border-vertical-spacing: 0px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
 }
 
 .b-article .pizo-new-category-container-name {
