@@ -414,7 +414,11 @@ li.b-controlButtons__item {
 
 .container-content-information tr,
 .container-content-information td {
-    border: 1px solid grey;
+    border: 1px solid black;
+}
+
+.container-content-information td {
+    padding: 5px;
 }
 
 .container-content-information table {
