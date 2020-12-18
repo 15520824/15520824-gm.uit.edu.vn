@@ -368,6 +368,7 @@ li.b-controlButtons__item {
 .container-content-information .cke_editable.cke_editable_themed.cke_contents_ltr.cke_show_borders {
     margin: 20px;
     margin-top: 0px;
+    width: 100%;
 }
 
 @media print {
