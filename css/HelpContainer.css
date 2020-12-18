@@ -422,6 +422,17 @@ li.b-controlButtons__item {
     border-spacing: 2px;
 }
 
+.container-content-information table[align] {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    -webkit-border-horizontal-spacing: 0px;
+    -webkit-border-vertical-spacing: 0px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+}
+
 .container-content-information table[style] {
     border-top-width: 1px;
     border-right-width: 1px;
