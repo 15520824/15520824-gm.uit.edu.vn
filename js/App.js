@@ -55,6 +55,7 @@ function App() {
     moduleDatabase.getModule("juridicals");
     moduleDatabase.getModule("nations");
     moduleDatabase.getModule("type_activehouses");
+    moduleDatabase.getModule("favourite");
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));

@@ -146,6 +146,7 @@ MapRealty.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());
     arr.push(moduleDatabase.getModule("juridicals").load());
+    arr.push(moduleDatabase.getModule("favourite").load({ WHERE: [{ userid: window.userid }] }));
     moduleDatabase.getModule("users").load().then(function(value) {
         self.checkUser = moduleDatabase.getModule("users").getLibary("phone");
         self.checkUserID = moduleDatabase.getModule("users").getLibary("id");
@@ -729,6 +730,17 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                             child: [{
                                                                                 tag: "button",
                                                                                 class: ["sc-bdVaJa", "gpVNOz"],
+                                                                                on: {
+                                                                                    click: function(event) {
+                                                                                        if (this.check) {
+                                                                                            this.check = undefined;
+                                                                                            this.childNodes[0].childNodes[0].childNodes[0].innerHTML = "favorite_border";
+                                                                                        } else {
+                                                                                            this.check = true;
+                                                                                            this.childNodes[0].childNodes[0].childNodes[0].innerHTML = "favorite";
+                                                                                        }
+                                                                                    }
+                                                                                },
                                                                                 child: [{
                                                                                     tag: "div",
                                                                                     class: ["sc-bMVAic", "gpVNOz"],
