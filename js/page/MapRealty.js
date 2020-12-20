@@ -4,7 +4,7 @@ import CMDRunner from "absol/src/AppPattern/CMDRunner";
 import "../../css/MapRealty.css"
 import R from '../R';
 import Fcore from '../dom/Fcore';
-import { formatNumber, reFormatNumber, formatFit, isEqual } from '../component/FormatFunction'
+import { formatNumber, reFormatNumber, formatFit, loadingWheel } from '../component/FormatFunction'
 
 import { MapView } from "../component/MapView";
 import moduleDatabase from '../component/ModuleDatabase';
@@ -146,7 +146,6 @@ MapRealty.prototype.getView = function() {
     arr.push(moduleDatabase.getModule("states").load());
     arr.push(moduleDatabase.getModule("equipments").load());
     arr.push(moduleDatabase.getModule("juridicals").load());
-    arr.push(moduleDatabase.getModule("favourite").load({ WHERE: [{ userid: window.userid }] }));
     moduleDatabase.getModule("users").load().then(function(value) {
         self.checkUser = moduleDatabase.getModule("users").getLibary("phone");
         self.checkUserID = moduleDatabase.getModule("users").getLibary("id");
@@ -735,9 +734,35 @@ MapRealty.prototype.modalLargeRealty = function(data) {
                                                                                         if (this.check) {
                                                                                             this.check = undefined;
                                                                                             this.childNodes[0].childNodes[0].childNodes[0].innerHTML = "favorite_border";
+                                                                                            var loading = new loadingWheel();
+                                                                                            moduleDatabase.getModule("favourite").delete({userid:window.userid,houseid:data.id}).then(function(){
+                                                                                                loading.disable();
+                                                                                                moduleDatabase.getModule("activehouses").load().then(function(value){
+                                                                                                    if(moduleDatabase.stackUpdateFavourite)
+                                                                                                    {
+                                                                                                        for(var i = 0;i<moduleDatabase.stackUpdateFavourite.length;i++)
+                                                                                                        {
+                                                                                                            moduleDatabase.stackUpdateFavourite[i].mTable.updateTable(undefined, moduleDatabase.stackUpdateFavourite[i].formatDataRow(value));
+                                                                                                        }
+                                                                                                    }
+                                                                                                })
+                                                                                            });
                                                                                         } else {
                                                                                             this.check = true;
                                                                                             this.childNodes[0].childNodes[0].childNodes[0].innerHTML = "favorite";
+                                                                                            var loading = new loadingWheel();
+                                                                                            moduleDatabase.getModule("favourite").add({userid:window.userid,houseid:data.id}).then(function(){
+                                                                                                loading.disable();
+                                                                                                moduleDatabase.getModule("activehouses").load().then(function(value){
+                                                                                                    if(moduleDatabase.stackUpdateFavourite)
+                                                                                                    {
+                                                                                                        for(var i = 0;i<moduleDatabase.stackUpdateFavourite.length;i++)
+                                                                                                        {
+                                                                                                            moduleDatabase.stackUpdateFavourite[i].mTable.updateTable(undefined, moduleDatabase.stackUpdateFavourite[i].formatDataRow(value));
+                                                                                                        }
+                                                                                                    }
+                                                                                                })
+                                                                                            });
                                                                                         }
                                                                                     }
                                                                                 },
@@ -1146,7 +1171,6 @@ MapRealty.prototype.modalLargeRealty = function(data) {
     setTimeout(function() {
         modal.focus();
     }, 100);
-    console.log(moduleDatabase.checkPermission)
     var requestEdit = $("li.sc-cLQEGU-2", modal);
     var realEdit = $("li.sc-cLQEGU-3", modal);
     var isEdit = false;
@@ -1174,7 +1198,13 @@ MapRealty.prototype.modalLargeRealty = function(data) {
         } else
             requestEdit.style.display = "none";
     }
-
+    var checkButton = $(".sc-bdVaJa.gpVNOz",modal);
+    var checkHouseId = moduleDatabase.getModule("favourite").getLibary("houseid");
+    if(checkHouseId[data.id])
+    {
+        checkButton.childNodes[0].childNodes[0].childNodes[0].innerHTML = "favorite";
+        checkButton.check = true;
+    }
     return modal;
 }
 

@@ -746,6 +746,11 @@ ListRealty.prototype.formatDataRow = function(data) {
     var stateid;
     var isAvailable;
     var isCensorshipFalse;
+    var checkFavourite;
+    if(this.isFavourite === true)
+    {
+        checkFavourite = moduleDatabase.getModule("favourite").getLibary("houseid");
+    }
     for (var i = 0; i < data.length; i++) {
         isAvailable = false;
         isCensorshipFalse = false;
@@ -780,6 +785,11 @@ ListRealty.prototype.formatDataRow = function(data) {
         }
         if (isAvailable == false)
             continue;
+        if(checkFavourite)
+        {
+            if(checkFavourite[data[i].id] == undefined)
+            continue;
+        }
         var result = this.getDataRow(data[i], isCensorshipFalse);
         result.original = data[i];
         if (check[data[i].parent_id] !== undefined) {
@@ -1128,12 +1138,7 @@ ListRealty.prototype.mergeFilter = function(data) {
 }
 
 ListRealty.prototype.mergeFilterNone = function(data) {
-    var checkAvaliable = [];
     var result = [];
-    var tempData;
-    var tempPushData;
-    var indexData;
-    var index;
     var isAvailable;
     var districtid;
     var stateid;

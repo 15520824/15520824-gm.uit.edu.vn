@@ -55,7 +55,7 @@ function App() {
     moduleDatabase.getModule("juridicals");
     moduleDatabase.getModule("nations");
     moduleDatabase.getModule("type_activehouses");
-    moduleDatabase.getModule("favourite");
+    moduleDatabase.getModule("favourite", ["load.php", "addFavorite.php", "update.php", "deleteFavorite.php"]);
 }
 
 Object.defineProperties(App.prototype, Object.getOwnPropertyDescriptors(BaseView.prototype));
@@ -306,8 +306,12 @@ App.prototype.getPermisionOpenPage = function() {
     if (moduleDatabase.checkPermission == undefined) {
         moduleDatabase.checkPermission = [];
         moduleDatabase.checkPermission[0] = [];
+        var arr = [];
         this.promisePermission = moduleDatabase.queryData("loadPermision.php", { userid: window.userid }, "privileges");
-        this.promisePermission.then(function(result) {
+        arr.push(this.promisePermission);
+        arr.push(moduleDatabase.getModule("favourite").load({ WHERE: [{ userid: window.userid }] }));
+        Promise.all(arr).then(function(resultAll){
+            var result = resultAll[0];
             for (var i = 0; i < result.length; i++) {
                 var permissionTemp = result[i].permission
                 if (permissionTemp < 56 && permissionTemp > 0) {
@@ -590,6 +594,10 @@ App.prototype.openPage = function(index) {
         case 12:
             var mListRealty = new ListRealty();
             mListRealty.attach(this);
+            mListRealty.isFavourite = true;
+            if(moduleDatabase.stackUpdateFavourite == undefined)
+            moduleDatabase.stackUpdateFavourite = [];
+            moduleDatabase.stackUpdateFavourite.push(mListRealty);
             var frameview = mListRealty.getView();
             this.body.addChild(frameview);
             this.body.activeFrame(frameview);
