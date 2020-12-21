@@ -843,7 +843,7 @@ ListRealtyRequest.prototype.searchControlContent = function() {
                                         tag: "span",
                                         class: "pizo-list-realty-main-search-control-row-HT-label",
                                         props: {
-                                            innerHTML: "Tình trạng"
+                                            innerHTML: "Tình trạng"
                                         }
                                     },
                                     {

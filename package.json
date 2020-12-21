@@ -13,7 +13,6 @@
   "dependencies": {
     "absol": "^1.15.20",
     "absol-acomp": "^0.9.55",
-    "ckeditor4": "^4.15.1",
     "mpot-merge-tool": "github:duthienkt/mpot-merge-tool#master"
   },
   "devDependencies": {

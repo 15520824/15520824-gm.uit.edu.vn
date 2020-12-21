@@ -349,11 +349,14 @@ NewAccount.prototype.getView = function(dataParent) {
                 if (self.checkPermission[event.value] !== undefined) {
                     delete self.checkPermission[event.value] !== undefined;
                 }
-                if (this.value == this.activeValue) {
+                if (event.value == this.activeValue) {
                     if (this.values.length > 0)
+                    {
                         this.activeValue = this.values[0];
+                        this.emit("activevaluechange");
+                    }
                 }
-                this.emit("activevaluechange");
+                
             }
         },
         props: {

@@ -2,7 +2,7 @@ import R from '../R';
 import Fcore from '../dom/Fcore';
 import '../../css/MapView.css';
 import moduleDatabase from '../component/ModuleDatabase';
-import { getIDCompair, removeAccents } from './FormatFunction';
+import { getIDCompair, removeAccents, generalOperator } from './FormatFunction';
 
 var _ = Fcore._;
 var $ = Fcore.$;
@@ -970,7 +970,7 @@ MapView.prototype.addMapHouse = function() {
                         for (var i = 0; i < value.length; i++) {
                             self.addOrtherMarker(value[i]);
                         }
-                        var event = new CustomEvent('change-house');
+                        var event = new CustomEvent("change-house");
                         self.dispatchEvent(event);
                         resolve();
                     })
@@ -978,6 +978,79 @@ MapView.prototype.addMapHouse = function() {
         }.bind(this));
 
     });
+}
+
+MapView.prototype.setLabelContent = function(isPrice)
+{
+    this.isPrice = isPrice;
+    var data;
+    var labelContent;
+    var label;
+    for(var i =0;i<this.currentHouse.length;i++)
+    {
+        data = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
+        if(data)
+        {
+            for(var j = 0;j<data.length;j++)
+            {
+                if(this.isPrice == true)
+                {
+                    label = data[j].data.price + " tỉ";
+                }else if(this.isPrice == false)
+                    label = ((parseInt(data[j].data.pricerent) / 1000000) + " triệu");
+                else
+                {
+                    if (parseInt(data[j].data.salestatus / 10) == 1 ? true : false)
+                        label = data[j].data.price + " tỉ";
+                    else if (parseInt(data[j].data.salestatus % 10) == 1 ? true : false)
+                        label = (parseInt(data[j].data.pricerent) / 1000000) + " triệu";
+                    else if (data[j].data.price > 0)
+                        label = data[j].data.price + " tỉ";
+                    else if (data[j].data.pricerent > 0)
+                        label = (parseInt(data[j].data.pricerent) / 1000000) + " triệu";
+                }
+                labelContent = _({
+                    tag: "div",
+                    child: [{
+                            tag: "div",
+                            class: "arrow",
+                        },
+                        {
+                            tag: "div",
+                            class: "inner",
+                            props: {
+                                innerHTML: label
+                            }
+                        }
+                    ]
+                });
+                data[j].set('labelContent', labelContent);
+            }
+        }
+    }
+}
+
+MapView.prototype.setGeneralOperator = function(WHERE)
+{
+    var data;
+    this.WHERE = WHERE;
+    for(var i =0;i<this.currentHouse.length;i++)
+    {
+        data = this.checkHouse[this.currentHouse[i][0]][this.currentHouse[i][1]];
+        if(data)
+        {
+            for(var j = 0;j<data.length;j++)
+            if(generalOperator(data[j].data,WHERE) == false)
+            {
+                data[j].setMap(null);
+            }else
+            {
+                data[j].setMap(this.map);
+            }
+        }
+    }
+    var event = new CustomEvent("change-house");
+    this.dispatchEvent(event);
 }
 
 MapView.prototype.addOrtherMarker = function(data) {
@@ -988,6 +1061,15 @@ MapView.prototype.addOrtherMarker = function(data) {
         var arr = this.checkHouse[position[0]][position[1]];
         for (var j = 0; j < arr.length; j++) {
             if (arr[j].getMap() === null) {
+                if(self.WHERE)
+                {
+                    if(generalOperator(arr[j].data,self.WHERE) == false)
+                    arr[j].setMap(null);
+                    else
+                    {
+                        arr[j].setMap(self.map);
+                    }
+                }else
                 arr[j].setMap(self.map);
                 this.currentHouse.push(position);
             }
@@ -1016,7 +1098,7 @@ MapView.prototype.addOrtherMarker = function(data) {
             else if (data.price > 0)
                 label = data.price + " tỉ";
             else if (data.pricerent > 0)
-                label = data.price + " VND";
+                label = (parseInt(data.pricerent) / 1000000) + " triệu";
         }
         var labelContent = _({
             tag: "div",
@@ -1036,7 +1118,6 @@ MapView.prototype.addOrtherMarker = function(data) {
 
         var marker = new MarkerWithLabel({
             position: new google.maps.LatLng(position[0], position[1]),
-            map: self.map,
             draggable: false,
             icon: image,
             labelContent: labelContent,
@@ -1044,6 +1125,15 @@ MapView.prototype.addOrtherMarker = function(data) {
             labelClass: "labels",
             zIndex: 2,
         });
+        if(self.WHERE)
+        {
+            if(generalOperator(data,self.WHERE) == false)
+            marker.setMap(null);
+            else
+            marker.setMap(self.map);
+        }else
+        marker.setMap(self.map);
+        this.currentHouse.push(position);
         var imageHover = {
             url: "./assets/images/marker-green.png",
             // This marker is 20 pixels wide by 32 pixels high.
@@ -1101,7 +1191,7 @@ MapView.prototype.addOrtherMarker = function(data) {
     }
 
     self.isDoneMarker = true;
-    return marker;
+    return this.currentHouse;
 }
 
 MapView.prototype.setFilter = function() {

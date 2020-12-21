@@ -654,7 +654,7 @@ ListRealty.prototype.getView = function() {
             }
         ];
         header.isSaveTheme = "#19001080";
-        if (moduleDatabase.checkPermission.isStaff == true) {
+        if (moduleDatabase.isStaff == true) {
             header.attachSrcoll = true;
         }
         self.mTable = new tableView(header, [], true, true, 1);
@@ -1243,7 +1243,7 @@ ListRealty.prototype.searchControlContent = function() {
                                         tag: "span",
                                         class: "pizo-list-realty-main-search-control-row-HT-label",
                                         props: {
-                                            innerHTML: "Tình trạng"
+                                            innerHTML: "Tình trạng"
                                         }
                                     },
                                     {

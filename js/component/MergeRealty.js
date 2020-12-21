@@ -1122,7 +1122,7 @@ MergeRealty.prototype.getView = function() {
 
     var dataJuridical = {
         type: 'element',
-        name: 'Tình trạng pháp lý',
+        name: 'Tình trạng pháp lý',
         id: 'juridical',
         enableEdit: true,
         action: "single-choice",

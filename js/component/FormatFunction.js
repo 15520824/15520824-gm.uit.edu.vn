@@ -55,6 +55,46 @@ export function formatDate(date, isMinutes = false, isHours = false, isDay = tru
     return resultTime.join(':') + " " + resultDayMonth.join('/');
 }
 
+export function generalOperator(data, WHERE) {
+    var stringResult = operator(data, WHERE);
+    return eval(stringResult);
+}
+
+export function operator(data, WHERE) {
+    var stringResult = "(";
+    for (var i = 0; i < WHERE.length; i++) {
+        stringResult += equal(data, WHERE[i]);
+    }
+    return stringResult + ")";
+}
+
+export function equal(data, WHERE) {
+    var stringResult = "";
+    if (typeof WHERE === "string") {
+        return WHERE;
+    } else
+    if (typeof WHERE === "object") {
+        if (Array.isArray(WHERE)) {
+            stringResult += this.operator(data, WHERE);
+        } else {
+            for (var param in WHERE) {
+                if (typeof WHERE[param] === "object") {
+                    if (eval(data[param] + WHERE[param].operator + WHERE[param].value))
+                        stringResult += true;
+                    else
+                        stringResult += false;
+                } else {
+                    if (data[param] == WHERE[param])
+                        stringResult += true;
+                    else
+                        stringResult += false;
+                }
+            }
+        }
+    }
+    return stringResult;
+}
+
 export function formatNumber(n) {
     if (n == "")
         return "";

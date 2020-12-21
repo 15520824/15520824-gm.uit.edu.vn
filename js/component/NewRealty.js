@@ -2960,7 +2960,7 @@ NewRealty.prototype.juridicalView = function() {
                             tag: "span",
                             class: "pizo-new-realty-detruct-content-area-label",
                             props: {
-                                innerHTML: "Tình trạng"
+                                innerHTML: "Tình trạng"
                             },
                         },
                         {

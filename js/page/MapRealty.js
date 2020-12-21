@@ -154,6 +154,37 @@ MapRealty.prototype.getView = function() {
     moduleDatabase.getModule("contacts").load().then(function(value) {
         self.checkContact = moduleDatabase.getModule("contacts").getLibary("phone");
         self.checkContactID = moduleDatabase.getModule("contacts").getLibary("id");
+    });
+    var startDay, endDay;
+    var oneYearFromNow = new Date();
+    oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() - 1);
+    startDay = _({
+        tag: 'calendar-input',
+        data: {
+            anchor: 'top',
+            value: oneYearFromNow,
+            maxDateLimit: new Date()
+        },
+        on: {
+            changed: function(date) {
+                endDay.minDateLimit = date;
+            }
+        }
+    })
+
+    endDay = _({
+        tag: 'calendar-input',
+        data: {
+            anchor: 'top',
+            value: new Date(),
+            minDateLimit: new Date()
+        },
+        on: {
+            changed: function(date) {
+
+                startDay.maxDateLimit = date;
+            }
+        }
     })
     Promise.all(arr).then(function(values) {
         this.checkState = moduleDatabase.getModule("states").getLibary("id");
@@ -162,6 +193,66 @@ MapRealty.prototype.getView = function() {
         this.checkequipment = moduleDatabase.getModule("equipments").getLibary("id");
         this.checkJuridical = moduleDatabase.getModule("juridicals").getLibary("id");
         this.checkTypeHouse = moduleDatabase.getModule("type_activehouses").getLibary("id");
+        var selectStatus = _({
+            tag: "selectmenu",
+            on:{
+                change:function()
+                {
+                    var x = JSON.parse(this.value);
+                    var query;
+                    if(Array.isArray(x))
+                    {
+                        if(x.length == 2)
+                        query=[{salestatus:x[0]},"||",{salestatus:x[1]}];
+                        else
+                        query=[{salestatus:x[0]},"||",{salestatus:x[1]},"||",{salestatus:x[2]}];
+                    }else if(this.value == -1)
+                    {
+                        query = [];
+                    }else
+                        query=[{salestatus:x}];
+                    if(this.value == "[10,11]"||this.value == "0")
+                    {
+                        self.mapView.setLabelContent(true);
+                    }else if(this.value == "[1,11]")
+                    {
+                        self.mapView.setLabelContent(false);
+                    }
+                    else if(this.value == "[1,10,11]")
+                    {
+                        self.mapView.setLabelContent()
+                    }
+                    self.statusQuery = query;
+                    var queryAll;
+                    if(self.priceQuery)
+                    {
+                        queryAll = self.statusQuery.concat("&&");
+                        queryAll = queryAll.concat(self.priceQuery);
+                    }
+                    self.mapView.setGeneralOperator(queryAll);
+                }
+            },
+            props: {
+                items: [
+                    // {
+                    //     text: "Tất cả",
+                    //     value: "[1,10,11]"
+                    // },
+                    {
+                        text: "Còn bán",
+                        value: "[10,11]"
+                    },
+                    {
+                        text: "Còn cho thuê",
+                        value: "[1,11]"
+                    },
+                    {
+                        text: "Ngừng giao dịch",
+                        value: "0"
+                    }
+                ]
+            }
+        })
         this.$view.addChild(_({
             tag: "div",
             class: ["pizo-list-plan-main"],
@@ -172,47 +263,112 @@ MapRealty.prototype.getView = function() {
                     tag: "div",
                     class: "pizo-list-realty-main-search-control-row",
                     child: [{
-                        tag: "div",
-                        class: "pizo-list-realty-main-search-control-row-price",
-                        child: [{
                             tag: "div",
-                            class: "pizo-list-realty-main-search-control-row-HT",
+                            class: "pizo-list-realty-main-search-control-row-price",
                             child: [{
-                                    tag: "span",
-                                    class: "pizo-list-realty-main-search-control-row-HT-label",
-                                    props: {
-                                        innerHTML: "Tình trạng"
-                                    }
-                                },
-                                {
-                                    tag: "div",
-                                    class: "pizo-list-realty-main-search-control-row-HT-input",
-                                    child: [{
-                                        tag: "selectmenu",
+                                tag: "div",
+                                class: "pizo-list-realty-main-search-control-row-HT",
+                                child: [{
+                                        tag: "span",
+                                        class: "pizo-list-realty-main-search-control-row-HT-label",
                                         props: {
-                                            items: [{
-                                                    text: "Tất cả",
-                                                    value: 0
-                                                },
-                                                {
-                                                    text: "Còn bán",
-                                                    value: 2
-                                                },
-                                                {
-                                                    text: "Còn cho thuê",
-                                                    value: 11
-                                                },
-                                                {
-                                                    text: "Ngừng giao dịch",
-                                                    value: 1
-                                                }
-                                            ]
+                                            innerHTML: "Tình trạng"
                                         }
-                                    }]
-                                }
-                            ]
-                        }, ]
-                    }, ]
+                                    },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-list-realty-main-search-control-row-HT-input",
+                                        child: [selectStatus]
+                                    }
+                                ]
+                            }, ]
+                        },
+                        {
+                            tag: "div",
+                            class: "pizo-list-realty-main-search-control-row-price",
+                            child: [{
+                                tag: "div",
+                                class: "pizo-list-realty-main-search-control-row-HT",
+                                child: [{
+                                        tag: "span",
+                                        class: "pizo-list-realty-main-search-control-row-price-label",
+                                        props: {
+                                            innerHTML: "Khoảng giá"
+                                        }
+                                    },
+                                    {
+                                        tag: "div",
+                                        class: "pizo-list-realty-main-search-control-row-price-input",
+                                        child: [{
+                                                tag: "input",
+                                                class: "pizo-list-realty-main-search-control-row-price-input-low",
+                                                props: {
+                                                    autocomplete: "off",
+                                                    placeholder: "đ Từ",
+                                                },
+                                                on: {
+                                                    input: function(event) {
+                                                        this.value = formatNumber(this.value);
+                                                    },
+                                                    change: function(event) {
+                                                        this.value = reFormatNumber(this.value);
+                                                        var queryAll = [];
+                                                        var query;
+                                                        if(self.mapView.isPrice == true)
+                                                        {
+                                                            query = [{price:{ operator: ">", value: self.lowprice.value }},"&&",{price:{ operator: "<", value: self.highprice.value }}];
+                                                        }else  if(self.mapView.isPrice == false)
+                                                        {
+                                                            query = [{pricerent:{ operator: ">", value: self.lowprice.value }},"&&",{pricerent:{ operator: "<", value: self.highprice.value }}];
+                                                        } 
+                                                        self.priceQuery = query;
+                                                        if(self.statusQuery)
+                                                        {
+                                                            queryAll = self.statusQuery.concat("&&");
+                                                        }
+                                                        queryAll = queryAll.concat(self.priceQuery);
+                                                        self.mapView.setGeneralOperator(queryAll);
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                tag: "input",
+                                                class: "pizo-list-realty-main-search-control-row-price-input-high",
+                                                props: {
+                                                    autocomplete: "off",
+                                                    placeholder: "đ Đến",
+                                                },
+                                                on: {
+                                                    input: function(event) {
+                                                        this.value = formatNumber(this.value);
+                                                    },
+                                                    change: function(event) {
+                                                        this.value = reFormatNumber(this.value);
+                                                        var queryAll = [];
+                                                        var query;
+                                                        if(self.mapView.isPrice == true)
+                                                        {
+                                                            query = [{price:{ operator: ">", value: self.lowprice.value }},"&&",{price:{ operator: "<", value: self.highprice.value }}];
+                                                        }else  if(self.mapView.isPrice == false)
+                                                        {
+                                                            query = [{pricerent:{ operator: ">", value: self.lowprice.value }},"&&",{pricerent:{ operator: "<", value: self.highprice.value }}];
+                                                        } 
+                                                        self.priceQuery = query;
+                                                        if(self.statusQuery)
+                                                        {
+                                                            queryAll = self.statusQuery.concat("&&");
+                                                        }
+                                                        queryAll = queryAll.concat(self.priceQuery);
+                                                        console.log(queryAll)
+                                                        self.mapView.setGeneralOperator(queryAll);
+                                                    }
+                                                }
+                                            },
+                                        ]
+                                    }
+                                ]
+                            }]
+                    }]
                 },
                 this.searchControl,
                 {
@@ -229,6 +385,7 @@ MapRealty.prototype.getView = function() {
                 }
             ]
         }));
+        selectStatus.emit("change");
     }.bind(this))
 
     moduleDatabase.getModule("users").load().then(function(value) {
@@ -238,6 +395,8 @@ MapRealty.prototype.getView = function() {
     moduleDatabase.getModule("contacts").load().then(function(value) {
         self.formatDataRowContact(value);
     })
+    this.lowprice = $("pizo-list-realty-main-search-control-row-price-input-low",this.$view);
+    this.highprice = $("pizo-list-realty-main-search-control-row-price-input-high",this.$view);
     return this.$view;
 }
 
@@ -322,9 +481,9 @@ MapRealty.prototype.modalRealty = function() {
             }
         ]
     })
+    container.check = [];
     this.count = $("span.result-count", temp);
     this.updateResult = function() {
-        var check = [];
         var value = []
         var cellLat, cellLng, arrTemp;
         var k = 0;
@@ -333,21 +492,13 @@ MapRealty.prototype.modalRealty = function() {
             cellLng = this.mapView.currentHouse[i][1];
             arrTemp = this.mapView.checkHouse[cellLat][cellLng];
             for (var j = 0; j < arrTemp.length; j++) {
-                if (container.check === undefined || container.check[arrTemp[j].data.id] === undefined) {
+                if (arrTemp[j].getMap()!=null) {
                     value.push(arrTemp[j]);
-
-                } else if (container.check !== undefined) {
-                    check[arrTemp[j].data.id] = container.check[arrTemp[j].data.id];
-                    delete container.check[arrTemp[j].data.id];
-                }
+                } 
                 k++;
             }
         }
-
-        for (var param in container.check) {
-            container.check[param].selfRemove();
-        }
-        container.check = check;
+        container.clearChild();
         this.count.innerHTML = k + " kết quả";
 
         var arr = [];
@@ -376,8 +527,14 @@ MapRealty.prototype.modalRealty = function() {
                 moduleDatabase.getModule("streets").load({ WHERE: arr }).then(function(valueStr) {
                     self.checkStreet = moduleDatabase.getModule("streets").getLibary("id");
                     for (var i = 0; i < value.length; i++) {
-                        var x = this.itemMap(value[i]);
-                        check[value[i].data.id] = x;
+                        if(container.check[value[i].data.id]==undefined)
+                        {
+                            var x = this.itemMap(value[i]);
+                            container.check[value[i].data.id] = x;
+                        }else
+                        var x = container.check[value[i].data.id];
+                        x.setPrice(value[i].get('labelContent').childNodes[1].innerHTML.toString());
+
                         container.appendChild(x);
                     }
 
@@ -1446,7 +1603,7 @@ MapRealty.prototype.juridicalView = function(data) {
                             tag: "span",
                             class: "pizo-new-realty-detruct-content-area-label",
                             props: {
-                                innerHTML: "Tình trạng"
+                                innerHTML: "Tình trạng"
                             },
                         },
                         {
@@ -2819,6 +2976,13 @@ MapRealty.prototype.itemMap = function(marker) {
             statusIcon.style.color = "purple"
             break;
     }
+    var priceContent = _({
+        tag: "div",
+        class: "list-card-price",
+        props: {
+            innerHTML: "VND " + data.price + " tỉ"
+        }
+    })
     var temp = _({
         tag: "li",
         on: {
@@ -2879,13 +3043,7 @@ MapRealty.prototype.itemMap = function(marker) {
                             {
                                 tag: "div",
                                 class: "list-card-heading",
-                                child: [{
-                                        tag: "div",
-                                        class: "list-card-price",
-                                        props: {
-                                            innerHTML: "VND " + data.price + " tỉ"
-                                        }
-                                    },
+                                child: [priceContent,
                                     {
                                         tag: "ul",
                                         class: "list-card-details",
@@ -3033,7 +3191,9 @@ MapRealty.prototype.itemMap = function(marker) {
             google.maps.event.removeListener(listener);
         })
     }, 50)
-
+    temp.setPrice = function(price){
+        priceContent.innerHTML =  "VND " + price;
+    }
     return temp;
 }
 
@@ -3340,7 +3500,7 @@ MapRealty.prototype.searchControlContent = function() {
                                     tag: "span",
                                     class: "pizo-list-realty-main-search-control-row-HT-label",
                                     props: {
-                                        innerHTML: "Tình trạng"
+                                        innerHTML: "Tình trạng"
                                     }
                                 },
                                 {

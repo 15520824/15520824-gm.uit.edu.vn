@@ -187,7 +187,7 @@ NewContact.prototype.getView = function () {
                                             tag:"span",
                                             class:"pizo-new-contact-container-type-container-label",
                                             props:{
-                                                innerHTML:"Tình trạng cuộc gọi"
+                                                innerHTML:"Tình trạng cuộc gọi"
                                             }
                                         },
                                         {

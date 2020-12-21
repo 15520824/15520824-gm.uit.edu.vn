@@ -227,7 +227,7 @@ ListContact.prototype.getView = function() {
             { value: 'Tên', sort: true, style: { minWidth: "unset" } },
             { value: 'Email', sort: true, style: { minWidth: "unset" } },
             { value: 'Số điện thoại', sort: true, style: { minWidth: "200px", width: "200px" } },
-            { value: 'Tình trạng cuộc gọi', sort: true, style: { minWidth: "200px", width: "200px" } },
+            { value: 'Tình trạng cuộc gọi', sort: true, style: { minWidth: "200px", width: "200px" } },
             { type: "detail", functionClickAll: functionClickMore, icon: "", dragElement: false, style: { width: "30px" } }
         ];
         self.mTable = new tableView(header, self.formatDataRow(value), false, true, 2);

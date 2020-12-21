@@ -1,5 +1,6 @@
 import FormClass from './jsform';
 import '../encode';
+import {generalOperator} from './FormatFunction';
 var moduleDatabase = new ModuleDatabase();
 
 function ModuleDatabase() {
@@ -58,48 +59,6 @@ function DataStructure(hostDatabase, name, listFilePHP = ["load.php", "add.php",
     this.isFirst = true;
 }
 
-DataStructure.prototype.generalOperator = function(data, WHERE) {
-    var stringResult = this.operator(data, WHERE);
-    return eval(stringResult);
-}
-
-// DataStructure.prototype.generalOrder = function(data,W)
-
-DataStructure.prototype.operator = function(data, WHERE) {
-    var stringResult = "(";
-    for (var i = 0; i < WHERE.length; i++) {
-        stringResult += this.equal(data, WHERE[i]);
-    }
-    return stringResult + ")";
-}
-
-DataStructure.prototype.equal = function(data, WHERE) {
-    var stringResult = "";
-    if (typeof WHERE === "string") {
-        return WHERE;
-    } else
-    if (typeof WHERE === "object") {
-        if (Array.isArray(WHERE)) {
-            stringResult += this.operator(data, WHERE);
-        } else {
-            for (var param in WHERE) {
-                if (typeof WHERE[param] === "object") {
-                    if (eval(data[param] + WHERE[param].operator + WHERE[param].value))
-                        stringResult += true;
-                    else
-                        stringResult += false;
-                } else {
-                    if (data[param] == WHERE[param])
-                        stringResult += true;
-                    else
-                        stringResult += false;
-                }
-            }
-        }
-    }
-    return stringResult;
-}
-
 DataStructure.prototype.load = function(data = [], isLoaded = false) {
     var self = this;
     if (data.WHERE == undefined) {
@@ -135,7 +94,7 @@ DataStructure.prototype.load = function(data = [], isLoaded = false) {
     if (data.WHERE !== undefined)
         if (self.data !== undefined && self.data.length !== 0) {
             for (var i = 0; i < self.data.length; i++) {
-                if (this.generalOperator(self.data[i], data.WHERE)) {
+                if (generalOperator(self.data[i], data.WHERE)) {
                     data.loaded[this.name].push(self.data[i]["id"]);
                 }
             }
@@ -539,7 +498,7 @@ DataStructure.prototype.setFormatUpdate = function(data) {
             temp[param] = data[param];
     }
     for (var param in this.promisePart) {
-        if (this.generalOperator(temp, JSON.parse(param)) === true) {
+        if (generalOperator(temp, JSON.parse(param)) === true) {
             if (this.promisePart[param].data.indexOf(temp) === -1) {
                 this.promisePart[param].data.push(temp);
             }

@@ -353,7 +353,7 @@ App.prototype.getPermisionOpenPage = function() {
                 checkStringPermission.indexOf(64) == -1 &&
                 checkStringPermission.indexOf(65) == -1 &&
                 checkStringPermission.indexOf(69) == -1) {
-                moduleDatabase.checkPermission.isStaff = true;
+                moduleDatabase.isStaff = true;
             }
             for (var param in moduleDatabase.checkPermission) {
                 if (param == 0) {

@@ -77098,7 +77098,7 @@ MergeRealty_MergeRealty.prototype.getView = function () {
   };
   var dataJuridical = {
     type: 'element',
-    name: 'Tình trạng pháp lý',
+    name: 'Tình trạng pháp lý',
     id: 'juridical',
     enableEdit: true,
     action: "single-choice",
@@ -78796,7 +78796,7 @@ NewContact_NewContact.prototype.getView = function () {
             tag: "span",
             "class": "pizo-new-contact-container-type-container-label",
             props: {
-              innerHTML: "Tình trạng cuộc gọi"
+              innerHTML: "Tình trạng cuộc gọi"
             }
           }, {
             tag: "selectmenu",
@@ -82340,7 +82340,7 @@ NewRealty_NewRealty.prototype.juridicalView = function () {
           tag: "span",
           "class": "pizo-new-realty-detruct-content-area-label",
           props: {
-            innerHTML: "Tình trạng"
+            innerHTML: "Tình trạng"
           }
         }, {
           tag: "selectmenu",
@@ -83782,7 +83782,7 @@ MapRealty_MapRealty.prototype.juridicalView = function (data) {
           tag: "span",
           "class": "pizo-new-realty-detruct-content-area-label",
           props: {
-            innerHTML: "Tình trạng"
+            innerHTML: "Tình trạng"
           }
         }, {
           tag: "selectmenu",
@@ -85571,7 +85571,7 @@ MapRealty_MapRealty.prototype.searchControlContent = function () {
             tag: "span",
             "class": "pizo-list-realty-main-search-control-row-HT-label",
             props: {
-              innerHTML: "Tình trạng"
+              innerHTML: "Tình trạng"
             }
           }, {
             tag: "div",
@@ -86932,7 +86932,7 @@ ListRealty_ListRealty.prototype.searchControlContent = function () {
               tag: "span",
               "class": "pizo-list-realty-main-search-control-row-HT-label",
               props: {
-                innerHTML: "Tình trạng"
+                innerHTML: "Tình trạng"
               }
             }, {
               tag: "div",
@@ -97515,7 +97515,7 @@ ListContact_ListContact.prototype.getView = function () {
         width: "200px"
       }
     }, {
-      value: 'Tình trạng cuộc gọi',
+      value: 'Tình trạng cuộc gọi',
       sort: true,
       style: {
         minWidth: "200px",
