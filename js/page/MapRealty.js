@@ -198,6 +198,7 @@ MapRealty.prototype.getView = function() {
             on:{
                 change:function()
                 {
+                    console.log(this.value)
                     var x = JSON.parse(this.value);
                     var query;
                     if(Array.isArray(x))
@@ -233,6 +234,7 @@ MapRealty.prototype.getView = function() {
                 }
             },
             props: {
+                value:"[10,11]",
                 items: [
                     // {
                     //     text: "Tất cả",
